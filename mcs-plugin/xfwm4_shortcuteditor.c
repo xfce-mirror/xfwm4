@@ -235,7 +235,9 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
 	    ThemeInfo *ti;
 
 	    selection = gtk_tree_view_get_selection (treeview);
-	    gtk_tree_selection_get_selected (selection, &model, &iter);
+	    model = gtk_tree_view_get_model (treeview);
+	    gtk_tree_model_get_iter (model, &iter, path);
+
 	    gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
 	    
 	    ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
