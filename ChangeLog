@@ -1,9 +1,680 @@
-2003-01-21  gettextize  <bug-gnu-gettext@gnu.org>
+2003-02-11  xfce
 
-	* Makefile.am (SUBDIRS): Add intl,
-	(ACLOCAL_AMFLAGS): New variable.
-	(EXTRA_DIST): Add config.rpath.
-	* configure.in (AC_OUTPUT): Add intl/Makefile,
+	* src/events.c: Check for CLIENT_FLAG_HAS_STICKY in keyboard
+	shortcut
+
+2003-02-11  xfce
+
+	* src/: client.c, client.h, events.c, frame.c: Use ONTOP layer for
+	modal dialogs only (regular dialogs belong to NORMAL layer now) Add
+	new internal flag "CLIENT_FLAG_HAS_STICKY" Do not disable menu
+	button for various window types.
+
+2003-02-10  xfce
+
+	* src/main.c: Remove g_error (that causes and abort() and thus a
+	core dump) where not necessary.
+
+2003-02-10  xfce
+
+	* src/startup_notification.c: Increase startup notification timeout
+	to 30 seconds
+
+2003-02-10  xfce
+
+	* src/: Makefile.am, Makefile.in, startup_notification.c,
+	startup_notification.h: Use #define SN_API_NOT_YET_FROZEN instead
+	of -DSN_API_NOT_YET_FROZEN=1 in command line
+
+2003-02-10  xfce
+
+	* src/: Makefile.am, Makefile.in, main.c, spinning_cursor.c,
+	spinning_cursor.h: Add neat spinning cursor for startup
+	notification
+
+2003-02-09  xfce
+
+	* Makefile.in, config.h.in, configure, configure.in,
+	common/Makefile.in, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
+	src/events.c, src/hints.c, src/hints.h, src/main.c, src/session.c,
+	src/settings.c, src/startup_notification.c,
+	src/startup_notification.h, themes/Makefile.in,
+	themes/adept/Makefile.in, themes/agua/Makefile.in,
+	themes/atlanta/Makefile.in, themes/atlanta2/Makefile.in,
+	themes/b5/Makefile.in, themes/b6/Makefile.in,
+	themes/bbs/Makefile.in, themes/beastie/Makefile.in,
+	themes/biz/Makefile.in, themes/coldsteel/Makefile.in,
+	themes/coolclean/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/curve/Makefile.in,
+	themes/default.keys/Makefile.in, themes/eazel-blue/Makefile.in,
+	themes/elberg/Makefile.in, themes/exocet/Makefile.in,
+	themes/fbx/Makefile.in, themes/g2/Makefile.in,
+	themes/gaudy/Makefile.in, themes/gnububble/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/iceg/Makefile.in, themes/kde/Makefile.in,
+	themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
+	themes/koynacity/Makefile.in, themes/linea/Makefile.in,
+	themes/meenee/Makefile.in, themes/metabox/Makefile.in,
+	themes/microcurve/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microdeck2/Makefile.in, themes/microgui/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
+	themes/pills/Makefile.in, themes/piranha/Makefile.in,
+	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
+	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/retro/Makefile.in, themes/silverado/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: Add startup
+	notification support (from freedesktop.org standard)
+
+2003-02-08  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/parserc.c: Reduce the buffer from
+	512 to 80 bytes.
+
+2003-02-08  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/main.c, src/main.h:
+	mcs-plugin: Make button grayed out when a theme for values xfwm4:
+	show menu button in dialogs.
+
+2003-02-08  xfce
+
+	* src/session.c: Use g_free() for g_malloc()/g_new() allocated
+	memory
+
+2003-02-06  xfce
+
+	* src/client.c: [no log message]
+
+2003-02-06  xfce
+
+	* src/: client.c, client.h, session.c: Improve session load/save
+
+2003-02-06  xfce
+
+	* TODO, aclocal.m4, configure, src/Makefile.am, src/Makefile.in,
+	src/client.c, src/client.h, src/events.c, src/hints.c, src/hints.h,
+	src/main.c, src/session.c, src/session.h: Add missing bits for full
+	session management
+
+2003-02-06  xfce
+
+	* src/: client.c, events.c: Ensure resizability of windows
+
+2003-02-05  xfce
+
+	* themes/microcurve/: themerc, title-2-active.xpm,
+	title-3-active.xpm, title-4-active.xpm: Use fixed gradient for
+	active title
+
+2003-02-05  xfce
+
+	* themes/curve/: bottom-left-active.xpm, bottom-right-active.xpm,
+	title-3-active.xpm: Align with rawhide original theme
+
+2003-02-05  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/main.c: [no log message]
+
+2003-02-05  xfce
+
+	* src/main.c: Cleanup/simplification
+
+2003-02-04  xfce
+
+	* themes/atlanta/themerc: [no log message]
+
+2003-02-03  xfce
+
+	* src/workspaces.h: Cleanup: remove dead external references in
+	workspaces.h
+
+2003-02-03  xfce
+
+	* themes/atlanta2/themerc: title vertical offset increased by 1
+	pixel.
+
+2003-02-03  xfce
+
+	* src/: client.c, events.c: Fix problem introduced last night with
+	focus notification
+
+2003-02-02  xfce
+
+	* src/client.c: Add a check to avoid setting focus to an already
+	focused window (see that as an optimization)
+
+2003-02-02  xfce
+
+	* src/events.c: De-iconify window on raise events
+
+2003-02-02  xfce
+
+	* src/client.c: Enforce mapping inside top and left margin
+
+2003-02-01  huysmans
+
+	* po/: fi.gmo, fi.po: Update finnish translations
+
+2003-01-31  xfce
+
+	* po/: ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
+	es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo,
+	pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Switch to GNU gettext 0.11.5
+
+2003-01-31  xfce
+
+	* po/: ar.gmo, ar.po: Update Arabic translation by Nabil Ben
+	Khalifa <nabil_benkhalifa@yahoo.fr>
+
+2003-01-31  xfce
+
+	* themes/gaudy/title-3-inactive.xpm: [no log message]
+
+2003-01-31  xfce
+
+	* themes/gaudy/: title-2-inactive.xpm, title-3-inactive.xpm,
+	title-4-inactive.xpm: Change title style
+
+2003-01-30  xfce
+
+	* themes/default.keys/keythemerc: Add Ctr+Alt+Delete = lock screen
+
+2003-01-29  xfce
+
+	* src/events.c: Fix small memory leak when spawning a command fails
+
+2003-01-28  xfce
+
+	* src/: events.c, main.c, settings.c, settings.h: Improve keyboard
+	shortcuts internals.
+
+2003-01-28  huysmans
+
+	* configure: Also update configure ...
+
+2003-01-28  huysmans
+
+	* configure.in, po/pl.gmo, po/pl.po: Add polish translations by
+	Pablo
+
+2003-01-28  xfce
+
+	* src/client.c, src/events.c, src/settings.c, src/settings.h,
+	themes/default.keys/keythemerc: Add keyboard shortcuts support
+	(managed by key themes)
+
+2003-01-28  xfce
+
+	* configure, configure.in, po/ar.gmo, po/ar.po: Add arabic
+	translation from Nabil. Thanks a lot, Nabil :)
+
+2003-01-28  xfce
+
+	* themes/microdeck2/: title-3-active.xpm, title-3-inactive.xpm,
+	title-3-active.xpm: [no log message]
+
+2003-01-27  xfce
+
+	* themes/microdeck2/: title-3-active.xpm, title-3-inactive.xpm:
+	Change title gradient
+
+2003-01-27  xfce
+
+	* themes/curve/title-3-active.xpm: [no log message]
+
+2003-01-27  xfce
+
+	* themes/curve/title-3-active.xpm: [no log message]
+
+2003-01-27  xfce
+
+	* Makefile.am, Makefile.in, autogen.sh, configure, configure.in,
+	common/Makefile.in, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	src/Makefile.in, themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microcurve/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	themes/tux/Makefile.in, themes/variation/Makefile.in,
+	themes/xfce/Makefile.in: Update Makefiles
+
+2003-01-26  xfce
+
+	* po/: fi.gmo, fi.po: Update Finnish translation
+
+2003-01-26  xfce
+
+	* configure, configure.in, po/fi.gmo, po/fi.po: Add Finnish
+	translation by Ilkka Ollakka (ilkka.j.ollakka.oamk.fi)
+
+2003-01-25  xfce
+
+	* src/client.c: Hide/Show all transients along with a window.
+
+2003-01-25  xfce
+
+	* themes/: keramik/themerc, microdeck2/themerc: Add shadow to
+	keramik active title
+
+2003-01-25  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/events.c, src/settings.c: Small
+	bugfix: click_to_raise wasn't correctly set at first run (ie when
+	no config file was found)
+
+2003-01-25  xfce
+
+	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.h.in,
+	config.sub, configure, configure.in, install-sh, ltmain.sh,
+	mkinstalldirs, common/Makefile.in, defaults/Makefile.in,
+	mcs-plugin/Makefile.in, po/Makefile.in.in, po/de.gmo, po/de.po,
+	src/Makefile.in, themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microcurve/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	themes/tux/Makefile.in, themes/variation/Makefile.in,
+	themes/xfce/Makefile.in: Add German translation from MisterMoe
+	<MisterMoe@hackerboard.de> and Michael Jakl <mj@int-x.org>
+
+2003-01-24  edscott
+
+	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.h.in,
+	config.sub, configure, configure.in, install-sh, ltmain.sh,
+	mkinstalldirs, common/Makefile.in, defaults/Makefile.in,
+	mcs-plugin/Makefile.in, po/Makefile.in.in, po/es_MX.gmo,
+	po/es_MX.po, src/Makefile.in, themes/Makefile.in,
+	themes/adept/Makefile.in, themes/agua/Makefile.in,
+	themes/atlanta/Makefile.in, themes/atlanta2/Makefile.in,
+	themes/b5/Makefile.in, themes/b6/Makefile.in,
+	themes/bbs/Makefile.in, themes/beastie/Makefile.in,
+	themes/biz/Makefile.in, themes/coldsteel/Makefile.in,
+	themes/coolclean/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/curve/Makefile.in,
+	themes/default.keys/Makefile.in, themes/eazel-blue/Makefile.in,
+	themes/elberg/Makefile.in, themes/exocet/Makefile.in,
+	themes/fbx/Makefile.in, themes/g2/Makefile.in,
+	themes/gaudy/Makefile.in, themes/gnububble/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/iceg/Makefile.in, themes/kde/Makefile.in,
+	themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
+	themes/koynacity/Makefile.in, themes/linea/Makefile.in,
+	themes/meenee/Makefile.in, themes/metabox/Makefile.in,
+	themes/microcurve/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microdeck2/Makefile.in, themes/microgui/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
+	themes/pills/Makefile.in, themes/piranha/Makefile.in,
+	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
+	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/retro/Makefile.in, themes/silverado/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: added
+	mexican spanish files
+
+2003-01-24  huysmans
+
+	* configure.in, po/nl.gmo, po/nl.po: Add Dutch translations
+
+2003-01-24  xfce
+
+	* configure, configure.in, po/zh_CN.GB2312.gmo, po/zh_CN.GB2312.po,
+	po/zh_CN.gmo, po/zh_CN.po: Rename po/zh_CN.GB2312.* to po/zh_CN.*
+
+2003-01-24  xfce
+
+	* configure, configure.in, po/zh_CN.GB2312.gmo, po/zh_CN.GB2312.po:
+	Add Chinese translation by Yongtao Yang <yongtao.yang@telia.com>
+
+2003-01-23  xfce
+
+	* configure, configure.in, po/es.gmo, po/es.po: Add spanish
+	translation. Thanks nestu!
+
+2003-01-23  xfce
+
+	* src/events.c: Small optimizations
+
+2003-01-23  xfce
+
+	* Makefile.am, Makefile.in, common/Makefile.am, common/Makefile.in,
+	src/client.c, src/client.h, src/events.c: Mix tweakings
+
+2003-01-23  xfce
+
+	* COPYING, INSTALL, autogen.sh, config.guess, config.sub, depcomp,
+	install-sh, missing, mkinstalldirs: Update auto* stuff
+
+2003-01-23  xfce
+
+	* configure.in: Use AM_DISABLE_STATIC instead of AC_DISABLE_STATIC
+
+2003-01-23  xfce
+
+	* configure.in, mcs-plugin/xfwm4_plugin.c, po/fr.gmo: Replace
+	AC_PROG_LIBTOOL with AM_PROG_LIBTOOL Remove gtk_set_locale() from
+	plugin init.
+
+2003-01-22  xfce
+
+	* Makefile.in, configure, configure.in, po/fr.po, po/xfwm4.pot:
+	Small stuff
+
+2003-01-22  xfce
+
+	* ChangeLog, Makefile.am, Makefile.in, aclocal.m4, autogen.sh,
+	config.h.in, configure, configure.in, mkinstalldirs,
+	common/Makefile.in, common/my_intl.h, defaults/Makefile.in,
+	mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	mcs-plugin/xfwm4_plugin.c, po/ChangeLog, po/Makefile.in.in,
+	po/POTFILES.in, po/fr.gmo, po/fr.po, po/po2tbl.sed.in,
+	po/xfwm4.pot, src/Makefile.am, src/Makefile.in, src/main.c,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microcurve/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	themes/tux/Makefile.in, themes/variation/Makefile.in,
+	themes/xfce/Makefile.in: Update autogen.sh script, Add
+	internationalization support Add french locale Add dependency on
+	libxfcegui4 v .14 Other stuff I don't remember :)
+
+2003-01-22  xfce
+
+	* src/menu.c: Fix a typo.
+
+2003-01-21  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in, my_intl.h,
+	common/Makefile.am, common/Makefile.in, common/my_intl.h,
+	mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/Makefile.am,
+	src/Makefile.in, src/tabwin.c: [no log message]
+
+2003-01-21  xfce
+
+	* src/: client.c, client.h, events.c: bug fixes
+
+2003-01-21  xfce
+
+	* my_intl.h, mcs-plugin/xfwm4_plugin.c, src/client.c, src/events.c,
+	src/hints.c, src/main.c, src/menu.c, src/settings.c: Prepare i18n
+
+2003-01-20  xfce
+
+	* themes/microcurve/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-active.xpm, close-inactive.xpm, close-pressed.xpm,
+	hide-active.xpm, hide-inactive.xpm, hide-pressed.xpm,
+	left-active.xpm, left-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, maximize-pressed.xpm, menu-active.xpm,
+	menu-inactive.xpm, menu-pressed.xpm, right-active.xpm,
+	right-inactive.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, themerc, title-1-active.xpm,
+	title-1-inactive.xpm, title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm, title-5-active.xpm, title-5-inactive.xpm,
+	top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Update microcurve theme
+
+2003-01-20  xfce
+
+	* src/: settings.c, workspaces.c: Small improvements in workspace
+	init
+
+2003-01-20  xfce
+
+	* src/: client.c, client.h, events.c: Fix an issue with old gnome
+	hints
+
+2003-01-20  xfce
+
+	* src/settings.c, themes/microcurve/bottom-left-active.xpm,
+	themes/microcurve/bottom-left-inactive.xpm,
+	themes/microcurve/bottom-right-active.xpm,
+	themes/microcurve/bottom-right-inactive.xpm: Avoid forcing number
+	of desktops if already set...
+
+2003-01-18  xfce
+
+	* configure, configure.in, xfwm4.spec.in, src/client.c,
+	themes/Makefile.am, themes/Makefile.in,
+	themes/microcurve/Makefile.am, themes/microcurve/Makefile.in,
+	themes/microcurve/README, themes/microcurve/bottom-active.xpm,
+	themes/microcurve/bottom-inactive.xpm,
+	themes/microcurve/bottom-left-active.xpm,
+	themes/microcurve/bottom-left-inactive.xpm,
+	themes/microcurve/bottom-right-active.xpm,
+	themes/microcurve/bottom-right-inactive.xpm,
+	themes/microcurve/close-active.xpm,
+	themes/microcurve/close-inactive.xpm,
+	themes/microcurve/close-pressed.xpm,
+	themes/microcurve/hide-active.xpm,
+	themes/microcurve/hide-inactive.xpm,
+	themes/microcurve/hide-pressed.xpm,
+	themes/microcurve/left-active.xpm,
+	themes/microcurve/left-inactive.xpm,
+	themes/microcurve/maximize-active.xpm,
+	themes/microcurve/maximize-inactive.xpm,
+	themes/microcurve/maximize-pressed.xpm,
+	themes/microcurve/menu-active.xpm,
+	themes/microcurve/menu-inactive.xpm,
+	themes/microcurve/menu-pressed.xpm,
+	themes/microcurve/right-active.xpm,
+	themes/microcurve/right-inactive.xpm,
+	themes/microcurve/shade-active.xpm,
+	themes/microcurve/shade-inactive.xpm,
+	themes/microcurve/shade-pressed.xpm,
+	themes/microcurve/stick-active.xpm,
+	themes/microcurve/stick-inactive.xpm,
+	themes/microcurve/stick-pressed.xpm, themes/microcurve/themerc,
+	themes/microcurve/title-1-active.xpm,
+	themes/microcurve/title-1-inactive.xpm,
+	themes/microcurve/title-2-active.xpm,
+	themes/microcurve/title-2-inactive.xpm,
+	themes/microcurve/title-3-active.xpm,
+	themes/microcurve/title-3-inactive.xpm,
+	themes/microcurve/title-4-active.xpm,
+	themes/microcurve/title-4-inactive.xpm,
+	themes/microcurve/title-5-active.xpm,
+	themes/microcurve/title-5-inactive.xpm,
+	themes/microcurve/top-left-active.xpm,
+	themes/microcurve/top-left-inactive.xpm,
+	themes/microcurve/top-right-active.xpm,
+	themes/microcurve/top-right-inactive.xpm: * Exclude spalshscreen
+	and desktop type windows from window cycling.  * Add new theme
+	microcurve.
+
+2003-01-18  xfce
+
+	* themes/atlanta2/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-active.xpm, close-inactive.xpm, close-pressed.xpm,
+	hide-active.xpm, hide-inactive.xpm, hide-pressed.xpm,
+	left-active.xpm, left-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, maximize-pressed.xpm, menu-active.xpm,
+	menu-inactive.xpm, menu-pressed.xpm, right-active.xpm,
+	right-inactive.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2003-01-18  xfce
+
+	* Makefile.in, aclocal.m4, configure, defaults/Makefile.in,
+	mcs-plugin/Makefile.in, src/Makefile.in, themes/Makefile.in,
+	themes/adept/Makefile.in, themes/agua/Makefile.in,
+	themes/atlanta/Makefile.in, themes/atlanta2/Makefile.in,
+	themes/b5/Makefile.in, themes/b6/Makefile.in,
+	themes/bbs/Makefile.in, themes/beastie/Makefile.in,
+	themes/biz/Makefile.in, themes/coldsteel/Makefile.in,
+	themes/coolclean/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/curve/Makefile.in,
+	themes/default.keys/Makefile.in, themes/eazel-blue/Makefile.in,
+	themes/elberg/Makefile.in, themes/exocet/Makefile.in,
+	themes/fbx/Makefile.in, themes/g2/Makefile.in,
+	themes/gaudy/Makefile.in, themes/gnububble/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/iceg/Makefile.in, themes/kde/Makefile.in,
+	themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
+	themes/koynacity/Makefile.in, themes/linea/Makefile.in,
+	themes/meenee/Makefile.in, themes/metabox/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	themes/tux/Makefile.in, themes/variation/Makefile.in,
+	themes/xfce/Makefile.in: Update to autoconf-2.57, automake-1.7.2
+	and libtool-1.4.3
+
+2003-01-18  xfce
+
+	* defaults/defaults.in, src/client.c, src/client.h, src/events.c,
+	src/frame.c, src/inline-tabwin-icon.h, src/main.c, src/main.h,
+	src/parserc.c, src/pixmap.c, src/settings.c, src/settings.h,
+	src/tabwin.c, src/tabwin.h, src/workspaces.c: Huge code cleanup,
+	various optimizations and reorg.
+
+2003-01-17  xfce
+
+	* themes/atlanta2/: stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: [no log message]
+
+2003-01-16  xfce
+
+	* themes/atlanta2/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, themerc, title-1-active.xpm,
+	title-1-inactive.xpm, title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm, title-5-active.xpm, title-5-inactive.xpm,
+	top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2003-01-16  xfce
+
+	* mcs-plugin/xfwm4_plugin.c: Change settings save/load to
+	$HOME/.xfce4/settings/
+
+2003-01-16  xfce
+
+	* themes/atlanta2/right-active.xpm,
+	themes/atlanta2/right-inactive.xpm, themes/atlanta2/themerc,
+	themes/atlanta2/title-2-active.xpm,
+	themes/atlanta2/title-2-inactive.xpm,
+	themes/atlanta2/title-3-active.xpm,
+	themes/atlanta2/title-3-inactive.xpm,
+	themes/atlanta2/title-4-active.xpm,
+	themes/atlanta2/title-4-inactive.xpm, src/client.c, src/client.h:
+	[no log message]
+
+2003-01-16  xfce
+
+	* src/client.c: Constraint client pos only for NORMAL, DIALOG and
+	MODAL_DIALOG windows
+
+2003-01-14  xfce
+
+	* src/: client.c, tabwin.c: Fix a small leak
+
+2003-01-14  xfce
+
+	* AUTHORS, ChangeLog: Update ChangeLog and credits in AUTHORS
 
 2003-01-14  xfce
 
