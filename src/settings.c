@@ -1122,7 +1122,6 @@ loadSettings (ScreenInfo *screen_info)
         {
             workspace_count = 0;
         }
-        g_message (_("%s: Workspace count not set, using rc value: %i"), g_get_prgname (), workspace_count);
         workspaceSetCount (screen_info, workspace_count);
     }
 
