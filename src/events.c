@@ -1139,6 +1139,32 @@ handleFocusIn (XFocusChangeEvent * ev)
     Client *c;
 
     TRACE ("entering handleFocusIn");
+    TRACE ("handleFocusOut (0x%lx) mode = %s",
+                ev->window,
+                (ev->mode == NotifyNormal) ?
+                "NotifyNormal" :
+                (ev->mode == NotifyWhileGrabbed) ?
+                "NotifyWhileGrabbed" :
+                "(unknown)");
+    TRACE ("handleFocusOut (0x%lx) detail = %s",
+                ev->window,
+                (ev->detail == NotifyAncestor) ?
+                "NotifyAncestor" :
+                (ev->detail == NotifyVirtual) ?
+                "NotifyVirtual" :
+                (ev->detail == NotifyInferior) ?
+                "NotifyInferior" :
+                (ev->detail == NotifyNonlinear) ?
+                "NotifyNonlinear" :
+                (ev->detail == NotifyNonlinearVirtual) ?
+                "NotifyNonlinearVirtual" :
+                (ev->detail == NotifyPointer) ?
+                "NotifyPointer" :
+                (ev->detail == NotifyPointerRoot) ?
+                "NotifyPointerRoot" :
+                (ev->detail == NotifyDetailNone) ?
+                "NotifyDetailNone" :
+                "(unknown)");
 
     if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
         || (ev->detail > NotifyNonlinearVirtual))
@@ -1165,6 +1191,32 @@ handleFocusOut (XFocusChangeEvent * ev)
 {
     Client *c;
     TRACE ("entering handleFocusOut");
+    TRACE ("handleFocusOut (0x%lx) mode = %s",
+                ev->window,
+                (ev->mode == NotifyNormal) ?
+                "NotifyNormal" :
+                (ev->mode == NotifyWhileGrabbed) ?
+                "NotifyWhileGrabbed" :
+                "(unknown)");
+    TRACE ("handleFocusOut (0x%lx) detail = %s",
+                ev->window,
+                (ev->detail == NotifyAncestor) ?
+                "NotifyAncestor" :
+                (ev->detail == NotifyVirtual) ?
+                "NotifyVirtual" :
+                (ev->detail == NotifyInferior) ?
+                "NotifyInferior" :
+                (ev->detail == NotifyNonlinear) ?
+                "NotifyNonlinear" :
+                (ev->detail == NotifyNonlinearVirtual) ?
+                "NotifyNonlinearVirtual" :
+                (ev->detail == NotifyPointer) ?
+                "NotifyPointer" :
+                (ev->detail == NotifyPointerRoot) ?
+                "NotifyPointerRoot" :
+                (ev->detail == NotifyDetailNone) ?
+                "NotifyDetailNone" :
+                "(unknown)");
 
     if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
         || (ev->detail != NotifyNonlinear))
