@@ -240,7 +240,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
     Client *c = NULL;
     Client *c2 = NULL;
 
-    TRACE ("entering clientAtPos");
+    TRACE ("entering clientAtPosition");
 
     for (index = g_list_last (screen_info->windows_stack); index; index = g_list_previous (index))
     {
@@ -252,8 +252,8 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
                 && (c2 != exclude))
             {
                 c = c2;
+                break;
             }
-            break;
         }
     }
 
