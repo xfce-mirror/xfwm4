@@ -93,11 +93,17 @@ monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
 
+# .desktop files
 desktopdir = $(datadir)/applications
-desktop_DATA =								\
-	xfce-wm-settings.desktop					\
-	xfce-workspaces-settings.desktop
+desktop_in_files =							\
+	xfce-wm-settings.desktop.in					\
+	xfce-workspaces-settings.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST =								\
-	$(desktop_DATA)							\
+	$(desktop_in_files)						\
 	$(noinst_DATA)
+
+DISTCLEANFILES =							\
+	$(desktop_DATA)

@@ -1,11 +1,22 @@
 @SET_MAKE@
 
-EXTRA_DIST = example.gtkrc-2.0 xfwm4.spec COMPOSITOR
+EXTRA_DIST =								\
+	example.gtkrc-2.0						\
+	intltool-extract.in						\
+	intltool-merge.in						\
+	intltool-update.in						\
+	COMPOSITOR
+
+DISTCLEANFILES =							\
+	intltool-extract						\
+	intltool-merge							\
+	intltool-update							\
+	xfwm4.spec
 
 SUBDIRS = po doc icons src mcs-plugin defaults themes
 
 distclean-local:
-	rm -rf xfwm4.spec *.cache
+	rm -rf *.cache
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
@@ -14,10 +25,10 @@ rpm: dist
 html: Makefile
 	make -C doc html
 
-ACLOCAL_AMFLAGS = -I m4
-
 dist-bz2: dist
-	zcat $(PACKAGE)-$(VERSION).tar.gz | bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE)-$(VERSION).tar.gz | \
+	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
 
 distcheck-bz2: distcheck
-	zcat $(PACKAGE)-$(VERSION).tar.gz | bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE)-$(VERSION).tar.gz | \
+	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2

@@ -734,3 +734,19 @@ msgstr "יישום לא ידוע."
 
 #~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 #~ msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "הגדרות מנהל החלונות Xfce 4"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "הגדרות מנהל החלונות"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "הגדרות סביבות העבודה Xfce 4"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "הגדרות סביבות העבודה"

@@ -697,3 +697,19 @@ msgstr "Lülitu ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Tundmatu rakendus!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 aknahalduri seaded"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "Aknahalduri seaded"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 töölaua seaded"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "Töölaua seaded"

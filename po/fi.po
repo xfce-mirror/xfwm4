@@ -694,3 +694,19 @@ msgstr "Vaihda..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Tuntematon sovellus!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 Ikkunamanagerin asetukset"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "Ikkunamanagerin asetukset"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 Työtilojen asetukset"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "Työtilojen asetukset"

@@ -827,3 +827,19 @@ msgstr "不明的應用程式！"
 
 #~ msgid "%s: Workspace count not set, using rc value: %i"
 #~ msgstr "%s: 未設定工作區數量，使用 rc 文件值： %i"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 視窗管理程式設定"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "設定視窗管理程式"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 工作區設定"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "設定工作區"

@@ -27,6 +27,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 dnl check for basic programs
 AC_PROG_CC
 AC_PROG_INSTALL
+AC_PROG_INTLTOOL
 AC_PROG_LIBTOOL
 
 dnl Check C Compiler Characteristics

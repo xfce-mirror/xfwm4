@@ -701,3 +701,19 @@ msgstr "작업공간 전환"
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "무슨 프로그램이죠!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 창관리자 설정"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "창관리자 설정"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 작업공간 설정"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "작업공간 설정"

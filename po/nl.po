@@ -735,3 +735,19 @@ msgstr "Onbekend programma!"
 
 #~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 #~ msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Instellingen Xfce 4 Window Manager"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "Instellingen voor de window manager"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "Instellingen voor virtuele bureaubladen"

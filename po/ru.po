@@ -703,3 +703,19 @@ msgstr "Переключиться на ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Неизвестное приложение!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Настройки оконного менеджера Xfce 4"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "Настройки оконного менеджера"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Настройки рабочих мест Xfce 4"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "Настройки рабочих мест"

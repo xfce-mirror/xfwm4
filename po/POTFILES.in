@@ -64,3 +64,6 @@ src/wireframe.c
 src/wireframe.h
 src/workspaces.c
 src/workspaces.h
+# files added by intltool-prepare
+mcs-plugin/xfce-wm-settings.desktop.in
+mcs-plugin/xfce-workspaces-settings.desktop.in
