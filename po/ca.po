@@ -46,7 +46,7 @@ msgstr "Inferior:"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
-msgstr "Títul"
+msgstr "Títol"
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Menu"
@@ -123,7 +123,7 @@ msgstr "Tipus de lletra del títol"
 
 #: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
-msgstr "Alineació del títul"
+msgstr "Alineació del títol"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
