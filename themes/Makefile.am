@@ -39,4 +39,5 @@ slick \
 slimline \
 tabs \
 trench \
+variation \
 xfce

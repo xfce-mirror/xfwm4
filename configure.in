@@ -81,5 +81,6 @@ themes/slick/Makefile
 themes/slimline/Makefile
 themes/tabs/Makefile
 themes/trench/Makefile
+themes/variation/Makefile
 themes/xfce/Makefile
 ])
