@@ -1,6 +1,8 @@
 full_width_title=true
 button_offset=2
 button_spacing=2
+button_layout=O|HMC
 title_vertical_offset=2
+title_alignment=left
 active_border_color=#000000
 inactive_border_color=#000000
