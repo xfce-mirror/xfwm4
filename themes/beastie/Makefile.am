@@ -1,6 +1,6 @@
 
 themedir = $(pkgdatadir)/themes/beastie
-theme_DATA = \
+theme_DATA = README\
 	bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \

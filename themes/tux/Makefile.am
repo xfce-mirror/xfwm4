@@ -1,5 +1,5 @@
 themedir = $(pkgdatadir)/themes/tux
-theme_DATA = \
+theme_DATA = README \
 bottom-active.xpm \
 bottom-inactive.xpm \
 bottom-left-active.xpm \
@@ -38,6 +38,7 @@ title-4-active.xpm \
 title-4-inactive.xpm \
 title-5-active.xpm \
 title-5-inactive.xpm \
+themerc \
 top-left-active.xpm \
 top-left-inactive.xpm \
 top-right-active.xpm \
