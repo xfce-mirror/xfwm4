@@ -2213,7 +2213,7 @@ create_channel (McsPlugin * mcs_plugin)
     }
     else
     {
-	wrap_workspaces = TRUE;
+	wrap_workspaces = FALSE;
 	mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces",
 			     CHANNEL, wrap_workspaces ? 1 : 0);
     }
