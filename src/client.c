@@ -3272,7 +3272,6 @@ clientUnframe (Client * c, gboolean remap)
     {
         setWMState (dpy, c->window, WithdrawnState);
     }
-    XSync (dpy, 0);
     XDestroyWindow (dpy, c->frame);
     clientRemoveFromList (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
