@@ -75,7 +75,6 @@
 extern gboolean xfwm4_quit;
 extern gboolean xfwm4_reload;
 
-
 static guint raise_timeout = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
@@ -246,6 +245,7 @@ raise_cb (gpointer data)
 
     clear_timeout ();
     c = clientGetFocus ();
+    
     if (c)
     {
         clientRaise (c);
@@ -806,6 +806,7 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 static void
 handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 {
+    static Time last_button_time = (Time) 0;
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
     Window win;
@@ -813,6 +814,14 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 
     TRACE ("entering handleButtonPress");
 
+    /* Avoid treating the same event twice */
+    if (last_button_time > ev->time)
+    {
+        TRACE ("ignoring ButtonPress event because it has been already handled");
+        return;
+    }
+    last_button_time = ev->time;
+    
     /* Clear timeout */
     clear_timeout ();
 
@@ -1510,7 +1519,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             clientPassGrabButton1 (c);
         }
         if ((screen_info->params->raise_on_focus) && 
-            !(screen_info->params->click_to_focus))
+            !(screen_info->params->raise_on_click))
         {
             reset_timeout (screen_info);
         }
