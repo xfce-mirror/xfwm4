@@ -773,7 +773,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
-        frameDraw (c, FALSE, TRUE);
+        frameDraw (c, (flags & CFG_FORCE_REDRAW), TRUE);
     }
     
     if ((flags & CFG_NOTIFY) ||

@@ -1804,7 +1804,6 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         }
         add_damage (cw->screen_info, damage);
         cw->screen_info->clipChanged = clip_changed;
-        cw->screen_info->clipChanged = TRUE;
 #if 0    
         repair_screen (cw->screen_info);
 #endif
