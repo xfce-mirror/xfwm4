@@ -1725,15 +1725,9 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
             clientClose (c);
             break;
         case MENU_OP_ABOVE:
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
-            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
-            frameDraw (c, FALSE, FALSE);
-            break;
         case MENU_OP_NORMAL:
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_ABOVE);
-            clientSetLayer (c, c->initial_layer);
-            frameDraw (c, FALSE, FALSE);
-            break;
+            clientToggleAbove (c);
+            /* Fall thru */
         default:
             frameDraw (c, FALSE, FALSE);
             break;
@@ -1829,10 +1823,20 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
             ops |= MENU_OP_NORMAL;
+            if (clientIsTransientOrModal (c) || 
+                CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+            {
+                insensitive |= MENU_OP_NORMAL;
+            }
         }
         else
         {
             ops |= MENU_OP_ABOVE;
+            if (clientIsTransientOrModal (c) || 
+                CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+            {
+                insensitive |= MENU_OP_ABOVE;
+            }
         }
 
         if (clientIsTransientOrModal (c)

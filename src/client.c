@@ -106,9 +106,9 @@ static GList *windows_stack = NULL;
 static Client *client_focus = NULL;
 
 /* Forward decl */
-static void clientToggleFullscreen (Client * c);
-static void clientToggleAbove (Client * c);
-static void clientToggleBelow (Client * c);
+static void clientUpdateFullscreenState (Client * c);
+static void clientUpdateAboveState (Client * c);
+static void clientUpdateBelowState (Client * c);
 static void clientGetNetState (Client * c);
 static void clientGetInitialNetWmDesktop (Client * c);
 static void clientSetNetClientList (Atom a, GList * list);
@@ -761,9 +761,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_fullscreen)
         || (second == net_wm_state_fullscreen))
     {
-        if (!clientIsTransientOrModal (c)
-            && !CLIENT_FLAG_TEST_ALL (c,
-                CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
+        if (!clientIsTransientOrModal (c))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
@@ -779,15 +777,13 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             {
                 CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_FULLSCREEN);
             }
-            clientToggleFullscreen (c);
+            clientUpdateFullscreenState (c);
         }
     }
 
     if ((first == net_wm_state_above) || (second == net_wm_state_above))
     {
-        if (!clientIsTransientOrModal (c)
-            && !CLIENT_FLAG_TEST_ALL (c,
-                CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
+        if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
@@ -803,15 +799,13 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             {
                 CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_ABOVE);
             }
-            clientToggleAbove (c);
+            clientUpdateAboveState (c);
         }
     }
 
     if ((first == net_wm_state_below) || (second == net_wm_state_below))
     {
-        if (!clientIsTransientOrModal (c)
-            && !CLIENT_FLAG_TEST_ALL (c,
-                CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_ABOVE))
+        if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
@@ -827,7 +821,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             {
                 CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_BELOW);
             }
-            clientToggleBelow (c);
+            clientUpdateBelowState (c);
         }
     }
 
@@ -2915,31 +2909,28 @@ clientApplyInitialState (Client * c)
             clientToggleMaximized (c, mode);
         }
     }
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_FULLSCREEN,
-            CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
     {
         if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: fullscreen");
-            clientToggleFullscreen (c);
+            clientUpdateFullscreenState (c);
         }
     }
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_ABOVE,
-            CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
         if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: above");
-            clientToggleAbove (c);
+            clientUpdateAboveState (c);
         }
     }
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_BELOW,
-            CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
+    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
         if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: below");
-            clientToggleBelow (c);
+            clientUpdateBelowState (c);
         }
     }
     if (CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_STICKY | CLIENT_FLAG_HAS_STICK))
@@ -3887,8 +3878,7 @@ clientClose (Client * c)
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_DELETE))
     {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window,
-            NoEventMask);
+        sendClientMessage (c->window, wm_protocols, wm_delete_window);
     }
     else
     {
@@ -4356,14 +4346,14 @@ clientToggleSticky (Client * c, gboolean include_transients)
 }
 
 static void
-clientToggleFullscreen (Client * c)
+clientUpdateFullscreenState (Client * c)
 {
     XWindowChanges wc;
     int layer;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleFullscreen");
-    TRACE ("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("entering clientUpdateFullscreenState");
+    TRACE ("Update fullscreen state for client \"%s\" (0x%lx)", c->name, c->window);
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
     {
@@ -4407,14 +4397,27 @@ clientToggleFullscreen (Client * c)
     clientSetLayer (c, layer);
 }
 
+void clientToggleFullscreen (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientToggleFullscreen");
+    TRACE ("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (!clientIsTransientOrModal (c))
+    {
+        CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_FULLSCREEN);
+        clientUpdateAboveState (c);
+    }
+}
+
 static void
-clientToggleAbove (Client * c)
+clientUpdateAboveState (Client * c)
 {
     int layer;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleAbove");
-    TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("entering clientUpdateAboveState");
+    TRACE ("Update above state for client \"%s\" (0x%lx)", c->name, c->window);
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
     {
@@ -4428,16 +4431,29 @@ clientToggleAbove (Client * c)
     clientSetLayer (c, layer);
 }
 
+void clientToggleAbove (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientToggleAbove");
+    TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+    {
+        CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_ABOVE);
+        clientUpdateAboveState (c);
+    }
+}
+
 static void
-clientToggleBelow (Client * c)
+clientUpdateBelowState (Client * c)
 {
     int layer;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleBelow");
-    TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("entering clientUpdateBelowState");
+    TRACE ("Update below state for client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+    if (CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_BELOW))
     {
         layer = WIN_LAYER_BELOW;
     }
@@ -4447,6 +4463,19 @@ clientToggleBelow (Client * c)
     }
     clientSetNetState (c);
     clientSetLayer (c, layer);
+}
+
+void clientToggleBelow (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientToggleBelow");
+    TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+    {
+        CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_BELOW);
+        clientUpdateAboveState (c);
+    }
 }
 
 inline void
@@ -4718,6 +4747,10 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
+        {
+            sendClientMessage (c->window, wm_protocols, wm_takefocus);
+        }
         XFlush (dpy);
         if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
