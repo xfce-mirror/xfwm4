@@ -46,7 +46,9 @@ typedef enum
     MENU_OP_WORKSPACES = 1 << 11,
     MENU_OP_QUIT = 1 << 12,
     MENU_OP_RESTART = 1 << 13,
-    MENU_OP_OTHER = 1 << 14
+    MENU_OP_OTHER = 1 << 14,
+    MENU_OP_ABOVE = 1 << 15,
+    MENU_OP_NORMAL = 1 << 16
 }
 MenuOp;
 

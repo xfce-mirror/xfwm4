@@ -48,6 +48,8 @@ static MenuItem menuitems[] = {
     {MENU_OP_UNSHADE, "gtk-goto-bottom", N_("Un_shade")},
     {MENU_OP_STICK, "gtk-add", N_("S_tick")},
     {MENU_OP_UNSTICK, "gtk-remove", N_("Uns_tick")},
+    {MENU_OP_ABOVE, NULL, N_("Always on top")},
+    {MENU_OP_NORMAL, "gtk-apply", N_("Always on top")},
     {MENU_OP_WORKSPACES, NULL, N_("Send to...")},
     {0, NULL, NULL},
     {MENU_OP_DELETE, "gtk-close", N_("_Close")},
