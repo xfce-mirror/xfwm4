@@ -498,8 +498,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        wc.x += frameLeft(c);
-        wc.y += frameTop(c);
+        clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
         clientConfigure(c, &wc, ev->value_mask);
     }
     else

@@ -772,12 +772,12 @@ void clientUngrabKeys(Client * c)
     ungrabKeys(dpy, c->window);
 }
 
-void clientGravitate(Client * c, int mode)
+void clientCoordGravitate(Client * c, int mode, int *x, int *y)
 {
     int gravity, dx = 0, dy = 0;
 
     g_return_if_fail(c != NULL);
-    DBG("entering clientGravitate\n");
+    DBG("entering clientCoordGravitate\n");
 
     gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
     switch (gravity)
@@ -818,9 +818,28 @@ void clientGravitate(Client * c, int mode)
             dx = (c->border_width * 2) - frameRight(c);
             dy = (c->border_width * 2) - frameBottom(c);
             break;
+	default:
+	    dx = 0;
+	    dy = 0;
+	    break;
     }
-    c->x = c->x + (dx * mode);
-    c->y = c->y + (dy * mode);
+    *x = *x + (dx * mode);
+    *y = *y + (dy * mode);
+}
+
+void clientGravitate(Client * c, int mode)
+{
+    int gravity, dx = 0, dy = 0;
+    int x, y;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientGravitate\n");
+
+    x = c->x;
+    y = c->y;
+    clientCoordGravitate (c, mode, &x, &y);
+    c->x = x;
+    c->y = y;
 }
 
 static void clientAddToList(Client * c)
