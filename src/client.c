@@ -2729,13 +2729,13 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             if(snap_to_border)
             {
-                if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < snap_width)
-                {
-                    c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
-                }
                 if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < snap_width)
                 {
                     c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
+                }
+                if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < snap_width)
+                {
+                    c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
                 }
             }
         }
@@ -2753,13 +2753,13 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             if(snap_to_border)
             {
-                if(abs(frameY(c) - top - MyDisplayY(cx, cy)) < snap_width)
-                {
-                    c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
-                }
                 if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
                 {
                     c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
+                }
+                if(abs(frameY(c) - top - MyDisplayY(cx, cy)) < snap_width)
+                {
+                    c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
                 }
             }
             else
