@@ -253,7 +253,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 clientToggleShaded(c);
                 break;
             case KEY_STICK_WINDOW:
-	        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICKY))
+	        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
 		{
                     clientToggleSticky(c, TRUE);
                 }
@@ -931,7 +931,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/stick event\n", c->name, c->window);
-	    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICKY))
+	    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
 	    {
         	if(ev->data.l[1] == WIN_STATE_STICKY)
         	{
@@ -956,7 +956,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
             DBG("client \"%s\" (%#lx) has received a net_wm_desktop event\n", c->name, c->window);
-            if((ev->data.l[0] == (int)0xFFFFFFFF) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICKY))
+            if((ev->data.l[0] == (int)0xFFFFFFFF) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 clientStick(c, TRUE);
             }
