@@ -78,9 +78,6 @@ raise_on_focus=false
 # raise_delay=number (milliseconds)
 raise_delay=250
 
-# window_placement=center_mouse/center_root
-window_placement=center_mouse
-
 # snap_to_border=true/false
 snap_to_border=true
 

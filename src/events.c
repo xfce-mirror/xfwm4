@@ -1030,6 +1030,9 @@ void initGtkCallbacks(void)
     g_signal_connect (GTK_OBJECT(getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC(client_event_cb), (gpointer) NULL);
 
     settings = gtk_settings_get_default();
-    g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (set_reload), NULL);
-    g_signal_connect (settings, "notify::gtk-font-name", G_CALLBACK (set_reload), NULL);
+    if (settings)
+    {
+	g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (set_reload), NULL);
+	g_signal_connect (settings, "notify::gtk-font-name", G_CALLBACK (set_reload), NULL);
+    }
 }

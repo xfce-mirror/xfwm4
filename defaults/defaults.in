@@ -12,7 +12,6 @@ click_to_focus=true
 focus_new=true
 raise_on_focus=false
 raise_delay=250
-window_placement=center_mouse
 snap_to_border=true
 snap_width=10
 workspace_count=4
