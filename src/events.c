@@ -336,7 +336,7 @@ toggle_show_desktop (ScreenInfo *screen_info)
 
     if (!getHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &visible))
     {
-        visible = TRUE;
+        visible = FALSE;
     }
     
     sendRootMessage (screen_info, NET_SHOWING_DESKTOP, ( visible ) ? FALSE : TRUE, 
