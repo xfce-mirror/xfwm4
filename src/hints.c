@@ -404,19 +404,35 @@ int get_cardinal_list (Display *dpy, Window w, Atom xatom, unsigned long **cardi
     return True;
 }
 
-void set_net_workarea (Display * dpy, Window w, CARD32 *margins)
+void set_net_workarea (Display * dpy, Window w, int nb_workspaces, CARD32 *margins)
 {
-    unsigned long data[4];
-    data[0] = margins[MARGIN_LEFT];
-    data[1] = margins[MARGIN_TOP];
-    data[2] = XDisplayWidth(dpy, screen) - (margins[MARGIN_LEFT] + margins[MARGIN_RIGHT]);
-    data[3] = XDisplayHeight(dpy, screen) - (margins[MARGIN_TOP] + margins[MARGIN_BOTTOM]);
-    XChangeProperty (dpy, w, net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
+    unsigned long *data, *ptr;
+    int i, j;
+    
+    DBG("entering set_net_workarea\n");
+    j = (nb_workspaces ? nb_workspaces : 1);
+    data = (unsigned long *) malloc (sizeof (unsigned long) * j * 4);
+    if (!data)
+    {
+        gdk_beep();
+        return;
+    }
+    ptr = data;
+    for (i = 0; i < j; i++)
+    {
+	*ptr++ = margins[MARGIN_LEFT];
+	*ptr++ = margins[MARGIN_TOP];
+	*ptr++ = XDisplayWidth(dpy, screen) - (margins[MARGIN_LEFT] + margins[MARGIN_RIGHT]);
+	*ptr++ = XDisplayHeight(dpy, screen) - (margins[MARGIN_TOP] + margins[MARGIN_BOTTOM]);
+    }
+    XChangeProperty (dpy, w, net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, j * 4);
+    free (data);
 }
 
 void init_net_desktop_params (Display * dpy, Window w, int workspace)
 {
     unsigned long data[2];
+    DBG("entering init_net_desktop_params\n");
     data[0] = XDisplayWidth(dpy, screen);
     data[1] = XDisplayHeight(dpy, screen);
     XChangeProperty (dpy, w, net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
@@ -431,6 +447,8 @@ void init_net_desktop_params (Display * dpy, Window w, int workspace)
 void
 set_utf8_string_hint (Display *dpy, Window w, Atom atom, const char *val)
 {
+    DBG("entering set_utf8_string_hint\n");
+
     XChangeProperty (dpy, w, atom, utf8_string,  8, PropModeReplace, (unsigned char *) val, strlen (val) + 1);
 }
 

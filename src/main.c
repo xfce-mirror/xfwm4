@@ -174,6 +174,7 @@ void initialize(int argc, char **argv)
     init_net_desktop_params (dpy, root, workspace);
     initSettings();
     loadSettings();
+    set_net_workarea (dpy, root, workspace_count, margins);
     XSetInputFocus(dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks ();
     clientFrameAll();

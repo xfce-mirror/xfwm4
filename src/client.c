@@ -600,7 +600,7 @@ static void clientWindowType (Client *c)
     }
     if ((old_type != c->type) || (layer != c->win_layer))
     {
-        DBG("setting state and layer %i\n", layer);
+        DBG("setting layer %i\n", layer);
 	clientSetNetState (c);
 	clientSetLayer(c, layer);
     }

@@ -144,7 +144,7 @@ int getNetHint(Display *, Window, Atom, long *);
 void set_net_supported_hint (Display *, Window, Window);
 int get_atom_list (Display *, Window, Atom, Atom **, int *);
 int get_cardinal_list (Display *, Window, Atom, unsigned long **, int *);
-void set_net_workarea (Display *, Window, CARD32 *);
+void set_net_workarea (Display *, Window, int, CARD32 *);
 void init_net_desktop_params (Display *, Window, int);
 void set_utf8_string_hint (Display *, Window, Atom, const char *);
 void getTransientFor(Display * dpy, Window w, Window *transient_for);

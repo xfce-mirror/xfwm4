@@ -157,6 +157,7 @@ void workspaceSetCount(int count)
     {
         workspaceSwitch(count - 1, NULL);
     }
+    set_net_workarea (dpy, root, workspace_count, margins);
 }
 
 void workspaceUpdateArea(CARD32 *margins, CARD32 *gnome_margins)
@@ -188,6 +189,6 @@ void workspaceUpdateArea(CARD32 *margins, CARD32 *gnome_margins)
     if ((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
     {
         DBG("Margins have changed, updating net_workarea\n");
-        set_net_workarea (dpy, root, margins);
+        set_net_workarea (dpy, root, workspace_count, margins);
     }
 }
