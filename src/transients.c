@@ -101,15 +101,15 @@ clientIsTransientFor (Client * c1, Client * c2)
 
     TRACE ("entering clientIsTransientFor");
 
-    if (c1->transient_for)
+    if ((c1->transient_for) && (c1->serial >= c2->serial))
     {
 	if (c1->transient_for != root)
 	{
-	    return (c1->transient_for == c2->window) && (c1->serial >= c2->serial);
+	    return (c1->transient_for == c2->window);
 	}
 	else
 	{
-	    return (clientSameGroup (c1, c2) && (c1->serial >= c2->serial));
+	    return (clientSameGroup (c1, c2));
 	}
     }
     return FALSE;
@@ -123,10 +123,9 @@ clientIsModalFor (Client * c1, Client * c2)
 
     TRACE ("entering clientIsModalFor");
 
-    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL))
+    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->serial >= c2->serial))
     {
-	return ((clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2)) 
-	        && (c1->serial >= c2->serial));
+	return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
     }
     return FALSE;
 }
