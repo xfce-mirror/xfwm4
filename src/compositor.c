@@ -1958,8 +1958,8 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     if (cw)
     {
         /* 
-           The compositor window is already know, just update the client if
-           that is meaningfull
+           The compositor window is already known, just update the client if
+           that is meaningfull...
          */
         if (c)
         {
