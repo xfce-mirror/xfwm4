@@ -241,21 +241,33 @@ theme_DATA = \
 	stick-toggled-active.xpm					\
 	stick-toggled-inactive.xpm					\
 	stick-toggled-pressed.xpm					\
+	title-1-active.png						\
 	title-1-active.xpm						\
+	title-1-inactive.png						\
 	title-1-inactive.xpm						\
+	title-2-active.png						\
 	title-2-active.xpm						\
+	title-2-inactive.png						\
 	title-2-inactive.xpm						\
 	title-3-active.png						\
 	title-3-active.xpm						\
 	title-3-inactive.png						\
 	title-3-inactive.xpm						\
+	title-4-active.png						\
 	title-4-active.xpm						\
+	title-4-inactive.png						\
 	title-4-inactive.xpm						\
+	title-5-active.png						\
 	title-5-active.xpm						\
+	title-5-inactive.png						\
 	title-5-inactive.xpm						\
+	top-left-active.png						\
 	top-left-active.xpm						\
+	top-left-inactive.png						\
 	top-left-inactive.xpm						\
+	top-right-active.png						\
 	top-right-active.xpm						\
+	top-right-inactive.png						\
 	top-right-inactive.xpm
 
 EXTRA_DIST = $(theme_DATA)
