@@ -13,32 +13,22 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfwm4    - (c) 2003 Olivier Fourdan
- 
+        Metacity - (c) 2001 Havoc Pennington
+        libwnck  - (c) 2001 Havoc Pennington
+        xfwm4    - (c) 2004 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
-#ifndef INC_TABWIN_H
-#define INC_TABWIN_H
+#ifndef INC_ICONS_H
+#define INC_ICONS_H
 
-#include <glib.h>
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
-typedef struct _Tabwin Tabwin;
-struct _Tabwin
-{
-    GtkWidget *window;
-    GtkWidget *image;
-    GtkWidget *class;
-    GtkWidget *label;
-};
+GdkPixbuf *getAppIcon (Display *, Window, int, int);
 
-Tabwin *tabwinCreate (GdkPixbuf *, const gchar *, const gchar *);
-void tabwinSetLabel (Tabwin *, GdkPixbuf *, const gchar *, const gchar *);
-void tabwinDestroy (Tabwin *);
-
-#endif /* INC_TABWIN_H */
+#endif /* INC_ICONS_H */

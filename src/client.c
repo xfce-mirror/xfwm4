@@ -50,6 +50,7 @@
 #include "transients.h"
 #include "stacking.h"
 #include "placement.h"
+#include "icons.h"
 #include "startup_notification.h"
 
 /* Event mask definition */
@@ -3364,7 +3365,9 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 {
                     /* Redraw frame draw */
                     clientDrawOutline (passdata->c);
-                    tabwinSetLabel (passdata->tabwin, passdata->c->name);
+                    tabwinSetLabel (passdata->tabwin, 
+                                    getAppIcon (md->dpy, passdata->c->window, 32, 32), 
+                                    passdata->c->class.res_name, passdata->c->name);
                 }
                 else
                 {
@@ -3448,7 +3451,8 @@ clientCycle (Client * c, XEvent * e)
     passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)
     {
-        passdata.tabwin = tabwinCreate (passdata.c->name);
+        passdata.tabwin = tabwinCreate (getAppIcon (md->dpy, passdata.c->window, 32, 32),
+                                        passdata.c->class.res_name, passdata.c->name);
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);

@@ -3,6 +3,7 @@ bin_PROGRAMS = xfwm4
 xfwm4_SOURCES =								\
 	client.c							\
 	client.h							\
+	inline-default-icon.h						\
 	events.c							\
 	events.h							\
 	focus.c								\
@@ -12,6 +13,8 @@ xfwm4_SOURCES =								\
 	hints.c								\
 	hints.h								\
 	inline-tabwin-icon.h						\
+	icons.c		        					\
+	icons.h			        				\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -71,11 +74,16 @@ xfwm4_LDADD =								\
 xfwm4_LDFLAGS =								\
 	@LIBXPM_LDFLAGS@
 
-EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png
+EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
+        inline-default-icon.h default_icon.png
 
 noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 
 inline-tabwin-icon.h: $(srcdir)/tabwin-icon.png
 	gdk-pixbuf-csource --raw --build-list 				\
 	tabwin_icon_data $(srcdir)/tabwin-icon.png > inline-tabwin-icon.h
+
+inline-default-icon.h: $(srcdir)/default_icon.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	default_icon_data $(srcdir)/default_icon.png > inline-default-icon.h
 

@@ -613,6 +613,7 @@ loadTheme (Settings rc[])
         if (desc)
         {
             gtk_widget_modify_font (widget, desc);
+            g_free (desc);
         }
     }
 

@@ -924,12 +924,15 @@ getWindowRole (Display * dpy, Window window, char **role)
 
     if (XGetTextProperty (dpy, window, &tp, wm_window_role))
     {
-        if ((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8)
-            && (tp.nitems != 0))
+        if (tp.value)
         {
-            *role = strdup ((char *) tp.value);
+            if ((tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
+            {
+                *role = strdup ((char *) tp.value);
+                XFree (tp.value);
+                return TRUE;
+            }
             XFree (tp.value);
-            return TRUE;
         }
     }
 
@@ -1116,12 +1119,15 @@ getWindowStartupId (Display * dpy, Window window, char **startup_id)
 
     if (XGetTextProperty (dpy, window, &tp, net_startup_id))
     {
-        if ((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8)
-            && (tp.nitems != 0))
+        if (tp.value)
         {
-            *startup_id = strdup ((char *) tp.value);
+            if ((tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
+            {
+                *startup_id = g_strdup ((char *) tp.value);
+                XFree (tp.value);
+                return TRUE;
+            }
             XFree (tp.value);
-            return TRUE;
         }
     }
 

@@ -1,6 +1,9 @@
 mcs-plugin/margins.c
+mcs-plugin/margins.h
 mcs-plugin/plugin.c
+mcs-plugin/plugin.h
 mcs-plugin/workspaces.c
+mcs-plugin/workspaces.h
 mcs-plugin/xfwm4_plugin.c
 src/client.c
 src/client.h
@@ -12,7 +15,8 @@ src/frame.c
 src/frame.h
 src/hints.c
 src/hints.h
-src/inline-tabwin-icon.h
+src/icons.c
+src/icons.h
 src/keyboard.c
 src/keyboard.h
 src/main.c

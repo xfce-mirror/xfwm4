@@ -55,8 +55,9 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-focus.$(OBJEXT) xfwm4-frame.$(OBJEXT) \
-	xfwm4-hints.$(OBJEXT) xfwm4-keyboard.$(OBJEXT) \
-	xfwm4-main.$(OBJEXT) xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
+	xfwm4-hints.$(OBJEXT) xfwm4-icons.$(OBJEXT) \
+	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
+	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-mypixmap.$(OBJEXT) xfwm4-mywindow.$(OBJEXT) \
 	xfwm4-netwm.$(OBJEXT) xfwm4-parserc.$(OBJEXT) \
 	xfwm4-placement.$(OBJEXT) xfwm4-poswin.$(OBJEXT) \
@@ -74,6 +75,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-focus.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-frame.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-hints.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-icons.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-keyboard.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-main.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-menu.Po \
@@ -257,6 +259,7 @@ target_alias = @target_alias@
 xfwm4_SOURCES = \
 	client.c							\
 	client.h							\
+	inline-default-icon.h						\
 	events.c							\
 	events.h							\
 	focus.c								\
@@ -266,6 +269,8 @@ xfwm4_SOURCES = \
 	hints.c								\
 	hints.h								\
 	inline-tabwin-icon.h						\
+	icons.c		        					\
+	icons.h			        				\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -325,7 +330,9 @@ xfwm4_LDADD = \
 xfwm4_LDFLAGS = \
 	@LIBXPM_LDFLAGS@
 
-EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png
+EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
+        inline-default-icon.h default_icon.png
+
 noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 all: all-am
 
@@ -403,6 +410,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-focus.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-frame.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-hints.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-icons.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-keyboard.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-menu.Po@am__quote@
@@ -565,6 +573,30 @@ xfwm4-hints.lo: hints.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-hints.Plo' tmpdepfile='$(DEPDIR)/xfwm4-hints.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-hints.lo `test -f 'hints.c' || echo '$(srcdir)/'`hints.c
+
+xfwm4-icons.o: icons.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-icons.o -MD -MP -MF "$(DEPDIR)/xfwm4-icons.Tpo" -c -o xfwm4-icons.o `test -f 'icons.c' || echo '$(srcdir)/'`icons.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-icons.Tpo" "$(DEPDIR)/xfwm4-icons.Po"; else rm -f "$(DEPDIR)/xfwm4-icons.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='icons.c' object='xfwm4-icons.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-icons.Po' tmpdepfile='$(DEPDIR)/xfwm4-icons.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-icons.o `test -f 'icons.c' || echo '$(srcdir)/'`icons.c
+
+xfwm4-icons.obj: icons.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-icons.obj -MD -MP -MF "$(DEPDIR)/xfwm4-icons.Tpo" -c -o xfwm4-icons.obj `if test -f 'icons.c'; then $(CYGPATH_W) 'icons.c'; else $(CYGPATH_W) '$(srcdir)/icons.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-icons.Tpo" "$(DEPDIR)/xfwm4-icons.Po"; else rm -f "$(DEPDIR)/xfwm4-icons.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='icons.c' object='xfwm4-icons.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-icons.Po' tmpdepfile='$(DEPDIR)/xfwm4-icons.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-icons.obj `if test -f 'icons.c'; then $(CYGPATH_W) 'icons.c'; else $(CYGPATH_W) '$(srcdir)/icons.c'; fi`
+
+xfwm4-icons.lo: icons.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-icons.lo -MD -MP -MF "$(DEPDIR)/xfwm4-icons.Tpo" -c -o xfwm4-icons.lo `test -f 'icons.c' || echo '$(srcdir)/'`icons.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-icons.Tpo" "$(DEPDIR)/xfwm4-icons.Plo"; else rm -f "$(DEPDIR)/xfwm4-icons.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='icons.c' object='xfwm4-icons.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-icons.Plo' tmpdepfile='$(DEPDIR)/xfwm4-icons.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-icons.lo `test -f 'icons.c' || echo '$(srcdir)/'`icons.c
 
 xfwm4-keyboard.o: keyboard.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-keyboard.o -MD -MP -MF "$(DEPDIR)/xfwm4-keyboard.Tpo" -c -o xfwm4-keyboard.o `test -f 'keyboard.c' || echo '$(srcdir)/'`keyboard.c; \
@@ -1178,6 +1210,10 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 inline-tabwin-icon.h: $(srcdir)/tabwin-icon.png
 	gdk-pixbuf-csource --raw --build-list 				\
 	tabwin_icon_data $(srcdir)/tabwin-icon.png > inline-tabwin-icon.h
+
+inline-default-icon.h: $(srcdir)/default_icon.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	default_icon_data $(srcdir)/default_icon.png > inline-default-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

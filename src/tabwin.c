@@ -23,7 +23,6 @@
 
 #include <glib.h>
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
@@ -31,28 +30,28 @@
 #include "tabwin.h"
 
 Tabwin *
-tabwinCreate (gchar * label)
+tabwinCreate (GdkPixbuf *icon, const gchar * class, const gchar * label)
 {
-    static GdkPixbuf *icon = NULL;
+    static GdkPixbuf *logo = NULL;
     Tabwin *tabwin;
     GtkWidget *frame;
     GtkWidget *vbox;
+    GtkWidget *hbox;
     GtkWidget *header;
 
     tabwin = g_new (Tabwin, 1);
 
-    if (!icon)
+    if (!logo)
     {
-        icon = xfce_inline_icon_at_size (tabwin_icon_data, 32, 32);
-        g_object_ref (G_OBJECT (icon));
+        logo = xfce_inline_icon_at_size (tabwin_icon_data, 32, 32);
+        g_object_ref (G_OBJECT (logo));
     }
-
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);
     gtk_window_set_position (GTK_WINDOW (tabwin->window),
         GTK_WIN_POS_CENTER_ALWAYS);
-    gtk_window_set_default_size (GTK_WINDOW (tabwin->window), 320, -1);
-    gtk_widget_set_size_request (tabwin->window, 320, -1);
+    gtk_window_set_default_size (GTK_WINDOW (tabwin->window), 400, -1);
+    gtk_widget_set_size_request (tabwin->window, 400, -1);
     gtk_window_set_resizable (GTK_WINDOW (tabwin->window), FALSE);
 
     frame = gtk_frame_new (NULL);
@@ -66,7 +65,7 @@ tabwinCreate (gchar * label)
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
     gtk_container_add (GTK_CONTAINER (frame), vbox);
 
-    header = xfce_create_header (icon, _("Switch to ..."));
+    header = xfce_create_header (logo, _("Switch to ..."));
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (vbox), header, FALSE, TRUE, 0);
 
@@ -76,37 +75,84 @@ tabwinCreate (gchar * label)
     gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
     gtk_widget_show (frame);
 
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+    gtk_widget_show (hbox);
+    gtk_container_add (GTK_CONTAINER (frame), hbox);
+
+    tabwin->image = gtk_image_new ();
+    gtk_widget_show (tabwin->image);
+    gtk_box_pack_start (GTK_BOX (hbox), tabwin->image, FALSE, TRUE, 0);
+    
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
-    gtk_container_add (GTK_CONTAINER (frame), vbox);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), 2);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, TRUE, 0);
+    
+    tabwin->class = gtk_label_new ("");
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
+    gtk_misc_set_alignment (GTK_MISC (tabwin->class), 0.0, 0.5);
+    gtk_widget_show (tabwin->class);
+    gtk_box_pack_start (GTK_BOX (vbox), tabwin->class, FALSE, TRUE, 0);
 
     tabwin->label = gtk_label_new ("");
-    if (label)
-    {
-        tabwinSetLabel (tabwin, label);
-    }
-    gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.5, 0.5);
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->label), FALSE);
+    gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.0, 0.5);
     gtk_widget_show (tabwin->label);
     gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, FALSE, TRUE, 0);
+
+    tabwinSetLabel (tabwin, icon, class, label);
+
     gtk_widget_show (tabwin->window);
 
     return tabwin;
 }
 
-void
-tabwinSetLabel (Tabwin * tabwin, gchar * label)
+/* Efficiency is definitely *not* the goal here! */
+static gchar *
+pretty_string (const gchar *s)
 {
-    g_return_if_fail (tabwin != NULL);
-
-    if (label)
+    gchar *canonical;
+    gchar *markup;
+    
+    if (s)
     {
-        gtk_label_set_text (GTK_LABEL (tabwin->label), label);
+        canonical = g_strdup (s);
+        g_strcanon (canonical, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", ' ');    
+        g_strstrip (canonical);
+        *canonical = g_ascii_toupper (*canonical);
     }
     else
     {
-        gtk_label_set_text (GTK_LABEL (tabwin->label), "");
+        canonical = g_strdup(_("Unknown application!"));
     }
+    markup = g_strdup_printf ("<b>%s</b>", canonical);
+    free (canonical);
+    return markup;
+}
+
+void
+tabwinSetLabel (Tabwin * tabwin, GdkPixbuf *icon, const gchar * class, const gchar * label)
+{
+    g_return_if_fail (tabwin != NULL);
+    gchar* message;
+    
+    message = pretty_string (class);
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
+    gtk_label_set_markup (GTK_LABEL (tabwin->class), message);
+    g_free (message);
+    gtk_label_set_text (GTK_LABEL (tabwin->label), label);
+
+    if (icon)
+    {
+        gtk_image_set_from_pixbuf (GTK_IMAGE (tabwin->image), icon);
+    }
+    else
+    {
+        gtk_image_set_from_stock (GTK_IMAGE (tabwin->image), "gtk-missing-image", 
+                                  GTK_ICON_SIZE_DIALOG);
+    }
+
     gtk_widget_queue_draw (tabwin->window);
 }
 

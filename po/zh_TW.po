@@ -6,195 +6,195 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-10 00:03+0200\n"
+"POT-Creation-Date: 2004-06-03 16:48+0200\n"
 "PO-Revision-Date: 2004-04-20 16:38+0800\n"
 "Last-Translator: umm <umm@pchome.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins.c:124
+#: mcs-plugin/margins.c:123
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "邊緣是螢幕邊上不能放置視窗的區域"
 
-#: mcs-plugin/margins.c:131
+#: mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "工作區邊緣"
 
-#: mcs-plugin/margins.c:159
+#: mcs-plugin/margins.c:158
 msgid "Left :"
 msgstr "左側："
 
-#: mcs-plugin/margins.c:179
+#: mcs-plugin/margins.c:178
 msgid "Right :"
 msgstr "右側："
 
-#: mcs-plugin/margins.c:199
+#: mcs-plugin/margins.c:198
 msgid "Top :"
 msgstr "頂部："
 
-#: mcs-plugin/margins.c:219
+#: mcs-plugin/margins.c:218
 msgid "Bottom :"
 msgstr "底部："
 
-#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
 msgid "Workspaces and Margins"
 msgstr "工作區和邊緣"
 
 #  Number of workspaces
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
+#: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
 msgid "Workspaces"
 msgstr "工作區"
 
-#: mcs-plugin/plugin.c:179
+#: mcs-plugin/plugin.c:178
 msgid "Margins"
 msgstr "邊緣"
 
-#: mcs-plugin/workspaces.c:341
+#: mcs-plugin/workspaces.c:340
 msgid "Change name"
 msgstr "改變名稱"
 
-#: mcs-plugin/workspaces.c:353
+#: mcs-plugin/workspaces.c:352
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"
 
-#: mcs-plugin/workspaces.c:363
+#: mcs-plugin/workspaces.c:362
 msgid "Name:"
 msgstr "名稱："
 
-#: mcs-plugin/workspaces.c:451
+#: mcs-plugin/workspaces.c:450
 msgid "Click on a workspace name to edit it"
 msgstr "選取一個工作區名稱來編輯它"
 
-#: mcs-plugin/workspaces.c:523
+#: mcs-plugin/workspaces.c:522
 msgid "Number of workspaces:"
 msgstr "工作區名稱："
 
 #  Workspace names
 #. Workspace names
-#: mcs-plugin/workspaces.c:554
+#: mcs-plugin/workspaces.c:553
 msgid "Workspace names"
 msgstr "工作區個數"
 
-#: mcs-plugin/xfwm4_plugin.c:121
+#: mcs-plugin/xfwm4_plugin.c:120
 msgid "Title"
 msgstr "標題："
 
-#: mcs-plugin/xfwm4_plugin.c:122
+#: mcs-plugin/xfwm4_plugin.c:121
 msgid "Menu"
 msgstr "選單："
 
-#: mcs-plugin/xfwm4_plugin.c:123
+#: mcs-plugin/xfwm4_plugin.c:122
 msgid "Stick"
 msgstr "貼連"
 
-#: mcs-plugin/xfwm4_plugin.c:124
+#: mcs-plugin/xfwm4_plugin.c:123
 msgid "Shade"
 msgstr "捲起"
 
-#: mcs-plugin/xfwm4_plugin.c:125
+#: mcs-plugin/xfwm4_plugin.c:124
 msgid "Hide"
 msgstr "隱藏"
 
-#: mcs-plugin/xfwm4_plugin.c:126
+#: mcs-plugin/xfwm4_plugin.c:125
 msgid "Maximize"
 msgstr "最大化"
 
-#: mcs-plugin/xfwm4_plugin.c:127
+#: mcs-plugin/xfwm4_plugin.c:126
 msgid "Close"
 msgstr "關閉"
 
-#: mcs-plugin/xfwm4_plugin.c:131
+#: mcs-plugin/xfwm4_plugin.c:130
 msgid "Shade window"
 msgstr "捲起視窗"
 
-#: mcs-plugin/xfwm4_plugin.c:132
+#: mcs-plugin/xfwm4_plugin.c:131
 msgid "Hide window"
 msgstr "隱藏視窗"
 
-#: mcs-plugin/xfwm4_plugin.c:133
+#: mcs-plugin/xfwm4_plugin.c:132
 msgid "Maximize window"
 msgstr "最大化視窗"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:133
 msgid "Nothing"
 msgstr "無"
 
-#: mcs-plugin/xfwm4_plugin.c:139
+#: mcs-plugin/xfwm4_plugin.c:138
 msgid "Left"
 msgstr "左側"
 
-#: mcs-plugin/xfwm4_plugin.c:140
+#: mcs-plugin/xfwm4_plugin.c:139
 msgid "Center"
 msgstr "中間"
 
-#: mcs-plugin/xfwm4_plugin.c:141
+#: mcs-plugin/xfwm4_plugin.c:140
 msgid "Right"
 msgstr "右側"
 
-#: mcs-plugin/xfwm4_plugin.c:441
+#: mcs-plugin/xfwm4_plugin.c:422
 msgid "Hidden"
 msgstr "隱藏"
 
-#: mcs-plugin/xfwm4_plugin.c:1205
+#: mcs-plugin/xfwm4_plugin.c:1186
 msgid "Font Selection Dialog"
 msgstr "字型選擇對話框"
 
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1844
+#: mcs-plugin/xfwm4_plugin.c:1262 mcs-plugin/xfwm4_plugin.c:1833
 msgid "Window Manager"
 msgstr "視窗管理程式"
 
-#: mcs-plugin/xfwm4_plugin.c:1287
+#: mcs-plugin/xfwm4_plugin.c:1276
 msgid "Window Manager Preferences"
 msgstr "視窗管理程式選項"
 
-#: mcs-plugin/xfwm4_plugin.c:1324
+#: mcs-plugin/xfwm4_plugin.c:1313
 msgid "Title font"
 msgstr "標題字型"
 
-#: mcs-plugin/xfwm4_plugin.c:1337
+#: mcs-plugin/xfwm4_plugin.c:1326
 msgid "Title Alignment"
 msgstr "標題對齊方式"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1343
+#: mcs-plugin/xfwm4_plugin.c:1332
 msgid "Text alignment inside title bar :"
 msgstr "標題欄內的本文對齊方式："
 
-#: mcs-plugin/xfwm4_plugin.c:1348
+#: mcs-plugin/xfwm4_plugin.c:1337
 msgid "Button layout"
 msgstr "按鈕布局"
 
-#: mcs-plugin/xfwm4_plugin.c:1355
+#: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Decoration style"
 msgstr "裝飾風格"
 
-#: mcs-plugin/xfwm4_plugin.c:1368
+#: mcs-plugin/xfwm4_plugin.c:1357
 msgid "Keyboard Shortcut"
 msgstr "快速鍵"
 
-#: mcs-plugin/xfwm4_plugin.c:1392
+#: mcs-plugin/xfwm4_plugin.c:1381
 msgid "Focus model"
 msgstr "焦點模式"
 
-#: mcs-plugin/xfwm4_plugin.c:1401
+#: mcs-plugin/xfwm4_plugin.c:1390
 msgid "Click to focus"
 msgstr "點選獲取焦點"
 
-#: mcs-plugin/xfwm4_plugin.c:1415
+#: mcs-plugin/xfwm4_plugin.c:1404
 msgid "Focus follows mouse"
 msgstr "焦點跟隨鼠標"
 
-#: mcs-plugin/xfwm4_plugin.c:1429
+#: mcs-plugin/xfwm4_plugin.c:1418
 msgid "New window focus"
 msgstr "新視窗獲取焦點"
 
-#: mcs-plugin/xfwm4_plugin.c:1434
+#: mcs-plugin/xfwm4_plugin.c:1423
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -202,11 +202,11 @@ msgstr ""
 "自動為新建立\n"
 "視窗獲取焦點"
 
-#: mcs-plugin/xfwm4_plugin.c:1441
+#: mcs-plugin/xfwm4_plugin.c:1430
 msgid "Raise on focus"
 msgstr "獲取焦點時置頂"
 
-#: mcs-plugin/xfwm4_plugin.c:1450
+#: mcs-plugin/xfwm4_plugin.c:1439
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -214,23 +214,23 @@ msgstr ""
 "當視窗獲取焦點時\n"
 "自動將該視窗置頂"
 
-#: mcs-plugin/xfwm4_plugin.c:1463
+#: mcs-plugin/xfwm4_plugin.c:1452
 msgid "Delay before raising focused window :"
 msgstr "置頂焦點所在視窗前的延遲："
 
-#: mcs-plugin/xfwm4_plugin.c:1471
+#: mcs-plugin/xfwm4_plugin.c:1460
 msgid "Slow"
 msgstr "慢"
 
-#: mcs-plugin/xfwm4_plugin.c:1479
+#: mcs-plugin/xfwm4_plugin.c:1468
 msgid "Fast"
 msgstr "快"
 
-#: mcs-plugin/xfwm4_plugin.c:1503
+#: mcs-plugin/xfwm4_plugin.c:1492
 msgid "Raise on click"
 msgstr "點選置頂"
 
-#: mcs-plugin/xfwm4_plugin.c:1508
+#: mcs-plugin/xfwm4_plugin.c:1497
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -238,184 +238,188 @@ msgstr ""
 "點選視窗內部時\n"
 "將視窗置頂"
 
-#: mcs-plugin/xfwm4_plugin.c:1516
+#: mcs-plugin/xfwm4_plugin.c:1505
 msgid "Keyboard and focus"
 msgstr "鍵盤和焦點"
 
-#: mcs-plugin/xfwm4_plugin.c:1529
+#: mcs-plugin/xfwm4_plugin.c:1518
 msgid "Windows snapping"
 msgstr "視窗吸引"
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1527
 msgid "Snap windows to screen border"
 msgstr "在螢幕邊緣吸引視窗"
 
-#: mcs-plugin/xfwm4_plugin.c:1547
+#: mcs-plugin/xfwm4_plugin.c:1536
 msgid "Snap windows to other windows"
 msgstr "將視窗吸引到其他視窗"
 
-#: mcs-plugin/xfwm4_plugin.c:1560
+#: mcs-plugin/xfwm4_plugin.c:1549
 msgid "Distance :"
 msgstr "距離："
 
-#: mcs-plugin/xfwm4_plugin.c:1568 mcs-plugin/xfwm4_plugin.c:1637
+#: mcs-plugin/xfwm4_plugin.c:1557 mcs-plugin/xfwm4_plugin.c:1626
 msgid "Small"
 msgstr "窄"
 
-#: mcs-plugin/xfwm4_plugin.c:1576 mcs-plugin/xfwm4_plugin.c:1645
+#: mcs-plugin/xfwm4_plugin.c:1565 mcs-plugin/xfwm4_plugin.c:1634
 msgid "Wide"
 msgstr "寬"
 
-#: mcs-plugin/xfwm4_plugin.c:1599
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Wrap workspaces"
 msgstr "迴繞工作區"
 
-#: mcs-plugin/xfwm4_plugin.c:1608
+#: mcs-plugin/xfwm4_plugin.c:1597
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "鼠標移到螢幕邊緣時迴繞工作區"
 
-#: mcs-plugin/xfwm4_plugin.c:1617
+#: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "拖曳視窗離開螢幕時回繞工作區"
 
-#: mcs-plugin/xfwm4_plugin.c:1629
+#: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Edge Resistance :"
 msgstr "螢幕邊緣阻力："
 
-#: mcs-plugin/xfwm4_plugin.c:1670
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Opaque move and resize"
 msgstr "移動和縮放時顯示其內容"
 
-#: mcs-plugin/xfwm4_plugin.c:1679
+#: mcs-plugin/xfwm4_plugin.c:1668
 msgid "Display content of windows when resizing"
 msgstr "縮放視窗時顯示其內容"
 
-#: mcs-plugin/xfwm4_plugin.c:1687
+#: mcs-plugin/xfwm4_plugin.c:1676
 msgid "Display content of windows when moving"
 msgstr "移動視窗時顯示其內容"
 
-#: mcs-plugin/xfwm4_plugin.c:1694
+#: mcs-plugin/xfwm4_plugin.c:1683
 msgid "Double click action"
 msgstr "雙擊執行動作"
 
-#: mcs-plugin/xfwm4_plugin.c:1700
+#: mcs-plugin/xfwm4_plugin.c:1689
 msgid "Action to perform when double clicking on title bar :"
 msgstr "雙擊標題列執行的動作："
 
-#: mcs-plugin/xfwm4_plugin.c:1705
+#: mcs-plugin/xfwm4_plugin.c:1694
 msgid "Advanced"
 msgstr "進階"
 
-#: src/events.c:1511
+#: src/events.c:1514
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: (尚)未支援的操作\n"
 
-#: src/main.c:231
+#: src/main.c:214
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: 分斷錯誤"
 
-#: src/main.c:420
+#: src/main.c:247
+msgid "Cannot get default screen"
+msgstr ""
+
+#: src/main.c:411
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一個視窗管理程式正在運行"
 
-#: src/main.c:425
+#: src/main.c:416
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 預設文件中缺少資料"
 
-#: src/main.c:434
+#: src/main.c:425
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: 無法進入保護模式： %s"
 
-#: src/main.c:442
+#: src/main.c:433
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: 無法建立新行程： %s"
 
-#: src/main.c:463
+#: src/main.c:454
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 發生未知的錯誤"
 
-#: src/menu.c:43
+#: src/menu.c:39
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: src/menu.c:44
+#: src/menu.c:40
 msgid "Un_maximize"
 msgstr "還原(_M)"
 
-#: src/menu.c:45
+#: src/menu.c:41
 msgid "_Hide"
 msgstr "隱藏(_H)"
 
-#: src/menu.c:46
+#: src/menu.c:42
 msgid "Hide _all others"
 msgstr "隱藏其他全部視窗(_A)"
 
-#: src/menu.c:47
+#: src/menu.c:43
 msgid "S_how"
 msgstr "顯示(_H)"
 
-#: src/menu.c:48
+#: src/menu.c:44
 msgid "_Shade"
 msgstr "捲起(_S)"
 
-#: src/menu.c:49
+#: src/menu.c:45
 msgid "Un_shade"
 msgstr "展開(_s)"
 
-#: src/menu.c:50
+#: src/menu.c:46
 msgid "S_tick"
 msgstr "貼連(_T)"
 
-#: src/menu.c:51
+#: src/menu.c:47
 msgid "Uns_tick"
 msgstr "分離(_T)"
 
-#: src/menu.c:52
+#: src/menu.c:48
 msgid "Context _help"
 msgstr "上下文說明(_H)"
 
-#: src/menu.c:53 src/menu.c:54
+#: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
 msgstr "總是置頂"
 
-#: src/menu.c:55
+#: src/menu.c:51
 msgid "Send to..."
 msgstr "傳送到..."
 
-#: src/menu.c:57
+#: src/menu.c:53
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: src/menu.c:60
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "結束"
 
-#: src/menu.c:63
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/menu.c:64
+#: src/menu.c:60
 msgid "Restart"
 msgstr "重新啟動"
 
-#: src/menu.c:170
+#: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "工作區 %i (%s)"
 
-#: src/menu.c:182
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "工作區 %i"
 
-#: src/menu.c:425
+#: src/menu.c:423
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 無法取得鼠標\n"
@@ -425,46 +429,50 @@ msgstr "%s: GtkMenu 無法取得鼠標\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 無法管理的 net_wm_state (window 0x%lx)"
 
-#: src/settings.c:318
+#: src/settings.c:314
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 缺少預設文件"
 
-#: src/settings.c:551
+#: src/settings.c:547
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 無法分配使用的顏色 %s\n"
 
-#: src/settings.c:558
+#: src/settings.c:554
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 無法分析使用的顏色 %s\n"
 
-#: src/settings.c:602
+#: src/settings.c:598
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 無法分配未使用的顏色 %s\n"
 
-#: src/settings.c:609
+#: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 無法分析未使用的顏色 %s\n"
 
-#: src/settings.c:796
+#: src/settings.c:793
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "msgid \"%s: 指定的主題 \"%s\" 不存在，使用預設主題\""
 
-#: src/settings.c:806
+#: src/settings.c:803
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 預設文件中缺少數值"
 
-#: src/settings.c:1153
+#: src/settings.c:1149
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未設定工作區數量，使用 rc 文件值： %i"
 
-#: src/tabwin.c:70
+#: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "切換到..."
+
+#: src/tabwin.c:127
+msgid "Unknown application!"
+msgstr ""

@@ -244,7 +244,7 @@ initialize (int argc, char **argv)
     md->gscr = gdk_screen_get_default ();
     if (!md->gscr)
     {
-        g_error (_("Cannot get default screen\n"));
+        g_error (_("Cannot get default screen"));
     }
     md->gdisplay = gdk_screen_get_display (md->gscr);
     gtk_widget_push_colormap(gdk_screen_get_rgb_colormap (md->gscr));
