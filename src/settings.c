@@ -488,7 +488,7 @@ void initSettings(void)
     title_colors[ACTIVE].allocated = FALSE;
     title_colors[INACTIVE].gc = NULL;
     title_colors[INACTIVE].allocated = FALSE;
-    client = xsettings_client_new (gdk_display, DefaultScreen (gdk_display), notify_cb, watch_cb, NULL);
+    /* client = xsettings_client_new (gdk_display, DefaultScreen (gdk_display), notify_cb, watch_cb, NULL); */
 }
 
 static void notify_cb (const char *name, XSettingsAction action, XSettingsSetting *setting, void *data)
