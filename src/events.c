@@ -876,8 +876,11 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAP_PENDING);
-        clientFocusNew(c);
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
+        {
+            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAP_PENDING);
+            clientFocusNew(c);
+        }
     }
 }
 
