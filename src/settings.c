@@ -637,8 +637,8 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
 
     rc[0].value  = get_style (widget, "fg",    "selected");
     rc[1].value  = get_style (widget, "fg",    "insensitive");
-    rc[2].value  = get_style (widget, "fg",    "selected");
-    rc[3].value  = get_style (widget, "fg",    "insensitive");
+    rc[2].value  = get_style (widget, "fg",    "normal");
+    rc[3].value  = get_style (widget, "fg",    "normal");
     rc[4].value  = get_style (widget, "bg",    "selected");
     rc[5].value  = get_style (widget, "light", "selected");
     rc[6].value  = get_style (widget, "dark",  "selected");
