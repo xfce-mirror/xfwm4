@@ -892,11 +892,17 @@ static void clientSetNetActions(Client * c)
     Atom atoms[6];
     int i = 0;
 
-    atoms[i++] = net_wm_action_change_desktop;
     atoms[i++] = net_wm_action_close;
-    atoms[i++] = net_wm_action_maximize_horz;
-    atoms[i++] = net_wm_action_maximize_vert;
-    atoms[i++] = net_wm_action_stick;
+    if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+    {
+        atoms[i++] = net_wm_action_maximize_horz;
+        atoms[i++] = net_wm_action_maximize_vert;
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+    {
+        atoms[i++] = net_wm_action_change_desktop;
+        atoms[i++] = net_wm_action_stick;
+    }
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER))
     {
         atoms[i++] = net_wm_action_shade;
