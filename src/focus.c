@@ -201,7 +201,7 @@ clientGetNext (Client * c, int mask)
     if (c)
     {
         ScreenInfo *screen_info = c->screen_info;
-        for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count);
+        for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count - 1);
             c2 = c2->next, i++)
         {
             if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
