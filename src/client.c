@@ -779,7 +779,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c)
          && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0))))
     {
-        clientConstrainPos (c, TRUE);
+        clientConstrainPos (c, FALSE);
     }
 
     XMoveResizeWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c),
