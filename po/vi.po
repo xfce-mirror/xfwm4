@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-15 23:28+0200\n"
+"POT-Creation-Date: 2004-09-21 13:37+0200\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -15,41 +15,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins.c:123
+#: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Biên vùng làm việc"
 
-#: mcs-plugin/margins.c:133
+#: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Biên là khu vực bên ngoài màn hình không thể đặt cửa sổ ứng dụng"
 
-#: mcs-plugin/margins.c:164
+#: mcs-plugin/margins.c:168
 msgid "Left :"
 msgstr "Trái:"
 
-#: mcs-plugin/margins.c:184
+#: mcs-plugin/margins.c:188
 msgid "Right :"
 msgstr "Phải:"
 
-#: mcs-plugin/margins.c:204
+#: mcs-plugin/margins.c:208
 msgid "Top :"
 msgstr "Trên:"
 
-#: mcs-plugin/margins.c:224
+#: mcs-plugin/margins.c:228
 msgid "Bottom :"
 msgstr "Dưới:"
 
-#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Vùng làm việc và Biên"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:540
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
 msgid "Workspaces"
 msgstr "Vùng làm việc"
 
-#: mcs-plugin/plugin.c:169
+#: mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Biên"
 
@@ -154,172 +154,172 @@ msgstr "Tiêu đề cửa sổ, không thể bỏ đi"
 msgid "Hidden"
 msgstr "Ẩn"
 
-#: mcs-plugin/xfwm4_plugin.c:1300
+#: mcs-plugin/xfwm4_plugin.c:1302
 msgid "Font Selection Dialog"
 msgstr "Hộp thoại chọn phông"
 
-#: mcs-plugin/xfwm4_plugin.c:1395 mcs-plugin/xfwm4_plugin.c:1882
+#: mcs-plugin/xfwm4_plugin.c:1397 mcs-plugin/xfwm4_plugin.c:1884
 msgid "Window Manager"
 msgstr "Trình quản lí cửa sổ"
 
-#: mcs-plugin/xfwm4_plugin.c:1408
+#: mcs-plugin/xfwm4_plugin.c:1410
 msgid "Window Manager Preferences"
 msgstr "Tuỳ chọn Trình quản lí cửa sổ"
 
-#: mcs-plugin/xfwm4_plugin.c:1437
+#: mcs-plugin/xfwm4_plugin.c:1439
 msgid "Title font"
 msgstr "Phông tiêu đề"
 
-#: mcs-plugin/xfwm4_plugin.c:1450
+#: mcs-plugin/xfwm4_plugin.c:1452
 msgid "Title Alignment"
 msgstr "Canh tiêu đề"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1456
+#: mcs-plugin/xfwm4_plugin.c:1458
 msgid "Text alignment inside title bar :"
 msgstr "Canh văn bản bên trong thanh tiêu đề:"
 
-#: mcs-plugin/xfwm4_plugin.c:1458
+#: mcs-plugin/xfwm4_plugin.c:1460
 msgid "Button layout"
 msgstr "Bố cục nút"
 
-#: mcs-plugin/xfwm4_plugin.c:1464
+#: mcs-plugin/xfwm4_plugin.c:1466
 msgid "Style"
 msgstr "Phong cách"
 
-#: mcs-plugin/xfwm4_plugin.c:1490
+#: mcs-plugin/xfwm4_plugin.c:1492
 msgid "Windows shortcuts"
 msgstr "Phím tắt cửa sổ"
 
-#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1539
+#: mcs-plugin/xfwm4_plugin.c:1513 mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr "Lệnh"
 
-#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1544
+#: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
 msgstr "Phím tắt"
 
-#: mcs-plugin/xfwm4_plugin.c:1519
+#: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Command shortcuts"
 msgstr "Phím tắt lệnh"
 
-#: mcs-plugin/xfwm4_plugin.c:1547
+#: mcs-plugin/xfwm4_plugin.c:1549
 msgid "Keyboard"
 msgstr "Bàn phím"
 
-#: mcs-plugin/xfwm4_plugin.c:1558
+#: mcs-plugin/xfwm4_plugin.c:1560
 msgid "Focus model"
 msgstr "Kiểu chọn cửa sổ"
 
-#: mcs-plugin/xfwm4_plugin.c:1566
+#: mcs-plugin/xfwm4_plugin.c:1568
 msgid "Click to focus"
 msgstr "Nhấp chuột để chọn"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1575
 msgid "Focus follows mouse"
 msgstr "Chọn theo vị trí chuột"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1582
 msgid "New window focus"
 msgstr "Chọn cửa sổ mới mở"
 
-#: mcs-plugin/xfwm4_plugin.c:1584
+#: mcs-plugin/xfwm4_plugin.c:1586
 msgid "Automatically give focus to newly created windows"
 msgstr "Tự động chọn cửa sổ mới được tạo"
 
-#: mcs-plugin/xfwm4_plugin.c:1589
+#: mcs-plugin/xfwm4_plugin.c:1591
 msgid "Raise on focus"
 msgstr "Nâng khi chọn"
 
-#: mcs-plugin/xfwm4_plugin.c:1597
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Automatically raise windows when they receive focus"
 msgstr "Tự động nâng cửa sổ khi chúng được chọn"
 
-#: mcs-plugin/xfwm4_plugin.c:1607
+#: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Delay before raising focused window :"
 msgstr "Thời gian trễn trước khi nâng cửa sổ được chọn:"
 
-#: mcs-plugin/xfwm4_plugin.c:1613
+#: mcs-plugin/xfwm4_plugin.c:1615
 msgid "Slow"
 msgstr "Chậm"
 
-#: mcs-plugin/xfwm4_plugin.c:1619
+#: mcs-plugin/xfwm4_plugin.c:1621
 msgid "Fast"
 msgstr "Nhanh"
 
-#: mcs-plugin/xfwm4_plugin.c:1635
+#: mcs-plugin/xfwm4_plugin.c:1637
 msgid "Raise on click"
 msgstr "Nâng khi nhấp chuột"
 
-#: mcs-plugin/xfwm4_plugin.c:1639
+#: mcs-plugin/xfwm4_plugin.c:1641
 msgid "Raise window when clicking inside application window"
 msgstr "Nâng cửa sổ khi nhấp chuột bên trong cửa sổ ứng dụng"
 
-#: mcs-plugin/xfwm4_plugin.c:1644
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Focus"
 msgstr "Chọn"
 
-#: mcs-plugin/xfwm4_plugin.c:1654
+#: mcs-plugin/xfwm4_plugin.c:1656
 msgid "Windows snapping"
 msgstr "Điều chỉnh bờ cửa sổ"
 
-#: mcs-plugin/xfwm4_plugin.c:1662
+#: mcs-plugin/xfwm4_plugin.c:1664
 msgid "Snap windows to screen border"
 msgstr "Bờ cửa sổ theo bờ màn hình"
 
-#: mcs-plugin/xfwm4_plugin.c:1667
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Snap windows to other windows"
 msgstr "Bờ cửa sổ theo các cửa sổ khác"
 
-#: mcs-plugin/xfwm4_plugin.c:1677
+#: mcs-plugin/xfwm4_plugin.c:1679
 msgid "Distance :"
 msgstr "Khoảng cách:"
 
-#: mcs-plugin/xfwm4_plugin.c:1683 mcs-plugin/xfwm4_plugin.c:1733
+#: mcs-plugin/xfwm4_plugin.c:1685 mcs-plugin/xfwm4_plugin.c:1735
 msgid "Small"
 msgstr "Nhỏ"
 
-#: mcs-plugin/xfwm4_plugin.c:1689 mcs-plugin/xfwm4_plugin.c:1739
+#: mcs-plugin/xfwm4_plugin.c:1691 mcs-plugin/xfwm4_plugin.c:1741
 msgid "Wide"
 msgstr "Rộng"
 
-#: mcs-plugin/xfwm4_plugin.c:1704
+#: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Wrap workspaces"
 msgstr "Chuyển vùng làm việc"
 
-#: mcs-plugin/xfwm4_plugin.c:1712
+#: mcs-plugin/xfwm4_plugin.c:1714
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Chuyển vùng làm việc khi con trỏ đến bờ màn hình"
 
-#: mcs-plugin/xfwm4_plugin.c:1717
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Chuyển vùng làm việc khi kéo cửa sổ ra khỏi màn hình"
 
-#: mcs-plugin/xfwm4_plugin.c:1727
+#: mcs-plugin/xfwm4_plugin.c:1729
 msgid "Edge Resistance :"
 msgstr "Sức đề kháng bờ:"
 
-#: mcs-plugin/xfwm4_plugin.c:1754
+#: mcs-plugin/xfwm4_plugin.c:1756
 msgid "Opaque move and resize"
 msgstr "Mờ khi di chuyển và thay đổi kích thước"
 
-#: mcs-plugin/xfwm4_plugin.c:1762
+#: mcs-plugin/xfwm4_plugin.c:1764
 msgid "Display content of windows when resizing"
 msgstr "Hiển thị nội dung cửa sổ khi thay đổi kích thước"
 
-#: mcs-plugin/xfwm4_plugin.c:1767
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Display content of windows when moving"
 msgstr "Hiển thị nội dung cửa sổ khi di chuyển"
 
-#: mcs-plugin/xfwm4_plugin.c:1772
+#: mcs-plugin/xfwm4_plugin.c:1774
 msgid "Double click action"
 msgstr "Hành động khi nhấp đúp chuột"
 
-#: mcs-plugin/xfwm4_plugin.c:1778
+#: mcs-plugin/xfwm4_plugin.c:1780
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Hành động khi nhấp đúp trên thanh tiêu đề:"
 
-#: mcs-plugin/xfwm4_plugin.c:1780
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Advanced"
 msgstr "Cao cấp"
 
@@ -554,32 +554,32 @@ msgstr "Soạn phím tắt cho lệnh:"
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Hoạt động không (chưa) được hỗ trợ\n"
 
-#: src/main.c:180
+#: src/main.c:176
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Lỗi segmentation"
 
-#: src/main.c:313
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Trình quản lí cửa sổ khác đang chạy"
 
-#: src/main.c:318
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Thiếu dữ liệu từ tập tin mặc định"
 
-#: src/main.c:328
+#: src/main.c:419
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: Vào daemon mode thất bại: %s"
 
-#: src/main.c:336
+#: src/main.c:427
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: Tạo tiến trình mới thất bại: %s"
 
-#: src/main.c:357
+#: src/main.c:448
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Xảy ra lỗi chưa biết"
@@ -673,32 +673,32 @@ msgstr "%s: net_wm_state không quản lí được (cửa sổ 0x%lx)"
 msgid "%s: Missing defaults file"
 msgstr "%s: Thiếu tập tin mặc định"
 
-#: src/settings.c:599
+#: src/settings.c:603
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Không thể định vị màu chủ đạo %s\n"
 
-#: src/settings.c:605
+#: src/settings.c:609
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Không thể phân tích màu chủ đạo %s\n"
 
-#: src/settings.c:648
+#: src/settings.c:652
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Không thể định vị màu không chủ đạo %s\n"
 
-#: src/settings.c:654
+#: src/settings.c:658
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Không thể phân tích màu không chủ đạo %s\n"
 
-#: src/settings.c:841
+#: src/settings.c:845
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: thiếu chủ đề chính \"%s\" đã chỉ định, dùng mặc định"
 
-#: src/settings.c:848
+#: src/settings.c:852
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Thiếu các giá trị trong tập tin mặc định"
