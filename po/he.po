@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4_he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-23 01:23+0100\n"
 "PO-Revision-Date: 2005-03-11 15:59+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team:  <xfce2004@yahoo.com>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "שולי סביבת העבודה"
 
 #: mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: mcs-plugin/margins.c:168
@@ -64,8 +65,6 @@ msgstr "שנה שם"
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
-#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
-#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid "Workspace %d"
 msgstr "סביבת עבודה %d"
@@ -163,7 +162,7 @@ msgstr "מוסתר"
 msgid "Font Selection Dialog"
 msgstr "תיבת בחירת גופנים"
 
-#: mcs-plugin/xfwm4_plugin.c:1408 mcs-plugin/xfwm4_plugin.c:1927
+#: mcs-plugin/xfwm4_plugin.c:1408 mcs-plugin/xfwm4_plugin.c:1928
 msgid "Window Manager"
 msgstr "מנהל חלונות"
 
@@ -445,87 +444,71 @@ msgstr "הוסף סביבת עבודה"
 msgid "Delete workspace"
 msgstr "מחק סביבת עבודה"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:603
+#: mcs-plugin/xfwm4_shortcuteditor.c:576
 msgid "Move window to next workspace"
 msgstr "העבר חלון לסביבת העבודה ההבאה"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:608
+#: mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Move window to previous workspace"
 msgstr "העבר חלון לסביבת העבודה הקודמת"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:613
+#: mcs-plugin/xfwm4_shortcuteditor.c:586
 msgid "Move window to upper workspace"
 msgstr "העבר חלון לסביבת העבודה העליונה"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:618
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 msgid "Move window to bottom workspace"
 msgstr "העבר חלון לסביבת העבודה התחתונה"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:623
+#: mcs-plugin/xfwm4_shortcuteditor.c:596
 msgid "Move window to left workspace"
 msgstr "העבר חלון לסביבת העבודה השמאלית"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:628
+#: mcs-plugin/xfwm4_shortcuteditor.c:601
 msgid "Move window to right workspace"
 msgstr "העבר חלון לסביבת העבודה הימנית"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:633
+#: mcs-plugin/xfwm4_shortcuteditor.c:606
 msgid "Move window to workspace 1"
 msgstr "העבר חלון לסביבת עבודה 1"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:638
+#: mcs-plugin/xfwm4_shortcuteditor.c:611
 msgid "Move window to workspace 2"
 msgstr "העבר חלון לסביבת עבודה 2"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:643
+#: mcs-plugin/xfwm4_shortcuteditor.c:616
 msgid "Move window to workspace 3"
 msgstr "העבר חלון לסביבת עבודה 3"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:648
+#: mcs-plugin/xfwm4_shortcuteditor.c:621
 msgid "Move window to workspace 4"
 msgstr "העבר חלון לסביבת עבודה 4"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:653
+#: mcs-plugin/xfwm4_shortcuteditor.c:626
 msgid "Move window to workspace 5"
 msgstr "העבר חלון לסביבת עבודה 5"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:658
+#: mcs-plugin/xfwm4_shortcuteditor.c:631
 msgid "Move window to workspace 6"
 msgstr "העבר חלון לסביבת עבודה 6"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:663
+#: mcs-plugin/xfwm4_shortcuteditor.c:636
 msgid "Move window to workspace 7"
 msgstr "העבר חלון לסביבת עבודה 7"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:668
+#: mcs-plugin/xfwm4_shortcuteditor.c:641
 msgid "Move window to workspace 8"
 msgstr "העבר חלון לסביבת עבודה 8"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:673
+#: mcs-plugin/xfwm4_shortcuteditor.c:646
 msgid "Move window to workspace 9"
 msgstr "העבר חלון לסביבת עבודה 9"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:678
-msgid "Move window to workspace 10"
-msgstr "העבר חלון לסביבת עבודה 10"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:683
-msgid "Move window to workspace 11"
-msgstr "העבר חלון לסביבת עבודה 11"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:688
-msgid "Move window to workspace 12"
-msgstr "העבר חלון לסביבת עבודה 12"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:693
-msgid "Show desktop"
-msgstr "הצג שולחן עבודה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:920
+#: mcs-plugin/xfwm4_shortcuteditor.c:853
 msgid "Cannot open the theme directory !"
 msgstr "אין אפשרות לפתוח תיקיית ערכת הנושא."
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:939
+#: mcs-plugin/xfwm4_shortcuteditor.c:872
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -534,7 +517,7 @@ msgstr ""
 "אין אפשרות לפתוח %s : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
+#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -543,11 +526,11 @@ msgstr ""
 "אין אפשרות לכתוב  %s : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1015
+#: mcs-plugin/xfwm4_shortcuteditor.c:948
 msgid "Select command"
 msgstr "בחר פקודה"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1161
+#: mcs-plugin/xfwm4_shortcuteditor.c:1094
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -555,35 +538,35 @@ msgstr ""
 "קיצור כבר בשימוש.\n"
 "האם ברצונך להשתמש בו בכל זאת?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1224
+#: mcs-plugin/xfwm4_shortcuteditor.c:1157
 msgid "Compose shortcut for :"
 msgstr "צור קיצור ל:"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1227
-#: mcs-plugin/xfwm4_shortcuteditor.c:1455
+#: mcs-plugin/xfwm4_shortcuteditor.c:1160
+#: mcs-plugin/xfwm4_shortcuteditor.c:1388
 msgid "Compose shortcut"
 msgstr "צור קיצור"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1229
-#: mcs-plugin/xfwm4_shortcuteditor.c:1457
+#: mcs-plugin/xfwm4_shortcuteditor.c:1162
+#: mcs-plugin/xfwm4_shortcuteditor.c:1390
 msgid "No shortcut"
 msgstr "אין קיצור"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1351
+#: mcs-plugin/xfwm4_shortcuteditor.c:1284
 msgid "Choose command"
 msgstr "בחר פקודה"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1353
+#: mcs-plugin/xfwm4_shortcuteditor.c:1286
 msgid "Command :"
 msgstr "פקודה:"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1389
+#: mcs-plugin/xfwm4_shortcuteditor.c:1322
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "הפקודה לא קיימת או שהקובץ לא בר-הרצה."
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1452
+#: mcs-plugin/xfwm4_shortcuteditor.c:1385
 msgid "Compose shortcut for command :"
 msgstr "צור קיצור לפקודה:"
 
@@ -699,3 +682,14 @@ msgstr "החלף ל..."
 msgid "Unknown application!"
 msgstr "יישום לא ידוע."
 
+#~ msgid "Move window to workspace 10"
+#~ msgstr "העבר חלון לסביבת עבודה 10"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "העבר חלון לסביבת עבודה 11"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "העבר חלון לסביבת עבודה 12"
+
+#~ msgid "Show desktop"
+#~ msgstr "הצג שולחן עבודה"

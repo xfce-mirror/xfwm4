@@ -28,6 +28,7 @@
 #include <X11/extensions/shape.h>
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
@@ -52,7 +53,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     
     g_return_val_if_fail (display_info, NULL);
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
-
+    TRACE ("entering myScreenInit");
+    
     screen_info = g_new0 (ScreenInfo, 1);
     screen_info->params = g_new0 (XfwmParams, 1);
     
@@ -187,9 +189,10 @@ ScreenInfo *
 myScreenClose (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info = NULL;
-    
+
     g_return_val_if_fail (screen_info, NULL);
-    
+    TRACE ("entering myScreenClose");
+
     display_info = screen_info->display_info;
     
     clientUnframeAll (screen_info);
@@ -228,7 +231,8 @@ myScreenGetXDisplay (ScreenInfo *screen_info)
     
     g_return_val_if_fail (screen_info, NULL);
     g_return_val_if_fail (screen_info->display_info, NULL);
-    
+    TRACE ("entering myScreenGetXDisplay");
+
     display_info = screen_info->display_info;
     return display_info->dpy;
 }
@@ -245,7 +249,8 @@ GdkWindow *
 myScreenGetGdkWindow (ScreenInfo *screen_info)
 {
     g_return_val_if_fail (screen_info, NULL);
-    
+    TRACE ("entering myScreenGetGdkWindow");
+
     return screen_info->gtk_win->window;
 }
 
@@ -255,6 +260,8 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
     gboolean grab = TRUE;
 
     g_return_val_if_fail (screen_info, FALSE);
+    TRACE ("entering myScreenGrabKeyboard");
+
     if (screen_info->key_grabs == 0)
     {
         grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info), 
@@ -264,6 +271,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
                                time) == GrabSuccess);
     }
     screen_info->key_grabs++;
+    TRACE ("global key grabs %i", screen_info->key_grabs);
     
     return grab;
 }
@@ -274,6 +282,8 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
     gboolean grab = TRUE;
 
     g_return_val_if_fail (screen_info, FALSE);
+    TRACE ("entering myScreenGrabPointer");
+
     if (screen_info->pointer_grabs == 0)
     {
         grab = (XGrabPointer (myScreenGetXDisplay (screen_info), 
@@ -285,6 +295,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
                               time) == GrabSuccess);
     }
     screen_info->pointer_grabs++;
+    TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
     
     return grab;
 }
@@ -293,14 +304,18 @@ unsigned int
 myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
 {
     g_return_val_if_fail (screen_info, 0);
-    g_return_val_if_fail (screen_info->key_grabs > 0, 0);
+    TRACE ("entering myScreenUngrabKeyboard");
 
     screen_info->key_grabs = screen_info->key_grabs - 1;
-
+    if (screen_info->key_grabs < 0)
+    {
+        screen_info->key_grabs = 0;
+    }
     if (screen_info->key_grabs == 0)
     {
         XUngrabKeyboard (myScreenGetXDisplay (screen_info), time);
     }
+    TRACE ("global key grabs %i", screen_info->key_grabs);
 
     return screen_info->key_grabs;
 }
@@ -309,14 +324,18 @@ unsigned int
 myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
 {
     g_return_val_if_fail (screen_info, 0);
-    g_return_val_if_fail (screen_info->pointer_grabs > 0, 0);
+    TRACE ("entering myScreenUngrabPointer");
 
     screen_info->pointer_grabs = screen_info->pointer_grabs - 1;
-
+    if (screen_info->pointer_grabs < 0)
+    {
+        screen_info->pointer_grabs = 0;
+    }
     if (screen_info->pointer_grabs == 0)
     {
         XUngrabPointer (myScreenGetXDisplay (screen_info), time);
     }
+    TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
 
     return screen_info->pointer_grabs;
 }
