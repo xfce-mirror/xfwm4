@@ -34,26 +34,28 @@
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    { MENU_OP_MAXIMIZE,   NULL, "Maximize"   },
-    { MENU_OP_UNMAXIMIZE, NULL, "Unmaximize" },
-    { MENU_OP_MINIMIZE,   NULL, "Minimize"   },
-    { MENU_OP_UNMINIMIZE, NULL, "Unminimize" },
-    { MENU_OP_SHADE,      NULL, "Shade"      },
-    { MENU_OP_UNSHADE,    NULL, "Unshade"    },
-    { MENU_OP_STICK,      NULL, "Stick"      },
-    { MENU_OP_UNSTICK,    NULL, "Unstick"    },
-    { MENU_OP_MOVE,       NULL, "Move"       },
-    { MENU_OP_RESIZE,     NULL, "Resize"     },
-    { MENU_OP_SWITCH,     NULL, "Switch"     },
-    { MENU_OP_DELETE,     NULL, "Close"      },
-    { MENU_OP_DESTROY,    NULL, "Destroy"    },
+    { MENU_OP_MAXIMIZE,       NULL, "Maximize"        },
+    { MENU_OP_UNMAXIMIZE,     NULL, "Unmaximize"      },
+    { MENU_OP_MINIMIZE,       NULL, "Hide"	      },
+    { MENU_OP_MINIMIZE_ALL,   NULL, "Hide all others" },
+    { MENU_OP_UNMINIMIZE,     NULL, "Show"	      },
+    { MENU_OP_SHADE,          NULL, "Shade"	      },
+    { MENU_OP_UNSHADE,        NULL, "Unshade"	      },
+    { MENU_OP_STICK,          NULL, "Stick"	      },
+    { MENU_OP_UNSTICK,        NULL, "Unstick"	      },
+    { MENU_OP_MOVE,           NULL, "Move"	      },
+    { MENU_OP_RESIZE,         NULL, "Resize"	      },
+    { MENU_OP_SWITCH,         NULL, "Switch"	      },
+    { MENU_OP_DELETE,         NULL, "Close"	      },
+    { 0,                      NULL,	NULL	      },
+    { MENU_OP_DESTROY,        NULL, "Destroy"	      },
 #if 0
-    { 0,                  NULL,     NULL     },
-    { MENU_OP_WORKSPACES, NULL,  "Workspace" },
-    { 0,                  NULL,     NULL     },
+    { 0,                      NULL,	NULL	      },
+    { MENU_OP_WORKSPACES,     NULL,  "Workspace"      },
+    { 0,                      NULL,	NULL	      },
 #endif
-    { MENU_OP_QUIT,       NULL,  "Quit"      },
-    { MENU_OP_RESTART,    NULL,  "Restart"   },
+    { MENU_OP_QUIT,           NULL,  "Quit"	      },
+    { MENU_OP_RESTART,        NULL,  "Restart"        },
 };
 
 static GtkToXEventFilterStatus menu_filter(XEvent *xevent, gpointer  data)

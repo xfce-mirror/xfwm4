@@ -227,6 +227,7 @@ void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);
 void clientShow(Client *, int);
 void clientHide(Client *, int);
+void clientHideAll(Client *);
 void clientClose(Client *);
 void clientKill(Client *);
 void clientRaise(Client *);

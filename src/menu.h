@@ -31,23 +31,24 @@
 
 typedef enum 
 {
-  MENU_OP_MAXIMIZE    = 1 << 0,
-  MENU_OP_UNMAXIMIZE  = 1 << 1,
-  MENU_OP_MINIMIZE    = 1 << 2,
-  MENU_OP_UNMINIMIZE  = 1 << 3,
-  MENU_OP_SHADE       = 1 << 4,
-  MENU_OP_UNSHADE     = 1 << 5,
-  MENU_OP_STICK       = 1 << 6,
-  MENU_OP_UNSTICK     = 1 << 7,
-  MENU_OP_MOVE        = 1 << 8,
-  MENU_OP_RESIZE      = 1 << 9,
-  MENU_OP_DELETE      = 1 << 10,
-  MENU_OP_DESTROY     = 1 << 11,
-  MENU_OP_WORKSPACES  = 1 << 12,
-  MENU_OP_QUIT        = 1 << 13,
-  MENU_OP_RESTART     = 1 << 14,
-  MENU_OP_SWITCH      = 1 << 15,
-  MENU_OP_OTHER       = 1 << 16
+  MENU_OP_MAXIMIZE     = 1 << 0,
+  MENU_OP_UNMAXIMIZE   = 1 << 1,
+  MENU_OP_MINIMIZE     = 1 << 2,
+  MENU_OP_MINIMIZE_ALL = 1 << 3,
+  MENU_OP_UNMINIMIZE   = 1 << 4,
+  MENU_OP_SHADE        = 1 << 5,
+  MENU_OP_UNSHADE      = 1 << 6,
+  MENU_OP_STICK        = 1 << 7,
+  MENU_OP_UNSTICK      = 1 << 8,
+  MENU_OP_MOVE         = 1 << 9,
+  MENU_OP_RESIZE       = 1 << 10,
+  MENU_OP_DELETE       = 1 << 11,
+  MENU_OP_DESTROY      = 1 << 12,
+  MENU_OP_WORKSPACES   = 1 << 13,
+  MENU_OP_QUIT         = 1 << 14,
+  MENU_OP_RESTART      = 1 << 15,
+  MENU_OP_SWITCH       = 1 << 16,
+  MENU_OP_OTHER        = 1 << 17
 } MenuOp;
 
 typedef struct _Menu Menu;

@@ -1732,6 +1732,35 @@ void clientHide(Client * c, int change_state)
     XFlush (dpy);
 }
 
+void clientHideAll(Client * c)
+{
+    int i;
+    Client *c2;
+    
+    DBG("entering clientHideAll\n");
+
+    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    {
+        if ((c2 != c) && (c2->type == WINDOW_NORMAL))
+	{
+            if (c)
+	    {
+	        if ((c->transient_for != c2->window) && (c2->transient_for != c->window) && (c2->win_workspace == c->win_workspace))
+		{
+		    clientHide(c2, True);
+		}
+	    }
+	    else
+	    {
+	        if ((c2->transient_for == None) && (c2->win_workspace == workspace))
+		{
+		    clientHide(c2, True);
+		}
+	    }
+	}
+    }
+}
+
 void clientClose(Client * c)
 {
     g_return_if_fail (c != NULL);

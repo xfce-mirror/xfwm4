@@ -870,6 +870,9 @@ static void menu_callback (Menu *menu, MenuOp op, Window client_xwindow, gpointe
         	clientHide(c, True);
 	    }
 	    break;
+	case MENU_OP_MINIMIZE_ALL:
+	    clientHideAll(c);
+	    break;
 	case MENU_OP_UNMINIMIZE:
 	    if (c)
 	    {
@@ -931,7 +934,7 @@ static gboolean show_popup_cb (GtkWidget *widget, GdkEventButton *ev, gpointer d
          c->button_pressed[MENU_BUTTON] = True;
          frameDraw(c);
 	 y = c->y; 
-         ops = MENU_OP_DELETE | MENU_OP_DESTROY;
+         ops = MENU_OP_DELETE | MENU_OP_DESTROY | MENU_OP_MINIMIZE_ALL;
 	 insensitive = 0;
 	 
 	 if (c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
