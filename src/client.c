@@ -3367,7 +3367,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                     clientDrawOutline (passdata->c);
                     tabwinSetLabel (passdata->tabwin, 
                                     getAppIcon (md->dpy, passdata->c->window, 32, 32), 
-                                    passdata->c->class.res_name, passdata->c->name);
+                                    passdata->c->class.res_class, passdata->c->name);
                 }
                 else
                 {
@@ -3452,7 +3452,7 @@ clientCycle (Client * c, XEvent * e)
     if (passdata.c)
     {
         passdata.tabwin = tabwinCreate (getAppIcon (md->dpy, passdata.c->window, 32, 32),
-                                        passdata.c->class.res_name, passdata.c->name);
+                                        passdata.c->class.res_class, passdata.c->name);
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);
