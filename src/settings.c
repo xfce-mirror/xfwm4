@@ -1003,6 +1003,9 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], getValue ("workspace_7_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], getValue ("workspace_8_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], getValue ("workspace_9_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_10], getValue ("workspace_10_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], getValue ("workspace_11_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], getValue ("workspace_12_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], getValue ("move_window_next_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], getValue ("move_window_prev_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1], getValue ("move_window_workspace_1_key", rc));
@@ -1014,6 +1017,9 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_7], getValue ("move_window_workspace_7_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_8], getValue ("move_window_workspace_8_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_9], getValue ("move_window_workspace_9_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_10], getValue ("move_window_workspace_10_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], getValue ("move_window_workspace_11_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], getValue ("move_window_workspace_12_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_1], getValue ("shortcut_1_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_2], getValue ("shortcut_2_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_3], getValue ("shortcut_3_key", rc));
@@ -1024,6 +1030,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_8], getValue ("shortcut_8_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_9], getValue ("shortcut_9_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], getValue ("shortcut_10_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getValue("show_desktop_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getValue ("fullscreen_key", rc));
@@ -1065,7 +1072,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->gnome_win);
-
+    grabKey (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], screen_info->gnome_win);
 
     return TRUE;
 }
@@ -1170,6 +1177,9 @@ loadSettings (ScreenInfo *screen_info)
         {"move_window_workspace_7_key", NULL, TRUE},
         {"move_window_workspace_8_key", NULL, TRUE},
         {"move_window_workspace_9_key", NULL, TRUE},
+        {"move_window_workspace_10_key", NULL, TRUE},
+        {"move_window_workspace_11_key", NULL, TRUE},
+        {"move_window_workspace_12_key", NULL, TRUE},
         {"next_workspace_key", NULL, TRUE},
         {"prev_workspace_key", NULL, TRUE},
         {"resize_window_down_key", NULL, TRUE},
@@ -1187,6 +1197,9 @@ loadSettings (ScreenInfo *screen_info)
         {"workspace_7_key", NULL, TRUE},
         {"workspace_8_key", NULL, TRUE},
         {"workspace_9_key", NULL, TRUE},
+        {"workspace_10_key", NULL, TRUE},
+        {"workspace_11_key", NULL, TRUE},
+        {"workspace_12_key", NULL, TRUE},
         {"shortcut_1_key", NULL, TRUE},
         {"shortcut_2_key", NULL, TRUE},
         {"shortcut_3_key", NULL, TRUE},
@@ -1197,6 +1210,8 @@ loadSettings (ScreenInfo *screen_info)
         {"shortcut_8_key", NULL, TRUE},
         {"shortcut_9_key", NULL, TRUE},
         {"shortcut_10_key", NULL, TRUE},
+        {"shortcut_11_key", NULL, TRUE},
+        {"shortcut_12_key", NULL, TRUE},
         {"shortcut_1_exec", NULL, FALSE},
         {"shortcut_2_exec", NULL, FALSE},
         {"shortcut_3_exec", NULL, FALSE},
@@ -1207,6 +1222,9 @@ loadSettings (ScreenInfo *screen_info)
         {"shortcut_8_exec", NULL, FALSE},
         {"shortcut_9_exec", NULL, FALSE},
         {"shortcut_10_exec", NULL, FALSE},
+        {"shortcut_11_exec", NULL, FALSE},
+        {"shortcut_12_exec", NULL, FALSE},
+        {"show_desktop_key", NULL, FALSE},
         {"raise_window_key", NULL, TRUE},
         {"lower_window_key", NULL, TRUE},
         {"up_workspace_key", NULL, TRUE},

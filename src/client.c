@@ -311,6 +311,9 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_7], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_8], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_9], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_10], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_NEXT_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_PREV_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RAISE_WINDOW], c->window);
@@ -320,6 +323,7 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_UP], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHADE_WINDOW], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_STICK_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHOW_DESKTOP], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_1], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_2], c->window);
@@ -331,6 +335,8 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_8], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_9], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_10], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_11], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_12], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_1], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_2], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_3], c->window);
@@ -340,6 +346,9 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_7], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_8], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_9], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_10], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_11], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_12], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_UP_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_DOWN_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_LEFT_WORKSPACE], c->window);

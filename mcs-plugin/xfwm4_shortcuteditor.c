@@ -68,39 +68,39 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
 
         ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
-	if (ti)
-	{
-	    gchar *theme_file = NULL;
+        if (ti)
+        {
+            gchar *theme_file = NULL;
 
-	    theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
-	    if (unlink (theme_file) != 0)
-	      g_warning ("Unable to remove the theme file !");
-	    g_free (theme_file);
-	}
-	else
-	    g_warning ("Cannot find the keytheme !");
+            theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
+            if (unlink (theme_file) != 0)
+              g_warning ("Unable to remove the theme file !");
+            g_free (theme_file);
+        }
+        else
+            g_warning ("Cannot find the keytheme !");
 
-	/* refresh list */
-	while (keybinding_theme_list)
-	{
-	    theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
-	    keybinding_theme_list = g_list_next (keybinding_theme_list);
-	}
-	g_list_free (keybinding_theme_list);
-	
-	g_free (current_key_theme);
-	current_key_theme = g_strdup ("Default");
-	keybinding_theme_list = NULL;
-	keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-					     KEYBINDING_THEMES, current_key_theme);
-	gtk_widget_set_sensitive (itf->treeview3, FALSE);
-	gtk_widget_set_sensitive (itf->treeview4, FALSE);
-	loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
-	
-	/* tell it to the mcs manager */
-	mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
-	mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
-	write_options (itf->mcs_plugin);
+        /* refresh list */
+        while (keybinding_theme_list)
+        {
+            theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+            keybinding_theme_list = g_list_next (keybinding_theme_list);
+        }
+        g_list_free (keybinding_theme_list);
+        
+        g_free (current_key_theme);
+        current_key_theme = g_strdup ("Default");
+        keybinding_theme_list = NULL;
+        keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+                                             KEYBINDING_THEMES, current_key_theme);
+        gtk_widget_set_sensitive (itf->treeview3, FALSE);
+        gtk_widget_set_sensitive (itf->treeview4, FALSE);
+        loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
+        
+        /* tell it to the mcs manager */
+        mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+        mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
+        write_options (itf->mcs_plugin);
     
         g_free (theme_name);
     }
@@ -239,7 +239,7 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
     if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
     {
         GtkTreePath *path;
-	GdkScreen *screen;
+        GdkScreen *screen;
 
         if (gtk_tree_view_get_path_at_pos (treeview, event->x, event->y, &path, NULL, NULL, NULL))
         {
@@ -258,15 +258,15 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
             
             ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
-	    if (ti)
-	    {
-	        gtk_tree_selection_unselect_all (selection);
-		gtk_tree_selection_select_path (selection, path);
-	      
-		gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
-	    }
-	    else
-	        g_warning ("Cannot find the keytheme !");
+            if (ti)
+            {
+                gtk_tree_selection_unselect_all (selection);
+                gtk_tree_selection_select_path (selection, path);
+              
+                gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
+            }
+            else
+                g_warning ("Cannot find the keytheme !");
 
             g_free (theme_name);
         }
@@ -276,10 +276,10 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
         }
         
        
-	screen = xfce_gdk_display_locate_monitor_with_pointer (NULL, NULL);
-	gtk_menu_set_screen (GTK_MENU (itf->popup_menu), screen ? screen : gdk_screen_get_default ());
+        screen = xfce_gdk_display_locate_monitor_with_pointer (NULL, NULL);
+        gtk_menu_set_screen (GTK_MENU (itf->popup_menu), screen ? screen : gdk_screen_get_default ());
         gtk_menu_popup (GTK_MENU (itf->popup_menu), NULL, NULL, NULL, NULL,
-			event->button, gtk_get_current_event_time());
+                        event->button, gtk_get_current_event_time());
         return TRUE;
     }
 
@@ -319,15 +319,15 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
     {
         g_free (user_theme_file);
         user_theme_file = g_strdup (default_theme_file);
-	gtk_widget_set_sensitive (itf->treeview3, FALSE);
-	gtk_widget_set_sensitive (itf->treeview4, FALSE);
-	gtk_widget_set_sensitive (itf->del_button, FALSE);
+        gtk_widget_set_sensitive (itf->treeview3, FALSE);
+        gtk_widget_set_sensitive (itf->treeview4, FALSE);
+        gtk_widget_set_sensitive (itf->del_button, FALSE);
     }
     else
     {
-      	gtk_widget_set_sensitive (itf->treeview3, TRUE);
-	gtk_widget_set_sensitive (itf->treeview4, TRUE);
-	gtk_widget_set_sensitive (itf->del_button, TRUE);
+        gtk_widget_set_sensitive (itf->treeview3, TRUE);
+        gtk_widget_set_sensitive (itf->treeview4, TRUE);
+        gtk_widget_set_sensitive (itf->del_button, TRUE);
     }
 
     default_rc = xfce_rc_simple_open (default_theme_file, TRUE);
@@ -491,84 +491,111 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_1_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 1);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 1);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_2_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 2);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 2);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_3_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 3);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 3);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_4_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 4);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 4);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_5_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 5);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 5);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_6_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 6);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 6);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_7_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 7);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 7);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_8_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 8);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 8);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "workspace_9_key") == 0)
         {
-	    gchar *text;
-	    
-	    text = g_strdup_printf (_("Workspace %d"), 9);
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 9);
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-	    g_free (text);
+            g_free (text);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "workspace_10_key") == 0)
+        {
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 10);
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+            g_free (text);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "workspace_11_key") == 0)
+        {
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 11);
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+            g_free (text);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "workspace_12_key") == 0)
+        {
+            gchar *text;
+            
+            text = g_strdup_printf (_("Workspace %d"), 12);
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+            g_free (text);
         }
         else if (g_ascii_strcasecmp (*shortcut, "move_window_next_workspace_key") == 0)
         {
@@ -645,6 +672,26 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 9"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
         }
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_10_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 10"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_11_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 11"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_12_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 12"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+        }
+        else if ( g_ascii_strcasecmp( *shortcut, "show_desktop_key" ) == 0 )
+        {
+            gtk_list_store_append( GTK_LIST_STORE( model3 ), &iter );
+            gtk_list_store_set( GTK_LIST_STORE( model3 ), &iter, COLUMN_COMMAND, _( "Show desktop" ), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1 );
+        }                
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_1_key") == 0)
         {
             const gchar *fallback_value2;
@@ -745,6 +792,26 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_10_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
+        else if (g_ascii_strcasecmp (*shortcut, "shortcut_11_key") == 0)
+        {
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
+
+            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_11_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_11_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "shortcut_12_key") == 0)
+        {
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
+
+            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_12_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_12_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
+        }
         else
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
@@ -770,7 +837,7 @@ savetree4_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIter * 
 
     static guint index = 0;
 
-    if (index == 0 || index == 10)
+    if (index == 0 || index == 12)
         index = 1;
     else
         index++;

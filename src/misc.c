@@ -119,6 +119,26 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestam
     XSendEvent (myScreenGetXDisplay (screen_info), w, FALSE, 0L, (XEvent *)&ev);
 }
 
+void
+sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, Time timestamp)
+{
+    DisplayInfo *display_info = NULL;
+    XClientMessageEvent ev;
+
+    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
+    TRACE ("entering sendClientMessage");
+
+    display_info = screen_info->display_info;
+    ev.type = ClientMessage;
+    ev.window = screen_info->xroot;
+    ev.message_type = display_info->atoms[atom_id];
+    ev.format = 32;
+    ev.data.l[0] = value;
+    ev.data.l[1] = timestamp;
+    XSendEvent (myScreenGetXDisplay (screen_info), screen_info->xroot, FALSE, 
+                SubstructureRedirectMask | SubstructureNotifyMask, (XEvent *)&ev);
+}
+
 /*
  * it's safer to grab the display before calling this routine
  * Returns true if the given window is present and mapped on root 

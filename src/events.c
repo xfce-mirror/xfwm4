@@ -330,6 +330,20 @@ spawn_shortcut (ScreenInfo *screen_info, int i)
 }
 
 static void
+toggle_show_desktop (ScreenInfo *screen_info)
+{
+    long visible = 0;
+
+    if (!getHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &visible))
+    {
+        visible = TRUE;
+    }
+    
+    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, ( visible ) ? FALSE : TRUE, 
+                     myDisplayGetCurrentTime (screen_info->display_info));
+}
+
+static void
 handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
 {
     int msx, msy, maxx, maxy;
@@ -542,6 +556,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_7:
             case KEY_MOVE_WORKSPACE_8:
             case KEY_MOVE_WORKSPACE_9:
+            case KEY_MOVE_WORKSPACE_10:
+            case KEY_MOVE_WORKSPACE_11:
+            case KEY_MOVE_WORKSPACE_12:
                 clientRaise (c);
                 workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
                 break;
@@ -609,6 +626,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_WORKSPACE_7:
         case KEY_WORKSPACE_8:
         case KEY_WORKSPACE_9:
+        case KEY_WORKSPACE_10:
+        case KEY_WORKSPACE_11:
+        case KEY_WORKSPACE_12:
             workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL);
             break;
         case KEY_SHORTCUT_1:
@@ -621,7 +641,12 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_SHORTCUT_8:
         case KEY_SHORTCUT_9:
         case KEY_SHORTCUT_10:
+        case KEY_SHORTCUT_11:
+        case KEY_SHORTCUT_12:
             spawn_shortcut (screen_info, key - KEY_SHORTCUT_1);
+            break;
+        case KEY_SHOW_DESKTOP:
+            toggle_show_desktop (screen_info);
             break;
         default:
             break;
