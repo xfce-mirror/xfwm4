@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "POT-Creation-Date: 2003-09-22 21:23+0200\n"
-"PO-Revision-Date: 2003-11-14 17:20+0100\n"
-"Last-Translator: Moritz Heiber <moe@lunar-linux.org>\n"
+"PO-Revision-Date: 2003-11-23 06:01-0000\n"
+"Last-Translator: Artjom Simon <hoek@linuxartist.org>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133
+#: mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Desktopränder"
@@ -24,11 +25,8 @@ msgid "Adjust workspace margins"
 msgstr "Desktopränder verändern"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt "
-"werden"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt werden"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -56,7 +54,7 @@ msgstr "Menü"
 
 #: mcs-plugin/xfwm4_plugin.c:118
 msgid "Stick"
-msgstr "Klebrig"
+msgstr "Kleben"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Shade"
@@ -88,7 +86,7 @@ msgstr "Fenster maximieren"
 
 #: mcs-plugin/xfwm4_plugin.c:129
 msgid "Nothing"
-msgstr "Nichts"
+msgstr "Keine Änderung"
 
 #: mcs-plugin/xfwm4_plugin.c:134
 msgid "Left"
@@ -104,13 +102,14 @@ msgstr "Rechts"
 
 #: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
-msgstr "Versteckt"
+msgstr "Nicht anzeigen"
 
 #: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
-msgstr "Schriftenauswahldialog"
+msgstr "Schrift wählen"
 
-#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274
+#: mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Fenstermanager"
 
@@ -132,11 +131,11 @@ msgstr "Textausrichtung in der Titelleiste:"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
-msgstr "Aussehen der Buttons"
+msgstr "Lage der Buttons"
 
 #: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
-msgstr "Dekorationsstil"
+msgstr "Fensterdekoration"
 
 #: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
@@ -148,21 +147,21 @@ msgstr "Fokuseinstellungen"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
-msgstr "Anklicken bringt Fokus"
+msgstr "Fokus durch Mausklick"
 
 #: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
-msgstr "Fokus folgt der Maus"
+msgstr "Fokus folgt Mauszeiger"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
-msgstr "Neues Fenster kriegt Fokus"
+msgstr "Fokus bei neuen Fenstern"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
-msgstr "Automatischer Fokus für ein neues Fenster"
+msgstr "Neue Fenster bekommen Fokus"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
@@ -194,7 +193,7 @@ msgstr "Hervorheben durch klicken"
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
-msgstr "Fenster hervorheben, wenn man in die Anwendung klickt"
+msgstr "Hervorheben bei Klick in das Programmfenster"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
@@ -210,40 +209,41 @@ msgstr "Fenster am Desktoprand einschnappen lassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
-msgstr "Fenster an anderen Fensternrändern einschnappen lassen"
+msgstr "Fenster an anderen Fensterrändern einschnappen lassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
-msgstr "Abstand:"
+msgstr "Distanz:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Klein"
 
-#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
-msgstr "Weit"
+msgstr "Groß"
 
 #: mcs-plugin/xfwm4_plugin.c:1600
 msgid "Wrap workspaces"
-msgstr "Virtuelle Desktops wechseln"
+msgstr "Virtuellen Desktop wechseln..."
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Virtuelle Desktops wechseln, wenn die Maus den Desktoprand erreicht"
+msgstr "...wenn der Mauszeiger den Bildschirmrand erreicht"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Virtuelle Desktops wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
+msgstr "...wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
-msgstr "Abstand:"
+msgstr "Distanz zum Rand:"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr "Sichtbare Größenänderung"
+msgstr "Sichtbarer Fensterinhalt"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
@@ -263,7 +263,7 @@ msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr "Mehr Optionen"
+msgstr "Weitere Optionen"
 
 #: src/client.c:496
 #, c-format
@@ -283,17 +283,17 @@ msgstr "%s: Speicherzugriffsfehler"
 #: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
-msgstr "%s: Ein anderer Fenstermanager laeuft bereits"
+msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
 
 #: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr "%s: Fehlende Einstellungen aus den Defaults"
+msgstr "%s: Einstellungen aus den Defaults fehlen"
 
 #: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
-msgstr "%s: Unbekannter Fehler ist aufgetreten"
+msgstr "%s: Ein unbekannter Fehler ist aufgetreten"
 
 #: src/menu.c:42
 msgid "Ma_ximize"
@@ -325,11 +325,11 @@ msgstr "Ent_rollen"
 
 #: src/menu.c:49
 msgid "S_tick"
-msgstr "K_lebrig"
+msgstr "Fest_kleben"
 
 #: src/menu.c:50
 msgid "Uns_tick"
-msgstr "Nicht_klebrig"
+msgstr "_Lösen"
 
 #: src/menu.c:51
 msgid "Send to..."
@@ -359,7 +359,7 @@ msgstr "Virtueller Desktop %i"
 #: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenue hat Maus nicht gefunden\n"
+msgstr "%s: GtkMenue konnte die Position des Mauszeigers nicht feststellen\n"
 
 #: src/settings.c:285
 #, c-format
@@ -374,7 +374,7 @@ msgstr "%s: Kann aktive Farbe nicht setzen %s\n"
 #: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Kann aktive Farbe nicht feststellen %s\n"
+msgstr "%s: Kann aktive Farbe nicht einlesen %s\n"
 
 #: src/settings.c:561
 #, c-format
@@ -384,12 +384,12 @@ msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
 #: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Kann inaktive Farbe nicht feststellen %s\n"
+msgstr "%s: Kann inaktive Farbe nicht einlesen %s\n"
 
 #: src/settings.c:755
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: Theme \"%s\" nicht gefunden. Es wird das Standard-Theme verwendet."
 
 #: src/settings.c:765
 #, c-format
@@ -399,10 +399,9 @@ msgstr "%s: Fehlende Einstellungen aus den Defaults"
 #: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr ""
-"%s: Anzahl der virtuellen Desktops nicht gesetzt. Benutze default "
-"Einstellungen: %i"
+msgstr "%s: Anzahl der virtuellen Desktops nicht eingestellt. Es wird die Standardeinstellung verwendet: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wechseln zu ..."
+
