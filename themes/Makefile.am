@@ -4,6 +4,7 @@ coldsteel \
 crux \
 cruxish \
 eazel-blue \
+g2 \
 gorilla \
 gtk \
 iceg \
