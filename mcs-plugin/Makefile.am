@@ -27,7 +27,7 @@ xfwm4_plugin_la_CFLAGS =						\
 xfwm4_plugin_la_LIBADD =						\
 	@LIBS@
 
-margins_plugindir = $(libdir)/xfce-mcs-manager/plugins
+margins_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 margins_plugin_LTLIBRARIES = margins_plugin.la
 
