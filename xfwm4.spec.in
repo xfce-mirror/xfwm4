@@ -21,7 +21,7 @@ xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.
 %setup -q
 
 %build
-%configure
+%configure @ENABLE_COMPOSITOR@
 make
 
 %install

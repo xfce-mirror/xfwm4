@@ -35,8 +35,8 @@ AC_CHECK_FUNCS(opendir)
 
 dnl Check for i18n support
 BM_I18N([xfwm4], [ar az be bg ca cs de es es_MX et eu fa_IR fi fr gu he
-	          hi hu it ja ko lt ms nl pl pt_BR pt_PT ru sk sv ta
-		  tr uk vi zh_CN zh_TW])
+                  hi hu it ja ko lt ms nl pl pt_BR pt_PT ru sk sv ta
+                  tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE
@@ -75,7 +75,7 @@ if test x"$enable_randr" = x"yes"; then
   AC_CHECK_LIB(Xrandr, XRRUpdateConfiguration,
                [AC_CHECK_HEADER(X11/extensions/Xrandr.h,
                                 RANDR_LIBS="-lXrandr -lXrender",,
-				[#include <X11/Xlib.h>])],, 
+                                [#include <X11/Xlib.h>])],, 
                 $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
   CFLAGS="$ac_CFLAGS"
 fi
@@ -84,6 +84,7 @@ AC_SUBST([RANDR_LIBS])
 dnl
 dnl Xcomposite and related extensions
 dnl
+ENABLE_COMPOSITOR=""
 AC_ARG_ENABLE([compositor],
 AC_HELP_STRING([--enable-compositor], [enable compositor in xfwm4])
 AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4 (default)]),
@@ -91,10 +92,12 @@ AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4 (default)]),
 
 if test x"$enable_compositor" = x"yes"; then
     if $PKG_CONFIG --exists xcomposite xfixes xdamage xrender 2> /dev/null; then
-	PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 1.0 xfixes xdamage xrender)
-	AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
+        PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 1.0 xfixes xdamage xrender)
+        AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
+        ENABLE_COMPOSITOR="--enable-compositor"
     fi
 fi
+AC_SUBST(ENABLE_COMPOSITOR)
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT

@@ -41,11 +41,11 @@
 #define WINDOW_ARGB     2
 
 #ifndef SHADOW_RADIUS
-#define SHADOW_RADIUS   5
+#define SHADOW_RADIUS   6
 #endif /* SHADOW_RADIUS */
 
 #ifndef SHADOW_OPACITY
-#define SHADOW_OPACITY  0.50
+#define SHADOW_OPACITY  0.66
 #endif /* SHADOW_OPACITY */
 
 #define SHADOW_OFFSET_X (-SHADOW_RADIUS * 5 / 4)
@@ -650,7 +650,6 @@ static Picture
 create_root_buffer (ScreenInfo *screen_info)
 {
     Picture pict;
-    DisplayInfo *display_info;
     XRenderPictFormat *format;
     Pixmap  rootPixmap;
     Visual *visual;
@@ -659,7 +658,7 @@ create_root_buffer (ScreenInfo *screen_info)
     gint screen_height;
     gint screen_number;
 
-    g_return_if_fail (screen_info != NULL);
+    g_return_val_if_fail (screen_info != NULL, None);
     TRACE ("entering create_root_buffer");
     
     screen_width = gdk_screen_get_width (screen_info->gscr);
