@@ -105,12 +105,11 @@ struct _TitleButtonData
     gpointer data;
 };
 
-typedef struct _RadioTmpl RadioTmpl;
-struct _RadioTmpl
+typedef struct _MenuTmpl MenuTmpl;
+struct _MenuTmpl
 {
     gchar *label;
     gchar *action;
-    GtkWidget *radio_button;
 };
 
 TitleButton title_buttons[] = {
@@ -123,19 +122,19 @@ TitleButton title_buttons[] = {
     {N_("Close"), 'C'}
 };
 
-RadioTmpl dbl_click_values[] = {
-    {N_("Shade window"), "shade", NULL},
-    {N_("Hide window"), "hide", NULL},
-    {N_("Maximize window"), "maximize", NULL},
-    {N_("Nothing"), "none", NULL},
-    {NULL, NULL, NULL}
+MenuTmpl dbl_click_values[] = {
+    {N_("Shade window"), "shade"},
+    {N_("Hide window"), "hide"},
+    {N_("Maximize window"), "maximize"},
+    {N_("Nothing"), "none"},
+    {NULL, NULL}
 };
 
-RadioTmpl title_align_values[] = {
-    {N_("Left"), "left", NULL},
-    {N_("Center"), "center", NULL},
-    {N_("Right"), "right", NULL},
-    {NULL, NULL, NULL}
+MenuTmpl title_align_values[] = {
+    {N_("Left"), "left"},
+    {N_("Center"), "center"},
+    {N_("Right"), "right"},
+    {NULL, NULL}
 };
 
 enum
@@ -169,6 +168,7 @@ struct _Itf
     GtkWidget *click_focus_radio;
     GtkWidget *click_raise_check;
     GtkWidget *closebutton1;
+    GtkWidget *helpbutton1;
     GtkWidget *dialog_action_area1;
     GtkWidget *dialog_header;
     GtkWidget *dialog_vbox;
@@ -467,52 +467,46 @@ create_layout_buttons (gchar * layout, gpointer user_data)
 }
 
 static GtkWidget *
-create_radio_button_table (RadioTmpl template[], guint size,
-                           gchar * display_label, gchar * value,
-                           GCallback handler, gpointer user_data)
+create_option_menu_box(MenuTmpl template[], guint size, gchar * display_label,
+        gchar * value, GCallback handler, gpointer user_data)
 {
-    GtkWidget *table;
-    GtkWidget *label;
-    GSList *radio_group = NULL;
-    guint i;
+    GtkWidget *hbox;
+    GtkWidget *vbox;
+    GtkWidget *menu;
+    GtkWidget *omenu;
+    GtkWidget *item;
+    guint n;
 
-    table = gtk_table_new (size, 2, FALSE);
-    gtk_widget_show (table);
-    gtk_container_set_border_width (GTK_CONTAINER (table), BORDER);
+    vbox = gtk_vbox_new(FALSE, 0);
+    gtk_widget_show(vbox);
 
-    label = gtk_label_new (display_label);
+    hbox = gtk_hbox_new(FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+    gtk_widget_show(hbox);
 
-    gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, size, 0, 1,
-                      (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
-                      0, 0);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+    omenu = gtk_option_menu_new();
+    gtk_box_pack_start(GTK_BOX(hbox), omenu, TRUE, TRUE, 0);
+    gtk_widget_show(omenu);
 
-    for (i = 0; i < size; i++)
-    {
-        template[i].radio_button =
-            gtk_radio_button_new_with_mnemonic (NULL, _(template[i].label));
-        gtk_widget_show (template[i].radio_button);
-        gtk_table_attach (GTK_TABLE (table), template[i].radio_button, i,
-                          i + 1, 1, 2,
-                          (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                          (GtkAttachOptions) (0), 0, 0);
-        gtk_radio_button_set_group (GTK_RADIO_BUTTON
-                                    (template[i].radio_button), radio_group);
-        radio_group =
-            gtk_radio_button_get_group (GTK_RADIO_BUTTON
-                                        (template[i].radio_button));
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-                                      (template[i].radio_button),
-                                      strcmp (value,
-                                              template[i].
-                                              action) ? FALSE : TRUE);
-        g_signal_connect (G_OBJECT (template[i].radio_button), "toggled",
-                          G_CALLBACK (handler), user_data);
+    menu = gtk_menu_new();
+    gtk_option_menu_set_menu(GTK_OPTION_MENU(omenu), menu);
+    gtk_widget_show(menu);
+    
+    for (n = 0; n < size; n++) {
+        item = gtk_menu_item_new_with_mnemonic(template[n].label);
+        gtk_widget_show(item);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+
+        if (strcmp(value, template[n].action) == 0)
+            gtk_option_menu_set_history(GTK_OPTION_MENU(omenu), n);
+
+        g_object_set_data(G_OBJECT(item), "user-data", template[n].action);
+
+        g_signal_connect (G_OBJECT(item), "activate", G_CALLBACK(handler),
+                user_data);
     }
 
-    return table;
+    return(vbox);
 }
 
 static void
@@ -1140,58 +1134,37 @@ cb_box_resize_changed (GtkWidget * dialog, gpointer user_data)
 static void
 cb_dblclick_action_value_changed (GtkWidget * widget, gpointer user_data)
 {
-    guint i;
-    McsPlugin *mcs_plugin = (McsPlugin *) user_data;
+    McsPlugin *mcs_plugin = (McsPlugin *)user_data;
+    const gchar *action;
 
-    if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
-    {
-        return;
-    }
+    action = (const gchar *)g_object_get_data(G_OBJECT(widget), "user-data");
 
-    for (i = 0; i < 4; i++)
-    {
-        if (widget == dbl_click_values[i].radio_button)
-        {
-            if (dbl_click_action)
-            {
-                g_free (dbl_click_action);
-            }
-            dbl_click_action = g_strdup (dbl_click_values[i].action);
-            mcs_manager_set_string (mcs_plugin->manager,
-                                    "Xfwm/DblClickAction", CHANNEL,
-                                    dbl_click_action);
-            mcs_manager_notify (mcs_plugin->manager, CHANNEL);
-            write_options (mcs_plugin);
-        }
-    }
+    if (dbl_click_action)
+        g_free(dbl_click_action);
+
+     dbl_click_action = g_strdup(action);
+     mcs_manager_set_string(mcs_plugin->manager, "Xfwm/DblClickAction",
+             CHANNEL, dbl_click_action);
+     mcs_manager_notify(mcs_plugin->manager, CHANNEL);
+     write_options(mcs_plugin);
 }
 
 static void
 cb_title_align_value_changed (GtkWidget * widget, gpointer user_data)
 {
-    guint i;
     McsPlugin *mcs_plugin = (McsPlugin *) user_data;
+    const gchar *action;
 
-    if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
-    {
-        return;
-    }
+    action = (const gchar *)g_object_get_data(G_OBJECT(widget), "user-data");
 
-    for (i = 0; i < 3; i++)
-    {
-        if (widget == title_align_values[i].radio_button)
-        {
-            if (title_align)
-            {
-                g_free (title_align);
-            }
-            title_align = g_strdup (title_align_values[i].action);
-            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign",
-                                    CHANNEL, title_align);
-            mcs_manager_notify (mcs_plugin->manager, CHANNEL);
-            write_options (mcs_plugin);
-        }
-    }
+    if (title_align)
+        g_free(title_align);
+
+    title_align = g_strdup(action);
+    mcs_manager_set_string(mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL,
+            title_align);
+    mcs_manager_notify(mcs_plugin->manager, CHANNEL);
+    write_options(mcs_plugin);
 }
 
 static void
@@ -1263,7 +1236,7 @@ cb_dialog_response (GtkWidget * dialog, gint response_id)
 {
     if (response_id == GTK_RESPONSE_HELP)
     {
-        g_message ("HELP: TBD");
+        exec_command("xfhelp4 xfwm4.html");
     }
     else
     {
@@ -1298,7 +1271,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->xfwm4_dialog = gtk_dialog_new ();
     gtk_window_set_position (GTK_WINDOW (dialog->xfwm4_dialog),
-                             GTK_WIN_POS_CENTER);
+                             GTK_WIN_POS_CENTER_ALWAYS);
     gtk_window_set_title (GTK_WINDOW (dialog->xfwm4_dialog),
                           _("Window Manager"));
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog->xfwm4_dialog), FALSE);
@@ -1368,13 +1341,12 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (dialog->frame_align);
     gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_align, TRUE, TRUE, 0);
 
-    xfce_framebox_add (XFCE_FRAMEBOX (dialog->frame_align),
-                       create_radio_button_table (title_align_values, 3,
-                                                  _("Text alignment inside title bar :"),
-                                                  title_align,
-                                                  G_CALLBACK
-                                                  (cb_title_align_value_changed),
-                                                  mcs_plugin));
+    xfce_framebox_add(XFCE_FRAMEBOX (dialog->frame_align),
+                       create_option_menu_box(title_align_values, 3,
+                    /*XXX*/_("Text alignment inside title bar :"),
+                           title_align,
+                           G_CALLBACK(cb_title_align_value_changed),
+                           mcs_plugin));
 
     dialog->frame_layout = xfce_framebox_new (_("Button layout"), TRUE);
     gtk_widget_show (dialog->frame_layout);
@@ -1727,12 +1699,11 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
     xfce_framebox_add (XFCE_FRAMEBOX (frame),
-                       create_radio_button_table (dbl_click_values, 4,
-                                                  _("Action to perform when double clicking on title bar :"),
-                                                  dbl_click_action,
-                                                  G_CALLBACK
-                                                  (cb_dblclick_action_value_changed),
-                                                  mcs_plugin));
+                       create_option_menu_box(dbl_click_values, 4,
+                    /*XXX*/_("Action to perform when double clicking on title bar :"),
+                           dbl_click_action,
+                           G_CALLBACK(cb_dblclick_action_value_changed),
+                           mcs_plugin));
 
     label = gtk_label_new (_("Advanced"));
     gtk_widget_show (label);
@@ -1753,6 +1724,11 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_dialog_add_action_widget (GTK_DIALOG (dialog->xfwm4_dialog),
                                   dialog->closebutton1, GTK_RESPONSE_CLOSE);
     GTK_WIDGET_SET_FLAGS (dialog->closebutton1, GTK_CAN_DEFAULT);
+
+    dialog->helpbutton1 = gtk_button_new_from_stock("gtk-help");
+    gtk_widget_show(dialog->helpbutton1);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->xfwm4_dialog),
+                                  dialog->helpbutton1, GTK_RESPONSE_HELP);
 
     gtk_widget_grab_focus (dialog->closebutton1);
     gtk_widget_grab_default (dialog->closebutton1);
@@ -2210,13 +2186,19 @@ create_channel (McsPlugin * mcs_plugin)
 static gboolean
 write_options (McsPlugin * mcs_plugin)
 {
+#if 0
     const gchar *home = g_get_home_dir ();
+#endif
     gchar *rcfile;
     gboolean result;
 
-    rcfile =
+#if 0
+    rcfile = 
         g_strconcat (home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S,
                      RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
+#else
+    rcfile = xfce_get_userfile(RCDIR, RCFILE, NULL);
+#endif
     result =
         mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL,
                                           rcfile);
