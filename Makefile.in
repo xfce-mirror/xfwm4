@@ -430,7 +430,7 @@ uninstall-info: uninstall-info-recursive
 @SET_MAKE@
 
 distclean-local:
-	rm -f example.xfwm4rc xfwm4.spec
+	rm -rf example.xfwm4rc xfwm4.spec *.cache
 
 example.xfwm4rc:
 	@sed -e "s%_pkgdatadir_%$(pkgdatadir)%g" example.xfwm4rc.in > example.xfwm4rc
