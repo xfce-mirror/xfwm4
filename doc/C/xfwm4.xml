@@ -834,6 +834,26 @@ maintainers, etc. Commented out by default.
 	</varlistentry>
 
 	<varlistentry>
+		<term>move_opacity=100</term>
+			<listitem>
+			<para>Set the window opacity while being moved. Opacity is an integer value between 0 and 100;
+			100 being opaque, 0 totally invisible.
+			</para>
+			<para>That option has no effect if the compositing manager is not enabled.</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>resize_opacity=100</term>
+			<listitem>
+			<para>Set the window opacity while being resized. Opacity is an integer value between 0 and 100;
+			100 being opaque, 0 totally invisible.
+			</para>
+			<para>That option has no effect if the compositing manager is not enabled.</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
 		<term>toggle_workspaces=true</term>
 			<listitem>
 			<para>Add this line to your xfwm4rc file if you want the Control+F(N) keyboard shortcut
@@ -841,6 +861,23 @@ maintainers, etc. Commented out by default.
 			</para>
 			</listitem>
 	</varlistentry>
+
+	<varlistentry>
+		<term>wrap_layout=true</term>
+			<listitem>
+			<para>wrap workspaces depending on the actual desktop layout. 
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>wrap_cycle=true</term>
+			<listitem>
+			<para>wrap workspaces when the first or last workspace is reached. 
+			</para>
+			</listitem>
+	</varlistentry>
+	
 </variablelist>
 
 </sect2>

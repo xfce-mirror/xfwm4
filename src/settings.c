@@ -155,6 +155,18 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->raise_on_focus = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/MoveOpacity"))
+                    {
+                        screen_info->params->move_opacity = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/ResizeOpacity"))
+                    {
+                        screen_info->params->resize_opacity = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/SnapToBorder"))
+                    {
+                        screen_info->params->snap_to_border = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
                     {
                         screen_info->params->prevent_focus_stealing = setting->data.v_int;
@@ -422,6 +434,18 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_on_focus", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/MoveOpacity", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("move_opacity", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ResizeOpacity", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("resize_opacity", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL1,
@@ -1068,6 +1092,8 @@ loadSettings (ScreenInfo *screen_info)
         {"margin_right", NULL, FALSE},
         {"margin_bottom", NULL, FALSE},
         {"margin_top", NULL, FALSE},
+        {"move_opacity", NULL, TRUE},
+        {"resize_opacity", NULL, TRUE},
         {"prevent_focus_stealing", NULL, TRUE},
         {"raise_delay", NULL, TRUE},
         {"raise_on_click", NULL, TRUE},
@@ -1208,6 +1234,10 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
     screen_info->params->raise_with_any_button =
         !g_ascii_strcasecmp ("true", getValue ("raise_with_any_button", rc));
+    screen_info->params->move_opacity = 
+        abs (TOINT (getValue ("move_opacity", rc)));
+    screen_info->params->resize_opacity = 
+        abs (TOINT (getValue ("resize_opacity", rc)));
 
     screen_info->params->snap_to_border =
         !g_ascii_strcasecmp ("true", getValue ("snap_to_border", rc));

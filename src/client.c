@@ -3060,6 +3060,7 @@ clientMove (Client * c, XEvent * e)
     MoveResizeData passdata;
     Cursor cursor = None;
     int g1 = GrabSuccess, g2 = GrabSuccess;
+    gboolean restore_opacity = FALSE;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientDoMove");
@@ -3126,6 +3127,14 @@ clientMove (Client * c, XEvent * e)
     poswinShow (passdata.poswin);
 #endif /* SHOW_POSITION */
 
+    /* Set window translucent while moving, looks nice */
+    if ((screen_info->params->move_opacity < 100) && !(screen_info->params->box_move))
+    {
+        compositorWindowSetOpacity (display_info, c->frame, 
+            (guint) (c->opacity * (double) (screen_info->params->move_opacity / 100.0)));
+        restore_opacity = TRUE;
+    }
+    
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     xfce_push_event_filter (display_info->xfilter, clientMove_event_filter, &passdata);
@@ -3137,6 +3146,7 @@ clientMove (Client * c, XEvent * e)
     xfce_pop_event_filter (display_info->xfilter);
     TRACE ("leaving move loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
+
 #ifdef SHOW_POSITION
     if (passdata.poswin)
     {
@@ -3148,6 +3158,12 @@ clientMove (Client * c, XEvent * e)
     {
         clientDrawOutline (c);
     }
+    /* Set window opacity to its original value */
+    if (restore_opacity)
+    {
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+    }
+
     wc.x = c->x;
     wc.y = c->y;
     clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
@@ -3511,6 +3527,7 @@ clientResize (Client * c, int corner, XEvent * e)
     XWindowChanges wc;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
+    gboolean restore_opacity = FALSE;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientResize");
@@ -3592,6 +3609,14 @@ clientResize (Client * c, int corner, XEvent * e)
     }
 #endif /* SHOW_POSITION */
 
+    /* Set window translucent while resizing, doesn't looks too nice  :( */
+    if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize))
+    {
+        compositorWindowSetOpacity (display_info, c->frame, 
+            (guint) (c->opacity * (double) (screen_info->params->resize_opacity / 100.0)));
+        restore_opacity = TRUE;
+    }
+    
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     xfce_push_event_filter (display_info->xfilter, clientResize_event_filter, &passdata);
@@ -3611,6 +3636,11 @@ clientResize (Client * c, int corner, XEvent * e)
     if (passdata.grab && screen_info->params->box_resize)
     {
         clientDrawOutline (c);
+    }
+    /* Set window opacity to its original value */
+    if (restore_opacity)
+    {
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
     }
 
     wc.x = c->x;
