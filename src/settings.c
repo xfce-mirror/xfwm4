@@ -565,9 +565,8 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
         if (desc)
         {
             gtk_widget_modify_font (widget, desc);
-            g_free (desc);
+            pango_font_description_free (desc);
         }
-
     }
  
     if (screen_info->title_colors[ACTIVE].allocated)

@@ -967,6 +967,9 @@ getClientLeader (Display * dpy, Window window)
             && (nitems == 1) && (bytes_after == 0))
         {
             client_leader = *((Window *) prop);
+        }
+        if (prop)
+        {
             XFree (prop);
         }
     }
