@@ -1160,8 +1160,62 @@ static inline void clientComputeStackList(Client * c, Client * sibling, XWindowC
     }
 }
 
+
+static inline void clientConstraintPos(Client * c)
+{
+    g_return_if_fail(c != NULL);
+    DBG("entering clientConstraintPos\n");
+    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    if(!(c->has_border) || (c->fullscreen))
+    {
+        DBG("ignoring constraint for client \"%s\" (%#lx)\n", c->name, c->window);
+        return;
+    }
+
+    if((c->x + c->width) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT])
+    {
+        c->x = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT] - c->width;
+    }
+    else if((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+    {
+        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
+    }
+    if(frameY(c) < (int)margins[MARGIN_TOP])
+    {
+        c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+    }
+    else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+    {
+        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
+    }
+}
+
+static inline void clientKeepVisible(Client * c)
+{
+    g_return_if_fail(c != NULL);
+    DBG("entering clientKeepVisible\n");
+    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if((frameX(c) + frameWidth(c)) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+    {
+        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - frameWidth(c) + frameLeft(c);
+    }
+    if(frameX(c) < (int)margins[MARGIN_LEFT])
+    {
+        c->x = (int)margins[MARGIN_LEFT] + frameLeft(c);
+    }
+    if((frameY(c) + frameHeight(c)) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+    {
+        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c);
+    }
+    if(frameY(c) < (int)margins[MARGIN_TOP])
+    {
+        c->y = (int)margins[MARGIN_TOP] + frameTop(c);
+    }
+}
+
 /* Compute rectangle overlap area */
-static unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
+static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 {
     /* Compute overlapping box */
     if(tx0 > x0)
@@ -1204,24 +1258,19 @@ static void clientInitPosition(Client * c)
     {
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            if((frameX(c) + frameWidth(c)) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
-            {
-                c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - frameWidth(c) + frameLeft(c);
-            }
-            if(frameX(c) < (int)margins[MARGIN_LEFT])
-            {
-                c->x = (int)margins[MARGIN_LEFT] + frameLeft(c);
-            }
-            if((frameY(c) + frameHeight(c)) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
-            {
-                c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c);
-            }
-            if(frameY(c) < (int)margins[MARGIN_TOP])
-            {
-                c->y = (int)margins[MARGIN_TOP] + frameTop(c);
-            }
+            clientKeepVisible(c);
         }
-        return;
+        
+	return;
+    }
+    else if ((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
+    {
+        /* Center transient relative to their parent window */
+	c->x = c2->x + (c2->width - c->width) / 2;
+	c->y = c2->y + (c2->height - c->height) / 2;
+        clientKeepVisible(c);
+	
+	return;
     }
 
     xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - (int)margins[MARGIN_RIGHT];
@@ -1266,35 +1315,6 @@ static void clientInitPosition(Client * c)
     c->x = best_x;
     c->y = best_y;
     return;
-}
-
-static inline void clientConstraintPos(Client * c)
-{
-    g_return_if_fail(c != NULL);
-    DBG("entering clientConstraintPos\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if(!(c->has_border) || (c->fullscreen))
-    {
-        DBG("ignoring constraint for client \"%s\" (%#lx)\n", c->name, c->window);
-        return;
-    }
-
-    if((c->x + c->width) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT])
-    {
-        c->x = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT] - c->width;
-    }
-    else if((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
-    {
-        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
-    }
-    if(frameY(c) < (int)margins[MARGIN_TOP])
-    {
-        c->y = frameTop(c) + (int)margins[MARGIN_TOP];
-    }
-    else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
-    {
-        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
-    }
 }
 
 static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
