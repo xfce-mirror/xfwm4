@@ -1418,7 +1418,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_container_add (GTK_CONTAINER (notebook), hbox);
 
     frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type(frame, GTK_SHADOW_NONE);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (hbox), frame, TRUE, TRUE, 0);
 
