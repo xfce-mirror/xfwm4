@@ -12,6 +12,7 @@ xfwm4_plugin_la_LDFLAGS =						\
 
 xfwm4_plugin_la_SOURCES =						\
 	xfwm4_plugin.c							\
+	keys-icon.h							\
 	xfwm4-icon.h
 
 xfwm4_plugin_la_CFLAGS =						\
@@ -70,6 +71,7 @@ noinst_DATA =								\
 	margins-icon.h							\
 	monitor-icon.h							\
 	workspaces-icon.h 						\
+	keys-icon.h							\
 	xfwm4-icon.png							\
 	keys.png							\
 	workspaces.png							\
