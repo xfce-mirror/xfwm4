@@ -46,10 +46,10 @@ static MenuItem menuitems[] = {
     {MENU_OP_MOVE, NULL, "_Move"},
     {MENU_OP_RESIZE, NULL, "_Resize"},
     {MENU_OP_SWITCH, NULL, "S_witch"},
-    {MENU_OP_DELETE, NULL, "_Close"},
     {0, NULL, NULL},
-    {MENU_OP_DESTROY, NULL, "Destroy"},
+    {MENU_OP_DELETE, NULL, "_Close"},
 #if 0
+    {MENU_OP_DESTROY, NULL, "Destroy"},
     {0, NULL, NULL},
     {MENU_OP_WORKSPACES, NULL, "Wor_kspace"},
     {0, NULL, NULL},

@@ -998,22 +998,15 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
         case MENU_OP_UNSTICK:
             if(c)
             {
-                clientToggleSticky(c);
                 frameDraw(c);
+                clientToggleSticky(c);
             }
             break;
         case MENU_OP_DELETE:
             if(c)
             {
+                frameDraw(c);
                 clientClose(c);
-                frameDraw(c);
-            }
-            break;
-        case MENU_OP_DESTROY:
-            if(c)
-            {
-                clientKill(c);
-                frameDraw(c);
             }
             break;
         default:
@@ -1042,12 +1035,12 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         c->button_pressed[MENU_BUTTON] = True;
         frameDraw(c);
         y = c->y;
-        ops = MENU_OP_DELETE | MENU_OP_DESTROY | MENU_OP_MINIMIZE_ALL;
+        ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
 	insensitive = 0;
 
 	if (!(c->has_close))
 	{
-            insensitive |= MENU_OP_DELETE | MENU_OP_DESTROY;
+            insensitive |= MENU_OP_DELETE;
 	}
 
 	if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
