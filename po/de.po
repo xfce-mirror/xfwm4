@@ -189,8 +189,8 @@ msgid "Style"
 msgstr "Stil"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
-msgid "Windows shortcuts"
-msgstr "Kürzel für Fenster"
+msgid "Window shortcuts"
+msgstr "Tastenkombination für Fenster"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
 msgid "Command"
@@ -198,11 +198,11 @@ msgstr "Kommando"
 
 #: mcs-plugin/xfwm4_plugin.c:1501 mcs-plugin/xfwm4_plugin.c:1529
 msgid "Shortcut"
-msgstr "Kürzel"
+msgstr "Tastenkombination"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Command shortcuts"
-msgstr "Kommandokürzel"
+msgstr "Tastenkombination für Kommandos"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Keyboard"
@@ -326,11 +326,11 @@ msgstr "Weitere Optionen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Wollen Sie dieses Kürzelthema wirklich entfernen?"
+msgstr "Wollen Sie dieses Tastenkombinations-Schema wirklich entfernen?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
-msgstr "Kürzelthema hinzufügen"
+msgstr "Tastenkombinations-Schema hinzufügen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
@@ -568,23 +568,23 @@ msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"Kürzel schon in Benutzung!\n"
+"Tastenkombination schon in Benutzung!\n"
 "Sind Sie sicher, dass Sie es benutzen wollen?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1267
 msgid "Compose shortcut for :"
-msgstr "Kürzel erstellen für:"
+msgstr "Tastenkombination erstellen für:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1270
 #: mcs-plugin/xfwm4_shortcuteditor.c:1498
 msgid "Compose shortcut"
-msgstr "Kürzel erstellen"
+msgstr "Tastenkombination erstellen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
 #: mcs-plugin/xfwm4_shortcuteditor.c:1500
 msgid "No shortcut"
-msgstr "Kein Kürzel"
+msgstr "Keine Tastenkombination"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1394
@@ -601,7 +601,7 @@ msgstr "Dieses Kommando existiert nicht oder die Datei ist nicht ausführbar!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
-msgstr "Kürzel für Kommando erstellen:"
+msgstr "Tastenkombination für Kommando erstellen:"
 
 #: src/events.c:1776
 #, c-format
