@@ -965,9 +965,10 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
             
             if (ti)
             {
+	        loadtheme_in_treeview (ti, itf);
                 gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
                 gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
-                loadtheme_in_treeview (ti, itf);
+		gtk_widget_set_sensitive (itf->del_button, ti->user_writable);
             }
         }
     }
@@ -1369,6 +1370,7 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *vbox6;
     GtkWidget *vbox7;
     GtkWidget *vbox8;
+    GtkWidget *vbox9;
     GtkTreeViewColumn *hidden_column;
 
     GtkCellRenderer *renderer;
@@ -1458,25 +1460,37 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (hbox);
     gtk_container_add (GTK_CONTAINER (notebook), hbox);
 
+    vbox8 = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox8), BORDER);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox8, FALSE, FALSE, 0);
+    gtk_widget_show (vbox8);
+
     dialog->scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow2), BORDER);
     gtk_widget_show (dialog->scrolledwindow2);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow2), GTK_SHADOW_IN);
-    gtk_box_pack_start (GTK_BOX (hbox), dialog->scrolledwindow2, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox8), dialog->scrolledwindow2, TRUE, TRUE, 0);
 
     dialog->treeview2 = gtk_tree_view_new ();
     gtk_widget_show (dialog->treeview2);
     gtk_container_add (GTK_CONTAINER (dialog->scrolledwindow2), dialog->treeview2);
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview2), FALSE);
 
-    vbox8 = gtk_vbox_new (FALSE, BORDER);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox8), BORDER);
-    gtk_box_pack_start (GTK_BOX (hbox), vbox8, TRUE, TRUE, 0);
-    gtk_widget_show (vbox8);
+    dialog->add_button = gtk_button_new_from_stock (GTK_STOCK_ADD);
+    gtk_widget_show (dialog->add_button);
+    gtk_box_pack_start (GTK_BOX (vbox8), dialog->add_button, FALSE, FALSE, 0);
+    dialog->del_button = gtk_button_new_from_stock (GTK_STOCK_REMOVE);
+    gtk_widget_show (dialog->del_button);
+    gtk_box_pack_start (GTK_BOX (vbox8), dialog->del_button, FALSE, FALSE, 0);
+
+    vbox9 = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox9), BORDER);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox9, TRUE, TRUE, 0);
+    gtk_widget_show (vbox9);
 
     frame = xfce_framebox_new (_("Window shortcuts"), FALSE);
     gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox8), frame, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox9), frame, TRUE, TRUE, 0);
 
     dialog->scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (dialog->scrolledwindow3), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -1509,7 +1523,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     frame = xfce_framebox_new (_("Command shortcuts"), FALSE);
     gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox8), frame, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox9), frame, TRUE, TRUE, 0);
 
     dialog->scrolledwindow4 = gtk_scrolled_window_new (NULL, NULL);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (dialog->scrolledwindow4), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -1835,6 +1849,8 @@ setup_dialog (Itf * itf)
     g_signal_connect (G_OBJECT (itf->treeview2), "button-press-event", G_CALLBACK (cb_popup_menu), itf);
     g_signal_connect (G_OBJECT (itf->popup_add_menuitem), "activate", G_CALLBACK (cb_popup_add_menu), itf);
     g_signal_connect (G_OBJECT (itf->popup_del_menuitem), "activate", G_CALLBACK (cb_popup_del_menu), itf);
+    g_signal_connect (G_OBJECT (itf->add_button), "clicked", G_CALLBACK (cb_popup_add_menu), itf);
+    g_signal_connect (G_OBJECT (itf->del_button), "clicked", G_CALLBACK (cb_popup_del_menu), itf);
 
     g_signal_connect (G_OBJECT (itf->treeview3), "row-activated", G_CALLBACK (cb_activate_treeview3), itf);
     g_signal_connect (G_OBJECT (itf->treeview4), "row-activated", G_CALLBACK (cb_activate_treeview4), itf);

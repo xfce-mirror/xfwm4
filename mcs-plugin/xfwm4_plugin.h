@@ -105,6 +105,8 @@ struct _Itf
     GtkWidget *popup_menu;
     GtkWidget* popup_add_menuitem;
     GtkWidget* popup_del_menuitem;
+    GtkWidget* add_button;
+    GtkWidget* del_button;
 
 };
 

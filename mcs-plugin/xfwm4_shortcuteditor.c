@@ -117,7 +117,7 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     gchar *new_theme_file = NULL;
 
     itf = (Itf *) data;
-    
+
     dialog = gtk_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
                                           GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
