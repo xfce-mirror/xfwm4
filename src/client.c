@@ -3790,15 +3790,8 @@ clientClose (Client * c)
     TRACE ("entering clientClose");
     TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_DELETE))
-    {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window,
-            NoEventMask);
-    }
-    else
-    {
-        clientKill (c);
-    }
+    sendClientMessage (c->window, wm_protocols, wm_delete_window,
+        NoEventMask);
 }
 
 void
