@@ -3482,12 +3482,15 @@ clientResize (Client * c, int corner, XEvent * e)
 static XfceFilterStatus
 clientCycle_event_filter (XEvent * xevent, gpointer data)
 {
-    XfceFilterStatus status = XEV_FILTER_STOP;
-    gboolean cycling = TRUE;
-    gboolean gone = FALSE;
     ClientCycleData *passdata = (ClientCycleData *) data;
     Client *c = passdata->c;
     ScreenInfo *screen_info = c->screen_info;
+    XfceFilterStatus status = XEV_FILTER_STOP;
+    KeyCode keycode = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
+    int modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
+    gboolean key_pressed = ((xevent->type == KeyPress) && (xevent->xkey.keycode == keycode));
+    gboolean cycling = TRUE;
+    gboolean gone = FALSE;
     
     TRACE ("entering clientCycle_event_filter");
     switch (xevent->type)
@@ -3499,22 +3502,26 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             gone |= (c == clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
         case KeyPress:
-            if (gone || (xevent->xkey.keycode == screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode))
+            if (gone || key_pressed)
             {
                 /* Hide frame draw */
                 clientDrawOutline (c);
 
-                /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
-                if (!(screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask)
-                        && xevent->xkey.state & ShiftMask) 
+                if (key_pressed)
                 {
-                    c = clientGetPrevious (c, passdata->cycle_range);
-                    passdata->c = c;
-                }
-                else
-                {
-                    c = clientGetNext (c, passdata->cycle_range);
-                    passdata->c = c;
+                    /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
+                    if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
+                    {
+                        TRACE ("Cycle: previous");
+                        c = clientGetPrevious (c, passdata->cycle_range);
+                        passdata->c = c;
+                    }
+                    else
+                    {
+                        TRACE ("Cycle: next");
+                        c = clientGetNext (c, passdata->cycle_range);
+                        passdata->c = c;
+                    }
                 }
 
                 if (c)
