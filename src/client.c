@@ -62,6 +62,7 @@
     EnterWindowMask
 
 #define CLIENT_EVENT_MASK \
+    StructureNotifyMask|\
     FocusChangeMask|\
     PropertyChangeMask
 
@@ -3286,6 +3287,8 @@ void
 clientUnframe (Client * c, gboolean remap)
 {
     int i;
+    XEvent ev;
+    gboolean reparented;
 
     TRACE ("entering clientUnframe");
     TRACE ("unframing client \"%s\" (0x%lx) [%s]", 
@@ -3301,10 +3304,28 @@ clientUnframe (Client * c, gboolean remap)
         last_raise = NULL;
     }
     clientRemoveFromList (c);
-
     MyXGrabServer ();
     gdk_error_trap_push ();
     clientGravitate (c, REMOVE);
+    XSelectInput (dpy, c->window, NoEventMask);
+    XUnmapWindow (dpy, c->frame);
+    setWMState (dpy, c->window, WithdrawnState);
+    reparented = XCheckTypedWindowEvent (dpy, c->window, ReparentNotify, &ev);
+
+    if (remap || !reparented)
+    {
+        XReparentWindow (dpy, c->window, root, c->x, c->y);
+        XSetWindowBorderWidth (dpy, c->window, c->border_width);
+    }
+    else
+    {
+        XDeleteProperty (dpy, c->window, net_wm_state);
+        XDeleteProperty (dpy, c->window, win_state);
+        XDeleteProperty (dpy, c->window, net_wm_desktop);
+        XDeleteProperty (dpy, c->window, win_workspace);
+        XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
+    }
+
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
     myWindowDelete (&c->title);
@@ -3319,28 +3340,12 @@ clientUnframe (Client * c, gboolean remap)
     {
         myWindowDelete (&c->buttons[i]);
     }
-    XUnmapWindow (dpy, c->window);
-    XReparentWindow (dpy, c->window, root, c->x, c->y);
-    XSetWindowBorderWidth (dpy, c->window, c->border_width);
     XDestroyWindow (dpy, c->frame);
-    if (remap)
-    {
-        XMapWindow (dpy, c->window);
-    }
-    else
-    {
-        setWMState (dpy, c->window, WithdrawnState);
-        /* Cleanup */
-        XDeleteProperty (dpy, c->window, net_wm_state);
-        XDeleteProperty (dpy, c->window, win_state);
-        XDeleteProperty (dpy, c->window, net_wm_desktop);
-        XDeleteProperty (dpy, c->window, win_workspace);
-        XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
-    }
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea (margins, gnome_margins);
     }
+    
     MyXUngrabServer ();
     gdk_error_trap_pop ();
     clientFree (c);

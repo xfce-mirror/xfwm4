@@ -920,6 +920,12 @@ handleUnmapNotify (XUnmapEvent * ev)
         return;
     }
 
+    if ((ev->event != ev->window) && (ev->event != root || !ev->send_event))
+    {
+        TRACE ("handleUnmapNotify (): Event ignored\n");
+        return;
+    }
+
     c = clientGetFromWindow (ev->window, WINDOW); 
     if (c)
     {
