@@ -101,13 +101,13 @@ clientIsTransientFor (Client * c1, Client * c2)
 
     TRACE ("entering clientIsTransientFor");
 
-    if ((c1->transient_for) && (c1->serial >= c2->serial))
+    if (c1->transient_for)
     {
         if (c1->transient_for != c1->screen_info->xroot)
         {
             return (c1->transient_for == c2->window);
         }
-        else
+        else if (c1->serial >= c2->serial)
         {
             return (clientSameGroup (c1, c2));
         }
