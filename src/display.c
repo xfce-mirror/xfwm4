@@ -54,10 +54,10 @@ myDisplayInitAtoms (DisplayInfo *display_info)
 {
     char *atom_names[] = {
         "GNOME_PANEL_DESKTOP_AREA",
-        "KDE_NET_WM_CONTEXT_HELP",
-        "KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
+        "_KDE_NET_WM_CONTEXT_HELP",
+        "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
-        "MOTIF_WM_HINTS",
+        "_MOTIF_WM_HINTS",
         "_NET_ACTIVE_WINDOW",
         "_NET_CLIENT_LIST",
         "_NET_CLIENT_LIST_STACKING",
@@ -137,7 +137,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "WM_HINTS",
         "WM_PROTOCOLS",
         "WM_STATE",
-        "WM_TAKEFOCUS",
+        "WM_TAKE_FOCUS",
         "WM_TRANSIENT_FOR",
         "WM_WINDOW_ROLE",
         "_XROOTPMAP",

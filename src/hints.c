@@ -132,7 +132,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
         {
-            if (*ap == (Atom) display_info->atoms[WM_TAKEFOCUS])
+            if (*ap == (Atom) display_info->atoms[WM_TAKE_FOCUS])
             {
                 result |= WM_PROTOCOLS_TAKE_FOCUS;
             }
@@ -155,7 +155,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
         {
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
-                if (*ap == (Atom) display_info->atoms[WM_TAKEFOCUS])
+                if (*ap == (Atom) display_info->atoms[WM_TAKE_FOCUS])
                 {
                     result |= WM_PROTOCOLS_TAKE_FOCUS;
                 }

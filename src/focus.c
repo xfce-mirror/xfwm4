@@ -461,7 +461,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
-            sendClientMessage (c->screen_info, c->window, display_info->atoms[WM_TAKEFOCUS], timestamp);
+            sendClientMessage (c->screen_info, c->window, display_info->atoms[WM_TAKE_FOCUS], timestamp);
         }
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {

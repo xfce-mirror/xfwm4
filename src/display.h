@@ -141,7 +141,7 @@
 #define WM_HINTS                                                81
 #define WM_PROTOCOLS                                            82
 #define WM_STATE                                                83
-#define WM_TAKEFOCUS                                            84
+#define WM_TAKE_FOCUS                                           84
 #define WM_TRANSIENT_FOR                                        85
 #define WM_WINDOW_ROLE                                          86
 #define XROOTPMAP                                               87
