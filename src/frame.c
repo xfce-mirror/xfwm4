@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -28,7 +28,7 @@
 #include <pango/pango.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "main.h"
+#include "screen.h"
 #include "client.h"
 #include "settings.h"
 #include "mywindow.h"
@@ -146,7 +146,7 @@ frameHeight (Client * c)
 }
 
 static void
-fillRectangle (Display *dpy, Drawable d, Pixmap pm, int x, int y, int width,
+fillRectangle (Display *dpy, int screen, Drawable d, Pixmap pm, int x, int y, int width,
     int height)
 {
     XGCValues gv;
@@ -163,7 +163,7 @@ fillRectangle (Display *dpy, Drawable d, Pixmap pm, int x, int y, int width,
     gv.tile = pm;
     gv.ts_x_origin = x;
     gv.ts_y_origin = y;
-    gv.foreground = WhitePixel (dpy, md->screen);
+    gv.foreground = WhitePixel (dpy, screen);
     if (gv.tile != None)
     {
         mask = GCTile | GCFillStyle | GCTileStipXOrigin;
@@ -231,7 +231,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right,
     w2 = params.title[TITLE_2][ACTIVE].width;
     w4 = params.title[TITLE_4][ACTIVE].width;
 
-    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (md->gtox_data), c->name);
+    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (c->md->gtox_data), c->name);
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     if (params.full_width_title)
@@ -290,23 +290,23 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right,
         }
     }
 
-    myPixmapCreate (md->dpy, pm, width, frameTop (c));
+    myPixmapCreate (c->md, pm, width, frameTop (c));
     gpixmap = gdk_pixmap_foreign_new (pm->pixmap);
     gdk_drawable_set_colormap (gpixmap, gdk_colormap_get_system ());
     gc = gdk_gc_new (gpixmap);
 
     if (w1 > 0)
     {
-        fillRectangle (md->dpy, pm->pixmap, params.title[TITLE_1][state].pixmap,
+        fillRectangle (c->md->dpy, c->md->screen, pm->pixmap, params.title[TITLE_1][state].pixmap,
             0, 0, w1, frameTop (c));
-        fillRectangle (md->dpy, pm->mask, params.title[TITLE_1][state].mask, 0, 0,
+        fillRectangle (c->md->dpy, c->md->screen, pm->mask, params.title[TITLE_1][state].mask, 0, 0,
             w1, frameTop (c));
         x = x + w1;
     }
 
-    fillRectangle (md->dpy, pm->pixmap, params.title[TITLE_2][state].pixmap, x, 0,
+    fillRectangle (c->md->dpy, c->md->screen, pm->pixmap, params.title[TITLE_2][state].pixmap, x, 0,
         w2, frameTop (c));
-    fillRectangle (md->dpy, pm->mask, params.title[TITLE_2][state].mask, x, 0, w2,
+    fillRectangle (c->md->dpy, c->md->screen, pm->mask, params.title[TITLE_2][state].mask, x, 0, w2,
         frameTop (c));
     x = x + w2;
 
@@ -320,9 +320,9 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right,
         {
             voffset = params.title_vertical_offset_inactive;
         }
-        fillRectangle (md->dpy, pm->pixmap, params.title[TITLE_3][state].pixmap,
+        fillRectangle (c->md->dpy, c->md->screen, pm->pixmap, params.title[TITLE_3][state].pixmap,
             x, 0, w3, frameTop (c));
-        fillRectangle (md->dpy, pm->mask, params.title[TITLE_3][state].mask, x, 0,
+        fillRectangle (c->md->dpy, c->md->screen, pm->mask, params.title[TITLE_3][state].mask, x, 0,
             w3, frameTop (c));
         if (params.title_shadow[state])
         {
@@ -343,17 +343,17 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right,
     {
         x = right - w4;
     }
-    fillRectangle (md->dpy, pm->pixmap, params.title[TITLE_4][state].pixmap, x, 0,
+    fillRectangle (c->md->dpy, c->md->screen, pm->pixmap, params.title[TITLE_4][state].pixmap, x, 0,
         w4, frameTop (c));
-    fillRectangle (md->dpy, pm->mask, params.title[TITLE_4][state].mask, x, 0, w4,
+    fillRectangle (c->md->dpy, c->md->screen, pm->mask, params.title[TITLE_4][state].mask, x, 0, w4,
         frameTop (c));
     x = x + w4;
 
     if (w5 > 0)
     {
-        fillRectangle (md->dpy, pm->pixmap, params.title[TITLE_5][state].pixmap,
+        fillRectangle (c->md->dpy, c->md->screen, pm->pixmap, params.title[TITLE_5][state].pixmap,
             x, 0, w5, frameTop (c));
-        fillRectangle (md->dpy, pm->mask, params.title[TITLE_5][state].mask, x, 0,
+        fillRectangle (c->md->dpy, c->md->screen, pm->mask, params.title[TITLE_5][state].mask, x, 0,
             w5, frameTop (c));
     }
     g_object_unref (G_OBJECT (gc));
@@ -510,13 +510,13 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
     TRACE ("entering frameSetShape");
     TRACE ("setting shape for client (0x%lx)", c->window);
 
-    if (!md->shape)
+    if (!c->md->shape)
     {
         return;
     }
 
     temp =
-        XCreateSimpleWindow (md->dpy, md->xroot, 0, 0, frameWidth (c), frameHeight (c),
+        XCreateSimpleWindow (c->md->dpy, c->md->xroot, 0, 0, frameWidth (c), frameHeight (c),
         0, 0, 0);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -525,40 +525,40 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
         rect.y = 0;
         rect.width = frameWidth (c);
         rect.height = frameHeight (c);
-        XShapeCombineRectangles (md->dpy, temp, ShapeBounding, 0, 0, &rect, 1,
+        XShapeCombineRectangles (c->md->dpy, temp, ShapeBounding, 0, 0, &rect, 1,
             ShapeSubtract, 0);
     }
     else
     {
-        XShapeCombineShape (md->dpy, temp, ShapeBounding, frameLeft (c),
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding, frameLeft (c),
             frameTop (c), c->window, ShapeBounding, ShapeSet);
     }
     if (pm_cache)
     {
-        XShapeCombineMask (md->dpy, MYWINDOW_XWINDOW (c->title), ShapeBounding, 0,
+        XShapeCombineMask (c->md->dpy, MYWINDOW_XWINDOW (c->title), ShapeBounding, 0,
             0, pm_cache->pm_title[state].mask, ShapeSet);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            XShapeCombineMask (md->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
+            XShapeCombineMask (c->md->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
                 ShapeBounding, 0, 0,
                 pm_cache->pm_sides[SIDE_LEFT][state].mask, ShapeSet);
-            XShapeCombineMask (md->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
+            XShapeCombineMask (c->md->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
                 ShapeBounding, 0, 0,
                 pm_cache->pm_sides[SIDE_RIGHT][state].mask, ShapeSet);
         }
-        XShapeCombineMask (md->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
+        XShapeCombineMask (c->md->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
             ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_BOTTOM][state].mask,
             ShapeSet);
-        XShapeCombineMask (md->dpy,
+        XShapeCombineMask (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding,
             0, 0, params.corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
-        XShapeCombineMask (md->dpy,
+        XShapeCombineMask (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding,
             0, 0, params.corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
-        XShapeCombineMask (md->dpy,
+        XShapeCombineMask (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding, 0,
             0, params.corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
-        XShapeCombineMask (md->dpy,
+        XShapeCombineMask (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding, 0,
             0, params.corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
 
@@ -566,7 +566,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
         {
             my_pixmap =
                 frameGetPixmap (c, i, c->button_pressed[i] ? PRESSED : state);
-            XShapeCombineMask (md->dpy, MYWINDOW_XWINDOW (c->buttons[i]),
+            XShapeCombineMask (c->md->dpy, MYWINDOW_XWINDOW (c->buttons[i]),
                 ShapeBounding, 0, 0, my_pixmap->mask, ShapeSet);
         }
 
@@ -579,7 +579,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
             rect.height =
                 params.corners[CORNER_TOP_LEFT][ACTIVE].height -
                 (frameHeight (c) - frameBottom (c) + 1);
-            XShapeCombineRectangles (md->dpy,
+            XShapeCombineRectangles (c->md->dpy,
                 MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding,
                 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -592,7 +592,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
             rect.height =
                 params.corners[CORNER_TOP_RIGHT][ACTIVE].height -
                 (frameHeight (c) - frameBottom (c) + 1);
-            XShapeCombineRectangles (md->dpy,
+            XShapeCombineRectangles (c->md->dpy,
                 MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
                 ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -605,7 +605,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
             rect.height =
                 params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height -
                 (frameHeight (c) - frameTop (c) + 1);
-            XShapeCombineRectangles (md->dpy,
+            XShapeCombineRectangles (c->md->dpy,
                 MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
                 ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -618,45 +618,45 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
             rect.height =
                 params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height -
                 (frameHeight (c) - frameTop (c) + 1);
-            XShapeCombineRectangles (md->dpy,
+            XShapeCombineRectangles (c->md->dpy,
                 MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
                 ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            XShapeCombineShape (md->dpy, temp, ShapeBounding, 0, frameTop (c),
+            XShapeCombineShape (c->md->dpy, temp, ShapeBounding, 0, frameTop (c),
                 MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]), ShapeBounding,
                 ShapeUnion);
-            XShapeCombineShape (md->dpy, temp, ShapeBounding,
+            XShapeCombineShape (c->md->dpy, temp, ShapeBounding,
                 frameWidth (c) - frameRight (c), frameTop (c),
                 MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]), ShapeBounding,
                 ShapeUnion);
         }
-        XShapeCombineShape (md->dpy, temp, ShapeBounding,
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding,
             params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0,
             MYWINDOW_XWINDOW (c->title), ShapeBounding, ShapeUnion);
-        XShapeCombineShape (md->dpy, temp, ShapeBounding,
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding,
             params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width,
             frameHeight (c) - frameBottom (c),
             MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]), ShapeBounding,
             ShapeUnion);
-        XShapeCombineShape (md->dpy, temp, ShapeBounding, 0,
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding, 0,
             frameHeight (c) -
             params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height,
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding,
             ShapeUnion);
-        XShapeCombineShape (md->dpy, temp, ShapeBounding,
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding,
             frameWidth (c) -
             params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width,
             frameHeight (c) -
             params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height,
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding,
             ShapeUnion);
-        XShapeCombineShape (md->dpy, temp, ShapeBounding, 0, 0,
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding, 0, 0,
             MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding,
             ShapeUnion);
-        XShapeCombineShape (md->dpy, temp, ShapeBounding,
+        XShapeCombineShape (c->md->dpy, temp, ShapeBounding,
             frameWidth (c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width,
             0, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding,
             ShapeUnion);
@@ -666,16 +666,16 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
             char b = getLetterFromButton (i, c);
             if ((b) && strchr (params.button_layout, b))
             {
-                XShapeCombineShape (md->dpy, temp, ShapeBounding, button_x[i],
+                XShapeCombineShape (c->md->dpy, temp, ShapeBounding, button_x[i],
                     (frameTop (c) - params.buttons[i][ACTIVE].height) / 2,
                     MYWINDOW_XWINDOW (c->buttons[i]), ShapeBounding,
                     ShapeUnion);
             }
         }
     }
-    XShapeCombineShape (md->dpy, c->frame, ShapeBounding, 0, 0, temp,
+    XShapeCombineShape (c->md->dpy, c->frame, ShapeBounding, 0, 0, temp,
         ShapeBounding, ShapeSet);
-    XDestroyWindow (md->dpy, temp);
+    XDestroyWindow (c->md->dpy, temp);
 }
 
 void
@@ -736,23 +736,19 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             if (c->pm_cache.previous_width != c->width)
             {
-                myPixmapFree (md->dpy, &c->pm_cache.pm_title[ACTIVE]);
-                myPixmapFree (md->dpy, &c->pm_cache.pm_title[INACTIVE]);
-                myPixmapFree (md->dpy,
-                    &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-                myPixmapFree (md->dpy,
-                    &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_title[ACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_title[INACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
                 c->pm_cache.previous_width = c->width;
                 requires_clearing = TRUE;
             }
             if (c->pm_cache.previous_height != c->height)
             {
-                myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-                myPixmapFree (md->dpy,
-                    &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-                myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-                myPixmapFree (md->dpy,
-                    &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+                myPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
                 c->pm_cache.previous_height = c->height;
                 requires_clearing = TRUE;
             }
@@ -784,7 +780,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                     c->button_pressed[button] ? PRESSED : state);
                 if (my_pixmap->pixmap)
                 {
-                    XSetWindowBackgroundPixmap (md->dpy,
+                    XSetWindowBackgroundPixmap (c->md->dpy,
                         MYWINDOW_XWINDOW (c->buttons[button]),
                         my_pixmap->pixmap);
                 }
@@ -817,7 +813,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                     c->button_pressed[button] ? PRESSED : state);
                 if (my_pixmap->pixmap)
                 {
-                    XSetWindowBackgroundPixmap (md->dpy,
+                    XSetWindowBackgroundPixmap (c->md->dpy,
                         MYWINDOW_XWINDOW (c->buttons[button]),
                         my_pixmap->pixmap);
                 }
@@ -856,64 +852,64 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 
         if (c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
         {
-            myPixmapCreate (md->dpy, &c->pm_cache.pm_sides[SIDE_LEFT][state],
+            myPixmapCreate (c->md, &c->pm_cache.pm_sides[SIDE_LEFT][state],
                 frameLeft (c), left_height);
             requires_clearing = TRUE;
         }
-        fillRectangle (md->dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap,
+        fillRectangle (c->md->dpy, c->md->screen, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap,
             params.sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft (c),
             left_height);
-        fillRectangle (md->dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].mask,
+        fillRectangle (c->md->dpy, c->md->screen, c->pm_cache.pm_sides[SIDE_LEFT][state].mask,
             params.sides[SIDE_LEFT][state].mask, 0, 0, frameLeft (c),
             left_height);
 
         if (c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
         {
-            myPixmapCreate (md->dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][state],
+            myPixmapCreate (c->md, &c->pm_cache.pm_sides[SIDE_RIGHT][state],
                 frameRight (c), right_height);
             requires_clearing = TRUE;
         }
-        fillRectangle (md->dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap,
+        fillRectangle (c->md->dpy, c->md->screen, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap,
             params.sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight (c),
             right_height);
-        fillRectangle (md->dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].mask,
+        fillRectangle (c->md->dpy, c->md->screen, c->pm_cache.pm_sides[SIDE_RIGHT][state].mask,
             params.sides[SIDE_RIGHT][state].mask, 0, 0, frameRight (c),
             right_height);
 
         if (c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
         {
-            myPixmapCreate (md->dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][state],
+            myPixmapCreate (c->md, &c->pm_cache.pm_sides[SIDE_BOTTOM][state],
                 bottom_width, frameBottom (c));
             requires_clearing = TRUE;
         }
-        fillRectangle (md->dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap,
+        fillRectangle (c->md->dpy, c->md->screen, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap,
             params.sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width,
             frameBottom (c));
-        fillRectangle (md->dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].mask,
+        fillRectangle (c->md->dpy, c->md->screen, c->pm_cache.pm_sides[SIDE_BOTTOM][state].mask,
             params.sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width,
             frameBottom (c));
 
-        XSetWindowBackgroundPixmap (md->dpy, MYWINDOW_XWINDOW (c->title),
+        XSetWindowBackgroundPixmap (c->md->dpy, MYWINDOW_XWINDOW (c->title),
             c->pm_cache.pm_title[state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
             c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
             c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
             c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
             params.corners[CORNER_TOP_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
             params.corners[CORNER_TOP_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
             params.corners[CORNER_BOTTOM_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (md->dpy,
+        XSetWindowBackgroundPixmap (c->md->dpy,
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
             params.corners[CORNER_BOTTOM_RIGHT][state].pixmap);
 

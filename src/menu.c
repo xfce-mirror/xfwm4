@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -32,7 +32,6 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 #include "menu.h"
-#include "main.h"
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
@@ -127,7 +126,7 @@ activate_cb (GtkWidget * menuitem, gpointer data)
     menudata = data;
 
     TRACE ("deactivating menu_filter");
-    xfce_pop_event_filter (md->gtox_data);
+    xfce_pop_event_filter (menudata->menu->filter_setup);
     (*menudata->menu->func) (menudata->menu, 
                              menudata->op, 
                              menudata->client_xwindow, 
@@ -145,7 +144,7 @@ menu_closed (GtkMenu * widget, gpointer data)
     menu = data;
     menu_open = NULL;
     TRACE ("deactivating menu_filter");
-    xfce_pop_event_filter (md->gtox_data);
+    xfce_pop_event_filter (menu->filter_setup);
     (*menu->func) (menu, 0, None, menu->data, NULL);
     return (FALSE);
 }
@@ -204,7 +203,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
 
 Menu *
 menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
-    gint nws, gchar *wsn, gint wsnl, gpointer data)
+    gint nws, gchar *wsn, gint wsnl, XfceFilterSetup *filter_setup, gpointer data)
 {
     int i;
     Menu *menu;
@@ -212,6 +211,7 @@ menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
     TRACE ("entering menu_new");
     menu = g_new (Menu, 1);
     menu->func = func;
+    menu->filter_setup = filter_setup;
     menu->data = data;
     menu->ops = ops;
     menu->insensitive = insensitive;
@@ -343,7 +343,7 @@ menu_check_and_close (void)
 }
 
 static gboolean
-grab_available (guint32 timestamp)
+grab_available (GdkWindow *win, guint32 timestamp)
 {
     GdkEventMask mask =
         GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
@@ -356,9 +356,8 @@ grab_available (guint32 timestamp)
 
     TRACE ("entering grab_available");
 
-    g1 = gdk_pointer_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, mask, NULL, NULL,
-        timestamp);
-    g2 = gdk_keyboard_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, timestamp);
+    g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
+    g2 = gdk_keyboard_grab (win, TRUE, timestamp);
 
     while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
                 || (g2 != GDK_GRAB_SUCCESS))))
@@ -367,12 +366,11 @@ grab_available (guint32 timestamp)
         g_usleep (100);
         if (g1 != GDK_GRAB_SUCCESS)
         {
-            g1 = gdk_pointer_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, mask, NULL,
-                NULL, timestamp);
+            g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
         }
         if (g2 != GDK_GRAB_SUCCESS)
         {
-            g2 = gdk_keyboard_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, timestamp);
+            g2 = gdk_keyboard_grab (win, TRUE, timestamp);
         }
     }
 
@@ -405,7 +403,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
 
     if (!menu_check_and_close ())
     {
-        if (!grab_available (timestamp))
+        if (!grab_available (xfce_get_gdk_event_window (menu->filter_setup), timestamp))
         {
             g_free (pt);
             TRACE ("Cannot get grab on pointer/keyboard, cancel.");
@@ -413,7 +411,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         }
         TRACE ("opening new menu");
         menu_open = menu->menu;
-        xfce_push_event_filter (md->gtox_data, menu_filter, NULL);
+        xfce_push_event_filter (menu->filter_setup, menu_filter, NULL);
         gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
             popup_position_func, pt, 0, timestamp);
 
@@ -424,7 +422,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
                 g_get_prgname ());
             gtk_menu_popdown (GTK_MENU (menu->menu));
             menu_open = NULL;
-            xfce_pop_event_filter (md->gtox_data);
+            xfce_pop_event_filter (menu->filter_setup);
             return FALSE;
         }
     }

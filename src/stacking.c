@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,7 +23,8 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "main.h"
+#include "screen.h"
+#include "mywindow.h"
 #include "client.h"
 #include "stacking.h"
 #include "netwm.h"
@@ -36,7 +37,7 @@ static Client *last_raise    = NULL;
 static GList *windows        = NULL;
 
 void
-clientApplyStackList (void)
+clientApplyStackList (ScreenData *md)
 {
     Window *xwinstack;
     guint nwindows;
@@ -46,8 +47,8 @@ clientApplyStackList (void)
     nwindows = g_list_length (windows_stack);
 
     xwinstack = g_new (Window, nwindows + 2);
-    xwinstack[i++] = md->sidewalk[0];
-    xwinstack[i++] = md->sidewalk[1];
+    xwinstack[i++] = MYWINDOW_XWINDOW (md->sidewalk[0]);
+    xwinstack[i++] = MYWINDOW_XWINDOW (md->sidewalk[1]);
 
     if (nwindows)
     {
@@ -366,8 +367,8 @@ clientRaise (Client * c)
         /* Now, windows_stack contains the correct window stack
            We still need to tell the X Server to reflect the changes 
          */
-        clientApplyStackList ();
-        clientSetNetClientList (net_client_list_stacking, windows_stack);
+        clientApplyStackList (c->md);
+        clientSetNetClientList (c->md, net_client_list_stacking, windows_stack);
         last_raise = c;
     }
 }
@@ -421,8 +422,8 @@ clientLower (Client * c)
         /* Now, windows_stack contains the correct window stack
            We still need to tell the X Server to reflect the changes 
          */
-        clientApplyStackList ();
-        clientSetNetClientList (net_client_list_stacking, windows_stack);
+        clientApplyStackList (c->md);
+        clientSetNetClientList (c->md, net_client_list_stacking, windows_stack);
         if (last_raise == c)
         {
             last_raise = NULL;
@@ -487,9 +488,9 @@ clientAddToList (Client * c)
         }
     }
     
-    clientSetNetClientList (net_client_list, windows);
-    clientSetNetClientList (win_client_list, windows);
-    clientSetNetClientList (net_client_list_stacking, windows_stack);
+    clientSetNetClientList (c->md, net_client_list, windows);
+    clientSetNetClientList (c->md, win_client_list, windows);
+    clientSetNetClientList (c->md, net_client_list_stacking, windows_stack);
   
     FLAG_SET (c->flags, CLIENT_FLAG_MANAGED);
 }
@@ -525,9 +526,9 @@ clientRemoveFromList (Client * c)
         c->window);
     windows_stack = g_list_remove (windows_stack, c);
 
-    clientSetNetClientList (net_client_list, windows);
-    clientSetNetClientList (win_client_list, windows);
-    clientSetNetClientList (net_client_list_stacking, windows_stack);
+    clientSetNetClientList (c->md, net_client_list, windows);
+    clientSetNetClientList (c->md, win_client_list, windows);
+    clientSetNetClientList (c->md, net_client_list_stacking, windows_stack);
 
     FLAG_UNSET (c->flags, CLIENT_FLAG_MANAGED);
 }

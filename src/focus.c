@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -34,7 +34,7 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "main.h"
+#include "screen.h"
 #include "focus.h"
 #include "misc.h"
 #include "client.h"
@@ -56,7 +56,7 @@ static Client *pending_focus = NULL;
 static Client *last_ungrab   = NULL;
 
 static ClientPair
-clientGetTopMostFocusable (int layer, Client * exclude)
+clientGetTopMostFocusable (ScreenData *md, int layer, Client * exclude)
 {
     ClientPair top_client;
     Client *c;
@@ -98,18 +98,18 @@ clientGetTopMostFocusable (int layer, Client * exclude)
 }
 
 void
-clientFocusTop (int layer)
+clientFocusTop (ScreenData *md, int layer)
 {
     ClientPair top_client;
 
-    top_client = clientGetTopMostFocusable (layer, NULL);
+    top_client = clientGetTopMostFocusable (md, layer, NULL);
     if (top_client.prefered)
     {
-        clientSetFocus (top_client.prefered, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (md, top_client.prefered, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
     else
     {
-        clientSetFocus (top_client.highest, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (md, top_client.highest, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
 }
 
@@ -143,7 +143,7 @@ clientFocusNew(Client * c)
     
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-        clientSetFocus (c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+        clientSetFocus (c->md, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
         clientPassGrabButton1 (c);
     }
     else
@@ -176,7 +176,7 @@ clientSelectMask (Client * c, int mask)
     {
         okay = FALSE;
     }
-    if ((c->win_workspace != md->current_ws) && !(mask & INCLUDE_ALL_WORKSPACES))
+    if ((c->win_workspace != c->md->current_ws) && !(mask & INCLUDE_ALL_WORKSPACES))
     {
         okay = FALSE;
     }
@@ -237,7 +237,7 @@ clientGetPrevious (Client * c, int mask)
 }
 
 void
-clientPassFocus (Client * c)
+clientPassFocus (ScreenData *md, Client * c)
 {
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
@@ -260,14 +260,14 @@ clientPassFocus (Client * c)
         return;
     }
 
-    top_most = clientGetTopMostFocusable (look_in_layer, c);
+    top_most = clientGetTopMostFocusable (md, look_in_layer, c);
     if (params.click_to_focus)
     {
         if ((c) && clientIsModal (c))
         {
             /* If the window is a modal, send focus back to its parent window
                Modals are transients, and we aren"t interested in modal
-               for group, so it safe to sue clientGetTransient because 
+               for group, so it safe to use clientGetTransient because 
                it's really what we want...
              */
 
@@ -288,7 +288,7 @@ clientPassFocus (Client * c)
     {
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+    clientSetFocus (md, new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most.highest)
     {
         clientPassGrabButton1 (new_focus);
@@ -344,7 +344,7 @@ clientSortRing(Client *c)
 }
 
 void
-clientUpdateFocus (Client * c, unsigned short flags)
+clientUpdateFocus (ScreenData *md, Client * c, unsigned short flags)
 {
     Client *c2 = ((client_focus != c) ? client_focus : NULL);
     unsigned long data[2];
@@ -415,7 +415,7 @@ clientUpdateFocus (Client * c, unsigned short flags)
 }
 
 void
-clientSetFocus (Client * c, Time timestamp, unsigned short flags)
+clientSetFocus (ScreenData *md, Client * c, Time timestamp, unsigned short flags)
 {
     Client *c2;
 
@@ -452,7 +452,7 @@ clientSetFocus (Client * c, Time timestamp, unsigned short flags)
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
-            sendClientMessage (c->window, wm_protocols, wm_takefocus, timestamp);
+            sendClientMessage (c->md, c->window, wm_protocols, wm_takefocus, timestamp);
         }
         XFlush (md->dpy);
     }
@@ -462,16 +462,18 @@ clientSetFocus (Client * c, Time timestamp, unsigned short flags)
         
         TRACE ("setting focus to none");
         
+        data[0] = data[1] = None;
         client_focus = NULL;
         if (c2)
         {
             frameDraw (c2, FALSE, FALSE);
+            XChangeProperty (c2->md->dpy, c2->md->xroot, net_active_window, XA_WINDOW, 32,
+                PropModeReplace, (unsigned char *) data, 2);
         }
-        XSetInputFocus (md->dpy, md->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
-        XFlush (md->dpy);
-        data[0] = data[1] = None;
         XChangeProperty (md->dpy, md->xroot, net_active_window, XA_WINDOW, 32,
             PropModeReplace, (unsigned char *) data, 2);
+        XSetInputFocus (md->dpy, md->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
+        XFlush (md->dpy);
     }
 }
 
@@ -494,7 +496,7 @@ clientGrabButton1 (Client * c)
     TRACE ("entering clientGrabButton1");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     
-    grabButton(md->dpy, Button1, 0, c->window);
+    grabButton(c->md->dpy, Button1, 0, c->window);
 }
 
 void
@@ -504,7 +506,7 @@ clientUngrabButton1 (Client * c)
     TRACE ("entering clientUngrabButton1");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    ungrabButton(md->dpy, Button1, 0, c->window);
+    ungrabButton(c->md->dpy, Button1, 0, c->window);
 }
 
 void

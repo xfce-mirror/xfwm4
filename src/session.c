@@ -1,16 +1,19 @@
-/* This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+/*
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
+ 
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+ 
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  */
 
 /* Initially inspired by xfwm, fvwm2, enlightment and twm implementations */
@@ -32,7 +35,7 @@
 #include <sys/types.h>
 #include <signal.h>
 
-#include "main.h"
+#include "screen.h"
 #include "hints.h"
 #include "client.h"
 #include "session.h"
@@ -269,7 +272,7 @@ sessionSaveWindowStates (gchar * filename)
         {
             if (c->client_leader != None)
             {
-                getWindowRole (md->dpy, c->client_leader, &window_role);
+                getWindowRole (c->md->dpy, c->client_leader, &window_role);
             }
             else
             {
@@ -278,7 +281,7 @@ sessionSaveWindowStates (gchar * filename)
 
             fprintf (f, "[CLIENT] 0x%lx\n", c->window);
 
-            getClientID (md->dpy, c->window, &client_id);
+            getClientID (c->md->dpy, c->window, &client_id);
             if (client_id)
             {
                 fprintf (f, "  [CLIENT_ID] %s\n", client_id);
@@ -314,7 +317,7 @@ sessionSaveWindowStates (gchar * filename)
             }
 
             wm_command_count = 0;
-            getWindowCommand (md->dpy, c->window, &wm_command, &wm_command_count);
+            getWindowCommand (c->md->dpy, c->window, &wm_command, &wm_command_count);
             if ((wm_command_count > 0) && (wm_command))
             {
                 gint j;
@@ -531,13 +534,13 @@ matchWin (Client * c, Match * m)
     g_return_val_if_fail (c != NULL, FALSE);
 
     found = FALSE;
-    getClientID (md->dpy, c->window, &client_id);
+    getClientID (c->md->dpy, c->window, &client_id);
     if (xstreq (client_id, m->client_id))
     {
         /* client_id's match */
         if (c->client_leader != None)
         {
-            getWindowRole (md->dpy, c->client_leader, &window_role);
+            getWindowRole (c->md->dpy, c->client_leader, &window_role);
         }
         else
         {
@@ -569,7 +572,7 @@ matchWin (Client * c, Match * m)
                 {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
                     wm_command_count = 0;
-                    getWindowCommand (md->dpy, c->window, &wm_command,
+                    getWindowCommand (c->md->dpy, c->window, &wm_command,
                         &wm_command_count);
                     if (wm_command_count == m->wm_command_count)
                     {

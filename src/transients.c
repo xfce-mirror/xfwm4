@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "main.h"
+#include "screen.h"
 #include "client.h"
 #include "stacking.h"
 
@@ -37,7 +37,7 @@ clientGetTransient (Client * c)
 
     TRACE ("entering clientGetTransient");
 
-    if ((c->transient_for) && (c->transient_for != md->xroot))
+    if ((c->transient_for) && (c->transient_for != c->md->xroot))
     {
         c2 = clientGetFromWindow (c->transient_for, WINDOW);
         return c2;
@@ -52,8 +52,8 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (((c->transient_for != md->xroot) && (c->transient_for != None)) || 
-            ((c->transient_for == md->xroot) && (c->group_leader != None)));
+    return (((c->transient_for != c->md->xroot) && (c->transient_for != None)) || 
+            ((c->transient_for == c->md->xroot) && (c->group_leader != None)));
 }
 
 gboolean
@@ -64,7 +64,7 @@ clientIsModal (Client * c)
     TRACE ("entering clientIsModal");
 
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
-            (((c->transient_for != md->xroot) && (c->transient_for != None)) ||
+            (((c->transient_for != c->md->xroot) && (c->transient_for != None)) ||
              (c->group_leader != None)));
 }
 
@@ -103,7 +103,7 @@ clientIsTransientFor (Client * c1, Client * c2)
 
     if ((c1->transient_for) && (c1->serial >= c2->serial))
     {
-        if (c1->transient_for != md->xroot)
+        if (c1->transient_for != c1->md->xroot)
         {
             return (c1->transient_for == c2->window);
         }
@@ -148,7 +148,7 @@ clientIsTransientForGroup (Client * c)
 
     TRACE ("entering clientIsTransientForGroup");
 
-    return ((c->transient_for == md->xroot) && (c->group_leader != None));
+    return ((c->transient_for == c->md->xroot) && (c->group_leader != None));
 }
 
 gboolean

@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,7 +15,7 @@
  
         Metacity - (c) 2001 Havoc Pennington
         libwnck  - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2004 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H
@@ -43,7 +43,7 @@ find_largest_sizes (gulong * data, gulong nitems, int *width, int *height)
     while (nitems > 0)
     {
         if (nitems < 3)
-	{
+        {
             return FALSE;       /* no space for w, h */
         }
 
@@ -51,10 +51,10 @@ find_largest_sizes (gulong * data, gulong nitems, int *width, int *height)
         h = data[1];
 
         if (nitems < ((w * h) + 2))
-	{
+        {
             return FALSE;       /* not enough data */
         }
-	
+        
         *width = MAX (w, *width);
         *height = MAX (h, *height);
 
@@ -128,18 +128,18 @@ find_best_size (gulong * data, gulong nitems, int ideal_width, int ideal_height,
             int this_size = (w + h) / 2;
 
             if ((best_size < ideal_size) && (this_size >= ideal_size))
-	    {
-        	/* larger than desired is always better than smaller */
+            {
+                /* larger than desired is always better than smaller */
                 replace = TRUE;
             }
             else if ((best_size < ideal_size) && (this_size > best_size))
             {
-		/* if we have too small, pick anything bigger */
-	        replace = TRUE;
+                /* if we have too small, pick anything bigger */
+                replace = TRUE;
             }
             else if ((best_size > ideal_size) && (this_size >= ideal_size) && (this_size < best_size))
             {
-	        /* if we have too large, pick anything smaller but still >= the ideal */
+                /* if we have too large, pick anything smaller but still >= the ideal */
                 replace = TRUE;
             }
         }
@@ -230,7 +230,6 @@ get_pixmap_geometry (Display *dpy, Pixmap pixmap, int *w, int *h)
 {
     Window root;
     int x, y;
-    guint width, height;
     guint border_width;
     guint depth;
 
@@ -272,12 +271,12 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
              * otherwise
              */
             if (s[0] == 0)
-	    {
+            {
                 d[3] = 0;       /* transparent */
             }
-	    else
+            else
             {
-	        d[3] = 255;     /* opaque */
+                d[3] = 255;     /* opaque */
             }
             ++j;
         }

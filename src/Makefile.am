@@ -18,7 +18,6 @@ xfwm4_SOURCES =								\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
-	main.h								\
 	menu.c								\
 	menu.h								\
 	misc.c								\

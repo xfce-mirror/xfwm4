@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -30,7 +30,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "main.h"
+#include "screen.h"
 #include "misc.h"
 #include "transients.h"
 #include "workspaces.h"
@@ -41,7 +41,7 @@
 #include "hints.h"
 
 void
-workspaceSwitch (int new_ws, Client * c2)
+workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
 {
     Client *c, *new_focus = NULL;
     Client *previous;
@@ -91,7 +91,7 @@ workspaceSwitch (int new_ws, Client * c2)
             if (c == previous)
             {
                 FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
-                clientSetFocus (NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+                clientSetFocus (md, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
             }
             if (!clientIsTransientOrModal (c))
             {
@@ -148,7 +148,7 @@ workspaceSwitch (int new_ws, Client * c2)
     data[0] = new_ws;
     XChangeProperty (md->dpy, md->xroot, net_current_desktop, XA_CARDINAL, 32,
         PropModeReplace, (unsigned char *) data, 1);
-    workspaceUpdateArea (md->margins, md->gnome_margins);
+    workspaceUpdateArea (md);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
     XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
@@ -164,7 +164,10 @@ workspaceSwitch (int new_ws, Client * c2)
             }
         }
     }
-    clientSetFocus (new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+    if (new_focus)
+    {
+        clientSetFocus (new_focus->md, new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+    }
 }
 
 void
@@ -180,7 +183,7 @@ workspaceSetNames (char *names, int length)
 }
 
 void
-workspaceSetCount (int count)
+workspaceSetCount (ScreenData * md, int count)
 {
     Client *c;
     int i;
@@ -209,7 +212,7 @@ workspaceSetCount (int count)
     }
     if (md->current_ws > count - 1)
     {
-        workspaceSwitch (count - 1, NULL);
+        workspaceSwitch (md, count - 1, NULL);
     }
     setNetWorkarea (md->dpy, md->screen, params.workspace_count, 
                          gdk_screen_get_width (md->gscr),
@@ -218,73 +221,50 @@ workspaceSetCount (int count)
 }
 
 void
-workspaceGetArea (int * m1, int * m2, Client * c)
+workspaceUpdateArea (ScreenData *md)
 {
-    Client *c2;
-    int i;
-
-    TRACE ("entering workspaceGetArea");
-
-    g_return_if_fail (m1 != NULL);
-
-    for (i = 0; i < 4; i++)
-    {
-        if (m2 == NULL)
-        {
-            m1[i] = 0;
-        }
-        else
-        {
-            m1[i] = m2[i];
-        }
-    }
-
-    for (c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
-    {
-        if (((!c) || (c != c2))
-            && FLAG_TEST_ALL (c2->flags,
-                CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
-        {
-            m1[TOP] = MAX (m1[TOP], c2->struts[TOP]);
-            m1[LEFT] = MAX (m1[LEFT], c2->struts[LEFT]);
-            m1[RIGHT] =
-                MAX (m1[RIGHT], c2->struts[RIGHT]);
-            m1[BOTTOM] =
-                MAX (m1[BOTTOM], c2->struts[BOTTOM]);
-        }
-    }
-}
-
-void
-workspaceUpdateArea (int * m1, int * m2)
-{
+    Client *c;
     int prev_top;
     int prev_left;
     int prev_right;
     int prev_bottom;
+    int i;
 
-    g_return_if_fail (m1 != NULL);
-    g_return_if_fail (m2 != NULL);
+    g_return_if_fail (md != NULL);
+    g_return_if_fail (md->margins != NULL);
+    g_return_if_fail (md->gnome_margins != NULL);
 
     TRACE ("entering workspaceUpdateArea");
 
-    prev_top = m1[TOP];
-    prev_left = m1[LEFT];
-    prev_right = m1[RIGHT];
-    prev_bottom = m1[BOTTOM];
+    prev_top = md->margins[TOP];
+    prev_left = md->margins[LEFT];
+    prev_right = md->margins[RIGHT];
+    prev_bottom = md->margins[BOTTOM];
 
-    workspaceGetArea (m1, m2, NULL);
+    for (i = 0; i < 4; i++)
+    {
+        md->margins[i] = md->gnome_margins[i];
+    }
 
-    TRACE ("Desktop area computed : (%d,%d,%d,%d)", (int) m1[0], (int) m1[1],
-        (int) m1[2], (int) m1[3]);
-    if ((prev_top != m1[TOP]) || (prev_left != m1[LEFT])
-        || (prev_right != m1[RIGHT])
-        || (prev_bottom != m1[BOTTOM]))
+    for (c = clients, i = 0; i < client_count; c = c->next, i++)
+    {
+        if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
+        {
+            md->margins[TOP]    = MAX (md->margins[TOP],    c->struts[TOP]);
+            md->margins[LEFT]   = MAX (md->margins[LEFT],   c->struts[LEFT]);
+            md->margins[RIGHT]  = MAX (md->margins[RIGHT],  c->struts[RIGHT]);
+            md->margins[BOTTOM] = MAX (md->margins[BOTTOM], c->struts[BOTTOM]);
+        }
+    }
+
+    if ((prev_top != md->margins[TOP]) || (prev_left != md->margins[LEFT])
+        || (prev_right != md->margins[RIGHT])
+        || (prev_bottom != md->margins[BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
         setNetWorkarea (md->dpy, md->screen, params.workspace_count, 
                              gdk_screen_get_width (md->gscr),
                              gdk_screen_get_height (md->gscr),
-                             m1);
+                             md->margins);
     }
 }

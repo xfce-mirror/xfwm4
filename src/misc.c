@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -35,14 +35,15 @@
 #include <unistd.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "main.h"
+#include "screen.h"
+#include "mywindow.h"
 #include "client.h"
 #include "misc.h"
 
 static int xgrabcount = 0;
 
 void
-getMouseXY (Window w, int *x2, int *y2)
+getMouseXY (ScreenData *md, Window w, int *x2, int *y2)
 {
     Window w1, w2;
     gint x1, y1, m;
@@ -53,7 +54,7 @@ getMouseXY (Window w, int *x2, int *y2)
 }
 
 Window
-getMouseWindow (Window w)
+getMouseWindow (ScreenData *md, Window w)
 {
     Window w1, w2;
     int x1, y1, x2, y2, m;
@@ -65,7 +66,7 @@ getMouseWindow (Window w)
 }
 
 GC
-createGC (Colormap cmap, char *col, int func, XFontStruct * font,
+createGC (ScreenData *md, char *col, int func, XFontStruct * font,
     int line_width, gboolean inc_sw)
 {
     XGCValues gv;
@@ -77,7 +78,7 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
     TRACE ("color=%s", col);
 
     mask = GCForeground | GCFunction;
-    XAllocNamedColor (md->dpy, cmap, col, &xc1, &xc2);
+    XAllocNamedColor (md->dpy, md->cmap, col, &xc1, &xc2);
     gv.foreground = xc2.pixel;
     gv.function = func;
     if (font)
@@ -95,12 +96,12 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
         gv.line_width = line_width;
         mask = mask | GCLineWidth;
     }
-    gc = XCreateGC (md->dpy, XDefaultRootWindow (md->dpy), mask, &gv);
+    gc = XCreateGC (md->dpy, md->xroot, mask, &gv);
     return gc;
 }
 
 void
-sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
+sendClientMessage (ScreenData *md, Window w, Atom a, Atom x, Time timestamp)
 {
     XClientMessageEvent ev;
 
@@ -116,7 +117,7 @@ sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
 }
 
 void
-myXGrabServer (void)
+myXGrabServer (ScreenData *md)
 {
     DBG ("entering myXGrabServer");
     if (xgrabcount == 0)
@@ -129,7 +130,7 @@ myXGrabServer (void)
 }
 
 void
-myXUngrabServer (void)
+myXUngrabServer (ScreenData *md)
 {
     DBG ("entering myXUngrabServer");
     if (--xgrabcount < 0)       /* should never happen */
@@ -150,7 +151,7 @@ myXUngrabServer (void)
  * Returns true if the given window is present and mapped on md->xroot 
  */
 gboolean
-myCheckWindow(Window w)
+myCheckWindow(ScreenData *md, Window w)
 {
     Window dummy_root, parent;
     Window *wins = NULL;
@@ -168,51 +169,29 @@ myCheckWindow(Window w)
     return (!gdk_error_trap_pop () && (test != 0) && (dummy_root == parent));
 }
 
-Window
-setTmpEventWin (int x, int y, unsigned int w, unsigned int h, long eventmask)
-{
-    Window win;
-    XSetWindowAttributes attributes;
-
-    attributes.event_mask = eventmask;
-    attributes.override_redirect = TRUE;
-    win = XCreateWindow (md->dpy, md->xroot, x, y, w, h, 0, 0, 
-                         InputOnly, CopyFromParent,
-                         CWEventMask | CWOverrideRedirect, &attributes);
-    XMapRaised (md->dpy, win);
-    XFlush (md->dpy);
-    return (win);
-}
-
 void
-removeTmpEventWin (Window w)
+placeSidewalks(ScreenData *md, gboolean activate)
 {
-    XDestroyWindow (md->dpy, w);
-}
-
-void
-placeSidewalks(gboolean activate)
-{
-    g_return_if_fail (md->sidewalk[0] != None);
-    g_return_if_fail (md->sidewalk[1] != None);
+    g_return_if_fail (MYWINDOW_XWINDOW (md->sidewalk[0]) != None);
+    g_return_if_fail (MYWINDOW_XWINDOW (md->sidewalk[1]) != None);
 
     if (activate)
     {
-        XMoveResizeWindow(md->dpy, md->sidewalk[0], 
-                          0, 0,
-                          1, gdk_screen_get_height (md->gscr));
-        XMoveResizeWindow(md->dpy, md->sidewalk[1],
-                          gdk_screen_get_width (md->gscr) - 1, 0, 
-                          1, gdk_screen_get_height (md->gscr));
+        myWindowShow (&md->sidewalk[0], 
+                      0, 0,
+                      1, gdk_screen_get_height (md->gscr), FALSE);
+        myWindowShow (&md->sidewalk[1],
+                      gdk_screen_get_width (md->gscr) - 1, 0, 
+                      1, gdk_screen_get_height (md->gscr), FALSE);
     }
     else
     {
         /* Place the windows off screen */
-        XMoveResizeWindow(md->dpy, md->sidewalk[0], 
-                          -1, 0,
-                          1, gdk_screen_get_height (md->gscr));
-        XMoveResizeWindow(md->dpy, md->sidewalk[1],
-                          gdk_screen_get_width (md->gscr), 0, 
-                          1, gdk_screen_get_height (md->gscr));
+        myWindowShow (&md->sidewalk[0], 
+                      -1, 0,
+                       1, gdk_screen_get_height (md->gscr), FALSE);
+        myWindowShow (&md->sidewalk[1],
+                      gdk_screen_get_width (md->gscr), 0, 
+                      1, gdk_screen_get_height (md->gscr), FALSE);
     }
 }

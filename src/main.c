@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -41,7 +41,7 @@
 #include <signal.h>
 #include <string.h>
 
-#include "main.h"
+#include "screen.h"
 #include "events.h"
 #include "frame.h"
 #include "settings.h"
@@ -50,6 +50,7 @@
 #include "focus.h"
 #include "keyboard.h"
 #include "workspaces.h"
+#include "mywindow.h"
 #include "session.h"
 #include "startup_notification.h"
 #include "spinning_cursor.h"
@@ -64,46 +65,36 @@
     PropertyChangeMask|\
     ColormapNotify
 
-MainData *md = NULL;
+static ScreenData *md = NULL;
+gboolean xfwm4_quit   = FALSE;
+gboolean xfwm4_reload = FALSE;
 
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
 #if DEBUG            
     char buf[64];
+
+    XGetErrorText (dpy, err->error_code, buf, 63);
+    g_print ("XError: %s\n", buf);                                                  
+    g_print ("==>  XID Ox%lx, Request %d, Error %d <==\n", 
+              err->resourceid, err->request_code, err->error_code); 
 #endif
-    switch (err->error_code)
-    {
-        case BadAccess:
-            if (err->resourceid == md->xroot)
-            {
-                g_message ("%s: Another window manager is running\n",
-                    md->progname);
-                exit (1);
-            }
-            break;
-        default:
-#if DEBUG            
-            XGetErrorText (dpy, err->error_code, buf, 63);
-            g_print ("XError: %s\n", buf);                                                  
-            g_print ("==>  XID Ox%lx, Request %d, Error %d <==\n", 
-                      err->resourceid, err->request_code, err->error_code); 
-#endif
-            break;
-    }
     return 0;
 }
 
 static void
-cleanUp ()
+cleanUp (void)
 {
     int i;
-
+    
+    g_return_if_fail (md);
+    
     TRACE ("entering cleanUp");
 
-    clientUnframeAll ();
+    clientUnframeAll (md);
     sn_close_display ();
-    unloadSettings ();
+    unloadSettings (md);
     XFreeCursor (md->dpy, md->root_cursor);
     XFreeCursor (md->dpy, md->move_cursor);
     XFreeCursor (md->dpy, md->busy_cursor);
@@ -122,11 +113,12 @@ cleanUp ()
     }
     g_free (params.workspace_names);
     params.workspace_names = NULL;
-    removeTmpEventWin (md->sidewalk[0]);
-    removeTmpEventWin (md->sidewalk[1]);
+    myWindowDelete (&md->sidewalk[0]);
+    myWindowDelete (&md->sidewalk[1]);
     XSetInputFocus (md->dpy, md->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
     xfce_close_event_filter (md->gtox_data);
     g_free (md);
+    md = NULL;
 }
 
 static char *build_session_filename(SessionClient *client_session)
@@ -190,7 +182,7 @@ static void
 session_die (gpointer client_data)
 {
     gtk_main_quit ();
-    md->quit = TRUE;
+    xfwm4_quit = TRUE;
 }
 
 static void
@@ -203,11 +195,11 @@ handleSignal (int sig)
         case SIGINT:
         case SIGTERM:
             gtk_main_quit ();
-            md->quit = TRUE;
+            xfwm4_quit = TRUE;
             break;
         case SIGHUP:
         case SIGUSR1:
-            md->reload = TRUE;
+            xfwm4_reload = TRUE;
             break;
         case SIGSEGV:
             cleanUp ();
@@ -230,16 +222,15 @@ initialize (int argc, char **argv)
 
     TRACE ("entering initialize");
 
-    md = g_new0 (MainData, 1);
+    md = g_new0 (ScreenData, 1);
     
-    md->quit = FALSE;
-    md->reload = FALSE;
-    md->progname = argv[0];
-
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     gtk_set_locale ();
     gtk_init (&argc, &argv);
+
+    DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
+         gtk_minor_version, gtk_micro_version);
 
     md->gscr = gdk_screen_get_default ();
     if (!md->gscr)
@@ -255,24 +246,22 @@ initialize (int argc, char **argv)
     md->screen = gdk_screen_get_number (md->gscr);
     md->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (md->gscr));
     
-    DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
-         gtk_minor_version, gtk_micro_version);
-
     xfce_setenv ("DISPLAY", gdk_display_get_name (md->gdisplay), TRUE);
 
     md->depth = DefaultDepth (md->dpy, md->screen);
-    sn_init_display (md->dpy, md->screen);
+    sn_init_display (md);
     md->current_ws = 0;
 
     XSetErrorHandler (handleXError);
     md->shape = XShapeQueryExtension (md->dpy, &md->shape_event, &dummy);
 
     /* Create the side windows to detect edge movement */
-    md->sidewalk[0] = setTmpEventWin (0, 0, 
+    myWindowTemp (md->dpy, md->xroot, &md->sidewalk[0], 0, 0, 
                                   1, gdk_screen_get_height (md->gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    md->sidewalk[1] = setTmpEventWin (gdk_screen_get_width (md->gscr) - 1, 0, 
+    myWindowTemp (md->dpy, md->xroot, &md->sidewalk[1], 
+                                  gdk_screen_get_width (md->gscr) - 1, 0, 
                                   1, gdk_screen_get_height (md->gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
@@ -307,17 +296,17 @@ initialize (int argc, char **argv)
 
     XDefineCursor (md->dpy, md->xroot, md->root_cursor);
 
-    md->gtox_data = xfce_init_event_filter (md->gscr, MAIN_EVENT_MASK, NULL, "xfwm");
+    md->gtox_data = xfce_init_event_filter (md->gscr, MAIN_EVENT_MASK, (gpointer) md, "xfwm");
     if (!md->gtox_data)
     {
         return -1;
     }
-    xfce_push_event_filter (md->gtox_data, xfwm4_event_filter, NULL);
+    xfce_push_event_filter (md->gtox_data, xfwm4_event_filter, (gpointer) md);
 
     md->gnome_win = xfce_get_default_XID (md->gtox_data);
     DBG ("Our event window is 0x%lx", md->gnome_win);
 
-    if (!initSettings ())
+    if (!initSettings (md))
     {
         return -2;
     }
@@ -332,7 +321,7 @@ initialize (int argc, char **argv)
     getGnomeDesktopMargins (md->dpy, md->screen, md->gnome_margins);
     set_utf8_string_hint (md->dpy, md->gnome_win, net_wm_name, "Xfwm4");
     setNetSupportedHint (md->dpy, md->screen, md->gnome_win);
-    workspaceUpdateArea (md->margins, md->gnome_margins);
+    workspaceUpdateArea (md);
     initNetDesktopParams (md->dpy, md->screen, 
                                md->current_ws,
                                gdk_screen_get_width (md->gscr), 
@@ -342,7 +331,8 @@ initialize (int argc, char **argv)
                          gdk_screen_get_height (md->gscr), 
                          md->margins);
     XSetInputFocus (md->dpy, md->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
-    initGtkCallbacks ();
+    initGtkCallbacks (md);
+    initMenuEventWin ();
     
     /* The first time the first Gtk application on a display uses pango,
      * pango grabs the XServer while it creates the font cache window.
@@ -354,18 +344,14 @@ initialize (int argc, char **argv)
     g_object_unref (G_OBJECT (layout));
 
     clientClearFocus ();
-    clientFrameAll ();
+    clientFrameAll (md);
 
     act.sa_handler = handleSignal;
     act.sa_flags = 0;
-    sigaction (SIGINT, &act, NULL);
-    sigaction (SIGTERM, &act, NULL);
-    sigaction (SIGHUP, &act, NULL);
-    sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
-    client_session =
-        client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
+    client_session = client_session_new (argc, argv, (gpointer) md, 
+                                         SESSION_RESTART_IF_RUNNING, 20);
     client_session->data = (gpointer) client_session;
     client_session->save_phase_2 = save_phase_2;
     client_session->die = session_die;

@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -25,9 +25,10 @@
 #  include "config.h"
 #endif
 
-#include <gtk/gtk.h>
-#include <gdk/gdk.h>
 #include <X11/Xlib.h>
+#include <gdk/gdk.h>
+#include <gtk/gtk.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 typedef enum
 {
@@ -78,20 +79,32 @@ struct _MenuData
 struct _Menu
 {
     GtkWidget *menu;
+    XfceFilterSetup *filter_setup;
     MenuFunc func;
     gpointer data;
     MenuOp ops;
     MenuOp insensitive;
 };
 
-Menu *menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func,
-                    gint ws, gint nws, gchar *wsn, gint wsnl, gpointer data);
-Menu *menu_connect (Menu * menu);
-GtkWidget *menu_item_connect (GtkWidget * item, MenuData * item_data);
-gboolean menu_is_opened (void);
-gboolean menu_check_and_close (void);
-gboolean menu_popup (Menu * menu, int root_x, int root_y, int button,
-                     guint32 timestamp);
-void menu_free (Menu * menu);
+Menu *menu_default             (MenuOp, 
+                                MenuOp, 
+                                MenuFunc, 
+                                gint, 
+                                gint, 
+                                gchar *, 
+                                gint, 
+                                XfceFilterSetup*, 
+                                gpointer);
+Menu *menu_connect             (Menu * menu);
+GtkWidget *menu_item_connect   (GtkWidget *, 
+                                MenuData *);
+gboolean menu_is_opened        (void);
+gboolean menu_check_and_close  (void);
+gboolean menu_popup            (Menu *, 
+                                int, 
+                                int, 
+                                int, 
+                                guint32);
+void menu_free                 (Menu *);
 
 #endif /* INC_MENU_H */

@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         Metacity - (c) 2003 Havoc Pennington
-        xfwm4    - (c) 2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -30,17 +30,18 @@
 
 #include <libsn/sn.h>
 
+#include "screen.h"
 #include "client.h"
 
 void sn_client_startup_properties (Client *);
-void sn_init_display (Display *, int);
+void sn_init_display (ScreenData *md);
 void sn_close_display (void);
 void sn_process_event (XEvent * event);
 
 #else /* HAVE_LIBSTARTUP_NOTIFICATION */
 
 #define sn_client_startup_properties(c) ;
-#define sn_init_display(d,i) ;
+#define sn_init_display(d) ;
 #define sn_close_display() ;
 #define sn_process_event(e) ;
 

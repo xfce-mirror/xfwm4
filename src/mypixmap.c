@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -31,7 +31,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "main.h"
 #include "mypixmap.h"
 
 static gboolean
@@ -97,7 +96,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
         }
         else
         {
-            cmap = gdk_screen_get_rgb_colormap (md->gscr);
+            cmap = gdk_screen_get_rgb_colormap (pm->md->gscr);
             g_object_ref (G_OBJECT (cmap));
         }
     }
@@ -127,7 +126,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
 }
 
 gboolean
-myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
+myPixmapLoad (ScreenData * md, MyPixmap * pm, gchar * dir, gchar * file,
     XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
@@ -139,6 +138,7 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     g_return_val_if_fail (dir != NULL, FALSE);
     g_return_val_if_fail (file != NULL, FALSE);
 
+    pm->md = md;
     pm->pixmap = None;
     pm->mask = None;
     pm->width = 1;
@@ -148,15 +148,14 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     g_free (filexpm);
     attr.colorsymbols = cs;
     attr.numsymbols = n;
-    attr.colormap = md->cmap;
+    attr.colormap = pm->md->cmap;
     attr.closeness = 65535;
     attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
     if (n > 0 && cs)
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-    if (XpmReadFileToPixmap (dpy, XDefaultRootWindow (dpy), filename,
-            &pm->pixmap, &pm->mask, &attr))
+    if (XpmReadFileToPixmap (md->dpy, md->xroot, filename, &pm->pixmap, &pm->mask, &attr))
     {
         TRACE ("%s not found", filename);
         g_free (filename);
@@ -174,17 +173,18 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
 }
 
 void
-myPixmapCreate (Display * dpy, MyPixmap * pm, gint width, gint height)
+myPixmapCreate (ScreenData * md, MyPixmap * pm, gint width, gint height)
 {
     TRACE ("entering myPixmapCreate, width=%i, height=%i", width, height);
-    if ((width < 1) || (height < 1))
+    if ((width < 1) || (height < 1) || (!md))
     {
         myPixmapInit (pm);
     }
     else
     {
-        pm->pixmap = XCreatePixmap (dpy, md->xroot, width, height, md->depth);
-        pm->mask = XCreatePixmap (dpy, pm->pixmap, width, height, 1);
+        pm->md = md;
+        pm->pixmap = XCreatePixmap (md->dpy, md->xroot, width, height, md->depth);
+        pm->mask = XCreatePixmap (md->dpy, pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
     }
@@ -193,6 +193,7 @@ myPixmapCreate (Display * dpy, MyPixmap * pm, gint width, gint height)
 void
 myPixmapInit (MyPixmap * pm)
 {
+    pm->md = NULL;
     pm->pixmap = None;
     pm->mask = None;
     pm->width = 0;
@@ -200,18 +201,18 @@ myPixmapInit (MyPixmap * pm)
 }
 
 void
-myPixmapFree (Display * dpy, MyPixmap * pm)
+myPixmapFree (MyPixmap * pm)
 {
     TRACE ("entering myPixmapFree");
 
     if (pm->pixmap != None)
     {
-        XFreePixmap (dpy, pm->pixmap);
+        XFreePixmap (pm->md->dpy, pm->pixmap);
         pm->pixmap = None;
     }
     if (pm->mask != None)
     {
-        XFreePixmap (dpy, pm->mask);
+        XFreePixmap (pm->md->dpy, pm->mask);
         pm->mask = None;
     }
 }

@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,6 +26,7 @@
 
 #include <glib.h>
 #include <sys/time.h>
+#include "screen.h"
 #include "client.h"
 
 #define NO_FOCUS_FLAG                   0
@@ -33,16 +34,16 @@
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
 
-void            clientFocusTop (int);
+void            clientFocusTop (ScreenData *, int);
 void            clientFocusNew(Client *);
 gboolean        clientSelectMask (Client *, int);
 Client         *clientGetNext (Client *, int);
 Client         *clientGetPrevious (Client *, int);
-void            clientPassFocus (Client *);
+void            clientPassFocus (ScreenData *, Client *);
 gboolean        clientAcceptFocus (Client *);
 void            clientSortRing(Client *);
-void            clientUpdateFocus (Client *, unsigned short);
-void            clientSetFocus (Client *, Time, unsigned short);
+void            clientUpdateFocus (ScreenData *, Client *, unsigned short);
+void            clientSetFocus (ScreenData *, Client *, Time, unsigned short);
 void            clientClearFocus (void);
 Client         *clientGetFocus (void);
 void            clientGrabButton1 (Client *);

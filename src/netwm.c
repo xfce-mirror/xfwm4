@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -31,7 +31,7 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "main.h"
+#include "screen.h"
 #include "netwm.h"
 #include "misc.h"
 #include "client.h"
@@ -113,13 +113,13 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : hidden");
         data[i++] = net_wm_state_hidden;
     }
-    XChangeProperty (md->dpy, c->window, net_wm_state, XA_ATOM, 32,
+    XChangeProperty (c->md->dpy, c->window, net_wm_state, XA_ATOM, 32,
         PropModeReplace, (unsigned char *) data, i);
     /*
        We also set GNOME hint here for consistency and convenience, 
        although the meaning of net_wm_state and win_state aren't the same.
      */
-    setHint (md->dpy, c->window, win_state, c->win_state);
+    setHint (c->md->dpy, c->window, win_state, c->win_state);
 }
 
 void
@@ -132,7 +132,7 @@ clientGetNetState (Client * c)
     TRACE ("entering clientGetNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (getAtomList (md->dpy, c->window, net_wm_state, &atoms, &n_atoms))
+    if (getAtomList (c->md->dpy, c->window, net_wm_state, &atoms, &n_atoms))
     {
         int i;
         TRACE ("clientGetNetState: %i atoms detected", n_atoms);
@@ -510,8 +510,8 @@ clientUpdateFullscreenState (Client * c)
         cx = frameX (c) + (frameWidth (c) / 2);
         cy = frameY (c) + (frameHeight (c) / 2);
 
-        monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, cx, cy);
-        gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+        monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, cx, cy);
+        gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
 
         c->fullscreen_old_x = c->x;
         c->fullscreen_old_y = c->y;
@@ -542,10 +542,10 @@ clientUpdateFullscreenState (Client * c)
            grab focus in focus follow mouse mode. Grab the pointer to
            avoid these effects
          */
-        XGrabPointer (md->dpy, md->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+        XGrabPointer (c->md->dpy, c->md->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
                            GrabModeAsync, None, None, GDK_CURRENT_TIME);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
-        XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+        XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
     }
     else
     {
@@ -571,7 +571,7 @@ clientGetNetWmType (Client * c)
     n_atoms = 0;
     atoms = NULL;
 
-    if (!getAtomList (md->dpy, c->window, net_wm_window_type, &atoms, &n_atoms))
+    if (!getAtomList (c->md->dpy, c->window, net_wm_window_type, &atoms, &n_atoms))
     {
         switch (c->win_layer)
         {
@@ -644,9 +644,9 @@ clientGetInitialNetWmDesktop (Client * c)
                 CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
         {
             FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
-            c->win_workspace = md->current_ws;
+            c->win_workspace = c->md->current_ws;
         }
-        if (getHint (md->dpy, c->window, net_wm_desktop, &val))
+        if (getHint (c->md->dpy, c->window, net_wm_desktop, &val))
         {
             TRACE ("atom net_wm_desktop detected");
             if (val == (int) ALL_WORKSPACES)
@@ -660,7 +660,7 @@ clientGetInitialNetWmDesktop (Client * c)
                     FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
                     c->win_state |= WIN_STATE_STICKY;
                 }
-                c->win_workspace = md->current_ws;
+                c->win_workspace = c->md->current_ws;
             }
             else
             {
@@ -671,7 +671,7 @@ clientGetInitialNetWmDesktop (Client * c)
             }
             FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
         }
-        else if (getHint (md->dpy, c->window, win_workspace, &val))
+        else if (getHint (c->md->dpy, c->window, win_workspace, &val))
         {
             TRACE ("atom win_workspace specifies window \"%s\" is on desk %i",
                 c->name, (int) val);
@@ -690,21 +690,19 @@ clientGetInitialNetWmDesktop (Client * c)
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name,
         c->win_workspace);
-    setHint (md->dpy, c->window, win_workspace, c->win_workspace);
+    setHint (c->md->dpy, c->window, win_workspace, c->win_workspace);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
-        setHint (md->dpy, c->window, net_wm_desktop,
-            (unsigned long) ALL_WORKSPACES);
+        setHint (c->md->dpy, c->window, net_wm_desktop, (unsigned long) ALL_WORKSPACES);
     }
     else
     {
-        setHint (md->dpy, c->window, net_wm_desktop,
-            (unsigned long) c->win_workspace);
+        setHint (c->md->dpy, c->window, net_wm_desktop, (unsigned long) c->win_workspace);
     }
 }
 
 void
-clientSetNetClientList (Atom a, GList * list)
+clientSetNetClientList (ScreenData * md, Atom a, GList * list)
 {
     Window *listw;
     Window *index_dest;
@@ -751,7 +749,7 @@ clientGetNetStruts (Client * c)
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT);
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
 
-    if (getCardinalList (md->dpy, c->window, net_wm_strut_partial, &struts, &nitems))
+    if (getCardinalList (c->md->dpy, c->window, net_wm_strut_partial, &struts, &nitems))
     {
         if (nitems != 12)
         {
@@ -767,9 +765,9 @@ clientGetNetStruts (Client * c)
         }
 
         XFree (struts);
-        workspaceUpdateArea (md->margins, md->gnome_margins);
+        workspaceUpdateArea (c->md);
     }
-    else if (getCardinalList (md->dpy, c->window, net_wm_strut, &struts, &nitems))
+    else if (getCardinalList (c->md->dpy, c->window, net_wm_strut, &struts, &nitems))
     {
         if (nitems != 4)
         {
@@ -789,13 +787,13 @@ clientGetNetStruts (Client * c)
         /* Fill(in values as for partial struts */
         c->struts[TOP_START_X] = c->struts[BOTTOM_START_X] = 0;
         c->struts[TOP_END_X] = c->struts[BOTTOM_END_X] = 
-            gdk_screen_get_width (md->gscr);
+            gdk_screen_get_width (c->md->gscr);
         c->struts[LEFT_START_Y] = c->struts[RIGHT_START_Y] = 0;
         c->struts[LEFT_END_Y] = c->struts[RIGHT_END_Y] = 
-            gdk_screen_get_height (md->gscr);
+            gdk_screen_get_height (c->md->gscr);
         
         XFree (struts);
-        workspaceUpdateArea (md->margins, md->gnome_margins);
+        workspaceUpdateArea (c->md);
     }
 }
 
@@ -820,7 +818,7 @@ clientSetNetActions (Client * c)
     {
         atoms[i++] = net_wm_action_shade;
     }
-    XChangeProperty (md->dpy, c->window, net_wm_allowed_actions, XA_ATOM, 32,
+    XChangeProperty (c->md->dpy, c->window, net_wm_allowed_actions, XA_ATOM, 32,
         PropModeReplace, (unsigned char *) atoms, i);
 }
 

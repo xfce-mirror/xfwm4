@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H
@@ -30,7 +30,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
 
-#include "main.h"
+#include "screen.h"
 #include "hints.h"
 #include "parserc.h"
 #include "client.h"
@@ -53,7 +53,7 @@ static McsClient *client = NULL;
 static int mcs_initted = FALSE;
 
 static void
-set_settings_margin (int idx, int value)
+set_settings_margin (ScreenData *md, int idx, int value)
 {
     int val;
 
@@ -100,12 +100,16 @@ static void
 notify_cb (const char *name, const char *channel_name, McsAction action,
     McsSetting * setting, void *data)
 {
+    ScreenData *md = (ScreenData *) data;
+    
+    g_return_if_fail (md != NULL);
+
     if (!g_ascii_strcasecmp (CHANNEL1, channel_name))
     {
         switch (action)
         {
             case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and md->reloads */
+                /* The following is to reduce initial startup time and reload */
                 if (!mcs_initted)
                 {
                     return;
@@ -149,7 +153,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                     else if (!strcmp (name, "Xfwm/WrapWorkspaces"))
                     {
                         params.wrap_workspaces = setting->data.v_int;
-                        placeSidewalks (params.wrap_workspaces);
+                        placeSidewalks (md, params.wrap_workspaces);
                     }
                     else if (!strcmp (name, "Xfwm/WrapWindows"))
                     {
@@ -172,27 +176,27 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 {
                     if (!strcmp (name, "Xfwm/DblClickAction"))
                     {
-                        reloadSettings (NO_UPDATE_FLAG);
+                        reloadSettings (md, NO_UPDATE_FLAG);
                     }
                     else if (!strcmp (name, "Xfwm/KeyThemeName"))
                     {
-                        reloadSettings (UPDATE_KEYGRABS);
+                        reloadSettings (md, UPDATE_KEYGRABS);
                     }
                     else if (!strcmp (name, "Xfwm/ThemeName"))
                     {
-                        reloadSettings (UPDATE_GRAVITY | UPDATE_CACHE);
+                        reloadSettings (md, UPDATE_GRAVITY | UPDATE_CACHE);
                     }
                     else if (!strcmp (name, "Xfwm/ButtonLayout"))
                     {
-                        reloadSettings (UPDATE_FRAME | UPDATE_CACHE);
+                        reloadSettings (md, UPDATE_FRAME | UPDATE_CACHE);
                     }
                     if (!strcmp (name, "Xfwm/TitleAlign"))
                     {
-                        reloadSettings (UPDATE_FRAME | UPDATE_CACHE);
+                        reloadSettings (md, UPDATE_FRAME | UPDATE_CACHE);
                     }
                     if (!strcmp (name, "Xfwm/TitleFont"))
                     {
-                        reloadSettings (UPDATE_FRAME | UPDATE_CACHE);
+                        reloadSettings (md, UPDATE_FRAME | UPDATE_CACHE);
                     }
                 }
                 break;
@@ -206,7 +210,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
         switch (action)
         {
             case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and md->reloads */
+                /* The following is to reduce initial startup time and reloads */
                 if (!mcs_initted)
                 {
                     return;
@@ -216,22 +220,19 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 {
                     if (!strcmp (name, "Xfwm/LeftMargin"))
                     {
-                        set_settings_margin (LEFT,
-                            setting->data.v_int);
+                        set_settings_margin (md, LEFT, setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/RightMargin"))
                     {
-                        set_settings_margin (RIGHT,
-                            setting->data.v_int);
+                        set_settings_margin (md, RIGHT, setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/BottomMargin"))
                     {
-                        set_settings_margin (BOTTOM,
-                            setting->data.v_int);
+                        set_settings_margin (md, BOTTOM, setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/TopMargin"))
                     {
-                        set_settings_margin (TOP, setting->data.v_int);
+                        set_settings_margin (md, TOP, setting->data.v_int);
                     }
                 }
                 break;
@@ -245,7 +246,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
         switch (action)
         {
             case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and md->reloads */
+                /* The following is to reduce initial startup time and reloads */
                 if (!mcs_initted)
                 {
                     return;
@@ -255,7 +256,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 {
                     if (!strcmp (name, "Xfwm/WorkspaceCount"))
                     {
-                        workspaceSetCount(setting->data.v_int);
+                        workspaceSetCount(md, setting->data.v_int);
                     }
                 }
                 break;
@@ -303,7 +304,7 @@ watch_cb (Window window, Bool is_start, long mask, void *cb_data)
 }
 
 static void
-loadRcData (Settings rc[])
+loadRcData (ScreenData *md, Settings rc[])
 {
     const gchar *homedir = xfce_get_userdir ();
     gchar *keytheme;
@@ -311,7 +312,7 @@ loadRcData (Settings rc[])
 
     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
-        g_warning (_("%s: Missing defaults file"), md->progname);
+        g_warning (_("%s: Missing defaults file"), g_get_prgname ());
         exit (1);
     }
     keythemevalue = getValue ("keytheme", rc);
@@ -325,7 +326,7 @@ loadRcData (Settings rc[])
 }
 
 static void
-loadMcsData (Settings rc[])
+loadMcsData (ScreenData *md, Settings rc[])
 {
     McsSetting *setting;
     if (client)
@@ -479,7 +480,7 @@ loadMcsData (Settings rc[])
 }
 
 static void
-loadTheme (Settings rc[])
+loadTheme (ScreenData *md, Settings rc[])
 {
     gchar *theme;
     gchar *font;
@@ -617,107 +618,107 @@ loadTheme (Settings rc[])
         }
     }
 
-    myPixmapLoad (md->dpy, &params.sides[SIDE_LEFT][ACTIVE], theme,
+    myPixmapLoad (md, &params.sides[SIDE_LEFT][ACTIVE], theme,
         "left-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.sides[SIDE_LEFT][INACTIVE], theme,
+    myPixmapLoad (md, &params.sides[SIDE_LEFT][INACTIVE], theme,
         "left-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.sides[SIDE_RIGHT][ACTIVE], theme,
+    myPixmapLoad (md, &params.sides[SIDE_RIGHT][ACTIVE], theme,
         "right-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.sides[SIDE_RIGHT][INACTIVE], theme,
+    myPixmapLoad (md, &params.sides[SIDE_RIGHT][INACTIVE], theme,
         "right-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.sides[SIDE_BOTTOM][ACTIVE], theme,
+    myPixmapLoad (md, &params.sides[SIDE_BOTTOM][ACTIVE], theme,
         "bottom-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.sides[SIDE_BOTTOM][INACTIVE], theme,
+    myPixmapLoad (md, &params.sides[SIDE_BOTTOM][INACTIVE], theme,
         "bottom-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_TOP_LEFT][ACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_TOP_LEFT][ACTIVE], theme,
         "top-left-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_TOP_LEFT][INACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_TOP_LEFT][INACTIVE], theme,
         "top-left-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_TOP_RIGHT][ACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_TOP_RIGHT][ACTIVE], theme,
         "top-right-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_TOP_RIGHT][INACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_TOP_RIGHT][INACTIVE], theme,
         "top-right-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_BOTTOM_LEFT][ACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_BOTTOM_LEFT][ACTIVE], theme,
         "bottom-left-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_BOTTOM_LEFT][INACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_BOTTOM_LEFT][INACTIVE], theme,
         "bottom-left-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme,
         "bottom-right-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme,
+    myPixmapLoad (md, &params.corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme,
         "bottom-right-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[HIDE_BUTTON][ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[HIDE_BUTTON][ACTIVE], theme,
         "hide-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[HIDE_BUTTON][INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[HIDE_BUTTON][INACTIVE], theme,
         "hide-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[HIDE_BUTTON][PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[HIDE_BUTTON][PRESSED], theme,
         "hide-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[CLOSE_BUTTON][ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[CLOSE_BUTTON][ACTIVE], theme,
         "close-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[CLOSE_BUTTON][INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[CLOSE_BUTTON][INACTIVE], theme,
         "close-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[CLOSE_BUTTON][PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[CLOSE_BUTTON][PRESSED], theme,
         "close-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MAXIMIZE_BUTTON][ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[MAXIMIZE_BUTTON][ACTIVE], theme,
         "maximize-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MAXIMIZE_BUTTON][INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[MAXIMIZE_BUTTON][INACTIVE], theme,
         "maximize-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MAXIMIZE_BUTTON][PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[MAXIMIZE_BUTTON][PRESSED], theme,
         "maximize-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[SHADE_BUTTON][ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[SHADE_BUTTON][ACTIVE], theme,
         "shade-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[SHADE_BUTTON][INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[SHADE_BUTTON][INACTIVE], theme,
         "shade-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[SHADE_BUTTON][PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[SHADE_BUTTON][PRESSED], theme,
         "shade-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[STICK_BUTTON][ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[STICK_BUTTON][ACTIVE], theme,
         "stick-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[STICK_BUTTON][INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[STICK_BUTTON][INACTIVE], theme,
         "stick-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[STICK_BUTTON][PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[STICK_BUTTON][PRESSED], theme,
         "stick-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MENU_BUTTON][ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[MENU_BUTTON][ACTIVE], theme,
         "menu-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MENU_BUTTON][INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[MENU_BUTTON][INACTIVE], theme,
         "menu-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MENU_BUTTON][PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[MENU_BUTTON][PRESSED], theme,
         "menu-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[SHADE_BUTTON][T_ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[SHADE_BUTTON][T_ACTIVE], theme,
         "shade-toggled-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[SHADE_BUTTON][T_INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[SHADE_BUTTON][T_INACTIVE], theme,
         "shade-toggled-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[SHADE_BUTTON][T_PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[SHADE_BUTTON][T_PRESSED], theme,
         "shade-toggled-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[STICK_BUTTON][T_ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[STICK_BUTTON][T_ACTIVE], theme,
         "stick-toggled-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[STICK_BUTTON][T_INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[STICK_BUTTON][T_INACTIVE], theme,
         "stick-toggled-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[STICK_BUTTON][T_PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[STICK_BUTTON][T_PRESSED], theme,
         "stick-toggled-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme,
         "maximize-toggled-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme,
+    myPixmapLoad (md, &params.buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme,
         "maximize-toggled-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
+    myPixmapLoad (md, &params.buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
         "maximize-toggled-pressed", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_1][ACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_1][ACTIVE], theme,
         "title-1-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_1][INACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_1][INACTIVE], theme,
         "title-1-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_2][ACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_2][ACTIVE], theme,
         "title-2-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_2][INACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_2][INACTIVE], theme,
         "title-2-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_3][ACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_3][ACTIVE], theme,
         "title-3-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_3][INACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_3][INACTIVE], theme,
         "title-3-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_4][ACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_4][ACTIVE], theme,
         "title-4-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_4][INACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_4][INACTIVE], theme,
         "title-4-inactive", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_5][ACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_5][ACTIVE], theme,
         "title-5-active", colsym, 20);
-    myPixmapLoad (md->dpy, &params.title[TITLE_5][INACTIVE], theme,
+    myPixmapLoad (md, &params.title[TITLE_5][INACTIVE], theme,
         "title-5-inactive", colsym, 20);
 
     if (!g_ascii_strcasecmp ("left", getValue ("title_alignment", rc)))
@@ -750,7 +751,7 @@ loadTheme (Settings rc[])
     params.title_horizontal_offset =
         TOINT (getValue ("title_horizontal_offset", rc));
 
-    params.box_gc = createGC (md->cmap, "#FFFFFF", GXxor, NULL, 2, TRUE);
+    params.box_gc = createGC (md, "#FFFFFF", GXxor, NULL, 2, TRUE);
 
     g_free (theme);
 }
@@ -779,7 +780,7 @@ loadShortcutCmd (Settings rc[])
 }
 
 static gboolean
-loadKeyBindings (Settings rc[])
+loadKeyBindings (ScreenData *md, Settings rc[])
 {
     gchar *keytheme;
     gchar *keythemevalue;
@@ -791,7 +792,7 @@ loadKeyBindings (Settings rc[])
         if (!parseRc (KEYTHEMERC, keytheme, rc))
         {
             g_warning (_("%s: specified key theme \"%s\" missing, using default"),
-                       md->progname, keythemevalue);
+                       g_get_prgname (), keythemevalue);
             g_free (keytheme);
             keytheme = getThemeDir (DEFAULT_KEYTHEME, KEYTHEMERC);
             parseRc (KEYTHEMERC, keytheme, rc);
@@ -800,7 +801,7 @@ loadKeyBindings (Settings rc[])
 
         if (!checkRc (rc))
         {
-            g_warning (_("%s: Missing values in defaults file"), md->progname);
+            g_warning (_("%s: Missing values in defaults file"), g_get_prgname ());
             return FALSE;
         }
     }
@@ -941,7 +942,7 @@ loadKeyBindings (Settings rc[])
 }
 
 gboolean
-loadSettings (void)
+loadSettings (ScreenData *md)
 {
     Settings rc[] = {
         /* Do not chnage the order of the following parameters */
@@ -1071,11 +1072,11 @@ loadSettings (void)
 
     TRACE ("entering loadSettings");
 
-    loadRcData (rc);
-    loadMcsData (rc);
-    loadTheme (rc);
+    loadRcData (md, rc);
+    loadMcsData (md, rc);
+    loadTheme (md, rc);
 
-    if (!loadKeyBindings (rc))
+    if (!loadKeyBindings (md, rc))
     {
         freeRc (rc);
         return FALSE;
@@ -1108,10 +1109,10 @@ loadSettings (void)
     params.snap_width = abs (TOINT (getValue ("snap_width", rc)));
     params.dbl_click_time = abs (TOINT (getValue ("dbl_click_time", rc)));
 
-    set_settings_margin (LEFT,   TOINT (getValue ("margin_left", rc)));
-    set_settings_margin (RIGHT,  TOINT (getValue ("margin_right", rc)));
-    set_settings_margin (BOTTOM, TOINT (getValue ("margin_bottom", rc)));
-    set_settings_margin (TOP,    TOINT (getValue ("margin_top", rc)));
+    set_settings_margin (md, LEFT,   TOINT (getValue ("margin_left", rc)));
+    set_settings_margin (md, RIGHT,  TOINT (getValue ("margin_right", rc)));
+    set_settings_margin (md, BOTTOM, TOINT (getValue ("margin_bottom", rc)));
+    set_settings_margin (md, TOP,    TOINT (getValue ("margin_top", rc)));
 
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
@@ -1148,7 +1149,7 @@ loadSettings (void)
         }
         g_message (_("%s: Workspace count not set, using rc value: %i"),
             g_get_prgname (), workspace_count);
-        workspaceSetCount (workspace_count);
+        workspaceSetCount (md, workspace_count);
     }
 
     params.wrap_workspaces =
@@ -1162,34 +1163,34 @@ loadSettings (void)
 }
 
 static void
-unloadTheme (void)
+unloadTheme (ScreenData *md)
 {
     int i;
     TRACE ("entering unloadTheme");
 
     for (i = 0; i < 3; i++)
     {
-        myPixmapFree (md->dpy, &params.sides[i][ACTIVE]);
-        myPixmapFree (md->dpy, &params.sides[i][INACTIVE]);
+        myPixmapFree (&params.sides[i][ACTIVE]);
+        myPixmapFree (&params.sides[i][INACTIVE]);
     }
     for (i = 0; i < 4; i++)
     {
-        myPixmapFree (md->dpy, &params.corners[i][ACTIVE]);
-        myPixmapFree (md->dpy, &params.corners[i][INACTIVE]);
+        myPixmapFree (&params.corners[i][ACTIVE]);
+        myPixmapFree (&params.corners[i][INACTIVE]);
     }
     for (i = 0; i < BUTTON_COUNT; i++)
     {
-        myPixmapFree (md->dpy, &params.buttons[i][ACTIVE]);
-        myPixmapFree (md->dpy, &params.buttons[i][INACTIVE]);
-        myPixmapFree (md->dpy, &params.buttons[i][PRESSED]);
-        myPixmapFree (md->dpy, &params.buttons[i][T_ACTIVE]);
-        myPixmapFree (md->dpy, &params.buttons[i][T_INACTIVE]);
-        myPixmapFree (md->dpy, &params.buttons[i][T_PRESSED]);
+        myPixmapFree (&params.buttons[i][ACTIVE]);
+        myPixmapFree (&params.buttons[i][INACTIVE]);
+        myPixmapFree (&params.buttons[i][PRESSED]);
+        myPixmapFree (&params.buttons[i][T_ACTIVE]);
+        myPixmapFree (&params.buttons[i][T_INACTIVE]);
+        myPixmapFree (&params.buttons[i][T_PRESSED]);
     }
     for (i = 0; i < 5; i++)
     {
-        myPixmapFree (md->dpy, &params.title[i][ACTIVE]);
-        myPixmapFree (md->dpy, &params.title[i][INACTIVE]);
+        myPixmapFree (&params.title[i][ACTIVE]);
+        myPixmapFree (&params.title[i][INACTIVE]);
     }
     if (params.box_gc != None)
     {
@@ -1199,25 +1200,25 @@ unloadTheme (void)
 }
 
 gboolean
-reloadSettings (int mask)
+reloadSettings (ScreenData *md, int mask)
 {
     TRACE ("entering reloadSettings");
 
-    unloadTheme ();
-    if (!loadSettings ())
+    unloadTheme (md);
+    if (!loadSettings (md))
     {
         return FALSE;
     }
     if (mask)
     {
-        clientUpdateAllFrames (mask);
+        clientUpdateAllFrames (md, mask);
     }
 
     return TRUE;
 }
 
 gboolean
-initSettings (void)
+initSettings (ScreenData *md)
 {
     int i;
     long val = 0;
@@ -1267,7 +1268,7 @@ initSettings (void)
     {
         g_warning ("MCS manager not running");
     }
-    client = mcs_client_new (md->dpy, md->screen, notify_cb, watch_cb, NULL);
+    client = mcs_client_new (md->dpy, md->screen, notify_cb, watch_cb, (gpointer) md);
     if (client)
     {
         mcs_client_add_channel (client, CHANNEL1);
@@ -1283,11 +1284,11 @@ initSettings (void)
 
     if (getHint (md->dpy, md->xroot, net_number_of_desktops, &val))
     {
-        workspaceSetCount (val);
+        workspaceSetCount (md, val);
     }
     else if (getHint (md->dpy, md->xroot, win_workspace_count, &val))
     {
-        workspaceSetCount (val);
+        workspaceSetCount (md, val);
     }
 
     if (getUTF8String (md->dpy, md->xroot, net_desktop_names, &names, &i))
@@ -1300,19 +1301,19 @@ initSettings (void)
         params.workspace_names_length = 0;
     }
 
-    if (!loadSettings ())
+    if (!loadSettings (md))
     {
         return FALSE;
     }
-    placeSidewalks (params.wrap_workspaces);
+    placeSidewalks (md, params.wrap_workspaces);
 
     return TRUE;
 }
 
 void
-unloadSettings (void)
+unloadSettings (ScreenData *md)
 {
     TRACE ("entering unloadSettings");
 
-    unloadTheme ();
+    unloadTheme (md);
 }

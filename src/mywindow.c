@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,7 +13,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfwm4    - (c) 2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -29,6 +29,18 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h> 
 #include "mywindow.h"
+        
+void
+myWindowInit (myWindow * win)
+{
+    win->window = None;
+    win->map = FALSE;
+    win->dpy = NULL;
+    win->x = 0;
+    win->y = 0;
+    win->w = 0;
+    win->h = 0;
+}
 
 void
 myWindowCreate (Display * dpy, Window parent, myWindow * win, Cursor cursor)
@@ -127,3 +139,42 @@ myWindowHide (myWindow * win)
         win->map = FALSE;
     }
 }
+
+gboolean
+myWindowVisible (myWindow *win)
+{
+    g_return_val_if_fail (win, FALSE);
+    
+    return win->map;
+}        
+
+gboolean
+myWindowDeleted (myWindow *win)
+{
+    g_return_val_if_fail (win, TRUE);
+
+    return win->window == None;
+}        
+
+void 
+myWindowTemp (Display * dpy, Window parent, myWindow * win, 
+                int x, int y, int w, int h, long eventmask)
+{
+    XSetWindowAttributes attributes;
+
+    attributes.event_mask = eventmask;
+    attributes.override_redirect = TRUE;
+    win->window = XCreateWindow (dpy, parent, x, y, w, h, 0, 0, 
+                         InputOnly, CopyFromParent,
+                         CWEventMask | CWOverrideRedirect, &attributes);
+    XMapRaised (dpy, win->window);
+    XFlush (dpy);
+
+    win->map = TRUE;
+    win->dpy = dpy;
+    win->x = x;
+    win->y = y;
+    win->w = w;
+    win->h = h;
+}
+

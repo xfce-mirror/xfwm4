@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,6 +44,7 @@
 #include "keyboard.h"
 #include "mypixmap.h"
 #include "mywindow.h"
+#include "screen.h"
 #include "settings.h"
 
 #define ANY                             0
@@ -190,6 +191,9 @@ struct _ClientPixmapCache
 
 struct _Client
 {
+    /* Reference to our screen structure */
+    ScreenData *md;
+    
     Window window;
     Window frame;
     Window transient_for;
@@ -261,13 +265,13 @@ void clientGetMWMHints (Client *, gboolean);
 void clientGetWMNormalHints (Client *, gboolean);
 void clientGetWMProtocols (Client *);
 void clientClearPixmapCache (Client *);
-void clientFrame (Window, gboolean);
+void clientFrame (ScreenData *, Window, gboolean);
 void clientUnframe (Client *, gboolean);
-void clientFrameAll ();
-void clientUnframeAll ();
+void clientFrameAll (ScreenData *);
+void clientUnframeAll (ScreenData *);
 void clientInstallColormaps (Client *);
 void clientUpdateColormaps (Client *);
-void clientUpdateAllFrames (gboolean);
+void clientUpdateAllFrames (ScreenData *, gboolean);
 void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
 void clientGrabButtons (Client *);
@@ -277,7 +281,7 @@ Client *clientAtPosition (int, int, Client *);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);
 void clientHideAll (Client *, int);
-void clientToggleShowDesktop (gboolean);
+void clientToggleShowDesktop (ScreenData *, gboolean);
 void clientClose (Client *);
 void clientKill (Client *);
 void clientEnterContextMenuState (Client *);

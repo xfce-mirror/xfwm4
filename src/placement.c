@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,7 +26,7 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "main.h"
+#include "screen.h"
 #include "misc.h"
 #include "client.h"
 #include "placement.h"
@@ -52,18 +52,18 @@ clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
                          c->struts[LEFT], 
                          c->struts[LEFT_END_Y])
               + overlap (x, y, x + w, y + h,
-                         gdk_screen_get_width (md->gscr) - c->struts[RIGHT], 
+                         gdk_screen_get_width (c->md->gscr) - c->struts[RIGHT], 
                          c->struts[RIGHT_START_Y],
-                         gdk_screen_get_width (md->gscr), c->struts[RIGHT_END_Y])
+                         gdk_screen_get_width (c->md->gscr), c->struts[RIGHT_END_Y])
               + overlap (x, y, x + w, y + h,
                          c->struts[TOP_START_X], 0, 
                          c->struts[TOP_END_X], 
                          c->struts[TOP])
               + overlap (x, y, x + w, y + h,
                          c->struts[BOTTOM_START_X], 
-                         gdk_screen_get_height (md->gscr) - c->struts[BOTTOM],
+                         gdk_screen_get_height (c->md->gscr) - c->struts[BOTTOM],
                          c->struts[BOTTOM_END_X], 
-                         gdk_screen_get_height (md->gscr));
+                         gdk_screen_get_height (c->md->gscr));
     }
     return sigma;
 }
@@ -139,10 +139,10 @@ clientMaxSpace (int *x, int *y, int *w, int *h)
 
             /* Right */
             if (overlap (*x, *y, *x + *w, *y + *h, 
-                         gdk_screen_get_width (md->gscr) - c2->struts[RIGHT], c2->struts[RIGHT_START_Y],
-                         gdk_screen_get_width (md->gscr), c2->struts[RIGHT_END_Y]))
+                         gdk_screen_get_width (c2->md->gscr) - c2->struts[RIGHT], c2->struts[RIGHT_START_Y],
+                         gdk_screen_get_width (c2->md->gscr), c2->struts[RIGHT_END_Y]))
             {
-                delta = (*x + *w) - gdk_screen_get_width (md->gscr) + c2->struts[RIGHT];
+                delta = (*x + *w) - gdk_screen_get_width (c2->md->gscr) + c2->struts[RIGHT];
                 *w = *w - delta;
             }
 
@@ -157,10 +157,10 @@ clientMaxSpace (int *x, int *y, int *w, int *h)
 
             /* Bottom */
             if (overlap (*x, *y, *x + *w, *y + *h, 
-                         c2->struts[BOTTOM_START_X], gdk_screen_get_height (md->gscr) - c2->struts[BOTTOM],
-                         c2->struts[BOTTOM_END_X], gdk_screen_get_height (md->gscr)))
+                         c2->struts[BOTTOM_START_X], gdk_screen_get_height (c2->md->gscr) - c2->struts[BOTTOM],
+                         c2->struts[BOTTOM_END_X], gdk_screen_get_height (c2->md->gscr)))
             {
-                delta = (*y + *h) - gdk_screen_get_height (md->gscr) + c2->struts[BOTTOM];
+                delta = (*y + *h) - gdk_screen_get_height (c2->md->gscr) + c2->struts[BOTTOM];
                 *h = *h - delta;
             }
         }
@@ -217,8 +217,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
 
-    monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, cx, cy);
-    gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+    monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
 
     disp_x = rect.x;
     disp_y = rect.y;
@@ -269,9 +269,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
                 {
                     if (overlapX (frame_x, frame_x + frame_width, 
-                                  gdk_screen_get_width (md->gscr) - c2->struts[RIGHT], gdk_screen_get_width (md->gscr)))
+                                  gdk_screen_get_width (c->md->gscr) - c2->struts[RIGHT], gdk_screen_get_width (c->md->gscr)))
                     {
-                        c->x = gdk_screen_get_width (md->gscr) - c2->struts[RIGHT] - frame_width;
+                        c->x = gdk_screen_get_width (c->md->gscr) - c2->struts[RIGHT] - frame_width;
                         frame_x = frameX (c);
                     }
                 }
@@ -290,9 +290,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapX (frame_x, frame_x + frame_width, c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
                 {
                     if (overlapY (frame_y, frame_y + frame_height, 
-                        gdk_screen_get_height (md->gscr) - c2->struts[BOTTOM], gdk_screen_get_height (md->gscr)))
+                        gdk_screen_get_height (c->md->gscr) - c2->struts[BOTTOM], gdk_screen_get_height (c->md->gscr)))
                     {
-                        c->y = gdk_screen_get_height (md->gscr) - c2->struts[BOTTOM] - frame_height;
+                        c->y = gdk_screen_get_height (c->md->gscr) - c2->struts[BOTTOM] - frame_height;
                         frame_y = frameY (c);
                     }
                 }
@@ -345,9 +345,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 /* Right */
                 if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
                 {
-                    if (frame_x > gdk_screen_get_width (md->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE)
+                    if (frame_x > gdk_screen_get_width (c->md->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE)
                     {
-                        c->x = gdk_screen_get_width (md->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE + frame_left;
+                        c->x = gdk_screen_get_width (c->md->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE + frame_left;
                         frame_x = frameX (c);
                     }
                 }
@@ -370,9 +370,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 /* Bottom */
                 if (overlapX (frame_x, frame_x + frame_width, c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
                 {
-                    if (frame_y > gdk_screen_get_height (md->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE)
+                    if (frame_y > gdk_screen_get_height (c->md->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE)
                     {
-                        c->y = gdk_screen_get_height (md->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE + frame_top;
+                        c->y = gdk_screen_get_height (c->md->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE + frame_top;
                         frame_y = frameY (c);
                     }
                 }
@@ -401,10 +401,10 @@ clientKeepVisible (Client * c)
     
     /* Translate coodinates to center on physical screen */
 
-    diff_x = abs (c->size->x - ((gdk_screen_get_width (md->gscr) - c->width) / 2));
-    diff_y = abs (c->size->y - ((gdk_screen_get_height (md->gscr) - c->height) / 2));
+    diff_x = abs (c->size->x - ((gdk_screen_get_width (c->md->gscr) - c->width) / 2));
+    diff_y = abs (c->size->y - ((gdk_screen_get_height (c->md->gscr) - c->height) / 2));
 
-    if (((gdk_screen_get_n_monitors (md->gscr) > 1) && (diff_x < 25) && (diff_y < 25)) ||
+    if (((gdk_screen_get_n_monitors (c->md->gscr) > 1) && (diff_x < 25) && (diff_y < 25)) ||
         ((frameX (c) == 0) && (frameY (c) == 0) && (c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))
     {
         GdkRectangle rect;
@@ -414,10 +414,10 @@ clientKeepVisible (Client * c)
          * Thus, will move it so its center on the current
          * physical screen
          */
-        getMouseXY (md->xroot, &cx, &cy);
+        getMouseXY (c->md, c->md->xroot, &cx, &cy);
         
-        monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, cx, cy);
-        gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+        monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, cx, cy);
+        gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
 
         c->x = rect.x + (rect.width - c->width) / 2;
         c->y = rect.y + (rect.height - c->height) / 2;
@@ -466,10 +466,10 @@ clientInitPosition (Client * c)
         return;
     }
 
-    getMouseXY (md->xroot, &msx, &msy);
+    getMouseXY (c->md, c->md->xroot, &msx, &msy);
 
-    monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, msx, msy);
-    gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+    monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, msx, msy);
+    gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
     
     frame_x = frameX (c);
     frame_y = frameY (c);
@@ -480,9 +480,9 @@ clientInitPosition (Client * c)
 
     full_x = MAX (params.xfwm_margins[LEFT], rect.x);
     full_y = MAX (params.xfwm_margins[TOP], rect.y);
-    full_w = MIN (gdk_screen_get_width (md->gscr) - params.xfwm_margins[RIGHT], 
+    full_w = MIN (gdk_screen_get_width (c->md->gscr) - params.xfwm_margins[RIGHT], 
                   rect.x + rect.width) - full_x;
-    full_h = MIN (gdk_screen_get_height (md->gscr) - params.xfwm_margins[BOTTOM], 
+    full_h = MIN (gdk_screen_get_height (c->md->gscr) - params.xfwm_margins[BOTTOM], 
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */

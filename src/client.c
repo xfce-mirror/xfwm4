@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -33,7 +33,7 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "main.h"
+#include "screen.h"
 #include "misc.h"
 #include "client.h"
 #include "frame.h"
@@ -103,7 +103,7 @@ struct _MoveResizeData
     int oldw, oldh;
     int corner;
     Poswin *poswin;
-    Window tmp_event_window;
+    myWindow tmp_event_window;
     Client *c;
 };
 
@@ -181,8 +181,8 @@ clientInstallColormaps (Client * c)
     {
         for (i = c->ncmap - 1; i >= 0; i--)
         {
-            XGetWindowAttributes (md->dpy, c->cmap_windows[i], &attr);
-            XInstallColormap (md->dpy, attr.colormap);
+            XGetWindowAttributes (c->md->dpy, c->cmap_windows[i], &attr);
+            XInstallColormap (c->md->dpy, attr.colormap);
             if (c->cmap_windows[i] == c->window)
             {
                 installed = TRUE;
@@ -191,7 +191,7 @@ clientInstallColormaps (Client * c)
     }
     if ((!installed) && (c->cmap))
     {
-        XInstallColormap (md->dpy, c->cmap);
+        XInstallColormap (c->md->dpy, c->cmap);
     }
 }
 
@@ -207,7 +207,7 @@ clientUpdateColormaps (Client * c)
     {
         XFree (c->cmap_windows);
     }
-    if (!XGetWMColormapWindows (md->dpy, c->window, &c->cmap_windows, &c->ncmap))
+    if (!XGetWMColormapWindows (c->md->dpy, c->window, &c->cmap_windows, &c->ncmap))
     {
         c->ncmap = 0;
     }
@@ -215,11 +215,13 @@ clientUpdateColormaps (Client * c)
 }
 
 void
-clientUpdateAllFrames (int mask)
+clientUpdateAllFrames (ScreenData *md, int mask)
 {
     Client *c;
     int i;
     XWindowChanges wc;
+
+    g_return_if_fail (md != NULL);
 
     TRACE ("entering clientRedrawAllFrames");
     XGrabPointer (md->dpy, md->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
@@ -260,58 +262,58 @@ clientGrabKeys (Client * c)
     TRACE ("entering clientGrabKeys");
     TRACE ("grabbing keys for client \"%s\" (0x%lx)", c->name, c->window);
 
-    grabKey (md->dpy, &params.keys[KEY_MOVE_UP], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_DOWN], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_LEFT], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_RIGHT], c->window);
-    grabKey (md->dpy, &params.keys[KEY_RESIZE_UP], c->window);
-    grabKey (md->dpy, &params.keys[KEY_RESIZE_DOWN], c->window);
-    grabKey (md->dpy, &params.keys[KEY_RESIZE_LEFT], c->window);
-    grabKey (md->dpy, &params.keys[KEY_RESIZE_RIGHT], c->window);
-    grabKey (md->dpy, &params.keys[KEY_CLOSE_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_HIDE_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MAXIMIZE_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MAXIMIZE_VERT], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MAXIMIZE_HORIZ], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHADE_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_STICK_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_RAISE_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_LOWER_WINDOW], c->window);
-    grabKey (md->dpy, &params.keys[KEY_CYCLE_WINDOWS], c->window);
-    grabKey (md->dpy, &params.keys[KEY_NEXT_WORKSPACE], c->window);
-    grabKey (md->dpy, &params.keys[KEY_PREV_WORKSPACE], c->window);
-    grabKey (md->dpy, &params.keys[KEY_ADD_WORKSPACE], c->window);
-    grabKey (md->dpy, &params.keys[KEY_DEL_WORKSPACE], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_1], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_2], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_3], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_4], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_5], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_6], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_7], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_8], c->window);
-    grabKey (md->dpy, &params.keys[KEY_WORKSPACE_9], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_NEXT_WORKSPACE], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_PREV_WORKSPACE], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_1], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_2], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_3], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_4], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_5], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_6], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_7], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_8], c->window);
-    grabKey (md->dpy, &params.keys[KEY_MOVE_WORKSPACE_9], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_1], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_2], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_3], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_4], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_5], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_6], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_7], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_8], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_9], c->window);
-    grabKey (md->dpy, &params.keys[KEY_SHORTCUT_10], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_UP], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_DOWN], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_LEFT], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_RIGHT], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_RESIZE_UP], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_RESIZE_DOWN], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_RESIZE_LEFT], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_RESIZE_RIGHT], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_CLOSE_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_HIDE_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MAXIMIZE_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MAXIMIZE_VERT], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MAXIMIZE_HORIZ], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHADE_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_STICK_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_RAISE_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_LOWER_WINDOW], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_CYCLE_WINDOWS], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_NEXT_WORKSPACE], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_PREV_WORKSPACE], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_ADD_WORKSPACE], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_DEL_WORKSPACE], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_1], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_2], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_3], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_4], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_5], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_6], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_7], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_8], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_WORKSPACE_9], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_NEXT_WORKSPACE], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_PREV_WORKSPACE], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_1], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_2], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_3], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_4], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_5], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_6], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_7], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_8], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_MOVE_WORKSPACE_9], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_1], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_2], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_3], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_4], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_5], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_6], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_7], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_8], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_9], c->window);
+    grabKey (c->md->dpy, &params.keys[KEY_SHORTCUT_10], c->window);
 }
 
 void
@@ -321,7 +323,7 @@ clientUngrabKeys (Client * c)
     TRACE ("entering clientUngrabKeys");
     TRACE ("ungrabing keys for client \"%s\" (0x%lx)", c->name, c->window);
 
-    ungrabKeys (md->dpy, c->window);
+    ungrabKeys (c->md->dpy, c->window);
 }
 
 void
@@ -331,9 +333,9 @@ clientGrabButtons (Client * c)
     TRACE ("entering clientGrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     
-    grabButton(md->dpy, Button1, AltMask, c->window);
-    grabButton(md->dpy, Button2, AltMask, c->window);
-    grabButton(md->dpy, Button3, AltMask, c->window);
+    grabButton(c->md->dpy, Button1, AltMask, c->window);
+    grabButton(c->md->dpy, Button2, AltMask, c->window);
+    grabButton(c->md->dpy, Button3, AltMask, c->window);
 }
 
 void
@@ -343,7 +345,7 @@ clientUngrabButtons (Client * c)
     TRACE ("entering clientUngrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     
-    XUngrabButton (md->dpy, AnyButton, AnyModifier, c->window);
+    XUngrabButton (c->md->dpy, AnyButton, AnyModifier, c->window);
 }
 
 void
@@ -670,9 +672,9 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         clientConstrainPos (c, TRUE);
     }
 
-    XMoveResizeWindow (md->dpy, c->frame, frameX (c), frameY (c), 
+    XMoveResizeWindow (c->md->dpy, c->frame, frameX (c), frameY (c), 
                             frameWidth (c), frameHeight (c));
-    XMoveResizeWindow (md->dpy, c->window, frameLeft (c), frameTop (c), 
+    XMoveResizeWindow (c->md->dpy, c->window, frameLeft (c), frameTop (c), 
                             c->width, c->height);
 
     if (resized || (flags & CFG_FORCE_REDRAW))
@@ -686,7 +688,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     {
         DBG ("Sending ConfigureNotify");
         ce.type = ConfigureNotify;
-        ce.display = md->dpy;
+        ce.display = c->md->dpy;
         ce.event = c->window;
         ce.window = c->window;
         ce.x = c->x;
@@ -696,7 +698,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         ce.border_width = 0;
         ce.above = c->frame;
         ce.override_redirect = FALSE;
-        XSendEvent (md->dpy, c->window, FALSE, StructureNotifyMask,
+        XSendEvent (c->md->dpy, c->window, FALSE, StructureNotifyMask,
             (XEvent *) & ce);
     }
 }
@@ -713,7 +715,7 @@ clientGetMWMHints (Client * c, gboolean update)
     TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name,
         c->window);
     
-    mwm_hints = getMotifHints (md->dpy, c->window);
+    mwm_hints = getMotifHints (c->md->dpy, c->window);
     if (mwm_hints)
     {
         if (mwm_hints->flags & MWM_HINTS_DECORATIONS)
@@ -822,7 +824,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size = XAllocSizeHints ();
     }
     g_assert (c->size);
-    if (!XGetWMNormalHints (md->dpy, c->window, c->size, &dummy))
+    if (!XGetWMNormalHints (c->md->dpy, c->window, c->size, &dummy))
     {
         c->size->flags = 0;
     }
@@ -968,7 +970,7 @@ clientGetWMProtocols (Client * c)
     
     TRACE ("entering clientGetWMProtocols client \"%s\" (0x%lx)", c->name,
         c->window);
-    wm_protocols_flags = getWMProtocols (md->dpy, c->window);
+    wm_protocols_flags = getWMProtocols (c->md->dpy, c->window);
     FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ?
         WM_FLAG_DELETE : 0);
@@ -1196,9 +1198,9 @@ clientCheckShape (Client * c)
     int boundingShaped, clipShaped;
     
     g_return_val_if_fail (c != NULL, FALSE);
-    if (md->shape)
+    if (c->md->shape)
     {
-        XShapeQueryExtents (md->dpy, c->window, &boundingShaped, &xws, &yws, &wws, 
+        XShapeQueryExtents (c->md->dpy, c->window, &boundingShaped, &xws, &yws, &wws, 
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
         return (boundingShaped != 0);
     }
@@ -1210,14 +1212,14 @@ clientClearPixmapCache (Client * c)
 {
     g_return_if_fail (c != NULL);
 
-    myPixmapFree (md->dpy, &c->pm_cache.pm_title[ACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_title[INACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-    myPixmapFree (md->dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_title[ACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_title[INACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+    myPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
 }
 
 void
@@ -1225,14 +1227,14 @@ clientGetUserTime (Client * c)
 {
     g_return_if_fail (c != NULL);
     
-    if (getNetWMUserTime (md->dpy, c->window, &c->user_time))
+    if (getNetWMUserTime (c->md->dpy, c->window, &c->user_time))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
     }
 }
 
 void
-clientFrame (Window w, gboolean recapture)
+clientFrame (ScreenData *md, Window w, gboolean recapture)
 {
     XWindowAttributes attr;
     XWindowChanges wc;
@@ -1242,6 +1244,8 @@ clientFrame (Window w, gboolean recapture)
     int i;
 
     g_return_if_fail (w != None);
+    g_return_if_fail (md != NULL);
+    
     TRACE ("entering clientFrame");
     TRACE ("framing client (0x%lx)", w);
 
@@ -1254,7 +1258,7 @@ clientFrame (Window w, gboolean recapture)
     gdk_error_trap_push ();
     if (checkKdeSystrayWindow (md->dpy, w) && (md->systray != None))
     {
-        TRACE ("Not managing KDE md->systray windows");
+        TRACE ("Not managing KDE systray windows");
         sendSystrayReqDock (md->dpy, w, md->systray);
         gdk_error_trap_pop ();
         return;
@@ -1283,6 +1287,7 @@ clientFrame (Window w, gboolean recapture)
     }
     
     c->window = w;
+    c->md = md;
     c->serial = client_serial++;
 
     getWindowName (md->dpy, c->window, &c->name);
@@ -1391,7 +1396,7 @@ clientFrame (Window w, gboolean recapture)
         c->win_layer = WIN_LAYER_NORMAL;
     }
 
-    /* md->reload from session */
+    /* Reload from session */
     if (sessionMatchWinToSM (c))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_SESSION_MANAGED);
@@ -1438,15 +1443,15 @@ clientFrame (Window w, gboolean recapture)
 
     if (!recapture)
     {
-        myXGrabServer ();
+        myXGrabServer (c->md);
     }
-    if (!myCheckWindow(w))
+    if (!myCheckWindow(c->md, w))
     {
         TRACE ("Client has vanished");
         clientFree(c);
         if (!recapture)
         {
-            myXUngrabServer ();
+            myXUngrabServer (c->md);
         }
         gdk_error_trap_pop ();
         return;
@@ -1473,7 +1478,7 @@ clientFrame (Window w, gboolean recapture)
         /* Window is reparented now, so we can safely release the grab 
          * on the server 
          */
-        myXUngrabServer ();
+        myXUngrabServer (md);
     }   
 
     clientAddToList (c);
@@ -1519,7 +1524,7 @@ clientFrame (Window w, gboolean recapture)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
-    clientApplyStackList ();
+    clientApplyStackList (c->md);
     clientSetLastRaise (c);
 
     /* Clear time counter */
@@ -1582,37 +1587,37 @@ clientUnframe (Client * c, gboolean remap)
     }
 
     clientRemoveFromList (c);
-    myXGrabServer ();
+    myXGrabServer (c->md);
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
-    XUnmapWindow (md->dpy, c->window);
-    XUnmapWindow (md->dpy, c->frame);
+    XUnmapWindow (c->md->dpy, c->window);
+    XUnmapWindow (c->md->dpy, c->frame);
     clientGravitate (c, REMOVE);
-    XSelectInput (md->dpy, c->window, NoEventMask);
-    reparented = XCheckTypedWindowEvent (md->dpy, c->window, ReparentNotify, &ev);
+    XSelectInput (c->md->dpy, c->window, NoEventMask);
+    reparented = XCheckTypedWindowEvent (c->md->dpy, c->window, ReparentNotify, &ev);
 
     if (remap || !reparented)
     {
-        XReparentWindow (md->dpy, c->window, md->xroot, c->x, c->y);
-        XSetWindowBorderWidth (md->dpy, c->window, c->border_width);
+        XReparentWindow (c->md->dpy, c->window, c->md->xroot, c->x, c->y);
+        XSetWindowBorderWidth (c->md->dpy, c->window, c->border_width);
         if (remap)
         {
-            XMapWindow (md->dpy, c->window);
+            XMapWindow (c->md->dpy, c->window);
         }
         else
         {
-            setWMState (md->dpy, c->window, WithdrawnState);
+            setWMState (c->md->dpy, c->window, WithdrawnState);
         }
     }
 
     if (!remap)
     {
-        XDeleteProperty (md->dpy, c->window, net_wm_state);
-        XDeleteProperty (md->dpy, c->window, win_state);
-        XDeleteProperty (md->dpy, c->window, net_wm_desktop);
-        XDeleteProperty (md->dpy, c->window, win_workspace);
-        XDeleteProperty (md->dpy, c->window, net_wm_allowed_actions);
+        XDeleteProperty (c->md->dpy, c->window, net_wm_state);
+        XDeleteProperty (c->md->dpy, c->window, win_state);
+        XDeleteProperty (c->md->dpy, c->window, net_wm_desktop);
+        XDeleteProperty (c->md->dpy, c->window, win_workspace);
+        XDeleteProperty (c->md->dpy, c->window, net_wm_allowed_actions);
     }
     
     myWindowDelete (&c->title);
@@ -1628,22 +1633,23 @@ clientUnframe (Client * c, gboolean remap)
     {
         myWindowDelete (&c->buttons[i]);
     }
-    XDestroyWindow (md->dpy, c->frame);
+    XDestroyWindow (c->md->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
-        workspaceUpdateArea (md->margins, md->gnome_margins);
+        workspaceUpdateArea (c->md);
     }
     
-    myXUngrabServer ();
+    myXUngrabServer (c->md);
     gdk_error_trap_pop ();
     clientFree (c);
 }
 
 void
-clientFrameAll ()
+clientFrameAll (ScreenData *md)
 {
     unsigned int count, i;
-    Window shield, w1, w2, *wins = NULL;
+    myWindow shield;
+    Window w1, w2, *wins = NULL;
     XWindowAttributes attr;
 
     TRACE ("entering clientFrameAll");
@@ -1652,36 +1658,35 @@ clientFrameAll ()
     client_count = 0;
     clients = NULL;
 
-    clientSetFocus (NULL, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
-    shield =
-        setTmpEventWin (0, 0, 
+    clientSetFocus (md, NULL, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+    myWindowTemp (md->dpy, md->xroot, &shield, 0, 0, 
                         gdk_screen_get_width (md->gscr),
                         gdk_screen_get_height (md->gscr), 
                         EnterWindowMask);
 
     XSync (md->dpy, FALSE);
-    myXGrabServer ();
+    myXGrabServer (md);
     XQueryTree (md->dpy, md->xroot, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
         XGetWindowAttributes (md->dpy, wins[i], &attr);
         if ((!(attr.override_redirect)) && (attr.map_state == IsViewable))
         {
-            clientFrame (wins[i], TRUE);
+            clientFrame (md, wins[i], TRUE);
         }
     }
     if (wins)
     {
         XFree (wins);
     }
-    clientFocusTop (WIN_LAYER_NORMAL);
-    removeTmpEventWin (shield);
-    myXUngrabServer ();
+    clientFocusTop (md, WIN_LAYER_NORMAL);
+    myWindowDelete (&shield);
+    myXUngrabServer (md);
     XSync (md->dpy, FALSE);
 }
 
 void
-clientUnframeAll ()
+clientUnframeAll (ScreenData *md)
 {
     Client *c;
     unsigned int count, i;
@@ -1689,9 +1694,9 @@ clientUnframeAll ()
 
     TRACE ("entering clientUnframeAll");
 
-    clientSetFocus (NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+    clientSetFocus (md, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
     XSync (md->dpy, FALSE);
-    myXGrabServer ();
+    myXGrabServer (md);
     XQueryTree (md->dpy, md->xroot, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -1701,7 +1706,7 @@ clientUnframeAll ()
             clientUnframe (c, TRUE);
         }
     }
-    myXUngrabServer ();
+    myXUngrabServer (md);
     XSync(md->dpy, FALSE);
     if (wins)
     {
@@ -1767,17 +1772,17 @@ clientSetWorkspaceSingle (Client * c, int ws)
 
     if (c->win_workspace != ws)
     {
-        TRACE ("setting client \"%s\" (0x%lx) to md->current_ws %d", c->name,
+        TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name,
             c->window, ws);
         c->win_workspace = ws;
-        setHint (md->dpy, c->window, win_workspace, ws);
+        setHint (c->md->dpy, c->window, win_workspace, ws);
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
-            setHint (md->dpy, c->window, net_wm_desktop, (unsigned long) ALL_WORKSPACES);
+            setHint (c->md->dpy, c->window, net_wm_desktop, (unsigned long) ALL_WORKSPACES);
         }
         else
         {
-            setHint (md->dpy, c->window, net_wm_desktop, (unsigned long) ws);
+            setHint (c->md->dpy, c->window, net_wm_desktop, (unsigned long) ws);
         }
     }
     FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
@@ -1800,7 +1805,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
         c2 = (Client *) index->data;
         if (c2->win_workspace != ws)
         {
-            TRACE ("setting client \"%s\" (0x%lx) to md->current_ws %d", c->name,
+            TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name,
                 c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
             if (manage_mapping && !clientIsTransientOrModal (c2)
@@ -1812,13 +1817,13 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
                 }
                 else
                 {
-                    if (ws == md->current_ws)
+                    if (ws == c2->md->current_ws)
                     {
                         clientShow (c2, FALSE);
                     }
                     else
                     {
-                        clientHide (c2, md->current_ws, FALSE);
+                        clientHide (c2, c2->md->current_ws, FALSE);
                     }
                 }
             }
@@ -1831,22 +1836,22 @@ static void
 clientShowSingle (Client * c, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
-    myXGrabServer ();
-    if ((c->win_workspace == md->current_ws)
+    myXGrabServer (c->md);
+    if ((c->win_workspace == c->md->current_ws)
         || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->flags, CLIENT_FLAG_VISIBLE);
-        XMapWindow (md->dpy, c->frame);
-        XMapWindow (md->dpy, c->window);
+        XMapWindow (c->md->dpy, c->frame);
+        XMapWindow (c->md->dpy, c->window);
     }
     if (change_state)
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
-        setWMState (md->dpy, c->window, NormalState);
-        workspaceUpdateArea (md->margins, md->gnome_margins);
+        setWMState (c->md->dpy, c->window, NormalState);
+        workspaceUpdateArea (c->md);
     }
-    myXUngrabServer ();
+    myXUngrabServer (c->md);
     clientSetNetState (c);
 }
 
@@ -1881,11 +1886,11 @@ static void
 clientHideSingle (Client * c, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
-    myXGrabServer ();
+    myXGrabServer (c->md);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    clientPassFocus(c);
-    XUnmapWindow (md->dpy, c->window);
-    XUnmapWindow (md->dpy, c->frame);
+    clientPassFocus(c->md, c);
+    XUnmapWindow (c->md->dpy, c->window);
+    XUnmapWindow (c->md->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_VISIBLE);
@@ -1894,10 +1899,10 @@ clientHideSingle (Client * c, gboolean change_state)
     if (change_state)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
-        setWMState (md->dpy, c->window, IconicState);
-        workspaceUpdateArea (md->margins, md->gnome_margins);
+        setWMState (c->md->dpy, c->window, IconicState);
+        workspaceUpdateArea (c->md);
     }
-    myXUngrabServer ();
+    myXUngrabServer (c->md);
     clientSetNetState (c);
 }
 
@@ -1924,8 +1929,8 @@ clientHide (Client * c, int ws, gboolean change_state)
 
         /* ws is used when transitioning between desktops, to avoid
            hiding a transient for group that will be shown again on the new
-           md->current_ws (transient for groups can be transients for multiple 
-           ancesors splitted across md->current_wss...)
+           workspace (transient for groups can be transients for multiple 
+           ancesors splitted across workspaces...)
          */
         if (clientIsTransientOrModalForGroup (c2)
             && clientTransientOrModalHasAncestor (c2, ws))
@@ -1965,13 +1970,13 @@ clientHideAll (Client * c, int ws)
 }
 
 void
-clientToggleShowDesktop (gboolean show_desktop)
+clientToggleShowDesktop (ScreenData *md, gboolean show_desktop)
 {
     GList *index;
 
     TRACE ("entering clientToggleShowDesktop");
 
-    clientSetFocus (NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+    clientSetFocus (md, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
     if (show_desktop)
     {
         for (index = windows_stack; index; index = g_list_next (index))
@@ -1986,7 +1991,7 @@ clientToggleShowDesktop (gboolean show_desktop)
                 }
             }
         }
-        clientFocusTop (WIN_LAYER_DESKTOP);
+        clientFocusTop (md, WIN_LAYER_DESKTOP);
     }
     else
     {
@@ -2001,7 +2006,7 @@ clientToggleShowDesktop (gboolean show_desktop)
             }
             FLAG_UNSET (c->flags, CLIENT_FLAG_WAS_SHOWN);
         }
-        clientFocusTop (WIN_LAYER_NORMAL);
+        clientFocusTop (md, WIN_LAYER_NORMAL);
     }
 }
 
@@ -2014,7 +2019,7 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window, GDK_CURRENT_TIME);
+        sendClientMessage (c->md, c->window, wm_protocols, wm_delete_window, GDK_CURRENT_TIME);
     }
     else
     {
@@ -2029,7 +2034,7 @@ clientKill (Client * c)
     TRACE ("entering clientKill");
     TRACE ("killing client \"%s\" (0x%lx)", c->name, c->window);
 
-    XKillClient (md->dpy, c->window);
+    XKillClient (c->md->dpy, c->window);
 }
 
 void
@@ -2041,7 +2046,7 @@ clientEnterContextMenuState (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->window, wm_protocols, kde_net_wm_context_help, GDK_CURRENT_TIME);
+        sendClientMessage (c->md, c->window, wm_protocols, kde_net_wm_context_help, GDK_CURRENT_TIME);
     }
 }
 
@@ -2064,7 +2069,7 @@ clientSetLayer (Client * c, int l)
             TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
                 c2->window, l);
             c2->win_layer = l;
-            setHint (md->dpy, c2->window, win_layer, l);
+            setHint (c2->md->dpy, c2->window, win_layer, l);
         }
     }
     g_list_free (list_of_windows);
@@ -2167,11 +2172,11 @@ clientStick (Client * c, gboolean include_transients)
             TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
-            setHint (md->dpy, c2->window, net_wm_desktop,
+            setHint (c2->md->dpy, c2->window, net_wm_desktop,
                 (unsigned long) ALL_WORKSPACES);
             clientSetNetState (c2);
         }
-        clientSetWorkspace (c, md->current_ws, TRUE);
+        clientSetWorkspace (c, c->md->current_ws, TRUE);
         g_list_free (list_of_windows);
     }
     else
@@ -2179,10 +2184,10 @@ clientStick (Client * c, gboolean include_transients)
         TRACE ("sticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state |= WIN_STATE_STICKY;
         FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-        setHint (md->dpy, c->window, net_wm_desktop,
+        setHint (c->md->dpy, c->window, net_wm_desktop,
             (unsigned long) ALL_WORKSPACES);
         clientSetNetState (c);
-        clientSetWorkspace (c, md->current_ws, TRUE);
+        clientSetWorkspace (c, c->md->current_ws, TRUE);
     }
 }
 
@@ -2205,21 +2210,21 @@ clientUnstick (Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
-            setHint (md->dpy, c2->window, net_wm_desktop,
-                (unsigned long) md->current_ws);
+            setHint (c2->md->dpy, c2->window, net_wm_desktop,
+                (unsigned long) c2->md->current_ws);
             clientSetNetState (c2);
         }
-        clientSetWorkspace (c, md->current_ws, TRUE);
+        clientSetWorkspace (c, c->md->current_ws, TRUE);
         g_list_free (list_of_windows);
     }
     else
     {
         c->win_state &= ~WIN_STATE_STICKY;
         FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
-        setHint (md->dpy, c->window, net_wm_desktop,
-            (unsigned long) md->current_ws);
+        setHint (c->md->dpy, c->window, net_wm_desktop,
+            (unsigned long) c->md->current_ws);
         clientSetNetState (c);
-        clientSetWorkspace (c, md->current_ws, TRUE);
+        clientSetWorkspace (c, c->md->current_ws, TRUE);
     }
 }
 
@@ -2314,14 +2319,14 @@ clientToggleMaximized (Client * c, int mode)
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
 
-    monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, cx, cy);
-    gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+    monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
 
     full_x = MAX (params.xfwm_margins[LEFT], rect.x);
     full_y = MAX (params.xfwm_margins[TOP], rect.y);
-    full_w = MIN (gdk_screen_get_width (md->gscr) - params.xfwm_margins[RIGHT], 
+    full_w = MIN (gdk_screen_get_width (c->md->gscr) - params.xfwm_margins[RIGHT], 
                   rect.x + rect.width) - full_x;
-    full_h = MIN (gdk_screen_get_height (md->gscr) - params.xfwm_margins[BOTTOM], 
+    full_h = MIN (gdk_screen_get_height (c->md->gscr) - params.xfwm_margins[BOTTOM], 
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
@@ -2386,10 +2391,10 @@ clientToggleMaximized (Client * c, int mode)
            grab focus in focus follow mouse mode. Grab the pointer to
            avoid these effects
          */
-        XGrabPointer (md->dpy, md->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+        XGrabPointer (c->md->dpy, c->md->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
                            GrabModeAsync, None, None, GDK_CURRENT_TIME);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
-        XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+        XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
     }
     else
     {
@@ -2435,12 +2440,12 @@ clientDrawOutline (Client * c)
 {
     TRACE ("entering clientDrawOutline");
 
-    XDrawRectangle (md->dpy, md->xroot, params.box_gc, frameX (c), frameY (c),
+    XDrawRectangle (c->md->dpy, c->md->xroot, params.box_gc, frameX (c), frameY (c),
         frameWidth (c) - 1, frameHeight (c) - 1);
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_SHADED))
     {
-        XDrawRectangle (md->dpy, md->xroot, params.box_gc, c->x, c->y, c->width - 1,
+        XDrawRectangle (c->md->dpy, c->md->xroot, params.box_gc, c->x, c->y, c->width - 1,
             c->height - 1);
     }
 }
@@ -2482,8 +2487,8 @@ clientSnapPosition (Client * c)
     best_frame_x = frame_x;
     best_frame_y = frame_y;
 
-        monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, cx, cy);
-        gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+    monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
 
     disp_x = rect.x;
     disp_y = rect.y;
@@ -2590,7 +2595,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             if (!passdata->grab && params.box_move)
             {
-                myXGrabServer ();
+                myXGrabServer (c->md);
                 passdata->grab = TRUE;
                 clientDrawOutline (c);
             }
@@ -2638,7 +2643,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     {
         if (passdata->use_keys)
         {
-            if (IsModifierKey (XKeycodeToKeysym (md->dpy, xevent->xkey.keycode, 0)))
+            if (IsModifierKey (XKeycodeToKeysym (c->md->dpy, xevent->xkey.keycode, 0)))
             {
                 moving = FALSE;
             }
@@ -2646,7 +2651,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == MotionNotify)
     {
-        while (XCheckMaskEvent (md->dpy, ButtonMotionMask | PointerMotionMask, xevent))
+        while (XCheckMaskEvent (c->md->dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
                     
         if (xevent->type == ButtonRelease)
@@ -2656,7 +2661,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
         if (!passdata->grab && params.box_move)
         {
-            myXGrabServer ();
+            myXGrabServer (c->md);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
@@ -2674,7 +2679,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
                 msx = xevent->xmotion.x_root;
                 msy = xevent->xmotion.y_root;
-                max = gdk_screen_get_width (md->gscr) - 1;
+                max = gdk_screen_get_width (c->md->gscr) - 1;
 
                 if ((msx == 0) || (msx == max))
                 {
@@ -2689,16 +2694,17 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     edge_scroll_x = 0;
                     if (msx == 0)
                     {
-                        XWarpPointer (md->dpy, None, md->xroot, 0, 0, 0, 0, max - 10,
-                            msy);
+                        XWarpPointer (c->md->dpy, None, c->md->xroot, 0, 0, 0, 0,
+                                      max - 10, msy);
                         msx = xevent->xmotion.x_root = max - 10;
-                        workspaceSwitch (md->current_ws - 1, c);
+                        workspaceSwitch (c->md, c->md->current_ws - 1, c);
                     }
                     else if (msx == max)
                     {
-                        XWarpPointer (md->dpy, None, md->xroot, 0, 0, 0, 0, 10, msy);
+                        XWarpPointer (c->md->dpy, None, c->md->xroot, 
+                                      0, 0, 0, 0, 10, msy);
                         msx = xevent->xmotion.x_root = 10;
-                        workspaceSwitch (md->current_ws + 1, c);
+                        workspaceSwitch (c->md, c->md->current_ws + 1, c);
                     }
                 }
             }
@@ -2776,25 +2782,10 @@ clientMove (Client * c, XEvent * e)
     passdata.oy = c->y;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
-    /*
-       The following trick is experimental, based on a patch for Kwin 3.1alpha1 by aviv bergman
 
-       It is supposed to reduce latency during move/resize by mapping a screen large window that
-       receives all pointer events.
-
-       Original mail message is available here :
-
-       http://www.xfree86.org/pipermail/xpert/2002-July/019434.html
-
-       Note:
-
-       I'm not sure it makes any difference, but who knows... It doesn' t hurt.
-     */
-
-    passdata.tmp_event_window =
-        setTmpEventWin (0, 0, 
-                        gdk_screen_get_width (md->gscr),
-                        gdk_screen_get_height (md->gscr), 
+    myWindowTemp (c->md->dpy, c->md->xroot, &passdata.tmp_event_window, 0, 0, 
+                        gdk_screen_get_width (c->md->gscr),
+                        gdk_screen_get_height (c->md->gscr), 
                         ButtonMotionMask | ButtonReleaseMask);
 
     if (e->type == KeyPress)
@@ -2812,14 +2803,14 @@ clientMove (Client * c, XEvent * e)
     }
     else
     {
-        cursor = md->move_cursor;
-        getMouseXY (md->xroot, &passdata.mx, &passdata.my);
+        cursor = c->md->move_cursor;
+        getMouseXY (c->md, c->md->xroot, &passdata.mx, &passdata.my);
     }
-    g1 = XGrabKeyboard (md->dpy, passdata.tmp_event_window, FALSE,
-        GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
-    g2 = XGrabPointer (md->dpy, passdata.tmp_event_window, FALSE,
-        ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-        GrabModeAsync, None, cursor, GDK_CURRENT_TIME);
+    g1 = XGrabKeyboard (c->md->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
+                        FALSE, GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
+    g2 = XGrabPointer (c->md->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
+                        FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
+                        GrabModeAsync, None, cursor, GDK_CURRENT_TIME);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2827,13 +2818,13 @@ clientMove (Client * c, XEvent * e)
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
+            XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+            XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
         }
-        removeTmpEventWin (passdata.tmp_event_window);
+        myWindowDelete (&passdata.tmp_event_window);
         return;
     }
 
@@ -2845,13 +2836,13 @@ clientMove (Client * c, XEvent * e)
 
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
-    xfce_push_event_filter (md->gtox_data, clientMove_event_filter, &passdata);
+    xfce_push_event_filter (c->md->gtox_data, clientMove_event_filter, &passdata);
     if (passdata.use_keys)
     {
-        XPutBackEvent (md->dpy, e);
+        XPutBackEvent (c->md->dpy, e);
     }
     gtk_main ();
-    xfce_pop_event_filter (md->gtox_data);
+    xfce_pop_event_filter (c->md->gtox_data);
     TRACE ("leaving move loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
 #ifdef SHOW_POSITION
@@ -2869,13 +2860,13 @@ clientMove (Client * c, XEvent * e)
     wc.y = c->y;
     clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
 
-    XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
-    XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
-    removeTmpEventWin (passdata.tmp_event_window);
+    XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
+    XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
+    myWindowDelete (&passdata.tmp_event_window);
 
     if (passdata.grab && params.box_move)
     {
-        myXUngrabServer ();
+        myXUngrabServer (c->md);
     }
 }
 
@@ -2908,8 +2899,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
 
-    monitor_nbr = gdk_screen_get_monitor_at_point (md->gscr, cx, cy);
-    gdk_screen_get_monitor_geometry (md->gscr, monitor_nbr, &rect);
+    monitor_nbr = gdk_screen_get_monitor_at_point (c->md->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (c->md->gscr, monitor_nbr, &rect);
 
     disp_x = rect.x;
     disp_y = rect.y;
@@ -2938,7 +2929,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
             if (!passdata->grab && params.box_resize)
             {
-                myXGrabServer ();
+                myXGrabServer (c->md);
                 passdata->grab = TRUE;
                 clientDrawOutline (c);
             }
@@ -2984,12 +2975,12 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             else
             {
                 if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
-                    || (c->x + c->width < md->margins [LEFT] + CLIENT_MIN_VISIBLE))
+                    || (c->x + c->width < c->md->margins [LEFT] + CLIENT_MIN_VISIBLE))
                 {
                     c->width = prev_width;
                 }
                 if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
-                    || (c->y + c->height < md->margins [TOP] + CLIENT_MIN_VISIBLE))
+                    || (c->y + c->height < c->md->margins [TOP] + CLIENT_MIN_VISIBLE))
                 {
                     c->height = prev_height;
                 }
@@ -3016,7 +3007,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     {
         if (passdata->use_keys)
         {
-            if (IsModifierKey (XKeycodeToKeysym (md->dpy, xevent->xkey.keycode, 0)))
+            if (IsModifierKey (XKeycodeToKeysym (c->md->dpy, xevent->xkey.keycode, 0)))
             {
                 resizing = FALSE;
             }
@@ -3024,7 +3015,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == MotionNotify)
     {
-        while (XCheckMaskEvent (md->dpy, ButtonMotionMask | PointerMotionMask, xevent))
+        while (XCheckMaskEvent (c->md->dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
         
         if (xevent->type == ButtonRelease)
@@ -3035,7 +3026,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
         if (!passdata->grab && params.box_resize)
         {
-            myXGrabServer ();
+            myXGrabServer (c->md);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
@@ -3108,8 +3099,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 || (passdata->corner == CORNER_TOP_RIGHT))
             {
                 if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
-                    || (c->y > gdk_screen_get_height (md->gscr) 
-                               - md->margins [BOTTOM] - CLIENT_MIN_VISIBLE))
+                    || (c->y > gdk_screen_get_height (c->md->gscr) 
+                               - c->md->margins [BOTTOM] - CLIENT_MIN_VISIBLE))
                 {
                     c->y = prev_y;
                     c->height = prev_height;
@@ -3120,7 +3111,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 || (passdata->corner == 4 + SIDE_BOTTOM))
             {
                 if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
-                    || (c->y + c->height < md->margins [TOP] + CLIENT_MIN_VISIBLE))
+                    || (c->y + c->height < c->md->margins [TOP] + CLIENT_MIN_VISIBLE))
                 {
                     c->height = prev_height;
                 }
@@ -3130,8 +3121,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 || (passdata->corner == 4 + SIDE_LEFT))
             {
                 if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
-                    || (c->x > gdk_screen_get_width (md->gscr) 
-                               - md->margins [RIGHT] - CLIENT_MIN_VISIBLE))
+                    || (c->x > gdk_screen_get_width (c->md->gscr) 
+                               - c->md->margins [RIGHT] - CLIENT_MIN_VISIBLE))
                 {
                     c->x = prev_x;
                     c->width = prev_width;
@@ -3142,7 +3133,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 || (passdata->corner == 4 + SIDE_RIGHT))
             {
                 if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
-                    || (c->x + c->width < md->margins [LEFT] + CLIENT_MIN_VISIBLE))
+                    || (c->x + c->width < c->md->margins [LEFT] + CLIENT_MIN_VISIBLE))
                 {
                     c->width = prev_width;
                 }
@@ -3218,10 +3209,10 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;
-    passdata.tmp_event_window =
-        setTmpEventWin (0, 0, 
-                        gdk_screen_get_width (md->gscr),
-                        gdk_screen_get_height (md->gscr), 
+
+    myWindowTemp (c->md->dpy, c->md->xroot, &passdata.tmp_event_window, 0, 0, 
+                        gdk_screen_get_width (c->md->gscr),
+                        gdk_screen_get_height (c->md->gscr), 
                         ButtonMotionMask | ButtonReleaseMask);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -3242,13 +3233,15 @@ clientResize (Client * c, int corner, XEvent * e)
     }
     else
     {
-        getMouseXY (md->xroot, &passdata.mx, &passdata.my);
+        getMouseXY (c->md, c->md->xroot, &passdata.mx, &passdata.my);
     }
-    g1 = XGrabKeyboard (md->dpy, passdata.tmp_event_window, FALSE,
-        GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
-    g2 = XGrabPointer (md->dpy, passdata.tmp_event_window, FALSE,
-        ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync,
-        None, md->resize_cursor[passdata.corner], GDK_CURRENT_TIME);
+
+    g1 = XGrabKeyboard (c->md->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
+                        FALSE, GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
+    g2 = XGrabPointer (c->md->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
+                        FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
+                        GrabModeAsync, None, c->md->resize_cursor[passdata.corner],
+                        GDK_CURRENT_TIME);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -3256,13 +3249,13 @@ clientResize (Client * c, int corner, XEvent * e)
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
+            XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+            XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
         }
-        removeTmpEventWin (passdata.tmp_event_window);
+        myWindowDelete (&passdata.tmp_event_window);
         return;
     }
 
@@ -3283,13 +3276,13 @@ clientResize (Client * c, int corner, XEvent * e)
     
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
-    xfce_push_event_filter (md->gtox_data, clientResize_event_filter, &passdata);
+    xfce_push_event_filter (c->md->gtox_data, clientResize_event_filter, &passdata);
     if (passdata.use_keys)
     {
-        XPutBackEvent (md->dpy, e);
+        XPutBackEvent (c->md->dpy, e);
     }
     gtk_main ();
-    xfce_pop_event_filter (md->gtox_data);
+    xfce_pop_event_filter (c->md->gtox_data);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     
@@ -3308,13 +3301,13 @@ clientResize (Client * c, int corner, XEvent * e)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 
-    XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
-    XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
-    removeTmpEventWin (passdata.tmp_event_window);
+    XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
+    XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
+    myWindowDelete (&passdata.tmp_event_window);
 
     if (passdata.grab && params.box_resize)
     {
-        myXUngrabServer ();
+        myXUngrabServer (c->md);
     }
 }
 
@@ -3325,49 +3318,44 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     gboolean cycling = TRUE;
     gboolean gone = FALSE;
     ClientCycleData *passdata = (ClientCycleData *) data;
-
+    Client *c = passdata->c;
+    
     TRACE ("entering clientCycle_event_filter");
     switch (xevent->type)
     {
         case DestroyNotify:
-            gone |=
-                (passdata->c ==
-                clientGetFromWindow (((XDestroyWindowEvent *) xevent)->window,
-                    WINDOW));
+            gone |= (c == clientGetFromWindow (((XDestroyWindowEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
         case UnmapNotify:
-            gone |=
-                (passdata->c ==
-                clientGetFromWindow (((XUnmapEvent *) xevent)->window,
-                    WINDOW));
+            gone |= (c == clientGetFromWindow (((XUnmapEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
         case KeyPress:
-            if (gone
-                || (xevent->xkey.keycode ==
-                    params.keys[KEY_CYCLE_WINDOWS].keycode))
+            if (gone || (xevent->xkey.keycode == params.keys[KEY_CYCLE_WINDOWS].keycode))
             {
                 /* Hide frame draw */
-                clientDrawOutline (passdata->c);
+                clientDrawOutline (c);
 
                 /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
                 if (!(params.keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask)
-                        && xevent->xkey.state & ShiftMask) {
-                    passdata->c =
-                        clientGetPrevious (passdata->c, passdata->cycle_range);
+                        && xevent->xkey.state & ShiftMask) 
+                {
+                    c = clientGetPrevious (c, passdata->cycle_range);
+                    passdata->c = c;
                 }
                 else
                 {
-                    passdata->c =
-                        clientGetNext (passdata->c, passdata->cycle_range);
+                    c = clientGetNext (c, passdata->cycle_range);
+                    passdata->c = c;
                 }
 
-                if (passdata->c)
+                if (c)
                 {
                     /* Redraw frame draw */
-                    clientDrawOutline (passdata->c);
+                    clientDrawOutline (c);
                     tabwinSetLabel (passdata->tabwin, 
-                                    getAppIcon (md->dpy, passdata->c->window, 32, 32), 
-                                    passdata->c->class.res_class, passdata->c->name);
+                                    getAppIcon (c->md->dpy, 
+                                                c->window, 32, 32), 
+                                    c->class.res_class, c->name);
                 }
                 else
                 {
@@ -3377,7 +3365,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             break;
         case KeyRelease:
             {
-                int keysym = XKeycodeToKeysym (md->dpy, xevent->xkey.keycode, 0);
+                int keysym = XKeycodeToKeysym (c->md->dpy, xevent->xkey.keycode, 0);
 
                 /* If KEY_CYCE_WINDOWS has Shift, then stop cycling on Shift
                  * release.
@@ -3420,9 +3408,9 @@ clientCycle (Client * c, XEvent * e)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
 
-    g1 = XGrabKeyboard (md->dpy, md->gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
+    g1 = XGrabKeyboard (c->md->dpy, c->md->gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
         GDK_CURRENT_TIME);
-    g2 = XGrabPointer (md->dpy, md->gnome_win, FALSE, NoEventMask, GrabModeAsync,
+    g2 = XGrabPointer (c->md->dpy, c->md->gnome_win, FALSE, NoEventMask, GrabModeAsync,
         GrabModeAsync, None, None, GDK_CURRENT_TIME);
     if ((g1 != GrabSuccess) || (g2 != GrabSuccess))
     {
@@ -3430,16 +3418,16 @@ clientCycle (Client * c, XEvent * e)
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
+            XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+            XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
         }
         return;
     }
 
-    myXGrabServer ();
+    myXGrabServer (c->md);
     if (params.cycle_minimum)
     {
         passdata.cycle_range = INCLUDE_HIDDEN;
@@ -3451,14 +3439,19 @@ clientCycle (Client * c, XEvent * e)
     passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)
     {
+<<<<<<< client.c
+        passdata.tabwin = tabwinCreate (getAppIcon (c->md->dpy, passdata.c->window, 32, 32),
+                                        passdata.c->class.res_class, passdata.c->name);
+=======
         passdata.tabwin = tabwinCreate (getAppIcon (md->dpy, passdata.c->window, 32, 32),
                                         passdata.c->class.res_class, passdata.c->name);
+>>>>>>> 1.380
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);
-        xfce_push_event_filter (md->gtox_data, clientCycle_event_filter, &passdata);
+        xfce_push_event_filter (c->md->gtox_data, clientCycle_event_filter, &passdata);
         gtk_main ();
-        xfce_pop_event_filter (md->gtox_data);
+        xfce_pop_event_filter (c->md->gtox_data);
         if (passdata.c)
         {
             /* Hide frame draw */
@@ -3468,15 +3461,15 @@ clientCycle (Client * c, XEvent * e)
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    myXUngrabServer ();
-    XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
-    XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+    myXUngrabServer (c->md);
+    XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
+    XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
 
     if (passdata.c)
     {
         clientShow (passdata.c, TRUE);
         clientRaise (passdata.c);
-        clientSetFocus (passdata.c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (passdata.c->md, passdata.c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
         clientPassGrabButton1 (passdata.c);
     }
 }
@@ -3543,7 +3536,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
         }
     }
 
-    g1 = XGrabPointer (md->dpy, w, FALSE,
+    g1 = XGrabPointer (c->md->dpy, w, FALSE,
         ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync,
         GrabModeAsync, None, None, GDK_CURRENT_TIME);
 
@@ -3553,7 +3546,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (md->dpy, GDK_CURRENT_TIME);
+            XUngrabKeyboard (c->md->dpy, GDK_CURRENT_TIME);
         }
         return;
     }
@@ -3565,12 +3558,12 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     frameDraw (c, FALSE, FALSE);
 
     TRACE ("entering button press loop");
-    xfce_push_event_filter (md->gtox_data, clientButtonPress_event_filter, &passdata);
+    xfce_push_event_filter (c->md->gtox_data, clientButtonPress_event_filter, &passdata);
     gtk_main ();
-    xfce_pop_event_filter (md->gtox_data);
+    xfce_pop_event_filter (c->md->gtox_data);
     TRACE ("leaving button press loop");
 
-    XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+    XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);
 
     if (c->button_pressed[b])
     {

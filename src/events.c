@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -37,7 +37,6 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <string.h>
 
-#include "main.h"
 #include "misc.h"
 #include "workspaces.h"
 #include "settings.h"
@@ -70,17 +69,22 @@
                                  SuperMask | \
                                  HyperMask)
 
+extern gboolean xfwm4_quit;
+extern gboolean xfwm4_reload;
+
+
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
-static Window menu_event_window = None;
+static myWindow menu_event_window;
 static int edge_scroll_x = 0;
 
+static void handleEvent (ScreenData *md, XEvent * ev);
 static void menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
     gpointer menu_data, gpointer item_data);
 static gboolean show_popup_cb (GtkWidget * widget, GdkEventButton * ev,
     gpointer data);
-static gboolean client_event_cb (GtkWidget * widget, GdkEventClient * ev);
+static gboolean client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data);
 
 typedef enum
 {
@@ -93,7 +97,7 @@ typedef enum
 XfwmButtonClickType;
 
 static XfwmButtonClickType
-typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
+typeOfClick (ScreenData *md, Window w, XEvent * ev, gboolean allow_double_click)
 {
     unsigned int button;
     int xcurrent, ycurrent, x, y, total;
@@ -101,6 +105,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     int clicks;
     Time t0;
 
+    g_return_val_if_fail (md != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
     
@@ -129,7 +134,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         total += 10;
         if (XCheckMaskEvent (md->dpy, FocusChangeMask, ev))
         {
-            handleEvent (ev);
+            handleEvent (md, ev);
         }
         if (XCheckMaskEvent (md->dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
@@ -205,7 +210,7 @@ moveRequest (Client * c, XEvent * ev)
 static void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+    clientSetFocus (c->md, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
 
     if (FLAG_TEST_ALL (c->flags,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -238,7 +243,7 @@ spawn_shortcut (int i)
 }
 
 static void
-handleMotionNotify (XMotionEvent * ev)
+handleMotionNotify (ScreenData *md, XMotionEvent * ev)
 {
     int msx, msy, max;
 
@@ -265,12 +270,12 @@ handleMotionNotify (XMotionEvent * ev)
             if (msx == 0)
             {
                 XWarpPointer (md->dpy, None, md->xroot, 0, 0, 0, 0, max - 10, msy);
-                workspaceSwitch (md->current_ws - 1, NULL);
+                workspaceSwitch (md, md->current_ws - 1, NULL);
             }
             else if (msx == max)
             {
                 XWarpPointer (md->dpy, None, md->xroot, 0, 0, 0, 0, 10, msy);
-                workspaceSwitch (md->current_ws + 1, NULL);
+                workspaceSwitch (md, md->current_ws + 1, NULL);
             }
             while (XCheckWindowEvent(md->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
                 ; /* Skip event */
@@ -279,7 +284,7 @@ handleMotionNotify (XMotionEvent * ev)
 }
 
 static void
-handleKeyPress (XKeyEvent * ev)
+handleKeyPress (ScreenData *md, XKeyEvent * ev)
 {
     Client *c = NULL;
     int state, key;
@@ -358,10 +363,10 @@ handleKeyPress (XKeyEvent * ev)
                 clientPassGrabButton1 (NULL);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
-                workspaceSwitch (md->current_ws + 1, c);
+                workspaceSwitch (md, md->current_ws + 1, c);
                 break;
             case KEY_MOVE_PREV_WORKSPACE:
-                workspaceSwitch (md->current_ws - 1, c);
+                workspaceSwitch (md, md->current_ws - 1, c);
                 break;
             case KEY_MOVE_WORKSPACE_1:
             case KEY_MOVE_WORKSPACE_2:
@@ -373,7 +378,7 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_8:
             case KEY_MOVE_WORKSPACE_9:
                 clientRaise (c);
-                workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, c);
+                workspaceSwitch (md, key - KEY_MOVE_WORKSPACE_1, c);
                 break;
             default:
                 break;
@@ -396,16 +401,16 @@ handleKeyPress (XKeyEvent * ev)
     switch (key)
     {
         case KEY_NEXT_WORKSPACE:
-            workspaceSwitch (md->current_ws + 1, NULL);
+            workspaceSwitch (md, md->current_ws + 1, NULL);
             break;
         case KEY_PREV_WORKSPACE:
-            workspaceSwitch (md->current_ws - 1, NULL);
+            workspaceSwitch (md, md->current_ws - 1, NULL);
             break;
         case KEY_ADD_WORKSPACE:
-            workspaceSetCount (params.workspace_count + 1);
+            workspaceSetCount (md, params.workspace_count + 1);
             break;
         case KEY_DEL_WORKSPACE:
-            workspaceSetCount (params.workspace_count - 1);
+            workspaceSetCount (md, params.workspace_count - 1);
             break;
         case KEY_WORKSPACE_1:
         case KEY_WORKSPACE_2:
@@ -416,7 +421,7 @@ handleKeyPress (XKeyEvent * ev)
         case KEY_WORKSPACE_7:
         case KEY_WORKSPACE_8:
         case KEY_WORKSPACE_9:
-            workspaceSwitch (key - KEY_WORKSPACE_1, NULL);
+            workspaceSwitch (md, key - KEY_WORKSPACE_1, NULL);
             break;
         case KEY_SHORTCUT_1:
         case KEY_SHORTCUT_2:
@@ -447,7 +452,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     {
         XfwmButtonClickType tclick;
 
-        tclick = typeOfClick (c->frame, (XEvent *) ev, FALSE);
+        tclick = typeOfClick (c->md, c->frame, (XEvent *) ev, FALSE);
 
         if (tclick == XFWM_BUTTON_CLICK)
         {
@@ -482,12 +487,12 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
+    clientSetFocus (c->md, c, ev->time, NO_FOCUS_FLAG);
     clientRaise (c);
     clientPassGrabButton1 (c);
 
     memcpy(&copy_event, ev, sizeof(XEvent));
-    tclick = typeOfClick (c->frame, &copy_event, TRUE);
+    tclick = typeOfClick (c->md, c->frame, &copy_event, TRUE);
 
     if ((tclick == XFWM_BUTTON_DRAG)
         || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
@@ -517,8 +522,12 @@ button1Action (Client * c, XButtonEvent * ev)
 static void
 titleButton (Client * c, int state, XButtonEvent * ev)
 {
+    ScreenData *md;
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
+
+    /* Get Screen data from the client itself */
+    md = c->md;
 
     if (ev->button == Button1)
     {
@@ -540,7 +549,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         XfwmButtonClickType tclick;
 
         memcpy(&copy_event, ev, sizeof(XEvent));
-        tclick = typeOfClick (c->frame, &copy_event, FALSE);
+        tclick = typeOfClick (c->md, c->frame, &copy_event, FALSE);
 
         if (tclick == XFWM_BUTTON_DRAG)
         {
@@ -548,7 +557,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
+            clientSetFocus (c->md, c, ev->time, NO_FOCUS_FLAG);
             if (params.raise_on_click)
             {
                 clientRaise (c);
@@ -585,7 +594,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
 }
 
 static void
-rootScrollButton (XButtonEvent * ev)
+rootScrollButton (ScreenData *md, XButtonEvent * ev)
 {
     static Time lastscroll = (Time) 0;
 
@@ -597,17 +606,17 @@ rootScrollButton (XButtonEvent * ev)
     lastscroll = ev->time;
     if (ev->button == Button4)
     {
-        workspaceSwitch (md->current_ws - 1, NULL);
+        workspaceSwitch (md, md->current_ws - 1, NULL);
     }
     else if (ev->button == Button5)
     {
-        workspaceSwitch (md->current_ws + 1, NULL);
+        workspaceSwitch (md, md->current_ws + 1, NULL);
     }
 }
 
 
 static void
-handleButtonPress (XButtonEvent * ev)
+handleButtonPress (ScreenData *md, XButtonEvent * ev)
 {
     Client *c = NULL;
     Window win;
@@ -656,7 +665,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
+                clientSetFocus (c->md, c, ev->time, NO_FOCUS_FLAG);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -682,7 +691,7 @@ handleButtonPress (XButtonEvent * ev)
                 XfwmButtonClickType tclick;
 
                 memcpy(&copy_event, ev, sizeof(XEvent));
-                tclick = typeOfClick (c->frame, &copy_event, TRUE);
+                tclick = typeOfClick (c->md, c->frame, &copy_event, TRUE);
 
                 if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
                 {
@@ -690,7 +699,7 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
+                    clientSetFocus (c->md, c, ev->time, NO_FOCUS_FLAG);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
@@ -759,7 +768,7 @@ handleButtonPress (XButtonEvent * ev)
                 {
                     clientPassGrabButton1 (c);
                 }
-                clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
+                clientSetFocus (c->md, c, ev->time, NO_FOCUS_FLAG);
                 if ((params.raise_on_click) || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
@@ -781,10 +790,9 @@ handleButtonPress (XButtonEvent * ev)
             XAllowEvents (md->dpy, SyncPointer, ev->time);
         }
     }
-    else if ((ev->window == md->xroot) && ((ev->button == Button4)
-            || (ev->button == Button5)))
+    else if ((ev->window == md->xroot) && ((ev->button == Button4) || (ev->button == Button5)))
     {
-        rootScrollButton (ev);
+        rootScrollButton (md, ev);
     }
     else
     {
@@ -795,7 +803,7 @@ handleButtonPress (XButtonEvent * ev)
 }
 
 static void
-handleButtonRelease (XButtonEvent * ev)
+handleButtonRelease (ScreenData *md, XButtonEvent * ev)
 {
     TRACE ("entering handleButtonRelease");
 
@@ -803,7 +811,7 @@ handleButtonRelease (XButtonEvent * ev)
 }
 
 static void
-handleDestroyNotify (XDestroyWindowEvent * ev)
+handleDestroyNotify (ScreenData *md, XDestroyWindowEvent * ev)
 {
     Client *c = NULL;
 
@@ -821,13 +829,13 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
     if (c)
     {
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
-        clientPassFocus (c);
+        clientPassFocus (c->md, c);
         clientUnframe (c, FALSE);
     }
 }
 
 static void
-handleMapRequest (XMapRequestEvent * ev)
+handleMapRequest (ScreenData *md, XMapRequestEvent * ev)
 {
     Client *c = NULL;
 
@@ -859,12 +867,12 @@ handleMapRequest (XMapRequestEvent * ev)
     else
     {
         TRACE ("handleMapRequest: clientFrame");
-        clientFrame (ev->window, FALSE);
+        clientFrame (md, ev->window, FALSE);
     }
 }
 
 static void
-handleMapNotify (XMapEvent * ev)
+handleMapNotify (ScreenData *md, XMapEvent * ev)
 {
     Client *c = NULL;
 
@@ -883,7 +891,7 @@ handleMapNotify (XMapEvent * ev)
 }
 
 static void
-handleUnmapNotify (XUnmapEvent * ev)
+handleUnmapNotify (ScreenData *md, XUnmapEvent * ev)
 {
     Client *c = NULL;
 
@@ -919,7 +927,7 @@ handleUnmapNotify (XUnmapEvent * ev)
             return;
         }
 
-        clientPassFocus (c);
+        clientPassFocus (c->md, c);
         
         /*
          * ICCCM spec states that a client wishing to switch
@@ -949,7 +957,7 @@ handleUnmapNotify (XUnmapEvent * ev)
 }
 
 static void
-handleConfigureNotify (XConfigureEvent * ev)
+handleConfigureNotify (ScreenData *md, XConfigureEvent * ev)
 {
     TRACE ("entering handleConfigureNotify");
 
@@ -962,13 +970,13 @@ handleConfigureNotify (XConfigureEvent * ev)
         md->xscreen->width   = ev->width;
         md->xscreen->height  = ev->height;
 #endif
-        placeSidewalks (params.wrap_workspaces);
+        placeSidewalks (md, params.wrap_workspaces);
         clientScreenResize ();
     }
 }
 
 static void
-handleConfigureRequest (XConfigureRequestEvent * ev)
+handleConfigureRequest (ScreenData *md, XConfigureRequestEvent * ev)
 {
     Client *c = NULL;
     XWindowChanges wc;
@@ -1123,7 +1131,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
 }
 
 static void
-handleEnterNotify (XCrossingEvent * ev)
+handleEnterNotify (ScreenData *md, XCrossingEvent * ev)
 {
     Client *c = NULL;
 
@@ -1144,7 +1152,7 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
         {
-            clientSetFocus (c, ev->time, FOCUS_FORCE);
+            clientSetFocus (c->md, c, ev->time, FOCUS_FORCE);
             if (!(params.raise_on_click))
             {
                 clientPassGrabButton1 (c);
@@ -1154,7 +1162,7 @@ handleEnterNotify (XCrossingEvent * ev)
 }
 
 static void
-handleLeaveNotify (XCrossingEvent * ev)
+handleLeaveNotify (ScreenData *md, XCrossingEvent * ev)
 {
     TRACE ("entering handleLeaveNotify");
 
@@ -1165,7 +1173,8 @@ handleLeaveNotify (XCrossingEvent * ev)
         return;
     }
 
-    if ((ev->window == md->sidewalk[0]) || (ev->window == md->sidewalk[1]))
+    if ((ev->window == MYWINDOW_XWINDOW (md->sidewalk[0])) || 
+        (ev->window == MYWINDOW_XWINDOW (md->sidewalk[1])))
     {
         TRACE ("Reset edge_scroll_x");
         edge_scroll_x = 0;
@@ -1173,7 +1182,7 @@ handleLeaveNotify (XCrossingEvent * ev)
 }
 
 static void
-handleFocusIn (XFocusChangeEvent * ev)
+handleFocusIn (ScreenData *md, XFocusChangeEvent * ev)
 {
     Client *c = NULL;
 
@@ -1214,7 +1223,7 @@ handleFocusIn (XFocusChangeEvent * ev)
         c = clientGetFocus ();
         if (c)
         {
-            clientSetFocus (c, GDK_CURRENT_TIME, FOCUS_FORCE);
+            clientSetFocus (c->md, c, GDK_CURRENT_TIME, FOCUS_FORCE);
         }
         return;
     }
@@ -1230,7 +1239,7 @@ handleFocusIn (XFocusChangeEvent * ev)
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
-        clientUpdateFocus (c, FOCUS_SORT);
+        clientUpdateFocus (c->md, c, FOCUS_SORT);
         if (params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout ();
@@ -1239,7 +1248,7 @@ handleFocusIn (XFocusChangeEvent * ev)
 }
 
 static void
-handleFocusOut (XFocusChangeEvent * ev)
+handleFocusOut (ScreenData *md, XFocusChangeEvent * ev)
 {
     Client *c = NULL;
     
@@ -1280,7 +1289,7 @@ handleFocusOut (XFocusChangeEvent * ev)
         if ((c) && (c == clientGetFocus ()))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-            clientUpdateFocus (NULL, NO_FOCUS_FLAG);
+            clientUpdateFocus (md, NULL, NO_FOCUS_FLAG);
             clientPassGrabButton1 (NULL);
             /* Clear timeout */
             clear_timeout ();
@@ -1289,7 +1298,7 @@ handleFocusOut (XFocusChangeEvent * ev)
 }
 
 static void
-handlePropertyNotify (XPropertyEvent * ev)
+handlePropertyNotify (ScreenData *md, XPropertyEvent * ev)
 {
     Client *c = NULL;
     char *names;
@@ -1406,12 +1415,12 @@ handlePropertyNotify (XPropertyEvent * ev)
     {
         TRACE ("root has received a gnome_panel_desktop_area notify");
         getGnomeDesktopMargins (md->dpy, md->screen, md->gnome_margins);
-        workspaceUpdateArea (md->margins, md->gnome_margins);
+        workspaceUpdateArea (md);
     }
 }
 
 static void
-handleClientMessage (XClientMessageEvent * ev)
+handleClientMessage (ScreenData *md, XClientMessageEvent * ev)
 {
     Client *c = NULL;
 
@@ -1524,7 +1533,7 @@ handleClientMessage (XClientMessageEvent * ev)
             clientSetWorkspace (c, md->current_ws, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+            clientSetFocus (c->md, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
             clientPassGrabButton1 (c);
         }
     }
@@ -1538,7 +1547,7 @@ handleClientMessage (XClientMessageEvent * ev)
                 ("root has received a win_workspace or a net_current_desktop event");
             if (ev->data.l[0] != md->current_ws)
             {
-                workspaceSwitch (ev->data.l[0], NULL);
+                workspaceSwitch (md, ev->data.l[0], NULL);
             }
         }
         else if (((ev->message_type == win_workspace_count)
@@ -1548,7 +1557,7 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE ("root has received a win_workspace_count event");
             if (ev->data.l[0] != params.workspace_count)
             {
-                workspaceSetCount (ev->data.l[0]);
+                workspaceSetCount (md, ev->data.l[0]);
             }
         }
         else if ((ev->message_type == net_system_tray_manager)
@@ -1562,7 +1571,7 @@ handleClientMessage (XClientMessageEvent * ev)
             && (ev->format == 32))
         {
             TRACE ("root has received a net_showing_desktop event");
-            clientToggleShowDesktop (ev->data.l[0]);
+            clientToggleShowDesktop (md, ev->data.l[0]);
             setHint (md->dpy, md->xroot, net_showing_desktop, ev->data.l[0]);
         }
         else
@@ -1574,7 +1583,7 @@ handleClientMessage (XClientMessageEvent * ev)
 }
 
 static void
-handleShape (XShapeEvent * ev)
+handleShape (ScreenData *md, XShapeEvent * ev)
 {
     Client *c = NULL;
 
@@ -1588,7 +1597,7 @@ handleShape (XShapeEvent * ev)
 }
 
 static void
-handleColormapNotify (XColormapEvent * ev)
+handleColormapNotify (ScreenData *md, XColormapEvent * ev)
 {
     Client *c = NULL;
 
@@ -1604,8 +1613,8 @@ handleColormapNotify (XColormapEvent * ev)
     }
 }
 
-void
-handleEvent (XEvent * ev)
+static void
+handleEvent (ScreenData *md, XEvent * ev)
 {
     TRACE ("entering handleEvent");
 
@@ -1613,70 +1622,70 @@ handleEvent (XEvent * ev)
     switch (ev->type)
     {
         case MotionNotify:
-            handleMotionNotify ((XMotionEvent *) ev);
+            handleMotionNotify (md, (XMotionEvent *) ev);
             break;
         case KeyPress:
-            handleKeyPress ((XKeyEvent *) ev);
+            handleKeyPress (md, (XKeyEvent *) ev);
             break;
         case ButtonPress:
-            handleButtonPress ((XButtonEvent *) ev);
+            handleButtonPress (md, (XButtonEvent *) ev);
             break;
         case ButtonRelease:
-            handleButtonRelease ((XButtonEvent *) ev);
+            handleButtonRelease (md, (XButtonEvent *) ev);
             break;
         case DestroyNotify:
-            handleDestroyNotify ((XDestroyWindowEvent *) ev);
+            handleDestroyNotify (md, (XDestroyWindowEvent *) ev);
             break;
         case UnmapNotify:
-            handleUnmapNotify ((XUnmapEvent *) ev);
+            handleUnmapNotify (md, (XUnmapEvent *) ev);
             break;
         case MapRequest:
-            handleMapRequest ((XMapRequestEvent *) ev);
+            handleMapRequest (md, (XMapRequestEvent *) ev);
             break;
         case MapNotify:
-            handleMapNotify ((XMapEvent *) ev);
+            handleMapNotify (md, (XMapEvent *) ev);
             break;
         case ConfigureNotify:
-            handleConfigureNotify ((XConfigureEvent *) ev);
+            handleConfigureNotify (md, (XConfigureEvent *) ev);
             break;
         case ConfigureRequest:
-            handleConfigureRequest ((XConfigureRequestEvent *) ev);
+            handleConfigureRequest (md, (XConfigureRequestEvent *) ev);
             break;
         case EnterNotify:
-            handleEnterNotify ((XCrossingEvent *) ev);
+            handleEnterNotify (md, (XCrossingEvent *) ev);
             break;
         case LeaveNotify:
-            handleLeaveNotify ((XCrossingEvent *) ev);
+            handleLeaveNotify (md, (XCrossingEvent *) ev);
             break;
         case FocusIn:
-            handleFocusIn ((XFocusChangeEvent *) ev);
+            handleFocusIn (md, (XFocusChangeEvent *) ev);
             break;
         case FocusOut:
-            handleFocusOut ((XFocusChangeEvent *) ev);
+            handleFocusOut (md, (XFocusChangeEvent *) ev);
             break;
         case PropertyNotify:
-            handlePropertyNotify ((XPropertyEvent *) ev);
+            handlePropertyNotify (md, (XPropertyEvent *) ev);
             break;
         case ClientMessage:
-            handleClientMessage ((XClientMessageEvent *) ev);
+            handleClientMessage (md, (XClientMessageEvent *) ev);
             break;
         case ColormapNotify:
-            handleColormapNotify ((XColormapEvent *) ev);
+            handleColormapNotify (md, (XColormapEvent *) ev);
             break;
         default:
             if (md->shape && (ev->type == md->shape_event))
             {
-                handleShape ((XShapeEvent *) ev);
+                handleShape (md, (XShapeEvent *) ev);
             }
     }
     if (!gdk_events_pending () && !XPending (md->dpy))
     {
-        if (md->reload)
+        if (xfwm4_reload)
         {
-            reloadSettings (UPDATE_ALL);
-            md->reload = FALSE;
+            reloadSettings (md, UPDATE_ALL);
+            xfwm4_reload = FALSE;
         }
-        else if (md->quit)
+        else if (xfwm4_quit)
         {
             gtk_main_quit ();
         }
@@ -1686,8 +1695,12 @@ handleEvent (XEvent * ev)
 XfceFilterStatus
 xfwm4_event_filter (XEvent * xevent, gpointer data)
 {
+    ScreenData *md = (ScreenData *) data;
+    
+    g_assert (md);
+    
     TRACE ("entering xfwm4_event_filter");
-    handleEvent (xevent);
+    handleEvent (md, xevent);
     TRACE ("leaving xfwm4_event_filter");
     return XEV_FILTER_STOP;
 }
@@ -1702,10 +1715,9 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
 
     TRACE ("entering menu_callback");
 
-    if (menu_event_window)
+    if (!myWindowDeleted(&menu_event_window))
     {
-        removeTmpEventWin (menu_event_window);
-        menu_event_window = None;
+        myWindowDelete (&menu_event_window);
     }
 
     if (menu_data)
@@ -1776,6 +1788,12 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
             break;
     }
     menu_free (menu);
+}
+
+void
+initMenuEventWin (void)
+{
+    myWindowInit (&menu_event_window);
 }
 
 static gboolean
@@ -1903,18 +1921,17 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 
     if (button_handler_id)
     {
-        g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)),
+        g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (c->md->gtox_data)),
             button_handler_id);
     }
     button_handler_id =
-        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)),
+        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (c->md->gtox_data)),
         "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
         (gpointer) NULL);
 
-    if (menu_event_window)
+    if (!myWindowDeleted(&menu_event_window))
     {
-        removeTmpEventWin (menu_event_window);
-        menu_event_window = None;
+        myWindowDelete (&menu_event_window);
     }
     /*
        Since all button press/release events are catched by the windows frames, there is some
@@ -1927,14 +1944,14 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        Don't forget to delete that window once the menu is closed, though, or we'll get in
        trouble.
      */
-    menu_event_window = setTmpEventWin (0, 0, 
-                                        gdk_screen_get_width (md->gscr),
-                                        gdk_screen_get_height (md->gscr), 
-                                        NoEventMask);
+    myWindowTemp (c->md->dpy, c->md->xroot, &menu_event_window, 0, 0, 
+                              gdk_screen_get_width (c->md->gscr),
+                              gdk_screen_get_height (c->md->gscr), 
+                              NoEventMask);
 
     menu = menu_default (ops, insensitive, menu_callback, c->win_workspace,
                          params.workspace_count, params.workspace_names,
-                         params.workspace_names_length, c);
+                         params.workspace_names_length, c->md->gtox_data, c);
 
     if (!menu_popup (menu, x, y, ev->button, ev->time))
     {
@@ -1942,19 +1959,17 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         gdk_beep ();
         c->button_pressed[MENU_BUTTON] = FALSE;
         frameDraw (c, FALSE, FALSE);
-        removeTmpEventWin (menu_event_window);
-        menu_event_window = None;
+        myWindowDelete (&menu_event_window);
         menu_free (menu);
     }
     return (TRUE);
 }
 
 static gboolean
-set_reload (void)
+set_reload (ScreenData *md)
 {
-    TRACE
-        ("setting md->reload flag so all prefs will be reread at next event loop");
-    md->reload = TRUE;
+    TRACE ("setting reload flag so all prefs will be reread at next event loop");
+    xfwm4_reload = TRUE;
     return (TRUE);
 }
 
@@ -1975,8 +1990,10 @@ dbl_click_time (void)
 }
 
 static gboolean
-client_event_cb (GtkWidget * widget, GdkEventClient * ev)
+client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
 {
+    ScreenData *md = (ScreenData *) data;
+    
     TRACE ("entering client_event_cb");
 
     if (!atom_rcfiles)
@@ -1986,32 +2003,31 @@ client_event_cb (GtkWidget * widget, GdkEventClient * ev)
 
     if (ev->message_type == atom_rcfiles)
     {
-        set_reload ();
+        set_reload (md);
     }
 
     return (FALSE);
 }
 
 void
-initGtkCallbacks (void)
+initGtkCallbacks (ScreenData *md)
 {
     GtkSettings *settings;
 
     button_handler_id =
         g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)),
-        "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
-        (gpointer) NULL);
+        "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) md);
     g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)), "client_event",
-        GTK_SIGNAL_FUNC (client_event_cb), (gpointer) NULL);
+        GTK_SIGNAL_FUNC (client_event_cb), (gpointer) md);
 
     settings = gtk_settings_get_default ();
     if (settings)
     {
         g_signal_connect (settings, "notify::gtk-theme-name",
-            G_CALLBACK (set_reload), NULL);
+            G_CALLBACK (set_reload), (gpointer) md);
         g_signal_connect (settings, "notify::gtk-font-name",
-            G_CALLBACK (set_reload), NULL);
+            G_CALLBACK (set_reload), (gpointer) md);
         g_signal_connect (settings, "notify::gtk-double-click-time",
-            G_CALLBACK (dbl_click_time), NULL);
+            G_CALLBACK (dbl_click_time), (gpointer) md);
     }
 }

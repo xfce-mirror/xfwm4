@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,7 +15,7 @@
  
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -1061,7 +1061,7 @@ getKDEIcon (Display * dpy, Window window, Pixmap * pixmap, Pixmap * mask)
     icons = NULL;
     if (XGetWindowProperty (dpy, window, kwm_win_icon, 0L, G_MAXLONG,
             FALSE, kwm_win_icon, &type, &format, &nitems, &bytes_after,
-	    (unsigned char **)&icons) != Success)
+            (unsigned char **)&icons) != Success)
     {
         return FALSE;
     }
@@ -1091,14 +1091,14 @@ getRGBIconData (Display * dpy, Window window, unsigned long **data, unsigned lon
                             FALSE, XA_CARDINAL, &type, &format, nitems,
                             &bytes_after, (unsigned char **)data) != Success)
     {
-	data = NULL;
+        data = NULL;
         return FALSE;
     }
     
     if (type != XA_CARDINAL)
     {
         XFree (*data);
-	data = NULL;
+        data = NULL;
         return FALSE;
     }
 
