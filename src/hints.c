@@ -521,8 +521,8 @@ void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * mar
     {
         *ptr++ = margins[MARGIN_LEFT];
         *ptr++ = margins[MARGIN_TOP];
-        *ptr++ = XDisplayWidth(dpy, screen) - (margins[MARGIN_LEFT] + margins[MARGIN_RIGHT]);
-        *ptr++ = XDisplayHeight(dpy, screen) - (margins[MARGIN_TOP] + margins[MARGIN_BOTTOM]);
+        *ptr++ = gdk_screen_width() - (margins[MARGIN_LEFT] + margins[MARGIN_RIGHT]);
+        *ptr++ = gdk_screen_height() - (margins[MARGIN_TOP] + margins[MARGIN_BOTTOM]);
     }
     XChangeProperty(dpy, RootWindow(dpy, screen), net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, j * 4);
     free(data);
@@ -532,8 +532,8 @@ void init_net_desktop_params(Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
     DBG("entering init_net_desktop_params\n");
-    data[0] = XDisplayWidth(dpy, screen);
-    data[1] = XDisplayHeight(dpy, screen);
+    data[0] = gdk_screen_width();
+    data[1] = gdk_screen_height();
     XChangeProperty(dpy, RootWindow(dpy, screen), net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
     data[0] = 0;
     data[1] = 0;

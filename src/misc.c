@@ -22,12 +22,17 @@
 #  include "config.h"
 #endif
 
+#include <glib.h>
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <glib.h>
 
 #include "main.h"
 #include "client.h"
@@ -110,7 +115,7 @@ Window setTmpEventWin(long eventmask)
     XSetWindowAttributes attributes;
     attributes.event_mask = eventmask;
     attributes.override_redirect = True;
-    w = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
+    w = XCreateWindow(dpy, root, 0, 0, gdk_screen_width(), gdk_screen_height(), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
     XMapRaised(dpy, w);
     return (w);
 }

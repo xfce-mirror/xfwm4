@@ -1599,7 +1599,7 @@ static inline void clientKeepVisible(Client * c)
     bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
     /* Translate coodinates to center on physical screen */
-    if((use_xinerama) && (abs(c->x - ((XDisplayWidth(dpy, screen) - c->width) / 2)) < 20) && (abs(c->y - ((XDisplayHeight(dpy, screen) - c->height) / 2)) < 20))
+    if((use_xinerama) && (abs(c->x - ((gdk_screen_width() - c->width) / 2)) < 20) && (abs(c->y - ((gdk_screen_height() - c->height) / 2)) < 20))
     {
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
@@ -3435,12 +3435,12 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             if((msx == 0) && params.wrap_workspaces && !wrapped)
             {
-                XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
-                msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
+                XWarpPointer(dpy, None, root, 0, 0, 0, 0, gdk_screen_width() - 11, msy);
+                msx = xevent->xmotion.x_root = gdk_screen_width() - 11;
                 workspaceSwitch(workspace - 1, c);
                 wrapped = TRUE;
             }
-            else if((msx == XDisplayWidth(dpy, screen) - 1) && params.wrap_workspaces && !wrapped)
+            else if((msx == gdk_screen_width() - 1) && params.wrap_workspaces && !wrapped)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 msx = xevent->xmotion.x_root = 10;
