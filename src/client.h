@@ -263,6 +263,7 @@ void clientUngrabKeys (Client *);
 Client *clientGetFromWindow (Window, int);
 Client *clientAtPosition (int, int, Client *);
 Client *clientGetNext (Client *, int);
+Client *clientGetPrevious (Client *, int);
 void clientPassFocus (Client *);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);

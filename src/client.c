@@ -3556,6 +3556,33 @@ clientGetNext (Client * c, int mask)
     return NULL;
 }
 
+Client *
+clientGetPrevious (Client * c, int mask)
+{
+    Client *c2;
+    unsigned int i;
+
+    TRACE ("entering clientGetPrevious");
+
+    if (c)
+    {
+        for (c2 = c->prev, i = 0; (c2) && (i < client_count);
+            c2 = c2->prev, i++)
+        {
+            if ((c2->type == WINDOW_SPLASHSCREEN)
+                || (c2->type == WINDOW_DESKTOP))
+            {
+                continue;
+            }
+            if (clientSelectMask (c2, mask))
+            {
+                return c2;
+            }
+        }
+    }
+    return NULL;
+}
+
 /* Build a GList of clients that have a transient relationship */
 static GList *
 clientListTransient (Client * c)
@@ -5634,8 +5661,19 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 /* Hide frame draw */
                 clientDrawOutline (passdata->c);
-                passdata->c =
-                    clientGetNext (passdata->c, passdata->cycle_range);
+
+                /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
+                if (!(params.keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask)
+                        && xevent->xkey.state & ShiftMask) {
+                    passdata->c =
+                        clientGetPrevious (passdata->c, passdata->cycle_range);
+                }
+                else
+                {
+                    passdata->c =
+                        clientGetNext (passdata->c, passdata->cycle_range);
+                }
+
                 if (passdata->c)
                 {
                     /* Redraw frame draw */
@@ -5649,10 +5687,19 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             }
             break;
         case KeyRelease:
-            if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode,
-                        0)))
             {
-                cycling = FALSE;
+                int keysym = XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0);
+
+                /* If KEY_CYCE_WINDOWS has Shift, then stop cycling on Shift
+                 * release.
+                 */
+                if (IsModifierKey (keysym)
+                        && ( (params.keys[KEY_CYCLE_WINDOWS].modifier
+                             & ShiftMask)
+                        || (keysym != XK_Shift_L && keysym != XK_Shift_R) ) )
+                {
+                    cycling = FALSE;
+                }
             }
             break;
         case ButtonPress:
