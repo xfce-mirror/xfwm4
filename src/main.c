@@ -149,6 +149,7 @@ void initialize(int argc, char **argv)
     progname = argv[0];
     gtk_init(&argc, &argv);
 
+    g_message("Using GTK+-%d.%d.%d", gtk_major_version, gtk_minor_version, gtk_micro_version);
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
     dpy = GDK_DISPLAY();
@@ -241,6 +242,6 @@ int main(int argc, char **argv)
     initialize(argc, argv);
     gtk_main();
     cleanUp();
-    g_print("xfwm4 has quit\n");
+    g_message("xfwm4 terminated\n");
     return 0;
 }
