@@ -76,6 +76,8 @@
 #define CONSTRAINED_WINDOW(c) \
     ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
 
+#define ALL_WORKSPACES   (int) 0xFFFFFFFF
+
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
@@ -320,7 +322,6 @@ void clientSetNetState(Client * c)
         data[i++] = net_wm_state_hidden;
     }
     XChangeProperty(dpy, c->window, net_wm_state, XA_ATOM, 32, PropModeReplace, (unsigned char *)data, i);
-    setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
     /* 
        We also set GNOME hint here for consistency and convenience, 
        although the meaning of net_wm_state and win_state aren't the same.
@@ -761,7 +762,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
         if(getNetHint(dpy, c->window, net_wm_desktop, &val))
         {
             TRACE("atom net_wm_desktop detected");
-            if(val == (int)0xFFFFFFFF)
+            if(val == (int) ALL_WORKSPACES)
             {
                 TRACE("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
                 c->win_workspace = workspace;
@@ -790,7 +791,14 @@ static void clientGetInitialNetWmDesktop(Client * c)
     }
     TRACE("initial desktop for window \"%s\" is %i", c->name, c->win_workspace);
     setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
-    setNetHint(dpy, c->window, net_wm_desktop, c->win_workspace);
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+    {
+        setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ALL_WORKSPACES);
+    }
+    else
+    {
+  	setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
+    }
 }
 
 static void clientSetNetClientList(Atom a, GSList * list)
@@ -3045,9 +3053,16 @@ static inline void clientSetWorkspaceSingle(Client * c, int ws)
         TRACE("setting client \"%s\" (0x%lx) to workspace %d", c->name, c->window, ws);
         c->win_workspace = ws;
         setGnomeHint(dpy, c->window, win_workspace, ws);
-        setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
-        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+	{
+            setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ALL_WORKSPACES);
+	}
+	else
+	{
+  	    setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ws);
+	}
     }
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
 }
 
 void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
@@ -3066,6 +3081,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
         c2 = (Client *) index->data;
         if(c2->win_workspace != ws)
         {
+            TRACE("setting client \"%s\" (0x%lx) to workspace %d", c->name, c->window, ws);
             clientSetWorkspaceSingle(c2, ws);
             if(manage_mapping && !clientIsTransient(c2) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
             {
@@ -3164,7 +3180,6 @@ void clientStick(Client * c, gboolean include_transients)
 
     g_return_if_fail(c != NULL);
     TRACE("entering clientStick");
-    TRACE("sticking client \"%s\" (0x%lx)", c->name, c->window);
 
     if(include_transients)
     {
@@ -3172,8 +3187,10 @@ void clientStick(Client * c, gboolean include_transients)
         for(index = list_of_windows; index; index = g_slist_next(index))
         {
             c2 = (Client *) index->data;
+            TRACE("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
             CLIENT_FLAG_SET(c2, CLIENT_FLAG_STICKY);
+            setNetHint(dpy, c2->window, net_wm_desktop, (unsigned long)ALL_WORKSPACES);
             clientSetNetState(c2);
         }
         clientSetWorkspace(c, workspace, TRUE);
@@ -3181,8 +3198,10 @@ void clientStick(Client * c, gboolean include_transients)
     }
     else
     {
+        TRACE("sticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state |= WIN_STATE_STICKY;
         CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+        setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ALL_WORKSPACES);
         clientSetNetState(c);
         clientSetWorkspace(c, workspace, TRUE);
     }
@@ -3206,6 +3225,7 @@ void clientUnstick(Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
             CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_STICKY);
+            setNetHint(dpy, c2->window, net_wm_desktop, (unsigned long)workspace);
             clientSetNetState(c2);
         }
         clientSetWorkspace(c, workspace, TRUE);
@@ -3215,6 +3235,7 @@ void clientUnstick(Client * c, gboolean include_transients)
     {
         c->win_state &= ~WIN_STATE_STICKY;
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
+        setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)workspace);
         clientSetNetState(c);
         clientSetWorkspace(c, workspace, TRUE);
     }
