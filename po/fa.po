@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 23:50+0200\n"
+"POT-Creation-Date: 2004-11-06 14:20+0100\n"
 "PO-Revision-Date: 2004-09-30 08:16+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -50,7 +50,7 @@ msgid "Workspaces and Margins"
 msgstr "فضاهای کاری و حاشیه‌ها"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 msgid "Workspaces"
 msgstr "فضاهای کاری"
 
@@ -58,29 +58,29 @@ msgstr "فضاهای کاری"
 msgid "Margins"
 msgstr "حاشیه‌ها"
 
-#: mcs-plugin/workspaces.c:339
+#: mcs-plugin/workspaces.c:343
 msgid "Change name"
 msgstr "تغییر نام"
 
-#: mcs-plugin/workspaces.c:351
+#: mcs-plugin/workspaces.c:355
 #, c-format
 msgid "Workspace %d"
 msgstr "فضای کاری %d"
 
-#: mcs-plugin/workspaces.c:361
+#: mcs-plugin/workspaces.c:365
 msgid "Name:"
 msgstr "نام:"
 
-#: mcs-plugin/workspaces.c:449
+#: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
 msgstr "بر نام فضای کاریی برای ویرایش آن کلیک کنید"
 
-#: mcs-plugin/workspaces.c:521
+#: mcs-plugin/workspaces.c:525
 msgid "Number of workspaces:"
 msgstr "تعداد فضاهای کاری:"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:552
+#: mcs-plugin/workspaces.c:556
 msgid "Workspace names"
 msgstr "نام‌های فضای‌کاری"
 
@@ -616,12 +616,12 @@ msgstr "فرمان وجود ندارد یا پرونده قابل اجرا نی�
 msgid "Compose shortcut for command :"
 msgstr "ساختن میانبر برای فرمان :"
 
-#: src/events.c:1781
+#: src/events.c:1826
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
 
-#: src/main.c:181
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: نقص در قطعه‌بندی"
@@ -690,17 +690,17 @@ msgstr "_ترک"
 msgid "Restart"
 msgstr "راه‌اندازی مجدد"
 
-#: src/menu.c:170
+#: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "فضای کاری %i (%s)"
 
-#: src/menu.c:182
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "فضای کاری %i"
 
-#: src/menu.c:425
+#: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu موفق به گرفتن اشاره‌گر نشد\n"
@@ -710,22 +710,22 @@ msgstr "%s: GtkMenu موفق به گرفتن اشاره‌گر نشد\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) سازماندهی نشده"
 
-#: src/settings.c:653
+#: src/settings.c:674
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را جایابی کرد\n"
 
-#: src/settings.c:659
+#: src/settings.c:680
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را تجزیه کرد\n"
 
-#: src/settings.c:702
+#: src/settings.c:723
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\n"
 
-#: src/settings.c:708
+#: src/settings.c:729
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"

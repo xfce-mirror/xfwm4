@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 23:50+0200\n"
+"POT-Creation-Date: 2004-11-06 14:20+0100\n"
 "PO-Revision-Date: 2003-07-16 16:19+0200\n"
 "Last-Translator: Egmont Koblinger <egmont@uhulinux.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -50,7 +50,7 @@ msgid "Workspaces and Margins"
 msgstr "Munkaterület-margók"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 #, fuzzy
 msgid "Workspaces"
 msgstr "%i. munkaterület"
@@ -59,30 +59,30 @@ msgstr "%i. munkaterület"
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:339
+#: mcs-plugin/workspaces.c:343
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:351
+#: mcs-plugin/workspaces.c:355
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "%i. munkaterület"
 
-#: mcs-plugin/workspaces.c:361
+#: mcs-plugin/workspaces.c:365
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:449
+#: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:521
+#: mcs-plugin/workspaces.c:525
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Munkaterület-váltás"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:552
+#: mcs-plugin/workspaces.c:556
 #, fuzzy
 msgid "Workspace names"
 msgstr "Munkaterület-margók"
@@ -670,12 +670,12 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1781
+#: src/events.c:1826
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Nem támogatott művelet (egyelőre)\n"
 
-#: src/main.c:181
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Szegmentálási hiba"
@@ -744,17 +744,17 @@ msgstr "_Kilépés"
 msgid "Restart"
 msgstr "Újraindítás"
 
-#: src/menu.c:170
+#: src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "%i. munkaterület"
 
-#: src/menu.c:182
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "%i. munkaterület"
 
-#: src/menu.c:425
+#: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nem tudta elkapni a mutatót\n"
@@ -764,22 +764,22 @@ msgstr "%s: GtkMenu nem tudta elkapni a mutatót\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kezeletlen net_wm_state (ablak 0x%lx)"
 
-#: src/settings.c:653
+#: src/settings.c:674
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Nem lehet lefoglalni az aktív színt: %s\n"
 
-#: src/settings.c:659
+#: src/settings.c:680
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Nem lehet értelmezni az aktív színt: %s\n"
 
-#: src/settings.c:702
+#: src/settings.c:723
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Nem lehet allokálni az inaktív színt: %s\n"
 
-#: src/settings.c:708
+#: src/settings.c:729
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nem lehet értelmezni az inaktív színt: %s\n"

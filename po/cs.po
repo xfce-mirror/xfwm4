@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 23:50+0200\n"
+"POT-Creation-Date: 2004-11-06 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgid "Workspaces and Margins"
 msgstr "Okraje ploch"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 #, fuzzy
 msgid "Workspaces"
 msgstr "Plocha %i"
@@ -57,30 +57,30 @@ msgstr "Plocha %i"
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:339
+#: mcs-plugin/workspaces.c:343
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:351
+#: mcs-plugin/workspaces.c:355
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Plocha %i"
 
-#: mcs-plugin/workspaces.c:361
+#: mcs-plugin/workspaces.c:365
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:449
+#: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:521
+#: mcs-plugin/workspaces.c:525
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Přepínání mezi plochami"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:552
+#: mcs-plugin/workspaces.c:556
 #, fuzzy
 msgid "Workspace names"
 msgstr "Okraje ploch"
@@ -669,12 +669,12 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1781
+#: src/events.c:1826
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "s: Operace není podporována (prozatím)\n"
 
-#: src/main.c:181
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
@@ -743,17 +743,17 @@ msgstr "_Konec"
 msgid "Restart"
 msgstr "Restart"
 
-#: src/menu.c:170
+#: src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Plocha %i"
 
-#: src/menu.c:182
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Plocha %i"
 
-#: src/menu.c:425
+#: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
@@ -763,22 +763,22 @@ msgstr "%s: GtkMenu failed to grab the pointer\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/settings.c:653
+#: src/settings.c:674
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Cannot allocate active color %s\n"
 
-#: src/settings.c:659
+#: src/settings.c:680
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Cannot parse active color %s\n"
 
-#: src/settings.c:702
+#: src/settings.c:723
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Cannot allocate inactive color %s\n"
 
-#: src/settings.c:708
+#: src/settings.c:729
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive color %s\n"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 23:50+0200\n"
+"POT-Creation-Date: 2004-11-06 14:20+0100\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid "Workspaces and Margins"
 msgstr "Vùng làm việc và Biên"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 msgid "Workspaces"
 msgstr "Vùng làm việc"
 
@@ -53,29 +53,29 @@ msgstr "Vùng làm việc"
 msgid "Margins"
 msgstr "Biên"
 
-#: mcs-plugin/workspaces.c:339
+#: mcs-plugin/workspaces.c:343
 msgid "Change name"
 msgstr "Đổi tên"
 
-#: mcs-plugin/workspaces.c:351
+#: mcs-plugin/workspaces.c:355
 #, c-format
 msgid "Workspace %d"
 msgstr "Vùng làm việc %d"
 
-#: mcs-plugin/workspaces.c:361
+#: mcs-plugin/workspaces.c:365
 msgid "Name:"
 msgstr "Tên:"
 
-#: mcs-plugin/workspaces.c:449
+#: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
 msgstr "Nhấp chuột lên tên vùng làm việc để thay đổi"
 
-#: mcs-plugin/workspaces.c:521
+#: mcs-plugin/workspaces.c:525
 msgid "Number of workspaces:"
 msgstr "Số vùng làm việc:"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:552
+#: mcs-plugin/workspaces.c:556
 msgid "Workspace names"
 msgstr "Tên vùng làm việc"
 
@@ -611,12 +611,12 @@ msgstr "Lệnh không tồn tại hoặc tập tin không thi hành được"
 msgid "Compose shortcut for command :"
 msgstr "Soạn phím tắt cho lệnh:"
 
-#: src/events.c:1781
+#: src/events.c:1826
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Hoạt động không (chưa) được hỗ trợ\n"
 
-#: src/main.c:181
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Lỗi segmentation"
@@ -685,17 +685,17 @@ msgstr "_Thoát"
 msgid "Restart"
 msgstr "Khởi động lại"
 
-#: src/menu.c:170
+#: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Vùng làm việc %i (%s)"
 
-#: src/menu.c:182
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Vùng làm việc %i"
 
-#: src/menu.c:425
+#: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu không bắt được con trỏ\n"
@@ -705,22 +705,22 @@ msgstr "%s: GtkMenu không bắt được con trỏ\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state không quản lí được (cửa sổ 0x%lx)"
 
-#: src/settings.c:653
+#: src/settings.c:674
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Không thể định vị màu chủ đạo %s\n"
 
-#: src/settings.c:659
+#: src/settings.c:680
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Không thể phân tích màu chủ đạo %s\n"
 
-#: src/settings.c:702
+#: src/settings.c:723
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Không thể định vị màu không chủ đạo %s\n"
 
-#: src/settings.c:708
+#: src/settings.c:729
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Không thể phân tích màu không chủ đạo %s\n"

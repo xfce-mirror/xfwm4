@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 23:50+0200\n"
+"POT-Creation-Date: 2004-11-06 14:20+0100\n"
 "PO-Revision-Date: 2004-08-24 14:47+0600\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -50,7 +50,7 @@ msgid "Workspaces and Margins"
 msgstr "Рабочие места и поля"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 msgid "Workspaces"
 msgstr "Рабочие места"
 
@@ -58,29 +58,29 @@ msgstr "Рабочие места"
 msgid "Margins"
 msgstr "Поля"
 
-#: mcs-plugin/workspaces.c:339
+#: mcs-plugin/workspaces.c:343
 msgid "Change name"
 msgstr "Изменить название"
 
-#: mcs-plugin/workspaces.c:351
+#: mcs-plugin/workspaces.c:355
 #, c-format
 msgid "Workspace %d"
 msgstr "Рабочее место %d"
 
-#: mcs-plugin/workspaces.c:361
+#: mcs-plugin/workspaces.c:365
 msgid "Name:"
 msgstr "Название:"
 
-#: mcs-plugin/workspaces.c:449
+#: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
 msgstr "Щелкните на названии рабочего места, чтобы изменить его"
 
-#: mcs-plugin/workspaces.c:521
+#: mcs-plugin/workspaces.c:525
 msgid "Number of workspaces:"
 msgstr "Число рабочих мест"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:552
+#: mcs-plugin/workspaces.c:556
 msgid "Workspace names"
 msgstr "Названия рабочих мест"
 
@@ -616,12 +616,12 @@ msgstr "Команда не существует или файл не являе
 msgid "Compose shortcut for command :"
 msgstr "Нажмите сочетание клавиш для:"
 
-#: src/events.c:1781
+#: src/events.c:1826
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операция не поддерживается (пока)\n"
 
-#: src/main.c:181
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Нарушение сегментации"
@@ -690,17 +690,17 @@ msgstr "Выход"
 msgid "Restart"
 msgstr "Перезапуск"
 
-#: src/menu.c:170
+#: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Рабочее место %i (%s)"
 
-#: src/menu.c:182
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Рабочее место %i"
 
-#: src/menu.c:425
+#: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не смог получить курсор\n"
@@ -710,22 +710,22 @@ msgstr "%s: GtkMenu не смог получить курсор\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Не обрабатываемое net_wm_state (окно 0x%lx)"
 
-#: src/settings.c:653
+#: src/settings.c:674
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Ошибка выделения активного цвета %s\n"
 
-#: src/settings.c:659
+#: src/settings.c:680
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Ошибка обработки активного цвета %s\n"
 
-#: src/settings.c:702
+#: src/settings.c:723
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ошибка выделения неактивного цвета %s\n"
 
-#: src/settings.c:708
+#: src/settings.c:729
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ошибка обработки неактивного цвета %s\n"

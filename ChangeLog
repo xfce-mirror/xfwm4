@@ -1,3 +1,58 @@
+2004-11-06 14:04  olivier
+
+	* src/workspaces.c: Check for the toggle workspace first
+
+2004-11-06 14:02  olivier
+
+	* defaults/defaults, po/xfwm4.pot, src/settings.c, src/settings.h,
+	  src/workspaces.c: Add hidden option "toggle_workspace" to
+	  enable/disable the switch back to previous workspace.
+
+2004-11-04 22:51  olivier
+
+	* src/: events.c, hints.c, workspaces.c: Fix bug #463 (newly
+	  created workspaces are skipped when draging window), Add
+	  "default" case to the switch statements where missing as some
+	  (old) compilers require a "default" statement.
+
+2004-11-04 22:17  olivier
+
+	* COMPOSITOR: Typo
+
+2004-11-03 16:15  olivier
+
+	* src/: client.c, events.c, frame.c, frame.h, hints.c, hints.h,
+	  netwm.c: Revert: Treat dialogs that don't set their transient_for
+	  as transients for group, Add: Support for NET_FRAME_EXTENTS and
+	  NET_REQUEST_FRAME_EXTENTS
+
+2004-11-03 11:52  jasper
+
+	* configure, configure.ac, ltmain.sh, mcs-plugin/workspaces.c:
+	  Re-add dynamic workspace updating. With g_module_unload()
+	  function to disconnect handlers
+
+2004-11-02 10:19  olivier
+
+	* defaults/defaults, po/xfwm4.pot, src/client.c, src/events.c,
+	  src/focus.c, src/focus.h, src/settings.c, src/settings.h: Raise
+	  window on any mouse button click (fixes big #442) - Use the
+	  hidden option "raise_with_any_button=true|false" to toggle old
+	  behaviour.
+
+2004-11-01 16:50  olivier
+
+	* src/: events.c, main.c, menu.c, menu.h, netwm.c: Fix bug #434
+	  (xfwm4 segfaults if window menu open and window is unmapped)
+
+2004-10-31 18:16  olivier
+
+	* src/events.c: Fix bug #423 - Raise on focus.
+
+2004-10-30 21:03  olivier
+
+	* ChangeLog: Global update for 4.1.91 (Xfce 4.2 beta 2)
+
 2004-10-30 16:42  jasper
 
 	* po/: nl.gmo, nl.po: Update a few nl translations
