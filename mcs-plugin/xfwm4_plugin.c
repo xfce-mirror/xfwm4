@@ -1861,6 +1861,7 @@ setup_dialog (Itf * itf)
     {
         g_warning ("Cannot find the keytheme !");
     }
+
     g_signal_connect (G_OBJECT (itf->xfwm4_dialog), "response", G_CALLBACK (cb_dialog_response), itf->mcs_plugin);
     g_signal_connect (G_OBJECT (itf->font_button), "clicked", G_CALLBACK (show_font_selection), itf);
     g_signal_connect (G_OBJECT (itf->click_focus_radio), "toggled", G_CALLBACK (cb_click_to_focus_changed), itf);

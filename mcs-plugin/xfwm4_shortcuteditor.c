@@ -69,6 +69,13 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
 
         ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
+	if (!ti)
+	{
+	    g_warning ("Cannot find the keytheme !");
+	    g_free (theme_name);
+	    return;
+	}
+
         theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
         
         if (unlink (theme_file) == 0)
@@ -253,10 +260,15 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
             
             ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
-            gtk_tree_selection_unselect_all (selection);
-            gtk_tree_selection_select_path (selection, path);
-
-            gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
+	    if (ti)
+	    {
+	        gtk_tree_selection_unselect_all (selection);
+		gtk_tree_selection_select_path (selection, path);
+	      
+		gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
+	    }
+	    else
+	        g_warning ("Cannot find the keytheme !");
 
             g_free (theme_name);
         }
