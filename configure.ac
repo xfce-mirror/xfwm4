@@ -3,11 +3,16 @@ dnl
 dnl xfwm4 - window manager for the XFce4 desktop environment
 dnl
 
-AC_INIT([src/main.c])
+m4_define([xfwm4_version],[4.3.0])
 
-AC_PREREQ(2.52)
+dnl init autoconf
+AC_COPYRIGHT([Copyright (c) 2002-2005
+        The Xfce development team. All rights reserved.
 
-AM_INIT_AUTOMAKE([xfwm4], [4.3.0])
+Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
+AC_INIT([xfwm4], [xfwm4_version()], [xfce4-dev@xfce.org])
+AM_INIT_AUTOMAKE([xfwm4], [xfwm4_version()])
+
 
 AM_CONFIG_HEADER([config.h])
 
@@ -34,13 +39,14 @@ AC_CHECK_FUNCS([daemon setsid])
 AC_CHECK_FUNCS(opendir)
 
 dnl Check for i18n support
-BM_I18N([xfwm4], [ar az be bg ca cs de en_GB es es_MX et eu fa fi fr gu he
-                  hi hu it ja ko lt ms nb_NO nl pa pl pt_BR pt_PT ro ru sk
-		  sv ta tr uk vi zh_CN zh_TW])
+XDT_I18N([ar az be bg ca cs de en_GB es es_MX et eu fa fi fr gu he \
+	  hi hu it ja ko lt ms nb_NO nl pa pl pt_BR pt_PT ro ru sk \
+	  sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 window system
-BM_LIBX11_REQUIRE
-BM_LIBXPM_REQUIRE
+XDT_CHECK_LIBX11_REQUIRE
+XDT_CHECK_LIBXPM_REQUIRE
+XDT_CHECK_LIBSM
 
 dnl Check for Xext library
 AC_CHECK_LIB([Xext], [XShapeCombineShape],
@@ -50,14 +56,14 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
-BM_DEPEND([GTK], [gtk+-2.0], [2.2.0])
-BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 4.2.0)
-BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 4.2.0)
-BM_DEPEND([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
-BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 4.2.0)
+XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
+XDT_CHECK_PACKAGE(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 4.2.0)
+XDT_CHECK_PACKAGE(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 4.2.0)
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
+XDT_CHECK_PACKAGE(LIBXFCEGUI4, libxfcegui4-1.0, 4.2.0)
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
-BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,
+XDT_CHECK_PACKAGE(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,
   [startup-notification], [startup notification library], [yes])
 
 dnl
