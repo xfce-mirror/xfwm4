@@ -2058,12 +2058,20 @@ cb_browse_command (GtkWidget *widget, GtkEntry *entry_command)
 {
     GtkWidget *filesel_dialog;
 
-    filesel_dialog = gtk_file_selection_new (_("Select command"));
+    filesel_dialog = xfce_file_chooser_new (_("Select command"), NULL,
+					    XFCE_FILE_CHOOSER_ACTION_OPEN,
+					    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					    GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-    if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_OK)
+    if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT)
     {
+        gchar *filename;
+
+	filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
         gtk_entry_set_text (entry_command,
-			    gtk_file_selection_get_filename (GTK_FILE_SELECTION (filesel_dialog)));
+			    filename);
+
+	g_free (filename);
     }
 
     gtk_widget_destroy (GTK_WIDGET (filesel_dialog));
