@@ -69,7 +69,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     if(previous)
     {
         CLIENT_FLAG_SET(previous, CLIENT_FLAG_FOCUS);
-        if(CLIENT_FLAG_TEST(previous, CLIENT_FLAG_STICKY))
+        if(CLIENT_FLAG_TEST(previous, CLIENT_FLAG_STICKY) || (previous == c2))
         {
             f = previous;
         }
