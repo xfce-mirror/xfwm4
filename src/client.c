@@ -99,12 +99,6 @@ static void clientSetNetActions (Client * c);
 static void clientWindowType (Client * c);
 static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
-static int clientGetWidthInc (Client * c);
-static int clientGetHeightInc (Client * c);
-static int clientGetMinAspectX (Client * c);
-static int clientGetMinAspectY (Client * c);
-static int clientGetMaxAspectX (Client * c);
-static int clientGetMaxAspectY (Client * c);
 static void clientSetWidth (Client * c, int w1);
 static void clientSetHeight (Client * c, int h1);
 static inline void clientApplyStackList (GSList * list);
@@ -1553,72 +1547,6 @@ clientRemoveFromList (Client * c)
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MANAGED);
 }
 
-static int
-clientGetWidthInc (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 1);
-    if ((c->size->flags & PResizeInc) && (c->size->width_inc))
-    {
-        return c->size->width_inc;
-    }
-    return 1;
-}
-
-static int
-clientGetHeightInc (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 1);
-    if ((c->size->flags & PResizeInc) && (c->size->height_inc))
-    {
-        return c->size->height_inc;
-    }
-    return 1;
-}
-
-static int
-clientGetMinAspectX (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 1);
-    if ((c->size->flags & PAspect) && (c->size->min_aspect.x))
-    {
-        return c->size->min_aspect.x;
-    }
-    return 1;
-}
-
-static int
-clientGetMinAspectY (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 1);
-    if ((c->size->flags & PAspect) && (c->size->min_aspect.y))
-    {
-        return c->size->min_aspect.y;
-    }
-    return 1;
-}
-
-static int
-clientGetMaxAspectX (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 1);
-    if ((c->size->flags & PAspect) && (c->size->max_aspect.x))
-    {
-        return c->size->max_aspect.x;
-    }
-    return 1;
-}
-
-static int
-clientGetMaxAspectY (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 1);
-    if ((c->size->flags & PAspect) && (c->size->max_aspect.y))
-    {
-        return c->size->max_aspect.y;
-    }
-    return 1;
-}
-
 static void
 clientSetWidth (Client * c, int w1)
 {
@@ -2055,12 +1983,12 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
     {
         int xinc, yinc, minx, miny, maxx, maxy, delta;
 
-        xinc = clientGetWidthInc(c);
-        yinc = clientGetHeightInc(c);
-        minx = clientGetMinAspectX(c);
-        miny = clientGetMinAspectY(c);
-        maxx = clientGetMaxAspectX(c);
-        maxy = clientGetMaxAspectY(c);
+        xinc = c->size->width_inc;
+        yinc = c->size->height_inc;
+        minx = c->size->min_aspect.x;
+        miny = c->size->min_aspect.y;
+        maxx = c->size->max_aspect.x;
+        maxy = c->size->max_aspect.y;
 
         if ((minx * h1 > miny * w1) && 
             (miny) && (corner == 4 + SIDE_BOTTOM))
@@ -2725,6 +2653,50 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size->flags |= PMinSize;
     }
 
+    if (c->size->flags & PResizeInc)
+    {
+        if (c->size->width_inc < 1)
+        {
+            c->size->width_inc = 1;
+        }
+        if (c->size->height_inc < 1)
+        {
+            c->size->height_inc = 1;
+        }
+    }
+    else
+    {
+        c->size->width_inc = 1;
+        c->size->height_inc = 1;
+    }
+
+    if (c->size->flags & PAspect)
+    {
+        if (c->size->min_aspect.x < 1)
+        {
+            c->size->min_aspect.x = 1;
+        }
+        if (c->size->min_aspect.y < 1)
+        {
+            c->size->min_aspect.y = 1;
+        }
+        if (c->size->max_aspect.x < 1)
+        {
+            c->size->max_aspect.x = 1;
+        }
+        if (c->size->max_aspect.y < 1)
+        {
+            c->size->max_aspect.y = 1;
+        }
+    }
+    else
+    {
+        c->size->min_aspect.x = 1;
+        c->size->min_aspect.y = 1;
+        c->size->max_aspect.x = G_MAXINT;
+        c->size->max_aspect.y = G_MAXINT;
+    }
+
     if (c->size->min_width < 1)
     {
         c->size->min_width = 1;
@@ -3216,7 +3188,8 @@ clientFrame (Window w, gboolean startup)
             CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientShow (c, TRUE);
-            if (!startup && params.focus_new && clientAcceptFocus (c))
+            if (!startup && clientAcceptFocus (c) &&
+                (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL)))
             {
                 clientSetFocus (c, TRUE, FALSE);
             }
@@ -4432,6 +4405,11 @@ clientAcceptFocus (Client * c)
 
     TRACE ("entering clientAcceptFocus");
 
+    /* Modal dialogs *always* accept focus */
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
+    {
+        return TRUE; 
+    }
     /* First check GNOME protocol */
     if (c->win_hints & WIN_HINTS_SKIP_FOCUS)
     {
@@ -5100,8 +5078,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         int key_width_inc, key_height_inc;
         int corner = -1;
         
-        key_width_inc = clientGetWidthInc (c);
-        key_height_inc = clientGetHeightInc (c);
+        key_width_inc = c->size->width_inc;
+        key_height_inc = c->size->height_inc;
         
         if (key_width_inc < 10)
         {
