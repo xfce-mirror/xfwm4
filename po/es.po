@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"POT-Creation-Date: 2003-01-31 22:06+0100\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr "Pegar"
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Shade"
-msgstr "Enrollar" 
+msgstr "Enrollar"
 
 #: mcs-plugin/xfwm4_plugin.c:121
 msgid "Hide"
@@ -254,7 +254,7 @@ msgstr "Gestor de Ventanas"
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 
-#: src/events.c:906
+#: src/events.c:942
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
@@ -264,39 +264,39 @@ msgstr "%s: Operación no soportada (aún)\n"
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr "%s: Propiedad %s en ventana (%lx) contenía UTF-8 inválido\n"
 
-#: src/main.c:167
+#: src/main.c:175
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr "%s: Usando GTK+-%d.%d.%d"
 
-#: src/main.c:188
+#: src/main.c:196
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s Ejecutándose sin gestor de sesión"
 
-#: src/main.c:278
+#: src/main.c:286
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
 
-#: src/main.c:281
+#: src/main.c:289
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/main.c:287
+#: src/main.c:295
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ha ocurrido un error desconocido"
 
-#: src/main.c:291
+#: src/main.c:299
 #, c-format
 msgid "%s: Terminated\n"
 msgstr "%s: Terminado\n"
 
 #. parent
 #. wait for child signal
-#: src/main.c:327
+#: src/main.c:335
 msgid "Init complete"
 msgstr "Arranque completo"
 
@@ -393,10 +393,12 @@ msgstr "%s: No se puede reservar el color activo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:695
+#: src/settings.c:764
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: Sin inicializar el contador de escritorios, usando el valor para el recurso: %i"
+msgstr ""
+"%s: Sin inicializar el contador de escritorios, usando el valor para el "
+"recurso: %i"
 
 #: src/tabwin.c:68
 msgid "Switch to ..."

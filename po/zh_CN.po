@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"POT-Creation-Date: 2003-01-31 22:06+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -247,7 +247,7 @@ msgstr "窗口管理器"
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %#lx)"
 
-#: src/events.c:906
+#: src/events.c:942
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
@@ -257,39 +257,39 @@ msgstr "%s: 尚不支持的操作\n"
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr "%s:  窗口 (%lx) 的属性 %s 中含有非法的 UTF-8 字符 \n"
 
-#: src/main.c:167
+#: src/main.c:175
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr "%s: 使用 GTK+-%d.%d.%d"
 
-#: src/main.c:188
+#: src/main.c:196
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: 运行于无会话管理器方式"
 
-#: src/main.c:278
+#: src/main.c:286
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:281
+#: src/main.c:289
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:287
+#: src/main.c:295
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
 
-#: src/main.c:291
+#: src/main.c:299
 #, c-format
 msgid "%s: Terminated\n"
 msgstr "%s: 终止\n"
 
 #. parent
 #. wait for child signal
-#: src/main.c:327
+#: src/main.c:335
 msgid "Init complete"
 msgstr "初始化完成"
 
@@ -386,7 +386,7 @@ msgstr "%s: 无法分配 inactive 颜色 %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:695
+#: src/settings.c:764
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"

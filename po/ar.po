@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"POT-Creation-Date: 2003-01-31 22:06+0100\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -248,7 +248,7 @@ msgstr "مدير النوافذ"
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
-#: src/events.c:906
+#: src/events.c:942
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"
@@ -258,39 +258,39 @@ msgstr "%s: العملية ليست مدعومة (بعد)\n"
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr "%s: الخاصية %s على النافذة (%lx) تحتوي على UTF-8 غير صحيحة \n"
 
-#: src/main.c:167
+#: src/main.c:175
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr "%s: استعمال GTK+-%d.%d.%d"
 
-#: src/main.c:188
+#: src/main.c:196
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: تشغيل بدون مدير جلسة"
 
-#: src/main.c:278
+#: src/main.c:286
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s:  هناك مدير نوافذ آخر يعمل "
 
-#: src/main.c:281
+#: src/main.c:289
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
-#: src/main.c:287
+#: src/main.c:295
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: حدث خطأ مجهول"
 
-#: src/main.c:291
+#: src/main.c:299
 #, c-format
 msgid "%s: Terminated\n"
 msgstr "%s: انتهى\n"
 
 #. parent
 #. wait for child signal
-#: src/main.c:327
+#: src/main.c:335
 msgid "Init complete"
 msgstr "تمت التهيئة"
 
@@ -387,7 +387,7 @@ msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 
-#: src/settings.c:695
+#: src/settings.c:764
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم قيمة rc: %i"
@@ -395,4 +395,3 @@ msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم ق�
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "تغيير الى ..."
-

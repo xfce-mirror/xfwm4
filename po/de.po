@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"POT-Creation-Date: 2003-01-31 22:06+0100\n"
 "PO-Revision-Date: 2003-01-25 01:20+0100\n"
 "Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
 "Language-Team: none <none@none>\n"
@@ -137,7 +137,7 @@ msgid ""
 msgstr ""
 "Automatischer Fokus für \n"
 "ein neues Fenster"
- 
+
 #: mcs-plugin/xfwm4_plugin.c:1223
 msgid "New window focus"
 msgstr "Neues Fenster kriegt Fokus"
@@ -204,7 +204,8 @@ msgstr "Am Rand einschnappen lassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1357
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Virtuelle Desktops wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
+msgstr ""
+"Virtuelle Desktops wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: mcs-plugin/xfwm4_plugin.c:1363
 msgid "Wrap workspaces"
@@ -247,7 +248,7 @@ msgstr "Fenstermanager"
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr "%s: Kein net_wm_state (Fenster %#lx)"
 
-#: src/events.c:906
+#: src/events.c:942
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation (noch) nicht Unterstützt\n"
@@ -257,39 +258,39 @@ msgstr "%s: Operation (noch) nicht Unterstützt\n"
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr "%s: Eigenschaft %s von Fenster %lx enhält falsche UTF-8 Zeichen\n"
 
-#: src/main.c:167
+#: src/main.c:175
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr "%s: Nutze GTK+-%d.%d.%d"
 
-#: src/main.c:188
+#: src/main.c:196
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: Sessíon Manager wird nicht genutzt"
 
-#: src/main.c:278
+#: src/main.c:286
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Ein anderer Fenstermanager läuft bereits"
 
-#: src/main.c:281
+#: src/main.c:289
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/main.c:287
+#: src/main.c:295
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Unbekannter Fehler ist aufgetreten"
 
-#: src/main.c:291
+#: src/main.c:299
 #, c-format
 msgid "%s: Terminated\n"
 msgstr "%s: Gekillt\n"
 
 #. parent
 #. wait for child signal
-#: src/main.c:327
+#: src/main.c:335
 msgid "Init complete"
 msgstr "Start komplett"
 
@@ -386,10 +387,12 @@ msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht feststellen %s\n"
 
-#: src/settings.c:695
+#: src/settings.c:764
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: Anzahl der virtuellen Desktops nicht gesetzt. Benutze default Einstellungen: %i"
+msgstr ""
+"%s: Anzahl der virtuellen Desktops nicht gesetzt. Benutze default "
+"Einstellungen: %i"
 
 #: src/tabwin.c:68
 msgid "Switch to ..."

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"POT-Creation-Date: 2003-01-31 22:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,7 +242,7 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr ""
 
-#: src/events.c:906
+#: src/events.c:942
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -252,39 +252,39 @@ msgstr ""
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr ""
 
-#: src/main.c:167
+#: src/main.c:175
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr ""
 
-#: src/main.c:188
+#: src/main.c:196
 #, c-format
 msgid "%s: Running without session manager"
 msgstr ""
 
-#: src/main.c:278
+#: src/main.c:286
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:281
+#: src/main.c:289
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:287
+#: src/main.c:295
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
 
-#: src/main.c:291
+#: src/main.c:299
 #, c-format
 msgid "%s: Terminated\n"
 msgstr ""
 
 #. parent
 #. wait for child signal
-#: src/main.c:327
+#: src/main.c:335
 msgid "Init complete"
 msgstr ""
 
@@ -381,7 +381,7 @@ msgstr ""
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:695
+#: src/settings.c:764
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"POT-Creation-Date: 2003-01-31 22:06+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -247,7 +247,7 @@ msgstr "Gestionnaire de fenêtres"
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr "%s: net_wm_state non géré (window %#lx)"
 
-#: src/events.c:906
+#: src/events.c:942
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation pas (encore) supportée\n"
@@ -259,39 +259,39 @@ msgstr ""
 "%s: Propriété %s de la fenêtre (%lx) contient des caractères UTF-8 non "
 "valides\n"
 
-#: src/main.c:167
+#: src/main.c:175
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr "%s: Utilisation de  GTK+-%d.%d.%d"
 
-#: src/main.c:188
+#: src/main.c:196
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: Fonctionnement sans gestionnaire de session"
 
-#: src/main.c:278
+#: src/main.c:286
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Un autre gestionnaire de fenêtre est déja actif"
 
-#: src/main.c:281
+#: src/main.c:289
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Il manque des données dans le ficher de défaut"
 
-#: src/main.c:287
+#: src/main.c:295
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Erreur inconnue"
 
-#: src/main.c:291
+#: src/main.c:299
 #, c-format
 msgid "%s: Terminated\n"
 msgstr "%s: Terminé\n"
 
 #. parent
 #. wait for child signal
-#: src/main.c:327
+#: src/main.c:335
 msgid "Init complete"
 msgstr "Initialisation terminée"
 
@@ -388,7 +388,7 @@ msgstr "%s: Ne peut allouer la couleur inactive %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ne peut lire la couleur inactive %s\n"
 
-#: src/settings.c:695
+#: src/settings.c:764
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
