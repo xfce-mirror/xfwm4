@@ -27,9 +27,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
 #include <sys/stat.h>
@@ -76,8 +74,6 @@ Screen *xscreen;
 int screen;
 int depth;
 int workspace;
-gboolean use_xinerama;
-int xinerama_heads;
 int margins[4];
 int gnome_margins[4];
 int quit = FALSE, reload = FALSE;
@@ -126,7 +122,6 @@ cleanUp ()
     XFreeCursor (dpy, root_cursor);
     XFreeCursor (dpy, move_cursor);
     XFreeCursor (dpy, busy_cursor);
-    xineramaFree ();
     sessionFreeWindowStates ();
     for (i = 0; i < 7; i++)
     {
@@ -264,7 +259,6 @@ initialize (int argc, char **argv)
 
     gtk_set_locale ();
     gtk_init (&argc, &argv);
-    gdk_rgb_init();
 
     gscr = gdk_screen_get_default ();
     if (!gscr)
@@ -272,7 +266,6 @@ initialize (int argc, char **argv)
         g_error (_("Cannot get default screen\n"));
     }
     gdisplay = gdk_screen_get_display (gscr);
-    gtk_widget_push_visual(gdk_screen_get_rgb_visual (gscr));
     gtk_widget_push_colormap(gdk_screen_get_rgb_colormap (gscr));
     dpy = gdk_x11_display_get_xdisplay (gdisplay);
     xscreen = gdk_x11_screen_get_xscreen (gscr);
@@ -290,8 +283,6 @@ initialize (int argc, char **argv)
 
     XSetErrorHandler (handleXError);
     shape = XShapeQueryExtension (dpy, &shape_event, &dummy);
-    use_xinerama = xineramaInit (dpy);
-    xinerama_heads = xineramaGetHeads ();
 
     client_session =
         client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);

@@ -27,7 +27,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h> 
 #include "keyboard.h"
 
 unsigned int KeyMask;

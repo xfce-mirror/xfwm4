@@ -31,8 +31,7 @@
 
 #include <gtk/gtk.h>
 
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -137,7 +136,7 @@ add_margins_page (GtkBox *box)
     gtk_widget_show (hbox);
     xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
 
-    monitor = inline_icon_at_size (monitor_icon_data, -1, -1);
+    monitor = xfce_inline_icon_at_size (monitor_icon_data, -1, -1);
     image = gtk_image_new_from_pixbuf (monitor);
     gtk_widget_show (image);
     gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);

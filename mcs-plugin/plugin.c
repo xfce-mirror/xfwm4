@@ -37,12 +37,11 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include <libxfce4mcs/mcs-common.h>
-#include <libxfce4mcs/mcs-manager.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4mcs/mcs-common.h>
+#include <libxfce4mcs/mcs-manager.h>
 
 #include "plugin.h"
 #include "margins.h"
@@ -112,7 +111,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Workspaces and Margins"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon =
-        inline_icon_at_size (workspaces_icon_data, DEFAULT_ICON_SIZE,
+        xfce_inline_icon_at_size (workspaces_icon_data, DEFAULT_ICON_SIZE,
                              DEFAULT_ICON_SIZE);
 
     create_workspaces_channel (mcs_plugin);
@@ -151,10 +150,10 @@ run_dialog (McsPlugin * mcs_plugin)
 
     mainvbox = GTK_DIALOG (dialog)->vbox;
 
-    icon = inline_icon_at_size (workspaces_icon_data, 32, 32);
+    icon = xfce_inline_icon_at_size (workspaces_icon_data, 32, 32);
     gtk_window_set_icon (GTK_WINDOW (dialog), icon);
 
-    header = create_header (icon, _("Workspaces and Margins"));
+    header = xfce_create_header (icon, _("Workspaces and Margins"));
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (mainvbox), header, TRUE, TRUE, 0);
     g_object_unref (icon);

@@ -36,10 +36,9 @@
 
 #include <gdk/gdkx.h>
 
-#include <libxfce4mcs/mcs-manager.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4mcs/mcs-manager.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
 #include "plugin.h"
@@ -351,7 +350,7 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
     mainvbox = GTK_DIALOG (dialog)->vbox;
 
     sprintf (title, _("Workspace %d"), number);
-    header = create_header (NULL, title);
+    header = xfce_create_header (NULL, title);
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (mainvbox), header, TRUE, FALSE, 0);
 

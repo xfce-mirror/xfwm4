@@ -27,7 +27,7 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -74,7 +74,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
 	return FALSE;
     }
     
-    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), gdk_rgb_get_cmap (), 
+    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), gdk_screen_get_rgb_colormap (gscr), 
 					0, 0, 0, 0, pm->width, pm->height);
     gdk_pixbuf_composite (alpha, src, 0, 0, pm->width, pm->height,
 			  0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);

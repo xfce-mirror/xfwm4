@@ -64,8 +64,6 @@ extern Screen *xscreen;
 extern int screen;
 extern int depth;
 extern int workspace;
-extern gboolean use_xinerama;
-extern int xinerama_heads;
 extern Colormap cmap;
 extern int gnome_margins[4];
 extern int margins[4];

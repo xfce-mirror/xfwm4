@@ -27,7 +27,7 @@
 #include <X11/Xmd.h>
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h> 
 #include "main.h"
 #include "misc.h"
 #include "transients.h"

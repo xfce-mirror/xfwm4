@@ -37,10 +37,9 @@
 
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
-#include <xfce-mcs-manager/manager-plugin.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
+#include <xfce-mcs-manager/manager-plugin.h>
 #include "xfwm4-icon.h"
 
 #define RCDIR   "settings"
@@ -227,24 +226,6 @@ static TitleRadioButton title_radio_buttons[END];
 
 static GList *decoration_theme_list = NULL;
 static GList *keybinding_theme_list = NULL;
-
-static gboolean
-glib22_str_has_suffix (const gchar * str, const gchar * suffix)
-{
-    int str_len;
-    int suffix_len;
-
-    g_return_val_if_fail (str != NULL, FALSE);
-    g_return_val_if_fail (suffix != NULL, FALSE);
-
-    str_len = strlen (str);
-    suffix_len = strlen (suffix);
-
-    if (str_len < suffix_len)
-        return FALSE;
-
-    return strcmp (str + str_len - suffix_len, suffix) == 0;
-}
 
 static void
 sensitive_cb (GtkWidget * widget, gpointer user_data)
@@ -1235,12 +1216,20 @@ cb_dialog_response (GtkWidget * dialog, gint response_id)
 {
     if (response_id == GTK_RESPONSE_HELP)
     {
-        exec_command("xfhelp4 xfwm4.html");
+	GError *error = NULL;
+	xfce_exec("xfhelp4 xfwm4.html", FALSE, FALSE, &error);
+	if (error)
+	{
+	    char *msg = g_strcompress (error->message);
+	    xfce_warn ("%s", msg);
+	    g_free (msg);
+	    g_error_free (error);
+	}
     }
     else
     {
-        is_running = FALSE;
-        gtk_widget_destroy (dialog);
+	is_running = FALSE;
+	gtk_widget_destroy (dialog);
     }
 }
 
@@ -1275,7 +1264,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->font_selection = NULL;
 
-    icon = inline_icon_at_size (xfwm4_icon_data, 32, 32);
+    icon = xfce_inline_icon_at_size (xfwm4_icon_data, 32, 32);
     gtk_window_set_icon (GTK_WINDOW (dialog->xfwm4_dialog), icon);
 
     dialog->click_focus_radio_group = NULL;
@@ -1284,7 +1273,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (dialog->dialog_vbox);
 
     dialog->dialog_header =
-        create_header (icon, _("Window Manager Preferences"));
+        xfce_create_header (icon, _("Window Manager Preferences"));
     gtk_widget_show (dialog->dialog_header);
     gtk_box_pack_start (GTK_BOX (dialog->dialog_vbox), dialog->dialog_header,
                         FALSE, TRUE, 0);
@@ -1468,7 +1457,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    label = small_label (_("Slow"));
+    label = xfce_create_small_label (_("Slow"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table2), label, 0, 1, 1, 2,
                       (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
@@ -1476,7 +1465,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
-    label = small_label (_("Fast"));
+    label = xfce_create_small_label (_("Fast"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table2), label, 2, 3, 1, 2,
                       (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
@@ -1565,7 +1554,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    label = small_label (_("Small"));
+    label = xfce_create_small_label (_("Small"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table3), label, 0, 1, 1, 2,
                       (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
@@ -1573,7 +1562,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
-    label = small_label (_("Wide"));
+    label = xfce_create_small_label (_("Wide"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table3), label, 2, 3, 1, 2,
                       (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
@@ -1634,7 +1623,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    label = small_label (_("Small"));
+    label = xfce_create_small_label (_("Small"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table4), label, 0, 1, 1, 2,
                       (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
@@ -1642,7 +1631,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
-    label = small_label (_("Wide"));
+    label = xfce_create_small_label (_("Wide"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table4), label, 2, 3, 1, 2,
                       (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0),
@@ -1844,7 +1833,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Window Manager"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon =
-        inline_icon_at_size (xfwm4_icon_data, DEFAULT_ICON_SIZE,
+        xfce_inline_icon_at_size (xfwm4_icon_data, DEFAULT_ICON_SIZE,
                              DEFAULT_ICON_SIZE);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
 

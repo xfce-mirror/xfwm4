@@ -22,7 +22,7 @@
 #endif
 
 #include <glib.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h> 
 
 #include "main.h"
 #include "client.h"

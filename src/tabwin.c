@@ -25,8 +25,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 #include "inline-tabwin-icon.h"
 #include "tabwin.h"
@@ -44,7 +43,7 @@ tabwinCreate (gchar * label)
 
     if (!icon)
     {
-	icon = inline_icon_at_size (tabwin_icon_data, 32, 32);
+	icon = xfce_inline_icon_at_size (tabwin_icon_data, 32, 32);
 	g_object_ref (G_OBJECT (icon));
     }
 
@@ -67,7 +66,7 @@ tabwinCreate (gchar * label)
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
     gtk_container_add (GTK_CONTAINER (frame), vbox);
 
-    header = create_header (icon, _("Switch to ..."));
+    header = xfce_create_header (icon, _("Switch to ..."));
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (vbox), header, FALSE, TRUE, 0);
 

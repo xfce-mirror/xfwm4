@@ -27,7 +27,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h> 
 #include "mywindow.h"
 #include "main.h"
 
