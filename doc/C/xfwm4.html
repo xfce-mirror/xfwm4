@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>XFce 4 Window Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="#xfwm4" title="XFce 4 Window Manager"><link rel="next" href="#wm-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfwm4"></a>XFce 4 Window Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">François</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</tt></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">This manual describes <b xmlns="" class="application"><tt>xfwm4</tt></b> version 3.99.3
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>XFce 4 Window Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="#xfwm4" title="XFce 4 Window Manager"><link rel="next" href="#wm-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfwm4"></a>XFce 4 Window Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">François</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</tt></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">This manual describes <b xmlns="" class="application"><tt>xfwm4</tt></b> version 4.0
   <br></br></span></div><div><p class="copyright">Copyright © 2003 François Le Clainche</p></div><div><p class="copyright">Copyright © 2003 Jasper Huijsmans</p></div></div><div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><a href="#wm-intro">Introduction</a></dt><dt><a href="#wm-using">Using xfwm4</a></dt><dd><dl><dt><a href="#wm-windows">Manage windows</a></dt><dt><a href="#wm-keybindings">Keyboard shortcuts summary</a></dt></dl></dd><dt><a href="#wm-settings">Customizing xfwm4</a></dt><dd><dl><dt><a href="#wm-style">Decoration style</a></dt><dt><a href="#wm-focus">Keyboard and focus</a></dt><dt><a href="#wm_advanced">Advanced settings</a></dt></dl></dd><dt><a href="#workspace-margins">Customizing workspace margins</a></dt><dt><a href="#wm-copyright">About xfwm4</a></dt></dl></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-intro"></a>Introduction</h2></div></div><div></div></div><p>The XFce 4 Window Manager is part of the <a href="http://www.xfce.org" target="_top">XFce Desktop Environment</a>.
     The actual command to run is <b class="application"><tt>xfwm4</tt></b>. To run it in the background use 
     <b class="command"><b class="application"><tt>xfwm4</tt></b> --daemon</b>. The window manager is responsible for
@@ -19,7 +19,9 @@
     <tt class="option">--enable-xinerama</tt>.
   </p><p><b class="application"><tt>xfwm4</tt></b> can be run stand-alone, but if you use it this way, you will
     need the <a href="xfce-mcs-manager.html" target="_top">XFce 4 Settings
-      Manager</a> if you want GUI settings management.
+      Manager</a> if you want GUI settings management. Tasks other than
+    managing windows, like setting a background image or launching programs, 
+    need to be performed by other programs.
   </p></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-using"></a>Using <b class="application"><tt>xfwm4</tt></b></h2></div></div><div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-windows"></a>Manage windows</h3></div></div><div></div></div><p>The window manager provides borders, a title bar and window buttons
       to application windows. The look is defined by the window manager
       theme.</p><p>In the default theme <b class="application"><tt>xfwm4</tt></b> shows six buttons and a title on regular
@@ -35,10 +37,11 @@
 	    you get to the window you want to focus. If you use it, you will 
 	    see a small popup with the window title and also <b class="application"><tt>xfwm4</tt></b> will 
 	    highlight the outline of the window that will receive the focus.
-	  </p><p>If you want the panel, and apps that do not appear in the taskbar, 
-	  to be included when you switch the focus using the Alt+Tab shortcut, edit 
-	  your $HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
-	  cycle_minimum=false</p><p>NOTE: the use of a keyboard shortcut in an application needs 
+	  </p><p>
+	    If you want the panel, and apps that do not appear in the taskbar, 
+	    to be included when you switch the focus using the Alt+Tab 
+	    shortcut, edit your $HOME/.xfce4/xfwm4rc (or create an new one) 
+	    and add this line : cycle_minimum=false</p><p>NOTE: the use of a keyboard shortcut in an application needs 
 	    the application window to have the focus :)
 	  </p></dd><dt><span class="term">Maximize / unmaximize windows</span></dt><dd><p>If you maximize a window, it will expand on your display and use
 	  all avaible space (as it is defined by <a href="xfdesktop.html#xfdesktop-workspace" target="_top">workspace
@@ -165,10 +168,13 @@
     (<tt class="email">&lt;<a href="mailto:fourdan@xfce.org">fourdan@xfce.org</a>&gt;</tt>). To find more information, please visit 
     the <a href="http://www.xfce.org" target="_top">XFce web site</a>. 
   </p><p>To report a bug or make a suggestion regarding this application or
-    this manual send an e-mail to the xfce4-dev mailing list, or use the bug 
-    tracking system at the 
-    <a href="http://sourceforge.net/projects/xfce" target="_top">XFce 
-      sourceforge project site</a>. 
+    this manual, send an email to the 
+    <a href="http://www.moongroup.com/mailman/listinfo/xfce4-dev/" target="_top">xfce4-dev</a> mailing list &#8212; this is the preferred
+    method &#8212; or use the bug tracking system at the
+    <a href="http://sourceforge.net/projects/xfce" target="_top">XFce SourceForge project site</a>. 
+    If you have questions about the use or installation of this package,
+    please ask on the 
+    <a href="http://www.moongroup.com/mailman/listinfo/xfce/" target="_top">xfce</a> mailing list. 
   </p><p> This program is distributed under the terms of the
     GNU General Public License as published by the Free Software Foundation; 
     either version 2 of the License, or (at your option) any later version.

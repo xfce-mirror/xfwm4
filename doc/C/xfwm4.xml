@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY appversion "3.99.3"> 
-  <!ENTITY date "July 2003"> 
+  <!ENTITY date "Sep 2003"> 
+  <!ENTITY appversion "4.0"> 
   <!ENTITY app "<application>xfwm4</application>">
 ]>
 
@@ -110,7 +110,9 @@ maintainers, etc. Commented out by default.
 
   <para>&app; can be run stand-alone, but if you use it this way, you will
     need the <ulink url="xfce-mcs-manager.html" type="http">XFce 4 Settings
-      Manager</ulink> if you want GUI settings management.
+      Manager</ulink> if you want GUI settings management. Tasks other than
+    managing windows, like setting a background image or launching programs, 
+    need to be performed by other programs.
   </para>
 
 </sect1>
@@ -171,10 +173,11 @@ maintainers, etc. Commented out by default.
 	    highlight the outline of the window that will receive the focus.
 	  </para>
 
-	  <para>If you want the panel, and apps that do not appear in the taskbar, 
-	  to be included when you switch the focus using the Alt+Tab shortcut, edit 
-	  your $HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
-	  cycle_minimum=false</para>
+	  <para>
+	    If you want the panel, and apps that do not appear in the taskbar, 
+	    to be included when you switch the focus using the Alt+Tab 
+	    shortcut, edit your $HOME/.xfce4/xfwm4rc (or create an new one) 
+	    and add this line : cycle_minimum=false</para>
 	  
 	  <para>NOTE: the use of a keyboard shortcut in an application needs 
 	    the application window to have the focus :)
@@ -695,10 +698,16 @@ maintainers, etc. Commented out by default.
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
-    this manual send an e-mail to the xfce4-dev mailing list, or use the bug 
-    tracking system at the 
-    <ulink url="http://sourceforge.net/projects/xfce" type="http">XFce 
-      sourceforge project site</ulink>. 
+    this manual, send an email to the 
+    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+      type="http">xfce4-dev</ulink> mailing list &mdash; this is the preferred
+    method &mdash; or use the bug tracking system at the
+    <ulink url="http://sourceforge.net/projects/xfce" 
+      type="http">XFce SourceForge project site</ulink>. 
+    If you have questions about the use or installation of this package,
+    please ask on the 
+    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+      type="http">xfce</ulink> mailing list. 
   </para>
     
   <para> This program is distributed under the terms of the
