@@ -3304,14 +3304,14 @@ clientUnframe (Client * c, gboolean remap)
         last_raise = NULL;
     }
     clientRemoveFromList (c);
-    XUnmapWindow (dpy, c->frame);
     MyXGrabServer ();
     gdk_error_trap_push ();
     clientGravitate (c, REMOVE);
-
     XSelectInput (dpy, c->window, NoEventMask);
+    XUnmapWindow (dpy, c->frame);
     setWMState (dpy, c->window, WithdrawnState);
     reparented = XCheckTypedWindowEvent (dpy, c->window, ReparentNotify, &ev);
+
     if (remap || !reparented)
     {
         XReparentWindow (dpy, c->window, root, c->x, c->y);
@@ -3345,6 +3345,7 @@ clientUnframe (Client * c, gboolean remap)
     {
         workspaceUpdateArea (margins, gnome_margins);
     }
+    
     MyXUngrabServer ();
     gdk_error_trap_pop ();
     clientFree (c);
