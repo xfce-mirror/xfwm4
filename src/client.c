@@ -1609,6 +1609,8 @@ static void clientInitPosition(Client * c)
                 {
                     c->x = test_x;
                     c->y = test_y;
+		    frame_x = frameX(c);
+		    frame_y = frameY(c);
                     count_overlaps += overlap(frame_x, frame_y, frame_x + frame_width, frame_y + frame_height, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
                 }
             }

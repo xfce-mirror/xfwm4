@@ -57,7 +57,6 @@ CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
-ECHO = @ECHO@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
@@ -179,7 +178,8 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive pdf-recursive \
 DIST_COMMON = README AUTHORS COPYING ChangeLog INSTALL Makefile.am \
 	Makefile.in NEWS TODO aclocal.m4 compile config.guess \
 	config.h.in config.sub configure configure.in depcomp \
-	install-sh ltmain.sh missing mkinstalldirs xfwm4.spec.in
+	install-sh ltcf-c.sh ltconfig ltmain.sh missing mkinstalldirs \
+	xfwm4.spec.in
 DIST_SUBDIRS = $(SUBDIRS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

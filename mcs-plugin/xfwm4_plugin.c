@@ -805,7 +805,7 @@ static GList *read_themes(GList * theme_list, GtkWidget * treeview, GtkWidget * 
     gtk_list_store_clear(GTK_LIST_STORE(model));
 
     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swindow), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
-    gtk_widget_set_usize(swindow, -1, -1);
+    gtk_widget_set_size_request(swindow, -1, -1);
 
     for(list = new_list; list; list = list->next)
     {
@@ -830,7 +830,7 @@ static GList *read_themes(GList * theme_list, GtkWidget * treeview, GtkWidget * 
         {
             GtkRequisition rectangle;
             gtk_widget_size_request(GTK_WIDGET(tree_view), &rectangle);
-            gtk_widget_set_usize(swindow, -1, rectangle.height);
+            gtk_widget_set_size_request(swindow, -1, rectangle.height);
             gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swindow), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
         }
         i++;
