@@ -1583,27 +1583,33 @@ clientAddToList (Client * c)
 
     client_sibling = clientGetLowestTransient (c);
     /* Paranoid check to avoid circular linked list */
-    if ((client_sibling) && (client_sibling != c))
+    if (client_sibling != c)
     {
-        /* The client has already a transient mapped */
-        sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
-        windows_stack = g_list_insert_before (windows_stack, sibling, c);
-    }
-    else
-    {
-        client_sibling = clientGetNextTopMost (c->win_layer, c);
-        /* Paranoid check to avoid circular linked list */
-        if ((client_sibling) && (client_sibling != c))
+        if (client_sibling)
         {
+            /* The client has already a transient mapped */
             sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
             windows_stack = g_list_insert_before (windows_stack, sibling, c);
         }
         else
         {
-            windows_stack = g_list_append (windows_stack, c);
+            client_sibling = clientGetNextTopMost (c->win_layer, c);
+            /* Paranoid check to avoid circular linked list */
+            if (client_sibling != c)
+            {
+                if (client_sibling)
+                {
+                    sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
+                    windows_stack = g_list_insert_before (windows_stack, sibling, c);
+                }
+                else
+                {
+                    windows_stack = g_list_append (windows_stack, c);
+                }
+            }
         }
     }
-
+    
     clientSetNetClientList (net_client_list, windows);
     clientSetNetClientList (win_client_list, windows);
     clientSetNetClientList (net_client_list_stacking, windows_stack);
@@ -4199,20 +4205,23 @@ clientLower (Client * c)
         {
             client_sibling = clientGetBottomMost (c->win_layer, c);
         }
-        windows_stack = g_list_remove (windows_stack, (gconstpointer) c);
-        /* Paranoid check to avoid circular linked list */
-        if ((client_sibling) && (client_sibling != c))
+        if (client_sibling != c)
         {
-            GList *sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
-            gint position = g_list_position (windows_stack, sibling) + 1;
+            windows_stack = g_list_remove (windows_stack, (gconstpointer) c);
+            /* Paranoid check to avoid circular linked list */
+            if (client_sibling)
+            {
+                GList *sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
+                gint position = g_list_position (windows_stack, sibling) + 1;
 
-            windows_stack = g_list_insert (windows_stack, c, position);
-            TRACE ("lowest client is \"%s\" (0x%lx) at position %i", 
-                    client_sibling->name, client_sibling->window, position);
-        }
-        else
-        {
-            windows_stack = g_list_prepend (windows_stack, c);
+                windows_stack = g_list_insert (windows_stack, c, position);
+                TRACE ("lowest client is \"%s\" (0x%lx) at position %i", 
+                        client_sibling->name, client_sibling->window, position);
+            }
+            else
+            {
+                windows_stack = g_list_prepend (windows_stack, c);
+            }
         }
         /* Now, windows_stack contains the correct window stack
            We still need to tell the X Server to reflect the changes 
