@@ -1,3 +1,183 @@
+2003-01-13  xfce
+
+	* src/settings.c: Optimize initial startup time by ignoring channel
+	add
+
+2003-01-12  xfce
+
+	* Makefile.in, configure, configure.in, xfwm4.spec.in,
+	defaults/Makefile.in, src/Makefile.in, src/pixmap.c, src/pixmap.h,
+	src/settings.c, themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microdeck2/Makefile.in, themes/microgui/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
+	themes/pills/Makefile.in, themes/piranha/Makefile.in,
+	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
+	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/retro/Makefile.in, themes/silverado/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: [no log
+	message]
+
+2003-01-12  xfce
+
+	* mcs-plugin/: Makefile.am, Makefile.in: [no log message]
+
+2003-01-12  xfce
+
+	* configure, configure.in, mcs-plugin/xfwm4_plugin.c: Update to
+	take advantage of libxfcegui4 0.0.12
+
+2003-01-12  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/settings.c: Add font selection for
+	title bar
+
+2003-01-11  xfce
+
+	* mcs-plugin/: Makefile.am, Makefile.in: Make sure "make rpm"
+	works.
+
+2003-01-11  xfce
+
+	* configure, configure.in, mcs-plugin/Makefile.am,
+	mcs-plugin/Makefile.in, src/settings.c: Update to libxfce4mcs 0.0.3
+
+2003-01-11  xfce
+
+	* configure, configure.in, src/settings.c: Fix detection of mcs
+	manager when started afterwards.
+
+2003-01-11  xfce
+
+	* src/settings.c: Add some traces when mcs init goes wrong
+
+2003-01-11  xfce
+
+	* src/: client.h, events.c, settings.c, settings.h: Both design and
+	speed optimizations
+
+2003-01-10  xfce
+
+	* mcs-plugin/xfwm4_plugin.c: Center dialog on screen by default.
+
+2003-01-10  xfce
+
+	* src/main.c: BEWARE: Changed the default mode to *not* fork at
+	startup. Use "xfwm --daemon" to get the daemon mode (this is
+	because usually, window managers aren't supposed to turn themselves
+	into daemon and that cause problems to some)
+
+2003-01-10  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/settings.c: Add an implementation
+	of g_str_has_suffix() when using glib-2 < 2.2
+
+2003-01-10  xfce
+
+	* Makefile.in, configure, configure.in, defaults/Makefile.in,
+	mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c, src/Makefile.in,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microdeck2/Makefile.in, themes/microgui/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
+	themes/pills/Makefile.in, themes/piranha/Makefile.in,
+	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
+	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/retro/Makefile.in, themes/silverado/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: Update
+	libxfce4mcs and libxfcegui4 dependencies
+
+2003-01-09  xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, autogen.sh, config.guess,
+	config.h.in, config.sub, configure, configure.in, ltmain.sh,
+	xfwm4.spec.in, defaults/Makefile.in, mcs-plugin/Makefile.am,
+	mcs-plugin/Makefile.in, mcs-plugin/icon.png,
+	mcs-plugin/inline-icon.h, mcs-plugin/xfwm4_plugin.c,
+	src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
+	src/events.c, src/main.c, src/parserc.c, src/parserc.h,
+	src/pixmap.c, src/settings.c, src/settings.h, src/workspaces.c,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microdeck2/Makefile.in, themes/microgui/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
+	themes/pills/Makefile.in, themes/piranha/Makefile.in,
+	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
+	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/retro/Makefile.in, themes/silverado/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: Lot of
+	udpdates and bug fixes, and added MCS support along with plugin for
+	xfwm4 preferences.
+
+2003-01-01  xfce
+
+	* src/: client.c, events.c: Add more checkings to keyboard shortcut
+	handlers to avoid iconizing taskbar and stuff like that.
+
+2002-12-30  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2002-12-30  xfce
 
 	* ChangeLog, configure, configure.in, xfwm4.spec.in,
