@@ -460,7 +460,7 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
 	{
 	    if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
             {
-        	clientSetLayer (c, c->fullscreen_old_layer);
+		clientSetLayer (c, c->fullscreen_old_layer);
             }
             else
             {

@@ -823,7 +823,7 @@ clientGetMWMHints (Client * c, gboolean update)
         if (FLAG_TEST_AND_NOT(c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN) && 
            (c->legacy_fullscreen))
         {
-            /* legacy app changed its decoration, put it back on regular layer */
+	    /* legacy app changed its decoration, put it back on regular layer */
             c->legacy_fullscreen = FALSE;
             clientSetLayer (c, WIN_LAYER_NORMAL);
         }
@@ -1479,7 +1479,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
-        c->legacy_fullscreen = TRUE;
+	c->legacy_fullscreen = TRUE;
     }
 
     /* Once we know the type of window, we can initialize window position */
@@ -1649,6 +1649,7 @@ clientUnframe (Client * c, gboolean remap)
         XDeleteProperty (display_info->dpy, c->window, win_state);
         XDeleteProperty (display_info->dpy, c->window, net_wm_desktop);
         XDeleteProperty (display_info->dpy, c->window, win_workspace);
+        XDeleteProperty (display_info->dpy, c->window, win_layer);
         XDeleteProperty (display_info->dpy, c->window, net_wm_allowed_actions);
     }
     
