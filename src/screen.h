@@ -112,13 +112,6 @@ struct _ScreenInfo
     GSList *startup_sequences;
     guint startup_sequence_timeout;
 #endif
-
-#ifdef HAVE_COMPOSITOR
-    XID root_picture;
-    XID damage_region;
-    XID trans_pixmap;
-    XID trans_picture;
-#endif /* HAVE_COMPOSITOR */
 };
 
 ScreenInfo *     myScreenInit         (DisplayInfo *, 

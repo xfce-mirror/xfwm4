@@ -57,7 +57,7 @@
 #include "startup_notification.h"
 #include "spinning_cursor.h"
 
-#define BASE_EVENT_MASK \
+#define MAIN_EVENT_MASK \
     SubstructureNotifyMask|\
     StructureNotifyMask|\
     SubstructureRedirectMask|\
@@ -66,12 +66,6 @@
     FocusChangeMask|\
     PropertyChangeMask|\
     ColormapNotify
-
-#ifdef HAVE_COMPOSITOR
-#define MAIN_EVENT_MASK BASE_EVENT_MASK|ExposureMask
-#else
-#define MAIN_EVENT_MASK BASE_EVENT_MASK
-#endif /* HAVE_COMPOSITOR */
 
 static DisplayInfo *display_info = NULL;
 gboolean xfwm4_quit           = FALSE;
@@ -303,14 +297,6 @@ initialize (int argc, char **argv)
     clientClearFocus ();
 
     display_info = myDisplayInit (gdk_display_get_default ());
-
-#ifdef HAVE_COMPOSITOR
-    if (!display_info->enable_compositor)
-    {
-        g_warning (_("%s: Cannot find required extensions " 
-                     "for compositing manager"), g_get_prgname ());
-    }
-#endif /* HAVE_COMPOSITOR */
 
     initModifiers (display_info->dpy);
 

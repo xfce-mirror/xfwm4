@@ -15,9 +15,6 @@
 /* Define to 1 if you have the `bind_textdomain_codeset' function. */
 #undef HAVE_BIND_TEXTDOMAIN_CODESET
 
-/* Define to enable compositor */
-#undef HAVE_COMPOSITOR
-
 /* Define to 1 if you have the `daemon' function. */
 #undef HAVE_DAEMON
 

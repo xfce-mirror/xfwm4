@@ -35,12 +35,6 @@
 #include <X11/cursorfont.h>
 #include <X11/extensions/shape.h>
 
-#ifdef HAVE_COMPOSITOR
-#include <X11/extensions/Xcomposite.h>
-#include <X11/extensions/Xdamage.h>
-#include <X11/extensions/Xrender.h>
-#endif /* HAVE_COMPOSITOR */
-
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -258,23 +252,6 @@ struct _Client
     /* Startup notification */
     char *startup_id;
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-
-#ifdef HAVE_COMPOSITOR
-    Damage damage;
-    XserverRegion last_painted_extents;
-  
-    Picture picture;
-    XserverRegion border_size;
-
-#if HAVE_NAME_WINDOW_PIXMAP
-    Pixmap name_window_pixmap;
-#endif /* HAVE_NAME_WINDOW_PIXMAP */
-  
-  unsigned int managed : 1;
-  unsigned int damaged : 1;
-  unsigned int viewable : 1;
-
-#endif /* HAVE_COMPOSITOR */
 };
 
 extern Client *clients;

@@ -61,7 +61,6 @@ xfwm4_CFLAGS =								\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXPM_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
-	@COMPOSITOR_CFLAGS@						\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
@@ -73,7 +72,6 @@ xfwm4_LDADD =								\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXPM_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
-	@COMPOSITOR_LIBS@						\
 	@RANDR_LIBS@
 
 xfwm4_LDFLAGS =								\
