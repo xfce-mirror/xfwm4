@@ -98,12 +98,13 @@
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
 
 Client *clients = NULL;
-Client *last_raise = NULL;
 unsigned int client_count = 0;
 
-static GList *windows = NULL;
+static GList *windows       = NULL;
 static GList *windows_stack = NULL;
 static Client *client_focus = NULL;
+static Client *last_raise   = NULL;
+static Client *last_ungrab  = NULL;
 
 /* Forward decl */
 static void clientUpdateFullscreenState (Client * c);
@@ -1393,6 +1394,59 @@ clientUngrabKeys (Client * c)
 }
 
 void
+clientGrabButtons (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientGrabButtons");
+    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    
+    grabButton(dpy, Button1, 0, c->window);
+    grabButton(dpy, Button1, AltMask, c->window);
+    grabButton(dpy, Button2, AltMask, c->window);
+    grabButton(dpy, Button3, AltMask, c->window);
+}
+
+void
+clientUngrabButtons (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientUngrabButtons");
+    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+
+    ungrabButton(dpy, Button1, 0, c->window);
+}
+
+void
+clientPassGrabButtons(Client * c)
+{
+    TRACE ("entering clientUngrabButtons");
+    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (c == NULL)
+    {
+        if (last_ungrab)
+        {
+            clientGrabButtons (last_ungrab);
+        }
+        last_ungrab = NULL;
+        return;
+    }
+    
+    if (last_ungrab == c)
+    {
+        return;
+    }
+    
+    if (last_ungrab)
+    {
+        clientGrabButtons (last_ungrab);
+    }
+    
+    clientUngrabButtons (c);
+    last_ungrab = c;
+}
+
+void
 clientCoordGravitate (Client * c, int mode, int *x, int *y)
 {
     int dx = 0, dy = 0;
@@ -2464,11 +2518,13 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
             case TopIf:
                 TRACE ("Above");
                 clientRaise (c);
+                clientPassGrabButtons (c);
                 break;
             case Below:
             case BottomIf:
                 TRACE ("Below");
                 clientLower (c);
+                clientPassGrabButtons (NULL);
                 break;
             case Opposite:
             default:
@@ -3221,12 +3277,10 @@ clientFrame (Window w, gboolean recapture)
         MyXUngrabServer ();
     }   
 
-    XGrabButton (dpy, AnyButton, AnyModifier, w, FALSE,
-        POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-
     clientAddToList (c);
     clientSetNetActions (c);
     clientGrabKeys (c);
+    clientGrabButtons(c);
 
     /* Initialize pixmap caching */
     myPixmapInit (&c->pm_cache.pm_title[ACTIVE]);
@@ -3318,6 +3372,10 @@ clientUnframe (Client * c, gboolean remap)
     if (last_raise == c)
     {
         last_raise = NULL;
+    }
+    if (last_ungrab == c)
+    {
+        last_ungrab = NULL;
     }
     clientRemoveFromList (c);
     MyXGrabServer ();
@@ -3690,6 +3748,7 @@ clientPassFocus (Client * c)
 {
     GList *list_of_windows = NULL;
     Client *new_focus = NULL;
+    Client *top_most = NULL;
     Client *c2;
     Window dr, window;
     int rx, ry, wx, wy;
@@ -3702,15 +3761,16 @@ clientPassFocus (Client * c)
         return;
     }
 
+    top_most = clientGetTopMostFocusable (c->win_layer, c);
     if (params.click_to_focus)
     {
         /* Fairly simple logic:
            1) if the window is a modal, send focus back to its parent window
            2) Otherwise, rewind the focus stack until we find an eligible window
-              (by eligible, I mean a windw that is not a transient for the current
+              (by eligible, I mean a window that is not a transient for the current
               window)
          */
-        if (clientIsModal (c))
+        if (clientIsTransientOrModal (c))
         {
             c2 = clientGetTransient (c);
             
@@ -3740,12 +3800,16 @@ clientPassFocus (Client * c)
             &mask))
     {
         new_focus = clientAtPosition (rx, ry, c);
-        if (!new_focus)
-        {
-            new_focus = clientGetTopMostFocusable (c->win_layer, c);
-        }
+    }
+    if (!new_focus)
+    {
+        new_focus = top_most;
     }
     clientSetFocus (new_focus, TRUE, TRUE);
+    if (new_focus == top_most)
+    {
+        clientPassGrabButtons (new_focus);
+    }
 }
 
 static inline void
@@ -4131,6 +4195,7 @@ clientSetLayer (Client * c, int l)
         last_raise = NULL;
     }
     clientRaise (c);
+    clientPassGrabButtons (c);
 }
 
 static inline void
@@ -4725,6 +4790,7 @@ clientUpdateFocus (Client * c)
             if (c)
             {
                 clientRaise(c);
+                clientPassGrabButtons (c);
             }
         }
         frameDraw (c2, FALSE, FALSE);
@@ -4813,6 +4879,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             if (c)
             {
                 clientRaise(c);
+                clientPassGrabButtons (c);
             }
         }
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
@@ -5878,6 +5945,7 @@ clientCycle (Client * c, XEvent * e)
         clientShow (passdata.c, TRUE);
         clientRaise (passdata.c);
         clientSetFocus (passdata.c, TRUE, FALSE);
+        clientPassGrabButtons (passdata.c);
     }
 }
 

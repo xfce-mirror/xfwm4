@@ -227,7 +227,6 @@ struct _Client
 };
 
 extern Client *clients;
-extern Window *client_list;
 extern unsigned int client_count;
 
 inline Client *clientGetTransient (Client *);
@@ -263,6 +262,9 @@ void clientUpdateColormaps (Client *);
 void clientUpdateAllFrames (gboolean);
 void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
+void clientGrabButtons (Client *);
+void clientUngrabButtons (Client *);
+void clientPassGrabButtons(Client *);
 Client *clientGetFromWindow (Window, int);
 Client *clientAtPosition (int, int, Client *);
 Client *clientGetNext (Client *, int);

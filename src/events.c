@@ -165,6 +165,7 @@ raise_cb (gpointer data)
     if (c)
     {
         clientRaise (c);
+        clientPassGrabButtons (c);
     }
     return (TRUE);
 }
@@ -484,6 +485,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         if (tclick == XFWM_BUTTON_CLICK)
         {
             clientLower (c);
+            clientPassGrabButtons (NULL);
         }
         else
         {
@@ -495,6 +497,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         if (ev->button == Button1)
         {
             clientRaise (c);
+            clientPassGrabButtons (c);
         }
         if ((ev->button == Button1) || (ev->button == Button3))
         {
@@ -514,6 +517,7 @@ button1Action (Client * c, XButtonEvent * ev)
 
     clientSetFocus (c, TRUE, FALSE);
     clientRaise (c);
+    clientPassGrabButtons (c);
 
     tclick = typeOfClick (c->frame, &copy_event, TRUE);
 
@@ -578,6 +582,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
             if (params.raise_on_click)
             {
                 clientRaise (c);
+                clientPassGrabButtons (c);
             }
             ev->window = ev->root;
             if (button_handler_id)
@@ -693,6 +698,7 @@ handleButtonPress (XButtonEvent * ev)
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
+                    clientPassGrabButtons (c);
                 }
                 clientButtonPress (c, win, ev);
             }
@@ -725,6 +731,7 @@ handleButtonPress (XButtonEvent * ev)
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
+                        clientPassGrabButtons (c);
                     }
                     ev->window = ev->root;
                     if (button_handler_id)
@@ -785,10 +792,15 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button == Button1)
             {
+                if (ev->window == c->window)
+                {
+                    clientPassGrabButtons (c);
+                }
                 clientSetFocus (c, TRUE, FALSE);
                 if ((params.raise_on_click) || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
+                    clientPassGrabButtons (c);
                 }
             }
             if (ev->window == c->window)
@@ -1162,6 +1174,10 @@ handleEnterNotify (XCrossingEvent * ev)
         if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
             clientSetFocus (c, TRUE, FALSE);
+            if (!(params.raise_on_click))
+            {
+                clientPassGrabButtons (c);
+            }
         }
     }
 }
@@ -1506,6 +1522,7 @@ handleClientMessage (XClientMessageEvent * ev)
             clientShow (c, TRUE);
             clientRaise (c);
             clientSetFocus (c, TRUE, FALSE);
+            clientPassGrabButtons (c);
         }
     }
     else

@@ -48,6 +48,8 @@ extern unsigned int HyperMask;
 void parseKeyString (Display *, MyKey *, char *);
 void grabKey (Display *, MyKey *, Window);
 void ungrabKeys (Display *, Window);
+void grabButton (Display *, int, int, Window);
+void ungrabButton (Display *, int, int, Window);
 void initModifiers (Display *);
 
 #endif /* INC_KEYBOARD_H */
