@@ -6,19 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-06-03 16:48+0200\n"
-"PO-Revision-Date: 2003-08-16 15:44+0300\n"
+"PO-Revision-Date: 2004-06-11 23:09+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
+"Content-Transfer-Encoding: 8bit"
 
 #: mcs-plugin/margins.c:123
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "Paraštės yra ekrano kraštų vietos, kuriose langai negali būti padėti"
 
 #: mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -41,47 +41,43 @@ msgid "Bottom :"
 msgstr "Apačia:"
 
 #: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "Darbo vietos paraštės"
+msgstr "Darbo vietos ir paraštės"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
-#, fuzzy
 msgid "Workspaces"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukai"
 
 #: mcs-plugin/plugin.c:178
 msgid "Margins"
-msgstr ""
+msgstr "Paraštės"
 
 #: mcs-plugin/workspaces.c:340
 msgid "Change name"
-msgstr ""
+msgstr "Pakeisti pavadinimą"
 
 #: mcs-plugin/workspaces.c:352
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
 msgstr "Darbo laukas %i"
 
 #: mcs-plugin/workspaces.c:362
 msgid "Name:"
-msgstr ""
+msgstr "Pavadinimas:"
 
 #: mcs-plugin/workspaces.c:450
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Spauskite ant darbalaukio norėdami pakeisti pavadinimą"
 
 #: mcs-plugin/workspaces.c:522
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "Laužyti darbo vietas"
+msgstr "Darbo vietų skaičius:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:553
-#, fuzzy
 msgid "Workspace names"
-msgstr "Darbo vietos paraštės"
+msgstr "Darbo vietos pavadinimai"
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Title"
@@ -113,7 +109,7 @@ msgstr "Uždaryti"
 
 #: mcs-plugin/xfwm4_plugin.c:130
 msgid "Shade window"
-msgstr ""
+msgstr "Uždengti langą"
 
 #: mcs-plugin/xfwm4_plugin.c:131
 msgid "Hide window"
@@ -186,38 +182,39 @@ msgstr "Fokusavimo modelis"
 
 #: mcs-plugin/xfwm4_plugin.c:1390
 msgid "Click to focus"
-msgstr ""
+msgstr "Spauskite norėdami fokusuoti"
 
 #: mcs-plugin/xfwm4_plugin.c:1404
 msgid "Focus follows mouse"
-msgstr ""
+msgstr "Dėmesys sutelkiamas pagal pelės poziciją"
 
 #: mcs-plugin/xfwm4_plugin.c:1418
 msgid "New window focus"
-msgstr ""
+msgstr "Naujas langas dėmesio centre"
 
 #: mcs-plugin/xfwm4_plugin.c:1423
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
+"Atomatiškai sutelkti dėmesį \n"
+"į naujai sukurtus langus"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "Raise on focus"
 msgstr "aiškelti kai fokusuojama"
 
 #: mcs-plugin/xfwm4_plugin.c:1439
-#, fuzzy
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
 "Automatiškai iškelti langus\n"
-"kai jie gauna fokusą"
+"kai jie dėmesio centre"
 
 #: mcs-plugin/xfwm4_plugin.c:1452
 msgid "Delay before raising focused window :"
-msgstr ""
+msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
 
 #: mcs-plugin/xfwm4_plugin.c:1460
 msgid "Slow"
@@ -241,7 +238,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1505
 msgid "Keyboard and focus"
-msgstr ""
+msgstr "Klaviatūra ir dėmesio centras"
 
 #: mcs-plugin/xfwm4_plugin.c:1518
 msgid "Windows snapping"
@@ -265,7 +262,7 @@ msgstr "Mažas"
 
 #: mcs-plugin/xfwm4_plugin.c:1565 mcs-plugin/xfwm4_plugin.c:1634
 msgid "Wide"
-msgstr ""
+msgstr "Plotis"
 
 #: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Wrap workspaces"
@@ -281,12 +278,11 @@ msgstr "Laužyti darbo vietas kai tempiamas langas yra už ekrano"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Edge Resistance :"
-msgstr ""
+msgstr "Kraštų atsparumas :"
 
 #: mcs-plugin/xfwm4_plugin.c:1659
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "Neskaidrus perkėlimas ir dydžio pakeitimas"
+msgstr "Nepermatomas perkėlimas ir dydžio pakeitimas"
 
 #: mcs-plugin/xfwm4_plugin.c:1668
 msgid "Display content of windows when resizing"
@@ -316,11 +312,11 @@ msgstr "%s: Operacija nėra palaikoma (kolkas)\n"
 #: src/main.c:214
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "%s: Segmentacijos klaida"
 
 #: src/main.c:247
 msgid "Cannot get default screen"
-msgstr ""
+msgstr "Neįmanoma gauti pagrindinio ekrano"
 
 #: src/main.c:411
 #, c-format
@@ -335,12 +331,12 @@ msgstr "%s: Trūksta duomenų iš numatytojo failo"
 #: src/main.c:425
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
+msgstr "%s: Neįmanoma paleisti demono režimo: %s"
 
 #: src/main.c:433
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: Neįmanoma sukurti naujo proceso: %s"
 
 #: src/main.c:454
 #, c-format
@@ -369,11 +365,11 @@ msgstr "_Rodyti"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr ""
+msgstr "_Uždengti"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr ""
+msgstr "_Atidengti"
 
 #: src/menu.c:46
 msgid "S_tick"
@@ -385,11 +381,11 @@ msgstr "Nuseg_ti"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr ""
+msgstr "Konteksto _pagalba"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr ""
+msgstr "Visada viršuje"
 
 #: src/menu.c:51
 msgid "Send to..."
@@ -412,9 +408,9 @@ msgid "Restart"
 msgstr "Perkrauti"
 
 #: src/menu.c:169
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas %i (%s)"
 
 #: src/menu.c:181
 #, c-format
@@ -424,12 +420,12 @@ msgstr "Darbo laukas %i"
 #: src/menu.c:423
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu nesugebėjo sugauti rodyklės\n"
 
 #: src/netwm.c:220
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr ""
+msgstr "%s: Neapdorota net_wm_state (window·0x%lx)"
 
 #: src/settings.c:314
 #, c-format
@@ -439,27 +435,27 @@ msgstr "%s:Nėra numatytojo failo"
 #: src/settings.c:547
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr ""
+msgstr "%s: Neįmanoma paskirti aktyvios spalvos %s\n"
 
 #: src/settings.c:554
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr ""
+msgstr "%s: Neįmanoma sužinoti aktyvios spalvos %s\n"
 
 #: src/settings.c:598
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr ""
+msgstr "%s: Neįmanoma paskirti pasyvios spalvos %s\n"
 
 #: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr ""
+msgstr "%s: Neįmanoma sužinoti pasyvios spalvos %s\n"
 
 #: src/settings.c:793
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: nustatytoji klavišų tema \"%s\"·neegzistuoja, naudojama pagrindinė"
 
 #: src/settings.c:803
 #, c-format
@@ -477,7 +473,5 @@ msgstr "Perjungti į ..."
 
 #: src/tabwin.c:127
 msgid "Unknown application!"
-msgstr ""
+msgstr "Nežinoma programa!"
 
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Derinti darbo vietos paraštes"
