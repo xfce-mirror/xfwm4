@@ -238,13 +238,20 @@ ensure_basedir_spec (void)
             char c;
             
             while ((c = getc (r)) != EOF)
+            {
                 putc (c, w);
+            }
         }
 
         if (r)
+        {
             fclose (r);
+        }
+
         if (w)
+        {
             fclose (w);
+        }
     }
     
     g_free (old);
@@ -255,8 +262,7 @@ ensure_basedir_spec (void)
 
     if (!xfce_mkdirhier(new, 0700, &error)) 
     {
-        g_warning("Unable to create session dir %s: %s",
-                  new, error->message);
+        g_warning("Unable to create session dir %s: %s", new, error->message);
         g_error_free (error);
         g_free (new);
         return;
