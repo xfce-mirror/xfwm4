@@ -37,6 +37,14 @@ dnl Check for X11 window system
 BM_LIBX11_REQUIRE
 BM_LIBXPM_REQUIRE
 
+dnl Check for Xext library
+AC_CHECK_LIB([Xext], [XShapeCombineShape],
+  [
+    if ! echo $LIBX11_LIBS | grep -q -- '-lXext'; then
+      LIBX11_LIBS="$LIBX11_LIBS -lXext"
+    fi
+  ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
+
 BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 3.91.0)
 BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 3.91.0)
 BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 3.91.0)
