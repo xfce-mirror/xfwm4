@@ -1,3 +1,20 @@
+2004-11-06 14:25  olivier
+
+	* ChangeLog, po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/be.gmo,
+	  po/be.po, po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po, po/cs.gmo,
+	  po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	  po/es_MX.po, po/et.gmo, po/et.po, po/eu.gmo, po/eu.po, po/fa.gmo,
+	  po/fa.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/gu.gmo,
+	  po/gu.po, po/he.gmo, po/he.po, po/hi.gmo, po/hi.po, po/hu.gmo,
+	  po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo,
+	  po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo,
+	  po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po,
+	  po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po,
+	  po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	  po/zh_TW.po: po and ChangeLog updates
+
 2004-11-06 14:04  olivier
 
 	* src/workspaces.c: Check for the toggle workspace first
