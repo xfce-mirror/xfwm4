@@ -146,10 +146,6 @@ static void clientGetNetState(Client * c)
     DBG("entering clientGetNetState\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
 
-    c->state_modal = False;
-    c->skip_pager = False;
-    c->skip_taskbar = False;
-
     if(get_atom_list(dpy, c->window, net_wm_state, &atoms, &n_atoms))
     {
         int i;
@@ -190,6 +186,16 @@ static void clientGetNetState(Client * c)
             {
                 DBG("clientGetNetState : modal\n");
                 c->state_modal = True;
+            }
+            else if(atoms[i] == net_wm_state_skip_pager)
+            {
+                DBG("clientGetNetState : skip_pager\n");
+                c->skip_pager = True;
+            }
+            else if(atoms[i] == net_wm_state_skip_taskbar)
+            {
+                DBG("clientGetNetState : skip_taskbar\n");
+                c->skip_taskbar = True;
             }
 
             ++i;
