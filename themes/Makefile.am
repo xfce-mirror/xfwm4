@@ -8,6 +8,7 @@ SUBDIRS =								\
 	default-4.0							\
 	opta								\
 	symphony							\
+	therapy								\
 	tyrex								\
 	waza								\
 	wildbush
