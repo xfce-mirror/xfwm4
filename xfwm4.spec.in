@@ -44,3 +44,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*
 %{_datadir}/xfwm4/defaults
 %{_datadir}/xfwm4/themes
+%{_datadir}/locale
