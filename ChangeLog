@@ -1,3 +1,24 @@
+2004-10-14 23:59  olivier
+
+	* src/compositor.c: Fix
+
+2004-10-14 23:56  olivier
+
+	* src/compositor.c: Code reorg
+
+2004-10-14 10:26  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix #395
+
+2004-10-14 08:19  olivier
+
+	* po/xfwm4.pot, src/events.c, src/main.c: Fix double click time
+	  setting not working in xfwm4
+
+2004-10-14 00:52  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-10-14 00:48  olivier
 
 	* po/xfwm4.pot: [no log message]
