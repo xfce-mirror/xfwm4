@@ -1907,7 +1907,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
             if (!(c->size->flags & PMaxSize) || 
                 (w1 + delta <= c->size->max_width))
             {
-	        w1 += delta;
+                w1 += delta;
             }
         }
         if (c->size->min_aspect.x * h1 > c->size->min_aspect.y * w1)
@@ -1917,15 +1917,15 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
             if (!(c->size->flags & PMinSize) ||
                 (h1 - delta >= c->size->min_height))
             {
-	        h1 -= delta;
+                h1 -= delta;
             }
             else
             {
-	        delta = MAKE_MULT (c->size->min_aspect.x * h1 / 
+                delta = MAKE_MULT (c->size->min_aspect.x * h1 / 
                                   c->size->min_aspect.y - w1, xinc);
-	        if (!(c->size->flags & PMaxSize) ||
+                if (!(c->size->flags & PMaxSize) ||
                     (w1 + delta <= c->size->max_width))
-	          w1 += delta;
+                  w1 += delta;
             }
         }
 
@@ -1937,7 +1937,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
             if (!(c->size->flags & PMaxSize) ||
                 (h1 + delta <= c->size->max_height))
             {
-	        h1 += delta;
+                h1 += delta;
             }
         }
         if ((c->size->max_aspect.x * h1 < c->size->max_aspect.y * w1))
@@ -1946,17 +1946,17 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
                               c->size->max_aspect.y, xinc);
             if (!(c->size->flags & PMinSize) ||
                 (w1 - delta >= c->size->min_width))
-	    {
+            {
                 w1 -= delta;
             }
             else
             {
-	        delta = MAKE_MULT (w1 * c->size->max_aspect.y / 
+                delta = MAKE_MULT (w1 * c->size->max_aspect.y / 
                                   c->size->max_aspect.x - h1, yinc);
-	        if (!(c->size->flags & PMaxSize) ||
+                if (!(c->size->flags & PMaxSize) ||
                     (h1 + delta <= c->size->max_height))
                 {
-	            h1 += delta;
+                    h1 += delta;
                 }
             }
         }
@@ -2183,7 +2183,7 @@ clientInitPosition (Client * c)
     Client *c2;
     int xmax, ymax, best_x, best_y, i, msx, msy;
     int left, right, top, bottom;
-    int frame_x, frame_y, frame_height, frame_width;
+    int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
     unsigned long best_overlaps = 0;
     gboolean first = TRUE;
 
@@ -2245,17 +2245,19 @@ clientInitPosition (Client * c)
     frame_y = frameY (c);
     frame_height = frameHeight (c);
     frame_width = frameWidth (c);
+    frame_left = frameLeft(c);
+    frame_top = frameTop (c);
 
-    xmax = MyDisplayMaxX (dpy, screen, msx, msy) - frame_width - right;
-    ymax = MyDisplayMaxY (dpy, screen, msx, msy) - frame_height - bottom;
+    xmax = MyDisplayMaxX (dpy, screen, msx, msy) - c->width - frameRight (c) - right;
+    ymax = MyDisplayMaxY (dpy, screen, msx, msy) - c->height - frameBottom (c) - bottom;
     best_x = MyDisplayX (msx, msy) + frameLeft (c) + left;
     best_y = MyDisplayY (msx, msy) + frameTop (c) + top;
 
-    for (test_y = MyDisplayY (msx, msy) + frameTop (c) + top; test_y < ymax;
+    for (test_y = MyDisplayY (msx, msy) + frameTop (c) + top; test_y <= ymax;
         test_y += 8)
     {
         for (test_x = MyDisplayX (msx, msy) + frameLeft (c) + left;
-            test_x < xmax; test_x += 8)
+            test_x <= xmax; test_x += 8)
         {
             unsigned long count_overlaps = 0;
             TRACE ("analyzing %i clients", client_count);
@@ -2265,21 +2267,23 @@ clientInitPosition (Client * c)
                     && (c->win_workspace == c2->win_workspace)
                     && CLIENT_FLAG_TEST (c2, CLIENT_FLAG_VISIBLE))
                 {
-                    c->x = test_x;
-                    c->y = test_y;
-                    frame_x = frameX (c);
-                    frame_y = frameY (c);
                     count_overlaps +=
-                        overlap (frame_x, frame_y, frame_x + frame_width,
-                        frame_y + frame_height, frameX (c2), frameY (c2),
-                        frameX (c2) + frameWidth (c2),
-                        frameY (c2) + frameHeight (c2));
+                        overlap (test_x - frame_left, 
+                                 test_y - frame_top, 
+                                 test_x - frame_left + frame_width,
+                                 test_y - frame_top + frame_height, 
+                                 frameX (c2), 
+                                 frameY (c2),
+                                 frameX (c2) + frameWidth (c2),
+                                 frameY (c2) + frameHeight (c2));
                 }
             }
             TRACE ("overlaps so far is %u", (unsigned int) count_overlaps);
             if (count_overlaps == 0)
             {
                 TRACE ("overlaps is 0 so it's the best we can get");
+                c->x = test_x;
+                c->y = test_y;
                 return;
             }
             else if ((count_overlaps < best_overlaps) || (first))
