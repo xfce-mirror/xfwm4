@@ -61,6 +61,7 @@ int raise_on_focus;
 int raise_delay;
 int snap_to_border;
 int snap_width;
+int dbl_click_time;
 GC box_gc;
 MyPixmap sides[3][2];
 MyPixmap corners[4][2];
@@ -114,6 +115,7 @@ void loadSettings()
         {"raise_delay", NULL, TRUE},
         {"snap_to_border", NULL, TRUE},
         {"snap_width", NULL, TRUE},
+        {"dbl_click_time", NULL, TRUE},
         {"workspace_count", NULL, TRUE},
         {"wrap_workspaces", NULL, TRUE},
         {"close_window_key", NULL, TRUE},
@@ -160,6 +162,7 @@ void loadSettings()
         {"move_window_workspace_9_key", NULL, TRUE},
         {NULL, NULL, FALSE}
     };
+    GValue tmp_val = { 0, };
     char *theme;
     XpmColorSymbol colsym[20];
     GtkWidget *widget;
@@ -345,6 +348,12 @@ void loadSettings()
 
     snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
     snap_width = abs(atoi(getValue("snap_width", rc)));
+    dbl_click_time = abs(atoi(getValue("dbl_click_time", rc)));
+    g_value_init (&tmp_val, G_TYPE_INT);
+    if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
+    {
+        dbl_click_time = abs(g_value_get_int (&tmp_val));
+    }
 
     if(!g_ascii_strcasecmp("shade", getValue("double_click_action", rc)))
     {

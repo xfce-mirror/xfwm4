@@ -55,6 +55,7 @@ extern int raise_on_focus;
 extern int raise_delay;
 extern int snap_to_border;
 extern int snap_width;
+extern int dbl_click_time;
 extern GC box_gc;
 extern MyPixmap sides[3][2];
 extern MyPixmap corners[4][2];

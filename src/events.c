@@ -74,7 +74,7 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
     y = ycurrent = ev->xbutton.y_root;
     t0 = CurrentTime;
     
-    while ((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < 250) && ((CurrentTime - t0) < 250))
+    while ((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < dbl_click_time) && ((CurrentTime - t0) < dbl_click_time))
     {
         g_usleep (10);
         total += 10;
@@ -1120,6 +1120,21 @@ static gboolean set_reload(void)
     return (TRUE);
 }
 
+static gboolean set_dbl_click_time(void)
+{
+    GValue tmp_val = { 0, };
+    
+    DBG("setting dbl_click_time\n");
+    
+    g_value_init (&tmp_val, G_TYPE_INT);
+    if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
+    {
+        dbl_click_time = abs(g_value_get_int (&tmp_val));
+    }
+
+    return (TRUE);
+}
+
 static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev)
 {
     DBG("entering client_event_cb\n");
@@ -1149,5 +1164,6 @@ void initGtkCallbacks(void)
     {
         g_signal_connect(settings, "notify::gtk-theme-name", G_CALLBACK(set_reload), NULL);
         g_signal_connect(settings, "notify::gtk-font-name", G_CALLBACK(set_reload), NULL);
+        g_signal_connect(settings, "notify::gtk-double-click-time", G_CALLBACK(set_dbl_click_time), NULL);
     }
 }
