@@ -2953,6 +2953,18 @@ clientFree (Client * c)
     TRACE ("entering clientFree");
     TRACE ("freeing client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (client_focus == c)
+    {
+        client_focus = NULL;
+    }
+    if (last_raise == c)
+    {
+        last_raise = NULL;
+    }
+    if (last_ungrab == c)
+    {
+        last_ungrab = NULL;
+    }
     if (c->name)
     {
         free (c->name);
@@ -3484,18 +3496,6 @@ clientUnframe (Client * c, gboolean remap)
             c->name, c->window, remap ? "remap" : "no remap");
 
     g_return_if_fail (c != NULL);
-    if (client_focus == c)
-    {
-        client_focus = NULL;
-    }
-    if (last_raise == c)
-    {
-        last_raise = NULL;
-    }
-    if (last_ungrab == c)
-    {
-        last_ungrab = NULL;
-    }
 
     clientRemoveFromList (c);
     MyXGrabServer ();
@@ -3751,7 +3751,7 @@ clientGetNext (Client * c, int mask)
 
     if (c)
     {
-        for (c2 = c->next, i = 0; (c2) && (i < client_count);
+        for (c2 = c->next, i = 0; (c2) && (i < client_count - 1);
             c2 = c2->next, i++)
         {
             if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
