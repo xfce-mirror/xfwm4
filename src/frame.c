@@ -495,8 +495,8 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
         XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, c->corners[CORNER_TOP_RIGHT], ShapeBounding, ShapeUnion);
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            char chr = getLetterFromButton(i, c);
-	    if((chr) && strchr(button_layout, chr))
+            char b = getLetterFromButton(i, c);
+	    if((b) && strchr(button_layout, b))
             {
                 XShapeCombineShape(dpy, temp, ShapeBounding, button_x[i], (frameTop(c) - buttons[i][ACTIVE].height) / 2, c->buttons[i], ShapeBounding, ShapeUnion);
             }
@@ -552,7 +552,7 @@ void frameDraw(Client * c)
 	    if (c->buttons[i])
 	    {
 		char b = getLetterFromButton(i, c);
-        	if(strchr(button_layout, b))
+        	if((b) && strchr(button_layout, b))
         	{
                     XMapWindow(dpy, c->buttons[i]);
         	}

@@ -128,7 +128,7 @@ static void reset_timeout(void)
     raise_timeout = gtk_timeout_add(raise_delay, (GtkFunction) raise_cb, NULL);
 }
 
-static inline _moveRequest(Client *c, XEvent *ev)
+static inline void _moveRequest(Client *c, XEvent *ev)
 {
     if((c->has_border) && !(c->fullscreen) && (c->has_move))
     {
@@ -136,7 +136,7 @@ static inline _moveRequest(Client *c, XEvent *ev)
     }
 }
 
-static inline _resizeRequest(Client *c, int corner, XEvent *ev)
+static inline void _resizeRequest(Client *c, int corner, XEvent *ev)
 {
     clientSetFocus(c, True);
     clientRaise(c);
@@ -666,9 +666,16 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
     {
         if(ev->atom == XA_WM_NORMAL_HINTS)
         {
+	    gboolean previous_value;
+	    
             DBG("client \"%s\" (%#lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
+	    previous_value = c->is_resizable;
 	    c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
+	    if (c->is_resizable != previous_value)
+	    {
+	        frameDraw(c);
+	    }
         }
         else if((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
