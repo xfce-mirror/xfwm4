@@ -78,7 +78,7 @@ array_size (char **array)
     int len = 0;
 
     for (p = array; p && *p; p++)
-	len++;
+        len++;
 
     return len;
 }
@@ -96,27 +96,27 @@ update_names (McsManager * manager, int n)
 
     for (i = 0; i < n; i++)
     {
-	if (i < len)
-	    tmpnames[i] = g_strdup (ws_names[i]);
-	else
-	{
-	    const char *name;
-	    NetkWorkspace *ws = netk_screen_get_workspace (netk_screen, i);
+        if (i < len)
+            tmpnames[i] = g_strdup (ws_names[i]);
+        else
+        {
+            const char *name;
+            NetkWorkspace *ws = netk_screen_get_workspace (netk_screen, i);
 
-	    name = netk_workspace_get_name (ws);
+            name = netk_workspace_get_name (ws);
 
-	    if (name && strlen (name))
-	    {
-		tmpnames[i] = g_strdup (name);
-	    }
-	    else
-	    {
-		char num[4];
+            if (name && strlen (name))
+            {
+                tmpnames[i] = g_strdup (name);
+            }
+            else
+            {
+                char num[4];
 
-		snprintf (num, 3, "%d", i + 1);
-		tmpnames[i] = g_strdup (num);
-	    }
-	}
+                snprintf (num, 3, "%d", i + 1);
+                tmpnames[i] = g_strdup (num);
+            }
+        }
     }
 
     g_strfreev (ws_names);
@@ -144,34 +144,34 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
 
     if (setting)
     {
-	ws_names = g_strsplit (setting->data.v_string, WS_SEP_S, -1);
+        ws_names = g_strsplit (setting->data.v_string, WS_SEP_S, -1);
     }
 
     /* ws count */
     ws_count = netk_screen_get_workspace_count (netk_screen);
 
     setting = mcs_manager_setting_lookup (mcs_manager, "Xfwm/WorkspaceCount", 
-	    				  CHANNEL1);
+                                          CHANNEL1);
 
     if (setting)
     {
-	ws_count = setting->data.v_int;
+        ws_count = setting->data.v_int;
     }
     else
     {
-	/* backward compatibility */
-	setting = mcs_manager_setting_lookup (mcs_manager, "count", CHANNEL1);
+        /* backward compatibility */
+        setting = mcs_manager_setting_lookup (mcs_manager, "count", CHANNEL1);
 
-	if (setting)
-	{
-	    ws_count = setting->data.v_int;
-	    mcs_manager_delete_setting(mcs_manager, "count", CHANNEL1);
-	}
+        if (setting)
+        {
+            ws_count = setting->data.v_int;
+            mcs_manager_delete_setting(mcs_manager, "count", CHANNEL1);
+        }
         else
         {
-	    ws_count = DEFAULT_NBR_WS;
+            ws_count = DEFAULT_NBR_WS;
         }
-	set_workspace_count (mcs_manager, ws_count);
+        set_workspace_count (mcs_manager, ws_count);
     }
 
     len = (ws_names) ? array_size (ws_names) : 0;
@@ -211,7 +211,7 @@ set_workspace_count (McsManager * manager, int count)
     len = array_size (ws_names);
 
     if (len < ws_count)
-	update_names (manager, ws_count);
+        update_names (manager, ws_count);
 }
 
 static void
@@ -230,8 +230,8 @@ set_workspace_names (McsManager * manager, char **names)
 
     if (!xa_NET_DESKTOP_NAMES)
     {
-	xa_NET_DESKTOP_NAMES = XInternAtom(GDK_DISPLAY(), 
-					   "_NET_DESKTOP_NAMES", False);
+        xa_NET_DESKTOP_NAMES = XInternAtom(GDK_DISPLAY(), 
+                                           "_NET_DESKTOP_NAMES", False);
     }
 
     len = strlen(string);
@@ -240,10 +240,10 @@ set_workspace_names (McsManager * manager, char **names)
     
     gdk_error_trap_push();
     gdk_property_change(gdk_get_default_root_window(), 
-	    		gdk_x11_xatom_to_atom(xa_NET_DESKTOP_NAMES),
-			gdk_atom_intern("UTF8_STRING", FALSE),
-			8, GDK_PROP_MODE_REPLACE,
-			string, len);
+                        gdk_x11_xatom_to_atom(xa_NET_DESKTOP_NAMES),
+                        gdk_atom_intern("UTF8_STRING", FALSE),
+                        8, GDK_PROP_MODE_REPLACE,
+                        string, len);
     gdk_flush();
     gdk_error_trap_pop();
 
@@ -261,67 +261,67 @@ treeview_set_rows (McsManager * manager, int n)
     DBG ("set %d treerows (current number: %d)\n", n, treerows);
 
     if (n == treerows)
-	return;
+        return;
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
     store = GTK_LIST_STORE (model);
 
     if (n < treerows)
     {
-	GtkTreePath *path;
-	GtkTreeIter iter;
-	char num[4];
+        GtkTreePath *path;
+        GtkTreeIter iter;
+        char num[4];
 
-	/* we have a list so the path string is only the node index */
-	snprintf (num, 3, "%d", n);
-	path = gtk_tree_path_new_from_string (num);
+        /* we have a list so the path string is only the node index */
+        snprintf (num, 3, "%d", n);
+        path = gtk_tree_path_new_from_string (num);
 
-	if (!gtk_tree_model_get_iter (model, &iter, path))
-	{
-	    g_critical ("Can't get a pointer to treeview row %d", n);
-	    return;
-	}
+        if (!gtk_tree_model_get_iter (model, &iter, path))
+        {
+            g_critical ("Can't get a pointer to treeview row %d", n);
+            return;
+        }
 
-	for (i = n; i < treerows; i++)
-	{
-	    /* iter gets set to next valid row, so this should work */
-	    gtk_list_store_remove (store, &iter);
-	}
+        for (i = n; i < treerows; i++)
+        {
+            /* iter gets set to next valid row, so this should work */
+            gtk_list_store_remove (store, &iter);
+        }
 
-	if (gtk_tree_path_prev (path))
-	{
-	    gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path,
-					  NULL, FALSE, 0, 0);
-	    gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL,
-				      FALSE);
-	}
+        if (gtk_tree_path_prev (path))
+        {
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path,
+                                          NULL, FALSE, 0, 0);
+            gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL,
+                                      FALSE);
+        }
 
-	gtk_tree_path_free (path);
+        gtk_tree_path_free (path);
     }
     else
     {
-	GtkTreeIter iter;
+        GtkTreeIter iter;
 
-	for (i = treerows; i < n; i++)
-	{
-	    char *name;
-	    GtkTreePath *path;
+        for (i = treerows; i < n; i++)
+        {
+            char *name;
+            GtkTreePath *path;
 
-	    name = ws_names[i];
+            name = ws_names[i];
 
-	    gtk_list_store_append (store, &iter);
+            gtk_list_store_append (store, &iter);
 
-	    gtk_list_store_set (store, &iter, NUMBER_COLUMN, i + 1,
-				NAME_COLUMN, name, -1);
+            gtk_list_store_set (store, &iter, NUMBER_COLUMN, i + 1,
+                                NAME_COLUMN, name, -1);
 
-	    path = gtk_tree_model_get_path (model, &iter);
-	    gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path,
-					  NULL, FALSE, 0, 0);
-	    gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL,
-				      FALSE);
+            path = gtk_tree_model_get_path (model, &iter);
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path,
+                                          NULL, FALSE, 0, 0);
+            gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL,
+                                      FALSE);
 
-	    gtk_tree_path_free (path);
-	}
+            gtk_tree_path_free (path);
+        }
     }
 
     treerows = n;
@@ -329,7 +329,7 @@ treeview_set_rows (McsManager * manager, int n)
 
 static void
 edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
-		  int number, const char *name, McsManager * manager)
+                  int number, const char *name, McsManager * manager)
 {
     GtkWidget *dialog, *mainvbox, *header, *hbox, *label, *entry;
     char title[512];
@@ -337,11 +337,11 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
     const char *tmp;
 
     dialog = gtk_dialog_new_with_buttons (_("Change name"), NULL,
-					  GTK_DIALOG_NO_SEPARATOR,
-					  GTK_STOCK_CANCEL,
-					  GTK_RESPONSE_CANCEL,
-					  GTK_STOCK_APPLY, GTK_RESPONSE_OK,
-					  NULL);
+                                          GTK_DIALOG_NO_SEPARATOR,
+                                          GTK_STOCK_CANCEL,
+                                          GTK_RESPONSE_CANCEL,
+                                          GTK_STOCK_APPLY, GTK_RESPONSE_OK,
+                                          NULL);
 
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_MOUSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
@@ -377,22 +377,22 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
 
     if (response == GTK_RESPONSE_OK && tmp && strlen (tmp))
     {
-	int n = number - 1;
-	char *s;
+        int n = number - 1;
+        char *s;
 
-	g_free (ws_names[n]);
-	ws_names[n] = g_strdup (tmp);
+        g_free (ws_names[n]);
+        ws_names[n] = g_strdup (tmp);
 
-	for (s = strchr (ws_names[n], WS_SEP); s; s = strchr (s + 1, WS_SEP))
-	{
-	    /* just don't use our separator character! */
-	    *s = ' ';
-	}
+        for (s = strchr (ws_names[n], WS_SEP); s; s = strchr (s + 1, WS_SEP))
+        {
+            /* just don't use our separator character! */
+            *s = ' ';
+        }
 
-	gtk_list_store_set (GTK_LIST_STORE (model), iter,
-			    NAME_COLUMN, ws_names[n], -1);
+        gtk_list_store_set (GTK_LIST_STORE (model), iter,
+                            NAME_COLUMN, ws_names[n], -1);
 
-	set_workspace_names (manager, ws_names);
+        set_workspace_names (manager, ws_names);
     }
 
     gtk_widget_destroy (dialog);
@@ -400,27 +400,27 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
 
 static gboolean
 button_pressed (GtkTreeView * tree, GdkEventButton * event,
-		McsManager * manager)
+                McsManager * manager)
 {
     GtkTreePath *path;
     GtkTreeIter iter;
     GtkTreeModel *model;
 
     if (gtk_tree_view_get_path_at_pos (tree, event->x, event->y,
-				       &path, NULL, NULL, NULL))
+                                       &path, NULL, NULL, NULL))
     {
-	char *name;
-	int number;
+        char *name;
+        int number;
 
-	model = gtk_tree_view_get_model (tree);
-	gtk_tree_model_get_iter (model, &iter, path);
-	gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
+        model = gtk_tree_view_get_model (tree);
+        gtk_tree_model_get_iter (model, &iter, path);
+        gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
 
-	gtk_tree_model_get (model, &iter,
-			    NUMBER_COLUMN, &number, NAME_COLUMN, &name, -1);
+        gtk_tree_model_get (model, &iter,
+                            NUMBER_COLUMN, &number, NAME_COLUMN, &name, -1);
 
-	edit_name_dialog (model, &iter, number, name, manager);
-	g_free (name);
+        edit_name_dialog (model, &iter, number, name, manager);
+        g_free (name);
     }
 
     return TRUE;
@@ -447,7 +447,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
     GtkWidget *label;
 
     markup = g_strconcat ("<i>", _("Click on a workspace name to edit it"),
-			  "</i>", NULL);
+                          "</i>", NULL);
     label = gtk_label_new (markup);
     g_free (markup);
     gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
@@ -458,9 +458,9 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
     treeview_scroll = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (treeview_scroll);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (treeview_scroll),
-				    GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
+                                    GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW
-					 (treeview_scroll), GTK_SHADOW_IN);
+                                         (treeview_scroll), GTK_SHADOW_IN);
     gtk_box_pack_start (GTK_BOX (vbox), treeview_scroll, TRUE, TRUE, 0);
 
     store = gtk_list_store_new (N_COLUMNS, G_TYPE_INT, G_TYPE_STRING);
@@ -471,7 +471,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
 
     /* clean up list store */
     g_signal_connect(treeview, "destroy-event", 
-	             G_CALLBACK(treeview_destroyed), NULL);
+                     G_CALLBACK(treeview_destroyed), NULL);
 
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (treeview), TRUE);
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
@@ -481,20 +481,20 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("Number", renderer,
-						       "text", NUMBER_COLUMN,
-						       NULL);
+                                                       "text", NUMBER_COLUMN,
+                                                       NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("Name", renderer,
-						       "text", NAME_COLUMN,
-						       NULL);
+                                                       "text", NAME_COLUMN,
+                                                       NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
     g_signal_connect (treeview, "button-press-event",
-		      G_CALLBACK (button_pressed), manager);
+                      G_CALLBACK (button_pressed), manager);
 }
 
 /* workspace count */
@@ -577,7 +577,7 @@ watch_workspaces_hint (McsManager * manager)
     (void)&watch_workspaces_hint;
 
     g_signal_connect (netk_screen, "workspace-created",
-		      G_CALLBACK (update_channel), manager);
+                      G_CALLBACK (update_channel), manager);
     g_signal_connect (netk_screen, "workspace-destroyed",
-		      G_CALLBACK (update_channel), manager);
+                      G_CALLBACK (update_channel), manager);
 }

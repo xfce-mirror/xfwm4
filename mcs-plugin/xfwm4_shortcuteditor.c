@@ -46,50 +46,49 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
     if (xfce_confirm (_("Do you really want to remove this keybinding theme ?"), GTK_STOCK_YES, NULL))
     {
         GtkTreeSelection *selection;
-	GtkTreeModel *model;
-	GtkTreeIter iter;
-	ThemeInfo *ti;
+        GtkTreeModel *model;
+        GtkTreeIter iter;
+        ThemeInfo *ti;
 
-	gchar *theme_name = NULL;
-	gchar *theme_file = NULL;
+        gchar *theme_name = NULL;
+        gchar *theme_file = NULL;
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2));
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2));
 
-	gtk_tree_selection_get_selected (selection, &model, &iter);
-	gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
+        gtk_tree_selection_get_selected (selection, &model, &iter);
+        gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
 
-	ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
+        ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
-	theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
-	
-	if (unlink (theme_file) == 0)
-	{
-	    /* refresh list */
-	  while (keybinding_theme_list)
-	  {
-	      theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
-	      keybinding_theme_list = g_list_next (keybinding_theme_list);
-	  }
-	  g_list_free (keybinding_theme_list);
-	
-	  g_free (current_key_theme);
-	  current_key_theme = g_strdup ("Default");
-	  keybinding_theme_list = NULL;
-	  keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-					       KEYBINDING_THEMES, current_key_theme);
-	  gtk_widget_set_sensitive (itf->treeview3, FALSE);
-	  gtk_widget_set_sensitive (itf->treeview4, FALSE);
-	  loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
-	
-	  /* tell it to the mcs manager */
-	  mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
-	  mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL);
-	  write_options (itf->mcs_plugin);
-	  
-	}
+        theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
+        
+        if (unlink (theme_file) == 0)
+        {
+            /* refresh list */
+          while (keybinding_theme_list)
+          {
+              theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+              keybinding_theme_list = g_list_next (keybinding_theme_list);
+          }
+          g_list_free (keybinding_theme_list);
+        
+          g_free (current_key_theme);
+          current_key_theme = g_strdup ("Default");
+          keybinding_theme_list = NULL;
+          keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+                                               KEYBINDING_THEMES, current_key_theme);
+          gtk_widget_set_sensitive (itf->treeview3, FALSE);
+          gtk_widget_set_sensitive (itf->treeview4, FALSE);
+          loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
+        
+          /* tell it to the mcs manager */
+          mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+          mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
+          write_options (itf->mcs_plugin);
+        }
 
-	g_free (theme_name);
-	g_free (theme_file);
+        g_free (theme_name);
+        g_free (theme_file);
     }
 }
 
@@ -111,9 +110,9 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     itf = (Itf *) data;
     
     dialog = gtk_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
-					  GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-					  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
-					  GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+                                          GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
+                                          GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
 
     header_image = gtk_image_new_from_stock (GTK_STOCK_ADD, GTK_ICON_SIZE_LARGE_TOOLBAR);
     header = xfce_create_header_with_image (header_image, _("Add keybinding theme"));
@@ -132,80 +131,81 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     while (TRUE)
     {
         gint response = GTK_RESPONSE_CANCEL;
-	
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
+        
+        response = gtk_dialog_run (GTK_DIALOG (dialog));
 
-	if (response == GTK_RESPONSE_OK)
-	{
-	    gchar buf[80];
-	    FILE *new_theme;
-	    FILE *default_theme;
+        if (response == GTK_RESPONSE_OK)
+        {
+            gchar buf[80];
+            FILE *new_theme;
+            FILE *default_theme;
 
-	    if (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)), keybinding_theme_list))
-	    {
-		xfce_err (_("A keybinding theme with the same name already exists"));
-		continue;
-	    }
+            if (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)), keybinding_theme_list))
+            {
+                xfce_err (_("A keybinding theme with the same name already exists"));
+                continue;
+            }
 
-	    if (strlen (gtk_entry_get_text (GTK_ENTRY (entry))) == 0)
-	    {
-	        xfce_err (_("You have to provide a name for the keybinding theme"));
-		continue;
-	    }
+            if (strlen (gtk_entry_get_text (GTK_ENTRY (entry))) == 0)
+            {
+                xfce_err (_("You have to provide a name for the keybinding theme"));
+                continue;
+            }
 
-	    /* create theme (copy default) */
-	    new_theme_path = g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
-	    new_theme_file = xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
-	    default_theme_file = g_build_filename (DATADIR, "themes", "Default",
-						   KEY_SUFFIX, KEYTHEMERC, NULL);
-	    
-	    new_theme = fopen (new_theme_file, "w+");
-	    if (!new_theme)
-	    {
-	        g_warning ("unable to create the new theme file");
-		break;
-	    }
+            /* create theme (copy default) */
+            new_theme_path = g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
+            new_theme_file = xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
+            default_theme_file = g_build_filename (DATADIR, "themes", "Default",
+                                                   KEY_SUFFIX, KEYTHEMERC, NULL);
+            
+            new_theme = fopen (new_theme_file, "w+");
+            if (!new_theme)
+            {
+                g_warning ("unable to create the new theme file");
+                break;
+            }
 
-	    default_theme = fopen (default_theme_file, "r");
-	    if (!default_theme)
-	    {
-	        g_warning ("unable to open the default theme file");
-	        fclose (new_theme);
-		break;
-	    }
+            default_theme = fopen (default_theme_file, "r");
+            if (!default_theme)
+            {
+                g_warning ("unable to open the default theme file");
+                fclose (new_theme);
+                break;
+            }
 
-	    while (fgets (buf, sizeof (buf), default_theme))
-	    {
-		fputs (buf, new_theme);
-	    }
+            while (fgets (buf, sizeof (buf), default_theme))
+            {
+                fputs (buf, new_theme);
+            }
 
-	    fclose (new_theme);
-	    fclose (default_theme);
-	
-	    /* refresh list */
-	    while (keybinding_theme_list)
-	    {
-		theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
-		keybinding_theme_list = g_list_next (keybinding_theme_list);
-	    }
-	    g_list_free (keybinding_theme_list);
-	
-	    g_free (current_key_theme);
-	    current_key_theme = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
-	    keybinding_theme_list = NULL;
-	    keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-						 KEYBINDING_THEMES, current_key_theme);
-	    gtk_widget_set_sensitive (itf->treeview3, TRUE);
-	    gtk_widget_set_sensitive (itf->treeview4, TRUE);
-	    loadtheme_in_treeview (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
-							    keybinding_theme_list), itf);
-	    /* tell it to the mcs manager */
-	    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
-            mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL);
+            fclose (new_theme);
+            fclose (default_theme);
+        
+            /* refresh list */
+            while (keybinding_theme_list)
+            {
+                theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+                keybinding_theme_list = g_list_next (keybinding_theme_list);
+            }
+            g_list_free (keybinding_theme_list);
+        
+            g_free (current_key_theme);
+            current_key_theme = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+            keybinding_theme_list = NULL;
+            keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+                                                 KEYBINDING_THEMES, current_key_theme);
+            gtk_widget_set_sensitive (itf->treeview3, TRUE);
+            gtk_widget_set_sensitive (itf->treeview4, TRUE);
+            loadtheme_in_treeview (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
+                                                            keybinding_theme_list), itf);
+            /* tell it to the mcs manager */
+            mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+            mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
+            
             write_options (itf->mcs_plugin);
-	}
+        }
 
-	break;
+        break;
     }
     
     gtk_widget_destroy (dialog);
@@ -224,40 +224,40 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
     /* Right click draws the context menu */
     if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
     {
-	GtkTreePath *path;
+        GtkTreePath *path;
 
-	if (gtk_tree_view_get_path_at_pos (treeview, event->x, event->y, &path, NULL, NULL, NULL))
-	{
-	    GtkTreeSelection *selection;
-	    GtkTreeModel *model;
-	    GtkTreeIter iter;
+        if (gtk_tree_view_get_path_at_pos (treeview, event->x, event->y, &path, NULL, NULL, NULL))
+        {
+            GtkTreeSelection *selection;
+            GtkTreeModel *model;
+            GtkTreeIter iter;
 
-	    gchar *theme_name = NULL;
-	    ThemeInfo *ti;
+            gchar *theme_name = NULL;
+            ThemeInfo *ti;
 
-	    selection = gtk_tree_view_get_selection (treeview);
-	    model = gtk_tree_view_get_model (treeview);
-	    gtk_tree_model_get_iter (model, &iter, path);
+            selection = gtk_tree_view_get_selection (treeview);
+            model = gtk_tree_view_get_model (treeview);
+            gtk_tree_model_get_iter (model, &iter, path);
 
-	    gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
-	    
-	    ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
+            gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
+            
+            ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
-	    gtk_tree_selection_unselect_all (selection);
-	    gtk_tree_selection_select_path (selection, path);
+            gtk_tree_selection_unselect_all (selection);
+            gtk_tree_selection_select_path (selection, path);
 
-	    gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
+            gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
 
-	    g_free (theme_name);
-	}
-	else
-	{
-	    gtk_widget_set_sensitive (itf->popup_del_menuitem, FALSE);
-	}
-	
-	gtk_menu_popup (GTK_MENU (itf->popup_menu), NULL, NULL, NULL, NULL,
-		      event->button, gtk_get_current_event_time());
-	return TRUE;
+            g_free (theme_name);
+        }
+        else
+        {
+            gtk_widget_set_sensitive (itf->popup_del_menuitem, FALSE);
+        }
+        
+        gtk_menu_popup (GTK_MENU (itf->popup_menu), NULL, NULL, NULL, NULL,
+                      event->button, gtk_get_current_event_time());
+        return TRUE;
     }
 
     return FALSE;
@@ -290,12 +290,12 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
 
     user_theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
     default_theme_file = g_build_filename (DATADIR, "themes", "Default",
-					   KEY_SUFFIX, KEYTHEMERC, NULL);
+                                           KEY_SUFFIX, KEYTHEMERC, NULL);
 
     if (g_ascii_strcasecmp (ti->name, "Default") == 0)
     {
         g_free (user_theme_file);
-	user_theme_file = g_strdup (default_theme_file);
+        user_theme_file = g_strdup (default_theme_file);
     }
 
     default_rc = xfce_rc_simple_open (default_theme_file, TRUE);
@@ -310,19 +310,19 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
 
     while (*shortcut)
     {
-	const gchar *entry_value;
-	const gchar *fallback_value;
+        const gchar *entry_value;
+        const gchar *fallback_value;
 
-	fallback_value = xfce_rc_read_entry (default_rc, *shortcut, "none");
-	entry_value = xfce_rc_read_entry (user_rc, *shortcut, fallback_value);
+        fallback_value = xfce_rc_read_entry (default_rc, *shortcut, "none");
+        entry_value = xfce_rc_read_entry (user_rc, *shortcut, fallback_value);
 
-	if (g_str_has_prefix (*shortcut, "shortcut_") && g_str_has_suffix (*shortcut, "_exec"))
-	{
-	    *shortcut++;
-	    continue;
-	}
+        if (g_str_has_prefix (*shortcut, "shortcut_") && g_str_has_suffix (*shortcut, "_exec"))
+        {
+            *shortcut++;
+            continue;
+        }
 
-	if (g_ascii_strcasecmp (*shortcut, "close_window_key") == 0)
+        if (g_ascii_strcasecmp (*shortcut, "close_window_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Close window"), COLUMN_SHORTCUT, entry_value, -1);
@@ -512,22 +512,22 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to previous workspace"), COLUMN_SHORTCUT, entry_value, -1);
         }
-	else if (g_ascii_strcasecmp (*shortcut, "move_window_up_workspace_key") == 0)
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_up_workspace_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to upper workspace"), COLUMN_SHORTCUT, entry_value, -1);
         }
-	else if (g_ascii_strcasecmp (*shortcut, "move_window_down_workspace_key") == 0)
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_down_workspace_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to bottom workspace"), COLUMN_SHORTCUT, entry_value, -1);
         }
-	else if (g_ascii_strcasecmp (*shortcut, "move_window_left_workspace_key") == 0)
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_left_workspace_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to left workspace"), COLUMN_SHORTCUT, entry_value, -1);
         }
-	else if (g_ascii_strcasecmp (*shortcut, "move_window_right_workspace_key") == 0)
+        else if (g_ascii_strcasecmp (*shortcut, "move_window_right_workspace_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to right workspace"), COLUMN_SHORTCUT, entry_value, -1);
@@ -579,102 +579,102 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_1_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_1_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_1_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_1_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_1_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_2_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_2_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_2_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_2_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_2_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_3_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_3_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_3_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_3_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_3_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_4_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_4_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_4_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_4_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_4_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_5_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_5_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_5_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_5_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_5_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_6_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_6_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_6_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_6_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_6_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_7_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_7_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_7_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_7_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_7_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_8_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_8_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_8_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_8_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_8_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_9_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_9_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_9_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_9_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_9_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_10_key") == 0)
         {
-	    const gchar *fallback_value2;
-	    const gchar *entry_value2;
+            const gchar *fallback_value2;
+            const gchar *entry_value2;
 
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_10_exec", "none");
-	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_10_exec", fallback_value);
+            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_10_exec", "none");
+            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_10_exec", fallback_value);
             gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else
@@ -683,7 +683,7 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, *shortcut, COLUMN_SHORTCUT, entry_value, -1);
         }
 
-	*shortcut++;
+        *shortcut++;
     }
 
     g_strfreev (shortcuts_list);
@@ -1056,22 +1056,22 @@ cb_browse_command (GtkWidget *widget, GtkEntry *entry_command)
     GtkWidget *filesel_dialog;
 
     filesel_dialog = xfce_file_chooser_new (_("Select command"), NULL,
-					    XFCE_FILE_CHOOSER_ACTION_OPEN,
-					    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-					    GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+                                            XFCE_FILE_CHOOSER_ACTION_OPEN,
+                                            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
     xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog),
-				    gtk_entry_get_text (entry_command));
+                                    gtk_entry_get_text (entry_command));
 
     if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT)
     {
         gchar *filename;
 
-	filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+        filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
         gtk_entry_set_text (entry_command,
-			    filename);
+                            filename);
 
-	g_free (filename);
+        g_free (filename);
     }
 
     gtk_widget_destroy (GTK_WIDGET (filesel_dialog));
@@ -1119,11 +1119,11 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
       return TRUE;
 
     gdk_keymap_translate_keyboard_state (gdk_keymap_get_default (),
-					 event->hardware_keycode,
-					 event->state,
-					 event->group,
-					 NULL, NULL, NULL,
-					 &consumed_modifiers);
+                                         event->hardware_keycode,
+                                         event->state,
+                                         event->group,
+                                         NULL, NULL, NULL,
+                                         &consumed_modifiers);
     
     keyval = gdk_keyval_to_lower (event->keyval);
     if (keyval == GDK_ISO_Left_Tab)
@@ -1141,13 +1141,13 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 
     while (*shortcut)
     {
-	if (strlen (*shortcut) > 0 && (strcmp (*shortcut, "Mod2") != 0))
-	{
-	    strcat (shortcut_string, *shortcut);
-	    strcat (shortcut_string, "+");
-	}
-	g_free(*shortcut);
-	*shortcut++;
+        if (strlen (*shortcut) > 0 && (strcmp (*shortcut, "Mod2") != 0))
+        {
+            strcat (shortcut_string, *shortcut);
+            strcat (shortcut_string, "+");
+        }
+        g_free(*shortcut);
+        *shortcut++;
     }
      
     shortcut_string[strlen (shortcut_string) - 1] = '\0';
@@ -1273,8 +1273,8 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     if (icon)
     {
         image = gtk_image_new_from_pixbuf (icon);
-	gtk_widget_show (image);
-	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
+        gtk_widget_show (image);
+        gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
     }
 
     label = gtk_label_new (dialog_text);
@@ -1307,31 +1307,41 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     if (response == GTK_RESPONSE_NO)
     {
         GtkTreeSelection *selection;
-	GtkTreeModel *model;
-	GtkTreeIter iter;
-	ThemeInfo *ti;
+        GtkTreeModel *model;
+        GtkTreeIter iter;
+        ThemeInfo *ti;
 
         /* No shortcut, set it to none */
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
         gtk_tree_selection_get_selected (selection, &model, &iter);
-	gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "None", -1);
+        gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "None", -1);
 
-	/* save changes */
-	ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+        /* save changes */
+        ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
 
-	if (ti)
-	{
-	    gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
-	    savetreeview_in_theme (theme_file, itf);
-	    
-	    g_free (theme_file);
-	}
-	else
-	  g_warning ("Cannot find the keytheme !");
+        if (ti)
+        {
+            gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+            savetreeview_in_theme (theme_file, itf);
+            g_free (theme_file);
+        }
+        else
+          g_warning ("Cannot find the keytheme !");
     }
 
     /* Release keyboard if not yet done */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+
+    /* 
+       Tell it to the mcs manager, set the channel to raw mode
+       so that the client gets notified even if the key theme
+       name has not changed
+     */
+    mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, TRUE);
+    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+    mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
+    mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, FALSE);
+    write_options (itf->mcs_plugin);
 
     gtk_widget_destroy (dialog);
     g_free (dialog_text);
@@ -1377,12 +1387,12 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
             GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
         label = gtk_label_new (_("Command :"));
         entry = gtk_entry_new_with_max_length (255);
-	gtk_entry_set_text (GTK_ENTRY (entry), command);
+        gtk_entry_set_text (GTK_ENTRY (entry), command);
 
         hbox_entry = gtk_hbox_new (FALSE, 0);
         gtk_box_pack_start (GTK_BOX (hbox_entry), entry, FALSE, FALSE, 0);
         button = gtk_button_new_with_label ("...");
-	g_signal_connect ( (gpointer) button, "clicked", G_CALLBACK (cb_browse_command), entry);
+        g_signal_connect ( (gpointer) button, "clicked", G_CALLBACK (cb_browse_command), entry);
         gtk_box_pack_start (GTK_BOX (hbox_entry), button, FALSE, FALSE, 0);
 
         hbox = gtk_hbox_new (FALSE, 10);
@@ -1402,9 +1412,9 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
                 need_shortcut = FALSE;
             }
             else if (command_exists (gtk_entry_get_text (GTK_ENTRY (entry))))
-	    {
+            {
                 gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_COMMAND, gtk_entry_get_text (GTK_ENTRY (entry)), -1);
-	    }
+            }
             else
             {
                 GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW (dialog),
@@ -1419,8 +1429,8 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
             }
 
         }
-	else
-  	    need_shortcut = FALSE;
+        else
+            need_shortcut = FALSE;
 
         if (!need_shortcut)
         {
@@ -1454,12 +1464,12 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         gchar *command = NULL;
         gchar *shortcut = NULL;
         GtkWidget *dialog;
-	GtkWidget *hbox;
-	GdkPixbuf *icon = NULL;
-	GtkWidget *image;
+        GtkWidget *hbox;
+        GdkPixbuf *icon = NULL;
+        GtkWidget *image;
         GtkWidget *label;
-	GtkWidget *button;
-	gint response;
+        GtkWidget *button;
+        gint response;
         gchar *dialog_text = NULL;
 
         /* Get shortcut name */
@@ -1468,36 +1478,36 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         gtk_tree_model_get (model, &iter, COLUMN_COMMAND, &command, -1);
         gtk_tree_model_get (model, &iter, COLUMN_SHORTCUT, &shortcut, -1);
 
-	if (strcmp (command, "none") == 0)
-	{
-	    g_free (shortcut);
-	    g_free (command);
-	    return;
-	}
-	  
+        if (strcmp (command, "none") == 0)
+        {
+            g_free (shortcut);
+            g_free (command);
+            return;
+        }
+          
         dialog_text = g_strdup_printf ("<i>%s</i>\n<b>%s</b>", _("Compose shortcut for command :"), command);
 
         /* Create dialog */
         dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
 
-	button = xfce_create_mixed_button (GTK_STOCK_CLEAR, _("No shortcut"));
-	gtk_widget_show (button);
-	gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_NO);
-	
-	hbox = gtk_hbox_new (FALSE, 10);
-	gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
-	gtk_widget_show (hbox);
+        button = xfce_create_mixed_button (GTK_STOCK_CLEAR, _("No shortcut"));
+        gtk_widget_show (button);
+        gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_NO);
+        
+        hbox = gtk_hbox_new (FALSE, 10);
+        gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
+        gtk_widget_show (hbox);
 
-	icon = xfce_themed_icon_load ("xfce4-keys.png", 48);
-	if (icon)
-	{
-	    image = gtk_image_new_from_pixbuf (icon);
-	    gtk_widget_show (image);
-	    gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
-	}
+        icon = xfce_themed_icon_load ("xfce4-keys.png", 48);
+        if (icon)
+        {
+            image = gtk_image_new_from_pixbuf (icon);
+            gtk_widget_show (image);
+            gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
+        }
 
         label = gtk_label_new (dialog_text);
-	gtk_label_set_markup (GTK_LABEL (label), dialog_text);
+        gtk_label_set_markup (GTK_LABEL (label), dialog_text);
         gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_CENTER);
         gtk_widget_show (label);
         gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
@@ -1515,52 +1525,52 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         {
             g_warning ( "Cannot grab the keyboard");
             g_free (dialog_text);
-	    g_free (shortcut);
+            g_free (shortcut);
             g_free (command);
             return;
         }
 
         /* Show dialog */
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
+        response = gtk_dialog_run (GTK_DIALOG (dialog));
         if (response == GTK_RESPONSE_CANCEL)
         {
             if (strcmp (shortcut, "none") == 0)
-	    {
-	        ThemeInfo *ti;
+            {
+                ThemeInfo *ti;
 
                 gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_COMMAND, "none", -1);
-		/* save changes */
-		ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
-		
-		if (ti)
-		{
-		    gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
-		    savetreeview_in_theme (theme_file, itf);
-		    
-		    g_free (theme_file);
-		}
-		else
-		  g_warning ("Cannot find the keytheme !");
-	    }
+                /* save changes */
+                ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+                
+                if (ti)
+                {
+                    gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+                    savetreeview_in_theme (theme_file, itf);
+                    
+                    g_free (theme_file);
+                }
+                else
+                  g_warning ("Cannot find the keytheme !");
+            }
         }
-	else if (response == GTK_RESPONSE_NO)
-	{
-	    ThemeInfo *ti;
+        else if (response == GTK_RESPONSE_NO)
+        {
+            ThemeInfo *ti;
 
-	    gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "none", -1);
-	    /* save changes */
-	    ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
-	    
-	    if (ti)
-	    {
-		gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
-		savetreeview_in_theme (theme_file, itf);
-		
-		g_free (theme_file);
-	    }
-	    else
-	      g_warning ("Cannot find the keytheme !");
-	}
+            gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "none", -1);
+            /* save changes */
+            ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+            
+            if (ti)
+            {
+                gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+                savetreeview_in_theme (theme_file, itf);
+                
+                g_free (theme_file);
+            }
+            else
+              g_warning ("Cannot find the keytheme !");
+        }
 
         /* Release keyboard if not yet done */
         gdk_keyboard_ungrab (GDK_CURRENT_TIME);

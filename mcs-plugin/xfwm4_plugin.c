@@ -180,19 +180,19 @@ create_motion_indicator (GtkWidget *widget, gint x, gint y, gint width, gint hei
     gdk_gc_set_foreground (gc, &col);
     for (i = 0; i < width; i++)
     {
-	if (i == (width / 2 - 1))
+        if (i == (width / 2 - 1))
         {
-	    continue;
-	}
-	gdk_draw_line (mask, gc, i, j, i, height - j);
-	if (i < (width / 2 - 1))
+            continue;
+        }
+        gdk_draw_line (mask, gc, i, j, i, height - j);
+        if (i < (width / 2 - 1))
         {
-	    j++;
-	}
+            j++;
+        }
         else
         {
-	    j--;
-	}
+            j--;
+        }
     }
     g_object_unref (gc);
     gdk_window_shape_combine_mask (win, mask, 0, 0);
@@ -316,10 +316,10 @@ layout_drag_leave (GtkWidget *widget, GdkDragContext *context, guint time, gpoin
 
 static void
 data_get (GtkWidget * widget, GdkDragContext * drag_context,
-	  GtkSelectionData * data, guint info, guint time, gpointer user_data)
+          GtkSelectionData * data, guint info, guint time, gpointer user_data)
 {
    gtk_selection_data_set (data, gdk_atom_intern ("_XFWM4_BUTTON", FALSE), 8,
-			   (const guchar *) "", 0);
+                           (const guchar *) "", 0);
 }
 
 static gchar *
@@ -477,8 +477,8 @@ layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
 
 static void
 hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
-		     gint x, gint y, GtkSelectionData * data, guint info,
-		     guint time, gpointer user_data)
+                     gint x, gint y, GtkSelectionData * data, guint info,
+                     guint time, gpointer user_data)
 {
     GtkWidget *source = gtk_drag_get_source_widget (drag_context);
     GtkWidget *parent = gtk_widget_get_parent (source);
@@ -503,15 +503,15 @@ hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
     }
     
     current_layout = layout_get_semantic (parent);
-    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL, current_layout);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1, current_layout);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
 static void
 layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
-		      gint x, gint y, GtkSelectionData * data, guint info,
-		      guint time, gpointer user_data)
+                      gint x, gint y, GtkSelectionData * data, guint info,
+                      guint time, gpointer user_data)
 {
     GtkWidget *source = gtk_drag_get_source_widget (drag_context);
     GtkWidget *parent = gtk_widget_get_parent (source);
@@ -536,8 +536,8 @@ layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
     }
 
     current_layout = layout_get_semantic (user_data);
-    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL, current_layout);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1, current_layout);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -605,8 +605,8 @@ create_layout_buttons (gchar * layout, gpointer user_data)
         
         image = gtk_image_new_from_stock (title_button[i].stock_icon, GTK_ICON_SIZE_MENU);
         button = gtk_button_new ();
-      	gtk_container_add (GTK_CONTAINER (button), image);
-	gtk_tooltips_set_tip (tooltips, button, _(title_button[i].desc), _(title_button[i].desc));
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_tooltips_set_tip (tooltips, button, _(title_button[i].desc), _(title_button[i].desc));
         gtk_drag_source_set (button, GDK_BUTTON1_MASK, &entry, 1, GDK_ACTION_MOVE);
         g_signal_connect (button, "drag-data-get", G_CALLBACK (data_get), NULL);
         g_signal_connect (button, "drag_begin", G_CALLBACK (button_drag_begin), NULL);
@@ -787,7 +787,7 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
             info->set_layout = set_layout;
             info->set_align = set_align;
             info->set_font = set_font;
-	    info->user_writable = user_writable;
+            info->user_writable = user_writable;
         }
     }
     else
@@ -802,7 +802,7 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
             info->set_layout = set_layout;
             info->set_align = set_align;
             info->set_font = set_font;
-	    info->user_writable = user_writable;
+            info->user_writable = user_writable;
             list = g_list_prepend (list, info);
         }
     }
@@ -914,8 +914,8 @@ decoration_selection_changed (GtkTreeSelection * selection, gpointer data)
             g_free (current_theme);
             current_theme = new_theme;
             dialog_update_from_theme (itf, current_theme, decoration_theme_list);
-            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL, current_theme);
-            mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL1, current_theme);
+            mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
             write_options (mcs_plugin);
         }
     }
@@ -953,23 +953,23 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
     {
         if (current_key_theme && strcmp (current_key_theme, new_key_theme))
         {
-	    ThemeInfo *ti;
+            ThemeInfo *ti;
 
             g_free (current_key_theme);
             current_key_theme = new_key_theme;
-            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
-            mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+            mcs_manager_notify (mcs_plugin->manager, CHANNEL2);
             write_options (mcs_plugin);
 
-	    ti = find_theme_info_by_name (new_key_theme, keybinding_theme_list);
-	    
-	    if (ti)
-	    {
-	        gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
-		gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
-		loadtheme_in_treeview (ti, itf);
-	    }
-	}
+            ti = find_theme_info_by_name (new_key_theme, keybinding_theme_list);
+            
+            if (ti)
+            {
+                gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
+                gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
+                loadtheme_in_treeview (ti, itf);
+            }
+        }
     }
 }
 
@@ -1081,8 +1081,8 @@ cb_click_to_focus_changed (GtkWidget * dialog, gpointer user_data)
 
     click_to_focus = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->click_focus_radio));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL, click_to_focus ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1, click_to_focus ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1094,8 +1094,8 @@ cb_focus_new_changed (GtkWidget * dialog, gpointer user_data)
 
     focus_new = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->focus_new_check));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL, focus_new ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1, focus_new ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1108,8 +1108,8 @@ cb_raise_on_focus_changed (GtkWidget * dialog, gpointer user_data)
     focus_raise = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->raise_on_focus_check));
     gtk_widget_set_sensitive (itf->raise_delay_scale, focus_raise);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL, focus_raise ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL1, focus_raise ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1120,8 +1120,8 @@ cb_raise_delay_changed (GtkWidget * dialog, gpointer user_data)
     McsPlugin *mcs_plugin = itf->mcs_plugin;
 
     raise_delay = (int) gtk_range_get_value (GTK_RANGE (itf->raise_delay_scale));
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL, raise_delay);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL1, raise_delay);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1133,8 +1133,8 @@ cb_raise_on_click_changed (GtkWidget * dialog, gpointer user_data)
 
     raise_on_click = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->click_raise_check));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL, raise_on_click ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1, raise_on_click ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1147,8 +1147,8 @@ cb_snap_to_border_changed (GtkWidget * dialog, gpointer user_data)
     snap_to_border = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->snap_to_border_check));
     gtk_widget_set_sensitive (itf->snap_width_scale, snap_to_windows || snap_to_border);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL, snap_to_border ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1, snap_to_border ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1161,8 +1161,8 @@ cb_snap_to_windows_changed (GtkWidget * dialog, gpointer user_data)
     snap_to_windows = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->snap_to_windows_check));
     gtk_widget_set_sensitive (itf->snap_width_scale, snap_to_windows || snap_to_border);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL, snap_to_windows ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1, snap_to_windows ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1173,8 +1173,8 @@ cb_snap_width_changed (GtkWidget * dialog, gpointer user_data)
     McsPlugin *mcs_plugin = itf->mcs_plugin;
 
     snap_width = (int) gtk_range_get_value (GTK_RANGE (itf->snap_width_scale));
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL, snap_width);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL1, snap_width);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1185,8 +1185,8 @@ cb_wrap_resistance_changed (GtkWidget * dialog, gpointer user_data)
     McsPlugin *mcs_plugin = itf->mcs_plugin;
 
     wrap_resistance = (int) gtk_range_get_value (GTK_RANGE (itf->wrap_resistance_scale));
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL, wrap_resistance);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL1, wrap_resistance);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1199,8 +1199,8 @@ cb_wrap_workspaces_changed (GtkWidget * dialog, gpointer user_data)
     wrap_workspaces = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->wrap_workspaces_check));
     gtk_widget_set_sensitive (itf->wrap_resistance_scale, wrap_workspaces || wrap_windows);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL, wrap_workspaces ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1, wrap_workspaces ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1213,8 +1213,8 @@ cb_wrap_windows_changed (GtkWidget * dialog, gpointer user_data)
     wrap_windows = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->wrap_windows_check));
     gtk_widget_set_sensitive (itf->wrap_resistance_scale, wrap_workspaces || wrap_windows);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL, wrap_windows ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1, wrap_windows ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1226,8 +1226,8 @@ cb_box_move_changed (GtkWidget * dialog, gpointer user_data)
 
     box_move = !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->box_move_check));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL, box_move ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL1, box_move ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1239,8 +1239,8 @@ cb_box_resize_changed (GtkWidget * dialog, gpointer user_data)
 
     box_resize = !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->box_resize_check));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL, box_resize ? 1 : 0);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL1, box_resize ? 1 : 0);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1256,8 +1256,8 @@ cb_dblclick_action_value_changed (GtkWidget * widget, gpointer user_data)
         g_free (dbl_click_action);
 
     dbl_click_action = g_strdup (action);
-    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL, dbl_click_action);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1, dbl_click_action);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1273,8 +1273,8 @@ cb_title_align_value_changed (GtkWidget * widget, gpointer user_data)
         g_free (title_align);
 
     title_align = g_strdup (action);
-    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL, title_align);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL1, title_align);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     write_options (mcs_plugin);
 }
 
@@ -1292,8 +1292,8 @@ font_selection_ok (GtkWidget * w, gpointer user_data)
             g_free (current_font);
             current_font = new_font;
             gtk_button_set_label (GTK_BUTTON (itf->font_button), current_font);
-            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL, current_font);
-            mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+            mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL1, current_font);
+            mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
             write_options (mcs_plugin);
         }
     }
@@ -1877,7 +1877,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Window Manager"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon = xfce_themed_icon_load ("xfwm4", 48);
-    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
 
     return (MCS_PLUGIN_INIT_OK);
 }
@@ -1888,44 +1888,24 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     McsSetting *setting;
     gchar *rcfile, *path;
 
-    path = g_build_filename ("xfce4", RCDIR, RCFILE, NULL);
+    path = g_build_filename ("xfce4", RCDIR, RCFILE1, NULL);
     rcfile = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, path);
     g_free (path);
 
     if (!rcfile)
-        rcfile = xfce_get_userfile (OLDRCDIR, RCFILE, NULL);
+        rcfile = xfce_get_userfile (OLDRCDIR, RCFILE1, NULL);
 
     if (g_file_test (rcfile, G_FILE_TEST_EXISTS))
     {
-        mcs_manager_add_channel_from_file (mcs_plugin->manager, CHANNEL, rcfile);
+        mcs_manager_add_channel_from_file (mcs_plugin->manager, CHANNEL1, rcfile);
     }
     else
     {
-        mcs_manager_add_channel (mcs_plugin->manager, CHANNEL);
+        mcs_manager_add_channel (mcs_plugin->manager, CHANNEL1);
     }
     g_free (rcfile);
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL);
-    if (setting)
-    {
-        if (current_key_theme)
-        {
-            g_free (current_key_theme);
-        }
-        current_key_theme = g_strdup (setting->data.v_string);
-    }
-    else
-    {
-        if (current_key_theme)
-        {
-            g_free (current_key_theme);
-        }
-
-        current_key_theme = g_strdup (DEFAULT_KEY_THEME);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
-    }
-
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL1);
     if (setting)
     {
         if (current_theme)
@@ -1942,10 +1922,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         current_theme = g_strdup (DEFAULT_THEME);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL, current_theme);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL1, current_theme);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL1);
     if (setting)
     {
         if (current_font)
@@ -1962,10 +1942,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         current_font = g_strdup (DEFAULT_FONT);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL, current_font);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL1, current_font);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL1);
     if (setting)
     {
         if (title_align)
@@ -1982,10 +1962,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         title_align = g_strdup (DEFAULT_ALIGN);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL, title_align);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL1, title_align);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1);
     if (setting)
     {
         if (current_layout)
@@ -2002,10 +1982,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         current_layout = g_strdup (DEFAULT_LAYOUT);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL, current_layout);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1, current_layout);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1);
     if (setting)
     {
         click_to_focus = (setting->data.v_int ? TRUE : FALSE);
@@ -2013,10 +1993,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         click_to_focus = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL, click_to_focus ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1, click_to_focus ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1);
     if (setting)
     {
         focus_new = (setting->data.v_int ? TRUE : FALSE);
@@ -2024,10 +2004,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         focus_new = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL, focus_new ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1, focus_new ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL1);
     if (setting)
     {
         focus_raise = (setting->data.v_int ? TRUE : FALSE);
@@ -2035,10 +2015,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         focus_raise = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL, focus_raise ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL1, focus_raise ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL1);
     if (setting)
     {
         raise_delay = setting->data.v_int;
@@ -2046,10 +2026,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         raise_delay = 250;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL, raise_delay);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL1, raise_delay);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1);
     if (setting)
     {
         raise_on_click = (setting->data.v_int ? TRUE : FALSE);
@@ -2057,10 +2037,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         raise_on_click = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL, raise_on_click ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1, raise_on_click ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1);
     if (setting)
     {
         snap_to_border = (setting->data.v_int ? TRUE : FALSE);
@@ -2068,10 +2048,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         snap_to_border = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL, snap_to_border ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1, snap_to_border ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1);
     if (setting)
     {
         snap_to_windows = (setting->data.v_int ? TRUE : FALSE);
@@ -2079,10 +2059,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         snap_to_windows = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL, snap_to_windows ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1, snap_to_windows ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL1);
     if (setting)
     {
         snap_width = setting->data.v_int;
@@ -2090,10 +2070,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         snap_width = 10;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL, snap_width);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL1, snap_width);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL1);
     if (setting)
     {
         wrap_resistance = setting->data.v_int;
@@ -2101,10 +2081,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         wrap_resistance = 10;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL, wrap_resistance);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL1, wrap_resistance);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1);
     if (setting)
     {
         wrap_workspaces = (setting->data.v_int ? TRUE : FALSE);
@@ -2112,10 +2092,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         wrap_workspaces = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL, wrap_workspaces ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1, wrap_workspaces ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1);
     if (setting)
     {
         wrap_windows = (setting->data.v_int ? TRUE : FALSE);
@@ -2123,10 +2103,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         wrap_windows = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL, wrap_windows ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1, wrap_windows ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL1);
     if (setting)
     {
         box_move = (setting->data.v_int ? TRUE : FALSE);
@@ -2134,10 +2114,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         box_move = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL, box_move ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL1, box_move ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL1);
     if (setting)
     {
         box_resize = (setting->data.v_int ? TRUE : FALSE);
@@ -2145,10 +2125,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         box_resize = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL, box_resize ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL1, box_resize ? 1 : 0);
     }
 
-    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL);
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1);
     if (setting)
     {
         if (dbl_click_action)
@@ -2165,7 +2145,48 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         dbl_click_action = g_strdup (DEFAULT_ACTION);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL, dbl_click_action);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1, dbl_click_action);
+    }
+
+    /* 
+     * Second separate channel for keytheme (used as a raw channel from the client) 
+     */
+
+    path = g_build_filename ("xfce4", RCDIR, RCFILE2, NULL);
+    rcfile = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, path);
+    g_free (path);
+
+    if (!rcfile)
+        rcfile = xfce_get_userfile (OLDRCDIR, RCFILE2, NULL);
+
+    if (g_file_test (rcfile, G_FILE_TEST_EXISTS))
+    {
+        mcs_manager_add_channel_from_file (mcs_plugin->manager, CHANNEL2, rcfile);
+    }
+    else
+    {
+        mcs_manager_add_channel (mcs_plugin->manager, CHANNEL2);
+    }
+    g_free (rcfile);
+
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2);
+    if (setting)
+    {
+        if (current_key_theme)
+        {
+            g_free (current_key_theme);
+        }
+        current_key_theme = g_strdup (setting->data.v_string);
+    }
+    else
+    {
+        if (current_key_theme)
+        {
+            g_free (current_key_theme);
+        }
+
+        current_key_theme = g_strdup (DEFAULT_KEY_THEME);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
     }
 
     write_options (mcs_plugin);
@@ -2177,10 +2198,15 @@ write_options (McsPlugin * mcs_plugin)
     gchar *rcfile, *path;
     gboolean result;
 
-    path = g_build_filename ("xfce4", "mcs_settings", RCFILE, NULL);
-    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
-    
-    result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL, rcfile);
+    path = g_build_filename ("xfce4", "mcs_settings", RCFILE1, NULL);
+    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
+    result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL1, rcfile);
+    g_free (path);
+    g_free (rcfile);
+
+    path = g_build_filename ("xfce4", "mcs_settings", RCFILE2, NULL);
+    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
+    result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL2, rcfile);
     g_free (path);
     g_free (rcfile);
 

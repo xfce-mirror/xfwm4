@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 18:28+0200\n"
+"POT-Creation-Date: 2004-10-12 08:48+0200\n"
 "PO-Revision-Date: 2004-09-12 12:27+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -332,19 +332,19 @@ msgstr "Дадатковыя"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:113 mcs-plugin/xfwm4_shortcuteditor.c:119
+#: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:123
+#: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:146
+#: mcs-plugin/xfwm4_shortcuteditor.c:145
 msgid "A keybinding theme with the same name already exists"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:152
+#: mcs-plugin/xfwm4_shortcuteditor.c:151
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
@@ -589,30 +589,30 @@ msgstr "Прызначыць гарачыя клявішы для:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1262
-#: mcs-plugin/xfwm4_shortcuteditor.c:1481
+#: mcs-plugin/xfwm4_shortcuteditor.c:1491
 msgid "Compose shortcut"
 msgstr "Прызначыць гарачыя клявішы"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1264
-#: mcs-plugin/xfwm4_shortcuteditor.c:1483
+#: mcs-plugin/xfwm4_shortcuteditor.c:1493
 #, fuzzy
 msgid "No shortcut"
 msgstr "Прызначыць гарачыя клявішы"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1376
+#: mcs-plugin/xfwm4_shortcuteditor.c:1386
 msgid "Choose command"
 msgstr "Абярыце загад"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1378
+#: mcs-plugin/xfwm4_shortcuteditor.c:1388
 msgid "Command :"
 msgstr "Загад:"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1414
+#: mcs-plugin/xfwm4_shortcuteditor.c:1424
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "Загад не йснуе альбо файл ня мае правоў на выкананьне!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1478
+#: mcs-plugin/xfwm4_shortcuteditor.c:1488
 msgid "Compose shortcut for command :"
 msgstr "Прызначыць гарачыя клявішы для загада:"
 
@@ -735,37 +735,37 @@ msgstr "%s: GtkMenu немагчыма захапіць паказьнік\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: некіруемы стан net_wm_state (вакно 0x%lx)"
 
-#: src/settings.c:344
+#: src/settings.c:365
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: прапушчаны файл дапомнасьцяў"
 
-#: src/settings.c:622
+#: src/settings.c:643
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: немагчыма разьмеркаваць актыўны колер %s\n"
 
-#: src/settings.c:628
+#: src/settings.c:649
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: немагчыма разабраць актыўны колер %s\n"
 
-#: src/settings.c:671
+#: src/settings.c:692
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: немагчыма разьмеркаваць неактыўны колер %s\n"
 
-#: src/settings.c:677
+#: src/settings.c:698
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: немагчыма разабраць неактыўны колер %s\n"
 
-#: src/settings.c:864
+#: src/settings.c:885
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: заданы ключ тэмы \"%s\" прапушчаны, выкарыстоўваецца дапомны"
 
-#: src/settings.c:871
+#: src/settings.c:892
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: прапушчаныя значэньні ў файле дапомнасьцяў"

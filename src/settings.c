@@ -41,6 +41,7 @@
 #define CHANNEL1 "xfwm4"
 #define CHANNEL2 "margins"
 #define CHANNEL3 "workspaces"
+#define CHANNEL4 "xfwm4_keys"
 #define TOINT(x) (x ? atoi(x) : 0)
 #define DEFAULT_KEYTHEME "Default"
 #define KEYTHEMERC "keythemerc"
@@ -203,10 +204,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
                     }
-                    else if (!strcmp (name, "Xfwm/KeyThemeName"))
-                    {
-                        reloadScreenSettings (screen_info, UPDATE_KEYGRABS);
-                    }
                     else if (!strcmp (name, "Xfwm/ThemeName"))
                     {
                         reloadScreenSettings (screen_info, UPDATE_GRAVITY | UPDATE_CACHE);
@@ -290,6 +287,30 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                 break;
         }
     }
+    else if (!g_ascii_strcasecmp (CHANNEL4, channel_name))
+    {
+        switch (action)
+        {
+            case MCS_ACTION_NEW:
+                /* The following is to reduce initial startup time and reloads */
+                if (!screen_info->mcs_initted)
+                {
+                    return;
+                }
+            case MCS_ACTION_CHANGED:
+                if (setting->type == MCS_TYPE_STRING)
+                {
+                    if (!strcmp (name, "Xfwm/KeyThemeName"))
+                    {
+                        reloadScreenSettings (screen_info, UPDATE_KEYGRABS);
+                    }
+                }
+                break;
+            case MCS_ACTION_DELETED:
+            default:
+                break;
+        }
+    }
 }
 
 static GdkFilterReturn
@@ -351,13 +372,13 @@ loadRcData (ScreenInfo *screen_info, Settings rc[])
         parseRc (KEYTHEMERC, system_keytheme, rc);
         
         keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
-        if (strcmp (keytheme, keytheme))
+        if (keytheme)
         {
             /* If there is a custom key theme, merge it with system defaults */
             parseRc (KEYTHEMERC, keytheme, rc);
+            g_free (keytheme);
         }
         g_free (system_keytheme);
-        g_free (keytheme);
     }
     homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 
                                            "xfce4" G_DIR_SEPARATOR_S "xfwm4",
@@ -463,12 +484,6 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
             setValue ("theme", setting->data.v_string, rc);
             mcs_setting_free (setting);
         }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/KeyThemeName", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("keytheme", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ButtonLayout", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
@@ -515,6 +530,12 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("workspace_count", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/KeyThemeName", CHANNEL4,
+                &setting) == MCS_SUCCESS)
+        {
+            setValue ("keytheme", setting->data.v_string, rc);
             mcs_setting_free (setting);
         }
     }
@@ -1330,6 +1351,8 @@ initSettings (ScreenInfo *screen_info)
         mcs_client_add_channel (screen_info->mcs_client, CHANNEL1);
         mcs_client_add_channel (screen_info->mcs_client, CHANNEL2);
         mcs_client_add_channel (screen_info->mcs_client, CHANNEL3);
+        mcs_client_add_channel (screen_info->mcs_client, CHANNEL4);
+        mcs_client_set_raw_channel (screen_info->mcs_client, CHANNEL4, TRUE);
     }
     else
     {

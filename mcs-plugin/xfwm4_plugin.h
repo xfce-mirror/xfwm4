@@ -23,8 +23,10 @@
 
 #define RCDIR    "mcs_settings"
 #define OLDRCDIR "settings"
-#define RCFILE   "xfwm4.xml"
-#define CHANNEL  "xfwm4"
+#define RCFILE1   "xfwm4.xml"
+#define RCFILE2   "xfwm4_keys.xml"
+#define CHANNEL1  "xfwm4"
+#define CHANNEL2  "xfwm4_keys"
 #define PLUGIN_NAME "xfwm4"
 
 #define DEFAULT_THEME "Default"

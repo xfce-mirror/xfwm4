@@ -1186,8 +1186,6 @@ damage_win (CWindow *cw)
             cw->screen_info->clipChanged = TRUE;
         }
     }
-
-    repair_win (cw);
 #endif /* HAVE_COMPOSITOR */
 }
 

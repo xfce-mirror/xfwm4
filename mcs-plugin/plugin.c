@@ -163,14 +163,14 @@ run_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox);
     add_workspaces_page(GTK_BOX(vbox));
     gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
-	    		     gtk_label_new(_("Workspaces")));
+                             gtk_label_new(_("Workspaces")));
 
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
     gtk_widget_show (vbox);
     add_margins_page(GTK_BOX(vbox));
     gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
-	    		     gtk_label_new(_("Margins")));
+                             gtk_label_new(_("Margins")));
     
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
     gtk_widget_show (dialog);

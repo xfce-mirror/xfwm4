@@ -27,7 +27,7 @@ void loadtheme_in_treeview (ThemeInfo *, gpointer);
 void savetreeview_in_theme (gchar *, gpointer);
 
 void cb_activate_treeview3 (GtkWidget *, GtkTreePath *,
- 			    GtkTreeViewColumn *, gpointer);
+                            GtkTreeViewColumn *, gpointer);
 void cb_activate_treeview4 (GtkWidget *, GtkTreePath *,
-				   GtkTreeViewColumn *, gpointer);
+                                   GtkTreeViewColumn *, gpointer);
 #endif
