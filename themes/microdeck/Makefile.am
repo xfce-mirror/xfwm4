@@ -17,6 +17,9 @@ theme_DATA = README \
 	maximize-active.xpm \
 	maximize-inactive.xpm \
 	maximize-pressed.xpm \
+        maximize-toggled-active.xpm \
+        maximize-toggled-inactive.xpm \
+        maximize-toggled-pressed.xpm \
 	menu-active.xpm \
 	menu-inactive.xpm \
 	menu-pressed.xpm \
@@ -25,9 +28,15 @@ theme_DATA = README \
 	shade-active.xpm \
 	shade-inactive.xpm \
 	shade-pressed.xpm \
+        shade-toggled-active.xpm \
+        shade-toggled-inactive.xpm \
+        shade-toggled-pressed.xpm \
 	stick-active.xpm \
 	stick-inactive.xpm \
 	stick-pressed.xpm \
+        stick-toggled-active.xpm \
+        stick-toggled-inactive.xpm \
+        stick-toggled-pressed.xpm \
 	themerc \
 	title-1-active.xpm \
 	title-1-inactive.xpm \

@@ -1068,6 +1068,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
                 {
                     clientUnstick(c, TRUE);
                 }
+                frameDraw(c, FALSE, FALSE);
             }
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
