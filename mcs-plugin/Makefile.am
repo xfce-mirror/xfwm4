@@ -23,7 +23,6 @@ xfwm4_plugin_la_CFLAGS =						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
-	-DG_DISABLE_DEPRECATED						\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\" 
 
@@ -52,7 +51,6 @@ margins_plugin_la_CFLAGS =						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
-	-DG_DISABLE_DEPRECATED						\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\" 
 

@@ -3,7 +3,6 @@ bin_PROGRAMS = xfwm4
 xfwm4_SOURCES =								\
 	client.c							\
 	client.h							\
-	debug.h 							\
 	events.c 							\
 	events.h 							\
 	frame.c 							\
@@ -47,10 +46,6 @@ xfwm4_CFLAGS =								\
 	@LIBXPM_CFLAGS@							\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
-	-DG_DISABLE_DEPRECATED						\
-	-DGTK_DISABLE_DEPRECATED					\
-	-DGDK_DISABLE_DEPRECATED					\
-	-DGDK_PIXBUF_DISABLE_DEPRECATED					\
 	-DDATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\

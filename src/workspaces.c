@@ -27,12 +27,12 @@
 #include <X11/Xmd.h>
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <libxfce4util/debug.h>
 #include "main.h"
 #include "workspaces.h"
 #include "settings.h"
 #include "client.h"
 #include "hints.h"
-#include "debug.h"
 
 void workspaceSwitch(int new_ws, Client * c2)
 {

@@ -24,12 +24,12 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
+#include <libxfce4util/debug.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>
 #include "mypixmap.h"
 #include "main.h"
-#include "debug.h"
 
 gboolean myPixmapLoad(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
 {

@@ -37,6 +37,7 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <X11/Xlib.h>
+#include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -51,7 +52,6 @@
 #include "session.h"
 #include "startup_notification.h"
 #include "spinning_cursor.h"
-#include "debug.h"
 
 #define MAIN_EVENT_MASK         SubstructureNotifyMask|\
     StructureNotifyMask|\

@@ -26,7 +26,6 @@
 #endif
 
 #include <glib.h>
-#include "debug.h"
 
 void getMouseXY(Window, int *, int *);
 Window getMouseWindow(Window);

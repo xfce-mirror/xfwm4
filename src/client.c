@@ -33,6 +33,7 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 
+#include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -47,7 +48,6 @@
 #include "tabwin.h"
 #include "session.h"
 #include "startup_notification.h"
-#include "debug.h"
 
 /* Event mask definition */
 

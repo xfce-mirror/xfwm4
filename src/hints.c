@@ -34,13 +34,13 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
+#include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "main.h"
 #include "hints.h"
-#include "debug.h"
 
 Atom gnome_panel_desktop_area;
 Atom motif_wm_hints;

@@ -23,13 +23,13 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
+#include <libxfce4util/debug.h>
 #include <glib.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>
 #include "mywindow.h"
 #include "main.h"
-#include "debug.h"
 
 void myWindowCreate(Display * dpy, Window parent, myWindow * win, Cursor cursor)
 {

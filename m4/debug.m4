@@ -16,6 +16,7 @@ AC_HELP_STRING([--disable-debug], [Include no debugging support [default]]),
   if test x"$ac_cv_debug" != x"no"; then
     AC_DEFINE(DEBUG, 1, Define for debugging support)
     if test x"$ac_cv_debug" = x"full"; then
+      AC_DEFINE(DEBUG_TRACE, 1, Define for tracing support)
       CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       AC_MSG_RESULT([full])
     else

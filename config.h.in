@@ -3,6 +3,9 @@
 /* Define for debugging support */
 #undef DEBUG
 
+/* Define for tracing support */
+#undef DEBUG_TRACE
+
 /* always defined to indicate that i18n is enabled */
 #undef ENABLE_NLS
 

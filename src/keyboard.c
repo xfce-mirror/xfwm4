@@ -23,12 +23,12 @@
 #endif
 
 #include <X11/Xlib.h>
+#include <libxfce4util/debug.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <glib.h>
 #include "keyboard.h"
-#include "debug.h"
 
 unsigned int KeyMask;
 unsigned int ButtonMask;

@@ -30,6 +30,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
@@ -38,7 +39,6 @@
 #include "parserc.h"
 #include "client.h"
 #include "workspaces.h"
-#include "debug.h"
 
 #define CHANNEL1 "xfwm4"
 #define CHANNEL2 "margins"

@@ -23,12 +23,12 @@
 #endif
 
 #include <pango/pango.h>
+#include <libxfce4util/debug.h>
 #include "main.h"
 #include "client.h"
 #include "settings.h"
 #include "mywindow.h"
 #include "frame.h"
-#include "debug.h"
 
 inline int frameLeft(Client * c)
 {

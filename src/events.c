@@ -27,6 +27,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "main.h"
@@ -37,7 +38,6 @@
 #include "client.h"
 #include "menu.h"
 #include "startup_notification.h"
-#include "debug.h"
 
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;

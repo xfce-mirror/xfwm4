@@ -37,11 +37,11 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <libxfce4util/debug.h>
 
 #include "main.h"
 #include "client.h"
 #include "misc.h"
-#include "debug.h"
 
 void getMouseXY(Window w, int *x2, int *y2)
 {

@@ -28,7 +28,6 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include "debug.h"
 
 typedef struct _Tabwin Tabwin;
 struct _Tabwin
