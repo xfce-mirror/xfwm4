@@ -3336,12 +3336,15 @@ clientUnframe (Client * c, gboolean remap)
         }
     }
 
-    XDeleteProperty (dpy, c->window, net_wm_state);
-    XDeleteProperty (dpy, c->window, win_state);
-    XDeleteProperty (dpy, c->window, net_wm_desktop);
-    XDeleteProperty (dpy, c->window, win_workspace);
-    XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
-
+    if (!remap)
+    {
+        XDeleteProperty (dpy, c->window, net_wm_state);
+        XDeleteProperty (dpy, c->window, win_state);
+        XDeleteProperty (dpy, c->window, net_wm_desktop);
+        XDeleteProperty (dpy, c->window, win_workspace);
+        XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
+    }
+    
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
     myWindowDelete (&c->title);
