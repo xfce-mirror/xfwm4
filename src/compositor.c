@@ -2114,7 +2114,7 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
             {
                 XFixesCopyRegion (display_info->dpy, damage, cw->extents);
                 add_damage (cw->screen_info, damage);
-        	cw->screen_info->clipChanged = TRUE;
+                cw->screen_info->clipChanged = TRUE;
             }
         }
 
