@@ -66,10 +66,7 @@ void workspaceSwitch(int new_ws, Client * c2)
 
     if(c2)
     {
-        setGnomeHint(dpy, c2->window, win_workspace, new_ws);
-        data[0] = new_ws;
-        XChangeProperty(dpy, c2->window, net_wm_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
-        c2->win_workspace = new_ws;
+	clientSetWorkspace(c2, new_ws, FALSE);
     }
 
     setGnomeHint(dpy, root, win_workspace, new_ws);
@@ -99,7 +96,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     {
         if(c->sticky)
         {
-            clientSetWorkspace(c, new_ws);
+            clientSetWorkspace(c, new_ws, TRUE);
         }
         else
         {
@@ -149,7 +146,7 @@ void workspaceSetCount(int count)
     {
         if(c->win_workspace > count - 1)
         {
-            clientSetWorkspace(c, count - 1);
+            clientSetWorkspace(c, count - 1, TRUE);
         }
     }
     if(workspace > count - 1)

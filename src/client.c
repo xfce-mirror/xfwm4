@@ -59,7 +59,6 @@ static GSList *windows_stack = NULL;
 static Client *client_focus = NULL;
 
 /* Forward decl */
-static unsigned long clientGetNetWmDesktop(Client * c);
 static void clientWindowType(Client * c);
 
 typedef struct _MoveResizeData MoveResizeData;
@@ -85,7 +84,6 @@ void clientSetNetState(Client * c)
 {
     int i;
     Atom data[12];
-    unsigned long desk;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetNetState\n");
@@ -144,8 +142,7 @@ void clientSetNetState(Client * c)
         data[i++] = net_wm_state_hidden;
     }
     XChangeProperty(dpy, c->window, net_wm_state, XA_ATOM, 32, PropModeReplace, (unsigned char *)data, i);
-    desk = clientGetNetWmDesktop(c);
-    setNetHint(dpy, c->window, net_wm_desktop, desk);
+    setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
 }
 
 static void clientGetNetState(Client * c)
@@ -444,15 +441,6 @@ void clientGetNetWmType(Client * c)
         }
     }
     clientWindowType(c);
-}
-
-static unsigned long clientGetNetWmDesktop(Client * c)
-{
-    g_return_val_if_fail(c != NULL, workspace);
-    DBG("entering clientGetNetWmDesktop\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-
-    return ((unsigned long)c->win_workspace);
 }
 
 static void clientGetInitialNetWmDesktop(Client * c)
@@ -2009,10 +1997,11 @@ void clientSetLayer(Client * c, int l)
     }
 }
 
-void clientSetWorkspace(Client * c, int ws)
+void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
 {
-    unsigned long desk;
-
+    Client *c2;
+    int i;
+    
     g_return_if_fail(c != NULL);
     DBG("entering clientSetWorkspace\n");
     DBG("setting client \"%s\" (%#lx) to workspace %d\n", c->name, c->window, ws);
@@ -2021,11 +2010,20 @@ void clientSetWorkspace(Client * c, int ws)
     {
         return;
     }
+    
+    for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
+    {
+	if (c2->transient_for == c->window)
+	{
+	    clientSetWorkspace(c2, ws, manage_mapping);
+	}
+    }
+    
     setGnomeHint(dpy, c->window, win_workspace, ws);
     c->win_workspace = ws;
-    desk = clientGetNetWmDesktop(c);
-    setNetHint(dpy, c->window, net_wm_desktop, desk);
-    if(!(c->hidden))
+    setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
+    
+    if(manage_mapping && !(c->hidden))
     {
         if(c->sticky)
         {
@@ -2076,7 +2074,7 @@ void clientStick(Client * c)
     c->win_state |= WIN_STATE_STICKY;
     c->sticky = True;
     setGnomeHint(dpy, c->window, win_state, c->win_state);
-    clientSetWorkspace(c, workspace);
+    clientSetWorkspace(c, workspace, TRUE);
     clientSetNetState(c);
 }
 
@@ -2089,7 +2087,7 @@ void clientUnstick(Client * c)
     c->win_state &= ~WIN_STATE_STICKY;
     c->sticky = False;
     setGnomeHint(dpy, c->window, win_state, c->win_state);
-    clientSetWorkspace(c, workspace);
+    clientSetWorkspace(c, workspace, TRUE);
     clientSetNetState(c);
 }
 
@@ -2411,7 +2409,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             clientDrawOutline(c);
         }
 
-        if(workspace_count > 1)
+        if((workspace_count > 1) && !(c->transient_for))
         {
             int msx, msy;
 

@@ -618,11 +618,11 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             DBG("client \"%s\" (%#lx) has received a net_wm_window_type notify\n", c->name, c->window);
             clientGetNetWmType(c);
         }
-        else if(ev->atom == win_workspace)
+        else if((ev->atom == win_workspace) && !(c->transient_for))
         {
             DBG("client \"%s\" (%#lx) has received a win_workspace notify\n", c->name, c->window);
             getGnomeHint(dpy, c->window, win_workspace, &dummy);
-            clientSetWorkspace(c, dummy);
+            clientSetWorkspace(c, dummy, TRUE);
         }
         else if(ev->atom == net_wm_strut)
         {
@@ -684,10 +684,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             DBG("client \"%s\" (%#lx) has received a win_layer event\n", c->name, c->window);
             clientSetLayer(c, ev->data.l[0]);
         }
-        else if((ev->message_type == win_workspace) && (ev->format == 32))
+        else if((ev->message_type == win_workspace) && (ev->format == 32) && !(c->transient_for))
         {
             DBG("client \"%s\" (%#lx) has received a win_workspace event\n", c->name, c->window);
-            clientSetWorkspace(c, ev->data.l[0]);
+            clientSetWorkspace(c, ev->data.l[0], TRUE);
         }
         else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
@@ -696,9 +696,9 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             {
                 clientStick(c);
             }
-            else
+            else if (!(c->transient_for))
             {
-                clientSetWorkspace(c, ev->data.l[0]);
+                clientSetWorkspace(c, ev->data.l[0], TRUE);
             }
         }
         else if((ev->message_type == net_close_window) && (ev->format == 32))

@@ -248,7 +248,7 @@ void clientKill(Client *);
 void clientRaise(Client *);
 void clientLower(Client *);
 void clientSetLayer(Client *, int);
-void clientSetWorkspace(Client *, int);
+void clientSetWorkspace(Client *, int, gboolean);
 void clientToggleShaded(Client *);
 void clientStick(Client *);
 void clientUnstick(Client *);
