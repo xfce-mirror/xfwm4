@@ -502,7 +502,7 @@ void clientGetNetStruts(Client *c)
 
 	DBG("NET_WM_STRUT for window \"%s\"= (%d,%d,%d,%d)\n", c->name, c->struts[0], c->struts[1], c->struts[2], c->struts[3]);
 	XFree (struts);
-        workspaceUpdateArea();
+        workspaceUpdateArea(margins, gnome_margins);
     }
 }
 
@@ -1502,7 +1502,7 @@ void clientUnframe(Client * c, int remap)
         XFree(c->size);
     }
     free(c);
-    workspaceUpdateArea();
+    workspaceUpdateArea(margins, gnome_margins);
     DBG("client_count=%d\n", client_count);
 }
 
@@ -1631,6 +1631,7 @@ void clientShow(Client * c, int change_state)
         setWMState(dpy, c->window, NormalState);
     }
     clientSetNetState (c);
+    workspaceUpdateArea(margins, gnome_margins);
     XFlush (dpy);
 }
 
@@ -1661,6 +1662,7 @@ void clientHide(Client * c, int change_state)
     c->ignore_unmap++;
     c->visible = False;
     clientSetNetState (c);
+    workspaceUpdateArea(margins, gnome_margins);
     XFlush (dpy);
 }
 

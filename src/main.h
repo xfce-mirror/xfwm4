@@ -57,6 +57,7 @@ extern Window root, gnome_win;
 extern int screen;
 extern int depth;
 extern Colormap cmap;
+extern CARD32 gnome_margins[4];
 extern CARD32 margins[4];
 extern int quit, reload;
 extern int shape, shape_event;

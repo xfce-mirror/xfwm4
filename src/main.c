@@ -45,6 +45,7 @@ Colormap cmap;
 int screen;
 int depth;
 CARD32 margins[4];
+CARD32 gnome_margins[4];
 int quit = False, reload = False;
 int shape, shape_event;
 Cursor resize_cursor[7], move_cursor, root_cursor;
@@ -130,6 +131,11 @@ void initialize(int argc, char **argv)
     depth   = DefaultDepth(dpy, screen);
     cmap    = DefaultColormap(dpy, screen);
     
+    margins[MARGIN_TOP]    = gnome_margins[MARGIN_TOP]    = 0;
+    margins[MARGIN_LEFT]   = gnome_margins[MARGIN_LEFT]   = 0;
+    margins[MARGIN_RIGHT]  = gnome_margins[MARGIN_RIGHT]  = 0;
+    margins[MARGIN_BOTTOM] = gnome_margins[MARGIN_BOTTOM] = 0;
+    
     XSetErrorHandler(handleXError);
     shape = XShapeQueryExtension(dpy, &shape_event, &dummy);
 
@@ -162,10 +168,10 @@ void initialize(int argc, char **argv)
     setGnomeHint(dpy, gnome_win, win_desktop_button_proxy, gnome_win);
     getGnomeHint(dpy, root, win_workspace, &ws);
     workspace = (int) ws;
-    getGnomeDesktopMargins(dpy, margins);
+    getGnomeDesktopMargins(dpy, gnome_margins);
     set_utf8_string_hint (dpy, gnome_win, net_wm_name, "Xfwm4");
     set_net_supported_hint (dpy, root, gnome_win);
-    set_net_workarea (dpy, root, margins);
+    workspaceUpdateArea(margins, gnome_margins);
     init_net_desktop_params (dpy, root, workspace);
     initSettings();
     loadSettings();

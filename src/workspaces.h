@@ -25,11 +25,17 @@
 #  include "config.h"
 #endif
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
+#include "client.h"
+
+
 extern int workspace_count, wrap_workspaces;
 extern int workspace;
 
 void workspaceSwitch(int, Client *);
 void workspaceSetCount(int);
-void workspaceUpdateArea(void);
+void workspaceUpdateArea(CARD32*, CARD32*);
 
 #endif /* __WORKSPACES_H__ */

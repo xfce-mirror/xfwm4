@@ -22,9 +22,15 @@
 #  include "config.h"
 #endif
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
+#include <gtk/gtk.h>
+#include <glib.h>
 #include "main.h"
 #include "workspaces.h"
 #include "client.h"
+#include "hints.h"
 #include "debug.h"
 
 int workspace_count = -1, wrap_workspaces;
@@ -113,7 +119,6 @@ void workspaceSwitch(int new_ws, Client * c2)
         f = c2;
 	clientRaise (c2);
     }
-    workspaceUpdateArea();
     clientSetFocus(f, True);
     XSync (dpy, 0);
 }
@@ -153,16 +158,24 @@ void workspaceSetCount(int count)
     }
 }
 
-void workspaceUpdateArea(void)
+void workspaceUpdateArea(CARD32 *margins, CARD32 *gnome_margins)
 {
     Client *c;
     int i;
-    
+    int prev_top    = margins[MARGIN_TOP];
+    int prev_left   = margins[MARGIN_LEFT];
+    int prev_right  = margins[MARGIN_RIGHT];
+    int prev_bottom = margins[MARGIN_BOTTOM];
+
     DBG("entering workspaceSetCount\n");
 
+    for (i = 0; i < 4; i++)
+    {
+        margins[i] = gnome_margins[i];
+    }
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
-        if(c->has_struts)
+        if((c->has_struts) && (c->visible))
 	{
 	    margins[MARGIN_TOP]    = MAX(margins[MARGIN_TOP],    c->struts[MARGIN_TOP]);
 	    margins[MARGIN_LEFT]   = MAX(margins[MARGIN_LEFT],   c->struts[MARGIN_LEFT]);
@@ -171,5 +184,9 @@ void workspaceUpdateArea(void)
 	}
     }
     DBG("Desktop area computed : (%d,%d,%d,%d)\n", margins[0], margins[1], margins[2], margins[3]);
-    set_net_workarea (dpy, root, margins);
+    if ((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
+    {
+        DBG("Margins have changed, updating net_workarea\n");
+        set_net_workarea (dpy, root, margins);
+    }
 }
