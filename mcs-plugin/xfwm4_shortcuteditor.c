@@ -319,7 +319,6 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
 					 N_("Move window to left workspace"), N_("Move window to right workspace"), 
 					 N_( "Show desktop" ), NULL};
 
-
     Itf *itf = (Itf *) data;
 
     XfceRc *default_rc = NULL;
@@ -372,6 +371,9 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
     {
         const gchar *entry_value;
         const gchar *fallback_value;
+	int i;
+	gboolean found = FALSE;
+
 
         fallback_value = xfce_rc_read_entry (default_rc, *shortcut, "none");
         entry_value = xfce_rc_read_entry (user_rc, *shortcut, fallback_value);
@@ -382,469 +384,91 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             continue;
         }
 
-        if (g_ascii_strcasecmp (*shortcut, "close_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Close window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "maximize_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Maximize window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "maximize_vert_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Maximize window vertically"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "maximize_horiz_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Maximize window horizontally"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "hide_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Hide window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shade_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Shade window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "stick_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Stick window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "cycle_windows_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Cycle windows"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_up_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window up"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_down_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window down"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_left_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window left"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_right_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window right"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "resize_window_up_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Resize window up"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "resize_window_down_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Resize window down"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "resize_window_left_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Resize window left"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "resize_window_right_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Resize window right"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "raise_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Raise window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "lower_window_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Lower window"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "fullscreen_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Toggle fullscreen"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "up_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Upper workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "down_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Bottom workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "left_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Left workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "right_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Right workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "next_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Next workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "prev_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Previous workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "add_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Add workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "del_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Delete workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_1_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 1);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_2_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 2);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_3_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 3);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_4_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 4);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_5_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 5);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_6_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 6);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_7_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 7);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_8_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 8);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_9_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 9);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_10_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 10);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_11_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 11);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "workspace_12_key") == 0)
-        {
-            gchar *text;
-            
-            text = g_strdup_printf (_("Workspace %d"), 12);
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-            g_free (text);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_next_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to next workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_prev_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to previous workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_up_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to upper workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_down_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to bottom workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_left_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to left workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_right_workspace_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to right workspace"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_1_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 1"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_2_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 2"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_3_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 3"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_4_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 4"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_5_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 5"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_6_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 6"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_7_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 7"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_8_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 8"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_9_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 9"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_10_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 10"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_11_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 11"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_12_key") == 0)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to workspace 12"), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-        }
-        else if ( g_ascii_strcasecmp( *shortcut, "show_desktop_key" ) == 0 )
-        {
-            gtk_list_store_append( GTK_LIST_STORE( model3 ), &iter );
-            gtk_list_store_set( GTK_LIST_STORE( model3 ), &iter, COLUMN_COMMAND, _( "Show desktop" ), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1 );
-        }                
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_1_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+	for (i = 0; !found && shortcut_options_list[i]; i++)
+	{
+	    if (g_ascii_strcasecmp (*shortcut, shortcut_options_list[i]) == 0)
+	    {
+		gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+		gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _(shortcut_name_list[i]),
+				   COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+		found = TRUE;
+	    }
+	}
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_1_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_1_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_2_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_2_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_2_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_3_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+	for (i = 0; !found && i <= 12; i++)
+	{
+	    gchar *option;
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_3_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_3_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_4_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+	    option = g_strdup_printf ("workspace_%d_key", i);
+	    if (g_ascii_strcasecmp (*shortcut, option) == 0)
+	    {
+		gchar *text;
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_4_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_4_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_5_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+		text = g_strdup_printf (_("Workspace %d"), i);
+		gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+		gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, 
+				    COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+		g_free (text);
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_5_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_5_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_6_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+		found = TRUE;
+	    }
+	    
+	    g_free (option);
+	}
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_6_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_6_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_7_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+	for (i = 0; !found && i <= 12; i++)
+	{
+	    gchar *option;
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_7_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_7_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_8_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+	    option = g_strdup_printf ("move_window_workspace_%d_key", i);
+	    if (g_ascii_strcasecmp (*shortcut, option) == 0)
+	    {
+	        gchar *text;
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_8_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_8_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_9_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+		text = g_strdup_printf (_("Move window to workspace %d"), i);
+	        gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+		gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
+				    COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+		g_free (text);
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_9_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_9_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_10_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+		found = TRUE;
+	    }
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_10_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_10_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_11_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+	    g_free (option);
+	}
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_11_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_11_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_12_key") == 0)
-        {
-            const gchar *fallback_value2;
-            const gchar *entry_value2;
+        for (i = 0; !found && i <= 12; i++)
+	{
+	    gchar *option;
 
-            gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_12_exec", "none");
-            entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_12_exec", fallback_value);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
-        }
-        else
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, *shortcut, COLUMN_SHORTCUT, entry_value, -1);
-        }
+	    option = g_strdup_printf ("shortcut_%d_key", i);
+	    if (g_ascii_strcasecmp (*shortcut, option) == 0)
+	    {
+		const gchar *fallback_value2;
+		const gchar *entry_value2;
+		gchar *shortcut_option;
+
+		shortcut_option = g_strdup_printf ("shortcut_%d_exec", i);
+
+		gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
+		fallback_value2 = xfce_rc_read_entry (default_rc, shortcut_option, "none");
+		entry_value2 = xfce_rc_read_entry (user_rc, shortcut_option, fallback_value);
+		gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2,
+				    COLUMN_SHORTCUT, entry_value, -1);
+		g_free (shortcut_option);
+
+		found = TRUE;
+	    }
+
+	    g_free (option);
+	}
+
+	if (!found)
+	{
+	    gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+	    gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, *shortcut, COLUMN_SHORTCUT, entry_value, -1);
+	}
 
         *shortcut++;
     }
