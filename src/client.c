@@ -3120,8 +3120,13 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         int frame_x, frame_y, frame_height, frame_width;
         int frame_top, frame_left, frame_right, frame_bottom;
 
-        while(XCheckTypedEvent(dpy, MotionNotify, xevent));
-
+        while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent));
+        
+	if (xevent->type == ButtonRelease)
+        {
+            moving = FALSE;
+	}
+	
         if(!passdata->grab && params.box_move)
         {
             gdk_x11_grab_server();
@@ -3241,6 +3246,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     {
         status = XEV_FILTER_CONTINUE;
     }
+    
     DBG("leaving clientMove_event_filter\n");
 
     if(!moving)
@@ -3464,8 +3470,13 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     }
     else if(xevent->type == MotionNotify)
     {
-        while(XCheckTypedEvent(dpy, MotionNotify, xevent));
-
+        while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent));
+        
+	if (xevent->type == ButtonRelease)
+        {
+            resizing = FALSE;
+	}
+	
         if(!passdata->grab && params.box_resize)
         {
             gdk_x11_grab_server();
@@ -3574,6 +3585,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     {
         status = XEV_FILTER_CONTINUE;
     }
+    
     DBG("leaving clientResize_event_filter\n");
 
     if(!resizing)
