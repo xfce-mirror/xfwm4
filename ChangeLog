@@ -1,3 +1,84 @@
+2004-09-23 08:26  olivier
+
+	* po/xfwm4.pot, src/events.c, src/misc.c, src/screen.c,
+	  src/stacking.c: Fix missing parts from Param's patch regarding
+	  "sidewalks"
+
+2004-09-23 07:59  olivier
+
+	* configure, configure.ac, po/xfwm4.pot, src/client.c,
+	  src/events.c, src/screen.c, src/screen.h, src/workspaces.c,
+	  src/workspaces.h: Apply patch from Paramjit Oberoi
+	  <param@cs.wisc.edu> to handle worskswitch with reaching screen
+	  edges
+
+2004-09-23 07:22  olivier
+
+	* src/client.c: Improve window resize within partial struts
+
+2004-09-23 00:39  olivier
+
+	* src/client.c: ??
+
+2004-09-23 00:37  olivier
+
+	* src/events.c: Mispaced parenthesis
+
+2004-09-23 00:35  olivier
+
+	* src/events.c: Misplaced parenthesis
+
+2004-09-22 22:06  olivier
+
+	* defaults/defaults, src/client.c, src/events.c, src/hints.c,
+	  src/settings.c, src/settings.h: Be smarter with dragging windows
+	  across workspaces, Apply patch from Nils Rennebarth
+	  <Nils.Rennebarth@web.de> to optionnaly prevent cycling desktops
+	  with the mouse scroll wheel.
+
+2004-09-22 05:18  kelnos
+
+	* mcs-plugin/: xfce-wm-settings.desktop,
+	  xfce-workspaces-settings.desktop: add GenericName tags to
+	  settings .desktop files
+
+2004-09-21 22:13  jasper
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: Prevent crash when keyval
+	  without name is pressed
+
+2004-09-21 21:27  olivier
+
+	* src/: parserc.c, parserc.h, settings.c: Merge custom keytheme wit
+	  hsystem default to avoid missing shortcuts that prevent the WM to
+	  start.
+
+2004-09-21 13:51  jasper
+
+	* po/: ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa_IR.gmo,
+	  fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, he.gmo, he.po, hi.gmo,
+	  hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo,
+	  ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo,
+	  pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po,
+	  sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  zh_TW.gmo, zh_TW.po: Run make update-po at Moe's request.
+
+2004-09-21 08:40  olivier
+
+	* configure, configure.ac, defaults/defaults, src/client.c,
+	  src/events.c, src/hints.c, src/hints.h, src/screen.h,
+	  src/settings.c, src/settings.h, src/workspaces.c,
+	  src/workspaces.h, themes/default.keys/keythemerc: Include patch
+	  for 2D desktop layout support from Paramjit Oberoi
+	  <param@cs.wisc.edu>
+
+2004-09-21 00:22  olivier
+
+	* ChangeLog: Update all ChangeLogs
+
 2004-09-19 22:16  olivier
 
 	* Makefile.in, config.h.in, configure, configure.ac, ltmain.sh,
