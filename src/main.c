@@ -67,6 +67,7 @@ char *progname;
 Display *dpy;
 Window root, gnome_win, side_win[2];
 Colormap cmap;
+Screen *xscreen;
 int screen;
 int depth;
 int workspace;
@@ -228,6 +229,7 @@ initialize (int argc, char **argv)
 
     dpy = GDK_DISPLAY ();
     root = GDK_ROOT_WINDOW ();
+    xscreen = DefaultScreenOfDisplay(dpy);
     screen = XDefaultScreen (dpy);
     depth = DefaultDepth (dpy, screen);
     cmap = DefaultColormap (dpy, screen);
@@ -250,12 +252,12 @@ initialize (int argc, char **argv)
     }
 
     /* Create the side windows to detect edge movement */
-    side_win[0] = setTmpEventWin (0, 0, 1,
-                                  MyDisplayFullHeight (dpy, screen), 
+    side_win[0] = setTmpEventWin (0, 0, 
+                                  1, MyDisplayFullHeight (dpy, screen), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    side_win[1] = setTmpEventWin (MyDisplayFullWidth (dpy, screen) - 1, 0, 1,
-                                  MyDisplayFullHeight (dpy, screen), 
+    side_win[1] = setTmpEventWin (MyDisplayFullWidth (dpy, screen) - 1, 0, 
+                                  1, MyDisplayFullHeight (dpy, screen), 
                                   LeaveWindowMask | PointerMotionMask);
 
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;

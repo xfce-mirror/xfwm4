@@ -27,6 +27,9 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#ifdef HAVE_RANDR
+#include <X11/extensions/Xrandr.h>
+#endif
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -882,6 +885,29 @@ handleMapRequest (XMapRequestEvent * ev)
 }
 
 static inline void
+handleConfigureNotify (XConfigureEvent * ev)
+{
+    TRACE ("entering handleConfigureNotify");
+
+    if (ev->window == root)
+    {
+        TRACE ("configured window is the root win (0x%lx)", ev->window);
+#ifdef HAVE_RANDR
+        XRRUpdateConfiguration (ev);
+#else
+        xscreen->width   = ev->width;
+        xscreen->height  = ev->height;
+#endif
+        XMoveResizeWindow(dpy, side_win[0], 
+                          0, 0,
+                          1, MyDisplayFullHeight (dpy, screen));
+        XMoveResizeWindow(dpy, side_win[1],
+                          MyDisplayFullWidth (dpy, screen) - 1, 0, 
+                          1, MyDisplayFullHeight (dpy, screen));
+    }
+}
+
+static inline void
 handleConfigureRequest (XConfigureRequestEvent * ev)
 {
     Client *c;
@@ -1390,6 +1416,9 @@ handleEvent (XEvent * ev)
             break;
         case MapRequest:
             handleMapRequest ((XMapRequestEvent *) ev);
+            break;
+        case ConfigureNotify:
+            handleConfigureNotify ((XConfigureEvent *) ev);
             break;
         case ConfigureRequest:
             handleConfigureRequest ((XConfigureRequestEvent *) ev);

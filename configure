@@ -308,7 +308,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS LIBXPM_CFLAGS LIBXPM_LDFLAGS LIBXPM_LIBS PKG_CONFIG LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBXFCE4MCS_MANAGER_REQUIRED_VERSION LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION XFCE_MCS_MANAGER_PLUGINSDIR LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS LIBXPM_CFLAGS LIBXPM_LDFLAGS LIBXPM_LIBS PKG_CONFIG LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBXFCE4MCS_MANAGER_REQUIRED_VERSION LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION XFCE_MCS_MANAGER_PLUGINSDIR LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION RANDR_LIBS LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -865,6 +865,8 @@ Optional Features:
                           (default=yes)
   --disable-startup-notification
                           Disable checking for startup notification library
+  --enable-randr          try to use the randr extension
+  --disable-randr         don't try to use the randr extension
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
@@ -3028,13 +3030,14 @@ fi
 rm -f conftest*
 
 
-echo "$as_me:$LINENO: checking for library containing strerror" >&5
-echo $ECHO_N "checking for library containing strerror... $ECHO_C" >&6
-if test "${ac_cv_search_strerror+set}" = set; then
+
+        echo "$as_me:$LINENO: checking for strerror in -lcposix" >&5
+echo $ECHO_N "checking for strerror in -lcposix... $ECHO_C" >&6
+if test "${ac_cv_lib_cposix_strerror+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  ac_func_search_save_LIBS=$LIBS
-ac_cv_search_strerror=no
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lcposix  $LIBS"
 cat >conftest.$ac_ext <<_ACEOF
 #line $LINENO "configure"
 /* confdefs.h.  */
@@ -3070,69 +3073,23 @@ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_search_strerror="none required"
+  ac_cv_lib_cposix_strerror=yes
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
+ac_cv_lib_cposix_strerror=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-if test "$ac_cv_search_strerror" = no; then
-  for ac_lib in cposix; do
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-    cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
+LIBS=$ac_check_lib_save_LIBS
+fi
+echo "$as_me:$LINENO: result: $ac_cv_lib_cposix_strerror" >&5
+echo "${ECHO_T}$ac_cv_lib_cposix_strerror" >&6
+if test $ac_cv_lib_cposix_strerror = yes; then
+  LIBS="$LIBS -lcposix"
+fi
 
-/* Override any gcc2 internal prototype to avoid an error.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-/* We use char because int might match the return type of a gcc2
-   builtin and then its argument prototype would still apply.  */
-char strerror ();
-int
-main ()
-{
-strerror ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
-  (eval $ac_link) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  ac_cv_search_strerror="-l$ac_lib"
-break
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
 
-fi
-rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-  done
-fi
-LIBS=$ac_func_search_save_LIBS
-fi
-echo "$as_me:$LINENO: result: $ac_cv_search_strerror" >&5
-echo "${ECHO_T}$ac_cv_search_strerror" >&6
-if test "$ac_cv_search_strerror" != no; then
-  test "$ac_cv_search_strerror" = "none required" || LIBS="$ac_cv_search_strerror $LIBS"
-
-fi
 
 echo "$as_me:$LINENO: checking for ANSI C header files" >&5
 echo $ECHO_N "checking for ANSI C header files... $ECHO_C" >&6
@@ -4725,7 +4682,7 @@ irix5* | irix6*)
 # This must be Linux ELF.
 linux-gnu*)
   case $host_cpu in
-  alpha* | hppa* | i*86 | powerpc* | sparc* | ia64* )
+  alpha* | hppa* | i*86 | mips | mipsel | powerpc* | sparc* | ia64* )
     lt_cv_deplibs_check_method=pass_all ;;
   *)
     # glibc up to 2.1.1 does not perform some relocations on ARM
@@ -5125,7 +5082,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5128 "configure"' > conftest.$ac_ext
+  echo '#line 5085 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -8941,6 +8898,119 @@ echo "${ECHO_T}no" >&6
   fi
 
 
+# Check whether --enable-randr or --disable-randr was given.
+if test "${enable_randr+set}" = set; then
+  enableval="$enable_randr"
+
+else
+  enable_randr=yes
+fi;
+RANDR_LIBS=
+if test x"$enable_randr" = x"yes"; then
+  echo "$as_me:$LINENO: checking for XRRUpdateConfiguration in -lXrandr" >&5
+echo $ECHO_N "checking for XRRUpdateConfiguration in -lXrandr... $ECHO_C" >&6
+if test "${ac_cv_lib_Xrandr_XRRUpdateConfiguration+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lXrandr $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char XRRUpdateConfiguration ();
+int
+main ()
+{
+XRRUpdateConfiguration ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_lib_Xrandr_XRRUpdateConfiguration=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_lib_Xrandr_XRRUpdateConfiguration=no
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+echo "$as_me:$LINENO: result: $ac_cv_lib_Xrandr_XRRUpdateConfiguration" >&5
+echo "${ECHO_T}$ac_cv_lib_Xrandr_XRRUpdateConfiguration" >&6
+if test $ac_cv_lib_Xrandr_XRRUpdateConfiguration = yes; then
+  echo "$as_me:$LINENO: checking for X11/extensions/Xrandr.h" >&5
+echo $ECHO_N "checking for X11/extensions/Xrandr.h... $ECHO_C" >&6
+if test "${ac_cv_header_X11_extensions_Xrandr_h+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <X11/Xlib.h>
+
+#include <X11/extensions/Xrandr.h>
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_header_X11_extensions_Xrandr_h=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_header_X11_extensions_Xrandr_h=no
+fi
+rm -f conftest.$ac_objext conftest.$ac_ext
+fi
+echo "$as_me:$LINENO: result: $ac_cv_header_X11_extensions_Xrandr_h" >&5
+echo "${ECHO_T}$ac_cv_header_X11_extensions_Xrandr_h" >&6
+if test $ac_cv_header_X11_extensions_Xrandr_h = yes; then
+  RANDR_LIBS="-lXrandr -lXrender"
+fi
+
+
+fi
+
+fi
+
+
 
   # Check whether --enable-debug or --disable-debug was given.
 if test "${enable_debug+set}" = set; then
@@ -9785,6 +9855,7 @@ s,@XFCE_MCS_MANAGER_PLUGINSDIR@,$XFCE_MCS_MANAGER_PLUGINSDIR,;t t
 s,@LIBSTARTUP_NOTIFICATION_CFLAGS@,$LIBSTARTUP_NOTIFICATION_CFLAGS,;t t
 s,@LIBSTARTUP_NOTIFICATION_LIBS@,$LIBSTARTUP_NOTIFICATION_LIBS,;t t
 s,@LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION@,$LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION,;t t
+s,@RANDR_LIBS@,$RANDR_LIBS,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF

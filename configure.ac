@@ -53,6 +53,24 @@ XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [3.91.0])
 BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,
   [startup-notification], [startup notification library], [yes])
 
+dnl
+dnl RANDR extension
+dnl (please note that Xrandr requires Xrender - and no, it's not a typo ;)
+dnl
+AC_ARG_ENABLE([randr],
+AC_HELP_STRING([--enable-randr], [try to use the randr extension])
+AC_HELP_STRING([--disable-randr], [don't try to use the randr extension]),
+  [], [enable_randr=yes])
+RANDR_LIBS=
+if test x"$enable_randr" = x"yes"; then
+  AC_CHECK_LIB(Xrandr, XRRUpdateConfiguration,
+               [AC_CHECK_HEADER(X11/extensions/Xrandr.h,
+                                RANDR_LIBS="-lXrandr -lXrender",,
+				[#include <X11/Xlib.h>])],, 
+                $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
+fi
+AC_SUBST([RANDR_LIBS])
+
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
 
