@@ -135,8 +135,9 @@ pretty_string (const gchar *s)
 void
 tabwinSetLabel (Tabwin * tabwin, GdkPixbuf *icon, const gchar * class, const gchar * label)
 {
-    g_return_if_fail (tabwin != NULL);
     gchar* message;
+   
+    g_return_if_fail (tabwin != NULL);
     
     message = pretty_string (class);
     gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
