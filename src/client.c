@@ -2967,26 +2967,19 @@ clientFrame (Window w, gboolean startup)
     }
     
     MyXGrabServer ();
-    gdk_error_trap_push ();
 
-    valuemask = CWEventMask;
-    attributes.event_mask = (CLIENT_EVENT_MASK);
-    XChangeWindowAttributes (dpy, w, valuemask, &attributes);
-    if (shape)
+    if (!MyCheckWindow(w))
     {
-        XShapeSelectInput (dpy, w, ShapeNotifyMask);
+        printf ("Client has vanished\n");
+        free(c);
+        MyXUngrabServer ();
+        return;
     }
+
     XSetWindowBorderWidth (dpy, w, 0);
 
     XGrabButton (dpy, AnyButton, AnyModifier, w, FALSE,
         POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-
-    MyXUngrabServer ();
-    if (gdk_error_trap_pop ())
-    {
-        TRACE ("Client has vanished");
-        return;
-    }
 
     c->window = w;
     getWindowName (dpy, c->window, &c->name);
@@ -3133,7 +3126,6 @@ clientFrame (Window w, gboolean startup)
         }
     }
 
-
     /* We must call clientApplyInitialState() after having placed the
        window so that the inital position values are correctly set if the
        inital state is maximize or fullscreen
@@ -3146,8 +3138,20 @@ clientFrame (Window w, gboolean startup)
         XCreateWindow (dpy, root, frameX (c), frameY (c), frameWidth (c),
         frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
         valuemask, &attributes);
+    XSetWindowBorderWidth (dpy, c->window, 0);
     XReparentWindow (dpy, c->window, c->frame, frameLeft (c), frameTop (c));
 
+    valuemask = CWEventMask;
+    attributes.event_mask = (CLIENT_EVENT_MASK);
+    XChangeWindowAttributes (dpy, c->window, valuemask, &attributes);
+    if (shape)
+    {
+        XShapeSelectInput (dpy, c->window, ShapeNotifyMask);
+    }
+    /* Window is reparented now, so we can safely release the grab on the server */
+    MyXUngrabServer ();
+
+        
     clientAddToList (c);
     clientSetNetActions (c);
     clientGrabKeys (c);

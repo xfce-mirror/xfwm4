@@ -33,6 +33,7 @@ GC createGC (Colormap, char *, int, XFontStruct *, int, gboolean);
 void sendClientMessage (Window, Atom, long, int);
 void MyXGrabServer (void);
 void MyXUngrabServer (void);
+gboolean MyCheckWindow(Window);
 Window setTmpEventWin (int, int, unsigned int, unsigned int, long);
 void removeTmpEventWin (Window);
 void placeSidewalks(gboolean);

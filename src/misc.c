@@ -150,6 +150,23 @@ MyXUngrabServer (void)
     DBG ("grabs : %i", xgrabcount);
 }
 
+gboolean
+MyCheckWindow(Window w)
+{
+    Window dummy_root;
+    unsigned int dummy_width, dummy_height, dummy_depth, dummy_bw;
+    int dummy_x, dummy_y;
+    Status test;
+    
+    g_return_val_if_fail (w != None, FALSE);
+
+    gdk_error_trap_push ();
+    test = XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y,
+                         &dummy_width, &dummy_height, &dummy_bw, &dummy_depth);
+
+    return (!gdk_error_trap_pop () && (test != 0));
+}
+
 Window
 setTmpEventWin (int x, int y, unsigned int w, unsigned int h, long eventmask)
 {

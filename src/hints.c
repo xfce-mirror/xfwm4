@@ -225,7 +225,7 @@ getWMProtocols (Display * dpy, Window w)
     int i, n;
     Atom atype;
     int aformat;
-    int result = 0;
+    unsigned int result = 0;
     unsigned long bytes_remain, nitems;
 
     TRACE ("entering getWMProtocols");
