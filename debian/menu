@@ -1,2 +1,0 @@
-?package(xfwm4): needs=wm section="WindowManagers" command="xfwm4" \
-  title="XFwm" longtitle="Xfce Window Manager" hints="Window manager"
