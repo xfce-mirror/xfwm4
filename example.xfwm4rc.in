@@ -3,7 +3,7 @@
 # You can use it as a template for your own configuration file
 
 # theme=directory
-theme=XFWM4_DIR/themes/kde
+theme=_pkgdatadir_/themes/kde
 
 # title_alignment=left/right/center
 title_alignment=left

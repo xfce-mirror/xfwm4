@@ -62,9 +62,24 @@ MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
-XFWM4_DIR = @XFWM4_DIR@
 
-SUBDIRS =  agua coldsteel crux cruxish gtk kde linea mofit next oroborus platinum redmond redmondxp slimline trench xfce
+SUBDIRS = \
+agua \
+coldsteel \
+crux \
+cruxish \
+gtk \
+kde \
+linea \
+mofit \
+next \
+oroborus \
+platinum \
+redmond \
+redmondxp \
+slimline \
+trench \
+xfce
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h

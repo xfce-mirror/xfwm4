@@ -1,4 +1,4 @@
-themedir = $(XFWM4_DIR)/themes/coldsteel
+themedir = $(pkgdatadir)/themes/coldsteel
 theme_DATA = bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \

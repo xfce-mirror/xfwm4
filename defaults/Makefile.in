@@ -62,10 +62,10 @@ MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
-XFWM4_DIR = @XFWM4_DIR@
 
-defaultsdir = $(XFWM4_DIR)
+defaultsdir = $(pkgdatadir)
 defaults_DATA = defaults
+EXTRA_DIST = defaults.in
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -189,6 +189,8 @@ maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 distclean-local:
 	rm -f defaults
+defaults :
+	@sed -e "s%_pkgdatadir_%$(pkgdatadir)%g" defaults.in > defaults
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -1,4 +1,4 @@
-theme=XFWM4_DIR/themes/kde
+theme=_pkgdatadir_/themes/kde
 title_alignment=left
 full_width_title=true
 button_layout=OT|SHMC
