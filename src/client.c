@@ -5752,14 +5752,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
                 }
                 break;
             case CLOSE_BUTTON:
-                if (bev->button == Button3)
-                {
-                    clientKill (c);
-                }
-                else
-                {
-                    clientClose (c);
-                }
+                clientClose (c);
                 break;
             case MAXIMIZE_BUTTON:
                 if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
