@@ -2556,17 +2556,20 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     {
         switch (wc->stack_mode)
         {
-                /* Limitation: we don't support sibling... */
+            /* 
+             * Limitation: we don't support neither sibling,
+             * TopIf, BottomIf nor Opposite ... 
+             */
             case Above:
-            case TopIf:
                 TRACE ("Above");
                 clientRaise (c);
                 break;
             case Below:
-            case BottomIf:
                 TRACE ("Below");
                 clientLower (c);
                 break;
+            case TopIf:
+            case BottomIf:
             case Opposite:
             default:
                 break;
@@ -3848,9 +3851,9 @@ clientPassFocus (Client * c)
                   (by eligible, I mean a window that is not a transient for the current
                   window)
              */
-            if (clientIsTransientOrModal (c))
+            if (clientIsModal (c))
             {
-                c2 = clientGetTransient (c);
+                c2 = clientGetModalFor (c);
 
                 if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
                 {
