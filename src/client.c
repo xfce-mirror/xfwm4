@@ -3642,18 +3642,37 @@ clientPassFocus (Client * c)
 
     if (params.click_to_focus)
     {
-        list_of_windows = clientListTransient (c);
-        for (c2 = c->next, i = 0; (c2) && (i < client_count);
-            c2 = c2->next, i++)
+        /* Fairly simple logic:
+           1) if the window is a modal, send focus back to its parent window
+           2) Otherwise, rewind the focus stack until we find an eligible window
+              (by eligible, I mean a windw that is not a transient for the current
+              window)
+         */
+        if (clientIsModal (c))
         {
-            if (clientSelectMask (c2, 0)
-                && !g_list_find (list_of_windows, (gconstpointer) c2))
+            c2 = clientGetTransient (c);
+            
+            if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
             {
                 new_focus = c2;
-                break;
             }
         }
-        g_list_free (list_of_windows);
+        
+        if (!new_focus)
+        {
+            list_of_windows = clientListTransient (c);
+            for (c2 = c->next, i = 0; (c2) && (i < client_count);
+                c2 = c2->next, i++)
+            {
+                if (clientSelectMask (c2, 0)
+                    && !g_list_find (list_of_windows, (gconstpointer) c2))
+                {
+                    new_focus = c2;
+                    break;
+                }
+            }
+            g_list_free (list_of_windows);
+        }
     }
     else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
             &mask))
