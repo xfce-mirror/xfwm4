@@ -172,11 +172,31 @@ myDisplayInit (GdkDisplay *gdisplay)
     }
 
     /* Test XShape extension support */
-    display->shape = 
-        XShapeQueryExtension (display->dpy, &display->shape_event, &dummy);
-    if (!display->shape)
+    if (XShapeQueryExtension (display->dpy, 
+                              &display->shape_event_base, 
+                              &dummy))
+    {
+        display->have_shape = TRUE;
+    }
+    else
     {
         g_warning ("The display does not support the XShape extension.");
+        display->have_shape = FALSE;
+        display->shape_event_base = 0;
+    }
+
+    if (XRenderQueryExtension (display->dpy,
+                               &display->render_event_base,
+                               &display->render_error_base))
+    {
+        display->have_render = TRUE;
+    }
+    else
+    {
+        g_warning ("The display does not support the XRender extension.");
+        display->have_render = FALSE;
+        display->render_event_base = 0;
+        display->render_error_base = 0;
     }
 
     display->root_cursor = 
@@ -238,6 +258,22 @@ myDisplayClose (DisplayInfo *display)
     display->screens = NULL;
 
     return display;
+}
+
+gboolean
+myDisplayHaveShape (DisplayInfo *display)
+{
+    g_return_val_if_fail (display != NULL, FALSE);
+    
+    return (display->have_shape);
+}
+
+gboolean
+myDisplayHaveRender (DisplayInfo *display)
+{
+    g_return_val_if_fail (display != NULL, FALSE);
+    
+    return (display->have_render);
 }
 
 Cursor 

@@ -2015,7 +2015,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             handleColormapNotify (display_info, (XColormapEvent *) ev);
             break;
         default:
-            if (display_info->shape && (ev->type == display_info->shape_event))
+            if (display_info->have_shape && (ev->type == display_info->shape_event_base))
             {
                 handleShape (display_info, (XShapeEvent *) ev);
             }
@@ -2291,8 +2291,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        Don't forget to delete that window once the menu is closed, though, or we'll get in
        trouble.
      */
-    xfwmWindowTemp (clientGetXDisplay (c),  
-                    screen_info->screen,
+    xfwmWindowTemp (screen_info,  
                     NULL, 0,
                     screen_info->xroot,
                     &menu_event_window, 0, 0, 

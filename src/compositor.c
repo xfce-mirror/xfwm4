@@ -1449,7 +1449,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
     }
 
     /* Listen for XShape events if applicable */
-    if (display_info->shape)
+    if (display_info->have_shape)
     {
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
@@ -2141,24 +2141,6 @@ compositorInitDisplay (DisplayInfo *display_info)
 
     g_return_if_fail (display_info != NULL);
     TRACE ("entering compositorInitDisplay");
-
-    if (!XRenderQueryExtension (display_info->dpy,
-                                &display_info->render_event_base,
-                                &display_info->render_error_base))
-    {
-        g_warning ("The display does not support the XRender extension.");
-        display_info->have_render = FALSE;
-        display_info->render_event_base = 0;
-        display_info->render_error_base = 0;
-    }
-    else
-    {
-        display_info->have_render = TRUE;
-#if DEBUG
-        g_print ("render event base: %i\n", display_info->render_event_base);
-        g_print ("render error base: %i\n", display_info->render_error_base);
-#endif
-    }
 
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,

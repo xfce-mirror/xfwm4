@@ -159,7 +159,9 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-    if (XpmReadFileToPixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, filename, &pm->pixmap, &pm->mask, &attr))
+    if (XpmReadFileToPixmap (myScreenGetXDisplay (screen_info), 
+                             screen_info->xroot, filename, 
+                             &pm->pixmap, &pm->mask, &attr))
     {
         TRACE ("%s not found", filename);
         g_free (filename);
@@ -177,7 +179,8 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
 }
 
 void
-xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm, gint width, gint height)
+xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm, 
+                  gint width, gint height)
 {
     TRACE ("entering xfwmPixmapCreate, width=%i, height=%i", width, height);
     if ((width < 1) || (height < 1) || (!screen_info))
@@ -187,8 +190,11 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm, gint width, gint he
     else
     {
         pm->screen_info = screen_info;
-        pm->pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, width, height, screen_info->depth);
-        pm->mask = XCreatePixmap (myScreenGetXDisplay (screen_info), pm->pixmap, width, height, 1);
+        pm->pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
+                                    screen_info->xroot, 
+                                    width, height, screen_info->depth);
+        pm->mask = XCreatePixmap (myScreenGetXDisplay (screen_info), 
+                                  pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
     }
@@ -223,7 +229,8 @@ xfwmPixmapFree (xfwmPixmap * pm)
 }
 
 static void
-xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d, int x, int y, int width, int height)
+xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d, 
+                         int x, int y, int width, int height)
 {
     XGCValues gv;
     GC gc;
@@ -254,7 +261,8 @@ xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d, int x,
 }
 
 void
-xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, gint x, gint y, gint width, gint height)
+xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, 
+                gint x, gint y, gint width, gint height)
 {
     XGCValues gv;
     GC gc;

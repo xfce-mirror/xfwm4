@@ -29,16 +29,16 @@
 #include <X11/Xlib.h>
 #include <glib.h>
 #include "mypixmap.h"
+#include "screen.h"
 
 #define MYWINDOW_XWINDOW(w) (w.window)
 
 typedef struct _xfwmWindow xfwmWindow;
 struct _xfwmWindow
 {
-    Display *dpy;
+    ScreenInfo *screen_info;
     Visual *visual;
     gint depth;
-    gint screen;
     Window window;
     gint x, y;
     gint width, height;
@@ -46,15 +46,13 @@ struct _xfwmWindow
 };
 
 void xfwmWindowInit        (xfwmWindow *);
-void xfwmWindowCreate      (Display *,
-                            gint, 
+void xfwmWindowCreate      (ScreenInfo *,
                             Visual *,
                             gint, 
                             Window, 
                             xfwmWindow *, 
                             Cursor);
-void xfwmWindowTemp        (Display *, 
-                            gint, 
+void xfwmWindowTemp        (ScreenInfo *, 
                             Visual *,
                             gint, 
                             Window, 
@@ -75,6 +73,5 @@ void xfwmWindowHide        (xfwmWindow *);
 gboolean xfwmWindowVisible (xfwmWindow *);
 gboolean xfwmWindowDeleted (xfwmWindow *);
 void xfwmWindowSetBG       (xfwmWindow *, xfwmPixmap *);
-
 
 #endif /* INC_MYWINDOW_H */

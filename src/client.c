@@ -1345,7 +1345,7 @@ clientCheckShape (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (display_info->shape)
+    if (display_info->have_shape)
     {
         XShapeQueryExtents (display_info->dpy, c->window, &boundingShaped, &xws, &yws, &wws,
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
@@ -1485,13 +1485,21 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
-#ifdef HAVE_COMPOSITOR
-    c->visual = attr.visual;
-    c->depth = attr.depth;
+#ifdef HAVE_RENDER
+    if (display_info->have_render)
+    {
+        c->visual = attr.visual;
+        c->depth  = attr.depth;
+    }
+    else
+    {
+        c->visual = screen_info->visual;
+        c->depth  = screen_info->depth;
+    }
 #else
-    /* We don't support multiple depth/visual w/out compositor */
-    c->visual = DefaultVisual (display_info->dpy, screen_info->screen);
-    c->depth = DefaultDepth (display_info->dpy, screen_info->screen);
+    /* We don't support multiple depth/visual w/out render */
+    c->visual = screen_info->visual;
+    c->depth  = screen_info->depth;
 #endif
     clientGetWMNormalHints (c, FALSE);
 
@@ -1639,6 +1647,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.win_gravity = StaticGravity;
     attributes.bit_gravity = StaticGravity;
     attributes.colormap = attr.colormap;
+
 #ifdef HAVE_COMPOSITOR
     if (c->depth == 32)
     {
@@ -1648,11 +1657,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         valuemask |= CWBackPixmap|CWBackPixel|CWBorderPixel;
     }
 #endif
-    
+
     c->frame =
         XCreateWindow (display_info->dpy, screen_info->xroot, 0, 0, 1, 1, 0, 
         c->depth, InputOutput, c->visual, valuemask, &attributes);
-        
+
     XSelectInput (display_info->dpy, c->window, 0);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
     XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
@@ -1661,7 +1670,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
     XSelectInput (display_info->dpy, c->window, CLIENT_EVENT_MASK);
-    if ((shaped) && (display_info->shape))
+    if ((shaped) && (display_info->have_shape))
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
     }
@@ -1683,32 +1692,32 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->pm_cache.previous_width = -1;
     c->pm_cache.previous_height = -1;
 
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,  
         &c->sides[SIDE_LEFT], 
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_LEFT));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->sides[SIDE_RIGHT],
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_RIGHT));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->sides[SIDE_BOTTOM],
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_BOTTOM));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->corners[CORNER_BOTTOM_LEFT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_LEFT));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->corners[CORNER_BOTTOM_RIGHT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_RIGHT));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->corners[CORNER_TOP_LEFT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_LEFT));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->corners[CORNER_TOP_RIGHT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_RIGHT));
-    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,  
         &c->title, None);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
-        xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame, 
+        xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame, 
             &c->buttons[i], None);
     }
 
@@ -1874,8 +1883,7 @@ clientFrameAll (ScreenInfo *screen_info)
 
     display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, CurrentTime, NO_FOCUS_FLAG);
-    xfwmWindowTemp (display_info->dpy, 
-                    screen_info->screen,
+    xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
                     &shield, 
@@ -3181,8 +3189,7 @@ clientMove (Client * c, XEvent * e)
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
 
-    xfwmWindowTemp (display_info->dpy, 
-                    screen_info->screen,
+    xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
                     &passdata.tmp_event_window, 
@@ -3654,8 +3661,7 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.grab = FALSE;
     passdata.corner = corner;
 
-    xfwmWindowTemp (display_info->dpy, 
-                    screen_info->screen,
+    xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
                     &passdata.tmp_event_window, 

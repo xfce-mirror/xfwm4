@@ -31,6 +31,7 @@
 #include <libxfce4util/libxfce4util.h> 
 #include "mypixmap.h"
 #include "mywindow.h"
+#include "screen.h"
 
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
@@ -39,13 +40,15 @@
 static void
 xfwmWindowSetVisual (xfwmWindow * win, Visual *visual, gint depth)
 {
+    g_return_if_fail (win->screen_info != NULL);
+    
     if (visual)
     {
         win->visual = visual;
     }
     else
     {
-        win->visual = DefaultVisual (win->dpy, win->screen);
+        win->visual = win->screen_info->visual;
     }
     
     if (depth)
@@ -54,16 +57,18 @@ xfwmWindowSetVisual (xfwmWindow * win, Visual *visual, gint depth)
     }
     else
     {
-        win->depth = DefaultDepth (win->dpy, win->screen);
+        win->depth = win->screen_info->depth;
     }
 }
 
 void
 xfwmWindowInit (xfwmWindow * win)
 {
+    g_return_if_fail (win != NULL);
+    
     win->window = None;
     win->map = FALSE;
-    win->dpy = NULL;
+    win->screen_info = NULL;
     win->depth = 0;
     win->x = 0;
     win->y = 0;
@@ -72,21 +77,23 @@ xfwmWindowInit (xfwmWindow * win)
 }
 
 void
-xfwmWindowCreate (Display * dpy, gint screen, Visual *visual, gint depth, Window parent,  
+xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window parent,  
                   xfwmWindow * win, Cursor cursor)
 {
     TRACE ("entering xfwmWindowCreate");
 
-    win->window = XCreateSimpleWindow (dpy, parent, 0, 0, 1, 1, 0, 0, 0);
+    g_return_if_fail (screen_info != NULL);
+    
+    win->window = XCreateSimpleWindow (myScreenGetXDisplay (screen_info), 
+                                       parent, 0, 0, 1, 1, 0, 0, 0);
     TRACE ("Created XID 0x%lx", win->window);
     if (cursor != None)
     {
-        XDefineCursor (dpy, win->window, cursor);
+        XDefineCursor (myScreenGetXDisplay (screen_info), 
+                       win->window, cursor);
     }
     win->map = FALSE;
-    win->dpy = dpy;
-    win->depth = depth;
-    win->screen = screen;
+    win->screen_info = screen_info;
     win->x = 0;
     win->y = 0;
     win->width = 1;
@@ -101,7 +108,8 @@ xfwmWindowDelete (xfwmWindow * win)
 
     if (win->window != None)
     {
-        XDestroyWindow (win->dpy, win->window);
+        XDestroyWindow (myScreenGetXDisplay (win->screen_info), 
+                        win->window);
         win->window = None;
     }
     win->map = FALSE;
@@ -124,15 +132,18 @@ xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
     }
     if (!(win->map))
     {
-        XMapWindow (win->dpy, win->window);
+        XMapWindow (myScreenGetXDisplay (win->screen_info), 
+                    win->window);
         win->map = TRUE;
     }
     TRACE ("Showing XID 0x%lx", win->window);
     if (((x != win->x) || (y != win->y)) && ((width != win->width)
             || (height != win->height)))
     {
-        XMoveResizeWindow (win->dpy, win->window, x, y, (unsigned int) width,
-            (unsigned int) height);
+        XMoveResizeWindow (myScreenGetXDisplay (win->screen_info), 
+                           win->window, x, y, 
+                           (unsigned int) width,
+                           (unsigned int) height);
         win->x = x;
         win->y = y;
         win->width = width;
@@ -140,24 +151,30 @@ xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
     }
     else if ((x != win->x) || (y != win->y))
     {
-        XMoveWindow (win->dpy, win->window, x, y);
+        XMoveWindow (myScreenGetXDisplay (win->screen_info), 
+                     win->window, 
+                     x, y);
         if (refresh)
         {
-            XClearWindow (win->dpy, win->window);
+            XClearWindow (myScreenGetXDisplay (win->screen_info), 
+                          win->window);
         }
         win->x = x;
         win->y = y;
     }
     else if ((width != win->width) || (height != win->height))
     {
-        XResizeWindow (win->dpy, win->window, (unsigned int) width,
-            (unsigned int) height);
+        XResizeWindow (myScreenGetXDisplay (win->screen_info), 
+                       win->window, 
+                       (unsigned int) width,
+                       (unsigned int) height);
         win->width = width;
         win->height = height;
     }
     else if (refresh)
     {
-        XClearWindow (win->dpy, win->window);
+        XClearWindow (myScreenGetXDisplay (win->screen_info), 
+                      win->window);
     }
 }
 
@@ -169,7 +186,7 @@ xfwmWindowHide (xfwmWindow * win)
     if (win->map)
     {
         g_assert (win->window);
-        XUnmapWindow (win->dpy, win->window);
+        XUnmapWindow (myScreenGetXDisplay (win->screen_info), win->window);
         win->map = FALSE;
     }
 }
@@ -191,23 +208,26 @@ xfwmWindowDeleted (xfwmWindow *win)
 }        
 
 void 
-xfwmWindowTemp (Display * dpy, gint screen, Visual *visual, gint depth, Window parent,
-                xfwmWindow * win, int x, int y, 
-                int width, int height, long eventmask)
+xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual, 
+                gint depth, Window parent,
+                xfwmWindow * win, 
+                int x, int y, int width, int height, 
+                long eventmask)
 {
     XSetWindowAttributes attributes;
 
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
-    win->window = XCreateWindow (dpy, parent, x, y, width, height, 0, 0, 
-                         InputOnly, CopyFromParent,
-                         CWEventMask | CWOverrideRedirect, &attributes);
-    XMapRaised (dpy, win->window);
-    XFlush (dpy);
+    win->window = XCreateWindow (myScreenGetXDisplay (screen_info), 
+                                 parent, x, y, width, height, 0, 0, 
+                                 InputOnly, CopyFromParent,
+                                 CWEventMask | CWOverrideRedirect, 
+                                 &attributes);
+    XMapRaised (myScreenGetXDisplay (screen_info), win->window);
+    XFlush (myScreenGetXDisplay (screen_info));
 
     win->map = TRUE;
-    win->dpy = dpy;
-    win->screen = screen;
+    win->screen_info = screen_info;
     win->x = x;
     win->y = y;
     win->width = width;
@@ -223,20 +243,21 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
         return;
     }
 
-    if ((win->visual == DefaultVisual (win->dpy, win->screen))
-        && (win->depth == DefaultDepth (win->dpy, win->screen)))
+    if ((win->visual == win->screen_info->visual) && (win->depth == win->screen_info->depth))
     {
-        XSetWindowBackgroundPixmap (win->dpy, win->window, pix->pixmap);
+        XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, pix->pixmap);
     }
 #ifdef HAVE_RENDER
-    else
+    else if (myDisplayHaveRender (win->screen_info->display_info))
     {
         Picture psrc, pdst;
         XRenderPictFormat *format_src, *format_dst;
         Pixmap temp;
 
-        format_src = XRenderFindVisualFormat (win->dpy, DefaultVisual (win->dpy, win->screen));
-        format_dst = XRenderFindVisualFormat (win->dpy, win->visual);
+        format_src = XRenderFindVisualFormat (myScreenGetXDisplay (pix->screen_info), 
+                                              pix->screen_info->visual);
+        format_dst = XRenderFindVisualFormat (myScreenGetXDisplay (win->screen_info), 
+                                              win->visual);
 
         if (!format_src || !format_dst)
         {
@@ -244,19 +265,23 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
             return;
         }
 
-        temp = XCreatePixmap (win->dpy, win->window, pix->width, pix->height, win->depth);
+        temp = XCreatePixmap (myScreenGetXDisplay (win->screen_info), 
+                              win->window, 
+                              pix->width, pix->height, win->depth);
 
-        psrc = XRenderCreatePicture (win->dpy, pix->pixmap, format_src, 0, NULL);
-        pdst = XRenderCreatePicture (win->dpy, temp, format_dst, 0, NULL);
+        psrc = XRenderCreatePicture (myScreenGetXDisplay (pix->screen_info), 
+                                     pix->pixmap, format_src, 0, NULL);
+        pdst = XRenderCreatePicture (myScreenGetXDisplay (win->screen_info), 
+                                     temp, format_dst, 0, NULL);
 
-        XRenderComposite (win->dpy, PictOpSrc, psrc, None, pdst, 0, 0, 0, 0, 0, 0, pix->width, pix->height);
+        XRenderComposite (myScreenGetXDisplay (win->screen_info), PictOpSrc, psrc, None, pdst, 0, 0, 0, 0, 0, 0, pix->width, pix->height);
 
-        XRenderFreePicture (win->dpy, psrc);
-        XRenderFreePicture (win->dpy, pdst);
+        XRenderFreePicture (myScreenGetXDisplay (pix->screen_info), psrc);
+        XRenderFreePicture (myScreenGetXDisplay (win->screen_info), pdst);
 
-        XSetWindowBackgroundPixmap (win->dpy, win->window, temp);
+        XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, temp);
 
-        XFreePixmap (win->dpy, temp);
+        XFreePixmap (myScreenGetXDisplay (win->screen_info), temp);
     }
 #endif
 }

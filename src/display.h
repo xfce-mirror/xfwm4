@@ -174,8 +174,11 @@ struct _DisplayInfo
     GSList *screens;
     GSList *clients;
 
-    gint shape;
-    gint shape_event;
+    gboolean have_shape;
+    gboolean have_render;
+    gint shape_event_base;
+    gint render_error_base;
+    gint render_event_base;
     gint dbl_click_time;
     gint xgrabcount;
     gint nb_screens;
@@ -185,8 +188,6 @@ struct _DisplayInfo
     gboolean enable_compositor;
 
 #ifdef HAVE_COMPOSITOR
-    gint render_error_base;
-    gint render_event_base;
     gint composite_error_base;
     gint composite_event_base;
     gint damage_error_base;
@@ -194,7 +195,6 @@ struct _DisplayInfo
     gint fixes_error_base;
     gint fixes_event_base;
 
-    gboolean have_render;
     gboolean have_composite;
     gboolean have_damage;
     gboolean have_fixes;
@@ -211,6 +211,8 @@ struct _DisplayInfo
 
 DisplayInfo * myDisplayInit                 (GdkDisplay *); 
 DisplayInfo * myDisplayClose                (DisplayInfo *);
+gboolean      myDisplayHaveShape            (DisplayInfo *);
+gboolean      myDisplayHaveRender           (DisplayInfo *);
 Cursor        myDisplayGetCursorBusy        (DisplayInfo *);
 Cursor        myDisplayGetCursorMove        (DisplayInfo *);
 Cursor        myDisplayGetCursorRoot        (DisplayInfo *);

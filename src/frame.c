@@ -517,7 +517,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
     TRACE ("entering frameSetShape");
     TRACE ("setting shape for client (0x%lx)", c->window);
 
-    if (!display_info->shape)
+    if (!display_info->have_shape)
     {
         return;
     }

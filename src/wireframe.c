@@ -143,4 +143,3 @@ wireframeDelete (ScreenInfo *screen_info, Window xwindow)
     XUnmapWindow (myScreenGetXDisplay (screen_info), xwindow);
     XDestroyWindow (myScreenGetXDisplay (screen_info), xwindow);
 }
-
