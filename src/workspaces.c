@@ -30,9 +30,11 @@
 #include <libxfce4util/debug.h>
 #include "main.h"
 #include "misc.h"
+#include "transients.h"
 #include "workspaces.h"
 #include "settings.h"
 #include "client.h"
+#include "focus.h"
 #include "hints.h"
 
 void
@@ -244,12 +246,12 @@ workspaceGetArea (int * m1, int * m2, Client * c)
             && FLAG_TEST_ALL (c2->flags,
                 CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
         {
-            m1[MARGIN_TOP] = MAX (m1[MARGIN_TOP], c2->struts[MARGIN_TOP]);
-            m1[MARGIN_LEFT] = MAX (m1[MARGIN_LEFT], c2->struts[MARGIN_LEFT]);
-            m1[MARGIN_RIGHT] =
-                MAX (m1[MARGIN_RIGHT], c2->struts[MARGIN_RIGHT]);
-            m1[MARGIN_BOTTOM] =
-                MAX (m1[MARGIN_BOTTOM], c2->struts[MARGIN_BOTTOM]);
+            m1[TOP] = MAX (m1[TOP], c2->struts[TOP]);
+            m1[LEFT] = MAX (m1[LEFT], c2->struts[LEFT]);
+            m1[RIGHT] =
+                MAX (m1[RIGHT], c2->struts[RIGHT]);
+            m1[BOTTOM] =
+                MAX (m1[BOTTOM], c2->struts[BOTTOM]);
         }
     }
 }
@@ -267,18 +269,18 @@ workspaceUpdateArea (int * m1, int * m2)
 
     TRACE ("entering workspaceUpdateArea");
 
-    prev_top = m1[MARGIN_TOP];
-    prev_left = m1[MARGIN_LEFT];
-    prev_right = m1[MARGIN_RIGHT];
-    prev_bottom = m1[MARGIN_BOTTOM];
+    prev_top = m1[TOP];
+    prev_left = m1[LEFT];
+    prev_right = m1[RIGHT];
+    prev_bottom = m1[BOTTOM];
 
     workspaceGetArea (m1, m2, NULL);
 
     TRACE ("Desktop area computed : (%d,%d,%d,%d)", (int) m1[0], (int) m1[1],
         (int) m1[2], (int) m1[3]);
-    if ((prev_top != m1[MARGIN_TOP]) || (prev_left != m1[MARGIN_LEFT])
-        || (prev_right != m1[MARGIN_RIGHT])
-        || (prev_bottom != m1[MARGIN_BOTTOM]))
+    if ((prev_top != m1[TOP]) || (prev_left != m1[LEFT])
+        || (prev_right != m1[RIGHT])
+        || (prev_bottom != m1[BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
         setNetWorkarea (dpy, screen, params.workspace_count, m1);

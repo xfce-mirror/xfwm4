@@ -63,8 +63,8 @@ set_settings_margin (int idx, int value)
 
     switch (idx)
     {
-        case MARGIN_LEFT:
-        case MARGIN_RIGHT:
+        case LEFT:
+        case RIGHT:
             if (value < 0)
             {
                 val = 0;
@@ -79,8 +79,8 @@ set_settings_margin (int idx, int value)
             }
             params.xfwm_margins[idx] = val;
             break;
-        case MARGIN_TOP:
-        case MARGIN_BOTTOM:
+        case TOP:
+        case BOTTOM:
             if (value < 0)
             {
                 val = 0;
@@ -220,22 +220,22 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 {
                     if (!strcmp (name, "Xfwm/LeftMargin"))
                     {
-                        set_settings_margin (MARGIN_LEFT,
+                        set_settings_margin (LEFT,
                             setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/RightMargin"))
                     {
-                        set_settings_margin (MARGIN_RIGHT,
+                        set_settings_margin (RIGHT,
                             setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/BottomMargin"))
                     {
-                        set_settings_margin (MARGIN_BOTTOM,
+                        set_settings_margin (BOTTOM,
                             setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/TopMargin"))
                     {
-                        set_settings_margin (MARGIN_TOP, setting->data.v_int);
+                        set_settings_margin (TOP, setting->data.v_int);
                     }
                 }
                 break;
@@ -1111,11 +1111,11 @@ loadSettings (void)
     params.snap_width = abs (TOINT (getValue ("snap_width", rc)));
     params.dbl_click_time = abs (TOINT (getValue ("dbl_click_time", rc)));
 
-    set_settings_margin (MARGIN_LEFT, TOINT (getValue ("margin_left", rc)));
-    set_settings_margin (MARGIN_RIGHT, TOINT (getValue ("margin_right", rc)));
-    set_settings_margin (MARGIN_BOTTOM, TOINT (getValue ("margin_bottom",
+    set_settings_margin (LEFT, TOINT (getValue ("margin_left", rc)));
+    set_settings_margin (RIGHT, TOINT (getValue ("margin_right", rc)));
+    set_settings_margin (BOTTOM, TOINT (getValue ("margin_bottom",
                 rc)));
-    set_settings_margin (MARGIN_TOP, TOINT (getValue ("margin_top", rc)));
+    set_settings_margin (TOP, TOINT (getValue ("margin_top", rc)));
 
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))

@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -49,6 +49,7 @@
 #include "settings.h"
 #include "client.h"
 #include "menu.h"
+#include "focus.h"
 #include "keyboard.h"
 #include "workspaces.h"
 #include "session.h"
@@ -302,10 +303,10 @@ initialize (int argc, char **argv)
                                   1, MyDisplayFullHeight (dpy, screen), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
-    margins[MARGIN_LEFT] = gnome_margins[MARGIN_LEFT] = 0;
-    margins[MARGIN_RIGHT] = gnome_margins[MARGIN_RIGHT] = 0;
-    margins[MARGIN_BOTTOM] = gnome_margins[MARGIN_BOTTOM] = 0;
+    margins[TOP] = gnome_margins[TOP] = 0;
+    margins[LEFT] = gnome_margins[LEFT] = 0;
+    margins[RIGHT] = gnome_margins[RIGHT] = 0;
+    margins[BOTTOM] = gnome_margins[BOTTOM] = 0;
 
     initICCCMHints (dpy);
     initMotifHints (dpy);
@@ -372,6 +373,7 @@ initialize (int argc, char **argv)
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 
+    clientClearFocus ();
     clientFrameAll ();
 
     act.sa_handler = handleSignal;

@@ -3,41 +3,52 @@ bin_PROGRAMS = xfwm4
 xfwm4_SOURCES =								\
 	client.c							\
 	client.h							\
-	events.c 							\
-	events.h 							\
-	frame.c 							\
-	frame.h 							\
-	hints.c 							\
-	hints.h 							\
-	keyboard.c 							\
-	keyboard.h 							\
-	main.c 								\
-	main.h 								\
-	menu.c 								\
-	menu.h 								\
-	misc.c 								\
-	misc.h 								\
-	mypixmap.c 							\
-	mypixmap.h 							\
-	mywindow.c 							\
-	mywindow.h 							\
-	parserc.c 							\
-	parserc.h 							\
-	poswin.c 							\
-	poswin.h 							\
-	session.c 							\
-	session.h 							\
-	settings.c 							\
-	settings.h 							\
-	startup_notification.c 						\
-	startup_notification.h 						\
-	spinning_cursor.c 						\
-	spinning_cursor.h 						\
-	tabwin.c 							\
-	tabwin.h 							\
-	workspaces.c 							\
+	events.c							\
+	events.h							\
+	focus.c								\
+	focus.h								\
+	frame.c								\
+	frame.h								\
+	hints.c								\
+	hints.h								\
+	inline-tabwin-icon.h						\
+	keyboard.c							\
+	keyboard.h							\
+	main.c								\
+	main.h								\
+	menu.c								\
+	menu.h								\
+	misc.c								\
+	misc.h								\
+	mypixmap.c							\
+	mypixmap.h							\
+	mywindow.c							\
+	mywindow.h							\
+	netwm.c								\
+	netwm.h								\
+	parserc.c							\
+	parserc.h							\
+	placement.c							\
+	placement.h							\
+	poswin.c							\
+	poswin.h							\
+	session.c							\
+	session.h							\
+	settings.c							\
+	settings.h							\
+	spinning_cursor.c						\
+	spinning_cursor.h						\
+	stacking.c							\
+	stacking.h							\
+	startup_notification.c						\
+	startup_notification.h						\
+	tabwin.c							\
+	tabwin.h							\
+	transients.c							\
+	transients.h							\
+	workspaces.c							\
 	workspaces.h
-	
+
 xfwm4_CFLAGS =								\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
 	@LIBX11_CFLAGS@							\

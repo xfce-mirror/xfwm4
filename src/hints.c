@@ -646,14 +646,14 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int * m)
     ptr = data;
     for (i = 0; i < j; i++)
     {
-        *ptr++ = (unsigned long) m[MARGIN_LEFT];
-        *ptr++ = (unsigned long) m[MARGIN_TOP];
+        *ptr++ = (unsigned long) m[LEFT];
+        *ptr++ = (unsigned long) m[TOP];
         *ptr++ = (unsigned long) 
             (MyDisplayFullWidth (dpy, screen) - 
-                (m[MARGIN_LEFT] + m[MARGIN_RIGHT]));
+                (m[LEFT] + m[RIGHT]));
         *ptr++ = (unsigned long) 
             (MyDisplayFullHeight (dpy, screen) - 
-                (m[MARGIN_TOP] + m[MARGIN_BOTTOM]));
+                (m[TOP] + m[BOTTOM]));
     }
     XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
         32, PropModeReplace, (unsigned char *) data, j * 4);

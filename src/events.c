@@ -48,6 +48,8 @@
 #include "mywindow.h"
 #include "frame.h"
 #include "client.h"
+#include "transients.h"
+#include "focus.h"
 #include "events.h"
 #include "menu.h"
 #include "hints.h"

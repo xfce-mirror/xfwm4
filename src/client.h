@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
 
@@ -62,11 +62,6 @@
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
 
-#define NO_FOCUS_FLAG                   0
-#define FOCUS_SORT                      (1<<0)
-#define FOCUS_IGNORE_MODAL              (1<<1)
-#define FOCUS_FORCE                     (1<<2)
-
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
@@ -80,10 +75,18 @@
 #define UPDATE_CACHE                    (1<<3)
 #define UPDATE_ALL                      (UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY | UPDATE_CACHE)
 
-#define MARGIN_LEFT                     0
-#define MARGIN_RIGHT                    1
-#define MARGIN_TOP                      2
-#define MARGIN_BOTTOM                   3
+#define LEFT                            0
+#define RIGHT                           1
+#define TOP                             2
+#define BOTTOM                          3
+#define LEFT_START_Y                    4
+#define LEFT_END_Y                      5
+#define RIGHT_START_Y                   6
+#define RIGHT_END_Y                     7
+#define TOP_START_X                     8
+#define TOP_END_X                       9
+#define BOTTOM_START_X                  10
+#define BOTTOM_END_X                    11
 
 #define CLIENT_MIN_VISIBLE              10      /* pixels */
 
@@ -135,6 +138,15 @@
                                        CLIENT_FLAG_HAS_RESIZE
 
 #define ALL_WORKSPACES                 (int) 0xFFFFFFFF
+
+#define CONSTRAINED_WINDOW(c)          ((c->win_layer > WIN_LAYER_DESKTOP) && \
+					(c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
+				       !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
+				       !(c->legacy_fullscreen))
+
+#define WINDOW_TYPE_DIALOG               (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
+#define WINDOW_TYPE_DONT_PLACE           (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
+    
 
 /* Convenient macros */
 #define FLAG_TEST(flag,bits)                   (flag & (bits))
@@ -238,23 +250,11 @@ struct _Client
 extern Client *clients;
 extern unsigned int client_count;
 
-Client *clientGetTransient (Client *);
-gboolean clientIsTransient (Client *);
-gboolean clientIsModal (Client *);
-gboolean clientIsTransientOrModal (Client *);
-gboolean clientSameGroup (Client *, Client *);
-gboolean clientIsTransientFor (Client *, Client *);
-gboolean clientIsModalFor (Client *, Client *);
-gboolean clientIsTransientOrModalFor (Client *, Client *);
-gboolean clientIsTransientForGroup (Client *);
-gboolean clientIsModalForGroup (Client *);
-gboolean clientIsTransientOrModalForGroup (Client *);
 void clientClearLastOpTime (Client * c);
 void clientSetNetState (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
 void clientUpdateNetState (Client *, XClientMessageEvent *);
 void clientGetNetWmType (Client *);
-void clientPassGrabButton1(Client *);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
 void clientConfigure (Client *, XWindowChanges *, int, unsigned short);

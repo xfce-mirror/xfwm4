@@ -54,15 +54,16 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
-	xfwm4-frame.$(OBJEXT) xfwm4-hints.$(OBJEXT) \
-	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
-	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
+	xfwm4-focus.$(OBJEXT) xfwm4-frame.$(OBJEXT) \
+	xfwm4-hints.$(OBJEXT) xfwm4-keyboard.$(OBJEXT) \
+	xfwm4-main.$(OBJEXT) xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-mypixmap.$(OBJEXT) xfwm4-mywindow.$(OBJEXT) \
-	xfwm4-parserc.$(OBJEXT) xfwm4-poswin.$(OBJEXT) \
+	xfwm4-netwm.$(OBJEXT) xfwm4-parserc.$(OBJEXT) \
+	xfwm4-placement.$(OBJEXT) xfwm4-poswin.$(OBJEXT) \
 	xfwm4-session.$(OBJEXT) xfwm4-settings.$(OBJEXT) \
-	xfwm4-startup_notification.$(OBJEXT) \
-	xfwm4-spinning_cursor.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
-	xfwm4-workspaces.$(OBJEXT)
+	xfwm4-spinning_cursor.$(OBJEXT) xfwm4-stacking.$(OBJEXT) \
+	xfwm4-startup_notification.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
+	xfwm4-transients.$(OBJEXT) xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -70,6 +71,7 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfwm4-client.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-events.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-focus.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-frame.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-hints.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-keyboard.Po \
@@ -78,13 +80,17 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-misc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mypixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mywindow.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-netwm.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-placement.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-poswin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-spinning_cursor.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-stacking.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-startup_notification.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-tabwin.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-transients.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -248,39 +254,50 @@ target_alias = @target_alias@
 xfwm4_SOURCES = \
 	client.c							\
 	client.h							\
-	events.c 							\
-	events.h 							\
-	frame.c 							\
-	frame.h 							\
-	hints.c 							\
-	hints.h 							\
-	keyboard.c 							\
-	keyboard.h 							\
-	main.c 								\
-	main.h 								\
-	menu.c 								\
-	menu.h 								\
-	misc.c 								\
-	misc.h 								\
-	mypixmap.c 							\
-	mypixmap.h 							\
-	mywindow.c 							\
-	mywindow.h 							\
-	parserc.c 							\
-	parserc.h 							\
-	poswin.c 							\
-	poswin.h 							\
-	session.c 							\
-	session.h 							\
-	settings.c 							\
-	settings.h 							\
-	startup_notification.c 						\
-	startup_notification.h 						\
-	spinning_cursor.c 						\
-	spinning_cursor.h 						\
-	tabwin.c 							\
-	tabwin.h 							\
-	workspaces.c 							\
+	events.c							\
+	events.h							\
+	focus.c								\
+	focus.h								\
+	frame.c								\
+	frame.h								\
+	hints.c								\
+	hints.h								\
+	inline-tabwin-icon.h						\
+	keyboard.c							\
+	keyboard.h							\
+	main.c								\
+	main.h								\
+	menu.c								\
+	menu.h								\
+	misc.c								\
+	misc.h								\
+	mypixmap.c							\
+	mypixmap.h							\
+	mywindow.c							\
+	mywindow.h							\
+	netwm.c								\
+	netwm.h								\
+	parserc.c							\
+	parserc.h							\
+	placement.c							\
+	placement.h							\
+	poswin.c							\
+	poswin.h							\
+	session.c							\
+	session.h							\
+	settings.c							\
+	settings.h							\
+	spinning_cursor.c						\
+	spinning_cursor.h						\
+	stacking.c							\
+	stacking.h							\
+	startup_notification.c						\
+	startup_notification.h						\
+	tabwin.c							\
+	tabwin.h							\
+	transients.c							\
+	transients.h							\
+	workspaces.c							\
 	workspaces.h
 
 xfwm4_CFLAGS = \
@@ -380,6 +397,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-client.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-events.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-focus.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-frame.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-hints.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-keyboard.Po@am__quote@
@@ -388,13 +406,17 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-misc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mypixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mywindow.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-netwm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-parserc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-placement.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-poswin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-spinning_cursor.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-stacking.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-startup_notification.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-tabwin.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-transients.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
 
 .c.o:
@@ -468,6 +490,30 @@ xfwm4-events.lo: events.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-events.Plo' tmpdepfile='$(DEPDIR)/xfwm4-events.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-events.lo `test -f 'events.c' || echo '$(srcdir)/'`events.c
+
+xfwm4-focus.o: focus.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-focus.o -MD -MP -MF "$(DEPDIR)/xfwm4-focus.Tpo" -c -o xfwm4-focus.o `test -f 'focus.c' || echo '$(srcdir)/'`focus.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-focus.Tpo" "$(DEPDIR)/xfwm4-focus.Po"; else rm -f "$(DEPDIR)/xfwm4-focus.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='focus.c' object='xfwm4-focus.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-focus.Po' tmpdepfile='$(DEPDIR)/xfwm4-focus.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-focus.o `test -f 'focus.c' || echo '$(srcdir)/'`focus.c
+
+xfwm4-focus.obj: focus.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-focus.obj -MD -MP -MF "$(DEPDIR)/xfwm4-focus.Tpo" -c -o xfwm4-focus.obj `if test -f 'focus.c'; then $(CYGPATH_W) 'focus.c'; else $(CYGPATH_W) '$(srcdir)/focus.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-focus.Tpo" "$(DEPDIR)/xfwm4-focus.Po"; else rm -f "$(DEPDIR)/xfwm4-focus.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='focus.c' object='xfwm4-focus.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-focus.Po' tmpdepfile='$(DEPDIR)/xfwm4-focus.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-focus.obj `if test -f 'focus.c'; then $(CYGPATH_W) 'focus.c'; else $(CYGPATH_W) '$(srcdir)/focus.c'; fi`
+
+xfwm4-focus.lo: focus.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-focus.lo -MD -MP -MF "$(DEPDIR)/xfwm4-focus.Tpo" -c -o xfwm4-focus.lo `test -f 'focus.c' || echo '$(srcdir)/'`focus.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-focus.Tpo" "$(DEPDIR)/xfwm4-focus.Plo"; else rm -f "$(DEPDIR)/xfwm4-focus.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='focus.c' object='xfwm4-focus.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-focus.Plo' tmpdepfile='$(DEPDIR)/xfwm4-focus.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-focus.lo `test -f 'focus.c' || echo '$(srcdir)/'`focus.c
 
 xfwm4-frame.o: frame.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-frame.o -MD -MP -MF "$(DEPDIR)/xfwm4-frame.Tpo" -c -o xfwm4-frame.o `test -f 'frame.c' || echo '$(srcdir)/'`frame.c; \
@@ -661,6 +707,30 @@ xfwm4-mywindow.lo: mywindow.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mywindow.lo `test -f 'mywindow.c' || echo '$(srcdir)/'`mywindow.c
 
+xfwm4-netwm.o: netwm.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-netwm.o -MD -MP -MF "$(DEPDIR)/xfwm4-netwm.Tpo" -c -o xfwm4-netwm.o `test -f 'netwm.c' || echo '$(srcdir)/'`netwm.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-netwm.Tpo" "$(DEPDIR)/xfwm4-netwm.Po"; else rm -f "$(DEPDIR)/xfwm4-netwm.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='netwm.c' object='xfwm4-netwm.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-netwm.Po' tmpdepfile='$(DEPDIR)/xfwm4-netwm.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-netwm.o `test -f 'netwm.c' || echo '$(srcdir)/'`netwm.c
+
+xfwm4-netwm.obj: netwm.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-netwm.obj -MD -MP -MF "$(DEPDIR)/xfwm4-netwm.Tpo" -c -o xfwm4-netwm.obj `if test -f 'netwm.c'; then $(CYGPATH_W) 'netwm.c'; else $(CYGPATH_W) '$(srcdir)/netwm.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-netwm.Tpo" "$(DEPDIR)/xfwm4-netwm.Po"; else rm -f "$(DEPDIR)/xfwm4-netwm.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='netwm.c' object='xfwm4-netwm.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-netwm.Po' tmpdepfile='$(DEPDIR)/xfwm4-netwm.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-netwm.obj `if test -f 'netwm.c'; then $(CYGPATH_W) 'netwm.c'; else $(CYGPATH_W) '$(srcdir)/netwm.c'; fi`
+
+xfwm4-netwm.lo: netwm.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-netwm.lo -MD -MP -MF "$(DEPDIR)/xfwm4-netwm.Tpo" -c -o xfwm4-netwm.lo `test -f 'netwm.c' || echo '$(srcdir)/'`netwm.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-netwm.Tpo" "$(DEPDIR)/xfwm4-netwm.Plo"; else rm -f "$(DEPDIR)/xfwm4-netwm.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='netwm.c' object='xfwm4-netwm.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-netwm.Plo' tmpdepfile='$(DEPDIR)/xfwm4-netwm.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-netwm.lo `test -f 'netwm.c' || echo '$(srcdir)/'`netwm.c
+
 xfwm4-parserc.o: parserc.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-parserc.o -MD -MP -MF "$(DEPDIR)/xfwm4-parserc.Tpo" -c -o xfwm4-parserc.o `test -f 'parserc.c' || echo '$(srcdir)/'`parserc.c; \
 @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-parserc.Tpo" "$(DEPDIR)/xfwm4-parserc.Po"; else rm -f "$(DEPDIR)/xfwm4-parserc.Tpo"; exit 1; fi
@@ -684,6 +754,30 @@ xfwm4-parserc.lo: parserc.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-parserc.Plo' tmpdepfile='$(DEPDIR)/xfwm4-parserc.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-parserc.lo `test -f 'parserc.c' || echo '$(srcdir)/'`parserc.c
+
+xfwm4-placement.o: placement.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-placement.o -MD -MP -MF "$(DEPDIR)/xfwm4-placement.Tpo" -c -o xfwm4-placement.o `test -f 'placement.c' || echo '$(srcdir)/'`placement.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-placement.Tpo" "$(DEPDIR)/xfwm4-placement.Po"; else rm -f "$(DEPDIR)/xfwm4-placement.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='placement.c' object='xfwm4-placement.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-placement.Po' tmpdepfile='$(DEPDIR)/xfwm4-placement.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-placement.o `test -f 'placement.c' || echo '$(srcdir)/'`placement.c
+
+xfwm4-placement.obj: placement.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-placement.obj -MD -MP -MF "$(DEPDIR)/xfwm4-placement.Tpo" -c -o xfwm4-placement.obj `if test -f 'placement.c'; then $(CYGPATH_W) 'placement.c'; else $(CYGPATH_W) '$(srcdir)/placement.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-placement.Tpo" "$(DEPDIR)/xfwm4-placement.Po"; else rm -f "$(DEPDIR)/xfwm4-placement.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='placement.c' object='xfwm4-placement.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-placement.Po' tmpdepfile='$(DEPDIR)/xfwm4-placement.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-placement.obj `if test -f 'placement.c'; then $(CYGPATH_W) 'placement.c'; else $(CYGPATH_W) '$(srcdir)/placement.c'; fi`
+
+xfwm4-placement.lo: placement.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-placement.lo -MD -MP -MF "$(DEPDIR)/xfwm4-placement.Tpo" -c -o xfwm4-placement.lo `test -f 'placement.c' || echo '$(srcdir)/'`placement.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-placement.Tpo" "$(DEPDIR)/xfwm4-placement.Plo"; else rm -f "$(DEPDIR)/xfwm4-placement.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='placement.c' object='xfwm4-placement.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-placement.Plo' tmpdepfile='$(DEPDIR)/xfwm4-placement.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-placement.lo `test -f 'placement.c' || echo '$(srcdir)/'`placement.c
 
 xfwm4-poswin.o: poswin.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-poswin.o -MD -MP -MF "$(DEPDIR)/xfwm4-poswin.Tpo" -c -o xfwm4-poswin.o `test -f 'poswin.c' || echo '$(srcdir)/'`poswin.c; \
@@ -757,30 +851,6 @@ xfwm4-settings.lo: settings.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-settings.lo `test -f 'settings.c' || echo '$(srcdir)/'`settings.c
 
-xfwm4-startup_notification.o: startup_notification.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.o -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" -c -o xfwm4-startup_notification.o `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Po"; else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Po' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.o `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
-
-xfwm4-startup_notification.obj: startup_notification.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.obj -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" -c -o xfwm4-startup_notification.obj `if test -f 'startup_notification.c'; then $(CYGPATH_W) 'startup_notification.c'; else $(CYGPATH_W) '$(srcdir)/startup_notification.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Po"; else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Po' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.obj `if test -f 'startup_notification.c'; then $(CYGPATH_W) 'startup_notification.c'; else $(CYGPATH_W) '$(srcdir)/startup_notification.c'; fi`
-
-xfwm4-startup_notification.lo: startup_notification.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.lo -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Plo"; else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Plo' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
-
 xfwm4-spinning_cursor.o: spinning_cursor.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-spinning_cursor.o -MD -MP -MF "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" -c -o xfwm4-spinning_cursor.o `test -f 'spinning_cursor.c' || echo '$(srcdir)/'`spinning_cursor.c; \
 @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" "$(DEPDIR)/xfwm4-spinning_cursor.Po"; else rm -f "$(DEPDIR)/xfwm4-spinning_cursor.Tpo"; exit 1; fi
@@ -805,6 +875,54 @@ xfwm4-spinning_cursor.lo: spinning_cursor.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-spinning_cursor.lo `test -f 'spinning_cursor.c' || echo '$(srcdir)/'`spinning_cursor.c
 
+xfwm4-stacking.o: stacking.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-stacking.o -MD -MP -MF "$(DEPDIR)/xfwm4-stacking.Tpo" -c -o xfwm4-stacking.o `test -f 'stacking.c' || echo '$(srcdir)/'`stacking.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-stacking.Tpo" "$(DEPDIR)/xfwm4-stacking.Po"; else rm -f "$(DEPDIR)/xfwm4-stacking.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='stacking.c' object='xfwm4-stacking.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-stacking.Po' tmpdepfile='$(DEPDIR)/xfwm4-stacking.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-stacking.o `test -f 'stacking.c' || echo '$(srcdir)/'`stacking.c
+
+xfwm4-stacking.obj: stacking.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-stacking.obj -MD -MP -MF "$(DEPDIR)/xfwm4-stacking.Tpo" -c -o xfwm4-stacking.obj `if test -f 'stacking.c'; then $(CYGPATH_W) 'stacking.c'; else $(CYGPATH_W) '$(srcdir)/stacking.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-stacking.Tpo" "$(DEPDIR)/xfwm4-stacking.Po"; else rm -f "$(DEPDIR)/xfwm4-stacking.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='stacking.c' object='xfwm4-stacking.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-stacking.Po' tmpdepfile='$(DEPDIR)/xfwm4-stacking.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-stacking.obj `if test -f 'stacking.c'; then $(CYGPATH_W) 'stacking.c'; else $(CYGPATH_W) '$(srcdir)/stacking.c'; fi`
+
+xfwm4-stacking.lo: stacking.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-stacking.lo -MD -MP -MF "$(DEPDIR)/xfwm4-stacking.Tpo" -c -o xfwm4-stacking.lo `test -f 'stacking.c' || echo '$(srcdir)/'`stacking.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-stacking.Tpo" "$(DEPDIR)/xfwm4-stacking.Plo"; else rm -f "$(DEPDIR)/xfwm4-stacking.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='stacking.c' object='xfwm4-stacking.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-stacking.Plo' tmpdepfile='$(DEPDIR)/xfwm4-stacking.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-stacking.lo `test -f 'stacking.c' || echo '$(srcdir)/'`stacking.c
+
+xfwm4-startup_notification.o: startup_notification.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.o -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" -c -o xfwm4-startup_notification.o `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Po"; else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Po' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.o `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
+
+xfwm4-startup_notification.obj: startup_notification.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.obj -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" -c -o xfwm4-startup_notification.obj `if test -f 'startup_notification.c'; then $(CYGPATH_W) 'startup_notification.c'; else $(CYGPATH_W) '$(srcdir)/startup_notification.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Po"; else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Po' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.obj `if test -f 'startup_notification.c'; then $(CYGPATH_W) 'startup_notification.c'; else $(CYGPATH_W) '$(srcdir)/startup_notification.c'; fi`
+
+xfwm4-startup_notification.lo: startup_notification.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.lo -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Plo"; else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Plo' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
+
 xfwm4-tabwin.o: tabwin.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-tabwin.o -MD -MP -MF "$(DEPDIR)/xfwm4-tabwin.Tpo" -c -o xfwm4-tabwin.o `test -f 'tabwin.c' || echo '$(srcdir)/'`tabwin.c; \
 @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-tabwin.Tpo" "$(DEPDIR)/xfwm4-tabwin.Po"; else rm -f "$(DEPDIR)/xfwm4-tabwin.Tpo"; exit 1; fi
@@ -828,6 +946,30 @@ xfwm4-tabwin.lo: tabwin.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-tabwin.Plo' tmpdepfile='$(DEPDIR)/xfwm4-tabwin.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-tabwin.lo `test -f 'tabwin.c' || echo '$(srcdir)/'`tabwin.c
+
+xfwm4-transients.o: transients.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-transients.o -MD -MP -MF "$(DEPDIR)/xfwm4-transients.Tpo" -c -o xfwm4-transients.o `test -f 'transients.c' || echo '$(srcdir)/'`transients.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-transients.Tpo" "$(DEPDIR)/xfwm4-transients.Po"; else rm -f "$(DEPDIR)/xfwm4-transients.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='transients.c' object='xfwm4-transients.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-transients.Po' tmpdepfile='$(DEPDIR)/xfwm4-transients.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-transients.o `test -f 'transients.c' || echo '$(srcdir)/'`transients.c
+
+xfwm4-transients.obj: transients.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-transients.obj -MD -MP -MF "$(DEPDIR)/xfwm4-transients.Tpo" -c -o xfwm4-transients.obj `if test -f 'transients.c'; then $(CYGPATH_W) 'transients.c'; else $(CYGPATH_W) '$(srcdir)/transients.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-transients.Tpo" "$(DEPDIR)/xfwm4-transients.Po"; else rm -f "$(DEPDIR)/xfwm4-transients.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='transients.c' object='xfwm4-transients.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-transients.Po' tmpdepfile='$(DEPDIR)/xfwm4-transients.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-transients.obj `if test -f 'transients.c'; then $(CYGPATH_W) 'transients.c'; else $(CYGPATH_W) '$(srcdir)/transients.c'; fi`
+
+xfwm4-transients.lo: transients.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-transients.lo -MD -MP -MF "$(DEPDIR)/xfwm4-transients.Tpo" -c -o xfwm4-transients.lo `test -f 'transients.c' || echo '$(srcdir)/'`transients.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-transients.Tpo" "$(DEPDIR)/xfwm4-transients.Plo"; else rm -f "$(DEPDIR)/xfwm4-transients.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='transients.c' object='xfwm4-transients.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-transients.Plo' tmpdepfile='$(DEPDIR)/xfwm4-transients.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-transients.lo `test -f 'transients.c' || echo '$(srcdir)/'`transients.c
 
 xfwm4-workspaces.o: workspaces.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-workspaces.o -MD -MP -MF "$(DEPDIR)/xfwm4-workspaces.Tpo" -c -o xfwm4-workspaces.o `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c; \
