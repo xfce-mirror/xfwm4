@@ -6,10 +6,10 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.2 rc1\n"
+"Project-Id-Version: xfwm4 4.2 rc3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-11-10 07:57+0100\n"
-"PO-Revision-Date: 2004-11-14 19:01+0200\n"
+"PO-Revision-Date: 2005-01-09 00:33+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgstr "Jos:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
-msgstr "Spaţii de lucru şi Margini"
+msgstr "Spaţii de lucru şi margini"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
@@ -75,7 +75,7 @@ msgstr "Alegeţi un spaţiu de lucru pentru editare"
 
 #: mcs-plugin/workspaces.c:525
 msgid "Number of workspaces:"
-msgstr "Număr de spaţii de lucru:"
+msgstr "Numărul spaţiilor de lucru:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:556
@@ -139,7 +139,7 @@ msgstr "Dreapta"
 
 #: mcs-plugin/xfwm4_plugin.c:566
 msgid "Click and drag buttons to change the layout"
-msgstr "Aranjaţi aici butoanele ferestrelor cu mouse-ul"
+msgstr "Aranjaţi interactiv butoanele ferestrelor aici"
 
 #: mcs-plugin/xfwm4_plugin.c:571
 msgid "Active"
@@ -292,17 +292,15 @@ msgstr "Schimbare spaţii de lucru"
 
 #: mcs-plugin/xfwm4_plugin.c:1704
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Schimbă spaţiul curent când cursorul ajunge la marginea ecranului"
+msgstr "Schimbă spaţiul curent când cursorul ajunge la marginea ecranului"
 
 #: mcs-plugin/xfwm4_plugin.c:1709
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Schimbă spaţiul curent la tragerea unei ferestre înafara ecranului"
+msgstr "Schimbă spaţiul curent la tragerea unei ferestre înafara ecranului"
 
 #: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Edge Resistance :"
-msgstr "Rezistenţă margine:"
+msgstr "Rezistenţă margini:"
 
 #: mcs-plugin/xfwm4_plugin.c:1746
 msgid "Opaque move and resize"
@@ -330,7 +328,7 @@ msgstr "Avansate"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Chiar doriţi să ştergeţi această temă de combinaţii de taste?"
+msgstr "Sigur doriţi să ştergeţi această temă de combinaţii de taste?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
@@ -410,7 +408,7 @@ msgstr "Coborâre fereastră dedesubt"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:418 mcs-plugin/xfwm4_shortcuteditor.c:815
 msgid "Toggle fullscreen"
-msgstr "Comutare stare „pe toate ecranele”"
+msgstr "Comutare stare „pe tot ecranul”"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:423
 msgid "Upper workspace"
@@ -623,7 +621,7 @@ msgstr "Ma_ximizează"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "De_maximizează"
+msgstr "Dema_ximizează"
 
 #: src/menu.c:41
 msgid "_Hide"

@@ -2,39 +2,42 @@
 # Copyright (C) 2003 Free Software Foundation, Inc.
 # This file is distributed under the same license as the xfwm4 package.
 # Mantas <zaz@xxx.lt>, 2003.
+# Mantas <zaz@xxx.lt>, 2005.
+# 
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-12-10 06:26+0100\n"
-"PO-Revision-Date: 2004-10-30 01:46+0300\n"
-"Last-Translator: Mantas <zaz@xxx.lt>\n"
-"Language-Team: Lithuania <komp_lt@konf.lt>\n"
+"PO-Revision-Date: 2005-01-10 03:24+0200\n"
+"Last-Translator: Rimas Kudelis <rq@akl.lt>\n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
-msgstr "Darbo vietos paraštės"
+msgstr "Darbalaukio paraštės"
 
 #: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Paraštės yra ekrano kraštų vietos, kuriose langai negali būti padėti"
+msgstr ""
+"Paraštės yra ekrano kraštų erdvė, kurioje nebus padedami langai"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
-msgstr "Kairė"
+msgstr "Kairė:"
 
 #: mcs-plugin/margins.c:188
 msgid "Right :"
-msgstr "Dešinė"
+msgstr "Dešinė:"
 
 #: mcs-plugin/margins.c:208
 msgid "Top :"
-msgstr "Viršus"
+msgstr "Viršus:"
 
 #: mcs-plugin/margins.c:228
 msgid "Bottom :"
@@ -42,12 +45,12 @@ msgstr "Apačia:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
-msgstr "Darbo vietos ir paraštės"
+msgstr "Darbalaukiai ir paraštės"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 msgid "Workspaces"
-msgstr "Darbo laukai"
+msgstr "Darbalaukiai"
 
 #: mcs-plugin/plugin.c:173
 msgid "Margins"
@@ -55,7 +58,7 @@ msgstr "Paraštės"
 
 #: mcs-plugin/workspaces.c:343
 msgid "Change name"
-msgstr "Pakeisti pavadinimą"
+msgstr "Keisti pavadinimą"
 
 #: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:482
 #: mcs-plugin/xfwm4_shortcuteditor.c:491 mcs-plugin/xfwm4_shortcuteditor.c:500
@@ -64,7 +67,7 @@ msgstr "Pakeisti pavadinimą"
 #: mcs-plugin/xfwm4_shortcuteditor.c:545 mcs-plugin/xfwm4_shortcuteditor.c:554
 #, c-format
 msgid "Workspace %d"
-msgstr "Darbo laukas %i"
+msgstr "darbalaukis %d"
 
 #: mcs-plugin/workspaces.c:365
 msgid "Name:"
@@ -72,16 +75,16 @@ msgstr "Pavadinimas:"
 
 #: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
-msgstr "Spauskite ant darbalaukio norėdami pakeisti pavadinimą"
+msgstr "Spauskite ant darbalaukio pavadinimo, norėdami jį pakeisti"
 
 #: mcs-plugin/workspaces.c:525
 msgid "Number of workspaces:"
-msgstr "Darbo vietų skaičius:"
+msgstr "Darbalaukių kiekis:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:556
 msgid "Workspace names"
-msgstr "Darbo vietos pavadinimai"
+msgstr "Darbalaukių pavadinimai"
 
 #: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
@@ -93,7 +96,7 @@ msgstr "Prisegti"
 
 #: mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
-msgstr "Šešėlis"
+msgstr "Suvynioti"
 
 #: mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
@@ -101,15 +104,15 @@ msgstr "Paslėpti"
 
 #: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
-msgstr "išskleisti"
+msgstr "Išskleisti"
 
 #: mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
-msgstr "Uždaryti"
+msgstr "Užverti"
 
 #: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
-msgstr "Uždengti langą"
+msgstr "Suvynioti langą"
 
 #: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Hide window"
@@ -117,7 +120,7 @@ msgstr "Paslėpti langą"
 
 #: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Maximize window"
-msgstr "išskleisti langą"
+msgstr "Išskleisti langą"
 
 #: mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
@@ -137,7 +140,7 @@ msgstr "Dešinė"
 
 #: mcs-plugin/xfwm4_plugin.c:566
 msgid "Click and drag buttons to change the layout"
-msgstr "Paskauskite ir tempkite norėdami pakeisti išdėstymą"
+msgstr "Paskauskite ir tempkite, norėdami pakeisti išdėstymą"
 
 #: mcs-plugin/xfwm4_plugin.c:571
 msgid "Active"
@@ -161,11 +164,11 @@ msgstr "Šrifto pasirinkimo dialogas"
 
 #: mcs-plugin/xfwm4_plugin.c:1384 mcs-plugin/xfwm4_plugin.c:1903
 msgid "Window Manager"
-msgstr "Langų tvarkyklė"
+msgstr "Langų valdyklė"
 
 #: mcs-plugin/xfwm4_plugin.c:1397
 msgid "Window Manager Preferences"
-msgstr "Langų tvarkyklės nuostatos"
+msgstr "Langų valdyklės nustatymai"
 
 #: mcs-plugin/xfwm4_plugin.c:1426
 msgid "Title font"
@@ -178,7 +181,7 @@ msgstr "Pavadinimo lygiavimas"
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1445
 msgid "Text alignment inside title bar :"
-msgstr "Teksto lygiavimas pavadinimo juostoje :"
+msgstr "Teksto lygiavimas pavadinimo juostoje:"
 
 #: mcs-plugin/xfwm4_plugin.c:1447
 msgid "Button layout"
@@ -189,9 +192,8 @@ msgid "Style"
 msgstr "Stilius"
 
 #: mcs-plugin/xfwm4_plugin.c:1491
-#, fuzzy
 msgid "Window shortcuts"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Langų spartieji klavišai"
 
 #: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1544
 msgid "Command"
@@ -199,12 +201,11 @@ msgstr "Komanda"
 
 #: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1548
 msgid "Shortcut"
-msgstr "Nuoroda"
+msgstr "Klavišų kombinacija"
 
 #: mcs-plugin/xfwm4_plugin.c:1524
-#, fuzzy
 msgid "Command shortcuts"
-msgstr "Klaviatūros nuoroda"
+msgstr "Komandų spartieji klavišai"
 
 #: mcs-plugin/xfwm4_plugin.c:1563
 msgid "Keyboard"
@@ -216,37 +217,31 @@ msgstr "Fokusavimo modelis"
 
 #: mcs-plugin/xfwm4_plugin.c:1582
 msgid "Click to focus"
-msgstr "Spauskite norėdami fokusuoti"
+msgstr "Spustelti, norint fokusuoti"
 
 #: mcs-plugin/xfwm4_plugin.c:1589
 msgid "Focus follows mouse"
-msgstr "Dėmesys sutelkiamas pagal pelės poziciją"
+msgstr "Fokusavimas pagal pelės poziciją"
 
 #: mcs-plugin/xfwm4_plugin.c:1596
 msgid "New window focus"
 msgstr "Naujas langas dėmesio centre"
 
 #: mcs-plugin/xfwm4_plugin.c:1600
-#, fuzzy
 msgid "Automatically give focus to newly created windows"
-msgstr ""
-"Atomatiškai sutelkti dėmesį \n"
-"į naujai sukurtus langus"
+msgstr "Atomatiškai fokusuoti naujai sukurtus langus"
 
 #: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Raise on focus"
-msgstr "aiškelti kai fokusuojama"
+msgstr "Iškėlimas fokusuojant"
 
 #: mcs-plugin/xfwm4_plugin.c:1613
-#, fuzzy
 msgid "Automatically raise windows when they receive focus"
-msgstr ""
-"Automatiškai iškelti langus\n"
-"kai jie dėmesio centre"
+msgstr "Automatiškai iškelti fokusuojamus langus"
 
 #: mcs-plugin/xfwm4_plugin.c:1623
 msgid "Delay before raising focused window :"
-msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
+msgstr "Užlaikyti prieš iškeliant fokusuotą langą:"
 
 #: mcs-plugin/xfwm4_plugin.c:1629
 msgid "Slow"
@@ -261,11 +256,8 @@ msgid "Raise on click"
 msgstr "Iškelti paspaudus"
 
 #: mcs-plugin/xfwm4_plugin.c:1655
-#, fuzzy
 msgid "Raise window when clicking inside application window"
-msgstr ""
-"Iškelti langą kai spaudžiama viduje\n"
-"programos lango"
+msgstr "Iškelti langą kai spaudžiama jo viduje"
 
 #: mcs-plugin/xfwm4_plugin.c:1660
 msgid "Focus"
@@ -277,7 +269,7 @@ msgstr "Langų pritraukimas"
 
 #: mcs-plugin/xfwm4_plugin.c:1678
 msgid "Snap windows to screen border"
-msgstr "Užsklęsti langą į ekrano sieną"
+msgstr "Pritraukti langus prie ekrano krašto"
 
 #: mcs-plugin/xfwm4_plugin.c:1683
 msgid "Snap windows to other windows"
@@ -285,7 +277,7 @@ msgstr "Pritraukti langus prie kitų langų"
 
 #: mcs-plugin/xfwm4_plugin.c:1693
 msgid "Distance :"
-msgstr "Atstumas :"
+msgstr "Atstumas:"
 
 #: mcs-plugin/xfwm4_plugin.c:1699 mcs-plugin/xfwm4_plugin.c:1749
 msgid "Small"
@@ -293,51 +285,51 @@ msgstr "Mažas"
 
 #: mcs-plugin/xfwm4_plugin.c:1705 mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wide"
-msgstr "Plotis"
+msgstr "Didelis"
 
 #: mcs-plugin/xfwm4_plugin.c:1720
 msgid "Wrap workspaces"
-msgstr "Laužyti darbo vietas"
+msgstr "Darbalaukių keitimas"
 
 #: mcs-plugin/xfwm4_plugin.c:1728
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
+msgstr "Peršokti į kitą darbalaukį kai žymeklis pasiekia ekrano kraštą"
 
 #: mcs-plugin/xfwm4_plugin.c:1733
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Laužyti darbo vietas kai tempiamas langas yra už ekrano"
+msgstr "Peršokti į kitą darbalaukį, kai už ekrano krašto tempiamas langas"
 
 #: mcs-plugin/xfwm4_plugin.c:1743
 msgid "Edge Resistance :"
-msgstr "Kraštų atsparumas :"
+msgstr "Kraštų atsparumas:"
 
 #: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Opaque move and resize"
-msgstr "Nepermatomas perkėlimas ir dydžio pakeitimas"
+msgstr "Skaidrus perkėlimas ir dydžio pakeitimas"
 
 #: mcs-plugin/xfwm4_plugin.c:1778
 msgid "Display content of windows when resizing"
-msgstr "Keičiant lango dydį rodyti jo turinį"
+msgstr "Rodyti lango turinį, keičiant dydį"
 
 #: mcs-plugin/xfwm4_plugin.c:1783
 msgid "Display content of windows when moving"
-msgstr "Perkeliant langą rodyti jo turinį"
+msgstr "Rodyti perkeliamo lango turinį"
 
 #: mcs-plugin/xfwm4_plugin.c:1788
 msgid "Double click action"
-msgstr "Veiksmas dukart spragtelėti"
+msgstr "Veiksmas dukart spragtelėjus"
 
 #: mcs-plugin/xfwm4_plugin.c:1794
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
+msgstr "Veiksmas, atliekamas dukart spragtelėjus ant lango pavadinimo juostos:"
 
 #: mcs-plugin/xfwm4_plugin.c:1796
 msgid "Advanced"
-msgstr "Išplėstas"
+msgstr "Išsamiau"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Ar tikrai norite pašalinti šiuos klavišų susiejimus"
+msgstr "Ar tikrai norite pašalinti šią klavišų susiejimų temą?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
@@ -357,186 +349,163 @@ msgstr "Turite nurodyti klavišų susiejimo temos vardą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:346
 msgid "Close window"
-msgstr "Paslėpti langą"
+msgstr "Užverti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Maximize window vertically"
-msgstr "Išskleisti langą vertikaliai"
+msgstr "Išplėsti langą vertikaliai"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Maximize window horizontally"
-msgstr "Išskleisti langą horizontaliai"
+msgstr "Išplėsti langą horizontaliai"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Stick window"
-msgstr "Priklijuoti langą"
+msgstr "Prisegti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:381
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Paslėpti langą"
+msgstr "Keisti aktyvų langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:386
-#, fuzzy
 msgid "Move window up"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą aukščiau"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:391
-#, fuzzy
 msgid "Move window down"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą žemiau"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:396
-#, fuzzy
 msgid "Move window left"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą kairiau"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:401
-#, fuzzy
 msgid "Move window right"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą dešiniau"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:406
-#, fuzzy
 msgid "Resize window up"
-msgstr "Paslėpti langą"
+msgstr "Padidinti langą viršun"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:411
-#, fuzzy
 msgid "Resize window down"
-msgstr "Paslėpti langą"
+msgstr "Padidinti langą žemyn"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:416
-#, fuzzy
 msgid "Resize window left"
-msgstr "Paslėpti langą"
+msgstr "Padidinti langą kairėn"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:421
-#, fuzzy
 msgid "Resize window right"
-msgstr "Paslėpti langą"
+msgstr "Padidinti langą dešinėn"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:426
 msgid "Raise window"
 msgstr "Iškelti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:431
-#, fuzzy
 msgid "Lower window"
-msgstr "Paslėpti langą"
+msgstr "Nuleisti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:436
-#, fuzzy
 msgid "Toggle fullscreen"
-msgstr "Neįmanoma gauti pagrindinio ekrano"
+msgstr "Perjungti pilnaekranę būseną"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:441
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pereiti į aukštesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:446
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pereiti į žemesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:451
-#, fuzzy
 msgid "Left workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pereiti į kairesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:456
-#, fuzzy
 msgid "Right workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pereiti į dešinesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:461
-#, fuzzy
 msgid "Next workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pereiti į kitą darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:466
-#, fuzzy
 msgid "Previous workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pereiti į ankstesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:471
 msgid "Add workspace"
-msgstr "Pridėti darbo lauką"
+msgstr "Pridėti darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:476
 msgid "Delete workspace"
-msgstr "Panaikinti Darbo lauką"
+msgstr "Pašalinti darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:562
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į kitą darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:567
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Perkelti langą į ankstesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į aukštesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:577
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į žemesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:582
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į kairesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:587
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į dešinesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:592
 msgid "Move window to workspace 1"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į pirmąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:597
 msgid "Move window to workspace 2"
-msgstr "Perkelti langą į darbo lauką 2"
+msgstr "Perkelti langą į antrąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:602
 msgid "Move window to workspace 3"
-msgstr "Perkelti langą į darbo lauką 3"
+msgstr "Perkelti langą į trečiąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:607
 msgid "Move window to workspace 4"
-msgstr "Perkelti langą į darbo lauką 4"
+msgstr "Perkelti langą į ketvirtąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:612
 msgid "Move window to workspace 5"
-msgstr "Perkelti langą į darbo lauką 5"
+msgstr "Perkelti langą į penktąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:617
 msgid "Move window to workspace 6"
-msgstr "Perkelti langą į darbo lauką 6"
+msgstr "Perkelti langą į šeštąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:622
 msgid "Move window to workspace 7"
-msgstr "Perkelti langą į darbo lauką 7"
+msgstr "Perkelti langą į septintąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:627
 msgid "Move window to workspace 8"
-msgstr "Perkelti langą į darbo lauką 8"
+msgstr "Perkelti langą į aštuntąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:632
 msgid "Move window to workspace 9"
-msgstr "Perkelti langą į darbo lauką 9"
+msgstr "Perkelti langą į devintąjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:839
 msgid "Cannot open the theme directory !"
-msgstr "Neįmanoma atidaryti temos katalogo !"
+msgstr "Nepavyko atverti temų aplanko!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:858
 #, c-format
@@ -544,7 +513,7 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
-"Neįmanoma atidaryti %s : \n"
+"Nepavyko atverti %s : \n"
 "%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:873 mcs-plugin/xfwm4_shortcuteditor.c:884
@@ -553,36 +522,35 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Neįmanoma įrašyti į %s : \n"
+"Nepavyko įrašyti į %s : \n"
 "%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:934
 msgid "Select command"
-msgstr "Pasirinkite komandą"
+msgstr "Parinkite komandą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1080
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
+"Šis klavišų derinys jau naudojamas!\n"
+"Ar tikrai norite jį naudoti?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1143
-#, fuzzy
 msgid "Compose shortcut for :"
-msgstr "Klaviatūros nuoroda"
+msgstr "Sukurti kombinaciją kam:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1146
 #: mcs-plugin/xfwm4_shortcuteditor.c:1374
-#, fuzzy
 msgid "Compose shortcut"
-msgstr "Klaviatūros nuoroda"
+msgstr "Sukurkite kombinaciją"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1148
 #: mcs-plugin/xfwm4_shortcuteditor.c:1376
-#, fuzzy
 msgid "No shortcut"
-msgstr "Klaviatūros nuoroda"
+msgstr "Kombinacijos nėra"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1270
@@ -591,36 +559,36 @@ msgstr "Pasirinkite komandą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
 msgid "Command :"
-msgstr "Komanda"
+msgstr "Komanda:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1308
 msgid "The command doesn't exist or the file is not executable !"
-msgstr "Tokios komandos nėra arba byla nėra paleidžiamoji !"
+msgstr "Tokios komandos nėra arba byla nėra vykdomoji!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1371
 msgid "Compose shortcut for command :"
-msgstr ""
+msgstr "Sukurkite kombinaciją komandai:"
 
 #: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr "%s: Segmentacijos klaida"
+msgstr "%s: segmentacijos klaida"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
-msgstr "Iš_skleisti"
+msgstr "_Išskleisti"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "A_tstatyti"
+msgstr "_Atstatyti"
 
 #: src/menu.c:41
 msgid "_Hide"
-msgstr "_Paslėpti"
+msgstr "Pas_lėpti"
 
 #: src/menu.c:42
 msgid "Hide _all others"
-msgstr "Visus kitus p_aslėpti"
+msgstr "Paslėpti _kitus"
 
 #: src/menu.c:43
 msgid "S_how"
@@ -628,23 +596,23 @@ msgstr "_Rodyti"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr "_Uždengti"
+msgstr "_Suvynioti"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr "_Atidengti"
+msgstr "Iš_vynioti"
 
 #: src/menu.c:46
 msgid "S_tick"
-msgstr "Priseg_ti"
+msgstr "Prise_gti"
 
 #: src/menu.c:47
 msgid "Uns_tick"
-msgstr "Nuseg_ti"
+msgstr "_Nusegti"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "Konteksto _pagalba"
+msgstr "Kontekstinė _pagalba"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
@@ -652,11 +620,11 @@ msgstr "Visada viršuje"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr "Siųsti į..."
+msgstr "Siųsti į…"
 
 #: src/menu.c:53
 msgid "_Close"
-msgstr "_Uždaryti"
+msgstr "_Užverti"
 
 #: src/menu.c:56
 msgid "Destroy"
@@ -664,150 +632,52 @@ msgstr "Sunaikinti"
 
 #: src/menu.c:59
 msgid "_Quit"
-msgstr "_Baigti"
+msgstr "_Išeiti"
 
 #: src/menu.c:60
 msgid "Restart"
-msgstr "Perkrauti"
+msgstr "Peleisti"
 
 #: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
-msgstr "Darbo laukas %i (%s)"
+msgstr "Darbalaukis %i (%s)"
 
 #: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
-msgstr "Darbo laukas %i"
+msgstr "Darbalaukis %i"
 
 #: src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu nesugebėjo sugauti rodyklės\n"
+msgstr "%s: GtkMenu nepavyko sugauti rodyklės\n"
 
 #: src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Neįmanoma paskirti aktyvios spalvos %s\n"
+msgstr "%s: Nepavyko paskirti aktyvios spalvos %s\n"
 
 #: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Neįmanoma sužinoti aktyvios spalvos %s\n"
+msgstr "%s: Nepavyko sužinoti aktyvios spalvos %s\n"
 
 #: src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Neįmanoma paskirti pasyvios spalvos %s\n"
+msgstr "%s: Nepavyko paskirti pasyvios spalvos %s\n"
 
 #: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Neįmanoma sužinoti pasyvios spalvos %s\n"
+msgstr "%s: Nepavyko sužinoti pasyvios spalvos %s\n"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr "Perjungti į ..."
+msgstr "Perjungti į…"
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Nežinoma programa!"
 
-#~ msgid "Workspace 1"
-#~ msgstr "Darbo laukas 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Darbo laukas 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Darbo laukas 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Darbo laukas 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Darbo laukas 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Darbo laukas 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Darbo laukas 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Darbo laukas 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Darbo laukas 9"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: Operacija nėra palaikoma (kolkas)\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: Neapdorota net_wm_state (window·0x%lx)"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: Kita langų tvarkyklė jau veikia"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: Neįmanoma paskirti pasyvios spalvos %s\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: Kita langų tvarkyklė jau veikia"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: Trūksta duomenų iš numatytojo failo"
-
-#~ msgid "%s: Failed to enter daemon mode: %s"
-#~ msgstr "%s: Neįmanoma paleisti demono režimo: %s"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: Neįmanoma sukurti naujo proceso: %s"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: Įvyko nežinoma klaida"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s:Nėra numatytojo failo"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr ""
-#~ "%s: nustatytoji klavišų tema \"%s\"·neegzistuoja, naudojama pagrindinė"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s: Trūksta reikšmių numatytame faile"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr ""
-#~ "Atomatiškai sutelkti dėmesį \n"
-#~ "į naujai sukurtus langus"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr ""
-#~ "Automatiškai iškelti langus\n"
-#~ "kai jie dėmesio centre"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr ""
-#~ "Iškelti langą kai spaudžiama viduje\n"
-#~ "programos lango"
-
-#~ msgid "Decoration style"
-#~ msgstr "Dekoravimo stilius"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "Klaviatūra ir dėmesio centras"
-
-#~ msgid "%s: Workspace count not set, using rc value: %i"
-#~ msgstr "%s: Darbo vietų skaičius nenustatytas, naudojamos rc reikšmės: %i"

@@ -54,8 +54,13 @@
 #define SHADOW_OPACITY  0.66
 #endif /* SHADOW_OPACITY */
 
-#define SHADOW_OFFSET_X (-SHADOW_RADIUS * 5 / 4)
-#define SHADOW_OFFSET_Y (-SHADOW_RADIUS * 5 / 4)
+#ifndef SHADOW_OFFSET_X
+#define SHADOW_OFFSET_X (SHADOW_RADIUS * -3 /2)
+#endif /* SHADOW_OFFSET_X */
+
+#ifndef SHADOW_OFFSET_Y
+#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
+#endif /* SHADOW_OFFSET_Y */
 
 typedef struct _CWindow CWindow;
 struct _CWindow

@@ -2,7 +2,6 @@
 #
 
 SUBDIRS =								\
-	breeze								\
 	default								\
 	default.keys							\
 	default-4.0							\
