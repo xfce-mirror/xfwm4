@@ -24,6 +24,10 @@
 #endif
 
 #include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xatom.h>
+#include <X11/extensions/shape.h>
+
 #include <glib.h>
 #include <math.h>
 #include <libxfce4util/libxfce4util.h> 
@@ -479,7 +483,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     if (shadowImage == NULL)
     {
         *wp = *hp = 0;
-	return (None);
+        return (None);
     }
 
     shadowPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, 
@@ -1318,8 +1322,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
     else
     {
         screen_info = myDisplayGetScreenFromRoot (display_info, new->attr.root);
-        /* We must be notified of property changes for transparency, even if the win is not managed */
-        XSelectInput (display_info->dpy, id, PropertyChangeMask | StructureNotifyMask);
     }
 
     if (!screen_info)
@@ -1330,6 +1332,19 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         return;
     }
     
+
+    if (c == NULL)
+    {
+        /* We must be notified of property changes for transparency, even if the win is not managed */
+        XSelectInput (display_info->dpy, id, PropertyChangeMask | StructureNotifyMask);
+
+       /* Same for shape events */
+       if (display_info->shape)
+       {
+           XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
+       }
+    }
+
     if (id == screen_info->xroot)
     {
         g_free (new);
