@@ -1405,7 +1405,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     DBG("entering clientConstraintPos %s\n", show_title ? "(with show full)" : "(w/out show full)");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
     
-    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         DBG("ignoring constrained for client \"%s\" (%#lx)\n", c->name, c->window);
         return;
