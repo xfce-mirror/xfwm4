@@ -106,7 +106,7 @@ static void clientSetHeight(Client * c, int h1);
 static inline void clientApplyStackList(GSList * list);
 static inline Client *clientGetLowestTransient(Client * c);
 static inline Client *clientGetHighestTransient(Client * c);
-static inline Client *clientGetHighestTransientForGroup(Client * c);
+static inline Client *clientGetHighestForTransient(Client * c);
 static inline Client *clientGetTopMostForGroup(Client * c);
 static inline gboolean clientVisibleForGroup(Client * c, int workspace);
 static inline Client *clientGetNextTopMost(int layer, Client * exclude);
@@ -192,8 +192,6 @@ gboolean clientSameGroup(Client *c1, Client *c2)
 
 gboolean clientIsTransientFor(Client *c1, Client *c2)
 {
-    Client *c3 = NULL;
-    
     g_return_val_if_fail(c1 != NULL, FALSE);
     g_return_val_if_fail(c2 != NULL, FALSE);
 
@@ -203,8 +201,7 @@ gboolean clientIsTransientFor(Client *c1, Client *c2)
     {
         if (c1->transient_for != root)
         {
-            c3 = clientGetFromWindow(c1->transient_for, WINDOW);
-            return (c2 == c3);
+            return (c1->transient_for == c2->window);
         }
         else
         {
@@ -1004,10 +1001,11 @@ static void clientWindowType(Client * c)
 
         TRACE("Window is a transient");
 
-        c2 = clientGetHighestTransientForGroup(c);
+        c2 = clientGetHighestForTransient(c);
         if(c2)
         {
             c->initial_layer = c2->win_layer;
+            TRACE("Applied layer is %i", c->initial_layer);
         }
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
@@ -1504,21 +1502,21 @@ static inline Client *clientGetHighestTransient(Client * c)
     return highest_transient;
 }
 
-static inline Client *clientGetHighestTransientForGroup(Client * c)
+static inline Client *clientGetHighestForTransient(Client * c)
 {
     Client *highest_transient = NULL;
     Client *c2;
     GSList *index;
 
     g_return_val_if_fail(c != NULL, NULL);
-    TRACE("entering clientGetHighestTransientForGroup");
+    TRACE("entering clientGetHighestForTransient");
 
     for(index = windows_stack; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
         if(c2)
         {
-            if((c2 != c) && clientIsTransientFor(c2, c))
+            if(clientIsTransientFor(c, c2))
             {
                 highest_transient = c2;
             }
@@ -1559,7 +1557,7 @@ static inline gboolean clientVisibleForGroup(Client * c, int workspace)
     GSList *index;
 
     g_return_val_if_fail(c != NULL, FALSE);
-    TRACE("entering clientGetHighestTransientForGroup");
+    TRACE("entering clientVisibleForGroup");
 
     for(index = windows_stack; index; index = g_slist_next(index))
     {
