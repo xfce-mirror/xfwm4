@@ -3772,10 +3772,9 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 /* If KEY_CYCLE_WINDOWS has Shift, then stop cycling on Shift
                  * release.
                  */
-                if (IsModifierKey (keysym)
-                        && ( (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier
-                             & ShiftMask)
-                        || (keysym != XK_Shift_L && keysym != XK_Shift_R) ) )
+                if (IsModifierKey (keysym) &&
+                    ((screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask) || 
+                     ((keysym != XK_Shift_L) && (keysym != XK_Shift_R))))
                 {
                     cycling = FALSE;
                 }
@@ -3848,8 +3847,8 @@ clientCycle (Client * c, XEvent * e)
     }
     passdata.c = clientGetNext (c, passdata.cycle_range);
 
-    /* If there is one single client, and if it's hidden, use it */
-    if (passdata.c == NULL)
+    /* If there is one single client, and if it's eligible for focus, use it */
+    if ((passdata.c == NULL) && clientSelectMask (c, passdata.cycle_range, WINDOW_REGULAR_FOCUSABLE))
     {
         passdata.c = c;
     }
