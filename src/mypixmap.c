@@ -42,6 +42,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
     GdkPixbuf *alpha;
     GdkPixbuf *src;
     GdkPixmap *destw;
+    GdkColormap *cmap;
     GError *error = NULL;
 
     filepng = g_strdup_printf ("%s.%s", file, "png");
@@ -66,20 +67,58 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
         g_object_unref (alpha);
         return FALSE;
     }
-    destw = gdk_pixmap_foreign_new (pm->pixmap);
+    destw = gdk_xid_table_lookup (pm->pixmap);
+    if (destw)
+    {
+        g_object_ref (G_OBJECT (destw));
+    }
+    else
+    {
+         destw = gdk_pixmap_foreign_new (pm->pixmap);
+    }
+    
     if (!destw)
     {
         DBG ("Cannot get pixmap");
         g_object_unref (alpha);
         return FALSE;
     }
-    
-    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), gdk_screen_get_rgb_colormap (md->gscr), 
+
+    cmap = gdk_drawable_get_colormap (destw);
+    if (cmap)
+    {
+        g_object_ref (G_OBJECT (cmap));
+    }
+    if (cmap == NULL)
+    {
+        if (gdk_drawable_get_depth (destw) == 1)
+        {
+            cmap = NULL;
+        }
+        else
+        {
+            cmap = gdk_screen_get_rgb_colormap (md->gscr);
+            g_object_ref (G_OBJECT (cmap));
+        }
+    }
+
+    if (cmap && (gdk_colormap_get_visual (cmap)->depth != gdk_drawable_get_depth (destw)))
+    {
+        g_object_unref (G_OBJECT (cmap));
+        cmap = NULL;
+    }
+
+    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap, 
                                         0, 0, 0, 0, pm->width, pm->height);
     gdk_pixbuf_composite (alpha, src, 0, 0, pm->width, pm->height,
                           0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
                      pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);                 
+
+    if (cmap)
+    {
+        g_object_unref (G_OBJECT (cmap));
+    }
     g_object_unref (alpha);
     g_object_unref (src);
     g_object_unref (destw);

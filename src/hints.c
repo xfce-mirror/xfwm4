@@ -119,6 +119,7 @@ Atom utf8_string;
 /* KDE extension */
 Atom kde_net_wm_context_help;
 Atom kde_net_wm_system_tray_window_for;
+Atom kwm_win_icon;
 
 /* Systray similation for older KDE apps */
 Atom net_system_tray_manager;
@@ -314,6 +315,7 @@ initKDEHints (Display * dpy)
         XInternAtom (dpy, "_NET_WM_CONTEXT_HELP", FALSE);
     kde_net_wm_system_tray_window_for = 
         XInternAtom (dpy, "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR", FALSE);
+    kwm_win_icon = XInternAtom (dpy, "KWM_WIN_ICON", FALSE);
 }
 
 void
@@ -1039,6 +1041,65 @@ getWindowCommand (Display * dpy, Window window, char ***argv, int *argc)
         }
     }
     return FALSE;
+}
+
+gboolean
+getKDEIcon (Display * dpy, Window window, Pixmap * pixmap, Pixmap * mask)
+{
+    Atom type;
+    int format;
+    unsigned long nitems;
+    unsigned long bytes_after;
+    Pixmap *icons;
+
+    *pixmap = None;
+    *mask = None;
+
+    icons = NULL;
+    if (XGetWindowProperty (dpy, window, kwm_win_icon, 0L, G_MAXLONG,
+            FALSE, kwm_win_icon, &type, &format, &nitems, &bytes_after,
+	    (unsigned char **)&icons) != Success)
+    {
+        return FALSE;
+    }
+
+    if (type != kwm_win_icon)
+    {
+        XFree (icons);
+        return FALSE;
+    }
+
+    *pixmap = icons[0];
+    *mask = icons[1];
+
+    XFree (icons);
+
+    return TRUE;
+}
+
+gboolean
+getRGBIconData (Display * dpy, Window window, unsigned long **data, unsigned long *nitems)
+{
+    Atom type;
+    int format;
+    unsigned long bytes_after;
+
+    if (XGetWindowProperty (dpy, window, net_wm_icon, 0L, G_MAXLONG,
+                            FALSE, XA_CARDINAL, &type, &format, nitems,
+                            &bytes_after, (unsigned char **)data) != Success)
+    {
+	data = NULL;
+        return FALSE;
+    }
+    
+    if (type != XA_CARDINAL)
+    {
+        XFree (*data);
+	data = NULL;
+        return FALSE;
+    }
+
+    return TRUE;
 }
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION

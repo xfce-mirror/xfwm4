@@ -185,6 +185,7 @@ extern Atom net_workarea;
 /* KDE extension */
 extern Atom kde_net_wm_context_help;
 extern Atom kde_net_wm_system_tray_window_for;
+extern Atom kwm_win_icon;
 
 /* Systray similation for older KDE apps */
 extern Atom net_system_tray_manager;
@@ -223,6 +224,9 @@ Window getClientLeader (Display *, Window);
 gboolean getNetWMUserTime (Display *, Window, Time *);
 gboolean getClientID (Display *, Window, char **);
 gboolean getWindowCommand (Display *, Window, char ***, int *);
+gboolean getKDEIcon (Display *, Window, Pixmap *, Pixmap *);
+gboolean getRGBIconData (Display *, Window, unsigned long **, unsigned long *);
+
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId (Display *, Window, char **);
 #endif
