@@ -1,0 +1,10 @@
+full_width_title=true
+button_spacing=0
+title_horizontal_offset=-30
+title_alignment=left
+button_offset=-2
+button_layout=O|HMC
+active_text_color=#ffffff
+inactive_text_color=#cccccc
+title_shadow_active=true
+title_shadow_inactive=true

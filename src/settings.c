@@ -37,6 +37,7 @@
 
 MyKey keys[KEY_COUNT];
 MyColor title_colors[2];
+int title_shadow[2];
 char button_layout[8];
 int title_alignment;
 int full_width_title;
@@ -57,6 +58,8 @@ int snap_to_border;
 int snap_width;
 int dbl_click_time;
 GC box_gc;
+GdkGC *black_gc;
+GdkGC *white_gc;
 MyPixmap sides[3][2];
 MyPixmap corners[4][2];
 MyPixmap buttons[BUTTON_COUNT][3];
@@ -89,6 +92,8 @@ void loadSettings()
         {"keytheme", NULL, FALSE},
         {"title_alignment", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
+        {"title_shadow_active", NULL, TRUE},
+        {"title_shadow_inactive", NULL, TRUE},
         {"button_layout", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
         {"title_vertical_offset_active", NULL, TRUE},
@@ -241,6 +246,20 @@ void loadSettings()
         g_message("Cannot parse active color %s\n", rc[0].value);
     }
 
+    if (black_gc)
+    {
+        g_object_unref (G_OBJECT(black_gc));
+    }
+    black_gc = widget->style->black_gc;
+    g_object_ref (G_OBJECT(widget->style->black_gc));
+
+    if (white_gc)
+    {
+        g_object_unref (G_OBJECT(white_gc));
+    }
+    white_gc = widget->style->white_gc;
+    g_object_ref (G_OBJECT(widget->style->white_gc));
+    
     if(title_colors[INACTIVE].allocated)
     {
         gdk_colormap_free_colors(gdk_colormap_get_system(), &title_colors[INACTIVE].col, 1);
@@ -327,6 +346,8 @@ void loadSettings()
         title_alignment = ALIGN_CENTER;
     }
     full_width_title = !g_ascii_strcasecmp("true", getValue("full_width_title", rc));
+    title_shadow[ACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_active", rc));
+    title_shadow[INACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_inactive", rc));
 
     strncpy(button_layout, getValue("button_layout", rc), 7);
     button_spacing = TOINT(getValue("button_spacing", rc));
@@ -492,6 +513,8 @@ void reloadSettings()
 
 void initSettings(void)
 {
+    black_gc = NULL;
+    white_gc = NULL;
     title_colors[ACTIVE].gc = NULL;
     title_colors[ACTIVE].allocated = FALSE;
     title_colors[INACTIVE].gc = NULL;

@@ -13,7 +13,7 @@ Oroborus: Ken Lynch <kenlynch@blueyonder.co.uk>
 Metacity: Havoc Pennington <hp@redhat.com>
 Sawfish:  John Harper <jsh@unfactored.org>
 
-The default theme (kindaker) is based on a KDE theme called "Keramik" by :
+The theme kindaker is based on a KDE theme called "Keramik" by :
 
 
   Keramik style:
@@ -24,4 +24,9 @@ The default theme (kindaker) is based on a KDE theme called "Keramik" by :
   --------------------
   Fredrik Hoglund (fredrik@kde.org)
 
-See http://www.kde-look.org/content/show.php?content=1961 for details.
+  See http://www.kde-look.org/content/show.php?content=1961 for details.
+
+The theme koynacity  is a port of Metacity's theme "Koynacity-Blue" (c) 
+by David Spencer Wysinger <spencer@wysinger.com>
+
+  See http://www.wysinger.com/personal/stuff/themes/koynacity

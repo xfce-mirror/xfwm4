@@ -6,3 +6,5 @@ button_spacing=0
 title_vertical_offset_active=0
 title_vertical_offset_inactive=0
 title_horizontal_offset=8
+title_shadow_active=true
+title_shadow_inactive=false

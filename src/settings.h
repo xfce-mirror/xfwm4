@@ -55,6 +55,7 @@ struct _Settings
 
 extern MyKey keys[KEY_COUNT];
 extern MyColor title_colors[2];
+extern int title_shadow[2];
 extern char button_layout[8];
 extern int title_alignment;
 extern int full_width_title;
@@ -75,6 +76,8 @@ extern int snap_to_border;
 extern int snap_width;
 extern int dbl_click_time;
 extern GC box_gc;
+extern GdkGC *black_gc;
+extern GdkGC *white_gc;
 extern MyPixmap sides[3][2];
 extern MyPixmap corners[4][2];
 extern MyPixmap buttons[BUTTON_COUNT][3];

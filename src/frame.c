@@ -261,8 +261,6 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     gpixmap = gdk_pixmap_foreign_new(pm->pixmap);
     gdk_drawable_set_colormap(gpixmap, gdk_colormap_get_system());
     gc = gdk_gc_new(gpixmap);
-    gdk_gc_get_values(title_colors[state].gc, &values);
-    gdk_gc_set_values(gc, &values, GDK_GC_FOREGROUND);
 
     if(w1 > 0)
     {
@@ -279,6 +277,14 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     {
         fillRectangle(dpy, pm->pixmap, title[TITLE_3][state].pixmap, x, 0, w3, frameTop(c));
         fillRectangle(dpy, pm->mask, title[TITLE_3][state].mask, x, 0, w3, frameTop(c));
+        if (title_shadow[state])
+	{
+            gdk_gc_get_values(black_gc, &values);
+	    gdk_gc_set_values(gc, &values, GDK_GC_FOREGROUND);
+            gdk_draw_layout(gpixmap, gc, x + tp + 1, (frameTop(c) + (state == INACTIVE ? title_vertical_offset_inactive : title_vertical_offset_active) - logical_rect.height) / 2 + 1, layout);
+	}
+	gdk_gc_get_values(title_colors[state].gc, &values);
+	gdk_gc_set_values(gc, &values, GDK_GC_FOREGROUND);
         gdk_draw_layout(gpixmap, gc, x + tp, (frameTop(c) + (state == INACTIVE ? title_vertical_offset_inactive : title_vertical_offset_active) - logical_rect.height) / 2, layout);
         x = x + w3;
     }

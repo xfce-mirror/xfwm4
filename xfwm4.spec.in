@@ -82,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/iceg
 %{_datadir}/xfwm4/themes/kde
 %{_datadir}/xfwm4/themes/keramik
+%{_datadir}/xfwm4/themes/koynacity
 %{_datadir}/xfwm4/themes/linea
 %{_datadir}/xfwm4/themes/metabox
 %{_datadir}/xfwm4/themes/microgui
