@@ -264,7 +264,7 @@ void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
 void clientGrabButtons (Client *);
 void clientUngrabButtons (Client *);
-void clientPassGrabButtons(Client *);
+void clientPassGrabButton1(Client *);
 Client *clientGetFromWindow (Window, int);
 Client *clientAtPosition (int, int, Client *);
 Client *clientGetNext (Client *, int);

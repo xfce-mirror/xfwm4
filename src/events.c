@@ -337,9 +337,11 @@ handleKeyPress (XKeyEvent * ev)
                 break;
             case KEY_RAISE_WINDOW:
                 clientRaise (c);
+                clientPassGrabButton1 (NULL);
                 break;
             case KEY_LOWER_WINDOW:
                 clientLower (c);
+                clientPassGrabButton1 (NULL);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (workspace + 1, c);
@@ -559,6 +561,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button2)
     {
         clientLower (c);
+        clientPassGrabButton1 (NULL);
     }
     else if (ev->button == Button3)
     {
@@ -670,6 +673,7 @@ handleButtonPress (XButtonEvent * ev)
         else if ((ev->button == Button2) && (state == AltMask) && (params.easy_click))
         {
             clientLower (c);
+            clientPassGrabButton1 (NULL);
         }
         else if ((ev->button == Button3) && (state == AltMask) && (params.easy_click))
         {
@@ -752,6 +756,7 @@ handleButtonPress (XButtonEvent * ev)
                 && (state == (AltMask | ControlMask))))
         {
             clientLower (c);
+            clientPassGrabButton1 (NULL);
         }
         else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]))
             && (state == 0))
@@ -1127,6 +1132,10 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             }
             constrained = TRUE;
         }
+        if (ev->value_mask & CWStackMode)
+        {
+	    clientPassGrabButton1 (NULL);
+	}
 #if 0
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))

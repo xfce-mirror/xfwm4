@@ -1,6 +1,6 @@
 /* XPM */
 static char * stick_toggled_pressed_xpm[] = {
-"18 23 4 1",
+"18 24 4 1",
 " 	c None",
 ".	c #4B58A2 s active_shadow_1",
 "+	c #949595 s active_shadow_2",
@@ -9,6 +9,7 @@ static char * stick_toggled_pressed_xpm[] = {
 "                  ",
 "                  ",
 "                  ",
+"                  ",
 "  ..............  ",
 " .++++++++++++++. ",
 ".++++++++++++++++.",
@@ -26,5 +27,5 @@ static char * stick_toggled_pressed_xpm[] = {
 " .++++++++++++++. ",
 "  ..............  ",
 "                  ",
-"                  ",
+"  ..............  ",
 "                  "};
