@@ -1079,28 +1079,10 @@ handlePropertyNotify (XPropertyEvent * ev)
     {
         if (ev->atom == XA_WM_NORMAL_HINTS)
         {
-            unsigned long previous_value;
-
             TRACE
                 ("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify",
                 c->name, c->window);
-            XGetWMNormalHints (dpy, c->window, c->size, &dummy);
-            previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_IS_RESIZABLE);
-            if (((c->size->flags & (PMinSize | PMaxSize)) !=
-                    (PMinSize | PMaxSize))
-                || (((c->size->flags & (PMinSize | PMaxSize)) ==
-                        (PMinSize | PMaxSize))
-                    && ((c->size->min_width < c->size->max_width)
-                        || (c->size->min_height < c->size->max_height))))
-            {
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
-            }
-            if (CLIENT_FLAG_TEST (c,
-                    CLIENT_FLAG_IS_RESIZABLE) != previous_value)
-            {
-                frameDraw (c, TRUE, FALSE);
-            }
+            clientGetWMNormalHints (c, TRUE);
         }
         else if ((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
@@ -1116,17 +1098,10 @@ handlePropertyNotify (XPropertyEvent * ev)
         }
         else if (ev->atom == motif_wm_hints)
         {
-            XWindowChanges wc;
-
             TRACE
                 ("client \"%s\" (0x%lx) has received a motif_wm_hints notify",
                 c->name, c->window);
-            clientUpdateMWMHints (c);
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+            clientGetMWMHints (c, TRUE);
         }
         else if (ev->atom == XA_WM_HINTS)
         {

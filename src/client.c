@@ -2336,13 +2336,15 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask,
 }
 
 void
-clientUpdateMWMHints (Client * c)
+clientGetMWMHints (Client * c, gboolean update)
 {
     PropMwmHints *mwm_hints;
+    XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-    TRACE ("entering clientUpdateMWMHints client \"%s\" (0x%lx)", c->name,
+    
+    TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name,
         c->window);
 
     mwm_hints = getMotifHints (dpy, c->window);
@@ -2415,6 +2417,92 @@ clientUpdateMWMHints (Client * c)
             }
         }
         XFree (mwm_hints);
+    }
+    
+    if (update)
+    {
+        wc.x = c->x;
+        wc.y = c->y;
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+    }
+}
+
+void
+clientGetWMNormalHints (Client * c, gboolean update)
+{
+    unsigned long previous_value;
+    long dummy;
+    XWindowChanges wc;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+    
+    TRACE ("entering clientGetWMNormalHints client \"%s\" (0x%lx)", c->name,
+        c->window);
+
+    if (!c->size)
+    {
+        c->size = XAllocSizeHints ();
+    }
+    g_assert (c->size);
+    XGetWMNormalHints (dpy, c->window, c->size, &dummy);
+    previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
+    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_IS_RESIZABLE);
+
+    wc.x = c->x;
+    wc.y = c->y;
+    wc.width = c->width;
+    wc.height = c->height;
+
+    if ((c->size->flags & PMaxSize))
+    {
+        if (wc.width > c->size->max_width)
+        {
+            wc.width = c->size->max_width;
+        }
+        if (wc.height > c->size->max_height)
+        {
+            wc.height = c->size->max_height;
+        }
+    }
+
+    if ((c->size->flags & PMinSize))
+    {
+        if (wc.width < c->size->min_width)
+        {
+            wc.width = c->size->min_width;
+        }
+        if (wc.height < c->size->min_height)
+        {
+            wc.height = c->size->min_height;
+        }
+    }
+
+    if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize)) || 
+        (((c->size->flags & (PMinSize | PMaxSize)) == (PMinSize | PMaxSize))&& 
+         ((c->size->min_width < c->size->max_width) || 
+          (c->size->min_height < c->size->max_height))))
+    {
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
+    }
+    
+    if (update)
+    {
+        if ((c->width != wc.width) || (c->height != wc.height))
+        {
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE);
+        }
+        else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE) != previous_value)
+        {
+            frameDraw (c, TRUE, FALSE);
+        }
+    }
+    else
+    {
+        c->width = wc.width;
+        c->height = wc.height;
     }
 }
 
@@ -2632,26 +2720,21 @@ clientFrame (Window w, gboolean startup)
         return;
     }
     
-    XSync(dpy, 0);
-    MyXGrabServer ();
-    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width,
-            &dummy_height, &dummy_bw, &dummy_depth) == 0)
-    {
-        MyXUngrabServer ();
-        return;
-    }
-
     c->window = w;
     getWindowName (dpy, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
     getTransientFor (dpy, screen, c->window, &c->transient_for);
-    c->size = XAllocSizeHints ();
-    XGetWMNormalHints (dpy, w, c->size, &dummy);
     wm_protocols_flags = getWMProtocols (dpy, c->window);
+
+    /* Initialize structure */
+    c->client_flag = CLIENT_FLAG_INITIAL_VALUES;
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
+    c->size = NULL;
+    clientGetWMNormalHints (c, FALSE);
+
     c->old_x = c->x;
     c->old_y = c->y;
     c->old_width = c->width;
@@ -2662,6 +2745,15 @@ clientFrame (Window w, gboolean startup)
     c->fullscreen_old_height = c->height;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
+
+    if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize))
+        || (((c->size->flags & (PMinSize | PMaxSize)) ==
+                (PMinSize | PMaxSize))
+            && ((c->size->min_width < c->size->max_width)
+                || (c->size->min_height < c->size->max_height))))
+    {
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
+    }
 
     /* Initialize pixmap caching */
     myPixmapInit (&c->pm_cache.pm_title[ACTIVE]);
@@ -2702,9 +2794,6 @@ clientFrame (Window w, gboolean startup)
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
 
-    /* Initialize structure */
-    c->client_flag = CLIENT_FLAG_INITIAL_VALUES;
-
     if (attr.map_state == IsViewable)
     {
         c->ignore_unmap = 1;
@@ -2727,16 +2816,7 @@ clientFrame (Window w, gboolean startup)
         (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ?
         CLIENT_FLAG_WM_TAKEFOCUS : 0);
 
-    if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize))
-        || (((c->size->flags & (PMinSize | PMaxSize)) ==
-                (PMinSize | PMaxSize))
-            && ((c->size->min_width < c->size->max_width)
-                || (c->size->min_height < c->size->max_height))))
-    {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
-    }
-
-    clientUpdateMWMHints (c);
+    clientGetMWMHints (c, FALSE);
     getGnomeHint (dpy, w, win_hints, &c->win_hints);
     getGnomeHint (dpy, w, win_state, &c->win_state);
     if (!getGnomeHint (dpy, w, win_layer, &c->win_layer))
@@ -2777,13 +2857,22 @@ clientFrame (Window w, gboolean startup)
      */
     clientApplyInitialState (c);
 
+    MyXGrabServer ();
+    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width,
+            &dummy_height, &dummy_bw, &dummy_depth) == 0)
+    {
+        clientFree (c);
+        MyXUngrabServer ();
+        return;
+    }
+
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame =
         XCreateWindow (dpy, root, frameX (c), frameY (c), frameWidth (c),
         frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
         valuemask, &attributes);
-    DBG ("framing client \"%s\" (0x%lx)", c->name, c->window);
+
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (dpy, c->window, valuemask, &attributes);
@@ -2852,6 +2941,7 @@ clientFrame (Window w, gboolean startup)
         clientSetNetState (c);
     }
 
+    DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
     DBG ("client_count=%d", client_count);
 }
 
