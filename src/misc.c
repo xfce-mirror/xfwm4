@@ -105,19 +105,19 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
 }
 
 void
-sendClientMessage (Window w, Atom a, long x, int mask)
+sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
 {
-    XEvent ev;
+    XClientMessageEvent ev;
 
     TRACE ("entering sendClientMessage");
 
     ev.type = ClientMessage;
-    ev.xclient.window = w;
-    ev.xclient.message_type = a;
-    ev.xclient.format = 32;
-    ev.xclient.data.l[0] = x;
-    ev.xclient.data.l[1] = CurrentTime;
-    XSendEvent (dpy, w, FALSE, mask, &ev);
+    ev.window = w;
+    ev.message_type = a;
+    ev.format = 32;
+    ev.data.l[0] = x;
+    ev.data.l[1] = timestamp;
+    XSendEvent (dpy, w, FALSE, 0L, (XEvent *)&ev);
 }
 
 void
@@ -149,22 +149,27 @@ MyXUngrabServer (void)
     }
     DBG ("grabs : %i", xgrabcount);
 }
-
+/*
+ * it's safer to grab the display before calling this routine
+ * Returns true if the given window is present and mapped on root 
+ */
 gboolean
 MyCheckWindow(Window w)
 {
-    Window dummy_root;
-    unsigned int dummy_width, dummy_height, dummy_depth, dummy_bw;
-    int dummy_x, dummy_y;
+    Window dummy_root, parent;
+    Window *wins = NULL;
+    unsigned int count;
     Status test;
     
     g_return_val_if_fail (w != None, FALSE);
 
     gdk_error_trap_push ();
-    test = XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y,
-                         &dummy_width, &dummy_height, &dummy_bw, &dummy_depth);
-
-    return (!gdk_error_trap_pop () && (test != 0));
+    test = XQueryTree(dpy, w, &dummy_root, &parent, &wins, &count);
+    if (wins)
+    {
+        XFree (wins);
+    }
+    return (!gdk_error_trap_pop () && (test != 0) && (dummy_root == parent));
 }
 
 Window
@@ -215,3 +220,49 @@ placeSidewalks(gboolean activate)
                           1, MyDisplayFullHeight (dpy, screen));
     }
 }
+
+Time
+stashEventTime (Time prevEventTime, XEvent * ev)
+{
+    Time newEventTime = CurrentTime;
+    Time lastEventTime = prevEventTime;
+
+    switch (ev->type)
+    {
+        case KeyPress:
+        case KeyRelease:
+            newEventTime = ev->xkey.time;
+            break;
+        case ButtonPress:
+        case ButtonRelease:
+            newEventTime = ev->xbutton.time;
+            break;
+        case MotionNotify:
+            newEventTime = ev->xmotion.time;
+            break;
+        case EnterNotify:
+        case LeaveNotify:
+            newEventTime = ev->xcrossing.time;
+            break;
+        case PropertyNotify:
+            newEventTime = ev->xproperty.time;
+            break;
+        case SelectionClear:
+            newEventTime = ev->xselectionclear.time;
+            break;
+        case SelectionRequest:
+            newEventTime = ev->xselectionrequest.time;
+            break;
+        case SelectionNotify:
+            newEventTime = ev->xselection.time;
+            break;
+        default:
+            break;
+    }
+    if ((newEventTime > CurrentTime) || ((CurrentTime - newEventTime) > 30000))
+    {
+        lastEventTime = newEventTime;
+    }
+    return lastEventTime;
+}
+

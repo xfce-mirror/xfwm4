@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [3.99.4])
+AM_INIT_AUTOMAKE([xfwm4], [4.0.5])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -31,8 +31,8 @@ dnl check for standard header files
 AC_HEADER_STDC
 
 dnl Check for i18n support
-BM_I18N([xfwm4], [ar ca de es es_MX fi fr hu ja ko lt ms nl pl pt_PT ru ta tr
-	 zh_CN zh_TW])
+BM_I18N([xfwm4], [ar az bg ca cs de es es_MX fa_IR fi fr hi hu it ja ko lt ms
+	 nl no pl pt_BR pt_PT ru sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE
@@ -46,11 +46,11 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
-BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 3.99.4)
-BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 3.99.4)
-BM_DEPEND([LIBXFCE4UTIL], [libxfce4util-1.0], [3.99.4])
-BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 3.99.4)
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [3.99.4])
+BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 4.0.0)
+BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 4.0.0)
+BM_DEPEND([LIBXFCE4UTIL], [libxfce4util-1.0], [4.0.0])
+BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 4.0.0)
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
 
 BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,
   [startup-notification], [startup notification library], [yes])
@@ -82,6 +82,8 @@ Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+doc/fr/Makefile
+doc/fr/images/Makefile
 defaults/Makefile
 mcs-plugin/Makefile
 po/Makefile.in 
@@ -98,4 +100,5 @@ themes/microdeck/Makefile
 themes/microdeck2/Makefile
 themes/microdeck3/Makefile
 themes/tgc/Makefile
+themes/tgc-large/Makefile
 ])

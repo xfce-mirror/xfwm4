@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
+"POT-Creation-Date: 2003-11-11 16:23+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -272,12 +272,12 @@ msgstr "Action à effectuer lors d'un double clic sur la barre de titre :"
 msgid "Advanced"
 msgstr "Avancé"
 
-#: src/client.c:493
+#: src/client.c:499
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state non géré (window 0x%lx)"
 
-#: src/events.c:1442
+#: src/events.c:1496
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation pas (encore) supportée\n"
@@ -368,42 +368,42 @@ msgstr "Bureau %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu n'a pas pu capturer le pointeur\n"
 
-#: src/settings.c:285
+#: src/settings.c:288
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Il manque le ficher de défaut"
 
-#: src/settings.c:510
+#: src/settings.c:520
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Ne peut allouer la couleur active %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:527
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Ne peut lire la couleur inactive %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:571
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ne peut allouer la couleur inactive %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:578
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ne peut lire la couleur inactive %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:765
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:765
+#: src/settings.c:775
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Il manque des données dans le ficher de défaut"
 
-#: src/settings.c:1106
+#: src/settings.c:1122
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

@@ -66,8 +66,9 @@
     ColormapNotify
 
 char *progname;
+Time last_timestamp;
 Display *dpy;
-Window root, gnome_win, sidewalk[2];
+Window root, gnome_win, systray, sidewalk[2];
 Colormap cmap;
 Screen *xscreen;
 int screen;
@@ -151,9 +152,9 @@ static char *build_session_filename(SessionClient *client_session)
     
     path = (gchar *)xfce_get_userdir();
     if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) {
-	    g_warning("Unable to create xfce user dir %s: %s",
-		       path, g_strerror(errno));
-	    return NULL;
+            g_warning("Unable to create xfce user dir %s: %s",
+                       path, g_strerror(errno));
+            return NULL;
     }
 
     path = xfce_get_userfile("sessions", NULL);
@@ -258,17 +259,21 @@ initialize (int argc, char **argv)
 
     gtk_set_locale ();
     gtk_init (&argc, &argv);
+    gdk_rgb_init();
 
+    gtk_widget_push_visual(gdk_rgb_get_visual ());
+    gtk_widget_push_colormap(gdk_rgb_get_cmap ());
+    
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
-    gtk_widget_set_default_colormap (gdk_colormap_get_system ());
 
+    last_timestamp = CurrentTime;
     dpy = GDK_DISPLAY ();
     root = GDK_ROOT_WINDOW ();
     xscreen = DefaultScreenOfDisplay(dpy);
     screen = XDefaultScreen (dpy);
     depth = DefaultDepth (dpy, screen);
-    cmap = DefaultColormap (dpy, screen);
+    cmap = GDK_COLORMAP_XCOLORMAP(gdk_rgb_get_cmap ());
     sn_init_display (dpy, screen);
     workspace = 0;
 
@@ -306,7 +311,8 @@ initialize (int argc, char **argv)
     initMotifHints (dpy);
     initGnomeHints (dpy);
     initNetHints (dpy);
-
+    initSystrayHints (dpy, screen);
+    
     initModifiers (dpy);
 
     root_cursor = XCreateFontCursor (dpy, XC_left_ptr);
@@ -340,6 +346,7 @@ initialize (int argc, char **argv)
         return -2;
     }
 
+    systray = getSystrayWindow (dpy);
     setGnomeProtocols (dpy, screen, gnome_win);
     setHint (dpy, root, win_supporting_wm_check, gnome_win);
     setHint (dpy, root, win_desktop_button_proxy, gnome_win);

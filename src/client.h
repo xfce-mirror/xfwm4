@@ -55,11 +55,16 @@
 #define PLACEMENT_MOUSE                 0
 #define PLACEMENT_ROOT                  1
 
-#define CFG_NONE                        0
+#define NO_CFG_FLAG                     0
 #define CFG_CONSTRAINED                 (1<<0)
 #define CFG_REQUEST                     (1<<1)
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
+
+#define NO_FOCUS_FLAG                   0
+#define FOCUS_SORT                      (1<<0)
+#define FOCUS_IGNORE_MODAL              (1<<1)
+#define FOCUS_FORCE                     (1<<2)
 
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
@@ -67,7 +72,7 @@
 #define INCLUDE_SKIP_PAGER              (1<<3)
 #define INCLUDE_SKIP_TASKBAR            (1<<4)
 
-#define UPDATE_NONE                     0
+#define NO_UPDATE_FLAG                  0
 #define UPDATE_KEYGRABS                 (1<<0)
 #define UPDATE_FRAME                    (1<<1)
 #define UPDATE_GRAVITY                  (1<<2)
@@ -180,6 +185,7 @@ struct _Client
     unsigned long win_hints;
     unsigned long win_state;
     unsigned long win_layer;
+    unsigned long serial;
 
     int win_workspace;
     Atom type_atom;
@@ -224,24 +230,24 @@ struct _Client
 };
 
 extern Client *clients;
-extern Window *client_list;
 extern unsigned int client_count;
 
-inline Client *clientGetTransient (Client *);
-inline gboolean clientIsTransient (Client *);
-inline gboolean clientIsModal (Client *);
-inline gboolean clientIsTransientOrModal (Client *);
-inline gboolean clientSameGroup (Client *, Client *);
-inline gboolean clientIsTransientFor (Client *, Client *);
-inline gboolean clientIsModalFor (Client *, Client *);
-inline gboolean clientIsTransientOrModalFor (Client *, Client *);
-inline gboolean clientIsTransientForGroup (Client *);
-inline gboolean clientIsModalForGroup (Client *);
-inline gboolean clientIsTransientOrModalForGroup (Client *);
+Client *clientGetTransient (Client *);
+gboolean clientIsTransient (Client *);
+gboolean clientIsModal (Client *);
+gboolean clientIsTransientOrModal (Client *);
+gboolean clientSameGroup (Client *, Client *);
+gboolean clientIsTransientFor (Client *, Client *);
+gboolean clientIsModalFor (Client *, Client *);
+gboolean clientIsTransientOrModalFor (Client *, Client *);
+gboolean clientIsTransientForGroup (Client *);
+gboolean clientIsModalForGroup (Client *);
+gboolean clientIsTransientOrModalForGroup (Client *);
 void clientSetNetState (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
 void clientUpdateNetState (Client *, XClientMessageEvent *);
-void clientGetNetWmType (Client * c);
+void clientGetNetWmType (Client *);
+void clientPassGrabButton1(Client *);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
 void clientConfigure (Client *, XWindowChanges *, int, unsigned short);
@@ -260,9 +266,13 @@ void clientUpdateColormaps (Client *);
 void clientUpdateAllFrames (gboolean);
 void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
+void clientGrabButtons (Client *);
+void clientUngrabButtons (Client *);
+void clientPassGrabButtons(Client *);
 Client *clientGetFromWindow (Window, int);
 Client *clientAtPosition (int, int, Client *);
 Client *clientGetNext (Client *, int);
+Client *clientGetPrevious (Client *, int);
 void clientPassFocus (Client *);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);
@@ -279,16 +289,16 @@ void clientToggleShaded (Client *);
 void clientStick (Client *, gboolean);
 void clientUnstick (Client *, gboolean);
 void clientToggleSticky (Client *, gboolean);
-inline void clientRemoveMaximizeFlag (Client *);
+void clientRemoveMaximizeFlag (Client *);
 void clientToggleMaximized (Client *, int);
-void clientUpdateFocus (Client *);
-inline gboolean clientAcceptFocus (Client * c);
-void clientSetFocus (Client *, gboolean, gboolean);
+gboolean clientAcceptFocus (Client * c);
+void clientUpdateFocus (Client *, unsigned short);
+void clientSetFocus (Client *, unsigned short);
 Client *clientGetFocus ();
 void clientScreenResize(void);
 void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
-void clientCycle (Client *);
+void clientCycle (Client *, XEvent *);
 void clientButtonPress (Client *, Window, XButtonEvent *);
 Client *clientGetLeader (Client *);
 GList *clientGetStackList (void);

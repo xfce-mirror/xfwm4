@@ -131,6 +131,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         params.raise_on_click = setting->data.v_int;
+                        clientPassGrabButton1 (NULL);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
                     {
@@ -170,7 +171,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 {
                     if (!strcmp (name, "Xfwm/DblClickAction"))
                     {
-                        reloadSettings (UPDATE_NONE);
+                        reloadSettings (NO_UPDATE_FLAG);
                     }
                     else if (!strcmp (name, "Xfwm/KeyThemeName"))
                     {
@@ -280,10 +281,20 @@ static void
 loadRcData (Settings rc[])
 {
     const gchar *homedir = xfce_get_userdir ();
+    gchar *keytheme;
+    gchar *keythemevalue;
+
     if (!parseRc ("defaults", DATADIR, rc))
     {
         g_warning (_("%s: Missing defaults file"), progname);
         exit (1);
+    }
+    keythemevalue = getValue ("keytheme", rc);
+    if (keythemevalue)
+    {
+        keytheme = getThemeDir (keythemevalue);
+        parseRc ("keythemerc", keytheme, rc);
+        g_free (keytheme);
     }
     parseRc ("xfwm4rc", homedir, rc);
 }
@@ -297,8 +308,7 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/ClickToFocus", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("click_to_focus", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("click_to_focus", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/FocusNewWindow", CHANNEL1,
@@ -310,8 +320,7 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/FocusRaise", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("raise_on_focus", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("raise_on_focus", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/RaiseDelay", CHANNEL1,
@@ -323,15 +332,13 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/RaiseOnClick", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("raise_on_click", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/SnapToBorder", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("snap_to_border", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("snap_to_border", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/SnapToWindows", CHANNEL1,
@@ -350,8 +357,7 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/WrapWorkspaces", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/WrapWindows", CHANNEL1,
@@ -483,13 +489,13 @@ loadTheme (Settings rc[])
 
     if (params.title_colors[ACTIVE].allocated)
     {
-        gdk_colormap_free_colors (gdk_colormap_get_system (),
+        gdk_colormap_free_colors (gdk_rgb_get_cmap (),
             &params.title_colors[ACTIVE].col, 1);
         params.title_colors[ACTIVE].allocated = FALSE;
     }
     if (gdk_color_parse (rc[0].value, &params.title_colors[ACTIVE].col))
     {
-        if (gdk_colormap_alloc_color (gdk_colormap_get_system (),
+        if (gdk_colormap_alloc_color (gdk_rgb_get_cmap (),
                 &params.title_colors[ACTIVE].col, FALSE, FALSE))
         {
             params.title_colors[ACTIVE].allocated = TRUE;
@@ -534,13 +540,13 @@ loadTheme (Settings rc[])
 
     if (params.title_colors[INACTIVE].allocated)
     {
-        gdk_colormap_free_colors (gdk_colormap_get_system (),
+        gdk_colormap_free_colors (gdk_rgb_get_cmap (),
             &params.title_colors[INACTIVE].col, 1);
         params.title_colors[INACTIVE].allocated = FALSE;
     }
     if (gdk_color_parse (rc[1].value, &params.title_colors[INACTIVE].col))
     {
-        if (gdk_colormap_alloc_color (gdk_colormap_get_system (),
+        if (gdk_colormap_alloc_color (gdk_rgb_get_cmap (),
                 &params.title_colors[INACTIVE].col, FALSE, FALSE))
         {
             params.title_colors[INACTIVE].allocated = TRUE;
@@ -869,6 +875,10 @@ loadKeyBindings (Settings rc[])
         getValue ("shortcut_9_key", rc));
     parseKeyString (dpy, &params.keys[KEY_SHORTCUT_10],
         getValue ("shortcut_10_key", rc));
+    parseKeyString (dpy, &params.keys[KEY_RAISE_WINDOW],
+        getValue ("raise_window_key", rc));
+    parseKeyString (dpy, &params.keys[KEY_LOWER_WINDOW],
+        getValue ("lower_window_key", rc));
     ungrabKeys (dpy, gnome_win);
     grabKey (dpy, &params.keys[KEY_CYCLE_WINDOWS], gnome_win);
     grabKey (dpy, &params.keys[KEY_NEXT_WORKSPACE], gnome_win);
@@ -966,6 +976,7 @@ loadSettings (void)
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},
+        {"lower_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
         {"maximize_window_key", NULL, TRUE},
@@ -986,6 +997,7 @@ loadSettings (void)
         {"move_window_workspace_9_key", NULL, TRUE},
         {"next_workspace_key", NULL, TRUE},
         {"prev_workspace_key", NULL, TRUE},
+        {"raise_window_key", NULL, TRUE},
         {"resize_window_down_key", NULL, TRUE},
         {"resize_window_left_key", NULL, TRUE},
         {"resize_window_right_key", NULL, TRUE},
