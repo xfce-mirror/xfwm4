@@ -12,11 +12,13 @@ Requires:	glib2 >= @GLIB_REQUIRED_VERSION@
 Requires:	pango >= @PANGO_REQUIRED_VERSION@
 Requires:	libxfcegui4 >= @LIBXFCEGUI4_REQUIRED_VERSION@
 Requires:	libxfce4mcs >= @LIBXFCE4MCS_REQUIRED_VERSION@
+Requires:	xfce-mcs-manager
 BuildRequires: 	gtk2-devel >= @GTK_REQUIRED_VERSION@
 BuildRequires: 	glib2-devel >= @GLIB_REQUIRED_VERSION@
 BuildRequires: 	pango-devel >= @PANGO_REQUIRED_VERSION@
 BuildRequires: 	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
 BuildRequires:	libxfce4mcs-devel >= @LIBXFCE4MCS_REQUIRED_VERSION@
+BuildRequires:	xfce-mcs-manager-devel
 
 %description
 xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.

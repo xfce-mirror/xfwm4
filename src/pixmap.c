@@ -72,12 +72,7 @@ void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
     DBG("entering createPixmap, width=%i, height=%i\n", width, height);
     if((width < 1) || (height < 1))
     {
-        DBG("Pixmap size invalid\n");
-        pm->pixmap = None;
-        pm->mask = None;
-        pm->width = 0;
-        pm->height = 0;
-
+        initPixmap(pm);
     }
     else
     {
@@ -86,6 +81,14 @@ void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
         pm->width = width;
         pm->height = height;
     }
+}
+
+void initPixmap(MyPixmap * pm)
+{
+    pm->pixmap = None;
+    pm->mask = None;
+    pm->width = 0;
+    pm->height = 0;
 }
 
 void freePixmap(Display * dpy, MyPixmap * pm)

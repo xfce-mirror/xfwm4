@@ -778,6 +778,10 @@ gboolean reloadSettings(int mask)
 
 gboolean initSettings(void)
 {
+    int i;
+
+    DBG("entering initSettings\n");
+
     box_gc = None;
     black_gc = NULL;
     white_gc = NULL;
@@ -785,6 +789,28 @@ gboolean initSettings(void)
     title_colors[ACTIVE].allocated = FALSE;
     title_colors[INACTIVE].gc = NULL;
     title_colors[INACTIVE].allocated = FALSE;
+
+    for(i = 0; i < 3; i++)
+    {
+        initPixmap(&sides[i][ACTIVE]);
+        initPixmap(&sides[i][INACTIVE]);
+    }
+    for(i = 0; i < 4; i++)
+    {
+        initPixmap(&corners[i][ACTIVE]);
+        initPixmap(&corners[i][INACTIVE]);
+    }
+    for(i = 0; i < BUTTON_COUNT; i++)
+    {
+        initPixmap(&buttons[i][ACTIVE]);
+        initPixmap(&buttons[i][INACTIVE]);
+        initPixmap(&buttons[i][PRESSED]);
+    }
+    for(i = 0; i < 5; i++)
+    {
+        initPixmap(&title[i][ACTIVE]);
+        initPixmap(&title[i][INACTIVE]);
+    }
 
     if(!loadSettings())
     {
