@@ -100,15 +100,16 @@
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
 {
+    Client *c;
     gboolean use_keys;
     gboolean grab;
+    gboolean is_transient;
     int mx, my;
     int ox, oy;
     int oldw, oldh;
     int corner;
     Poswin *poswin;
     xfwmWindow tmp_event_window;
-    Client *c;
 };
 
 typedef struct _ClientCycleData ClientCycleData;
@@ -2848,7 +2849,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
 
-        if ((screen_info->workspace_count > 1) && !clientIsValidTransientOrModal (c))
+        if ((screen_info->workspace_count > 1) && !(passdata->is_transient))
         {
             if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
             {
@@ -3001,6 +3002,7 @@ clientMove (Client * c, XEvent * e)
     passdata.oy = c->y;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
+    passdata.is_transient = clientIsValidTransientOrModal (c);
 
     xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0, 
                         gdk_screen_get_width (screen_info->gscr),

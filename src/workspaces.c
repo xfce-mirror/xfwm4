@@ -222,6 +222,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 void
 workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 {
+    gboolean grab = (c2 == NULL);
     Client *c, *new_focus = NULL;
     Client *previous;
     GList *index;
@@ -249,10 +250,14 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         return;
     }
 
-    /* Grab the pointer to avoid side effects with EnterNotify events */
-    XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                       GrabModeAsync, None, None, GDK_CURRENT_TIME);
-
+    if (grab)
+    {
+        /* Grab the pointer to avoid side effects with EnterNotify events */
+        XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, 
+                      FALSE, EnterWindowMask, GrabModeAsync,
+                      GrabModeAsync, None, None, GDK_CURRENT_TIME);
+    }
+    
     if (new_ws == screen_info->current_ws)
     {
          new_ws = screen_info->previous_ws;
@@ -339,8 +344,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     workspaceUpdateArea (screen_info);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
-    XUngrabPointer (myScreenGetXDisplay (screen_info), GDK_CURRENT_TIME);
-
+    if (grab)
+    {
+        XUngrabPointer (myScreenGetXDisplay (screen_info), GDK_CURRENT_TIME);
+    }
+    
     if (!(screen_info->params->click_to_focus))
     {
         if (!(c2) && (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
