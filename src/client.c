@@ -2019,7 +2019,7 @@ void clientClearPixmapCache(Client * c)
     freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
 }
 
-void clientFrame(Window w)
+void clientFrame(Window w, gboolean initial)
 {
     XWindowAttributes attr;
     XWindowChanges wc;
@@ -2181,11 +2181,17 @@ void clientFrame(Window w)
      */
     clientApplyInitialNetState(c);
 
-    gdk_x11_grab_server();
+    if (!initial)
+    {
+        gdk_x11_grab_server();
+    }
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
         clientFree(c);
-        gdk_x11_ungrab_server();
+        if (!initial)
+        {
+            gdk_x11_ungrab_server();
+        }
         return;
     }
     valuemask = CWEventMask;
@@ -2206,7 +2212,10 @@ void clientFrame(Window w)
     clientSetNetActions(c);
     clientGrabKeys(c);
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-    gdk_x11_ungrab_server();
+    if (!initial)
+    {
+        gdk_x11_ungrab_server();
+    }
 
     myWindowCreate(dpy, c->frame, &c->sides[SIDE_LEFT], resize_cursor[4 + SIDE_LEFT]);
     myWindowCreate(dpy, c->frame, &c->sides[SIDE_RIGHT], resize_cursor[4 + SIDE_RIGHT]);
@@ -2232,7 +2241,7 @@ void clientFrame(Window w)
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
-        if(params.focus_new && clientAcceptFocus(c))
+        if(!initial && params.focus_new && clientAcceptFocus(c))
         {
             /* We set the draw_active value to the wrong value to force a draw */
             c->draw_active = FALSE;
@@ -2331,7 +2340,7 @@ void clientFrameAll()
         XGetWindowAttributes(dpy, wins[i], &attr);
         if((!(attr.override_redirect)) && (attr.map_state == IsViewable))
         {
-            clientFrame(wins[i]);
+            clientFrame(wins[i], TRUE);
         }
     }
     gdk_x11_ungrab_server();

@@ -66,10 +66,4 @@ extern int quit, reload;
 extern int shape, shape_event;
 extern Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
 
-/*
- *
- * Function prototypes
- *
- */
-
 #endif /* INC_MAIN_H */

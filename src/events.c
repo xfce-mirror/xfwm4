@@ -69,7 +69,7 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev, gboolean al
     g_return_val_if_fail(ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail(w != None, XFWM_BUTTON_UNDEFINED);
 
-    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);
+    g = XGrabPointer(dpy, w, FALSE, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);
     if(g != GrabSuccess)
     {
         DBG("grab failed in typeOfClick\n");
@@ -154,7 +154,7 @@ static inline void moveRequest(Client * c, XEvent * ev)
 
 static inline void resizeRequest(Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus(c, True);
+    clientSetFocus(c, TRUE);
 
     if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
     {
@@ -229,7 +229,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
         case KEY_HIDE_WINDOW:
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, True);
+                clientHide(c, TRUE);
             }
             break;
         case KEY_MAXIMIZE_WINDOW:
@@ -431,7 +431,7 @@ static inline void button1Action(Client * c, XButtonEvent * ev)
     g_return_if_fail(c != NULL);
     g_return_if_fail(ev != NULL);
 
-    clientSetFocus(c, True);
+    clientSetFocus(c, TRUE);
     clientRaise(c);
 
     tclick = typeOfClick(c->frame, &copy_event, TRUE);
@@ -494,7 +494,7 @@ static inline void titleButton(Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus(c, True);
+            clientSetFocus(c, TRUE);
             if(params.raise_on_click)
             {
                 clientRaise(c);
@@ -530,7 +530,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
 {
     Client *c;
     Window win;
-    int state, replay = False;
+    int state, replay = FALSE;
 
     DBG("entering handleButtonPress\n");
 
@@ -549,7 +549,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON]) || (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON]))))
         {
-            clientSetFocus(c, True);
+            clientSetFocus(c, TRUE);
             if(params.raise_on_click)
             {
                 clientRaise(c);
@@ -578,7 +578,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             else
             {
-                clientSetFocus(c, True);
+                clientSetFocus(c, TRUE);
                 if(params.raise_on_click)
                 {
                     clientRaise(c);
@@ -628,7 +628,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             if(ev->button == Button1)
             {
-                clientSetFocus(c, True);
+                clientSetFocus(c, TRUE);
                 if(params.raise_on_click)
                 {
                     clientRaise(c);
@@ -636,7 +636,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             if(ev->window == c->window)
             {
-                replay = True;
+                replay = TRUE;
             }
         }
 
@@ -652,7 +652,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
     else
     {
         XUngrabPointer(dpy, CurrentTime);
-        XSendEvent(dpy, gnome_win, False, SubstructureNotifyMask, (XEvent *) ev);
+        XSendEvent(dpy, gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
     }
 }
 
@@ -660,7 +660,24 @@ static inline void handleButtonRelease(XButtonEvent * ev)
 {
     DBG("entering handleButtonRelease\n");
 
-    XSendEvent(dpy, gnome_win, False, SubstructureNotifyMask, (XEvent *) ev);
+    XSendEvent(dpy, gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+}
+
+static inline void transfertFocus(Client *c)
+{
+    DBG("entering transfertFocus\n");
+
+    if (c == clientGetFocus())
+    {
+        if(clients)
+        {
+            clientSetFocus(clientGetNext(clients->prev, 0), TRUE);
+        }
+        else
+        {
+            clientSetFocus(NULL, TRUE);
+        }
+    }
 }
 
 static inline void handleDestroyNotify(XDestroyWindowEvent * ev)
@@ -672,15 +689,8 @@ static inline void handleDestroyNotify(XDestroyWindowEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        clientUnframe(c, False);
-        if(clients)
-        {
-            clientSetFocus(clientGetNext(clients->prev, 0), True);
-        }
-        else
-        {
-            clientSetFocus(NULL, True);
-        }
+        transfertFocus(c);
+        clientUnframe(c, FALSE);
     }
 }
 
@@ -699,15 +709,8 @@ static inline void handleUnmapNotify(XUnmapEvent * ev)
         }
         else
         {
-            clientUnframe(c, False);
-            if(clients)
-            {
-                clientSetFocus(clientGetNext(clients->prev, 0), True);
-            }
-            else
-            {
-                clientSetFocus(NULL, True);
-            }
+            transfertFocus(c);
+            clientUnframe(c, FALSE);
         }
     }
 }
@@ -726,11 +729,11 @@ static inline void handleMapRequest(XMapRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        clientShow(c, True);
+        clientShow(c, TRUE);
     }
     else
     {
-        clientFrame(ev->window);
+        clientFrame(ev->window, FALSE);
     }
 }
 
@@ -821,10 +824,10 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
         {
-            clientShow(c, True);
+            clientShow(c, TRUE);
             if(params.focus_new && clientAcceptFocus(c))
             {
-                clientSetFocus(c, True);
+                clientSetFocus(c, TRUE);
             }
         }
         clientConfigure(c, &wc, ev->value_mask, constrained);
@@ -853,7 +856,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
         DBG("EnterNotify window is \"%s\"\n", c->name);
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            clientSetFocus(c, True);
+            clientSetFocus(c, TRUE);
         }
     }
 }
@@ -885,12 +888,12 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     else if(clients)
     {
         DBG("focus set to top window in list\n");
-        clientSetFocus(clientGetNext(clients->prev, 0), True);
+        clientSetFocus(clientGetNext(clients->prev, 0), TRUE);
     }
     else
     {
         DBG("focus set to default fallback window\n");
-        clientSetFocus(NULL, True);
+        clientSetFocus(NULL, TRUE);
     }
 }
 
@@ -1039,7 +1042,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             DBG("client \"%s\" (0x%lx) has received a wm_change_state event\n", c->name, c->window);
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, True);
+                clientHide(c, TRUE);
             }
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
@@ -1113,9 +1116,9 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         {
             DBG("client \"%s\" (0x%lx) has received a net_active_window event\n", c->name, c->window);
             workspaceSwitch(c->win_workspace, NULL);
-            clientShow(c, True);
+            clientShow(c, TRUE);
             clientRaise(c);
-            clientSetFocus(c, True);
+            clientSetFocus(c, TRUE);
         }
     }
     else
@@ -1223,7 +1226,7 @@ void handleEvent(XEvent * ev)
         if(reload)
         {
             reloadSettings(UPDATE_ALL);
-            reload = False;
+            reload = FALSE;
         }
         else if(quit)
         {
@@ -1261,7 +1264,7 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
         c = clientGetFromWindow(c->window, WINDOW);
         if(c)
         {
-            c->button_pressed[MENU_BUTTON] = False;
+            c->button_pressed[MENU_BUTTON] = FALSE;
         }
     }
 
@@ -1280,7 +1283,7 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
     case MENU_OP_MINIMIZE:
         if((c) && CLIENT_CAN_HIDE_WINDOW(c))
         {
-            clientHide(c, True);
+            clientHide(c, TRUE);
         }
         break;
     case MENU_OP_MINIMIZE_ALL:
@@ -1289,7 +1292,7 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
     case MENU_OP_UNMINIMIZE:
         if(c)
         {
-            clientShow(c, True);
+            clientShow(c, TRUE);
         }
         break;
     case MENU_OP_SHADE:
@@ -1337,7 +1340,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
 
     if(((ev->button == 1) || (ev->button == 3)) && (c = (Client *) data))
     {
-        c->button_pressed[MENU_BUTTON] = True;
+        c->button_pressed[MENU_BUTTON] = TRUE;
         frameDraw(c, FALSE, FALSE);
         y = c->y;
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
@@ -1441,7 +1444,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     {
         DBG("Cannot open menu\n");
         gdk_beep();
-        c->button_pressed[MENU_BUTTON] = False;
+        c->button_pressed[MENU_BUTTON] = FALSE;
         frameDraw(c, FALSE, FALSE);
         removeTmpEventWin(menu_event_window);
         menu_event_window = None;
@@ -1453,7 +1456,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
 static gboolean set_reload(void)
 {
     DBG("setting reload flag so all prefs will be reread at next event loop\n");
-    reload = True;
+    reload = TRUE;
     return (TRUE);
 }
 

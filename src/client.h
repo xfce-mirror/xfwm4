@@ -216,7 +216,7 @@ void clientGravitate(Client *, int);
 void clientConfigure(Client *, XWindowChanges *, int, gboolean);
 void clientUpdateMWMHints(Client *);
 void clientClearPixmapCache(Client *);
-void clientFrame(Window);
+void clientFrame(Window, gboolean);
 void clientUnframe(Client *, int);
 void clientFrameAll();
 void clientUnframeAll();

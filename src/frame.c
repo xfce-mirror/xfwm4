@@ -278,14 +278,14 @@ static inline void frameCreateTitlePixmap(Client * c, int state, int left, int r
     if(w3 > 0)
     {
         if (state == ACTIVE)
-	{
-	    voffset = params.title_vertical_offset_active;
+        {
+            voffset = params.title_vertical_offset_active;
         }
-	else
-	{
-	    voffset = params.title_vertical_offset_inactive;
-	}
-	fillRectangle(dpy, pm->pixmap, params.title[TITLE_3][state].pixmap, x, 0, w3, frameTop(c));
+        else
+        {
+            voffset = params.title_vertical_offset_inactive;
+        }
+        fillRectangle(dpy, pm->pixmap, params.title[TITLE_3][state].pixmap, x, 0, w3, frameTop(c));
         fillRectangle(dpy, pm->mask, params.title[TITLE_3][state].mask, x, 0, w3, frameTop(c));
         if(params.title_shadow[state])
         {
