@@ -154,6 +154,7 @@ clientFocusNew(Client * c)
         }
     }
 
+    clientGrabMouseButton (c);
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         if (client_focus)
@@ -164,7 +165,7 @@ clientFocusNew(Client * c)
             }
         }
         clientSetFocus (screen_info, c, 
-                        myDisplayGetCurrentTime (display_info), 
+                        CurrentTime, 
                         FOCUS_IGNORE_MODAL);
     }
     else
