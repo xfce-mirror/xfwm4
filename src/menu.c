@@ -55,8 +55,8 @@ static MenuItem menuitems[] = {
     {MENU_OP_WORKSPACES, NULL, N_("Wor_kspace")},
     {0, NULL, NULL},
 #endif
-    {MENU_OP_QUIT, NULL, _("_Quit")},
-    {MENU_OP_RESTART, NULL, _("Restart")},
+    {MENU_OP_QUIT, NULL, N_("_Quit")},
+    {MENU_OP_RESTART, NULL, N_("Restart")},
 };
 
 static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
@@ -304,7 +304,7 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
         if(!GTK_MENU_SHELL(GTK_MENU(menu->menu))->have_xgrab)
         {
             gdk_beep();
-            g_message(_("%S: GtkMenu failed to grab the pointer\n"), g_get_prgname());
+            g_message(_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname());
         }
     }
     return TRUE;
