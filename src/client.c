@@ -36,6 +36,21 @@
 #include "gtktoxevent.h"
 #include "debug.h"
 
+/* Event mask definition */
+
+#define POINTER_EVENT_MASK	ButtonPressMask|\
+				ButtonReleaseMask|\
+				PointerMotionMask|\
+				PointerMotionHintMask
+				
+#define FRAME_EVENT_MASK	SubstructureNotifyMask|\
+				SubstructureRedirectMask|\
+				EnterWindowMask
+				
+#define CLIENT_EVENT_MASK	FocusChangeMask|\
+				PropertyChangeMask
+
+/* Useful macros */
 #define ACCEPT_INPUT(wmhints) \
     ((!(wmhints) || \
     ((wmhints) && !(wmhints->flags & InputHint)) || \
@@ -1609,12 +1624,12 @@ void clientFrame(Window w)
         return;
     }
     valuemask = CWEventMask;
-    attributes.event_mask = (SubstructureNotifyMask | SubstructureRedirectMask | EnterWindowMask);
+    attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame = XCreateWindow(dpy, root, frameX(c), frameY(c), frameWidth(c), frameHeight(c), 0, CopyFromParent, InputOutput, CopyFromParent, valuemask, &attributes);
     DBG("frame id (%#lx)\n", c->frame);
     valuemask = (CWEventMask | CWDontPropagate);
-    attributes.event_mask = (FocusChangeMask | PropertyChangeMask);
-    attributes.do_not_propagate_mask = (ButtonPressMask | ButtonReleaseMask);
+    attributes.event_mask = (CLIENT_EVENT_MASK);
+    attributes.do_not_propagate_mask = (POINTER_EVENT_MASK);
     XChangeWindowAttributes(dpy, c->window, valuemask, &attributes);
     if(shape)
     {
@@ -1629,7 +1644,8 @@ void clientFrame(Window w)
 
     MyXUngrabServer(dpy);
 
-    XGrabButton(dpy, AnyButton, AnyModifier, c->frame, False, ButtonPressMask, GrabModeSync, GrabModeAsync, None, None);
+    XGrabPointer(dpy, c->frame, False, ButtonPressMask | ButtonReleaseMask | PointerMotionMask | PointerMotionHintMask, GrabModeSync, GrabModeAsync, None, None, CurrentTime);
+    XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, ButtonPressMask, GrabModeSync, GrabModeAsync, None, None);
 
     c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     c->sides[SIDE_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);

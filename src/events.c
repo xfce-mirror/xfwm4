@@ -283,7 +283,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
     /* Clear timeout */
     clear_timeout();
 
-    c = clientGetFromWindow(ev->window, FRAME);
+    c = clientGetFromWindow(ev->window, ANY);
     if(c)
     {
 
@@ -386,11 +386,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
 
         if(replay)
         {
-            XAllowEvents(dpy, ReplayPointer, CurrentTime);
+            XAllowEvents(dpy, ReplayPointer, ev->time);
         }
         else
         {
-            XAllowEvents(dpy, SyncPointer, CurrentTime);
+            XAllowEvents(dpy, AsyncPointer, ev->time);
         }
     }
     else

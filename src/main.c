@@ -38,6 +38,15 @@
 #include "workspaces.h"
 #include "debug.h"
 
+#define MAIN_EVENT_MASK 	SubstructureNotifyMask|\
+				StructureNotifyMask|\
+				SubstructureRedirectMask|\
+				ButtonPressMask|\
+				ButtonReleaseMask|\
+				FocusChangeMask|\
+				PropertyChangeMask|\
+				ColormapNotify
+
 char *progname;
 Display *dpy;
 Window root, gnome_win;
@@ -156,7 +165,7 @@ void initialize(int argc, char **argv)
 
     XDefineCursor(dpy, root, root_cursor);
 
-    initEventFilter(SubstructureNotifyMask | StructureNotifyMask | SubstructureRedirectMask | ButtonPressMask | ButtonReleaseMask | FocusChangeMask | PropertyChangeMask | ColormapNotify, NULL, "xfwm");
+    initEventFilter(MAIN_EVENT_MASK, NULL, "xfwm");
     pushEventFilter(xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow();
