@@ -170,6 +170,11 @@ maintainers, etc. Commented out by default.
 	    see a small popup with the window title and also &app; will 
 	    highlight the outline of the window that will receive the focus.
 	  </para>
+
+	  <para>If you want the panel, and apps that do not appear in the taskbar, 
+	  to be included when you switch the focus using the Alt+Tab shortcut, edit 
+	  your $HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
+	  cycle_minimum=false</para>
 	  
 	  <para>NOTE: the use of a keyboard shortcut in an application needs 
 	    the application window to have the focus :)
@@ -515,9 +520,9 @@ maintainers, etc. Commented out by default.
 	</para>
 	<para>You can customize keyboard shortcuts by editing this default
 	  keythemerc file (seven shorcuts entries are left empty for your
-	  convenience), or you can create a new theme, like this one (for
-	  example) :
-	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc</para>
+	  convenience), or you can create a new theme, either like this one :
+	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc, or like this one 
+	  (in your $HOME directory) : $HOME/.themes/xfwm4/custom.keys/keythemerc.</para>
 	<para>NOTE : $prefix is the install-prefix you used during xfwm 4
 	  setup, usually /usr or /usr/local.
 	</para>
@@ -710,3 +715,4 @@ maintainers, etc. Commented out by default.
 </sect1>
 
 </article>
+

@@ -35,7 +35,10 @@
 	    you get to the window you want to focus. If you use it, you will 
 	    see a small popup with the window title and also <b class="application"><tt>xfwm4</tt></b> will 
 	    highlight the outline of the window that will receive the focus.
-	  </p><p>NOTE: the use of a keyboard shortcut in an application needs 
+	  </p><p>If you want the panel, and apps that do not appear in the taskbar, 
+	  to be included when you switch the focus using the Alt+Tab shortcut, edit 
+	  your $HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
+	  cycle_minimum=false</p><p>NOTE: the use of a keyboard shortcut in an application needs 
 	    the application window to have the focus :)
 	  </p></dd><dt><span class="term">Maximize / unmaximize windows</span></dt><dd><p>If you maximize a window, it will expand on your display and use
 	  all avaible space (as it is defined by <a href="xfdesktop.html#xfdesktop-workspace" target="_top">workspace
@@ -117,9 +120,9 @@
 	  $(prefix)/share/xfwm4/themes/default.keys/keythemerc
 	</p><p>You can customize keyboard shortcuts by editing this default
 	  keythemerc file (seven shorcuts entries are left empty for your
-	  convenience), or you can create a new theme, like this one (for
-	  example) :
-	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc</p><p>NOTE : $prefix is the install-prefix you used during xfwm 4
+	  convenience), or you can create a new theme, either like this one :
+	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc, or like this one 
+	  (in your $HOME directory) : $HOME/.themes/xfwm4/custom.keys/keythemerc.</p><p>NOTE : $prefix is the install-prefix you used during xfwm 4
 	  setup, usually /usr or /usr/local.
 	</p><p>If you do not know the names of your keyboard modifier keys, you
 	  can launch the &quot;xev&quot; application from a terminal and test
