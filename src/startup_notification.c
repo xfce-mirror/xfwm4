@@ -144,8 +144,8 @@ static gboolean sn_startup_sequence_timeout(void *data)
     CollectTimedOutData ctod;
     GSList *tmp;
 
-    g_return_if_fail(sn_display != NULL);
-    g_return_if_fail(sn_context != NULL);
+    g_return_val_if_fail(sn_display != NULL, FALSE);
+    g_return_val_if_fail(sn_context != NULL, FALSE);
 
     ctod.list = NULL;
     g_get_current_time(&ctod.now);

@@ -266,12 +266,6 @@ static int initialize(int argc, char **argv)
         return -2;
     }
 
-    act.sa_handler = handleSignal;
-    act.sa_flags = 0;
-    sigaction(SIGINT, &act, NULL);
-    sigaction(SIGTERM, &act, NULL);
-    sigaction(SIGHUP, &act, NULL);
-
     setGnomeProtocols(dpy, screen, gnome_win);
     setGnomeHint(dpy, root, win_supporting_wm_check, gnome_win);
     setGnomeHint(dpy, root, win_desktop_button_proxy, gnome_win);
@@ -297,6 +291,14 @@ static int initialize(int argc, char **argv)
     g_object_unref(G_OBJECT(layout));
 
     clientFrameAll();
+
+    act.sa_handler = handleSignal;
+    act.sa_flags = 0;
+    sigaction(SIGINT,  &act, NULL);
+    sigaction(SIGTERM, &act, NULL);
+    sigaction(SIGHUP,  &act, NULL);
+    sigaction(SIGSEGV, &act, NULL);
+
     return 0;
 }
 
