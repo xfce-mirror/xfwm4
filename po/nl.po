@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 07:27+0100\n"
+"POT-Creation-Date: 2005-02-05 14:14+0100\n"
 "PO-Revision-Date: 2004-08-25 20:11+0200\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,8 @@ msgstr "Naam veranderen"
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureaublad %d"
@@ -444,71 +446,90 @@ msgstr "Bureaublad toevoegen"
 msgid "Delete workspace"
 msgstr "Bureaublad verwijderen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:603
 msgid "Move window to next workspace"
 msgstr "Venster naar volgend bureablad verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:608
 msgid "Move window to previous workspace"
 msgstr "Venster naar vorig bureablad verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:613
 msgid "Move window to upper workspace"
 msgstr "Venster naar bovenliggend bureablad verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:618
 msgid "Move window to bottom workspace"
 msgstr "Venster naar onderliggend bureablad verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:623
 msgid "Move window to left workspace"
 msgstr "Venster naar linker-bureablad verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:628
 msgid "Move window to right workspace"
 msgstr "Venster naar rechter-bureablad verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
+#: mcs-plugin/xfwm4_shortcuteditor.c:633
 msgid "Move window to workspace 1"
 msgstr "Venster naar bureablad 1 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
+#: mcs-plugin/xfwm4_shortcuteditor.c:638
 msgid "Move window to workspace 2"
 msgstr "Venster naar bureablad 2 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
+#: mcs-plugin/xfwm4_shortcuteditor.c:643
 msgid "Move window to workspace 3"
 msgstr "Venster naar bureablad 3 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
+#: mcs-plugin/xfwm4_shortcuteditor.c:648
 msgid "Move window to workspace 4"
 msgstr "Venster naar bureablad 4 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
+#: mcs-plugin/xfwm4_shortcuteditor.c:653
 msgid "Move window to workspace 5"
 msgstr "Venster naar bureablad 5 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
+#: mcs-plugin/xfwm4_shortcuteditor.c:658
 msgid "Move window to workspace 6"
 msgstr "Venster naar bureablad 6 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
+#: mcs-plugin/xfwm4_shortcuteditor.c:663
 msgid "Move window to workspace 7"
 msgstr "Venster naar bureablad 7 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
+#: mcs-plugin/xfwm4_shortcuteditor.c:668
 msgid "Move window to workspace 8"
 msgstr "Venster naar bureablad 8 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
+#: mcs-plugin/xfwm4_shortcuteditor.c:673
 msgid "Move window to workspace 9"
 msgstr "Venster naar bureablad 9 verplaatsen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:678
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Venster naar bureablad 1 verplaatsen"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:683
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Venster naar bureablad 1 verplaatsen"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:688
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Venster naar bureablad 1 verplaatsen"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:693
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:920
 msgid "Cannot open the theme directory !"
 msgstr "Kan thema-map niet openen!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:939
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -517,7 +538,7 @@ msgstr ""
 "Kan %s niet openen:\n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -526,11 +547,11 @@ msgstr ""
 "Kan niet schrijven in %s:\n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Select command"
 msgstr "Commando selecteren"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:1161
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -538,35 +559,35 @@ msgstr ""
 "Sneltoets reeds in gebruik!\n"
 "Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:1224
 msgid "Compose shortcut for :"
 msgstr "Sneltoets maken voor:"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1227
+#: mcs-plugin/xfwm4_shortcuteditor.c:1455
 msgid "Compose shortcut"
 msgstr "Sneltoets samenstellen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:1229
+#: mcs-plugin/xfwm4_shortcuteditor.c:1457
 msgid "No shortcut"
 msgstr "Geen sneltoets"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1351
 msgid "Choose command"
 msgstr "Commando kiezen"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1353
 msgid "Command :"
 msgstr "Commando :"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1389
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "Het commando bestaat niet of het bestand is niet uitvoerbaar!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1452
 msgid "Compose shortcut for command :"
 msgstr "Sneltoets instellen voor commando:"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 07:27+0100\n"
+"POT-Creation-Date: 2005-02-05 14:14+0100\n"
 "PO-Revision-Date: 2004-12-20 21:58+0100\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
 "Language-Team: czech <cs@li.org>\n"
@@ -67,6 +67,8 @@ msgstr "Změna jména"
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovní plocha %d"
@@ -445,123 +447,142 @@ msgstr "Přidat pracovní plochu"
 msgid "Delete workspace"
 msgstr "Smazat pracovní plochu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:603
 msgid "Move window to next workspace"
 msgstr "Přesunout okno do další pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:608
 msgid "Move window to previous workspace"
 msgstr "Přesunout okno do předchozí pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:613
 msgid "Move window to upper workspace"
 msgstr "Přesunout okno do horní pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:618
 msgid "Move window to bottom workspace"
 msgstr "Přesunout okno do dolní pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:623
 msgid "Move window to left workspace"
 msgstr "Přesunout okno do levé pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:628
 msgid "Move window to right workspace"
 msgstr "Přesunout okno do pravé pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
+#: mcs-plugin/xfwm4_shortcuteditor.c:633
 msgid "Move window to workspace 1"
 msgstr "Přesunout okno do 1 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
+#: mcs-plugin/xfwm4_shortcuteditor.c:638
 msgid "Move window to workspace 2"
 msgstr "Přesunout okno do 2 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
+#: mcs-plugin/xfwm4_shortcuteditor.c:643
 msgid "Move window to workspace 3"
 msgstr "Přesunout okno do 3 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
+#: mcs-plugin/xfwm4_shortcuteditor.c:648
 msgid "Move window to workspace 4"
 msgstr "Přesunout okno do 4 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
+#: mcs-plugin/xfwm4_shortcuteditor.c:653
 msgid "Move window to workspace 5"
 msgstr "Přesunout okno do 5 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
+#: mcs-plugin/xfwm4_shortcuteditor.c:658
 msgid "Move window to workspace 6"
 msgstr "Přesunout okno do 6 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
+#: mcs-plugin/xfwm4_shortcuteditor.c:663
 msgid "Move window to workspace 7"
 msgstr "Přesunout okno do 7 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
+#: mcs-plugin/xfwm4_shortcuteditor.c:668
 msgid "Move window to workspace 8"
 msgstr "Přesunout okno do 8 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
+#: mcs-plugin/xfwm4_shortcuteditor.c:673
 msgid "Move window to workspace 9"
 msgstr "Přesunout okno do 9 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:678
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Přesunout okno do 1 pracovní plochy"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:683
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Přesunout okno do 1 pracovní plochy"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:688
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Přesunout okno do 1 pracovní plochy"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:693
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:920
 msgid "Cannot open the theme directory !"
 msgstr "Nelze otevřít adresář!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:939
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr "Nelze otevřít %s : \"n%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr "Nelze zapisovat do %s : \"n%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Select command"
 msgstr "Vybraný příkaz"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:1161
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr "Zkratka je už použita!\"n Jste si jistý, že ji chcete použít ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:1224
 msgid "Compose shortcut for :"
 msgstr "Vytvořit zkratku pro :"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1227
+#: mcs-plugin/xfwm4_shortcuteditor.c:1455
 msgid "Compose shortcut"
 msgstr "Vytvořit zkratku"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:1229
+#: mcs-plugin/xfwm4_shortcuteditor.c:1457
 msgid "No shortcut"
 msgstr "Žádná tkratka"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1351
 msgid "Choose command"
 msgstr "Vyberte přákaz"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1353
 msgid "Command :"
 msgstr "Příkaz :"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1389
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "Příkaz neexistuje nebo soubor není spustitelný !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1452
 msgid "Compose shortcut for command :"
 msgstr "Vytvořit zkratku pro příkaz :"
 

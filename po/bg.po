@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 07:27+0100\n"
+"POT-Creation-Date: 2005-02-05 14:14+0100\n"
 "PO-Revision-Date: 2004-03-09 19:04+0200\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -68,6 +68,8 @@ msgstr ""
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Работно място %i"
@@ -486,142 +488,161 @@ msgstr "Превключване на работните места"
 msgid "Delete workspace"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:603
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:608
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:613
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:618
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:623
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:628
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
+#: mcs-plugin/xfwm4_shortcuteditor.c:633
 #, fuzzy
 msgid "Move window to workspace 1"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
+#: mcs-plugin/xfwm4_shortcuteditor.c:638
 #, fuzzy
 msgid "Move window to workspace 2"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
+#: mcs-plugin/xfwm4_shortcuteditor.c:643
 #, fuzzy
 msgid "Move window to workspace 3"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
+#: mcs-plugin/xfwm4_shortcuteditor.c:648
 #, fuzzy
 msgid "Move window to workspace 4"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
+#: mcs-plugin/xfwm4_shortcuteditor.c:653
 #, fuzzy
 msgid "Move window to workspace 5"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
+#: mcs-plugin/xfwm4_shortcuteditor.c:658
 #, fuzzy
 msgid "Move window to workspace 6"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
+#: mcs-plugin/xfwm4_shortcuteditor.c:663
 #, fuzzy
 msgid "Move window to workspace 7"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
+#: mcs-plugin/xfwm4_shortcuteditor.c:668
 #, fuzzy
 msgid "Move window to workspace 8"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
+#: mcs-plugin/xfwm4_shortcuteditor.c:673
 #, fuzzy
 msgid "Move window to workspace 9"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:678
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Новите прозорци се фокусират"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:683
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Новите прозорци се фокусират"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:688
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Новите прозорци се фокусират"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:693
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:920
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:939
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:1161
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:1224
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Клавишни комбинации"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1227
+#: mcs-plugin/xfwm4_shortcuteditor.c:1455
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Клавишни комбинации"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:1229
+#: mcs-plugin/xfwm4_shortcuteditor.c:1457
 #, fuzzy
 msgid "No shortcut"
 msgstr "Клавишни комбинации"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1351
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1353
 #, fuzzy
 msgid "Command :"
 msgstr "Клавишни комбинации"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1389
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1452
 msgid "Compose shortcut for command :"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.0.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 07:27+0100\n"
+"POT-Creation-Date: 2005-02-05 14:14+0100\n"
 "PO-Revision-Date: 2004-02-08 00:28+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -62,6 +62,8 @@ msgstr "Tukarnama"
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid "Workspace %d"
 msgstr "Ruangkerja %d"
@@ -478,142 +480,161 @@ msgstr "Wrap ruangkerja"
 msgid "Delete workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:603
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:608
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:613
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:618
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:623
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:628
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
+#: mcs-plugin/xfwm4_shortcuteditor.c:633
 #, fuzzy
 msgid "Move window to workspace 1"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
+#: mcs-plugin/xfwm4_shortcuteditor.c:638
 #, fuzzy
 msgid "Move window to workspace 2"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
+#: mcs-plugin/xfwm4_shortcuteditor.c:643
 #, fuzzy
 msgid "Move window to workspace 3"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
+#: mcs-plugin/xfwm4_shortcuteditor.c:648
 #, fuzzy
 msgid "Move window to workspace 4"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
+#: mcs-plugin/xfwm4_shortcuteditor.c:653
 #, fuzzy
 msgid "Move window to workspace 5"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
+#: mcs-plugin/xfwm4_shortcuteditor.c:658
 #, fuzzy
 msgid "Move window to workspace 6"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
+#: mcs-plugin/xfwm4_shortcuteditor.c:663
 #, fuzzy
 msgid "Move window to workspace 7"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
+#: mcs-plugin/xfwm4_shortcuteditor.c:668
 #, fuzzy
 msgid "Move window to workspace 8"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
+#: mcs-plugin/xfwm4_shortcuteditor.c:673
 #, fuzzy
 msgid "Move window to workspace 9"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:678
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Fokus tetingkap baru"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:683
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Fokus tetingkap baru"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:688
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Fokus tetingkap baru"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:693
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:920
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:939
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:1161
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:1224
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Pintasan Papankekunci"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1227
+#: mcs-plugin/xfwm4_shortcuteditor.c:1455
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Pintasan Papankekunci"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:1229
+#: mcs-plugin/xfwm4_shortcuteditor.c:1457
 #, fuzzy
 msgid "No shortcut"
 msgstr "Pintasan Papankekunci"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1351
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1353
 #, fuzzy
 msgid "Command :"
 msgstr "Pintasan Papankekunci"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1389
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1452
 msgid "Compose shortcut for command :"
 msgstr ""
 

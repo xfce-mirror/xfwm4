@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 07:27+0100\n"
+"POT-Creation-Date: 2005-02-05 14:14+0100\n"
 "PO-Revision-Date: 2004-09-13 22:46+0200\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -67,6 +67,8 @@ msgstr "Izena aldatu"
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid "Workspace %d"
 msgstr "%d Idazmahaia"
@@ -449,75 +451,94 @@ msgstr "Idazmahaia gehitu"
 msgid "Delete workspace"
 msgstr "idazmahaia ezabatu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:603
 msgid "Move window to next workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:608
 msgid "Move window to previous workspace"
 msgstr "Mugitu leihoa aurreko idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:613
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:618
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:623
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:628
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
+#: mcs-plugin/xfwm4_shortcuteditor.c:633
 msgid "Move window to workspace 1"
 msgstr "Mugitu leihoa 1 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
+#: mcs-plugin/xfwm4_shortcuteditor.c:638
 msgid "Move window to workspace 2"
 msgstr "Mugitu leihoa 2 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
+#: mcs-plugin/xfwm4_shortcuteditor.c:643
 msgid "Move window to workspace 3"
 msgstr "Mugitu leihoa 3 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
+#: mcs-plugin/xfwm4_shortcuteditor.c:648
 msgid "Move window to workspace 4"
 msgstr "Mugitu leihoa 4 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
+#: mcs-plugin/xfwm4_shortcuteditor.c:653
 msgid "Move window to workspace 5"
 msgstr "Mugitu leihoa 5 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
+#: mcs-plugin/xfwm4_shortcuteditor.c:658
 msgid "Move window to workspace 6"
 msgstr "Mugitu leihoa 6 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
+#: mcs-plugin/xfwm4_shortcuteditor.c:663
 msgid "Move window to workspace 7"
 msgstr "Mugitu leihoa 7 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
+#: mcs-plugin/xfwm4_shortcuteditor.c:668
 msgid "Move window to workspace 8"
 msgstr "Mugitu leihoa 8 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
+#: mcs-plugin/xfwm4_shortcuteditor.c:673
 msgid "Move window to workspace 9"
 msgstr "Mugitu leihoa 9 idazmahaiera"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:678
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Mugitu leihoa 1 idazmahaiera"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:683
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Mugitu leihoa 1 idazmahaiera"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:688
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Mugitu leihoa 1 idazmahaiera"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:693
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:920
 msgid "Cannot open the theme directory !"
 msgstr "Ezin da gai karpeta ireki !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:939
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -526,7 +547,7 @@ msgstr ""
 "Ezin da %s ireki : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -535,11 +556,11 @@ msgstr ""
 "Ezin da %s-n idatzi : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Select command"
 msgstr "Komandoa aukeratu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:1161
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -547,36 +568,36 @@ msgstr ""
 "Laster-tekla dagoeneko erabilia\n"
 "Ziur zaude berau erabili nahi duzula ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:1224
 msgid "Compose shortcut for :"
 msgstr "honentzat laster-tekla sortu:"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1227
+#: mcs-plugin/xfwm4_shortcuteditor.c:1455
 msgid "Compose shortcut"
 msgstr "laster-tekla sortu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:1229
+#: mcs-plugin/xfwm4_shortcuteditor.c:1457
 #, fuzzy
 msgid "No shortcut"
 msgstr "laster-tekla sortu"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1351
 msgid "Choose command"
 msgstr "Komandoa aukeratu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1353
 msgid "Command :"
 msgstr "Komandoa :"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1389
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "Komandoa ez dago edo ez da abiarazgarria !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1452
 msgid "Compose shortcut for command :"
 msgstr "Laster-tekla sortu komandoarentzat :"
 
