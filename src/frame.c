@@ -829,7 +829,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
                 c->pm_cache.previous_width = c->width;
-                width_changed = TRUE;
             }
             if (c->pm_cache.previous_height != c->height)
             {
@@ -838,7 +837,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
                 c->pm_cache.previous_height = c->height;
-                height_changed = TRUE;
             }
         }
 
@@ -950,6 +948,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_LEFT][state],
                 frameLeft (c), left_height);
+            height_changed = TRUE;
         }
         fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap,
             screen_info->sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft (c),
@@ -962,6 +961,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_RIGHT][state],
                 frameRight (c), right_height);
+            height_changed = TRUE;
         }
         fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap,
             screen_info->sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight (c),
@@ -974,6 +974,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_BOTTOM][state],
                 bottom_width, frameBottom (c));
+            width_changed = TRUE;
         }
         fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap,
             screen_info->sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width,
@@ -982,7 +983,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
             screen_info->sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width,
             frameBottom (c));
 
-        if (requires_clearing || title_changed || width_changed)
+        if (requires_clearing || title_changed)
         {
             XSetWindowBackgroundPixmap (clientGetXDisplay (c), 
                 MYWINDOW_XWINDOW (c->title),
@@ -1038,7 +1039,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 
         xfwmWindowShow (&c->title,
             screen_info->corners[CORNER_TOP_LEFT][state].width, 0, top_width,
-            frameTop (c), (requires_clearing | title_changed | width_changed));
+            frameTop (c), (requires_clearing | title_changed));
         xfwmWindowShow (&c->sides[SIDE_BOTTOM],
             screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
             frameHeight (c) - frameBottom (c), bottom_width, frameBottom (c),
