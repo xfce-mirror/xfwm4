@@ -429,7 +429,7 @@ void clientUpdateWinState(Client * c, XClientMessageEvent * ev)
 
     if(action & WIN_STATE_SHADED)
     {
-        TRACE("client \"%s\" (0x%lx) has received a win_state/shaded event", c->name, c->window);
+        TRACE("client \"%s\" (0x%lx) has received a win_state/shade event", c->name, c->window);
         if(add_remove == WIN_STATE_SHADED)
         {
             clientShade(c);
@@ -442,7 +442,7 @@ void clientUpdateWinState(Client * c, XClientMessageEvent * ev)
     else if(action & WIN_STATE_STICKY)
     {
         TRACE("client \"%s\" (0x%lx) has received a win_state/stick event", c->name, c->window);
-        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+        if(!clientIsTransient(c))
         {
             if(add_remove == WIN_STATE_STICKY)
             {
@@ -457,11 +457,8 @@ void clientUpdateWinState(Client * c, XClientMessageEvent * ev)
     }
     else if(action & WIN_STATE_MAXIMIZED)
     {
-        TRACE("client \"%s\" (0x%lx) has received a win_state/stick event", c->name, c->window);
-        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MAXIMIZE))
-        {
-            clientToggleMaximized(c, add_remove);
-        }
+        TRACE("client \"%s\" (0x%lx) has received a win_state/maximize event", c->name, c->window);
+        clientToggleMaximized(c, add_remove);
     }
 }
 
@@ -532,22 +529,26 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
-        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+        if (!clientIsTransient(c))
         {
-            clientStick(c, TRUE);
+            if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+            {
+                clientStick(c, TRUE);
+            }
+            else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+            {
+                clientUnstick(c, TRUE);
+            }
+            else if(action == NET_WM_STATE_TOGGLE)
+            {
+                clientToggleSticky(c, TRUE);
+            }
+            frameDraw(c, FALSE, FALSE);
         }
-        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-        {
-            clientUnstick(c, TRUE);
-        }
-        else if(action == NET_WM_STATE_TOGGLE)
-        {
-            clientToggleSticky(c, TRUE);
-        }
-        frameDraw(c, FALSE, FALSE);
     }
 
-    if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz) || (first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
+    if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz) || 
+       (first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
     {
         if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
@@ -614,53 +615,62 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if(((first == net_wm_state_fullscreen) || (second == net_wm_state_fullscreen)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
     {
-        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+        if (!clientIsTransient(c))
         {
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_FULLSCREEN);
+            if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+            {
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_FULLSCREEN);
+            }
+            else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+            {
+                CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FULLSCREEN);
+            }
+            else if(action == NET_WM_STATE_TOGGLE)
+            {
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_FULLSCREEN);
+            }
+            clientToggleFullscreen(c);
         }
-        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
-        {
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FULLSCREEN);
-        }
-        else if(action == NET_WM_STATE_TOGGLE)
-        {
-            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_FULLSCREEN);
-        }
-        clientToggleFullscreen(c);
     }
 
     if(((first == net_wm_state_above) || (second == net_wm_state_above)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
     {
-        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+        if (!clientIsTransient(c))
         {
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
+            if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+            {
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
+            }
+            else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+            {
+                CLIENT_FLAG_UNSET(c, CLIENT_FLAG_ABOVE);
+            }
+            else if(action == NET_WM_STATE_TOGGLE)
+            {
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_ABOVE);
+            }
+            clientToggleAbove(c);
         }
-        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
-        {
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_ABOVE);
-        }
-        else if(action == NET_WM_STATE_TOGGLE)
-        {
-            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_ABOVE);
-        }
-        clientToggleAbove(c);
     }
 
     if(((first == net_wm_state_below) || (second == net_wm_state_below)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_ABOVE))
     {
-        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+        if (!clientIsTransient(c))
         {
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_BELOW);
+            if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+            {
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_BELOW);
+            }
+            else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+            {
+                CLIENT_FLAG_UNSET(c, CLIENT_FLAG_BELOW);
+            }
+            else if(action == NET_WM_STATE_TOGGLE)
+            {
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_BELOW);
+            }
+            clientToggleBelow(c);
         }
-        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
-        {
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_BELOW);
-        }
-        else if(action == NET_WM_STATE_TOGGLE)
-        {
-            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_BELOW);
-        }
-        clientToggleBelow(c);
     }
 
     if((first == net_wm_state_skip_pager) || (second == net_wm_state_skip_pager))
@@ -763,7 +773,8 @@ static void clientGetInitialNetWmDesktop(Client * c)
     TRACE("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* This is to make sure that transient are shown with their "ancestor" window */
-    if ((c2 = clientGetTransient(c)))
+    c2 = clientGetTransient(c);
+    if (c2)
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
         c->win_workspace = c2->win_workspace;
@@ -785,9 +796,13 @@ static void clientGetInitialNetWmDesktop(Client * c)
             TRACE("atom net_wm_desktop detected");
             if(val == (int) ALL_WORKSPACES)
             {
-                TRACE("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
+                if (CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_STICK, CLIENT_FLAG_STICKY))
+                {
+                    TRACE("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
+                    CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+                    c->win_state |= WIN_STATE_STICKY;
+                }
                 c->win_workspace = workspace;
-                clientStick(c, FALSE);
             }
             else
             {
@@ -1028,7 +1043,7 @@ static void clientWindowType(Client * c)
             c->initial_layer = c2->win_layer;
             TRACE("Applied layer is %i", c->initial_layer);
         }
-        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY);
     }
     if((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
@@ -2215,22 +2230,22 @@ static inline void clientApplyInitialState(Client * c)
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
         clientToggleMaximized(c, mode);
     }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN) && !clientIsTransient(c))
     {
         TRACE("Applying client's initial state: fullscreen");
         clientToggleFullscreen(c);
     }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE) && !clientIsTransient(c))
     {
         TRACE("Applying client's initial state: above");
         clientToggleAbove(c);
     }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW) && !clientIsTransient(c))
     {
         TRACE("Applying client's initial state: below");
         clientToggleBelow(c);
     }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY) && !clientIsTransient(c))
     {
         TRACE("Applying client's initial state: sticky");
         clientStick(c, TRUE);
@@ -2403,8 +2418,8 @@ void clientFrame(Window w, gboolean initial)
     sn_client_startup_properties(c);
     clientGetWinState(c);
     clientGetNetState(c);
-    clientGetInitialNetWmDesktop(c);
     clientGetNetWmType(c);
+    clientGetInitialNetWmDesktop(c);
     clientGetNetStruts(c);
 
     /* Once we know the type of window, we can initialize window position */

@@ -1125,7 +1125,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
                 clientSetWorkspace(c, ev->data.l[0], TRUE);
             }
         }
-        else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
+        else if((ev->message_type == net_wm_desktop) && (ev->format == 32) && !clientIsTransient(c))
         {
             TRACE("client \"%s\" (0x%lx) has received a net_wm_desktop event", c->name, c->window);
             if(ev->data.l[0] == ALL_WORKSPACES)
@@ -1136,7 +1136,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
                     frameDraw(c, FALSE, FALSE);
                 }
             }
-            else if (!clientIsTransient(c))
+            else
             {
                 if (CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY))
                 {

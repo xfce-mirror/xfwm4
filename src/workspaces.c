@@ -74,14 +74,17 @@ void workspaceSwitch(int new_ws, Client * c2)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c = (Client *) index->data;
-        if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !clientIsTransient(c) && ((c->win_workspace != new_ws)))
+        if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && ((c->win_workspace != new_ws)))
         {
             if (c == previous)
             {
                 CLIENT_FLAG_SET(previous, CLIENT_FLAG_FOCUS);
                 clientSetFocus(NULL, FALSE);
             }
-            clientHide(c, new_ws, FALSE);
+            if (!clientIsTransient(c))
+            {
+                clientHide(c, new_ws, FALSE);
+            }
         }
     }
 
