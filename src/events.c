@@ -689,7 +689,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             }
             else
             {
-                clientUnstick(c);
+                clientSetWorkspace(c, ev->data.l[0]);
             }
         }
         else if((ev->message_type == net_close_window) && (ev->format == 32))
