@@ -2,12 +2,12 @@
 # Copyright (C) 2003 Olivier Fourdan
 # This file is distributed under the same license as the xfwm4 package.
 # Moritz Heiber <moe@lunar-linux.org>, 2003
-#
+
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "POT-Creation-Date: 2004-01-03 22:16+0100\n"
-"PO-Revision-Date: 2003-12-23 22:55-0000\n"
+"PO-Revision-Date: 2004-01-08 00:09+0100\n"
 "Last-Translator: Moritz Heiber <moe@lunar-linux.org>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "V. Desktops und Desktopränder"
 #. Number of workspaces
 #: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
 msgid "Workspaces"
-msgstr "Virtueller Desktops"
+msgstr "Virtuelle Desktops"
 
 #: mcs-plugin/plugin.c:179
 msgid "Margins"
@@ -160,7 +160,6 @@ msgstr "Titelleistenschrift"
 msgid "Title Alignment"
 msgstr "Titelleistenausrichtung"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
 msgstr "Textausrichtung in der Titelleiste:"
@@ -327,12 +326,12 @@ msgstr "%s: Einstellungen aus den Defaults fehlen"
 #: src/main.c:413
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
+msgstr "%s: Konnte nicht im Hintergrund starten: %s"
 
 #: src/main.c:421
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: Konnte keinen neuen Prozess erstellen: %s"
 
 #: src/main.c:442
 #, c-format
@@ -377,7 +376,7 @@ msgstr "_Lösen"
 
 #: src/menu.c:51
 msgid "Context _help"
-msgstr ""
+msgstr "Hilfe"
 
 #: src/menu.c:52 src/menu.c:53
 msgid "Always on top"
