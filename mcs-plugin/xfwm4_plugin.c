@@ -125,8 +125,6 @@ gchar *current_key_theme = NULL;
 static GList *decoration_theme_list = NULL;
 GList *keybinding_theme_list = NULL;
 
-
-
 static void
 sensitive_cb (GtkWidget * widget, gpointer user_data)
 {
