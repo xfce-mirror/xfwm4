@@ -120,7 +120,7 @@ do
         echo "Running xml-i18n-toolize..."
 	xml-i18n-toolize --copy --force --automake
       fi
-      if grep "^AM_PROG_LIBTOOL" configure.in >/dev/null; then
+      if grep "^AC_PROG_LIBTOOL" configure.in >/dev/null; then
 	if test -z "$NO_LIBTOOLIZE" ; then 
 	  echo "Running libtoolize..."
 	  libtoolize --force --copy
