@@ -1,3 +1,78 @@
+2003-07-19 10:59  huysmans
+
+	* configure, configure.ac, po/ar.gmo, po/ar.po, po/ca.gmo,
+	po/ca.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo,
+	po/hu.po, po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo,
+	po/nl.po, po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo,
+	po/ta.po, po/tr.gmo, po/tr.po, po/xfwm4.pot, po/zh_CN.gmo,
+	po/zh_CN.po: Update version numbers and po files for release
+
+2003-07-18 12:57  huysmans
+
+	* po/: hu.gmo, hu.po: Update hungarian translations
+
+2003-07-18 09:46  huysmans
+
+	* po/: de.gmo, de.po, tr.gmo, tr.po: Update turkish translations
+
+2003-07-16 22:02  xfce
+
+	* src/client.c: Cleanup: Remove #if 0/#endif as it seems to work
+
+2003-07-16 11:57  huysmans
+
+	* configure, configure.ac, po/ar.gmo, po/ar.po, po/ca.gmo,
+	po/ca.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo,
+	po/hu.po, po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo,
+	po/nl.po, po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo,
+	po/ta.po, po/tr.gmo, po/tr.po, po/xfwm4.pot, po/zh_CN.gmo,
+	po/zh_CN.po: Add hungarian translations
+
+2003-07-16 10:22  huysmans
+
+	* po/: ca.gmo, ca.po: Update catalan translations
+
+2003-07-15 23:42  xfce
+
+	* src/: client.c, events.c: Fix Reparent with UnmapNotify/MapNotify
+	for good this time (I think)
+
+2003-07-15 22:02  xfce
+
+	* src/: client.c, events.c: Still the Reparent issue with
+	UnmapNotify/MapNotify
+
+2003-07-14 15:11  xfce
+
+	* src/client.c: Add some comment to the code - just for the record
+
+2003-07-14 14:46  xfce
+
+	* mcs-plugin/xfwm4_plugin.c: Fix strings not being translated in
+	drop-down menus of xfwm4 mcs plugin
+
+2003-07-14 10:52  xfce
+
+	* configure, configure.ac: Set version to 3.99.2 (rc2)
+
+2003-07-14 00:53  xfce
+
+	* src/events.c: Forgot to remove traces
+
+2003-07-14 00:52  xfce
+
+	* src/: client.c, events.c: More tweaks
+
+2003-07-14 00:37  xfce
+
+	* src/client.c: Tweak map_state and reparenting
+
+2003-07-13 10:43  huysmans
+
+	* ChangeLog: Update ChangeLogs for release
+
 2003-07-11 09:33  huysmans
 
 	* ChangeLog: Update ChangeLog's for release
