@@ -28,14 +28,70 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>
+#include <gdk/gdkx.h>
+
 #include "mypixmap.h"
 #include "main.h"
+
+static gboolean
+myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
+{
+    gchar *filepng;
+    gchar *filename;
+    GdkPixbuf *alpha;
+    GdkPixbuf *src;
+    GdkPixmap *destw;
+    GError *error = NULL;
+
+    filepng = g_strdup_printf ("%s.%s", file, "png");
+    filename = g_build_filename (dir, filepng, NULL);
+    g_free (filepng);
+    
+    if (!g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+    {
+        g_free (filename);
+        return FALSE;
+    }
+    alpha = gdk_pixbuf_new_from_file (filename, &error);
+    g_free (filename);
+    if (error)
+    {
+	g_warning ("%s\n", error->message);
+	g_error_free (error);
+	return FALSE;
+    }
+    if (!gdk_pixbuf_get_has_alpha (alpha))
+    {
+	g_object_unref (alpha);
+        return FALSE;
+    }
+    destw = gdk_pixmap_foreign_new (pm->pixmap);
+    if (!destw)
+    {
+	g_warning ("Cannot get pixmap\n");
+	g_object_unref (alpha);
+        return FALSE;
+    }
+    
+    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), gdk_rgb_get_cmap (), 
+                                        0, 0, 0, 0, pm->width, pm->height);
+    gdk_pixbuf_composite (alpha, src, 0, 0, pm->width, pm->height,
+                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+    gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
+                     pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);                 
+    g_object_unref (alpha);
+    g_object_unref (src);
+    g_object_unref (destw);
+
+    return TRUE;
+}
 
 gboolean
 myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
+    gchar *filexpm;
     XpmAttributes attr;
 
     TRACE ("entering myPixmapLoad");
@@ -47,7 +103,9 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     pm->mask = None;
     pm->width = 1;
     pm->height = 1;
-    filename = g_build_filename (dir, G_DIR_SEPARATOR_S, file, NULL);
+    filexpm = g_strdup_printf ("%s.%s", file, "xpm");
+    filename = g_build_filename (dir, filexpm, NULL);
+    g_free (filexpm);
     attr.colorsymbols = cs;
     attr.numsymbols = n;
     attr.colormap = cmap;
@@ -60,6 +118,7 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     if (XpmReadFileToPixmap (dpy, XDefaultRootWindow (dpy), filename,
             &pm->pixmap, &pm->mask, &attr))
     {
+        g_print ("%s not found\n", filename);
         g_free (filename);
         return FALSE;
     }
@@ -67,6 +126,9 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     pm->height = attr.height;
     XpmFreeAttributes (&attr);
     g_free (filename);
+    /* Apply the alpha channel in available */
+    myPixmapCompose (pm, dir, file);
+    
     return TRUE;
 }
 
