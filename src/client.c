@@ -34,6 +34,7 @@
 #include "hints.h"
 #include "workspaces.h"
 #include "settings.h"
+#include "tabwin.h"
 #include "debug.h"
 
 /* Event mask definition */
@@ -85,6 +86,13 @@ struct _MoveResizeData
     int corner;
     Window tmp_event_window;
     Client *c;
+};
+
+typedef struct _ClientCycleData ClientCycleData;
+struct _ClientCycleData
+{
+    Client *c;
+    Tabwin *tabwin;
 };
 
 typedef struct _ButtonPressData ButtonPressData;
@@ -3265,30 +3273,31 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
 {
     GtkToXEventFilterStatus status = XEV_FILTER_STOP;
     gboolean cycling = TRUE;
-    Client **c2 = (Client **) data;
+    gboolean gone = FALSE;
+    ClientCycleData *passdata = (ClientCycleData *) data;
 
     DBG("entering clientCycle_event_filter\n");
+    
     switch (xevent->type)
     {
+        case DestroyNotify:
+	    gone |= (passdata->c == clientGetFromWindow(((XDestroyWindowEvent *) xevent)->window, WINDOW));
+            status = XEV_FILTER_CONTINUE;
+        case UnmapNotify:
+	    gone |= (passdata->c == clientGetFromWindow(((XUnmapEvent *) xevent)->window, WINDOW));
+            status = XEV_FILTER_CONTINUE;
         case KeyPress:
-            if(xevent->xkey.keycode == keys[KEY_CYCLE_WINDOWS].keycode)
+            if(gone || (xevent->xkey.keycode == keys[KEY_CYCLE_WINDOWS].keycode))
             {
-                if((*c2)->hidden)
+                passdata->c = clientGetNext(passdata->c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
+                if(passdata->c)
                 {
-                    clientHide(*c2, False);
-                }
-                *c2 = clientGetNext(*c2, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
-                if(*c2)
-                {
-                    clientShow(*c2, False);
-                    clientRaise(*c2);
-                    clientSetFocus(*c2, False);
+                    tabwinSetLabel(passdata->tabwin, passdata->c->name);
                 }
                 else
                 {
                     cycling = FALSE;
                 }
-
             }
             break;
         case KeyRelease:
@@ -3319,7 +3328,7 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
 
 void clientCycle(Client * c)
 {
-    Client *c2;
+    ClientCycleData passdata;
     int g1, g2;
 
     g_return_if_fail(c != NULL);
@@ -3342,26 +3351,26 @@ void clientCycle(Client * c)
         return;
     }
 
-    c2 = clientGetNext(c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
-    if(c2)
+    passdata.c = clientGetNext(c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
+    if(passdata.c)
     {
-        clientShow(c2, False);
-        clientRaise(c2);
-        clientSetFocus(c2, False);
+        passdata.tabwin = tabwinCreate(passdata.c->name);
         DBG("entering cycle loop\n");
-        pushEventFilter(clientCycle_event_filter, &c2);
+        pushEventFilter(clientCycle_event_filter, &passdata);
         gtk_main();
         popEventFilter();
         DBG("leaving cycle loop\n");
+	tabwinDestroy(passdata.tabwin);
     }
 
     XUngrabKeyboard(dpy, CurrentTime);
     XUngrabPointer(dpy, CurrentTime);
 
-    if(c2)
+    if(passdata.c)
     {
-        clientShow(c2, True);
-        clientSetFocus(c2, True);
+        clientShow(passdata.c, True);
+        clientRaise(passdata.c);
+        clientSetFocus(passdata.c, True);
     }
 }
 

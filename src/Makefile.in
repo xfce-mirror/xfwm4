@@ -137,29 +137,31 @@ target_alias = @target_alias@
 bin_PROGRAMS = xfwm4
 xfwm4_SOURCES = \
 	client.c \
-	events.c \
-	frame.c \
-	hints.c \
-	keyboard.c \
-	main.c \
-	menu.c \
-	misc.c \
-	parserc.c \
-	pixmap.c \
-	settings.c \
-	workspaces.c \
 	client.h \
 	debug.h \
+	events.c \
 	events.h \
+	frame.c \
 	frame.h \
+	hints.c \
 	hints.h \
+	keyboard.c \
 	keyboard.h \
+	main.c \
 	main.h \
+	menu.c \
 	menu.h \
+	misc.c \
 	misc.h \
+	parserc.c \
 	parserc.h \
+	pixmap.c \
 	pixmap.h \
+	settings.c \
 	settings.h \
+	tabwin.c \
+	tabwin.h \
+	workspaces.c \
 	workspaces.h
 
 
@@ -168,6 +170,13 @@ xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_CLIENT_CFLAGS
 -DGDK_PIXBUF_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_CLIENT_LIBS@
+
+IMAGES = tabwin-icon.png
+VARIABLES = tabwin_icon_data $(srcdir)/$(IMAGES)
+
+EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png
+
+noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 subdir = src
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -180,7 +189,8 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
-	xfwm4-settings.$(OBJEXT) xfwm4-workspaces.$(OBJEXT)
+	xfwm4-settings.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
+	xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 xfwm4_LDFLAGS =
@@ -198,6 +208,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-tabwin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -207,6 +218,8 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 DIST_SOURCES = $(xfwm4_SOURCES)
+DATA = $(noinst_DATA)
+
 DIST_COMMON = Makefile.am Makefile.in
 SOURCES = $(xfwm4_SOURCES)
 
@@ -259,6 +272,7 @@ xfwm4-misc.$(OBJEXT): misc.c
 xfwm4-parserc.$(OBJEXT): parserc.c
 xfwm4-pixmap.$(OBJEXT): pixmap.c
 xfwm4-settings.$(OBJEXT): settings.c
+xfwm4-tabwin.$(OBJEXT): tabwin.c
 xfwm4-workspaces.$(OBJEXT): workspaces.c
 xfwm4$(EXEEXT): $(xfwm4_OBJECTS) $(xfwm4_DEPENDENCIES) 
 	@rm -f xfwm4$(EXEEXT)
@@ -281,6 +295,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-parserc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-tabwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
 
 distclean-depend:
@@ -682,6 +697,39 @@ xfwm4-settings.lo: settings.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-settings.lo `test -f 'settings.c' || echo '$(srcdir)/'`settings.c
 
+xfwm4-tabwin.o: tabwin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-tabwin.o -MD -MP -MF "$(DEPDIR)/xfwm4-tabwin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-tabwin.o `test -f 'tabwin.c' || echo '$(srcdir)/'`tabwin.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-tabwin.Tpo" "$(DEPDIR)/xfwm4-tabwin.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-tabwin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='tabwin.c' object='xfwm4-tabwin.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-tabwin.Po' tmpdepfile='$(DEPDIR)/xfwm4-tabwin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-tabwin.o `test -f 'tabwin.c' || echo '$(srcdir)/'`tabwin.c
+
+xfwm4-tabwin.obj: tabwin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-tabwin.obj -MD -MP -MF "$(DEPDIR)/xfwm4-tabwin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-tabwin.obj `if test -f 'tabwin.c'; then $(CYGPATH_W) 'tabwin.c'; else $(CYGPATH_W) '$(srcdir)/tabwin.c'`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-tabwin.Tpo" "$(DEPDIR)/xfwm4-tabwin.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-tabwin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='tabwin.c' object='xfwm4-tabwin.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-tabwin.Po' tmpdepfile='$(DEPDIR)/xfwm4-tabwin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-tabwin.obj `if test -f 'tabwin.c'; then $(CYGPATH_W) 'tabwin.c'; else $(CYGPATH_W) '$(srcdir)/tabwin.c'`
+
+xfwm4-tabwin.lo: tabwin.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-tabwin.lo -MD -MP -MF "$(DEPDIR)/xfwm4-tabwin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-tabwin.lo `test -f 'tabwin.c' || echo '$(srcdir)/'`tabwin.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-tabwin.Tpo" "$(DEPDIR)/xfwm4-tabwin.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-tabwin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='tabwin.c' object='xfwm4-tabwin.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-tabwin.Plo' tmpdepfile='$(DEPDIR)/xfwm4-tabwin.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-tabwin.lo `test -f 'tabwin.c' || echo '$(srcdir)/'`tabwin.c
+
 xfwm4-workspaces.o: workspaces.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-workspaces.o -MD -MP -MF "$(DEPDIR)/xfwm4-workspaces.Tpo" \
 @am__fastdepCC_TRUE@	  -c -o xfwm4-workspaces.o `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c; \
@@ -812,7 +860,7 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS)
+all-am: Makefile $(PROGRAMS) $(DATA)
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
@@ -899,6 +947,9 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
 	uninstall-am uninstall-binPROGRAMS uninstall-info-am
 
+
+inline-tabwin-icon.h: $(IMAGES)
+	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) > $(srcdir)/inline-tabwin-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

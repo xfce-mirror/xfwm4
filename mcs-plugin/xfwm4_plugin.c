@@ -13,7 +13,6 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-        gnome theme-switcher capplet - (c) Jonathan Blandford <jrb@gnome.org>
         xfce4 mcs plugin   - (c) 2002 Olivier Fourdan
 
  */
