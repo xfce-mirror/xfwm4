@@ -408,24 +408,35 @@ main (int argc, char **argv)
         case 0:
             if (daemon_mode)
             {
+#ifdef HAVE_DAEMON
+				if (daemon(TRUE, TRUE) < 0) {
+					g_warning(_("%s: Failed to enter daemon mode: %s"),
+							g_get_prgname(), g_strerror(errno));
+					exit(EXIT_FAILURE);
+				}
+#else /* !HAVE_DAEMON */
                 switch (fork ())
                 {
                     case -1:
-                        g_warning ("fork() failed");
+                        g_warning (_("%s: Failed to create new process: %s"),
+								g_get_prgname(), g_strerror(errno));
                         exit (1);
                         break;
                     case 0:    /* child */
-                        gtk_main ();
+#ifdef HAVE_SETSID
+						/* detach from terminal session */
+						(void)setsid();
+#endif /* !HAVE_SETSID */
                         break;
                     default:   /* parent */
                         _exit (0);
                         break;
                 }
-            }
-            else
-            {
-                gtk_main ();
-            }
+#endif /* !HAVE_DAEMON */
+			}
+
+			/* enter GTK main loop */
+            gtk_main ();
             break;
         default:
             g_warning (_("%s: Unknown error occured"), g_get_prgname ());

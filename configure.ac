@@ -29,6 +29,7 @@ AC_C_INLINE
 
 dnl check for standard header files
 AC_HEADER_STDC
+AC_CHECK_FUNCS([daemon setsid])
 
 dnl Check for i18n support
 BM_I18N([xfwm4], [ar ca de es es_MX fi fr hu ja ko lt ms nl pl pt_PT ru sv ta 
