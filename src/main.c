@@ -157,7 +157,7 @@ void initialize(int argc, char **argv)
 
     initEventFilter(SubstructureNotifyMask | StructureNotifyMask | SubstructureRedirectMask |
         	 ButtonPressMask | ButtonReleaseMask | FocusChangeMask |
-        	 PropertyChangeMask, NULL);
+        	 PropertyChangeMask, NULL, "xfwm");
     pushEventFilter (xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow ();

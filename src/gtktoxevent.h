@@ -45,7 +45,7 @@ typedef struct GtkToXEventFilterStack
 
 GtkToXEventFilterStack *pushEventFilter(GtkToXEventFilter filter, gpointer data);
 GtkToXEventFilterStack *popEventFilter(void);
-GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data);
+GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gchar *widget_name);
 void closeEventFilter(void);
 GtkWidget *getDefaultGtkWidget(void);
 Window getDefaultXWindow(void);

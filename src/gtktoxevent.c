@@ -184,7 +184,7 @@ GtkToXEventFilterStack *popEventFilter(void)
   return (filterstack);
 }
 
-GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data)
+GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gchar *widget_name)
 {
   XWindowAttributes attribs;
 
@@ -213,6 +213,10 @@ GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data)
   gtk_window_resize (GTK_WINDOW(gtk_win), 5, 5);
   gtk_window_move (GTK_WINDOW(gtk_win), -1000, -1000);
 #endif
+  if (widget_name)
+  {
+      gtk_widget_set_name (gtk_win, widget_name);
+  }
   gtk_widget_show_now (gtk_win);
   gdk_window_set_user_data (event_win, gtk_win);
   gdk_flush();

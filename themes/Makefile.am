@@ -3,6 +3,7 @@ agua \
 coldsteel \
 cruxish \
 gtk \
+kde \
 linea \
 mofit \
 next \
