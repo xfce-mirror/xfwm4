@@ -1,0 +1,102 @@
+#!/usr/bin/make -f
+
+# This is the debhelper compatibility version to use.
+export DH_COMPAT=3
+
+DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -g
+endif
+ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+	INSTALL_PROGRAM += -s
+endif
+
+configure: configure-stamp
+configure-stamp:
+
+	dh_testdir
+	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr
+	touch configure-stamp
+
+build: configure build-stamp
+build-stamp:
+	
+	dh_testdir
+	$(MAKE)
+	touch build-stamp
+
+clean:
+	
+	dh_testdir
+	dh_testroot
+	
+	-rm -f configure-stamp build-stamp 
+
+	-$(MAKE) distclean
+	-test -r /usr/share/misc/config.sub && \
+	  cp -f /usr/share/misc/config.sub config.sub
+	-test -r /usr/share/misc/config.guess && \
+	  cp -f /usr/share/misc/config.guess config.guess
+
+	dh_clean
+
+install: build
+
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	$(MAKE) install DESTDIR=`pwd`/debian/tmp/
+
+	dh_install --list-missing --sourcedir=debian/tmp
+	
+binary-indep: build install
+
+	dh_testdir
+	dh_testroot
+	
+	dh_installdocs -i
+	dh_installchangelogs ChangeLog -i
+	
+	dh_compress -i
+	dh_fixperms -i
+	
+	dh_installdeb -i
+	dh_gencontrol -i
+	
+	dh_md5sums -i
+	dh_builddeb -i
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	
+	dh_testdir
+	dh_testroot
+
+	dh_installdocs -a
+	dh_installmenu -a
+
+	# set xfce theme as default
+	cat `pwd`/debian/xfwm4/usr/share/xfwm4/defaults | sed 's/theme=microdeck/theme=xfce/' > `pwd`/debian/xfwm4/usr/share/xfwm4/defaults.new
+	mv `pwd`/debian/xfwm4/usr/share/xfwm4/defaults.new `pwd`/debian/xfwm4/usr/share/xfwm4/defaults
+
+	# install manpage
+	install -D `pwd`/debian/maintain/xfwm4.1 `pwd`/debian/xfwm4/usr/share/man/man1/xfwm4.1
+	
+	dh_installchangelogs ChangeLog -a
+	dh_strip -a
+	dh_compress -a
+	
+	dh_fixperms -a
+	dh_installdeb -a
+	
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	
+	dh_md5sums -a
+	dh_builddeb -a
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install 
