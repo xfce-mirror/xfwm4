@@ -17,36 +17,34 @@ msgstr ""
 
 #: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
 #: mcs-plugin/margins_plugin.c:250
-#, fuzzy
 msgid "Workspace Margins"
-msgstr "_Bureaublad"
+msgstr "Bureaublad Marges"
 
 #: mcs-plugin/margins_plugin.c:211
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "Marges aanpassen"
 
 #: mcs-plugin/margins_plugin.c:237
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "Marges zijn gebieden aan de randen van het scherm waar geen vensters"
+"geplaatst worden"
 
 #: mcs-plugin/margins_plugin.c:278
-#, fuzzy
 msgid "Left :"
-msgstr "Links"
+msgstr "Links :"
 
 #: mcs-plugin/margins_plugin.c:298
-#, fuzzy
 msgid "Right :"
-msgstr "Rechts"
+msgstr "Rechts :"
 
 #: mcs-plugin/margins_plugin.c:318
 msgid "Top :"
-msgstr ""
+msgstr "Boven :"
 
 #: mcs-plugin/margins_plugin.c:338
 msgid "Bottom :"
-msgstr ""
+msgstr "Onder :"
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Title"
@@ -219,9 +217,8 @@ msgid "Snap windows to screen border"
 msgstr "Vensters naar schermranden trekken"
 
 #: mcs-plugin/xfwm4_plugin.c:1638
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "Vensters naar schermranden trekken"
+msgstr "Vensters naar andere vensters trekken"
 
 #: mcs-plugin/xfwm4_plugin.c:1651
 msgid "Distance :"
@@ -236,24 +233,21 @@ msgid "Wide"
 msgstr "Groot"
 
 #: mcs-plugin/xfwm4_plugin.c:1690
-#, fuzzy
 msgid "Windows snapping"
-msgstr "Window Manager"
+msgstr "Aantrekken vensters"
 
 #: mcs-plugin/xfwm4_plugin.c:1705
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Wissel bureaubladen bij slepen voorbij de rand van het scherm"
+msgstr "Wissel bureaubladen wanneer de muisaanwijzer de rand van het "
+"scherm bereikt"
 
 #: mcs-plugin/xfwm4_plugin.c:1714
-#, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Wissel bureaubladen bij slepen voorbij de rand van het scherm"
 
 #: mcs-plugin/xfwm4_plugin.c:1726
-#, fuzzy
 msgid "Edge Resistance :"
-msgstr "Afstand :"
+msgstr "Weerstand :"
 
 #: mcs-plugin/xfwm4_plugin.c:1767
 msgid "Wrap workspaces"
@@ -268,13 +262,12 @@ msgid "Display content of windows when moving"
 msgstr "Inhoud venster tonen bij verplaatsen"
 
 #: mcs-plugin/xfwm4_plugin.c:1797
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "Inhoud tonen"
+msgstr "Inhoud tonen bij verplaatsen en formaat aanpassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1808
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Actie voor dubbelklikken op de titelbalk"
+msgstr "Actie voor dubbelklikken op de titelbalk :"
 
 #: mcs-plugin/xfwm4_plugin.c:1814
 msgid "Double click action"
@@ -282,12 +275,12 @@ msgstr "Dubbelklik actie"
 
 #: mcs-plugin/xfwm4_plugin.c:1819
 msgid "Advanced"
-msgstr ""
+msgstr "Geavanceerd"
 
 #: src/client.c:441
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: Onbeheerde net_wm_state (venster %#lx)"
+msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
 
 #: src/events.c:1290
 #, c-format
@@ -297,7 +290,7 @@ msgstr "%s: Bewerking (nog) niet ondersteund\n"
 #: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "%s: Segmentatie fout"
 
 #: src/main.c:235
 #, c-format
@@ -356,9 +349,8 @@ msgid "Uns_tick"
 msgstr "_Loslaten"
 
 #: src/menu.c:51
-#, fuzzy
 msgid "Send to..."
-msgstr "Wisselen naar ..."
+msgstr "Zenden naar..."
 
 #: src/menu.c:53
 msgid "_Close"
@@ -377,9 +369,9 @@ msgid "Restart"
 msgstr "_Herstarten"
 
 #: src/menu.c:163
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i"
-msgstr "_Bureaublad"
+msgstr "Bureaublad %i"
 
 #: src/menu.c:405
 #, c-format
@@ -387,9 +379,9 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 
 #: src/settings.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Missing defaults file"
-msgstr "%: Ontbrekende gegevens uit standaard bestanden"
+msgstr "%s: defaults bestand ontbreekt"
 
 #: src/settings.c:507
 #, c-format
@@ -412,9 +404,9 @@ msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
 #: src/settings.c:755
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Missing values in defaults file"
-msgstr "%: Ontbrekende gegevens uit standaard bestanden"
+msgstr "%: Ontbrekende gegevens in defaults bestand"
 
 #: src/settings.c:1090
 #, c-format
@@ -425,40 +417,3 @@ msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"
 msgid "Switch to ..."
 msgstr "Wisselen naar ..."
 
-#~ msgid "_Move"
-#~ msgstr "V_erplaatsen"
-
-#~ msgid "_Resize"
-#~ msgstr "_Grootte veranderen"
-
-#~ msgid "S_witch"
-#~ msgstr "_Wisselen"
-
-#~ msgid "Misc."
-#~ msgstr "Overig"
-
-#~ msgid "Opaque move"
-#~ msgstr "Inhoud tonen"
-
-#~ msgid "Snap to screen border"
-#~ msgstr "Naar schermrand trekken"
-
-#, fuzzy
-#~ msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
-#~ msgstr "%s: Eigenschap %s voor venster (%lx) bevat ongeldige UTF-8\n"
-
-#~ msgid "%s: Using GTK+-%d.%d.%d"
-#~ msgstr "%s: GTK+-%d.%d.%d"
-
-#~ msgid "%s: Terminated\n"
-#~ msgstr "%: Afgesloten\n"
-
-#~ msgid "Layout :"
-#~ msgstr "Volgorde"
-
-#, fuzzy
-#~ msgid "%s: Unidentified client message for window 0x%lx"
-#~ msgstr "%s: Onbeheerde net_wm_state (venster %#lx)"
-
-#~ msgid "Init complete"
-#~ msgstr "Initialisatie compleet"
