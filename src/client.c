@@ -1582,20 +1582,20 @@ clientAddToList (Client * c)
     windows = g_list_append (windows, c);
 
     client_sibling = clientGetLowestTransient (c);
-    if (client_sibling)
+    /* Paranoid check to avoid circular linked list */
+    if ((client_sibling) && (client_sibling != c))
     {
         /* The client has already a transient mapped */
-        sibling =
-            g_list_find (windows_stack, (gconstpointer) client_sibling);
+        sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
         windows_stack = g_list_insert_before (windows_stack, sibling, c);
     }
     else
     {
         client_sibling = clientGetNextTopMost (c->win_layer, c);
-        if (client_sibling)
+        /* Paranoid check to avoid circular linked list */
+        if ((client_sibling) && (client_sibling != c))
         {
-            sibling =
-                g_list_find (windows_stack, (gconstpointer) client_sibling);
+            sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
             windows_stack = g_list_insert_before (windows_stack, sibling, c);
         }
         else
@@ -4200,14 +4200,15 @@ clientLower (Client * c)
             client_sibling = clientGetBottomMost (c->win_layer, c);
         }
         windows_stack = g_list_remove (windows_stack, (gconstpointer) c);
-        if (client_sibling)
+        /* Paranoid check to avoid circular linked list */
+        if ((client_sibling) && (client_sibling != c))
         {
-            GList *sibling = g_list_find (windows_stack,
-                (gconstpointer) client_sibling);
+            GList *sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
             gint position = g_list_position (windows_stack, sibling) + 1;
+
             windows_stack = g_list_insert (windows_stack, c, position);
-            TRACE ("lowest client is \"%s\" (0x%lx) at position %i",
-                client_sibling->name, client_sibling->window, position);
+            TRACE ("lowest client is \"%s\" (0x%lx) at position %i", 
+                    client_sibling->name, client_sibling->window, position);
         }
         else
         {

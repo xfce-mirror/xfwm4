@@ -173,9 +173,6 @@ workspaceSwitch (int new_ws, Client * c2)
 void
 workspaceSetNames (char *names, int length)
 {
-    int i;
-    char *ptr = names;
-
     if (params.workspace_names)
     {
         g_free (params.workspace_names);
