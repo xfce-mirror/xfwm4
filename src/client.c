@@ -2301,11 +2301,18 @@ clientConstrainPos (Client * c, gboolean show_full)
             c->y = disp_max_y - bottom - CLIENT_MIN_VISIBLE + frame_top;
             frame_y = frameY (c);
         }
-        if (topMostHead
-            && (frame_y + frame_height < disp_y + CLIENT_MIN_VISIBLE + top))
+        if (topMostHead)
         {
-            c->y =
-                disp_y + CLIENT_MIN_VISIBLE + top - frame_height + frame_top;
+            if ((frame_top == 0) && (frame_y < disp_y + top))
+            {
+                c->y = disp_y + top + frame_top;
+                frame_y = frameY (c);
+            }
+            else if (frame_y + frame_height < disp_y + top + CLIENT_MIN_VISIBLE)
+            {
+                c->y = disp_y + CLIENT_MIN_VISIBLE + top - frame_height + frame_top;
+                frame_y = frameY (c);
+            }
         }
     }
 }
