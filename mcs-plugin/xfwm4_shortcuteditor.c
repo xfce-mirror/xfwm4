@@ -228,12 +228,24 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
 	if (gtk_tree_view_get_path_at_pos (treeview, event->x, event->y, &path, NULL, NULL, NULL))
 	{
 	    GtkTreeSelection *selection;
-       
+	    GtkTreeModel *model;
+	    GtkTreeIter iter;
+
+	    gchar *theme_name = NULL;
+	    ThemeInfo *ti;
+
 	    selection = gtk_tree_view_get_selection (treeview);
+	    gtk_tree_selection_get_selected (selection, &model, &iter);
+	    gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
+	    
+	    ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
+
 	    gtk_tree_selection_unselect_all (selection);
 	    gtk_tree_selection_select_path (selection, path);
 
-	    gtk_widget_set_sensitive (itf->popup_del_menuitem, TRUE);
+	    gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
+
+	    g_free (theme_name);
 	}
 	else
 	{
