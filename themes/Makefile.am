@@ -9,4 +9,5 @@ coldsteel \
 agua \
 redmond \
 gtk \
-xfce
+xfce \
+mofit

@@ -74,7 +74,8 @@ coldsteel \
 agua \
 redmond \
 gtk \
-xfce
+xfce \
+mofit
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
