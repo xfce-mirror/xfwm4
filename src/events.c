@@ -1264,10 +1264,6 @@ handleFocusIn (XFocusChangeEvent * ev)
         {
             clientSetFocus (c, FOCUS_FORCE);
         }
-        else
-        {
-            clientPassFocus (NULL);
-        }
         return;
     }
     else if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
