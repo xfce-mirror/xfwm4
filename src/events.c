@@ -227,37 +227,22 @@ static inline void handleKeyPress(XKeyEvent * ev)
             clientClose(c);
             break;
         case KEY_HIDE_WINDOW:
-            if(CLIENT_CAN_HIDE_WINDOW(c))
-            {
-                clientHide(c, TRUE);
-            }
+            clientHide(c, TRUE);
             break;
         case KEY_MAXIMIZE_WINDOW:
-            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-            }
+            clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
             break;
         case KEY_MAXIMIZE_VERT:
-            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
-            }
+            clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
             break;
         case KEY_MAXIMIZE_HORIZ:
-            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
-            }
+            clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
             break;
         case KEY_SHADE_WINDOW:
             clientToggleShaded(c);
             break;
         case KEY_STICK_WINDOW:
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
-            {
-                clientToggleSticky(c, TRUE);
-            }
+            clientToggleSticky(c, TRUE);
             break;
         case KEY_MOVE_NEXT_WORKSPACE:
             workspaceSwitch(workspace + 1, c);
@@ -445,19 +430,13 @@ static inline void button1Action(Client * c, XButtonEvent * ev)
         switch (params.double_click_action)
         {
         case ACTION_MAXIMIZE:
-            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-            }
+            clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
             break;
         case ACTION_SHADE:
             clientToggleShaded(c);
             break;
         case ACTION_HIDE:
-            if(CLIENT_CAN_HIDE_WINDOW(c))
-            {
-                clientHide(c, TRUE);
-            }
+            clientHide(c, TRUE);
             break;
         }
     }
@@ -663,33 +642,18 @@ static inline void handleButtonRelease(XButtonEvent * ev)
     XSendEvent(dpy, gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
 }
 
-static inline void transfertFocus(Client *c)
-{
-    DBG("entering transfertFocus\n");
-
-    if (c == clientGetFocus())
-    {
-        if(clients)
-        {
-            clientSetFocus(clientGetNext(clients->prev, 0), TRUE);
-        }
-        else
-        {
-            clientSetFocus(NULL, TRUE);
-        }
-    }
-}
-
 static inline void handleDestroyNotify(XDestroyWindowEvent * ev)
 {
     Client *c;
 
     DBG("entering handleDestroyNotify\n");
+    DBG("destroyed window is (0x%lx)\n", ev->window);
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        transfertFocus(c);
+        DBG("DestroyNotify for \"%s\" (0x%lx)\n", c->name, c->window);
+        clientPassFocus(c);
         clientUnframe(c, FALSE);
     }
 }
@@ -699,17 +663,27 @@ static inline void handleUnmapNotify(XUnmapEvent * ev)
     Client *c;
 
     DBG("entering handleUnmapNotify\n");
+    DBG("unmapped window is (0x%lx)\n", ev->window);
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
+        DBG("UnmapNotify for \"%s\" (0x%lx)\n", c->name, c->window);
+        /* Reparenting generates an unmapnotify, don't pass focus in that case */
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_REPARENTING))
+        {
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_REPARENTING);
+        }
+        else
+        {
+            clientPassFocus(c);
+        }
         if(c->ignore_unmap)
         {
             c->ignore_unmap--;
         }
         else
         {
-            transfertFocus(c);
             clientUnframe(c, FALSE);
         }
     }
@@ -720,6 +694,7 @@ static inline void handleMapRequest(XMapRequestEvent * ev)
     Client *c;
 
     DBG("entering handleMapRequest\n");
+    DBG("mapped window is (0x%lx)\n", ev->window);
 
     if(ev->window == None)
     {
@@ -744,6 +719,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     XEvent otherEvent;
 
     DBG("entering handleConfigureRequest\n");
+    DBG("configured window is (0x%lx)\n", ev->window);
 
     /* Compress events - logic taken from kwin */
     while(XCheckTypedWindowEvent(dpy, ev->window, ConfigureRequest, &otherEvent))
@@ -802,7 +778,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         gboolean constrained = FALSE;
 
         DBG("handleConfigureRequest managed window \"%s\" (0x%lx)\n", c->name, c->window);
-        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
             return;
@@ -822,10 +798,13 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             constrained = TRUE;
         }
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
-        if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
+        if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
-            clientShow(c, TRUE);
-            if(params.focus_new && clientAcceptFocus(c))
+	    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+	    {
+                clientShow(c, TRUE);
+            }
+	    if(params.focus_new && clientAcceptFocus(c))
             {
                 clientSetFocus(c, TRUE);
             }
@@ -848,7 +827,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
     while(XCheckTypedEvent(dpy, EnterNotify, (XEvent *) ev))
         ;
 
-    DBG("EnterNotify window is (0x%lx)\n", ev->window);
+    DBG("entered window is (0x%lx)\n", ev->window);
 
     c = clientGetFromWindow(ev->window, FRAME);
     if(c && !(params.click_to_focus) && (clientAcceptFocus(c)))
@@ -866,7 +845,12 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     Client *c;
 
     DBG("entering handleFocusIn\n");
-    DBG("FocusIn window is (0x%lx)\n", ev->window);
+
+    if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
+    {
+        /* We're not interested in such notifications */
+        return;
+    }
 
     if(ev->window == gnome_win)
     {
@@ -874,6 +858,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
         return;
     }
 
+    DBG("focused window is (0x%lx)\n", ev->window);
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
@@ -885,21 +870,11 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
             reset_timeout();
         }
     }
-    else if(clients)
-    {
-        DBG("focus set to top window in list\n");
-        clientSetFocus(clientGetNext(clients->prev, 0), TRUE);
-    }
-    else
-    {
-        DBG("focus set to default fallback window\n");
-        clientSetFocus(NULL, TRUE);
-    }
 }
 
 static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
-    DBG("entering handleFocusOut\n");
+    DBG("entering handleFocusOut - Window (0x%lx)\n", w);
 }
 
 static inline void handlePropertyNotify(XPropertyEvent * ev)
@@ -1040,10 +1015,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             DBG("client \"%s\" (0x%lx) has received a wm_change_state event\n", c->name, c->window);
-            if(CLIENT_CAN_HIDE_WINDOW(c))
-            {
-                clientHide(c, TRUE);
-            }
+            clientHide(c, TRUE);
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
@@ -1244,7 +1216,7 @@ GtkToXEventFilterStatus xfwm4_event_filter(XEvent * xevent, gpointer data)
     return XEV_FILTER_STOP;
 }
 
-/* GTK stuff (menu, etc...) */
+/* GTK specific stuff */
 
 static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointer menu_data, gpointer item_data)
 {
@@ -1262,10 +1234,12 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
     {
         c = (Client *) menu_data;
         c = clientGetFromWindow(c->window, WINDOW);
-        if(c)
+        if (!c)
         {
-            c->button_pressed[MENU_BUTTON] = FALSE;
+            menu_free(menu);
+            return;
         }
+        c->button_pressed[MENU_BUTTON] = FALSE;
     }
 
     switch (op)
@@ -1275,53 +1249,39 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
         break;
     case MENU_OP_MAXIMIZE:
     case MENU_OP_UNMAXIMIZE:
-        if((c) && CLIENT_CAN_MAXIMIZE_WINDOW(c))
+        if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
         {
             clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
         }
         break;
     case MENU_OP_MINIMIZE:
-        if((c) && CLIENT_CAN_HIDE_WINDOW(c))
+        if(CLIENT_CAN_HIDE_WINDOW(c))
         {
             clientHide(c, TRUE);
         }
         break;
     case MENU_OP_MINIMIZE_ALL:
+        frameDraw(c, FALSE, FALSE);
         clientHideAll(c);
         break;
     case MENU_OP_UNMINIMIZE:
-        if(c)
-        {
-            clientShow(c, TRUE);
-        }
+        clientShow(c, TRUE);
         break;
     case MENU_OP_SHADE:
     case MENU_OP_UNSHADE:
-        if(c)
-        {
-            clientToggleShaded(c);
-        }
+        clientToggleShaded(c);
         break;
     case MENU_OP_STICK:
     case MENU_OP_UNSTICK:
-        if(c)
-        {
-            frameDraw(c, FALSE, FALSE);
-            clientToggleSticky(c, TRUE);
-        }
+        frameDraw(c, FALSE, FALSE);
+        clientToggleSticky(c, TRUE);
         break;
     case MENU_OP_DELETE:
-        if(c)
-        {
-            frameDraw(c, FALSE, FALSE);
-            clientClose(c);
-        }
+        frameDraw(c, FALSE, FALSE);
+        clientClose(c);
         break;
     default:
-        if(c)
-        {
-            frameDraw(c, FALSE, FALSE);
-        }
+        frameDraw(c, FALSE, FALSE);
         break;
     }
     menu_free(menu);

@@ -103,11 +103,20 @@
 #define CLIENT_FLAG_WM_DELETE          (1L<<24)
 #define CLIENT_FLAG_WM_INPUT           (1L<<25)
 #define CLIENT_FLAG_WM_TAKEFOCUS       (1L<<26)
-#define CLIENT_FLAG_RESIZING           (1L<<27)
-#define CLIENT_FLAG_MOVING             (1L<<28)
-#define CLIENT_FLAG_NAME_CHANGED       (1L<<29)
-#define CLIENT_FLAG_SESSION_MANAGED    (1L<<30)
-#define CLIENT_FLAG_WORKSPACE_SET      (1L<<31)
+#define CLIENT_FLAG_MOVING_RESIZING    (1L<<27)
+#define CLIENT_FLAG_NAME_CHANGED       (1L<<28)
+#define CLIENT_FLAG_SESSION_MANAGED    (1L<<29)
+#define CLIENT_FLAG_WORKSPACE_SET      (1L<<30)
+#define CLIENT_FLAG_REPARENTING        (1L<<31)
+
+#define CLIENT_FLAG_INITIAL_VALUES     CLIENT_FLAG_HAS_BORDER | \
+                                       CLIENT_FLAG_HAS_MENU | \
+				       CLIENT_FLAG_HAS_MAXIMIZE | \
+				       CLIENT_FLAG_HAS_STICK | \
+				       CLIENT_FLAG_HAS_HIDE | \
+				       CLIENT_FLAG_HAS_CLOSE | \
+				       CLIENT_FLAG_HAS_MOVE | \
+				       CLIENT_FLAG_HAS_RESIZE				       
 
 /* Convenient macros */
 #define CLIENT_FLAG_TEST(c,f)                   (c->client_flag & (f))
@@ -217,19 +226,20 @@ void clientConfigure(Client *, XWindowChanges *, int, gboolean);
 void clientUpdateMWMHints(Client *);
 void clientClearPixmapCache(Client *);
 void clientFrame(Window, gboolean);
-void clientUnframe(Client *, int);
+void clientUnframe(Client *, gboolean);
 void clientFrameAll();
 void clientUnframeAll();
 void clientGetNetStruts(Client *);
 void clientInstallColormaps(Client *);
 void clientUpdateColormaps(Client *);
-void clientUpdateAllFrames(int);
+void clientUpdateAllFrames(gboolean);
 void clientGrabKeys(Client *);
 void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);
 Client *clientGetNext(Client *, int);
-void clientShow(Client *, int);
-void clientHide(Client *, int);
+void clientPassFocus(Client *);
+void clientShow(Client *, gboolean);
+void clientHide(Client *, gboolean);
 void clientHideAll(Client *);
 void clientClose(Client *);
 void clientKill(Client *);
@@ -247,7 +257,7 @@ inline void clientRemoveMaximizeFlag(Client *);
 void clientToggleMaximized(Client *, int);
 void clientUpdateFocus(Client *);
 inline gboolean clientAcceptFocus(Client * c);
-void clientSetFocus(Client *, int);
+void clientSetFocus(Client *, gboolean);
 Client *clientGetFocus();
 void clientMove(Client *, XEvent *);
 void clientResize(Client *, int, XEvent *);

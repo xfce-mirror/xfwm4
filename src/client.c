@@ -106,6 +106,7 @@ static inline void clientApplyStackList(GSList * list);
 static inline Client *clientGetLowestTransient(Client * c);
 static inline Client *clientGetHighestTransient(Client * c);
 static inline Client *clientGetNextTopMost(int layer, Client * exclude);
+static inline Client *clientGetTopMostFocusable(int layer, Client * exclude);
 static inline Client *clientGetBottomMost(int layer, Client * exclude);
 static inline void clientConstraintPos(Client * c, gboolean show_full);
 static inline void clientKeepVisible(Client * c);
@@ -113,6 +114,8 @@ static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int
 static void clientInitPosition(Client * c);
 static inline void clientFree(Client * c);
 static inline void clientApplyInitialNetState(Client * c);
+static inline gboolean clientSelectMask(Client * c, int mask);
+static GSList *clientListTransients(Client *c);
 static inline void clientSnapPosition(Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
@@ -1460,6 +1463,33 @@ static inline Client *clientGetNextTopMost(int layer, Client * exclude)
     return top;
 }
 
+static inline Client *clientGetTopMostFocusable(int layer, Client * exclude)
+{
+    Client *top = NULL, *c;
+    GSList *index;
+
+    DBG("entering clientGetTopMost\n");
+
+    for(index = windows_stack; index; index = g_slist_next(index))
+    {
+        c = (Client *) index->data;
+        DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
+        if(!exclude || (c != exclude))
+        {
+            if((c->win_layer <= layer) && clientAcceptFocus(c) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+            {
+                top = c;
+            }
+            else if (c->win_layer > layer)
+            {
+                break;
+            }
+        }
+    }
+
+    return top;
+}
+
 static inline Client *clientGetBottomMost(int layer, Client * exclude)
 {
     Client *bot = NULL, *c;
@@ -1746,7 +1776,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
 
     if(mask & CWX)
     {
-        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING_RESIZING))
         {
 #if 0
             if((c->gravity != StaticGravity) && (wc->x == frameX(c)))
@@ -1765,7 +1795,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
     }
     if(mask & CWY)
     {
-        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING_RESIZING))
         {
 #if 0
             if((c->gravity != StaticGravity) && (wc->y == frameY(c)))
@@ -2127,9 +2157,18 @@ void clientFrame(Window w, gboolean initial)
 #endif
 
     /* Initialize structure */
-    c->client_flag = (CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
+    c->client_flag = CLIENT_FLAG_INITIAL_VALUES;
 
-    c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
+    if (attr.map_state == IsViewable)
+    {
+        c->ignore_unmap = 1;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_REPARENTING);
+    }
+    else
+    {
+        c->ignore_unmap = 0;
+    }
+    
     c->type = UNSET;
     c->type_atom = None;
 
@@ -2270,7 +2309,7 @@ void clientFrame(Window w, gboolean initial)
     DBG("client_count=%d\n", client_count);
 }
 
-void clientUnframe(Client * c, int remap)
+void clientUnframe(Client * c, gboolean remap)
 {
     int i;
 
@@ -2324,6 +2363,7 @@ void clientUnframe(Client * c, int remap)
 void clientFrameAll()
 {
     unsigned int count, i;
+    Client *new_focus;
     Window w1, w2, *wins = NULL;
     XWindowAttributes attr;
 
@@ -2336,7 +2376,8 @@ void clientFrameAll()
     windows_stack = NULL;
     client_focus = NULL;
 
-    XSync(dpy, 0);
+    clientSetFocus(NULL, FALSE);
+    gdk_flush();
     gdk_x11_grab_server();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
@@ -2352,6 +2393,8 @@ void clientFrameAll()
     {
         XFree(wins);
     }
+    new_focus = clientGetTopMostFocusable(WIN_LAYER_NORMAL, NULL);
+    clientSetFocus(new_focus, FALSE);
 }
 
 void clientUnframeAll()
@@ -2363,6 +2406,7 @@ void clientUnframeAll()
     DBG("entering clientUnframeAll\n");
 
     gdk_x11_grab_server();
+    clientSetFocus(NULL, FALSE);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
@@ -2421,10 +2465,39 @@ Client *clientGetFromWindow(Window w, int mode)
     return NULL;
 }
 
+static inline gboolean clientSelectMask(Client * c, int mask)
+{
+    gboolean okay = TRUE;
+
+    DBG("entering clientSelectMask\n");
+    if((!clientAcceptFocus(c)) && !(mask & INCLUDE_SKIP_FOCUS))
+    {
+        okay = FALSE;
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
+    {
+        okay = FALSE;
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_PAGER) && !(mask & INCLUDE_SKIP_PAGER))
+    {
+        okay = FALSE;
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_TASKBAR) && !(mask & INCLUDE_SKIP_TASKBAR))
+    {
+        okay = FALSE;
+    }
+    if((c->win_workspace != workspace) && !(mask & INCLUDE_ALL_WORKSPACES))
+    {
+        okay = FALSE;
+    }
+
+    return okay;
+}
+
 Client *clientGetNext(Client * c, int mask)
 {
     Client *c2;
-    unsigned int i, okay;
+    unsigned int i;
 
     DBG("entering clientGetNext\n");
 
@@ -2436,28 +2509,7 @@ Client *clientGetNext(Client * c, int mask)
             {
                 continue;
             }
-            okay = True;
-            if((!clientAcceptFocus(c2)) && !(mask & INCLUDE_SKIP_FOCUS))
-            {
-                okay = False;
-            }
-            if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
-            {
-                okay = False;
-            }
-            if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_SKIP_PAGER) && !(mask & INCLUDE_SKIP_PAGER))
-            {
-                okay = False;
-            }
-            if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_SKIP_TASKBAR) && !(mask & INCLUDE_SKIP_TASKBAR))
-            {
-                okay = False;
-            }
-            if((c2->win_workspace != workspace) && !(mask & INCLUDE_ALL_WORKSPACES))
-            {
-                okay = False;
-            }
-            if(okay)
+            if(clientSelectMask(c2, mask))
             {
                 return c2;
             }
@@ -2466,83 +2518,121 @@ Client *clientGetNext(Client * c, int mask)
     return NULL;
 }
 
-void clientShow(Client * c, int change_state)
+void clientPassFocus(Client * c)
 {
-    int i;
+    Client *new_focus;
+
+    DBG("entering clientPassFocus\n");
+
+    if ((!c) || (c != client_focus))
+    {
+        return;
+    }
+
+    new_focus = clientGetTopMostFocusable(c->win_layer, c);
+    clientSetFocus(new_focus, TRUE);
+}
+
+/* Build a GSList of clients that have a transient relationship */
+static GSList *clientListTransients(Client *c)
+{
+    GSList *transients = NULL;
+    GSList *index1, *index2;
+    Client *c2, *c3;
+
+    g_return_val_if_fail(c != NULL, NULL);
+    
+    transients = g_slist_append(transients, c);
+    for(index1 = windows_stack; index1; index1 = g_slist_next(index1))
+    {
+        c2 = (Client *) index1->data;
+        if(c2 != c)
+        {
+            if(c2->transient_for == c->window)
+            {
+                transients = g_slist_append(transients, c2);
+            }
+            else
+            {
+                for(index2 = transients; index2; index2 = g_slist_next(index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if((c3 != c2) && (c2->transient_for == c3->window))
+                    {
+                        transients = g_slist_append(transients, c2);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return transients;
+}
+
+void clientShow(Client * c, gboolean change_state)
+{
+    GSList *list_of_windows = NULL;
+    GSList *index;
     Client *c2;
-    int ws = workspace;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientShow\n");
-    DBG("showing client \"%s\" (0x%lx)\n", c->name, c->window);
 
-    /* This is to make sure that transient are shown with their "master" window */
-    if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)) && (c2 != c))
+    list_of_windows = clientListTransients(c);
+    list_of_windows = g_slist_reverse(list_of_windows);
+    
+    for(index = list_of_windows; index; index = g_slist_next(index))
     {
-        ws = c2->win_workspace;
-        if(c->win_workspace != ws)
-        {
-            clientSetWorkspace(c, ws, FALSE);
-        }
+        c2 = (Client *) index->data;
+        DBG("showing client \"%s\" (0x%lx)\n", c2->name, c2->window);
+        CLIENT_FLAG_SET(c2, CLIENT_FLAG_VISIBLE);
+        XMapWindow(dpy, c2->window);
+        XMapWindow(dpy, c2->frame);
+	if(change_state)
+	{
+            CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_HIDDEN);
+            setWMState(dpy, c2->window, NormalState);
+            workspaceUpdateArea(margins, gnome_margins);
+	}
+	clientSetNetState(c2);
     }
-
-    if((c->win_workspace == ws) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-    {
-        CLIENT_FLAG_SET(c, CLIENT_FLAG_VISIBLE);
-        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
-        {
-            if(((c2->transient_for == c->window) || (c->transient_for == c2->window)) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c))
-            {
-                clientShow(c2, change_state);
-            }
-        }
-        XMapWindow(dpy, c->window);
-        XMapWindow(dpy, c->frame);
-    }
-    if(change_state)
-    {
-        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HIDDEN);
-        setWMState(dpy, c->window, NormalState);
-        workspaceUpdateArea(margins, gnome_margins);
-    }
-    clientSetNetState(c);
+    g_slist_free(list_of_windows);
 }
 
-void clientHide(Client * c, int change_state)
+void clientHide(Client * c, gboolean change_state)
 {
-    int i;
+    GSList *list_of_windows = NULL;
+    GSList *index;
     Client *c2;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientHide\n");
-    DBG("hiding client \"%s\" (0x%lx)\n", c->name, c->window);
 
-    XUnmapWindow(dpy, c->window);
-    XUnmapWindow(dpy, c->frame);
-    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_VISIBLE);
-
-    for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+    list_of_windows = clientListTransients(c);
+    for(index = list_of_windows; index; index = g_slist_next(index))
     {
-        if(((c2->transient_for == c->window) || (c->transient_for == c2->window)) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c))
-        {
-            clientHide(c2, change_state);
-        }
-    }
+        c2 = (Client *) index->data;
+        DBG("hiding client \"%s\" (0x%lx)\n", c2->name, c2->window);
 
-    if(change_state)
-    {
-        CLIENT_FLAG_SET(c, CLIENT_FLAG_HIDDEN);
-        setWMState(dpy, c->window, IconicState);
-        workspaceUpdateArea(margins, gnome_margins);
+        XUnmapWindow(dpy, c2->window);
+        XUnmapWindow(dpy, c2->frame);
+        CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_VISIBLE);
+	if(change_state)
+	{
+            CLIENT_FLAG_SET(c2, CLIENT_FLAG_HIDDEN);
+            setWMState(dpy, c2->window, IconicState);
+            workspaceUpdateArea(margins, gnome_margins);
+	}
+	c2->ignore_unmap++;
+	clientSetNetState(c2);
     }
-    c->ignore_unmap++;
-    clientSetNetState(c);
+    g_slist_free(list_of_windows);
 }
 
 void clientHideAll(Client * c)
 {
-    int i;
     Client *c2;
+    int i;
 
     DBG("entering clientHideAll\n");
 
@@ -2550,7 +2640,7 @@ void clientHideAll(Client * c)
     {
         if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && !(c2->transient_for) && (c2 != c))
         {
-            if(((c) && (c->transient_for != c2->window)) || (!c))
+            if((!c) || (c->transient_for != c2->window))
             {
                 clientHide(c2, True);
             }
@@ -2740,56 +2830,25 @@ void clientLower(Client * c)
 
 void clientSetLayer(Client * c, int l)
 {
-    Client *c2, *c3;
-    GSList *transients = NULL;
-    GSList *index1, *index2;
+    GSList *list_of_windows = NULL;
+    GSList *index;
+    Client *c2;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetLayer\n");
 
-    if(c->win_layer != l)
+    list_of_windows = clientListTransients(c);
+    for(index = list_of_windows; index; index = g_slist_next(index))
     {
-        DBG("1) setting client \"%s\" (0x%lx) layer to %d\n", c->name, c->window, l);
-        c->win_layer = l;
-        setGnomeHint(dpy, c->window, win_layer, l);
+        c2 = (Client *) index->data;
+	if(c2->win_layer != l)
+	{
+            DBG("setting client \"%s\" (0x%lx) layer to %d\n", c2->name, c2->window, l);
+            c2->win_layer = l;
+            setGnomeHint(dpy, c2->window, win_layer, l);
+	}
     }
-
-    for(index1 = windows_stack; index1; index1 = g_slist_next(index1))
-    {
-        c2 = (Client *) index1->data;
-        if(c2 != c)
-        {
-            if(c2->transient_for == c->window)
-            {
-                transients = g_slist_append(transients, c2);
-                if(c2->win_layer != l)
-                {
-                    DBG("2) setting client \"%s\" (0x%lx) layer to %d\n", c2->name, c2->window, l);
-                    c2->win_layer = l;
-                    setGnomeHint(dpy, c2->window, win_layer, l);
-                }
-            }
-            else
-            {
-                for(index2 = transients; index2; index2 = g_slist_next(index2))
-                {
-                    c3 = (Client *) index2->data;
-                    if((c3 != c2) && (c2->transient_for == c3->window))
-                    {
-                        transients = g_slist_append(transients, c2);
-                        if(c2->win_layer != l)
-                        {
-                            DBG("3) setting client \"%s\" (0x%lx) layer to %d\n", c2->name, c2->window, l);
-                            c2->win_layer = l;
-                            setGnomeHint(dpy, c2->window, win_layer, l);
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    g_slist_free(transients);
+    g_slist_free(list_of_windows);
     if(last_raise == c)
     {
         last_raise = NULL;
@@ -2799,49 +2858,47 @@ void clientSetLayer(Client * c, int l)
 
 void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
 {
+    GSList *list_of_windows = NULL;
+    GSList *index;
     Client *c2;
-    int i;
 
     g_return_if_fail(c != NULL);
+    
     DBG("entering clientSetWorkspace\n");
-    DBG("setting client \"%s\" (0x%lx) to workspace %d\n", c->name, c->window, ws);
 
-    if(c->win_workspace == ws)
+    list_of_windows = clientListTransients(c);
+    for(index = list_of_windows; index; index = g_slist_next(index))
     {
-        return;
-    }
+        c2 = (Client *) index->data;
+	if(c2->win_workspace != ws)
+	{
+            DBG("setting client \"%s\" (0x%lx) to workspace %d\n", c2->name, c2->window, ws);
+	    setGnomeHint(dpy, c2->window, win_workspace, ws);
+	    c2->win_workspace = ws;
+	    setNetHint(dpy, c2->window, net_wm_desktop, (unsigned long)c2->win_workspace);
+	    CLIENT_FLAG_SET(c2, CLIENT_FLAG_WORKSPACE_SET);
 
-    for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
-    {
-        if((c2->transient_for == c->window) && (c2 != c))
-        {
-            clientSetWorkspace(c2, ws, manage_mapping);
-        }
+	    if(manage_mapping && !(c2->transient_for) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
+	    {
+        	if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+        	{
+        	    clientShow(c2, False);
+        	}
+        	else
+        	{
+        	    if(ws == workspace)
+        	    {
+                	clientShow(c2, False);
+        	    }
+        	    else
+        	    {
+                	clientHide(c2, False);
+        	    }
+        	}
+	    }
+	}
     }
-
-    setGnomeHint(dpy, c->window, win_workspace, ws);
-    c->win_workspace = ws;
-    setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
-    CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
-
-    if(manage_mapping && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
-    {
-        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-        {
-            clientShow(c, False);
-        }
-        else
-        {
-            if(ws == workspace)
-            {
-                clientShow(c, False);
-            }
-            else
-            {
-                clientHide(c, False);
-            }
-        }
-    }
+    g_slist_free(list_of_windows);
 }
 
 void clientShade(Client * c)
@@ -2914,67 +2971,70 @@ void clientToggleShaded(Client * c)
 
 void clientStick(Client * c, gboolean include_transients)
 {
-    int i;
-    Client *c2;
+    GSList *list_of_windows = NULL;
+    GSList *index;
+    Client *c2 = NULL;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientStick\n");
     DBG("sticking client \"%s\" (0x%lx)\n", c->name, c->window);
 
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-    {
-        DBG("\"%s\" (0x%lx) is already sticky\n", c->name, c->window);
-        return;
-    }
-
     if(include_transients)
     {
-        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
-        {
-            if((c2->transient_for == c->window) && (c2 != c) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
-            {
-                clientStick(c2, include_transients);
-            }
-        }
+        list_of_windows = clientListTransients(c);
+	for(index = list_of_windows; index; index = g_slist_next(index))
+	{
+            c2 = (Client *) index->data;
+	    c2->win_state |= WIN_STATE_STICKY;
+	    CLIENT_FLAG_SET(c2, CLIENT_FLAG_STICKY);
+	    setGnomeHint(dpy, c2->window, win_state, c2->win_state);
+            clientSetNetState(c2);
+	}
+        clientSetWorkspace(c, workspace, TRUE);
+	g_slist_free(list_of_windows);
     }
-    c->win_state |= WIN_STATE_STICKY;
-    CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
-    setGnomeHint(dpy, c->window, win_state, c->win_state);
-    clientSetWorkspace(c, workspace, TRUE);
-    clientSetNetState(c);
+    else
+    {
+	c->win_state |= WIN_STATE_STICKY;
+	CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+	setGnomeHint(dpy, c->window, win_state, c->win_state);
+        clientSetNetState(c);
+        clientSetWorkspace(c, workspace, TRUE);
+    }
 }
 
 void clientUnstick(Client * c, gboolean include_transients)
 {
-    int i;
-    Client *c2;
+    GSList *list_of_windows = NULL;
+    GSList *index;
+    Client *c2 = NULL;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientUnstick\n");
     DBG("unsticking client \"%s\" (0x%lx)\n", c->name, c->window);
 
-    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-    {
-        DBG("\"%s\" (0x%lx) is not sticky\n", c->name, c->window);
-        return;
-    }
-
     if(include_transients)
     {
-        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
-        {
-            if((c2->transient_for == c->window) && (c2 != c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
-            {
-                clientUnstick(c2, include_transients);
-            }
-        }
+        list_of_windows = clientListTransients(c);
+	for(index = list_of_windows; index; index = g_slist_next(index))
+	{
+            c2 = (Client *) index->data;
+	    c2->win_state &= ~WIN_STATE_STICKY;
+	    CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_STICKY);
+	    setGnomeHint(dpy, c2->window, win_state, c2->win_state);
+	    clientSetNetState(c2);
+	}
+        clientSetWorkspace(c, workspace, TRUE);
+	g_slist_free(list_of_windows);
     }
-
-    c->win_state &= ~WIN_STATE_STICKY;
-    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
-    setGnomeHint(dpy, c->window, win_state, c->win_state);
-    clientSetWorkspace(c, workspace, TRUE);
-    clientSetNetState(c);
+    else
+    {
+	c->win_state &= ~WIN_STATE_STICKY;
+	CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
+	setGnomeHint(dpy, c->window, win_state, c->win_state);
+	clientSetNetState(c);
+        clientSetWorkspace(c, workspace, TRUE);
+    }
 }
 
 void clientToggleSticky(Client * c, gboolean include_transients)
@@ -3141,7 +3201,7 @@ void clientUpdateFocus(Client * c)
     XChangeProperty(dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 2);
 }
 
-void clientSetFocus(Client * c, int sort)
+void clientSetFocus(Client * c, gboolean sort)
 {
     Client *tmp;
     Client *c2 = ((client_focus != c) ? client_focus : NULL);
@@ -3596,13 +3656,13 @@ void clientMove(Client * c, XEvent * e)
         XPutBackEvent(dpy, e);
     }
 
-    CLIENT_FLAG_SET(c, CLIENT_FLAG_MOVING);
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_MOVING_RESIZING);
     DBG("entering move loop\n");
     pushEventFilter(clientMove_event_filter, &passdata);
     gtk_main();
     popEventFilter();
     DBG("leaving move loop\n");
-    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MOVING);
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MOVING_RESIZING);
 
     if(passdata.use_keys)
     {
@@ -3926,13 +3986,13 @@ void clientResize(Client * c, int corner, XEvent * e)
         passdata.my = frameHeight(c) - passdata.my;
     }
 
-    CLIENT_FLAG_SET(c, CLIENT_FLAG_RESIZING);
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_MOVING_RESIZING);
     DBG("entering resize loop\n");
     pushEventFilter(clientResize_event_filter, &passdata);
     gtk_main();
     popEventFilter();
     DBG("leaving resize loop\n");
-    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_RESIZING);
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MOVING_RESIZING);
 
     if(passdata.use_keys)
     {
@@ -4239,3 +4299,4 @@ char *clientGetStartupId(Client * c)
     return NULL;
 }
 #endif
+

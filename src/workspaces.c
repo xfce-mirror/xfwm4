@@ -67,19 +67,20 @@ void workspaceSwitch(int new_ws, Client * c2)
         }
     }
 
+    workspace = new_ws;
     if(c2)
     {
         clientSetWorkspace(c2, new_ws, FALSE);
     }
-
-    workspace = new_ws;
+    clientSetFocus(c2, FALSE);
+    
 
     /* First pass */
     for(c = clients->prev, i = 0; i < client_count; c = c->prev, i++)
     {
         if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !(c->transient_for) && ((c->win_workspace != new_ws)))
         {
-            clientHide(c, False);
+            clientHide(c, FALSE);
         }
     }
     /* Second pass */
@@ -93,7 +94,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         {
             if((c->win_workspace == new_ws) && !(c->transient_for) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
             {
-                clientShow(c, False);
+                clientShow(c, FALSE);
                 if((!f) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FOCUS))
                 {
                     f = c;
@@ -114,7 +115,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         while(XCheckTypedEvent(dpy, EnterNotify, &an_event))
             ;
     }
-    clientSetFocus(f, True);
+    clientSetFocus(f, TRUE);
 }
 
 void workspaceSetCount(int count)
