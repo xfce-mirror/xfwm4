@@ -2029,20 +2029,19 @@ clientShowSingle (Client * c, gboolean change_state)
     display_info = screen_info->display_info;
 
     myDisplayGrabServer (display_info);
-    if (change_state)
-    {
-        FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
-        setWMState (display_info, c->window, NormalState);
-    }
     if ((c->win_workspace == screen_info->current_ws) || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
-        compositorMapWindow (display_info, c->frame);
         XMapWindow (display_info->dpy, c->frame);
         XMapWindow (display_info->dpy, c->window);
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
+    }
+    if (change_state)
+    {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
+        setWMState (display_info, c->window, NormalState);
     }
     myDisplayUngrabServer (display_info);
     clientSetNetState (c);
@@ -2104,7 +2103,6 @@ clientHideSingle (Client * c, gboolean change_state)
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, IconicState);
     }
-    compositorUnmapWindow (display_info, c->frame);
     XUnmapWindow (display_info->dpy, c->frame);
     XUnmapWindow (display_info->dpy, c->window);
     myDisplayUngrabServer (display_info);

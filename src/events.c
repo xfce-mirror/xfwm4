@@ -1129,6 +1129,7 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
         {
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
         }
+        compositorMapWindow (display_info, c->frame);
     }
     else if (myDisplayGetScreenFromRoot (display_info, ev->event))
     {
@@ -1177,6 +1178,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 
         screen_info = c->screen_info;
         clientPassFocus (screen_info, c, c);
+        compositorUnmapWindow (display_info, c->frame);
         
         /*
          * ICCCM spec states that a client wishing to switch
