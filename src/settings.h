@@ -148,6 +148,7 @@ struct _XfwmParams
     int title_horizontal_offset;
     int wrap_resistance;
     gboolean title_shadow[2];
+    gboolean cycle_hidden;
     gboolean cycle_minimum;
     gboolean box_move;
     gboolean box_resize;

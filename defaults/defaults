@@ -6,6 +6,7 @@ button_layout=OTS|HMC
 button_offset=0
 button_spacing=1
 click_to_focus=true
+cycle_hidden=true
 cycle_minimum=true
 dbl_click_time=400
 double_click_action=maximize

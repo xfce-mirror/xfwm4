@@ -3603,13 +3603,17 @@ clientCycle (Client * c, XEvent * e)
     }
 
     myDisplayGrabServer (display_info);
-    if (screen_info->params->cycle_minimum)
+    if (screen_info->params->cycle_hidden)
     {
-        passdata.cycle_range = INCLUDE_HIDDEN;
+	passdata.cycle_range = INCLUDE_HIDDEN;
     }
     else
     {
-        passdata.cycle_range = INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER;
+	passdata.cycle_range = 0;
+    }
+    if (!screen_info->params->cycle_minimum)
+    {
+        passdata.cycle_range |= INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER;
     }
     passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)

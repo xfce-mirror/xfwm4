@@ -967,6 +967,7 @@ loadSettings (ScreenInfo *screen_info)
         {"button_offset", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
         {"click_to_focus", NULL, TRUE},
+        {"cycle_hidden", NULL, TRUE},
         {"cycle_minimum", NULL, FALSE},
         {"dbl_click_time", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
@@ -1086,6 +1087,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("easy_click", rc));
     screen_info->params->cycle_minimum =
         !g_ascii_strcasecmp ("true", getValue ("cycle_minimum", rc));
+    screen_info->params->cycle_hidden =
+        !g_ascii_strcasecmp ("true", getValue ("cycle_hidden", rc));
     screen_info->params->focus_hint =
         !g_ascii_strcasecmp ("true", getValue ("focus_hint", rc));
     screen_info->params->focus_new =

@@ -181,6 +181,12 @@ maintainers, etc. Commented out by default.
 	    shortcut, edit your $HOME/.xfce4/xfwm4rc (or create an new one) 
 	    and add this line : cycle_minimum=false</para>
 	  
+	  <para>
+	    To exclude hidden windows from the list presented when using
+		Alt+Tab edit your $HOME/.xfce4/xfwm4rc (or create a new one) and
+		add this line : cycle_hidden=false
+	  </para>
+
 	  <para>NOTE: the use of a keyboard shortcut in an application needs 
 	    the application window to have the focus :)
 	  </para>
