@@ -2283,7 +2283,8 @@ clientToggleMaximized (Client * c, int mode)
 {
     XWindowChanges wc;
     int cx, cy, left, right, top, bottom;
-
+    int full_x, full_y, full_w, full_h;
+    
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleMaximized");
     TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name,
@@ -2297,10 +2298,16 @@ clientToggleMaximized (Client * c, int mode)
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
 
-    left = MAX ((int) margins[LEFT], params.xfwm_margins[LEFT]);
-    right = MAX ((int) margins[RIGHT], params.xfwm_margins[RIGHT]);
-    top = MAX ((int) margins[TOP], params.xfwm_margins[TOP]);
-    bottom = MAX ((int) margins[BOTTOM], params.xfwm_margins[BOTTOM]);
+    left   = (isLeftMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[LEFT] : 0);
+    right  = (isRightMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[RIGHT] : 0);
+    top    = (isTopMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[TOP] : 0);
+    bottom = (isBottomMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[BOTTOM] : 0);
+
+    full_x = MyDisplayX (cx, cy) + left;
+    full_y = MyDisplayY (cx, cy) + top;
+    full_w = MyDisplayWidth (dpy, screen, cx, cy) - left - right;
+    full_h = MyDisplayHeight (dpy, screen, cx, cy) - top - bottom;
+    clientMaxSpace (&full_x, &full_y, &full_w, &full_h);
 
     if (mode & WIN_STATE_MAXIMIZED_HORIZ)
     {
@@ -2308,10 +2315,8 @@ clientToggleMaximized (Client * c, int mode)
         {
             c->old_x = c->x;
             c->old_width = c->width;
-            wc.x = MyDisplayX (cx, cy) + frameLeft (c) + left;
-            wc.width =
-                MyDisplayWidth (dpy, screen, cx,
-                cy) - frameLeft (c) - frameRight (c) - left - right;
+            wc.x = full_x + frameLeft (c);
+            wc.width = full_w - frameLeft (c) - frameRight (c);
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
@@ -2335,10 +2340,8 @@ clientToggleMaximized (Client * c, int mode)
         {
             c->old_y = c->y;
             c->old_height = c->height;
-            wc.y = MyDisplayY (cx, cy) + frameTop (c) + top;
-            wc.height =
-                MyDisplayHeight (dpy, screen, cx,
-                cy) - frameTop (c) - frameBottom (c) - top - bottom;
+            wc.y = full_y + frameTop (c);
+            wc.height = full_h - frameTop (c) - frameBottom (c);
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
         }
