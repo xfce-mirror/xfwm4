@@ -1,6 +1,6 @@
 /* XPM */
 static char * title_4_ininactive_xpm[] = {
-"2 20 5 1",
+"2 19 5 1",
 " 	c None",
 ".	c #000000",
 "+	c #919191 s inactive_shadow_1",
@@ -8,7 +8,6 @@ static char * title_4_ininactive_xpm[] = {
 "#	c #E6E6E6 s inactive_color_1",
 "..",
 "@#",
-"#+",
 "#+",
 "#+",
 "#+",

@@ -1,6 +1,6 @@
 /* XPM */
 static char * top_right_active_xpm[] = {
-"6 20 5 1",
+"6 19 5 1",
 " 	c None",
 ".	c #000000",
 "+	c #FFFFFF s active_hilight_2",
@@ -11,7 +11,6 @@ static char * top_right_active_xpm[] = {
 "#++.  ",
 "###$. ",
 "###$. ",
-"####$.",
 "####$.",
 "####$.",
 "####$.",
