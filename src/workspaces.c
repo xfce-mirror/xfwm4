@@ -41,6 +41,181 @@
 #include "stacking.h"
 #include "hints.h"
 
+static void
+workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
+{
+    NetWmDesktopLayout * l = &screen_info->desktop_layout;
+    int major_length, minor_length, tmp;
+
+    if (l->orientation == NET_WM_ORIENTATION_HORZ)
+    {
+        major_length = l->cols;
+        minor_length = l->rows;
+    }
+    else
+    {
+        major_length = l->rows;
+        minor_length = l->cols;
+    }
+
+    *row = n / major_length;
+    *col = n % major_length;
+
+    switch (l->start)
+    {
+        case NET_WM_TOPRIGHT:
+            *col = major_length - *col - 1;
+            break;
+        case NET_WM_BOTTOMLEFT:
+            *row = minor_length - *row - 1;
+            break;
+        case NET_WM_BOTTOMRIGHT:
+            *col = major_length - *col - 1;
+            *row = minor_length - *row - 1;
+            break;
+    }
+
+    if (l->orientation == NET_WM_ORIENTATION_VERT)
+    {
+        tmp = *row;
+        *row = *col;
+        *col = tmp;
+        if ((l->start == NET_WM_TOPRIGHT) || (l->start == NET_WM_BOTTOMLEFT))
+        {
+            *row = l->rows - *row - 1;
+            *col = l->cols - *col - 1;
+        }
+    }
+}
+
+static int
+workspaceGetNumber (ScreenInfo *screen_info, int row, int col)
+{
+    NetWmDesktopLayout * l = &screen_info->desktop_layout;
+    int major_length, minor_length, n, tmp;
+
+    if (l->orientation == NET_WM_ORIENTATION_HORZ)
+    {
+        major_length = l->cols;
+        minor_length = l->rows;
+    }
+    else
+    {
+        major_length = l->rows;
+        minor_length = l->cols;
+    }
+
+    if (l->orientation == NET_WM_ORIENTATION_VERT)
+    {
+        tmp = row;
+        row = col;
+        col = tmp;
+        if ((l->start == NET_WM_TOPRIGHT) || (l->start == NET_WM_BOTTOMLEFT))
+        {
+            row = minor_length - row - 1;
+            col = major_length - col - 1;
+        }
+    }
+
+    switch (l->start)
+    {
+        case NET_WM_TOPRIGHT:
+            col = major_length - col - 1;
+            break;
+        case NET_WM_BOTTOMLEFT:
+            row = minor_length - row - 1;
+            break;
+        case NET_WM_BOTTOMRIGHT:
+            col = major_length - col - 1;
+            row = minor_length - row - 1;
+            break;
+    }
+
+    n = row*major_length + col;
+    return n;
+}
+
+static int
+modify_with_wrap (int value, int by, int limit, gboolean wrap)
+{
+    if (by >= limit) by = limit - 1;
+    value += by;
+    if (value >= limit)
+    {
+        if (!wrap)
+        { 
+            value = limit - 1;
+        }
+        else 
+        {
+            value = value % limit;
+        }
+    }
+    else if (value < 0)
+    {
+        if (!wrap) 
+        {
+            value = 0;
+        }
+        else 
+        {
+            value = (value + limit) % limit;
+        }
+    }
+    return value;
+}
+
+void
+workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
+{
+    int row, col, newrow, newcol, n;
+
+    workspaceGetPosition(screen_info, screen_info->current_ws, &row, &col);
+    newrow = modify_with_wrap(row, rowmod, screen_info->desktop_layout.rows, screen_info->params->wrap_layout);
+    newcol = modify_with_wrap(col, colmod, screen_info->desktop_layout.cols, screen_info->params->wrap_layout);
+    n = workspaceGetNumber(screen_info, newrow, newcol);
+
+    if (n == screen_info->current_ws) 
+    {
+        return;
+    }
+
+    if (n < screen_info->workspace_count)
+    {
+        workspaceSwitch(screen_info, n, c2);
+    }
+    else if (screen_info->params->wrap_layout)
+    {
+        if (colmod < 0)
+        {
+           n = screen_info->workspace_count - 1;
+        }
+        else
+        {
+            if (colmod > 0) 
+            {
+                newcol = 0;
+            }
+            else if (rowmod > 0) 
+            {
+                newrow = 0;
+            }
+            else if (rowmod < 0) 
+            {
+                newrow--;
+            }
+            else 
+            {
+                g_return_if_fail(FALSE);
+            }
+
+            n = workspaceGetNumber(screen_info, newrow, newcol);
+        }
+        g_return_if_fail(n < screen_info->workspace_count);
+        workspaceSwitch(screen_info, n, c2);
+    }
+}
+
 void
 workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 {

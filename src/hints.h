@@ -98,6 +98,23 @@
 #define NET_WM_STATE_ADD                        1
 #define NET_WM_STATE_TOGGLE                     2
 
+#define NET_WM_ORIENTATION_HORZ                 0
+#define NET_WM_ORIENTATION_VERT                 1
+
+#define NET_WM_TOPLEFT                          0
+#define NET_WM_TOPRIGHT                         1
+#define NET_WM_BOTTOMRIGHT                      2
+#define NET_WM_BOTTOMLEFT                       3
+
+typedef struct
+{
+    unsigned long orientation;
+    unsigned long start;
+    unsigned long rows;
+    unsigned long cols;
+}
+NetWmDesktopLayout;
+
 #define LEFT                            0
 #define RIGHT                           1
 #define TOP                             2
@@ -151,6 +168,7 @@ extern Atom net_current_desktop;
 extern Atom net_desktop_geometry;
 extern Atom net_desktop_viewport;
 extern Atom net_desktop_names;
+extern Atom net_desktop_layout;
 extern Atom net_number_of_desktops;
 extern Atom net_showing_desktop;
 extern Atom net_startup_id;
@@ -219,6 +237,7 @@ void initKDEHints (Display *);
 Atom initSystrayHints (Display *, int);
 gboolean getHint (Display *, Window, Atom, long *);
 void setHint (Display *, Window, Atom, long);
+void getDesktopLayout (Display *, Window, int, NetWmDesktopLayout *);
 void getGnomeDesktopMargins (Display *, int, int *);
 void setGnomeProtocols (Display *, int, Window);
 void initNetHints (Display * dpy);

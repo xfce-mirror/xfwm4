@@ -28,6 +28,7 @@
 #include "screen.h"
 #include "keyboard.h"
 #include "mypixmap.h"
+#include "hints.h"
 
 #ifndef INC_SETTINGS_H
 #define INC_SETTINGS_H
@@ -107,7 +108,15 @@
 #define KEY_LOWER_WINDOW                50
 #define KEY_RAISE_WINDOW                51
 #define KEY_TOGGLE_FULLSCREEN           52
-#define KEY_COUNT                       53
+#define KEY_UP_WORKSPACE                53
+#define KEY_DOWN_WORKSPACE              54
+#define KEY_LEFT_WORKSPACE              55
+#define KEY_RIGHT_WORKSPACE             56
+#define KEY_MOVE_UP_WORKSPACE           57
+#define KEY_MOVE_DOWN_WORKSPACE         58
+#define KEY_MOVE_LEFT_WORKSPACE         59
+#define KEY_MOVE_RIGHT_WORKSPACE        60
+#define KEY_COUNT                       61
 #define NB_KEY_SHORTCUTS                10
 
 #define ALIGN_LEFT                      0
@@ -164,6 +173,7 @@ struct _XfwmParams
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean wrap_workspaces;
+    gboolean wrap_layout;
     gboolean wrap_windows;
 };
 

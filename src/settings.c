@@ -909,13 +909,21 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getValue ("fullscreen_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getValue ("up_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], getValue ("down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getValue ("left_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], getValue ("right_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getValue ("move_window_up_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getValue ("move_window_down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getValue ("move_window_left_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getValue ("move_window_right_workspace_key", rc));
 
     ungrabKeys (dpy, screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], screen_info->gnome_win);
@@ -935,6 +943,11 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_8], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_9], screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->gnome_win);
+
 
     return TRUE;
 }
@@ -1001,6 +1014,7 @@ loadSettings (ScreenInfo *screen_info)
         {"workspace_count", NULL, TRUE},
         {"wrap_windows", NULL, TRUE},
         {"wrap_workspaces", NULL, TRUE},
+        {"wrap_layout", NULL, TRUE},
         {"wrap_resistance", NULL, TRUE},
         /* Keys */
         {"add_workspace_key", NULL, TRUE},
@@ -1066,6 +1080,14 @@ loadSettings (ScreenInfo *screen_info)
         {"shortcut_10_exec", NULL, FALSE},
         {"raise_window_key", NULL, TRUE},
         {"lower_window_key", NULL, TRUE},
+        {"up_workspace_key", NULL, TRUE},
+        {"down_workspace_key", NULL, TRUE},
+        {"left_workspace_key", NULL, TRUE},
+        {"right_workspace_key", NULL, TRUE},
+        {"move_window_up_workspace_key", NULL, TRUE},
+        {"move_window_down_workspace_key", NULL, TRUE},
+        {"move_window_left_workspace_key", NULL, TRUE},
+        {"move_window_right_workspace_key", NULL, TRUE},
         {NULL, NULL, FALSE}
     };
 
@@ -1145,6 +1167,8 @@ loadSettings (ScreenInfo *screen_info)
 
     screen_info->params->wrap_workspaces =
         !g_ascii_strcasecmp ("true", getValue ("wrap_workspaces", rc));
+    screen_info->params->wrap_layout =
+        !g_ascii_strcasecmp ("true", getValue ("wrap_layout", rc));
     screen_info->params->wrap_windows =
         !g_ascii_strcasecmp ("true", getValue ("wrap_windows", rc));
     screen_info->params->wrap_resistance = abs (TOINT (getValue ("wrap_resistance", rc)));
@@ -1304,6 +1328,8 @@ initSettings (ScreenInfo *screen_info)
         screen_info->workspace_names = NULL;
         screen_info->workspace_names_length = 0;
     }
+
+    getDesktopLayout(myScreenGetXDisplay (screen_info), screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
 
     if (!loadSettings (screen_info))
     {

@@ -30,3 +30,4 @@ workspace_count=4
 wrap_resistance=10
 wrap_windows=true
 wrap_workspaces=false
+wrap_layout=false

@@ -70,6 +70,7 @@ Atom net_current_desktop;
 Atom net_desktop_geometry;
 Atom net_desktop_viewport;
 Atom net_desktop_names;
+Atom net_desktop_layout;
 Atom net_number_of_desktops;
 Atom net_showing_desktop;
 Atom net_startup_id;
@@ -396,6 +397,60 @@ setHint (Display * dpy, Window w, Atom a, long value)
 }
 
 void
+getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout * layout)
+{
+    Atom real_type;
+    int real_format;
+    gboolean success = FALSE;
+    unsigned long items_read, items_left;
+    unsigned long orientation, cols, rows, start;
+    unsigned long *data = NULL;
+
+    TRACE ("entering getDesktopLayout");
+
+    if ((XGetWindowProperty (dpy, root, net_desktop_layout,
+                0L, 4L, FALSE, XA_CARDINAL,
+                &real_type, &real_format, &items_read, &items_left,
+                (unsigned char **) &data) == Success) && (items_read >= 3))
+    {
+        do
+        {
+            orientation = data[0];
+            cols = data[1];
+            rows = data[2];
+            start = (items_read >= 4) ? data[3] : NET_WM_TOPLEFT;
+
+            if (orientation > NET_WM_ORIENTATION_VERT) break;
+            if (start > NET_WM_BOTTOMLEFT) break;
+            if ((rows == 0) && (cols == 0)) break;
+
+            if (rows == 0)
+                rows = (ws_count-1) / cols + 1;
+
+            if (cols == 0)
+                cols = (ws_count-1) / rows + 1;
+
+            layout->orientation = orientation;
+            layout->cols = cols;
+            layout->rows = rows;
+            layout->start = start;
+            success = TRUE;
+        } while (0);
+
+        XFree (data);
+    }
+
+    if (!success)
+    {
+        /* Assume HORZ, TOPLEFT, one row by default */
+        layout->orientation = NET_WM_ORIENTATION_HORZ;
+        layout->cols = ws_count;
+        layout->rows = 1;
+        layout->start = NET_WM_TOPLEFT;
+    }
+}
+
+void
 getGnomeDesktopMargins (Display * dpy, int screen, int * m)
 {
     Atom real_type;
@@ -458,6 +513,8 @@ initNetHints (Display * dpy)
         XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
     net_desktop_names = 
         XInternAtom (dpy, "_NET_DESKTOP_NAMES", FALSE);
+    net_desktop_layout =
+        XInternAtom (dpy, "_NET_DESKTOP_LAYOUT", FALSE);
     net_number_of_desktops =
         XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
     net_showing_desktop = 
@@ -569,6 +626,7 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_desktop_geometry;
     atoms[i++] = net_desktop_viewport;
     atoms[i++] = net_desktop_names;
+    atoms[i++] = net_desktop_layout;
     atoms[i++] = net_number_of_desktops;
     atoms[i++] = net_showing_desktop;
     atoms[i++] = net_supported;

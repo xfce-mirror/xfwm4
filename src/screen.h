@@ -95,6 +95,7 @@ struct _ScreenInfo
     int workspace_count;
     gchar *workspace_names;
     int workspace_names_length;
+    NetWmDesktopLayout desktop_layout;
 
     /* Button handler for GTK */
     gulong button_handler_id;

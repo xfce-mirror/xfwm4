@@ -396,6 +396,18 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_PREV_WORKSPACE:
                 workspaceSwitch (screen_info, screen_info->current_ws - 1, c);
                 break;
+            case KEY_MOVE_UP_WORKSPACE:
+                workspaceMove (screen_info, -1, 0, c);
+                break;
+            case KEY_MOVE_DOWN_WORKSPACE:
+                workspaceMove (screen_info, 1, 0, c);
+                break;
+            case KEY_MOVE_LEFT_WORKSPACE:
+                workspaceMove (screen_info, 0, -1, c);
+                break;
+            case KEY_MOVE_RIGHT_WORKSPACE:
+                workspaceMove (screen_info, 0, 1, c);
+                break;
             case KEY_MOVE_WORKSPACE_1:
             case KEY_MOVE_WORKSPACE_2:
             case KEY_MOVE_WORKSPACE_3:
@@ -444,6 +456,18 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             break;
         case KEY_PREV_WORKSPACE:
             workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL);
+            break;
+        case KEY_UP_WORKSPACE:
+            workspaceMove(screen_info, -1, 0, NULL);
+            break;
+        case KEY_DOWN_WORKSPACE:
+            workspaceMove(screen_info, 1, 0, NULL);
+            break;
+        case KEY_LEFT_WORKSPACE:
+            workspaceMove(screen_info, 0, -1, NULL);
+            break;
+        case KEY_RIGHT_WORKSPACE:
+            workspaceMove(screen_info, 0, 1, NULL);
             break;
         case KEY_ADD_WORKSPACE:
             workspaceSetCount (screen_info, screen_info->workspace_count + 1);
@@ -1528,6 +1552,11 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         TRACE ("root has received a gnome_panel_desktop_area notify");
         getGnomeDesktopMargins (display_info->dpy, screen_info->screen, screen_info->gnome_margins);
         workspaceUpdateArea (screen_info);
+    }
+    else if (ev->atom == net_desktop_layout)
+    {
+        TRACE ("root has received a net_desktop_layout notify");
+        getDesktopLayout(display_info->dpy, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
     }
 }
 

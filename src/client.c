@@ -326,6 +326,14 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_7], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_8], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_9], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_UP_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_DOWN_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_LEFT_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RIGHT_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], c->window);
 }
 
 void
