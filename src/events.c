@@ -277,7 +277,10 @@ static inline gboolean isDoubleClick(Window w, XEvent * ev)
     int g = GrabSuccess;
     Time t0;
     
-    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);    
+    g_return_val_if_fail(FALSE, ev != NULL);
+    g_return_val_if_fail(FALSE, w != None);
+
+    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
     if (g != GrabSuccess)
     {
         DBG("grab failed in isDoubleClick\n");
@@ -292,7 +295,7 @@ static inline gboolean isDoubleClick(Window w, XEvent * ev)
     {
 	if (XCheckMaskEvent (dpy, ButtonPressMask, ev))
 	{
-            XUngrabPointer(dpy, CurrentTime);
+            XUngrabPointer(dpy, ev->xbutton.time);
 	    return TRUE;
 	}
 	if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
@@ -307,7 +310,7 @@ static inline gboolean isDoubleClick(Window w, XEvent * ev)
 	g_usleep (10);
 	total += 10;
     }
-    XUngrabPointer(dpy, CurrentTime);
+    XUngrabPointer(dpy, ev->xbutton.time);
     return FALSE;
 }
 
@@ -337,9 +340,13 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
         {
-	    XEvent d = (XEvent) *ev;
+	    /*
+	       We need to copy the event to keep the original event untouched
+	       for gtk to handle it (in case we open up the menu)
+	     */
+	    XEvent copy_event = (XEvent) *ev;
 	    
-	    if ((win == c->buttons[MENU_BUTTON]) && isDoubleClick(c->frame, &d))
+	    if ((win == c->buttons[MENU_BUTTON]) && isDoubleClick(c->frame, &copy_event))
 	    {
 	        clientClose(c);
 	    }
