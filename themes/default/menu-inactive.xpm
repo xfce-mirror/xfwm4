@@ -4,7 +4,7 @@ static char * menu_inactive_xpm[] = {
 " 	c None",
 ".	c #567B9C s inactive_mid_1",
 "+	c #4B58A2 s inactive_shadow_1",
-"@	c #4C7BA6 s inactive_color_1",
+"@	c #FFFFFF s inactive_hilight_1",
 "#	c #949595 s inactive_shadow_1",
 "                  ",
 "                  ",
