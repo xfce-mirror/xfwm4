@@ -16,6 +16,7 @@ SUBDIRS =								\
 	crux 								\
 	cruxish 							\
 	curve 								\
+	default 							\
 	default.keys 							\
 	eazel-blue 							\
 	elberg 								\

@@ -32,7 +32,7 @@
 #include "debug.h"
 
 #ifndef DEFAULT_THEME
-#define DEFAULT_THEME "microdeck"
+#define DEFAULT_THEME "default"
 #endif
 
 gboolean parseRc(const gchar * file, const gchar * dir, Settings rc[])

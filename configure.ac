@@ -73,6 +73,7 @@ themes/coolclean/Makefile
 themes/crux/Makefile
 themes/cruxish/Makefile
 themes/curve/Makefile
+themes/default/Makefile
 themes/default.keys/Makefile
 themes/eazel-blue/Makefile
 themes/elberg/Makefile
