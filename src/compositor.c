@@ -1490,9 +1490,9 @@ void
 restack_win (CWindow *cw, Window above)
 {
     ScreenInfo *screen_info = NULL;
+    Window previous_above = None;
     GList *sibling;
     GList *next;
-    GList *index;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering restack_win");
@@ -1500,32 +1500,46 @@ restack_win (CWindow *cw, Window above)
     screen_info = cw->screen_info;
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
     next = g_list_next (sibling);
-    screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
 
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    if (next)
     {
-        CWindow *cw2 = (CWindow *) index->data;
-        if (cw2->id == above)
+        CWindow *ncw = (CWindow *) next;
+        previous_above = ncw->id;
+    }
+
+    if (previous_above != above)
+    {
+        GList *index;
+
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
         {
-            break;
+            CWindow *cw2 = (CWindow *) index->data;
+            if (cw2->id == above)
+            {
+                break;
+            }
         }
-    }
 
-    if (index != NULL)
-    {
-        screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, cw);
-    }
-    else if (above == None)
-    {
-        /* Insert at bottom of window stack */
-        screen_info->cwindows =  g_list_append (screen_info->cwindows, cw);
-    }
-    else
-    {
-        /* Insert at top of window stack */
-        g_warning ("The window 0x%lx has been placed on top of stack\n"
-        "because the specified sibling 0x%lx was not found in our stack", cw->id, above);
-        screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
+        if (index != NULL)
+        {
+            screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
+            screen_info->cwindows = g_list_insert_before (screen_info->cwindows, index, cw);
+        }
+        else if (above == None)
+        {
+            /* Insert at bottom of window stack */
+            screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
+            screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
+        }
+#ifdef DEBUG
+        else
+        {
+            /* Don't know what to do */
+            g_warning ("The window 0x%lx has not been restacked\n"
+                       "because the specified sibling 0x%lx was\n"
+                       "not found in our stack", cw->id, above);
+        }
+#endif
     }
 }
 
@@ -1839,8 +1853,6 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
 static void
 compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
 {
-    CWindow *cw;
-
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
