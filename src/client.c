@@ -3416,7 +3416,6 @@ static inline void clientSnapPosition(Client * c)
                             best_delta_y = delta;
                             best_frame_y = c_frame_y1 - frame_height;
                         }
-
                     }
                 }
             }
@@ -3428,9 +3427,9 @@ static inline void clientSnapPosition(Client * c)
         }
         if (best_delta_y <= params.snap_width)
         {
-            c->y = ((best_frame_y < top) ? top : best_frame_y ) + frame_top;
+            c->y = best_frame_y + frame_top;
         }
-        else if ((frame_y + frame_top > 0) && (frame_y < top))
+        if ((frame_y + frame_top > 0) && (frame_y < top))
         {
             c->y = frame_top + top;
         }
