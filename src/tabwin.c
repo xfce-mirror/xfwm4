@@ -112,6 +112,6 @@ void tabwinDestroy(Tabwin *tabwin)
 {
     g_return_if_fail (tabwin != NULL);
     
-    gtk_widget_destroy (tabwin->window);    
+    gtk_widget_destroy (tabwin->window);
 }
 

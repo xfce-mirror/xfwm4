@@ -3361,6 +3361,7 @@ void clientCycle(Client * c)
         popEventFilter();
         DBG("leaving cycle loop\n");
 	tabwinDestroy(passdata.tabwin);
+	g_free(passdata.tabwin);
     }
 
     XUngrabKeyboard(dpy, CurrentTime);
