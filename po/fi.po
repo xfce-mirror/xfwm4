@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 13:59+0100\n"
-"PO-Revision-Date: 2004-10-15 14:37+0200\n"
-"Last-Translator: Ilkka Ollakka <ilkka.ollakka@iki.fi>\n"
+"POT-Creation-Date: 2005-01-13 07:49+0100\n"
+"PO-Revision-Date: 2005-01-21 15:53+0200\n"
+"Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team:  <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -17,7 +17,8 @@ msgstr "Työpöydän marginaalit"
 #: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginaalit ovat näytön reunalla oleva alue jolle ikkunoita ei aseteta"
+msgstr ""
+"Marginaalit ovat näytön reunalla olevat alueet, joille ikkunoita ei aseteta"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -67,7 +68,7 @@ msgstr "Nimi:"
 
 #: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
-msgstr "Paina työpöydän nimeä muokataksesi sitä"
+msgstr "Napsauta työpöydän nimeä muokataksesi sitä"
 
 #: mcs-plugin/workspaces.c:525
 msgid "Number of workspaces:"
@@ -76,7 +77,7 @@ msgstr "Työpöytien lukumäärä:"
 #. Workspace names
 #: mcs-plugin/workspaces.c:556
 msgid "Workspace names"
-msgstr "Työpöydän nimet"
+msgstr "Työpöytien nimet"
 
 #: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
@@ -132,7 +133,7 @@ msgstr "Oikea"
 
 #: mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
-msgstr "Paina ja raahaa nappeja vaihtaaksesi järjestystä"
+msgstr "Paina ja raahaa painikkeita muuttaaksesi sijoittelua"
 
 #: mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
@@ -140,11 +141,11 @@ msgstr "Aktiivinen"
 
 #: mcs-plugin/xfwm4_plugin.c:580
 msgid "Title"
-msgstr "Otsikko"
+msgstr "Otsake"
 
 #: mcs-plugin/xfwm4_plugin.c:581
 msgid "The window title, it cannot be removed"
-msgstr "Ikkunan otsikko, sitä ei voi poistaa"
+msgstr "Ikkunan otsake, sitä ei voi poistaa"
 
 #: mcs-plugin/xfwm4_plugin.c:589
 msgid "Hidden"
@@ -164,20 +165,20 @@ msgstr "Ikkunamanagerin Asetukset"
 
 #: mcs-plugin/xfwm4_plugin.c:1414
 msgid "Title font"
-msgstr "Otsikkokirjasin"
+msgstr "Otsakkeen kirjasin"
 
 #: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Title Alignment"
-msgstr "Otsikon tasaus"
+msgstr "Otsakkeen tasaus"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1433
 msgid "Text alignment inside title bar :"
-msgstr "Tekstin tasaus otsikkopalkin sisällä:"
+msgstr "Tekstin tasaus otsakepalkissa:"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Button layout"
-msgstr "Nappien ulkoasu"
+msgstr "Nappien sijoittelu"
 
 #: mcs-plugin/xfwm4_plugin.c:1441
 msgid "Style"
@@ -185,7 +186,7 @@ msgstr "Tyyli"
 
 #: mcs-plugin/xfwm4_plugin.c:1479
 msgid "Window shortcuts"
-msgstr "Ikkunoiden näppäinoikotiet"
+msgstr "Ikkunoiden pikanäppäimet"
 
 #: mcs-plugin/xfwm4_plugin.c:1499 mcs-plugin/xfwm4_plugin.c:1532
 msgid "Command"
@@ -193,11 +194,11 @@ msgstr "Komento"
 
 #: mcs-plugin/xfwm4_plugin.c:1504 mcs-plugin/xfwm4_plugin.c:1536
 msgid "Shortcut"
-msgstr "Näppäinoikotiet"
+msgstr "Pikanäppäimet"
 
 #: mcs-plugin/xfwm4_plugin.c:1512
 msgid "Command shortcuts"
-msgstr "Komentojen näppäinoikotiet"
+msgstr "Komentojen pikanäppäimet"
 
 #: mcs-plugin/xfwm4_plugin.c:1551
 msgid "Keyboard"
@@ -209,7 +210,7 @@ msgstr "Kohdistustapa"
 
 #: mcs-plugin/xfwm4_plugin.c:1570
 msgid "Click to focus"
-msgstr "Kohdistus painettaessa"
+msgstr "Kohdistus napsautettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1577
 msgid "Focus follows mouse"
@@ -221,19 +222,19 @@ msgstr "Uuden ikkunan kohdistus"
 
 #: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Automatically give focus to newly created windows"
-msgstr "Automaattisesti kohdenna uusiin ikkunoihin"
+msgstr "Kohdista automaattisesti juuri luotuihin ikkunoihin"
 
 #: mcs-plugin/xfwm4_plugin.c:1593
 msgid "Raise on focus"
-msgstr "Nosta kohdennuksessa"
+msgstr "Nosta kohdistaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1601
 msgid "Automatically raise windows when they receive focus"
-msgstr "Automaattisesti nosta ikkuna kun se kohdistetaan"
+msgstr "Automaattisesti nosta ikkunat, kun niihin kohdistetaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Delay before raising focused window :"
-msgstr "Viive ennen tarkennetun ikkunan nostoa :"
+msgstr "Viive ennen kohdistetun ikkunan nostoa :"
 
 #: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Slow"
@@ -245,11 +246,11 @@ msgstr "Nopea"
 
 #: mcs-plugin/xfwm4_plugin.c:1639
 msgid "Raise on click"
-msgstr "Nosta painettaessa"
+msgstr "Nosta napsautettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1643
 msgid "Raise window when clicking inside application window"
-msgstr "Nosta ikkuna kun painetaan sovellusikkunan sisällä"
+msgstr "Nosta ikkuna painettaessa sovellusikkunan sisällä"
 
 #: mcs-plugin/xfwm4_plugin.c:1648
 msgid "Focus"
@@ -257,15 +258,15 @@ msgstr "Kohdistus"
 
 #: mcs-plugin/xfwm4_plugin.c:1658
 msgid "Windows snapping"
-msgstr "Ikkunoiden kiinnitys"
+msgstr "Ikkunoiden loksahtaminen"
 
 #: mcs-plugin/xfwm4_plugin.c:1666
 msgid "Snap windows to screen border"
-msgstr "Liitä ikkunat näytön reunaan"
+msgstr "Loksauta ikkunat näytön reunaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Snap windows to other windows"
-msgstr "Liitä ikkunat toisiinsa"
+msgstr "Loksauta ikkunat toisiinsa"
 
 #: mcs-plugin/xfwm4_plugin.c:1681
 msgid "Distance :"
@@ -277,19 +278,19 @@ msgstr "Pieni"
 
 #: mcs-plugin/xfwm4_plugin.c:1693 mcs-plugin/xfwm4_plugin.c:1743
 msgid "Wide"
-msgstr "Leveä"
+msgstr "Suuri"
 
 #: mcs-plugin/xfwm4_plugin.c:1708
 msgid "Wrap workspaces"
-msgstr "Kierrä työpöytiä"
+msgstr "Kierrätä työpöytiä"
 
 #: mcs-plugin/xfwm4_plugin.c:1716
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Vaihda työpöytää kun osoitin menee reunan yli"
+msgstr "Vaihda työpöytää osoittimen tullessa näytön reunaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1721
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Kierrätä työpöytiä kun ikkuna raahataan ulos näytöstä"
+msgstr "Vaihda työpöytää, kun ikkuna raahataan ulos näytöltä"
 
 #: mcs-plugin/xfwm4_plugin.c:1731
 msgid "Edge Resistance :"
@@ -297,47 +298,47 @@ msgstr "Reunan vastus :"
 
 #: mcs-plugin/xfwm4_plugin.c:1758
 msgid "Opaque move and resize"
-msgstr "Päivitä työpöytää siirrettäessä tai muutettaessa ikkunan kokoa"
+msgstr "Läpinäkymätön siirtäminen ja koon muuttaminen"
 
 #: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Display content of windows when resizing"
-msgstr "Päivitä ikkunan sisältöä kokoa muutettaessa"
+msgstr "Näytä ikkunan sisältö kokoa muutettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1771
 msgid "Display content of windows when moving"
-msgstr "Päivitä ikkunan sisältöä siirrettäessä"
+msgstr "Näytä ikkunan sisältö siirrettäessä"
 
 #: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Double click action"
-msgstr "Tuplaklikkaustoiminto"
+msgstr "Kaksoisnapsautustoiminto"
 
 #: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
+msgstr "Toiminto, joka suoritetaan kaksoisnapsauttaessa otsikkopalkkia:"
 
 #: mcs-plugin/xfwm4_plugin.c:1784
 msgid "Advanced"
-msgstr "Muut"
+msgstr "Lisäasetukset"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Haluatko todella poistaa tämän näppäinoikotieteeman ?"
+msgstr "Haluatko todella poistaa tämän pikanäppäinteeman ?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
-msgstr "Lisää näppäinoikotieteema"
+msgstr "Lisää pikanäppäinteema"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Enter a name for the theme:"
-msgstr "Anna teemalle nimi"
+msgstr "Anna nimi teemalle:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154
 msgid "A keybinding theme with the same name already exists"
-msgstr "Samalla nimellä on jo teema olemassa"
+msgstr "Tällä nimellä on jo olemassa pikanäppäinteema"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:160
 msgid "You have to provide a name for the keybinding theme"
-msgstr "Teemalle täytyy antaa nimi"
+msgstr "Pikanäppäinteemalle täytyy antaa nimi"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Close window"
@@ -345,11 +346,11 @@ msgstr "Sulje ikkuna"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window vertically"
-msgstr "Suurenna ikkuna vertikaalisti"
+msgstr "Suurenna ikkuna pystysuunnassa"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Maximize window horizontally"
-msgstr "Suurenna ikkuna horisontaalisti"
+msgstr "Suurenna ikkuna vaakasuunnassa"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Stick window"
@@ -401,7 +402,7 @@ msgstr "Laske ikkunaa"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:440
 msgid "Toggle fullscreen"
-msgstr "Vaihta kokonäytön alueelle"
+msgstr "Vaihda kokonäyttötilaan"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:445
 msgid "Upper workspace"
@@ -505,7 +506,7 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
-"%s ei voida avata: \n"
+"Kohdetta %s ei voi avata: \n"
 "%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:877 mcs-plugin/xfwm4_shortcuteditor.c:888
@@ -514,7 +515,7 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Tiedostoon %s ei voida kirjoittaa:\n"
+"Tiedostoon %s ei voi kirjoittaa:\n"
 "%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:938
@@ -526,23 +527,23 @@ msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"Oikotie on jo käytössä!\n"
+"Pikanäppäin on jo käytössä!\n"
 "Haluatko todella käyttää sitä?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1147
 msgid "Compose shortcut for :"
-msgstr "Määritä oikotie :"
+msgstr "Määritä pikanäppäin :"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1150
 #: mcs-plugin/xfwm4_shortcuteditor.c:1378
 msgid "Compose shortcut"
-msgstr "Määritä oikotie"
+msgstr "Määritä pikanäppäin"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1152
 #: mcs-plugin/xfwm4_shortcuteditor.c:1380
 msgid "No shortcut"
-msgstr "Ei näppäinoikotietä"
+msgstr "Ei pikanäppäintä"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1274
@@ -555,16 +556,16 @@ msgstr "Komento :"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1312
 msgid "The command doesn't exist or the file is not executable !"
-msgstr "Komentoa ei ole tai tiedostolla ei ole suoritusoikeutta !"
+msgstr "Komentoa ei ole, tai tiedostolla ei ole suoritusoikeutta !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1375
 msgid "Compose shortcut for command :"
-msgstr "Näppäinoikotie komennolle :"
+msgstr "Pikanäppäin komennolle :"
 
 #: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr "%s: Segmentation fault"
+msgstr "%s: Muistinosoitusvirhe"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -604,15 +605,15 @@ msgstr "Pois_ta Kiinnitys"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "Ympäristöstä apua"
+msgstr "Tilannekohtainen ohje"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr "Aina päälimäisenä"
+msgstr "Aina päällimäisenä"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr "Vaihda ..."
+msgstr "Siirrä..."
 
 #: src/menu.c:53
 msgid "_Close"
@@ -648,86 +649,27 @@ msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 #: src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Aktiivista väriä %s ei voi käyttää\n"
+msgstr "%s: Aktiivista väriä %s ei voi varata\n"
 
 #: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Aktiivista väriä %s ei voi tunnistaa \n"
+msgstr "%s: Aktiivinen väri %s ei ole tunnistettavissa \n"
 
 #: src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Ei-aktiivista väriä %s ei voi käyttää\n"
+msgstr "%s: Ei-aktiivista väriä %s ei voi varata\n"
 
 #: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Ei-aktiivista väriä %s ei voi tunnistaa\n"
+msgstr "%s: Ei-aktiivinen väri %s ei ole tunnistettavissa\n"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr "Siirrä ..."
+msgstr "Vaihda..."
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
-msgstr "Tuntematon ohjelma"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Työpöytä 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Työpöytä 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Työpöytä 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Työpöytä 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Työpöytä 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Työpöytä 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Työpöytä 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Työpöytä 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Työpöytä 9"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: Toiminto ei ole (vielä) tuettu\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: Ei-aktiivista väriä %s ei voi käyttää\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: Oletustiedostoista puuttuu tietoa"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: Uuden prosessin luonti epäonnistui: %s"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: Tuntematon virhe"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: Oletustiedostoista puuttuu tietoa"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s: Oletustiedostoista puuttuu tietoa"
+msgstr "Tuntematon sovellus!"
