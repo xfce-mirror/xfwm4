@@ -94,6 +94,7 @@ unsigned int client_count = 0;
 
 static GList *windows = NULL;
 static GList *windows_stack = NULL;
+static GList *windows_pstruts = NULL;
 static Client *client_focus = NULL;
 
 /* Forward decl */
@@ -4544,7 +4545,7 @@ clientToggleMaximized (Client * c, int mode)
     clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
     }
     else
     {

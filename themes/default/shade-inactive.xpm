@@ -1,6 +1,6 @@
 /* XPM */
 static char * shade_inactive_xpm[] = {
-"17 20 6 1",
+"17 21 6 1",
 "       c None",
 ".      c #FFFFFF s inactive_hilight_2",
 "+      c #D5D6D5 s inactive_color_2",
@@ -9,7 +9,8 @@ static char * shade_inactive_xpm[] = {
 "$      c #000000",
 "                 ",
 "                 ",
-".................",
+"                 ",
+"+++++++++++++++++",
 "+++++++++++++++++",
 "+++++++++++++++++",
 "+++++++++++++++++",
@@ -26,5 +27,6 @@ static char * shade_inactive_xpm[] = {
 "+++++++++++++++++",
 "+++++++++++++++++",
 "+++++++++++++++++",
+"                 ",
 "                 "};
 
