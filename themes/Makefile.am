@@ -18,6 +18,7 @@ iceg \
 kde \
 kindaker \
 linea \
+microgui \
 mofit \
 next \
 ops \
