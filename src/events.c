@@ -250,6 +250,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             break;
         case KEY_STICK_WINDOW:
             clientToggleSticky(c, TRUE);
+            frameDraw(c, FALSE, FALSE);
             break;
         case KEY_MOVE_NEXT_WORKSPACE:
             workspaceSwitch(workspace + 1, c);
@@ -1054,13 +1055,25 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
             TRACE("client \"%s\" (0x%lx) has received a net_wm_desktop event", c->name, c->window);
-            if((ev->data.l[0] == (int)0xFFFFFFFF) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+            if(ev->data.l[0] == ALL_WORKSPACES)
             {
-                clientStick(c, TRUE);
+                if (CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_STICK, CLIENT_FLAG_STICKY))
+                {
+                    clientStick(c, TRUE);
+                    frameDraw(c, FALSE, FALSE);
+                }
             }
-            else if((ev->data.l[0] != c->win_workspace) && !clientIsTransient(c))
+            else if (!clientIsTransient(c))
             {
-                clientSetWorkspace(c, ev->data.l[0], TRUE);
+                if (CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY))
+                {
+                    clientUnstick(c, TRUE);
+                    frameDraw(c, FALSE, FALSE);
+                }
+                if(ev->data.l[0] != c->win_workspace)
+                {
+                    clientSetWorkspace(c, ev->data.l[0], TRUE);
+                }
             }
         }
         else if((ev->message_type == net_close_window) && (ev->format == 32))

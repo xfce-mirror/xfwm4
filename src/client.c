@@ -76,8 +76,6 @@
 #define CONSTRAINED_WINDOW(c) \
     ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
 
-#define ALL_WORKSPACES   (int) 0xFFFFFFFF
-
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
@@ -549,6 +547,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         {
             clientToggleSticky(c, TRUE);
         }
+        frameDraw(c, FALSE, FALSE);
     }
 
     if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz) || (first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
@@ -558,29 +557,24 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             unsigned long mode = 0;
             if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz))
             {
-                mode |= WIN_STATE_MAXIMIZED_HORIZ;
+                mode |= !CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
             }
             if((first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
             {
-                mode |= WIN_STATE_MAXIMIZED_VERT;
+                mode |= !CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
             }
             clientToggleMaximized(c, mode);
         }
         else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
             unsigned long mode = 0;
-            if(mode & WIN_STATE_MAXIMIZED)
-            {
-                mode |= (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
-            }
-            mode &= ~WIN_STATE_MAXIMIZED;
             if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz))
             {
-                mode &= ~WIN_STATE_MAXIMIZED_HORIZ;
+                mode |= CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
             }
             if((first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
             {
-                mode &= ~WIN_STATE_MAXIMIZED_VERT;
+                mode |= CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
             }
             clientToggleMaximized(c, mode);
         }
@@ -589,11 +583,11 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             unsigned long mode = 0;
             if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz))
             {
-                mode ^= WIN_STATE_MAXIMIZED_HORIZ;
+                mode |= WIN_STATE_MAXIMIZED_HORIZ;
             }
             if((first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
             {
-                mode ^= WIN_STATE_MAXIMIZED_VERT;
+                mode |= WIN_STATE_MAXIMIZED_VERT;
             }
             clientToggleMaximized(c, mode);
         }

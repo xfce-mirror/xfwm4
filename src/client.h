@@ -118,6 +118,8 @@
                                        CLIENT_FLAG_HAS_MOVE | \
                                        CLIENT_FLAG_HAS_RESIZE                                  
 
+#define ALL_WORKSPACES                 (int) 0xFFFFFFFF
+
 /* Convenient macros */
 #define CLIENT_FLAG_TEST(c,f)                   (c->client_flag & (f))
 #define CLIENT_FLAG_TEST_ALL(c,f)               ((c->client_flag & (f)) == (f))
