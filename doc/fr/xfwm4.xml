@@ -21,14 +21,10 @@
     <year>2003</year> <holder>Jasper Huijsmans</holder>
   </copyright>
 
-<!-- translators: uncomment this:
-
   <copyright>
-   <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin
+   <year>2003</year> <holder>M.C. Collilieux (French
    translation)</holder>
   </copyright>
-
- -->
 
 <!-- I don't know about this
   <legalnotice id="legalnotice">
@@ -47,17 +43,13 @@
       </affiliation>
     </author>
 
-<!-- This is appropriate place for other contributors: translators,
-maintainers, etc. Commented out by default.
-
     <othercredit role="translator">
-      <firstname>Latin</firstname> <surname>Translator 1</surname>
+      <firstname>Marie-Claude</firstname> <surname>Collilieux</surname>
       <affiliation>
-	<orgname>Latin Translation Team</orgname>
-	<address><email>translator@gnome.org</email> </address>
-      </affiliation> <contrib>Latin translation</contrib>
+	<orgname>French Translation Team</orgname>
+	<address><email>m.collilieux@free.fr</email> </address>
+      </affiliation> <contrib>French translation</contrib>
     </othercredit>
--->
 
   </authorgroup>
 
@@ -95,8 +87,8 @@ maintainers, etc. Commented out by default.
 	les standards définis par <ulink url="http://www.freedesktop.org"
       type="html">freedesktop.org</ulink>.
 	Par conséquent, des fonctions spécifiques, comme des fenêtres sans bordures 
-	ou la fourniture d'une icône pour une application doit maintenant être inclus dans 
-	l'application elle-même ; vous ne pouvez plus utiliser le gestionnaire de 
+	ou la fourniture d'une icône pour une application doit maintenant être inclues dans 
+	l'application elle-même; vous ne pouvez plus utiliser le gestionnaire de 
 	fenêtres pour forcer un comportement différent. Le plus visible des changements 
 	est probablement l'utilisation de thèmes. Les décors de fenêtres (bordures, 
 	barre de titre et boutons) peuvent être configurés à partir du gestionnaire 
@@ -315,7 +307,7 @@ maintainers, etc. Commented out by default.
     </varlistentry>
 
 <varlistentry>
-      <term>Raise / lower windows</term>
+      <term>Envoyer une fenêtre au-dessus / en dessous des autres</term>
       <listitem>
          <para>La fonction "raise window" fait apparaître le cadre d'une fenêtre au-dessus de toutes les autres fenêtres. 
          Pour ce faire, vous pouvez :
