@@ -248,6 +248,7 @@ gboolean clientIsTransientOrModalFor (Client *, Client *);
 gboolean clientIsTransientForGroup (Client *);
 gboolean clientIsModalForGroup (Client *);
 gboolean clientIsTransientOrModalForGroup (Client *);
+void clientClearLastOpTime (Client * c);
 void clientSetNetState (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
 void clientUpdateNetState (Client *, XClientMessageEvent *);
