@@ -397,7 +397,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         menu_open = menu->menu;
         pushEventFilter (menu_filter, NULL);
         gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
-            popup_position_func, pt, button, timestamp);
+            popup_position_func, pt, 0, timestamp);
 
         if (!GTK_MENU_SHELL (GTK_MENU (menu->menu))->have_xgrab)
         {
