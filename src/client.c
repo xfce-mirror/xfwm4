@@ -1741,7 +1741,6 @@ void clientFrameAll()
     windows_stack = NULL;
     client_focus = NULL;
 
-    XSync(dpy, 0);
     MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
@@ -1767,7 +1766,6 @@ void clientUnframeAll()
 
     DBG("entering clientUnframeAll\n");
 
-    XSync(dpy, 0);
     MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)

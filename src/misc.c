@@ -97,7 +97,6 @@ void sendClientMessage(Display * dpy, Window w, Atom a, long x, int mask)
     ev.xclient.data.l[0] = x;
     ev.xclient.data.l[1] = CurrentTime;
     XSendEvent(dpy, w, False, mask, &ev);
-    XSync(dpy, False);
 }
 
 void MyXGrabServer(Display * dpy)

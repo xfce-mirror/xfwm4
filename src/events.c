@@ -397,7 +397,6 @@ static inline void handleButtonPress(XButtonEvent * ev)
     {
         XUngrabPointer(dpy, CurrentTime);
         XSendEvent(dpy, gnome_win, False, SubstructureNotifyMask, (XEvent *) ev);
-        XSync(dpy, False);
     }
 }
 
@@ -406,7 +405,6 @@ static inline void handleButtonRelease(XButtonEvent * ev)
     DBG("entering handleButtonRelease\n");
 
     XSendEvent(dpy, gnome_win, False, SubstructureNotifyMask, (XEvent *) ev);
-    XSync(dpy, False);
 }
 
 static inline void handleDestroyNotify(XDestroyWindowEvent * ev)

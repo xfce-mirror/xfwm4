@@ -121,7 +121,6 @@ void workspaceSwitch(int new_ws, Client * c2)
     }
     workspaceUpdateArea(margins, gnome_margins);
     clientSetFocus(f, True);
-    XSync(dpy, 0);
 }
 
 void workspaceSetCount(int count)
