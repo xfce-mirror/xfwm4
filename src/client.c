@@ -769,7 +769,7 @@ static void clientSetNetClientList(Atom a, GSList * list)
     DBG("entering clientSetNetClientList\n");
 
     size = g_slist_length(list);
-    if(size <= 0)
+    if(size < 1)
     {
         XDeleteProperty(dpy, root, a);
     }
@@ -1844,10 +1844,6 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
         ce.override_redirect = False;
         XSendEvent(dpy, c->window, False, StructureNotifyMask, (XEvent *) & ce);
     }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
-    {
-        clientSetNetClientList(net_client_list_stacking, windows_stack);
-    }
 }
 
 void clientUpdateMWMHints(Client * c)
@@ -2588,7 +2584,7 @@ void clientRaise(Client * c)
         return;
     }
     
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (c->type != WINDOW_DESKTOP))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         Client *c2, *c3;
         Client *client_sibling = NULL;
@@ -2674,6 +2670,7 @@ void clientRaise(Client * c)
            We still need to tell the X Server to reflect the changes 
          */
         clientApplyStackList(windows_stack);
+        clientSetNetClientList(net_client_list_stacking, windows_stack);
         last_raise = c;
     }
 }
@@ -2717,6 +2714,7 @@ void clientLower(Client * c)
            We still need to tell the X Server to reflect the changes 
          */
         clientApplyStackList(windows_stack);
+        clientSetNetClientList(net_client_list_stacking, windows_stack);
         if(last_raise == c)
         {
             last_raise = NULL;
