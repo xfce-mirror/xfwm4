@@ -1295,7 +1295,7 @@ clientUpdateAllFrames (int mask)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
         }
         if (mask & UPDATE_FRAME)
         {
@@ -2395,7 +2395,9 @@ void
 clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags)
 {
     XConfigureEvent ce;
-
+    gboolean moved = FALSE;
+    gboolean resized = FALSE;
+    
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
@@ -2405,6 +2407,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 
     if (mask & CWX)
     {
+        moved = TRUE;
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
         {
             c->x = wc->x;
@@ -2412,6 +2415,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     }
     if (mask & CWY)
     {
+        moved = TRUE;
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
         {
             c->y = wc->y;
@@ -2419,10 +2423,12 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     }
     if (mask & CWWidth)
     {
+        resized = TRUE;
         clientSetWidth (c, wc->width);
     }
     if (mask & CWHeight)
     {
+        resized = TRUE;
         clientSetHeight (c, wc->height);
     }
     if (mask & CWBorderWidth)
@@ -2468,14 +2474,14 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     wc->height = c->height;
     XConfigureWindow (dpy, c->window, mask, wc);
 
-    if (mask & (CWWidth | CWHeight))
+    if (resized || (flags & CFG_FORCE_REDRAW))
     {
         frameDraw (c, FALSE, TRUE);
     }
     
     if ((flags & CFG_NOTIFY) ||
-        ((flags & CFG_REQUEST) && !(mask & (CWX | CWY | CWWidth | CWHeight))) ||
-        ((mask & (CWX | CWY)) && !(mask & (CWWidth | CWHeight))))
+        ((flags & CFG_REQUEST) && !(moved || resized)) ||
+        (moved && !resized))
     {
         DBG ("Sending ConfigureNotify");
         ce.type = ConfigureNotify;
@@ -2592,7 +2598,7 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
 
@@ -3060,14 +3066,13 @@ clientFrame (Window w, gboolean startup)
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
-    /* This flag is used to avoid focus transition when reparenting */
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
-    /* 
+    /* This flag is used to avoid focus transition when reparenting...
      * Reparenting generates an UnmapNotify event, followed by a MapNotify.
-     * Set ignore_unmap to 1 so that the window won't return to withdrawn
+     * Set CLIENT_FLAG_REPARENTING so that the window won't return to withdrawn
      * state when unmapnotify is received
      */
-    c->ignore_unmap = 1;
+    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
+    c->ignore_unmap = 0;
     c->type = UNSET;
     c->type_atom = None;
 
@@ -3172,7 +3177,7 @@ clientFrame (Window w, gboolean startup)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
+    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
     clientApplyStackList (windows_stack);
     last_raise = c;
 
@@ -4038,7 +4043,7 @@ clientShade (Client * c)
     {
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_NONE);
+        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
 }
@@ -4063,7 +4068,7 @@ clientUnshade (Client * c)
     {
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_NONE);
+        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
 }

@@ -842,16 +842,16 @@ handleUnmapNotify (XUnmapEvent * ev)
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
             clientPassFocus (c);
-        }
-        if (c->ignore_unmap)
-        {
-            c->ignore_unmap--;
-            TRACE ("ignore_unmaps for \"%s\" is  now %i", 
-                 c->name, c->ignore_unmap);
-        }
-        else
-        {
-            clientUnframe (c, FALSE);
+            if (c->ignore_unmap)
+            {
+                c->ignore_unmap--;
+                TRACE ("ignore_unmaps for \"%s\" is  now %i", 
+                     c->name, c->ignore_unmap);
+            }
+            else
+            {
+                clientUnframe (c, FALSE);
+            }
         }
     }
 }
@@ -902,7 +902,15 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
+        if (CLIENT_FLAG_REPARENTING)
+        {
+            /* First map caused by reparenting, clear flag
+               and set ignore_unmaps to 0 so that everything
+               get properly initilized from now.
+             */
+            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
+            c->ignore_unmap = 0;
+        }
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
         {
             clientShow (c, TRUE);
@@ -1010,6 +1018,24 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        /* Clean up buggy requests that set all flags */
+        if ((ev->value_mask & CWX) && (wc.x == c->x))
+        {
+            ev->value_mask &= ~CWX;
+        }
+        if ((ev->value_mask & CWY) && (wc.y == c->y))
+        {
+            ev->value_mask &= ~CWY;
+        }
+        if ((ev->value_mask & CWWidth) && (wc.width == c->width))
+        {
+            ev->value_mask &= ~CWWidth;
+        }
+        if ((ev->value_mask & CWHeight) && (wc.height == c->height))
+        {
+            ev->value_mask &= ~CWHeight;
+        }
+        /* Still a move/resize after cleanup? */
         if (ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
         {
             if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))

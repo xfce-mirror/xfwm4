@@ -59,6 +59,7 @@
 #define CFG_CONSTRAINED                 (1<<0)
 #define CFG_REQUEST                     (1<<1)
 #define CFG_NOTIFY                      (1<<2)
+#define CFG_FORCE_REDRAW                (1<<3)
 
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
