@@ -65,13 +65,12 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
     default_rc = xfce_rc_simple_open (default_theme_file, TRUE);
     user_rc = xfce_rc_simple_open (user_theme_file, TRUE);
 
+    fp = fopen (user_theme_file, "r");
+
     g_free (user_theme_file);
     g_free (default_theme_file);
 
     shortcuts_list = xfce_rc_get_entries (default_rc, "");
-
-
-    fp = fopen (user_theme_file, "r");
 
     if (!fp)
         return;
@@ -635,6 +634,10 @@ savetree3_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIter * 
     else if (strcmp (command, _("Move window to workspace 9")) == 0)
     {
         strcpy (xfwm4_command, "move_window_workspace_9_key");
+    }
+    else 
+    {
+        strcpy (xfwm4_command, command);
     }
 
     line = g_strdup_printf ("%s=%s\n", xfwm4_command, shortcut);
