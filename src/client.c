@@ -641,23 +641,24 @@ static void clientWindowType(Client * c)
             layer = WIN_LAYER_ABOVE_DOCK;
         }
     }
-    else
-    {
-        c->type = UNSET;
-        layer = c->win_layer;
-    }
-    if(c->transient_for != None)
+    else if(c->transient_for != None)
     {
         Client *c2;
 
         DBG("no \"net\" atom detected\n");
 
-        c->type = WINDOW_DIALOG;
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
         if(c2)
         {
+            c->type = c2->type;
             layer = c2->win_layer;
         }
+    }
+    else
+    {
+        DBG("no \"net\" atom detected, not even a transient\n");
+        c->type = UNSET;
+        layer = c->win_layer;
     }
     if((old_type != c->type) || (layer != c->win_layer))
     {
