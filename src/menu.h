@@ -62,26 +62,26 @@ typedef void (* MenuFunc) (Menu    *menu,
 
 struct _MenuItem
 {
-  MenuOp      op;
-  const char *stock_id;
-  const char *label;
+    MenuOp      op;
+    const char *stock_id;
+    const char *label;
 };
 
 struct _MenuData
 {
-  Menu    *menu;
-  MenuOp   op;
-  Window   client_xwindow;
-  gpointer data;
+    Menu    *menu;
+    MenuOp   op;
+    Window   client_xwindow;
+    gpointer data;
 };
 
 struct _Menu
 {
-  GtkWidget *menu;
-  MenuFunc   func;
-  gpointer   data;
-  MenuOp     ops;
-  MenuOp     insensitive;
+    GtkWidget *menu;
+    MenuFunc   func;
+    gpointer   data;
+    MenuOp     ops;
+    MenuOp     insensitive;
 };
 
 Menu* menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data);

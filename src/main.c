@@ -27,7 +27,6 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <X11/Xlib.h>
-#include <glib.h>
 #include "gtktoxevent.h"
 #include "main.h"
 #include "events.h"

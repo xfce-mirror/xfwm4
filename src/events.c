@@ -22,7 +22,10 @@
 #  include "config.h"
 #endif
 
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <X11/Xlib.h>
 #include "main.h"
 #include "workspaces.h"
 #include "settings.h"
@@ -415,7 +418,7 @@ void handleDestroyNotify(XDestroyWindowEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        clientUnframe(c, False);
+         clientUnframe(c, False);
         if(clients)
 	{
             clientSetFocus(clientGetNext(clients->prev, 0), True);
@@ -809,77 +812,80 @@ GtkToXEventFilterStatus xfwm4_event_filter(XEvent *xevent, gpointer  data)
 
 static void menu_callback (Menu *menu, MenuOp op, Window client_xwindow, gpointer menu_data, gpointer item_data)
 {
-  Client *c = NULL;
+    Client *c = NULL;
   
-  DBG("entering menu_callback\n");
-  if (menu_data)
-  {
-      c = (Client *) menu_data;
-      c = clientGetFromWindow(c->window, WINDOW);
-      c->button_pressed[MENU_BUTTON] = False;
-  }
+    DBG("entering menu_callback\n");
+    if (menu_data)
+    {
+	c = (Client *) menu_data;
+	c = clientGetFromWindow(c->window, WINDOW);
+	if (c)
+	{
+            c->button_pressed[MENU_BUTTON] = False;
+	}
+    }
   
-  switch (op)
-  {
-      case MENU_OP_QUIT:
-	  gtk_main_quit();
-	  break;
-      case MENU_OP_MAXIMIZE:
-      case MENU_OP_UNMAXIMIZE:
-	  if (c)
-	  {
-              clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-	  }
-	  break;
-      case MENU_OP_MINIMIZE:
-	  if (c)
-	  {
-              clientHide(c, True);
-	  }
-	  break;
-      case MENU_OP_UNMINIMIZE:
-	  if (c)
-	  {
-              clientShow(c, True);
-	  }
-	  break;
-      case MENU_OP_SHADE:
-      case MENU_OP_UNSHADE:
-	  if (c)
-	  {
-              clientToggleShaded(c);
-	  }
-	  break;
-      case MENU_OP_STICK:
-      case MENU_OP_UNSTICK:
-	  if (c)
-	  {
-              clientToggleSticky(c);
-              frameDraw(c);
-	  }
-	  break;
-      case MENU_OP_DELETE:
-	  if (c)
-	  {
-	      clientClose(c);
-              frameDraw(c);
-	  }
-	  break;
-      case MENU_OP_DESTROY:
-	  if (c)
-	  {
-	      clientKill(c);
-              frameDraw(c);
-	  }
- 	  break;
-      default:
-	  if (c)
-	  {
-              frameDraw(c);
-	  }
-	  break;
-  }
-  menu_free (menu);
+    switch (op)
+    {
+	case MENU_OP_QUIT:
+	    gtk_main_quit();
+	    break;
+	case MENU_OP_MAXIMIZE:
+	case MENU_OP_UNMAXIMIZE:
+	    if (c)
+	    {
+        	clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+	    }
+	    break;
+	case MENU_OP_MINIMIZE:
+	    if (c)
+	    {
+        	clientHide(c, True);
+	    }
+	    break;
+	case MENU_OP_UNMINIMIZE:
+	    if (c)
+	    {
+        	clientShow(c, True);
+	    }
+	    break;
+	case MENU_OP_SHADE:
+	case MENU_OP_UNSHADE:
+	    if (c)
+	    {
+        	clientToggleShaded(c);
+	    }
+	    break;
+	case MENU_OP_STICK:
+	case MENU_OP_UNSTICK:
+	    if (c)
+	    {
+        	clientToggleSticky(c);
+        	frameDraw(c);
+	    }
+	    break;
+	case MENU_OP_DELETE:
+	    if (c)
+	    {
+		clientClose(c);
+        	frameDraw(c);
+	    }
+	    break;
+	case MENU_OP_DESTROY:
+	    if (c)
+	    {
+		clientKill(c);
+        	frameDraw(c);
+	    }
+ 	    break;
+	default:
+	    if (c)
+	    {
+        	frameDraw(c);
+	    }
+	    break;
+    }
+    menu_free (menu);
 }
 
 static gboolean show_popup_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
