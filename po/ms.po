@@ -1,0 +1,418 @@
+# Xfwm4 Malay translation.
+# Copyright (C) 2003 Olivier Fourdan
+# This file is distributed under the same license as the xfwm4 package.
+# Harun Musa <mharun@gmx.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 1.0.0\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
+"PO-Revision-Date: 2003-05-29 02:24+0800\n"
+"Last-Translator: Harun Musa <mharun@gmx.net>\n"
+"Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
+#: mcs-plugin/margins_plugin.c:250
+msgid "Workspace Margins"
+msgstr "Margin Ruangkerja"
+
+#: mcs-plugin/margins_plugin.c:211
+msgid "Adjust workspace margins"
+msgstr "Adjust margin ruangkerja"
+
+#: mcs-plugin/margins_plugin.c:237
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
+
+#: mcs-plugin/margins_plugin.c:278
+msgid "Left :"
+msgstr "Kiri :"
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Right :"
+msgstr "Kanan :"
+
+#: mcs-plugin/margins_plugin.c:318
+msgid "Top :"
+msgstr "Atas :"
+
+#: mcs-plugin/margins_plugin.c:338
+msgid "Bottom :"
+msgstr "Bawah :"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "Tajuk"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr "Menu"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr "Lekat"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr "Bayang"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "Sembunyi"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "Maksimakan"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "Tutup"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr "Bayang tetingkap"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "Sembunyi tetingkap"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "Maksimakan tetingkap"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr "Tiada apa"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "Kiri"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "Tengah"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "Kanan"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Sembunyi"
+
+#: mcs-plugin/xfwm4_plugin.c:1233
+msgid "Font Selection Dialog"
+msgstr "Dialog Pemilihan Font"
+
+#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1945
+msgid "Window Manager"
+msgstr "Pengurus Tetingkap"
+
+#: mcs-plugin/xfwm4_plugin.c:1317
+msgid "Window Manager Preferences"
+msgstr "Keutamaan Pengurus Tetingkap"
+
+#: mcs-plugin/xfwm4_plugin.c:1354
+msgid "Window style"
+msgstr "Stail tetingkap"
+
+#: mcs-plugin/xfwm4_plugin.c:1372
+msgid "Font select :"
+msgstr "Pilih font :"
+
+#: mcs-plugin/xfwm4_plugin.c:1382
+msgid "Title font"
+msgstr "Tajuk font"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Text alignment inside title bar :"
+msgstr "Alignment teks didalam bar tajuk :"
+
+#: mcs-plugin/xfwm4_plugin.c:1399
+msgid "Title Alignment"
+msgstr "Alignment Tajuk"
+
+#: mcs-plugin/xfwm4_plugin.c:1411
+msgid "Button layout"
+msgstr "Layout bebutang"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Decoration style"
+msgstr "Stail dekorasi"
+
+#: mcs-plugin/xfwm4_plugin.c:1449
+msgid "Keyboard Shortcut"
+msgstr "Pintasan Papankekunci"
+
+#: mcs-plugin/xfwm4_plugin.c:1468
+msgid "Click to focus"
+msgstr "Klik untuk fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1482
+msgid "Focus follows mouse"
+msgstr "Fokus mengikuti tetikus"
+
+#: mcs-plugin/xfwm4_plugin.c:1496
+msgid "Focus model"
+msgstr "Model fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1506
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Automatik beri fokus kepada \n"
+"tetingkap baru dicipta"
+
+#: mcs-plugin/xfwm4_plugin.c:1514
+msgid "New window focus"
+msgstr "Fokus tetingkap baru"
+
+#: mcs-plugin/xfwm4_plugin.c:1529
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Automatik tetingkap bangkit \n"
+"bila menerima fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1542
+msgid "Delay before raising focused window :"
+msgstr "Lambatan sebelum bangkitkan tetingkap difokus :"
+
+#: mcs-plugin/xfwm4_plugin.c:1550
+msgid "Slow"
+msgstr "Perlahan"
+
+#: mcs-plugin/xfwm4_plugin.c:1558
+msgid "Fast"
+msgstr "Pantas"
+
+#: mcs-plugin/xfwm4_plugin.c:1582
+msgid "Raise on focus"
+msgstr "Bangkit ketika fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1592
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Tetingkap bangkit ketika klik didalam\n"
+"tetingkap aplikasi"
+
+#: mcs-plugin/xfwm4_plugin.c:1601
+msgid "Raise on click"
+msgstr "Bangkit ketika klik"
+
+#: mcs-plugin/xfwm4_plugin.c:1606
+msgid "Keyboard and focus"
+msgstr "Papankekunci dan fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1629
+msgid "Snap windows to screen border"
+msgstr "Snap tetingkap ke sempadan skrin"
+
+#: mcs-plugin/xfwm4_plugin.c:1638
+msgid "Snap windows to other windows"
+msgstr "Snap tetingkap ke tetingkap lain"
+
+#: mcs-plugin/xfwm4_plugin.c:1651
+msgid "Distance :"
+msgstr "Jarak :"
+
+#: mcs-plugin/xfwm4_plugin.c:1659 mcs-plugin/xfwm4_plugin.c:1734
+msgid "Small"
+msgstr "Kecil"
+
+#: mcs-plugin/xfwm4_plugin.c:1667 mcs-plugin/xfwm4_plugin.c:1742
+msgid "Wide"
+msgstr "Luas"
+
+#: mcs-plugin/xfwm4_plugin.c:1690
+msgid "Windows snapping"
+msgstr "Tetingkap snapping"
+
+#: mcs-plugin/xfwm4_plugin.c:1705
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
+
+#: mcs-plugin/xfwm4_plugin.c:1714
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Wrap ruangkerja bila lepaskan tetingkap keluar skrin"
+
+#: mcs-plugin/xfwm4_plugin.c:1726
+msgid "Edge Resistance :"
+msgstr "Halangan Sisi :"
+
+#: mcs-plugin/xfwm4_plugin.c:1767
+msgid "Wrap workspaces"
+msgstr "Wrap ruangkerja"
+
+#: mcs-plugin/xfwm4_plugin.c:1782
+msgid "Display content of windows when resizing"
+msgstr "Lihat kandungan tetingkap bila saizsemula"
+
+#: mcs-plugin/xfwm4_plugin.c:1790
+msgid "Display content of windows when moving"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: mcs-plugin/xfwm4_plugin.c:1797
+msgid "Opaque move and resize"
+msgstr "Opaque pindah dan saiz semula"
+
+#: mcs-plugin/xfwm4_plugin.c:1808
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Aksi untuk dilakukan apabila dwiklik pada bar tajuk :"
+
+#: mcs-plugin/xfwm4_plugin.c:1814
+msgid "Double click action"
+msgstr "Aksi dwi klik"
+
+#: mcs-plugin/xfwm4_plugin.c:1819
+msgid "Advanced"
+msgstr "Lanjutan"
+
+#: src/client.c:441
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: Takterurus net_wm_state (tetingkap 0x%lx)"
+
+#: src/events.c:1290
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operasi tidak disokong (lagi)\n"
+
+#: src/main.c:182
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Kesilapan segmentasi"
+
+#: src/main.c:235
+#, c-format
+msgid "%s: Running without session manager"
+msgstr "%s: Berlari tanpa pengurus sessi"
+
+#: src/main.c:341
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
+
+#: src/main.c:346
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Kehilangan data dari fail default"
+
+#: src/main.c:373
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Ralat tidak diketahui terjadi"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "Ma_ksimakan"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "Nyah_maksima"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Sembunyi"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Sembunyi y_ang lain-lain"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "Li_hat"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "_Bebayang"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "Nyah_bebayang"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "L_ekat"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Nyah_lekat"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Hantar ke..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Tutup"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Musnah"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "_Keluar"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Mulasemula"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Ruangkerja %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu gagal untuk grab penunjuk\n"
+
+#: src/settings.c:282
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Kehilangan fail default"
+
+#: src/settings.c:507
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Tak boleh allocate warna aktif %s\n"
+
+#: src/settings.c:514
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Tak boleh parse warna aktif %s\n"
+
+#: src/settings.c:558
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Tak boleh allocate warna tak aktif %s\n"
+
+#: src/settings.c:565
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Tak boleh parse warna tak aktif %s\n"
+
+#: src/settings.c:755
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Kehilangan nilai dalam fail default"
+
+#: src/settings.c:1090
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: Bilangan ruangkerja tidak ditetapkan, guna nilai rc: %i"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Suis ke ..."
