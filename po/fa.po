@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:28+0200\n"
+"POT-Creation-Date: 2004-10-24 23:50+0200\n"
 "PO-Revision-Date: 2004-09-30 08:16+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -616,7 +616,7 @@ msgstr "فرمان وجود ندارد یا پرونده قابل اجرا نی�
 msgid "Compose shortcut for command :"
 msgstr "ساختن میانبر برای فرمان :"
 
-#: src/events.c:1782
+#: src/events.c:1781
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:28+0200\n"
+"POT-Creation-Date: 2004-10-24 23:50+0200\n"
 "PO-Revision-Date: 2004-09-12 12:27+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -616,7 +616,7 @@ msgstr "Загад не йснуе альбо файл ня мае правоў 
 msgid "Compose shortcut for command :"
 msgstr "Прызначыць гарачыя клявішы для загада:"
 
-#: src/events.c:1782
+#: src/events.c:1781
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: дзеяньне не падтрымліваецца (покуль)\n"

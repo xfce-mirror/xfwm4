@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:28+0200\n"
+"POT-Creation-Date: 2004-10-24 23:50+0200\n"
 "PO-Revision-Date: 2004-01-18 00:16-0200\n"
 "Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
 "Language-Team: pt_BR <felix@online.eti.br>\n"
@@ -664,7 +664,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1782
+#: src/events.c:1781
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operação não permitida (ainda)\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:28+0200\n"
+"POT-Creation-Date: 2004-10-24 23:50+0200\n"
 "PO-Revision-Date: 2004-10-10 12:36+0100\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -621,7 +621,7 @@ msgstr "O comando não existe ou o ficheiro não é executavél !"
 msgid "Compose shortcut for command :"
 msgstr "Defina o atalho para o comando :"
 
-#: src/events.c:1782
+#: src/events.c:1781
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operação (ainda) não suportada\n"

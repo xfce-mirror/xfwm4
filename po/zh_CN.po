@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:28+0200\n"
+"POT-Creation-Date: 2004-10-24 23:50+0200\n"
 "PO-Revision-Date: 2004-09-28 01:05-0700\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -612,7 +612,7 @@ msgstr "该命令不存在或者该文件不是可执行文件！"
 msgid "Compose shortcut for command :"
 msgstr "组合快捷键用于："
 
-#: src/events.c:1782
+#: src/events.c:1781
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"

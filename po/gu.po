@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:28+0200\n"
+"POT-Creation-Date: 2004-10-24 23:50+0200\n"
 "PO-Revision-Date: 2004-09-22 20:20+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati\n"
@@ -614,7 +614,7 @@ msgstr "આદેશ અસ્તિત્વમાં નથી અથવા �
 msgid "Compose shortcut for command :"
 msgstr "આદેશ માટે ટુંકો પથ બનાવો :"
 
-#: src/events.c:1782
+#: src/events.c:1781
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: પ્રક્રિયા આધારભૂત નથી (હજુ)\n"
