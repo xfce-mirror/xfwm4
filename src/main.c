@@ -39,6 +39,7 @@
 #include <X11/Xlib.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
+#include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
@@ -141,28 +142,61 @@ cleanUp ()
     closeEventFilter ();
 }
 
-static void
-load_saved_session (void)
+static char *build_session_filename(SessionClient *client_session)
 {
-    const gchar *home = g_get_home_dir ();
     gchar *filename;
+    gchar *path;
+    gchar *file;
+    
+    path = (gchar *)xfce_get_userdir();
+    if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) {
+	    g_warning("Unable to create xfce user dir %s: %s",
+		       path, g_strerror(errno));
+	    return NULL;
+    }
 
-    filename =
-        g_build_filename (home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
-    sessionLoadWindowStates (filename);
-    g_free (filename);
+    path = xfce_get_userfile("sessions", NULL);
+    if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) 
+    {
+        g_warning("Unable to create session dir %s: %s", 
+                  path, g_strerror(errno));
+        g_free (path);
+        return NULL;
+    }
+    
+    file = g_strdup_printf("xfwm4-%s", client_session->given_client_id);
+    filename = g_build_filename (path, file, NULL);
+    g_free (file);
+    g_free (path);
+    
+    return filename;
+}
+
+static void
+load_saved_session (SessionClient *client_session)
+{
+    gchar *filename;
+    
+    filename = build_session_filename(client_session);
+    if (filename)
+    {
+        sessionLoadWindowStates (filename);
+        g_free (filename);
+    }
 }
 
 static void
 save_phase_2 (gpointer data)
 {
-    const gchar *home = g_get_home_dir ();
+    SessionClient *client_session = (SessionClient *) data;
     gchar *filename;
 
-    filename =
-        g_build_filename (home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
-    sessionSaveWindowStates (filename);
-    g_free (filename);
+    filename = build_session_filename(client_session);
+    if (filename)
+    {
+        sessionSaveWindowStates (filename);
+        g_free (filename);
+    }
 }
 
 static void
@@ -243,12 +277,13 @@ initialize (int argc, char **argv)
 
     client_session =
         client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
+    client_session->data = (gpointer) client_session;
     client_session->save_phase_2 = save_phase_2;
     client_session->die = session_die;
 
     if (session_init (client_session))
     {
-        load_saved_session ();
+        load_saved_session (client_session);
     }
 
     /* Create the side windows to detect edge movement */
