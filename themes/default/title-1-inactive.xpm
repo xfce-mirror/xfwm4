@@ -2,10 +2,10 @@
 static char * title_inactive_xpm[] = {
 "8 24 6 1",
 " 	c None",
-".	c #949594 s inactive_shadow_1",
+".	c #4B58A2 s inactive_shadow_1",
 "+	c #FFFFFF s inactive_hilight_1",
-"@	c #D5D6D5 s inactive_color_1",
-"#	c #B4BAB4 s inactive_mid_1",
+"@	c #4C7BA6 s inactive_color_1",
+"#	c #567B9C s inactive_mid_1",
 "$	c #000000",
 "$$$$$$$$",
 "$$$$$$$$",
@@ -30,4 +30,4 @@ static char * title_inactive_xpm[] = {
 "@@@@@@@@",
 "@@@@@@@@",
 "@@@@@@@@",
-"@@@@@@@@"};
+"########"};

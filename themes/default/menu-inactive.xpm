@@ -2,10 +2,10 @@
 static char * menu_inactive_xpm[] = {
 "18 24 5 1",
 " 	c None",
-".	c #4456BA s inactive_mid_1",
+".	c #567B9C s inactive_mid_1",
 "+	c #4B58A2 s inactive_shadow_1",
-"@	c #D5D6D5 s inactive_color_2",
-"#	c #949595 s inactive_shadow_2",
+"@	c #4C7BA6 s inactive_color_1",
+"#	c #949595 s inactive_shadow_1",
 "                  ",
 "                  ",
 "                  ",
