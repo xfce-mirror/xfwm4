@@ -1,20 +1,20 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
  
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
  
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-	Metacity - (c) 2001 Havoc Pennington
-	xfwm4    - (c) 2002-2003 Olivier Fourdan
+        Metacity - (c) 2001 Havoc Pennington
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
  
  */
 
@@ -58,7 +58,7 @@ typedef struct _MenuItem MenuItem;
 typedef struct _MenuData MenuData;
 
 typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window client_xwindow,
-			  gpointer menu_data, gpointer item_data);
+                          gpointer menu_data, gpointer item_data);
 
 struct _MenuItem
 {
@@ -85,13 +85,13 @@ struct _Menu
 };
 
 Menu *menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func,
-		    gint ws, gint nws, gchar *wsn, gint wsnl, gpointer data);
+                    gint ws, gint nws, gchar *wsn, gint wsnl, gpointer data);
 Menu *menu_connect (Menu * menu);
 GtkWidget *menu_item_connect (GtkWidget * item, MenuData * item_data);
 gboolean menu_is_opened (void);
 gboolean menu_check_and_close (void);
 gboolean menu_popup (Menu * menu, int root_x, int root_y, int button,
-		     guint32 timestamp);
+                     guint32 timestamp);
 void menu_free (Menu * menu);
 
 #endif /* INC_MENU_H */

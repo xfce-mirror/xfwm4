@@ -35,8 +35,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <libxfce4util/libxfce4util.h> 
-#include "main.h"
 #include "hints.h"
+#include "client.h"
 
 Atom gnome_panel_desktop_area;
 Atom motif_wm_hints;
@@ -401,8 +401,7 @@ setGnomeProtocols (Display * dpy, int screen, Window w)
     XChangeProperty (dpy, RootWindow (dpy, screen), win_protocols, XA_ATOM,
         32, PropModeReplace, (unsigned char *) atoms, 1);
     setHint (dpy, w, win_supporting_wm_check, w);
-    setHint (dpy, RootWindow (dpy, screen), win_supporting_wm_check,
-        gnome_win);
+    setHint (dpy, RootWindow (dpy, screen), win_supporting_wm_check, w);
 }
 
 void
@@ -629,7 +628,7 @@ getCardinalList (Display * dpy, Window w, Atom xatom,
 }
 
 void
-setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int * m)
+setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int width, int height, int * m)
 {
     unsigned long *data, *ptr;
     int i, j;
@@ -642,12 +641,8 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int * m)
     {
         *ptr++ = (unsigned long) m[LEFT];
         *ptr++ = (unsigned long) m[TOP];
-        *ptr++ = (unsigned long) 
-            (gdk_screen_get_width (gscr) - 
-                (m[LEFT] + m[RIGHT]));
-        *ptr++ = (unsigned long) 
-            (gdk_screen_get_height (gscr) - 
-                (m[TOP] + m[BOTTOM]));
+        *ptr++ = (unsigned long) (width  - (m[LEFT] + m[RIGHT]));
+        *ptr++ = (unsigned long) (height - (m[TOP] + m[BOTTOM]));
     }
     XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
         32, PropModeReplace, (unsigned char *) data, j * 4);
@@ -655,12 +650,12 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int * m)
 }
 
 void
-initNetDesktopParams (Display * dpy, int screen, int workspace)
+initNetDesktopParams (Display * dpy, int screen, int workspace, int width, int height)
 {
     unsigned long data[2];
     TRACE ("entering initNetDesktopParams");
-    data[0] = gdk_screen_get_width (gscr);
-    data[1] = gdk_screen_get_height (gscr);
+    data[0] = width;
+    data[1] = height;
     XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_geometry,
         XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
     data[0] = 0;

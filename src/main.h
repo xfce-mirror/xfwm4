@@ -55,20 +55,35 @@
  *
  */
 
-extern char *progname;
-extern Display *dpy;
-extern GdkScreen *gscr;
-extern GdkDisplay *gdisplay;
-extern Window root, gnome_win, systray, sidewalk[2];
-extern Screen *xscreen;
-extern int screen;
-extern int depth;
-extern int workspace;
-extern Colormap cmap;
-extern int gnome_margins[4];
-extern int margins[4];
-extern int quit, reload;
-extern int shape, shape_event;
-extern Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
+typedef struct MainData
+{
+    Colormap cmap;
+    Cursor busy_cursor;
+    Cursor move_cursor;
+    Cursor resize_cursor[7];
+    Cursor root_cursor;
+    Display *dpy;
+    GdkDisplay *gdisplay;
+    GdkScreen *gscr;
+    GtkToXEventFilterSetup *gtox_data;
+    Screen *xscreen;
+    Window gnome_win;
+    Window xroot;
+    Window sidewalk[2];
+    Window systray;
+    char *progname;
+    int depth;
+    int gnome_margins[4];
+    int margins[4];
+    int quit;
+    int reload;
+    int screen;
+    int shape;
+    int shape_event;
+    int current_ws;
+} 
+MainData;
+
+extern MainData *md;
 
 #endif /* INC_MAIN_H */

@@ -1,20 +1,20 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
  
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
  
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-	oroborus - (c) 2001 Ken Lynch
-	xfwm4    - (c) 2002-2003 Olivier Fourdan
+        oroborus - (c) 2001 Ken Lynch
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
  
  */
 
@@ -111,8 +111,8 @@
 #define KEY_SHORTCUT_8                  47
 #define KEY_SHORTCUT_9                  48
 #define KEY_SHORTCUT_10                 49
-#define KEY_LOWER_WINDOW		50
-#define KEY_RAISE_WINDOW		51
+#define KEY_LOWER_WINDOW                50
+#define KEY_RAISE_WINDOW                51
 #define KEY_COUNT                       52
 #define NB_KEY_SHORTCUTS                10
 

@@ -1,20 +1,20 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
  
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
  
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-	oroborus - (c) 2001 Ken Lynch
-	xfwm4    - (c) 2002-2003 Olivier Fourdan
+        oroborus - (c) 2001 Ken Lynch
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
  
  */
 
@@ -49,11 +49,11 @@ parseRc (const gchar * file, const gchar * dir, Settings rc[])
 
     if (dir)
     {
-	filename = g_build_filename (dir, G_DIR_SEPARATOR_S, file, NULL);
+        filename = g_build_filename (dir, G_DIR_SEPARATOR_S, file, NULL);
     }
     else
     {
-	filename = g_strdup (file);
+        filename = g_strdup (file);
     }
 
     fp = fopen (filename, "r");
@@ -61,16 +61,16 @@ parseRc (const gchar * file, const gchar * dir, Settings rc[])
 
     if (!fp)
     {
-	return FALSE;
+        return FALSE;
     }
     while (fgets (buf, sizeof (buf), fp))
     {
-	lvalue = strtok (buf, "=");
-	rvalue = strtok (NULL, "\n");
-	if ((lvalue) && (rvalue))
-	{
-	    setValue (lvalue, rvalue, rc);
-	}
+        lvalue = strtok (buf, "=");
+        rvalue = strtok (NULL, "\n");
+        if ((lvalue) && (rvalue))
+        {
+            setValue (lvalue, rvalue, rc);
+        }
     }
     fclose (fp);
     return TRUE;
@@ -86,11 +86,11 @@ checkRc (Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (rc[i].required && !rc[i].value)
-	{
-	    fprintf (stderr, "missing value for option %s\n", rc[i].option);
-	    rval = FALSE;
-	}
+        if (rc[i].required && !rc[i].value)
+        {
+            fprintf (stderr, "missing value for option %s\n", rc[i].option);
+            rval = FALSE;
+        }
     }
     return rval;
 }
@@ -106,10 +106,10 @@ getValue (const gchar * option, Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (!g_ascii_strcasecmp (option, rc[i].option))
-	{
-	    return rc[i].value;
-	}
+        if (!g_ascii_strcasecmp (option, rc[i].option))
+        {
+            return rc[i].value;
+        }
     }
     return NULL;
 }
@@ -126,19 +126,19 @@ setValue (const gchar * lvalue, const gchar * rvalue, Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (!g_ascii_strcasecmp (lvalue, rc[i].option))
-	{
-	    if (rvalue)
-	    {
-		if (rc[i].value)
-		{
-		    g_free (rc[i].value);
-		}
-		rc[i].value = g_strdup (rvalue);
-		TRACE ("%s=%s", rc[i].option, rc[i].value);
-		return TRUE;
-	    }
-	}
+        if (!g_ascii_strcasecmp (lvalue, rc[i].option))
+        {
+            if (rvalue)
+            {
+                if (rc[i].value)
+                {
+                    g_free (rc[i].value);
+                }
+                rc[i].value = g_strdup (rvalue);
+                TRACE ("%s=%s", rc[i].option, rc[i].value);
+                return TRUE;
+            }
+        }
     }
     return FALSE;
 }
@@ -167,111 +167,111 @@ getThemeDir (const gchar * theme, const gchar * file)
 {
     if (!theme)
     {
-	return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-	    G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
     }
     else if (g_path_is_absolute (theme))
     {
-	if (g_file_test (theme, G_FILE_TEST_IS_DIR))
-	{
-	    return g_strdup (theme);
-	}
-	else
-	{
-	    return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-		G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
-	}
+        if (g_file_test (theme, G_FILE_TEST_IS_DIR))
+        {
+            return g_strdup (theme);
+        }
+        else
+        {
+            return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
+                G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        }
     }
     else
     {
-	/* First try, $HOME/.themes/<theme_name>/xfwm4/ */
+        /* First try, $HOME/.themes/<theme_name>/xfwm4/ */
 
-	gchar *test_dir = g_build_filename (g_get_home_dir (),
-	    G_DIR_SEPARATOR_S, ".themes",
-	    G_DIR_SEPARATOR_S, theme,
-	    G_DIR_SEPARATOR_S, "xfwm4",
-	    NULL);
-	    
-	gchar *test_file = g_build_filename (test_dir,
-	    G_DIR_SEPARATOR_S, file,
-	    NULL);
+        gchar *test_dir = g_build_filename (g_get_home_dir (),
+            G_DIR_SEPARATOR_S, ".themes",
+            G_DIR_SEPARATOR_S, theme,
+            G_DIR_SEPARATOR_S, "xfwm4",
+            NULL);
+            
+        gchar *test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
  
-	if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
-	{
-	    g_free (test_file);
-	    return test_dir;
-	}
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
+        {
+            g_free (test_file);
+            return test_dir;
+        }
 
 #if 0
-	/* Second try, $HOME/.themes/xfwm4/<theme_name>/ */
-	g_free (test_file);
-	g_free (test_dir);
+        /* Second try, $HOME/.themes/xfwm4/<theme_name>/ */
+        g_free (test_file);
+        g_free (test_dir);
 
-	test_dir = g_build_filename (g_get_home_dir (), 
-	    G_DIR_SEPARATOR_S, ".themes",
-	    G_DIR_SEPARATOR_S, "xfwm4",
-	    G_DIR_SEPARATOR_S, theme, 
-	    NULL);
-	    
-	test_file = g_build_filename (test_dir,
-	    G_DIR_SEPARATOR_S, file,
-	    NULL);
+        test_dir = g_build_filename (g_get_home_dir (), 
+            G_DIR_SEPARATOR_S, ".themes",
+            G_DIR_SEPARATOR_S, "xfwm4",
+            G_DIR_SEPARATOR_S, theme, 
+            NULL);
+            
+        test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
  
-	if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
-	{
-	    g_free (test_file);
-	    return test_dir;
-	}
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
+        {
+            g_free (test_file);
+            return test_dir;
+        }
 #endif
 
-	/* Third try, /usr/share/themes/<theme_name>/xfwm4/ */
-	g_free (test_file);
-	g_free (test_dir);
+        /* Third try, /usr/share/themes/<theme_name>/xfwm4/ */
+        g_free (test_file);
+        g_free (test_dir);
 
-	test_dir = g_build_filename (DATADIR, 
-	    G_DIR_SEPARATOR_S, "themes",
-	    G_DIR_SEPARATOR_S, theme, 
-	    G_DIR_SEPARATOR_S, "xfwm4", 
-	    NULL);
-	    
-	test_file = g_build_filename (test_dir,
-	    G_DIR_SEPARATOR_S, file,
-	    NULL);
+        test_dir = g_build_filename (DATADIR, 
+            G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, theme, 
+            G_DIR_SEPARATOR_S, "xfwm4", 
+            NULL);
+            
+        test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
  
-	if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
-	{
-	    g_free (test_file);
-	    return test_dir;
-	}
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
+        {
+            g_free (test_file);
+            return test_dir;
+        }
 
 #if 0
-	/* Fourth try, /usr/share/themes/xfwm4/<theme_name>/ */
-	g_free (test_file);
-	g_free (test_dir);
+        /* Fourth try, /usr/share/themes/xfwm4/<theme_name>/ */
+        g_free (test_file);
+        g_free (test_dir);
 
-	test_dir = g_build_filename (DATADIR, 
-	    G_DIR_SEPARATOR_S, "themes",
-	    G_DIR_SEPARATOR_S, theme, 
-	    NULL);
-	    
-	test_file = g_build_filename (test_dir,
-	    G_DIR_SEPARATOR_S, file,
-	    NULL);
+        test_dir = g_build_filename (DATADIR, 
+            G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, theme, 
+            NULL);
+            
+        test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
  
-	if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
-	{
-	    g_free (test_file);
-	    return test_dir;
-	}
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
+        {
+            g_free (test_file);
+            return test_dir;
+        }
 #endif
-	
-	/* Pfew, really can't find that theme nowhere! */
-	g_free (test_file);
-	g_free (test_dir);
+        
+        /* Pfew, really can't find that theme nowhere! */
+        g_free (test_file);
+        g_free (test_dir);
     }
     
     return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-	G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
 }
 
 void
@@ -283,10 +283,10 @@ freeRc (Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (rc[i].value)
-	{
-	    g_free (rc[i].value);
-	    rc[i].value = NULL;
-	}
+        if (rc[i].value)
+        {
+            g_free (rc[i].value);
+            rc[i].value = NULL;
+        }
     }
 }

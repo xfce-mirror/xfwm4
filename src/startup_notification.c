@@ -1,20 +1,20 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
  
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
  
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-	Metacity - (c) 2003 Havoc Pennington
-	xfwm4    - (c) 2003 Olivier Fourdan
+        Metacity - (c) 2003 Havoc Pennington
+        xfwm4    - (c) 2003 Olivier Fourdan
  
  */
 
@@ -81,11 +81,11 @@ sn_update_feedback (void)
 
     if (startup_sequences != NULL)
     {
-	XDefineCursor (dpy, root, busy_cursor);
+        XDefineCursor (md->dpy, md->xroot, md->busy_cursor);
     }
     else
     {
-	XDefineCursor (dpy, root, root_cursor);
+        XDefineCursor (md->dpy, md->xroot, md->root_cursor);
     }
 }
 
@@ -101,8 +101,8 @@ sn_add_sequence (SnStartupSequence * sequence)
 
     if (startup_sequence_timeout == 0)
     {
-	startup_sequence_timeout =
-	    g_timeout_add (1000, sn_startup_sequence_timeout, NULL);
+        startup_sequence_timeout =
+            g_timeout_add (1000, sn_startup_sequence_timeout, NULL);
     }
     sn_update_feedback ();
 }
@@ -119,8 +119,8 @@ sn_remove_sequence (SnStartupSequence * sequence)
 
     if ((startup_sequences == NULL) && (startup_sequence_timeout != 0))
     {
-	g_source_remove (startup_sequence_timeout);
-	startup_sequence_timeout = 0;
+        g_source_remove (startup_sequence_timeout);
+        startup_sequence_timeout = 0;
     }
     sn_update_feedback ();
 }
@@ -139,12 +139,12 @@ sn_collect_timed_out_foreach (void *element, void *data)
     sn_startup_sequence_get_last_active_time (sequence, &tv_sec, &tv_usec);
 
     elapsed =
-	((((double) ctod->now.tv_sec - tv_sec) * G_USEC_PER_SEC +
-	    (ctod->now.tv_usec - tv_usec))) / 1000.0;
+        ((((double) ctod->now.tv_sec - tv_sec) * G_USEC_PER_SEC +
+            (ctod->now.tv_usec - tv_usec))) / 1000.0;
 
     if (elapsed > STARTUP_TIMEOUT)
     {
-	ctod->list = g_slist_prepend (ctod->list, sequence);
+        ctod->list = g_slist_prepend (ctod->list, sequence);
     }
 }
 
@@ -164,24 +164,24 @@ sn_startup_sequence_timeout (void *data)
     tmp = ctod.list;
     while (tmp != NULL)
     {
-	SnStartupSequence *sequence = tmp->data;
+        SnStartupSequence *sequence = tmp->data;
 
-	sn_startup_sequence_complete (sequence);
+        sn_startup_sequence_complete (sequence);
 
-	tmp = tmp->next;
+        tmp = tmp->next;
     }
 
     g_slist_free (ctod.list);
 
     if (startup_sequences != NULL)
     {
-	return TRUE;
+        return TRUE;
     }
     else
     {
-	/* remove */
-	startup_sequence_timeout = 0;
-	return FALSE;
+        /* remove */
+        startup_sequence_timeout = 0;
+        return FALSE;
     }
 }
 
@@ -199,22 +199,22 @@ sn_screen_event (SnMonitorEvent * event, void *user_data)
 
     switch (sn_monitor_event_get_type (event))
     {
-	case SN_MONITOR_EVENT_INITIATED:
-	    wmclass = sn_startup_sequence_get_wmclass (sequence);
-	    sn_add_sequence (sequence);
-	    break;
+        case SN_MONITOR_EVENT_INITIATED:
+            wmclass = sn_startup_sequence_get_wmclass (sequence);
+            sn_add_sequence (sequence);
+            break;
 
-	case SN_MONITOR_EVENT_COMPLETED:
-	    sn_remove_sequence (sn_monitor_event_get_startup_sequence
-		(event));
-	    break;
+        case SN_MONITOR_EVENT_COMPLETED:
+            sn_remove_sequence (sn_monitor_event_get_startup_sequence
+                (event));
+            break;
 
-	case SN_MONITOR_EVENT_CHANGED:
-	    break;
+        case SN_MONITOR_EVENT_CHANGED:
+            break;
 
-	case SN_MONITOR_EVENT_CANCELED:
-	default:
-	    break;
+        case SN_MONITOR_EVENT_CANCELED:
+        default:
+            break;
     }
 }
 
@@ -233,72 +233,72 @@ sn_client_startup_properties (Client * c)
     sequence = NULL;
     if (startup_id == NULL)
     {
-	tmp = startup_sequences;
-	while (tmp != NULL)
-	{
-	    const char *wmclass;
+        tmp = startup_sequences;
+        while (tmp != NULL)
+        {
+            const char *wmclass;
 
-	    wmclass = sn_startup_sequence_get_wmclass (tmp->data);
+            wmclass = sn_startup_sequence_get_wmclass (tmp->data);
 
-	    if ((wmclass != NULL) && ((c->class.res_class
-			&& !strcmp (wmclass, c->class.res_class))
-		    || (c->class.res_name
-			&& !strcmp (wmclass, c->class.res_name))))
-	    {
-		sequence = tmp->data;
+            if ((wmclass != NULL) && ((c->class.res_class
+                        && !strcmp (wmclass, c->class.res_class))
+                    || (c->class.res_name
+                        && !strcmp (wmclass, c->class.res_name))))
+            {
+                sequence = tmp->data;
 
-		free (c->startup_id);
-		c->startup_id =
-		    strdup (sn_startup_sequence_get_id (sequence));
-		startup_id = c->startup_id;
+                free (c->startup_id);
+                c->startup_id =
+                    strdup (sn_startup_sequence_get_id (sequence));
+                startup_id = c->startup_id;
 
-		sn_startup_sequence_complete (sequence);
-		break;
-	    }
+                sn_startup_sequence_complete (sequence);
+                break;
+            }
 
-	    tmp = tmp->next;
-	}
+            tmp = tmp->next;
+        }
     }
 
     if (startup_id == NULL)
     {
-	return;
+        return;
     }
 
     if (sequence == NULL)
     {
-	tmp = startup_sequences;
-	while (tmp != NULL)
-	{
-	    const char *id;
+        tmp = startup_sequences;
+        while (tmp != NULL)
+        {
+            const char *id;
 
-	    id = sn_startup_sequence_get_id (tmp->data);
+            id = sn_startup_sequence_get_id (tmp->data);
 
-	    if (!strcmp (id, startup_id))
-	    {
-		sequence = tmp->data;
-		break;
-	    }
+            if (!strcmp (id, startup_id))
+            {
+                sequence = tmp->data;
+                break;
+            }
 
-	    tmp = tmp->next;
-	}
+            tmp = tmp->next;
+        }
     }
 
     if (sequence != NULL)
     {
-	int workspace;
+        int workspace;
 
-	if (!FLAG_TEST (c->flags, CLIENT_FLAG_WORKSPACE_SET))
-	{
-	    workspace = sn_startup_sequence_get_workspace (sequence);
-	    if (workspace >= 0)
-	    {
-		FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
-		c->win_workspace = workspace;
-	    }
-	}
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_WORKSPACE_SET))
+        {
+            workspace = sn_startup_sequence_get_workspace (sequence);
+            if (workspace >= 0)
+            {
+                FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+                c->win_workspace = workspace;
+            }
+        }
 
-	return;
+        return;
     }
 }
 
@@ -313,9 +313,9 @@ sn_init_display (Display * dpy, int screen)
     sn_display = sn_display_new (dpy, sn_error_trap_push, sn_error_trap_pop);
     if (sn_display != NULL)
     {
-	sn_context =
-	    sn_monitor_context_new (sn_display, screen, sn_screen_event, NULL,
-	    NULL);
+        sn_context =
+            sn_monitor_context_new (sn_display, screen, sn_screen_event, NULL,
+            NULL);
     }
     startup_sequences = NULL;
     startup_sequence_timeout = 0;
@@ -326,7 +326,7 @@ sn_close_display (void)
 {
     if (sn_display)
     {
-	sn_display_unref (sn_display);
+        sn_display_unref (sn_display);
     }
     sn_display = NULL;
 }

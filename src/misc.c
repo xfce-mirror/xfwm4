@@ -49,7 +49,7 @@ getMouseXY (Window w, int *x2, int *y2)
 
     TRACE ("entering getMouseXY");
 
-    XQueryPointer (dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
+    XQueryPointer (md->dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
 }
 
 Window
@@ -60,7 +60,7 @@ getMouseWindow (Window w)
 
     TRACE ("entering getMouseWindow");
 
-    XQueryPointer (dpy, w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
+    XQueryPointer (md->dpy, w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
     return w2;
 }
 
@@ -77,7 +77,7 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
     TRACE ("color=%s", col);
 
     mask = GCForeground | GCFunction;
-    XAllocNamedColor (dpy, cmap, col, &xc1, &xc2);
+    XAllocNamedColor (md->dpy, cmap, col, &xc1, &xc2);
     gv.foreground = xc2.pixel;
     gv.function = func;
     if (font)
@@ -95,7 +95,7 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
         gv.line_width = line_width;
         mask = mask | GCLineWidth;
     }
-    gc = XCreateGC (dpy, XDefaultRootWindow (dpy), mask, &gv);
+    gc = XCreateGC (md->dpy, XDefaultRootWindow (md->dpy), mask, &gv);
     return gc;
 }
 
@@ -112,7 +112,7 @@ sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
     ev.format = 32;
     ev.data.l[0] = x;
     ev.data.l[1] = timestamp;
-    XSendEvent (dpy, w, FALSE, 0L, (XEvent *)&ev);
+    XSendEvent (md->dpy, w, FALSE, 0L, (XEvent *)&ev);
 }
 
 void
@@ -122,7 +122,7 @@ myXGrabServer (void)
     if (xgrabcount == 0)
     {
         DBG ("grabbing server");
-        XGrabServer (dpy);
+        XGrabServer (md->dpy);
     }
     xgrabcount++;
     DBG ("grabs : %i", xgrabcount);
@@ -139,15 +139,15 @@ myXUngrabServer (void)
     if (xgrabcount == 0)
     {
         DBG ("ungrabbing server");
-        XUngrabServer (dpy);
-        XFlush (dpy);
+        XUngrabServer (md->dpy);
+        XFlush (md->dpy);
     }
     DBG ("grabs : %i", xgrabcount);
 }
 
 /*
  * it's safer to grab the display before calling this routine
- * Returns true if the given window is present and mapped on root 
+ * Returns true if the given window is present and mapped on md->xroot 
  */
 gboolean
 myCheckWindow(Window w)
@@ -160,7 +160,7 @@ myCheckWindow(Window w)
     g_return_val_if_fail (w != None, FALSE);
 
     gdk_error_trap_push ();
-    test = XQueryTree(dpy, w, &dummy_root, &parent, &wins, &count);
+    test = XQueryTree(md->dpy, w, &dummy_root, &parent, &wins, &count);
     if (wins)
     {
         XFree (wins);
@@ -176,43 +176,43 @@ setTmpEventWin (int x, int y, unsigned int w, unsigned int h, long eventmask)
 
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
-    win = XCreateWindow (dpy, root, x, y, w, h, 0, 0, 
+    win = XCreateWindow (md->dpy, md->xroot, x, y, w, h, 0, 0, 
                          InputOnly, CopyFromParent,
                          CWEventMask | CWOverrideRedirect, &attributes);
-    XMapRaised (dpy, win);
-    XFlush (dpy);
+    XMapRaised (md->dpy, win);
+    XFlush (md->dpy);
     return (win);
 }
 
 void
 removeTmpEventWin (Window w)
 {
-    XDestroyWindow (dpy, w);
+    XDestroyWindow (md->dpy, w);
 }
 
 void
 placeSidewalks(gboolean activate)
 {
-    g_return_if_fail (sidewalk[0] != None);
-    g_return_if_fail (sidewalk[1] != None);
+    g_return_if_fail (md->sidewalk[0] != None);
+    g_return_if_fail (md->sidewalk[1] != None);
 
     if (activate)
     {
-        XMoveResizeWindow(dpy, sidewalk[0], 
+        XMoveResizeWindow(md->dpy, md->sidewalk[0], 
                           0, 0,
-                          1, gdk_screen_get_height (gscr));
-        XMoveResizeWindow(dpy, sidewalk[1],
-                          gdk_screen_get_width (gscr) - 1, 0, 
-                          1, gdk_screen_get_height (gscr));
+                          1, gdk_screen_get_height (md->gscr));
+        XMoveResizeWindow(md->dpy, md->sidewalk[1],
+                          gdk_screen_get_width (md->gscr) - 1, 0, 
+                          1, gdk_screen_get_height (md->gscr));
     }
     else
     {
         /* Place the windows off screen */
-        XMoveResizeWindow(dpy, sidewalk[0], 
+        XMoveResizeWindow(md->dpy, md->sidewalk[0], 
                           -1, 0,
-                          1, gdk_screen_get_height (gscr));
-        XMoveResizeWindow(dpy, sidewalk[1],
-                          gdk_screen_get_width (gscr), 0, 
-                          1, gdk_screen_get_height (gscr));
+                          1, gdk_screen_get_height (md->gscr));
+        XMoveResizeWindow(md->dpy, md->sidewalk[1],
+                          gdk_screen_get_width (md->gscr), 0, 
+                          1, gdk_screen_get_height (md->gscr));
     }
 }

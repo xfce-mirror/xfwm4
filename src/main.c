@@ -64,22 +64,7 @@
     PropertyChangeMask|\
     ColormapNotify
 
-char *progname;
-Display *dpy;
-GdkScreen *gscr;
-GdkDisplay *gdisplay;
-Window root, gnome_win, systray, sidewalk[2];
-Colormap cmap;
-Screen *xscreen;
-int screen;
-int depth;
-int workspace;
-int margins[4];
-int gnome_margins[4];
-int quit = FALSE, reload = FALSE;
-int shape, shape_event;
-Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
-SessionClient *client_session;
+MainData *md = NULL;
 
 static int
 handleXError (Display * dpy, XErrorEvent * err)
@@ -90,10 +75,10 @@ handleXError (Display * dpy, XErrorEvent * err)
     switch (err->error_code)
     {
         case BadAccess:
-            if (err->resourceid == root)
+            if (err->resourceid == md->xroot)
             {
                 g_message ("%s: Another window manager is running\n",
-                    progname);
+                    md->progname);
                 exit (1);
             }
             break;
@@ -119,13 +104,13 @@ cleanUp ()
     clientUnframeAll ();
     sn_close_display ();
     unloadSettings ();
-    XFreeCursor (dpy, root_cursor);
-    XFreeCursor (dpy, move_cursor);
-    XFreeCursor (dpy, busy_cursor);
+    XFreeCursor (md->dpy, md->root_cursor);
+    XFreeCursor (md->dpy, md->move_cursor);
+    XFreeCursor (md->dpy, md->busy_cursor);
     sessionFreeWindowStates ();
     for (i = 0; i < 7; i++)
     {
-        XFreeCursor (dpy, resize_cursor[i]);
+        XFreeCursor (md->dpy, md->resize_cursor[i]);
     }
     for (i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
@@ -137,10 +122,11 @@ cleanUp ()
     }
     g_free (params.workspace_names);
     params.workspace_names = NULL;
-    removeTmpEventWin (sidewalk[0]);
-    removeTmpEventWin (sidewalk[1]);
-    XSetInputFocus (dpy, root, RevertToPointerRoot, GDK_CURRENT_TIME);
-    closeEventFilter ();
+    removeTmpEventWin (md->sidewalk[0]);
+    removeTmpEventWin (md->sidewalk[1]);
+    XSetInputFocus (md->dpy, md->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
+    closeEventFilter (md->gtox_data);
+    g_free (md);
 }
 
 static char *build_session_filename(SessionClient *client_session)
@@ -204,7 +190,7 @@ static void
 session_die (gpointer client_data)
 {
     gtk_main_quit ();
-    quit = TRUE;
+    md->quit = TRUE;
 }
 
 static void
@@ -217,11 +203,11 @@ handleSignal (int sig)
         case SIGINT:
         case SIGTERM:
             gtk_main_quit ();
-            quit = TRUE;
+            md->quit = TRUE;
             break;
         case SIGHUP:
         case SIGUSR1:
-            reload = TRUE;
+            md->reload = TRUE;
             break;
         case SIGSEGV:
             cleanUp ();
@@ -240,121 +226,122 @@ initialize (int argc, char **argv)
     int dummy;
     long ws;
     GdkWindow *groot;
+    SessionClient *client_session;
 
     TRACE ("entering initialize");
 
-    progname = argv[0];
+    md = g_new0 (MainData, 1);
+    
+    md->quit = FALSE;
+    md->reload = FALSE;
+    md->progname = argv[0];
 
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     gtk_set_locale ();
     gtk_init (&argc, &argv);
 
-    gscr = gdk_screen_get_default ();
-    if (!gscr)
+    md->gscr = gdk_screen_get_default ();
+    if (!md->gscr)
     {
         g_error (_("Cannot get default screen\n"));
     }
-    gdisplay = gdk_screen_get_display (gscr);
-    gtk_widget_push_colormap(gdk_screen_get_rgb_colormap (gscr));
-    dpy = gdk_x11_display_get_xdisplay (gdisplay);
-    xscreen = gdk_x11_screen_get_xscreen (gscr);
-    groot = gdk_screen_get_root_window (gscr);
-    root = (Window) gdk_x11_drawable_get_xid (groot);
-    screen = gdk_screen_get_number (gscr);
-    cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
+    md->gdisplay = gdk_screen_get_display (md->gscr);
+    gtk_widget_push_colormap(gdk_screen_get_rgb_colormap (md->gscr));
+    md->dpy = gdk_x11_display_get_xdisplay (md->gdisplay);
+    md->xscreen = gdk_x11_screen_get_xscreen (md->gscr);
+    groot = gdk_screen_get_root_window (md->gscr);
+    md->xroot = (Window) gdk_x11_drawable_get_xid (groot);
+    md->screen = gdk_screen_get_number (md->gscr);
+    md->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (md->gscr));
     
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
 
-    xfce_setenv ("DISPLAY", gdk_display_get_name (gdisplay), TRUE);
+    xfce_setenv ("DISPLAY", gdk_display_get_name (md->gdisplay), TRUE);
 
-    depth = DefaultDepth (dpy, screen);
-    sn_init_display (dpy, screen);
-    workspace = 0;
+    md->depth = DefaultDepth (md->dpy, md->screen);
+    sn_init_display (md->dpy, md->screen);
+    md->current_ws = 0;
 
     XSetErrorHandler (handleXError);
-    shape = XShapeQueryExtension (dpy, &shape_event, &dummy);
-
-    client_session =
-        client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
-    client_session->data = (gpointer) client_session;
-    client_session->save_phase_2 = save_phase_2;
-    client_session->die = session_die;
-
-    if (session_init (client_session))
-    {
-        load_saved_session (client_session);
-    }
+    md->shape = XShapeQueryExtension (md->dpy, &md->shape_event, &dummy);
 
     /* Create the side windows to detect edge movement */
-    sidewalk[0] = setTmpEventWin (0, 0, 
-                                  1, gdk_screen_get_height (gscr), 
+    md->sidewalk[0] = setTmpEventWin (0, 0, 
+                                  1, gdk_screen_get_height (md->gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    sidewalk[1] = setTmpEventWin (gdk_screen_get_width (gscr) - 1, 0, 
-                                  1, gdk_screen_get_height (gscr), 
+    md->sidewalk[1] = setTmpEventWin (gdk_screen_get_width (md->gscr) - 1, 0, 
+                                  1, gdk_screen_get_height (md->gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    margins[TOP] = gnome_margins[TOP] = 0;
-    margins[LEFT] = gnome_margins[LEFT] = 0;
-    margins[RIGHT] = gnome_margins[RIGHT] = 0;
-    margins[BOTTOM] = gnome_margins[BOTTOM] = 0;
+    md->margins[TOP] = md->gnome_margins[TOP] = 0;
+    md->margins[LEFT] = md->gnome_margins[LEFT] = 0;
+    md->margins[RIGHT] = md->gnome_margins[RIGHT] = 0;
+    md->margins[BOTTOM] = md->gnome_margins[BOTTOM] = 0;
 
-    initICCCMHints (dpy);
-    initMotifHints (dpy);
-    initGnomeHints (dpy);
-    initNetHints (dpy);
-    initKDEHints (dpy);
-    initSystrayHints (dpy, screen);
+    initICCCMHints (md->dpy);
+    initMotifHints (md->dpy);
+    initGnomeHints (md->dpy);
+    initNetHints (md->dpy);
+    initKDEHints (md->dpy);
+    initSystrayHints (md->dpy, md->screen);
     
-    initModifiers (dpy);
+    initModifiers (md->dpy);
 
-    root_cursor = XCreateFontCursor (dpy, XC_left_ptr);
-    move_cursor = XCreateFontCursor (dpy, XC_fleur);
-    busy_cursor = cursorCreateSpinning (dpy, root);
-    resize_cursor[CORNER_TOP_LEFT] =
-        XCreateFontCursor (dpy, XC_top_left_corner);
-    resize_cursor[CORNER_TOP_RIGHT] =
-        XCreateFontCursor (dpy, XC_top_right_corner);
-    resize_cursor[CORNER_BOTTOM_LEFT] =
-        XCreateFontCursor (dpy, XC_bottom_left_corner);
-    resize_cursor[CORNER_BOTTOM_RIGHT] =
-        XCreateFontCursor (dpy, XC_bottom_right_corner);
-    resize_cursor[4 + SIDE_LEFT] = XCreateFontCursor (dpy, XC_left_side);
-    resize_cursor[4 + SIDE_RIGHT] = XCreateFontCursor (dpy, XC_right_side);
-    resize_cursor[4 + SIDE_BOTTOM] = XCreateFontCursor (dpy, XC_bottom_side);
+    md->root_cursor = XCreateFontCursor (md->dpy, XC_left_ptr);
+    md->move_cursor = XCreateFontCursor (md->dpy, XC_fleur);
+    md->busy_cursor = cursorCreateSpinning (md->dpy, md->xroot);
+    md->resize_cursor[CORNER_TOP_LEFT] =
+        XCreateFontCursor (md->dpy, XC_top_left_corner);
+    md->resize_cursor[CORNER_TOP_RIGHT] =
+        XCreateFontCursor (md->dpy, XC_top_right_corner);
+    md->resize_cursor[CORNER_BOTTOM_LEFT] =
+        XCreateFontCursor (md->dpy, XC_bottom_left_corner);
+    md->resize_cursor[CORNER_BOTTOM_RIGHT] =
+        XCreateFontCursor (md->dpy, XC_bottom_right_corner);
+    md->resize_cursor[4 + SIDE_LEFT] = XCreateFontCursor (md->dpy, XC_left_side);
+    md->resize_cursor[4 + SIDE_RIGHT] = XCreateFontCursor (md->dpy, XC_right_side);
+    md->resize_cursor[4 + SIDE_BOTTOM] = XCreateFontCursor (md->dpy, XC_bottom_side);
 
-    XDefineCursor (dpy, root, root_cursor);
+    XDefineCursor (md->dpy, md->xroot, md->root_cursor);
 
-    if (!initEventFilter (MAIN_EVENT_MASK, NULL, "xfwm"))
+    md->gtox_data = initEventFilter (md->gscr, MAIN_EVENT_MASK, NULL, "xfwm");
+    if (!md->gtox_data)
     {
         return -1;
     }
-    pushEventFilter (xfwm4_event_filter, NULL);
+    pushEventFilter (md->gtox_data, xfwm4_event_filter, NULL);
 
-    gnome_win = getDefaultXWindow ();
-    DBG ("Our event window is 0x%lx", gnome_win);
+    md->gnome_win = getDefaultXWindow (md->gtox_data);
+    DBG ("Our event window is 0x%lx", md->gnome_win);
 
     if (!initSettings ())
     {
         return -2;
     }
 
-    systray = getSystrayWindow (dpy);
-    setGnomeProtocols (dpy, screen, gnome_win);
-    setHint (dpy, root, win_supporting_wm_check, gnome_win);
-    setHint (dpy, root, win_desktop_button_proxy, gnome_win);
-    setHint (dpy, gnome_win, win_desktop_button_proxy, gnome_win);
-    getHint (dpy, root, win_workspace, &ws);
-    workspace = (int) ws;
-    getGnomeDesktopMargins (dpy, screen, gnome_margins);
-    set_utf8_string_hint (dpy, gnome_win, net_wm_name, "Xfwm4");
-    setNetSupportedHint (dpy, screen, gnome_win);
-    workspaceUpdateArea (margins, gnome_margins);
-    initNetDesktopParams (dpy, screen, workspace);
-    setNetWorkarea (dpy, screen, params.workspace_count, margins);
-    XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
+    md->systray = getSystrayWindow (md->dpy);
+    setGnomeProtocols (md->dpy, md->screen, md->gnome_win);
+    setHint (md->dpy, md->xroot, win_supporting_wm_check, md->gnome_win);
+    setHint (md->dpy, md->xroot, win_desktop_button_proxy, md->gnome_win);
+    setHint (md->dpy, md->gnome_win, win_desktop_button_proxy, md->gnome_win);
+    getHint (md->dpy, md->xroot, win_workspace, &ws);
+    md->current_ws = (int) ws;
+    getGnomeDesktopMargins (md->dpy, md->screen, md->gnome_margins);
+    set_utf8_string_hint (md->dpy, md->gnome_win, net_wm_name, "Xfwm4");
+    setNetSupportedHint (md->dpy, md->screen, md->gnome_win);
+    workspaceUpdateArea (md->margins, md->gnome_margins);
+    initNetDesktopParams (md->dpy, md->screen, 
+                               md->current_ws,
+                               gdk_screen_get_width (md->gscr), 
+                               gdk_screen_get_height (md->gscr));
+    setNetWorkarea (md->dpy, md->screen, params.workspace_count, 
+                         gdk_screen_get_width (md->gscr), 
+                         gdk_screen_get_height (md->gscr), 
+                         md->margins);
+    XSetInputFocus (md->dpy, md->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
     initGtkCallbacks ();
     
     /* The first time the first Gtk application on a display uses pango,
@@ -362,7 +349,7 @@ initialize (int argc, char **argv)
      * Therefore, force the cache window to be created now instead of
      * trying to do it while we have another grab and deadlocking the server.
      */
-    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), "-");
+    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (md->gtox_data), "-");
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 
@@ -376,6 +363,17 @@ initialize (int argc, char **argv)
     sigaction (SIGHUP, &act, NULL);
     sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
+
+    client_session =
+        client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
+    client_session->data = (gpointer) client_session;
+    client_session->save_phase_2 = save_phase_2;
+    client_session->die = session_die;
+
+    if (session_init (client_session))
+    {
+        load_saved_session (client_session);
+    }
 
     return 0;
 }

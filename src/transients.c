@@ -1,19 +1,19 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
  
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
  
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-	xfwm4    - (c) 2002-2004 Olivier Fourdan
+        xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
  
@@ -37,10 +37,10 @@ clientGetTransient (Client * c)
 
     TRACE ("entering clientGetTransient");
 
-    if ((c->transient_for) && (c->transient_for != root))
+    if ((c->transient_for) && (c->transient_for != md->xroot))
     {
-	c2 = clientGetFromWindow (c->transient_for, WINDOW);
-	return c2;
+        c2 = clientGetFromWindow (c->transient_for, WINDOW);
+        return c2;
     }
     return NULL;
 }
@@ -52,8 +52,8 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (((c->transient_for != root) && (c->transient_for != None)) || 
-	    ((c->transient_for == root) && (c->group_leader != None)));
+    return (((c->transient_for != md->xroot) && (c->transient_for != None)) || 
+            ((c->transient_for == md->xroot) && (c->group_leader != None)));
 }
 
 gboolean
@@ -64,8 +64,8 @@ clientIsModal (Client * c)
     TRACE ("entering clientIsModal");
 
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
-	    (((c->transient_for != root) && (c->transient_for != None)) ||
-	     (c->group_leader != None)));
+            (((c->transient_for != md->xroot) && (c->transient_for != None)) ||
+             (c->group_leader != None)));
 }
 
 gboolean
@@ -87,10 +87,10 @@ clientSameGroup (Client * c1, Client * c2)
     TRACE ("entering clientSameGroup");
 
     return ((c1 != c2) && 
-	    (((c1->group_leader != None) && 
-	      (c1->group_leader == c2->group_leader)) ||
-	     (c1->group_leader == c2->window) ||
-	     (c2->group_leader == c1->window)));
+            (((c1->group_leader != None) && 
+              (c1->group_leader == c2->group_leader)) ||
+             (c1->group_leader == c2->window) ||
+             (c2->group_leader == c1->window)));
 }
 
 gboolean
@@ -103,14 +103,14 @@ clientIsTransientFor (Client * c1, Client * c2)
 
     if ((c1->transient_for) && (c1->serial >= c2->serial))
     {
-	if (c1->transient_for != root)
-	{
-	    return (c1->transient_for == c2->window);
-	}
-	else
-	{
-	    return (clientSameGroup (c1, c2));
-	}
+        if (c1->transient_for != md->xroot)
+        {
+            return (c1->transient_for == c2->window);
+        }
+        else
+        {
+            return (clientSameGroup (c1, c2));
+        }
     }
     return FALSE;
 }
@@ -125,7 +125,7 @@ clientIsModalFor (Client * c1, Client * c2)
 
     if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->serial >= c2->serial))
     {
-	return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
+        return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
     }
     return FALSE;
 }
@@ -148,7 +148,7 @@ clientIsTransientForGroup (Client * c)
 
     TRACE ("entering clientIsTransientForGroup");
 
-    return ((c->transient_for == root) && (c->group_leader != None));
+    return ((c->transient_for == md->xroot) && (c->group_leader != None));
 }
 
 gboolean
@@ -159,7 +159,7 @@ clientIsModalForGroup (Client * c)
     TRACE ("entering clientIsModalForGroup");
 
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
-	    !clientIsTransient(c) && (c->group_leader != None));
+            !clientIsTransient(c) && (c->group_leader != None));
 }
 
 gboolean
@@ -185,33 +185,33 @@ clientGetModalFor (Client * c)
 
     for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
-	c2 = (Client *) index1->data;
-	if (c2)
-	{
-	    if ((c2 != c) && clientIsModalFor (c2, c))
-	    {
-		modals = g_list_append (modals, c2);
-		latest_modal = c2;
-	    }
-	    else
-	    {
-		for (index2 = modals; index2;
-		    index2 = g_list_next (index2))
-		{
-		    c3 = (Client *) index2->data;
-		    if ((c3 != c2) && clientIsModalFor (c2, c3))
-		    {
-			modals = g_list_append (modals, c2);
-			latest_modal = c2;
-			break;
-		    }
-		}
-	    }
-	}
+        c2 = (Client *) index1->data;
+        if (c2)
+        {
+            if ((c2 != c) && clientIsModalFor (c2, c))
+            {
+                modals = g_list_append (modals, c2);
+                latest_modal = c2;
+            }
+            else
+            {
+                for (index2 = modals; index2;
+                    index2 = g_list_next (index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if ((c3 != c2) && clientIsModalFor (c2, c3))
+                    {
+                        modals = g_list_append (modals, c2);
+                        latest_modal = c2;
+                        break;
+                    }
+                }
+            }
+        }
     }
     if (modals)
     {
-	g_list_free (modals);
+        g_list_free (modals);
     }
 
     return latest_modal;
@@ -230,27 +230,27 @@ clientListTransient (Client * c)
     transients = g_list_append (transients, c);
     for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
-	c2 = (Client *) index1->data;
-	if (c2 != c)
-	{
-	    if (clientIsTransientFor (c2, c))
-	    {
-		transients = g_list_append (transients, c2);
-	    }
-	    else
-	    {
-		for (index2 = transients; index2;
-		    index2 = g_list_next (index2))
-		{
-		    c3 = (Client *) index2->data;
-		    if ((c3 != c2) && clientIsTransientFor (c2, c3))
-		    {
-			transients = g_list_append (transients, c2);
-			break;
-		    }
-		}
-	    }
-	}
+        c2 = (Client *) index1->data;
+        if (c2 != c)
+        {
+            if (clientIsTransientFor (c2, c))
+            {
+                transients = g_list_append (transients, c2);
+            }
+            else
+            {
+                for (index2 = transients; index2;
+                    index2 = g_list_next (index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if ((c3 != c2) && clientIsTransientFor (c2, c3))
+                    {
+                        transients = g_list_append (transients, c2);
+                        break;
+                    }
+                }
+            }
+        }
     }
     return transients;
 }
@@ -268,27 +268,27 @@ clientListTransientOrModal (Client * c)
     transients = g_list_append (transients, c);
     for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
-	c2 = (Client *) index1->data;
-	if (c2 != c)
-	{
-	    if (clientIsTransientOrModalFor (c2, c))
-	    {
-		transients = g_list_append (transients, c2);
-	    }
-	    else
-	    {
-		for (index2 = transients; index2;
-		    index2 = g_list_next (index2))
-		{
-		    c3 = (Client *) index2->data;
-		    if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
-		    {
-			transients = g_list_append (transients, c2);
-			break;
-		    }
-		}
-	    }
-	}
+        c2 = (Client *) index1->data;
+        if (c2 != c)
+        {
+            if (clientIsTransientOrModalFor (c2, c))
+            {
+                transients = g_list_append (transients, c2);
+            }
+            else
+            {
+                for (index2 = transients; index2;
+                    index2 = g_list_next (index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
+                    {
+                        transients = g_list_append (transients, c2);
+                        break;
+                    }
+                }
+            }
+        }
     }
     return transients;
 }
