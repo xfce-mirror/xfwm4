@@ -1040,6 +1040,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             DBG("root has received a win_workspace_count event\n");
             workspaceSetCount(ev->data.l[0]);
         }
+	else
+	{
+            g_message(_("%s: Unidentified client message for window 0x%lx"), g_get_prgname(), ev->window);
+	}
     }
 }
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-01-31 22:06+0100\n"
+"POT-Creation-Date: 2003-02-23 17:25+0100\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -71,67 +71,67 @@ msgstr "وسط"
 msgid "Right"
 msgstr "يمين"
 
-#: mcs-plugin/xfwm4_plugin.c:405
+#: mcs-plugin/xfwm4_plugin.c:411
 msgid "Layout :"
 msgstr "الهيئة :"
 
-#: mcs-plugin/xfwm4_plugin.c:449
+#: mcs-plugin/xfwm4_plugin.c:455
 msgid "Hidden"
 msgstr "مخفى"
 
-#: mcs-plugin/xfwm4_plugin.c:999
+#: mcs-plugin/xfwm4_plugin.c:1088
 msgid "Font Selection Dialog"
 msgstr "مربع حوار اختيار الخط"
 
-#: mcs-plugin/xfwm4_plugin.c:1053
+#: mcs-plugin/xfwm4_plugin.c:1142
 msgid "Window Manager Preferences"
 msgstr "تفضيلات مدير النوافذ"
 
-#: mcs-plugin/xfwm4_plugin.c:1088
+#: mcs-plugin/xfwm4_plugin.c:1177
 msgid "Window style"
 msgstr "مظهر النافذة"
 
-#: mcs-plugin/xfwm4_plugin.c:1106
+#: mcs-plugin/xfwm4_plugin.c:1195
 msgid "Font select :"
 msgstr "اختيار الخط :"
 
-#: mcs-plugin/xfwm4_plugin.c:1117
+#: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Title font"
 msgstr "خط العنوان"
 
-#: mcs-plugin/xfwm4_plugin.c:1126
+#: mcs-plugin/xfwm4_plugin.c:1215
 msgid "Text alignment inside title bar :"
 msgstr "تسوية الخط داخل شريط العنوان"
 
-#: mcs-plugin/xfwm4_plugin.c:1128
+#: mcs-plugin/xfwm4_plugin.c:1217
 msgid "Title Alignment"
 msgstr "تسوية العنوان"
 
-#: mcs-plugin/xfwm4_plugin.c:1139
+#: mcs-plugin/xfwm4_plugin.c:1228
 msgid "Button layout"
 msgstr "زر الهيئة"
 
-#: mcs-plugin/xfwm4_plugin.c:1144
+#: mcs-plugin/xfwm4_plugin.c:1233
 msgid "Decoration style"
 msgstr "نمط الزخرفة"
 
-#: mcs-plugin/xfwm4_plugin.c:1176
+#: mcs-plugin/xfwm4_plugin.c:1265
 msgid "Keyboard Shortcut"
 msgstr "اختصارات لوحة المفاتيح"
 
-#: mcs-plugin/xfwm4_plugin.c:1194
+#: mcs-plugin/xfwm4_plugin.c:1283
 msgid "Click to focus"
 msgstr "انقر لنقل التركيز"
 
-#: mcs-plugin/xfwm4_plugin.c:1201
+#: mcs-plugin/xfwm4_plugin.c:1290
 msgid "Focus follows mouse"
 msgstr "التركيز يتبع الفأرة"
 
-#: mcs-plugin/xfwm4_plugin.c:1208
+#: mcs-plugin/xfwm4_plugin.c:1297
 msgid "Focus model"
 msgstr "طراز التركيز"
 
-#: mcs-plugin/xfwm4_plugin.c:1217
+#: mcs-plugin/xfwm4_plugin.c:1306
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -139,11 +139,11 @@ msgstr ""
 "اعطاء التركيز اوتوماتيكيا \n"
 " للنوافذ الجديدة"
 
-#: mcs-plugin/xfwm4_plugin.c:1223
+#: mcs-plugin/xfwm4_plugin.c:1312
 msgid "New window focus"
 msgstr "التركيز للنافذة الجديدة"
 
-#: mcs-plugin/xfwm4_plugin.c:1237
+#: mcs-plugin/xfwm4_plugin.c:1326
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -151,23 +151,23 @@ msgstr ""
 "رفع النوافذ اوتوماتيكيا \n"
 "عندما تتلقى التركيز"
 
-#: mcs-plugin/xfwm4_plugin.c:1247
+#: mcs-plugin/xfwm4_plugin.c:1336
 msgid "Delay before raising focused window :"
 msgstr "التأخير قبل رفع النافذة ذات التركيز"
 
-#: mcs-plugin/xfwm4_plugin.c:1253
+#: mcs-plugin/xfwm4_plugin.c:1342
 msgid "Slow"
 msgstr "بطئ"
 
-#: mcs-plugin/xfwm4_plugin.c:1259
+#: mcs-plugin/xfwm4_plugin.c:1348
 msgid "Fast"
 msgstr "سريع"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
+#: mcs-plugin/xfwm4_plugin.c:1363
 msgid "Raise on focus"
 msgstr "ارفع عندما تتلقى التركيز"
 
-#: mcs-plugin/xfwm4_plugin.c:1283
+#: mcs-plugin/xfwm4_plugin.c:1372
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -175,124 +175,128 @@ msgstr ""
 "ارفع النافذة عند النقر داخل \n"
 "نافذة البرنامج"
 
-#: mcs-plugin/xfwm4_plugin.c:1289
+#: mcs-plugin/xfwm4_plugin.c:1378
 msgid "Raise on click"
 msgstr "ارفع عند النقر"
 
-#: mcs-plugin/xfwm4_plugin.c:1294
+#: mcs-plugin/xfwm4_plugin.c:1383
 msgid "Keyboard and focus"
 msgstr "لوحة المفاتيح و التركيز"
 
-#: mcs-plugin/xfwm4_plugin.c:1312
+#: mcs-plugin/xfwm4_plugin.c:1401
 msgid "Snap windows to screen border"
 msgstr "جذب النوافذ  الى حدود الشاشة"
 
-#: mcs-plugin/xfwm4_plugin.c:1322
+#: mcs-plugin/xfwm4_plugin.c:1411
 msgid "Distance :"
 msgstr "المسافة :"
 
-#: mcs-plugin/xfwm4_plugin.c:1328
+#: mcs-plugin/xfwm4_plugin.c:1417
 msgid "Small"
 msgstr "صغير"
 
-#: mcs-plugin/xfwm4_plugin.c:1334
+#: mcs-plugin/xfwm4_plugin.c:1423
 msgid "Wide"
 msgstr "عرض"
 
-#: mcs-plugin/xfwm4_plugin.c:1348
+#: mcs-plugin/xfwm4_plugin.c:1437
 msgid "Snap to screen border"
 msgstr "جذب الى حدود الشاشة"
 
-#: mcs-plugin/xfwm4_plugin.c:1357
+#: mcs-plugin/xfwm4_plugin.c:1446
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "صفف بيئات العمل عند سحب نافذة خارج حدود الشاشة"
 
-#: mcs-plugin/xfwm4_plugin.c:1363
+#: mcs-plugin/xfwm4_plugin.c:1452
 msgid "Wrap workspaces"
 msgstr "صفف بيئات العمل"
 
-#: mcs-plugin/xfwm4_plugin.c:1372
+#: mcs-plugin/xfwm4_plugin.c:1461
 msgid "Display content of windows when resizing"
 msgstr "عرض محتوى النوافذ عند اعادة التحجيم"
 
-#: mcs-plugin/xfwm4_plugin.c:1378
+#: mcs-plugin/xfwm4_plugin.c:1467
 msgid "Opaque resize"
 msgstr "اعادة تحجيم معتم"
 
-#: mcs-plugin/xfwm4_plugin.c:1387
+#: mcs-plugin/xfwm4_plugin.c:1476
 msgid "Display content of windows when moving"
 msgstr "عرض محتوى النوافذ عند التنقل"
 
-#: mcs-plugin/xfwm4_plugin.c:1393
+#: mcs-plugin/xfwm4_plugin.c:1482
 msgid "Opaque move"
 msgstr "تحرك معتم"
 
-#: mcs-plugin/xfwm4_plugin.c:1402
+#: mcs-plugin/xfwm4_plugin.c:1491
 msgid "Action to perform when double clicking on title bar :"
 msgstr "تنفيذ المهمة التالية عند النقر مرتين على عمود العنوان"
 
-#: mcs-plugin/xfwm4_plugin.c:1404
+#: mcs-plugin/xfwm4_plugin.c:1493
 msgid "Double click action"
 msgstr "المهمة عند النقر مرتين "
 
-#: mcs-plugin/xfwm4_plugin.c:1409
+#: mcs-plugin/xfwm4_plugin.c:1498
 msgid "Misc."
 msgstr "متفرقات"
 
-#: mcs-plugin/xfwm4_plugin.c:1478
+#: mcs-plugin/xfwm4_plugin.c:1568
 msgid "Window Manager"
 msgstr "مدير النوافذ"
 
-#: src/client.c:370
+#: src/client.c:376
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
 msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
-#: src/events.c:942
+#: src/events.c:1019
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"
 
-#: src/hints.c:616
+#: src/events.c:1045
+#, fuzzy, c-format
+msgid "%s: Unidentified client message for window 0x%lx"
+msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
+
+#: src/hints.c:598
 #, c-format
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr "%s: الخاصية %s على النافذة (%lx) تحتوي على UTF-8 غير صحيحة \n"
 
-#: src/main.c:175
+#: src/main.c:174
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr ""
+
+#: src/main.c:201
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
 msgstr "%s: استعمال GTK+-%d.%d.%d"
 
-#: src/main.c:196
+#: src/main.c:223
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: تشغيل بدون مدير جلسة"
 
-#: src/main.c:286
+#: src/main.c:322
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s:  هناك مدير نوافذ آخر يعمل "
 
-#: src/main.c:289
+#: src/main.c:326
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
-#: src/main.c:295
+#: src/main.c:352
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: حدث خطأ مجهول"
 
-#: src/main.c:299
+#: src/main.c:357
 #, c-format
 msgid "%s: Terminated\n"
 msgstr "%s: انتهى\n"
-
-#. parent
-#. wait for child signal
-#: src/main.c:335
-msgid "Init complete"
-msgstr "تمت التهيئة"
 
 #: src/menu.c:38
 msgid "Ma_ximize"
@@ -367,6 +371,11 @@ msgstr "إعادة تشغيل"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
 
+#: src/settings.c:179
+#, fuzzy, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
+
 #: src/settings.c:333
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -387,7 +396,12 @@ msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 
-#: src/settings.c:764
+#: src/settings.c:504
+#, fuzzy, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
+
+#: src/settings.c:763
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم قيمة rc: %i"
@@ -395,3 +409,6 @@ msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم ق�
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "تغيير الى ..."
+
+#~ msgid "Init complete"
+#~ msgstr "تمت التهيئة"
