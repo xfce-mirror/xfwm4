@@ -1362,9 +1362,9 @@ static inline void clientConstraintPos(Client * c)
     {
         c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
     }
-    if((c->y + c->height) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_TOP])
+    if((c->y) < (int)margins[MARGIN_TOP])
     {
-        c->y = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_TOP] - c->height;
+        c->y = (int)margins[MARGIN_TOP];
     }
     else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
     {
@@ -1428,22 +1428,22 @@ static void clientInitPosition(Client * c)
             {
                 c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - c->height;
             }
-            if(c->y < (int)margins[MARGIN_TOP])
+            if(c->y - frameTop(c) < (int)margins[MARGIN_TOP])
             {
-                c->y = (int)margins[MARGIN_TOP];
+                c->y = frameTop(c) + (int)margins[MARGIN_TOP];
             }
         }
         return;
     }
 
-    xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - margins[MARGIN_RIGHT];
-    ymax = XDisplayHeight(dpy, screen) - frameHeight(c) - margins[MARGIN_BOTTOM];
-    best_x = frameLeft(c) + margins[MARGIN_LEFT];
-    best_y = frameTop(c) + margins[MARGIN_TOP];
+    xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - (int)margins[MARGIN_RIGHT];
+    ymax = XDisplayHeight(dpy, screen) - frameHeight(c) - (int)margins[MARGIN_BOTTOM];
+    best_x = frameLeft(c) + (int)margins[MARGIN_LEFT];
+    best_y = frameTop(c) + (int)margins[MARGIN_TOP];
 
-    for(test_y = frameTop(c) + margins[MARGIN_TOP]; test_y < ymax; test_y += 8)
+    for(test_y = frameTop(c) + (int)margins[MARGIN_TOP]; test_y < ymax; test_y += 8)
     {
-        for(test_x = frameLeft(c) + margins[MARGIN_LEFT]; test_x < xmax; test_x += 8)
+        for(test_x = frameLeft(c) + (int)margins[MARGIN_LEFT]; test_x < xmax; test_x += 8)
         {
             unsigned long count_overlaps = 0;
             DBG("analyzing %i clients\n", client_count);
@@ -2172,8 +2172,8 @@ void clientToggleMaximized(Client * c, int mode)
 
         if(mode != WIN_STATE_MAXIMIZED_VERT)
         {
-            wc.x = frameLeft(c) + margins[MARGIN_LEFT];
-            wc.width = XDisplayWidth(dpy, screen) - frameLeft(c) - frameRight(c) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
+            wc.x = frameLeft(c) + (int)margins[MARGIN_LEFT];
+            wc.width = XDisplayWidth(dpy, screen) - frameLeft(c) - frameRight(c) - (int)margins[MARGIN_LEFT] - (int)margins[MARGIN_RIGHT];
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
         }
         else
@@ -2183,8 +2183,8 @@ void clientToggleMaximized(Client * c, int mode)
         }
         if(mode != WIN_STATE_MAXIMIZED_HORIZ)
         {
-            wc.y = frameTop(c) + margins[MARGIN_TOP];
-            wc.height = XDisplayHeight(dpy, screen) - frameTop(c) - frameBottom(c) - margins[MARGIN_TOP] - margins[MARGIN_BOTTOM];
+            wc.y = frameTop(c) + (int)margins[MARGIN_TOP];
+            wc.height = XDisplayHeight(dpy, screen) - frameTop(c) - frameBottom(c) - (int)margins[MARGIN_TOP] - (int)margins[MARGIN_BOTTOM];
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
         }
         else
@@ -2214,10 +2214,10 @@ void clientToggleFullscreen(Client * c)
         c->fullscreen_old_width = c->width;
         c->fullscreen_old_height = c->height;
 
-        wc.x = margins[MARGIN_LEFT];
-        wc.y = margins[MARGIN_TOP];
-        wc.width = XDisplayWidth(dpy, screen) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
-        wc.height = XDisplayHeight(dpy, screen) - margins[MARGIN_TOP] - margins[MARGIN_BOTTOM];
+        wc.x = (int)margins[MARGIN_LEFT];
+        wc.y = (int)margins[MARGIN_TOP];
+        wc.width = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_LEFT] - (int)margins[MARGIN_RIGHT];
+        wc.height = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_TOP] - (int)margins[MARGIN_BOTTOM];
     }
     else
     {
@@ -2462,13 +2462,13 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
             if(snap_to_border)
             {
-                if(abs(frameX(c) - margins[MARGIN_LEFT]) < snap_width)
+                if(abs(frameX(c) - (int)margins[MARGIN_LEFT]) < snap_width)
                 {
-                    c->x = frameLeft(c) + margins[MARGIN_LEFT];
+                    c->x = frameLeft(c) + (int)margins[MARGIN_LEFT];
                 }
-                if(abs(frameX(c) - XDisplayWidth(dpy, screen) + frameWidth(c) + margins[MARGIN_RIGHT]) < snap_width)
+                if(abs(frameX(c) - XDisplayWidth(dpy, screen) + frameWidth(c) + (int)margins[MARGIN_RIGHT]) < snap_width)
                 {
-                    c->x = (XDisplayWidth(dpy, screen) - frameRight(c) - c->width - margins[MARGIN_RIGHT]);
+                    c->x = (XDisplayWidth(dpy, screen) - frameRight(c) - c->width - (int)margins[MARGIN_RIGHT]);
                 }
             }
         }
@@ -2476,15 +2476,15 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
         {
             c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
+            if(abs(frameY(c)) < (int)margins[MARGIN_TOP])
+            {
+                c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+            }
             if(snap_to_border)
             {
-                if(abs(frameY(c) - margins[MARGIN_TOP]) < snap_width)
+                if(abs(frameY(c) - XDisplayHeight(dpy, screen) + frameHeight(c) + (int)margins[MARGIN_BOTTOM]) < snap_width)
                 {
-                    c->y = frameTop(c) + margins[MARGIN_TOP];
-                }
-                if(abs(frameY(c) - XDisplayHeight(dpy, screen) + frameHeight(c) + margins[MARGIN_BOTTOM]) < snap_width)
-                {
-                    c->y = (XDisplayHeight(dpy, screen) - margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c));
+                    c->y = (XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c));
                 }
             }
         }
