@@ -1152,7 +1152,7 @@ clientWindowType (Client * c)
     {
         TRACE ("window is modal");
         c->type = WINDOW_MODAL_DIALOG;
-        c->initial_layer = WIN_LAYER_ONTOP;
+        c->initial_layer = WIN_LAYER_NORMAL /* was WIN_LAYER_ONTOP */;
         CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
         CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
