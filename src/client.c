@@ -3358,7 +3358,6 @@ clientFrame (Window w, gboolean recapture)
         if ((c->win_workspace == workspace) || 
             CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAP_PENDING);
             clientShow (c, TRUE);
             if (recapture)
             {
@@ -3411,6 +3410,7 @@ clientUnframe (Client * c, gboolean remap)
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
+    XUnmapWindow (dpy, c->window);
     XUnmapWindow (dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (dpy, c->window, NoEventMask);
