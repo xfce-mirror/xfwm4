@@ -1537,6 +1537,20 @@ restack_win (CWindow *cw, Window above)
             screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
         }
     }
+    
+#if 0
+    /* Dump stack */
+    {
+        GList *index;
+        g_print ("top of stack\n");
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
+        {
+            CWindow *cw2 = (CWindow *) index->data;
+            g_print ("Window id 0x%lx\n", cw2->id);
+        }
+        g_print ("top of stack\n");
+    }
+#endif
 }
 
 void

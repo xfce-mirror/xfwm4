@@ -1418,6 +1418,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (w == screen_info->gnome_win)
     {
         TRACE ("Not managing our own event window");
+        compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return NULL;
@@ -1706,6 +1707,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         setWMState (display_info, c->window, IconicState);
         clientSetNetState (c);
+        clientGrabMouseButton (c);
     }
     
     setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
@@ -1835,11 +1837,15 @@ clientFrameAll (ScreenInfo *screen_info)
         XGetWindowAttributes (display_info->dpy, wins[i], &attr);
         if ((attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
         {
-            Client *c = clientFrame (screen_info->display_info, wins[i], TRUE);
+            Client *c = clientFrame (display_info, wins[i], TRUE);
             if ((c) && ((screen_info->params->raise_on_click) || (screen_info->params->click_to_focus)))
             {
                 clientGrabMouseButton (c);
             }
+        }
+        else
+        {
+             compositorAddWindow (display_info, wins[i], NULL);
         }
     }
     if (wins)
