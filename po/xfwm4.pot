@@ -7,8 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-01 19:10+0200\n"
+"POT-Creation-Date: 2003-06-06 21:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -277,7 +276,7 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1290
+#: src/events.c:1292
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -403,7 +402,7 @@ msgstr ""
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1090
+#: src/settings.c:1093
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

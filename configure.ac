@@ -3,13 +3,13 @@ dnl
 dnl xfwm4 - window manager for the XFce4 desktop environment
 dnl
 
-AC_INIT(src/main.c)
+AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE(xfwm4, [0.90])
+AM_INIT_AUTOMAKE([xfwm4], [3.90.0])
 
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
 
