@@ -2631,6 +2631,15 @@ clientFrame (Window w, gboolean startup)
         TRACE ("Cannot allocate memory for the window structure");
         return;
     }
+    
+    XSync(dpy, 0);
+    MyXGrabServer ();
+    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width,
+            &dummy_height, &dummy_bw, &dummy_depth) == 0)
+    {
+        MyXUngrabServer ();
+        return;
+    }
 
     c->window = w;
     getWindowName (dpy, c->window, &c->name);
@@ -2768,14 +2777,6 @@ clientFrame (Window w, gboolean startup)
      */
     clientApplyInitialState (c);
 
-    MyXGrabServer ();
-    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width,
-            &dummy_height, &dummy_bw, &dummy_depth) == 0)
-    {
-        clientFree (c);
-        MyXUngrabServer ();
-        return;
-    }
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame =
@@ -2937,7 +2938,6 @@ clientFrameAll ()
         }
     }
     MyXUngrabServer ();
-    XSync (dpy, FALSE);
     /* Just get rid of EnterNotify events caused by reparenting */
     while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
         ;
@@ -2970,7 +2970,6 @@ clientUnframeAll ()
         }
     }
     MyXUngrabServer ();
-    XSync (dpy, 0);
     if (wins)
     {
         XFree (wins);

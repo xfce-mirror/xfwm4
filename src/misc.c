@@ -145,6 +145,7 @@ MyXUngrabServer (void)
     {
         DBG ("ungrabbing server");
         XUngrabServer (dpy);
+        XFlush (dpy);
     }
     DBG ("grabs : %i", xgrabcount);
 }
