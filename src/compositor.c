@@ -552,7 +552,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
                             screen_info->xroot, 1, 1, argb ? 32 : 8);
     g_return_val_if_fail (pixmap != None, None);
 
-    pa.repeat = True;
+    pa.repeat = TRUE;
     picture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), pixmap,
                                     render_format, CPRepeat,  &pa);
     if (picture == None)
@@ -654,7 +654,7 @@ root_tile (ScreenInfo *screen_info)
         g_return_val_if_fail (pixmap != None, None);
         fill = TRUE;
     }
-    pa.repeat = True;
+    pa.repeat = TRUE;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
     g_return_val_if_fail (format != NULL, None);
 
@@ -1687,7 +1687,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->rootTile))
             {
-                XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, True);
+                XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (myScreenGetXDisplay (screen_info), screen_info->rootTile);
                 screen_info->rootTile = None;
                 add_repair (display_info);
@@ -2273,6 +2273,8 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
     screen_info->compositor_active = TRUE;
+
+    XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
 
     return TRUE;
 #else
