@@ -862,6 +862,11 @@ Optional Features:
   --disable-libtool-lock  avoid locking (might break parallel builds)
   --enable-rpath          Specify run path to the ELF linker (default)
   --disable-rpath         Do not use -rpath (use with care!!)
+  --enable-startup-notification-check
+                          Enable checking for startup notification library
+                          (default)
+  --disable-startup-notification-check
+                          Disable checking for startup notification library
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
@@ -5105,7 +5110,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5108 "configure"' > conftest.$ac_ext
+  echo '#line 5113 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -8874,10 +8879,19 @@ echo "$as_me: error: Library requirements (xfce-mcs-manager >= 0.1) not met; con
 
 
 
-  echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.4" >&5
+  # Check whether --enable-startup-notification-check or --disable-startup-notification-check was given.
+if test "${enable_startup_notification_check+set}" = set; then
+  enableval="$enable_startup_notification_check"
+  ac_cv_LIBSTARTUP_NOTIFICATION_check=$enableval
+else
+  ac_cv_LIBSTARTUP_NOTIFICATION_check=yes
+fi;
+
+  if test x"$ac_cv_LIBSTARTUP_NOTIFICATION_check" = x"yes"; then
+    echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.4" >&5
 echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.4... $ECHO_C" >&6
-  if $PKG_CONFIG --atleast-version=0.4 libstartup-notification-1.0 2> /dev/null; then
-    echo "$as_me:$LINENO: result: yes" >&5
+    if $PKG_CONFIG --atleast-version=0.4 libstartup-notification-1.0 2> /dev/null; then
+      echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 
 
@@ -8986,9 +9000,10 @@ cat >>confdefs.h <<\_ACEOF
 #define HAVE_LIBSTARTUP_NOTIFICATION 1
 _ACEOF
 
-  else
-    echo "$as_me:$LINENO: result: no" >&5
+    else
+      echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
+    fi
   fi
 
 
