@@ -117,7 +117,9 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
        localized....
      */
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+#endif
     textdomain (GETTEXT_PACKAGE);
 #endif
 

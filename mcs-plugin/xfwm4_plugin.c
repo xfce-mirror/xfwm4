@@ -1351,9 +1351,9 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox1);
     gtk_box_pack_start (GTK_BOX (hbox), vbox1, TRUE, TRUE, 0);
 
-    frame = xfce_framebox_new (_("Font select :"), TRUE);
+    frame = xfce_framebox_new (_("Title font"), TRUE);
     gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, FALSE, 0);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
@@ -1854,7 +1854,9 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
        localized....
      */
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+#endif
     textdomain (GETTEXT_PACKAGE);
 #endif
 
