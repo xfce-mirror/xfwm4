@@ -564,7 +564,7 @@ void getTransientFor(Display * dpy, Window w, Window * transient_for)
 {
     DBG("entering getTransientFor\n");
 
-    if(!XGetTransientForHint(dpy, w, transient_for))
+    if(!XGetTransientForHint(dpy, w, transient_for) || (*transient_for == w))
     {
         *transient_for = None;
     }

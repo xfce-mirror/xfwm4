@@ -89,7 +89,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     for(last = clients, i = 0; i < client_count; last = last->next, i++);
     for(c = last, i = 0; i < client_count; c = c->prev, i++)
     {
-        if((c->visible) && !(c->sticky) && ((c->win_workspace != new_ws)))
+        if((c->visible) && !(c->sticky) && !(c->transient_for) && ((c->win_workspace != new_ws)))
         {
             clientHide(c, False);
         }
@@ -103,7 +103,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         }
         else
         {
-            if((c->win_workspace == new_ws) && !(c->hidden))
+            if((c->win_workspace == new_ws) && !(c->transient_for) && !(c->hidden))
             {
                 clientShow(c, False);
                 if(c->focus)
