@@ -373,6 +373,12 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_9:
                 workspaceSwitch (8, c);
                 break;
+            case KEY_RAISE_WINDOW:
+                clientRaise (c);
+                break;
+            case KEY_LOWER_WINDOW:
+                clientLower (c);
+                break;
             default:
                 break;
         }
