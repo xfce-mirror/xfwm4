@@ -4880,6 +4880,10 @@ clientSetFocus (Client * c, unsigned short flags)
     {
         TRACE ("setting focus to none");
         client_focus = NULL;
+        if (c2)
+        {
+            frameDraw (c2, FALSE, FALSE);
+        }
         XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
         XFlush (dpy);
         data[0] = None;
