@@ -281,7 +281,7 @@ clientIsTransientFor (Client * c1, Client * c2)
     {
         if (c1->transient_for != root)
         {
-            return (c1->transient_for == c2->window);
+            return (c1->transient_for == c2->window) && (c1->serial >= c2->serial);
         }
         else
         {
@@ -301,7 +301,8 @@ clientIsModalFor (Client * c1, Client * c2)
 
     if (CLIENT_FLAG_TEST (c1, CLIENT_FLAG_STATE_MODAL))
     {
-        return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
+	return ((clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2)) 
+	        && (c1->serial >= c2->serial));
     }
     return FALSE;
 }
@@ -4912,7 +4913,7 @@ clientSetFocus (Client * c, unsigned short flags)
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT))
         {
             pending_focus = c;
-            XSetInputFocus (dpy, c->window, RevertToPointerRoot CurrentTime);
+            XSetInputFocus (dpy, c->window, RevertToPointerRoot, CurrentTime);
         }
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
         {
@@ -4931,7 +4932,7 @@ clientSetFocus (Client * c, unsigned short flags)
         {
             frameDraw (c2, FALSE, FALSE);
         }
-        XSetInputFocus (dpy, gnome_win, RevertToPointerRoot CurrentTime);
+        XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, CurrentTime);
         XFlush (dpy);
         data[0] = data[1] = None;
         XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,
