@@ -228,8 +228,8 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (((c->transient_for != root) && (c->transient_for != None)) || 
-            ((c->transient_for == root) && (c->group_leader != None)));
+    return (((c->transient_for != root) && (c->transient_for != None) && (c->transient_for != c->window)) || 
+            ((c->transient_for == root) && (c->group_leader != None) && (c->group_leader != c->window)));
 }
 
 gboolean
@@ -240,8 +240,8 @@ clientIsModal (Client * c)
     TRACE ("entering clientIsModal");
 
     return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL) && 
-            (((c->transient_for != root) && (c->transient_for != None)) ||
-             (c->group_leader != None)));
+            (((c->transient_for != root) && (c->transient_for != None) && (c->transient_for != c->window)) ||
+             (c->group_leader != None) && (c->group_leader != c->window)));
 }
 
 gboolean
