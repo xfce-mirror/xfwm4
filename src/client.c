@@ -4697,6 +4697,16 @@ clientToggleMaximized (Client * c, int mode)
         c->height = wc.height;
         c->width = wc.width;
     }
+    if (!(params.click_to_focus))
+    {
+        XEvent an_event;
+        XSync (dpy, FALSE);
+        /* Just get rid of EnterNotify events when using focus follow mouse */
+        while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
+        {
+            last_timestamp = stashEventTime (last_timestamp, &an_event);
+        }    
+    }
 }
 
 gboolean
