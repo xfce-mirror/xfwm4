@@ -54,6 +54,10 @@
 #include "compositor.h"
 #include "events.h"
 
+#ifndef CHECK_BUTTON_TIME
+#define CHECK_BUTTON_TIME 0
+#endif
+
 #define WIN_IS_BUTTON(win)      ((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || \
@@ -229,6 +233,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     return (XfwmButtonClickType) passdata.clicks;
 }
 
+#if CHECK_BUTTON_TIME
 static gboolean
 check_button_time (XButtonEvent *ev)
 {
@@ -242,7 +247,8 @@ check_button_time (XButtonEvent *ev)
     last_button_time = ev->time;
     return TRUE;
 }
-
+ #endif
+ 
 static void
 clear_timeout (void)
 {
@@ -827,13 +833,15 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 
     TRACE ("entering handleButtonPress");
 
+#if CHECK_BUTTON_TIME
     /* Avoid treating the same event twice */
     if (!check_button_time (ev))
     {
         TRACE ("ignoring ButtonPress event because it has been already handled");
         return;
     }
-
+#endif
+     
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     if (c)
     {
@@ -1026,12 +1034,14 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
     ScreenInfo *screen_info = NULL;
     TRACE ("entering handleButtonRelease");
 
+#if CHECK_BUTTON_TIME
     /* Avoid treating the same event twice */
     if (!check_button_time (ev))
     {
         TRACE ("ignoring ButtonRelease event because it has been already handled");
         return;
     }
+#endif
 
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
