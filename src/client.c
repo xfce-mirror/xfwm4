@@ -2815,15 +2815,22 @@ clientFrame (Window w, gboolean startup)
     c->client_leader = None;
     c->client_leader = getClientLeader (dpy, c->window);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
-
-    if (attr.map_state == IsViewable)
-    {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
-    }
+    TRACE ("window \"%s\"(0x%lx) map_state = %d (%s)",
+            c->name,                              
+            c->window,                            
+            attr.map_state,                       
+            (attr.map_state == IsUnmapped) ?      
+            "IsUnmapped" :                        
+            (attr.map_state == IsViewable) ?      
+            "IsViewable" :                        
+            (attr.map_state == IsUnviewable) ?    
+            "IsUnviewable" :                      
+            "(unknown)");                         
+    /* This flag is used to avoid focus transition when reparenting */
+    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
     /* 
      * Reparenting generates an UnmapNotify event, followed by a MapNotify.
      * Set ignore_unmap to 1 so that the window won't return to withdrawn
@@ -2928,20 +2935,27 @@ clientFrame (Window w, gboolean startup)
     c->first_map = TRUE;
     if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
     {
-        clientShow (c, TRUE);
-        if (!startup && params.focus_new && clientAcceptFocus (c)
-            && (c->win_workspace == workspace))
+        if ((c->win_workspace == workspace) || 
+            CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
-            clientSetFocus (c, TRUE);
+            clientShow (c, TRUE);
+            if (!startup && params.focus_new && clientAcceptFocus (c))
+            {
+                clientSetFocus (c, TRUE);
+            }
         }
+#if 0
         else
         {
             frameDraw (c, FALSE, FALSE);
         }
+#endif
     }
     else
     {
+#if 0
         frameDraw (c, FALSE, FALSE);
+#endif
         setWMState (dpy, c->window, IconicState);
         clientSetNetState (c);
     }

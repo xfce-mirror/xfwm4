@@ -841,6 +841,7 @@ handleUnmapNotify (XUnmapEvent * ev)
     if (c)
     {
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
         /* Reparenting generates an unmapnotify, don't pass focus in that case */
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
