@@ -48,6 +48,6 @@ void     compositorRepairScreen     (DisplayInfo *);
 
 void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 void     compositorDamageWindow     (DisplayInfo *, Window);
-void     compositorResizeWindow     (DisplayInfo *, Window, gint, gint);
+void     compositorUpdateWindow     (DisplayInfo *, Window, gint, gint, gboolean);
 
 #endif /* INC_COMPOSITOR_H */

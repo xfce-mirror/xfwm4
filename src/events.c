@@ -616,7 +616,6 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     {
         XfwmButtonClickType tclick;
         ScreenInfo *screen_info = c->screen_info;
-        DisplayInfo *display_info = screen_info->display_info;
 
         tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
         if (tclick == XFWM_BUTTON_CLICK)
@@ -1842,7 +1841,10 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
     {
         frameDraw (c, FALSE, TRUE);
     }
-    compositorResizeWindow (display_info, ev->window, ev->width + ev->x, ev->height + ev->y);
+    compositorUpdateWindow (display_info, ev->window, 
+                                          ev->width + ev->x, 
+                                          ev->height + ev->y, 
+                                          (ev->kind == ShapeBounding));
 }
 
 static void

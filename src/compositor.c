@@ -1572,7 +1572,7 @@ restack_win (CWindow *cw, Window above)
 }
 
 void
-resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
+resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
     XserverRegion extents;
 
@@ -1582,6 +1582,14 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     extents = win_extents (cw);
     add_damage (cw->screen_info, extents);
 
+    if (!(shape_notify) && (x == cw->attr.x) && (y == cw->attr.y) &&
+        (width == cw->attr.width) && (height == cw->attr.height) &&
+        (bw == cw->attr.border_width))
+    {
+        return;
+    }
+    
+    TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
     if (cw->extents)
     {
         XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
@@ -1807,7 +1815,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     }
 
     restack_win (cw, ev->above);
-    resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width);
+    resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width, FALSE);
 }
 
 static void
@@ -2310,14 +2318,14 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
 }
 
 void
-compositorResizeWindow (DisplayInfo *display_info, Window id, gint new_width, gint new_height)
+compositorUpdateWindow (DisplayInfo *display_info, Window id, gint new_width, gint new_height, gboolean shape_notify)
 {
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering compositorResizeWindow: 0x%lx", id);
+    TRACE ("entering compositorUpdateWindow: 0x%lx", id);
 
     if (!(display_info->enable_compositor))
     {
@@ -2329,7 +2337,7 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, gint new_width, gi
     if (cw)
     {
         TRACE ("Resizing Ox%ld to (%i, %i)", cw->id, new_width, new_height);
-        resize_win (cw, cw->attr.x, cw->attr.y, new_width, new_height, cw->attr.border_width);
+        resize_win (cw, cw->attr.x, cw->attr.y, new_width, new_height, cw->attr.border_width, shape_notify);
     }
 #endif /* HAVE_COMPOSITOR */
 }
