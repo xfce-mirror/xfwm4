@@ -70,6 +70,7 @@ MyPixmap buttons[BUTTON_COUNT][3];
 MyPixmap title[5][2];
 
 static McsClient *client = NULL;
+static int mcs_initted = FALSE;
 
 static gboolean mcs_manager_is_running(void)
 {
@@ -83,11 +84,18 @@ static gboolean mcs_manager_is_running(void)
 static void notify_cb(const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
     if(g_ascii_strcasecmp(CHANNEL, channel_name))
+    {
         return;
+    }
 
     switch (action)
     {
         case MCS_ACTION_NEW:
+	    /* The following is to reduce initial startup time and reloads */
+	    if (!mcs_initted)
+	    {
+	        return;
+	    }
         case MCS_ACTION_CHANGED:
             if(setting->type == MCS_TYPE_INT)
             {
@@ -782,6 +790,7 @@ gboolean initSettings(void)
 
     DBG("entering initSettings\n");
 
+    mcs_initted = FALSE;
     box_gc = None;
     black_gc = NULL;
     white_gc = NULL;
@@ -812,11 +821,6 @@ gboolean initSettings(void)
         initPixmap(&title[i][INACTIVE]);
     }
 
-    if(!loadSettings())
-    {
-        return FALSE;
-    }
-
     if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
     {
 	g_warning("MCS manager not running");
@@ -831,6 +835,13 @@ gboolean initSettings(void)
         g_warning("Cannot create MCS client channel");
     }
 
+    mcs_initted = TRUE;
+
+    if(!loadSettings())
+    {
+        return FALSE;
+    }
+    
     return TRUE;
 }
 
