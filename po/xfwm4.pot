@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-02-23 17:25+0100\n"
+"POT-Creation-Date: 2003-02-23 22:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,11 +245,6 @@ msgstr ""
 #: src/events.c:1019
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr ""
-
-#: src/events.c:1045
-#, c-format
-msgid "%s: Unidentified client message for window 0x%lx"
 msgstr ""
 
 #: src/hints.c:598

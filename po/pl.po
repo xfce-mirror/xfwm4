@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-23 17:25+0100\n"
+"POT-Creation-Date: 2003-02-23 22:52+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Pawel Pastula <pastulap@poczta.onet.pl>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -251,11 +251,6 @@ msgstr ""
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operaracja jeszcze niaktywna\n"
-
-#: src/events.c:1045
-#, c-format
-msgid "%s: Unidentified client message for window 0x%lx"
-msgstr ""
 
 #: src/hints.c:598
 #, c-format

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-23 17:25+0100\n"
+"POT-Creation-Date: 2003-02-23 22:52+0100\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -259,11 +259,6 @@ msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
 
-#: src/events.c:1045
-#, fuzzy, c-format
-msgid "%s: Unidentified client message for window 0x%lx"
-msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
-
 #: src/hints.c:598
 #, c-format
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
@@ -417,6 +412,10 @@ msgstr ""
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "Cambiar a ..."
+
+#, fuzzy
+#~ msgid "%s: Unidentified client message for window 0x%lx"
+#~ msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 
 #~ msgid "Init complete"
 #~ msgstr "Arranque completo"

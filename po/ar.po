@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-02-23 17:25+0100\n"
+"POT-Creation-Date: 2003-02-23 22:52+0100\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -253,11 +253,6 @@ msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"
 
-#: src/events.c:1045
-#, fuzzy, c-format
-msgid "%s: Unidentified client message for window 0x%lx"
-msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
-
 #: src/hints.c:598
 #, c-format
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
@@ -409,6 +404,10 @@ msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم ق�
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "تغيير الى ..."
+
+#, fuzzy
+#~ msgid "%s: Unidentified client message for window 0x%lx"
+#~ msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
 #~ msgid "Init complete"
 #~ msgstr "تمت التهيئة"

@@ -1042,7 +1042,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
 	else
 	{
-            g_message(_("%s: Unidentified client message for window 0x%lx"), g_get_prgname(), ev->window);
+            DBG("unidentified client message for window 0x%lx\n", ev->window);
 	}
     }
 }
