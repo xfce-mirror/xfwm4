@@ -36,6 +36,7 @@
 #include <X11/Xmd.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
+#include <libxfcegui4/xinerama.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -525,8 +526,8 @@ void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * m)
     {
         *ptr++ = m[MARGIN_LEFT];
         *ptr++ = m[MARGIN_TOP];
-        *ptr++ = XDisplayWidth(dpy, screen) - (m[MARGIN_LEFT] + m[MARGIN_RIGHT]);
-        *ptr++ = XDisplayHeight(dpy, screen) - (m[MARGIN_TOP] + m[MARGIN_BOTTOM]);
+        *ptr++ = MyDisplayFullWidth(dpy, screen) - (m[MARGIN_LEFT] + m[MARGIN_RIGHT]);
+        *ptr++ = MyDisplayFullHeight(dpy, screen) - (m[MARGIN_TOP] + m[MARGIN_BOTTOM]);
     }
     XChangeProperty(dpy, RootWindow(dpy, screen), net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, j * 4);
     free(data);
@@ -536,8 +537,8 @@ void init_net_desktop_params(Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
     TRACE("entering init_net_desktop_params");
-    data[0] = XDisplayWidth(dpy, screen);
-    data[1] = XDisplayHeight(dpy, screen);
+    data[0] = MyDisplayFullWidth(dpy, screen);
+    data[1] = MyDisplayFullHeight(dpy, screen);
     XChangeProperty(dpy, RootWindow(dpy, screen), net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
     data[0] = 0;
     data[1] = 0;

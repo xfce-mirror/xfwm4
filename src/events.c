@@ -201,7 +201,7 @@ static inline void handleMotionNotify(XMotionEvent * ev)
     {
         msx = ev->x_root;
         msy = ev->y_root;
-        max = XDisplayWidth(dpy, screen) - 1;
+        max = MyDisplayFullWidth(dpy, screen) - 1;
 
         if ((msx == 0) || (msx == max))
         {

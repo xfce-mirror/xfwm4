@@ -1816,7 +1816,7 @@ static inline void clientKeepVisible(Client * c)
     bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)client_margins[MARGIN_BOTTOM] : 0);
 
     /* Translate coodinates to center on physical screen */
-    if((use_xinerama) && (abs(c->x - ((XDisplayWidth(dpy, screen) - c->width) / 2)) < 20) && (abs(c->y - ((XDisplayHeight(dpy, screen) - c->height) / 2)) < 20))
+    if((use_xinerama) && (abs(c->x - ((MyDisplayFullWidth(dpy, screen) - c->width) / 2)) < 20) && (abs(c->y - ((MyDisplayFullHeight(dpy, screen) - c->height) / 2)) < 20))
     {
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
@@ -3915,7 +3915,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
                 msx = xevent->xmotion.x_root;
                 msy = xevent->xmotion.y_root;
-                max = XDisplayWidth(dpy, screen) - 1;
+                max = MyDisplayFullWidth(dpy, screen) - 1;
 
                 if ((msx == 0) || (msx == max))
                 {

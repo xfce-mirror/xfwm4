@@ -38,6 +38,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <libxfce4util/debug.h>
+#include <libxfcegui4/xinerama.h>
 
 #include "main.h"
 #include "client.h"
@@ -148,7 +149,7 @@ Window setTmpEventWin(long eventmask)
     XSetWindowAttributes attributes;
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
-    w = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
+    w = XCreateWindow(dpy, root, 0, 0, MyDisplayFullWidth(dpy, screen), MyDisplayFullHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
     XMapRaised(dpy, w);
     return (w);
 }

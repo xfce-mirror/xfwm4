@@ -172,7 +172,7 @@ void workspaceSetCount(int count)
     {
         workspaceSwitch(count - 1, NULL);
     }
-    set_net_workarea(dpy, root, params.workspace_count, margins);
+    set_net_workarea(dpy, screen, params.workspace_count, margins);
 }
 
 void workspaceGetArea(CARD32 * m1, CARD32 * m2, Client * c)
