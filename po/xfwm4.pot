@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-01-03 22:16+0100\n"
+"POT-Creation-Date: 2004-01-04 23:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -303,7 +303,7 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1490
+#: src/events.c:1497
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -313,27 +313,27 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:399
+#: src/main.c:402
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:404
+#: src/main.c:407
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:413
+#: src/main.c:416
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:421
+#: src/main.c:424
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:442
+#: src/main.c:445
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
