@@ -239,6 +239,16 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 
     TRACE ("entering workspaceSwitch");
 
+    if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
+    {
+        new_ws = screen_info->previous_ws;
+    }
+
+    if (new_ws == screen_info->current_ws)
+    {
+        return;
+    }
+
     if (screen_info->params->wrap_cycle)
     {
         if (new_ws > screen_info->workspace_count - 1)
@@ -251,16 +261,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         }
     }
     else if ((new_ws > screen_info->workspace_count - 1) || (new_ws < 0))
-    {
-        return;
-    }
-
-    if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
-    {
-        new_ws = screen_info->previous_ws;
-    }
-
-    if (new_ws == screen_info->current_ws)
     {
         return;
     }
