@@ -1,30 +1,31 @@
+# translation of cs.po to czech
+# translation of xfwm.po to czech
 # Czech translation for xfwm4
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
+# Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-10 06:26+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2004-11-06 14:20+0100\n"
+"PO-Revision-Date: 2004-12-20 21:58+0100\n"
+"Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
+"Language-Team: czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Okraje ploch"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Okraje jsou místa na hranách obrazovky, kde nemohou být umístěna žádná okna"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Okraje jsou místa na hranách obrazovky, kde nemohou být umístěna žádná okna"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -43,51 +44,43 @@ msgid "Bottom :"
 msgstr "Dole :"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "Okraje ploch"
+msgstr "Pracovní plochy a okraje"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
-#, fuzzy
 msgid "Workspaces"
-msgstr "Plocha %i"
+msgstr "Pracovní plochy"
 
 #: mcs-plugin/plugin.c:173
 msgid "Margins"
-msgstr ""
+msgstr "Okraje"
 
 #: mcs-plugin/workspaces.c:343
 msgid "Change name"
-msgstr ""
+msgstr "Změna jména"
 
-#: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:482
-#: mcs-plugin/xfwm4_shortcuteditor.c:491 mcs-plugin/xfwm4_shortcuteditor.c:500
-#: mcs-plugin/xfwm4_shortcuteditor.c:509 mcs-plugin/xfwm4_shortcuteditor.c:518
-#: mcs-plugin/xfwm4_shortcuteditor.c:527 mcs-plugin/xfwm4_shortcuteditor.c:536
-#: mcs-plugin/xfwm4_shortcuteditor.c:545 mcs-plugin/xfwm4_shortcuteditor.c:554
-#, fuzzy, c-format
+#: mcs-plugin/workspaces.c:355
+#, c-format
 msgid "Workspace %d"
-msgstr "Plocha %i"
+msgstr "Pracovní plocha %d"
 
 #: mcs-plugin/workspaces.c:365
 msgid "Name:"
-msgstr ""
+msgstr "Jméno:"
 
 #: mcs-plugin/workspaces.c:453
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Kliknutím na pracovní plochu se edituje jméno"
 
 #: mcs-plugin/workspaces.c:525
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "Přepínání mezi plochami"
+msgstr "Počet pracovních ploch:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:556
-#, fuzzy
 msgid "Workspace names"
-msgstr "Okraje ploch"
+msgstr "Jména pracovních ploch"
 
 #: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
@@ -103,7 +96,7 @@ msgstr "Zarolovat"
 
 #: mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
-msgstr "Minimalizovat"
+msgstr "Skrýt"
 
 #: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
@@ -113,15 +106,18 @@ msgstr "Maximalizovat"
 msgid "Close"
 msgstr "Zavřít"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:371
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:353
+#: mcs-plugin/xfwm4_shortcuteditor.c:763
 msgid "Shade window"
 msgstr "Zarolovat okno"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:366
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:348
+#: mcs-plugin/xfwm4_shortcuteditor.c:759
 msgid "Hide window"
 msgstr "Skrýt okno"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:351
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:333
+#: mcs-plugin/xfwm4_shortcuteditor.c:747
 msgid "Maximize window"
 msgstr "Maximalizovat okno"
 
@@ -143,11 +139,11 @@ msgstr "Vpravo"
 
 #: mcs-plugin/xfwm4_plugin.c:566
 msgid "Click and drag buttons to change the layout"
-msgstr ""
+msgstr "Kliknout a táhnout tlačítka pro změnu rozvržení"
 
 #: mcs-plugin/xfwm4_plugin.c:571
 msgid "Active"
-msgstr ""
+msgstr "Aktivní"
 
 #: mcs-plugin/xfwm4_plugin.c:582
 msgid "Title"
@@ -155,479 +151,469 @@ msgstr "Titulek"
 
 #: mcs-plugin/xfwm4_plugin.c:583
 msgid "The window title, it cannot be removed"
-msgstr ""
+msgstr "Titulek okna, nemůže být odstraněn."
 
 #: mcs-plugin/xfwm4_plugin.c:591
 msgid "Hidden"
-msgstr "Skrýt"
+msgstr "Skrytý"
 
-#: mcs-plugin/xfwm4_plugin.c:1313
+#: mcs-plugin/xfwm4_plugin.c:1312
 msgid "Font Selection Dialog"
-msgstr "Dialog pro Výběr Písma"
+msgstr "Dialog pro výběr písma"
 
-#: mcs-plugin/xfwm4_plugin.c:1384 mcs-plugin/xfwm4_plugin.c:1903
+#: mcs-plugin/xfwm4_plugin.c:1381 mcs-plugin/xfwm4_plugin.c:1877
 msgid "Window Manager"
 msgstr "Správce Oken"
 
-#: mcs-plugin/xfwm4_plugin.c:1397
+#: mcs-plugin/xfwm4_plugin.c:1394
 msgid "Window Manager Preferences"
 msgstr "Nastavení Správce oken"
 
-#: mcs-plugin/xfwm4_plugin.c:1426
+#: mcs-plugin/xfwm4_plugin.c:1423
 msgid "Title font"
 msgstr "Písmo titulku"
 
-#: mcs-plugin/xfwm4_plugin.c:1439
+#: mcs-plugin/xfwm4_plugin.c:1436
 msgid "Title Alignment"
 msgstr "Zarovnání Titulku"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1445
+#: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Text alignment inside title bar :"
-msgstr "Zarovnání titulku"
+msgstr "Zarovnání titulku:"
 
-#: mcs-plugin/xfwm4_plugin.c:1447
+#: mcs-plugin/xfwm4_plugin.c:1444
 msgid "Button layout"
 msgstr "Rozmístění tlačítek"
 
-#: mcs-plugin/xfwm4_plugin.c:1453
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1450
 msgid "Style"
-msgstr "Titulek"
+msgstr "Styl"
 
-#: mcs-plugin/xfwm4_plugin.c:1491
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1476
 msgid "Window shortcuts"
-msgstr "Zaměření pro nová okna"
+msgstr "Okenní zkratky"
 
-#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1544
+#: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
 msgid "Command"
-msgstr ""
+msgstr "Příkaz"
 
-#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1548
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1501 mcs-plugin/xfwm4_plugin.c:1529
 msgid "Shortcut"
-msgstr "Klávesové zkratky"
+msgstr "Klávesová zkratka"
 
-#: mcs-plugin/xfwm4_plugin.c:1524
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Command shortcuts"
-msgstr "Klávesové zkratky"
+msgstr "Příkazová zkratka"
 
-#: mcs-plugin/xfwm4_plugin.c:1563
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Keyboard"
-msgstr "Klávesové zkratky"
+msgstr "Klívesnice"
 
-#: mcs-plugin/xfwm4_plugin.c:1574
+#: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Focus model"
 msgstr "Způsob zaměření"
 
-#: mcs-plugin/xfwm4_plugin.c:1582
+#: mcs-plugin/xfwm4_plugin.c:1558
 msgid "Click to focus"
 msgstr "Kliknout pro zaměření"
 
-#: mcs-plugin/xfwm4_plugin.c:1589
+#: mcs-plugin/xfwm4_plugin.c:1565
 msgid "Focus follows mouse"
 msgstr "Zaměření následuje myš"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1572
 msgid "New window focus"
 msgstr "Zaměření pro nová okna"
 
-#: mcs-plugin/xfwm4_plugin.c:1600
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1576
 msgid "Automatically give focus to newly created windows"
-msgstr ""
-"Automaticky nastavit zaměření \n"
-"pro nově vytvořená okna"
+msgstr "Automaticky nastavit zaměření pro nově vytvořená okna"
 
-#: mcs-plugin/xfwm4_plugin.c:1605
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Raise on focus"
 msgstr "Zvednout při zaměření"
 
-#: mcs-plugin/xfwm4_plugin.c:1613
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1589
 msgid "Automatically raise windows when they receive focus"
-msgstr ""
-"Automaticky vyzdvihnount okna, \n"
-"pokud získají zaměření"
+msgstr "Automaticky vyzdvihnount okna, pokud získají zaměření"
 
-#: mcs-plugin/xfwm4_plugin.c:1623
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Delay before raising focused window :"
 msgstr "Zpoždění při vyzdvihnutí okna"
 
-#: mcs-plugin/xfwm4_plugin.c:1629
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Slow"
 msgstr "Pomalé"
 
-#: mcs-plugin/xfwm4_plugin.c:1635
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Fast"
 msgstr "Rychlé"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1627
 msgid "Raise on click"
-msgstr "vyzdvihnout při kliknutí"
+msgstr "Vyzdvihnout při kliknutí"
 
-#: mcs-plugin/xfwm4_plugin.c:1655
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1631
 msgid "Raise window when clicking inside application window"
-msgstr ""
-"vyzdvihnout při kliknutí \n"
-"do plochy okna"
+msgstr "Vyzdvihnout při kliknutí do plochy okna"
 
-#: mcs-plugin/xfwm4_plugin.c:1660
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1636
 msgid "Focus"
-msgstr "Způsob zaměření"
+msgstr "Zaměření"
 
-#: mcs-plugin/xfwm4_plugin.c:1670
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Windows snapping"
 msgstr "Přichytávání oken"
 
-#: mcs-plugin/xfwm4_plugin.c:1678
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Snap windows to screen border"
 msgstr "Přichytávat okna k okrajům obrazovky"
 
-#: mcs-plugin/xfwm4_plugin.c:1683
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Snap windows to other windows"
 msgstr "Přichytávat okna k jiným oknům"
 
-#: mcs-plugin/xfwm4_plugin.c:1693
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Distance :"
 msgstr "Přilnavost :"
 
-#: mcs-plugin/xfwm4_plugin.c:1699 mcs-plugin/xfwm4_plugin.c:1749
+#: mcs-plugin/xfwm4_plugin.c:1675 mcs-plugin/xfwm4_plugin.c:1725
 msgid "Small"
 msgstr "Nízká"
 
-#: mcs-plugin/xfwm4_plugin.c:1705 mcs-plugin/xfwm4_plugin.c:1755
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Wide"
 msgstr "Vysoká"
 
-#: mcs-plugin/xfwm4_plugin.c:1720
+#: mcs-plugin/xfwm4_plugin.c:1696
 msgid "Wrap workspaces"
 msgstr "Přepínání mezi plochami"
 
-#: mcs-plugin/xfwm4_plugin.c:1728
+#: mcs-plugin/xfwm4_plugin.c:1704
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Přepnout plochu při ukázání kurzorem myši k okraji plochy"
 
-#: mcs-plugin/xfwm4_plugin.c:1733
+#: mcs-plugin/xfwm4_plugin.c:1709
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Přepnout plochu při přetáhnutí okna mimo oblast obrazovky"
 
-#: mcs-plugin/xfwm4_plugin.c:1743
-#, fuzzy
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Edge Resistance :"
-msgstr "Přilnavost :"
+msgstr "Hrana resistence:"
 
-#: mcs-plugin/xfwm4_plugin.c:1770
+#: mcs-plugin/xfwm4_plugin.c:1746
 msgid "Opaque move and resize"
 msgstr "Zobrazování obsahu okna"
 
-#: mcs-plugin/xfwm4_plugin.c:1778
+#: mcs-plugin/xfwm4_plugin.c:1754
 msgid "Display content of windows when resizing"
 msgstr "Zobrazování obsahu okna při změně velikosti"
 
-#: mcs-plugin/xfwm4_plugin.c:1783
+#: mcs-plugin/xfwm4_plugin.c:1759
 msgid "Display content of windows when moving"
 msgstr "Zobrazování obsahu okna při tažení a přesunu"
 
-#: mcs-plugin/xfwm4_plugin.c:1788
+#: mcs-plugin/xfwm4_plugin.c:1764
 msgid "Double click action"
 msgstr "Akce při dvojkliku"
 
-#: mcs-plugin/xfwm4_plugin.c:1794
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Akce při dvojkliku na titulkový pruh :"
 
-#: mcs-plugin/xfwm4_plugin.c:1796
+#: mcs-plugin/xfwm4_plugin.c:1772
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:55
+#: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Opravdu odstranit toto téma ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
+#: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Přidat téma"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:131
+#: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Zadat jméno pro téma:"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:154
+#: mcs-plugin/xfwm4_shortcuteditor.c:145
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Jméno již exituje"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:160
+#: mcs-plugin/xfwm4_shortcuteditor.c:151
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Musíte poskytnout jméno pro téma"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:346
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:328 mcs-plugin/xfwm4_shortcuteditor.c:743
 msgid "Close window"
-msgstr "Skrýt okno"
+msgstr "Zavřít okno"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:356
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:338 mcs-plugin/xfwm4_shortcuteditor.c:751
 msgid "Maximize window vertically"
-msgstr "Maximalizovat okno"
+msgstr "Maximalizovat okno vertikálně"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:361
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:343 mcs-plugin/xfwm4_shortcuteditor.c:755
 msgid "Maximize window horizontally"
-msgstr "Maximalizovat okno"
+msgstr "Maximalizovat okno horizontálně"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:376
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:358 mcs-plugin/xfwm4_shortcuteditor.c:767
 msgid "Stick window"
-msgstr "Skrýt okno"
+msgstr "Přilepit okno"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:381
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:363 mcs-plugin/xfwm4_shortcuteditor.c:771
 msgid "Cycle windows"
-msgstr "Skrýt okno"
+msgstr "Vytvořit cyklus oken"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:386
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:368 mcs-plugin/xfwm4_shortcuteditor.c:775
 msgid "Move window up"
-msgstr "Zaměření pro nová okna"
+msgstr "Posunout okno nahoru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:391
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:373 mcs-plugin/xfwm4_shortcuteditor.c:779
 msgid "Move window down"
-msgstr "Zaměření pro nová okna"
+msgstr "Posunout okno dolů"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:396
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:378 mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid "Move window left"
-msgstr "Zaměření pro nová okna"
+msgstr "Posunout okno doleva"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:401
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:383 mcs-plugin/xfwm4_shortcuteditor.c:787
 msgid "Move window right"
-msgstr "Zaměření pro nová okna"
+msgstr "Posunout okno doprava"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:406
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:388 mcs-plugin/xfwm4_shortcuteditor.c:791
 msgid "Resize window up"
-msgstr "Skrýt okno"
+msgstr "Změna velikosti okna nahoru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:411
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:393 mcs-plugin/xfwm4_shortcuteditor.c:795
 msgid "Resize window down"
-msgstr "Skrýt okno"
+msgstr "Změna velikosti okna dolů"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:416
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:398 mcs-plugin/xfwm4_shortcuteditor.c:799
 msgid "Resize window left"
-msgstr "Skrýt okno"
+msgstr "Změna velikosti okna doleva"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:421
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:403 mcs-plugin/xfwm4_shortcuteditor.c:803
 msgid "Resize window right"
-msgstr "Skrýt okno"
+msgstr "Změna velikosti okna doprava"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:426
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:408 mcs-plugin/xfwm4_shortcuteditor.c:807
 msgid "Raise window"
-msgstr "Skrýt okno"
+msgstr "Vytáhnout okno"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:431
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:413 mcs-plugin/xfwm4_shortcuteditor.c:811
 msgid "Lower window"
-msgstr "Skrýt okno"
+msgstr "Snížit okno"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:436
+#: mcs-plugin/xfwm4_shortcuteditor.c:418 mcs-plugin/xfwm4_shortcuteditor.c:815
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Obvod celé obrazovky"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:441
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:423
 msgid "Upper workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Horní pracovní plocha"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:446
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:428
 msgid "Bottom workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Dolní pracovní plocha"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:451
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:433
 msgid "Left workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Levá pracovní plocha"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:456
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:438
 msgid "Right workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Pravá pracovní plocha"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:461
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:443 mcs-plugin/xfwm4_shortcuteditor.c:819
 msgid "Next workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Další pracovní plocha"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:466
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:448 mcs-plugin/xfwm4_shortcuteditor.c:823
 msgid "Previous workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Předchozí pracovní plocha"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:471
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:453 mcs-plugin/xfwm4_shortcuteditor.c:827
 msgid "Add workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Přidat pracovní plochu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:476
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:458 mcs-plugin/xfwm4_shortcuteditor.c:831
 msgid "Delete workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Smazat pracovní plochu"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:562
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:463 mcs-plugin/xfwm4_shortcuteditor.c:835
+msgid "Workspace 1"
+msgstr "Pracovní plocha 1"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:468 mcs-plugin/xfwm4_shortcuteditor.c:839
+msgid "Workspace 2"
+msgstr "Pracovní plocha 2"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:473 mcs-plugin/xfwm4_shortcuteditor.c:843
+msgid "Workspace 3"
+msgstr "Pracovní plocha 3"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:478 mcs-plugin/xfwm4_shortcuteditor.c:847
+msgid "Workspace 4"
+msgstr "Pracovní plocha 4"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:483 mcs-plugin/xfwm4_shortcuteditor.c:851
+msgid "Workspace 5"
+msgstr "Pracovní plocha 5"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:488 mcs-plugin/xfwm4_shortcuteditor.c:855
+msgid "Workspace 6"
+msgstr "Pracovní plocha 6"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:493 mcs-plugin/xfwm4_shortcuteditor.c:859
+msgid "Workspace 7"
+msgstr "Pracovní plocha 7"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:498 mcs-plugin/xfwm4_shortcuteditor.c:863
+msgid "Workspace 8"
+msgstr "Pracovní plocha 8"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:503 mcs-plugin/xfwm4_shortcuteditor.c:867
+msgid "Workspace 9"
+msgstr "Pracovní plocha 9"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:508 mcs-plugin/xfwm4_shortcuteditor.c:871
 msgid "Move window to next workspace"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do další pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:567
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:513 mcs-plugin/xfwm4_shortcuteditor.c:875
 msgid "Move window to previous workspace"
-msgstr "Přepínání mezi plochami"
+msgstr "Přesunout okno do předchozí pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:572
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:518
 msgid "Move window to upper workspace"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do horní pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:577
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:523
 msgid "Move window to bottom workspace"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do dolní pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:582
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:528
 msgid "Move window to left workspace"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do levé pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:587
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:533
 msgid "Move window to right workspace"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do pravé pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:592
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:538 mcs-plugin/xfwm4_shortcuteditor.c:879
 msgid "Move window to workspace 1"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 1 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:597
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:543 mcs-plugin/xfwm4_shortcuteditor.c:883
 msgid "Move window to workspace 2"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 2 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:602
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:548 mcs-plugin/xfwm4_shortcuteditor.c:887
 msgid "Move window to workspace 3"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 3 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:607
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:553 mcs-plugin/xfwm4_shortcuteditor.c:891
 msgid "Move window to workspace 4"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 4 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:612
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:558 mcs-plugin/xfwm4_shortcuteditor.c:895
 msgid "Move window to workspace 5"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 5 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:617
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:563 mcs-plugin/xfwm4_shortcuteditor.c:899
 msgid "Move window to workspace 6"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 6 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:622
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:568 mcs-plugin/xfwm4_shortcuteditor.c:903
 msgid "Move window to workspace 7"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 7 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:627
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:573 mcs-plugin/xfwm4_shortcuteditor.c:907
 msgid "Move window to workspace 8"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 8 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:632
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:578 mcs-plugin/xfwm4_shortcuteditor.c:911
 msgid "Move window to workspace 9"
-msgstr "Zaměření pro nová okna"
+msgstr "Přesunout okno do 9 pracovní plochy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:839
+#: mcs-plugin/xfwm4_shortcuteditor.c:963
 msgid "Cannot open the theme directory !"
-msgstr ""
+msgstr "Nelze otevřít adresář!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:858
+#: mcs-plugin/xfwm4_shortcuteditor.c:982
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
+"Nelze otevřít %s : \"n"
+"%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:873 mcs-plugin/xfwm4_shortcuteditor.c:884
+#: mcs-plugin/xfwm4_shortcuteditor.c:997
+#: mcs-plugin/xfwm4_shortcuteditor.c:1008
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Nelze zapisovat do %s : \"n"
+"%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:934
+#: mcs-plugin/xfwm4_shortcuteditor.c:1058
 msgid "Select command"
-msgstr ""
+msgstr "Vybraný příkaz"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1080
+#: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
+"Zkratka je už použita!\"n "
+"Jste si jistý, že ji chcete použít ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1143
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:1267
 msgid "Compose shortcut for :"
-msgstr "Klávesové zkratky"
-
-#. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1146
-#: mcs-plugin/xfwm4_shortcuteditor.c:1374
-#, fuzzy
-msgid "Compose shortcut"
-msgstr "Klávesové zkratky"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:1148
-#: mcs-plugin/xfwm4_shortcuteditor.c:1376
-#, fuzzy
-msgid "No shortcut"
-msgstr "Klávesové zkratky"
+msgstr "Vytvořit zkratku pro :"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1270
-msgid "Choose command"
-msgstr ""
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
+msgid "Compose shortcut"
+msgstr "Vytvořit zkratku"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:1500
+msgid "No shortcut"
+msgstr "Žádná tkratka"
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:1394
+msgid "Choose command"
+msgstr "Vyberte přákaz"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1396
 msgid "Command :"
-msgstr "Klávesové zkratky"
+msgstr "Příkaz :"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1308
+#: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
+msgstr "Příkaz neexistuje nebo soubor není spustitelný !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1371
+#: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
-msgstr ""
+msgstr "Vytvořit zkratku pro příkaz :"
+
+#: src/events.c:1826
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operace není podporována (nyní)\n"
 
 #: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr "%s: Segmentation fault"
+msgstr "%s: Chyba segmentace"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -635,15 +621,15 @@ msgstr "Ma_ximalizovat"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "_Obnovit"
+msgstr "_Minimalizovat"
 
 #: src/menu.c:41
 msgid "_Hide"
-msgstr "_Minimalizovat"
+msgstr "_Skrýt"
 
 #: src/menu.c:42
 msgid "Hide _all others"
-msgstr "Mi_nimalizovat ostatní"
+msgstr "Skrýt _všechno ostatní"
 
 #: src/menu.c:43
 msgid "S_how"
@@ -667,11 +653,11 @@ msgstr "Od_lepit"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr ""
+msgstr "Kontextová _nápověda"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr ""
+msgstr "Vždy nahoře"
 
 #: src/menu.c:51
 msgid "Send to..."
@@ -679,7 +665,7 @@ msgstr "Poslat na..."
 
 #: src/menu.c:53
 msgid "_Close"
-msgstr "Za_vřit"
+msgstr "_Zavřit"
 
 #: src/menu.c:56
 msgid "Destroy"
@@ -694,39 +680,44 @@ msgid "Restart"
 msgstr "Restart"
 
 #: src/menu.c:169
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "Plocha %i"
+msgstr "Pracovní plocha %i (%s)"
 
 #: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
-msgstr "Plocha %i"
+msgstr "Pracovní plocha %i"
 
-#: src/menu.c:416
+#: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
-#: src/settings.c:722
+#: src/netwm.c:252
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
+
+#: src/settings.c:674
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Cannot allocate active color %s\n"
+msgstr "%s: Nelze přidělit aktivní barvu %s\n"
 
-#: src/settings.c:728
+#: src/settings.c:680
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Cannot parse active color %s\n"
+msgstr "%s: Nelze separovat aktivní barvu %s\n"
 
-#: src/settings.c:771
+#: src/settings.c:723
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Nelze přidělit neaktivní barvu %s\n"
 
-#: src/settings.c:777
+#: src/settings.c:729
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Nelze separovat neaktivní barvu %s\n"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
@@ -734,108 +725,5 @@ msgstr "Přepnout na ..."
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
-msgstr ""
+msgstr "Neznámá aplikace!"
 
-#, fuzzy
-#~ msgid "Workspace 1"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 2"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 3"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 4"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 5"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 6"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 7"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 8"
-#~ msgstr "Plocha %i"
-
-#, fuzzy
-#~ msgid "Workspace 9"
-#~ msgstr "Plocha %i"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "s: Operace není podporována (prozatím)\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: Již běží jiný správce oken"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: Cannot allocate inactive color %s\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: Již běží jiný správce oken"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: Missing data from default files"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: Vyskytla se neznámá chyba"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: Missing defaults file"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr "%s: specified key theme \"%s\" missing, using default"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s: Missing values in defaults file"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr ""
-#~ "Automaticky nastavit zaměření \n"
-#~ "pro nově vytvořená okna"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr ""
-#~ "Automaticky vyzdvihnount okna, \n"
-#~ "pokud získají zaměření"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr ""
-#~ "vyzdvihnout při kliknutí \n"
-#~ "do plochy okna"
-
-#~ msgid "Decoration style"
-#~ msgstr "Styl dekorace"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "Klávesnice a zaměření"
-
-#~ msgid "%s: Workspace count not set, using rc value: %i"
-#~ msgstr "%s: Workspace count not set, using rc value: %i"
-
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Upravení okrajů plochy"
