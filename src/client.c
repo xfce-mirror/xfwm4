@@ -2824,6 +2824,11 @@ clientFrame (Window w, gboolean startup)
     {
         CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
     }
+    /* 
+     * Reparenting generates an UnmapNotify event, followed by a MapNotify.
+     * Set ignore_unmap to 1 so that the window won't return to withdrawn
+     * state when unmapnotify is received
+     */
     c->ignore_unmap = 1;
     c->type = UNSET;
     c->type_atom = None;
