@@ -1294,7 +1294,7 @@ initSettings (void)
         workspaceSetCount (val);
     }
 
-    if (get_utf8_string (dpy, root, net_desktop_names, &names, &i))
+    if (getUTF8String (dpy, root, net_desktop_names, &names, &i))
     {
         workspaceSetNames (names, i);
     }

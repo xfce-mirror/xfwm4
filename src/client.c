@@ -480,7 +480,7 @@ clientGetNetState (Client * c)
     TRACE ("entering clientGetNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (get_atom_list (dpy, c->window, net_wm_state, &atoms, &n_atoms))
+    if (getAtomList (dpy, c->window, net_wm_state, &atoms, &n_atoms))
     {
         int i;
         TRACE ("clientGetNetState: %i atoms detected", n_atoms);
@@ -907,7 +907,7 @@ clientGetNetWmType (Client * c)
     n_atoms = 0;
     atoms = NULL;
 
-    if (!get_atom_list (dpy, c->window, net_wm_window_type, &atoms, &n_atoms))
+    if (!getAtomList (dpy, c->window, net_wm_window_type, &atoms, &n_atoms))
     {
         switch (c->win_layer)
         {
@@ -1087,7 +1087,7 @@ clientGetNetStruts (Client * c)
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT);
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
 
-    if (get_cardinal_list (dpy, c->window, net_wm_strut_partial, &struts, &nitems))
+    if (getCardinalList (dpy, c->window, net_wm_strut_partial, &struts, &nitems))
     {
         if (nitems != 12)
         {
@@ -1105,7 +1105,7 @@ clientGetNetStruts (Client * c)
         XFree (struts);
         workspaceUpdateArea (margins, gnome_margins);
     }
-    else if (get_cardinal_list (dpy, c->window, net_wm_strut, &struts, &nitems))
+    else if (getCardinalList (dpy, c->window, net_wm_strut, &struts, &nitems))
     {
         if (nitems != 4)
         {
@@ -3313,15 +3313,15 @@ clientFrame (Window w, gboolean recapture)
 
     if (!recapture)
     {
-        MyXGrabServer ();
+        myXGrabServer ();
     }
-    if (!MyCheckWindow(w))
+    if (!myCheckWindow(w))
     {
         TRACE ("Client has vanished");
         clientFree(c);
         if (!recapture)
         {
-            MyXUngrabServer ();
+            myXUngrabServer ();
         }
         gdk_error_trap_pop ();
         return;
@@ -3348,7 +3348,7 @@ clientFrame (Window w, gboolean recapture)
         /* Window is reparented now, so we can safely release the grab 
          * on the server 
          */
-        MyXUngrabServer ();
+        myXUngrabServer ();
     }   
 
     clientAddToList (c);
@@ -3457,7 +3457,7 @@ clientUnframe (Client * c, gboolean remap)
     }
 
     clientRemoveFromList (c);
-    MyXGrabServer ();
+    myXGrabServer ();
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
@@ -3509,7 +3509,7 @@ clientUnframe (Client * c, gboolean remap)
         workspaceUpdateArea (margins, gnome_margins);
     }
     
-    MyXUngrabServer ();
+    myXUngrabServer ();
     gdk_error_trap_pop ();
     clientFree (c);
 }
@@ -3539,7 +3539,7 @@ clientFrameAll ()
                         EnterWindowMask);
 
     XSync (dpy, FALSE);
-    MyXGrabServer ();
+    myXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -3563,7 +3563,7 @@ clientFrameAll ()
         clientSetFocus (top_client.highest, NO_FOCUS_FLAG);
     }
     removeTmpEventWin (shield);
-    MyXUngrabServer ();
+    myXUngrabServer ();
     XSync (dpy, FALSE);
 }
 
@@ -3578,7 +3578,7 @@ clientUnframeAll ()
 
     clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
     XSync (dpy, FALSE);
-    MyXGrabServer ();
+    myXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -3588,7 +3588,7 @@ clientUnframeAll ()
             clientUnframe (c, TRUE);
         }
     }
-    MyXUngrabServer ();
+    myXUngrabServer ();
     XSync(dpy, FALSE);
     if (wins)
     {
@@ -3897,7 +3897,7 @@ static void
 clientShowSingle (Client * c, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
-    MyXGrabServer ();
+    myXGrabServer ();
     if ((c->win_workspace == workspace)
         || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
@@ -3912,7 +3912,7 @@ clientShowSingle (Client * c, gboolean change_state)
         setWMState (dpy, c->window, NormalState);
         workspaceUpdateArea (margins, gnome_margins);
     }
-    MyXUngrabServer ();
+    myXUngrabServer ();
     clientSetNetState (c);
 }
 
@@ -3947,7 +3947,7 @@ static void
 clientHideSingle (Client * c, int ws, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
-    MyXGrabServer ();
+    myXGrabServer ();
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c);
     XUnmapWindow (dpy, c->window);
@@ -3963,7 +3963,7 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
         setWMState (dpy, c->window, IconicState);
         workspaceUpdateArea (margins, gnome_margins);
     }
-    MyXUngrabServer ();
+    myXUngrabServer ();
     clientSetNetState (c);
 }
 
@@ -5171,7 +5171,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             if (!passdata->grab && params.box_move)
             {
-                MyXGrabServer ();
+                myXGrabServer ();
                 passdata->grab = TRUE;
                 clientDrawOutline (c);
             }
@@ -5237,7 +5237,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
         if (!passdata->grab && params.box_move)
         {
-            MyXGrabServer ();
+            myXGrabServer ();
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
@@ -5456,7 +5456,7 @@ clientMove (Client * c, XEvent * e)
 
     if (passdata.grab && params.box_move)
     {
-        MyXUngrabServer ();
+        myXUngrabServer ();
     }
 }
 
@@ -5527,7 +5527,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
             if (!passdata->grab && params.box_resize)
             {
-                MyXGrabServer ();
+                myXGrabServer ();
                 passdata->grab = TRUE;
                 clientDrawOutline (c);
             }
@@ -5614,7 +5614,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
         if (!passdata->grab && params.box_resize)
         {
-            MyXGrabServer ();
+            myXGrabServer ();
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
@@ -5878,7 +5878,7 @@ clientResize (Client * c, int corner, XEvent * e)
 
     if (passdata.grab && params.box_resize)
     {
-        MyXUngrabServer ();
+        myXUngrabServer ();
     }
 }
 
@@ -6001,7 +6001,7 @@ clientCycle (Client * c, XEvent * e)
         return;
     }
 
-    MyXGrabServer ();
+    myXGrabServer ();
     if (params.cycle_minimum)
     {
         passdata.cycle_range = INCLUDE_HIDDEN;
@@ -6029,7 +6029,7 @@ clientCycle (Client * c, XEvent * e)
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    MyXUngrabServer ();
+    myXUngrabServer ();
     XUngrabKeyboard (dpy, GDK_CURRENT_TIME);
     XUngrabPointer (dpy, GDK_CURRENT_TIME);
 

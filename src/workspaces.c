@@ -213,7 +213,7 @@ workspaceSetCount (int count)
     {
         workspaceSwitch (count - 1, NULL);
     }
-    set_net_workarea (dpy, screen, params.workspace_count, margins);
+    setNetWorkarea (dpy, screen, params.workspace_count, margins);
 }
 
 void
@@ -281,6 +281,6 @@ workspaceUpdateArea (int * m1, int * m2)
         || (prev_bottom != m1[MARGIN_BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
-        set_net_workarea (dpy, screen, params.workspace_count, m1);
+        setNetWorkarea (dpy, screen, params.workspace_count, m1);
     }
 }

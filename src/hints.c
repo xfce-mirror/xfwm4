@@ -494,7 +494,7 @@ initNetHints (Display * dpy)
 }
 
 void
-set_net_supported_hint (Display * dpy, int screen, Window check_win)
+setNetSupportedHint (Display * dpy, int screen, Window check_win)
 {
     Atom atoms[64];
     unsigned long data[1];
@@ -565,7 +565,7 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
 }
 
 gboolean
-get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
+getAtomList (Display * dpy, Window w, Atom a, Atom ** atoms_p,
     int *n_atoms_p)
 {
     Atom type;
@@ -602,7 +602,7 @@ get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
 }
 
 gboolean
-get_cardinal_list (Display * dpy, Window w, Atom xatom,
+getCardinalList (Display * dpy, Window w, Atom xatom,
     unsigned long **cardinals_p, int *n_cardinals_p)
 {
     Atom type;
@@ -635,12 +635,12 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
 }
 
 void
-set_net_workarea (Display * dpy, int screen, int nb_workspaces, int * m)
+setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int * m)
 {
     unsigned long *data, *ptr;
     int i, j;
 
-    TRACE ("entering set_net_workarea");
+    TRACE ("entering setNetWorkarea");
     j = (nb_workspaces ? nb_workspaces : 1);
     data = (unsigned long *) g_new0 (unsigned long, j * 4);
     ptr = data;
@@ -661,10 +661,10 @@ set_net_workarea (Display * dpy, int screen, int nb_workspaces, int * m)
 }
 
 void
-init_net_desktop_params (Display * dpy, int screen, int workspace)
+initNetDesktopParams (Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
-    TRACE ("entering init_net_desktop_params");
+    TRACE ("entering initNetDesktopParams");
     data[0] = MyDisplayFullWidth (dpy, screen);
     data[1] = MyDisplayFullHeight (dpy, screen);
     XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_geometry,
@@ -715,7 +715,7 @@ getTransientFor (Display * dpy, int screen, Window w, Window * transient_for)
 }
 
 gboolean
-get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
+getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
 {
     Atom type;
     int format;
@@ -723,7 +723,7 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
     unsigned char *str;
     unsigned long n_items;
 
-    TRACE ("entering get_utf8_string");
+    TRACE ("entering getUTF8String");
 
     *str_p = NULL;
     if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, utf8_string,
@@ -839,7 +839,7 @@ getWindowName (Display * dpy, Window w, char **name)
     *name = NULL;
     g_return_if_fail (w != None);
 
-    if (get_utf8_string (dpy, w, net_wm_name, &str, &len))
+    if (getUTF8String (dpy, w, net_wm_name, &str, &len))
     {
         *name = strdup (str);
         XFree (str);

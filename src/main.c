@@ -356,10 +356,10 @@ initialize (int argc, char **argv)
     workspace = (int) ws;
     getGnomeDesktopMargins (dpy, screen, gnome_margins);
     set_utf8_string_hint (dpy, gnome_win, net_wm_name, "Xfwm4");
-    set_net_supported_hint (dpy, screen, gnome_win);
+    setNetSupportedHint (dpy, screen, gnome_win);
     workspaceUpdateArea (margins, gnome_margins);
-    init_net_desktop_params (dpy, screen, workspace);
-    set_net_workarea (dpy, screen, params.workspace_count, margins);
+    initNetDesktopParams (dpy, screen, workspace);
+    setNetWorkarea (dpy, screen, params.workspace_count, margins);
     XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks ();
     

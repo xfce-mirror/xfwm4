@@ -121,9 +121,9 @@ sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
 }
 
 void
-MyXGrabServer (void)
+myXGrabServer (void)
 {
-    DBG ("entering MyXGrabServer");
+    DBG ("entering myXGrabServer");
     if (xgrabcount == 0)
     {
         DBG ("grabbing server");
@@ -134,9 +134,9 @@ MyXGrabServer (void)
 }
 
 void
-MyXUngrabServer (void)
+myXUngrabServer (void)
 {
-    DBG ("entering MyXUngrabServer");
+    DBG ("entering myXUngrabServer");
     if (--xgrabcount < 0)       /* should never happen */
     {
         xgrabcount = 0;
@@ -155,7 +155,7 @@ MyXUngrabServer (void)
  * Returns true if the given window is present and mapped on root 
  */
 gboolean
-MyCheckWindow(Window w)
+myCheckWindow(Window w)
 {
     Window dummy_root, parent;
     Window *wins = NULL;

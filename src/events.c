@@ -1392,7 +1392,7 @@ handlePropertyNotify (XPropertyEvent * ev)
     else if (ev->atom == net_desktop_names)
     {
         TRACE ("root has received a net_desktop_names notify");
-        if (get_utf8_string (dpy, root, net_desktop_names, &names, &length))
+        if (getUTF8String (dpy, root, net_desktop_names, &names, &length))
         {
             workspaceSetNames (names, length);
         }
