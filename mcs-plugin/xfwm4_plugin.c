@@ -493,7 +493,7 @@ create_option_menu_box(MenuTmpl template[], guint size, gchar * display_label,
     gtk_widget_show(menu);
     
     for (n = 0; n < size; n++) {
-        item = gtk_menu_item_new_with_mnemonic(template[n].label);
+        item = gtk_menu_item_new_with_mnemonic(_(template[n].label));
         gtk_widget_show(item);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
 
@@ -1698,7 +1698,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     xfce_framebox_add (XFCE_FRAMEBOX (frame),
                        create_option_menu_box(dbl_click_values, 4,
-                    /*XXX*/_("Action to perform when double clicking on title bar :"),
+                       _("Action to perform when double clicking on title bar :"),
                            dbl_click_action,
                            G_CALLBACK(cb_dblclick_action_value_changed),
                            mcs_plugin));
