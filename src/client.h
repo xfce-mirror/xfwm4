@@ -98,24 +98,25 @@
 #define CLIENT_FLAG_HAS_MOVE           (1L<<9)
 #define CLIENT_FLAG_HAS_RESIZE         (1L<<10)
 #define CLIENT_FLAG_HAS_STICK          (1L<<11)
-#define CLIENT_FLAG_HAS_STRUTS         (1L<<12)
-#define CLIENT_FLAG_IS_RESIZABLE       (1L<<13)
-#define CLIENT_FLAG_MAP_PENDING        (1L<<14)
-#define CLIENT_FLAG_VISIBLE            (1L<<15)
-#define CLIENT_FLAG_HIDDEN             (1L<<16)
-#define CLIENT_FLAG_MANAGED            (1L<<17)
-#define CLIENT_FLAG_MAXIMIZED_VERT     (1L<<18)
-#define CLIENT_FLAG_MAXIMIZED_HORIZ    (1L<<19)
+#define CLIENT_FLAG_HAS_STRUT          (1L<<12)
+#define CLIENT_FLAG_HAS_STRUT_PARTIAL  (1L<<13)
+#define CLIENT_FLAG_IS_RESIZABLE       (1L<<14)
+#define CLIENT_FLAG_MAP_PENDING        (1L<<15)
+#define CLIENT_FLAG_VISIBLE            (1L<<16)
+#define CLIENT_FLAG_HIDDEN             (1L<<17)
+#define CLIENT_FLAG_MANAGED            (1L<<18)
+#define CLIENT_FLAG_MAXIMIZED_VERT     (1L<<19)
+#define CLIENT_FLAG_MAXIMIZED_HORIZ    (1L<<20)
 #define CLIENT_FLAG_MAXIMIZED          (CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_MAXIMIZED_HORIZ)
-#define CLIENT_FLAG_SHADED             (1L<<20)
-#define CLIENT_FLAG_SKIP_PAGER         (1L<<21)
-#define CLIENT_FLAG_SKIP_TASKBAR       (1L<<22)
-#define CLIENT_FLAG_STATE_MODAL        (1L<<23)
-#define CLIENT_FLAG_STICKY             (1L<<24)
-#define CLIENT_FLAG_MOVING_RESIZING    (1L<<25)
-#define CLIENT_FLAG_NAME_CHANGED       (1L<<26)
-#define CLIENT_FLAG_SESSION_MANAGED    (1L<<27)
-#define CLIENT_FLAG_WORKSPACE_SET      (1L<<28)
+#define CLIENT_FLAG_SHADED             (1L<<21)
+#define CLIENT_FLAG_SKIP_PAGER         (1L<<22)
+#define CLIENT_FLAG_SKIP_TASKBAR       (1L<<23)
+#define CLIENT_FLAG_STATE_MODAL        (1L<<24)
+#define CLIENT_FLAG_STICKY             (1L<<25)
+#define CLIENT_FLAG_MOVING_RESIZING    (1L<<26)
+#define CLIENT_FLAG_NAME_CHANGED       (1L<<27)
+#define CLIENT_FLAG_SESSION_MANAGED    (1L<<28)
+#define CLIENT_FLAG_WORKSPACE_SET      (1L<<29)
 
 #define WM_FLAG_DELETE                 (1L<<0)
 #define WM_FLAG_INPUT                  (1L<<1)
@@ -219,7 +220,7 @@ struct _Client
     int initial_layer;
     int ncmap;
     int button_pressed[BUTTON_COUNT];
-    int struts[4];
+    int struts[12];
     char *name;
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 

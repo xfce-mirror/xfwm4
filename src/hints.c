@@ -110,6 +110,7 @@ Atom net_wm_state_skip_pager;
 Atom net_wm_state_skip_taskbar;
 Atom net_wm_state_sticky;
 Atom net_wm_strut;
+Atom net_wm_strut_partial;
 Atom net_wm_window_type;
 Atom net_wm_window_type_desktop;
 Atom net_wm_window_type_dialog;
@@ -468,6 +469,7 @@ initNetHints (Display * dpy)
     net_wm_state_sticky = XInternAtom (dpy, "_NET_WM_STATE_STICKY", FALSE);
     net_wm_state = XInternAtom (dpy, "_NET_WM_STATE", FALSE);
     net_wm_strut = XInternAtom (dpy, "_NET_WM_STRUT", FALSE);
+    net_wm_strut_partial = XInternAtom (dpy, "_NET_WM_STRUT_PARTIAL", FALSE);
     net_wm_window_type_desktop =
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
     net_wm_window_type_dialog =
@@ -534,6 +536,7 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_state_skip_taskbar;
     atoms[i++] = net_wm_state_sticky;
     atoms[i++] = net_wm_strut;
+    atoms[i++] = net_wm_strut_partial;
     atoms[i++] = net_wm_window_type;
     atoms[i++] = net_wm_window_type_desktop;
     atoms[i++] = net_wm_window_type_dialog;
@@ -758,7 +761,7 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
 
     if (str)
     {
-        utf8_string_remove_controls((gchar *) str, -1, NULL);
+        xfce_utf8_remove_controls((gchar *) str, -1, NULL);
     }
     
     *str_p = str;
@@ -805,7 +808,7 @@ get_text_property (Display * dpy, Window w, Atom a)
         retval = text_property_to_utf8 (dpy, &text);
         if (retval)
         {
-            utf8_string_remove_controls((gchar *) retval, -1, NULL);
+            xfce_utf8_remove_controls((gchar *) retval, -1, NULL);
         }
         if ((text.value) && (text.nitems > 0))
         {

@@ -167,6 +167,7 @@ extern Atom net_wm_state_skip_pager;
 extern Atom net_wm_state_skip_taskbar;
 extern Atom net_wm_state_sticky;
 extern Atom net_wm_strut;
+extern Atom net_wm_strut_partial;
 extern Atom net_wm_window_type;
 extern Atom net_wm_window_type_desktop;
 extern Atom net_wm_window_type_dialog;

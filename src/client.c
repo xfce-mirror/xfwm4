@@ -1074,13 +1074,32 @@ clientGetNetStruts (Client * c)
     TRACE ("entering clientGetNetStruts for \"%s\" (0x%lx)", c->name,
         c->window);
 
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 12; i++)
     {
         c->struts[i] = 0;
     }
-    FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUTS);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
 
-    if (get_cardinal_list (dpy, c->window, net_wm_strut, &struts, &nitems))
+    if (get_cardinal_list (dpy, c->window, net_wm_strut_partial, &struts, &nitems))
+    {
+        if (nitems != 12)
+        {
+            XFree (struts);
+            return;
+        }
+
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
+        for (i = 0; i < 12; i++)
+        {
+            c->struts[i] = (int) struts[i];
+        }
+
+        XFree (struts);
+        workspaceUpdateArea (margins, gnome_margins);
+    }
+    else if (get_cardinal_list (dpy, c->window, net_wm_strut, &struts, &nitems))
     {
         if (nitems != 4)
         {
@@ -1088,14 +1107,12 @@ clientGetNetStruts (Client * c)
             return;
         }
 
-        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUTS);
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
         for (i = 0; i < 4; i++)
         {
             c->struts[i] = (int) struts[i];
         }
 
-        TRACE ("NET_WM_STRUT for window \"%s\"= (%d,%d,%d,%d)", c->name,
-            c->struts[0], c->struts[1], c->struts[2], c->struts[3]);
         XFree (struts);
         workspaceUpdateArea (margins, gnome_margins);
     }
@@ -2227,7 +2244,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceGetArea (client_margins, NULL, c);
     }
@@ -2323,7 +2340,7 @@ clientKeepVisible (Client * c)
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceGetArea (client_margins, NULL, c);
     }
@@ -2438,7 +2455,7 @@ clientInitPosition (Client * c)
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceGetArea (client_margins, NULL, c);
     }
@@ -3510,7 +3527,7 @@ clientUnframe (Client * c, gboolean remap)
         myWindowDelete (&c->buttons[i]);
     }
     XDestroyWindow (dpy, c->frame);
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceUpdateArea (margins, gnome_margins);
     }

@@ -1404,7 +1404,7 @@ handlePropertyNotify (XPropertyEvent * ev)
             clientGetNetWmType (c);
             frameDraw (c, TRUE, FALSE);
         }
-        else if (ev->atom == net_wm_strut)
+        else if ((ev->atom == net_wm_strut) || (ev->atom == net_wm_strut_partial))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_strut notify",
                 c->name, c->window);

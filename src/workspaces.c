@@ -242,7 +242,7 @@ workspaceGetArea (int * m1, int * m2, Client * c)
     {
         if (((!c) || (c != c2))
             && FLAG_TEST_ALL (c2->flags,
-                CLIENT_FLAG_HAS_STRUTS | CLIENT_FLAG_VISIBLE))
+                CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
         {
             m1[MARGIN_TOP] = MAX (m1[MARGIN_TOP], c2->struts[MARGIN_TOP]);
             m1[MARGIN_LEFT] = MAX (m1[MARGIN_LEFT], c2->struts[MARGIN_LEFT]);
