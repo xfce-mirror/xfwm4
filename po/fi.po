@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-25 08:17+0100\n"
+"POT-Creation-Date: 2003-02-25 22:34+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -14,160 +14,157 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:110
-msgid "Desktop margins"
-msgstr ""
+#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:207
+#: mcs-plugin/margins_plugin.c:224
+#, fuzzy
+msgid "Workspace Margins"
+msgstr "_TyÃ¶pÃ¶ytÃ€"
 
 #: mcs-plugin/margins_plugin.c:190
-msgid "Adjust desktop margins"
+msgid "Adjust workspace margins"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:206
-msgid "Desktop Margins"
-msgstr ""
-
-#: mcs-plugin/margins_plugin.c:210
+#: mcs-plugin/margins_plugin.c:211
 msgid ""
-"Margins are areas on the edges\n"
-"of the screen where no windows\n"
-"will be placed"
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:238
+#: mcs-plugin/margins_plugin.c:251
 #, fuzzy
 msgid "Left :"
 msgstr "Vasen"
 
-#: mcs-plugin/margins_plugin.c:258
+#: mcs-plugin/margins_plugin.c:271
 #, fuzzy
 msgid "Right :"
 msgstr "Oikea"
 
-#: mcs-plugin/margins_plugin.c:278
+#: mcs-plugin/margins_plugin.c:291
 msgid "Top :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:298
-msgid "Bottom:"
+#: mcs-plugin/margins_plugin.c:311
+msgid "Bottom :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:117
+#: mcs-plugin/xfwm4_plugin.c:119
 msgid "Title"
 msgstr "Otsikko"
 
-#: mcs-plugin/xfwm4_plugin.c:118
+#: mcs-plugin/xfwm4_plugin.c:120
 msgid "Menu"
 msgstr "Valikko"
 
-#: mcs-plugin/xfwm4_plugin.c:119
+#: mcs-plugin/xfwm4_plugin.c:121
 msgid "Stick"
 msgstr "KiinnitÃ€"
 
-#: mcs-plugin/xfwm4_plugin.c:120
+#: mcs-plugin/xfwm4_plugin.c:122
 msgid "Shade"
 msgstr "Varjosta"
 
-#: mcs-plugin/xfwm4_plugin.c:121
+#: mcs-plugin/xfwm4_plugin.c:123
 msgid "Hide"
 msgstr "Piilota"
 
-#: mcs-plugin/xfwm4_plugin.c:122
+#: mcs-plugin/xfwm4_plugin.c:124
 msgid "Maximize"
 msgstr "Suurenna"
 
-#: mcs-plugin/xfwm4_plugin.c:123
+#: mcs-plugin/xfwm4_plugin.c:125
 msgid "Close"
 msgstr "Sulje"
 
-#: mcs-plugin/xfwm4_plugin.c:127
+#: mcs-plugin/xfwm4_plugin.c:129
 msgid "Shade window"
 msgstr "Varjosta ikkuna"
 
-#: mcs-plugin/xfwm4_plugin.c:128
+#: mcs-plugin/xfwm4_plugin.c:130
 msgid "Hide window"
 msgstr "Piilota ikkuna"
 
-#: mcs-plugin/xfwm4_plugin.c:129
+#: mcs-plugin/xfwm4_plugin.c:131
 msgid "Maximize window"
 msgstr "Suurenna ikkuna"
 
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:132
 msgid "Nothing"
 msgstr "Ei mitÃ€Ã€n"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:137
 msgid "Left"
 msgstr "Vasen"
 
-#: mcs-plugin/xfwm4_plugin.c:136
+#: mcs-plugin/xfwm4_plugin.c:138
 msgid "Center"
 msgstr "Keski"
 
-#: mcs-plugin/xfwm4_plugin.c:137
+#: mcs-plugin/xfwm4_plugin.c:139
 msgid "Right"
 msgstr "Oikea"
 
-#: mcs-plugin/xfwm4_plugin.c:411
-msgid "Layout :"
-msgstr "Ulkoasu :"
-
-#: mcs-plugin/xfwm4_plugin.c:455
+#: mcs-plugin/xfwm4_plugin.c:456
 msgid "Hidden"
 msgstr "Piilotettu"
 
-#: mcs-plugin/xfwm4_plugin.c:1088
+#: mcs-plugin/xfwm4_plugin.c:1089
 msgid "Font Selection Dialog"
 msgstr "Fontin valinta"
 
-#: mcs-plugin/xfwm4_plugin.c:1142
+#: mcs-plugin/xfwm4_plugin.c:1131 mcs-plugin/xfwm4_plugin.c:1575
+msgid "Window Manager"
+msgstr "Ikkuna manageri"
+
+#: mcs-plugin/xfwm4_plugin.c:1145
 msgid "Window Manager Preferences"
 msgstr "Ikkunoiden Asetukset"
 
-#: mcs-plugin/xfwm4_plugin.c:1177
+#: mcs-plugin/xfwm4_plugin.c:1182
 msgid "Window style"
 msgstr "Ikkunan tyyli"
 
-#: mcs-plugin/xfwm4_plugin.c:1195
+#: mcs-plugin/xfwm4_plugin.c:1200
 msgid "Font select :"
 msgstr "Fontin valinta :"
 
-#: mcs-plugin/xfwm4_plugin.c:1206
+#. gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);
+#: mcs-plugin/xfwm4_plugin.c:1211
 msgid "Title font"
 msgstr "Otsikko fontti"
 
-#: mcs-plugin/xfwm4_plugin.c:1215
+#: mcs-plugin/xfwm4_plugin.c:1220
 msgid "Text alignment inside title bar :"
 msgstr "Tekstin tasaus otsikkopalkin sisÃ€llÃ€ :"
 
-#: mcs-plugin/xfwm4_plugin.c:1217
+#: mcs-plugin/xfwm4_plugin.c:1222
 msgid "Title Alignment"
 msgstr "Otsikon tasaus"
 
-#: mcs-plugin/xfwm4_plugin.c:1228
+#: mcs-plugin/xfwm4_plugin.c:1233
 msgid "Button layout"
 msgstr "Nappien ulkoasu"
 
-#: mcs-plugin/xfwm4_plugin.c:1233
+#: mcs-plugin/xfwm4_plugin.c:1238
 msgid "Decoration style"
 msgstr "Koristelu tyyli"
 
-#: mcs-plugin/xfwm4_plugin.c:1265
+#: mcs-plugin/xfwm4_plugin.c:1271
 msgid "Keyboard Shortcut"
 msgstr "NÃ€ppÃ€in oikotiet"
 
-#: mcs-plugin/xfwm4_plugin.c:1283
+#: mcs-plugin/xfwm4_plugin.c:1289
 msgid "Click to focus"
 msgstr "Paina kohdistaaksesi"
 
-#: mcs-plugin/xfwm4_plugin.c:1290
+#: mcs-plugin/xfwm4_plugin.c:1296
 msgid "Focus follows mouse"
 msgstr "Kohdistus seuraa hiirtÃ€"
 
-#: mcs-plugin/xfwm4_plugin.c:1297
+#: mcs-plugin/xfwm4_plugin.c:1303
 msgid "Focus model"
 msgstr "Kohdistus malli"
 
-#: mcs-plugin/xfwm4_plugin.c:1306
+#: mcs-plugin/xfwm4_plugin.c:1312
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -175,11 +172,11 @@ msgstr ""
 "Automaattisesti kohdenna\n"
 "uusiin ikkunoihin"
 
-#: mcs-plugin/xfwm4_plugin.c:1312
+#: mcs-plugin/xfwm4_plugin.c:1318
 msgid "New window focus"
 msgstr "Uuden ikkunan kohdistus"
 
-#: mcs-plugin/xfwm4_plugin.c:1326
+#: mcs-plugin/xfwm4_plugin.c:1332
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -187,95 +184,91 @@ msgstr ""
 "Automaattisesti nosta ikkuna \n"
 "kun se kohdistetaan"
 
-#: mcs-plugin/xfwm4_plugin.c:1336
+#: mcs-plugin/xfwm4_plugin.c:1342
 msgid "Delay before raising focused window :"
 msgstr "Viive ennen tarkennetun ikkunan nostoa :"
 
-#: mcs-plugin/xfwm4_plugin.c:1342
+#: mcs-plugin/xfwm4_plugin.c:1348
 msgid "Slow"
 msgstr "Hidas"
 
-#: mcs-plugin/xfwm4_plugin.c:1348
+#: mcs-plugin/xfwm4_plugin.c:1354
 msgid "Fast"
 msgstr "Nopea"
 
-#: mcs-plugin/xfwm4_plugin.c:1363
+#: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Raise on focus"
 msgstr "Nosta kohdennuksessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1372
+#: mcs-plugin/xfwm4_plugin.c:1378
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr "Nosta ikkuna kun painetaanikkunan sisÃ€llÃ€"
 
-#: mcs-plugin/xfwm4_plugin.c:1378
+#: mcs-plugin/xfwm4_plugin.c:1384
 msgid "Raise on click"
 msgstr "Nosta painettaessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1383
+#: mcs-plugin/xfwm4_plugin.c:1389
 msgid "Keyboard and focus"
 msgstr "NÃ€ppÃ€imistÃ¶ ja kohdennus"
 
-#: mcs-plugin/xfwm4_plugin.c:1401
+#: mcs-plugin/xfwm4_plugin.c:1408
 msgid "Snap windows to screen border"
 msgstr "LiitÃ€ ikkunat nÃ€ytÃ¶n reunaan"
 
-#: mcs-plugin/xfwm4_plugin.c:1411
+#: mcs-plugin/xfwm4_plugin.c:1418
 msgid "Distance :"
 msgstr "EtÃ€isyys :"
 
-#: mcs-plugin/xfwm4_plugin.c:1417
+#: mcs-plugin/xfwm4_plugin.c:1424
 msgid "Small"
 msgstr "Pieni"
 
-#: mcs-plugin/xfwm4_plugin.c:1423
+#: mcs-plugin/xfwm4_plugin.c:1430
 msgid "Wide"
 msgstr "LeveÃ€"
 
-#: mcs-plugin/xfwm4_plugin.c:1437
+#: mcs-plugin/xfwm4_plugin.c:1444
 msgid "Snap to screen border"
 msgstr "LiitÃ€ nÃ€ytÃ¶n reunaan"
 
-#: mcs-plugin/xfwm4_plugin.c:1446
+#: mcs-plugin/xfwm4_plugin.c:1453
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "KierrÃ€tÃ€ tyÃ¶pÃ¶ytiÃ€ kun ikkuna raahataan ulos nÃ€ytÃ¶stÃ€"
 
-#: mcs-plugin/xfwm4_plugin.c:1452
+#: mcs-plugin/xfwm4_plugin.c:1459
 msgid "Wrap workspaces"
 msgstr "KierrÃ€tÃ€ tyÃ¶pÃ¶ytiÃ€"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1468
 msgid "Display content of windows when resizing"
 msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ kokoa muutettaessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1474
 msgid "Opaque resize"
 msgstr "Samea koon muutos "
 
-#: mcs-plugin/xfwm4_plugin.c:1476
+#: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Display content of windows when moving"
 msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essa"
 
-#: mcs-plugin/xfwm4_plugin.c:1482
+#: mcs-plugin/xfwm4_plugin.c:1489
 msgid "Opaque move"
 msgstr "Samea siirto"
 
-#: mcs-plugin/xfwm4_plugin.c:1491
+#: mcs-plugin/xfwm4_plugin.c:1498
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
 
-#: mcs-plugin/xfwm4_plugin.c:1493
+#: mcs-plugin/xfwm4_plugin.c:1500
 msgid "Double click action"
 msgstr "Tuplaklikkaus toiminto"
 
-#: mcs-plugin/xfwm4_plugin.c:1498
+#: mcs-plugin/xfwm4_plugin.c:1505
 msgid "Misc."
 msgstr "Sekalaiset"
-
-#: mcs-plugin/xfwm4_plugin.c:1568
-msgid "Window Manager"
-msgstr "Ikkuna manageri"
 
 #: src/client.c:376
 #, c-format
@@ -438,6 +431,9 @@ msgstr "%s: TyÃ¶pÃ¶ytien mÃ€Ã€rÃ€Ã€ ei asetettu, kÃ€ytetÃ€
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "Vaihta pÃ¶ydÃ€lle ..."
+
+#~ msgid "Layout :"
+#~ msgstr "Ulkoasu :"
 
 #, fuzzy
 #~ msgid "%s: Unidentified client message for window 0x%lx"

@@ -1430,36 +1430,36 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
 	{
             c->x = MyDisplayX(cx, cy) + left + frameLeft(c);
 	}
-	else if(leftMostHead && (frameX(c) + frameWidth(c) > MyDisplayMaxX(dpy, screen, cx, cy) - right))
+	if(leftMostHead && (frameX(c) + frameWidth(c) > MyDisplayMaxX(dpy, screen, cx, cy) - right))
 	{
             c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - frameWidth(c) + frameLeft(c);
+	}
+	if(bottomMostHead && (frameY(c) + frameHeight(c) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
+	{
+            c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
 	}
 	if(topMostHead && (frameY(c) < MyDisplayY(cx, cy) + top))
 	{
             c->y = MyDisplayY(cx, cy) + top + frameTop(c);
 	}
-	else if(topMostHead && (frameY(c) + frameHeight(c) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-	{
-            c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
-	}
     }
     else
     {
+	if(rightMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->x + CLIENT_MIN_VISIBLE > MyDisplayMaxX(dpy, screen, cx, cy) - right))
+	{
+	    c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
+	}
 	if(leftMostHead && ((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left))
 	{
 	    c->x = MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left - c->width;
 	}
-	else if(rightMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->x + CLIENT_MIN_VISIBLE > MyDisplayMaxX(dpy, screen, cx, cy) - right))
+	if(bottomMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->y + CLIENT_MIN_VISIBLE > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
 	{
-	    c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
+	    c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
 	}
 	if(topMostHead && (c->y + c->height < MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top))
 	{
 	    c->y = MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top - c->height;
-	}
-	else if(bottomMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->y + CLIENT_MIN_VISIBLE > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-	{
-	    c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
 	}
     }
 }
@@ -1495,23 +1495,7 @@ static inline void clientKeepVisible(Client * c)
         c->x = MyDisplayX(cx, cy) + (MyDisplayWidth(dpy, screen, cx, cy) - c->width) / 2;
         c->y = MyDisplayY(cx, cy) + (MyDisplayHeight(dpy, screen, cx, cy) - c->height) / 2;
     }
-
-    if((frameX(c) + frameWidth(c)) > MyDisplayMaxX(dpy, screen, cx, cy) - right)
-    {
-        c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - frameWidth(c) + frameLeft(c);
-    }
-    if(frameX(c) < MyDisplayX(cx, cy) + left)
-    {
-        c->x = MyDisplayX(cx, cy) + left + frameLeft(c);
-    }
-    if((frameY(c) + frameHeight(c)) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom)
-    {
-        c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
-    }
-    if(frameY(c) < MyDisplayY(cx, cy) + top)
-    {
-        c->y = MyDisplayY(cx, cy) + top + frameTop(c);
-    }
+    clientConstraintPos(c, TRUE);
 }
 
 /* Compute rectangle overlap area */

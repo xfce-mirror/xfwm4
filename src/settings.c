@@ -347,22 +347,22 @@ static void loadMcsData(Settings rc[])
         }
         if(mcs_client_get_setting(client, "Xfwm/LeftMargin", CHANNEL2, &setting) == MCS_SUCCESS)
         {
-            set_settings_margin(MARGIN_LEFT, setting->data.v_int);
+            setIntValueFromInt("margin_left", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
         if(mcs_client_get_setting(client, "Xfwm/RightMargin", CHANNEL2, &setting) == MCS_SUCCESS)
         {
-            set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
+            setIntValueFromInt("margin_right", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
         if(mcs_client_get_setting(client, "Xfwm/BottomMargin", CHANNEL2, &setting) == MCS_SUCCESS)
         {
-            set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
+            setIntValueFromInt("margin_bottom", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
         if(mcs_client_get_setting(client, "Xfwm/TopMargin", CHANNEL2, &setting) == MCS_SUCCESS)
         {
-            set_settings_margin(MARGIN_TOP, setting->data.v_int);
+            setIntValueFromInt("margin_top", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
     }

@@ -393,7 +393,6 @@ static void cb_layout_value_changed(GtkWidget * widget, gpointer user_data)
 static GtkWidget *create_layout_buttons(gchar * layout, gpointer user_data)
 {
     GtkWidget *table;
-    GtkWidget *label;
     GtkWidget *label_row;
     GtkWidget *radio_button;
     GSList *radio_button_group;

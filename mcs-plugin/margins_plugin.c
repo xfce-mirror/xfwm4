@@ -107,7 +107,7 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
     manager = mcs_plugin->manager;
 
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup(_("Desktop margins"));
+    mcs_plugin->caption = g_strdup(_("Workspace Margins"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon = inline_icon_at_size(margins_icon_data, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE);
 
@@ -166,7 +166,7 @@ static void margin_changed(GtkSpinButton * spin, gpointer p)
 static void run_dialog(McsPlugin * mcs_plugin)
 {
     static GtkWidget *dialog = NULL;
-    GtkWidget *mainvbox, *header, *frame, *vbox, *hbox, *label, *spin, *image;
+    GtkWidget *mainvbox, *frame, *header, *vbox, *hbox, *label, *spin, *image;
     GtkSizeGroup *sg;
     GdkPixbuf *icon;
     GdkPixbuf *monitor;
@@ -187,13 +187,12 @@ static void run_dialog(McsPlugin * mcs_plugin)
     wmax = gdk_screen_width() / 4;
     hmax = gdk_screen_height() / 4;
 
-    dialog = gtk_dialog_new_with_buttons(_("Margins"), NULL, GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE, GTK_RESPONSE_OK, NULL);
+    dialog = gtk_dialog_new_with_buttons(_("Adjust workspace margins"), NULL, GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE, GTK_RESPONSE_OK, NULL);
 
     gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
-
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
-
+    
     g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
     g_signal_connect(dialog, "delete-event", G_CALLBACK(gtk_widget_destroy), NULL);
 
@@ -205,40 +204,42 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_window_set_icon(GTK_WINDOW(dialog), icon);
     g_object_unref(icon);
 
-    header = create_header(icon, _("Desktop Margins"));
+    header = create_header(icon, _("Workspace Margins"));
     gtk_widget_show(header);
     gtk_box_pack_start(GTK_BOX(mainvbox), header, TRUE, TRUE, 0);
 
-    label = gtk_label_new(_("Margins are areas on the edges of the screen\n" 
-			    "where no windows will be placed"));
+    label = gtk_label_new(_("Margins are areas on the edges of the screen where no window will be placed"));
+    gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);    
     gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
     gtk_misc_set_padding(GTK_MISC(label), BORDER, 4);
     gtk_widget_show(label);
-    gtk_box_pack_start(GTK_BOX(mainvbox), label, FALSE, TRUE, 0);
-
-    hbox = gtk_hbox_new(FALSE, BORDER);
-    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
-    gtk_widget_show(hbox);
-    gtk_box_pack_start(GTK_BOX(mainvbox), hbox, TRUE, TRUE, 0);
-
-    frame = gtk_frame_new(NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(hbox), frame, FALSE, FALSE, 0);
-    
-    monitor = inline_icon_at_size(monitor_icon_data, 179, 160);
-    image = gtk_image_new_from_pixbuf(monitor);
-    gtk_widget_show(image);
-    gtk_container_add(GTK_CONTAINER(frame), image);
-
-    frame = gtk_frame_new(_("Margins"));
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(hbox), frame, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(mainvbox), label, FALSE, FALSE, 0);
 
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 5);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
+
+    frame = gtk_frame_new(_("Workspace Margins"));
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox), frame, TRUE, TRUE, 5);
+
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
+    gtk_widget_show(hbox);
+    gtk_container_add(GTK_CONTAINER(frame), hbox);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), 5);
+
+    monitor = inline_icon_at_size(monitor_icon_data, -1, -1);
+    image = gtk_image_new_from_pixbuf(monitor);
+    gtk_widget_show(image);
+    gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+
+    vbox = gtk_vbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+    gtk_widget_show(vbox);
+    gtk_box_pack_end(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
 
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
 
@@ -279,7 +280,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[1]);
 
-    i = 1;
+    i++;
     g_signal_connect(spin, "changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     /* top */
@@ -299,7 +300,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[2]);
 
-    i = 2;
+    i++;
     g_signal_connect(spin, "changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     /* bottom */
@@ -307,7 +308,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, TRUE, 0);
 
-    label = gtk_label_new(_("Bottom:"));
+    label = gtk_label_new(_("Bottom :"));
     gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
     gtk_size_group_add_widget(sg, label);
     gtk_widget_show(label);
@@ -319,7 +320,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[3]);
 
-    i = 3;
+    i++;
     g_signal_connect(spin, "changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     gtk_widget_show(dialog);
