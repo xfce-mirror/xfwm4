@@ -20,6 +20,7 @@ iceg \
 kde \
 kindaker \
 linea \
+metabox \
 microgui \
 mofit \
 next \

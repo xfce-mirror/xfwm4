@@ -72,6 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/iceg
 %{_datadir}/xfwm4/themes/kde
 %{_datadir}/xfwm4/themes/linea
+%{_datadir}/xfwm4/themes/metabox
 %{_datadir}/xfwm4/themes/microgui
 %{_datadir}/xfwm4/themes/mofit
 %{_datadir}/xfwm4/themes/next

@@ -62,6 +62,7 @@ themes/iceg/Makefile
 themes/kde/Makefile
 themes/kindaker/Makefile
 themes/linea/Makefile
+themes/metabox/Makefile
 themes/microgui/Makefile
 themes/mofit/Makefile
 themes/next/Makefile
