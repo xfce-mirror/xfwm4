@@ -1,8 +1,6 @@
-include ".gtkrc"
-
 style "titlebar"
 {
-  font_name = "Sans Bold 12"
+  font_name = "Sans 10"
 }
 
 widget "xfwm"        style "titlebar"
