@@ -1983,7 +1983,8 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         if (!exclude || (c != exclude))
         {
             if ((c->win_layer <= layer) && clientAcceptFocus (c)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
+                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE)
+                && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
             {
                 top = c;
             }
@@ -3698,8 +3699,7 @@ clientGetNext (Client * c, int mask)
         for (c2 = c->next, i = 0; (c2) && (i < client_count);
             c2 = c2->next, i++)
         {
-            if ((c2->type == WINDOW_SPLASHSCREEN)
-                || (c2->type == WINDOW_DESKTOP))
+            if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
             {
                 continue;
             }
@@ -3725,8 +3725,7 @@ clientGetPrevious (Client * c, int mask)
         for (c2 = c->prev, i = 0; (c2) && (i < client_count);
             c2 = c2->prev, i++)
         {
-            if ((c2->type == WINDOW_SPLASHSCREEN)
-                || (c2->type == WINDOW_DESKTOP))
+            if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
             {
                 continue;
             }
