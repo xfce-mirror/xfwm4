@@ -1,0 +1,18 @@
+/* XPM */
+static char * close_inactive_xpm[] = {
+"9 10 5 1",
+" 	c None",
+".	c #7F7F7F s inactive_shadow_2",
+"+	c #F7F7F7 s inactive_hilight_2",
+"@	c #CFCFCF s inactive_color_2",
+"#	c #000000 s inactive_border_color",
+"         ",
+".........",
+".#######+",
+".#@@@@@#+",
+".#@@@@@#+",
+".#@@@@@#+",
+".#@@@@@#+",
+".#@@@@@#+",
+".#######+",
+".++++++++"};

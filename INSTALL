@@ -1,0 +1,15 @@
+Installation
+============
+
+Type the following:
+
+	./configure
+	make
+	make install
+
+The default install locations are /usr/local/bin and /usr/local/share.
+
+If you want to change the install location, use configure's --prefix option
+e.g. ./configure --prefix=/usr will install into /usr/bin and /usr/share.
+
+If you want to enable debugging output use the --enable-debug option.

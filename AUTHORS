@@ -1,0 +1,17 @@
+Authors and Contributors for Oroborus
+=====================================
+
+Author:
+	Ken Lynch <kenlynch@blueyonder.co.uk>
+
+Contributors:
+	Martin Hedenfalk
+	(border snapping, workspace keys, vertical/horizontal maximizing)
+
+Acknowledgments:
+	I would like to thank Decklin Foster for writing AEWM which I used to
+	help me write Oroborus. I would also like to thank Tomohiro Kubota for
+	the i18n code which I used to implement i18n support in Oroborus.
+
+	Finally I would like to thank all of you who have helped me to debug and
+	fine tune Oroborus and make it what it is today.

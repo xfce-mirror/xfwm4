@@ -1,0 +1,19 @@
+Oroborus Readme
+===============
+
+Oroborus is a small yet fully featured GNOME compliant window manager for the
+X Window System. It is distributed under the GPL (see LICENSE for more details).
+
+The code is sort of based on AEWM by Decklin Foster in that I studied that code
+to find out how a window manager works. It has since evolved into something
+quite beautiful.
+
+The I18N internationalisation code was taken from the TWM I18N patch from the
+I18N documentation available at www.debian.org.
+
+The main aim of Oroborus is to be small and light with very few fancy features,
+so there are no docks, no taskbars, no root menus and no icons. These can be
+added quite easily by either using Oroborus with GNOME or using some other
+applications that provide the required functionality.
+
+Have fun!

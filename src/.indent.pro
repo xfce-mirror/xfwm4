@@ -1,0 +1,13 @@
+-i4
+-bli0
+-cli4
+-l80
+-nut
+-npsl
+-nbbo
+-ncs
+-npcs
+-nprs
+-nsaf
+-nsai
+-nsaw

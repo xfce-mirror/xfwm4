@@ -1,0 +1,16 @@
+Things to do
+============
+
+* Implement freedesktop.org standards                           ** DONE **
+* Use pango for font redering (aa text, multibytes, etc)        ** DONE **
+* Add new buttons for menu and stick/unstick
+* Implement window menu                                         ** PARTIAL **
+* Implement xsettings
+* Implement session management
+* Reimplement Xinerama support
+* Implement autoraise window using GTK timeout                  ** DONE **
+* Make transient windows stay stacked above their parents       ** DONE **
+* Implement GTK event loop                                      ** DONE **
+* Implement GTK menus                                           ** DONE **
+* Bugfix on MapRequest (crash when mapping/unmapping quickly)   ** DONE **
+

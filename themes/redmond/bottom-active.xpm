@@ -1,0 +1,12 @@
+/* XPM */
+static char * bottom_active_xpm[] = {
+"5 4 5 1",
+" 	c None",
+".	c #0E5EEE",
+"+	c #0E5AE2",
+"@	c #0A4EC2",
+"#	c #020A1A",
+".....",
+"+++++",
+"@@@@@",
+"#####"};
