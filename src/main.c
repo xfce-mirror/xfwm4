@@ -170,9 +170,8 @@ static void handleSignal(int sig)
             reload = True;
             break;
         case SIGSEGV:
-            fprintf(stderr, "%s: Segmentation fault\n", progname);
             cleanUp();
-            exit(1);
+            g_error(_("%s: Segmentation fault"), g_get_prgname());
             break;
         default:
             break;
