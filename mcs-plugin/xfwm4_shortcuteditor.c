@@ -797,6 +797,12 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
     shortcut_tree_foreach_struct stfs;
     ThemeInfo *ti;
 
+    if (!gdk_keyval_name (event->keyval))
+    {
+        gdk_beep();
+        return FALSE;
+    }
+
     selection3 = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
     selection4 = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview4));
 
@@ -822,7 +828,8 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
         strcat (shortcut_string, "Alt+");
     }
 
-    strcat (shortcut_string, gdk_keyval_name (event->keyval));
+    if (gdk_keyval_name (event->keyval))
+        strcat (shortcut_string, gdk_keyval_name (event->keyval));
 
     /* Release keyboard */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
