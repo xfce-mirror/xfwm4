@@ -123,6 +123,7 @@ USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 XFCE_MCS_MANAGER_CFLAGS = @XFCE_MCS_MANAGER_CFLAGS@
 XFCE_MCS_MANAGER_LIBS = @XFCE_MCS_MANAGER_LIBS@
+XFCE_MCS_MANAGER_PLUGINSDIR = @XFCE_MCS_MANAGER_PLUGINSDIR@
 XFCE_MCS_MANAGER_REQUIRED_VERSION = @XFCE_MCS_MANAGER_REQUIRED_VERSION@
 XGETTEXT = @XGETTEXT@
 X_CFLAGS = @X_CFLAGS@
@@ -166,7 +167,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
-xfwm4_plugindir = $(libdir)/xfce-mcs-manager/plugins
+xfwm4_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 

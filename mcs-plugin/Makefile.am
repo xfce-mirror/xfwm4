@@ -1,7 +1,7 @@
 # mcs-plugin/Makefile.am
 #
 
-xfwm4_plugindir = $(libdir)/xfce-mcs-manager/plugins
+xfwm4_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 

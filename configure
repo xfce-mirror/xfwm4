@@ -308,7 +308,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS LIBXPM_CFLAGS LIBXPM_LDFLAGS LIBXPM_LIBS PKG_CONFIG LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBXFCE4MCS_MANAGER_REQUIRED_VERSION LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS LIBXPM_CFLAGS LIBXPM_LDFLAGS LIBXPM_LIBS PKG_CONFIG LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBXFCE4MCS_MANAGER_REQUIRED_VERSION LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION XFCE_MCS_MANAGER_PLUGINSDIR LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -8462,6 +8462,7 @@ echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 0.0.16) not met; c
 
 
 
+
   succeeded=no
 
   if test -z "$PKG_CONFIG"; then
@@ -8515,23 +8516,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for xfce-mcs-manager >= 0.1.0" >&5
-echo $ECHO_N "checking for xfce-mcs-manager >= 0.1.0... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for xfce-mcs-manager >= 0.2.0" >&5
+echo $ECHO_N "checking for xfce-mcs-manager >= 0.2.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "xfce-mcs-manager >= 0.1.0" ; then
+        if $PKG_CONFIG --exists "xfce-mcs-manager >= 0.2.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking XFCE_MCS_MANAGER_CFLAGS" >&5
 echo $ECHO_N "checking XFCE_MCS_MANAGER_CFLAGS... $ECHO_C" >&6
-            XFCE_MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "xfce-mcs-manager >= 0.1.0"`
+            XFCE_MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "xfce-mcs-manager >= 0.2.0"`
             echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_CFLAGS" >&5
 echo "${ECHO_T}$XFCE_MCS_MANAGER_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking XFCE_MCS_MANAGER_LIBS" >&5
 echo $ECHO_N "checking XFCE_MCS_MANAGER_LIBS... $ECHO_C" >&6
-            XFCE_MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "xfce-mcs-manager >= 0.1.0"`
+            XFCE_MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "xfce-mcs-manager >= 0.2.0"`
             echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_LIBS" >&5
 echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
         else
@@ -8539,7 +8540,7 @@ echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
             XFCE_MCS_MANAGER_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            XFCE_MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "xfce-mcs-manager >= 0.1.0"`
+            XFCE_MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "xfce-mcs-manager >= 0.2.0"`
             echo $XFCE_MCS_MANAGER_PKG_ERRORS
         fi
 
@@ -8554,13 +8555,21 @@ echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (xfce-mcs-manager >= 0.1.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (xfce-mcs-manager >= 0.1.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (xfce-mcs-manager >= 0.2.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (xfce-mcs-manager >= 0.2.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  XFCE_MCS_MANAGER_REQUIRED_VERSION=0.1.0
+  XFCE_MCS_MANAGER_REQUIRED_VERSION=0.2.0
 
+
+
+    echo "$as_me:$LINENO: checking where to install MCS plugins" >&5
+echo $ECHO_N "checking where to install MCS plugins... $ECHO_C" >&6
+  XFCE_MCS_MANAGER_PLUGINSDIR=`$PKG_CONFIG --variable=pluginsdir xfce-mcs-manager`
+
+  echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_PLUGINSDIR" >&5
+echo "${ECHO_T}$XFCE_MCS_MANAGER_PLUGINSDIR" >&6
 
 
 
@@ -9581,6 +9590,7 @@ s,@LIBXFCEGUI4_REQUIRED_VERSION@,$LIBXFCEGUI4_REQUIRED_VERSION,;t t
 s,@XFCE_MCS_MANAGER_CFLAGS@,$XFCE_MCS_MANAGER_CFLAGS,;t t
 s,@XFCE_MCS_MANAGER_LIBS@,$XFCE_MCS_MANAGER_LIBS,;t t
 s,@XFCE_MCS_MANAGER_REQUIRED_VERSION@,$XFCE_MCS_MANAGER_REQUIRED_VERSION,;t t
+s,@XFCE_MCS_MANAGER_PLUGINSDIR@,$XFCE_MCS_MANAGER_PLUGINSDIR,;t t
 s,@LIBSTARTUP_NOTIFICATION_CFLAGS@,$LIBSTARTUP_NOTIFICATION_CFLAGS,;t t
 s,@LIBSTARTUP_NOTIFICATION_LIBS@,$LIBSTARTUP_NOTIFICATION_LIBS,;t t
 s,@LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION@,$LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION,;t t

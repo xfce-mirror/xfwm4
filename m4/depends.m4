@@ -46,3 +46,19 @@ AC_DEFUN([XFCE_PANEL_PLUGIN],
   AC_SUBST([$1_PLUGINSDIR])
   AC_MSG_RESULT([$$1_PLUGINSDIR])
 ])
+
+dnl
+dnl XFCE_MCS_PLUGIN(var, version)
+dnl
+dnl sets $var_CFLAGS, $var_LIBS and $var_PLUGINSDIR
+dnl
+AC_DEFUN([XFCE_MCS_PLUGIN],
+[
+  BM_DEPEND([$1], [xfce-mcs-manager], [$2])
+
+  dnl Check where to put the plugins to
+  AC_MSG_CHECKING([where to install MCS plugins])
+  $1_PLUGINSDIR=`$PKG_CONFIG --variable=pluginsdir xfce-mcs-manager`
+  AC_SUBST([$1_PLUGINSDIR])
+  AC_MSG_RESULT([$$1_PLUGINSDIR])
+])
