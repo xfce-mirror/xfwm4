@@ -101,11 +101,12 @@ createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
 }
 
 void
-sendClientMessage (ScreenInfo *screen_info, Window w, Atom a, Time timestamp)
+sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestamp)
 {
     DisplayInfo *display_info = NULL;
     XClientMessageEvent ev;
 
+    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
     TRACE ("entering sendClientMessage");
 
     display_info = screen_info->display_info;
@@ -113,7 +114,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, Atom a, Time timestamp)
     ev.window = w;
     ev.message_type = display_info->atoms[WM_PROTOCOLS];
     ev.format = 32;
-    ev.data.l[0] = a;
+    ev.data.l[0] = display_info->atoms[atom_id];
     ev.data.l[1] = timestamp;
     XSendEvent (myScreenGetXDisplay (screen_info), w, FALSE, 0L, (XEvent *)&ev);
 }

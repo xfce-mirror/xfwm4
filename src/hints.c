@@ -141,7 +141,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
                 result |= WM_PROTOCOLS_DELETE_WINDOW;
             }
             /* KDE extension */
-            if (*ap == (Atom) display_info->atoms[KDE_NET_WM_CONTEXT_HELP])
+            if (*ap == (Atom) display_info->atoms[NET_WM_CONTEXT_HELP])
             {
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
             }
@@ -164,7 +164,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
                     result |= WM_PROTOCOLS_DELETE_WINDOW;
                 }
                 /* KDE extension */
-                if (*ap == (Atom) display_info->atoms[KDE_NET_WM_CONTEXT_HELP])
+                if (*ap == (Atom) display_info->atoms[NET_WM_CONTEXT_HELP])
                 {
                     result |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
@@ -187,6 +187,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     unsigned long items_read, items_left;
     long *data = NULL;
 
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getHint");
 
     *value = 0;
@@ -208,6 +209,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
 void
 setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
 {
+    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
     TRACE ("entering setHint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL, 
@@ -412,6 +414,9 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    TRACE ("entering getAtomList()");
+
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
                              0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms, 
                              &bytes_after, (unsigned char **) &atoms) != Success) || (type == None))
@@ -447,6 +452,9 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
 
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
+
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    TRACE ("entering getCardinalList()");
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
                              0, G_MAXLONG, FALSE, XA_CARDINAL,
@@ -525,6 +533,7 @@ initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int w
 void
 setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const char *val)
 {
+    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
     TRACE ("entering set_utf8_string_hint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], 
@@ -567,6 +576,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, i
     unsigned char *str;
     unsigned long n_items;
 
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getUTF8String");
 
     *str_p = NULL;

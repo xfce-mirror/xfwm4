@@ -55,7 +55,6 @@ myDisplayInitAtoms (DisplayInfo *display_info)
 {
     char *atom_names[] = {
         "GNOME_PANEL_DESKTOP_AREA",
-        "_NET_WM_CONTEXT_HELP",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",
@@ -86,6 +85,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_ACTION_SHADE",
         "_NET_WM_ACTION_STICK",
         "_NET_WM_ALLOWED_ACTIONS",
+        "_NET_WM_CONTEXT_HELP",
         "_NET_WM_DESKTOP",
         "_NET_WM_ICON",
         "_NET_WM_ICON_GEOMETRY",
@@ -145,10 +145,11 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_XSETROOT_ID"
     };
     
+    g_assert (NB_ATOMS == G_N_ELEMENTS (atom_names));
     return (XInternAtoms (display_info->dpy, 
                           atom_names, 
-                          G_N_ELEMENTS (atom_names),
-                          FALSE, display_info->atoms) == Success);
+                          NB_ATOMS,
+                          FALSE, display_info->atoms) != 0);
 }
 
 DisplayInfo *
@@ -164,11 +165,18 @@ myDisplayInit (GdkDisplay *gdisplay)
 
     XSetErrorHandler (handleXError);
 
+    /* Initialize internal atoms */
+    if (!myDisplayInitAtoms (display))
+    {
+        g_warning ("Some internal atoms were not properly created.");
+    }
+
+    /* Test XShape extension support */
     display->shape = 
         XShapeQueryExtension (display->dpy, &display->shape_event, &dummy);
     if (!display->shape)
     {
-        g_warning ("%s: The display does not support the XShape extension.", PACKAGE);
+        g_warning ("The display does not support the XShape extension.");
     }
 
     display->root_cursor = 
@@ -199,8 +207,6 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->dbl_click_time = 300;
     display->nb_screens = 0;
     display->current_time = CurrentTime;
-
-    myDisplayInitAtoms (display);
     
     compositorInitDisplay (display);
 

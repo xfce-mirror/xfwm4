@@ -2219,8 +2219,7 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (screen_info, c->window, 
-                           display_info->atoms[WM_DELETE_WINDOW], CurrentTime);
+        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, CurrentTime);
     }
     else
     {
@@ -2254,8 +2253,7 @@ clientEnterContextMenuState (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->screen_info, c->window, 
-                           display_info->atoms[KDE_NET_WM_CONTEXT_HELP], CurrentTime);
+        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP, CurrentTime);
     }
 }
 
