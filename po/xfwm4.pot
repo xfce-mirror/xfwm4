@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-06-18 23:08+0200\n"
+"POT-Creation-Date: 2003-06-21 14:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -270,7 +270,7 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1267
+#: src/events.c:1276
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -280,22 +280,17 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:248
-#, c-format
-msgid "%s: Running without session manager"
-msgstr ""
-
-#: src/main.c:358
+#: src/main.c:349
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:363
+#: src/main.c:354
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:390
+#: src/main.c:381
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
@@ -366,37 +361,37 @@ msgstr ""
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: src/settings.c:282
+#: src/settings.c:283
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr ""
 
-#: src/settings.c:507
+#: src/settings.c:508
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:514
+#: src/settings.c:515
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:558
+#: src/settings.c:559
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:565
+#: src/settings.c:566
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:755
+#: src/settings.c:756
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1096
+#: src/settings.c:1097
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

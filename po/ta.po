@@ -6,98 +6,98 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-01 19:10+0200\n"
+"POT-Creation-Date: 2003-06-21 14:14+0200\n"
 "PO-Revision-Date: 2003-05-08 22:59+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
-#: mcs-plugin/margins_plugin.c:250
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "§Å¨ÄÂ¢¼ ±ø¨Ä¸û"
 
-#: mcs-plugin/margins_plugin.c:211
+#: mcs-plugin/margins_plugin.c:217
 msgid "Adjust workspace margins"
 msgstr "§Å¨ÄÂ¢¼ ±ø¨Ä¸¨Ç Á¡üÚ¸"
 
-#: mcs-plugin/margins_plugin.c:237
+#: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "º¡ÇÃí¸û ±¨ÅÔõ ¾¢¨Ã ±ø¨Ä¸Ç¢ø §À¡¼ôÀ¼¡Ð"
 
-#: mcs-plugin/margins_plugin.c:278
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr "­¼Ð :"
 
-#: mcs-plugin/margins_plugin.c:298
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr "ÅÄÐ :"
 
-#: mcs-plugin/margins_plugin.c:318
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr "§Áø :"
 
-#: mcs-plugin/margins_plugin.c:338
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr "¸£ú :"
 
-#: mcs-plugin/xfwm4_plugin.c:117
+#: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
 msgstr "¾¨ÄôÒ"
 
-#: mcs-plugin/xfwm4_plugin.c:118
+#: mcs-plugin/xfwm4_plugin.c:117
 msgid "Menu"
 msgstr "ÀðÊ"
 
-#: mcs-plugin/xfwm4_plugin.c:119
+#: mcs-plugin/xfwm4_plugin.c:118
 msgid "Stick"
 msgstr "´ðÎ"
 
-#: mcs-plugin/xfwm4_plugin.c:120
+#: mcs-plugin/xfwm4_plugin.c:119
 msgid "Shade"
 msgstr "¿¢Æø ¾Ãõ"
 
-#: mcs-plugin/xfwm4_plugin.c:121
+#: mcs-plugin/xfwm4_plugin.c:120
 msgid "Hide"
 msgstr "Á¨È"
 
-#: mcs-plugin/xfwm4_plugin.c:122
+#: mcs-plugin/xfwm4_plugin.c:121
 msgid "Maximize"
 msgstr "¦ÀÕ¾¡ìÌ"
 
-#: mcs-plugin/xfwm4_plugin.c:123
+#: mcs-plugin/xfwm4_plugin.c:122
 msgid "Close"
 msgstr "ãÎ"
 
-#: mcs-plugin/xfwm4_plugin.c:127
+#: mcs-plugin/xfwm4_plugin.c:126
 msgid "Shade window"
 msgstr "Åñ½-º¡ÇÃõ"
 
-#: mcs-plugin/xfwm4_plugin.c:128
+#: mcs-plugin/xfwm4_plugin.c:127
 msgid "Hide window"
 msgstr "º¡ÇÃõ Á¨È"
 
-#: mcs-plugin/xfwm4_plugin.c:129
+#: mcs-plugin/xfwm4_plugin.c:128
 msgid "Maximize window"
 msgstr "º¡ÇÃõ ¦ÀÕ¾¡ìÌ"
 
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:129
 msgid "Nothing"
 msgstr "²Ðõ þø¨Ä"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:134
 msgid "Left"
 msgstr "­¼Ð"
 
-#: mcs-plugin/xfwm4_plugin.c:136
+#: mcs-plugin/xfwm4_plugin.c:135
 msgid "Center"
 msgstr "¿ÎÅ¢ø"
 
-#: mcs-plugin/xfwm4_plugin.c:137
+#: mcs-plugin/xfwm4_plugin.c:136
 msgid "Right"
 msgstr "ÅÄÐ"
 
@@ -105,63 +105,60 @@ msgstr "ÅÄÐ"
 msgid "Hidden"
 msgstr "Á¨Èó¾Ð"
 
-#: mcs-plugin/xfwm4_plugin.c:1233
+#: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
 msgstr "²ØòÐÕ §¾÷ó¦¾ÎìÌõ ¯¨ÃÂ¡¼ø"
 
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1945
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "º¡ÇÃ§ÁÄ¡Ç÷"
 
-#: mcs-plugin/xfwm4_plugin.c:1317
+#: mcs-plugin/xfwm4_plugin.c:1288
 msgid "Window Manager Preferences"
 msgstr "º¡ÇÃ§ÁÄ¡Ç÷ Å¢ÕôÀí¸û"
 
-#: mcs-plugin/xfwm4_plugin.c:1354
-msgid "Window style"
-msgstr "º¡ÇÃõ À¡½¢"
-
-#: mcs-plugin/xfwm4_plugin.c:1372
-msgid "Font select :"
-msgstr "±ØòÐÕ ¦¾Ã¢×¦ºö¸ :"
-
-#: mcs-plugin/xfwm4_plugin.c:1382
+#: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
 msgstr "¾¨ÄôÒ ±ØòÐÕ"
 
-#: mcs-plugin/xfwm4_plugin.c:1393
-msgid "Text alignment inside title bar :"
-msgstr "º¡ÇÃò¾¢ý ¾¨ÄôÒô Àð¨¼Â¢ø «¨Ã ¦À¡Õò¾õ :"
-
-#: mcs-plugin/xfwm4_plugin.c:1399
+#: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
 msgstr "¾¨ÄôÒ þ¼õ «¨ÁôÒ"
 
-#: mcs-plugin/xfwm4_plugin.c:1411
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "º¡ÇÃò¾¢ý ¾¨ÄôÒô Àð¨¼Â¢ø «¨Ã ¦À¡Õò¾õ :"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
 msgstr "¦À¡ò¾¡ý «¨ÁôÒ"
 
-#: mcs-plugin/xfwm4_plugin.c:1416
+#: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
 msgstr "«Äí¸¡Ãõ À¡½¢"
 
-#: mcs-plugin/xfwm4_plugin.c:1449
+#: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
 msgstr "Å¢¨ºôÀÄ¨¸ ÌÚìÌ ÅÆ¢"
 
-#: mcs-plugin/xfwm4_plugin.c:1468
-msgid "Click to focus"
-msgstr "«Óì¸§ÅñÎõ"
-
-#: mcs-plugin/xfwm4_plugin.c:1482
-msgid "Focus follows mouse"
-msgstr "ÍðÊ þÕìÌÁ¢¼ò¾¢ø"
-
-#: mcs-plugin/xfwm4_plugin.c:1496
+#: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
 msgstr "º¡ÇÃõ ¦ÀÚõ Ó¨È¨Á"
 
-#: mcs-plugin/xfwm4_plugin.c:1506
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr "«Óì¸§ÅñÎõ"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr "ÍðÊ þÕìÌÁ¢¼ò¾¢ø"
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr "Ò¾¢Â º¡ÇÃò¾¢üÌ"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -169,11 +166,11 @@ msgstr ""
 "Ò¾¢¾¡¸ À¨¼ì¸ôÀð¼ º¡ÇÃí¸ÙìÌ \n"
 "¾¡É¡¸ ÍðÊ ¨¸ôÀ¢Ê ¦¸¡Îì¸×õ"
 
-#: mcs-plugin/xfwm4_plugin.c:1514
-msgid "New window focus"
-msgstr "Ò¾¢Â º¡ÇÃò¾¢üÌ"
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "¨¸ôÀ¢ÊôÒ/¯Â÷ò¾ø"
 
-#: mcs-plugin/xfwm4_plugin.c:1529
+#: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -181,23 +178,23 @@ msgstr ""
 "º¡ÇÃí¸ÙìÌ ¨¸ôÀ¢Ê ¸¢¨¼ìÌõ§À¡Ð \n"
 "«¨Å¸¨Ç ¾¡É¡¸ §Áø ¯Â÷ò¾×õ"
 
-#: mcs-plugin/xfwm4_plugin.c:1542
+#: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
 msgstr "º¡ÇÃò¨¾ ¯Â÷òÐõ ¾¡Á¾õ :"
 
-#: mcs-plugin/xfwm4_plugin.c:1550
+#: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
 msgstr "¦ÁÐÅ¡¸"
 
-#: mcs-plugin/xfwm4_plugin.c:1558
+#: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Fast"
 msgstr "§Å¸Á¡¸"
 
-#: mcs-plugin/xfwm4_plugin.c:1582
-msgid "Raise on focus"
-msgstr "¨¸ôÀ¢ÊôÒ/¯Â÷ò¾ø"
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "«ÓòÐõ §À¡Ð ¯Â÷òÐ"
 
-#: mcs-plugin/xfwm4_plugin.c:1592
+#: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -205,112 +202,104 @@ msgstr ""
 "¿¢Ãø º¡ÇÃò¾¢üÌû «ÓòÐõ§À¡Ð\n"
 "º¡ÇÃò¨¾ ¯Â÷òÐ"
 
-#: mcs-plugin/xfwm4_plugin.c:1601
-msgid "Raise on click"
-msgstr "«ÓòÐõ §À¡Ð ¯Â÷òÐ"
-
-#: mcs-plugin/xfwm4_plugin.c:1606
+#: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
 msgstr "Å¢¨ºôÀÄ¨¸Ôõ ¨¸ôÀ¢ÊÔõ"
 
-#: mcs-plugin/xfwm4_plugin.c:1629
-msgid "Snap windows to screen border"
-msgstr "º¡ÇÃí¸¨Ç ¾¢¨È ±ø¨ÄÔ¼ý §À¡Î¸"
-
-#: mcs-plugin/xfwm4_plugin.c:1638
-msgid "Snap windows to other windows"
-msgstr "º¡ÇÃí¸¨Ç ÁüÈ º¡ÇÃí¸Ù¼ý §À¡Î¸"
-
-#: mcs-plugin/xfwm4_plugin.c:1651
-msgid "Distance :"
-msgstr "àÃõ :"
-
-#: mcs-plugin/xfwm4_plugin.c:1659 mcs-plugin/xfwm4_plugin.c:1734
-msgid "Small"
-msgstr "«Õ¸¢ø"
-
-#: mcs-plugin/xfwm4_plugin.c:1667 mcs-plugin/xfwm4_plugin.c:1742
-msgid "Wide"
-msgstr "«¸Äõ"
-
-#: mcs-plugin/xfwm4_plugin.c:1690
+#: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
 msgstr "º¡ÇÃí¸û §À¡Î¾ø"
 
-#: mcs-plugin/xfwm4_plugin.c:1705
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "º¡ÇÃí¸¨Ç ¾¢¨È ±ø¨ÄÔ¼ý §À¡Î¸"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "º¡ÇÃí¸¨Ç ÁüÈ º¡ÇÃí¸Ù¼ý §À¡Î¸"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "àÃõ :"
+
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "«Õ¸¢ø"
+
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr "«¸Äõ"
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "§Å¨Ä þ¼í¸û ÁÊôÒ"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
 #, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "µ÷ º¡ÇÃò¨¾ ¾¢¨Ã ±ø¨ÄìÌ ¦ÅÇ¢§Â þØìÌõ §À¡Ð §Å¨Ä þ¼ò¨¾ ÁÊ"
 
-#: mcs-plugin/xfwm4_plugin.c:1714
+#: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "µ÷ º¡ÇÃò¨¾ ¾¢¨Ã ±ø¨ÄìÌ ¦ÅÇ¢§Â þØìÌõ §À¡Ð §Å¨Ä þ¼ò¨¾ ÁÊ"
 
-#: mcs-plugin/xfwm4_plugin.c:1726
+#: mcs-plugin/xfwm4_plugin.c:1630
 #, fuzzy
 msgid "Edge Resistance :"
 msgstr "àÃõ :"
 
-#: mcs-plugin/xfwm4_plugin.c:1767
-msgid "Wrap workspaces"
-msgstr "§Å¨Ä þ¼í¸û ÁÊôÒ"
-
-#: mcs-plugin/xfwm4_plugin.c:1782
-msgid "Display content of windows when resizing"
-msgstr "º¡ÇÃò¾¢ý «Ç× Á¡üÚõ §À¡Ð ¯ûÇ¼ì¸í¸¨Ç ¸¡ñÀ¢ì¸×õ"
-
-#: mcs-plugin/xfwm4_plugin.c:1790
-msgid "Display content of windows when moving"
-msgstr "º¡ÇÃò¨¾ ¿¸÷òÐõ §À¡Ð ¯ûÇ¼ì¸í¸¨Ç ¸¡ñÀ¢ì¸×õ"
-
-#: mcs-plugin/xfwm4_plugin.c:1797
+#: mcs-plugin/xfwm4_plugin.c:1671
 #, fuzzy
 msgid "Opaque move and resize"
 msgstr "´Ç¢ À¡Â¡¾ «Ç× Á¡üÈõ"
 
-#: mcs-plugin/xfwm4_plugin.c:1808
-msgid "Action to perform when double clicking on title bar :"
-msgstr "¾¨ÄôÒô Àð¨¼Â¢ø þÃð¨¼ «Óò¾ø ¦ºÂø :"
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "º¡ÇÃò¾¢ý «Ç× Á¡üÚõ §À¡Ð ¯ûÇ¼ì¸í¸¨Ç ¸¡ñÀ¢ì¸×õ"
 
-#: mcs-plugin/xfwm4_plugin.c:1814
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "º¡ÇÃò¨¾ ¿¸÷òÐõ §À¡Ð ¯ûÇ¼ì¸í¸¨Ç ¸¡ñÀ¢ì¸×õ"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
 msgstr "þÃð¨¼ «Óò¾ø ¦ºÂø"
 
-#: mcs-plugin/xfwm4_plugin.c:1819
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "¾¨ÄôÒô Àð¨¼Â¢ø þÃð¨¼ «Óò¾ø ¦ºÂø :"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:441
+#: src/client.c:444
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: §ÁÄ¡ñ¨ÁÂüÈ net_wm_state (º¡ÇÃõ 0x%lx)"
 
-#: src/events.c:1290
+#: src/events.c:1276
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: ­Âì¸ò¾¢ðÌ ¬¾ÃÅÇ¢ôÒ þø¨Ä (þô¦À¡ØÐ)\n"
 
-#: src/main.c:182
+#: src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: ÀÌ¾¢Â¡ì¸ø ÀØÐ"
 
-#: src/main.c:235
-#, c-format
-msgid "%s: Running without session manager"
-msgstr "%s: «Á÷× §ÁÄ¡ñ¨Á þøÄ¡Áø þÂì¸õ"
-
-#: src/main.c:341
+#: src/main.c:349
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Áü¦È¡Õ º¡ÇÃ§ÁÄ¡Ç÷ ²ü¦¸É§Å þÂì¸ôÀðÎûÇÐ"
 
-#: src/main.c:346
+#: src/main.c:354
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: ¦¸¡¼¡¿¢¨Ä §¸¡ôÒ¸Ç¢ø ­øÄ¡¾ ¾Ã×¸û"
 
-#: src/main.c:373
+#: src/main.c:381
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: ¦¾Ã¢Â¡¾ À¢¨Æ ¿¨¼¦ÀüÚûÇÐ"
@@ -382,37 +371,37 @@ msgstr "§Å¨Ä þ¼õ"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenuìÌ ÍðÊ¨Â ¦ÀÈ ÓÊÂÅ¢ø¨Ä\n"
 
-#: src/settings.c:282
+#: src/settings.c:283
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: ¦¸¡¼¡¿¢¨Ä §¸¡ôÒ¸û þø¨Ä"
 
-#: src/settings.c:507
+#: src/settings.c:508
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: ¿¼ôÒ Åñ½õ ´Ðì¸£ ¨Åì¸ ÓÊÂÅ¢ø¨Ä %s\n"
 
-#: src/settings.c:514
+#: src/settings.c:515
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: ¿¼ôÒ Åñ½õ «Ä¸¢¼ ÓÊÂÅ¢ø¨Ä %s\n"
 
-#: src/settings.c:558
+#: src/settings.c:559
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: ¦ºÂÄüÈ Åñ½õ ´Ðì¸£ ¨Åì¸ ÓÊÂÅ¢ø¨Ä %s\n"
 
-#: src/settings.c:565
+#: src/settings.c:566
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: ¦ºÂÄüÈ Åñ½õ «Æ¸¢¼ ÓÊÂÅ¢ø¨Ä %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:756
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: ¦¸¡¼¡¿¢¨Ä §¸¡ôÀ¢ø þøÄ¡¾ Á¾¢ôÒ¸û"
 
-#: src/settings.c:1090
+#: src/settings.c:1097
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: §Å¨Ä-þ¼ ±ñ½¢ì¨¸ «¨Áì¸Å¢ø¨Ä, rc Á¾¢ô¨À ÀÂýÀÎòÐõ: %i"
@@ -420,6 +409,15 @@ msgstr "%s: §Å¨Ä-þ¼ ±ñ½¢ì¨¸ «¨Áì¸Å¢ø¨Ä, rc Á¾¢ô¨À �
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "þ¾ðÌ Á¡üÈ×õ ..."
+
+#~ msgid "Window style"
+#~ msgstr "º¡ÇÃõ À¡½¢"
+
+#~ msgid "Font select :"
+#~ msgstr "±ØòÐÕ ¦¾Ã¢×¦ºö¸ :"
+
+#~ msgid "%s: Running without session manager"
+#~ msgstr "%s: «Á÷× §ÁÄ¡ñ¨Á þøÄ¡Áø þÂì¸õ"
 
 #~ msgid "_Move"
 #~ msgstr "_¿¸÷òÐ"
