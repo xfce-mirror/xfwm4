@@ -1690,6 +1690,13 @@ clientSetWidth (Client * c, int w1)
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w1, c->name,
         c->window);
 
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    {
+	/* Bypass resize increment and max sizes for fullscreen */
+	c->width = w1;
+	return;
+    }
+    
     if ((c->size->flags & PResizeInc) && (c->size->width_inc))
     {
         w2 = (w1 - c->size->min_width) / c->size->width_inc;
@@ -1726,6 +1733,13 @@ clientSetHeight (Client * c, int h1)
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h1, c->name,
         c->window);
 
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    {
+	/* Bypass resize increment and max sizes for fullscreen */
+	c->height = h1;
+	return;
+    }
+    
     if ((c->size->flags & PResizeInc) && (c->size->height_inc))
     {
         h2 = (h1 - c->size->min_height) / c->size->height_inc;
