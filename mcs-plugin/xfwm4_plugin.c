@@ -48,8 +48,8 @@
 #define CHANNEL "xfwm4"
 #define PLUGIN_NAME "xfwm4"
 
-#define DEFAULT_THEME "default"
-#define DEFAULT_KEY_THEME "default.keys"
+#define DEFAULT_THEME "Default"
+#define DEFAULT_KEY_THEME "Default"
 #define DEFAULT_LAYOUT "OTS|HMC"
 #define DEFAULT_ACTION "maximize"
 #define DEFAULT_ALIGN "center"
@@ -57,6 +57,11 @@
 
 #define DEFAULT_ICON_SIZE 48
 #define MAX_ELEMENTS_BEFORE_SCROLLING 6
+
+#define SUFFIX      "xfwm4"
+#define KEY_SUFFIX  "xfwm4"
+#define KEYTHEMERC  "keythemerc"
+#define THEMERC     "themerc"
 
 #define STATES 8
 #define STATE_HIDDEN (STATES - 1)
@@ -588,27 +593,22 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
     gboolean set_font = FALSE;
 
     gchar *tmp;
+  
+    tmp = g_build_filename (theme_dir, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+    if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)
+        && parserc (tmp, &set_layout, &set_align, &set_font))
+    {
+        has_keybinding = TRUE;
+    }
+    g_free (tmp);
 
-    if (glib22_str_has_suffix (theme_dir, ".keys"))
+    tmp = g_build_filename (theme_dir, G_DIR_SEPARATOR_S, SUFFIX, G_DIR_SEPARATOR_S, THEMERC, NULL);
+    if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)
+        && parserc (tmp, &set_layout, &set_align, &set_font))
     {
-        tmp = g_build_filename (theme_dir, "keythemerc", NULL);
-        if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)
-            && parserc (tmp, &set_layout, &set_align, &set_font))
-        {
-            has_keybinding = TRUE;
-        }
-        g_free (tmp);
+        has_decoration = TRUE;
     }
-    else
-    {
-        tmp = g_build_filename (theme_dir, "themerc", NULL);
-        if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)
-            && parserc (tmp, &set_layout, &set_align, &set_font))
-        {
-            has_decoration = TRUE;
-        }
-        g_free (tmp);
-    }
+    g_free (tmp);
 
     theme_name = g_strdup (strrchr (theme_dir, G_DIR_SEPARATOR) + 1);
     info = find_theme_info_by_name (theme_name, list);
@@ -657,31 +657,30 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
 static GList *
 themes_common_list_add_dir (const char *dirname, GList * theme_list)
 {
-    DIR *dir;
+#ifdef HAVE_OPENDIR
     struct dirent *de;
-    GList *list = theme_list;
+    gchar *tmp;
+    DIR *dir;
 
-    g_return_val_if_fail (dirname != NULL, list);
+    g_return_val_if_fail(dirname != NULL, theme_list);
 
-    dir = opendir (dirname);
-
-    if (!dir)
-        return list;
-
-    while ((de = readdir (dir)))
+    if ((dir = opendir(dirname)) != NULL) 
     {
-        char *tmp;
+        while((de = readdir(dir))) 
+        {
+            if (de->d_name[0] == '.')
+                continue;
 
-        if (de->d_name[0] == '.')
-            continue;
+            tmp = g_build_filename(dirname, de->d_name, NULL);
+            theme_list = update_theme_dir(tmp, theme_list);
+            g_free(tmp);
+        }
 
-        tmp = g_build_filename (dirname, de->d_name, NULL);
-        list = update_theme_dir (tmp, list);
-        g_free (tmp);
+        closedir(dir);
     }
-    closedir (dir);
+#endif
 
-    return list;
+    return(theme_list);
 }
 
 
@@ -691,7 +690,7 @@ theme_common_init (GList * theme_list)
     gchar *dir;
     GList *list = theme_list;
 
-    dir = xfce_get_homefile (".themes", "xfwm4", NULL);
+    dir = xfce_get_homefile (".themes", NULL);
     list = themes_common_list_add_dir (dir, list);
     g_free (dir);
 

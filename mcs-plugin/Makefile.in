@@ -251,7 +251,8 @@ xfwm4_plugin_la_CFLAGS = \
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
-	-DDATADIR=\"$(pkgdatadir)\" 
+	-DDATADIR=\"$(datadir)\"					\
+        -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_plugin_la_LIBADD = \
 	@LIBS@

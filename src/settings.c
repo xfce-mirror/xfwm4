@@ -45,7 +45,9 @@
 #define CHANNEL2 "margins"
 #define CHANNEL3 "workspaces"
 #define TOINT(x) (x ? atoi(x) : 0)
-#define DEFAULT_KEYTHEME "default.keys"
+#define DEFAULT_KEYTHEME "Default"
+#define KEYTHEMERC "keythemerc"
+#define THEMERC    "themerc"
 #define WS_SEP ';'
 #define WS_SEP_S ";"
 
@@ -311,7 +313,7 @@ loadRcData (Settings rc[])
     gchar *keytheme;
     gchar *keythemevalue;
 
-    if (!parseRc ("defaults", DATADIR, rc))
+    if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
         g_warning (_("%s: Missing defaults file"), progname);
         exit (1);
@@ -319,8 +321,8 @@ loadRcData (Settings rc[])
     keythemevalue = getValue ("keytheme", rc);
     if (keythemevalue)
     {
-        keytheme = getThemeDir (keythemevalue);
-        parseRc ("keythemerc", keytheme, rc);
+        keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
+        parseRc (KEYTHEMERC, keytheme, rc);
         g_free (keytheme);
     }
     parseRc ("xfwm4rc", homedir, rc);
@@ -511,8 +513,8 @@ loadTheme (Settings rc[])
     rc[18].value = get_style (widget, "dark", "normal");
     rc[19].value = get_style (widget, "mid", "normal");
 
-    theme = getThemeDir (getValue ("theme", rc));
-    parseRc ("themerc", theme, rc);
+    theme = getThemeDir (getValue ("theme", rc), THEMERC);
+    parseRc (THEMERC, theme, rc);
 
     for (i = 0; i < 20; i++)
     {
@@ -788,14 +790,14 @@ loadKeyBindings (Settings rc[])
     keythemevalue = getValue ("keytheme", rc);
     if (keythemevalue)
     {
-        keytheme = getThemeDir (keythemevalue);
-        if (!parseRc ("keythemerc", keytheme, rc))
+        keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
+        if (!parseRc (KEYTHEMERC, keytheme, rc))
         {
             g_warning (_("%s: specified key theme \"%s\" missing, using default"),
                        progname, keythemevalue);
             g_free (keytheme);
-            keytheme = getThemeDir (DEFAULT_KEYTHEME);
-            parseRc ("keythemerc", keytheme, rc);
+            keytheme = getThemeDir (DEFAULT_KEYTHEME, KEYTHEMERC);
+            parseRc (KEYTHEMERC, keytheme, rc);
         }
         g_free (keytheme);
 

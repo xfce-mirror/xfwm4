@@ -32,7 +32,7 @@
 #include "settings.h"
 
 #ifndef DEFAULT_THEME
-#define DEFAULT_THEME "default"
+#define DEFAULT_THEME "Default"
 #endif
 
 gboolean
@@ -162,7 +162,7 @@ setIntValueFromInt (const gchar * lvalue, int value, Settings rc[])
 }
 
 gchar *
-getThemeDir (const gchar * theme)
+getThemeDir (const gchar * theme, const gchar * file)
 {
     if (!theme)
     {
@@ -183,25 +183,92 @@ getThemeDir (const gchar * theme)
     }
     else
     {
-        gchar *test = g_build_filename (g_get_home_dir (), G_DIR_SEPARATOR_S,
-            ".themes",
+        /* First try, $HOME/.themes/<theme_name>/xfwm4/ */
+
+        gchar *test_dir = g_build_filename (g_get_home_dir (),
+            G_DIR_SEPARATOR_S, ".themes",
+            G_DIR_SEPARATOR_S, theme,
             G_DIR_SEPARATOR_S, "xfwm4",
-            G_DIR_SEPARATOR_S,
-            theme, NULL);
-        if (g_file_test (test, G_FILE_TEST_IS_DIR))
+            NULL);
+            
+        gchar *test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
+ 
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
         {
-            return test;
+            g_free (test_file);
+            return test_dir;
         }
-        g_free (test);
-        test =
-            g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-            G_DIR_SEPARATOR_S, theme, NULL);
-        if (g_file_test (test, G_FILE_TEST_IS_DIR))
+
+#if 0
+        /* Second try, $HOME/.themes/xfwm4/<theme_name>/ */
+        g_free (test_file);
+        g_free (test_dir);
+
+        test_dir = g_build_filename (g_get_home_dir (), 
+            G_DIR_SEPARATOR_S, ".themes",
+            G_DIR_SEPARATOR_S, "xfwm4",
+            G_DIR_SEPARATOR_S, theme, 
+            NULL);
+            
+        test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
+ 
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
         {
-            return test;
+            g_free (test_file);
+            return test_dir;
         }
-        g_free (test);
+#endif
+
+        /* Third try, /usr/share/themes/<theme_name>/xfwm4/ */
+        g_free (test_file);
+        g_free (test_dir);
+
+        test_dir = g_build_filename (DATADIR, 
+            G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, theme, 
+            G_DIR_SEPARATOR_S, "xfwm4", 
+            NULL);
+            
+        test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
+ 
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
+        {
+            g_free (test_file);
+            return test_dir;
+        }
+
+#if 0
+        /* Fourth try, /usr/share/themes/xfwm4/<theme_name>/ */
+        g_free (test_file);
+        g_free (test_dir);
+
+        test_dir = g_build_filename (DATADIR, 
+            G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, theme, 
+            NULL);
+            
+        test_file = g_build_filename (test_dir,
+            G_DIR_SEPARATOR_S, file,
+            NULL);
+ 
+        if (g_file_test (test_file, G_FILE_TEST_IS_REGULAR))
+        {
+            g_free (test_file);
+            return test_dir;
+        }
+#endif
+        
+        /* Pfew, really can't find that theme nowhere! */
+        g_free (test_file);
+        g_free (test_dir);
     }
+    
     return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
         G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
 }

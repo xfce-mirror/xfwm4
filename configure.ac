@@ -30,6 +30,7 @@ AC_C_INLINE
 dnl check for standard header files
 AC_HEADER_STDC
 AC_CHECK_FUNCS([daemon setsid])
+AC_CHECK_FUNCS(opendir)
 
 dnl Check for i18n support
 BM_I18N([xfwm4], [ar az ca cs de es es_MX eu fa_IR fi fr hi hu ja ko lt ms nl
@@ -94,6 +95,5 @@ themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/opta/Makefile
-themes/softwall/Makefile
 themes/synthetic/Makefile
 ])

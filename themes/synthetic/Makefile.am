@@ -1,4 +1,4 @@
-themedir = $(pkgdatadir)/themes/synthetic
+themedir = $(datadir)/themes/Synthetic/xfwm4
 theme_DATA = README \
 	bottom-active.xpm \
 	bottom-inactive.xpm \
