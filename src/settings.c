@@ -52,39 +52,39 @@ static void set_settings_margin(int idx, int value)
     switch (idx)
     {
         case MARGIN_LEFT:
-	case MARGIN_RIGHT:
-	    if (value < 0)
-	    {
-	         val = 0;
-	    }
-	    else if (value > gdk_screen_width() / 4)
-	    {
-	        val = gdk_screen_width() / 4;
-	    }
-	    else
-	    {
-	        val = value;
-	    }
-	    params.xfwm_margins[idx] = val;
-	    break;
+        case MARGIN_RIGHT:
+            if (value < 0)
+            {
+                 val = 0;
+            }
+            else if (value > gdk_screen_width() / 4)
+            {
+                val = gdk_screen_width() / 4;
+            }
+            else
+            {
+                val = value;
+            }
+            params.xfwm_margins[idx] = val;
+            break;
         case MARGIN_TOP:
-	case MARGIN_BOTTOM:
-	    if (value < 0)
-	    {
-	         val = 0;
-	    }
-	    else if (value > gdk_screen_height() / 4)
-	    {
-	        val = gdk_screen_height() / 4;
-	    }
-	    else
-	    {
-	        val = value;
-	    }
-	    params.xfwm_margins[idx] = val;
-	    break;
-	 default:
-	    break;
+        case MARGIN_BOTTOM:
+            if (value < 0)
+            {
+                 val = 0;
+            }
+            else if (value > gdk_screen_height() / 4)
+            {
+                val = gdk_screen_height() / 4;
+            }
+            else
+            {
+                val = value;
+            }
+            params.xfwm_margins[idx] = val;
+            break;
+         default:
+            break;
     }
 }
 
@@ -92,126 +92,126 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
 {
     if(!g_ascii_strcasecmp(CHANNEL1, channel_name))
     {
-	switch (action)
-	{
+        switch (action)
+        {
             case MCS_ACTION_NEW:
-        	/* The following is to reduce initial startup time and reloads */
-        	if(!mcs_initted)
-        	{
+                /* The following is to reduce initial startup time and reloads */
+                if(!mcs_initted)
+                {
                     return;
-        	}
+                }
             case MCS_ACTION_CHANGED:
-        	if(setting->type == MCS_TYPE_INT)
-        	{
+                if(setting->type == MCS_TYPE_INT)
+                {
                     if(!strcmp(name, "Xfwm/ClickToFocus"))
                     {
-                	params.click_to_focus = setting->data.v_int;
+                        params.click_to_focus = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/FocusNewWindow"))
                     {
-                	params.focus_new = setting->data.v_int;
+                        params.focus_new = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/FocusRaise"))
                     {
-                	params.raise_on_focus = setting->data.v_int;
+                        params.raise_on_focus = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/RaiseDelay"))
                     {
-                	params.raise_delay = setting->data.v_int;
+                        params.raise_delay = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/RaiseOnClick"))
                     {
-                	params.raise_on_click = setting->data.v_int;
+                        params.raise_on_click = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/SnapToBorder"))
                     {
-                	params.snap_to_border = setting->data.v_int;
+                        params.snap_to_border = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/SnapWidth"))
                     {
-                	params.snap_width = setting->data.v_int;
+                        params.snap_width = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
                     {
-                	params.wrap_workspaces = setting->data.v_int;
+                        params.wrap_workspaces = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/BoxMove"))
                     {
-                	params.box_move = setting->data.v_int;
+                        params.box_move = setting->data.v_int;
                     }
                     else if(!strcmp(name, "Xfwm/BoxResize"))
                     {
-                	params.box_resize = setting->data.v_int;
+                        params.box_resize = setting->data.v_int;
                     }
-        	}
-        	else if(setting->type == MCS_TYPE_STRING)
-        	{
+                }
+                else if(setting->type == MCS_TYPE_STRING)
+                {
                     if(!strcmp(name, "Xfwm/DblClickAction"))
                     {
-                	reloadSettings(UPDATE_NONE);
+                        reloadSettings(UPDATE_NONE);
                     }
                     else if(!strcmp(name, "Xfwm/KeyThemeName"))
                     {
-                	reloadSettings(UPDATE_KEYGRABS);
+                        reloadSettings(UPDATE_KEYGRABS);
                     }
                     else if(!strcmp(name, "Xfwm/ThemeName"))
                     {
-                	reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
+                        reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
                     }
                     else if(!strcmp(name, "Xfwm/ButtonLayout"))
                     {
-                	reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                        reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
                     }
                     if(!strcmp(name, "Xfwm/TitleAlign"))
                     {
-                	reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                        reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
                     }
                     if(!strcmp(name, "Xfwm/TitleFont"))
                     {
-                	reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                        reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
                     }
-        	}
-        	break;
+                }
+                break;
             case MCS_ACTION_DELETED:
             default:
-        	break;
-	}
+                break;
+        }
     }
     else if(!g_ascii_strcasecmp(CHANNEL2, channel_name))
     {
-	switch (action)
-	{
+        switch (action)
+        {
             case MCS_ACTION_NEW:
-        	/* The following is to reduce initial startup time and reloads */
-        	if(!mcs_initted)
-        	{
+                /* The following is to reduce initial startup time and reloads */
+                if(!mcs_initted)
+                {
                     return;
-        	}
+                }
             case MCS_ACTION_CHANGED:
-        	if(setting->type == MCS_TYPE_INT)
-        	{
+                if(setting->type == MCS_TYPE_INT)
+                {
                     if(!strcmp(name, "Xfwm/LeftMargin"))
                     {
-                	set_settings_margin(MARGIN_LEFT, setting->data.v_int);
+                        set_settings_margin(MARGIN_LEFT, setting->data.v_int);
                     }
                     else if(!strcmp(name, "Xfwm/RightMargin"))
                     {
-                	set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
+                        set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
                     }
                     else if(!strcmp(name, "Xfwm/BottomMargin"))
                     {
-                	set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
+                        set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
                     }
                     else if(!strcmp(name, "Xfwm/TopMargin"))
                     {
-                	set_settings_margin(MARGIN_TOP, setting->data.v_int);
+                        set_settings_margin(MARGIN_TOP, setting->data.v_int);
                     }
-        	}
-        	break;
+                }
+                break;
             case MCS_ACTION_DELETED:
             default:
-        	break;
-	}
+                break;
+        }
     }
 }
 

@@ -687,33 +687,33 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     if (!c)
     {
         /* Some app tend or try to manipulate the wm frame to achieve fullscreen mode */
-	c = clientGetFromWindow(ev->window, FRAME);
-	if (c)
-	{
+        c = clientGetFromWindow(ev->window, FRAME);
+        if (c)
+        {
             if(ev->value_mask & CWX)
             {
-		wc.x += frameLeft(c);
+                wc.x += frameLeft(c);
             }
             if(ev->value_mask & CWY)
             {
-		wc.y += frameTop(c);
+                wc.y += frameTop(c);
             }
             if(ev->value_mask & CWWidth)
             {
-		wc.width -= frameLeft(c) + frameRight(c);
+                wc.width -= frameLeft(c) + frameRight(c);
             }
             if(ev->value_mask & CWHeight)
             {
-		wc.height -= frameTop(c) + frameBottom(c);
+                wc.height -= frameTop(c) + frameBottom(c);
             }
-	}
+        }
     }
     if(c)
     {
         gboolean constrained = FALSE;
         
-        DBG("handleConfigureRequest managed window \"%s\" (%#lx)\n", c->name, c->window);
-	if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        DBG("handleConfigureRequest managed window \"%s\" (0x%lx)\n", c->name, c->window);
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
             return;
@@ -727,10 +727,10 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         if(ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
         {
             if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
-	    {
-	        clientRemoveMaximizeFlag(c);
-	    }
-	    constrained = TRUE;
+            {
+                clientRemoveMaximizeFlag(c);
+            }
+            constrained = TRUE;
         }
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
@@ -757,7 +757,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
     while(XCheckTypedEvent(dpy, EnterNotify, (XEvent *) ev));
 
-    DBG("EnterNotify window is (%#lx)\n", ev->window);
+    DBG("EnterNotify window is (0x%lx)\n", ev->window);
 
     c = clientGetFromWindow(ev->window, FRAME);
     if(c && !(params.click_to_focus) && (clientAcceptFocus(c)))
@@ -775,7 +775,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     Client *c;
 
     DBG("entering handleFocusIn\n");
-    DBG("FocusIn window is (%#lx)\n", ev->window);
+    DBG("FocusIn window is (0x%lx)\n", ev->window);
 
     if(ev->window == gnome_win)
     {
@@ -786,7 +786,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        DBG("focus set to \"%s\" (%#lx)\n", c->name, c->window);
+        DBG("focus set to \"%s\" (0x%lx)\n", c->name, c->window);
         clientUpdateFocus(c);
         frameDraw(c, FALSE, FALSE);
         if(params.raise_on_focus && !params.click_to_focus)
@@ -825,7 +825,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             unsigned long previous_value;
 
-            DBG("client \"%s\" (%#lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
             previous_value = CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE);
             CLIENT_FLAG_UNSET(c, CLIENT_FLAG_IS_RESIZABLE);
@@ -840,7 +840,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
         else if((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
-            DBG("client \"%s\" (%#lx) has received a XA_WM_NAME notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a XA_WM_NAME notify\n", c->name, c->window);
             if(c->name)
             {
                 free(c->name);
@@ -853,7 +853,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             XWindowChanges wc;
 
-            DBG("client \"%s\" (%#lx) has received a motif_wm_hints notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a motif_wm_hints notify\n", c->name, c->window);
             clientUpdateMWMHints(c);
             wc.x = c->x;
             wc.y = c->y;
@@ -863,7 +863,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
         else if(ev->atom == XA_WM_HINTS)
         {
-            DBG("client \"%s\" (%#lx) has received a XA_WM_HINTS notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify\n", c->name, c->window);
             c->wmhints = XGetWMHints(dpy, c->window);
             if(c->wmhints)
             {
@@ -872,31 +872,31 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
         else if(ev->atom == win_hints)
         {
-            DBG("client \"%s\" (%#lx) has received a win_hints notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_hints notify\n", c->name, c->window);
             getGnomeHint(dpy, c->window, win_hints, &c->win_hints);
         }
         else if(ev->atom == win_layer)
         {
-            DBG("client \"%s\" (%#lx) has received a win_layer notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_layer notify\n", c->name, c->window);
             getGnomeHint(dpy, c->window, win_layer, &dummy);
             clientSetLayer(c, dummy);
             clientSetNetState(c);
         }
         else if(ev->atom == net_wm_window_type)
         {
-            DBG("client \"%s\" (%#lx) has received a net_wm_window_type notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_wm_window_type notify\n", c->name, c->window);
             clientGetNetWmType(c);
             frameDraw(c, TRUE, FALSE);
         }
         else if((ev->atom == win_workspace) && !(c->transient_for))
         {
-            DBG("client \"%s\" (%#lx) has received a win_workspace notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_workspace notify\n", c->name, c->window);
             getGnomeHint(dpy, c->window, win_workspace, &dummy);
             clientSetWorkspace(c, dummy, TRUE);
         }
         else if(ev->atom == net_wm_strut)
         {
-            DBG("client \"%s\" (%#lx) has received a net_wm_strut notify\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_wm_strut notify\n", c->name, c->window);
             clientGetNetStruts(c);
         }
         else if(ev->atom == wm_colormap_windows)
@@ -947,7 +947,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
     {
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
-            DBG("client \"%s\" (%#lx) has received a wm_change_state event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a wm_change_state event\n", c->name, c->window);
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
                 clientHide(c, True);
@@ -955,7 +955,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
-            DBG("client \"%s\" (%#lx) has received a win_state/shaded event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_state/shaded event\n", c->name, c->window);
             if(ev->data.l[1] == WIN_STATE_SHADED)
             {
                 clientShade(c);
@@ -968,7 +968,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
         {
-            DBG("client \"%s\" (%#lx) has received a win_state/stick event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_state/stick event\n", c->name, c->window);
             if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 if(ev->data.l[1] == WIN_STATE_STICKY)
@@ -983,17 +983,17 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {
-            DBG("client \"%s\" (%#lx) has received a win_layer event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_layer event\n", c->name, c->window);
             clientSetLayer(c, ev->data.l[0]);
         }
         else if((ev->message_type == win_workspace) && (ev->format == 32) && !(c->transient_for))
         {
-            DBG("client \"%s\" (%#lx) has received a win_workspace event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a win_workspace event\n", c->name, c->window);
             clientSetWorkspace(c, ev->data.l[0], TRUE);
         }
         else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
-            DBG("client \"%s\" (%#lx) has received a net_wm_desktop event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_wm_desktop event\n", c->name, c->window);
             if((ev->data.l[0] == (int)0xFFFFFFFF) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 clientStick(c, TRUE);
@@ -1005,23 +1005,23 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == net_close_window) && (ev->format == 32))
         {
-            DBG("client \"%s\" (%#lx) has received a net_close_window event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_close_window event\n", c->name, c->window);
             clientClose(c);
         }
         else if((ev->message_type == net_wm_state) && (ev->format == 32))
         {
-            DBG("client \"%s\" (%#lx) has received a net_wm_state event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_wm_state event\n", c->name, c->window);
             clientUpdateNetState(c, ev);
         }
         else if((ev->message_type == net_wm_moveresize) && (ev->format == 32))
         {
-            DBG("client \"%s\" (%#lx) has received a net_wm_moveresize event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_wm_moveresize event\n", c->name, c->window);
             g_message(_("%s: Operation not supported (yet)\n"), g_get_prgname());
             /* TBD */
         }
         else if((ev->message_type == net_active_window) && (ev->format == 32))
         {
-            DBG("client \"%s\" (%#lx) has received a net_active_window event\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) has received a net_active_window event\n", c->name, c->window);
             workspaceSwitch(c->win_workspace, NULL);
             clientShow(c, True);
             clientRaise(c);
@@ -1040,10 +1040,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             DBG("root has received a win_workspace_count event\n");
             workspaceSetCount(ev->data.l[0]);
         }
-	else
-	{
+        else
+        {
             DBG("unidentified client message for window 0x%lx\n", ev->window);
-	}
+        }
     }
 }
 

@@ -1,21 +1,21 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-	oroborus - (c) 2001 Ken Lynch
-	Metacity - (c) 2001 Havoc Pennington
-	xfwm4    - (c) 2002 Olivier Fourdan
+        oroborus - (c) 2001 Ken Lynch
+        Metacity - (c) 2001 Havoc Pennington
+        xfwm4    - (c) 2002 Olivier Fourdan
 
  */
 
@@ -558,7 +558,7 @@ void getTransientFor(Display * dpy, Window w, Window * transient_for)
         *transient_for = None;
     }
 
-    DBG("Window (%#lx) is transient for (%#lx)\n", w, *transient_for);
+    DBG("Window (0x%lx) is transient for (0x%lx)\n", w, *transient_for);
 }
 
 gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
@@ -595,7 +595,7 @@ gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
         name = XGetAtomName(dpy, xatom);
         if(name)
         {
-            g_message(_("%s: Property %s on window (%lx) contained invalid UTF-8\n"), g_get_prgname(), name, w);
+            g_message(_("%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"), g_get_prgname(), name, w);
             XFree(name);
         }
         XFree(str);

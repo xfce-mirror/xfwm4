@@ -412,7 +412,7 @@ static void frameSetShape(Client * c, int state, ClientPixmapCache * pm_cache, i
     XRectangle rect;
 
     DBG("entering frameSetShape\n");
-    DBG("setting shape for client (%#lx)\n", c->window);
+    DBG("setting shape for client (0x%lx)\n", c->window);
 
     if(!shape)
     {
@@ -534,7 +534,7 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
     gboolean requires_clearing = FALSE;
 
     DBG("entering frameDraw\n");
-    DBG("drawing frame for \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("drawing frame for \"%s\" (0x%lx)\n", c->name, c->window);
 
     g_return_if_fail(c != NULL);
 

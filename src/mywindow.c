@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         xfwm4    - (c) 2003 Olivier Fourdan
 
@@ -36,7 +36,7 @@ void myWindowCreate(Display * dpy, Window parent, myWindow * win, Cursor cursor)
     DBG("entering myWindowCreate\n");
 
     win->window = XCreateSimpleWindow(dpy, parent, 0, 0, 1, 1, 0, 0, 0);
-    DBG("Created XID %lx\n", win->window);
+    DBG("Created XID 0x%lx\n", win->window);
     if(cursor != None)
     {
         XDefineCursor(dpy, win->window, cursor);
@@ -79,7 +79,7 @@ void myWindowShow(myWindow * win, int x, int y, int width, int height, gboolean 
         XMapWindow(win->dpy, win->window);
         win->map = TRUE;
     }
-    DBG("Showing XID %lx\n", win->window);
+    DBG("Showing XID 0x%lx\n", win->window);
     if(((x != win->x) || (y != win->y)) && ((width != win->w) || (height != win->h)))
     {
         XMoveResizeWindow(win->dpy, win->window, x, y, (unsigned int)width, (unsigned int)height);

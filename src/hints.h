@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
@@ -55,36 +55,36 @@
 #define MWM_INPUT_FULL_APPLICATION_MODAL        3
 #define MWM_INPUT_APPLICATION_MODAL             MWM_INPUT_PRIMARY_APPLICATION_MODAL
 
-#define MWM_TEAROFF_WINDOW	                (1L<<0)
+#define MWM_TEAROFF_WINDOW                      (1L<<0)
 
-#define WIN_STATE_STICKY			(1L<<0)
-#define WIN_STATE_MAXIMIZED_VERT		(1L<<2)
-#define WIN_STATE_MAXIMIZED_HORIZ		(1L<<3)
-#define WIN_STATE_MAXIMIZED			((1L<<2)|(1L<<3))
-#define WIN_STATE_SHADED			(1L<<5)
+#define WIN_STATE_STICKY                        (1L<<0)
+#define WIN_STATE_MAXIMIZED_VERT                (1L<<2)
+#define WIN_STATE_MAXIMIZED_HORIZ               (1L<<3)
+#define WIN_STATE_MAXIMIZED                     ((1L<<2)|(1L<<3))
+#define WIN_STATE_SHADED                        (1L<<5)
 
-#define WIN_HINTS_SKIP_FOCUS			(1L<<0)
-#define WIN_HINTS_SKIP_TASKBAR  		(1L<<2)
+#define WIN_HINTS_SKIP_FOCUS                    (1L<<0)
+#define WIN_HINTS_SKIP_TASKBAR                  (1L<<2)
 
-#define WM_PROTOCOLS_TAKE_FOCUS			(1L<<0)
-#define WM_PROTOCOLS_DELETE_WINDOW  		(1L<<1)
+#define WM_PROTOCOLS_TAKE_FOCUS                 (1L<<0)
+#define WM_PROTOCOLS_DELETE_WINDOW              (1L<<1)
 
-#define WIN_LAYER_DESKTOP			0
-#define WIN_LAYER_BELOW 			2
-#define WIN_LAYER_NORMAL			4
-#define WIN_LAYER_ONTOP 			6
-#define WIN_LAYER_DOCK  			8
-#define WIN_LAYER_ABOVE_DOCK			10
+#define WIN_LAYER_DESKTOP                       0
+#define WIN_LAYER_BELOW                         2
+#define WIN_LAYER_NORMAL                        4
+#define WIN_LAYER_ONTOP                         6
+#define WIN_LAYER_DOCK                          8
+#define WIN_LAYER_ABOVE_DOCK                    10
 
-#define NET_WM_MOVERESIZE_SIZE_TOPLEFT  	0
-#define NET_WM_MOVERESIZE_SIZE_TOP		1
-#define NET_WM_MOVERESIZE_SIZE_TOPRIGHT 	2
-#define NET_WM_MOVERESIZE_SIZE_RIGHT		3
-#define NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT	4
-#define NET_WM_MOVERESIZE_SIZE_BOTTOM		5
-#define NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT	6
-#define NET_WM_MOVERESIZE_SIZE_LEFT		7
-#define NET_WM_MOVERESIZE_MOVE  		8
+#define NET_WM_MOVERESIZE_SIZE_TOPLEFT          0
+#define NET_WM_MOVERESIZE_SIZE_TOP              1
+#define NET_WM_MOVERESIZE_SIZE_TOPRIGHT         2
+#define NET_WM_MOVERESIZE_SIZE_RIGHT            3
+#define NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT      4
+#define NET_WM_MOVERESIZE_SIZE_BOTTOM           5
+#define NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT       6
+#define NET_WM_MOVERESIZE_SIZE_LEFT             7
+#define NET_WM_MOVERESIZE_MOVE                  8
 
 #define NET_WM_STATE_REMOVE                     0
 #define NET_WM_STATE_ADD                        1

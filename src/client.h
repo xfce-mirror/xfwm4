@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002 Olivier Fourdan
@@ -45,66 +45,66 @@
 #include "mywindow.h"
 #include "settings.h"
 
-#define ANY				0
-#define WINDOW				1
-#define FRAME				2
+#define ANY                             0
+#define WINDOW                          1
+#define FRAME                           2
 
-#define APPLY				1
-#define REMOVE				-1
+#define APPLY                           1
+#define REMOVE                          -1
 
-#define PLACEMENT_MOUSE			0
-#define PLACEMENT_ROOT			1
+#define PLACEMENT_MOUSE                 0
+#define PLACEMENT_ROOT                  1
 
-#define INCLUDE_HIDDEN			(1<<0)
-#define INCLUDE_SKIP_FOCUS		(1<<1)
-#define INCLUDE_ALL_WORKSPACES		(1<<2)
-#define INCLUDE_SKIP_PAGER		(1<<3)
-#define INCLUDE_SKIP_TASKBAR		(1<<4)
+#define INCLUDE_HIDDEN                  (1<<0)
+#define INCLUDE_SKIP_FOCUS              (1<<1)
+#define INCLUDE_ALL_WORKSPACES          (1<<2)
+#define INCLUDE_SKIP_PAGER              (1<<3)
+#define INCLUDE_SKIP_TASKBAR            (1<<4)
 
-#define UPDATE_NONE			0
-#define UPDATE_KEYGRABS			(1<<0)
-#define UPDATE_FRAME			(1<<1)
-#define UPDATE_GRAVITY			(1<<2)
-#define UPDATE_CACHE			(1<<3)
-#define UPDATE_ALL			(UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY | UPDATE_CACHE)
+#define UPDATE_NONE                     0
+#define UPDATE_KEYGRABS                 (1<<0)
+#define UPDATE_FRAME                    (1<<1)
+#define UPDATE_GRAVITY                  (1<<2)
+#define UPDATE_CACHE                    (1<<3)
+#define UPDATE_ALL                      (UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY | UPDATE_CACHE)
 
-#define ACTIVE				0
-#define INACTIVE			1
-#define PRESSED				2
+#define ACTIVE                          0
+#define INACTIVE                        1
+#define PRESSED                         2
 
-#define MARGIN_LEFT			0
-#define MARGIN_RIGHT			1
-#define MARGIN_TOP			2
-#define MARGIN_BOTTOM			3
+#define MARGIN_LEFT                     0
+#define MARGIN_RIGHT                    1
+#define MARGIN_TOP                      2
+#define MARGIN_BOTTOM                   3
 
 #define CLIENT_MIN_VISIBLE              10 /* pixels */
 
-#define CLIENT_FLAG_FOCUS	       (1L<<0)
-#define CLIENT_FLAG_ABOVE	       (1L<<1)
-#define CLIENT_FLAG_BELOW	       (1L<<2)
+#define CLIENT_FLAG_FOCUS              (1L<<0)
+#define CLIENT_FLAG_ABOVE              (1L<<1)
+#define CLIENT_FLAG_BELOW              (1L<<2)
 #define CLIENT_FLAG_FULLSCREEN         (1L<<3)
 #define CLIENT_FLAG_HAS_BORDER         (1L<<4)
-#define CLIENT_FLAG_HAS_MENU 	       (1L<<5)
+#define CLIENT_FLAG_HAS_MENU           (1L<<5)
 #define CLIENT_FLAG_HAS_MAXIMIZE       (1L<<6)
-#define CLIENT_FLAG_HAS_CLOSE	       (1L<<7)
+#define CLIENT_FLAG_HAS_CLOSE          (1L<<7)
 #define CLIENT_FLAG_HAS_HIDE           (1L<<8)
 #define CLIENT_FLAG_HAS_MOVE           (1L<<9)
 #define CLIENT_FLAG_HAS_RESIZE         (1L<<10)
 #define CLIENT_FLAG_HAS_STICK          (1L<<11)
 #define CLIENT_FLAG_IS_RESIZABLE       (1L<<12)
 #define CLIENT_FLAG_HAS_STRUTS         (1L<<13)
-#define CLIENT_FLAG_HIDDEN	       (1L<<14)
-#define CLIENT_FLAG_MANAGED	       (1L<<15)
+#define CLIENT_FLAG_HIDDEN             (1L<<14)
+#define CLIENT_FLAG_MANAGED            (1L<<15)
 #define CLIENT_FLAG_MAXIMIZED_VERT     (1L<<16)
 #define CLIENT_FLAG_MAXIMIZED_HORIZ    (1L<<17)
 #define CLIENT_FLAG_MAXIMIZED          (CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_MAXIMIZED_HORIZ)
-#define CLIENT_FLAG_SHADED	       (1L<<18)
+#define CLIENT_FLAG_SHADED             (1L<<18)
 #define CLIENT_FLAG_SKIP_PAGER         (1L<<19)
 #define CLIENT_FLAG_SKIP_TASKBAR       (1L<<20)
 #define CLIENT_FLAG_STATE_MODAL        (1L<<21)
-#define CLIENT_FLAG_STICKY	       (1L<<22)
-#define CLIENT_FLAG_VISIBLE	       (1L<<23)
-#define CLIENT_FLAG_WM_DELETE	       (1L<<24)
+#define CLIENT_FLAG_STICKY             (1L<<22)
+#define CLIENT_FLAG_VISIBLE            (1L<<23)
+#define CLIENT_FLAG_WM_DELETE          (1L<<24)
 #define CLIENT_FLAG_WM_INPUT           (1L<<25)
 #define CLIENT_FLAG_WM_TAKEFOCUS       (1L<<26)
 #define CLIENT_FLAG_RESIZING           (1L<<27)
@@ -114,15 +114,15 @@
 #define CLIENT_FLAG_WORKSPACE_SET      (1L<<31)
 
 /* Convenient macros */
-#define CLIENT_FLAG_TEST(c,f)			(c->client_flag & (f))
-#define CLIENT_FLAG_TEST_ALL(c,f)		((c->client_flag & (f)) == (f))
-#define CLIENT_FLAG_TEST_AND_NOT(c,f1,f2)	((c->client_flag & (f1 | f2)) == (f1))
-#define CLIENT_FLAG_SET(c,f)			(c->client_flag |= (f))
-#define CLIENT_FLAG_UNSET(c,f)			(c->client_flag &= ~(f))
-#define CLIENT_FLAG_TOGGLE(c,f)			(c->client_flag ^= (f))
+#define CLIENT_FLAG_TEST(c,f)                   (c->client_flag & (f))
+#define CLIENT_FLAG_TEST_ALL(c,f)               ((c->client_flag & (f)) == (f))
+#define CLIENT_FLAG_TEST_AND_NOT(c,f1,f2)       ((c->client_flag & (f1 | f2)) == (f1))
+#define CLIENT_FLAG_SET(c,f)                    (c->client_flag |= (f))
+#define CLIENT_FLAG_UNSET(c,f)                  (c->client_flag &= ~(f))
+#define CLIENT_FLAG_TOGGLE(c,f)                 (c->client_flag ^= (f))
 
-#define CLIENT_CAN_HIDE_WINDOW(c)	(!(c->transient_for) && CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_HIDE, CLIENT_FLAG_SKIP_TASKBAR))
-#define CLIENT_CAN_MAXIMIZE_WINDOW(c)	CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE)
+#define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_HIDE, CLIENT_FLAG_SKIP_TASKBAR))
+#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE)
 
 typedef enum
 {

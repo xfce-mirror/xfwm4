@@ -144,7 +144,7 @@ static void clientToggleFullscreen(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleFullscreen\n");
-    DBG("toggle fullscreen client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("toggle fullscreen client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
@@ -184,7 +184,7 @@ static void clientToggleAbove(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleAbove\n");
-    DBG("toggle above client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("toggle above client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
     {
@@ -205,7 +205,7 @@ static void clientToggleBelow(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleBelow\n");
-    DBG("toggle below client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("toggle below client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
     {
@@ -227,7 +227,7 @@ void clientSetNetState(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetNetState\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     i = 0;
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
@@ -302,7 +302,7 @@ static void clientGetNetState(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientGetNetState\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(get_atom_list(dpy, c->window, net_wm_state, &atoms, &n_atoms))
     {
@@ -373,7 +373,7 @@ static void clientGetNetState(Client * c)
             }
             else
             {
-                g_message(_("%s: Unmanaged net_wm_state (window %#lx)"), g_get_prgname(), c->window);
+                g_message(_("%s: Unmanaged net_wm_state (window 0x%lx)"), g_get_prgname(), c->window);
             }
 
             ++i;
@@ -399,7 +399,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientUpdateNetState\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     action = ((XEvent *) ev)->xclient.data.l[0];
     first = ((XEvent *) ev)->xclient.data.l[1];
@@ -655,7 +655,7 @@ void clientGetNetWmType(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientGetNetWmType\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     n_atoms = 0;
     atoms = NULL;
@@ -704,7 +704,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientGetInitialNetWmDesktop\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(!CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
     {
@@ -779,7 +779,7 @@ void clientGetNetStruts(Client * c)
     int i;
 
     g_return_if_fail(c != NULL);
-    DBG("entering clientGetNetStruts for \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("entering clientGetNetStruts for \"%s\" (0x%lx)\n", c->name, c->window);
 
     for(i = 0; i < 4; i++)
     {
@@ -830,7 +830,7 @@ static void clientWindowType(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientWindowType\n");
-    DBG("type for client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("type for client \"%s\" (0x%lx)\n", c->name, c->window);
 
     old_type = c->type;
     c->initial_layer = c->win_layer;
@@ -1017,7 +1017,7 @@ void clientGrabKeys(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientGrabKeys\n");
-    DBG("grabbing keys for client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("grabbing keys for client \"%s\" (0x%lx)\n", c->name, c->window);
 
     grabKey(dpy, &params.keys[KEY_MOVE_UP], c->window);
     grabKey(dpy, &params.keys[KEY_MOVE_DOWN], c->window);
@@ -1075,7 +1075,7 @@ void clientUngrabKeys(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientUngrabKeys\n");
-    DBG("ungrabing keys for client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("ungrabing keys for client \"%s\" (0x%lx)\n", c->name, c->window);
 
     ungrabKeys(dpy, c->window);
 }
@@ -1168,10 +1168,10 @@ static void clientAddToList(Client * c)
         c->prev = c;
     }
 
-    DBG("adding window \"%s\" (%#lx) to windows list\n", c->name, c->window);
+    DBG("adding window \"%s\" (0x%lx) to windows list\n", c->name, c->window);
     windows = g_slist_append(windows, c);
 
-    DBG("adding window \"%s\" (%#lx) to windows_stack list\n", c->name, c->window);
+    DBG("adding window \"%s\" (0x%lx) to windows_stack list\n", c->name, c->window);
     windows_stack = g_slist_append(windows_stack, c);
 
     clientSetNetClientList(net_client_list, windows);
@@ -1203,10 +1203,10 @@ static void clientRemoveFromList(Client * c)
         }
     }
 
-    DBG("removing window \"%s\" (%#lx) from windows list\n", c->name, c->window);
+    DBG("removing window \"%s\" (0x%lx) from windows list\n", c->name, c->window);
     windows = g_slist_remove(windows, c);
 
-    DBG("removing window \"%s\" (%#lx) from windows_stack list\n", c->name, c->window);
+    DBG("removing window \"%s\" (0x%lx) from windows_stack list\n", c->name, c->window);
     windows_stack = g_slist_remove(windows_stack, c);
 
     clientSetNetClientList(net_client_list, windows);
@@ -1240,7 +1240,7 @@ static void clientSetWidth(Client * c, int w1)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetWidth\n");
-    DBG("setting width %i for client \"%s\" (%#lx)\n", w1, c->name, c->window);
+    DBG("setting width %i for client \"%s\" (0x%lx)\n", w1, c->name, c->window);
 
     if(c->size->flags & PResizeInc)
     {
@@ -1274,7 +1274,7 @@ static void clientSetHeight(Client * c, int h1)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetHeight\n");
-    DBG("setting height %i for client \"%s\" (%#lx)\n", h1, c->name, c->window);
+    DBG("setting height %i for client \"%s\" (0x%lx)\n", h1, c->name, c->window);
 
     if(c->size->flags & PResizeInc)
     {
@@ -1312,7 +1312,7 @@ static inline Client *clientGetTopMost(int layer, Client * exclude)
     for(index = windows_stack; index; index = g_slist_next(index))
     {
         c = (Client *) index->data;
-        DBG("*** stack window \"%s\" (%lx), layer %i\n", c->name, c->window, c->win_layer);
+        DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
         if(!exclude || (c != exclude))
         {
             if(c->win_layer <= layer)
@@ -1338,7 +1338,7 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
         c = (Client *) index->data;
         if(c)
         {
-            DBG("*** stack window \"%s\" (%lx), layer %i\n", c->name, c->window, c->win_layer);
+            DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
             if(!exclude || (c != exclude))
             {
                 if(c->win_layer >= layer)
@@ -1364,14 +1364,14 @@ static inline void clientComputeStackList(Client * c, Client * sibling, int mask
             {
                 windows_stack = g_slist_remove(windows_stack, c);
                 position = g_slist_index(windows_stack, sibling);
-                DBG("Below with sibling -> inserting window \"%s\" (%#lx) below \"%s\" (%#lx) at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position);
+                DBG("Below with sibling -> inserting window \"%s\" (0x%lx) below \"%s\" (0x%lx) at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position);
                 windows_stack = g_slist_insert(windows_stack, c, position);
             }
             else
             {
                 windows_stack = g_slist_remove(windows_stack, c);
                 position = g_slist_index(windows_stack, sibling);
-                DBG("Above with sibling -> inserting window \"%s\" (%#lx) above \"%s\" (%#lx)  at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position + 1);
+                DBG("Above with sibling -> inserting window \"%s\" (0x%lx) above \"%s\" (0x%lx)  at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position + 1);
                 windows_stack = g_slist_insert(windows_stack, c, position + 1);
             }
         }
@@ -1379,13 +1379,13 @@ static inline void clientComputeStackList(Client * c, Client * sibling, int mask
         {
             if(wc->stack_mode == Below)
             {
-                DBG("Below without sibling -> inserting window \"%s\" (%#lx) at beginning of stack list\n", c->name, c->window);
+                DBG("Below without sibling -> inserting window \"%s\" (0x%lx) at beginning of stack list\n", c->name, c->window);
                 windows_stack = g_slist_remove(windows_stack, c);
                 windows_stack = g_slist_prepend(windows_stack, c);
             }
             else
             {
-                DBG("Above without sibling -> inserting window \"%s\" (%#lx) at end of stack list\n", c->name, c->window);
+                DBG("Above without sibling -> inserting window \"%s\" (0x%lx) at end of stack list\n", c->name, c->window);
                 windows_stack = g_slist_remove(windows_stack, c);
                 windows_stack = g_slist_append(windows_stack, c);
             }
@@ -1405,11 +1405,11 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos %s\n", show_title ? "(with show full)" : "(w/out show full)");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
     
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
-        DBG("ignoring constrained for client \"%s\" (%#lx)\n", c->name, c->window);
+        DBG("ignoring constrained for client \"%s\" (0x%lx)\n", c->name, c->window);
         return;
     }
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
@@ -1496,7 +1496,7 @@ static inline void clientKeepVisible(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientKeepVisible\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     cx = frameX(c) + (frameWidth(c) >> 1);
     cy = frameY(c) + (frameHeight(c) >> 1);
@@ -1648,7 +1648,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
     g_return_if_fail(c != NULL);
     g_return_if_fail(c->window != None);
     DBG("entering _clientConfigure (recursive)\n");
-    DBG("configuring (recursive) client \"%s\" (%#lx), layer %i\n", c->name, c->window, c->win_layer);
+    DBG("configuring (recursive) client \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
 
     if(mask & CWX)
     {
@@ -1706,17 +1706,17 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
                 DBG("Above\n");
                 if(mask & CWSibling)
                 {
-                    DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
+                    DBG("Sibling specified for \"%s\" (0x%lx) is (0x%lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
                     if(!sibling)
                     {
-                        DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
+                        DBG("Sibling specified for \"%s\" (0x%lx) cannot be found\n", c->name, c->window);
                         sibling = clientGetTopMost(c->win_layer, c);
                     }
                 }
                 else
                 {
-                    DBG("No sibling specified for \"%s\" (%#lx)\n", c->name, c->window);
+                    DBG("No sibling specified for \"%s\" (0x%lx)\n", c->name, c->window);
                     sibling = clientGetTopMost(c->win_layer, c);
                 }
                 if(!sibling)
@@ -1727,11 +1727,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
                 DBG("looking for transients\n");
                 for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
                 {
-                    DBG("checking \"%s\" (%#lx)\n", c2->name, c2->window);
+                    DBG("checking \"%s\" (0x%lx)\n", c2->name, c2->window);
                     if((c2->transient_for == c->window) && (c2 != c))
                     {
                         XWindowChanges wc2;
-                        DBG("transient \"%s\" (%#lx) found for \"%s\" (%#lx)\n", c2->name, c2->window, c->name, c->window);
+                        DBG("transient \"%s\" (0x%lx) found for \"%s\" (0x%lx)\n", c2->name, c2->window, c->name, c->window);
                         if(!transients)
                         {
                             transients = TRUE;
@@ -1751,7 +1751,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
                 }
                 if(transients && lowest_transient)
                 {
-                    DBG("Transient is %s (%#lx)\n", sibling->name, sibling->window);
+                    DBG("Transient is %s (0x%lx)\n", sibling->name, sibling->window);
                     sibling = lowest_transient;
                     wc->stack_mode = Below;
                 }
@@ -1761,11 +1761,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
                 DBG("Below\n");
                 if((mask & CWSibling) && (c->transient_for != wc->sibling))
                 {
-                    DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
+                    DBG("Sibling specified for \"%s\" (0x%lx) is (0x%lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
                     if(!sibling)
                     {
-                        DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
+                        DBG("Sibling specified for \"%s\" (0x%lx) cannot be found\n", c->name, c->window);
                         sibling = clientGetBottomMost(c->win_layer, c);
                     }
                 }
@@ -1775,11 +1775,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
                     wc->stack_mode = Above;
                     mask |= (CWSibling | CWStackMode);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
-                    DBG("lowering transient \"%s\" (%#lx) for \"%s\" (%#lx)\n", c->name, c->window, c->transient_for, sibling->name);
+                    DBG("lowering transient \"%s\" (0x%lx) for \"%s\" (0x%lx)\n", c->name, c->window, c->transient_for, sibling->name);
                 }
                 else
                 {
-                    DBG("No sibling specified for \"%s\" (%#lx)\n", c->name, c->window);
+                    DBG("No sibling specified for \"%s\" (0x%lx)\n", c->name, c->window);
                     sibling = clientGetBottomMost(c->win_layer, c);
                 }
                 if(!sibling)
@@ -1848,7 +1848,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
 void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained)
 {
     DBG("entering clientConfigure\n");
-    DBG("configuring client \"%s\" (%#lx) %s, type %u\n", c->name, c->window, constrained ? "constrained" : "not contrained", c->type);
+    DBG("configuring client \"%s\" (0x%lx) %s, type %u\n", c->name, c->window, constrained ? "constrained" : "not contrained", c->type);
     _clientConfigure(c, wc, mask, constrained);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
     {
@@ -1862,7 +1862,7 @@ void clientUpdateMWMHints(Client * c)
 
     g_return_if_fail(c != NULL);
     g_return_if_fail(c->window != None);
-    DBG("entering clientUpdateMWMHints client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("entering clientUpdateMWMHints client \"%s\" (0x%lx)\n", c->name, c->window);
 
     mwm_hints = getMotifHints(dpy, c->window);
     if(mwm_hints)
@@ -1928,7 +1928,7 @@ static inline void clientFree(Client * c)
     g_return_if_fail(c != NULL);
 
     DBG("entering clientFree\n");
-    DBG("freeing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("freeing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(c->name)
     {
@@ -1994,7 +1994,7 @@ void clientFrame(Window w)
 
     g_return_if_fail(w != None);
     DBG("entering clientFrame\n");
-    DBG("framing client (%#lx)\n", w);
+    DBG("framing client (0x%lx)\n", w);
 
     if(w == gnome_win)
     {
@@ -2160,7 +2160,7 @@ void clientFrame(Window w)
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame = XCreateWindow(dpy, root, frameX(c), frameY(c), frameWidth(c), frameHeight(c), 0, CopyFromParent, InputOutput, CopyFromParent, valuemask, &attributes);
-    DBG("frame id (%#lx)\n", c->frame);
+    DBG("frame id (0x%lx)\n", c->frame);
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes(dpy, c->window, valuemask, &attributes);
@@ -2230,7 +2230,7 @@ void clientUnframe(Client * c, int remap)
     int i;
 
     DBG("entering clientUnframe\n");
-    DBG("unframing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("unframing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     g_return_if_fail(c != NULL);
     if(client_focus == c)
@@ -2337,7 +2337,7 @@ Client *clientGetFromWindow(Window w, int mode)
 
     g_return_val_if_fail(w != None, NULL);
     DBG("entering clientGetFromWindow\n");
-    DBG("looking for (%#lx)\n", w);
+    DBG("looking for (0x%lx)\n", w);
 
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
@@ -2425,7 +2425,7 @@ void clientShow(Client * c, int change_state)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientShow\n");
-    DBG("showing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("showing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     /* This is to make sure that transient are shown with their "master" window */
     if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)) && (c2 != c))
@@ -2466,7 +2466,7 @@ void clientHide(Client * c, int change_state)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientHide\n");
-    DBG("hiding client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("hiding client \"%s\" (0x%lx)\n", c->name, c->window);
 
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
@@ -2513,7 +2513,7 @@ void clientClose(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientClose\n");
-    DBG("closing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("closing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_DELETE))
     {
@@ -2529,7 +2529,7 @@ void clientKill(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientKill\n");
-    DBG("killing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("killing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     XKillClient(dpy, c->window);
 }
@@ -2540,7 +2540,7 @@ void clientRaise(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientRaise\n");
-    DBG("raising client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("raising client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (c->type != WINDOW_DESKTOP))
     {
@@ -2555,7 +2555,7 @@ void clientLower(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientLower\n");
-    DBG("lowering client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("lowering client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
@@ -2570,12 +2570,12 @@ void clientSetLayer(Client * c, int l)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetLayer\n");
-    DBG("setting client \"%s\" (%#lx) layer to %d\n", c->name, c->window, l);
+    DBG("setting client \"%s\" (0x%lx) layer to %d\n", c->name, c->window, l);
 
     old_layer = c->win_layer;
     if(l == old_layer)
     {
-        DBG("client \"%s\" (%#lx) already at layer %d\n", c->name, c->window, l);
+        DBG("client \"%s\" (0x%lx) already at layer %d\n", c->name, c->window, l);
         return;
     }
 
@@ -2591,7 +2591,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetWorkspace\n");
-    DBG("setting client \"%s\" (%#lx) to workspace %d\n", c->name, c->window, ws);
+    DBG("setting client \"%s\" (0x%lx) to workspace %d\n", c->name, c->window, ws);
 
     if(c->win_workspace == ws)
     {
@@ -2637,16 +2637,16 @@ void clientShade(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleShaded\n");
-    DBG("shading client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("shading client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
-        DBG("cowardly refusing to shade \"%s\" (%#lx) because it has no border\n", c->name, c->window);
+        DBG("cowardly refusing to shade \"%s\" (0x%lx) because it has no border\n", c->name, c->window);
         return;
     }
     else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
     {
-        DBG("\"%s\" (%#lx) is already shaded\n", c->name, c->window);
+        DBG("\"%s\" (0x%lx) is already shaded\n", c->name, c->window);
         return;
     }
 
@@ -2665,11 +2665,11 @@ void clientUnshade(Client * c)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleShaded\n");
-    DBG("shading/unshading client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("shading/unshading client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
     {
-        DBG("\"%s\" (%#lx) is not shaded\n", c->name, c->window);
+        DBG("\"%s\" (0x%lx) is not shaded\n", c->name, c->window);
         return;
     }
     c->win_state &= ~WIN_STATE_SHADED;
@@ -2700,11 +2700,11 @@ void clientStick(Client * c, gboolean include_transients)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientStick\n");
-    DBG("sticking client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("sticking client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
-        DBG("\"%s\" (%#lx) is already sticky\n", c->name, c->window);
+        DBG("\"%s\" (0x%lx) is already sticky\n", c->name, c->window);
         return;
     }
 
@@ -2732,11 +2732,11 @@ void clientUnstick(Client * c, gboolean include_transients)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientUnstick\n");
-    DBG("unsticking client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("unsticking client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
-        DBG("\"%s\" (%#lx) is not sticky\n", c->name, c->window);
+        DBG("\"%s\" (0x%lx) is not sticky\n", c->name, c->window);
         return;
     }
 
@@ -2762,7 +2762,7 @@ void clientToggleSticky(Client * c, gboolean include_transients)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleSticky\n");
-    DBG("sticking/unsticking client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("sticking/unsticking client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
@@ -2778,7 +2778,7 @@ inline void clientRemoveMaximizeFlag(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientRemoveMaximizeFlag\n");
-    DBG("Removing maximize flag on client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("Removing maximize flag on client \"%s\" (0x%lx)\n", c->name, c->window);
 
     c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
@@ -2792,7 +2792,7 @@ void clientToggleMaximized(Client * c, int mode)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleMaximized\n");
-    DBG("maximzing/unmaximizing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("maximzing/unmaximizing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(!CLIENT_CAN_MAXIMIZE_WINDOW(c))
     {
@@ -2884,12 +2884,12 @@ void clientUpdateFocus(Client * c)
 
     if((c) && !clientAcceptFocus(c))
     {
-        DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
+        DBG("SKIP_FOCUS set for client \"%s\" (0x%lx)\n", c->name, c->window);
         return;
     }
     if(c == client_focus)
     {
-        DBG("client \"%s\" (%#lx) is already focused, ignoring request\n", c->name, c->window);
+        DBG("client \"%s\" (0x%lx) is already focused, ignoring request\n", c->name, c->window);
         return;
     }
     client_focus = c;
@@ -2904,7 +2904,7 @@ void clientUpdateFocus(Client * c)
     }
     if(c2)
     {
-        DBG("redrawing previous focus client \"%s\" (%#lx)\n", c2->name, c2->window);
+        DBG("redrawing previous focus client \"%s\" (0x%lx)\n", c2->name, c2->window);
         frameDraw(c2, FALSE, FALSE);
     }
     data[1] = None;
@@ -2921,15 +2921,15 @@ void clientSetFocus(Client * c, int sort)
 
     if((c) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_VISIBLE))
     {
-        DBG("setting focus to client \"%s\" (%#lx)\n", c->name, c->window);
+        DBG("setting focus to client \"%s\" (0x%lx)\n", c->name, c->window);
         if(!clientAcceptFocus(c))
         {
-            DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
+            DBG("SKIP_FOCUS set for client \"%s\" (0x%lx)\n", c->name, c->window);
             return;
         }
         if(c == client_focus)
         {
-            DBG("client \"%s\" (%#lx) is already focused, ignoring request\n", c->name, c->window);
+            DBG("client \"%s\" (0x%lx) is already focused, ignoring request\n", c->name, c->window);
             return;
         }
         client_focus = c;
@@ -2962,7 +2962,7 @@ void clientSetFocus(Client * c, int sort)
     }
     if(c2)
     {
-        DBG("redrawing previous focus client \"%s\" (%#lx)\n", c2->name, c2->window);
+        DBG("redrawing previous focus client \"%s\" (0x%lx)\n", c2->name, c2->window);
         frameDraw(c2, FALSE, FALSE);
     }
     data[1] = None;
@@ -3050,7 +3050,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         int cx, cy, left, right, top, bottom;
         int disp_x, disp_y, disp_max_x, disp_max_y;
         int frame_x, frame_y, frame_height, frame_width;
-	int frame_top, frame_left, frame_right, frame_bottom;
+        int frame_top, frame_left, frame_right, frame_bottom;
 
         while(XCheckTypedEvent(dpy, MotionNotify, xevent));
 
@@ -3089,14 +3089,14 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
-	frame_x      = frameX(c);
-	frame_y      = frameY(c);
-	frame_height = frameHeight(c);
-	frame_width  = frameWidth(c);
-	frame_top    = frameTop(c);
-	frame_left   = frameLeft(c);
-	frame_right  = frameRight(c);
-	frame_bottom = frameBottom(c);
+        frame_x      = frameX(c);
+        frame_y      = frameY(c);
+        frame_height = frameHeight(c);
+        frame_width  = frameWidth(c);
+        frame_top    = frameTop(c);
+        frame_left   = frameLeft(c);
+        frame_right  = frameRight(c);
+        frame_bottom = frameBottom(c);
 
         cx = frame_x + (frame_width >> 1);
         cy = frame_y + (frame_height >> 1);
@@ -3116,23 +3116,27 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             if(abs(frame_x - disp_max_x + frame_width + right) < params.snap_width)
             {
                 c->x = disp_max_x - frame_right - c->width - right;
+                frame_x = frameX(c);
             }
             if(abs(frame_x - disp_x) < params.snap_width + left)
             {
                 c->x = disp_x + frame_left + left;
-            }
+                frame_x = frameX(c);
+           }
             if(abs(frame_y - disp_max_y + frame_height + bottom) < params.snap_width)
             {
                 c->y = disp_max_y - frame_height + frame_top - bottom;
+                frame_y = frameY(c);
             }
-            else if((frame_y > disp_y - frame_top) && (frame_y < disp_y + top + params.snap_width))
+            if((frame_y + frame_top > disp_y) && (frame_y < disp_y + top + params.snap_width))
             {
                 c->y = disp_y + frame_top + top;
+                frame_y = frameY(c);
             }
         }
         else
         {
-            if((frame_y - frame_top > 0) && (frame_y < top))
+            if((frame_y + frame_top > 0) && (frame_y < top))
             {
                 c->y = frame_top + top;
             }
@@ -3190,7 +3194,7 @@ void clientMove(Client * c, XEvent * e)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientDoMove\n");
-    DBG("moving client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("moving client \"%s\" (0x%lx)\n", c->name, c->window);
 
     passdata.ox = c->x;
     passdata.oy = c->y;
@@ -3522,7 +3526,7 @@ void clientResize(Client * c, int corner, XEvent * e)
 
     g_return_if_fail(c != NULL);
     DBG("entering clientResize\n");
-    DBG("resizing client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("resizing client \"%s\" (0x%lx)\n", c->name, c->window);
 
     passdata.c = c;
     passdata.corner = CORNER_BOTTOM_RIGHT;
