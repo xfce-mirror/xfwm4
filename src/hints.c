@@ -166,16 +166,15 @@ getWMState (Display * dpy, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data;
-    unsigned long state = WithdrawnState;
+    unsigned long *data = NULL, state = WithdrawnState;
 
     TRACE ("entering getWmState");
 
     if ((XGetWindowProperty (dpy, w, wm_state, 0, 3L, FALSE, wm_state,
                 &real_type, &real_format, &items_read, &items_left,
-                &data) == Success) && (items_read))
+                (unsigned char **) &data) == Success) && (items_read))
     {
-        memcpy (&state, data, sizeof(state));
+        state = *data;
         XFree (data);
     }
     return state;
@@ -209,14 +208,14 @@ getMotifHints (Display * dpy, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data;
+    long *data = NULL;
     PropMwmHints *result = NULL;
 
     TRACE ("entering getMotifHints");
 
     if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, MWM_HINTS_ELEMENTS, 
                 FALSE, motif_wm_hints, &real_type, &real_format, &items_read,
-                &items_left, &data) == Success))
+                &items_left, (unsigned char **) &data) == Success))
     {
         if (items_read >= MWM_HINTS_ELEMENTS)
         {    
@@ -237,7 +236,6 @@ getWMProtocols (Display * dpy, Window w)
     int aformat;
     unsigned int result = 0;
     unsigned long bytes_remain, nitems;
-    unsigned char* data;
 
     TRACE ("entering getWMProtocols");
 
@@ -259,19 +257,13 @@ getWMProtocols (Display * dpy, Window w)
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
             }
         }
-
-        XFree(protocols);
     }
     else
     {
         if ((XGetWindowProperty (dpy, w, wm_protocols, 0L, 10L, FALSE,
                     wm_protocols, &atype, &aformat, &nitems, &bytes_remain,
-                    &data)) == Success)
+                    (unsigned char **) &protocols)) == Success)
         {
-            protocols = g_new (Atom, nitems);
-            memcpy (protocols, data, sizeof(*protocols) * nitems);
-            XFree (data);
-
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
                 if (*ap == (Atom) wm_takefocus)
@@ -288,9 +280,11 @@ getWMProtocols (Display * dpy, Window w)
                     result |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
             }
-
-            g_free (protocols);
         }
+    }
+    if (protocols)
+    {
+        XFree (protocols);
     }
     return result;
 }
@@ -345,24 +339,23 @@ getHint (Display * dpy, Window w, Atom a, long *value)
 {
     Atom real_type;
     int real_format;
+    gboolean success = FALSE;
     unsigned long items_read, items_left;
-    unsigned char *data;
+    long *data = NULL;
 
     TRACE ("entering getHint");
 
+    *value = 0;
+
     if ((XGetWindowProperty (dpy, w, a, 0L, 1L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
-                &data) == Success) && (items_read))
+                (unsigned char **) &data) == Success) && (items_read))
     {
-        memcpy (&value, data, sizeof(value));
+        *value = *data;
         XFree (data);
-        return(TRUE);
+        success = TRUE;
     }
-    else
-    {
-        *value = 0;
-        return(FALSE);
-    }
+    return success;
 }
 
 void
@@ -380,23 +373,19 @@ getGnomeDesktopMargins (Display * dpy, int screen, int * m)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data;
+    unsigned long *data = NULL;
 
     TRACE ("entering getGnomeDesktopMargins");
 
     if ((XGetWindowProperty (dpy, RootWindow (dpy, screen),
                 gnome_panel_desktop_area, 0L, 4L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
-                &data) == Success) && (items_read >= 4))
+                (unsigned char **) &data) == Success) && (items_read >= 4))
     {
-#if 0
         m[0] = (int) data[0];
         m[1] = (int) data[1];
         m[2] = (int) data[2];
         m[3] = (int) data[3];
-#else
-        memcpy(m, data, sizeof(*m) * 4);
-#endif
         XFree (data);
     }
     else
@@ -579,10 +568,9 @@ get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    /* XXX dangerous cast from Atom* to unsigned char** */
     if ((XGetWindowProperty (dpy, w, a, 0, G_MAXLONG, FALSE, XA_ATOM, &type,
                 &format, &n_atoms, &bytes_after,
-                (unsigned char **)(void*)&atoms) != Success) || (type == None))
+                (unsigned char **) &atoms) != Success) || (type == None))
     {
         return FALSE;
     }
@@ -612,14 +600,14 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
     int format;
     unsigned long n_cardinals;
     unsigned long bytes_after;
-    unsigned char *cardinals;
+    unsigned long *cardinals;
 
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
     if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, XA_CARDINAL,
                 &type, &format, &n_cardinals, &bytes_after,
-                &cardinals) != Success) || (type == None))
+                (unsigned char **) &cardinals) != Success) || (type == None))
     {
         return FALSE;
     }
@@ -631,7 +619,7 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
         return FALSE;
     }
 
-    *cardinals_p = (unsigned long *)cardinals;
+    *cardinals_p = cardinals;
     *n_cardinals_p = n_cardinals;
 
     return TRUE;
@@ -868,11 +856,11 @@ checkKdeSystrayWindow(Display * dpy, Window window)
     Window trayIconForWindow;
 
     TRACE ("entering GetWindowRole");
-    g_return_val_if_fail (window != None, FALSE);
+    g_return_if_fail (window != None);
     
     XGetWindowProperty(dpy, window, kde_net_wm_system_tray_window_for, 0L, 
             sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
-            &nitems, &bytes_after, (unsigned char **)(void*)&trayIconForWindow);
+            &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
 
     if ((actual_format == None) || 
         (actual_type != XA_WINDOW) || 
