@@ -1633,8 +1633,11 @@ compositorWindowMap (DisplayInfo *display_info, Window id)
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
-        map_win (cw);
-        compositorRepairScreen (cw->screen_info);
+        if (!(cw->viewable))
+        {
+            map_win (cw);
+            compositorRepairScreen (cw->screen_info);
+        }
     }
     else
     {

@@ -1961,7 +1961,7 @@ clientShowSingle (Client * c, gboolean change_state)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
-	compositorWindowMap (display_info, c->frame);
+        compositorWindowMap (display_info, c->frame);
         XMapWindow (display_info->dpy, c->frame);
         XMapWindow (display_info->dpy, c->window);
         /* Adjust to urgency state as the window is visible */
