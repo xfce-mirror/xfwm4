@@ -558,6 +558,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         if(invalidate_cache)
         {
             clientClearPixmapCache(c);
+            requires_clearing = TRUE;
         }
         else
         {
@@ -568,6 +569,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
                 c->pm_cache.previous_width = c->width;
+                requires_clearing = TRUE;
             }
             if(c->pm_cache.previous_height != c->height)
             {
@@ -576,6 +578,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
                 c->pm_cache.previous_height = c->height;
+                requires_clearing = TRUE;
             }
         }
 
@@ -649,11 +652,13 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         if(c->pm_cache.pm_title[state].pixmap == None)
         {
             frameCreateTitlePixmap(c, state, left, right, &c->pm_cache.pm_title[state]);
+            requires_clearing = TRUE;
         }
 
         if(c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
         {
             createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][state], frameLeft(c), left_height);
+            requires_clearing = TRUE;
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap, params.sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].mask, params.sides[SIDE_LEFT][state].mask, 0, 0, frameLeft(c), left_height);
@@ -661,6 +666,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         if(c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
         {
             createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][state], frameRight(c), right_height);
+            requires_clearing = TRUE;
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap, params.sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].mask, params.sides[SIDE_RIGHT][state].mask, 0, 0, frameRight(c), right_height);
@@ -668,6 +674,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         if(c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
         {
             createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][state], bottom_width, frameBottom(c));
+            requires_clearing = TRUE;
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap, params.sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width, frameBottom(c));
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].mask, params.sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width, frameBottom(c));
@@ -688,19 +695,22 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         }
         else
         {
-            myWindowShow(&c->sides[SIDE_LEFT], 0, frameTop(c), frameLeft(c), left_height, requires_clearing | invalidate_cache);
-            myWindowShow(&c->sides[SIDE_RIGHT], frameWidth(c) - frameRight(c), frameTop(c), frameRight(c), right_height, requires_clearing | invalidate_cache);
+            myWindowShow(&c->sides[SIDE_LEFT], 0, frameTop(c), frameLeft(c), left_height, requires_clearing);
+            myWindowShow(&c->sides[SIDE_RIGHT], frameWidth(c) - frameRight(c), frameTop(c), frameRight(c), right_height, requires_clearing);
         }
 
-        myWindowShow(&c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width, frameTop(c), requires_clearing | invalidate_cache);
-        myWindowShow(&c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width, frameBottom(c), requires_clearing | invalidate_cache);
+        myWindowShow(&c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width, frameTop(c), requires_clearing);
+        myWindowShow(&c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width, frameBottom(c), requires_clearing);
 
-        myWindowShow(&c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height, requires_clearing | invalidate_cache);
-        myWindowShow(&c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height, requires_clearing | invalidate_cache);
-        myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, requires_clearing | invalidate_cache);
-        myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, requires_clearing | invalidate_cache);
+        myWindowShow(&c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height, requires_clearing);
+        myWindowShow(&c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height, requires_clearing);
+        myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, requires_clearing);
+        myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, requires_clearing);
 
-        frameSetShape(c, state, &c->pm_cache, button_x);
+        if (requires_clearing)
+	{
+	    frameSetShape(c, state, &c->pm_cache, button_x);
+	}
     }
     else
     {
