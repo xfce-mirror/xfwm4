@@ -162,6 +162,7 @@ struct _Params
     int workspace_count;
     int wrap_resistance;
     gboolean title_shadow[2];
+    gboolean cycle_minimum;
     gboolean box_move;
     gboolean box_resize;
     gboolean click_to_focus;

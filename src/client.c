@@ -153,6 +153,7 @@ struct _ClientCycleData
 {
     Client *c;
     Tabwin *tabwin;
+    int cycle_range;
 };
 
 typedef struct _ButtonPressData ButtonPressData;
@@ -2433,7 +2434,7 @@ void
 clientGetWMNormalHints (Client * c, gboolean update)
 {
     unsigned long previous_value;
-    long dummy;
+    long dummy = 0;
     XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
@@ -2447,7 +2448,11 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size = XAllocSizeHints ();
     }
     g_assert (c->size);
-    XGetWMNormalHints (dpy, c->window, c->size, &dummy);
+    if (XGetWMNormalHints (dpy, c->window, c->size, &dummy) != Success)
+    {
+        return;
+    }
+    
     previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_IS_RESIZABLE);
 
@@ -2456,34 +2461,63 @@ clientGetWMNormalHints (Client * c, gboolean update)
     wc.width = c->width;
     wc.height = c->height;
 
-    if ((c->size->flags & PMaxSize))
+    if (!(c->size->flags & PMaxSize))
     {
-        if (wc.width > c->size->max_width)
+        c->size->max_width = G_MAXINT;
+        c->size->max_height = G_MAXINT;
+        c->size->flags |= PMaxSize;
+    }
+    
+    if (!(c->size->flags & PMinSize))
+    {
+        if ((c->size->flags & PBaseSize))
         {
-            wc.width = c->size->max_width;
+            c->size->min_width = c->size->base_width;
+            c->size->min_height = c->size->base_height;
         }
-        if (wc.height > c->size->max_height)
+        else
         {
-            wc.height = c->size->max_height;
+            c->size->min_width = 1;
+            c->size->min_height = 1;
         }
+        c->size->flags |= PMinSize;
     }
 
-    if ((c->size->flags & PMinSize))
+    if (c->size->min_width < 1)
     {
-        if (wc.width < c->size->min_width)
-        {
-            wc.width = c->size->min_width;
-        }
-        if (wc.height < c->size->min_height)
-        {
-            wc.height = c->size->min_height;
-        }
+        c->size->min_width = 1;
+    }
+    if (c->size->min_height < 1)
+    {
+        c->size->min_height = 1;
+    }
+    if (c->size->max_width < 1)
+    {
+        c->size->max_width = 1;
+    }
+    if (c->size->max_height < 1)
+    {
+        c->size->max_height = 1;
+    }
+    if (wc.width > c->size->max_width)
+    {
+        wc.width = c->size->max_width;
+    }
+    if (wc.height > c->size->max_height)
+    {
+        wc.height = c->size->max_height;
+    }
+    if (wc.width < c->size->min_width)
+    {
+        wc.width = c->size->min_width;
+    }
+    if (wc.height < c->size->min_height)
+    {
+        wc.height = c->size->min_height;
     }
 
-    if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize)) || 
-        (((c->size->flags & (PMinSize | PMaxSize)) == (PMinSize | PMaxSize))&& 
-         ((c->size->min_width < c->size->max_width) || 
-          (c->size->min_height < c->size->max_height))))
+    if ((c->size->min_width < c->size->max_width) || 
+        (c->size->min_height < c->size->max_height))
     {
         CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
     }
@@ -5092,9 +5126,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 /* Hide frame draw */
                 clientDrawOutline (passdata->c);
                 passdata->c =
-                    clientGetNext (passdata->c,
-                    INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR |
-                    INCLUDE_SKIP_PAGER);
+                    clientGetNext (passdata->c, passdata->cycle_range);
                 if (passdata->c)
                 {
                     /* Redraw frame draw */
@@ -5163,9 +5195,15 @@ clientCycle (Client * c)
     }
 
     MyXGrabServer ();
-    passdata.c =
-        clientGetNext (c,
-        INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
+    if (params.cycle_minimum)
+    {
+        passdata.cycle_range = INCLUDE_HIDDEN;
+    }
+    else
+    {
+        passdata.cycle_range = INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER;
+    }
+    passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)
     {
         passdata.tabwin = tabwinCreate (passdata.c->name);

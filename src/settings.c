@@ -920,10 +920,11 @@ loadSettings (void)
         {"button_offset", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
         {"click_to_focus", NULL, TRUE},
+        {"cycle_minimum", NULL, FALSE},
         {"dbl_click_time", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
-        {"easy_click", NULL, TRUE},
-        {"focus_hint", NULL, TRUE},
+        {"easy_click", NULL, FALSE},
+        {"focus_hint", NULL, FALSE},
         {"focus_new", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
         {"keytheme", NULL, TRUE},
@@ -1034,6 +1035,8 @@ loadSettings (void)
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
     params.easy_click =
         !g_ascii_strcasecmp ("true", getValue ("easy_click", rc));
+    params.cycle_minimum =
+        !g_ascii_strcasecmp ("true", getValue ("cycle_minimum", rc));
     params.focus_hint =
         !g_ascii_strcasecmp ("true", getValue ("focus_hint", rc));
     params.focus_new =
