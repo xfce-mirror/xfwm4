@@ -244,6 +244,7 @@ theme_DATA = \
 	title-2-inactive.xpm						\
 	title-3-active.png						\
 	title-3-active.xpm						\
+	title-3-inactive.png						\
 	title-3-inactive.xpm						\
 	title-4-active.xpm						\
 	title-4-inactive.xpm						\
