@@ -68,6 +68,8 @@ struct _ScreenInfo
     Client *clients;
     unsigned int client_count;
     unsigned long client_serial;
+    int key_grabs;
+    int pointer_grabs;
     
     /* Theme pixmaps and other params, per screen */
     XfwmColor title_colors[2];
@@ -143,13 +145,22 @@ struct _ScreenInfo
 #endif /* HAVE_COMPOSITOR */
 };
 
-ScreenInfo *     myScreenInit         (DisplayInfo *, 
-                                       GdkScreen *, 
-                                       unsigned long);
-ScreenInfo *     myScreenClose        (ScreenInfo *);
-Display *        myScreenGetXDisplay  (ScreenInfo *);
-GtkWidget *      myScreenGetGtkWidget (ScreenInfo *);
-GtkWidget *      myScreenGetGtkWidget (ScreenInfo *);
-GdkWindow *      myScreenGetGdkWindow (ScreenInfo *);
-
+ScreenInfo *     myScreenInit           (DisplayInfo *, 
+                                         GdkScreen *, 
+                                         unsigned long);
+ScreenInfo *     myScreenClose          (ScreenInfo *);
+Display *        myScreenGetXDisplay    (ScreenInfo *);
+GtkWidget *      myScreenGetGtkWidget   (ScreenInfo *);
+GtkWidget *      myScreenGetGtkWidget   (ScreenInfo *);
+GdkWindow *      myScreenGetGdkWindow   (ScreenInfo *);
+gboolean         myScreenGrabKeyboard   (ScreenInfo *, 
+                                         Time);
+gboolean         myScreenGrabPointer    (ScreenInfo *, 
+                                         unsigned int, 
+                                         Cursor, 
+                                         Time);
+unsigned int     myScreenUngrabKeyboard (ScreenInfo *, 
+                                         Time);
+unsigned int     myScreenUngrabPointer  (ScreenInfo *, 
+                                         Time);
 #endif /* INC_SCREEN_H */

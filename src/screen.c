@@ -94,6 +94,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
     screen_info->current_ws = 0;
     screen_info->previous_ws = 0;
+    screen_info->current_ws = 0;
+    screen_info->previous_ws = 0;
 
     screen_info->margins[TOP] = screen_info->gnome_margins[TOP] = 0;
     screen_info->margins[LEFT] = screen_info->gnome_margins[LEFT] = 0;
@@ -115,6 +117,9 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->client_serial = 0L;
     screen_info->button_handler_id = 0L;
     
+    screen_info->key_grabs = 0;
+    screen_info->pointer_grabs = 0;
+
     /* Create the side windows to detect edge movement */
     xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[0], 
                                   0, 0, 
@@ -242,4 +247,86 @@ myScreenGetGdkWindow (ScreenInfo *screen_info)
     g_return_val_if_fail (screen_info, NULL);
     
     return screen_info->gtk_win->window;
+}
+
+gboolean
+myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
+{
+    gboolean grab = TRUE;
+
+    g_return_val_if_fail (screen_info, FALSE);
+    if (screen_info->key_grabs == 0)
+    {
+        grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info), 
+                               screen_info->gnome_win,
+                               FALSE, 
+                               GrabModeAsync, GrabModeAsync, 
+                               time) == GrabSuccess);
+    }
+    if (grab)
+    {
+        screen_info->key_grabs++;
+    }
+    
+    return grab;
+}
+
+gboolean
+myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, Time time)
+{
+    gboolean grab = TRUE;
+
+    g_return_val_if_fail (screen_info, FALSE);
+    if (screen_info->pointer_grabs == 0)
+    {
+        grab = (XGrabPointer (myScreenGetXDisplay (screen_info), 
+                              screen_info->gnome_win, 
+                              FALSE, event_mask, 
+                              GrabModeAsync, GrabModeAsync, 
+                              screen_info->xroot, 
+                              cursor, 
+                              time) == GrabSuccess);
+    }
+    if (grab)
+    {
+        screen_info->pointer_grabs++;
+    }
+    
+    return grab;
+}
+
+unsigned int
+myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
+{
+    g_return_val_if_fail (screen_info, 0);
+
+    screen_info->key_grabs = screen_info->key_grabs - 1;
+    if (screen_info->key_grabs < 0)
+    {
+        screen_info->key_grabs = 0;
+    }
+    if (screen_info->key_grabs == 0)
+    {
+        XUngrabKeyboard (myScreenGetXDisplay (screen_info), time);
+    }
+
+    return screen_info->key_grabs;
+}
+
+unsigned int
+myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
+{
+    g_return_val_if_fail (screen_info, 0);
+
+    screen_info->pointer_grabs = screen_info->pointer_grabs - 1;
+    if (screen_info->pointer_grabs < 0)
+    {
+        screen_info->pointer_grabs = 0;
+    }
+    if (screen_info->pointer_grabs == 0)
+    {
+        XUngrabPointer (myScreenGetXDisplay (screen_info), time);
+    }
+
+    return screen_info->pointer_grabs;
 }
