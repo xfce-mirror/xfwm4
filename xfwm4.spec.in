@@ -116,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/tabs
 %{_datadir}/xfwm4/themes/trench
 %{_datadir}/xfwm4/themes/tux
+%{_datadir}/xfwm4/themes/triviality
 %{_datadir}/xfwm4/themes/variation
 %{_datadir}/xfwm4/themes/xfce
 

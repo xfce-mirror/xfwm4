@@ -60,6 +60,7 @@ SUBDIRS =								\
 	tgc 								\
 	totem 								\
 	trench 								\
+	triviality							\
 	tux 								\
 	variation 							\
 	xfce

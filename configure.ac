@@ -117,6 +117,7 @@ themes/tabs/Makefile
 themes/tgc/Makefile
 themes/totem/Makefile
 themes/trench/Makefile
+themes/triviality/Makefile
 themes/tux/Makefile
 themes/variation/Makefile
 themes/xfce/Makefile
