@@ -75,7 +75,7 @@ CARD32 margins[4];
 CARD32 gnome_margins[4];
 int quit = False, reload = False;
 int shape, shape_event;
-Cursor resize_cursor[7], move_cursor, root_cursor;
+Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
 SessionClient *client_session;
 
 static int handleXError(Display * dpy, XErrorEvent * err)
@@ -106,6 +106,7 @@ static void cleanUp()
     unloadSettings();
     XFreeCursor(dpy, root_cursor);
     XFreeCursor(dpy, move_cursor);
+    XFreeCursor(dpy, busy_cursor);
     xineramaFree();
     sessionFreeWindowStates();
     for(i = 0; i < 7; i++)
@@ -237,6 +238,7 @@ static int initialize(int argc, char **argv)
 
     root_cursor = XCreateFontCursor(dpy, XC_left_ptr);
     move_cursor = XCreateFontCursor(dpy, XC_fleur);
+    busy_cursor = XCreateFontCursor(dpy, XC_fleur);
     resize_cursor[CORNER_TOP_LEFT] = XCreateFontCursor(dpy, XC_top_left_corner);
     resize_cursor[CORNER_TOP_RIGHT] = XCreateFontCursor(dpy, XC_top_right_corner);
     resize_cursor[CORNER_BOTTOM_LEFT] = XCreateFontCursor(dpy, XC_bottom_left_corner);

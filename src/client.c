@@ -864,7 +864,7 @@ static void clientWindowType(Client * c)
             DBG("atom net_wm_window_type_dialog detected\n");
             c->type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_ONTOP;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE);
         }
         else if(c->type_atom == net_wm_window_type_normal)
         {
@@ -884,7 +884,7 @@ static void clientWindowType(Client * c)
             DBG("atom net_wm_window_type_splashscreen detected\n");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_BORDER);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
         }
     }
     else

@@ -64,7 +64,7 @@ extern CARD32 gnome_margins[4];
 extern CARD32 margins[4];
 extern int quit, reload;
 extern int shape, shape_event;
-extern Cursor resize_cursor[7], move_cursor, root_cursor;
+extern Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
 
 /*
  *
