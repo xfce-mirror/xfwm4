@@ -787,8 +787,9 @@ maintainers, etc. Commented out by default.
 
   <!-- extra space -->
   <para>&nbsp;</para>
-</sect1>
   
+</sect1>
+
 <sect1 id="wm-copyright">
   <title>A propos de &app;</title>
 
