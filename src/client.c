@@ -941,7 +941,7 @@ clientGetNetWmType (Client * c)
                 || (atoms[i] == net_wm_window_type_dialog)
                 || (atoms[i] == net_wm_window_type_normal)
                 || (atoms[i] == net_wm_window_type_utility)
-                || (atoms[i] == net_wm_window_type_splashscreen))
+                || (atoms[i] == net_wm_window_type_splash))
             {
                 c->type_atom = atoms[i];
                 break;
@@ -1218,9 +1218,9 @@ clientWindowType (Client * c)
             CLIENT_FLAG_UNSET (c,
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
         }
-        else if (c->type_atom == net_wm_window_type_splashscreen)
+        else if (c->type_atom == net_wm_window_type_splash)
         {
-            TRACE ("atom net_wm_window_type_splashscreen detected");
+            TRACE ("atom net_wm_window_type_splash detected");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
             CLIENT_FLAG_UNSET (c,

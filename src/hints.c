@@ -115,7 +115,7 @@ Atom net_wm_window_type_dialog;
 Atom net_wm_window_type_dock;
 Atom net_wm_window_type_menu;
 Atom net_wm_window_type_normal;
-Atom net_wm_window_type_splashscreen;
+Atom net_wm_window_type_splash;
 Atom net_wm_window_type_toolbar;
 Atom net_wm_window_type_utility;
 Atom net_workarea;
@@ -454,8 +454,8 @@ initNetHints (Display * dpy)
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_MENU", FALSE);
     net_wm_window_type_normal =
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_NORMAL", FALSE);
-    net_wm_window_type_splashscreen =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_SPLASHSCREEN", FALSE);
+    net_wm_window_type_splash =
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_SPLASH", FALSE);
     net_wm_window_type_toolbar =
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", FALSE);
     net_wm_window_type_utility =
@@ -515,7 +515,7 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_window_type_dock;
     atoms[i++] = net_wm_window_type_menu;
     atoms[i++] = net_wm_window_type_normal;
-    atoms[i++] = net_wm_window_type_splashscreen;
+    atoms[i++] = net_wm_window_type_splash;
     atoms[i++] = net_wm_window_type_toolbar;
     atoms[i++] = net_wm_window_type_utility;
     atoms[i++] = net_workarea;

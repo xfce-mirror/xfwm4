@@ -171,7 +171,7 @@ extern Atom net_wm_window_type_dialog;
 extern Atom net_wm_window_type_dock;
 extern Atom net_wm_window_type_menu;
 extern Atom net_wm_window_type_normal;
-extern Atom net_wm_window_type_splashscreen;
+extern Atom net_wm_window_type_splash;
 extern Atom net_wm_window_type_toolbar;
 extern Atom net_wm_window_type_utility;
 extern Atom net_workarea;
