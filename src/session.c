@@ -48,7 +48,14 @@ typedef struct _match
     char *wm_name;
     int wm_command_count;
     char **wm_command;
-    int x, y, w, h;
+    int x;
+    int y;
+    int width;
+    int height;
+    int old_x;
+    int old_y;
+    int old_width;
+    int old_height;
     int desktop;
     unsigned long flags;
     gboolean used;
@@ -217,6 +224,10 @@ gboolean sessionSaveWindowStates(gchar *filename)
     FILE *f;
     Client *c;
     gint client_idx;
+    char *client_id = NULL;
+    char *window_role = NULL;
+    int wm_command_count = 0;
+    char **wm_command = NULL;
 
     g_return_val_if_fail(filename != NULL, FALSE);
     
@@ -224,11 +235,23 @@ gboolean sessionSaveWindowStates(gchar *filename)
     {
 	for(c = clients, client_idx = 0; client_idx < client_count; c = c->next, client_idx++)
 	{
-            fprintf(f, "[CLIENT] 0x%lx\n", c->window);
+	    if (c->client_leader != None)
+	    {
+        	getWindowRole(dpy, c->client_leader, &window_role);
+	    }
+	    else
+	    {
+        	window_role = NULL;
+	    }
+            
+	    fprintf(f, "[CLIENT] 0x%lx\n", c->window);
 
-            if(c->client_id)
+            getClientID(dpy, c->window, &client_id);
+            if(client_id)
             {
-        	fprintf(f, "  [CLIENT_ID] %s\n", c->client_id);
+        	fprintf(f, "  [CLIENT_ID] %s\n", client_id);
+        	XFree(client_id);
+		client_id = NULL;
             }
 
             if(c->client_leader)
@@ -236,9 +259,11 @@ gboolean sessionSaveWindowStates(gchar *filename)
         	fprintf(f, "  [CLIENT_LEADER] 0x%lx\n", c->client_leader);
             }
 
-            if(c->window_role)
+            if(window_role)
             {
-        	fprintf(f, "  [WINDOW_ROLE] %s\n", c->window_role);
+        	fprintf(f, "  [WINDOW_ROLE] %s\n", window_role);
+        	XFree(window_role);
+		window_role = NULL;
             }
 
             if(c->class.res_class)
@@ -256,23 +281,29 @@ gboolean sessionSaveWindowStates(gchar *filename)
         	fprintf(f, "  [WM_NAME] %s\n", c->name);
             }
 
-            if(c->wm_command_count > 0)
+	    wm_command_count = 0;
+	    getWindowCommand(dpy, c->window, &wm_command, &wm_command_count);
+            if((wm_command_count > 0) && (wm_command))
             {
         	gint j;
-		fprintf(f, "  [WM_COMMAND] (%i)", c->wm_command_count);
-        	for(j = 0; j < c->wm_command_count; j++)
+		fprintf(f, "  [WM_COMMAND] (%i)", wm_command_count);
+        	for(j = 0; j < wm_command_count; j++)
         	{
                     gchar *escaped_string;
-                    escaped_string = escape_quote(c->wm_command[j]);
+                    escaped_string = escape_quote(wm_command[j]);
                     fprintf(f, " \"%s\"", escaped_string);
                     g_free(escaped_string);
         	}
         	fprintf(f, "\n");
+        	XFreeStringList(wm_command);
+		wm_command = NULL;
+		wm_command_count = 0;
             }
 
             fprintf(f, "  [GEOMETRY] (%i,%i,%i,%i)\n", c->x, c->y, c->width, c->height);
+            fprintf(f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->old_x, c->old_y, c->old_width, c->old_height);
             fprintf(f, "  [DESK] %i\n", c->win_workspace);
-            fprintf(f, "  [FLAGS] 0x%lx\n", CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN | CLIENT_FLAG_SHADED | CLIENT_FLAG_NAME_CHANGED));
+            fprintf(f, "  [FLAGS] 0x%lx\n", CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN | CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_NAME_CHANGED));
 	}
 	fclose(f);
 	return TRUE;
@@ -308,15 +339,23 @@ gboolean sessionLoadWindowStates(gchar *filename)
                 matches[num_match - 1].wm_command = NULL;
                 matches[num_match - 1].x = 0;
                 matches[num_match - 1].y = 0;
-                matches[num_match - 1].w = 100;
-                matches[num_match - 1].h = 100;
+                matches[num_match - 1].width = 100;
+                matches[num_match - 1].height = 100;
+                matches[num_match - 1].old_x = matches[num_match - 1].x;
+                matches[num_match - 1].old_y = matches[num_match - 1].y;
+                matches[num_match - 1].old_width = matches[num_match - 1].width;
+                matches[num_match - 1].old_height = matches[num_match - 1].height;
                 matches[num_match - 1].desktop = 0;
                 matches[num_match - 1].used = FALSE;
                 matches[num_match - 1].flags = 0;
             }
             else if(!strcmp(s1, "[GEOMETRY]"))
             {
-                sscanf(s, "%*s (%i,%i,%i,%i)", &(matches[num_match - 1].x), &(matches[num_match - 1].y), &(matches[num_match - 1].w), &(matches[num_match - 1].h));
+                sscanf(s, "%*s (%i,%i,%i,%i)", &(matches[num_match - 1].x), &(matches[num_match - 1].y), &(matches[num_match - 1].width), &(matches[num_match - 1].height));
+            }
+            else if(!strcmp(s1, "[GEOMETRY-MAXIMIZED]"))
+            {
+                sscanf(s, "%*s (%i,%i,%i,%i)", &(matches[num_match - 1].old_x), &(matches[num_match - 1].old_y), &(matches[num_match - 1].old_width), &(matches[num_match - 1].old_height));
             }
             else if(!strcmp(s1, "[DESK]"))
             {
@@ -428,19 +467,32 @@ void sessionFreeWindowStates(void)
 
 static gboolean matchWin(Client * c, Match * m)
 {
+    char *client_id = NULL;
+    char *window_role = NULL;
+    int wm_command_count = 0;
+    char **wm_command = NULL;
     gboolean found;
     int i;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
     found = FALSE;
-    if(xstreq(c->client_id, m->client_id))
+    getClientID(dpy, c->window, &client_id);
+    if(xstreq(client_id, m->client_id))
     {
         /* client_id's match */
-        if((c->window_role) || (m->window_role))
+	if (c->client_leader != None)
+	{
+            getWindowRole(dpy, c->client_leader, &window_role);
+	}
+	else
+	{
+            window_role = NULL;
+	}
+        if((window_role) || (m->window_role))
         {
             /* We have or had a window role, base decision on it */
-            found = xstreq(c->window_role, m->window_role);
+            found = xstreq(window_role, m->window_role);
         }
 	else
 	{
@@ -449,24 +501,27 @@ static gboolean matchWin(Client * c, Match * m)
              */
             if(xstreq(c->class.res_name, m->res_name) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_NAME_CHANGED) || (m->flags & CLIENT_FLAG_NAME_CHANGED) || xstreq(c->name, m->wm_name)))
             {
-        	if(c->client_id)
+        	if(client_id)
         	{
                     /* If we have a client_id, we don't compare
                        WM_COMMAND, since it will be different. */
-                    found = 1;
+                    found = TRUE;
+
         	}
         	else
         	{
                     /* for non-SM-aware clients we also compare WM_COMMAND */
-                    if(c->wm_command_count == m->wm_command_count)
+		    wm_command_count = 0;
+		    getWindowCommand(dpy, c->window, &wm_command, &wm_command_count);
+                    if(wm_command_count == m->wm_command_count)
                     {
-                	for(i = 0; i < c->wm_command_count; i++)
+                	for(i = 0; i < wm_command_count; i++)
                 	{
-                            if(strcmp(c->wm_command[i], m->wm_command[i]) != 0)
+                            if(strcmp(wm_command[i], m->wm_command[i]) != 0)
                         	break;
                 	}
 
-                	if((i == c->wm_command_count) && (c->wm_command_count))
+                	if((i == wm_command_count) && (wm_command_count))
                 	{
                             found = TRUE;
                 	}
@@ -491,6 +546,25 @@ static gboolean matchWin(Client * c, Match * m)
 	}
     }
 
+    if(client_id)
+    {
+        XFree(client_id);
+	client_id = NULL;
+    }
+
+    if(window_role)
+    {
+        XFree(window_role);
+	window_role = NULL;
+    }
+
+    if((wm_command_count > 0) && (wm_command))
+    {
+	XFreeStringList(wm_command);
+	wm_command = NULL;
+	wm_command_count = 0;
+    }
+    
     return found;
 }
 
@@ -506,10 +580,14 @@ gboolean sessionMatchWinToSM(Client *c)
 	    matches[i].used = TRUE;
             c->x = matches[i].x;
             c->y = matches[i].y;
-            c->width = matches[i].w;
-            c->height = matches[i].h;
+            c->width = matches[i].width;
+            c->height = matches[i].height;
+            c->old_x = matches[i].old_x;
+            c->old_y = matches[i].old_y;
+            c->old_width = matches[i].old_width;
+            c->old_height = matches[i].old_height;
             c->win_workspace = matches[i].desktop;
-            CLIENT_FLAG_SET(c, matches[i].flags & (CLIENT_FLAG_STICKY | CLIENT_FLAG_SHADED | CLIENT_FLAG_HIDDEN));
+            CLIENT_FLAG_SET(c, matches[i].flags & (CLIENT_FLAG_STICKY | CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_HIDDEN));
             return TRUE;
         }
     }

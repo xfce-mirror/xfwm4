@@ -181,10 +181,6 @@ struct _Client
     int ncmap;
     int button_pressed[BUTTON_COUNT];
     int struts[4];
-    char *client_id;
-    char *window_role;
-    int wm_command_count;
-    char **wm_command;
     char *name;
     unsigned long client_flag;
 };

@@ -307,7 +307,7 @@ static void clientGetNetState(Client * c)
         i = 0;
         while(i < n_atoms)
         {
-            if(atoms[i] == net_wm_state_shaded)
+            if((atoms[i] == net_wm_state_shaded) || (CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_SHADED)))
             {
                 DBG("clientGetNetState : shaded\n");
                 c->win_state |= WIN_STATE_SHADED;
@@ -318,19 +318,19 @@ static void clientGetNetState(Client * c)
                 DBG("clientGetNetState : hidden\n");
                 CLIENT_FLAG_SET(c, CLIENT_FLAG_HIDDEN);
             }
-            else if(atoms[i] == net_wm_state_sticky)
+            else if((atoms[i] == net_wm_state_sticky) || (CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_STICKY)))
             {
                 DBG("clientGetNetState : sticky\n");
                 c->win_state |= WIN_STATE_STICKY;
                 CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
             }
-            else if(atoms[i] == net_wm_state_maximized_horz)
+            else if((atoms[i] == net_wm_state_maximized_horz) || (CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_MAXIMIZED_HORIZ)))
             {
                 DBG("clientGetNetState : maximized horiz\n");
                 c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
                 CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_HORIZ);
             }
-            else if(atoms[i] == net_wm_state_maximized_vert)
+            else if((atoms[i] == net_wm_state_maximized_vert) || (CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_MAXIMIZED_VERT)))
             {
                 DBG("clientGetNetState : maximized vert\n");
                 c->win_state |= WIN_STATE_MAXIMIZED_VERT;
@@ -1873,18 +1873,6 @@ static inline void clientFree(Client *c)
     {
         XFree(c->class.res_class);
     }
-    if(c->client_id)
-    {
-        XFree(c->client_id);
-    }
-    if(c->window_role)
-    {
-        XFree(c->window_role);
-    }
-    if((c->wm_command) && (c->wm_command_count))
-    {
-        XFreeStringList(c->wm_command);
-    }
     
     free(c);
 }
@@ -1942,6 +1930,14 @@ void clientFrame(Window w)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
+    c->old_x = c->x;
+    c->old_y = c->y;
+    c->old_width = c->width;
+    c->old_height = c->height;
+    c->fullscreen_old_x = c->x;
+    c->fullscreen_old_y = c->y;
+    c->fullscreen_old_width = c->width;
+    c->fullscreen_old_height = c->height;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
 
@@ -1959,18 +1955,7 @@ void clientFrame(Window w)
     c->class.res_class = NULL;
     XGetClassHint (dpy, w, &c->class);
     c->wmhints = XGetWMHints(dpy, c->window);
-    getClientID(dpy, c->window, &(c->client_id));
     c->client_leader = getClientLeader(dpy, c->window);
-    if (c->client_leader != None)
-    {
-        getWindowRole(dpy, c->client_leader, &(c->window_role));
-    }
-    else
-    {
-        c->window_role = NULL;
-    }
-    c->wm_command_count = 0;
-    getWindowCommand(dpy, c->window, &(c->wm_command), &(c->wm_command_count));
     
     /* Initialize structure */
     c->client_flag = (CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
@@ -2003,8 +1988,6 @@ void clientFrame(Window w)
         CLIENT_FLAG_SET(c, CLIENT_FLAG_SESSION_MANAGED);
     }
 
-    CLIENT_FLAG_SET(c, (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) ? CLIENT_FLAG_STICKY : 0);
-    CLIENT_FLAG_SET(c, (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED)) ? CLIENT_FLAG_SHADED : 0);
     CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_VERT : 0);
     CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_HORIZ : 0);
 
