@@ -334,8 +334,10 @@ static void
 loadRcData (ScreenInfo *screen_info, Settings rc[])
 {
     gchar *homedir;
-    gchar *keytheme;
     gchar *keythemevalue;
+    gchar *keytheme;
+    gchar *system_keytheme;
+
 
     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
@@ -345,8 +347,16 @@ loadRcData (ScreenInfo *screen_info, Settings rc[])
     keythemevalue = getValue ("keytheme", rc);
     if (keythemevalue)
     {
+        system_keytheme = getSystemThemeDir ();
+        parseRc (KEYTHEMERC, system_keytheme, rc);
+        
         keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
-        parseRc (KEYTHEMERC, keytheme, rc);
+        if (strcmp (keytheme, keytheme))
+        {
+            /* If there is a custom key theme, merge it with system defaults */
+            parseRc (KEYTHEMERC, keytheme, rc);
+        }
+        g_free (system_keytheme);
         g_free (keytheme);
     }
     homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 

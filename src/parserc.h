@@ -35,6 +35,7 @@ gchar *getValue (const gchar *, Settings rc[]);
 gboolean setValue (const gchar *, const gchar *, Settings rc[]);
 gboolean setBooleanValueFromInt (const gchar *, int, Settings rc[]);
 gboolean setIntValueFromInt (const gchar *, int, Settings rc[]);
+gchar *getSystemThemeDir (void);
 gchar *getThemeDir (const gchar *, const gchar *);
 void freeRc (Settings rc[]);
 

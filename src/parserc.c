@@ -164,6 +164,13 @@ setIntValueFromInt (const gchar * lvalue, int value, Settings rc[])
 }
 
 gchar *
+
+getSystemThemeDir (void)
+{
+    return g_build_filename (DATADIR, "themes", DEFAULT_THEME, "xfwm4", NULL);
+}
+
+gchar *
 getThemeDir (const gchar * theme, const gchar * file)
 {
     if (!theme)
@@ -179,8 +186,7 @@ getThemeDir (const gchar * theme, const gchar * file)
         }
         else
         {
-            return g_build_filename (DATADIR, "themes", DEFAULT_THEME, 
-                    "xfwm4", NULL);
+            return getSystemThemeDir ();
         }
     }
     else
@@ -205,7 +211,7 @@ getThemeDir (const gchar * theme, const gchar * file)
     }
     
     /* Pfew, really can't find that theme nowhere! */
-    return g_build_filename (DATADIR, "themes", DEFAULT_THEME, "xfwm4", NULL);
+    return getSystemThemeDir ();
 }
 
 void
