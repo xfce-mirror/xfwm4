@@ -1128,16 +1128,14 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
                                          &consumed_modifiers);
     
     keyval = gdk_keyval_to_lower (event->keyval);
+
     if (keyval == GDK_ISO_Left_Tab)
         keyval = GDK_Tab;
-
-    if (keyval != event->keyval && (consumed_modifiers & GDK_SHIFT_MASK))
-        consumed_modifiers &= ~GDK_SHIFT_MASK;
 
     /* Release keyboard */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
-    accelerator = gtk_accelerator_name (keyval, event->state & ~consumed_modifiers);
+    accelerator = gtk_accelerator_name (keyval, event->state);
 
     for (i = 0; i < strlen (accelerator); i++)
     {
