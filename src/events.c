@@ -1540,8 +1540,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             clientRaise (c);
             clientPassGrabButton1 (c);
         }
-        if ((screen_info->params->raise_on_focus) && 
-            !(screen_info->params->raise_on_click))
+        if (screen_info->params->raise_on_focus)
         {
             reset_timeout (screen_info);
         }
