@@ -752,6 +752,8 @@ get_text_property (Display * dpy, Window w, Atom a)
     if (XGetTextProperty (dpy, w, &text, a))
     {
         retval = text_property_to_utf8 (dpy, &text);
+        utf8_string_remove_controls((gchar *) retval, -1, NULL);
+
         if ((text.value) && (text.nitems > 0))
         {
             XFree (text.value);
