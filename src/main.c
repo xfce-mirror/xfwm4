@@ -204,18 +204,18 @@ void initialize(int argc, char **argv)
     sigaction(SIGTERM, &act, NULL);
     sigaction(SIGHUP, &act, NULL);
 
-    setGnomeProtocols(dpy, root, gnome_win);
+    setGnomeProtocols(dpy, screen, gnome_win);
     setGnomeHint(dpy, root, win_supporting_wm_check, gnome_win);
     setGnomeHint(dpy, root, win_desktop_button_proxy, gnome_win);
     setGnomeHint(dpy, gnome_win, win_desktop_button_proxy, gnome_win);
     getGnomeHint(dpy, root, win_workspace, &ws);
     workspace = (int)ws;
-    getGnomeDesktopMargins(dpy, gnome_margins);
+    getGnomeDesktopMargins(dpy, screen, gnome_margins);
     set_utf8_string_hint(dpy, gnome_win, net_wm_name, "Xfwm4");
-    set_net_supported_hint(dpy, root, gnome_win);
+    set_net_supported_hint(dpy, screen, gnome_win);
     workspaceUpdateArea(margins, gnome_margins);
-    init_net_desktop_params(dpy, root, workspace);
-    set_net_workarea(dpy, root, workspace_count, margins);
+    init_net_desktop_params(dpy, screen, workspace);
+    set_net_workarea(dpy, screen, workspace_count, margins);
     XSetInputFocus(dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks();
 

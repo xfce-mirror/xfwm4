@@ -753,7 +753,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         else if(ev->atom == gnome_panel_desktop_area)
         {
             DBG("root has received a gnome_panel_desktop_area notify\n");
-            getGnomeDesktopMargins(dpy, gnome_margins);
+            getGnomeDesktopMargins(dpy, screen, gnome_margins);
             workspaceUpdateArea(margins, gnome_margins);
         }
     }

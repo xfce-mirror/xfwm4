@@ -271,7 +271,7 @@ void setGnomeHint(Display * dpy, Window w, Atom a, long value)
     XChangeProperty(dpy, w, a, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)&value, 1);
 }
 
-void getGnomeDesktopMargins(Display * dpy, CARD32 * margins)
+void getGnomeDesktopMargins(Display * dpy, int screen, CARD32 * margins)
 {
     Atom real_type;
     int real_format;
@@ -280,7 +280,7 @@ void getGnomeDesktopMargins(Display * dpy, CARD32 * margins)
 
     DBG("entering getGnomeDesktopMargins\n");
 
-    if((XGetWindowProperty(dpy, XDefaultRootWindow(dpy), gnome_panel_desktop_area, 0L, 4L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read >= 4))
+    if((XGetWindowProperty(dpy, RootWindow(dpy, screen), gnome_panel_desktop_area, 0L, 4L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read >= 4))
     {
         margins[0] = data[0];
         margins[1] = data[1];
@@ -297,14 +297,14 @@ void getGnomeDesktopMargins(Display * dpy, CARD32 * margins)
     }
 }
 
-void setGnomeProtocols(Display * dpy, Window root_win, Window w)
+void setGnomeProtocols(Display * dpy, int screen, Window w)
 {
     Atom atoms[1];
 
     atoms[0] = win_layer;
-    XChangeProperty(dpy, root_win, win_protocols, XA_ATOM, 32, PropModeReplace, (unsigned char *)atoms, 1);
+    XChangeProperty(dpy, RootWindow(dpy, screen), win_protocols, XA_ATOM, 32, PropModeReplace, (unsigned char *)atoms, 1);
     setGnomeHint(dpy, w, win_supporting_wm_check, w);
-    setGnomeHint(dpy, root_win, win_supporting_wm_check, gnome_win);
+    setGnomeHint(dpy, RootWindow(dpy, screen), win_supporting_wm_check, gnome_win);
 }
 
 void initNetHints(Display * dpy)
@@ -380,7 +380,7 @@ int getNetHint(Display * dpy, Window w, Atom a, long *value)
     return (success);
 }
 
-void set_net_supported_hint(Display * dpy, Window root_win, Window check_win)
+void set_net_supported_hint(Display * dpy, int screen, Window check_win)
 {
     Atom atoms[64];
     unsigned long data[1];
@@ -438,9 +438,9 @@ void set_net_supported_hint(Display * dpy, Window root_win, Window check_win)
     /* Apparently not required
        XChangeProperty (dpy, check_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
      */
-    XChangeProperty(dpy, root_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *)atoms, i);
+    XChangeProperty(dpy, RootWindow(dpy, screen), net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *)atoms, i);
     data[0] = check_win;
-    XChangeProperty(dpy, root_win, net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 1);
+    XChangeProperty(dpy, RootWindow(dpy, screen), net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 1);
 }
 
 static int check_type_and_format(Display * dpy, Window w, Atom a, int expected_format, Atom expected_type, int n_items, int format, Atom type)
@@ -513,14 +513,14 @@ int get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **cardi
     return True;
 }
 
-void set_net_workarea(Display * dpy, Window w, int nb_workspaces, CARD32 * margins)
+void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * margins)
 {
-    unsigned long *data, *ptr;
+    CARD32 *data, *ptr;
     int i, j;
 
     DBG("entering set_net_workarea\n");
     j = (nb_workspaces ? nb_workspaces : 1);
-    data = (unsigned long *)malloc(sizeof(unsigned long) * j * 4);
+    data = (CARD32 *)malloc(sizeof(CARD32) * j * 4);
     if(!data)
     {
         gdk_beep();
@@ -534,23 +534,23 @@ void set_net_workarea(Display * dpy, Window w, int nb_workspaces, CARD32 * margi
         *ptr++ = XDisplayWidth(dpy, screen) - (margins[MARGIN_LEFT] + margins[MARGIN_RIGHT]);
         *ptr++ = XDisplayHeight(dpy, screen) - (margins[MARGIN_TOP] + margins[MARGIN_BOTTOM]);
     }
-    XChangeProperty(dpy, w, net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, j * 4);
+    XChangeProperty(dpy, RootWindow(dpy, screen), net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, j * 4);
     free(data);
 }
 
-void init_net_desktop_params(Display * dpy, Window w, int workspace)
+void init_net_desktop_params(Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
     DBG("entering init_net_desktop_params\n");
     data[0] = XDisplayWidth(dpy, screen);
     data[1] = XDisplayHeight(dpy, screen);
-    XChangeProperty(dpy, w, net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
+    XChangeProperty(dpy, RootWindow(dpy, screen), net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
     data[0] = 0;
     data[1] = 0;
-    XChangeProperty(dpy, w, net_desktop_viewport, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
+    XChangeProperty(dpy, RootWindow(dpy, screen), net_desktop_viewport, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
     /* TBD : See why this prevents kdesktop from working properly */
     data[0] = workspace;
-    XChangeProperty(dpy, w, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
+    XChangeProperty(dpy, RootWindow(dpy, screen), net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
 }
 
 void set_utf8_string_hint(Display * dpy, Window w, Atom atom, const char *val)
