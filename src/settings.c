@@ -70,95 +70,6 @@ MyPixmap buttons[BUTTON_COUNT][3];
 MyPixmap title[5][2];
 
 static McsClient *client = NULL;
-static Settings rc[] = {
-    {"active_text_color", NULL, FALSE},
-    {"inactive_text_color", NULL, FALSE},
-    {"active_border_color", NULL, FALSE},
-    {"inactive_border_color", NULL, FALSE},
-    {"active_color_1", NULL, FALSE},
-    {"active_hilight_1", NULL, FALSE},
-    {"active_shadow_1", NULL, FALSE},
-    {"active_mid_1", NULL, FALSE},
-    {"active_color_2", NULL, FALSE},
-    {"active_hilight_2", NULL, FALSE},
-    {"active_shadow_2", NULL, FALSE},
-    {"active_mid_2", NULL, FALSE},
-    {"inactive_color_1", NULL, FALSE},
-    {"inactive_hilight_1", NULL, FALSE},
-    {"inactive_shadow_1", NULL, FALSE},
-    {"inactive_mid_1", NULL, FALSE},
-    {"inactive_color_2", NULL, FALSE},
-    {"inactive_hilight_2", NULL, FALSE},
-    {"inactive_shadow_2", NULL, FALSE},
-    {"inactive_mid_2", NULL, FALSE},
-    {"theme", NULL, TRUE},
-    {"keytheme", NULL, FALSE},
-    {"title_alignment", NULL, TRUE},
-    {"full_width_title", NULL, TRUE},
-    {"title_shadow_active", NULL, TRUE},
-    {"title_shadow_inactive", NULL, TRUE},
-    {"button_layout", NULL, TRUE},
-    {"button_spacing", NULL, TRUE},
-    {"title_vertical_offset_active", NULL, TRUE},
-    {"title_vertical_offset_inactive", NULL, TRUE},
-    {"title_horizontal_offset", NULL, TRUE},
-    {"button_offset", NULL, TRUE},
-    {"double_click_action", NULL, TRUE},
-    {"box_move", NULL, TRUE},
-    {"box_resize", NULL, TRUE},
-    {"click_to_focus", NULL, TRUE},
-    {"focus_hint", NULL, TRUE},
-    {"focus_new", NULL, TRUE},
-    {"raise_on_focus", NULL, TRUE},
-    {"raise_delay", NULL, TRUE},
-    {"snap_to_border", NULL, TRUE},
-    {"snap_width", NULL, TRUE},
-    {"dbl_click_time", NULL, TRUE},
-    {"workspace_count", NULL, TRUE},
-    {"wrap_workspaces", NULL, TRUE},
-    {"close_window_key", NULL, TRUE},
-    {"hide_window_key", NULL, TRUE},
-    {"maximize_window_key", NULL, TRUE},
-    {"maximize_vert_key", NULL, TRUE},
-    {"maximize_horiz_key", NULL, TRUE},
-    {"shade_window_key", NULL, TRUE},
-    {"cycle_windows_key", NULL, TRUE},
-    {"move_window_up_key", NULL, TRUE},
-    {"move_window_down_key", NULL, TRUE},
-    {"move_window_left_key", NULL, TRUE},
-    {"move_window_right_key", NULL, TRUE},
-    {"resize_window_up_key", NULL, TRUE},
-    {"resize_window_down_key", NULL, TRUE},
-    {"resize_window_left_key", NULL, TRUE},
-    {"resize_window_right_key", NULL, TRUE},
-    {"next_workspace_key", NULL, TRUE},
-    {"prev_workspace_key", NULL, TRUE},
-    {"add_workspace_key", NULL, TRUE},
-    {"del_workspace_key", NULL, TRUE},
-    {"stick_window_key", NULL, TRUE},
-    {"workspace_1_key", NULL, TRUE},
-    {"workspace_2_key", NULL, TRUE},
-    {"workspace_3_key", NULL, TRUE},
-    {"workspace_4_key", NULL, TRUE},
-    {"workspace_5_key", NULL, TRUE},
-    {"workspace_6_key", NULL, TRUE},
-    {"workspace_7_key", NULL, TRUE},
-    {"workspace_8_key", NULL, TRUE},
-    {"workspace_9_key", NULL, TRUE},
-    {"move_window_next_workspace_key", NULL, TRUE},
-    {"move_window_prev_workspace_key", NULL, TRUE},
-    {"move_window_workspace_1_key", NULL, TRUE},
-    {"move_window_workspace_2_key", NULL, TRUE},
-    {"move_window_workspace_3_key", NULL, TRUE},
-    {"move_window_workspace_4_key", NULL, TRUE},
-    {"move_window_workspace_5_key", NULL, TRUE},
-    {"move_window_workspace_6_key", NULL, TRUE},
-    {"move_window_workspace_7_key", NULL, TRUE},
-    {"move_window_workspace_8_key", NULL, TRUE},
-    {"move_window_workspace_9_key", NULL, TRUE},
-    {"raise_on_click", NULL, TRUE},
-    {NULL, NULL, FALSE}
-};
 
 static gboolean mcs_manager_is_running(void)
 {
@@ -183,80 +94,69 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
                 if(!strcmp(name, "Xfwm/ClickToFocus"))
                 {
                     click_to_focus = setting->data.v_int;
-                    setBooleanValueFromInt("click_to_focus", click_to_focus, rc);
                 }
                 else if(!strcmp(name, "Xfwm/FocusNewWindow"))
                 {
                     focus_new = setting->data.v_int;
-                    setBooleanValueFromInt("focus_new", focus_new, rc);
                 }
                 else if(!strcmp(name, "Xfwm/FocusRaise"))
                 {
                     raise_on_focus = setting->data.v_int;
-                    setBooleanValueFromInt("raise_on_focus", raise_on_focus, rc);
                 }
                 else if(!strcmp(name, "Xfwm/RaiseDelay"))
                 {
                     raise_delay = setting->data.v_int;
-                    setIntValueFromInt("raise_delay", raise_delay, rc);
                 }
                 else if(!strcmp(name, "Xfwm/RaiseOnClick"))
                 {
                     raise_on_click = setting->data.v_int;
-                    setBooleanValueFromInt("raise_on_click", raise_on_click, rc);
                 }
                 else if(!strcmp(name, "Xfwm/SnapToBorder"))
                 {
                     snap_to_border = setting->data.v_int;
-                    setBooleanValueFromInt("snap_to_border", snap_to_border, rc);
                 }
                 else if(!strcmp(name, "Xfwm/SnapWidth"))
                 {
                     snap_width = setting->data.v_int;
-                    setIntValueFromInt("snap_width", snap_width, rc);
                 }
                 else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
                 {
                     wrap_workspaces = setting->data.v_int;
-                    setBooleanValueFromInt("wrap_workspaces", wrap_workspaces, rc);
                 }
                 else if(!strcmp(name, "Xfwm/BoxMove"))
                 {
                     box_move = setting->data.v_int;
-                    setBooleanValueFromInt("box_move", box_move, rc);
                 }
                 else if(!strcmp(name, "Xfwm/BoxResize"))
                 {
                     box_resize = setting->data.v_int;
-                    setBooleanValueFromInt("box_resize", box_resize, rc);
                 }
             }
             else if(setting->type == MCS_TYPE_STRING)
             {
                 if(!strcmp(name, "Xfwm/DblClickAction"))
                 {
-                    reloadSettings(FALSE);
+                    reloadSettings(UPDATE_NONE);
                 }
                 else if(!strcmp(name, "Xfwm/KeyThemeName"))
                 {
-                    reloadSettings(TRUE);
+                    reloadSettings(UPDATE_KEYGRABS);
                 }
                 else if(!strcmp(name, "Xfwm/ThemeName"))
                 {
-                    reloadSettings(TRUE);
+                    reloadSettings(UPDATE_GRAVITY);
                 }
                 else if(!strcmp(name, "Xfwm/ButtonLayout"))
                 {
-                    reloadSettings(TRUE);
+                    reloadSettings(UPDATE_FRAME);
                 }
                 if(!strcmp(name, "Xfwm/TitleAlign"))
                 {
-                    reloadSettings(TRUE);
+                    reloadSettings(UPDATE_FRAME);
                 }
             }
             break;
         case MCS_ACTION_DELETED:
-            reloadSettings(TRUE);
         default:
             break;
     }
@@ -296,7 +196,7 @@ static void watch_cb(Window window, Bool is_start, long mask, void *cb_data)
     }
 }
 
-static void loadRcData(void)
+static void loadRcData(Settings rc[])
 {
     const gchar *homedir = g_get_home_dir();
     if(!parseRc("defaults", DATADIR, rc))
@@ -307,7 +207,7 @@ static void loadRcData(void)
     parseRc(".xfwm4rc", homedir, rc);
 }
 
-static void loadMcsData(void)
+static void loadMcsData(Settings rc[])
 {
     McsSetting *setting;
     if(client)
@@ -390,7 +290,7 @@ static void loadMcsData(void)
     }
 }
 
-static void loadTheme(void)
+static void loadTheme(Settings rc[])
 {
     gchar *theme;
     XpmColorSymbol colsym[20];
@@ -573,7 +473,7 @@ static void loadTheme(void)
     g_free(theme);
 }
 
-static gboolean loadKeyBindings(void)
+static gboolean loadKeyBindings(Settings rc[])
 {
     gchar *keytheme;
     gchar *keythemevalue;
@@ -652,17 +552,107 @@ static gboolean loadKeyBindings(void)
 
 gboolean loadSettings(void)
 {
+    Settings rc[] = {
+	{"active_text_color", NULL, FALSE},
+	{"inactive_text_color", NULL, FALSE},
+	{"active_border_color", NULL, FALSE},
+	{"inactive_border_color", NULL, FALSE},
+	{"active_color_1", NULL, FALSE},
+	{"active_hilight_1", NULL, FALSE},
+	{"active_shadow_1", NULL, FALSE},
+	{"active_mid_1", NULL, FALSE},
+	{"active_color_2", NULL, FALSE},
+	{"active_hilight_2", NULL, FALSE},
+	{"active_shadow_2", NULL, FALSE},
+	{"active_mid_2", NULL, FALSE},
+	{"inactive_color_1", NULL, FALSE},
+	{"inactive_hilight_1", NULL, FALSE},
+	{"inactive_shadow_1", NULL, FALSE},
+	{"inactive_mid_1", NULL, FALSE},
+	{"inactive_color_2", NULL, FALSE},
+	{"inactive_hilight_2", NULL, FALSE},
+	{"inactive_shadow_2", NULL, FALSE},
+	{"inactive_mid_2", NULL, FALSE},
+	{"theme", NULL, TRUE},
+	{"keytheme", NULL, FALSE},
+	{"title_alignment", NULL, TRUE},
+	{"full_width_title", NULL, TRUE},
+	{"title_shadow_active", NULL, TRUE},
+	{"title_shadow_inactive", NULL, TRUE},
+	{"button_layout", NULL, TRUE},
+	{"button_spacing", NULL, TRUE},
+	{"title_vertical_offset_active", NULL, TRUE},
+	{"title_vertical_offset_inactive", NULL, TRUE},
+	{"title_horizontal_offset", NULL, TRUE},
+	{"button_offset", NULL, TRUE},
+	{"double_click_action", NULL, TRUE},
+	{"box_move", NULL, TRUE},
+	{"box_resize", NULL, TRUE},
+	{"click_to_focus", NULL, TRUE},
+	{"focus_hint", NULL, TRUE},
+	{"focus_new", NULL, TRUE},
+	{"raise_on_focus", NULL, TRUE},
+	{"raise_delay", NULL, TRUE},
+	{"snap_to_border", NULL, TRUE},
+	{"snap_width", NULL, TRUE},
+	{"dbl_click_time", NULL, TRUE},
+	{"workspace_count", NULL, TRUE},
+	{"wrap_workspaces", NULL, TRUE},
+	{"close_window_key", NULL, TRUE},
+	{"hide_window_key", NULL, TRUE},
+	{"maximize_window_key", NULL, TRUE},
+	{"maximize_vert_key", NULL, TRUE},
+	{"maximize_horiz_key", NULL, TRUE},
+	{"shade_window_key", NULL, TRUE},
+	{"cycle_windows_key", NULL, TRUE},
+	{"move_window_up_key", NULL, TRUE},
+	{"move_window_down_key", NULL, TRUE},
+	{"move_window_left_key", NULL, TRUE},
+	{"move_window_right_key", NULL, TRUE},
+	{"resize_window_up_key", NULL, TRUE},
+	{"resize_window_down_key", NULL, TRUE},
+	{"resize_window_left_key", NULL, TRUE},
+	{"resize_window_right_key", NULL, TRUE},
+	{"next_workspace_key", NULL, TRUE},
+	{"prev_workspace_key", NULL, TRUE},
+	{"add_workspace_key", NULL, TRUE},
+	{"del_workspace_key", NULL, TRUE},
+	{"stick_window_key", NULL, TRUE},
+	{"workspace_1_key", NULL, TRUE},
+	{"workspace_2_key", NULL, TRUE},
+	{"workspace_3_key", NULL, TRUE},
+	{"workspace_4_key", NULL, TRUE},
+	{"workspace_5_key", NULL, TRUE},
+	{"workspace_6_key", NULL, TRUE},
+	{"workspace_7_key", NULL, TRUE},
+	{"workspace_8_key", NULL, TRUE},
+	{"workspace_9_key", NULL, TRUE},
+	{"move_window_next_workspace_key", NULL, TRUE},
+	{"move_window_prev_workspace_key", NULL, TRUE},
+	{"move_window_workspace_1_key", NULL, TRUE},
+	{"move_window_workspace_2_key", NULL, TRUE},
+	{"move_window_workspace_3_key", NULL, TRUE},
+	{"move_window_workspace_4_key", NULL, TRUE},
+	{"move_window_workspace_5_key", NULL, TRUE},
+	{"move_window_workspace_6_key", NULL, TRUE},
+	{"move_window_workspace_7_key", NULL, TRUE},
+	{"move_window_workspace_8_key", NULL, TRUE},
+	{"move_window_workspace_9_key", NULL, TRUE},
+	{"raise_on_click", NULL, TRUE},
+	{NULL, NULL, FALSE}
+    };
     GValue tmp_val = { 0, };
 
     DBG("entering loadSettings\n");
 
-    loadRcData();
-    loadMcsData();
-    loadTheme();
+    loadRcData(rc);
+    loadMcsData(rc);
+    loadTheme(rc);
 
-    if(!loadKeyBindings())
+    if(!loadKeyBindings(rc))
     {
-        return FALSE;
+        freeRc(rc);
+	return FALSE;
     }
 
     box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
@@ -710,6 +700,7 @@ gboolean loadSettings(void)
         XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     }
     wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
+    freeRc(rc);
     return TRUE;
 }
 
@@ -746,7 +737,7 @@ static void unloadTheme(void)
     }
 }
 
-gboolean reloadSettings(gboolean refresh)
+gboolean reloadSettings(int mask)
 {
     DBG("entering reloadSettings\n");
 
@@ -755,9 +746,9 @@ gboolean reloadSettings(gboolean refresh)
     {
         return FALSE;
     }
-    if(refresh)
+    if(mask)
     {
-        clientUpdateAllFrames(UPDATE_ALL);
+        clientUpdateAllFrames(mask);
     }
 
     return TRUE;
@@ -800,5 +791,4 @@ void unloadSettings(void)
     DBG("entering unloadSettings\n");
 
     unloadTheme();
-    freeRc(rc);
 }

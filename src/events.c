@@ -991,7 +991,7 @@ void handleEvent(XEvent * ev)
     {
         if(reload)
         {
-            reloadSettings(TRUE);
+            reloadSettings(UPDATE_ALL);
             reload = False;
         }
         else if(quit)

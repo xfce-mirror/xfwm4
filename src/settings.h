@@ -86,7 +86,7 @@ extern MyPixmap title[5][2];
 
 gboolean loadSettings(void);
 void unloadSettings(void);
-gboolean reloadSettings(gboolean);
+gboolean reloadSettings(int);
 gboolean initSettings(void);
 
 #endif /* __SETTINGS_H__ */

@@ -59,6 +59,7 @@
 #define INCLUDE_SKIP_PAGER		(1<<3)
 #define INCLUDE_SKIP_TASKBAR		(1<<4)
 
+#define UPDATE_NONE			0
 #define UPDATE_KEYGRABS			(1<<0)
 #define UPDATE_FRAME			(1<<1)
 #define UPDATE_GRAVITY			(1<<2)
