@@ -450,7 +450,7 @@ clientSetFocus (Client * c, unsigned short flags)
         if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
         {
             pending_focus = c;
-            XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+            XSetInputFocus (dpy, c->window, RevertToPointerRoot, CurrentTime);
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
@@ -469,7 +469,7 @@ clientSetFocus (Client * c, unsigned short flags)
         {
             frameDraw (c2, FALSE, FALSE);
         }
-        XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
+        XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, CurrentTime);
         XFlush (dpy);
         data[0] = data[1] = None;
         XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,

@@ -361,7 +361,7 @@ initialize (int argc, char **argv)
     workspaceUpdateArea (margins, gnome_margins);
     initNetDesktopParams (dpy, screen, workspace);
     setNetWorkarea (dpy, screen, params.workspace_count, margins);
-    XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
+    XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, CurrentTime);
     initGtkCallbacks ();
     
     /* The first time the first Gtk application on a display uses pango,
