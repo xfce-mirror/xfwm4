@@ -84,8 +84,8 @@ Client *clients = NULL;
 Client *last_raise = NULL;
 unsigned int client_count = 0;
 
-static GSList *windows = NULL;
-static GSList *windows_stack = NULL;
+static GList *windows = NULL;
+static GList *windows_stack = NULL;
 static Client *client_focus = NULL;
 
 /* Forward decl */
@@ -94,14 +94,14 @@ static void clientToggleAbove (Client * c);
 static void clientToggleBelow (Client * c);
 static void clientGetNetState (Client * c);
 static void clientGetInitialNetWmDesktop (Client * c);
-static void clientSetNetClientList (Atom a, GSList * list);
+static void clientSetNetClientList (Atom a, GList * list);
 static void clientSetNetActions (Client * c);
 static void clientWindowType (Client * c);
 static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
 static void clientSetWidth (Client * c, int w1);
 static void clientSetHeight (Client * c, int h1);
-static inline void clientApplyStackList (GSList * list);
+static inline void clientApplyStackList (GList * list);
 static inline gboolean clientTransientOrModalHasAncestor (Client * c, int ws);
 static inline Client *clientGetLowestTransient (Client * c);
 static inline Client *clientGetHighestTransientOrModal (Client * c);
@@ -122,8 +122,8 @@ static inline void clientFree (Client * c);
 static inline void clientGetWinState (Client * c);
 static inline void clientApplyInitialState (Client * c);
 static inline gboolean clientSelectMask (Client * c, int mask);
-static GSList *clientListTransient (Client * c);
-static GSList *clientListTransientOrModal (Client * c);
+static GList *clientListTransient (Client * c);
+static GList *clientListTransientOrModal (Client * c);
 static inline void clientSetWorkspaceSingle (Client * c, int ws);
 static inline void clientSnapPosition (Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter (XEvent * xevent,
@@ -1001,16 +1001,16 @@ clientGetInitialNetWmDesktop (Client * c)
 }
 
 static void
-clientSetNetClientList (Atom a, GSList * list)
+clientSetNetClientList (Atom a, GList * list)
 {
     Window *listw;
     Window *index_dest;
-    GSList *index_src;
+    GList *index_src;
     gint size, i;
 
     TRACE ("entering clientSetNetClientList");
 
-    size = g_slist_length (list);
+    size = g_list_length (list);
     if (size < 1)
     {
         XDeleteProperty (dpy, root, a);
@@ -1019,7 +1019,7 @@ clientSetNetClientList (Atom a, GSList * list)
     {
         TRACE ("%i windows in list for %i clients", size, client_count);
         for (i = 0, index_dest = listw, index_src = list; i < size;
-            i++, index_dest++, index_src = g_slist_next (index_src))
+            i++, index_dest++, index_src = g_list_next (index_src))
         {
             Client *c = (Client *) index_src->data;
             *index_dest = c->window;
@@ -1455,7 +1455,7 @@ static void
 clientAddToList (Client * c)
 {
     Client *client_sibling = NULL;
-    GSList *sibling = NULL;
+    GList *sibling = NULL;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientAddToList");
@@ -1477,15 +1477,15 @@ clientAddToList (Client * c)
 
     TRACE ("adding window \"%s\" (0x%lx) to windows list", c->name,
         c->window);
-    windows = g_slist_append (windows, c);
+    windows = g_list_append (windows, c);
 
     client_sibling = clientGetLowestTransient (c);
     if (client_sibling)
     {
         /* The client has already a transient mapped */
         sibling =
-            g_slist_find (windows_stack, (gconstpointer) client_sibling);
-        windows_stack = g_slist_insert_before (windows_stack, sibling, c);
+            g_list_find (windows_stack, (gconstpointer) client_sibling);
+        windows_stack = g_list_insert_before (windows_stack, sibling, c);
     }
     else
     {
@@ -1493,12 +1493,12 @@ clientAddToList (Client * c)
         if (client_sibling)
         {
             sibling =
-                g_slist_find (windows_stack, (gconstpointer) client_sibling);
-            windows_stack = g_slist_insert_before (windows_stack, sibling, c);
+                g_list_find (windows_stack, (gconstpointer) client_sibling);
+            windows_stack = g_list_insert_before (windows_stack, sibling, c);
         }
         else
         {
-            windows_stack = g_slist_append (windows_stack, c);
+            windows_stack = g_list_append (windows_stack, c);
         }
     }
 
@@ -1534,11 +1534,11 @@ clientRemoveFromList (Client * c)
 
     TRACE ("removing window \"%s\" (0x%lx) from windows list", c->name,
         c->window);
-    windows = g_slist_remove (windows, c);
+    windows = g_list_remove (windows, c);
 
     TRACE ("removing window \"%s\" (0x%lx) from windows_stack list", c->name,
         c->window);
-    windows_stack = g_slist_remove (windows_stack, c);
+    windows_stack = g_list_remove (windows_stack, c);
 
     clientSetNetClientList (net_client_list, windows);
     clientSetNetClientList (win_client_list, windows);
@@ -1620,7 +1620,7 @@ clientSetHeight (Client * c, int h1)
 }
 
 static inline void
-clientApplyStackList (GSList * list)
+clientApplyStackList (GList * list)
 {
     Window *xwinstack;
     guint nwindows;
@@ -1629,7 +1629,7 @@ clientApplyStackList (GSList * list)
     g_return_if_fail (list != NULL);
 
     DBG ("applying stack list");
-    nwindows = g_slist_length (list);
+    nwindows = g_list_length (list);
 
     xwinstack = g_new (Window, nwindows + 2);
     xwinstack[i++] = sidewalk[0];
@@ -1637,19 +1637,15 @@ clientApplyStackList (GSList * list)
 
     if (nwindows)
     {
-        GSList *list_copy = NULL;
-        GSList *index;
+        GList *index;
         Client *c;
         
-        list_copy = g_slist_copy (list);
-        list_copy = g_slist_reverse (list_copy);
-        for (index = list_copy; index; index = g_slist_next (index))
+        for (index = g_list_last(list); index; index = g_list_previous (index))
         {
             c = (Client *) index->data;
             xwinstack[i++] = c->frame;
             DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
         }
-        g_slist_free (list_copy);
     }
 
     XRestackWindows (dpy, xwinstack, (int) nwindows + 2);
@@ -1662,7 +1658,7 @@ static inline gboolean
 clientTransientOrModalHasAncestor (Client * c, int ws)
 {
     Client *c2;
-    GSList *index;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
@@ -1673,7 +1669,7 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
         return FALSE;
     }
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if ((c2 != c) && !clientIsTransientOrModal (c2)
@@ -1692,13 +1688,13 @@ static inline Client *
 clientGetLowestTransient (Client * c)
 {
     Client *lowest_transient = NULL, *c2;
-    GSList *index;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     TRACE ("entering clientGetLowestTransient");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if ((c2 != c) && clientIsTransientFor (c2, c))
@@ -1715,31 +1711,31 @@ clientGetHighestTransientOrModal (Client * c)
 {
     Client *highest_transient = NULL;
     Client *c2, *c3;
-    GSList *transients = NULL;
-    GSList *index1, *index2;
+    GList *transients = NULL;
+    GList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetHighestTransientOrModal");
 
-    for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
+    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2)
         {
             if ((c2 != c) && clientIsTransientOrModalFor (c2, c))
             {
-                transients = g_slist_append (transients, c2);
+                transients = g_list_append (transients, c2);
                 highest_transient = c2;
             }
             else
             {
                 for (index2 = transients; index2;
-                    index2 = g_slist_next (index2))
+                    index2 = g_list_next (index2))
                 {
                     c3 = (Client *) index2->data;
                     if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                     {
-                        transients = g_slist_append (transients, c2);
+                        transients = g_list_append (transients, c2);
                         highest_transient = c2;
                         break;
                     }
@@ -1749,7 +1745,7 @@ clientGetHighestTransientOrModal (Client * c)
     }
     if (transients)
     {
-        g_slist_free (transients);
+        g_list_free (transients);
     }
 
     return highest_transient;
@@ -1760,12 +1756,12 @@ clientGetHighestTransientOrModalFor (Client * c)
 {
     Client *highest_transient = NULL;
     Client *c2;
-    GSList *index;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetHighestTransientOrModalFor");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if (c2)
@@ -1785,12 +1781,12 @@ clientGetTopMostForGroup (Client * c)
 {
     Client *top_most = NULL;
     Client *c2;
-    GSList *index;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetTopMostForGroup");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if (c2 != c)
@@ -1810,12 +1806,12 @@ clientVisibleForGroup (Client * c, int workspace)
 {
     gboolean has_visible = FALSE;
     Client *c2;
-    GSList *index;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("entering clientVisibleForGroup");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if (c2)
@@ -1835,11 +1831,11 @@ static inline Client *
 clientGetNextTopMost (int layer, Client * exclude)
 {
     Client *top = NULL, *c;
-    GSList *index;
+    GList *index;
 
     TRACE ("entering clientGetNextTopMost");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
@@ -1861,11 +1857,11 @@ static inline Client *
 clientGetTopMostFocusable (int layer, Client * exclude)
 {
     Client *top = NULL, *c;
-    GSList *index;
+    GList *index;
 
     TRACE ("entering clientGetTopMost");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
@@ -1891,11 +1887,11 @@ static inline Client *
 clientGetBottomMost (int layer, Client * exclude)
 {
     Client *bot = NULL, *c;
-    GSList *index;
+    GList *index;
 
     TRACE ("entering clientGetBottomMost");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         if (c)
@@ -1923,31 +1919,31 @@ clientGetModalFor (Client * c)
 {
     Client *latest_modal = NULL;
     Client *c2, *c3;
-    GSList *modals = NULL;
-    GSList *index1, *index2;
+    GList *modals = NULL;
+    GList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
 
-    for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
+    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2)
         {
             if ((c2 != c) && clientIsModalFor (c2, c))
             {
-                modals = g_slist_append (modals, c2);
+                modals = g_list_append (modals, c2);
                 latest_modal = c2;
             }
             else
             {
                 for (index2 = modals; index2;
-                    index2 = g_slist_next (index2))
+                    index2 = g_list_next (index2))
                 {
                     c3 = (Client *) index2->data;
                     if ((c3 != c2) && clientIsModalFor (c2, c3))
                     {
-                        modals = g_slist_append (modals, c2);
+                        modals = g_list_append (modals, c2);
                         latest_modal = c2;
                         break;
                     }
@@ -1957,7 +1953,7 @@ clientGetModalFor (Client * c)
     }
     if (modals)
     {
-        g_slist_free (modals);
+        g_list_free (modals);
     }
 
     return latest_modal;
@@ -3379,17 +3375,13 @@ clientAtPosition (int x, int y, Client * exclude)
     /* This function does the same as XQueryPointer but w/out the race
        conditions caused by querying the X server
      */
-    GSList *windows_stack_copy = NULL;
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *index;
     Client *c = NULL;
     Client *c2 = NULL;
 
     TRACE ("entering clientAtPos");
 
-    windows_stack_copy = g_slist_copy (windows_stack);
-    list_of_windows = g_slist_reverse (windows_stack_copy);
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    for (index = g_list_last (windows_stack); index; index = g_list_previous (index))
     {
         c2 = (Client *) index->data;
         if (clientSelectMask (c2, 0) && (c2 != exclude))
@@ -3401,10 +3393,6 @@ clientAtPosition (int x, int y, Client * exclude)
                 break;
             }
         }
-    }
-    if (windows_stack_copy)
-    {
-        g_slist_free (windows_stack_copy);
     }
 
     return c;
@@ -3469,35 +3457,35 @@ clientGetNext (Client * c, int mask)
     return NULL;
 }
 
-/* Build a GSList of clients that have a transient relationship */
-static GSList *
+/* Build a GList of clients that have a transient relationship */
+static GList *
 clientListTransient (Client * c)
 {
-    GSList *transients = NULL;
-    GSList *index1, *index2;
+    GList *transients = NULL;
+    GList *index1, *index2;
     Client *c2, *c3;
 
     g_return_val_if_fail (c != NULL, NULL);
 
-    transients = g_slist_append (transients, c);
-    for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
+    transients = g_list_append (transients, c);
+    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2 != c)
         {
             if (clientIsTransientFor (c2, c))
             {
-                transients = g_slist_append (transients, c2);
+                transients = g_list_append (transients, c2);
             }
             else
             {
                 for (index2 = transients; index2;
-                    index2 = g_slist_next (index2))
+                    index2 = g_list_next (index2))
                 {
                     c3 = (Client *) index2->data;
                     if ((c3 != c2) && clientIsTransientFor (c2, c3))
                     {
-                        transients = g_slist_append (transients, c2);
+                        transients = g_list_append (transients, c2);
                         break;
                     }
                 }
@@ -3507,35 +3495,35 @@ clientListTransient (Client * c)
     return transients;
 }
 
-/* Build a GSList of clients that have a transient or modal relationship */
-static GSList *
+/* Build a GList of clients that have a transient or modal relationship */
+static GList *
 clientListTransientOrModal (Client * c)
 {
-    GSList *transients = NULL;
-    GSList *index1, *index2;
+    GList *transients = NULL;
+    GList *index1, *index2;
     Client *c2, *c3;
 
     g_return_val_if_fail (c != NULL, NULL);
 
-    transients = g_slist_append (transients, c);
-    for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
+    transients = g_list_append (transients, c);
+    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2 != c)
         {
             if (clientIsTransientOrModalFor (c2, c))
             {
-                transients = g_slist_append (transients, c2);
+                transients = g_list_append (transients, c2);
             }
             else
             {
                 for (index2 = transients; index2;
-                    index2 = g_slist_next (index2))
+                    index2 = g_list_next (index2))
                 {
                     c3 = (Client *) index2->data;
                     if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                     {
-                        transients = g_slist_append (transients, c2);
+                        transients = g_list_append (transients, c2);
                         break;
                     }
                 }
@@ -3548,7 +3536,7 @@ clientListTransientOrModal (Client * c)
 void
 clientPassFocus (Client * c)
 {
-    GSList *list_of_windows = NULL;
+    GList *list_of_windows = NULL;
     Client *new_focus = NULL;
     Client *c2;
     Window dr, window;
@@ -3569,13 +3557,13 @@ clientPassFocus (Client * c)
             c2 = c2->next, i++)
         {
             if (clientSelectMask (c2, 0)
-                && !g_slist_find (list_of_windows, (gconstpointer) c2))
+                && !g_list_find (list_of_windows, (gconstpointer) c2))
             {
                 new_focus = c2;
                 break;
             }
         }
-        g_slist_free (list_of_windows);
+        g_list_free (list_of_windows);
     }
     else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
             &mask))
@@ -3592,8 +3580,8 @@ clientPassFocus (Client * c)
 void
 clientShow (Client * c, gboolean change_state)
 {
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *list_of_windows = NULL;
+    GList *index;
     Client *c2;
 
     g_return_if_fail (c != NULL);
@@ -3602,9 +3590,7 @@ clientShow (Client * c, gboolean change_state)
              
 
     list_of_windows = clientListTransientOrModal (c);
-    list_of_windows = g_slist_reverse (list_of_windows);
-
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
     {
         c2 = (Client *) index->data;
         clientSetWorkspaceSingle (c2, c->win_workspace);
@@ -3632,21 +3618,21 @@ clientShow (Client * c, gboolean change_state)
         XFlush (dpy);
         clientSetNetState (c2);
     }
-    g_slist_free (list_of_windows);
+    g_list_free (list_of_windows);
 }
 
 void
 clientHide (Client * c, int ws, gboolean change_state)
 {
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *list_of_windows = NULL;
+    GList *index;
     Client *c2;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientHide");
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    for (index = list_of_windows; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
 
@@ -3683,7 +3669,7 @@ clientHide (Client * c, int ws, gboolean change_state)
         c2->ignore_unmap++;
         clientSetNetState (c2);
     }
-    g_slist_free (list_of_windows);
+    g_list_free (list_of_windows);
 }
 
 void
@@ -3751,7 +3737,7 @@ clientRaise (Client * c)
     }
     TRACE ("raising client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (g_slist_length (windows_stack) < 1)
+    if (g_list_length (windows_stack) < 1)
     {
         return;
     }
@@ -3760,85 +3746,85 @@ clientRaise (Client * c)
     {
         Client *c2, *c3;
         Client *client_sibling = NULL;
-        GSList *transients = NULL;
-        GSList *sibling = NULL;
-        GSList *index1, *index2;
-        GSList *windows_stack_copy;
+        GList *transients = NULL;
+        GList *sibling = NULL;
+        GList *index1, *index2;
+        GList *windows_stack_copy;
 
         /* Copy the existing window stack temporarily as reference */
-        windows_stack_copy = g_slist_copy (windows_stack);
+        windows_stack_copy = g_list_copy (windows_stack);
         /* Search for the window that will be just on top of the raised window (layers...) */
         client_sibling = clientGetNextTopMost (c->win_layer, c);
-        windows_stack = g_slist_remove (windows_stack, (gconstpointer) c);
+        windows_stack = g_list_remove (windows_stack, (gconstpointer) c);
         if (client_sibling)
         {
             /* If there is one, look for its place in the list */
             sibling =
-                g_slist_find (windows_stack, (gconstpointer) client_sibling);
+                g_list_find (windows_stack, (gconstpointer) client_sibling);
             /* Place the raised window just before it */
-            windows_stack = g_slist_insert_before (windows_stack, sibling, c);
+            windows_stack = g_list_insert_before (windows_stack, sibling, c);
         }
         else
         {
             /* There will be no window on top of the raised window, so place it at the end of list */
-            windows_stack = g_slist_append (windows_stack, c);
+            windows_stack = g_list_append (windows_stack, c);
         }
         /* Now, look for transients, transients of transients, etc. */
         for (index1 = windows_stack_copy; index1;
-            index1 = g_slist_next (index1))
+            index1 = g_list_next (index1))
         {
             c2 = (Client *) index1->data;
             if (c2)
             {
                 if ((c2 != c) && clientIsTransientOrModalFor (c2, c))
                 {
-                    transients = g_slist_append (transients, c2);
+                    transients = g_list_append (transients, c2);
                     if (sibling)
                     {
                         /* Place the transient window just before sibling */
                         windows_stack =
-                            g_slist_remove (windows_stack,
+                            g_list_remove (windows_stack,
                             (gconstpointer) c2);
                         windows_stack =
-                            g_slist_insert_before (windows_stack, sibling,
+                            g_list_insert_before (windows_stack, sibling,
                             c2);
                     }
                     else
                     {
                         /* There will be no window on top of the transient window, so place it at the end of list */
                         windows_stack =
-                            g_slist_remove (windows_stack,
+                            g_list_remove (windows_stack,
                             (gconstpointer) c2);
-                        windows_stack = g_slist_append (windows_stack, c2);
+                        windows_stack = g_list_append (windows_stack, c2);
                     }
                 }
                 else
                 {
                     for (index2 = transients; index2;
-                        index2 = g_slist_next (index2))
+                        index2 = g_list_next (index2))
                     {
                         c3 = (Client *) index2->data;
                         if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                         {
-                            transients = g_slist_append (transients, c2);
+                            transients = g_list_append (transients, c2);
                             if (sibling)
                             {
                                 /* Place the transient window just before sibling */
                                 windows_stack =
-                                    g_slist_remove (windows_stack,
+                                    g_list_remove (windows_stack,
                                     (gconstpointer) c2);
                                 windows_stack =
-                                    g_slist_insert_before (windows_stack,
+                                    g_list_insert_before (windows_stack,
                                     sibling, c2);
                             }
                             else
                             {
                                 /* There will be no window on top of the transient window, so place it at the end of list */
                                 windows_stack =
-                                    g_slist_remove (windows_stack,
+                                    g_list_remove (windows_stack,
                                     (gconstpointer) c2);
                                 windows_stack =
-                                    g_slist_append (windows_stack, c2);
+                                    g_list_append (windows_stack, c2);
                             }
                             break;
                         }
@@ -3848,11 +3834,11 @@ clientRaise (Client * c)
         }
         if (transients)
         {
-            g_slist_free (transients);
+            g_list_free (transients);
         }
         if (windows_stack_copy)
         {
-            g_slist_free (windows_stack_copy);
+            g_list_free (windows_stack_copy);
         }
         /* Now, windows_stack contains the correct window stack
            We still need to tell the X Server to reflect the changes 
@@ -3870,7 +3856,7 @@ clientLower (Client * c)
     TRACE ("entering clientLower");
     TRACE ("lowering client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (g_slist_length (windows_stack) < 1)
+    if (g_list_length (windows_stack) < 1)
     {
         return;
     }
@@ -3891,19 +3877,19 @@ clientLower (Client * c)
         {
             client_sibling = clientGetBottomMost (c->win_layer, c);
         }
-        windows_stack = g_slist_remove (windows_stack, (gconstpointer) c);
+        windows_stack = g_list_remove (windows_stack, (gconstpointer) c);
         if (client_sibling)
         {
-            GSList *sibling = g_slist_find (windows_stack,
+            GList *sibling = g_list_find (windows_stack,
                 (gconstpointer) client_sibling);
-            gint position = g_slist_position (windows_stack, sibling) + 1;
-            windows_stack = g_slist_insert (windows_stack, c, position);
+            gint position = g_list_position (windows_stack, sibling) + 1;
+            windows_stack = g_list_insert (windows_stack, c, position);
             TRACE ("lowest client is \"%s\" (0x%lx) at position %i",
                 client_sibling->name, client_sibling->window, position);
         }
         else
         {
-            windows_stack = g_slist_prepend (windows_stack, c);
+            windows_stack = g_list_prepend (windows_stack, c);
         }
         /* Now, windows_stack contains the correct window stack
            We still need to tell the X Server to reflect the changes 
@@ -3920,15 +3906,15 @@ clientLower (Client * c)
 void
 clientSetLayer (Client * c, int l)
 {
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *list_of_windows = NULL;
+    GList *index;
     Client *c2;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetLayer");
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    for (index = list_of_windows; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if (c2->win_layer != l)
@@ -3939,7 +3925,7 @@ clientSetLayer (Client * c, int l)
             setGnomeHint (dpy, c2->window, win_layer, l);
         }
     }
-    g_slist_free (list_of_windows);
+    g_list_free (list_of_windows);
     if (last_raise == c)
     {
         last_raise = NULL;
@@ -3982,8 +3968,8 @@ clientSetWorkspaceSingle (Client * c, int ws)
 void
 clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 {
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *list_of_windows = NULL;
+    GList *index;
     Client *c2;
 
     g_return_if_fail (c != NULL);
@@ -3991,7 +3977,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
     TRACE ("entering clientSetWorkspace");
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    for (index = list_of_windows; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
         if (c2->win_workspace != ws)
@@ -4020,7 +4006,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
             }
         }
     }
-    g_slist_free (list_of_windows);
+    g_list_free (list_of_windows);
 }
 
 void
@@ -4098,8 +4084,8 @@ clientToggleShaded (Client * c)
 void
 clientStick (Client * c, gboolean include_transients)
 {
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *list_of_windows = NULL;
+    GList *index;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
@@ -4108,7 +4094,7 @@ clientStick (Client * c, gboolean include_transients)
     if (include_transients)
     {
         list_of_windows = clientListTransientOrModal (c);
-        for (index = list_of_windows; index; index = g_slist_next (index))
+        for (index = list_of_windows; index; index = g_list_next (index))
         {
             c2 = (Client *) index->data;
             TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
@@ -4119,7 +4105,7 @@ clientStick (Client * c, gboolean include_transients)
             clientSetNetState (c2);
         }
         clientSetWorkspace (c, workspace, TRUE);
-        g_slist_free (list_of_windows);
+        g_list_free (list_of_windows);
     }
     else
     {
@@ -4136,8 +4122,8 @@ clientStick (Client * c, gboolean include_transients)
 void
 clientUnstick (Client * c, gboolean include_transients)
 {
-    GSList *list_of_windows = NULL;
-    GSList *index;
+    GList *list_of_windows = NULL;
+    GList *index;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
@@ -4147,7 +4133,7 @@ clientUnstick (Client * c, gboolean include_transients)
     if (include_transients)
     {
         list_of_windows = clientListTransientOrModal (c);
-        for (index = list_of_windows; index; index = g_slist_next (index))
+        for (index = list_of_windows; index; index = g_list_next (index))
         {
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
@@ -4157,7 +4143,7 @@ clientUnstick (Client * c, gboolean include_transients)
             clientSetNetState (c2);
         }
         clientSetWorkspace (c, workspace, TRUE);
-        g_slist_free (list_of_windows);
+        g_list_free (list_of_windows);
     }
     else
     {
@@ -4552,10 +4538,10 @@ void
 clientScreenResize(void)
 {
     Client *c = NULL;
-    GSList *index;
+    GList *index;
     XWindowChanges wc;
     
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         if (!CONSTRAINED_WINDOW (c))
@@ -5743,13 +5729,13 @@ clientGetLeader (Client * c)
     return c2;
 }
 
-GSList *
+GList *
 clientGetStackList (void)
 {
-    GSList *windows_stack_copy = NULL;
+    GList *windows_stack_copy = NULL;
     if (windows_stack)
     {
-        windows_stack_copy = g_slist_copy (windows_stack);
+        windows_stack_copy = g_list_copy (windows_stack);
     }
     return windows_stack_copy;
 }

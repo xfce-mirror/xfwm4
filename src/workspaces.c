@@ -39,9 +39,9 @@ workspaceSwitch (int new_ws, Client * c2)
 {
     Client *c, *new_focus = NULL;
     Client *previous;
-    GSList *list_of_windows;
-    GSList *index;
-    GSList *list_hide;
+    GList *list_of_windows;
+    GList *index;
+    GList *list_hide;
     Window dr, window;
     int rx, ry, wx, wy;
     unsigned int mask;
@@ -74,7 +74,7 @@ workspaceSwitch (int new_ws, Client * c2)
     previous = clientGetFocus ();
     list_of_windows = clientGetStackList ();
     /* First pass */
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    for (index = list_of_windows; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_VISIBLE,
@@ -92,7 +92,7 @@ workspaceSwitch (int new_ws, Client * c2)
                    transient (otherwise the transient vanishes along
                    with its parent window which is placed below...
                  */
-                list_hide = g_slist_append (list_hide, c);
+                list_hide = g_list_append (list_hide, c);
             }
         }
     }
@@ -100,17 +100,17 @@ workspaceSwitch (int new_ws, Client * c2)
     /* First pass and a half :) */
     if (list_hide)
     {
-        for (index = list_hide; index; index = g_slist_next (index))
+        for (index = list_hide; index; index = g_list_next (index))
         {
             c = (Client *) index->data;
             clientHide (c, new_ws, FALSE);
         }
-        g_slist_free (list_hide);
+        g_list_free (list_hide);
     }
 
     /* Second pass */
-    list_of_windows = g_slist_reverse (list_of_windows);
-    for (index = list_of_windows; index; index = g_slist_next (index))
+    list_of_windows = g_list_reverse (list_of_windows);
+    for (index = g_list_last(list_of_windows); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
@@ -140,7 +140,7 @@ workspaceSwitch (int new_ws, Client * c2)
     /* Free the list */
     if (list_of_windows)
     {
-        g_slist_free (list_of_windows);
+        g_list_free (list_of_windows);
     }
 
     setGnomeHint (dpy, root, win_workspace, new_ws);
