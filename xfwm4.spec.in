@@ -10,10 +10,12 @@ BuildRoot: 	%{_tmppath}/%{name}-root
 Requires:	gtk2
 Requires:	glib2
 Requires:	pango
+Requires:	libxfcegui4 >= 0.0.3
 # BuildRequires: 	autoconf >= 2.52
 BuildRequires: 	gtk2-devel >= 2.0.0
 BuildRequires: 	glib2-devel >= 2.0.0
 BuildRequires: 	pango-devel >= 1.0.0
+BuildRequires: 	libxfcegui4-devel >= 0.0.3
 
 %description
 xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.
