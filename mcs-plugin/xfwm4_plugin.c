@@ -1250,17 +1250,15 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_label_set_justify(GTK_LABEL(dialog->label37), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(dialog->label37), 0, 0.5);
 
-    dialog->label38 = gtk_label_new(_("<small><i>Slow</i></small>"));
+    dialog->label38 = small_label(_("Slow"));
     gtk_widget_show(dialog->label38);
     gtk_table_attach(GTK_TABLE(dialog->table2), dialog->label38, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_use_markup(GTK_LABEL(dialog->label38), TRUE);
     gtk_label_set_justify(GTK_LABEL(dialog->label38), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(dialog->label38), 1, 0.5);
 
-    dialog->label39 = gtk_label_new(_("<small><i>Fast</i></small>"));
+    dialog->label39 = small_label(_("Fast"));
     gtk_widget_show(dialog->label39);
     gtk_table_attach(GTK_TABLE(dialog->table2), dialog->label39, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_use_markup(GTK_LABEL(dialog->label39), TRUE);
     gtk_label_set_justify(GTK_LABEL(dialog->label39), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(dialog->label39), 0, 0.5);
 
@@ -1327,17 +1325,15 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_label_set_justify(GTK_LABEL(dialog->label41), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(dialog->label41), 0, 0.5);
 
-    dialog->label42 = gtk_label_new(_("<small><i>Small</i></small>"));
+    dialog->label42 = small_label(_("Small"));
     gtk_widget_show(dialog->label42);
     gtk_table_attach(GTK_TABLE(dialog->table3), dialog->label42, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_use_markup(GTK_LABEL(dialog->label42), TRUE);
     gtk_label_set_justify(GTK_LABEL(dialog->label42), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(dialog->label42), 1, 0.5);
 
-    dialog->label43 = gtk_label_new(_("<small><i>Wide</i></small>"));
+    dialog->label43 = small_label(_("Wide"));
     gtk_widget_show(dialog->label43);
     gtk_table_attach(GTK_TABLE(dialog->table3), dialog->label43, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_use_markup(GTK_LABEL(dialog->label43), TRUE);
     gtk_label_set_justify(GTK_LABEL(dialog->label43), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(dialog->label43), 0, 0.5);
 
@@ -1748,6 +1744,13 @@ static void run_dialog(McsPlugin * mcs_plugin)
 
     if(is_running)
         return;
+
+#ifdef ENABLE_NLS
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+#endif
+    gtk_set_locale ();
 
     is_running = TRUE;
 

@@ -1,0 +1,8 @@
+mcs-plugin/xfwm4_plugin.c
+src/client.c
+src/events.c
+src/hints.c
+src/main.c
+src/menu.c
+src/settings.c
+src/tabwin.c

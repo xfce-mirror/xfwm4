@@ -2,37 +2,31 @@
 #define __MY_INTL_H__
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#  include <config.h>
 #endif
 
+#include <gtk/gtk.h>
+
+/*
+ * Standard gettext macros.
+ */
 #ifdef ENABLE_NLS
-#ifdef HAVE_GETTEXT
-#include <libintl.h>
+#  include <libintl.h>
+#  undef _
+#  define _(String) dgettext (PACKAGE, String)
+#  ifdef gettext_noop
+#    define N_(String) gettext_noop (String)
+#  else
+#    define N_(String) (String)
+#  endif
 #else
-#include "intl/libintl.h"
-#endif
-
-#ifdef N_
-#undef N_
-#endif
-
-#ifdef _
-#undef _
-#endif
-
-#define _(String) dgettext(PACKAGE,String)
-#define N_(String) String
-
-#else /* NLS is disabled */
-
-#define _(String) String
-#define N_(String) String
-#define textdomain(String) String
-#define gettext(String) String
-#define dgettext(Domain,String) String
-#define dcgettext(Domain,String,Type) String
-#define bindtextdomain(Domain,Directory) (Domain)
-
+#  define textdomain(String) (String)
+#  define gettext(String) (String)
+#  define dgettext(Domain,Message) (Message)
+#  define dcgettext(Domain,Message,Type) (Message)
+#  define bindtextdomain(Domain,Directory) (Domain)
+#  define _(String) (String)
+#  define N_(String) (String)
 #endif
 
 #endif

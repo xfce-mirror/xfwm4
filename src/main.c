@@ -154,6 +154,14 @@ static int initialize(int argc, char **argv)
     DBG("entering initialize\n");
 
     progname = argv[0];
+
+#ifdef ENABLE_NLS
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+#endif
+
+    gtk_set_locale ();
     gtk_init(&argc, &argv);
 
     g_message(_("%s: Using GTK+-%d.%d.%d"), g_get_prgname(), gtk_major_version, gtk_minor_version, gtk_micro_version);
