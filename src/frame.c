@@ -313,8 +313,11 @@ static int getButtonFromLetter(char chr, Client * c)
 	    }
             break;
         case 'C':
-            b = CLOSE_BUTTON;
-            break;
+            if (c->has_close)
+	    {
+	        b = CLOSE_BUTTON;
+            }
+	    break;
         case 'M':
 	    if (CAN_MAXIMIZE_WINDOW(c))
 	    {
@@ -363,8 +366,11 @@ static char getLetterFromButton(int i, Client * c)
 	    }
             break;
         case CLOSE_BUTTON:
-            chr = 'C';
-            break;
+            if (c->has_close)
+	    {
+	        chr = 'C';
+            }
+	    break;
         case MAXIMIZE_BUTTON:
 	    if (CAN_MAXIMIZE_WINDOW(c))
 	    {

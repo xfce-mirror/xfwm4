@@ -665,6 +665,8 @@ static void clientWindowType(Client * c)
             DBG("atom net_wm_window_type_splashscreen detected\n");
             c->type = WINDOW_SPLASHSCREEN;
             c->has_border = False;
+            c->has_resize = False;
+            c->has_move = False;
             layer = WIN_LAYER_ABOVE_DOCK;
 	    c->has_hide = False;
         }
@@ -680,6 +682,8 @@ static void clientWindowType(Client * c)
         Client *c2;
 
         DBG("Window is a transient\n");
+	c->has_hide = False;
+	c->has_maximize = False;
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
         if(c2)
         {
@@ -1520,11 +1524,74 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
     }
 }
 
+void clientUpdateMWMHints(Client *c)
+{
+    PropMwmHints *mwm_hints;
+    gboolean toggle_value;
+
+    g_return_if_fail(c != NULL);
+    g_return_if_fail(c->window != None);
+    DBG("entering clientUpdateMWMHints client \"%s\" (%#lx)\n", c->name, c->window);
+
+    mwm_hints = getMotifHints(dpy, c->window);
+    if(mwm_hints)
+    {
+        if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
+        {
+            c->has_border   = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
+            c->has_menu     = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
+            /* 
+	      c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
+              c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
+             */
+	}
+        /* The following is from Metacity : */
+        if (mwm_hints->flags & MWM_HINTS_FUNCTIONS)
+        {
+	    if (!(mwm_hints->functions & MWM_FUNC_ALL))
+            {
+        	toggle_value = True;
+
+        	c->has_close    = False;
+        	c->has_hide     = False;
+        	c->has_maximize = False;
+        	c->has_move     = False;
+        	c->has_resize   = False;
+            }
+	    else
+            {
+        	toggle_value = False;
+            }
+
+	    if (mwm_hints->functions & MWM_FUNC_CLOSE)
+            {
+        	c->has_close = toggle_value;
+            }
+	    if (mwm_hints->functions & MWM_FUNC_MINIMIZE)
+            {
+        	c->has_hide = toggle_value;
+            }
+	    if (mwm_hints->functions & MWM_FUNC_MAXIMIZE)
+            {
+        	c->has_maximize = toggle_value;
+            }
+	    if (mwm_hints->functions & MWM_FUNC_RESIZE)
+            {
+        	c->has_resize = toggle_value;
+            }
+	    if (mwm_hints->functions & MWM_FUNC_MOVE)
+            {
+        	c->has_move = toggle_value;
+            }
+	}
+        XFree(mwm_hints);
+    }
+}
+
 void clientFrame(Window w)
 {
     XWindowAttributes attr;
     XWindowChanges wc;
-    PropMwmHints *mwm_hints;
     XSetWindowAttributes attributes;
     Window dummy_root;
     Client *c;
@@ -1596,6 +1663,9 @@ void clientFrame(Window w)
     c->has_menu = True;
     c->has_maximize = True;
     c->has_hide = True;
+    c->has_close = True;
+    c->has_move = True;
+    c->has_resize = True;
     c->has_struts = False;
     c->hidden = (START_ICONIC(c) ? True : False);
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
@@ -1613,20 +1683,7 @@ void clientFrame(Window w)
     c->wm_input = (ACCEPT_INPUT(c->wmhints) ? True : False);
     c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
     c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
-
-    mwm_hints = getMotifHints(dpy, c->window);
-    if(mwm_hints)
-    {
-        if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
-        {
-            c->has_border   = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
-            c->has_menu     = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
-            c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
-            c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
-        }
-        XFree(mwm_hints);
-    }
-
+    clientUpdateMWMHints(c);
     getGnomeHint(dpy, w, win_hints, &c->win_hints);
     getGnomeHint(dpy, w, win_state, &c->win_state);
     if(!getGnomeHint(dpy, w, win_layer, &c->win_layer))

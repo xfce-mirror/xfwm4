@@ -154,7 +154,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_DOWN:
             case KEY_MOVE_LEFT:
             case KEY_MOVE_RIGHT:
-                if((c->has_border) && !(c->fullscreen))
+                if((c->has_border) && !(c->fullscreen) && (c->has_move))
                 {
                     clientMove(c, (XEvent *) ev);
                 }
@@ -163,8 +163,11 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
-                break;
+	        if ((c->has_resize) && (c->is_resizable))
+                {
+		    clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+                }
+		break;
             case KEY_CYCLE_WINDOWS:
                 clientCycle(c);
                 break;
@@ -378,15 +381,12 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XEvent copy_event = (XEvent) *ev;
             XfwmButtonClickType tclick;
             
-            if (win == c->title)
-            {
-                clientSetFocus(c, True);
-                clientRaise(c);
-            }
+            clientSetFocus(c, True);
+            clientRaise(c);
             tclick = typeOfClick(c->frame, &copy_event);
             if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
             {
-                if((c->has_border) && !(c->fullscreen))
+                if((c->has_border) && !(c->fullscreen) && (c->has_move))
                 {
                     clientMove(c, (XEvent *) ev);
                 }
@@ -411,11 +411,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -424,11 +424,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -437,11 +437,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -450,11 +450,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -463,11 +463,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -476,11 +476,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -489,11 +489,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-	    if (c->is_resizable)
+	    if ((c->has_resize) && (c->is_resizable))
 	    {
                 clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
 	    }
-	    else if((c->has_border) && !(c->fullscreen))
+	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
             {
                 clientMove(c, (XEvent *) ev);
             }
@@ -732,6 +732,12 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             }
             getWindowName(dpy, c->window, &c->name);
             frameDraw(c);
+        }
+        else if(ev->atom == motif_wm_hints)
+        {
+            DBG("client \"%s\" (%#lx) has received a motif_wm_hints notify\n", c->name, c->window);
+            clientUpdateMWMHints(c);
+	    frameDraw(c);
         }
         else if(ev->atom == win_hints)
         {
@@ -1083,42 +1089,79 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         frameDraw(c);
         y = c->y;
         ops = MENU_OP_DELETE | MENU_OP_DESTROY | MENU_OP_MINIMIZE_ALL;
-        insensitive = 0;
+	insensitive = 0;
+
+	if (!(c->has_close))
+	{
+            insensitive |= MENU_OP_DELETE | MENU_OP_DESTROY;
+	}
 
 	if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
         {
             ops |= MENU_OP_UNMAXIMIZE;
+	    if (!CAN_MAXIMIZE_WINDOW(c))
+	    {
+	        insensitive |= MENU_OP_UNMAXIMIZE;
+	    }
         }
-        else if (CAN_MAXIMIZE_WINDOW(c))
+        else 
         {
             ops |= MENU_OP_MAXIMIZE;
+	    if (!CAN_MAXIMIZE_WINDOW(c))
+	    {
+	        insensitive |= MENU_OP_MAXIMIZE;
+	    }
         }
 
         if(c->hidden)
         {
             ops |= MENU_OP_UNMINIMIZE;
+	    if (!CAN_HIDE_WINDOW(c))
+	    {
+	        insensitive |= MENU_OP_UNMINIMIZE;
+	    }
         }
-        else if (CAN_HIDE_WINDOW(c))
+        else
         {
             ops |= MENU_OP_MINIMIZE;
+	    if (!CAN_HIDE_WINDOW(c))
+	    {
+	        insensitive |= MENU_OP_MINIMIZE;
+	    }
         }
 
         if(c->win_state & WIN_STATE_SHADED)
         {
             ops |= MENU_OP_UNSHADE;
+	    if (!(c->has_menu))
+	    {
+	        insensitive |= MENU_OP_UNSHADE;
+	    }
         }
-        else if (c->has_menu)
+        else
         {
             ops |= MENU_OP_SHADE;
+	    if (!(c->has_menu))
+	    {
+	        insensitive |= MENU_OP_SHADE;
+	    }
         }
 
         if(c->sticky)
         {
             ops |= MENU_OP_UNSTICK;
+	    if (!(c->has_menu))
+	    {
+                insensitive |= MENU_OP_UNSTICK;
+	    }
         }
-        else if (c->has_menu)
+        else
         {
             ops |= MENU_OP_STICK;
+	    if (!(c->has_menu))
+	    {
+                insensitive |= MENU_OP_STICK;
+	    }
         }
     }
     else
