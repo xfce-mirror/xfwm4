@@ -3,305 +3,307 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2004-01-03 22:16+0100\n"
-"PO-Revision-Date: 2003-08-02 03:36+0900\n"
-"Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: xfwm4\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
+"PO-Revision-Date: 2004-01-18 00:16-0200\n"
+"Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
+"Language-Team: pt_BR <felix@online.eti.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"여백은 스크린의 구석에 있는 영역으로,\n"
-" 윈도우가 위치할 수 없는 공간입니다."
+msgstr "Margens são áreas no canto da tela onde nenhuma janela será colocada"
 
 #: mcs-plugin/margins.c:131
 msgid "Workspace Margins"
-msgstr "작업공간 여백"
+msgstr "Margens da área de trabalho"
 
 #: mcs-plugin/margins.c:159
 msgid "Left :"
-msgstr "좌측 :"
+msgstr "Esquerdo :"
 
 #: mcs-plugin/margins.c:179
 msgid "Right :"
-msgstr "우측 :"
+msgstr "Direito :"
 
 #: mcs-plugin/margins.c:199
 msgid "Top :"
-msgstr "맨위 :"
+msgstr "Topo :"
 
 #: mcs-plugin/margins.c:219
 msgid "Bottom :"
-msgstr "아래 :"
+msgstr "Abaixo :"
 
 #: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "작업공간 여백"
+msgstr "Área de trabalho e margens"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-#, fuzzy
 msgid "Workspaces"
-msgstr "작업공간 %i"
+msgstr "Áreas de trabalho"
 
 #: mcs-plugin/plugin.c:179
 msgid "Margins"
-msgstr "여백"
+msgstr "Margens"
 
 #: mcs-plugin/workspaces.c:337
 msgid "Change name"
-msgstr "이름 변경"
+msgstr "Mudar nome"
 
 #: mcs-plugin/workspaces.c:349
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "작업공간 %i"
+msgstr "Área de trabalho %d"
 
 #: mcs-plugin/workspaces.c:359
 msgid "Name:"
-msgstr "이름:"
+msgstr "Nome:"
 
 #: mcs-plugin/workspaces.c:447
 msgid "Click on a workspace name to edit it"
-msgstr "작업공간의 이름을 클릭하면 이름을 변경할 수 있습니다."
+msgstr "Clique no nome da área de trabalho para editá-la"
 
 #: mcs-plugin/workspaces.c:519
 msgid "Number of workspaces:"
-msgstr "작업공간의 수:"
+msgstr "Número de áreas de trabalho:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:550
-#, fuzzy
 msgid "Workspace names"
-msgstr "작업공간 여백"
+msgstr "Nome da área de trabalho"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
-msgstr "제목"
+msgstr "Título"
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Menu"
-msgstr "메뉴"
+msgstr "Menu"
 
 #: mcs-plugin/xfwm4_plugin.c:118
 msgid "Stick"
-msgstr "모든 작업공간에 보이기"
+msgstr "Fixar"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Shade"
-msgstr "말아올리기"
+msgstr "Sombra"
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Hide"
-msgstr "숨기기"
+msgstr "Esconder"
 
 #: mcs-plugin/xfwm4_plugin.c:121
 msgid "Maximize"
-msgstr "최대화"
+msgstr "Maximizar"
 
 #: mcs-plugin/xfwm4_plugin.c:122
 msgid "Close"
-msgstr "닫기"
+msgstr "Fechar"
 
 #: mcs-plugin/xfwm4_plugin.c:126
 msgid "Shade window"
-msgstr "창 말아올리기"
+msgstr "Sombrear janela"
 
 #: mcs-plugin/xfwm4_plugin.c:127
 msgid "Hide window"
-msgstr "창 숨기기"
+msgstr "Esconder janela"
 
 #: mcs-plugin/xfwm4_plugin.c:128
 msgid "Maximize window"
-msgstr "창 최대화"
+msgstr "Maximizar janela"
 
 #: mcs-plugin/xfwm4_plugin.c:129
 msgid "Nothing"
-msgstr "아무 짓도 안함"
+msgstr "Nada"
 
 #: mcs-plugin/xfwm4_plugin.c:134
 msgid "Left"
-msgstr "좌측"
+msgstr "Esquerdo"
 
 #: mcs-plugin/xfwm4_plugin.c:135
 msgid "Center"
-msgstr "가운데"
+msgstr "Centro"
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Right"
-msgstr "우측"
+msgstr "Direito"
 
 #: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
-msgstr "숨김"
+msgstr "Oculto"
 
 #: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
-msgstr "글꼴 선택"
+msgstr "Diálogo de seleção de fontes"
 
 #: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
-msgstr "창 관리자"
+msgstr "Gerenciador de janelas"
 
 #: mcs-plugin/xfwm4_plugin.c:1288
 msgid "Window Manager Preferences"
-msgstr "창 관리자 속성 설정"
+msgstr "Preferências do gerenciador de janelas"
 
 #: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
-msgstr "창 제목 글꼴"
+msgstr "Fonte do título"
 
 #: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
-msgstr "창 제목 정렬"
+msgstr "Alinhamento do título"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
-msgstr "제목 틀의 내용 정렬"
+msgstr "Alinhamento do texto dentro da barra de títulos :"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
-msgstr "버튼 배치"
+msgstr "Disposição dos botôes"
 
 #: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
-msgstr "꾸미기"
+msgstr "Estilo de decoração"
 
 #: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
-msgstr "단축키"
+msgstr "Teclas de atalho"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
-msgstr "창 활성 방법"
+msgstr "Modelo de foco"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
-msgstr "클릭"
+msgstr "Foco ao clicar"
 
 #: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
-msgstr "마우스를 따라가기"
+msgstr "Foco segue o mouse"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
-msgstr "새로운 창 활성 방법"
+msgstr "Foco em novas janelas"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
-msgstr "새로운 창은 무조건 활성"
+msgstr ""
+"Aututomaticamente dê foco \n"
+"em novas janelas criadas"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
-msgstr "활성된 창 올리기"
+msgstr "Foco ao aumentar"
 
 #: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
-msgstr "활성된 창은 무조건 최상위로 올리기"
+msgstr ""
+"Automaticamente aumente a janela \n"
+"quando elas receberem foco"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
-msgstr "지연 시간"
+msgstr "Atraso antes de aumentar janelas com foco :"
 
 #: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
-msgstr "느림"
+msgstr "Lento"
 
 #: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Fast"
-msgstr "빠름"
+msgstr "Rápido"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
-msgstr "클릭했을 때 창 올리기"
+msgstr "Aumentar ao clique"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
-msgstr "창 내부를 클릭해야 올림"
+msgstr ""
+"Aumentar a janela ao clicar dentro \n"
+"da janela da aplicação"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
-msgstr "단축키 및 창 활성"
+msgstr "Teclado e foco"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
-msgstr "창 움직임"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
-msgstr "화면 경계에 따라 움직임"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
-msgstr "다른 창에 맞추어 움직임"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
-msgstr "거리 :"
+msgstr "Distância :"
 
 #: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
-msgstr "좁게"
+msgstr "Pequeno"
 
 #: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
-msgstr "넓게"
+msgstr "Largo"
 
 #: mcs-plugin/xfwm4_plugin.c:1600
+#, fuzzy
 msgid "Wrap workspaces"
-msgstr "작업 공간 전환"
+msgstr "Mudar de área de tranbalho"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환"
+msgstr "Mudar de área de trabalho quando o mouse alcançar o canto da tela"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "창을 화면 밖으로 이동시키면 작업공간 전환"
+msgstr "Mudar de área de trabalho quando arrastar uma janela para fora da tela"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
-msgstr "화면 모서리 저항 :"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr "창 이동 및 크기 변경"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
-msgstr "창 크기를 변경할 때 내용을 보이기"
+msgstr "Mostrar conteúdo das janelas ao dimensionar"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
-msgstr "창을 움직일 때 내용 보이기"
+msgstr "Mostrar conteúdo das janelas ao mover"
 
 #: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
-msgstr "더블클릭하면"
+msgstr "Ação do duplo clique"
 
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
-msgstr "제목 틀을 더블클릭한 경우 취하는 동작"
+msgstr "Ação a realizar quando dar um clique duplo na barra de títulos :"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr "고급 설정"
+msgstr "Avançado"
 
 #: src/client.c:508
 #, c-format
@@ -311,22 +313,22 @@ msgstr ""
 #: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr ""
+msgstr "%s: Operação não permitida (ainda)\n"
 
 #: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "%s: Falha de segmentação"
 
 #: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
-msgstr ""
+msgstr "%s: Outro gerenciador de janelas já esta executando"
 
 #: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr ""
+msgstr "%s: Perda de informações dos arquivos padrões"
 
 #: src/main.c:413
 #, c-format
@@ -336,91 +338,87 @@ msgstr ""
 #: src/main.c:421
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: Falha ao criar novo processo: %s"
 
 #: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
-msgstr ""
+msgstr "%s: Ocorreu um erro desconhecido"
 
 #: src/menu.c:42
 msgid "Ma_ximize"
-msgstr "최대화(_x)"
+msgstr "Ma_ximizar"
 
 #: src/menu.c:43
 msgid "Un_maximize"
-msgstr "원래 크기로(_m)"
+msgstr "Mi_nimizar"
 
 #: src/menu.c:44
 msgid "_Hide"
-msgstr "숨기기(_H)"
+msgstr "_Ocultar"
 
 #: src/menu.c:45
 msgid "Hide _all others"
-msgstr "나머지 창 숨기기(_a)"
+msgstr "Ocultar _todos os outros"
 
 #: src/menu.c:46
 msgid "S_how"
-msgstr "보이기(_h)"
+msgstr "M_ostrar"
 
 #: src/menu.c:47
 msgid "_Shade"
-msgstr "말아 올리기(_S)"
+msgstr "_Sombrear"
 
 #: src/menu.c:48
 msgid "Un_shade"
-msgstr "말린 창 내리기(_s)"
+msgstr "Des_sombrear"
 
 #: src/menu.c:49
 msgid "S_tick"
-msgstr "모든 작업공간에 보이기(_t)"
+msgstr ""
 
 #: src/menu.c:50
 msgid "Uns_tick"
-msgstr "현재 작업공간에 보이기(_t)"
+msgstr ""
 
-#: src/menu.c:51
-msgid "Context _help"
-msgstr "도움말(_h)"
-
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:51 src/menu.c:52
 msgid "Always on top"
-msgstr "항상 위"
+msgstr "Sempre no topo"
 
-#: src/menu.c:54
+#: src/menu.c:53
 msgid "Send to..."
-msgstr "다른 작업공간으로..."
+msgstr "enviar para..."
 
-#: src/menu.c:56
+#: src/menu.c:55
 msgid "_Close"
-msgstr "닫기(_C)"
+msgstr "_Fechar"
 
-#: src/menu.c:59
+#: src/menu.c:58
 msgid "Destroy"
-msgstr "강제 종료"
+msgstr "Destruir"
+
+#: src/menu.c:61
+msgid "_Quit"
+msgstr "_Sair"
 
 #: src/menu.c:62
-msgid "_Quit"
-msgstr "종료(_Q)"
-
-#: src/menu.c:63
 msgid "Restart"
-msgstr "다시 시작"
+msgstr "Reiniciar"
 
-#: src/menu.c:166
+#: src/menu.c:165
 #, c-format
 msgid "Workspace %i"
-msgstr "작업공간 %i"
+msgstr "Área de trabalho %i"
 
-#: src/menu.c:408
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu falhou para encontrar o mouse\n"
 
 #: src/settings.c:315
 #, c-format
 msgid "%s: Missing defaults file"
-msgstr ""
+msgstr "%s: Falta arquivos padrões"
 
 #: src/settings.c:553
 #, c-format
@@ -459,7 +457,4 @@ msgstr ""
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr "작업공간 전환"
-
-#~ msgid "Adjust workspace margins"
-#~ msgstr "작업공간 여백 설정"
+msgstr "Mudar para ..."
