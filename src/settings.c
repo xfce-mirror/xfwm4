@@ -63,28 +63,28 @@ MyPixmap title[5][2];
 void loadSettings()
 {
     Settings rc[] = {
-        {"active_text_color", NULL, FALSE},            
-        {"inactive_text_color", NULL, FALSE},          
-        {"active_border_color", NULL, FALSE},          
-        {"inactive_border_color", NULL, FALSE},        
-        {"active_color_1", NULL, FALSE},               
-        {"active_hilight_1", NULL, FALSE},             
-        {"active_shadow_1", NULL, FALSE},              
-        {"active_mid_1", NULL, FALSE},                 
-        {"active_color_2", NULL, FALSE},               
-        {"active_hilight_2", NULL, FALSE},             
-        {"active_shadow_2", NULL, FALSE},              
-        {"active_mid_2", NULL, FALSE},                 
-        {"inactive_color_1", NULL, FALSE},      
-        {"inactive_hilight_1", NULL, FALSE},    
-        {"inactive_shadow_1", NULL, FALSE},     
-        {"inactive_mid_1", NULL, FALSE},        
-        {"inactive_color_2", NULL, FALSE},      
-        {"inactive_hilight_2", NULL, FALSE},    
-        {"inactive_shadow_2", NULL, FALSE},     
-        {"inactive_mid_2", NULL, FALSE},        
-        {"theme", NULL, TRUE},                   
-        {"keytheme", NULL, FALSE},                   
+        {"active_text_color", NULL, FALSE},
+        {"inactive_text_color", NULL, FALSE},
+        {"active_border_color", NULL, FALSE},
+        {"inactive_border_color", NULL, FALSE},
+        {"active_color_1", NULL, FALSE},
+        {"active_hilight_1", NULL, FALSE},
+        {"active_shadow_1", NULL, FALSE},
+        {"active_mid_1", NULL, FALSE},
+        {"active_color_2", NULL, FALSE},
+        {"active_hilight_2", NULL, FALSE},
+        {"active_shadow_2", NULL, FALSE},
+        {"active_mid_2", NULL, FALSE},
+        {"inactive_color_1", NULL, FALSE},
+        {"inactive_hilight_1", NULL, FALSE},
+        {"inactive_shadow_1", NULL, FALSE},
+        {"inactive_mid_1", NULL, FALSE},
+        {"inactive_color_2", NULL, FALSE},
+        {"inactive_hilight_2", NULL, FALSE},
+        {"inactive_shadow_2", NULL, FALSE},
+        {"inactive_mid_2", NULL, FALSE},
+        {"theme", NULL, TRUE},
+        {"keytheme", NULL, FALSE},
         {"title_alignment", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
         {"button_layout", NULL, TRUE},
@@ -154,31 +154,31 @@ void loadSettings()
     XpmColorSymbol colsym[20];
     GtkWidget *widget;
     guint i;
-    
+
     DBG("entering settingsLoad\n");
 
     widget = getDefaultGtkWidget();
 
-    rc[0].value  = get_style(widget, "fg",    "selected");
-    rc[1].value  = get_style(widget, "fg",    "normal");
-    rc[2].value  = get_style(widget, "fg",    "active");
-    rc[3].value  = get_style(widget, "fg",    "normal");
-    rc[4].value  = get_style(widget, "bg",    "selected");
-    rc[5].value  = get_style(widget, "light", "selected");
-    rc[6].value  = get_style(widget, "dark",  "selected");
-    rc[7].value  = get_style(widget, "mid",   "selected");
-    rc[8].value  = get_style(widget, "bg",    "normal");
-    rc[9].value  = get_style(widget, "light", "normal");
-    rc[10].value = get_style(widget, "dark",  "normal");
-    rc[11].value = get_style(widget, "mid",   "normal");
-    rc[12].value = get_style(widget, "bg",    "active");
+    rc[0].value = get_style(widget, "fg", "selected");
+    rc[1].value = get_style(widget, "fg", "normal");
+    rc[2].value = get_style(widget, "fg", "active");
+    rc[3].value = get_style(widget, "fg", "normal");
+    rc[4].value = get_style(widget, "bg", "selected");
+    rc[5].value = get_style(widget, "light", "selected");
+    rc[6].value = get_style(widget, "dark", "selected");
+    rc[7].value = get_style(widget, "mid", "selected");
+    rc[8].value = get_style(widget, "bg", "normal");
+    rc[9].value = get_style(widget, "light", "normal");
+    rc[10].value = get_style(widget, "dark", "normal");
+    rc[11].value = get_style(widget, "mid", "normal");
+    rc[12].value = get_style(widget, "bg", "active");
     rc[13].value = get_style(widget, "light", "active");
-    rc[14].value = get_style(widget, "dark",  "active");
-    rc[15].value = get_style(widget, "mid",   "active");
-    rc[16].value = get_style(widget, "bg",    "normal");
+    rc[14].value = get_style(widget, "dark", "active");
+    rc[15].value = get_style(widget, "mid", "active");
+    rc[16].value = get_style(widget, "bg", "normal");
     rc[17].value = get_style(widget, "light", "normal");
-    rc[18].value = get_style(widget, "dark",  "normal");
-    rc[19].value = get_style(widget, "mid",   "normal");
+    rc[18].value = get_style(widget, "dark", "normal");
+    rc[19].value = get_style(widget, "mid", "normal");
 
     if(!parseRc("defaults", DATADIR, rc))
     {
@@ -190,7 +190,7 @@ void loadSettings()
     parseRc("themerc", theme, rc);
 
     keythemevalue = getValue("keytheme", rc);
-    if (keythemevalue)
+    if(keythemevalue)
     {
         keytheme = getThemeDir(keythemevalue);
         parseRc("keythemerc", keytheme, rc);
@@ -202,9 +202,9 @@ void loadSettings()
         exit(1);
     }
 
-    for (i = 0; i < 20; i++)
+    for(i = 0; i < 20; i++)
     {
-        colsym[i].name  = rc[i].option;
+        colsym[i].name = rc[i].option;
         colsym[i].value = rc[i].value;
     }
 
@@ -344,10 +344,10 @@ void loadSettings()
     snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
     snap_width = abs(atoi(getValue("snap_width", rc)));
     dbl_click_time = abs(atoi(getValue("dbl_click_time", rc)));
-    g_value_init (&tmp_val, G_TYPE_INT);
-    if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
+    g_value_init(&tmp_val, G_TYPE_INT);
+    if(gdk_setting_get("gtk-double-click-time", &tmp_val))
     {
-        dbl_click_time = abs(g_value_get_int (&tmp_val));
+        dbl_click_time = abs(g_value_get_int(&tmp_val));
     }
 
     if(!g_ascii_strcasecmp("shade", getValue("double_click_action", rc)))
@@ -432,8 +432,8 @@ void loadSettings()
     grabKey(dpy, &keys[KEY_WORKSPACE_8], gnome_win);
     grabKey(dpy, &keys[KEY_WORKSPACE_9], gnome_win);
     freeRc(rc);
-    g_free (keytheme);
-    g_free (theme);
+    g_free(keytheme);
+    g_free(theme);
 }
 
 void unloadSettings()

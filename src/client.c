@@ -33,6 +33,7 @@
 #include "frame.h"
 #include "hints.h"
 #include "workspaces.h"
+#include "xinerama.h"
 #include "settings.h"
 #include "debug.h"
 
@@ -40,11 +41,11 @@
 
 #define POINTER_EVENT_MASK      ButtonPressMask|\
                                 ButtonReleaseMask
-                                
+
 #define FRAME_EVENT_MASK        SubstructureNotifyMask|\
                                 SubstructureRedirectMask|\
                                 EnterWindowMask
-                                
+
 #define CLIENT_EVENT_MASK       FocusChangeMask|\
                                 PropertyChangeMask
 
@@ -761,7 +762,7 @@ static void clientWindowType(Client * c)
 
         DBG("Window is a transient\n");
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
-        if (c2)
+        if(c2)
         {
             layer = c2->win_layer;
         }
@@ -1287,25 +1288,45 @@ static inline void clientConstraintPos(Client * c)
 
 static inline void clientKeepVisible(Client * c)
 {
+    int cx, cy, left, right, top, bottom;
+
     g_return_if_fail(c != NULL);
     DBG("entering clientKeepVisible\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if((frameX(c) + frameWidth(c)) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+    cx = frameX(c) + (frameWidth(c) / 2);
+    cy = frameY(c) + (frameHeight(c) / 2);
+    left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
+    right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
+    top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
+    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+
+    /* Translate coodinates to center on physical screen */
+    if((use_xinerama) && (abs(c->x - ((XDisplayWidth(dpy, screen) - c->width) / 2)) < 20) && (abs(c->y - ((XDisplayHeight(dpy, screen) - c->height) / 2)) < 20))
     {
-        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - frameWidth(c) + frameLeft(c);
+        /* We consider that the windows is centered on screen,
+         * Thus, will move it so its center on the current 
+         * physical screen
+         */
+        c->x = MyDisplayX(cx, cy) + (MyDisplayWidth(dpy, screen, cx, cy) - c->width) / 2;
+        c->y = MyDisplayY(cx, cy) + (MyDisplayHeight(dpy, screen, cx, cy) - c->height) / 2;
     }
-    if(frameX(c) < (int)margins[MARGIN_LEFT])
+
+    if((frameX(c) + frameWidth(c)) > MyDisplayMaxX(dpy, screen, cx, cy) - right)
     {
-        c->x = (int)margins[MARGIN_LEFT] + frameLeft(c);
+        c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - frameWidth(c) + frameLeft(c);
     }
-    if((frameY(c) + frameHeight(c)) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+    if(frameX(c) < MyDisplayX(cx, cy) - left)
     {
-        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c);
+        c->x = MyDisplayX(cx, cy) + left + frameLeft(c);
     }
-    if(frameY(c) < (int)margins[MARGIN_TOP])
+    if((frameY(c) + frameHeight(c)) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom)
     {
-        c->y = (int)margins[MARGIN_TOP] + frameTop(c);
+        c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
+    }
+    if(frameY(c) < MyDisplayY(cx, cy) - top)
+    {
+        c->y = MyDisplayY(cx, cy) + top + frameTop(c);
     }
 }
 
@@ -1340,7 +1361,8 @@ static void clientInitPosition(Client * c)
 {
     int test_x = 0, test_y = 0;
     Client *c2;
-    int xmax, ymax, best_x, best_y, i;
+    int xmax, ymax, best_x, best_y, i, msx, msy;
+    int left, right, top, bottom;
     unsigned long best_overlaps = 0;
     gboolean first = TRUE;
 
@@ -1355,27 +1377,33 @@ static void clientInitPosition(Client * c)
         {
             clientKeepVisible(c);
         }
-        
+
         return;
     }
-    else if ((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
+    else if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
     {
         /* Center transient relative to their parent window */
         c->x = c2->x + (c2->width - c->width) / 2;
         c->y = c2->y + (c2->height - c->height) / 2;
         clientKeepVisible(c);
-        
+
         return;
     }
 
-    xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - (int)margins[MARGIN_RIGHT];
-    ymax = XDisplayHeight(dpy, screen) - frameHeight(c) - (int)margins[MARGIN_BOTTOM];
-    best_x = frameLeft(c) + (int)margins[MARGIN_LEFT];
-    best_y = frameTop(c) + (int)margins[MARGIN_TOP];
+    getMouseXY(root, &msx, &msy);
+    left = (isLeftMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_LEFT] : 0);
+    right = (isRightMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_RIGHT] : 0);
+    top = (isTopMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_TOP] : 0);
+    bottom = (isBottomMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
-    for(test_y = frameTop(c) + (int)margins[MARGIN_TOP]; test_y < ymax; test_y += 8)
+    xmax = MyDisplayMaxX(dpy, screen, msx, msy) - frameWidth(c) - right;
+    ymax = MyDisplayMaxY(dpy, screen, msx, msy) - frameHeight(c) - bottom;
+    best_x = MyDisplayX(msx, msy) + frameLeft(c) + left;
+    best_y = MyDisplayY(msx, msy) + frameTop(c) + top;
+
+    for(test_y = MyDisplayY(msx, msy) + frameTop(c) + top; test_y < ymax; test_y += 8)
     {
-        for(test_x = frameLeft(c) + (int)margins[MARGIN_LEFT]; test_x < xmax; test_x += 8)
+        for(test_x = MyDisplayX(msx, msy) + frameLeft(c) + left; test_x < xmax; test_x += 8)
         {
             unsigned long count_overlaps = 0;
             DBG("analyzing %i clients\n", client_count);
@@ -1600,7 +1628,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
     }
 }
 
-void clientUpdateMWMHints(Client *c)
+void clientUpdateMWMHints(Client * c)
 {
     PropMwmHints *mwm_hints;
     gboolean toggle_value;
@@ -1614,48 +1642,48 @@ void clientUpdateMWMHints(Client *c)
     {
         if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
         {
-            c->has_border   = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
-            c->has_menu     = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
+            c->has_border = ((mwm_hints->decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ? True : False);
+            c->has_menu = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
             /* 
-              c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
-              c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
+               c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
+               c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
              */
         }
         /* The following is from Metacity : */
-        if (mwm_hints->flags & MWM_HINTS_FUNCTIONS)
+        if(mwm_hints->flags & MWM_HINTS_FUNCTIONS)
         {
-            if (!(mwm_hints->functions & MWM_FUNC_ALL))
+            if(!(mwm_hints->functions & MWM_FUNC_ALL))
             {
                 toggle_value = True;
 
-                c->has_close    = False;
-                c->has_hide     = False;
+                c->has_close = False;
+                c->has_hide = False;
                 c->has_maximize = False;
-                c->has_move     = False;
-                c->has_resize   = False;
+                c->has_move = False;
+                c->has_resize = False;
             }
             else
             {
                 toggle_value = False;
             }
 
-            if (mwm_hints->functions & MWM_FUNC_CLOSE)
+            if(mwm_hints->functions & MWM_FUNC_CLOSE)
             {
                 c->has_close = toggle_value;
             }
-            if (mwm_hints->functions & MWM_FUNC_MINIMIZE)
+            if(mwm_hints->functions & MWM_FUNC_MINIMIZE)
             {
                 c->has_hide = toggle_value;
             }
-            if (mwm_hints->functions & MWM_FUNC_MAXIMIZE)
+            if(mwm_hints->functions & MWM_FUNC_MAXIMIZE)
             {
                 c->has_maximize = toggle_value;
             }
-            if (mwm_hints->functions & MWM_FUNC_RESIZE)
+            if(mwm_hints->functions & MWM_FUNC_RESIZE)
             {
                 c->has_resize = toggle_value;
             }
-            if (mwm_hints->functions & MWM_FUNC_MOVE)
+            if(mwm_hints->functions & MWM_FUNC_MOVE)
             {
                 c->has_move = toggle_value;
             }
@@ -1940,7 +1968,7 @@ void clientFrameAll()
     windows_stack = NULL;
     client_focus = NULL;
 
-    XSync (dpy, 0);
+    XSync(dpy, 0);
     gdk_x11_grab_server();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
@@ -2036,12 +2064,12 @@ void clientShow(Client * c, int change_state)
     DBG("showing client \"%s\" (%#lx)\n", c->name, c->window);
 
     /* This is to make sure that transient are shown with their "master" window */
-    if ((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)) && (c2 != c))
+    if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)) && (c2 != c))
     {
         ws = c2->win_workspace;
-        if (c->win_workspace != ws)
+        if(c->win_workspace != ws)
         {
-            clientSetWorkspace (c, ws, FALSE);
+            clientSetWorkspace(c, ws, FALSE);
         }
     }
 
@@ -2195,7 +2223,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
 {
     Client *c2;
     int i;
-    
+
     g_return_if_fail(c != NULL);
     DBG("entering clientSetWorkspace\n");
     DBG("setting client \"%s\" (%#lx) to workspace %d\n", c->name, c->window, ws);
@@ -2204,19 +2232,19 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     {
         return;
     }
-    
+
     for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if ((c2->transient_for == c->window) && (c2 != c))
+        if((c2->transient_for == c->window) && (c2 != c))
         {
             clientSetWorkspace(c2, ws, manage_mapping);
         }
     }
-    
+
     setGnomeHint(dpy, c->window, win_workspace, ws);
     c->win_workspace = ws;
     setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
-    
+
     if(manage_mapping && !(c->hidden))
     {
         if(c->sticky)
@@ -2306,7 +2334,7 @@ inline void clientRemoveMaximizeFlag(Client * c)
     g_return_if_fail(c != NULL);
     DBG("entering clientRemoveMaximizeFlag\n");
     DBG("Removing maximize flag on client \"%s\" (%#lx)\n", c->name, c->window);
-    
+
     c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
     c->maximized = False;
     setGnomeHint(dpy, c->window, win_state, c->win_state);
@@ -2336,15 +2364,24 @@ void clientToggleMaximized(Client * c, int mode)
     }
     else
     {
+        int cx, cy, left, right, top, bottom;
+
         c->old_x = c->x;
         c->old_y = c->y;
         c->old_width = c->width;
         c->old_height = c->height;
 
+        cx = frameX(c) + (frameWidth(c) / 2);
+        cy = frameY(c) + (frameHeight(c) / 2);
+        left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
+        right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
+        top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
+        bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+
         if(mode != WIN_STATE_MAXIMIZED_VERT)
         {
-            wc.x = frameLeft(c) + (int)margins[MARGIN_LEFT];
-            wc.width = XDisplayWidth(dpy, screen) - frameLeft(c) - frameRight(c) - (int)margins[MARGIN_LEFT] - (int)margins[MARGIN_RIGHT];
+            wc.x = MyDisplayX(cx, cy) + frameLeft(c) + left;
+            wc.width = MyDisplayWidth(dpy, screen, cx, cy) - frameLeft(c) - frameRight(c) - left - right;
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
         }
         else
@@ -2354,8 +2391,8 @@ void clientToggleMaximized(Client * c, int mode)
         }
         if(mode != WIN_STATE_MAXIMIZED_HORIZ)
         {
-            wc.y = frameTop(c) + (int)margins[MARGIN_TOP];
-            wc.height = XDisplayHeight(dpy, screen) - frameTop(c) - frameBottom(c) - (int)margins[MARGIN_TOP] - (int)margins[MARGIN_BOTTOM];
+            wc.y = MyDisplayY(cx, cy) + frameTop(c) + top;
+            wc.height = MyDisplayHeight(dpy, screen, cx, cy) - frameTop(c) - frameBottom(c) - top - bottom;
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
         }
         else
@@ -2381,16 +2418,21 @@ void clientToggleFullscreen(Client * c)
 
     if(c->fullscreen)
     {
+        int cx, cy;
+
+        cx = frameX(c) + (frameWidth(c) / 2);
+        cy = frameY(c) + (frameHeight(c) / 2);
+
         c->fullscreen_old_x = c->x;
         c->fullscreen_old_y = c->y;
         c->fullscreen_old_width = c->width;
         c->fullscreen_old_height = c->height;
         c->initial_layer = c->win_layer;
 
-        wc.x = 0;
-        wc.y = 0;
-        wc.width = XDisplayWidth(dpy, screen);
-        wc.height = XDisplayHeight(dpy, screen);
+        wc.x = MyDisplayX(cx, cy);
+        wc.y = MyDisplayY(cx, cy);
+        wc.width = MyDisplayWidth(dpy, screen, cx, cy);
+        wc.height = MyDisplayHeight(dpy, screen, cx, cy);
         layer = WIN_LAYER_FULLSCREEN;
     }
     else
@@ -2652,7 +2694,8 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         {
             int msx, msy;
 
-            getMouseXY(root, &msx, &msy);
+            msx = xevent->xmotion.x_root;
+            msy = xevent->xmotion.y_root;
             if(msx == 0 && !((workspace == 0) && !wrap_workspaces))
             {
                 XEvent e;
@@ -2660,7 +2703,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
                 xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
-                XRaiseWindow (dpy, passdata->tmp_event_window);
+                XRaiseWindow(dpy, passdata->tmp_event_window);
             }
             else if((msx == XDisplayWidth(dpy, screen) - 1) && !((workspace == workspace_count - 1) && !wrap_workspaces))
             {
@@ -2669,45 +2712,61 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 xevent->xmotion.x_root = 10;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
-                XRaiseWindow (dpy, passdata->tmp_event_window);
+                XRaiseWindow(dpy, passdata->tmp_event_window);
             }
         }
 
         if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
         {
+            int cx, cy, left, right;
+
             c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
+
+            cx = frameX(c) + (frameWidth(c) / 2);
+            cy = frameY(c) + (frameHeight(c) / 2);
+            left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
+            right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
+
             if(snap_to_border)
             {
-                if(abs(frameX(c) - (int)margins[MARGIN_LEFT]) < snap_width)
+                if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < snap_width)
                 {
-                    c->x = frameLeft(c) + (int)margins[MARGIN_LEFT];
+                    c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
                 }
-                if(abs(frameX(c) - XDisplayWidth(dpy, screen) + frameWidth(c) + (int)margins[MARGIN_RIGHT]) < snap_width)
+                if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < snap_width)
                 {
-                    c->x = (XDisplayWidth(dpy, screen) - frameRight(c) - c->width - (int)margins[MARGIN_RIGHT]);
+                    c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
                 }
             }
         }
 
         if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
         {
+            int cx, cy, top, bottom;
+
             c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
+
+            cx = frameX(c) + (frameWidth(c) / 2);
+            cy = frameY(c) + (frameHeight(c) / 2);
+            top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
+            bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+
             if(snap_to_border)
             {
-                if(frameY(c) - (int)margins[MARGIN_TOP] < snap_width)
+                if(abs(frameY(c) - top - MyDisplayY(cx, cy)) < snap_width)
                 {
-                    c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+                    c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
                 }
-                if(abs(frameY(c) - XDisplayHeight(dpy, screen) + frameHeight(c) + (int)margins[MARGIN_BOTTOM]) < snap_width)
+                if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
                 {
-                    c->y = (XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c));
+                    c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
                 }
             }
             else
             {
-                if(frameY(c) < (int)margins[MARGIN_TOP])
+                if(frameY(c) < MyDisplayY(cx, cy) + top)
                 {
-                    c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+                    c->y = frameTop(c) + MyDisplayY(cx, cy) + top;
                 }
             }
         }
@@ -2759,7 +2818,7 @@ void clientMove(Client * c, XEvent * e)
     Time timestamp;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
-    
+
 
     g_return_if_fail(c != NULL);
     DBG("entering clientDoMove\n");
@@ -2772,20 +2831,20 @@ void clientMove(Client * c, XEvent * e)
     passdata.grab = FALSE;
     /* 
        The following trick is experimental, based on a patch for Kwin 3.1alpha1 by aviv bergman
-    
+
        It is supposed to reduce latency during move/resize by mapping a screen large window that 
        receives all pointer events.
-       
+
        Original mail message is available here :
-    
+
        http://www.xfree86.org/pipermail/xpert/2002-July/019434.html
-       
+
        Note:
-       
+
        I'm note sure it makes any difference, but who knows... It doesn' t hurt.
      */
-    
-    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask| ButtonReleaseMask);
+
+    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask | ButtonReleaseMask);
 
     if(e->type == KeyPress)
     {
@@ -2794,20 +2853,20 @@ void clientMove(Client * c, XEvent * e)
         passdata.mx = e->xkey.x_root;
         passdata.my = e->xkey.y_root;
         g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
-        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
     }
-    else if (e->type == ButtonPress)
+    else if(e->type == ButtonPress)
     {
         timestamp = e->xbutton.time;
         passdata.mx = e->xbutton.x_root;
         passdata.my = e->xbutton.y_root;
-        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, timestamp);
     }
     else
     {
         timestamp = CurrentTime;
         getMouseXY(root, &passdata.mx, &passdata.my);
-        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
     }
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
@@ -2822,7 +2881,7 @@ void clientMove(Client * c, XEvent * e)
         {
             XUngrabPointer(dpy, timestamp);
         }
-        removeTmpEventWin (passdata.tmp_event_window);
+        removeTmpEventWin(passdata.tmp_event_window);
         return;
     }
 
@@ -2842,7 +2901,7 @@ void clientMove(Client * c, XEvent * e)
         XUngrabKeyboard(dpy, CurrentTime);
     }
     XUngrabPointer(dpy, CurrentTime);
-    removeTmpEventWin (passdata.tmp_event_window);
+    removeTmpEventWin(passdata.tmp_event_window);
 
     if(passdata.grab && box_move)
     {
@@ -2975,11 +3034,11 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             c->y = c->y - (c->height - passdata->oldh);
         }
-        if (frameY(c) < (int)margins[MARGIN_TOP])
+        if(frameY(c) < (int)margins[MARGIN_TOP])
         {
             /* We've made an illegal move, revert... */
             c->y = prev_y;
-            c->height = prev_height;        
+            c->height = prev_height;
         }
         if(box_resize)
         {
@@ -3021,7 +3080,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     return status;
 }
 
-void clientResize(Client * c, int corner, XEvent *e)
+void clientResize(Client * c, int corner, XEvent * e)
 {
     XWindowChanges wc;
     Time timestamp;
@@ -3037,7 +3096,7 @@ void clientResize(Client * c, int corner, XEvent *e)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;
-    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask| ButtonReleaseMask);
+    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask | ButtonReleaseMask);
 
     if(c->maximized)
     {
@@ -3052,7 +3111,7 @@ void clientResize(Client * c, int corner, XEvent *e)
         passdata.my = e->xkey.y;
         g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
     }
-    else if (e->type == ButtonPress)
+    else if(e->type == ButtonPress)
     {
         timestamp = e->xbutton.time;
         passdata.mx = e->xbutton.x;
@@ -3063,7 +3122,7 @@ void clientResize(Client * c, int corner, XEvent *e)
         timestamp = CurrentTime;
         getMouseXY(c->frame, &passdata.mx, &passdata.my);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -3077,7 +3136,7 @@ void clientResize(Client * c, int corner, XEvent *e)
         {
             XUngrabPointer(dpy, timestamp);
         }
-        removeTmpEventWin (passdata.tmp_event_window);
+        removeTmpEventWin(passdata.tmp_event_window);
         return;
     }
 
@@ -3104,7 +3163,7 @@ void clientResize(Client * c, int corner, XEvent *e)
         XUngrabKeyboard(dpy, CurrentTime);
     }
     XUngrabPointer(dpy, CurrentTime);
-    removeTmpEventWin (passdata.tmp_event_window);
+    removeTmpEventWin(passdata.tmp_event_window);
 
     if(passdata.grab && box_resize)
     {

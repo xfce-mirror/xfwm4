@@ -36,6 +36,7 @@
 #include "menu.h"
 #include "keyboard.h"
 #include "workspaces.h"
+#include "xinerama.h"
 #include "debug.h"
 
 #define MAIN_EVENT_MASK 	SubstructureNotifyMask|\
@@ -55,6 +56,8 @@ Window root, gnome_win;
 Colormap cmap;
 int screen;
 int depth;
+gboolean use_xinerama;
+int xinerama_heads;
 CARD32 margins[4];
 CARD32 gnome_margins[4];
 int quit = False, reload = False;
@@ -90,6 +93,7 @@ void cleanUp()
     unloadSettings();
     XFreeCursor(dpy, root_cursor);
     XFreeCursor(dpy, move_cursor);
+    xineramaFree();
     for(i = 0; i < 7; i++)
     {
         XFreeCursor(dpy, resize_cursor[i]);
@@ -98,16 +102,16 @@ void cleanUp()
     closeEventFilter();
 }
 
-static void session_save_phase_2 (gpointer client_data)
+static void session_save_phase_2(gpointer client_data)
 {
-    g_print ("TODO: Save session\n");
+    g_print("TODO: Save session\n");
 }
 
-static void session_die (gpointer client_data)
+static void session_die(gpointer client_data)
 {
     gtk_main_quit();
     quit = True;
-    gdk_flush ();
+    gdk_flush();
 }
 
 void handleSignal(int sig)
@@ -145,7 +149,7 @@ void initialize(int argc, char **argv)
 
     progname = argv[0];
     gtk_init(&argc, &argv);
-    
+
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
     dpy = GDK_DISPLAY();
@@ -156,8 +160,10 @@ void initialize(int argc, char **argv)
 
     XSetErrorHandler(handleXError);
     shape = XShapeQueryExtension(dpy, &shape_event, &dummy);
+    use_xinerama = xineramaInit(dpy);
+    xinerama_heads = xineramaGetHeads();
 
-    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 20);
+    client_session = client_session_new(argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
     client_session->save_phase_2 = session_save_phase_2;
     client_session->die = session_die;
 

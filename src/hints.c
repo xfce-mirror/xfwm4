@@ -526,7 +526,7 @@ void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * mar
 
     DBG("entering set_net_workarea\n");
     j = (nb_workspaces ? nb_workspaces : 1);
-    data = (CARD32 *)malloc(sizeof(CARD32) * j * 4);
+    data = (CARD32 *) malloc(sizeof(CARD32) * j * 4);
     if(!data)
     {
         gdk_beep();

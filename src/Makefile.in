@@ -83,6 +83,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 VERSION = @VERSION@
+XINERAMA_LIBS = @XINERAMA_LIBS@
 X_CFLAGS = @X_CFLAGS@
 X_EXTRA_LIBS = @X_EXTRA_LIBS@
 X_LIBS = @X_LIBS@
@@ -138,14 +139,16 @@ xfwm4_SOURCES = \
 	parserc.h \
 	pixmap.h \
 	settings.h \
-	workspaces.h
+	workspaces.h \
+	xinerama.c \
+	xinerama.h
 
 
 xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ \
 -DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \
 -DGDK_PIXBUF_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"
 
-xfwm4_LDADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@
+xfwm4_LDADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @XINERAMA_LIBS@
 subdir = src
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -158,7 +161,8 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
-	xfwm4-settings.$(OBJEXT) xfwm4-workspaces.$(OBJEXT)
+	xfwm4-settings.$(OBJEXT) xfwm4-workspaces.$(OBJEXT) \
+	xfwm4-xinerama.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 xfwm4_LDFLAGS =
@@ -176,7 +180,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-xinerama.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
@@ -230,6 +235,7 @@ xfwm4-parserc.$(OBJEXT): parserc.c
 xfwm4-pixmap.$(OBJEXT): pixmap.c
 xfwm4-settings.$(OBJEXT): settings.c
 xfwm4-workspaces.$(OBJEXT): workspaces.c
+xfwm4-xinerama.$(OBJEXT): xinerama.c
 xfwm4$(EXEEXT): $(xfwm4_OBJECTS) $(xfwm4_DEPENDENCIES) 
 	@rm -f xfwm4$(EXEEXT)
 	$(LINK) $(xfwm4_LDFLAGS) $(xfwm4_OBJECTS) $(xfwm4_LDADD) $(LIBS)
@@ -252,6 +258,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-xinerama.Po@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
@@ -541,6 +548,28 @@ xfwm4-workspaces.obj: workspaces.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-workspaces.Po' tmpdepfile='$(DEPDIR)/xfwm4-workspaces.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-workspaces.obj `if test -f 'workspaces.c'; then $(CYGPATH_W) 'workspaces.c'; else $(CYGPATH_W) '$(srcdir)/workspaces.c'`
+
+xfwm4-xinerama.o: xinerama.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-xinerama.o -MD -MP -MF "$(DEPDIR)/xfwm4-xinerama.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-xinerama.o `test -f 'xinerama.c' || echo '$(srcdir)/'`xinerama.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-xinerama.Tpo" "$(DEPDIR)/xfwm4-xinerama.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-xinerama.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xinerama.c' object='xfwm4-xinerama.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-xinerama.Po' tmpdepfile='$(DEPDIR)/xfwm4-xinerama.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-xinerama.o `test -f 'xinerama.c' || echo '$(srcdir)/'`xinerama.c
+
+xfwm4-xinerama.obj: xinerama.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-xinerama.obj -MD -MP -MF "$(DEPDIR)/xfwm4-xinerama.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-xinerama.obj `if test -f 'xinerama.c'; then $(CYGPATH_W) 'xinerama.c'; else $(CYGPATH_W) '$(srcdir)/xinerama.c'`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-xinerama.Tpo" "$(DEPDIR)/xfwm4-xinerama.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-xinerama.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xinerama.c' object='xfwm4-xinerama.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-xinerama.Po' tmpdepfile='$(DEPDIR)/xfwm4-xinerama.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-xinerama.obj `if test -f 'xinerama.c'; then $(CYGPATH_W) 'xinerama.c'; else $(CYGPATH_W) '$(srcdir)/xinerama.c'`
 uninstall-info-am:
 
 ETAGS = etags

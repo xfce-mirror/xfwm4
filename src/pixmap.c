@@ -66,14 +66,14 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, Xpm
 void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
 {
     DBG("entering createPixmap, width=%i, height=%i\n", width, height);
-    if ((width < 1) || (height < 1))
+    if((width < 1) || (height < 1))
     {
         DBG("Pixmap size invalid\n");
-	pm->pixmap = None;
-	pm->mask = None;
+        pm->pixmap = None;
+        pm->mask = None;
         pm->width = 0;
         pm->height = 0;
-    
+
     }
     else
     {
@@ -91,11 +91,11 @@ void freePixmap(Display * dpy, MyPixmap * pm)
     if(pm->pixmap != None)
     {
         XFreePixmap(dpy, pm->pixmap);
-	pm->pixmap = None;
+        pm->pixmap = None;
     }
     if(pm->mask != None)
     {
         XFreePixmap(dpy, pm->mask);
-	pm->mask = None;
+        pm->mask = None;
     }
 }

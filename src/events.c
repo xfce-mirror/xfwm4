@@ -46,12 +46,13 @@ static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev);
 
 typedef enum
 {
-  XFWM_BUTTON_UNDEFINED      = 0,
-  XFWM_BUTTON_DRAG           = 1,
-  XFWM_BUTTON_CLICK          = 2,
-  XFWM_BUTTON_CLICK_AND_DRAG = 3,
-  XFWM_BUTTON_DOUBLE_CLICK   = 4
-} XfwmButtonClickType;
+    XFWM_BUTTON_UNDEFINED = 0,
+    XFWM_BUTTON_DRAG = 1,
+    XFWM_BUTTON_CLICK = 2,
+    XFWM_BUTTON_CLICK_AND_DRAG = 3,
+    XFWM_BUTTON_DOUBLE_CLICK = 4
+}
+XfwmButtonClickType;
 
 static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
 {
@@ -64,14 +65,14 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
     g_return_val_if_fail(ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail(w != None, XFWM_BUTTON_UNDEFINED);
 
-    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
-    if (g != GrabSuccess)
+    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);
+    if(g != GrabSuccess)
     {
         DBG("grab failed in typeOfClick\n");
         gdk_beep();
         return XFWM_BUTTON_UNDEFINED;
     }
-    
+
     button = ev->xbutton.button;
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
@@ -79,26 +80,26 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
     t1 = t0;
     total = 0;
     clicks = 1;
-    
-    while ((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < dbl_click_time) && ((t1 - t0) < dbl_click_time))
+
+    while((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < dbl_click_time) && ((t1 - t0) < dbl_click_time))
     {
-        g_usleep (10000);
+        g_usleep(10000);
         total += 10;
-        if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
+        if(XCheckMaskEvent(dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
-            if (ev->xbutton.button == button)
-	    {
-	        clicks++;
-	    }
-	    t1 = ev->xbutton.time;
+            if(ev->xbutton.button == button)
+            {
+                clicks++;
+            }
+            t1 = ev->xbutton.time;
         }
-        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, ev))
+        if(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, ev))
         {
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
-	    t1 = ev->xmotion.time;
+            t1 = ev->xmotion.time;
         }
-        if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
+        if((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
         {
             break;
         }
@@ -139,7 +140,7 @@ static void reset_timeout(void)
     raise_timeout = gtk_timeout_add(raise_delay, (GtkFunction) raise_cb, NULL);
 }
 
-static inline void _moveRequest(Client *c, XEvent *ev)
+static inline void _moveRequest(Client * c, XEvent * ev)
 {
     if((c->has_border) && !(c->fullscreen) && (c->has_move))
     {
@@ -147,17 +148,17 @@ static inline void _moveRequest(Client *c, XEvent *ev)
     }
 }
 
-static inline void _resizeRequest(Client *c, int corner, XEvent *ev)
+static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
 {
     clientSetFocus(c, True);
     clientRaise(c);
-    if ((c->has_resize) && (c->is_resizable))
+    if((c->has_resize) && (c->is_resizable))
     {
-	clientResize(c, corner, ev);
+        clientResize(c, corner, ev);
     }
     else if((c->has_border) && !(c->fullscreen) && (c->has_move))
     {
-	clientMove(c, ev);
+        clientMove(c, ev);
     }
 }
 
@@ -193,11 +194,11 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-	        if ((c->has_resize) && (c->is_resizable))
+                if((c->has_resize) && (c->is_resizable))
                 {
-		    clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+                    clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 }
-		break;
+                break;
             case KEY_CYCLE_WINDOWS:
                 clientCycle(c);
                 break;
@@ -367,7 +368,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
     {
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
         win = ev->subwindow;
-        
+
         if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
             clientSetFocus(c, True);
@@ -380,10 +381,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
                We need to copy the event to keep the original event untouched
                for gtk to handle it (in case we open up the menu)
              */
-            XEvent copy_event = (XEvent) *ev;
+            XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
-            
-            if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
+
+            if((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
             {
                 clientClose(c);
             }
@@ -402,9 +403,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
-            XEvent copy_event = (XEvent) *ev;
+            XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
-            
+
             clientSetFocus(c, True);
             clientRaise(c);
             tclick = typeOfClick(c->frame, &copy_event);
@@ -430,31 +431,31 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if((win == c->corners[CORNER_TOP_LEFT]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, CORNER_TOP_LEFT, (XEvent *) ev);
+            _resizeRequest(c, CORNER_TOP_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, CORNER_TOP_RIGHT, (XEvent *) ev);
+            _resizeRequest(c, CORNER_TOP_RIGHT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
+            _resizeRequest(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+            _resizeRequest(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
+            _resizeRequest(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, 4 + SIDE_LEFT, (XEvent *) ev);
+            _resizeRequest(c, 4 + SIDE_LEFT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
-	    _resizeRequest(c, 4 + SIDE_RIGHT, (XEvent *) ev);
+            _resizeRequest(c, 4 + SIDE_RIGHT, (XEvent *) ev);
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
@@ -462,7 +463,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else
         {
-            if (ev->button == Button1)
+            if(ev->button == Button1)
             {
                 clientSetFocus(c, True);
                 clientRaise(c);
@@ -591,7 +592,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             wc.stack_mode &= ~CWStackMode;
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
-        if ((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && c->maximized)
+        if((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && c->maximized)
         {
             clientRemoveMaximizeFlag(c);
         }
@@ -677,16 +678,16 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
     {
         if(ev->atom == XA_WM_NORMAL_HINTS)
         {
-	    gboolean previous_value;
-	    
+            gboolean previous_value;
+
             DBG("client \"%s\" (%#lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
-	    previous_value = c->is_resizable;
-	    c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
-	    if (c->is_resizable != previous_value)
-	    {
-	        frameDraw(c);
-	    }
+            previous_value = c->is_resizable;
+            c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
+            if(c->is_resizable != previous_value)
+            {
+                frameDraw(c);
+            }
         }
         else if((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
@@ -702,7 +703,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             DBG("client \"%s\" (%#lx) has received a motif_wm_hints notify\n", c->name, c->window);
             clientUpdateMWMHints(c);
-	    frameDraw(c);
+            frameDraw(c);
         }
         else if(ev->atom == win_hints)
         {
@@ -720,7 +721,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             DBG("client \"%s\" (%#lx) has received a net_wm_window_type notify\n", c->name, c->window);
             clientGetNetWmType(c);
-	    frameDraw(c);
+            frameDraw(c);
         }
         else if((ev->atom == win_workspace) && !(c->transient_for))
         {
@@ -800,7 +801,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             {
                 clientStick(c);
             }
-            else if (!(c->transient_for))
+            else if(!(c->transient_for))
             {
                 clientSetWorkspace(c, ev->data.l[0], TRUE);
             }
@@ -956,9 +957,9 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
 
     DBG("entering menu_callback\n");
 
-    if (menu_event_window)
+    if(menu_event_window)
     {
-        removeTmpEventWin (menu_event_window);
+        removeTmpEventWin(menu_event_window);
         menu_event_window = None;
     }
 
@@ -1048,79 +1049,79 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         frameDraw(c);
         y = c->y;
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
-	insensitive = 0;
+        insensitive = 0;
 
-	if (!(c->has_close))
-	{
+        if(!(c->has_close))
+        {
             insensitive |= MENU_OP_DELETE;
-	}
+        }
 
-	if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
+        if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
         {
             ops |= MENU_OP_UNMAXIMIZE;
-	    if (!CAN_MAXIMIZE_WINDOW(c))
-	    {
-	        insensitive |= MENU_OP_UNMAXIMIZE;
-	    }
+            if(!CAN_MAXIMIZE_WINDOW(c))
+            {
+                insensitive |= MENU_OP_UNMAXIMIZE;
+            }
         }
-        else 
+        else
         {
             ops |= MENU_OP_MAXIMIZE;
-	    if (!CAN_MAXIMIZE_WINDOW(c))
-	    {
-	        insensitive |= MENU_OP_MAXIMIZE;
-	    }
+            if(!CAN_MAXIMIZE_WINDOW(c))
+            {
+                insensitive |= MENU_OP_MAXIMIZE;
+            }
         }
 
         if(c->hidden)
         {
             ops |= MENU_OP_UNMINIMIZE;
-	    if (!CAN_HIDE_WINDOW(c))
-	    {
-	        insensitive |= MENU_OP_UNMINIMIZE;
-	    }
+            if(!CAN_HIDE_WINDOW(c))
+            {
+                insensitive |= MENU_OP_UNMINIMIZE;
+            }
         }
         else
         {
             ops |= MENU_OP_MINIMIZE;
-	    if (!CAN_HIDE_WINDOW(c))
-	    {
-	        insensitive |= MENU_OP_MINIMIZE;
-	    }
+            if(!CAN_HIDE_WINDOW(c))
+            {
+                insensitive |= MENU_OP_MINIMIZE;
+            }
         }
 
         if(c->win_state & WIN_STATE_SHADED)
         {
             ops |= MENU_OP_UNSHADE;
-	    if (!(c->has_menu))
-	    {
-	        insensitive |= MENU_OP_UNSHADE;
-	    }
+            if(!(c->has_menu))
+            {
+                insensitive |= MENU_OP_UNSHADE;
+            }
         }
         else
         {
             ops |= MENU_OP_SHADE;
-	    if (!(c->has_menu))
-	    {
-	        insensitive |= MENU_OP_SHADE;
-	    }
+            if(!(c->has_menu))
+            {
+                insensitive |= MENU_OP_SHADE;
+            }
         }
 
         if(c->sticky)
         {
             ops |= MENU_OP_UNSTICK;
-	    if (!(c->has_menu))
-	    {
+            if(!(c->has_menu))
+            {
                 insensitive |= MENU_OP_UNSTICK;
-	    }
+            }
         }
         else
         {
             ops |= MENU_OP_STICK;
-	    if (!(c->has_menu))
-	    {
+            if(!(c->has_menu))
+            {
                 insensitive |= MENU_OP_STICK;
-	    }
+            }
         }
     }
     else
@@ -1134,9 +1135,9 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     }
     button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) NULL);
 
-    if (menu_event_window)
+    if(menu_event_window)
     {
-        removeTmpEventWin (menu_event_window);
+        removeTmpEventWin(menu_event_window);
         menu_event_window = None;
     }
     /* 
@@ -1158,7 +1159,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         gdk_beep();
         c->button_pressed[MENU_BUTTON] = False;
         frameDraw(c);
-        removeTmpEventWin (menu_event_window);
+        removeTmpEventWin(menu_event_window);
         menu_event_window = None;
         menu_free(menu);
     }
@@ -1175,13 +1176,13 @@ static gboolean set_reload(void)
 static gboolean set_dbl_click_time(void)
 {
     GValue tmp_val = { 0, };
-    
+
     DBG("setting dbl_click_time\n");
-    
-    g_value_init (&tmp_val, G_TYPE_INT);
-    if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
+
+    g_value_init(&tmp_val, G_TYPE_INT);
+    if(gdk_setting_get("gtk-double-click-time", &tmp_val))
     {
-        dbl_click_time = abs(g_value_get_int (&tmp_val));
+        dbl_click_time = abs(g_value_get_int(&tmp_val));
     }
 
     return (TRUE);

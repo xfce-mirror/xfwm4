@@ -57,29 +57,29 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
     k = strrchr(str, '+');
     if(k)
     {
-	gchar *tmp;
+        gchar *tmp;
 
-	tmp = g_ascii_strdown(str, -1);
+        tmp = g_ascii_strdown(str, -1);
 
         key->keycode = XKeysymToKeycode(dpy, XStringToKeysym(k + 1));
         if(strstr(tmp, "shift"))
-	{
+        {
             key->modifier = key->modifier | ShiftMask;
         }
-	if(strstr(tmp, "control"))
-	{
+        if(strstr(tmp, "control"))
+        {
             key->modifier = key->modifier | ControlMask;
         }
         if(strstr(tmp, "alt") || strstr(tmp, "mod1"))
-	{
+        {
             key->modifier = key->modifier | AltMask;
         }
         if(strstr(tmp, "meta") || strstr(tmp, "mod2"))
-	{
+        {
             key->modifier = key->modifier | MetaMask;
         }
 
-	g_free(tmp);
+        g_free(tmp);
     }
 }
 

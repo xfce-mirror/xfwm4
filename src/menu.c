@@ -69,7 +69,7 @@ static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
         case MotionNotify:
         case EnterNotify:
         case LeaveNotify:
-             return XEV_FILTER_STOP;
+            return XEV_FILTER_STOP;
             break;
         default:
             return XEV_FILTER_CONTINUE;
@@ -277,7 +277,7 @@ static gboolean grab_available(guint32 timestamp)
 gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp)
 {
     GdkPoint *pt;
-    
+
     DBG("entering menu_popup\n");
 
     g_return_val_if_fail(menu != NULL, FALSE);
@@ -299,7 +299,7 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
         menu_open = menu->menu;
         pushEventFilter(menu_filter, NULL);
         gtk_menu_popup(GTK_MENU(menu->menu), NULL, NULL, popup_position_func, pt, button, timestamp);
-	
+
         if(!GTK_MENU_SHELL(GTK_MENU(menu->menu))->have_xgrab)
         {
             gdk_beep();

@@ -39,9 +39,10 @@ struct _MyColor
 
 typedef enum
 {
-  INT = 0,
-  STRING = 1,
-} SettingType;
+    INT = 0,
+    STRING = 1,
+}
+SettingType;
 
 typedef struct _Settings Settings;
 

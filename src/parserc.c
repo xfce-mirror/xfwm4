@@ -117,37 +117,37 @@ gchar *getValue(gchar * option, Settings rc[])
     return NULL;
 }
 
-gchar *getThemeDir(const gchar *theme)
+gchar *getThemeDir(const gchar * theme)
 {
-    if (!theme)
+    if(!theme)
     {
         return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
     }
-    else if (g_path_is_absolute(theme))
+    else if(g_path_is_absolute(theme))
     {
-        if (g_file_test(theme, G_FILE_TEST_IS_DIR))
-	{
-	    return g_strdup (theme);
-	}
-	else
-	{
-	    return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
-	}
+        if(g_file_test(theme, G_FILE_TEST_IS_DIR))
+        {
+            return g_strdup(theme);
+        }
+        else
+        {
+            return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
+        }
     }
     else
     {
-        gchar *test = g_strdup_printf("%s/.themes/xfwm4/%s", g_get_home_dir (), theme);
-	if (g_file_test(test, G_FILE_TEST_IS_DIR))
-	{
-	    return test;
-	}
-	g_free (test);
+        gchar *test = g_strdup_printf("%s/.themes/xfwm4/%s", g_get_home_dir(), theme);
+        if(g_file_test(test, G_FILE_TEST_IS_DIR))
+        {
+            return test;
+        }
+        g_free(test);
         test = g_strdup_printf("%s/themes/%s", DATADIR, theme);
-	if (g_file_test(test, G_FILE_TEST_IS_DIR))
-	{
-	    return test;
-	}
-	g_free (test);
+        if(g_file_test(test, G_FILE_TEST_IS_DIR))
+        {
+            return test;
+        }
+        g_free(test);
     }
     return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
 }

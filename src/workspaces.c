@@ -66,7 +66,7 @@ void workspaceSwitch(int new_ws, Client * c2)
 
     if(c2)
     {
-	clientSetWorkspace(c2, new_ws, FALSE);
+        clientSetWorkspace(c2, new_ws, FALSE);
     }
 
     setGnomeHint(dpy, root, win_workspace, new_ws);

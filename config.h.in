@@ -63,6 +63,9 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
+/* Define to 1 if you have the <X11/extensions/Xinerama.h> header file. */
+#undef HAVE_X11_EXTENSIONS_XINERAMA_H
+
 /* Define libxfcegui4 required version. */
 #undef LIBXFCEGUI4_REQUIRED_VERSION
 

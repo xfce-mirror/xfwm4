@@ -33,8 +33,6 @@
 #include "misc.h"
 #include "debug.h"
 
-static gint xgrabcount = 0;
-
 void getMouseXY(Window w, int *x2, int *y2)
 {
     Window w1, w2;
@@ -102,7 +100,7 @@ void sendClientMessage(Window w, Atom a, long x, int mask)
 Window setTmpEventWin(long eventmask)
 {
     Window w;
-    
+
     XSetWindowAttributes attributes;
     attributes.event_mask = eventmask;
     attributes.override_redirect = True;
@@ -113,5 +111,5 @@ Window setTmpEventWin(long eventmask)
 
 void removeTmpEventWin(Window w)
 {
-    XDestroyWindow (dpy, w);
+    XDestroyWindow(dpy, w);
 }
