@@ -323,17 +323,28 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     XImage *ximage;
     guchar *data;
     guchar d;
-    gint gsize = screen_info->gaussianMap->size;
+    gint gsize;
     gint ylimit, xlimit;
-    gint swidth = width + gsize;
-    gint sheight = height + gsize;
-    gint center = gsize / 2;
+    gint swidth;
+    gint sheight;
+    gint center;
     gint x, y;
     gint x_diff;
-    gint opacity_gint = (gint) (opacity * 25);
+    gint opacity_gint;
     
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("entering make_shadow");
+    
+    gsize = screen_info->gaussianMap->size;
+    swidth = width + gsize - screen_info->params->shadow_delta_width - screen_info->params->shadow_delta_x;
+    sheight = height + gsize - screen_info->params->shadow_delta_height - screen_info->params->shadow_delta_y;
+    center = gsize / 2;
+    opacity_gint = (gint) (opacity * 25);
+    
+    if ((swidth < 1) || (sheight < 1))
+    {
+        return NULL;
+    }
     
     data = g_malloc (swidth * sheight * sizeof (guchar));
     
@@ -466,7 +477,11 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     g_return_val_if_fail (render_format != NULL, None);
 
     shadowImage = make_shadow (screen_info, opacity, width, height);
-    g_return_val_if_fail (shadowImage != None, None);
+    if (shadowImage == NULL)
+    {
+        *wp = *hp = 0;
+	return (None);
+    }
 
     shadowPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, 
                                 shadowImage->width, shadowImage->height, 8);
@@ -726,8 +741,8 @@ win_extents (CWindow *cw)
             XRectangle sr;
     
             TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);    
-            cw->shadow_dx = SHADOW_OFFSET_X;
-            cw->shadow_dy = SHADOW_OFFSET_Y;
+            cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
+            cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
             if (!cw->shadow)
             {
                 double opacity = SHADOW_OPACITY;

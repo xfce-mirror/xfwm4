@@ -153,6 +153,10 @@ struct _XfwmParams
     int double_click_action;
     int raise_delay;
     int snap_width;
+    int shadow_delta_x;
+    int shadow_delta_y;
+    int shadow_delta_width;
+    int shadow_delta_height;
     int title_alignment;
     int title_horizontal_offset;
     int wrap_resistance;

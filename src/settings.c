@@ -560,6 +560,15 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
     theme = getThemeDir (getValue ("theme", rc), THEMERC);
     parseRc (THEMERC, theme, rc);
 
+    screen_info->params->shadow_delta_x = 
+        abs (TOINT (getValue ("shadow_delta_x", rc)));
+    screen_info->params->shadow_delta_y = 
+        abs (TOINT (getValue ("shadow_delta_y", rc)));
+    screen_info->params->shadow_delta_width = 
+        abs (TOINT (getValue ("shadow_delta_width", rc)));
+    screen_info->params->shadow_delta_height = 
+        abs (TOINT (getValue ("shadow_delta_height", rc)));
+
     for (i = 0; i < 20; i++)
     {
         colsym[i].name = rc[i].option;
@@ -1013,6 +1022,10 @@ loadSettings (ScreenInfo *screen_info)
         {"snap_to_border", NULL, TRUE},
         {"snap_to_windows", NULL, TRUE},
         {"snap_width", NULL, TRUE},
+        {"shadow_delta_x", NULL, TRUE},
+        {"shadow_delta_y", NULL, TRUE},
+        {"shadow_delta_width", NULL, TRUE},
+        {"shadow_delta_height", NULL, TRUE},
         {"theme", NULL, TRUE},
         {"title_alignment", NULL, TRUE},
         {"title_font", NULL, FALSE},
@@ -1142,7 +1155,6 @@ loadSettings (ScreenInfo *screen_info)
     screen_info->params->snap_to_windows =
         !g_ascii_strcasecmp ("true", getValue ("snap_to_windows", rc));
     screen_info->params->snap_width = abs (TOINT (getValue ("snap_width", rc)));
-
 
     set_settings_margin (screen_info, LEFT,   TOINT (getValue ("margin_left", rc)));
     set_settings_margin (screen_info, RIGHT,  TOINT (getValue ("margin_right", rc)));
