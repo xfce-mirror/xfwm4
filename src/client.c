@@ -1675,7 +1675,7 @@ void clientFrame(Window w)
     if(!(c->hidden))
     {
         clientShow(c, True);
-        if(focus_new && !!clientAcceptFocus(c))
+        if(focus_new && clientAcceptFocus(c))
         {
             clientSetFocus(c, True);
         }
@@ -2204,7 +2204,7 @@ void clientUpdateFocus(Client * c)
 
     DBG("entering clientUpdateFocus\n");
 
-    if((c) && (!clientAcceptFocus(c)))
+    if((c) && !clientAcceptFocus(c))
     {
         DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
         return;

@@ -547,7 +547,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
         DBG("focus set to \"%s\" (%#lx)\n", c->name, c->window);
         clientUpdateFocus(c);
         frameDraw(c);
-        if(raise_on_focus)
+        if(raise_on_focus && !click_to_focus)
         {
             reset_timeout();
         }
