@@ -2846,6 +2846,11 @@ void clientMove(Client * c, XEvent * e)
 
     passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask | ButtonReleaseMask);
 
+    if(c->maximized)
+    {
+        clientRemoveMaximizeFlag(c);
+    }
+
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
@@ -3097,6 +3102,11 @@ void clientResize(Client * c, int corner, XEvent * e)
     passdata.grab = FALSE;
     passdata.corner = corner;
     passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask | ButtonReleaseMask);
+
+    if(c->maximized)
+    {
+        clientRemoveMaximizeFlag(c);
+    }
 
     if(c->maximized)
     {
