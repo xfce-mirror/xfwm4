@@ -460,9 +460,12 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-            if(ev->window == c->window)
+	    if (ev->button == Button1)
+	    {
+        	clientSetFocus(c, True);
+        	clientRaise(c);
+            }
+	    if(ev->window == c->window)
             {
                 replay = True;
             }
