@@ -1318,13 +1318,6 @@ void clientFrame(Window w)
         return;
     }
 
-    MyXGrabServer (dpy);
-    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
-    {
-      free (c);
-      MyXUngrabServer (dpy);
-      return;   
-    }
     c->window = w;
     getWindowName(dpy, c->window, &c->name);
     DBG("name \"%s\"\n", c->name);
@@ -1395,6 +1388,21 @@ void clientFrame(Window w)
         clientGravitate(c, APPLY);
     }
 
+    MyXGrabServer (dpy);
+    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
+    {
+	if(c->name)
+	{
+            free(c->name);
+	}
+	if(c->size)
+	{
+            XFree(c->size);
+	}
+	free (c);
+	MyXUngrabServer (dpy);
+	return;   
+    }
     valuemask = CWEventMask;
     attributes.event_mask = (SubstructureNotifyMask | SubstructureRedirectMask | EnterWindowMask);
     c->frame = XCreateWindow (dpy, root, frameX(c), frameY(c), frameWidth(c), frameHeight(c), 0, CopyFromParent, InputOutput, CopyFromParent, valuemask, &attributes);
