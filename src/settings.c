@@ -1236,11 +1236,11 @@ initSettings (void)
 
     mcs_initted = TRUE;
 
-    if (getNetHint (dpy, root, net_number_of_desktops, &val))
+    if (getHint (dpy, root, net_number_of_desktops, &val))
     {
         workspaceSetCount (val);
     }
-    else if (getGnomeHint (dpy, root, win_workspace_count, &val))
+    else if (getHint (dpy, root, win_workspace_count, &val))
     {
         workspaceSetCount (val);
     }

@@ -185,8 +185,8 @@ void initMotifHints (Display *);
 PropMwmHints *getMotifHints (Display *, Window);
 unsigned int getWMProtocols (Display *, Window);
 void initGnomeHints (Display *);
-gboolean getGnomeHint (Display *, Window, Atom, long *);
-void setGnomeHint (Display *, Window, Atom, long);
+gboolean getHint (Display *, Window, Atom, long *);
+void setHint (Display *, Window, Atom, long);
 void getGnomeDesktopMargins (Display *, int, CARD32 *);
 void setGnomeProtocols (Display *, int, Window);
 void initNetHints (Display * dpy);
@@ -207,8 +207,5 @@ gboolean getWindowCommand (Display *, Window, char ***, int *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId (Display *, Window, char **);
 #endif
-
-#define setNetHint setGnomeHint
-#define getNetHint getGnomeHint
 
 #endif /* INC_HINTS_H */

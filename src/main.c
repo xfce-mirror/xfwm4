@@ -341,10 +341,10 @@ initialize (int argc, char **argv)
     }
 
     setGnomeProtocols (dpy, screen, gnome_win);
-    setGnomeHint (dpy, root, win_supporting_wm_check, gnome_win);
-    setGnomeHint (dpy, root, win_desktop_button_proxy, gnome_win);
-    setGnomeHint (dpy, gnome_win, win_desktop_button_proxy, gnome_win);
-    getGnomeHint (dpy, root, win_workspace, &ws);
+    setHint (dpy, root, win_supporting_wm_check, gnome_win);
+    setHint (dpy, root, win_desktop_button_proxy, gnome_win);
+    setHint (dpy, gnome_win, win_desktop_button_proxy, gnome_win);
+    getHint (dpy, root, win_workspace, &ws);
     workspace = (int) ws;
     getGnomeDesktopMargins (dpy, screen, gnome_margins);
     set_utf8_string_hint (dpy, gnome_win, net_wm_name, "Xfwm4");

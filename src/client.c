@@ -51,14 +51,18 @@
 
 /* Event mask definition */
 
-#define POINTER_EVENT_MASK      ButtonPressMask|\
+#define POINTER_EVENT_MASK \
+    ButtonPressMask|\
     ButtonReleaseMask
 
-#define FRAME_EVENT_MASK        SubstructureNotifyMask|\
+#define FRAME_EVENT_MASK \
+    StructureNotifyMask|\
+    SubstructureNotifyMask|\
     SubstructureRedirectMask|\
     EnterWindowMask
 
-#define CLIENT_EVENT_MASK       FocusChangeMask|\
+#define CLIENT_EVENT_MASK \
+    FocusChangeMask|\
     PropertyChangeMask
 
 /* Useful macros */
@@ -124,6 +128,8 @@ static inline void clientApplyInitialState (Client * c);
 static inline gboolean clientSelectMask (Client * c, int mask);
 static GList *clientListTransient (Client * c);
 static GList *clientListTransientOrModal (Client * c);
+static inline void clientShowSingle (Client * c, gboolean change_state);
+static inline void clientHideSingle (Client * c, int ws, gboolean change_state);
 static inline void clientSetWorkspaceSingle (Client * c, int ws);
 static inline void clientSnapPosition (Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter (XEvent * xevent,
@@ -163,7 +169,7 @@ struct _ButtonPressData
     Client *c;
 };
 
-Client *
+inline Client *
 clientGetTransient (Client * c)
 {
     Client *c2 = NULL;
@@ -180,7 +186,7 @@ clientGetTransient (Client * c)
     return NULL;
 }
 
-gboolean
+inline gboolean
 clientIsTransient (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -191,7 +197,7 @@ clientIsTransient (Client * c)
             ((c->transient_for == root) && (c->group_leader != None)));
 }
 
-gboolean
+inline gboolean
 clientIsModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -203,7 +209,7 @@ clientIsModal (Client * c)
              (c->group_leader != None)));
 }
 
-gboolean
+inline gboolean
 clientIsTransientOrModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -213,7 +219,7 @@ clientIsTransientOrModal (Client * c)
     return (clientIsTransient(c) || clientIsModal(c));
 }
 
-gboolean
+inline gboolean
 clientSameGroup (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -228,7 +234,7 @@ clientSameGroup (Client * c1, Client * c2)
              (c2->group_leader == c1->window)));
 }
 
-gboolean
+inline gboolean
 clientIsTransientFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -250,7 +256,7 @@ clientIsTransientFor (Client * c1, Client * c2)
     return FALSE;
 }
 
-gboolean
+inline gboolean
 clientIsModalFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -265,7 +271,7 @@ clientIsModalFor (Client * c1, Client * c2)
     return FALSE;
 }
 
-gboolean
+inline gboolean
 clientIsTransientOrModalFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -276,7 +282,7 @@ clientIsTransientOrModalFor (Client * c1, Client * c2)
     return (clientIsTransientFor(c1, c2) || clientIsModalFor(c1, c2));
 }
 
-gboolean
+inline gboolean
 clientIsTransientForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -286,7 +292,7 @@ clientIsTransientForGroup (Client * c)
     return ((c->transient_for == root) && (c->group_leader != None));
 }
 
-gboolean
+inline gboolean
 clientIsModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -297,7 +303,7 @@ clientIsModalForGroup (Client * c)
             !clientIsTransient(c) && (c->group_leader != None));
 }
 
-gboolean
+inline gboolean
 clientIsTransientOrModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -385,7 +391,7 @@ clientSetNetState (Client * c)
        We also set GNOME hint here for consistency and convenience, 
        although the meaning of net_wm_state and win_state aren't the same.
      */
-    setGnomeHint (dpy, c->window, win_state, c->win_state);
+    setHint (dpy, c->window, win_state, c->win_state);
 }
 
 static void
@@ -943,7 +949,7 @@ clientGetInitialNetWmDesktop (Client * c)
             CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
             c->win_workspace = workspace;
         }
-        if (getNetHint (dpy, c->window, net_wm_desktop, &val))
+        if (getHint (dpy, c->window, net_wm_desktop, &val))
         {
             TRACE ("atom net_wm_desktop detected");
             if (val == (int) ALL_WORKSPACES)
@@ -968,7 +974,7 @@ clientGetInitialNetWmDesktop (Client * c)
             }
             CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
         }
-        else if (getGnomeHint (dpy, c->window, win_workspace, &val))
+        else if (getHint (dpy, c->window, win_workspace, &val))
         {
             TRACE ("atom win_workspace specifies window \"%s\" is on desk %i",
                 c->name, (int) val);
@@ -987,15 +993,15 @@ clientGetInitialNetWmDesktop (Client * c)
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name,
         c->win_workspace);
-    setGnomeHint (dpy, c->window, win_workspace, c->win_workspace);
+    setHint (dpy, c->window, win_workspace, c->win_workspace);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
     {
-        setNetHint (dpy, c->window, net_wm_desktop,
+        setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) ALL_WORKSPACES);
     }
     else
     {
-        setNetHint (dpy, c->window, net_wm_desktop,
+        setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) c->win_workspace);
     }
 }
@@ -1295,7 +1301,7 @@ clientUpdateAllFrames (int mask)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY, CFG_FORCE_REDRAW);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
         }
         if (mask & UPDATE_FRAME)
         {
@@ -1649,7 +1655,6 @@ clientApplyStackList (GList * list)
     }
 
     XRestackWindows (dpy, xwinstack, (int) nwindows + 2);
-    XFlush (dpy);
     
     g_free (xwinstack);
 }
@@ -2970,7 +2975,7 @@ clientFrame (Window w, gboolean startup)
 
     if (!MyCheckWindow(w))
     {
-        printf ("Client has vanished\n");
+        TRACE ("Client has vanished");
         free(c);
         MyXUngrabServer ();
         return;
@@ -3059,13 +3064,25 @@ clientFrame (Window w, gboolean startup)
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
+    TRACE ("\"%s\" (0x%lx) initial map_state = %s",
+                c->name, c->window,
+                (attr.map_state == IsUnmapped) ?
+                "IsUnmapped" :
+                (attr.map_state == IsViewable) ?
+                "IsViewable" :
+                (attr.map_state == IsUnviewable) ?
+                "IsUnviewable" :
+                "(unknown)");
+    c->ignore_unmap = 0;
     /* This flag is used to avoid focus transition when reparenting...
      * Reparenting generates an UnmapNotify event, followed by a MapNotify.
      * Set CLIENT_FLAG_REPARENTING so that the window won't return to withdrawn
-     * state when unmapnotify is received
+     * state when unmapnotify is received.
+     *
+     * This flag is cleared once the window is mapped (ie when we get the 
+     * MapNotify event)
      */
     CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
-    c->ignore_unmap = 0;
     c->type = UNSET;
     c->type_atom = None;
 
@@ -3079,9 +3096,9 @@ clientFrame (Window w, gboolean startup)
         CLIENT_FLAG_WM_TAKEFOCUS : 0);
 
     clientGetMWMHints (c, FALSE);
-    getGnomeHint (dpy, w, win_hints, &c->win_hints);
-    getGnomeHint (dpy, w, win_state, &c->win_state);
-    if (!getGnomeHint (dpy, w, win_layer, &c->win_layer))
+    getHint (dpy, w, win_hints, &c->win_hints);
+    getHint (dpy, w, win_state, &c->win_state);
+    if (!getHint (dpy, w, win_layer, &c->win_layer))
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
@@ -3140,7 +3157,7 @@ clientFrame (Window w, gboolean startup)
         valuemask, &attributes);
     XSetWindowBorderWidth (dpy, c->window, 0);
     XReparentWindow (dpy, c->window, c->frame, frameLeft (c), frameTop (c));
-
+    
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (dpy, c->window, valuemask, &attributes);
@@ -3150,7 +3167,6 @@ clientFrame (Window w, gboolean startup)
     }
     /* Window is reparented now, so we can safely release the grab on the server */
     MyXUngrabServer ();
-
         
     clientAddToList (c);
     clientSetNetActions (c);
@@ -3229,19 +3245,12 @@ clientUnframe (Client * c, gboolean remap)
         last_raise = NULL;
     }
 
+    MyXGrabServer ();
     gdk_error_trap_push ();
     clientGravitate (c, REMOVE);
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
     XSetWindowBorderWidth (dpy, c->window, c->border_width);
-    if (remap)
-    {
-        XMapWindow (dpy, c->window);
-    }
-    else
-    {
-        setWMState (dpy, c->window, WithdrawnState);
-    }
     myWindowDelete (&c->title);
     myWindowDelete (&c->sides[SIDE_LEFT]);
     myWindowDelete (&c->sides[SIDE_RIGHT]);
@@ -3255,13 +3264,22 @@ clientUnframe (Client * c, gboolean remap)
         myWindowDelete (&c->buttons[i]);
     }
     XReparentWindow (dpy, c->window, root, c->x, c->y);
+    if (remap)
+    {
+        XMapWindow (dpy, c->window);
+    }
+    else
+    {
+        setWMState (dpy, c->window, WithdrawnState);
+    }
+    XSync (dpy, 0);
     XDestroyWindow (dpy, c->frame);
-    clientClearPixmapCache (c);
     clientRemoveFromList (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea (margins, gnome_margins);
     }
+    MyXUngrabServer ();
     gdk_error_trap_pop ();
     clientFree (c);
 }
@@ -3586,6 +3604,29 @@ clientPassFocus (Client * c)
     clientSetFocus (new_focus, TRUE, TRUE);
 }
 
+static inline void
+clientShowSingle (Client * c, gboolean change_state)
+{
+    g_return_if_fail (c != NULL);
+    MyXGrabServer ();
+    if ((c->win_workspace == workspace)
+        || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+    {
+        TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_VISIBLE);
+        XMapWindow (dpy, c->frame);
+        XMapWindow (dpy, c->window);
+    }
+    if (change_state)
+    {
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HIDDEN);
+        setWMState (dpy, c->window, NormalState);
+        workspaceUpdateArea (margins, gnome_margins);
+    }
+    MyXUngrabServer ();
+    clientSetNetState (c);
+}
+
 void
 clientShow (Client * c, gboolean change_state)
 {
@@ -3594,10 +3635,10 @@ clientShow (Client * c, gboolean change_state)
     Client *c2;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientShow [%s]", 
+    TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]", 
+           c->name, c->window,
            change_state ? "state change" : "no state change");
              
-
     list_of_windows = clientListTransientOrModal (c);
     for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
     {
@@ -3608,26 +3649,29 @@ clientShow (Client * c, gboolean change_state)
         {
             continue;
         }
-        MyXGrabServer ();
-        if ((c->win_workspace == workspace)
-            || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
-        {
-            TRACE ("showing client \"%s\" (0x%lx)", c2->name, c2->window);
-            CLIENT_FLAG_SET (c2, CLIENT_FLAG_VISIBLE);
-            XMapWindow (dpy, c2->window);
-            XMapWindow (dpy, c2->frame);
-        }
-        if (change_state)
-        {
-            CLIENT_FLAG_UNSET (c2, CLIENT_FLAG_HIDDEN);
-            setWMState (dpy, c2->window, NormalState);
-            workspaceUpdateArea (margins, gnome_margins);
-        }
-        MyXUngrabServer ();
-        XFlush (dpy);
-        clientSetNetState (c2);
+        clientShowSingle (c2, change_state);
     }
     g_list_free (list_of_windows);
+}
+
+static inline void
+clientHideSingle (Client * c, int ws, gboolean change_state)
+{
+    g_return_if_fail (c != NULL);
+    MyXGrabServer ();
+    TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
+    XUnmapWindow (dpy, c->window);
+    XUnmapWindow (dpy, c->frame);
+    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
+    if (change_state)
+    {
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
+        setWMState (dpy, c->window, IconicState);
+        workspaceUpdateArea (margins, gnome_margins);
+    }
+    c->ignore_unmap++;
+    MyXUngrabServer ();
+    clientSetNetState (c);
 }
 
 void
@@ -3664,19 +3708,7 @@ clientHide (Client * c, int ws, gboolean change_state)
              */
             continue;
         }
-        TRACE ("hiding client \"%s\" (0x%lx)", c2->name, c2->window);
-
-        XUnmapWindow (dpy, c2->window);
-        XUnmapWindow (dpy, c2->frame);
-        CLIENT_FLAG_UNSET (c2, CLIENT_FLAG_VISIBLE);
-        if (change_state)
-        {
-            CLIENT_FLAG_SET (c2, CLIENT_FLAG_HIDDEN);
-            setWMState (dpy, c2->window, IconicState);
-            workspaceUpdateArea (margins, gnome_margins);
-        }
-        c2->ignore_unmap++;
-        clientSetNetState (c2);
+        clientHideSingle (c2, ws, change_state);
     }
     g_list_free (list_of_windows);
 }
@@ -3931,7 +3963,7 @@ clientSetLayer (Client * c, int l)
             TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
                 c2->window, l);
             c2->win_layer = l;
-            setGnomeHint (dpy, c2->window, win_layer, l);
+            setHint (dpy, c2->window, win_layer, l);
         }
     }
     g_list_free (list_of_windows);
@@ -3960,15 +3992,15 @@ clientSetWorkspaceSingle (Client * c, int ws)
         TRACE ("setting client \"%s\" (0x%lx) to workspace %d", c->name,
             c->window, ws);
         c->win_workspace = ws;
-        setGnomeHint (dpy, c->window, win_workspace, ws);
+        setHint (dpy, c->window, win_workspace, ws);
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
         {
-            setNetHint (dpy, c->window, net_wm_desktop,
+            setHint (dpy, c->window, net_wm_desktop,
                 (unsigned long) ALL_WORKSPACES);
         }
         else
         {
-            setNetHint (dpy, c->window, net_wm_desktop, (unsigned long) ws);
+            setHint (dpy, c->window, net_wm_desktop, (unsigned long) ws);
         }
     }
     CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
@@ -4109,7 +4141,7 @@ clientStick (Client * c, gboolean include_transients)
             TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
             CLIENT_FLAG_SET (c2, CLIENT_FLAG_STICKY);
-            setNetHint (dpy, c2->window, net_wm_desktop,
+            setHint (dpy, c2->window, net_wm_desktop,
                 (unsigned long) ALL_WORKSPACES);
             clientSetNetState (c2);
         }
@@ -4121,7 +4153,7 @@ clientStick (Client * c, gboolean include_transients)
         TRACE ("sticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state |= WIN_STATE_STICKY;
         CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
-        setNetHint (dpy, c->window, net_wm_desktop,
+        setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) ALL_WORKSPACES);
         clientSetNetState (c);
         clientSetWorkspace (c, workspace, TRUE);
@@ -4147,7 +4179,7 @@ clientUnstick (Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
             CLIENT_FLAG_UNSET (c2, CLIENT_FLAG_STICKY);
-            setNetHint (dpy, c2->window, net_wm_desktop,
+            setHint (dpy, c2->window, net_wm_desktop,
                 (unsigned long) workspace);
             clientSetNetState (c2);
         }
@@ -4158,7 +4190,7 @@ clientUnstick (Client * c, gboolean include_transients)
     {
         c->win_state &= ~WIN_STATE_STICKY;
         CLIENT_FLAG_UNSET (c, CLIENT_FLAG_STICKY);
-        setNetHint (dpy, c->window, net_wm_desktop,
+        setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) workspace);
         clientSetNetState (c);
         clientSetWorkspace (c, workspace, TRUE);

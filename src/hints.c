@@ -292,7 +292,7 @@ initGnomeHints (Display * dpy)
 }
 
 gboolean
-getGnomeHint (Display * dpy, Window w, Atom a, long *value)
+getHint (Display * dpy, Window w, Atom a, long *value)
 {
     Atom real_type;
     int real_format;
@@ -300,7 +300,7 @@ getGnomeHint (Display * dpy, Window w, Atom a, long *value)
     unsigned long items_read, items_left;
     long *data = NULL;
 
-    TRACE ("entering getGnomeHint");
+    TRACE ("entering getHint");
 
     *value = 0;
 
@@ -316,9 +316,9 @@ getGnomeHint (Display * dpy, Window w, Atom a, long *value)
 }
 
 void
-setGnomeHint (Display * dpy, Window w, Atom a, long value)
+setHint (Display * dpy, Window w, Atom a, long value)
 {
-    TRACE ("entering setGnomeHint");
+    TRACE ("entering setHint");
 
     XChangeProperty (dpy, w, a, XA_CARDINAL, 32, PropModeReplace,
         (unsigned char *) &value, 1);
@@ -362,8 +362,8 @@ setGnomeProtocols (Display * dpy, int screen, Window w)
     atoms[0] = win_layer;
     XChangeProperty (dpy, RootWindow (dpy, screen), win_protocols, XA_ATOM,
         32, PropModeReplace, (unsigned char *) atoms, 1);
-    setGnomeHint (dpy, w, win_supporting_wm_check, w);
-    setGnomeHint (dpy, RootWindow (dpy, screen), win_supporting_wm_check,
+    setHint (dpy, w, win_supporting_wm_check, w);
+    setHint (dpy, RootWindow (dpy, screen), win_supporting_wm_check,
         gnome_win);
 }
 

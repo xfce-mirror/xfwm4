@@ -814,7 +814,7 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
     Client *c;
 
     TRACE ("entering handleDestroyNotify");
-    TRACE ("destroyed window is (0x%lx)", ev->window);
+    TRACE ("DestroyNotify on window (0x%lx)", ev->window);
 
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
@@ -826,43 +826,12 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
 }
 
 static inline void
-handleUnmapNotify (XUnmapEvent * ev)
-{
-    Client *c;
-
-    TRACE ("entering handleUnmapNotify");
-    TRACE ("unmapped window is (0x%lx)", ev->window);
-
-    c = clientGetFromWindow (ev->window, WINDOW);
-    if (c)
-    {
-        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
-        /* Reparenting generates an unmapnotify, don't pass focus in that case */
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
-        {
-            clientPassFocus (c);
-            if (c->ignore_unmap)
-            {
-                c->ignore_unmap--;
-                TRACE ("ignore_unmaps for \"%s\" is  now %i", 
-                     c->name, c->ignore_unmap);
-            }
-            else
-            {
-                clientUnframe (c, FALSE);
-            }
-        }
-    }
-}
-
-static inline void
 handleMapRequest (XMapRequestEvent * ev)
 {
     Client *c;
 
     TRACE ("entering handleMapRequest");
-    TRACE ("mapped window is (0x%lx)", ev->window);
+    TRACE ("MapRequest on window (0x%lx)", ev->window);
 
     if (ev->window == None)
     {
@@ -874,6 +843,11 @@ handleMapRequest (XMapRequestEvent * ev)
     if (c)
     {
         TRACE ("handleMapRequest: clientShow");
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
+        {
+            TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
+            return;
+        }
         clientShow (c, TRUE);
     }
     else
@@ -889,7 +863,7 @@ handleMapNotify (XMapEvent * ev)
     Client *c;
 
     TRACE ("entering handleMapNotify");
-    TRACE ("mapped window is (0x%lx)", ev->window);
+    TRACE ("MapNotify on window (0x%lx)", ev->window);
 
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
@@ -897,12 +871,40 @@ handleMapNotify (XMapEvent * ev)
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
-            /* First map caused by reparenting, clear flag
-               and set ignore_unmaps to 0 so that everything
-               get properly initilized from now.
-             */
             CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
-            c->ignore_unmap = 0;
+        }
+    }
+}
+
+static inline void
+handleUnmapNotify (XUnmapEvent * ev)
+{
+    Client *c = NULL;
+
+    TRACE ("entering handleUnmapNotify");
+    TRACE ("UnmapNotify on window (0x%lx)", ev->window);
+
+    c = clientGetFromWindow (ev->window, WINDOW); 
+    if (c)
+    {
+        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
+        /* Reparenting generates an unmapnotify, don't pass focus in that case */
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
+        {
+            TRACE ("Ignoring UnmapNotify on window (0x%lx)", ev->window);
+            return;
+        }
+        clientPassFocus (c);
+        if (c->ignore_unmap)
+        {
+            c->ignore_unmap--;
+            TRACE ("ignore_unmaps for \"%s\" is  now %i", 
+                 c->name, c->ignore_unmap);
+        }
+        else
+        {
+            clientUnframe (c, FALSE);
         }
     }
 }
@@ -914,7 +916,7 @@ handleConfigureNotify (XConfigureEvent * ev)
 
     if (ev->window == root)
     {
-        TRACE ("configured window is the root win (0x%lx)", ev->window);
+        TRACE ("ConfigureNotify on the root win (0x%lx)", ev->window);
 #ifdef HAVE_RANDR
         XRRUpdateConfiguration (ev);
 #else
@@ -934,7 +936,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     XEvent otherEvent;
 
     TRACE ("entering handleConfigureRequest");
-    TRACE ("configured window is (0x%lx)", ev->window);
+    TRACE ("ConfigureRequest on window (0x%lx)", ev->window);
 
     /* Compress events - logic taken from kwin */
     while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest,
@@ -1069,7 +1071,7 @@ handleEnterNotify (XCrossingEvent * ev)
         return;
     }
 
-    TRACE ("entered window is (0x%lx)", ev->window);
+    TRACE ("EnterNotify on window (0x%lx)", ev->window);
 
     c = clientGetFromWindow (ev->window, FRAME);
     if (c && !(params.click_to_focus) && (clientAcceptFocus (c)))
@@ -1116,7 +1118,7 @@ handleFocusIn (XFocusChangeEvent * ev)
     }
 
     c = clientGetFromWindow (ev->window, WINDOW);
-    TRACE ("focused window is (0x%lx)", ev->window);
+    TRACE ("FocusIn on window (0x%lx)", ev->window);
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
@@ -1142,7 +1144,7 @@ handleFocusOut (XFocusChangeEvent * ev)
     }
 
     c = clientGetFromWindow (ev->window, WINDOW);
-    TRACE ("focused out window is (0x%lx)", ev->window);
+    TRACE ("FocusOut on window (0x%lx)", ev->window);
     if (c && (c == clientGetFocus ()))
     {
         TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
@@ -1190,9 +1192,8 @@ handlePropertyNotify (XPropertyEvent * ev)
         }
         else if (ev->atom == XA_WM_HINTS)
         {
-            TRACE
-                ("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify\n",
-                c->name, c->window);
+            TRACE ("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify",
+                   c->name, c->window);
             c->wmhints = XGetWMHints (dpy, c->window);
             if (c->wmhints)
             {
@@ -1206,7 +1207,7 @@ handlePropertyNotify (XPropertyEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_hints notify",
                 c->name, c->window);
-            getGnomeHint (dpy, c->window, win_hints, &c->win_hints);
+            getHint (dpy, c->window, win_hints, &c->win_hints);
         }
         else if (ev->atom == net_wm_window_type)
         {

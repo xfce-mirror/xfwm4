@@ -143,7 +143,7 @@ workspaceSwitch (int new_ws, Client * c2)
         g_list_free (list_of_windows);
     }
 
-    setGnomeHint (dpy, root, win_workspace, new_ws);
+    setHint (dpy, root, win_workspace, new_ws);
     data[0] = new_ws;
     XChangeProperty (dpy, root, net_current_desktop, XA_CARDINAL, 32,
         PropModeReplace, (unsigned char *) data, 1);
@@ -185,8 +185,8 @@ workspaceSetCount (int count)
         return;
     }
 
-    setGnomeHint (dpy, root, win_workspace_count, count);
-    setNetHint (dpy, root, net_number_of_desktops, count);
+    setHint (dpy, root, win_workspace_count, count);
+    setHint (dpy, root, net_number_of_desktops, count);
     params.workspace_count = count;
 
     for (c = clients, i = 0; i < client_count; c = c->next, i++)
