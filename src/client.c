@@ -1718,6 +1718,10 @@ void clientUnframe(Client * c, int remap)
     XReparentWindow(dpy, c->window, root, c->x, c->y);
     XDestroyWindow(dpy, c->frame);
     clientRemoveFromList(c);
+    if (c->has_struts)
+    {
+        workspaceUpdateArea(margins, gnome_margins);
+    }
     if(c->name)
     {
         free(c->name);
@@ -1735,7 +1739,6 @@ void clientUnframe(Client * c, int remap)
         XFree(c->cmap_windows);
     }
     free(c);
-    workspaceUpdateArea(margins, gnome_margins);
     DBG("client_count=%d\n", client_count);
 }
 
