@@ -1311,25 +1311,21 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
     DBG("entering _clientConfigure (recursive)\n");
     DBG("configuring (recursive) client \"%s\" (%#lx), layer %i\n", c->name, c->window, c->win_layer);
 
-    if (mask & (CWX | CWY | CWWidth | CWHeight))
+    if(mask & CWX)
     {
-        if(mask & CWX)
-        {
-            c->x = wc->x;
-        }
-        if(mask & CWY)
-        {
-            c->y = wc->y;
-        }
-        if(mask & CWWidth)
-        {
-            clientSetWidth(c, wc->width);
-        }
-        if(mask & CWHeight)
-        {
-            clientSetHeight(c, wc->height);
-        }
-        clientConstraintPos (c);
+        c->x = wc->x;
+    }
+    if(mask & CWY)
+    {
+        c->y = wc->y;
+    }
+    if(mask & CWWidth)
+    {
+        clientSetWidth(c, wc->width);
+    }
+    if(mask & CWHeight)
+    {
+        clientSetHeight(c, wc->height);
     }
     if(mask & CWBorderWidth)
     {
