@@ -1448,7 +1448,7 @@ static void clientInitPosition(Client * c)
             DBG("analyzing %i clients\n", client_count);
             for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
             {
-                if((c2 != c) && (c->win_layer == c2->win_layer) && (c->win_workspace == c2->win_workspace) && (c2->visible))
+                if((c2 != c) && (c->win_workspace == c2->win_workspace) && (c2->visible))
                 {
                     c->x = test_x;
                     c->y = test_y;
