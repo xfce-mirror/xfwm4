@@ -1366,7 +1366,7 @@ static inline void clientConstraintPos(Client * c)
     {
         c->y = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_TOP] - c->height;
     }
-    else if(c->y + CLIENT_MIN_VISIBLE > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+    else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
     {
         c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
     }
@@ -1414,22 +1414,22 @@ static void clientInitPosition(Client * c)
 
     if(c->size->flags & (PPosition | USPosition))
     {
-        if(c->x + c->width < 5)
-        {
-            c->x = 5 - c->width;
-        }
-        if(c->x > XDisplayWidth(dpy, screen))
-        {
-            c->x = XDisplayWidth(dpy, screen) - 5;
-        }
-        if(c->y + c->height < 5)
-        {
-            c->y = 5 - c->height;
-        }
-        if(c->y > XDisplayHeight(dpy, screen))
-        {
-            c->y = XDisplayHeight(dpy, screen) - 5;
-        }
+	if((c->x + c->width) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+	{
+            c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - c->width;
+	}
+	if(c->x < (int)margins[MARGIN_LEFT])
+	{
+            c->x = (int)margins[MARGIN_LEFT];
+	}
+	if((c->y + c->height) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+	{
+            c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - c->height;
+	}
+	if(c->y < (int)margins[MARGIN_TOP])
+	{
+            c->y = (int)margins[MARGIN_TOP];
+	}
         return;
     }
 
