@@ -1188,7 +1188,7 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
         gtk_tree_path_free (path_old);
 
         if (model_old == model4)
-            gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "none", -1);
+            gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "None", -1);
         else
             gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "", -1);
 
@@ -1228,7 +1228,9 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     GdkPixbuf *icon = NULL;
     GtkWidget *image;
     GtkWidget *label;
+    GtkWidget *button;
     gchar *dialog_text = NULL;
+    gint response;
 
     /* Get shortcut name */
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -1239,7 +1241,11 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
 
     /* Create dialog */
     dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
-
+    
+    button = xfce_create_mixed_button (GTK_STOCK_CLEAR, _("No shortcut"));
+    gtk_widget_show (button);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_NO);
+ 
     hbox = gtk_hbox_new (FALSE, 10);
     gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
     gtk_widget_show (hbox);
@@ -1277,7 +1283,33 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     }
 
     /* Show dialog */
-    gtk_dialog_run (GTK_DIALOG (dialog));
+    response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+    if (response == GTK_RESPONSE_NO)
+    {
+        GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	ThemeInfo *ti;
+
+        /* No shortcut, set it to none */
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
+        gtk_tree_selection_get_selected (selection, &model, &iter);
+	gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "None", -1);
+
+	/* save changes */
+	ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+
+	if (ti)
+	{
+	    gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+	    savetreeview_in_theme (theme_file, itf);
+	    
+	    g_free (theme_file);
+	}
+	else
+	  g_warning ("Cannot find the keytheme !");
+    }
 
     /* Release keyboard if not yet done */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
@@ -1326,6 +1358,8 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
             GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
         label = gtk_label_new (_("Command :"));
         entry = gtk_entry_new_with_max_length (255);
+	gtk_entry_set_text (GTK_ENTRY (entry), command);
+
         hbox_entry = gtk_hbox_new (FALSE, 0);
         gtk_box_pack_start (GTK_BOX (hbox_entry), entry, FALSE, FALSE, 0);
         button = gtk_button_new_with_label ("...");
@@ -1405,6 +1439,8 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
 	GdkPixbuf *icon = NULL;
 	GtkWidget *image;
         GtkWidget *label;
+	GtkWidget *button;
+	gint response;
         gchar *dialog_text = NULL;
 
         /* Get shortcut name */
@@ -1425,6 +1461,10 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         /* Create dialog */
         dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
 
+	button = xfce_create_mixed_button (GTK_STOCK_CLEAR, _("No shortcut"));
+	gtk_widget_show (button);
+	gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_NO);
+	
 	hbox = gtk_hbox_new (FALSE, 10);
 	gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
 	gtk_widget_show (hbox);
@@ -1462,11 +1502,46 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         }
 
         /* Show dialog */
-        if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_CANCEL)
+	response = gtk_dialog_run (GTK_DIALOG (dialog));
+        if (response == GTK_RESPONSE_CANCEL)
         {
             if (strcmp (shortcut, "none") == 0)
+	    {
+	        ThemeInfo *ti;
+
                 gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_COMMAND, "none", -1);
+		/* save changes */
+		ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+		
+		if (ti)
+		{
+		    gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+		    savetreeview_in_theme (theme_file, itf);
+		    
+		    g_free (theme_file);
+		}
+		else
+		  g_warning ("Cannot find the keytheme !");
+	    }
         }
+	else if (response == GTK_RESPONSE_NO)
+	{
+	    ThemeInfo *ti;
+
+	    gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "none", -1);
+	    /* save changes */
+	    ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+	    
+	    if (ti)
+	    {
+		gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+		savetreeview_in_theme (theme_file, itf);
+		
+		g_free (theme_file);
+	    }
+	    else
+	      g_warning ("Cannot find the keytheme !");
+	}
 
         /* Release keyboard if not yet done */
         gdk_keyboard_ungrab (GDK_CURRENT_TIME);
