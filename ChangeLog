@@ -1,3 +1,12 @@
+2004-10-15 08:29  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: Forgot to notify the raw
+	  channel for command shortcuts
+
+2004-10-15 00:07  olivier
+
+	* ChangeLog, po/xfwm4.pot: Update ChangeLog
+
 2004-10-14 23:59  olivier
 
 	* src/compositor.c: Fix
