@@ -5323,6 +5323,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         clientSnapPosition (c);
 
         clientConstrainPos (c, FALSE);
+        poswinSetPosition (passdata->poswin, c);
         if (params.box_move)
         {
             clientDrawOutline (c);
@@ -5451,6 +5452,10 @@ clientMove (Client * c, XEvent * e)
         XPutBackEvent (dpy, e);
     }
 
+    passdata.poswin = poswinCreate();
+    poswinSetPosition (passdata.poswin, c);
+    poswinShow (passdata.poswin);
+
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     pushEventFilter (clientMove_event_filter, &passdata);
@@ -5458,7 +5463,9 @@ clientMove (Client * c, XEvent * e)
     popEventFilter ();
     TRACE ("leaving move loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
-
+    
+    poswinDestroy (passdata.poswin);
+    
     if (passdata.grab && params.box_move)
     {
         clientDrawOutline (c);
@@ -5733,7 +5740,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->width = prev_width;
             }
         }
-        poswinSetPosition (passdata->poswin, frame_x, frame_y, c->width, c->height, c->size->width_inc, c->size->height_inc);
+        poswinSetPosition (passdata->poswin, c);
         if (params.box_resize)
         {
             clientDrawOutline (c);
@@ -5852,7 +5859,7 @@ clientResize (Client * c, int corner, XEvent * e)
     }
     
     passdata.poswin = poswinCreate();
-    poswinSetPosition (passdata.poswin, frameX (c), frameY (c), c->width, c->height, c->size->width_inc, c->size->height_inc);
+    poswinSetPosition (passdata.poswin, c);
     poswinShow (passdata.poswin);
 
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);

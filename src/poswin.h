@@ -28,6 +28,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include "client.h"
 
 typedef struct _Poswin Poswin;
 struct _Poswin
@@ -37,9 +38,7 @@ struct _Poswin
 };
 
 Poswin *poswinCreate (void);
-void poswinSetPosition (Poswin * poswin, gint x, gint y, 
-                                         guint width, guint height, 
-                                         gint wsizeinc, gint hsizeinc);
+void poswinSetPosition (Poswin * poswin,  Client *c);
 void poswinDestroy (Poswin * poswin);
 void poswinShow (Poswin * poswin);
 void poswinHide(Poswin * poswin);

@@ -28,6 +28,8 @@
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include "client.h"
+#include "frame.h"
 #include "poswin.h"
 
 Poswin *
@@ -61,24 +63,33 @@ poswinCreate (void)
 }
 
 void
-poswinSetPosition (Poswin * poswin, gint x, gint y, guint width, guint height, gint wsizeinc, gint hsizeinc)
+poswinSetPosition (Poswin * poswin, Client *c)
 {
     /* 32 is enough for (NNNNNxNNNNN) @ (-NNNNN,-NNNNN) */
     gchar label[32];
-    gint px, py, pw, ph;
+    gint x, y, px, py, pw, ph;
+    gint width, height, wsizeinc, hsizeinc;
     
     g_return_if_fail (poswin != NULL);
-    g_return_if_fail (hsizeinc != 0);
-    g_return_if_fail (wsizeinc != 0);
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->size->width_inc != 0);
+    g_return_if_fail (c->size->height_inc != 0);
+    
+    x = frameX (c);
+    y = frameY (c);
+    width = c->width;
+    height = c->height;
+    wsizeinc = c->size->width_inc;
+    hsizeinc = c->size->height_inc;
 
-    g_snprintf (label, 32, "(%ux%u) @ (%i,%i)", width / wsizeinc, height / hsizeinc, x, y);
+    g_snprintf (label, 32, "(%ix%i) @ (%i,%i)", width / wsizeinc, height / hsizeinc, x, y);
     gtk_label_set_text (GTK_LABEL (poswin->label), label);
     gtk_widget_queue_draw (poswin->window);
     gtk_window_get_size (GTK_WINDOW (poswin->window), &pw, &ph);
-    px = x + (width - pw) / 2;
-    py = y + (height - ph) / 2;
+    px = x + (frameWidth (c) - pw) / 2;
+    py = y + (frameHeight (c) - ph) / 2;
     if (GTK_WIDGET_REALIZED (poswin->window))
-    {
+    { 
         gdk_window_move_resize (poswin->window->window, px, py, pw, ph);
     }
     else
