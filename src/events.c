@@ -635,7 +635,6 @@ static void
 rootScrollButton (XButtonEvent * ev)
 {
     static Time lastscroll = (Time) 0;
-    XEvent otherEvent;
 
     if ((ev->time - lastscroll) < 100)  /* ms */
     {
