@@ -151,6 +151,7 @@ themes/default-4.0/Makefile
 themes/default-4.2/Makefile
 themes/opta/Makefile
 themes/symphony/Makefile
+themes/therapy/Makefile
 themes/tyrex/Makefile
 themes/waza/Makefile
 themes/wildbush/Makefile
