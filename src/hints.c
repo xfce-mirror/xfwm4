@@ -36,6 +36,7 @@
 #include <X11/Xmd.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
+#include <libxfce4util/utf8.h>
 #include <libxfcegui4/xinerama.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -116,26 +117,6 @@ Atom net_wm_window_type_toolbar;
 Atom net_wm_window_type_utility;
 Atom net_workarea;
 Atom utf8_string;
-
-
-/* Internal utilities */
-static gchar *
-utf8_string_remove_controls(gchar *str, gssize max_len, const gchar *end)
-{
-    gchar *p;
-    
-    g_return_val_if_fail (str != NULL, NULL);
-    
-    p = (gchar *) str;
-    while (p && *p && (!end || p < end) && (max_len < 0 || (p - str) < max_len))
-    {
-        if ((*p > 0) && (*p < 32))
-            *p = ' ';
-        p = g_utf8_find_next_char(p, end);
-    }
-
-    return (gchar *) str;
-}
 
 static gboolean
 check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
