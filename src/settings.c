@@ -869,6 +869,10 @@ loadKeyBindings (Settings rc[])
         getValue ("shortcut_9_key", rc));
     parseKeyString (dpy, &params.keys[KEY_SHORTCUT_10],
         getValue ("shortcut_10_key", rc));
+    parseKeyString (dpy, &params.keys[KEY_RAISE_WINDOW],
+        getValue ("raise_window_key", rc));
+    parseKeyString (dpy, &params.keys[KEY_LOWER_WINDOW],
+        getValue ("lower_window_key", rc));
     ungrabKeys (dpy, gnome_win);
     grabKey (dpy, &params.keys[KEY_CYCLE_WINDOWS], gnome_win);
     grabKey (dpy, &params.keys[KEY_NEXT_WORKSPACE], gnome_win);
@@ -1021,6 +1025,8 @@ loadSettings (void)
         {"shortcut_8_exec", NULL, FALSE},
         {"shortcut_9_exec", NULL, FALSE},
         {"shortcut_10_exec", NULL, FALSE},
+        {"raise_window_key", NULL, FALSE},
+        {"lower_window_key", NULL, FALSE},
         {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };

@@ -1371,6 +1371,8 @@ clientGrabKeys (Client * c)
     grabKey (dpy, &params.keys[KEY_SHORTCUT_8], c->window);
     grabKey (dpy, &params.keys[KEY_SHORTCUT_9], c->window);
     grabKey (dpy, &params.keys[KEY_SHORTCUT_10], c->window);
+    grabKey (dpy, &params.keys[KEY_RAISE_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_LOWER_WINDOW], c->window);
 }
 
 void
