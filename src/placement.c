@@ -39,7 +39,6 @@ static unsigned long overlapX (int x0, int x1, int tx0, int tx1);
 static unsigned long overlapY (int y0, int y1, int ty0, int ty1);
 static unsigned long overlap (int x0, int y0, int x1, int y1, 
 			      int tx0, int ty0, int tx1, int ty1);
-static unsigned long maxspace (int *x, int *y, int *w, int *h);
 
 /* Compute rectangle overlap area */
 
