@@ -220,6 +220,7 @@ handleSignal (int sig)
             quit = TRUE;
             break;
         case SIGHUP:
+        case SIGUSR1:
             reload = TRUE;
             break;
         case SIGSEGV:
@@ -370,6 +371,7 @@ initialize (int argc, char **argv)
     sigaction (SIGINT, &act, NULL);
     sigaction (SIGTERM, &act, NULL);
     sigaction (SIGHUP, &act, NULL);
+    sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
     return 0;
