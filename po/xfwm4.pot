@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-15 07:45+0200\n"
+"POT-Creation-Date: 2004-10-15 08:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -571,12 +571,12 @@ msgstr ""
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1270
-#: mcs-plugin/xfwm4_shortcuteditor.c:1499
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
 msgid "Compose shortcut"
 msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
-#: mcs-plugin/xfwm4_shortcuteditor.c:1501
+#: mcs-plugin/xfwm4_shortcuteditor.c:1500
 msgid "No shortcut"
 msgstr ""
 
@@ -593,7 +593,7 @@ msgstr ""
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1496
+#: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
 msgstr ""
 

@@ -1094,7 +1094,7 @@ add_repair (DisplayInfo *display_info)
         return;
     }
     display_info->compositor_idle_id =
-        g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+        g_idle_add_full (G_PRIORITY_DEFAULT + 50,
                          compositor_idle_cb, display_info, NULL);
 }
 

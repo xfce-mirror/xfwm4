@@ -155,6 +155,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->raise_on_focus = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
+                    {
+                        screen_info->params->prevent_focus_stealing = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/RaiseDelay"))
                     {
                         screen_info->params->raise_delay = setting->data.v_int;
@@ -409,6 +413,12 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_on_focus", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("prevent_focus_stealing", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseDelay", CHANNEL1,
@@ -1037,6 +1047,7 @@ loadSettings (ScreenInfo *screen_info)
         {"margin_right", NULL, FALSE},
         {"margin_bottom", NULL, FALSE},
         {"margin_top", NULL, FALSE},
+        {"prevent_focus_stealing", NULL, TRUE},
         {"raise_delay", NULL, TRUE},
         {"raise_on_click", NULL, TRUE},
         {"raise_on_focus", NULL, TRUE},
@@ -1167,6 +1178,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("focus_new", rc));
     screen_info->params->raise_on_focus =
         !g_ascii_strcasecmp ("true", getValue ("raise_on_focus", rc));
+    screen_info->params->prevent_focus_stealing =
+        !g_ascii_strcasecmp ("true", getValue ("prevent_focus_stealing", rc));
     screen_info->params->raise_delay = abs (TOINT (getValue ("raise_delay", rc)));
     screen_info->params->raise_on_click =
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));

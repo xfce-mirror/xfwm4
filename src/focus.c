@@ -121,6 +121,7 @@ clientFocusNew(Client * c)
 {
     ScreenInfo *screen_info = NULL;
     gboolean give_focus;
+    gboolean prevent_focus_stealing;
 
     g_return_if_fail (c != NULL);
     
@@ -130,9 +131,10 @@ clientFocusNew(Client * c)
     }
     screen_info = c->screen_info;
     give_focus = screen_info->params->focus_new;
+    prevent_focus_stealing = screen_info->params->prevent_focus_stealing;
 
     /*  Try to avoid focus stealing */
-    if (client_focus)
+    if ((client_focus) && (prevent_focus_stealing))
     {
         if (FLAG_TEST(c->flags, CLIENT_FLAG_HAS_USER_TIME) &&
             FLAG_TEST(client_focus->flags, CLIENT_FLAG_HAS_USER_TIME))
@@ -144,7 +146,7 @@ clientFocusNew(Client * c)
             }
         }
     }
-    
+
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         if (client_focus)
