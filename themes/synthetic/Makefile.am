@@ -58,4 +58,4 @@ EXTRA_DIST = $(theme_DATA)
 install-themeDATA:
 	rm -Rf $(DESTDIR)$(themedir); 					\
 	$(mkinstalldirs) $(DESTDIR)$(themedir); 			\
-	tar cf - $(theme_DATA) | (cd $(DESTDIR)$(themedir) ; tar xf - --no-same-owner)
+	pax -rw $(theme_DATA) $(DESTDIR)$(themedir)

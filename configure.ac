@@ -23,6 +23,14 @@ AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
+dnl
+dnl Check for pax.
+dnl
+AC_PATH_PROG([PAX], [pax])
+if test -z "$PAX"; then
+  AC_MSG_ERROR([pax not found])
+fi
+
 dnl Check C Compiler Characteristics
 AC_C_CONST
 AC_C_INLINE
