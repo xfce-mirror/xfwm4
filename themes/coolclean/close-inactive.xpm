@@ -1,0 +1,26 @@
+/* XPM */
+static char *close_normal[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1",
+"  c black",
+". c gray50",
+"X c gray80",
+"o c white",
+/* pixels */
+"...............X",
+".oooooooooooooXo",
+".oXXXXXXXXXXXX.o",
+".oXXXXXXXXXXXX.o",
+".oX. XXXXX .XX.o",
+".oXX  XXX  XXX.o",
+".oXXX  X  XXXX.o",
+".oXXXX   XXXXX.o",
+".oXXXX   XXXXX.o",
+".oXXX  X  XXXX.o",
+".oXX  XXX  XXX.o",
+".oX. XXXXX .XX.o",
+".oXXXXXXXXXXXX.o",
+".oXXXXXXXXXXXX.o",
+".X.............o",
+"Xooooooooooooooo"
+};

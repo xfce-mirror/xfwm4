@@ -4,6 +4,7 @@ b5 \
 b6 \
 bbs \
 coldsteel \
+coolclean \
 crux \
 cruxish \
 curve \
