@@ -43,6 +43,8 @@
 #include "client.h"
 #include "misc.h"
 
+static int xgrabcount = 0;
+
 void getMouseXY(Window w, int *x2, int *y2)
 {
     Window w1, w2;
@@ -110,6 +112,33 @@ void sendClientMessage(Window w, Atom a, long x, int mask)
     ev.xclient.data.l[0] = x;
     ev.xclient.data.l[1] = CurrentTime;
     XSendEvent(dpy, w, False, mask, &ev);
+}
+
+void MyXGrabServer(void)	 
+{	 
+    TRACE("entering MyXGrabServer");	 
+    if(xgrabcount == 0)	 
+    {	 
+        TRACE("grabbing server");	 
+        XGrabServer(dpy);	 
+    }	 
+    xgrabcount++;	 
+    TRACE("grabs : %i", xgrabcount);	 
+}	 
+
+void MyXUngrabServer(void)	 
+{	 
+    TRACE("entering MyXUngrabServer");	 
+    if(--xgrabcount < 0)        /* should never happen */	 
+    {	 
+        xgrabcount = 0;	 
+    }	 
+    if(xgrabcount == 0)	 
+    {	 
+        TRACE("ungrabbing server");	 
+        XUngrabServer(dpy);	 
+    }	 
+    TRACE("grabs : %i", xgrabcount);	 
 }
 
 Window setTmpEventWin(long eventmask)
