@@ -501,36 +501,8 @@ clientAddToList (Client * c)
 
     TRACE ("adding window \"%s\" (0x%lx) to windows list", c->name, c->window);
     screen_info->windows = g_list_append (screen_info->windows, c);
+    screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
 
-    client_sibling = clientGetLowestTransient (c);
-    /* Paranoid check to avoid circular linked list */
-    if (client_sibling != c)
-    {
-        if (client_sibling)
-        {
-            /* The client has already a transient mapped */
-            sibling = g_list_find (screen_info->windows_stack, (gconstpointer) client_sibling);
-            screen_info->windows_stack = g_list_insert_before (screen_info->windows_stack, sibling, c);
-        }
-        else
-        {
-            client_sibling = clientGetNextTopMost (screen_info, c->win_layer, c);
-            /* Paranoid check to avoid circular linked list */
-            if (client_sibling != c)
-            {
-                if (client_sibling)
-                {
-                    sibling = g_list_find (screen_info->windows_stack, (gconstpointer) client_sibling);
-                    screen_info->windows_stack = g_list_insert_before (screen_info->windows_stack, sibling, c);
-                }
-                else
-                {
-                    screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
-                }
-            }
-        }
-    }
-    
     clientSetNetClientList (screen_info, net_client_list, screen_info->windows);
     clientSetNetClientList (screen_info, win_client_list, screen_info->windows);
     clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);

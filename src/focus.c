@@ -145,8 +145,12 @@ clientFocusNew(Client * c)
     
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
+        if (client_focus)
+	{
+	    clientAdjustFullscreenLayer (client_focus, FALSE);
+        }
         clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
-        clientPassGrabButton1 (c);
+	clientPassGrabButton1 (c);
     }
     else
     {
@@ -392,10 +396,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     {
 	if (c)
 	{
-            if (c->screen_info->screen == c2->screen_info->screen)
-	    {
-		clientAdjustFullscreenLayer (c2, FALSE);
-	    }
+	    clientAdjustFullscreenLayer (c2, FALSE);
 	    clientRaise (c);
             clientPassGrabButton1 (c);
 	}

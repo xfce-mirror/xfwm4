@@ -1580,8 +1580,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
-    clientApplyStackList (screen_info);
-    clientSetLastRaise (c);
 
     /* Clear time counter */
     clientClearLastOpTime (c);
@@ -1609,6 +1607,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info->dpy, c->window, IconicState);
         clientSetNetState (c);
     }
+    clientRaise (c);
     gdk_error_trap_pop ();
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
@@ -3572,7 +3571,7 @@ clientCycle (Client * c, XEvent * e)
 	focused = clientGetFocus ();
 	clientShow (passdata.c, TRUE);
         clientSetFocus (passdata.c->screen_info, passdata.c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
-        if ((focused) && (passdata.c->screen_info->screen == focused->screen_info->screen))
+        if (focused)
 	{
             clientAdjustFullscreenLayer (focused, FALSE);
 	}
