@@ -590,9 +590,17 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
         requires_clearing = TRUE;
         c->draw_active = TRUE;
     }
+    
+    /* Flag clearance */
+    if(c->first_map)
+    {
+        c->first_map = FALSE;
+    }
+    
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
-        if(invalidate_cache)
+       /* Cache mgmt */
+       if(invalidate_cache)
         {
             clientClearPixmapCache(c);
             requires_clearing = TRUE;
