@@ -22,6 +22,10 @@
 #  include "config.h"
 #endif
 
+#ifdef GDK_MULTIHEAD_SAFE
+#undef GDK_MULTIHEAD_SAFE
+#endif
+
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #include <gdk/gdk.h>

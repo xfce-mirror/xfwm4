@@ -22,6 +22,10 @@
 #  include "config.h"
 #endif
 
+#ifdef GDK_MULTIHEAD_SAFE
+#undef GDK_MULTIHEAD_SAFE
+#endif
+
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
