@@ -174,6 +174,7 @@ struct _XfwmParams
     gboolean title_vertical_offset_inactive;
     gboolean wrap_workspaces;
     gboolean wrap_layout;
+    gboolean wrap_cycle;
     gboolean wrap_windows;
     gboolean scroll_workspaces;
 };
