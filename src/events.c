@@ -1019,5 +1019,5 @@ static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev)
 void initGtkCallbacks(void)
 {
     button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) NULL);
-    g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC(client_event_cb), (gpointer) NULL);
+    g_signal_connect_after(GTK_OBJECT(getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC(client_event_cb), (gpointer) NULL);
 }
