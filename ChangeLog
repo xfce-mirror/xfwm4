@@ -1,3 +1,98 @@
+2002-07-04  xfce
+
+	* src/client.c: [no log message]
+
+2002-07-04  xfce
+
+	* src/client.c: [no log message]
+
+2002-07-04  xfce
+
+	* src/: client.c, client.h: Allow move/resize of windows even in
+	maximized state
+
+2002-07-04  xfce
+
+	* config.guess, config.sub: config.guess and config.sub were
+	missing (??)
+
+2002-07-04  xfce
+
+	* src/: client.c, client.h, events.c: Remove maximize flag when the
+	client sends configureRequests
+
+2002-07-03  xfce
+
+	* Makefile.in, src/events.c, themes/redmondxp/close-active.xpm,
+	themes/redmondxp/close-inactive.xpm,
+	themes/redmondxp/close-pressed.xpm,
+	themes/redmondxp/hide-active.xpm,
+	themes/redmondxp/hide-inactive.xpm,
+	themes/redmondxp/hide-pressed.xpm,
+	themes/redmondxp/maximize-active.xpm,
+	themes/redmondxp/maximize-inactive.xpm,
+	themes/redmondxp/maximize-pressed.xpm,
+	themes/redmondxp/menu-active.xpm,
+	themes/redmondxp/menu-inactive.xpm,
+	themes/redmondxp/menu-pressed.xpm,
+	themes/redmondxp/shade-active.xpm,
+	themes/redmondxp/shade-inactive.xpm,
+	themes/redmondxp/shade-pressed.xpm,
+	themes/redmondxp/stick-active.xpm,
+	themes/redmondxp/stick-inactive.xpm,
+	themes/redmondxp/stick-pressed.xpm, themes/redmondxp/themerc:
+	Prevent focus change to dock and desktop windows in focus follow
+	mode, redesign button for redmondxp.
+
+2002-07-03  xfce
+
+	* Makefile.in, aclocal.m4, configure, defaults/Makefile.in,
+	src/Makefile.in, themes/Makefile.in, themes/agua/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/eazel-blue/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/kde/Makefile.in, themes/kindaker/Makefile.in,
+	themes/linea/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/oroborus/Makefile.in,
+	themes/platinum/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/trench/Makefile.in,
+	themes/xfce/Makefile.in: [no log message]
+
+2002-07-03  xfce
+
+	* xfwm4.spec.in: [no log message]
+
+2002-07-03  xfce
+
+	* Makefile.in, src/client.c, src/events.c, src/menu.c: Don't
+	constrait position (including initial placement) on docks and
+	desktop windows.
+
+2002-07-03  xfce
+
+	* xfwm4.spec.in: Add requirement for autoconf 2.52 in rpms spec
+	(BuildRequires).
+
+2002-07-03  xfce
+
+	* Makefile.in, acconfig.h, config.h.in, configure, configure.in:
+	Fix deprecated AC_DEFINE use and remove acconfig.h as it's
+	deprecated with automake 2.5x
+
+2002-07-02  xfce
+
+	* src/: client.c, events.c: Various cleanups
+
+2002-07-02  xfce
+
+	* src/client.c: Remove warnings at compile.
+
+2002-07-01  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2002-07-01  xfce
 
 	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
