@@ -2321,7 +2321,7 @@ void clientFrame(Window w, gboolean initial)
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
-        if(!initial && params.focus_new && clientAcceptFocus(c))
+        if(!initial && params.focus_new && clientAcceptFocus(c) && (c->win_workspace == workspace))
         {
             /* We set the draw_active value to the wrong value to force a draw */
             c->draw_active = FALSE;

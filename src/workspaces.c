@@ -58,6 +58,12 @@ void workspaceSwitch(int new_ws, Client * c2)
         return;
     }
 
+    workspace = new_ws;
+    if(c2)
+    {
+        clientSetWorkspace(c2, new_ws, FALSE);
+    }
+    
     previous = clientGetFocus();
     if(previous)
     {
@@ -66,15 +72,12 @@ void workspaceSwitch(int new_ws, Client * c2)
         {
             f = previous;
         }
+	else
+	{
+	    clientSetFocus(c2, FALSE);
+	}
     }
 
-    workspace = new_ws;
-    if(c2)
-    {
-        clientSetWorkspace(c2, new_ws, FALSE);
-    }
-    clientSetFocus(c2, FALSE);
-    
     list_of_windows = clientGetStackList();
     /* First pass */
     for(index = list_of_windows; index; index = g_slist_next(index))
