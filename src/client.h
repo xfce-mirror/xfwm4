@@ -199,6 +199,7 @@ struct _Client
     unsigned int has_border   : 1;
     unsigned int sticky       : 1;
     unsigned int maximized    : 1;
+    unsigned int fullscreen   : 1;
     unsigned int shaded       : 1;
     unsigned int visible      : 1;
     unsigned int hidden       : 1;
@@ -243,6 +244,7 @@ void clientStick(Client *);
 void clientUnstick(Client *);
 void clientToggleSticky(Client *);
 void clientToggleMaximized(Client *, int);
+void clientToggleFullscreen(Client *);
 void clientUpdateFocus(Client *);
 inline gboolean clientAcceptFocus(Client *c);
 void clientSetFocus(Client *, int);

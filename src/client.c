@@ -122,6 +122,11 @@ void clientSetNetState (Client *c)
         DBG("clientSetNetState : vert\n");
 	data[i++] = net_wm_state_maximized_vert;
     }
+    if (c->fullscreen)
+    {
+        DBG("clientSetNetState : fullscreen\n");
+	data[i++] = net_wm_state_fullscreen;
+    }
     if ((c->shaded) || (c->hidden))
     {
         DBG("clientSetNetState : hidden\n");
@@ -175,6 +180,11 @@ static void clientGetNetState (Client *c)
                 DBG("clientGetNetState : maximized vert\n");
                 c->win_state |= WIN_STATE_MAXIMIZED_VERT;
 		c->maximized = True;
+            }
+            else if (atoms[i] == net_wm_state_fullscreen)
+	    {
+                DBG("clientGetNetState : fullscreen\n");
+		c->fullscreen = True;
             }
             else if (atoms[i] == net_wm_state_modal)
 	    {
@@ -306,6 +316,23 @@ void clientUpdateNetState (Client *c, XClientMessageEvent * ev)
 	    c->state_modal = !(c->state_modal);
 	    clientSetNetState (c);
 	}
+    }
+
+    if ((first == net_wm_state_fullscreen) || (second == net_wm_state_fullscreen))
+    {
+        if ((action == NET_WM_STATE_ADD) && !(c->fullscreen))
+        {
+	    c->fullscreen = True;
+	}
+	else if ((action == NET_WM_STATE_REMOVE) && (c->fullscreen))
+	{
+	    c->fullscreen = False;
+	}
+	else if (action == NET_WM_STATE_TOGGLE)
+	{
+	    c->fullscreen = !(c->fullscreen);
+	}
+        clientToggleFullscreen(c);
     }
 
     if ((first == net_wm_state_skip_pager) || (second == net_wm_state_skip_pager))
@@ -1397,6 +1424,7 @@ void clientFrame(Window w)
     c->has_border   = True;
     c->sticky       = False;
     c->maximized    = False;
+    c->fullscreen   = False;
     c->shaded       = False;
     c->visible      = False;
     c->hidden       = False;
@@ -1873,7 +1901,7 @@ void clientToggleShaded(Client * c)
     DBG("entering clientToggleShaded\n");
     DBG("shading/unshading client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if (!(c->has_border))
+    if (!(c->shaded) && (!(c->has_border) || (c->fullscreen)))
     {
         DBG("cowardly refusing to shade \"%s\" (%#lx) because it has no border\n", c->name, c->window);
         return;
@@ -1984,6 +2012,39 @@ void clientToggleMaximized(Client * c, int mode)
     }
     c->maximized = ((c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? True : False);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
+    clientSetNetState (c);
+    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+}
+
+void clientToggleFullscreen(Client * c)
+{
+    XWindowChanges wc;
+
+    g_return_if_fail (c != NULL);
+    DBG("entering clientToggleFullscreen\n");
+    DBG("toggle fullscreen client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(c->fullscreen)
+    {
+        wc.width = c->old_width;
+        wc.height = c->old_height;
+        wc.x = c->old_x;
+        wc.y = c->old_y;
+        c->fullscreen = False;
+    }
+    else
+    {
+        c->old_x = c->x;
+        c->old_y = c->y;
+        c->old_width = c->width;
+        c->old_height = c->height;
+
+        c->fullscreen = True;
+        wc.x = frameLeft(c) + margins[MARGIN_LEFT];
+        wc.width = XDisplayWidth(dpy, screen) - frameLeft(c) - frameRight(c) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
+        wc.y = frameTop(c) + margins[MARGIN_TOP];
+        wc.height = XDisplayHeight(dpy, screen) - frameTop(c) - frameBottom(c) - margins[MARGIN_TOP] - margins[MARGIN_BOTTOM];
+    }
     clientSetNetState (c);
     clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
 }
@@ -2102,7 +2163,7 @@ void clientDrawOutline(Client * c)
     DBG("entering clientDrawOutline\n");
 
     XDrawRectangle(dpy, root, box_gc, frameX(c), frameY(c), frameWidth(c) - 1, frameHeight(c) - 1);
-    if ((c->has_border) && !(c->shaded))
+    if ((c->has_border) && !(c->fullscreen) && !(c->shaded))
     {
         XDrawRectangle(dpy, root, box_gc, c->x, c->y, c->width - 1, c->height - 1);
     }

@@ -104,6 +104,7 @@ extern Atom net_wm_state_shaded;
 extern Atom net_wm_state_sticky;
 extern Atom net_wm_state_maximized_horz;
 extern Atom net_wm_state_maximized_vert;
+extern Atom net_wm_state_fullscreen;
 extern Atom net_wm_desktop;
 extern Atom net_number_of_desktops;
 extern Atom net_current_desktop;

@@ -33,7 +33,7 @@ inline int frameLeft(Client * c)
 {
     DBG("entering frameLeft\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return sides[SIDE_LEFT][ACTIVE].width;
     }
@@ -44,7 +44,7 @@ inline int frameRight(Client * c)
 {
     DBG("entering frameRight\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return sides[SIDE_RIGHT][ACTIVE].width;
     }
@@ -55,7 +55,7 @@ inline int frameTop(Client * c)
 {
     DBG("entering frameTop\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return title[TITLE_3][ACTIVE].height;
     }
@@ -66,7 +66,7 @@ inline int frameBottom(Client * c)
 {
     DBG("entering frameBottom\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return sides[SIDE_BOTTOM][ACTIVE].height;
     }
@@ -77,7 +77,7 @@ inline int frameX(Client * c)
 {
     DBG("entering frameX\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return c->x - frameLeft(c);
     }
@@ -88,7 +88,7 @@ inline int frameY(Client * c)
 {
     DBG("entering frameY\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return c->y - frameTop(c);
     }
@@ -99,7 +99,7 @@ inline int frameWidth(Client * c)
 {
     DBG("entering frameWidth\n");
 
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         return c->width + frameLeft(c) + frameRight(c);
     }
@@ -110,11 +110,11 @@ inline int frameHeight(Client * c)
 {
     DBG("entering frameHeight\n");
 
-    if(c->has_border && c->shaded)
+    if((c->has_border) && (c->shaded) && !(c->fullscreen))
     {
         return frameTop(c) + frameBottom(c);
     }
-    else if(c->has_border)
+    else if((c->has_border) && !(c->fullscreen))
     {
         return c->height + frameTop(c) + frameBottom(c);
     }
@@ -377,7 +377,7 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     {
         XShapeCombineShape(dpy, temp, ShapeBounding, frameLeft(c), frameTop(c), c->window, ShapeBounding, ShapeSet);
     }
-    if(c->has_border)
+    if((c->has_border) && (!c->fullscreen))
     {
         XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
         for(i = 0; i < 3; i++)
@@ -476,7 +476,7 @@ void frameDraw(Client * c)
         DBG("\"%s\" is not the active window\n", c->name);
         state = INACTIVE;
     }
-    if(c->has_border)
+    if((c->has_border) && !(c->fullscreen))
     {
         XMapWindow(dpy, c->title);
         for(i = 0; i < 3; i++)

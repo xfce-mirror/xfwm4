@@ -68,6 +68,7 @@ Atom net_wm_state_shaded;
 Atom net_wm_state_sticky;
 Atom net_wm_state_maximized_horz;
 Atom net_wm_state_maximized_vert;
+Atom net_wm_state_fullscreen;
 Atom net_wm_desktop;
 Atom net_number_of_desktops;
 Atom net_current_desktop;
@@ -307,6 +308,7 @@ void initNetHints(Display * dpy)
     net_wm_state_sticky             = XInternAtom(dpy, "_NET_WM_STATE_STICKY", False);
     net_wm_state_maximized_horz     = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", False);
     net_wm_state_maximized_vert     = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_VERT", False);
+    net_wm_state_fullscreen         = XInternAtom(dpy, "_NET_WM_STATE_FULLSCREEN", False);
     net_wm_desktop                  = XInternAtom(dpy, "_NET_WM_DESKTOP", False);
     net_number_of_desktops          = XInternAtom(dpy, "_NET_NUMBER_OF_DESKTOPS", False);
     net_current_desktop             = XInternAtom(dpy, "_NET_CURRENT_DESKTOP", False);
@@ -360,7 +362,7 @@ int getNetHint(Display * dpy, Window w, Atom a, long *value)
 
 void set_net_supported_hint (Display * dpy, Window root_win, Window check_win)
 {
-    Atom atoms[30];
+    Atom atoms[32];
     unsigned long data[1];
     int i = 0;
 
@@ -371,6 +373,7 @@ void set_net_supported_hint (Display * dpy, Window root_win, Window check_win)
     atoms[i++] = net_wm_state_sticky;
     atoms[i++] = net_wm_state_maximized_vert;
     atoms[i++] = net_wm_state_maximized_horz;
+    atoms[i++] = net_wm_state_fullscreen;
     atoms[i++] = net_wm_desktop;
     atoms[i++] = net_number_of_desktops;
     atoms[i++] = net_current_desktop;

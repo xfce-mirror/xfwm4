@@ -101,7 +101,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_DOWN:
             case KEY_MOVE_LEFT:
             case KEY_MOVE_RIGHT:
-	    if (c->has_border)
+	    if ((c->has_border) && !(c->fullscreen))
 	    	{
                     clientMove(c, (XEvent *) ev);
 		}
@@ -329,7 +329,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             else
             {
-                if (c->has_border)
+                if ((c->has_border) && !(c->fullscreen))
 		{
 		    clientMove(c, (XEvent *) ev);
 		}
