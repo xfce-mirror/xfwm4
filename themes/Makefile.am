@@ -19,6 +19,7 @@ elberg \
 exocet \
 fbx \
 g2 \
+gaudy \
 gnububble \
 gorilla \
 gtk \
