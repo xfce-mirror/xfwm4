@@ -73,6 +73,8 @@ workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
             *col = major_length - *col - 1;
             *row = minor_length - *row - 1;
             break;
+        default:
+            break;
     }
 
     if (l->orientation == NET_WM_ORIENTATION_VERT)
@@ -128,6 +130,8 @@ workspaceGetNumber (ScreenInfo *screen_info, int row, int col)
         case NET_WM_BOTTOMRIGHT:
             col = major_length - col - 1;
             row = minor_length - row - 1;
+            break;
+        default:
             break;
     }
 
@@ -415,6 +419,9 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
                          gdk_screen_get_width (screen_info->gscr),
                          gdk_screen_get_height (screen_info->gscr),
                          screen_info->margins);
+    /* Recompute the layout based on the (changed) number of desktops */
+    getDesktopLayout(myScreenGetXDisplay (screen_info), screen_info->xroot, screen_info->workspace_count, 
+                         &screen_info->desktop_layout);
 }
 
 void

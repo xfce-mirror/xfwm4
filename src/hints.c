@@ -455,12 +455,12 @@ getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout *
 
             if (rows == 0)
             {
-                rows = (ws_count-1) / cols + 1;
+                rows = (ws_count - 1) / cols + 1;
             }
 
             if (cols == 0)
             {
-                cols = (ws_count-1) / rows + 1;
+                cols = (ws_count - 1) / rows + 1;
             }
 
             layout->orientation = orientation;

@@ -1868,6 +1868,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             if (ev->data.l[0] != screen_info->workspace_count)
             {
                 workspaceSetCount (screen_info, ev->data.l[0]);
+                getDesktopLayout(display_info->dpy, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
             }
         }
         else if ((ev->message_type == net_system_tray_manager) && (ev->data.l[1] == screen_info->net_system_tray_selection)  && (ev->format == 32))
