@@ -47,6 +47,7 @@
 #include "workspaces-icon.h"
 
 #define MAX_COUNT 32
+#define DEFAULT_NBR_WS 4
 #define WS_SEP ';'
 #define WS_SEP_S ";"
 
@@ -166,10 +167,13 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
 	if (setting)
 	{
 	    ws_count = setting->data.v_int;
-
 	    mcs_manager_delete_setting(mcs_manager, "count", CHANNEL1);
-	    set_workspace_count (mcs_manager, ws_count);
 	}
+        else
+        {
+	    ws_count = DEFAULT_NBR_WS;
+        }
+	set_workspace_count (mcs_manager, ws_count);
     }
 
     len = (ws_names) ? array_size (ws_names) : 0;
