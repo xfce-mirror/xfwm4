@@ -461,7 +461,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
         {
             DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
             c->win_workspace = workspace;
-            c->sticky = True;
+            clientStick(c);
         }
         else
         {
@@ -481,6 +481,8 @@ static void clientGetInitialNetWmDesktop(Client * c)
         c->win_workspace = workspace_count - 1;
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
+    setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
+    setNetHint(dpy, c->window, net_wm_desktop, c->win_workspace);
 }
 
 static void clientSetNetClientList(Atom a, GSList * list)
@@ -657,7 +659,12 @@ static void clientWindowType(Client * c)
             layer = c2->win_layer;
         }
     }
-    c->win_layer = layer;
+    if((old_type != c->type) || (layer != c->win_layer))
+    {
+        DBG("setting layer %i\n", layer);
+        clientSetNetState(c);
+        clientSetLayer(c, layer);
+    }
 }
 
 void clientInstallColormaps(Client * c)
@@ -1423,8 +1430,7 @@ void clientFrame(Window w)
         return;
     }
 
-    c = malloc(sizeof(Client));
-    if(!c)
+    if(!(c = malloc(sizeof(Client))))
     {
         DBG("Cannot allocate memory for the window structure\n");
         return;
@@ -1455,7 +1461,6 @@ void clientFrame(Window w)
     }
     
     /* Initialize structure */
-    c->firstmap     = True;
     c->focus        = False;
     c->fullscreen   = False;
     c->has_border   = True;
@@ -1568,6 +1573,7 @@ void clientFrame(Window w)
         c->buttons[i] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     }
 
+    clientSetNetActions(c);
     clientAddToList(c);
     clientGrabKeys(c);
 
@@ -1766,19 +1772,6 @@ void clientShow(Client * c, int change_state)
         c->hidden = False;
         setWMState(dpy, c->window, NormalState);
         workspaceUpdateArea(margins, gnome_margins);
-    }
-    /* We initialize all Net properties once the window is mapped */
-    if (c->firstmap)
-    {
-        c->firstmap = False;
-        setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
-        setGnomeHint(dpy, c->window, win_layer, c->win_layer);
-        setNetHint(dpy, c->window, net_wm_desktop, c->win_workspace);
-        if (c->sticky)
-	{
-	    clientStick (c);
-        }
-        clientSetNetActions(c);
     }
     clientSetNetState(c);
 }

@@ -44,6 +44,7 @@ Atom win_client_list;
 Atom win_desktop_button_proxy;
 Atom win_hints;
 Atom win_layer;
+Atom win_protocols;
 Atom win_state;
 Atom win_supporting_wm_check;
 Atom win_workspace;
@@ -252,6 +253,7 @@ void initGnomeHints(Display * dpy)
     win_desktop_button_proxy = XInternAtom(dpy, "_WIN_DESKTOP_BUTTON_PROXY", False);
     win_hints                = XInternAtom(dpy, "_WIN_HINTS", False);
     win_layer                = XInternAtom(dpy, "_WIN_LAYER", False);
+    win_protocols            = XInternAtom(dpy, "_WIN_PROTOCOLS", False);
     win_state                = XInternAtom(dpy, "_WIN_STATE", False);
     win_supporting_wm_check  = XInternAtom(dpy, "_WIN_SUPPORTING_WM_CHECK", False);
     win_workspace_count      = XInternAtom(dpy, "_WIN_WORKSPACE_COUNT", False);
@@ -309,6 +311,16 @@ void getGnomeDesktopMargins(Display * dpy, CARD32 * margins)
 	margins[2] = 0;
 	margins[3] = 0;
     }
+}
+
+void setGnomeProtocols(Display * dpy, Window root_win, Window w)
+{
+  Atom atoms[1];
+  
+  atoms[0] = win_layer;
+  XChangeProperty (dpy, root_win, win_protocols, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, 1);
+  setGnomeHint(dpy, w, win_supporting_wm_check, w);  
+  setGnomeHint(dpy, root_win, win_supporting_wm_check, gnome_win);
 }
 
 void initNetHints(Display * dpy)

@@ -165,8 +165,8 @@ void initialize(int argc, char **argv)
     sigaction(SIGTERM, &act, NULL);
     sigaction(SIGHUP, &act, NULL);
 
+    setGnomeProtocols(dpy, root, gnome_win);
     setGnomeHint(dpy, root, win_supporting_wm_check, gnome_win);
-    setGnomeHint(dpy, gnome_win, win_supporting_wm_check, gnome_win);
     setGnomeHint(dpy, root, win_desktop_button_proxy, gnome_win);
     setGnomeHint(dpy, gnome_win, win_desktop_button_proxy, gnome_win);
     getGnomeHint(dpy, root, win_workspace, &ws);
