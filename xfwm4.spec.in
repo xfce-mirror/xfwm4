@@ -54,6 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %{_datadir}/xfwm4/themes/agua
 %{_datadir}/xfwm4/themes/b5
+%{_datadir}/xfwm4/themes/b6
 %{_datadir}/xfwm4/themes/coldsteel
 %{_datadir}/xfwm4/themes/crux
 %{_datadir}/xfwm4/themes/cruxish

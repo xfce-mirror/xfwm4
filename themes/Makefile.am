@@ -1,6 +1,7 @@
 SUBDIRS = \
 agua \
 b5 \
+b6 \
 coldsteel \
 crux \
 cruxish \
