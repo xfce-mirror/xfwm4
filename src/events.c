@@ -38,6 +38,7 @@
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
+static Window menu_event_window = None;
 
 static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointer menu_data, gpointer item_data);
 static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer data);
@@ -376,7 +377,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             XEvent copy_event = (XEvent) *ev;
             XfwmButtonClickType tclick;
-	    
+            
             if (win == c->title)
             {
                 clientSetFocus(c, True);
@@ -932,6 +933,13 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
     Client *c = NULL;
 
     DBG("entering menu_callback\n");
+
+    if (menu_event_window)
+    {
+        removeTmpEventWin (menu_event_window);
+        menu_event_window = None;
+    }
+
     if(menu_data)
     {
         c = (Client *) menu_data;
@@ -1074,6 +1082,12 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     }
     button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) NULL);
 
+    if (menu_event_window)
+    {
+        removeTmpEventWin (menu_event_window);
+        menu_event_window = None;
+    }
+    menu_event_window = setTmpEventWin(NoEventMask);
     menu = menu_default(ops, insensitive, menu_callback, c);
     if(!menu_popup(menu, x, y, ev->button, ev->time))
     {
@@ -1081,6 +1095,8 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         gdk_beep();
         c->button_pressed[MENU_BUTTON] = False;
         frameDraw(c);
+        removeTmpEventWin (menu_event_window);
+        menu_event_window = None;
         menu_free(menu);
     }
     return (TRUE);

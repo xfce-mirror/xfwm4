@@ -80,13 +80,11 @@ struct _Menu
     gpointer data;
     MenuOp ops;
     MenuOp insensitive;
-    Window tmp_event_window;
 };
 
 Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data);
 Menu *menu_connect(Menu * menu);
 GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data);
-gboolean menu_is_window(Window);
 gboolean menu_is_opened(void);
 gboolean menu_check_and_close(void);
 gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp);
