@@ -1576,7 +1576,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == net_wm_opacity)
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_opacity notify", c->name, c->window);
-            if (getOpacity (display_info->dpy, c->window, &c->opacity))
+            if (!getOpacity (display_info->dpy, c->window, &c->opacity))
             {
                 c->opacity =  NET_WM_OPAQUE;
             }

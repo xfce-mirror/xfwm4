@@ -333,7 +333,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     gint center;
     gint x, y;
     gint x_diff;
-    gint opacity_gint;
+    gint opacity_int;
     
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("entering make_shadow");
@@ -342,7 +342,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     swidth = width + gsize - screen_info->params->shadow_delta_width - screen_info->params->shadow_delta_x;
     sheight = height + gsize - screen_info->params->shadow_delta_height - screen_info->params->shadow_delta_y;
     center = gsize / 2;
-    opacity_gint = (gint) (opacity * 25);
+    opacity_int = (gint) (opacity * 25);
     
     if ((swidth < 1) || (sheight < 1))
     {
@@ -368,15 +368,12 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
 
     if (screen_info->gsize > 0)
     {
-        d = screen_info->shadowTop[opacity_gint * (screen_info->gsize + 1) + screen_info->gsize];
+        d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + screen_info->gsize];
     }
     else
     {
         d = sum_gaussian (screen_info->gaussianMap, opacity, center, center, width, height);
     }
-    memset(data, d, sheight * swidth);
-    
-    d = sum_gaussian (screen_info->gaussianMap, opacity, center, center, width, height);
     memset(data, d, sheight * swidth);
     
     /*
@@ -399,7 +396,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
         {
             if ((xlimit == screen_info->gsize) && (ylimit == screen_info->gsize))
             {
-                d = screen_info->shadowCorner[opacity_gint * (screen_info->gsize + 1) 
+                d = screen_info->shadowCorner[opacity_int * (screen_info->gsize + 1) 
                                                         * (screen_info->gsize + 1) 
                                                     + y * (screen_info->gsize + 1) + x];
             }
@@ -427,7 +424,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
         {
             if (ylimit == screen_info->gsize)
             {    
-                d = screen_info->shadowTop[opacity_gint * (screen_info->gsize + 1) + y];
+                d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + y];
             }
             else
             {    
@@ -446,7 +443,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     {
         if (xlimit == screen_info->gsize)
         {    
-            d = screen_info->shadowTop[opacity_gint * (screen_info->gsize + 1) + x];
+            d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + x];
         }
         else
         {
@@ -475,8 +472,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     g_return_val_if_fail (screen_info != NULL, None);
     TRACE ("entering shadow_picture");    
 
-    render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
-                                            PictStandardA8);
+    render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), PictStandardA8);
     g_return_val_if_fail (render_format != NULL, None);
 
     shadowImage = make_shadow (screen_info, opacity, width, height);
@@ -778,7 +774,7 @@ win_extents (CWindow *cw)
             {
                 r.width = sr.x + sr.width - r.x;
             }
-                if (sr.y + sr.height > r.y + r.height)
+            if (sr.y + sr.height > r.y + r.height)
             {
                 r.height = sr.y + sr.height - r.y;
             }
@@ -2198,6 +2194,7 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, gint new_width, gi
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
+        TRACE ("Resizing Ox%ld to (%i, %i)", cw->id, new_width, new_height);
         resize_win (cw, new_width, new_height);
     }
 #endif /* HAVE_COMPOSITOR */
