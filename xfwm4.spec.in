@@ -49,6 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_datadir}/xfwm4/defaults
 %{_datadir}/xfwm4/default.keys
+%{_datadir}/xfwm4/themes/adept
 %{_datadir}/xfwm4/themes/bbs
 %{_datadir}/xfwm4/themes/curve
 %{_datadir}/xfwm4/themes/exocet

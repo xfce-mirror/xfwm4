@@ -41,6 +41,7 @@ Makefile
 src/Makefile
 defaults/Makefile
 themes/Makefile
+themes/adept/Makefile
 themes/agua/Makefile
 themes/b5/Makefile
 themes/b6/Makefile

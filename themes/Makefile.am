@@ -1,4 +1,5 @@
 SUBDIRS = \
+adept \
 agua \
 b5 \
 b6 \
