@@ -85,28 +85,10 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
         return FALSE;
     }
 
-    cmap = gdk_drawable_get_colormap (destw);
+    cmap = gdk_screen_get_default_colormap (pm->screen_info->gscr);
     if (cmap)
     {
         g_object_ref (G_OBJECT (cmap));
-    }
-    else
-    {
-        if (gdk_drawable_get_depth (destw) == 1)
-        {
-            cmap = NULL;
-        }
-        else
-        {
-            cmap = gdk_screen_get_rgb_colormap (pm->screen_info->gscr);
-            g_object_ref (G_OBJECT (cmap));
-        }
-    }
-
-    if (cmap && (gdk_colormap_get_visual (cmap)->depth != gdk_drawable_get_depth (destw)))
-    {
-        g_object_unref (G_OBJECT (cmap));
-        cmap = NULL;
     }
 
     width = MIN (gdk_pixbuf_get_width (alpha), pm->width);
