@@ -52,7 +52,6 @@ extern int click_to_focus;
 extern int focus_new;
 extern int raise_on_focus;
 extern int raise_delay;
-extern int window_placement;
 extern int snap_to_border;
 extern int snap_width;
 extern GC box_gc;

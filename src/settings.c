@@ -48,7 +48,6 @@ int click_to_focus;
 int focus_new;
 int raise_on_focus;
 int raise_delay;
-int window_placement;
 int snap_to_border;
 int snap_width;
 GC box_gc;
@@ -89,7 +88,6 @@ void loadSettings()
         {"focus_new", NULL, TRUE},
         {"raise_on_focus", NULL, TRUE},
         {"raise_delay", NULL, TRUE},
-        {"window_placement", NULL, TRUE},
         {"snap_to_border", NULL, TRUE},
         {"snap_width", NULL, TRUE},
         {"workspace_count", NULL, TRUE},
@@ -357,14 +355,6 @@ void loadSettings()
     raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
     raise_delay = abs(atoi(getValue("raise_delay", rc)));
 
-    if(!g_ascii_strcasecmp("center_root", getValue("window_placement", rc)))
-    {
-        window_placement = PLACEMENT_ROOT;
-    }
-    else
-    {
-        window_placement = PLACEMENT_MOUSE;
-    }
     snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
     snap_width = abs(atoi(getValue("snap_width", rc)));
 
