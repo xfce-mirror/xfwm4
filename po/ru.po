@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2004-06-16 00:07+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-16 00:48+0200\n"
 "PO-Revision-Date: 2003-09-03 22:20+0300\n"
 "Last-Translator: Dan Korostelev <daniel@ats.energo.ru>\n"
 "Language-Team: Russian <daniel@ats.energo.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins.c:123
 msgid ""
