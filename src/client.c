@@ -1968,7 +1968,7 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         if (!exclude || (c != exclude))
         {
             if ((c->win_layer <= layer) && clientAcceptFocus (c)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
             {
                 top = c;
             }
@@ -3897,6 +3897,7 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     g_return_if_fail (c != NULL);
     MyXGrabServer ();
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
+    clientPassFocus(c);
     XUnmapWindow (dpy, c->window);
     XUnmapWindow (dpy, c->frame);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
@@ -4235,8 +4236,7 @@ clientSetWorkspaceSingle (Client * c, int ws)
         setHint (dpy, c->window, win_workspace, ws);
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
         {
-            setHint (dpy, c->window, net_wm_desktop,
-                (unsigned long) ALL_WORKSPACES);
+            setHint (dpy, c->window, net_wm_desktop, (unsigned long) ALL_WORKSPACES);
         }
         else
         {
