@@ -129,7 +129,6 @@ void workspaceSetCount(int count)
 {
     Client *c;
     int i;
-    unsigned long data[1];
 
     DBG("entering workspaceSetCount\n");
 
@@ -143,8 +142,7 @@ void workspaceSetCount(int count)
     }
 
     setGnomeHint(dpy, root, win_workspace_count, count);
-    data[0] = count;
-    XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
+    setNetHint(dpy, root, net_number_of_desktops, count);
     params.workspace_count = count;
 
     for(c = clients, i = 0; i < client_count; c = c->next, i++)

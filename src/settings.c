@@ -685,9 +685,14 @@ gboolean loadSettings(void)
 
     if(params.workspace_count < 0)
     {
-        params.workspace_count = abs(TOINT(getValue("workspace_count", rc)));
-        setGnomeHint(dpy, root, win_workspace_count, params.workspace_count);
-	setNetHint(dpy, root, net_number_of_desktops, params.workspace_count);
+        gint workspace_count;
+        workspace_count = abs(TOINT(getValue("workspace_count", rc)));
+	if (workspace_count < 0)
+	{
+	    workspace_count = 0;
+	}
+        g_message("workspace count not set, using rc value: %i", workspace_count);
+        workspaceSetCount(workspace_count);
     }
 
     params.wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
@@ -783,16 +788,6 @@ gboolean initSettings(void)
         initPixmap(&params.title[i][ACTIVE]);
         initPixmap(&params.title[i][INACTIVE]);
     }
-    if(getNetHint(dpy, root, net_number_of_desktops, &val))
-    {
-        params.workspace_count = (int) val;
-	setGnomeHint(dpy, root, win_workspace_count, params.workspace_count);
-    }
-    else if(getGnomeHint(dpy, root, win_workspace_count, &val))
-    {
-        params.workspace_count = (int) val;
-	setNetHint(dpy, root, net_number_of_desktops, params.workspace_count);
-    }
     if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
     {
         g_warning("MCS manager not running");
@@ -809,6 +804,15 @@ gboolean initSettings(void)
 
     mcs_initted = TRUE;
 
+    if(getNetHint(dpy, root, net_number_of_desktops, &val))
+    {
+        workspaceSetCount(val);
+    }
+    else if(getGnomeHint(dpy, root, win_workspace_count, &val))
+    {
+        workspaceSetCount(val);
+    }
+    
     if(!loadSettings())
     {
         return FALSE;
