@@ -48,6 +48,7 @@
 #include "mywindow.h"
 #include "settings.h"
 #include "tabwin.h"
+#include "poswin.h"
 #include "session.h"
 #include "startup_notification.h"
 
@@ -107,6 +108,7 @@ struct _MoveResizeData
     int ox, oy;
     int oldw, oldh;
     int corner;
+    Poswin *poswin;
     Window tmp_event_window;
     Client *c;
 };
@@ -5489,6 +5491,10 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
+    static GtkWidget *window = NULL;
+    static GtkWidget *label = NULL;
+    static GtkWidget *frame = NULL;
+    char location[32];  /* 32 is enough for (NNNNNxNNNNN) @ (-NNNNN,-NNNNN) */
 
     TRACE ("entering clientResize_event_filter");
 
@@ -5522,6 +5528,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
 
     last_timestamp = stashEventTime (last_timestamp, xevent);
+
     if (xevent->type == KeyPress)
     {
         if (passdata->use_keys)
@@ -5726,6 +5733,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->width = prev_width;
             }
         }
+        poswinSetPosition (passdata->poswin, frame_x, frame_y, c->width, c->height, c->size->width_inc, c->size->height_inc);
         if (params.box_resize)
         {
             clientDrawOutline (c);
@@ -5738,6 +5746,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             wc.height = c->height;
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
         }
+        
     }
     else if (xevent->type == ButtonRelease)
     {
@@ -5837,11 +5846,15 @@ clientResize (Client * c, int corner, XEvent * e)
         removeTmpEventWin (passdata.tmp_event_window);
         return;
     }
-
     if (passdata.use_keys)
     {
         XPutBackEvent (dpy, e);
     }
+    
+    passdata.poswin = poswinCreate();
+    poswinSetPosition (passdata.poswin, frameX (c), frameY (c), c->width, c->height, c->size->width_inc, c->size->height_inc);
+    poswinShow (passdata.poswin);
+
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     pushEventFilter (clientResize_event_filter, &passdata);
@@ -5849,7 +5862,9 @@ clientResize (Client * c, int corner, XEvent * e)
     popEventFilter ();
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
-
+    
+    poswinDestroy (passdata.poswin);
+    
     if (passdata.grab && params.box_resize)
     {
         clientDrawOutline (c);

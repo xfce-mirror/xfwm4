@@ -58,8 +58,9 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-mypixmap.$(OBJEXT) xfwm4-mywindow.$(OBJEXT) \
-	xfwm4-parserc.$(OBJEXT) xfwm4-session.$(OBJEXT) \
-	xfwm4-settings.$(OBJEXT) xfwm4-startup_notification.$(OBJEXT) \
+	xfwm4-parserc.$(OBJEXT) xfwm4-poswin.$(OBJEXT) \
+	xfwm4-session.$(OBJEXT) xfwm4-settings.$(OBJEXT) \
+	xfwm4-startup_notification.$(OBJEXT) \
 	xfwm4-spinning_cursor.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
 	xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
@@ -78,6 +79,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mypixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mywindow.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-poswin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-spinning_cursor.Po \
@@ -266,6 +268,8 @@ xfwm4_SOURCES = \
 	mywindow.h 							\
 	parserc.c 							\
 	parserc.h 							\
+	poswin.c 							\
+	poswin.h 							\
 	session.c 							\
 	session.h 							\
 	settings.c 							\
@@ -385,6 +389,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mypixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mywindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-parserc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-poswin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-spinning_cursor.Po@am__quote@
@@ -679,6 +684,30 @@ xfwm4-parserc.lo: parserc.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-parserc.Plo' tmpdepfile='$(DEPDIR)/xfwm4-parserc.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-parserc.lo `test -f 'parserc.c' || echo '$(srcdir)/'`parserc.c
+
+xfwm4-poswin.o: poswin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-poswin.o -MD -MP -MF "$(DEPDIR)/xfwm4-poswin.Tpo" -c -o xfwm4-poswin.o `test -f 'poswin.c' || echo '$(srcdir)/'`poswin.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-poswin.Tpo" "$(DEPDIR)/xfwm4-poswin.Po"; else rm -f "$(DEPDIR)/xfwm4-poswin.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='poswin.c' object='xfwm4-poswin.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-poswin.Po' tmpdepfile='$(DEPDIR)/xfwm4-poswin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-poswin.o `test -f 'poswin.c' || echo '$(srcdir)/'`poswin.c
+
+xfwm4-poswin.obj: poswin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-poswin.obj -MD -MP -MF "$(DEPDIR)/xfwm4-poswin.Tpo" -c -o xfwm4-poswin.obj `if test -f 'poswin.c'; then $(CYGPATH_W) 'poswin.c'; else $(CYGPATH_W) '$(srcdir)/poswin.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-poswin.Tpo" "$(DEPDIR)/xfwm4-poswin.Po"; else rm -f "$(DEPDIR)/xfwm4-poswin.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='poswin.c' object='xfwm4-poswin.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-poswin.Po' tmpdepfile='$(DEPDIR)/xfwm4-poswin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-poswin.obj `if test -f 'poswin.c'; then $(CYGPATH_W) 'poswin.c'; else $(CYGPATH_W) '$(srcdir)/poswin.c'; fi`
+
+xfwm4-poswin.lo: poswin.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-poswin.lo -MD -MP -MF "$(DEPDIR)/xfwm4-poswin.Tpo" -c -o xfwm4-poswin.lo `test -f 'poswin.c' || echo '$(srcdir)/'`poswin.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-poswin.Tpo" "$(DEPDIR)/xfwm4-poswin.Plo"; else rm -f "$(DEPDIR)/xfwm4-poswin.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='poswin.c' object='xfwm4-poswin.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-poswin.Plo' tmpdepfile='$(DEPDIR)/xfwm4-poswin.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-poswin.lo `test -f 'poswin.c' || echo '$(srcdir)/'`poswin.c
 
 xfwm4-session.o: session.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-session.o -MD -MP -MF "$(DEPDIR)/xfwm4-session.Tpo" -c -o xfwm4-session.o `test -f 'session.c' || echo '$(srcdir)/'`session.c; \

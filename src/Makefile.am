@@ -23,6 +23,8 @@ xfwm4_SOURCES =								\
 	mywindow.h 							\
 	parserc.c 							\
 	parserc.h 							\
+	poswin.c 							\
+	poswin.h 							\
 	session.c 							\
 	session.h 							\
 	settings.c 							\
