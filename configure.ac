@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.2.1])
+AM_INIT_AUTOMAKE([xfwm4], [4.2.2])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -108,6 +108,8 @@ Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+doc/fr/Makefile
+doc/fr/images/Makefile
 defaults/Makefile
 icons/Makefile
 icons/48x48/Makefile
