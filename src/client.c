@@ -1232,7 +1232,7 @@ clientWindowType (Client * c)
         c2 = clientGetHighestTransientOrModalFor (c);
         if (c2)
         {
-            if (clientIsTransient (c));
+            if (clientIsTransient (c))
             {
                 c->initial_layer = c2->win_layer;
             }
