@@ -1,5 +1,11 @@
+*.gmo
+*.mo
+*.pot
 Makefile
 Makefile.in
 Makefile.in.in
-*.o
-core
+POTFILES
+cat-id-tbl.c
+messages
+missing
+stamp-cat-id
