@@ -2152,6 +2152,10 @@ Client *clientGetNext(Client * c, int mask)
     {
         for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
         {
+	    if ((c2->type == WINDOW_SPLASHSCREEN) || (c2->type == WINDOW_DESKTOP))
+            {
+                continue;
+            }
             okay = True;
             if((!clientAcceptFocus(c2)) && !(mask & INCLUDE_SKIP_FOCUS))
             {

@@ -31,6 +31,7 @@ koynacity \
 linea \
 meenee \
 metabox \
+microcurve \
 microdeck \
 microdeck2 \
 microgui \
