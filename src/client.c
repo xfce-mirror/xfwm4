@@ -84,9 +84,13 @@
     ((c->win_layer > WIN_LAYER_DESKTOP) && \
      (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
      !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
-     !(c->legacy_fullscreen) && \
+     !(c->legacy_fullscreen))
+/* If you want static gravity windows to be alse excluded jusr add the
+   following statement to the list above. 
+      && \
      !(c->gravity == StaticGravity))
 
+ */
 #define WINDOW_TYPE_DONT_PLACE \
     WINDOW_DESKTOP | \
     WINDOW_DOCK | \
@@ -2634,8 +2638,12 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     }
     mask &= ~(CWStackMode | CWSibling);
 
-    if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && 
-         CONSTRAINED_WINDOW (c))
+    /* 
+       Some broken apps try to achieve fullscreen by using static gravity and a
+       (0,0) position, the second part of the test is for this case.
+     */
+    if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c) 
+         && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0))))
     {
         clientConstrainPos (c, TRUE);
     }
