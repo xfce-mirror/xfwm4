@@ -5,20 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 3.99.3\n"
-"POT-Creation-Date: 2004-01-03 22:16+0100\n"
-"PO-Revision-Date: 2003-08-31 14:10+0800\n"
+"Project-Id-Version: xfwm4 4.0.3.1\n"
+"POT-Creation-Date: 2004-01-13 23:31+0100\n"
+"PO-Revision-Date: 2004-02-08 00:28+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
+msgstr ""
+"Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
 
 #: mcs-plugin/margins.c:131
 msgid "Workspace Margins"
@@ -41,47 +41,43 @@ msgid "Bottom :"
 msgstr "Bawah :"
 
 #: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "Margin Ruangkerja"
+msgstr "Ruangkerja dan Margin"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-#, fuzzy
 msgid "Workspaces"
-msgstr "Ruangkerja %i"
+msgstr "Ruangkerja"
 
 #: mcs-plugin/plugin.c:179
 msgid "Margins"
-msgstr ""
+msgstr "Margin"
 
 #: mcs-plugin/workspaces.c:337
 msgid "Change name"
-msgstr ""
+msgstr "Tukarnama"
 
 #: mcs-plugin/workspaces.c:349
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "Ruangkerja %i"
+msgstr "Ruangkerja %d"
 
 #: mcs-plugin/workspaces.c:359
 msgid "Name:"
-msgstr ""
+msgstr "Nama:"
 
 #: mcs-plugin/workspaces.c:447
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Klik atas nama ruangkerja untuk editnya"
 
 #: mcs-plugin/workspaces.c:519
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "Wrap ruangkerja"
+msgstr "Bilangan ruangkerja:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:550
-#, fuzzy
 msgid "Workspace names"
-msgstr "Margin Ruangkerja"
+msgstr "Nama ruangkerja"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -161,12 +157,12 @@ msgstr "Tajuk font"
 
 #: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
-msgstr "Alignment Tajuk"
+msgstr "Penjajaran Tajuk"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
-msgstr "Alignment teks didalam bar tajuk :"
+msgstr "Penjajaran teks didalam bar tajuk :"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
@@ -218,7 +214,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
-msgstr "Lambatan sebelum bangkitkan tetingkap difokus :"
+msgstr "Lengah sebelum bangkitkan tetingkap difokus :"
 
 #: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
@@ -246,7 +242,7 @@ msgstr "Papankekunci dan fokus"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
-msgstr "Tetingkap snapping"
+msgstr "Snapping tetingkap"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
@@ -278,7 +274,7 @@ msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Wrap ruangkerja bila lepaskan tetingkap keluar skrin"
+msgstr "Wrap ruangkerja bila seretkan tetingkap keluar skrin"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
@@ -290,7 +286,7 @@ msgstr "Opaque pindah dan saizsemula"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
-msgstr "Lihat kandungan tetingkap bila saizsemula"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
@@ -313,7 +309,7 @@ msgstr "Lanjutan"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Takterurus net_wm_state (tetingkap 0x%lx)"
 
-#: src/events.c:1490
+#: src/events.c:1495
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operasi tidak disokong (lagi)\n"
@@ -323,27 +319,27 @@ msgstr "%s: Operasi tidak disokong (lagi)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Kesilapan segmentasi"
 
-#: src/main.c:399
+#: src/main.c:402
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
 
-#: src/main.c:404
+#: src/main.c:407
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Kehilangan data dari fail default"
 
-#: src/main.c:413
+#: src/main.c:416
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
+msgstr "%s: Gagal untuk memasuki mod daemon: %s"
 
-#: src/main.c:421
+#: src/main.c:424
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: Gagal unuk cipta proses baru: %s"
 
-#: src/main.c:442
+#: src/main.c:445
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ralat tidak diketahui terjadi"
@@ -386,11 +382,11 @@ msgstr "Nyah_lekat"
 
 #: src/menu.c:51
 msgid "Context _help"
-msgstr ""
+msgstr "Context _bantuan"
 
 #: src/menu.c:52 src/menu.c:53
 msgid "Always on top"
-msgstr ""
+msgstr "Sentiasa di atas"
 
 #: src/menu.c:54
 msgid "Send to..."
@@ -410,7 +406,7 @@ msgstr "_Keluar"
 
 #: src/menu.c:63
 msgid "Restart"
-msgstr "Mulasemula"
+msgstr "Ulangmula"
 
 #: src/menu.c:166
 #, c-format
@@ -435,7 +431,7 @@ msgstr "%s: Tak boleh allocate warna aktif %s\n"
 #: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Tak boleh parse warna aktif %s\n"
+msgstr "%s: Tak boleh parse warna tak aktif %s\n"
 
 #: src/settings.c:604
 #, c-format
@@ -460,11 +456,8 @@ msgstr "%s: Kehilangan nilai dalam fail default"
 #: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: Bilangan ruangkerja tidak ditetapkan, guna nilai rc: %i"
+msgstr "%s: Bilangan ruangkerja belum set, guna nilai rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Suis ke ..."
-
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Adjust margin ruangkerja"
