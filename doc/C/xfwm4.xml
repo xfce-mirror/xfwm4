@@ -164,7 +164,7 @@ maintainers, etc. Commented out by default.
 	  <para>You need to give the focus to a window if you want it to 
 	    receive keyboard and mouse input. Window decorations colors will 
 	    change, following the focus. To obtain more details about focus 
-	    options, please refer to <xref linkend="wm-focus"/> above.
+	    options, please refer to <xref linkend="wm-focus"/> below.
 	  </para>
 	  <para>A keyboard shortcut allows to switch the focus from a window
 	    to others : Hold Alt and then you can press Tab repeatedly untill
