@@ -116,7 +116,6 @@ mcs-plugin/Makefile
 po/Makefile.in 
 src/Makefile
 themes/Makefile
-themes/breeze/Makefile
 themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
