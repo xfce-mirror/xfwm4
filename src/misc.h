@@ -33,7 +33,7 @@ GC createGC (Colormap, char *, int, XFontStruct *, int, gboolean);
 void sendClientMessage (Window, Atom, long, int);
 void MyXGrabServer (void);
 void MyXUngrabServer (void);
-Window setTmpEventWin (long);
+Window setTmpEventWin (int, int, unsigned int, unsigned int, long);
 void removeTmpEventWin (Window);
 
 #endif /* INC_MISC_H */

@@ -151,18 +151,19 @@ MyXUngrabServer (void)
 }
 
 Window
-setTmpEventWin (long eventmask)
+setTmpEventWin (int x, int y, unsigned int w, unsigned int h, long eventmask)
 {
-    Window w;
-
+    Window win;
     XSetWindowAttributes attributes;
+
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
-    w = XCreateWindow (dpy, root, 0, 0, MyDisplayFullWidth (dpy, screen),
-        MyDisplayFullHeight (dpy, screen), 0, 0, InputOnly, CopyFromParent,
-        CWEventMask, &attributes);
-    XMapRaised (dpy, w);
-    return (w);
+    win = XCreateWindow (dpy, root, x, y, w, h, 0, 0, 
+                         InputOnly, CopyFromParent,
+                         CWEventMask | CWOverrideRedirect, &attributes);
+    XMapRaised (dpy, win);
+    XFlush (dpy);
+    return (win);
 }
 
 void

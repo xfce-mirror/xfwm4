@@ -63,6 +63,7 @@ static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
 static Window menu_event_window = None;
+static int edge_scroll_x = 0;
 
 static void menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
     gpointer menu_data, gpointer item_data);
@@ -231,7 +232,6 @@ static inline void
 handleMotionNotify (XMotionEvent * ev)
 {
     int msx, msy, max;
-    static int edge_scroll_x = 0;
 
     TRACE ("entering handleMotionNotify");
 
@@ -1022,7 +1022,18 @@ handleLeaveNotify (XCrossingEvent * ev)
 {
     TRACE ("entering handleLeaveNotify");
 
-    /* Actually, we have nothing to do here... */
+    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
+        || (ev->detail > NotifyNonlinearVirtual))
+    {
+        /* We're not interested in such notifications */
+        return;
+    }
+
+    if ((ev->window == side_win[0]) || (ev->window == side_win[1]))
+    {
+        TRACE ("Reset edge_scroll_x");
+        edge_scroll_x = 0;
+    }
 }
 
 static inline void
@@ -1635,7 +1646,10 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        Don't forget to delete that window once the menu is closed, though, or we'll get in
        trouble.
      */
-    menu_event_window = setTmpEventWin (NoEventMask);
+    menu_event_window = setTmpEventWin (0, 0, 
+                                        MyDisplayFullWidth (dpy, screen),
+                                        MyDisplayFullHeight (dpy, screen), 
+                                        NoEventMask);
     menu =
         menu_default (ops, insensitive, menu_callback, c->win_workspace,
         params.workspace_count, c);

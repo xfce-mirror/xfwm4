@@ -59,14 +59,13 @@
     SubstructureRedirectMask|\
     ButtonPressMask|\
     ButtonReleaseMask|\
-    PointerMotionMask|\
     FocusChangeMask|\
     PropertyChangeMask|\
     ColormapNotify
 
 char *progname;
 Display *dpy;
-Window root, gnome_win;
+Window root, gnome_win, side_win[2];
 Colormap cmap;
 int screen;
 int depth;
@@ -135,6 +134,8 @@ cleanUp ()
             params.shortcut_exec[i] = NULL;
         }
     }
+    removeTmpEventWin (side_win[0]);
+    removeTmpEventWin (side_win[1]);
     XSetInputFocus (dpy, root, RevertToPointerRoot, CurrentTime);
     closeEventFilter ();
 }
@@ -247,6 +248,15 @@ initialize (int argc, char **argv)
     {
         load_saved_session ();
     }
+
+    /* Create the side windows to detect edge movement */
+    side_win[0] = setTmpEventWin (0, 0, 1,
+                                  MyDisplayFullHeight (dpy, screen), 
+                                  LeaveWindowMask | PointerMotionMask);
+
+    side_win[1] = setTmpEventWin (MyDisplayFullWidth (dpy, screen) - 1, 0, 1,
+                                  MyDisplayFullHeight (dpy, screen), 
+                                  LeaveWindowMask | PointerMotionMask);
 
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
     margins[MARGIN_LEFT] = gnome_margins[MARGIN_LEFT] = 0;

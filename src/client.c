@@ -82,7 +82,6 @@
 
 Client *clients = NULL;
 Client *last_raise = NULL;
-Client *top_of_stack = NULL;
 unsigned int client_count = 0;
 
 static GSList *windows = NULL;
@@ -98,7 +97,6 @@ static void clientGetInitialNetWmDesktop (Client * c);
 static void clientSetNetClientList (Atom a, GSList * list);
 static void clientSetNetActions (Client * c);
 static void clientWindowType (Client * c);
-static void clientSetTopOfStack (void);
 static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
 static int clientGetWidthInc (Client * c);
@@ -1411,25 +1409,6 @@ clientGravitate (Client * c, int mode)
     c->y = y;
 }
 
-/* Compute top of (managed) stack for restacking */
-static void
-clientSetTopOfStack (void)
-{
-    GSList *last = NULL;   
-    top_of_stack = NULL;
-    
-    if (!windows_stack)
-    {
-        return;
-    }
-    
-    last = g_slist_last(windows_stack);
-    if (last)
-    {
-        top_of_stack = (Client *) last->data;
-    }
-}
-
 static void
 clientAddToList (Client * c)
 {
@@ -1478,7 +1457,6 @@ clientAddToList (Client * c)
         else
         {
             windows_stack = g_slist_append (windows_stack, c);
-            top_of_stack = c;
         }
     }
 
@@ -1523,7 +1501,6 @@ clientRemoveFromList (Client * c)
     clientSetNetClientList (net_client_list, windows);
     clientSetNetClientList (win_client_list, windows);
     clientSetNetClientList (net_client_list_stacking, windows_stack);
-    clientSetTopOfStack ();
 
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MANAGED);
 }
@@ -1625,9 +1602,6 @@ clientSetHeight (Client * c, int h1)
 static inline void
 clientApplyStackList (GSList * list)
 {
-    Client *c;
-    GSList *list_copy, *index;
-    XWindowChanges wc;
     Window *xwinstack;
     guint nwindows;
     gint i = 0;
@@ -1636,38 +1610,31 @@ clientApplyStackList (GSList * list)
 
     DBG ("applying stack list");
     nwindows = g_slist_length (list);
-    if (nwindows < 2)
+
+    xwinstack = g_new (Window, nwindows + 2);
+    xwinstack[i++] = side_win[0];
+    xwinstack[i++] = side_win[1];
+
+    if (nwindows)
     {
-        return;
+        GSList *list_copy = NULL;
+        GSList *index;
+        Client *c;
+        
+        list_copy = g_slist_copy (list);
+        list_copy = g_slist_reverse (list_copy);
+        for (index = list_copy; index; index = g_slist_next (index))
+        {
+            c = (Client *) index->data;
+            xwinstack[i++] = c->frame;
+            DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
+        }
+        g_slist_free (list_copy);
     }
 
-    list_copy = g_slist_copy (list);
-    list_copy = g_slist_reverse (list_copy);
-    xwinstack = g_new (Window, nwindows);
-    for (index = list_copy; index; index = g_slist_next (index))
-    {
-        c = (Client *) index->data;
-        xwinstack[i++] = c->frame;
-        DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
-    }
-    /* 
-       Raise the window on top of the list just above the next window to
-       avoid flickering during restack.
-       (contributed by Thomas Leonard <tal00r@ecs.soton.ac.uk>)
-     */
-    if ((top_of_stack) && (top_of_stack->frame != xwinstack[0]))
-    {
-        wc.stack_mode = Above;
-        wc.sibling = top_of_stack->frame;
-        XConfigureWindow(dpy, xwinstack[0], CWStackMode | CWSibling, &wc);
-        top_of_stack = (Client *) list_copy->data;
-    }
-    XRestackWindows (dpy, xwinstack, (int) nwindows);
+    XRestackWindows (dpy, xwinstack, (int) nwindows + 2);
     XFlush (dpy);
     
-    /* Update top_of_stackfor next restacking */
-    
-    g_slist_free (list_copy);
     g_free (xwinstack);
 }
 
@@ -4629,7 +4596,10 @@ clientMove (Client * c, XEvent * e)
      */
 
     passdata.tmp_event_window =
-        setTmpEventWin (ButtonMotionMask | ButtonReleaseMask);
+        setTmpEventWin (0, 0, 
+                        MyDisplayFullWidth (dpy, screen),
+                        MyDisplayFullHeight (dpy, screen), 
+                        ButtonMotionMask | ButtonReleaseMask);
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
     {
@@ -5016,7 +4986,10 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.grab = FALSE;
     passdata.corner = corner;
     passdata.tmp_event_window =
-        setTmpEventWin (ButtonMotionMask | ButtonReleaseMask);
+        setTmpEventWin (0, 0, 
+                        MyDisplayFullWidth (dpy, screen),
+                        MyDisplayFullHeight (dpy, screen), 
+                        ButtonMotionMask | ButtonReleaseMask);
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
     {
