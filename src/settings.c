@@ -70,7 +70,7 @@ XSettingsClient *client;
 
 /* Forward decls */
 static void notify_cb (const char *, XSettingsAction, XSettingsSetting *, void *);
-GdkFilterReturn  client_event_filter (GdkXEvent *, GdkEvent *, gpointer);
+static GdkFilterReturn  client_event_filter (GdkXEvent *, GdkEvent *, gpointer);
 static void watch_cb (Window, Bool, long, void *);
 
 
@@ -496,7 +496,6 @@ static void notify_cb (const char *name, XSettingsAction action, XSettingsSettin
     int row;
     char *text[4];
 
-    gdk_beep();
     printf("xsettings notification\n");
     switch (action)
     {
@@ -509,7 +508,7 @@ static void notify_cb (const char *name, XSettingsAction action, XSettingsSettin
     }
 }
 
-GdkFilterReturn  client_event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
+static GdkFilterReturn  client_event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
 {
     if (xsettings_client_process_event (client, (XEvent *)xevent))
     {
