@@ -1778,7 +1778,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 
     if(mask & (CWWidth | CWHeight))
     {
-        frameDraw(c, FALSE, FALSE);
+        frameDraw(c, FALSE, TRUE);
     }
     if(mask)
     {
