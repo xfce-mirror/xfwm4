@@ -2548,12 +2548,6 @@ void clientMove(Client * c, XEvent * e)
     passdata.c = c;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
-
-    if(e->type == KeyPress)
-    {
-        passdata.use_keys = True;
-        g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
-    }
     /* 
        The following trick is experimental, based on a patch for Kwin 3.1alpha1 by aviv bergman
     
@@ -2572,6 +2566,12 @@ void clientMove(Client * c, XEvent * e)
     attributes.event_mask = ButtonMotionMask;
     passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
     XMapRaised(dpy, passdata.tmp_event_window);
+
+    if(e->type == KeyPress)
+    {
+        passdata.use_keys = True;
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+    }
     g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, CurrentTime);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
@@ -2799,16 +2799,16 @@ void clientResize(Client * c, int corner, XEvent * e)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;
+    attributes.event_mask = ButtonMotionMask;
+    passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
+    XMapRaised(dpy, passdata.tmp_event_window);
 
     getMouseXY(dpy, c->frame, &passdata.mx, &passdata.my);
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-        g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
     }
-    attributes.event_mask = ButtonMotionMask;
-    passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
-    XMapRaised(dpy, passdata.tmp_event_window);
     g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], CurrentTime);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
