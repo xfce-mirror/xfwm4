@@ -71,7 +71,7 @@
 #define START_ICONIC(c) \
     ((c->wmhints) && \
      (c->wmhints->initial_state == IconicState) && \
-     !(c->transient_for))
+     !clientIsTransient(c))
 
 #define CONSTRAINED_WINDOW(c) \
     ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
@@ -105,9 +105,10 @@ static void clientSetWidth(Client * c, int w1);
 static void clientSetHeight(Client * c, int h1);
 static inline void clientApplyStackList(GSList * list);
 static inline Client *clientGetLowestTransient(Client * c);
-#if 0 /* NEVER USED */
 static inline Client *clientGetHighestTransient(Client * c);
-#endif
+static inline Client *clientGetHighestTransientForGroup(Client * c);
+static inline Client *clientGetTopMostForGroup(Client * c);
+static inline gboolean clientVisibleForGroup(Client * c, int workspace);
 static inline Client *clientGetNextTopMost(int layer, Client * exclude);
 static inline Client *clientGetTopMostFocusable(int layer, Client * exclude);
 static inline Client *clientGetBottomMost(int layer, Client * exclude);
@@ -153,96 +154,50 @@ struct _ButtonPressData
     Client *c;
 };
 
-static void clientToggleFullscreen(Client * c)
+Client *clientGetTransient(Client *c)
 {
-    XWindowChanges wc;
-    int layer;
-
-    g_return_if_fail(c != NULL);
-    TRACE("entering clientToggleFullscreen");
-    TRACE("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
-
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    Client *c2 = NULL;
+    
+    if ((c->transient_for) && (c->transient_for != root))
     {
-        int cx, cy;
-
-        cx = frameX(c) + (frameWidth(c) >> 1);
-        cy = frameY(c) + (frameHeight(c) >> 1);
-
-        c->fullscreen_old_x = c->x;
-        c->fullscreen_old_y = c->y;
-        c->fullscreen_old_width = c->width;
-        c->fullscreen_old_height = c->height;
-        c->fullscreen_old_layer = c->win_layer;
-
-        wc.x = MyDisplayX(cx, cy);
-        wc.y = MyDisplayY(cx, cy);
-        wc.width = MyDisplayWidth(dpy, screen, cx, cy);
-        wc.height = MyDisplayHeight(dpy, screen, cx, cy);
-        layer = WIN_LAYER_ABOVE_DOCK;
+        c2 = clientGetFromWindow(c->transient_for, WINDOW);
+        return c2;
     }
-    else
-    {
-        wc.x = c->fullscreen_old_x;
-        wc.y = c->fullscreen_old_y;
-        wc.width = c->fullscreen_old_width;
-        wc.height = c->fullscreen_old_height;
-        layer = c->fullscreen_old_layer;
-    }
-    clientSetNetState(c);
-    clientSetLayer(c, layer);
-
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
-    {
-        clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
-    }
-    else
-    {
-        c->x = wc.x;
-        c->y = wc.y;
-        c->height = wc.height;
-        c->width = wc.width;
-    }
+    return NULL;
 }
 
-static void clientToggleAbove(Client * c)
+gboolean clientIsTransient(Client *c)
 {
-    int layer;
-
-    g_return_if_fail(c != NULL);
-    TRACE("entering clientToggleAbove");
-    TRACE("toggle above client \"%s\" (0x%lx)", c->name, c->window);
-
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
-    {
-        layer = WIN_LAYER_ABOVE_DOCK;
-    }
-    else
-    {
-        layer = c->initial_layer;
-    }
-    clientSetNetState(c);
-    clientSetLayer(c, layer);
+    return (c->transient_for != None); 
 }
 
-static void clientToggleBelow(Client * c)
+gboolean clientSameGroup(Client *c1, Client *c2)
 {
-    int layer;
+    return ((c1 != c2) && (c1->group_leader != None) && (c1->group_leader == c2->group_leader));
+}
 
-    g_return_if_fail(c != NULL);
-    TRACE("entering clientToggleBelow");
-    TRACE("toggle below client \"%s\" (0x%lx)", c->name, c->window);
+gboolean clientIsTransientFor(Client *c1, Client *c2)
+{
+    Client *c3 = NULL;
+    
+    if (c1->transient_for) 
+    {
+        if (c1->transient_for != root)
+        {
+            c3 = clientGetFromWindow(c1->transient_for, WINDOW);
+            return (c2 == c3);
+        }
+        else
+        {
+            return (clientSameGroup(c1, c2) && !clientIsTransient(c2));
+        }
+    }
+    return FALSE;
+}
 
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
-    {
-        layer = WIN_LAYER_BELOW;
-    }
-    else
-    {
-        layer = c->initial_layer;
-    }
-    clientSetNetState(c);
-    clientSetLayer(c, layer);
+gboolean clientIsTransientForGroup(Client *c)
+{
+    return ((c->transient_for) && (c->transient_for == root));
 }
 
 void clientSetNetState(Client * c)
@@ -738,7 +693,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
     TRACE("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* This is to make sure that transient are shown with their "master" window */
-    if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
+    if ((c2 = clientGetTransient(c)))
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
         c->win_workspace = c2->win_workspace;
@@ -957,27 +912,16 @@ static void clientWindowType(Client * c)
         CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
-    if(c->transient_for)
+    if(clientIsTransient(c))
     {
+        Client *c2;
 
         TRACE("Window is a transient");
-        if (c->transient_for == root)
+
+        c2 = clientGetHighestTransientForGroup(c);
+        if(c2)
         {
-            TRACE("window is transient  for root window");
-            /* c->initial_layer = WIN_LAYER_ONTOP; */
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
-            /* Remove the transient field now */
-            c->transient_for = None;
-        }
-        else
-        {
-            Client *c2;
-            
-            c2 = clientGetFromWindow(c->transient_for, WINDOW);
-            if(c2)
-            {
-                c->initial_layer = c2->win_layer;
-            }
+            c->initial_layer = c2->win_layer;
         }
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
@@ -1422,7 +1366,7 @@ static inline Client *clientGetLowestTransient(Client * c)
     for(index = windows_stack; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-        if((c2 != c) && (c2->transient_for == c->window))
+        if((c2 != c) && clientIsTransientFor(c2, c))
         {
             lowest_transient = c2;
             break;
@@ -1431,7 +1375,6 @@ static inline Client *clientGetLowestTransient(Client * c)
     return lowest_transient;
 }
 
-#if 0
 static inline Client *clientGetHighestTransient(Client * c)
 {
     Client *highest_transient = NULL;
@@ -1447,7 +1390,7 @@ static inline Client *clientGetHighestTransient(Client * c)
         c2 = (Client *) index1->data;
         if(c2)
         {
-            if((c2 != c) && (c2->transient_for == c->window))
+            if((c2 != c) && clientIsTransientFor(c2, c))
             {
                 transients = g_slist_append(transients, c2);
                 highest_transient = c2;
@@ -1457,7 +1400,7 @@ static inline Client *clientGetHighestTransient(Client * c)
                 for(index2 = transients; index2; index2 = g_slist_next(index2))
                 {
                     c3 = (Client *) index2->data;
-                    if((c3 != c2) && (c2->transient_for == c3->window))
+                    if((c3 != c2) && clientIsTransientFor(c2, c3))
                     {
                         transients = g_slist_append(transients, c2);
                         highest_transient = c2;
@@ -1474,7 +1417,79 @@ static inline Client *clientGetHighestTransient(Client * c)
 
     return highest_transient;
 }
-#endif
+
+static inline Client *clientGetHighestTransientForGroup(Client * c)
+{
+    Client *highest_transient = NULL;
+    Client *c2;
+    GSList *index;
+
+    g_return_val_if_fail(c != NULL, NULL);
+    TRACE("entering clientGetHighestTransientForGroup");
+
+    for(index = windows_stack; index; index = g_slist_next(index))
+    {
+        c2 = (Client *) index->data;
+        if(c2)
+        {
+            if((c2 != c) && clientIsTransientFor(c2, c))
+            {
+                highest_transient = c2;
+            }
+        }
+    }
+
+    return highest_transient;
+}
+
+static inline Client *clientGetTopMostForGroup(Client * c)
+{
+    Client *top_most = NULL;
+    Client *c2;
+    GSList *index;
+
+    g_return_val_if_fail(c != NULL, NULL);
+    TRACE("entering clientGetTopMostForGroup");
+
+    for(index = windows_stack; index; index = g_slist_next(index))
+    {
+        c2 = (Client *) index->data;
+        if(c2)
+        {
+            if(clientSameGroup(c, c2))
+            {
+                top_most = c2;
+            }
+        }
+    }
+
+    return top_most;
+}
+
+static inline gboolean clientVisibleForGroup(Client * c, int workspace)
+{
+    gboolean has_visible = FALSE;
+    Client *c2;
+    GSList *index;
+
+    g_return_val_if_fail(c != NULL, FALSE);
+    TRACE("entering clientGetHighestTransientForGroup");
+
+    for(index = windows_stack; index; index = g_slist_next(index))
+    {
+        c2 = (Client *) index->data;
+        if(c2)
+        {
+            if(clientSameGroup(c, c2) && (c2->win_workspace == workspace))
+            {
+                has_visible = TRUE;
+                break;
+            }
+        }
+    }
+
+    return has_visible;
+}
 
 static inline Client *clientGetNextTopMost(int layer, Client * exclude)
 {
@@ -1732,7 +1747,8 @@ static void clientInitPosition(Client * c)
         }
         return;
     }
-    else if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
+
+    if(clientIsTransient(c) && (c2 = clientGetTransient(c)))
     {
         /* Center transient relative to their parent window */
         c->x = c2->x + (c2->width - c->width) / 2;
@@ -2570,7 +2586,7 @@ static GSList *clientListTransients(Client *c)
         c2 = (Client *) index1->data;
         if(c2 != c)
         {
-            if(c2->transient_for == c->window)
+            if(clientIsTransientFor(c2, c))
             {
                 transients = g_slist_append(transients, c2);
             }
@@ -2579,7 +2595,7 @@ static GSList *clientListTransients(Client *c)
                 for(index2 = transients; index2; index2 = g_slist_next(index2))
                 {
                     c3 = (Client *) index2->data;
-                    if((c3 != c2) && (c2->transient_for == c3->window))
+                    if((c3 != c2) && clientIsTransientFor(c2, c3))
                     {
                         transients = g_slist_append(transients, c2);
                         break;
@@ -2691,9 +2707,9 @@ void clientHideAll(Client * c)
 
     for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
-        if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && !(c2->transient_for) && (c2 != c))
+        if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HAS_BORDER) && !clientIsTransient(c2) && (c2 != c))
         {
-            if((!c) || ((c->transient_for != c2->window) && (c2->win_workspace == c->win_workspace)))
+            if(((!c) && (c2->win_workspace == workspace)) || ((c) && !clientIsTransientFor(c, c2) && (c2->win_workspace == c->win_workspace)))
             {
                 clientHide(c2, True);
             }
@@ -2775,7 +2791,7 @@ void clientRaise(Client * c)
             c2 = (Client *) index1->data;
             if(c2)
             {
-                if((c2 != c) && (c2->transient_for == c->window))
+                if((c2 != c) && clientIsTransientFor(c2, c))
                 {
                     transients = g_slist_append(transients, c2);
                     if(sibling)
@@ -2796,7 +2812,7 @@ void clientRaise(Client * c)
                     for(index2 = transients; index2; index2 = g_slist_next(index2))
                     {
                         c3 = (Client *) index2->data;
-                        if((c3 != c2) && (c2->transient_for == c3->window))
+                        if((c3 != c2) && clientIsTransientFor(c2, c3))
                         {
                             transients = g_slist_append(transients, c2);
                             if(sibling)
@@ -2849,9 +2865,13 @@ void clientLower(Client * c)
     {
         Client *client_sibling = NULL;
 
-        if(c->transient_for)
+        if (clientIsTransientForGroup(c))
         {
-            client_sibling = clientGetFromWindow(c->transient_for, WINDOW);
+            client_sibling = clientGetTopMostForGroup(c);
+        }
+        else if(clientIsTransient(c))
+        {
+            client_sibling = clientGetTransient(c);
         }
         if(!client_sibling)
         {
@@ -2948,7 +2968,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
         if(c2->win_workspace != ws)
         {
             clientSetWorkspaceSingle(c2, ws);
-            if(manage_mapping && !(c2->transient_for) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
+            if(manage_mapping && !clientIsTransient(c2) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
             {
                 if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
                 {
@@ -3115,6 +3135,98 @@ void clientToggleSticky(Client * c, gboolean include_transients)
     {
         clientStick(c, include_transients);
     }
+}
+
+static void clientToggleFullscreen(Client * c)
+{
+    XWindowChanges wc;
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    TRACE("entering clientToggleFullscreen");
+    TRACE("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    {
+        int cx, cy;
+
+        cx = frameX(c) + (frameWidth(c) >> 1);
+        cy = frameY(c) + (frameHeight(c) >> 1);
+
+        c->fullscreen_old_x = c->x;
+        c->fullscreen_old_y = c->y;
+        c->fullscreen_old_width = c->width;
+        c->fullscreen_old_height = c->height;
+        c->fullscreen_old_layer = c->win_layer;
+
+        wc.x = MyDisplayX(cx, cy);
+        wc.y = MyDisplayY(cx, cy);
+        wc.width = MyDisplayWidth(dpy, screen, cx, cy);
+        wc.height = MyDisplayHeight(dpy, screen, cx, cy);
+        layer = WIN_LAYER_ABOVE_DOCK;
+    }
+    else
+    {
+        wc.x = c->fullscreen_old_x;
+        wc.y = c->fullscreen_old_y;
+        wc.width = c->fullscreen_old_width;
+        wc.height = c->fullscreen_old_height;
+        layer = c->fullscreen_old_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    {
+        clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+    }
+    else
+    {
+        c->x = wc.x;
+        c->y = wc.y;
+        c->height = wc.height;
+        c->width = wc.width;
+    }
+}
+
+static void clientToggleAbove(Client * c)
+{
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    TRACE("entering clientToggleAbove");
+    TRACE("toggle above client \"%s\" (0x%lx)", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+    {
+        layer = WIN_LAYER_ABOVE_DOCK;
+    }
+    else
+    {
+        layer = c->initial_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
+}
+
+static void clientToggleBelow(Client * c)
+{
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    TRACE("entering clientToggleBelow");
+    TRACE("toggle below client \"%s\" (0x%lx)", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+    {
+        layer = WIN_LAYER_BELOW;
+    }
+    else
+    {
+        layer = c->initial_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
 }
 
 inline void clientRemoveMaximizeFlag(Client * c)
@@ -3559,7 +3671,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             clientDrawOutline(c);
         }
 
-        if((params.workspace_count > 1) && !(c->transient_for))
+        if((params.workspace_count > 1) && !clientIsTransient(c))
         {
             static gboolean wrapped = FALSE;
             int msx, msy;

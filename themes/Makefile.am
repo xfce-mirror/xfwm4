@@ -44,6 +44,7 @@ SUBDIRS =								\
 	next 								\
 	ops 								\
 	oroborus 							\
+	perl 								\
 	pills 								\
 	piranha 							\
 	platinum 							\

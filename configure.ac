@@ -101,6 +101,7 @@ themes/mofit/Makefile
 themes/next/Makefile
 themes/ops/Makefile
 themes/oroborus/Makefile
+themes/perl/Makefile
 themes/pills/Makefile
 themes/piranha/Makefile
 themes/platinum/Makefile

@@ -560,16 +560,16 @@ void getTransientFor(Display * dpy, int screen, Window w, Window * transient_for
 
     if(XGetTransientForHint(dpy, w, transient_for))
     {
-        if (transient_for == None)
-	{
-	    /* Treat transient for "none" same as transient for root */
-	    *transient_for = RootWindow(dpy, screen);
-	}
-	else if (transient_for == w)
-	{
+        if (*transient_for == None)
+        {
+            /* Treat transient for "none" same as transient for root */
+            *transient_for = RootWindow(dpy, screen);
+        }
+        else if (*transient_for == w)
+        {
             /* Very unlikely to happen, but who knows, maybe a braindead app */
-	    *transient_for = None;
-	}
+            *transient_for = None;
+        }
     }
     else
     {

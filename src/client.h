@@ -217,6 +217,11 @@ extern Client *clients;
 extern Window *client_list;
 extern unsigned int client_count;
 
+Client *clientGetTransient(Client *);
+gboolean clientIsTransient(Client *);
+gboolean clientSameGroup(Client *, Client *);
+gboolean clientIsTransientFor(Client *, Client *);
+gboolean clientIsTransientForGroup(Client *);
 void clientSetNetState(Client *);
 void clientUpdateNetState(Client *, XClientMessageEvent *);
 void clientGetNetWmType(Client * c);

@@ -72,10 +72,10 @@ void workspaceSwitch(int new_ws, Client * c2)
         {
             f = previous;
         }
-	else
-	{
-	    clientSetFocus(c2, FALSE);
-	}
+        else
+        {
+            clientSetFocus(c2, FALSE);
+        }
     }
 
     list_of_windows = clientGetStackList();
@@ -83,7 +83,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c = (Client *) index->data;
-        if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !(c->transient_for) && ((c->win_workspace != new_ws)))
+        if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !clientIsTransient(c) && ((c->win_workspace != new_ws)))
         {
             clientHide(c, FALSE);
         }
@@ -100,7 +100,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         }
         else
         {
-            if((c->win_workspace == new_ws) && !(c->transient_for) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+            if((c->win_workspace == new_ws) && !clientIsTransient(c) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
             {
                 clientShow(c, FALSE);
                 if((!f) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FOCUS))

@@ -827,8 +827,11 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
     TRACE("entering handleEnterNotify");
 
-    while(XCheckTypedEvent(dpy, EnterNotify, (XEvent *) ev))
-        ;
+    if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
+    {
+        /* We're not interested in such notifications */
+        return;
+    }
 
     TRACE("entered window is (0x%lx)", ev->window);
 
@@ -973,7 +976,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             clientGetNetWmType(c);
             frameDraw(c, TRUE, FALSE);
         }
-        else if((ev->atom == win_workspace) && !(c->transient_for))
+        else if((ev->atom == win_workspace) && !clientIsTransient(c))
         {
             TRACE("client \"%s\" (0x%lx) has received a win_workspace notify", c->name, c->window);
             getGnomeHint(dpy, c->window, win_workspace, &dummy);
@@ -1070,7 +1073,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             TRACE("client \"%s\" (0x%lx) has received a win_layer event", c->name, c->window);
             clientSetLayer(c, ev->data.l[0]);
         }
-        else if((ev->message_type == win_workspace) && (ev->format == 32) && !(c->transient_for))
+        else if((ev->message_type == win_workspace) && (ev->format == 32) && !clientIsTransient(c))
         {
             TRACE("client \"%s\" (0x%lx) has received a win_workspace event", c->name, c->window);
             clientSetWorkspace(c, ev->data.l[0], TRUE);
@@ -1082,7 +1085,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             {
                 clientStick(c, TRUE);
             }
-            else if(!(c->transient_for))
+            else if(!clientIsTransient(c))
             {
                 clientSetWorkspace(c, ev->data.l[0], TRUE);
             }
