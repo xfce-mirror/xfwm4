@@ -115,6 +115,32 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
     return (overlapX (x0, x1, tx0, tx1) * overlapY (y0, y1, ty0, ty1));
 }
 
+static void
+clientAutoMaximize (Client * c)
+{
+    ScreenInfo *screen_info = NULL;
+    GdkRectangle rect;
+    gint monitor_nbr;
+    int cx, cy;
+
+    cx = frameX (c) + (frameWidth (c) / 2);
+    cy = frameY (c) + (frameHeight (c) / 2);
+
+    screen_info = c->screen_info;
+    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > rect.width))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > rect.height))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+    }
+}
+
 void 
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
@@ -488,7 +514,9 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
+            clientAutoMaximize (c);
         }
+
         return;
     }
 
@@ -500,7 +528,9 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
+            clientAutoMaximize (c);
         }
+
         return;
     }
 
@@ -561,6 +591,8 @@ clientInitPosition (Client * c)
                 TRACE ("overlaps is 0 so it's the best we can get");
                 c->x = test_x;
                 c->y = test_y;
+                clientAutoMaximize (c);
+
                 return;
             }
             else if ((count_overlaps < best_overlaps) || (first))
@@ -580,6 +612,8 @@ clientInitPosition (Client * c)
     }
     c->x = best_x;
     c->y = best_y;
+    clientAutoMaximize (c);
+
     return;
 }
 
