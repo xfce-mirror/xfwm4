@@ -1,0 +1,406 @@
+# translation of xfwm4.po to Turkish
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2003 PACKAGES COPYRIGHT HOLDER
+# Erçin EKER <erc.caldera@gmx.net>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4\n"
+"POT-Creation-Date: 2003-05-04 19:45+0200\n"
+"PO-Revision-Date: 2003-05-21 15:13+0300\n"
+"Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
+"Language-Team: Turkish <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:232
+msgid "Workspace Margins"
+msgstr "Çalışma Alanı Sınırları"
+
+#: mcs-plugin/margins_plugin.c:198
+msgid "Adjust workspace margins"
+msgstr "Çalışma alanı sınırlarını ayarlayın"
+
+#: mcs-plugin/margins_plugin.c:219
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belierler"
+
+#: mcs-plugin/margins_plugin.c:260
+msgid "Left :"
+msgstr "Sol :"
+
+#: mcs-plugin/margins_plugin.c:279
+msgid "Right :"
+msgstr "Sağ :"
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Top :"
+msgstr "Üst :"
+
+#: mcs-plugin/margins_plugin.c:317
+msgid "Bottom :"
+msgstr "Alt :"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "Başlık"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr "Menü"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr "Sabitle"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr "Gölgele"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "Sakla"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "Büyült"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "Kapat"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr "Pencereyi gölgele"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "Pencereyi sakla"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "Pencereyi büyült"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr "Hiçbir şey"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "Sol"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "Merkez"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "Sağ"
+
+#: mcs-plugin/xfwm4_plugin.c:456
+msgid "Hidden"
+msgstr "Gizli"
+
+#: mcs-plugin/xfwm4_plugin.c:1110
+msgid "Font Selection Dialog"
+msgstr "Yazıtipi Seçim Diyaloğu"
+
+#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
+msgid "Window Manager"
+msgstr "Pencere Yöneticisi"
+
+#: mcs-plugin/xfwm4_plugin.c:1165
+msgid "Window Manager Preferences"
+msgstr "Pencere Yöneticisi Tercihleri"
+
+#: mcs-plugin/xfwm4_plugin.c:1203
+msgid "Window style"
+msgstr "Pencere stili"
+
+#: mcs-plugin/xfwm4_plugin.c:1221
+msgid "Font select :"
+msgstr "Yazıtipi Seçimi:"
+
+#. gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);
+#: mcs-plugin/xfwm4_plugin.c:1232
+msgid "Title font"
+msgstr "Başlık yazıtipi"
+
+#: mcs-plugin/xfwm4_plugin.c:1241
+msgid "Text alignment inside title bar :"
+msgstr "Başlık çubuğundaki metin hizalaması :"
+
+#: mcs-plugin/xfwm4_plugin.c:1243
+msgid "Title Alignment"
+msgstr "Başlık Hizalaması"
+
+#: mcs-plugin/xfwm4_plugin.c:1254
+msgid "Button layout"
+msgstr "Düğme düzeni"
+
+#: mcs-plugin/xfwm4_plugin.c:1259
+msgid "Decoration style"
+msgstr "Dekorasyon stili"
+
+#: mcs-plugin/xfwm4_plugin.c:1292
+msgid "Keyboard Shortcut"
+msgstr "Klavye Kısayolu"
+
+#: mcs-plugin/xfwm4_plugin.c:1310
+msgid "Click to focus"
+msgstr "Odaklama için tıklansın"
+
+#: mcs-plugin/xfwm4_plugin.c:1317
+msgid "Focus follows mouse"
+msgstr "Odak fareyi takip etsin"
+
+#: mcs-plugin/xfwm4_plugin.c:1324
+msgid "Focus model"
+msgstr "Odaklama şekli"
+
+#: mcs-plugin/xfwm4_plugin.c:1333
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Yeni oluşturulan pencereye \n"
+"otomatik olarak odaklan"
+
+#: mcs-plugin/xfwm4_plugin.c:1339
+msgid "New window focus"
+msgstr "Yeni pencere odaklaması"
+
+#: mcs-plugin/xfwm4_plugin.c:1353
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Pencereler odaklanam kazanınca \n"
+"otomatik olarak yükselt"
+
+#: mcs-plugin/xfwm4_plugin.c:1363
+msgid "Delay before raising focused window :"
+msgstr "Odaklanmış pencere yükselte gecikmesi :"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Slow"
+msgstr "Yavaş"
+
+#: mcs-plugin/xfwm4_plugin.c:1375
+msgid "Fast"
+msgstr "Hızlı"
+
+#: mcs-plugin/xfwm4_plugin.c:1390
+msgid "Raise on focus"
+msgstr "Odaklamada yükselt"
+
+#: mcs-plugin/xfwm4_plugin.c:1399
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Uygulama penceresinin içine tıklayınca\n"
+"pencereyi yükselt"
+
+#: mcs-plugin/xfwm4_plugin.c:1405
+msgid "Raise on click"
+msgstr "Tıklamada yükselt"
+
+#: mcs-plugin/xfwm4_plugin.c:1410
+msgid "Keyboard and focus"
+msgstr "Klavye ve odaklama"
+
+#: mcs-plugin/xfwm4_plugin.c:1429
+msgid "Snap windows to screen border"
+msgstr "Pencereleri ekran sınırlarına daya"
+
+#: mcs-plugin/xfwm4_plugin.c:1434
+msgid "Snap windows to other windows"
+msgstr "Pencereleri diğerlerine daya"
+
+#: mcs-plugin/xfwm4_plugin.c:1444
+msgid "Distance :"
+msgstr "Uzaklık :"
+
+#: mcs-plugin/xfwm4_plugin.c:1450
+msgid "Small"
+msgstr "Küçük"
+
+#: mcs-plugin/xfwm4_plugin.c:1456
+msgid "Wide"
+msgstr "Büyük"
+
+#: mcs-plugin/xfwm4_plugin.c:1470
+msgid "Windows snapping"
+msgstr "Pencereler yerleştirme"
+
+#: mcs-plugin/xfwm4_plugin.c:1479
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Çalışma pencere taşırken çalışma alanlarını sarmala"
+
+#: mcs-plugin/xfwm4_plugin.c:1485
+msgid "Wrap workspaces"
+msgstr "Çalışma alanlarını sarmala"
+
+#: mcs-plugin/xfwm4_plugin.c:1494
+msgid "Display content of windows when resizing"
+msgstr "Pencereleri yeniden boyutlandırıken içeriğini göster"
+
+#: mcs-plugin/xfwm4_plugin.c:1500
+msgid "Opaque resize"
+msgstr "Mat yeniden bayutlandırma"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid "Display content of windows when moving"
+msgstr "Pencereleri hareket ettirirken içeriğin göster"
+
+#: mcs-plugin/xfwm4_plugin.c:1515
+msgid "Opaque move"
+msgstr "Mat taşıma"
+
+#: mcs-plugin/xfwm4_plugin.c:1524
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
+
+#: mcs-plugin/xfwm4_plugin.c:1526
+msgid "Double click action"
+msgstr "Çift tıklama eylemi"
+
+#: mcs-plugin/xfwm4_plugin.c:1531
+msgid "Misc."
+msgstr "Muhtelif"
+
+#: src/client.c:406
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
+
+#: src/events.c:1110
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: İşlem desteklenmiyor (henüz)\n"
+
+#: src/main.c:174
+msgid "%s: Segmentation fault"
+msgstr "%s: Parçalanma hatası"
+
+#: src/main.c:224
+msgid "%s: Running without session manager"
+msgstr "%s: Oturum yöneticisi olmadan çalışıyor"
+
+#: src/main.c:324
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
+
+#: src/main.c:328
+msgid "%s: Missing data from default files"
+msgstr "%s: Öntanımlı dosyalarda eksik veri"
+
+#: src/main.c:354
+msgid "%s: Unknown error occured"
+msgstr "%s: Bilinmeyen bir hata oluştu"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "_Büyült"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "_Küçült"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Gizle"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Diğe_rlerini gizle"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "Gös_ter"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "Gö_lgele"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "Gölgelemeyi ka_pat"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "Sa_bit"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Sab_it değil"
+
+#: src/menu.c:51
+msgid "_Move"
+msgstr "T_aşı"
+
+#: src/menu.c:52
+msgid "_Resize"
+msgstr "Yeniden bo_yutlandır"
+
+#: src/menu.c:53
+msgid "S_witch"
+msgstr "G_eç"
+
+#: src/menu.c:55
+msgid "_Close"
+msgstr "_Kapat"
+
+#: src/menu.c:57
+msgid "Destroy"
+msgstr "Yok Et"
+
+#: src/menu.c:59
+msgid "Wor_kspace"
+msgstr "Çalış_ma Alanı"
+
+#: src/menu.c:62
+msgid "_Quit"
+msgstr "_Çıkış"
+
+#: src/menu.c:63
+msgid "Restart"
+msgstr "Yeni_den Başlat"
+
+#: src/menu.c:311
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
+
+#: src/settings.c:265
+msgid "%s: Missing defaults file"
+msgstr "%s: Öntanımlı dosyalar unutulmuş"
+
+#: src/settings.c:444
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Aktif renk algılanamıyor %s\n"
+
+#: src/settings.c:450
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Aktif renk çözümlenemiyor %s\n"
+
+#: src/settings.c:488
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
+
+#: src/settings.c:494
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
+
+#: src/settings.c:624
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Öntanımlı dosyalarda değerler unutulmuşi"
+
+#: src/settings.c:895
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
+
+#: src/tabwin.c:68
+msgid "Switch to ..."
+msgstr "Geç ..."
+
