@@ -34,8 +34,8 @@ AC_CHECK_FUNCS(opendir)
 
 dnl Check for i18n support
 BM_I18N([xfwm4], [ar az bg ca cs de es es_MX eu fa_IR fi fr he hi hu
-	          it ja ko lt ms nl pl pt_BR pt_PT ru sv ta tr uk vi
-		  zh_CN zh_TW])
+	          it ja ko lt ms nl pl pt_BR pt_PT ru sk sv ta tr uk
+		  vi zh_CN zh_TW])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE
