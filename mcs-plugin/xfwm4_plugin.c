@@ -1750,7 +1750,6 @@ static void run_dialog(McsPlugin * mcs_plugin)
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 #endif
-    gtk_set_locale ();
 
     is_running = TRUE;
 
