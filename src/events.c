@@ -277,8 +277,8 @@ static inline gboolean isDoubleClick(Window w, XEvent * ev)
     int g = GrabSuccess;
     Time t0;
     
-    g_return_val_if_fail(FALSE, ev != NULL);
-    g_return_val_if_fail(FALSE, w != None);
+    g_return_val_if_fail(ev != NULL, FALSE);
+    g_return_val_if_fail(w != None, FALSE);
 
     g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
     if (g != GrabSuccess)
