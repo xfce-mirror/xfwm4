@@ -1287,8 +1287,6 @@ clientInstallColormaps (Client * c)
 void
 clientUpdateColormaps (Client * c)
 {
-    XWindowAttributes attr;
-
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUpdateColormaps");
 
@@ -1300,7 +1298,6 @@ clientUpdateColormaps (Client * c)
     {
         c->ncmap = 0;
     }
-    c->cmap = attr.colormap;
 }
 
 void
@@ -2624,7 +2621,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c) 
          && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0))))
     {
-        clientConstrainPos (c, TRUE);
+        clientConstrainPos (c, FALSE);
     }
 
     XMoveResizeWindow (dpy, c->frame, frameX (c), frameY (c), 
@@ -3363,7 +3360,7 @@ clientFrame (Window w, gboolean recapture)
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame =
         XCreateWindow (dpy, root, frameX (c), frameY (c), frameWidth (c),
-        frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
+        frameHeight (c), 0, attr.depth, InputOutput, attr.visual,
         valuemask, &attributes);
     XSetWindowBorderWidth (dpy, c->window, 0);
     XReparentWindow (dpy, c->window, c->frame, frameLeft (c), frameTop (c));
