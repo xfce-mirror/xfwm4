@@ -32,6 +32,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
+#include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
 #include "main.h"
@@ -276,13 +277,13 @@ watch_cb (Window window, Bool is_start, long mask, void *cb_data)
 static void
 loadRcData (Settings rc[])
 {
-    const gchar *homedir = g_get_home_dir ();
+    const gchar *homedir = xfce_get_userdir ();
     if (!parseRc ("defaults", DATADIR, rc))
     {
         g_warning (_("%s: Missing defaults file"), progname);
         exit (1);
     }
-    parseRc (".xfwm4rc", homedir, rc);
+    parseRc ("xfwm4rc", homedir, rc);
 }
 
 static void
