@@ -1022,14 +1022,14 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             gint x, y, w, h;
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
-                            screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
         }
         else if (cw->mode == WINDOW_ARGB)
         {
             gint x, y, w, h;
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
-                            screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
         }
         if (cw->borderClip)
         {
@@ -1626,10 +1626,12 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         if (cw)
         {
             TRACE ("Opacity changed for 0x%lx", cw->id);    
-            if (getOpacity (display_info->dpy, cw->id, &cw->opacity))
+            if (!getOpacity (display_info->dpy, cw->id, &cw->opacity))
             {
-                set_win_opacity (cw, cw->opacity);
+                /* The property was removed */
+                cw->opacity = NET_WM_OPAQUE;
             }
+            set_win_opacity (cw, cw->opacity);
         }
     }
     else
@@ -1711,14 +1713,11 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         return;
     }
     
-    if ((cw->attr.x == ev->x) && (cw->attr.y == ev->y) &&
-        (cw->attr.width == ev->width) && (cw->attr.height == ev->height) &&
-        (cw->attr.border_width == ev->border_width))
-    {
-        /* Nothing has changed, just adjust stack */
-        restack_win (cw, ev->above);
-        return;
-    }
+    cw->screen_info->clipChanged = ((cw->attr.x != ev->x) || 
+                                    (cw->attr.y != ev->y) ||
+                                    (cw->attr.width != ev->width) || 
+                                    (cw->attr.height != ev->height) ||
+                                    (cw->attr.border_width != ev->border_width));
 
     damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
     if ((damage != None) && (cw->extents != None))
@@ -1766,7 +1765,6 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
             add_damage (cw->screen_info, damage);
         }
     }
-    cw->screen_info->clipChanged = TRUE;
     repair_screen (cw->screen_info);
 }
 

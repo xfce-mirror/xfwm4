@@ -1558,6 +1558,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == wm_colormap_windows)
         {
+            TRACE ("client \"%s\" (0x%lx) has received a wm_colormap_windows notify", c->name, c->window);
             clientUpdateColormaps (c);
             if (c == clientGetFocus ())
             {
@@ -1566,6 +1567,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == net_wm_user_time)
         {
+            TRACE ("client \"%s\" (0x%lx) has received a net_wm_user_time notify", c->name, c->window);
             if (getNetWMUserTime (display_info->dpy, c->window, &c->user_time))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
@@ -1573,10 +1575,12 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == net_wm_opacity)
         {
+            TRACE ("client \"%s\" (0x%lx) has received a net_wm_opacity notify", c->name, c->window);
             if (getOpacity (display_info->dpy, c->window, &c->opacity))
             {
-                compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+                c->opacity =  NET_WM_OPAQUE;
             }
+            compositorWindowSetOpacity (display_info, c->frame, c->opacity);
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == net_startup_id)

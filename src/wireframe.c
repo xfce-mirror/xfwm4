@@ -31,6 +31,7 @@
 
 #include "screen.h"
 #include "client.h"
+#include "frame.h"
 
 #ifndef OUTLINE_WIDTH
 #define OUTLINE_WIDTH 5
@@ -79,7 +80,7 @@ wireframeUpdate (Client *c, Window xwindow)
 
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
-	XMapWindow (clientGetXDisplay (c), xwindow);
+        XMapWindow (clientGetXDisplay (c), xwindow);
 
         XDrawRectangle (clientGetXDisplay (c), xwindow, 
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
@@ -96,7 +97,7 @@ wireframeUpdate (Client *c, Window xwindow)
         /* Unset the shape */
         XShapeCombineMask (clientGetXDisplay (c), xwindow,
                            ShapeBounding, 0, 0, None, ShapeSet);
-	XMapWindow (clientGetXDisplay (c), xwindow);
+        XMapWindow (clientGetXDisplay (c), xwindow);
 
         XDrawRectangle (clientGetXDisplay (c), xwindow, 
                         gdk_x11_gc_get_xgc (screen_info->white_gc),

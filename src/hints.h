@@ -106,7 +106,7 @@
 #define NET_WM_BOTTOMRIGHT                      2
 #define NET_WM_BOTTOMLEFT                       3
 
-#define NET_WM_OPAQUE				0xffffffff
+#define NET_WM_OPAQUE                           0xffffffff
 
 typedef struct
 {
