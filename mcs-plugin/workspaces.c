@@ -195,7 +195,7 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
 static void
 save_workspaces_channel (McsManager * manager)
 {
-    save_channel (manager, CHANNEL1, RCFILE1);
+    ws_save_channel (manager, CHANNEL1, RCFILE1);
 }
 
 static void

@@ -76,7 +76,7 @@ ws_create_channel (McsManager * manager, const char *channel, const char *rcfile
 }
 
 gboolean
-save_channel (McsManager * manager, const char *channel, const char *rcfile)
+ws_save_channel (McsManager * manager, const char *channel, const char *rcfile)
 {
     char *homefile, *path;
     gboolean result;

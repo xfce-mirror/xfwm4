@@ -88,7 +88,7 @@ create_margins_channel (McsPlugin * mcs_plugin)
 static void
 save_margins_channel (void)
 {
-    save_channel (mcs_manager, CHANNEL2, RCFILE2);
+    ws_save_channel (mcs_manager, CHANNEL2, RCFILE2);
 }
 
 /* setting a margin */

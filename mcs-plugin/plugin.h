@@ -30,7 +30,7 @@
 void ws_create_channel (McsManager * manager, const char *channel,
 		        const char *rcfile);
 
-gboolean save_channel (McsManager * manager, const char *channel,
+gboolean ws_save_channel (McsManager * manager, const char *channel,
 		       const char *rcfile);
 
 #endif /* __PLUGIN_H */
