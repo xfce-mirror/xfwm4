@@ -34,6 +34,8 @@
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <string.h>
+
 #include "main.h"
 #include "misc.h"
 #include "workspaces.h"
@@ -86,7 +88,7 @@ typedef enum
 }
 XfwmButtonClickType;
 
-static inline XfwmButtonClickType
+static XfwmButtonClickType
 typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
 {
     unsigned int button;
@@ -151,7 +153,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     return (XfwmButtonClickType) clicks;
 }
 
-static inline void
+static void
 clear_timeout (void)
 {
     if (raise_timeout)
@@ -161,7 +163,7 @@ clear_timeout (void)
     }
 }
 
-static inline gboolean
+static gboolean
 raise_cb (gpointer data)
 {
     Client *c = NULL;
@@ -177,7 +179,7 @@ raise_cb (gpointer data)
     return (TRUE);
 }
 
-static inline void
+static void
 reset_timeout (void)
 {
     if (raise_timeout)
@@ -189,7 +191,7 @@ reset_timeout (void)
         NULL, NULL);
 }
 
-static inline void
+static void
 moveRequest (Client * c, XEvent * ev)
 {
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
@@ -198,7 +200,7 @@ moveRequest (Client * c, XEvent * ev)
     }
 }
 
-static inline void
+static void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
     clientSetFocus (c, NO_FOCUS_FLAG);
@@ -214,7 +216,7 @@ resizeRequest (Client * c, int corner, XEvent * ev)
     }
 }
 
-static inline void
+static void
 spawn_shortcut (int i)
 {
     GError *error = NULL;
@@ -233,7 +235,7 @@ spawn_shortcut (int i)
     }
 }
 
-static inline void
+static void
 handleMotionNotify (XMotionEvent * ev)
 {
     int msx, msy, max;
@@ -276,7 +278,7 @@ handleMotionNotify (XMotionEvent * ev)
     }
 }
 
-static inline void
+static void
 handleKeyPress (XKeyEvent * ev)
 {
     Client *c = NULL;
@@ -484,7 +486,7 @@ handleKeyPress (XKeyEvent * ev)
  * Button 2 : Move
  * Button 3 : Resize
  */
-static inline void
+static void
 edgeButton (Client * c, int part, XButtonEvent * ev)
 {
     if (ev->button == Button2)
@@ -517,15 +519,16 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     }
 }
 
-static inline void
+static void
 button1Action (Client * c, XButtonEvent * ev)
 {
-    XEvent copy_event = (XEvent) * ev;
+    XEvent copy_event;
     XfwmButtonClickType tclick;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
+    memcpy(&copy_event, ev, sizeof(XEvent));
     clientSetFocus (c, NO_FOCUS_FLAG);
     clientRaise (c);
     clientPassGrabButton1 (c);
@@ -557,7 +560,7 @@ button1Action (Client * c, XButtonEvent * ev)
     }
 }
 
-static inline void
+static void
 titleButton (Client * c, int state, XButtonEvent * ev)
 {
     g_return_if_fail (c != NULL);
@@ -579,9 +582,10 @@ titleButton (Client * c, int state, XButtonEvent * ev)
            for gtk to handle it (in case we open up the menu)
          */
 
-        XEvent copy_event = (XEvent) * ev;
+        XEvent copy_event;
         XfwmButtonClickType tclick;
 
+        memcpy(&copy_event, ev, sizeof(XEvent));
         tclick = typeOfClick (c->frame, &copy_event, FALSE);
 
         if (tclick == XFWM_BUTTON_DRAG)
@@ -627,7 +631,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     }
 }
 
-static inline void
+static void
 rootScrollButton (XButtonEvent * ev)
 {
     static Time lastscroll = (Time) 0;
@@ -658,7 +662,7 @@ rootScrollButton (XButtonEvent * ev)
 }
 
 
-static inline void
+static void
 handleButtonPress (XButtonEvent * ev)
 {
     Client *c = NULL;
@@ -846,7 +850,7 @@ handleButtonPress (XButtonEvent * ev)
     }
 }
 
-static inline void
+static void
 handleButtonRelease (XButtonEvent * ev)
 {
     TRACE ("entering handleButtonRelease");
@@ -854,7 +858,7 @@ handleButtonRelease (XButtonEvent * ev)
     XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
 }
 
-static inline void
+static void
 handleDestroyNotify (XDestroyWindowEvent * ev)
 {
     Client *c = NULL;
@@ -878,7 +882,7 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
     }
 }
 
-static inline void
+static void
 handleMapRequest (XMapRequestEvent * ev)
 {
     Client *c = NULL;
@@ -915,7 +919,7 @@ handleMapRequest (XMapRequestEvent * ev)
     }
 }
 
-static inline void
+static void
 handleMapNotify (XMapEvent * ev)
 {
     Client *c = NULL;
@@ -934,7 +938,7 @@ handleMapNotify (XMapEvent * ev)
     }
 }
 
-static inline void
+static void
 handleUnmapNotify (XUnmapEvent * ev)
 {
     Client *c = NULL;
@@ -1000,7 +1004,7 @@ handleUnmapNotify (XUnmapEvent * ev)
     }
 }
 
-static inline void
+static void
 handleConfigureNotify (XConfigureEvent * ev)
 {
     TRACE ("entering handleConfigureNotify");
@@ -1019,7 +1023,7 @@ handleConfigureNotify (XConfigureEvent * ev)
     }
 }
 
-static inline void
+static void
 handleConfigureRequest (XConfigureRequestEvent * ev)
 {
     Client *c = NULL;
@@ -1170,7 +1174,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     }
 }
 
-static inline void
+static void
 handleEnterNotify (XCrossingEvent * ev)
 {
     Client *c = NULL;
@@ -1201,7 +1205,7 @@ handleEnterNotify (XCrossingEvent * ev)
     }
 }
 
-static inline void
+static void
 handleLeaveNotify (XCrossingEvent * ev)
 {
     TRACE ("entering handleLeaveNotify");
@@ -1220,7 +1224,7 @@ handleLeaveNotify (XCrossingEvent * ev)
     }
 }
 
-static inline void
+static void
 handleFocusIn (XFocusChangeEvent * ev)
 {
     Client *c = NULL;
@@ -1286,7 +1290,7 @@ handleFocusIn (XFocusChangeEvent * ev)
     }
 }
 
-static inline void
+static void
 handleFocusOut (XFocusChangeEvent * ev)
 {
     Client *c = NULL;
@@ -1336,7 +1340,7 @@ handleFocusOut (XFocusChangeEvent * ev)
     }
 }
 
-static inline void
+static void
 handlePropertyNotify (XPropertyEvent * ev)
 {
     Client *c = NULL;
@@ -1451,7 +1455,7 @@ handlePropertyNotify (XPropertyEvent * ev)
     }
 }
 
-static inline void
+static void
 handleClientMessage (XClientMessageEvent * ev)
 {
     Client *c = NULL;
@@ -1607,7 +1611,7 @@ handleClientMessage (XClientMessageEvent * ev)
     }
 }
 
-static inline void
+static void
 handleShape (XShapeEvent * ev)
 {
     Client *c = NULL;
@@ -1621,7 +1625,7 @@ handleShape (XShapeEvent * ev)
     }
 }
 
-static inline void
+static void
 handleColormapNotify (XColormapEvent * ev)
 {
     Client *c = NULL;

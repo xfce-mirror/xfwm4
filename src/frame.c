@@ -30,7 +30,7 @@
 #include "mywindow.h"
 #include "frame.h"
 
-inline int
+int
 frameLeft (Client * c)
 {
     TRACE ("entering frameLeft");
@@ -43,7 +43,7 @@ frameLeft (Client * c)
     return 0;
 }
 
-inline int
+int
 frameRight (Client * c)
 {
     TRACE ("entering frameRight");
@@ -56,7 +56,7 @@ frameRight (Client * c)
     return 0;
 }
 
-inline int
+int
 frameTop (Client * c)
 {
     TRACE ("entering frameTop");
@@ -69,7 +69,7 @@ frameTop (Client * c)
     return 0;
 }
 
-inline int
+int
 frameBottom (Client * c)
 {
     TRACE ("entering frameBottom");
@@ -82,7 +82,7 @@ frameBottom (Client * c)
     return 0;
 }
 
-inline int
+int
 frameX (Client * c)
 {
     TRACE ("entering frameX");
@@ -95,7 +95,7 @@ frameX (Client * c)
     return c->x;
 }
 
-inline int
+int
 frameY (Client * c)
 {
     TRACE ("entering frameY");
@@ -108,7 +108,7 @@ frameY (Client * c)
     return c->y;
 }
 
-inline int
+int
 frameWidth (Client * c)
 {
     TRACE ("entering frameWidth");
@@ -121,7 +121,7 @@ frameWidth (Client * c)
     return c->width;
 }
 
-inline int
+int
 frameHeight (Client * c)
 {
     TRACE ("entering frameHeight");
@@ -140,7 +140,7 @@ frameHeight (Client * c)
     return c->height;
 }
 
-static inline void
+static void
 fillRectangle (Display * dpy, Drawable d, Pixmap pm, int x, int y, int width,
     int height)
 {
@@ -172,7 +172,7 @@ fillRectangle (Display * dpy, Drawable d, Pixmap pm, int x, int y, int width,
     XFreeGC (dpy, gc);
 }
 
-static inline void
+static void
 frameCreateTitlePixmap (Client * c, int state, int left, int right,
     MyPixmap * pm)
 {
@@ -356,7 +356,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right,
     g_object_unref (G_OBJECT (layout));
 }
 
-static inline int
+static int
 getButtonFromLetter (char chr, Client * c)
 {
     int b = -1;
@@ -408,7 +408,7 @@ getButtonFromLetter (char chr, Client * c)
     return b;
 }
 
-static inline char
+static char
 getLetterFromButton (int i, Client * c)
 {
     char chr = 0;
@@ -457,7 +457,7 @@ getLetterFromButton (int i, Client * c)
     return chr;
 }
 
-static inline MyPixmap *
+static MyPixmap *
 frameGetPixmap (Client * c, int button, int state)
 {
     switch (button)
@@ -493,7 +493,7 @@ frameGetPixmap (Client * c, int button, int state)
 }
 
 
-static inline void
+static void
 frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
     int button_x[BUTTON_COUNT])
 {

@@ -123,35 +123,35 @@ static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
 static void clientSetWidth (Client * c, int w1);
 static void clientSetHeight (Client * c, int h1);
-static inline void clientApplyStackList (GList * list);
-static inline gboolean clientTransientOrModalHasAncestor (Client * c, int ws);
-static inline Client *clientGetLowestTransient (Client * c);
-static inline Client *clientGetHighestTransientOrModal (Client * c);
-static inline Client *clientGetHighestTransientOrModalFor (Client * c);
-static inline Client *clientGetTopMostForGroup (Client * c);
-static inline gboolean clientVisibleForGroup (Client * c, int workspace);
-static inline Client *clientGetNextTopMost (int layer, Client * exclude);
-static inline Client *clientGetTopMostFocusable (int layer, Client * exclude);
-static inline Client *clientGetBottomMost (int layer, Client * exclude);
-static inline Client *clientGetModalFor (Client * c);
-static inline void clientConstrainRatio (Client * c, int w1, int h1, int corner);
-static inline void clientConstrainPos (Client * c, gboolean show_full);
-static inline void clientKeepVisible (Client * c);
-static inline unsigned long overlap (int x0, int y0, int x1, int y1, int tx0,
+static void clientApplyStackList (GList * list);
+static gboolean clientTransientOrModalHasAncestor (Client * c, int ws);
+static Client *clientGetLowestTransient (Client * c);
+static Client *clientGetHighestTransientOrModal (Client * c);
+static Client *clientGetHighestTransientOrModalFor (Client * c);
+static Client *clientGetTopMostForGroup (Client * c);
+static gboolean clientVisibleForGroup (Client * c, int workspace);
+static Client *clientGetNextTopMost (int layer, Client * exclude);
+static Client *clientGetTopMostFocusable (int layer, Client * exclude);
+static Client *clientGetBottomMost (int layer, Client * exclude);
+static Client *clientGetModalFor (Client * c);
+static void clientConstrainRatio (Client * c, int w1, int h1, int corner);
+static void clientConstrainPos (Client * c, gboolean show_full);
+static void clientKeepVisible (Client * c);
+static unsigned long overlap (int x0, int y0, int x1, int y1, int tx0,
     int ty0, int tx1, int ty1);
 static void clientInitPosition (Client * c);
-static inline void clientFree (Client * c);
-static inline void clientGetWinState (Client * c);
-static inline void clientApplyInitialState (Client * c);
-static inline gboolean clientCheckShape (Client * c);
-static inline gboolean clientSelectMask (Client * c, int mask);
+static void clientFree (Client * c);
+static void clientGetWinState (Client * c);
+static void clientApplyInitialState (Client * c);
+static gboolean clientCheckShape (Client * c);
+static gboolean clientSelectMask (Client * c, int mask);
 static GList *clientListTransient (Client * c);
 static GList *clientListTransientOrModal (Client * c);
-static inline void clientShowSingle (Client * c, gboolean change_state);
-static inline void clientHideSingle (Client * c, int ws, gboolean change_state);
-static inline void clientSetWorkspaceSingle (Client * c, int ws);
-static inline void clientSortRing(Client *c);
-static inline void clientSnapPosition (Client * c);
+static void clientShowSingle (Client * c, gboolean change_state);
+static void clientHideSingle (Client * c, int ws, gboolean change_state);
+static void clientSetWorkspaceSingle (Client * c, int ws);
+static void clientSortRing(Client *c);
+static void clientSnapPosition (Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter (XEvent * xevent,
     gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter (XEvent * xevent,
@@ -189,7 +189,7 @@ struct _ButtonPressData
     Client *c;
 };
 
-inline Client *
+Client *
 clientGetTransient (Client * c)
 {
     Client *c2 = NULL;
@@ -206,7 +206,7 @@ clientGetTransient (Client * c)
     return NULL;
 }
 
-inline gboolean
+gboolean
 clientIsTransient (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -217,7 +217,7 @@ clientIsTransient (Client * c)
             ((c->transient_for == root) && (c->group_leader != None)));
 }
 
-inline gboolean
+gboolean
 clientIsModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -229,7 +229,7 @@ clientIsModal (Client * c)
              (c->group_leader != None)));
 }
 
-inline gboolean
+gboolean
 clientIsTransientOrModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -239,7 +239,7 @@ clientIsTransientOrModal (Client * c)
     return (clientIsTransient(c) || clientIsModal(c));
 }
 
-inline gboolean
+gboolean
 clientSameGroup (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -254,7 +254,7 @@ clientSameGroup (Client * c1, Client * c2)
              (c2->group_leader == c1->window)));
 }
 
-inline gboolean
+gboolean
 clientIsTransientFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -276,7 +276,7 @@ clientIsTransientFor (Client * c1, Client * c2)
     return FALSE;
 }
 
-inline gboolean
+gboolean
 clientIsModalFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -291,7 +291,7 @@ clientIsModalFor (Client * c1, Client * c2)
     return FALSE;
 }
 
-inline gboolean
+gboolean
 clientIsTransientOrModalFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -302,7 +302,7 @@ clientIsTransientOrModalFor (Client * c1, Client * c2)
     return (clientIsTransientFor(c1, c2) || clientIsModalFor(c1, c2));
 }
 
-inline gboolean
+gboolean
 clientIsTransientForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -312,7 +312,7 @@ clientIsTransientForGroup (Client * c)
     return ((c->transient_for == root) && (c->group_leader != None));
 }
 
-inline gboolean
+gboolean
 clientIsModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -323,7 +323,7 @@ clientIsModalForGroup (Client * c)
             !clientIsTransient(c) && (c->group_leader != None));
 }
 
-inline gboolean
+gboolean
 clientIsTransientOrModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -1727,7 +1727,7 @@ clientSetHeight (Client * c, int h1)
     c->height = h1;
 }
 
-static inline void
+static void
 clientApplyStackList (GList * list)
 {
     Window *xwinstack;
@@ -1761,7 +1761,7 @@ clientApplyStackList (GList * list)
     g_free (xwinstack);
 }
 
-static inline gboolean
+static gboolean
 clientTransientOrModalHasAncestor (Client * c, int ws)
 {
     Client *c2;
@@ -1791,7 +1791,7 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
 
 }
 
-static inline Client *
+static Client *
 clientGetLowestTransient (Client * c)
 {
     Client *lowest_transient = NULL, *c2;
@@ -1813,7 +1813,7 @@ clientGetLowestTransient (Client * c)
     return lowest_transient;
 }
 
-static inline Client *
+static Client *
 clientGetHighestTransientOrModal (Client * c)
 {
     Client *highest_transient = NULL;
@@ -1858,7 +1858,7 @@ clientGetHighestTransientOrModal (Client * c)
     return highest_transient;
 }
 
-static inline Client *
+static Client *
 clientGetHighestTransientOrModalFor (Client * c)
 {
     Client *highest_transient = NULL;
@@ -1883,7 +1883,7 @@ clientGetHighestTransientOrModalFor (Client * c)
     return highest_transient;
 }
 
-static inline Client *
+static Client *
 clientGetTopMostForGroup (Client * c)
 {
     Client *top_most = NULL;
@@ -1908,7 +1908,7 @@ clientGetTopMostForGroup (Client * c)
     return top_most;
 }
 
-static inline gboolean
+static gboolean
 clientVisibleForGroup (Client * c, int workspace)
 {
     gboolean has_visible = FALSE;
@@ -1934,7 +1934,7 @@ clientVisibleForGroup (Client * c, int workspace)
     return has_visible;
 }
 
-static inline Client *
+static Client *
 clientGetNextTopMost (int layer, Client * exclude)
 {
     Client *top = NULL, *c;
@@ -1960,7 +1960,7 @@ clientGetNextTopMost (int layer, Client * exclude)
     return top;
 }
 
-static inline Client *
+static Client *
 clientGetTopMostFocusable (int layer, Client * exclude)
 {
     Client *top = NULL, *c;
@@ -1990,7 +1990,7 @@ clientGetTopMostFocusable (int layer, Client * exclude)
     return top;
 }
 
-static inline Client *
+static Client *
 clientGetBottomMost (int layer, Client * exclude)
 {
     Client *bot = NULL, *c;
@@ -2021,7 +2021,7 @@ clientGetBottomMost (int layer, Client * exclude)
     return bot;
 }
 
-static inline Client *
+static Client *
 clientGetModalFor (Client * c)
 {
     Client *latest_modal = NULL;
@@ -2073,7 +2073,7 @@ clientGetModalFor (Client * c)
  */
 
 #define MAKE_MULT(a,b) ((b==1) ? (a) : (((int)((a)/(b))) * (b)) )
-static inline void
+static void
 clientConstrainRatio (Client * c, int w1, int h1, int corner)
 {
 
@@ -2161,7 +2161,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
 /* clientConstrainPos() is used when moving windows
    to ensure that the window stays accessible to the user
  */
-static inline void
+static void
 clientConstrainPos (Client * c, gboolean show_full)
 {
     int client_margins[4];
@@ -2279,7 +2279,7 @@ clientConstrainPos (Client * c, gboolean show_full)
    translation in Xinerama to center window on physical screen
    Not to be confused with clientConstrainPos()
  */
-static inline void
+static void
 clientKeepVisible (Client * c)
 {
     int client_margins[4];
@@ -2341,7 +2341,7 @@ clientKeepVisible (Client * c)
 }
 
 /* Compute rectangle overlap area */
-static inline unsigned long
+static unsigned long
 overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 {
     /* Compute overlapping box */
@@ -2890,7 +2890,7 @@ clientGetWMProtocols (Client * c)
         WM_FLAG_CONTEXT_HELP : 0);
 }
 
-static inline void
+static void
 clientFree (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -2932,7 +2932,7 @@ clientFree (Client * c)
     g_free (c);
 }
 
-static inline void
+static void
 clientGetWinState (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -2973,7 +2973,7 @@ clientGetWinState (Client * c)
     }
 }
 
-static inline void
+static void
 clientApplyInitialState (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -3043,7 +3043,7 @@ clientApplyInitialState (Client * c)
     }
 }
 
-static inline gboolean
+static gboolean
 clientCheckShape (Client * c)
 {
     int xws, yws, xbs, ybs;
@@ -3645,7 +3645,7 @@ clientAtPosition (int x, int y, Client * exclude)
     return c;
 }
 
-static inline gboolean
+static gboolean
 clientSelectMask (Client * c, int mask)
 {
     gboolean okay = TRUE;
@@ -3883,7 +3883,7 @@ clientPassFocus (Client * c)
     }
 }
 
-static inline void
+static void
 clientShowSingle (Client * c, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
@@ -3933,7 +3933,7 @@ clientShow (Client * c, gboolean change_state)
     g_list_free (list_of_windows);
 }
 
-static inline void
+static void
 clientHideSingle (Client * c, int ws, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
@@ -4266,7 +4266,7 @@ clientSetLayer (Client * c, int l)
     clientPassGrabButton1 (c);
 }
 
-static inline void
+static void
 clientSetWorkspaceSingle (Client * c, int ws)
 {
     g_return_if_fail (c != NULL);
@@ -4638,7 +4638,7 @@ void clientToggleBelow (Client * c)
     }
 }
 
-inline void
+void
 clientRemoveMaximizeFlag (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -4755,7 +4755,7 @@ clientToggleMaximized (Client * c, int mode)
     }
 }
 
-inline gboolean
+gboolean
 clientAcceptFocus (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -4780,7 +4780,7 @@ clientAcceptFocus (Client * c)
     return TRUE;
 }
 
-static inline void
+static void
 clientSortRing(Client *c)
 {
     g_return_if_fail (c != NULL);
@@ -4967,7 +4967,7 @@ clientDrawOutline (Client * c)
     }
 }
 
-static inline void
+static void
 clientSnapPosition (Client * c)
 {
     int cx, cy, left, right, top, bottom;
