@@ -1426,13 +1426,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
                 "(unknown)");
     if (attr.map_state != IsUnmapped)
     {
-        /* XReparentWindow() will cause an UnmapNotify followed by 
-         * a MapNotify. 
-         * Unset the "mapped" flag to avoid a transition to 
-         * withdrawn state.
-         */ 
         XUnmapWindow (display_info->dpy, c->window);
-        FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
     }
 
     c->ignore_unmap = 0;
@@ -1591,6 +1585,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         if ((c->win_workspace == screen_info->current_ws) || 
             FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
         {
+            FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
             clientShow (c, TRUE);
             if (recapture)
             {
@@ -1947,7 +1942,6 @@ clientHideSingle (Client * c, gboolean change_state)
     myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c);
-    XUnmapWindow (display_info->dpy, c->window);
     XUnmapWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
@@ -1957,6 +1951,7 @@ clientHideSingle (Client * c, gboolean change_state)
     if (change_state)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
+        XUnmapWindow (display_info->dpy, c->window);
         setWMState (display_info->dpy, c->window, IconicState);
         workspaceUpdateArea (c->screen_info);
     }
