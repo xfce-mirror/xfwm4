@@ -898,7 +898,6 @@ handleUnmapNotify (XUnmapEvent * ev)
             TRACE ("Ignoring UnmapNotify on window (0x%lx)", ev->window);
             return;
         }
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAPPED);
         clientPassFocus (c);
         if (c->ignore_unmap)
         {

@@ -3672,6 +3672,7 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
     if (change_state)
     {
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAPPED);
         CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
         setWMState (dpy, c->window, IconicState);
         workspaceUpdateArea (margins, gnome_margins);
