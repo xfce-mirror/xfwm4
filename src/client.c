@@ -1407,12 +1407,26 @@ void clientFrame(Window w)
 
     if(w == gnome_win)
     {
+        DBG("Not managing our own window\n");
+        return;
+    }
+
+    if (!XGetWindowAttributes(dpy, w, &attr))
+    {
+        DBG("Cannot get window attributes\n");
+        return;
+    }
+    
+    if (attr.override_redirect)
+    {
+        DBG("Not managing override_redirect windows\n");
         return;
     }
 
     c = malloc(sizeof(Client));
     if(!c)
     {
+        DBG("Cannot allocate memory for the window structure\n");
         return;
     }
 
@@ -1422,7 +1436,6 @@ void clientFrame(Window w)
     getTransientFor(dpy, c->window, &(c->transient_for));
     c->size = XAllocSizeHints();
     XGetWMNormalHints(dpy, w, c->size, &dummy);
-    XGetWindowAttributes(dpy, w, &attr);
     wm_protocols_flags = getWMProtocols(dpy, c->window);
     c->x = attr.x;
     c->y = attr.y;
@@ -1650,7 +1663,7 @@ void clientFrameAll()
     for(i = 0; i < count; i++)
     {
         XGetWindowAttributes(dpy, wins[i], &attr);
-        if((!attr.override_redirect) && (attr.map_state == IsViewable))
+        if(!(attr.override_redirect) && (attr.map_state == IsViewable))
         {
             clientFrame(wins[i]);
         }
