@@ -277,12 +277,12 @@ sn_client_startup_properties (Client * c)
     {
         int workspace;
 
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_WORKSPACE_SET))
+        if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
         {
             workspace = sn_startup_sequence_get_workspace (sequence);
             if (workspace >= 0)
             {
-                FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+                FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
                 c->win_workspace = workspace;
             }
         }

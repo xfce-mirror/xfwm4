@@ -199,7 +199,8 @@ reset_timeout (ScreenInfo *screen_info)
 static void
 moveRequest (Client * c, XEvent * ev)
 {
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)))
     {
         clientMove (c, ev);
     }
@@ -210,12 +211,13 @@ resizeRequest (Client * c, int corner, XEvent * ev)
 {
     clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
 
-    if (FLAG_TEST_ALL (c->flags,
-            CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
+    if (FLAG_TEST_ALL (c->xfwm_flags,
+            XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
     {
         clientResize (c, corner, ev);
     }
-    else if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
+    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)))
     {
         clientMove (c, ev);
     }
@@ -340,8 +342,8 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                if (FLAG_TEST_ALL (c->flags,
-                        CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
+                if (FLAG_TEST_ALL (c->xfwm_flags,
+                        XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
                 {
                     clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 }
@@ -353,7 +355,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientClose (c);
                 break;
             case KEY_HIDE_WINDOW:
-                if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER) && CLIENT_CAN_HIDE_WINDOW (c))
+                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && CLIENT_CAN_HIDE_WINDOW (c))
                 {
                     clientHide (c, c->win_workspace, TRUE);
                 }
@@ -371,7 +373,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientToggleShaded (c);
                 break;
             case KEY_STICK_WINDOW:
-                if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER) && CLIENT_CAN_STICK_WINDOW(c))
+                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && CLIENT_CAN_STICK_WINDOW(c))
                 {
                     clientToggleSticky (c, TRUE);
                     frameDraw (c, FALSE, FALSE);
@@ -823,7 +825,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     clientPassGrabButton1 (c);
                 }
                 clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
-                if ((screen_info->params->raise_on_click) || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
+                if ((screen_info->params->raise_on_click) 
+                    || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
                     clientPassGrabButton1 (c);
@@ -931,7 +934,7 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
 
         TRACE ("handleMapRequest: clientShow");
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
             TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
             return;
@@ -962,9 +965,9 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAP_PENDING);
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
         }
     }
 }
@@ -997,7 +1000,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmap for \"%s\" is %i", c->name, c->ignore_unmap);
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
             /* 
              * This UnmapNotify event is caused by reparenting
@@ -1135,7 +1138,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
         ScreenInfo *screen_info = c->screen_info;
 
         TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)", c->name, c->window);
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MOVING_RESIZING))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
             return;
@@ -1589,8 +1592,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             {
                 if (ev->data.l[0] == ALL_WORKSPACES)
                 {
-                    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_STICK,
-                            CLIENT_FLAG_STICKY))
+                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
+                        && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientStick (c, TRUE);
                         frameDraw (c, FALSE, FALSE);
@@ -1598,8 +1601,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 }
                 else
                 {
-                    if (FLAG_TEST_ALL (c->flags,
-                            CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY))
+                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
+                        && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientUnstick (c, TRUE);
                         frameDraw (c, FALSE, FALSE);
@@ -1914,7 +1917,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
         insensitive = 0;
 
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_CLOSE))
+        if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
         {
             insensitive |= MENU_OP_DELETE;
         }
@@ -2006,7 +2009,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         }
 
         if (clientIsTransientOrModal (c)
-            || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK)
+            || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
             || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             insensitive |= MENU_OP_WORKSPACES;

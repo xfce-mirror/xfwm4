@@ -183,6 +183,7 @@ extern Atom net_wm_state_shaded;
 extern Atom net_wm_state_skip_pager;
 extern Atom net_wm_state_skip_taskbar;
 extern Atom net_wm_state_sticky;
+extern Atom net_wm_state_demands_attention;
 extern Atom net_wm_strut;
 extern Atom net_wm_strut_partial;
 extern Atom net_wm_window_type;

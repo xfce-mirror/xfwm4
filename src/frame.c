@@ -41,8 +41,8 @@ frameLeft (Client * c)
 {
     TRACE ("entering frameLeft");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->screen_info->sides[SIDE_LEFT][ACTIVE].width;
     }
@@ -54,8 +54,8 @@ frameRight (Client * c)
 {
     TRACE ("entering frameRight");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->screen_info->sides[SIDE_RIGHT][ACTIVE].width;
     }
@@ -67,8 +67,8 @@ frameTop (Client * c)
 {
     TRACE ("entering frameTop");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->screen_info->title[TITLE_3][ACTIVE].height;
     }
@@ -80,8 +80,8 @@ frameBottom (Client * c)
 {
     TRACE ("entering frameBottom");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
     }
@@ -93,8 +93,8 @@ frameX (Client * c)
 {
     TRACE ("entering frameX");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->x - frameLeft (c);
     }
@@ -106,8 +106,8 @@ frameY (Client * c)
 {
     TRACE ("entering frameY");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->y - frameTop (c);
     }
@@ -119,8 +119,8 @@ frameWidth (Client * c)
 {
     TRACE ("entering frameWidth");
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->width + frameLeft (c) + frameRight (c);
     }
@@ -132,14 +132,14 @@ frameHeight (Client * c)
 {
     TRACE ("entering frameHeight");
 
-    if (FLAG_TEST_AND_NOT (c->flags,
-            CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_SHADED,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) 
+        && FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return frameTop (c) + frameBottom (c);
     }
-    else if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+             && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->height + frameTop (c) + frameBottom (c);
     }
@@ -384,7 +384,7 @@ getButtonFromLetter (char chr, Client * c)
             }
             break;
         case 'C':
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_CLOSE))
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
             {
                 b = CLOSE_BUTTON;
             }
@@ -399,14 +399,13 @@ getButtonFromLetter (char chr, Client * c)
             b = SHADE_BUTTON;
             break;
         case 'T':
-            if (FLAG_TEST_ALL (c->flags,
-                    CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
+            if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_STICK | XFWM_FLAG_HAS_MENU))
             {
                 b = STICK_BUTTON;
             }
             break;
         case 'O':
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MENU))
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU))
             {
                 b = MENU_BUTTON;
             }
@@ -436,7 +435,7 @@ getLetterFromButton (int i, Client * c)
             }
             break;
         case CLOSE_BUTTON:
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_CLOSE))
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
             {
                 chr = 'C';
             }
@@ -451,14 +450,13 @@ getLetterFromButton (int i, Client * c)
             chr = 'S';
             break;
         case STICK_BUTTON:
-            if (FLAG_TEST_ALL (c->flags,
-                    CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
+            if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_STICK | XFWM_FLAG_HAS_MENU))
             {
                 chr = 'T';
             }
             break;
         case MENU_BUTTON:
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MENU))
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU))
             {
                 chr = 'O';
             }
@@ -714,9 +712,16 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     if (c != clientGetFocus ())
     {
         TRACE ("\"%s\" is not the active window", c->name);
-        if (c->urgent)
+        if (FLAG_TEST (c->wm_flags, WM_FLAG_URGENT))
         {
-            state = (c->seen_active ? ACTIVE : INACTIVE);
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE))
+            {
+                state = ACTIVE;
+            }
+            else
+            {
+                state = INACTIVE;
+            }
         }
         else
         {
@@ -724,24 +729,24 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         }
     }
 
-    if ((state == INACTIVE) && ((c->draw_active) || (c->first_map)))
+    if ((state == INACTIVE) 
+        && FLAG_TEST(c->xfwm_flags, XFWM_FLAG_DRAW_ACTIVE | XFWM_FLAG_FIRST_MAP))
     {
         requires_clearing = TRUE;
-        c->draw_active = FALSE;
+        FLAG_UNSET (c->xfwm_flags,  XFWM_FLAG_DRAW_ACTIVE);
     }
-    else if ((state == ACTIVE) && (!(c->draw_active) || (c->first_map)))
+    else if ((state == ACTIVE)
+             && (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_DRAW_ACTIVE)
+                 || FLAG_TEST (c->xfwm_flags, XFWM_FLAG_FIRST_MAP)))
     {
         requires_clearing = TRUE;
-        c->draw_active = TRUE;
+        FLAG_SET (c->xfwm_flags,  XFWM_FLAG_DRAW_ACTIVE);
     }
     /* Flag clearance */
-    if (c->first_map)
-    {
-        c->first_map = FALSE;
-    }
+    FLAG_UNSET (c->xfwm_flags,  XFWM_FLAG_FIRST_MAP);
 
-    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
-            CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         /* Cache mgmt */
         if (invalidate_cache)

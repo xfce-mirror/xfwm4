@@ -102,6 +102,7 @@ Atom net_wm_state_shaded;
 Atom net_wm_state_skip_pager;
 Atom net_wm_state_skip_taskbar;
 Atom net_wm_state_sticky;
+Atom net_wm_state_demands_attention;
 Atom net_wm_strut;
 Atom net_wm_strut_partial;
 Atom net_wm_window_type;
@@ -145,16 +146,26 @@ initICCCMHints (Display * dpy)
 {
     TRACE ("entering initICCCMHints");
 
-    sm_client_id = XInternAtom (dpy, "SM_CLIENT_ID", FALSE);
-    wm_change_state = XInternAtom (dpy, "WM_CHANGE_STATE", FALSE);
-    wm_client_leader = XInternAtom (dpy, "WM_CLIENT_LEADER", FALSE);
-    wm_colormap_windows = XInternAtom (dpy, "WM_COLORMAP_WINDOWS", FALSE);
-    wm_delete_window = XInternAtom (dpy, "WM_DELETE_WINDOW", FALSE);
-    wm_protocols = XInternAtom (dpy, "WM_PROTOCOLS", FALSE);
-    wm_state = XInternAtom (dpy, "WM_STATE", FALSE);
-    wm_takefocus = XInternAtom (dpy, "WM_TAKE_FOCUS", FALSE);
-    wm_window_role = XInternAtom (dpy, "WM_WINDOW_ROLE", FALSE);
-    wm_transient_for = XInternAtom (dpy, "WM_TRANSIENT_FOR", FALSE);
+    sm_client_id = 
+        XInternAtom (dpy, "SM_CLIENT_ID", FALSE);
+    wm_change_state = 
+        XInternAtom (dpy, "WM_CHANGE_STATE", FALSE);
+    wm_client_leader = 
+        XInternAtom (dpy, "WM_CLIENT_LEADER", FALSE);
+    wm_colormap_windows = 
+        XInternAtom (dpy, "WM_COLORMAP_WINDOWS", FALSE);
+    wm_delete_window = 
+        XInternAtom (dpy, "WM_DELETE_WINDOW", FALSE);
+    wm_protocols = 
+        XInternAtom (dpy, "WM_PROTOCOLS", FALSE);
+    wm_state = 
+        XInternAtom (dpy, "WM_STATE", FALSE);
+    wm_takefocus = 
+        XInternAtom (dpy, "WM_TAKE_FOCUS", FALSE);
+    wm_window_role = 
+        XInternAtom (dpy, "WM_WINDOW_ROLE", FALSE);
+    wm_transient_for = 
+        XInternAtom (dpy, "WM_TRANSIENT_FOR", FALSE);
 }
 
 unsigned long
@@ -300,17 +311,24 @@ initGnomeHints (Display * dpy)
 
     gnome_panel_desktop_area =
         XInternAtom (dpy, "GNOME_PANEL_DESKTOP_AREA", FALSE);
-    win_client_list = XInternAtom (dpy, "_WIN_CLIENT_LIST", FALSE);
+    win_client_list = 
+        XInternAtom (dpy, "_WIN_CLIENT_LIST", FALSE);
     win_desktop_button_proxy =
         XInternAtom (dpy, "_WIN_DESKTOP_BUTTON_PROXY", FALSE);
-    win_hints = XInternAtom (dpy, "_WIN_HINTS", FALSE);
-    win_layer = XInternAtom (dpy, "_WIN_LAYER", FALSE);
-    win_protocols = XInternAtom (dpy, "_WIN_PROTOCOLS", FALSE);
-    win_state = XInternAtom (dpy, "_WIN_STATE", FALSE);
+    win_hints = 
+        XInternAtom (dpy, "_WIN_HINTS", FALSE);
+    win_layer = 
+        XInternAtom (dpy, "_WIN_LAYER", FALSE);
+    win_protocols = 
+        XInternAtom (dpy, "_WIN_PROTOCOLS", FALSE);
+    win_state = 
+        XInternAtom (dpy, "_WIN_STATE", FALSE);
     win_supporting_wm_check =
         XInternAtom (dpy, "_WIN_SUPPORTING_WM_CHECK", FALSE);
-    win_workspace_count = XInternAtom (dpy, "_WIN_WORKSPACE_COUNT", FALSE);
-    win_workspace = XInternAtom (dpy, "_WIN_WORKSPACE", FALSE);
+    win_workspace_count = 
+        XInternAtom (dpy, "_WIN_WORKSPACE_COUNT", FALSE);
+    win_workspace = 
+        XInternAtom (dpy, "_WIN_WORKSPACE", FALSE);
 }
 
 void
@@ -424,60 +442,92 @@ initNetHints (Display * dpy)
 {
     TRACE ("entering initNetHints");
 
-    net_active_window = XInternAtom (dpy, "_NET_ACTIVE_WINDOW", FALSE);
+    net_active_window = 
+        XInternAtom (dpy, "_NET_ACTIVE_WINDOW", FALSE);
     net_client_list_stacking =
         XInternAtom (dpy, "_NET_CLIENT_LIST_STACKING", FALSE);
-    net_client_list = XInternAtom (dpy, "_NET_CLIENT_LIST", FALSE);
-    net_close_window = XInternAtom (dpy, "_NET_CLOSE_WINDOW", FALSE);
-    net_current_desktop = XInternAtom (dpy, "_NET_CURRENT_DESKTOP", FALSE);
-    net_desktop_geometry = XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", FALSE);
-    net_desktop_viewport = XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
-    net_desktop_names = XInternAtom (dpy, "_NET_DESKTOP_NAMES", FALSE);
+    net_client_list = 
+        XInternAtom (dpy, "_NET_CLIENT_LIST", FALSE);
+    net_close_window = 
+        XInternAtom (dpy, "_NET_CLOSE_WINDOW", FALSE);
+    net_current_desktop = 
+        XInternAtom (dpy, "_NET_CURRENT_DESKTOP", FALSE);
+    net_desktop_geometry = 
+        XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", FALSE);
+    net_desktop_viewport = 
+        XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
+    net_desktop_names = 
+        XInternAtom (dpy, "_NET_DESKTOP_NAMES", FALSE);
     net_number_of_desktops =
         XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
-    net_showing_desktop = XInternAtom (dpy, "_NET_SHOWING_DESKTOP", FALSE);
-    net_startup_id = XInternAtom (dpy, "_NET_STARTUP_ID", FALSE);
-    net_supported = XInternAtom (dpy, "_NET_SUPPORTED", FALSE);
+    net_showing_desktop = 
+        XInternAtom (dpy, "_NET_SHOWING_DESKTOP", FALSE);
+    net_startup_id = 
+        XInternAtom (dpy, "_NET_STARTUP_ID", FALSE);
+    net_supported = 
+        XInternAtom (dpy, "_NET_SUPPORTED", FALSE);
     net_supporting_wm_check =
         XInternAtom (dpy, "_NET_SUPPORTING_WM_CHECK", FALSE);
     net_wm_action_change_desktop =
         XInternAtom (dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", FALSE);
-    net_wm_action_close = XInternAtom (dpy, "_NET_WM_ACTION_CLOSE", FALSE);
+    net_wm_action_close = 
+        XInternAtom (dpy, "_NET_WM_ACTION_CLOSE", FALSE);
     net_wm_action_maximize_horz =
         XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_HORZ", FALSE);
     net_wm_action_maximize_vert =
         XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_VERT", FALSE);
-    net_wm_action_move = XInternAtom (dpy, "_NET_WM_ACTION_MOVE", FALSE);
-    net_wm_action_resize = XInternAtom (dpy, "_NET_WM_ACTION_RESIZE", FALSE);
-    net_wm_action_shade = XInternAtom (dpy, "_NET_WM_ACTION_SHADE", FALSE);
-    net_wm_action_stick = XInternAtom (dpy, "_NET_WM_ACTION_STICK", FALSE);
+    net_wm_action_move = 
+        XInternAtom (dpy, "_NET_WM_ACTION_MOVE", FALSE);
+    net_wm_action_resize = 
+        XInternAtom (dpy, "_NET_WM_ACTION_RESIZE", FALSE);
+    net_wm_action_shade = 
+        XInternAtom (dpy, "_NET_WM_ACTION_SHADE", FALSE);
+    net_wm_action_stick = 
+        XInternAtom (dpy, "_NET_WM_ACTION_STICK", FALSE);
     net_wm_allowed_actions =
         XInternAtom (dpy, "_NET_WM_ALLOWED_ACTIONS", FALSE);
-    net_wm_desktop = XInternAtom (dpy, "_NET_WM_DESKTOP", FALSE);
-    net_wm_icon_geometry = XInternAtom (dpy, "_NET_WM_ICON_GEOMETRY", FALSE);
-    net_wm_icon_name = XInternAtom (dpy, "_NET_WM_ICON_NAME", FALSE);
-    net_wm_icon = XInternAtom (dpy, "_NET_WM_ICON", FALSE);
-    net_wm_moveresize = XInternAtom (dpy, "_NET_WM_MOVERESIZE", FALSE);
-    net_wm_name = XInternAtom (dpy, "_NET_WM_NAME", FALSE);
-    net_wm_state_above = XInternAtom (dpy, "_NET_WM_STATE_ABOVE", FALSE);
-    net_wm_state_below = XInternAtom (dpy, "_NET_WM_STATE_BELOW", FALSE);
+    net_wm_desktop = 
+        XInternAtom (dpy, "_NET_WM_DESKTOP", FALSE);
+    net_wm_icon_geometry = 
+        XInternAtom (dpy, "_NET_WM_ICON_GEOMETRY", FALSE);
+    net_wm_icon_name = 
+        XInternAtom (dpy, "_NET_WM_ICON_NAME", FALSE);
+    net_wm_icon = 
+        XInternAtom (dpy, "_NET_WM_ICON", FALSE);
+    net_wm_moveresize = 
+        XInternAtom (dpy, "_NET_WM_MOVERESIZE", FALSE);
+    net_wm_name = 
+        XInternAtom (dpy, "_NET_WM_NAME", FALSE);
+    net_wm_state_above = 
+        XInternAtom (dpy, "_NET_WM_STATE_ABOVE", FALSE);
+    net_wm_state_below = 
+        XInternAtom (dpy, "_NET_WM_STATE_BELOW", FALSE);
     net_wm_state_fullscreen =
         XInternAtom (dpy, "_NET_WM_STATE_FULLSCREEN", FALSE);
-    net_wm_state_hidden = XInternAtom (dpy, "_NET_WM_STATE_HIDDEN", FALSE);
+    net_wm_state_hidden = 
+        XInternAtom (dpy, "_NET_WM_STATE_HIDDEN", FALSE);
     net_wm_state_maximized_horz =
         XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", FALSE);
     net_wm_state_maximized_vert =
         XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_VERT", FALSE);
-    net_wm_state_modal = XInternAtom (dpy, "_NET_WM_STATE_MODAL", FALSE);
-    net_wm_state_shaded = XInternAtom (dpy, "_NET_WM_STATE_SHADED", FALSE);
+    net_wm_state_modal = 
+        XInternAtom (dpy, "_NET_WM_STATE_MODAL", FALSE);
+    net_wm_state_shaded = 
+        XInternAtom (dpy, "_NET_WM_STATE_SHADED", FALSE);
     net_wm_state_skip_pager =
         XInternAtom (dpy, "_NET_WM_STATE_SKIP_PAGER", FALSE);
     net_wm_state_skip_taskbar =
         XInternAtom (dpy, "_NET_WM_STATE_SKIP_TASKBAR", FALSE);
-    net_wm_state_sticky = XInternAtom (dpy, "_NET_WM_STATE_STICKY", FALSE);
-    net_wm_state = XInternAtom (dpy, "_NET_WM_STATE", FALSE);
-    net_wm_strut = XInternAtom (dpy, "_NET_WM_STRUT", FALSE);
-    net_wm_strut_partial = XInternAtom (dpy, "_NET_WM_STRUT_PARTIAL", FALSE);
+    net_wm_state_sticky = 
+        XInternAtom (dpy, "_NET_WM_STATE_STICKY", FALSE);
+    net_wm_state_demands_attention = 
+        XInternAtom (dpy, "_NET_WM_STATE_DEMANDS_ATTENTION", FALSE);
+    net_wm_state = 
+        XInternAtom (dpy, "_NET_WM_STATE", FALSE);
+    net_wm_strut = 
+        XInternAtom (dpy, "_NET_WM_STRUT", FALSE);
+    net_wm_strut_partial = 
+        XInternAtom (dpy, "_NET_WM_STRUT_PARTIAL", FALSE);
     net_wm_window_type_desktop =
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
     net_wm_window_type_dialog =
@@ -494,10 +544,14 @@ initNetHints (Display * dpy)
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", FALSE);
     net_wm_window_type_utility =
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_UTILITY", FALSE);
-    net_wm_window_type = XInternAtom (dpy, "_NET_WM_WINDOW_TYPE", FALSE);
-    net_workarea = XInternAtom (dpy, "_NET_WORKAREA", FALSE);
-    net_wm_user_time = XInternAtom (dpy, "_NET_WM_USER_TIME", FALSE);
-    utf8_string = XInternAtom (dpy, "UTF8_STRING", FALSE);
+    net_wm_window_type = 
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE", FALSE);
+    net_workarea = 
+        XInternAtom (dpy, "_NET_WORKAREA", FALSE);
+    net_wm_user_time = 
+        XInternAtom (dpy, "_NET_WM_USER_TIME", FALSE);
+    utf8_string = 
+        XInternAtom (dpy, "UTF8_STRING", FALSE);
 }
 
 void
@@ -545,6 +599,7 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_state_skip_pager;
     atoms[i++] = net_wm_state_skip_taskbar;
     atoms[i++] = net_wm_state_sticky;
+    atoms[i++] = net_wm_state_demands_attention;
     atoms[i++] = net_wm_strut;
     atoms[i++] = net_wm_strut_partial;
     atoms[i++] = net_wm_window_type;
@@ -559,7 +614,6 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_user_time;
     atoms[i++] = net_workarea;
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-
     atoms[i++] = net_startup_id;
 #endif
 

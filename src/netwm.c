@@ -114,6 +114,11 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : hidden");
         data[i++] = net_wm_state_hidden;
     }
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+    {
+        TRACE ("clientSetNetState : demands_attention");
+        data[i++] = net_wm_state_demands_attention;
+    }
     XChangeProperty (clientGetXDisplay (c), c->window, net_wm_state, XA_ATOM, 32,
         PropModeReplace, (unsigned char *) data, i);
     /*
@@ -133,7 +138,7 @@ clientGetNetState (Client * c)
     TRACE ("entering clientGetNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_SESSION_MANAGED))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
     {
         if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
@@ -237,6 +242,11 @@ clientGetNetState (Client * c)
                 TRACE ("clientGetNetState : state_hidden");
                 FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
             }
+            else if (atoms[i] == net_wm_state_demands_attention)
+            {
+                TRACE ("clientGetNetState : demands_attention");
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            }
             else
             {
                 g_message (_("%s: Unmanaged net_wm_state (window 0x%lx)"),
@@ -288,7 +298,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
         if (!clientIsTransientOrModal (c)
-            && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
+            && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
@@ -308,12 +318,29 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
+    if ((first == net_wm_state_demands_attention) || 
+        (second == net_wm_state_demands_attention))
+    {
+        if (action == NET_WM_STATE_ADD)
+        {
+            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+        }
+        else if (action == NET_WM_STATE_REMOVE)
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+        }
+        else if (action == NET_WM_STATE_TOGGLE)
+        {
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+        }
+    }
+
     if ((first == net_wm_state_maximized_horz)
         || (second == net_wm_state_maximized_horz)
         || (first == net_wm_state_maximized_vert)
         || (second == net_wm_state_maximized_vert))
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -563,7 +590,7 @@ clientUpdateFullscreenState (Client * c)
         layer = c->fullscreen_old_layer;
     }
     clientSetNetState (c);
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         /* 
            For some reason, the configure can generate EnterNotify events
@@ -659,7 +686,7 @@ clientGetInitialNetWmDesktop (Client * c)
     c2 = clientGetTransient (c);
     if (c2)
     {
-        FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
         c->win_workspace = c2->win_workspace;
         if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
         {
@@ -669,10 +696,10 @@ clientGetInitialNetWmDesktop (Client * c)
     }
     else
     {
-        if (!FLAG_TEST_ALL (c->flags,
-                CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
+        if (!FLAG_TEST_ALL (c->xfwm_flags,
+                XFWM_FLAG_SESSION_MANAGED | XFWM_FLAG_WORKSPACE_SET))
         {
-            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
             c->win_workspace = c->screen_info->current_ws;
         }
         if (getHint (clientGetXDisplay (c), c->window, net_wm_desktop, &val))
@@ -680,8 +707,8 @@ clientGetInitialNetWmDesktop (Client * c)
             TRACE ("atom net_wm_desktop detected");
             if (val == (int) ALL_WORKSPACES)
             {
-                if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_STICK,
-                        CLIENT_FLAG_STICKY))
+                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
+                    && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                 {
                     TRACE
                         ("atom net_wm_desktop specifies window \"%s\" is sticky",
@@ -698,14 +725,14 @@ clientGetInitialNetWmDesktop (Client * c)
                     c->name, (int) val);
                 c->win_workspace = (int) val;
             }
-            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
         }
         else if (getHint (clientGetXDisplay (c), c->window, win_workspace, &val))
         {
             TRACE ("atom win_workspace specifies window \"%s\" is on desk %i",
                 c->name, (int) val);
             c->win_workspace = (int) val;
-            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
         }
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name,
@@ -715,7 +742,7 @@ clientGetInitialNetWmDesktop (Client * c)
         TRACE ("value off limits, using %i instead",
             c->screen_info->workspace_count - 1);
         c->win_workspace = c->screen_info->workspace_count - 1;
-        FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name,
         c->win_workspace);
@@ -844,12 +871,12 @@ clientSetNetActions (Client * c)
         atoms[i++] = net_wm_action_maximize_horz;
         atoms[i++] = net_wm_action_maximize_vert;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
         atoms[i++] = net_wm_action_change_desktop;
         atoms[i++] = net_wm_action_stick;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
     {
         atoms[i++] = net_wm_action_shade;
     }
@@ -879,30 +906,30 @@ clientWindowType (Client * c)
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);
-            FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_MOVE | 
-                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
-                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK |
-                CLIENT_FLAG_HAS_BORDER);
+            FLAG_UNSET (c->xfwm_flags,
+                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_HAS_MOVE | 
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE | 
+                XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_STICK |
+                XFWM_FLAG_HAS_BORDER);
         }
         else if (c->type_atom == net_wm_window_type_dock)
         {
             TRACE ("atom net_wm_window_type_dock detected");
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
-            FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_BORDER |  CLIENT_FLAG_HAS_MOVE |
-                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
-                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
+            FLAG_UNSET (c->xfwm_flags,
+                XFWM_FLAG_HAS_BORDER |  XFWM_FLAG_HAS_MOVE |
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE | 
+                XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_toolbar)
         {
             TRACE ("atom net_wm_window_type_toolbar detected");
             c->type = WINDOW_TOOLBAR;
             c->initial_layer = WIN_LAYER_NORMAL;
-            FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE |
-                CLIENT_FLAG_HAS_STICK);
+            FLAG_UNSET (c->xfwm_flags,
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
+                XFWM_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_menu)
         {
@@ -915,9 +942,9 @@ clientWindowType (Client * c)
              */
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
-            FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE |
-                CLIENT_FLAG_HAS_STICK);
+            FLAG_UNSET (c->xfwm_flags,
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
+                XFWM_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_dialog)
         {
@@ -936,18 +963,18 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_utility detected");
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
-            FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
+            FLAG_UNSET (c->xfwm_flags,
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_splash)
         {
             TRACE ("atom net_wm_window_type_splash detected");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
-            FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_HIDE |
-                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MOVE |
-                CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_STICK);
+            FLAG_UNSET (c->xfwm_flags,
+                XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_HIDE |
+                XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_MOVE |
+                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_HAS_STICK);
         }
     }
     else
@@ -981,9 +1008,8 @@ clientWindowType (Client * c)
             }
             TRACE ("Applied layer is %i", c->initial_layer);
         }
-        FLAG_UNSET (c->flags,
-            CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK |
-            CLIENT_FLAG_STICKY);
+        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_STICK);
+        FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
     }
     if ((old_type != c->type) || (c->initial_layer != c->win_layer))
     {

@@ -82,12 +82,13 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
-        if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_VISIBLE,
-                CLIENT_FLAG_STICKY) && ((c->win_workspace != new_ws)))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE)
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) 
+            && ((c->win_workspace != new_ws)))
         {
             if (c == previous)
             {
-                FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
+                FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
                 clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
             }
             if (!clientIsTransientOrModal (c))
@@ -117,14 +118,15 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
+            || FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             clientSetWorkspace (c, new_ws, TRUE);
             if (c == previous)
             {
                 new_focus = c;
             }
-            FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
         }
         else if ((c->win_workspace == new_ws)
             && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
@@ -133,11 +135,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
             {
                 clientShow (c, FALSE);
             }
-            if ((!new_focus) && FLAG_TEST (c->flags, CLIENT_FLAG_FOCUS))
+            if ((!new_focus) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_FOCUS))
             {
                 new_focus = c;
             }
-            FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
         }
     }
 
@@ -245,7 +247,8 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
+            && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             screen_info->margins[TOP]    = MAX (screen_info->margins[TOP],    c->struts[TOP]);
             screen_info->margins[LEFT]   = MAX (screen_info->margins[LEFT],   c->struts[LEFT]);

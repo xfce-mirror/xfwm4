@@ -80,7 +80,8 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         
         if (!exclude || (c != exclude))
         {
-            if ((c->win_layer <= layer) && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
+            if ((c->win_layer <= layer)
+                 && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
                 if (clientSelectMask (c, 0, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
                 {
@@ -128,7 +129,7 @@ clientFocusNew(Client * c)
     }
     screen_info = c->screen_info;
     give_focus = screen_info->params->focus_new;
-#if 0    
+
     /*  Try to avoid focus stealing */
     if (client_focus)
     {
@@ -142,7 +143,6 @@ clientFocusNew(Client * c)
             }
         }
     }
-#endif
     
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
@@ -158,6 +158,8 @@ clientFocusNew(Client * c)
     }
     else
     {
+        FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+        clientSetNetState (c);
         clientPassGrabButton1 (NULL);
     }
 }
@@ -282,7 +284,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
                  */
 
                 c2 = clientGetTransient (c);
-                if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
+                if (c2 && FLAG_TEST(c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
                     new_focus = c2;
                     /* Usability: raise the parent, to grab user's attention */
@@ -424,7 +426,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
     }
     c2 = ((client_focus != c) ? client_focus : NULL);
-    if ((c) && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
+    if ((c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
         if ((c == client_focus) && !(flags & FOCUS_FORCE))
@@ -446,6 +448,11 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             sendClientMessage (c->screen_info, c->window, wm_protocols, wm_takefocus, timestamp);
+        }
+        if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            clientSetNetState (c);
         }
     }
     else

@@ -282,7 +282,7 @@ clientRaise (Client * c)
         return;
     }
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         Client *c2, *c3;
         Client *client_sibling = NULL;
@@ -396,7 +396,7 @@ clientLower (Client * c)
         return;
     }
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
         
@@ -450,7 +450,8 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
        
     if (set)
     {
-        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+        if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN) 
+            || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
             return TRUE;
@@ -458,7 +459,8 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
     }
     else if (c->win_layer == WIN_LAYER_ABOVE_DOCK)
     {
-        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+        if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN) 
+            || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
             {
@@ -510,7 +512,7 @@ clientAddToList (Client * c)
     clientSetNetClientList (screen_info, win_client_list, screen_info->windows);
     clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
   
-    FLAG_SET (c->flags, CLIENT_FLAG_MANAGED);
+    FLAG_SET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }
 
 void
@@ -522,7 +524,7 @@ clientRemoveFromList (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRemoveFromList");
 
-    FLAG_UNSET (c->flags, CLIENT_FLAG_MANAGED);
+    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -554,7 +556,7 @@ clientRemoveFromList (Client * c)
     clientSetNetClientList (screen_info, win_client_list, screen_info->windows);
     clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
 
-    FLAG_UNSET (c->flags, CLIENT_FLAG_MANAGED);
+    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }
 
 GList *

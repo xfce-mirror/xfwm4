@@ -46,7 +46,8 @@ clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
 {
     unsigned long sigma = 0;
     
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
+        && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         sigma = overlap (x, y, x + w, y + h, 
                          0, c->struts[LEFT_START_Y], 
@@ -127,7 +128,8 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        if (FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
+        if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
+            && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             /* Left */
             if (overlap (*x, *y, *x + *w, *y + *h, 
@@ -261,7 +263,9 @@ clientConstrainPos (Client * c, gboolean show_full)
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if (FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE) && (c2 != c))
+            if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
+                && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
+                && (c2 != c))
             {
                 /* Right */
                 if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
@@ -337,7 +341,9 @@ clientConstrainPos (Client * c, gboolean show_full)
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if (FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE) && (c2 != c))
+            if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
+                && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
+                && (c2 != c))
             {
                 /* Right */
                 if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
@@ -514,7 +520,7 @@ clientInitPosition (Client * c)
             {
                 if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
                     && (c->win_workspace == c2->win_workspace)
-                    && FLAG_TEST (c2->flags, CLIENT_FLAG_VISIBLE))
+                    && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
                     count_overlaps += overlap (test_x - frame_left, 
                                                test_y - frame_top, 
