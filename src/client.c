@@ -829,7 +829,6 @@ void clientCoordGravitate(Client * c, int mode, int *x, int *y)
 
 void clientGravitate(Client * c, int mode)
 {
-    int gravity, dx = 0, dy = 0;
     int x, y;
 
     g_return_if_fail(c != NULL);
@@ -2919,7 +2918,7 @@ static GtkToXEventFilterStatus clientButtonPress_event_filter(XEvent * xevent, g
 
 void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
 {
-    int b, g1, g2;
+    int b, g1;
     ButtonPressData passdata;
 
     g_return_if_fail(c != NULL);

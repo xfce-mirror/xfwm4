@@ -294,8 +294,9 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
     GdkPoint *pt;
     DBG("entering menu_popup\n");
 
-    g_return_if_fail(menu != NULL);
-    g_return_if_fail(GTK_IS_MENU(menu->menu));
+    g_return_val_if_fail(menu != NULL, FALSE);
+    g_return_val_if_fail(GTK_IS_MENU(menu->menu), FALSE);
+    
     pt = g_new(GdkPoint, 1);
     pt->x = root_x;
     pt->y = root_y;
