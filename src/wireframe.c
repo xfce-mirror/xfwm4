@@ -27,21 +27,26 @@
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
+#include <gdk/gdkx.h>
 
 #include "screen.h"
 #include "client.h"
 
 #ifndef OUTLINE_WIDTH
-#define OUTLINE_WIDTH 3
+#define OUTLINE_WIDTH 5
 #endif
 
 void
 wireframeUpdate (Client *c, Window xwindow)
 {
+    ScreenInfo *screen_info;
+
     g_return_if_fail (c != NULL);
     g_return_if_fail (xwindow != None);
     
     TRACE ("entering wireframeUpdate 0x%lx", xwindow);
+    screen_info = c->screen_info;
+    XUnmapWindow (clientGetXDisplay (c), xwindow);
     XMoveResizeWindow (clientGetXDisplay (c), xwindow, 
                        frameX (c), frameY (c), frameWidth (c), frameHeight (c));
 
@@ -58,7 +63,6 @@ wireframeUpdate (Client *c, Window xwindow)
         xrect.y = 0;
         xrect.width = frameWidth (c);
         xrect.height = frameHeight (c);
-
         XUnionRectWithRegion (&xrect, outer_xregion, outer_xregion);
 
         xrect.x += OUTLINE_WIDTH;
@@ -75,13 +79,30 @@ wireframeUpdate (Client *c, Window xwindow)
 
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
+	XMapWindow (clientGetXDisplay (c), xwindow);
+
+        XDrawRectangle (clientGetXDisplay (c), xwindow, 
+                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        0, 0, frameWidth (c) - 1, frameHeight (c) - 1);
+
+        XDrawRectangle (clientGetXDisplay (c), xwindow, 
+                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1, 
+                        frameWidth (c) - 2 * (OUTLINE_WIDTH - 1) - 1, 
+                        frameHeight (c)- 2 * (OUTLINE_WIDTH - 1) - 1);
     }
     else
     {
         /* Unset the shape */
         XShapeCombineMask (clientGetXDisplay (c), xwindow,
                            ShapeBounding, 0, 0, None, ShapeSet);
+	XMapWindow (clientGetXDisplay (c), xwindow);
+
+        XDrawRectangle (clientGetXDisplay (c), xwindow, 
+                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        0, 0, frameWidth (c) - 1, frameHeight (c) - 1);
     }
+    XFlush (clientGetXDisplay (c));
 }
 
 Window
@@ -99,7 +120,6 @@ wireframeCreate (Client *c)
     attrs.override_redirect = True;
     attrs.background_pixel = BlackPixel (clientGetXDisplay (c),
                                          screen_info->screen);
-
     xwindow = XCreateWindow (clientGetXDisplay (c),
                              screen_info->xroot,
                              frameX (c), frameY (c),
@@ -107,9 +127,7 @@ wireframeCreate (Client *c)
                              0, CopyFromParent, CopyFromParent,
                              (Visual *) CopyFromParent,
                              CWOverrideRedirect | CWBackPixel, &attrs);
-
     wireframeUpdate (c, xwindow);
-    XMapWindow (clientGetXDisplay (c), xwindow);
 
     return (xwindow);
 }

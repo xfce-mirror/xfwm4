@@ -3691,6 +3691,13 @@ clientCycle (Client * c, XEvent * e)
         passdata.cycle_range |= INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER;
     }
     passdata.c = clientGetNext (c, passdata.cycle_range);
+
+    /* If there is one single client, and if it's hidden, use it */
+    if ((passdata.c == NULL) && FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+    {
+        passdata.c = c;
+    }
+    
     if (passdata.c)
     {
         GdkPixbuf *icon;
