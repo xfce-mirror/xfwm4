@@ -579,7 +579,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
             CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
-	    
+
         }
         else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
@@ -875,16 +875,16 @@ static void clientWindowType(Client * c)
         else if(c->type_atom == net_wm_window_type_dialog)
         {
             DBG("atom net_wm_window_type_dialog detected\n");
-	    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
-	    {
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
+            {
                 c->type = WINDOW_MODAL_DIALOG;
                 c->initial_layer = WIN_LAYER_ONTOP;
-	    }
-	    else
-	    {
+            }
+            else
+            {
                 c->type = WINDOW_DIALOG;
                 c->initial_layer = WIN_LAYER_NORMAL;
-	    }
+            }
             CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_normal)
@@ -1908,7 +1908,7 @@ static inline void clientFree(Client * c)
     free(c);
 }
 
-void clientClearPixmapCache(Client *c)
+void clientClearPixmapCache(Client * c)
 {
     g_return_if_fail(c != NULL);
 
@@ -1997,7 +1997,7 @@ void clientFrame(Window w)
     initPixmap(&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
     c->pm_cache.previous_width = -1;
     c->pm_cache.previous_height = -1;
-    
+
     for(i = 0; i < BUTTON_COUNT; i++)
     {
         c->button_pressed[i] = False;
@@ -2146,21 +2146,21 @@ void clientFrame(Window w)
         clientShow(c, True);
         if(params.focus_new && clientAcceptFocus(c))
         {
-	    /* We set the draw_active value to the wrong value to force a draw */
-	    c->draw_active = FALSE;
+            /* We set the draw_active value to the wrong value to force a draw */
+            c->draw_active = FALSE;
             clientSetFocus(c, True);
         }
         else
         {
-	    /* We set the draw_active value to the wrong value to force a draw */
-	    c->draw_active = TRUE;
+            /* We set the draw_active value to the wrong value to force a draw */
+            c->draw_active = TRUE;
             frameDraw(c, FALSE);
         }
     }
     else
     {
-	/* We set the draw_active value to the wrong value to force a draw */
-	c->draw_active = TRUE;
+        /* We set the draw_active value to the wrong value to force a draw */
+        c->draw_active = TRUE;
         frameDraw(c, FALSE);
         setWMState(dpy, c->window, IconicState);
         clientSetNetState(c);
@@ -2172,7 +2172,7 @@ void clientFrame(Window w)
 void clientUnframe(Client * c, int remap)
 {
     int i;
-    
+
     DBG("entering clientUnframe\n");
     DBG("unframing client \"%s\" (%#lx)\n", c->name, c->window);
 

@@ -145,7 +145,7 @@ typedef struct _Client Client;
 
 struct _ClientPixmapCache
 {
-    MyPixmap pm_title[2]; 
+    MyPixmap pm_title[2];
     MyPixmap pm_sides[3][2];
     int previous_width;
     int previous_height;

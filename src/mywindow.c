@@ -31,13 +31,13 @@
 #include "main.h"
 #include "debug.h"
 
-void myWindowCreate(Display *dpy, Window parent, myWindow *win, Cursor cursor)
+void myWindowCreate(Display * dpy, Window parent, myWindow * win, Cursor cursor)
 {
     DBG("entering myWindowCreate\n");
 
     win->window = XCreateSimpleWindow(dpy, parent, 0, 0, 1, 1, 0, 0, 0);
     DBG("Created XID %lx\n", win->window);
-    if (cursor != None)
+    if(cursor != None)
     {
         XDefineCursor(dpy, win->window, cursor);
     }
@@ -49,7 +49,7 @@ void myWindowCreate(Display *dpy, Window parent, myWindow *win, Cursor cursor)
     win->h = 1;
 }
 
-void myWindowDelete(myWindow *win)
+void myWindowDelete(myWindow * win)
 {
     DBG("entering myWindowDelete\n");
 
@@ -61,60 +61,60 @@ void myWindowDelete(myWindow *win)
     win->map = FALSE;
 }
 
-void myWindowShow(myWindow *win, int x, int y, int width, int height, gboolean refresh)
+void myWindowShow(myWindow * win, int x, int y, int width, int height, gboolean refresh)
 {
     DBG("entering myWindowShow\n");
 
-    if (!(win->window))
+    if(!(win->window))
     {
         return;
     }
-    if ((width < 1) || (height < 1))
+    if((width < 1) || (height < 1))
     {
         myWindowHide(win);
-	return;
+        return;
     }
-    if (!(win->map))
+    if(!(win->map))
     {
         XMapWindow(win->dpy, win->window);
         win->map = TRUE;
     }
     DBG("Showing XID %lx\n", win->window);
-    if (((x != win->x) || (y != win->y)) && ((width != win->w) || (height != win->h)))
+    if(((x != win->x) || (y != win->y)) && ((width != win->w) || (height != win->h)))
     {
-        XMoveResizeWindow(win->dpy, win->window, x, y, (unsigned int) width, (unsigned int) height);
-	win->x = x;
-	win->y = y;
-	win->w = width;
-	win->h = height;
+        XMoveResizeWindow(win->dpy, win->window, x, y, (unsigned int)width, (unsigned int)height);
+        win->x = x;
+        win->y = y;
+        win->w = width;
+        win->h = height;
     }
-    else if ((x != win->x) || (y != win->y))
+    else if((x != win->x) || (y != win->y))
     {
         XMoveWindow(win->dpy, win->window, x, y);
-        if (refresh)
+        if(refresh)
         {
             XClearWindow(win->dpy, win->window);
         }
-	win->x = x;
-	win->y = y;
+        win->x = x;
+        win->y = y;
     }
-    else if ((width != win->w) || (height != win->h))
+    else if((width != win->w) || (height != win->h))
     {
-        XResizeWindow(win->dpy, win->window, (unsigned int) width, (unsigned int) height);
-	win->w = width;
-	win->h = height;
+        XResizeWindow(win->dpy, win->window, (unsigned int)width, (unsigned int)height);
+        win->w = width;
+        win->h = height;
     }
-    else if (refresh)
+    else if(refresh)
     {
         XClearWindow(win->dpy, win->window);
     }
 }
 
-void myWindowHide(myWindow *win)
+void myWindowHide(myWindow * win)
 {
     DBG("entering myWindowHide\n");
 
-    if (win->map)
+    if(win->map)
     {
         XUnmapWindow(win->dpy, win->window);
         win->map = FALSE;

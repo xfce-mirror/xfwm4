@@ -405,7 +405,7 @@ static char getLetterFromButton(int i, Client * c)
     return chr;
 }
 
-static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int button_x[BUTTON_COUNT])
+static void frameSetShape(Client * c, int state, ClientPixmapCache * pm_cache, int button_x[BUTTON_COUNT])
 {
     Window temp;
     int i;
@@ -436,7 +436,7 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
     if(pm_cache)
     {
         XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->title), ShapeBounding, 0, 0, pm_cache->pm_title[state].mask, ShapeSet);
-        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_LEFT]), ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_LEFT][state].mask, ShapeSet);
             XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT]), ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_RIGHT][state].mask, ShapeSet);
@@ -492,7 +492,7 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
             XShapeCombineRectangles(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
-        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             XShapeCombineShape(dpy, temp, ShapeBounding, 0, frameTop(c), MYWINDOW_XWINDOW(c->sides[SIDE_LEFT]), ShapeBounding, ShapeUnion);
             XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - frameRight(c), frameTop(c), MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT]), ShapeBounding, ShapeUnion);
@@ -536,32 +536,32 @@ void frameDraw(Client * c, gboolean invalidate_cache)
     DBG("entering frameDraw\n");
     DBG("drawing frame for \"%s\" (%#lx)\n", c->name, c->window);
 
-    g_return_if_fail (c != NULL);
-    
+    g_return_if_fail(c != NULL);
+
     if(c != clientGetFocus())
     {
         DBG("\"%s\" is not the active window\n", c->name);
         state = INACTIVE;
     }
-    if ((state == INACTIVE) && (c->draw_active))
+    if((state == INACTIVE) && (c->draw_active))
     {
         requires_clearing = TRUE;
-	c->draw_active = FALSE;
+        c->draw_active = FALSE;
     }
-    else if ((state == ACTIVE) && !(c->draw_active))
+    else if((state == ACTIVE) && !(c->draw_active))
     {
         requires_clearing = TRUE;
-	c->draw_active = TRUE;
+        c->draw_active = TRUE;
     }
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
-        if (invalidate_cache)
+        if(invalidate_cache)
         {
             clientClearPixmapCache(c);
         }
         else
         {
-            if (c->pm_cache.previous_width != c->width)
+            if(c->pm_cache.previous_width != c->width)
             {
                 freePixmap(dpy, &c->pm_cache.pm_title[ACTIVE]);
                 freePixmap(dpy, &c->pm_cache.pm_title[INACTIVE]);
@@ -569,7 +569,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
                 c->pm_cache.previous_width = c->width;
             }
-            if (c->pm_cache.previous_height != c->height)
+            if(c->pm_cache.previous_height != c->height)
             {
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
                 freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
@@ -578,9 +578,9 @@ void frameDraw(Client * c, gboolean invalidate_cache)
                 c->pm_cache.previous_height = c->height;
             }
         }
-        
+
         /* First, hide the buttons that we don't have... */
-	for(i = 0; i < BUTTON_COUNT; i++)
+        for(i = 0; i < BUTTON_COUNT; i++)
         {
             char b = getLetterFromButton(i, c);
             if((!b) || !strchr(params.button_layout, b))
@@ -646,26 +646,26 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         left_height = frameHeight(c) - frameTop(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height;
         right_height = frameHeight(c) - frameTop(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height;
 
-        if (c->pm_cache.pm_title[state].pixmap == None)
+        if(c->pm_cache.pm_title[state].pixmap == None)
         {
             frameCreateTitlePixmap(c, state, left, right, &c->pm_cache.pm_title[state]);
         }
-        
-        if (c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
+
+        if(c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
         {
             createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][state], frameLeft(c), left_height);
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap, params.sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].mask, params.sides[SIDE_LEFT][state].mask, 0, 0, frameLeft(c), left_height);
 
-        if (c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
+        if(c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
         {
             createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][state], frameRight(c), right_height);
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap, params.sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].mask, params.sides[SIDE_RIGHT][state].mask, 0, 0, frameRight(c), right_height);
 
-        if (c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
+        if(c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
         {
             createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][state], bottom_width, frameBottom(c));
         }
@@ -681,7 +681,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT]), params.corners[CORNER_BOTTOM_LEFT][state].pixmap);
         XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT]), params.corners[CORNER_BOTTOM_RIGHT][state].pixmap);
 
-        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             myWindowHide(&c->sides[SIDE_LEFT]);
             myWindowHide(&c->sides[SIDE_RIGHT]);
@@ -694,7 +694,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
 
         myWindowShow(&c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width, frameTop(c), requires_clearing | invalidate_cache);
         myWindowShow(&c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width, frameBottom(c), requires_clearing | invalidate_cache);
-        
+
         myWindowShow(&c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height, requires_clearing | invalidate_cache);
         myWindowShow(&c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height, requires_clearing | invalidate_cache);
         myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, requires_clearing | invalidate_cache);

@@ -319,7 +319,7 @@ int main(int argc, char **argv)
     {
         case -1:
             g_warning(_("%s: Another Window Manager is already running"), g_get_prgname());
-	    exit(1);
+            exit(1);
             break;
         case -2:
             g_warning(_("%s: Missing data from default files"), g_get_prgname());
@@ -332,7 +332,7 @@ int main(int argc, char **argv)
                 {
                     case -1:
                         g_warning("fork() failed");
-			exit(1);
+                        exit(1);
                         break;
                     case 0:    /* child */
                         gtk_main();

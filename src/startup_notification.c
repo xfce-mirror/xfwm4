@@ -289,11 +289,11 @@ void sn_init_display(Display * dpy, int screen)
 {
     sn_display = NULL;
     sn_context = NULL;
-    
+
     g_return_if_fail(dpy != NULL);
 
     sn_display = sn_display_new(dpy, sn_error_trap_push, sn_error_trap_pop);
-    if (sn_display != NULL)
+    if(sn_display != NULL)
     {
         sn_context = sn_monitor_context_new(sn_display, screen, sn_screen_event, NULL, NULL);
     }
@@ -303,9 +303,9 @@ void sn_init_display(Display * dpy, int screen)
 
 void sn_close_display(void)
 {
-    if (sn_display)
+    if(sn_display)
     {
-        sn_display_unref (sn_display);
+        sn_display_unref(sn_display);
     }
     sn_display = NULL;
 }

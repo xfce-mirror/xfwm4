@@ -269,21 +269,21 @@ static TitleRadioButton title_radio_buttons[END];
 static GList *decoration_theme_list = NULL;
 static GList *keybinding_theme_list = NULL;
 
-static gboolean glib22_str_has_suffix (const gchar  *str, const gchar  *suffix)
+static gboolean glib22_str_has_suffix(const gchar * str, const gchar * suffix)
 {
     int str_len;
     int suffix_len;
 
-    g_return_val_if_fail (str != NULL, FALSE);
-    g_return_val_if_fail (suffix != NULL, FALSE);
+    g_return_val_if_fail(str != NULL, FALSE);
+    g_return_val_if_fail(suffix != NULL, FALSE);
 
-    str_len = strlen (str);
-    suffix_len = strlen (suffix);
+    str_len = strlen(str);
+    suffix_len = strlen(suffix);
 
-    if (str_len < suffix_len)
-	return FALSE;
+    if(str_len < suffix_len)
+        return FALSE;
 
-    return strcmp (str + str_len - suffix_len, suffix) == 0;
+    return strcmp(str + str_len - suffix_len, suffix) == 0;
 }
 
 static void sensitive_cb(GtkWidget * widget, gpointer user_data)
@@ -529,7 +529,7 @@ static ThemeInfo *find_theme_info_by_name(const gchar * theme_name, GList * them
     return NULL;
 }
 
-static gboolean parserc(const gchar * filename, gboolean *set_layout, gboolean *set_align, gboolean *set_font)
+static gboolean parserc(const gchar * filename, gboolean * set_layout, gboolean * set_align, gboolean * set_font)
 {
     gchar buf[80];
     gchar *lvalue, *rvalue;
@@ -538,7 +538,7 @@ static gboolean parserc(const gchar * filename, gboolean *set_layout, gboolean *
     *set_layout = FALSE;
     *set_align = FALSE;
     *set_font = FALSE;
-    
+
     fp = fopen(filename, "r");
     if(!fp)
     {
@@ -550,20 +550,20 @@ static gboolean parserc(const gchar * filename, gboolean *set_layout, gboolean *
         rvalue = strtok(NULL, "\n");
         if((lvalue) && (rvalue))
         {
-            if (!g_ascii_strcasecmp(lvalue, "button_layout"))
-	    {
-	        *set_layout = TRUE;
-	    }
-	    else if (!g_ascii_strcasecmp(lvalue, "title_alignment"))
-	    {
-	        *set_align = TRUE;
-	    }
-	    else if (!g_ascii_strcasecmp(lvalue, "title_font"))
-	    {
-	        *set_font = TRUE;
-	    }
+            if(!g_ascii_strcasecmp(lvalue, "button_layout"))
+            {
+                *set_layout = TRUE;
+            }
+            else if(!g_ascii_strcasecmp(lvalue, "title_alignment"))
+            {
+                *set_align = TRUE;
+            }
+            else if(!g_ascii_strcasecmp(lvalue, "title_font"))
+            {
+                *set_font = TRUE;
+            }
         }
-	
+
     }
     fclose(fp);
     return TRUE;
@@ -603,7 +603,7 @@ static GList *update_theme_dir(const gchar * theme_dir, GList * theme_list)
 
     theme_name = g_strdup(strrchr(theme_dir, G_DIR_SEPARATOR) + 1);
     info = find_theme_info_by_name(theme_name, list);
-    
+
     if(info)
     {
         if(!has_decoration && !has_keybinding)
@@ -636,7 +636,7 @@ static GList *update_theme_dir(const gchar * theme_dir, GList * theme_list)
             list = g_list_prepend(list, info);
         }
     }
-    
+
     g_free(theme_name);
     return list;
 }
@@ -687,20 +687,20 @@ static GList *theme_common_init(GList * theme_list)
     return list;
 }
 
-static gboolean dialog_update_from_theme(Itf *itf, const gchar * theme_name, GList * theme_list)
+static gboolean dialog_update_from_theme(Itf * itf, const gchar * theme_name, GList * theme_list)
 {
     ThemeInfo *info = NULL;
-    
-    g_return_val_if_fail (theme_name != NULL, FALSE);
-    g_return_val_if_fail (theme_list != NULL, FALSE);
-    
+
+    g_return_val_if_fail(theme_name != NULL, FALSE);
+    g_return_val_if_fail(theme_list != NULL, FALSE);
+
     info = find_theme_info_by_name(theme_name, theme_list);
-    if (info)
+    if(info)
     {
-	gtk_container_foreach (GTK_CONTAINER(itf->frame2), sensitive_cb, GINT_TO_POINTER((gint) !(info->set_layout)));
-	gtk_container_foreach (GTK_CONTAINER(itf->frame14), sensitive_cb, GINT_TO_POINTER((gint) !(info->set_align)));
+        gtk_container_foreach(GTK_CONTAINER(itf->frame2), sensitive_cb, GINT_TO_POINTER((gint) ! (info->set_layout)));
+        gtk_container_foreach(GTK_CONTAINER(itf->frame14), sensitive_cb, GINT_TO_POINTER((gint) ! (info->set_align)));
         gtk_widget_set_sensitive(itf->font_button, !(info->set_font));
-	return TRUE;
+        return TRUE;
     }
     return FALSE;
 }
@@ -713,13 +713,13 @@ static void decoration_selection_changed(GtkTreeSelection * selection, gpointer 
     Itf *itf;
     McsPlugin *mcs_plugin;
 
-    g_return_if_fail (data != NULL);
-    
+    g_return_if_fail(data != NULL);
+
     if(setting_model)
     {
         return;
     }
-    
+
     itf = (Itf *) data;
     mcs_plugin = itf->mcs_plugin;
 
@@ -739,7 +739,7 @@ static void decoration_selection_changed(GtkTreeSelection * selection, gpointer 
             g_free(current_theme);
             current_theme = new_theme;
             dialog_update_from_theme(itf, current_theme, decoration_theme_list);
-	    mcs_manager_set_string(mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL, current_theme);
+            mcs_manager_set_string(mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL, current_theme);
             mcs_manager_notify(mcs_plugin->manager, CHANNEL);
             write_options(mcs_plugin);
         }
@@ -751,16 +751,16 @@ static void keybinding_selection_changed(GtkTreeSelection * selection, gpointer 
     GtkTreeModel *model;
     gchar *new_key_theme;
     GtkTreeIter iter;
-    Itf * itf;
+    Itf *itf;
     McsPlugin *mcs_plugin;
 
-    g_return_if_fail (data != NULL);
-    
+    g_return_if_fail(data != NULL);
+
     if(setting_model)
     {
         return;
     }
-    
+
     itf = (Itf *) data;
     mcs_plugin = itf->mcs_plugin;
 
@@ -1511,7 +1511,7 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     gtk_widget_grab_focus(dialog->closebutton1);
     gtk_widget_grab_default(dialog->closebutton1);
-    
+
     return dialog;
 }
 
@@ -1544,7 +1544,7 @@ static void setup_dialog(Itf * itf)
     decoration_theme_list = read_themes(decoration_theme_list, itf->treeview1, itf->scrolledwindow1, DECORATION_THEMES, current_theme);
     keybinding_theme_list = read_themes(keybinding_theme_list, itf->treeview2, itf->scrolledwindow2, KEYBINDING_THEMES, current_key_theme);
     dialog_update_from_theme(itf, current_theme, decoration_theme_list);
-    
+
     g_signal_connect(G_OBJECT(itf->xfwm4_dialog), "response", G_CALLBACK(cb_dialog_response), itf->mcs_plugin);
     g_signal_connect(G_OBJECT(itf->font_button), "clicked", G_CALLBACK(show_font_selection), itf);
     g_signal_connect(G_OBJECT(itf->click_focus_radio), "toggled", G_CALLBACK(cb_click_to_focus_changed), itf);
@@ -1579,7 +1579,7 @@ static void create_channel(McsPlugin * mcs_plugin)
 
     const gchar *home = g_getenv("HOME");
     gchar *rcfile;
-    
+
     rcfile = g_strconcat(home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
     mcs_manager_add_channel_from_file(mcs_plugin->manager, CHANNEL, rcfile);
     g_free(rcfile);
@@ -1836,9 +1836,9 @@ static void run_dialog(McsPlugin * mcs_plugin)
         return;
 
 #ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
+    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
 #endif
 
     is_running = TRUE;

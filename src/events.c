@@ -254,11 +254,11 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 clientToggleShaded(c);
                 break;
             case KEY_STICK_WINDOW:
-	        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
-		{
+                if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+                {
                     clientToggleSticky(c, TRUE);
                 }
-		break;
+                break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch(workspace + 1, c);
                 break;
@@ -932,17 +932,17 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/stick event\n", c->name, c->window);
-	    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
-	    {
-        	if(ev->data.l[1] == WIN_STATE_STICKY)
-        	{
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+            {
+                if(ev->data.l[1] == WIN_STATE_STICKY)
+                {
                     clientStick(c, TRUE);
-        	}
-        	else
-        	{
+                }
+                else
+                {
                     clientUnstick(c, TRUE);
-        	}
-	    }
+                }
+            }
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {

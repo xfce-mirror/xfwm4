@@ -27,6 +27,6 @@
 
 #include <X11/Xlib.h>
 
-Cursor cursorCreateSpinning(Display *dpy, Window window);
+Cursor cursorCreateSpinning(Display * dpy, Window window);
 
-#endif  /* __SPINNING_CURSOR_H__ */
+#endif /* __SPINNING_CURSOR_H__ */
