@@ -46,6 +46,11 @@
 #include "hints.h"
 #include "netwm.h"
 
+#define WINDOW_REGULAR_FOCUSABLE (WINDOW_NORMAL | \
+                                  WINDOW_UTILITY | \
+                                  WINDOW_DIALOG | \
+                                  WINDOW_MODAL_DIALOG)
+
 typedef struct _ClientPair ClientPair;
 struct _ClientPair
 {
@@ -83,7 +88,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         {
             if ((c->win_layer <= layer) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
-                if (clientSelectMask (c, 0, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
+                if (clientSelectMask (c, 0, WINDOW_REGULAR_FOCUSABLE))
                 {
                     top_client.prefered = c;
                 }
@@ -219,7 +224,7 @@ clientGetNext (Client * c, int mask)
         for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count - 1);
             c2 = c2->next, i++)
         {
-            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
+            if (clientSelectMask (c2, mask, WINDOW_REGULAR_FOCUSABLE))
             {
                 return c2;
             }
@@ -242,7 +247,7 @@ clientGetPrevious (Client * c, int mask)
         for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
             c2 = c2->prev, i++)
         {
-            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
+            if (clientSelectMask (c2, mask, WINDOW_REGULAR_FOCUSABLE))
             {
                 return c2;
             }

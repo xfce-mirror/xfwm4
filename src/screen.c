@@ -91,6 +91,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->screen = gdk_screen_get_number (gscr);
     screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
     screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
+    screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
     screen_info->current_ws = 0;
     screen_info->previous_ws = 0;
 

@@ -1621,8 +1621,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.bit_gravity = StaticGravity;
     
     c->frame =
-        XCreateWindow (display_info->dpy, screen_info->xroot, frameX (c), frameY (c), frameWidth (c),
-        frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
+        XCreateWindow (display_info->dpy, screen_info->xroot, 
+        frameX (c), frameY (c), frameWidth (c), frameHeight (c), 0, 
+        screen_info->depth, InputOutput, screen_info->visual,
         valuemask, &attributes);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
     XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
@@ -3594,8 +3595,8 @@ clientResize (Client * c, int corner, XEvent * e)
                         FALSE, GrabModeAsync, GrabModeAsync, CurrentTime);
     g2 = XGrabPointer (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
                         FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-                        GrabModeAsync, screen_info->xroot, myDisplayGetCursorResize(display_info,
-                        passdata.corner),
+                        GrabModeAsync, screen_info->xroot, 
+                        myDisplayGetCursorResize(display_info, passdata.corner), 
                         CurrentTime);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))

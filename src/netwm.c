@@ -970,8 +970,6 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_utility detected");
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
-            FLAG_UNSET (c->xfwm_flags,
-                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_STICK);
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH])
         {

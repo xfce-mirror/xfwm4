@@ -86,6 +86,7 @@ struct _ScreenInfo
     GdkScreen *gscr;
     Screen *xscreen;
     int depth;
+    Visual *visual;
 
     GtkWidget *gtk_win;
     xfwmWindow sidewalk[4];
