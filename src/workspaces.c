@@ -84,7 +84,7 @@ workspaceSwitch (int new_ws, Client * c2)
             if (c == previous)
             {
                 CLIENT_FLAG_SET (previous, CLIENT_FLAG_FOCUS);
-                clientSetFocus (NULL, FALSE, TRUE);
+                clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
             }
             if (!clientIsTransientOrModal (c))
             {
@@ -165,7 +165,7 @@ workspaceSwitch (int new_ws, Client * c2)
             }
         }
     }
-    clientSetFocus (new_focus, TRUE, FALSE);
+    clientSetFocus (new_focus, FOCUS_SORT);
 }
 
 void

@@ -61,6 +61,11 @@
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
 
+#define FOCUS_NONE                      0
+#define FOCUS_SORT                      (1<<0)
+#define FOCUS_IGNORE_MODAL              (1<<1)
+#define FOCUS_FORCE                     (1<<2)
+
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
@@ -284,9 +289,9 @@ void clientUnstick (Client *, gboolean);
 void clientToggleSticky (Client *, gboolean);
 inline void clientRemoveMaximizeFlag (Client *);
 void clientToggleMaximized (Client *, int);
-void clientUpdateFocus (Client *);
 inline gboolean clientAcceptFocus (Client * c);
-void clientSetFocus (Client *, gboolean, gboolean);
+void clientUpdateFocus (Client *, unsigned short);
+void clientSetFocus (Client *, unsigned short);
 Client *clientGetFocus ();
 void clientScreenResize(void);
 void clientMove (Client *, XEvent *);

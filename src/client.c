@@ -3044,7 +3044,7 @@ clientFocusNew(Client * c)
     }
     if (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
     {
-        clientSetFocus (c, TRUE, FALSE);
+        clientSetFocus (c, FOCUS_SORT);
         clientPassGrabButton1 (c);
     }
     else
@@ -3480,7 +3480,7 @@ clientFrameAll ()
     windows_stack = NULL;
     client_focus = NULL;
 
-    clientSetFocus (NULL, FALSE, FALSE);
+    clientSetFocus (NULL, FOCUS_NONE);
     shield =
         setTmpEventWin (0, 0, 
                         MyDisplayFullWidth (dpy, screen),
@@ -3503,7 +3503,7 @@ clientFrameAll ()
         XFree (wins);
     }
     new_focus = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
-    clientSetFocus (new_focus, TRUE, FALSE);
+    clientSetFocus (new_focus, FOCUS_SORT);
     removeTmpEventWin (shield);
     MyXUngrabServer ();
     XSync (dpy, FALSE);
@@ -3518,7 +3518,7 @@ clientUnframeAll ()
 
     TRACE ("entering clientUnframeAll");
 
-    clientSetFocus (NULL, FALSE, TRUE);
+    clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
     XSync (dpy, FALSE);
     MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
@@ -3834,7 +3834,7 @@ clientPassFocus (Client * c)
     {
         new_focus = top_most;
     }
-    clientSetFocus (new_focus, TRUE, TRUE);
+    clientSetFocus (new_focus, (FOCUS_SORT | FOCUS_IGNORE_MODAL));
     if (new_focus == top_most)
     {
         clientPassGrabButton1 (new_focus);
@@ -4711,7 +4711,7 @@ clientSortRing(Client *c)
 }
 
 void
-clientUpdateFocus (Client * c)
+clientUpdateFocus (Client * c, unsigned short flags)
 {
     Client *c2 = ((client_focus != c) ? client_focus : NULL);
     unsigned long data[2];
@@ -4724,7 +4724,7 @@ clientUpdateFocus (Client * c)
             c->window);
         return;
     }
-    if (c == client_focus)
+    if ((c == client_focus) && !(flags & FOCUS_FORCE))
     {
         TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
             c->name, c->window);
@@ -4778,7 +4778,7 @@ clientUpdateFocus (Client * c)
 }
 
 void
-clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
+clientSetFocus (Client * c, unsigned short flags)
 {
     Client *c2, *c3;
     unsigned long data[2];
@@ -4786,7 +4786,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
 
     TRACE ("entering clientSetFocus");
     
-    if ((c) && !(ignore_modal))
+    if ((c) && !(flags & FOCUS_IGNORE_MODAL))
     {
         c3 = clientGetModalFor (c);
 
@@ -4805,7 +4805,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
                 c->window);
             return;
         }
-        if (c == client_focus)
+        if ((c == client_focus) && !(flags & FOCUS_FORCE))
         {
             TRACE
                 ("client \"%s\" (0x%lx) is already focused, ignoring request",
@@ -4814,7 +4814,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         }        
         client_focus = c;
         clientInstallColormaps (c);
-        if (sort)
+        if (flags & FOCUS_SORT)
         {
             clientSortRing(c);
         }
@@ -5922,7 +5922,7 @@ clientCycle (Client * c, XEvent * e)
     {
         clientShow (passdata.c, TRUE);
         clientRaise (passdata.c);
-        clientSetFocus (passdata.c, TRUE, FALSE);
+        clientSetFocus (passdata.c, FOCUS_SORT);
         clientPassGrabButton1 (passdata.c);
     }
 }

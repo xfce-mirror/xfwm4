@@ -157,7 +157,7 @@ clear_timeout (void)
 static inline gboolean
 raise_cb (gpointer data)
 {
-    Client *c;
+    Client *c = NULL;
     TRACE ("entering raise_cb");
 
     clear_timeout ();
@@ -194,7 +194,7 @@ moveRequest (Client * c, XEvent * ev)
 static inline void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, TRUE, FALSE);
+    clientSetFocus (c, FOCUS_SORT);
 
     if (CLIENT_FLAG_TEST_ALL (c,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -270,7 +270,7 @@ handleMotionNotify (XMotionEvent * ev)
 static inline void
 handleKeyPress (XKeyEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
     int state, key;
 
     TRACE ("entering handleKeyEvent");
@@ -517,7 +517,7 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, TRUE, FALSE);
+    clientSetFocus (c, FOCUS_SORT);
     clientRaise (c);
     clientPassGrabButton1 (c);
 
@@ -581,7 +581,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, TRUE, FALSE);
+            clientSetFocus (c, FOCUS_SORT);
             if (params.raise_on_click)
             {
                 clientRaise (c);
@@ -651,7 +651,7 @@ rootScrollButton (XButtonEvent * ev)
 static inline void
 handleButtonPress (XButtonEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
     Window win;
     int state, replay = FALSE;
 
@@ -698,7 +698,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, TRUE, FALSE);
+                clientSetFocus (c, FOCUS_SORT);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -731,7 +731,7 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, TRUE, FALSE);
+                    clientSetFocus (c, FOCUS_SORT);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
@@ -801,7 +801,7 @@ handleButtonPress (XButtonEvent * ev)
                 {
                     clientPassGrabButton1 (c);
                 }
-                clientSetFocus (c, TRUE, FALSE);
+                clientSetFocus (c, FOCUS_SORT);
                 if ((params.raise_on_click) || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
@@ -847,7 +847,7 @@ handleButtonRelease (XButtonEvent * ev)
 static inline void
 handleDestroyNotify (XDestroyWindowEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
@@ -871,7 +871,7 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
 static inline void
 handleMapRequest (XMapRequestEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleMapRequest");
     TRACE ("MapRequest on window (0x%lx)", ev->window);
@@ -908,7 +908,7 @@ handleMapRequest (XMapRequestEvent * ev)
 static inline void
 handleMapNotify (XMapEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleMapNotify");
     TRACE ("MapNotify on window (0x%lx)", ev->window);
@@ -1012,7 +1012,7 @@ handleConfigureNotify (XConfigureEvent * ev)
 static inline void
 handleConfigureRequest (XConfigureRequestEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
     XWindowChanges wc;
     XEvent otherEvent;
 
@@ -1163,7 +1163,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
 static inline void
 handleEnterNotify (XCrossingEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleEnterNotify");
 
@@ -1182,7 +1182,7 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            clientSetFocus (c, TRUE, FALSE);
+            clientSetFocus (c, FOCUS_SORT);
             if (!(params.raise_on_click))
             {
                 clientPassGrabButton1 (c);
@@ -1213,17 +1213,17 @@ handleLeaveNotify (XCrossingEvent * ev)
 static inline void
 handleFocusIn (XFocusChangeEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleFocusIn");
-    TRACE ("handleFocusOut (0x%lx) mode = %s",
+    TRACE ("handleFocusIn (0x%lx) mode = %s",
                 ev->window,
                 (ev->mode == NotifyNormal) ?
                 "NotifyNormal" :
                 (ev->mode == NotifyWhileGrabbed) ?
                 "NotifyWhileGrabbed" :
                 "(unknown)");
-    TRACE ("handleFocusOut (0x%lx) detail = %s",
+    TRACE ("handleFocusIn (0x%lx) detail = %s",
                 ev->window,
                 (ev->detail == NotifyAncestor) ?
                 "NotifyAncestor" :
@@ -1255,7 +1255,7 @@ handleFocusIn (XFocusChangeEvent * ev)
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
-        clientUpdateFocus (c);
+        clientUpdateFocus (c, FOCUS_NONE);
         if (params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout ();
@@ -1266,7 +1266,8 @@ handleFocusIn (XFocusChangeEvent * ev)
 static inline void
 handleFocusOut (XFocusChangeEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
+    Client *c2 = NULL;
     TRACE ("entering handleFocusOut");
     TRACE ("handleFocusOut (0x%lx) mode = %s",
                 ev->window,
@@ -1300,13 +1301,21 @@ handleFocusOut (XFocusChangeEvent * ev)
             || (ev->detail == NotifyNonlinearVirtual)))
     {
         c = clientGetFromWindow (ev->window, WINDOW);
+        c2 = clientGetFocus ();
         TRACE ("FocusOut on window (0x%lx)", ev->window);
-        if (c && (c == clientGetFocus ()))
+        if ((c) && (c == c2))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-            clientUpdateFocus (NULL);
+            clientUpdateFocus (NULL, FOCUS_NONE);
+            clientPassGrabButton1 (NULL);
             /* Clear timeout */
             clear_timeout ();
+        }
+        else if ((c2) && (ev->window == root) && 
+                 (ev->detail == NotifyNonlinearVirtual))
+        {
+            /* Handle focus transition for Motif combo menu */
+            clientSetFocus (c2, FOCUS_FORCE);
         }
     }
 }
@@ -1314,7 +1323,7 @@ handleFocusOut (XFocusChangeEvent * ev)
 static inline void
 handlePropertyNotify (XPropertyEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handlePropertyNotify");
 
@@ -1419,7 +1428,7 @@ handlePropertyNotify (XPropertyEvent * ev)
 static inline void
 handleClientMessage (XClientMessageEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleClientMessage");
 
@@ -1530,7 +1539,7 @@ handleClientMessage (XClientMessageEvent * ev)
             workspaceSwitch (c->win_workspace, NULL);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, TRUE, FALSE);
+            clientSetFocus (c, FOCUS_SORT);
             clientPassGrabButton1 (c);
         }
     }
@@ -1575,7 +1584,7 @@ handleClientMessage (XClientMessageEvent * ev)
 static inline void
 handleShape (XShapeEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleShape");
 
@@ -1589,7 +1598,7 @@ handleShape (XShapeEvent * ev)
 static inline void
 handleColormapNotify (XColormapEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleColormapNotify");
 
