@@ -5,6 +5,7 @@ SUBDIRS =								\
 	default								\
 	default.keys							\
 	default-4.0							\
+	default-4.2							\
 	opta								\
 	symphony							\
 	therapy								\

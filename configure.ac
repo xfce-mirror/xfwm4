@@ -147,6 +147,7 @@ themes/Makefile
 themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
+themes/default-4.2/Makefile
 themes/opta/Makefile
 themes/symphony/Makefile
 themes/tyrex/Makefile

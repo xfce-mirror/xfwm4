@@ -1,8 +1,8 @@
 active_text_color=#FFFFFF
 button_offset=0
-button_spacing=2
+button_spacing=1
 full_width_title=true
-title_horizontal_offset=8
+title_horizontal_offset=4
 title_vertical_offset_active=1
 title_vertical_offset_inactive=1
 title_shadow_active=true
