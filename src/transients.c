@@ -125,7 +125,8 @@ clientIsModalFor (Client * c1, Client * c2)
 
     if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL))
     {
-	return ((clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2)) && (c1->serial >= c2->serial));
+	return ((clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2)) 
+	        && (c1->serial >= c2->serial));
     }
     return FALSE;
 }
