@@ -4561,7 +4561,7 @@ clientUpdateFocus (Client * c)
     {
         clientInstallColormaps (c);
         data[0] = c->window;
-        if ((c->legacy_fullscreen) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+        if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
         }
@@ -4580,9 +4580,16 @@ clientUpdateFocus (Client * c)
            normal layer when loosing focus.
            The following "logic" is in charge of that behaviour.
          */
-        if ((c2->legacy_fullscreen) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+        if ((c2->legacy_fullscreen) || CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
         {
-            clientSetLayer (c2, WIN_LAYER_NORMAL);
+            if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+            {
+                clientSetLayer (c2, c2->fullscreen_old_layer);
+            }
+            else
+            {
+                clientSetLayer (c2, WIN_LAYER_NORMAL);
+            }
             if (c)
             {
                 clientRaise(c);
@@ -4636,7 +4643,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-        if ((c->legacy_fullscreen) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+        if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
         }
@@ -4653,9 +4660,16 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     if (c2)
     {
         /* Legacy apps layer switching. See comment in clientUpdateFocus () */
-        if ((c2->legacy_fullscreen) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+        if ((c2->legacy_fullscreen) || CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
         {
-            clientSetLayer (c2, WIN_LAYER_NORMAL);
+            if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+            {
+                clientSetLayer (c2, c2->fullscreen_old_layer);
+            }
+            else
+            {
+                clientSetLayer (c2, WIN_LAYER_NORMAL);
+            }
             if (c)
             {
                 clientRaise(c);
