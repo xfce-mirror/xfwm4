@@ -19727,7 +19727,7 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
 
-  ALL_LINGUAS="ar ca de es es_MX fi fr hu ja ko lt ms nl pl pt_PT ru sv ta
+  ALL_LINGUAS="ar ca de es es_MX fi fr hi hu ja ko lt ms nl pl pt_PT ru sv ta
 	 tr vi zh_CN zh_TW"
 
 
@@ -20552,6 +20552,8 @@ else
 echo "${ECHO_T}no" >&6
 fi
 	if test "$MSGFMT" != "no"; then
+          glib_save_LIBS="$LIBS"
+          LIBS="$LIBS $INTLLIBS"
 
 for ac_func in dcgettext
 do
@@ -20837,6 +20839,7 @@ fi
 	    esac
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+          LIBS="$glib_save_LIBS"
 	  INSTOBJEXT=.mo
 	else
 	  gt_cv_have_gettext=no
