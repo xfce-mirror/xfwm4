@@ -210,7 +210,7 @@ getMotifHints (Display * dpy, Window w)
     {
         if (items_read >= MWM_HINTS_ELEMENTS)
         {    
-            result = g_new(PropMwmHints, 1);
+            result = g_new0(PropMwmHints, 1);
             memcpy (result, data, sizeof (PropMwmHints));
         }
         XFree (data);

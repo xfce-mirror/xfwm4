@@ -32,7 +32,7 @@
 #include <X11/Xatom.h>
 #include <glib.h>
 
-#define MWM_HINTS_ELEMENTS                      5L
+#define MWM_HINTS_ELEMENTS                      4L
 
 #define MWM_HINTS_FUNCTIONS                     (1L << 0)
 #define MWM_HINTS_DECORATIONS                   (1L << 1)
@@ -101,7 +101,7 @@ typedef struct
     CARD32 functions;
     CARD32 decorations;
     INT32  inputMode;
-    CARD32 status;
+    CARD32 status; /* ignored */
 }
 PropMwmHints;
 
