@@ -44,7 +44,7 @@
 #define START_ICONIC(c) \
     ((c->wmhints) && \
     (c->wmhints->initial_state == IconicState) && \
-    (c->transient_for == None))
+    !(c->transient_for))
 
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)	((gpointer) (Window) (w))
@@ -639,7 +639,7 @@ static void clientWindowType(Client * c)
             layer = WIN_LAYER_ABOVE_DOCK;
         }
     }
-    else if(c->transient_for != None)
+    else if(c->transient_for)
     {
         Client *c2;
 
@@ -1210,7 +1210,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
                 {
                     DBG("checking \"%s\" (%#lx)\n", c2->name, c2->window);
-                    if((c2->transient_for == c->window) && (c2->window != c->window))
+                    if((c2->transient_for == c->window) && (c2 != c))
                     {
                         XWindowChanges wc2;
                         DBG("transient \"%s\" (%#lx) found for \"%s\" (%#lx)\n", c2->name, c2->window, c->name, c->window);
@@ -1835,16 +1835,27 @@ void clientShow(Client * c, int change_state)
 {
     int i;
     Client *c2;
+    int ws = workspace;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientShow\n");
     DBG("showing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if((c->win_workspace == workspace) || (c->sticky))
+    /* This is to make sure that transient are shown with their "master" window */
+    if ((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)) && (c2 != c))
+    {
+        ws = c2->win_workspace;
+	if (c->win_workspace != ws)
+	{
+	    clientSetWorkspace (c, ws, FALSE);
+	}
+    }
+
+    if((c->win_workspace == ws) || (c->sticky))
     {
         for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
         {
-            if((c2->transient_for == c->window) && (c2 != c))
+            if((c2->transient_for == c->window) && (!c2->hidden) && (c2 != c))
             {
                 clientShow(c2, change_state);
             }
@@ -1901,7 +1912,7 @@ void clientHideAll(Client * c)
 
     for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if((c2 != c) && (c2->transient_for == None) && (c2->visible) && (c2->type == WINDOW_NORMAL) && (c2->has_border) && !(c2->skip_taskbar))
+        if((c2->type == WINDOW_NORMAL) && (c2->visible) && (c2->has_border) && !(c2->skip_taskbar) && !(c2->transient_for) && (c2 != c))
         {
             if((c) && (c->transient_for != c2->window))
             {
@@ -2013,7 +2024,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     
     for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
-	if (c2->transient_for == c->window)
+	if ((c2->transient_for == c->window) && (c2 != c))
 	{
 	    clientSetWorkspace(c2, ws, manage_mapping);
 	}
