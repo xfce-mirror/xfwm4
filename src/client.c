@@ -1305,6 +1305,8 @@ clientUpdateAllFrames (int mask)
     XWindowChanges wc;
 
     TRACE ("entering clientRedrawAllFrames");
+    XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+                       GrabModeAsync, None, None, CurrentTime);
     for (c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if (mask & UPDATE_KEYGRABS)
@@ -1331,6 +1333,7 @@ clientUpdateAllFrames (int mask)
             frameDraw (c, FALSE, FALSE);
         }
     }
+    XUngrabPointer (dpy, CurrentTime);
 }
 
 void
@@ -2578,17 +2581,11 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     {
         clientConstrainPos (c, TRUE);
     }
-    wc->x = frameX (c);
-    wc->y = frameY (c);
-    wc->width = frameWidth (c);
-    wc->height = frameHeight (c);
-    wc->border_width = 0;
-    XConfigureWindow (dpy, c->frame, mask, wc);
-    wc->x = frameLeft (c);
-    wc->y = frameTop (c);
-    wc->width = c->width;
-    wc->height = c->height;
-    XConfigureWindow (dpy, c->window, mask, wc);
+
+    XMoveResizeWindow (dpy, c->frame, frameX (c), frameY (c), 
+                            frameWidth (c), frameHeight (c));
+    XMoveResizeWindow (dpy, c->window, frameLeft (c), frameTop (c), 
+                            c->width, c->height);
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
@@ -4536,7 +4533,16 @@ clientUpdateFullscreenState (Client * c)
     clientSetNetState (c);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
+        /* 
+           For some reason, the configure can generate EnterNotify events
+           on lower windows, causing a nasty race cond with apps trying to
+           grab focus in focus follow mouse mode. Grab the pointer to
+           avoid these effects
+         */
+        XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+                           GrabModeAsync, None, None, CurrentTime);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+        XUngrabPointer (dpy, CurrentTime);
     }
     else
     {
@@ -4735,7 +4741,16 @@ clientToggleMaximized (Client * c, int mode)
     clientSetNetState (c);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
+        /* 
+           For some reason, the configure can generate EnterNotify events
+           on lower windows, causing a nasty race cond with apps trying to
+           grab focus in focus follow mouse mode. Grab the pointer to
+           avoid these effects
+         */
+        XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+                           GrabModeAsync, None, None, CurrentTime);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
+        XUngrabPointer (dpy, CurrentTime);
     }
     else
     {
@@ -4743,16 +4758,6 @@ clientToggleMaximized (Client * c, int mode)
         c->y = wc.y;
         c->height = wc.height;
         c->width = wc.width;
-    }
-    if (!(params.click_to_focus))
-    {
-        XEvent an_event;
-        XSync (dpy, FALSE);
-        /* Just get rid of EnterNotify events when using focus follow mouse */
-        while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-        {
-            last_timestamp = stashEventTime (last_timestamp, &an_event);
-        }    
     }
 }
 
@@ -5337,11 +5342,6 @@ clientMove (Client * c, XEvent * e)
                         MyDisplayFullWidth (dpy, screen),
                         MyDisplayFullHeight (dpy, screen), 
                         ButtonMotionMask | ButtonReleaseMask);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
-    {
-        clientRemoveMaximizeFlag (c);
-    }
 
     if (e->type == KeyPress)
     {
