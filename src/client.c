@@ -3324,10 +3324,10 @@ clientPassFocus (Client * c)
             &mask))
     {
         new_focus = clientAtPosition (rx, ry, c);
-    }
-    if (!new_focus)
-    {
-        new_focus = clientGetTopMostFocusable (c->win_layer, c);
+        if (!new_focus)
+        {
+            new_focus = clientGetTopMostFocusable (c->win_layer, c);
+        }
     }
     clientSetFocus (new_focus, TRUE);
 }
