@@ -337,7 +337,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 <sect1 id="wm-settings">
   <title>Customizing &app;</title>
 
-<para>To open the Window Manager preferences dialog, click the button labelled "Window Manager" in the <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings manager</ulink>. The dialog shows three tabs : Decoration style, Keyboard and focus, Misc. All modifications will have an immediate effect on the behaviour of the selected module.</para>
+<para>To open the Window Manager preferences dialog, click the button labelled "Window Manager" in the <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings manager</ulink>. The dialog shows three tabs : Decoration style, Keyboard and focus, Advanced. All modifications will have an immediate effect on the behaviour of the selected module.</para>
 
 <sect2 id="wm-style">
 <title>Decoration style</title>
@@ -461,11 +461,11 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 </variablelist>
 </sect2>
 
-<sect2 id="wm_misc">
-<title>Miscellanous settings</title>
+<sect2 id="wm_advanced">
+<title>Advanced settings</title>
 
 <figure id="misc_wm_prefs-fig">
-  <title>Miscellaneous preferences</title>
+  <title>Advanced preferences</title>
   
   <screenshot>
     <mediaobject>
@@ -473,7 +473,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<imagedata fileref="images/misc_wm_prefs.png" format="PNG"/>
       </imageobject>
       <textobject>
-	<phrase>Miscellanous tab</phrase>
+	<phrase>Advanced tab</phrase>
       </textobject>
     </mediaobject>
   </screenshot>
@@ -491,7 +491,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 <varlistentry>
 <term>Wrap workspaces</term>
 <listitem>
-	<para>Select this option is you want to switch to next workspace when the mouse pointer reaches the screen edges (while dragging a window or not).</para>
+	<para>Select the first option if you want to switch to the next workspace when the mouse pointer reaches the screen edges. Select the second one if you want the same behaviour while dragging a window. You can specify the screen edges resistance using the corresponding slider.</para>
 </listitem>
 </varlistentry>
 
@@ -511,6 +511,33 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 
 </variablelist>
 </sect2>
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="workspace-margins">
+  <title>Customizing workspace margins</title>
+
+<figure id="workspace_margins-fig">
+  <title>The workspace margins dialog</title>
+
+  <screenshot>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/workspace_margins.png" format="PNG"/>
+      </imageobject>
+      <textobject>
+	<phrase>The workspace margins dialog</phrase>
+      </textobject>
+    </mediaobject>
+  </screenshot>
+</figure>
+
+<para>To open the Workspace Margins dialog, click the button labelled "Workspace Margins" in the <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings manager</ulink>.</para>
+
+<para>Margins are areas on the edges of the screen that maximized windows won't cover. You can adjust the size, in pixels, of all margins (left, right, top and bottom). Use this feature, for example, if you do not want maximized windows to overlap panel or iconbox frames.</para>
+
 </sect1>
 
   <!-- extra space -->

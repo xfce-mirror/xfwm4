@@ -3,7 +3,8 @@ images_DATA = \
 	decoration_style.png \
 	keyboard_and_focus.png \
 	misc_wm_prefs.png \
-	titlebar.png
+	titlebar.png \
+	workspace_margins.png
 
 EXTRA_DIST = $(images_DATA)
 
