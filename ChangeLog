@@ -1,3 +1,16 @@
+2004-12-17 00:02  olivier
+
+	* src/compositor.c: Wrong trace
+
+2004-12-16 23:53  olivier
+
+	* src/: client.c, compositor.c, events.c, main.c, settings.c:
+	  compositor stuff, don't use package name in warnings.
+
+2004-12-15 23:53  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-12-15 23:50  olivier
 
 	* po/xfwm4.pot: [no log message]
