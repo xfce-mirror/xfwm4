@@ -1,3 +1,140 @@
+2004-10-27 18:56  olivier
+
+	* src/: client.c, events.c, stacking.c: Fix various focus/stacking
+	  harmless oddities
+
+2004-10-27 01:18  olivier
+
+	* po/xfwm4.pot, themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/left-active.xpm, themes/default/left-inactive.xpm,
+	  themes/default/right-active.xpm,
+	  themes/default/right-inactive.xpm,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-5-active.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Add some depth to the
+	  default theme
+
+2004-10-27 01:14  olivier
+
+	* po/xfwm4.pot, src/events.c: Honor raise on focus when not using
+	  raise on click in client window.
+
+2004-10-26 23:02  olivier
+
+	* src/events.c: Fix stupid typo that broke focus follow mouse in
+	  the previous commit.
+
+2004-10-26 22:42  olivier
+
+	* src/: client.h, events.c, focus.c: Don't give focus to dock type
+	  windows unless a net_active_window is sent.
+
+2004-10-26 21:04  olivier
+
+	* src/events.c: Fix click_raise
+
+2004-10-25 07:45  olivier
+
+	* src/events.c: Fix focus follow mouse breakage.
+
+2004-10-24 23:55  olivier
+
+	* po/: ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa.gmo, fa.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po, he.gmo, he.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pa.gmo, pa.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
+	  pt_PT.po, ru.gmo, ru.po, sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo,
+	  ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot,
+	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Locale fix
+
+2004-10-24 23:48  olivier
+
+	* src/events.c: Add some logic to the way move/resize/raise windows
+	  work.
+
+2004-10-24 16:23  moe
+
+	* po/de.po: Hehe
+
+2004-10-24 15:32  olivier
+
+	* po/POTFILES.in, po/ar.gmo, po/ar.po, po/az.gmo, po/az.po,
+	  po/be.gmo, po/be.po, po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po,
+	  po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
+	  po/es_MX.gmo, po/es_MX.po, po/et.gmo, po/et.po, po/eu.gmo,
+	  po/eu.po, po/fa.gmo, po/fa.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	  po/fr.po, po/gu.gmo, po/gu.po, po/he.gmo, po/he.po, po/hi.gmo,
+	  po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo,
+	  po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo,
+	  po/ms.po, po/nl.gmo, po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo,
+	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
+	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
+	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
+	  po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
+	  po/zh_TW.gmo, po/zh_TW.po, src/compositor.c, src/display.c,
+	  src/events.c, src/main.c, src/settings.c: Raise windows that
+	  manipulate the focus by themselves, Don't translate warning
+	  messages
+
+2004-10-23 21:58  olivier
+
+	* po/de.gmo: gmo for Moe
+
+2004-10-23 21:53  moe
+
+	* po/de.po: We hate Kürzels!
+
+2004-10-23 21:45  olivier
+
+	* po/de.gmo: gmo file for Moe
+
+2004-10-23 21:43  moe
+
+	* po/de.po: Finishing German translation. Germs are good to go Sir!
+
+2004-10-23 21:40  olivier
+
+	* mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/az.gmo,
+	  po/az.po, po/be.gmo, po/be.po, po/bg.gmo, po/bg.po, po/ca.gmo,
+	  po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo,
+	  po/es.po, po/es_MX.gmo, po/es_MX.po, po/et.gmo, po/et.po,
+	  po/eu.gmo, po/eu.po, po/fa.gmo, po/fa.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/gu.gmo, po/gu.po, po/he.gmo, po/he.po,
+	  po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po,
+	  po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po,
+	  po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pa.gmo, po/pa.po,
+	  po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo,
+	  po/pt_PT.po, po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo,
+	  po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo,
+	  po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo,
+	  po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po: Label mispelled
+
+2004-10-23 19:47  benny
+
+	* po/: ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po,
+	  es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po, hi.po,
+	  hu.po, it.po, ja.po, ko.po, lt.po, ms.po, nl.po, pa.po, pl.po,
+	  pt_BR.po, pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
+	  vi.po, zh_CN.po, zh_TW.po: Update-po for moe.
+
+2004-10-23 16:45  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-10-23 15:14  olivier
 
 	* defaults/defaults, src/client.c, src/workspaces.c: Turn on
