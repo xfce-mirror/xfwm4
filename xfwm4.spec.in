@@ -57,6 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/elberg
 %{_datadir}/xfwm4/themes/exocet
 %{_datadir}/xfwm4/themes/kindaker
+%{_datadir}/xfwm4/themes/meenee
 %{_datadir}/xfwm4/themes/microdeck
 %{_datadir}/xfwm4/themes/microdeck2
 

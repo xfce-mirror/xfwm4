@@ -1,3 +1,950 @@
+2002-12-30  xfce
+
+	* src/: client.c, workspaces.c: Include SKIP_PAGER and SKIP_TASKBAR
+	flagged windows in ALT-TAB window cycling Fix a focus oddity when
+	switching desks in focus-follow-mouse mode
+
+2002-12-30  xfce
+
+	* src/events.c: Apply Thomas Leonard patch : Changes are:
+	
+	- If raise_on_click is off, clicking the titlebar buttons doesn't
+	raise	the window.
+	
+	- Button-3 drag on the titlebar moves without raising (previously
+	it did	 nothing)
+	
+	- Button-3 drag on the frame resizes without raising (previously
+	did   nothing).
+	
+	- Button-2 drag on the frame moves without raising (previously did 
+	 nothing).
+	
+	Button-2 clicks on the frame still do send-to-back.
+
+2002-12-29  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-right-active.xpm, title-2-active.xpm, title-3-active.xpm,
+	title-4-active.xpm: Change active colors for microdeck2
+
+2002-12-28  xfce
+
+	* src/workspaces.c: Cleanup.
+
+2002-12-28  xfce
+
+	* src/: client.c, events.c, frame.c, main.c, settings.c: A lot of
+	huge and critical internal changes regarding windows stacking.
+	Handle with care, but so far, the changes look good.
+
+2002-12-27  xfce
+
+	* src/client.c: Stack list
+
+2002-12-27  xfce
+
+	* defaults/defaults.in, src/client.c, src/events.c, src/settings.c,
+	src/settings.h: Apply Thomas Leonard's patch for raise_on-click
+	option Fix a problem with stacking order for EWMH
+
+2002-12-22  xfce
+
+	* themes/: g2/themerc, tabs/themerc: Add shadow on active title
+	text for "g2" and "tabs" themes
+
+2002-12-21  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-right-active.xpm, title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm: Revert recent changes on microdeck2 theme
+
+2002-12-21  xfce
+
+	* themes/microdeck2/: title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm: [no log message]
+
+2002-12-20  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-right-active.xpm, title-2-active.xpm, title-3-active.xpm,
+	title-4-active.xpm: [no log message]
+
+2002-12-20  xfce
+
+	* configure, configure.in, src/main.c: Change startup behaviour so
+	that xfwm4 turns into a deamon once initialization is performed. 
+	*Beware* requires libxfcegui4 >= 0.0.9
+
+2002-12-19  xfce
+
+	* AUTHORS, configure, configure.in, xfwm4.spec.in,
+	defaults/defaults.in, src/frame.c, src/settings.c, src/settings.h,
+	themes/Makefile.am, themes/Makefile.in, themes/curve/themerc,
+	themes/koynacity/Makefile.am, themes/koynacity/Makefile.in,
+	themes/koynacity/README, themes/koynacity/bottom-active.xpm,
+	themes/koynacity/bottom-inactive.xpm,
+	themes/koynacity/bottom-left-active.xpm,
+	themes/koynacity/bottom-left-inactive.xpm,
+	themes/koynacity/bottom-right-active.xpm,
+	themes/koynacity/bottom-right-inactive.xpm,
+	themes/koynacity/close-active.xpm,
+	themes/koynacity/close-inactive.xpm,
+	themes/koynacity/close-pressed.xpm,
+	themes/koynacity/hide-active.xpm,
+	themes/koynacity/hide-inactive.xpm,
+	themes/koynacity/hide-pressed.xpm,
+	themes/koynacity/left-active.xpm,
+	themes/koynacity/left-inactive.xpm,
+	themes/koynacity/maximize-active.xpm,
+	themes/koynacity/maximize-inactive.xpm,
+	themes/koynacity/maximize-pressed.xpm,
+	themes/koynacity/menu-active.xpm,
+	themes/koynacity/menu-inactive.xpm,
+	themes/koynacity/menu-pressed.xpm,
+	themes/koynacity/right-active.xpm,
+	themes/koynacity/right-inactive.xpm, themes/koynacity/themerc,
+	themes/koynacity/title-1-active.xpm,
+	themes/koynacity/title-1-inactive.xpm,
+	themes/koynacity/title-2-active.xpm,
+	themes/koynacity/title-2-inactive.xpm,
+	themes/koynacity/title-3-active.xpm,
+	themes/koynacity/title-3-inactive.xpm,
+	themes/koynacity/title-4-active.xpm,
+	themes/koynacity/title-4-inactive.xpm,
+	themes/koynacity/title-5-active.xpm,
+	themes/koynacity/title-5-inactive.xpm,
+	themes/koynacity/top-left-active.xpm,
+	themes/koynacity/top-left-inactive.xpm,
+	themes/koynacity/top-right-active.xpm,
+	themes/koynacity/top-right-inactive.xpm, themes/microdeck2/themerc,
+	themes/redmondxp/themerc: Add optional title_shadow_active and
+	title_shadow_inactive options to themes, Add koynacity theme ported
+	from David Spencer Wysinger's "Koynacity-Blue" theme for Metacity,
+	Modify redmondxp, microdeck2 and curve themes to use the
+	title_shadow_(in)active new option.
+
+2002-12-18  xfce
+
+	* src/frame.c: Allow negative values for title_horizontal_offset
+	when not in 'title_full_width" mode
+
+2002-12-12  xfce
+
+	* src/client.c: Even better fix...
+
+2002-12-12  xfce
+
+	* src/client.c, src/client.h, themes/microdeck/themerc: Fix value
+	not initialized for state above/below (fix a bug reported by
+	Jasper)
+
+2002-12-12  xfce
+
+	* themes/microdeck/: title-2-inactive.xpm, title-3-inactive.xpm,
+	title-4-inactive.xpm: [no log message]
+
+2002-12-12  xfce
+
+	* src/: events.c, frame.c: Allow shade button even for frames that
+	specify no menu button (mainly for OpenOffice643)
+
+2002-12-12  xfce
+
+	* themes/microdeck/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm, title-2-active.xpm,
+	title-2-inactive.xpm: [no log message]
+
+2002-12-11  xfce
+
+	* themes/microdeck/: themerc, title-1-active.xpm,
+	title-1-inactive.xpm, title-5-active.xpm, title-5-inactive.xpm: [no
+	log message]
+
+2002-12-11  xfce
+
+	* themes/microdeck/: title-2-active.xpm, title-2-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: [no log message]
+
+2002-12-11  xfce
+
+	* themes/microdeck/: title-2-active.xpm, title-2-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: [no log message]
+
+2002-12-11  xfce
+
+	* themes/microdeck/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm, title-5-active.xpm, title-5-inactive.xpm,
+	top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Use a nice new design for microdeck title
+	bar
+
+2002-12-11  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-12-11  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-12-10  xfce
+
+	* themes/microdeck2/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: Use less relief for buttons
+
+2002-12-09  xfce
+
+	* themes/microdeck2/: title-2-active.xpm, title-3-active.xpm: [no
+	log message]
+
+2002-12-09  xfce
+
+	* themes/microdeck2/: title-3-active.xpm, title-3-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: [no log message]
+
+2002-12-09  xfce
+
+	* themes/microdeck2/: title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm: [no log message]
+
+2002-12-07  xfce
+
+	* themes/microdeck2/: bottom-left-inactive.xpm,
+	bottom-right-inactive.xpm, themerc, title-3-inactive.xpm: [no log
+	message]
+
+2002-12-07  xfce
+
+	* src/client.c: Fix (for good this time, I think) the race cond
+	when dragging windows from one desk to another.
+
+2002-12-06  xfce
+
+	* src/main.c, themes/microdeck2/README: Add info about GTK version
+	used at runtime.
+
+2002-12-06  xfce
+
+	* src/parserc.c, defaults/defaults.in: [no log message]
+
+2002-12-06  xfce
+
+	* src/client.c, themes/microdeck2/bottom-left-inactive.xpm,
+	themes/microdeck2/bottom-right-inactive.xpm,
+	themes/microdeck2/title-3-inactive.xpm: Change inactive title color
+	and stipple.
+
+2002-12-05  xfce
+
+	* themes/microdeck2/: close-active.xpm, close-inactive.xpm,
+	hide-active.xpm, hide-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, menu-active.xpm, menu-inactive.xpm,
+	shade-active.xpm, shade-inactive.xpm, stick-active.xpm,
+	stick-inactive.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm: [no log message]
+
+2002-12-05  xfce
+
+	* themes/curve/: title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-4-active.xpm, title-4-inactive.xpm: [no
+	log message]
+
+2002-12-05  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-right-active.xpm, themerc, title-3-active.xpm: Use curve
+	colors for active title and corners
+
+2002-12-05  xfce
+
+	* themes/curve/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-inactive.xpm, bottom-right-inactive.xpm,
+	left-active.xpm, left-inactive.xpm, right-active.xpm,
+	right-inactive.xpm, top-right-active.xpm, top-right-inactive.xpm:
+	[no log message]
+
+2002-12-05  xfce
+
+	* themes/microdeck2/: title-2-active.xpm, title-2-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: [no log message]
+
+2002-12-05  xfce
+
+	* themes/curve/: bottom-left-active.xpm, bottom-right-active.xpm,
+	themerc, title-2-active.xpm, title-3-active.xpm,
+	title-4-active.xpm: Use original color sheme for active title
+	gradient.
+
+2002-12-05  xfce
+
+	* themes/microdeck2/: title-3-active.xpm, title-3-inactive.xpm:
+	Redo gradients
+
+2002-12-04  xfce
+
+	* xfwm4.spec.in: [no log message]
+
+2002-12-04  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm, close-active.xpm, close-inactive.xpm,
+	hide-active.xpm, hide-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, menu-active.xpm, menu-inactive.xpm,
+	shade-active.xpm, shade-inactive.xpm, stick-active.xpm,
+	stick-inactive.xpm, themerc, title-2-active.xpm,
+	title-2-inactive.xpm, title-3-active.xpm, title-3-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: Boom! Redesign completely
+	yhe title bar, nah!
+
+2002-12-04  xfce
+
+	* themes/microdeck2/: title-3-active.xpm, title-3-inactive.xpm: [no
+	log message]
+
+2002-12-04  xfce
+
+	* themes/microdeck2/title-3-inactive.xpm: [no log message]
+
+2002-12-04  xfce
+
+	* themes/microdeck2/: themerc, title-3-active.xpm,
+	title-3-inactive.xpm, title-3-active.xpm, title-3-inactive.xpm: [no
+	log message]
+
+2002-12-04  xfce
+
+	* themes/microdeck2/: README, title-2-active.xpm,
+	title-2-inactive.xpm, title-3-active.xpm, title-3-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: Apply same title as curve
+	theme to microdeck2
+
+2002-12-04  xfce
+
+	* themes/microdeck2/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Reduce title height by 2 pixels for
+	microdeck2 theme
+
+2002-12-03  xfce
+
+	* themes/: microdeck/stick-inactive.xpm,
+	microdeck2/stick-inactive.xpm: [no log message]
+
+2002-12-03  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-12-03  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-12-03  xfce
+
+	* themes/microdeck2/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-active.xpm, close-inactive.xpm, close-pressed.xpm,
+	hide-active.xpm, hide-inactive.xpm, hide-pressed.xpm,
+	left-active.xpm, left-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, maximize-pressed.xpm, menu-active.xpm,
+	menu-inactive.xpm, menu-pressed.xpm, right-active.xpm,
+	right-inactive.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-12-02  xfce
+
+	* themes/gaudy/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	left-active.xpm, left-inactive.xpm, right-active.xpm,
+	right-inactive.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-inactive.xpm, title-3-inactive.xpm, title-4-inactive.xpm,
+	title-5-inactive.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-12-02  xfce
+
+	* themes/gaudy/: bottom-active.xpm, bottom-left-active.xpm,
+	bottom-right-active.xpm, left-active.xpm, right-active.xpm,
+	title-1-active.xpm, title-2-active.xpm, title-4-active.xpm,
+	title-5-active.xpm, top-left-active.xpm, top-right-active.xpm: [no
+	log message]
+
+2002-12-02  xfce
+
+	* themes/: microdeck2/bottom-left-active.xpm,
+	microdeck2/bottom-left-inactive.xpm,
+	microdeck2/bottom-right-active.xpm,
+	microdeck2/bottom-right-inactive.xpm,
+	microdeck/bottom-left-active.xpm,
+	microdeck/bottom-left-inactive.xpm,
+	microdeck/bottom-right-active.xpm,
+	microdeck/bottom-right-inactive.xpm: [no log message]
+
+2002-12-02  xfce
+
+	* themes/microdeck2/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-12-02  xfce
+
+	* themes/microdeck/: bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-12-01  xfce
+
+	* themes/: microdeck/bottom-active.xpm,
+	microdeck/bottom-inactive.xpm, microdeck/bottom-left-active.xpm,
+	microdeck/bottom-left-inactive.xpm,
+	microdeck/bottom-right-active.xpm,
+	microdeck/bottom-right-inactive.xpm, microdeck/left-active.xpm,
+	microdeck/left-inactive.xpm, microdeck/right-active.xpm,
+	microdeck/right-inactive.xpm, microdeck/title-1-active.xpm,
+	microdeck/title-1-inactive.xpm, microdeck/title-2-active.xpm,
+	microdeck/title-2-inactive.xpm, microdeck/title-3-active.xpm,
+	microdeck/title-3-inactive.xpm, microdeck/title-4-active.xpm,
+	microdeck/title-4-inactive.xpm, microdeck/title-5-active.xpm,
+	microdeck/title-5-inactive.xpm, microdeck/top-left-active.xpm,
+	microdeck/top-left-inactive.xpm, microdeck/top-right-active.xpm,
+	microdeck/top-right-inactive.xpm, microdeck2/bottom-active.xpm,
+	microdeck2/bottom-inactive.xpm, microdeck2/bottom-left-active.xpm,
+	microdeck2/bottom-left-inactive.xpm,
+	microdeck2/bottom-right-active.xpm,
+	microdeck2/bottom-right-inactive.xpm, microdeck2/left-active.xpm,
+	microdeck2/left-inactive.xpm, microdeck2/right-active.xpm,
+	microdeck2/right-inactive.xpm, microdeck2/title-1-active.xpm,
+	microdeck2/title-1-inactive.xpm, microdeck2/title-2-active.xpm,
+	microdeck2/title-2-inactive.xpm, microdeck2/title-3-active.xpm,
+	microdeck2/title-3-inactive.xpm, microdeck2/title-4-active.xpm,
+	microdeck2/title-4-inactive.xpm, microdeck2/title-5-active.xpm,
+	microdeck2/title-5-inactive.xpm, microdeck2/top-left-active.xpm,
+	microdeck2/top-left-inactive.xpm, microdeck2/top-right-active.xpm,
+	microdeck2/top-right-inactive.xpm: Revert some changes in
+	"microdeck" and "microdeck2"
+
+2002-12-01  xfce
+
+	* themes/redmondxp/themerc: Remove unecessary left title alignment
+	in themerc
+
+2002-12-01  xfce
+
+	* themes/redmondxp/: themerc, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-12-01  xfce
+
+	* themes/redmondxp/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Reduce title height for theme "redmondxp"
+	(I always thought that Redmond XP has a way to bug title bar!)
+
+2002-11-29  xfce
+
+	* themes/gaudy/: title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-4-active.xpm, title-4-inactive.xpm: [no
+	log message]
+
+2002-11-29  xfce
+
+	* src/client.c: Simplify window move routine
+
+2002-11-29  xfce
+
+	* themes/gaudy/: title-2-active.xpm, title-3-active.xpm,
+	title-4-active.xpm, themerc: [no log message]
+
+2002-11-29  xfce
+
+	* themes/curve/: close-active.xpm, hide-active.xpm,
+	maximize-active.xpm, menu-active.xpm, shade-active.xpm,
+	stick-active.xpm: Change colo
+
+2002-11-29  xfce
+
+	* themes/platinum/: title-1-active.xpm, title-2-active.xpm,
+	title-4-active.xpm, title-5-active.xpm: [no log message]
+
+2002-11-29  xfce
+
+	* themes/platinum/: bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-11-28  madkiss
+
+	* debian/: changelog, control, rules, xfwm4-themes.install,
+	xfwm4.postinst, xfwm4.prerm: 
+	Update to debian/-subdir included in xfce4_20021127-1.
+
+2002-11-28  xfce
+
+	* src/workspaces.c: Window focus bug when switching desktops.
+
+2002-11-27  xfce
+
+	* themes/curve/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-active.xpm, hide-active.xpm, maximize-active.xpm,
+	menu-active.xpm, right-active.xpm, right-inactive.xpm,
+	shade-active.xpm, stick-active.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-11-27  xfce
+
+	* themes/curve/: bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm: Put back
+	colored bottom corners
+
+2002-11-27  xfce
+
+	* themes/gaudy/: close-active.xpm, hide-active.xpm,
+	maximize-active.xpm, menu-active.xpm, shade-active.xpm,
+	stick-active.xpm: [no log message]
+
+2002-11-26  xfce
+
+	* themes/gaudy/: themerc, close-inactive.xpm, hide-inactive.xpm,
+	maximize-inactive.xpm, menu-inactive.xpm, shade-inactive.xpm,
+	stick-inactive.xpm: [no log message]
+
+2002-11-26  xfce
+
+	* themes/kde/: stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: [no log message]
+
+2002-11-26  xfce
+
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	themes/Makefile.in, themes/gaudy/Makefile.am,
+	themes/gaudy/Makefile.in, themes/gaudy/README,
+	themes/gaudy/bottom-active.xpm, themes/gaudy/bottom-inactive.xpm,
+	themes/gaudy/bottom-left-active.xpm,
+	themes/gaudy/bottom-left-inactive.xpm,
+	themes/gaudy/bottom-right-active.xpm,
+	themes/gaudy/bottom-right-inactive.xpm,
+	themes/gaudy/close-active.xpm, themes/gaudy/close-inactive.xpm,
+	themes/gaudy/close-pressed.xpm, themes/gaudy/hide-active.xpm,
+	themes/gaudy/hide-inactive.xpm, themes/gaudy/hide-pressed.xpm,
+	themes/gaudy/left-active.xpm, themes/gaudy/left-inactive.xpm,
+	themes/gaudy/maximize-active.xpm,
+	themes/gaudy/maximize-inactive.xpm,
+	themes/gaudy/maximize-pressed.xpm, themes/gaudy/menu-active.xpm,
+	themes/gaudy/menu-inactive.xpm, themes/gaudy/menu-pressed.xpm,
+	themes/gaudy/right-active.xpm, themes/gaudy/right-inactive.xpm,
+	themes/gaudy/shade-active.xpm, themes/gaudy/shade-inactive.xpm,
+	themes/gaudy/shade-pressed.xpm, themes/gaudy/stick-active.xpm,
+	themes/gaudy/stick-inactive.xpm, themes/gaudy/stick-pressed.xpm,
+	themes/gaudy/themerc, themes/gaudy/title-1-active.xpm,
+	themes/gaudy/title-1-inactive.xpm, themes/gaudy/title-2-active.xpm,
+	themes/gaudy/title-2-inactive.xpm, themes/gaudy/title-3-active.xpm,
+	themes/gaudy/title-3-inactive.xpm, themes/gaudy/title-4-active.xpm,
+	themes/gaudy/title-4-inactive.xpm, themes/gaudy/title-5-active.xpm,
+	themes/gaudy/title-5-inactive.xpm,
+	themes/gaudy/top-left-active.xpm,
+	themes/gaudy/top-left-inactive.xpm,
+	themes/gaudy/top-right-active.xpm,
+	themes/gaudy/top-right-inactive.xpm,
+	themes/microdeck2/close-active.xpm,
+	themes/microdeck2/close-inactive.xpm,
+	themes/microdeck2/close-pressed.xpm,
+	themes/microdeck2/hide-active.xpm,
+	themes/microdeck2/hide-inactive.xpm,
+	themes/microdeck2/hide-pressed.xpm,
+	themes/microdeck2/maximize-active.xpm,
+	themes/microdeck2/maximize-inactive.xpm,
+	themes/microdeck2/maximize-pressed.xpm,
+	themes/microdeck2/menu-active.xpm,
+	themes/microdeck2/menu-inactive.xpm,
+	themes/microdeck2/menu-pressed.xpm,
+	themes/microdeck2/shade-active.xpm,
+	themes/microdeck2/shade-inactive.xpm,
+	themes/microdeck2/shade-pressed.xpm,
+	themes/microdeck2/stick-active.xpm,
+	themes/microdeck2/stick-inactive.xpm,
+	themes/microdeck2/stick-pressed.xpm,
+	themes/microdeck2/title-1-active.xpm,
+	themes/microdeck2/title-1-inactive.xpm,
+	themes/microdeck2/title-2-active.xpm,
+	themes/microdeck2/title-2-inactive.xpm,
+	themes/microdeck2/title-3-active.xpm,
+	themes/microdeck2/title-3-inactive.xpm,
+	themes/microdeck2/title-4-active.xpm,
+	themes/microdeck2/title-4-inactive.xpm,
+	themes/microdeck2/title-5-active.xpm,
+	themes/microdeck2/title-5-inactive.xpm,
+	themes/microdeck2/top-left-active.xpm,
+	themes/microdeck2/top-left-inactive.xpm,
+	themes/microdeck2/top-right-active.xpm,
+	themes/microdeck2/top-right-inactive.xpm: Themes stuff...
+
+2002-11-25  xfce
+
+	* themes/microdeck2/themerc: [no log message]
+
+2002-11-25  xfce
+
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	themes/Makefile.in, themes/microdeck2/Makefile.am,
+	themes/microdeck2/Makefile.in, themes/microdeck2/README,
+	themes/microdeck2/bottom-active.xpm,
+	themes/microdeck2/bottom-inactive.xpm,
+	themes/microdeck2/bottom-left-active.xpm,
+	themes/microdeck2/bottom-left-inactive.xpm,
+	themes/microdeck2/bottom-right-active.xpm,
+	themes/microdeck2/bottom-right-inactive.xpm,
+	themes/microdeck2/close-active.xpm,
+	themes/microdeck2/close-inactive.xpm,
+	themes/microdeck2/close-pressed.xpm,
+	themes/microdeck2/hide-active.xpm,
+	themes/microdeck2/hide-inactive.xpm,
+	themes/microdeck2/hide-pressed.xpm,
+	themes/microdeck2/left-active.xpm,
+	themes/microdeck2/left-inactive.xpm,
+	themes/microdeck2/maximize-active.xpm,
+	themes/microdeck2/maximize-inactive.xpm,
+	themes/microdeck2/maximize-pressed.xpm,
+	themes/microdeck2/menu-active.xpm,
+	themes/microdeck2/menu-inactive.xpm,
+	themes/microdeck2/menu-pressed.xpm,
+	themes/microdeck2/right-active.xpm,
+	themes/microdeck2/right-inactive.xpm,
+	themes/microdeck2/shade-active.xpm,
+	themes/microdeck2/shade-inactive.xpm,
+	themes/microdeck2/shade-pressed.xpm,
+	themes/microdeck2/stick-active.xpm,
+	themes/microdeck2/stick-inactive.xpm,
+	themes/microdeck2/stick-pressed.xpm, themes/microdeck2/themerc,
+	themes/microdeck2/title-1-active.xpm,
+	themes/microdeck2/title-1-inactive.xpm,
+	themes/microdeck2/title-2-active.xpm,
+	themes/microdeck2/title-2-inactive.xpm,
+	themes/microdeck2/title-3-active.xpm,
+	themes/microdeck2/title-3-inactive.xpm,
+	themes/microdeck2/title-4-active.xpm,
+	themes/microdeck2/title-4-inactive.xpm,
+	themes/microdeck2/title-5-active.xpm,
+	themes/microdeck2/title-5-inactive.xpm,
+	themes/microdeck2/top-left-active.xpm,
+	themes/microdeck2/top-left-inactive.xpm,
+	themes/microdeck2/top-right-active.xpm,
+	themes/microdeck2/top-right-inactive.xpm: Add microdeck2, a small
+	variation on microdeck theme.
+
+2002-11-25  xfce
+
+	* themes/microdeck/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-11-25  xfce
+
+	* themes/microdeck/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: Add tiny engraved dots to show corners.
+
+2002-11-23  xfce
+
+	* src/: client.c, client.h, events.c, events.h, main.c, main.h,
+	menu.c, settings.c: Update for libxfcegui4 new include base dir.
+
+2002-11-22  xfce
+
+	* Makefile.in, config.h.in, configure, configure.in,
+	defaults/Makefile.in, src/Makefile.am, src/Makefile.in,
+	src/client.c, src/client.h, src/events.h, src/main.c, src/main.h,
+	src/menu.c, src/settings.c, src/xinerama.c, src/xinerama.h,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gnububble/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/iceg/Makefile.in, themes/kde/Makefile.in,
+	themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
+	themes/linea/Makefile.in, themes/metabox/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microgui/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
+	themes/pills/Makefile.in, themes/piranha/Makefile.in,
+	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
+	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/retro/Makefile.in, themes/silverado/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: Remove
+	xinerama code to move it to libxfcegui4 (xfwm4 now requires
+	libxfcegui4 >= 0.0.8)
+
+2002-11-22  xfce
+
+	* themes/microdeck/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	left-active.xpm, left-inactive.xpm, right-active.xpm,
+	right-inactive.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Improve "smoothness"
+
+2002-11-21  xfce
+
+	* configure, configure.in, xfwm4.spec.in, defaults/defaults.in,
+	src/frame.c, src/settings.c, src/settings.h, themes/Makefile.am,
+	themes/Makefile.in, themes/adept/themerc, themes/atlanta/themerc,
+	themes/atlanta2/themerc, themes/b5/themerc, themes/b6/themerc,
+	themes/bbs/themerc, themes/biz/themerc, themes/coolclean/themerc,
+	themes/curve/themerc, themes/exocet/themerc, themes/fbx/themerc,
+	themes/g2/themerc, themes/gnububble/themerc,
+	themes/gorilla/themerc, themes/gtk/themerc, themes/iceg/themerc,
+	themes/kde/themerc, themes/keramik/Makefile.am,
+	themes/keramik/Makefile.in, themes/keramik/README,
+	themes/keramik/bottom-active.xpm,
+	themes/keramik/bottom-inactive.xpm,
+	themes/keramik/bottom-left-active.xpm,
+	themes/keramik/bottom-left-inactive.xpm,
+	themes/keramik/bottom-right-active.xpm,
+	themes/keramik/bottom-right-inactive.xpm,
+	themes/keramik/close-active.xpm, themes/keramik/close-inactive.xpm,
+	themes/keramik/close-pressed.xpm, themes/keramik/hide-active.xpm,
+	themes/keramik/hide-inactive.xpm, themes/keramik/hide-pressed.xpm,
+	themes/keramik/left-active.xpm, themes/keramik/left-inactive.xpm,
+	themes/keramik/maximize-active.xpm,
+	themes/keramik/maximize-inactive.xpm,
+	themes/keramik/maximize-pressed.xpm,
+	themes/keramik/menu-active.xpm, themes/keramik/menu-inactive.xpm,
+	themes/keramik/menu-pressed.xpm, themes/keramik/right-active.xpm,
+	themes/keramik/right-inactive.xpm, themes/keramik/shade-active.xpm,
+	themes/keramik/shade-inactive.xpm,
+	themes/keramik/shade-pressed.xpm, themes/keramik/stick-active.xpm,
+	themes/keramik/stick-inactive.xpm,
+	themes/keramik/stick-pressed.xpm, themes/keramik/themerc,
+	themes/keramik/title-1-active.xpm,
+	themes/keramik/title-1-inactive.xpm,
+	themes/keramik/title-2-active.xpm,
+	themes/keramik/title-2-inactive.xpm,
+	themes/keramik/title-3-active.xpm,
+	themes/keramik/title-3-inactive.xpm,
+	themes/keramik/title-4-active.xpm,
+	themes/keramik/title-4-inactive.xpm,
+	themes/keramik/title-5-active.xpm,
+	themes/keramik/title-5-inactive.xpm,
+	themes/keramik/top-left-active.xpm,
+	themes/keramik/top-left-inactive.xpm,
+	themes/keramik/top-right-active.xpm,
+	themes/keramik/top-right-inactive.xpm, themes/linea/themerc,
+	themes/microdeck/themerc, themes/microgui/themerc,
+	themes/mofit/themerc, themes/ops/themerc, themes/pills/themerc,
+	themes/piranha/themerc, themes/quiet-purple/themerc,
+	themes/quinx/themerc, themes/r9x/themerc, themes/redmond/themerc,
+	themes/retro/themerc, themes/silverado/themerc,
+	themes/slick/themerc, themes/tabs/themerc, themes/tgc/themerc,
+	themes/variation/themerc, themes/xfce/themerc: Add new theme
+	"keramik" from KDE 3.0.3 Change "title_vertical_offset" themerc
+	option to "title_vertical_offset_active" and
+	"title_vertical_offset_inactive" Update existing themerc files to
+	reflect this change
+
+2002-11-20  xfce
+
+	* src/: client.c, workspaces.c: mall cleanup.
+
+2002-11-20  xfce
+
+	* themes/kde/: bottom-inactive.xpm, bottom-left-inactive.xpm,
+	bottom-right-inactive.xpm, close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-5-inactive.xpm: Color assigns in this
+	themes were messed up...
+
+2002-11-19  xfce
+
+	* src/client.c: Add more bound checking when resize/move window.
+
+2002-11-18  xfce
+
+	* themes/bbs/: bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm: [no log
+	message]
+
+2002-11-18  xfce
+
+	* src/client.c: [no log message]
+
+2002-11-18  xfce
+
+	* src/client.c: Allow move of windows when maximized
+
+2002-11-14  xfce
+
+	* themes/microdeck/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-2-active.xpm, title-2-inactive.xpm,
+	top-right-active.xpm, top-right-inactive.xpm: [no log message]
+
+2002-11-14  xfce
+
+	* themes/microdeck/: close-active.xpm, close-inactive.xpm,
+	hide-active.xpm, hide-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, menu-active.xpm, menu-inactive.xpm,
+	shade-active.xpm, shade-inactive.xpm, stick-active.xpm,
+	stick-inactive.xpm, title-2-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm: [no log message]
+
+2002-11-14  xfce
+
+	* themes/: tgc/stick-active.xpm, tgc/stick-inactive.xpm,
+	tgc/stick-pressed.xpm, bbs/stick-active.xpm,
+	bbs/stick-inactive.xpm, bbs/stick-pressed.xpm: [no log message]
+
+2002-11-13  xfce
+
+	* themes/microdeck/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm: [no log message]
+
+2002-11-13  xfce
+
+	* themes/microdeck/: bottom-right-active.xpm,
+	bottom-right-inactive.xpm: [no log message]
+
+2002-11-13  xfce
+
+	* themes/microdeck/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm: [no log
+	message]
+
+2002-11-13  xfce
+
+	* themes/microdeck/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: Remove colored corners to get a slick
+	frame.
+
+2002-11-12  xfce
+
+	* themes/microdeck/: top-left-active.xpm, top-left-inactive.xpm,
+	top-right-active.xpm, top-right-inactive.xpm: [no log message]
+
+2002-11-12  xfce
+
+	* themes/microdeck/: menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm: anti aliasing for menu/shade buttons
+
+2002-11-12  xfce
+
+	* themes/microdeck/: top-left-active.xpm, top-left-inactive.xpm:
+	[no log message]
+
+2002-11-11  xfce
+
+	* Makefile.in, config.h.in, configure, configure.in,
+	defaults/Makefile.in, src/Makefile.am, src/Makefile.in,
+	src/client.c, src/events.c, src/frame.c, src/hints.c,
+	src/keyboard.c, src/main.c, src/main.h, src/menu.c, src/misc.c,
+	src/parserc.c, src/pixmap.c, src/settings.c, src/settings.h,
+	src/workspaces.c, src/xinerama.c, src/xinerama.h,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gnububble/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/iceg/Makefile.in, themes/kde/Makefile.in,
+	themes/kindaker/Makefile.in, themes/linea/Makefile.in,
+	themes/metabox/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	themes/tux/Makefile.in, themes/variation/Makefile.in,
+	themes/xfce/Makefile.in: Add support for xinerama, and optimize
+	window move (unrelated, but I just came across an easy optimization
+	while reviewing the code :)
+
+2002-11-10  xfce
+
+	* ChangeLog: Update ChangeLog.
+
 2002-11-10  madkiss
 
 	* debian/: changelog, control, copyright, docs, menu, rules,
