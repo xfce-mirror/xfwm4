@@ -3223,18 +3223,14 @@ clientMove (Client * c, XEvent * ev)
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
                               cursor, myDisplayGetCurrentTime (display_info));
-    if (((passdata.use_keys) && !g1) || !g2)
+    if (!g1 || !g2)
     {
         TRACE ("grab failed in clientMove");
+
         gdk_beep ();
-        if ((passdata.use_keys) && g1)
-        {
-            myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        }
-        if (g2)
-        {
-            myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
-        }
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+
         return;
     }
 
@@ -3685,18 +3681,14 @@ clientResize (Client * c, int corner, XEvent * ev)
                               myDisplayGetCursorResize(display_info, passdata.corner), 
                               myDisplayGetCurrentTime (display_info));
 
-    if (((passdata.use_keys) && !g1) || !g2)
+    if (!g1 || !g2)
     {
         TRACE ("grab failed in clientResize");
+
         gdk_beep ();
-        if ((passdata.use_keys) && (g1 == GrabSuccess))
-        {
-            myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        }
-        if (g2 == GrabSuccess)
-        {
-            myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
-        }
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+
         return;
     }
 
@@ -3892,15 +3884,11 @@ clientCycle (Client * c, XEvent * ev)
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientCycle");
+
         gdk_beep ();
-        if (g1 == GrabSuccess)
-        {
-            myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        }
-        if (g2 == GrabSuccess)
-        {
-            myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
-        }
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+
         return;
     }
 

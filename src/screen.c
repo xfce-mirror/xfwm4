@@ -275,10 +275,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
                                GrabModeAsync, GrabModeAsync, 
                                time) == GrabSuccess);
     }
-    if (grab)
-    {
-        screen_info->key_grabs++;
-    }
+    screen_info->key_grabs++;
     
     return grab;
 }
@@ -299,10 +296,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
                               cursor, 
                               time) == GrabSuccess);
     }
-    if (grab)
-    {
-        screen_info->pointer_grabs++;
-    }
+    screen_info->pointer_grabs++;
     
     return grab;
 }
