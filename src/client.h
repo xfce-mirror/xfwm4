@@ -309,7 +309,6 @@ void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
 void clientCycle (Client *, XEvent *);
 void clientButtonPress (Client *, Window, XButtonEvent *);
-void create_new_windowlist (Client * c, int mask, GdkScreen *gscr);
 Client *clientGetLeader (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char *clientGetStartupId (Client *);
