@@ -849,7 +849,7 @@ handleMapRequest (XMapRequestEvent * ev)
     if (c)
     {
         TRACE ("handleMapRequest: clientShow");
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED | CLIENT_FLAG_HIDDEN))
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
         {
             TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
             return;
@@ -875,7 +875,7 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_MAPPED);
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAP_PENDING);
     }
 }
 
@@ -886,6 +886,12 @@ handleUnmapNotify (XUnmapEvent * ev)
 
     TRACE ("entering handleUnmapNotify");
     TRACE ("UnmapNotify on window (0x%lx)", ev->window);
+    
+    if (ev->from_configure)
+    {
+        TRACE ("Ignoring UnmapNotify caused by parent's resize\n");
+        return;
+    }
 
     c = clientGetFromWindow (ev->window, WINDOW); 
     if (c)
@@ -893,7 +899,7 @@ handleUnmapNotify (XUnmapEvent * ev)
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
 
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED))
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
         {
             /* 
              * This UnmapNotify event is caused by reparenting

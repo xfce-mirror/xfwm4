@@ -79,7 +79,7 @@
 #define MARGIN_TOP                      2
 #define MARGIN_BOTTOM                   3
 
-#define CLIENT_MIN_VISIBLE              10	/* pixels */
+#define CLIENT_MIN_VISIBLE              10      /* pixels */
 
 #define CLIENT_FLAG_FOCUS              (1L<<0)
 #define CLIENT_FLAG_ABOVE              (1L<<1)
@@ -95,7 +95,7 @@
 #define CLIENT_FLAG_HAS_STICK          (1L<<11)
 #define CLIENT_FLAG_HAS_STRUTS         (1L<<12)
 #define CLIENT_FLAG_IS_RESIZABLE       (1L<<13)
-#define CLIENT_FLAG_MAPPED             (1L<<14)
+#define CLIENT_FLAG_MAP_PENDING        (1L<<14)
 #define CLIENT_FLAG_VISIBLE            (1L<<15)
 #define CLIENT_FLAG_HIDDEN             (1L<<16)
 #define CLIENT_FLAG_MANAGED            (1L<<17)

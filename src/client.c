@@ -3052,6 +3052,17 @@ clientFrame (Window w, gboolean recapture)
                 (attr.map_state == IsUnviewable) ?
                 "IsUnviewable" :
                 "(unknown)");
+    if (attr.map_state != IsUnmapped)
+    {
+        /* XReparentWindow() will cause an UnmapNotify followed by 
+         * a MapNotify. 
+         * Unset the "mapped" flag to avoid a transition to 
+         * withdrawn state.
+         */ 
+        XUnmapWindow (dpy, c->window);
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_MAP_PENDING);
+    }
+
     c->ignore_unmap = 0;
     c->type = UNSET;
     c->type_atom = None;
@@ -3103,13 +3114,13 @@ clientFrame (Window w, gboolean recapture)
     /* Once we know the type of window, we can initialize window position */
     if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SESSION_MANAGED))
     {
-        if (!recapture)
+        if ((attr.map_state != IsUnmapped))
         {
-            clientInitPosition (c);
+            clientGravitate (c, APPLY);
         }
         else
         {
-            clientGravitate (c, APPLY);
+            clientInitPosition (c);
         }
     }
 
@@ -3214,6 +3225,7 @@ clientFrame (Window w, gboolean recapture)
         if ((c->win_workspace == workspace) || 
             CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
+            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAP_PENDING);
             clientShow (c, TRUE);
             if (recapture)
             {
@@ -3273,6 +3285,7 @@ clientUnframe (Client * c, gboolean remap)
     {
         myWindowDelete (&c->buttons[i]);
     }
+    XUnmapWindow (dpy, c->window);
     XReparentWindow (dpy, c->window, root, c->x, c->y);
     XSetWindowBorderWidth (dpy, c->window, c->border_width);
     if (remap)
@@ -3299,7 +3312,7 @@ clientFrameAll ()
 {
     unsigned int count, i;
     Client *new_focus;
-    Window w1, w2, *wins = NULL;
+    Window shield, w1, w2, *wins = NULL;
     XWindowAttributes attr;
     XEvent an_event;
 
@@ -3313,6 +3326,12 @@ clientFrameAll ()
     client_focus = NULL;
 
     clientSetFocus (NULL, FALSE, FALSE);
+    shield =
+        setTmpEventWin (0, 0, 
+                        MyDisplayFullWidth (dpy, screen),
+                        MyDisplayFullHeight (dpy, screen), 
+                        EnterWindowMask);
+
     XSync (dpy, FALSE);
     MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
@@ -3321,14 +3340,8 @@ clientFrameAll ()
         XGetWindowAttributes (dpy, wins[i], &attr);
         if ((!(attr.override_redirect)) && (attr.map_state == IsViewable))
         {
-            XUnmapWindow (dpy, wins[i]);
             clientFrame (wins[i], TRUE);
         }
-    }
-    MyXUngrabServer ();
-    while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-    {
-        stashEventTime (&an_event);
     }
     if (wins)
     {
@@ -3336,6 +3349,9 @@ clientFrameAll ()
     }
     new_focus = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
     clientSetFocus (new_focus, TRUE, FALSE);
+    removeTmpEventWin (shield);
+    MyXUngrabServer ();
+    XSync (dpy, FALSE);
 }
 
 void
