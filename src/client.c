@@ -313,7 +313,7 @@ void clientUpdateNetState (Client *c, XClientMessageEvent * ev)
 	}
 	else if (action == NET_WM_STATE_TOGGLE)
 	{
-	    c->state_modal = !(c->state_modal);
+	    c->state_modal = ((c->state_modal) ? False : True);
 	    clientSetNetState (c);
 	}
     }
@@ -330,7 +330,7 @@ void clientUpdateNetState (Client *c, XClientMessageEvent * ev)
 	}
 	else if (action == NET_WM_STATE_TOGGLE)
 	{
-	    c->fullscreen = !(c->fullscreen);
+	    c->fullscreen = ((c->fullscreen) ? False : True);
 	}
         clientToggleFullscreen(c);
     }
@@ -349,7 +349,7 @@ void clientUpdateNetState (Client *c, XClientMessageEvent * ev)
 	}
 	else if (action == NET_WM_STATE_TOGGLE)
 	{
-	    c->skip_pager = !(c->skip_pager);
+	    c->skip_pager = ((c->skip_pager) ? False : True);
 	    clientSetNetState (c);
 	}
     }
@@ -368,7 +368,7 @@ void clientUpdateNetState (Client *c, XClientMessageEvent * ev)
 	}
 	else if (action == NET_WM_STATE_TOGGLE)
 	{
-	    c->skip_taskbar = !(c->skip_taskbar);
+	    c->skip_taskbar = ((c->skip_taskbar) ? False : True);
 	    clientSetNetState (c);
 	}
     }
@@ -2026,24 +2026,22 @@ void clientToggleFullscreen(Client * c)
 
     if(c->fullscreen)
     {
-        wc.width = c->old_width;
-        wc.height = c->old_height;
-        wc.x = c->old_x;
-        wc.y = c->old_y;
-        c->fullscreen = False;
-    }
-    else
-    {
         c->old_x = c->x;
         c->old_y = c->y;
         c->old_width = c->width;
         c->old_height = c->height;
 
-        c->fullscreen = True;
-        wc.x = frameLeft(c) + margins[MARGIN_LEFT];
-        wc.width = XDisplayWidth(dpy, screen) - frameLeft(c) - frameRight(c) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
-        wc.y = frameTop(c) + margins[MARGIN_TOP];
-        wc.height = XDisplayHeight(dpy, screen) - frameTop(c) - frameBottom(c) - margins[MARGIN_TOP] - margins[MARGIN_BOTTOM];
+        wc.x = margins[MARGIN_LEFT];
+        wc.y = margins[MARGIN_TOP];
+        wc.width = XDisplayWidth(dpy, screen) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
+        wc.height = XDisplayHeight(dpy, screen) - margins[MARGIN_TOP] - margins[MARGIN_BOTTOM];
+    }
+    else
+    {
+        wc.width = c->old_width;
+        wc.height = c->old_height;
+        wc.x = c->old_x;
+        wc.y = c->old_y;
     }
     clientSetNetState (c);
     clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);

@@ -400,7 +400,10 @@ void set_net_supported_hint (Display * dpy, Window root_win, Window check_win)
     atoms[i++] = net_wm_window_type_utility;
     atoms[i++] = net_wm_window_type_splashscreen;
 
+    /* Apparently not required
     XChangeProperty (dpy, check_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
+     */
+    XChangeProperty (dpy, root_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
     data[0] = check_win;
     XChangeProperty (dpy, root_win, net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
 }

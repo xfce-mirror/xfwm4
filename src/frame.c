@@ -377,7 +377,7 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     {
         XShapeCombineShape(dpy, temp, ShapeBounding, frameLeft(c), frameTop(c), c->window, ShapeBounding, ShapeSet);
     }
-    if((c->has_border) && (!c->fullscreen))
+    if((c->has_border) && !(c->fullscreen))
     {
         XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
         for(i = 0; i < 3; i++)
