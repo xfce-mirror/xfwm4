@@ -43,7 +43,7 @@ BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 0.0.3)
 BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 0.0.3)
 BM_DEPEND(LIBXFCE4UTIL, libxfce4util-1.0, 0.0)
 BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 0.0.16)
-BM_DEPEND(XFCE_MCS_MANAGER, xfce-mcs-manager, 0.1)
+BM_DEPEND(XFCE_MCS_MANAGER, xfce-mcs-manager, 0.1.0)
 
 BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.4,
   [startup-notification], [startup notification library])
