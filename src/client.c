@@ -1432,7 +1432,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_title)
     {
         c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
     }
-    if(topMostHead && (c->y + (show_title ? frameTop(c) : c->height) < MyDisplayY(cx, cy) + (show_title ? 0 : CLIENT_MIN_VISIBLE) + top))
+    if(topMostHead && (c->y + (show_title ? -frameTop(c) : c->height) < MyDisplayY(cx, cy) + (show_title ? 0 : CLIENT_MIN_VISIBLE) + top))
     {
         c->y = MyDisplayY(cx, cy) + top + (show_title ? frameTop(c) : CLIENT_MIN_VISIBLE - c->height);
     }
@@ -1621,6 +1621,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
     {
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
         {
+#if 0
             if((c->gravity != StaticGravity) && (wc->x == frameX(c)))
             {
                 mask &= ~CWX;
@@ -1629,12 +1630,16 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
             {
                 c->x = wc->x;
             }
+#else /* 0 */
+            c->x = wc->x;
+#endif /* 0 */
         }
     }
     if(mask & CWY)
     {
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
         {
+#if 0
             if((c->gravity != StaticGravity) && (wc->y == frameY(c)))
             {
                 mask &= ~CWY;
@@ -1643,6 +1648,9 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
             {
                 c->y = wc->y;
             }
+#else /* 0 */
+            c->y = wc->y;
+#endif /* 0 */
         }
     }
     if(mask & CWWidth)
@@ -3059,11 +3067,10 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             {
                 c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
             }
-            if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < params.snap_width)
+            if(abs(frameX(c) - MyDisplayX(cx, cy)) < params.snap_width + left)
             {
                 c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
             }
-
             if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < params.snap_width)
             {
                 c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
@@ -3077,7 +3084,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         {
             if(abs(frameY(c) - MyDisplayY(cx, cy)) < top)
             {
-                c->y = frameTop(c) + MyDisplayY(cx, cy) + top;
+                c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
             }
         }
 
