@@ -160,7 +160,6 @@ MyCheckWindow(Window w)
     Window dummy_root, parent;
     Window *wins = NULL;
     unsigned int count;
-    int dummy_x, dummy_y;
     Status test;
     
     g_return_val_if_fail (w != None, FALSE);
@@ -259,7 +258,7 @@ stashEventTime (Time prevEventTime, XEvent * ev)
             newEventTime = ev->xselection.time;
             break;
         default:
-          return;
+            break;
     }
     if ((newEventTime > CurrentTime) || ((CurrentTime - newEventTime) > 30000))
     {

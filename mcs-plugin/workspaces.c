@@ -571,6 +571,9 @@ update_channel (NetkScreen * screen, NetkWorkspace * ws, McsManager * manager)
 static void
 watch_workspaces_hint (McsManager * manager)
 {
+    /* make GCC happy */
+    (void)&watch_workspaces_hint;
+
     g_signal_connect (netk_screen, "workspace-created",
 		      G_CALLBACK (update_channel), manager);
     g_signal_connect (netk_screen, "workspace-destroyed",
