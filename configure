@@ -22222,7 +22222,7 @@ _ACEOF
           ;;
         esac
       done
-      if ! echo $LIBX11_LIBS | grep -q -- '-lX11'; then
+      if ! echo $LIBX11_LIBS | grep -- '-lX11' > /dev/null; then
         LIBX11_LIBS="$LIBX11_LIBS -lX11"
       fi
 
@@ -22303,7 +22303,7 @@ _ACEOF
       LIBXPM_CFLAGS="$LIBX11_CFLAGS"
       LIBXPM_LDFLAGS="$LIBX11_LDFLAGS"
       LIBXPM_LIBS="$LIBX11_LIBS"
-      if ! echo $LIBXPM_LIBS | grep -q -- '-lXpm'; then
+      if ! echo $LIBXPM_LIBS | grep -- '-lXpm' > /dev/null; then
         LIBXPM_LIBS="$LIBXPM_LIBS -lXpm"
       fi
 
