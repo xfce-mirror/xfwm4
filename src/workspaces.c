@@ -227,6 +227,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 void
 workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 {
+    DisplayInfo *display_info = screen_info->display_info;
     gboolean grab = (c2 == NULL);
     Client *c, *new_focus = NULL;
     Client *previous;
@@ -270,7 +271,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         /* Grab the pointer to avoid side effects with EnterNotify events */
         XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, 
                       FALSE, EnterWindowMask, GrabModeAsync,
-                      GrabModeAsync, None, None, GDK_CURRENT_TIME);
+                      GrabModeAsync, None, None, CurrentTime);
     }
     
     screen_info->previous_ws = screen_info->current_ws;
@@ -294,7 +295,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
             if (c == previous)
             {
                 FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
-                clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+                clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
             }
             if (!clientIsValidTransientOrModal (c))
             {
@@ -357,7 +358,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
     if (grab)
     {
-        XUngrabPointer (myScreenGetXDisplay (screen_info), GDK_CURRENT_TIME);
+        XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
     }
     
     if (!(screen_info->params->click_to_focus))
@@ -373,7 +374,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     }
     if (new_focus)
     {
-        clientSetFocus (new_focus->screen_info, new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (new_focus->screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     }
 }
 

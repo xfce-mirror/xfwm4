@@ -101,7 +101,7 @@ XfwmButtonClickType;
 typedef struct _XfwmButtonClickData XfwmButtonClickData;
 struct _XfwmButtonClickData
 {
-    Time event_time;
+    DisplayInfo *display_info;
     Window w;
     guint button;
     gboolean allow_double_click;
@@ -135,13 +135,15 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
     XfceFilterStatus status = XEV_FILTER_STOP;
     XfwmButtonClickData *passdata = (XfwmButtonClickData *) data;
     
+    /* Update the display time */
+    myDisplayUpdateCurentTime (passdata->display_info, xevent);
+
     if ((xevent->type == ButtonRelease) || (xevent->type == ButtonPress))
     {
         if (xevent->xbutton.button == passdata->button)
         {
             passdata->clicks++;
         }
-        passdata->event_time = xevent->xbutton.time;
         if (((XfwmButtonClickType) passdata->clicks == XFWM_BUTTON_DOUBLE_CLICK)
             || (!(passdata->allow_double_click) && 
                  (XfwmButtonClickType) passdata->clicks == XFWM_BUTTON_CLICK))
@@ -203,6 +205,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
         return XFWM_BUTTON_UNDEFINED;
     }
 
+    passdata.display_info = display_info;
     passdata.button = ev->xbutton.button;
     passdata.w = w;
     passdata.x = ev->xbutton.x_root;
@@ -211,7 +214,6 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.ycurrent = passdata.y;
     passdata.clicks = 1;
     passdata.allow_double_click = allow_double_click;
-    passdata.event_time = ev->xbutton.time;
     passdata.timeout = g_timeout_add_full (0, display_info->dbl_click_time, 
                                               (GtkFunction) typeOfClick_break, 
                                               (gpointer) &passdata, NULL);
@@ -222,7 +224,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     xfce_pop_event_filter (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
 
-    XUngrabPointer (display_info->dpy, passdata.event_time);
+    XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
     XFlush (display_info->dpy);
     return (XfwmButtonClickType) passdata.clicks;
 }
@@ -387,7 +389,10 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
                 }
             }
             while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-                ; /* Skip event */
+            {
+                /* Update the display time */
+                myDisplayUpdateCurentTime (display_info, (XEvent *) ev);
+            }
         }
         if (edge_scroll_y > screen_info->params->wrap_resistance)
         {
@@ -407,7 +412,10 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
                 }
             }
             while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-                ; /* Skip event */
+            {
+                /* Update the display time */
+                myDisplayUpdateCurentTime (display_info, (XEvent *) ev);
+            }
         }
     }
 }
@@ -647,7 +655,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         {
             if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
             {
-                clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+                clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
             }
             clientRaise (c);
             clientPassGrabMouseButton (c);
@@ -1016,7 +1024,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     }
     else
     {
-        XUngrabPointer (display_info->dpy, GDK_CURRENT_TIME);
+        XUngrabPointer (display_info->dpy, CurrentTime);
         XSendEvent (display_info->dpy, screen_info->gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
     }
 }
@@ -1252,6 +1260,9 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     /* Compress events - logic taken from kwin */
     while (XCheckTypedWindowEvent (display_info->dpy, ev->window, ConfigureRequest, &otherEvent))
     {
+        /* Update the display time */
+        myDisplayUpdateCurentTime (display_info, &otherEvent);
+
         if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
         {
             ev = &otherEvent.xconfigurerequest;
@@ -1507,7 +1518,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         c = clientGetFocus ();
         if (c)
         {
-            clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_FORCE);
+            clientSetFocus (c->screen_info, c, CurrentTime, FOCUS_FORCE);
         }
         return;
     }
@@ -1832,8 +1843,15 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             clientSetWorkspace (c, screen_info->current_ws, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
             clientPassGrabMouseButton (c);
+            if (ev->data.l[0] != 0)
+            {
+                clientSetFocus (screen_info, c, (Time) ev->data.l[0], NO_FOCUS_FLAG);
+            }
+            else
+            {
+                clientSetFocus (screen_info, c, CurrentTime, NO_FOCUS_FLAG);
+            }
         }
         else if (ev->message_type == net_request_frame_extents)
         {
@@ -1940,6 +1958,9 @@ static void
 handleEvent (DisplayInfo *display_info, XEvent * ev)
 {
     TRACE ("entering handleEvent");
+
+    /* Update the display time */
+    myDisplayUpdateCurentTime (display_info, ev);
 
     sn_process_event (ev);
     compositorHandleEvent (display_info, ev);

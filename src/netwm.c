@@ -598,9 +598,9 @@ clientUpdateFullscreenState (Client * c)
            avoid these effects
          */
         XGrabPointer (clientGetXDisplay (c), c->screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                           GrabModeAsync, None, None, GDK_CURRENT_TIME);
+                           GrabModeAsync, None, None, CurrentTime);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
-        XUngrabPointer (clientGetXDisplay (c), GDK_CURRENT_TIME);
+        XUngrabPointer (clientGetXDisplay (c), CurrentTime);
     }
     else
     {

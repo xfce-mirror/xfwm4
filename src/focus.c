@@ -104,22 +104,25 @@ void
 clientFocusTop (ScreenInfo *screen_info, int layer)
 {
     ClientPair top_client;
+    DisplayInfo *display_info;
 
+    display_info = screen_info->display_info;
     top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
     if (top_client.prefered)
     {
-        clientSetFocus (screen_info, top_client.prefered, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (screen_info, top_client.prefered, CurrentTime, NO_FOCUS_FLAG);
     }
     else
     {
-        clientSetFocus (screen_info, top_client.highest, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (screen_info, top_client.highest, CurrentTime, NO_FOCUS_FLAG);
     }
 }
 
 void
 clientFocusNew(Client * c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     gboolean give_focus;
     gboolean prevent_focus_stealing;
 
@@ -130,6 +133,7 @@ clientFocusNew(Client * c)
         return;
     }
     screen_info = c->screen_info;
+    display_info = screen_info->display_info;
     give_focus = screen_info->params->focus_new;
     prevent_focus_stealing = screen_info->params->prevent_focus_stealing;
 
@@ -156,7 +160,7 @@ clientFocusNew(Client * c)
                 clientRaise (c);
             }
         }
-        clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+        clientSetFocus (c->screen_info, c, CurrentTime, FOCUS_IGNORE_MODAL);
         clientPassGrabMouseButton (c);
     }
     else
@@ -252,6 +256,7 @@ clientGetPrevious (Client * c, int mask)
 void
 clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
 {
+    DisplayInfo *display_info;
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
     ClientPair top_most;
@@ -273,6 +278,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
         return;
     }
 
+    display_info = screen_info->display_info;
     top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude);
     if (screen_info->params->click_to_focus)
     {
@@ -304,7 +310,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (screen_info, new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+    clientSetFocus (screen_info, new_focus, CurrentTime, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most.highest)
     {
         clientPassGrabMouseButton (new_focus);
@@ -450,7 +456,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
-            sendClientMessage (c->screen_info, c->window, wm_protocols, wm_takefocus, timestamp);
+            sendClientMessage (c->screen_info, c->window, wm_takefocus, timestamp);
         }
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
@@ -474,7 +480,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
                          PropModeReplace, (unsigned char *) data, 2);
-        XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
+        XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, CurrentTime);
     }
 }
 

@@ -430,7 +430,7 @@ initialize (int argc, char **argv, gint compositor_mode)
                                    gdk_screen_get_width (screen_info->gscr), 
                                    gdk_screen_get_height (screen_info->gscr));
         workspaceUpdateArea (screen_info);
-        XSetInputFocus (display_info->dpy, screen_info->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
+        XSetInputFocus (display_info->dpy, screen_info->gnome_win, RevertToPointerRoot, CurrentTime);
 
         clientFrameAll (screen_info);
         

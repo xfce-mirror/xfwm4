@@ -197,7 +197,7 @@ myScreenClose (ScreenInfo *screen_info)
     xfwmWindowDelete (&screen_info->sidewalk[1]);
     xfwmWindowDelete (&screen_info->sidewalk[2]);
     xfwmWindowDelete (&screen_info->sidewalk[3]);
-    XSetInputFocus (display_info->dpy, screen_info->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
+    XSetInputFocus (display_info->dpy, screen_info->xroot, RevertToPointerRoot, CurrentTime);
 
     g_free (screen_info->params);
     screen_info->params = NULL;

@@ -86,6 +86,8 @@ struct _DisplayInfo
     gint xgrabcount;
     gint nb_screens;
 
+    Time current_time;
+
     gboolean enable_compositor;
 
 #ifdef HAVE_COMPOSITOR
@@ -140,5 +142,8 @@ ScreenInfo *  myDisplayGetScreenFromWindow  (DisplayInfo *,
                                              Window w);
 ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *, 
                                              Window);
+Time          myDisplayUpdateCurentTime     (DisplayInfo *, 
+                                             XEvent *);
+Time          myDisplayGetCurrentTime       (DisplayInfo *);
 
 #endif /* INC_DISPLAY_H */

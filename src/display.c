@@ -96,6 +96,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->xgrabcount = 0;
     display->dbl_click_time = 300;
     display->nb_screens = 0;
+    display->current_time = CurrentTime;
 
     initICCCMHints (display->dpy);
     initMotifHints (display->dpy);
@@ -386,4 +387,52 @@ myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
     TRACE ("myDisplayGetScreenFromSystray: no screen found");
 
     return NULL;
+}
+
+Time 
+myDisplayUpdateCurentTime (DisplayInfo *display, XEvent *ev)
+{
+    g_return_val_if_fail (display != NULL, (Time) CurrentTime);
+    
+    switch (ev->type)
+    {
+        case KeyPress:
+        case KeyRelease:
+            display->current_time = (Time) ev->xkey.time;
+            break;
+        case ButtonPress:
+        case ButtonRelease:
+            display->current_time = (Time) ev->xbutton.time;
+            break;
+        case MotionNotify:
+            display->current_time = (Time) ev->xmotion.time;
+            break;
+        case EnterNotify:
+        case LeaveNotify:
+            display->current_time = (Time) ev->xcrossing.time;
+            break;
+        case PropertyNotify:
+            display->current_time = (Time) ev->xproperty.time;
+            break;
+        case SelectionClear:
+            display->current_time = (Time) ev->xselectionclear.time;
+            break;
+        case SelectionRequest:
+            display->current_time = (Time) ev->xselectionrequest.time;
+            break;
+        case SelectionNotify:
+            display->current_time = (Time) ev->xselection.time;
+            break;
+        default:
+            break;
+    }
+    return display->current_time;
+}
+
+Time 
+myDisplayGetCurrentTime (DisplayInfo *display)
+{
+    g_return_val_if_fail (display != NULL, (Time) CurrentTime);
+
+    return (Time) display->current_time;
 }
