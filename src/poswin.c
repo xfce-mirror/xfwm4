@@ -75,13 +75,23 @@ poswinSetPosition (Poswin * poswin, Client *c)
     
     x = frameX (c);
     y = frameY (c);
+    
     wsize = (c->width - c->size->base_width) / c->size->width_inc;
     hsize = (c->height - c->size->base_height) / c->size->height_inc;
+    
+    if (wsize < 0)
+    {
+        wsize = 0;
+    }
+    if (hsize < 0)
+    {
+        hsize = 0;
+    }
 
 #ifdef SHOW_POSITION
-    g_snprintf (label, 32, "(%ix%i) @ (%i,%i)", wsize, hsize, x, y);
+    g_snprintf (label, 32, "(%dx%d) @ (%i,%i)", wsize, hsize, x, y);
 #else
-    g_snprintf (label, 32, "(%ix%i)", wsize, hsize);
+    g_snprintf (label, 32, "(%dx%d)", wsize, hsize);
 #endif
     gtk_label_set_text (GTK_LABEL (poswin->label), label);
     gtk_widget_queue_draw (poswin->window);
