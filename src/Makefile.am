@@ -1,6 +1,3 @@
-CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ -DG_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"
-LIBS = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@
-
 bin_PROGRAMS = xfwm4
 xfwm4_SOURCES = \
 	client.c \
@@ -32,3 +29,6 @@ xfwm4_SOURCES = \
 	pixmap.h \
 	settings.h \
 	workspaces.h
+
+xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ -DG_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"
+xfwm4_LDADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@

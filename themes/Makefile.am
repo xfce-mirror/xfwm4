@@ -4,6 +4,7 @@ coldsteel \
 crux \
 cruxish \
 eazel-blue \
+gorilla \
 gtk \
 kde \
 kindaker \
