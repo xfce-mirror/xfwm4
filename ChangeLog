@@ -1,3 +1,262 @@
+2004-10-14 00:48  olivier
+
+	* po/xfwm4.pot: [no log message]
+
+2004-10-14 00:47  olivier
+
+	* src/: events.c, settings.c: Rewrite the "typeOfClick" fn so that
+	  there is no delay when using the compositor
+
+2004-10-13 22:50  olivier
+
+	* src/: compositor.c, compositor.h, main.c, screen.c: Change cmd
+	  line options to allow automatic compositor.
+
+2004-10-13 22:12  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix #394
+
+2004-10-13 16:03  pollux
+
+	* doc/C/xfwm4.xml: spelling correction
+
+2004-10-13 00:25  olivier
+
+	* src/: client.c, compositor.c: Various tweaks
+
+2004-10-12 08:50  olivier
+
+	* configure, configure.ac, ltmain.sh, mcs-plugin/plugin.c,
+	  mcs-plugin/plugin.h, mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces.h, mcs-plugin/xfwm4_plugin.c,
+	  mcs-plugin/xfwm4_plugin.h, mcs-plugin/xfwm4_shortcuteditor.c,
+	  mcs-plugin/xfwm4_shortcuteditor.h, po/ar.gmo, po/ar.po,
+	  po/az.gmo, po/az.po, po/be.gmo, po/be.po, po/bg.gmo, po/bg.po,
+	  po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po,
+	  po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po, po/et.gmo,
+	  po/et.po, po/eu.gmo, po/eu.po, po/fa.gmo, po/fa.po, po/fi.gmo,
+	  po/fi.po, po/fr.gmo, po/fr.po, po/gu.gmo, po/gu.po, po/he.gmo,
+	  po/he.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo,
+	  po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
+	  po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pa.gmo,
+	  po/pa.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po,
+	  po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po, po/sk.gmo,
+	  po/sk.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo,
+	  po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
+	  src/compositor.c, src/settings.c: Use mcs raw channel to fix bug
+	  #342
+
+2004-10-11 18:30  benny
+
+	* po/: ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po,
+	  es_MX.po, et.po, eu.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po,
+	  it.po, ja.po, ko.po, lt.po, ms.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
+	  xfwm4.pot, zh_CN.po, zh_TW.po: update-po for Moe.
+
+2004-10-11 00:03  olivier
+
+	* src/: compositor.c, compositor.h: Add a useless function that not
+	  used anywhere in the current code but might be useful some day,
+	  who knows...
+
+2004-10-10 23:27  olivier
+
+	* src/: client.c, compositor.c: Fix frame vanishing when using
+	  transparency
+
+2004-10-10 13:52  pollux
+
+	* po/: es.gmo, es_MX.gmo, pt_PT.gmo, pt_PT.po: update pt_PT
+	  translations
+
+2004-10-10 13:28  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: [no log message]
+
+2004-10-10 03:52  edscott
+
+	* po/: es.po, es_MX.po: spelling correction
+
+2004-10-09 21:47  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix typo
+
+2004-10-09 21:24  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: i was releasing the keyboard
+	  too soon
+
+2004-10-09 21:16  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix #373
+
+2004-10-09 18:15  olivier
+
+	* src/: compositor.c, events.c: [no log message]
+
+2004-10-09 16:20  pollux
+
+	* configure, configure.ac, po/fa.gmo, po/fa.po, po/fa_IR.gmo,
+	  po/fa_IR.po: update FA translations
+
+2004-10-09 15:48  pollux
+
+	* po/: pa.gmo, pa.po: Punjabi translations update from
+	  jaswinderlinux@netscape.net
+
+2004-10-09 15:13  olivier
+
+	* src/: client.c, compositor.c, compositor.h, display.c, events.c,
+	  screen.h, transients.c: Check for an already running compositing
+	  manager, Various optimizations.
+
+2004-10-09 00:42  olivier
+
+	* po/es.gmo, po/es_MX.gmo, src/client.c, src/compositor.c: Various
+	  optilizations in compositor
+
+2004-10-08 22:36  olivier
+
+	* src/: client.c, workspaces.c, workspaces.h: Fix grab/ungrab when
+	  dragging windows between workspaces
+
+2004-10-08 19:21  olivier
+
+	* src/events.c: Small optimiztion.
+
+2004-10-08 19:06  olivier
+
+	* po/xfwm4.pot, src/client.c, src/events.c, src/netwm.c,
+	  src/stacking.c, src/stacking.h, src/transients.c,
+	  src/transients.h, src/workspaces.c: Improve handling of
+	  transients/modals which aren't tied to a parent window.
+
+2004-10-08 18:43  pollux
+
+	* mcs-plugin/: xfwm4_plugin.h, xfwm4_shortcuteditor.c: fix #377 and
+	  #378
+
+2004-10-08 17:45  edscott
+
+	* po/: es.po, es_MX.po: update spanish translations.
+
+2004-10-07 23:21  olivier
+
+	* src/compositor.c: [no log message]
+
+2004-10-07 22:49  benny
+
+	* src/: client.c, client.h: Revert
+
+2004-10-07 22:36  benny
+
+	* Makefile.in, aclocal.m4, configure, defaults/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
+	  doc/it/Makefile.in, doc/it/images/Makefile.in, icons/Makefile.in,
+	  icons/48x48/Makefile.in, icons/scalable/Makefile.in, m4/debug.m4,
+	  m4/glib-gettext.m4, m4/pkg.m4, mcs-plugin/Makefile.in,
+	  src/Makefile.in, src/client.c, src/client.h, themes/Makefile.in,
+	  themes/breeze/Makefile.in, themes/default/Makefile.in,
+	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
+	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
+	  themes/waza/Makefile.in: Added --enable-final (-O1 for GNU ld) as
+	  per Jaspers request. Added missing m4 files.
+
+2004-10-07 22:20  olivier
+
+	* src/: compositor.c, events.c: Fix typo Actually use optimization
+	  in shadow computation
+
+2004-10-07 00:25  olivier
+
+	* po/xfwm4.pot, src/compositor.c: Simplify code in compositor
+	  repaint routine
+
+2004-10-06 23:56  olivier
+
+	* src/: compositor.c, events.c, hints.h, wireframe.c: Fix transet
+	  removing opacity property expand sources;
+
+2004-10-05 23:37  olivier
+
+	* src/: client.c, compositor.c, compositor.h, events.c: Fix XShape
+	  bug, now gkrellm and other shaped windows work.
+
+2004-10-05 22:20  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: use path instead of selection
+	  for popup_menu_del_menuitem activation
+
+2004-10-05 22:13  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: add option to remove shortcut,
+	  and command dialog shows current command if present
+
+2004-10-05 16:11  jasper
+
+	* mcs-plugin/xfwm4_shortcuteditor.c, src/main.c: Benedikt tells me
+	  session files should be in ~/.cache/.
+
+2004-10-05 13:33  olivier
+
+	* po/xfwm4.pot, src/compositor.c: indent
+
+2004-10-05 13:31  olivier
+
+	* src/: compositor.c, events.c, frame.c: Still compositing and
+	  shape
+
+2004-10-05 08:55  olivier
+
+	* po/xfwm4.pot, src/compositor.c: [no log message]
+
+2004-10-05 08:49  olivier
+
+	* src/compositor.c: [no log message]
+
+2004-10-05 08:23  olivier
+
+	* src/compositor.c: Improve handling of shaped windows.
+
+2004-10-04 23:27  olivier
+
+	* src/compositor.c: Reorg to save useless notifications
+
+2004-10-04 23:10  olivier
+
+	* src/wireframe.h: Wrong fn name in header.
+
+2004-10-04 23:01  olivier
+
+	* src/compositor.c: There is a refresh problem with XShaped
+	  windows, but xcompmgr suffer the same so I'm not sure it's really
+	  a compositor problem.
+
+2004-10-03 23:08  olivier
+
+	* configure, configure.ac, po/xfwm4.pot, src/client.c,
+	  src/client.h, src/compositor.c, src/compositor.h, src/events.c,
+	  src/hints.c, src/hints.h: Better support for transparency
+	  property.
+
+2004-10-03 18:14  pollux
+
+	* configure, configure.ac, ltmain.sh, po/pa.gmo, po/pa.po: Punjabi
+	  translations (PA) from jaswinderlinux@netscape.net
+
+2004-10-03 17:43  pollux
+
+	* mcs-plugin/: xfce-wm-settings.desktop,
+	  xfce-workspaces-settings.desktop: zh_TW translations of desktop
+	  files from Ambrose Li <acli@ada.dhs.org>
+
+2004-10-02 14:36  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-10-02 14:31  olivier
 
 	* ChangeLog, po/xfwm4.pot, src/compositor.c, src/main.c,
