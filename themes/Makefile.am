@@ -6,4 +6,5 @@ SUBDIRS =								\
 	default.keys 							\
 	default-4.0 							\
 	opta								\
+	symphony							\
 	waza

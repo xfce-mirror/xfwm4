@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.1.9])
+AM_INIT_AUTOMAKE([xfwm4], [4.1.10])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -105,5 +105,6 @@ themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/opta/Makefile
+themes/symphony/Makefile
 themes/waza/Makefile
 ])
