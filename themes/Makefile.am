@@ -13,6 +13,7 @@ mofit \
 next \
 oroborus \
 platinum \
+r9x \
 redmond \
 redmondxp \
 slick \
