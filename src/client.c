@@ -100,6 +100,14 @@
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
 
+#ifndef EPSILON
+#define EPSILON                 (1e-6)  
+#endif
+
+#ifndef MAX_RESIZES_PER_SECOND
+#define MAX_RESIZES_PER_SECOND  20.0
+#endif
+
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
 {
@@ -347,6 +355,47 @@ clientIsTransientOrModalForGroup (Client * c)
     TRACE ("entering clientIsTransientOrModalForGroup");
 
     return (clientIsTransientForGroup(c) || clientIsModalForGroup(c));
+}
+
+/* 
+ * The following two functions are to limit the number of updates 
+ * during resize operations.
+ * It's taken from Metacity
+ */
+void
+clientClearLastOpTime (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    
+    TRACE ("entering clientClearLastOpTime");
+    c->lastoptime.tv_sec = 0;
+    c->lastoptime.tv_usec = 0;
+}
+
+static gboolean
+clientCheckLastOpTime (Client * c)
+{
+    GTimeVal current_time;
+    double elapsed;
+  
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    g_get_current_time (&current_time);
+    /* use milliseconds, 1000 milliseconds/second */
+    elapsed = (((double)current_time.tv_sec - c->lastoptime.tv_sec) * G_USEC_PER_SEC +
+                  (current_time.tv_usec - c->lastoptime.tv_usec)) / 1000.0;
+    if (elapsed >= 0.0 && elapsed < (1000.0 / MAX_RESIZES_PER_SECOND))
+    {
+        return FALSE;
+    }
+    else if (elapsed < (0.0 - EPSILON))
+    {
+        /* clock screw */
+        clientClearLastOpTime (c);
+    }
+    c->lastoptime = current_time;
+  
+    return TRUE;
 }
 
 void
@@ -3234,6 +3283,9 @@ clientFrame (Window w, gboolean recapture)
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
 
+    /* Clear time counter */
+    clientClearLastOpTime (c);
+
     if (clientCheckShape(c))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_BORDER);
@@ -5505,7 +5557,6 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     int frame_top, frame_left, frame_right, frame_bottom;
 
     TRACE ("entering clientResize_event_filter");
-
     frame_x = frameX (c);
     frame_y = frameY (c);
     frame_height = frameHeight (c);
@@ -5639,6 +5690,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (xevent->type == ButtonRelease)
         {
             resizing = FALSE;
+            clientClearLastOpTime (c);
         }
 
         if (!passdata->grab && params.box_resize)
@@ -5751,11 +5803,14 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         }
         else
         {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+            if (clientCheckLastOpTime (c))
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                wc.width = c->width;
+                wc.height = c->height;
+                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+            }
         }
         
     }

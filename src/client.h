@@ -222,6 +222,7 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[12];
     char *name;
+    GTimeVal lastoptime;
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 
     char *startup_id;
