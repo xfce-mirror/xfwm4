@@ -1665,15 +1665,18 @@ void clientFrameAll()
     windows_stack = NULL;
     client_focus = NULL;
 
+    XSync (dpy, 0);
+    MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
         XGetWindowAttributes(dpy, wins[i], &attr);
-        if(!(attr.override_redirect) && (attr.map_state == IsViewable))
+        if((!(attr.override_redirect)) && (attr.map_state == IsViewable))
         {
             clientFrame(wins[i]);
         }
     }
+    MyXUngrabServer(dpy);
     if(wins)
     {
         XFree(wins);
@@ -1688,6 +1691,8 @@ void clientUnframeAll()
 
     DBG("entering clientUnframeAll\n");
 
+    XSync (dpy, 0);
+    MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
@@ -1697,6 +1702,7 @@ void clientUnframeAll()
             clientUnframe(c, True);
         }
     }
+    MyXUngrabServer(dpy);
     if(wins)
     {
         XFree(wins);

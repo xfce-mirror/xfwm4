@@ -132,7 +132,7 @@ unsigned long getWMState(Display * dpy, Window w)
 
     DBG("entering getWmState\n");
 
-    if((XGetWindowProperty(dpy, w, wm_state, 0, 2L, False, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
+    if((XGetWindowProperty(dpy, w, wm_state, 0, 3L, False, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
 	state = *data;
 	XFree(data);
