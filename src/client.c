@@ -3165,10 +3165,9 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
             }
         }
-        clientSetWidth (c, c->width);
-        clientSetHeight (c, c->height);
         clientConstrainRatio (c, c->width, c->height, passdata->corner);
-
+	
+        clientSetWidth (c, c->width);
         if ((passdata->corner == CORNER_TOP_LEFT)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
             || (passdata->corner == 4 + SIDE_LEFT))
@@ -3176,6 +3175,13 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
+        if (!clientCkeckTitle (c))
+        {
+            c->x = prev_x;
+            c->width = prev_width;
+        }
+
+        clientSetHeight (c, c->height);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
             && (passdata->corner == CORNER_TOP_LEFT
                 || passdata->corner == CORNER_TOP_RIGHT))
@@ -3185,57 +3191,54 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         }
         if (!clientCkeckTitle (c))
         {
-            c->x = prev_x;
             c->y = prev_y;
             c->height = prev_height;
-            c->width = prev_width;
         }
-        else
+
+        if ((passdata->corner == CORNER_TOP_LEFT)
+            || (passdata->corner == CORNER_TOP_RIGHT))
         {
-            if ((passdata->corner == CORNER_TOP_LEFT)
-                || (passdata->corner == CORNER_TOP_RIGHT))
+            if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
+                || (c->y > gdk_screen_get_height (screen_info->gscr) 
+                           - screen_info->margins [BOTTOM] - CLIENT_MIN_VISIBLE))
             {
-                if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
-                    || (c->y > gdk_screen_get_height (screen_info->gscr) 
-                               - screen_info->margins [BOTTOM] - CLIENT_MIN_VISIBLE))
-                {
-                    c->y = prev_y;
-                    c->height = prev_height;
-                }
-            }
-            else if ((passdata->corner == CORNER_BOTTOM_LEFT)
-                || (passdata->corner == CORNER_BOTTOM_RIGHT)
-                || (passdata->corner == 4 + SIDE_BOTTOM))
-            {
-                if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
-                    || (c->y + c->height < screen_info->margins [TOP] + CLIENT_MIN_VISIBLE))
-                {
-                    c->height = prev_height;
-                }
-            }
-            if ((passdata->corner == CORNER_TOP_LEFT)
-                || (passdata->corner == CORNER_BOTTOM_LEFT)
-                || (passdata->corner == 4 + SIDE_LEFT))
-            {
-                if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
-                    || (c->x > gdk_screen_get_width (screen_info->gscr) 
-                               - screen_info->margins [RIGHT] - CLIENT_MIN_VISIBLE))
-                {
-                    c->x = prev_x;
-                    c->width = prev_width;
-                }
-            }
-            else if ((passdata->corner == CORNER_TOP_RIGHT)
-                || (passdata->corner == CORNER_BOTTOM_RIGHT)
-                || (passdata->corner == 4 + SIDE_RIGHT))
-            {
-                if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
-                    || (c->x + c->width < screen_info->margins [LEFT] + CLIENT_MIN_VISIBLE))
-                {
-                    c->width = prev_width;
-                }
+                c->y = prev_y;
+                c->height = prev_height;
             }
         }
+        else if ((passdata->corner == CORNER_BOTTOM_LEFT)
+            || (passdata->corner == CORNER_BOTTOM_RIGHT)
+            || (passdata->corner == 4 + SIDE_BOTTOM))
+        {
+            if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
+                || (c->y + c->height < screen_info->margins [TOP] + CLIENT_MIN_VISIBLE))
+            {
+                c->height = prev_height;
+            }
+        }
+        if ((passdata->corner == CORNER_TOP_LEFT)
+            || (passdata->corner == CORNER_BOTTOM_LEFT)
+            || (passdata->corner == 4 + SIDE_LEFT))
+        {
+            if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
+                || (c->x > gdk_screen_get_width (screen_info->gscr) 
+                           - screen_info->margins [RIGHT] - CLIENT_MIN_VISIBLE))
+            {
+                c->x = prev_x;
+                c->width = prev_width;
+            }
+        }
+        else if ((passdata->corner == CORNER_TOP_RIGHT)
+            || (passdata->corner == CORNER_BOTTOM_RIGHT)
+            || (passdata->corner == 4 + SIDE_RIGHT))
+        {
+            if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
+                || (c->x + c->width < screen_info->margins [LEFT] + CLIENT_MIN_VISIBLE))
+            {
+                c->width = prev_width;
+            }
+        }
+
         if (passdata->poswin)
         {
             poswinSetPosition (passdata->poswin, c);
