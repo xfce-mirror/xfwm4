@@ -55,6 +55,11 @@
 #define PLACEMENT_MOUSE                 0
 #define PLACEMENT_ROOT                  1
 
+#define CFG_NONE                        0
+#define CFG_CONSTRAINED                 (1<<0)
+#define CFG_REQUEST                     (1<<1)
+#define CFG_NOTIFY                      (1<<2)
+
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
@@ -232,7 +237,7 @@ void clientUpdateNetState (Client *, XClientMessageEvent *);
 void clientGetNetWmType (Client * c);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
-void clientConfigure (Client *, XWindowChanges *, int, gboolean, gboolean);
+void clientConfigure (Client *, XWindowChanges *, int, unsigned short);
 void clientGetMWMHints (Client *, gboolean);
 void clientGetWMNormalHints (Client *, gboolean);
 void clientClearPixmapCache (Client *);

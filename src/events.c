@@ -1011,7 +1011,8 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
                 }
             }
         }
-        clientConfigure (c, &wc, ev->value_mask, constrained, TRUE);
+        clientConfigure (c, &wc, ev->value_mask, 
+                         (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
     }
     else
     {
