@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002 Olivier Fourdan
@@ -46,8 +46,8 @@ static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev);
 typedef enum
 {
   XFWM_BUTTON_DRAG           = 1,
-  XFWM_tclick          = 2,
-  XFWM_tclick_AND_DRAG = 3,
+  XFWM_BUTTON_CLICK          = 2,
+  XFWM_BUTTON_AND_DRAG       = 3,
   XFWM_BUTTON_DOUBLE_CLICK   = 4
 } XfwmButtonClickType;
 
@@ -286,15 +286,15 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
     int clicks = 1;
     Time t0;
     
-    g_return_val_if_fail(ev != NULL, XFWM_tclick);
-    g_return_val_if_fail(w != None, XFWM_tclick);
+    g_return_val_if_fail(ev != NULL, XFWM_BUTTON_DRAG);
+    g_return_val_if_fail(w != None, XFWM_BUTTON_DRAG);
 
     g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
     if (g != GrabSuccess)
     {
         DBG("grab failed in typeOfClick\n");
         gdk_beep();
-        return XFWM_tclick;
+        return XFWM_BUTTON_DRAG;
     }
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
@@ -302,30 +302,30 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
     
     while ((total < 250) && (ABS(x - xcurrent) < 2) && (ABS(y - ycurrent) < 2) && ((CurrentTime - t0) < 250))
     {
-	if (XCheckMaskEvent (dpy, ButtonReleaseMask, ev))
-	{
-	    clicks++;
-	}
-	if (XCheckMaskEvent (dpy, ButtonPressMask, ev))
-	{
-	    clicks++;
-	}
-	if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
-	{
+        if (XCheckMaskEvent (dpy, ButtonReleaseMask, ev))
+        {
+            clicks++;
+        }
+        if (XCheckMaskEvent (dpy, ButtonPressMask, ev))
+        {
+            clicks++;
+        }
+        if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
+        {
             XUngrabPointer(dpy, ev->xbutton.time);
-	    return (XfwmButtonClickType) clicks;
-	}
-	if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
-	{
-	    xcurrent = ev->xmotion.x_root;
-	    ycurrent = ev->xmotion.y_root;
-	    if ((ABS(x - xcurrent) > 0) || (ABS(y - ycurrent) > 0))
-	    {
-	        break;
-	    }
-	}
-	g_usleep (10);
-	total += 10;
+            return (XfwmButtonClickType) clicks;
+        }
+        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
+        {
+            xcurrent = ev->xmotion.x_root;
+            ycurrent = ev->xmotion.y_root;
+            if ((ABS(x - xcurrent) > 0) || (ABS(y - ycurrent) > 0))
+            {
+                break;
+            }
+        }
+        g_usleep (10);
+        total += 10;
     }
     XUngrabPointer(dpy, ev->xbutton.time);
     return (XfwmButtonClickType) clicks;
@@ -346,9 +346,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
     if(c)
     {
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
-	win = ev->subwindow;
-	
-	if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
+        win = ev->subwindow;
+        
+        if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
             clientSetFocus(c, True);
             clientRaise(c);
@@ -356,47 +356,47 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
         {
-	    /*
-	       We need to copy the event to keep the original event untouched
-	       for gtk to handle it (in case we open up the menu)
-	     */
-	    XEvent copy_event = (XEvent) *ev;
-	    XfwmButtonClickType tclick;
-	    
-	    if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
-	    {
-	        clientClose(c);
-	    }
-	    else
-	    {
-        	clientSetFocus(c, True);
-        	clientRaise(c);
-        	ev->window = ev->root;
-        	if(button_handler_id)
-        	{
+            /*
+               We need to copy the event to keep the original event untouched
+               for gtk to handle it (in case we open up the menu)
+             */
+            XEvent copy_event = (XEvent) *ev;
+            XfwmButtonClickType tclick;
+            
+            if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
+            {
+                clientClose(c);
+            }
+            else
+            {
+                clientSetFocus(c, True);
+                clientRaise(c);
+                ev->window = ev->root;
+                if(button_handler_id)
+                {
                     g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
-        	}
-        	button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
-        	/* Let GTK handle this for us. */
-	    }
+                }
+                button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
+                /* Let GTK handle this for us. */
+            }
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
             XfwmButtonClickType tclick;
-	    if (win == c->title)
-	    {
-	        clientSetFocus(c, True);
+            if (win == c->title)
+            {
+                clientSetFocus(c, True);
                 clientRaise(c);
             }
-	    tclick = typeOfClick(c->frame, (XEvent *) ev);
-            if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_tclick_AND_DRAG))
+            tclick = typeOfClick(c->frame, (XEvent *) ev);
+            if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_AND_DRAG))
             {
                 if((c->has_border) && !(c->fullscreen))
                 {
                     clientMove(c, (XEvent *) ev);
                 }
             }
-	    else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
+            else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
                 switch (double_click_action)
                 {
@@ -460,12 +460,12 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else
         {
-	    if (ev->button == Button1)
-	    {
-        	clientSetFocus(c, True);
-        	clientRaise(c);
+            if (ev->button == Button1)
+            {
+                clientSetFocus(c, True);
+                clientRaise(c);
             }
-	    if(ev->window == c->window)
+            if(ev->window == c->window)
             {
                 replay = True;
             }
@@ -589,10 +589,10 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             wc.stack_mode &= ~CWStackMode;
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
-	if ((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && c->maximized)
-	{
-	    clientRemoveMaximizeFlag(c);
-	}
+        if ((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && c->maximized)
+        {
+            clientRemoveMaximizeFlag(c);
+        }
         clientConfigure(c, &wc, ev->value_mask);
     }
     else
@@ -618,7 +618,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
             clientSetFocus(c, True);
-	}
+        }
     }
 }
 
