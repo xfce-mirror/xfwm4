@@ -1628,18 +1628,16 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
+    gboolean is_transient = FALSE;
 
     TRACE ("entering handleClientMessage");
-
-    /* Don't get surprised with the multiple "if (!clientIsValidTransientOrModal(c))" tests
-       xfwm4 really treats transient differently
-     */
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
         screen_info = c->screen_info;
-        
+        is_transient = clientIsValidTransientOrModal (c);
+	
         if ((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
@@ -1657,7 +1655,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == win_layer) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_layer event", c->name, c->window);
-            if ((ev->data.l[0] != c->win_layer) && !clientIsValidTransientOrModal (c))
+            if ((ev->data.l[0] != c->win_layer) && !is_transient)
             {
                 clientSetLayer (c, ev->data.l[0]);
             }
@@ -1665,7 +1663,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == win_workspace) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_workspace event", c->name, c->window);
-            if ((ev->data.l[0] != c->win_workspace) && !clientIsValidTransientOrModal (c))
+            if ((ev->data.l[0] != c->win_workspace) && !is_transient)
             {
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
             }
@@ -1673,7 +1671,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_desktop event", c->name, c->window);
-            if (!clientIsValidTransientOrModal (c))
+            if (!is_transient)
             {
                 if (ev->data.l[0] == ALL_WORKSPACES)
                 {
