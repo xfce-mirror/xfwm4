@@ -1812,7 +1812,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
         mask &= ~(CWStackMode | CWSibling);
     }
 
-    if(constrained && CONSTRAINED_WINDOW(c))
+    if(constrained && (mask & (CWX | CWY)) && CONSTRAINED_WINDOW(c))
     {
         clientConstraintPos(c, TRUE);
     }
