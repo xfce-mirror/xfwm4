@@ -246,7 +246,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 workspaceSetCount(params.workspace_count - 1);
                 break;
             case KEY_STICK_WINDOW:
-                clientToggleSticky(c);
+                clientToggleSticky(c, TRUE);
                 break;
             case KEY_WORKSPACE_1:
                 workspaceSwitch(0, NULL);
@@ -861,11 +861,11 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             DBG("client \"%s\" (%#lx) has received a win_state/stick event\n", c->name, c->window);
 	    if (ev->data.l[1] == WIN_STATE_STICKY)
 	    {
-                clientStick(c);
+                clientStick(c, TRUE);
 	    }
 	    else
 	    {
-                clientUnstick(c);
+                clientUnstick(c, TRUE);
 	    }
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
@@ -883,7 +883,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             DBG("client \"%s\" (%#lx) has received a net_wm_desktop event\n", c->name, c->window);
             if((ev->data.l[0] == (int)0xFFFFFFFF))
             {
-                clientStick(c);
+                clientStick(c, TRUE);
             }
             else if(!(c->transient_for))
             {
@@ -1096,7 +1096,7 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
             if(c)
             {
                 frameDraw(c);
-                clientToggleSticky(c);
+                clientToggleSticky(c, TRUE);
             }
             break;
         case MENU_OP_DELETE:

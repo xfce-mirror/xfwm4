@@ -401,10 +401,18 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_shaded) || (second == net_wm_state_shaded))
     {
-        if(((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED)) || ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED)) || (action == NET_WM_STATE_TOGGLE))
+        if ((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
-            clientToggleShaded(c);
+            clientShade(c);
         }
+	else if ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+	{
+            clientUnshade(c);
+	}
+	else if (action == NET_WM_STATE_TOGGLE)
+	{
+            clientToggleShaded(c);
+	}
     }
 
 #if 0
@@ -417,21 +425,44 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
      */
     if((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
     {
-        if(((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)) || ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)) || (action == NET_WM_STATE_TOGGLE))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
         {
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
                 clientHide(c, True);
             }
         }
+	else if ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+	{
+            clientShow(c, True);
+	}
+	else if (action == NET_WM_STATE_TOGGLE)
+	{
+            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+	    {
+                clientShow(c, True);
+	    }
+	    else if (CLIENT_CAN_HIDE_WINDOW(c))
+	    {
+                clientHide(c, True);
+	    }
+	}
     }
 #endif
 
     if((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
-        if(((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) || ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) || (action == NET_WM_STATE_TOGGLE))
+        if ((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
-            clientToggleSticky(c);
+            clientStick(c, TRUE);
+        }
+	else if ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+	{
+            clientUnstick(c, TRUE);
+	}
+	else if (action == NET_WM_STATE_TOGGLE)
+        {
+            clientToggleSticky(c, TRUE);
         }
     }
 
@@ -674,7 +705,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
         {
             DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
             c->win_workspace = workspace;
-            clientStick(c);
+            clientStick(c, FALSE);
         }
         else
         {
@@ -2151,7 +2182,7 @@ Client *clientGetNext(Client * c, int mask)
 
     if(c)
     {
-        for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
         {
 	    if ((c2->type == WINDOW_SPLASHSCREEN) || (c2->type == WINDOW_DESKTOP))
             {
@@ -2209,7 +2240,7 @@ void clientShow(Client * c, int change_state)
 
     if((c->win_workspace == ws) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
-        for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
         {
             if((c2->transient_for == c->window) && (c2 != c))
             {
@@ -2240,7 +2271,7 @@ void clientHide(Client * c, int change_state)
 
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
-    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
         if((c2->transient_for == c->window) && (c2 != c))
         {
@@ -2266,7 +2297,7 @@ void clientHideAll(Client * c)
 
     DBG("entering clientHideAll\n");
 
-    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
         if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && !(c2->transient_for) && (c2 != c))
         {
@@ -2461,7 +2492,7 @@ void clientToggleShaded(Client * c)
     }
 }
 
-void clientStick(Client * c)
+void clientStick(Client * c, gboolean include_transients)
 {
     int i;
     Client *c2;
@@ -2475,15 +2506,17 @@ void clientStick(Client * c)
         DBG("\"%s\" (%#lx) is already sticky\n", c->name, c->window);
         return;
     }
-
-    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    
+    if (include_transients)
     {
-        if((c2->transient_for == c->window) && (c2 != c) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
-        {
-            clientStick(c2);
-        }
+	for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+	{
+            if((c2->transient_for == c->window) && (c2 != c) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+            {
+        	clientStick(c2, include_transients);
+            }
+	}
     }
-
     c->win_state |= WIN_STATE_STICKY;
     CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
@@ -2491,7 +2524,7 @@ void clientStick(Client * c)
     clientSetNetState(c);
 }
 
-void clientUnstick(Client * c)
+void clientUnstick(Client * c, gboolean include_transients)
 {
     int i;
     Client *c2;
@@ -2506,12 +2539,15 @@ void clientUnstick(Client * c)
         return;
     }
 
-    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    if (include_transients)
     {
-        if((c2->transient_for == c->window) && (c2 != c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
-        {
-            clientUnstick(c2);
-        }
+	for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+	{
+            if((c2->transient_for == c->window) && (c2 != c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+            {
+        	clientUnstick(c2, include_transients);
+            }
+	}
     }
 
     c->win_state &= ~WIN_STATE_STICKY;
@@ -2521,7 +2557,7 @@ void clientUnstick(Client * c)
     clientSetNetState(c);
 }
 
-void clientToggleSticky(Client * c)
+void clientToggleSticky(Client * c, gboolean include_transients)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleSticky\n");
@@ -2529,11 +2565,11 @@ void clientToggleSticky(Client * c)
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
-        clientUnstick(c);
+        clientUnstick(c, include_transients);
     }
     else
     {
-        clientStick(c);
+        clientStick(c, include_transients);
     }
 }
 
@@ -3571,7 +3607,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
                 clientToggleShaded(c);
                 break;
             case STICK_BUTTON:
-                clientToggleSticky(c);
+                clientToggleSticky(c, TRUE);
                 break;
         }
     }
