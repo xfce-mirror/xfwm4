@@ -55,11 +55,11 @@ msgstr "Spazio di lavoro %i"
 
 #: mcs-plugin/plugin.c:173
 msgid "Margins"
-msgstr ""
+msgstr "Margini"
 
 #: mcs-plugin/workspaces.c:339
 msgid "Change name"
-msgstr ""
+msgstr "Cambia nome"
 
 #: mcs-plugin/workspaces.c:351
 #, fuzzy, c-format
@@ -68,11 +68,11 @@ msgstr "Spazio di lavoro %i"
 
 #: mcs-plugin/workspaces.c:361
 msgid "Name:"
-msgstr ""
+msgstr "Nome:"
 
 #: mcs-plugin/workspaces.c:449
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Click sul nome di un workspace per modificarlo"
 
 #: mcs-plugin/workspaces.c:521
 #, fuzzy
@@ -142,11 +142,11 @@ msgstr "Destra"
 
 #: mcs-plugin/xfwm4_plugin.c:570
 msgid "Click and drag buttons to change the layout"
-msgstr ""
+msgstr "Click e trascina bottone per cambiare il layout"
 
 #: mcs-plugin/xfwm4_plugin.c:575
 msgid "Active"
-msgstr ""
+msgstr "Attiva"
 
 #: mcs-plugin/xfwm4_plugin.c:586
 msgid "Title"
@@ -154,7 +154,7 @@ msgstr "Titolo"
 
 #: mcs-plugin/xfwm4_plugin.c:587
 msgid "The window title, it cannot be removed"
-msgstr ""
+msgstr "Il titolo della finestra, non puo' essere rimosso"
 
 #: mcs-plugin/xfwm4_plugin.c:595
 msgid "Hidden"
@@ -201,7 +201,7 @@ msgstr "Focus alle nuove finestre"
 
 #: mcs-plugin/xfwm4_plugin.c:1513 mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
-msgstr ""
+msgstr "Comando"
 
 #: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
@@ -555,6 +555,8 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
+"Non si puo' aprire %s : \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:690 mcs-plugin/xfwm4_shortcuteditor.c:701
 #, c-format
@@ -562,16 +564,20 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Non si puo' scrivere in %s : \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:764
 msgid "Select command"
-msgstr ""
+msgstr "Selezionare un comando"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:866
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
+"Scorciatoia gia' in uso !\n"
+"Siete sicuri di volerla utilizzare ?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:928
 #, fuzzy
@@ -588,12 +594,12 @@ msgstr "Scorciatoie da Tastiera"
 #: mcs-plugin/xfwm4_shortcuteditor.c:963
 #: mcs-plugin/xfwm4_shortcuteditor.c:1141
 msgid "Cannot grab the keyboard"
-msgstr ""
+msgstr "Non si puo' catturare la tastiera"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Choose command"
-msgstr ""
+msgstr "Scegliere un comando"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1017
 #, fuzzy
@@ -602,11 +608,11 @@ msgstr "Scorciatoie da Tastiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1051
 msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
+msgstr "Il comando non esiste oppure il file non e' eseguibile"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1107
 msgid "Compose shortcut for command :"
-msgstr ""
+msgstr "Comporre la scorciatoia per il comando :"
 
 #: src/events.c:1623
 #, c-format
@@ -631,12 +637,12 @@ msgstr "%s: Dati mancanti dai file di default"
 #: src/main.c:419
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
+msgstr "%s: Entrata in modalita demone fallita: %s"
 
 #: src/main.c:427
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: Creazione nuovo processo fallita: %s"
 
 #: src/main.c:448
 #, c-format
@@ -681,11 +687,11 @@ msgstr "_Sblocca"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr ""
+msgstr "Help contestuale"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr ""
+msgstr "Sempre sopra"
 
 #: src/menu.c:51
 msgid "Send to..."
@@ -768,7 +774,7 @@ msgstr "Passa a ..."
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
-msgstr ""
+msgstr "Applicazione sconosciuta!"
 
 #, fuzzy
 #~ msgid ""
