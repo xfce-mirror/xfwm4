@@ -1,6 +1,6 @@
 # translation of xfwm4.po to Turkish
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) 2003 PACKAGES COPYRIGHT HOLDER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # Erçin EKER <erc.caldera@gmx.net>, 2003
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-06-01 19:10+0200\n"
-"PO-Revision-Date: 2003-05-21 15:13+0300\n"
+"PO-Revision-Date: 2003-06-05 09:21+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <>\n"
 "MIME-Version: 1.0\n"
@@ -25,10 +25,8 @@ msgid "Adjust workspace margins"
 msgstr "Çalışma alanı sınırlarını ayarlayın"
 
 #: mcs-plugin/margins_plugin.c:237
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belierler"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belirler"
 
 #: mcs-plugin/margins_plugin.c:278
 msgid "Left :"
@@ -68,7 +66,7 @@ msgstr "Sakla"
 
 #: mcs-plugin/xfwm4_plugin.c:122
 msgid "Maximize"
-msgstr "Büyült"
+msgstr "Büyüt"
 
 #: mcs-plugin/xfwm4_plugin.c:123
 msgid "Close"
@@ -84,7 +82,7 @@ msgstr "Pencereyi sakla"
 
 #: mcs-plugin/xfwm4_plugin.c:129
 msgid "Maximize window"
-msgstr "Pencereyi büyült"
+msgstr "Pencereyi büyüt"
 
 #: mcs-plugin/xfwm4_plugin.c:130
 msgid "Nothing"
@@ -179,12 +177,12 @@ msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
-"Pencereler odaklanam kazanınca \n"
+"Pencereler odaklanma kazanınca \n"
 "otomatik olarak yükselt"
 
 #: mcs-plugin/xfwm4_plugin.c:1542
 msgid "Delay before raising focused window :"
-msgstr "Odaklanmış pencere yükselte gecikmesi :"
+msgstr "Odaklanmış pencere yükselme gecikmesi :"
 
 #: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Slow"
@@ -236,25 +234,23 @@ msgstr "Büyük"
 
 #: mcs-plugin/xfwm4_plugin.c:1690
 msgid "Windows snapping"
-msgstr "Pencereler yerleştirme"
+msgstr "Pencere yerleştirme"
 
 #: mcs-plugin/xfwm4_plugin.c:1705
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Çalışma pencere taşırken çalışma alanlarını sarmala"
+msgstr "İşaretçi ekran kenarına geldiğinde çalışma alanını değiştir"
 
 #: mcs-plugin/xfwm4_plugin.c:1714
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Çalışma pencere taşırken çalışma alanlarını sarmala"
+msgstr "Bir pencereyi ekran dışına taşıyınca çalışma alanını değiştir"
 
 #: mcs-plugin/xfwm4_plugin.c:1726
-#, fuzzy
 msgid "Edge Resistance :"
-msgstr "Uzaklık :"
+msgstr "Kenar direnci :"
 
 #: mcs-plugin/xfwm4_plugin.c:1767
 msgid "Wrap workspaces"
-msgstr "Çalışma alanlarını sarmala"
+msgstr "Çalışma alanlarını değiştir"
 
 #: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when resizing"
@@ -262,12 +258,11 @@ msgstr "Pencereleri yeniden boyutlandırıken içeriğini göster"
 
 #: mcs-plugin/xfwm4_plugin.c:1790
 msgid "Display content of windows when moving"
-msgstr "Pencereleri hareket ettirirken içeriğin göster"
+msgstr "Pencereleri taşırken içeriğini göster"
 
 #: mcs-plugin/xfwm4_plugin.c:1797
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "Mat yeniden bayutlandırma"
+msgstr "Mat taşıma ve boyutlandırma"
 
 #: mcs-plugin/xfwm4_plugin.c:1808
 msgid "Action to perform when double clicking on title bar :"
@@ -279,40 +274,34 @@ msgstr "Çift tıklama eylemi"
 
 #: mcs-plugin/xfwm4_plugin.c:1819
 msgid "Advanced"
-msgstr ""
+msgstr "Gelişmiş"
 
 #: src/client.c:441
-#, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
 
 #: src/events.c:1290
-#, c-format
+
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: İşlem desteklenmiyor (henüz)\n"
 
 #: src/main.c:182
-#, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Parçalanma hatası"
 
 #: src/main.c:235
-#, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: Oturum yöneticisi olmadan çalışıyor"
 
 #: src/main.c:341
-#, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
 
 #: src/main.c:346
-#, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Öntanımlı dosyalarda eksik veri"
 
 #: src/main.c:373
-#, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Bilinmeyen bir hata oluştu"
 
@@ -353,9 +342,8 @@ msgid "Uns_tick"
 msgstr "Sab_it değil"
 
 #: src/menu.c:51
-#, fuzzy
 msgid "Send to..."
-msgstr "Geç ..."
+msgstr "Gönder..."
 
 #: src/menu.c:53
 msgid "_Close"
@@ -374,47 +362,38 @@ msgid "Restart"
 msgstr "Yeni_den Başlat"
 
 #: src/menu.c:163
-#, fuzzy, c-format
 msgid "Workspace %i"
-msgstr "Çalış_ma Alanı"
+msgstr "Çalışma alanı %i"
 
 #: src/menu.c:405
-#, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
 #: src/settings.c:282
-#, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Öntanımlı dosyalar unutulmuş"
 
 #: src/settings.c:507
-#, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
 #: src/settings.c:514
-#, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
 #: src/settings.c:558
-#, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
 
 #: src/settings.c:565
-#, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
 
 #: src/settings.c:755
-#, c-format
 msgid "%s: Missing values in defaults file"
-msgstr "%s: Öntanımlı dosyalarda değerler unutulmuşi"
+msgstr "%s: Öntanımlı dosyalarda değerler unutulmuş"
 
 #: src/settings.c:1090
-#, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
 
@@ -422,17 +401,3 @@ msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
 msgid "Switch to ..."
 msgstr "Geç ..."
 
-#~ msgid "_Move"
-#~ msgstr "T_aşı"
-
-#~ msgid "_Resize"
-#~ msgstr "Yeniden bo_yutlandır"
-
-#~ msgid "S_witch"
-#~ msgstr "G_eç"
-
-#~ msgid "Opaque move"
-#~ msgstr "Mat taşıma"
-
-#~ msgid "Misc."
-#~ msgstr "Muhtelif"
