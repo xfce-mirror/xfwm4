@@ -1,20 +1,20 @@
 /*
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; You may only use version 2 of the License,
- you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
  
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfce4 mcs plugin   - (c) 2002 Olivier Fourdan
- 
+        xfce4 mcs plugin   - (c) 2002-2004 Olivier Fourdan
+        Buttons DnD inspired by Michael Terry's implementation for xpad
  */
 
 #ifdef HAVE_CONFIG_H
@@ -45,24 +45,14 @@
 #include "xfwm4_plugin.h"
 #include "xfwm4_shortcuteditor.h"
 
+#define INDICATOR_SIZE 11
+
 typedef enum
 {
     DECORATION_THEMES = 0,
     KEYBINDING_THEMES = 1
 }
 ThemeType;
-
-enum
-{
-    TITLE = 0,
-    MENU,
-    STICK,
-    SHADE,
-    HIDE,
-    MAXIMIZE,
-    CLOSE,
-    END
-};
 
 typedef struct _TitleRadioButton TitleRadioButton;
 struct _TitleRadioButton
@@ -72,21 +62,6 @@ struct _TitleRadioButton
     GSList *radio_group;
 };
 
-typedef struct _TitleButton TitleButton;
-struct _TitleButton
-{
-    gchar *label;
-    gchar code;
-};
-
-typedef struct _TitleButtonData TitleButtonData;
-struct _TitleButtonData
-{
-    guint row;
-    guint col;
-    gpointer data;
-};
-
 typedef struct _MenuTmpl MenuTmpl;
 struct _MenuTmpl
 {
@@ -94,15 +69,23 @@ struct _MenuTmpl
     gchar *action;
 };
 
-TitleButton title_buttons[] = {
-    {N_("Title"), '|'},
-    {N_("Menu"), 'O'},
-    {N_("Stick"), 'T'},
-    {N_("Shade"), 'S'},
-    {N_("Hide"), 'H'},
-    {N_("Maximize"), 'M'},
-    {N_("Close"), 'C'}
+typedef struct _TitleButton TitleButton;
+struct _TitleButton
+{
+    gchar *key;
+    gchar *desc;
+    gchar *stock_icon;
 };
+
+static TitleButton title_button[] = {
+    { "O", N_("Menu"), "gtk-index" },
+    { "T", N_("Stick"), "gtk-add" },
+    { "S", N_("Shade"), "gtk-goto-top" },
+    { "H", N_("Hide"), "gtk-undo" },
+    { "M", N_("Maximize"), "gtk-zoom-100" },
+    { "C", N_("Close"), "gtk-close" }
+};
+
 
 MenuTmpl dbl_click_values[] = {
     {N_("Shade window"), "shade"},
@@ -150,7 +133,6 @@ static gboolean box_resize = FALSE;
 static int raise_delay;
 static int snap_width;
 static int wrap_resistance;
-static TitleRadioButton title_radio_buttons[END];
 
 static GList *decoration_theme_list = NULL;
 GList *keybinding_theme_list = NULL;
@@ -162,189 +144,494 @@ sensitive_cb (GtkWidget * widget, gpointer user_data)
 }
 
 static void
-cb_layout_destroy_button (GtkWidget * widget, gpointer user_data)
+delete_motion_indicator  (GtkWidget *widget)
 {
-    g_free (user_data);
+    GdkWindow *indicator = NULL;
+
+    indicator = g_object_get_data (G_OBJECT (widget), "indicator_window");
+    if (indicator)
+    {
+        gdk_window_destroy (indicator);
+        g_object_set_data (G_OBJECT (widget), "indicator_window", NULL);
+    }
+}
+
+static GdkWindow *
+create_motion_indicator (GtkWidget *widget, gint x, gint y, gint width, gint height)
+{
+    GdkWindow *win;
+    GdkWindowAttr attributes;
+    GdkBitmap *mask = NULL;
+    guint attributes_mask;
+    gint i, j = 1;
+    GdkGC *gc;
+    GdkColor col;
+
+    delete_motion_indicator (widget);
+    attributes.window_type = GDK_WINDOW_CHILD;
+    attributes.wclass = GDK_INPUT_OUTPUT;
+    attributes.visual = gtk_widget_get_visual (GTK_WIDGET (widget));
+    attributes.colormap = gtk_widget_get_colormap (GTK_WIDGET (widget));
+    attributes.event_mask = 0;
+    attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+    attributes.width = width;
+    attributes.height = height;
+    win = gdk_window_new (GDK_WINDOW (widget->window), &attributes, attributes_mask);
+    gdk_window_set_user_data (win, GTK_WIDGET (widget));
+    g_object_set_data (G_OBJECT (widget), "indicator_window", win);
+
+    mask = gdk_pixmap_new (win, width, height, 1);
+    gc = gdk_gc_new (mask);
+    col.pixel = 1;
+    gdk_gc_set_foreground (gc, &col);
+    gdk_draw_rectangle (mask, gc, TRUE, 0, 0, width, height);
+
+    col.pixel = 0;
+    gdk_gc_set_foreground (gc, &col);
+    for (i = 0; i < width; i++)
+    {
+	if (i == (width / 2 - 1))
+        {
+	    continue;
+	}
+	gdk_draw_line (mask, gc, i, j, i, height - j);
+	if (i < (width / 2 - 1))
+        {
+	    j++;
+	}
+        else
+        {
+	    j--;
+	}
+    }
+    g_object_unref (gc);
+    gdk_window_shape_combine_mask (win, mask, 0, 0);
+    if (mask) g_object_unref (mask);
+
+    gdk_window_move (win, x, y);
+    gdk_window_show (win);
+    gdk_window_raise (win);
+    
+    return win;
+}
+
+GdkPixbuf *
+create_icon_from_widget (GtkWidget *widget)
+{
+    GdkPixbuf *dest, *src;
+
+    dest = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 
+                             widget->allocation.width, 
+                             widget->allocation.height);
+
+    src = gdk_pixbuf_get_from_drawable (NULL, GDK_DRAWABLE (widget->window), NULL, 
+                                        widget->allocation.x, widget->allocation.y, 0, 0, 
+                                        widget->allocation.width, widget->allocation.height);
+    gdk_pixbuf_copy_area (src, 0, 0, widget->allocation.width, widget->allocation.height, dest, 0, 0);
+
+    g_object_unref (G_OBJECT (src));
+
+    return dest;
+}
+
+
+static void
+button_drag_begin (GtkWidget *widget, GdkDragContext *context, gpointer data)
+{
+    GdkPixbuf *pixbuf;
+    
+    pixbuf = create_icon_from_widget (widget);
+    gtk_drag_source_set_icon_pixbuf (widget, pixbuf);
+    g_object_unref (G_OBJECT (pixbuf));
+    gtk_widget_hide (widget);
 }
 
 static void
-cb_layout_value_changed (GtkWidget * widget, gpointer user_data)
+button_drag_end (GtkWidget *widget, GdkDragContext *context, gpointer data)
 {
-    static guint recursive = 0;
-    guint i, j, k, l, m = 0;
-    guint col, row;
-    TitleButtonData *callback_data = (TitleButtonData *) user_data;
-    McsPlugin *mcs_plugin = (McsPlugin *) callback_data->data;
-    gchar result[STATES];
+    gtk_widget_show (GTK_WIDGET(widget));
+}
 
-    if (recursive != 0)
-    {
-        return;
-    }
-    if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
-    {
-        return;
-    }
-    ++recursive;
-    col = callback_data->col;
-    row = callback_data->row;
+static gboolean
+signal_blocker (GtkWidget *widget, gpointer data)
+{
+    return TRUE;
+}
 
-    for (i = TITLE; i < END; i++)
+static gboolean
+layout_drag_motion (GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time, gpointer user_data)
+{
+    GtkWidget *child;
+    GList *children, *item;
+    gint posx, posy, delta;
+    gint ix, iy, iwidth, iheight;
+    GdkWindow *indicator = NULL;
+    
+    g_return_val_if_fail (GTK_IS_WIDGET (user_data), FALSE);
+    
+    children = gtk_container_get_children (GTK_CONTAINER (user_data));
+    item = children;
+    child = GTK_WIDGET(item->data);
+    delta = widget->allocation.x;
+    posx = child->allocation.x;
+    posy = child->allocation.y;
+
+    while (item)
     {
-        if ((i != row) && (title_radio_buttons[i].active == col))
+        gint total_x;
+        
+        child = GTK_WIDGET(item->data);
+        if (GTK_WIDGET_VISIBLE (child))
         {
-            for (j = 0; j < STATES; j++)
+            total_x = child->allocation.x + (child->allocation.width / 2) - delta;   
+            posx = child->allocation.x;
+            if (x < total_x)
             {
-                if ((i == TITLE) && (title_radio_buttons[row].active == STATE_HIDDEN))
-                {
-                    gboolean in_use;
+                break;
+            } 
 
-                    in_use = TRUE;
-                    for (l = 0; (l < STATE_HIDDEN) && in_use; l++)
-                    {
-                        in_use = FALSE;
-                        for (k = TITLE; k < END; k++)
-                        {
-                            if (title_radio_buttons[k].active == l)
-                            {
-                                in_use = TRUE;
-                            }
-                        }
-                        if (!in_use)
-                        {
-                            m = l;
-                        }
-                    }
-                    if (!in_use)
-                    {
-                        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (title_radio_buttons[TITLE].radio_buttons[m]), TRUE);
-                        title_radio_buttons[TITLE].active = m;
-                        break;
-                    }
-                }
-                else if ((col < STATE_HIDDEN) && title_radio_buttons[row].active == j)
-                {
-                    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (title_radio_buttons[i].radio_buttons[j]), TRUE);
-                    title_radio_buttons[i].active = j;
-                    break;
-                }
+            posx = child->allocation.x + child->allocation.width;
+        }
+        item = g_list_next (item);
+    }
+    g_list_free (children);
+    
+    ix = posx - (INDICATOR_SIZE / 2);
+    iy = posy - (INDICATOR_SIZE / 2);
+    iwidth = INDICATOR_SIZE;
+    iheight = child->allocation.height + INDICATOR_SIZE;
+
+    indicator = g_object_get_data (G_OBJECT (user_data), "indicator_window");
+    if (!indicator)
+    {
+        create_motion_indicator (GTK_WIDGET (user_data), ix, iy, iwidth, iheight);
+    }
+    else
+    {
+        gdk_window_move (indicator, ix, iy);
+    }
+    
+    return FALSE;
+}       
+
+static gboolean 
+layout_drag_leave (GtkWidget *widget, GdkDragContext *context, guint time, gpointer user_data)
+{
+    g_return_val_if_fail (GTK_IS_WIDGET (user_data), FALSE);
+
+    delete_motion_indicator (GTK_WIDGET (user_data));
+    
+    return FALSE;
+}
+
+static void
+data_get (GtkWidget * widget, GdkDragContext * drag_context,
+	  GtkSelectionData * data, guint info, guint time, gpointer user_data)
+{
+   gtk_selection_data_set (data, gdk_atom_intern ("_XFWM4_BUTTON", FALSE), 8,
+			   (const guchar *) "", 0);
+}
+
+static gchar *
+layout_get_semantic (GtkWidget *container)
+{
+    GList *children, *item;
+    gchar *sem;
+    gint p = 0;
+    
+    children = gtk_container_get_children (GTK_CONTAINER (container));
+    sem = g_new0(gchar, 8);
+    item = children;
+    while (item)
+    {
+        GtkWidget *child;
+        gchar *key;
+
+        child = GTK_WIDGET(item->data);
+        key = g_object_get_data (G_OBJECT (child), "key_char");
+        if (key)
+        {
+            sem[p++] = *key;
+            if (p >= 7)
+            {
+               g_list_free (children);
+               return (sem);
             }
         }
+        item = g_list_next (item);
     }
-    title_radio_buttons[row].active = col;
+    g_list_free (children);
+    return (sem);
+}
 
-    j = 0;
-
-    for (l = 0; l < STATE_HIDDEN; l++)
+static void 
+layout_reorder_buttons (GtkWidget *container, GtkWidget *widget, gint drop_x)
+{
+    GList *children, *item;
+    gint position, delta;
+    
+    children = gtk_container_get_children (GTK_CONTAINER (container));
+    item = children;
+    position = 0;
+    delta = container->allocation.x;
+        
+    while (item)
     {
-        for (k = TITLE; k < END; k++)
+        GtkWidget *child;
+        gint total_x;
+        
+        child = GTK_WIDGET(item->data);
+        if (GTK_WIDGET_VISIBLE (child))
         {
-            if (title_radio_buttons[k].active == l)
+            total_x = child->allocation.x + (child->allocation.width / 2) - delta;   
+            if (drop_x <= total_x)
             {
-                result[j++] = title_buttons[k].code;
+                gtk_box_reorder_child (GTK_BOX (container), widget, position);
+                g_list_free (children);
+                return;
+            }
+            position++;
+        } 
+        item = g_list_next (item);
+    }
+    gtk_box_reorder_child (GTK_BOX (container), widget, position);
+    g_list_free (children);
+}
+
+static void 
+layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
+{
+    GList *children, *item;
+    GtkWidget *title;
+    gchar *sem;
+        
+    /* 
+     * 1) Block redraw on boxes 
+     */
+    gtk_widget_set_app_paintable (layout, FALSE);
+    gtk_widget_set_app_paintable (hidden, FALSE);
+
+    /* 
+     * 2) Send all buttons but the title back to the hidden frame 
+     */
+    children = gtk_container_get_children (GTK_CONTAINER (layout));
+    title = NULL;
+    item = children;
+    while (item)
+    {
+        GtkWidget *child;
+        gchar *key;
+
+        child = GTK_WIDGET(item->data);
+        key = g_object_get_data (G_OBJECT (child), "key_char");
+        if (*key != '|')
+        {
+            gtk_widget_ref (child);
+            gtk_container_remove (GTK_CONTAINER (layout), child);
+            gtk_box_pack_start (GTK_BOX (hidden), child, FALSE, FALSE, 0);
+            gtk_widget_unref (child);
+        }
+        else
+        {
+            title = child;
+        }
+        item = g_list_next (item);
+    }    
+    g_list_free (children);
+
+    /* 
+     * 3) Move choosen buttons to the layout box in correct order
+     */
+    children = gtk_container_get_children (GTK_CONTAINER (hidden));
+    sem = semantic;
+    while (*sem)    
+    {
+        item = children;
+        if (*sem != '|')
+        {
+            while (item)
+            {
+                GtkWidget *child;
+                gchar *key;
+
+                child = GTK_WIDGET(item->data);
+                key = g_object_get_data (G_OBJECT (child), "key_char");
+                if (*key == *sem)
+                {
+                    gtk_widget_ref (child);
+                    gtk_container_remove (GTK_CONTAINER (hidden), child);
+                    gtk_box_pack_start (GTK_BOX (layout), child, FALSE, FALSE, 0);
+                    gtk_widget_unref (child);
+                }
+                item = g_list_next (item);
             }
         }
+        else if (title)
+        {
+            gtk_widget_ref (title);
+            gtk_container_remove (GTK_CONTAINER (layout), title);
+            gtk_box_pack_start (GTK_BOX (layout), title, FALSE, FALSE, 0);
+            gtk_widget_unref (title);
+        }
+
+        sem++;
     }
-    result[j++] = '\0';
+    g_list_free (children);
+
+    /* 
+     * 4) Unblock redraw on boxes 
+     */
+    gtk_widget_set_app_paintable (layout, TRUE);
+    gtk_widget_set_app_paintable (hidden, TRUE);
+}
+
+static void
+hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
+		     gint x, gint y, GtkSelectionData * data, guint info,
+		     guint time, gpointer user_data)
+{
+    GtkWidget *source = gtk_drag_get_source_widget (drag_context);
+    GtkWidget *parent = gtk_widget_get_parent (source);
+    McsPlugin *mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
+    
+    g_return_if_fail (GTK_IS_WIDGET (user_data));
+
+    gtk_widget_ref (source);
+    gtk_container_remove (GTK_CONTAINER (parent), source);
+    gtk_box_pack_start (GTK_BOX (user_data), source, FALSE, FALSE, 0);
+    gtk_widget_unref (source);
+
+    if (current_layout)
+    {
+        g_free (current_layout);
+    }
+    
+    current_layout = layout_get_semantic (parent);
+    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL, current_layout);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    write_options (mcs_plugin);
+}
+
+static void
+layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
+		      gint x, gint y, GtkSelectionData * data, guint info,
+		      guint time, gpointer user_data)
+{
+    GtkWidget *source = gtk_drag_get_source_widget (drag_context);
+    GtkWidget *parent = gtk_widget_get_parent (source);
+    McsPlugin *mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
+
+    g_return_if_fail (GTK_IS_WIDGET (user_data));
+
+
+    gtk_widget_set_app_paintable (GTK_WIDGET(user_data), FALSE);
+    gtk_widget_ref (source);
+    gtk_container_remove (GTK_CONTAINER (parent), source);
+    gtk_box_pack_start (GTK_BOX (user_data), source, FALSE, FALSE, 0);
+    gtk_widget_unref (source);
+    delete_motion_indicator (GTK_WIDGET(user_data));
+    layout_reorder_buttons (user_data, source, x);
+    gtk_widget_set_app_paintable (GTK_WIDGET(user_data), TRUE);
 
     if (current_layout)
     {
         g_free (current_layout);
     }
 
-    current_layout = g_strdup (result);
+    current_layout = layout_get_semantic (user_data);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL, current_layout);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
     write_options (mcs_plugin);
-
-    --recursive;
 }
 
 static GtkWidget *
 create_layout_buttons (gchar * layout, gpointer user_data)
 {
-    GtkWidget *table;
-    GtkWidget *label_row;
-    GtkWidget *radio_button;
-    GSList *radio_button_group;
-    TitleButtonData *callback_data;
-    gchar *temp;
-    guint i, j, len;
-    gboolean visible;
+    GtkWidget *vbox;
+    GtkWidget *layout_frame;
+    GtkWidget *hidden_frame;
+    GtkWidget *layout_box;
+    GtkWidget *hidden_box;
+    GtkWidget *title;
+    GtkWidget *label;
+    GtkTargetEntry entry;
+    GtkTooltips *tooltips;
+    gint i;
 
-    g_return_val_if_fail (layout != NULL, NULL);
-    len = strlen (layout);
-    g_return_val_if_fail (len > 0, NULL);
+    entry.target = "_XFWM4_BUTTON";
+    entry.flags = GTK_TARGET_SAME_APP;
+    entry.info = 2;
 
-    table = gtk_table_new (8, 9, FALSE);
-    gtk_widget_show (table);
-    gtk_container_set_border_width (GTK_CONTAINER (table), BORDER);
+    tooltips = gtk_tooltips_new ();
 
-    /*    label = gtk_label_new(_("Layout :"));
-       gtk_widget_show(label);
-       gtk_table_attach(GTK_TABLE(table), label, 0, 9, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-       gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
-       gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
-     */
-    for (i = TITLE; i < END; i++)
+    vbox = gtk_vbox_new (TRUE, 0);
+ 
+    label = gtk_label_new (_("Click and drag buttons to change the layout"));
+    gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+    gtk_widget_show (label);
+
+    layout_frame = gtk_frame_new (_("Active"));
+    gtk_box_pack_start (GTK_BOX (vbox), layout_frame, TRUE, TRUE, 0);
+    gtk_widget_show (layout_frame);
+
+    layout_box = gtk_hbox_new (FALSE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (layout_box), 5);
+    gtk_container_add (GTK_CONTAINER (layout_frame), layout_box);
+    g_object_set_data (G_OBJECT (layout_box), "mcs", user_data);
+    g_object_set_data (G_OBJECT (layout_box), "indicator_window", NULL);
+    gtk_widget_show (layout_box);
+
+    title = gtk_button_new_with_label (_("Title"));
+    gtk_tooltips_set_tip (tooltips, title, _("The window title, it cannot be removed"), NULL);
+    g_object_set_data (G_OBJECT (title), "key_char", "|");
+    g_signal_connect (title, "button_press_event", G_CALLBACK (signal_blocker), NULL);
+    g_signal_connect (title, "enter_notify_event", G_CALLBACK (signal_blocker), NULL);
+    g_signal_connect (title, "focus", G_CALLBACK (signal_blocker), NULL);
+    gtk_box_pack_start (GTK_BOX (layout_box), title, FALSE, FALSE, 0);
+    gtk_widget_show (title);
+
+    hidden_frame = gtk_frame_new (_("Hidden"));
+    gtk_box_pack_start (GTK_BOX (vbox), hidden_frame, TRUE, TRUE, 0);
+    gtk_widget_show (hidden_frame);
+
+    hidden_box = gtk_hbox_new (FALSE, 5);
+    gtk_container_set_border_width (GTK_CONTAINER (hidden_box), 5);
+    gtk_container_add (GTK_CONTAINER (hidden_frame), hidden_box);
+    g_object_set_data (G_OBJECT (hidden_box), "mcs", user_data);
+    gtk_widget_show (hidden_box);
+    
+    for (i = 0; i < 6; i++)
     {
-        temp = g_strdup_printf ("<small><i>%s :</i></small> ", _(title_buttons[i].label));
-        label_row = gtk_label_new (temp);
-        gtk_widget_show (label_row);
-        gtk_table_attach (GTK_TABLE (table), label_row, 0, 1, i + 1, i + 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-        gtk_label_set_use_markup (GTK_LABEL (label_row), TRUE);
-        gtk_label_set_justify (GTK_LABEL (label_row), GTK_JUSTIFY_LEFT);
-        gtk_misc_set_alignment (GTK_MISC (label_row), 0, 0.5);
-
-        radio_button_group = NULL;
-        visible = FALSE;
-
-        for (j = 0; j < STATES - 1; j++)
-        {
-            radio_button = gtk_radio_button_new (NULL);
-            gtk_widget_show (radio_button);
-            gtk_table_attach (GTK_TABLE (table), radio_button, j + 1, j + 2, i + 1, i + 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-            gtk_radio_button_set_group (GTK_RADIO_BUTTON (radio_button), radio_button_group);
-            radio_button_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radio_button));
-            title_radio_buttons[i].radio_buttons[j] = radio_button;
-
-            if ((j < len) && (layout[j] == title_buttons[i].code))
-            {
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio_button), TRUE);
-                visible = TRUE;
-                title_radio_buttons[i].active = j;
-            }
-            callback_data = g_new (TitleButtonData, 1);
-            callback_data->row = i;
-            callback_data->col = j;
-            callback_data->data = user_data;
-            g_signal_connect (G_OBJECT (radio_button), "toggled", G_CALLBACK (cb_layout_value_changed), callback_data);
-            g_signal_connect_after (G_OBJECT (radio_button), "destroy", G_CALLBACK (cb_layout_destroy_button), callback_data);
-        }
-
-        if (i != TITLE)
-        {
-            radio_button = gtk_radio_button_new_with_mnemonic (NULL, _("Hidden"));
-            gtk_widget_show (radio_button);
-            gtk_table_attach (GTK_TABLE (table), radio_button, STATES, STATES + 1, i + 1, i + 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-            gtk_radio_button_set_group (GTK_RADIO_BUTTON (radio_button), radio_button_group);
-            radio_button_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radio_button));
-            title_radio_buttons[i].radio_buttons[STATES - 1] = radio_button;
-
-            if (!visible)
-            {
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio_button), TRUE);
-                title_radio_buttons[i].active = (STATES - 1);
-            }
-            callback_data = g_new (TitleButtonData, 1);
-            callback_data->row = i;
-            callback_data->col = STATES - 1;
-            callback_data->data = user_data;
-            g_signal_connect (G_OBJECT (radio_button), "toggled", G_CALLBACK (cb_layout_value_changed), callback_data);
-            g_signal_connect_after (G_OBJECT (radio_button), "destroy", G_CALLBACK (cb_layout_destroy_button), callback_data);
-        }
+        GtkWidget *button;
+        GtkWidget *image;
+        
+        image = gtk_image_new_from_stock (title_button[i].stock_icon, GTK_ICON_SIZE_MENU);
+        button = gtk_button_new ();
+      	gtk_container_add (GTK_CONTAINER (button), image);
+	gtk_tooltips_set_tip (tooltips, button, title_button[i].desc, title_button[i].desc);
+        gtk_drag_source_set (button, GDK_BUTTON1_MASK, &entry, 1, GDK_ACTION_MOVE);
+        g_signal_connect (button, "drag-data-get", G_CALLBACK (data_get), NULL);
+        g_signal_connect (button, "drag_begin", G_CALLBACK (button_drag_begin), NULL);
+        g_signal_connect (button, "drag_end", G_CALLBACK (button_drag_end), NULL);
+        g_signal_connect (button, "button_press_event", G_CALLBACK (signal_blocker), NULL);
+        g_signal_connect (button, "enter_notify_event", G_CALLBACK (signal_blocker), NULL);
+        g_signal_connect (button, "focus", G_CALLBACK (signal_blocker), NULL);
+        g_object_set_data (G_OBJECT (button), "key_char", title_button[i].key);
+        gtk_box_pack_start (GTK_BOX (hidden_box), button, FALSE, FALSE, 0);
+        gtk_widget_show_all (button);
     }
-    return (table);
+
+    layout_set_value (layout_box, hidden_box, layout);
+    gtk_drag_dest_set (hidden_frame, GTK_DEST_DEFAULT_ALL, &entry, 1, GDK_ACTION_MOVE);
+    gtk_drag_dest_set (layout_frame, GTK_DEST_DEFAULT_ALL, &entry, 1, GDK_ACTION_MOVE);
+
+    g_signal_connect (hidden_frame, "drag_data_received", G_CALLBACK (hidden_data_receive), hidden_box);
+    g_signal_connect (layout_frame, "drag_data_received", G_CALLBACK (layout_data_receive), layout_box);
+    g_signal_connect (layout_frame, "drag_motion", G_CALLBACK (layout_drag_motion), layout_box);
+    g_signal_connect (layout_frame, "drag_leave",  G_CALLBACK (layout_drag_leave), layout_box);
+
+    gtk_widget_show (vbox);
+    return (vbox);
 }
 
 static GtkWidget *
@@ -1133,7 +1420,7 @@ create_dialog (McsPlugin * mcs_plugin)
     dialog->scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (dialog->scrolledwindow1);
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow1), BORDER);
-    gtk_box_pack_start (GTK_BOX (hbox), dialog->scrolledwindow1, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), dialog->scrolledwindow1, FALSE, TRUE, 0);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow1), GTK_SHADOW_IN);
 
     dialog->treeview1 = gtk_tree_view_new ();
@@ -1168,7 +1455,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->frame_layout = xfce_framebox_new (_("Button layout"), TRUE);
     gtk_widget_show (dialog->frame_layout);
-    gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_layout, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_layout, TRUE, FALSE, 0);
 
     xfce_framebox_add (XFCE_FRAMEBOX (dialog->frame_layout), create_layout_buttons (current_layout, mcs_plugin));
 
@@ -1292,7 +1579,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
-    dialog->focus_new_check = gtk_check_button_new_with_mnemonic (_("Automatically give focus to \nnewly created windows"));
+    dialog->focus_new_check = gtk_check_button_new_with_mnemonic (_("Automatically give focus to newly created windows"));
     gtk_widget_show (dialog->focus_new_check);
     xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->focus_new_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_new_check), focus_new);
@@ -1305,7 +1592,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox4);
     xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox4);
 
-    dialog->raise_on_focus_check = gtk_check_button_new_with_mnemonic (_("Automatically raise windows \nwhen they receive focus"));
+    dialog->raise_on_focus_check = gtk_check_button_new_with_mnemonic (_("Automatically raise windows when they receive focus"));
     gtk_widget_show (dialog->raise_on_focus_check);
     gtk_box_pack_start (GTK_BOX (vbox4), dialog->raise_on_focus_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->raise_on_focus_check), focus_raise);
@@ -1347,7 +1634,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
-    dialog->click_raise_check = gtk_check_button_new_with_mnemonic (_("Raise window when clicking inside\napplication window"));
+    dialog->click_raise_check = gtk_check_button_new_with_mnemonic (_("Raise window when clicking inside application window"));
     gtk_widget_show (dialog->click_raise_check);
     xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->click_raise_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->click_raise_check), raise_on_click);
