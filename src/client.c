@@ -1114,9 +1114,9 @@ clientFree (Client * c)
     {
         clientClearLastRaise (c->screen_info);
     }
-    if (clientGetLastGrab () == c)
+    if (clientGetLastUngrab () == c)
     {
-        clientClearLastGrab ();
+        clientClearLastUngrab ();
     }
     if (c->blink_timeout_id)
     {
@@ -1753,7 +1753,7 @@ clientUnframe (Client * c, gboolean remap)
     myDisplayGrabServer (display_info);
     gdk_error_trap_push ();
     clientUngrabKeys (c);
-    clientGrabButtons (c);
+    clientUngrabButtons (c);
     compositorRemoveWindow (display_info, c->frame);
     XUnmapWindow (display_info->dpy, c->frame);
     clientGravitate (c, REMOVE);

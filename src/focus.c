@@ -561,7 +561,7 @@ clientGrabMouseButtonForAll (ScreenInfo *screen_info)
     {
         clientGrabMouseButton (c);
     }
-    clientClearLastGrab ();
+    clientClearLastUngrab ();
 }
 
 void
@@ -577,7 +577,7 @@ clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
     {
         clientUngrabMouseButton (c);
     }
-    clientClearLastGrab ();
+    clientClearLastUngrab ();
 }
 
 void
@@ -611,13 +611,13 @@ clientPassGrabMouseButton (Client * c)
 }
 
 Client *
-clientGetLastGrab (void)
+clientGetLastUngrab (void)
 {
     return last_ungrab;
 }
 
 void
-clientClearLastGrab (void)
+clientClearLastUngrab (void)
 {
     last_ungrab = NULL;
 }
