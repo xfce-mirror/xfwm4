@@ -1492,6 +1492,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
+
+
 #ifdef HAVE_RENDER
     if (display_info->have_render)
     {
@@ -1603,6 +1605,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
+    c->fullscreen_old_layer = c->win_layer;
 
     /* Reload from session */
     if (sessionMatchWinToSM (c))
