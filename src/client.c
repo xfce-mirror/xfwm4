@@ -2688,19 +2688,21 @@ void clientMove(Client * c, XEvent * e)
         passdata.mx = e->xkey.x_root;
         passdata.my = e->xkey.y_root;
         g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
     }
     else if (e->type == ButtonPress)
     {
         timestamp = e->xbutton.time;
         passdata.mx = e->xbutton.x_root;
         passdata.my = e->xbutton.y_root;
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, timestamp);
     }
     else
     {
         timestamp = CurrentTime;
         getMouseXY(root, &passdata.mx, &passdata.my);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
