@@ -64,6 +64,7 @@ xfwm4_CFLAGS =								\
 	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXPM_CFLAGS@							\
+	@RENDER_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
 	@COMPOSITOR_CFLAGS@						\
 	-I$(top_builddir)/common					\
@@ -77,6 +78,7 @@ xfwm4_LDADD =								\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXPM_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
+	@RENDER_LIBS@							\
 	@COMPOSITOR_LIBS@						\
 	@RANDR_LIBS@
 

@@ -63,8 +63,22 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
 XDT_CHECK_PACKAGE(LIBXFCEGUI4, libxfcegui4-1.0, 4.2.0)
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
-XDT_CHECK_PACKAGE(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,
-  [startup-notification], [startup notification library], [yes])
+dnl
+dnl Startup notification support
+dnl
+XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
+			   [libstartup-notification-1.0], [0.5],
+			   [startup-notification], 
+			   [startup notification library], [yes])
+
+dnl
+dnl Render support
+dnl
+if $PKG_CONFIG --exists xrender 2> /dev/null; then
+  PKG_CHECK_MODULES(RENDER, xrender)
+  have_render="yes"
+  AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
+fi
 
 dnl
 dnl RANDR extension
@@ -76,14 +90,16 @@ AC_HELP_STRING([--disable-randr], [don't try to use the randr extension]),
   [], [enable_randr=yes])
 RANDR_LIBS=
 if test x"$enable_randr" = x"yes"; then
-  ac_CFLAGS="$CFLAGS"
-  CFLAGS="$CFLAGS $LIBX11_CFLAGS"
-  AC_CHECK_LIB(Xrandr, XRRUpdateConfiguration,
-               [AC_CHECK_HEADER(X11/extensions/Xrandr.h,
-                                RANDR_LIBS="-lXrandr -lXrender",,
-                                [#include <X11/Xlib.h>])],, 
-                $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
-  CFLAGS="$ac_CFLAGS"
+  if test x"$have_render" = x"yes"; then
+    ac_CFLAGS="$CFLAGS"
+    CFLAGS="$CFLAGS $LIBX11_CFLAGS"
+    AC_CHECK_LIB(Xrandr, XRRUpdateConfiguration,
+        	 [AC_CHECK_HEADER(X11/extensions/Xrandr.h,
+                                  RANDR_LIBS="-lXrandr -lXrender",,
+                                  [#include <X11/Xlib.h>])],, 
+                  $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
+    CFLAGS="$ac_CFLAGS"
+  fi
 fi
 AC_SUBST([RANDR_LIBS])
 
@@ -97,11 +113,13 @@ AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4 (default)]),
   [], [enable_compositor=no])
 
 if test x"$enable_compositor" = x"yes"; then
+  if test x"$have_render" = x"yes"; then
     if $PKG_CONFIG --exists xcomposite xfixes xdamage xrender 2> /dev/null; then
-        PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 1.0 xfixes xdamage xrender)
-        AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
-        ENABLE_COMPOSITOR="--enable-compositor"
+      PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 1.0 xfixes xdamage)
+      AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
+      ENABLE_COMPOSITOR="--enable-compositor"
     fi
+  fi
 fi
 AC_SUBST(ENABLE_COMPOSITOR)
 

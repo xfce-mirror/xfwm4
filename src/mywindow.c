@@ -32,7 +32,7 @@
 #include "mypixmap.h"
 #include "mywindow.h"
 
-#ifdef HAVE_COMPOSITOR
+#ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
 #endif
 
@@ -228,7 +228,7 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
     {
         XSetWindowBackgroundPixmap (win->dpy, win->window, pix->pixmap);
     }
-#ifdef HAVE_COMPOSITOR
+#ifdef HAVE_RENDER
     else
     {
         Picture psrc, pdst;
