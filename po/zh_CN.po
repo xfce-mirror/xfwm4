@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-10 06:26+0100\n"
-"PO-Revision-Date: 2004-09-28 01:05-0700\n"
+"POT-Creation-Date: 2005-01-09 13:59+0100\n"
+"PO-Revision-Date: 2005-01-24 17:24+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,11 +58,11 @@ msgstr "边缘"
 msgid "Change name"
 msgstr "改变名称"
 
-#: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:482
-#: mcs-plugin/xfwm4_shortcuteditor.c:491 mcs-plugin/xfwm4_shortcuteditor.c:500
-#: mcs-plugin/xfwm4_shortcuteditor.c:509 mcs-plugin/xfwm4_shortcuteditor.c:518
-#: mcs-plugin/xfwm4_shortcuteditor.c:527 mcs-plugin/xfwm4_shortcuteditor.c:536
-#: mcs-plugin/xfwm4_shortcuteditor.c:545 mcs-plugin/xfwm4_shortcuteditor.c:554
+#: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:486
+#: mcs-plugin/xfwm4_shortcuteditor.c:495 mcs-plugin/xfwm4_shortcuteditor.c:504
+#: mcs-plugin/xfwm4_shortcuteditor.c:513 mcs-plugin/xfwm4_shortcuteditor.c:522
+#: mcs-plugin/xfwm4_shortcuteditor.c:531 mcs-plugin/xfwm4_shortcuteditor.c:540
+#: mcs-plugin/xfwm4_shortcuteditor.c:549 mcs-plugin/xfwm4_shortcuteditor.c:558
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %i"
@@ -108,15 +108,15 @@ msgstr "最大化"
 msgid "Close"
 msgstr "关闭"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:371
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Shade window"
 msgstr "卷起窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:366
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Hide window"
 msgstr "隐藏窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:351
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window"
 msgstr "最大化窗口"
 
@@ -136,384 +136,376 @@ msgstr "中间"
 msgid "Right"
 msgstr "右侧"
 
-#: mcs-plugin/xfwm4_plugin.c:566
+#: mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
 msgstr "点击并拖拽按钮来改变布局"
 
-#: mcs-plugin/xfwm4_plugin.c:571
+#: mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
 msgstr "激活"
 
-#: mcs-plugin/xfwm4_plugin.c:582
+#: mcs-plugin/xfwm4_plugin.c:580
 msgid "Title"
 msgstr "标题"
 
-#: mcs-plugin/xfwm4_plugin.c:583
+#: mcs-plugin/xfwm4_plugin.c:581
 msgid "The window title, it cannot be removed"
 msgstr "窗口标题，不能删除"
 
-#: mcs-plugin/xfwm4_plugin.c:591
+#: mcs-plugin/xfwm4_plugin.c:589
 msgid "Hidden"
 msgstr "隐藏"
 
-#: mcs-plugin/xfwm4_plugin.c:1313
+#: mcs-plugin/xfwm4_plugin.c:1301
 msgid "Font Selection Dialog"
 msgstr "字体选择对话框"
 
-#: mcs-plugin/xfwm4_plugin.c:1384 mcs-plugin/xfwm4_plugin.c:1903
+#: mcs-plugin/xfwm4_plugin.c:1372 mcs-plugin/xfwm4_plugin.c:1891
 msgid "Window Manager"
 msgstr "窗口管理器"
 
-#: mcs-plugin/xfwm4_plugin.c:1397
+#: mcs-plugin/xfwm4_plugin.c:1385
 msgid "Window Manager Preferences"
 msgstr "窗口管理器首选项"
 
-#: mcs-plugin/xfwm4_plugin.c:1426
+#: mcs-plugin/xfwm4_plugin.c:1414
 msgid "Title font"
 msgstr "标题字体"
 
-#: mcs-plugin/xfwm4_plugin.c:1439
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Title Alignment"
 msgstr "标题对齐方式"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1445
+#: mcs-plugin/xfwm4_plugin.c:1433
 msgid "Text alignment inside title bar :"
 msgstr "标题拦内的文本对齐方式 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1447
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Button layout"
 msgstr "按钮布局"
 
-#: mcs-plugin/xfwm4_plugin.c:1453
+#: mcs-plugin/xfwm4_plugin.c:1441
 msgid "Style"
 msgstr "风格"
 
-#: mcs-plugin/xfwm4_plugin.c:1491
+#: mcs-plugin/xfwm4_plugin.c:1479
 msgid "Window shortcuts"
 msgstr "窗口快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1544
+#: mcs-plugin/xfwm4_plugin.c:1499 mcs-plugin/xfwm4_plugin.c:1532
 msgid "Command"
 msgstr "命令"
 
-#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1548
+#: mcs-plugin/xfwm4_plugin.c:1504 mcs-plugin/xfwm4_plugin.c:1536
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1524
+#: mcs-plugin/xfwm4_plugin.c:1512
 msgid "Command shortcuts"
 msgstr "命令快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1563
+#: mcs-plugin/xfwm4_plugin.c:1551
 msgid "Keyboard"
 msgstr "键盘"
 
-#: mcs-plugin/xfwm4_plugin.c:1574
+#: mcs-plugin/xfwm4_plugin.c:1562
 msgid "Focus model"
 msgstr "焦点模式"
 
-#: mcs-plugin/xfwm4_plugin.c:1582
+#: mcs-plugin/xfwm4_plugin.c:1570
 msgid "Click to focus"
 msgstr "点击获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1589
+#: mcs-plugin/xfwm4_plugin.c:1577
 msgid "Focus follows mouse"
 msgstr "焦点跟随鼠标"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1584
 msgid "New window focus"
 msgstr "新窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1600
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Automatically give focus to newly created windows"
 msgstr "自动为新建立窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1605
+#: mcs-plugin/xfwm4_plugin.c:1593
 msgid "Raise on focus"
 msgstr "获得焦点时置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1613
+#: mcs-plugin/xfwm4_plugin.c:1601
 msgid "Automatically raise windows when they receive focus"
 msgstr "当窗口获得焦点时自动将该窗口置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1623
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Delay before raising focused window :"
 msgstr "置顶焦点所在窗口前的延时 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1629
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Slow"
 msgstr "慢"
 
-#: mcs-plugin/xfwm4_plugin.c:1635
+#: mcs-plugin/xfwm4_plugin.c:1623
 msgid "Fast"
 msgstr "快"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1639
 msgid "Raise on click"
 msgstr "点击置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1655
+#: mcs-plugin/xfwm4_plugin.c:1643
 msgid "Raise window when clicking inside application window"
 msgstr "当在窗口客户区点击时将其置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1660
+#: mcs-plugin/xfwm4_plugin.c:1648
 msgid "Focus"
 msgstr "焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1670
+#: mcs-plugin/xfwm4_plugin.c:1658
 msgid "Windows snapping"
 msgstr "窗口吸引"
 
-#: mcs-plugin/xfwm4_plugin.c:1678
+#: mcs-plugin/xfwm4_plugin.c:1666
 msgid "Snap windows to screen border"
 msgstr "在屏幕边缘吸引窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:1683
+#: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Snap windows to other windows"
 msgstr "将窗口吸引到其它窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:1693
+#: mcs-plugin/xfwm4_plugin.c:1681
 msgid "Distance :"
 msgstr "距离 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1699 mcs-plugin/xfwm4_plugin.c:1749
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Small"
 msgstr "小"
 
-#: mcs-plugin/xfwm4_plugin.c:1705 mcs-plugin/xfwm4_plugin.c:1755
+#: mcs-plugin/xfwm4_plugin.c:1693 mcs-plugin/xfwm4_plugin.c:1743
 msgid "Wide"
 msgstr "宽"
 
-#: mcs-plugin/xfwm4_plugin.c:1720
+#: mcs-plugin/xfwm4_plugin.c:1708
 msgid "Wrap workspaces"
 msgstr "回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1728
+#: mcs-plugin/xfwm4_plugin.c:1716
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "鼠标到达屏幕边缘时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1733
+#: mcs-plugin/xfwm4_plugin.c:1721
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "拖拽窗口离开屏幕时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1743
+#: mcs-plugin/xfwm4_plugin.c:1731
 msgid "Edge Resistance :"
 msgstr "屏幕边缘阻力 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1770
+#: mcs-plugin/xfwm4_plugin.c:1758
 msgid "Opaque move and resize"
 msgstr "移动及缩放时显示窗口内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1778
+#: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Display content of windows when resizing"
 msgstr "改变窗口尺寸时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1783
+#: mcs-plugin/xfwm4_plugin.c:1771
 msgid "Display content of windows when moving"
 msgstr "移动窗口时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1788
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Double click action"
 msgstr "双击执行动作"
 
-#: mcs-plugin/xfwm4_plugin.c:1794
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Action to perform when double clicking on title bar :"
 msgstr "双击标题栏所执行的动作 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1796
+#: mcs-plugin/xfwm4_plugin.c:1784
 msgid "Advanced"
 msgstr "高级"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "您确实要删除这个快捷键设置主题吗？"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "添加快捷键设置主题"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "请为该主题输入名称："
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "已经存在一个同名的快捷键设置主题"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:160
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "您必须为该快捷键设置主题提供名称"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:346
+#: mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Close window"
 msgstr "关闭窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:356
+#: mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window vertically"
 msgstr "垂直最大化窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:361
+#: mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Maximize window horizontally"
 msgstr "水平最大化窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:376
+#: mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Stick window"
 msgstr "粘附窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:381
+#: mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Cycle windows"
 msgstr "循环窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:386
+#: mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window up"
 msgstr "向上移动窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:391
+#: mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Move window down"
 msgstr "向下移动窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:396
+#: mcs-plugin/xfwm4_shortcuteditor.c:400
 msgid "Move window left"
 msgstr "向左移动窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:401
+#: mcs-plugin/xfwm4_shortcuteditor.c:405
 msgid "Move window right"
 msgstr "向右移动窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:406
+#: mcs-plugin/xfwm4_shortcuteditor.c:410
 msgid "Resize window up"
 msgstr "向上改变窗口大小"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:411
+#: mcs-plugin/xfwm4_shortcuteditor.c:415
 msgid "Resize window down"
 msgstr "向下改变窗口大小"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:416
+#: mcs-plugin/xfwm4_shortcuteditor.c:420
 msgid "Resize window left"
 msgstr "向左改变窗口大小"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:421
+#: mcs-plugin/xfwm4_shortcuteditor.c:425
 msgid "Resize window right"
 msgstr "向右改变窗口大小"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:426
+#: mcs-plugin/xfwm4_shortcuteditor.c:430
 msgid "Raise window"
 msgstr "提升窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:431
+#: mcs-plugin/xfwm4_shortcuteditor.c:435
 msgid "Lower window"
 msgstr "降低窗口"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:436
+#: mcs-plugin/xfwm4_shortcuteditor.c:440
 msgid "Toggle fullscreen"
 msgstr "切换全屏显示方式"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:441
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:445
 msgid "Upper workspace"
-msgstr "下一个工作区"
+msgstr "上方工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:446
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:450
 msgid "Bottom workspace"
-msgstr "下一个工作区"
+msgstr "下方工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:451
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:455
 msgid "Left workspace"
-msgstr "下一个工作区"
+msgstr "左边工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:456
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:460
 msgid "Right workspace"
-msgstr "下一个工作区"
+msgstr "右边工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:461
+#: mcs-plugin/xfwm4_shortcuteditor.c:465
 msgid "Next workspace"
 msgstr "下一个工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:466
+#: mcs-plugin/xfwm4_shortcuteditor.c:470
 msgid "Previous workspace"
 msgstr "上一个工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:471
+#: mcs-plugin/xfwm4_shortcuteditor.c:475
 msgid "Add workspace"
 msgstr "添加工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:476
+#: mcs-plugin/xfwm4_shortcuteditor.c:480
 msgid "Delete workspace"
 msgstr "删除工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:562
+#: mcs-plugin/xfwm4_shortcuteditor.c:566
 msgid "Move window to next workspace"
 msgstr "移动窗口至下一个工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:567
+#: mcs-plugin/xfwm4_shortcuteditor.c:571
 msgid "Move window to previous workspace"
 msgstr "移动窗口至上一个工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:572
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:576
 msgid "Move window to upper workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至上方工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:577
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Move window to bottom workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至下方工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:582
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:586
 msgid "Move window to left workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至左边工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:587
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 msgid "Move window to right workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至右边工作区"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:592
+#: mcs-plugin/xfwm4_shortcuteditor.c:596
 msgid "Move window to workspace 1"
 msgstr "移动窗口至工作区 1"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:597
+#: mcs-plugin/xfwm4_shortcuteditor.c:601
 msgid "Move window to workspace 2"
 msgstr "移动窗口至工作区 2"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:602
+#: mcs-plugin/xfwm4_shortcuteditor.c:606
 msgid "Move window to workspace 3"
 msgstr "移动窗口至工作区 3"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:607
+#: mcs-plugin/xfwm4_shortcuteditor.c:611
 msgid "Move window to workspace 4"
 msgstr "移动窗口至工作区 4"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:612
+#: mcs-plugin/xfwm4_shortcuteditor.c:616
 msgid "Move window to workspace 5"
 msgstr "移动窗口至工作区 5"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:617
+#: mcs-plugin/xfwm4_shortcuteditor.c:621
 msgid "Move window to workspace 6"
 msgstr "移动窗口至工作区 6"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:622
+#: mcs-plugin/xfwm4_shortcuteditor.c:626
 msgid "Move window to workspace 7"
 msgstr "移动窗口至工作区 7"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:627
+#: mcs-plugin/xfwm4_shortcuteditor.c:631
 msgid "Move window to workspace 8"
 msgstr "移动窗口至工作区 8"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:632
+#: mcs-plugin/xfwm4_shortcuteditor.c:636
 msgid "Move window to workspace 9"
 msgstr "移动窗口至工作区 9"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:839
+#: mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "Cannot open the theme directory !"
 msgstr "无法打开主题目录！"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:858
+#: mcs-plugin/xfwm4_shortcuteditor.c:862
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -522,7 +514,7 @@ msgstr ""
 "无法打开 %s：\n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:873 mcs-plugin/xfwm4_shortcuteditor.c:884
+#: mcs-plugin/xfwm4_shortcuteditor.c:877 mcs-plugin/xfwm4_shortcuteditor.c:888
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -531,11 +523,11 @@ msgstr ""
 "无法写入文件 %s：\n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:934
+#: mcs-plugin/xfwm4_shortcuteditor.c:938
 msgid "Select command"
 msgstr "选择命令"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1080
+#: mcs-plugin/xfwm4_shortcuteditor.c:1084
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -543,40 +535,39 @@ msgstr ""
 "快捷键已被使用！\n"
 "您确定要使用它吗？"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1143
+#: mcs-plugin/xfwm4_shortcuteditor.c:1147
 msgid "Compose shortcut for :"
 msgstr "组合快捷键用于："
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1146
-#: mcs-plugin/xfwm4_shortcuteditor.c:1374
+#: mcs-plugin/xfwm4_shortcuteditor.c:1150
+#: mcs-plugin/xfwm4_shortcuteditor.c:1378
 msgid "Compose shortcut"
 msgstr "组合快捷键"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1148
-#: mcs-plugin/xfwm4_shortcuteditor.c:1376
-#, fuzzy
+#: mcs-plugin/xfwm4_shortcuteditor.c:1152
+#: mcs-plugin/xfwm4_shortcuteditor.c:1380
 msgid "No shortcut"
-msgstr "组合快捷键"
+msgstr "无快捷键"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1270
+#: mcs-plugin/xfwm4_shortcuteditor.c:1274
 msgid "Choose command"
 msgstr "选择命令"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1272
+#: mcs-plugin/xfwm4_shortcuteditor.c:1276
 msgid "Command :"
 msgstr "命令："
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1308
+#: mcs-plugin/xfwm4_shortcuteditor.c:1312
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "该命令不存在或者该文件不是可执行文件！"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1371
+#: mcs-plugin/xfwm4_shortcuteditor.c:1375
 msgid "Compose shortcut for command :"
 msgstr "组合快捷键用于："
 
-#: src/main.c:182
+#: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: 段错误"

@@ -218,7 +218,6 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = \
-	breeze								\
 	default								\
 	default.keys							\
 	default-4.0							\

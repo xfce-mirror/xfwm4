@@ -42,7 +42,6 @@ extern unsigned int AltMask;
 extern unsigned int MetaMask;
 extern unsigned int NumLockMask;
 extern unsigned int ScrollLockMask;
-extern unsigned int CapsLockMask;
 extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 

@@ -245,14 +245,15 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
     for (index = g_list_last (screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c2 = (Client *) index->data;
-        if (clientSelectMask (c2, 0, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG) && (c2 != exclude))
+        if ((frameX (c2) < x) && (frameX (c2) + frameWidth (c2) > x)
+            && (frameY (c2) < y) && (frameY (c2) + frameHeight (c2) > y))
         {
-            if ((frameX (c2) < x) && (frameX (c2) + frameWidth (c2) > x)
-                && (frameY (c2) < y) && (frameY (c2) + frameHeight (c2) > y))
+            if (clientSelectMask (c2, 0, WINDOW_REGULAR_FOCUSABLE) 
+                && (c2 != exclude))
             {
                 c = c2;
-                break;
             }
+            break;
         }
     }
 
@@ -444,6 +445,7 @@ clientLower (Client * c)
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
+        clientPassGrabMouseButton (NULL);
         clientPassFocus (screen_info, c, NULL);
         if (screen_info->last_raise == c)
         {

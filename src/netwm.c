@@ -588,10 +588,9 @@ clientUpdateFullscreenState (Client * c)
            grab focus in focus follow mouse mode. Grab the pointer to
            avoid these effects
          */
-        XGrabPointer (clientGetXDisplay (c), c->screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                           GrabModeAsync, None, None, CurrentTime);
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
-        XUngrabPointer (clientGetXDisplay (c), CurrentTime);
+        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+        myScreenUngrabPointer (c->screen_info, CurrentTime);
     }
     else
     {

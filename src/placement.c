@@ -115,6 +115,32 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
     return (overlapX (x0, x1, tx0, tx1) * overlapY (y0, y1, ty0, ty1));
 }
 
+static void
+clientAutoMaximize (Client * c)
+{
+    ScreenInfo *screen_info = NULL;
+    GdkRectangle rect;
+    gint monitor_nbr;
+    int cx, cy;
+
+    cx = frameX (c) + (frameWidth (c) / 2);
+    cy = frameY (c) + (frameHeight (c) / 2);
+
+    screen_info = c->screen_info;
+    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > rect.width))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > rect.height))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+    }
+}
+
 void 
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
@@ -203,7 +229,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     Client *c2 = NULL;
     ScreenInfo *screen_info = NULL;
     int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
+    int frame_height, frame_width, frame_top, frame_left;
+    int frame_x, frame_y, frame_visible;
     GdkRectangle rect;
     gint monitor_nbr;
 
@@ -219,6 +246,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_width = frameWidth (c);
     frame_top = frameTop (c);
     frame_left = frameLeft (c);
+    frame_visible = (frame_top ? frame_top : frame_height);
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
@@ -401,7 +429,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapX (frame_x, frame_x + frame_width, 
                               c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
                 {
-                    if (overlapY (frame_y, frame_y + frame_top, 0, c2->struts[TOP]))
+                    if (overlapY (frame_y, frame_y + frame_visible, 0, c2->struts[TOP]))
                     {
                         c->y = c2->struts[TOP] + frame_top;
                         frame_y = frameY (c);
@@ -488,7 +516,9 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
+            clientAutoMaximize (c);
         }
+
         return;
     }
 
@@ -500,7 +530,9 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
+            clientAutoMaximize (c);
         }
+
         return;
     }
 
@@ -561,6 +593,8 @@ clientInitPosition (Client * c)
                 TRACE ("overlaps is 0 so it's the best we can get");
                 c->x = test_x;
                 c->y = test_y;
+                clientAutoMaximize (c);
+
                 return;
             }
             else if ((count_overlaps < best_overlaps) || (first))
@@ -580,6 +614,8 @@ clientInitPosition (Client * c)
     }
     c->x = best_x;
     c->y = best_y;
+    clientAutoMaximize (c);
+
     return;
 }
 

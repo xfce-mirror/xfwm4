@@ -61,9 +61,9 @@ If you still think you have found a bug in xfwm4 compositing manager, here
 are a few hints that could help categorizing the problem:
 
 - Does it happen when xfwm4 compositor is disabled?
-  ie, when running "xfwm4 --compositor=no"
+  ie, when running "xfwm4 --compositor=off"
 - Does it happen with xcompmgr?
-  ie, when running "xfwm4 --compositor=no; xcompmgr -c"
+  ie, when running "xfwm4 --compositor=off; xcompmgr -c"
 - Does it show with the Xserver embedded compositor manager?
   ie, when running "xfwm4 --compositor=auto"
   

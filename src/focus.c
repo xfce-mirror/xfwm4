@@ -109,11 +109,15 @@ clientFocusTop (ScreenInfo *screen_info, int layer)
     top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
     if (top_client.prefered)
     {
-        clientSetFocus (screen_info, top_client.prefered, CurrentTime, NO_FOCUS_FLAG);
+        clientSetFocus (screen_info, top_client.prefered, 
+                        myDisplayGetCurrentTime (screen_info->display_info), 
+                        NO_FOCUS_FLAG);
     }
     else
     {
-        clientSetFocus (screen_info, top_client.highest, CurrentTime, NO_FOCUS_FLAG);
+        clientSetFocus (screen_info, top_client.highest, 
+                        myDisplayGetCurrentTime (screen_info->display_info), 
+                        NO_FOCUS_FLAG);
     }
 }
 
@@ -150,6 +154,7 @@ clientFocusNew(Client * c)
         }
     }
 
+    clientGrabMouseButton (c);
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         if (client_focus)
@@ -159,7 +164,9 @@ clientFocusNew(Client * c)
                 clientRaise (c);
             }
         }
-        clientSetFocus (c->screen_info, c, CurrentTime, FOCUS_IGNORE_MODAL);
+        clientSetFocus (screen_info, c, 
+                        myDisplayGetCurrentTime (display_info), 
+                        FOCUS_IGNORE_MODAL);
     }
     else
     {
@@ -319,7 +326,9 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (screen_info, new_focus, CurrentTime, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+    clientSetFocus (screen_info, new_focus, 
+                    myDisplayGetCurrentTime (screen_info->display_info), 
+                    FOCUS_IGNORE_MODAL | FOCUS_FORCE);
 }
 
 gboolean
@@ -418,7 +427,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         if (c)
         {
             clientAdjustFullscreenLayer (c2, FALSE);
-            clientRaise (c);
+            /* clientRaise (c); */
         }
         frameDraw (c2, FALSE, FALSE);
     }

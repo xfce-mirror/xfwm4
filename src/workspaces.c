@@ -237,7 +237,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     int rx, ry, wx, wy;
     unsigned int mask;
     unsigned long data[1];
-
+    
     TRACE ("entering workspaceSwitch");
 
     if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
@@ -266,11 +266,8 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         return;
     }
 
-    /* Grab the pointer to avoid side effects with EnterNotify events */
-    XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, 
-                  FALSE, EnterWindowMask, GrabModeAsync,
-                  GrabModeAsync, None, None, CurrentTime);
-    
+    myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
+
     screen_info->previous_ws = screen_info->current_ws;
     screen_info->current_ws = new_ws;
     if (c2)
@@ -351,10 +348,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, 
                      display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
                      PropModeReplace, (unsigned char *) data, 1);
-    
-    /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
-    XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
-    
     if (!(screen_info->params->click_to_focus))
     {
         if (!(c2) && (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
@@ -366,9 +359,17 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
             }
         }
     }
+
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+
     if (new_focus)
     {
         clientSetFocus (new_focus->screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+    }
+    else
+    {
+        /* If we can't get a window to focus, just pick the one on top */
+        clientFocusTop (screen_info, WIN_LAYER_ABOVE_DOCK);
     }
 }
 
