@@ -1976,6 +1976,7 @@ void clientUpdateFocus(Client * c)
         return;
     }
     client_focus = c;
+    clientInstallColormaps (c);
     if (c)
     {
 	data[0] = c->window;
