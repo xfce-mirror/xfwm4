@@ -79,21 +79,41 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
         {
             key->modifier = key->modifier | ControlMask;
         }
-        if (strstr (tmp, "alt") || strstr (tmp, "mod1"))
+        if (strstr (tmp, "alt"))
         {
             key->modifier = key->modifier | AltMask;
         }
-        if (strstr (tmp, "meta") || strstr (tmp, "mod2"))
+        if (strstr (tmp, "meta"))
         {
             key->modifier = key->modifier | MetaMask;
         }
-        if (strstr (tmp, "super") || strstr (tmp, "mod4"))
+        if (strstr (tmp, "super"))
         {
             key->modifier = key->modifier | SuperMask;
         }
-        if (strstr (tmp, "hyper") || strstr (tmp, "mod5"))
+        if (strstr (tmp, "hyper"))
         {
             key->modifier = key->modifier | HyperMask;
+        }
+        if (strstr (tmp, "mod1"))
+        {
+            key->modifier = key->modifier | Mod1Mask;
+        }
+        if (strstr (tmp, "mod2"))
+        {
+            key->modifier = key->modifier | Mod2Mask;
+        }
+        if (strstr (tmp, "mod3"))
+        {
+            key->modifier = key->modifier | Mod3Mask;
+        }
+        if (strstr (tmp, "mod4"))
+        {
+            key->modifier = key->modifier | Mod4Mask;
+        }
+        if (strstr (tmp, "mod5"))
+        {
+            key->modifier = key->modifier | Mod5Mask;
         }
         g_free (tmp);
     }
