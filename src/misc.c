@@ -215,7 +215,7 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
 
     /* No monitor has been eligible, use the closest one */
 
-    min_distsquare = G_MAXUINT32;
+    min_distsquare = ((guint32) 0xffffffff);
     nearest_monitor = 0;
 
     num_monitors = gdk_screen_get_n_monitors (screen);

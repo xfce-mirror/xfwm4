@@ -1113,7 +1113,7 @@ add_repair (DisplayInfo *display_info)
     }
 
     display_info->compositor_idle_id =
-        g_idle_add_full (G_PRIORITY_HIGH_IDLE + 50,
+        g_idle_add_full (G_PRIORITY_HIGH_IDLE,
                          compositor_idle_cb, display_info, NULL);
 
     if (display_info->compositor_timeout_id != 0)
