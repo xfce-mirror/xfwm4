@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-07-08 22:46+0200\n"
+"POT-Creation-Date: 2003-07-19 09:56+0200\n"
 "PO-Revision-Date: 2003-07-17 20:44+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -25,8 +25,10 @@ msgid "Adjust workspace margins"
 msgstr "Çalışma alanı sınırlarını ayarlayın"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belirler"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belirler"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -261,7 +263,6 @@ msgstr "Pencereleri taşırken içeriğini göster"
 msgid "Double click action"
 msgstr "Çift tıklama eylemi"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
@@ -275,7 +276,7 @@ msgstr "Gelişmiş"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
 
-#: src/events.c:1311
+#: src/events.c:1317
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: İşlem desteklenmiyor (henüz)\n"
@@ -404,4 +405,3 @@ msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Geç ..."
-

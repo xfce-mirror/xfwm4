@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"POT-Creation-Date: 2003-07-19 09:56+0200\n"
 "PO-Revision-Date: 2003-07-09 14:20+0100\n"
 "Last-Translator: Moritz Heiber <moritz-heiber@arcor.de>\n"
 "Language-Team: none <none@none>\n"
@@ -163,8 +163,7 @@ msgstr "Neues Fenster kriegt Fokus"
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
-msgstr ""
-"Automatischer Fokus für ein neues Fenster"
+msgstr "Automatischer Fokus für ein neues Fenster"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
@@ -174,8 +173,7 @@ msgstr "Hervorheben bei Fokus"
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
-msgstr ""
-"Bringe Fenster in den Vordergrund wenn sie den Fokus erhalten"
+msgstr "Bringe Fenster in den Vordergrund wenn sie den Fokus erhalten"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
@@ -197,8 +195,7 @@ msgstr "Hervorheben durch klicken"
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
-msgstr ""
-"Fenster hervorheben, wenn man in die Anwendung klickt"
+msgstr "Fenster hervorheben, wenn man in die Anwendung klickt"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
@@ -234,8 +231,7 @@ msgstr "Virtuelle Desktops wechseln"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Virtuelle Desktops wechseln, wenn die Maus den Desktoprand erreicht"
+msgstr "Virtuelle Desktops wechseln, wenn die Maus den Desktoprand erreicht"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
@@ -262,7 +258,6 @@ msgstr "Inhalt beim Verschieben anzeigen"
 msgid "Double click action"
 msgstr "Aktion bei Doppelklick"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
@@ -271,32 +266,32 @@ msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
 msgid "Advanced"
 msgstr "Mehr Optionen"
 
-#: src/client.c:444
+#: src/client.c:442
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kein net_wm_state (Fenster %#lx)"
 
-#: src/events.c:1276
+#: src/events.c:1317
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation (noch) nicht unterstuetzt\n"
 
-#: src/main.c:190
+#: src/main.c:226
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Speicherzugriffsfehler"
 
-#: src/main.c:349
+#: src/main.c:396
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Ein anderer Fenstermanager laeuft bereits"
 
-#: src/main.c:354
+#: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/main.c:381
+#: src/main.c:428
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Unbekannter Fehler ist aufgetreten"
@@ -367,37 +362,37 @@ msgstr "Virtueller Desktop %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenue hat Maus nicht gefunden\n"
 
-#: src/settings.c:283
+#: src/settings.c:284
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/settings.c:508
+#: src/settings.c:509
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kann aktive Farbe nicht setzen %s\n"
 
-#: src/settings.c:515
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kann aktive Farbe nicht feststellen %s\n"
 
-#: src/settings.c:559
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
 
-#: src/settings.c:566
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht feststellen %s\n"
 
-#: src/settings.c:756
+#: src/settings.c:757
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/settings.c:1097
+#: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
