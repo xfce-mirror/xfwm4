@@ -331,23 +331,23 @@ msgstr "Aurreratua"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Benetan laster-tekla gai hau ezabatu nahi duzula ?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Laster-tekla gai bat gehitu"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Idatzi gai berriaren izena:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Izen horretako laster-tekla gai bat badago dagoeneko"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:160
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Laster-tekla gaiarentzat izen bat ezarri behar duzu"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Close window"
@@ -414,24 +414,20 @@ msgid "Toggle fullscreen"
 msgstr "Txandakatu pantaila-osoa"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:445
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Goiko idazmahaia"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:450
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Beheko idazmahaia"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:455
-#, fuzzy
 msgid "Left workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Ezkerretako idazmahaia"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:460
-#, fuzzy
 msgid "Right workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Eskuineko idazmahaia"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:465
 msgid "Next workspace"
@@ -458,24 +454,20 @@ msgid "Move window to previous workspace"
 msgstr "Mugitu leihoa aurreko idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:576
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa goiko idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:581
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa beheko idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:586
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa ezkerreko idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:591
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa eskuineko idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:596
 msgid "Move window to workspace 1"
@@ -559,9 +551,8 @@ msgstr "laster-tekla sortu"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1152
 #: mcs-plugin/xfwm4_shortcuteditor.c:1380
-#, fuzzy
 msgid "No shortcut"
-msgstr "laster-tekla sortu"
+msgstr "laster-tekla gabe"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1274
@@ -840,3 +831,4 @@ msgstr "Aplikazio ezezaguna!"
 
 #~ msgid "Init complete"
 #~ msgstr "Arranque completo"
+
