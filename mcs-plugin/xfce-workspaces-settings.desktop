@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Xfce 4 Workspaces Settings
 Name[fr]=Paramètres des espaces virtuels de Xfce 4
-Name[nl]=Xfce 4 Virtuele Bureaubladen Opties
+Name[nl]=Instellingen Xfce 4 Virtuele Bureaubladen
 Comment=Workspaces Settings
 Comment[fr]=Paramétrage des espaces virtuels
 Comment[nl]=Instellingen voor virtuele bureaubladen
@@ -13,4 +13,4 @@ Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;
 OnlyShowIn=XFCE;
 GenericName=Workspaces Settings
-GenericName[nl]=Virtuele Bureaubladen Opties
+GenericName[nl]=Instellingen Virtuele Bureaubladen

@@ -167,7 +167,7 @@ msgstr "Window Manager"
 
 #: mcs-plugin/xfwm4_plugin.c:1410
 msgid "Window Manager Preferences"
-msgstr "Window Manager Opties"
+msgstr "Instellingen Window Manager"
 
 #: mcs-plugin/xfwm4_plugin.c:1439
 msgid "Title font"
