@@ -848,7 +848,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     if (c)
     {
-        state = ev->state &  MODIFIER_MASK;
+        state = ev->state & MODIFIER_MASK;
         win = ev->subwindow;
         screen_info = c->screen_info;
 
