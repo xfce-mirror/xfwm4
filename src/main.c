@@ -394,6 +394,19 @@ main (int argc, char **argv)
     gboolean daemon_mode = FALSE;
     int status;
 
+    if (argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V")))
+    {
+        g_print ("%s version %s using Xfce %s\n", 
+                      PACKAGE, VERSION,  xfce_version_string());
+        g_print ("  built against GTK+-%d.%d.%d, ", 
+                      GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+        g_print ("using GTK+-%d.%d.%d\n", 
+                      gtk_major_version, gtk_minor_version, gtk_micro_version);
+        g_print ("  specified base directory for data is \"%s\"\n", 
+                      DATADIR);
+        exit (0);
+    }
+
     for (i = 1; i < argc; i++)
     {
         if (!strcmp (argv[i], "--daemon"))
