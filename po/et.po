@@ -1,0 +1,714 @@
+# Estonian translation of xfwm4.
+# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfwm4 package.
+# peeter <Peeter.Vois@mail.ee>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-25 23:50+0200\n"
+"PO-Revision-Date: 2004-02-03 10:04+0200\n"
+"Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
+"Language-Team: Estonian <et@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins.c:123
+msgid "Workspace Margins"
+msgstr "Tööala ääred"
+
+#: mcs-plugin/margins.c:133
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Ääred on alad ekraani äärtes, kuhu aknaid ei panda"
+
+#: mcs-plugin/margins.c:164
+msgid "Left :"
+msgstr "Vasak :"
+
+#: mcs-plugin/margins.c:184
+msgid "Right :"
+msgstr "Parem :"
+
+#: mcs-plugin/margins.c:204
+msgid "Top :"
+msgstr "Üleval :"
+
+#: mcs-plugin/margins.c:224
+msgid "Bottom :"
+msgstr "All :"
+
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
+msgid "Workspaces and Margins"
+msgstr "Tööruumid ja ääred"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:540
+msgid "Workspaces"
+msgstr "Tööruumid"
+
+#: mcs-plugin/plugin.c:169
+msgid "Margins"
+msgstr "Ääred"
+
+#: mcs-plugin/workspaces.c:339
+msgid "Change name"
+msgstr "Muuda nime"
+
+#: mcs-plugin/workspaces.c:351
+#, c-format
+msgid "Workspace %d"
+msgstr "Tööruum %d"
+
+#: mcs-plugin/workspaces.c:361
+msgid "Name:"
+msgstr "Nimi:"
+
+#: mcs-plugin/workspaces.c:449
+msgid "Click on a workspace name to edit it"
+msgstr "Toksa tööruumi nimel, et seda muuda"
+
+#: mcs-plugin/workspaces.c:521
+msgid "Number of workspaces:"
+msgstr "Tööruumide arv:"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:552
+msgid "Workspace names"
+msgstr "Tööruumide nimed"
+
+#: mcs-plugin/xfwm4_plugin.c:82
+msgid "Menu"
+msgstr "Menüü"
+
+#: mcs-plugin/xfwm4_plugin.c:83
+msgid "Stick"
+msgstr "Nael"
+
+#: mcs-plugin/xfwm4_plugin.c:84
+msgid "Shade"
+msgstr "Varja"
+
+#: mcs-plugin/xfwm4_plugin.c:85
+msgid "Hide"
+msgstr "Peida"
+
+#: mcs-plugin/xfwm4_plugin.c:86
+msgid "Maximize"
+msgstr "Suurenda"
+
+#: mcs-plugin/xfwm4_plugin.c:87
+msgid "Close"
+msgstr "Sulge"
+
+#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_shortcuteditor.c:90
+#: mcs-plugin/xfwm4_shortcuteditor.c:460
+msgid "Shade window"
+msgstr "Varja aken"
+
+#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_shortcuteditor.c:85
+#: mcs-plugin/xfwm4_shortcuteditor.c:456
+msgid "Hide window"
+msgstr "Peida aken"
+
+#: mcs-plugin/xfwm4_plugin.c:94 mcs-plugin/xfwm4_shortcuteditor.c:70
+#: mcs-plugin/xfwm4_shortcuteditor.c:444
+msgid "Maximize window"
+msgstr "Suurenda aken"
+
+#: mcs-plugin/xfwm4_plugin.c:95
+msgid "Nothing"
+msgstr "Ei midagi"
+
+#: mcs-plugin/xfwm4_plugin.c:100
+msgid "Left"
+msgstr "Vasak"
+
+#: mcs-plugin/xfwm4_plugin.c:101
+msgid "Center"
+msgstr "Keskel"
+
+#: mcs-plugin/xfwm4_plugin.c:102
+msgid "Right"
+msgstr "Parem"
+
+#: mcs-plugin/xfwm4_plugin.c:570
+msgid "Click and drag buttons to change the layout"
+msgstr "Paigutuse muutmiseks klõpsi ja tiri nuppe"
+
+#: mcs-plugin/xfwm4_plugin.c:575
+msgid "Active"
+msgstr "Aktiivne"
+
+#: mcs-plugin/xfwm4_plugin.c:586
+msgid "Title"
+msgstr "Pealkiri"
+
+#: mcs-plugin/xfwm4_plugin.c:587
+msgid "The window title, it cannot be removed"
+msgstr "Akna pealkirja ei saa eemaldada."
+
+#: mcs-plugin/xfwm4_plugin.c:595
+msgid "Hidden"
+msgstr "Varjatud"
+
+#: mcs-plugin/xfwm4_plugin.c:1300
+msgid "Font Selection Dialog"
+msgstr "Fondi valimise dialoog"
+
+#: mcs-plugin/xfwm4_plugin.c:1395 mcs-plugin/xfwm4_plugin.c:1882
+msgid "Window Manager"
+msgstr "Akna haldur"
+
+#: mcs-plugin/xfwm4_plugin.c:1408
+msgid "Window Manager Preferences"
+msgstr "Akna halduri seaded"
+
+#: mcs-plugin/xfwm4_plugin.c:1437
+msgid "Title font"
+msgstr "Pealkirja font"
+
+#: mcs-plugin/xfwm4_plugin.c:1450
+msgid "Title Alignment"
+msgstr "Pealkirja paigutus"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1456
+msgid "Text alignment inside title bar :"
+msgstr "Teksti paigutus pealkirjas :"
+
+#: mcs-plugin/xfwm4_plugin.c:1458
+msgid "Button layout"
+msgstr "Nuppude asetus"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Style"
+msgstr "Stiil"
+
+#: mcs-plugin/xfwm4_plugin.c:1490
+msgid "Windows shortcuts"
+msgstr "Akna kiirklahvid"
+
+#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1539
+msgid "Command"
+msgstr "Käsk"
+
+#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1544
+msgid "Shortcut"
+msgstr "Kiirklahvid"
+
+#: mcs-plugin/xfwm4_plugin.c:1519
+msgid "Command shortcuts"
+msgstr "Käskude kiirklahvid"
+
+#: mcs-plugin/xfwm4_plugin.c:1547
+msgid "Keyboard"
+msgstr "Klaviatuur"
+
+#: mcs-plugin/xfwm4_plugin.c:1558
+msgid "Focus model"
+msgstr "Fookuse mudel"
+
+#: mcs-plugin/xfwm4_plugin.c:1566
+msgid "Click to focus"
+msgstr "Klõpsa fookusseerimiseks"
+
+#: mcs-plugin/xfwm4_plugin.c:1573
+msgid "Focus follows mouse"
+msgstr "Fookus järgib hiirt"
+
+#: mcs-plugin/xfwm4_plugin.c:1580
+msgid "New window focus"
+msgstr "Uue akna fookus"
+
+#: mcs-plugin/xfwm4_plugin.c:1584
+msgid "Automatically give focus to newly created windows"
+msgstr "Automaatselt anna fookus uuele loodud aknale"
+
+#: mcs-plugin/xfwm4_plugin.c:1589
+msgid "Raise on focus"
+msgstr "Tõsta aken fookuse saamisel"
+
+#: mcs-plugin/xfwm4_plugin.c:1597
+msgid "Automatically raise windows when they receive focus"
+msgstr "Tõsta aknaid automaatselt, kui nad saavad fookuse"
+
+#: mcs-plugin/xfwm4_plugin.c:1607
+msgid "Delay before raising focused window :"
+msgstr "Viivtus enne fokuseeritud akna tõstmist :"
+
+#: mcs-plugin/xfwm4_plugin.c:1613
+msgid "Slow"
+msgstr "Aeglane"
+
+#: mcs-plugin/xfwm4_plugin.c:1619
+msgid "Fast"
+msgstr "Kiire"
+
+#: mcs-plugin/xfwm4_plugin.c:1635
+msgid "Raise on click"
+msgstr "Tõsta klõpsu korral"
+
+#: mcs-plugin/xfwm4_plugin.c:1639
+msgid "Raise window when clicking inside application window"
+msgstr "Tõsta aken, kui akna sees klõpsatakse"
+
+#: mcs-plugin/xfwm4_plugin.c:1644
+msgid "Focus"
+msgstr "Fookus"
+
+#: mcs-plugin/xfwm4_plugin.c:1654
+msgid "Windows snapping"
+msgstr "Akna haakumine"
+
+#: mcs-plugin/xfwm4_plugin.c:1662
+msgid "Snap windows to screen border"
+msgstr "Haagi aknaid ekraani äärtel"
+
+#: mcs-plugin/xfwm4_plugin.c:1667
+msgid "Snap windows to other windows"
+msgstr "Haagi aknaid teiste akende külge"
+
+#: mcs-plugin/xfwm4_plugin.c:1677
+msgid "Distance :"
+msgstr "Kaugus :"
+
+#: mcs-plugin/xfwm4_plugin.c:1683 mcs-plugin/xfwm4_plugin.c:1733
+msgid "Small"
+msgstr "Väike"
+
+#: mcs-plugin/xfwm4_plugin.c:1689 mcs-plugin/xfwm4_plugin.c:1739
+msgid "Wide"
+msgstr "Suur"
+
+#: mcs-plugin/xfwm4_plugin.c:1704
+msgid "Wrap workspaces"
+msgstr "Töölaua vahetus"
+
+#: mcs-plugin/xfwm4_plugin.c:1712
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Vaheta töölauda, kui kursor jõuab akna äärde"
+
+#: mcs-plugin/xfwm4_plugin.c:1717
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Vaheta töölauda, kui akent kantakse üle ekraani ääre"
+
+#: mcs-plugin/xfwm4_plugin.c:1727
+msgid "Edge Resistance :"
+msgstr "Ääre vastupanu :"
+
+#: mcs-plugin/xfwm4_plugin.c:1754
+msgid "Opaque move and resize"
+msgstr "Akna liigutamine ja suuruse muutmine"
+
+#: mcs-plugin/xfwm4_plugin.c:1762
+msgid "Display content of windows when resizing"
+msgstr "Näita akna sisu selle suurus muutmise ajal"
+
+#: mcs-plugin/xfwm4_plugin.c:1767
+msgid "Display content of windows when moving"
+msgstr "Näita akna sisu selle liigutamisel"
+
+#: mcs-plugin/xfwm4_plugin.c:1772
+msgid "Double click action"
+msgstr "Topeltklõpsu tegevus"
+
+#: mcs-plugin/xfwm4_plugin.c:1778
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
+
+#: mcs-plugin/xfwm4_plugin.c:1780
+msgid "Advanced"
+msgstr "Edasijõudnud"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:65 mcs-plugin/xfwm4_shortcuteditor.c:440
+msgid "Close window"
+msgstr "Sulge aken"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:75 mcs-plugin/xfwm4_shortcuteditor.c:448
+msgid "Maximize window vertically"
+msgstr "Suurenda akent vertikaalselt"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:80 mcs-plugin/xfwm4_shortcuteditor.c:452
+msgid "Maximize window horizontally"
+msgstr "Suurenda akent horisontaalselt"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:95 mcs-plugin/xfwm4_shortcuteditor.c:464
+msgid "Stick window"
+msgstr "Kleebi aken"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:100 mcs-plugin/xfwm4_shortcuteditor.c:468
+msgid "Cycle windows"
+msgstr "Vaheta aknaid"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:105 mcs-plugin/xfwm4_shortcuteditor.c:472
+msgid "Move window up"
+msgstr "Liiguta akent üles"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:110 mcs-plugin/xfwm4_shortcuteditor.c:476
+msgid "Move window down"
+msgstr "Liiguta akent alla"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:115 mcs-plugin/xfwm4_shortcuteditor.c:480
+msgid "Move window left"
+msgstr "Liiguta akent vasakule"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:120 mcs-plugin/xfwm4_shortcuteditor.c:484
+msgid "Move window right"
+msgstr "Liiguta akent paremale"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:488
+msgid "Resize window up"
+msgstr "Suurenda akent üles"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:130 mcs-plugin/xfwm4_shortcuteditor.c:492
+msgid "Resize window down"
+msgstr "Suurenda akent alla"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:135 mcs-plugin/xfwm4_shortcuteditor.c:496
+msgid "Resize window left"
+msgstr "Suurenda akent vasakule"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:140 mcs-plugin/xfwm4_shortcuteditor.c:500
+msgid "Resize window right"
+msgstr "Suurenda akent paremale"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:145 mcs-plugin/xfwm4_shortcuteditor.c:504
+msgid "Raise window"
+msgstr "Tõsta aken"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:150 mcs-plugin/xfwm4_shortcuteditor.c:508
+msgid "Lower window"
+msgstr "Langeta aken"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:155 mcs-plugin/xfwm4_shortcuteditor.c:512
+msgid "Toggle fullscreen"
+msgstr "Lülita täisekraani"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:160 mcs-plugin/xfwm4_shortcuteditor.c:516
+msgid "Next workspace"
+msgstr "Järgmine töölaud"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:165 mcs-plugin/xfwm4_shortcuteditor.c:520
+msgid "Previous workspace"
+msgstr "Eelmine töölaud"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:170 mcs-plugin/xfwm4_shortcuteditor.c:524
+msgid "Add workspace"
+msgstr "Lisa töölaud"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:175 mcs-plugin/xfwm4_shortcuteditor.c:528
+msgid "Delete workspace"
+msgstr "Kustuta töölaud"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:180 mcs-plugin/xfwm4_shortcuteditor.c:532
+msgid "Workspace 1"
+msgstr "Töölaud 1"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:185 mcs-plugin/xfwm4_shortcuteditor.c:536
+msgid "Workspace 2"
+msgstr "Töölaud 2"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:190 mcs-plugin/xfwm4_shortcuteditor.c:540
+msgid "Workspace 3"
+msgstr "Töölaud 3"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:195 mcs-plugin/xfwm4_shortcuteditor.c:544
+msgid "Workspace 4"
+msgstr "Töölaud 4"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:200 mcs-plugin/xfwm4_shortcuteditor.c:548
+msgid "Workspace 5"
+msgstr "Töölaud 5"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:205 mcs-plugin/xfwm4_shortcuteditor.c:552
+msgid "Workspace 6"
+msgstr "Töölaud 6"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:210 mcs-plugin/xfwm4_shortcuteditor.c:556
+msgid "Workspace 7"
+msgstr "Töölaud 7"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:215 mcs-plugin/xfwm4_shortcuteditor.c:560
+msgid "Workspace 8"
+msgstr "Töölaud 8"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:220 mcs-plugin/xfwm4_shortcuteditor.c:564
+msgid "Workspace 9"
+msgstr "Töölaud 9"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:225 mcs-plugin/xfwm4_shortcuteditor.c:568
+msgid "Move window to next workspace"
+msgstr "Liiguta aken järgmisesse tööruumi"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:230 mcs-plugin/xfwm4_shortcuteditor.c:572
+msgid "Move window to previous workspace"
+msgstr "Liiguta aken eelmisesse tööruumi"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:235 mcs-plugin/xfwm4_shortcuteditor.c:576
+msgid "Move window to workspace 1"
+msgstr "Liiguta aken tööruumi 1"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:240 mcs-plugin/xfwm4_shortcuteditor.c:580
+msgid "Move window to workspace 2"
+msgstr "Liiguta aken tööruumi 2"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:245 mcs-plugin/xfwm4_shortcuteditor.c:584
+msgid "Move window to workspace 3"
+msgstr "Liiguta aken tööruumi 3"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:250 mcs-plugin/xfwm4_shortcuteditor.c:588
+msgid "Move window to workspace 4"
+msgstr "Liiguta aken tööruumi 4"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:255 mcs-plugin/xfwm4_shortcuteditor.c:592
+msgid "Move window to workspace 5"
+msgstr "Liiguta aken tööruumi 5"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:260 mcs-plugin/xfwm4_shortcuteditor.c:596
+msgid "Move window to workspace 6"
+msgstr "Liiguta aken tööruumi 6"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:265 mcs-plugin/xfwm4_shortcuteditor.c:600
+msgid "Move window to workspace 7"
+msgstr "Liiguta aken tööruumi 7"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:270 mcs-plugin/xfwm4_shortcuteditor.c:604
+msgid "Move window to workspace 8"
+msgstr "Liiguta aken tööruumi 8"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:275 mcs-plugin/xfwm4_shortcuteditor.c:608
+msgid "Move window to workspace 9"
+msgstr "Liiguta aken tööruumi 9"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:656
+msgid "Cannot open the theme directory !"
+msgstr "Teema kataloogi ei õnnestu avada!"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:675
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+"Ei õnnestu avada %s : \n"
+"%s"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:690 mcs-plugin/xfwm4_shortcuteditor.c:701
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Ei õnnestu kirjutada %s : \n"
+"%s"
+
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:764
+msgid "Select command"
+msgstr "Vali käsk"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:866
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"Kiirvalik on juba kasutuses !\n"
+"Kas sa kindlasti soovid seda kasutada?"
+
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:928
+msgid "Compose shortcut for :"
+msgstr "Tekita kiirvalik : "
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:931
+#: mcs-plugin/xfwm4_shortcuteditor.c:1110
+msgid "Compose shortcut"
+msgstr "Tekita kiirvalik"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:963
+#: mcs-plugin/xfwm4_shortcuteditor.c:1141
+msgid "Cannot grab the keyboard"
+msgstr "Ei saa klaviatuuri haarata"
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
+msgid "Choose command"
+msgstr "Vali käsk"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1017
+msgid "Command :"
+msgstr "Käsk :"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1051
+msgid "The command doesn't exist or the file is not executable !"
+msgstr "Käsku ei ole olemas, või fail ei ole käivitatav !"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1107
+msgid "Compose shortcut for command :"
+msgstr "Moodusta kiirvalik käsule :"
+
+#: src/events.c:1626
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operatsioon pole (veel) toetatud\n"
+
+#: src/main.c:180
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: segmendi viga"
+
+#: src/main.c:313
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Teine aknahaldur juba töötab"
+
+#: src/main.c:318
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Puuduvad andmed vaikimisi failidest"
+
+#: src/main.c:328
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr "%s: Deemoni režiimi sisenemine ebaõnnestus: %s"
+
+#: src/main.c:336
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr "%S: Uue protsessi loomine ebaõnnestus: %s"
+
+#: src/main.c:357
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Juhtus tundmatu viga"
+
+#: src/menu.c:39
+msgid "Ma_ximize"
+msgstr "_Suurenda"
+
+#: src/menu.c:40
+msgid "Un_maximize"
+msgstr "_Taassuurenda"
+
+#: src/menu.c:41
+msgid "_Hide"
+msgstr "_Peida"
+
+#: src/menu.c:42
+msgid "Hide _all others"
+msgstr "Peida _kõik teised"
+
+#: src/menu.c:43
+msgid "S_how"
+msgstr "_Näita"
+
+#: src/menu.c:44
+msgid "_Shade"
+msgstr "_Varja"
+
+#: src/menu.c:45
+msgid "Un_shade"
+msgstr "Taas_varja"
+
+#: src/menu.c:46
+msgid "S_tick"
+msgstr "N_aeluta"
+
+#: src/menu.c:47
+msgid "Uns_tick"
+msgstr "_Eemalda nael"
+
+#: src/menu.c:48
+msgid "Context _help"
+msgstr "Konteksti _abi"
+
+#: src/menu.c:49 src/menu.c:50
+msgid "Always on top"
+msgstr "Alati kõige peal"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Saada ..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Sulge"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Hävita"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "Vä_lja"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Restart"
+
+#: src/menu.c:170
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "Töölaud %i (%s)"
+
+#: src/menu.c:182
+#, c-format
+msgid "Workspace %i"
+msgstr "Töölaud %i"
+
+#: src/menu.c:425
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
+
+#: src/netwm.c:242
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: manageerimatu net_wm_state (window 0x%lx)"
+
+#: src/settings.c:342
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Puudub algandmete fail"
+
+#: src/settings.c:599
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Ei suutnud tekitada aktiivse värvi %s\n"
+
+#: src/settings.c:605
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Ei suutnud parsida aktiivse värvi %s\n"
+
+#: src/settings.c:648
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Ei suutnud tekitada aktiivitu värvi %s\n"
+
+#: src/settings.c:654
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Ei suutnud parsida aktiivitu värvi %s\n"
+
+#: src/settings.c:841
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: määratud klahvi teema \"%s\" puudub, kasutan vaikimist"
+
+#: src/settings.c:848
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Puuduvad väärtused algandmete failis"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Lülitu ..."
+
+#: src/tabwin.c:129
+msgid "Unknown application!"
+msgstr "Tundmatu rakendus!"
+
