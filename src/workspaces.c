@@ -108,11 +108,7 @@ void workspaceSwitch(int new_ws, Client * c2)
             }
         }
     }
-    if(c2)
-    {
-        f = c2;
-        clientRaise(c2);
-    }
+
     setGnomeHint(dpy, root, win_workspace, new_ws);
     data[0] = new_ws;
     XChangeProperty(dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
