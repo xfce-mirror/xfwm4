@@ -79,7 +79,7 @@ X_PRE_LIBS = @X_PRE_LIBS@
 am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
-themedir = $(pkgdatadir)/themes/ops
+themedir = $(pkgdatadir)/themes/piranha
 theme_DATA = README \
 	bottom-active.xpm \
 	bottom-inactive.xpm \
@@ -126,7 +126,7 @@ theme_DATA = README \
 	top-right-inactive.xpm
 
 EXTRA_DIST = $(theme_DATA)
-subdir = themes/ops
+subdir = themes/piranha
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
@@ -139,7 +139,7 @@ all: all-am
 .SUFFIXES:
 $(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  themes/ops/Makefile
+	  $(AUTOMAKE) --gnu  themes/piranha/Makefile
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
 uninstall-info-am:

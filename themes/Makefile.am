@@ -16,6 +16,7 @@ mofit \
 next \
 ops \
 oroborus \
+piranha \
 platinum \
 quinx \
 r9x \

@@ -68,6 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/next
 %{_datadir}/xfwm4/themes/oroborus
 %{_datadir}/xfwm4/themes/ops
+%{_datadir}/xfwm4/themes/piranha
 %{_datadir}/xfwm4/themes/platinum
 %{_datadir}/xfwm4/themes/quinx
 %{_datadir}/xfwm4/themes/r9x
