@@ -531,14 +531,27 @@ void frameDraw(Client * c, gboolean invalidate_cache)
     int left_height;
     int right_height;
     int button_x[BUTTON_COUNT];
+    gboolean requires_clearing = FALSE;
 
     DBG("entering frameDraw\n");
     DBG("drawing frame for \"%s\" (%#lx)\n", c->name, c->window);
 
+    g_return_if_fail (c != NULL);
+    
     if(c != clientGetFocus())
     {
         DBG("\"%s\" is not the active window\n", c->name);
         state = INACTIVE;
+    }
+    if ((state == INACTIVE) && (c->draw_active))
+    {
+        requires_clearing = TRUE;
+	c->draw_active = FALSE;
+    }
+    else if ((state == ACTIVE) && !(c->draw_active))
+    {
+        requires_clearing = TRUE;
+	c->draw_active = TRUE;
     }
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -675,17 +688,17 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         }
         else
         {
-            myWindowShow(&c->sides[SIDE_LEFT], 0, frameTop(c), frameLeft(c), left_height, TRUE);
-            myWindowShow(&c->sides[SIDE_RIGHT], frameWidth(c) - frameRight(c), frameTop(c), frameRight(c), right_height, TRUE);
+            myWindowShow(&c->sides[SIDE_LEFT], 0, frameTop(c), frameLeft(c), left_height, requires_clearing | invalidate_cache);
+            myWindowShow(&c->sides[SIDE_RIGHT], frameWidth(c) - frameRight(c), frameTop(c), frameRight(c), right_height, requires_clearing | invalidate_cache);
         }
 
-        myWindowShow(&c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width, frameTop(c), TRUE);
-        myWindowShow(&c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width, frameBottom(c), TRUE);
+        myWindowShow(&c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width, frameTop(c), requires_clearing | invalidate_cache);
+        myWindowShow(&c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width, frameBottom(c), requires_clearing | invalidate_cache);
         
-        myWindowShow(&c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height, TRUE);
-        myWindowShow(&c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height, TRUE);
-        myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, TRUE);
-        myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, TRUE);
+        myWindowShow(&c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height, requires_clearing | invalidate_cache);
+        myWindowShow(&c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height, requires_clearing | invalidate_cache);
+        myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, requires_clearing | invalidate_cache);
+        myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, requires_clearing | invalidate_cache);
 
         frameSetShape(c, state, &c->pm_cache, button_x);
     }

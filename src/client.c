@@ -2146,15 +2146,21 @@ void clientFrame(Window w)
         clientShow(c, True);
         if(params.focus_new && clientAcceptFocus(c))
         {
+	    /* We set the draw_active value to the wrong value to force a draw */
+	    c->draw_active = FALSE;
             clientSetFocus(c, True);
         }
         else
         {
+	    /* We set the draw_active value to the wrong value to force a draw */
+	    c->draw_active = TRUE;
             frameDraw(c, FALSE);
         }
     }
     else
     {
+	/* We set the draw_active value to the wrong value to force a draw */
+	c->draw_active = TRUE;
         frameDraw(c, FALSE);
         setWMState(dpy, c->window, IconicState);
         clientSetNetState(c);

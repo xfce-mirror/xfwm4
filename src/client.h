@@ -176,6 +176,7 @@ struct _Client
     Client *next;
     Client *prev;
     WindowType type;
+    gboolean draw_active;
     int x;
     int y;
     int width;
