@@ -82,6 +82,7 @@
 
 Client *clients = NULL;
 Client *last_raise = NULL;
+Client *top_of_stack = NULL;
 unsigned int client_count = 0;
 
 static GSList *windows = NULL;
@@ -97,6 +98,7 @@ static void clientGetInitialNetWmDesktop (Client * c);
 static void clientSetNetClientList (Atom a, GSList * list);
 static void clientSetNetActions (Client * c);
 static void clientWindowType (Client * c);
+static void clientSetTopOfStack (void);
 static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
 static int clientGetWidthInc (Client * c);
@@ -1409,12 +1411,31 @@ clientGravitate (Client * c, int mode)
     c->y = y;
 }
 
+/* Compute top of (managed) stack for restacking */
+static void
+clientSetTopOfStack (void)
+{
+    GSList *last = NULL;   
+    top_of_stack = NULL;
+    
+    if (!windows_stack)
+    {
+        return;
+    }
+    
+    last = g_slist_last(windows_stack);
+    if (last)
+    {
+        top_of_stack = (Client *) last->data;
+    }
+}
+
 static void
 clientAddToList (Client * c)
 {
     Client *client_sibling = NULL;
     GSList *sibling = NULL;
-
+    
     g_return_if_fail (c != NULL);
     TRACE ("entering clientAddToList");
 
@@ -1457,13 +1478,14 @@ clientAddToList (Client * c)
         else
         {
             windows_stack = g_slist_append (windows_stack, c);
+            top_of_stack = c;
         }
     }
 
     clientSetNetClientList (net_client_list, windows);
     clientSetNetClientList (win_client_list, windows);
     clientSetNetClientList (net_client_list_stacking, windows_stack);
-
+  
     CLIENT_FLAG_SET (c, CLIENT_FLAG_MANAGED);
 }
 
@@ -1501,6 +1523,9 @@ clientRemoveFromList (Client * c)
     clientSetNetClientList (net_client_list, windows);
     clientSetNetClientList (win_client_list, windows);
     clientSetNetClientList (net_client_list_stacking, windows_stack);
+    clientSetTopOfStack ();
+
+    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MANAGED);
 }
 
 static int
@@ -1630,11 +1655,18 @@ clientApplyStackList (GSList * list)
        avoid flickering during restack.
        (contributed by Thomas Leonard <tal00r@ecs.soton.ac.uk>)
      */
-    wc.stack_mode = Above;
-    wc.sibling = xwinstack[1];
-    XConfigureWindow(dpy, xwinstack[0], CWStackMode | CWSibling, &wc);
+    if (top_of_stack)
+    {
+        wc.stack_mode = Above;
+        wc.sibling = top_of_stack->frame;
+        XConfigureWindow(dpy, xwinstack[0], CWStackMode | CWSibling, &wc);
+    }
     XRestackWindows (dpy, xwinstack, (int) nwindows);
     XFlush (dpy);
+    
+    /* Update top_of_stackfor next restacking */
+    top_of_stack = (Client *) list_copy->data;
+    
     g_slist_free (list_copy);
     g_free (xwinstack);
 }
