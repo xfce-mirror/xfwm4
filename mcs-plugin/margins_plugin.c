@@ -247,7 +247,7 @@ run_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (mainvbox), vbox, TRUE, TRUE, 5);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 
-    frame = gtk_frame_new (_("Workspace Margins"));
+    frame = frame_box (_("Workspace Margins"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 5);
 

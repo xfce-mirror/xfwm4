@@ -1351,7 +1351,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox1);
     gtk_box_pack_start (GTK_BOX (hbox), vbox1, TRUE, TRUE, 0);
 
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Font select :"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, TRUE, 0);
 
@@ -1360,22 +1360,12 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_container_add (GTK_CONTAINER (frame), hbox);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
 
-    label = gtk_label_new (_("Font select :"));
-    gtk_widget_show (label);
-    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
     dialog->font_button = gtk_button_new ();
     gtk_button_set_label (GTK_BUTTON (dialog->font_button), current_font);
     gtk_widget_show (dialog->font_button);
     gtk_box_pack_start (GTK_BOX (hbox), dialog->font_button, TRUE, TRUE, 0);
 
-    label = gtk_label_new (_("Title font"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    dialog->frame_align = gtk_frame_new (NULL);
+    dialog->frame_align = frame_box (_("Title Alignment"), GTK_SHADOW_NONE);
     gtk_widget_show (dialog->frame_align);
     gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_align, TRUE, TRUE, 0);
 
@@ -1387,22 +1377,12 @@ create_dialog (McsPlugin * mcs_plugin)
                                                   (cb_title_align_value_changed),
                                                   mcs_plugin));
 
-    label = gtk_label_new (_("Title Alignment"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (dialog->frame_align), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    dialog->frame_layout = gtk_frame_new (NULL);
+    dialog->frame_layout = frame_box (_("Button layout"), GTK_SHADOW_NONE);
     gtk_widget_show (dialog->frame_layout);
     gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_layout, TRUE, TRUE, 0);
 
     gtk_container_add (GTK_CONTAINER (dialog->frame_layout),
                        create_layout_buttons (current_layout, mcs_plugin));
-
-    label = gtk_label_new (_("Button layout"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (dialog->frame_layout), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     label = gtk_label_new (_("Decoration style"));
     gtk_widget_show (label);
@@ -1417,8 +1397,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (hbox);
     gtk_container_add (GTK_CONTAINER (notebook), hbox);
 
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
+    frame = frame_box (_("Keyboard Shortcut"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (hbox), frame, TRUE, TRUE, 0);
 
@@ -1438,16 +1417,11 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview2),
                                        FALSE);
 
-    label = gtk_label_new (_("Keyboard Shortcut"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
     vbox2 = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox2);
     gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
 
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Focus model"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
@@ -1485,12 +1459,7 @@ create_dialog (McsPlugin * mcs_plugin)
                                   (dialog->focus_follow_mouse_radio),
                                   !click_to_focus);
 
-    label = gtk_label_new (_("Focus model"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("New window focus"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
@@ -1503,12 +1472,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_new_check),
                                   focus_new);
 
-    label = gtk_label_new (_("New window focus"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Raise on focus"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
@@ -1571,12 +1535,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_range_set_inverted (GTK_RANGE (dialog->raise_delay_scale), TRUE);
     gtk_widget_set_sensitive (dialog->raise_delay_scale, focus_raise);
 
-    label = gtk_label_new (_("Raise on focus"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Raise on click"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
@@ -1589,11 +1548,6 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
                                   (dialog->click_raise_check),
                                   raise_on_click);
-
-    label = gtk_label_new (_("Raise on click"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     label = gtk_label_new (_("Keyboard and focus"));
     gtk_widget_show (label);
@@ -1608,7 +1562,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox3);
     gtk_container_add (GTK_CONTAINER (notebook), vbox3);
 
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Windows snapping"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
@@ -1679,12 +1633,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_set_sensitive (dialog->snap_width_scale, snap_to_border
                               || snap_to_windows);
 
-    label = gtk_label_new (_("Windows snapping"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Wrap workspaces"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
@@ -1756,12 +1705,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_set_sensitive (dialog->wrap_resistance_scale, wrap_workspaces
                               || wrap_windows);
 
-    label = gtk_label_new (_("Wrap workspaces"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Opaque move and resize"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
@@ -1786,12 +1730,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_move_check),
                                   !box_move);
 
-    label = gtk_label_new (_("Opaque move and resize"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
-    frame = gtk_frame_new (NULL);
+    frame = frame_box (_("Double click action"), GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
@@ -1802,11 +1741,6 @@ create_dialog (McsPlugin * mcs_plugin)
                                                   G_CALLBACK
                                                   (cb_dblclick_action_value_changed),
                                                   mcs_plugin));
-
-    label = gtk_label_new (_("Double click action"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     label = gtk_label_new (_("Advanced"));
     gtk_widget_show (label);
