@@ -755,16 +755,8 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
     tmp = g_build_filename (theme_dir, KEY_SUFFIX, KEYTHEMERC, NULL);
     if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR) && parserc (tmp, &set_layout, &set_align, &set_font))
     {
-        int fd;
-
         has_keybinding = TRUE;
-
-	fd = open (tmp, O_WRONLY);
-	if (fd != -1)
-	{
-	  user_writable = TRUE;
-	  close (fd); 
-	}
+        user_writable = (access (tmp, W_OK) == 0);
     }
     g_free (tmp);
 
