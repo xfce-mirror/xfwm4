@@ -502,6 +502,10 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             wc.stack_mode &= ~CWStackMode;
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
+	if ((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && c->maximized)
+	{
+	    clientRemoveMaximizeFlag(c);
+	}
         clientConfigure(c, &wc, ev->value_mask);
     }
     else

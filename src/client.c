@@ -2112,6 +2112,18 @@ void clientToggleSticky(Client * c)
     }
 }
 
+void clientRemoveMaximizeFlag(Client * c)
+{
+    g_return_if_fail(c != NULL);
+    DBG("entering clientRemoveMaximizeFlag\n");
+    DBG("Removing maximize flag on client \"%s\" (%#lx)\n", c->name, c->window);
+    
+    c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
+    c->maximized = False;
+    setGnomeHint(dpy, c->window, win_state, c->win_state);
+    clientSetNetState(c);
+}
+
 void clientToggleMaximized(Client * c, int mode)
 {
     XWindowChanges wc;
