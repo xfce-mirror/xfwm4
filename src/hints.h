@@ -32,6 +32,8 @@
 #define MWM_DECOR_ALL				(1L<<0)
 #define MWM_DECOR_BORDER			(1L<<1)
 #define MWM_DECOR_TITLE 			(1L<<3)
+#define MWM_DECOR_MENU                          (1L<<4)
+#define MWM_DECOR_MINIMIZE                      (1L<<5)
 #define MWM_DECOR_MAXIMIZE			(1L<<6)
 
 #define WIN_STATE_STICKY			(1L<<0)

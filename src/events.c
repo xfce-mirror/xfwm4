@@ -1035,11 +1035,11 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         ops = MENU_OP_DELETE | MENU_OP_DESTROY | MENU_OP_MINIMIZE_ALL;
         insensitive = 0;
 
-        if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
+	if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
         {
             ops |= MENU_OP_UNMAXIMIZE;
         }
-        else
+        else if (CAN_MAXIMIZE_WINDOW(c))
         {
             ops |= MENU_OP_MAXIMIZE;
         }

@@ -166,6 +166,12 @@ WindowType;
 				(c->has_border) && \
 				!(c->skip_taskbar))
 
+#define CAN_MAXIMIZE_WINDOW(c)	((!(c->size->flags & (PMinSize | PMaxSize)) || \
+                                 ((c->size->flags & (PMinSize | PMaxSize)) && \
+                                  ((c->size->min_width != c->size->max_width) || \
+				  (c->size->min_height != c->size->max_height)))) && \
+				  (c->has_maximize))
+
 typedef struct _Client Client;
 
 struct _Client
@@ -210,6 +216,9 @@ struct _Client
     unsigned int focus:1;
     unsigned int fullscreen:1;
     unsigned int has_border:1;
+    unsigned int has_menu:1;
+    unsigned int has_maximize:1;
+    unsigned int has_hide:1;
     unsigned int has_struts:1;
     unsigned int hidden:1;
     unsigned int ignore_unmap;

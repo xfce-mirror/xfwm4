@@ -298,22 +298,28 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     g_object_unref(G_OBJECT(layout));
 }
 
-static int getButtonFromLetter(char c)
+static int getButtonFromLetter(char c, Client * cl)
 {
-    int b;
+    int b=-1;
 
     DBG("entering getButtonFromLetter\n");
 
     switch (c)
     {
         case 'H':
-            b = HIDE_BUTTON;
+	    if (cl->has_hide)
+	    {
+                b = HIDE_BUTTON;
+	    }
             break;
         case 'C':
             b = CLOSE_BUTTON;
             break;
         case 'M':
-            b = MAXIMIZE_BUTTON;
+	    if (cl->has_maximize)
+	    {
+                b = MAXIMIZE_BUTTON;
+	    }
             break;
         case 'S':
             b = SHADE_BUTTON;
@@ -322,7 +328,10 @@ static int getButtonFromLetter(char c)
             b = STICK_BUTTON;
             break;
         case 'O':
-            b = MENU_BUTTON;
+	    if (cl->has_menu)
+	    {
+                b = MENU_BUTTON;
+	    }
             break;
         default:
             b = -1;
@@ -330,22 +339,28 @@ static int getButtonFromLetter(char c)
     return b;
 }
 
-static char getLetterFromButton(int b)
+static char getLetterFromButton(int b, Client * cl)
 {
-    char c;
+    char c = 0;
 
     DBG("entering getLetterFromButton\n");
 
     switch (b)
     {
         case HIDE_BUTTON:
-            c = 'H';
+	    if (cl->has_hide)
+	    {
+                c = 'H';
+	    }
             break;
         case CLOSE_BUTTON:
             c = 'C';
             break;
         case MAXIMIZE_BUTTON:
-            c = 'M';
+	    if (cl->has_maximize)
+	    {
+                c = 'M';
+            }
             break;
         case SHADE_BUTTON:
             c = 'S';
@@ -354,7 +369,10 @@ static char getLetterFromButton(int b)
             c = 'T';
             break;
         case MENU_BUTTON:
-            c = 'O';
+	    if (cl->has_menu)
+	    {
+                c = 'O';
+	    }
             break;
         default:
             c = 0;
@@ -456,7 +474,7 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
         XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, c->corners[CORNER_TOP_RIGHT], ShapeBounding, ShapeUnion);
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(strchr(button_layout, getLetterFromButton(i)))
+            if(strchr(button_layout, getLetterFromButton(i, c)))
             {
                 XShapeCombineShape(dpy, temp, ShapeBounding, button_x[i], (frameTop(c) - buttons[i][ACTIVE].height) / 2, c->buttons[i], ShapeBounding, ShapeUnion);
             }
@@ -502,7 +520,8 @@ void frameDraw(Client * c)
         }
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(strchr(button_layout, getLetterFromButton(i)))
+	    char b = getLetterFromButton(i, c);
+            if(strchr(button_layout, b))
             {
                 XMapWindow(dpy, c->buttons[i]);
             }
@@ -515,7 +534,7 @@ void frameDraw(Client * c)
         x = frameLeft(c) + button_offset;
         for(i = 0; i < strlen(button_layout); i++)
         {
-            button = getButtonFromLetter(button_layout[i]);
+            button = getButtonFromLetter(button_layout[i], c);
             if(button >= 0)
             {
                 XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - buttons[button][ACTIVE].height) / 2, buttons[button][ACTIVE].width, buttons[button][ACTIVE].height);
@@ -532,7 +551,7 @@ void frameDraw(Client * c)
         x = frameWidth(c) - frameRight(c) + button_spacing - button_offset;
         for(i = strlen(button_layout) - 1; i >= 0; i--)
         {
-            button = getButtonFromLetter(button_layout[i]);
+            button = getButtonFromLetter(button_layout[i], c);
             if(button >= 0)
             {
                 x = x - buttons[button][ACTIVE].width - button_spacing;

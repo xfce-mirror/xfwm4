@@ -1578,6 +1578,9 @@ void clientFrame(Window w)
     c->focus = False;
     c->fullscreen = False;
     c->has_border = True;
+    c->has_menu = True;
+    c->has_maximize = True;
+    c->has_hide = True;
     c->has_struts = False;
     c->hidden = (START_ICONIC(c) ? True : False);
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
@@ -1600,7 +1603,10 @@ void clientFrame(Window w)
     {
         if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
         {
-            c->has_border = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
+            c->has_border   = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
+            c->has_menu     = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
+            c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
+            c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
         }
         XFree(mwm_hints);
     }
@@ -2174,7 +2180,7 @@ void clientToggleMaximized(Client * c, int mode)
     DBG("entering clientToggleMaximized\n");
     DBG("maximzing/unmaximizing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if((c->size->flags & (PMinSize | PMaxSize)) && (c->size->min_width == c->size->max_width) && (c->size->min_height == c->size->max_height))
+    if(!CAN_MAXIMIZE_WINDOW(c))
     {
         return;
     }
