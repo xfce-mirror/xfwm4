@@ -7,7 +7,7 @@ static char * right_inactive_xpm[] = {
 "@	c #3E566B s inactive_shadow_1",
 "$	c #567B9C s inactive_mid_1",
 "#	c #D5D6D5 s inactive_color_2",
-"%	c #4C7BA6 s inactive_color_1",
+"%	c #567B9C s inactive_mid_1",
 "##%@.",
 "##%@.",
 "##%@.",
