@@ -2820,9 +2820,11 @@ clientFrame (Window w, gboolean startup)
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
 
+    if (attr.map_state == IsViewable)
+    {
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
+    }
     c->ignore_unmap = 1;
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
- 
     c->type = UNSET;
     c->type_atom = None;
 
