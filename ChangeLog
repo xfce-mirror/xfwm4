@@ -1,3 +1,166 @@
+2003-03-17  xfce
+
+	* src/events.c, themes/microdeck/Makefile.am,
+	themes/microdeck/Makefile.in, themes/microdeck/bottom-active.xpm,
+	themes/microdeck/bottom-inactive.xpm,
+	themes/microdeck/bottom-left-active.xpm,
+	themes/microdeck/bottom-left-inactive.xpm,
+	themes/microdeck/bottom-right-active.xpm,
+	themes/microdeck/bottom-right-inactive.xpm,
+	themes/microdeck/left-active.xpm,
+	themes/microdeck/left-inactive.xpm,
+	themes/microdeck/maximize-toggled-active.xpm,
+	themes/microdeck/maximize-toggled-inactive.xpm,
+	themes/microdeck/maximize-toggled-pressed.xpm,
+	themes/microdeck/right-active.xpm,
+	themes/microdeck/right-inactive.xpm,
+	themes/microdeck/shade-toggled-active.xpm,
+	themes/microdeck/shade-toggled-inactive.xpm,
+	themes/microdeck/shade-toggled-pressed.xpm,
+	themes/microdeck/stick-toggled-active.xpm,
+	themes/microdeck/stick-toggled-inactive.xpm,
+	themes/microdeck/stick-toggled-pressed.xpm,
+	themes/microdeck/themerc, themes/microdeck/title-5-active.xpm,
+	themes/microdeck/title-5-inactive.xpm,
+	themes/microdeck/top-left-active.xpm,
+	themes/microdeck/top-left-inactive.xpm,
+	themes/microdeck/top-right-active.xpm,
+	themes/microdeck/top-right-inactive.xpm: Missing bits, messed up
+	cvs update
+
+2003-03-17  xfce
+
+	* po/es.gmo, src/client.c: Update default (microdeck) theme and
+	improve toggle buttons management
+
+2003-03-17  bmeurer
+
+	* NOTES: Forgot to add.
+
+2003-03-17  bmeurer
+
+	* themes/: tabs/Makefile.in, tgc/Makefile.in, totem/Makefile.in,
+	trench/Makefile.in, tux/Makefile.in, variation/Makefile.in,
+	xfce/Makefile.in: Major autostuff update.
+
+2003-03-17  bmeurer
+
+	* Makefile.am, Makefile.in, aclocal.m4, autogen.sh, config.h.in,
+	configure, configure.ac, configure.in, ltcf-c.sh, ltconfig,
+	ltmain.sh, xfwm4.spec.in, common/Makefile.in, defaults/Makefile.in,
+	m4/X11.m4, m4/debug.m4, m4/depends.m4, m4/i18n.m4, m4/rpath.m4,
+	mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	po/Makefile.in.in, src/Makefile.am, src/Makefile.in, src/client.c,
+	src/client.h, src/hints.c, src/hints.h, src/startup_notification.c,
+	src/startup_notification.h, themes/Makefile.am, themes/Makefile.in,
+	themes/adept/Makefile.in, themes/agua/Makefile.in,
+	themes/atlanta/Makefile.in, themes/atlanta2/Makefile.in,
+	themes/b5/Makefile.in, themes/b6/Makefile.in,
+	themes/bbs/Makefile.in, themes/beastie/Makefile.in,
+	themes/biz/Makefile.in, themes/coldsteel/Makefile.in,
+	themes/coolclean/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/curve/Makefile.in,
+	themes/default.keys/Makefile.in, themes/eazel-blue/Makefile.in,
+	themes/elberg/Makefile.in, themes/exocet/Makefile.in,
+	themes/fbx/Makefile.in, themes/g2/Makefile.in,
+	themes/gaudy/Makefile.in, themes/gnububble/Makefile.in,
+	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
+	themes/iceg/Makefile.in, themes/kde/Makefile.in,
+	themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
+	themes/koynacity/Makefile.in, themes/linea/Makefile.in,
+	themes/meenee/Makefile.in, themes/metabox/Makefile.in,
+	themes/microcurve/Makefile.in, themes/microdeck/Makefile.in,
+	themes/microdeck2/Makefile.in, themes/microdeck3/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in: Major autostuff update.
+
+2003-03-16  xfce
+
+	* src/frame.c, themes/gtk/maximize-toggled-active.xpm,
+	themes/gtk/maximize-toggled-inactive.xpm,
+	themes/gtk/maximize-toggled-pressed.xpm,
+	themes/gtk/shade-toggled-active.xpm,
+	themes/gtk/shade-toggled-inactive.xpm,
+	themes/gtk/shade-toggled-pressed.xpm,
+	themes/gtk/stick-toggled-active.xpm,
+	themes/gtk/stick-toggled-inactive.xpm,
+	themes/gtk/stick-toggled-pressed.xpm,
+	themes/microdeck/top-right-active.xpm,
+	themes/microdeck/top-right-inactive.xpm: Missing bits.
+
+2003-03-16  xfce
+
+	* src/client.c, src/client.h, src/frame.c, src/settings.c,
+	src/settings.h, themes/gtk/Makefile.am, themes/gtk/Makefile.in,
+	themes/microdeck/top-left-active.xpm,
+	themes/microdeck/top-left-inactive.xpm,
+	themes/microdeck/top-right-active.xpm,
+	themes/microdeck/top-right-inactive.xpm: Apply a modified version
+	of the patch submitted by Jens Guballa <J.Guballa@t-online.de> for
+	toggled buttons.
+
+2003-03-16  xfce
+
+	* mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	src/client.c, src/client.h, src/debug.h, src/events.c,
+	src/events.h, src/frame.c, src/frame.h, src/hints.c, src/hints.h,
+	src/inline-tabwin-icon.h, src/keyboard.c, src/keyboard.h,
+	src/main.c, src/main.h, src/menu.c, src/menu.h, src/misc.c,
+	src/misc.h, src/mywindow.c, src/mywindow.h, src/parserc.c,
+	src/parserc.h, src/pixmap.c, src/pixmap.h, src/session.c,
+	src/session.h, src/settings.c, src/settings.h,
+	src/spinning_cursor.c, src/spinning_cursor.h,
+	src/startup_notification.c, src/startup_notification.h,
+	src/tabwin.c, src/tabwin.h, src/workspaces.c, src/workspaces.h,
+	themes/microdeck/bottom-active.xpm,
+	themes/microdeck/bottom-inactive.xpm,
+	themes/microdeck/bottom-left-active.xpm,
+	themes/microdeck/bottom-left-inactive.xpm,
+	themes/microdeck/bottom-right-active.xpm,
+	themes/microdeck/bottom-right-inactive.xpm,
+	themes/microdeck/left-active.xpm,
+	themes/microdeck/left-inactive.xpm,
+	themes/microdeck/right-active.xpm,
+	themes/microdeck/right-inactive.xpm,
+	themes/microdeck/top-left-active.xpm,
+	themes/microdeck/top-left-inactive.xpm,
+	themes/microdeck/top-right-active.xpm,
+	themes/microdeck/top-right-inactive.xpm: Reformat code usign
+	astyle, redesign microdeck theme, include nestu's Spanish
+	translation
+
+2003-03-16  xfce
+
+	* po/: es.gmo, es.po: Add nestu's Spanish translation
+
+2003-03-16  xfce
+
+	* themes/microdeck/: title-2-active.xpm, title-2-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: [no log message]
+
+2003-03-16  xfce
+
+	* themes/microdeck/: themerc, title-2-active.xpm,
+	title-2-inactive.xpm, title-3-active.xpm, title-3-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: Redesign title bar of
+	microdeck theme (default theme)
+
+2003-03-16  xfce
+
+	* src/events.c: Fix "button2 on maximize button =  maximize horiz"
+
+2003-03-13  xfce
+
+	* ChangeLog: Update Changelogs
+
 2003-03-13  xfce
 
 	* src/client.c, themes/microdeck/themerc: Add a flag to avoid
