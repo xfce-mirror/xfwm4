@@ -318,10 +318,12 @@ int main(int argc, char **argv)
     switch (status)
     {
         case -1:
-            g_error(_("%s: Another Window Manager is already running"), g_get_prgname());
+            g_warning(_("%s: Another Window Manager is already running"), g_get_prgname());
+	    exit(1);
             break;
         case -2:
-            g_error(_("%s: Missing data from default files"), g_get_prgname());
+            g_warning(_("%s: Missing data from default files"), g_get_prgname());
+            exit(1);
             break;
         case 0:
             if(daemon_mode)
@@ -329,7 +331,8 @@ int main(int argc, char **argv)
                 switch (fork())
                 {
                     case -1:
-                        g_error("fork() failed");
+                        g_warning("fork() failed");
+			exit(1);
                         break;
                     case 0:    /* child */
                         gtk_main();
@@ -345,7 +348,8 @@ int main(int argc, char **argv)
             }
             break;
         default:
-            g_error(_("%s: Unknown error occured"), g_get_prgname());
+            g_warning(_("%s: Unknown error occured"), g_get_prgname());
+            exit(1);
             break;
     }
     cleanUp();
