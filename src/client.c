@@ -1624,6 +1624,7 @@ clientApplyStackList (GSList * list)
     }
     XRaiseWindow (dpy, xwinstack[0]);
     XRestackWindows (dpy, xwinstack, (int) nwindows);
+    XFlush (dpy);
     g_slist_free (list_copy);
     g_free (xwinstack);
 }
@@ -2790,7 +2791,7 @@ clientFrame (Window w, gboolean initial)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
     clientApplyStackList (windows_stack);
-    /* last_raise = c; */
+    last_raise = c;
 
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
