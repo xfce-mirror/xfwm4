@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
 "PO-Revision-Date: 2003-05-08 22:59+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -273,12 +273,12 @@ msgstr "¾¨ÄôÒô Àð¨¼Â¢ø þÃð¨¼ «Óò¾ø ¦ºÂø :"
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:493
+#: src/client.c:496
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: §ÁÄ¡ñ¨ÁÂüÈ net_wm_state (º¡ÇÃõ 0x%lx)"
 
-#: src/events.c:1442
+#: src/events.c:1453
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: ­Âì¸ò¾¢ðÌ ¬¾ÃÅÇ¢ôÒ þø¨Ä (þô¦À¡ØÐ)\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
 "PO-Revision-Date: 2003-08-16 15:44+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
@@ -269,12 +269,12 @@ msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
 msgid "Advanced"
 msgstr "Išplėstas"
 
-#: src/client.c:493
+#: src/client.c:496
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1442
+#: src/events.c:1453
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operacija nėra palaikoma (kolkas)\n"

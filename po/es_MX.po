@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -273,12 +273,12 @@ msgstr "Acción a realizar cuando se pincha dos veces en la barra de título :"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/client.c:493
+#: src/client.c:496
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana 0x%lx)"
 
-#: src/events.c:1442
+#: src/events.c:1453
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no activa (aún)\n"

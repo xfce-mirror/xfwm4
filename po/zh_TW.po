@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
 "PO-Revision-Date: 2003-08-29 21:12+0800\n"
 "Last-Translator: umm <umm@pchome.com.tw>\n"
 "Language-Team:  <>\n"
@@ -268,12 +268,12 @@ msgstr "雙擊標題列執行的動作："
 msgid "Advanced"
 msgstr "進階"
 
-#: src/client.c:493
+#: src/client.c:496
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 無法管理的 net_wm_state (window 0x%lx)"
 
-#: src/events.c:1442
+#: src/events.c:1453
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: (尚)未支援的操作\n"
