@@ -211,8 +211,6 @@ do
   --mode) prevopt="--mode" prev=mode ;;
   --mode=*) mode="$optarg" ;;
 
-  --preserve-dup-deps) duplicate_deps="yes" ;;
-
   --quiet | --silent)
     show=:
     ;;
@@ -258,7 +256,7 @@ if test -z "$show_help"; then
   # Infer the operation mode.
   if test -z "$mode"; then
     case $nonopt in
-    *cc | *++ | gcc* | *-gcc* | *CC)
+    *cc | *++ | gcc* | *-gcc*)
       mode=link
       for arg
       do
@@ -496,21 +494,11 @@ if test -z "$show_help"; then
     # command doesn't match the default compiler.
     if test -n "$available_tags" && test -z "$tagname"; then
       case $base_compile in
-      "$CC "*) tagname=CC ;;
+      "$CC "*) ;;
       # Blanks in the command may have been stripped by the calling shell,
       # but not from the CC environment variable when ltconfig was run.
-      "`$echo $CC` "*) tagname=CC ;;
-      *)   base_compiler=`echo $base_compile | awk '{ print $1 }'`
-	   case $base_compiler in
-	   *cc)	tagname=CC ;;
-	   *++)
-	     tagname=CXX
-	     eval "`sed -n -e '/^### BEGIN LIBTOOL TAG CONFIG: '$tagname'$/,/^### END LIBTOOL TAG CONFIG: '$tagname'$/p' < $0`"
-	     ;;
-	   esac ;;
-      esac
-    fi
-    if test -n "$available_tags" && test -z "$tagname"; then
+      "`$echo $CC` "*) ;;
+      *)
         for z in $available_tags; do
           if grep "^### BEGIN LIBTOOL TAG CONFIG: $z$" < "$0" > /dev/null; then
 	    # Evaluate the configuration.
@@ -540,6 +528,8 @@ if test -z "$show_help"; then
 #        else
 #          echo "$modename: using $tagname tagged configuration"
         fi
+	;;
+      esac
     fi
 
     objname=`$echo "X$obj" | $Xsed -e 's%^.*/%%'`
@@ -1538,21 +1528,11 @@ EOF
     # command doesn't match the default compiler.
     if test -n "$available_tags" && test -z "$tagname"; then
       case $base_compile in
-      "$CC "*) tagname=CC ;;
+      "$CC "*) ;;
       # Blanks in the command may have been stripped by the calling shell,
       # but not from the CC environment variable when ltconfig was run.
-      "`$echo $CC` "*) tagname=CC ;;
-      *)   base_compiler=`echo $base_compile | awk '{ print $1 }'`
-	   case $base_compiler in
-	   *cc)	tagname=CC ;;
-	   *++)
-	     tagname=CXX
-	     eval "`sed -n -e '/^### BEGIN LIBTOOL TAG CONFIG: '$tagname'$/,/^### END LIBTOOL TAG CONFIG: '$tagname'$/p' < $0`"
-	     ;;
-	   esac ;;
-      esac
-    fi
-    if test -n "$available_tags" && test -z "$tagname"; then
+      "`$echo $CC` "*) ;;
+      *)
         for z in $available_tags; do
           if grep "^### BEGIN LIBTOOL TAG CONFIG: $z$" < "$0" > /dev/null; then
 	    # Evaluate the configuration.
@@ -1582,6 +1562,8 @@ EOF
 #       else
 #         echo "$modename: using $tagname tagged configuration"
         fi
+	;;
+      esac
     fi
 
     if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then
@@ -1637,11 +1619,9 @@ EOF
     # Find all interdependent deplibs by searching for libraries
     # that are linked more than once (e.g. -la -lb -la)
     for deplib in $deplibs; do
-      if test "X$duplicate_deps" = "Xyes" ; then
       case "$libs " in
       *" $deplib "*) specialdeplibs="$specialdeplibs $deplib" ;;
       esac
-      fi
       libs="$libs $deplib"
     done
 
@@ -1652,14 +1632,12 @@ EOF
       # $postdeps and mark them as special (i.e., whose duplicates are
       # not to be eliminated).
       pre_post_deps=
-      if test "X$duplicate_deps" = "Xyes" ; then
       for pre_post_dep in $predeps $postdeps; do
         case "$pre_post_deps " in
 	*" $pre_post_dep "*) specialdeplibs="$specialdeplibs $pre_post_deps" ;;
 	esac
 	pre_post_deps="$pre_post_deps $pre_post_dep"
       done
-      fi
       pre_post_deps=
     fi
 
@@ -1883,11 +1861,9 @@ EOF
 	    tmp_libs=
 	    for deplib in $dependency_libs; do
 	      deplibs="$deplib $deplibs"
-              if test "X$duplicate_deps" = "Xyes" ; then
 	      case "$tmp_libs " in
 	      *" $deplib "*) specialdeplibs="$specialdeplibs $deplib" ;;
 	      esac
-              fi
 	      tmp_libs="$tmp_libs $deplib"
 	    done
 	  elif test $linkmode != prog && test $linkmode != lib; then
@@ -2010,11 +1986,9 @@ EOF
 	      # or/and link against static libraries
 	      newdependency_libs="$deplib $newdependency_libs"
 	    fi
-	    if test "X$duplicate_deps" = "Xyes" ; then
 	    case "$tmp_libs " in
 	    *" $deplib "*) specialdeplibs="$specialdeplibs $deplib" ;;
 	    esac
-	    fi
 	    tmp_libs="$tmp_libs $deplib"
 	  done # for deplib
 	  continue
@@ -2313,11 +2287,9 @@ EOF
 	  tmp_libs=
 	  for deplib in $dependency_libs; do
 	    newdependency_libs="$deplib $newdependency_libs"
-	    if test "X$duplicate_deps" = "Xyes" ; then
 	    case "$tmp_libs " in
 	    *" $deplib "*) specialdeplibs="$specialdeplibs $deplib" ;;
 	    esac
-	    fi
 	    tmp_libs="$tmp_libs $deplib"
 	  done
 
@@ -2610,7 +2582,7 @@ EOF
 	  ;;
 
 	irix)
-	  major=`expr $current - $age`
+	  major=`expr $current - $age + 1`
 	  verstring="sgi$major.$revision"
 
 	  # Add in all the interfaces that we are compatible with.
@@ -2670,16 +2642,7 @@ EOF
 	# Clear the version info if we defaulted, and they specified a release.
 	if test -z "$vinfo" && test -n "$release"; then
 	  major=
-	  case $version_type in
-	  darwin)
-	    # we can't check for "0.0" in archive_cmds due to quoting
-	    # problems, so we reset it completely
-	    verstring=
-	    ;;
-	  *)
-	    verstring="0.0"
-	    ;;
-	  esac
+	  verstring="0.0"
 	  if test "$need_version" = no; then
 	    versuffix=
 	  else
@@ -5090,7 +5053,7 @@ relink_command=\"$relink_command\""
       fi
 
       # Now prepare to actually exec the command.
-      exec_cmd="\$cmd$args"
+      exec_cmd='"$cmd"$args'
     else
       # Display what would be done.
       if test -n "$shlibpath_var"; then
