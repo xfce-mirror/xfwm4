@@ -878,8 +878,7 @@ clientGetMWMHints (Client * c, gboolean update)
     {
         /* EWMH window type takes precedences over Motif hints */ 
         clientWindowType (c);
-        if (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_BORDER | 
-                                         XFWM_FLAG_LEGACY_FULLSCREEN)
+        if (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_LEGACY_FULLSCREEN)
             && !FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             /* legacy app changed its decoration, put it back on regular layer */
@@ -1184,8 +1183,7 @@ clientApplyInitialState (Client * c)
     TRACE ("entering clientApplyInitialState");
 
     /* We check that afterwards to make sure all states are now known */
-    if (FLAG_TEST (c->flags,
-            CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
         {
