@@ -1,3 +1,52 @@
+2003-03-27  xfce
+
+	* src/: client.c, client.h, events.c, frame.c, main.h: Fix a bug in
+	focus management as shown when using OO 1.1-beta
+
+2003-03-26  xfce
+
+	* src/frame.c: Very small optimization that makes code cleaner
+	anyway, Apparetly, yet another default theme change...
+
+2003-03-25  xfce
+
+	* themes/default/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-inactive.xpm, hide-inactive.xpm, left-active.xpm,
+	maximize-inactive.xpm, maximize-toggled-inactive.xpm,
+	menu-inactive.xpm, right-active.xpm, right-inactive.xpm,
+	shade-inactive.xpm, shade-toggled-inactive.xpm, stick-inactive.xpm,
+	stick-toggled-inactive.xpm, themerc, title-1-active.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, top-left-active.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2003-03-24  xfce
+
+	* src/client.c, themes/default/bottom-left-active.xpm,
+	themes/default/bottom-left-inactive.xpm,
+	themes/default/bottom-right-active.xpm,
+	themes/default/bottom-right-inactive.xpm: Test gtk version to use
+	deprecated gdk pixbuf render functions, update default theme.
+
+2003-03-24  xfce
+
+	* src/events.c: Remove soon to be deprecated gtk functions :
+	gtk_timeout_add() gtk_timeout_remove()
+	gdk_pixbuf_render_to_drawable()
+	gdk_pixbuf_render_to_drawable_alpha()
+
+2003-03-23  xfce
+
+	* themes/microdeck2/: title-3-active.xpm, title-3-inactive.xpm:
+	microdeck2 theme was broken (dunno why though...)
+
+2003-03-23  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-03-23  xfce
 
 	* themes/default/: top-right-active.xpm, top-right-inactive.xpm:
