@@ -270,7 +270,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_FRAME)
         {
-            frameDraw (c, FALSE, FALSE);
+            frameDraw (c, TRUE, FALSE);
         }
     }
     XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
