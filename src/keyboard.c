@@ -79,21 +79,41 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
         {
             key->modifier = key->modifier | ControlMask;
         }
-        if (strstr (tmp, "alt") || strstr (tmp, "mod1"))
+        if (strstr (tmp, "alt"))
         {
             key->modifier = key->modifier | AltMask;
         }
-        if (strstr (tmp, "meta") || strstr (tmp, "mod2"))
+        if (strstr (tmp, "meta"))
         {
             key->modifier = key->modifier | MetaMask;
         }
-        if (strstr (tmp, "super") || strstr (tmp, "mod4"))
+        if (strstr (tmp, "super"))
         {
             key->modifier = key->modifier | SuperMask;
         }
-        if (strstr (tmp, "hyper") || strstr (tmp, "mod5"))
+        if (strstr (tmp, "hyper"))
         {
             key->modifier = key->modifier | HyperMask;
+        }
+        if (strstr (tmp, "mod1"))
+        {
+            key->modifier = key->modifier | Mod1Mask;
+        }
+        if (strstr (tmp, "mod2"))
+        {
+            key->modifier = key->modifier | Mod2Mask;
+        }
+        if (strstr (tmp, "mod3"))
+        {
+            key->modifier = key->modifier | Mod3Mask;
+        }
+        if (strstr (tmp, "mod4"))
+        {
+            key->modifier = key->modifier | Mod4Mask;
+        }
+        if (strstr (tmp, "mod5"))
+        {
+            key->modifier = key->modifier | Mod5Mask;
         }
         g_free (tmp);
     }
@@ -228,115 +248,66 @@ ungrabButton (Display * dpy, int button, int modifier, Window w)
 void
 initModifiers (Display * dpy)
 {
-    XModifierKeymap *xmk = XGetModifierMapping (dpy);
-    int m, k;
+    XModifierKeymap *modmap;
+    KeySym *keymap;
+    int i;
+    int keysyms_per_keycode;
+    int min_keycode;
+    int max_keycode;
 
     AltMask = MetaMask = NumLockMask = ScrollLockMask = CapsLockMask =
         SuperMask = HyperMask = 0;
-    if (xmk)
+    keysyms_per_keycode = 0;
+    min_keycode = 0;
+    max_keycode = 0;
+
+    XDisplayKeycodes (dpy, &min_keycode, &max_keycode);
+    modmap = XGetModifierMapping (dpy);
+    keymap = XGetKeyboardMapping (dpy, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);  
+
+    for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
     {
-        KeyCode *c = xmk->modifiermap;
-        KeyCode numLockKeyCode;
-        KeyCode scrollLockKeyCode;
-        KeyCode capsLockKeyCode;
-        KeyCode altKeyCode;
-        KeyCode metaKeyCode;
-        KeyCode superKeyCode;
-        KeyCode hyperKeyCode;
+        unsigned int keycode = modmap->modifiermap[i];
 
-        numLockKeyCode = XKeysymToKeycode (dpy, XK_Num_Lock);
-        scrollLockKeyCode = XKeysymToKeycode (dpy, XK_Scroll_Lock);
-        capsLockKeyCode = XKeysymToKeycode (dpy, XK_Caps_Lock);
-        altKeyCode = XKeysymToKeycode (dpy, XK_Alt_L);
-        metaKeyCode = XKeysymToKeycode (dpy, XK_Meta_L);
-        superKeyCode = XKeysymToKeycode (dpy, XK_Super_L);
-        hyperKeyCode = XKeysymToKeycode (dpy, XK_Hyper_L);
+        if ((keycode >= min_keycode) && (keycode <= max_keycode))
+        {
+            int j = 0;
+            KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
 
-        if (!altKeyCode)
-        {
-            altKeyCode = XKeysymToKeycode (dpy, XK_Alt_R);
-        }
-        if (!metaKeyCode)
-        {
-            metaKeyCode = XKeysymToKeycode (dpy, XK_Meta_R);
-        }
-        if (!superKeyCode)
-        {
-            superKeyCode = XKeysymToKeycode (dpy, XK_Super_R);
-        }
-        if (!hyperKeyCode)
-        {
-            hyperKeyCode = XKeysymToKeycode (dpy, XK_Hyper_R);
-        }
-
-
-        for (m = 0; m < 8; m++)
-        {
-            for (k = 0; k < xmk->max_keypermod; k++, c++)
+            for (j = 0; j < keysyms_per_keycode; j++)
             {
-                if (*c == NoSymbol)
+                if (syms[j] == XK_Num_Lock)
                 {
-                    continue;
+                    NumLockMask |= (1 << ( i / modmap->max_keypermod));
                 }
-                if (*c == numLockKeyCode)
+                else if (syms[j] == XK_Caps_Lock)
                 {
-                    NumLockMask = (1 << m);
+                    CapsLockMask |= (1 << ( i / modmap->max_keypermod));
                 }
-                if (*c == scrollLockKeyCode)
+                else if (syms[j] == XK_Scroll_Lock)
                 {
-                    ScrollLockMask = (1 << m);
+                    ScrollLockMask |= (1 << ( i / modmap->max_keypermod));
                 }
-                if (*c == capsLockKeyCode)
+                else if ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R))
                 {
-                    CapsLockMask = (1 << m);
+                    SuperMask |= (1 << ( i / modmap->max_keypermod));
                 }
-                if (*c == altKeyCode)
+                else if ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R))
                 {
-                    AltMask = (1 << m);
+                    HyperMask |= (1 << ( i / modmap->max_keypermod));
+                }              
+                else if ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R))
+                {
+                    MetaMask |= (1 << ( i / modmap->max_keypermod));
                 }
-                if (*c == metaKeyCode)
+                else if ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R))
                 {
-                    MetaMask = (1 << m);
-                }
-                if (*c == superKeyCode)
-                {
-                    SuperMask = (1 << m);
-                }
-                if (*c == hyperKeyCode)
-                {
-                    HyperMask = (1 << m);
+                    AltMask |= (1 << ( i / modmap->max_keypermod));
                 }
             }
         }
-        XFreeModifiermap (xmk);
-    }
-    if (MetaMask == AltMask)
-    {
-        MetaMask = 0;
-    }
-    if ((AltMask != 0) && (MetaMask == Mod1Mask))
-    {
-        MetaMask = AltMask;
-        AltMask = Mod1Mask;
     }
 
-    if ((AltMask == 0) && (MetaMask != 0))
-    {
-        if (MetaMask != Mod1Mask)
-        {
-            AltMask = Mod1Mask;
-        }
-        else
-        {
-            AltMask = MetaMask;
-            MetaMask = 0;
-        }
-    }
-
-    if (AltMask == 0)
-    {
-        AltMask = Mod1Mask;
-    }
     KeyMask =
         ControlMask | ShiftMask | AltMask | MetaMask | SuperMask | HyperMask;
 
@@ -345,4 +316,3 @@ initModifiers (Display * dpy)
 
     ButtonKeyMask = KeyMask | ButtonMask;
 }
-
