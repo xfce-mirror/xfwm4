@@ -1019,7 +1019,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
          * unframe the client.
          */
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE) && 
-	    (ev->event == screen_info->xroot) && (ev->send_event))
+            (ev->event == screen_info->xroot) && (ev->send_event))
         {
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
             clientUnframe (c, FALSE);

@@ -389,18 +389,18 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
-        	clientUpdateFullscreenState (c);
+                clientUpdateFullscreenState (c);
             }
             else if ((action == NET_WM_STATE_REMOVE)
                 && FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREEN);
-        	clientUpdateFullscreenState (c);
+                clientUpdateFullscreenState (c);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
-        	clientUpdateFullscreenState (c);
+                clientUpdateFullscreenState (c);
             }
         }
     }
@@ -413,18 +413,18 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
-        	clientUpdateAboveState (c);
+                clientUpdateAboveState (c);
             }
             else if ((action == NET_WM_STATE_REMOVE)
                 && FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
-        	clientUpdateAboveState (c);
+                clientUpdateAboveState (c);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
-        	clientUpdateAboveState (c);
+                clientUpdateAboveState (c);
             }
         }
     }
@@ -437,18 +437,18 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
-        	clientUpdateBelowState (c);
+                clientUpdateBelowState (c);
             }
             else if ((action == NET_WM_STATE_REMOVE)
                 && FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
-        	clientUpdateBelowState (c);
+                clientUpdateBelowState (c);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
-        	clientUpdateBelowState (c);
+                clientUpdateBelowState (c);
             }
         }
     }

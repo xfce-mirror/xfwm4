@@ -229,12 +229,12 @@ initialize (int argc, char **argv)
         {
             continue;
         }
-	
+        
         if (!initSettings (screen_info))
         {
             return -2;
         }
-	
+        
         sn_init_display (screen_info);
         myDisplayAddScreen (display_info, screen_info);
         setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);

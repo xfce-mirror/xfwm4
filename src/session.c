@@ -567,7 +567,7 @@ matchWin (Client * c, Match * m)
         else
         {
             /* 
-	     * Compare res_class, res_name and WM_NAME, unless the
+             * Compare res_class, res_name and WM_NAME, unless the
              * WM_NAME has changed
              */
             if (xstreq (c->class.res_name, m->res_name)
@@ -601,7 +601,7 @@ matchWin (Client * c, Match * m)
                         }
                     }           /* if (wm_command_count ==... */
                     /* 
-		     * We have to deal with a now-SM-aware client, it means that it won't probably
+                     * We have to deal with a now-SM-aware client, it means that it won't probably
                      * restore its state in a proper manner.
                      * Thus, we also mark all other instances of this application as used, to avoid
                      * dummy side effects in case we found a matching entry.

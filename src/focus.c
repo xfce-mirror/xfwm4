@@ -146,14 +146,14 @@ clientFocusNew(Client * c)
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         if (client_focus)
-	{
-	    if (clientAdjustFullscreenLayer (client_focus, FALSE))
-	    {
-	        clientRaise (c);
+        {
+            if (clientAdjustFullscreenLayer (client_focus, FALSE))
+            {
+                clientRaise (c);
             }
-	}
+        }
         clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
-	clientPassGrabButton1 (c);
+        clientPassGrabButton1 (c);
     }
     else
     {
@@ -273,25 +273,25 @@ clientPassFocus (ScreenInfo *screen_info, Client * c)
         if (c)
         {
             if (clientIsModal (c))
-	    {
-		/* If the window is a modal, send focus back to its parent window
-        	   Modals are transients, and we aren"t interested in modal
-        	   for group, so it safe to use clientGetTransient because 
-        	   it's really what we want...
-        	 */
+            {
+                /* If the window is a modal, send focus back to its parent window
+                   Modals are transients, and we aren"t interested in modal
+                   for group, so it safe to use clientGetTransient because 
+                   it's really what we want...
+                 */
 
-        	c2 = clientGetTransient (c);
-        	if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
-        	{
+                c2 = clientGetTransient (c);
+                if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
+                {
                     new_focus = c2;
                     /* Usability: raise the parent, to grab user's attention */
                     clientRaise (c2);
-        	}
-	    }
-	    else
-	    {
-	        new_focus = clientGetNext (c, 0);
-	    }
+                }
+            }
+            else
+            {
+                new_focus = clientGetNext (c, 0);
+            }
         }
     }
     else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
@@ -397,12 +397,12 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     }
     if (c2)
     {
-	if (c)
-	{
-	    clientAdjustFullscreenLayer (c2, FALSE);
-	    clientRaise (c);
+        if (c)
+        {
+            clientAdjustFullscreenLayer (c2, FALSE);
+            clientRaise (c);
             clientPassGrabButton1 (c);
-	}
+        }
         frameDraw (c2, FALSE, FALSE);
     }
     data[1] = None;

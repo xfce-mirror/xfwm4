@@ -451,23 +451,23 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
         if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
-	    return TRUE;
+            return TRUE;
         }
     }
     else if (c->win_layer == WIN_LAYER_ABOVE_DOCK)
     {
-	if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
-	{
-	    if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+        {
+            if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
             {
-		clientSetLayer (c, c->fullscreen_old_layer);
+                clientSetLayer (c, c->fullscreen_old_layer);
             }
             else
             {
-        	clientSetLayer (c, WIN_LAYER_NORMAL);
+                clientSetLayer (c, WIN_LAYER_NORMAL);
             }
-	    return TRUE;
-	}
+            return TRUE;
+        }
     }
     return FALSE;
 }

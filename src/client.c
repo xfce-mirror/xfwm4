@@ -449,9 +449,9 @@ clientSetWidth (Client * c, int w1)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-	/* Bypass resize increment and max sizes for fullscreen */
-	c->width = w1;
-	return;
+        /* Bypass resize increment and max sizes for fullscreen */
+        c->width = w1;
+        return;
     }
     
     if ((c->size->flags & PResizeInc) && (c->size->width_inc))
@@ -492,9 +492,9 @@ clientSetHeight (Client * c, int h1)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-	/* Bypass resize increment and max sizes for fullscreen */
-	c->height = h1;
-	return;
+        /* Bypass resize increment and max sizes for fullscreen */
+        c->height = h1;
+        return;
     }
     
     if ((c->size->flags & PResizeInc) && (c->size->height_inc))
@@ -823,7 +823,7 @@ clientGetMWMHints (Client * c, gboolean update)
         if (FLAG_TEST_AND_NOT(c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN) && 
            (c->legacy_fullscreen))
         {
-	    /* legacy app changed its decoration, put it back on regular layer */
+            /* legacy app changed its decoration, put it back on regular layer */
             c->legacy_fullscreen = FALSE;
             clientSetLayer (c, WIN_LAYER_NORMAL);
         }
@@ -875,8 +875,8 @@ clientGetWMNormalHints (Client * c, gboolean update)
     
     if (!(c->size->flags & PBaseSize))
     {
-	c->size->base_width = 0;
-	c->size->base_height = 0;
+        c->size->base_width = 0;
+        c->size->base_height = 0;
     }
 
     if (!(c->size->flags & PMinSize))
@@ -1479,7 +1479,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
-	c->legacy_fullscreen = TRUE;
+        c->legacy_fullscreen = TRUE;
     }
 
     /* Once we know the type of window, we can initialize window position */
@@ -2313,10 +2313,10 @@ void clientToggleFullscreen (Client * c)
         monitor_nbr = gdk_screen_get_monitor_at_point (c->screen_info->gscr, cx, cy);
         gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
         
-	if ((c->size->max_width < rect.width) || (c->size->max_height < rect.height))
-	{
-	    return;
-	}
+        if ((c->size->max_width < rect.width) || (c->size->max_height < rect.height))
+        {
+            return;
+        }
     }
 
     if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL))
@@ -3453,8 +3453,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 if (c)
                 {
                     GdkPixbuf *icon;
-		    
-		    /* Redraw frame draw */
+                    
+                    /* Redraw frame draw */
                     clientDrawOutline (c);
                     icon = getAppIcon (clientGetXDisplay (c), c->window, 32, 32);
                     tabwinSetLabel (passdata->tabwin, icon, 
@@ -3548,11 +3548,11 @@ clientCycle (Client * c, XEvent * e)
     if (passdata.c)
     {
         GdkPixbuf *icon;
-	
-	icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
-	passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
+        
+        icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
+        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
                                passdata.c->class.res_class, passdata.c->name);
-			       
+                               
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);
@@ -3564,8 +3564,8 @@ clientCycle (Client * c, XEvent * e)
             /* Hide frame draw */
             clientDrawOutline (passdata.c);
         }
-	
-	
+        
+        
         TRACE ("leaving cycle loop");
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
@@ -3577,15 +3577,15 @@ clientCycle (Client * c, XEvent * e)
     if (passdata.c)
     {
         Client *focused;
-	
-	focused = clientGetFocus ();
-	clientShow (passdata.c, TRUE);
+        
+        focused = clientGetFocus ();
+        clientShow (passdata.c, TRUE);
         clientSetFocus (passdata.c->screen_info, passdata.c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
         if (focused)
-	{
+        {
             clientAdjustFullscreenLayer (focused, FALSE);
-	}
-	clientRaise (passdata.c);
+        }
+        clientRaise (passdata.c);
         clientPassGrabButton1 (passdata.c);
     }
 }
