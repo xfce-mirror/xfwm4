@@ -1,5 +1,5 @@
 /* XPM */
-static char * hide_pressed_xpm[] = {
+static char * shade_pressed_xpm[] = {
 "21 21 3 1",
 " 	c None",
 ".	c #000000",
