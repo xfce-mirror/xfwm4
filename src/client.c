@@ -2937,18 +2937,9 @@ clientFrame (Window w, gboolean startup)
                 clientSetFocus (c, TRUE);
             }
         }
-#if 0
-        else
-        {
-            frameDraw (c, FALSE, FALSE);
-        }
-#endif
     }
     else
     {
-#if 0
-        frameDraw (c, FALSE, FALSE);
-#endif
         setWMState (dpy, c->window, IconicState);
         clientSetNetState (c);
     }
