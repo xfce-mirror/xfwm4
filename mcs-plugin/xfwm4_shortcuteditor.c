@@ -234,6 +234,7 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
     if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
     {
         GtkTreePath *path;
+	GdkScreen *screen;
 
         if (gtk_tree_view_get_path_at_pos (treeview, event->x, event->y, &path, NULL, NULL, NULL))
         {
@@ -264,8 +265,11 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
             gtk_widget_set_sensitive (itf->popup_del_menuitem, FALSE);
         }
         
+       
+	screen = xfce_gdk_display_locate_monitor_with_pointer (NULL, NULL);
+	gtk_menu_set_screen (GTK_MENU (itf->popup_menu), screen ? screen : gdk_screen_get_default ());
         gtk_menu_popup (GTK_MENU (itf->popup_menu), NULL, NULL, NULL, NULL,
-                      event->button, gtk_get_current_event_time());
+			event->button, gtk_get_current_event_time());
         return TRUE;
     }
 
