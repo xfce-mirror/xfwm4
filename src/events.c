@@ -513,6 +513,20 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 }
             }
         }
+        else if((win == MYWINDOW_XWINDOW(c->title)) && (ev->button == Button4))
+	{
+            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+            {
+        	clientShade(c);
+            }
+	}
+        else if((win == MYWINDOW_XWINDOW(c->title)) && (ev->button == Button5))
+	{
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+            {
+        	clientUnshade(c);
+            }
+	}
         else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
         {
             _edgeButton(c, CORNER_TOP_LEFT, ev);
