@@ -16,18 +16,18 @@ msgstr ""
 
 #: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:206
 #: mcs-plugin/margins_plugin.c:224
-#, fuzzy
+#
 msgid "Workspace Margins"
-msgstr "Virtueller_Desktop"
+msgstr "Desktopränder"
 
 #: mcs-plugin/margins_plugin.c:190
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "Desktopränder verändern"
 
 #: mcs-plugin/margins_plugin.c:211
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt werden"
 
 #: mcs-plugin/margins_plugin.c:251
 #, fuzzy
@@ -41,11 +41,11 @@ msgstr "Rechts"
 
 #: mcs-plugin/margins_plugin.c:291
 msgid "Top :"
-msgstr ""
+msgstr "Oben :"
 
 #: mcs-plugin/margins_plugin.c:311
 msgid "Bottom :"
-msgstr ""
+msgstr "Unten :"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Title"
@@ -218,12 +218,11 @@ msgstr "Tastatur und Fokus"
 
 #: mcs-plugin/xfwm4_plugin.c:1423
 msgid "Snap windows to screen border"
-msgstr "Fenster am Fensterrand einschnappen lassen"
+msgstr "Fenster am Desktoprand einschnappen lassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1428
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "Fenster am Fensterrand einschnappen lassen"
+msgstr "Fenster an anderen Fensternrändern einschnappen lassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1438
 msgid "Distance :"
@@ -238,9 +237,8 @@ msgid "Wide"
 msgstr "Weit"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
-#, fuzzy
 msgid "Windows snapping"
-msgstr "Fenstermanager"
+msgstr "Einschnappen von Fenstern"
 
 #: mcs-plugin/xfwm4_plugin.c:1473
 msgid "Wrap workspaces when dragging a window off the screen"
@@ -280,29 +278,29 @@ msgid "Misc."
 msgstr "Verschiedenes"
 
 #: src/client.c:389
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kein net_wm_state (Fenster %#lx)"
 
 #: src/events.c:1105
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr "%s: Operation (noch) nicht Unterstützt\n"
+msgstr "%s: Operation (noch) nicht Unterstuetzt\n"
 
 #: src/main.c:174
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "Speicherzugriffsfehler"
 
 #: src/main.c:223
 #, c-format
 msgid "%s: Running without session manager"
-msgstr "%s: Sessíon Manager wird nicht genutzt"
+msgstr "%s: Session Manager wird nicht genutzt"
 
 #: src/main.c:323
 #, c-format
 msgid "%s: Another Window Manager is already running"
-msgstr "%s: Ein anderer Fenstermanager läuft bereits"
+msgstr "%s: Ein anderer Fenstermanager laeuft bereits"
 
 #: src/main.c:327
 #, c-format
@@ -385,10 +383,10 @@ msgstr "Neu starten"
 #: src/menu.c:307
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenü hat Maus nicht gefunden\n"
+msgstr "%s: GtkMenue hat Maus nicht gefunden\n"
 
 #: src/settings.c:261
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
@@ -413,7 +411,7 @@ msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht feststellen %s\n"
 
 #: src/settings.c:611
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
