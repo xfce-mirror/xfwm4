@@ -1964,7 +1964,7 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
 static void
 cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColumn * column, gpointer data)
 {
-    Itf *itf = (Itf *) data;;
+    Itf *itf = (Itf *) data;
 
     GtkTreeSelection *selection;
     GtkTreeModel *model;
@@ -2035,7 +2035,7 @@ command_exists (const gchar * command)
 static void
 cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColumn * column, gpointer data)
 {
-    Itf *itf = (Itf *) data;;
+    Itf *itf = (Itf *) data;
     gboolean need_shortcut = TRUE;
 
     if (column == gtk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0))
