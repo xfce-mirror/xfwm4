@@ -3,6 +3,7 @@ agua \
 coldsteel \
 crux \
 cruxish \
+eazel-blue \
 gtk \
 kde \
 linea \
