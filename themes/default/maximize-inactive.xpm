@@ -1,11 +1,12 @@
 /* XPM */
 static char * maximize_inactive_xpm[] = {
-"18 20 5 1",
+"18 21 5 1",
 " 	c None",
 ".	c #567B9C s inactive_mid_1",
 "+	c #4B58A2 s inactive_shadow_1",
 "@	c #FFFFFF s inactive_hilight_1",
 "#	c #949595 s inactive_shadow_1",
+"                  ",
 "                  ",
 "                  ",
 " .++++++++++++++. ",
