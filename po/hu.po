@@ -4,20 +4,20 @@
 # This file is distributed under the same license as the xfwm package.
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003
-# Servitore <sas@321.hu>, 2004
+# Servitore <sas@321 uh:))>, 2004
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-11-06 14:20+0100\n"
-"PO-Revision-Date: 2005-01-10 09:15+0100\n"
+"PO-Revision-Date: 2005-03-10 10:59+0100\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
@@ -103,7 +103,7 @@ msgstr "Elrejtés"
 
 #: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
-msgstr "Maximalizálás"
+msgstr "Maximálás"
 
 #: mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
@@ -125,7 +125,7 @@ msgstr "Ablak rejtése"
 #: mcs-plugin/xfwm4_shortcuteditor.c:333
 #: mcs-plugin/xfwm4_shortcuteditor.c:747
 msgid "Maximize window"
-msgstr "Ablak maximalizálása"
+msgstr "Ablak maximálása"
 
 #: mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
@@ -655,7 +655,7 @@ msgstr "E parancs nem létezik, vagy a fájl nem futtatható!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
-msgstr "Gyorsút készítése e parancshoz:"
+msgstr "Gyorsbillentyű készítése az alábbi parancshoz:"
 
 #: src/events.c:1826
 #, c-format
@@ -669,15 +669,15 @@ msgstr "%s: Szegmentálási hiba"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
-msgstr "Ma_ximalizálás"
+msgstr "Ma_ximálás"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "_Eredeti méret"
+msgstr "_Visszaállítás"
 
 #: src/menu.c:41
 msgid "_Hide"
-msgstr "Elre_jtés"
+msgstr "El_rejtés"
 
 #: src/menu.c:42
 msgid "Hide _all others"
@@ -689,32 +689,32 @@ msgstr "_Megjelenítés"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr "_Felgördítés"
+msgstr "Fel_gördítés"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr "_Legördítés"
+msgstr "Le_gördítés"
 
 #: src/menu.c:46
 msgid "S_tick"
-msgstr "Megjelenés m_inden munkaterületen"
+msgstr "_Kitűzés"
 
 #: src/menu.c:47
 msgid "Uns_tick"
-msgstr "Munkaterületre _korlátozás"
+msgstr "_Leválasztás"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "Helyi_súgó"
+msgstr "Helyi _súgó"
 
 #: src/menu.c:49
 #: src/menu.c:50
 msgid "Always on top"
-msgstr "Mindig felül"
+msgstr "M_indig felül"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr "Áthelye_zés másik munkaterületre..."
+msgstr "Küldés ide:"
 
 #: src/menu.c:53
 msgid "_Close"
