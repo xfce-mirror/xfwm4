@@ -1621,8 +1621,8 @@ static void clientInitPosition(Client * c)
                 {
                     c->x = test_x;
                     c->y = test_y;
-		    frame_x = frameX(c);
-		    frame_y = frameY(c);
+                    frame_x = frameX(c);
+                    frame_y = frameY(c);
                     count_overlaps += overlap(frame_x, frame_y, frame_x + frame_width, frame_y + frame_height, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
                 }
             }
@@ -1988,7 +1988,7 @@ static inline void clientApplyInitialNetState(Client *c)
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
     {
         unsigned long mode = 0;
-	
+        
         DBG("Applying client's initial state: maximized\n");
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
@@ -2006,7 +2006,7 @@ static inline void clientApplyInitialNetState(Client *c)
             mode |= WIN_STATE_MAXIMIZED;
             mode &= ~(WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
         }
-	/* Unset fullscreen mode so that clientToggleMaximized() really change the state */
+        /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
         clientToggleMaximized(c, mode);
     }
@@ -2195,13 +2195,13 @@ void clientFrame(Window w)
         {
             clientGravitate(c, APPLY);
         }
+        /* We must call clientApplyInitialNetState() after having placed the 
+           window so that the inital position values are correctly set if the
+           inital state is maximize or fullscreen
+         */
+        clientApplyInitialNetState(c);
     }
-    /* We must call clientApplyInitialNetState() after having placed the 
-       window so that the inital position values are correctly set if the
-       inital state is maximize or fullscreen
-     */
-    clientApplyInitialNetState(c);
-    
+
     gdk_x11_grab_server();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
@@ -2708,9 +2708,9 @@ void clientShade(Client * c)
     clientSetNetState(c);
     if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
-	wc.width = c->width;
-	wc.height = c->height;
-	clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
     }
 }
 
@@ -2733,9 +2733,9 @@ void clientUnshade(Client * c)
     clientSetNetState(c);
     if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
-	wc.width = c->width;
-	wc.height = c->height;
-	clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
     }
 }
 
@@ -2912,7 +2912,7 @@ void clientToggleMaximized(Client * c, int mode)
     clientSetNetState(c);
     if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
-	clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+        clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
     }
     else
     {
