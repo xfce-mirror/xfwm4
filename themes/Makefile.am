@@ -34,6 +34,7 @@ r9x \
 redmond \
 redmondxp \
 retro \
+silverado \
 slick \
 slimline \
 tabs \

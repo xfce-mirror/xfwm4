@@ -86,6 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/redmond
 %{_datadir}/xfwm4/themes/redmondxp
 %{_datadir}/xfwm4/themes/retro
+%{_datadir}/xfwm4/themes/silverado
 %{_datadir}/xfwm4/themes/slick
 %{_datadir}/xfwm4/themes/slimline
 %{_datadir}/xfwm4/themes/tabs
