@@ -273,7 +273,6 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
 
     GtkTreeModel *model3, *model4;
     GtkTreeIter iter;
-    gboolean key_found = FALSE;
 
     gchar *user_theme_file = NULL;
     gchar *default_theme_file = NULL;
@@ -310,10 +309,16 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
     {
 	const gchar *entry_value;
 	const gchar *fallback_value;
-	
+
 	fallback_value = xfce_rc_read_entry (default_rc, *shortcut, "none");
 	entry_value = xfce_rc_read_entry (user_rc, *shortcut, fallback_value);
-	
+
+	if (g_str_has_prefix (*shortcut, "shortcut_") && g_str_has_suffix (*shortcut, "_exec"))
+	{
+	    *shortcut++;
+	    continue;
+	}
+
 	if (g_ascii_strcasecmp (*shortcut, "close_window_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
@@ -571,113 +576,103 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_1_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_1_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_1_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_1_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_2_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_2_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_2_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_2_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_3_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_3_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_3_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_3_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_4_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_4_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_4_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_4_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_5_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_5_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_5_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_5_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_6_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_6_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_6_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_6_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_7_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_7_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_7_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_7_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_8_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_8_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_8_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_8_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_9_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_9_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_9_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_9_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "shortcut_10_key") == 0)
         {
+	    const gchar *fallback_value2;
+	    const gchar *entry_value2;
+
             gtk_list_store_append (GTK_LIST_STORE (model4), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, "none", COLUMN_SHORTCUT, entry_value, -1);
-            key_found = TRUE;
-        }
-        else if (g_ascii_strcasecmp (*shortcut, "shortcut_10_exec") == 0 && key_found)
-        {
-            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value, -1);
-            key_found = FALSE;
+	    fallback_value2 = xfce_rc_read_entry (default_rc, "shortcut_10_exec", "none");
+	    entry_value2 = xfce_rc_read_entry (user_rc, "shortcut_10_exec", fallback_value);
+            gtk_list_store_set (GTK_LIST_STORE (model4), &iter, COLUMN_COMMAND, entry_value2, COLUMN_SHORTCUT, entry_value, -1);
         }
         else
         {
