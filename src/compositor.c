@@ -2056,26 +2056,26 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 }
 
 void
-compositorDamageClient (Client *c)
+compositorDamageWindow (DisplayInfo *display_info, Window id)
 {
 #ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info;
-    ScreenInfo *screen_info;
+    CWindow *cw;
     
-    g_return_if_fail (c != NULL);
-    TRACE ("entering compositorDamageClient");    
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorDamageWindow: 0x%lx", id);
     
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-    if (display_info->enable_compositor)
+    if (!(display_info->enable_compositor))
     {
-        CWindow *cw = find_cwindow_in_screen (screen_info, c->frame);
+        TRACE ("compositor disabled");
+        return;
+    }
 
-        if (cw)
-        {
-            repair_win (cw);
-            compositorRepairScreen (cw->screen_info);
-        }
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        repair_win (cw);
+        compositorRepairScreen (cw->screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
 }

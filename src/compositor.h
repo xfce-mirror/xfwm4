@@ -43,6 +43,6 @@ void compositorInitDisplay (DisplayInfo *);
 void compositorManageScreen (ScreenInfo *);
 void compositorUnmanageScreen (ScreenInfo *);
 
-void compositorDamageClient (Client *);
+void compositorDamageWindow (DisplayInfo *, Window);
 
 #endif /* INC_COMPOSITOR_H */

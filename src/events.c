@@ -1768,7 +1768,11 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
     if (c)
     {
         frameDraw (c, FALSE, TRUE);
-        compositorDamageClient (c);
+        compositorDamageWindow (display_info, c->frame);
+    }
+    else
+    {
+        compositorDamageWindow (display_info, ev->window);
     }
 }
 
