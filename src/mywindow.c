@@ -261,7 +261,7 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
 
         if (!format_src || !format_dst)
         {
-            g_warning ("Cannot get XRender picture format");
+            TRACE ("xfwmWindowSetBG: Cannot get XRender picture format");
             return;
         }
 
