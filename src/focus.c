@@ -157,13 +157,13 @@ clientFocusNew(Client * c)
             }
         }
         clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
-        clientPassGrabButton1 (c);
+        clientPassGrabMouseButton (c);
     }
     else
     {
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
-        clientPassGrabButton1 (NULL);
+        clientPassGrabMouseButton (NULL);
     }
 }
 
@@ -307,11 +307,11 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     clientSetFocus (screen_info, new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most.highest)
     {
-        clientPassGrabButton1 (new_focus);
+        clientPassGrabMouseButton (new_focus);
     }
     else if (last_ungrab == c)
     {
-        clientPassGrabButton1 (NULL);
+        clientPassGrabMouseButton (NULL);
     }
 }
 
@@ -403,7 +403,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         {
             clientAdjustFullscreenLayer (c2, FALSE);
             clientRaise (c);
-            clientPassGrabButton1 (c);
+            clientPassGrabMouseButton (c);
         }
         frameDraw (c2, FALSE, FALSE);
     }
@@ -491,52 +491,72 @@ clientClearFocus (void)
 }
 
 void
-clientGrabButton1 (Client * c)
+clientGrabMouseButton (Client * c)
 {
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientGrabButton1");
-    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    ScreenInfo *screen_info;
     
-    grabButton(clientGetXDisplay (c), Button1, 0, c->window);
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientGrabMouseButton");
+    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    if (screen_info->params->raise_with_any_button)
+    {
+        grabButton(clientGetXDisplay (c), AnyButton, 0, c->window);
+    }
+    else
+    {
+        grabButton(clientGetXDisplay (c), Button1, 0, c->window);
+    }
 }
 
 void
-clientUngrabButton1 (Client * c)
+clientUngrabMouseButton (Client * c)
 {
+    ScreenInfo *screen_info;
+    
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUngrabButton1");
+    TRACE ("entering clientUngrabMouseButton");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    ungrabButton(clientGetXDisplay (c), Button1, 0, c->window);
+    screen_info = c->screen_info;
+    if (screen_info->params->raise_with_any_button)
+    {
+        ungrabButton(clientGetXDisplay (c), AnyButton, 0, c->window);
+    }
+    else
+    {
+        ungrabButton(clientGetXDisplay (c), Button1, 0, c->window);
+    }
 }
 
 void
-clientPassGrabButton1(Client * c)
+clientPassGrabMouseButton (Client * c)
 {
-    TRACE ("entering clientPassGrabButton1");
+    TRACE ("entering clientPassMouseGrabButton");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c == NULL)
     {
         if (last_ungrab)
         {
-            clientGrabButton1 (last_ungrab);
+            clientGrabMouseButton (last_ungrab);
         }
         last_ungrab = NULL;
         return;
     }
-    
+
     if (last_ungrab == c)
     {
         return;
     }
-    
+
     if (last_ungrab)
     {
-        clientGrabButton1 (last_ungrab);
+        clientGrabMouseButton (last_ungrab);
     }
-    
-    clientUngrabButton1 (c);
+
+    clientUngrabMouseButton (c);
     last_ungrab = c;
 }
 

@@ -173,6 +173,7 @@ struct _XfwmParams
     gboolean prevent_focus_stealing;
     gboolean raise_on_click;
     gboolean raise_on_focus;
+    gboolean raise_with_any_button;
     gboolean snap_to_border;
     gboolean snap_to_windows;
     gboolean title_vertical_offset_active;

@@ -2221,7 +2221,7 @@ clientSetLayer (Client * c, int l)
         clientClearLastRaise (c->screen_info);
     }
     clientRaise (c);
-    clientPassGrabButton1 (c);
+    clientPassGrabMouseButton (c);
 }
 
 void
@@ -3737,7 +3737,7 @@ clientCycle (Client * c, XEvent * e)
             clientAdjustFullscreenLayer (focused, FALSE);
         }
         clientRaise (passdata.c);
-        clientPassGrabButton1 (passdata.c);
+        clientPassGrabMouseButton (passdata.c);
     }
 }
 

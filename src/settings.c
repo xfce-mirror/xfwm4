@@ -166,7 +166,12 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         screen_info->params->raise_on_click = setting->data.v_int;
-                        clientPassGrabButton1 (NULL);
+                        clientPassGrabMouseButton (NULL);
+                    }
+                    else if (!strcmp (name, "Xfwm/RaiseWithAnyButton"))
+                    {
+                        screen_info->params->raise_with_any_button = setting->data.v_int;
+                        clientPassGrabMouseButton (NULL);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
                     {
@@ -431,6 +436,12 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseWithAnyButton", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToBorder", CHANNEL1,
@@ -1051,6 +1062,7 @@ loadSettings (ScreenInfo *screen_info)
         {"raise_delay", NULL, TRUE},
         {"raise_on_click", NULL, TRUE},
         {"raise_on_focus", NULL, TRUE},
+        {"raise_with_any_button", NULL, TRUE},
         {"snap_to_border", NULL, TRUE},
         {"snap_to_windows", NULL, TRUE},
         {"snap_width", NULL, TRUE},
@@ -1183,6 +1195,8 @@ loadSettings (ScreenInfo *screen_info)
     screen_info->params->raise_delay = abs (TOINT (getValue ("raise_delay", rc)));
     screen_info->params->raise_on_click =
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
+    screen_info->params->raise_with_any_button =
+        !g_ascii_strcasecmp ("true", getValue ("raise_with_any_button", rc));
 
     screen_info->params->snap_to_border =
         !g_ascii_strcasecmp ("true", getValue ("snap_to_border", rc));

@@ -47,9 +47,9 @@ void            clientUpdateFocus (ScreenInfo *, Client *, unsigned short);
 void            clientSetFocus (ScreenInfo *, Client *, Time, unsigned short);
 void            clientClearFocus (void);
 Client         *clientGetFocus (void);
-void            clientGrabButton1 (Client *);
-void            clientUngrabButton1 (Client *);
-void            clientPassGrabButton1(Client *);
+void            clientGrabMouseButton (Client *);
+void            clientUngrabMouseButton (Client *);
+void            clientPassGrabMouseButton (Client *);
 Client         *clientGetLastGrab (void);
 void            clientClearLastGrab (void);
 

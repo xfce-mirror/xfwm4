@@ -18,6 +18,7 @@ prevent_focus_stealing=false
 raise_delay=250
 raise_on_click=true
 raise_on_focus=false
+raise_with_any_button=true
 snap_to_border=true
 snap_to_windows=false
 snap_width=10
