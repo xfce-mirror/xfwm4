@@ -42,6 +42,10 @@
 
 #ifdef HAVE_COMPOSITOR
 
+#include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xdamage.h>
+#include <X11/extensions/Xrender.h>
+
 #define WINDOW_SOLID    0
 #define WINDOW_TRANS    1
 #define WINDOW_ARGB     2
@@ -54,8 +58,13 @@
 #define SHADOW_OPACITY  0.66
 #endif /* SHADOW_OPACITY */
 
-#define SHADOW_OFFSET_X (-SHADOW_RADIUS * 5 / 4)
-#define SHADOW_OFFSET_Y (-SHADOW_RADIUS * 5 / 4)
+#ifndef SHADOW_OFFSET_X
+#define SHADOW_OFFSET_X (SHADOW_RADIUS * -3 /2)
+#endif /* SHADOW_OFFSET_X */
+
+#ifndef SHADOW_OFFSET_Y
+#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
+#endif /* SHADOW_OFFSET_Y */
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -547,7 +556,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
                             screen_info->xroot, 1, 1, argb ? 32 : 8);
     g_return_val_if_fail (pixmap != None, None);
 
-    pa.repeat = True;
+    pa.repeat = TRUE;
     picture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), pixmap,
                                     render_format, CPRepeat,  &pa);
     if (picture == None)
@@ -649,7 +658,7 @@ root_tile (ScreenInfo *screen_info)
         g_return_val_if_fail (pixmap != None, None);
         fill = TRUE;
     }
-    pa.repeat = True;
+    pa.repeat = TRUE;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
     g_return_val_if_fail (format != NULL, None);
 
@@ -1389,17 +1398,13 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
 {
     ScreenInfo *screen_info = NULL;
     CWindow *new;
-    Status test;
 
     TRACE ("entering add_win: 0x%lx", id);
 
     new = g_new0 (CWindow, 1);
 
-    gdk_error_trap_push ();
     myDisplayGrabServer (display_info);
-    test = XGetWindowAttributes (display_info->dpy, id, &new->attr);
-
-    if (gdk_error_trap_pop () || !test)
+    if (!XGetWindowAttributes (display_info->dpy, id, &new->attr))
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
@@ -1686,7 +1691,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->rootTile))
             {
-                XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, True);
+                XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (myScreenGetXDisplay (screen_info), screen_info->rootTile);
                 screen_info->rootTile = None;
                 add_repair (display_info);
@@ -2272,6 +2277,8 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
     screen_info->compositor_active = TRUE;
+
+    XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
 
     return TRUE;
 #else

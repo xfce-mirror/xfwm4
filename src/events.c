@@ -189,9 +189,9 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
 static XfwmButtonClickType
 typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_double_click)
 {
-    int g = GrabSuccess;
     DisplayInfo *display_info = NULL;
     XfwmButtonClickData passdata;
+    gboolean g;
 
     g_return_val_if_fail (screen_info != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (ev != NULL, XFWM_BUTTON_UNDEFINED);
@@ -199,10 +199,9 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     
     display_info = screen_info->display_info;    
     XFlush (display_info->dpy);
-    g = XGrabPointer (display_info->dpy, screen_info->gnome_win, 
-                      FALSE, DBL_CLICK_GRAB, GrabModeAsync,
-                      GrabModeAsync, None, None, ev->xbutton.time);
-    if (g != GrabSuccess)
+    g = myScreenGrabPointer (screen_info, DBL_CLICK_GRAB, None, ev->xbutton.time);
+
+    if (!g)
     {
         TRACE ("grab failed in typeOfClick");
         gdk_beep ();
@@ -228,7 +227,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     xfce_pop_event_filter (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
 
-    XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     XFlush (display_info->dpy);
     return (XfwmButtonClickType) passdata.clicks;
 }
@@ -1430,7 +1429,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             TRACE ("EnterNotify window is \"%s\"", c->name);
             if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
-                clientSetFocus (c->screen_info, c, ev->time, FOCUS_FORCE);
+                clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
             }
         }
     }

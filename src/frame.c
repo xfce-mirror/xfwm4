@@ -568,7 +568,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
         return;
     }
 
-    temp = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
+    temp = XCreateSimpleWindow (display_info->dpy, c->frame, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
@@ -761,17 +761,12 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     ScreenInfo *screen_info = NULL;
     XfwmPixmap *my_pixmap;
     gboolean requires_clearing = FALSE;
+    gboolean width_changed = FALSE;
+    gboolean height_changed = FALSE;
+    gboolean title_changed = FALSE;
     int state = ACTIVE;
-    int i;
-    int j;
-    int x;
-    int button;
-    int left;
-    int right;
-    int top_width;
-    int bottom_width;
-    int left_height;
-    int right_height;
+    int i, j, x, button, left, right;
+    int top_width, bottom_width, left_height, right_height;
     int button_x[BUTTON_COUNT];
 
     TRACE ("entering frameDraw");
@@ -834,7 +829,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
                 c->pm_cache.previous_width = c->width;
-                requires_clearing = TRUE;
             }
             if (c->pm_cache.previous_height != c->height)
             {
@@ -843,7 +837,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
                 c->pm_cache.previous_height = c->height;
-                requires_clearing = TRUE;
             }
         }
 
@@ -948,14 +941,14 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             frameCreateTitlePixmap (c, state, left, right,
                 &c->pm_cache.pm_title[state]);
-            requires_clearing = TRUE;
+            title_changed = TRUE;
         }
 
         if (c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_LEFT][state],
                 frameLeft (c), left_height);
-            requires_clearing = TRUE;
+            height_changed = TRUE;
         }
         fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap,
             screen_info->sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft (c),
@@ -968,7 +961,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_RIGHT][state],
                 frameRight (c), right_height);
-            requires_clearing = TRUE;
+            height_changed = TRUE;
         }
         fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap,
             screen_info->sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight (c),
@@ -981,7 +974,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_BOTTOM][state],
                 bottom_width, frameBottom (c));
-            requires_clearing = TRUE;
+            width_changed = TRUE;
         }
         fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap,
             screen_info->sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width,
@@ -990,29 +983,45 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
             screen_info->sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width,
             frameBottom (c));
 
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c), MYWINDOW_XWINDOW (c->title),
-            c->pm_cache.pm_title[state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
-            c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
-            c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
-            c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
-            screen_info->corners[CORNER_TOP_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
-            screen_info->corners[CORNER_TOP_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
-            screen_info->corners[CORNER_BOTTOM_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
-            screen_info->corners[CORNER_BOTTOM_RIGHT][state].pixmap);
+        if (requires_clearing || title_changed)
+        {
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c), 
+                MYWINDOW_XWINDOW (c->title),
+                c->pm_cache.pm_title[state].pixmap);
+        }
+
+        if (requires_clearing || width_changed)
+        {
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
+                c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap);
+        }
+
+        if (requires_clearing || height_changed)
+        {
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
+                c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap);
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
+                c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap);
+        }
+
+        if (requires_clearing)
+        {
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
+                screen_info->corners[CORNER_TOP_LEFT][state].pixmap);
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
+                screen_info->corners[CORNER_TOP_RIGHT][state].pixmap);
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
+                screen_info->corners[CORNER_BOTTOM_LEFT][state].pixmap);
+            XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
+                screen_info->corners[CORNER_BOTTOM_RIGHT][state].pixmap);
+        }
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
@@ -1022,20 +1031,19 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         else
         {
             xfwmWindowShow (&c->sides[SIDE_LEFT], 0, frameTop (c),
-                frameLeft (c), left_height, requires_clearing);
+                frameLeft (c), left_height, (requires_clearing | height_changed));
             xfwmWindowShow (&c->sides[SIDE_RIGHT],
                 frameWidth (c) - frameRight (c), frameTop (c), frameRight (c),
-                right_height, requires_clearing);
+                right_height, (requires_clearing | height_changed));
         }
 
         xfwmWindowShow (&c->title,
             screen_info->corners[CORNER_TOP_LEFT][state].width, 0, top_width,
-            frameTop (c), requires_clearing);
+            frameTop (c), (requires_clearing | title_changed));
         xfwmWindowShow (&c->sides[SIDE_BOTTOM],
             screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
             frameHeight (c) - frameBottom (c), bottom_width, frameBottom (c),
-            requires_clearing);
-
+            (requires_clearing | width_changed));
         xfwmWindowShow (&c->corners[CORNER_TOP_LEFT], 0, 0,
             screen_info->corners[CORNER_TOP_LEFT][state].width,
             screen_info->corners[CORNER_TOP_LEFT][state].height,

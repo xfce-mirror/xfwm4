@@ -109,7 +109,6 @@ struct _MoveResizeData
     int oldw, oldh;
     int corner;
     Poswin *poswin;
-    xfwmWindow tmp_event_window;
 };
 
 typedef struct _ClientCycleData ClientCycleData;
@@ -236,8 +235,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
     g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering clientRedrawAllFrames");
-    XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                       GrabModeAsync, screen_info->xroot, None, CurrentTime);
+    myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
         if (mask & UPDATE_KEYGRABS)
@@ -267,10 +265,10 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_FRAME)
         {
-            frameDraw (c, FALSE, FALSE);
+            frameDraw (c, TRUE, FALSE);
         }
     }
-    XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
+    myScreenUngrabPointer (screen_info, CurrentTime);
 }
 
 void
@@ -769,13 +767,21 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c)
          && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0))))
     {
-        clientConstrainPos (c, TRUE);
+        clientConstrainPos (c, FALSE);
     }
 
     XMoveResizeWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c),
                             frameWidth (c), frameHeight (c));
-    XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
-                            c->width, c->height);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), - c->height,
+                                c->width, c->height);
+    }
+    else
+    {
+        XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
+                                c->width, c->height);
+    }
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
@@ -1569,6 +1575,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
+    c->fullscreen_old_layer = c->win_layer;
 
     /* Reload from session */
     if (sessionMatchWinToSM (c))
@@ -1672,8 +1679,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         xfwmWindowCreate (display_info->dpy, c->frame, &c->buttons[i], None);
     }
-    TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name,
-        c->window);
+
+    /* Put the window on top to avoid XShape, that speeds up hw accelerated 
+       GL apps dramatically */
+    XRaiseWindow (display_info->dpy, c->window);
+    
+    TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name, c->window);
     wc.x = c->x;
     wc.y = c->y;
     wc.width = c->width;
@@ -2186,7 +2197,9 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
 
     TRACE ("entering clientToggleShowDesktop");
 
-    clientSetFocus (screen_info, NULL, CurrentTime, FOCUS_IGNORE_MODAL);
+    clientSetFocus (screen_info, NULL, 
+                    myDisplayGetCurrentTime (screen_info->display_info), 
+                    FOCUS_IGNORE_MODAL);
     if (show_desktop)
     {
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
@@ -2233,7 +2246,8 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, CurrentTime);
+        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, 
+                           myDisplayGetCurrentTime (display_info));
     }
     else
     {
@@ -2267,7 +2281,8 @@ clientEnterContextMenuState (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP, CurrentTime);
+        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP, 
+                           myDisplayGetCurrentTime (display_info));
     }
 }
 
@@ -2318,9 +2333,7 @@ clientShade (Client * c)
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        TRACE
-            ("cowardly refusing to shade \"%s\" (0x%lx) because it has no border",
-            c->name, c->window);
+        TRACE ("cowardly refusing to shade \"%s\" (0x%lx) because it has no border", c->name, c->window);
         return;
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -2644,10 +2657,9 @@ clientToggleMaximized (Client * c, int mode)
            grab focus in focus follow mouse mode. Grab the pointer to
            avoid these effects
          */
-        XGrabPointer (clientGetXDisplay (c), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                           GrabModeAsync, screen_info->xroot, None, CurrentTime);
+        myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
-        XUngrabPointer (clientGetXDisplay (c), CurrentTime);
+        myScreenUngrabPointer (screen_info, CurrentTime);
     }
     else
     {
@@ -3073,14 +3085,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 }
 
 void
-clientMove (Client * c, XEvent * e)
+clientMove (Client * c, XEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XWindowChanges wc;
     MoveResizeData passdata;
     Cursor cursor = None;
-    int g1 = GrabSuccess, g2 = GrabSuccess;
+    gboolean g1, g2;
     gboolean restore_opacity = FALSE;
 
     g_return_if_fail (c != NULL);
@@ -3097,48 +3109,39 @@ clientMove (Client * c, XEvent * e)
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0,
-                        gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr),
-                        ButtonMotionMask | ButtonReleaseMask);
-
-    if (e->type == KeyPress)
+    if (ev->type == KeyPress)
     {
         cursor = None;
         passdata.use_keys = TRUE;
-        passdata.mx = e->xkey.x_root;
-        passdata.my = e->xkey.y_root;
+        passdata.mx = ev->xkey.x_root;
+        passdata.my = ev->xkey.y_root;
     }
-    else if (e->type == ButtonPress)
+    else if (ev->type == ButtonPress)
     {
         cursor = None;
-        passdata.mx = e->xbutton.x_root;
-        passdata.my = e->xbutton.y_root;
+        passdata.mx = ev->xbutton.x_root;
+        passdata.my = ev->xbutton.y_root;
     }
     else
     {
         cursor = myDisplayGetCursorMove(display_info);
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
-    g1 = XGrabKeyboard (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
-                        FALSE, GrabModeAsync, GrabModeAsync, CurrentTime);
-    g2 = XGrabPointer (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
-                        FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-                        GrabModeAsync, screen_info->xroot, cursor, CurrentTime);
-
-    if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
+    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
+                              cursor, myDisplayGetCurrentTime (display_info));
+    if (((passdata.use_keys) && !g1) || !g2)
     {
         TRACE ("grab failed in clientMove");
         gdk_beep ();
-        if ((passdata.use_keys) && (g1 == GrabSuccess))
+        if ((passdata.use_keys) && g1)
         {
-            XUngrabKeyboard (display_info->dpy, CurrentTime);
+            myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
         }
-        if (g2 == GrabSuccess)
+        if (g2)
         {
-            XUngrabPointer (display_info->dpy, CurrentTime);
+            myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         }
-        xfwmWindowDelete (&passdata.tmp_event_window);
         return;
     }
 
@@ -3161,7 +3164,7 @@ clientMove (Client * c, XEvent * e)
     xfce_push_event_filter (display_info->xfilter, clientMove_event_filter, &passdata);
     if (passdata.use_keys)
     {
-        XPutBackEvent (display_info->dpy, e);
+        XPutBackEvent (display_info->dpy, ev);
     }
     gtk_main ();
     xfce_pop_event_filter (display_info->xfilter);
@@ -3189,10 +3192,8 @@ clientMove (Client * c, XEvent * e)
     wc.y = c->y;
     clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
 
-    XUngrabKeyboard (display_info->dpy, CurrentTime);
-    XUngrabPointer (display_info->dpy, CurrentTime);
-    xfwmWindowDelete (&passdata.tmp_event_window);
-
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     if (passdata.grab && screen_info->params->box_move)
     {
         myDisplayUngrabServer (display_info);
@@ -3541,13 +3542,13 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 }
 
 void
-clientResize (Client * c, int corner, XEvent * e)
+clientResize (Client * c, int corner, XEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XWindowChanges wc;
     MoveResizeData passdata;
-    int g1 = GrabSuccess, g2 = GrabSuccess;
+    gboolean g1, g2;
     gboolean restore_opacity = FALSE;
 
     g_return_if_fail (c != NULL);
@@ -3565,53 +3566,44 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.grab = FALSE;
     passdata.corner = corner;
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0,
-                        gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr),
-                        ButtonMotionMask | ButtonReleaseMask);
-
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         clientRemoveMaximizeFlag (c);
     }
 
-    if (e->type == KeyPress)
+    if (ev->type == KeyPress)
     {
         passdata.use_keys = TRUE;
-        passdata.mx = e->xkey.x_root;
-        passdata.my = e->xkey.y_root;
+        passdata.mx = ev->xkey.x_root;
+        passdata.my = ev->xkey.y_root;
     }
-    else if (e->type == ButtonPress)
+    else if (ev->type == ButtonPress)
     {
-        passdata.mx = e->xbutton.x_root;
-        passdata.my = e->xbutton.y_root;
+        passdata.mx = ev->xbutton.x_root;
+        passdata.my = ev->xbutton.y_root;
     }
     else
     {
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
 
-    g1 = XGrabKeyboard (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
-                        FALSE, GrabModeAsync, GrabModeAsync, CurrentTime);
-    g2 = XGrabPointer (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
-                        FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-                        GrabModeAsync, screen_info->xroot, 
-                        myDisplayGetCursorResize(display_info, passdata.corner), 
-                        CurrentTime);
+    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
+                              myDisplayGetCursorResize(display_info, passdata.corner), 
+                              myDisplayGetCurrentTime (display_info));
 
-    if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
+    if (((passdata.use_keys) && !g1) || !g2)
     {
         TRACE ("grab failed in clientResize");
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (display_info->dpy, CurrentTime);
+            myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (display_info->dpy, CurrentTime);
+            myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         }
-        xfwmWindowDelete (&passdata.tmp_event_window);
         return;
     }
 
@@ -3643,7 +3635,7 @@ clientResize (Client * c, int corner, XEvent * e)
     xfce_push_event_filter (display_info->xfilter, clientResize_event_filter, &passdata);
     if (passdata.use_keys)
     {
-        XPutBackEvent (display_info->dpy, e);
+        XPutBackEvent (display_info->dpy, ev);
     }
     gtk_main ();
     xfce_pop_event_filter (display_info->xfilter);
@@ -3670,10 +3662,8 @@ clientResize (Client * c, int corner, XEvent * e)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 
-    XUngrabKeyboard (display_info->dpy, CurrentTime);
-    XUngrabPointer (display_info->dpy, CurrentTime);
-    xfwmWindowDelete (&passdata.tmp_event_window);
-
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     if (passdata.grab && screen_info->params->box_resize)
     {
         myDisplayUngrabServer (display_info);
@@ -3714,17 +3704,21 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 if (key_pressed)
                 {
+                    Client *c2 = NULL;
                     /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
                     if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
                     {
                         TRACE ("Cycle: previous");
-                        c = clientGetPrevious (c, passdata->cycle_range);
-                        passdata->c = c;
+                        c2 = clientGetPrevious (c, passdata->cycle_range);
                     }
                     else
                     {
                         TRACE ("Cycle: next");
-                        c = clientGetNext (c, passdata->cycle_range);
+                        c2 = clientGetNext (c, passdata->cycle_range);
+                    }
+                    if (c2)
+                    {
+                        c = c2;
                         passdata->c = c;
                     }
                 }
@@ -3756,10 +3750,9 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 /* If KEY_CYCLE_WINDOWS has Shift, then stop cycling on Shift
                  * release.
                  */
-                if (IsModifierKey (keysym)
-                        && ( (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier
-                             & ShiftMask)
-                        || (keysym != XK_Shift_L && keysym != XK_Shift_R) ) )
+                if (IsModifierKey (keysym) &&
+                    ((screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask) || 
+                     ((keysym != XK_Shift_L) && (keysym != XK_Shift_R))))
                 {
                     cycling = FALSE;
                 }
@@ -3786,12 +3779,12 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 }
 
 void
-clientCycle (Client * c, XEvent * e)
+clientCycle (Client * c, XEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     ClientCycleData passdata;
-    int g1, g2;
+    gboolean g1, g2;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
@@ -3799,21 +3792,21 @@ clientCycle (Client * c, XEvent * e)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    g1 = XGrabKeyboard (display_info->dpy, screen_info->gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
-        CurrentTime);
-    g2 = XGrabPointer (display_info->dpy, screen_info->gnome_win, FALSE, NoEventMask, GrabModeAsync,
-        GrabModeAsync, screen_info->xroot, None, CurrentTime);
-    if ((g1 != GrabSuccess) || (g2 != GrabSuccess))
+    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, 
+                              myDisplayGetCurrentTime (display_info));
+
+    if (!g1 || !g2)
     {
         TRACE ("grab failed in clientCycle");
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (display_info->dpy, CurrentTime);
+            myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (display_info->dpy, CurrentTime);
+            myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         }
         return;
     }
@@ -3832,8 +3825,9 @@ clientCycle (Client * c, XEvent * e)
     }
     passdata.c = clientGetNext (c, passdata.cycle_range);
 
-    /* If there is one single client, and if it's hidden, use it */
-    if ((passdata.c == NULL) && FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+    /* If there is one single client, and if it's eligible for focus, use it */
+    if ((passdata.c == NULL) && (c != clientGetFocus()) && 
+        clientSelectMask (c, passdata.cycle_range, WINDOW_REGULAR_FOCUSABLE))
     {
         passdata.c = c;
     }
@@ -3855,8 +3849,8 @@ clientCycle (Client * c, XEvent * e)
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    XUngrabKeyboard (display_info->dpy, CurrentTime);
-    XUngrabPointer (display_info->dpy, CurrentTime);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     if (passdata.c)
     {
@@ -3945,8 +3939,10 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     display_info = screen_info->display_info;
 
     g1 = XGrabPointer (display_info->dpy, w, FALSE,
-        ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync,
-        GrabModeAsync, screen_info->xroot, None, CurrentTime);
+                       ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, 
+                       GrabModeAsync, GrabModeAsync, 
+                       screen_info->xroot, None, 
+                       myDisplayGetCurrentTime (display_info));
 
     if (g1 != GrabSuccess)
     {
@@ -3954,7 +3950,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (display_info->dpy, CurrentTime);
+            XUngrabKeyboard (display_info->dpy, myDisplayGetCurrentTime (display_info));
         }
         return;
     }
@@ -3971,7 +3967,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     xfce_pop_event_filter (display_info->xfilter);
     TRACE ("leaving button press loop");
 
-    XUngrabPointer (display_info->dpy, CurrentTime);
+    XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
 
     if (c->button_pressed[b])
     {
