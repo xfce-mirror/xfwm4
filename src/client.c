@@ -1445,7 +1445,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->type = UNSET;
     c->type_atom = None;
 
-    FLAG_SET (c->flags, START_ICONIC (c) ? CLIENT_FLAG_HIDDEN : 0);
+    FLAG_SET (c->flags, START_ICONIC (c) ? CLIENT_FLAG_ICONIFIED : 0);
     FLAG_SET (c->wm_flags, ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
 
     clientGetWMProtocols (c);
@@ -1570,7 +1570,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetUserTime (c);
 
     clientRaise (c);
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
         if ((c->win_workspace == screen_info->current_ws) || 
             FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
@@ -1842,7 +1842,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
             TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
             if (manage_mapping && !clientIsTransientOrModal (c2)
-                && !FLAG_TEST (c2->flags, CLIENT_FLAG_HIDDEN))
+                && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED))
             {
                 if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
                 {
@@ -1886,12 +1886,12 @@ clientShowSingle (Client * c, gboolean change_state)
     }
     if (change_state)
     {
-        FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
+        FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info->dpy, c->window, NormalState);
-	clientSetNetState (c);
         workspaceUpdateArea (screen_info);
     }
     myDisplayUngrabServer (display_info);
+    clientSetNetState (c);
 }
 
 void
@@ -1943,13 +1943,13 @@ clientHideSingle (Client * c, gboolean change_state)
     }
     if (change_state)
     {
-        FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
+        FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         XUnmapWindow (display_info->dpy, c->window);
         setWMState (display_info->dpy, c->window, IconicState);
-	clientSetNetState (c);
         workspaceUpdateArea (c->screen_info);
     }
     myDisplayUngrabServer (display_info);
+    clientSetNetState (c);
 }
 
 void
@@ -2033,7 +2033,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
         {
             Client *c = (Client *) index->data;
             if (CLIENT_CAN_HIDE_WINDOW (c)
-                && FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_HIDDEN))
+                && FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_ICONIFIED))
             {
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_WAS_SHOWN);

@@ -1204,7 +1204,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             if ((c->win_workspace == screen_info->current_ws) || 
                 (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)))
             {
-                if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
+                if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
                 {
                     clientShow (c, TRUE);
                 }
@@ -1554,7 +1554,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         if ((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
-            if (!FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN) && 
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && 
                  CLIENT_CAN_HIDE_WINDOW (c))
             {
                 clientHide (c, c->win_workspace, TRUE);
@@ -1935,7 +1935,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
             }
         }
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
         {
             ops |= MENU_OP_UNMINIMIZE;
             if (!CLIENT_CAN_HIDE_WINDOW (c))

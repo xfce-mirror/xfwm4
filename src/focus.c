@@ -173,7 +173,7 @@ clientSelectMask (Client * c, int mask, int type)
     {
         return FALSE;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && !(mask & INCLUDE_HIDDEN))
     {
         return FALSE;
     }

@@ -109,7 +109,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : below");
         data[i++] = net_wm_state_below;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("clientSetNetState : hidden");
         data[i++] = net_wm_state_hidden;
@@ -174,11 +174,6 @@ clientGetNetState (Client * c)
                 TRACE ("clientGetNetState : shaded");
                 c->win_state |= WIN_STATE_SHADED;
                 FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
-            }
-            else if (atoms[i] == net_wm_state_hidden)
-            {
-                TRACE ("clientGetNetState : hidden");
-                FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
             }
             else if ((atoms[i] == net_wm_state_sticky))
             {

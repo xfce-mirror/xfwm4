@@ -88,7 +88,7 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
         c2 = (Client *) index->data;
         if ((c2 != c) && !clientIsTransientOrModal (c2)
             && clientIsTransientOrModalFor (c, c2)
-            && !FLAG_TEST (c2->flags, CLIENT_FLAG_HIDDEN)
+            && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED)
             && (c2->win_workspace == ws))
         {
             return TRUE;
