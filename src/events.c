@@ -1396,7 +1396,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
             TRACE ("EnterNotify window is \"%s\"", c->name);
-            if (!(c->type & WINDOW_DOCK | WINDOW_DESKTOP))
+            if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
                 clientSetFocus (c->screen_info, c, ev->time, FOCUS_FORCE);
                 if (!(screen_info->params->raise_on_click))
