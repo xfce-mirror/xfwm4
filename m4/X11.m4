@@ -4,7 +4,6 @@ dnl Check for X11
 AC_DEFUN([BM_LIBX11],
 [
   AC_REQUIRE([AC_PATH_XTRA])
-  AC_REQUIRE([BM_RPATH_SUPPORT])
   LIBX11_CFLAGS= LIBX11_LDFLAGS= LIBX11_LIBS=
   if test "$no_x" != "yes"; then
     AC_CHECK_LIB(X11, main,
@@ -15,11 +14,8 @@ AC_DEFUN([BM_LIBX11],
       	case "$option" in
         -L*)
           path=`echo $option | sed 's/^-L//'`
-          if test "x$path" != "x"; then
+          if test x"$path" != x""; then
             LIBX11_LDFLAGS="$LIBX11_LDFLAGS -L$path"
-            if test -n "$LD_RPATH"; then
-              LIBX11_LDFLAGS="$LIBX11_LDFLAGS $LD_RPATH$path"
-            fi
           fi
           ;;
         *)
@@ -40,7 +36,7 @@ AC_DEFUN([BM_LIBX11],
 AC_DEFUN([BM_LIBX11_REQUIRE],
 [
   AC_REQUIRE([BM_LIBX11])
-  if test "$no_x" == "yes"; then
+  if test "$no_x" = "yes"; then
     AC_MSG_ERROR([X Window system libraries and header files are required])
   fi
 ])
