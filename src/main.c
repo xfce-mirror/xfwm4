@@ -104,8 +104,8 @@ static void cleanUp()
 
     DBG("entering cleanUp\n");
 
-    sn_close_display();
     clientUnframeAll();
+    sn_close_display();
     unloadSettings();
     XFreeCursor(dpy, root_cursor);
     XFreeCursor(dpy, move_cursor);
