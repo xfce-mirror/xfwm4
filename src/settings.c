@@ -496,6 +496,8 @@ static void notify_cb (const char *name, XSettingsAction action, XSettingsSettin
     int row;
     char *text[4];
 
+    gdk_beep();
+    printf("xsettings notification\n");
     switch (action)
     {
 	case XSETTINGS_ACTION_NEW:
@@ -509,14 +511,14 @@ static void notify_cb (const char *name, XSettingsAction action, XSettingsSettin
 
 GdkFilterReturn  client_event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
 {
-  if (xsettings_client_process_event (client, (XEvent *)xevent))
-  {
-    return GDK_FILTER_REMOVE;
-  }
-  else
-  {
-    return GDK_FILTER_CONTINUE;
-  }
+    if (xsettings_client_process_event (client, (XEvent *)xevent))
+    {
+	return GDK_FILTER_REMOVE;
+    }
+    else
+    {
+	return GDK_FILTER_CONTINUE;
+    }
 }
 
 static void watch_cb (Window window, Bool is_start, long mask, void *cb_data)
