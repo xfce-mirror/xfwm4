@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-24 15:28+0200\n"
-"PO-Revision-Date: 2004-10-23 21:03+0200\n"
+"PO-Revision-Date: 2004-10-24 16:23+0200\n"
 "Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
@@ -724,36 +724,3 @@ msgstr "Wechseln zu ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Unbekannte Anwendung"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: Einstellungen aus den Defaults fehlen"
-
-#~ msgid "%s: Failed to enter daemon mode: %s"
-#~ msgstr "%s: Konnte nicht im Hintergrund starten: %s"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: Konnte keinen neuen Prozess erstellen: %s"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: Ein unbekannter Fehler ist aufgetreten"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: Fehlende Einstellungen aus den Defaults"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr ""
-#~ "%s: Theme \"%s\" nicht gefunden. Es wird das Standard-Theme verwendet."
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s: Fehlende Einstellungen aus den Defaults"
