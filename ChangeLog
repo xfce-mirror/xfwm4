@@ -1,5 +1,43 @@
 2002-12-30  xfce
 
+	* ChangeLog, configure, configure.in, xfwm4.spec.in,
+	themes/Makefile.am, themes/Makefile.in, themes/meenee/Makefile.am,
+	themes/meenee/Makefile.in, themes/meenee/README,
+	themes/meenee/bottom-active.xpm, themes/meenee/bottom-inactive.xpm,
+	themes/meenee/bottom-left-active.xpm,
+	themes/meenee/bottom-left-inactive.xpm,
+	themes/meenee/bottom-right-active.xpm,
+	themes/meenee/bottom-right-inactive.xpm,
+	themes/meenee/close-active.xpm, themes/meenee/close-inactive.xpm,
+	themes/meenee/close-pressed.xpm, themes/meenee/hide-active.xpm,
+	themes/meenee/hide-inactive.xpm, themes/meenee/hide-pressed.xpm,
+	themes/meenee/left-active.xpm, themes/meenee/left-inactive.xpm,
+	themes/meenee/maximize-active.xpm,
+	themes/meenee/maximize-inactive.xpm,
+	themes/meenee/maximize-pressed.xpm, themes/meenee/menu-active.xpm,
+	themes/meenee/menu-inactive.xpm, themes/meenee/menu-pressed.xpm,
+	themes/meenee/right-active.xpm, themes/meenee/right-inactive.xpm,
+	themes/meenee/shade-active.xpm, themes/meenee/shade-inactive.xpm,
+	themes/meenee/shade-pressed.xpm, themes/meenee/stick-active.xpm,
+	themes/meenee/stick-inactive.xpm, themes/meenee/stick-pressed.xpm,
+	themes/meenee/themerc, themes/meenee/title-1-active.xpm,
+	themes/meenee/title-1-inactive.xpm,
+	themes/meenee/title-2-active.xpm,
+	themes/meenee/title-2-inactive.xpm,
+	themes/meenee/title-3-active.xpm,
+	themes/meenee/title-3-inactive.xpm,
+	themes/meenee/title-4-active.xpm,
+	themes/meenee/title-4-inactive.xpm,
+	themes/meenee/title-5-active.xpm,
+	themes/meenee/title-5-inactive.xpm,
+	themes/meenee/top-left-active.xpm,
+	themes/meenee/top-left-inactive.xpm,
+	themes/meenee/top-right-active.xpm,
+	themes/meenee/top-right-inactive.xpm: Add theme "meenee" derived
+	from Michael Graf theme
+
+2002-12-30  xfce
+
 	* src/: client.c, workspaces.c: Include SKIP_PAGER and SKIP_TASKBAR
 	flagged windows in ALT-TAB window cycling Fix a focus oddity when
 	switching desks in focus-follow-mouse mode
