@@ -37,6 +37,24 @@ struct _MyColor
     gboolean allocated;
 };
 
+typedef enum
+{
+  INT = 0,
+  STRING = 1,
+} SettingType;
+
+typedef struct _Settings Settings;
+
+struct _Settings
+{
+    gchar *option;
+    gchar *nick;
+    gchar *blurb;
+    SettingType type;
+    gchar *value;
+    gboolean required;
+};
+
 extern MyKey keys[KEY_COUNT];
 extern MyColor title_colors[2];
 extern char button_layout[8];

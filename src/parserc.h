@@ -28,15 +28,6 @@
 #include <glib.h>
 #include "settings.h"
 
-typedef struct _Settings Settings;
-
-struct _Settings
-{
-    gchar *option;
-    gchar *value;
-    gboolean required;
-};
-
 gboolean parseRc(gchar *, gchar *, Settings rc[]);
 gboolean checkRc(Settings rc[]);
 gchar *getValue(gchar *, Settings rc[]);
