@@ -20,7 +20,7 @@ static char * hide_inactive_xpm[] = {
 "!	c #9E9E8D",
 "~	c #A1A190",
 "{	c #A5A594",
-"]	c #AEAE9D",
+"]	c #C2C2AF",
 "^	c #989887",
 "/	c #999988",
 "(	c #979786",

@@ -18,7 +18,7 @@ static char * maximize_inactive_xpm[] = {
 "'	c #A8A897",
 ")	c #9C9C8B",
 "!	c #9E9E8D",
-"~	c #AEAE9D",
+"~	c #C2C2AF",
 "{	c #A1A190",
 "]	c #A5A594",
 "^	c #989887",
