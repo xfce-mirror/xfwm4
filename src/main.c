@@ -57,7 +57,7 @@
 #include "startup_notification.h"
 #include "spinning_cursor.h"
 
-#define MAIN_EVENT_MASK \
+#define BASE_EVENT_MASK \
     SubstructureNotifyMask|\
     StructureNotifyMask|\
     SubstructureRedirectMask|\
@@ -67,6 +67,12 @@
     PropertyChangeMask|\
     ColormapNotify
 
+#ifdef HAVE_COMPOSITOR
+#define MAIN_EVENT_MASK BASE_EVENT_MASK|ExposureMask
+#else /* HAVE_COMPOSITOR */
+#define MAIN_EVENT_MASK BASE_EVENT_MASK
+#endif /* HAVE_COMPOSITOR */
+    
 static DisplayInfo *display_info = NULL;
 gboolean xfwm4_quit           = FALSE;
 gboolean xfwm4_reload         = FALSE;

@@ -1234,14 +1234,14 @@ determine_mode(CWindow *cw)
 }
 
 static void
-expose_root (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
+expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 {
     XserverRegion region;
     
     g_return_if_fail (rects != NULL);
     g_return_if_fail (nrects > 0);
     
-    TRACE ("entering expose_root");    
+    TRACE ("entering expose_area");    
     region = XFixesCreateRegion (myScreenGetXDisplay (screen_info), rects, nrects);
     if (region != None)
     {
@@ -1592,23 +1592,29 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
 {
     ScreenInfo *screen_info;
     XRectangle rect[1];        
+    CWindow *cw;
     
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
-    
+    TRACE ("entering compositorHandleExpose");
+    g_return_if_fail (display_info);
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
         return;
     }
     
-    /* Get the screen structure from the root of the event */
-    screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-
-    if (!screen_info)
+    cw = find_cwindow_in_display (display_info, ev->window);
+    if (cw != NULL)
     {
-        return;
+        screen_info = cw->screen_info;
+    }
+    else
+    {
+        /* Get the screen structure from the root of the event */
+        screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
+        if (!screen_info)
+        {
+            return;
+        }
     }
 
     rect[0].x = ev->x;
@@ -1616,8 +1622,7 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     rect[0].width = ev->width;
     rect[0].height = ev->height;
     
-    expose_root (screen_info, rect, 1);
-    compositorRepairScreen (screen_info);
+    expose_area (screen_info, rect, 1);
 }
 
 static void

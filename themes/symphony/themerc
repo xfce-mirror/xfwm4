@@ -8,3 +8,4 @@ title_vertical_offset_inactive=1
 title_shadow_active=true
 # title_shadow_active=false
 title_shadow_inactive=false
+shadow_delta_y=4

@@ -1,3 +1,30 @@
+2004-10-02 12:33  olivier
+
+	* defaults/defaults, src/compositor.c, src/settings.c,
+	  src/settings.h: Add support for shadow_delta_* params for
+	  adjusting shadow size and position for specific themes.
+
+2004-10-02 10:59  olivier
+
+	* Makefile.in, configure, configure.ac, xfwm4.spec.in,
+	  defaults/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
+	  doc/it/images/Makefile.in, icons/Makefile.in,
+	  icons/48x48/Makefile.in, icons/scalable/Makefile.in,
+	  mcs-plugin/Makefile.in, po/xfwm4.pot, src/Makefile.in,
+	  src/compositor.c, themes/Makefile.in, themes/breeze/Makefile.in,
+	  themes/default/Makefile.in, themes/default-4.0/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/opta/Makefile.in,
+	  themes/symphony/Makefile.in, themes/waza/Makefile.in: Slightly
+	  enlarge shadow in compositor, Enable optional compositor build in
+	  rpm (depends on option "--enable-compositor" being passed to the
+	  configure script), Various gcc warning fixes in compositor.
+
+2004-10-01 22:17  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-10-01 22:15  olivier
 
 	* src/compositor.c: Last touch
