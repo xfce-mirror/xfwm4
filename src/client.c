@@ -1421,6 +1421,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
+    c->visual = attr.visual;
     clientGetWMNormalHints (c, FALSE);
 
     c->old_x = c->x;
@@ -1496,7 +1497,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         /* Reparent will send us unmap/map events */
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
     }
-
     c->ignore_unmap = 0;
     c->type = UNSET;
     c->type_atom = None;

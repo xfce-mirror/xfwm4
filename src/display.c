@@ -59,8 +59,58 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->gdisplay = gdisplay;
     display->dpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
 
+    XSetErrorHandler (handleXError);
+
+#ifdef HAVE_COMPOSITOR
+    if (!XCompositeQueryExtension (display->dpy,
+                                 &display->composite_event_base,
+                                 &display->composite_error_base))
+    {
+        display->have_composite = FALSE;
+        display->composite_event_base = 0;
+        display->composite_error_base = 0;
+    }
+    else
+    {
+        display->have_composite = TRUE;
+    }
+    if (!XDamageQueryExtension (display->dpy,
+                              &display->damage_event_base,
+                              &display->damage_error_base))
+    {
+        display->have_damage = FALSE;
+        display->damage_event_base = 0;
+        display->damage_error_base = 0;
+    }
+    else
+    {
+        display->have_damage = TRUE;
+    }
+    if (!XFixesQueryExtension (display->dpy,
+                             &display->fixes_event_base,
+                             &display->fixes_error_base))
+    {
+        display->have_fixes = FALSE;
+        display->fixes_event_base = 0;
+        display->fixes_error_base = 0;
+    }
+    else
+    {
+        display->have_fixes = TRUE;
+    }
+
+    display->repair_idle = 0;
+    display->repair_timeout = 0;
+
+    display->enable_compositor =
+        (display->have_composite && display->have_damage && display->have_fixes);
+#else /* HAVE_COMPOSITOR */
+    display->enable_compositor = FALSE;
+#endif /* HAVE_COMPOSITOR */
+
     display->shape = 
         XShapeQueryExtension (display->dpy, &display->shape_event, &dummy);
+
     display->root_cursor = 
         XCreateFontCursor (display->dpy, XC_left_ptr);
     display->move_cursor = 
@@ -94,8 +144,6 @@ myDisplayInit (GdkDisplay *gdisplay)
     initGnomeHints (display->dpy);
     initNetHints   (display->dpy);
     initKDEHints   (display->dpy);
-
-    XSetErrorHandler (handleXError);
     
     return display;
 }

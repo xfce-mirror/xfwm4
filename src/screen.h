@@ -47,13 +47,6 @@
 
 struct _ScreenInfo 
 {
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION
-    /* Startup notification data, per screen */
-    SnMonitorContext *sn_context;
-    GSList *startup_sequences;
-    guint startup_sequence_timeout;
-#endif
-
     /* The display this screen belongs to */
     DisplayInfo *display_info;
     
@@ -112,6 +105,20 @@ struct _ScreenInfo
     
     /* Per screen parameters */
     XfwmParams *params;
+
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
+    /* Startup notification data, per screen */
+    SnMonitorContext *sn_context;
+    GSList *startup_sequences;
+    guint startup_sequence_timeout;
+#endif
+
+#ifdef HAVE_COMPOSITOR
+    XID root_picture;
+    XID damage_region;
+    XID trans_pixmap;
+    XID trans_picture;
+#endif /* HAVE_COMPOSITOR */
 };
 
 ScreenInfo *     myScreenInit         (DisplayInfo *, 

@@ -56,22 +56,24 @@ xfwm4_SOURCES =								\
 	workspaces.h
 
 xfwm4_CFLAGS =								\
-	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXPM_CFLAGS@							\
+	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
+	@COMPOSITOR_CFLAGS@						\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
         -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\
-	@LIBSTARTUP_NOTIFICATION_LIBS@					\
 	@LIBX11_LIBS@							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXPM_LIBS@							\
+	@LIBSTARTUP_NOTIFICATION_LIBS@					\
+	@COMPOSITOR_LIBS@						\
 	@RANDR_LIBS@
 
 xfwm4_LDFLAGS =								\

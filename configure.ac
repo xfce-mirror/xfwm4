@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.1.10])
+AM_INIT_AUTOMAKE([xfwm4], [4.1.11])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -79,6 +79,21 @@ if test x"$enable_randr" = x"yes"; then
   CFLAGS="$ac_CFLAGS"
 fi
 AC_SUBST([RANDR_LIBS])
+
+dnl
+dnl Xcomposite and related extensions
+dnl
+AC_ARG_ENABLE([compositor],
+AC_HELP_STRING([--enable-compositor], [enable compositor in xfwm4])
+AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4]),
+  [], [enable_compositor=yes])
+
+if test x"$enable_compositor" = x"yes"; then
+    if $PKG_CONFIG --exists xcomposite xfixes xdamage xrender 2> /dev/null; then
+        PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 1.0 xfixes xdamage xrender)
+        AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
+    fi
+fi
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
