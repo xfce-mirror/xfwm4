@@ -126,7 +126,7 @@ workspaceSwitch (int new_ws, Client * c2)
             CLIENT_FLAG_UNSET (c, CLIENT_FLAG_FOCUS);
         }
         else if ((c->win_workspace == new_ws)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ICONIFIED))
         {
             if (!clientIsTransientOrModal (c))
             {

@@ -416,7 +416,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : below");
         data[i++] = net_wm_state_below;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("clientSetNetState : hidden");
         data[i++] = net_wm_state_hidden;
@@ -481,11 +481,6 @@ clientGetNetState (Client * c)
                 TRACE ("clientGetNetState : shaded");
                 c->win_state |= WIN_STATE_SHADED;
                 CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
-            }
-            else if (atoms[i] == net_wm_state_hidden)
-            {
-                TRACE ("clientGetNetState : hidden");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
             }
             else if ((atoms[i] == net_wm_state_sticky))
             {
@@ -645,43 +640,6 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientToggleShaded (c);
         }
     }
-
-#if 0
-    /*
-     * EWMH V 1.2 Implementation note
-     * if an Application asks to toggle _NET_WM_STATE_HIDDEN the Window Manager
-     * should probably just ignore the request, since _NET_WM_STATE_HIDDEN is a
-     * function of some other aspect of the window such as minimization, rather
-     * than an independent state.
-     */
-    if ((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
-    {
-        if ((action == NET_WM_STATE_ADD)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
-        {
-            if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                clientHide (c, c->win_workspace, TRUE);
-            }
-        }
-        else if ((action == NET_WM_STATE_REMOVE)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
-        {
-            clientShow (c, TRUE);
-        }
-        else if (action == NET_WM_STATE_TOGGLE)
-        {
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
-            {
-                clientShow (c, TRUE);
-            }
-            else if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                clientHide (c, c->win_workspace, TRUE);
-            }
-        }
-    }
-#endif
 
     if ((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
@@ -1842,7 +1800,7 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
         c2 = (Client *) index->data;
         if ((c2 != c) && !clientIsTransientOrModal (c2)
             && clientIsTransientOrModalFor (c, c2)
-            && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN)
+            && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_ICONIFIED)
             && (c2->win_workspace == ws))
         {
             return TRUE;
@@ -3339,7 +3297,7 @@ clientFrame (Window w, gboolean recapture)
     c->type = UNSET;
     c->type_atom = None;
 
-    CLIENT_FLAG_SET (c, START_ICONIC (c) ? CLIENT_FLAG_HIDDEN : 0);
+    CLIENT_FLAG_SET (c, START_ICONIC (c) ? CLIENT_FLAG_ICONIFIED : 0);
     CLIENT_FLAG_SET (c, ACCEPT_INPUT (c->wmhints) ? CLIENT_FLAG_WM_INPUT : 0);
 
     clientGetWMProtocols (c);
@@ -3461,7 +3419,7 @@ clientFrame (Window w, gboolean recapture)
 
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_ICONIFIED))
     {
         if ((c->win_workspace == workspace) || 
             CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
@@ -3729,7 +3687,7 @@ clientSelectMask (Client * c, int mask)
     {
         okay = FALSE;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_ICONIFIED) && !(mask & INCLUDE_HIDDEN))
     {
         okay = FALSE;
     }
@@ -3967,12 +3925,12 @@ clientShowSingle (Client * c, gboolean change_state)
     }
     if (change_state)
     {
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HIDDEN);
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_ICONIFIED);
         setWMState (dpy, c->window, NormalState);
-	clientSetNetState (c);
         workspaceUpdateArea (margins, gnome_margins);
     }
     MyXUngrabServer ();
+    clientSetNetState (c);
 }
 
 void
@@ -4017,13 +3975,13 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     }
     if (change_state)
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_ICONIFIED);
         XUnmapWindow (dpy, c->window);
         setWMState (dpy, c->window, IconicState);
-	clientSetNetState (c);
         workspaceUpdateArea (margins, gnome_margins);
     }
     MyXUngrabServer ();
+    clientSetNetState (c);
 }
 
 void
@@ -4374,7 +4332,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
                 c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
             if (manage_mapping && !clientIsTransientOrModal (c2)
-                && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN))
+                && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_ICONIFIED))
             {
                 if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_STICKY))
                 {

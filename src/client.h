@@ -103,7 +103,7 @@
 #define CLIENT_FLAG_IS_RESIZABLE       (1L<<13)
 #define CLIENT_FLAG_MAP_PENDING        (1L<<14)
 #define CLIENT_FLAG_VISIBLE            (1L<<15)
-#define CLIENT_FLAG_HIDDEN             (1L<<16)
+#define CLIENT_FLAG_ICONIFIED          (1L<<16)
 #define CLIENT_FLAG_MANAGED            (1L<<17)
 #define CLIENT_FLAG_MAXIMIZED_VERT     (1L<<18)
 #define CLIENT_FLAG_MAXIMIZED_HORIZ    (1L<<19)

@@ -341,7 +341,7 @@ sessionSaveWindowStates (gchar * filename)
                 c->old_y, c->old_width, c->old_height);
             fprintf (f, "  [DESK] %i\n", c->win_workspace);
             fprintf (f, "  [FLAGS] 0x%lx\n", CLIENT_FLAG_TEST (c,
-                    CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN |
+                    CLIENT_FLAG_STICKY | CLIENT_FLAG_ICONIFIED |
                     CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED |
                     CLIENT_FLAG_NAME_CHANGED));
         }
@@ -655,7 +655,7 @@ sessionMatchWinToSM (Client * c)
             CLIENT_FLAG_SET (c,
                 matches[i].
                 flags & (CLIENT_FLAG_STICKY | CLIENT_FLAG_SHADED |
-                    CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_HIDDEN));
+                    CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_ICONIFIED));
             CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
             return TRUE;
         }
