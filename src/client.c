@@ -3990,7 +3990,6 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     MyXGrabServer ();
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c);
-    XUnmapWindow (dpy, c->frame);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
     {
         CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
@@ -3999,10 +3998,11 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     if (change_state)
     {
         CLIENT_FLAG_SET (c, CLIENT_FLAG_ICONIFIED);
-        XUnmapWindow (dpy, c->window);
         setWMState (dpy, c->window, IconicState);
         workspaceUpdateArea (margins, gnome_margins);
     }
+    XUnmapWindow (dpy, c->frame);
+    XUnmapWindow (dpy, c->window);
     MyXUngrabServer ();
     clientSetNetState (c);
 }
@@ -4057,7 +4057,6 @@ clientHideAll (Client * c, int ws)
     for (c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
         if (CLIENT_CAN_HIDE_WINDOW (c2)
-            && CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HAS_BORDER)
             && !clientIsTransientOrModal (c2) && (c2 != c))
         {
             if (((!c) && (c2->win_workspace == ws)) || ((c)

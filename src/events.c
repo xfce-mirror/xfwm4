@@ -322,7 +322,7 @@ handleKeyPress (XKeyEvent * ev)
                 clientClose (c);
                 break;
             case KEY_HIDE_WINDOW:
-                if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER) && CLIENT_CAN_HIDE_WINDOW (c))
+                if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
                     clientHide (c, c->win_workspace, TRUE);
                 }
@@ -340,7 +340,7 @@ handleKeyPress (XKeyEvent * ev)
                 clientToggleShaded (c);
                 break;
             case KEY_STICK_WINDOW:
-                if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER) && CLIENT_CAN_STICK_WINDOW (c))
+                if (CLIENT_CAN_STICK_WINDOW (c))
                 {
                     clientToggleSticky (c, TRUE);
                     frameDraw (c, FALSE, FALSE);
