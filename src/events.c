@@ -1335,10 +1335,11 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     }
     
     if ((ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[0])) || 
-        (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[1])))
+        (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[1])) ||
+        (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[3])) ||
+        (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[4])))
     {
-        TRACE ("Reset edge_scroll_x");
-        TRACE ("Reset edge_scroll_y");
+        TRACE ("Reset edge_scroll_x and edge_scroll_y");
         edge_scroll_x = 0;
         edge_scroll_y = 0;
     }

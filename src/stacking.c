@@ -44,9 +44,11 @@ clientApplyStackList (ScreenInfo *screen_info)
     DBG ("applying stack list");
     nwindows = g_list_length (screen_info->windows_stack);
 
-    xwinstack = g_new (Window, nwindows + 2);
+    xwinstack = g_new (Window, nwindows + 4);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[0]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[1]);
+    xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[3]);
+    xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[4]);
 
     if (nwindows)
     {
