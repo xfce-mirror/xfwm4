@@ -222,9 +222,9 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
                 tp = (w3 / 2) - (logical_rect.width / 2);
                 break;
         }
-        if(tp < 0)
+        if(tp < title_horizontal_offset)
         {
-            tp = 0;
+            tp = title_horizontal_offset;
         }
     }
     else
