@@ -118,6 +118,39 @@ Atom net_workarea;
 Atom utf8_string;
 
 
+/* Internal utilities */
+static gchar *
+utf8_string_remove_controls(gchar *str, gssize max_len, const gchar *end)
+{
+    gchar *p;
+    
+    g_return_val_if_fail (str != NULL, NULL);
+    
+    p = (gchar *) str;
+    while (p && *p && (!end || p < end) && (max_len < 0 || (p - str) < max_len))
+    {
+        if ((*p > 0) && (*p < 32))
+            *p = ' ';
+        p = g_utf8_find_next_char(p, end);
+    }
+
+    return (gchar *) str;
+}
+
+static gboolean
+check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
+    Atom expected_type, int n_items, int format, Atom type)
+{
+    if ((expected_format == format) && (expected_type == type) && (n_items < 0
+            || n_items > 0))
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+/* Public functions */
+
 void
 initICCCMHints (Display * dpy)
 {
@@ -493,18 +526,6 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
         XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
 }
 
-static gboolean
-check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
-    Atom expected_type, int n_items, int format, Atom type)
-{
-    if ((expected_format == format) && (expected_type == type) && (n_items < 0
-            || n_items > 0))
-    {
-        return TRUE;
-    }
-    return FALSE;
-}
-
 gboolean
 get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
     int *n_atoms_p)
@@ -691,7 +712,7 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p)
         return FALSE;
     }
 
-    if (!g_utf8_validate (str, n_items, NULL))
+    if (!g_utf8_validate (str, -1, NULL))
     {
         char *name;
 
@@ -708,6 +729,7 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p)
         return FALSE;
     }
 
+    utf8_string_remove_controls((gchar *) str, -1, NULL);
     *str_p = str;
 
     return TRUE;

@@ -243,12 +243,7 @@ initialize (int argc, char **argv)
     client_session->save_phase_2 = save_phase_2;
     client_session->die = session_die;
 
-    if (!session_init (client_session))
-    {
-        g_message (_("%s: Running without session manager"),
-            g_get_prgname ());
-    }
-    else
+    if (session_init (client_session))
     {
         load_saved_session ();
     }
