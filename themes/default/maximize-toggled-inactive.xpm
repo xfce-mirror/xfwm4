@@ -28,6 +28,5 @@ static char * maximize_toggled_inactive_xpm[] = {
 "+++++++++++++++++++",
 "+++++++++++++++++++",
 "                   ",
-"                   ",
 "                   "};
 
