@@ -44,6 +44,7 @@
 #define CHANNEL1 "xfwm4"
 #define CHANNEL2 "margins"
 #define TOINT(x) (x ? atoi(x) : 0)
+#define DEFAULT_KEYTHEME "default.keys"
 
 Params params;
 
@@ -749,7 +750,14 @@ loadKeyBindings (Settings rc[])
     if (keythemevalue)
     {
         keytheme = getThemeDir (keythemevalue);
-        parseRc ("keythemerc", keytheme, rc);
+        if (!parseRc ("keythemerc", keytheme, rc))
+        {
+            g_warning (_("%s: specified key theme \"%s\" missing, using default"),
+                       progname, keythemevalue);
+            g_free (keytheme);
+            keytheme = getThemeDir (DEFAULT_KEYTHEME);
+            parseRc ("keythemerc", keytheme, rc);
+        }
         g_free (keytheme);
 
         if (!checkRc (rc))
