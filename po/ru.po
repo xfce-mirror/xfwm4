@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-11-11 16:23+0100\n"
 "PO-Revision-Date: 2003-09-03 22:20+0300\n"
 "Last-Translator: Dan Korostelev <daniel@ats.energo.ru>\n"
 "Language-Team: Russian <daniel@ats.energo.ru>\n"
@@ -263,12 +263,12 @@ msgstr "Действие по двойному щелчку в области з
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: src/client.c:496
+#: src/client.c:499
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Не обрабатываемое net_wm_state (окно 0x%lx)"
 
-#: src/events.c:1453
+#: src/events.c:1496
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операция не поддерживается (пока)\n"
@@ -359,43 +359,43 @@ msgstr "Рабочее место %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не смог получить курсор\n"
 
-#: src/settings.c:285
+#: src/settings.c:288
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Отсутствует файл умолчаний"
 
-#: src/settings.c:510
+#: src/settings.c:520
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Ошибка определения активного цвета %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:527
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Ошибка обработки активного цвета %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:571
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ошибка определения неактивного цвета %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:578
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ошибка обработки неактивного цвета %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:765
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: указанная тема клавиш \"%s\" отсутствует, используется тема по умолчанию"
 
-#: src/settings.c:765
+#: src/settings.c:775
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Отсутствуют значения в файле умолчаний"
 
-#: src/settings.c:1106
+#: src/settings.c:1122
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

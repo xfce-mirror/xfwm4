@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-11-11 16:23+0100\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -279,12 +279,12 @@ msgstr "Acción a realizar cuando se pinche dos veces la barra de título :"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/client.c:496
+#: src/client.c:499
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 
-#: src/events.c:1453
+#: src/events.c:1496
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
@@ -376,42 +376,42 @@ msgstr "Esc_ritorio"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 
-#: src/settings.c:285
+#: src/settings.c:288
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/settings.c:510
+#: src/settings.c:520
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:527
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:571
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:578
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:765
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:765
+#: src/settings.c:775
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/settings.c:1106
+#: src/settings.c:1122
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Sin inicializar el contador de escritorios, usando el valor:%i"
