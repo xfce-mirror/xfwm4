@@ -1326,21 +1326,21 @@ static inline void clientConstraintPos(Client *c)
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if (c->x < CLIENT_MIN_VISIBLE + margins[MARGIN_LEFT] - c->width)
+    if ((c->x + c->width) < CLIENT_MIN_VISIBLE)
     {
-	c->x = CLIENT_MIN_VISIBLE + margins[MARGIN_LEFT] - c->width ;
+	c->x = CLIENT_MIN_VISIBLE - c->width ;
     }
-    else if (c->x > XDisplayWidth(dpy, screen) - CLIENT_MIN_VISIBLE - margins[MARGIN_RIGHT])
+    else if ((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen))
     {
-	c->x = XDisplayWidth(dpy, screen) - CLIENT_MIN_VISIBLE - margins[MARGIN_RIGHT];
+	c->x = XDisplayWidth(dpy, screen) - CLIENT_MIN_VISIBLE;
     }
-    if (c->y < CLIENT_MIN_VISIBLE + margins[MARGIN_TOP] - c->height)
+    if ((c->y + c->height) < CLIENT_MIN_VISIBLE)
     {
-	c->y = CLIENT_MIN_VISIBLE + margins[MARGIN_TOP] - c->height ;
+	c->y = CLIENT_MIN_VISIBLE - c->height;
     }
-    else if (c->y > XDisplayHeight(dpy, screen) - CLIENT_MIN_VISIBLE - margins[MARGIN_BOTTOM])
+    else if (c->y + CLIENT_MIN_VISIBLE > XDisplayHeight(dpy, screen))
     {
-	c->y = XDisplayHeight(dpy, screen) - CLIENT_MIN_VISIBLE - margins[MARGIN_BOTTOM];
+	c->y = XDisplayHeight(dpy, screen) - CLIENT_MIN_VISIBLE;
     }
 }
 
