@@ -1,3 +1,102 @@
+2003-04-02  bmeurer
+
+	* aclocal.m4, configure, m4/debug.m4: left-over autostuff for
+	libxfce*, xfcs-mcs-* and xfce4
+
+2003-04-02  bmeurer
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
+	ltcf-c.sh, ltconfig, ltmain.sh, m4/debug.m4, m4/rpath.m4,
+	mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	src/client.c, src/events.c, src/frame.c, src/hints.c,
+	src/keyboard.c, src/main.c, src/menu.c, src/misc.c, src/mypixmap.c,
+	src/mywindow.c, src/parserc.c, src/session.c, src/settings.c,
+	src/spinning_cursor.c, src/startup_notification.c, src/tabwin.c,
+	src/workspaces.c: Updated i18n stuff (libxfce4util now provides a
+	i18n.h).  updated X11.m4 updated xfwm4 to compile well with -Werror
+	-Wall updated xfce-mcs-plugins and added a hint to the README for
+	XFree86 users
+
+2003-04-01  xfce
+
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Initialize early
+	i18n in mcs plugins Add Etria theme
+
+2003-03-31  xfce
+
+	* po/: POTFILES.in, ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po,
+	es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po,
+	pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Fix pixmap.c ->
+	mypixmap.c in POTFILES.in
+
+2003-03-31  xfce
+
+	* themes/default/top-right-active.xpm: 1 pixel change :)
+
+2003-03-31  xfce
+
+	* themes/default/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm: Smooth bottom
+	corners
+
+2003-03-30  xfce
+
+	* themes/default/: bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm: Use square and bigger bottom corners for
+	default theme.
+
+2003-03-30  xfce
+
+	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	mcs-plugin/margins_plugin.c, src/events.c: Fix dependecy loop in
+	mcs Makefile Revert to use spin instead of adjustment as callback
+	object in margins plugin
+
+2003-03-30  xfce
+
+	* src/: client.c, events.c: Improve focus passing on unmap/destroy
+	events
+
+2003-03-30  xfce
+
+	* mcs-plugin/margins_plugin.c: Fix bug in original impl. of spin
+	button for margin plugin.
+
+2003-03-30  xfce
+
+	* src/client.c: Don't show windows in not on same workspace or
+	sticky (as before)
+
+2003-03-30  xfce
+
+	* src/: client.c, client.h, events.c, workspaces.c: Small tweaking
+
+2003-03-30  xfce
+
+	* src/: Makefile.am, Makefile.in, client.c, client.h, events.c,
+	frame.c, main.h, mypixmap.c, mypixmap.h, pixmap.c, pixmap.h,
+	settings.c, settings.h, workspaces.c: Small code reorganization
+
+2003-03-29  xfce
+
+	* src/: client.c, client.h, events.c, workspaces.c: Change focus
+	management (huge change in the core of the window manager!)
+
+2003-03-29  huysmans
+
+	* po/: de.gmo, de.po: Update german translations
+
+2003-03-27  xfce
+
+	* mcs-plugin/margins_plugin.c, src/client.c, src/hints.c,
+	src/menu.c, src/misc.c, src/settings.c: Prefer
+	gdk_screen[width|height] instead of XDisplay[Width|Height]
+
+2003-03-27  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-03-27  xfce
 
 	* src/: client.c, client.h, events.c, frame.c, main.h: Fix a bug in
@@ -255,8 +354,8 @@
 
 	* Makefile.am, Makefile.in, aclocal.m4, autogen.sh, config.h.in,
 	configure, configure.ac, configure.in, ltcf-c.sh, ltconfig,
-	ltmain.sh, xfwm4.spec.in, common/Makefile.in, defaults/Makefile.in,
-	m4/X11.m4, m4/debug.m4, m4/depends.m4, m4/i18n.m4, m4/rpath.m4,
+	ltmain.sh, xfwm4.spec.in, defaults/Makefile.in, m4/X11.m4,
+	m4/debug.m4, m4/depends.m4, m4/i18n.m4, m4/rpath.m4,
 	mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
 	mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
 	po/Makefile.in.in, src/Makefile.am, src/Makefile.in, src/client.c,
@@ -603,9 +702,9 @@
 2003-03-01  xfce
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, ltcf-c.sh,
-	ltconfig, ltmain.sh, common/Makefile.in, defaults/Makefile.in,
-	mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c, src/Makefile.in,
-	src/client.c, themes/Makefile.in, themes/adept/Makefile.in,
+	ltconfig, ltmain.sh, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	mcs-plugin/xfwm4_plugin.c, src/Makefile.in, src/client.c,
+	themes/Makefile.in, themes/adept/Makefile.in,
 	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
 	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
 	themes/b6/Makefile.in, themes/bbs/Makefile.in,
@@ -684,7 +783,7 @@
 
 2003-02-26  xfce
 
-	* Makefile.in, configure, common/Makefile.in, defaults/Makefile.in,
+	* Makefile.in, configure, defaults/Makefile.in,
 	mcs-plugin/Makefile.in, mcs-plugin/margins_plugin.c,
 	mcs-plugin/xfwm4_plugin.c, src/Makefile.in, src/main.c,
 	themes/Makefile.in, themes/adept/Makefile.in,
@@ -1002,9 +1101,9 @@
 2003-02-09  xfce
 
 	* Makefile.in, config.h.in, configure, configure.in,
-	common/Makefile.in, defaults/Makefile.in, mcs-plugin/Makefile.in,
-	src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
-	src/events.c, src/hints.c, src/hints.h, src/main.c, src/session.c,
+	defaults/Makefile.in, mcs-plugin/Makefile.in, src/Makefile.am,
+	src/Makefile.in, src/client.c, src/client.h, src/events.c,
+	src/hints.c, src/hints.h, src/main.c, src/session.c,
 	src/settings.c, src/startup_notification.c,
 	src/startup_notification.h, themes/Makefile.in,
 	themes/adept/Makefile.in, themes/agua/Makefile.in,
@@ -1202,8 +1301,8 @@
 2003-01-27  xfce
 
 	* Makefile.am, Makefile.in, autogen.sh, configure, configure.in,
-	common/Makefile.in, defaults/Makefile.in, mcs-plugin/Makefile.in,
-	src/Makefile.in, themes/Makefile.in, themes/adept/Makefile.in,
+	defaults/Makefile.in, mcs-plugin/Makefile.in, src/Makefile.in,
+	themes/Makefile.in, themes/adept/Makefile.in,
 	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
 	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
 	themes/b6/Makefile.in, themes/bbs/Makefile.in,
@@ -1262,9 +1361,9 @@
 
 	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.h.in,
 	config.sub, configure, configure.in, install-sh, ltmain.sh,
-	mkinstalldirs, common/Makefile.in, defaults/Makefile.in,
-	mcs-plugin/Makefile.in, po/Makefile.in.in, po/de.gmo, po/de.po,
-	src/Makefile.in, themes/Makefile.in, themes/adept/Makefile.in,
+	mkinstalldirs, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	po/Makefile.in.in, po/de.gmo, po/de.po, src/Makefile.in,
+	themes/Makefile.in, themes/adept/Makefile.in,
 	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
 	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
 	themes/b6/Makefile.in, themes/bbs/Makefile.in,
@@ -1300,39 +1399,38 @@
 
 	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.h.in,
 	config.sub, configure, configure.in, install-sh, ltmain.sh,
-	mkinstalldirs, common/Makefile.in, defaults/Makefile.in,
-	mcs-plugin/Makefile.in, po/Makefile.in.in, po/es_MX.gmo,
-	po/es_MX.po, src/Makefile.in, themes/Makefile.in,
-	themes/adept/Makefile.in, themes/agua/Makefile.in,
-	themes/atlanta/Makefile.in, themes/atlanta2/Makefile.in,
-	themes/b5/Makefile.in, themes/b6/Makefile.in,
-	themes/bbs/Makefile.in, themes/beastie/Makefile.in,
-	themes/biz/Makefile.in, themes/coldsteel/Makefile.in,
-	themes/coolclean/Makefile.in, themes/crux/Makefile.in,
-	themes/cruxish/Makefile.in, themes/curve/Makefile.in,
-	themes/default.keys/Makefile.in, themes/eazel-blue/Makefile.in,
-	themes/elberg/Makefile.in, themes/exocet/Makefile.in,
-	themes/fbx/Makefile.in, themes/g2/Makefile.in,
-	themes/gaudy/Makefile.in, themes/gnububble/Makefile.in,
-	themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
-	themes/iceg/Makefile.in, themes/kde/Makefile.in,
-	themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
-	themes/koynacity/Makefile.in, themes/linea/Makefile.in,
-	themes/meenee/Makefile.in, themes/metabox/Makefile.in,
-	themes/microcurve/Makefile.in, themes/microdeck/Makefile.in,
-	themes/microdeck2/Makefile.in, themes/microgui/Makefile.in,
-	themes/mofit/Makefile.in, themes/next/Makefile.in,
-	themes/ops/Makefile.in, themes/oroborus/Makefile.in,
-	themes/pills/Makefile.in, themes/piranha/Makefile.in,
-	themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
-	themes/quinx/Makefile.in, themes/r9x/Makefile.in,
-	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
-	themes/retro/Makefile.in, themes/silverado/Makefile.in,
-	themes/slick/Makefile.in, themes/slimline/Makefile.in,
-	themes/tabs/Makefile.in, themes/tgc/Makefile.in,
-	themes/trench/Makefile.in, themes/tux/Makefile.in,
-	themes/variation/Makefile.in, themes/xfce/Makefile.in: added
-	mexican spanish files
+	mkinstalldirs, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	po/Makefile.in.in, po/es_MX.gmo, po/es_MX.po, src/Makefile.in,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microcurve/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	themes/tux/Makefile.in, themes/variation/Makefile.in,
+	themes/xfce/Makefile.in: added mexican spanish files
 
 2003-01-24  huysmans
 
@@ -1359,8 +1457,8 @@
 
 2003-01-23  xfce
 
-	* Makefile.am, Makefile.in, common/Makefile.am, common/Makefile.in,
-	src/client.c, src/client.h, src/events.c: Mix tweakings
+	* Makefile.am, Makefile.in, src/client.c, src/client.h,
+	src/events.c: Mix tweakings
 
 2003-01-23  xfce
 
@@ -1386,12 +1484,11 @@
 
 	* ChangeLog, Makefile.am, Makefile.in, aclocal.m4, autogen.sh,
 	config.h.in, configure, configure.in, mkinstalldirs,
-	common/Makefile.in, common/my_intl.h, defaults/Makefile.in,
-	mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
-	mcs-plugin/xfwm4_plugin.c, po/ChangeLog, po/Makefile.in.in,
-	po/POTFILES.in, po/fr.gmo, po/fr.po, po/po2tbl.sed.in,
-	po/xfwm4.pot, src/Makefile.am, src/Makefile.in, src/main.c,
-	themes/Makefile.in, themes/adept/Makefile.in,
+	defaults/Makefile.in, mcs-plugin/Makefile.am,
+	mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c, po/ChangeLog,
+	po/Makefile.in.in, po/POTFILES.in, po/fr.gmo, po/fr.po,
+	po/po2tbl.sed.in, po/xfwm4.pot, src/Makefile.am, src/Makefile.in,
+	src/main.c, themes/Makefile.in, themes/adept/Makefile.in,
 	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
 	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
 	themes/b6/Makefile.in, themes/bbs/Makefile.in,
@@ -1431,7 +1528,6 @@
 2003-01-21  xfce
 
 	* Makefile.am, Makefile.in, configure, configure.in, my_intl.h,
-	common/Makefile.am, common/Makefile.in, common/my_intl.h,
 	mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/Makefile.am,
 	src/Makefile.in, src/tabwin.c: [no log message]
 
