@@ -1562,6 +1562,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* net_wm_user_time standard */
     clientGetUserTime (c);
 
+    clientRaise (c);
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
     {
         if ((c->win_workspace == screen_info->current_ws) || 
@@ -1583,7 +1584,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info->dpy, c->window, IconicState);
         clientSetNetState (c);
     }
-    clientRaise (c);
     gdk_error_trap_pop ();
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
