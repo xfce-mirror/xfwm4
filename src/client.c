@@ -1644,7 +1644,6 @@ void clientFrame(Window w)
 
     MyXUngrabServer(dpy);
 
-    XGrabPointer(dpy, c->frame, False, ButtonPressMask | ButtonReleaseMask | PointerMotionMask | PointerMotionHintMask, GrabModeSync, GrabModeAsync, None, None, CurrentTime);
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, ButtonPressMask, GrabModeSync, GrabModeAsync, None, None);
 
     c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
@@ -1710,6 +1709,7 @@ void clientUnframe(Client * c, int remap)
     }
     clientGravitate(c, REMOVE);
     clientUngrabKeys(c);
+    XUngrabButton(dpy, AnyButton, AnyModifier, c->window);
     XSetWindowBorderWidth(dpy, c->window, c->border_width);
     if(remap)
     {
@@ -1763,6 +1763,7 @@ void clientFrameAll()
     windows_stack = NULL;
     client_focus = NULL;
 
+    XSync (dpy, 0);
     MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
