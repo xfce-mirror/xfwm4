@@ -53,6 +53,7 @@
 #define DEFAULT_LAYOUT "OTS|HMC"
 #define DEFAULT_ACTION "maximize"
 #define DEFAULT_ALIGN "center"
+#define DEFAULT_FONT "Sans Bold 10"
 
 #define DEFAULT_ICON_SIZE 48
 #define MAX_ELEMENTS_BEFORE_SCROLLING 6
@@ -165,76 +166,82 @@ struct _Itf
 
     GSList *click_focus_radio_group;
 
-    GtkWidget *xfwm4_dialog;
-    GtkWidget *dialog_vbox1;
-    GtkWidget *dialog_header;
-    GtkWidget *notebook1;
-    GtkWidget *hbox1;
-    GtkWidget *frame1;
-    GtkWidget *vbox1;
-    GtkWidget *hbox2;
-    GtkWidget *scrolledwindow1;
-    GtkWidget *treeview1;
-    GtkWidget *label4;
-    GtkWidget *vbox2;
-    GtkWidget *frame2;
-    GtkWidget *label5;
-    GtkWidget *label1;
-    GtkWidget *hbox3;
-    GtkWidget *frame3;
-    GtkWidget *vbox3;
-    GtkWidget *hbox4;
-    GtkWidget *scrolledwindow2;
-    GtkWidget *treeview2;
-    GtkWidget *label32;
-    GtkWidget *vbox4;
-    GtkWidget *frame4;
-    GtkWidget *hbox5;
+    GtkWidget *box_move_check;
+    GtkWidget *box_resize_check;
     GtkWidget *click_focus_radio;
+    GtkWidget *click_raise_check;
+    GtkWidget *closebutton1;
+    GtkWidget *dialog_action_area1;
+    GtkWidget *dialog_header;
+    GtkWidget *dialog_vbox1;
     GtkWidget *focus_follow_mouse_radio;
-    GtkWidget *label33;
-    GtkWidget *frame5;
     GtkWidget *focus_new_check;
-    GtkWidget *label34;
+    GtkWidget *font_button;
+    GtkWidget *font_selection;
+    GtkWidget *frame1;
+    GtkWidget *frame2;
+    GtkWidget *frame3;
+    GtkWidget *frame4;
+    GtkWidget *frame5;
     GtkWidget *frame6;
-    GtkWidget *vbox6;
-    GtkWidget *raise_on_focus_check;
-    GtkWidget *table2;
+    GtkWidget *frame8;
+    GtkWidget *frame9;
+    GtkWidget *frame10;
+    GtkWidget *frame11;
+    GtkWidget *frame12;
+    GtkWidget *frame13;
+    GtkWidget *frame14;
+    GtkWidget *frame15;
+    GtkWidget *hbox1;
+    GtkWidget *hbox2;
+    GtkWidget *hbox3;
+    GtkWidget *hbox4;
+    GtkWidget *hbox5;
+    GtkWidget *hbox6;
+    GtkWidget *label1;
+    GtkWidget *label2;
+    GtkWidget *label3;
+    GtkWidget *label4;
+    GtkWidget *label5;
+    GtkWidget *label6;
+    GtkWidget *label7;
+    GtkWidget *label32;
+    GtkWidget *label33;
+    GtkWidget *label34;
+    GtkWidget *label35;
     GtkWidget *label37;
     GtkWidget *label38;
     GtkWidget *label39;
-    GtkWidget *raise_delay_scale;
-    GtkWidget *label35;
-    GtkWidget *frame13;
-    GtkWidget *click_raise_check;
-    GtkWidget *label49;
-    GtkWidget *label2;
-    GtkWidget *vbox5;
-    GtkWidget *frame8;
-    GtkWidget *vbox7;
-    GtkWidget *snap_to_border_check;
-    GtkWidget *table3;
+    GtkWidget *label40;
     GtkWidget *label41;
     GtkWidget *label42;
     GtkWidget *label43;
-    GtkWidget *snap_width_scale;
-    GtkWidget *label40;
-    GtkWidget *frame9;
-    GtkWidget *wrap_workspaces_check;
     GtkWidget *label44;
-    GtkWidget *frame10;
-    GtkWidget *box_resize_check;
     GtkWidget *label45;
-    GtkWidget *frame11;
-    GtkWidget *box_move_check;
     GtkWidget *label46;
-    GtkWidget *frame12;
     GtkWidget *label47;
-    GtkWidget *frame14;
     GtkWidget *label48;
-    GtkWidget *label3;
-    GtkWidget *dialog_action_area1;
-    GtkWidget *closebutton1;
+    GtkWidget *label49;
+    GtkWidget *notebook1;
+    GtkWidget *raise_delay_scale;
+    GtkWidget *raise_on_focus_check;
+    GtkWidget *scrolledwindow1;
+    GtkWidget *scrolledwindow2;
+    GtkWidget *snap_to_border_check;
+    GtkWidget *snap_width_scale;
+    GtkWidget *table2;
+    GtkWidget *table3;
+    GtkWidget *treeview1;
+    GtkWidget *treeview2;
+    GtkWidget *vbox1;
+    GtkWidget *vbox2;
+    GtkWidget *vbox3;
+    GtkWidget *vbox4;
+    GtkWidget *vbox5;
+    GtkWidget *vbox6;
+    GtkWidget *vbox7;
+    GtkWidget *wrap_workspaces_check;
+    GtkWidget *xfwm4_dialog;
 };
 
 static void create_channel(McsPlugin * mcs_plugin);
@@ -246,6 +253,7 @@ static gboolean is_running = FALSE;
 static gchar *current_theme = NULL;
 static gchar *current_key_theme = NULL;
 static gchar *current_layout = NULL;
+static gchar *current_font = NULL;
 static gchar *dbl_click_action = NULL;
 static gchar *title_align = NULL;
 static gboolean click_to_focus = TRUE;
@@ -989,6 +997,53 @@ static void cb_title_align_value_changed(GtkWidget * widget, gpointer user_data)
     }
 }
 
+static void font_selection_ok(GtkWidget * w, gpointer user_data)
+{
+    Itf *itf = (Itf *) user_data;
+    gchar *new_font = gtk_font_selection_dialog_get_font_name(GTK_FONT_SELECTION_DIALOG(itf->font_selection));
+    McsPlugin *mcs_plugin = itf->mcs_plugin;
+
+    if(new_font != NULL)
+    {
+        if(current_font && strcmp(current_font, new_font))
+        {
+            g_free(current_font);
+            current_font = new_font;
+            gtk_button_set_label(GTK_BUTTON(itf->font_button), current_font);
+            mcs_manager_set_string(mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL, current_font);
+            mcs_manager_notify(mcs_plugin->manager, CHANNEL);
+            write_options(mcs_plugin);
+        }
+    }
+
+    gtk_widget_destroy(GTK_WIDGET(itf->font_selection));
+    itf->font_selection = NULL;
+}
+
+static void show_font_selection(GtkWidget * widget, gpointer user_data)
+{
+    Itf *itf = (Itf *) user_data;
+
+    if(!(itf->font_selection))
+    {
+        itf->font_selection = gtk_font_selection_dialog_new(_("Font Selection Dialog"));
+
+        gtk_window_set_position(GTK_WINDOW(itf->font_selection), GTK_WIN_POS_MOUSE);
+        gtk_font_selection_dialog_set_font_name(GTK_FONT_SELECTION_DIALOG(itf->font_selection), current_font);
+        g_signal_connect(itf->font_selection, "destroy", G_CALLBACK(gtk_widget_destroyed), &itf->font_selection);
+
+        g_signal_connect(GTK_FONT_SELECTION_DIALOG(itf->font_selection)->ok_button, "clicked", G_CALLBACK(font_selection_ok), user_data);
+        g_signal_connect_swapped(GTK_FONT_SELECTION_DIALOG(itf->font_selection)->cancel_button, "clicked", G_CALLBACK(gtk_widget_destroy), itf->font_selection);
+
+        gtk_widget_show(itf->font_selection);
+    }
+    else
+    {
+        gtk_widget_destroy(itf->font_selection);
+        itf->font_selection = NULL;
+    }
+}
+
 static void cb_dialog_response(GtkWidget * dialog, gint response_id)
 {
     if(response_id == GTK_RESPONSE_HELP)
@@ -1013,6 +1068,8 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     dialog->xfwm4_dialog = gtk_dialog_new();
     gtk_window_set_position(GTK_WINDOW(dialog->xfwm4_dialog), GTK_WIN_POS_CENTER);
+
+    dialog->font_selection = NULL;
 
     icon = default_icon_at_size(32, 32);
     gtk_window_set_icon(GTK_WINDOW(dialog->xfwm4_dialog), icon);
@@ -1066,6 +1123,31 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     dialog->vbox2 = gtk_vbox_new(FALSE, 0);
     gtk_widget_show(dialog->vbox2);
     gtk_box_pack_start(GTK_BOX(dialog->hbox1), dialog->vbox2, TRUE, TRUE, 0);
+
+    dialog->frame15 = gtk_frame_new(NULL);
+    gtk_widget_show(dialog->frame15);
+    gtk_box_pack_start(GTK_BOX(dialog->vbox2), dialog->frame15, TRUE, TRUE, 0);
+
+    dialog->hbox6 = gtk_hbox_new(FALSE, 0);
+    gtk_widget_show(dialog->hbox6);
+    gtk_container_add(GTK_CONTAINER(dialog->frame15), dialog->hbox6);
+    gtk_container_set_border_width(GTK_CONTAINER(dialog->hbox6), 5);
+
+    dialog->label6 = gtk_label_new(_("Font select :"));
+    gtk_widget_show(dialog->label6);
+    gtk_box_pack_start(GTK_BOX(dialog->hbox6), dialog->label6, FALSE, FALSE, 0);
+    gtk_label_set_justify(GTK_LABEL(dialog->label6), GTK_JUSTIFY_LEFT);
+
+    dialog->font_button = gtk_button_new();
+    gtk_button_set_label(GTK_BUTTON(dialog->font_button), current_font);
+    gtk_widget_show(dialog->font_button);
+    gtk_box_pack_start(GTK_BOX(dialog->hbox6), dialog->font_button, TRUE, TRUE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), 5);
+
+    dialog->label7 = gtk_label_new(_("Title font"));
+    gtk_widget_show(dialog->label7);
+    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame15), dialog->label7);
+    gtk_label_set_justify(GTK_LABEL(dialog->label7), GTK_JUSTIFY_LEFT);
 
     dialog->frame14 = gtk_frame_new(NULL);
     gtk_widget_show(dialog->frame14);
@@ -1408,6 +1490,7 @@ static void setup_dialog(Itf * itf)
     keybinding_theme_list = read_themes(keybinding_theme_list, itf->treeview2, itf->scrolledwindow2, KEYBINDING_THEMES, current_key_theme);
 
     g_signal_connect(G_OBJECT(itf->xfwm4_dialog), "response", G_CALLBACK(cb_dialog_response), itf->mcs_plugin);
+    g_signal_connect(G_OBJECT(itf->font_button), "clicked", G_CALLBACK(show_font_selection), itf);
     g_signal_connect(G_OBJECT(itf->click_focus_radio), "toggled", G_CALLBACK(cb_click_to_focus_changed), itf);
     g_signal_connect(G_OBJECT(itf->focus_new_check), "toggled", G_CALLBACK(cb_focus_new_changed), itf);
     g_signal_connect(G_OBJECT(itf->raise_on_focus_check), "toggled", G_CALLBACK(cb_raise_on_focus_changed), itf);
@@ -1483,7 +1566,27 @@ static void create_channel(McsPlugin * mcs_plugin)
         mcs_manager_set_string(mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL, current_theme);
     }
 
-    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL);
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL);
+    if(setting)
+    {
+        if(current_font)
+        {
+            g_free(current_font);
+        }
+        current_font = g_strdup(setting->data.v_string);
+    }
+    else
+    {
+        if(current_font)
+        {
+            g_free(current_font);
+        }
+
+        current_font = g_strdup(DEFAULT_FONT);
+        mcs_manager_set_string(mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL, current_font);
+    }
+
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL);
     if(setting)
     {
         if(title_align)

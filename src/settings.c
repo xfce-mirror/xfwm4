@@ -154,6 +154,10 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
                 {
                     reloadSettings(UPDATE_FRAME);
                 }
+                if(!strcmp(name, "Xfwm/TitleFont"))
+                {
+                    reloadSettings(UPDATE_FRAME);
+                }
             }
             break;
         case MCS_ACTION_DELETED:
@@ -287,14 +291,21 @@ static void loadMcsData(Settings rc[])
             setValue("title_alignment", setting->data.v_string, rc);
             mcs_setting_free(setting);
         }
+        if(mcs_client_get_setting(client, "Xfwm/TitleFont", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setValue("title_font", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
     }
 }
 
 static void loadTheme(Settings rc[])
 {
     gchar *theme;
+    gchar *font;
     XpmColorSymbol colsym[20];
     GtkWidget *widget = getDefaultGtkWidget();
+    PangoFontDescription *desc;
     guint i;
 
     rc[0].value = get_style(widget, "fg", "selected");
@@ -399,6 +410,16 @@ static void loadTheme(Settings rc[])
     {
         gdk_beep();
         g_message("Cannot parse inactive color %s\n", rc[1].value);
+    }
+
+    font = getValue("title_font", rc);
+    if (font && strlen(font))
+    {
+        desc = pango_font_description_from_string (font);
+        if (desc) 
+	{
+	    gtk_widget_modify_font (widget, desc);
+	}
     }
 
     loadPixmap(dpy, &sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 20);
@@ -574,7 +595,8 @@ gboolean loadSettings(void)
 	{"inactive_shadow_2", NULL, FALSE},
 	{"inactive_mid_2", NULL, FALSE},
 	{"theme", NULL, TRUE},
-	{"keytheme", NULL, FALSE},
+	{"keytheme", NULL, TRUE},
+	{"title_font", NULL, FALSE},
 	{"title_alignment", NULL, TRUE},
 	{"full_width_title", NULL, TRUE},
 	{"title_shadow_active", NULL, TRUE},
