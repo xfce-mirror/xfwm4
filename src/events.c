@@ -687,7 +687,10 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, ANY);
     if(c)
     {
-        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        gboolean constrained = FALSE;
+        
+        DBG("handleConfigureRequest managed window \"%s\" (%#lx)\n", c->name, c->window);
+	if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
             return;
@@ -698,9 +701,13 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             ev->value_mask &= ~CWStackMode;
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
-        if((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
+        if(ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
         {
-            clientRemoveMaximizeFlag(c);
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
+	    {
+	        clientRemoveMaximizeFlag(c);
+	    }
+	    constrained = TRUE;
         }
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
@@ -711,7 +718,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
                 clientSetFocus(c, True);
             }
         }
-        clientConfigure(c, &wc, ev->value_mask);
+        clientConfigure(c, &wc, ev->value_mask, constrained);
     }
     else
     {
@@ -829,7 +836,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
         }
         else if(ev->atom == XA_WM_HINTS)
         {

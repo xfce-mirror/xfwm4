@@ -66,6 +66,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/microcurve
 %{_datadir}/xfwm4/themes/microdeck
 %{_datadir}/xfwm4/themes/microdeck2
+%{_datadir}/xfwm4/themes/tgc
+%{_datadir}/xfwm4/themes/totem
 
 %files themes
 %defattr(-, root, root)
@@ -110,7 +112,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/slick
 %{_datadir}/xfwm4/themes/slimline
 %{_datadir}/xfwm4/themes/tabs
-%{_datadir}/xfwm4/themes/tgc
 %{_datadir}/xfwm4/themes/trench
 %{_datadir}/xfwm4/themes/tux
 %{_datadir}/xfwm4/themes/variation

@@ -53,6 +53,7 @@ slick \
 slimline \
 tabs \
 tgc \
+totem \
 trench \
 tux \
 variation \

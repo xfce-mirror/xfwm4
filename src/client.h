@@ -215,7 +215,7 @@ void clientUpdateNetState(Client *, XClientMessageEvent *);
 void clientGetNetWmType(Client * c);
 void clientCoordGravitate(Client *, int, int *, int *);
 void clientGravitate(Client *, int);
-void clientConfigure(Client *, XWindowChanges *, int);
+void clientConfigure(Client *, XWindowChanges *, int, gboolean);
 void clientUpdateMWMHints(Client *);
 void clientClearPixmapCache(Client *);
 void clientFrame(Window);

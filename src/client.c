@@ -69,8 +69,8 @@
     !(c->transient_for))
 
 #define CONSTRAINED_WINDOW(c) \
-    (c->type & (WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG | WINDOW_SPLASHSCREEN))
-
+    ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
+ 
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
@@ -100,11 +100,11 @@ static void clientSetHeight(Client * c, int h1);
 static inline Client *clientGetTopMost(int layer, Client * exclude);
 static inline Client *clientGetBottomMost(int layer, Client * exclude);
 static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc);
-static inline void clientConstraintPos(Client * c);
+static inline void clientConstraintPos(Client * c, gboolean show_title);
 static inline void clientKeepVisible(Client * c);
 static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1);
 static void clientInitPosition(Client * c);
-static void _clientConfigure(Client * c, XWindowChanges * wc, int mask);
+static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained);
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointer data);
@@ -163,7 +163,7 @@ static void clientToggleFullscreen(Client * c)
         wc.y = MyDisplayY(cx, cy);
         wc.width = MyDisplayWidth(dpy, screen, cx, cy);
         wc.height = MyDisplayHeight(dpy, screen, cx, cy);
-        layer = WIN_LAYER_FULLSCREEN;
+        layer = WIN_LAYER_ABOVE_DOCK;
     }
     else
     {
@@ -175,7 +175,7 @@ static void clientToggleFullscreen(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
-    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
 }
 
 static void clientToggleAbove(Client * c)
@@ -188,7 +188,7 @@ static void clientToggleAbove(Client * c)
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
     {
-        layer = WIN_LAYER_ABOVE;
+        layer = WIN_LAYER_ABOVE_DOCK;
     }
     else
     {
@@ -1004,7 +1004,7 @@ void clientUpdateAllFrames(int mask)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
         }
         if(mask & UPDATE_FRAME)
         {
@@ -1396,40 +1396,47 @@ static inline void clientComputeStackList(Client * c, Client * sibling, int mask
 /* clientConstraintPos() is used when moving windows 
    to ensure that the window stays accessible to the user
  */
-static inline void clientConstraintPos(Client * c)
+static inline void clientConstraintPos(Client * c, gboolean show_title)
 {
     int cx, cy, left, right, top, bottom;
-
+    gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
+    
     g_return_if_fail(c != NULL);
-    DBG("entering clientConstraintPos\n");
+    DBG("entering clientConstraintPos %s\n", show_title ? "(with show title)" : "(w/out show title)");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN) || !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER))
+    
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
-        DBG("ignoring constraint for client \"%s\" (%#lx)\n", c->name, c->window);
+        DBG("ignoring constrained for client \"%s\" (%#lx)\n", c->name, c->window);
         return;
     }
 
     cx = frameX(c) + (frameWidth(c) >> 1);
     cy = frameY(c) + (frameHeight(c) >> 1);
 
-    left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
-    right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
-    top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
-    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+    leftMostHead   = isLeftMostHead(dpy, screen, cx, cy);
+    rightMostHead  = isRightMostHead(dpy, screen, cx, cy);
+    topMostHead    = isTopMostHead(dpy, screen, cx, cy);
+    bottomMostHead = isBottomMostHead(dpy, screen, cx, cy);
 
-    if((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left)
+    left   = (leftMostHead ? (int)margins[MARGIN_LEFT] : 0);
+    right  = (rightMostHead ? (int)margins[MARGIN_RIGHT] : 0);
+    top    = (topMostHead ? (int)margins[MARGIN_TOP] : 0);
+    bottom = (bottomMostHead ? (int)margins[MARGIN_BOTTOM] : 0);
+
+    if(leftMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && ((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left))
     {
         c->x = MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left - c->width;
     }
-    else if((c->x + CLIENT_MIN_VISIBLE) > MyDisplayMaxX(dpy, screen, cx, cy) - right)
+    else if(rightMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->x + CLIENT_MIN_VISIBLE > MyDisplayMaxX(dpy, screen, cx, cy) - right))
     {
         c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
     }
-    if(c->y + c->height < MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top)
+    if(topMostHead && (c->y + (show_title ? frameTop(c) : c->height) < MyDisplayY(cx, cy) + (show_title ? 0 : CLIENT_MIN_VISIBLE) + top))
     {
-        c->y = MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top - c->height;
+        c->y = MyDisplayY(cx, cy) + top + (show_title ? frameTop(c) : CLIENT_MIN_VISIBLE - c->height);
     }
-    else if((c->y + CLIENT_MIN_VISIBLE) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom)
+    else if(bottomMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->y + CLIENT_MIN_VISIBLE > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
     {
         c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
     }
@@ -1532,7 +1539,6 @@ static void clientInitPosition(Client * c)
         {
             clientKeepVisible(c);
         }
-
         return;
     }
     else if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
@@ -1566,7 +1572,7 @@ static void clientInitPosition(Client * c)
             DBG("analyzing %i clients\n", client_count);
             for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
             {
-                if((c2 != c) && (c->win_workspace == c2->win_workspace) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
+                if((c2 != c) && (c2->type != WINDOW_DESKTOP) && (c->win_workspace == c2->win_workspace) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
                 {
                     c->x = test_x;
                     c->y = test_y;
@@ -1597,7 +1603,7 @@ static void clientInitPosition(Client * c)
     return;
 }
 
-static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
+static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained)
 {
     gboolean transients = FALSE;
     XConfigureEvent ce;
@@ -1638,7 +1644,6 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 c->y = wc->y;
             }
         }
-        c->y = wc->y;
     }
     if(mask & CWWidth)
     {
@@ -1691,14 +1696,14 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                             transients = TRUE;
                             wc2.stack_mode = Above;
                             DBG("recursive call 1\n");
-                            _clientConfigure(c2, &wc2, CWStackMode);
+                            _clientConfigure(c2, &wc2, CWStackMode, FALSE);
                         }
                         else
                         {
                             wc2.sibling = lowest_transient->window;
                             wc2.stack_mode = Below;
                             DBG("recursive call 2\n");
-                            _clientConfigure(c2, &wc2, CWStackMode | CWSibling);
+                            _clientConfigure(c2, &wc2, CWStackMode | CWSibling, FALSE);
                         }
                         lowest_transient = c2;
                     }
@@ -1762,6 +1767,10 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
         clientComputeStackList(c, sibling, mask, wc);
     }
 
+    if (constrained && CONSTRAINED_WINDOW(c))
+    {
+        clientConstraintPos(c, TRUE);
+    }
     wc->x = frameX(c);
     wc->y = frameY(c);
     wc->width = frameWidth(c);
@@ -1795,11 +1804,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
     }
 }
 
-void clientConfigure(Client * c, XWindowChanges * wc, int mask)
+void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained)
 {
     DBG("entering clientConfigure\n");
-    DBG("configuring client \"%s\" (%#lx)\n", c->name, c->window);
-    _clientConfigure(c, wc, mask);
+    DBG("configuring client \"%s\" (%#lx) %s, type %u\n", c->name, c->window, constrained ? "constrained" : "not contrained", c->type);
+    _clientConfigure(c, wc, mask, constrained);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
     {
         clientSetNetClientList(net_client_list_stacking, windows_stack);
@@ -2145,7 +2154,7 @@ void clientFrame(Window w)
     wc.width = c->width;
     wc.height = c->height;
     wc.stack_mode = Above;
-    clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth | CWStackMode);
+    clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth | CWStackMode, FALSE);
 
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
@@ -2495,7 +2504,7 @@ void clientRaise(Client * c)
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (c->type != WINDOW_DESKTOP))
     {
         wc.stack_mode = Above;
-        clientConfigure(c, &wc, CWStackMode);
+        clientConfigure(c, &wc, CWStackMode, FALSE);
     }
 }
 
@@ -2510,7 +2519,7 @@ void clientLower(Client * c)
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         wc.stack_mode = Below;
-        clientConfigure(c, &wc, CWStackMode);
+        clientConfigure(c, &wc, CWStackMode, FALSE);
     }
 }
 
@@ -2606,7 +2615,7 @@ void clientShade(Client * c)
     wc.width = c->width;
     wc.height = c->height;
     clientSetNetState(c);
-    clientConfigure(c, &wc, CWWidth | CWHeight);
+    clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
 }
 
 void clientUnshade(Client * c)
@@ -2628,7 +2637,7 @@ void clientUnshade(Client * c)
     wc.width = c->width;
     wc.height = c->height;
     clientSetNetState(c);
-    clientConfigure(c, &wc, CWWidth | CWHeight);
+    clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
 }
 
 void clientToggleShaded(Client * c)
@@ -2802,7 +2811,7 @@ void clientToggleMaximized(Client * c, int mode)
     }
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
-    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
 }
 
 inline gboolean clientAcceptFocus(Client * c)
@@ -2975,7 +2984,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         }
         if(CONSTRAINED_WINDOW(c))
         {
-            clientConstraintPos(c);
+            clientConstraintPos(c, FALSE);
         }
         if(params.box_move)
         {
@@ -2985,7 +2994,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         {
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure(c, &wc, CWX | CWY);
+            clientConfigure(c, &wc, CWX | CWY, FALSE);
         }
     }
     else if(passdata->use_keys && xevent->type == KeyRelease)
@@ -3074,7 +3083,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         if(CONSTRAINED_WINDOW(c))
         {
-            clientConstraintPos(c);
+            clientConstraintPos(c, FALSE);
         }
         if(params.box_move)
         {
@@ -3084,7 +3093,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         {
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure(c, &wc, CWX | CWY);
+            clientConfigure(c, &wc, CWX | CWY, FALSE);
         }
     }
     else if(!passdata->use_keys && xevent->type == ButtonRelease)
@@ -3218,7 +3227,7 @@ void clientMove(Client * c, XEvent * e)
     }
     wc.x = c->x;
     wc.y = c->y;
-    clientConfigure(c, &wc, CWX | CWY);
+    clientConfigure(c, &wc, CWX | CWY, FALSE);
 
     if(passdata.grab && params.box_move)
     {
@@ -3297,7 +3306,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
         }
     }
     else if((passdata->use_keys) && (xevent->type == KeyRelease))
@@ -3403,7 +3412,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
         }
     }
     else if(xevent->type == ButtonRelease)
@@ -3530,7 +3539,7 @@ void clientResize(Client * c, int corner, XEvent * e)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure(c, &wc, (CWX | CWY | CWHeight | CWWidth));
+    clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
 
     if(passdata.grab && params.box_resize)
     {
