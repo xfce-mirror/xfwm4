@@ -224,6 +224,7 @@ gboolean clientIsTransientFor(Client *, Client *);
 gboolean clientIsTransientForGroup(Client *);
 gboolean clientTransientHasAncestor(Client *, int);
 void clientSetNetState(Client *);
+void clientUpdateWinState(Client *, XClientMessageEvent *);
 void clientUpdateNetState(Client *, XClientMessageEvent *);
 void clientGetNetWmType(Client * c);
 void clientCoordGravitate(Client *, int, int *, int *);

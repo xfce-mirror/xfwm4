@@ -40,6 +40,12 @@
 #include "menu.h"
 #include "startup_notification.h"
 
+#define WIN_IS_BUTTON(win)      ((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON])) || \
+                                 (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || \
+                                 (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || \
+                                 (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || \
+                                 (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON])))
+
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
@@ -527,49 +533,55 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             button1Action(c, ev);
         }
-        else if((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON]) || (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON]))))
+        else if(WIN_IS_BUTTON(win))
         {
-            clientSetFocus(c, TRUE);
-            if(params.raise_on_click)
-            {
-                clientRaise(c);
-            }
-            clientButtonPress(c, win, ev);
-        }
-        else if(win == MYWINDOW_XWINDOW(c->title))
-        {
-            titleButton(c, state, ev);
-        }
-        else if((win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON])) && (ev->button == Button1))
-        {
-            /*
-               We need to copy the event to keep the original event untouched
-               for gtk to handle it (in case we open up the menu)
-             */
-
-            XEvent copy_event = (XEvent) * ev;
-            XfwmButtonClickType tclick;
-
-            tclick = typeOfClick(c->frame, &copy_event, TRUE);
-
-            if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
-            {
-                clientClose(c);
-            }
-            else
+            if (ev->button <= Button3)
             {
                 clientSetFocus(c, TRUE);
                 if(params.raise_on_click)
                 {
                     clientRaise(c);
                 }
-                ev->window = ev->root;
-                if(button_handler_id)
+                clientButtonPress(c, win, ev);
+            }
+        }
+        else if(win == MYWINDOW_XWINDOW(c->title))
+        {
+            titleButton(c, state, ev);
+        }
+        else if(win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON]))
+        {
+            if (ev->button == Button1)
+            {
+                /*
+                   We need to copy the event to keep the original event untouched
+                   for gtk to handle it (in case we open up the menu)
+                 */
+
+                XEvent copy_event = (XEvent) * ev;
+                XfwmButtonClickType tclick;
+
+                tclick = typeOfClick(c->frame, &copy_event, TRUE);
+
+                if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
                 {
-                    g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
+                    clientClose(c);
                 }
-                button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
-                /* Let GTK handle this for us. */
+                else
+                {
+                    clientSetFocus(c, TRUE);
+                    if(params.raise_on_click)
+                    {
+                        clientRaise(c);
+                    }
+                    ev->window = ev->root;
+                    if(button_handler_id)
+                    {
+                        g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
+                    }
+                    button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
+                    /* Let GTK handle this for us. */
+                }
             }
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
@@ -808,12 +820,6 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
                 {
                     clientShow(c, TRUE);
                 }
-#if 0
-                if(params.focus_new && clientAcceptFocus(c))
-                {
-                    clientSetFocus(c, TRUE);
-                }
-#endif
             }
         }
         clientConfigure(c, &wc, ev->value_mask, constrained);
@@ -1023,34 +1029,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
                 clientHide(c, c->win_workspace, TRUE);
            }
         }
-        else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
+        else if((ev->message_type == win_state) && (ev->format == 32))
         {
-            TRACE("client \"%s\" (0x%lx) has received a win_state/shaded event", c->name, c->window);
-            if(ev->data.l[1] == WIN_STATE_SHADED)
-            {
-                clientShade(c);
-            }
-            else
-            {
-                clientUnshade(c);
-            }
-            clientToggleShaded(c);
-        }
-        else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
-        {
-            TRACE("client \"%s\" (0x%lx) has received a win_state/stick event", c->name, c->window);
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
-            {
-                if(ev->data.l[1] == WIN_STATE_STICKY)
-                {
-                    clientStick(c, TRUE);
-                }
-                else
-                {
-                    clientUnstick(c, TRUE);
-                }
-                frameDraw(c, FALSE, FALSE);
-            }
+            TRACE("client \"%s\" (0x%lx) has received a win_state event", c->name, c->window);
+            clientUpdateWinState(c, ev);
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {
@@ -1111,7 +1093,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if(((ev->message_type == win_workspace) || (ev->message_type == net_current_desktop)) && (ev->format == 32))
         {
             TRACE("root has received a win_workspace or a net_current_desktop event");
-            workspaceSwitch(ev->data.l[0], NULL);
+            if (workspace != ev->data.l[0])
+            {
+                workspaceSwitch(ev->data.l[0], NULL);
+            }
         }
         else if(((ev->message_type == win_workspace_count) || (ev->message_type == net_number_of_desktops)) && (ev->format == 32))
         {

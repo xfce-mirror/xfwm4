@@ -119,7 +119,8 @@ static inline void clientKeepVisible(Client * c);
 static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1);
 static void clientInitPosition(Client * c);
 static inline void clientFree(Client * c);
-static inline void clientApplyInitialNetState(Client * c);
+static inline void clientGetWinState(Client * c);
+static inline void clientApplyInitialState(Client * c);
 static inline gboolean clientSelectMask(Client * c, int mask);
 static GSList *clientListTransients(Client *c);
 static inline void clientSetWorkspaceSingle(Client * c, int ws);
@@ -417,11 +418,55 @@ static void clientGetNetState(Client * c)
             XFree(atoms);
         }
     }
+}
 
-    if(c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ))
+void clientUpdateWinState(Client * c, XClientMessageEvent * ev)
+{
+    unsigned long action;
+    Atom add_remove;
+
+    g_return_if_fail(c != NULL);
+    TRACE("entering clientUpdateWinState");
+    TRACE("client \"%s\" (0x%lx)", c->name, c->window);
+
+    action = ((XEvent *) ev)->xclient.data.l[0];
+    add_remove = ((XEvent *) ev)->xclient.data.l[1];
+
+    if(action & WIN_STATE_SHADED)
     {
-        c->win_state |= WIN_STATE_MAXIMIZED;
-        c->win_state &= ~(WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
+        TRACE("client \"%s\" (0x%lx) has received a win_state/shaded event", c->name, c->window);
+        if(add_remove == WIN_STATE_SHADED)
+        {
+            clientShade(c);
+        }
+        else
+        {
+            clientUnshade(c);
+        }
+    }
+    else if(action & WIN_STATE_STICKY)
+    {
+        TRACE("client \"%s\" (0x%lx) has received a win_state/stick event", c->name, c->window);
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+        {
+            if(add_remove == WIN_STATE_STICKY)
+            {
+                clientStick(c, TRUE);
+            }
+            else
+            {
+                clientUnstick(c, TRUE);
+            }
+            frameDraw(c, FALSE, FALSE);
+        }
+    }
+    else if(action & WIN_STATE_MAXIMIZED)
+    {
+        TRACE("client \"%s\" (0x%lx) has received a win_state/stick event", c->name, c->window);
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MAXIMIZE))
+        {
+            clientToggleMaximized(c, add_remove);
+        }
     }
 }
 
@@ -519,11 +564,6 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             {
                 mode |= WIN_STATE_MAXIMIZED_VERT;
             }
-            if(mode & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
-            {
-                mode |= WIN_STATE_MAXIMIZED;
-                mode &= ~(WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
-            }
             clientToggleMaximized(c, mode);
         }
         else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
@@ -547,11 +587,6 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         else if(action == NET_WM_STATE_TOGGLE)
         {
             unsigned long mode = 0;
-            if(mode & WIN_STATE_MAXIMIZED)
-            {
-                mode &= ~WIN_STATE_MAXIMIZED;
-                mode |= (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
-            }
             if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz))
             {
                 mode ^= WIN_STATE_MAXIMIZED_HORIZ;
@@ -559,11 +594,6 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             if((first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
             {
                 mode ^= WIN_STATE_MAXIMIZED_VERT;
-            }
-            if(mode & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
-            {
-                mode |= WIN_STATE_MAXIMIZED;
-                mode &= ~(WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
             }
             clientToggleMaximized(c, mode);
         }
@@ -1695,6 +1725,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
         if(rightMostHead && (frame_x + frame_width > disp_max_x - right))
         {
             c->x = disp_max_x - right - frame_width + frame_left;
+            frame_x = frameX(c);
         }
         if(leftMostHead && (frame_x < disp_x + left))
         {
@@ -1703,6 +1734,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
         if(bottomMostHead && (frame_y + frame_height > disp_max_y - bottom))
         {
             c->y = disp_max_y - bottom - frame_height + frame_top;
+            frame_y = frameY(c);
         }
         if(topMostHead && (frame_y < disp_y + top))
         {
@@ -1714,6 +1746,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
         if(rightMostHead && (frame_x + CLIENT_MIN_VISIBLE > disp_max_x - right))
         {
             c->x = disp_max_x - right - CLIENT_MIN_VISIBLE + frame_left;
+            frame_x = frameX(c);
         }
         if(leftMostHead && (frame_x + frame_width < disp_x + CLIENT_MIN_VISIBLE + left))
         {
@@ -1722,6 +1755,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
         if(bottomMostHead && (frame_y + CLIENT_MIN_VISIBLE > disp_max_y - bottom))
         {
             c->y = disp_max_y - bottom - CLIENT_MIN_VISIBLE + frame_top;
+            frame_y = frameY(c);
         }
         if(topMostHead && (frame_y + frame_height < disp_y + CLIENT_MIN_VISIBLE + top))
         {
@@ -1920,38 +1954,14 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
     {
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING_RESIZING))
         {
-#if 0
-            if((c->gravity != StaticGravity) && (wc->x == frameX(c)))
-            {
-                mask &= ~CWX;
-            }
-            else
-            {
-                c->x = wc->x;
-            }
-#else /* 0 */
             c->x = wc->x;
-#endif /* 0 */
-
         }
     }
     if(mask & CWY)
     {
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING_RESIZING))
         {
-#if 0
-            if((c->gravity != StaticGravity) && (wc->y == frameY(c)))
-            {
-                mask &= ~CWY;
-            }
-            else
-            {
-                c->y = wc->y;
-            }
-#else /* 0 */
             c->y = wc->y;
-#endif /* 0 */
-
         }
     }
     if(mask & CWWidth)
@@ -2132,11 +2142,39 @@ static inline void clientFree(Client * c)
     free(c);
 }
 
-static inline void clientApplyInitialNetState(Client * c)
+static inline void clientGetWinState(Client * c)
 {
     g_return_if_fail(c != NULL);
 
-    TRACE("entering clientApplyInitialNetState");
+    TRACE("entering clientGetWinState");
+
+    if(c->win_state & WIN_STATE_STICKY)
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+    }
+    if(c->win_state & WIN_STATE_SHADED)
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_SHADED);
+    }
+    if(c->win_state & WIN_STATE_MAXIMIZED_HORIZ)
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_HORIZ);
+    }
+    if(c->win_state & WIN_STATE_MAXIMIZED_VERT)
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_VERT);
+    }
+    if(c->win_state & WIN_STATE_MAXIMIZED)
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED);
+    }
+}
+
+static inline void clientApplyInitialState(Client * c)
+{
+    g_return_if_fail(c != NULL);
+
+    TRACE("entering clientApplyInitialState");
 
     /* We check that afterwards to make sure all states are now known */
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
@@ -2153,12 +2191,6 @@ static inline void clientApplyInitialNetState(Client * c)
         {
             TRACE("initial state: maximized vert.");
             mode |= WIN_STATE_MAXIMIZED_VERT;
-        }
-        if(mode & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
-        {
-            TRACE("initial state: fully maximized");
-            mode |= WIN_STATE_MAXIMIZED;
-            mode &= ~(WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
         }
         /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
@@ -2178,6 +2210,16 @@ static inline void clientApplyInitialNetState(Client * c)
     {
         TRACE("Applying client's initial state: below");
         clientToggleBelow(c);
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+    {
+        TRACE("Applying client's initial state: sticky");
+        clientStick(c, TRUE);
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+    {
+        TRACE("Applying client's initial state: sticky");
+        clientShade(c);
     }
 }
 
@@ -2338,11 +2380,9 @@ void clientFrame(Window w, gboolean initial)
         CLIENT_FLAG_SET(c, CLIENT_FLAG_SESSION_MANAGED);
     }
 
-    CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_VERT : 0);
-    CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_HORIZ : 0);
-
     /* Beware, order of calls is important here ! */
     sn_client_startup_properties(c);
+    clientGetWinState(c);
     clientGetNetState(c);
     clientGetInitialNetWmDesktop(c);
     clientGetNetWmType(c);
@@ -2361,11 +2401,11 @@ void clientFrame(Window w, gboolean initial)
         }
     }
 
-    /* We must call clientApplyInitialNetState() after having placed the
+    /* We must call clientApplyInitialState() after having placed the
        window so that the inital position values are correctly set if the
        inital state is maximize or fullscreen
      */
-    clientApplyInitialNetState(c);
+    clientApplyInitialState(c);
 
     if (!initial)
     {
@@ -3355,7 +3395,7 @@ inline void clientRemoveMaximizeFlag(Client * c)
     TRACE("entering clientRemoveMaximizeFlag");
     TRACE("Removing maximize flag on client \"%s\" (0x%lx)", c->name, c->window);
 
-    c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
+    c->win_state &= ~WIN_STATE_MAXIMIZED;
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
     frameDraw(c, FALSE, FALSE);
     clientSetNetState(c);
@@ -3364,6 +3404,7 @@ inline void clientRemoveMaximizeFlag(Client * c)
 void clientToggleMaximized(Client * c, int mode)
 {
     XWindowChanges wc;
+    int cx, cy, left, right, top, bottom;
 
     g_return_if_fail(c != NULL);
     TRACE("entering clientToggleMaximized");
@@ -3374,34 +3415,20 @@ void clientToggleMaximized(Client * c, int mode)
         return;
     }
 
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
+    cx = frameX(c) + (frameWidth(c) >> 1);
+    cy = frameY(c) + (frameHeight(c) >> 1);
+
+    left = (isLeftMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+    right = (isRightMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+    top = (isTopMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
+
+    if(mode & WIN_STATE_MAXIMIZED_HORIZ)
     {
-        wc.width = c->old_width;
-        wc.height = c->old_height;
-        wc.x = c->old_x;
-        wc.y = c->old_y;
-        c->win_state &= ~WIN_STATE_MAXIMIZED;
-        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
-    }
-    else
-    {
-        int cx, cy, left, right, top, bottom;
-
-        c->old_x = c->x;
-        c->old_y = c->y;
-        c->old_width = c->width;
-        c->old_height = c->height;
-
-        cx = frameX(c) + (frameWidth(c) >> 1);
-        cy = frameY(c) + (frameHeight(c) >> 1);
-
-        left = (isLeftMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
-        right = (isRightMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
-        top = (isTopMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
-        bottom = (isBottomMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
-
-        if(mode != WIN_STATE_MAXIMIZED_HORIZ)
+        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
+            c->old_x = c->x;
+            c->old_width = c->width;
             wc.x = MyDisplayX(cx, cy) + frameLeft(c) + left;
             wc.width = MyDisplayWidth(dpy, screen, cx, cy) - frameLeft(c) - frameRight(c) - left - right;
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
@@ -3409,11 +3436,24 @@ void clientToggleMaximized(Client * c, int mode)
         }
         else
         {
-            wc.x = c->x;
-            wc.width = c->width;
+            wc.x = c->old_x;
+            wc.width = c->old_width;
+            c->win_state &= ~WIN_STATE_MAXIMIZED_HORIZ;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
-        if(mode != WIN_STATE_MAXIMIZED_VERT)
+    }
+    else
+    {
+        wc.x = c->x;
+        wc.width = c->width;
+    }
+
+    if(mode & WIN_STATE_MAXIMIZED_VERT)
+    {
+        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_VERT))
         {
+            c->old_y = c->y;
+            c->old_height = c->height;
             wc.y = MyDisplayY(cx, cy) + frameTop(c) + top;
             wc.height = MyDisplayHeight(dpy, screen, cx, cy) - frameTop(c) - frameBottom(c) - top - bottom;
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
@@ -3421,10 +3461,18 @@ void clientToggleMaximized(Client * c, int mode)
         }
         else
         {
-            wc.y = c->y;
-            wc.height = c->height;
+            wc.y = c->old_y;
+            wc.height = c->old_height;
+            c->win_state &= ~WIN_STATE_MAXIMIZED_VERT;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED_VERT);
         }
     }
+    else
+    {
+        wc.y = c->y;
+        wc.height = c->height;
+    }
+
     clientSetNetState(c);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
@@ -4538,17 +4586,19 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         case MAXIMIZE_BUTTON:
             if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
             {
+                unsigned long mode = c->win_state & WIN_STATE_MAXIMIZED;
+                
                 if(bev->button == Button1)
                 {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+                    clientToggleMaximized(c, mode ? mode : WIN_STATE_MAXIMIZED);
                 }
                 else if(bev->button == Button2)
                 {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
+                    clientToggleMaximized(c, mode ? mode : WIN_STATE_MAXIMIZED_VERT);
                 }
                 else if(bev->button == Button3)
                 {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
+                    clientToggleMaximized(c, mode ? mode : WIN_STATE_MAXIMIZED_HORIZ);
                 }
             }
             break;
