@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-01-31 22:06+0100\n"
+"POT-Creation-Date: 2003-02-01 10:31+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgstr "Vasen"
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Center"
-msgstr "KeskellÃ€"
+msgstr "Keski"
 
 #: mcs-plugin/xfwm4_plugin.c:137
 msgid "Right"
@@ -88,7 +88,7 @@ msgstr "Ikkunoiden Asetukset"
 
 #: mcs-plugin/xfwm4_plugin.c:1088
 msgid "Window style"
-msgstr "Ikkunoiden tyyli"
+msgstr "Ikkunan tyyli"
 
 #: mcs-plugin/xfwm4_plugin.c:1106
 msgid "Font select :"
@@ -135,7 +135,7 @@ msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"Automaattisesti kohdenna \n"
+"Automaattisesti kohdenna\n"
 "uusiin ikkunoihin"
 
 #: mcs-plugin/xfwm4_plugin.c:1223
@@ -218,7 +218,7 @@ msgstr "Samea koon muutos "
 
 #: mcs-plugin/xfwm4_plugin.c:1387
 msgid "Display content of windows when moving"
-msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essÃ€"
+msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essa"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Opaque move"
@@ -226,7 +226,7 @@ msgstr "Samea siirto"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia :"
+msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
 
 #: mcs-plugin/xfwm4_plugin.c:1404
 msgid "Double click action"
@@ -253,7 +253,7 @@ msgstr "%s: Toiminto ei tuettu (vielÃ€)\n"
 #: src/hints.c:616
 #, c-format
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
-msgstr "%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8:a\n"
+msgstr "%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8\n"
 
 #: src/main.c:175
 #, c-format
@@ -293,19 +293,19 @@ msgstr "Alustus tehty"
 
 #: src/menu.c:38
 msgid "Ma_ximize"
-msgstr "S_uurenna"
+msgstr "_Suurenna"
 
 #: src/menu.c:39
 msgid "Un_maximize"
-msgstr "_Palauta"
+msgstr "P_alauta"
 
 #: src/menu.c:40
 msgid "_Hide"
-msgstr "P_iilota"
+msgstr "Pi_ilota"
 
 #: src/menu.c:41
 msgid "Hide _all others"
-msgstr "Piilota _kaikki muut"
+msgstr "Piilota kaikki _muut"
 
 #: src/menu.c:42
 msgid "S_how"
@@ -325,19 +325,19 @@ msgstr "_KiinnitÃ€"
 
 #: src/menu.c:46
 msgid "Uns_tick"
-msgstr "Poist_a kiinnitys"
+msgstr "Pois_ta Kiinnitys"
 
 #: src/menu.c:47
 msgid "_Move"
-msgstr "_SiirrÃ€"
+msgstr "Siirr_Ã€"
 
 #: src/menu.c:48
 msgid "_Resize"
-msgstr "_Muuta kokoa"
+msgstr "M_uuta kokoa"
 
 #: src/menu.c:49
 msgid "S_witch"
-msgstr "Vai_hda"
+msgstr "V_aihda"
 
 #: src/menu.c:51
 msgid "_Close"
@@ -349,7 +349,7 @@ msgstr "Tuhoa"
 
 #: src/menu.c:55
 msgid "Wor_kspace"
-msgstr "T_yÃ¶pÃ¶ytÃ€"
+msgstr "_TyÃ¶pÃ¶ytÃ€"
 
 #: src/menu.c:58
 msgid "_Quit"
@@ -357,7 +357,7 @@ msgstr "_Lopeta"
 
 #: src/menu.c:59
 msgid "Restart"
-msgstr "K_Ã€ynnistÃ€ uudelleen"
+msgstr "KÃ€ynnistÃ€ uudelleen"
 
 #: src/menu.c:307
 #, c-format
@@ -367,7 +367,7 @@ msgstr "%s: GtkMenu epÃ€onnistui osoittimen haltuunotossa\n"
 #: src/settings.c:333
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi ottaa kÃ€yttÃ¶Ã¶n \n"
+msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
 
 #: src/settings.c:339
 #, c-format
@@ -377,7 +377,7 @@ msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi tunnistaa \n"
 #: src/settings.c:377
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi ottaa kÃ€yttÃ¶Ã¶ \n"
+msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
 
 #: src/settings.c:383
 #, c-format
@@ -391,4 +391,4 @@ msgstr "%s: TyÃ¶pÃ¶ytien mÃ€Ã€rÃ€Ã€ ei asetettu, kÃ€ytetÃ€
 
 #: src/tabwin.c:68
 msgid "Switch to ..."
-msgstr "Vaihta pÃ¶ydÃ€lle..."
+msgstr "Vaihta pÃ¶ydÃ€lle ..."
