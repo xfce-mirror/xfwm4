@@ -249,7 +249,7 @@ static gboolean grab_available (guint32 timestamp)
 			GDK_POINTER_MOTION_MASK;
     GdkGrabStatus g1;
     GdkGrabStatus g2;
-    gboolean grab_failed;
+    gboolean grab_failed = FALSE;
     gint i = 0;
     
     DBG("entering grab_available\n");

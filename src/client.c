@@ -948,7 +948,7 @@ static inline Client *clientGetBottomMost(int layer, Client *exclude)
 {
     Window w1, w2, *wins = NULL;
     unsigned int i, count;
-    Client *c;
+    Client *c = NULL;
 
     DBG("entering clientGetBottomMost\n");
 
