@@ -170,6 +170,15 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     }
 
     width = frameWidth(c) - corners[CORNER_TOP_LEFT][ACTIVE].width - corners[CORNER_TOP_RIGHT][ACTIVE].width;
+    if (width < 1)
+    {
+        pm->pixmap = None;
+	pm->mask = None;
+	pm->width = 0;
+	pm->height = 0;
+        return;
+    }
+    
     if(left < corners[CORNER_TOP_LEFT][ACTIVE].width)
     {
         left = corners[CORNER_TOP_LEFT][ACTIVE].width;
@@ -251,7 +260,7 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     gc = gdk_gc_new(gpixmap);
     gdk_gc_get_values(title_colors[state].gc, &values);
     gdk_gc_set_values(gc, &values, GDK_GC_FOREGROUND);
-
+    
     if(w1 > 0)
     {
         fillRectangle(dpy, pm->pixmap, title[TITLE_1][state].pixmap, 0, 0, w1, frameTop(c));
