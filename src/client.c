@@ -1672,8 +1672,20 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         xfwmWindowCreate (display_info->dpy, c->frame, &c->buttons[i], None);
     }
-    TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name,
-        c->window);
+
+    /* Put client window on top of frame stack if visible, on bottom if shaded.
+       Putting the window on top avoid the XShape efefct that slows down
+       GLX apps dramatically */
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        XLowerWindow (display_info->dpy, c->window);
+    }
+    else
+    {
+        XRaiseWindow (display_info->dpy, c->window);
+    }
+    
+    TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name, c->window);
     wc.x = c->x;
     wc.y = c->y;
     wc.width = c->width;
@@ -2318,9 +2330,7 @@ clientShade (Client * c)
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        TRACE
-            ("cowardly refusing to shade \"%s\" (0x%lx) because it has no border",
-            c->name, c->window);
+        TRACE ("cowardly refusing to shade \"%s\" (0x%lx) because it has no border", c->name, c->window);
         return;
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -2336,6 +2346,7 @@ clientShade (Client * c)
     {
         wc.width = c->width;
         wc.height = c->height;
+        XLowerWindow (clientGetXDisplay (c), c->window);
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
@@ -2361,6 +2372,7 @@ clientUnshade (Client * c)
     {
         wc.width = c->width;
         wc.height = c->height;
+        XRaiseWindow (clientGetXDisplay (c), c->window);
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
