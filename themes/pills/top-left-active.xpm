@@ -27,9 +27,9 @@ static char * top_left_active_xpm[] = {
 "_	c #CAD3E0",
 ":	c #D5DAE5",
 "<	c #DEE3EA",
-"[	c #BCC2C8",
-"}	c #E3E6EA",
-"|	c #E5E8EE",
+"[	c #E3E6EA",
+"}	c #E5E8EE",
+"|	c #BCC2C8",
 "1	c #EEF0F3",
 "2	c #F2F2F3",
 "   ..+++",
@@ -51,6 +51,6 @@ static char * top_left_active_xpm[] = {
 "-*%&(_::",
 "+*=/_<<<",
 "+)=_:<<<",
-".^[:}|||",
-".^(<1111",
-".)&:|222"};
+".)=:[}}}",
+".)|:1111",
+".)&:}222"};
