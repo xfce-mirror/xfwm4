@@ -1231,7 +1231,6 @@ clientWindowType (Client * c)
         c2 = clientGetHighestTransientOrModalFor (c);
         if (c2)
         {
-#if 0
             if (clientIsTransient (c))
             {
                 c->initial_layer = c2->win_layer;
@@ -1240,9 +1239,6 @@ clientWindowType (Client * c)
             {
                 c->initial_layer = c2->win_layer;
             }
-#else
-            c->initial_layer = c2->win_layer;
-#endif
             TRACE ("Applied layer is %i", c->initial_layer);
         }
         CLIENT_FLAG_UNSET (c,
@@ -4076,9 +4072,13 @@ clientRaise (Client * c)
                     transients = g_list_append (transients, c2);
                     if (sibling)
                     {
-                        /* Place the transient window just before sibling */
-                        windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
-                        windows_stack = g_list_insert_before (windows_stack, sibling, c2);
+                        /* Make sure client_sibling is not c2 otherwise we create a circular linked list */
+                        if (client_sibling != c2)
+                        {
+                            /* Place the transient window just before sibling */
+                            windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
+                            windows_stack = g_list_insert_before (windows_stack, sibling, c2);
+                        }
                     }
                     else
                     {
@@ -4089,8 +4089,7 @@ clientRaise (Client * c)
                 }
                 else
                 {
-                    for (index2 = transients; index2;
-                        index2 = g_list_next (index2))
+                    for (index2 = transients; index2; index2 = g_list_next (index2))
                     {
                         c3 = (Client *) index2->data;
                         if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
@@ -4098,9 +4097,13 @@ clientRaise (Client * c)
                             transients = g_list_append (transients, c2);
                             if (sibling)
                             {
-                                /* Place the transient window just before sibling */
-                                windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
-                                windows_stack = g_list_insert_before (windows_stack, sibling, c2);
+                                /* Again, make sure client_sibling is not c2 to avoid a circular linked list */
+                                if (client_sibling != c2)
+                                {
+                                    /* Place the transient window just before sibling */
+                                    windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
+                                    windows_stack = g_list_insert_before (windows_stack, sibling, c2);
+                                }
                             }
                             else
                             {
