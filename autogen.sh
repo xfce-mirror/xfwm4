@@ -84,10 +84,14 @@ if test "$DIE" -eq 1; then
 fi
 
 if test -z "$*"; then
-  echo "**Warning**: I am going to run \`configure' with no arguments."
-  echo "If you wish to pass any to it, please specify them on the"
+  echo "**Message**: I am going to add --enable-maintainer-mode to \`configure'."
+  echo "If you wish to pass any other to it, please specify them on the"
   echo \`$0\'" command line."
   echo
+
+  conf_flags="--enable-maintainer-mode"
+else
+  unset conf_flags
 fi
 
 case $CC in
@@ -141,8 +145,6 @@ do
     )
   fi
 done
-
-conf_flags="--enable-maintainer-mode"
 
 if test x$NOCONFIGURE = x; then
   echo Running $srcdir/configure $conf_flags "$@" ...
