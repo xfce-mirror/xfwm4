@@ -99,7 +99,7 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
     else
     {
         key->keycode = XKeysymToKeycode (dpy, XStringToKeysym (str));
-        key->modifier = AnyModifier;
+        key->modifier = 0;
     }
 }
 
@@ -110,9 +110,9 @@ grabKey (Display * dpy, MyKey * key, Window w)
 
     if (key->keycode)
     {
-        if (key->modifier == AnyModifier)
+        if (key->modifier == 0)
         {
-            XGrabKey (dpy, key->keycode, key->modifier, w, FALSE,
+            XGrabKey (dpy, key->keycode, AnyModifier, w, FALSE,
                 GrabModeAsync, GrabModeAsync);
         }
         else
