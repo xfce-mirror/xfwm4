@@ -61,10 +61,6 @@
 #define DATADIR "/usr/local/share"
 #endif
 
-#ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
-#define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
-#endif
-
 #define STATES 8
 #define STATE_HIDDEN (STATES - 1)
 
@@ -289,31 +285,6 @@ gboolean g_str_has_suffix (const gchar  *str, const gchar  *suffix)
     return strcmp (str + str_len - suffix_len, suffix) == 0;
 }
 #endif
-
-static GdkPixbuf *default_icon_at_size(int width, int height)
-{
-
-    GdkPixbuf *base;
-
-    base = gdk_pixbuf_new_from_inline(-1, default_icon_data, FALSE, NULL);
-
-    g_assert(base);
-
-    if((width < 0 && height < 0) || (gdk_pixbuf_get_width(base) == width && gdk_pixbuf_get_height(base) == height))
-    {
-        return base;
-    }
-    else
-    {
-        GdkPixbuf *scaled;
-
-        scaled = gdk_pixbuf_scale_simple(base, width > 0 ? width : gdk_pixbuf_get_width(base), height > 0 ? height : gdk_pixbuf_get_height(base), GDK_INTERP_BILINEAR);
-
-        g_object_unref(G_OBJECT(base));
-
-        return scaled;
-    }
-}
 
 static void cb_layout_destroy_button(GtkWidget * widget, gpointer user_data)
 {
@@ -1071,7 +1042,7 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     dialog->font_selection = NULL;
 
-    icon = default_icon_at_size(32, 32);
+    icon = inline_icon_at_size(default_icon_data, 32, 32);
     gtk_window_set_icon(GTK_WINDOW(dialog->xfwm4_dialog), icon);
     g_object_unref(icon);
 
@@ -1511,7 +1482,7 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
     mcs_plugin->caption = g_strdup(_("Window Manager"));
     mcs_plugin->run_dialog = run_dialog;
-    mcs_plugin->icon = default_icon_at_size(DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE);
+    mcs_plugin->icon = inline_icon_at_size(default_icon_data, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE);
     mcs_manager_notify(mcs_plugin->manager, CHANNEL);
 
     return (MCS_PLUGIN_INIT_OK);
