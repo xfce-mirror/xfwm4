@@ -28,6 +28,7 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
+#include <X11/extensions/shape.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
@@ -142,6 +143,7 @@ static void clientInitPosition (Client * c);
 static inline void clientFree (Client * c);
 static inline void clientGetWinState (Client * c);
 static inline void clientApplyInitialState (Client * c);
+static inline gboolean clientCheckShape (Client * c);
 static inline gboolean clientSelectMask (Client * c, int mask);
 static GList *clientListTransient (Client * c);
 static GList *clientListTransientOrModal (Client * c);
@@ -3040,6 +3042,23 @@ clientApplyInitialState (Client * c)
     }
 }
 
+static inline gboolean
+clientCheckShape (Client * c)
+{
+    int xws, yws, xbs, ybs;
+    unsigned wws, hws, wbs, hbs;
+    int boundingShaped, clipShaped;
+    
+    g_return_val_if_fail (c != NULL, FALSE);
+    if (shape)
+    {
+        XShapeQueryExtents (dpy, c->window, &boundingShaped, &xws, &yws, &wws, 
+                            &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
+        return (boundingShaped != 0);
+    }
+    return FALSE;
+}
+
 void
 clientFocusNew(Client * c)
 {
@@ -3156,6 +3175,11 @@ clientFrame (Window w, gboolean recapture)
     c->fullscreen_old_height = c->height;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
+
+    if (clientCheckShape(c))
+    {
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_BORDER);
+    }
 
     if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize))
         || (((c->size->flags & (PMinSize | PMaxSize)) ==
