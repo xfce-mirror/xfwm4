@@ -175,6 +175,7 @@ static inline void spawn_shortcut(int i)
         if (error)
 	{
 	    g_warning("%s: %s",  g_get_prgname(), error->message);
+	    g_error_free(error);
 	}
     }
 }
