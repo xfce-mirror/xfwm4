@@ -762,7 +762,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
         if(getNetHint(dpy, c->window, net_wm_desktop, &val))
         {
             TRACE("atom net_wm_desktop detected");
-            if(val == (int) ALL_WORKSPACES)
+            if(val == ALL_WORKSPACES)
             {
                 TRACE("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
                 c->win_workspace = workspace;
