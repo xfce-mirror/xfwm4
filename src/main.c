@@ -153,7 +153,7 @@ void initialize(int argc, char **argv)
     depth = DefaultDepth(dpy, screen);
     cmap = DefaultColormap(dpy, screen);
 
-    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 20);
+    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 30);
     client_session->save_phase_2 = session_save_phase_2;
     client_session->die = session_die;
 
