@@ -171,3 +171,31 @@ removeTmpEventWin (Window w)
 {
     XDestroyWindow (dpy, w);
 }
+
+void
+placeSidewalks(gboolean activate)
+{
+    g_return_if_fail (sidewalk[0] != None);
+    g_return_if_fail (sidewalk[1] != None);
+
+    if (activate)
+    {
+        XMoveResizeWindow(dpy, sidewalk[0], 
+                          0, 0,
+                          1, MyDisplayFullHeight (dpy, screen));
+        XMoveResizeWindow(dpy, sidewalk[1],
+                          MyDisplayFullWidth (dpy, screen) - 1, 0, 
+                          1, MyDisplayFullHeight (dpy, screen));
+    }
+    else
+    {
+        /* Place the windows off screen */
+        XMoveResizeWindow(dpy, sidewalk[0], 
+                          -1, 0,
+                          1, MyDisplayFullHeight (dpy, screen));
+        XMoveResizeWindow(dpy, sidewalk[1],
+                          MyDisplayFullWidth (dpy, screen), 0, 
+                          1, MyDisplayFullHeight (dpy, screen));
+    }
+}
+

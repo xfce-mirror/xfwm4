@@ -146,6 +146,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                     else if (!strcmp (name, "Xfwm/WrapWorkspaces"))
                     {
                         params.wrap_workspaces = setting->data.v_int;
+                        placeSidewalks (params.wrap_workspaces);
                     }
                     else if (!strcmp (name, "Xfwm/WrapWindows"))
                     {
@@ -1240,6 +1241,7 @@ initSettings (void)
     {
         return FALSE;
     }
+    placeSidewalks (params.wrap_workspaces);
 
     return TRUE;
 }

@@ -40,6 +40,7 @@
 #include "mywindow.h"
 #include "frame.h"
 #include "client.h"
+#include "events.h"
 #include "menu.h"
 #include "startup_notification.h"
 
@@ -898,12 +899,8 @@ handleConfigureNotify (XConfigureEvent * ev)
         xscreen->width   = ev->width;
         xscreen->height  = ev->height;
 #endif
-        XMoveResizeWindow(dpy, side_win[0], 
-                          0, 0,
-                          1, MyDisplayFullHeight (dpy, screen));
-        XMoveResizeWindow(dpy, side_win[1],
-                          MyDisplayFullWidth (dpy, screen) - 1, 0, 
-                          1, MyDisplayFullHeight (dpy, screen));
+        placeSidewalks (params.wrap_workspaces);
+        clientScreenResize ();
     }
 }
 
@@ -1055,7 +1052,7 @@ handleLeaveNotify (XCrossingEvent * ev)
         return;
     }
 
-    if ((ev->window == side_win[0]) || (ev->window == side_win[1]))
+    if ((ev->window == sidewalk[0]) || (ev->window == sidewalk[1]))
     {
         TRACE ("Reset edge_scroll_x");
         edge_scroll_x = 0;
@@ -1463,7 +1460,6 @@ handleEvent (XEvent * ev)
         }
     }
 }
-
 
 GtkToXEventFilterStatus
 xfwm4_event_filter (XEvent * xevent, gpointer data)

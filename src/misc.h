@@ -35,5 +35,6 @@ void MyXGrabServer (void);
 void MyXUngrabServer (void);
 Window setTmpEventWin (int, int, unsigned int, unsigned int, long);
 void removeTmpEventWin (Window);
+void placeSidewalks(gboolean);
 
 #endif /* INC_MISC_H */

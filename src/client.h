@@ -271,6 +271,7 @@ void clientUpdateFocus (Client *);
 inline gboolean clientAcceptFocus (Client * c);
 void clientSetFocus (Client *, gboolean);
 Client *clientGetFocus ();
+void clientScreenResize(void);
 void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
 void clientCycle (Client *);

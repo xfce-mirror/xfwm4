@@ -1612,8 +1612,8 @@ clientApplyStackList (GSList * list)
     nwindows = g_slist_length (list);
 
     xwinstack = g_new (Window, nwindows + 2);
-    xwinstack[i++] = side_win[0];
-    xwinstack[i++] = side_win[1];
+    xwinstack[i++] = sidewalk[0];
+    xwinstack[i++] = sidewalk[1];
 
     if (nwindows)
     {
@@ -4220,6 +4220,27 @@ Client *
 clientGetFocus (void)
 {
     return (client_focus);
+}
+
+/* Xrandr stuff: on screen size change, make sure all clients are still visible */
+void 
+clientScreenResize(void)
+{
+    Client *c = NULL;
+    GSList *index;
+    XWindowChanges wc;
+    
+    for (index = windows_stack; index; index = g_slist_next (index))
+    {
+        c = (Client *) index->data;
+        if (!CONSTRAINED_WINDOW (c))
+        {
+            continue;
+        }
+        wc.x = c->x;
+        wc.y = c->y;
+        clientConfigure (c, &wc, CWX | CWY, TRUE, FALSE);
+    }
 }
 
 void

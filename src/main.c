@@ -65,7 +65,7 @@
 
 char *progname;
 Display *dpy;
-Window root, gnome_win, side_win[2];
+Window root, gnome_win, sidewalk[2];
 Colormap cmap;
 Screen *xscreen;
 int screen;
@@ -135,8 +135,8 @@ cleanUp ()
             params.shortcut_exec[i] = NULL;
         }
     }
-    removeTmpEventWin (side_win[0]);
-    removeTmpEventWin (side_win[1]);
+    removeTmpEventWin (sidewalk[0]);
+    removeTmpEventWin (sidewalk[1]);
     XSetInputFocus (dpy, root, RevertToPointerRoot, CurrentTime);
     closeEventFilter ();
 }
@@ -252,11 +252,11 @@ initialize (int argc, char **argv)
     }
 
     /* Create the side windows to detect edge movement */
-    side_win[0] = setTmpEventWin (0, 0, 
+    sidewalk[0] = setTmpEventWin (0, 0, 
                                   1, MyDisplayFullHeight (dpy, screen), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    side_win[1] = setTmpEventWin (MyDisplayFullWidth (dpy, screen) - 1, 0, 
+    sidewalk[1] = setTmpEventWin (MyDisplayFullWidth (dpy, screen) - 1, 0, 
                                   1, MyDisplayFullHeight (dpy, screen), 
                                   LeaveWindowMask | PointerMotionMask);
 
@@ -317,7 +317,7 @@ initialize (int argc, char **argv)
     set_net_workarea (dpy, screen, params.workspace_count, margins);
     XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks ();
-
+    
     /* The first time the first Gtk application on a display uses pango,
      * pango grabs the XServer while it creates the font cache window.
      * Therefore, force the cache window to be created now instead of
