@@ -57,16 +57,25 @@ static gboolean sn_startup_sequence_timeout(void *data);
 
 static void sn_error_trap_push(SnDisplay * sn_display, Display * dpy)
 {
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+
     gdk_error_trap_push();
 }
 
 static void sn_error_trap_pop(SnDisplay * sn_display, Display * dpy)
 {
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+
     gdk_error_trap_pop();
 }
 
 static void sn_update_feedback(void)
 {
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+
     if(startup_sequences != NULL)
     {
         XDefineCursor(dpy, root, busy_cursor);
@@ -79,6 +88,10 @@ static void sn_update_feedback(void)
 
 static void sn_add_sequence(SnStartupSequence * sequence)
 {
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+    g_return_if_fail(sequence != NULL);
+
     sn_startup_sequence_ref(sequence);
     startup_sequences = g_slist_prepend(startup_sequences, sequence);
 
@@ -91,6 +104,10 @@ static void sn_add_sequence(SnStartupSequence * sequence)
 
 static void sn_remove_sequence(SnStartupSequence * sequence)
 {
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+    g_return_if_fail(sequence != NULL);
+
     startup_sequences = g_slist_remove(startup_sequences, sequence);
     sn_startup_sequence_unref(sequence);
 
@@ -109,6 +126,9 @@ static void sn_collect_timed_out_foreach(void *element, void *data)
     long tv_sec, tv_usec;
     double elapsed;
 
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+
     sn_startup_sequence_get_last_active_time(sequence, &tv_sec, &tv_usec);
 
     elapsed = ((((double)ctod->now.tv_sec - tv_sec) * G_USEC_PER_SEC + (ctod->now.tv_usec - tv_usec))) / 1000.0;
@@ -123,6 +143,9 @@ static gboolean sn_startup_sequence_timeout(void *data)
 {
     CollectTimedOutData ctod;
     GSList *tmp;
+
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
 
     ctod.list = NULL;
     g_get_current_time(&ctod.now);
@@ -157,6 +180,9 @@ static void sn_screen_event(SnMonitorEvent * event, void *user_data)
     const char *wmclass;
     SnStartupSequence *sequence;
 
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
+    g_return_if_fail(event != NULL);
 
     sequence = sn_monitor_event_get_startup_sequence(event);
 
@@ -185,6 +211,9 @@ void sn_client_startup_properties(Client * c)
     char *startup_id = NULL;
     GSList *tmp = NULL;
     SnStartupSequence *sequence;
+
+    g_return_if_fail(sn_display != NULL);
+    g_return_if_fail(sn_context != NULL);
 
     startup_id = clientGetStartupId(c);
 
@@ -259,17 +288,25 @@ void sn_client_startup_properties(Client * c)
 void sn_init_display(Display * dpy, int screen)
 {
     sn_display = NULL;
-
+    sn_context = NULL;
+    
     g_return_if_fail(dpy != NULL);
 
     sn_display = sn_display_new(dpy, sn_error_trap_push, sn_error_trap_pop);
-    sn_context = sn_monitor_context_new(sn_display, screen, sn_screen_event, NULL, NULL);
+    if (sn_display != NULL)
+    {
+        sn_context = sn_monitor_context_new(sn_display, screen, sn_screen_event, NULL, NULL);
+    }
     startup_sequences = NULL;
     startup_sequence_timeout = 0;
 }
 
 void sn_close_display(void)
 {
+    if (sn_display)
+    {
+        sn_display_unref (sn_display);
+    }
     sn_display = NULL;
 }
 
