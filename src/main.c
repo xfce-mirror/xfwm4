@@ -280,17 +280,6 @@ initialize (int argc, char **argv)
     use_xinerama = xineramaInit (dpy);
     xinerama_heads = xineramaGetHeads ();
 
-    client_session =
-        client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
-    client_session->data = (gpointer) client_session;
-    client_session->save_phase_2 = save_phase_2;
-    client_session->die = session_die;
-
-    if (session_init (client_session))
-    {
-        load_saved_session (client_session);
-    }
-
     /* Create the side windows to detect edge movement */
     sidewalk[0] = setTmpEventWin (0, 0, 
                                   1, MyDisplayFullHeight (dpy, screen), 
@@ -378,6 +367,17 @@ initialize (int argc, char **argv)
     sigaction (SIGHUP, &act, NULL);
     sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
+
+    client_session =
+        client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
+    client_session->data = (gpointer) client_session;
+    client_session->save_phase_2 = save_phase_2;
+    client_session->die = session_die;
+
+    if (session_init (client_session))
+    {
+        load_saved_session (client_session);
+    }
 
     return 0;
 }
