@@ -146,6 +146,34 @@ clientGetTopMostForGroup (Client * c)
     return top_most;
 }
 
+gboolean
+clientIsTopMost (Client *c)
+{
+    ScreenInfo *screen_info;
+    GList *index = NULL;
+    
+    g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering clientIsTopMost");
+    
+    screen_info = c->screen_info;
+    
+    index = g_list_find (screen_info->windows_stack, (gconstpointer) c);
+    if (index)
+    {
+        GList *index2 = g_list_next (index);
+        if (index2)
+        {
+            Client *c2 = (Client *) index2->data;
+            return (c2->win_layer > c->win_layer);
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 Client *
 clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
 {
@@ -249,6 +277,11 @@ clientRaise (Client * c)
         return;
     }
     TRACE ("raising client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (c == clientGetFocus ())
+    {
+        clientPassGrabMouseButton (c);
+    }
 
     if (g_list_length (screen_info->windows_stack) < 1)
     {

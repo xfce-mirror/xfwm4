@@ -1377,7 +1377,7 @@ clientGetUserTime (Client * c)
     }
 }
 
-void
+Client *
 clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 {
     ScreenInfo *screen_info = NULL;
@@ -1389,8 +1389,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     unsigned long valuemask;
     int i;
 
-    g_return_if_fail (w != None);
-    g_return_if_fail (display_info != NULL);
+    g_return_val_if_fail (w != None, NULL);
+    g_return_val_if_fail (display_info != NULL, NULL);
 
     TRACE ("entering clientFrame");
     TRACE ("framing client (0x%lx)", w);
@@ -1403,7 +1403,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         TRACE ("Cannot get window attributes");
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
-        return;
+        return NULL;
     }
 
     screen_info = myDisplayGetScreenFromRoot (display_info, attr.root);
@@ -1412,7 +1412,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         TRACE ("Cannot determine screen info from windows");
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
-        return;
+        return NULL;
     }
 
     if (w == screen_info->gnome_win)
@@ -1420,7 +1420,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         TRACE ("Not managing our own event window");
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
-        return;
+        return NULL;
     }
 
     if (attr.override_redirect)
@@ -1429,7 +1429,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
-        return;
+        return NULL;
     }
 
     if (checkKdeSystrayWindow (display_info, w) && (screen_info->systray != None))
@@ -1438,7 +1438,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         sendSystrayReqDock (display_info, w, screen_info->systray);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
-        return;
+        return NULL;
     }
 
     c = g_new0 (Client, 1);
@@ -1447,7 +1447,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         TRACE ("Cannot allocate memory for the window structure");
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
-        return;
+        return NULL;
     }
 
     c->window = w;
@@ -1715,6 +1715,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
     DBG ("client_count=%d", screen_info->client_count);
+    
+    return c;
 }
 
 void
@@ -1829,7 +1831,11 @@ clientFrameAll (ScreenInfo *screen_info)
         XGetWindowAttributes (display_info->dpy, wins[i], &attr);
         if ((attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
         {
-            clientFrame (screen_info->display_info, wins[i], TRUE);
+            Client *c = clientFrame (screen_info->display_info, wins[i], TRUE);
+            if ((c) && ((screen_info->params->raise_on_click) || (screen_info->params->click_to_focus)))
+            {
+                clientGrabMouseButton (c);
+            }
         }
     }
     if (wins)
@@ -2282,7 +2288,6 @@ clientSetLayer (Client * c, int l)
         clientClearLastRaise (c->screen_info);
     }
     clientRaise (c);
-    clientPassGrabMouseButton (c);
 }
 
 void
@@ -3849,7 +3854,6 @@ clientCycle (Client * c, XEvent * e)
             clientAdjustFullscreenLayer (focused, FALSE);
         }
         clientRaise (passdata.c);
-        clientPassGrabMouseButton (passdata.c);
     }
 }
 

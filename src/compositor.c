@@ -1030,6 +1030,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     {
         XFixesDestroyRegion (dpy, dest_region);
     }
+
+    XSync (dpy, FALSE);
 }
 
 static void

@@ -49,8 +49,11 @@ void            clientClearFocus (void);
 Client         *clientGetFocus (void);
 void            clientGrabMouseButton (Client *);
 void            clientUngrabMouseButton (Client *);
+void            clientGrabMouseButtonForAll (ScreenInfo *);
+void            clientUngrabMouseButtonForAll (ScreenInfo *);
 void            clientPassGrabMouseButton (Client *);
 Client         *clientGetLastGrab (void);
 void            clientClearLastGrab (void);
+
 
 #endif /* INC_FOCUS_H */

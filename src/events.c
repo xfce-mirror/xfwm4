@@ -265,7 +265,6 @@ raise_cb (gpointer data)
     if (c)
     {
         clientRaise (c);
-        clientPassGrabMouseButton (c);
     }
     return (TRUE);
 }
@@ -503,11 +502,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 break;
             case KEY_RAISE_WINDOW:
                 clientRaise (c);
-                clientPassGrabMouseButton (NULL);
                 break;
             case KEY_LOWER_WINDOW:
                 clientLower (c);
-                clientPassGrabMouseButton (NULL);
                 break;
             case KEY_TOGGLE_FULLSCREEN:
                 clientToggleFullscreen (c);
@@ -642,7 +639,6 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         if (tclick == XFWM_BUTTON_CLICK)
         {
             clientLower (c);
-            clientPassGrabMouseButton (NULL);
         }
         else if (tclick != XFWM_BUTTON_UNDEFINED)
         {
@@ -658,7 +654,6 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
                 clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
             }
             clientRaise (c);
-            clientPassGrabMouseButton (c);
         }
         if ((ev->button == Button1) || (ev->button == Button3))
         {
@@ -686,7 +681,6 @@ button1Action (Client * c, XButtonEvent * ev)
         clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
     }
     clientRaise (c);
-    clientPassGrabMouseButton (c);
 
     memcpy(&copy_event, ev, sizeof(XEvent));
     tclick = typeOfClick (screen_info, c->window, &copy_event, TRUE);
@@ -736,7 +730,6 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button2)
     {
         clientLower (c);
-        clientPassGrabMouseButton (NULL);
     }
     else if (ev->button == Button3)
     {
@@ -764,7 +757,6 @@ titleButton (Client * c, int state, XButtonEvent * ev)
             if (screen_info->params->raise_on_click)
             {
                 clientRaise (c);
-                clientPassGrabMouseButton (c);
             }
             ev->window = ev->root;
             if (screen_info->button_handler_id)
@@ -859,7 +851,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         else if ((ev->button == Button2) && (state == AltMask) && (screen_info->params->easy_click))
         {
             clientLower (c);
-            clientPassGrabMouseButton (NULL);
         }
         else if ((ev->button == Button3) && (state == AltMask) && (screen_info->params->easy_click))
         {
@@ -891,7 +882,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 if (screen_info->params->raise_on_click)
                 {
                     clientRaise (c);
-                    clientPassGrabMouseButton (c);
                 }
                 clientButtonPress (c, win, ev);
             }
@@ -928,7 +918,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     if (screen_info->params->raise_on_click)
                     {
                         clientRaise (c);
-                        clientPassGrabMouseButton (c);
                     }
                     ev->window = ev->root;
                     if (screen_info->button_handler_id)
@@ -978,10 +967,9 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
         else if (ev->window == c->window)
         {
-            if ((screen_info->params->raise_with_any_button) || 
-                (ev->button == Button1))
+            clientPassGrabMouseButton (c);
+            if ((screen_info->params->raise_with_any_button) || (ev->button == Button1))
             {
-                clientPassGrabMouseButton (c);
                 if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                 {
                     clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
@@ -1432,10 +1420,6 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
                 clientSetFocus (c->screen_info, c, ev->time, FOCUS_FORCE);
-                if (!(screen_info->params->raise_on_click))
-                {
-                    clientPassGrabMouseButton (c);
-                }
             }
         }
     }
@@ -1518,7 +1502,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         c = clientGetFocus ();
         if (c)
         {
-            clientSetFocus (c->screen_info, c, CurrentTime, FOCUS_FORCE);
+            clientSetFocus (c->screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         }
         return;
     }
@@ -1543,7 +1527,6 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             (last_raised != NULL) && (c != last_raised))
         {
             clientRaise (c);
-            clientPassGrabMouseButton (c);
         }
         if (screen_info->params->raise_on_focus)
         {
@@ -1594,7 +1577,6 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
             clientUpdateFocus (c->screen_info, NULL, NO_FOCUS_FLAG);
-            clientPassGrabMouseButton (NULL);
             /* Clear timeout */
             clear_timeout ();
         }
@@ -1790,7 +1772,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             if ((ev->data.l[0] != c->win_workspace) && !is_transient)
             {
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
-                clientPassGrabMouseButton (NULL);
             }
         }
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
@@ -1816,7 +1797,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     if (ev->data.l[0] != c->win_workspace)
                     {
                         clientSetWorkspace (c, ev->data.l[0], TRUE);
-                        clientPassGrabMouseButton (NULL);
                     }
                 }
             }
@@ -1843,7 +1823,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             clientSetWorkspace (c, screen_info->current_ws, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientPassGrabMouseButton (c);
             if (ev->data.l[0] != 0)
             {
                 clientSetFocus (screen_info, c, (Time) ev->data.l[1], NO_FOCUS_FLAG);

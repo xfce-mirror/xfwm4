@@ -160,7 +160,6 @@ clientFocusNew(Client * c)
             }
         }
         clientSetFocus (c->screen_info, c, CurrentTime, FOCUS_IGNORE_MODAL);
-        clientPassGrabMouseButton (c);
     }
     else
     {
@@ -321,14 +320,6 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
     clientSetFocus (screen_info, new_focus, CurrentTime, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
-    if (new_focus == top_most.highest)
-    {
-        clientPassGrabMouseButton (new_focus);
-    }
-    else if (last_ungrab == c)
-    {
-        clientPassGrabMouseButton (NULL);
-    }
 }
 
 gboolean
@@ -394,11 +385,18 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
         return;
     }
+
     if ((c) && (c == client_focus) && !(flags & FOCUS_FORCE))
     {
         TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request", c->name, c->window);
         return;
     }
+
+    if (c == clientGetLastRaise (screen_info))
+    {
+        clientPassGrabMouseButton (c);
+    }
+
     client_focus = c;
     if (c)
     {
@@ -421,7 +419,6 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         {
             clientAdjustFullscreenLayer (c2, FALSE);
             clientRaise (c);
-            clientPassGrabMouseButton (c);
         }
         frameDraw (c2, FALSE, FALSE);
     }
@@ -549,6 +546,38 @@ clientUngrabMouseButton (Client * c)
     {
         ungrabButton(clientGetXDisplay (c), Button1, 0, c->window);
     }
+}
+
+void
+clientGrabMouseButtonForAll (ScreenInfo *screen_info)
+{
+    Client *c;
+    int i;
+    
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering clientGrabMouseButtonForAll");
+
+    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    {
+        clientGrabMouseButton (c);
+    }
+    clientClearLastGrab ();
+}
+
+void
+clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
+{
+    Client *c;
+    int i;
+    
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering clientUngrabMouseButtonForAll");
+
+    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    {
+        clientUngrabMouseButton (c);
+    }
+    clientClearLastGrab ();
 }
 
 void

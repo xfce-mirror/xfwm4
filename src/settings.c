@@ -51,6 +51,10 @@
 
 /* Forward static decls. */
 
+static void              check_for_grabs      (ScreenInfo *);
+static void              set_settings_margin  (ScreenInfo *, 
+                                               int , 
+                                               int);
 static void              notify_cb            (const char *,
                                                const char *,
                                                McsAction, 
@@ -78,6 +82,18 @@ static void              unloadSettings       (ScreenInfo *);
 static gboolean          reloadScreenSettings (ScreenInfo *, 
                                                int);
 
+static void
+check_for_grabs (ScreenInfo *screen_info)
+{
+    if ((screen_info->params->raise_on_click) || (screen_info->params->click_to_focus))
+    {
+        clientGrabMouseButtonForAll (screen_info);
+    }
+    else if (!(screen_info->params->raise_on_click) && !(screen_info->params->click_to_focus))
+    {
+        clientUngrabMouseButtonForAll (screen_info);
+    }
+}
 
 static void
 set_settings_margin (ScreenInfo *screen_info, int idx, int value)
@@ -146,6 +162,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     if (!strcmp (name, "Xfwm/ClickToFocus"))
                     {
                         screen_info->params->click_to_focus = setting->data.v_int;
+                        check_for_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/FocusNewWindow"))
                     {
@@ -178,12 +195,12 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         screen_info->params->raise_on_click = setting->data.v_int;
-                        clientPassGrabMouseButton (NULL);
+                        check_for_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/RaiseWithAnyButton"))
                     {
                         screen_info->params->raise_with_any_button = setting->data.v_int;
-                        clientPassGrabMouseButton (NULL);
+                        check_for_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
                     {
@@ -426,6 +443,7 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("click_to_focus", setting->data.v_int, rc);
+            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusNewWindow", CHANNEL1,
@@ -468,12 +486,14 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
+            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseWithAnyButton", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
+            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToBorder", CHANNEL1,
