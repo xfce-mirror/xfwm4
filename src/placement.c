@@ -115,6 +115,33 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
     return (overlapX (x0, x1, tx0, tx1) * overlapY (y0, y1, ty0, ty1));
 }
 
+static void
+clientAutoMaximize (Client * c, int monitor)
+{
+    ScreenInfo *screen_info = NULL;
+    int maximize = 0;
+    GdkRectangle rect;
+    gint monitor_nbr;
+
+    screen_info = c->screen_info;
+    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor, &rect);
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > rect.width))
+    {
+        maximize |= WIN_STATE_MAXIMIZED_HORIZ;
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > rect.height))
+    {
+        maximize |= WIN_STATE_MAXIMIZED_VERT;
+    }
+
+    if (maximize)
+    {
+        clientToggleMaximized (c, maximize);
+    }
+}
+
 void 
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
@@ -204,6 +231,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     ScreenInfo *screen_info = NULL;
     int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
+    int maximize = 0;
     GdkRectangle rect;
     gint monitor_nbr;
 
@@ -294,6 +322,8 @@ clientConstrainPos (Client * c, gboolean show_full)
                     }
                 }
             }
+
+            clientAutoMaximize (c, monitor_nbr);
         }
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
@@ -561,6 +591,7 @@ clientInitPosition (Client * c)
                 TRACE ("overlaps is 0 so it's the best we can get");
                 c->x = test_x;
                 c->y = test_y;
+                clientAutoMaximize (c, monitor_nbr);
                 return;
             }
             else if ((count_overlaps < best_overlaps) || (first))
@@ -580,6 +611,7 @@ clientInitPosition (Client * c)
     }
     c->x = best_x;
     c->y = best_y;
+
+    clientAutoMaximize (c, monitor_nbr);
     return;
 }
-
