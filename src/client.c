@@ -2724,14 +2724,10 @@ clientFrame (Window w, gboolean startup)
     XWindowAttributes attr;
     XWindowChanges wc;
     XSetWindowAttributes attributes;
-    Window dummy_root;
     Client *c;
-    unsigned long dummy;
     unsigned long valuemask;
-    unsigned int dummy_width, dummy_height, dummy_depth, dummy_bw;
     unsigned int wm_protocols_flags = 0;
     int i;
-    int dummy_x, dummy_y;
 
     g_return_if_fail (w != None);
     TRACE ("entering clientFrame");
@@ -3066,6 +3062,7 @@ clientFrameAll ()
 
     clientSetFocus (NULL, FALSE);
     XSync (dpy, FALSE);
+    MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -3075,6 +3072,7 @@ clientFrameAll ()
             clientFrame (wins[i], TRUE);
         }
     }
+    MyXUngrabServer ();
     while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
         ;
     if (wins)
@@ -3096,6 +3094,7 @@ clientUnframeAll ()
 
     clientSetFocus (NULL, FALSE);
     XSync (dpy, 0);
+    MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -3105,6 +3104,7 @@ clientUnframeAll ()
             clientUnframe (c, TRUE);
         }
     }
+    MyXUngrabServer ();
     if (wins)
     {
         XFree (wins);

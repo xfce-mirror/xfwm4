@@ -320,10 +320,6 @@ initialize (int argc, char **argv)
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 
-    /* Make sure all gtk+ events are processed */
-    while (gtk_events_pending ())
-	gtk_main_iteration ();
-
     clientFrameAll ();
 
     act.sa_handler = handleSignal;
