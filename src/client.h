@@ -247,6 +247,7 @@ struct _Client
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
+    gboolean toggled_maximize;
     /* Timout to manage blinking decorations for urgent windows */
     guint blink_timeout_id;
     /* Pixmap caching */
