@@ -158,13 +158,6 @@ struct _ThemeInfo
     guint user_writable:1;
 };
 
-typedef struct _ThemeCallbackData
-{
-    GFunc func;
-    gpointer data;
-}
-ThemeCallbackData;
-
 typedef struct _Itf Itf;
 struct _Itf
 {
