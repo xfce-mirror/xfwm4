@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Xfce 4 Workspaces Settings
+Comment=Workspaces Settings
+Exec=xfce-setting-show workspaces
+Icon=xfce4-workspaces
+Terminal=false
+Type=Application
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE;

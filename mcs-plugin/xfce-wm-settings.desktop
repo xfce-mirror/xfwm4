@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Xfce 4 Window Manager Settings
+Comment=Window Manager Settings
+Exec=xfce-setting-show xfwm4
+Icon=xfce4-wm
+Terminal=false
+Type=Application
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE;

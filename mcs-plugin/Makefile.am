@@ -89,3 +89,5 @@ monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
 
+appsdir = $(datadir)/applications
+apps_DATA = xfce-wm-settings.desktop xfce-workspaces-settings.desktop
