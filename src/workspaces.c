@@ -40,6 +40,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     Client *previous;
     GSList *list_of_windows;
     GSList *index;
+    GSList *list_hide;
     Window dr, window;
     int rx, ry, wx, wy;
     unsigned int mask;
@@ -68,6 +69,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         clientSetWorkspace(c2, new_ws, FALSE);
     }
     
+    list_hide = NULL;
     previous = clientGetFocus();
     list_of_windows = clientGetStackList();
     /* First pass */
@@ -83,9 +85,25 @@ void workspaceSwitch(int new_ws, Client * c2)
             }
             if (!clientIsTransient(c))
             {
-                clientHide(c, new_ws, FALSE);
+                /* Just build of windows that will be hidden, so that
+                   we can record the previous focus even when on a
+                   transient (otherwise the transient vanishes along
+                   with its parent window which is placed below...
+                 */ 
+                list_hide = g_slist_append(list_hide, c);
             }
         }
+    }
+
+    /* First pass and a half :) */
+    if (list_hide)
+    {
+        for(index = list_hide; index; index = g_slist_next(index))
+        {
+            c = (Client *) index->data;
+            clientHide(c, new_ws, FALSE);
+        }
+        g_slist_free(list_hide);
     }
 
     /* Second pass */
