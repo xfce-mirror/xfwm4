@@ -109,8 +109,6 @@ void loadSettings()
         {"maximize_vert_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"shade_window_key", NULL, TRUE},
-        {"lower_window_layer_key", NULL, TRUE},
-        {"raise_window_layer_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
         {"move_window_up_key", NULL, TRUE},
         {"move_window_down_key", NULL, TRUE},
@@ -390,8 +388,6 @@ void loadSettings()
     parseKeyString(dpy, &keys[KEY_MAXIMIZE_VERT], getValue("maximize_vert_key", rc));
     parseKeyString(dpy, &keys[KEY_MAXIMIZE_HORIZ], getValue("maximize_horiz_key", rc));
     parseKeyString(dpy, &keys[KEY_SHADE_WINDOW], getValue("shade_window_key", rc));
-    parseKeyString(dpy, &keys[KEY_LOWER_WINDOW_LAYER], getValue("lower_window_layer_key", rc));
-    parseKeyString(dpy, &keys[KEY_RAISE_WINDOW_LAYER], getValue("raise_window_layer_key", rc));
     parseKeyString(dpy, &keys[KEY_NEXT_WORKSPACE], getValue("next_workspace_key", rc));
     parseKeyString(dpy, &keys[KEY_PREV_WORKSPACE], getValue("prev_workspace_key", rc));
     parseKeyString(dpy, &keys[KEY_ADD_WORKSPACE], getValue("add_workspace_key", rc));

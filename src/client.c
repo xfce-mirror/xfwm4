@@ -424,26 +424,19 @@ void clientGetNetWmType(Client * c)
 
     if(!get_atom_list(dpy, c->window, net_wm_window_type, &atoms, &n_atoms))
     {
-	if (c->transient_for)
-	{
-            c->type_atom = net_wm_window_type_dialog;
-	}
-        else
-	{
-            switch (c->win_layer)
-            {
-        	case WIN_LAYER_DESKTOP:
-                    c->type_atom = net_wm_window_type_desktop;
-                    break;
-        	case WIN_LAYER_DOCK:
-                    c->type_atom = net_wm_window_type_dock;
-                    break;
-        	case WIN_LAYER_NORMAL:
-        	default:
-                    c->type_atom = net_wm_window_type_normal;
-                    break;
-            }
-	}
+        switch (c->win_layer)
+        {
+            case WIN_LAYER_DESKTOP:
+                c->type_atom = net_wm_window_type_desktop;
+                break;
+            case WIN_LAYER_DOCK:
+                c->type_atom = net_wm_window_type_dock;
+                break;
+            case WIN_LAYER_NORMAL:
+            default:
+                c->type_atom = net_wm_window_type_normal;
+                break;
+        }
     }
     else
     {
@@ -605,9 +598,9 @@ static void clientWindowType(Client * c)
             c->sticky = True;
             c->skip_pager = True;
             c->skip_taskbar = True;
-	    c->has_hide = False;
-	    c->has_maximize = False;
-	    c->has_menu = False;
+            c->has_hide = False;
+            c->has_maximize = False;
+            c->has_menu = False;
             layer = WIN_LAYER_DESKTOP;
         }
         else if(c->type_atom == net_wm_window_type_dock)
@@ -615,18 +608,18 @@ static void clientWindowType(Client * c)
             DBG("atom net_wm_window_type_dock detected\n");
             c->type = WINDOW_DOCK;
             layer = WIN_LAYER_DOCK;
-	    c->has_hide = False;
-	    c->has_maximize = False;
-	    c->has_menu = False;
+            c->has_hide = False;
+            c->has_maximize = False;
+            c->has_menu = False;
         }
         else if(c->type_atom == net_wm_window_type_toolbar)
         {
             DBG("atom net_wm_window_type_toolbar detected\n");
             c->type = WINDOW_TOOLBAR;
             layer = WIN_LAYER_NORMAL;
-	    c->has_hide = False;
-	    c->has_maximize = False;
-	    c->has_menu = False;
+            c->has_hide = False;
+            c->has_maximize = False;
+            c->has_menu = False;
         }
         else if(c->type_atom == net_wm_window_type_menu)
         {
@@ -642,18 +635,18 @@ static void clientWindowType(Client * c)
              */
             c->skip_pager = True;
             c->skip_taskbar = True;
-	    c->has_hide = False;
-	    c->has_maximize = False;
-	    c->has_menu = False;
+            c->has_hide = False;
+            c->has_maximize = False;
+            c->has_menu = False;
         }
         else if(c->type_atom == net_wm_window_type_dialog)
         {
             DBG("atom net_wm_window_type_dialog detected\n");
             c->type = WINDOW_DIALOG;
             layer = WIN_LAYER_ONTOP;
-	    c->has_hide = False;
-	    c->has_menu = False;
-	    c->has_maximize = False;
+            c->has_hide = False;
+            c->has_menu = False;
+            c->has_maximize = False;
         }
         else if(c->type_atom == net_wm_window_type_normal)
         {
@@ -667,7 +660,7 @@ static void clientWindowType(Client * c)
             c->type = WINDOW_UTILITY;
             layer = WIN_LAYER_NORMAL;
             c->has_border = False;
-	    c->has_hide = False;
+            c->has_hide = False;
         }
         else if(c->type_atom == net_wm_window_type_splashscreen)
         {
@@ -677,7 +670,7 @@ static void clientWindowType(Client * c)
             c->has_border = False;
             c->has_resize = False;
             c->has_move = False;
-	    c->has_hide = False;
+            c->has_hide = False;
         }
     }
     else
@@ -692,10 +685,13 @@ static void clientWindowType(Client * c)
 
         DBG("Window is a transient\n");
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
-        if(c2)
+        if (c2)
         {
             layer = c2->win_layer;
         }
+        c->has_hide = False;
+        c->has_menu = False;
+        c->has_maximize = False;
     }
     if((old_type != c->type) || (layer != c->win_layer))
     {
@@ -771,8 +767,6 @@ void clientGrabKeys(Client * c)
     grabKey(dpy, &keys[KEY_MAXIMIZE_HORIZ], c->window);
     grabKey(dpy, &keys[KEY_SHADE_WINDOW], c->window);
     grabKey(dpy, &keys[KEY_CYCLE_WINDOWS], c->window);
-    grabKey(dpy, &keys[KEY_LOWER_WINDOW_LAYER], c->window);
-    grabKey(dpy, &keys[KEY_RAISE_WINDOW_LAYER], c->window);
     grabKey(dpy, &keys[KEY_NEXT_WORKSPACE], c->window);
     grabKey(dpy, &keys[KEY_PREV_WORKSPACE], c->window);
     grabKey(dpy, &keys[KEY_ADD_WORKSPACE], c->window);
@@ -1286,16 +1280,16 @@ static void clientInitPosition(Client * c)
             clientKeepVisible(c);
         }
         
-	return;
+        return;
     }
     else if ((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
     {
         /* Center transient relative to their parent window */
-	c->x = c2->x + (c2->width - c->width) / 2;
-	c->y = c2->y + (c2->height - c->height) / 2;
+        c->x = c2->x + (c2->width - c->width) / 2;
+        c->y = c2->y + (c2->height - c->height) / 2;
         clientKeepVisible(c);
-	
-	return;
+        
+        return;
     }
 
     xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - (int)margins[MARGIN_RIGHT];
@@ -1547,49 +1541,49 @@ void clientUpdateMWMHints(Client *c)
             c->has_border   = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
             c->has_menu     = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
             /* 
-	      c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
+              c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
               c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
              */
-	}
+        }
         /* The following is from Metacity : */
         if (mwm_hints->flags & MWM_HINTS_FUNCTIONS)
         {
-	    if (!(mwm_hints->functions & MWM_FUNC_ALL))
+            if (!(mwm_hints->functions & MWM_FUNC_ALL))
             {
-        	toggle_value = True;
+                toggle_value = True;
 
-        	c->has_close    = False;
-        	c->has_hide     = False;
-        	c->has_maximize = False;
-        	c->has_move     = False;
-        	c->has_resize   = False;
+                c->has_close    = False;
+                c->has_hide     = False;
+                c->has_maximize = False;
+                c->has_move     = False;
+                c->has_resize   = False;
             }
-	    else
+            else
             {
-        	toggle_value = False;
+                toggle_value = False;
             }
 
-	    if (mwm_hints->functions & MWM_FUNC_CLOSE)
+            if (mwm_hints->functions & MWM_FUNC_CLOSE)
             {
-        	c->has_close = toggle_value;
+                c->has_close = toggle_value;
             }
-	    if (mwm_hints->functions & MWM_FUNC_MINIMIZE)
+            if (mwm_hints->functions & MWM_FUNC_MINIMIZE)
             {
-        	c->has_hide = toggle_value;
+                c->has_hide = toggle_value;
             }
-	    if (mwm_hints->functions & MWM_FUNC_MAXIMIZE)
+            if (mwm_hints->functions & MWM_FUNC_MAXIMIZE)
             {
-        	c->has_maximize = toggle_value;
+                c->has_maximize = toggle_value;
             }
-	    if (mwm_hints->functions & MWM_FUNC_RESIZE)
+            if (mwm_hints->functions & MWM_FUNC_RESIZE)
             {
-        	c->has_resize = toggle_value;
+                c->has_resize = toggle_value;
             }
-	    if (mwm_hints->functions & MWM_FUNC_MOVE)
+            if (mwm_hints->functions & MWM_FUNC_MOVE)
             {
-        	c->has_move = toggle_value;
+                c->has_move = toggle_value;
             }
-	}
+        }
         XFree(mwm_hints);
     }
 }
@@ -2008,7 +2002,7 @@ void clientHide(Client * c, int change_state)
     {
         DBG("cowardly refusing to hide a client that is not shown is the taskbar\n");
         gdk_beep ();
-	return;
+        return;
     }
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
@@ -2836,9 +2830,9 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         passdata->oldw = c->width;
         passdata->oldh = c->height;
-	/* Store previous values in case the resize puts the window title off bounds */
-	prev_y = c->y;
-	prev_height = c->height;
+        /* Store previous values in case the resize puts the window title off bounds */
+        prev_y = c->y;
+        prev_height = c->height;
         if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
         {
             if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
@@ -2871,12 +2865,12 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             c->y = c->y - (c->height - passdata->oldh);
         }
-	if (frameY(c) < (int)margins[MARGIN_TOP])
-	{
-	    /* We've made an illegal move, revert... */
+        if (frameY(c) < (int)margins[MARGIN_TOP])
+        {
+            /* We've made an illegal move, revert... */
             c->y = prev_y;
-	    c->height = prev_height;	    
-	}
+            c->height = prev_height;        
+        }
         if(box_resize)
         {
             clientDrawOutline(c);

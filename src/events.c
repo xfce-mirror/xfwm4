@@ -208,12 +208,6 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_SHADE_WINDOW:
                 clientToggleShaded(c);
                 break;
-            case KEY_RAISE_WINDOW_LAYER:
-                clientSetLayer(c, c->win_layer + 1);
-                break;
-            case KEY_LOWER_WINDOW_LAYER:
-                clientSetLayer(c, c->win_layer - 1);
-                break;
             case KEY_NEXT_WORKSPACE:
                 workspaceSwitch(workspace + 1, NULL);
                 break;
