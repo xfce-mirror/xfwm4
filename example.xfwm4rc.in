@@ -6,7 +6,7 @@
 theme=_pkgdatadir_/themes/kindaker
 
 # title_alignment=left/right/center
-title_alignment=right
+title_alignment=left
 
 # button_layout :
 #    O = Option menu

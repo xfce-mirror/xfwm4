@@ -1,5 +1,5 @@
 theme=_pkgdatadir_/themes/kindaker
-title_alignment=right
+title_alignment=left
 full_width_title=true
 button_layout=OTS|HMC
 button_spacing=1
