@@ -1,6 +1,6 @@
 /* XPM */
 static char * bottom_right_inactive_xpm[] = {
-"20 20 17 1",
+"20 20 15 1",
 " 	c None",
 ".	c #88BFFE",
 "+	c #88BCFC",
@@ -14,10 +14,8 @@ static char * bottom_right_inactive_xpm[] = {
 "-	c #85ABE7",
 ";	c #828EA8",
 ">	c #85B1EF",
-",	c #85A5D9",
+",	c #7F858E",
 "'	c #7F8591",
-")	c #7F858E",
-"!	c #7F7F7F",
 "                .+@#",
 "                .+@#",
 "                .+@#",
@@ -37,4 +35,4 @@ static char * bottom_right_inactive_xpm[] = {
 "...............$+&*#",
 "+++++++++++++++=@*-;",
 "****************>-, ",
-"''''''''''''''')!!  "};
+"'''''''''''''',,,,  "};
