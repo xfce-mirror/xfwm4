@@ -531,7 +531,7 @@ static ThemeInfo *find_theme_info_by_name(const gchar * theme_name, GList * them
 
 static gboolean parserc(const gchar * filename, gboolean *set_layout, gboolean *set_align, gboolean *set_font)
 {
-    gchar buf[512];
+    gchar buf[80];
     gchar *lvalue, *rvalue;
     FILE *fp;
 

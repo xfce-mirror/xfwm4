@@ -37,7 +37,7 @@
 
 gboolean parseRc(const gchar * file, const gchar * dir, Settings rc[])
 {
-    gchar buf[512];
+    gchar buf[80];
     gchar *filename, *lvalue, *rvalue;
     FILE *fp;
 
