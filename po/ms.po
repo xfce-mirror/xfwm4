@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 1.0.0\n"
+"Project-Id-Version: xfwm4 3.99.3\n"
 "POT-Creation-Date: 2003-08-26 08:17+0200\n"
-"PO-Revision-Date: 2003-05-29 02:24+0800\n"
+"PO-Revision-Date: 2003-08-31 14:10+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,8 @@ msgstr "Adjust margin ruangkerja"
 #: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
+msgstr ""
+"Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -248,7 +249,7 @@ msgstr "Halangan Sisi :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr "Opaque pindah dan saiz semula"
+msgstr "Opaque pindah dan saizsemula"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
@@ -394,7 +395,7 @@ msgstr "%s: Tak boleh parse warna tak aktif %s\n"
 #: src/settings.c:755
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: kekunci tema dispefikasi \"%s\" hilang, guna default"
 
 #: src/settings.c:765
 #, c-format
@@ -409,12 +410,3 @@ msgstr "%s: Bilangan ruangkerja tidak ditetapkan, guna nilai rc: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Suis ke ..."
-
-#~ msgid "Window style"
-#~ msgstr "Stail tetingkap"
-
-#~ msgid "Font select :"
-#~ msgstr "Pilih font :"
-
-#~ msgid "%s: Running without session manager"
-#~ msgstr "%s: Berlari tanpa pengurus sessi"
