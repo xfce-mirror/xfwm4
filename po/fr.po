@@ -1,4 +1,4 @@
-# none translation of xfwm4.
+# French translation of xfwm4.
 # Copyright (C) 2004 Olivier Fourdan <fourdan@xfce.org>
 # This file is distributed under the same license as the PACKAGE package.
 # Olivier Fourdan <fourdan@xfce.org>.
@@ -333,23 +333,23 @@ msgstr "Avancé"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Confirmez-vous la suppression de ce thème de raccourcis ?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Ajouter un thème de raccourcis"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Saisie du nom du thème :"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Un thème de raccourcis du même nom existe déjà"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:160
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Il est nécessaire de donner un nom au thème de raccourcis"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Close window"
@@ -416,24 +416,20 @@ msgid "Toggle fullscreen"
 msgstr "Basculer en mode plein écran"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:445
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Espace de travail suivant"
+msgstr "Espace de travail au dessus"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:450
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Espace de travail suivant"
+msgstr "Espace de travail au dessous"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:455
-#, fuzzy
 msgid "Left workspace"
-msgstr "Espace de travail suivant"
+msgstr "Espace de travail à gauche"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:460
-#, fuzzy
 msgid "Right workspace"
-msgstr "Espace de travail suivant"
+msgstr "Espace de travail à droite"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:465
 msgid "Next workspace"
@@ -460,24 +456,20 @@ msgid "Move window to previous workspace"
 msgstr "Déplacer la fenêtre vers l'espace précédent"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:576
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
+msgstr "Déplacer la fenêtre vers l'espace au dessus"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:581
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
+msgstr "Déplacer la fenêtre vers l'espace au dessous"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:586
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
+msgstr "Déplacer la fenêtre vers l'espace à gauche"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:591
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
+msgstr "Déplacer la fenêtre vers l'espace à droite"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:596
 msgid "Move window to workspace 1"
@@ -726,11 +718,9 @@ msgstr "Application inconnue!"
 #~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 #~ msgstr "%s: net_wm_state non géré (window 0x%lx)"
 
-#, fuzzy
 #~ msgid "%s: Another compositing manager is running on screen %i"
 #~ msgstr "%s: Un autre gestionnaire de fenêtre est déja actif"
 
-#, fuzzy
 #~ msgid "%s: Cannot create root picture on screen %i"
 #~ msgstr "%s: Ne peut allouer la couleur inactive %s\n"
 
