@@ -10,4 +10,5 @@ agua \
 redmond \
 gtk \
 xfce \
-mofit
+mofit \
+trench
