@@ -2545,13 +2545,11 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
             case TopIf:
                 TRACE ("Above");
                 clientRaise (c);
-                clientPassGrabButton1 (c);
                 break;
             case Below:
             case BottomIf:
                 TRACE ("Below");
                 clientLower (c);
-                clientPassGrabButton1 (NULL);
                 break;
             case Opposite:
             default:
