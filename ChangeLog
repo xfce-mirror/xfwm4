@@ -1,5 +1,9 @@
 2002-07-07  xfce
 
+	* ChangeLog: Update ChangeLog
+
+2002-07-07  xfce
+
 	* xfwm4.spec.in, themes/retro/bottom-active.xpm,
 	themes/retro/bottom-inactive.xpm,
 	themes/retro/bottom-left-active.xpm,
