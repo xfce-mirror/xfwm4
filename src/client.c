@@ -2819,7 +2819,7 @@ clientFrame (Window w, gboolean startup)
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
     c->ignore_unmap = 0;
-    if (attr.map_state != IsUnmapped)
+    if (attr.map_state == IsViewable)
     {
         /* This flag is used to avoid focus transition when reparenting */
         CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
