@@ -95,7 +95,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     int xcurrent, ycurrent, x, y, total;
     int g = GrabSuccess;
     int clicks;
-    Time t0, t1;
+    Time t0;
 
     g_return_val_if_fail (ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
