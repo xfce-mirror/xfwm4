@@ -99,33 +99,6 @@ void sendClientMessage(Window w, Atom a, long x, int mask)
     XSendEvent(dpy, w, False, mask, &ev);
 }
 
-void MyXGrabServer(void)
-{
-    DBG("entering MyXGrabServer\n");
-    if(xgrabcount == 0)
-    {
-        DBG("grabbing server\n");
-        XGrabServer(dpy);
-    }
-    xgrabcount++;
-    DBG("grabs : %i\n", xgrabcount);
-}
-
-void MyXUngrabServer(void)
-{
-    DBG("entering MyXUngrabServer\n");
-    if(--xgrabcount < 0)        /* should never happen */
-    {
-        xgrabcount = 0;
-    }
-    if(xgrabcount == 0)
-    {
-        DBG("ungrabbing server\n");
-        XUngrabServer(dpy);
-    }
-    DBG("grabs : %i\n", xgrabcount);
-}
-
 Window setTmpEventWin(long eventmask)
 {
     Window w;

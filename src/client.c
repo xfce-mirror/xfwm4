@@ -1723,7 +1723,7 @@ void clientFrame(Window w)
         clientGravitate(c, APPLY);
     }
 
-    MyXGrabServer();
+    gdk_x11_grab_server();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
         if(c->name)
@@ -1735,7 +1735,7 @@ void clientFrame(Window w)
             XFree(c->size);
         }
         free(c);
-        MyXUngrabServer();
+        gdk_x11_ungrab_server();
         return;
     }
     valuemask = CWEventMask;
@@ -1756,7 +1756,7 @@ void clientFrame(Window w)
     clientAddToList(c);
     clientGrabKeys(c);
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-    MyXUngrabServer();
+    gdk_x11_ungrab_server();
 
     c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     c->sides[SIDE_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
@@ -1876,7 +1876,7 @@ void clientFrameAll()
     client_focus = NULL;
 
     XSync (dpy, 0);
-    MyXGrabServer();
+    gdk_x11_grab_server();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
@@ -1886,7 +1886,7 @@ void clientFrameAll()
             clientFrame(wins[i]);
         }
     }
-    MyXUngrabServer();
+    gdk_x11_ungrab_server();
     if(wins)
     {
         XFree(wins);
@@ -1901,7 +1901,7 @@ void clientUnframeAll()
 
     DBG("entering clientUnframeAll\n");
 
-    MyXGrabServer();
+    gdk_x11_grab_server();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
@@ -1911,7 +1911,7 @@ void clientUnframeAll()
             clientUnframe(c, True);
         }
     }
-    MyXUngrabServer();
+    gdk_x11_ungrab_server();
     if(wins)
     {
         XFree(wins);
@@ -2476,7 +2476,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     {
         if(!passdata->grab && box_move)
         {
-            MyXGrabServer();
+            gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2534,7 +2534,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         if(!passdata->grab && box_move)
         {
-            MyXGrabServer();
+            gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2749,7 +2749,7 @@ void clientMove(Client * c, XEvent * e)
 
     if(passdata.grab && box_move)
     {
-        MyXUngrabServer();
+        gdk_x11_ungrab_server();
     }
 }
 
@@ -2769,7 +2769,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     {
         if(!passdata->grab && box_resize)
         {
-            MyXGrabServer();
+            gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2825,7 +2825,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
 
         if(!passdata->grab && box_resize)
         {
-            MyXGrabServer();
+            gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -3014,7 +3014,7 @@ void clientResize(Client * c, int corner, XEvent *e)
 
     if(passdata.grab && box_resize)
     {
-        MyXUngrabServer();
+        gdk_x11_ungrab_server();
     }
 }
 

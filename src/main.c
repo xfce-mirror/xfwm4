@@ -145,6 +145,7 @@ void initialize(int argc, char **argv)
 
     progname = argv[0];
     gtk_init(&argc, &argv);
+    
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
     dpy = GDK_DISPLAY();
@@ -153,7 +154,10 @@ void initialize(int argc, char **argv)
     depth = DefaultDepth(dpy, screen);
     cmap = DefaultColormap(dpy, screen);
 
-    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 30);
+    XSetErrorHandler(handleXError);
+    shape = XShapeQueryExtension(dpy, &shape_event, &dummy);
+
+    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 20);
     client_session->save_phase_2 = session_save_phase_2;
     client_session->die = session_die;
 
@@ -161,20 +165,16 @@ void initialize(int argc, char **argv)
     {
         g_message("Cannot connect to session manager");
     }
-    
+
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
     margins[MARGIN_LEFT] = gnome_margins[MARGIN_LEFT] = 0;
     margins[MARGIN_RIGHT] = gnome_margins[MARGIN_RIGHT] = 0;
     margins[MARGIN_BOTTOM] = gnome_margins[MARGIN_BOTTOM] = 0;
 
-    XSetErrorHandler(handleXError);
-    shape = XShapeQueryExtension(dpy, &shape_event, &dummy);
-
     initICCCMHints(dpy);
     initMotifHints(dpy);
     initGnomeHints(dpy);
     initNetHints(dpy);
-
 
     initModifiers(dpy);
 
