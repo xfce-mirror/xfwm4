@@ -482,14 +482,20 @@ hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
 {
     GtkWidget *source = gtk_drag_get_source_widget (drag_context);
     GtkWidget *parent = gtk_widget_get_parent (source);
-    McsPlugin *mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
+    McsPlugin *mcs_plugin = NULL;
     
     g_return_if_fail (GTK_IS_WIDGET (user_data));
 
+    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
     gtk_widget_ref (source);
     gtk_container_remove (GTK_CONTAINER (parent), source);
     gtk_box_pack_start (GTK_BOX (user_data), source, FALSE, FALSE, 0);
     gtk_widget_unref (source);
+
+    if (parent == GTK_WIDGET (user_data))
+    {
+        return;
+    }
 
     if (current_layout)
     {
@@ -509,10 +515,11 @@ layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
 {
     GtkWidget *source = gtk_drag_get_source_widget (drag_context);
     GtkWidget *parent = gtk_widget_get_parent (source);
-    McsPlugin *mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
+    McsPlugin *mcs_plugin = NULL;
 
     g_return_if_fail (GTK_IS_WIDGET (user_data));
 
+    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
 
     gtk_widget_set_app_paintable (GTK_WIDGET(user_data), FALSE);
     gtk_widget_ref (source);
@@ -1837,8 +1844,9 @@ setup_dialog (Itf * itf)
         loadtheme_in_treeview (ti, itf);
     }
     else
+    {
         g_warning ("Cannot find the keytheme !");
-
+    }
     g_signal_connect (G_OBJECT (itf->xfwm4_dialog), "response", G_CALLBACK (cb_dialog_response), itf->mcs_plugin);
     g_signal_connect (G_OBJECT (itf->font_button), "clicked", G_CALLBACK (show_font_selection), itf);
     g_signal_connect (G_OBJECT (itf->click_focus_radio), "toggled", G_CALLBACK (cb_click_to_focus_changed), itf);
