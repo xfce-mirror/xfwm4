@@ -98,6 +98,41 @@
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
 
+typedef struct _MoveResizeData MoveResizeData;
+struct _MoveResizeData
+{
+    gboolean use_keys;
+    gboolean grab;
+    int mx, my;
+    int ox, oy;
+    int oldw, oldh;
+    int corner;
+    Window tmp_event_window;
+    Client *c;
+};
+
+typedef struct _ClientCycleData ClientCycleData;
+struct _ClientCycleData
+{
+    Client *c;
+    Tabwin *tabwin;
+    int cycle_range;
+};
+
+typedef struct _ButtonPressData ButtonPressData;
+struct _ButtonPressData
+{
+    int b;
+    Client *c;
+};
+
+typedef struct _ClientPair ClientPair;
+struct _ClientPair
+{
+    Client *prefered;
+    Client *highest;
+};
+
 Client *clients = NULL;
 unsigned int client_count = 0;
 unsigned long client_serial = 0;
@@ -132,7 +167,7 @@ static Client *clientGetHighestTransientOrModalFor (Client * c);
 static Client *clientGetTopMostForGroup (Client * c);
 static gboolean clientVisibleForGroup (Client * c, int workspace);
 static Client *clientGetNextTopMost (int layer, Client * exclude);
-static Client *clientGetTopMostFocusable (int layer, Client * exclude);
+static ClientPair clientGetTopMostFocusable (int layer, Client * exclude);
 static Client *clientGetBottomMost (int layer, Client * exclude);
 static Client *clientGetModalFor (Client * c);
 static void clientConstrainRatio (Client * c, int w1, int h1, int corner);
@@ -161,34 +196,6 @@ static GtkToXEventFilterStatus clientCycle_event_filter (XEvent * xevent,
     gpointer data);
 static GtkToXEventFilterStatus clientButtonPress_event_filter (XEvent *
     xevent, gpointer data);
-
-typedef struct _MoveResizeData MoveResizeData;
-struct _MoveResizeData
-{
-    gboolean use_keys;
-    gboolean grab;
-    int mx, my;
-    int ox, oy;
-    int oldw, oldh;
-    int corner;
-    Window tmp_event_window;
-    Client *c;
-};
-
-typedef struct _ClientCycleData ClientCycleData;
-struct _ClientCycleData
-{
-    Client *c;
-    Tabwin *tabwin;
-    int cycle_range;
-};
-
-typedef struct _ButtonPressData ButtonPressData;
-struct _ButtonPressData
-{
-    int b;
-    Client *c;
-};
 
 Client *
 clientGetTransient (Client * c)
@@ -1970,14 +1977,16 @@ clientGetNextTopMost (int layer, Client * exclude)
     return top;
 }
 
-static Client *
+static ClientPair
 clientGetTopMostFocusable (int layer, Client * exclude)
 {
-    Client *top = NULL, *c;
+    ClientPair top_client;
+    Client *c;
     GList *index;
 
     TRACE ("entering clientGetTopMost");
 
+    top_client.prefered = top_client.highest = NULL;
     for (index = windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
@@ -1985,12 +1994,13 @@ clientGetTopMostFocusable (int layer, Client * exclude)
             c->window, (int) c->win_layer);
         if (!exclude || (c != exclude))
         {
-            if ((c->win_layer <= layer) && clientAcceptFocus (c)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE)
-                && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK))
-                && clientSelectMask (c, 0))
+            if ((c->win_layer <= layer) && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
             {
-                top = c;
+                if (clientSelectMask (c, 0))
+                {
+                    top_client.prefered = c;
+                }
+                top_client.highest = c;
             }
             else if (c->win_layer > layer)
             {
@@ -1999,7 +2009,7 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         }
     }
 
-    return top;
+    return top_client;
 }
 
 static Client *
@@ -3509,7 +3519,7 @@ void
 clientFrameAll ()
 {
     unsigned int count, i;
-    Client *new_focus;
+    ClientPair top_client;
     Window shield, w1, w2, *wins = NULL;
     XWindowAttributes attr;
 
@@ -3544,8 +3554,15 @@ clientFrameAll ()
     {
         XFree (wins);
     }
-    new_focus = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
-    clientSetFocus (new_focus, NO_FOCUS_FLAG);
+    top_client = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
+    if (top_client.prefered)
+    {
+        clientSetFocus (top_client.prefered, NO_FOCUS_FLAG);
+    }
+    else
+    {
+        clientSetFocus (top_client.highest, NO_FOCUS_FLAG);
+    }
     removeTmpEventWin (shield);
     MyXUngrabServer ();
     XSync (dpy, FALSE);
@@ -3817,7 +3834,7 @@ clientPassFocus (Client * c)
 {
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
-    Client *top_most = NULL;
+    ClientPair top_most;
     Client *c2;
     Window dr, window;
     int rx, ry, wx, wy;
@@ -3863,10 +3880,10 @@ clientPassFocus (Client * c)
     }
     if (!new_focus)
     {
-        new_focus = top_most;
+        new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
     clientSetFocus (new_focus, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
-    if (new_focus == top_most)
+    if (new_focus == top_most.highest)
     {
         clientPassGrabButton1 (new_focus);
     }
