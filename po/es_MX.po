@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-07 14:51+0100\n"
+"POT-Creation-Date: 2004-05-10 00:03+0200\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgid "Workspaces and Margins"
 msgstr "Márgenes del espacio de trabajo"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
 #, fuzzy
 msgid "Workspaces"
 msgstr "Escritorio %i"
@@ -58,30 +58,30 @@ msgstr "Escritorio %i"
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:337
+#: mcs-plugin/workspaces.c:341
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:349
+#: mcs-plugin/workspaces.c:353
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Escritorio %i"
 
-#: mcs-plugin/workspaces.c:359
+#: mcs-plugin/workspaces.c:363
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:447
+#: mcs-plugin/workspaces.c:451
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:519
+#: mcs-plugin/workspaces.c:523
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Saltar al escritorio siguiente"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: mcs-plugin/workspaces.c:554
 #, fuzzy
 msgid "Workspace names"
 msgstr "Márgenes del espacio de trabajo"
@@ -311,12 +311,7 @@ msgstr "Acción a realizar cuando se pincha dos veces en la barra de título :"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/client.c:510
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: net_wm_state sin soporte (ventana 0x%lx)"
-
-#: src/events.c:1555
+#: src/events.c:1511
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no activa (aún)\n"
@@ -326,110 +321,115 @@ msgstr "%s: Operación no activa (aún)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Error de segmentación"
 
-#: src/main.c:409
+#: src/main.c:420
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Otro administrador de ventanas está ejecutándose"
 
-#: src/main.c:414
+#: src/main.c:425
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Faltan datos en archivos de configuración por omisión"
 
-#: src/main.c:423
+#: src/main.c:434
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:431
+#: src/main.c:442
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:452
+#: src/main.c:463
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ha ocurrido un error desconocido"
 
-#: src/menu.c:42
+#: src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: src/menu.c:43
+#: src/menu.c:44
 msgid "Un_maximize"
 msgstr "Des_maximizar"
 
-#: src/menu.c:44
+#: src/menu.c:45
 msgid "_Hide"
 msgstr "_Ocultar"
 
-#: src/menu.c:45
+#: src/menu.c:46
 msgid "Hide _all others"
 msgstr "Ocult_ar los demás"
 
-#: src/menu.c:46
+#: src/menu.c:47
 msgid "S_how"
 msgstr "M_ostrar"
 
-#: src/menu.c:47
+#: src/menu.c:48
 msgid "_Shade"
 msgstr "_Enrollar"
 
-#: src/menu.c:48
+#: src/menu.c:49
 msgid "Un_shade"
 msgstr "Des_enrollar"
 
-#: src/menu.c:49
+#: src/menu.c:50
 msgid "S_tick"
 msgstr "P_egar"
 
-#: src/menu.c:50
+#: src/menu.c:51
 msgid "Uns_tick"
 msgstr "Des_pegar"
 
-#: src/menu.c:51
+#: src/menu.c:52
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:53 src/menu.c:54
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:54
+#: src/menu.c:55
 #, fuzzy
 msgid "Send to..."
 msgstr "Enviar a ..."
 
-#: src/menu.c:56
+#: src/menu.c:57
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: src/menu.c:59
+#: src/menu.c:60
 msgid "Destroy"
 msgstr "Destruir"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "_Quit"
 msgstr "_Salir"
 
-#: src/menu.c:63
+#: src/menu.c:64
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/menu.c:169
+#: src/menu.c:170
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Escritorio %i"
 
-#: src/menu.c:181
+#: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
 msgstr "Escritorio %i"
 
-#: src/menu.c:424
+#: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no pudo posesionarse del puntero\n"
+
+#: src/netwm.c:220
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: net_wm_state sin soporte (ventana 0x%lx)"
 
 #: src/settings.c:318
 #, fuzzy, c-format

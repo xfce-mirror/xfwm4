@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-07 14:51+0100\n"
+"POT-Creation-Date: 2004-05-10 00:03+0200\n"
 "PO-Revision-Date: 2003-08-02 03:36+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgid "Workspaces and Margins"
 msgstr "작업공간 여백"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
 #, fuzzy
 msgid "Workspaces"
 msgstr "작업공간 %i"
@@ -57,29 +57,29 @@ msgstr "작업공간 %i"
 msgid "Margins"
 msgstr "여백"
 
-#: mcs-plugin/workspaces.c:337
+#: mcs-plugin/workspaces.c:341
 msgid "Change name"
 msgstr "이름 변경"
 
-#: mcs-plugin/workspaces.c:349
+#: mcs-plugin/workspaces.c:353
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "작업공간 %i"
 
-#: mcs-plugin/workspaces.c:359
+#: mcs-plugin/workspaces.c:363
 msgid "Name:"
 msgstr "이름:"
 
-#: mcs-plugin/workspaces.c:447
+#: mcs-plugin/workspaces.c:451
 msgid "Click on a workspace name to edit it"
 msgstr "작업공간의 이름을 클릭하면 이름을 변경할 수 있습니다."
 
-#: mcs-plugin/workspaces.c:519
+#: mcs-plugin/workspaces.c:523
 msgid "Number of workspaces:"
 msgstr "작업공간의 수:"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: mcs-plugin/workspaces.c:554
 #, fuzzy
 msgid "Workspace names"
 msgstr "작업공간 여백"
@@ -303,12 +303,7 @@ msgstr "제목 틀을 더블클릭한 경우 취하는 동작"
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/client.c:510
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr ""
-
-#: src/events.c:1555
+#: src/events.c:1511
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -318,108 +313,113 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:409
+#: src/main.c:420
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:414
+#: src/main.c:425
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:423
+#: src/main.c:434
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:431
+#: src/main.c:442
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:452
+#: src/main.c:463
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
 
-#: src/menu.c:42
+#: src/menu.c:43
 msgid "Ma_ximize"
 msgstr "최대화(_x)"
 
-#: src/menu.c:43
+#: src/menu.c:44
 msgid "Un_maximize"
 msgstr "원래 크기로(_m)"
 
-#: src/menu.c:44
+#: src/menu.c:45
 msgid "_Hide"
 msgstr "숨기기(_H)"
 
-#: src/menu.c:45
+#: src/menu.c:46
 msgid "Hide _all others"
 msgstr "나머지 창 숨기기(_a)"
 
-#: src/menu.c:46
+#: src/menu.c:47
 msgid "S_how"
 msgstr "보이기(_h)"
 
-#: src/menu.c:47
+#: src/menu.c:48
 msgid "_Shade"
 msgstr "말아 올리기(_S)"
 
-#: src/menu.c:48
+#: src/menu.c:49
 msgid "Un_shade"
 msgstr "말린 창 내리기(_s)"
 
-#: src/menu.c:49
+#: src/menu.c:50
 msgid "S_tick"
 msgstr "모든 작업공간에 보이기(_t)"
 
-#: src/menu.c:50
+#: src/menu.c:51
 msgid "Uns_tick"
 msgstr "현재 작업공간에 보이기(_t)"
 
-#: src/menu.c:51
+#: src/menu.c:52
 msgid "Context _help"
 msgstr "도움말(_h)"
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:53 src/menu.c:54
 msgid "Always on top"
 msgstr "항상 위"
 
-#: src/menu.c:54
+#: src/menu.c:55
 msgid "Send to..."
 msgstr "다른 작업공간으로..."
 
-#: src/menu.c:56
+#: src/menu.c:57
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: src/menu.c:59
+#: src/menu.c:60
 msgid "Destroy"
 msgstr "강제 종료"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "_Quit"
 msgstr "종료(_Q)"
 
-#: src/menu.c:63
+#: src/menu.c:64
 msgid "Restart"
 msgstr "다시 시작"
 
-#: src/menu.c:169
+#: src/menu.c:170
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "작업공간 %i"
 
-#: src/menu.c:181
+#: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
 msgstr "작업공간 %i"
 
-#: src/menu.c:424
+#: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr ""
+
+#: src/netwm.c:220
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
 #: src/settings.c:318

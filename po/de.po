@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-07 14:51+0100\n"
+"POT-Creation-Date: 2004-05-10 00:03+0200\n"
 "PO-Revision-Date: 2004-01-08 00:09+0100\n"
 "Last-Translator: Moritz Heiber <moe@lunar-linux.org>\n"
 "Language-Team: none <none@none>\n"
@@ -46,7 +46,7 @@ msgid "Workspaces and Margins"
 msgstr "V. Desktops und Desktopränder"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
 msgid "Workspaces"
 msgstr "Virtuelle Desktops"
 
@@ -54,29 +54,29 @@ msgstr "Virtuelle Desktops"
 msgid "Margins"
 msgstr "Desktopränder"
 
-#: mcs-plugin/workspaces.c:337
+#: mcs-plugin/workspaces.c:341
 msgid "Change name"
 msgstr "Namen ändern"
 
-#: mcs-plugin/workspaces.c:349
+#: mcs-plugin/workspaces.c:353
 #, c-format
 msgid "Workspace %d"
 msgstr "Virtueller Desktop %i"
 
-#: mcs-plugin/workspaces.c:359
+#: mcs-plugin/workspaces.c:363
 msgid "Name:"
 msgstr "Name:"
 
-#: mcs-plugin/workspaces.c:447
+#: mcs-plugin/workspaces.c:451
 msgid "Click on a workspace name to edit it"
 msgstr "Klicken Sie einen Namen an, um ihn zu ändern"
 
-#: mcs-plugin/workspaces.c:519
+#: mcs-plugin/workspaces.c:523
 msgid "Number of workspaces:"
 msgstr "Virtuellen Desktop wechseln..."
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: mcs-plugin/workspaces.c:554
 msgid "Workspace names"
 msgstr "Desktopränder"
 
@@ -299,12 +299,7 @@ msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
 msgid "Advanced"
 msgstr "Weitere Optionen"
 
-#: src/client.c:510
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: Kein net_wm_state (Fenster %#lx)"
-
-#: src/events.c:1555
+#: src/events.c:1511
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation (noch) nicht unterstuetzt\n"
@@ -314,109 +309,114 @@ msgstr "%s: Operation (noch) nicht unterstuetzt\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Speicherzugriffsfehler"
 
-#: src/main.c:409
+#: src/main.c:420
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
 
-#: src/main.c:414
+#: src/main.c:425
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Einstellungen aus den Defaults fehlen"
 
-#: src/main.c:423
+#: src/main.c:434
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: Konnte nicht im Hintergrund starten: %s"
 
-#: src/main.c:431
+#: src/main.c:442
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: Konnte keinen neuen Prozess erstellen: %s"
 
-#: src/main.c:452
+#: src/main.c:463
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ein unbekannter Fehler ist aufgetreten"
 
-#: src/menu.c:42
+#: src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Ma_ximieren"
 
-#: src/menu.c:43
+#: src/menu.c:44
 msgid "Un_maximize"
 msgstr "Maximierung aufheben"
 
-#: src/menu.c:44
+#: src/menu.c:45
 msgid "_Hide"
 msgstr "_Verstecken"
 
-#: src/menu.c:45
+#: src/menu.c:46
 msgid "Hide _all others"
 msgstr "_Andere verstecken"
 
-#: src/menu.c:46
+#: src/menu.c:47
 msgid "S_how"
 msgstr "Z_eigen"
 
-#: src/menu.c:47
+#: src/menu.c:48
 msgid "_Shade"
 msgstr "_Einrollen"
 
-#: src/menu.c:48
+#: src/menu.c:49
 msgid "Un_shade"
 msgstr "Ent_rollen"
 
-#: src/menu.c:49
+#: src/menu.c:50
 msgid "S_tick"
 msgstr "Fest_kleben"
 
-#: src/menu.c:50
+#: src/menu.c:51
 msgid "Uns_tick"
 msgstr "_Lösen"
 
-#: src/menu.c:51
+#: src/menu.c:52
 msgid "Context _help"
 msgstr "Hilfe"
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:53 src/menu.c:54
 msgid "Always on top"
 msgstr "Immer obenauf"
 
-#: src/menu.c:54
+#: src/menu.c:55
 msgid "Send to..."
 msgstr "Wechseln zu ..."
 
-#: src/menu.c:56
+#: src/menu.c:57
 msgid "_Close"
 msgstr "_Schließen"
 
-#: src/menu.c:59
+#: src/menu.c:60
 msgid "Destroy"
 msgstr "Zerstören"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: src/menu.c:63
+#: src/menu.c:64
 msgid "Restart"
 msgstr "Neu starten"
 
-#: src/menu.c:169
+#: src/menu.c:170
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Virtueller Desktop %i"
 
-#: src/menu.c:181
+#: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
 msgstr "Virtueller Desktop %i"
 
-#: src/menu.c:424
+#: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenue konnte die Position des Mauszeigers nicht feststellen\n"
+
+#: src/netwm.c:220
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: Kein net_wm_state (Fenster %#lx)"
 
 #: src/settings.c:318
 #, c-format

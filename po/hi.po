@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.hi.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-07 14:51+0100\n"
+"POT-Creation-Date: 2004-05-10 00:03+0200\n"
 "PO-Revision-Date: 2003-11-01 18:18+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -46,7 +46,7 @@ msgid "Workspaces and Margins"
 msgstr "कार्यस्थान हाशिया "
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
 #, fuzzy
 msgid "Workspaces"
 msgstr "कार्यस्थान %i"
@@ -55,30 +55,30 @@ msgstr "कार्यस्थान %i"
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:337
+#: mcs-plugin/workspaces.c:341
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:349
+#: mcs-plugin/workspaces.c:353
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "कार्यस्थान %i"
 
-#: mcs-plugin/workspaces.c:359
+#: mcs-plugin/workspaces.c:363
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:447
+#: mcs-plugin/workspaces.c:451
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:519
+#: mcs-plugin/workspaces.c:523
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "कार्यस्थान व्रेप करें"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: mcs-plugin/workspaces.c:554
 #, fuzzy
 msgid "Workspace names"
 msgstr "कार्यस्थान हाशिया "
@@ -314,12 +314,7 @@ msgstr "टाइटल बार में डबल क्लिक करन�
 msgid "Advanced"
 msgstr "उन्नत"
 
-#: src/client.c:510
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: अप्रबंधनीय net_wm_state (window 0x%lx)"
-
-#: src/events.c:1555
+#: src/events.c:1511
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: आपरेशन हेतु समर्थन उपलब्ध नहीं (अभी) \n"
@@ -329,110 +324,115 @@ msgstr "%s: आपरेशन हेतु समर्थन उपलब्�
 msgid "%s: Segmentation fault"
 msgstr "%s: सेगमेन्टेशन फाल्ट"
 
-#: src/main.c:409
+#: src/main.c:420
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s:  पहले से ही एक अन्य विंडो प्रबंधक चल रहा है."
 
-#: src/main.c:414
+#: src/main.c:425
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: डिफाल्ट फाइलों में से डाटा खो गया है."
 
-#: src/main.c:423
+#: src/main.c:434
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:431
+#: src/main.c:442
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:452
+#: src/main.c:463
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: अज्ञात त्रुटी हुई"
 
-#: src/menu.c:42
+#: src/menu.c:43
 msgid "Ma_ximize"
 msgstr "बडा करें (_x)"
 
-#: src/menu.c:43
+#: src/menu.c:44
 msgid "Un_maximize"
 msgstr "अधिकतम हटाएं (_m)"
 
-#: src/menu.c:44
+#: src/menu.c:45
 msgid "_Hide"
 msgstr "छुपाएँ (_H)"
 
-#: src/menu.c:45
+#: src/menu.c:46
 msgid "Hide _all others"
 msgstr "अन्य सभी को छुपाएं (_a)"
 
-#: src/menu.c:46
+#: src/menu.c:47
 msgid "S_how"
 msgstr "दिखाएँ (_h)"
 
-#: src/menu.c:47
+#: src/menu.c:48
 msgid "_Shade"
 msgstr "छाया (_S)"
 
-#: src/menu.c:48
+#: src/menu.c:49
 msgid "Un_shade"
 msgstr "छाया हटाएं (_s)"
 
-#: src/menu.c:49
+#: src/menu.c:50
 msgid "S_tick"
 msgstr "स्टिक (_t)"
 
-#: src/menu.c:50
+#: src/menu.c:51
 msgid "Uns_tick"
 msgstr "अनस्टिक (_t)"
 
-#: src/menu.c:51
+#: src/menu.c:52
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:53 src/menu.c:54
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:54
+#: src/menu.c:55
 msgid "Send to..."
 msgstr "को भेजें..."
 
-#: src/menu.c:56
+#: src/menu.c:57
 msgid "_Close"
 msgstr "बंद करें (_C)"
 
-#: src/menu.c:59
+#: src/menu.c:60
 msgid "Destroy"
 msgstr "नष्ट करें"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "_Quit"
 msgstr "निकलें (_Q)"
 
 # gnome-session/session-properties.c:173
-#: src/menu.c:63
+#: src/menu.c:64
 msgid "Restart"
 msgstr "पुन शुरु करें"
 
-#: src/menu.c:169
+#: src/menu.c:170
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "कार्यस्थान %i"
 
-#: src/menu.c:181
+#: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
 msgstr "कार्यस्थान %i"
 
-#: src/menu.c:424
+#: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: जीटीके मेन्यू पाइन्टर पकड़ने में  असफल\n"
+
+#: src/netwm.c:220
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: अप्रबंधनीय net_wm_state (window 0x%lx)"
 
 #: src/settings.c:318
 #, c-format

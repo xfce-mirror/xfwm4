@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-04 23:50+0200\n"
+"POT-Creation-Date: 2004-05-10 00:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,42 +299,37 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:568
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr ""
-
-#: src/events.c:1509
+#: src/events.c:1511
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
 
-#: src/main.c:230
+#: src/main.c:231
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:418
+#: src/main.c:420
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:423
+#: src/main.c:425
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:432
+#: src/main.c:434
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:440
+#: src/main.c:442
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:461
+#: src/main.c:463
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
@@ -416,6 +411,11 @@ msgstr ""
 #: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr ""
+
+#: src/netwm.c:220
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
 #: src/settings.c:318

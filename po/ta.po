@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-07 14:51+0100\n"
+"POT-Creation-Date: 2004-05-10 00:03+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -46,7 +46,7 @@ msgid "Workspaces and Margins"
 msgstr "வேலையிட எல்லைகள்"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
 #, fuzzy
 msgid "Workspaces"
 msgstr "வேலை þடம் %i"
@@ -55,30 +55,30 @@ msgstr "வேலை þடம் %i"
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:337
+#: mcs-plugin/workspaces.c:341
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:349
+#: mcs-plugin/workspaces.c:353
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "வேலை þடம் %i"
 
-#: mcs-plugin/workspaces.c:359
+#: mcs-plugin/workspaces.c:363
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:447
+#: mcs-plugin/workspaces.c:451
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:519
+#: mcs-plugin/workspaces.c:523
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: mcs-plugin/workspaces.c:554
 #, fuzzy
 msgid "Workspace names"
 msgstr "வேலையிட எல்லைகள்"
@@ -308,12 +308,7 @@ msgstr "தலைப்புப் பட்டையில் þரட்ட�
 msgid "Advanced"
 msgstr "உயர்நிலை"
 
-#: src/client.c:510
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: மேலாண்மையற்ற net_wm_state (சாளரம் 0x%lx)"
-
-#: src/events.c:1555
+#: src/events.c:1511
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்பு þல்லை (þப்பொழுது)\n"
@@ -323,109 +318,114 @@ msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்ப�
 msgid "%s: Segmentation fault"
 msgstr "%s: பகுதியாக்கல் பழுது"
 
-#: src/main.c:409
+#: src/main.c:420
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
 
-#: src/main.c:414
+#: src/main.c:425
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: கொடாநிலை கோப்புகளில் இல்லாத தரவுகள்"
 
-#: src/main.c:423
+#: src/main.c:434
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:431
+#: src/main.c:442
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:452
+#: src/main.c:463
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: தெரியாத பிழை நடைபெற்றுள்ளது"
 
-#: src/menu.c:42
+#: src/menu.c:43
 msgid "Ma_ximize"
 msgstr "பெருதாக்குக"
 
-#: src/menu.c:43
+#: src/menu.c:44
 msgid "Un_maximize"
 msgstr "பெருதாக்குதல் நீக்கு"
 
-#: src/menu.c:44
+#: src/menu.c:45
 msgid "_Hide"
 msgstr "_மறை"
 
-#: src/menu.c:45
+#: src/menu.c:46
 msgid "Hide _all others"
 msgstr "மற்றவை அனைத்தையும் மறை"
 
-#: src/menu.c:46
+#: src/menu.c:47
 msgid "S_how"
 msgstr "காண்பிக்கவும்"
 
-#: src/menu.c:47
+#: src/menu.c:48
 msgid "_Shade"
 msgstr "நிழல்"
 
-#: src/menu.c:48
+#: src/menu.c:49
 msgid "Un_shade"
 msgstr "நிழல் நீக்கு"
 
-#: src/menu.c:49
+#: src/menu.c:50
 msgid "S_tick"
 msgstr "ஒட்_டு"
 
-#: src/menu.c:50
+#: src/menu.c:51
 msgid "Uns_tick"
 msgstr "ஒட்டா_தே"
 
-#: src/menu.c:51
+#: src/menu.c:52
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:53 src/menu.c:54
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:54
+#: src/menu.c:55
 msgid "Send to..."
 msgstr "இவ்வேலை இடத்தில் போடுக ..."
 
-#: src/menu.c:56
+#: src/menu.c:57
 msgid "_Close"
 msgstr "_மூடு"
 
-#: src/menu.c:59
+#: src/menu.c:60
 msgid "Destroy"
 msgstr "அழி"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "_Quit"
 msgstr "_வெளிச்செல்"
 
-#: src/menu.c:63
+#: src/menu.c:64
 msgid "Restart"
 msgstr "மறுபடியும் தொடங்கு"
 
-#: src/menu.c:169
+#: src/menu.c:170
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "வேலை þடம் %i"
 
-#: src/menu.c:181
+#: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
 msgstr "வேலை þடம் %i"
 
-#: src/menu.c:424
+#: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenuக்கு சுட்டியை பெற முடியவில்லை\n"
+
+#: src/netwm.c:220
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: மேலாண்மையற்ற net_wm_state (சாளரம் 0x%lx)"
 
 #: src/settings.c:318
 #, c-format
