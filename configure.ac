@@ -53,7 +53,6 @@ BM_DEBUG_SUPPORT
 AC_OUTPUT([ 
 xfwm4.spec
 Makefile
-common/Makefile
 defaults/Makefile
 mcs-plugin/Makefile
 po/Makefile.in 

@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -30,6 +30,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
 #include "main.h"
@@ -38,7 +39,6 @@
 #include "client.h"
 #include "workspaces.h"
 #include "debug.h"
-#include "my_intl.h"
 
 #define CHANNEL1 "xfwm4"
 #define CHANNEL2 "margins"

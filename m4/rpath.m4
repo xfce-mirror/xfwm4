@@ -19,3 +19,15 @@ AC_HELP_STRING([--disable-rpath], [Do not use -rpath (use with care!!)]),
     AC_MSG_RESULT([no])
   fi
 ])
+
+AC_DEFUN([BM_PKG_LDFLAGS], [
+  AC_REQUIRE([BM_RPATH_SUPPORT])
+  AC_MSG_CHECKING([which pkg-config LDFLAGS to use])
+  if test "x$LD_RPATH" == "x"; then
+    $1_LDFLAGS="-L\${libdir}"
+  else
+    $1_LDFLAGS="$LD_RPATH\${libdir} -L\${libdir}"
+  fi
+  AC_MSG_RESULT([$$1_LDFLAGS])
+  AC_SUBST($1_LDFLAGS)
+])

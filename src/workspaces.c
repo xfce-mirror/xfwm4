@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #include <X11/Xlib.h>
@@ -188,7 +188,7 @@ void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
             margins[MARGIN_BOTTOM] = MAX(margins[MARGIN_BOTTOM], c->struts[MARGIN_BOTTOM]);
         }
     }
-    DBG("Desktop area computed : (%d,%d,%d,%d)\n", margins[0], margins[1], margins[2], margins[3]);
+    DBG("Desktop area computed : (%d,%d,%d,%d)\n", (int)margins[0], (int)margins[1], (int)margins[2], (int)margins[3]);
     if((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
     {
         DBG("Margins have changed, updating net_workarea\n");

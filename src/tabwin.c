@@ -18,18 +18,18 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "inline-tabwin-icon.h"
 #include "tabwin.h"
 #include "debug.h"
-#include "my_intl.h"
 
 Tabwin *tabwinCreate(gchar * label)
 {

@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -34,13 +34,13 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
+#include <libxfce4util/i18n.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "main.h"
 #include "hints.h"
 #include "debug.h"
-#include "my_intl.h"
 
 Atom gnome_panel_desktop_area;
 Atom motif_wm_hints;

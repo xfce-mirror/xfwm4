@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #include <sys/time.h>
@@ -37,6 +37,7 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <X11/Xlib.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
@@ -51,7 +52,6 @@
 #include "startup_notification.h"
 #include "spinning_cursor.h"
 #include "debug.h"
-#include "my_intl.h"
 
 #define MAIN_EVENT_MASK         SubstructureNotifyMask|\
     StructureNotifyMask|\

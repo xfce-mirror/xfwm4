@@ -13,13 +13,13 @@ AC_HELP_STRING([--enable-debug[=yes|no|full]], [Build with debugging support])
 AC_HELP_STRING([--disable-debug], [Include no debugging support [default]]),
     [ac_cv_debug=$enableval], [ac_cv_debug=no])
   AC_MSG_CHECKING([whether to build with debugging support])
-  if test "x$ac_cv_debug" != "xno"; then
+  if test x$ac_cv_debug != xno; then
     AC_DEFINE(DEBUG, 1, Define for debugging support)
-    if test "x$ac_cv_debug" == "xfull"; then
-      CFLAGS="$CFLAGS -g3 -Wall -Werror"
+    if test x$ac_cv_debug == xfull; then
+      CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       AC_MSG_RESULT([full])
     else
-      CFLAGS="$CFLAGS -g -Wall -Werror"
+      CFLAGS="$CFLAGS -g -Wall -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       AC_MSG_RESULT([yes])
     fi
   else

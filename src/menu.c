@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -32,10 +32,10 @@
 #include <gtk/gtk.h>
 #include <X11/Xlib.h>
 #include <unistd.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "menu.h"
 #include "debug.h"
-#include "my_intl.h"
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {

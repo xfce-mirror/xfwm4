@@ -18,7 +18,7 @@
 */
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#include <config.h>
 #endif
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -39,12 +39,12 @@
 
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
+#include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "margins-icon.h"
 #include "monitor-icon.h"
-#include "my_intl.h"
 
 #define RCFILE "margins.xml"
 #define PLUGIN_NAME "xfwm_margins"

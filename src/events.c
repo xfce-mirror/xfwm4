@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #include <X11/Xlib.h>
@@ -27,6 +27,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "main.h"
 #include "workspaces.h"
@@ -37,7 +38,6 @@
 #include "menu.h"
 #include "startup_notification.h"
 #include "debug.h"
-#include "my_intl.h"
 
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
@@ -845,7 +845,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
 static inline void handleFocusIn(XFocusChangeEvent * ev)
 {
-    Client *c, *c2;
+    Client *c;
 
     DBG("entering handleFocusIn\n");
 
@@ -891,7 +891,9 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 
 static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
+#if 0
     DBG("entering handleFocusOut - Window (0x%lx)\n", w);
+#endif
 }
 
 static inline void handlePropertyNotify(XPropertyEvent * ev)

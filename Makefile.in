@@ -175,7 +175,7 @@ noinst_DATA = example.xfwm4rc
 
 EXTRA_DIST = example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec.in
 
-SUBDIRS = po common src mcs-plugin defaults themes
+SUBDIRS = po src mcs-plugin defaults themes
 
 ACLOCAL_AMFLAGS = -I m4
 subdir = .
@@ -216,7 +216,7 @@ $(top_builddir)/config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 $(srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(srcdir)/configure.ac $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
 	cd $(srcdir) && $(AUTOCONF)
 
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ configure.ac m4/X11.m4 m4/debug.m4 m4/depends.m4 m4/i18n.m4 m4/rpath.m4
+$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ configure.ac m4/debug.m4 m4/depends.m4 m4/i18n.m4 m4/rpath.m4 m4/X11.m4
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 
 config.h: stamp-h1

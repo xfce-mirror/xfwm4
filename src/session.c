@@ -16,7 +16,7 @@
 /* Initially inspired by xfwm, fvwm2, enlightment and twm implementations */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #include <stdio.h>
@@ -352,7 +352,7 @@ gboolean sessionLoadWindowStates(gchar * filename)
             sscanf(s, "%4000s", s1);
             if(!strcmp(s1, "[CLIENT]"))
             {
-                sscanf(s, "%*s 0x%ls", &w);
+                sscanf(s, "%*s 0x%ls", (int *)&w);
                 num_match++;
                 matches = g_realloc(matches, sizeof(Match) * num_match);
                 matches[num_match - 1].win = w;

@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include <config.h>
 #endif
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -32,6 +32,8 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <glib.h>
+
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
@@ -46,7 +48,6 @@
 #include "session.h"
 #include "startup_notification.h"
 #include "debug.h"
-#include "my_intl.h"
 
 /* Event mask definition */
 
@@ -104,7 +105,9 @@ static void clientSetWidth(Client * c, int w1);
 static void clientSetHeight(Client * c, int h1);
 static inline void clientApplyStackList(GSList * list);
 static inline Client *clientGetLowestTransient(Client * c);
+#if 0 /* NEVER USED */
 static inline Client *clientGetHighestTransient(Client * c);
+#endif
 static inline Client *clientGetNextTopMost(int layer, Client * exclude);
 static inline Client *clientGetTopMostFocusable(int layer, Client * exclude);
 static inline Client *clientGetBottomMost(int layer, Client * exclude);
@@ -1396,6 +1399,7 @@ static inline Client *clientGetLowestTransient(Client * c)
     return lowest_transient;
 }
 
+#if 0
 static inline Client *clientGetHighestTransient(Client * c)
 {
     Client *highest_transient = NULL;
@@ -1438,6 +1442,7 @@ static inline Client *clientGetHighestTransient(Client * c)
 
     return highest_transient;
 }
+#endif
 
 static inline Client *clientGetNextTopMost(int layer, Client * exclude)
 {
@@ -1449,7 +1454,7 @@ static inline Client *clientGetNextTopMost(int layer, Client * exclude)
     for(index = windows_stack; index; index = g_slist_next(index))
     {
         c = (Client *) index->data;
-        DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
+        DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, (int)c->win_layer);
         if(!exclude || (c != exclude))
         {
             if(c->win_layer > layer)
@@ -1473,7 +1478,7 @@ static inline Client *clientGetTopMostFocusable(int layer, Client * exclude)
     for(index = windows_stack; index; index = g_slist_next(index))
     {
         c = (Client *) index->data;
-        DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
+        DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, (int)c->win_layer);
         if(!exclude || (c != exclude))
         {
             if((c->win_layer <= layer) && clientAcceptFocus(c) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
@@ -1502,7 +1507,7 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
         c = (Client *) index->data;
         if(c)
         {
-            DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
+            DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, (int)c->win_layer);
             if(!exclude || (c != exclude))
             {
                 if(c->win_layer < layer)
@@ -1530,7 +1535,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
 
     g_return_if_fail(c != NULL);
-    DBG("entering clientConstraintPos %s\n", show_title ? "(with show full)" : "(w/out show full)");
+    DBG("entering clientConstraintPos %s\n", show_full ? "(with show full)" : "(w/out show full)");
     DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
@@ -1740,7 +1745,7 @@ static void clientInitPosition(Client * c)
                     count_overlaps += overlap(frame_x, frame_y, frame_x + frame_width, frame_y + frame_height, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
                 }
             }
-            DBG("overlaps so far is %u\n", count_overlaps);
+            DBG("overlaps so far is %u\n", (unsigned int)count_overlaps);
             if(count_overlaps == 0)
             {
                 DBG("overlaps is 0 so it's the best we can get\n");
@@ -1748,7 +1753,7 @@ static void clientInitPosition(Client * c)
             }
             else if((count_overlaps < best_overlaps) || (first))
             {
-                DBG("overlaps %u is better than the best we have %u\n", count_overlaps, best_overlaps);
+                DBG("overlaps %u is better than the best we have %u\n", (unsigned int)count_overlaps, (unsigned int)best_overlaps);
                 best_x = test_x;
                 best_y = test_y;
                 best_overlaps = count_overlaps;
