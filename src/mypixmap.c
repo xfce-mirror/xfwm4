@@ -222,11 +222,43 @@ xfwmPixmapFree (xfwmPixmap * pm)
     }
 }
 
+static void
+xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d, int x, int y, int width, int height)
+{
+    XGCValues gv;
+    GC gc;
+    unsigned long mask;
+
+    TRACE ("entering fillRectangle");
+
+    if ((width < 1) || (height < 1))
+    {
+        return;
+    }
+    gv.fill_style = FillTiled;
+    gv.tile = pm;
+    gv.ts_x_origin = x;
+    gv.ts_y_origin = y;
+    gv.foreground = WhitePixel (dpy, screen);
+    if (gv.tile != None)
+    {
+        mask = GCTile | GCFillStyle | GCTileStipXOrigin;
+    }
+    else
+    {
+        mask = GCForeground;
+    }
+    gc = XCreateGC (dpy, d, mask, &gv);
+    XFillRectangle (dpy, d, gc, x, y, width, height);
+    XFreeGC (dpy, gc);
+}
+
 void
 xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, gint x, gint y, gint width, gint height)
 {
     XGCValues gv;
     GC gc;
+    unsigned long mask;
 
     TRACE ("entering xfwmWindowFill");
 
@@ -235,17 +267,10 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, gint x, gint y, gint width, 
         return;
     }
 
-    gv.fill_style = FillTiled;
-    gv.ts_x_origin = x;
-    gv.ts_y_origin = y;
-
-    gv.tile = src->pixmap;
-    gc = XCreateGC (myScreenGetXDisplay (src->screen_info), dst->pixmap, GCTile | GCFillStyle | GCTileStipXOrigin, &gv);
-    XFillRectangle (myScreenGetXDisplay (src->screen_info), dst->pixmap, gc, x, y, width, height);
-    XFreeGC (myScreenGetXDisplay (src->screen_info), gc);
-
-    gv.tile = src->mask;
-    gc = XCreateGC (myScreenGetXDisplay (src->screen_info), dst->mask, GCTile | GCFillStyle | GCTileStipXOrigin, &gv);
-    XFillRectangle (myScreenGetXDisplay (src->screen_info), dst->mask, gc, x, y, width, height);
-    XFreeGC (myScreenGetXDisplay (src->screen_info), gc);
+    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info), 
+                             src->screen_info->screen,  
+                             src->pixmap, dst->pixmap, x, y, width, height);
+    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info), 
+                             src->screen_info->screen,  
+                             src->mask, dst->mask, x, y, width, height);
 }
