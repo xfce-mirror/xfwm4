@@ -1602,6 +1602,7 @@ clientApplyStackList (GSList * list)
 {
     Client *c;
     GSList *list_copy, *index;
+    XWindowChanges wc;
     Window *xwinstack;
     guint nwindows;
     gint i = 0;
@@ -1610,7 +1611,7 @@ clientApplyStackList (GSList * list)
 
     DBG ("applying stack list");
     nwindows = g_slist_length (list);
-    if (nwindows < 1)
+    if (nwindows < 2)
     {
         return;
     }
@@ -1624,7 +1625,14 @@ clientApplyStackList (GSList * list)
         xwinstack[i++] = c->frame;
         DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
     }
-    /* XRaiseWindow (dpy, xwinstack[0]); */
+    /* 
+       Raise the window on top of the list just above the next window to
+       avoid flickering during restack.
+       (contributed by Thomas Leonard <tal00r@ecs.soton.ac.uk>)
+     */
+    wc.stack_mode = Above;
+    wc.sibling = xwinstack[1];
+    XConfigureWindow(dpy, xwinstack[0], CWStackMode | CWSibling, &wc);
     XRestackWindows (dpy, xwinstack, (int) nwindows);
     XFlush (dpy);
     g_slist_free (list_copy);
