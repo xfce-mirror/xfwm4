@@ -112,7 +112,8 @@ static inline gboolean clientVisibleForGroup (Client * c, int workspace);
 static inline Client *clientGetNextTopMost (int layer, Client * exclude);
 static inline Client *clientGetTopMostFocusable (int layer, Client * exclude);
 static inline Client *clientGetBottomMost (int layer, Client * exclude);
-static inline void clientConstraintPos (Client * c, gboolean show_full);
+static inline void clientConstrainRatio (Client * c, int w1, int h1, int corner);
+static inline void clientConstrainPos (Client * c, gboolean show_full);
 static inline void clientKeepVisible (Client * c);
 static inline unsigned long overlap (int x0, int y0, int x1, int y1, int tx0,
     int ty0, int tx1, int ty1);
@@ -1868,11 +1869,108 @@ clientGetBottomMost (int layer, Client * exclude)
     return bot;
 }
 
-/* clientConstraintPos() is used when moving windows
+/* ConstrainSize - adjust the given width and height to account for
+   the constraints imposed by size hints
+
+   The aspect ratio stuff, is borrowed from uwm's CheckConsistency routine.
+ */
+
+#define MAKE_MULT(a,b) ((b==1) ? (a) : (((int)((a)/(b))) * (b)) )
+static inline void
+clientConstrainRatio (Client * c, int w1, int h1, int corner)
+{
+    int xinc, yinc, delta;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientConstrainRatio");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (c->size->flags & PResizeInc)
+    {
+        xinc = c->size->width_inc;
+        yinc = c->size->height_inc;
+    }
+    else
+    {
+        xinc = 1;
+        yinc = 1;
+    }
+    
+    if (c->size->flags & PAspect)
+    {
+        if ((c->size->min_aspect.x * h1 > c->size->min_aspect.y * w1) && 
+            (corner == 4 + SIDE_BOTTOM))
+        {
+            /* Change width to match */
+            delta = MAKE_MULT (c->size->min_aspect.x * h1 / 
+                              c->size->min_aspect.y - w1, xinc);
+            if (!(c->size->flags & PMaxSize) || 
+                (w1 + delta <= c->size->max_width))
+            {
+	        w1 += delta;
+            }
+        }
+        if (c->size->min_aspect.x * h1 > c->size->min_aspect.y * w1)
+        {
+            delta = MAKE_MULT (h1 - w1 * c->size->min_aspect.y / 
+                              c->size->min_aspect.x, yinc);
+            if (!(c->size->flags & PMinSize) ||
+                (h1 - delta >= c->size->min_height))
+            {
+	        h1 -= delta;
+            }
+            else
+            {
+	        delta = MAKE_MULT (c->size->min_aspect.x * h1 / 
+                                  c->size->min_aspect.y - w1, xinc);
+	        if (!(c->size->flags & PMaxSize) ||
+                    (w1 + delta <= c->size->max_width))
+	          w1 += delta;
+            }
+        }
+
+        if ((c->size->max_aspect.x * h1 < c->size->max_aspect.y * w1) && 
+            ((corner == 4 + SIDE_LEFT) || (corner == 4 + SIDE_RIGHT)))
+        {
+            delta = MAKE_MULT (w1 * c->size->max_aspect.y / 
+                              c->size->max_aspect.x - h1, yinc);
+            if (!(c->size->flags & PMaxSize) ||
+                (h1 + delta <= c->size->max_height))
+            {
+	        h1 += delta;
+            }
+        }
+        if ((c->size->max_aspect.x * h1 < c->size->max_aspect.y * w1))
+        {
+            delta = MAKE_MULT (w1 - c->size->max_aspect.x * h1 / 
+                              c->size->max_aspect.y, xinc);
+            if (!(c->size->flags & PMinSize) ||
+                (w1 - delta >= c->size->min_width))
+	    {
+                w1 -= delta;
+            }
+            else
+            {
+	        delta = MAKE_MULT (w1 * c->size->max_aspect.y / 
+                                  c->size->max_aspect.x - h1, yinc);
+	        if (!(c->size->flags & PMaxSize) ||
+                    (h1 + delta <= c->size->max_height))
+                {
+	            h1 += delta;
+                }
+            }
+        }
+    }
+
+    c->height = h1;
+    c->width = w1;
+}
+
+/* clientConstrainPos() is used when moving windows
    to ensure that the window stays accessible to the user
  */
 static inline void
-clientConstraintPos (Client * c, gboolean show_full)
+clientConstrainPos (Client * c, gboolean show_full)
 {
     CARD32 client_margins[4];
     int cx, cy, left, right, top, bottom;
@@ -1881,7 +1979,7 @@ clientConstraintPos (Client * c, gboolean show_full)
     gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientConstraintPos %s",
+    TRACE ("entering clientConstrainPos %s",
         show_full ? "(with show full)" : "(w/out show full)");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
@@ -1987,7 +2085,7 @@ clientConstraintPos (Client * c, gboolean show_full)
 /* clientKeepVisible is used at initial mapping, to make sure
    the window is visible on screen. It also does coordonate
    translation in Xinerama to center window on physical screen
-   Not to be confused with clientConstraintPos()
+   Not to be confused with clientConstrainPos()
  */
 static inline void
 clientKeepVisible (Client * c)
@@ -2046,7 +2144,7 @@ clientKeepVisible (Client * c)
             MyDisplayY (cx, cy) + (MyDisplayHeight (dpy, screen, cx,
                 cy) - c->height) / 2;
     }
-    clientConstraintPos (c, TRUE);
+    clientConstrainPos (c, TRUE);
 }
 
 /* Compute rectangle overlap area */
@@ -2267,7 +2365,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && 
          CONSTRAINED_WINDOW (c))
     {
-        clientConstraintPos (c, TRUE);
+        clientConstrainPos (c, TRUE);
     }
     wc->x = frameX (c);
     wc->y = frameY (c);
@@ -4475,7 +4573,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             c->y = c->y + 16;
         }
-        clientConstraintPos (c, FALSE);
+        clientConstrainPos (c, FALSE);
 
         if (params.box_move)
         {
@@ -4562,7 +4660,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
         clientSnapPosition (c);
 
-        clientConstraintPos (c, FALSE);
+        clientConstrainPos (c, FALSE);
         if (params.box_move)
         {
             clientDrawOutline (c);
@@ -4776,6 +4874,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     if (xevent->type == KeyPress)
     {
         int key_width_inc, key_height_inc;
+        int corner = -1;
         
         key_width_inc = clientGetWidthInc (c);
         key_height_inc = clientGetHeightInc (c);
@@ -4808,19 +4907,23 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
         {
             c->height = c->height - key_height_inc;
+            corner = 4 + SIDE_BOTTOM;
         }
         else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
             && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
         {
             c->height = c->height + key_height_inc;
+            corner = 4 + SIDE_BOTTOM;
         }
         else if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
         {
             c->width = c->width - key_width_inc;
+            corner = 4 + SIDE_RIGHT;
         }
         else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
         {
             c->width = c->width + key_width_inc;
+            corner = 4 + SIDE_RIGHT;
         }
         if (c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
         {
@@ -4829,6 +4932,10 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
         {
             c->height = prev_height;
+        }
+        if (corner >= 0)
+        {
+            clientConstrainRatio (c, c->width, c->height, corner);
         }
         if (params.box_resize)
         {
@@ -4915,6 +5022,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         }
         clientSetWidth (c, c->width);
         clientSetHeight (c, c->height);
+        clientConstrainRatio (c, c->width, c->height, passdata->corner);
+
         if ((passdata->corner == CORNER_TOP_LEFT)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
             || (passdata->corner == 4 + SIDE_LEFT))
