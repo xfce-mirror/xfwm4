@@ -65,6 +65,28 @@ Match;
 static int num_match = 0;
 static Match *matches = NULL;
 
+static void my_free_string_list(gchar **list, gint n)
+{
+    gchar **s;
+    gint i;
+    
+    if (!list || !n)
+    {
+        return; /* silently... :) */
+    }
+    
+    i = 0;
+    s = list;
+    
+    while ((i < n) && (s))
+    {
+        g_free(*s);
+        *s = NULL;
+        s++;
+        i++;
+    }
+}
+
 /* 
    2-pass function to compute new string length,
    allocate memory and finally copy string 
@@ -328,7 +350,7 @@ gboolean sessionLoadWindowStates(gchar *filename)
             {
                 sscanf(s, "%*s %lx", &w);
                 num_match++;
-                matches = realloc(matches, sizeof(Match) * num_match);
+                matches = g_realloc(matches, sizeof(Match) * num_match);
                 matches[num_match - 1].win = w;
                 matches[num_match - 1].client_id = NULL;
                 matches[num_match - 1].res_name = NULL;
@@ -397,7 +419,7 @@ gboolean sessionLoadWindowStates(gchar *filename)
             else if(!strcmp(s1, "[WM_COMMAND]"))
             {
                 sscanf(s, "%*s (%i)%n", &matches[num_match - 1].wm_command_count, &pos);
-                matches[num_match - 1].wm_command = (char **) malloc (sizeof (char *) * (matches[num_match - 1].wm_command_count + 1));
+                matches[num_match - 1].wm_command = g_new (gchar *, matches[num_match - 1].wm_command_count + 1);
                 for(i = 0; i < matches[num_match - 1].wm_command_count; i++)
                 {
                     gchar *substring;
@@ -408,7 +430,6 @@ gboolean sessionLoadWindowStates(gchar *filename)
                 }
                 matches[num_match - 1].wm_command[matches[num_match - 1].wm_command_count] = NULL;
             }
-
         }
         fclose(f);
 	return TRUE;
@@ -448,14 +469,15 @@ void sessionFreeWindowStates(void)
         }
         if((matches[i].wm_command_count) && (matches[i].wm_command))
         {
-            XFreeStringList(matches[i].wm_command);
+            my_free_string_list(matches[i].wm_command, matches[i].wm_command_count);
+            g_free (matches[i].wm_command);
 	    matches[i].wm_command_count = 0;
 	    matches[i].wm_command = NULL;
         }
     }
     if (matches)
     {
-        free(matches);
+        g_free(matches);
 	matches = NULL;
 	num_match = 0;
     }
@@ -572,7 +594,7 @@ gboolean sessionMatchWinToSM(Client *c)
 {
     int i;
     
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, FALSE);
     for(i = 0; i < num_match; i++)
     {
         if(!matches[i].used && matchWin(c, &matches[i]))
