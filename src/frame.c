@@ -568,7 +568,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
         return;
     }
 
-    temp = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
+    temp = XCreateSimpleWindow (display_info->dpy, c->frame, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
