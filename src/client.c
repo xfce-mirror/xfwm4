@@ -3355,6 +3355,7 @@ clientUnframe (Client * c, gboolean remap)
     myWindowDelete (&c->sides[CORNER_BOTTOM_RIGHT]);
     myWindowDelete (&c->sides[CORNER_TOP_LEFT]);
     myWindowDelete (&c->sides[CORNER_TOP_RIGHT]);
+    clientClearPixmapCache (c);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
         myWindowDelete (&c->buttons[i]);

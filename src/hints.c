@@ -710,7 +710,11 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p)
         return FALSE;
     }
 
-    utf8_string_remove_controls((gchar *) str, -1, NULL);
+    if (str)
+    {
+        utf8_string_remove_controls((gchar *) str, -1, NULL);
+    }
+    
     *str_p = str;
 
     return TRUE;
@@ -752,8 +756,10 @@ get_text_property (Display * dpy, Window w, Atom a)
     if (XGetTextProperty (dpy, w, &text, a))
     {
         retval = text_property_to_utf8 (dpy, &text);
-        utf8_string_remove_controls((gchar *) retval, -1, NULL);
-
+        if (retval)
+        {
+            utf8_string_remove_controls((gchar *) retval, -1, NULL);
+        }
         if ((text.value) && (text.nitems > 0))
         {
             XFree (text.value);
