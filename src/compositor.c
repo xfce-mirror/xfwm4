@@ -15,6 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         xcompmgr - (c) 2003 Keith Packard
+        metacity - (c) 2003, 2004 Red Hat, Inc.
         xfwm4    - (c) 2004 Olivier Fourdan
 
 */
@@ -1045,12 +1046,18 @@ repair_screen (ScreenInfo *screen_info)
 }
 
 static void
-remove_idle (DisplayInfo *display_info)
+remove_timeouts (DisplayInfo *display_info)
 {
     if (display_info->compositor_idle_id != 0)
     {
         g_source_remove (display_info->compositor_idle_id);
         display_info->compositor_idle_id = 0;
+    }
+
+    if (display_info->compositor_timeout_id != 0)
+    {
+        g_source_remove (display_info->compositor_timeout_id);
+        display_info->compositor_timeout_id = 0;
     }
 }
 
@@ -1068,7 +1075,7 @@ repair_display (DisplayInfo *display_info)
         return;
     }
 
-    remove_idle (display_info);
+    remove_timeouts (display_info);
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
         repair_screen ((ScreenInfo *) screens->data);
@@ -1086,6 +1093,17 @@ compositor_idle_cb (gpointer data)
     return FALSE;
 }
 
+static gboolean
+compositor_timeout_cb (gpointer data)
+{
+    DisplayInfo *display_info = (DisplayInfo *) data;
+
+    display_info->compositor_timeout_id = 0;
+    repair_display (display_info);
+
+    return FALSE;
+}
+
 static void
 add_repair (DisplayInfo *display_info)
 {
@@ -1093,9 +1111,20 @@ add_repair (DisplayInfo *display_info)
     {
         return;
     }
+
     display_info->compositor_idle_id =
-        g_idle_add_full (G_PRIORITY_DEFAULT + 50,
+        g_idle_add_full (G_PRIORITY_HIGH_IDLE + 50,
                          compositor_idle_cb, display_info, NULL);
+
+    if (display_info->compositor_timeout_id != 0)
+    {
+        return;
+    }
+
+    display_info->compositor_timeout_id = 
+        g_timeout_add (50 /* ms */, 
+                       compositor_timeout_cb, display_info);
+
 }
 
 static void
@@ -2063,6 +2092,9 @@ compositorInitDisplay (DisplayInfo *display_info)
     {
         display_info->have_fixes = TRUE;
     }
+
+    display_info->compositor_idle_id = 0;
+    display_info->compositor_timeout_id = 0;
 
     display_info->enable_compositor = ((display_info->have_composite)
                                     && (display_info->have_damage)
