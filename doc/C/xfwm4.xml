@@ -775,10 +775,11 @@ maintainers, etc. Commented out by default.
 <sect2 id="hidden_options">
   <title>Hidden options</title>
 
-	<para>Some hidden options allow you to customize &app; behaviour. They have to be added by hand to your  		HOME/.config/xfce4/xfwm4/xfwm4rc file. You may have to create this file.</para>
+	<para>Some hidden options allow you to customize &app; behaviour. They have to be added by hand to your
+	HOME/.config/xfce4/xfwm4/xfwm4rc file. You may have to create this file.</para>
 
 <variablelist>
-    	<varlistentry>
+	<varlistentry>
 		<term>cycle_minimum=false</term>
 			<listitem>
 			<para>Add this line to your xfwm4rc file if you want apps that do not appear 
@@ -798,10 +799,36 @@ maintainers, etc. Commented out by default.
 	</varlistentry>
 
 	<varlistentry>
-		<term>raise_with_any_button=true</term>
+		<term>easy_click=false</term>
 			<listitem>
-			<para>Add this line to your xfwm4rc file if you want to raise a window when you click 
-			on its frame with any of your mouse buttons, instead of only the left button.
+			<para>Add this line to your xfwm4rc file if you want to disable the ability to move 
+			and resize windows using the Alt button + mouse click shortcut.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>focus_hint=false</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file to instruct xfwm4 to ignore the focus hint 
+			provided by the applications.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>prevent_focus_stealing=true</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file to prevent windows from stealing focus. 
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>raise_with_any_button=false</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want to raise a window only when 
+			clicked with the left mouse button.
 			</para>
 			</listitem>
 	</varlistentry>
@@ -814,16 +841,6 @@ maintainers, etc. Commented out by default.
 			</para>
 			</listitem>
 	</varlistentry>
-
-	<varlistentry>
-		<term>easy_click=false</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file if you want to disable the ability to move 
-			and resize windows using the Alt button + mouse click shortcut.
-			</para>
-			</listitem>
-	</varlistentry>
-
 </variablelist>
 
 </sect2>
