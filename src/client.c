@@ -56,7 +56,6 @@
     ButtonReleaseMask
 
 #define FRAME_EVENT_MASK \
-    StructureNotifyMask|\
     SubstructureNotifyMask|\
     SubstructureRedirectMask|\
     EnterWindowMask
@@ -2800,7 +2799,7 @@ clientFree (Client * c)
         XFree (c->class.res_class);
     }
 
-    free (c);
+    g_free (c);
 }
 
 static inline void
@@ -2933,7 +2932,7 @@ clientClearPixmapCache (Client * c)
 }
 
 void
-clientFrame (Window w, gboolean startup)
+clientFrame (Window w, gboolean recapture)
 {
     XWindowAttributes attr;
     XWindowChanges wc;
@@ -2953,39 +2952,29 @@ clientFrame (Window w, gboolean startup)
         return;
     }
 
+    gdk_error_trap_push ();
     if (!XGetWindowAttributes (dpy, w, &attr))
     {
         TRACE ("Cannot get window attributes");
+        gdk_error_trap_pop ();
         return;
     }
 
     if (attr.override_redirect)
     {
         TRACE ("Not managing override_redirect windows");
+        gdk_error_trap_pop ();
         return;
     }
 
-    if (!(c = malloc (sizeof (Client))))
+    c = g_new(Client, 1);
+    if (!c)
     {
         TRACE ("Cannot allocate memory for the window structure");
+        gdk_error_trap_pop ();
         return;
     }
     
-    MyXGrabServer ();
-
-    if (!MyCheckWindow(w))
-    {
-        TRACE ("Client has vanished");
-        free(c);
-        MyXUngrabServer ();
-        return;
-    }
-
-    XSetWindowBorderWidth (dpy, w, 0);
-
-    XGrabButton (dpy, AnyButton, AnyModifier, w, FALSE,
-        POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-
     c->window = w;
     getWindowName (dpy, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
@@ -2993,12 +2982,12 @@ clientFrame (Window w, gboolean startup)
     wm_protocols_flags = getWMProtocols (dpy, c->window);
 
     /* Initialize structure */
+    c->size = NULL;
     c->client_flag = CLIENT_FLAG_INITIAL_VALUES;
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
-    c->size = NULL;
     clientGetWMNormalHints (c, FALSE);
 
     c->old_x = c->x;
@@ -3024,18 +3013,6 @@ clientFrame (Window w, gboolean startup)
     {
         CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
     }
-
-    /* Initialize pixmap caching */
-    myPixmapInit (&c->pm_cache.pm_title[ACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_title[INACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-    myPixmapInit (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
-    c->pm_cache.previous_width = -1;
-    c->pm_cache.previous_height = -1;
 
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -3074,15 +3051,6 @@ clientFrame (Window w, gboolean startup)
                 "IsUnviewable" :
                 "(unknown)");
     c->ignore_unmap = 0;
-    /* This flag is used to avoid focus transition when reparenting...
-     * Reparenting generates an UnmapNotify event, followed by a MapNotify.
-     * Set CLIENT_FLAG_REPARENTING so that the window won't return to withdrawn
-     * state when unmapnotify is received.
-     *
-     * This flag is cleared once the window is mapped (ie when we get the 
-     * MapNotify event)
-     */
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
     c->type = UNSET;
     c->type_atom = None;
 
@@ -3133,7 +3101,7 @@ clientFrame (Window w, gboolean startup)
     /* Once we know the type of window, we can initialize window position */
     if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SESSION_MANAGED))
     {
-        if (attr.map_state != IsViewable)
+        if (!recapture)
         {
             clientInitPosition (c);
         }
@@ -3148,6 +3116,22 @@ clientFrame (Window w, gboolean startup)
        inital state is maximize or fullscreen
      */
     clientApplyInitialState (c);
+
+    if (!recapture)
+    {
+        MyXGrabServer ();
+    }
+    if (!MyCheckWindow(w))
+    {
+        TRACE ("Client has vanished");
+        clientFree(c);
+        if (!recapture)
+        {
+            MyXUngrabServer ();
+        }
+        gdk_error_trap_pop ();
+        return;
+    }
 
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
@@ -3165,12 +3149,32 @@ clientFrame (Window w, gboolean startup)
     {
         XShapeSelectInput (dpy, c->window, ShapeNotifyMask);
     }
-    /* Window is reparented now, so we can safely release the grab on the server */
-    MyXUngrabServer ();
-        
+    if (!recapture)
+    {
+        /* Window is reparented now, so we can safely release the grab 
+         * on the server 
+         */
+        MyXUngrabServer ();
+    }   
+
+    XGrabButton (dpy, AnyButton, AnyModifier, w, FALSE,
+        POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
+
     clientAddToList (c);
     clientSetNetActions (c);
     clientGrabKeys (c);
+
+    /* Initialize pixmap caching */
+    myPixmapInit (&c->pm_cache.pm_title[ACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_title[INACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+    myPixmapInit (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+    c->pm_cache.previous_width = -1;
+    c->pm_cache.previous_height = -1;
 
     myWindowCreate (dpy, c->frame, &c->sides[SIDE_LEFT],
         resize_cursor[4 + SIDE_LEFT]);
@@ -3209,7 +3213,7 @@ clientFrame (Window w, gboolean startup)
             CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientShow (c, TRUE);
-            if (!startup && clientAcceptFocus (c) &&
+            if (!recapture && clientAcceptFocus (c) &&
                 (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL)))
             {
                 clientSetFocus (c, TRUE, FALSE);
@@ -3221,6 +3225,7 @@ clientFrame (Window w, gboolean startup)
         setWMState (dpy, c->window, IconicState);
         clientSetNetState (c);
     }
+    gdk_error_trap_pop ();
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
     DBG ("client_count=%d", client_count);
@@ -3310,12 +3315,15 @@ clientFrameAll ()
         XGetWindowAttributes (dpy, wins[i], &attr);
         if ((!(attr.override_redirect)) && (attr.map_state == IsViewable))
         {
+            XUnmapWindow (dpy, wins[i]);
             clientFrame (wins[i], TRUE);
         }
     }
     MyXUngrabServer ();
     while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-        ;
+    {
+        eventStashTime (&an_event);
+    }
     if (wins)
     {
         XFree (wins);
@@ -3613,8 +3621,8 @@ clientShowSingle (Client * c, gboolean change_state)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         CLIENT_FLAG_SET (c, CLIENT_FLAG_VISIBLE);
-        XMapWindow (dpy, c->frame);
         XMapWindow (dpy, c->window);
+        XMapWindow (dpy, c->frame);
     }
     if (change_state)
     {
@@ -3659,8 +3667,8 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     g_return_if_fail (c != NULL);
     MyXGrabServer ();
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    XUnmapWindow (dpy, c->window);
     XUnmapWindow (dpy, c->frame);
+    XUnmapWindow (dpy, c->window);
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
     if (change_state)
     {
@@ -4545,7 +4553,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             }
             clients = c;
         }
-        XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        XSetInputFocus (dpy, c->window, RevertToNone, getLastEventTime());
         frameDraw (c, FALSE, FALSE);
         data[0] = c->window;
     }
@@ -4553,7 +4561,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     {
         TRACE ("setting focus to none");
         client_focus = NULL;
-        XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
+        XSetInputFocus (dpy, gnome_win, RevertToNone, getLastEventTime());
         data[0] = None;
     }
     if (c2)
@@ -4773,6 +4781,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientMove_event_filter");
 
+    eventStashTime (xevent);
     if (xevent->type == KeyPress)
     {
         if (!passdata->grab && params.box_move)
@@ -4826,7 +4835,9 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (dpy,
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
-            ;
+        {
+            eventStashTime (xevent);
+        }
 
         if (xevent->type == ButtonRelease)
         {
@@ -4996,7 +5007,7 @@ clientMove (Client * c, XEvent * e)
     }
     else
     {
-        timestamp = CurrentTime;
+        timestamp = getLastEventTime();
         getMouseXY (root, &passdata.mx, &passdata.my);
         g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
             ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
@@ -5034,9 +5045,9 @@ clientMove (Client * c, XEvent * e)
 
     if (passdata.use_keys)
     {
-        XUngrabKeyboard (dpy, CurrentTime);
+        XUngrabKeyboard (dpy, getLastEventTime());
     }
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabPointer (dpy, getLastEventTime());
     removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_move)
@@ -5099,6 +5110,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     disp_max_x = MyDisplayMaxX (dpy, screen, cx, cy);
     disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
 
+    eventStashTime (xevent);
     if (xevent->type == KeyPress)
     {
         int key_width_inc, key_height_inc;
@@ -5190,7 +5202,9 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (dpy,
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
-            ;
+        {
+            eventStashTime (xevent);
+        }
 
         if (xevent->type == ButtonRelease)
         {
@@ -5391,7 +5405,7 @@ clientResize (Client * c, int corner, XEvent * e)
     }
     else
     {
-        timestamp = CurrentTime;
+        timestamp = getLastEventTime();
         getMouseXY (c->frame, &passdata.mx, &passdata.my);
     }
     g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
@@ -5441,9 +5455,9 @@ clientResize (Client * c, int corner, XEvent * e)
 
     if (passdata.use_keys)
     {
-        XUngrabKeyboard (dpy, CurrentTime);
+        XUngrabKeyboard (dpy, getLastEventTime());
     }
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabPointer (dpy, getLastEventTime());
     removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_resize)
@@ -5473,6 +5487,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientCycle_event_filter");
 
+    eventStashTime (xevent);
     switch (xevent->type)
     {
         case DestroyNotify:
@@ -5545,20 +5560,20 @@ clientCycle (Client * c)
     TRACE ("entering clientCycle");
 
     g1 = XGrabKeyboard (dpy, gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
-        CurrentTime);
+        getLastEventTime());
     g2 = XGrabPointer (dpy, gnome_win, FALSE, NoEventMask, GrabModeAsync,
-        GrabModeAsync, None, None, CurrentTime);
+        GrabModeAsync, None, None, getLastEventTime());
     if ((g1 != GrabSuccess) || (g2 != GrabSuccess))
     {
         TRACE ("grab failed in clientCycle");
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (dpy, CurrentTime);
+            XUngrabKeyboard (dpy, getLastEventTime());
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, CurrentTime);
+            XUngrabPointer (dpy, getLastEventTime());
         }
         return;
     }
@@ -5592,8 +5607,8 @@ clientCycle (Client * c)
         g_free (passdata.tabwin);
     }
     MyXUngrabServer ();
-    XUngrabKeyboard (dpy, CurrentTime);
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabKeyboard (dpy, getLastEventTime());
+    XUngrabPointer (dpy, getLastEventTime());
 
     if (passdata.c)
     {
@@ -5611,6 +5626,7 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     Client *c = ((ButtonPressData *) data)->c;
     int b = ((ButtonPressData *) data)->b;
 
+    eventStashTime (xevent);
     if (xevent->type == EnterNotify)
     {
         c->button_pressed[b] = TRUE;
@@ -5667,7 +5683,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
     g1 = XGrabPointer (dpy, w, FALSE,
         ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync,
-        GrabModeAsync, None, None, CurrentTime);
+        GrabModeAsync, None, None, getLastEventTime());
 
     if (g1 != GrabSuccess)
     {
@@ -5675,7 +5691,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (dpy, CurrentTime);
+            XUngrabKeyboard (dpy, getLastEventTime());
         }
         return;
     }
@@ -5692,7 +5708,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     popEventFilter ();
     TRACE ("leaving button press loop");
 
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabPointer (dpy, getLastEventTime());
 
     if (c->button_pressed[b])
     {

@@ -346,7 +346,7 @@ grab_available (guint32 timestamp)
                 || (g2 != GDK_GRAB_SUCCESS))))
     {
         TRACE ("grab not available yet, waiting... (%i)", i);
-        usleep (100);
+        g_usleep (100);
         if (g1 != GDK_GRAB_SUCCESS)
         {
             g1 = gdk_pointer_grab (getGdkEventWindow (), TRUE, mask, NULL,

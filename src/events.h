@@ -25,6 +25,8 @@
 #  include "config.h"
 #endif
 
+#include <sys/types.h>
+#include <sys/time.h>
 #include <X11/Xlib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -32,6 +34,8 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 
+inline void eventStashTime (XEvent *);
+inline Time getLastEventTime(void);
 void handleEvent (XEvent *);
 GtkToXEventFilterStatus xfwm4_event_filter (XEvent * xevent, gpointer data);
 void initGtkCallbacks (void);

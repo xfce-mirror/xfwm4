@@ -41,6 +41,7 @@
 #include <libxfcegui4/xinerama.h>
 
 #include "main.h"
+#include "events.h"
 #include "client.h"
 #include "misc.h"
 
@@ -116,7 +117,7 @@ sendClientMessage (Window w, Atom a, long x, int mask)
     ev.xclient.message_type = a;
     ev.xclient.format = 32;
     ev.xclient.data.l[0] = x;
-    ev.xclient.data.l[1] = CurrentTime;
+    ev.xclient.data.l[1] = getLastEventTime();
     XSendEvent (dpy, w, FALSE, mask, &ev);
 }
 

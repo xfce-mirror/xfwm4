@@ -68,6 +68,7 @@ static gulong button_handler_id = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
 static Window menu_event_window = None;
 static int edge_scroll_x = 0;
+static Time lastEventTime = CurrentTime;
 
 static void menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
     gpointer menu_data, gpointer item_data);
@@ -122,6 +123,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         total += 10;
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
+            eventStashTime (ev);
             if (ev->xbutton.button == button)
             {
                 clicks++;
@@ -132,6 +134,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 ev))
         {
+            eventStashTime (ev);
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
             t1 = ev->xmotion.time;
@@ -263,7 +266,10 @@ handleMotionNotify (XMotionEvent * ev)
                 XWarpPointer (dpy, None, root, 0, 0, 0, 0, 10, msy);
                 workspaceSwitch (workspace + 1, NULL);
             }
-            while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev));
+            while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev))
+            {
+                eventStashTime ((XEvent *) ev);
+            }
         }
     }
 }
@@ -794,7 +800,7 @@ handleButtonPress (XButtonEvent * ev)
     }
     else
     {
-        XUngrabPointer (dpy, CurrentTime);
+        XUngrabPointer (dpy, lastEventTime);
         XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask,
             (XEvent *) ev);
     }
@@ -843,7 +849,7 @@ handleMapRequest (XMapRequestEvent * ev)
     if (c)
     {
         TRACE ("handleMapRequest: clientShow");
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED | CLIENT_FLAG_HIDDEN))
         {
             TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
             return;
@@ -869,10 +875,7 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
-        {
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
-        }
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_MAPPED);
     }
 }
 
@@ -889,12 +892,13 @@ handleUnmapNotify (XUnmapEvent * ev)
     {
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
-        /* Reparenting generates an unmapnotify, don't pass focus in that case */
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
+        /* Reparenting generates an unmapnotify, ignore event in that case */
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED | CLIENT_FLAG_HIDDEN))
         {
             TRACE ("Ignoring UnmapNotify on window (0x%lx)", ev->window);
             return;
         }
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAPPED);
         clientPassFocus (c);
         if (c->ignore_unmap)
         {
@@ -1431,12 +1435,63 @@ handleColormapNotify (XColormapEvent * ev)
     }
 }
 
+inline void
+eventStashTime (XEvent * ev)
+{
+    Time newEventTime = CurrentTime;
+
+    switch (ev->type)
+    {
+        case KeyPress:
+        case KeyRelease:
+            newEventTime = ev->xkey.time;
+            break;
+        case ButtonPress:
+        case ButtonRelease:
+            newEventTime = ev->xbutton.time;
+            break;
+        case MotionNotify:
+            newEventTime = ev->xmotion.time;
+            break;
+        case EnterNotify:
+        case LeaveNotify:
+            newEventTime = ev->xcrossing.time;
+            break;
+        case PropertyNotify:
+            newEventTime = ev->xproperty.time;
+            break;
+        case SelectionClear:
+            newEventTime = ev->xselectionclear.time;
+            break;
+        case SelectionRequest:
+            newEventTime = ev->xselectionrequest.time;
+            break;
+        case SelectionNotify:
+            newEventTime = ev->xselection.time;
+            break;
+        default:
+          return;
+    }
+    if ((newEventTime > CurrentTime) || ((CurrentTime - newEventTime) > 30000))
+    {
+        lastEventTime = newEventTime;
+    }
+}
+
+inline Time 
+getLastEventTime(void)
+{
+    return lastEventTime;
+}
+
+
 void
 handleEvent (XEvent * ev)
 {
     TRACE ("entering handleEvent");
 
     sn_process_event (ev);
+    eventStashTime (ev);
     switch (ev->type)
     {
         case MotionNotify:
