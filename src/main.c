@@ -23,8 +23,8 @@
 #endif
 
 #include <unistd.h>
-#include <signal.h>
 #include <sys/types.h>
+#include <signal.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -222,7 +222,7 @@ static int initialize(int argc, char **argv)
 
     if(!initEventFilter(MAIN_EVENT_MASK, NULL, "xfwm"))
     {
-        return (-1);
+        return -1;
     }
     pushEventFilter(xfwm4_event_filter, NULL);
 
@@ -230,7 +230,7 @@ static int initialize(int argc, char **argv)
 
     if(!initSettings())
     {
-        return (-2);
+        return -2;
     }
 
     act.sa_handler = handleSignal;
@@ -264,48 +264,14 @@ static int initialize(int argc, char **argv)
     g_object_unref(G_OBJECT(layout));
 
     clientFrameAll();
-    return (0);
-}
-
-static void p_action(int sig)
-{
-}
-
-int run_daemon(int argc, char **argv, gboolean daemon_mode)
-{
-    pid_t ppid;
-    int status = initialize(argc, argv);
-    if(daemon_mode)
-    {
-        ppid = getppid();
-        kill(ppid, SIGUSR1);
-    }
-    switch (status)
-    {
-        case -1:
-            g_error(_("%s: Another Window Manager is already running"), g_get_prgname());
-            break;
-        case -2:
-            g_error(_("%s: Missing data from default files"), g_get_prgname());
-            break;
-        case 0:
-            gtk_main();
-            break;
-        default:
-            g_error(_("%s: Unknown error occured"), g_get_prgname());
-            break;
-    }
-    cleanUp();
-    g_message(_("%s: Terminated\n"), g_get_prgname());
     return 0;
 }
 
 int main(int argc, char **argv)
 {
-    pid_t pid;
-    static struct sigaction pact;
     int i;
     gboolean daemon_mode = FALSE;
+    int status;
 
     for(i = 1; i < argc; i++)
     {
@@ -315,29 +281,41 @@ int main(int argc, char **argv)
         }
     }
 
-    if(daemon_mode)
+    status = initialize(argc, argv);
+    switch (status)
     {
-        /* set SIGUSR1 action for parent */ ;
-        pact.sa_handler = p_action;
-        sigaction(SIGUSR1, &pact, NULL);
-
-        switch (pid = fork())
-        {
-            case -1:
-                perror("fork()");
-                exit(1);
-                break;
-            case 0:            /* child */
-                return run_daemon(argc, argv, daemon_mode);
-                break;
-            default:           /* parent */
-                pause();        /* wait for child signal */
-                g_message(_("Init complete"));
-        }
+        case -1:
+            g_error(_("%s: Another Window Manager is already running"), g_get_prgname());
+	    break;
+        case -2:
+            g_error(_("%s: Missing data from default files"), g_get_prgname());
+	    break;
+        case 0:
+	    if(daemon_mode)
+	    {
+        	switch (fork())
+        	{
+        	    case -1:
+                	g_error("fork() failed");
+                	break;
+        	    case 0:            /* child */
+                	gtk_main();
+                	break;
+        	    default:           /* parent */
+		        return 0;
+	        	break;
+        	}
+	    }
+	    else
+	    {
+        	gtk_main();
+	    }
+            break;
+        default:
+            g_error(_("%s: Unknown error occured"), g_get_prgname());
+            break;
     }
-    else
-    {
-        return run_daemon(argc, argv, daemon_mode);
-    }
+    cleanUp();
+    g_message(_("%s: Terminated\n"), g_get_prgname());
     return 0;
 }
