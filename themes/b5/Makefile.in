@@ -87,11 +87,11 @@ theme_DATA = README \
 	bottom-left-inactive.xpm \
 	bottom-right-active.xpm \
 	bottom-right-inactive.xpm \
+	close-active.xpm \
+	close-inactive.xpm \
+	close-pressed.xpm \
 	left-active.xpm \
 	left-inactive.xpm \
-	menu-active.xpm \
-	menu-inactive.xpm \
-	menu-pressed.xpm \
 	right-active.xpm \
 	right-inactive.xpm \
 	themerc \
