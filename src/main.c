@@ -152,7 +152,6 @@ static void session_die(gpointer client_data)
 {
     gtk_main_quit();
     quit = True;
-    gdk_flush();
 }
 
 static void handleSignal(int sig)

@@ -2414,7 +2414,7 @@ void clientFrameAll()
     client_focus = NULL;
 
     clientSetFocus(NULL, FALSE);
-    gdk_flush();
+    XSync(dpy, FALSE);
     gdk_x11_grab_server();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
