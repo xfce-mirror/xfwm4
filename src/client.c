@@ -1577,7 +1577,7 @@ void clientFrame(Window w)
     {
         if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
         {
-            c->has_border = ((mwm_hints->decorations & MWM_DECOR_BORDER) ? True : False);
+            c->has_border = ((mwm_hints->decorations & (MWM_DECOR_TITLE |  MWM_DECOR_BORDER)) ? True : False);
         }
         XFree(mwm_hints);
     }
