@@ -53,6 +53,7 @@ themes/oroborus/Makefile
 themes/platinum/Makefile
 themes/redmond/Makefile
 themes/redmondxp/Makefile
+themes/slick/Makefile
 themes/slimline/Makefile
 themes/trench/Makefile
 themes/xfce/Makefile

@@ -13,6 +13,7 @@ oroborus \
 platinum \
 redmond \
 redmondxp \
+slick \
 slimline \
 trench \
 xfce

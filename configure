@@ -4028,7 +4028,7 @@ echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gt
    { (exit 1); exit 1; }; }
   fi
 
-ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/eazel-blue/Makefile themes/gtk/Makefile themes/kde/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/oroborus/Makefile themes/platinum/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
+ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/eazel-blue/Makefile themes/gtk/Makefile themes/kde/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/oroborus/Makefile themes/platinum/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/slick/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -4364,12 +4364,13 @@ do
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
   "themes/redmondxp/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmondxp/Makefile" ;;
+  "themes/slick/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slick/Makefile" ;;
   "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
   "themes/trench/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/trench/Makefile" ;;
   "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
-  *) { { echo "$as_me:4372: error: invalid argument: $ac_config_target" >&5
+  *) { { echo "$as_me:4373: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
    { (exit 1); exit 1; }; };;
   esac
@@ -4591,7 +4592,7 @@ done; }
   esac
 
   if test x"$ac_file" != x-; then
-    { echo "$as_me:4594: creating $ac_file" >&5
+    { echo "$as_me:4595: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
     rm -f "$ac_file"
   fi
@@ -4609,7 +4610,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:4612: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:4613: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -4622,7 +4623,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:4625: error: cannot find input file: $f" >&5
+           { { echo "$as_me:4626: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -4683,7 +4684,7 @@ for ac_file in : $CONFIG_HEADERS; do test "x$ac_file" = x: && continue
   * )   ac_file_in=$ac_file.in ;;
   esac
 
-  test x"$ac_file" != x- && { echo "$as_me:4686: creating $ac_file" >&5
+  test x"$ac_file" != x- && { echo "$as_me:4687: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
 
   # First look for the input files in the build tree, otherwise in the
@@ -4694,7 +4695,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:4697: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:4698: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -4707,7 +4708,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:4710: error: cannot find input file: $f" >&5
+           { { echo "$as_me:4711: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -4824,7 +4825,7 @@ cat >>$CONFIG_STATUS <<\EOF
   rm -f $tmp/in
   if test x"$ac_file" != x-; then
     if cmp -s $ac_file $tmp/config.h 2>/dev/null; then
-      { echo "$as_me:4827: $ac_file is unchanged" >&5
+      { echo "$as_me:4828: $ac_file is unchanged" >&5
 echo "$as_me: $ac_file is unchanged" >&6;}
     else
       ac_dir=`$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
