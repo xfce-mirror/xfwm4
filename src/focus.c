@@ -81,8 +81,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         
         if (!exclude || (c != exclude))
         {
-            if ((c->win_layer <= layer)
-                 && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+            if ((c->win_layer <= layer) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
                 if (clientSelectMask (c, 0, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
                 {
@@ -302,7 +301,14 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
             }
             else
             {
-                new_focus = clientGetNext (c, 0);
+                c2 = clientGetNext (c, 0);
+                /* Send focus back to the previous window only if it's on a different
+                   layer, to avoid sending focus back to a lowered window....
+                 */
+                if ((c2) && (c2->win_layer != c->win_layer))
+                {
+                    new_focus = c2;
+                }
             }
         }
     }
