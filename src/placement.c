@@ -367,12 +367,13 @@ clientKeepVisible (Client * c)
 void
 clientInitPosition (Client * c)
 {
-    int test_x = 0, test_y = 0;
     Client *c2;
+    int test_x = 0, test_y = 0;
     int xmax, ymax, best_x, best_y, i, msx, msy;
     int left, right, top, bottom;
     int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
-    gdouble best_overlaps = 0.0;
+    int full_x, full_y, full_w, full_h;
+    unsigned long best_overlaps = 0;
     gboolean first = TRUE;
 
     g_return_if_fail (c != NULL);
@@ -416,18 +417,25 @@ clientInitPosition (Client * c)
     frame_left = frameLeft(c);
     frame_top = frameTop (c);
 
-    xmax = MyDisplayMaxX (dpy, screen, msx, msy) - c->width - frameRight (c) - right;
-    ymax = MyDisplayMaxY (dpy, screen, msx, msy) - c->height - frameBottom (c) - bottom;
-    best_x = MyDisplayX (msx, msy) + frameLeft (c);
-    best_y = MyDisplayY (msx, msy) + frameTop (c);
+    full_x = MyDisplayX (msx, msy);
+    full_y = MyDisplayY (msx, msy);
+    full_w = MyDisplayWidth (dpy, screen, msx, msy);
+    full_h = MyDisplayHeight (dpy, screen, msx, msy);
+    /* Adjust size to the widest size available, not covering struts */
+    clientMaxSpace (&full_x, &full_y, &full_w, &full_h);
 
-    for (test_y = MyDisplayY (msx, msy) + frameTop (c); test_y <= ymax;
+    xmax = full_x + full_w - c->width - frameRight (c) - right;
+    ymax = full_y + full_h - c->height - frameBottom (c) - bottom;
+    best_x = full_x + frameLeft (c);
+    best_y = full_y + frameTop (c);
+
+    for (test_y = full_y + frameTop (c); test_y <= ymax;
 	test_y += 8)
     {
-	for (test_x = MyDisplayX (msx, msy) + frameLeft (c) + left;
+	for (test_x = full_x + frameLeft (c) + left;
 	    test_x <= xmax; test_x += 8)
 	{
-	    gdouble count_overlaps = 0.0;
+	    unsigned long count_overlaps = 0;
 	    TRACE ("analyzing %i clients", client_count);
 	    for (c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
 	    {
@@ -435,26 +443,18 @@ clientInitPosition (Client * c)
 		    && (c->win_workspace == c2->win_workspace)
 		    && FLAG_TEST (c2->flags, CLIENT_FLAG_VISIBLE))
 		{
-		    count_overlaps += 
-		             (gdouble) overlap (test_x - frame_left, 
-						test_y - frame_top, 
-						test_x - frame_left + frame_width,
-						test_y - frame_top + frame_height, 
-						frameX (c2), 
-						frameY (c2),
-						frameX (c2) + frameWidth (c2),
-						frameY (c2) + frameHeight (c2))
-			  +  (gdouble) clientStrutAreaOverlap (test_x - frame_left,
-			                                       test_y - frame_top,
-							       test_x - frame_left + frame_width,
-							       test_y, c2) * 1000.0
-			  +  (gdouble) clientStrutAreaOverlap (test_x - frame_left,
-			                                       test_y - frame_top,
-							       test_x - frame_left + frame_width,
-							       test_y - frame_top + frame_height, c2) * 100.0;
+		    count_overlaps += overlap (test_x - frame_left, 
+					       test_y - frame_top, 
+					       test_x - frame_left + frame_width,
+					       test_y - frame_top + frame_height, 
+					       frameX (c2), 
+					       frameY (c2),
+					       frameX (c2) + frameWidth (c2),
+					       frameY (c2) + frameHeight (c2));
 		}
 	    }
-	    if (count_overlaps == 0.0)
+            TRACE ("overlaps so far is %u", (unsigned int) count_overlaps);
+	    if (count_overlaps == 0)
 	    {
 		TRACE ("overlaps is 0 so it's the best we can get");
 		c->x = test_x;
@@ -463,6 +463,9 @@ clientInitPosition (Client * c)
 	    }
 	    else if ((count_overlaps < best_overlaps) || (first))
 	    {
+                TRACE ("overlaps %u is better than the best we have %u",
+                    (unsigned int) count_overlaps,
+                    (unsigned int) best_overlaps);
 		best_x = test_x;
 		best_y = test_y;
 		best_overlaps = count_overlaps;
