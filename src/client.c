@@ -995,7 +995,7 @@ static void clientAddToList(Client * c)
     if(!(c->skip_pager))
     {
         DBG("adding window \"%s\" (%#lx) to windows_stack list\n", c->name, c->window);
-        windows_stack = g_slist_prepend(windows_stack, XWINDOW_TO_GPOINTER(c->window));
+        windows_stack = g_slist_append(windows_stack, XWINDOW_TO_GPOINTER(c->window));
         clientSetNetClientList(net_client_list_stacking, windows_stack);
     }
     c->managed = True;
@@ -1213,7 +1213,7 @@ static inline void clientComputeStackList(Client * c, Client * sibling, XWindowC
 {
     if((c->managed) && !(c->skip_pager) && (mask & CWStackMode))
     {
-        if((sibling) && (sibling != c) && (g_slist_find(windows_stack, XWINDOW_TO_GPOINTER(sibling->window))))
+        if((sibling) && (sibling != c))
         {
             gint position;
 
