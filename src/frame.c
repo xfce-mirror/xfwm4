@@ -38,10 +38,47 @@
 #include "compositor.h"
 
 int
+frameDecorationLeft (ScreenInfo *screen_info)
+{
+    TRACE ("entering frameLeft");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->sides[SIDE_LEFT][ACTIVE].width;
+}
+
+int
+frameDecorationRight (ScreenInfo *screen_info)
+{
+    TRACE ("entering frameLeft");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->sides[SIDE_RIGHT][ACTIVE].width;
+}
+
+int
+frameDecorationTop (ScreenInfo *screen_info)
+{
+    TRACE ("entering frameLeft");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->title[TITLE_3][ACTIVE].height;
+}
+
+int
+frameDecorationBottom (ScreenInfo *screen_info)
+{
+    TRACE ("entering frameLeft");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
+}
+
+int
 frameLeft (Client * c)
 {
     TRACE ("entering frameLeft");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -55,6 +92,7 @@ frameRight (Client * c)
 {
     TRACE ("entering frameRight");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -68,6 +106,7 @@ frameTop (Client * c)
 {
     TRACE ("entering frameTop");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -81,6 +120,7 @@ frameBottom (Client * c)
 {
     TRACE ("entering frameBottom");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -94,6 +134,7 @@ frameX (Client * c)
 {
     TRACE ("entering frameX");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -107,6 +148,7 @@ frameY (Client * c)
 {
     TRACE ("entering frameY");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -120,6 +162,7 @@ frameWidth (Client * c)
 {
     TRACE ("entering frameWidth");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -133,6 +176,7 @@ frameHeight (Client * c)
 {
     TRACE ("entering frameHeight");
 
+    g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) 
         && FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))

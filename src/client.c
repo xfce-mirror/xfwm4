@@ -258,6 +258,12 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
             wc.width = c->width;
             wc.height = c->height;
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+            setNetFrameExtents (myScreenGetXDisplay (screen_info), 
+                                c->window, 
+                                frameTop (c),
+                                frameLeft (c),
+                                frameRight (c),
+                                frameBottom (c)); 
         }
         if (mask & UPDATE_FRAME)
         {
@@ -1678,7 +1684,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info->dpy, c->window, IconicState);
         clientSetNetState (c);
     }
-
+    
+    setNetFrameExtents (display_info->dpy, c->window, frameTop (c),
+                                                      frameLeft (c),
+                                                      frameRight (c),
+                                                      frameBottom (c)); 
+    
     /* Window is reparented now, so we can safely release the grab
      * on the server
      */

@@ -1835,6 +1835,16 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             clientSetFocus (screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
             clientPassGrabMouseButton (c);
         }
+        else if (ev->message_type == net_request_frame_extents)
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a net_request_frame_extents event", c->name, c->window);
+            setNetFrameExtents (myScreenGetXDisplay (screen_info), 
+                                c->window, 
+                                frameTop (c),
+                                frameLeft (c),
+                                frameRight (c),
+                                frameBottom (c)); 
+        }
     }
     else
     {
@@ -1871,6 +1881,17 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             TRACE ("root has received a net_showing_desktop event");
             clientToggleShowDesktop (screen_info, ev->data.l[0]);
             setHint (display_info->dpy, screen_info->xroot, net_showing_desktop, ev->data.l[0]);
+        }
+        else if (ev->message_type == net_request_frame_extents)
+        {
+            TRACE ("window (0x%lx) has received a net_request_frame_extents event", c->name, ev->window);
+            /* Size estimate from the decoration extents */
+            setNetFrameExtents (myScreenGetXDisplay (screen_info), 
+                                ev->window, 
+                                frameDecorationTop (screen_info),
+                                frameDecorationLeft (screen_info),
+                                frameDecorationRight (screen_info),
+                                frameDecorationBottom (screen_info));
         }
         else
         {

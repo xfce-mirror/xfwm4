@@ -68,10 +68,12 @@ Atom net_client_list_stacking;
 Atom net_close_window;
 Atom net_current_desktop;
 Atom net_desktop_geometry;
-Atom net_desktop_viewport;
-Atom net_desktop_names;
 Atom net_desktop_layout;
+Atom net_desktop_names;
+Atom net_desktop_viewport;
+Atom net_frame_extents;
 Atom net_number_of_desktops;
+Atom net_request_frame_extents;
 Atom net_showing_desktop;
 Atom net_startup_id;
 Atom net_supported;
@@ -91,9 +93,11 @@ Atom net_wm_icon_geometry;
 Atom net_wm_icon_name;
 Atom net_wm_moveresize;
 Atom net_wm_name;
+Atom net_wm_opacity;
 Atom net_wm_state;
 Atom net_wm_state_above;
 Atom net_wm_state_below;
+Atom net_wm_state_demands_attention;
 Atom net_wm_state_fullscreen;
 Atom net_wm_state_hidden;
 Atom net_wm_state_maximized_horz;
@@ -103,9 +107,9 @@ Atom net_wm_state_shaded;
 Atom net_wm_state_skip_pager;
 Atom net_wm_state_skip_taskbar;
 Atom net_wm_state_sticky;
-Atom net_wm_state_demands_attention;
 Atom net_wm_strut;
 Atom net_wm_strut_partial;
+Atom net_wm_user_time;
 Atom net_wm_window_type;
 Atom net_wm_window_type_desktop;
 Atom net_wm_window_type_dialog;
@@ -115,8 +119,6 @@ Atom net_wm_window_type_normal;
 Atom net_wm_window_type_splash;
 Atom net_wm_window_type_toolbar;
 Atom net_wm_window_type_utility;
-Atom net_wm_user_time;
-Atom net_wm_opacity;
 Atom net_workarea;
 Atom utf8_string;
 
@@ -576,6 +578,10 @@ initNetHints (Display * dpy)
         XInternAtom (dpy, "_NET_WM_ALLOWED_ACTIONS", FALSE);
     net_wm_desktop = 
         XInternAtom (dpy, "_NET_WM_DESKTOP", FALSE);
+    net_frame_extents = 
+        XInternAtom (dpy, "_NET_FRAME_EXTENTS", FALSE);
+    net_request_frame_extents = 
+        XInternAtom (dpy, "_NET_REQUEST_FRAME_EXTENTS", FALSE);
     net_wm_icon_geometry = 
         XInternAtom (dpy, "_NET_WM_ICON_GEOMETRY", FALSE);
     net_wm_icon_name = 
@@ -657,10 +663,12 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_close_window;
     atoms[i++] = net_current_desktop;
     atoms[i++] = net_desktop_geometry;
-    atoms[i++] = net_desktop_viewport;
-    atoms[i++] = net_desktop_names;
     atoms[i++] = net_desktop_layout;
+    atoms[i++] = net_desktop_names;
+    atoms[i++] = net_desktop_viewport;
+    atoms[i++] = net_frame_extents;
     atoms[i++] = net_number_of_desktops;
+    atoms[i++] = net_request_frame_extents;
     atoms[i++] = net_showing_desktop;
     atoms[i++] = net_supported;
     atoms[i++] = net_supporting_wm_check;
@@ -681,6 +689,7 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_state;
     atoms[i++] = net_wm_state_above;
     atoms[i++] = net_wm_state_below;
+    atoms[i++] = net_wm_state_demands_attention;
     atoms[i++] = net_wm_state_fullscreen;
     atoms[i++] = net_wm_state_hidden;
     atoms[i++] = net_wm_state_maximized_horz;
@@ -690,9 +699,9 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_state_skip_pager;
     atoms[i++] = net_wm_state_skip_taskbar;
     atoms[i++] = net_wm_state_sticky;
-    atoms[i++] = net_wm_state_demands_attention;
     atoms[i++] = net_wm_strut;
     atoms[i++] = net_wm_strut_partial;
+    atoms[i++] = net_wm_user_time;
     atoms[i++] = net_wm_window_type;
     atoms[i++] = net_wm_window_type_desktop;
     atoms[i++] = net_wm_window_type_dialog;
@@ -702,7 +711,6 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_window_type_splash;
     atoms[i++] = net_wm_window_type_toolbar;
     atoms[i++] = net_wm_window_type_utility;
-    atoms[i++] = net_wm_user_time;
     atoms[i++] = net_workarea;
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = net_startup_id;
@@ -807,6 +815,20 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int width, int hei
     XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
         32, PropModeReplace, (unsigned char *) data, j * 4);
     g_free (data);
+}
+
+void
+setNetFrameExtents (Display * dpy, Window w, int top, int left, int right, int bottom)
+{
+    unsigned long data[4] = { 0, 0, 0, 0 };
+
+    TRACE ("entering setNetFrameExtents");
+    data[0] = (unsigned long) left;
+    data[1] = (unsigned long) right;
+    data[2] = (unsigned long) top;
+    data[3] = (unsigned long) bottom;
+    XChangeProperty (dpy, w, net_frame_extents, XA_CARDINAL,
+        32, PropModeReplace, (unsigned char *) data, 4);
 }
 
 void

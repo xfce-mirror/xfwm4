@@ -950,10 +950,6 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_dialog detected");
             c->type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_NORMAL;
-            if (c->transient_for == None)
-            {
-                c->transient_for = c->screen_info->xroot;
-            }
         }
         else if (c->type_atom == net_wm_window_type_normal)
         {
