@@ -524,7 +524,10 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
     if(c && !(click_to_focus) && (clientAcceptFocus(c)))
     {
         DBG("EnterNotify window is \"%s\"\n", c->name);
-        clientSetFocus(c, True);
+        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        {
+            clientSetFocus(c, True);
+	}
     }
 }
 
