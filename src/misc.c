@@ -105,7 +105,7 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
 }
 
 void
-sendClientMessage (Window w, Atom a, Atom x)
+sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
 {
     XClientMessageEvent ev;
 
@@ -116,7 +116,7 @@ sendClientMessage (Window w, Atom a, Atom x)
     ev.message_type = a;
     ev.format = 32;
     ev.data.l[0] = x;
-    ev.data.l[1] = CurrentTime;
+    ev.data.l[1] = timestamp;
     XSendEvent (dpy, w, FALSE, 0L, (XEvent *)&ev);
 }
 

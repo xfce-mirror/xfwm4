@@ -3893,7 +3893,7 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window);
+        sendClientMessage (c->window, wm_protocols, wm_delete_window, CurrentTime);
     }
     else
     {
@@ -3920,7 +3920,7 @@ clientEnterContextMenuState (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->window, wm_protocols, kde_net_wm_context_help);
+        sendClientMessage (c->window, wm_protocols, kde_net_wm_context_help, CurrentTime);
     }
 }
 
@@ -4707,7 +4707,7 @@ clientUpdateFocus (Client * c)
     {
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
             c2->window);
-        /* Requires a bit of explabatio here... Legacy apps automatically
+        /* Requires a bit of explanation here... Legacy apps automatically
            switch to above layer when receiving focus, and return to
            normal layer when loosing focus.
            The following "logic" is in charge of that behaviour.
@@ -4739,6 +4739,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
 {
     Client *c2, *c3;
     unsigned long data[2];
+    Time timestamp;
 
     TRACE ("entering clientSetFocus");
     
@@ -4774,12 +4775,13 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         {
             clientSortRing(c);
         }
-        XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        timestamp = CurrentTime;
+        XSetInputFocus (dpy, c->window, RevertToNone, timestamp);
+        XFlush (dpy);
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
-            sendClientMessage (c->window, wm_protocols, wm_takefocus);
+            sendClientMessage (c->window, wm_protocols, wm_takefocus, timestamp);
         }
-        XFlush (dpy);
         if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);

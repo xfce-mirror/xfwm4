@@ -1270,21 +1270,19 @@ handleFocusOut (XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
-        || (ev->detail != NotifyNonlinear))
+    if ((ev->mode == NotifyNormal)
+        && ((ev->detail == NotifyNonlinear) 
+            || (ev->detail == NotifyNonlinearVirtual)))
     {
-        /* We're not interested in such notifications */
-        return;
-    }
-
-    c = clientGetFromWindow (ev->window, WINDOW);
-    TRACE ("FocusOut on window (0x%lx)", ev->window);
-    if (c && (c == clientGetFocus ()))
-    {
-        TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-        clientUpdateFocus (NULL);
-        /* Clear timeout */
-        clear_timeout ();
+        c = clientGetFromWindow (ev->window, WINDOW);
+        TRACE ("FocusOut on window (0x%lx)", ev->window);
+        if (c && (c == clientGetFocus ()))
+        {
+            TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
+            clientUpdateFocus (NULL);
+            /* Clear timeout */
+            clear_timeout ();
+        }
     }
 }
 
