@@ -369,8 +369,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     }
     if ((c) && (c == client_focus) && !(flags & FOCUS_FORCE))
     {
-        TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
-            c->name, c->window);
+        TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request", c->name, c->window);
         return;
     }
     client_focus = c;
@@ -382,10 +381,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
             clientSortRing(c);
         }
         data[0] = c->window;
-        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
-        }
+        clientAdjustFullscreenLayer (c, TRUE);
         frameDraw (c, FALSE, FALSE);
     }
     else
@@ -394,29 +390,15 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     }
     if (c2)
     {
-        TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
-            c2->window);
-        /* Requires a bit of explanation here... Legacy apps automatically
-           switch to above layer when receiving focus, and return to
-           normal layer when loosing focus.
-           The following "logic" is in charge of that behaviour.
-         */
-        if ((c2->legacy_fullscreen) || FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            if (FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
-            {
-                clientSetLayer (c2, c2->fullscreen_old_layer);
-            }
-            else
-            {
-                clientSetLayer (c2, WIN_LAYER_NORMAL);
-            }
-            if (c)
-            {
-                clientRaise(c);
-                clientPassGrabButton1 (c);
-            }
-        }
+	if (c)
+	{
+            if (c->screen_info->screen == c2->screen_info->screen)
+	    {
+		clientAdjustFullscreenLayer (c2, FALSE);
+	    }
+	    clientRaise (c);
+            clientPassGrabButton1 (c);
+	}
         frameDraw (c2, FALSE, FALSE);
     }
     data[1] = None;
@@ -464,7 +446,6 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         {
             sendClientMessage (c->screen_info, c->window, wm_protocols, wm_takefocus, timestamp);
         }
-        XFlush (myScreenGetXDisplay (screen_info));
     }
     else
     {
@@ -483,7 +464,6 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
             PropModeReplace, (unsigned char *) data, 2);
         XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
-        XFlush (myScreenGetXDisplay (screen_info));
     }
 }
 

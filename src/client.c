@@ -3567,9 +3567,16 @@ clientCycle (Client * c, XEvent * e)
 
     if (passdata.c)
     {
-        clientShow (passdata.c, TRUE);
-        clientRaise (passdata.c);
+        Client *focused;
+	
+	focused = clientGetFocus ();
+	clientShow (passdata.c, TRUE);
         clientSetFocus (passdata.c->screen_info, passdata.c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        if ((focused) && (passdata.c->screen_info->screen == focused->screen_info->screen))
+	{
+            clientAdjustFullscreenLayer (focused, FALSE);
+	}
+	clientRaise (passdata.c);
         clientPassGrabButton1 (passdata.c);
     }
 }

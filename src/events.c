@@ -1378,7 +1378,8 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 (ev->detail == NotifyDetailNone) ?
                 "NotifyDetailNone" :
                 "(unknown)");
-
+#if 0
+    /* Something's broken here, needs investigations... */
     if ((ev->mode == NotifyNormal)
         && ((ev->detail == NotifyNonlinear) 
             || (ev->detail == NotifyNonlinearVirtual)))
@@ -1394,6 +1395,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
             clear_timeout ();
         }
     }
+#endif
 }
 
 static void

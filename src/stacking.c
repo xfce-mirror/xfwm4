@@ -442,6 +442,34 @@ clientLower (Client * c)
 }
 
 void
+clientAdjustFullscreenLayer (Client *c, gboolean set)
+{
+    g_return_if_fail (c);
+       
+    if (set)
+    {
+        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+        {
+            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
+        }
+    }
+    else if (c->win_layer == WIN_LAYER_ABOVE_DOCK)
+    {
+	if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+	{
+	    if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+            {
+        	clientSetLayer (c, c->fullscreen_old_layer);
+            }
+            else
+            {
+        	clientSetLayer (c, WIN_LAYER_NORMAL);
+            }
+	}
+    }
+}
+
+void
 clientAddToList (Client * c)
 {
     ScreenInfo *screen_info = NULL;
