@@ -1,5 +1,23 @@
 2003-02-11  xfce
 
+	* src/startup_notification.c: Add additional sanity checks to
+	satrtup notification code.
+
+2003-02-11  xfce
+
+	* src/: client.c, client.h, events.c, frame.c, frame.h, settings.c:
+	Add pixmap caching for frame components
+
+2003-02-11  xfce
+
+	* src/events.c: Fix typo.
+
+2003-02-11  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-02-11  xfce
+
 	* src/events.c: Check for CLIENT_FLAG_HAS_STICKY in keyboard
 	shortcut
 
