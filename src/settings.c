@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002 Olivier Fourdan
@@ -59,22 +59,27 @@ MyPixmap title[5][2];
 void loadSettings()
 {
     Settings rc[] = {
-        {"active_text_color", NULL, FALSE},
-        {"inactive_text_color", NULL, FALSE},
-        {"active_border_color", NULL, FALSE},
-        {"inactive_border_color", NULL, FALSE},
-        {"active_color_1", NULL, FALSE},
-        {"active_shadow_1", NULL, FALSE},
-        {"inactive_shadow_1", NULL, FALSE},
-        {"active_hilight_1", NULL, FALSE},
-        {"inactive_hilight_1", NULL, FALSE},
-        {"active_color_2", NULL, FALSE},
-        {"inactive_color_2", NULL, FALSE},
-        {"active_shadow_2", NULL, FALSE},
-        {"inactive_shadow_2", NULL, FALSE},
-        {"active_hilight_2", NULL, FALSE},
-        {"inactive_hilight_2", NULL, FALSE},
-        {"theme", NULL, TRUE},
+        {"active_text_color", NULL, FALSE},            
+        {"inactive_text_color", NULL, FALSE},          
+        {"active_border_color", NULL, FALSE},          
+        {"inactive_border_color", NULL, FALSE},        
+        {"active_color_1", NULL, FALSE},               
+        {"active_hilight_1", NULL, FALSE},             
+        {"active_shadow_1", NULL, FALSE},              
+        {"active_mid_1", NULL, FALSE},                 
+        {"active_color_2", NULL, FALSE},               
+        {"active_hilight_2", NULL, FALSE},             
+        {"active_shadow_2", NULL, FALSE},              
+        {"active_mid_2", NULL, FALSE},                 
+        {"inactive_color_1", NULL, FALSE},      
+        {"inactive_hilight_1", NULL, FALSE},    
+        {"inactive_shadow_1", NULL, FALSE},     
+        {"inactive_mid_1", NULL, FALSE},        
+        {"inactive_color_2", NULL, FALSE},      
+        {"inactive_hilight_2", NULL, FALSE},    
+        {"inactive_shadow_2", NULL, FALSE},     
+        {"inactive_mid_2", NULL, FALSE},        
+        {"theme", NULL, TRUE},                   
         {"title_alignment", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
         {"button_layout", NULL, TRUE},
@@ -137,29 +142,34 @@ void loadSettings()
         {NULL, NULL, FALSE}
     };
     char *theme;
-    XpmColorSymbol colsym[16];
+    XpmColorSymbol colsym[20];
     GtkWidget *widget;
-
+    guint i;
+    
     DBG("entering settingsLoad\n");
 
     widget = getDefaultGtkWidget();
 
-    rc[0].value = get_style(widget, "fg", "selected");
-    rc[1].value = get_style(widget, "fg", "normal");
-    rc[2].value = get_style(widget, "fg", "active");
-    rc[3].value = get_style(widget, "fg", "normal");
-    rc[4].value = get_style(widget, "bg", "selected");
-    rc[5].value = get_style(widget, "light", "selected");
-    rc[6].value = get_style(widget, "dark", "selected");
-    rc[7].value = get_style(widget, "bg", "normal");
-    rc[8].value = get_style(widget, "light", "normal");
-    rc[9].value = get_style(widget, "dark", "normal");
-    rc[10].value = get_style(widget, "bg", "active");
-    rc[11].value = get_style(widget, "light", "active");
-    rc[12].value = get_style(widget, "dark", "active");
-    rc[13].value = get_style(widget, "bg", "normal");
-    rc[14].value = get_style(widget, "light", "normal");
-    rc[15].value = get_style(widget, "dark", "normal");
+    rc[0].value  = get_style(widget, "fg",    "selected");
+    rc[1].value  = get_style(widget, "fg",    "normal");
+    rc[2].value  = get_style(widget, "fg",    "active");
+    rc[3].value  = get_style(widget, "fg",    "normal");
+    rc[4].value  = get_style(widget, "bg",    "selected");
+    rc[5].value  = get_style(widget, "light", "selected");
+    rc[6].value  = get_style(widget, "dark",  "selected");
+    rc[7].value  = get_style(widget, "mid",   "selected");
+    rc[8].value  = get_style(widget, "bg",    "normal");
+    rc[9].value  = get_style(widget, "light", "normal");
+    rc[10].value = get_style(widget, "dark",  "normal");
+    rc[11].value = get_style(widget, "mid",   "normal");
+    rc[12].value = get_style(widget, "bg",    "active");
+    rc[13].value = get_style(widget, "light", "active");
+    rc[14].value = get_style(widget, "dark",  "active");
+    rc[15].value = get_style(widget, "mid",   "active");
+    rc[16].value = get_style(widget, "bg",    "normal");
+    rc[17].value = get_style(widget, "light", "normal");
+    rc[18].value = get_style(widget, "dark",  "normal");
+    rc[19].value = get_style(widget, "mid",   "normal");
 
     if(!parseRc("defaults", DATADIR, rc))
     {
@@ -176,53 +186,11 @@ void loadSettings()
     theme = getValue("theme", rc);
     parseRc("themerc", theme, rc);
 
-    colsym[0].name = "active_text_color";
-    colsym[0].value = rc[0].value;
-
-    colsym[1].name = "inactive_text_color";
-    colsym[1].value = rc[1].value;
-
-    colsym[2].name = "active_border_color";
-    colsym[2].value = rc[2].value;
-
-    colsym[3].name = "inactive_border_color";
-    colsym[3].value = rc[3].value;
-
-    colsym[4].name = "active_color_1";
-    colsym[4].value = rc[4].value;
-
-    colsym[5].name = "active_hilight_1";
-    colsym[5].value = rc[5].value;
-
-    colsym[6].name = "active_shadow_1";
-    colsym[6].value = rc[6].value;
-
-    colsym[7].name = "active_color_2";
-    colsym[7].value = rc[7].value;
-
-    colsym[8].name = "active_hilight_2";
-    colsym[8].value = rc[8].value;
-
-    colsym[9].name = "active_shadow_2";
-    colsym[9].value = rc[9].value;
-
-    colsym[10].name = "inactive_color_1";
-    colsym[10].value = rc[10].value;
-
-    colsym[11].name = "inactive_hilight_1";
-    colsym[11].value = rc[11].value;
-
-    colsym[12].name = "inactive_shadow_1";
-    colsym[12].value = rc[12].value;
-
-    colsym[13].name = "inactive_color_2";
-    colsym[13].value = rc[13].value;
-
-    colsym[14].name = "inactive_hilight_2";
-    colsym[14].value = rc[14].value;
-
-    colsym[15].name = "inactive_shadow_2";
-    colsym[15].value = rc[15].value;
+    for (i = 0; i < 20; i++)
+    {
+        colsym[i].name  = rc[i].option;
+        colsym[i].value = rc[i].value;
+    }
 
     if(title_colors[ACTIVE].allocated)
     {
@@ -284,48 +252,48 @@ void loadSettings()
         g_message("Cannot parse inactive color %s\n", rc[1].value);
     }
 
-    loadPixmap(dpy, &sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 16);
-    loadPixmap(dpy, &sides[SIDE_LEFT][INACTIVE], theme, "left-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &sides[SIDE_RIGHT][ACTIVE], theme, "right-active.xpm", colsym, 16);
-    loadPixmap(dpy, &sides[SIDE_RIGHT][INACTIVE], theme, "right-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &sides[SIDE_BOTTOM][ACTIVE], theme, "bottom-active.xpm", colsym, 16);
-    loadPixmap(dpy, &sides[SIDE_BOTTOM][INACTIVE], theme, "bottom-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_TOP_LEFT][ACTIVE], theme, "top-left-active.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_TOP_LEFT][INACTIVE], theme, "top-left-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_TOP_RIGHT][ACTIVE], theme, "top-right-active.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_TOP_RIGHT][INACTIVE], theme, "top-right-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_LEFT][ACTIVE], theme, "bottom-left-active.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_LEFT][INACTIVE], theme, "bottom-left-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme, "bottom-right-active.xpm", colsym, 16);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme, "bottom-right-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[HIDE_BUTTON][ACTIVE], theme, "hide-active.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[HIDE_BUTTON][INACTIVE], theme, "hide-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[HIDE_BUTTON][PRESSED], theme, "hide-pressed.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[CLOSE_BUTTON][ACTIVE], theme, "close-active.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[CLOSE_BUTTON][INACTIVE], theme, "close-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[CLOSE_BUTTON][PRESSED], theme, "close-pressed.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][ACTIVE], theme, "maximize-active.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][INACTIVE], theme, "maximize-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][PRESSED], theme, "maximize-pressed.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[SHADE_BUTTON][ACTIVE], theme, "shade-active.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[SHADE_BUTTON][INACTIVE], theme, "shade-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[SHADE_BUTTON][PRESSED], theme, "shade-pressed.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[STICK_BUTTON][ACTIVE], theme, "stick-active.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[STICK_BUTTON][INACTIVE], theme, "stick-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[STICK_BUTTON][PRESSED], theme, "stick-pressed.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_2][INACTIVE], theme, "title-2-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_3][ACTIVE], theme, "title-3-active.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_3][INACTIVE], theme, "title-3-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_4][ACTIVE], theme, "title-4-active.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_4][INACTIVE], theme, "title-4-inactive.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 16);
-    loadPixmap(dpy, &title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 16);
+    loadPixmap(dpy, &sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 20);
+    loadPixmap(dpy, &sides[SIDE_LEFT][INACTIVE], theme, "left-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &sides[SIDE_RIGHT][ACTIVE], theme, "right-active.xpm", colsym, 20);
+    loadPixmap(dpy, &sides[SIDE_RIGHT][INACTIVE], theme, "right-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &sides[SIDE_BOTTOM][ACTIVE], theme, "bottom-active.xpm", colsym, 20);
+    loadPixmap(dpy, &sides[SIDE_BOTTOM][INACTIVE], theme, "bottom-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_TOP_LEFT][ACTIVE], theme, "top-left-active.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_TOP_LEFT][INACTIVE], theme, "top-left-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_TOP_RIGHT][ACTIVE], theme, "top-right-active.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_TOP_RIGHT][INACTIVE], theme, "top-right-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_BOTTOM_LEFT][ACTIVE], theme, "bottom-left-active.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_BOTTOM_LEFT][INACTIVE], theme, "bottom-left-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme, "bottom-right-active.xpm", colsym, 20);
+    loadPixmap(dpy, &corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme, "bottom-right-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[HIDE_BUTTON][ACTIVE], theme, "hide-active.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[HIDE_BUTTON][INACTIVE], theme, "hide-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[HIDE_BUTTON][PRESSED], theme, "hide-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[CLOSE_BUTTON][ACTIVE], theme, "close-active.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[CLOSE_BUTTON][INACTIVE], theme, "close-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[CLOSE_BUTTON][PRESSED], theme, "close-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][ACTIVE], theme, "maximize-active.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][INACTIVE], theme, "maximize-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][PRESSED], theme, "maximize-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[SHADE_BUTTON][ACTIVE], theme, "shade-active.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[SHADE_BUTTON][INACTIVE], theme, "shade-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[SHADE_BUTTON][PRESSED], theme, "shade-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[STICK_BUTTON][ACTIVE], theme, "stick-active.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[STICK_BUTTON][INACTIVE], theme, "stick-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[STICK_BUTTON][PRESSED], theme, "stick-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_2][INACTIVE], theme, "title-2-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_3][ACTIVE], theme, "title-3-active.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_3][INACTIVE], theme, "title-3-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_4][ACTIVE], theme, "title-4-active.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_4][INACTIVE], theme, "title-4-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 20);
+    loadPixmap(dpy, &title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 20);
 
     if(!g_ascii_strcasecmp("left", getValue("title_alignment", rc)))
     {

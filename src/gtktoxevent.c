@@ -189,16 +189,20 @@ GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gc
 {
     XWindowAttributes attribs;
 
+    gdk_error_trap_push();
+    XGrabServer (GDK_DISPLAY());
+
     pushEventFilter(default_event_filter, data);
     event_win = gdk_window_foreign_new(GDK_ROOT_WINDOW());
     gdk_window_add_filter(NULL, gdkXEventFilter, NULL);
 
-    gdk_error_trap_push();
     XGetWindowAttributes(GDK_DISPLAY(), GDK_ROOT_WINDOW(), &attribs);
     XSelectInput(GDK_DISPLAY(), GDK_ROOT_WINDOW(), attribs.your_event_mask | event_mask);
     gdk_flush();
+
     if(gdk_error_trap_pop())
     {
+        XUngrabServer (GDK_DISPLAY());
         g_error("Another Window Manager is already running");
     }
     /* Create a GTK window so that we are just like any other GTK application */
@@ -211,6 +215,7 @@ GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gc
     }
     gtk_widget_show_now(gtk_win);
     gdk_window_set_user_data(event_win, gtk_win);
+    XUngrabServer (GDK_DISPLAY());
     gdk_flush();
 
     return (filterstack);

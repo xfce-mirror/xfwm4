@@ -14,6 +14,7 @@ kindaker \
 linea \
 mofit \
 next \
+ops \
 oroborus \
 platinum \
 quinx \

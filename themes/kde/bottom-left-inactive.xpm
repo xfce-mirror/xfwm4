@@ -6,7 +6,7 @@ static char * bottom_left_inactive_xpm[] = {
 "+	c #FFFFFF s inactive_hilight_2",
 "@	c #DEDEDE s inactive_color_2",
 "#	c #6A6D6A s inactive_shadow_2",
-"$	c #B4B6B4 s inactive_color_1",
+"$	c #B4B6B4 s inactive_mid_1",
 ".+@#                  ",
 ".+@#                  ",
 ".+@#                  ",
