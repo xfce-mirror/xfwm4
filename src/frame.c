@@ -431,23 +431,14 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     }
     if((c->has_border) && !(c->fullscreen))
     {
-        if (title->mask)
-	{
-	    XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
-        }
+        XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
 	for(i = 0; i < 3; i++)
         {
-            if (pm_sides[i].mask)
-	    {
-	        XShapeCombineMask(dpy, c->sides[i], ShapeBounding, 0, 0, pm_sides[i].mask, ShapeSet);
-            }
+	    XShapeCombineMask(dpy, c->sides[i], ShapeBounding, 0, 0, pm_sides[i].mask, ShapeSet);
 	}
         for(i = 0; i < 4; i++)
         {
-            if (corners[i][state].mask)
-	    {
-                XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
-            }
+            XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
 	}
         for(i = 0; i < BUTTON_COUNT; i++)
         {
