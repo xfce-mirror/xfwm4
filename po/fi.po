@@ -398,13 +398,4 @@ msgstr "%s: Työpöytien lukumäärää ei ole asetettu, käytetään oletusarvo
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr "Vaihda ..."
-
-#~ msgid "Window style"
-#~ msgstr "Ikkunan tyyli"
-
-#~ msgid "Font select :"
-#~ msgstr "Fontin valinta :"
-
-#~ msgid "%s: Running without session manager"
-#~ msgstr "%s: Ajetaan ilman istunnon hallintaa"
+msgstr "Siirrä ..."
