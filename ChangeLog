@@ -1,3 +1,187 @@
+2004-12-19 22:23  olivier
+
+	* src/events.c: Turn off the button time checking as Moe reported a
+	  few missed clicks as it seems.
+
+2004-12-19 21:49  pollux
+
+	* po/: ko.gmo, ko.po: update KO translations
+
+2004-12-19 14:22  olivier
+
+	* doc/C/images/compose_shortcut.png,
+	  doc/C/images/decoration_style.png, doc/C/images/focus.png,
+	  doc/C/images/keyboard_shortcuts.png,
+	  doc/C/images/misc_wm_prefs.png,
+	  doc/C/images/workspace_margins.png,
+	  doc/C/images/xfwm_workspaces.png,
+	  doc/fr/images/compose_shortcut.png,
+	  doc/fr/images/decoration_style.png, doc/fr/images/focus.png,
+	  doc/fr/images/keyboard_and_focus.png,
+	  doc/fr/images/keyboard_shortcuts.png,
+	  doc/fr/images/misc_wm_prefs.png,
+	  doc/fr/images/workspace_margins.png,
+	  doc/fr/images/xfwm_workspaces.png,
+	  doc/it/images/compose_shortcut.png,
+	  doc/it/images/decoration_style.png, doc/it/images/focus.png,
+	  doc/it/images/keyboard_and_focus.png,
+	  doc/it/images/keyboard_shortcuts.png,
+	  doc/it/images/misc_wm_prefs.png,
+	  doc/it/images/workspace_margins.png,
+	  doc/it/images/xfwm_workspaces.png, po/xfwm4.pot,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Update themes and
+	  screenshots
+
+2004-12-19 13:41  olivier
+
+	* themes/default/: bottom-left-active.xpm,
+	  bottom-left-inactive.xpm, bottom-right-active.xpm,
+	  bottom-right-inactive.xpm, top-left-active.png,
+	  top-left-active.xpm, top-left-inactive.png,
+	  top-left-inactive.xpm, top-right-active.png,
+	  top-right-active.xpm, top-right-inactive.png,
+	  top-right-inactive.xpm: Corners
+
+2004-12-19 00:40  olivier
+
+	* themes/default/: top-left-active.png, top-left-inactive.png,
+	  top-right-active.png, top-right-inactive.png: Improve corners
+
+2004-12-19 00:32  olivier
+
+	* mcs-plugin/xfwm4_plugin.h: Revert default font
+
+2004-12-19 00:31  olivier
+
+	* doc/: C/images/compose_shortcut.png,
+	  C/images/decoration_style.png, C/images/focus.png,
+	  C/images/keyboard_shortcuts.png, C/images/misc_wm_prefs.png,
+	  C/images/workspace_margins.png, C/images/xfwm_workspaces.png,
+	  fr/images/compose_shortcut.png, fr/images/decoration_style.png,
+	  fr/images/focus.png, fr/images/keyboard_and_focus.png,
+	  fr/images/keyboard_shortcuts.png, fr/images/misc_wm_prefs.png,
+	  fr/images/workspace_margins.png, fr/images/xfwm_workspaces.png,
+	  it/images/compose_shortcut.png, it/images/decoration_style.png,
+	  it/images/focus.png, it/images/keyboard_and_focus.png,
+	  it/images/keyboard_shortcuts.png, it/images/misc_wm_prefs.png,
+	  it/images/workspace_margins.png, it/images/xfwm_workspaces.png:
+	  REdo screenshots with the new theme
+
+2004-12-18 23:47  olivier
+
+	* themes/wildbush/: Makefile.am, Makefile.in, README,
+	  bottom-active.png, bottom-active.xpm, bottom-inactive.png,
+	  bottom-inactive.xpm, bottom-left-active.png,
+	  bottom-left-active.xpm, bottom-left-inactive.png,
+	  bottom-left-inactive.xpm, bottom-right-active.png,
+	  bottom-right-active.xpm, bottom-right-inactive.png,
+	  bottom-right-inactive.xpm, close-active.xpm, close-inactive.xpm,
+	  close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	  hide-pressed.xpm, left-active.png, left-active.xpm,
+	  left-inactive.png, left-inactive.xpm, maximize-active.xpm,
+	  maximize-inactive.xpm, maximize-pressed.xpm,
+	  maximize-toggled-active.xpm, maximize-toggled-inactive.xpm,
+	  maximize-toggled-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	  menu-pressed.xpm, right-active.png, right-active.xpm,
+	  right-inactive.png, right-inactive.xpm, shade-active.xpm,
+	  shade-inactive.xpm, shade-pressed.xpm, shade-toggled-active.xpm,
+	  shade-toggled-inactive.xpm, shade-toggled-pressed.xpm,
+	  stick-active.xpm, stick-inactive.xpm, stick-pressed.xpm,
+	  stick-toggled-active.xpm, stick-toggled-inactive.xpm,
+	  stick-toggled-pressed.xpm, themerc, title-1-active.png,
+	  title-1-active.xpm, title-1-inactive.png, title-1-inactive.xpm,
+	  title-2-active.png, title-2-active.xpm, title-2-inactive.png,
+	  title-2-inactive.xpm, title-3-active.png, title-3-active.xpm,
+	  title-3-inactive.png, title-3-inactive.xpm, title-4-active.png,
+	  title-4-active.xpm, title-4-inactive.png, title-4-inactive.xpm,
+	  title-5-active.png, title-5-active.xpm, title-5-inactive.png,
+	  title-5-inactive.xpm, top-left-active.png, top-left-active.xpm,
+	  top-left-inactive.png, top-left-inactive.xpm,
+	  top-right-active.png, top-right-active.xpm,
+	  top-right-inactive.png, top-right-inactive.xpm: Re-add "Wildbush"
+	  theme (previous default)
+
+2004-12-18 23:42  olivier
+
+	* configure, configure.ac, ltmain.sh, mcs-plugin/xfwm4_plugin.h,
+	  po/xfwm4.pot, themes/Makefile.am, themes/Makefile.in,
+	  themes/default/README, themes/default/bottom-active.png,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.xpm, themes/default/left-inactive.png,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.xpm: Change default theme under
+	  hard pressure from the devs on irc.
+
+2004-12-17 00:05  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-12-17 00:02  olivier
 
 	* src/compositor.c: Wrong trace
