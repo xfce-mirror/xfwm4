@@ -1,3 +1,30 @@
+2004-09-29 00:07  olivier
+
+	* src/: client.c, compositor.c: Improve windows refresh when using
+	  compositor.
+
+2004-09-28 23:55  olivier
+
+	* src/: Makefile.am, Makefile.in, client.c, main.c, wireframe.c,
+	  wireframe.h: Don't grab the server when cycling windows (but
+	  still show the frame shadow), Add a "--help" usage message.
+
+2004-09-28 21:56  olivier
+
+	* po/xfwm4.pot, src/compositor.c: Fix window vanishing when being
+	  unmapped with compositor enabled.
+
+2004-09-27 23:10  olivier
+
+	* po/xfwm4.pot, src/client.c, src/compositor.c, src/events.c,
+	  src/main.c: Various compositor fixes/improvements, Add new cmd
+	  line option "--disable-compositor" to disable compositor even if
+	  it's supported by both xfwm4 and the X server.
+
+2004-09-27 00:11  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-09-27 00:07  olivier
 
 	* COMPOSITOR, Makefile.am, Makefile.in, configure, configure.ac,
