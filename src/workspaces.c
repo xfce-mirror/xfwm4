@@ -47,7 +47,6 @@ workspaceSwitch (int new_ws, Client * c2)
     int rx, ry, wx, wy;
     unsigned int mask;
     unsigned long data[1];
-    XEvent an_event;
 
     TRACE ("entering workspaceSwitch");
 
@@ -148,10 +147,11 @@ workspaceSwitch (int new_ws, Client * c2)
     XChangeProperty (dpy, root, net_current_desktop, XA_CARDINAL, 32,
         PropModeReplace, (unsigned char *) data, 1);
     workspaceUpdateArea (margins, gnome_margins);
-    XSync (dpy, FALSE);
     if (!(params.click_to_focus))
     {
+        XEvent an_event;
         /* Just get rid of EnterNotify events when using focus follow mouse */
+        XSync (dpy, FALSE);
         while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
         {
             last_timestamp = stashEventTime (last_timestamp, &an_event);
