@@ -1,10 +1,10 @@
 /* XPM */
 static char * stick_inactive_xpm[] = {
 "16 20 4 1",
-" 	c None",
-".	c #000000 s inactive_border_color",
-"+	c #FFFFFF s inactive_hilight_2",
-"@	c #B4B6B4 s inactive_color_2",
+"       c None",
+".      c #000000 s inactive_border_color",
+"+      c #FFFFFF s inactive_hilight_2",
+"@      c #B4B6B4 s inactive_color_2",
 "                ",
 "                ",
 "                ",
