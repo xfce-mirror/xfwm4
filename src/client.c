@@ -5396,14 +5396,13 @@ clientMove (Client * c, XEvent * e)
     poswinShow (passdata.poswin);
 #endif /* SHOW_POSITION */
 
+    FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
+    TRACE ("entering move loop");
+    pushEventFilter (clientMove_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (dpy, e);
     }
-
-    FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
-    TRACE ("entering move loop");
-    pushEventFilter (clientMove_event_filter, &passdata);
     gtk_main ();
     popEventFilter ();
     TRACE ("leaving move loop");
@@ -5824,14 +5823,13 @@ clientResize (Client * c, int corner, XEvent * e)
     }
 #endif /* SHOW_POSITION */
     
+    FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
+    TRACE ("entering resize loop");
+    pushEventFilter (clientResize_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (dpy, e);
     }
-    
-    FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
-    TRACE ("entering resize loop");
-    pushEventFilter (clientResize_event_filter, &passdata);
     gtk_main ();
     popEventFilter ();
     TRACE ("leaving resize loop");
