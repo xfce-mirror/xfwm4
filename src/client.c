@@ -724,38 +724,52 @@ void clientGetNetWmType(Client * c)
 
 static void clientGetInitialNetWmDesktop(Client * c)
 {
+    Client *c2 = NULL;
     long val = 0;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientGetInitialNetWmDesktop\n");
     DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
 
-    if(!CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
+    /* This is to make sure that transient are shown with their "master" window */
+    if((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)))
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
-        c->win_workspace = workspace;
-    }
-    if(getNetHint(dpy, c->window, net_wm_desktop, &val))
-    {
-        DBG("atom net_wm_desktop detected\n");
-        if(val == (int)0xFFFFFFFF)
-        {
-            DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
-            c->win_workspace = workspace;
+        c->win_workspace = c2->win_workspace;
+	if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+	{
             clientStick(c, FALSE);
-        }
-        else
-        {
-            DBG("atom net_wm_desktop specifies window \"%s\" is on desk %i\n", c->name, (int)val);
-            c->win_workspace = (int)val;
-        }
-        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+	}
     }
-    else if(getGnomeHint(dpy, c->window, win_workspace, &val))
+    else
     {
-        DBG("atom win_workspace specifies window \"%s\" is on desk %i\n", c->name, (int)val);
-        c->win_workspace = (int)val;
-        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+	if(!CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
+	{
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+            c->win_workspace = workspace;
+	}
+	if(getNetHint(dpy, c->window, net_wm_desktop, &val))
+	{
+            DBG("atom net_wm_desktop detected\n");
+            if(val == (int)0xFFFFFFFF)
+            {
+        	DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
+        	c->win_workspace = workspace;
+        	clientStick(c, FALSE);
+            }
+            else
+            {
+        	DBG("atom net_wm_desktop specifies window \"%s\" is on desk %i\n", c->name, (int)val);
+        	c->win_workspace = (int)val;
+            }
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+	}
+	else if(getGnomeHint(dpy, c->window, win_workspace, &val))
+	{
+            DBG("atom win_workspace specifies window \"%s\" is on desk %i\n", c->name, (int)val);
+            c->win_workspace = (int)val;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+	}
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
     if(c->win_workspace > params.workspace_count - 1)
@@ -2577,10 +2591,10 @@ void clientPassFocus(Client * c)
     for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
         if (clientSelectMask(c2, 0) && !g_slist_find(list_of_windows, (gconstpointer) c2))
-	{
-	    new_focus = c2;
-	    break;
-	}
+        {
+            new_focus = c2;
+            break;
+        }
     }
     g_slist_free(list_of_windows);
     clientSetFocus(new_focus, TRUE);
@@ -2601,14 +2615,14 @@ void clientShow(Client * c, gboolean change_state)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-	if ((c->win_workspace == workspace) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-	{
+        if ((c->win_workspace == workspace) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+        {
             DBG("showing client \"%s\" (0x%lx)\n", c2->name, c2->window);
             CLIENT_FLAG_SET(c2, CLIENT_FLAG_VISIBLE);
             XMapWindow(dpy, c2->window);
             XMapWindow(dpy, c2->frame);
         }
-	if(change_state)
+        if(change_state)
         {
             CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_HIDDEN);
             setWMState(dpy, c2->window, NormalState);
@@ -4272,8 +4286,8 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         case STICK_BUTTON:
             clientToggleSticky(c, TRUE);
             break;
-	default:
-	    break;
+        default:
+            break;
         }
         frameDraw(c, FALSE, FALSE);
     }
