@@ -36,6 +36,7 @@
 #include "settings.h"
 #include "tabwin.h"
 #include "debug.h"
+#include "my_intl.h"
 
 /* Event mask definition */
 
@@ -366,7 +367,7 @@ static void clientGetNetState(Client * c)
             }
             else
             {
-                g_message("Unmanaged net_wm_state (window %#lx)", c->window);
+                g_message(_("%s: Unmanaged net_wm_state (window %#lx)"), g_get_prgname(), c->window);
             }
 
             ++i;

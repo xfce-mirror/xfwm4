@@ -31,31 +31,32 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include "menu.h"
 #include "debug.h"
+#include "my_intl.h"
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE, NULL, "Ma_ximize"},
-    {MENU_OP_UNMAXIMIZE, NULL, "Un_maximize"},
-    {MENU_OP_MINIMIZE, NULL, "_Hide"},
-    {MENU_OP_MINIMIZE_ALL, NULL, "Hide _all others"},
-    {MENU_OP_UNMINIMIZE, NULL, "S_how"},
-    {MENU_OP_SHADE, NULL, "_Shade"},
-    {MENU_OP_UNSHADE, NULL, "Un_shade"},
-    {MENU_OP_STICK, NULL, "S_tick"},
-    {MENU_OP_UNSTICK, NULL, "Uns_tick"},
-    {MENU_OP_MOVE, NULL, "_Move"},
-    {MENU_OP_RESIZE, NULL, "_Resize"},
-    {MENU_OP_SWITCH, NULL, "S_witch"},
+    {MENU_OP_MAXIMIZE, NULL, N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE, NULL, N_("Un_maximize")},
+    {MENU_OP_MINIMIZE, NULL, N_("_Hide")},
+    {MENU_OP_MINIMIZE_ALL, NULL, N_("Hide _all others")},
+    {MENU_OP_UNMINIMIZE, NULL, N_("S_how")},
+    {MENU_OP_SHADE, NULL, N_("_Shade")},
+    {MENU_OP_UNSHADE, NULL, N_("Un_shade")},
+    {MENU_OP_STICK, NULL, N_("S_tick")},
+    {MENU_OP_UNSTICK, NULL, N_("Uns_tick")},
+    {MENU_OP_MOVE, NULL, N_("_Move")},
+    {MENU_OP_RESIZE, NULL, N_("_Resize")},
+    {MENU_OP_SWITCH, NULL, N_("S_witch")},
     {0, NULL, NULL},
-    {MENU_OP_DELETE, NULL, "_Close"},
+    {MENU_OP_DELETE, NULL, N_("_Close")},
 #if 0
-    {MENU_OP_DESTROY, NULL, "Destroy"},
+    {MENU_OP_DESTROY, NULL, N_("Destroy")},
     {0, NULL, NULL},
-    {MENU_OP_WORKSPACES, NULL, "Wor_kspace"},
+    {MENU_OP_WORKSPACES, NULL, N_("Wor_kspace")},
     {0, NULL, NULL},
 #endif
-    {MENU_OP_QUIT, NULL, "_Quit"},
-    {MENU_OP_RESTART, NULL, "Restart"},
+    {MENU_OP_QUIT, NULL, _("_Quit")},
+    {MENU_OP_RESTART, NULL, _("Restart")},
 };
 
 static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
@@ -166,7 +167,7 @@ Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
             }
             else
             {
-                mi = gtk_menu_item_new_with_mnemonic(menuitems[i].label);
+                mi = gtk_menu_item_new_with_mnemonic(_(menuitems[i].label));
                 if(insensitive & menuitems[i].op)
                 {
                     gtk_widget_set_sensitive(mi, FALSE);
@@ -303,7 +304,7 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
         if(!GTK_MENU_SHELL(GTK_MENU(menu->menu))->have_xgrab)
         {
             gdk_beep();
-            g_message("GtkMenu failed to grab the pointer\n");
+            g_message(_("%S: GtkMenu failed to grab the pointer\n"), g_get_prgname());
         }
     }
     return TRUE;

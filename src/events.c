@@ -34,6 +34,7 @@
 #include "client.h"
 #include "menu.h"
 #include "debug.h"
+#include "my_intl.h"
 
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
@@ -902,7 +903,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == net_wm_moveresize) && (ev->format == 32))
         {
             DBG("client \"%s\" (%#lx) has received a net_wm_moveresize event\n", c->name, c->window);
-            g_message("Operation not supported (yet)\n");
+            g_message(_("%s: Operation not supported (yet)\n"), g_get_prgname());
             /* TBD */
         }
         else if((ev->message_type == net_active_window) && (ev->format == 32))

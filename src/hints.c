@@ -36,6 +36,7 @@
 #include "main.h"
 #include "hints.h"
 #include "debug.h"
+#include "my_intl.h"
 
 Atom gnome_panel_desktop_area;
 Atom motif_wm_hints;
@@ -612,7 +613,7 @@ int get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
         name = XGetAtomName(dpy, xatom);
         if(name)
         {
-            g_message("Property %s on window (%lx) contained invalid UTF-8\n", name, w);
+            g_message(_("%s: Property %s on window (%lx) contained invalid UTF-8\n"), g_get_prgname(), name, w);
             XFree(name);
         }
         XFree(str);

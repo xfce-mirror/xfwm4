@@ -42,6 +42,7 @@
 #include "keyboard.h"
 #include "workspaces.h"
 #include "debug.h"
+#include "my_intl.h"
 
 #define MAIN_EVENT_MASK 	SubstructureNotifyMask|\
 				StructureNotifyMask|\
@@ -155,7 +156,7 @@ static int initialize(int argc, char **argv)
     progname = argv[0];
     gtk_init(&argc, &argv);
 
-    g_message("Using GTK+-%d.%d.%d", gtk_major_version, gtk_minor_version, gtk_micro_version);
+    g_message(_("%s: Using GTK+-%d.%d.%d"), g_get_prgname(), gtk_major_version, gtk_minor_version, gtk_micro_version);
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
     dpy = GDK_DISPLAY();
@@ -176,7 +177,7 @@ static int initialize(int argc, char **argv)
 
     if(!session_init(client_session))
     {
-        g_message("Cannot connect to session manager");
+        g_message(_("%s: Running without session manager"), g_get_prgname());
     }
 
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
@@ -266,20 +267,20 @@ int run_daemon(int argc, char **argv, gboolean daemon_mode)
     switch (status)
     {
         case -1:
-            g_error("Another Window Manager is already running");
+            g_error(_("%s: Another Window Manager is already running"), g_get_prgname());
             break;
         case -2:
-            g_error("Missing data from default files");
+            g_error(_("%s: Missing data from default files"), g_get_prgname());
             break;
         case 0:
             gtk_main();
             break;
         default:
-            g_error("Unknown error occured");
+            g_error(_("%s: Unknown error occured"), g_get_prgname());
             break;
     }
     cleanUp();
-    g_message("xfwm4 terminated\n");
+    g_message(_("%s: Terminated\n"), g_get_prgname());
     return 0;
 }
 
@@ -315,7 +316,7 @@ int main(int argc, char **argv)
                 break;
             default:           /* parent */
                 pause();        /* wait for child signal */
-                g_message("init complete.");
+                g_message(_("Init complete"));
         }
     }
     else

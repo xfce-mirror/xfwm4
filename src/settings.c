@@ -34,6 +34,7 @@
 #include "client.h"
 #include "workspaces.h"
 #include "debug.h"
+#include "my_intl.h"
 
 #define CHANNEL "xfwm4"
 #define TOINT(x) (x ? atoi(x) : 0)
@@ -329,13 +330,13 @@ static void loadTheme(Settings rc[])
         else
         {
             gdk_beep();
-            g_message("Cannot allocate active color %s\n", rc[0].value);
+            g_message(_("%s: Cannot allocate active color %s\n"), g_get_prgname(), rc[0].value);
         }
     }
     else
     {
         gdk_beep();
-        g_message("Cannot parse active color %s\n", rc[0].value);
+        g_message(_("%s: Cannot parse active color %s\n"), g_get_prgname(), rc[0].value);
     }
 
     if(params.black_gc)
@@ -373,13 +374,13 @@ static void loadTheme(Settings rc[])
         else
         {
             gdk_beep();
-            g_message("Cannot allocate inactive color %s\n", rc[1].value);
+            g_message(_("%s: Cannot allocate inactive color %s\n"), g_get_prgname(), rc[1].value);
         }
     }
     else
     {
         gdk_beep();
-        g_message("Cannot parse inactive color %s\n", rc[1].value);
+        g_message(_("%s: Cannot parse inactive color %s\n"), g_get_prgname(), rc[1].value);
     }
 
     font = getValue("title_font", rc);
@@ -691,7 +692,7 @@ gboolean loadSettings(void)
 	{
 	    workspace_count = 0;
 	}
-        g_message("workspace count not set, using rc value: %i", workspace_count);
+        g_message(_("%s: Workspace count not set, using rc value: %i"), g_get_prgname(), workspace_count);
         workspaceSetCount(workspace_count);
     }
 

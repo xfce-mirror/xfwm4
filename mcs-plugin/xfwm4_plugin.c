@@ -40,8 +40,7 @@
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "inline-icon.h"
-
-#define _(String) String
+#include "my_intl.h"
 
 #define RCDIR   "settings"
 #define RCFILE  "xfwm4.xml"
@@ -115,27 +114,27 @@ struct _RadioTmpl
 };
 
 TitleButton title_buttons[] = {
-    {"Title", '|'},
-    {"Menu", 'O'},
-    {"Stick", 'T'},
-    {"Shade", 'S'},
-    {"Hide", 'H'},
-    {"Maximize", 'M'},
-    {"Close", 'C'}
+    {N_("Title"), '|'},
+    {N_("Menu"), 'O'},
+    {N_("Stick"), 'T'},
+    {N_("Shade"), 'S'},
+    {N_("Hide"), 'H'},
+    {N_("Maximize"), 'M'},
+    {N_("Close"), 'C'}
 };
 
 RadioTmpl dbl_click_values[] = {
-    {"Shade window", "shade", NULL},
-    {"Hide window", "hide", NULL},
-    {"Maximize window", "maximize", NULL},
-    {"Nothing", "none", NULL},
+    {N_("Shade window"), "shade", NULL},
+    {N_("Hide window"), "hide", NULL},
+    {N_("Maximize window"), "maximize", NULL},
+    {N_("Nothing"), "none", NULL},
     {NULL, NULL, NULL}
 };
 
 RadioTmpl title_align_values[] = {
-    {"Left", "left", NULL},
-    {"Center", "center", NULL},
-    {"Right", "right", NULL},
+    {N_("Left"), "left", NULL},
+    {N_("Center"), "center", NULL},
+    {N_("Right"), "right", NULL},
     {NULL, NULL, NULL}
 };
 
@@ -411,7 +410,7 @@ static GtkWidget *create_layout_buttons(gchar * layout, gpointer user_data)
 
     for(i = TITLE; i < END; i++)
     {
-        temp = g_strdup_printf("<small><i>%s :</i></small> ", title_buttons[i].label);
+        temp = g_strdup_printf("<small><i>%s :</i></small> ", _(title_buttons[i].label));
         label_row = gtk_label_new(temp);
         gtk_widget_show(label_row);
         gtk_table_attach(GTK_TABLE(table), label_row, 0, 1, i + 1, i + 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
