@@ -481,6 +481,8 @@ dvi: dvi-recursive
 
 dvi-am:
 
+html: html-recursive
+
 info: info-recursive
 
 info-am:
@@ -530,7 +532,7 @@ uninstall-info: uninstall-info-recursive
 	uninstall-info-am
 
 
-html: $(srcdir)/xfwm4.xml
+xfwm4.html: $(srcdir)/xfwm4.xml
 	xsltproc $(top_srcdir)/doc/xfce-nochunk.xsl \
 		$(srcdir)/xfwm4.xml
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

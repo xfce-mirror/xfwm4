@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Sep 2003"> 
-  <!ENTITY appversion "4.0"> 
+  <!ENTITY date "Aug 2004"> 
+  <!ENTITY appversion "4.1.x"> 
   <!ENTITY app "<application>xfwm4</application>">
 ]>
 
@@ -11,14 +11,14 @@
 <!-- Header --> 
 <articleinfo>
 
-  <title>XFce 4 Window Manager</title>
+  <title>Xfce 4 Window Manager</title>
   
   <copyright>
-    <year>2003</year> <holder>François Le Clainche</holder>
+    <year>2004</year> <holder>François Le Clainche</holder>
   </copyright>
 
   <copyright>
-    <year>2003</year> <holder>Jasper Huijsmans</holder>
+    <year>2004</year> <holder>Jasper Huijsmans</holder>
   </copyright>
 
 <!-- translators: uncomment this:
@@ -82,34 +82,31 @@ maintainers, etc. Commented out by default.
 <sect1 id="wm-intro">
   <title>Introduction</title>
 
-  <para>The XFce 4 Window Manager is part of the <ulink 
-      url="http://www.xfce.org" type="html">XFce Desktop Environment</ulink>.
+  <para>The Xfce 4 Window Manager is part of the <ulink 
+      url="http://www.xfce.org" type="html">Xfce Desktop Environment</ulink>.
     The actual command to run is &app;. To run it in the background use 
     <command>&app; --daemon</command>. The window manager is responsible for
     the placement of windows on the screen, provides the window
     decorations and allows you for instance to move, resize or close them.
   </para>
 
-  <para>If you are familiar with previous versions of XFce you will find many
-    changes. First of all, &app; adheres strongly to the standards defined on
+  <para>&app; adheres strongly to the standards defined on
     <ulink url="http://www.freedesktop.org"
       type="html">freedesktop.org</ulink>.
     Consequently, special features such as making windows borderless, or 
     providing an icon for the application must now be implemented in the 
     application; you can no longer use the window manager to force different 
-    behaviour. Most visible change is probably the themeability. The window 
+    behaviour. One of the great features of &app; is its themeability. The window 
     decorations (borders, title bar and window buttons) can be configured by 
     using window manager themes. 
   </para>
 
-  <para>&app; offers Xinerama support, useful when you have more than one
-    monitor connected to your computer, but you have to make sure
-    <application>libxfcegui4</application> is compiled with
-    <option>--enable-xinerama</option>.
+  <para>&app; offers multihead support, for both xinerama and real multiscreen modes, 
+	useful when you have more than one monitor connected to your computer.
   </para>
 
   <para>&app; can be run stand-alone, but if you use it this way, you will
-    need the <ulink url="xfce-mcs-manager.html" type="http">XFce 4 Settings
+    need the <ulink url="xfce-mcs-manager.html" type="http">Xfce 4 Settings
       Manager</ulink> if you want GUI settings management. Tasks other than
     managing windows, like setting a background image or launching programs, 
     need to be performed by other programs.
@@ -150,9 +147,13 @@ maintainers, etc. Commented out by default.
       </screenshot>
     </figure>
 
-    <para>You can open the window menu with a left-click on the menu button on
+	<para>You can open the window menu with a left-click on the menu button on
       the title bar, or with a right-click on the window title area itself.
-    </para>
+	</para>
+	<para>If you use <application>xftaskbar4</application>, you can open an 
+		action menu with a right-click on one of the taskbar entries; it includes 
+		several items among those available in the window menu.
+	</para>
 
       <para>&nbsp;</para>
 
@@ -169,8 +170,9 @@ maintainers, etc. Commented out by default.
 	  <para>A keyboard shortcut allows to switch the focus from a window
 	    to others : Hold Alt and then you can press Tab repeatedly untill
 	    you get to the window you want to focus. If you use it, you will 
-	    see a small popup with the window title and also &app; will 
-	    highlight the outline of the window that will receive the focus.
+	    see a small popup showing the application name, its icon and the 
+	    window title. Also &app; will highlight the outline of the window that 
+	    will receive the focus.
 	  </para>
 
 	  <para>
@@ -202,6 +204,12 @@ maintainers, etc. Commented out by default.
 	    "maximize" item</listitem>
 	  <listitem>use Alt + F5 keyboard shortcut</listitem>
 	</itemizedlist>
+	
+	<para>You can make any window appear in fullscreen mode (it will 
+		then use all the size of your screen without showing the window 
+		borders) by using the customizable Alt + F11 keyboard shortcut.
+	</para>
+	
 	<para>To maximize a window vertically :</para>
 	<itemizedlist>
 	<listitem>middle-click the maximize button of the title bar</listitem>
@@ -219,6 +227,7 @@ maintainers, etc. Commented out by default.
 	<listitem>use the same keyboard shortcut once again</listitem>
 	<listitem>choose the "Unmaximize" item in the window menu</listitem>
 	</itemizedlist>	
+	
 	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
@@ -237,6 +246,12 @@ maintainers, etc. Commented out by default.
 	<listitem>you can use practical keyboard shortcuts : Shift +
 	  Alt + (up, down, right or left) Arrow</listitem>
 	</itemizedlist>
+	
+		<para>If you want to disable the ability to move and resize windows 
+		using the Alt button + mouse click shortcut, edit your 
+		$HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
+		easy_click=false</para>
+	
 	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
@@ -255,14 +270,14 @@ maintainers, etc. Commented out by default.
 	  excepted the one you are using, in only one action : click the menu
 	  button of the title bar and choose "Hide all others".</para>
 	<para>To "unhide" a window, you will have to select its name or its
-	  icon in one of those XFce 4 components :</para>
+	  icon in one of those Xfce 4 components :</para>
 	<itemizedlist>
 	<listitem><application>xftaskbar4</application></listitem>
-	<listitem>the <application>xfce4-iconbox</application></listitem>
 	<listitem>the list of windows, accessible with a middle-click on the
 	  desktop background. This list shows all opened windows, classified
 	  by workspaces. Windows that are currently hidden are marked between
 	  [  ].</listitem>
+	<listitem>the <application>xfce4-iconbox</application></listitem>
 	</itemizedlist>
 	<para>&nbsp;</para>
       </listitem>
@@ -318,6 +333,11 @@ maintainers, etc. Commented out by default.
 	<listitem>click on its label in the taskbar or the iconbox</listitem>
         <listitem>use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)</listitem>
 	</itemizedlist>
+	
+	<para>You can make a window frame to always stay above all other windows 
+		by opening the window menu and selecting the "always on top" item.
+	</para>
+	
         <para>The "lower" function sends a window frame below all other frames.
 	To "lower" a window, you can :
 	</para>
@@ -325,6 +345,7 @@ maintainers, etc. Commented out by default.
 	<listitem>middle-click on its title bar</listitem>
         <listitem>use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)</listitem>
 	</itemizedlist>
+	
 	<para>&nbsp;</para>
     </listitem>
     </varlistentry>
@@ -341,6 +362,12 @@ maintainers, etc. Commented out by default.
 	  <listitem>use Control + Alt + Shift + (up, down, left or right)
 	    Arrow keyboard shortcut</listitem>
 	</itemizedlist>
+	
+		<para>If you want to disable the ability to move and resize windows 
+		using the Alt button + mouse click shortcut, edit your 
+		$HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
+		easy_click=false</para>
+	
 	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
@@ -396,43 +423,6 @@ maintainers, etc. Commented out by default.
   </variablelist>
 </sect2>
 
-  <sect2 id="wm-keybindings">
-    <title>Keyboard shortcuts summary</title>
-
-    <para>In the default configuration the following keybindings are
-      defined:</para>
-    <itemizedlist>
-      <listitem>close window : Alt + F4</listitem>
-      <listitem>Maximize window : Alt + F5</listitem>
-      <listitem>Maximize vertically : Alt + F6</listitem>
-      <listitem>Maximize horizontally : Alt + F7</listitem>
-      <listitem>Hide window : Alt + F8</listitem>
-      <listitem>Shade window : Alt + F9</listitem>
-      <listitem>Stick window : Alt + F10</listitem>
-      <listitem>Cycle windows focus : Alt + Tab</listitem>
-      <listitem>Move window : Control + Shift + Alt + Arrow (up, down, left,
-	or right)</listitem>
-      <listitem>Resize window : Shift + Alt + Arrow (up, down, left, or
-	right)</listitem>
-      <listitem>Raise window : Shift + Alt + Page_Up</listitem>
-      <listitem>Lower window : Shift + Alt + Page_Down</listitem>
-      <listitem>Next workspace : Control + Alt + Arrow right
-	arrow</listitem>
-      <listitem>Previous workspace : Control + Alt + Arrow left</listitem>
-      <listitem>Add a workspace : Alt + Inser</listitem>
-      <listitem>Delete a workspace : Alt + Delete</listitem>
-      <listitem>Go to workspace number N (1-9) : Control + F(N)</listitem>
-      <listitem>Move the window to previous|next workspace : Alt + Control +
-	Home|End</listitem>
-      <listitem>Move a window to workspace number N (1-9) : Alt + Control +
-	keypad key number N</listitem>
-      <listitem>Start xfhelp4 : Alt + F1</listitem>
-      <listitem>Start xfrun4 : Alt + F2</listitem>
-      <listitem>Lock the screen : Alt + Control + Delete</listitem>
-    </itemizedlist>
-
-  </sect2>
-
 </sect1>
 
   <!-- extra space -->
@@ -443,9 +433,9 @@ maintainers, etc. Commented out by default.
 
   <para>To open the Window Manager preferences dialog, click the button
     labelled "Window Manager" in the <ulink
-      url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings
-      manager</ulink>. The dialog shows three tabs : Decoration style,
-    Keyboard and focus, Advanced. All modifications will have an immediate
+      url="xfce-mcs-manager.html#manager-dialog" type="http">Xfce 4 Settings
+      manager</ulink>. The dialog shows four tabs : Style,
+    Keyboard, Focus, Advanced. All modifications will have an immediate
     effect on the behaviour of the selected module.</para>
 
   <sect2 id="wm-style">
@@ -472,10 +462,10 @@ maintainers, etc. Commented out by default.
 	<term>Window style</term>
 	<listitem>
 	<para>The list on the left side of the dialog shows all avaible window
-	  decorations. The xfwm 4 module offers the choice between 10
-	  different themes, but there are more than 50 supplementary themes
+	  decorations. The xfwm 4 module offers the choice between 4
+	  different themes, but there are more than 60 supplementary themes
 	  avaible in xfwm4-themes extra package. You can preview all of them on
-	  the official <ulink url="http://www.xfce.org" type="html">XFce
+	  the official <ulink url="http://www.xfce.org" type="html">Xfce
 	    Website</ulink>
 	</para>
       </listitem>
@@ -507,11 +497,11 @@ maintainers, etc. Commented out by default.
     <varlistentry>
       <term>Button layout</term>
       <listitem>
-        <para>The button layout configuration uses an intuitive interface with
-	  radio buttons. Just imagine that all selected items project
-	  themselves on the baseline of the frame. Moreover, all modifications
-	  will have an immediate effet on the title bar buttons
-	  position.
+        <para>The button layout configuration uses an easy drag and drop 
+        tool. Click and drag the buttons to change the layout. 
+        Drop a button in the "Hidden" area to remove a button from the 
+        titlebar. All modifications will have an immediate effect on 
+        the title bar buttons position.
 	</para>
       </listitem>
     </varlistentry>
@@ -519,19 +509,19 @@ maintainers, etc. Commented out by default.
   </variablelist>
 </sect2>
 
-<sect2 id="wm-focus">
-  <title>Keyboard and focus</title>
+<sect2 id="keyboard_shortcuts">
+  <title>Keyboard shortcuts</title>
 
-  <figure id="wm_focus-fig">
-    <title>Keyboard and focus preferences</title>
+  <figure id="keyboard_shortcuts-fig">
+    <title>Keyboard shortcuts preferences</title>
 
     <screenshot>
       <mediaobject>
 	<imageobject>
-	  <imagedata fileref="images/keyboard_and_focus.png" format="PNG"/>
+	  <imagedata fileref="images/keyboard_shortcuts.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>The keyboard and focus tab</phrase>
+	  <phrase>The keyboard shortcuts tab</phrase>
 	</textobject>
       </mediaobject>
     </screenshot>
@@ -547,22 +537,102 @@ maintainers, etc. Commented out by default.
 	  keythemerc file.
 	</para>
 	<para>By default, there's only one theme :
-	  $(prefix)/share/xfwm4/themes/default.keys/keythemerc
+	  $(datadir)/xfwm4/themes/default.keys/keythemerc
 	</para>
-	<para>You can customize keyboard shortcuts by editing this default
-	  keythemerc file (seven shorcuts entries are left empty for your
-	  convenience), or you can create a new theme, either like this one :
-	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc, or like this one 
-	  (in your $HOME directory) : $HOME/.themes/xfwm4/custom.keys/keythemerc.</para>
-	<para>NOTE : $prefix is the install-prefix you used during xfwm 4
-	  setup, usually /usr or /usr/local.
+	
+    <para>In the default configuration the following keybindings are
+      defined:</para>
+      
+    <itemizedlist>
+      <listitem>close window : Alt + F4</listitem>
+      <listitem>Maximize window : Alt + F5</listitem>
+      <listitem>Maximize vertically : Alt + F6</listitem>
+      <listitem>Maximize horizontally : Alt + F7</listitem>
+      <listitem>Hide window : Alt + F8</listitem>
+      <listitem>Shade window : Alt + F9</listitem>
+      <listitem>Stick window : Alt + F10</listitem>
+      <listitem>Cycle windows focus : Alt + Tab</listitem>
+      <listitem>Move window : Control + Shift + Alt + Arrow (up, down, left,
+	or right)</listitem>
+      <listitem>Resize window : Shift + Alt + Arrow (up, down, left, or
+	right)</listitem>
+      <listitem>Raise window : Shift + Alt + Page_Up</listitem>
+      <listitem>Lower window : Shift + Alt + Page_Down</listitem>
+      <listitem>Toggle fullscreen : Alt + F11</listitem>
+      <listitem>Next workspace : Control + Alt + Arrow right
+	arrow</listitem>
+      <listitem>Previous workspace : Control + Alt + Arrow left</listitem>
+      <listitem>Add a workspace : Alt + Insert</listitem>
+      <listitem>Delete a workspace : Alt + Delete</listitem>
+      <listitem>Go to workspace number N (1-9) : Control + F(N)</listitem>
+      <listitem>Move the window to previous|next workspace : Alt + Control +
+	Home|End</listitem>
+      <listitem>Move a window to workspace number N (1-9) : Alt + Control +
+	keypad key number N</listitem>
+      <listitem>Start xfhelp4 : Alt + F1</listitem>
+      <listitem>Start xfrun4 : Alt + F2</listitem>
+      <listitem>Lock the screen : Alt + Control + Delete</listitem>
+    </itemizedlist>
+
+	<para>There are two lists on the right side of the dialog. The 
+		"Windows shortcuts" list shows the keyboard shortcuts which are 
+		used to drive the window manager. The "Command shortcuts" list 
+		shows the keyboard shortcuts which are aimed at launching 
+		applications. To modify one of the shortcuts, you have to 
+		double-click on it in the list, using the left button of your 
+		mouse, and compose your new shortcut when the "Compose shortcut" 
+		popup window appears.
 	</para>
-	<para>If you do not know the names of your keyboard modifier keys, you
-	  can launch the "xev" application from a terminal and test
-	  them.
+	
+	  <figure id="compose_shortcut-fig">
+    <title>The compose shortcut popup</title>
+
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/compose_shortcut.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>The compose shortcut popup</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+	
+	<para>If you want to create a new theme, create a directory like 
+		this one, for instance : $HOME/.themes/Custom/xfwm4/keythemerc, 
+		then select it in the list of available themes.
 	</para>
+	
+	<para>If you do not know the names of your keyboard modifier keys, 
+		you can launch the "xev" application from a terminal and test them.
+	</para>
+	
       </listitem>
     </varlistentry>
+
+  </variablelist>
+</sect2>
+
+<sect2 id="focus">
+  <title>Focus preferences</title>
+
+  <figure id="focus-fig">
+    <title>Focus preferences</title>
+
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/focus.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>The Focus tab</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
 
     <varlistentry>
       <term>Focus model</term>
@@ -685,7 +755,7 @@ maintainers, etc. Commented out by default.
   
 <sect1 id="workspaces">
 
-  <title>Workspaces and Margins</title>
+  <title>Managing workspaces</title>
 
   <para>&app; also manages workspaces. There is a special settings dialog to
     change the workspace properties. You can start it by choosing 
@@ -697,7 +767,7 @@ maintainers, etc. Commented out by default.
 
   <sect2>
 
-    <title>Workspaces</title>
+    <title>Workspaces settings</title>
 
     <figure id="xfwm-workspace-fig">
       <title>Workspace Settings</title> 
@@ -742,7 +812,7 @@ maintainers, etc. Commented out by default.
   </sect2>
 
   <sect2 id="workspace-margins">
-    <title>Workspace margins</title>
+    <title>Workspaces margins</title>
 
     <figure id="workspace_margins-fig">
       <title>The workspace margins dialog</title>
@@ -782,19 +852,19 @@ maintainers, etc. Commented out by default.
 
   <para>&app; was written Olivier Fourdan  
     (<email>fourdan@xfce.org</email>). To find more information, please visit 
-    the <ulink url="http://www.xfce.org" type="http">XFce web site</ulink>. 
+    the <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>. 
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
     this manual, send an email to the 
-    <ulink url="http://www.xfce.org/mailman/listinfo/xfce4-dev/"
+    <ulink url="http://lunar-linux.org/mailman/listinfo/xfce4-dev"
       type="http">xfce4-dev</ulink> mailing list &mdash; this is the preferred
     method &mdash; or use the bug tracking system at the
-    <ulink url="http://sourceforge.net/projects/xfce" 
-      type="http">XFce SourceForge project site</ulink>. 
+    <ulink url="http://bugs.xfce.org/" 
+      type="http">http://bugs.xfce.org/</ulink>. 
     If you have questions about the use or installation of this package,
     please ask on the 
-    <ulink url="http://www.xfce.org/mailman/listinfo/xfce/"
+    <ulink url="http://lunar-linux.org/mailman/listinfo/xfce"
       type="http">xfce</ulink> mailing list. 
   </para>
     
