@@ -64,6 +64,10 @@ workspaceSwitch (int new_ws, Client * c2)
         return;
     }
 
+    /* Grab the pointer to avoid side effects with EnterNotify events */
+    XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+                       GrabModeAsync, None, None, CurrentTime);
+
     workspace = new_ws;
     if (c2)
     {
@@ -147,18 +151,13 @@ workspaceSwitch (int new_ws, Client * c2)
     XChangeProperty (dpy, root, net_current_desktop, XA_CARDINAL, 32,
         PropModeReplace, (unsigned char *) data, 1);
     workspaceUpdateArea (margins, gnome_margins);
+
+    /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
+    XUngrabPointer (dpy, CurrentTime);
+
     if (!(params.click_to_focus))
     {
-        XEvent an_event;
-        /* Just get rid of EnterNotify events when using focus follow mouse */
-        XSync (dpy, FALSE);
-        while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-        {
-            last_timestamp = stashEventTime (last_timestamp, &an_event);
-        }    
-        if (!(c2)
-            && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
-                    &mask)))
+        if (!(c2) && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
         {
             c = clientAtPosition (rx, ry, NULL);
             if (c)
