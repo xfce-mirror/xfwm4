@@ -873,13 +873,6 @@ handleMapRequest (XMapRequestEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
-        {
-            TRACE ("handleMapRequest: another request for \"%s\" (0x%lx)", 
-                   c->name, c->window);
-            /* There is already a request in the pipe... */
-            return;
-        }
         TRACE ("handleMapRequest: clientShow");
         clientShow (c, TRUE);
     }
@@ -902,7 +895,7 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        if (CLIENT_FLAG_REPARENTING)
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
             /* First map caused by reparenting, clear flag
                and set ignore_unmaps to 0 so that everything
@@ -910,10 +903,6 @@ handleMapNotify (XMapEvent * ev)
              */
             CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
             c->ignore_unmap = 0;
-        }
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
-        {
-            clientShow (c, TRUE);
         }
     }
 }
