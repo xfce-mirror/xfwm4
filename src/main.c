@@ -117,8 +117,9 @@ void initialize(int argc, char **argv)
 
     DBG("entering initialize\n");
 
-    gtk_init(&argc, &argv);
     progname = argv[0];
+    gtk_init(&argc, &argv);
+    gtk_widget_set_default_colormap (gdk_colormap_get_system ());
 
     dpy    = GDK_DISPLAY();
     root   = GDK_ROOT_WINDOW();
