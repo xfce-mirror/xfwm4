@@ -2988,6 +2988,7 @@ inline void clientRemoveMaximizeFlag(Client * c)
 
     c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
+    frameDraw(c, FALSE, FALSE);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
 }
