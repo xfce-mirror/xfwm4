@@ -1,10 +1,11 @@
 /* XPM */
 static char * top_left_active_xpm[] = {
-"4 20 4 1",
+"4 20 5 1",
 " 	c None",
 ".	c #303234",
 "+	c #76AAC7 s active_hilight_1",
 "@	c #247EB2 s active_color_1",
+"#	c #247EB2 s active_shadow_1",
 "....",
 ".+++",
 ".+@@",
@@ -24,4 +25,4 @@ static char * top_left_active_xpm[] = {
 ".+@@",
 ".+@@",
 ".+@@",
-".+@@"};
+".+@#"};
