@@ -75,10 +75,9 @@ menu_filter (XEvent * xevent, gpointer data)
             return XEV_FILTER_STOP;
             break;
         default:
-            return XEV_FILTER_CONTINUE;
             break;
     }
-    return XEV_FILTER_STOP;
+    return XEV_FILTER_CONTINUE;
 }
 
 
@@ -130,7 +129,7 @@ activate_cb (GtkWidget * menuitem, gpointer data)
     xfce_pop_event_filter (menudata->menu->filter_setup);
     (*menudata->menu->func) (menudata->menu, 
                              menudata->op, 
-                             menudata->client_xwindow, 
+                             menudata->menu->xid, 
                              menudata->menu->data,
                              menudata->data);
     return (FALSE);
@@ -146,7 +145,7 @@ menu_closed (GtkMenu * widget, gpointer data)
     menu_open = NULL;
     TRACE ("deactivating menu_filter");
     xfce_pop_event_filter (menu->filter_setup);
-    (*menu->func) (menu, 0, None, menu->data, NULL);
+    (*menu->func) (menu, 0, menu->xid, menu->data, NULL);
     return (FALSE);
 }
 
@@ -193,7 +192,6 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
         menudata = g_new (MenuData, 1);
         menudata->menu = menu;
         menudata->op = MENU_OP_WORKSPACES;
-        menudata->client_xwindow = None;
         menudata->data = GINT_TO_POINTER (i);
         menu_item_connect (menuitem, menudata);
 
@@ -204,8 +202,8 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
 }
 
 Menu *
-menu_default (GdkScreen *gscr, MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
-    gint nws, gchar *wsn, gint wsnl, XfceFilterSetup *filter_setup, gpointer data)
+menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func, 
+    gint ws, gint nws, gchar *wsn, gint wsnl, XfceFilterSetup *filter_setup, gpointer data)
 {
     int i;
     Menu *menu;
@@ -218,6 +216,7 @@ menu_default (GdkScreen *gscr, MenuOp ops, MenuOp insensitive, MenuFunc func, gi
     menu->ops = ops;
     menu->insensitive = insensitive;
     menu->screen = gscr;
+    menu->xid = xid;
     menu->menu = gtk_menu_new ();
     gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
 
@@ -251,8 +250,7 @@ menu_default (GdkScreen *gscr, MenuOp ops, MenuOp insensitive, MenuFunc func, gi
                     menudata = g_new (MenuData, 1);
                     menudata->menu = menu;
                     menudata->op = menuitems[i].op;
-                    menudata->client_xwindow = None;
-                    menudata->data = NULL;
+                    menudata->data = data;
                     break;
                 default:
                     if (menuitems[i].image_name)
@@ -276,8 +274,7 @@ menu_default (GdkScreen *gscr, MenuOp ops, MenuOp insensitive, MenuFunc func, gi
                     menudata = g_new (MenuData, 1);
                     menudata->menu = menu;
                     menudata->op = menuitems[i].op;
-                    menudata->client_xwindow = None;
-                    menudata->data = NULL;
+                    menudata->data = data;
                     menu_item_connect (menuitem, menudata);
                     break;
             }

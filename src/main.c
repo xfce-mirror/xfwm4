@@ -55,6 +55,7 @@
 #include "mywindow.h"
 #include "session.h"
 #include "startup_notification.h"
+#include "compositor.h"
 #include "spinning_cursor.h"
 
 #define BASE_EVENT_MASK \
@@ -321,7 +322,7 @@ print_version (void)
 static gint
 parse_compositor (const gchar *s)
 {
-    gchar *buffer, *rvalue;
+    gchar *rvalue;
     gboolean retval = 2;
 
     rvalue = strrchr (s, '=');

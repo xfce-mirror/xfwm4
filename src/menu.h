@@ -59,7 +59,7 @@ typedef struct _Menu Menu;
 typedef struct _MenuItem MenuItem;
 typedef struct _MenuData MenuData;
 
-typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window client_xwindow,
+typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window xid,
                           gpointer menu_data, gpointer item_data);
 
 struct _MenuItem
@@ -73,7 +73,6 @@ struct _MenuData
 {
     Menu *menu;
     MenuOp op;
-    Window client_xwindow;
     gpointer data;
 };
 
@@ -83,12 +82,14 @@ struct _Menu
     GtkWidget *menu;
     XfceFilterSetup *filter_setup;
     MenuFunc func;
-    gpointer data;
     MenuOp ops;
     MenuOp insensitive;
+    Window xid;
+    gpointer data;
 };
 
 Menu *menu_default             (GdkScreen *,
+                                Window,
                                 MenuOp, 
                                 MenuOp, 
                                 MenuFunc, 

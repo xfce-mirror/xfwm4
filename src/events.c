@@ -82,7 +82,7 @@ static int edge_scroll_x = 0;
 static int edge_scroll_y = 0;
 
 static void handleEvent (DisplayInfo *display_info, XEvent * ev);
-static void menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
+static void menu_callback (Menu * menu, MenuOp op, Window xid,
     gpointer menu_data, gpointer item_data);
 static gboolean show_popup_cb (GtkWidget * widget, GdkEventButton * ev,
     gpointer data);
@@ -2016,7 +2016,7 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
 /* GTK specific stuff */
 
 static void
-menu_callback (Menu * menu, MenuOp op, Window client_xwindow, gpointer menu_data, gpointer item_data)
+menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer item_data)
 {
     Client *c = NULL;
 
@@ -2027,71 +2027,75 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow, gpointer menu_data
         xfwmWindowDelete (&menu_event_window);
     }
 
-    if (menu_data)
+    if ((menu_data != NULL) && (xid != None))
     {
-        c = (Client *) menu_data;
-        if (!c)
-        {
-            menu_free (menu);
-            return;
-        }
-        c->button_pressed[MENU_BUTTON] = FALSE;
+        ScreenInfo *screen_info = (ScreenInfo *) menu_data;
+        c = clientGetFromWindow (screen_info, xid, WINDOW);
     }
 
-    switch (op)
+    if (c)
     {
-        case MENU_OP_QUIT:
-            gtk_main_quit ();
-            break;
-        case MENU_OP_MAXIMIZE:
-        case MENU_OP_UNMAXIMIZE:
-            if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
-            {
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
-            }
-            break;
-        case MENU_OP_MINIMIZE:
-            if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                clientHide (c, c->win_workspace, TRUE);
-            }
-            frameDraw (c, FALSE, FALSE);
-            break;
-        case MENU_OP_MINIMIZE_ALL:
-            clientHideAll (c, c->win_workspace);
-            frameDraw (c, FALSE, FALSE);
-            break;
-        case MENU_OP_UNMINIMIZE:
-            clientShow (c, TRUE);
-            break;
-        case MENU_OP_SHADE:
-        case MENU_OP_UNSHADE:
-            clientToggleShaded (c);
-            break;
-        case MENU_OP_STICK:
-        case MENU_OP_UNSTICK:
-            clientToggleSticky (c, TRUE);
-            frameDraw (c, FALSE, FALSE);
-            break;
-        case MENU_OP_WORKSPACES:
-            clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
-            frameDraw (c, FALSE, FALSE);
-            break;
-        case MENU_OP_DELETE:
-            frameDraw (c, FALSE, FALSE);
-            clientClose (c);
-            break;
-        case MENU_OP_CONTEXT_HELP:
-            clientEnterContextMenuState (c);
-            frameDraw (c, FALSE, FALSE);
-            break;
-        case MENU_OP_ABOVE:
-        case MENU_OP_NORMAL:
-            clientToggleAbove (c);
-            /* Fall thru */
-        default:
-            frameDraw (c, FALSE, FALSE);
-            break;
+        c->button_pressed[MENU_BUTTON] = FALSE;
+
+        switch (op)
+        {
+            case MENU_OP_QUIT:
+                gtk_main_quit ();
+                break;
+            case MENU_OP_MAXIMIZE:
+            case MENU_OP_UNMAXIMIZE:
+                if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
+                {
+                    clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                }
+                break;
+            case MENU_OP_MINIMIZE:
+                if (CLIENT_CAN_HIDE_WINDOW (c))
+                {
+                    clientHide (c, c->win_workspace, TRUE);
+                }
+                frameDraw (c, FALSE, FALSE);
+                break;
+            case MENU_OP_MINIMIZE_ALL:
+                clientHideAll (c, c->win_workspace);
+                frameDraw (c, FALSE, FALSE);
+                break;
+            case MENU_OP_UNMINIMIZE:
+                clientShow (c, TRUE);
+                break;
+            case MENU_OP_SHADE:
+            case MENU_OP_UNSHADE:
+                clientToggleShaded (c);
+                break;
+            case MENU_OP_STICK:
+            case MENU_OP_UNSTICK:
+                clientToggleSticky (c, TRUE);
+                frameDraw (c, FALSE, FALSE);
+                break;
+            case MENU_OP_WORKSPACES:
+                clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
+                frameDraw (c, FALSE, FALSE);
+                break;
+            case MENU_OP_DELETE:
+                frameDraw (c, FALSE, FALSE);
+                clientClose (c);
+                break;
+            case MENU_OP_CONTEXT_HELP:
+                clientEnterContextMenuState (c);
+                frameDraw (c, FALSE, FALSE);
+                break;
+            case MENU_OP_ABOVE:
+            case MENU_OP_NORMAL:
+                clientToggleAbove (c);
+                /* Fall thru */
+            default:
+                frameDraw (c, FALSE, FALSE);
+                break;
+        }
+    }
+    else
+    {
+        gdk_beep ();
     }
     menu_free (menu);
 }
@@ -2258,10 +2262,10 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                               gdk_screen_get_height (screen_info->gscr), 
                               NoEventMask);
 
-    menu = menu_default (screen_info->gscr, ops, insensitive, menu_callback, 
+    menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback, 
                          c->win_workspace, screen_info->workspace_count, 
                          screen_info->workspace_names, screen_info->workspace_names_length,
-                         display_info->xfilter, c);
+                         display_info->xfilter, screen_info);
 
     if (!menu_popup (menu, x, y, ev->button, ev->time))
     {
