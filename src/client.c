@@ -1559,10 +1559,10 @@ static void clientInitPosition(Client * c)
     }
 
     getMouseXY(root, &msx, &msy);
-    left = (isLeftMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_LEFT] : 0);
-    right = (isRightMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_RIGHT] : 0);
-    top = (isTopMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_TOP] : 0);
-    bottom = (isBottomMostHead(dpy, screen, msx, msy) ? (int)margins[MARGIN_BOTTOM] : 0);
+    left = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+    right = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+    top = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+    bottom = (isBottomMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
 
     xmax = MyDisplayMaxX(dpy, screen, msx, msy) - frameWidth(c) - right;
     ymax = MyDisplayMaxY(dpy, screen, msx, msy) - frameHeight(c) - bottom;
@@ -2792,10 +2792,10 @@ void clientToggleMaximized(Client * c, int mode)
         cx = frameX(c) + (frameWidth(c) >> 1);
         cy = frameY(c) + (frameHeight(c) >> 1);
 
-        left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
-        right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
-        top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
-        bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+	left = (isLeftMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+	right = (isRightMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+	top = (isTopMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+	bottom = (isBottomMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
 
         if(mode != WIN_STATE_MAXIMIZED_HORIZ)
         {

@@ -41,9 +41,9 @@
 #include "monitor-icon.h"
 #include "my_intl.h"
 
-#define RCFILE "margins.xml"
-#define PLUGIN_NAME "margins"
-#define MARGINS_CHANNEL "MARGINS"
+#define RCFILE "borders.xml"
+#define PLUGIN_NAME "borders"
+#define MARGINS_CHANNEL "borders"
 
 #define DEFAULT_ICON_SIZE 48
 #define BORDER 5
@@ -53,10 +53,10 @@ static McsManager *manager = NULL;
 static int margins[4];
 
 static char *options[] = {
-    "left",
-    "right",
-    "top",
-    "bottom"
+    "Xfwm/LeftMargin",
+    "Xfwm/RightMargin",
+    "Xfwm/TopMargin",
+    "Xfwm/BottomMargin"
 };
 
 static void run_dialog(McsPlugin * mcs_plugin);
@@ -121,7 +121,6 @@ static void create_margins_channel(McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
     int i, n;
-    DesktopMargins dm;
 
     create_channel(mcs_plugin->manager, MARGINS_CHANNEL, RCFILE);
 
@@ -167,7 +166,7 @@ static void margin_changed(GtkSpinButton * spin, gpointer p)
 static void run_dialog(McsPlugin * mcs_plugin)
 {
     static GtkWidget *dialog = NULL;
-    GtkWidget *mainvbox, *header, *align, *vbox, *hbox, *hbox1, *label, *spin, *image;
+    GtkWidget *mainvbox, *header, *vbox, *hbox, *label, *spin, *image;
     GtkSizeGroup *sg;
     GdkPixbuf *icon;
     GdkPixbuf *monitor;

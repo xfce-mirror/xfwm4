@@ -36,7 +36,8 @@
 #include "debug.h"
 #include "my_intl.h"
 
-#define CHANNEL "xfwm4"
+#define CHANNEL1 "xfwm4"
+#define CHANNEL2 "borders"
 #define TOINT(x) (x ? atoi(x) : 0)
 
 Params params;
@@ -44,96 +45,173 @@ Params params;
 static McsClient *client = NULL;
 static int mcs_initted = FALSE;
 
+static void set_settings_margin(int idx, int value)
+{
+    int val;
+    
+    switch (idx)
+    {
+        case MARGIN_LEFT:
+	case MARGIN_RIGHT:
+	    if (value < 0)
+	    {
+	         val = 0;
+	    }
+	    else if (value > gdk_screen_width() / 4)
+	    {
+	        val = gdk_screen_width() / 4;
+	    }
+	    else
+	    {
+	        val = value;
+	    }
+	    params.xfwm_margins[idx] = val;
+	    break;
+        case MARGIN_TOP:
+	case MARGIN_BOTTOM:
+	    if (value < 0)
+	    {
+	         val = 0;
+	    }
+	    else if (value > gdk_screen_height() / 4)
+	    {
+	        val = gdk_screen_height() / 4;
+	    }
+	    else
+	    {
+	        val = value;
+	    }
+	    params.xfwm_margins[idx] = val;
+	    break;
+	 default:
+	    break;
+    }
+}
+
 static void notify_cb(const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
-    if(g_ascii_strcasecmp(CHANNEL, channel_name))
+    if(!g_ascii_strcasecmp(CHANNEL1, channel_name))
     {
-        return;
+	switch (action)
+	{
+            case MCS_ACTION_NEW:
+        	/* The following is to reduce initial startup time and reloads */
+        	if(!mcs_initted)
+        	{
+                    return;
+        	}
+            case MCS_ACTION_CHANGED:
+        	if(setting->type == MCS_TYPE_INT)
+        	{
+                    if(!strcmp(name, "Xfwm/ClickToFocus"))
+                    {
+                	params.click_to_focus = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/FocusNewWindow"))
+                    {
+                	params.focus_new = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/FocusRaise"))
+                    {
+                	params.raise_on_focus = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/RaiseDelay"))
+                    {
+                	params.raise_delay = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/RaiseOnClick"))
+                    {
+                	params.raise_on_click = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/SnapToBorder"))
+                    {
+                	params.snap_to_border = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/SnapWidth"))
+                    {
+                	params.snap_width = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
+                    {
+                	params.wrap_workspaces = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/BoxMove"))
+                    {
+                	params.box_move = setting->data.v_int;
+                    }
+                    else if(!strcmp(name, "Xfwm/BoxResize"))
+                    {
+                	params.box_resize = setting->data.v_int;
+                    }
+        	}
+        	else if(setting->type == MCS_TYPE_STRING)
+        	{
+                    if(!strcmp(name, "Xfwm/DblClickAction"))
+                    {
+                	reloadSettings(UPDATE_NONE);
+                    }
+                    else if(!strcmp(name, "Xfwm/KeyThemeName"))
+                    {
+                	reloadSettings(UPDATE_KEYGRABS);
+                    }
+                    else if(!strcmp(name, "Xfwm/ThemeName"))
+                    {
+                	reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
+                    }
+                    else if(!strcmp(name, "Xfwm/ButtonLayout"))
+                    {
+                	reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                    }
+                    if(!strcmp(name, "Xfwm/TitleAlign"))
+                    {
+                	reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                    }
+                    if(!strcmp(name, "Xfwm/TitleFont"))
+                    {
+                	reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                    }
+        	}
+        	break;
+            case MCS_ACTION_DELETED:
+            default:
+        	break;
+	}
     }
-
-    switch (action)
+    else if(!g_ascii_strcasecmp(CHANNEL2, channel_name))
     {
-        case MCS_ACTION_NEW:
-            /* The following is to reduce initial startup time and reloads */
-            if(!mcs_initted)
-            {
-                return;
-            }
-        case MCS_ACTION_CHANGED:
-            if(setting->type == MCS_TYPE_INT)
-            {
-                if(!strcmp(name, "Xfwm/ClickToFocus"))
-                {
-                    params.click_to_focus = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/FocusNewWindow"))
-                {
-                    params.focus_new = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/FocusRaise"))
-                {
-                    params.raise_on_focus = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/RaiseDelay"))
-                {
-                    params.raise_delay = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/RaiseOnClick"))
-                {
-                    params.raise_on_click = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/SnapToBorder"))
-                {
-                    params.snap_to_border = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/SnapWidth"))
-                {
-                    params.snap_width = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
-                {
-                    params.wrap_workspaces = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/BoxMove"))
-                {
-                    params.box_move = setting->data.v_int;
-                }
-                else if(!strcmp(name, "Xfwm/BoxResize"))
-                {
-                    params.box_resize = setting->data.v_int;
-                }
-            }
-            else if(setting->type == MCS_TYPE_STRING)
-            {
-                if(!strcmp(name, "Xfwm/DblClickAction"))
-                {
-                    reloadSettings(UPDATE_NONE);
-                }
-                else if(!strcmp(name, "Xfwm/KeyThemeName"))
-                {
-                    reloadSettings(UPDATE_KEYGRABS);
-                }
-                else if(!strcmp(name, "Xfwm/ThemeName"))
-                {
-                    reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
-                }
-                else if(!strcmp(name, "Xfwm/ButtonLayout"))
-                {
-                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
-                }
-                if(!strcmp(name, "Xfwm/TitleAlign"))
-                {
-                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
-                }
-                if(!strcmp(name, "Xfwm/TitleFont"))
-                {
-                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
-                }
-            }
-            break;
-        case MCS_ACTION_DELETED:
-        default:
-            break;
+	switch (action)
+	{
+            case MCS_ACTION_NEW:
+        	/* The following is to reduce initial startup time and reloads */
+        	if(!mcs_initted)
+        	{
+                    return;
+        	}
+            case MCS_ACTION_CHANGED:
+        	if(setting->type == MCS_TYPE_INT)
+        	{
+                    if(!strcmp(name, "Xfwm/LeftMargin"))
+                    {
+                	set_settings_margin(MARGIN_LEFT, setting->data.v_int);
+                    }
+                    else if(!strcmp(name, "Xfwm/RightMargin"))
+                    {
+                	set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
+                    }
+                    else if(!strcmp(name, "Xfwm/BottomMargin"))
+                    {
+                	set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
+                    }
+                    else if(!strcmp(name, "Xfwm/TopMargin"))
+                    {
+                	set_settings_margin(MARGIN_TOP, setting->data.v_int);
+                    }
+        	}
+        	break;
+            case MCS_ACTION_DELETED:
+            default:
+        	break;
+	}
     }
 }
 
@@ -187,84 +265,104 @@ static void loadMcsData(Settings rc[])
     McsSetting *setting;
     if(client)
     {
-        if(mcs_client_get_setting(client, "Xfwm/ClickToFocus", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/ClickToFocus", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("click_to_focus", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/FocusNewWindow", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/FocusNewWindow", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("focus_new", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/FocusRaise", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/FocusRaise", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("raise_on_focus", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/RaiseDelay", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/RaiseDelay", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt("raise_delay", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/RaiseOnClick", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/RaiseOnClick", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("raise_on_click", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/SnapToBorder", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/SnapToBorder", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("snap_to_border", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/SnapWidth", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/SnapWidth", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt("snap_width", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/WrapWorkspaces", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/WrapWorkspaces", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("wrap_workspaces", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/BoxMove", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/BoxMove", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("box_move", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/BoxResize", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/BoxResize", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("box_resize", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/DblClickAction", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/DblClickAction", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setValue("double_click_action", setting->data.v_string, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/ThemeName", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/ThemeName", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setValue("theme", setting->data.v_string, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/KeyThemeName", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/KeyThemeName", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setValue("keytheme", setting->data.v_string, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/ButtonLayout", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/ButtonLayout", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setValue("button_layout", setting->data.v_string, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/TitleAlign", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/TitleAlign", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setValue("title_alignment", setting->data.v_string, rc);
             mcs_setting_free(setting);
         }
-        if(mcs_client_get_setting(client, "Xfwm/TitleFont", CHANNEL, &setting) == MCS_SUCCESS)
+        if(mcs_client_get_setting(client, "Xfwm/TitleFont", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setValue("title_font", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/LeftMargin", CHANNEL2, &setting) == MCS_SUCCESS)
+        {
+            set_settings_margin(MARGIN_LEFT, setting->data.v_int);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/RightMargin", CHANNEL2, &setting) == MCS_SUCCESS)
+        {
+            set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/BottomMargin", CHANNEL2, &setting) == MCS_SUCCESS)
+        {
+            set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/TopMargin", CHANNEL2, &setting) == MCS_SUCCESS)
+        {
+            set_settings_margin(MARGIN_TOP, setting->data.v_int);
             mcs_setting_free(setting);
         }
     }
@@ -624,6 +722,10 @@ gboolean loadSettings(void)
         {"focus_new", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
         {"keytheme", NULL, TRUE},
+        {"margin_left", NULL, FALSE},
+        {"margin_right", NULL, FALSE},
+        {"margin_bottom", NULL, FALSE},
+        {"margin_top", NULL, FALSE},
         {"raise_delay", NULL, TRUE},
         {"raise_on_click", NULL, TRUE},
         {"raise_on_focus", NULL, TRUE},
@@ -729,6 +831,12 @@ gboolean loadSettings(void)
     params.snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
     params.snap_width = abs(TOINT(getValue("snap_width", rc)));
     params.dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
+
+    set_settings_margin(MARGIN_LEFT, TOINT(getValue("margin_left", rc)));
+    set_settings_margin(MARGIN_RIGHT, TOINT(getValue("margin_right", rc)));
+    set_settings_margin(MARGIN_BOTTOM, TOINT(getValue("margin_bottom", rc)));
+    set_settings_margin(MARGIN_TOP, TOINT(getValue("margin_top", rc)));
+
     g_value_init(&tmp_val, G_TYPE_INT);
     if(gdk_setting_get("gtk-double-click-time", &tmp_val))
     {
@@ -868,7 +976,8 @@ gboolean initSettings(void)
     client = mcs_client_new(dpy, screen, notify_cb, watch_cb, NULL);
     if(client)
     {
-        mcs_client_add_channel(client, CHANNEL);
+        mcs_client_add_channel(client, CHANNEL1);
+        mcs_client_add_channel(client, CHANNEL2);
     }
     else
     {

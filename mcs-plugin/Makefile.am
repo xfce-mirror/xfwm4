@@ -18,9 +18,9 @@ margins_plugin_la_SOURCES = margins_plugin.c margins-icon.h
 margins_plugin_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ @XFCE_MCS_MANAGER_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(pkgdatadir)\" 
 margins_plugin_la_LIBADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@ @XFCE_MCS_MANAGER_LIBS@
 
-EXTRA_DIST = inline-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
+EXTRA_DIST = xfwm4-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
 
-noinst_DATA = inline-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
+noinst_DATA = xfwm4-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
 
 xfwm4-icon.h: $(IMAGES)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list xfwm4_icon_data $(srcdir)/xfwm4-icon.png > $(srcdir)/xfwm4-icon.h

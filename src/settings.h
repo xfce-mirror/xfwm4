@@ -143,6 +143,7 @@ struct _Params
     MyPixmap title[5][2];
     gchar button_layout[8];
     gchar *shortcut_exec[NB_KEY_SHORTCUTS];
+    unsigned int xfwm_margins[4];
     int button_offset;
     int button_spacing;
     int dbl_click_time;
