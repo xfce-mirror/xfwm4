@@ -984,7 +984,14 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) NULL);
 
     menu = menu_default(ops, insensitive, menu_callback, c);
-    menu_popup(menu, x, y, ev->button, ev->time);
+    if (!menu_popup(menu, x, y, ev->button, ev->time))
+    {
+        DBG("Cannot open menu\n");
+	gdk_beep();
+	c->button_pressed[MENU_BUTTON] = False;
+        frameDraw(c);
+        menu_free(menu);
+    }
     return (TRUE);
 }
 

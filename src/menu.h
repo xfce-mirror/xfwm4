@@ -88,7 +88,7 @@ GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data);
 gboolean menu_is_window(Window);
 gboolean menu_is_opened(void);
 gboolean menu_check_and_close(void);
-void menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp);
+gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp);
 void menu_free(Menu * menu);
 
 #endif /* __MENU_H__ */

@@ -2435,26 +2435,30 @@ void clientMove(Client * c, XEvent * e)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
 
-    g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+    if(e->type == KeyPress)
+    {
+        passdata.use_keys = True;
+        g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+    }
     g2 = XGrabPointer(dpy, c->frame, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, CurrentTime);
 
-    if((g1 != GrabSuccess) || (g2 != GrabSuccess))
+    if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
-        DBG("passdata.grab failed in clientMove\n");
+        DBG("grab failed in clientMove\n");
+        gdk_beep();
         if(g1 == GrabSuccess)
         {
             XUngrabKeyboard(dpy, CurrentTime);
         }
-        if(g2 == GrabSuccess)
+        if((passdata.use_keys) && (g2 == GrabSuccess))
         {
             XUngrabPointer(dpy, CurrentTime);
         }
         return;
     }
 
-    if(e->type == KeyPress)
+    if(passdata.use_keys)
     {
-        passdata.use_keys = TRUE;
         XPutBackEvent(dpy, e);
     }
 
@@ -2468,7 +2472,10 @@ void clientMove(Client * c, XEvent * e)
     popEventFilter();
     DBG("leaving move loop\n");
 
-    XUngrabKeyboard(dpy, CurrentTime);
+    if(passdata.use_keys)
+    {
+        XUngrabKeyboard(dpy, CurrentTime);
+    }
     XUngrabPointer(dpy, CurrentTime);
 
     if(passdata.grab && box_move)
@@ -2662,12 +2669,11 @@ void clientResize(Client * c, int corner, XEvent * e)
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
+        g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
     }
-
-    g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
     g2 = XGrabPointer(dpy, c->frame, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], CurrentTime);
 
-    if((g1 != GrabSuccess) || (g2 != GrabSuccess))
+    if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
         DBG("grab failed in clientResize\n");
         gdk_beep();
@@ -2675,7 +2681,7 @@ void clientResize(Client * c, int corner, XEvent * e)
         {
             XUngrabKeyboard(dpy, CurrentTime);
         }
-        if(g2 == GrabSuccess)
+        if((passdata.use_keys) && (g2 == GrabSuccess))
         {
             XUngrabPointer(dpy, CurrentTime);
         }
@@ -2700,7 +2706,10 @@ void clientResize(Client * c, int corner, XEvent * e)
     popEventFilter();
     DBG("leaving resize loop\n");
 
-    XUngrabKeyboard(dpy, CurrentTime);
+    if(passdata.use_keys)
+    {
+        XUngrabKeyboard(dpy, CurrentTime);
+    }
     XUngrabPointer(dpy, CurrentTime);
 
     if(passdata.grab && box_resize)
@@ -2924,20 +2933,15 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         }
     }
 
-    g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
-    g2 = XGrabPointer(dpy, w, False, ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
+    g1 = XGrabPointer(dpy, w, False, ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
 
-    if(g1 != GrabSuccess || g2 != GrabSuccess)
+    if(g1 != GrabSuccess)
     {
         DBG("grab failed in clientButtonPress\n");
         gdk_beep();
         if(g1 == GrabSuccess)
         {
             XUngrabKeyboard(dpy, CurrentTime);
-        }
-        if(g2 == GrabSuccess)
-        {
-            XUngrabPointer(dpy, CurrentTime);
         }
         return;
     }
@@ -2955,7 +2959,6 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     DBG("leaving button press loop\n");
 
     XUngrabPointer(dpy, CurrentTime);
-    XUngrabKeyboard(dpy, CurrentTime);
 
     if(c->button_pressed[b])
     {

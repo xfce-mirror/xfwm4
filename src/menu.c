@@ -289,7 +289,7 @@ static gboolean grab_available(guint32 timestamp)
     return (!grab_failed);
 }
 
-void menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp)
+gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp)
 {
     GdkPoint *pt;
     DBG("entering menu_popup\n");
@@ -306,7 +306,7 @@ void menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timesta
         {
             g_free(pt);
             DBG("Cannot get grab on pointer/keyboard, cancel.\n");
-            return;
+            return FALSE;
         }
         DBG("opening new menu\n");
         menu_open = menu->menu;
@@ -318,6 +318,7 @@ void menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timesta
             g_message("GtkMenu failed to grab the pointer\n");
         }
     }
+    return TRUE;
 }
 
 void menu_free(Menu * menu)
