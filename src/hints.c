@@ -423,11 +423,9 @@ void init_net_desktop_params (Display * dpy, Window w, int workspace)
     data[0] = 0;
     data[1] = 0;
     XChangeProperty (dpy, w, net_desktop_viewport, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
-#if 0
     /* TBD : See why this prevents kdesktop from working properly */   
     data[0] = workspace;
     XChangeProperty (dpy, w, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
-#endif
 }
 
 void
