@@ -51,6 +51,8 @@
 
 static McsManager *mcs_manager;
 static NetkScreen *netk_screen = NULL;
+static gulong ws_created_id = 0;
+static gulong ws_destroyed_id = 0;
 
 static int ws_count = 1;
 static char **ws_names = NULL;
@@ -187,9 +189,11 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
        remains and crashes the MCS manager on workspace count
        change.
        Safer to remove it for now.
+
+       XXX added g_module_unload () to remove callbacks.
+     */
        
        watch_workspaces_hint (mcs_manager);
-     */
 }
 
 static void
@@ -573,11 +577,19 @@ update_channel (NetkScreen * screen, NetkWorkspace * ws, McsManager * manager)
 static void
 watch_workspaces_hint (McsManager * manager)
 {
-    /* make GCC happy */
-    (void)&watch_workspaces_hint;
+    ws_created_id =g_signal_connect (netk_screen, "workspace-created",
+                                     G_CALLBACK (update_channel), manager);
 
-    g_signal_connect (netk_screen, "workspace-created",
-                      G_CALLBACK (update_channel), manager);
-    g_signal_connect (netk_screen, "workspace-destroyed",
-                      G_CALLBACK (update_channel), manager);
+    ws_destroyed_id = g_signal_connect (netk_screen, "workspace-destroyed",
+                                        G_CALLBACK (update_channel), manager);
+}
+
+g_module_unload (GModule *module)
+{
+    DBG ("Disconecting workspace signal handlers");
+
+    g_signal_handler_disconnect (netk_screen, ws_created_id);
+    g_signal_handler_disconnect (netk_screen, ws_destroyed_id);
+
+    g_object_unref (netk_screen);
 }
