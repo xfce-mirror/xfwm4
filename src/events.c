@@ -143,7 +143,7 @@ static void reset_timeout(void)
 
 static inline void _moveRequest(Client * c, XEvent * ev)
 {
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MOVE) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove(c, ev);
     }
@@ -153,11 +153,11 @@ static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
 {
     clientSetFocus(c, True);
 
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_RESIZE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE))
+    if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
     {
         clientResize(c, corner, ev);
     }
-    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MOVE) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    else if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove(c, ev);
     }
@@ -212,7 +212,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_RESIZE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE))
+                if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
                 {
                     clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 }
@@ -790,8 +790,9 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
 
             DBG("client \"%s\" (%#lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
-            previous_value = (c->client_flag & CLIENT_FLAG_IS_RESIZABLE);
-            if(!(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height))))
+            previous_value = CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_IS_RESIZABLE);
+            if(((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize)) || (((c->size->flags & (PMinSize | PMaxSize)) == (PMinSize | PMaxSize)) && ((c->size->min_width < c->size->max_width) || (c->size->min_height < c->size->max_height))))
             {
                 CLIENT_FLAG_SET(c, CLIENT_FLAG_IS_RESIZABLE);
             }

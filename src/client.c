@@ -1918,7 +1918,7 @@ void clientFrame(Window w)
     CLIENT_FLAG_SET(c, ACCEPT_INPUT(c->wmhints) ? CLIENT_FLAG_WM_INPUT : 0);
     CLIENT_FLAG_SET(c, (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? CLIENT_FLAG_WM_TAKEFOCUS : 0);
 
-    if(!(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height))))
+    if(((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize)) || (((c->size->flags & (PMinSize | PMaxSize)) == (PMinSize | PMaxSize)) && ((c->size->min_width < c->size->max_width) || (c->size->min_height < c->size->max_height))))
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_IS_RESIZABLE);
     }
