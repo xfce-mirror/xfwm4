@@ -307,11 +307,13 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
         user_theme_file = g_strdup (default_theme_file);
 	gtk_widget_set_sensitive (itf->treeview3, FALSE);
 	gtk_widget_set_sensitive (itf->treeview4, FALSE);
+	gtk_widget_set_sensitive (itf->del_button, FALSE);
     }
     else
     {
       	gtk_widget_set_sensitive (itf->treeview3, TRUE);
 	gtk_widget_set_sensitive (itf->treeview4, TRUE);
+	gtk_widget_set_sensitive (itf->del_button, TRUE);
     }
 
     default_rc = xfce_rc_simple_open (default_theme_file, TRUE);
