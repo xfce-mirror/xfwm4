@@ -556,7 +556,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
                             screen_info->xroot, 1, 1, argb ? 32 : 8);
     g_return_val_if_fail (pixmap != None, None);
 
-    pa.repeat = True;
+    pa.repeat = TRUE;
     picture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), pixmap,
                                     render_format, CPRepeat,  &pa);
     if (picture == None)
@@ -658,7 +658,7 @@ root_tile (ScreenInfo *screen_info)
         g_return_val_if_fail (pixmap != None, None);
         fill = TRUE;
     }
-    pa.repeat = True;
+    pa.repeat = TRUE;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
     g_return_val_if_fail (format != NULL, None);
 
@@ -667,10 +667,10 @@ root_tile (ScreenInfo *screen_info)
     {
         XRenderColor c;
 
-        /* Just a color by default #6985b7 - Same as xfdesktop */
-        c.red   = 0x6900;
-        c.green = 0x8500;
-        c.blue  = 0xB700;
+        /* Just a color by default #1f3f6f - Same as xfdesktop */
+        c.red   = 0x1f00;
+        c.green = 0x3f00;
+        c.blue  = 0x6f00;
         c.alpha = 0xffff;
         XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
     }
@@ -1696,7 +1696,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->rootTile))
             {
-                XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, True);
+                XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (myScreenGetXDisplay (screen_info), screen_info->rootTile);
                 screen_info->rootTile = None;
                 add_repair (display_info);
@@ -2297,6 +2297,8 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
     screen_info->compositor_active = TRUE;
+
+    XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
 
     return TRUE;
 #else
