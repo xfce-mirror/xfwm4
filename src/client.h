@@ -104,6 +104,8 @@
 #define CLIENT_FLAG_WM_DELETE	       (1L<<23)
 #define CLIENT_FLAG_WM_INPUT           (1L<<24)
 #define CLIENT_FLAG_WM_TAKEFOCUS       (1L<<25)
+#define CLIENT_FLAG_RESIZING           (1L<<26)
+#define CLIENT_FLAG_MOVING             (1L<<27)
 
 /* Convenient macros */
 #define CLIENT_FLAG_TEST(c,f)			(c->client_flag & (f))
@@ -159,6 +161,7 @@ struct _Client
     int width;
     int height;
     int border_width;
+    int gravity;
     unsigned int ignore_unmap;
     int old_x;
     int old_y;

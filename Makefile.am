@@ -2,7 +2,7 @@
 
 noinst_DATA = example.xfwm4rc
 
-EXTRA_DIST = config.rpath  example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec xfwm4.spec.in
+EXTRA_DIST = example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec xfwm4.spec.in
 
 SUBDIRS = po common src mcs-plugin defaults themes
 

@@ -1044,13 +1044,13 @@ void clientUngrabKeys(Client * c)
 
 void clientCoordGravitate(Client * c, int mode, int *x, int *y)
 {
-    int gravity, dx = 0, dy = 0;
+    int dx = 0, dy = 0;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientCoordGravitate\n");
 
-    gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
-    switch (gravity)
+    c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
+    switch (c->gravity)
     {
         case CenterGravity:
             dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
@@ -1575,10 +1575,31 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 
     if(mask & CWX)
     {
-        c->x = wc->x;
+        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+	{
+            if ((c->gravity !=StaticGravity) && (wc->x == frameX(c)))
+	    {
+	        mask &= ~CWX;
+	    }
+	    else
+	    {
+	        c->x = wc->x;
+	    }
+	}
     }
     if(mask & CWY)
     {
+        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+	{
+            if ((c->gravity !=StaticGravity) && (wc->y == frameY(c)))
+	    {
+	        mask &= ~CWY;
+	    }
+	    else
+	    {
+	        c->y = wc->y;
+	    }
+	}
         c->y = wc->y;
     }
     if(mask & CWWidth)
@@ -3035,12 +3056,14 @@ void clientMove(Client * c, XEvent * e)
     {
         XPutBackEvent(dpy, e);
     }
-
+    
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_MOVING);
     DBG("entering move loop\n");
     pushEventFilter(clientMove_event_filter, &passdata);
     gtk_main();
     popEventFilter();
     DBG("leaving move loop\n");
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MOVING);
 
     if(passdata.use_keys)
     {
@@ -3342,11 +3365,14 @@ void clientResize(Client * c, int corner, XEvent * e)
     {
         passdata.my = frameHeight(c) - passdata.my;
     }
+
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_RESIZING);
     DBG("entering resize loop\n");
     pushEventFilter(clientResize_event_filter, &passdata);
     gtk_main();
     popEventFilter();
     DBG("leaving resize loop\n");
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_RESIZING);
 
     if(passdata.use_keys)
     {

@@ -635,8 +635,23 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
 {
     Client *c;
     XWindowChanges wc;
+    XEvent otherEvent;
 
     DBG("entering handleConfigureRequest\n");
+
+    /* Compress events - logic taken from kwin */
+    while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest, &otherEvent)) 
+    {
+        if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
+	{
+            ev = &otherEvent.xconfigurerequest;
+        }
+	else 
+	{
+            XPutBackEvent(dpy, &otherEvent);
+            break;
+        }
+    }
 
     wc.x = ev->x;
     wc.y = ev->y;
