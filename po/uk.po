@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2003-10-26 15:12+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -580,7 +580,7 @@ msgstr "Дія, що виконується при подвійному клац
 msgid "Advanced"
 msgstr "Додатково"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операція не підтримується (поки-що)\n"
@@ -590,27 +590,27 @@ msgstr "%s: Операція не підтримується (поки-що)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Фатальна помилка"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Вже активний інший менеджер вікон"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: відсутні дані з типових файлів"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Виникла невідома помилка"
@@ -724,12 +724,12 @@ msgstr "%s: Неможливо зарезервувати неактивний �
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Неможливо проаналізувати неактивний колір %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: вказаний ключ теми \"%s\" не існує, використовується типовий"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Відсутні значення у файлі з типовими значеннями"

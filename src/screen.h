@@ -95,6 +95,7 @@ struct _ScreenInfo
     int margins[4];
     int screen;
     int current_ws;
+    int previous_ws;
 
     /* Workspace definitions */
     int workspace_count;

@@ -54,16 +54,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 
     TRACE ("entering workspaceSwitch");
 
-    if (new_ws > screen_info->workspace_count - 1)
-    {
-        new_ws = 0;
-    }
-    else if (new_ws < 0)
-    {
-        new_ws = screen_info->workspace_count - 1;
-    }
-
-    if (new_ws == screen_info->current_ws)
+    if ((new_ws > screen_info->workspace_count - 1) || (new_ws < 0))
     {
         return;
     }
@@ -72,6 +63,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
                        GrabModeAsync, None, None, GDK_CURRENT_TIME);
 
+    if (new_ws == screen_info->current_ws)
+    {
+         new_ws = screen_info->previous_ws;
+    }
+    screen_info->previous_ws = screen_info->current_ws;
     screen_info->current_ws = new_ws;
     if (c2)
     {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -581,7 +581,7 @@ msgstr "Akce při dvojkliku na titulkový pruh :"
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "s: Operace není podporována (prozatím)\n"
@@ -591,27 +591,27 @@ msgstr "s: Operace není podporována (prozatím)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Již běží jiný správce oken"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Missing data from default files"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Vyskytla se neznámá chyba"
@@ -725,12 +725,12 @@ msgstr "%s: Cannot allocate inactive color %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive color %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: specified key theme \"%s\" missing, using default"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Missing values in defaults file"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.fa_IR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2004-01-09 19:35+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -577,7 +577,7 @@ msgstr "عملی که هنگام دوکلیکه کردن بر نوار عنوا�
 msgid "Advanced"
 msgstr "پیشرفته"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
@@ -587,27 +587,27 @@ msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: نقص در قطعه‌بندی"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: فقدان داده‌ها از پرونده‌های پیش‌فرض"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: خطای ناشناسی رخ داد"
@@ -721,12 +721,12 @@ msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: طرح کلید مشخص شده‌ی \"%s\" وجود ندارد، از پیش‌فرض استفاده می‌شود"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: فقدان مقادیر در پرونده‌ی پیش‌فرض‌ها"

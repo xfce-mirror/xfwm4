@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -578,7 +578,7 @@ msgstr "தலைப்புப் பட்டையில் þரட்ட�
 msgid "Advanced"
 msgstr "உயர்நிலை"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்பு þல்லை (þப்பொழுது)\n"
@@ -588,27 +588,27 @@ msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்ப�
 msgid "%s: Segmentation fault"
 msgstr "%s: பகுதியாக்கல் பழுது"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: கொடாநிலை கோப்புகளில் இல்லாத தரவுகள்"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: தெரியாத பிழை நடைபெற்றுள்ளது"
@@ -722,12 +722,12 @@ msgstr "%s: செயலற்ற வண்ணம் ஒதுக்கீ வ�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் அழகிட முடியவில்லை %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s:ஃகுறிப்பிட்ட தோற்றம் \"%s\" காணவில்லை, கொடாநிலை பயன்படுத்தப்படுகின்றது"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: கொடாநிலை கோப்பில் þல்லாத மதிப்புகள்"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2004-01-13 00:00+0100\n"
 "Last-Translator: Jaime Buffery <nestu@lunar-linux.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -591,7 +591,7 @@ msgstr "Acción a realizar cuando se haga doble click en la barra de título :"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
@@ -601,27 +601,27 @@ msgstr "%s: Operación no soportada (aún)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Violación de segmento"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: No se pudo entrar en modo demonio"
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: No se pudo crear un nuevo proceso: %s"
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ha ocurrido un error desconocido"
@@ -736,13 +736,13 @@ msgstr "%s: No se puede reservar el color activo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: Falta el mapa de teclado especificado \"%s\", usando el de por defecto"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"

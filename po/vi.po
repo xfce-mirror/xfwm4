@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2003-10-24 23:55+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -578,7 +578,7 @@ msgstr "Hành động khi bấm kép trên thanh tiêu đề :"
 msgid "Advanced"
 msgstr "Cao cấp"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Hoạt động không (chưa) được hỗ trợ\n"
@@ -588,27 +588,27 @@ msgstr "%s: Hoạt động không (chưa) được hỗ trợ\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Lỗi segmentation"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Trình quản lí cửa sổ khác đang chạy"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Thiếu dữ liệu từ tập tin mặc định"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Xảy ra lỗi chưa biết"
@@ -722,12 +722,12 @@ msgstr "%s: Không thể định vị màu không chủ đạo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Không thể phân tích màu không chủ đạo %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: thiếu chủ đề chính \"%s\" đã chỉ định, dùng mặc định"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Thiếu các giá trị trong tập tin mặc định"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2003-12-25 19:40+0100\n"
 "Last-Translator: Daniel Mróz <beorn@alpha.pl>\n"
 "Language-Team: none <none@none>\n"
@@ -584,7 +584,7 @@ msgstr "Akcja do wykonania przy podwójnym kliknięciu na pasku tytułowym :"
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operaracja jeszcze nie obsługiwana\n"
@@ -594,27 +594,27 @@ msgstr "%s: Operaracja jeszcze nie obsługiwana\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Naruszenie ochrony pamięci"
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Inny Menadżer Okien jest już uruchomiony"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Brak danych z domyślnych plików"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Wystąpił nieznany błąd"
@@ -729,12 +729,12 @@ msgstr "%s: Nie mogę zaalokować nieaktywnego koloru %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nie mogę zidentyfikować nieaktywnego koloru %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: podany temat \"%s\" nie istnieje, używam domyślnego"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Brak wartości w pliku danych domyślnych"

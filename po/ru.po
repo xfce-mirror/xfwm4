@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-26 23:16+0200\n"
+"POT-Creation-Date: 2004-07-06 21:54+0200\n"
 "PO-Revision-Date: 2003-09-03 22:20+0300\n"
 "Last-Translator: Dan Korostelev <daniel@ats.energo.ru>\n"
 "Language-Team: Russian <daniel@ats.energo.ru>\n"
@@ -572,7 +572,7 @@ msgstr "Действие по двойному щелчку в области з
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: src/events.c:1609
+#: src/events.c:1616
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операция не поддерживается (пока)\n"
@@ -582,27 +582,27 @@ msgstr "%s: Операция не поддерживается (пока)\n"
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:314
+#: src/main.c:312
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Уже запущен другой менеджер окон"
 
-#: src/main.c:319
+#: src/main.c:317
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Отсутствуют данные в стандартных файлах"
 
-#: src/main.c:329
+#: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:358
+#: src/main.c:356
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Произошла неизвестная ошибка"
@@ -716,13 +716,13 @@ msgstr "%s: Ошибка определения неактивного цвет�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ошибка обработки неактивного цвета %s\n"
 
-#: src/settings.c:831
+#: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: указанная тема клавиш \"%s\" отсутствует, используется тема по умолчанию"
 
-#: src/settings.c:841
+#: src/settings.c:847
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Отсутствуют значения в файле умолчаний"
