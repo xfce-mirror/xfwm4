@@ -1846,7 +1846,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             clientPassGrabMouseButton (c);
             if (ev->data.l[0] != 0)
             {
-                clientSetFocus (screen_info, c, (Time) ev->data.l[0], NO_FOCUS_FLAG);
+                clientSetFocus (screen_info, c, (Time) ev->data.l[1], NO_FOCUS_FLAG);
             }
             else
             {
