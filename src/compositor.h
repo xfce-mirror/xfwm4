@@ -34,7 +34,7 @@
 
 void compositorWindowMap (DisplayInfo *, Window);
 void compositorWindowUnmap (DisplayInfo *, Window);
-void compositorAddWindow (DisplayInfo *, Window, Client *c, XWindowAttributes *);
+void compositorAddWindow (DisplayInfo *, Window, Client *c);
 void compositorRemoveWindow (DisplayInfo *, Window);
 
 void compositorHandleEvent (DisplayInfo *, XEvent *);

@@ -1397,7 +1397,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (attr.override_redirect)
     {
         TRACE ("Override redirect window 0x%lx", w);
-        compositorAddWindow (display_info, w, NULL, &attr);
+        compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
@@ -1642,7 +1642,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetUserTime (c);
 
     /* Notify the compositor about this new window */
-    compositorAddWindow (display_info, c->frame, c, NULL);
+    compositorAddWindow (display_info, c->frame, c);
 
     clientRaise (c);
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
@@ -3468,7 +3468,8 @@ clientResize (Client * c, int corner, XEvent * e)
                         FALSE, GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
     g2 = XGrabPointer (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
                         FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-                        GrabModeAsync, screen_info->xroot, myDisplayGetCursorResize(display_info, passdata.corner),
+                        GrabModeAsync, screen_info->xroot, myDisplayGetCursorResize(display_info,
+                        passdata.corner),
                         GDK_CURRENT_TIME);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
