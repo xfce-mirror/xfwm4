@@ -699,11 +699,11 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
 	if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
 	{
 	    clientShow(c, True);
+            if(params.focus_new && clientAcceptFocus(c))
+            {
+        	clientSetFocus(c, True);
+            }
 	}
-        if(params.focus_new && clientAcceptFocus(c))
-        {
-            clientSetFocus(c, True);
-        }
         clientConfigure(c, &wc, ev->value_mask);
     }
     else

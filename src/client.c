@@ -2718,6 +2718,11 @@ void clientUpdateFocus(Client * c)
         DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
         return;
     }
+    if(c == client_focus)
+    {
+        DBG("client \"%s\" (%#lx) is already focused, ignoring request\n", c->name, c->window);
+        return;
+    }
     client_focus = c;
     clientInstallColormaps(c);
     if(c)
@@ -2753,11 +2758,11 @@ void clientSetFocus(Client * c, int sort)
             DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
             return;
         }
-	if (client_focus == c)
-	{
-            DBG("client \"%s\" (%#lx) has focus already, ignoring request\n", c->name, c->window);
+        if(c == client_focus)
+        {
+            DBG("client \"%s\" (%#lx) is already focused, ignoring request\n", c->name, c->window);
             return;
-	}
+        }
         client_focus = c;
         clientInstallColormaps(c);
         if(sort)
