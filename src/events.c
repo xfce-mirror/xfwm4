@@ -44,6 +44,7 @@
 #include "mywindow.h"
 #include "frame.h"
 #include "client.h"
+#include "stacking.h"
 #include "transients.h"
 #include "focus.h"
 #include "netwm.h"
@@ -1484,6 +1485,11 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
         screen_info = c->screen_info;
         clientUpdateFocus (screen_info, c, FOCUS_SORT);
+        if ((screen_info->params->raise_on_click) && (c != clientGetLastRaise (screen_info)))
+        {
+            clientRaise (c);
+            clientPassGrabButton1 (c);
+        }
         if (screen_info->params->raise_on_focus && !screen_info->params->click_to_focus)
         {
             reset_timeout (screen_info);

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -611,7 +611,7 @@ msgstr "Lệnh không tồn tại hoặc tập tin không thi hành được"
 msgid "Compose shortcut for command :"
 msgstr "Soạn phím tắt cho lệnh:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Hoạt động không (chưa) được hỗ trợ\n"
@@ -620,31 +620,6 @@ msgstr "%s: Hoạt động không (chưa) được hỗ trợ\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Lỗi segmentation"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Trình quản lí cửa sổ khác đang chạy"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Thiếu dữ liệu từ tập tin mặc định"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Vào daemon mode thất bại: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Tạo tiến trình mới thất bại: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Xảy ra lỗi chưa biết"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -730,11 +705,6 @@ msgstr "%s: GtkMenu không bắt được con trỏ\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state không quản lí được (cửa sổ 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Thiếu tập tin mặc định"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -755,16 +725,6 @@ msgstr "%s: Không thể định vị màu không chủ đạo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Không thể phân tích màu không chủ đạo %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: thiếu chủ đề chính \"%s\" đã chỉ định, dùng mặc định"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Thiếu các giá trị trong tập tin mặc định"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Chuyển sang..."
@@ -772,6 +732,38 @@ msgstr "Chuyển sang..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Ứng dụng không rõ!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Trình quản lí cửa sổ khác đang chạy"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Không thể định vị màu không chủ đạo %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Trình quản lí cửa sổ khác đang chạy"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Thiếu dữ liệu từ tập tin mặc định"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Vào daemon mode thất bại: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Tạo tiến trình mới thất bại: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Xảy ra lỗi chưa biết"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Thiếu tập tin mặc định"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: thiếu chủ đề chính \"%s\" đã chỉ định, dùng mặc định"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Thiếu các giá trị trong tập tin mặc định"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Không thể bắt bàn phím"

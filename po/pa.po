@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-10-04 02:59+0530\n"
 "Last-Translator: root <root@Phulewala>\n"
 "Language-Team:  <pa@li.org>\n"
@@ -617,7 +617,7 @@ msgstr "ਕਮਾਂਡ ਮੌਜੂਦ ਨਹੀਂ ਜਾਂ ਫਾਇਲ ਚ�
 msgid "Compose shortcut for command :"
 msgstr "ਕਮਾਂਡ ਲਈ ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ ਃ"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: ਕਿਰਿਆ ਨੂੰ ਸਹਿਯੋਗ ਨਹੀਂ (ਹਾਲੇ)\n"
@@ -626,31 +626,6 @@ msgstr "%s: ਕਿਰਿਆ ਨੂੰ ਸਹਿਯੋਗ ਨਹੀਂ (ਹਾਲ
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: ਵਿਭਾਜਨ ਨੁਕਸ"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: ਹੋਰ ਝਰੋਖਾ ਮੈਨੇਜਰ ਪਹਿਲਾਂ ਚੱਲ ਰਿਹਾ ਹੈ"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: ਮੂਲ ਫਾਇਲਾਂ ਵਿੱਚੋਂ ਗੁੰਮ ਡਾਟਾ"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: ਡੈਮਨ ਵਿਧੀ ਵਿੱਚ ਸ਼ਾਮਿਲ ਹੋਣ ਤੋਂ ਅਸਫਲਃ %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: ਨਵਾਂ ਕਾਰਜ ਪੈਦਾ ਕਰਨ ਵਿੱਚ ਅਸਫਲਃ %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: ਅਣਪਛਾਤੀ ਗਲਤੀ"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -736,11 +711,6 @@ msgstr "%s: Gtk-ਮੇਨੂੰ ਸੰਕੇਤਕ ਖੋਹਣ ਵਿੱਚ ਅ
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: ਬਿਨ-ਪ੍ਰਬੰਧ net_wm_state (ਝਰੋਖਾ 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: ਮੂਲ ਫਾਇਲ ਗੁੰਮ ਹੈ"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -761,16 +731,6 @@ msgstr "%s: ਨਾ-ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕ
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: ਨਿਰਧਾਰਿਤ ਮੁੱਖ ਸਰੂਪ \"%s\" ਗੁੰਮ ਹੈ, ਮੂਲ ਵਰਤ ਰਿਹਾ ਹੈ"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: ਮੂਲ ਫਾਇਲ ਵਿੱਚ ਗੁੰਮ ਕੀਮਤਾਂ"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "ਤੇ ਜਾਓ ..."
@@ -778,6 +738,38 @@ msgstr "ਤੇ ਜਾਓ ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: ਹੋਰ ਝਰੋਖਾ ਮੈਨੇਜਰ ਪਹਿਲਾਂ ਚੱਲ ਰਿਹਾ ਹੈ"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: ਨਾ-ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: ਹੋਰ ਝਰੋਖਾ ਮੈਨੇਜਰ ਪਹਿਲਾਂ ਚੱਲ ਰਿਹਾ ਹੈ"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: ਮੂਲ ਫਾਇਲਾਂ ਵਿੱਚੋਂ ਗੁੰਮ ਡਾਟਾ"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: ਡੈਮਨ ਵਿਧੀ ਵਿੱਚ ਸ਼ਾਮਿਲ ਹੋਣ ਤੋਂ ਅਸਫਲਃ %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: ਨਵਾਂ ਕਾਰਜ ਪੈਦਾ ਕਰਨ ਵਿੱਚ ਅਸਫਲਃ %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: ਅਣਪਛਾਤੀ ਗਲਤੀ"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: ਮੂਲ ਫਾਇਲ ਗੁੰਮ ਹੈ"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: ਨਿਰਧਾਰਿਤ ਮੁੱਖ ਸਰੂਪ \"%s\" ਗੁੰਮ ਹੈ, ਮੂਲ ਵਰਤ ਰਿਹਾ ਹੈ"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: ਮੂਲ ਫਾਇਲ ਵਿੱਚ ਗੁੰਮ ਕੀਮਤਾਂ"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "ਕੀਬੋਰਡ ਖੋਹ ਨਹੀਂ ਸਕਿਆ"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-08-25 20:11+0200\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -615,7 +615,7 @@ msgstr "Het commando bestaat niet of het bestand is niet uitvoerbaar!"
 msgid "Compose shortcut for command :"
 msgstr "Sneltoets instellen voor commando:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Bewerking (nog) niet ondersteund\n"
@@ -624,31 +624,6 @@ msgstr "%s: Bewerking (nog) niet ondersteund\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentatie fout"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: een andere Window Manager is al in gebruik"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%: Ontbrekende gegevens uit standaard bestanden"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Kon daemon modus niet starten: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Kon nieuw proces niet creëren"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: er is een onbekende fout opgetreden"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -734,11 +709,6 @@ msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: defaults bestand ontbreekt"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -759,17 +729,6 @@ msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-"%s: toetsenbordthema \"%s\" ontbreekt; standaard waarden worden gebruikt"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%: Ontbrekende gegevens in defaults bestand"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wisselen naar ..."
@@ -777,6 +736,39 @@ msgstr "Wisselen naar ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: een andere Window Manager is al in gebruik"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Kan inactieve kleur %s niet creëren\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: een andere Window Manager is al in gebruik"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%: Ontbrekende gegevens uit standaard bestanden"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Kon daemon modus niet starten: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Kon nieuw proces niet creëren"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: er is een onbekende fout opgetreden"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: defaults bestand ontbreekt"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: toetsenbordthema \"%s\" ontbreekt; standaard waarden worden gebruikt"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%: Ontbrekende gegevens in defaults bestand"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Kan toetsenbord niet vastzetten"

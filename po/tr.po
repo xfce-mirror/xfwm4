@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-12-13 22:56+0200\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -667,7 +667,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: İşlem desteklenmiyor (henüz)\n"
@@ -676,31 +676,6 @@ msgstr "%s: İşlem desteklenmiyor (henüz)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Parçalanma hatası"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Öntanımlı dosyalarda eksik veri"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Bilinmeyen bir hata oluştu"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -786,11 +761,6 @@ msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Öntanımlı dosyalar unutulmuş"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -811,17 +781,6 @@ msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-"%s: belirlenen \"%s\" tuş teması bulunamıyor, öntanımlı olan kullanılıyor"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Öntanımlı dosyalarda değerler unutulmuş"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Geç ..."
@@ -829,6 +788,33 @@ msgstr "Geç ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Öntanımlı dosyalarda eksik veri"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Bilinmeyen bir hata oluştu"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Öntanımlı dosyalar unutulmuş"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: belirlenen \"%s\" tuş teması bulunamıyor, öntanımlı olan kullanılıyor"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Öntanımlı dosyalarda değerler unutulmuş"
 
 #, fuzzy
 #~ msgid ""

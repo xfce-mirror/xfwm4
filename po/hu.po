@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-07-16 16:19+0200\n"
 "Last-Translator: Egmont Koblinger <egmont@uhulinux.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -670,7 +670,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Nem támogatott művelet (egyelőre)\n"
@@ -679,31 +679,6 @@ msgstr "%s: Nem támogatott művelet (egyelőre)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Szegmentálási hiba"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Már fut egy másik ablakkezelő"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Hiányzó adatok az alapértelmezett fájlokból"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Ismeretlen hiba történt"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -789,11 +764,6 @@ msgstr "%s: GtkMenu nem tudta elkapni a mutatót\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kezeletlen net_wm_state (ablak 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Alapértelmezéseket tartalmazó fájl hiányzik"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -814,16 +784,6 @@ msgstr "%s: Nem lehet allokálni az inaktív színt: %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nem lehet értelmezni az inaktív színt: %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Hiányzó értékek az alapértelmezéseket tartalmazó fájlban"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Váltás..."
@@ -831,6 +791,29 @@ msgstr "Váltás..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Már fut egy másik ablakkezelő"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Nem lehet allokálni az inaktív színt: %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Már fut egy másik ablakkezelő"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Hiányzó adatok az alapértelmezett fájlokból"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Ismeretlen hiba történt"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Alapértelmezéseket tartalmazó fájl hiányzik"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Hiányzó értékek az alapértelmezéseket tartalmazó fájlban"
 
 #, fuzzy
 #~ msgid ""

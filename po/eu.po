@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-09-13 22:46+0200\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -616,7 +616,7 @@ msgstr "Komandoa ez dago edo ez da abiarazgarria !"
 msgid "Compose shortcut for command :"
 msgstr "Laster-tekla sortu komandoarentzat :"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Ekintza ez da (oraindik) onartzen\n"
@@ -625,31 +625,6 @@ msgstr "%s: Ekintza ez da (oraindik) onartzen\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentazio errorea"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Beste leiho kudeatzaile bat abiarazirik dago"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Berezko konfigurazio fitxategian datuak falta dira"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Huts deabru moduan sartzerakoan: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Huts prozesu berria sortzerakoan: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Errore ezezagun bat gertatu da"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -735,11 +710,6 @@ msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Lehenespen fitxategia falta da"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -760,17 +730,6 @@ msgstr "%s: Ezin da esleitu kolore ez-aktiboa %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ezin da analizatu kolore ez-aktiboa %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-"%s: \"%s\" ezarritako tekla gaia ez da aurkitzen lehentsitakoa erabiliko da"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Lehenespen fixtategian balioak falta dira"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Aldatu hona ..."
@@ -778,6 +737,40 @@ msgstr "Aldatu hona ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Aplikazio ezezaguna!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Beste leiho kudeatzaile bat abiarazirik dago"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Ezin da esleitu kolore ez-aktiboa %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Beste leiho kudeatzaile bat abiarazirik dago"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Berezko konfigurazio fitxategian datuak falta dira"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Huts deabru moduan sartzerakoan: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Huts prozesu berria sortzerakoan: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Errore ezezagun bat gertatu da"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Lehenespen fitxategia falta da"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: \"%s\" ezarritako tekla gaia ez da aurkitzen lehentsitakoa erabiliko "
+#~ "da"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Lehenespen fixtategian balioak falta dira"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Ezin da teklatua grabatu"

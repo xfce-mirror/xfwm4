@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -613,7 +613,7 @@ msgstr "Belə əmr mövcud deyil, ya da fayl icraçı deyil!"
 msgid "Compose shortcut for command :"
 msgstr "Bu əmr üçün qısa yol yarat :"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Gedişat dəstəklənmir (hələlik)\n"
@@ -622,31 +622,6 @@ msgstr "%s: Gedişat dəstəklənmir (hələlik)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation xətası"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Onsuz da başqa Pəncərə İdarəçisi işləyir"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Ön qurğulu fayllardan mə'lumat əksikdir"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Demon moduna keçə bilmədi: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Yeni prosess yaradıla bilmədi: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Namə'lum xəta baş verdi"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -732,11 +707,6 @@ msgstr "%s: GtkMenu oxu ala bilmədi\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: İdarə edilməyən net_wm_state (window 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Əksik ön qurğular faylı"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -757,16 +727,6 @@ msgstr "%s:·Qeyri-fəal·rəng·tapıla·bilmir·%s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Qeyri-fəal rəng oxuna bilmir %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: bildirilən \"%s\" açar örtüyü əksikdir, ön qurğulusu işlədiləcək"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Ön qurğular faylında əksik qiymətlər"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Keç ..."
@@ -774,6 +734,39 @@ msgstr "Keç ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Naməlum proqram!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Onsuz da başqa Pəncərə İdarəçisi işləyir"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s:·Qeyri-fəal·rəng·tapıla·bilmir·%s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Onsuz da başqa Pəncərə İdarəçisi işləyir"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Ön qurğulu fayllardan mə'lumat əksikdir"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Demon moduna keçə bilmədi: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Yeni prosess yaradıla bilmədi: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Namə'lum xəta baş verdi"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Əksik ön qurğular faylı"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: bildirilən \"%s\" açar örtüyü əksikdir, ön qurğulusu işlədiləcək"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Ön qurğular faylında əksik qiymətlər"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Klaviatura yaxalana bilmir"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.hi.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-11-01 18:18+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -672,7 +672,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: आपरेशन हेतु समर्थन उपलब्ध नहीं (अभी) \n"
@@ -681,31 +681,6 @@ msgstr "%s: आपरेशन हेतु समर्थन उपलब्�
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: सेगमेन्टेशन फाल्ट"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s:  पहले से ही एक अन्य विंडो प्रबंधक चल रहा है."
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: डिफाल्ट फाइलों में से डाटा खो गया है."
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: अज्ञात त्रुटी हुई"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -792,11 +767,6 @@ msgstr "%s: जीटीके मेन्यू पाइन्टर पक�
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: अप्रबंधनीय net_wm_state (window 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s:   डिफाल्ट फाइल खो गया है"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -817,16 +787,6 @@ msgstr "%s:  अक्रिय रंग निर्धारित नही�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: अक्रिय रंग पारसे नहीं कर सकता %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: उल्लेखित कुंजी थीम \"%s\" नहीं है, डिफाल्ट उपयोग में"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: डिफाल्ट फाइल में मान खो गया है"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "पर स्विच करें..."
@@ -834,6 +794,32 @@ msgstr "पर स्विच करें..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s:  पहले से ही एक अन्य विंडो प्रबंधक चल रहा है."
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s:  अक्रिय रंग निर्धारित नहीं कर सकता %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s:  पहले से ही एक अन्य विंडो प्रबंधक चल रहा है."
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: डिफाल्ट फाइलों में से डाटा खो गया है."
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: अज्ञात त्रुटी हुई"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s:   डिफाल्ट फाइल खो गया है"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: उल्लेखित कुंजी थीम \"%s\" नहीं है, डिफाल्ट उपयोग में"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: डिफाल्ट फाइल में मान खो गया है"
 
 #, fuzzy
 #~ msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-03-09 19:04+0200\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -670,7 +670,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -678,31 +678,6 @@ msgstr ""
 #: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr ""
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr ""
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
 msgstr ""
 
 #: src/menu.c:39
@@ -789,11 +764,6 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr ""
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -812,16 +782,6 @@ msgstr ""
 #: src/settings.c:708
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr ""
-
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
 msgstr ""
 
 #: src/tabwin.c:70

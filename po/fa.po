@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-09-30 08:16+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -616,7 +616,7 @@ msgstr "فرمان وجود ندارد یا پرونده قابل اجرا نی�
 msgid "Compose shortcut for command :"
 msgstr "ساختن میانبر برای فرمان :"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
@@ -625,31 +625,6 @@ msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: نقص در قطعه‌بندی"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: فقدان داده‌ها از پرونده‌های پیش‌فرض"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: خطای ناشناسی رخ داد"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -735,11 +710,6 @@ msgstr "%s: GtkMenu موفق به گرفتن اشاره‌گر نشد\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) سازماندهی نشده"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: فقدان پرونده‌ی پیش‌فرض‌ها"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -760,16 +730,6 @@ msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: طرح کلید مشخص شده‌ی \"%s\" وجود ندارد، از پیش‌فرض استفاده می‌شود"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: فقدان مقادیر در پرونده‌ی پیش‌فرض‌ها"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "تعویض به ..."
@@ -777,6 +737,38 @@ msgstr "تعویض به ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "برنامه ناشناخته!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: فقدان داده‌ها از پرونده‌های پیش‌فرض"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: خطای ناشناسی رخ داد"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: فقدان پرونده‌ی پیش‌فرض‌ها"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: طرح کلید مشخص شده‌ی \"%s\" وجود ندارد، از پیش‌فرض استفاده می‌شود"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: فقدان مقادیر در پرونده‌ی پیش‌فرض‌ها"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "نمیتوان صفحه‌کلید را گرفت"

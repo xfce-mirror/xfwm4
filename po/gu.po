@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-09-22 20:20+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati\n"
@@ -614,7 +614,7 @@ msgstr "આદેશ અસ્તિત્વમાં નથી અથવા �
 msgid "Compose shortcut for command :"
 msgstr "આદેશ માટે ટુંકો પથ બનાવો :"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: પ્રક્રિયા આધારભૂત નથી (હજુ)\n"
@@ -623,31 +623,6 @@ msgstr "%s: પ્રક્રિયા આધારભૂત નથી (હજ�
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: બીજુ વિન્ડો વ્યવસ્થાપક પહેલાથી જ ચાલી રહ્યું છે"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: મૂળભુત ફાઈલોમાંથી માહિતી ખોવાયેલી છે"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: ડિમન સ્થિતિ દાખલ કરવામાં નિષ્ફળ: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: નવી પ્રક્રિયા બનાવવામાં નિષ્ફળ: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: અજ્ઞાત ભૂલ ઉદ્દભવી"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -733,11 +708,6 @@ msgstr "%s: GtkMenu એ નિર્દેશક મેળવવામાં ન
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: નહિં વ્યવસ્થા થયેલ net_wm_state (વિન્ડો 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: મૂળભુત ફાઈલ ખોવાયેલી છે"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -758,16 +728,6 @@ msgstr "%s: બિનસક્રિય રંગ %s સોંપી શકા�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: બિનસક્રિય રંગ %s પદચ્છેદ કરી શકાતો નથી\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: સ્પષ્ટ કરેલ કી થીમ \"%s\" ખોવાયેલ છે, મૂળભુત વાપરી રહ્યા છીએ"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: મૂળભુત ફાઈલમાં ખોવાયેલ કિંમતો"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "માં ફેરવો ..."
@@ -775,6 +735,38 @@ msgstr "માં ફેરવો ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "અજ્ઞાત કાર્યક્રમ!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: બીજુ વિન્ડો વ્યવસ્થાપક પહેલાથી જ ચાલી રહ્યું છે"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: બિનસક્રિય રંગ %s સોંપી શકાતો નથી\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: બીજુ વિન્ડો વ્યવસ્થાપક પહેલાથી જ ચાલી રહ્યું છે"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: મૂળભુત ફાઈલોમાંથી માહિતી ખોવાયેલી છે"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: ડિમન સ્થિતિ દાખલ કરવામાં નિષ્ફળ: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: નવી પ્રક્રિયા બનાવવામાં નિષ્ફળ: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: અજ્ઞાત ભૂલ ઉદ્દભવી"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: મૂળભુત ફાઈલ ખોવાયેલી છે"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: સ્પષ્ટ કરેલ કી થીમ \"%s\" ખોવાયેલ છે, મૂળભુત વાપરી રહ્યા છીએ"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: મૂળભુત ફાઈલમાં ખોવાયેલ કિંમતો"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "કીબોર્ડ મેળવી શકતા નથી"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-10-15 14:37+0200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.ollakka@iki.fi>\n"
 "Language-Team:  <>\n"
@@ -597,7 +597,7 @@ msgstr "Komentoa ei ole tai tiedostolla ei ole suoritusoikeutta !"
 msgid "Compose shortcut for command :"
 msgstr "Näppäinoikotie komennolle :"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Toiminto ei ole (vielä) tuettu\n"
@@ -606,31 +606,6 @@ msgstr "%s: Toiminto ei ole (vielä) tuettu\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Oletustiedostoista puuttuu tietoa"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Uuden prosessin luonti epäonnistui: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Tuntematon virhe"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -716,11 +691,6 @@ msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Oletustiedostoista puuttuu tietoa"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -741,16 +711,6 @@ msgstr "%s: Ei-aktiivista väriä %s ei voi käyttää\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei-aktiivista väriä %s ei voi tunnistaa\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Oletustiedostoista puuttuu tietoa"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Siirrä ..."
@@ -758,3 +718,29 @@ msgstr "Siirrä ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Tuntematon ohjelma"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Ei-aktiivista väriä %s ei voi käyttää\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Oletustiedostoista puuttuu tietoa"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Uuden prosessin luonti epäonnistui: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Tuntematon virhe"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Oletustiedostoista puuttuu tietoa"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Oletustiedostoista puuttuu tietoa"

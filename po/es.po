@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-01-13 00:00+0100\n"
 "Last-Translator: edscott <edscott@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -618,7 +618,7 @@ msgstr "El comando no es válido."
 msgid "Compose shortcut for command :"
 msgstr "Generar atajo para el comando:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
@@ -627,31 +627,6 @@ msgstr "%s: Operación no soportada (aún)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Violación de segmento"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Faltan datos en ficheros de configuración por defecto"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: No se pudo entrar en modo demonio"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: No se pudo crear un nuevo proceso: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Ha ocurrido un error desconocido"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -737,11 +712,6 @@ msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Falta fichero preestablecido"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -762,17 +732,6 @@ msgstr "%s: No se puede reservar el color activo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-"%s: Falta el mapa de teclado especificado \"%s\", usando el de por defecto"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Faltan datos en fichero preestablecido"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Cambiar a ..."
@@ -780,6 +739,39 @@ msgstr "Cambiar a ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Aplicacion desconocida."
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: No se puede reservar el color activo %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Faltan datos en ficheros de configuración por defecto"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: No se pudo entrar en modo demonio"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: No se pudo crear un nuevo proceso: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Ha ocurrido un error desconocido"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Falta fichero preestablecido"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: Falta el mapa de teclado especificado \"%s\", usando el de por defecto"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Faltan datos en fichero preestablecido"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "No se puede tomar el teclado"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-10-23 21:03+0200\n"
 "Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: none <none@none>\n"
@@ -603,7 +603,7 @@ msgstr "Dieses Kommando existiert nicht oder die Datei ist nicht ausführbar!"
 msgid "Compose shortcut for command :"
 msgstr "Tastenkombination für Kommando erstellen:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation (noch) nicht unterstuetzt\n"
@@ -612,31 +612,6 @@ msgstr "%s: Operation (noch) nicht unterstuetzt\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Speicherzugriffsfehler"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Einstellungen aus den Defaults fehlen"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Konnte nicht im Hintergrund starten: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Konnte keinen neuen Prozess erstellen: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Ein unbekannter Fehler ist aufgetreten"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -722,11 +697,6 @@ msgstr "%s: GtkMenue konnte die Position des Mauszeigers nicht feststellen\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kein net_wm_state (Fenster %#lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Fehlende Einstellungen aus den Defaults"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -747,16 +717,6 @@ msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht einlesen %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: Theme \"%s\" nicht gefunden. Es wird das Standard-Theme verwendet."
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Fehlende Einstellungen aus den Defaults"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wechseln zu ..."
@@ -764,3 +724,36 @@ msgstr "Wechseln zu ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Unbekannte Anwendung"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Einstellungen aus den Defaults fehlen"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Konnte nicht im Hintergrund starten: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Konnte keinen neuen Prozess erstellen: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Ein unbekannter Fehler ist aufgetreten"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Fehlende Einstellungen aus den Defaults"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: Theme \"%s\" nicht gefunden. Es wird das Standard-Theme verwendet."
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Fehlende Einstellungen aus den Defaults"

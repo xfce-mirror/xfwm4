@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-10-10 12:36+0100\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -621,7 +621,7 @@ msgstr "O comando não existe ou o ficheiro não é executavél !"
 msgid "Compose shortcut for command :"
 msgstr "Defina o atalho para o comando :"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operação (ainda) não suportada\n"
@@ -630,31 +630,6 @@ msgstr "%s: Operação (ainda) não suportada\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Ja está a correr outro Gestor de Janelas"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Faltam dados dos ficheiros"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Erro ao entrar no modo daemon: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Erro ao criar novo processo: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Ocorreu um erro desconhecido"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -740,11 +715,6 @@ msgstr "%s: GtkMenu falhou a captar o ponteiro\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) não gerido"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Falta o ficheiro das omissões"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -765,16 +735,6 @@ msgstr ""
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: não foi encontrado o tema especificado \"%s\" , a usar o normal"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr ""
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Mudar para..."
@@ -782,6 +742,35 @@ msgstr "Mudar para..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Aplicação desconhecida!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Ja está a correr outro Gestor de Janelas"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Não foi possível alocar a cor activa %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Ja está a correr outro Gestor de Janelas"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Faltam dados dos ficheiros"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Erro ao entrar no modo daemon: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Erro ao criar novo processo: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Ocorreu um erro desconhecido"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Falta o ficheiro das omissões"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: não foi encontrado o tema especificado \"%s\" , a usar o normal"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Não foi possível captar do teclado"

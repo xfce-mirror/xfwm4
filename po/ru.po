@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-08-24 14:47+0600\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -616,7 +616,7 @@ msgstr "Команда не существует или файл не являе
 msgid "Compose shortcut for command :"
 msgstr "Нажмите сочетание клавиш для:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операция не поддерживается (пока)\n"
@@ -625,31 +625,6 @@ msgstr "%s: Операция не поддерживается (пока)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Нарушение сегментации"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Уже запущен другой менеджер окон"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Отсутствуют данные в стандартных файлах"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Ошибка входа в режим демона: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Ошибка создания нового процесса: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Произошла неизвестная ошибка"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -735,11 +710,6 @@ msgstr "%s: GtkMenu не смог получить курсор\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Не обрабатываемое net_wm_state (окно 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Отсутствует файл настроек по умолчанию"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -760,17 +730,6 @@ msgstr "%s: Ошибка выделения неактивного цвета %s
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ошибка обработки неактивного цвета %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-"%s: указанная тема клавиш \"%s\" отсутствует, используется тема по умолчанию"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Отсутствуют значения в файле настроек по умолчанию"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Переключиться на ..."
@@ -778,6 +737,40 @@ msgstr "Переключиться на ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Неизвестное приложение!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Уже запущен другой менеджер окон"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Ошибка выделения неактивного цвета %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Уже запущен другой менеджер окон"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Отсутствуют данные в стандартных файлах"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Ошибка входа в режим демона: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Ошибка создания нового процесса: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Произошла неизвестная ошибка"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Отсутствует файл настроек по умолчанию"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: указанная тема клавиш \"%s\" отсутствует, используется тема по "
+#~ "умолчанию"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Отсутствуют значения в файле настроек по умолчанию"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Невозможно считать состояние клавиатуры"

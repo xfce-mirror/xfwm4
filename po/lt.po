@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-06-11 23:09+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
@@ -663,7 +663,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operacija nėra palaikoma (kolkas)\n"
@@ -672,31 +672,6 @@ msgstr "%s: Operacija nėra palaikoma (kolkas)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentacijos klaida"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Kita langų tvarkyklė jau veikia"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Trūksta duomenų iš numatytojo failo"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Neįmanoma paleisti demono režimo: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Neįmanoma sukurti naujo proceso: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Įvyko nežinoma klaida"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -782,11 +757,6 @@ msgstr "%s: GtkMenu nesugebėjo sugauti rodyklės\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Neapdorota net_wm_state (window·0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s:Nėra numatytojo failo"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -807,16 +777,6 @@ msgstr "%s: Neįmanoma paskirti pasyvios spalvos %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Neįmanoma sužinoti pasyvios spalvos %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: nustatytoji klavišų tema \"%s\"·neegzistuoja, naudojama pagrindinė"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Trūksta reikšmių numatytame faile"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Perjungti į ..."
@@ -824,6 +784,39 @@ msgstr "Perjungti į ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Nežinoma programa!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Kita langų tvarkyklė jau veikia"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Neįmanoma paskirti pasyvios spalvos %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Kita langų tvarkyklė jau veikia"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Trūksta duomenų iš numatytojo failo"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Neįmanoma paleisti demono režimo: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Neįmanoma sukurti naujo proceso: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Įvyko nežinoma klaida"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s:Nėra numatytojo failo"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr ""
+#~ "%s: nustatytoji klavišų tema \"%s\"·neegzistuoja, naudojama pagrindinė"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Trūksta reikšmių numatytame faile"
 
 #, fuzzy
 #~ msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-12-10 14:20+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -666,7 +666,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: この操作はサポート外です\n"
@@ -675,31 +675,6 @@ msgstr "%s: この操作はサポート外です\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: セグメンテーション違反です"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: 別のウィンドウ・マネージャが実行中"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: 標準ファイルにデータが見付かりません"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: 未知のエラーが発生"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -785,11 +760,6 @@ msgstr "%s: GtkMenuはポインターを取得できませんでした\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state が未管理です (window 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: 標準ファイルが、みつかりません"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -810,16 +780,6 @@ msgstr "%s: 非アクティブ・カラーを割り当てできません %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 非アクティブ・カラーが解析できません %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: 指定されたキー・テーマ \"%s\" が見当たりません, 標準を使います"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: 標準ファイルに値が見付かりません"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "切替え..."
@@ -827,6 +787,32 @@ msgstr "切替え..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: 別のウィンドウ・マネージャが実行中"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: 非アクティブ・カラーを割り当てできません %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: 別のウィンドウ・マネージャが実行中"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: 標準ファイルにデータが見付かりません"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: 未知のエラーが発生"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: 標準ファイルが、みつかりません"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: 指定されたキー・テーマ \"%s\" が見当たりません, 標準を使います"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: 標準ファイルに値が見付かりません"
 
 #, fuzzy
 #~ msgid ""

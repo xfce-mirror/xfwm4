@@ -64,6 +64,10 @@ myDisplayInit (GdkDisplay *gdisplay)
 
     display->shape = 
         XShapeQueryExtension (display->dpy, &display->shape_event, &dummy);
+    if (!display->shape)
+    {
+        g_warning ("%s: The display does not support the XShape extension.", PACKAGE);
+    }
 
     display->root_cursor = 
         XCreateFontCursor (display->dpy, XC_left_ptr);

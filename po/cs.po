@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -669,7 +669,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "s: Operace není podporována (prozatím)\n"
@@ -678,31 +678,6 @@ msgstr "s: Operace není podporována (prozatím)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Již běží jiný správce oken"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Missing data from default files"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Vyskytla se neznámá chyba"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -788,11 +763,6 @@ msgstr "%s: GtkMenu failed to grab the pointer\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Missing defaults file"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -813,16 +783,6 @@ msgstr "%s: Cannot allocate inactive color %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive color %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: specified key theme \"%s\" missing, using default"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Missing values in defaults file"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Přepnout na ..."
@@ -830,6 +790,32 @@ msgstr "Přepnout na ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Již běží jiný správce oken"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Cannot allocate inactive color %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Již běží jiný správce oken"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Missing data from default files"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Vyskytla se neznámá chyba"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Missing defaults file"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: specified key theme \"%s\" missing, using default"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Missing values in defaults file"
 
 #, fuzzy
 #~ msgid ""

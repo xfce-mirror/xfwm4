@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.0.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-02-08 00:28+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -662,7 +662,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operasi tidak disokong (lagi)\n"
@@ -671,31 +671,6 @@ msgstr "%s: Operasi tidak disokong (lagi)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Kesilapan segmentasi"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Kehilangan data dari fail default"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: Gagal untuk memasuki mod daemon: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Gagal unuk cipta proses baru: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Ralat tidak diketahui terjadi"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -781,11 +756,6 @@ msgstr "%s: GtkMenu gagal untuk grab penunjuk\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Takterurus net_wm_state (tetingkap 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Kehilangan fail default"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -806,16 +776,6 @@ msgstr "%s: Tak boleh allocate warna tak aktif %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Tak boleh parse warna tak aktif %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: kekunci tema dispefikasi \"%s\" hilang, guna default"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Kehilangan nilai dalam fail default"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Suis ke ..."
@@ -823,6 +783,38 @@ msgstr "Suis ke ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Tak boleh allocate warna tak aktif %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Kehilangan data dari fail default"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: Gagal untuk memasuki mod daemon: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Gagal unuk cipta proses baru: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Ralat tidak diketahui terjadi"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Kehilangan fail default"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: kekunci tema dispefikasi \"%s\" hilang, guna default"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Kehilangan nilai dalam fail default"
 
 #, fuzzy
 #~ msgid ""

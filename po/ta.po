@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -666,7 +666,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்பு þல்லை (þப்பொழுது)\n"
@@ -675,31 +675,6 @@ msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்ப�
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: பகுதியாக்கல் பழுது"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: கொடாநிலை கோப்புகளில் இல்லாத தரவுகள்"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: தெரியாத பிழை நடைபெற்றுள்ளது"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -785,11 +760,6 @@ msgstr "%s: GtkMenuக்கு சுட்டியை பெற முடி�
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: மேலாண்மையற்ற net_wm_state (சாளரம் 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: கொடாநிலை கோப்புகள் þல்லை"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -810,16 +780,6 @@ msgstr "%s: செயலற்ற வண்ணம் ஒதுக்கீ வ�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் அழகிட முடியவில்லை %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s:ஃகுறிப்பிட்ட தோற்றம் \"%s\" காணவில்லை, கொடாநிலை பயன்படுத்தப்படுகின்றது"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: கொடாநிலை கோப்பில் þல்லாத மதிப்புகள்"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "þதட்கு மாற்றவும் ..."
@@ -827,6 +787,32 @@ msgstr "þதட்கு மாற்றவும் ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: செயலற்ற வண்ணம் ஒதுக்கீ வைக்க முடியவில்லை %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: கொடாநிலை கோப்புகளில் இல்லாத தரவுகள்"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: தெரியாத பிழை நடைபெற்றுள்ளது"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: கொடாநிலை கோப்புகள் þல்லை"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s:ஃகுறிப்பிட்ட தோற்றம் \"%s\" காணவில்லை, கொடாநிலை பயன்படுத்தப்படுகின்றது"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: கொடாநிலை கோப்பில் þல்லாத மதிப்புகள்"
 
 #, fuzzy
 #~ msgid ""

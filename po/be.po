@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-09-12 12:27+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -616,7 +616,7 @@ msgstr "Загад не йснуе альбо файл ня мае правоў 
 msgid "Compose shortcut for command :"
 msgstr "Прызначыць гарачыя клявішы для загада:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: дзеяньне не падтрымліваецца (покуль)\n"
@@ -625,31 +625,6 @@ msgstr "%s: дзеяньне не падтрымліваецца (покуль)\
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: збой сэгмэнтаваньня"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: іншы ваконны кіраўнік ужо выконваецца"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: прапушчаныя даньні з файлаў дапомнасьцяў"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: немагчыма ўвайсьці ў рэжым дэмана: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: немагчыма стварыць новы працэс: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: здарылась невядомая памылка"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -735,11 +710,6 @@ msgstr "%s: GtkMenu немагчыма захапіць паказьнік\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: некіруемы стан net_wm_state (вакно 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: прапушчаны файл дапомнасьцяў"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -760,16 +730,6 @@ msgstr "%s: немагчыма разьмеркаваць неактыўны к�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: немагчыма разабраць неактыўны колер %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: заданы ключ тэмы \"%s\" прапушчаны, выкарыстоўваецца дапомны"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: прапушчаныя значэньні ў файле дапомнасьцяў"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Пераключыць на ..."
@@ -777,6 +737,38 @@ msgstr "Пераключыць на ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Невядомае дастасаваньне!"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: іншы ваконны кіраўнік ужо выконваецца"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: немагчыма разьмеркаваць неактыўны колер %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: іншы ваконны кіраўнік ужо выконваецца"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: прапушчаныя даньні з файлаў дапомнасьцяў"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: немагчыма ўвайсьці ў рэжым дэмана: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: немагчыма стварыць новы працэс: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: здарылась невядомая памылка"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: прапушчаны файл дапомнасьцяў"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: заданы ключ тэмы \"%s\" прапушчаны, выкарыстоўваецца дапомны"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: прапушчаныя значэньні ў файле дапомнасьцяў"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "Немагчыма атрымаць націснутыя клявішы"

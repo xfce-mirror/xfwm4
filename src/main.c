@@ -492,12 +492,12 @@ main (int argc, char **argv)
     switch (status)
     {
         case -1:
-            g_warning (_("%s: Another Window Manager is already running"),
+            g_warning ("%s: Another Window Manager is already running",
                 PACKAGE);
             exit (1);
             break;
         case -2:
-            g_warning (_("%s: Missing data from default files"),
+            g_warning ("%s: Missing data from default files",
                 PACKAGE);
             exit (1);
             break;
@@ -507,7 +507,7 @@ main (int argc, char **argv)
 #ifdef HAVE_DAEMON
                 if (daemon(TRUE, TRUE) < 0) 
                 {
-                        g_warning(_("%s: Failed to enter daemon mode: %s"),
+                        g_warning("%s: Failed to enter daemon mode: %s",
                                         g_get_prgname(), g_strerror(errno));
                         exit(EXIT_FAILURE);
                 }
@@ -515,7 +515,7 @@ main (int argc, char **argv)
                 switch (fork ())
                 {
                     case -1:
-                        g_warning (_("%s: Failed to create new process: %s"),
+                        g_warning ("%s: Failed to create new process: %s",
                                                                 g_get_prgname(), g_strerror(errno));
                         exit (1);
                         break;
@@ -536,7 +536,7 @@ main (int argc, char **argv)
             gtk_main ();
             break;
         default:
-            g_warning (_("%s: Unknown error occured"), PACKAGE);
+            g_warning ("%s: Unknown error occured", PACKAGE);
             exit (1);
             break;
     }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-09-28 01:05-0700\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -612,7 +612,7 @@ msgstr "该命令不存在或者该文件不是可执行文件！"
 msgid "Compose shortcut for command :"
 msgstr "组合快捷键用于："
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
@@ -621,31 +621,6 @@ msgstr "%s: 尚不支持的操作\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: 段错误"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: 另一个窗口管理正在运行"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: 默认文件中缺少数据"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: 无法进入守护进程模式: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: 无法创建新进程: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: 发生了未知错误"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -731,11 +706,6 @@ msgstr "%s: GtkMenu 无法获取鼠标\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: 缺少默认文件"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -756,16 +726,6 @@ msgstr "%s: 无法分配 inactive 颜色 %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: 指定的主题 \\\"%s\\\" 不存在，使用默认主题"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: 默认文件中缺少数据"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "切换到 ..."
@@ -773,6 +733,38 @@ msgstr "切换到 ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: 另一个窗口管理正在运行"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: 无法分配 inactive 颜色 %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: 另一个窗口管理正在运行"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: 默认文件中缺少数据"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: 无法进入守护进程模式: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: 无法创建新进程: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: 发生了未知错误"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: 缺少默认文件"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: 指定的主题 \\\"%s\\\" 不存在，使用默认主题"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: 默认文件中缺少数据"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "无法获取键盘"

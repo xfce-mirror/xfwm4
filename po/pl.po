@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-12-25 19:40+0100\n"
 "Last-Translator: Daniel Mróz <beorn@alpha.pl>\n"
 "Language-Team: none <none@none>\n"
@@ -672,7 +672,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operaracja jeszcze nie obsługiwana\n"
@@ -681,31 +681,6 @@ msgstr "%s: Operaracja jeszcze nie obsługiwana\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Naruszenie ochrony pamięci"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Inny Menadżer Okien jest już uruchomiony"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: Brak danych z domyślnych plików"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Wystąpił nieznany błąd"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -792,11 +767,6 @@ msgstr "%s: GtkMenu nie uzyskało wskaźnika\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/settings.c:369
-#, fuzzy, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Brak pliku danych domyślnych"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -817,16 +787,6 @@ msgstr "%s: Nie mogę zaalokować nieaktywnego koloru %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nie mogę zidentyfikować nieaktywnego koloru %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: podany temat \"%s\" nie istnieje, używam domyślnego"
-
-#: src/settings.c:902
-#, fuzzy, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Brak wartości w pliku danych domyślnych"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Przełącz do ..."
@@ -834,6 +794,34 @@ msgstr "Przełącz do ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Inny Menadżer Okien jest już uruchomiony"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Nie mogę zaalokować nieaktywnego koloru %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Inny Menadżer Okien jest już uruchomiony"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: Brak danych z domyślnych plików"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Wystąpił nieznany błąd"
+
+#, fuzzy
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Brak pliku danych domyślnych"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: podany temat \"%s\" nie istnieje, używam domyślnego"
+
+#, fuzzy
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Brak wartości w pliku danych domyślnych"
 
 #, fuzzy
 #~ msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2004-08-30 01:00+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
@@ -615,7 +615,7 @@ msgstr "הפקודה לא קיימת או שהקובץ לא בר-הרצה."
 msgid "Compose shortcut for command :"
 msgstr "צור קיצור לפקודה:"
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s פעולה לא נתמכת (עדיין) \n"
@@ -624,31 +624,6 @@ msgstr "%s פעולה לא נתמכת (עדיין) \n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: מנהל חלונות אחר כבר מופעל"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: חסר מידע מקבצי ברירת המחדל"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s נכשל בניסיון להיכנס למצב daemon: %s"
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: נכשל ביצירת תהליך חדש: %s"
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: שיגאה לא מוכרת התרחשה"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -734,11 +709,6 @@ msgstr "%s: GtkMenu כשל בלכידת המצביע \n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: חסרים קבצי ברירת מחדל"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -759,16 +729,6 @@ msgstr "%s: אין אפשרות לאתר צבע שאינו פעיל %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: אין אפשרות לקבוע צבע לא פעיל %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: ערכת הנושא \"%s\" חסרה, משתמש בברירת המחדל"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s ערכים חסרים בקבצי ברירת המחדל"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "החלף ל..."
@@ -776,6 +736,38 @@ msgstr "החלף ל..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "יישום לא ידוע."
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: מנהל חלונות אחר כבר מופעל"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: אין אפשרות לאתר צבע שאינו פעיל %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: מנהל חלונות אחר כבר מופעל"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: חסר מידע מקבצי ברירת המחדל"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s נכשל בניסיון להיכנס למצב daemon: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: נכשל ביצירת תהליך חדש: %s"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: שיגאה לא מוכרת התרחשה"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: חסרים קבצי ברירת מחדל"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: ערכת הנושא \"%s\" חסרה, משתמש בברירת המחדל"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s ערכים חסרים בקבצי ברירת המחדל"
 
 #~ msgid "Cannot grab the keyboard"
 #~ msgstr "אין אפשר לתפוס את קיצור המקלדת"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
+"POT-Creation-Date: 2004-10-24 15:28+0200\n"
 "PO-Revision-Date: 2003-10-26 15:12+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -668,7 +668,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1776
+#: src/events.c:1782
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операція не підтримується (поки-що)\n"
@@ -677,31 +677,6 @@ msgstr "%s: Операція не підтримується (поки-що)\n"
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Фатальна помилка"
-
-#: src/main.c:495
-#, c-format
-msgid "%s: Another Window Manager is already running"
-msgstr "%s: Вже активний інший менеджер вікон"
-
-#: src/main.c:500
-#, c-format
-msgid "%s: Missing data from default files"
-msgstr "%s: відсутні дані з типових файлів"
-
-#: src/main.c:510
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:518
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:539
-#, c-format
-msgid "%s: Unknown error occured"
-msgstr "%s: Виникла невідома помилка"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
@@ -787,11 +762,6 @@ msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: необроблене net_wm_state (вікно 0x%lx)"
 
-#: src/settings.c:369
-#, c-format
-msgid "%s: Missing defaults file"
-msgstr "%s: Відсутній файл з типовими значеннями"
-
 #: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
@@ -812,16 +782,6 @@ msgstr "%s: Неможливо зарезервувати неактивний �
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Неможливо проаналізувати неактивний колір %s\n"
 
-#: src/settings.c:895
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: вказаний ключ теми \"%s\" не існує, використовується типовий"
-
-#: src/settings.c:902
-#, c-format
-msgid "%s: Missing values in defaults file"
-msgstr "%s: Відсутні значення у файлі з типовими значеннями"
-
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Перемикнутись на ..."
@@ -829,6 +789,32 @@ msgstr "Перемикнутись на ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%s: Another compositing manager is running on screen %i"
+#~ msgstr "%s: Вже активний інший менеджер вікон"
+
+#, fuzzy
+#~ msgid "%s: Cannot create root picture on screen %i"
+#~ msgstr "%s: Неможливо зарезервувати неактивний колір %s\n"
+
+#~ msgid "%s: Another Window Manager is already running"
+#~ msgstr "%s: Вже активний інший менеджер вікон"
+
+#~ msgid "%s: Missing data from default files"
+#~ msgstr "%s: відсутні дані з типових файлів"
+
+#~ msgid "%s: Unknown error occured"
+#~ msgstr "%s: Виникла невідома помилка"
+
+#~ msgid "%s: Missing defaults file"
+#~ msgstr "%s: Відсутній файл з типовими значеннями"
+
+#~ msgid "%s: specified key theme \"%s\" missing, using default"
+#~ msgstr "%s: вказаний ключ теми \"%s\" не існує, використовується типовий"
+
+#~ msgid "%s: Missing values in defaults file"
+#~ msgstr "%s: Відсутні значення у файлі з типовими значеннями"
 
 #, fuzzy
 #~ msgid ""

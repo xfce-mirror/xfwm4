@@ -11,6 +11,8 @@ mcs-plugin/xfwm4_shortcuteditor.c
 mcs-plugin/xfwm4_shortcuteditor.h
 src/client.c
 src/client.h
+src/compositor.c
+src/compositor.h
 src/display.c
 src/display.h
 src/events.c
@@ -23,8 +25,6 @@ src/hints.c
 src/hints.h
 src/icons.c
 src/icons.h
-src/inline-default-icon.h
-src/inline-tabwin-icon.h
 src/keyboard.c
 src/keyboard.h
 src/main.c
@@ -60,5 +60,7 @@ src/tabwin.c
 src/tabwin.h
 src/transients.c
 src/transients.h
+src/wireframe.c
+src/wireframe.h
 src/workspaces.c
 src/workspaces.h
