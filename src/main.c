@@ -545,7 +545,6 @@ main (int argc, char **argv)
             }
             /* Walk through */
         case 1:
-        g_print ("Main loop\n");
             /* enter GTK main loop */
             gtk_main ();
             break;

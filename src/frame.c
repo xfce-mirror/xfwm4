@@ -574,158 +574,184 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
     {
         rect.x = 0;
         rect.y = 0;
-        rect.width = frameWidth (c);
+        rect.width  = frameWidth (c);
         rect.height = frameHeight (c);
         XShapeCombineRectangles (display_info->dpy, temp, ShapeBounding, 0, 0, &rect, 1,
-            ShapeSubtract, 0);
+                                 ShapeSubtract, 0);
     }
     else
     {
         XShapeCombineShape (display_info->dpy, temp, ShapeBounding, frameLeft (c),
-            frameTop (c), c->window, ShapeBounding, ShapeSet);
+                            frameTop (c), c->window, ShapeBounding, ShapeSet);
     }
     if (pm_cache)
     {
-        XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->title), ShapeBounding, 0,
-            0, pm_cache->pm_title[state].mask, ShapeSet);
+        XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->title), ShapeBounding,
+                           0, 0, pm_cache->pm_title[state].mask, ShapeSet);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
-                ShapeBounding, 0, 0,
-                pm_cache->pm_sides[SIDE_LEFT][state].mask, ShapeSet);
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
-                ShapeBounding, 0, 0,
-                pm_cache->pm_sides[SIDE_RIGHT][state].mask, ShapeSet);
+            if (xfwmWindowVisible (&c->sides[SIDE_LEFT]))
+            {
+                XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
+                                   ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_LEFT][state].mask, ShapeSet);
+            }
+
+            if (xfwmWindowVisible (&c->sides[SIDE_RIGHT]))
+            {
+                XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
+                                   ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_RIGHT][state].mask, ShapeSet);
+            }
         }
-        XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
-            ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_BOTTOM][state].mask,
-            ShapeSet);
-        XShapeCombineMask (display_info->dpy,
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding,
-            0, 0, screen_info->corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
-        XShapeCombineMask (display_info->dpy,
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding,
-            0, 0, screen_info->corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
-        XShapeCombineMask (display_info->dpy,
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding, 0,
-            0, screen_info->corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
-        XShapeCombineMask (display_info->dpy,
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding, 0,
-            0, screen_info->corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
+
+        if (xfwmWindowVisible (&c->sides[SIDE_BOTTOM]))
+        {
+            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
+                               ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_BOTTOM][state].mask, ShapeSet);
+        }
+
+        if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]))
+        {
+            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), 
+                               ShapeBounding, 0, 0, screen_info->corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
+        }
+
+        if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_RIGHT]))
+        {
+            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
+                               ShapeBounding, 0, 0, screen_info->corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
+        }
+
+        if (xfwmWindowVisible (&c->corners[CORNER_TOP_LEFT]))
+        {
+            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), 
+                               ShapeBounding, 0, 0, screen_info->corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
+        }
+
+        if (xfwmWindowVisible (&c->corners[CORNER_TOP_RIGHT]))
+        {
+            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), 
+                               ShapeBounding, 0, 0, screen_info->corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
+        }
 
         for (i = 0; i < BUTTON_COUNT; i++)
         {
-            my_pixmap =
-                frameGetPixmap (c, i, c->button_pressed[i] ? PRESSED : state);
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->buttons[i]),
-                ShapeBounding, 0, 0, my_pixmap->mask, ShapeSet);
+            if (xfwmWindowVisible (&c->buttons[i]))
+            {
+                my_pixmap = frameGetPixmap (c, i, c->button_pressed[i] ? PRESSED : state);
+                XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->buttons[i]),
+                                   ShapeBounding, 0, 0, my_pixmap->mask, ShapeSet);
+            }
         }
 
-        if (screen_info->corners[CORNER_TOP_LEFT][state].height >
-            frameHeight (c) - frameBottom (c) + 1)
+        if (screen_info->corners[CORNER_TOP_LEFT][state].height > frameHeight (c) - frameBottom (c) + 1)
         {
-            rect.x = 0;
-            rect.y = frameHeight (c) - frameBottom (c) + 1;
-            rect.width = screen_info->corners[CORNER_TOP_LEFT][state].width;
-            rect.height =
-                screen_info->corners[CORNER_TOP_LEFT][state].height -
-                (frameHeight (c) - frameBottom (c) + 1);
-            XShapeCombineRectangles (display_info->dpy,
-                MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding,
-                0, 0, &rect, 1, ShapeSubtract, 0);
+            rect.x      = 0;
+            rect.y      = frameHeight (c) - frameBottom (c) + 1;
+            rect.width  = screen_info->corners[CORNER_TOP_LEFT][state].width;
+            rect.height = screen_info->corners[CORNER_TOP_LEFT][state].height
+                           - (frameHeight (c) - frameBottom (c) + 1);
+            XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), 
+                                     ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
-        if (screen_info->corners[CORNER_TOP_RIGHT][state].height >
-            frameHeight (c) - frameBottom (c) + 1)
+
+        if (screen_info->corners[CORNER_TOP_RIGHT][state].height > frameHeight (c) - frameBottom (c) + 1)
         {
-            rect.x = 0;
-            rect.y = frameHeight (c) - frameBottom (c) + 1;
-            rect.width = screen_info->corners[CORNER_TOP_RIGHT][state].width;
-            rect.height =
-                screen_info->corners[CORNER_TOP_RIGHT][state].height -
-                (frameHeight (c) - frameBottom (c) + 1);
-            XShapeCombineRectangles (display_info->dpy,
-                MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
-                ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            rect.x      = 0;
+            rect.y      = frameHeight (c) - frameBottom (c) + 1;
+            rect.width  = screen_info->corners[CORNER_TOP_RIGHT][state].width;
+            rect.height = screen_info->corners[CORNER_TOP_RIGHT][state].height
+                           - (frameHeight (c) - frameBottom (c) + 1);
+            XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
+                                     ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
-        if (screen_info->corners[CORNER_BOTTOM_LEFT][state].height >
-            frameHeight (c) - frameTop (c) + 1)
+
+        if (screen_info->corners[CORNER_BOTTOM_LEFT][state].height > frameHeight (c) - frameTop (c) + 1)
         {
-            rect.x = 0;
-            rect.y = 0;
-            rect.width = screen_info->corners[CORNER_BOTTOM_LEFT][state].width;
-            rect.height =
-                screen_info->corners[CORNER_BOTTOM_LEFT][state].height -
-                (frameHeight (c) - frameTop (c) + 1);
-            XShapeCombineRectangles (display_info->dpy,
-                MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
-                ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            rect.x      = 0;
+            rect.y      = 0;
+            rect.width  = screen_info->corners[CORNER_BOTTOM_LEFT][state].width;
+            rect.height = screen_info->corners[CORNER_BOTTOM_LEFT][state].height
+                           - (frameHeight (c) - frameTop (c) + 1);
+            XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
+                                     ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
-        if (screen_info->corners[CORNER_BOTTOM_RIGHT][state].height >
-            frameHeight (c) - frameTop (c) + 1)
+
+        if (screen_info->corners[CORNER_BOTTOM_RIGHT][state].height > frameHeight (c) - frameTop (c) + 1)
         {
-            rect.x = 0;
-            rect.y = 0;
-            rect.width = screen_info->corners[CORNER_BOTTOM_RIGHT][state].width;
-            rect.height =
-                screen_info->corners[CORNER_BOTTOM_RIGHT][state].height -
-                (frameHeight (c) - frameTop (c) + 1);
-            XShapeCombineRectangles (display_info->dpy,
-                MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
-                ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            rect.x      = 0;
+            rect.y      = 0;
+            rect.width  = screen_info->corners[CORNER_BOTTOM_RIGHT][state].width;
+            rect.height = screen_info->corners[CORNER_BOTTOM_RIGHT][state].height
+                           - (frameHeight (c) - frameTop (c) + 1);
+            XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
+                                     ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            XShapeCombineShape (display_info->dpy, temp, ShapeBounding, 0, frameTop (c),
-                MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]), ShapeBounding,
-                ShapeUnion);
+            if (xfwmWindowVisible (&c->sides[SIDE_LEFT]))
+            {
+                XShapeCombineShape (display_info->dpy, temp, ShapeBounding, 0, frameTop (c),
+                                    MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]), ShapeBounding, ShapeUnion);
+            }
+
+            if (xfwmWindowVisible (&c->sides[SIDE_RIGHT]))
+            {
+                XShapeCombineShape (display_info->dpy, temp, ShapeBounding, frameWidth (c) - frameRight (c), frameTop (c),
+                                    MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]), ShapeBounding, ShapeUnion);
+            }
+        }
+
+        if (xfwmWindowVisible (&c->corners[CORNER_TOP_LEFT]))
+        {
             XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
-                frameWidth (c) - frameRight (c), frameTop (c),
-                MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]), ShapeBounding,
-                ShapeUnion);
-        }
-        XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
-            screen_info->corners[CORNER_TOP_LEFT][state].width, 0,
-            MYWINDOW_XWINDOW (c->title), ShapeBounding, ShapeUnion);
-        XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
-            screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
-            frameHeight (c) - frameBottom (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]), ShapeBounding,
-            ShapeUnion);
-        XShapeCombineShape (display_info->dpy, temp, ShapeBounding, 0,
-            frameHeight (c) -
-            screen_info->corners[CORNER_BOTTOM_LEFT][state].height,
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding,
-            ShapeUnion);
-        XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
-            frameWidth (c) -
-            screen_info->corners[CORNER_BOTTOM_RIGHT][state].width,
-            frameHeight (c) -
-            screen_info->corners[CORNER_BOTTOM_RIGHT][state].height,
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding,
-            ShapeUnion);
-        XShapeCombineShape (display_info->dpy, temp, ShapeBounding, 0, 0,
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding,
-            ShapeUnion);
-        XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
-            frameWidth (c) - screen_info->corners[CORNER_TOP_RIGHT][state].width,
-            0, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding,
-            ShapeUnion);
+                                screen_info->corners[CORNER_TOP_LEFT][state].width, 0,
+                                MYWINDOW_XWINDOW (c->title), ShapeBounding, ShapeUnion);
 
+            XShapeCombineShape (display_info->dpy, temp, ShapeBounding, 0, 0,
+                                MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]), ShapeBounding, ShapeUnion);
+        }
+        
+        if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]))
+        {
+            XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
+                                screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
+                                frameHeight (c) - frameBottom (c),
+                                MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]), ShapeBounding, ShapeUnion);
+
+            XShapeCombineShape (display_info->dpy, temp, ShapeBounding, 0,
+                                frameHeight (c) - screen_info->corners[CORNER_BOTTOM_LEFT][state].height,
+                                MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding, ShapeUnion);
+        }
+        
+        if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_RIGHT]))
+        {
+            XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
+                                frameWidth (c) - screen_info->corners[CORNER_BOTTOM_RIGHT][state].width,
+                                frameHeight (c) - screen_info->corners[CORNER_BOTTOM_RIGHT][state].height,
+                                MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding, ShapeUnion);
+        }
+
+        if (xfwmWindowVisible (&c->corners[CORNER_TOP_RIGHT]))
+        {
+            XShapeCombineShape (display_info->dpy, temp, ShapeBounding,
+                                frameWidth (c) - screen_info->corners[CORNER_TOP_RIGHT][state].width,
+                                0, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding, ShapeUnion);
+        }
+        
         for (i = 0; i < BUTTON_COUNT; i++)
         {
-            char b = getLetterFromButton (i, c);
-            if ((b) && strchr (screen_info->params->button_layout, b))
+            if (xfwmWindowVisible (&c->buttons[i]))
             {
                 XShapeCombineShape (display_info->dpy, temp, ShapeBounding, button_x[i],
-                    (frameTop (c) - screen_info->buttons[i][state].height) / 2,
-                    MYWINDOW_XWINDOW (c->buttons[i]), ShapeBounding,
-                    ShapeUnion);
+                                    (frameTop (c) - screen_info->buttons[i][state].height) / 2,
+                                    MYWINDOW_XWINDOW (c->buttons[i]), ShapeBounding, ShapeUnion);
             }
         }
     }
-    XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, temp,
-        ShapeBounding, ShapeSet);
+
+    XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, temp, ShapeBounding, ShapeSet);
+
     XDestroyWindow (display_info->dpy, temp);
 }
 
