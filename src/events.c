@@ -1065,6 +1065,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             }
             constrained = TRUE;
         }
+#if 0
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
@@ -1077,6 +1078,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
                 }
             }
         }
+#endif
         clientConfigure (c, &wc, ev->value_mask, 
                          (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
     }
