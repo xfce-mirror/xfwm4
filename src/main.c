@@ -216,17 +216,6 @@ initialize (int argc, char **argv)
     sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
-    client_session = client_session_new (argc, argv, (gpointer) display_info, 
-                                         SESSION_RESTART_IF_RUNNING, 20);
-    client_session->data = (gpointer) client_session;
-    client_session->save_phase_2 = save_phase_2;
-    client_session->die = session_die;
-
-    if (session_init (client_session))
-    {
-        load_saved_session (client_session);
-    }
-
     nscreens = gdk_display_get_n_screens(display_info->gdisplay);
     for(i = 0; i < nscreens; i++) 
     {
@@ -275,6 +264,17 @@ initialize (int argc, char **argv)
     }
     display_info->xfilter = xfce_init_event_filter ((gpointer) display_info);
     xfce_push_event_filter (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
+
+    client_session = client_session_new (argc, argv, (gpointer) display_info, 
+                                         SESSION_RESTART_IF_RUNNING, 20);
+    client_session->data = (gpointer) client_session;
+    client_session->save_phase_2 = save_phase_2;
+    client_session->die = session_die;
+
+    if (session_init (client_session))
+    {
+        load_saved_session (client_session);
+    }
 
     return 0;
 }
