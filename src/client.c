@@ -1342,8 +1342,7 @@ clientCoordGravitate (Client * c, int mode, int *x, int *y)
     TRACE ("entering clientCoordGravitate");
 
     c->gravity =
-        c->size->flags & PWinGravity ? c->size->
-        win_gravity : NorthWestGravity;
+        c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
     switch (c->gravity)
     {
         case CenterGravity:
@@ -2448,9 +2447,9 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size = XAllocSizeHints ();
     }
     g_assert (c->size);
-    if (XGetWMNormalHints (dpy, c->window, c->size, &dummy) != Success)
+    if (!XGetWMNormalHints (dpy, c->window, c->size, &dummy))
     {
-        return;
+        c->size->flags = 0;
     }
     
     previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
@@ -4753,6 +4752,21 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
     if (xevent->type == KeyPress)
     {
+        int key_width_inc, key_height_inc;
+        
+        key_width_inc = clientGetWidthInc (c);
+        key_height_inc = clientGetHeightInc (c);
+        
+        if (key_width_inc < 10)
+        {
+            key_width_inc = ((int) (10 / key_width_inc)) * key_width_inc;
+        }
+
+        if (key_height_inc < 10)
+        {
+            key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
+        }
+
         if (!passdata->grab && params.box_resize)
         {
             MyXGrabServer ();
@@ -4770,28 +4784,20 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
             && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
         {
-            c->height =
-                c->height - (clientGetHeightInc (c) <
-                10 ? 10 : clientGetHeightInc (c));
+            c->height = c->height - key_height_inc;
         }
         else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
             && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
         {
-            c->height =
-                c->height + (clientGetHeightInc (c) <
-                10 ? 10 : clientGetHeightInc (c));
+            c->height = c->height + key_height_inc;
         }
         else if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
         {
-            c->width =
-                c->width - (clientGetWidthInc (c) <
-                10 ? 10 : clientGetWidthInc (c));
+            c->width = c->width - key_width_inc;
         }
         else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
         {
-            c->width =
-                c->width + (clientGetWidthInc (c) <
-                10 ? 10 : clientGetWidthInc (c));
+            c->width = c->width + key_width_inc;
         }
         if (c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
         {
