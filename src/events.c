@@ -53,7 +53,6 @@
 
 #define DBL_CLICK_GRAB          (ButtonMotionMask | \
                                  PointerMotionMask | \
-                                 PointerMotionHintMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
                                  
@@ -111,38 +110,35 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     button = ev->xbutton.button;
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
-    t0 = ev->xbutton.time;
-    t1 = t0;
+    t0 = CurrentTime;
     total = 0;
     clicks = 1;
 
-    while ((ABS (x - xcurrent) < 1) && (ABS (y - ycurrent) < 1)
+    while ((ABS (x - xcurrent) < 2) && (ABS (y - ycurrent) < 2)
         && (total < params.dbl_click_time)
-        && ((t1 - t0) < params.dbl_click_time))
+        && ((CurrentTime - t0) < params.dbl_click_time))
     {
         g_usleep (10000);
         total += 10;
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
+            last_timestamp = stashEventTime (last_timestamp, ev);
             if (ev->xbutton.button == button)
             {
                 clicks++;
             }
-            t1 = ev->xbutton.time;
-        }
-        if (XCheckMaskEvent (dpy,
-                ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
-                ev))
-        {
-            xcurrent = ev->xmotion.x_root;
-            ycurrent = ev->xmotion.y_root;
-            t1 = ev->xmotion.time;
         }
         if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK
             || (!allow_double_click
                 && (XfwmButtonClickType) clicks == XFWM_BUTTON_CLICK))
         {
             break;
+        }
+        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
+        {
+            last_timestamp = stashEventTime (last_timestamp, ev);
+            xcurrent = ev->xmotion.x_root;
+            ycurrent = ev->xmotion.y_root;
         }
     }
     XUngrabPointer (dpy, ev->xbutton.time);
@@ -163,7 +159,7 @@ clear_timeout (void)
 static inline gboolean
 raise_cb (gpointer data)
 {
-    Client *c;
+    Client *c = NULL;
     TRACE ("entering raise_cb");
 
     clear_timeout ();
@@ -171,6 +167,7 @@ raise_cb (gpointer data)
     if (c)
     {
         clientRaise (c);
+        clientPassGrabButton1 (c);
     }
     return (TRUE);
 }
@@ -199,7 +196,7 @@ moveRequest (Client * c, XEvent * ev)
 static inline void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, TRUE, FALSE);
+    clientSetFocus (c, FOCUS_SORT);
 
     if (CLIENT_FLAG_TEST_ALL (c,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -267,7 +264,9 @@ handleMotionNotify (XMotionEvent * ev)
                 workspaceSwitch (workspace + 1, NULL);
             }
             while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-                ; /* VOID */
+            {
+                last_timestamp = stashEventTime (last_timestamp, (XEvent *) ev);
+            }    
         }
     }
 }
@@ -275,7 +274,7 @@ handleMotionNotify (XMotionEvent * ev)
 static inline void
 handleKeyPress (XKeyEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
     int state, key;
 
     TRACE ("entering handleKeyEvent");
@@ -313,7 +312,7 @@ handleKeyPress (XKeyEvent * ev)
                 }
                 break;
             case KEY_CYCLE_WINDOWS:
-                clientCycle (c);
+                clientCycle (c, (XEvent *) ev);
                 break;
             case KEY_CLOSE_WINDOW:
                 clientClose (c);
@@ -339,6 +338,14 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_STICK_WINDOW:
                 clientToggleSticky (c, TRUE);
                 frameDraw (c, FALSE, FALSE);
+                break;
+            case KEY_RAISE_WINDOW:
+                clientRaise (c);
+                clientPassGrabButton1 (NULL);
+                break;
+            case KEY_LOWER_WINDOW:
+                clientLower (c);
+                clientPassGrabButton1 (NULL);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (workspace + 1, c);
@@ -384,7 +391,7 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_CYCLE_WINDOWS:
                 if (clients)
                 {
-                    clientCycle (clients->prev);
+                    clientCycle (clients->prev, (XEvent *) ev);
                 }
                 break;
             default:
@@ -484,6 +491,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         if (tclick == XFWM_BUTTON_CLICK)
         {
             clientLower (c);
+            clientPassGrabButton1 (NULL);
         }
         else
         {
@@ -495,6 +503,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         if (ev->button == Button1)
         {
             clientRaise (c);
+            clientPassGrabButton1 (c);
         }
         if ((ev->button == Button1) || (ev->button == Button3))
         {
@@ -512,8 +521,9 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, TRUE, FALSE);
+    clientSetFocus (c, FOCUS_SORT);
     clientRaise (c);
+    clientPassGrabButton1 (c);
 
     tclick = typeOfClick (c->frame, &copy_event, TRUE);
 
@@ -555,6 +565,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button2)
     {
         clientLower (c);
+        clientPassGrabButton1 (NULL);
     }
     else if (ev->button == Button3)
     {
@@ -574,10 +585,11 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, TRUE, FALSE);
+            clientSetFocus (c, FOCUS_SORT);
             if (params.raise_on_click)
             {
                 clientRaise (c);
+                clientPassGrabButton1 (c);
             }
             ev->window = ev->root;
             if (button_handler_id)
@@ -618,6 +630,7 @@ rootScrollButton (XButtonEvent * ev)
 
     while (XCheckTypedWindowEvent (dpy, root, ButtonPress, &otherEvent))
     {
+        last_timestamp = stashEventTime (last_timestamp, &otherEvent);
         if (otherEvent.xbutton.button != ev->button)
         {
             XPutBackEvent (dpy, &otherEvent);
@@ -643,7 +656,7 @@ rootScrollButton (XButtonEvent * ev)
 static inline void
 handleButtonPress (XButtonEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
     Window win;
     int state, replay = FALSE;
 
@@ -665,19 +678,36 @@ handleButtonPress (XButtonEvent * ev)
         else if ((ev->button == Button2) && (state == AltMask) && (params.easy_click))
         {
             clientLower (c);
+            clientPassGrabButton1 (NULL);
         }
         else if ((ev->button == Button3) && (state == AltMask) && (params.easy_click))
         {
-            edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+            if ((ev->x < c->width / 2) && (ev->y < c->height / 2))
+            {
+                edgeButton (c, CORNER_TOP_LEFT, ev);
+            }
+            else if ((ev->x < c->width / 2) && (ev->y > c->height / 2))
+            {
+                edgeButton (c, CORNER_BOTTOM_LEFT, ev);
+            }
+            else if ((ev->x > c->width / 2) && (ev->y < c->height / 2))
+            {
+                edgeButton (c, CORNER_TOP_RIGHT, ev);
+            }
+            else
+            {
+                edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+            }
         }
         else if (WIN_IS_BUTTON (win))
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, TRUE, FALSE);
+                clientSetFocus (c, FOCUS_SORT);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
+                    clientPassGrabButton1 (c);
                 }
                 clientButtonPress (c, win, ev);
             }
@@ -706,10 +736,11 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, TRUE, FALSE);
+                    clientSetFocus (c, FOCUS_SORT);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
+                        clientPassGrabButton1 (c);
                     }
                     ev->window = ev->root;
                     if (button_handler_id)
@@ -730,6 +761,7 @@ handleButtonPress (XButtonEvent * ev)
                 && (state == (AltMask | ControlMask))))
         {
             clientLower (c);
+            clientPassGrabButton1 (NULL);
         }
         else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]))
             && (state == 0))
@@ -770,10 +802,15 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button == Button1)
             {
-                clientSetFocus (c, TRUE, FALSE);
-                if (params.raise_on_click)
+                if (ev->window == c->window)
+                {
+                    clientPassGrabButton1 (c);
+                }
+                clientSetFocus (c, FOCUS_SORT);
+                if ((params.raise_on_click) || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
+                    clientPassGrabButton1 (c);
                 }
             }
             if (ev->window == c->window)
@@ -815,11 +852,18 @@ handleButtonRelease (XButtonEvent * ev)
 static inline void
 handleDestroyNotify (XDestroyWindowEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
 
+    if (ev->window == systray)
+    {
+        /* systray window is gone */
+        systray = None;
+        return;
+    }
+    
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
@@ -832,7 +876,7 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
 static inline void
 handleMapRequest (XMapRequestEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleMapRequest");
     TRACE ("MapRequest on window (0x%lx)", ev->window);
@@ -869,7 +913,7 @@ handleMapRequest (XMapRequestEvent * ev)
 static inline void
 handleMapNotify (XMapEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleMapNotify");
     TRACE ("MapNotify on window (0x%lx)", ev->window);
@@ -895,7 +939,13 @@ handleUnmapNotify (XUnmapEvent * ev)
     
     if (ev->from_configure)
     {
-        TRACE ("Ignoring UnmapNotify caused by parent's resize\n");
+        TRACE ("Ignoring UnmapNotify caused by parent's resize");
+        return;
+    }
+
+    if ((ev->event != ev->window) && (ev->event != root || !ev->send_event))
+    {
+        TRACE ("handleUnmapNotify (): Event ignored");
         return;
     }
 
@@ -967,7 +1017,7 @@ handleConfigureNotify (XConfigureEvent * ev)
 static inline void
 handleConfigureRequest (XConfigureRequestEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
     XWindowChanges wc;
     XEvent otherEvent;
 
@@ -975,9 +1025,9 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     TRACE ("ConfigureRequest on window (0x%lx)", ev->window);
 
     /* Compress events - logic taken from kwin */
-    while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest,
-            &otherEvent))
+    while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest, &otherEvent))
     {
+        last_timestamp = stashEventTime (last_timestamp, &otherEvent);
         if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
         {
             ev = &otherEvent.xconfigurerequest;
@@ -1045,6 +1095,22 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+        {
+            int cx, cy;
+
+            /* size request from fullscreen windows get fullscreen */
+            
+            cx = frameX (c) + (frameWidth (c) / 2);
+            cy = frameY (c) + (frameHeight (c) / 2);
+
+            wc.x = MyDisplayX (cx, cy);
+            wc.y = MyDisplayY (cx, cy);
+            wc.width = MyDisplayWidth (dpy, screen, cx, cy);
+            wc.height = MyDisplayHeight (dpy, screen, cx, cy);
+
+            ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
+        }
         /* Clean up buggy requests that set all flags */
         if ((ev->value_mask & CWX) && (wc.x == c->x))
         {
@@ -1071,6 +1137,10 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             }
             constrained = TRUE;
         }
+        if (ev->value_mask & CWStackMode)
+        {
+	    clientPassGrabButton1 (NULL);
+	}
 #if 0
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
@@ -1098,7 +1168,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
 static inline void
 handleEnterNotify (XCrossingEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleEnterNotify");
 
@@ -1117,7 +1187,11 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            clientSetFocus (c, TRUE, FALSE);
+            clientSetFocus (c, FOCUS_SORT);
+            if (!(params.raise_on_click))
+            {
+                clientPassGrabButton1 (c);
+            }
         }
     }
 }
@@ -1144,17 +1218,17 @@ handleLeaveNotify (XCrossingEvent * ev)
 static inline void
 handleFocusIn (XFocusChangeEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleFocusIn");
-    TRACE ("handleFocusOut (0x%lx) mode = %s",
+    TRACE ("handleFocusIn (0x%lx) mode = %s",
                 ev->window,
                 (ev->mode == NotifyNormal) ?
                 "NotifyNormal" :
                 (ev->mode == NotifyWhileGrabbed) ?
                 "NotifyWhileGrabbed" :
                 "(unknown)");
-    TRACE ("handleFocusOut (0x%lx) detail = %s",
+    TRACE ("handleFocusIn (0x%lx) detail = %s",
                 ev->window,
                 (ev->detail == NotifyAncestor) ?
                 "NotifyAncestor" :
@@ -1174,8 +1248,27 @@ handleFocusIn (XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
-        || (ev->detail > NotifyNonlinearVirtual))
+    if ((ev->window == root) && (ev->mode == NotifyNormal) && 
+        (ev->detail == NotifyDetailNone))
+    {
+        /* Handle focus transition to root (means that an unknown
+           window has vanished and the focus is returned to the root
+         */
+         
+        c = clientGetFocus ();
+        if (c)
+        {
+            clientSetFocus (c, FOCUS_FORCE);
+        }
+        else
+        {
+            clientSetFocus (NULL, FOCUS_NONE);
+            clientPassGrabButton1 (NULL);
+        }
+        return;
+    }
+    else if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
+             (ev->detail > NotifyNonlinearVirtual))
     {
         /* We're not interested in such notifications */
         return;
@@ -1186,7 +1279,7 @@ handleFocusIn (XFocusChangeEvent * ev)
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
-        clientUpdateFocus (c);
+        clientUpdateFocus (c, FOCUS_NONE);
         if (params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout ();
@@ -1197,7 +1290,8 @@ handleFocusIn (XFocusChangeEvent * ev)
 static inline void
 handleFocusOut (XFocusChangeEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
+    
     TRACE ("entering handleFocusOut");
     TRACE ("handleFocusOut (0x%lx) mode = %s",
                 ev->window,
@@ -1226,28 +1320,27 @@ handleFocusOut (XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
-        || (ev->detail != NotifyNonlinear))
+    if ((ev->mode == NotifyNormal)
+        && ((ev->detail == NotifyNonlinear) 
+            || (ev->detail == NotifyNonlinearVirtual)))
     {
-        /* We're not interested in such notifications */
-        return;
-    }
-
-    c = clientGetFromWindow (ev->window, WINDOW);
-    TRACE ("FocusOut on window (0x%lx)", ev->window);
-    if (c && (c == clientGetFocus ()))
-    {
-        TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-        clientUpdateFocus (NULL);
-        /* Clear timeout */
-        clear_timeout ();
+        c = clientGetFromWindow (ev->window, WINDOW);
+        TRACE ("FocusOut on window (0x%lx)", ev->window);
+        if ((c) && (c == clientGetFocus ()))
+        {
+            TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
+            clientUpdateFocus (NULL, FOCUS_NONE);
+            clientPassGrabButton1 (NULL);
+            /* Clear timeout */
+            clear_timeout ();
+        }
     }
 }
 
 static inline void
 handlePropertyNotify (XPropertyEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handlePropertyNotify");
 
@@ -1352,7 +1445,7 @@ handlePropertyNotify (XPropertyEvent * ev)
 static inline void
 handleClientMessage (XClientMessageEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleClientMessage");
 
@@ -1460,10 +1553,11 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE
                 ("client \"%s\" (0x%lx) has received a net_active_window event",
                 c->name, c->window);
-            workspaceSwitch (c->win_workspace, NULL);
+            clientSetWorkspace (c, workspace, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, TRUE, FALSE);
+            clientSetFocus (c, FOCUS_SORT);
+            clientPassGrabButton1 (c);
         }
     }
     else
@@ -1489,6 +1583,13 @@ handleClientMessage (XClientMessageEvent * ev)
                 workspaceSetCount (ev->data.l[0]);
             }
         }
+        else if ((ev->message_type == net_system_tray_manager)
+                  && (ev->data.l[1] == net_system_tray_selection)
+                  && (ev->format == 32))
+        {
+            TRACE ("root has received a net_system_tray_manager event");
+            systray = getSystrayWindow (dpy);
+        }
         else
         {
             TRACE ("unidentified client message for window 0x%lx",
@@ -1500,7 +1601,7 @@ handleClientMessage (XClientMessageEvent * ev)
 static inline void
 handleShape (XShapeEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleShape");
 
@@ -1514,7 +1615,7 @@ handleShape (XShapeEvent * ev)
 static inline void
 handleColormapNotify (XColormapEvent * ev)
 {
-    Client *c;
+    Client *c = NULL;
 
     TRACE ("entering handleColormapNotify");
 
@@ -1534,6 +1635,7 @@ handleEvent (XEvent * ev)
     TRACE ("entering handleEvent");
 
     sn_process_event (ev);
+    last_timestamp = stashEventTime (last_timestamp, ev);
     switch (ev->type)
     {
         case MotionNotify:

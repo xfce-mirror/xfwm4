@@ -84,7 +84,7 @@ workspaceSwitch (int new_ws, Client * c2)
             if (c == previous)
             {
                 CLIENT_FLAG_SET (previous, CLIENT_FLAG_FOCUS);
-                clientSetFocus (NULL, FALSE, TRUE);
+                clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
             }
             if (!clientIsTransientOrModal (c))
             {
@@ -153,7 +153,9 @@ workspaceSwitch (int new_ws, Client * c2)
     {
         /* Just get rid of EnterNotify events when using focus follow mouse */
         while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-            ; /* VOID */
+        {
+            last_timestamp = stashEventTime (last_timestamp, &an_event);
+        }    
         if (!(c2)
             && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
                     &mask)))
@@ -165,7 +167,7 @@ workspaceSwitch (int new_ws, Client * c2)
             }
         }
     }
-    clientSetFocus (new_focus, TRUE, FALSE);
+    clientSetFocus (new_focus, FOCUS_SORT);
 }
 
 void

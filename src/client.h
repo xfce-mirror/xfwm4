@@ -61,6 +61,11 @@
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
 
+#define FOCUS_NONE                      0
+#define FOCUS_SORT                      (1<<0)
+#define FOCUS_IGNORE_MODAL              (1<<1)
+#define FOCUS_FORCE                     (1<<2)
+
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
@@ -180,6 +185,7 @@ struct _Client
     unsigned long win_hints;
     unsigned long win_state;
     unsigned long win_layer;
+    unsigned long serial;
 
     int win_workspace;
     Atom type_atom;
@@ -224,7 +230,6 @@ struct _Client
 };
 
 extern Client *clients;
-extern Window *client_list;
 extern unsigned int client_count;
 
 inline Client *clientGetTransient (Client *);
@@ -260,9 +265,13 @@ void clientUpdateColormaps (Client *);
 void clientUpdateAllFrames (gboolean);
 void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
+void clientGrabButtons (Client *);
+void clientUngrabButtons (Client *);
+void clientPassGrabButtons(Client *);
 Client *clientGetFromWindow (Window, int);
 Client *clientAtPosition (int, int, Client *);
 Client *clientGetNext (Client *, int);
+Client *clientGetPrevious (Client *, int);
 void clientPassFocus (Client *);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);
@@ -281,14 +290,14 @@ void clientUnstick (Client *, gboolean);
 void clientToggleSticky (Client *, gboolean);
 inline void clientRemoveMaximizeFlag (Client *);
 void clientToggleMaximized (Client *, int);
-void clientUpdateFocus (Client *);
 inline gboolean clientAcceptFocus (Client * c);
-void clientSetFocus (Client *, gboolean, gboolean);
+void clientUpdateFocus (Client *, unsigned short);
+void clientSetFocus (Client *, unsigned short);
 Client *clientGetFocus ();
 void clientScreenResize(void);
 void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
-void clientCycle (Client *);
+void clientCycle (Client *, XEvent *);
 void clientButtonPress (Client *, Window, XButtonEvent *);
 Client *clientGetLeader (Client *);
 GList *clientGetStackList (void);

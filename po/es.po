@@ -7,49 +7,87 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
-"PO-Revision-Date: 2003-01-23 22:06+0100\n"
-"Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
+"POT-Creation-Date: 2004-01-03 22:16+0100\n"
+"PO-Revision-Date: 2004-01-13 00:00+0100\n"
+"Last-Translator: Jaime Buffery <nestu@lunar-linux.org>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
-#, fuzzy
-msgid "Workspace Margins"
-msgstr "Esc_ritorio"
-
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "Ajustar los bordes del escritorio"
-
-#: mcs-plugin/margins_plugin.c:241
+#: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"los bordes son areas en los lados de la pantalla donde no se colocará "
+"Los bordes son áreas a los lados de la pantalla donde no se colocará "
 "ninguna ventana"
 
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:131
+#, fuzzy
+msgid "Workspace Margins"
+msgstr "Márgenes del Escritorio"
+
+#: mcs-plugin/margins.c:159
 #, fuzzy
 msgid "Left :"
-msgstr "Izquierda"
+msgstr "Izquierda :"
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 #, fuzzy
 msgid "Right :"
-msgstr "Derecha"
+msgstr "Derecha :"
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
-msgstr "Arriba"
+msgstr "Arriba :"
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
-msgstr "Abajo"
+msgstr "Abajo :"
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "Escritorios y Márgenes"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "Escritorios"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr "Márgenes"
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr "Cambiar nombre"
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "Escritorio %d"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr "Nombre :"
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr "Pinche en el nombre de escritorio para editarlo"
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "Número de escritorios"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "Nombres de escritorio"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -138,7 +176,7 @@ msgstr "Alineado del texto dentro de la barra de título :"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
-msgstr "Disposición de los Botones"
+msgstr "Disposición de los botones"
 
 #: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
@@ -242,16 +280,16 @@ msgstr "Saltar al escritorio siguiente"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Saltar al siguiente escritorio al mover el puntero"
+msgstr "Saltar al siguiente escritorio cuando el puntero llegue al borde del escritorio"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 #, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Saltar al siguiente escritorio al mover ventanas"
+msgstr "Saltar al siguiente escritorio al arrastrar las ventanas fuera del escritorio actual"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
-msgstr "Resistencia en la orilla :"
+msgstr "Resistencia en los bordes :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
@@ -269,22 +307,22 @@ msgstr "Mostrar contenido de la ventana cuando se mueva"
 
 #: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
-msgstr "Acción al pinchar dos veces"
+msgstr "Acción al hacer doble click"
 
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Acción a realizar cuando se pinche dos veces la barra de título :"
+msgstr "Acción a realizar cuando se haga doble click en la barra de título :"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/client.c:493
+#: src/client.c:508
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
+msgstr "%s: net_wm_state sin soporte (ventana 0x%lx)"
 
-#: src/events.c:1442
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
@@ -304,7 +342,17 @@ msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
 msgid "%s: Missing data from default files"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/main.c:431
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr "%s: No se pudo entrar en modo demonio"
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr "%s: No se pudo crear un nuevo proceso: %s"
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ha ocurrido un error desconocido"
@@ -346,72 +394,80 @@ msgid "Uns_tick"
 msgstr "Des_pegar"
 
 #: src/menu.c:51
+msgid "Context _help"
+msgstr "Ayuda de contexto"
+
+#: src/menu.c:52 src/menu.c:53
+msgid "Always on top"
+msgstr "Siempre encima"
+
+#: src/menu.c:54
 #, fuzzy
 msgid "Send to..."
 msgstr "Cambiar a ..."
 
-#: src/menu.c:53
+#: src/menu.c:56
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: src/menu.c:56
+#: src/menu.c:59
 msgid "Destroy"
 msgstr "Destruir"
 
-#: src/menu.c:59
+#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Salir"
 
-#: src/menu.c:60
+#: src/menu.c:63
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/menu.c:163
+#: src/menu.c:166
 #, fuzzy, c-format
 msgid "Workspace %i"
-msgstr "Esc_ritorio"
+msgstr "Escritorio %i"
 
-#: src/menu.c:405
+#: src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: Falta el mapa de teclado especificado \"%s\", usando el de por defecto"
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Sin inicializar el contador de escritorios, usando el valor:%i"
@@ -419,6 +475,9 @@ msgstr "%s: Sin inicializar el contador de escritorios, usando el valor:%i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Cambiar a ..."
+
+#~ msgid "Adjust workspace margins"
+#~ msgstr "Ajustar los bordes del escritorio"
 
 #~ msgid "Window style"
 #~ msgstr "Estilo de Ventana"
@@ -448,7 +507,7 @@ msgstr "Cambiar a ..."
 #~ msgstr "Pegar al borde del escritorio"
 
 #~ msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
-#~ msgstr "%s: Propiedad %s en ventana 0x%lx contiene UTF-8 inválido\n"
+#~ msgstr "%s: Propiedad %s en ventana 0x%lx contiene caracteres UTF-8 inválidos\n"
 
 #~ msgid "%s: Using GTK+-%d.%d.%d"
 #~ msgstr "%s: Usando GTK+-%d.%d.%d"
@@ -460,7 +519,7 @@ msgstr "Cambiar a ..."
 #~ msgstr "Disposición :"
 
 #~ msgid "%s: Unidentified client message for window 0x%lx"
-#~ msgstr "%s: Mensaje no identificado, ventana 0x%lx"
+#~ msgstr "%s: Mensaje cliente no identificado para ventana 0x%lx"
 
 #~ msgid "Init complete"
 #~ msgstr "Arranque completo"
