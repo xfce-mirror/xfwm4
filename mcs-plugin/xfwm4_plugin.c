@@ -266,8 +266,7 @@ static TitleRadioButton title_radio_buttons[END];
 GList *decoration_theme_list = NULL;
 GList *keybinding_theme_list = NULL;
 
-#if (GLIB_MAJOR_VERSION < 2) || ((GLIB_MAJOR_VERSION >= 2) && (GLIB_MINOR_VERSION < 1))
-gboolean g_str_has_suffix (const gchar  *str, const gchar  *suffix)
+gboolean glib22_str_has_suffix (const gchar  *str, const gchar  *suffix)
 {
     int str_len;
     int suffix_len;
@@ -283,7 +282,6 @@ gboolean g_str_has_suffix (const gchar  *str, const gchar  *suffix)
 
     return strcmp (str + str_len - suffix_len, suffix) == 0;
 }
-#endif
 
 static void cb_layout_destroy_button(GtkWidget * widget, gpointer user_data)
 {
@@ -532,7 +530,7 @@ static GList *update_theme_dir(const gchar * theme_dir, GList * theme_list)
 
     gchar *tmp;
 
-    if(g_str_has_suffix(theme_dir, ".keys"))
+    if(glib22_str_has_suffix(theme_dir, ".keys"))
     {
         tmp = g_build_filename(theme_dir, "keythemerc", NULL);
         if(g_file_test(tmp, G_FILE_TEST_IS_REGULAR))
