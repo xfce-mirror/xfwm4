@@ -1443,7 +1443,7 @@ static inline void clientKeepVisible(Client * c)
     {
         c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - frameWidth(c) + frameLeft(c);
     }
-    if(frameX(c) < MyDisplayX(cx, cy) - left)
+    if(frameX(c) < MyDisplayX(cx, cy) + left)
     {
         c->x = MyDisplayX(cx, cy) + left + frameLeft(c);
     }
@@ -1451,7 +1451,7 @@ static inline void clientKeepVisible(Client * c)
     {
         c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
     }
-    if(frameY(c) < MyDisplayY(cx, cy) - top)
+    if(frameY(c) < MyDisplayY(cx, cy) + top)
     {
         c->y = MyDisplayY(cx, cy) + top + frameTop(c);
     }
