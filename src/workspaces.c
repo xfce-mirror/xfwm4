@@ -85,7 +85,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         c = (Client *) index->data;
         if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !clientIsTransient(c) && ((c->win_workspace != new_ws)))
         {
-            clientHide(c, FALSE);
+            clientHide(c, new_ws, FALSE);
         }
     }
 
@@ -178,13 +178,13 @@ void workspaceGetArea(CARD32 * m1, CARD32 * m2, Client * c)
     for(i = 0; i < 4; i++)
     {
         if (m2 == NULL)
-	{
-	    m1[i] = 0;
-	}
-	else
-	{
-	    m1[i] = m2[i];
-	}
+        {
+            m1[i] = 0;
+        }
+        else
+        {
+            m1[i] = m2[i];
+        }
     }
     
     for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)

@@ -227,7 +227,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             clientClose(c);
             break;
         case KEY_HIDE_WINDOW:
-            clientHide(c, TRUE);
+            clientHide(c, c->win_workspace, TRUE);
             break;
         case KEY_MAXIMIZE_WINDOW:
             clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
@@ -436,7 +436,7 @@ static inline void button1Action(Client * c, XButtonEvent * ev)
             clientToggleShaded(c);
             break;
         case ACTION_HIDE:
-            clientHide(c, TRUE);
+            clientHide(c, c->win_workspace, TRUE);
             break;
         }
     }
@@ -1039,7 +1039,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
-            clientHide(c, TRUE);
+            clientHide(c, c->win_workspace, TRUE);
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
@@ -1281,12 +1281,12 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
     case MENU_OP_MINIMIZE:
         if(CLIENT_CAN_HIDE_WINDOW(c))
         {
-            clientHide(c, TRUE);
+            clientHide(c, c->win_workspace, TRUE);
         }
         frameDraw(c, FALSE, FALSE);
         break;
     case MENU_OP_MINIMIZE_ALL:
-        clientHideAll(c);
+        clientHideAll(c, c->win_workspace);
         frameDraw(c, FALSE, FALSE);
         break;
     case MENU_OP_UNMINIMIZE:

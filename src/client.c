@@ -222,7 +222,7 @@ gboolean clientIsTransientForGroup(Client *c)
     return ((c->transient_for) && (c->transient_for == root));
 }
 
-gboolean clientTransientHasAncestor(Client *c)
+gboolean clientTransientHasAncestor(Client *c, int ws)
 {
     Client *c2;
     GSList *index;
@@ -239,7 +239,7 @@ gboolean clientTransientHasAncestor(Client *c)
     for(index = windows_stack; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-        if((c2 != c) && clientIsTransientFor(c2, c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c->win_workspace == c2->win_workspace))
+        if((c2 != c) && !clientIsTransient(c2) && clientIsTransientFor(c, c2) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN) && (c2->win_workspace == ws))
         {
             return TRUE;
         }
@@ -468,7 +468,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         {
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, True);
+                clientHide(c, c->win_workspace, True);
             }
         }
         else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
@@ -483,7 +483,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             }
             else if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, True);
+                clientHide(c, c->win_workspace, True);
             }
         }
     }
@@ -1396,7 +1396,7 @@ static inline void clientApplyStackList(GSList * list)
         c = (Client *) index->data;
         xwinstack[i++] = c->frame;
     }
-    /* XRaiseWindow(dpy, xwinstack[0]); */
+    XRaiseWindow(dpy, xwinstack[0]);
     XRestackWindows(dpy, xwinstack, (int)nwindows);
     g_slist_free(list_copy);
     g_free(xwinstack);
@@ -2750,7 +2750,7 @@ void clientShow(Client * c, gboolean change_state)
     g_slist_free(list_of_windows);
 }
 
-void clientHide(Client * c, gboolean change_state)
+void clientHide(Client * c, int ws, gboolean change_state)
 {
     GSList *list_of_windows = NULL;
     GSList *index;
@@ -2763,12 +2763,20 @@ void clientHide(Client * c, gboolean change_state)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-	
-	if (clientIsTransientForGroup(c2) && clientTransientHasAncestor(c2))
-	{
-	    continue;
-	}
-	TRACE("hiding client \"%s\" (0x%lx)", c2->name, c2->window);
+        
+        /* ws is used when transitioning between desktops, to avoid
+           hiding a transient for group that will be shown again on the new
+           workspace (transient for groups can be transients for multiple 
+           ancesors splitted across workspaces...)
+         */ 
+        if (clientIsTransientForGroup(c2) && clientTransientHasAncestor(c2, ws))
+        {
+            /* Other ancestors for that transient are still on screen, so don't
+               hide it...
+             */
+            continue;
+        }
+        TRACE("hiding client \"%s\" (0x%lx)", c2->name, c2->window);
 
         XUnmapWindow(dpy, c2->window);
         XUnmapWindow(dpy, c2->frame);
@@ -2785,7 +2793,7 @@ void clientHide(Client * c, gboolean change_state)
     g_slist_free(list_of_windows);
 }
 
-void clientHideAll(Client * c)
+void clientHideAll(Client * c, int ws)
 {
     Client *c2;
     int i;
@@ -2796,9 +2804,9 @@ void clientHideAll(Client * c)
     {
         if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HAS_BORDER) && !clientIsTransient(c2) && (c2 != c))
         {
-            if(((!c) && (c2->win_workspace == workspace)) || ((c) && !clientIsTransientFor(c, c2) && (c2->win_workspace == c->win_workspace)))
+            if(((!c) && (c2->win_workspace == ws)) || ((c) && !clientIsTransientFor(c, c2) && (c2->win_workspace == c->win_workspace)))
             {
-                clientHide(c2, True);
+                clientHide(c2, ws, True);
             }
         }
     }
@@ -3069,7 +3077,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
                     }
                     else
                     {
-                        clientHide(c2, False);
+                        clientHide(c2, workspace, False);
                     }
                 }
             }
@@ -4477,7 +4485,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         case HIDE_BUTTON:
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, True);
+                clientHide(c, c->win_workspace, True);
             }
             break;
         case CLOSE_BUTTON:
