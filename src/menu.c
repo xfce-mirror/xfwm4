@@ -330,6 +330,7 @@ void menu_free (Menu *menu)
 {
     DBG("entering menu_free\n");
     g_return_if_fail (menu != NULL);
+    g_return_if_fail (menu->menu != NULL);
     g_return_if_fail (GTK_IS_MENU (menu->menu));
     DBG("freeing menu\n");
     gtk_widget_destroy (menu->menu);
