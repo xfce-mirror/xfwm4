@@ -221,7 +221,7 @@ gboolean clientIsTransientForGroup(Client *c)
 
     TRACE("entering clientIsTransientForGroup");
     
-    return ((c->transient_for) && (c->transient_for == root));
+    return (c->transient_for == root);
 }
 
 gboolean clientTransientHasAncestor(Client *c, int ws)
