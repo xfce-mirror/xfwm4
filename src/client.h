@@ -184,6 +184,7 @@ struct _Client
     Client *prev;
     WindowType type;
     gboolean draw_active;
+    gboolean first_map;
     int x;
     int y;
     int width;

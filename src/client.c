@@ -925,22 +925,34 @@ static void clientWindowType(Client * c)
             c->type = WINDOW_DESKTOP;
             c->initial_layer = WIN_LAYER_DESKTOP;
             c->win_state |= WIN_STATE_STICKY;
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_PAGER | \
+                               CLIENT_FLAG_STICKY | \
+                               CLIENT_FLAG_SKIP_TASKBAR);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | \
+                                 CLIENT_FLAG_HAS_HIDE | \
+                                 CLIENT_FLAG_HAS_MAXIMIZE | \
+                                 CLIENT_FLAG_HAS_MENU | \
+                                 CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_dock)
         {
             TRACE("atom net_wm_window_type_dock detected");
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | \
+                                 CLIENT_FLAG_HAS_HIDE | \
+                                 CLIENT_FLAG_HAS_MAXIMIZE | \
+                                 CLIENT_FLAG_HAS_MENU | \
+                                 CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_toolbar)
         {
             TRACE("atom net_wm_window_type_toolbar detected");
             c->type = WINDOW_TOOLBAR;
             c->initial_layer = WIN_LAYER_NORMAL;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | \
+                                 CLIENT_FLAG_HAS_MAXIMIZE | \
+                                 CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_menu)
         {
@@ -951,8 +963,11 @@ static void clientWindowType(Client * c)
                http://mail.gnome.org/archives/wm-spec-list/2002-May/msg00001.html
                As it seems, GNOME and KDE don't treat menu the same way...
              */
-            CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_PAGER | \
+                               CLIENT_FLAG_SKIP_TASKBAR);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | \
+                                 CLIENT_FLAG_HAS_MAXIMIZE | \
+                                 CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_dialog)
         {
@@ -971,14 +986,20 @@ static void clientWindowType(Client * c)
             TRACE("atom net_wm_window_type_utility detected");
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | \
+                                 CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_splashscreen)
         {
             TRACE("atom net_wm_window_type_splashscreen detected");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | \
+                                 CLIENT_FLAG_HAS_HIDE | \
+                                 CLIENT_FLAG_HAS_MENU | \
+                                 CLIENT_FLAG_HAS_MOVE | \
+                                 CLIENT_FLAG_HAS_RESIZE | \
+                                 CLIENT_FLAG_HAS_STICK);
         }
     }
     else
@@ -2462,26 +2483,22 @@ void clientFrame(Window w, gboolean initial)
     clientApplyStackList(windows_stack);
     last_raise = c;
 
+    /* First map is used to bypass the caching system at first map */
+    c->first_map = TRUE;
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, TRUE);
         if(!initial && params.focus_new && clientAcceptFocus(c) && (c->win_workspace == workspace))
         {
-            /* We set the draw_active value to the wrong value to force a draw */
-            c->draw_active = FALSE;
             clientSetFocus(c, TRUE);
         }
         else
         {
-            /* We set the draw_active value to the wrong value to force a draw */
-            c->draw_active = TRUE;
             frameDraw(c, FALSE, FALSE);
         }
     }
     else
     {
-        /* We set the draw_active value to the wrong value to force a draw */
-        c->draw_active = TRUE;
         frameDraw(c, FALSE, FALSE);
         setWMState(dpy, c->window, IconicState);
         clientSetNetState(c);

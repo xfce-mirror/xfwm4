@@ -580,12 +580,12 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
         TRACE("\"%s\" is not the active window", c->name);
         state = INACTIVE;
     }
-    if((state == INACTIVE) && (c->draw_active))
+    if((state == INACTIVE) && ((c->draw_active) || (c->first_map)))
     {
         requires_clearing = TRUE;
         c->draw_active = FALSE;
     }
-    else if((state == ACTIVE) && !(c->draw_active))
+    else if((state == ACTIVE) && (!(c->draw_active) || (c->first_map)))
     {
         requires_clearing = TRUE;
         c->draw_active = TRUE;
