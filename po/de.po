@@ -1,14 +1,14 @@
 # Xfwm4 German translation
 # Copyright (C) 2003 Olivier Fourdan
 # This file is distributed under the same license as the xfwm4 package.
-# Moritz Heiber <moe@lunar-linux.org>, 2003
+# Moritz Heiber <moe@xfce.org>, 2003
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 21:39+0200\n"
-"PO-Revision-Date: 2004-01-08 00:09+0100\n"
-"Last-Translator: Moritz Heiber <moe@lunar-linux.org>\n"
+"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"PO-Revision-Date: 2004-10-23 21:03+0200\n"
+"Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
-msgstr "Desktopränder"
+msgstr "Seitenränder"
 
 #: mcs-plugin/margins.c:137
 msgid ""
@@ -43,16 +43,16 @@ msgstr "Unten:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
-msgstr "V. Desktops und Desktopränder"
+msgstr "Arbeitsflächen und Seitenränder"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:540
 msgid "Workspaces"
-msgstr "Virtuelle Desktops"
+msgstr "Arbeitsflächen"
 
 #: mcs-plugin/plugin.c:173
 msgid "Margins"
-msgstr "Desktopränder"
+msgstr "Seitenränder"
 
 #: mcs-plugin/workspaces.c:339
 msgid "Change name"
@@ -61,7 +61,7 @@ msgstr "Namen ändern"
 #: mcs-plugin/workspaces.c:351
 #, c-format
 msgid "Workspace %d"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/workspaces.c:361
 msgid "Name:"
@@ -73,12 +73,12 @@ msgstr "Klicken Sie einen Namen an, um ihn zu ändern"
 
 #: mcs-plugin/workspaces.c:521
 msgid "Number of workspaces:"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Anzahl der Arbeitsflächen:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:552
 msgid "Workspace names"
-msgstr "Desktopränder"
+msgstr "Arbeitsflächennamen"
 
 #: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
@@ -86,7 +86,7 @@ msgstr "Menü"
 
 #: mcs-plugin/xfwm4_plugin.c:77
 msgid "Stick"
-msgstr "Kleben"
+msgstr "Haften"
 
 #: mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
@@ -137,11 +137,11 @@ msgstr "Rechts"
 
 #: mcs-plugin/xfwm4_plugin.c:566
 msgid "Click and drag buttons to change the layout"
-msgstr ""
+msgstr "Ziehen Sie die Buttons nach unten, um das Layout zu verändern"
 
 #: mcs-plugin/xfwm4_plugin.c:571
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: mcs-plugin/xfwm4_plugin.c:582
 msgid "Title"
@@ -149,11 +149,11 @@ msgstr "Titelleiste"
 
 #: mcs-plugin/xfwm4_plugin.c:583
 msgid "The window title, it cannot be removed"
-msgstr ""
+msgstr "Der Fenstertitel, kann nicht entfernt werden"
 
 #: mcs-plugin/xfwm4_plugin.c:591
 msgid "Hidden"
-msgstr "Nicht anzeigen"
+msgstr "Versteckt"
 
 #: mcs-plugin/xfwm4_plugin.c:1312
 msgid "Font Selection Dialog"
@@ -185,33 +185,28 @@ msgid "Button layout"
 msgstr "Lage der Buttons"
 
 #: mcs-plugin/xfwm4_plugin.c:1450
-#, fuzzy
 msgid "Style"
-msgstr "Titelleiste"
+msgstr "Stil"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
-#, fuzzy
-msgid "Window shortcuts"
-msgstr "Fokus bei neuen Fenstern"
+msgid "Windows shortcuts"
+msgstr "Kürzel für Fenster"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
 msgid "Command"
-msgstr ""
+msgstr "Kommando"
 
 #: mcs-plugin/xfwm4_plugin.c:1501 mcs-plugin/xfwm4_plugin.c:1529
-#, fuzzy
 msgid "Shortcut"
-msgstr "Tastaturkürzel"
+msgstr "Kürzel"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
-#, fuzzy
 msgid "Command shortcuts"
-msgstr "Tastaturkürzel"
+msgstr "Kommandokürzel"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
-#, fuzzy
 msgid "Keyboard"
-msgstr "Tastaturkürzel"
+msgstr "Tastatur"
 
 #: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Focus model"
@@ -230,7 +225,6 @@ msgid "New window focus"
 msgstr "Fokus bei neuen Fenstern"
 
 #: mcs-plugin/xfwm4_plugin.c:1576
-#, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr "Neue Fenster bekommen Fokus"
 
@@ -239,7 +233,6 @@ msgid "Raise on focus"
 msgstr "Hervorheben bei Fokus"
 
 #: mcs-plugin/xfwm4_plugin.c:1589
-#, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr "Bringe Fenster in den Vordergrund wenn sie den Fokus erhalten"
 
@@ -260,12 +253,10 @@ msgid "Raise on click"
 msgstr "Hervorheben durch klicken"
 
 #: mcs-plugin/xfwm4_plugin.c:1631
-#, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr "Hervorheben bei Klick in das Programmfenster"
 
 #: mcs-plugin/xfwm4_plugin.c:1636
-#, fuzzy
 msgid "Focus"
 msgstr "Fokuseinstellungen"
 
@@ -275,7 +266,7 @@ msgstr "Einschnappen von Fenstern"
 
 #: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Snap windows to screen border"
-msgstr "Fenster am Desktoprand einschnappen lassen"
+msgstr "Fenster am Seitenrand einschnappen lassen"
 
 #: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Snap windows to other windows"
@@ -295,7 +286,7 @@ msgstr "Groß"
 
 #: mcs-plugin/xfwm4_plugin.c:1696
 msgid "Wrap workspaces"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Arbeitsflächen wechseln"
 
 #: mcs-plugin/xfwm4_plugin.c:1704
 msgid "Wrap workspaces when the pointer reaches a screen edge"
@@ -335,266 +326,219 @@ msgstr "Weitere Optionen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Wollen Sie dieses Kürzelthema wirklich entfernen?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Kürzelthema hinzufügen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Namen des Themas eingeben:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:145
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Es gibt bereits ein Thema mit diesem Namen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:151
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Sie müssen einen Namen eingeben"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:328 mcs-plugin/xfwm4_shortcuteditor.c:743
-#, fuzzy
 msgid "Close window"
-msgstr "Fenster verstecken"
+msgstr "Fenster schließen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:338 mcs-plugin/xfwm4_shortcuteditor.c:751
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "Fenster maximieren"
+msgstr "Fenster vertikal maximieren"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:343 mcs-plugin/xfwm4_shortcuteditor.c:755
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "Fenster maximieren"
+msgstr "Fenster horizontal maximieren"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:358 mcs-plugin/xfwm4_shortcuteditor.c:767
-#, fuzzy
 msgid "Stick window"
-msgstr "Fenster verstecken"
+msgstr "Fenster anheften"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:363 mcs-plugin/xfwm4_shortcuteditor.c:771
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Fenster verstecken"
+msgstr "Fenster durchlaufen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:368 mcs-plugin/xfwm4_shortcuteditor.c:775
-#, fuzzy
 msgid "Move window up"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster hochschieben"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:373 mcs-plugin/xfwm4_shortcuteditor.c:779
-#, fuzzy
 msgid "Move window down"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster runterschieben"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:378 mcs-plugin/xfwm4_shortcuteditor.c:783
-#, fuzzy
 msgid "Move window left"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster nach links schieben"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:383 mcs-plugin/xfwm4_shortcuteditor.c:787
-#, fuzzy
 msgid "Move window right"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster nach rechts schieben"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:388 mcs-plugin/xfwm4_shortcuteditor.c:791
-#, fuzzy
 msgid "Resize window up"
-msgstr "Fenster verstecken"
+msgstr "Fenster nach oben vergrößern"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:393 mcs-plugin/xfwm4_shortcuteditor.c:795
-#, fuzzy
 msgid "Resize window down"
-msgstr "Fenster verstecken"
+msgstr "Fenster nach unten vergrößern"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:398 mcs-plugin/xfwm4_shortcuteditor.c:799
-#, fuzzy
 msgid "Resize window left"
-msgstr "Fenster verstecken"
+msgstr "Fenster nach links vergrößern"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:403 mcs-plugin/xfwm4_shortcuteditor.c:803
-#, fuzzy
 msgid "Resize window right"
-msgstr "Fenster verstecken"
+msgstr "Fenster nach rechts vergrößern"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:408 mcs-plugin/xfwm4_shortcuteditor.c:807
-#, fuzzy
 msgid "Raise window"
-msgstr "Fenster verstecken"
+msgstr "Fenster hervorheben"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:413 mcs-plugin/xfwm4_shortcuteditor.c:811
-#, fuzzy
 msgid "Lower window"
-msgstr "Fenster verstecken"
+msgstr "Fenster herabsetzen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:418 mcs-plugin/xfwm4_shortcuteditor.c:815
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Vollbildmodus"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:423
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Arbeitsfläche darüber"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:428
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Arbeitsfläche darunter"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:433
-#, fuzzy
 msgid "Left workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Linke Arbeitsfläche"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:438
-#, fuzzy
 msgid "Right workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Rechte Arbeitsfläche"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:443 mcs-plugin/xfwm4_shortcuteditor.c:819
-#, fuzzy
 msgid "Next workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Nächste Arbeitsfläche"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:448 mcs-plugin/xfwm4_shortcuteditor.c:823
-#, fuzzy
 msgid "Previous workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Vorherige Arbeitsfläche"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:453 mcs-plugin/xfwm4_shortcuteditor.c:827
-#, fuzzy
 msgid "Add workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Arbeitsfläche hinzufügen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:458 mcs-plugin/xfwm4_shortcuteditor.c:831
-#, fuzzy
 msgid "Delete workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Arbeitsfläche löschen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:463 mcs-plugin/xfwm4_shortcuteditor.c:835
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:468 mcs-plugin/xfwm4_shortcuteditor.c:839
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:473 mcs-plugin/xfwm4_shortcuteditor.c:843
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:478 mcs-plugin/xfwm4_shortcuteditor.c:847
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:483 mcs-plugin/xfwm4_shortcuteditor.c:851
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:488 mcs-plugin/xfwm4_shortcuteditor.c:855
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:493 mcs-plugin/xfwm4_shortcuteditor.c:859
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:498 mcs-plugin/xfwm4_shortcuteditor.c:863
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:503 mcs-plugin/xfwm4_shortcuteditor.c:867
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:508 mcs-plugin/xfwm4_shortcuteditor.c:871
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster zur nächsten Arbeitsfläche bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:513 mcs-plugin/xfwm4_shortcuteditor.c:875
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "Virtuellen Desktop wechseln..."
+msgstr "Fenster zur vorherigen Arbeitsfläche bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:518
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf obere Arbeitsfläche bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:523
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf untere Arbeitsfläche bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:528
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf linke Arbeitsfläche bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:533
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf rechte Arbeitsfläche bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:538 mcs-plugin/xfwm4_shortcuteditor.c:879
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 1 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:543 mcs-plugin/xfwm4_shortcuteditor.c:883
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 2 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:548 mcs-plugin/xfwm4_shortcuteditor.c:887
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 3 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:553 mcs-plugin/xfwm4_shortcuteditor.c:891
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 4 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:558 mcs-plugin/xfwm4_shortcuteditor.c:895
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 5 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:563 mcs-plugin/xfwm4_shortcuteditor.c:899
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 6 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:568 mcs-plugin/xfwm4_shortcuteditor.c:903
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 7 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:573 mcs-plugin/xfwm4_shortcuteditor.c:907
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 8 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:578 mcs-plugin/xfwm4_shortcuteditor.c:911
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "Fenster auf Arbeitsfläche 9 bewegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:963
 msgid "Cannot open the theme directory !"
-msgstr ""
+msgstr "Kann Themaverzeichnis nicht öffnen!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:982
 #, c-format
@@ -602,6 +546,8 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
+"Kann %s nicht öffnen:\n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:997
 #: mcs-plugin/xfwm4_shortcuteditor.c:1008
@@ -610,52 +556,52 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Kann %s nicht schreiben:\n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1058
 msgid "Select command"
-msgstr ""
+msgstr "Kommando auswählen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
+"Kürzel schon in Benutzung!\n"
+"Sind Sie sicher, dass Sie es benutzen wollen?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1267
-#, fuzzy
 msgid "Compose shortcut for :"
-msgstr "Tastaturkürzel"
+msgstr "Kürzel erstellen für:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1270
 #: mcs-plugin/xfwm4_shortcuteditor.c:1498
-#, fuzzy
 msgid "Compose shortcut"
-msgstr "Tastaturkürzel"
+msgstr "Kürzel erstellen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
 #: mcs-plugin/xfwm4_shortcuteditor.c:1500
-#, fuzzy
 msgid "No shortcut"
-msgstr "Tastaturkürzel"
+msgstr "Kein Kürzel"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Choose command"
-msgstr ""
+msgstr "Kommando auswählen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1396
-#, fuzzy
 msgid "Command :"
-msgstr "Tastaturkürzel"
+msgstr "Kommando:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
+msgstr "Dieses Kommando existiert nicht oder die Datei ist nicht ausführbar!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
-msgstr ""
+msgstr "Kürzel für Kommando erstellen:"
 
 #: src/events.c:1776
 #, c-format
@@ -757,14 +703,14 @@ msgid "Restart"
 msgstr "Neu starten"
 
 #: src/menu.c:170
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i (%s)"
 
 #: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
-msgstr "Virtueller Desktop %i"
+msgstr "Arbeitsfläche %i"
 
 #: src/menu.c:425
 #, c-format
@@ -817,33 +763,4 @@ msgstr "Wechseln zu ..."
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
-msgstr ""
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr "Neue Fenster bekommen Fokus"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr "Bringe Fenster in den Vordergrund wenn sie den Fokus erhalten"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr "Hervorheben bei Klick in das Programmfenster"
-
-#~ msgid "Decoration style"
-#~ msgstr "Fensterdekoration"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "Tastatur und Fokus"
-
-#~ msgid "%s: Workspace count not set, using rc value: %i"
-#~ msgstr ""
-#~ "%s: Anzahl der virtuellen Desktops nicht eingestellt. Es wird die "
-#~ "Standardeinstellung verwendet: %i"
+msgstr "Unbekannte Anwendung"
