@@ -38,6 +38,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
+#include "misc.h"
 #include "client.h"
 #include "frame.h"
 #include "hints.h"
@@ -3322,7 +3323,7 @@ clientFrameAll ()
     MyXUngrabServer ();
     while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
     {
-        eventStashTime (&an_event);
+        stashEventTime (&an_event);
     }
     if (wins)
     {
@@ -4782,7 +4783,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientMove_event_filter");
 
-    eventStashTime (xevent);
+    stashEventTime (xevent);
     if (xevent->type == KeyPress)
     {
         if (!passdata->grab && params.box_move)
@@ -4837,7 +4838,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
         {
-            eventStashTime (xevent);
+            stashEventTime (xevent);
         }
 
         if (xevent->type == ButtonRelease)
@@ -5111,7 +5112,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     disp_max_x = MyDisplayMaxX (dpy, screen, cx, cy);
     disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
 
-    eventStashTime (xevent);
+    stashEventTime (xevent);
     if (xevent->type == KeyPress)
     {
         int key_width_inc, key_height_inc;
@@ -5204,7 +5205,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
         {
-            eventStashTime (xevent);
+            stashEventTime (xevent);
         }
 
         if (xevent->type == ButtonRelease)
@@ -5488,7 +5489,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientCycle_event_filter");
 
-    eventStashTime (xevent);
+    stashEventTime (xevent);
     switch (xevent->type)
     {
         case DestroyNotify:
@@ -5627,7 +5628,7 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     Client *c = ((ButtonPressData *) data)->c;
     int b = ((ButtonPressData *) data)->b;
 
-    eventStashTime (xevent);
+    stashEventTime (xevent);
     if (xevent->type == EnterNotify)
     {
         c->button_pressed[b] = TRUE;

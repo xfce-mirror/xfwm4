@@ -25,6 +25,9 @@
 #  include "config.h"
 #endif
 
+#include <sys/types.h>
+#include <sys/time.h>
+#include <X11/Xlib.h>
 #include <glib.h>
 
 void getMouseXY (Window, int *, int *);
@@ -37,5 +40,7 @@ gboolean MyCheckWindow(Window);
 Window setTmpEventWin (int, int, unsigned int, unsigned int, long);
 void removeTmpEventWin (Window);
 void placeSidewalks(gboolean);
+inline void stashEventTime (XEvent *);
+inline Time getLastEventTime(void);
 
 #endif /* INC_MISC_H */

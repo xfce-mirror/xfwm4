@@ -29,10 +29,10 @@
 #include <glib.h>
 #include <libxfce4util/debug.h>
 #include "main.h"
+#include "misc.h"
 #include "workspaces.h"
 #include "settings.h"
 #include "client.h"
-#include "events.h"
 #include "hints.h"
 
 void
@@ -155,7 +155,7 @@ workspaceSwitch (int new_ws, Client * c2)
         /* Just get rid of EnterNotify events when using focus follow mouse */
         while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
         {
-            eventStashTime (&an_event);
+            stashEventTime (&an_event);
         }
         if (!(c2)
             && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
