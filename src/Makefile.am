@@ -21,6 +21,8 @@ xfwm4_SOURCES = \
 	parserc.h \
 	pixmap.c \
 	pixmap.h \
+	session.c \
+	session.h \
 	settings.c \
 	settings.h \
 	tabwin.c \

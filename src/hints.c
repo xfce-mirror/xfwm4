@@ -140,7 +140,7 @@ unsigned long getWMState(Display * dpy, Window w)
         state = *data;
         XFree(data);
     }
-    return (state);
+    return state;
 }
 
 void setWMState(Display * dpy, Window w, unsigned long state)
@@ -173,11 +173,11 @@ PropMwmHints *getMotifHints(Display * dpy, Window w)
 
     if((XGetWindowProperty(dpy, w, motif_wm_hints, 0L, 20L, False, motif_wm_hints, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
-        return (data);
+        return data;
     }
     else
     {
-        return (NULL);
+        return NULL;
     }
 }
 
@@ -227,7 +227,7 @@ unsigned int getWMProtocols(Display * dpy, Window w)
     {
         XFree(protocols);
     }
-    return (result);
+    return result;
 }
 
 
@@ -247,10 +247,11 @@ void initGnomeHints(Display * dpy)
     win_workspace = XInternAtom(dpy, "_WIN_WORKSPACE", False);
 }
 
-int getGnomeHint(Display * dpy, Window w, Atom a, long *value)
+gboolean getGnomeHint(Display * dpy, Window w, Atom a, long *value)
 {
     Atom real_type;
-    int real_format, success = False;
+    int real_format;
+    gboolean success = FALSE;
     unsigned long items_read, items_left;
     long *data = NULL;
 
@@ -262,9 +263,9 @@ int getGnomeHint(Display * dpy, Window w, Atom a, long *value)
     {
         *value = *data;
         XFree(data);
-        success = True;
+        success = TRUE;
     }
-    return (success);
+    return success;
 }
 
 void setGnomeHint(Display * dpy, Window w, Atom a, long value)
@@ -365,10 +366,11 @@ void initNetHints(Display * dpy)
     utf8_string = XInternAtom(dpy, "UTF8_STRING", False);
 }
 
-int getNetHint(Display * dpy, Window w, Atom a, long *value)
+gboolean getNetHint(Display * dpy, Window w, Atom a, long *value)
 {
     Atom real_type;
-    int real_format, success = False;
+    int real_format;
+    gboolean success = FALSE;
     unsigned long items_read, items_left;
     long *data = NULL;
 
@@ -380,9 +382,9 @@ int getNetHint(Display * dpy, Window w, Atom a, long *value)
     {
         *value = *data;
         XFree(data);
-        success = True;
+        success = TRUE;
     }
-    return (success);
+    return success;
 }
 
 void set_net_supported_hint(Display * dpy, int screen, Window check_win)
@@ -450,16 +452,16 @@ void set_net_supported_hint(Display * dpy, int screen, Window check_win)
     XChangeProperty(dpy, RootWindow(dpy, screen), net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 1);
 }
 
-static int check_type_and_format(Display * dpy, Window w, Atom a, int expected_format, Atom expected_type, int n_items, int format, Atom type)
+static gboolean check_type_and_format(Display * dpy, Window w, Atom a, int expected_format, Atom expected_type, int n_items, int format, Atom type)
 {
     if((expected_format == format) && (expected_type == type) && (n_items < 0 || n_items > 0))
     {
-        return (True);
+        return TRUE;
     }
-    return (False);
+    return FALSE;
 }
 
-int get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_atoms_p)
+gboolean get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_atoms_p)
 {
     Atom type;
     int format;
@@ -472,7 +474,7 @@ int get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_atoms
 
     if((XGetWindowProperty(dpy, w, a, 0, G_MAXLONG, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (unsigned char **)&atoms) != Success) || (type == None))
     {
-        return (False);
+        return FALSE;
     }
 
     if(!check_type_and_format(dpy, w, a, 32, XA_ATOM, -1, format, type))
@@ -483,16 +485,16 @@ int get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_atoms
         }
         *atoms_p = NULL;
         *n_atoms_p = 0;
-        return (False);
+        return FALSE;
     }
 
     *atoms_p = atoms;
     *n_atoms_p = n_atoms;
 
-    return (True);
+    return TRUE;
 }
 
-int get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **cardinals_p, int *n_cardinals_p)
+gboolean get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **cardinals_p, int *n_cardinals_p)
 {
     Atom type;
     int format;
@@ -505,19 +507,19 @@ int get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **cardi
 
     if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
     {
-        return False;
+        return FALSE;
     }
 
     if(!check_type_and_format(dpy, w, xatom, 32, XA_CARDINAL, -1, format, type))
     {
         XFree(cardinals);
-        return False;
+        return FALSE;
     }
 
     *cardinals_p = cardinals;
     *n_cardinals_p = n_cardinals;
 
-    return True;
+    return TRUE;
 }
 
 void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * margins)
@@ -579,7 +581,7 @@ void getTransientFor(Display * dpy, Window w, Window * transient_for)
     DBG("Window (%#lx) is transient for (%#lx)\n", w, *transient_for);
 }
 
-int get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
+gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
 {
     Atom type;
     int format;
@@ -593,7 +595,7 @@ int get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
     if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
     {
         DBG("no utf8_string value provided\n");
-        return False;
+        return FALSE;
     }
 
     if(!check_type_and_format(dpy, w, xatom, 8, utf8_string, -1, format, type))
@@ -603,7 +605,7 @@ int get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
         {
             XFree(str);
         }
-        return False;
+        return FALSE;
     }
 
     if(!g_utf8_validate(str, n_items, NULL))
@@ -618,12 +620,12 @@ int get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
         }
         XFree(str);
 
-        return False;
+        return FALSE;
     }
 
     *str_p = str;
 
-    return True;
+    return TRUE;
 }
 
 static char *text_property_to_utf8(Display * dpy, const XTextProperty * prop)
@@ -675,9 +677,13 @@ static char *get_text_property(Display * dpy, Window w, Atom a)
 void getWindowName(Display * dpy, Window w, char **name)
 {
     char *str;
-
+    
     DBG("entering getWindowName\n");
+
+    g_return_if_fail (name != NULL);
     *name = NULL;
+    g_return_if_fail (w != None);
+    
     if(get_utf8_string(dpy, w, net_wm_name, &str))
     {
         *name = strdup(str);
@@ -694,6 +700,103 @@ void getWindowName(Display * dpy, Window w, char **name)
     {
         *name = strdup("");
     }
-
-    return;
 }
+
+gboolean getWindowRole(Display * dpy, Window window, char **role)
+{
+    XTextProperty tp;
+
+    DBG("entering GetWindowRole\n");
+    
+    g_return_val_if_fail (role != NULL, FALSE);
+    *role = NULL;
+    g_return_val_if_fail (window != None, FALSE);
+    
+    if(XGetTextProperty(dpy, window, &tp, wm_window_role))
+    {
+        if((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
+        {
+            *role = strdup((char *)tp.value);
+            XFree(tp.value);
+	    return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+Window getClientLeader(Display * dpy, Window window)
+{
+    Window client_leader = None;
+    Atom actual_type;
+    int actual_format;
+    unsigned long nitems;
+    unsigned long bytes_after;
+    unsigned char *prop = NULL;
+
+    DBG("entering getClientLeader\n");
+    
+    g_return_val_if_fail (window != None, None);
+    
+    if(XGetWindowProperty(dpy, window, wm_client_leader, 0L, 1L, False, AnyPropertyType, &actual_type, &actual_format, &nitems, &bytes_after, &prop) == Success)
+    {
+        if((prop) && (actual_type == XA_WINDOW) && (actual_format == 32) && (nitems == 1) && (bytes_after == 0))
+        {
+            client_leader = *((Window *) prop);
+        }
+        if(prop)
+        {
+            XFree(prop);
+        }
+    }
+    return client_leader;
+}
+
+gboolean getClientID(Display * dpy, Window window, char **client_id)
+{
+    Window id;
+    XTextProperty tp;
+
+    DBG("entering getClientID\n");
+
+    g_return_val_if_fail (client_id != NULL, FALSE);
+    *client_id = NULL;
+    g_return_val_if_fail (window != None, FALSE);
+
+    if((id = getClientLeader(dpy, window)))
+    {
+        if(XGetTextProperty(dpy, id, &tp, sm_client_id))
+        {
+            if(tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
+	    {
+                *client_id = strdup((char *)tp.value);
+                XFree(tp.value);
+	        return TRUE;
+	    }
+        }
+    }
+
+    return FALSE;
+}
+
+gboolean getWindowCommand(Display * dpy, Window window, char ***argv, int *argc)
+{
+    Window id;
+
+    *argc = 0;
+    g_return_val_if_fail(window != None, FALSE);
+
+    if(XGetCommand(dpy, window, argv, argc) && (*argc > 0))
+    {
+        return TRUE;
+    }
+    if((id = getClientLeader(dpy, window)))
+    {
+        if(XGetCommand(dpy, id, argv, argc) && (*argc > 0))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+

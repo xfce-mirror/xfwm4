@@ -47,6 +47,7 @@
 #include "menu.h"
 #include "keyboard.h"
 #include "workspaces.h"
+#include "session.h"
 #include "debug.h"
 #include "my_intl.h"
 
@@ -106,6 +107,7 @@ static void cleanUp()
     XFreeCursor(dpy, root_cursor);
     XFreeCursor(dpy, move_cursor);
     xineramaFree();
+    sessionFreeWindowStates();
     for(i = 0; i < 7; i++)
     {
         XFreeCursor(dpy, resize_cursor[i]);
@@ -122,9 +124,24 @@ static void cleanUp()
     closeEventFilter();
 }
 
-static void session_save_phase_2(gpointer client_data)
+static void load_saved_session(void)
 {
-    g_print("TODO: Save session\n");
+    const gchar *home = g_getenv("HOME");
+    gchar *filename;
+    
+    filename = g_build_filename(home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
+    sessionLoadWindowStates(filename);
+    g_free(filename);
+}
+
+static void save_phase_2(gpointer data)
+{
+    const gchar *home = g_getenv("HOME");
+    gchar *filename;
+    
+    filename = g_build_filename(home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
+    sessionSaveWindowStates(filename);
+    g_free(filename);
 }
 
 static void session_die(gpointer client_data)
@@ -194,12 +211,16 @@ static int initialize(int argc, char **argv)
     xinerama_heads = xineramaGetHeads();
 
     client_session = client_session_new(argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
-    client_session->save_phase_2 = session_save_phase_2;
+    client_session->save_phase_2 = save_phase_2;
     client_session->die = session_die;
 
     if(!session_init(client_session))
     {
         g_message(_("%s: Running without session manager"), g_get_prgname());
+    }
+    else
+    {
+        load_saved_session();
     }
 
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;

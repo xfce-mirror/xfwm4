@@ -106,6 +106,8 @@
 #define CLIENT_FLAG_WM_TAKEFOCUS       (1L<<25)
 #define CLIENT_FLAG_RESIZING           (1L<<26)
 #define CLIENT_FLAG_MOVING             (1L<<27)
+#define CLIENT_FLAG_NAME_CHANGED       (1L<<28)
+#define CLIENT_FLAG_SESSION_MANAGED    (1L<<29)
 
 /* Convenient macros */
 #define CLIENT_FLAG_TEST(c,f)			(c->client_flag & (f))
@@ -145,14 +147,17 @@ struct _Client
     Window sides[3];
     Window corners[4];
     Window buttons[BUTTON_COUNT];
+    Window client_leader;
     Colormap cmap;
     unsigned long win_hints;
     unsigned long win_state;
     unsigned long win_layer;
+
     int win_workspace;
     Atom type_atom;
     XSizeHints *size;
     XWMHints *wmhints;
+    XClassHint class;
     Client *next;
     Client *prev;
     WindowType type;
@@ -176,6 +181,10 @@ struct _Client
     int ncmap;
     int button_pressed[BUTTON_COUNT];
     int struts[4];
+    char *client_id;
+    char *window_role;
+    int wm_command_count;
+    char **wm_command;
     char *name;
     unsigned long client_flag;
 };

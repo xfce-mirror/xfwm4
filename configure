@@ -8814,6 +8814,8 @@ CATOBJEXT=.mo
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
 	  INSTOBJEXT=.mo
+	else
+	  gt_cv_have_gettext=no
 	fi
       fi
 

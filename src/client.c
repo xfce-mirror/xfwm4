@@ -35,6 +35,7 @@
 #include "workspaces.h"
 #include "settings.h"
 #include "tabwin.h"
+#include "session.h"
 #include "debug.h"
 #include "my_intl.h"
 
@@ -697,7 +698,10 @@ static void clientGetInitialNetWmDesktop(Client * c)
     DBG("entering clientGetInitialNetWmDesktop\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
 
-    c->win_workspace = workspace;
+    if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SESSION_MANAGED))
+    {
+        c->win_workspace = workspace;
+    }
     if(getNetHint(dpy, c->window, net_wm_desktop, &val))
     {
         DBG("atom net_wm_desktop detected\n");
@@ -1838,6 +1842,53 @@ void clientUpdateMWMHints(Client * c)
     }
 }
 
+static inline void clientFree(Client *c)
+{    
+    g_return_if_fail (c != NULL);
+    
+    DBG("entering clientFree\n");
+    DBG("freeing client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(c->name)
+    {
+        free(c->name);
+    }
+    if(c->size)
+    {
+        XFree(c->size);
+    }
+    if(c->wmhints)
+    {
+        XFree(c->wmhints);
+    }
+    if(c->ncmap > 0)
+    {
+        XFree(c->cmap_windows);
+    }
+    if(c->class.res_name)
+    {
+        XFree(c->class.res_name);
+    }
+    if(c->class.res_class)
+    {
+        XFree(c->class.res_class);
+    }
+    if(c->client_id)
+    {
+        XFree(c->client_id);
+    }
+    if(c->window_role)
+    {
+        XFree(c->window_role);
+    }
+    if((c->wm_command) && (c->wm_command_count))
+    {
+        XFreeStringList(c->wm_command);
+    }
+    
+    free(c);
+}
+
 void clientFrame(Window w)
 {
     XWindowAttributes attr;
@@ -1904,8 +1955,23 @@ void clientFrame(Window w)
         c->ncmap = 0;
     }
 
+    c->class.res_name = NULL;
+    c->class.res_class = NULL;
+    XGetClassHint (dpy, w, &c->class);
     c->wmhints = XGetWMHints(dpy, c->window);
-
+    getClientID(dpy, c->window, &(c->client_id));
+    c->client_leader = getClientLeader(dpy, c->window);
+    if (c->client_leader != None)
+    {
+        getWindowRole(dpy, c->client_leader, &(c->window_role));
+    }
+    else
+    {
+        c->window_role = NULL;
+    }
+    c->wm_command_count = 0;
+    getWindowCommand(dpy, c->window, &(c->wm_command), &(c->wm_command_count));
+    
     /* Initialize structure */
     c->client_flag = (CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
 
@@ -1929,6 +1995,12 @@ void clientFrame(Window w)
     if(!getGnomeHint(dpy, w, win_layer, &c->win_layer))
     {
         c->win_layer = WIN_LAYER_NORMAL;
+    }
+
+    /* Reload from session */
+    if (sessionMatchWinToSM (c))
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_SESSION_MANAGED);
     }
 
     CLIENT_FLAG_SET(c, (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) ? CLIENT_FLAG_STICKY : 0);
@@ -1960,27 +2032,21 @@ void clientFrame(Window w)
     }
 
     /* Once we know the type of window, we can initialize window position */
-    if(attr.map_state != IsViewable)
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SESSION_MANAGED))
     {
-        clientInitPosition(c);
+        if (attr.map_state != IsViewable)
+	{
+            clientInitPosition(c);
+	}
+	else
+	{
+            clientGravitate(c, APPLY);
+	}
     }
-    else
-    {
-        clientGravitate(c, APPLY);
-    }
-
     gdk_x11_grab_server();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
-        if(c->name)
-        {
-            free(c->name);
-        }
-        if(c->size)
-        {
-            XFree(c->size);
-        }
-        free(c);
+        clientFree(c);
         gdk_x11_ungrab_server();
         return;
     }
@@ -2084,24 +2150,7 @@ void clientUnframe(Client * c, int remap)
     {
         workspaceUpdateArea(margins, gnome_margins);
     }
-    if(c->name)
-    {
-        free(c->name);
-    }
-    if(c->size)
-    {
-        XFree(c->size);
-    }
-    if(c->wmhints)
-    {
-        XFree(c->wmhints);
-    }
-    if(c->ncmap > 0)
-    {
-        XFree(c->cmap_windows);
-    }
-    free(c);
-    DBG("client_count=%d\n", client_count);
+    clientFree(c);
 }
 
 void clientFrameAll()

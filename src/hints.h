@@ -19,14 +19,15 @@
 
  */
 
-#ifndef __HINTS_H
-#define __HINTS_H
+#ifndef __HINTS_H__
+#define __HINTS_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
 
 #include <X11/Xatom.h>
+#include <glib.h>
 
 #define MWM_HINTS_FUNCTIONS                     (1L << 0)
 #define MWM_HINTS_DECORATIONS                   (1L << 1)
@@ -181,23 +182,28 @@ void initMotifHints(Display *);
 PropMwmHints *getMotifHints(Display *, Window);
 unsigned int getWMProtocols(Display *, Window);
 void initGnomeHints(Display *);
-int getGnomeHint(Display *, Window, Atom, long *);
+gboolean getGnomeHint(Display *, Window, Atom, long *);
 void setGnomeHint(Display *, Window, Atom, long);
 void getGnomeDesktopMargins(Display *, int, CARD32 *);
 void setGnomeProtocols(Display *, int, Window);
 void initNetHints(Display * dpy);
-int getNetHint(Display *, Window, Atom, long *);
+gboolean getNetHint(Display *, Window, Atom, long *);
 void set_net_supported_hint(Display *, int, Window);
-int get_atom_list(Display *, Window, Atom, Atom **, int *);
-int get_cardinal_list(Display *, Window, Atom, unsigned long **, int *);
+gboolean get_atom_list(Display *, Window, Atom, Atom **, int *);
+gboolean get_cardinal_list(Display *, Window, Atom, unsigned long **, int *);
 void set_net_workarea(Display *, int, int, CARD32 *);
 void init_net_desktop_params(Display *, int, int);
 void set_utf8_string_hint(Display *, Window, Atom, const char *);
 void getTransientFor(Display * dpy, Window w, Window * transient_for);
 void getWindowName(Display * dpy, Window w, char **name);
-int get_utf8_string(Display *, Window, Atom, char **);
+gboolean get_utf8_string(Display *, Window, Atom, char **);
 void getWindowName(Display *, Window, char **);
+gboolean getWindowRole(Display *, Window, char **);
+Window getClientLeader(Display *, Window);
+gboolean getClientID(Display *, Window, char **);
+gboolean getWindowCommand(Display *, Window, char ***, int *);
+
 
 #define setNetHint setGnomeHint
 
-#endif /* __HINTS_H */
+#endif /* __HINTS_H__ */

@@ -809,6 +809,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
                 free(c->name);
             }
             getWindowName(dpy, c->window, &c->name);
+	    CLIENT_FLAG_SET(c, CLIENT_FLAG_NAME_CHANGED);
             frameDraw(c);
         }
         else if(ev->atom == motif_wm_hints)

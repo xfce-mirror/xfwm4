@@ -178,6 +178,8 @@ xfwm4_SOURCES = \
 	parserc.h \
 	pixmap.c \
 	pixmap.h \
+	session.c \
+	session.h \
 	settings.c \
 	settings.h \
 	tabwin.c \
@@ -207,8 +209,8 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
-	xfwm4-settings.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
-	xfwm4-workspaces.$(OBJEXT)
+	xfwm4-session.$(OBJEXT) xfwm4-settings.$(OBJEXT) \
+	xfwm4-tabwin.$(OBJEXT) xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 xfwm4_LDFLAGS =
@@ -225,6 +227,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-misc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-tabwin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
@@ -299,6 +302,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-misc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-parserc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-tabwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
@@ -668,6 +672,39 @@ xfwm4-pixmap.lo: pixmap.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-pixmap.Plo' tmpdepfile='$(DEPDIR)/xfwm4-pixmap.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-pixmap.lo `test -f 'pixmap.c' || echo '$(srcdir)/'`pixmap.c
+
+xfwm4-session.o: session.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-session.o -MD -MP -MF "$(DEPDIR)/xfwm4-session.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-session.o `test -f 'session.c' || echo '$(srcdir)/'`session.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-session.Tpo" "$(DEPDIR)/xfwm4-session.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-session.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='session.c' object='xfwm4-session.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-session.Po' tmpdepfile='$(DEPDIR)/xfwm4-session.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-session.o `test -f 'session.c' || echo '$(srcdir)/'`session.c
+
+xfwm4-session.obj: session.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-session.obj -MD -MP -MF "$(DEPDIR)/xfwm4-session.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-session.obj `if test -f 'session.c'; then $(CYGPATH_W) 'session.c'; else $(CYGPATH_W) '$(srcdir)/session.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-session.Tpo" "$(DEPDIR)/xfwm4-session.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-session.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='session.c' object='xfwm4-session.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-session.Po' tmpdepfile='$(DEPDIR)/xfwm4-session.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-session.obj `if test -f 'session.c'; then $(CYGPATH_W) 'session.c'; else $(CYGPATH_W) '$(srcdir)/session.c'; fi`
+
+xfwm4-session.lo: session.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-session.lo -MD -MP -MF "$(DEPDIR)/xfwm4-session.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-session.lo `test -f 'session.c' || echo '$(srcdir)/'`session.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-session.Tpo" "$(DEPDIR)/xfwm4-session.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-session.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='session.c' object='xfwm4-session.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-session.Plo' tmpdepfile='$(DEPDIR)/xfwm4-session.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-session.lo `test -f 'session.c' || echo '$(srcdir)/'`session.c
 
 xfwm4-settings.o: settings.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-settings.o -MD -MP -MF "$(DEPDIR)/xfwm4-settings.Tpo" \
