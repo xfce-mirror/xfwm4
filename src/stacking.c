@@ -47,8 +47,8 @@ clientApplyStackList (ScreenInfo *screen_info)
     xwinstack = g_new (Window, nwindows + 4);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[0]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[1]);
+    xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[2]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[3]);
-    xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[4]);
 
     if (nwindows)
     {
@@ -63,7 +63,7 @@ clientApplyStackList (ScreenInfo *screen_info)
         }
     }
 
-    XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) nwindows + 2);
+    XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) nwindows + 4);
     
     g_free (xwinstack);
 }
