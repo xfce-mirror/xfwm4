@@ -59,6 +59,11 @@
 #define INCLUDE_SKIP_PAGER		(1<<3)
 #define INCLUDE_SKIP_TASKBAR		(1<<4)
 
+#define UPDATE_KEYGRABS			(1<<0)
+#define UPDATE_FRAME			(1<<1)
+#define UPDATE_GRAVITY			(1<<2)
+#define UPDATE_ALL			(UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY)
+
 #define ACTIVE				0
 #define INACTIVE			1
 #define PRESSED				2
@@ -251,6 +256,7 @@ void clientUnframeAll();
 void clientGetNetStruts(Client *);
 void clientInstallColormaps(Client *);
 void clientUpdateColormaps(Client *);
+void clientUpdateAllFrames(int);
 void clientGrabKeys(Client *);
 void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);

@@ -35,23 +35,29 @@
 #define DEFAULT_THEME "microdeck2"
 #endif
 
-gboolean parseRc(gchar * file, gchar * dir, Settings rc[])
+gboolean parseRc(const gchar *file, const gchar *dir, Settings rc[])
 {
-    gchar filename[512], buf[512], *lvalue, *rvalue;
+    gchar buf[512];
+    gchar *filename, *lvalue, *rvalue;
     FILE *fp;
     gint i;
 
     DBG("entering parseRc\n");
+    
+    g_return_val_if_fail (file != NULL, FALSE);
 
     if(dir)
     {
-        g_snprintf(filename, sizeof(filename), "%s/%s", dir, file);
+        filename = g_build_filename(dir, G_DIR_SEPARATOR_S, file, NULL);
     }
     else
     {
-        strncpy(filename, file, sizeof(filename));
+        filename = g_strdup(file);
     }
+
     fp = fopen(filename, "r");
+    g_free (filename);
+    
     if(!fp)
     {
         return FALSE;
@@ -59,24 +65,10 @@ gboolean parseRc(gchar * file, gchar * dir, Settings rc[])
     while(fgets(buf, sizeof(buf), fp))
     {
         lvalue = strtok(buf, "=");
-        if(lvalue)
+        rvalue = strtok(NULL, "\n");
+        if((lvalue) && (rvalue))
         {
-            for(i = 0; rc[i].option; i++)
-            {
-                if(!g_ascii_strcasecmp(lvalue, rc[i].option))
-                {
-                    rvalue = strtok(NULL, "\n");
-                    if(rvalue)
-                    {
-                        if(rc[i].value)
-                        {
-                            g_free(rc[i].value);
-                        }
-                        rc[i].value = g_strdup(rvalue);
-                        DBG("%s=%s\n", rc[i].option, rc[i].value);
-                    }
-                }
-            }
+            setValue(lvalue, rvalue, rc);
         }
     }
     fclose(fp);
@@ -101,11 +93,13 @@ gboolean checkRc(Settings rc[])
     return rval;
 }
 
-gchar *getValue(gchar * option, Settings rc[])
+gchar *getValue(const gchar * option, Settings rc[])
 {
     gint i;
 
     DBG("entering getValue\n");
+
+    g_return_val_if_fail(option != NULL, NULL);
 
     for(i = 0; rc[i].option; i++)
     {
@@ -117,11 +111,56 @@ gchar *getValue(gchar * option, Settings rc[])
     return NULL;
 }
 
-gchar *getThemeDir(const gchar * theme)
+gboolean setValue(const gchar * lvalue, const gchar * rvalue, Settings rc[])
+{
+    gint i;
+
+    DBG("entering setValue\n");
+
+    g_return_val_if_fail(lvalue != NULL, FALSE);
+    g_return_val_if_fail(rvalue != NULL, FALSE);
+
+    for(i = 0; rc[i].option; i++)
+    {
+        if(!g_ascii_strcasecmp(lvalue, rc[i].option))
+        {
+            if(rvalue)
+            {
+                if(rc[i].value)
+                {
+                    g_free(rc[i].value);
+                }
+                rc[i].value = g_strdup(rvalue);
+                DBG("%s=%s\n", rc[i].option, rc[i].value);
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+gboolean setBooleanValueFromInt(const gchar * lvalue, int value, Settings rc[])
+{
+    return setValue(lvalue, value ? "true" : "false", rc);
+}
+
+gboolean setIntValueFromInt(const gchar * lvalue, int value, Settings rc[])
+{
+    gchar *s;
+    gboolean result;
+
+    s = g_strdup_printf("%i", value);
+    result = setValue(lvalue, s, rc);
+    g_free(s);
+
+    return result;
+}
+
+gchar *getThemeDir(const gchar *theme)
 {
     if(!theme)
     {
-        return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
+        return g_build_filename(DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
     }
     else if(g_path_is_absolute(theme))
     {
@@ -131,25 +170,25 @@ gchar *getThemeDir(const gchar * theme)
         }
         else
         {
-            return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
+            return g_build_filename(DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
         }
     }
     else
     {
-        gchar *test = g_strdup_printf("%s/.themes/xfwm4/%s", g_get_home_dir(), theme);
+        gchar *test = g_build_filename(g_get_home_dir(), G_DIR_SEPARATOR_S, ".themes", G_DIR_SEPARATOR_S, "xfwm4", G_DIR_SEPARATOR_S, theme, NULL);
         if(g_file_test(test, G_FILE_TEST_IS_DIR))
         {
             return test;
         }
         g_free(test);
-        test = g_strdup_printf("%s/themes/%s", DATADIR, theme);
+        test = g_build_filename(DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, theme, NULL);
         if(g_file_test(test, G_FILE_TEST_IS_DIR))
         {
             return test;
         }
         g_free(test);
     }
-    return g_strdup_printf("%s/themes/%s", DATADIR, DEFAULT_THEME);
+    return g_build_filename(DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
 }
 
 void freeRc(Settings rc[])
@@ -160,6 +199,10 @@ void freeRc(Settings rc[])
 
     for(i = 0; rc[i].option; i++)
     {
-        g_free(rc[i].value);
+        if(rc[i].value)
+        {
+            g_free(rc[i].value);
+            rc[i].value = NULL;
+        }
     }
 }

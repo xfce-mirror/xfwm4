@@ -84,9 +84,9 @@ extern MyPixmap corners[4][2];
 extern MyPixmap buttons[BUTTON_COUNT][3];
 extern MyPixmap title[5][2];
 
-void loadSettings(void);
+gboolean loadSettings(void);
 void unloadSettings(void);
-void reloadSettings(void);
-void initSettings(void);
+gboolean reloadSettings(gboolean);
+gboolean initSettings(void);
 
 #endif /* __SETTINGS_H__ */

@@ -9,6 +9,9 @@
 /* Define gtk required version. */
 #undef GTK_REQUIRED_VERSION
 
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
@@ -62,6 +65,9 @@
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
+
+/* Define libxfce4mcs required version. */
+#undef LIBXFCE4MCS_REQUIRED_VERSION
 
 /* Define libxfcegui4 required version. */
 #undef LIBXFCEGUI4_REQUIRED_VERSION

@@ -27,12 +27,14 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4mcs/mcs-client.h>
 #include "main.h"
 #include "parserc.h"
 #include "client.h"
 #include "workspaces.h"
 #include "debug.h"
 
+#define CHANNEL "xfwm4"
 #define TOINT(x) (x ? atoi(x) : 0)
 
 MyKey keys[KEY_COUNT];
@@ -58,6 +60,7 @@ int raise_delay;
 int snap_to_border;
 int snap_width;
 int dbl_click_time;
+
 GC box_gc;
 GdkGC *black_gc;
 GdkGC *white_gc;
@@ -66,108 +69,334 @@ MyPixmap corners[4][2];
 MyPixmap buttons[BUTTON_COUNT][3];
 MyPixmap title[5][2];
 
-void loadSettings()
+static McsClient *client = NULL;
+static gboolean loading = FALSE;
+static Settings rc[] = {
+    {"active_text_color", NULL, FALSE},
+    {"inactive_text_color", NULL, FALSE},
+    {"active_border_color", NULL, FALSE},
+    {"inactive_border_color", NULL, FALSE},
+    {"active_color_1", NULL, FALSE},
+    {"active_hilight_1", NULL, FALSE},
+    {"active_shadow_1", NULL, FALSE},
+    {"active_mid_1", NULL, FALSE},
+    {"active_color_2", NULL, FALSE},
+    {"active_hilight_2", NULL, FALSE},
+    {"active_shadow_2", NULL, FALSE},
+    {"active_mid_2", NULL, FALSE},
+    {"inactive_color_1", NULL, FALSE},
+    {"inactive_hilight_1", NULL, FALSE},
+    {"inactive_shadow_1", NULL, FALSE},
+    {"inactive_mid_1", NULL, FALSE},
+    {"inactive_color_2", NULL, FALSE},
+    {"inactive_hilight_2", NULL, FALSE},
+    {"inactive_shadow_2", NULL, FALSE},
+    {"inactive_mid_2", NULL, FALSE},
+    {"theme", NULL, TRUE},
+    {"keytheme", NULL, FALSE},
+    {"title_alignment", NULL, TRUE},
+    {"full_width_title", NULL, TRUE},
+    {"title_shadow_active", NULL, TRUE},
+    {"title_shadow_inactive", NULL, TRUE},
+    {"button_layout", NULL, TRUE},
+    {"button_spacing", NULL, TRUE},
+    {"title_vertical_offset_active", NULL, TRUE},
+    {"title_vertical_offset_inactive", NULL, TRUE},
+    {"title_horizontal_offset", NULL, TRUE},
+    {"button_offset", NULL, TRUE},
+    {"double_click_action", NULL, TRUE},
+    {"box_move", NULL, TRUE},
+    {"box_resize", NULL, TRUE},
+    {"click_to_focus", NULL, TRUE},
+    {"focus_hint", NULL, TRUE},
+    {"focus_new", NULL, TRUE},
+    {"raise_on_focus", NULL, TRUE},
+    {"raise_delay", NULL, TRUE},
+    {"snap_to_border", NULL, TRUE},
+    {"snap_width", NULL, TRUE},
+    {"dbl_click_time", NULL, TRUE},
+    {"workspace_count", NULL, TRUE},
+    {"wrap_workspaces", NULL, TRUE},
+    {"close_window_key", NULL, TRUE},
+    {"hide_window_key", NULL, TRUE},
+    {"maximize_window_key", NULL, TRUE},
+    {"maximize_vert_key", NULL, TRUE},
+    {"maximize_horiz_key", NULL, TRUE},
+    {"shade_window_key", NULL, TRUE},
+    {"cycle_windows_key", NULL, TRUE},
+    {"move_window_up_key", NULL, TRUE},
+    {"move_window_down_key", NULL, TRUE},
+    {"move_window_left_key", NULL, TRUE},
+    {"move_window_right_key", NULL, TRUE},
+    {"resize_window_up_key", NULL, TRUE},
+    {"resize_window_down_key", NULL, TRUE},
+    {"resize_window_left_key", NULL, TRUE},
+    {"resize_window_right_key", NULL, TRUE},
+    {"next_workspace_key", NULL, TRUE},
+    {"prev_workspace_key", NULL, TRUE},
+    {"add_workspace_key", NULL, TRUE},
+    {"del_workspace_key", NULL, TRUE},
+    {"stick_window_key", NULL, TRUE},
+    {"workspace_1_key", NULL, TRUE},
+    {"workspace_2_key", NULL, TRUE},
+    {"workspace_3_key", NULL, TRUE},
+    {"workspace_4_key", NULL, TRUE},
+    {"workspace_5_key", NULL, TRUE},
+    {"workspace_6_key", NULL, TRUE},
+    {"workspace_7_key", NULL, TRUE},
+    {"workspace_8_key", NULL, TRUE},
+    {"workspace_9_key", NULL, TRUE},
+    {"move_window_next_workspace_key", NULL, TRUE},
+    {"move_window_prev_workspace_key", NULL, TRUE},
+    {"move_window_workspace_1_key", NULL, TRUE},
+    {"move_window_workspace_2_key", NULL, TRUE},
+    {"move_window_workspace_3_key", NULL, TRUE},
+    {"move_window_workspace_4_key", NULL, TRUE},
+    {"move_window_workspace_5_key", NULL, TRUE},
+    {"move_window_workspace_6_key", NULL, TRUE},
+    {"move_window_workspace_7_key", NULL, TRUE},
+    {"move_window_workspace_8_key", NULL, TRUE},
+    {"move_window_workspace_9_key", NULL, TRUE},
+    {"raise_on_click", NULL, TRUE},
+    {NULL, NULL, FALSE}
+};
+
+static gboolean mcs_manager_is_running(void)
 {
-    Settings rc[] = {
-        {"active_text_color", NULL, FALSE},
-        {"inactive_text_color", NULL, FALSE},
-        {"active_border_color", NULL, FALSE},
-        {"inactive_border_color", NULL, FALSE},
-        {"active_color_1", NULL, FALSE},
-        {"active_hilight_1", NULL, FALSE},
-        {"active_shadow_1", NULL, FALSE},
-        {"active_mid_1", NULL, FALSE},
-        {"active_color_2", NULL, FALSE},
-        {"active_hilight_2", NULL, FALSE},
-        {"active_shadow_2", NULL, FALSE},
-        {"active_mid_2", NULL, FALSE},
-        {"inactive_color_1", NULL, FALSE},
-        {"inactive_hilight_1", NULL, FALSE},
-        {"inactive_shadow_1", NULL, FALSE},
-        {"inactive_mid_1", NULL, FALSE},
-        {"inactive_color_2", NULL, FALSE},
-        {"inactive_hilight_2", NULL, FALSE},
-        {"inactive_shadow_2", NULL, FALSE},
-        {"inactive_mid_2", NULL, FALSE},
-        {"theme", NULL, TRUE},
-        {"keytheme", NULL, FALSE},
-        {"title_alignment", NULL, TRUE},
-        {"full_width_title", NULL, TRUE},
-        {"title_shadow_active", NULL, TRUE},
-        {"title_shadow_inactive", NULL, TRUE},
-        {"button_layout", NULL, TRUE},
-        {"button_spacing", NULL, TRUE},
-        {"title_vertical_offset_active", NULL, TRUE},
-        {"title_vertical_offset_inactive", NULL, TRUE},
-        {"title_horizontal_offset", NULL, TRUE},
-        {"button_offset", NULL, TRUE},
-        {"double_click_action", NULL, TRUE},
-        {"box_move", NULL, TRUE},
-        {"box_resize", NULL, TRUE},
-        {"click_to_focus", NULL, TRUE},
-        {"focus_hint", NULL, TRUE},
-        {"focus_new", NULL, TRUE},
-        {"raise_on_focus", NULL, TRUE},
-        {"raise_delay", NULL, TRUE},
-        {"snap_to_border", NULL, TRUE},
-        {"snap_width", NULL, TRUE},
-        {"dbl_click_time", NULL, TRUE},
-        {"workspace_count", NULL, TRUE},
-        {"wrap_workspaces", NULL, TRUE},
-        {"close_window_key", NULL, TRUE},
-        {"hide_window_key", NULL, TRUE},
-        {"maximize_window_key", NULL, TRUE},
-        {"maximize_vert_key", NULL, TRUE},
-        {"maximize_horiz_key", NULL, TRUE},
-        {"shade_window_key", NULL, TRUE},
-        {"cycle_windows_key", NULL, TRUE},
-        {"move_window_up_key", NULL, TRUE},
-        {"move_window_down_key", NULL, TRUE},
-        {"move_window_left_key", NULL, TRUE},
-        {"move_window_right_key", NULL, TRUE},
-        {"resize_window_up_key", NULL, TRUE},
-        {"resize_window_down_key", NULL, TRUE},
-        {"resize_window_left_key", NULL, TRUE},
-        {"resize_window_right_key", NULL, TRUE},
-        {"next_workspace_key", NULL, TRUE},
-        {"prev_workspace_key", NULL, TRUE},
-        {"add_workspace_key", NULL, TRUE},
-        {"del_workspace_key", NULL, TRUE},
-        {"stick_window_key", NULL, TRUE},
-        {"workspace_1_key", NULL, TRUE},
-        {"workspace_2_key", NULL, TRUE},
-        {"workspace_3_key", NULL, TRUE},
-        {"workspace_4_key", NULL, TRUE},
-        {"workspace_5_key", NULL, TRUE},
-        {"workspace_6_key", NULL, TRUE},
-        {"workspace_7_key", NULL, TRUE},
-        {"workspace_8_key", NULL, TRUE},
-        {"workspace_9_key", NULL, TRUE},
-        {"move_window_next_workspace_key", NULL, TRUE},
-        {"move_window_prev_workspace_key", NULL, TRUE},
-        {"move_window_workspace_1_key", NULL, TRUE},
-        {"move_window_workspace_2_key", NULL, TRUE},
-        {"move_window_workspace_3_key", NULL, TRUE},
-        {"move_window_workspace_4_key", NULL, TRUE},
-        {"move_window_workspace_5_key", NULL, TRUE},
-        {"move_window_workspace_6_key", NULL, TRUE},
-        {"move_window_workspace_7_key", NULL, TRUE},
-        {"move_window_workspace_8_key", NULL, TRUE},
-        {"move_window_workspace_9_key", NULL, TRUE},
-        {"raise_on_click", NULL, TRUE},
-        {NULL, NULL, FALSE}
-    };
-    GValue tmp_val = { 0, };
+    McsManagerCheck result;
+
+    result = mcs_manager_check_running(dpy, screen);
+
+    return ((result == MCS_MANAGER_MULTI_CHANNEL) || (result == MCS_MANAGER_BOTH));
+}
+
+static void notify_cb(const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
+{
+    if(g_ascii_strcasecmp(CHANNEL, channel_name))
+        return;
+
+    switch (action)
+    {
+        case MCS_ACTION_NEW:
+        case MCS_ACTION_CHANGED:
+            if(setting->type == MCS_TYPE_INT)
+            {
+                if(!strcmp(name, "Xfwm/ClickToFocus"))
+                {
+                    click_to_focus = setting->data.v_int;
+                    setBooleanValueFromInt("click_to_focus", click_to_focus, rc);
+                }
+                else if(!strcmp(name, "Xfwm/FocusNewWindow"))
+                {
+                    focus_new = setting->data.v_int;
+                    setBooleanValueFromInt("focus_new", focus_new, rc);
+                }
+                else if(!strcmp(name, "Xfwm/FocusRaise"))
+                {
+                    raise_on_focus = setting->data.v_int;
+                    setBooleanValueFromInt("raise_on_focus", raise_on_focus, rc);
+                }
+                else if(!strcmp(name, "Xfwm/RaiseDelay"))
+                {
+                    raise_delay = setting->data.v_int;
+                    setIntValueFromInt("raise_delay", raise_delay, rc);
+                }
+                else if(!strcmp(name, "Xfwm/RaiseOnClick"))
+                {
+                    raise_on_click = setting->data.v_int;
+                    setBooleanValueFromInt("raise_on_click", raise_on_click, rc);
+                }
+                else if(!strcmp(name, "Xfwm/SnapToBorder"))
+                {
+                    snap_to_border = setting->data.v_int;
+                    setBooleanValueFromInt("snap_to_border", snap_to_border, rc);
+                }
+                else if(!strcmp(name, "Xfwm/SnapWidth"))
+                {
+                    snap_width = setting->data.v_int;
+                    setIntValueFromInt("snap_width", snap_width, rc);
+                }
+                else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
+                {
+                    wrap_workspaces = setting->data.v_int;
+                    setBooleanValueFromInt("wrap_workspaces", wrap_workspaces, rc);
+                }
+                else if(!strcmp(name, "Xfwm/BoxMove"))
+                {
+                    box_move = setting->data.v_int;
+                    setBooleanValueFromInt("box_move", box_move, rc);
+                }
+                else if(!strcmp(name, "Xfwm/BoxResize"))
+                {
+                    box_resize = setting->data.v_int;
+                    setBooleanValueFromInt("box_resize", box_resize, rc);
+                }
+            }
+            else if(setting->type == MCS_TYPE_STRING)
+            {
+                if(!strcmp(name, "Xfwm/DblClickAction"))
+                {
+                    reloadSettings(FALSE);
+                }
+                else if(!strcmp(name, "Xfwm/KeyThemeName"))
+                {
+                    reloadSettings(!loading);
+                }
+                else if(!strcmp(name, "Xfwm/ThemeName"))
+                {
+                    reloadSettings(!loading);
+                }
+                else if(!strcmp(name, "Xfwm/ButtonLayout"))
+                {
+                    reloadSettings(!loading);
+                }
+                if(!strcmp(name, "Xfwm/TitleAlign"))
+                {
+                    reloadSettings(!loading);
+                }
+            }
+            break;
+        case MCS_ACTION_DELETED:
+            reloadSettings(TRUE);
+        default:
+            break;
+    }
+}
+
+static GdkFilterReturn client_event_filter(GdkXEvent * xevent, GdkEvent * event, gpointer data)
+{
+    if(mcs_client_process_event(client, (XEvent *) xevent))
+        return GDK_FILTER_REMOVE;
+    else
+        return GDK_FILTER_CONTINUE;
+}
+
+static void watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+{
+    GdkWindow *gdkwin;
+
+    gdkwin = gdk_window_lookup(window);
+
+    if (is_start)
+    {
+	if (!gdkwin)
+	{
+	    gdkwin = gdk_window_foreign_new (window);
+	}
+	else
+	{
+	    g_object_ref (gdkwin);
+        }
+        gdk_window_add_filter(gdkwin, client_event_filter, cb_data);
+    }
+    else
+    {
+	g_assert (gdkwin);
+        gdk_window_remove_filter(gdkwin, client_event_filter, cb_data);
+	g_object_unref (gdkwin);
+    }
+}
+
+static void loadRcData(void)
+{
+    const gchar *homedir = g_get_home_dir();
+    if(!parseRc("defaults", DATADIR, rc))
+    {
+        fprintf(stderr, "%s: Missing defaults file\n", progname);
+        exit(1);
+    }
+    parseRc(".xfwm4rc", homedir, rc);
+}
+
+static void loadMcsData(void)
+{
+    McsSetting *setting;
+    if(client)
+    {
+        if(mcs_client_get_setting(client, "Xfwm/ClickToFocus", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("click_to_focus", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/FocusNewWindow", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("focus_new", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/FocusRaise", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("raise_on_focus", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/RaiseDelay", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt("raise_delay", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/RaiseOnClick", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("raise_on_click", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/SnapToBorder", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("snap_to_border", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/SnapWidth", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt("snap_width", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/WrapWorkspaces", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("wrap_workspaces", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/BoxMove", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("box_move", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/BoxResize", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("box_resize", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/DblClickAction", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setValue("double_click_action", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/ThemeName", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setValue("theme", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/KeyThemeName", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setValue("keytheme", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/ButtonLayout", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setValue("button_layout", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/TitleAlign", CHANNEL, &setting) == MCS_SUCCESS)
+        {
+            setValue("title_alignment", setting->data.v_string, rc);
+            mcs_setting_free(setting);
+        }
+    }
+}
+
+static void loadTheme(void)
+{
     gchar *theme;
-    gchar *keytheme;
-    gchar *keythemevalue;
     XpmColorSymbol colsym[20];
-    GtkWidget *widget;
+    GtkWidget *widget = getDefaultGtkWidget();
     guint i;
-
-    DBG("entering settingsLoad\n");
-
-    widget = getDefaultGtkWidget();
 
     rc[0].value = get_style(widget, "fg", "selected");
     rc[1].value = get_style(widget, "fg", "normal");
@@ -190,27 +419,8 @@ void loadSettings()
     rc[18].value = get_style(widget, "dark", "normal");
     rc[19].value = get_style(widget, "mid", "normal");
 
-    if(!parseRc("defaults", DATADIR, rc))
-    {
-        fprintf(stderr, "%s: Missing defaults file\n", progname);
-        exit(1);
-    }
-    parseRc(".xfwm4rc", getenv("HOME"), rc);
     theme = getThemeDir(getValue("theme", rc));
     parseRc("themerc", theme, rc);
-
-    keythemevalue = getValue("keytheme", rc);
-    if(keythemevalue)
-    {
-        keytheme = getThemeDir(keythemevalue);
-        parseRc("keythemerc", keytheme, rc);
-    }
-
-    if(!checkRc(rc))
-    {
-        fprintf(stderr, "%s: Missing values in defaults file\n", progname);
-        exit(1);
-    }
 
     for(i = 0; i < 20; i++)
     {
@@ -347,6 +557,7 @@ void loadSettings()
     {
         title_alignment = ALIGN_CENTER;
     }
+
     full_width_title = !g_ascii_strcasecmp("true", getValue("full_width_title", rc));
     title_shadow[ACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_active", rc));
     title_shadow[INACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_inactive", rc));
@@ -359,51 +570,29 @@ void loadSettings()
     title_horizontal_offset = TOINT(getValue("title_horizontal_offset", rc));
 
     box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
-    box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
-    box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
 
-    click_to_focus = !g_ascii_strcasecmp("true", getValue("click_to_focus", rc));
-    focus_hint = !g_ascii_strcasecmp("true", getValue("focus_hint", rc));
-    focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
-    raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
-    raise_delay = abs(TOINT(getValue("raise_delay", rc)));
-    raise_on_click = !g_ascii_strcasecmp("true", getValue("raise_on_click", rc));
+    g_free(theme);
+}
 
-    snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
-    snap_width = abs(TOINT(getValue("snap_width", rc)));
-    dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
-    g_value_init(&tmp_val, G_TYPE_INT);
-    if(gdk_setting_get("gtk-double-click-time", &tmp_val))
-    {
-        dbl_click_time = abs(g_value_get_int(&tmp_val));
-    }
+static gboolean loadKeyBindings(void)
+{
+    gchar *keytheme;
+    gchar *keythemevalue;
 
-    if(!g_ascii_strcasecmp("shade", getValue("double_click_action", rc)))
+    keythemevalue = getValue("keytheme", rc);
+    if(keythemevalue)
     {
-        double_click_action = ACTION_SHADE;
-    }
-    else if(!g_ascii_strcasecmp("hide", getValue("double_click_action", rc)))
-    {
-        double_click_action = ACTION_HIDE;
-    }
-    else if(!g_ascii_strcasecmp("maximize", getValue("double_click_action", rc)))
-    {
-        double_click_action = ACTION_MAXIMIZE;
-    }
-    else
-    {
-        double_click_action = ACTION_NONE;
+        keytheme = getThemeDir(keythemevalue);
+        parseRc("keythemerc", keytheme, rc);
+        g_free(keytheme);
+
+        if(!checkRc(rc))
+        {
+            fprintf(stderr, "%s: Missing values in defaults file\n", progname);
+            return FALSE;
+        }
     }
 
-    if(workspace_count < 0)
-    {
-        unsigned long data[1];
-        workspace_count = abs(TOINT(getValue("workspace_count", rc)));
-        setGnomeHint(dpy, root, win_workspace_count, workspace_count);
-        data[0] = workspace_count;
-        XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
-    }
-    wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
     parseKeyString(dpy, &keys[KEY_MOVE_UP], getValue("move_window_up_key", rc));
     parseKeyString(dpy, &keys[KEY_MOVE_DOWN], getValue("move_window_down_key", rc));
     parseKeyString(dpy, &keys[KEY_MOVE_LEFT], getValue("move_window_left_key", rc));
@@ -459,24 +648,89 @@ void loadSettings()
     grabKey(dpy, &keys[KEY_WORKSPACE_7], gnome_win);
     grabKey(dpy, &keys[KEY_WORKSPACE_8], gnome_win);
     grabKey(dpy, &keys[KEY_WORKSPACE_9], gnome_win);
-    freeRc(rc);
-    g_free(keytheme);
-    g_free(theme);
+    return TRUE;
 }
 
-void unloadSettings()
+gboolean loadSettings(void)
+{
+    GValue tmp_val = { 0, };
+
+    DBG("entering loadSettings\n");
+
+    loadRcData();
+    loadMcsData();
+    loadTheme();
+
+    if(!loadKeyBindings())
+    {
+        return FALSE;
+    }
+
+    box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
+    box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
+
+    click_to_focus = !g_ascii_strcasecmp("true", getValue("click_to_focus", rc));
+    focus_hint = !g_ascii_strcasecmp("true", getValue("focus_hint", rc));
+    focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
+    raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
+    raise_delay = abs(TOINT(getValue("raise_delay", rc)));
+    raise_on_click = !g_ascii_strcasecmp("true", getValue("raise_on_click", rc));
+
+    snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
+    snap_width = abs(TOINT(getValue("snap_width", rc)));
+    dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
+    g_value_init(&tmp_val, G_TYPE_INT);
+    if(gdk_setting_get("gtk-double-click-time", &tmp_val))
+    {
+        dbl_click_time = abs(g_value_get_int(&tmp_val));
+    }
+
+    if(!g_ascii_strcasecmp("shade", getValue("double_click_action", rc)))
+    {
+        double_click_action = ACTION_SHADE;
+    }
+    else if(!g_ascii_strcasecmp("hide", getValue("double_click_action", rc)))
+    {
+        double_click_action = ACTION_HIDE;
+    }
+    else if(!g_ascii_strcasecmp("maximize", getValue("double_click_action", rc)))
+    {
+        double_click_action = ACTION_MAXIMIZE;
+    }
+    else
+    {
+        double_click_action = ACTION_NONE;
+    }
+
+    if(workspace_count < 0)
+    {
+        unsigned long data[1];
+        workspace_count = abs(TOINT(getValue("workspace_count", rc)));
+        setGnomeHint(dpy, root, win_workspace_count, workspace_count);
+        data[0] = workspace_count;
+        XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
+    }
+    wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
+    return TRUE;
+}
+
+static void unloadTheme(void)
 {
     int i;
-    DBG("entering unloadSettings\n");
+    DBG("entering unloadTheme\n");
+
     for(i = 0; i < 3; i++)
     {
         freePixmap(dpy, &sides[i][ACTIVE]);
         freePixmap(dpy, &sides[i][INACTIVE]);
     }
-    for(i = 0; i < BUTTON_COUNT; i++)
+    for(i = 0; i < 4; i++)
     {
         freePixmap(dpy, &corners[i][ACTIVE]);
         freePixmap(dpy, &corners[i][INACTIVE]);
+    }
+    for(i = 0; i < BUTTON_COUNT; i++)
+    {
         freePixmap(dpy, &buttons[i][ACTIVE]);
         freePixmap(dpy, &buttons[i][INACTIVE]);
         freePixmap(dpy, &buttons[i][PRESSED]);
@@ -486,40 +740,68 @@ void unloadSettings()
         freePixmap(dpy, &title[i][ACTIVE]);
         freePixmap(dpy, &title[i][INACTIVE]);
     }
-    XFreeGC(dpy, box_gc);
+    if(box_gc != None)
+    {
+        XFreeGC(dpy, box_gc);
+        box_gc = None;
+    }
 }
 
-void reloadSettings()
+gboolean reloadSettings(gboolean refresh)
 {
-    Client *c;
-    int i;
-    XWindowChanges wc;
     DBG("entering reloadSettings\n");
-    for(c = clients, i = 0; i < client_count; c = c->next, i++)
+
+    unloadTheme();
+    if(!loadSettings())
     {
-        clientGravitate(c, REMOVE);
-        clientUngrabKeys(c);
+        return FALSE;
     }
-    unloadSettings();
-    loadSettings();
-    for(c = clients, i = 0; i < client_count; c = c->next, i++)
+    if(refresh)
     {
-        clientGravitate(c, APPLY);
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
-        clientGrabKeys(c);
+        clientUpdateAllFrames(UPDATE_ALL);
     }
+
+    return TRUE;
 }
 
-void initSettings(void)
+gboolean initSettings(void)
 {
+    box_gc = None;
     black_gc = NULL;
     white_gc = NULL;
     title_colors[ACTIVE].gc = NULL;
     title_colors[ACTIVE].allocated = FALSE;
     title_colors[INACTIVE].gc = NULL;
     title_colors[INACTIVE].allocated = FALSE;
+
+    if(!loadSettings())
+    {
+        return FALSE;
+    }
+
+    client = mcs_client_new(dpy, screen, notify_cb, watch_cb, NULL);
+    if(client)
+    {
+        if(mcs_manager_is_running())
+        {
+            loading = TRUE;
+            mcs_client_add_channel(client, CHANNEL);
+            loading = FALSE;
+        }
+        else
+        {
+            mcs_client_destroy(client);
+            client = NULL;
+        }
+    }
+
+    return TRUE;
+}
+
+void unloadSettings(void)
+{
+    DBG("entering unloadSettings\n");
+
+    unloadTheme();
+    freeRc(rc);
 }

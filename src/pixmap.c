@@ -26,7 +26,6 @@
 #include <X11/Xutil.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <malloc.h>
 #include <glib.h>
 #include "pixmap.h"
 #include "main.h"
@@ -34,16 +33,19 @@
 
 gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
 {
-    gchar filename[512];
+    gchar *filename;
     XpmAttributes attr;
 
     DBG("entering loadPixmap\n");
+    
+    g_return_val_if_fail (dir !=NULL, FALSE);
+    g_return_val_if_fail (file !=NULL, FALSE);
 
     pm->pixmap = None;
     pm->mask = None;
     pm->width = 1;
     pm->height = 1;
-    g_snprintf(filename, sizeof(filename), "%s/%s", dir, file);
+    filename = g_build_filename(dir, G_DIR_SEPARATOR_S, file, NULL);
     attr.colorsymbols = cs;
     attr.numsymbols = n;
     attr.colormap = cmap;
@@ -55,11 +57,13 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, Xpm
     }
     if(XpmReadFileToPixmap(dpy, XDefaultRootWindow(dpy), filename, &pm->pixmap, &pm->mask, &attr))
     {
+        g_free(filename);
         return FALSE;
     }
     pm->width = attr.width;
     pm->height = attr.height;
     XpmFreeAttributes(&attr);
+    g_free(filename);
     return TRUE;
 }
 

@@ -209,8 +209,10 @@ static int initialize(int argc, char **argv)
 
     gnome_win = getDefaultXWindow();
 
-    initSettings();
-    loadSettings();
+    if(!initSettings())
+    {
+        return (-2);
+    }
 
     act.sa_handler = handleSignal;
     act.sa_flags = 0;
@@ -259,13 +261,20 @@ int run_daemon(int argc, char **argv, gboolean daemon_mode)
         ppid = getppid();
         kill(ppid, SIGUSR1);
     }
-    if(status < 0)
+    switch (status)
     {
-        g_error("Another Window Manager is already running");
-    }
-    else
-    {
-        gtk_main();
+        case -1:
+            g_error("Another Window Manager is already running");
+            break;
+        case -2:
+            g_error("Missing data from default files");
+            break;
+        case 0:
+            gtk_main();
+            break;
+        default:
+            g_error("Unknown error occured");
+            break;
     }
     cleanUp();
     g_message("xfwm4 terminated\n");

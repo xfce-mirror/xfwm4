@@ -206,29 +206,29 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 clientClose(c);
                 break;
             case KEY_HIDE_WINDOW:
-	        if (CAN_HIDE_WINDOW(c))
-		{
+                if(CAN_HIDE_WINDOW(c))
+                {
                     clientHide(c, True);
                 }
-		break;
+                break;
             case KEY_MAXIMIZE_WINDOW:
-	        if (CAN_MAXIMIZE_WINDOW(c))
-		{
+                if(CAN_MAXIMIZE_WINDOW(c))
+                {
                     clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
                 }
-		break;
+                break;
             case KEY_MAXIMIZE_VERT:
-	        if (CAN_MAXIMIZE_WINDOW(c))
-		{
+                if(CAN_MAXIMIZE_WINDOW(c))
+                {
                     clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
                 }
-		break;
+                break;
             case KEY_MAXIMIZE_HORIZ:
-	        if (CAN_MAXIMIZE_WINDOW(c))
-		{
+                if(CAN_MAXIMIZE_WINDOW(c))
+                {
                     clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
                 }
-		break;
+                break;
             case KEY_SHADE_WINDOW:
                 clientToggleShaded(c);
                 break;
@@ -369,29 +369,29 @@ static inline void handleKeyPress(XKeyEvent * ev)
  * Button 2 : Move
  * Button 3 : Resize
  */
-static inline void _edgeButton(Client *c, int part, XButtonEvent * ev)
+static inline void _edgeButton(Client * c, int part, XButtonEvent * ev)
 {
     if(ev->button == Button2)
     {
-	XfwmButtonClickType tclick;
+        XfwmButtonClickType tclick;
 
-	tclick = typeOfClick(c->frame, (XEvent *) ev, FALSE);
+        tclick = typeOfClick(c->frame, (XEvent *) ev, FALSE);
 
-	if(tclick == XFWM_BUTTON_CLICK)
-	{
-	    clientLower(c);
-	}
-	else
-	{
-	    _moveRequest(c, (XEvent *) ev);
-	}
+        if(tclick == XFWM_BUTTON_CLICK)
+        {
+            clientLower(c);
+        }
+        else
+        {
+            _moveRequest(c, (XEvent *) ev);
+        }
     }
     else
     {
-	if(ev->button == Button1)
-	    clientRaise(c);
-	if(ev->button == Button1 || ev->button == Button3)
-	    _resizeRequest(c, part, (XEvent *) ev);
+        if(ev->button == Button1)
+            clientRaise(c);
+        if(ev->button == Button1 || ev->button == Button3)
+            _resizeRequest(c, part, (XEvent *) ev);
     }
 }
 
@@ -414,9 +414,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
 
         if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
-	    clientSetFocus(c, True);
-	    if(raise_on_click)
-		clientRaise(c);
+            clientSetFocus(c, True);
+            if(raise_on_click)
+                clientRaise(c);
             clientButtonPress(c, win, ev);
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
@@ -434,15 +434,15 @@ static inline void handleButtonPress(XButtonEvent * ev)
             {
                 clientClose(c);
             }
-	    else if(ev->button == Button3 && tclick == XFWM_BUTTON_DRAG)
-	    {
+            else if(ev->button == Button3 && tclick == XFWM_BUTTON_DRAG)
+            {
                 _moveRequest(c, (XEvent *) ev);
-	    }
+            }
             else
             {
                 clientSetFocus(c, True);
-		if(raise_on_click)
-		    clientRaise(c);
+                if(raise_on_click)
+                    clientRaise(c);
                 ev->window = ev->root;
                 if(button_handler_id)
                 {
@@ -469,26 +469,26 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 switch (double_click_action)
                 {
                     case ACTION_MAXIMIZE:
-		        if (CAN_MAXIMIZE_WINDOW(c))
-			{
+                        if(CAN_MAXIMIZE_WINDOW(c))
+                        {
                             clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
                         }
-			break;
+                        break;
                     case ACTION_SHADE:
                         clientToggleShaded(c);
                         break;
                     case ACTION_HIDE:
-		        if (CAN_HIDE_WINDOW(c))
-			{
+                        if(CAN_HIDE_WINDOW(c))
+                        {
                             clientHide(c, True);
                         }
-			break;
+                        break;
                 }
             }
         }
         else if((win == c->corners[CORNER_TOP_LEFT]) && (state == 0))
         {
-	    _edgeButton(c, CORNER_TOP_LEFT, ev);
+            _edgeButton(c, CORNER_TOP_LEFT, ev);
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (state == 0))
         {
@@ -830,11 +830,11 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             DBG("client \"%s\" (%#lx) has received a wm_change_state event\n", c->name, c->window);
-            if (CAN_HIDE_WINDOW(c))
-	    {
-	        clientHide(c, True);
+            if(CAN_HIDE_WINDOW(c))
+            {
+                clientHide(c, True);
             }
-	}
+        }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/shaded event\n", c->name, c->window);
@@ -991,7 +991,7 @@ void handleEvent(XEvent * ev)
     {
         if(reload)
         {
-            reloadSettings();
+            reloadSettings(TRUE);
             reload = False;
         }
         else if(quit)

@@ -44,7 +44,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     unsigned long data[1];
     int i;
     XEvent an_event;
-    
+
     DBG("entering workspaceSwitch\n");
 
     if((new_ws < 0) && wrap_workspaces)
@@ -64,10 +64,10 @@ void workspaceSwitch(int new_ws, Client * c2)
     if(previous)
     {
         previous->focus = True;
-	if (previous->sticky)
-	{
-	    f = previous;
-	}
+        if(previous->sticky)
+        {
+            f = previous;
+        }
     }
 
     if(c2)
@@ -106,7 +106,7 @@ void workspaceSwitch(int new_ws, Client * c2)
             if((c->win_workspace == new_ws) && !(c->transient_for) && !(c->hidden))
             {
                 clientShow(c, False);
-                if ((!f) && (c->focus))
+                if((!f) && (c->focus))
                 {
                     f = c;
                 }
@@ -120,10 +120,10 @@ void workspaceSwitch(int new_ws, Client * c2)
     XChangeProperty(dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     workspaceUpdateArea(margins, gnome_margins);
     /* Just get rid of EnterNotify events when using focus follow mouse */
-    XSync (dpy, 0);
-    if (!click_to_focus)
+    XSync(dpy, 0);
+    if(!click_to_focus)
     {
-	while(XCheckTypedEvent(dpy, EnterNotify, &an_event));
+        while(XCheckTypedEvent(dpy, EnterNotify, &an_event));
     }
     clientSetFocus(f, True);
 }

@@ -28,9 +28,12 @@
 #include <glib.h>
 #include "settings.h"
 
-gboolean parseRc(gchar *, gchar *, Settings rc[]);
+gboolean parseRc(const gchar *, const gchar *, Settings rc[]);
 gboolean checkRc(Settings rc[]);
-gchar *getValue(gchar *, Settings rc[]);
+gchar *getValue(const gchar *, Settings rc[]);
+gboolean setValue(const gchar *, const gchar *, Settings rc[]);
+gboolean setBooleanValueFromInt(const gchar *, int, Settings rc[]);
+gboolean setIntValueFromInt(const gchar *, int, Settings rc[]);
 gchar *getThemeDir(const gchar *);
 void freeRc(Settings rc[]);
 

@@ -299,11 +299,11 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
     {
         if(((action == NET_WM_STATE_ADD) && !(c->hidden)) || ((action == NET_WM_STATE_REMOVE) && (c->hidden)) || (action == NET_WM_STATE_TOGGLE))
         {
-            if (CAN_HIDE_WINDOW(c))
-	    {
-	        clientHide(c, True);
+            if(CAN_HIDE_WINDOW(c))
+            {
+                clientHide(c, True);
             }
-	}
+        }
     }
 #endif
 
@@ -824,6 +824,37 @@ void clientUpdateColormaps(Client * c)
         c->ncmap = 0;
     }
     c->cmap = attr.colormap;
+}
+
+void clientUpdateAllFrames(int mask)
+{
+    Client *c;
+    int i;
+    XWindowChanges wc;
+
+    DBG("entering clientRedrawAllFrames\n");
+    for(c = clients, i = 0; i < client_count; c = c->next, i++)
+    {
+        if(mask & UPDATE_KEYGRABS)
+        {
+            clientUngrabKeys(c);
+            clientGrabKeys(c);
+        }
+        if(mask & UPDATE_GRAVITY)
+        {
+            clientGravitate(c, REMOVE);
+            clientGravitate(c, APPLY);
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+        }
+        if(mask & UPDATE_FRAME)
+        {
+            frameDraw(c);
+        }
+    }
 }
 
 void clientGrabKeys(Client * c)
@@ -3427,11 +3458,11 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         switch (b)
         {
             case HIDE_BUTTON:
-                if (CAN_HIDE_WINDOW(c))
-		{
-		    clientHide(c, True);
+                if(CAN_HIDE_WINDOW(c))
+                {
+                    clientHide(c, True);
                 }
-		break;
+                break;
             case CLOSE_BUTTON:
                 if(bev->button == Button3)
                 {
@@ -3443,21 +3474,21 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
                 }
                 break;
             case MAXIMIZE_BUTTON:
-                if (CAN_MAXIMIZE_WINDOW(c))
-		{
-		    if(bev->button == Button1)
+                if(CAN_MAXIMIZE_WINDOW(c))
+                {
+                    if(bev->button == Button1)
                     {
-                	clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
                     }
                     else if(bev->button == Button2)
                     {
-                	clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
+                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
                     }
                     else if(bev->button == Button3)
                     {
-                	clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
+                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
                     }
-		}
+                }
                 break;
             case SHADE_BUTTON:
                 clientToggleShaded(c);

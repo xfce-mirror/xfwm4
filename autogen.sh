@@ -9,6 +9,10 @@
 # if unset, default commands will be used.
 #
 
+if test "x$LIBTOOLIZE" = "x"; then
+	LIBTOOLIZE=libtoolize
+fi
+
 if test "x$ACLOCAL" = "x"; then
 	ACLOCAL=aclocal
 fi
@@ -25,7 +29,8 @@ if test "x$AUTOCONF" = "x"; then
 	AUTOCONF=autoconf
 fi
 
-$ACLOCAL --verbose \
+$LIBTOOLIZE -c -f \
+&& $ACLOCAL --verbose \
 && $AUTOHEADER \
 && $AUTOMAKE --add-missing --copy --include-deps --foreign --gnu --verbose \
 && $AUTOCONF \
