@@ -127,16 +127,16 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
                 clicks++;
             }
         }
-        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
-        {
-            xcurrent = ev->xmotion.x_root;
-            ycurrent = ev->xmotion.y_root;
-        }
         if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK
             || (!allow_double_click
                 && (XfwmButtonClickType) clicks == XFWM_BUTTON_CLICK))
         {
             break;
+        }
+        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
+        {
+            xcurrent = ev->xmotion.x_root;
+            ycurrent = ev->xmotion.y_root;
         }
     }
     XUngrabPointer (dpy, ev->xbutton.time);

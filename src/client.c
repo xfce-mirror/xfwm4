@@ -87,7 +87,9 @@
 #define WINDOW_TYPE_DONT_PLACE \
     WINDOW_DESKTOP | \
     WINDOW_DOCK | \
-    WINDOW_SPLASHSCREEN | \
+    WINDOW_SPLASHSCREEN
+    
+#define WINDOW_TYPE_DIALOG \
     WINDOW_DIALOG | \
     WINDOW_MODAL_DIALOG
 
@@ -2299,7 +2301,8 @@ clientInitPosition (Client * c)
     clientGravitate (c, APPLY);
 
     if ((c->size->flags & (PPosition | USPosition)) ||
-        (c->type & (WINDOW_TYPE_DONT_PLACE)))
+        (c->type & (WINDOW_TYPE_DONT_PLACE)) ||
+        ((c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))
     {
         if (CONSTRAINED_WINDOW (c))
         {
