@@ -2716,7 +2716,6 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     {
         c->button_pressed[b] = False;
         frameDraw(c);
-
         switch (b)
         {
             case HIDE_BUTTON:

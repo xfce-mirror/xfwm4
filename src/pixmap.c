@@ -61,6 +61,14 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file, XpmCo
     return TRUE;
 }
 
+void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
+{
+    pm->pixmap = XCreatePixmap(dpy, root, width, height, depth);
+    pm->mask   = XCreatePixmap(dpy, pm->pixmap, width, height, 1);
+    pm->width  = width;
+    pm->height = height;
+}
+
 void freePixmap(Display * dpy, MyPixmap * pm)
 {
     DBG("entering freePixmap\n");

@@ -36,6 +36,7 @@ typedef struct
 MyPixmap;
 
 gboolean loadPixmap(Display *, MyPixmap *, gchar *, gchar *, XpmColorSymbol *, gint);
+void createPixmap(Display *, MyPixmap *, gint, gint);
 void freePixmap(Display *, MyPixmap *);
 
 #endif /* __PIXMAP_H__ */
