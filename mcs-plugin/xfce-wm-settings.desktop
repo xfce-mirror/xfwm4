@@ -1,7 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Xfce 4 Window Manager Settings
+Name[fr]=Paramètres du gestionnaire de fenêtres de Xfce 4
 Comment=Window Manager Settings
+Comment[fr]=Paramétrage du gestionnaire de fenêtres
 Exec=xfce-setting-show xfwm4
 Icon=xfwm4
 Terminal=false

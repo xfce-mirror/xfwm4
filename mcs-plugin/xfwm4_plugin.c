@@ -567,6 +567,7 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     vbox = gtk_vbox_new (TRUE, 0);
  
     label = gtk_label_new (_("Click and drag buttons to change the layout"));
+    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
     gtk_widget_show (label);
 
@@ -608,7 +609,7 @@ create_layout_buttons (gchar * layout, gpointer user_data)
         image = gtk_image_new_from_stock (title_button[i].stock_icon, GTK_ICON_SIZE_MENU);
         button = gtk_button_new ();
       	gtk_container_add (GTK_CONTAINER (button), image);
-	gtk_tooltips_set_tip (tooltips, button, title_button[i].desc, title_button[i].desc);
+	gtk_tooltips_set_tip (tooltips, button, _(title_button[i].desc), _(title_button[i].desc));
         gtk_drag_source_set (button, GDK_BUTTON1_MASK, &entry, 1, GDK_ACTION_MOVE);
         g_signal_connect (button, "drag-data-get", G_CALLBACK (data_get), NULL);
         g_signal_connect (button, "drag_begin", G_CALLBACK (button_drag_begin), NULL);

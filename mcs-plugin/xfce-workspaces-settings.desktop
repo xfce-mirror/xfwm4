@@ -1,7 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Xfce 4 Workspaces Settings
+Name[fr]=Paramètres des espaces virtuels de Xfce 4
 Comment=Workspaces Settings
+Comment[fr]=Paramétrage des espaces virtuels
 Exec=xfce-setting-show workspaces
 Icon=xfce4-workspaces
 Terminal=false
