@@ -5377,7 +5377,10 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
         clientConstrainPos (c, FALSE);
 #ifdef SHOW_POSITION
-        poswinSetPosition (passdata->poswin, c);
+        if (passdata->poswin)
+        {
+            poswinSetPosition (passdata->poswin, c);
+        }
 #endif
         if (params.box_move)
         {
@@ -5508,9 +5511,16 @@ clientMove (Client * c, XEvent * e)
     }
 
 #ifdef SHOW_POSITION
-    passdata.poswin = poswinCreate();
-    poswinSetPosition (passdata.poswin, c);
-    poswinShow (passdata.poswin);
+    if (!(passdata.use_keys))
+    {
+        passdata.poswin = poswinCreate();
+        poswinSetPosition (passdata.poswin, c);
+        poswinShow (passdata.poswin);
+    }
+    else
+    {
+        passdata.poswin = NULL;
+    }
 #endif
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
@@ -5520,7 +5530,10 @@ clientMove (Client * c, XEvent * e)
     TRACE ("leaving move loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
 #ifdef SHOW_POSITION
-    poswinDestroy (passdata.poswin);
+    if (passdata.poswin)
+    {
+        poswinDestroy (passdata.poswin);
+    }
 #endif
 
     if (passdata.grab && params.box_move)
@@ -5793,7 +5806,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->width = prev_width;
             }
         }
-        if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+        if (passdata->poswin)
         {
             poswinSetPosition (passdata->poswin, c);
         }
@@ -5917,11 +5930,20 @@ clientResize (Client * c, int corner, XEvent * e)
         XPutBackEvent (dpy, e);
     }
     
-    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+#ifdef SHOW_POSITION
+    if (!(passdata.use_keys))
+#else
+    if (!(passdata.use_keys) && 
+         ((c->size->width_inc > 1) || (c->size->height_inc > 1)))
+#endif
     {
         passdata.poswin = poswinCreate();
         poswinSetPosition (passdata.poswin, c);
         poswinShow (passdata.poswin);
+    }
+    else
+    {
+        passdata.poswin = NULL;
     }
     
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
@@ -5932,7 +5954,7 @@ clientResize (Client * c, int corner, XEvent * e)
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     
-    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+    if (passdata.poswin)
     {
         poswinDestroy (passdata.poswin);
     }
