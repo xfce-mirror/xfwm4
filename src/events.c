@@ -943,7 +943,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
             ops |= MENU_OP_MAXIMIZE;
         }
 
-        if(getWMState(dpy, c->window) == IconicState)
+        if(c->hidden)
         {
             ops |= MENU_OP_UNMINIMIZE;
         }

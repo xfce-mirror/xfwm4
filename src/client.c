@@ -36,6 +36,11 @@
 #include "gtktoxevent.h"
 #include "debug.h"
 
+#define ACCEPT_INPUT(wmhints) \
+    ((!(wmhints) || \
+    ((wmhints) && !(wmhints->flags & InputHint)) || \
+    ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input))))
+
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)	((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)	((Window) (p))
@@ -1531,17 +1536,19 @@ void clientFrame(Window w)
         c->button_pressed[i] = False;
     }
 
-    if(!XGetWMColormapWindows(dpy, w, &c->cmap_windows, &c->ncmap))
+    if(!XGetWMColormapWindows(dpy, c->window, &c->cmap_windows, &c->ncmap))
     {
         c->ncmap = 0;
     }
-
+    
+    c->wmhints = XGetWMHints(dpy, c->window);
+    
     /* Initialize structure */
     c->focus = False;
     c->fullscreen = False;
     c->has_border = True;
     c->has_struts = False;
-    c->hidden = False;
+    c->hidden = (((c->wmhints) && (c->wmhints->initial_state == IconicState)) ? True : False);
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
     c->managed = False;
     c->maximized = False;
@@ -1554,7 +1561,7 @@ void clientFrame(Window w)
     c->type_atom = None;
     c->visible = False;
     c->wm_delete = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
-    c->wm_input = (getWMInput(dpy, c->window) ? True : False);
+    c->wm_input = (ACCEPT_INPUT(c->wmhints) ? True : False);
     c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
 
     mwm_hints = getMotifHints(dpy, c->window);
@@ -1660,7 +1667,7 @@ void clientFrame(Window w)
     wc.stack_mode = Above;
     clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth | CWStackMode);
 
-    if(getWMState(dpy, c->window) != IconicState)
+    if(!(c->hidden))
     {
         clientShow(c, True);
         if(focus_new && !!clientAcceptFocus(c))
@@ -1674,7 +1681,6 @@ void clientFrame(Window w)
     }
     else
     {
-        c->hidden = True;
         frameDraw(c);
         setWMState(dpy, c->window, IconicState);
         clientSetNetState(c);
@@ -1714,6 +1720,10 @@ void clientUnframe(Client * c, int remap)
     if(c->size)
     {
         XFree(c->size);
+    }
+    if(c->wmhints)
+    {
+        XFree(c->wmhints);
     }
     if(c->ncmap > 0)
     {
@@ -2007,7 +2017,7 @@ void clientSetWorkspace(Client * c, int ws)
     c->win_workspace = ws;
     desk = clientGetNetWmDesktop(c);
     setNetHint(dpy, c->window, net_wm_desktop, desk);
-    if(getWMState(dpy, c->window) != IconicState)
+    if(!(c->hidden))
     {
         if(c->sticky)
         {
@@ -2837,7 +2847,7 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
         case KeyPress:
             if(xevent->xkey.keycode == keys[KEY_CYCLE_WINDOWS].keycode)
             {
-                if(getWMState(dpy, (*c2)->window) == IconicState)
+                if((*c2)->hidden)
                 {
                     clientHide(*c2, False);
                 }

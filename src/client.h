@@ -180,6 +180,7 @@ struct _Client
     int win_workspace;
     Atom type_atom;
     XSizeHints *size;
+    XWMHints *wmhints;
     Client *next;
     Client *prev;
     WindowType type;

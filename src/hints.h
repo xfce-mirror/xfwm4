@@ -153,7 +153,6 @@ unsigned long getWMState(Display *, Window);
 void setWMState(Display *, Window, unsigned long state);
 void initMotifHints(Display *);
 PropMwmHints *getMotifHints(Display *, Window);
-int getWMInput(Display *, Window);
 unsigned int getWMProtocols(Display *, Window);
 void initGnomeHints(Display *);
 int getGnomeHint(Display *, Window, Atom, long *);
