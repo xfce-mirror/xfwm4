@@ -973,7 +973,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
             XFixesSubtractRegion (dpy, region, region, cw->borderSize);
             XRenderComposite (dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer, 
-                            0, 0, 0, 0, x, y, w, h);
+                              0, 0, 0, 0, x, y, w, h);
         }
         if (!(cw->borderClip))
         {
@@ -1012,21 +1012,17 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
                             cw->attr.y + cw->shadow_dy,
                             cw->shadow_width, cw->shadow_height);
         }
-        if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
-        {
-            cw->alphaPict = solid_picture (screen_info, FALSE, 
-                                        (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
-        }
-        if (cw->mode == WINDOW_TRANS)
+        if (cw->mode != WINDOW_SOLID)
         {
             gint x, y, w, h;
-            get_paint_bounds (cw, &x, &y, &w, &h);
-            XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
-                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
-        }
-        else if (cw->mode == WINDOW_ARGB)
-        {
-            gint x, y, w, h;
+
+            if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
+            {
+                cw->alphaPict = solid_picture (screen_info, FALSE, 
+                                            (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
+            }
+            
+            /* cw->alphaPict can be None in the case of ARGB windows, that's ok */
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
                               screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
