@@ -655,20 +655,20 @@ static void clientSetNetActions(Client * c)
 static void clientWindowType(Client * c)
 {
     WindowType old_type;
-    int layer;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientWindowType\n");
     DBG("type for client \"%s\" (%#lx)\n", c->name, c->window);
 
     old_type = c->type;
-    layer = c->win_layer;
+    c->initial_layer = c->win_layer;
     if(c->type_atom != None)
     {
         if(c->type_atom == net_wm_window_type_desktop)
         {
             DBG("atom net_wm_window_type_desktop detected\n");
             c->type = WINDOW_DESKTOP;
+            c->initial_layer = WIN_LAYER_DESKTOP;
             c->win_state |= WIN_STATE_STICKY;
             c->has_border = False;
             c->sticky = True;
@@ -677,13 +677,12 @@ static void clientWindowType(Client * c)
             c->has_hide = False;
             c->has_maximize = False;
             c->has_menu = False;
-            layer = WIN_LAYER_DESKTOP;
         }
         else if(c->type_atom == net_wm_window_type_dock)
         {
             DBG("atom net_wm_window_type_dock detected\n");
             c->type = WINDOW_DOCK;
-            layer = WIN_LAYER_DOCK;
+            c->initial_layer = WIN_LAYER_DOCK;
             c->has_hide = False;
             c->has_maximize = False;
             c->has_menu = False;
@@ -692,7 +691,7 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_toolbar detected\n");
             c->type = WINDOW_TOOLBAR;
-            layer = WIN_LAYER_NORMAL;
+            c->initial_layer = WIN_LAYER_NORMAL;
             c->has_hide = False;
             c->has_maximize = False;
             c->has_menu = False;
@@ -701,7 +700,7 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_menu detected\n");
             c->type = WINDOW_MENU;
-            layer = WIN_LAYER_NORMAL;
+            c->initial_layer = WIN_LAYER_NORMAL;
             /* The policy here is unclear :
                http://mail.gnome.org/archives/wm-spec-list/2002-May/msg00001.html
                As it seems, GNOME and KDE don't treat menu the same way...
@@ -719,7 +718,7 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_dialog detected\n");
             c->type = WINDOW_DIALOG;
-            layer = WIN_LAYER_ONTOP;
+            c->initial_layer = WIN_LAYER_ONTOP;
             c->has_hide = False;
             c->has_menu = False;
             c->has_maximize = False;
@@ -728,13 +727,13 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_normal detected\n");
             c->type = WINDOW_NORMAL;
-            layer = c->win_layer;
+            c->initial_layer = c->win_layer;
         }
         else if(c->type_atom == net_wm_window_type_utility)
         {
             DBG("atom net_wm_window_type_utility detected\n");
             c->type = WINDOW_UTILITY;
-            layer = WIN_LAYER_NORMAL;
+            c->initial_layer = WIN_LAYER_NORMAL;
             c->has_border = False;
             c->has_hide = False;
         }
@@ -742,7 +741,7 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_splashscreen detected\n");
             c->type = WINDOW_SPLASHSCREEN;
-            layer = WIN_LAYER_ABOVE_DOCK;
+            c->initial_layer = WIN_LAYER_ABOVE_DOCK;
             c->has_border = False;
             c->has_resize = False;
             c->has_move = False;
@@ -753,7 +752,7 @@ static void clientWindowType(Client * c)
     {
         DBG("no \"net\" atom detected\n");
         c->type = UNSET;
-        layer = c->win_layer;
+        c->initial_layer = c->win_layer;
     }
     if(c->transient_for)
     {
@@ -763,17 +762,17 @@ static void clientWindowType(Client * c)
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
         if(c2)
         {
-            layer = c2->win_layer;
+            c->initial_layer = c2->win_layer;
         }
         c->has_hide = False;
         c->has_menu = False;
         c->has_maximize = False;
     }
-    if((old_type != c->type) || (layer != c->win_layer))
+    if((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
-        DBG("setting layer %i\n", layer);
+        DBG("setting layer %i\n", c->initial_layer);
         clientSetNetState(c);
-        clientSetLayer(c, layer);
+        clientSetLayer(c, c->initial_layer);
     }
 }
 
@@ -1814,6 +1813,23 @@ void clientFrame(Window w)
     clientGetNetWmType(c);
     clientGetNetStruts(c);
 
+    /* We check that afterwards to make sure all states are now known */
+    if (c->fullscreen)
+    {
+        DBG("Applying client's initial state: fullscreen\n");
+        clientToggleFullscreen(c);
+    }
+    if (c->above)
+    {
+        DBG("Applying client's initial state: above\n");
+        clientToggleAbove(c);
+    }
+    if (c->below)
+    {
+        DBG("Applying client's initial state: below\n");
+        clientToggleBelow(c);
+    }
+
     /* Once we know the type of window, we can initialize window position */
     if(attr.map_state != IsViewable)
     {
@@ -2435,7 +2451,7 @@ void clientToggleFullscreen(Client * c)
         c->fullscreen_old_y = c->y;
         c->fullscreen_old_width = c->width;
         c->fullscreen_old_height = c->height;
-        c->initial_layer = c->win_layer;
+        c->fullscreen_old_layer = c->win_layer;
 
         wc.x = MyDisplayX(cx, cy);
         wc.y = MyDisplayY(cx, cy);
@@ -2449,7 +2465,7 @@ void clientToggleFullscreen(Client * c)
         wc.y = c->fullscreen_old_y;
         wc.width = c->fullscreen_old_width;
         wc.height = c->fullscreen_old_height;
-        layer = c->initial_layer;
+        layer = c->fullscreen_old_layer;
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
@@ -2474,6 +2490,7 @@ void clientToggleAbove(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
+    clientRaise(c);
 }
 
 void clientToggleBelow(Client * c)
@@ -2494,6 +2511,7 @@ void clientToggleBelow(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
+    clientLower(c);
 }
 
 void clientUpdateFocus(Client * c)
@@ -2685,7 +2703,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     else if(xevent->type == MotionNotify)
     {
         int cx, cy, left, right, top, bottom;
-	    
+            
         while(XCheckTypedEvent(dpy, MotionNotify, xevent));
 
         if(!passdata->grab && box_move)
@@ -2705,12 +2723,12 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             msx = xevent->xmotion.x_root;
             msy = xevent->xmotion.y_root;
-	    
+            
             if(msx == 0 && wrap_workspaces)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
                 msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
-		workspaceSwitch(workspace - 1, c);
+                workspaceSwitch(workspace - 1, c);
             }
             else if((msx == XDisplayWidth(dpy, screen) - 1) && wrap_workspaces)
             {
@@ -2741,7 +2759,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             {
                 c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
             }
-	    
+            
             if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
             {
                 c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
@@ -2968,11 +2986,11 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
                 c->width = c->width + (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
             }
         }
-	if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+        if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
         {
             c->width = prev_width;
         }
-	if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+        if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
         {
             c->height = prev_height;
         }
@@ -3051,39 +3069,39 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_TOP_RIGHT))
         {
-	    if ((frameY(c) < MyDisplayY(cx, cy) + top) || (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-	    {
-        	c->y = prev_y;
-        	c->height = prev_height;
-	    }
-	    if (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE)
-	    {
-        	c->y = prev_y;
-        	c->height = prev_height;
-	    }
+            if ((frameY(c) < MyDisplayY(cx, cy) + top) || (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
+            {
+                c->y = prev_y;
+                c->height = prev_height;
+            }
+            if (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE)
+            {
+                c->y = prev_y;
+                c->height = prev_height;
+            }
         }
-	else if ((passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_BOTTOM))
+        else if ((passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_BOTTOM))
         {
             if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
-	    {
-        	c->height = prev_height;
-	    }
+            {
+                c->height = prev_height;
+            }
         }
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
-	    if (c->x > MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE)
-	    {
-        	c->x = prev_x;
-        	c->width = prev_width;
-	    }
-	}
+            if (c->x > MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE)
+            {
+                c->x = prev_x;
+                c->width = prev_width;
+            }
+        }
         else if((passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
         {
-	    if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
-	    {
-        	c->width = prev_width;
-	    }
-	}
+            if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+            {
+                c->width = prev_width;
+            }
+        }
         if(box_resize)
         {
             clientDrawOutline(c);
