@@ -520,26 +520,26 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
 
-    rc[0].value = get_style (widget, "fg", "selected");
-    rc[1].value = get_style (widget, "fg", "normal");
-    rc[2].value = get_style (widget, "fg", "active");
-    rc[3].value = get_style (widget, "fg", "normal");
-    rc[4].value = get_style (widget, "bg", "selected");
-    rc[5].value = get_style (widget, "light", "selected");
-    rc[6].value = get_style (widget, "dark", "selected");
-    rc[7].value = get_style (widget, "mid", "selected");
-    rc[8].value = get_style (widget, "bg", "normal");
-    rc[9].value = get_style (widget, "light", "normal");
-    rc[10].value = get_style (widget, "dark", "normal");
-    rc[11].value = get_style (widget, "mid", "normal");
-    rc[12].value = get_style (widget, "bg", "active");
-    rc[13].value = get_style (widget, "light", "active");
-    rc[14].value = get_style (widget, "dark", "active");
-    rc[15].value = get_style (widget, "mid", "active");
-    rc[16].value = get_style (widget, "bg", "normal");
+    rc[0].value  = get_style (widget, "fg",    "selected");
+    rc[1].value  = get_style (widget, "fg",    "insensitive");
+    rc[2].value  = get_style (widget, "fg",    "selected");
+    rc[3].value  = get_style (widget, "fg",    "insensitive");
+    rc[4].value  = get_style (widget, "bg",    "selected");
+    rc[5].value  = get_style (widget, "light", "selected");
+    rc[6].value  = get_style (widget, "dark",  "selected");
+    rc[7].value  = get_style (widget, "mid",   "selected");
+    rc[8].value  = get_style (widget, "bg",    "normal");
+    rc[9].value  = get_style (widget, "light", "normal");
+    rc[10].value = get_style (widget, "dark",  "normal");
+    rc[11].value = get_style (widget, "mid",   "normal");
+    rc[12].value = get_style (widget, "bg",    "insensitive");
+    rc[13].value = get_style (widget, "light", "insensitive");
+    rc[14].value = get_style (widget, "dark",  "insensitive");
+    rc[15].value = get_style (widget, "mid",   "insensitive");
+    rc[16].value = get_style (widget, "bg",    "normal");
     rc[17].value = get_style (widget, "light", "normal");
-    rc[18].value = get_style (widget, "dark", "normal");
-    rc[19].value = get_style (widget, "mid", "normal");
+    rc[18].value = get_style (widget, "dark",  "normal");
+    rc[19].value = get_style (widget, "mid",   "normal");
 
 
     theme = getThemeDir (getValue ("theme", rc), THEMERC);
