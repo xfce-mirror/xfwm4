@@ -4,3 +4,4 @@ Things to do
 Add your favorite wish list here :
 
 * Multiscreen mode (not Xinerama)
+* Use daemon(3) if available to daemonize the process
