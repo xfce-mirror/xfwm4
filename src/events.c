@@ -1195,9 +1195,9 @@ handleEnterNotify (XCrossingEvent * ev)
     if (c && !(params.click_to_focus) && (clientAcceptFocus (c)))
     {
         TRACE ("EnterNotify window is \"%s\"", c->name);
-        if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
         {
-            clientSetFocus (c, NO_FOCUS_FLAG);
+            clientSetFocus (c, FOCUS_FORCE);
             if (!(params.raise_on_click))
             {
                 clientPassGrabButton1 (c);
