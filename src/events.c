@@ -194,7 +194,6 @@ static inline void handleKeyPress(XKeyEvent * ev)
 {
     Client *c;
     int state, key;
-    XEvent e;
 
     TRACE("entering handleKeyEvent");
 
@@ -377,8 +376,6 @@ static inline void handleKeyPress(XKeyEvent * ev)
     default:
         break;
     }
-    while(XCheckTypedEvent(dpy, EnterNotify, &e))
-        ;
 }
 
 /* User has clicked on an edge or corner.
@@ -513,6 +510,35 @@ static inline void titleButton(Client * c, int state, XButtonEvent * ev)
     }
 }
 
+static inline void rootScrollButton(XButtonEvent * ev)
+{
+    static Time lastscroll = (Time) 0;
+    XEvent otherEvent;
+    
+    while(XCheckTypedWindowEvent(dpy, root, ButtonPress, &otherEvent))
+    {
+        if (otherEvent.xbutton.button != ev->button)
+        {
+            XPutBackEvent(dpy, &otherEvent);
+        }
+    }
+    if ((ev->time - lastscroll) < 100) /* ms */
+    {
+        /* Too many events in too little time, drop this event... */
+        return;
+    }
+    lastscroll = ev->time;
+    if (ev->button == Button4)
+    {
+        workspaceSwitch(workspace - 1, NULL);
+    }
+    else if (ev->button == Button5)
+    {
+        workspaceSwitch(workspace + 1, NULL);
+    }
+}
+
+
 static inline void handleButtonPress(XButtonEvent * ev)
 {
     Client *c;
@@ -642,13 +668,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XAllowEvents(dpy, SyncPointer, ev->time);
         }
     }
-    else if ((ev->window == root) && (ev->button == Button4))
+    else if ((ev->window == root) && ((ev->button == Button4) || (ev->button == Button5)))
     {
-        workspaceSwitch(workspace - 1, NULL);
-    }
-    else if ((ev->window == root) && (ev->button == Button5))
-    {
-        workspaceSwitch(workspace + 1, NULL);
+        rootScrollButton(ev);
     }
     else
     {
@@ -1098,7 +1120,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if(((ev->message_type == win_workspace) || (ev->message_type == net_current_desktop)) && (ev->format == 32))
         {
             TRACE("root has received a win_workspace or a net_current_desktop event");
-            if (workspace != ev->data.l[0])
+            if (ev->data.l[0] != workspace)
             {
                 workspaceSwitch(ev->data.l[0], NULL);
             }
@@ -1106,7 +1128,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if(((ev->message_type == win_workspace_count) || (ev->message_type == net_number_of_desktops)) && (ev->format == 32))
         {
             TRACE("root has received a win_workspace_count event");
-            if (params.workspace_count != ev->data.l[0])
+            if (ev->data.l[0] != params.workspace_count)
             {
                 workspaceSetCount(ev->data.l[0]);
             }

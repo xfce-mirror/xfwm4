@@ -3849,23 +3849,17 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             if((msx == 0) && params.workspace_count && !wrapped)
             {
-                if (workspace > 0)
-                {
-                    XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
-                    msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
-                    workspaceSwitch(workspace - 1, c);
-                    wrapped = TRUE;
-                }
+                XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
+                msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
+                workspaceSwitch(workspace - 1, c);
+                wrapped = TRUE;
             }
             else if((msx == XDisplayWidth(dpy, screen) - 1) && params.wrap_workspaces && !wrapped)
             {
-                if (workspace < params.workspace_count - 1)
-                {
-                    XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
-                    msx = xevent->xmotion.x_root = 10;
-                    workspaceSwitch(workspace + 1, c);
-                    wrapped = TRUE;
-                }
+                XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
+                msx = xevent->xmotion.x_root = 10;
+                workspaceSwitch(workspace + 1, c);
+                wrapped = TRUE;
             }
             else if (wrapped)
             {
