@@ -2543,16 +2543,16 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         {
                 /* Limitation: we don't support sibling... */
             case Above:
-            case TopIf:
                 TRACE ("Above");
                 clientRaise (c);
                 break;
             case Below:
-            case BottomIf:
                 TRACE ("Below");
                 clientLower (c);
                 break;
             case Opposite:
+            case TopIf:
+            case BottomIf:
             default:
                 break;
         }
