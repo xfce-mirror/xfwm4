@@ -1,4 +1,5 @@
-button_offset=0
+#active_text_color=#FFFFFF
+button_offset=2
 button_spacing=0
 full_width_title=true
 title_horizontal_offset=0
