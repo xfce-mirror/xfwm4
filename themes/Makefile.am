@@ -42,6 +42,7 @@ silverado \
 slick \
 slimline \
 tabs \
+tgc \
 trench \
 tux \
 variation \
