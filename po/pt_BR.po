@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2004-08-07 22:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-15 23:28+0200\n"
 "PO-Revision-Date: 2004-01-18 00:16-0200\n"
 "Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
 "Language-Team: pt_BR <felix@online.eti.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins.c:122
 msgid "Workspace Margins"
@@ -80,58 +80,58 @@ msgstr "Número de áreas de trabalho:"
 msgid "Workspace names"
 msgstr "Nome da área de trabalho"
 
-#: mcs-plugin/xfwm4_plugin.c:81 mcs-plugin/xfwm4_plugin_orig.c:99
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "Menu"
 
-#: mcs-plugin/xfwm4_plugin.c:82 mcs-plugin/xfwm4_plugin_orig.c:100
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "Fixar"
 
-#: mcs-plugin/xfwm4_plugin.c:83 mcs-plugin/xfwm4_plugin_orig.c:101
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "Sombra"
 
-#: mcs-plugin/xfwm4_plugin.c:84 mcs-plugin/xfwm4_plugin_orig.c:102
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "Esconder"
 
-#: mcs-plugin/xfwm4_plugin.c:85 mcs-plugin/xfwm4_plugin_orig.c:103
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_plugin_orig.c:104
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "Fechar"
 
-#: mcs-plugin/xfwm4_plugin.c:91 mcs-plugin/xfwm4_plugin_orig.c:108
-#: mcs-plugin/xfwm4_shortcuteditor.c:89 mcs-plugin/xfwm4_shortcuteditor.c:459
+#: mcs-plugin/xfwm4_plugin.c:91 mcs-plugin/xfwm4_shortcuteditor.c:89
+#: mcs-plugin/xfwm4_shortcuteditor.c:459
 msgid "Shade window"
 msgstr "Sombrear janela"
 
-#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_plugin_orig.c:109
-#: mcs-plugin/xfwm4_shortcuteditor.c:84 mcs-plugin/xfwm4_shortcuteditor.c:455
+#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_shortcuteditor.c:84
+#: mcs-plugin/xfwm4_shortcuteditor.c:455
 msgid "Hide window"
 msgstr "Esconder janela"
 
-#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_plugin_orig.c:110
-#: mcs-plugin/xfwm4_shortcuteditor.c:69 mcs-plugin/xfwm4_shortcuteditor.c:443
+#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_shortcuteditor.c:69
+#: mcs-plugin/xfwm4_shortcuteditor.c:443
 msgid "Maximize window"
 msgstr "Maximizar janela"
 
-#: mcs-plugin/xfwm4_plugin.c:94 mcs-plugin/xfwm4_plugin_orig.c:111
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "Nada"
 
-#: mcs-plugin/xfwm4_plugin.c:99 mcs-plugin/xfwm4_plugin_orig.c:116
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "Esquerdo"
 
-#: mcs-plugin/xfwm4_plugin.c:100 mcs-plugin/xfwm4_plugin_orig.c:117
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "Centro"
 
-#: mcs-plugin/xfwm4_plugin.c:101 mcs-plugin/xfwm4_plugin_orig.c:118
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "Direito"
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:585 mcs-plugin/xfwm4_plugin_orig.c:98
+#: mcs-plugin/xfwm4_plugin.c:585
 msgid "Title"
 msgstr "Título"
 
@@ -151,84 +151,81 @@ msgstr "Título"
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:594 mcs-plugin/xfwm4_plugin_orig.c:327
+#: mcs-plugin/xfwm4_plugin.c:594
 msgid "Hidden"
 msgstr "Oculto"
 
-#: mcs-plugin/xfwm4_plugin.c:1299 mcs-plugin/xfwm4_plugin_orig.c:1011
+#: mcs-plugin/xfwm4_plugin.c:1299
 msgid "Font Selection Dialog"
 msgstr "Diálogo de seleção de fontes"
 
 #: mcs-plugin/xfwm4_plugin.c:1394 mcs-plugin/xfwm4_plugin.c:1881
-#: mcs-plugin/xfwm4_plugin_orig.c:1107 mcs-plugin/xfwm4_plugin_orig.c:1610
 msgid "Window Manager"
 msgstr "Gerenciador de janelas"
 
-#: mcs-plugin/xfwm4_plugin.c:1407 mcs-plugin/xfwm4_plugin_orig.c:1120
+#: mcs-plugin/xfwm4_plugin.c:1407
 msgid "Window Manager Preferences"
 msgstr "Preferências do gerenciador de janelas"
 
-#: mcs-plugin/xfwm4_plugin.c:1436 mcs-plugin/xfwm4_plugin_orig.c:1150
+#: mcs-plugin/xfwm4_plugin.c:1436
 msgid "Title font"
 msgstr "Fonte do título"
 
-#: mcs-plugin/xfwm4_plugin.c:1449 mcs-plugin/xfwm4_plugin_orig.c:1163
+#: mcs-plugin/xfwm4_plugin.c:1449
 msgid "Title Alignment"
 msgstr "Alinhamento do título"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1455 mcs-plugin/xfwm4_plugin_orig.c:1169
+#: mcs-plugin/xfwm4_plugin.c:1455
 msgid "Text alignment inside title bar :"
 msgstr "Alinhamento do texto dentro da barra de títulos :"
 
-#: mcs-plugin/xfwm4_plugin.c:1457 mcs-plugin/xfwm4_plugin_orig.c:1171
+#: mcs-plugin/xfwm4_plugin.c:1457
 msgid "Button layout"
 msgstr "Disposição dos botôes"
 
-#: mcs-plugin/xfwm4_plugin.c:1463 mcs-plugin/xfwm4_plugin_orig.c:1177
+#: mcs-plugin/xfwm4_plugin.c:1463
 #, fuzzy
 msgid "Style"
 msgstr "Título"
 
-#: mcs-plugin/xfwm4_plugin.c:1489 mcs-plugin/xfwm4_plugin_orig.c:1203
+#: mcs-plugin/xfwm4_plugin.c:1489
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "Foco em novas janelas"
 
 #: mcs-plugin/xfwm4_plugin.c:1510 mcs-plugin/xfwm4_plugin.c:1538
-#: mcs-plugin/xfwm4_plugin_orig.c:1224 mcs-plugin/xfwm4_plugin_orig.c:1252
 msgid "Command"
 msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1515 mcs-plugin/xfwm4_plugin.c:1543
-#: mcs-plugin/xfwm4_plugin_orig.c:1229 mcs-plugin/xfwm4_plugin_orig.c:1257
 #, fuzzy
 msgid "Shortcut"
 msgstr "Teclas de atalho"
 
-#: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin_orig.c:1232
+#: mcs-plugin/xfwm4_plugin.c:1518
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "Teclas de atalho"
 
-#: mcs-plugin/xfwm4_plugin.c:1546 mcs-plugin/xfwm4_plugin_orig.c:1260
+#: mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
 msgid "Keyboard"
 msgstr "Teclas de atalho"
 
-#: mcs-plugin/xfwm4_plugin.c:1557 mcs-plugin/xfwm4_plugin_orig.c:1271
+#: mcs-plugin/xfwm4_plugin.c:1557
 msgid "Focus model"
 msgstr "Modelo de foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1565 mcs-plugin/xfwm4_plugin_orig.c:1279
+#: mcs-plugin/xfwm4_plugin.c:1565
 msgid "Click to focus"
 msgstr "Foco ao clicar"
 
-#: mcs-plugin/xfwm4_plugin.c:1572 mcs-plugin/xfwm4_plugin_orig.c:1286
+#: mcs-plugin/xfwm4_plugin.c:1572
 msgid "Focus follows mouse"
 msgstr "Foco segue o mouse"
 
-#: mcs-plugin/xfwm4_plugin.c:1579 mcs-plugin/xfwm4_plugin_orig.c:1293
+#: mcs-plugin/xfwm4_plugin.c:1579
 msgid "New window focus"
 msgstr "Foco em novas janelas"
 
@@ -239,7 +236,7 @@ msgstr ""
 "Aututomaticamente dê foco \n"
 "em novas janelas criadas"
 
-#: mcs-plugin/xfwm4_plugin.c:1588 mcs-plugin/xfwm4_plugin_orig.c:1302
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Raise on focus"
 msgstr "Foco ao aumentar"
 
@@ -250,19 +247,19 @@ msgstr ""
 "Automaticamente aumente a janela \n"
 "quando elas receberem foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1606 mcs-plugin/xfwm4_plugin_orig.c:1320
+#: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Delay before raising focused window :"
 msgstr "Atraso antes de aumentar janelas com foco :"
 
-#: mcs-plugin/xfwm4_plugin.c:1612 mcs-plugin/xfwm4_plugin_orig.c:1326
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Slow"
 msgstr "Lento"
 
-#: mcs-plugin/xfwm4_plugin.c:1618 mcs-plugin/xfwm4_plugin_orig.c:1332
+#: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Fast"
 msgstr "Rápido"
 
-#: mcs-plugin/xfwm4_plugin.c:1634 mcs-plugin/xfwm4_plugin_orig.c:1348
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Raise on click"
 msgstr "Aumentar ao clique"
 
@@ -273,104 +270,75 @@ msgstr ""
 "Aumentar a janela ao clicar dentro \n"
 "da janela da aplicação"
 
-#: mcs-plugin/xfwm4_plugin.c:1643 mcs-plugin/xfwm4_plugin_orig.c:1357
+#: mcs-plugin/xfwm4_plugin.c:1643
 #, fuzzy
 msgid "Focus"
 msgstr "Modelo de foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1653 mcs-plugin/xfwm4_plugin_orig.c:1367
+#: mcs-plugin/xfwm4_plugin.c:1653
 msgid "Windows snapping"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1661 mcs-plugin/xfwm4_plugin_orig.c:1375
+#: mcs-plugin/xfwm4_plugin.c:1661
 msgid "Snap windows to screen border"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1666 mcs-plugin/xfwm4_plugin_orig.c:1380
+#: mcs-plugin/xfwm4_plugin.c:1666
 msgid "Snap windows to other windows"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1676 mcs-plugin/xfwm4_plugin_orig.c:1390
+#: mcs-plugin/xfwm4_plugin.c:1676
 msgid "Distance :"
 msgstr "Distância :"
 
 #: mcs-plugin/xfwm4_plugin.c:1682 mcs-plugin/xfwm4_plugin.c:1732
-#: mcs-plugin/xfwm4_plugin_orig.c:1396 mcs-plugin/xfwm4_plugin_orig.c:1446
 msgid "Small"
 msgstr "Pequeno"
 
 #: mcs-plugin/xfwm4_plugin.c:1688 mcs-plugin/xfwm4_plugin.c:1738
-#: mcs-plugin/xfwm4_plugin_orig.c:1402 mcs-plugin/xfwm4_plugin_orig.c:1452
 msgid "Wide"
 msgstr "Largo"
 
-#: mcs-plugin/xfwm4_plugin.c:1703 mcs-plugin/xfwm4_plugin_orig.c:1417
+#: mcs-plugin/xfwm4_plugin.c:1703
 #, fuzzy
 msgid "Wrap workspaces"
 msgstr "Mudar de área de tranbalho"
 
-#: mcs-plugin/xfwm4_plugin.c:1711 mcs-plugin/xfwm4_plugin_orig.c:1425
+#: mcs-plugin/xfwm4_plugin.c:1711
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Mudar de área de trabalho quando o mouse alcançar o canto da tela"
 
-#: mcs-plugin/xfwm4_plugin.c:1716 mcs-plugin/xfwm4_plugin_orig.c:1430
+#: mcs-plugin/xfwm4_plugin.c:1716
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Mudar de área de trabalho quando arrastar uma janela para fora da tela"
 
-#: mcs-plugin/xfwm4_plugin.c:1726 mcs-plugin/xfwm4_plugin_orig.c:1440
+#: mcs-plugin/xfwm4_plugin.c:1726
 msgid "Edge Resistance :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1753 mcs-plugin/xfwm4_plugin_orig.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1753
 msgid "Opaque move and resize"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1761 mcs-plugin/xfwm4_plugin_orig.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1761
 msgid "Display content of windows when resizing"
 msgstr "Mostrar conteúdo das janelas ao dimensionar"
 
-#: mcs-plugin/xfwm4_plugin.c:1766 mcs-plugin/xfwm4_plugin_orig.c:1480
+#: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Display content of windows when moving"
 msgstr "Mostrar conteúdo das janelas ao mover"
 
-#: mcs-plugin/xfwm4_plugin.c:1771 mcs-plugin/xfwm4_plugin_orig.c:1485
+#: mcs-plugin/xfwm4_plugin.c:1771
 msgid "Double click action"
 msgstr "Ação do duplo clique"
 
-#: mcs-plugin/xfwm4_plugin.c:1777 mcs-plugin/xfwm4_plugin_orig.c:1491
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Ação a realizar quando dar um clique duplo na barra de títulos :"
 
-#: mcs-plugin/xfwm4_plugin.c:1779 mcs-plugin/xfwm4_plugin_orig.c:1493
+#: mcs-plugin/xfwm4_plugin.c:1779
 msgid "Advanced"
 msgstr "Avançado"
-
-#: mcs-plugin/xfwm4_plugin_orig.c:1297
-#, fuzzy
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
-msgstr ""
-"Aututomaticamente dê foco \n"
-"em novas janelas criadas"
-
-#: mcs-plugin/xfwm4_plugin_orig.c:1310
-#, fuzzy
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
-msgstr ""
-"Automaticamente aumente a janela \n"
-"quando elas receberem foco"
-
-#: mcs-plugin/xfwm4_plugin_orig.c:1352
-#, fuzzy
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
-msgstr ""
-"Aumentar a janela ao clicar dentro \n"
-"da janela da aplicação"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:64 mcs-plugin/xfwm4_shortcuteditor.c:439
 #, fuzzy
@@ -795,6 +763,30 @@ msgstr "Mudar para ..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "Automatically give focus to \n"
+#~ "newly created windows"
+#~ msgstr ""
+#~ "Aututomaticamente dê foco \n"
+#~ "em novas janelas criadas"
+
+#, fuzzy
+#~ msgid ""
+#~ "Automatically raise windows \n"
+#~ "when they receive focus"
+#~ msgstr ""
+#~ "Automaticamente aumente a janela \n"
+#~ "quando elas receberem foco"
+
+#, fuzzy
+#~ msgid ""
+#~ "Raise window when clicking inside\n"
+#~ "application window"
+#~ msgstr ""
+#~ "Aumentar a janela ao clicar dentro \n"
+#~ "da janela da aplicação"
 
 #~ msgid "Decoration style"
 #~ msgstr "Estilo de decoração"

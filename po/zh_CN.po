@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2004-08-07 22:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-15 23:28+0200\n"
 "PO-Revision-Date: 2004-06-11 16:52+0200\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins.c:122
 msgid "Workspace Margins"
@@ -79,58 +79,58 @@ msgstr "工作区名称: "
 msgid "Workspace names"
 msgstr "工作区个数"
 
-#: mcs-plugin/xfwm4_plugin.c:81 mcs-plugin/xfwm4_plugin_orig.c:99
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "菜单"
 
-#: mcs-plugin/xfwm4_plugin.c:82 mcs-plugin/xfwm4_plugin_orig.c:100
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "粘连"
 
-#: mcs-plugin/xfwm4_plugin.c:83 mcs-plugin/xfwm4_plugin_orig.c:101
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "卷起"
 
-#: mcs-plugin/xfwm4_plugin.c:84 mcs-plugin/xfwm4_plugin_orig.c:102
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "隐藏"
 
-#: mcs-plugin/xfwm4_plugin.c:85 mcs-plugin/xfwm4_plugin_orig.c:103
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "最大化"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_plugin_orig.c:104
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "关闭"
 
-#: mcs-plugin/xfwm4_plugin.c:91 mcs-plugin/xfwm4_plugin_orig.c:108
-#: mcs-plugin/xfwm4_shortcuteditor.c:89 mcs-plugin/xfwm4_shortcuteditor.c:459
+#: mcs-plugin/xfwm4_plugin.c:91 mcs-plugin/xfwm4_shortcuteditor.c:89
+#: mcs-plugin/xfwm4_shortcuteditor.c:459
 msgid "Shade window"
 msgstr "卷起窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_plugin_orig.c:109
-#: mcs-plugin/xfwm4_shortcuteditor.c:84 mcs-plugin/xfwm4_shortcuteditor.c:455
+#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_shortcuteditor.c:84
+#: mcs-plugin/xfwm4_shortcuteditor.c:455
 msgid "Hide window"
 msgstr "隐藏窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_plugin_orig.c:110
-#: mcs-plugin/xfwm4_shortcuteditor.c:69 mcs-plugin/xfwm4_shortcuteditor.c:443
+#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_shortcuteditor.c:69
+#: mcs-plugin/xfwm4_shortcuteditor.c:443
 msgid "Maximize window"
 msgstr "最大化窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:94 mcs-plugin/xfwm4_plugin_orig.c:111
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "无"
 
-#: mcs-plugin/xfwm4_plugin.c:99 mcs-plugin/xfwm4_plugin_orig.c:116
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "左侧"
 
-#: mcs-plugin/xfwm4_plugin.c:100 mcs-plugin/xfwm4_plugin_orig.c:117
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "中间"
 
-#: mcs-plugin/xfwm4_plugin.c:101 mcs-plugin/xfwm4_plugin_orig.c:118
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "右侧"
 
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:585 mcs-plugin/xfwm4_plugin_orig.c:98
+#: mcs-plugin/xfwm4_plugin.c:585
 msgid "Title"
 msgstr "标题"
 
@@ -150,84 +150,81 @@ msgstr "标题"
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:594 mcs-plugin/xfwm4_plugin_orig.c:327
+#: mcs-plugin/xfwm4_plugin.c:594
 msgid "Hidden"
 msgstr "隐藏"
 
-#: mcs-plugin/xfwm4_plugin.c:1299 mcs-plugin/xfwm4_plugin_orig.c:1011
+#: mcs-plugin/xfwm4_plugin.c:1299
 msgid "Font Selection Dialog"
 msgstr "字体选择对话框"
 
 #: mcs-plugin/xfwm4_plugin.c:1394 mcs-plugin/xfwm4_plugin.c:1881
-#: mcs-plugin/xfwm4_plugin_orig.c:1107 mcs-plugin/xfwm4_plugin_orig.c:1610
 msgid "Window Manager"
 msgstr "窗口管理器"
 
-#: mcs-plugin/xfwm4_plugin.c:1407 mcs-plugin/xfwm4_plugin_orig.c:1120
+#: mcs-plugin/xfwm4_plugin.c:1407
 msgid "Window Manager Preferences"
 msgstr "窗口管理器首选项"
 
-#: mcs-plugin/xfwm4_plugin.c:1436 mcs-plugin/xfwm4_plugin_orig.c:1150
+#: mcs-plugin/xfwm4_plugin.c:1436
 msgid "Title font"
 msgstr "标题字体"
 
-#: mcs-plugin/xfwm4_plugin.c:1449 mcs-plugin/xfwm4_plugin_orig.c:1163
+#: mcs-plugin/xfwm4_plugin.c:1449
 msgid "Title Alignment"
 msgstr "标题对齐方式"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1455 mcs-plugin/xfwm4_plugin_orig.c:1169
+#: mcs-plugin/xfwm4_plugin.c:1455
 msgid "Text alignment inside title bar :"
 msgstr "标题拦内的文本对齐方式 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1457 mcs-plugin/xfwm4_plugin_orig.c:1171
+#: mcs-plugin/xfwm4_plugin.c:1457
 msgid "Button layout"
 msgstr "按钮布局"
 
-#: mcs-plugin/xfwm4_plugin.c:1463 mcs-plugin/xfwm4_plugin_orig.c:1177
+#: mcs-plugin/xfwm4_plugin.c:1463
 #, fuzzy
 msgid "Style"
 msgstr "标题"
 
-#: mcs-plugin/xfwm4_plugin.c:1489 mcs-plugin/xfwm4_plugin_orig.c:1203
+#: mcs-plugin/xfwm4_plugin.c:1489
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "窗口风格"
 
 #: mcs-plugin/xfwm4_plugin.c:1510 mcs-plugin/xfwm4_plugin.c:1538
-#: mcs-plugin/xfwm4_plugin_orig.c:1224 mcs-plugin/xfwm4_plugin_orig.c:1252
 msgid "Command"
 msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1515 mcs-plugin/xfwm4_plugin.c:1543
-#: mcs-plugin/xfwm4_plugin_orig.c:1229 mcs-plugin/xfwm4_plugin_orig.c:1257
 #, fuzzy
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin_orig.c:1232
+#: mcs-plugin/xfwm4_plugin.c:1518
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1546 mcs-plugin/xfwm4_plugin_orig.c:1260
+#: mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
 msgid "Keyboard"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1557 mcs-plugin/xfwm4_plugin_orig.c:1271
+#: mcs-plugin/xfwm4_plugin.c:1557
 msgid "Focus model"
 msgstr "焦点模式"
 
-#: mcs-plugin/xfwm4_plugin.c:1565 mcs-plugin/xfwm4_plugin_orig.c:1279
+#: mcs-plugin/xfwm4_plugin.c:1565
 msgid "Click to focus"
 msgstr "点击获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1572 mcs-plugin/xfwm4_plugin_orig.c:1286
+#: mcs-plugin/xfwm4_plugin.c:1572
 msgid "Focus follows mouse"
 msgstr "焦点跟随鼠标"
 
-#: mcs-plugin/xfwm4_plugin.c:1579 mcs-plugin/xfwm4_plugin_orig.c:1293
+#: mcs-plugin/xfwm4_plugin.c:1579
 msgid "New window focus"
 msgstr "新窗口获取焦点"
 
@@ -238,7 +235,7 @@ msgstr ""
 "自动为新建立\n"
 "窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1588 mcs-plugin/xfwm4_plugin_orig.c:1302
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Raise on focus"
 msgstr "获得焦点时置顶"
 
@@ -249,19 +246,19 @@ msgstr ""
 "当窗口获得焦点时\n"
 "自动将该窗口置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1606 mcs-plugin/xfwm4_plugin_orig.c:1320
+#: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Delay before raising focused window :"
 msgstr "置顶焦点所在窗口前的延时 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1612 mcs-plugin/xfwm4_plugin_orig.c:1326
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Slow"
 msgstr "慢"
 
-#: mcs-plugin/xfwm4_plugin.c:1618 mcs-plugin/xfwm4_plugin_orig.c:1332
+#: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Fast"
 msgstr "快"
 
-#: mcs-plugin/xfwm4_plugin.c:1634 mcs-plugin/xfwm4_plugin_orig.c:1348
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Raise on click"
 msgstr "点击置顶"
 
@@ -272,103 +269,74 @@ msgstr ""
 "当在窗口客户区\n"
 "点击时将其置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1643 mcs-plugin/xfwm4_plugin_orig.c:1357
+#: mcs-plugin/xfwm4_plugin.c:1643
 #, fuzzy
 msgid "Focus"
 msgstr "焦点模式"
 
-#: mcs-plugin/xfwm4_plugin.c:1653 mcs-plugin/xfwm4_plugin_orig.c:1367
+#: mcs-plugin/xfwm4_plugin.c:1653
 msgid "Windows snapping"
 msgstr "窗口吸引"
 
-#: mcs-plugin/xfwm4_plugin.c:1661 mcs-plugin/xfwm4_plugin_orig.c:1375
+#: mcs-plugin/xfwm4_plugin.c:1661
 msgid "Snap windows to screen border"
 msgstr "在屏幕边缘吸引窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:1666 mcs-plugin/xfwm4_plugin_orig.c:1380
+#: mcs-plugin/xfwm4_plugin.c:1666
 msgid "Snap windows to other windows"
 msgstr "将窗口吸引到其它窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:1676 mcs-plugin/xfwm4_plugin_orig.c:1390
+#: mcs-plugin/xfwm4_plugin.c:1676
 msgid "Distance :"
 msgstr "距离 :"
 
 #: mcs-plugin/xfwm4_plugin.c:1682 mcs-plugin/xfwm4_plugin.c:1732
-#: mcs-plugin/xfwm4_plugin_orig.c:1396 mcs-plugin/xfwm4_plugin_orig.c:1446
 msgid "Small"
 msgstr "小"
 
 #: mcs-plugin/xfwm4_plugin.c:1688 mcs-plugin/xfwm4_plugin.c:1738
-#: mcs-plugin/xfwm4_plugin_orig.c:1402 mcs-plugin/xfwm4_plugin_orig.c:1452
 msgid "Wide"
 msgstr "宽"
 
-#: mcs-plugin/xfwm4_plugin.c:1703 mcs-plugin/xfwm4_plugin_orig.c:1417
+#: mcs-plugin/xfwm4_plugin.c:1703
 msgid "Wrap workspaces"
 msgstr "回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1711 mcs-plugin/xfwm4_plugin_orig.c:1425
+#: mcs-plugin/xfwm4_plugin.c:1711
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "鼠标到达屏幕边缘时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1716 mcs-plugin/xfwm4_plugin_orig.c:1430
+#: mcs-plugin/xfwm4_plugin.c:1716
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "拖拽窗口离开屏幕时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1726 mcs-plugin/xfwm4_plugin_orig.c:1440
+#: mcs-plugin/xfwm4_plugin.c:1726
 msgid "Edge Resistance :"
 msgstr "屏幕边缘阻力 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1753 mcs-plugin/xfwm4_plugin_orig.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1753
 msgid "Opaque move and resize"
 msgstr "移动及缩放时显示窗口内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1761 mcs-plugin/xfwm4_plugin_orig.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1761
 msgid "Display content of windows when resizing"
 msgstr "改变窗口尺寸时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1766 mcs-plugin/xfwm4_plugin_orig.c:1480
+#: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Display content of windows when moving"
 msgstr "移动窗口时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1771 mcs-plugin/xfwm4_plugin_orig.c:1485
+#: mcs-plugin/xfwm4_plugin.c:1771
 msgid "Double click action"
 msgstr "双击执行动作"
 
-#: mcs-plugin/xfwm4_plugin.c:1777 mcs-plugin/xfwm4_plugin_orig.c:1491
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Action to perform when double clicking on title bar :"
 msgstr "双击标题栏所执行的动作 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1779 mcs-plugin/xfwm4_plugin_orig.c:1493
+#: mcs-plugin/xfwm4_plugin.c:1779
 msgid "Advanced"
 msgstr "高级"
-
-#: mcs-plugin/xfwm4_plugin_orig.c:1297
-#, fuzzy
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
-msgstr ""
-"自动为新建立\n"
-"窗口获取焦点"
-
-#: mcs-plugin/xfwm4_plugin_orig.c:1310
-#, fuzzy
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
-msgstr ""
-"当窗口获得焦点时\n"
-"自动将该窗口置顶"
-
-#: mcs-plugin/xfwm4_plugin_orig.c:1352
-#, fuzzy
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
-msgstr ""
-"当在窗口客户区\n"
-"点击时将其置顶"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:64 mcs-plugin/xfwm4_shortcuteditor.c:439
 #, fuzzy
@@ -794,6 +762,30 @@ msgstr "切换到 ..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
+
+#, fuzzy
+#~ msgid ""
+#~ "Automatically give focus to \n"
+#~ "newly created windows"
+#~ msgstr ""
+#~ "自动为新建立\n"
+#~ "窗口获取焦点"
+
+#, fuzzy
+#~ msgid ""
+#~ "Automatically raise windows \n"
+#~ "when they receive focus"
+#~ msgstr ""
+#~ "当窗口获得焦点时\n"
+#~ "自动将该窗口置顶"
+
+#, fuzzy
+#~ msgid ""
+#~ "Raise window when clicking inside\n"
+#~ "application window"
+#~ msgstr ""
+#~ "当在窗口客户区\n"
+#~ "点击时将其置顶"
 
 #~ msgid "Decoration style"
 #~ msgstr "装饰风格"

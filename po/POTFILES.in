@@ -7,7 +7,6 @@ mcs-plugin/workspaces.c
 mcs-plugin/workspaces.h
 mcs-plugin/xfwm4_plugin.c
 mcs-plugin/xfwm4_plugin.h
-mcs-plugin/xfwm4_plugin_orig.c
 mcs-plugin/xfwm4_shortcuteditor.c
 mcs-plugin/xfwm4_shortcuteditor.h
 src/client.c
