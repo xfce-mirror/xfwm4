@@ -1,5 +1,5 @@
-theme=Default
-keytheme=Default
+theme=default
+keytheme=default.keys
 box_move=false
 box_resize=false
 button_layout=OTS|HMC
