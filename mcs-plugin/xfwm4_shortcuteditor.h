@@ -21,6 +21,7 @@
 #define __XFWM4_SHORTCUTEDITOR_H
 
 extern void cb_popup_add_menu (GtkWidget *, gpointer);
+extern void cb_popup_del_menu (GtkWidget *, gpointer);
 extern gboolean cb_popup_menu (GtkTreeView *, GdkEventButton *, gpointer);
 extern void loadtheme_in_treeview (ThemeInfo *, gpointer);
 extern void savetreeview_in_theme (gchar *, gpointer);

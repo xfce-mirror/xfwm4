@@ -36,6 +36,63 @@
 /* Popup menu */
 /**************/
 void
+cb_popup_del_menu (GtkWidget *widget, gpointer data)
+{
+    Itf *itf;
+  
+    itf = (Itf *) data;
+
+    if (xfce_confirm (_("Do you really want to remove this keybinding theme ?"), GTK_STOCK_YES, NULL))
+    {
+        GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	ThemeInfo *ti;
+
+	gchar *theme_name = NULL;
+	gchar *theme_file = NULL;
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2));
+
+	gtk_tree_selection_get_selected (selection, &model, &iter);
+	gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
+
+	ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
+
+	theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
+	
+	if (unlink (theme_file) == 0)
+	{
+	    /* refresh list */
+	  while (keybinding_theme_list)
+	  {
+	      theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+	      keybinding_theme_list = g_list_next (keybinding_theme_list);
+	  }
+	  g_list_free (keybinding_theme_list);
+	
+	  g_free (current_key_theme);
+	  current_key_theme = g_strdup ("Default");
+	  keybinding_theme_list = NULL;
+	  keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+					       KEYBINDING_THEMES, current_key_theme);
+	  gtk_widget_set_sensitive (itf->treeview3, FALSE);
+	  gtk_widget_set_sensitive (itf->treeview4, FALSE);
+	  loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
+	
+	  /* tell it to the mcs manager */
+	  mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
+	  mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL);
+	  write_options (itf->mcs_plugin);
+	  
+	}
+
+	g_free (theme_name);
+	g_free (theme_file);
+    }
+}
+
+void
 cb_popup_add_menu (GtkWidget *widget, gpointer data)
 {
     Itf *itf;
@@ -45,11 +102,14 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     GtkWidget *entry;
     GtkWidget *header_image;
     GtkWidget *header;
-    gint response = GTK_RESPONSE_CANCEL;
+
+    gchar *default_theme_file = NULL;
+    gchar *new_theme_path = NULL;
+    gchar *new_theme_file = NULL;
 
     itf = (Itf *) data;
     
-    dialog = gtk_dialog_new_with_buttons (_("Enter a name"), GTK_WINDOW (itf->xfwm4_dialog),
+    dialog = gtk_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
 					  GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 					  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
 					  GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
@@ -68,47 +128,89 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
     gtk_widget_show_all (dialog);
 
-    response = gtk_dialog_run (GTK_DIALOG (dialog));
-
-    if (response == GTK_RESPONSE_OK)
+    while (TRUE)
     {
-        gchar *default_theme_file = NULL;
-	gchar *new_theme_path = NULL;
-	gchar *new_theme_file = NULL;
-	gchar buf[80];
-	FILE *new_theme;
-	FILE *default_theme;
-
-	/* create theme (copy default) */
-	new_theme_path = g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
-	new_theme_file = xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
-	default_theme_file = g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, "Default",
-					       G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S KEYTHEMERC, NULL);
+        gint response = GTK_RESPONSE_CANCEL;
 	
-	//TODO check if everything is ok
-	new_theme = fopen (new_theme_file, "w+");
-	default_theme = fopen (default_theme_file, "r");
+	response = gtk_dialog_run (GTK_DIALOG (dialog));
 
-	while (fgets (buf, sizeof (buf), default_theme))
+	if (response == GTK_RESPONSE_OK)
 	{
-	  fputs (buf, new_theme);
+	    gchar buf[80];
+	    FILE *new_theme;
+	    FILE *default_theme;
+
+	    if (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)), keybinding_theme_list))
+	    {
+		xfce_err (_("A keybinding theme with the same name already exists"));
+		continue;
+	    }
+
+	    if (strlen (gtk_entry_get_text (GTK_ENTRY (entry))) == 0)
+	    {
+	        xfce_err (_("You have to provide a name for the keybinding theme"));
+		continue;
+	    }
+
+	    /* create theme (copy default) */
+	    new_theme_path = g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
+	    new_theme_file = xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
+	    default_theme_file = g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, "Default",
+						   G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S KEYTHEMERC, NULL);
+	    
+	    new_theme = fopen (new_theme_file, "w+");
+	    if (!new_theme)
+	    {
+	        g_warning ("unable to create the new theme file");
+		break;
+	    }
+
+	    default_theme = fopen (default_theme_file, "r");
+	    if (!default_theme)
+	    {
+	        g_warning ("unable to open the default theme file");
+	        fclose (new_theme);
+		break;
+	    }
+
+	    while (fgets (buf, sizeof (buf), default_theme))
+	    {
+		fputs (buf, new_theme);
+	    }
+
+	    fclose (new_theme);
+	    fclose (default_theme);
+	
+	    /* refresh list */
+	    while (keybinding_theme_list)
+	    {
+		theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+		keybinding_theme_list = g_list_next (keybinding_theme_list);
+	    }
+	    g_list_free (keybinding_theme_list);
+	
+	    g_free (current_key_theme);
+	    current_key_theme = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+	    keybinding_theme_list = NULL;
+	    keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+						 KEYBINDING_THEMES, current_key_theme);
+	    gtk_widget_set_sensitive (itf->treeview3, TRUE);
+	    gtk_widget_set_sensitive (itf->treeview4, TRUE);
+	    loadtheme_in_treeview (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
+							    keybinding_theme_list), itf);
+	    /* tell it to the mcs manager */
+	    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
+            mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL);
+            write_options (itf->mcs_plugin);
 	}
 
-	fclose (new_theme);
-	fclose (default_theme);
-	
-	//TODO refresh list
-	//FIXME	g_list_free (keybinding_theme_list);
-
-	keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-					     KEYBINDING_THEMES, current_key_theme);
-	g_free (new_theme_path);
-	g_free (new_theme_file);
-	g_free (default_theme_file);
-
+	break;
     }
-
+    
     gtk_widget_destroy (dialog);
+    g_free (new_theme_path);
+    g_free (new_theme_file);
+    g_free (default_theme_file);
 }
 
 gboolean
@@ -295,6 +397,26 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Toggle fullscreen"), COLUMN_SHORTCUT, entry_value, -1);
         }
+        else if (g_ascii_strcasecmp (*shortcut, "up_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Upper workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "down_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Bottom workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "left_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Left workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+        else if (g_ascii_strcasecmp (*shortcut, "right_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Right workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
         else if (g_ascii_strcasecmp (*shortcut, "next_workspace_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
@@ -369,6 +491,26 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to previous workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+	else if (g_ascii_strcasecmp (*shortcut, "move_window_up_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to upper workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+	else if (g_ascii_strcasecmp (*shortcut, "move_window_down_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to bottom workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+	else if (g_ascii_strcasecmp (*shortcut, "move_window_left_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to left workspace"), COLUMN_SHORTCUT, entry_value, -1);
+        }
+	else if (g_ascii_strcasecmp (*shortcut, "move_window_right_workspace_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Move window to right workspace"), COLUMN_SHORTCUT, entry_value, -1);
         }
         else if (g_ascii_strcasecmp (*shortcut, "move_window_workspace_1_key") == 0)
         {
@@ -1048,7 +1190,6 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
     gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, shortcut_string, -1);
 
     /* save changes */
-    printf("%s\n", current_key_theme);
     ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
 
     if (ti)

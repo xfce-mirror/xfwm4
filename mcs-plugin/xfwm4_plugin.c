@@ -97,20 +97,12 @@ MenuTmpl title_align_values[] = {
     {NULL, NULL}
 };
 
-enum
-{
-    THEME_NAME_COLUMN,
-    N_COLUMNS
-};
-
 static void xfwm4_create_channel (McsPlugin * mcs_plugin);
-static gboolean write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
 static gboolean setting_model = FALSE;
 static gboolean is_running = FALSE;
 static gchar *current_theme = NULL;
-gchar *current_key_theme = NULL;
 static gchar *current_layout = NULL;
 static gchar *current_font = NULL;
 static gchar *dbl_click_action = NULL;
@@ -128,9 +120,12 @@ static gboolean box_resize = FALSE;
 static int raise_delay;
 static int snap_width;
 static int wrap_resistance;
+gchar *current_key_theme = NULL;
 
 static GList *decoration_theme_list = NULL;
 GList *keybinding_theme_list = NULL;
+
+
 
 static void
 sensitive_cb (GtkWidget * widget, gpointer user_data)
@@ -672,7 +667,7 @@ create_option_menu_box (MenuTmpl template[], guint size, gchar * display_label, 
     return (vbox);
 }
 
-static void
+void
 theme_info_free (ThemeInfo * info)
 {
     g_free (info->path);
@@ -1822,6 +1817,7 @@ setup_dialog (Itf * itf)
 
     g_signal_connect (G_OBJECT (itf->treeview2), "button-press-event", G_CALLBACK (cb_popup_menu), itf);
     g_signal_connect (G_OBJECT (itf->popup_add_menuitem), "activate", G_CALLBACK (cb_popup_add_menu), itf);
+    g_signal_connect (G_OBJECT (itf->popup_del_menuitem), "activate", G_CALLBACK (cb_popup_del_menu), itf);
 
     g_signal_connect (G_OBJECT (itf->treeview3), "row-activated", G_CALLBACK (cb_activate_treeview3), itf);
     g_signal_connect (G_OBJECT (itf->treeview4), "row-activated", G_CALLBACK (cb_activate_treeview4), itf);
@@ -2167,7 +2163,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     write_options (mcs_plugin);
 }
 
-static gboolean
+gboolean
 write_options (McsPlugin * mcs_plugin)
 {
     gchar *rcfile, *path;

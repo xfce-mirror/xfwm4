@@ -119,6 +119,12 @@ struct _Itf
 
 enum
 {
+    THEME_NAME_COLUMN,
+    N_COLUMNS
+};
+
+enum
+{
     COLUMN_COMMAND,
     COLUMN_SHORTCUT,
     NUM_COLUMNS
@@ -134,6 +140,8 @@ ThemeType;
 extern gchar *current_key_theme;
 extern GList *keybinding_theme_list;
 
+extern gboolean write_options (McsPlugin *);
+extern void theme_info_free (ThemeInfo *);
 extern ThemeInfo *find_theme_info_by_name (const gchar *, GList *);
 extern GList *read_themes (GList *, GtkWidget *, GtkWidget *, ThemeType, gchar *);
 #endif
