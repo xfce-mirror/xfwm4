@@ -1165,7 +1165,6 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
     Client *sibling = NULL;
     Client *c2 = NULL;
     Client *lowest_transient = NULL;
-    Client *prev_transient = NULL;
     int i;
 
     g_return_if_fail(c != NULL);
@@ -1230,40 +1229,30 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                         if(!transients)
                         {
                             transients = TRUE;
-                            lowest_transient = c2;
                             wc2.stack_mode = Above;
                             DBG("recursive call 1\n");
                             _clientConfigure(c2, &wc2, CWStackMode);
                         }
                         else
                         {
-                            lowest_transient = c2;
+                            wc2.sibling = lowest_transient->window;
                             wc2.stack_mode = Below;
-                            wc2.sibling = prev_transient->window;
                             DBG("recursive call 2\n");
                             _clientConfigure(c2, &wc2, CWStackMode | CWSibling);
                         }
-                        prev_transient = c2;
+                        lowest_transient = c2;
                     }
-                    if(transients && lowest_transient)
-                    {
-                        DBG("Transient is %s (%#lx)\n", sibling->name, sibling->window);
-                        sibling = lowest_transient;
-                        wc->stack_mode = Below;
-                    }
+                }
+                if(transients && lowest_transient)
+                {
+                    DBG("Transient is %s (%#lx)\n", sibling->name, sibling->window);
+                    sibling = lowest_transient;
+                    wc->stack_mode = Below;
                 }
                 break;
             case Below:
                 DBG("Below\n");
-                if(c->transient_for)
-                {
-                    wc->sibling = c->transient_for;
-                    wc->stack_mode = Above;
-                    mask |= (CWSibling | CWStackMode);
-                    sibling = clientGetFromWindow(wc->sibling, WINDOW);
-                    DBG("lowering transient \"%s\" (%#lx) for \"%s\" (%#lx)\n", c->name, c->window, c->transient_for, sibling->name);
-                }
-                else if(mask & CWSibling)
+                if((mask & CWSibling) && (c->transient_for != wc->sibling))
                 {
                     DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
@@ -1272,6 +1261,14 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                         DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
                         sibling = clientGetBottomMost(c->win_layer, c);
                     }
+                }
+                else if(c->transient_for)
+                {
+                    wc->sibling = c->transient_for;
+                    wc->stack_mode = Above;
+                    mask |= (CWSibling | CWStackMode);
+                    sibling = clientGetFromWindow(wc->sibling, WINDOW);
+                    DBG("lowering transient \"%s\" (%#lx) for \"%s\" (%#lx)\n", c->name, c->window, c->transient_for, sibling->name);
                 }
                 else
                 {
