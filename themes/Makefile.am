@@ -2,9 +2,10 @@
 #
 
 SUBDIRS =								\
-	default 							\
-	default.keys 							\
-	default-4.0 							\
+	breeze								\
+	default								\
+	default.keys							\
+	default-4.0							\
 	opta								\
 	symphony							\
 	waza

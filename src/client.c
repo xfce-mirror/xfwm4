@@ -3589,8 +3589,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 }
                 else if (gone)
                 {
-
-                    c = clientGetPrevious (c, passdata->cycle_range);
+                    /* Jump to the next one if the current has vanished! */
+                    c = clientGetNext (c, passdata->cycle_range);
                     passdata->c = c;
                 }
 
