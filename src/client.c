@@ -151,7 +151,7 @@ void clientSetNetState(Client * c)
         DBG("clientSetNetState : fullscreen\n");
         data[i++] = net_wm_state_fullscreen;
     }
-    if((c->shaded) || (c->hidden))
+    if(c->hidden)
     {
         DBG("clientSetNetState : hidden\n");
         data[i++] = net_wm_state_hidden;
@@ -268,6 +268,14 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         }
     }
 
+#if 0
+    /* 
+     * EWMH V 1.2 Implementation note 
+     * if an Application asks to toggle _NET_WM_STATE_HIDDEN the Window Manager
+     * should probably just ignore the request, since _NET_WM_STATE_HIDDEN is a 
+     * function of some other aspect of the window such as minimization, rather 
+     * than an independent state.
+     */
     if((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
     {
         if(((action == NET_WM_STATE_ADD) && !(c->hidden)) || ((action == NET_WM_STATE_REMOVE) && (c->hidden)) || (action == NET_WM_STATE_TOGGLE))
@@ -275,6 +283,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             clientHide(c, True);
         }
     }
+#endif
 
     if((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
