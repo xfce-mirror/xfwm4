@@ -1626,9 +1626,8 @@ void clientFrame(Window w)
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame = XCreateWindow(dpy, root, frameX(c), frameY(c), frameWidth(c), frameHeight(c), 0, CopyFromParent, InputOutput, CopyFromParent, valuemask, &attributes);
     DBG("frame id (%#lx)\n", c->frame);
-    valuemask = (CWEventMask | CWDontPropagate);
+    valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
-    attributes.do_not_propagate_mask = (POINTER_EVENT_MASK);
     XChangeWindowAttributes(dpy, c->window, valuemask, &attributes);
     if(shape)
     {
@@ -1641,9 +1640,7 @@ void clientFrame(Window w)
     clientAddToList(c);
     clientGrabKeys(c);
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-
     MyXUngrabServer();
-
 
     c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     c->sides[SIDE_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
@@ -2534,17 +2531,18 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     return status;
 }
 
-void clientMove(Client * c, XEvent * e, Time timestamp)
+void clientMove(Client * c, XEvent * e)
 {
     XWindowChanges wc;
+    Time timestamp;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
+    
 
     g_return_if_fail(c != NULL);
     DBG("entering clientDoMove\n");
     DBG("moving client \"%s\" (%#lx)\n", c->name, c->window);
 
-    getMouseXY(root, &passdata.mx, &passdata.my);
     passdata.ox = c->x;
     passdata.oy = c->y;
     passdata.c = c;
@@ -2570,9 +2568,24 @@ void clientMove(Client * c, XEvent * e, Time timestamp)
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp ? timestamp : CurrentTime);
+	timestamp = e->xkey.time;
+	passdata.mx = e->xkey.x_root;
+	passdata.my = e->xkey.y_root;
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp ? timestamp : CurrentTime);
+    else if (e->type == ButtonPress)
+    {
+	timestamp = e->xbutton.time;
+	passdata.mx = e->xbutton.x_root;
+	passdata.my = e->xbutton.y_root;
+    }
+    else
+    {
+	timestamp = CurrentTime;
+        getMouseXY(root, &passdata.mx, &passdata.my);
+    }
+    
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2580,11 +2593,11 @@ void clientMove(Client * c, XEvent * e, Time timestamp)
         gdk_beep();
         if((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard(dpy, timestamp ? timestamp : CurrentTime);
+            XUngrabKeyboard(dpy, timestamp);
         }
         if(g2 == GrabSuccess)
         {
-            XUngrabPointer(dpy, timestamp ? timestamp : CurrentTime);
+            XUngrabPointer(dpy, timestamp);
         }
 	removeTmpEventWin (passdata.tmp_event_window);
         return;
@@ -2774,9 +2787,10 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     return status;
 }
 
-void clientResize(Client * c, int corner, XEvent * e, Time timestamp)
+void clientResize(Client * c, int corner, XEvent *e)
 {
     XWindowChanges wc;
+    Time timestamp;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
 
@@ -2784,7 +2798,6 @@ void clientResize(Client * c, int corner, XEvent * e, Time timestamp)
     DBG("entering clientResize\n");
     DBG("resizing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    getMouseXY(c->frame, &passdata.mx, &passdata.my);
     passdata.c = c;
     passdata.corner = CORNER_BOTTOM_RIGHT;
     passdata.use_keys = FALSE;
@@ -2800,9 +2813,23 @@ void clientResize(Client * c, int corner, XEvent * e, Time timestamp)
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp ? timestamp : CurrentTime);
+	timestamp = e->xkey.time;
+	passdata.mx = e->xkey.x;
+	passdata.my = e->xkey.y;
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp ? timestamp : CurrentTime);
+    else if (e->type == ButtonPress)
+    {
+	timestamp = e->xbutton.time;
+	passdata.mx = e->xbutton.x;
+	passdata.my = e->xbutton.y;
+    }
+    else
+    {
+	timestamp = CurrentTime;
+        getMouseXY(root, &passdata.mx, &passdata.my);
+    }
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2810,11 +2837,11 @@ void clientResize(Client * c, int corner, XEvent * e, Time timestamp)
         gdk_beep();
         if((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard(dpy, timestamp ? timestamp : CurrentTime);
+            XUngrabKeyboard(dpy, timestamp);
         }
         if(g2 == GrabSuccess)
         {
-            XUngrabPointer(dpy, timestamp ? timestamp : CurrentTime);
+            XUngrabPointer(dpy, timestamp);
         }
 	removeTmpEventWin (passdata.tmp_event_window);
         return;

@@ -155,14 +155,14 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_RIGHT:
                 if((c->has_border) && !(c->fullscreen))
                 {
-                    clientMove(c, (XEvent *) ev, ev->time);
+                    clientMove(c, (XEvent *) ev);
                 }
                 break;
             case KEY_RESIZE_UP:
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev, ev->time);
+                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 break;
             case KEY_CYCLE_WINDOWS:
                 clientCycle(c);
@@ -355,7 +355,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XEvent copy_event = (XEvent) *ev;
             XfwmButtonClickType tclick;
             
-            if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(win, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
+            if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
             {
                 clientClose(c);
             }
@@ -374,18 +374,20 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
+            XEvent copy_event = (XEvent) *ev;
             XfwmButtonClickType tclick;
+	    
             if (win == c->title)
             {
                 clientSetFocus(c, True);
                 clientRaise(c);
             }
-            tclick = typeOfClick(win, (XEvent *) ev);
+            tclick = typeOfClick(c->frame, &copy_event);
             if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
             {
                 if((c->has_border) && !(c->fullscreen))
                 {
-                    clientMove(c, (XEvent *) ev, ev->time);
+                    clientMove(c, (XEvent *) ev);
                 }
             }
             else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
@@ -408,43 +410,43 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev, ev->time);
+            clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev, ev->time);
+            clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev, ev->time);
+            clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev, ev->time);
+            clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev, ev->time);
+            clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev, ev->time);
+            clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev, ev->time);
+            clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {

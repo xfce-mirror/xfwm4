@@ -135,7 +135,6 @@ Window setTmpEventWin(long eventmask)
     attributes.override_redirect = True;
     w = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
     XMapRaised(dpy, w);
-    XSync (dpy, 0);
     return (w);
 }
 
