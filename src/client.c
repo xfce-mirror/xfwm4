@@ -1395,7 +1395,7 @@ clientFrame (Window w, gboolean recapture)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_SESSION_MANAGED);
     }
-
+    
     /* Beware, order of calls is important here ! */
     sn_client_startup_properties (c);
     clientGetWinState (c);
