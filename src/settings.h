@@ -161,11 +161,11 @@ struct _XfwmParams
     int title_horizontal_offset;
     int wrap_resistance;
     gboolean title_shadow[2];
-    gboolean cycle_hidden;
-    gboolean cycle_minimum;
     gboolean box_move;
     gboolean box_resize;
     gboolean click_to_focus;
+    gboolean cycle_hidden;
+    gboolean cycle_minimum;
     gboolean easy_click;
     gboolean focus_hint;
     gboolean focus_new;
@@ -174,15 +174,16 @@ struct _XfwmParams
     gboolean raise_on_click;
     gboolean raise_on_focus;
     gboolean raise_with_any_button;
+    gboolean scroll_workspaces;
     gboolean snap_to_border;
     gboolean snap_to_windows;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
-    gboolean wrap_workspaces;
-    gboolean wrap_layout;
+    gboolean toggle_workspaces;
     gboolean wrap_cycle;
+    gboolean wrap_layout;
     gboolean wrap_windows;
-    gboolean scroll_workspaces;
+    gboolean wrap_workspaces;
 };
 
 gboolean loadSettings   (ScreenInfo *);

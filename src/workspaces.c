@@ -255,6 +255,16 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         return;
     }
 
+    if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
+    {
+        new_ws = screen_info->previous_ws;
+    }
+
+    if (new_ws == screen_info->current_ws)
+    {
+        return;
+    }
+
     if (grab)
     {
         /* Grab the pointer to avoid side effects with EnterNotify events */
@@ -263,10 +273,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
                       GrabModeAsync, None, None, GDK_CURRENT_TIME);
     }
     
-    if (new_ws == screen_info->current_ws)
-    {
-         new_ws = screen_info->previous_ws;
-    }
     screen_info->previous_ws = screen_info->current_ws;
     screen_info->current_ws = new_ws;
     if (c2)

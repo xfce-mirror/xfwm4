@@ -185,6 +185,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->snap_width = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/ToggleWorkspaces"))
+                    {
+                        screen_info->params->toggle_workspaces = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/WrapWorkspaces"))
                     {
                         screen_info->params->wrap_workspaces = setting->data.v_int;
@@ -467,6 +471,12 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ToggleWorkspaces", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("toggle_workspaces", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapWindows", CHANNEL1,
@@ -1084,6 +1094,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_layout", NULL, TRUE},
         {"wrap_cycle", NULL, TRUE},
         {"scroll_workspaces", NULL, TRUE},
+        {"toggle_workspaces", NULL, TRUE},
         {"wrap_resistance", NULL, TRUE},
         /* Keys */
         {"add_workspace_key", NULL, TRUE},
@@ -1237,6 +1248,8 @@ loadSettings (ScreenInfo *screen_info)
         workspaceSetCount (screen_info, workspace_count);
     }
 
+    screen_info->params->toggle_workspaces =
+        !g_ascii_strcasecmp ("true", getValue ("toggle_workspaces", rc));
     screen_info->params->wrap_workspaces =
         !g_ascii_strcasecmp ("true", getValue ("wrap_workspaces", rc));
     screen_info->params->wrap_layout =
