@@ -377,6 +377,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientSetNetState (c);
             clientWindowType (c);
         }
+        frameDraw (c, TRUE, FALSE);
     }
 
     if ((first == net_wm_state_fullscreen)

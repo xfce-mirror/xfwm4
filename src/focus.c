@@ -147,8 +147,11 @@ clientFocusNew(Client * c)
     {
         if (client_focus)
 	{
-	    clientAdjustFullscreenLayer (client_focus, FALSE);
-        }
+	    if (clientAdjustFullscreenLayer (client_focus, FALSE))
+	    {
+	        clientRaise (c);
+            }
+	}
         clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
 	clientPassGrabButton1 (c);
     }

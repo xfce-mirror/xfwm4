@@ -38,7 +38,7 @@ Client         *clientGetBottomMost (ScreenInfo *, int, Client *);
 Client         *clientAtPosition (ScreenInfo *, int, int, Client *);
 void            clientRaise (Client *);
 void            clientLower (Client *);
-void            clientAdjustFullscreenLayer (Client *, gboolean);
+gboolean        clientAdjustFullscreenLayer (Client *, gboolean);
 void            clientAddToList (Client *);
 void            clientRemoveFromList (Client *);
 GList          *clientGetStackList (ScreenInfo *);

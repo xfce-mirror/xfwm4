@@ -441,16 +441,17 @@ clientLower (Client * c)
     }
 }
 
-void
+gboolean
 clientAdjustFullscreenLayer (Client *c, gboolean set)
 {
-    g_return_if_fail (c);
+    g_return_val_if_fail (c, FALSE);
        
     if (set)
     {
         if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
+	    return TRUE;
         }
     }
     else if (c->win_layer == WIN_LAYER_ABOVE_DOCK)
@@ -465,8 +466,10 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
             {
         	clientSetLayer (c, WIN_LAYER_NORMAL);
             }
+	    return TRUE;
 	}
     }
+    return FALSE;
 }
 
 void
