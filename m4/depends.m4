@@ -43,7 +43,7 @@ AC_DEFUN([XFCE_PANEL_PLUGIN],
   dnl Check if the panel is threaded
   ac_CFLAGS=$$1_CFLAGS
   AC_MSG_CHECKING([whether the panel is threaded])
-  if $PKG_CONFIG --atleast-version=4.1.8 xfce4-panel-1.0; then
+  if $PKG_CONFIG --atleast-version=4.1.7 xfce4-panel-1.0; then
     $1_CFLAGS="$ac_CFLAGS -DXFCE_PANEL_THREADED=1 -DXFCE_PANEL_LOCK\(\)=gdk_threads_enter\(\) -DXFCE_PANEL_UNLOCK\(\)=gdk_threads_leave\(\)"
     AC_MSG_RESULT([yes])
   else
