@@ -642,6 +642,14 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XAllowEvents(dpy, SyncPointer, ev->time);
         }
     }
+    else if ((ev->window == root) && (ev->button == Button4))
+    {
+        workspaceSwitch(workspace - 1, NULL);
+    }
+    else if ((ev->window == root) && (ev->button == Button5))
+    {
+        workspaceSwitch(workspace + 1, NULL);
+    }
     else
     {
         XUngrabPointer(dpy, CurrentTime);
@@ -876,20 +884,6 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     }
 
     c = clientGetFromWindow(ev->window, WINDOW);
-#if 0
-    while(XCheckTypedEvent(dpy, FocusIn, (XEvent *) ev))
-    {
-        if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
-        {
-            continue;
-        }
-        c2 = clientGetFromWindow(ev->window, WINDOW);
-        if (c2)
-        {
-            c = c2;
-        }
-    }
-#endif
     TRACE("focused window is (0x%lx)", ev->window);
     if(c)
     {
@@ -905,9 +899,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 
 static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
-#if 0
     TRACE("entering handleFocusOut - Window (0x%lx)", w);
-#endif
 }
 
 static inline void handlePropertyNotify(XPropertyEvent * ev)

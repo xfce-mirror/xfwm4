@@ -45,14 +45,15 @@ void workspaceSwitch(int new_ws, Client * c2)
 
     TRACE("entering workspaceSwitch");
 
-    if((new_ws < 0) && params.wrap_workspaces)
+    if((new_ws > params.workspace_count - 1) && params.wrap_workspaces)
     {
         new_ws = params.workspace_count - 1;
     }
-    if((new_ws > params.workspace_count - 1) && params.wrap_workspaces)
+    else if ((new_ws < 0) || !(params.wrap_workspaces))
     {
         new_ws = 0;
     }
+    
     if(new_ws == workspace)
     {
         return;
