@@ -738,7 +738,7 @@ win_extents (CWindow *cw)
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && (cw->mode != WINDOW_ARGB))
         {
             XRectangle sr;
-    
+
             TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);    
             cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
             cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
@@ -754,7 +754,7 @@ win_extents (CWindow *cw)
                                              cw->attr.height + 2 * cw->attr.border_width,
                                              &cw->shadow_width, &cw->shadow_height);
             }
-    
+
             sr.x = cw->attr.x + cw->shadow_dx;
             sr.y = cw->attr.y + cw->shadow_dy;
             sr.width = cw->shadow_width;
@@ -1513,7 +1513,7 @@ restack_win (CWindow *cw, Window above)
 }
 
 void
-resize_win (CWindow *cw, gint width, gint height)
+resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
 {
     XserverRegion damage = None;
 
@@ -1523,7 +1523,7 @@ resize_win (CWindow *cw, gint width, gint height)
     damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
     if ((damage != None) && (cw->extents != None))
     {
-        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
+        XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, cw->extents);
     }
 
     if ((cw->attr.width != width) || (cw->attr.height != height))
@@ -1547,8 +1547,12 @@ resize_win (CWindow *cw, gint width, gint height)
             cw->shadow = None;
         }
     }
+
+    cw->attr.x = x;
+    cw->attr.y = y;
     cw->attr.width = width;
     cw->attr.height = height;
+    cw->attr.border_width = bw;
 
     if (damage)
     {
@@ -1559,10 +1563,6 @@ resize_win (CWindow *cw, gint width, gint height)
             XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
         }
         add_damage (cw->screen_info, damage);
-        cw->screen_info->clipChanged = TRUE;
-#if 0
-        repair_screen (cw->screen_info);
-#endif
     }
 }
 
@@ -1759,56 +1759,9 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
                     (cw->attr.width != ev->width) || (cw->attr.height != ev->height) ||
                     (cw->attr.border_width != ev->border_width));
 
-    damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-    if ((damage != None) && (cw->extents != None))
-    {
-        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
-    }
-
-    cw->attr.x = ev->x;
-    cw->attr.y = ev->y;
-    if ((cw->attr.width != ev->width) || (cw->attr.height != ev->height))
-    {
-#if HAVE_NAME_WINDOW_PIXMAP
-        if (cw->name_window_pixmap)
-        {
-            XFreePixmap (display_info->dpy, cw->name_window_pixmap);
-            cw->name_window_pixmap = None;
-        }
-#endif
-        if (cw->picture)
-        {
-            XRenderFreePicture (display_info->dpy, cw->picture);
-            cw->picture = None;
-        }
-    
-        if (cw->shadow)
-        {
-            XRenderFreePicture (display_info->dpy, cw->shadow);
-            cw->shadow = None;
-        }
-    }
-
-    cw->attr.width = ev->width;
-    cw->attr.height = ev->height;
-    cw->attr.border_width = ev->border_width;
-    cw->attr.override_redirect = ev->override_redirect;
+    resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width);
     restack_win (cw, ev->above);
-
-    if (damage)
-    {
-        XserverRegion extents = win_extents (cw);
-        if (extents)
-        {
-            XFixesUnionRegion (display_info->dpy, damage, extents, damage);
-            XFixesDestroyRegion (display_info->dpy, extents);
-        }
-        add_damage (cw->screen_info, damage);
-        cw->screen_info->clipChanged = clip_changed;
-#if 0    
-        repair_screen (cw->screen_info);
-#endif
-    }
+    cw->screen_info->clipChanged = clip_changed;
 }
 
 static void
@@ -2198,10 +2151,10 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     GList *index;
     gint i = 0;
-    
+
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorUnmanageScreen");    
-    
+
     display_info = screen_info->display_info;
     if (!(display_info->enable_compositor))
     {
@@ -2245,13 +2198,13 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         g_free (screen_info->shadowCorner);
         screen_info->shadowCorner = NULL;
     }
-    
+
     if (screen_info->gaussianMap)
     {
         g_free (screen_info->gaussianMap);
         screen_info->gaussianMap = NULL;
     }
-    
+
     screen_info->gsize = -1;
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2325,7 +2278,8 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, gint new_width, gi
     if (cw)
     {
         TRACE ("Resizing Ox%ld to (%i, %i)", cw->id, new_width, new_height);
-        resize_win (cw, new_width, new_height);
+        resize_win (cw, cw->attr.x, cw->attr.y, new_width, new_height, cw->attr.border_width);
+        cw->screen_info->clipChanged = TRUE;
     }
 #endif /* HAVE_COMPOSITOR */
 }
