@@ -933,7 +933,7 @@ static void clientWindowType(Client * c)
             TRACE("atom net_wm_window_type_utility detected");
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_splashscreen)
         {
