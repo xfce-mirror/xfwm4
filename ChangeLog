@@ -1,3 +1,11 @@
+2003-09-14  huysmans
+
+	* doc/C/: xfwm4.html, xfwm4.xml: Documentation updates
+
+2003-09-14  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-09-14  xfce
 
 	* src/client.c: Use the same technique for real EWMH fullscreen
