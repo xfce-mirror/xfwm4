@@ -39,7 +39,7 @@
 #include <libxfce4mcs/mcs-manager.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
-#include "inline-icon.h"
+#include "xfwm4-icon.h"
 #include "my_intl.h"
 
 #define RCDIR   "settings"
@@ -1130,7 +1130,7 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     dialog->font_selection = NULL;
 
-    icon = inline_icon_at_size(default_icon_data, 32, 32);
+    icon = inline_icon_at_size(xfwm4_icon_data, 32, 32);
     gtk_window_set_icon(GTK_WINDOW(dialog->xfwm4_dialog), icon);
     g_object_unref(icon);
 
@@ -1567,7 +1567,7 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
     mcs_plugin->caption = g_strdup(_("Window Manager"));
     mcs_plugin->run_dialog = run_dialog;
-    mcs_plugin->icon = inline_icon_at_size(default_icon_data, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE);
+    mcs_plugin->icon = inline_icon_at_size(xfwm4_icon_data, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE);
     mcs_manager_notify(mcs_plugin->manager, CHANNEL);
 
     return (MCS_PLUGIN_INIT_OK);

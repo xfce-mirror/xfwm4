@@ -162,23 +162,33 @@ xfwm4_plugindir = $(libdir)/xfce-mcs-manager/plugins
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 xfwm4_plugin_la_LDFLAGS = -module -avoid-version
 
-xfwm4_plugin_la_SOURCES = xfwm4_plugin.c inline-icon.h
+xfwm4_plugin_la_SOURCES = xfwm4_plugin.c xfwm4-icon.h
 
 xfwm4_plugin_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ @XFCE_MCS_MANAGER_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(pkgdatadir)\" 
 xfwm4_plugin_la_LIBADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@ @XFCE_MCS_MANAGER_LIBS@
 
-IMAGES = icon.png
-VARIABLES = default_icon_data $(srcdir)/$(IMAGES)
+margins_plugindir = $(libdir)/xfce-mcs-manager/plugins
 
-EXTRA_DIST = inline-icon.h icon.png
+margins_plugin_LTLIBRARIES = margins_plugin.la
+margins_plugin_la_LDFLAGS = -module -avoid-version
 
-noinst_DATA = inline-icon.h icon.png
+margins_plugin_la_SOURCES = margins_plugin.c margins-icon.h
+
+margins_plugin_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ @XFCE_MCS_MANAGER_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(pkgdatadir)\" 
+margins_plugin_la_LIBADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@ @XFCE_MCS_MANAGER_LIBS@
+
+EXTRA_DIST = inline-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
+
+noinst_DATA = inline-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
 subdir = mcs-plugin
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-LTLIBRARIES = $(xfwm4_plugin_LTLIBRARIES)
+LTLIBRARIES = $(margins_plugin_LTLIBRARIES) $(xfwm4_plugin_LTLIBRARIES)
 
+margins_plugin_la_DEPENDENCIES =
+am_margins_plugin_la_OBJECTS = margins_plugin_la-margins_plugin.lo
+margins_plugin_la_OBJECTS = $(am_margins_plugin_la_OBJECTS)
 xfwm4_plugin_la_DEPENDENCIES =
 am_xfwm4_plugin_la_OBJECTS = xfwm4_plugin_la-xfwm4_plugin.lo
 xfwm4_plugin_la_OBJECTS = $(am_xfwm4_plugin_la_OBJECTS)
@@ -186,7 +196,8 @@ xfwm4_plugin_la_OBJECTS = $(am_xfwm4_plugin_la_OBJECTS)
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/margins_plugin_la-margins_plugin.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -194,11 +205,11 @@ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-DIST_SOURCES = $(xfwm4_plugin_la_SOURCES)
+DIST_SOURCES = $(margins_plugin_la_SOURCES) $(xfwm4_plugin_la_SOURCES)
 DATA = $(noinst_DATA)
 
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(xfwm4_plugin_la_SOURCES)
+SOURCES = $(margins_plugin_la_SOURCES) $(xfwm4_plugin_la_SOURCES)
 
 all: all-am
 
@@ -209,6 +220,34 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configu
 	  $(AUTOMAKE) --gnu  mcs-plugin/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
+margins_pluginLTLIBRARIES_INSTALL = $(INSTALL)
+install-margins_pluginLTLIBRARIES: $(margins_plugin_LTLIBRARIES)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(margins_plugindir)
+	@list='$(margins_plugin_LTLIBRARIES)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    f="`echo $$p | sed -e 's|^.*/||'`"; \
+	    echo " $(LIBTOOL) --mode=install $(margins_pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(margins_plugindir)/$$f"; \
+	    $(LIBTOOL) --mode=install $(margins_pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(margins_plugindir)/$$f; \
+	  else :; fi; \
+	done
+
+uninstall-margins_pluginLTLIBRARIES:
+	@$(NORMAL_UNINSTALL)
+	@list='$(margins_plugin_LTLIBRARIES)'; for p in $$list; do \
+	    p="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(margins_plugindir)/$$p"; \
+	  $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(margins_plugindir)/$$p; \
+	done
+
+clean-margins_pluginLTLIBRARIES:
+	-test -z "$(margins_plugin_LTLIBRARIES)" || rm -f $(margins_plugin_LTLIBRARIES)
+	@list='$(margins_plugin_LTLIBRARIES)'; for p in $$list; do \
+	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
+	  test "$$dir" = "$$p" && dir=.; \
+	  echo "rm -f \"$${dir}/so_locations\""; \
+	  rm -f "$${dir}/so_locations"; \
+	done
 xfwm4_pluginLTLIBRARIES_INSTALL = $(INSTALL)
 install-xfwm4_pluginLTLIBRARIES: $(xfwm4_plugin_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
@@ -237,6 +276,8 @@ clean-xfwm4_pluginLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+margins_plugin.la: $(margins_plugin_la_OBJECTS) $(margins_plugin_la_DEPENDENCIES) 
+	$(LINK) -rpath $(margins_plugindir) $(margins_plugin_la_LDFLAGS) $(margins_plugin_la_OBJECTS) $(margins_plugin_la_LIBADD) $(LIBS)
 xfwm4_plugin.la: $(xfwm4_plugin_la_OBJECTS) $(xfwm4_plugin_la_DEPENDENCIES) 
 	$(LINK) -rpath $(xfwm4_plugindir) $(xfwm4_plugin_la_LDFLAGS) $(xfwm4_plugin_la_OBJECTS) $(xfwm4_plugin_la_LIBADD) $(LIBS)
 
@@ -246,6 +287,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/margins_plugin_la-margins_plugin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo@am__quote@
 
 distclean-depend:
@@ -283,6 +325,39 @@ distclean-depend:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
+
+margins_plugin_la-margins_plugin.o: margins_plugin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -MT margins_plugin_la-margins_plugin.o -MD -MP -MF "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o margins_plugin_la-margins_plugin.o `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" "$(DEPDIR)/margins_plugin_la-margins_plugin.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins_plugin.c' object='margins_plugin_la-margins_plugin.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/margins_plugin_la-margins_plugin.Po' tmpdepfile='$(DEPDIR)/margins_plugin_la-margins_plugin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -c -o margins_plugin_la-margins_plugin.o `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c
+
+margins_plugin_la-margins_plugin.obj: margins_plugin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -MT margins_plugin_la-margins_plugin.obj -MD -MP -MF "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o margins_plugin_la-margins_plugin.obj `if test -f 'margins_plugin.c'; then $(CYGPATH_W) 'margins_plugin.c'; else $(CYGPATH_W) '$(srcdir)/margins_plugin.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" "$(DEPDIR)/margins_plugin_la-margins_plugin.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins_plugin.c' object='margins_plugin_la-margins_plugin.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/margins_plugin_la-margins_plugin.Po' tmpdepfile='$(DEPDIR)/margins_plugin_la-margins_plugin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -c -o margins_plugin_la-margins_plugin.obj `if test -f 'margins_plugin.c'; then $(CYGPATH_W) 'margins_plugin.c'; else $(CYGPATH_W) '$(srcdir)/margins_plugin.c'; fi`
+
+margins_plugin_la-margins_plugin.lo: margins_plugin.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -MT margins_plugin_la-margins_plugin.lo -MD -MP -MF "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o margins_plugin_la-margins_plugin.lo `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" "$(DEPDIR)/margins_plugin_la-margins_plugin.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins_plugin.c' object='margins_plugin_la-margins_plugin.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/margins_plugin_la-margins_plugin.Plo' tmpdepfile='$(DEPDIR)/margins_plugin_la-margins_plugin.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -c -o margins_plugin_la-margins_plugin.lo `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c
 
 xfwm4_plugin_la-xfwm4_plugin.o: xfwm4_plugin.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -MT xfwm4_plugin_la-xfwm4_plugin.o -MD -MP -MF "$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Tpo" \
@@ -417,7 +492,7 @@ check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(xfwm4_plugindir)
+	$(mkinstalldirs) $(DESTDIR)$(margins_plugindir) $(DESTDIR)$(xfwm4_plugindir)
 
 install: install-am
 install-exec: install-exec-am
@@ -445,8 +520,8 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool clean-xfwm4_pluginLTLIBRARIES \
-	mostlyclean-am
+clean-am: clean-generic clean-libtool clean-margins_pluginLTLIBRARIES \
+	clean-xfwm4_pluginLTLIBRARIES mostlyclean-am
 
 distclean: distclean-am
 
@@ -461,7 +536,8 @@ info: info-am
 
 info-am:
 
-install-data-am: install-xfwm4_pluginLTLIBRARIES
+install-data-am: install-margins_pluginLTLIBRARIES \
+	install-xfwm4_pluginLTLIBRARIES
 
 install-exec-am:
 
@@ -488,24 +564,34 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-xfwm4_pluginLTLIBRARIES
+uninstall-am: uninstall-info-am uninstall-margins_pluginLTLIBRARIES \
+	uninstall-xfwm4_pluginLTLIBRARIES
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libtool clean-xfwm4_pluginLTLIBRARIES ctags distclean \
-	distclean-compile distclean-depend distclean-generic \
-	distclean-libtool distclean-tags distdir dvi dvi-am info \
-	info-am install install-am install-data install-data-am \
-	install-exec install-exec-am install-info install-info-am \
-	install-man install-strip install-xfwm4_pluginLTLIBRARIES \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am uninstall-info-am \
+	clean-libtool clean-margins_pluginLTLIBRARIES \
+	clean-xfwm4_pluginLTLIBRARIES ctags distclean distclean-compile \
+	distclean-depend distclean-generic distclean-libtool \
+	distclean-tags distdir dvi dvi-am info info-am install \
+	install-am install-data install-data-am install-exec \
+	install-exec-am install-info install-info-am install-man \
+	install-margins_pluginLTLIBRARIES install-strip \
+	install-xfwm4_pluginLTLIBRARIES installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
+	uninstall-am uninstall-info-am \
+	uninstall-margins_pluginLTLIBRARIES \
 	uninstall-xfwm4_pluginLTLIBRARIES
 
 
-inline-icon.h: $(IMAGES)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) > $(srcdir)/inline-icon.h
+xfwm4-icon.h: $(IMAGES)
+	$(GDK_PIXBUF_CSOURCE) --raw --build-list xfwm4_icon_data $(srcdir)/xfwm4-icon.png > $(srcdir)/xfwm4-icon.h
+
+margins-icon.h: $(IMAGES)
+	$(GDK_PIXBUF_CSOURCE) --raw --build-list margins_icon_data $(srcdir)/margins-icon.png > $(srcdir)/margins-icon.h
+
+monitor-icon.h: $(IMAGES)
+	$(GDK_PIXBUF_CSOURCE) --raw --build-list monitor_icon_data $(srcdir)/monitor-icon.png > $(srcdir)/monitor-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
