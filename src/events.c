@@ -875,7 +875,7 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        clientShow (c, TRUE);
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_MAPPED);
     }
 }
 
@@ -895,26 +895,31 @@ handleUnmapNotify (XUnmapEvent * ev)
 
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED))
         {
-            /*
-             * ICCCM spec states that a client wishing to switch
-             * to WithdrawnState should send a synthetic UnmapNotify 
-             * with the event field set to root if the client window 
-             * is already unmapped.
-             */
-            if ((ev->event == root) && (ev->send_event))
-            {
-                clientPassFocus (c);
-                clientUnframe (c, FALSE);
-            }
             /* 
-             * Otherwise this UnmapNotify event is caused by reparenting
+             * This UnmapNotify event is caused by reparenting
              * so we just ignore it, so the window won't return 
              * to withdrawn state by mistake.
              */
+            TRACE ("Client \"%s\" is not mapped, event ignored", c->name);
             return;
         }
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAPPED);
+
         clientPassFocus (c);
+        
+        /*
+         * ICCCM spec states that a client wishing to switch
+         * to WithdrawnState should send a synthetic UnmapNotify 
+         * with the event field set to root if the client window 
+         * is already unmapped.
+         * Therefore, bypass the ignore_unmap counter and
+         * unframe the client.
+         */
+        if ((ev->event == root) && (ev->send_event))
+        {
+            TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
+            clientUnframe (c, FALSE);
+            return;
+        }
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;

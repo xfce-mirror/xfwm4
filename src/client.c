@@ -3261,7 +3261,6 @@ clientUnframe (Client * c, gboolean remap)
     clientGravitate (c, REMOVE);
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
-    XSetWindowBorderWidth (dpy, c->window, c->border_width);
     myWindowDelete (&c->title);
     myWindowDelete (&c->sides[SIDE_LEFT]);
     myWindowDelete (&c->sides[SIDE_RIGHT]);
@@ -3275,6 +3274,7 @@ clientUnframe (Client * c, gboolean remap)
         myWindowDelete (&c->buttons[i]);
     }
     XReparentWindow (dpy, c->window, root, c->x, c->y);
+    XSetWindowBorderWidth (dpy, c->window, c->border_width);
     if (remap)
     {
         XMapWindow (dpy, c->window);
@@ -3627,8 +3627,8 @@ clientShowSingle (Client * c, gboolean change_state)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         CLIENT_FLAG_SET (c, CLIENT_FLAG_VISIBLE);
-        XMapWindow (dpy, c->window);
         XMapWindow (dpy, c->frame);
+        XMapWindow (dpy, c->window);
     }
     if (change_state)
     {
@@ -3673,8 +3673,8 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     g_return_if_fail (c != NULL);
     MyXGrabServer ();
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    XUnmapWindow (dpy, c->frame);
     XUnmapWindow (dpy, c->window);
+    XUnmapWindow (dpy, c->frame);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
     {
         CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
@@ -3700,7 +3700,6 @@ clientHide (Client * c, int ws, gboolean change_state)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientHide");
 
-    clientPassFocus(c);
     list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_list_next (index))
     {
