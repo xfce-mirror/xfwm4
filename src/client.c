@@ -1426,8 +1426,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
                 "(unknown)");
     if (attr.map_state != IsUnmapped)
     {
+        /* Reparent will send us unmap/map events */
         FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
-        XUnmapWindow (display_info->dpy, c->window);
     }
 
     c->ignore_unmap = 0;
@@ -1628,6 +1628,7 @@ clientUnframe (Client * c, gboolean remap)
         }
         else
         {
+            XUnmapWindow (display_info->dpy, c->window);
             setWMState (display_info->dpy, c->window, WithdrawnState);
         }
     }
