@@ -94,16 +94,19 @@ void handleSignal(int sig)
     {
         case SIGINT:
         case SIGTERM:
+            gtk_main_quit ();
             quit = True;
+	    break;
+        case SIGHUP:
+            reload = True;
             break;
         case SIGSEGV:
             fprintf(stderr, "%s: Segmentation fault\n", progname);
             cleanUp();
             exit(1);
             break;
-        case SIGHUP:
-            reload = True;
-            break;
+	default:
+	    break;
     }
 }
 
@@ -117,12 +120,6 @@ void initialize(int argc, char **argv)
     
     gtk_init(&argc, &argv);
     progname = argv[0];
-
-    act.sa_handler = handleSignal;
-    act.sa_flags = 0;
-    sigaction(SIGINT, &act, NULL);
-    sigaction(SIGTERM, &act, NULL);
-    sigaction(SIGHUP, &act, NULL);
 
     dpy     = GDK_DISPLAY();
     root    = GDK_ROOT_WINDOW();
@@ -164,6 +161,12 @@ void initialize(int argc, char **argv)
 
     initSettings();
     loadSettings();
+
+    act.sa_handler = handleSignal;
+    act.sa_flags = 0;
+    sigaction(SIGINT, &act, NULL);
+    sigaction(SIGTERM, &act, NULL);
+    sigaction(SIGHUP, &act, NULL);
 
     setGnomeHint(dpy, root, win_supporting_wm_check, gnome_win);
     setGnomeHint(dpy, gnome_win, win_supporting_wm_check, gnome_win);

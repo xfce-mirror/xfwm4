@@ -107,7 +107,6 @@ MyXGrabServer (Display *dpy)
     if (xgrabcount == 0)
     {
         DBG("grabbing server\n");
-	XSync (dpy, 0);
 	XGrabServer (dpy);
     }
     xgrabcount++;
@@ -126,7 +125,6 @@ MyXUngrabServer (Display *dpy)
     {
         DBG("ungrabbing server\n");
 	XUngrabServer (dpy);
-	XFlush (dpy);
     }
     DBG("grabs : %i\n", xgrabcount);
 }

@@ -43,6 +43,9 @@ Atom wm_delete_window;
 Atom wm_takefocus;
 Atom wm_protocols;
 Atom wm_colormap_windows;
+Atom wm_window_role;
+Atom wm_client_leader;
+Atom sm_client_id;
 Atom motif_wm_hints;
 Atom win_hints;
 Atom win_state;
@@ -100,12 +103,15 @@ void initICCCMHints(Display * dpy)
 {
     DBG("entering initICCCMHints\n");
 
-    wm_state = XInternAtom(dpy, "WM_STATE", False);
-    wm_change_state = XInternAtom(dpy, "WM_CHANGE_STATE", False);
-    wm_delete_window = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
-    wm_takefocus = XInternAtom(dpy, "WM_TAKE_FOCUS", False);
-    wm_protocols = XInternAtom(dpy, "WM_PROTOCOLS", False);
-    wm_colormap_windows = XInternAtom (dpy, "WM_COLORMAP_WINDOWS", False);
+    wm_state            = XInternAtom(dpy, "WM_STATE", False);
+    wm_change_state     = XInternAtom(dpy, "WM_CHANGE_STATE", False);
+    wm_delete_window    = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
+    wm_takefocus        = XInternAtom(dpy, "WM_TAKE_FOCUS", False);
+    wm_protocols        = XInternAtom(dpy, "WM_PROTOCOLS", False);
+    wm_colormap_windows = XInternAtom(dpy, "WM_COLORMAP_WINDOWS", False);
+    wm_window_role      = XInternAtom(dpy, "WM_WINDOW_ROLE", False);
+    wm_client_leader    = XInternAtom(dpy, "WM_CLIENT_LEADER", False);
+    sm_client_id        = XInternAtom(dpy, "SM_CLIENT_ID", False);
 }
 
 unsigned long getWMState(Display * dpy, Window w)

@@ -819,7 +819,7 @@ void handleEvent(XEvent * ev)
             reloadSettings();
             reload = False;
 	}
-	if(quit)
+	else if(quit)
 	{
             gtk_main_quit();
 	}

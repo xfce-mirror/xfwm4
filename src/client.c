@@ -1075,12 +1075,12 @@ static inline void clientComputeStackList(Client *c, Client *sibling, XWindowCha
 static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 {
     gboolean transients = FALSE;
-    int i;
     XConfigureEvent ce;
     Client *sibling = NULL;
     Client *c2 = NULL;
     Client *lowest_transient = NULL;
     Client *prev_transient = NULL;
+    int i;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1231,7 +1231,6 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
         ce.above = c->frame;
         ce.override_redirect = False;
         XSendEvent(dpy, c->window, False, StructureNotifyMask, (XEvent *) & ce);
-	XSync(dpy, False);
     }
 }
 
@@ -1700,7 +1699,6 @@ void clientShow(Client * c, int change_state)
         workspaceUpdateArea(margins, gnome_margins);
     }
     clientSetNetState (c);
-    XFlush (dpy);
 }
 
 void clientHide(Client * c, int change_state)
@@ -1731,7 +1729,6 @@ void clientHide(Client * c, int change_state)
     }
     c->ignore_unmap++;
     clientSetNetState (c);
-    XFlush (dpy);
 }
 
 void clientHideAll(Client * c)
@@ -2199,7 +2196,6 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent *xevent, gpointer 
 	        XEvent e;
                 workspaceSwitch(workspace - 1, c);
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
-		XFlush (dpy);
                 xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
             }
@@ -2208,7 +2204,6 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent *xevent, gpointer 
 	        XEvent e;
                 workspaceSwitch(workspace + 1, c);
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
-		XFlush (dpy);
                 xevent->xmotion.x_root = 10;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
             }
