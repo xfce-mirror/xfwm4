@@ -1,49 +1,51 @@
-# translation of xfwm4.po to Hungarian
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# Gergely Banos, Gabor Zele <zegab@axelero.hu>, 2003
+# translation of hu.po to Hungarian
+# Hungarian translations for xfwm package.
+# Copyright (C) 2003 THE xfwm'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfwm package.
+# Somogyi Peter <jerry@gnu>, 2003.
+# Egmont Koblinger <egmont@uhulinux.hu>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-07-16 11:37+0200\n"
-"PO-Revision-Date: 2003-07-14 13:25+0200\n"
-"Last-Translator: Gergely Banos, Gabor Zele <zegab@axelero.hu>\n"
-"Language-Team: Hungarian\n"
+"Project-Id-Version: hu\n"
+"POT-Creation-Date: 2003-07-08 22:46+0200\n"
+"PO-Revision-Date: 2003-07-16 16:19+0200\n"
+"Last-Translator: Egmont Koblinger <egmont@uhulinux.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: KBabel 1.0.1\n"
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
-msgstr "Munkaterület Margói"
+msgstr "Munkaterület-margók"
 
 #: mcs-plugin/margins_plugin.c:217
 msgid "Adjust workspace margins"
-msgstr "Munkaterület margóinak beállítása"
+msgstr "Munkaterület margóinak igazítása"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr "A munkaterület szélén található margókra nem kerülnek ablakok"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
-msgstr "Bal :"
+msgstr "Bal:"
 
 #: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
-msgstr "Jobb :"
+msgstr "Jobb:"
 
 #: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
-msgstr "Felső :"
+msgstr "Felső:"
 
 #: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
-msgstr "Alsó :"
+msgstr "Alsó:"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -55,11 +57,11 @@ msgstr "Menü"
 
 #: mcs-plugin/xfwm4_plugin.c:118
 msgid "Stick"
-msgstr "Minden munkaterületre"
+msgstr "Megjelenés minden munkaterületen"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Shade"
-msgstr "Csak fejléc"
+msgstr "Felgördítés"
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Hide"
@@ -67,7 +69,7 @@ msgstr "Elrejtés"
 
 #: mcs-plugin/xfwm4_plugin.c:121
 msgid "Maximize"
-msgstr "Teljes méret"
+msgstr "Maximalizálás"
 
 #: mcs-plugin/xfwm4_plugin.c:122
 msgid "Close"
@@ -75,15 +77,15 @@ msgstr "Bezárás"
 
 #: mcs-plugin/xfwm4_plugin.c:126
 msgid "Shade window"
-msgstr "Csak fejléc"
+msgstr "Ablak felgördítése"
 
 #: mcs-plugin/xfwm4_plugin.c:127
 msgid "Hide window"
-msgstr "Elrejtése"
+msgstr "Ablak minimalizálása"
 
 #: mcs-plugin/xfwm4_plugin.c:128
 msgid "Maximize window"
-msgstr "Teljes méret"
+msgstr "Ablak maximalizálása"
 
 #: mcs-plugin/xfwm4_plugin.c:129
 msgid "Nothing"
@@ -91,23 +93,23 @@ msgstr "Semmi"
 
 #: mcs-plugin/xfwm4_plugin.c:134
 msgid "Left"
-msgstr "Bal"
+msgstr "Balra"
 
 #: mcs-plugin/xfwm4_plugin.c:135
 msgid "Center"
-msgstr "Középső"
+msgstr "Középre"
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Right"
-msgstr "Jobb"
+msgstr "Jobbra"
 
 #: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
-msgstr "Rejtett"
+msgstr "Elrejtve"
 
 #: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
-msgstr "Betűtípus kiválasztása"
+msgstr "Betűkészlet-kijelölés párbeszédablak"
 
 #: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
@@ -119,88 +121,88 @@ msgstr "Ablakkezelő beállításai"
 
 #: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
-msgstr "Fejléc betűtípusa"
+msgstr "Címsor betűkészlete"
 
 #: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
-msgstr "Fejléc igazítása"
+msgstr "Címsor igazítása"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
-msgstr "A fejlécben szereplő szöveg igazjtása :"
+msgstr "Szöveg igazítása a címsorban:"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
-msgstr "Vezérlőgombok kiosztása"
+msgstr "Gombok elrendezése"
 
 #: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
-msgstr "Keret és fejléc"
+msgstr "Díszítés stílusa"
 
 #: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
-msgstr "Billentyűparancs"
+msgstr "Gyorsbillentyű"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
-msgstr "Fókuszváltás"
+msgstr "Fókusz"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
-msgstr "Egérkattintásra"
+msgstr "Kattintás a fókuszhoz"
 
 #: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
-msgstr "Követi az egérmutatót"
+msgstr "A fókusz az egeret követi"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
-msgstr "Új ablakok"
+msgstr "Új ablak fókusza"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"Az újonnan létrehozott ablakok\n"
-"automatikusan kerüljenek fókuszba"
+"Újonnan létrehozott ablakok\n"
+"automatikusan fókuszt kapnak"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
-msgstr "Előtérbe helyezés"
+msgstr "Fókuszkor előhozás"
 
 #: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
-"A fókuszba került ablakok\n"
-"automatikusan kerüljenek előtérbe"
+"Ablakok automatikus előhozása,\n"
+"amikor fókuszt kapnak"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
-msgstr "Késleltetés az előtérbe helyezés előtt"
+msgstr "A fókuszban levő ablak előhozásának késleltetése:"
 
 #: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
-msgstr "Lassú"
+msgstr "Hosszú"
 
 #: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Fast"
-msgstr "Gyors"
+msgstr "Rövid"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
-msgstr "Előtérbe helyezés kattintásra"
+msgstr "Kattintásra előhozás"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr ""
-"Előtérbe helyezés amikor belekattint\n"
-"az alkalmazás ablakába"
+"Ablak előhozása az\n"
+"alkalmazás ablakába kattintáskor"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
@@ -208,19 +210,19 @@ msgstr "Billentyűzet és fókusz"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
-msgstr "Tapadó ablakok"
+msgstr "Ablakillesztés"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
-msgstr "Az ablakok a képernyő széléhez tapadnak"
+msgstr "Ablakok illesztése a képernyő széléhez"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
-msgstr "Az ablakok egymás széléhez tapadnak"
+msgstr "Ablakok egymáshoz való illesztése"
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
-msgstr "Távolság :"
+msgstr "Távolság:"
 
 #: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
@@ -228,66 +230,63 @@ msgstr "Kicsi"
 
 #: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
-msgstr "Széles"
+msgstr "Nagy"
 
 #: mcs-plugin/xfwm4_plugin.c:1600
 msgid "Wrap workspaces"
-msgstr "Ugrás a munkaterületek között"
+msgstr "Munkaterület-váltás"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Ugrás a munkaterületek között, amikor az\n"
-"egérmutató eléri a képernyő szélét"
+msgstr "Munkaterület-váltás, amikor a mutató a képernyő széléhez ér"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Ugrás a munkaterületek között, amikor a mozgatott\n"
-"ablak eléri a képernyő szélét"
+msgstr "Munkaterület-váltás, amikor egy ablakot a képernyőről lehúz"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
-msgstr "Képernyő szélének ellenállása :"
+msgstr "Szélek ellenállása:"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr "Ablak tartalmának mutatása"
+msgstr "Áttetsző mozgatás és átméretezés"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
-msgstr "Ablak tartalmának mutatása átméretezés közben"
+msgstr "Ablak tartalmának megjelenítése átméretezés közben"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
-msgstr "Ablak tartalmának mutatása mozgatás közben"
+msgstr "Ablak tartalmának megjelenítése mozgatás közben"
 
 #: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
-msgstr "Dupla kattintás"
+msgstr "Kettős-kattintásra elvégzendő művelet"
 
+#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Mi történjen dupla kattintásra az ablak fejlécén :"
+msgstr "A címsoron kettős-kattintásra elvégezendő művelet"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr "Speciális"
+msgstr "Haladó"
 
 #: src/client.c:442
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: Nem kezelt ablakstátusz (ablak 0x%lx)"
+msgstr "%s: Kezeletlen net_wm_state (ablak 0x%lx)"
 
-#: src/events.c:1317
+#: src/events.c:1311
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr "%s: A művelet jelenleg nem támogatott\n"
+msgstr "%s: Nem támogatott művelet (egyelőre)\n"
 
 #: src/main.c:226
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr "%s: Lapozási hiba"
+msgstr "%s: Szegmentálási hiba"
 
 #: src/main.c:396
 #, c-format
@@ -297,7 +296,7 @@ msgstr "%s: Már fut egy másik ablakkezelő"
 #: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr "%s: Hiányzó adatok vannak az alapadat fájlokban"
+msgstr "%s: Hiányzó adatok az alapértelmezett fájlokból"
 
 #: src/main.c:428
 #, c-format
@@ -306,51 +305,51 @@ msgstr "%s: Ismeretlen hiba történt"
 
 #: src/menu.c:42
 msgid "Ma_ximize"
-msgstr "Teljes _méret"
+msgstr "Ma_ximalizálás"
 
 #: src/menu.c:43
 msgid "Un_maximize"
-msgstr "Normál _méret"
+msgstr "_Eredeti méret"
 
 #: src/menu.c:44
 msgid "_Hide"
-msgstr "_Elrejtés"
+msgstr "Elre_jtés"
 
 #: src/menu.c:45
 msgid "Hide _all others"
-msgstr "Többi ablak e_lrejtése"
+msgstr "Összes _többi elrejtése"
 
 #: src/menu.c:46
 msgid "S_how"
-msgstr "Me_gjelenítés"
+msgstr "_Megjelenítés"
 
 #: src/menu.c:47
 msgid "_Shade"
-msgstr "_Ablak fejléc"
+msgstr "_Felgördítés"
 
 #: src/menu.c:48
 msgid "Un_shade"
-msgstr "Teljes _ablak"
+msgstr "_Legördítés"
 
 #: src/menu.c:49
 msgid "S_tick"
-msgstr "_Ragaszkodó ablak"
+msgstr "Megjelenés m_inden munkaterületen"
 
 #: src/menu.c:50
 msgid "Uns_tick"
-msgstr "Nem _ragaszkodó"
+msgstr "Munkaterületre _korlátozás"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr "Küldés..."
+msgstr "Áthelye_zés másik munkaterületre..."
 
 #: src/menu.c:53
 msgid "_Close"
-msgstr "_Bezár"
+msgstr "_Bezárás"
 
 #: src/menu.c:56
 msgid "Destroy"
-msgstr "Megsemmisít"
+msgstr "Megölés"
 
 #: src/menu.c:59
 msgid "_Quit"
@@ -363,48 +362,49 @@ msgstr "Újraindítás"
 #: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
-msgstr "Munkaterület %i"
+msgstr "%i. munkaterület"
 
 #: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: A GtkMenu nem tudja megfogni a mutatót\n"
+msgstr "%s: GtkMenu nem tudta elkapni a mutatót\n"
 
 #: src/settings.c:284
 #, c-format
 msgid "%s: Missing defaults file"
-msgstr "%s: hiányzó alapadat fájl"
+msgstr "%s: Alapértelmezéseket tartalmazó fájl hiányzik"
 
 #: src/settings.c:509
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Az aktív \"%s\" szín lefoglalása nem sikerült\n"
+msgstr "%s: Nem lehet lefoglalni az aktív színt: %s\n"
 
 #: src/settings.c:516
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Az aktív \"%s\" szín értelmezése nem sikerült\n"
+msgstr "%s: Nem lehet értelmezni az aktív színt: %s\n"
 
 #: src/settings.c:560
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Az inaktív \"%s\" szín lefoglalása nem sikerült\n"
+msgstr "%s: Nem lehet allokálni az inaktív színt: %s\n"
 
 #: src/settings.c:567
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Az inaktív \"%s\" szín értelmezése nem sikerült\n"
+msgstr "%s: Nem lehet értelmezni az inaktív színt: %s\n"
 
 #: src/settings.c:757
 #, c-format
 msgid "%s: Missing values in defaults file"
-msgstr "%s: Hiányzó értékek vannak az alapadat fájlokban"
+msgstr "%s: Hiányzó értékek az alapértelmezéseket tartalmazó fájlban"
 
 #: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: A munkaterületek száma nincs beállítva, %i lesz létrehozva"
+msgstr "%s: Munkaterület-számláló nincsen beállítva, rc értéke: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Váltás..."
+
