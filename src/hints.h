@@ -74,6 +74,8 @@
 #define WIN_LAYER_ONTOP 			6
 #define WIN_LAYER_DOCK  			8
 #define WIN_LAYER_ABOVE_DOCK			10
+#define WIN_LAYER_ABOVE				12
+#define WIN_LAYER_FULLSCREEN			14
 
 #define NET_WM_MOVERESIZE_SIZE_TOPLEFT  	0
 #define NET_WM_MOVERESIZE_SIZE_TOP		1
@@ -148,6 +150,8 @@ extern Atom net_wm_icon_name;
 extern Atom net_wm_moveresize;
 extern Atom net_wm_name;
 extern Atom net_wm_state;
+extern Atom net_wm_state_above;
+extern Atom net_wm_state_below;
 extern Atom net_wm_state_fullscreen;
 extern Atom net_wm_state_hidden;
 extern Atom net_wm_state_maximized_horz;

@@ -85,6 +85,8 @@ Atom net_wm_icon_name;
 Atom net_wm_moveresize;
 Atom net_wm_name;
 Atom net_wm_state;
+Atom net_wm_state_above;
+Atom net_wm_state_below;
 Atom net_wm_state_fullscreen;
 Atom net_wm_state_hidden;
 Atom net_wm_state_maximized_horz;
@@ -336,6 +338,8 @@ void initNetHints(Display * dpy)
     net_wm_icon = XInternAtom(dpy, "_NET_WM_ICON", False);
     net_wm_moveresize = XInternAtom(dpy, "_NET_WM_MOVERESIZE", False);
     net_wm_name = XInternAtom(dpy, "_NET_WM_NAME", False);
+    net_wm_state_above = XInternAtom(dpy, "_NET_WM_STATE_ABOVE", False);
+    net_wm_state_below = XInternAtom(dpy, "_NET_WM_STATE_BELOW", False);
     net_wm_state_fullscreen = XInternAtom(dpy, "_NET_WM_STATE_FULLSCREEN", False);
     net_wm_state_hidden = XInternAtom(dpy, "_NET_WM_STATE_HIDDEN", False);
     net_wm_state_maximized_horz = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", False);
@@ -414,6 +418,8 @@ void set_net_supported_hint(Display * dpy, int screen, Window check_win)
      */
     atoms[i++] = net_wm_name;
     atoms[i++] = net_wm_state;
+    atoms[i++] = net_wm_state_above;
+    atoms[i++] = net_wm_state_below;
     atoms[i++] = net_wm_state_fullscreen;
     atoms[i++] = net_wm_state_hidden;
     atoms[i++] = net_wm_state_maximized_horz;

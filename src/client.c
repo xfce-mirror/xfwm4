@@ -98,7 +98,7 @@ struct _ButtonPressData
 void clientSetNetState(Client * c)
 {
     int i;
-    Atom data[12];
+    Atom data[16];
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetNetState\n");
@@ -150,6 +150,16 @@ void clientSetNetState(Client * c)
     {
         DBG("clientSetNetState : fullscreen\n");
         data[i++] = net_wm_state_fullscreen;
+    }
+    else if(c->above)
+    {
+        DBG("clientSetNetState : above\n");
+        data[i++] = net_wm_state_above;
+    }
+    else if(c->below)
+    {
+        DBG("clientSetNetState : below\n");
+        data[i++] = net_wm_state_below;
     }
     if(c->hidden)
     {
@@ -206,10 +216,20 @@ static void clientGetNetState(Client * c)
                 c->win_state |= WIN_STATE_MAXIMIZED_VERT;
                 c->maximized = True;
             }
-            else if(atoms[i] == net_wm_state_fullscreen)
+            else if((atoms[i] == net_wm_state_fullscreen) && !(c->above) && !(c->below))
             {
                 DBG("clientGetNetState : fullscreen\n");
                 c->fullscreen = True;
+            }
+            else if((atoms[i] == net_wm_state_above) && !(c->fullscreen) && !(c->below))
+            {
+                DBG("clientGetNetState : above\n");
+                c->above = True;
+            }
+            else if((atoms[i] == net_wm_state_below) && !(c->above) && !(c->fullscreen))
+            {
+                DBG("clientGetNetState : below\n");
+                c->below = True;
             }
             else if(atoms[i] == net_wm_state_modal)
             {
@@ -375,7 +395,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if((first == net_wm_state_fullscreen) || (second == net_wm_state_fullscreen))
+    if(((first == net_wm_state_fullscreen) || (second == net_wm_state_fullscreen)) && !(c->above) && !(c->below))
     {
         if((action == NET_WM_STATE_ADD) && !(c->fullscreen))
         {
@@ -390,6 +410,40 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             c->fullscreen = ((c->fullscreen) ? False : True);
         }
         clientToggleFullscreen(c);
+    }
+
+    if(((first == net_wm_state_above) || (second == net_wm_state_above)) && !(c->fullscreen) && !(c->below))
+    {
+        if((action == NET_WM_STATE_ADD) && !(c->above))
+        {
+            c->above = True;
+        }
+        else if((action == NET_WM_STATE_REMOVE) && (c->above))
+        {
+            c->above = False;
+        }
+        else if(action == NET_WM_STATE_TOGGLE)
+        {
+            c->above = ((c->above) ? False : True);
+        }
+        clientToggleAbove(c);
+    }
+
+    if(((first == net_wm_state_below) || (second == net_wm_state_below)) && !(c->fullscreen) && !(c->above))
+    {
+        if((action == NET_WM_STATE_ADD) && !(c->below))
+        {
+            c->below = True;
+        }
+        else if((action == NET_WM_STATE_REMOVE) && (c->below))
+        {
+            c->below = False;
+        }
+        else if(action == NET_WM_STATE_TOGGLE)
+        {
+            c->below = ((c->below) ? False : True);
+        }
+        clientToggleBelow(c);
     }
 
     if((first == net_wm_state_skip_pager) || (second == net_wm_state_skip_pager))
@@ -1680,6 +1734,8 @@ void clientFrame(Window w)
 
     /* Initialize structure */
     c->focus = False;
+    c->above = False;
+    c->below = False;
     c->fullscreen = False;
     c->has_border = True;
     c->has_menu = True;
@@ -2329,13 +2385,13 @@ void clientToggleFullscreen(Client * c)
         c->fullscreen_old_y = c->y;
         c->fullscreen_old_width = c->width;
         c->fullscreen_old_height = c->height;
-        c->fullscreen_old_layer = c->win_layer;
+        c->initial_layer = c->win_layer;
 
         wc.x = 0;
         wc.y = 0;
         wc.width = XDisplayWidth(dpy, screen);
         wc.height = XDisplayHeight(dpy, screen);
-        layer = WIN_LAYER_ABOVE_DOCK;
+        layer = WIN_LAYER_FULLSCREEN;
     }
     else
     {
@@ -2343,11 +2399,51 @@ void clientToggleFullscreen(Client * c)
         wc.y = c->fullscreen_old_y;
         wc.width = c->fullscreen_old_width;
         wc.height = c->fullscreen_old_height;
-        layer = c->fullscreen_old_layer;
+        layer = c->initial_layer;
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
     clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+}
+
+void clientToggleAbove(Client * c)
+{
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientToggleAbove\n");
+    DBG("toggle above client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(c->above)
+    {
+        layer = WIN_LAYER_ABOVE;
+    }
+    else
+    {
+        layer = c->initial_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
+}
+
+void clientToggleBelow(Client * c)
+{
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientToggleBelow\n");
+    DBG("toggle below client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(c->below)
+    {
+        layer = WIN_LAYER_BELOW;
+    }
+    else
+    {
+        layer = c->initial_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
 }
 
 void clientUpdateFocus(Client * c)
