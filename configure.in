@@ -73,9 +73,9 @@ fi
 AC_SUBST(GDK_PIXBUF_CSOURCE)
 
 AC_OUTPUT([ 
-po/Makefile.in 
 xfwm4.spec
 Makefile
+po/Makefile.in 
 src/Makefile
 mcs-plugin/Makefile
 common/Makefile
