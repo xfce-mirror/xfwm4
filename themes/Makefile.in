@@ -63,7 +63,7 @@ PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
 
-SUBDIRS =  agua coldsteel crux cruxish eazel-blue gtk kde linea mofit next oroborus platinum redmond redmondxp slick slimline trench xfce
+SUBDIRS =  agua coldsteel crux cruxish eazel-blue gtk kde kindaker linea mofit next oroborus platinum redmond redmondxp slick slimline trench xfce
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h

@@ -124,7 +124,7 @@ unsigned long getWMState(Display * dpy, Window w)
 
     DBG("entering getWmState\n");
 
-    if((XGetWindowProperty(dpy, w, wm_state, 0L, 2L, False, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
+    if((XGetWindowProperty(dpy, w, wm_state, 0, 2L, False, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
         state = *data;
         XFree(data);
@@ -428,7 +428,7 @@ int get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_atoms
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    if((XGetWindowProperty(dpy, w, a, 0L, 1L, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (unsigned char **)&atoms) != Success) || (type == None))
+    if((XGetWindowProperty(dpy, w, a, 0, G_MAXLONG, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (unsigned char **)&atoms) != Success) || (type == None))
     {
         return (False);
     }
@@ -461,7 +461,7 @@ int get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **cardi
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
-    if((XGetWindowProperty(dpy, w, xatom, 0, 32, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
+    if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
     {
         return False;
     }
@@ -548,7 +548,7 @@ int get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
     DBG("entering get_utf8_string\n");
 
     *str_p = NULL;
-    if((XGetWindowProperty(dpy, w, xatom, 0, 32, False, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
+    if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
     {
         DBG("no utf8_string value provided\n");
         return False;

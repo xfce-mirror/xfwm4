@@ -6,6 +6,7 @@ cruxish \
 eazel-blue \
 gtk \
 kde \
+kindaker \
 linea \
 mofit \
 next \

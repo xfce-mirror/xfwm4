@@ -46,6 +46,7 @@ themes/cruxish/Makefile
 themes/eazel-blue/Makefile
 themes/gtk/Makefile
 themes/kde/Makefile
+themes/kindaker/Makefile
 themes/linea/Makefile
 themes/mofit/Makefile
 themes/next/Makefile

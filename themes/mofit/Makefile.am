@@ -1,5 +1,6 @@
 themedir = $(pkgdatadir)/themes/mofit
-theme_DATA = bottom-active.xpm \
+theme_DATA = README \
+	bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \
 	bottom-left-inactive.xpm \

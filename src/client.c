@@ -1404,7 +1404,6 @@ void clientFrame(Window w)
         return;
     }
 
-    XSync (dpy, 0);
     c->window = w;
     getWindowName(dpy, c->window, &c->name);
     DBG("name \"%s\"\n", c->name);
