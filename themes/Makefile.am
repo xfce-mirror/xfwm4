@@ -27,6 +27,7 @@ kde \
 kindaker \
 linea \
 metabox \
+microdeck \
 microgui \
 mofit \
 next \
