@@ -558,7 +558,7 @@ static void loadTheme(Settings rc[])
     params.title_vertical_offset_inactive = TOINT(getValue("title_vertical_offset_inactive", rc));
     params.title_horizontal_offset = TOINT(getValue("title_horizontal_offset", rc));
 
-    params.box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
+    params.box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, 2, TRUE);
 
     g_free(theme);
 }

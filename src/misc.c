@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <glib.h>
 
 #include "main.h"
 #include "client.h"
@@ -54,7 +55,7 @@ Window getMouseWindow(Window w)
     return w2;
 }
 
-GC createGC(Colormap cmap, char *col, int func, XFontStruct * font, int inc_sw)
+GC createGC(Colormap cmap, char *col, int func, XFontStruct * font, int line_width, gboolean inc_sw)
 {
     XGCValues gv;
     XColor xc1, xc2;
@@ -77,6 +78,11 @@ GC createGC(Colormap cmap, char *col, int func, XFontStruct * font, int inc_sw)
     {
         gv.subwindow_mode = IncludeInferiors;
         mask = mask | GCSubwindowMode;
+    }
+    if(line_width > -1)
+    {
+        gv.line_width = line_width;
+        mask = mask | GCLineWidth;
     }
     gc = XCreateGC(dpy, XDefaultRootWindow(dpy), mask, &gv);
     return gc;

@@ -30,7 +30,7 @@
 
 void getMouseXY(Window, int *, int *);
 Window getMouseWindow(Window);
-GC createGC(Colormap, char *, int, XFontStruct *, int);
+GC createGC(Colormap, char *, int, XFontStruct *, int, gboolean);
 void sendClientMessage(Window, Atom, long, int);
 Window setTmpEventWin(long);
 void removeTmpEventWin(Window);
