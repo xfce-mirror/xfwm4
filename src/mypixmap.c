@@ -56,7 +56,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
     g_free (filename);
     if (error)
     {
-	g_warning ("%s\n", error->message);
+	g_warning ("%s", error->message);
 	g_error_free (error);
 	return FALSE;
     }
@@ -68,7 +68,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
     destw = gdk_pixmap_foreign_new (pm->pixmap);
     if (!destw)
     {
-	g_warning ("Cannot get pixmap\n");
+	DBG ("Cannot get pixmap");
 	g_object_unref (alpha);
         return FALSE;
     }
@@ -118,7 +118,7 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     if (XpmReadFileToPixmap (dpy, XDefaultRootWindow (dpy), filename,
             &pm->pixmap, &pm->mask, &attr))
     {
-        g_print ("%s not found\n", filename);
+        TRACE ("%s not found", filename);
         g_free (filename);
         return FALSE;
     }
@@ -126,7 +126,8 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     pm->height = attr.height;
     XpmFreeAttributes (&attr);
     g_free (filename);
-    /* Apply the alpha channel in available */
+
+    /* Apply the alpha channel if available */
     myPixmapCompose (pm, dir, file);
     
     return TRUE;
