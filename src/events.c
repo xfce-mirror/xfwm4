@@ -1698,7 +1698,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
             }
         }
-        else if (ev->atom == display_info->atoms[NET_WM_OPACITY])
+        else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_opacity notify", c->name, c->window);
             if (!getOpacity (display_info, c->window, &c->opacity))

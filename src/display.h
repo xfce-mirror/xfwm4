@@ -95,7 +95,7 @@
 #define NET_WM_ICON_NAME                                        35
 #define NET_WM_MOVERESIZE                                       36
 #define NET_WM_NAME                                             37
-#define NET_WM_OPACITY                                          38
+#define NET_WM_WINDOW_OPACITY                                   38
 #define NET_WM_STATE                                            39
 #define NET_WM_STATE_ABOVE                                      40
 #define NET_WM_STATE_BELOW                                      41

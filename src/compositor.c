@@ -1723,7 +1723,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     }
 
     /* check if Trans property was changed */
-    if (ev->atom == display_info->atoms[NET_WM_OPACITY])
+    if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
     {
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
         TRACE ("Opacity property changed for id 0x%lx", ev->window);

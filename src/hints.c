@@ -977,7 +977,7 @@ getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (opacity != NULL, FALSE);
 
-    result = XGetWindowProperty(display_info->dpy, window, display_info->atoms[NET_WM_OPACITY], 
+    result = XGetWindowProperty(display_info->dpy, window, display_info->atoms[NET_WM_WINDOW_OPACITY], 
                     0L, 1L, False, XA_CARDINAL, &actual, &format, 
                     &n, &left, &data);
 
