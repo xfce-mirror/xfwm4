@@ -2815,6 +2815,12 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size->flags |= PMaxSize;
     }
     
+    if (!(c->size->flags & PBaseSize))
+    {
+	c->size->base_width = 0;
+	c->size->base_height = 0;
+    }
+
     if (!(c->size->flags & PMinSize))
     {
         if ((c->size->flags & PBaseSize))
