@@ -256,7 +256,7 @@ maintainers, etc. Commented out by default.
 	<itemizedlist>
 	<listitem><application>xftaskbar4</application></listitem>
 	<listitem>the <application>xfce4-iconbox</application></listitem>
-	<listitem>the list of windows, accessible with a right-click on the
+	<listitem>the list of windows, accessible with a middle-click on the
 	  desktop background. This list shows all opened windows, classified
 	  by workspaces. Windows that are currently hidden are marked between
 	  [  ].</listitem>
@@ -443,7 +443,7 @@ maintainers, etc. Commented out by default.
 	<para>The list on the left side of the dialog shows all avaible window
 	  decorations. The xfwm 4 module offers the choice between 10
 	  different themes, but there are more than 50 supplementary themes
-	  avaible in xfwm4-theme extra package. You can preview all of them on
+	  avaible in xfwm4-themes extra package. You can preview all of them on
 	  the official <ulink url="http://www.xfce.org" type="html">XFce
 	    Website</ulink>
 	</para>
