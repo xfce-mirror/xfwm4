@@ -576,7 +576,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if(((first == net_wm_state_above) || (second == net_wm_state_above)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
     {
-	if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
             CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
         }
@@ -1399,6 +1399,8 @@ static inline void clientComputeStackList(Client * c, Client * sibling, int mask
 static inline void clientConstraintPos(Client * c, gboolean show_full)
 {
     int cx, cy, left, right, top, bottom;
+    int disp_x, disp_y, disp_max_x, disp_max_y;
+    int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
     gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
     
     g_return_if_fail(c != NULL);
@@ -1410,9 +1412,16 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
         DBG("ignoring constrained for client \"%s\" (%#lx)\n", c->name, c->window);
         return;
     }
-
-    cx = frameX(c) + (frameWidth(c) >> 1);
-    cy = frameY(c) + (frameHeight(c) >> 1);
+    /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
+    frame_x      = frameX(c);
+    frame_y      = frameY(c);
+    frame_height = frameHeight(c);
+    frame_width  = frameWidth(c);
+    frame_top    = frameTop(c);
+    frame_left   = frameLeft(c);
+    
+    cx = frame_x + (frame_width >> 1);
+    cy = frame_y + (frame_height >> 1);
 
     leftMostHead   = isLeftMostHead(dpy, screen, cx, cy);
     rightMostHead  = isRightMostHead(dpy, screen, cx, cy);
@@ -1424,43 +1433,55 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     top    = (topMostHead ? (int)margins[MARGIN_TOP] : 0);
     bottom = (bottomMostHead ? (int)margins[MARGIN_BOTTOM] : 0);
 
+    disp_x     = MyDisplayX(cx, cy);
+    disp_y     = MyDisplayY(cx, cy);
+    disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
+    disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
+    
+    frame_x      = frameX(c);
+    frame_y      = frameY(c);
+    frame_height = frameHeight(c);
+    frame_width  = frameWidth(c);
+    frame_top    = frameTop(c);
+    frame_left   = frameLeft(c);
+    
     if (show_full)
     {
-	if(rightMostHead && (frameX(c) < MyDisplayX(cx, cy) + left))
-	{
-            c->x = MyDisplayX(cx, cy) + left + frameLeft(c);
-	}
-	if(leftMostHead && (frameX(c) + frameWidth(c) > MyDisplayMaxX(dpy, screen, cx, cy) - right))
-	{
-            c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - frameWidth(c) + frameLeft(c);
-	}
-	if(bottomMostHead && (frameY(c) + frameHeight(c) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-	{
-            c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
-	}
-	if(topMostHead && (frameY(c) < MyDisplayY(cx, cy) + top))
-	{
-            c->y = MyDisplayY(cx, cy) + top + frameTop(c);
-	}
+        if(rightMostHead && (frame_x + frame_width > disp_max_x - right))
+        {
+            c->x = disp_max_x - right - frame_width + frame_left;
+        }
+        if(leftMostHead && (frame_x < disp_x + left))
+        {
+            c->x = disp_x + left + frame_left;
+        }
+        if(bottomMostHead && (frame_y + frame_height > disp_max_y - bottom))
+        {
+            c->y = disp_max_y - bottom - frame_height + frame_top;
+        }
+        if(topMostHead && (frame_y < disp_y + top))
+        {
+            c->y = disp_y + top + frame_top;
+        }
     }
     else
     {
-	if(rightMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->x + CLIENT_MIN_VISIBLE > MyDisplayMaxX(dpy, screen, cx, cy) - right))
-	{
-	    c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
-	}
-	if(leftMostHead && ((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left))
-	{
-	    c->x = MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left - c->width;
-	}
-	if(bottomMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->y + CLIENT_MIN_VISIBLE > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-	{
-	    c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
-	}
-	if(topMostHead && (c->y + c->height < MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top))
-	{
-	    c->y = MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top - c->height;
-	}
+        if(rightMostHead && (frame_x + CLIENT_MIN_VISIBLE > disp_max_x - right))
+        {
+            c->x = disp_max_x - right - CLIENT_MIN_VISIBLE + frame_left;
+        }
+        if(leftMostHead && (frame_x + frame_width < disp_x + CLIENT_MIN_VISIBLE + left))
+        {
+            c->x = disp_x + CLIENT_MIN_VISIBLE + left - frame_width + frame_left;
+        }
+        if(bottomMostHead && (frame_y + CLIENT_MIN_VISIBLE > disp_max_y - bottom))
+        {
+            c->y = disp_max_y - bottom - CLIENT_MIN_VISIBLE + frame_top;
+        }
+        if(topMostHead && (frame_y + frame_height < disp_y + CLIENT_MIN_VISIBLE + top))
+        {
+            c->y = disp_y + CLIENT_MIN_VISIBLE + top - frame_height + frame_top;
+        }
     }
 }
 
@@ -1531,6 +1552,7 @@ static void clientInitPosition(Client * c)
     Client *c2;
     int xmax, ymax, best_x, best_y, i, msx, msy;
     int left, right, top, bottom;
+    int frame_x, frame_y, frame_height, frame_width;
     unsigned long best_overlaps = 0;
     gboolean first = TRUE;
 
@@ -1560,13 +1582,18 @@ static void clientInitPosition(Client * c)
     }
 
     getMouseXY(root, &msx, &msy);
-    left = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
-    right = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
-    top = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+    left   = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+    right  = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+    top    = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
     bottom = (isBottomMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
 
-    xmax = MyDisplayMaxX(dpy, screen, msx, msy) - frameWidth(c) - right;
-    ymax = MyDisplayMaxY(dpy, screen, msx, msy) - frameHeight(c) - bottom;
+    frame_x      = frameX(c);
+    frame_y      = frameY(c);
+    frame_height = frameHeight(c);
+    frame_width  = frameWidth(c);
+
+    xmax   = MyDisplayMaxX(dpy, screen, msx, msy) - frame_width - right;
+    ymax   = MyDisplayMaxY(dpy, screen, msx, msy) - frame_height - bottom;
     best_x = MyDisplayX(msx, msy) + frameLeft(c) + left;
     best_y = MyDisplayY(msx, msy) + frameTop(c) + top;
 
@@ -1582,7 +1609,7 @@ static void clientInitPosition(Client * c)
                 {
                     c->x = test_x;
                     c->y = test_y;
-                    count_overlaps += overlap(frameX(c), frameY(c), frameX(c) + frameWidth(c), frameY(c) + frameHeight(c), frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
+                    count_overlaps += overlap(frame_x, frame_y, frame_x + frame_width, frame_y + frame_height, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
                 }
             }
             DBG("overlaps so far is %u\n", count_overlaps);
@@ -2793,10 +2820,10 @@ void clientToggleMaximized(Client * c, int mode)
         cx = frameX(c) + (frameWidth(c) >> 1);
         cy = frameY(c) + (frameHeight(c) >> 1);
 
-	left = (isLeftMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
-	right = (isRightMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
-	top = (isTopMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
-	bottom = (isBottomMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
+        left = (isLeftMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+        right = (isRightMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+        top = (isTopMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+        bottom = (isBottomMostHead(dpy, screen, cx, cy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
 
         if(mode != WIN_STATE_MAXIMIZED_HORIZ)
         {
@@ -3021,6 +3048,9 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     else if(xevent->type == MotionNotify)
     {
         int cx, cy, left, right, top, bottom;
+        int disp_x, disp_y, disp_max_x, disp_max_y;
+        int frame_x, frame_y, frame_height, frame_width;
+	int frame_top, frame_left, frame_right, frame_bottom;
 
         while(XCheckTypedEvent(dpy, MotionNotify, xevent));
 
@@ -3059,38 +3089,52 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
-        cx = frameX(c) + (frameWidth(c) >> 1);
-        cy = frameY(c) + (frameHeight(c) >> 1);
+	frame_x      = frameX(c);
+	frame_y      = frameY(c);
+	frame_height = frameHeight(c);
+	frame_width  = frameWidth(c);
+	frame_top    = frameTop(c);
+	frame_left   = frameLeft(c);
+	frame_right  = frameRight(c);
+	frame_bottom = frameBottom(c);
+
+        cx = frame_x + (frame_width >> 1);
+        cy = frame_y + (frame_height >> 1);
 
         left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
         right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
         top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
         bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
+        disp_x = MyDisplayX(cx, cy);
+        disp_y = MyDisplayY(cx, cy);
+        disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
+        disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
+        
         if(params.snap_to_border)
         {
-            if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < params.snap_width)
+            if(abs(frame_x - disp_max_x + frame_width + right) < params.snap_width)
             {
-                c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
+                c->x = disp_max_x - frame_right - c->width - right;
             }
-            if(abs(frameX(c) - MyDisplayX(cx, cy)) < params.snap_width + left)
+            if(abs(frame_x - disp_x) < params.snap_width + left)
             {
-                c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
+                c->x = disp_x + frame_left + left;
             }
-            if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < params.snap_width)
+            if(abs(frame_y - disp_max_y + frame_height + bottom) < params.snap_width)
             {
-                c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
+                c->y = disp_max_y - frame_height + frame_top - bottom;
             }
-            else if(abs(frameY(c) - MyDisplayY(cx, cy)) < params.snap_width + top)
+            else if((frame_y > disp_y - frame_top) && (frame_y < disp_y + top + params.snap_width))
             {
-                c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
+                c->y = disp_y + frame_top + top;
             }
         }
         else
         {
-            if(abs(frameY(c) - MyDisplayY(cx, cy)) < top)
+            if((frame_y - frame_top > 0) && (frame_y < top))
             {
-                c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
+                c->y = frame_top + top;
             }
         }
 
@@ -3258,17 +3302,34 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     int prev_y = 0, prev_x = 0;
     int prev_height = 0, prev_width = 0;
     int cx, cy, left, right, top, bottom;
+    int disp_x, disp_y, disp_max_x, disp_max_y;
+    int frame_x, frame_y, frame_height, frame_width;
+    int frame_top, frame_left, frame_right, frame_bottom;
 
     DBG("entering clientResize_event_filter\n");
 
-    cx = frameX(c) + (frameWidth(c) >> 1);
-    cy = frameY(c) + (frameHeight(c) >> 1);
+    frame_x      = frameX(c);
+    frame_y      = frameY(c);
+    frame_height = frameHeight(c);
+    frame_width  = frameWidth(c);
+    frame_top    = frameTop(c);
+    frame_left   = frameLeft(c);
+    frame_right  = frameRight(c);
+    frame_bottom = frameBottom(c);
+
+    cx = frame_x + (frame_width >> 1);
+    cy = frame_y + (frame_height >> 1);
 
     left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
     right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
     top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
     bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
+    disp_x = MyDisplayX(cx, cy);
+    disp_y = MyDisplayY(cx, cy);
+    disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
+    disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
+        
     if(xevent->type == KeyPress)
     {
         if(!passdata->grab && params.box_resize)
@@ -3301,11 +3362,11 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             c->width = c->width + (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
         }
-        if(c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+        if(c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
         {
             c->width = prev_width;
         }
-        if(c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+        if(c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
         {
             c->height = prev_height;
         }
@@ -3353,21 +3414,21 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
 
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
-            c->width = (c->x + c->width) - xevent->xmotion.x_root + passdata->mx - frameLeft(c);
+            c->width = (c->x + c->width) - xevent->xmotion.x_root + passdata->mx - frame_left;
         }
         if((passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
         {
-            c->width = (xevent->xmotion.x_root - c->x) + passdata->mx - frameRight(c);
+            c->width = (xevent->xmotion.x_root - c->x) + passdata->mx - frame_right;
         }
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_TOP_RIGHT))
             {
-                c->height = (c->y + c->height) - xevent->xmotion.y_root + passdata->my - frameTop(c);
+                c->height = (c->y + c->height) - xevent->xmotion.y_root + passdata->my - frame_top;
             }
             if((passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_BOTTOM))
             {
-                c->height = (xevent->xmotion.y_root - c->y) + passdata->my - frameBottom(c);
+                c->height = (xevent->xmotion.y_root - c->y) + passdata->my - frame_bottom;
             }
         }
         clientSetWidth(c, c->width);
@@ -3375,19 +3436,16 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
             c->x = c->x - (c->width - passdata->oldw);
+            frame_x = frameX(c);
         }
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && (passdata->corner == CORNER_TOP_LEFT || passdata->corner == CORNER_TOP_RIGHT))
         {
             c->y = c->y - (c->height - passdata->oldh);
+            frame_y = frameY(c);
         }
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_TOP_RIGHT))
         {
-            if((frameY(c) < MyDisplayY(cx, cy) + top) || (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-            {
-                c->y = prev_y;
-                c->height = prev_height;
-            }
-            if(c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE)
+            if((frame_y < disp_y + top) || (c->y > disp_max_y - bottom - CLIENT_MIN_VISIBLE))
             {
                 c->y = prev_y;
                 c->height = prev_height;
@@ -3395,14 +3453,14 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         else if((passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_BOTTOM))
         {
-            if(c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+            if(c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
             {
                 c->height = prev_height;
             }
         }
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
-            if(c->x > MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE)
+            if(c->x > disp_max_x - right - CLIENT_MIN_VISIBLE)
             {
                 c->x = prev_x;
                 c->width = prev_width;
@@ -3410,7 +3468,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         else if((passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
         {
-            if(c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+            if(c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
             {
                 c->width = prev_width;
             }

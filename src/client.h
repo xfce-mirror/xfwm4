@@ -77,7 +77,7 @@
 #define MARGIN_TOP			2
 #define MARGIN_BOTTOM			3
 
-#define CLIENT_MIN_VISIBLE              5
+#define CLIENT_MIN_VISIBLE              10 /* pixels */
 
 #define CLIENT_FLAG_FOCUS	       (1L<<0)
 #define CLIENT_FLAG_ABOVE	       (1L<<1)
