@@ -1,3 +1,66 @@
+2005-03-03 23:41  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, depcomp, install-sh, missing, defaults/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
+	  mcs-plugin/Makefile.in, po/xfwm4.pot, src/Makefile.in,
+	  src/client.c, themes/Makefile.in, themes/bbs/Makefile.in,
+	  themes/curve/Makefile.in, themes/default/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/exocet/Makefile.in,
+	  themes/meenee/Makefile.in, themes/microcurve/Makefile.in,
+	  themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	  themes/microdeck3/Makefile.in, themes/tgc/Makefile.in,
+	  themes/tgc-large/Makefile.in: Commit a few stuff I had on my
+	  local drive for a while...
+
+2005-03-03 23:06  olivier
+
+	* src/client.c: Be more tolerant with apps moving their windows.
+
+2004-09-10 23:45  pollux
+
+	* configure, configure.ac, ltmain.sh, po/he.gmo, po/he.po: add HE
+	  translations from Yuval Tanny <tanai@int.gov.il>
+
+2004-08-24 12:27  olivier
+
+	* src/client.c: Revert removal of HIDDEN state
+
+2004-08-24 07:58  olivier
+
+	* src/: client.c, client.h, events.c, session.c, workspaces.c: Try
+	  to stick to the standard.
+
+2004-08-23 23:28  olivier
+
+	* configure, configure.ac, src/client.c, src/events.c: Bug fixes
+	  backported from CVS HEAD and set version to 4.0.7
+
+2004-08-21 10:08  olivier
+
+	* src/: client.c, hints.c, hints.h: Backport from HEAD: Fix
+	  splashscreen management.
+
+2004-07-15 07:59  jasper
+
+	* doc/: C/xfwm4.html, C/xfwm4.xml, fr/xfwm4.html, fr/xfwm4.xml: get
+	  rid of moongroup references
+
+2004-07-12 20:58  pollux
+
+	* po/: ca.gmo, ca.po: little correction in catalan translations
+	  from Xan <DXpublica@telefonica.net>
+
+2004-07-11 21:50  olivier
+
+	* mcs-plugin/xfwm4_plugin.c: Apply Aurelien Foret's patch for
+	  XFCE4HOME env var not being taken into account.
+
+2004-07-09 11:32  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-07-09 09:53  olivier
 
 	* ChangeLog: Update ChangeLogs for 4.0.6
@@ -105,7 +168,7 @@
 
 	* src/client.c: Backport map/unmap fixes
 
-2004-06-21 22:43  olivier
+2004-06-21 22:42  olivier
 
 	* src/client.c: Fix focus transition problem when unmapping last
 	  visible regular window, as reported by Bernhard Walle
@@ -149,7 +212,7 @@
 
 	* src/main.c: Fix typo as spotted by Eduard
 
-2004-05-12 22:08  olivier
+2004-05-12 22:06  olivier
 
 	* src/: client.c, main.c: Change revert to RevertToPointerRoot in
 	  XSetInputFocus()
@@ -198,7 +261,7 @@
 	* src/client.c: Fix focus transition from fullscreen as reported by
 	  Jean-Francois Wauthy <pollux@xfce.org>
 
-2004-04-14 08:18  olivier
+2004-04-14 08:16  olivier
 
 	* po/: zh_TW.gmo, zh_TW.po: zh_TW po update by Ambrose Li
 	  <a.c.li@ieee.org>
@@ -211,7 +274,7 @@
 
 	* src/workspaces.c: Prepare 4.0.5
 
-2004-04-08 21:47  olivier
+2004-04-08 21:46  olivier
 
 	* src/workspaces.c: Grab the pointer instead of flushing all
 	  EnterEvent on workspace switch
@@ -302,7 +365,7 @@
 
 	* src/client.c: Focus transition bug fix.
 
-2004-03-17 23:47  olivier
+2004-03-17 23:45  olivier
 
 	* src/keyboard.c: Fix key w/out modifier requiring "+"
 
@@ -324,12 +387,12 @@
 	  <ale@FreeBSD.org> Arabic from Saleh Hathal
 	  <hathalsal@hotmail.com>
 
-2004-03-14 22:25  olivier
+2004-03-14 22:23  olivier
 
 	* src/: client.c, events.c: Improve focus transition Fix a couple
 	  of compilation warnings
 
-2004-03-12 23:18  olivier
+2004-03-12 23:17  olivier
 
 	* src/events.c: Treat focus change events while checking for dbl
 	  click.
@@ -341,7 +404,7 @@
 	  be. I know that the dbl click detection *will* introduce some
 	  lags, but that's the proper way.
 
-2004-03-07 10:09  olivier
+2004-03-07 10:06  olivier
 
 	* src/client.c: Fix a bug reported by danny last night regarding
 	  default placement of non-transient dialogs
@@ -406,7 +469,7 @@
 	* src/client.c: Experimental fix for windows not being withdrawn
 	  when unmap occurs before fist map.
 
-2004-02-09 07:51  olivier
+2004-02-09 07:50  olivier
 
 	* src/client.c: Make sure we grab buttons when passing focus
 
@@ -481,7 +544,7 @@
 	* src/hints.c: Sync with HEAD: Fix a return w/out value as rightly
 	  spotted by Benny.
 
-2004-01-13 21:12  olivier
+2004-01-13 21:11  olivier
 
 	* themes/default/: close-active.xpm, close-inactive.xpm,
 	  close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
@@ -803,7 +866,7 @@
 	  title-5-inactive.xpm, top-left-active.xpm, top-left-inactive.xpm,
 	  top-right-active.xpm, top-right-inactive.xpm: Themes
 
-2003-11-19 23:29  olivier
+2003-11-19 23:27  olivier
 
 	* themes/default/: close-active.xpm, close-inactive.xpm,
 	  hide-active.xpm, hide-inactive.xpm, maximize-active.xpm,
