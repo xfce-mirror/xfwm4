@@ -1,6 +1,6 @@
 /* XPM */
 static char * title_2_inactive_xpm[] = {
-"6 21 10 1",
+"6 20 10 1",
 " 	c None",
 ".	c #000000",
 "+	c #FFFFFF s inactive_hilight_2",
@@ -30,5 +30,4 @@ static char * title_2_inactive_xpm[] = {
 "@@@@@#",
 "@@@@@#",
 "@@@@@#",
-"@@@@@@",
 "@@@@@@"};
