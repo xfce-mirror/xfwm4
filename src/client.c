@@ -3329,7 +3329,6 @@ clientFrameAll ()
     Client *new_focus;
     Window shield, w1, w2, *wins = NULL;
     XWindowAttributes attr;
-    XEvent an_event;
 
     TRACE ("entering clientFrameAll");
 
