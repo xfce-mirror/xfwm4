@@ -4849,6 +4849,12 @@ clientSetFocus (Client * c, unsigned short flags)
     if ((c) && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
+        if ((c == client_focus) && !(flags & FOCUS_FORCE))
+        {
+            TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
+                c->name, c->window);
+            return;
+        }        
         if (flags & FOCUS_SORT)
         {
             clientSortRing(c);
@@ -4861,10 +4867,8 @@ clientSetFocus (Client * c, unsigned short flags)
         if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
         {
             XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-            frameDraw (c, FALSE, FALSE);
             XFlush (dpy);
         }
-        
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             sendClientMessage (c->window, wm_protocols, wm_takefocus, CurrentTime);
