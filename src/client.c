@@ -3243,7 +3243,7 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
                 {
                     clientHide(*c2, False);
                 }
-                *c2 = clientGetNext(*c2, INCLUDE_HIDDEN);
+                *c2 = clientGetNext(*c2, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
                 if(*c2)
                 {
                     clientShow(*c2, False);
@@ -3308,7 +3308,7 @@ void clientCycle(Client * c)
         return;
     }
 
-    c2 = clientGetNext(c, INCLUDE_HIDDEN);
+    c2 = clientGetNext(c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
     if(c2)
     {
         clientShow(c2, False);
