@@ -328,10 +328,7 @@ static int getButtonFromLetter(char chr, Client * c)
             }
             break;
         case 'S':
-            if(c->has_menu)
-            {
-                b = SHADE_BUTTON;
-            }
+            b = SHADE_BUTTON;
             break;
         case 'T':
             if(c->has_menu)
@@ -381,10 +378,7 @@ static char getLetterFromButton(int i, Client * c)
             }
             break;
         case SHADE_BUTTON:
-            if(c->has_menu)
-            {
-                chr = 'S';
-            }
+            chr = 'S';
             break;
         case STICK_BUTTON:
             if(c->has_menu)

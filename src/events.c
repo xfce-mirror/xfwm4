@@ -1093,18 +1093,10 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         if(c->win_state & WIN_STATE_SHADED)
         {
             ops |= MENU_OP_UNSHADE;
-            if(!(c->has_menu))
-            {
-                insensitive |= MENU_OP_UNSHADE;
-            }
         }
         else
         {
             ops |= MENU_OP_SHADE;
-            if(!(c->has_menu))
-            {
-                insensitive |= MENU_OP_SHADE;
-            }
         }
 
         if(c->sticky)
