@@ -1,10 +1,10 @@
 /* XPM */
 static char * right_inactive_xpm[] = {
 "6 128 4 1",
-" 	c None",
-".	c #D3D3D3",
-"+	c #000000",
-"@	c #D7D7CF",
+"       c None",
+".      c #D3D3D3",
+"+      c #000000",
+"@      c #D7D7D7",
 "..+++@",
 "..+++@",
 "..+++@",
