@@ -845,12 +845,27 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/shaded event\n", c->name, c->window);
+	    if (ev->data.l[1] == WIN_STATE_SHADED)
+	    {
+                clientShade(c);
+	    }
+	    else
+	    {
+                clientUnshade(c);
+	    }
             clientToggleShaded(c);
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/stick event\n", c->name, c->window);
-            clientToggleSticky(c);
+	    if (ev->data.l[1] == WIN_STATE_STICKY)
+	    {
+                clientStick(c);
+	    }
+	    else
+	    {
+                clientUnstick(c);
+	    }
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {

@@ -2398,21 +2398,27 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     }
 }
 
-void clientToggleShaded(Client * c)
+void clientShade(Client * c)
 {
     XWindowChanges wc;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleShaded\n");
-    DBG("shading/unshading client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("shading client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN)))
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         DBG("cowardly refusing to shade \"%s\" (%#lx) because it has no border\n", c->name, c->window);
         return;
     }
-    c->win_state = c->win_state ^ WIN_STATE_SHADED;
-    CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_SHADED);
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+    {
+        DBG("\"%s\" (%#lx) is already shaded\n", c->name, c->window);
+        return;
+    }
+
+    c->win_state |= WIN_STATE_SHADED;
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_SHADED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     wc.width = c->width;
     wc.height = c->height;
@@ -2420,11 +2426,62 @@ void clientToggleShaded(Client * c)
     clientConfigure(c, &wc, CWWidth | CWHeight);
 }
 
+void clientUnshade(Client * c)
+{
+    XWindowChanges wc;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientToggleShaded\n");
+    DBG("shading/unshading client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+    {
+        DBG("\"%s\" (%#lx) is not shaded\n", c->name, c->window);
+        return;
+    }
+    c->win_state &= ~WIN_STATE_SHADED;
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_SHADED);
+    setGnomeHint(dpy, c->window, win_state, c->win_state);
+    wc.width = c->width;
+    wc.height = c->height;
+    clientSetNetState(c);
+    clientConfigure(c, &wc, CWWidth | CWHeight);
+}
+
+void clientToggleShaded(Client * c)
+{
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+    {
+        clientUnshade(c);
+    }
+    else
+    {
+        clientShade(c);
+    }
+}
+
 void clientStick(Client * c)
 {
+    int i;
+    Client *c2;
+
     g_return_if_fail(c != NULL);
     DBG("entering clientStick\n");
     DBG("sticking client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+    {
+        DBG("\"%s\" (%#lx) is already sticky\n", c->name, c->window);
+        return;
+    }
+
+    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    {
+        if((c2->transient_for == c->window) && (c2 != c) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+        {
+            clientStick(c2);
+        }
+    }
 
     c->win_state |= WIN_STATE_STICKY;
     CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
@@ -2435,9 +2492,26 @@ void clientStick(Client * c)
 
 void clientUnstick(Client * c)
 {
+    int i;
+    Client *c2;
+
     g_return_if_fail(c != NULL);
     DBG("entering clientUnstick\n");
     DBG("unsticking client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+    {
+        DBG("\"%s\" (%#lx) is not sticky\n", c->name, c->window);
+        return;
+    }
+
+    for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+    {
+        if((c2->transient_for == c->window) && (c2 != c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+        {
+            clientUnstick(c2);
+        }
+    }
 
     c->win_state &= ~WIN_STATE_STICKY;
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
