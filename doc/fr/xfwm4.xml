@@ -695,101 +695,42 @@ maintainers, etc. Commented out by default.
 
   <!-- extra space -->
   <para>&nbsp;</para>
-  
-<sect1 id="workspaces">
 
-  <title>Workspaces and Margins</title>
+<sect1 id="workspace-margins">
+  <title>Paramétrer les marges de l'espace de travail</title>
 
-  <para>&app; gère également les espaces de travail. Il y a une fenêtre de dialogue 
-  dédiée au choix de leurs proriétés. Vous pouvez la lancer en choisissant 
-  <emphasis>Espaces virtuels et marges</emphasis> dans le <ulink
-      url="xfce-mcs-manager.html#manager-dialog" type="http">gestionnaire de paramètres</ulink>. 
-   La fenêtre de dialogue contient deux onglets depuis lesquel vous pouvez modifier 
-   les paramètres des espaces de travail virtuels et les marges du bureau.</para>
+  <figure id="workspace_margins-fig">
+    <title>Les marges de l'espace de travail</title>
 
-  <sect2>
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/workspace_margins.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>Marges de l'espace de travail</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
 
-    <title>Workspaces</title>
+  <para>Pour obtenir le menu Marges de l'espace de travail, cliquer sur le 
+    bouton "Marges de l'espace de travail" dans le <ulink
+      url="xfce-mcs-manager.html#manager-dialog" type="http">Gestionnaire de 
+	  paramètres</ulink>.
+  </para>
 
-    <figure id="xfwm-workspace-fig">
-      <title>Paramètres des espaces virtuels</title>
-      <screenshot>
-	<mediaobject>
-	  <imageobject>
-	    <imagedata fileref="images/xfwm_workspaces.png" format="PNG"/>
-	  </imageobject> 
-	  <textobject>
-	    <phrase>Montre l'onglet de paramétrage des espaces virtuels.
-	    </phrase>
-	  </textobject>
-	</mediaobject>
-      </screenshot>
-    </figure>
-
-    <variablelist>
-
-      <varlistentry>
-	<term>Espaces de travail virtuels</term>
-	<listitem>
-	  <para>Cette option vous permet de choisir le nombre d'espaces 
-	  virtuels que vous souhaitez utiliser (entre 1 et 32).
-	  </para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
-	<term>Nom des espaces virtuels</term>
-	<listitem>
-	  <para>Ce champ contient la liste des espaces disponibles. Si vous 
-	  modifier le nom de l'un d'eux, cliquez sur son numéro et remplissez 
-	  la zone de saisie qui s'ouvre. Ensuite, cliquez sur le bouton 
-	  "Appliquer" ou simplement sur la touche Entrée, pour revenir à 
-	  la liste.
-	  </para>
-	</listitem>
-      </varlistentry>
-
-    </variablelist>
-
-  </sect2>
-
-  <sect2 id="workspace-margins">
-    <title>Paramétrer les marges de l'espace de travail</title>
-
-    <figure id="workspace_margins-fig">
-      <title>La fenêtre de paramétrage des marges de l'espace de travail</title>
-
-      <screenshot>
-	<mediaobject>
-	  <imageobject>
-	    <imagedata fileref="images/workspace_margins.png" format="PNG"/>
-	  </imageobject>
-	  <textobject>
-	    <phrase>Montre l'onglet de paramétrage des marges de l'espace de travail</phrase>
-	  </textobject>
-	</mediaobject>
-      </screenshot>
-    </figure>
-
-    <para>Pour ouvrir la fenêtre de paramétrage des marges de l'espace de travail, 
-    cliquez sur le bouton "Espaces virtuels et marges" dans le <ulink
-	url="xfce-mcs-manager.html#manager-dialog" type="http">gestionnaire de 
-	paramètres</ulink> et choisissez l'onglet intitulé "Marges".
-    </para>
-
-    <para>Les marges sont des zones sur les bords de l'écran qui ne seront pas 
+  <para>Les marges sont des zones sur les bords de l'écran qui ne seront pas 
     recouvertes par une fenêtre maximisée. Vous pouvez ajuster la taille, 
 	en pixel, de chaque marge (gauche, droite, haut et bas). Utilisez cette 
 	possibilité lorque vous ne voulez pas qu'une fenêtre agrandie au maximum 
-	recouvre le panneau ou la boîte d'icônes.</para>
-
-  </sect2>
+	recouvre le panneau ou la boîte à icônes.</para>
 
   <!-- extra space -->
   <para>&nbsp;</para>
-  
-</sect1>
 
+</sect1>
+  
 <sect1 id="wm-copyright">
   <title>A propos de &app;</title>
 

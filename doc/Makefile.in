@@ -181,7 +181,8 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = \
-	C
+	C \
+	fr
 
 
 noinst_DATA = \
@@ -489,6 +490,7 @@ uninstall-info: uninstall-info-recursive
 
 html: Makefile
 	make -C C html
+	make -C fr html
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

@@ -82,6 +82,8 @@ Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+doc/fr/Makefile
+doc/fr/images/Makefile
 defaults/Makefile
 mcs-plugin/Makefile
 po/Makefile.in 
