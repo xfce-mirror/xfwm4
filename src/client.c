@@ -3835,6 +3835,10 @@ clientPassFocus (Client * c)
     {
         clientPassGrabButton1 (new_focus);
     }
+    else if (last_ungrab == c)
+    {
+        clientPassGrabButton1 (NULL);
+    }
 }
 
 static inline void
