@@ -313,7 +313,7 @@ handleKeyPress (XKeyEvent * ev)
                 }
                 break;
             case KEY_CYCLE_WINDOWS:
-                clientCycle (c);
+                clientCycle (c, (XEvent *) ev);
                 break;
             case KEY_CLOSE_WINDOW:
                 clientClose (c);
@@ -390,7 +390,7 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_CYCLE_WINDOWS:
                 if (clients)
                 {
-                    clientCycle (clients->prev);
+                    clientCycle (clients->prev, (XEvent *) ev);
                 }
                 break;
             default:
@@ -674,7 +674,22 @@ handleButtonPress (XButtonEvent * ev)
         }
         else if ((ev->button == Button3) && (state == AltMask) && (params.easy_click))
         {
-            edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+            if ((ev->x < c->width / 2) && (ev->y < c->height / 2))
+            {
+                edgeButton (c, CORNER_TOP_LEFT, ev);
+            }
+            else if ((ev->x < c->width / 2) && (ev->y > c->height / 2))
+            {
+                edgeButton (c, CORNER_BOTTOM_LEFT, ev);
+            }
+            else if ((ev->x > c->width / 2) && (ev->y < c->height / 2))
+            {
+                edgeButton (c, CORNER_TOP_RIGHT, ev);
+            }
+            else
+            {
+                edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+            }
         }
         else if (WIN_IS_BUTTON (win))
         {
