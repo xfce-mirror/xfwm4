@@ -34,9 +34,9 @@ AC_CHECK_FUNCS([daemon setsid])
 AC_CHECK_FUNCS(opendir)
 
 dnl Check for i18n support
-BM_I18N([xfwm4], [ar az be bg ca cs de en_GB es es_MX et eu fa fi fr gu he
-                  hi hu it ja ko lt ms nb_NO nl pa pl pt_BR pt_PT ro ru sk
-		  sv ta tr uk vi zh_CN zh_TW])
+BM_I18N([xfwm4], [ar az be bg ca cs de el_GR en_GB es es_MX et eu fa fi fr
+                  gu he hi hu it ja ko lt ms nb_NO nl pa pl pt_BR pt_PT ro
+		  ru sk sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE
