@@ -682,35 +682,3 @@ msgstr "Wisselen naar ..."
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
 
-#~ msgid "Workspace 1"
-#~ msgstr "Bureaublad 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Bureaublad 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Bureaublad 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Bureaublad 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Bureaublad 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Bureaublad 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Bureaublad 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Bureaublad 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Bureaublad 9"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: Bewerking (nog) niet ondersteund\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
