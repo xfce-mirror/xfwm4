@@ -31,3 +31,18 @@ AC_HELP_STRING([--disable-$4-check], [Disable checking for $5]),
   fi
 ])
 
+dnl
+dnl XFCE_PANEL_PLUGIN(var, version)
+dnl
+dnl Sets $var_CFLAGS, $var_LIBS and $var_PLUGINSDIR
+dnl
+AC_DEFUN([XFCE_PANEL_PLUGIN],
+[
+  BM_DEPEND([$1], [xfce4-panel-1.0], [$2])
+
+  dnl Check where to put the plugins to
+  AC_MSG_CHECKING([where to install panel plugins])
+  $1_PLUGINSDIR=`$PKG_CONFIG --variable=pluginsdir xfce4-panel-1.0`
+  AC_SUBST([$1_PLUGINSDIR])
+  AC_MSG_RESULT([$$1_PLUGINSDIR])
+])
