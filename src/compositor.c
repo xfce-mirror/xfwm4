@@ -780,10 +780,6 @@ win_extents (CWindow *cw)
             }
         }
     }
-    else
-    {
-        TRACE ("window 0x%lx has no client, no extents", cw->id);    
-    }
 
     return XFixesCreateRegion (myScreenGetXDisplay (screen_info), &r, 1);
 }
@@ -1134,11 +1130,16 @@ repair_win (CWindow *cw)
     ScreenInfo *screen_info;
     
     g_return_if_fail (cw != NULL);
-    g_return_if_fail (cw->damage != None);
     
     TRACE ("entering repair_win");    
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
+
+    if (!(cw->damage))
+    {
+        /* Input Only have no damage */
+        return;
+    }
 
     if (!(cw->damaged))
     {
@@ -1162,6 +1163,32 @@ repair_win (CWindow *cw)
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
     }
+}
+
+static void
+damage_win (CWindow *cw)
+{
+#ifdef HAVE_COMPOSITOR
+    XserverRegion damage = None;
+    
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering damage_win");
+
+    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
+
+    if (damage)
+    {
+        if (cw->extents != None)
+        {
+            XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), 
+                              damage, cw->extents);
+            add_damage (cw->screen_info, damage);
+            cw->screen_info->clipChanged = TRUE;
+        }
+    }
+
+    repair_win (cw);
+#endif /* HAVE_COMPOSITOR */
 }
 
 static void
@@ -1434,7 +1461,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
     }
 
     myDisplayUngrabServer (display_info);
-    
 }
 
 void
@@ -1773,11 +1799,12 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         XserverRegion extents = win_extents (cw);
         if (extents)
         {
-            XFixesUnionRegion (display_info->dpy, damage, damage, extents);
+            XFixesUnionRegion (display_info->dpy, damage, extents, damage);
             XFixesDestroyRegion (display_info->dpy, extents);
         }
         add_damage (cw->screen_info, damage);
         cw->screen_info->clipChanged = clip_changed;
+        cw->screen_info->clipChanged = TRUE;
 #if 0    
         repair_screen (cw->screen_info);
 #endif
@@ -2217,7 +2244,6 @@ void
 compositorDamageWindow (DisplayInfo *display_info, Window id)
 {
 #ifdef HAVE_COMPOSITOR
-    XserverRegion damage = None;
     CWindow *cw;
     
     g_return_if_fail (display_info != NULL);
@@ -2233,19 +2259,7 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
-        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-
-        if (damage)
-        {
-            if (cw->extents != None)
-            {
-                XFixesCopyRegion (display_info->dpy, damage, cw->extents);
-                add_damage (cw->screen_info, damage);
-                cw->screen_info->clipChanged = TRUE;
-            }
-        }
-
-        repair_win (cw);
+        damage_win (cw);
         repair_screen (cw->screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
