@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-13 07:49+0100\n"
-"PO-Revision-Date: 2005-01-21 15:53+0200\n"
+"PO-Revision-Date: 2005-01-23 16:32+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team:  <>\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +22,19 @@ msgstr ""
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
-msgstr "Vasen :"
+msgstr "Vasen:"
 
 #: mcs-plugin/margins.c:188
 msgid "Right :"
-msgstr "Oikea :"
+msgstr "Oikea:"
 
 #: mcs-plugin/margins.c:208
 msgid "Top :"
-msgstr "Yläosa :"
+msgstr "Yläosa:"
 
 #: mcs-plugin/margins.c:228
 msgid "Bottom :"
-msgstr "Alaosa :"
+msgstr "Alaosa:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
@@ -178,7 +178,7 @@ msgstr "Tekstin tasaus otsakepalkissa:"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Button layout"
-msgstr "Nappien sijoittelu"
+msgstr "Painikkeiden sijoittelu"
 
 #: mcs-plugin/xfwm4_plugin.c:1441
 msgid "Style"
@@ -234,7 +234,7 @@ msgstr "Automaattisesti nosta ikkunat, kun niihin kohdistetaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Delay before raising focused window :"
-msgstr "Viive ennen kohdistetun ikkunan nostoa :"
+msgstr "Viive ennen kohdistetun ikkunan nostoa:"
 
 #: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Slow"
@@ -270,7 +270,7 @@ msgstr "Loksauta ikkunat toisiinsa"
 
 #: mcs-plugin/xfwm4_plugin.c:1681
 msgid "Distance :"
-msgstr "Etäisyys :"
+msgstr "Etäisyys:"
 
 #: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Small"
@@ -294,7 +294,7 @@ msgstr "Vaihda työpöytää, kun ikkuna raahataan ulos näytöltä"
 
 #: mcs-plugin/xfwm4_plugin.c:1731
 msgid "Edge Resistance :"
-msgstr "Reunan vastus :"
+msgstr "Reunan vastus:"
 
 #: mcs-plugin/xfwm4_plugin.c:1758
 msgid "Opaque move and resize"
@@ -532,7 +532,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1147
 msgid "Compose shortcut for :"
-msgstr "Määritä pikanäppäin :"
+msgstr "Määritä pikanäppäin:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1150
@@ -552,15 +552,15 @@ msgstr "Valitse komento"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1276
 msgid "Command :"
-msgstr "Komento :"
+msgstr "Komento:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1312
 msgid "The command doesn't exist or the file is not executable !"
-msgstr "Komentoa ei ole, tai tiedostolla ei ole suoritusoikeutta !"
+msgstr "Komentoa ei ole, tai tiedostolla ei ole suoritusoikeutta!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1375
 msgid "Compose shortcut for command :"
-msgstr "Pikanäppäin komennolle :"
+msgstr "Pikanäppäin komennolle:"
 
 #: src/main.c:181
 #, c-format
@@ -644,7 +644,7 @@ msgstr "Työpöytä %i"
 #: src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
+msgstr "%s: GtkMenu ei saanut osoitinta haltuunsa\n"
 
 #: src/settings.c:722
 #, c-format
