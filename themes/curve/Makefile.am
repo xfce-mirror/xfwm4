@@ -22,6 +22,12 @@ theme_DATA = README \
 	menu-pressed.xpm \
 	right-active.xpm \
 	right-inactive.xpm \
+	shade-active.xpm \
+	shade-inactive.xpm \
+	shade-pressed.xpm \
+	stick-active.xpm \
+	stick-inactive.xpm \
+	stick-pressed.xpm \
 	themerc \
 	title-1-active.xpm \
 	title-1-inactive.xpm \
