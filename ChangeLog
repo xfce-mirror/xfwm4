@@ -1,3 +1,76 @@
+2002-07-07  xfce
+
+	* xfwm4.spec.in, themes/retro/bottom-active.xpm,
+	themes/retro/bottom-inactive.xpm,
+	themes/retro/bottom-left-active.xpm,
+	themes/retro/bottom-left-inactive.xpm,
+	themes/retro/bottom-right-active.xpm,
+	themes/retro/bottom-right-inactive.xpm,
+	themes/retro/left-active.xpm, themes/retro/left-inactive.xpm,
+	themes/retro/right-active.xpm, themes/retro/right-inactive.xpm,
+	themes/retro/title-1-active.xpm, themes/retro/title-1-inactive.xpm,
+	themes/retro/title-2-active.xpm, themes/retro/title-2-inactive.xpm,
+	themes/retro/title-3-active.xpm, themes/retro/title-3-inactive.xpm,
+	themes/retro/title-4-active.xpm, themes/retro/title-4-inactive.xpm,
+	themes/retro/title-5-active.xpm, themes/retro/title-5-inactive.xpm,
+	themes/retro/top-left-active.xpm,
+	themes/retro/top-left-inactive.xpm,
+	themes/retro/top-right-active.xpm,
+	themes/retro/top-right-inactive.xpm: Change theme retro, add theme
+	retro to spec file
+
+2002-07-07  xfce
+
+	* src/: frame.c, pixmap.c: Fix a bug when window title was < 0
+
+2002-07-07  xfce
+
+	* configure, configure.in, src/frame.c, src/pixmap.c,
+	themes/Makefile.am, themes/Makefile.in, themes/retro/Makefile.am,
+	themes/retro/Makefile.in, themes/retro/README,
+	themes/retro/bottom-active.xpm, themes/retro/bottom-inactive.xpm,
+	themes/retro/bottom-left-active.xpm,
+	themes/retro/bottom-left-inactive.xpm,
+	themes/retro/bottom-right-active.xpm,
+	themes/retro/bottom-right-inactive.xpm,
+	themes/retro/close-active.xpm, themes/retro/close-inactive.xpm,
+	themes/retro/close-pressed.xpm, themes/retro/hide-active.xpm,
+	themes/retro/hide-inactive.xpm, themes/retro/hide-pressed.xpm,
+	themes/retro/left-active.xpm, themes/retro/left-inactive.xpm,
+	themes/retro/maximize-active.xpm,
+	themes/retro/maximize-inactive.xpm,
+	themes/retro/maximize-pressed.xpm, themes/retro/menu-active.xpm,
+	themes/retro/menu-inactive.xpm, themes/retro/menu-pressed.xpm,
+	themes/retro/right-active.xpm, themes/retro/right-inactive.xpm,
+	themes/retro/shade-active.xpm, themes/retro/shade-inactive.xpm,
+	themes/retro/shade-pressed.xpm, themes/retro/stick-active.xpm,
+	themes/retro/stick-inactive.xpm, themes/retro/stick-pressed.xpm,
+	themes/retro/themerc, themes/retro/title-1-active.xpm,
+	themes/retro/title-1-inactive.xpm, themes/retro/title-2-active.xpm,
+	themes/retro/title-2-inactive.xpm, themes/retro/title-3-active.xpm,
+	themes/retro/title-3-inactive.xpm, themes/retro/title-4-active.xpm,
+	themes/retro/title-4-inactive.xpm, themes/retro/title-5-active.xpm,
+	themes/retro/title-5-inactive.xpm,
+	themes/retro/top-left-active.xpm,
+	themes/retro/top-left-inactive.xpm,
+	themes/retro/top-right-active.xpm,
+	themes/retro/top-right-inactive.xpm: Fixed a (potential ?) bug in
+	frameDraw when window is shaded, add a new theme "retro"
+
+2002-07-05  uid44859
+
+	* themes/quinx/: top-right-active.xpm, top-right-inactive.xpm:
+	Quinx theme tweaking
+
+2002-07-05  xfce
+
+	* src/client.c: Remove the call to clientRemoveMaximizedFlag from
+	clientMove as it has side effects on titlebar dbl. click
+
+2002-07-04  xfce
+
+	* ChangeLog, Makefile.in: Update ChangeLog, release 020704 preview.
+
 2002-07-04  xfce
 
 	* src/client.c: [no log message]
