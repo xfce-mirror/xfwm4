@@ -2112,7 +2112,7 @@ void clientToggleSticky(Client * c)
     }
 }
 
-void clientRemoveMaximizeFlag(Client * c)
+inline void clientRemoveMaximizeFlag(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientRemoveMaximizeFlag\n");
@@ -2520,9 +2520,9 @@ void clientMove(Client * c, XEvent * e)
     DBG("entering clientDoMove\n");
     DBG("moving client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if((c->win_state & WIN_STATE_MAXIMIZED) == WIN_STATE_MAXIMIZED)
+    if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT |  WIN_STATE_MAXIMIZED_HORIZ))
     {
-        return;
+        clientRemoveMaximizeFlag(c);
     }
 
     passdata.c = c;
@@ -2748,9 +2748,9 @@ void clientResize(Client * c, int corner, XEvent * e)
     DBG("entering clientResize\n");
     DBG("resizing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->win_state & WIN_STATE_MAXIMIZED)
+    if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT |  WIN_STATE_MAXIMIZED_HORIZ))
     {
-        return;
+        clientRemoveMaximizeFlag(c);
     }
 
     passdata.c = c;

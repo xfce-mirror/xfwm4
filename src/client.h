@@ -253,7 +253,7 @@ void clientToggleShaded(Client *);
 void clientStick(Client *);
 void clientUnstick(Client *);
 void clientToggleSticky(Client *);
-void clientRemoveMaximizeFlag(Client *);
+inline void clientRemoveMaximizeFlag(Client *);
 void clientToggleMaximized(Client *, int);
 void clientToggleFullscreen(Client *);
 void clientUpdateFocus(Client *);
