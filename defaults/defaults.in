@@ -20,6 +20,7 @@ focus_new=true
 raise_on_focus=false
 raise_delay=250
 snap_to_border=true
+snap_to_windows=false
 snap_width=10
 dbl_click_time=400
 workspace_count=4

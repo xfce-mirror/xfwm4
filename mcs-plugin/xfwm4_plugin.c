@@ -228,6 +228,7 @@ struct _Itf
     GtkWidget *scrolledwindow1;
     GtkWidget *scrolledwindow2;
     GtkWidget *snap_to_border_check;
+    GtkWidget *snap_to_windows_check;
     GtkWidget *snap_width_scale;
     GtkWidget *table2;
     GtkWidget *table3;
@@ -261,6 +262,7 @@ static gboolean focus_new = TRUE;
 static gboolean focus_raise = FALSE;
 static gboolean raise_on_click = TRUE;
 static gboolean snap_to_border = TRUE;
+static gboolean snap_to_windows = FALSE;
 static gboolean wrap_workspaces = TRUE;
 static gboolean box_move = FALSE;
 static gboolean box_resize = FALSE;
@@ -951,9 +953,22 @@ static void cb_snap_to_border_changed(GtkWidget * dialog, gpointer user_data)
     McsPlugin *mcs_plugin = itf->mcs_plugin;
 
     snap_to_border = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(itf->snap_to_border_check));
-    gtk_widget_set_sensitive(itf->snap_width_scale, snap_to_border);
+    gtk_widget_set_sensitive(itf->snap_width_scale, snap_to_windows || snap_to_border);
 
     mcs_manager_set_int(mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL, snap_to_border ? 1 : 0);
+    mcs_manager_notify(mcs_plugin->manager, CHANNEL);
+    write_options(mcs_plugin);
+}
+
+static void cb_snap_to_windows_changed(GtkWidget * dialog, gpointer user_data)
+{
+    Itf *itf = (Itf *) user_data;
+    McsPlugin *mcs_plugin = itf->mcs_plugin;
+
+    snap_to_windows = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(itf->snap_to_windows_check));
+    gtk_widget_set_sensitive(itf->snap_width_scale, snap_to_windows || snap_to_border);
+
+    mcs_manager_set_int(mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL, snap_to_windows ? 1 : 0);
     mcs_manager_notify(mcs_plugin->manager, CHANNEL);
     write_options(mcs_plugin);
 }
@@ -1410,6 +1425,11 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_box_pack_start(GTK_BOX(dialog->vbox7), dialog->snap_to_border_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->snap_to_border_check), snap_to_border);
 
+    dialog->snap_to_windows_check = gtk_check_button_new_with_mnemonic(_("Snap windows to other windows"));
+    gtk_widget_show(dialog->snap_to_windows_check);
+    gtk_box_pack_start(GTK_BOX(dialog->vbox7), dialog->snap_to_windows_check, FALSE, FALSE, 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->snap_to_windows_check), snap_to_windows);
+
     dialog->table3 = gtk_table_new(2, 3, FALSE);
     gtk_widget_show(dialog->table3);
     gtk_box_pack_start(GTK_BOX(dialog->vbox7), dialog->table3, TRUE, TRUE, 0);
@@ -1439,9 +1459,9 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_scale_set_draw_value(GTK_SCALE(dialog->snap_width_scale), FALSE);
     gtk_scale_set_digits(GTK_SCALE(dialog->snap_width_scale), 0);
     gtk_range_set_update_policy(GTK_RANGE(dialog->snap_width_scale), GTK_UPDATE_DISCONTINUOUS);
-    gtk_widget_set_sensitive(dialog->snap_width_scale, snap_to_border);
+    gtk_widget_set_sensitive(dialog->snap_width_scale, snap_to_border || snap_to_windows);
 
-    dialog->label40 = gtk_label_new(_("Snap to screen border"));
+    dialog->label40 = gtk_label_new(_("Windows snapping"));
     gtk_widget_show(dialog->label40);
     gtk_frame_set_label_widget(GTK_FRAME(dialog->frame8), dialog->label40);
     gtk_label_set_justify(GTK_LABEL(dialog->label40), GTK_JUSTIFY_LEFT);
@@ -1560,6 +1580,7 @@ static void setup_dialog(Itf * itf)
     g_signal_connect(G_OBJECT(itf->raise_delay_scale), "value_changed", (GCallback) cb_raise_delay_changed, itf);
     g_signal_connect(G_OBJECT(itf->click_raise_check), "toggled", G_CALLBACK(cb_raise_on_click_changed), itf);
     g_signal_connect(G_OBJECT(itf->snap_to_border_check), "toggled", G_CALLBACK(cb_snap_to_border_changed), itf);
+    g_signal_connect(G_OBJECT(itf->snap_to_windows_check), "toggled", G_CALLBACK(cb_snap_to_windows_changed), itf);
     g_signal_connect(G_OBJECT(itf->snap_width_scale), "value_changed", (GCallback) cb_snap_width_changed, itf);
     g_signal_connect(G_OBJECT(itf->wrap_workspaces_check), "toggled", G_CALLBACK(cb_wrap_workspaces_changed), itf);
     g_signal_connect(G_OBJECT(itf->box_move_check), "toggled", (GCallback) cb_box_move_changed, itf);
@@ -1755,6 +1776,17 @@ static void create_channel(McsPlugin * mcs_plugin)
     {
         snap_to_border = TRUE;
         mcs_manager_set_int(mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL, snap_to_border ? 1 : 0);
+    }
+
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL);
+    if(setting)
+    {
+        snap_to_windows = (setting->data.v_int ? TRUE : FALSE);
+    }
+    else
+    {
+        snap_to_windows = FALSE;
+        mcs_manager_set_int(mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL, snap_to_windows ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL);

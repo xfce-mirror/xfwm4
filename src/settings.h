@@ -163,6 +163,7 @@ struct _Params
     gboolean raise_on_click;
     gboolean raise_on_focus;
     gboolean snap_to_border;
+    gboolean snap_to_windows;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean wrap_workspaces;

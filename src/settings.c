@@ -127,6 +127,10 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
                     {
                         params.snap_to_border = setting->data.v_int;
                     }
+                    else if(!strcmp(name, "Xfwm/SnapToWindows"))
+                    {
+                        params.snap_to_windows = setting->data.v_int;
+                    }
                     else if(!strcmp(name, "Xfwm/SnapWidth"))
                     {
                         params.snap_width = setting->data.v_int;
@@ -293,6 +297,11 @@ static void loadMcsData(Settings rc[])
         if(mcs_client_get_setting(client, "Xfwm/SnapToBorder", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("snap_to_border", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/SnapToWindows", CHANNEL1, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("snap_to_windows", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
         if(mcs_client_get_setting(client, "Xfwm/SnapWidth", CHANNEL1, &setting) == MCS_SUCCESS)
@@ -730,6 +739,7 @@ gboolean loadSettings(void)
         {"raise_on_click", NULL, TRUE},
         {"raise_on_focus", NULL, TRUE},
         {"snap_to_border", NULL, TRUE},
+        {"snap_to_windows", NULL, TRUE},
         {"snap_width", NULL, TRUE},
         {"theme", NULL, TRUE},
         {"title_alignment", NULL, TRUE},
@@ -829,6 +839,7 @@ gboolean loadSettings(void)
     params.raise_on_click = !g_ascii_strcasecmp("true", getValue("raise_on_click", rc));
 
     params.snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
+    params.snap_to_windows = !g_ascii_strcasecmp("true", getValue("snap_to_windows", rc));
     params.snap_width = abs(TOINT(getValue("snap_width", rc)));
     params.dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
 
