@@ -271,6 +271,46 @@ static inline void handleKeyPress(XKeyEvent * ev)
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
 
+static inline gboolean isDoubleClick(Window w, XEvent * ev)
+{
+    int xcurrent, ycurrent, x, y, total = 0;
+    int g = GrabSuccess;
+    Time t0;
+    
+    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);    
+    if (g != GrabSuccess)
+    {
+        DBG("grab failed in isDoubleClick\n");
+        gdk_beep();
+        return FALSE;
+    }
+    x = xcurrent = ev->xbutton.x_root;
+    y = ycurrent = ev->xbutton.y_root;
+    t0 = CurrentTime;
+    
+    while ((total < 250) && (ABS(x - xcurrent) < 2) && (ABS(y - ycurrent) < 2) && ((CurrentTime - t0) < 250))
+    {
+	if (XCheckMaskEvent (dpy, ButtonPressMask, ev))
+	{
+            XUngrabPointer(dpy, CurrentTime);
+	    return TRUE;
+	}
+	if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
+	{
+	    xcurrent = ev->xmotion.x_root;
+	    ycurrent = ev->xmotion.y_root;
+	    if ((ABS(x - xcurrent) > 0) || (ABS(y - ycurrent) > 0))
+	    {
+	        break;
+	    }
+	}
+	g_usleep (10);
+	total += 10;
+    }
+    XUngrabPointer(dpy, CurrentTime);
+    return FALSE;
+}
+
 static inline void handleButtonPress(XButtonEvent * ev)
 {
     Client *c;
@@ -297,15 +337,24 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-            ev->window = ev->root;
-            if(button_handler_id)
-            {
-                g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
-            }
-            button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
-            /* Let GTK handle this for us. */
+	    XEvent d = (XEvent) *ev;
+	    
+	    if ((win == c->buttons[MENU_BUTTON]) && isDoubleClick(c->frame, &d))
+	    {
+	        clientClose(c);
+	    }
+	    else
+	    {
+        	clientSetFocus(c, True);
+        	clientRaise(c);
+        	ev->window = ev->root;
+        	if(button_handler_id)
+        	{
+                    g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
+        	}
+        	button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
+        	/* Let GTK handle this for us. */
+	    }
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
@@ -314,7 +363,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
 	        clientSetFocus(c, True);
                 clientRaise(c);
             }
-	    if((ev->time - last_button_time <= 250) && (last_button_time != 0))
+	    if(isDoubleClick(c->frame, (XEvent *) ev))
             {
                 switch (double_click_action)
                 {

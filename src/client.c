@@ -2560,7 +2560,7 @@ void clientMove(Client * c, XEvent * e)
        
        Note:
        
-       I'm note sure it makes any difference, but who knows... It doesn' thurt.
+       I'm note sure it makes any difference, but who knows... It doesn' t hurt.
      */
     
     attributes.event_mask = ButtonMotionMask;
@@ -2578,11 +2578,11 @@ void clientMove(Client * c, XEvent * e)
     {
         DBG("grab failed in clientMove\n");
         gdk_beep();
-        if(g1 == GrabSuccess)
+        if((passdata.use_keys) && (g1 == GrabSuccess))
         {
             XUngrabKeyboard(dpy, CurrentTime);
         }
-        if((passdata.use_keys) && (g2 == GrabSuccess))
+        if(g2 == GrabSuccess)
         {
             XUngrabPointer(dpy, CurrentTime);
         }
@@ -2815,11 +2815,11 @@ void clientResize(Client * c, int corner, XEvent * e)
     {
         DBG("grab failed in clientResize\n");
         gdk_beep();
-        if(g1 == GrabSuccess)
+        if((passdata.use_keys) && (g1 == GrabSuccess))
         {
             XUngrabKeyboard(dpy, CurrentTime);
         }
-        if((passdata.use_keys) && (g2 == GrabSuccess))
+        if(g2 == GrabSuccess)
         {
             XUngrabPointer(dpy, CurrentTime);
         }
