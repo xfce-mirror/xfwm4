@@ -94,7 +94,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c = (Client *) index->data;
-        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
         {
             clientSetWorkspace(c, new_ws, TRUE);
         }

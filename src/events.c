@@ -967,24 +967,11 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             TRACE("client \"%s\" (0x%lx) has received a win_hints notify", c->name, c->window);
             getGnomeHint(dpy, c->window, win_hints, &c->win_hints);
         }
-        else if(ev->atom == win_layer)
-        {
-            TRACE("client \"%s\" (0x%lx) has received a win_layer notify\n", c->name, c->window);
-            getGnomeHint(dpy, c->window, win_layer, &dummy);
-            clientSetLayer(c, dummy);
-            clientSetNetState(c);
-        }
         else if(ev->atom == net_wm_window_type)
         {
             TRACE("client \"%s\" (0x%lx) has received a net_wm_window_type notify", c->name, c->window);
             clientGetNetWmType(c);
             frameDraw(c, TRUE, FALSE);
-        }
-        else if((ev->atom == win_workspace) && !clientIsTransient(c))
-        {
-            TRACE("client \"%s\" (0x%lx) has received a win_workspace notify", c->name, c->window);
-            getGnomeHint(dpy, c->window, win_workspace, &dummy);
-            clientSetWorkspace(c, dummy, TRUE);
         }
         else if(ev->atom == net_wm_strut)
         {
@@ -1011,20 +998,11 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
 #endif
     }
-    else
+    else if(ev->atom == gnome_panel_desktop_area)
     {
-        if(ev->atom == win_workspace_count)
-        {
-            TRACE("root has received a win_workspace_count notify");
-            getGnomeHint(dpy, root, win_workspace_count, &dummy);
-            workspaceSetCount(dummy);
-        }
-        else if(ev->atom == gnome_panel_desktop_area)
-        {
-            TRACE("root has received a gnome_panel_desktop_area notify");
-            getGnomeDesktopMargins(dpy, screen, gnome_margins);
-            workspaceUpdateArea(margins, gnome_margins);
-        }
+        TRACE("root has received a gnome_panel_desktop_area notify");
+        getGnomeDesktopMargins(dpy, screen, gnome_margins);
+        workspaceUpdateArea(margins, gnome_margins);
     }
 }
 
@@ -1040,7 +1018,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
-            clientHide(c, c->win_workspace, TRUE);
+            if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+            {
+                clientHide(c, c->win_workspace, TRUE);
+           }
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
@@ -1074,12 +1055,19 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {
             TRACE("client \"%s\" (0x%lx) has received a win_layer event", c->name, c->window);
-            clientSetLayer(c, ev->data.l[0]);
+            if (ev->data.l[0] != c->win_layer)
+            {
+                clientSetLayer(c, ev->data.l[0]);
+                clientSetNetState(c);
+            }
         }
         else if((ev->message_type == win_workspace) && (ev->format == 32) && !clientIsTransient(c))
         {
             TRACE("client \"%s\" (0x%lx) has received a win_workspace event", c->name, c->window);
-            clientSetWorkspace(c, ev->data.l[0], TRUE);
+            if (ev->data.l[0] != c->win_workspace)
+            {
+                clientSetWorkspace(c, ev->data.l[0], TRUE);
+            }
         }
         else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
@@ -1088,7 +1076,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
             {
                 clientStick(c, TRUE);
             }
-            else if(!clientIsTransient(c))
+            else if((ev->data.l[0] != c->win_workspace) && !clientIsTransient(c))
             {
                 clientSetWorkspace(c, ev->data.l[0], TRUE);
             }
@@ -1128,7 +1116,10 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if(((ev->message_type == win_workspace_count) || (ev->message_type == net_number_of_desktops)) && (ev->format == 32))
         {
             TRACE("root has received a win_workspace_count event");
-            workspaceSetCount(ev->data.l[0]);
+            if (params.workspace_count != ev->data.l[0])
+            {
+                workspaceSetCount(ev->data.l[0]);
+            }
         }
         else
         {

@@ -762,7 +762,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
         if(getNetHint(dpy, c->window, net_wm_desktop, &val))
         {
             TRACE("atom net_wm_desktop detected");
-            if(val == ALL_WORKSPACES)
+            if(val == (int) ALL_WORKSPACES)
             {
                 TRACE("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
                 c->win_workspace = workspace;
@@ -797,7 +797,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
     }
     else
     {
-  	setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
+        setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
     }
 }
 
@@ -3054,13 +3054,13 @@ static inline void clientSetWorkspaceSingle(Client * c, int ws)
         c->win_workspace = ws;
         setGnomeHint(dpy, c->window, win_workspace, ws);
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-	{
+        {
             setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ALL_WORKSPACES);
-	}
-	else
-	{
-  	    setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ws);
-	}
+        }
+        else
+        {
+            setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)ws);
+        }
     }
     CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
 }
@@ -4319,7 +4319,7 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
     ClientCycleData *passdata = (ClientCycleData *) data;
 
     TRACE("entering clientCycle_event_filter");
-		
+                
     switch (xevent->type)
     {
     case DestroyNotify:
@@ -4332,12 +4332,12 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
         if(gone || (xevent->xkey.keycode == params.keys[KEY_CYCLE_WINDOWS].keycode))
         {
             /* Hide frame draw */
-	    clientDrawOutline(passdata->c);
+            clientDrawOutline(passdata->c);
             passdata->c = clientGetNext(passdata->c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
             if(passdata->c)
             {
                 /* Redraw frame draw */
-        	clientDrawOutline(passdata->c);
+                clientDrawOutline(passdata->c);
                 tabwinSetLabel(passdata->tabwin, passdata->c->name);
             }
             else
@@ -4408,11 +4408,11 @@ void clientCycle(Client * c)
         pushEventFilter(clientCycle_event_filter, &passdata);
         gtk_main();
         popEventFilter();
-	if (passdata.c)
-	{
+        if (passdata.c)
+        {
             /* Hide frame draw */
             clientDrawOutline(passdata.c);
-	}
+        }
         TRACE("leaving cycle loop");
         tabwinDestroy(passdata.tabwin);
         g_free(passdata.tabwin);
