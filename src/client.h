@@ -288,7 +288,7 @@ Client *clientGetFocus ();
 void clientScreenResize(void);
 void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
-void clientCycle (Client *);
+void clientCycle (Client *, XEvent *);
 void clientButtonPress (Client *, Window, XButtonEvent *);
 Client *clientGetLeader (Client *);
 GList *clientGetStackList (void);
