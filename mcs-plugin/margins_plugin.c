@@ -35,6 +35,7 @@
 
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
+#include <libxfce4util/util.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "margins-icon.h"
@@ -65,10 +66,9 @@ static void set_margin(int side, int margin);
 
 static void create_channel(McsManager * manager, const char *channel, const char *rcfile)
 {
-    const gchar *home = g_get_home_dir();
     char *homefile, *sysfile;
 
-    homefile = g_build_filename(home, ".xfce4", "settings", rcfile, NULL);
+    homefile = xfce_get_userfile("settings", rcfile, NULL);
     sysfile = g_build_filename(DATADIR, "xfce4", "settings", rcfile, NULL);
 
     if(g_file_test(homefile, G_FILE_TEST_EXISTS))
@@ -90,11 +90,10 @@ static void create_channel(McsManager * manager, const char *channel, const char
 
 static gboolean save_channel(McsManager * manager, const char *channel, const char *rcfile)
 {
-    const char *home = g_get_home_dir();
     char *homefile;
     gboolean result;
 
-    homefile = g_build_filename(home, ".xfce4", "settings", rcfile, NULL);
+    homefile = xfce_get_userfile("settings", rcfile, NULL);
     result = mcs_manager_save_channel_to_file(manager, channel, homefile);
 
     g_free(homefile);

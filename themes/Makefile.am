@@ -1,62 +1,65 @@
-SUBDIRS = \
-adept \
-agua \
-atlanta \
-atlanta2 \
-b5 \
-b6 \
-bbs \
-beastie \
-biz \
-coldsteel \
-coolclean \
-crux \
-cruxish \
-curve \
-default.keys \
-eazel-blue \
-elberg \
-exocet \
-fbx \
-g2 \
-gaudy \
-gnububble \
-gorilla \
-gtk \
-iceg \
-kde \
-keramik \
-kindaker \
-koynacity \
-linea \
-meenee \
-metabox \
-microcurve \
-microdeck \
-microdeck2 \
-microdeck3 \
-microgui \
-mofit \
-next \
-ops \
-oroborus \
-pills \
-piranha \
-platinum \
-quiet-purple \
-quinx \
-r9x \
-redmond \
-redmondxp \
-retro \
-silverado \
-slick \
-slimline \
-tabs \
-tgc \
-totem \
-trench \
-tux \
-variation \
-xfce
+# themes/Makefile.am
+#
+
+SUBDIRS =								\
+	adept								\
+	agua 								\
+	atlanta 							\
+	atlanta2 							\
+	b5 								\
+	b6 								\
+	bbs 								\
+	beastie 							\
+	biz 								\
+	coldsteel 							\
+	coolclean 							\
+	crux 								\
+	cruxish 							\
+	curve 								\
+	default.keys 							\
+	eazel-blue 							\
+	elberg 								\
+	exocet 								\
+	fbx 								\
+	g2 								\
+	gaudy 								\
+	gnububble 							\
+	gorilla 							\
+	gtk 								\
+	iceg 								\
+	kde 								\
+	keramik 							\
+	kindaker 							\
+	koynacity 							\
+	linea 								\
+	meenee 								\
+	metabox 							\
+	microcurve 							\
+	microdeck 							\
+	microdeck2 							\
+	microdeck3 							\
+	microgui 							\
+	mofit 								\
+	next 								\
+	ops 								\
+	oroborus 							\
+	pills 								\
+	piranha 							\
+	platinum 							\
+	quiet-purple 							\
+	quinx 								\
+	r9x 								\
+	redmond 							\
+	redmondxp 							\
+	retro 								\
+	silverado 							\
+	slick 								\
+	slimline 							\
+	tabs 								\
+	tgc 								\
+	totem 								\
+	trench 								\
+	tux 								\
+	variation 							\
+	xfce
 

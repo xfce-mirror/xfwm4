@@ -6,7 +6,9 @@ test -z "$srcdir" && srcdir=.
 
 DIE=0
 
-(test -f $srcdir/configure.in) || {
+ACLOCAL_FLAGS="-I m4 $ACLOCAL_FLAGS"
+
+(test -f $srcdir/configure.ac) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level package directory"
     exit 1
@@ -20,7 +22,7 @@ DIE=0
   DIE=1
 }
 
-(grep "^AC_PROG_INTLTOOL" $srcdir/configure.in >/dev/null) && {
+(grep "^AC_PROG_INTLTOOL" $srcdir/configure.ac >/dev/null) && {
   (intltoolize --version) < /dev/null > /dev/null 2>&1 || {
     echo 
     echo "**Error**: You must have \`intltool' installed."
@@ -30,7 +32,7 @@ DIE=0
   }
 }
 
-(grep "^AM_PROG_XML_I18N_TOOLS" $srcdir/configure.in >/dev/null) && {
+(grep "^AM_PROG_XML_I18N_TOOLS" $srcdir/configure.ac >/dev/null) && {
   (xml-i18n-toolize --version) < /dev/null > /dev/null 2>&1 || {
     echo
     echo "**Error**: You must have \`xml-i18n-toolize' installed."
@@ -40,7 +42,7 @@ DIE=0
   }
 }
 
-(grep "^AC_PROG_LIBTOOL" $srcdir/configure.in >/dev/null) && {
+(grep "^AC_PROG_LIBTOOL" $srcdir/configure.ac >/dev/null) && {
   (libtool --version) < /dev/null > /dev/null 2>&1 || {
     echo
     echo "**Error**: You must have \`libtool' installed."
@@ -49,8 +51,8 @@ DIE=0
   }
 }
 
-(grep "^AM_GLIB_GNU_GETTEXT" $srcdir/configure.in >/dev/null) && {
-  (grep "sed.*POTFILES" $srcdir/configure.in) > /dev/null || \
+(grep "^AM_GLIB_GNU_GETTEXT" $srcdir/configure.ac >/dev/null) && {
+  (grep "sed.*POTFILES" $srcdir/configure.ac) > /dev/null || \
   (glib-gettextize --version) < /dev/null > /dev/null 2>&1 || {
     echo
     echo "**Error**: You must have \`glib' installed."
@@ -93,7 +95,7 @@ xlc )
   am_opt=--include-deps;;
 esac
 
-for coin in `find $srcdir -path $srcdir/CVS -prune -o -name configure.in -print`
+for coin in `find $srcdir -path $srcdir/CVS -prune -o -name configure.ac -print`
 do 
   dr=`dirname $coin`
   if test -f $dr/NO-AUTO-GEN; then
@@ -104,7 +106,7 @@ do
 
       aclocalinclude="$ACLOCAL_FLAGS"
 
-      if grep "^AM_GLIB_GNU_GETTEXT" configure.in >/dev/null; then
+      if grep "^AM_GLIB_GNU_GETTEXT" configure.ac >/dev/null; then
 	echo "Creating $dr/aclocal.m4 ..."
 	test -r $dr/aclocal.m4 || touch $dr/aclocal.m4
 	echo "Running glib-gettextize...  Ignore non-fatal messages."
@@ -112,15 +114,15 @@ do
 	echo "Making $dr/aclocal.m4 writable ..."
 	test -r $dr/aclocal.m4 && chmod u+w $dr/aclocal.m4
       fi
-      if grep "^AC_PROG_INTLTOOL" configure.in >/dev/null; then
+      if grep "^AC_PROG_INTLTOOL" configure.ac >/dev/null; then
         echo "Running intltoolize..."
 	intltoolize --copy --force --automake
       fi
-      if grep "^AM_PROG_XML_I18N_TOOLS" configure.in >/dev/null; then
+      if grep "^AM_PROG_XML_I18N_TOOLS" configure.ac >/dev/null; then
         echo "Running xml-i18n-toolize..."
 	xml-i18n-toolize --copy --force --automake
       fi
-      if grep "^AC_PROG_LIBTOOL" configure.in >/dev/null; then
+      if grep "^AC_PROG_LIBTOOL" configure.ac >/dev/null; then
 	if test -z "$NO_LIBTOOLIZE" ; then 
 	  echo "Running libtoolize..."
 	  libtoolize --force --copy
@@ -128,12 +130,12 @@ do
       fi
       echo "Running aclocal $aclocalinclude ..."
       aclocal $aclocalinclude
-      if grep "^AM_CONFIG_HEADER" configure.in >/dev/null; then
+      if grep "^AM_CONFIG_HEADER" configure.ac >/dev/null; then
 	echo "Running autoheader..."
 	autoheader
       fi
-      echo "Running automake --gnu $am_opt ..."
-      automake --add-missing --gnu  --force --copy $am_opt
+      echo "Running automake --foreign $am_opt ..."
+      automake --add-missing --foreign  --force --copy $am_opt
       echo "Running autoconf ..."
       autoconf
     )

@@ -25,7 +25,7 @@
 #  include "config.h"
 #endif
 
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
 
 #include <libsn/sn.h>
@@ -37,12 +37,12 @@ void sn_init_display(Display *, int);
 void sn_close_display(void);
 void sn_process_event(XEvent * event);
 
-#else /* HAVE_STARTUP_NOTIFICATION */
+#else /* HAVE_LIBSTARTUP_NOTIFICATION */
 
 #define sn_client_startup_properties(c) ;
 #define sn_init_display(d,i) ;
 #define sn_close_display() ;
 #define sn_process_event(e) ;
 
-#endif /* HAVE_STARTUP_NOTIFICATION */
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 #endif /* INC_STARTUP_NOTIFICATION_H */

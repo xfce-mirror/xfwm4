@@ -194,7 +194,7 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[4];
     char *name;
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 
     char *startup_id;
 #endif
@@ -254,7 +254,7 @@ void clientResize(Client *, int, XEvent *);
 void clientCycle(Client *);
 void clientButtonPress(Client *, Window, XButtonEvent *);
 Client *clientGetLeader(Client *);
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char *clientGetStartupId(Client *);
 #endif
 

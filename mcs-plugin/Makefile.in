@@ -14,6 +14,9 @@
 
 @SET_MAKE@
 
+# mcs-plugin/Makefile.am
+#
+
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -44,8 +47,6 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
-BASE_DEPENDENCIES_CFLAGS = @BASE_DEPENDENCIES_CFLAGS@
-BASE_DEPENDENCIES_LIBS = @BASE_DEPENDENCIES_LIBS@
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
@@ -62,11 +63,14 @@ ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
-GDK_PIXBUF_CSOURCE = @GDK_PIXBUF_CSOURCE@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
+GLIB_CFLAGS = @GLIB_CFLAGS@
+GLIB_LIBS = @GLIB_LIBS@
 GLIB_REQUIRED_VERSION = @GLIB_REQUIRED_VERSION@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
+GTK_CFLAGS = @GTK_CFLAGS@
+GTK_LIBS = @GTK_LIBS@
 GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -77,19 +81,34 @@ INTLLIBS = @INTLLIBS@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
+LIBSTARTUP_NOTIFICATION_CFLAGS = @LIBSTARTUP_NOTIFICATION_CFLAGS@
+LIBSTARTUP_NOTIFICATION_LIBS = @LIBSTARTUP_NOTIFICATION_LIBS@
+LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION = @LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION@
 LIBTOOL = @LIBTOOL@
-LIBXFCE4MCS_REQUIRED_VERSION = @LIBXFCE4MCS_REQUIRED_VERSION@
+LIBX11_CFLAGS = @LIBX11_CFLAGS@
+LIBX11_LDFLAGS = @LIBX11_LDFLAGS@
+LIBX11_LIBS = @LIBX11_LIBS@
+LIBXFCE4MCS_CLIENT_CFLAGS = @LIBXFCE4MCS_CLIENT_CFLAGS@
+LIBXFCE4MCS_CLIENT_LIBS = @LIBXFCE4MCS_CLIENT_LIBS@
+LIBXFCE4MCS_CLIENT_REQUIRED_VERSION = @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
+LIBXFCE4MCS_MANAGER_CFLAGS = @LIBXFCE4MCS_MANAGER_CFLAGS@
+LIBXFCE4MCS_MANAGER_LIBS = @LIBXFCE4MCS_MANAGER_LIBS@
+LIBXFCE4MCS_MANAGER_REQUIRED_VERSION = @LIBXFCE4MCS_MANAGER_REQUIRED_VERSION@
+LIBXFCE4UTIL_CFLAGS = @LIBXFCE4UTIL_CFLAGS@
+LIBXFCE4UTIL_LIBS = @LIBXFCE4UTIL_LIBS@
+LIBXFCE4UTIL_REQUIRED_VERSION = @LIBXFCE4UTIL_REQUIRED_VERSION@
+LIBXFCEGUI4_CFLAGS = @LIBXFCEGUI4_CFLAGS@
+LIBXFCEGUI4_LIBS = @LIBXFCEGUI4_LIBS@
 LIBXFCEGUI4_REQUIRED_VERSION = @LIBXFCEGUI4_REQUIRED_VERSION@
+LIBXPM_CFLAGS = @LIBXPM_CFLAGS@
+LIBXPM_LDFLAGS = @LIBXPM_LDFLAGS@
+LIBXPM_LIBS = @LIBXPM_LIBS@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
 MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
-MCS_CLIENT_CFLAGS = @MCS_CLIENT_CFLAGS@
-MCS_CLIENT_LIBS = @MCS_CLIENT_LIBS@
-MCS_MANAGER_CFLAGS = @MCS_MANAGER_CFLAGS@
-MCS_MANAGER_LIBS = @MCS_MANAGER_LIBS@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
 OBJEXT = @OBJEXT@
@@ -99,7 +118,6 @@ PACKAGE_NAME = @PACKAGE_NAME@
 PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
-PANGO_REQUIRED_VERSION = @PANGO_REQUIRED_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 POFILES = @POFILES@
@@ -109,13 +127,12 @@ PO_IN_DATADIR_TRUE = @PO_IN_DATADIR_TRUE@
 RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
-STARTUP_NOTIFICATION_CFLAGS = @STARTUP_NOTIFICATION_CFLAGS@
-STARTUP_NOTIFICATION_LIBS = @STARTUP_NOTIFICATION_LIBS@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 XFCE_MCS_MANAGER_CFLAGS = @XFCE_MCS_MANAGER_CFLAGS@
 XFCE_MCS_MANAGER_LIBS = @XFCE_MCS_MANAGER_LIBS@
+XFCE_MCS_MANAGER_REQUIRED_VERSION = @XFCE_MCS_MANAGER_REQUIRED_VERSION@
 XGETTEXT = @XGETTEXT@
 X_CFLAGS = @X_CFLAGS@
 X_EXTRA_LIBS = @X_EXTRA_LIBS@
@@ -146,6 +163,7 @@ infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
 libexecdir = @libexecdir@
+localedir = @localedir@
 localstatedir = @localstatedir@
 mandir = @mandir@
 oldincludedir = @oldincludedir@
@@ -155,29 +173,90 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+
 xfwm4_plugindir = $(libdir)/xfce-mcs-manager/plugins
 
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
-xfwm4_plugin_la_LDFLAGS = -module -avoid-version
 
-xfwm4_plugin_la_SOURCES = xfwm4_plugin.c xfwm4-icon.h
+xfwm4_plugin_la_LDFLAGS = \
+	-avoid-version							\
+	-export-dynamic							\
+	-module
 
-xfwm4_plugin_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ @XFCE_MCS_MANAGER_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(pkgdatadir)\" 
-xfwm4_plugin_la_LIBADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@ @XFCE_MCS_MANAGER_LIBS@
+
+xfwm4_plugin_la_SOURCES = \
+	xfwm4_plugin.c							\
+	xfwm4-icon.h
+
+
+xfwm4_plugin_la_CFLAGS = \
+	@CFLAGS@							\
+	@LIBX11_CFLAGS@							\
+	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@LIBXFCE4UTIL_CFLAGS@						\
+	@LIBXFCEGUI4_CFLAGS@						\
+	@XFCE_MCS_MANAGER_CFLAGS@					\
+	-I$(top_builddir)/common					\
+	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
+	-DG_DISABLE_DEPRECATED						\
+	-DSYSCONFDIR=\"$(sysconfdir)\"					\
+	-DDATADIR=\"$(pkgdatadir)\" 
+
+
+xfwm4_plugin_la_LIBADD = \
+	@LIBS@
+
 
 margins_plugindir = $(libdir)/xfce-mcs-manager/plugins
 
 margins_plugin_LTLIBRARIES = margins_plugin.la
-margins_plugin_la_LDFLAGS = -module -avoid-version
 
-margins_plugin_la_SOURCES = margins_plugin.c margins-icon.h
+margins_plugin_la_LDFLAGS = \
+	-avoid-version							\
+	-export-dynamic							\
+	-module
 
-margins_plugin_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ @XFCE_MCS_MANAGER_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(pkgdatadir)\" 
-margins_plugin_la_LIBADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@ @XFCE_MCS_MANAGER_LIBS@
 
-EXTRA_DIST = xfwm4-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
+margins_plugin_la_SOURCES = \
+	margins_plugin.c						\
+	margins-icon.h
 
-noinst_DATA = xfwm4-icon.h margins-icon.h monitor-icon.h xfwm4-icon.png margins-icon.png monitor-icon.png
+
+margins_plugin_la_CFLAGS = \
+	@CFLAGS@							\
+	@LIBX11_CFLAGS@							\
+	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@LIBXFCE4UTIL_CFLAGS@						\
+	@LIBXFCEGUI4_CFLAGS@						\
+	@XFCE_MCS_MANAGER_CFLAGS@					\
+	-I$(top_builddir)/common					\
+	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
+	-DG_DISABLE_DEPRECATED						\
+	-DSYSCONFDIR=\"$(sysconfdir)\"					\
+	-DDATADIR=\"$(pkgdatadir)\" 
+
+
+margins_plugin_la_LIBADD = \
+	@LIBS@
+
+
+EXTRA_DIST = \
+	xfwm4-icon.h							\
+	margins-icon.h							\
+	monitor-icon.h							\
+	xfwm4-icon.png							\
+	margins-icon.png						\
+	monitor-icon.png
+
+
+noinst_DATA = \
+	xfwm4-icon.h							\
+	margins-icon.h							\
+	monitor-icon.h							\
+	xfwm4-icon.png							\
+	margins-icon.png						\
+	monitor-icon.png
+
 subdir = mcs-plugin
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -213,9 +292,9 @@ all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  mcs-plugin/Makefile
+	  $(AUTOMAKE) --foreign  mcs-plugin/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
 margins_pluginLTLIBRARIES_INSTALL = $(INSTALL)
@@ -582,14 +661,17 @@ uninstall-am: uninstall-info-am uninstall-margins_pluginLTLIBRARIES \
 	uninstall-xfwm4_pluginLTLIBRARIES
 
 
-xfwm4-icon.h: $(IMAGES)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list xfwm4_icon_data $(srcdir)/xfwm4-icon.png > $(srcdir)/xfwm4-icon.h
+xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
+	gdk-pixbuf-csource --raw --build-list				\
+	xfwm4_icon_data $(srcdir)/xfwm4-icon.png > xfwm4-icon.h
 
-margins-icon.h: $(IMAGES)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list margins_icon_data $(srcdir)/margins-icon.png > $(srcdir)/margins-icon.h
+margins-icon.h: $(srcdir)/margins-icon.h
+	gdk-pixbuf-csource --raw --build-list				\
+	margins_icon_data $(srcdir)/margins-icon.png > margins-icon.h
 
-monitor-icon.h: $(IMAGES)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list monitor_icon_data $(srcdir)/monitor-icon.png > $(srcdir)/monitor-icon.h
+monitor-icon.h: $(srcdir)/monitor-icon.png
+	gdk-pixbuf-csource --raw --build-list				\
+	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

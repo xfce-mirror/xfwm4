@@ -37,6 +37,7 @@
 
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
+#include <libxfce4util/util.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "xfwm4-icon.h"
@@ -56,9 +57,6 @@
 
 #define DEFAULT_ICON_SIZE 48
 #define MAX_ELEMENTS_BEFORE_SCROLLING 6
-#ifndef DATADIR
-#define DATADIR "/usr/local/share"
-#endif
 
 #define STATES 8
 #define STATE_HIDDEN (STATES - 1)
@@ -687,7 +685,7 @@ static GList *theme_common_init(GList * theme_list)
     gchar *dir;
     GList *list = theme_list;
 
-    dir = g_build_filename(g_get_home_dir(), ".themes", G_DIR_SEPARATOR_S, "xfwm4", NULL);
+    dir = xfce_get_homefile(".themes", "xfwm4", NULL);
     list = themes_common_list_add_dir(dir, list);
     g_free(dir);
 

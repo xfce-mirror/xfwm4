@@ -1926,7 +1926,7 @@ static inline void clientFree(Client * c)
     {
         free(c->name);
     }
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
     if(c->startup_id)
     {
         free(c->startup_id);
@@ -2116,7 +2116,7 @@ void clientFrame(Window w)
     }
     c->client_leader = None;
     c->client_leader = getClientLeader(dpy, c->window);
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 
     c->startup_id = NULL;
     getWindowStartupId(dpy, c->window, &c->startup_id);
@@ -4202,7 +4202,7 @@ Client *clientGetLeader(Client * c)
     return c2;
 }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char *clientGetStartupId(Client * c)
 {
     DBG("entering clientStartupId\n");

@@ -422,7 +422,7 @@ void set_net_supported_hint(Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_window_type_toolbar;
     atoms[i++] = net_wm_window_type_utility;
     atoms[i++] = net_workarea;
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 
     atoms[i++] = net_startup_id;
 #endif
@@ -781,7 +781,7 @@ gboolean getWindowCommand(Display * dpy, Window window, char ***argv, int *argc)
     return FALSE;
 }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId(Display * dpy, Window window, char **startup_id)
 {
     XTextProperty tp;

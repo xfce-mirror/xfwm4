@@ -22,7 +22,7 @@
 #  include "config.h"
 #endif
 
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
 
 #include <X11/Xlib.h>

@@ -1680,6 +1680,31 @@ AC_DEFUN([LT_AC_PROG_GCJ],
   AC_SUBST(GCJFLAGS)
 ])
 
+dnl I18n support
+dnl
+dnl Copyright (c) 2003  Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+dnl
+
+dnl BM_I18N(pkgname, languages)
+AC_DEFUN([BM_I18N],
+[
+  GETTEXT_PACKAGE=$1
+  AC_SUBST([GETTEXT_PACKAGE])
+  AC_DEFINE([GETTEXT_PACKAGE], ["$1"], [Name of default gettext domain])
+
+  ALL_LINGUAS="$2"
+
+  AM_GLIB_GNU_GETTEXT
+
+  AC_MSG_CHECKING([for locales directory])
+  AC_ARG_WITH([locales-dir],
+    AC_HELP_STRING([--with-locales-dir=DIR], [Install locales into DIR]),
+    [localedir=$withval],
+    [localedir=$datadir/locale])
+  AC_MSG_RESULT([$localedir])
+  AC_SUBST([localedir])
+])
+
 # Macro to add for using GNU gettext.
 # Ulrich Drepper <drepper@cygnus.com>, 1995, 1996
 #
@@ -1866,8 +1891,6 @@ glib_DEFUN([GLIB_WITH_NLS],
 	    [CATOBJEXT=.mo
              DATADIRNAME=lib])
 	  INSTOBJEXT=.mo
-	else
-	  gt_cv_have_gettext=no
 	fi
       fi
     ])
@@ -2012,6 +2035,182 @@ AC_DEFUN(AM_GLIB_GNU_GETTEXT,[GLIB_GNU_GETTEXT($@)])
 AC_DEFUN(AM_GLIB_DEFINE_LOCALEDIR,[GLIB_DEFINE_LOCALEDIR($@)])
 ])dnl
 
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl Check for X11
+
+AC_DEFUN([BM_LIBX11],
+[
+  AC_REQUIRE([AC_PATH_XTRA])
+  AC_REQUIRE([BM_RPATH_SUPPORT])
+  LIBX11_CFLAGS= LIBX11_LDFLAGS= LIBX11_LIBS=
+  if test "$no_x" != "yes"; then
+    AC_CHECK_LIB(X11, main,
+    [
+      AC_DEFINE(HAVE_LIBX11, 1, Define if libX11 is available)
+      LIBX11_CFLAGS="$X_CFLAGS"
+      for option in $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS; do
+      	case "$option" in
+        -L*)
+          path=`echo $option | sed 's/^-L//'`
+          if test "x$path" != "x"; then
+            LIBX11_LDFLAGS="$LIBX11_LDFLAGS -L$path"
+            if test -n "$LD_RPATH"; then
+              LIBX11_LDFLAGS="$LIBX11_LDFLAGS $LD_RPATH$path"
+            fi
+          fi
+          ;;
+        *)
+          LIBX11_LIBS="$LIBX11_LIBS $option"
+          ;;
+        esac
+      done
+      if ! echo $LIBX11_LIBS | grep -q -- '-lX11'; then
+        LIBX11_LIBS="$LIBX11_LIBS -lX11"
+      fi
+    ], [], [$X_CFLAGS $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS])
+  fi
+  AC_SUBST(LIBX11_CFLAGS)
+  AC_SUBST(LIBX11_LDFLAGS)
+  AC_SUBST(LIBX11_LIBS)
+])
+
+AC_DEFUN([BM_LIBX11_REQUIRE],
+[
+  AC_REQUIRE([BM_LIBX11])
+  if test "$no_x" == "yes"; then
+    AC_MSG_ERROR([X Window system libraries and header files are required])
+  fi
+])
+
+AC_DEFUN([BM_LIBSM],
+[
+  AC_REQUIRE([BM_LIBX11])
+  LIBSM_CFLAGS= LIBSM_LDFLAGS= LIBSM_LIBS=
+  if test "$no_x" != "yes"; then
+    AC_CHECK_LIB(SM, SmcSaveYourselfDone,
+    [
+      AC_DEFINE(HAVE_LIBSM, 1, Define if libSM is available)
+      LIBSM_CFLAGS="$LIBX11_CFLAGS"
+      LIBSM_LDFLAGS="$LIBX11_LDFLAGS"
+      LIBSM_LIBS="$LIBX11_LIBS"
+      if ! echo $LIBSM_LIBS | grep -q -- '-lSM'; then
+        LIBSM_LIBS="$LIBSM_LIBS -lSM -lICE"
+      fi
+    ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lICE])
+  fi
+  AC_SUBST(LIBSM_CFLAGS)
+  AC_SUBST(LIBSM_LDFLAGS)
+  AC_SUBST(LIBSM_LIBS)
+])
+
+AC_DEFUN([BM_LIBXPM],
+[
+  AC_REQUIRE([BM_LIBX11])
+  LIBXPM_CFLAGS= LIBXPM_LDFLAGS= LIBXPM_LIBS=
+  if test "$no_x" != "yes"; then
+    AC_CHECK_LIB(Xpm, main,
+    [
+      AC_DEFINE([HAVE_LIBXPM], [1], [Define if libXpm is available])
+      LIBXPM_CFLAGS="$LIBX11_CFLAGS"
+      LIBXPM_LDFLAGS="$LIBX11_LDFLAGS"
+      LIBXPM_LIBS="$LIBX11_LIBS"
+      if ! echo $LIBXPM_LIBS | grep -q -- '-lXpm'; then
+        LIBXPM_LIBS="$LIBXPM_LIBS -lXpm"
+      fi
+    ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lXpm])
+  fi
+  AC_SUBST([LIBXPM_CFLAGS])
+  AC_SUBST([LIBXPM_LDFLAGS])
+  AC_SUBST([LIBXPM_LIBS])
+])
+
+AC_DEFUN([BM_LIBXPM_REQUIRE],
+[
+  AC_REQUIRE([BM_LIBX11_REQUIRE])
+  AC_REQUIRE([BM_LIBXPM])
+  if test -z "$LIBXPM_LIBS"; then
+    AC_MSG_ERROR([The Xpm library was not found on you system])
+  fi
+])
+
+AC_DEFUN([BM_LIBXINERAMA],
+[
+  AC_ARG_ENABLE(xinerama,
+AC_HELP_STRING([--enable-xinerama], [enable xinerama extension])
+AC_HELP_STRING([--disable-xinerama], [disable xinerama extension [default]]),
+      [], [enable_xinerama=no])
+  LIBXINERAMA_CFLAGS= LIBXINERAMA_LDFLAGS= LIBXINERAMA_LIBS=
+  if test "x$enable_xinerama" = "xyes"; then
+    AC_REQUIRE([BM_LIBX11_REQUIRE])
+    AC_CHECK_LIB(Xinerama, XineramaQueryScreens,
+    [
+      AC_DEFINE(HAVE_LIBXINERAMA, 1, Define if XFree86 Xinerama is available)
+      LIBXINERAMA_CFLAGS="$LIBX11_CFLAGS"
+      LIBXINERAMA_LDFLAGS="$LIBX11_LDFLAGS"
+      LIBXINERAMA_LIBS="$LIBX11_LIBS"
+      if ! echo $LIBXINERAMA_LIBS | grep -q -- '-lXinerama'; then
+        LIBXINERAMA_LIBS="$LIBXINERAMA_LIBS -lXinerama"
+      fi
+      if ! echo $LIBXINERAMA_LIBS | grep -q -- '-lXext'; then
+        LIBXINERAMA_LIBS="$LIBXINERAMA_LIBS -lXext"
+      fi
+    ],[], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lXext])
+  fi
+  AC_SUBST(LIBXINERAMA_CFLAGS)
+  AC_SUBST(LIBXINERAMA_LDFLAGS)
+  AC_SUBST(LIBXINERAMA_LIBS)
+])
+
+
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl
+dnl Workaround for some broken ELF systems
+dnl
+
+AC_DEFUN([BM_RPATH_SUPPORT],
+[
+  AC_ARG_ENABLE(rpath,
+AC_HELP_STRING([--enable-rpath], [Specify run path to the ELF linker (default)])
+AC_HELP_STRING([--disable-rpath], [Do not use -rpath (use with care!!)]),
+    [ac_cv_rpath=$enableval], [ac_cv_rpath=yes])
+  AC_MSG_CHECKING([whether to use -rpath])
+  LD_RPATH=
+  if test "x$ac_cv_rpath" != "xno"; then
+    LD_RPATH="-Wl,-R"
+    AC_MSG_RESULT([yes])
+  else
+    LD_RPATH=""
+    AC_MSG_RESULT([no])
+  fi
+])
+
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl
+dnl
+
+AC_DEFUN([BM_DEPEND],
+[
+  PKG_CHECK_MODULES([$1], [$2 >= $3])
+  $1_REQUIRED_VERSION=$3
+  AC_SUBST($1_REQUIRED_VERSION)
+])
+
+dnl
+dnl BM_DEPEND_CHECK(var, pkg, version)
+dnl
+AC_DEFUN([BM_DEPEND_CHECK],
+[
+  AC_MSG_CHECKING([for $2 >= $3])
+  if $PKG_CONFIG --atleast-version $2 $3 2> /dev/null; then
+    AC_MSG_RESULT([yes])
+    BM_DEPEND([$1], [$2], [$3])
+    AC_DEFINE([HAVE_$1], [1], [Define if you have $2 >= $3])
+  else
+    AC_MSG_RESULT([no])
+  fi
+])
+
+
 
 dnl PKG_CHECK_MODULES(GSTUFF, gtk+-2.0 >= 1.3 glib = 1.3.4, action-if, action-not)
 dnl defines GSTUFF_LIBS, GSTUFF_CFLAGS, see pkg-config man page
@@ -2069,4 +2268,33 @@ AC_DEFUN(PKG_CHECK_MODULES, [
 ])
 
 
+
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl
+dnl if debug support is requested:
+dnl
+dnl   1) defines DEBUG to 1
+dnl   2) adds requested debug level flags to CFLAGS
+dnl
+
+AC_DEFUN([BM_DEBUG_SUPPORT],
+[
+  AC_ARG_ENABLE(debug,
+AC_HELP_STRING([--enable-debug[=yes|no|full]], [Build with debugging support])
+AC_HELP_STRING([--disable-debug], [Include no debugging support [default]]),
+    [ac_cv_debug=$enableval], [ac_cv_debug=no])
+  AC_MSG_CHECKING([whether to build with debugging support])
+  if test "x$ac_cv_debug" != "xno"; then
+    AC_DEFINE(DEBUG, 1, Define for debugging support)
+    if test "x$ac_cv_debug" == "xfull"; then
+      CFLAGS="$CFLAGS -g3 -Wall -Werror"
+      AC_MSG_RESULT([full])
+    else
+      CFLAGS="$CFLAGS -g -Wall -Werror"
+      AC_MSG_RESULT([yes])
+    fi
+  else
+    AC_MSG_RESULT([no])
+  fi
+])
 

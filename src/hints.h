@@ -200,7 +200,7 @@ gboolean getWindowRole(Display *, Window, char **);
 Window getClientLeader(Display *, Window);
 gboolean getClientID(Display *, Window, char **);
 gboolean getWindowCommand(Display *, Window, char ***, int *);
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId(Display *, Window, char **);
 #endif
 
