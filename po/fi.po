@@ -24,7 +24,7 @@ msgstr "Valikko"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Stick"
-msgstr "Liimaa"
+msgstr "KiinnitÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Shade"
@@ -64,7 +64,7 @@ msgstr "Vasen"
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Center"
-msgstr "Keski"
+msgstr "KeskellÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:137
 msgid "Right"
@@ -88,7 +88,7 @@ msgstr "Ikkunoiden Asetukset"
 
 #: mcs-plugin/xfwm4_plugin.c:1088
 msgid "Window style"
-msgstr "Ikkunan tyyli"
+msgstr "Ikkunoiden tyyli"
 
 #: mcs-plugin/xfwm4_plugin.c:1106
 msgid "Font select :"
@@ -135,7 +135,7 @@ msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"Automaattisesti kohdenna\n"
+"Automaattisesti kohdenna \n"
 "uusiin ikkunoihin"
 
 #: mcs-plugin/xfwm4_plugin.c:1223
@@ -220,7 +220,7 @@ msgstr "Samea koon muutos "
 
 #: mcs-plugin/xfwm4_plugin.c:1387
 msgid "Display content of windows when moving"
-msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essa"
+msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Opaque move"
@@ -228,7 +228,7 @@ msgstr "Samea siirto"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
+msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia :"
 
 #: mcs-plugin/xfwm4_plugin.c:1404
 msgid "Double click action"
@@ -256,7 +256,7 @@ msgstr "%s: Toiminto ei tuettu (vielÃ€)\n"
 #, c-format
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
 msgstr ""
-"%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8\n"
+"%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8:a\n"
 
 #: src/main.c:167
 #, c-format
@@ -296,7 +296,7 @@ msgstr "Alustus tehty"
 
 #: src/menu.c:38
 msgid "Ma_ximize"
-msgstr "Ma_ksimoi"
+msgstr "S_uurenna"
 
 #: src/menu.c:39
 msgid "Un_maximize"
@@ -324,11 +324,11 @@ msgstr "P_oista varjostus"
 
 #: src/menu.c:45
 msgid "S_tick"
-msgstr "_Liimaa"
+msgstr "_KiinnitÃ€"
 
 #: src/menu.c:46
 msgid "Uns_tick"
-msgstr "Poist_a liimaus"
+msgstr "Poist_a kiinnitys"
 
 #: src/menu.c:47
 msgid "_Move"
@@ -340,11 +340,11 @@ msgstr "_Muuta kokoa"
 
 #: src/menu.c:49
 msgid "S_witch"
-msgstr "_Vaihda"
+msgstr "Vai_hda"
 
 #: src/menu.c:51
 msgid "_Close"
-msgstr "_Sulje"
+msgstr "Sulj_e"
 
 #: src/menu.c:53
 msgid "Destroy"
@@ -360,7 +360,7 @@ msgstr "_Lopeta"
 
 #: src/menu.c:59
 msgid "Restart"
-msgstr "K_Ã€ynnista uudelleen"
+msgstr "K_Ã€ynnistÃ€ uudelleen"
 
 #: src/menu.c:307
 #, c-format
@@ -370,7 +370,7 @@ msgstr "%s: GtkMenu epÃ€onnistui osoittimen haltuunotossa\n"
 #: src/settings.c:333
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
+msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi ottaa kÃ€yttÃ¶Ã¶n \n"
 
 #: src/settings.c:339
 #, c-format
@@ -380,7 +380,7 @@ msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi tunnistaa \n"
 #: src/settings.c:377
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
+msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi ottaa kÃ€yttÃ¶Ã¶ \n"
 
 #: src/settings.c:383
 #, c-format
@@ -395,4 +395,4 @@ msgstr ""
 
 #: src/tabwin.c:68
 msgid "Switch to ..."
-msgstr "Vaihta pÃ¶ydÃ€lle ..."
+msgstr "Vaihta pÃ¶ydÃ€lle..."
