@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-28 22:38+0200\n"
+"POT-Creation-Date: 2004-06-30 23:52+0200\n"
 "PO-Revision-Date: 2003-08-16 15:44+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
@@ -270,7 +270,7 @@ msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
 msgid "Advanced"
 msgstr "Išplėstas"
 
-#: src/client.c:528
+#: src/client.c:529
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""

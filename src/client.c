@@ -84,7 +84,8 @@
     ((c->win_layer > WIN_LAYER_DESKTOP) && \
      (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
      !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
-     !(c->legacy_fullscreen))
+     !(c->legacy_fullscreen) && \
+     !(c->gravity == StaticGravity))
 
 #define WINDOW_TYPE_DONT_PLACE \
     WINDOW_DESKTOP | \
@@ -776,6 +777,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientSetNetState (c);
             clientWindowType (c);
         }
+	frameDraw (c, TRUE, FALSE);
     }
 
     if ((first == net_wm_state_fullscreen)
@@ -3386,11 +3388,6 @@ clientFrame (Window w, gboolean recapture)
         XShapeSelectInput (dpy, c->window, ShapeNotifyMask);
     }
 
-    /* Window is reparented now, so we can safely release the grab 
-     * on the server 
-     */
-    MyXUngrabServer ();
-
     clientAddToList (c);
     clientSetNetActions (c);
     clientGrabKeys (c);
@@ -3460,6 +3457,11 @@ clientFrame (Window w, gboolean recapture)
         setWMState (dpy, c->window, IconicState);
         clientSetNetState (c);
     }
+
+    /* Window is reparented now, so we can safely release the grab 
+     * on the server 
+     */
+    MyXUngrabServer ();
     gdk_error_trap_pop ();
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);

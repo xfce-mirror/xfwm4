@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.fa_IR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-28 22:38+0200\n"
+"POT-Creation-Date: 2004-06-30 23:52+0200\n"
 "PO-Revision-Date: 2004-01-09 19:35+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -274,7 +274,7 @@ msgstr "عملی که هنگام دوکلیکه کردن بر نوار عنوا�
 msgid "Advanced"
 msgstr "پیشرفته"
 
-#: src/client.c:528
+#: src/client.c:529
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) سازماندهی نشده"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-28 22:38+0200\n"
+"POT-Creation-Date: 2004-06-30 23:52+0200\n"
 "PO-Revision-Date: 2003-09-12 22:02+0100\n"
 "Last-Translator: Nuno Donato <nunodonato@sapo.pt>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -274,7 +274,7 @@ msgstr "Acção a exectuar quando se faz um duplo clique na barra de título"
 msgid "Advanced"
 msgstr "Avançadas"
 
-#: src/client.c:528
+#: src/client.c:529
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) não gerido"

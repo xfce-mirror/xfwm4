@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-28 22:38+0200\n"
+"POT-Creation-Date: 2004-06-30 23:52+0200\n"
 "PO-Revision-Date: 2003-08-31 14:10+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -270,7 +270,7 @@ msgstr "Aksi untuk dilakukan apabila dwiklik pada bar tajuk :"
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: src/client.c:528
+#: src/client.c:529
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Takterurus net_wm_state (tetingkap 0x%lx)"

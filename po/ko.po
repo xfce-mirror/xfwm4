@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-28 22:38+0200\n"
+"POT-Creation-Date: 2004-06-30 23:52+0200\n"
 "PO-Revision-Date: 2003-08-02 03:36+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,7 @@ msgstr "제목 틀을 더블클릭한 경우 취하는 동작"
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/client.c:528
+#: src/client.c:529
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""

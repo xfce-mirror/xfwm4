@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-28 22:38+0200\n"
+"POT-Creation-Date: 2004-06-30 23:52+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -270,7 +270,7 @@ msgstr "தலைப்புப் பட்டையில் þரட்ட�
 msgid "Advanced"
 msgstr "உயர்நிலை"
 
-#: src/client.c:528
+#: src/client.c:529
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: மேலாண்மையற்ற net_wm_state (சாளரம் 0x%lx)"
