@@ -213,6 +213,11 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
     cache_x = x;
     cache_y = y;
 
+    /* No monitor has been eligible, use the closest one */
+
+    min_distsquare = G_MAXUINT32;
+    nearest_monitor = 0;
+
     num_monitors = gdk_screen_get_n_monitors (screen);
     for (i = 0; i < num_monitors; i++)
     {
@@ -224,16 +229,6 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
             cache_monitor = i;
             return i;
         }
-    }
-
-    /* No monitor has been eligible, use the closest one */
-
-    min_distsquare = G_MAXUINT32;
-    nearest_monitor = 0;
-
-    for (i = 0; i < num_monitors; i++)
-    {
-        gdk_screen_get_monitor_geometry (screen, i, &monitor);
 
         center_x = monitor.x + (monitor.width / 2);
         center_y = monitor.y + (monitor.height / 2);
@@ -249,6 +244,7 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
             nearest_monitor = i;
         }
     }
+
     cache_monitor = nearest_monitor;
     return (nearest_monitor);
 }
