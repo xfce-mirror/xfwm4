@@ -7790,7 +7790,7 @@ cat >>confdefs.h <<_ACEOF
 _ACEOF
 
 
-ALL_LINGUAS="de es es_MX fr nl zh_CN"
+ALL_LINGUAS="de es es_MX fi fr nl zh_CN"
 
 
 for ac_header in locale.h

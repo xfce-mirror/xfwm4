@@ -1,0 +1,398 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Olivier Fourdan <fourdan@xfce.org>
+# This file is distributed under the same license as the PACKAGE package.
+# Olivier Fourdan <fourdan@xfce.org>.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 1.0.0\n"
+"POT-Creation-Date: 2003-01-23 23:15+0100\n"
+"PO-Revision-Date: 2003-01-22 00:36+0100\n"
+"Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
+"Language-Team: none <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "Otsikko"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr "Valikko"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr "Liimaa"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr "Varjosta"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "Piilota"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "Suurenna"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "Sulje"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr "Varjosta ikkuna"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "Piilota ikkuna"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "Suurenna ikkuna"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr "Ei mitÃ€Ã€n"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "Vasen"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "Keski"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "Oikea"
+
+#: mcs-plugin/xfwm4_plugin.c:405
+msgid "Layout :"
+msgstr "Ulkoasu :"
+
+#: mcs-plugin/xfwm4_plugin.c:449
+msgid "Hidden"
+msgstr "Piilotettu"
+
+#: mcs-plugin/xfwm4_plugin.c:999
+msgid "Font Selection Dialog"
+msgstr "Fontin valinta"
+
+#: mcs-plugin/xfwm4_plugin.c:1053
+msgid "Window Manager Preferences"
+msgstr "Ikkunoiden Asetukset"
+
+#: mcs-plugin/xfwm4_plugin.c:1088
+msgid "Window style"
+msgstr "Ikkunan tyyli"
+
+#: mcs-plugin/xfwm4_plugin.c:1106
+msgid "Font select :"
+msgstr "Fontin valinta :"
+
+#: mcs-plugin/xfwm4_plugin.c:1117
+msgid "Title font"
+msgstr "Otsikko fontti"
+
+#: mcs-plugin/xfwm4_plugin.c:1126
+msgid "Text alignment inside title bar :"
+msgstr "Tekstin tasaus otsikkopalkin sisÃ€llÃ€ :"
+
+#: mcs-plugin/xfwm4_plugin.c:1128
+msgid "Title Alignment"
+msgstr "Otsikon tasaus"
+
+#: mcs-plugin/xfwm4_plugin.c:1139
+msgid "Button layout"
+msgstr "Nappien ulkoasu"
+
+#: mcs-plugin/xfwm4_plugin.c:1144
+msgid "Decoration style"
+msgstr "Koristelu tyyli"
+
+#: mcs-plugin/xfwm4_plugin.c:1176
+msgid "Keyboard Shortcut"
+msgstr "NÃ€ppÃ€in oikotiet"
+
+#: mcs-plugin/xfwm4_plugin.c:1194
+msgid "Click to focus"
+msgstr "Paina kohdistaaksesi"
+
+#: mcs-plugin/xfwm4_plugin.c:1201
+msgid "Focus follows mouse"
+msgstr "Kohdistus seuraa hiirtÃ€"
+
+#: mcs-plugin/xfwm4_plugin.c:1208
+msgid "Focus model"
+msgstr "Kohdistus malli"
+
+#: mcs-plugin/xfwm4_plugin.c:1217
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Automaattisesti kohdenna\n"
+"uusiin ikkunoihin"
+
+#: mcs-plugin/xfwm4_plugin.c:1223
+msgid "New window focus"
+msgstr "Uuden ikkunan kohdistus"
+
+#: mcs-plugin/xfwm4_plugin.c:1237
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Automaattisesti nosta ikkuna \n"
+"kun se kohdistetaan"
+
+#: mcs-plugin/xfwm4_plugin.c:1247
+msgid "Delay before raising focused window :"
+msgstr "Viive ennen tarkennetun ikkunan nostoa :"
+
+#: mcs-plugin/xfwm4_plugin.c:1253
+msgid "Slow"
+msgstr "Hidas"
+
+#: mcs-plugin/xfwm4_plugin.c:1259
+msgid "Fast"
+msgstr "Nopea"
+
+#: mcs-plugin/xfwm4_plugin.c:1274
+msgid "Raise on focus"
+msgstr "Nosta kohdennuksessa"
+
+#: mcs-plugin/xfwm4_plugin.c:1283
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Nosta ikkuna kun painetaan"
+"ikkunan sisÃ€llÃ€"
+
+#: mcs-plugin/xfwm4_plugin.c:1289
+msgid "Raise on click"
+msgstr "Nosta painettaessa"
+
+#: mcs-plugin/xfwm4_plugin.c:1294
+msgid "Keyboard and focus"
+msgstr "NÃ€ppÃ€imistÃ¶ ja kohdennus"
+
+#: mcs-plugin/xfwm4_plugin.c:1312
+msgid "Snap windows to screen border"
+msgstr "LiitÃ€ ikkunat nÃ€ytÃ¶n reunaan"
+
+#: mcs-plugin/xfwm4_plugin.c:1322
+msgid "Distance :"
+msgstr "EtÃ€isyys :"
+
+#: mcs-plugin/xfwm4_plugin.c:1328
+msgid "Small"
+msgstr "Pieni"
+
+#: mcs-plugin/xfwm4_plugin.c:1334
+msgid "Wide"
+msgstr "LeveÃ€"
+
+#: mcs-plugin/xfwm4_plugin.c:1348
+msgid "Snap to screen border"
+msgstr "LiitÃ€ nÃ€ytÃ¶n reunaan"
+
+#: mcs-plugin/xfwm4_plugin.c:1357
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "KierrÃ€tÃ€ tyÃ¶pÃ¶ytiÃ€ kun ikkuna raahataan ulos nÃ€ytÃ¶stÃ€"
+
+#: mcs-plugin/xfwm4_plugin.c:1363
+msgid "Wrap workspaces"
+msgstr "KierrÃ€tÃ€ tyÃ¶pÃ¶ytiÃ€"
+
+#: mcs-plugin/xfwm4_plugin.c:1372
+msgid "Display content of windows when resizing"
+msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ kokoa muutettaessa"
+
+#: mcs-plugin/xfwm4_plugin.c:1378
+msgid "Opaque resize"
+msgstr "Samea koon muutos "
+
+#: mcs-plugin/xfwm4_plugin.c:1387
+msgid "Display content of windows when moving"
+msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essa"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Opaque move"
+msgstr "Samea siirto"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
+
+#: mcs-plugin/xfwm4_plugin.c:1404
+msgid "Double click action"
+msgstr "Tuplaklikkaus toiminto"
+
+#: mcs-plugin/xfwm4_plugin.c:1409
+msgid "Misc."
+msgstr "Sekalaiset"
+
+#: mcs-plugin/xfwm4_plugin.c:1478
+msgid "Window Manager"
+msgstr "Ikkuna manageri"
+
+#: src/client.c:370
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window %#lx)"
+msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
+
+#: src/events.c:906
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Toiminto ei tuettu (vielÃ€)\n"
+
+#: src/hints.c:616
+#, c-format
+msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+msgstr ""
+"%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8\n"
+
+#: src/main.c:167
+#, c-format
+msgid "%s: Using GTK+-%d.%d.%d"
+msgstr "%s: KÃ€ytÃ¶ssÃ€ GTK+-%d.%d.%d"
+
+#: src/main.c:188
+#, c-format
+msgid "%s: Running without session manager"
+msgstr "%s: Ajetaan ilman istunnon hallintaa"
+
+#: src/main.c:278
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Toinen ikkunamanageri on jo kÃ€ynnistetty"
+
+#: src/main.c:281
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Oletustiedostoista puuttuu tietoa"
+
+#: src/main.c:287
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Tuntematon virhe"
+
+#: src/main.c:291
+#, c-format
+msgid "%s: Terminated\n"
+msgstr "%s: Lopetettu\n"
+
+#. parent
+#. wait for child signal
+#: src/main.c:327
+msgid "Init complete"
+msgstr "Alustus tehty"
+
+#: src/menu.c:38
+msgid "Ma_ximize"
+msgstr "Ma_ksimoi"
+
+#: src/menu.c:39
+msgid "Un_maximize"
+msgstr "_Palauta"
+
+#: src/menu.c:40
+msgid "_Hide"
+msgstr "P_iilota"
+
+#: src/menu.c:41
+msgid "Hide _all others"
+msgstr "Piilota _kaikki muut"
+
+#: src/menu.c:42
+msgid "S_how"
+msgstr "_NÃ€ytÃ€"
+
+#: src/menu.c:43
+msgid "_Shade"
+msgstr "_Varjosta"
+
+#: src/menu.c:44
+msgid "Un_shade"
+msgstr "P_oista varjostus"
+
+#: src/menu.c:45
+msgid "S_tick"
+msgstr "_Liimaa"
+
+#: src/menu.c:46
+msgid "Uns_tick"
+msgstr "Poist_a liimaus"
+
+#: src/menu.c:47
+msgid "_Move"
+msgstr "_SiirrÃ€"
+
+#: src/menu.c:48
+msgid "_Resize"
+msgstr "_Muuta kokoa"
+
+#: src/menu.c:49
+msgid "S_witch"
+msgstr "_Vaihda"
+
+#: src/menu.c:51
+msgid "_Close"
+msgstr "_Sulje"
+
+#: src/menu.c:53
+msgid "Destroy"
+msgstr "Tuhoa"
+
+#: src/menu.c:55
+msgid "Wor_kspace"
+msgstr "T_yÃ¶pÃ¶ytÃ€"
+
+#: src/menu.c:58
+msgid "_Quit"
+msgstr "_Lopeta"
+
+#: src/menu.c:59
+msgid "Restart"
+msgstr "K_Ã€ynnista uudelleen"
+
+#: src/menu.c:307
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu epÃ€onnistui osoittimen haltuunotossa\n"
+
+#: src/settings.c:333
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
+
+#: src/settings.c:339
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi tunnistaa \n"
+
+#: src/settings.c:377
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
+
+#: src/settings.c:383
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi tunnistaa\n"
+
+#: src/settings.c:695
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr ""
+"%s: TyÃ¶pÃ¶ytien mÃ€Ã€rÃ€Ã€ ei asetettu, kÃ€ytetÃ€Ã€n oletusarvoa: %i"
+
+#: src/tabwin.c:68
+msgid "Switch to ..."
+msgstr "Vaihta pÃ¶ydÃ€lle ..."
