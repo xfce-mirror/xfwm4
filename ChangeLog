@@ -1,3 +1,21 @@
+2004-10-02 14:31  olivier
+
+	* ChangeLog, po/xfwm4.pot, src/compositor.c, src/main.c,
+	  themes/symphony/themerc: Add support for expose on root event
+
+2004-10-02 13:50  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix #345
+
+2004-10-02 13:45  olivier
+
+	* src/: compositor.c, compositor.h, events.c: Damage window on
+	  shape events.
+
+2004-10-02 13:33  olivier
+
+	* src/events.c: Damage client on XShape event
+
 2004-10-02 12:33  olivier
 
 	* defaults/defaults, src/compositor.c, src/settings.c,
