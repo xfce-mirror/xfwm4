@@ -32,8 +32,8 @@ AC_HEADER_STDC
 AC_CHECK_FUNCS([daemon setsid])
 
 dnl Check for i18n support
-BM_I18N([xfwm4], [ar ca cs de es es_MX fi fr hi hu ja ko lt ms nl pl pt_PT ru
-	 sv ta tr uk vi zh_CN zh_TW])
+BM_I18N([xfwm4], [ar az ca cs de es es_MX fi fr hi hu ja ko lt ms nl pl pt_PT
+	 ru sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE

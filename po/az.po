@@ -1,0 +1,415 @@
+# Azerbaijani Turkish translation of xfwm.
+# Copyright (C) 2003 Mətin Əmirov
+# This file is distributed under the same license as the xfwm package.
+# Mətin Əmirov <metin@karegen.com>, 2003.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"PO-Revision-Date: 2003-12-13 01:12+0200\n"
+"Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
+"Language-Team: Azerbaijani Turkish <gnome@azitt.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "İş Sahəsi Kənarları"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "İş sahəsi kənarlarını sazla"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Kənarlar, ekranın pəncərə yerləşdirilməyəcəyi yerləridir"
+
+#: mcs-plugin/margins_plugin.c:281
+msgid "Left :"
+msgstr "Sol :"
+
+#: mcs-plugin/margins_plugin.c:301
+msgid "Right :"
+msgstr "Sağ :"
+
+#: mcs-plugin/margins_plugin.c:321
+msgid "Top :"
+msgstr "Üst :"
+
+#: mcs-plugin/margins_plugin.c:341
+msgid "Bottom :"
+msgstr "Alt :"
+
+#: mcs-plugin/xfwm4_plugin.c:116
+msgid "Title"
+msgstr "Başlıq"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "Menyu"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "Sabitlə"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "Bur"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "Gizlət"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "Böyüt"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "Bağla"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr "Pəncərəni bur"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "Pəncərəni gizlət"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "Pəncərəni böyüt"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "Heçnə"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "Sol"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "Orta"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "Sağ"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Gizli"
+
+#: mcs-plugin/xfwm4_plugin.c:1206
+msgid "Font Selection Dialog"
+msgstr "Yazı Növü Seçimi Dialoqu"
+
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+msgid "Window Manager"
+msgstr "Pəncərə İdarəçisi"
+
+#: mcs-plugin/xfwm4_plugin.c:1288
+msgid "Window Manager Preferences"
+msgstr "Pəncərə İdarəçisi Xassələri"
+
+#: mcs-plugin/xfwm4_plugin.c:1325
+msgid "Title font"
+msgstr "Başlıq yazı növü"
+
+#: mcs-plugin/xfwm4_plugin.c:1338
+msgid "Title Alignment"
+msgstr "Başlıq Hizası"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "Başlıq çubuğu içində mətnin hizası :"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
+msgid "Button layout"
+msgstr "Düymə düzülüşü"
+
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "Bəzək tərzi"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "Klaviatura Qısa Yolu"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Focus model"
+msgstr "Fokus növü"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr "Fokus üçün tıqlansın"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr "Fokus siçanı izləsin"
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr "Yeni pəncərə fokusu"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Yeni yaradılmış pəncərələri \n"
+"avtomatik olaraq fokusa al"
+
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "Fokusda qabağa gətir"
+
+#: mcs-plugin/xfwm4_plugin.c:1451
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Pəncərələrə fokus veriləndə \n"
+"onları avtomatik olaraq qabağa gətir"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Delay before raising focused window :"
+msgstr "Fokuslu pəncərənin qabağa gətirilmə gecikməsi:"
+
+#: mcs-plugin/xfwm4_plugin.c:1472
+msgid "Slow"
+msgstr "Yavaş"
+
+#: mcs-plugin/xfwm4_plugin.c:1480
+msgid "Fast"
+msgstr "Sür'ətli"
+
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "Tıqlamada qabağa gətir"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Proqram pəncərəsinin içinə tıqlandığında\n"
+"pəncərəni qabağa gətir"
+
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr "Klaviatura və fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1530
+msgid "Windows snapping"
+msgstr "Pəncərə yapışması"
+
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "Pəncərələri ekran kənarlarına yapışdır"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "Pəncərələri digərlərinə yapışdır"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "Məsafə :"
+
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "Kiçik"
+
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr "Geniş"
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "İş sahələrini dəyişdir"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Siçan ekran kənarına gəldiyində iş sahələrini dəyişdir"
+
+#: mcs-plugin/xfwm4_plugin.c:1618
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Pəncərə·ekran·kənarına·daşındığında iş·sahələrini·dəyişdir"
+
+#: mcs-plugin/xfwm4_plugin.c:1630
+msgid "Edge Resistance :"
+msgstr "Kənar Müqaviməti :"
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+msgid "Opaque move and resize"
+msgstr "Şəffaf daşınma və ölçüləndirmə"
+
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "Ölçüləndirirkən pəncərələrin məzmununu göstər"
+
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "Daşındığında pəncərələrin məzmununu göstər"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
+msgid "Double click action"
+msgstr "Cüt tıqlama gedişatı"
+
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Başlıq çubuğuna cüt tıqlandığında həyata keçiriləcək gedişat :"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
+msgid "Advanced"
+msgstr "Təfərruatlar"
+
+#: src/client.c:496
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: İdarə edilməyən net_wm_state (window 0x%lx)"
+
+#: src/events.c:1453
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Gedişat dəstəklənmir (hələlik)\n"
+
+#: src/main.c:228
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Segmentation xətası"
+
+#: src/main.c:399
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Onsuz da başqa Pəncərə İdarəçisi işləyir"
+
+#: src/main.c:404
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Ön qurğulu fayllardan mə'lumat əksikdir"
+
+#: src/main.c:431
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Namə'lum xəta baş verdi"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "_Böyüt"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "_Kiçilt"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Gizlət"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "_Digərlərini gizlət"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "_Göstər"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "_Bur"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "_Geri bur"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "_Bütün Sahələrə"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Bu iş _sahəsinə"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Göndər..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Bağla"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Sonlandır"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "Çı_x"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Yenidən Başlat"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "İş Sahəsi %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu oxu ala bilmədi\n"
+
+#: src/settings.c:285
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Əksik ön qurğular faylı"
+
+#: src/settings.c:510
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Fəal rəng tapıla bilmir %s\n"
+
+#: src/settings.c:517
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Fəal rəng oxuna bilmir %s\n"
+
+#: src/settings.c:561
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s:·Qeyri-fəal·rəng·tapıla·bilmir·%s\n"
+
+#: src/settings.c:568
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Qeyri-fəal rəng oxuna bilmir %s\n"
+
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: bildirilən \"%s\" açar örtüyü əksikdir, ön qurğulusu işlədiləcək"
+
+#: src/settings.c:765
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Ön qurğular faylında əksik qiymətlər"
+
+#: src/settings.c:1106
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: İş sahəsi tə'yin edilə bilmədi, rc qiyməti işlədiləcək: %i"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Keç ..."
+
