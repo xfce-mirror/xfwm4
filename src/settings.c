@@ -822,6 +822,15 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     gchar *keythemevalue;
 
     dpy = myScreenGetXDisplay (screen_info);
+    /* 
+       Load defaults keytheme so that even if there are 
+       missing shortcuts in an older user defined key theme
+       the missing keys will be taken from the default
+     */
+    keytheme = getThemeDir (DEFAULT_KEYTHEME, KEYTHEMERC);
+    parseRc (KEYTHEMERC, keytheme, rc);
+    g_free (keytheme);
+
     keythemevalue = getValue ("keytheme", rc);
     if (keythemevalue)
     {
@@ -830,9 +839,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
         {
             g_warning (_("%s: specified key theme \"%s\" missing, using default"),
                        g_get_prgname (), keythemevalue);
-            g_free (keytheme);
-            keytheme = getThemeDir (DEFAULT_KEYTHEME, KEYTHEMERC);
-            parseRc (KEYTHEMERC, keytheme, rc);
         }
         g_free (keytheme);
 
@@ -995,7 +1001,7 @@ loadSettings (ScreenInfo *screen_info)
         {"close_window_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
-        {"fullscreen_key", NULL, FALSE},
+        {"fullscreen_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
