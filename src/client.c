@@ -5498,10 +5498,6 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
-    static GtkWidget *window = NULL;
-    static GtkWidget *label = NULL;
-    static GtkWidget *frame = NULL;
-    char location[32];  /* 32 is enough for (NNNNNxNNNNN) @ (-NNNNN,-NNNNN) */
 
     TRACE ("entering clientResize_event_filter");
 
