@@ -1,11 +1,101 @@
-2003-01-21  gettextize  <bug-gnu-gettext@gnu.org>
+2004-01-07 19:58  olivier
 
-	* Makefile.in.in: New file, from gettext-0.11.5.
-	* boldquot.sed: New file, from gettext-0.11.5.
-	* en@boldquot.header: New file, from gettext-0.11.5.
-	* en@quot.header: New file, from gettext-0.11.5.
-	* insert-header.sin: New file, from gettext-0.11.5.
-	* quot.sed: New file, from gettext-0.11.5.
-	* remove-potcdate.sin: New file, from gettext-0.11.5.
-	* Rules-quot: New file, from gettext-0.11.5.
+	* xfwm4.pot: Fix spec files so that debug files aren't include on
+	  Red Hat 9 and later
+
+2004-01-06 19:48  olivier
+
+	* xfwm4.pot: update theme
+
+2004-01-03 21:54  olivier
+
+	* pl.gmo, pl.po, xfwm4.pot: Fix Polish translation from Daniel
+	  MrÃ³z <beorn@alpha.pl>
+
+2003-12-29 16:20  olivier
+
+	* no.gmo, no.po: Update version number, Update ChangeLog Fix
+	  missing CHARSET in potfiles
+
+2003-12-29 13:16  jasper
+
+	* no.gmo, no.po, tr.gmo, tr.po: Update Norwegian and Turkish
+	  translations
+
+2003-12-28 21:28  olivier
+
+	* xfwm4.pot: Fix removal of properties on unframed windows
+
+2003-12-27 22:52  jasper
+
+	* pl.gmo, pl.po: Update Polish translations
+
+2003-12-22 23:50  olivier
+
+	* xfwm4.pot: Send wm_takefocus client message on focus change (as
+	  pointed out by Mike McCormack <mike@codeweavers.com>)
+
+2003-12-15 23:26  olivier
+
+	* xfwm4.pot: Fix a (potential) crash in workspace plugins
+
+2003-12-15 22:35  jasper
+
+	* az.gmo, az.po: Add Azerbaijani translations
+
+2003-12-07 11:48  olivier
+
+	* xfwm4.pot: Change dialog placement
+
+2003-12-03 22:04  olivier
+
+	* xfwm4.pot: Allow 1 px move between dbl clicks
+
+2003-12-02 23:45  olivier
+
+	* xfwm4.pot: Fix send event not being emited when maximize occured
+	  on a window with its size to the maximized size Theme
+
+2003-11-16 09:44  jasper
+
+	* cs.gmo, cs.po: Update Czech translations
+
+2003-11-12 08:02  jasper
+
+	* ar.gmo, ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo,
+	  fr.gmo, hi.gmo, hu.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo,
+	  pl.gmo, pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo,
+	  vi.gmo, zh_CN.gmo, zh_TW.gmo: Forgot gmo files update
+
+2003-11-11 19:35  jasper
+
+	* ar.po, ca.po, cs.po, de.po, es.po, es_MX.po, fi.po, fr.po, hi.po,
+	  hu.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po, pt_PT.po, ru.po,
+	  sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po:
+	  Update po files, just in case something changed ...
+
+2003-11-09 20:09  jasper
+
+	* cs.gmo, cs.po: Add Check translations
+
+2003-11-03 19:06  jasper
+
+	* uk.gmo, uk.po: Add Ukranian translations
+
+2003-11-02 00:28  olivier
+
+	* hi.gmo, hi.po: Add Hindi translation
+
+2003-10-25 00:31  jasper
+
+	* vi.gmo, vi.po:
+	  Add vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+
+2003-10-17 18:32  jasper
+
+	* sv.gmo, sv.po: Add/update swedish translations
+
+2003-09-27 13:20  huysmans
+
+	* ta.gmo, ta.po: Update tamil translations
 
