@@ -1290,7 +1290,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             cx = frameX (c) + (frameWidth (c) / 2);
             cy = frameY (c) + (frameHeight (c) / 2);
 
-            monitor_nbr = gdk_screen_get_monitor_at_point (screen_info->gscr, cx, cy);
+            monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
             gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
             wc.x = rect.x;

@@ -224,7 +224,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     cy = frame_y + (frame_height / 2);
 
     screen_info = c->screen_info;
-    monitor_nbr = gdk_screen_get_monitor_at_point (screen_info->gscr, cx, cy);
+    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     disp_x = rect.x;
@@ -429,7 +429,7 @@ clientKeepVisible (Client * c)
          */
         getMouseXY (c->screen_info, c->screen_info->xroot, &cx, &cy);
         
-        monitor_nbr = gdk_screen_get_monitor_at_point (c->screen_info->gscr, cx, cy);
+        monitor_nbr = find_monitor_at_point (c->screen_info->gscr, cx, cy);
         gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
 
         c->x = rect.x + (rect.width - c->width) / 2;
@@ -483,7 +483,7 @@ clientInitPosition (Client * c)
 
     getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
 
-    monitor_nbr = gdk_screen_get_monitor_at_point (screen_info->gscr, msx, msy);
+    monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
     
     frame_x = frameX (c);

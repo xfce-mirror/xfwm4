@@ -37,5 +37,6 @@ GC createGC (ScreenInfo *, char *, int, XFontStruct *, int, gboolean);
 void sendClientMessage (ScreenInfo *, Window, Atom, Atom, Time);
 gboolean checkWindowOnRoot (ScreenInfo *, Window);
 void placeSidewalks(ScreenInfo *, gboolean);
+gint find_monitor_at_point (GdkScreen *screen, gint x, gint y);
 
 #endif /* INC_MISC_H */

@@ -182,3 +182,74 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
                         gdk_screen_get_width (screen_info->gscr), 1, FALSE);
     }
 }
+
+/* 
+   gdk_screen_get_monitor_at_point () doesn't give accurate results
+   when the point is off screen, use my own implementation from xfce 3
+ */
+gint 
+find_monitor_at_point (GdkScreen *screen, gint x, gint y)
+{
+    static gint cache_monitor = -1;
+    static gint cache_x;
+    static gint cache_y;
+
+    gint dx, dy;
+    gint center_x, center_y;
+    guint32 distsquare, min_distsquare;
+
+    gint num_monitors, i;
+    gint nearest_monitor;
+    GdkRectangle monitor;
+
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
+
+    /* Cache system */
+    if ((cache_monitor >= 0) && (x == cache_x) && (y == cache_y))
+    {
+        return (cache_monitor);
+    }
+    
+    cache_x = x;
+    cache_y = y;
+
+    num_monitors = gdk_screen_get_n_monitors (screen);
+    for (i = 0; i < num_monitors; i++)
+    {
+        gdk_screen_get_monitor_geometry (screen, i, &monitor);
+
+        if ((x >= monitor.x) && (x < monitor.x + monitor.width) &&
+            (y >= monitor.y) && (y < (monitor.y + monitor.height)))
+        {
+            cache_monitor = i;
+            return i;
+        }
+    }
+
+    /* No monitor has been eligible, use the closest one */
+
+    min_distsquare = G_MAXUINT32;
+    nearest_monitor = 0;
+
+    for (i = 0; i < num_monitors; i++)
+    {
+        gdk_screen_get_monitor_geometry (screen, i, &monitor);
+
+        center_x = monitor.x + (monitor.width / 2);
+        center_y = monitor.y + (monitor.height / 2);
+
+        dx = x - center_x;
+        dy = y - center_y;
+
+        distsquare = (dx * dx) + (dy * dy);
+
+        if (distsquare < min_distsquare)
+        {
+            min_distsquare = distsquare;
+            nearest_monitor = i;
+        }
+    }
+    cache_monitor = nearest_monitor;
+    return (nearest_monitor);
+}
+
