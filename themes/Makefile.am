@@ -13,5 +13,7 @@ SUBDIRS =								\
 	microdeck 							\
 	microdeck2 							\
 	microdeck3 							\
+	prune								\
 	tgc								\
-	tgc-large
+	tgc-large							\
+	tubular
