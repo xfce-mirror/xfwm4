@@ -288,11 +288,11 @@ static inline void handleButtonPress(XButtonEvent * ev)
     {
 
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
-	win = getMouseWindow(dpy, c->frame);
+	win = ev->subwindow;
 	
         clientSetFocus(c, True);
 
-        if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
+	if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
             clientRaise(c);
             clientButtonPress(c, win, ev);
@@ -371,14 +371,14 @@ static inline void handleButtonPress(XButtonEvent * ev)
             clientRaise(c);
             clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
         }
-        else if(((win != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
+        else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
             clientLower(c);
         }
         else
         {
             clientRaise(c);
-            if(win == c->window)
+            if(ev->window == c->window)
             {
                 replay = True;
             }
