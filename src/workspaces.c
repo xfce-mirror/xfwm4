@@ -366,6 +366,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     {
         clientSetFocus (new_focus->screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     }
+    else
+    {
+        /* If we can't get a window to focus, just pick the one on top */
+        clientFocusTop (screen_info, WIN_LAYER_ABOVE_DOCK);
+    }
 }
 
 void
