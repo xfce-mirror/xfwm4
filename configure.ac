@@ -90,6 +90,8 @@ doc/C/Makefile
 doc/C/images/Makefile
 doc/fr/Makefile
 doc/fr/images/Makefile
+doc/it/Makefile
+doc/it/images/Makefile
 defaults/Makefile
 mcs-plugin/Makefile
 po/Makefile.in 
