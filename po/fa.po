@@ -1,3 +1,5 @@
+# translation of xfwm4-fa.po to Persian
+# translation of fa_IR.po to Persian
 # translation of xfwm4.fa_IR.po to Persian
 # translation of xfwm4.po to Persian
 # This file is distributed under the same license as the PACKAGE package.
@@ -6,26 +8,24 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4.fa_IR\n"
+"Project-Id-Version: xfwm4-fa\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-09-21 13:37+0200\n"
-"PO-Revision-Date: 2004-01-09 19:35+0330\n"
+"PO-Revision-Date: 2004-09-30 08:16+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
-"Language-Team: Persian <fa@li.org>\n"
+"Language-Team: Persian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.3\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "حاشیه‌های فضای کاری"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"حاشیه‌ها مناطقی بر لبه‌های صفحه هستند که پنجره‌ها در آنجا گذارده نخواهند شد."
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "حاشیه‌ها مناطقی بر لبه‌های صفحه هستند که پنجره‌ها در آنجا گذارده نخواهند شد."
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -139,11 +139,11 @@ msgstr "راست"
 
 #: mcs-plugin/xfwm4_plugin.c:570
 msgid "Click and drag buttons to change the layout"
-msgstr ""
+msgstr "برای تغییر طرح دکمه‌ها را کلیک و بکشانید"
 
 #: mcs-plugin/xfwm4_plugin.c:575
 msgid "Active"
-msgstr ""
+msgstr "فعال"
 
 #: mcs-plugin/xfwm4_plugin.c:586
 msgid "Title"
@@ -151,7 +151,7 @@ msgstr "عنوان"
 
 #: mcs-plugin/xfwm4_plugin.c:587
 msgid "The window title, it cannot be removed"
-msgstr ""
+msgstr "عنوان پنجره نمیتواند برداشته شود"
 
 #: mcs-plugin/xfwm4_plugin.c:595
 msgid "Hidden"
@@ -187,33 +187,28 @@ msgid "Button layout"
 msgstr "طرح دکمه"
 
 #: mcs-plugin/xfwm4_plugin.c:1466
-#, fuzzy
 msgid "Style"
-msgstr "عنوان"
+msgstr "سبک"
 
 #: mcs-plugin/xfwm4_plugin.c:1492
-#, fuzzy
 msgid "Windows shortcuts"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "میانبرهای پنجره‌ها"
 
 #: mcs-plugin/xfwm4_plugin.c:1513 mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
-msgstr ""
+msgstr "فرمان"
 
 #: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin.c:1546
-#, fuzzy
 msgid "Shortcut"
-msgstr "میان‌بر صفحه‌کلید"
+msgstr "میانبر"
 
 #: mcs-plugin/xfwm4_plugin.c:1521
-#, fuzzy
 msgid "Command shortcuts"
-msgstr "میان‌بر صفحه‌کلید"
+msgstr "میانبرهای فرمان"
 
 #: mcs-plugin/xfwm4_plugin.c:1549
-#, fuzzy
 msgid "Keyboard"
-msgstr "میان‌بر صفحه‌کلید"
+msgstr "صفحه‌کلید"
 
 #: mcs-plugin/xfwm4_plugin.c:1560
 msgid "Focus model"
@@ -232,22 +227,16 @@ msgid "New window focus"
 msgstr "تمرکز پنجره‌ی جدید"
 
 #: mcs-plugin/xfwm4_plugin.c:1586
-#, fuzzy
 msgid "Automatically give focus to newly created windows"
-msgstr ""
-"تمرکز دادن خودکار به پنجره‌هایی \n"
-"که بتازگی ایجاد شده‌اند"
+msgstr "تمرکز دادن خودکار به پنجره‌هایی که بتازگی ایجاد شده‌اند"
 
 #: mcs-plugin/xfwm4_plugin.c:1591
 msgid "Raise on focus"
 msgstr "برافرازی با تمرکز"
 
 #: mcs-plugin/xfwm4_plugin.c:1599
-#, fuzzy
 msgid "Automatically raise windows when they receive focus"
-msgstr ""
-"برافرازی پنجره بطور خودکار وقتی \n"
-"آنها تمرکز را دریافت می‌کنند"
+msgstr "برافرازی پنجره بطور خودکار وقتی آنها تمرکز را دریافت میکنند"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Delay before raising focused window :"
@@ -266,16 +255,12 @@ msgid "Raise on click"
 msgstr "برافرازی با کلیک کردن"
 
 #: mcs-plugin/xfwm4_plugin.c:1641
-#, fuzzy
 msgid "Raise window when clicking inside application window"
-msgstr ""
-"برافرازی پنجره وقتی داخل پنجره‌ی\n"
-"برنامه کلیک شود"
+msgstr "برافرازی پنجره وقتی داخل پنجره‌ی برنامه کلیک شود"
 
 #: mcs-plugin/xfwm4_plugin.c:1646
-#, fuzzy
 msgid "Focus"
-msgstr "مدل تمرکز"
+msgstr "تمرکز"
 
 #: mcs-plugin/xfwm4_plugin.c:1656
 msgid "Windows snapping"
@@ -342,207 +327,168 @@ msgid "Advanced"
 msgstr "پیشرفته"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:65 mcs-plugin/xfwm4_shortcuteditor.c:440
-#, fuzzy
 msgid "Close window"
-msgstr "پنهان کردن پنجره"
+msgstr "بستن پنجره"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:75 mcs-plugin/xfwm4_shortcuteditor.c:448
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "بزرگ‌سازی پنجره"
+msgstr "بزرگسازی عمودی پنجره"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:80 mcs-plugin/xfwm4_shortcuteditor.c:452
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "بزرگ‌سازی پنجره"
+msgstr "بزرگسازی افقی پنجره"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:95 mcs-plugin/xfwm4_shortcuteditor.c:464
-#, fuzzy
 msgid "Stick window"
-msgstr "پنهان کردن پنجره"
+msgstr "چسباندن پنجره"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:100 mcs-plugin/xfwm4_shortcuteditor.c:468
-#, fuzzy
 msgid "Cycle windows"
-msgstr "پنهان کردن پنجره"
+msgstr "چرخه پنجره‌ها"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:105 mcs-plugin/xfwm4_shortcuteditor.c:472
-#, fuzzy
 msgid "Move window up"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به بالا"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:110 mcs-plugin/xfwm4_shortcuteditor.c:476
-#, fuzzy
 msgid "Move window down"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به پایین"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:115 mcs-plugin/xfwm4_shortcuteditor.c:480
-#, fuzzy
 msgid "Move window left"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به چپ"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:120 mcs-plugin/xfwm4_shortcuteditor.c:484
-#, fuzzy
 msgid "Move window right"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به راست"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:488
-#, fuzzy
 msgid "Resize window up"
-msgstr "پنهان کردن پنجره"
+msgstr "تغییر اندازه پنجره به بالا"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:130 mcs-plugin/xfwm4_shortcuteditor.c:492
-#, fuzzy
 msgid "Resize window down"
-msgstr "پنهان کردن پنجره"
+msgstr "تغییر اندازه پنجره به پایین"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:135 mcs-plugin/xfwm4_shortcuteditor.c:496
-#, fuzzy
 msgid "Resize window left"
-msgstr "پنهان کردن پنجره"
+msgstr "تغییر اندازه پنجره به چپ"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:140 mcs-plugin/xfwm4_shortcuteditor.c:500
-#, fuzzy
 msgid "Resize window right"
-msgstr "پنهان کردن پنجره"
+msgstr "تغییر اندازه پنجره به راست"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:145 mcs-plugin/xfwm4_shortcuteditor.c:504
-#, fuzzy
 msgid "Raise window"
-msgstr "پنهان کردن پنجره"
+msgstr "تغییر اندازه پنجره"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:150 mcs-plugin/xfwm4_shortcuteditor.c:508
-#, fuzzy
 msgid "Lower window"
-msgstr "پنهان کردن پنجره"
+msgstr "پایین آوردن پنجره"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:155 mcs-plugin/xfwm4_shortcuteditor.c:512
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "تبدیل به تمام‌صفحه"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:160 mcs-plugin/xfwm4_shortcuteditor.c:516
-#, fuzzy
 msgid "Next workspace"
-msgstr "پیچیدن فضاهای کاری"
+msgstr "فضای کاری بعدی"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:165 mcs-plugin/xfwm4_shortcuteditor.c:520
-#, fuzzy
 msgid "Previous workspace"
-msgstr "پیچیدن فضاهای کاری"
+msgstr "فضای کاری پیشین"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:170 mcs-plugin/xfwm4_shortcuteditor.c:524
-#, fuzzy
 msgid "Add workspace"
-msgstr "پیچیدن فضاهای کاری"
+msgstr "افزودن فضای کاری"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:175 mcs-plugin/xfwm4_shortcuteditor.c:528
-#, fuzzy
 msgid "Delete workspace"
-msgstr "پیچیدن فضاهای کاری"
+msgstr "حذف فضای کاری"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:180 mcs-plugin/xfwm4_shortcuteditor.c:532
-#, fuzzy
 msgid "Workspace 1"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۱"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:185 mcs-plugin/xfwm4_shortcuteditor.c:536
-#, fuzzy
 msgid "Workspace 2"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۲"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:190 mcs-plugin/xfwm4_shortcuteditor.c:540
-#, fuzzy
 msgid "Workspace 3"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۳"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:195 mcs-plugin/xfwm4_shortcuteditor.c:544
-#, fuzzy
 msgid "Workspace 4"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۴"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:200 mcs-plugin/xfwm4_shortcuteditor.c:548
-#, fuzzy
 msgid "Workspace 5"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۵"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:205 mcs-plugin/xfwm4_shortcuteditor.c:552
-#, fuzzy
 msgid "Workspace 6"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۶"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:210 mcs-plugin/xfwm4_shortcuteditor.c:556
-#, fuzzy
 msgid "Workspace 7"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۷"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:215 mcs-plugin/xfwm4_shortcuteditor.c:560
-#, fuzzy
 msgid "Workspace 8"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۸"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:220 mcs-plugin/xfwm4_shortcuteditor.c:564
-#, fuzzy
 msgid "Workspace 9"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری ۹"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:225 mcs-plugin/xfwm4_shortcuteditor.c:568
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری بعدی"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:230 mcs-plugin/xfwm4_shortcuteditor.c:572
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "پیچیدن فضاهای کاری"
+msgstr "انتقال پنجره به فضای کاری قبلی"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:235 mcs-plugin/xfwm4_shortcuteditor.c:576
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۱"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:240 mcs-plugin/xfwm4_shortcuteditor.c:580
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۲"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:245 mcs-plugin/xfwm4_shortcuteditor.c:584
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۳"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:250 mcs-plugin/xfwm4_shortcuteditor.c:588
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۴"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:255 mcs-plugin/xfwm4_shortcuteditor.c:592
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۵"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:260 mcs-plugin/xfwm4_shortcuteditor.c:596
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۶"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:265 mcs-plugin/xfwm4_shortcuteditor.c:600
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۷"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:270 mcs-plugin/xfwm4_shortcuteditor.c:604
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۸"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:275 mcs-plugin/xfwm4_shortcuteditor.c:608
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "تمرکز پنجره‌ی جدید"
+msgstr "انتقال پنجره به فضای کاری ۹"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:656
 msgid "Cannot open the theme directory !"
-msgstr ""
+msgstr "نمیتوان شاخه تم را باز کرد !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:675
 #, c-format
@@ -550,6 +496,8 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
+"نمیتوان %s را باز کرد: \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:690 mcs-plugin/xfwm4_shortcuteditor.c:701
 #, c-format
@@ -557,51 +505,52 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"نمیتوان در %s نوشت : \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:764
 msgid "Select command"
-msgstr ""
+msgstr "انتخاب فرمان"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:866
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
+"میانبر از قبل مورد استفاده است !\n"
+"آیا مطمئنید که میخواهید از آن استفاده کنید ؟"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:928
-#, fuzzy
 msgid "Compose shortcut for :"
-msgstr "میان‌بر صفحه‌کلید"
+msgstr "ساختن میانبر برای : "
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:931
 #: mcs-plugin/xfwm4_shortcuteditor.c:1110
-#, fuzzy
 msgid "Compose shortcut"
-msgstr "میان‌بر صفحه‌کلید"
+msgstr "ساختن میانبر"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:963
 #: mcs-plugin/xfwm4_shortcuteditor.c:1141
 msgid "Cannot grab the keyboard"
-msgstr ""
+msgstr "نمیتوان صفحه‌کلید را گرفت"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1015
 msgid "Choose command"
-msgstr ""
+msgstr "انتخاب کردن فرمان"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1017
-#, fuzzy
 msgid "Command :"
-msgstr "میان‌بر صفحه‌کلید"
+msgstr "فرمان :"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1051
 msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
+msgstr "فرمان وجود ندارد یا پرونده قابل اجرا نیست !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1107
 msgid "Compose shortcut for command :"
-msgstr ""
+msgstr "ساختن میانبر برای فرمان :"
 
 #: src/events.c:1623
 #, c-format
@@ -703,9 +652,9 @@ msgid "Restart"
 msgstr "راه‌اندازی مجدد"
 
 #: src/menu.c:170
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "فضای کاری %i"
+msgstr "فضای کاری %i (%s)"
 
 #: src/menu.c:182
 #, c-format
@@ -763,37 +712,5 @@ msgstr "تعویض به ..."
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
-msgstr ""
+msgstr "برنامه ناشناخته!"
 
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr ""
-#~ "تمرکز دادن خودکار به پنجره‌هایی \n"
-#~ "که بتازگی ایجاد شده‌اند"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr ""
-#~ "برافرازی پنجره بطور خودکار وقتی \n"
-#~ "آنها تمرکز را دریافت می‌کنند"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr ""
-#~ "برافرازی پنجره وقتی داخل پنجره‌ی\n"
-#~ "برنامه کلیک شود"
-
-#~ msgid "Decoration style"
-#~ msgstr "سبک تزئین"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "صفحه‌کلید و تمرکز"
-
-#~ msgid "%s: Workspace count not set, using rc value: %i"
-#~ msgstr "%s: شمارش فضای کاری گذاشته نشده، استفاده از مقدار rc: %i"
