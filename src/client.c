@@ -3318,6 +3318,7 @@ clientUnframe (Client * c, gboolean remap)
     XUnmapWindow (dpy, c->window);
     XReparentWindow (dpy, c->window, root, c->x, c->y);
     XSetWindowBorderWidth (dpy, c->window, c->border_width);
+    XDestroyWindow (dpy, c->frame);
     if (remap)
     {
         XMapWindow (dpy, c->window);
@@ -3325,14 +3326,13 @@ clientUnframe (Client * c, gboolean remap)
     else
     {
         setWMState (dpy, c->window, WithdrawnState);
+        /* Cleanup */
+        XDeleteProperty (dpy, c->window, net_wm_state);
+        XDeleteProperty (dpy, c->window, win_state);
+        XDeleteProperty (dpy, c->window, net_wm_desktop);
+        XDeleteProperty (dpy, c->window, win_workspace);
+        XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
     }
-    XDestroyWindow (dpy, c->frame);
-    /* Cleanup */
-    XDeleteProperty (dpy, c->window, net_wm_state);
-    XDeleteProperty (dpy, c->window, win_state);
-    XDeleteProperty (dpy, c->window, net_wm_desktop);
-    XDeleteProperty (dpy, c->window, win_workspace);
-    XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea (margins, gnome_margins);
