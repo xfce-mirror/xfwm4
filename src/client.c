@@ -598,6 +598,9 @@ static void clientWindowType(Client * c)
             c->sticky = True;
             c->skip_pager = True;
             c->skip_taskbar = True;
+	    c->has_hide = False;
+	    c->has_maximize = False;
+	    c->has_menu = False;
             layer = WIN_LAYER_DESKTOP;
         }
         else if(c->type_atom == net_wm_window_type_dock)
@@ -605,12 +608,18 @@ static void clientWindowType(Client * c)
             DBG("atom net_wm_window_type_dock detected\n");
             c->type = WINDOW_DOCK;
             layer = WIN_LAYER_DOCK;
+	    c->has_hide = False;
+	    c->has_maximize = False;
+	    c->has_menu = False;
         }
         else if(c->type_atom == net_wm_window_type_toolbar)
         {
             DBG("atom net_wm_window_type_toolbar detected\n");
             c->type = WINDOW_TOOLBAR;
             layer = WIN_LAYER_NORMAL;
+	    c->has_hide = False;
+	    c->has_maximize = False;
+	    c->has_menu = False;
         }
         else if(c->type_atom == net_wm_window_type_menu)
         {
@@ -626,12 +635,16 @@ static void clientWindowType(Client * c)
              */
             c->skip_pager = True;
             c->skip_taskbar = True;
+	    c->has_hide = False;
+	    c->has_maximize = False;
+	    c->has_menu = False;
         }
         else if(c->type_atom == net_wm_window_type_dialog)
         {
             DBG("atom net_wm_window_type_dialog detected\n");
             c->type = WINDOW_DIALOG;
             layer = WIN_LAYER_ONTOP;
+	    c->has_hide = False;
         }
         else if(c->type_atom == net_wm_window_type_normal)
         {
@@ -645,6 +658,7 @@ static void clientWindowType(Client * c)
             c->type = WINDOW_UTILITY;
             c->has_border = False;
             layer = WIN_LAYER_NORMAL;
+	    c->has_hide = False;
         }
         else if(c->type_atom == net_wm_window_type_splashscreen)
         {
@@ -652,6 +666,7 @@ static void clientWindowType(Client * c)
             c->type = WINDOW_SPLASHSCREEN;
             c->has_border = False;
             layer = WIN_LAYER_ABOVE_DOCK;
+	    c->has_hide = False;
         }
     }
     else
@@ -1597,6 +1612,7 @@ void clientFrame(Window w)
     c->wm_delete = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
     c->wm_input = (ACCEPT_INPUT(c->wmhints) ? True : False);
     c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
+    c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
 
     mwm_hints = getMotifHints(dpy, c->window);
     if(mwm_hints)

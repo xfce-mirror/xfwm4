@@ -411,43 +411,92 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
+	    if (c->is_resizable)
+	    {
+                clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
+	    }
+	    else if((c->has_border) && !(c->fullscreen))
+            {
+                clientMove(c, (XEvent *) ev);
+            }
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
@@ -672,6 +721,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             DBG("client \"%s\" (%#lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
+	    c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
         }
         else if((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
@@ -1057,7 +1107,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         {
             ops |= MENU_OP_UNSHADE;
         }
-        else
+        else if (c->has_menu)
         {
             ops |= MENU_OP_SHADE;
         }
@@ -1066,7 +1116,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         {
             ops |= MENU_OP_UNSTICK;
         }
-        else
+        else if (c->has_menu)
         {
             ops |= MENU_OP_STICK;
         }

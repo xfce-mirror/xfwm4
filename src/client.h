@@ -89,6 +89,7 @@
 #define CLOSE_BUTTON			3
 #define STICK_BUTTON			4
 #define MENU_BUTTON			5
+#define TITLE_SEPARATOR			6
 #define BUTTON_COUNT			6
 
 #define KEY_MOVE_UP			0
@@ -146,6 +147,9 @@
 
 #define CLIENT_MIN_VISIBLE              5
 
+#define CAN_HIDE_WINDOW(c)	((c->visible) &&  (c->has_border) && !(c->skip_taskbar) && (c->has_hide))
+#define CAN_MAXIMIZE_WINDOW(c)	((c->has_maximize) && (c->is_resizable))
+
 typedef enum
 {
     UNSET,
@@ -160,17 +164,6 @@ typedef enum
     WINDOW_SPLASHSCREEN
 }
 WindowType;
-
-#define CAN_HIDE_WINDOW(c)	((c->type == WINDOW_NORMAL) && \
-				(c->visible) && \
-				(c->has_border) && \
-				!(c->skip_taskbar))
-
-#define CAN_MAXIMIZE_WINDOW(c)	((!(c->size->flags & (PMinSize | PMaxSize)) || \
-                                 ((c->size->flags & (PMinSize | PMaxSize)) && \
-                                  ((c->size->min_width != c->size->max_width) || \
-				  (c->size->min_height != c->size->max_height)))) && \
-				  (c->has_maximize))
 
 typedef struct _Client Client;
 
@@ -218,6 +211,7 @@ struct _Client
     unsigned int has_border:1;
     unsigned int has_menu:1;
     unsigned int has_maximize:1;
+    unsigned int is_resizable:1;
     unsigned int has_hide:1;
     unsigned int has_struts:1;
     unsigned int hidden:1;

@@ -307,7 +307,7 @@ static int getButtonFromLetter(char c, Client * cl)
     switch (c)
     {
         case 'H':
-	    if (cl->has_hide)
+	    if (CAN_HIDE_WINDOW(cl))
 	    {
                 b = HIDE_BUTTON;
 	    }
@@ -316,22 +316,31 @@ static int getButtonFromLetter(char c, Client * cl)
             b = CLOSE_BUTTON;
             break;
         case 'M':
-	    if (cl->has_maximize)
+	    if (CAN_MAXIMIZE_WINDOW(cl))
 	    {
                 b = MAXIMIZE_BUTTON;
 	    }
             break;
         case 'S':
-            b = SHADE_BUTTON;
+	    if (cl->has_menu)
+	    {
+                b = SHADE_BUTTON;
+	    }
             break;
         case 'T':
-            b = STICK_BUTTON;
+	    if (cl->has_menu)
+	    {
+                b = STICK_BUTTON;
+	    }
             break;
         case 'O':
 	    if (cl->has_menu)
 	    {
                 b = MENU_BUTTON;
 	    }
+            break;
+        case '|':
+            b = TITLE_SEPARATOR;
             break;
         default:
             b = -1;
@@ -348,7 +357,7 @@ static char getLetterFromButton(int b, Client * cl)
     switch (b)
     {
         case HIDE_BUTTON:
-	    if (cl->has_hide)
+	    if (CAN_HIDE_WINDOW(cl))
 	    {
                 c = 'H';
 	    }
@@ -357,16 +366,22 @@ static char getLetterFromButton(int b, Client * cl)
             c = 'C';
             break;
         case MAXIMIZE_BUTTON:
-	    if (cl->has_maximize)
+	    if (CAN_MAXIMIZE_WINDOW(cl))
 	    {
                 c = 'M';
             }
             break;
         case SHADE_BUTTON:
-            c = 'S';
+	    if (cl->has_menu)
+	    {
+                c = 'S';
+	    }
             break;
         case STICK_BUTTON:
-            c = 'T';
+	    if (cl->has_menu)
+	    {
+                c = 'T';
+	    }
             break;
         case MENU_BUTTON:
 	    if (cl->has_menu)
@@ -488,6 +503,7 @@ void frameDraw(Client * c)
 {
     int state = ACTIVE;
     int i;
+    int j;
     int x;
     int button;
     int left;
@@ -535,32 +551,32 @@ void frameDraw(Client * c)
         for(i = 0; i < strlen(button_layout); i++)
         {
             button = getButtonFromLetter(button_layout[i], c);
-            if(button >= 0)
+            if (button == TITLE_SEPARATOR)
+            {
+                break;
+            }
+            else if(button >= 0)
             {
                 XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - buttons[button][ACTIVE].height) / 2, buttons[button][ACTIVE].width, buttons[button][ACTIVE].height);
                 button_x[button] = x;
                 x = x + buttons[button][ACTIVE].width + button_spacing;
             }
-            else
-            {
-                break;
-            }
         }
         left = x - button_spacing;
 
         x = frameWidth(c) - frameRight(c) + button_spacing - button_offset;
-        for(i = strlen(button_layout) - 1; i >= 0; i--)
+        for(j = strlen(button_layout) - 1; j >= i; j--)
         {
-            button = getButtonFromLetter(button_layout[i], c);
-            if(button >= 0)
+            button = getButtonFromLetter(button_layout[j], c);
+            if (button == TITLE_SEPARATOR)
+            {
+                break;
+            }
+            else if(button >= 0)
             {
                 x = x - buttons[button][ACTIVE].width - button_spacing;
                 XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - buttons[button][ACTIVE].height) / 2, buttons[button][ACTIVE].width, buttons[button][ACTIVE].height);
                 button_x[button] = x;
-            }
-            else
-            {
-                break;
             }
         }
         right = x;
