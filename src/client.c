@@ -3791,51 +3791,54 @@ clientPassFocus (Client * c)
     Window dr, window;
     int rx, ry, wx, wy;
     unsigned int i, mask;
+    int look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
 
     TRACE ("entering clientPassFocus");
 
-    if ((!c) || (c != client_focus))
+    if ((client_focus) && (c != client_focus))
     {
         return;
     }
 
-    top_most = clientGetTopMostFocusable (c->win_layer, c);
+    top_most = clientGetTopMostFocusable (look_in_layer, c);
     if (params.click_to_focus)
     {
-        /* Fairly simple logic:
-           1) if the window is a modal, send focus back to its parent window
-           2) Otherwise, rewind the focus stack until we find an eligible window
-              (by eligible, I mean a window that is not a transient for the current
-              window)
-         */
-        if (clientIsTransientOrModal (c))
+        if (c)
         {
-            c2 = clientGetTransient (c);
-            
-            if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
+            /* Fairly simple logic:
+               1) if the window is a modal, send focus back to its parent window
+               2) Otherwise, rewind the focus stack until we find an eligible window
+                  (by eligible, I mean a window that is not a transient for the current
+                  window)
+             */
+            if (clientIsTransientOrModal (c))
             {
-                new_focus = c2;
-            }
-        }
-        
-        if (!new_focus)
-        {
-            list_of_windows = clientListTransient (c);
-            for (c2 = c->next, i = 0; (c2) && (i < client_count);
-                c2 = c2->next, i++)
-            {
-                if (clientSelectMask (c2, 0)
-                    && !g_list_find (list_of_windows, (gconstpointer) c2))
+                c2 = clientGetTransient (c);
+
+                if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
                 {
                     new_focus = c2;
-                    break;
                 }
             }
-            g_list_free (list_of_windows);
+
+            if (!new_focus)
+            {
+                list_of_windows = clientListTransient (c);
+                for (c2 = c->next, i = 0; (c2) && (i < client_count);
+                    c2 = c2->next, i++)
+                {
+                    if (clientSelectMask (c2, 0)
+                        && !g_list_find (list_of_windows, (gconstpointer) c2))
+                    {
+                        new_focus = c2;
+                        break;
+                    }
+                }
+                g_list_free (list_of_windows);
+            }
         }
     }
-    else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
-            &mask))
+    else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask))
     {
         new_focus = clientAtPosition (rx, ry, c);
     }
@@ -4784,18 +4787,18 @@ clientUpdateFocus (Client * c, unsigned short flags)
 void
 clientSetFocus (Client * c, unsigned short flags)
 {
-    Client *c2, *c3;
+    Client *c2;
     unsigned long data[2];
 
     TRACE ("entering clientSetFocus");
     
     if ((c) && !(flags & FOCUS_IGNORE_MODAL))
     {
-        c3 = clientGetModalFor (c);
+        c2 = clientGetModalFor (c);
 
-        if (c3)
+        if (c2)
         {
-            c = c3;
+            c = c2;
         }
     }
     c2 = ((client_focus != c) ? client_focus : NULL);
