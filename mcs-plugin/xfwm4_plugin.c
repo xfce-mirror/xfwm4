@@ -1877,7 +1877,7 @@ setup_dialog (Itf * itf)
     g_signal_connect (G_OBJECT (itf->box_move_check), "toggled", (GCallback) cb_box_move_changed, itf);
     g_signal_connect (G_OBJECT (itf->box_resize_check), "toggled", G_CALLBACK (cb_box_resize_changed), itf);
 
-    gtk_window_set_position (GTK_WINDOW (itf->xfwm4_dialog), GTK_WIN_POS_CENTER);
+    xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (itf->xfwm4_dialog));
     gtk_widget_show (itf->xfwm4_dialog);
 }
 

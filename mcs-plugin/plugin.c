@@ -172,6 +172,6 @@ run_dialog (McsPlugin * mcs_plugin)
     gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
                              gtk_label_new(_("Margins")));
     
-    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
+    xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (dialog));
     gtk_widget_show (dialog);
 }
