@@ -20,7 +20,7 @@
 #ifndef __XFWM4_SHORTCUTEDITOR_H
 #define __XFWM4_SHORTCUTEDITOR_H
 
-extern void loadtheme_in_treeview (gchar *, gpointer);
+extern void loadtheme_in_treeview (ThemeInfo *, gpointer);
 extern void savetreeview_in_theme (gchar *, gpointer);
 
 extern void cb_activate_treeview3 (GtkWidget *, GtkTreePath *,

@@ -1356,12 +1356,8 @@ cb_shortcuttheme_changed (GtkTreeSelection * selection, Itf * itf)
 
         if (ti)
         {
-            gchar *theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
-            loadtheme_in_treeview (theme_file, itf);
-
-            g_free (theme_file);
+            loadtheme_in_treeview (ti, itf);
         }
-
         g_free (theme_name);
     }
 }
@@ -1846,10 +1842,7 @@ setup_dialog (Itf * itf)
 
     if (ti)
     {
-        gchar *theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
-        loadtheme_in_treeview (theme_file, itf);
-
-        g_free (theme_file);
+        loadtheme_in_treeview (ti, itf);
     }
     else
         g_warning ("Cannot find the keytheme !");

@@ -33,9 +33,12 @@
 #include "xfwm4_shortcuteditor.h"
 
 void
-loadtheme_in_treeview (gchar * theme_file, gpointer data)
+loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
 {
     Itf *itf = (Itf *) data;
+
+    XfceRc *default_rc = NULL;
+    XfceRc *user_rc = NULL;
 
     GtkTreeModel *model3, *model4;
     GtkTreeIter iter;
@@ -44,12 +47,31 @@ loadtheme_in_treeview (gchar * theme_file, gpointer data)
     gchar buf[80];
     gboolean key_found = FALSE;
 
+    gchar *user_theme_file = NULL;
+    gchar *keythemerc_name = NULL;
+    gchar *default_theme_file = NULL;
+
+    gchar **shortcuts_list = NULL;
+
     model3 = gtk_tree_view_get_model (GTK_TREE_VIEW (itf->treeview3));
     model4 = gtk_tree_view_get_model (GTK_TREE_VIEW (itf->treeview4));
     gtk_list_store_clear (GTK_LIST_STORE (model3));
     gtk_list_store_clear (GTK_LIST_STORE (model4));
 
-    fp = fopen (theme_file, "r");
+    user_theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
+    default_theme_file = g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, "Default",
+					   G_DIR_SEPARATOR_S, "xfwm4", G_DIR_SEPARATOR_S KEYTHEMERC, NULL);
+
+    default_rc = xfce_rc_simple_open (default_theme_file, TRUE);
+    user_rc = xfce_rc_simple_open (user_theme_file, TRUE);
+
+    g_free (user_theme_file);
+    g_free (default_theme_file);
+
+    shortcuts_list = xfce_rc_get_entries (default_rc, "");
+
+
+    fp = fopen (user_theme_file, "r");
 
     if (!fp)
         return;
@@ -387,6 +409,11 @@ loadtheme_in_treeview (gchar * theme_file, gpointer data)
     }
 
     fclose (fp);
+
+    g_strfreev (shortcuts_list);
+
+    xfce_rc_close (default_rc);
+    xfce_rc_close (user_rc);
 }
 
 static gboolean
@@ -967,7 +994,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     /* Take control on the keyboard */
     if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE, GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
     {
-        g_warning (_("Cannot grab the keyboard"));
+        g_warning ("Cannot grab the keyboard");
         g_free (dialog_text);
         g_free (shortcut_name);
         return;
@@ -1151,7 +1178,7 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         /* Take control on the keyboard */
         if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE, GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
         {
-            g_warning (_("Cannot grab the keyboard"));
+            g_warning ( "Cannot grab the keyboard");
             g_free (dialog_text);
 	    g_free (shortcut);
             g_free (command);
