@@ -22,12 +22,17 @@
 #  include "config.h"
 #endif
 
+#include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
+
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <X11/Xlib.h>
 #include <libxfcegui4/libxfcegui4.h>
+
 #include "main.h"
 #include "events.h"
 #include "frame.h"
@@ -64,7 +69,7 @@ int shape, shape_event;
 Cursor resize_cursor[7], move_cursor, root_cursor;
 SessionClient *client_session;
 
-int handleXError(Display * dpy, XErrorEvent * err)
+static int handleXError(Display * dpy, XErrorEvent * err)
 {
     switch (err->error_code)
     {
@@ -82,7 +87,7 @@ int handleXError(Display * dpy, XErrorEvent * err)
     return 0;
 }
 
-void cleanUp()
+static void cleanUp()
 {
     int i;
 
@@ -113,7 +118,7 @@ static void session_die(gpointer client_data)
     gdk_flush();
 }
 
-void handleSignal(int sig)
+static void handleSignal(int sig)
 {
     DBG("entering handleSignal\n");
 
@@ -137,7 +142,7 @@ void handleSignal(int sig)
     }
 }
 
-void initialize(int argc, char **argv)
+static int initialize(int argc, char **argv)
 {
     PangoLayout *layout;
     struct sigaction act;
@@ -196,7 +201,10 @@ void initialize(int argc, char **argv)
 
     XDefineCursor(dpy, root, root_cursor);
 
-    initEventFilter(MAIN_EVENT_MASK, NULL, "xfwm");
+    if (!initEventFilter(MAIN_EVENT_MASK, NULL, "xfwm"))
+    {
+        return (-1);
+    }
     pushEventFilter(xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow();
@@ -235,13 +243,54 @@ void initialize(int argc, char **argv)
     g_object_unref(G_OBJECT(layout));
 
     clientFrameAll();
+    return (0);
 }
 
-int main(int argc, char **argv)
+static void p_action(int sig)
 {
-    initialize(argc, argv);
-    gtk_main();
+}
+
+int run_daemon(int argc, char **argv)
+{
+    pid_t ppid;
+    int status = initialize(argc, argv);
+    ppid = getppid();
+    kill(ppid, SIGUSR1);
+    if (status < 0)
+    {
+        g_error("Another Window Manager is already running");
+    }
+    else
+    {
+        gtk_main();
+    }
     cleanUp();
     g_message("xfwm4 terminated\n");
     return 0;
 }
+
+int main(int argc, char **argv)
+{
+    pid_t pid, ppid;
+    static struct sigaction pact, cact;
+
+    /* set SIGUSR1 action for parent */ ;
+    pact.sa_handler = p_action;
+    sigaction(SIGUSR1, &pact, NULL);
+
+    switch (pid = fork())
+    {
+        case -1:
+            perror("fork()");
+            exit(1);
+            break;
+        case 0:                /* child */
+            return run_daemon(argc, argv);
+            break;
+        default:               /* parent */
+            pause();            /* wait for child signal */
+            g_message("init complete.");
+    }
+    return 0;
+}
+
