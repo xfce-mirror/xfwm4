@@ -1,14 +1,14 @@
 # Xfwm4 German translation
 # Copyright (C) 2003 Olivier Fourdan
 # This file is distributed under the same license as the xfwm4 package.
-# Moritz Heiber <mistermoe@hackerboard.de>, 2003
+# Moritz Heiber <moritz-heiber@arcor.de>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "POT-Creation-Date: 2003-06-21 14:14+0200\n"
-"PO-Revision-Date: 2003-06-04 14:50+0100\n"
-"Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
+"PO-Revision-Date: 2003-07-09 14:20+0100\n"
+"Last-Translator: Moritz Heiber <moritz-heiber@arcor.de>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,12 +33,10 @@ msgstr ""
 "werden"
 
 #: mcs-plugin/margins_plugin.c:281
-#, fuzzy
 msgid "Left :"
 msgstr "Links"
 
 #: mcs-plugin/margins_plugin.c:301
-#, fuzzy
 msgid "Right :"
 msgstr "Rechts"
 
@@ -240,24 +238,20 @@ msgid "Wrap workspaces"
 msgstr "Virtuelle Desktops wechseln"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 "Virtuelle Desktops wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
-#, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Virtuelle Desktops wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
-#, fuzzy
 msgid "Edge Resistance :"
 msgstr "Abstand :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
-#, fuzzy
 msgid "Opaque move and resize"
 msgstr "Sichtbare Größenänderung"
 
@@ -349,7 +343,6 @@ msgid "Uns_tick"
 msgstr "Nicht_klebrig"
 
 #: src/menu.c:51
-#, fuzzy
 msgid "Send to..."
 msgstr "Wechseln zu ..."
 
@@ -370,9 +363,9 @@ msgid "Restart"
 msgstr "Neu starten"
 
 #: src/menu.c:163
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i"
-msgstr "Virtueller_Desktop"
+msgstr "Virtueller_Desktop %i"
 
 #: src/menu.c:405
 #, c-format
@@ -419,12 +412,3 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wechseln zu ..."
-
-#~ msgid "Window style"
-#~ msgstr "Stil"
-
-#~ msgid "Font select :"
-#~ msgstr "Schriftenauswahl"
-
-#~ msgid "%s: Running without session manager"
-#~ msgstr "%s: Session Manager wird nicht genutzt"
