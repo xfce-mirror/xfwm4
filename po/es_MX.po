@@ -199,7 +199,7 @@ msgstr "Comando"
 
 #: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
-msgstr "Atajos"
+msgstr "Atajo"
 
 #: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Command shortcuts"
