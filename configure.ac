@@ -68,11 +68,14 @@ AC_HELP_STRING([--disable-randr], [don't try to use the randr extension]),
   [], [enable_randr=yes])
 RANDR_LIBS=
 if test x"$enable_randr" = x"yes"; then
+  ac_CFLAGS="$CFLAGS"
+  CFLAGS="$CFLAGS $LIBX11_CFLAGS"
   AC_CHECK_LIB(Xrandr, XRRUpdateConfiguration,
                [AC_CHECK_HEADER(X11/extensions/Xrandr.h,
                                 RANDR_LIBS="-lXrandr -lXrender",,
 				[#include <X11/Xlib.h>])],, 
                 $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
+  CFLAGS="$ac_CFLAGS"
 fi
 AC_SUBST([RANDR_LIBS])
 
