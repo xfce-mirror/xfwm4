@@ -1,15 +1,15 @@
 SUBDIRS = \
+agua \
+coldsteel \
 cruxish \
+gtk \
+linea \
+mofit \
 next \
 oroborus \
 platinum \
-slimline \
-windows \
-coldsteel \
-agua \
 redmond \
-gtk \
-xfce \
-mofit \
+redmondxp \
+slimline \
 trench \
-linea
+xfce

@@ -64,20 +64,20 @@ PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
 
 SUBDIRS = \
+agua \
+coldsteel \
 cruxish \
+gtk \
+linea \
+mofit \
 next \
 oroborus \
 platinum \
-slimline \
-windows \
-coldsteel \
-agua \
 redmond \
-gtk \
-xfce \
-mofit \
+redmondxp \
+slimline \
 trench \
-linea
+xfce
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h

@@ -8314,7 +8314,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/cruxish/Makefile"
+ac_config_files="$ac_config_files themes/agua/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -8636,7 +8636,7 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
-  "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:8642: error: invalid argument: $ac_config_target" >&5
@@ -9175,7 +9175,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/next/Makefile"
+ac_config_files="$ac_config_files themes/coldsteel/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -9497,8 +9497,8 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
-  "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
-  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:9504: error: invalid argument: $ac_config_target" >&5
@@ -10037,7 +10037,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/oroborus/Makefile"
+ac_config_files="$ac_config_files themes/cruxish/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -10359,9 +10359,9 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
-  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
-  "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:10367: error: invalid argument: $ac_config_target" >&5
@@ -10900,7 +10900,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/platinum/Makefile"
+ac_config_files="$ac_config_files themes/gtk/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -11222,10 +11222,10 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
-  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
-  "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
-  "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:11231: error: invalid argument: $ac_config_target" >&5
@@ -11764,7 +11764,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/slimline/Makefile"
+ac_config_files="$ac_config_files themes/linea/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -12086,11 +12086,11 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
-  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
-  "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
-  "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:12096: error: invalid argument: $ac_config_target" >&5
@@ -12629,7 +12629,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/windows/Makefile"
+ac_config_files="$ac_config_files themes/mofit/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -12951,12 +12951,12 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
-  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
-  "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
-  "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:12962: error: invalid argument: $ac_config_target" >&5
@@ -13495,7 +13495,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/coldsteel/Makefile"
+ac_config_files="$ac_config_files themes/next/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -13817,13 +13817,13 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
-  "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
-  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
-  "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
-  "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
+  "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
+  "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:13829: error: invalid argument: $ac_config_target" >&5
@@ -14362,7 +14362,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/agua/Makefile"
+ac_config_files="$ac_config_files themes/oroborus/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -14684,14 +14684,14 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
-  "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:14697: error: invalid argument: $ac_config_target" >&5
@@ -15230,7 +15230,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/redmond/Makefile"
+ac_config_files="$ac_config_files themes/platinum/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -15552,15 +15552,15 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
-  "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:15566: error: invalid argument: $ac_config_target" >&5
@@ -16099,7 +16099,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/gtk/Makefile"
+ac_config_files="$ac_config_files themes/redmond/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -16421,16 +16421,16 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
-  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:16436: error: invalid argument: $ac_config_target" >&5
@@ -16969,7 +16969,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/xfce/Makefile"
+ac_config_files="$ac_config_files themes/redmondxp/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -17291,17 +17291,17 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
-  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
-  "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
+  "themes/redmondxp/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmondxp/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:17307: error: invalid argument: $ac_config_target" >&5
@@ -17840,7 +17840,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/mofit/Makefile"
+ac_config_files="$ac_config_files themes/slimline/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -18162,18 +18162,18 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
-  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
-  "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
-  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
+  "themes/redmondxp/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmondxp/Makefile" ;;
+  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:18179: error: invalid argument: $ac_config_target" >&5
@@ -19034,18 +19034,18 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
-  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
-  "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
-  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
+  "themes/redmondxp/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmondxp/Makefile" ;;
+  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
   "themes/trench/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/trench/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
@@ -19585,7 +19585,7 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
-ac_config_files="$ac_config_files themes/linea/Makefile"
+ac_config_files="$ac_config_files themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -19907,20 +19907,20 @@ do
   "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
+  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
+  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
+  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
+  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
   "themes/next/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/next/Makefile" ;;
   "themes/oroborus/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/oroborus/Makefile" ;;
   "themes/platinum/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/platinum/Makefile" ;;
-  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
-  "themes/windows/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/windows/Makefile" ;;
-  "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
-  "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
-  "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
-  "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
-  "themes/mofit/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/mofit/Makefile" ;;
+  "themes/redmondxp/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmondxp/Makefile" ;;
+  "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
   "themes/trench/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/trench/Makefile" ;;
-  "themes/linea/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/linea/Makefile" ;;
+  "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:19926: error: invalid argument: $ac_config_target" >&5
