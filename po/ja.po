@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.2.0\n"
+"Project-Id-Version: xfwm4 4.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-13 21:26+0100\n"
-"PO-Revision-Date: 2005-03-08 21:39+0900\n"
+"PO-Revision-Date: 2005-03-11 07:10+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -327,7 +327,7 @@ msgstr "詳細"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "本当にこのキーバインディングテーマを削除しますか ?"
+msgstr "本当にこのキーバインディングテーマを削除しますか？"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
@@ -335,7 +335,7 @@ msgstr "キーバインディングテーマを追加"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Enter a name for the theme:"
-msgstr "テーマの名前を入力:"
+msgstr "テーマの名前を入力して下さい:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154
 msgid "A keybinding theme with the same name already exists"
@@ -561,7 +561,7 @@ msgstr "コマンド :"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1312
 msgid "The command doesn't exist or the file is not executable !"
-msgstr "コマンドが存在しないかファイルに実行属性が付いていません!"
+msgstr "コマンドが存在しないかファイルに実行属性が付いていません！"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1375
 msgid "Compose shortcut for command :"
