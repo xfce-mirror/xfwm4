@@ -1159,7 +1159,11 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     {
         if (strlen (*current_shortcut) > 0 && (strcmp (*current_shortcut, "Mod2") != 0))
         {
-            strcat (shortcut_string, *current_shortcut);
+	    if (strcmp (*current_shortcut, "Mod4") == 0)
+               strcat (shortcut_string, "Super_L");	  
+	    else
+	       strcat (shortcut_string, *current_shortcut);
+
             strcat (shortcut_string, "+");
         }
         *current_shortcut++;
