@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-21 13:37+0200\n"
+"POT-Creation-Date: 2004-10-11 18:28+0200\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -81,415 +81,475 @@ msgstr "İş sahəsi ədədi:"
 msgid "Workspace names"
 msgstr "İş sahəsi adları"
 
-#: mcs-plugin/xfwm4_plugin.c:82
+#: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
 msgstr "Menyu"
 
-#: mcs-plugin/xfwm4_plugin.c:83
+#: mcs-plugin/xfwm4_plugin.c:77
 msgid "Stick"
 msgstr "Sabitlə"
 
-#: mcs-plugin/xfwm4_plugin.c:84
+#: mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
 msgstr "Bur"
 
-#: mcs-plugin/xfwm4_plugin.c:85
+#: mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
 msgstr "Gizlət"
 
-#: mcs-plugin/xfwm4_plugin.c:86
+#: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
 msgstr "Böyüt"
 
-#: mcs-plugin/xfwm4_plugin.c:87
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
 msgstr "Bağla"
 
-#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_shortcuteditor.c:90
-#: mcs-plugin/xfwm4_shortcuteditor.c:460
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:353
+#: mcs-plugin/xfwm4_shortcuteditor.c:763
 msgid "Shade window"
 msgstr "Pəncərəni bur"
 
-#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_shortcuteditor.c:85
-#: mcs-plugin/xfwm4_shortcuteditor.c:456
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:348
+#: mcs-plugin/xfwm4_shortcuteditor.c:759
 msgid "Hide window"
 msgstr "Pəncərəni gizlət"
 
-#: mcs-plugin/xfwm4_plugin.c:94 mcs-plugin/xfwm4_shortcuteditor.c:70
-#: mcs-plugin/xfwm4_shortcuteditor.c:444
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:333
+#: mcs-plugin/xfwm4_shortcuteditor.c:747
 msgid "Maximize window"
 msgstr "Pəncərəni böyüt"
 
-#: mcs-plugin/xfwm4_plugin.c:95
+#: mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
 msgstr "Heçnə"
 
-#: mcs-plugin/xfwm4_plugin.c:100
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
 msgstr "Sol"
 
-#: mcs-plugin/xfwm4_plugin.c:101
+#: mcs-plugin/xfwm4_plugin.c:95
 msgid "Center"
 msgstr "Orta"
 
-#: mcs-plugin/xfwm4_plugin.c:102
+#: mcs-plugin/xfwm4_plugin.c:96
 msgid "Right"
 msgstr "Sağ"
 
-#: mcs-plugin/xfwm4_plugin.c:570
+#: mcs-plugin/xfwm4_plugin.c:566
 msgid "Click and drag buttons to change the layout"
 msgstr "Düzülüşü dəyişdirmək üçün düymələri tıqlayın və daşıyın"
 
-#: mcs-plugin/xfwm4_plugin.c:575
+#: mcs-plugin/xfwm4_plugin.c:571
 msgid "Active"
 msgstr "Fəal"
 
-#: mcs-plugin/xfwm4_plugin.c:586
+#: mcs-plugin/xfwm4_plugin.c:582
 msgid "Title"
 msgstr "Başlıq"
 
-#: mcs-plugin/xfwm4_plugin.c:587
+#: mcs-plugin/xfwm4_plugin.c:583
 msgid "The window title, it cannot be removed"
 msgstr "Pəncərə etiketi, silinə bilməz"
 
-#: mcs-plugin/xfwm4_plugin.c:595
+#: mcs-plugin/xfwm4_plugin.c:591
 msgid "Hidden"
 msgstr "Gizli"
 
-#: mcs-plugin/xfwm4_plugin.c:1302
+#: mcs-plugin/xfwm4_plugin.c:1312
 msgid "Font Selection Dialog"
 msgstr "Yazı Növü Seçimi Dialoqu"
 
-#: mcs-plugin/xfwm4_plugin.c:1397 mcs-plugin/xfwm4_plugin.c:1884
+#: mcs-plugin/xfwm4_plugin.c:1381 mcs-plugin/xfwm4_plugin.c:1877
 msgid "Window Manager"
 msgstr "Pəncərə İdarəçisi"
 
-#: mcs-plugin/xfwm4_plugin.c:1410
+#: mcs-plugin/xfwm4_plugin.c:1394
 msgid "Window Manager Preferences"
 msgstr "Pəncərə İdarəçisi Xassələri"
 
-#: mcs-plugin/xfwm4_plugin.c:1439
+#: mcs-plugin/xfwm4_plugin.c:1423
 msgid "Title font"
 msgstr "Başlıq yazı növü"
 
-#: mcs-plugin/xfwm4_plugin.c:1452
+#: mcs-plugin/xfwm4_plugin.c:1436
 msgid "Title Alignment"
 msgstr "Başlıq Hizası"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1458
+#: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Text alignment inside title bar :"
 msgstr "Başlıq çubuğu içində mətnin hizası :"
 
-#: mcs-plugin/xfwm4_plugin.c:1460
+#: mcs-plugin/xfwm4_plugin.c:1444
 msgid "Button layout"
 msgstr "Düymə düzülüşü"
 
-#: mcs-plugin/xfwm4_plugin.c:1466
+#: mcs-plugin/xfwm4_plugin.c:1450
 msgid "Style"
 msgstr "Tərz"
 
-#: mcs-plugin/xfwm4_plugin.c:1492
+#: mcs-plugin/xfwm4_plugin.c:1476
 msgid "Windows shortcuts"
 msgstr "Pəncərə qısa yolları"
 
-#: mcs-plugin/xfwm4_plugin.c:1513 mcs-plugin/xfwm4_plugin.c:1541
+#: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
 msgid "Command"
 msgstr "Əmr"
 
-#: mcs-plugin/xfwm4_plugin.c:1518 mcs-plugin/xfwm4_plugin.c:1546
+#: mcs-plugin/xfwm4_plugin.c:1501 mcs-plugin/xfwm4_plugin.c:1529
 msgid "Shortcut"
 msgstr "Qısa Yol"
 
-#: mcs-plugin/xfwm4_plugin.c:1521
+#: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Command shortcuts"
 msgstr "Əmr qısa yolları"
 
-#: mcs-plugin/xfwm4_plugin.c:1549
+#: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Keyboard"
 msgstr "Klaviatura"
 
-#: mcs-plugin/xfwm4_plugin.c:1560
+#: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Focus model"
 msgstr "Fokus növü"
 
-#: mcs-plugin/xfwm4_plugin.c:1568
+#: mcs-plugin/xfwm4_plugin.c:1558
 msgid "Click to focus"
 msgstr "Fokus üçün tıqlansın"
 
-#: mcs-plugin/xfwm4_plugin.c:1575
+#: mcs-plugin/xfwm4_plugin.c:1565
 msgid "Focus follows mouse"
 msgstr "Fokus siçanı izləsin"
 
-#: mcs-plugin/xfwm4_plugin.c:1582
+#: mcs-plugin/xfwm4_plugin.c:1572
 msgid "New window focus"
 msgstr "Yeni pəncərə fokusu"
 
-#: mcs-plugin/xfwm4_plugin.c:1586
+#: mcs-plugin/xfwm4_plugin.c:1576
 msgid "Automatically give focus to newly created windows"
 msgstr "Yeni yaradılmış pəncərələri avtomatik olaraq fokusa al"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Raise on focus"
 msgstr "Fokus veriləndə qabağa gətir"
 
-#: mcs-plugin/xfwm4_plugin.c:1599
+#: mcs-plugin/xfwm4_plugin.c:1589
 msgid "Automatically raise windows when they receive focus"
 msgstr "Pəncərələrə fokus veriləndə onları avtomatik olaraq qabağa gətir"
 
-#: mcs-plugin/xfwm4_plugin.c:1609
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Delay before raising focused window :"
 msgstr "Fokuslu pəncərənin qabağa gəlmə gecikməsi :"
 
-#: mcs-plugin/xfwm4_plugin.c:1615
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Slow"
 msgstr "Yavaş"
 
-#: mcs-plugin/xfwm4_plugin.c:1621
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Fast"
 msgstr "Sür'ətli"
 
-#: mcs-plugin/xfwm4_plugin.c:1637
+#: mcs-plugin/xfwm4_plugin.c:1627
 msgid "Raise on click"
 msgstr "Tıqlamada qabağa gətir"
 
-#: mcs-plugin/xfwm4_plugin.c:1641
+#: mcs-plugin/xfwm4_plugin.c:1631
 msgid "Raise window when clicking inside application window"
 msgstr "Proqram pəncərəsinin içinə tıqlandığında pəncərəni qabağa gətir"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1636
 msgid "Focus"
 msgstr "Fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1656
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Windows snapping"
 msgstr "Pəncərələrin yapışması"
 
-#: mcs-plugin/xfwm4_plugin.c:1664
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Snap windows to screen border"
 msgstr "Pəncərələri ekran kənarlarına yapışdır"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Snap windows to other windows"
 msgstr "Pəncərələri birbirinə yapışdır"
 
-#: mcs-plugin/xfwm4_plugin.c:1679
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Distance :"
 msgstr "Məsafə :"
 
-#: mcs-plugin/xfwm4_plugin.c:1685 mcs-plugin/xfwm4_plugin.c:1735
+#: mcs-plugin/xfwm4_plugin.c:1675 mcs-plugin/xfwm4_plugin.c:1725
 msgid "Small"
 msgstr "Kiçik"
 
-#: mcs-plugin/xfwm4_plugin.c:1691 mcs-plugin/xfwm4_plugin.c:1741
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Wide"
 msgstr "Geniş"
 
-#: mcs-plugin/xfwm4_plugin.c:1706
+#: mcs-plugin/xfwm4_plugin.c:1696
 msgid "Wrap workspaces"
 msgstr "İş sahələrini dəyişdir"
 
-#: mcs-plugin/xfwm4_plugin.c:1714
+#: mcs-plugin/xfwm4_plugin.c:1704
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Siçan ekran kənarına gəldiyində iş sahələrini dəyişdir"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1709
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Pəncərə·ekran·kənarına·daşındığında iş·sahələrini·dəyişdir"
 
-#: mcs-plugin/xfwm4_plugin.c:1729
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Edge Resistance :"
 msgstr "Kənar Müqaviməti :"
 
-#: mcs-plugin/xfwm4_plugin.c:1756
+#: mcs-plugin/xfwm4_plugin.c:1746
 msgid "Opaque move and resize"
 msgstr "Şəffaf daşınma və ölçüləndirmə"
 
-#: mcs-plugin/xfwm4_plugin.c:1764
+#: mcs-plugin/xfwm4_plugin.c:1754
 msgid "Display content of windows when resizing"
 msgstr "Ölçüləndirirkən pəncərələrin məzmununu göstər"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1759
 msgid "Display content of windows when moving"
 msgstr "Daşındığında pəncərələrin məzmununu göstər"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1764
 msgid "Double click action"
 msgstr "Cüt tıqlama gedişatı"
 
-#: mcs-plugin/xfwm4_plugin.c:1780
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Başlıq çubuğuna cüt tıqlandığında həyata keçiriləcək gedişat :"
 
-#: mcs-plugin/xfwm4_plugin.c:1782
+#: mcs-plugin/xfwm4_plugin.c:1772
 msgid "Advanced"
 msgstr "Təfərruatlar"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:65 mcs-plugin/xfwm4_shortcuteditor.c:440
+#: mcs-plugin/xfwm4_shortcuteditor.c:46
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:113 mcs-plugin/xfwm4_shortcuteditor.c:119
+msgid "Add keybinding theme"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:123
+msgid "Enter a name for the theme:"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:146
+msgid "A keybinding theme with the same name already exists"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:152
+msgid "You have to provide a name for the keybinding theme"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:328 mcs-plugin/xfwm4_shortcuteditor.c:743
 msgid "Close window"
 msgstr "Pəncərəni bağla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:75 mcs-plugin/xfwm4_shortcuteditor.c:448
+#: mcs-plugin/xfwm4_shortcuteditor.c:338 mcs-plugin/xfwm4_shortcuteditor.c:751
 msgid "Maximize window vertically"
 msgstr "Pəncərəni şaquli olaraq böyüt"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:80 mcs-plugin/xfwm4_shortcuteditor.c:452
+#: mcs-plugin/xfwm4_shortcuteditor.c:343 mcs-plugin/xfwm4_shortcuteditor.c:755
 msgid "Maximize window horizontally"
 msgstr "Pəncərəni üfüqi olaraq böyüt"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:95 mcs-plugin/xfwm4_shortcuteditor.c:464
+#: mcs-plugin/xfwm4_shortcuteditor.c:358 mcs-plugin/xfwm4_shortcuteditor.c:767
 msgid "Stick window"
 msgstr "Pəncərəni sabitlə"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:100 mcs-plugin/xfwm4_shortcuteditor.c:468
+#: mcs-plugin/xfwm4_shortcuteditor.c:363 mcs-plugin/xfwm4_shortcuteditor.c:771
 msgid "Cycle windows"
 msgstr "Pəncərələrin yerini dəyişdir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:105 mcs-plugin/xfwm4_shortcuteditor.c:472
+#: mcs-plugin/xfwm4_shortcuteditor.c:368 mcs-plugin/xfwm4_shortcuteditor.c:775
 msgid "Move window up"
 msgstr "Pəncərəni yuxarı daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:110 mcs-plugin/xfwm4_shortcuteditor.c:476
+#: mcs-plugin/xfwm4_shortcuteditor.c:373 mcs-plugin/xfwm4_shortcuteditor.c:779
 msgid "Move window down"
 msgstr "Pəncərəni aşağı daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:115 mcs-plugin/xfwm4_shortcuteditor.c:480
+#: mcs-plugin/xfwm4_shortcuteditor.c:378 mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid "Move window left"
 msgstr "Pəncərəni sola daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:120 mcs-plugin/xfwm4_shortcuteditor.c:484
+#: mcs-plugin/xfwm4_shortcuteditor.c:383 mcs-plugin/xfwm4_shortcuteditor.c:787
 msgid "Move window right"
 msgstr "Pəncərəni sağa daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:488
+#: mcs-plugin/xfwm4_shortcuteditor.c:388 mcs-plugin/xfwm4_shortcuteditor.c:791
 msgid "Resize window up"
 msgstr "Pəncərəni yuxarı ölçüləndir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:130 mcs-plugin/xfwm4_shortcuteditor.c:492
+#: mcs-plugin/xfwm4_shortcuteditor.c:393 mcs-plugin/xfwm4_shortcuteditor.c:795
 msgid "Resize window down"
 msgstr "Pəncərəni aşağı ölçüləndir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:135 mcs-plugin/xfwm4_shortcuteditor.c:496
+#: mcs-plugin/xfwm4_shortcuteditor.c:398 mcs-plugin/xfwm4_shortcuteditor.c:799
 msgid "Resize window left"
 msgstr "Pəncərəni sola ölçüləndir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:140 mcs-plugin/xfwm4_shortcuteditor.c:500
+#: mcs-plugin/xfwm4_shortcuteditor.c:403 mcs-plugin/xfwm4_shortcuteditor.c:803
 msgid "Resize window right"
 msgstr "Pəncərəni sağa ölçüləndir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:145 mcs-plugin/xfwm4_shortcuteditor.c:504
+#: mcs-plugin/xfwm4_shortcuteditor.c:408 mcs-plugin/xfwm4_shortcuteditor.c:807
 msgid "Raise window"
 msgstr "Pəncərəni qabağa gətir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:150 mcs-plugin/xfwm4_shortcuteditor.c:508
+#: mcs-plugin/xfwm4_shortcuteditor.c:413 mcs-plugin/xfwm4_shortcuteditor.c:811
 msgid "Lower window"
 msgstr "Pəncərəni arxaya qoy"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:155 mcs-plugin/xfwm4_shortcuteditor.c:512
+#: mcs-plugin/xfwm4_shortcuteditor.c:418 mcs-plugin/xfwm4_shortcuteditor.c:815
 msgid "Toggle fullscreen"
 msgstr "Tam ekran modunu aç"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:160 mcs-plugin/xfwm4_shortcuteditor.c:516
+#: mcs-plugin/xfwm4_shortcuteditor.c:423
+#, fuzzy
+msgid "Upper workspace"
+msgstr "Növbəti iş sahəsi"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:428
+#, fuzzy
+msgid "Bottom workspace"
+msgstr "Növbəti iş sahəsi"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:433
+#, fuzzy
+msgid "Left workspace"
+msgstr "Növbəti iş sahəsi"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:438
+#, fuzzy
+msgid "Right workspace"
+msgstr "Növbəti iş sahəsi"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:443 mcs-plugin/xfwm4_shortcuteditor.c:819
 msgid "Next workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:165 mcs-plugin/xfwm4_shortcuteditor.c:520
+#: mcs-plugin/xfwm4_shortcuteditor.c:448 mcs-plugin/xfwm4_shortcuteditor.c:823
 msgid "Previous workspace"
 msgstr "Əvvəlki iş sahəsi"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:170 mcs-plugin/xfwm4_shortcuteditor.c:524
+#: mcs-plugin/xfwm4_shortcuteditor.c:453 mcs-plugin/xfwm4_shortcuteditor.c:827
 msgid "Add workspace"
 msgstr "İş sahəsi əlavə et"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:175 mcs-plugin/xfwm4_shortcuteditor.c:528
+#: mcs-plugin/xfwm4_shortcuteditor.c:458 mcs-plugin/xfwm4_shortcuteditor.c:831
 msgid "Delete workspace"
 msgstr "İş sahəsini sil"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:180 mcs-plugin/xfwm4_shortcuteditor.c:532
+#: mcs-plugin/xfwm4_shortcuteditor.c:463 mcs-plugin/xfwm4_shortcuteditor.c:835
 msgid "Workspace 1"
 msgstr "İş Sahəsi 1"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:185 mcs-plugin/xfwm4_shortcuteditor.c:536
+#: mcs-plugin/xfwm4_shortcuteditor.c:468 mcs-plugin/xfwm4_shortcuteditor.c:839
 msgid "Workspace 2"
 msgstr "İş Sahəsi 2"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:190 mcs-plugin/xfwm4_shortcuteditor.c:540
+#: mcs-plugin/xfwm4_shortcuteditor.c:473 mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "Workspace 3"
 msgstr "İş Sahəsi 3"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:195 mcs-plugin/xfwm4_shortcuteditor.c:544
+#: mcs-plugin/xfwm4_shortcuteditor.c:478 mcs-plugin/xfwm4_shortcuteditor.c:847
 msgid "Workspace 4"
 msgstr "İş Sahəsi 4"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:200 mcs-plugin/xfwm4_shortcuteditor.c:548
+#: mcs-plugin/xfwm4_shortcuteditor.c:483 mcs-plugin/xfwm4_shortcuteditor.c:851
 msgid "Workspace 5"
 msgstr "İş Sahəsi 5"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:205 mcs-plugin/xfwm4_shortcuteditor.c:552
+#: mcs-plugin/xfwm4_shortcuteditor.c:488 mcs-plugin/xfwm4_shortcuteditor.c:855
 msgid "Workspace 6"
 msgstr "İş Sahəsi 6"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:210 mcs-plugin/xfwm4_shortcuteditor.c:556
+#: mcs-plugin/xfwm4_shortcuteditor.c:493 mcs-plugin/xfwm4_shortcuteditor.c:859
 msgid "Workspace 7"
 msgstr "İş Sahəsi 7"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:215 mcs-plugin/xfwm4_shortcuteditor.c:560
+#: mcs-plugin/xfwm4_shortcuteditor.c:498 mcs-plugin/xfwm4_shortcuteditor.c:863
 msgid "Workspace 8"
 msgstr "İş Sahəsi 8"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:220 mcs-plugin/xfwm4_shortcuteditor.c:564
+#: mcs-plugin/xfwm4_shortcuteditor.c:503 mcs-plugin/xfwm4_shortcuteditor.c:867
 msgid "Workspace 9"
 msgstr "İş Sahəsi 9"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:225 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/xfwm4_shortcuteditor.c:508 mcs-plugin/xfwm4_shortcuteditor.c:871
 msgid "Move window to next workspace"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:230 mcs-plugin/xfwm4_shortcuteditor.c:572
+#: mcs-plugin/xfwm4_shortcuteditor.c:513 mcs-plugin/xfwm4_shortcuteditor.c:875
 msgid "Move window to previous workspace"
 msgstr "Pəncərəni əvvəlki iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:235 mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:518
+#, fuzzy
+msgid "Move window to upper workspace"
+msgstr "Pəncərəni növbəti iş sahəsinə daşı"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:523
+#, fuzzy
+msgid "Move window to bottom workspace"
+msgstr "Pəncərəni növbəti iş sahəsinə daşı"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:528
+#, fuzzy
+msgid "Move window to left workspace"
+msgstr "Pəncərəni növbəti iş sahəsinə daşı"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:533
+#, fuzzy
+msgid "Move window to right workspace"
+msgstr "Pəncərəni növbəti iş sahəsinə daşı"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:538 mcs-plugin/xfwm4_shortcuteditor.c:879
 msgid "Move window to workspace 1"
 msgstr "Pəncərəni 1-ci iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:240 mcs-plugin/xfwm4_shortcuteditor.c:580
+#: mcs-plugin/xfwm4_shortcuteditor.c:543 mcs-plugin/xfwm4_shortcuteditor.c:883
 msgid "Move window to workspace 2"
 msgstr "Pəncərəni 2-ci iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:245 mcs-plugin/xfwm4_shortcuteditor.c:584
+#: mcs-plugin/xfwm4_shortcuteditor.c:548 mcs-plugin/xfwm4_shortcuteditor.c:887
 msgid "Move window to workspace 3"
 msgstr "Pəncərəni 3-cü iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:250 mcs-plugin/xfwm4_shortcuteditor.c:588
+#: mcs-plugin/xfwm4_shortcuteditor.c:553 mcs-plugin/xfwm4_shortcuteditor.c:891
 msgid "Move window to workspace 4"
 msgstr "Pəncərəni 4-cü iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:255 mcs-plugin/xfwm4_shortcuteditor.c:592
+#: mcs-plugin/xfwm4_shortcuteditor.c:558 mcs-plugin/xfwm4_shortcuteditor.c:895
 msgid "Move window to workspace 5"
 msgstr "Pəncərəni 5-ci iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:260 mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:563 mcs-plugin/xfwm4_shortcuteditor.c:899
 msgid "Move window to workspace 6"
 msgstr "Pəncərəni 6-cı iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:265 mcs-plugin/xfwm4_shortcuteditor.c:600
+#: mcs-plugin/xfwm4_shortcuteditor.c:568 mcs-plugin/xfwm4_shortcuteditor.c:903
 msgid "Move window to workspace 7"
 msgstr "Pəncərəni 7-ci iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:270 mcs-plugin/xfwm4_shortcuteditor.c:604
+#: mcs-plugin/xfwm4_shortcuteditor.c:573 mcs-plugin/xfwm4_shortcuteditor.c:907
 msgid "Move window to workspace 8"
 msgstr "Pəncərəni 8-ci iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:275 mcs-plugin/xfwm4_shortcuteditor.c:608
+#: mcs-plugin/xfwm4_shortcuteditor.c:578 mcs-plugin/xfwm4_shortcuteditor.c:911
 msgid "Move window to workspace 9"
 msgstr "Pəncərəni 9-cu iş sahəsinə daşı"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:656
+#: mcs-plugin/xfwm4_shortcuteditor.c:963
 msgid "Cannot open the theme directory !"
 msgstr "Örtük cərgəsi açıla bilmir!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:675
+#: mcs-plugin/xfwm4_shortcuteditor.c:982
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -498,7 +558,8 @@ msgstr ""
 "%s açıla bilmir : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:690 mcs-plugin/xfwm4_shortcuteditor.c:701
+#: mcs-plugin/xfwm4_shortcuteditor.c:997
+#: mcs-plugin/xfwm4_shortcuteditor.c:1008
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -507,11 +568,11 @@ msgstr ""
 "%s faylına yazıla bilmir: \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:764
+#: mcs-plugin/xfwm4_shortcuteditor.c:1058
 msgid "Select command"
 msgstr "Əmri seç"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:866
+#: mcs-plugin/xfwm4_shortcuteditor.c:1196
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -519,69 +580,70 @@ msgstr ""
 "Qısa yol onsuzda istifadədədir !\n"
 "Həqiqətən də onu işlətmək istəyirsinizmi ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:928
+#: mcs-plugin/xfwm4_shortcuteditor.c:1259
 msgid "Compose shortcut for :"
 msgstr "Bunun üçün qısa yol yarat :"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:931
-#: mcs-plugin/xfwm4_shortcuteditor.c:1110
+#: mcs-plugin/xfwm4_shortcuteditor.c:1262
+#: mcs-plugin/xfwm4_shortcuteditor.c:1481
 msgid "Compose shortcut"
 msgstr "Qısa yol yarat"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:963
-#: mcs-plugin/xfwm4_shortcuteditor.c:1141
-msgid "Cannot grab the keyboard"
-msgstr "Klaviatura yaxalana bilmir"
+#: mcs-plugin/xfwm4_shortcuteditor.c:1264
+#: mcs-plugin/xfwm4_shortcuteditor.c:1483
+#, fuzzy
+msgid "No shortcut"
+msgstr "Qısa yol yarat"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1015
+#: mcs-plugin/xfwm4_shortcuteditor.c:1376
 msgid "Choose command"
 msgstr "Əmr seç"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1017
+#: mcs-plugin/xfwm4_shortcuteditor.c:1378
 msgid "Command :"
 msgstr "Əmr:"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1051
+#: mcs-plugin/xfwm4_shortcuteditor.c:1414
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "Belə əmr mövcud deyil, ya da fayl icraçı deyil!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1107
+#: mcs-plugin/xfwm4_shortcuteditor.c:1478
 msgid "Compose shortcut for command :"
 msgstr "Bu əmr üçün qısa yol yarat :"
 
-#: src/events.c:1623
+#: src/events.c:1713
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Gedişat dəstəklənmir (hələlik)\n"
 
-#: src/main.c:176
+#: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation xətası"
 
-#: src/main.c:404
+#: src/main.c:456
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Onsuz da başqa Pəncərə İdarəçisi işləyir"
 
-#: src/main.c:409
+#: src/main.c:461
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Ön qurğulu fayllardan mə'lumat əksikdir"
 
-#: src/main.c:419
+#: src/main.c:471
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: Demon moduna keçə bilmədi: %s"
 
-#: src/main.c:427
+#: src/main.c:479
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: Yeni prosess yaradıla bilmədi: %s"
 
-#: src/main.c:448
+#: src/main.c:500
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Namə'lum xəta baş verdi"
@@ -670,37 +732,37 @@ msgstr "%s: GtkMenu oxu ala bilmədi\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: İdarə edilməyən net_wm_state (window 0x%lx)"
 
-#: src/settings.c:342
+#: src/settings.c:344
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Əksik ön qurğular faylı"
 
-#: src/settings.c:603
+#: src/settings.c:622
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Fəal rəng tapıla bilmir %s\n"
 
-#: src/settings.c:609
+#: src/settings.c:628
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Fəal rəng oxuna bilmir %s\n"
 
-#: src/settings.c:652
+#: src/settings.c:671
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s:·Qeyri-fəal·rəng·tapıla·bilmir·%s\n"
 
-#: src/settings.c:658
+#: src/settings.c:677
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Qeyri-fəal rəng oxuna bilmir %s\n"
 
-#: src/settings.c:845
+#: src/settings.c:864
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: bildirilən \"%s\" açar örtüyü əksikdir, ön qurğulusu işlədiləcək"
 
-#: src/settings.c:852
+#: src/settings.c:871
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Ön qurğular faylında əksik qiymətlər"
@@ -712,3 +774,6 @@ msgstr "Keç ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Naməlum proqram!"
+
+#~ msgid "Cannot grab the keyboard"
+#~ msgstr "Klaviatura yaxalana bilmir"
