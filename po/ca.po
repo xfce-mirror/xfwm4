@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2003-07-08 22:46+0200\n"
-"PO-Revision-Date: 2003-07-05 17:36+0100\n"
+"PO-Revision-Date: 2003-07-15 23:59+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133
+#: mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Marges de l'àrea de treball"
@@ -24,11 +25,8 @@ msgid "Adjust workspace margins"
 msgstr "Ajusta els marges de l'àrea de treball"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Els marges són àrees en les vores de la pantalla on cap finestra es "
-"col·locarà"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Els marges són àrees en les vores de la pantalla on cap finestra es col·locarà"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -108,9 +106,10 @@ msgstr "Ocult"
 
 #: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
-msgstr "Diàleg de sel·lecció del tipus de lletra"
+msgstr "Diàleg de selecció del tipus de lletra"
 
-#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274
+#: mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Gestor de Finestres"
 
@@ -149,7 +148,7 @@ msgstr "Model d'enfocament."
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
-msgstr "Cliqueu per enfocar"
+msgstr "Pitgeu per enfocar"
 
 #: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
@@ -164,8 +163,8 @@ msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"Automàticament enfoca \n"
-"les finestres noves"
+"Automàticament enfoca les \n"
+"finestres de nova creació"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
@@ -193,7 +192,7 @@ msgstr "Ràpid"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
-msgstr "Col·loca en primer pla al clicar."
+msgstr "Col·loca en primer pla al pitjar."
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
@@ -201,7 +200,7 @@ msgid ""
 "application window"
 msgstr ""
 "Col·loca en primer pla la finestra quan es\n"
-"cliqui dins la finestra de l'aplicació"
+"pitgi dins la finestra de l'aplicació"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
@@ -223,11 +222,13 @@ msgstr "Alinea les finestres amb les altres finestres"
 msgid "Distance :"
 msgstr "Distància:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Menut"
 
-#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Ample"
 
@@ -237,15 +238,11 @@ msgstr "Ajusta les àrees de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Salta de àrea de treball quan el punter assoleixi un dels laterals de la "
-"pantalla"
+msgstr "Salta de àrea de treball quan el punter assoleixi un dels laterals de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Ajusta les àrees de treball quan s'arrossegui una finestra fora de la "
-"pantalla"
+msgstr "Ajusta les àrees de treball quan s'arrossegui una finestra fora de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
@@ -253,11 +250,11 @@ msgstr "Resistència del lateral:"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr "Canvi de mida i tamany opac"
+msgstr "Moure i canvi de mida opac"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
-msgstr "Mostra el contingut de les finestres quan canvian de mida"
+msgstr "Mostra el contingut de les finestres quan canvien de mida"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
@@ -279,12 +276,12 @@ msgstr "Avançat"
 #: src/client.c:442
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: net_wrm_state (finestra 0x%lx) no gestionada"
+msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
 #: src/events.c:1311
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr "%s: Operació encara no soportada\n"
+msgstr "%s: Operació encara no suportada\n"
 
 #: src/main.c:226
 #, c-format
@@ -299,7 +296,7 @@ msgstr "%s: Un altre gestor de finestres s'està executant"
 #: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr "%s: Falten dades dels fixers per defecte"
+msgstr "%s: Falten dades dels fitxers per defecte"
 
 #: src/main.c:428
 #, c-format
@@ -405,10 +402,9 @@ msgstr "%s: Faltes valors en els fitxers per defecte"
 #: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr ""
-"%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el "
-"valor rc: %i"
+msgstr "%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el valor rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Canvia a..."
+
