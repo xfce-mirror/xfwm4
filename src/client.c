@@ -2394,7 +2394,7 @@ void clientFrameAll()
         XFree(wins);
     }
     new_focus = clientGetTopMostFocusable(WIN_LAYER_NORMAL, NULL);
-    clientSetFocus(new_focus, FALSE);
+    clientSetFocus(new_focus, TRUE);
 }
 
 void clientUnframeAll()
@@ -2518,21 +2518,6 @@ Client *clientGetNext(Client * c, int mask)
     return NULL;
 }
 
-void clientPassFocus(Client * c)
-{
-    Client *new_focus;
-
-    DBG("entering clientPassFocus\n");
-
-    if ((!c) || (c != client_focus))
-    {
-        return;
-    }
-
-    new_focus = clientGetTopMostFocusable(c->win_layer, c);
-    clientSetFocus(new_focus, TRUE);
-}
-
 /* Build a GSList of clients that have a transient relationship */
 static GSList *clientListTransients(Client *c)
 {
@@ -2567,6 +2552,33 @@ static GSList *clientListTransients(Client *c)
         }
     }
     return transients;
+}
+
+void clientPassFocus(Client * c)
+{
+    GSList *list_of_windows = NULL;
+    Client *new_focus = NULL;
+    Client *c2;
+    unsigned int i;
+
+    DBG("entering clientPassFocus\n");
+
+    if ((!c) || (c != client_focus))
+    {
+        return;
+    }
+
+    list_of_windows = clientListTransients(c);
+    for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+    {
+        if (clientSelectMask(c2, 0) && !g_slist_find(list_of_windows, (gconstpointer) c2))
+	{
+	    new_focus = c2;
+	    break;
+	}
+    }
+    g_slist_free(list_of_windows);
+    clientSetFocus(new_focus, TRUE);
 }
 
 void clientShow(Client * c, gboolean change_state)

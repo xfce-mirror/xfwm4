@@ -845,7 +845,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
 static inline void handleFocusIn(XFocusChangeEvent * ev)
 {
-    Client *c;
+    Client *c, *c2;
 
     DBG("entering handleFocusIn\n");
 
@@ -861,8 +861,21 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
         return;
     }
 
-    DBG("focused window is (0x%lx)\n", ev->window);
     c = clientGetFromWindow(ev->window, WINDOW);
+    while(XCheckTypedEvent(dpy, FocusIn, (XEvent *) ev))
+    {
+        if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
+	{
+	    continue;
+	}
+        c2 = clientGetFromWindow(ev->window, WINDOW);
+	if (c2)
+	{
+	    c = c2;
+	}
+    }
+
+    DBG("focused window is (0x%lx)\n", ev->window);
     if(c)
     {
         DBG("focus set to \"%s\" (0x%lx)\n", c->name, c->window);
