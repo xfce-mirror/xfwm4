@@ -68,6 +68,7 @@ struct _CWindow
     Picture alphaPict;
     Picture shadowPict;
     XserverRegion borderSize;
+    XserverRegion borderClip;
     XserverRegion extents;
     Picture shadow;
     gint shadow_dx;
@@ -77,10 +78,6 @@ struct _CWindow
     gint mode;
     guint opacity;
     gboolean skipped;
-
-    XserverRegion last_painted_extents;
-    XserverRegion borderClip;
-    
 #if HAVE_NAME_WINDOW_PIXMAP
     Pixmap name_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */  
@@ -93,6 +90,7 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
     
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (screen_info != NULL, NULL);
+    TRACE ("entering find_cwindow_in_screen");    
 
     for (index = screen_info->cwindows; index; index = g_list_next (index))
     {
@@ -112,6 +110,7 @@ find_cwindow_in_display (DisplayInfo *display_info, Window id)
 
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (display_info != NULL, NULL);
+    TRACE ("entering find_cwindow_in_display");    
 
     for (index = display_info->screens; index; index = g_slist_next (index))
     {
@@ -199,6 +198,9 @@ sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, g
     gint fy_start, fy_end;
     gdouble v;
     
+    g_return_val_if_fail (map != NULL, (guchar) 255.0);
+    TRACE ("entering sum_gaussian");
+    
     fx_start = center - x;
     if (fx_start < 0)
     {
@@ -249,6 +251,10 @@ presum_gaussian (ScreenInfo *screen_info)
     gint opacity, x, y;
     gaussian_conv * map;
     
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (screen_info->gaussianMap != NULL);
+    TRACE ("entering presum_gaussian");
+        
     map = screen_info->gaussianMap;
     screen_info->gsize = map->size;
     center = map->size / 2;
@@ -326,16 +332,19 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     gint x_diff;
     gint opacity_gint = (gint) (opacity * 25);
     
-    TRACE ("entering make_shadow");    
+    g_return_val_if_fail (screen_info != NULL, NULL);
+    TRACE ("entering make_shadow");
+    
     data = g_malloc (swidth * sheight * sizeof (guchar));
     
     ximage = XCreateImage (myScreenGetXDisplay (screen_info),
                         DefaultVisual(myScreenGetXDisplay (screen_info), screen_info->screen),
                         8, ZPixmap, 0, (char *) data,
                         swidth, sheight, 8, swidth * sizeof (guchar));
-    if (!ximage)
+    if (ximage == NULL)
     {
-        free (data);
+        g_free (data);
+        g_warning ("(ximage != NULL) failed");
         return NULL;
     }
     
@@ -440,7 +449,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
 }
 
 static Picture
-shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict, 
+shadow_picture (ScreenInfo *screen_info, gdouble opacity,
                 gint width, gint height, gint *wp, gint *hp)
 {
     XImage *shadowImage;
@@ -449,26 +458,22 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     XRenderPictFormat *render_format;
     GC gc;
     
+    g_return_val_if_fail (screen_info != NULL, None);
     TRACE ("entering shadow_picture");    
-    
+   
     render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
                                             PictStandardA8);
-    if (!render_format)
-    {
-        return None;
-    }
+    g_return_val_if_fail (render_format != NULL, None);
 
     shadowImage = make_shadow (screen_info, opacity, width, height);
-    if (shadowImage == None)
-    {
-        return None;
-    }
+    g_return_val_if_fail (shadowImage != None, None);
 
     shadowPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, 
                                 shadowImage->width, shadowImage->height, 8);
     if (shadowPixmap == None)
     {
         XDestroyImage (shadowImage);
+        g_warning ("(shadowPixmap != None) failed");
         return None;
     }
 
@@ -478,15 +483,17 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     {
         XDestroyImage (shadowImage);
         XFreePixmap (myScreenGetXDisplay (screen_info), shadowPixmap);
+        g_warning ("(shadowPicture != None) failed");
         return None;
     }
 
     gc = XCreateGC (myScreenGetXDisplay (screen_info), shadowPixmap, 0, 0);
-    if (!gc)
+    if (gc == None)
     {
         XDestroyImage (shadowImage);
         XFreePixmap (myScreenGetXDisplay (screen_info), shadowPixmap);
         XRenderFreePicture (myScreenGetXDisplay (screen_info), shadowPicture);
+        g_warning ("(gc != None) failed");
         return None;
     }
     
@@ -513,21 +520,16 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     XRenderPictFormat *render_format;
     XRenderColor c;
 
+    g_return_val_if_fail (screen_info, None);
     TRACE ("entering solid_picture");    
 
     render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
                                     argb ? PictStandardARGB32 : PictStandardA8);
-    if (!render_format)
-    {
-        return None;
-    }
+    g_return_val_if_fail (render_format != NULL , None);
 
     pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
                             screen_info->xroot, 1, 1, argb ? 32 : 8);
-    if (pixmap == None)
-    {
-        return None;
-    }
+    g_return_val_if_fail (pixmap != None, None);
 
     pa.repeat = True;
     picture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), pixmap, 
@@ -535,6 +537,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     if (picture == None)
     {
         XFreePixmap (myScreenGetXDisplay (screen_info), pixmap);
+        g_warning ("(picture != None) failed");
         return None;
     }
 
@@ -558,17 +561,14 @@ border_size (CWindow *cw)
     ScreenInfo *screen_info;
 
     g_return_val_if_fail (cw != NULL, None);
-
     TRACE ("entering border_size");    
+    
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
     border = XFixesCreateRegionFromWindow (display_info->dpy, cw->id, WindowRegionBounding);
-    if (!border)
-    {
-        return None;
-    }
-    
+    g_return_val_if_fail (border != None, None);
+
     XFixesTranslateRegion (display_info->dpy, border, 
                         cw->attr.x + cw->attr.border_width,
                         cw->attr.y + cw->attr.border_width);
@@ -589,7 +589,9 @@ root_tile (ScreenInfo *screen_info)
     gint p;
     Atom backgroundProps[2] = { misc_xrootpmap, misc_xsetroot };
 
-    TRACE ("entering root_tile");    
+    g_return_val_if_fail (screen_info != NULL, None);
+    TRACE ("entering root_tile");
+    
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
     pixmap = None;
@@ -625,22 +627,13 @@ root_tile (ScreenInfo *screen_info)
     {
         pixmap = XCreatePixmap (dpy, screen_info->xroot, 1, 1, 
                                 DefaultDepth (dpy, screen_info->screen));
-        if (!pixmap)
-        {
-            /* Give up! */
-            return None;
-        }
+        g_return_val_if_fail (pixmap != None, None);        
         fill = True;
     }
     pa.repeat = True;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
-    
-    if (!format)
-    {
-        /* Give up! */
-        return None;
-    }
-    
+    g_return_val_if_fail (format != NULL, None);
+       
     picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
     if ((picture != None) && (fill))
     {
@@ -667,7 +660,8 @@ create_root_buffer (ScreenInfo *screen_info)
     gint screen_number;
 
     g_return_if_fail (screen_info != NULL);
-
+    TRACE ("entering create_root_buffer");
+    
     screen_width = gdk_screen_get_width (screen_info->gscr);
     screen_height = gdk_screen_get_height (screen_info->gscr);
     screen_number = screen_info->screen;
@@ -675,20 +669,12 @@ create_root_buffer (ScreenInfo *screen_info)
     depth = DefaultDepth (myScreenGetXDisplay (screen_info), screen_number);
 
     format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), visual);
-    if (!format)
-    {
-        /* Give up! */
-        return (None);
-    }
+    g_return_val_if_fail (format != NULL, None);
 
     rootPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
                                 screen_info->xroot, 
                                 screen_width, screen_height, depth);
-    if (rootPixmap == None)
-    {
-        /* Give up! */
-        return (None);
-    }
+    g_return_val_if_fail (rootPixmap != None, None);
     
     pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
                                  rootPixmap, format, 0, 0);
@@ -707,12 +693,7 @@ paint_root (ScreenInfo *screen_info)
     if (screen_info->rootTile == None)
     {
         screen_info->rootTile = root_tile (screen_info);
-    }
-    
-    if (screen_info->rootTile == None)
-    {
-        /* Give up! */
-        return;
+        g_return_if_fail (screen_info->rootTile != None);
     }
     
     XRenderComposite (myScreenGetXDisplay (screen_info), PictOpSrc,
@@ -726,7 +707,7 @@ static XserverRegion
 win_extents (CWindow *cw)
 {
     ScreenInfo *screen_info;
-    Client *c = NULL;
+    Client *c = cw->c;
     XRectangle r;
 
     g_return_val_if_fail (cw != NULL, None);
@@ -739,63 +720,56 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
     
-    if (cw->c)
+    if (c)
     {
-        c = cw->c;
-        if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && (cw->mode != WINDOW_ARGB))
         {
-            TRACE ("window 0x%lx has no border, no extents", cw->id);    
-            return XFixesCreateRegion (myScreenGetXDisplay (screen_info), &r, 1);
+            XRectangle sr;
+    
+            TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);    
+            cw->shadow_dx = SHADOW_OFFSET_X;
+            cw->shadow_dy = SHADOW_OFFSET_Y;
+            if (!cw->shadow)
+            {
+                double opacity = SHADOW_OPACITY;
+                if (cw->mode == WINDOW_TRANS)
+                {
+                    opacity = opacity * ((double) cw->opacity) / ((double) OPAQUE);
+                }
+                cw->shadow = shadow_picture (screen_info, opacity,
+                                            cw->attr.width + cw->attr.border_width * 2,
+                                            cw->attr.height + cw->attr.border_width * 2,
+                                            &cw->shadow_width, &cw->shadow_height);
+            }
+    
+            sr.x = cw->attr.x + cw->shadow_dx;
+            sr.y = cw->attr.y + cw->shadow_dy;
+            sr.width = cw->shadow_width;
+            sr.height = cw->shadow_height;
+            
+            if (sr.x < r.x)
+            {
+                r.width = (r.x + r.width) - sr.x;
+                r.x = sr.x;
+            }
+            if (sr.y < r.y)
+            {
+                r.height = (r.y + r.height) - sr.y;
+                r.y = sr.y;
+            }
+            if (sr.x + sr.width > r.x + r.width)
+            {
+                r.width = sr.x + sr.width - r.x;
+            }
+                if (sr.y + sr.height > r.y + r.height)
+            {
+                r.height = sr.y + sr.height - r.y;
+            }
         }
     }
     else
     {
         TRACE ("window 0x%lx has no client, no extents", cw->id);    
-    }
-    
-    if ((cw->mode != WINDOW_ARGB) && (c))
-    {
-        XRectangle sr;
-
-        TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);    
-        cw->shadow_dx = SHADOW_OFFSET_X;
-        cw->shadow_dy = SHADOW_OFFSET_Y;
-        if (!cw->shadow)
-        {
-            double opacity = SHADOW_OPACITY;
-            if (cw->mode == WINDOW_TRANS)
-            {
-                opacity = opacity * ((double) cw->opacity) / ((double) OPAQUE);
-            }
-            cw->shadow = shadow_picture (screen_info, opacity, cw->alphaPict,
-                                        cw->attr.width + cw->attr.border_width * 2,
-                                        cw->attr.height + cw->attr.border_width * 2,
-                                        &cw->shadow_width, &cw->shadow_height);
-        }
-
-        sr.x = cw->attr.x + cw->shadow_dx;
-        sr.y = cw->attr.y + cw->shadow_dy;
-        sr.width = cw->shadow_width;
-        sr.height = cw->shadow_height;
-        
-        if (sr.x < r.x)
-        {
-            r.width = (r.x + r.width) - sr.x;
-            r.x = sr.x;
-        }
-        if (sr.y < r.y)
-        {
-            r.height = (r.y + r.height) - sr.y;
-            r.y = sr.y;
-        }
-        if (sr.x + sr.width > r.x + r.width)
-        {
-            r.width = sr.x + sr.width - r.x;
-        }
-            if (sr.y + sr.height > r.y + r.height)
-        {
-            r.height = sr.y + sr.height - r.y;
-        }
     }
 
     return XFixesCreateRegion (myScreenGetXDisplay (screen_info), &r, 1);
@@ -805,8 +779,12 @@ static void
 get_paint_bounds (CWindow *cw, gint *x, gint *y, gint *w, gint *h)
 {
     g_return_if_fail (cw != NULL);
-
-    TRACE ("entering get_paint_bounds");    
+    g_return_if_fail (x != NULL);
+    g_return_if_fail (y != NULL);
+    g_return_if_fail (w != NULL);
+    g_return_if_fail (h != NULL);
+    TRACE ("entering get_paint_bounds");
+    
 #if HAVE_NAME_WINDOW_PIXMAP
     *x = cw->attr.x;
     *y = cw->attr.y;
@@ -825,6 +803,9 @@ get_window_format (CWindow *cw)
 {
     XRenderPictFormat *format;
 
+    g_return_val_if_fail (cw != NULL, NULL);
+    TRACE ("entering get_window_format");    
+    
     format = XRenderFindVisualFormat (myScreenGetXDisplay (cw->screen_info), cw->attr.visual);
     if (!format)
     {    
@@ -844,8 +825,12 @@ get_window_picture (CWindow *cw)
     ScreenInfo *screen_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
-    Drawable draw = cw->id;
+    Drawable draw;
     
+    g_return_val_if_fail (cw != NULL, None);
+    TRACE ("entering get_window_picture");    
+    
+    draw = cw->id;
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
@@ -881,9 +866,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     Window xroot;
 
     TRACE ("entering paint_all");    
+    g_return_if_fail (screen_info);
+    
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
-    
     screen_width = gdk_screen_get_width (screen_info->gscr);
     screen_height = gdk_screen_get_height (screen_info->gscr);
     screen_number = screen_info->screen;
@@ -899,23 +885,14 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         r.width = screen_width;
         r.height = screen_height;
         region = XFixesCreateRegion (dpy, &r, 1);
+        g_return_if_fail (region != None);
     }
 
-    if (region == None)
-    {
-        /* Give up! */
-        return;
-    }
-    
     /* Create root buffer if not done yet */
     if (screen_info->rootBuffer == None)
     {
         screen_info->rootBuffer = create_root_buffer (screen_info);
-        if (screen_info->rootBuffer == None)
-        {
-            /* Give up! */
-            return;
-        }
+        g_return_if_fail (screen_info->rootBuffer != None);
     }
     
     XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, region);
@@ -1135,6 +1112,7 @@ repair_win (CWindow *cw)
     ScreenInfo *screen_info;
     
     g_return_if_fail (cw != NULL);
+    g_return_if_fail (cw->damage != None);
     
     TRACE ("entering repair_win");    
     screen_info = cw->screen_info;
@@ -1174,7 +1152,9 @@ get_opacity_prop(CWindow *cw, guint def)
     guchar *data;
     gint result;
     
+    g_return_val_if_fail (cw, def);
     TRACE ("entering get_opacity_prop");    
+    
     screen_info = cw->screen_info;
     result = XGetWindowProperty(myScreenGetXDisplay (screen_info), cw->id, net_wm_opacity, 
                     0L, 1L, False, XA_CARDINAL, &actual, &format, &n, &left, &data);
@@ -1244,9 +1224,15 @@ expose_root (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 {
     XserverRegion region;
     
+    g_return_if_fail (rects != NULL);
+    g_return_if_fail (nrects > 0);
+    
     TRACE ("entering expose_root");    
     region = XFixesCreateRegion (myScreenGetXDisplay (screen_info), rects, nrects);
-    add_damage (screen_info, region);
+    if (region != None)
+    {
+        add_damage (screen_info, region);
+    }
 }
 
 static void
@@ -1266,15 +1252,15 @@ unmap_win (CWindow *cw)
     
     TRACE ("entering unmap_win");
     g_return_if_fail (cw != NULL);
-
+    
     cw->damaged = FALSE;
-
     screen_info = cw->screen_info;
     cw->viewable = FALSE;
     
     if (cw->extents != None)
     {
         add_damage (screen_info, cw->extents);
+        /* cw->extents is freed by add_damage () */
         cw->extents = None;
     }
     free_win_data (cw, FALSE);  
@@ -1404,13 +1390,17 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above)
 }
 
 void
-restack_win (ScreenInfo *screen_info, CWindow *cw, Window above)
+restack_win (CWindow *cw, Window above)
 {
+    ScreenInfo *screen_info;
     Window previous_above = None;
     GList *sibling;
     GList *next;
 
+    g_return_if_fail (cw != NULL);
     TRACE ("entering restack_win");
+    
+    screen_info = cw->screen_info;
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
     next = g_list_next (sibling);
     
@@ -1452,7 +1442,10 @@ destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
 {
     CWindow *cw;
 
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (id != None);
     TRACE ("entering destroy_win: 0x%lx %s", id, gone ? "gone" : "not gone" );    
+    
     cw = find_cwindow_in_screen (screen_info, id);
     if (cw)
     {
@@ -1469,6 +1462,9 @@ destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
 static void
 compositorRepairScreen (ScreenInfo *screen_info)
 {
+    g_return_if_fail (screen_info);
+    TRACE ("entering compositorRepairScreen");    
+    
     if (screen_info->allDamage != None)
     {
         paint_all (screen_info, screen_info->allDamage);
@@ -1482,9 +1478,9 @@ compositorDoRepair (DisplayInfo *display_info)
 {
     GSList *screens;
 
+    g_return_if_fail (display_info);
     TRACE ("entering compositorDoRepair");    
     
-    g_return_if_fail (display_info);
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1502,8 +1498,10 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 {
     CWindow *cw;
         
-    TRACE ("entering compositorHandleDamage");    
-    TRACE ("Damaged window: 0x%lx", ev->drawable);    
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleDamage for 0x%lx", ev->drawable);    
+    
     cw = find_cwindow_in_display (display_info, ev->drawable);
     if (cw)
     {
@@ -1518,7 +1516,10 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     gint p;
     Atom backgroundProps[2] = { misc_xrootpmap, misc_xsetroot };
     
-    TRACE ("entering compositorHandlePropertyNotify");    
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandlePropertyNotify for 0x%lx", ev->window);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1557,9 +1558,12 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             {
                 XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
                 cw->shadow = None;
+                if (cw->extents)
+                {
+                    XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
+                }                
                 cw->extents = win_extents (cw);
                 compositorRepairScreen (cw->screen_info);
-
             }
         }
     }
@@ -1575,8 +1579,10 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     ScreenInfo *screen_info;
     XRectangle rect[1];        
     
-    TRACE ("entering compositorHandleExpose");
-    g_return_if_fail (display_info);
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1606,8 +1612,10 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     XserverRegion damage = None;
     CWindow *cw;
     
-    TRACE ("entering compositorHandleConfigureNotify");    
-    g_return_if_fail (display_info);
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleConfigureNotify for 0x%lx", ev->window);    
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1615,7 +1623,6 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     }
     
     cw = find_cwindow_in_display (display_info, ev->window);
-    
     if (!cw)
     {
         ScreenInfo *screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
@@ -1667,7 +1674,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     cw->attr.height = ev->height;
     cw->attr.border_width = ev->border_width;
     cw->attr.override_redirect = ev->override_redirect;
-    restack_win (cw->screen_info, cw, ev->above);
+    restack_win (cw, ev->above);
 
     if (damage)
     {
@@ -1691,8 +1698,10 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     GList *first;
     Window above = None;
 
-    TRACE ("entering compositorHandleCirculateNotify");
-    g_return_if_fail (display_info);
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleCirculateNotify for 0x%lx", ev->window);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1716,7 +1725,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     {
         above = None;
     }
-    restack_win (cw->screen_info, cw, above);
+    restack_win (cw, above);
     cw->screen_info->clipChanged = TRUE;
     compositorRepairScreen (cw->screen_info);
 }
@@ -1729,8 +1738,10 @@ compositorWindowMap (DisplayInfo *display_info, Window id)
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
 
-    TRACE ("entering compositorWindowMap: 0x%lx", id);
-    g_return_if_fail (display_info);
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorWindowMap for 0x%lx", id);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1760,8 +1771,10 @@ compositorWindowUnmap (DisplayInfo *display_info, Window id)
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
 
-    TRACE ("entering compositorWindowUnmap: 0x%lx", id);
-    g_return_if_fail (display_info);
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorWindowUnmap for 0x%lx", id);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1783,8 +1796,10 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
 
-    TRACE ("entering compositorAddWindow: 0x%lx", id);
-    g_return_if_fail (display_info);
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorAddWindow for 0x%lx", id);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");    
@@ -1810,8 +1825,10 @@ compositorRemoveWindow (DisplayInfo *display_info, Window id)
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
     
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
     TRACE ("entering compositorRemoveWindow: 0x%lx", id);
-    g_return_if_fail (display_info);
+    
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");
@@ -1832,6 +1849,9 @@ void
 compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 {
 #ifdef HAVE_COMPOSITOR
+    
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleEvent");    
     
     if (!(display_info->enable_compositor))
@@ -1867,6 +1887,8 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
+    
+    g_return_if_fail (display_info != NULL);
     TRACE ("entering compositorInitDisplay");    
     
     if (!XCompositeQueryExtension (display_info->dpy,
@@ -1923,6 +1945,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
 
+    g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorManageScreen");    
     
     display_info = screen_info->display_info;
@@ -1935,21 +1958,12 @@ compositorManageScreen (ScreenInfo *screen_info)
     visual_format = XRenderFindVisualFormat (display_info->dpy, 
                                             DefaultVisual (display_info->dpy, 
                                                             screen_info->screen));
-    if (!visual_format)
-    {
-        /* Give up! */
-        return;
-    }
+    g_return_if_fail (visual_format != NULL);
     
     pa.subwindow_mode = IncludeInferiors;
     screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->xroot, 
                                                 visual_format, CPSubwindowMode, &pa);
-
-    if (screen_info->rootPicture == None)
-    {
-        /* Give up! */
-        return;
-    }
+    g_return_if_fail (screen_info->rootPicture != None);
 
     screen_info->gsize = -1;
     screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
@@ -1975,6 +1989,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     GList *index;
     gint i = 0;
     
+    g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorUnmanageScreen");    
     
     display_info = screen_info->display_info;
@@ -2034,7 +2049,6 @@ compositorDamageClient (Client *c)
     ScreenInfo *screen_info;
     
     g_return_if_fail (c != NULL);
-
     TRACE ("entering compositorDamageClient");    
     
     screen_info = c->screen_info;
