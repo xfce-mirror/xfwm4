@@ -324,8 +324,9 @@ initKDEHints (Display * dpy)
 void
 initSystrayHints (Display * dpy, int nscreen)
 {
-    TRACE ("entering initSystrayHints");
     gchar selection[32];
+
+    TRACE ("entering initSystrayHints");
 
     g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", nscreen);
     net_system_tray_manager   = XInternAtom (dpy, "MANAGER", FALSE);
