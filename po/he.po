@@ -1,7 +1,8 @@
+# translation of he.po to 
+# translation of xfwm.po to 
 # translation of he.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Dotan Kamber <kamberd@yahoo.com>, 2004
+# Dotan Kamber <kamberd@yahoo.com>, 2004.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
 # Yuval Tanny <tanai@int.gov.il>, 2004.
 #
@@ -10,9 +11,9 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-24 23:50+0200\n"
-"PO-Revision-Date: 2004-08-30 01:00+0300\n"
+"PO-Revision-Date: 2004-10-26 18:28+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,11 +21,10 @@ msgstr ""
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
-msgstr "שולי סביבת עבודה"
+msgstr "שולי סביבת העבודה"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: mcs-plugin/margins.c:168
@@ -167,7 +167,7 @@ msgstr "מנהל חלונות"
 
 #: mcs-plugin/xfwm4_plugin.c:1394
 msgid "Window Manager Preferences"
-msgstr "העדפות מנהל החלונות"
+msgstr "מנהל חלונות"
 
 #: mcs-plugin/xfwm4_plugin.c:1423
 msgid "Title font"
@@ -192,7 +192,7 @@ msgstr "סגנון"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
 msgid "Window shortcuts"
-msgstr "קיצורי דרך של חלונות"
+msgstr "קיצורי דרך לחלונות"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
 msgid "Command"
@@ -216,7 +216,7 @@ msgstr "אופן ההתמקדות"
 
 #: mcs-plugin/xfwm4_plugin.c:1558
 msgid "Click to focus"
-msgstr "לחצה להתמקדות"
+msgstr "לחיצה להתמקדות"
 
 #: mcs-plugin/xfwm4_plugin.c:1565
 msgid "Focus follows mouse"
@@ -236,19 +236,19 @@ msgstr "הבא לחזית בהתמקדות"
 
 #: mcs-plugin/xfwm4_plugin.c:1589
 msgid "Automatically raise windows when they receive focus"
-msgstr "הבא לחזית חלונות באופו אוטומט כאשר מתמקדים עליהן"
+msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
 
 #: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Delay before raising focused window :"
-msgstr "השהה בטרם הבא חלונות ממוקדים לחזית:"
+msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
 
 #: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Slow"
-msgstr "לאט"
+msgstr "קצרה"
 
 #: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Fast"
-msgstr "מהר"
+msgstr "ארוכה"
 
 #: mcs-plugin/xfwm4_plugin.c:1627
 msgid "Raise on click"
@@ -328,23 +328,23 @@ msgstr "מתקדם"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "האם אתה בטוח שאתה רוצה להסיר את הערכת הנושא של קיצורי הדרך?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "הוסף ערכת נושא של קיצורי דרך"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "הכנס שם לערכת הנושא:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:145
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "שם זה כבר קיים לערכה אחרת"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:151
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "יש צורך בשם בשביל ערכת הנושא"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:328 mcs-plugin/xfwm4_shortcuteditor.c:743
 msgid "Close window"
@@ -412,24 +412,20 @@ msgid "Toggle fullscreen"
 msgstr "חלון במצב מסך מלא"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:423
-#, fuzzy
 msgid "Upper workspace"
-msgstr "סביבת עבודה הבאה"
+msgstr "סביבת עבודה עליונה"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:428
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "סביבת עבודה הבאה"
+msgstr "סביבת עבודה תחתונה"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:433
-#, fuzzy
 msgid "Left workspace"
-msgstr "סביבת עבודה הבאה"
+msgstr "סביבת עבודה משמאל"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:438
-#, fuzzy
 msgid "Right workspace"
-msgstr "סביבת עבודה הבאה"
+msgstr "סביבת עבודה מימין"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:443 mcs-plugin/xfwm4_shortcuteditor.c:819
 msgid "Next workspace"
@@ -485,31 +481,27 @@ msgstr "סביבת עבודה 9"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:508 mcs-plugin/xfwm4_shortcuteditor.c:871
 msgid "Move window to next workspace"
-msgstr "העבר חלון לסביבת עבודה הבאה"
+msgstr "העבר חלון לסביבת העבודה ההבאה"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:513 mcs-plugin/xfwm4_shortcuteditor.c:875
 msgid "Move window to previous workspace"
-msgstr "העבר חלון לסביבת עבודה קודמת"
+msgstr "העבר חלון לסביבת העבודה הקודמת"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:518
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "העבר חלון לסביבת עבודה הבאה"
+msgstr "העבר חלון לסביבת העבודה העליונה"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:523
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "העבר חלון לסביבת עבודה הבאה"
+msgstr "העבר חלון לסביבת העבודה התחתונה"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:528
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "העבר חלון לסביבת עבודה הבאה"
+msgstr "העבר חלון לסביבת העבודה השמאלית"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:533
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "העבר חלון לסביבת עבודה הבאה"
+msgstr "העבר חלון לסביבת העבודה הימינית"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:538 mcs-plugin/xfwm4_shortcuteditor.c:879
 msgid "Move window to workspace 1"
@@ -594,9 +586,8 @@ msgstr "צור קיצור"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
 #: mcs-plugin/xfwm4_shortcuteditor.c:1500
-#, fuzzy
 msgid "No shortcut"
-msgstr "צור קיצור"
+msgstr "אין קיצור"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1394
@@ -737,37 +728,3 @@ msgstr "החלף ל..."
 msgid "Unknown application!"
 msgstr "יישום לא ידוע."
 
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: מנהל חלונות אחר כבר מופעל"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: אין אפשרות לאתר צבע שאינו פעיל %s\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: מנהל חלונות אחר כבר מופעל"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: חסר מידע מקבצי ברירת המחדל"
-
-#~ msgid "%s: Failed to enter daemon mode: %s"
-#~ msgstr "%s נכשל בניסיון להיכנס למצב daemon: %s"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: נכשל ביצירת תהליך חדש: %s"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: שיגאה לא מוכרת התרחשה"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: חסרים קבצי ברירת מחדל"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr "%s: ערכת הנושא \"%s\" חסרה, משתמש בברירת המחדל"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s ערכים חסרים בקבצי ברירת המחדל"
-
-#~ msgid "Cannot grab the keyboard"
-#~ msgstr "אין אפשר לתפוס את קיצור המקלדת"

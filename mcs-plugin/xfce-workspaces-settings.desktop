@@ -2,10 +2,12 @@
 Encoding=UTF-8
 Name=Xfce 4 Workspaces Settings
 Name[fr]=Paramètres des espaces virtuels de Xfce 4
+Name[he]=הגדרות סביבות העבודה Xfce 4
 Name[nl]=Instellingen Xfce 4 Virtuele Bureaubladen
 Name[zh_TW]=Xfce 4 工作區設定
 Comment=Workspaces Settings
 Comment[fr]=Paramétrage des espaces virtuels
+Comment[he]=הגדרות סביבות העבודה
 Comment[nl]=Instellingen voor virtuele bureaubladen
 Comment[zh_TW]=設定工作區
 Exec=xfce-setting-show workspaces

@@ -2,10 +2,12 @@
 Encoding=UTF-8
 Name=Xfce 4 Window Manager Settings
 Name[fr]=Paramètres du gestionnaire de fenêtres de Xfce 4
+Name[he]=הגדרות מנהל החלונות Xfce 4
 Name[nl]=Instellingen Xfce 4 Window Manager
 Name[zh_TW]=Xfce 4 視窗管理程式設定
 Comment=Window Manager Settings
 Comment[fr]=Paramétrage du gestionnaire de fenêtres
+Comment[he]=הגדרות מנהל החלונות
 Comment[nl]=Instellingen voor de window manager
 Comment[zh_TW]=設定視窗管理程式
 Exec=xfce-setting-show xfwm4
