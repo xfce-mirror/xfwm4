@@ -98,7 +98,7 @@ void cleanUp()
     closeEventFilter();
 }
 
-static void session_save_yourself (gpointer client_data, int save_style, gboolean shutdown, int interact_style, gboolean fast)
+static void session_save_phase_2 (gpointer client_data)
 {
     g_print ("TODO: Save session\n");
 }
@@ -154,7 +154,7 @@ void initialize(int argc, char **argv)
     cmap = DefaultColormap(dpy, screen);
 
     client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 20);
-    client_session->save_yourself = session_save_yourself;
+    client_session->save_phase_2 = session_save_phase_2;
     client_session->die = session_die;
 
     if(!session_init(client_session))
