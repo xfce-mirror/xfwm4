@@ -152,8 +152,8 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     int width, x = 0, tp = 0, w1 = 0, w2, w3, w4, w5, temp;
     GdkPixmap *gpixmap = NULL;
     GdkGCValues values;
-    GdkGC *gc;
-    PangoLayout *layout;
+    GdkGC *gc = NULL;
+    PangoLayout *layout = NULL;
     PangoRectangle logical_rect;
 
     DBG("entering frameCreateTitlePixmap\n");
@@ -184,8 +184,10 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
 
     w2 = title[TITLE_2][ACTIVE].width;
     w4 = title[TITLE_4][ACTIVE].width;
-    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), c->name);
+    
+    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), "toto\0" /*c->name */);
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
+    
     if(full_width_title)
     {
         w1 = left;
@@ -278,9 +280,9 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
         fillRectangle(dpy, pm->pixmap, title[TITLE_5][state].pixmap, x, 0, w5, frameTop(c));
         fillRectangle(dpy, pm->mask,   title[TITLE_5][state].mask,   x, 0, w5, frameTop(c));
     }
-    g_object_unref (G_OBJECT (layout));
     g_object_unref (G_OBJECT (gc));
     g_object_unref (G_OBJECT (gpixmap));
+    g_object_unref (G_OBJECT (layout));
 }
 
 static int getButtonFromLetter(char c)
