@@ -36,10 +36,13 @@
 
 void workspaceSwitch(int new_ws, Client * c2)
 {
-    Client *c, *f = NULL;
+    Client *c, *new_focus = NULL;
     Client *previous;
     GSList *list_of_windows;
     GSList *index;
+    Window dr, window;
+    int rx, ry, wx, wy;
+    unsigned int mask;
     unsigned long data[1];
     XEvent an_event;
 
@@ -66,19 +69,6 @@ void workspaceSwitch(int new_ws, Client * c2)
     }
     
     previous = clientGetFocus();
-    if(previous)
-    {
-        CLIENT_FLAG_SET(previous, CLIENT_FLAG_FOCUS);
-        if(CLIENT_FLAG_TEST(previous, CLIENT_FLAG_STICKY) || (previous == c2))
-        {
-            f = previous;
-        }
-        else
-        {
-            clientSetFocus(c2, FALSE);
-        }
-    }
-
     list_of_windows = clientGetStackList();
     /* First pass */
     for(index = list_of_windows; index; index = g_slist_next(index))
@@ -86,6 +76,11 @@ void workspaceSwitch(int new_ws, Client * c2)
         c = (Client *) index->data;
         if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !clientIsTransient(c) && ((c->win_workspace != new_ws)))
         {
+            if (c == previous)
+            {
+                CLIENT_FLAG_SET(previous, CLIENT_FLAG_FOCUS);
+                clientSetFocus(NULL, FALSE);
+            }
             clientHide(c, new_ws, FALSE);
         }
     }
@@ -98,18 +93,23 @@ void workspaceSwitch(int new_ws, Client * c2)
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
         {
             clientSetWorkspace(c, new_ws, TRUE);
+            if(c == previous)
+            {
+                new_focus = c;
+            }
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FOCUS);
         }
-        else
+        else if((c->win_workspace == new_ws) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
         {
-            if((c->win_workspace == new_ws) && !clientIsTransient(c) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+            if (!clientIsTransient(c))
             {
                 clientShow(c, FALSE);
-                if((!f) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FOCUS))
-                {
-                    f = c;
-                }
-                CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FOCUS);
             }
+            if((!new_focus) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FOCUS))
+            {
+                new_focus = c;
+            }
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FOCUS);
         }
     }
     
@@ -123,14 +123,22 @@ void workspaceSwitch(int new_ws, Client * c2)
     data[0] = new_ws;
     XChangeProperty(dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     workspaceUpdateArea(margins, gnome_margins);
-    /* Just get rid of EnterNotify events when using focus follow mouse */
     XSync(dpy, FALSE);
-    if(!params.click_to_focus)
+    if(!(params.click_to_focus))
     {
+        /* Just get rid of EnterNotify events when using focus follow mouse */
         while(XCheckTypedEvent(dpy, EnterNotify, &an_event))
             ;
+        if (!(c2) && (XQueryPointer(dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
+        {
+            c = clientAtPosition(rx, ry, NULL);
+            if (c)
+            {
+                new_focus = c;
+            }
+        }
     }
-    clientSetFocus(f, TRUE);
+    clientSetFocus(new_focus, TRUE);
 }
 
 void workspaceSetCount(int count)

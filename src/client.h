@@ -246,6 +246,7 @@ void clientUpdateAllFrames(gboolean);
 void clientGrabKeys(Client *);
 void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);
+Client *clientAtPosition(int, int, Client *);
 Client *clientGetNext(Client *, int);
 void clientPassFocus(Client *);
 void clientShow(Client *, gboolean);

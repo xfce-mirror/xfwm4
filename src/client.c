@@ -2564,6 +2564,7 @@ void clientFrameAll()
     Client *new_focus;
     Window w1, w2, *wins = NULL;
     XWindowAttributes attr;
+    XEvent an_event;
 
     TRACE("entering clientFrameAll");
 
@@ -2586,6 +2587,10 @@ void clientFrameAll()
             clientFrame(wins[i], TRUE);
         }
     }
+    XSync(dpy, FALSE);
+    /* Just get rid of EnterNotify events caused by reparenting */
+    while(XCheckTypedEvent(dpy, EnterNotify, &an_event))
+        ;
     MyXUngrabServer();
     if(wins)
     {
@@ -2661,6 +2666,42 @@ Client *clientGetFromWindow(Window w, int mode)
     TRACE("no client found");
 
     return NULL;
+}
+
+Client *clientAtPosition(int x, int y, Client * exclude)
+{
+    /* This function does the same as XQueryPointer but w/out the race
+       conditions caused by querying the X server
+     */
+    GSList *reverse = NULL;
+    GSList *windows_stack_copy = NULL;
+    GSList *list_of_windows = NULL;
+    GSList *index;
+    Client *c = NULL;
+    Client *c2 = NULL;
+    
+    TRACE("entering clientAtPos");
+    
+    windows_stack_copy = g_slist_copy(windows_stack);
+    list_of_windows = g_slist_reverse(windows_stack_copy);
+    for(index = list_of_windows; index; index = g_slist_next(index))
+    {
+        c2 = (Client *) index->data;
+        if (clientSelectMask(c2, 0) && (c2 != exclude))
+        {
+            if ((frameX(c2) < x) && (frameX(c2) + frameWidth(c2) > x) && (frameY(c2) < y) && (frameY(c2) + frameHeight(c2) > y))
+            {
+                c = c2;
+                break;
+            }
+        }
+    }
+    if(windows_stack_copy)
+    {
+        g_slist_free(windows_stack_copy);
+    }
+    
+    return c;
 }
 
 static inline gboolean clientSelectMask(Client * c, int mask)
@@ -2757,7 +2798,9 @@ void clientPassFocus(Client * c)
     GSList *list_of_windows = NULL;
     Client *new_focus = NULL;
     Client *c2;
-    unsigned int i;
+    Window dr, window;
+    int rx, ry, wx, wy;
+    unsigned int i, mask;
 
     TRACE("entering clientPassFocus");
 
@@ -2766,16 +2809,23 @@ void clientPassFocus(Client * c)
         return;
     }
 
-    list_of_windows = clientListTransients(c);
-    for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+    if (params.click_to_focus)
     {
-        if (clientSelectMask(c2, 0) && !g_slist_find(list_of_windows, (gconstpointer) c2))
+        list_of_windows = clientListTransients(c);
+        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
         {
-            new_focus = c2;
-            break;
+            if (clientSelectMask(c2, 0) && !g_slist_find(list_of_windows, (gconstpointer) c2))
+            {
+                new_focus = c2;
+                break;
+            }
         }
+        g_slist_free(list_of_windows);
     }
-    g_slist_free(list_of_windows);
+    else if (XQueryPointer(dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask))
+    {
+        new_focus = clientAtPosition(rx, ry, c);
+    }
     if (!new_focus)
     {
         new_focus = clientGetTopMostFocusable(c->win_layer, c);
