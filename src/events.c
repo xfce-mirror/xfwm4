@@ -43,6 +43,14 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
 static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer data);
 static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev);
 
+typedef enum
+{
+  XFWM_BUTTON_DRAG           = 1,
+  XFWM_tclick          = 2,
+  XFWM_tclick_AND_DRAG = 3,
+  XFWM_BUTTON_DOUBLE_CLICK   = 4
+} XfwmButtonClickType;
+
 static void clear_timeout(void)
 {
     if(raise_timeout)
@@ -271,21 +279,22 @@ static inline void handleKeyPress(XKeyEvent * ev)
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
 
-static inline gboolean isDoubleClick(Window w, XEvent * ev)
+static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
 {
     int xcurrent, ycurrent, x, y, total = 0;
     int g = GrabSuccess;
+    int clicks = 1;
     Time t0;
     
-    g_return_val_if_fail(ev != NULL, FALSE);
-    g_return_val_if_fail(w != None, FALSE);
+    g_return_val_if_fail(ev != NULL, XFWM_tclick);
+    g_return_val_if_fail(w != None, XFWM_tclick);
 
     g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
     if (g != GrabSuccess)
     {
-        DBG("grab failed in isDoubleClick\n");
+        DBG("grab failed in typeOfClick\n");
         gdk_beep();
-        return FALSE;
+        return XFWM_tclick;
     }
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
@@ -293,10 +302,18 @@ static inline gboolean isDoubleClick(Window w, XEvent * ev)
     
     while ((total < 250) && (ABS(x - xcurrent) < 2) && (ABS(y - ycurrent) < 2) && ((CurrentTime - t0) < 250))
     {
+	if (XCheckMaskEvent (dpy, ButtonReleaseMask, ev))
+	{
+	    clicks++;
+	}
 	if (XCheckMaskEvent (dpy, ButtonPressMask, ev))
 	{
+	    clicks++;
+	}
+	if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
+	{
             XUngrabPointer(dpy, ev->xbutton.time);
-	    return TRUE;
+	    return (XfwmButtonClickType) clicks;
 	}
 	if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
 	{
@@ -311,7 +328,7 @@ static inline gboolean isDoubleClick(Window w, XEvent * ev)
 	total += 10;
     }
     XUngrabPointer(dpy, ev->xbutton.time);
-    return FALSE;
+    return (XfwmButtonClickType) clicks;
 }
 
 static inline void handleButtonPress(XButtonEvent * ev)
@@ -319,7 +336,6 @@ static inline void handleButtonPress(XButtonEvent * ev)
     Client *c;
     Window win;
     int state, replay = False;
-    static Time last_button_time;
 
     DBG("entering handleButtonPress\n");
 
@@ -345,8 +361,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
 	       for gtk to handle it (in case we open up the menu)
 	     */
 	    XEvent copy_event = (XEvent) *ev;
+	    XfwmButtonClickType tclick;
 	    
-	    if ((win == c->buttons[MENU_BUTTON]) && isDoubleClick(c->frame, &copy_event))
+	    if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
 	    {
 	        clientClose(c);
 	    }
@@ -365,12 +382,21 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
-            if (win == c->title)
+            XfwmButtonClickType tclick;
+	    if (win == c->title)
 	    {
 	        clientSetFocus(c, True);
                 clientRaise(c);
             }
-	    if(isDoubleClick(c->frame, (XEvent *) ev))
+	    tclick = typeOfClick(c->frame, (XEvent *) ev);
+            if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_tclick_AND_DRAG))
+            {
+                if((c->has_border) && !(c->fullscreen))
+                {
+                    clientMove(c, (XEvent *) ev);
+                }
+            }
+	    else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
                 switch (double_click_action)
                 {
@@ -384,15 +410,6 @@ static inline void handleButtonPress(XButtonEvent * ev)
                         clientHide(c, True);
                         break;
                 }
-                last_button_time = 0;
-            }
-            else
-            {
-                if((c->has_border) && !(c->fullscreen))
-                {
-                    clientMove(c, (XEvent *) ev);
-                }
-                last_button_time = ev->time;
             }
         }
         else if((win == c->corners[CORNER_TOP_LEFT]) && (ev->button == Button1) && (state == 0))
