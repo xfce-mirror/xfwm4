@@ -1295,7 +1295,7 @@ clientUpdateAllFrames (int mask)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+            clientConfigure (c, &wc, CWX | CWY, CFG_FORCE_REDRAW);
         }
         if (mask & UPDATE_FRAME)
         {
@@ -2598,7 +2598,7 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+        clientConfigure (c, &wc, CWX | CWY, CFG_FORCE_REDRAW);
     }
 }
 
