@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY appversion "3.90"> 
-  <!ENTITY date "May 2003"> 
+  <!ENTITY appversion "3.99.3"> 
+  <!ENTITY date "July 2003"> 
   <!ENTITY app "<application>xfwm4</application>">
 ]>
 
@@ -224,7 +224,7 @@ maintainers, etc. Commented out by default.
       <term>Resize windows</term>
       <listitem>
 	<para>Although certain special windows can not be resized, you are
-	  able to resize most part of them to fit your needs.</para>
+	  able to resize most of them to fit your needs.</para>
 	<itemizedlist>
 	<listitem>you can use the edges and corners of the window frame to
 	  modify its size, dragging them with the mouse</listitem>
@@ -385,9 +385,9 @@ maintainers, etc. Commented out by default.
 	or right)</listitem>
       <listitem>Resize window : Shift + Alt + Arrow (up, down, left, or
 	right)</listitem>
-      <listitem>Next workspace : Control + Alt + Right + right
+      <listitem>Next workspace : Control + Alt + Arrow right
 	arrow</listitem>
-      <listitem>Previous workspace : Control + Alt + left arrow</listitem>
+      <listitem>Previous workspace : Control + Alt + Arrow left</listitem>
       <listitem>Add a workspace : Alt + Inser</listitem>
       <listitem>Delete a workspace : Alt + Delete</listitem>
       <listitem>Go to workspace number N (1-9) : Control + F(N)</listitem>
