@@ -24,6 +24,7 @@ mofit \
 next \
 ops \
 oroborus \
+pills \
 piranha \
 platinum \
 quinx \
