@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2003-01-22 23:15+0100\n"
-"PO-Revision-Date: 2003-01-28 11:27+0100\n"
-"Last-Translator: nabil <nabil@anfora.fr>\n"
-"Language-Team:  <fr@li.org>\n"
+"PO-Revision-Date: 2003-01-31 12:54+0100\n"
+"Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
+"Language-Team:  Arabic \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -135,7 +135,9 @@ msgstr "طراز التركيز"
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
-msgstr "اعطاء التركيز اوتوماتيكيا للنوافذ الجديدة"
+msgstr ""
+"اعطاء التركيز اوتوماتيكيا \n"
+" للنوافذ الجديدة"
 
 #: mcs-plugin/xfwm4_plugin.c:1223
 msgid "New window focus"
@@ -145,7 +147,9 @@ msgstr "التركيز للنافذة الجديدة"
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
-msgstr "رفع النوافذ اوتوماتيكيا عندما تتلقى التركيز"
+msgstr ""
+"رفع النوافذ اوتوماتيكيا \n"
+"عندما تتلقى التركيز"
 
 #: mcs-plugin/xfwm4_plugin.c:1247
 msgid "Delay before raising focused window :"
@@ -167,7 +171,9 @@ msgstr "ارفع عندما تتلقى التركيز"
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
-msgstr "ارفع النافذة عند النقر داخل نافذة البرنامج"
+msgstr ""
+"ارفع النافذة عند النقر داخل \n"
+"نافذة البرنامج"
 
 #: mcs-plugin/xfwm4_plugin.c:1289
 msgid "Raise on click"
@@ -240,47 +246,47 @@ msgstr "مدير النوافذ"
 #: src/client.c:370
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window %#lx)"
-msgstr ""
+msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
 #: src/events.c:906
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr ""
+msgstr "%s: العملية ليست مدعومة (بعد)\n"
 
 #: src/hints.c:616
 #, c-format
 msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
-msgstr ""
+msgstr "%s: الخاصية %s على النافذة (%lx) تحتوي على UTF-8 غير صحيحة \n"
 
 #: src/main.c:167
 #, c-format
 msgid "%s: Using GTK+-%d.%d.%d"
-msgstr ""
+msgstr "%s: استعمال GTK+-%d.%d.%d"
 
 #: src/main.c:188
 #, c-format
 msgid "%s: Running without session manager"
-msgstr ""
+msgstr "%s: تشغيل بدون مدير جلسة"
 
 #: src/main.c:278
 #, c-format
 msgid "%s: Another Window Manager is already running"
-msgstr ""
+msgstr "%s:  هناك مدير نوافذ آخر يعمل "
 
 #: src/main.c:281
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr ""
+msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
 #: src/main.c:287
 #, c-format
 msgid "%s: Unknown error occured"
-msgstr ""
+msgstr "%s: حدث خطأ مجهول"
 
 #: src/main.c:291
 #, c-format
 msgid "%s: Terminated\n"
-msgstr ""
+msgstr "%s: انتهى\n"
 
 #. parent
 #. wait for child signal
@@ -306,39 +312,39 @@ msgstr "اخفاء _جميع الاخرين"
 
 #: src/menu.c:42
 msgid "S_how"
-msgstr "ا_ظهار"
+msgstr "اظ_هار"
 
 #: src/menu.c:43
 msgid "_Shade"
-msgstr "تظليل"
+msgstr "ت_ظليل"
 
 #: src/menu.c:44
 msgid "Un_shade"
-msgstr " إزالة التظليل"
+msgstr " إ_زالة التظليل"
 
 #: src/menu.c:45
 msgid "S_tick"
-msgstr "الصق"
+msgstr "ال_صق"
 
 #: src/menu.c:46
 msgid "Uns_tick"
-msgstr "الغاء الصاق"
+msgstr "ا_لغاء الصاق"
 
 #: src/menu.c:47
 msgid "_Move"
-msgstr "حرك"
+msgstr "_حرك"
 
 #: src/menu.c:48
 msgid "_Resize"
-msgstr "اعادة تحجيم"
+msgstr "اعادة تحجي_م"
 
 #: src/menu.c:49
 msgid "S_witch"
-msgstr "تغيير"
+msgstr "_تغيير"
 
 #: src/menu.c:51
 msgid "_Close"
-msgstr "اغلق"
+msgstr "اغل_ق"
 
 #: src/menu.c:53
 msgid "Destroy"
@@ -346,11 +352,11 @@ msgstr "إبادة"
 
 #: src/menu.c:55
 msgid "Wor_kspace"
-msgstr "بيئة العمل"
+msgstr "_بيئة العمل"
 
 #: src/menu.c:58
 msgid "_Quit"
-msgstr "إغلاق"
+msgstr "إ_غلاق"
 
 #: src/menu.c:59
 msgid "Restart"
@@ -359,32 +365,32 @@ msgstr "إعادة تشغيل"
 #: src/menu.c:307
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
 
 #: src/settings.c:333
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr ""
+msgstr "%s: لا أستطيع تخصيص اللون النشط%s\n"
 
 #: src/settings.c:339
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr ""
+msgstr "%s: لا أستطيع تحليل اللون النشط %s\n"
 
 #: src/settings.c:377
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr ""
+msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 
 #: src/settings.c:383
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr ""
+msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 
 #: src/settings.c:695
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr ""
+msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم قيمة rc: %i"
 
 #: src/tabwin.c:68
 msgid "Switch to ..."
