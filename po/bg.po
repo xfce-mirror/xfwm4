@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-22 12:48+0200\n"
+"POT-Creation-Date: 2004-06-24 22:03+0200\n"
 "PO-Revision-Date: 2004-03-09 19:04+0200\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -116,17 +116,17 @@ msgid "Close"
 msgstr "Затваряне"
 
 #: mcs-plugin/xfwm4_plugin.c:139 mcs-plugin/xfwm4_plugin.c:1203
-#: mcs-plugin/xfwm4_plugin.c:1568
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Shade window"
 msgstr "Засенчва прозореца"
 
 #: mcs-plugin/xfwm4_plugin.c:140 mcs-plugin/xfwm4_plugin.c:1198
-#: mcs-plugin/xfwm4_plugin.c:1564
+#: mcs-plugin/xfwm4_plugin.c:1569
 msgid "Hide window"
 msgstr "Скрива прозореца"
 
 #: mcs-plugin/xfwm4_plugin.c:141 mcs-plugin/xfwm4_plugin.c:1183
-#: mcs-plugin/xfwm4_plugin.c:1552
+#: mcs-plugin/xfwm4_plugin.c:1557
 msgid "Maximize window"
 msgstr "Максимизира прозореца"
 
@@ -154,318 +154,322 @@ msgstr "Скрит"
 msgid "Font Selection Dialog"
 msgstr "Диалог за избиране на шрифт"
 
-#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1548
+#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1553
 #, fuzzy
 msgid "Close window"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1556
+#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1561
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "Максимизира прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1560
+#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1565
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "Максимизира прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1572
+#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1577
 #, fuzzy
 msgid "Stick window"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1576
+#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1581
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1585
 #, fuzzy
 msgid "Move window up"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1584
+#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1589
 #, fuzzy
 msgid "Move window down"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1588
+#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1593
 #, fuzzy
 msgid "Move window left"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1592
+#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1597
 msgid "Move window right"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1601
 #, fuzzy
 msgid "Resize window up"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1600
+#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1605
 #, fuzzy
 msgid "Resize window down"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1609
 #, fuzzy
 msgid "Resize window left"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1608
+#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1613
 #, fuzzy
 msgid "Resize window right"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1612
+#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1617
 #, fuzzy
 msgid "Raise window"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1616
+#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1621
 #, fuzzy
 msgid "Lower window"
 msgstr "Скрива прозореца"
 
-#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1625
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1629
 #, fuzzy
 msgid "Next workspace"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1624
+#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1633
 #, fuzzy
 msgid "Previous workspace"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1628
+#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1637
 #, fuzzy
 msgid "Add workspace"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1632
+#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1641
 #, fuzzy
 msgid "Delete workspace"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1636
+#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1645
 #, fuzzy
 msgid "Workspace 1"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1640
+#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1649
 #, fuzzy
 msgid "Workspace 2"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1644
+#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1653
 #, fuzzy
 msgid "Workspace 3"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1648
+#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1657
 #, fuzzy
 msgid "Workspace 4"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1652
+#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1661
 #, fuzzy
 msgid "Workspace 5"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1656
+#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1665
 #, fuzzy
 msgid "Workspace 6"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1660
+#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1669
 #, fuzzy
 msgid "Workspace 7"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1664
+#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1673
 #, fuzzy
 msgid "Workspace 8"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1668
+#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1677
 #, fuzzy
 msgid "Workspace 9"
 msgstr "Работно място %i"
 
-#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1672
+#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1681
 msgid "Move window to next workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1676
+#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1685
 msgid "Move window to previous workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1680
+#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1689
 msgid "Move window to workspace 1"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1693
 msgid "Move window to workspace 2"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1688
+#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1697
 msgid "Move window to workspace 3"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1692
+#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1701
 msgid "Move window to workspace 4"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1696
+#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1705
 msgid "Move window to workspace 5"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1700
+#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1709
 msgid "Move window to workspace 6"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1704
+#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1713
 msgid "Move window to workspace 7"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1708
+#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1717
 msgid "Move window to workspace 8"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1712
+#: mcs-plugin/xfwm4_plugin.c:1388 mcs-plugin/xfwm4_plugin.c:1721
 msgid "Move window to workspace 9"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1760
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1788
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1794 mcs-plugin/xfwm4_plugin.c:1805
+#: mcs-plugin/xfwm4_plugin.c:1803 mcs-plugin/xfwm4_plugin.c:1814
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1925
+#: mcs-plugin/xfwm4_plugin.c:1934
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1986
+#: mcs-plugin/xfwm4_plugin.c:1995
 msgid "Compose shortcut for :"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:1989 mcs-plugin/xfwm4_plugin.c:2202
+#: mcs-plugin/xfwm4_plugin.c:1998 mcs-plugin/xfwm4_plugin.c:2219
 msgid "Compose shortcut"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2021 mcs-plugin/xfwm4_plugin.c:2233
+#: mcs-plugin/xfwm4_plugin.c:2030 mcs-plugin/xfwm4_plugin.c:2250
 msgid "Cannot grab the keyboard"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2061
+#: mcs-plugin/xfwm4_plugin.c:2070
 msgid "Select command"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:2107
+#: mcs-plugin/xfwm4_plugin.c:2124
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2109
+#: mcs-plugin/xfwm4_plugin.c:2126
 msgid "Command :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2143
+#: mcs-plugin/xfwm4_plugin.c:2160
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2199
+#: mcs-plugin/xfwm4_plugin.c:2216
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2311 mcs-plugin/xfwm4_plugin.c:2814
+#: mcs-plugin/xfwm4_plugin.c:2328 mcs-plugin/xfwm4_plugin.c:2831
 msgid "Window Manager"
 msgstr "Мениджър на прозорци"
 
-#: mcs-plugin/xfwm4_plugin.c:2324
+#: mcs-plugin/xfwm4_plugin.c:2341
 msgid "Window Manager Preferences"
 msgstr "Настройки на мениджъра·на·прозорци"
 
-#: mcs-plugin/xfwm4_plugin.c:2354
+#: mcs-plugin/xfwm4_plugin.c:2371
 msgid "Title font"
 msgstr "Шрифт на заглавието"
 
-#: mcs-plugin/xfwm4_plugin.c:2367
+#: mcs-plugin/xfwm4_plugin.c:2384
 msgid "Title Alignment"
 msgstr "Подравнение на заглавието"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:2373
+#: mcs-plugin/xfwm4_plugin.c:2390
 msgid "Text alignment inside title bar :"
 msgstr "Подравнява текста в заглавната лента :"
 
-#: mcs-plugin/xfwm4_plugin.c:2375
+#: mcs-plugin/xfwm4_plugin.c:2392
 msgid "Button layout"
 msgstr "Разположение на бутоните"
 
-#: mcs-plugin/xfwm4_plugin.c:2381
+#: mcs-plugin/xfwm4_plugin.c:2398
 #, fuzzy
 msgid "Style"
 msgstr "Заглавие"
 
-#: mcs-plugin/xfwm4_plugin.c:2407
+#: mcs-plugin/xfwm4_plugin.c:2424
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_plugin.c:2428 mcs-plugin/xfwm4_plugin.c:2456
+#: mcs-plugin/xfwm4_plugin.c:2445 mcs-plugin/xfwm4_plugin.c:2473
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2433 mcs-plugin/xfwm4_plugin.c:2461
+#: mcs-plugin/xfwm4_plugin.c:2450 mcs-plugin/xfwm4_plugin.c:2478
 #, fuzzy
 msgid "Shortcut"
 msgstr "Клавишни комбинации"
 
-#: mcs-plugin/xfwm4_plugin.c:2436
+#: mcs-plugin/xfwm4_plugin.c:2453
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "Клавишни комбинации"
 
-#: mcs-plugin/xfwm4_plugin.c:2464
+#: mcs-plugin/xfwm4_plugin.c:2481
 #, fuzzy
 msgid "Keyboard"
 msgstr "Клавишни комбинации"
 
-#: mcs-plugin/xfwm4_plugin.c:2475
+#: mcs-plugin/xfwm4_plugin.c:2492
 msgid "Focus model"
 msgstr "Тип на фокуса"
 
-#: mcs-plugin/xfwm4_plugin.c:2483
+#: mcs-plugin/xfwm4_plugin.c:2500
 msgid "Click to focus"
 msgstr "Натискане за фокус"
 
-#: mcs-plugin/xfwm4_plugin.c:2490
+#: mcs-plugin/xfwm4_plugin.c:2507
 msgid "Focus follows mouse"
 msgstr "Фокуса следва мишката"
 
-#: mcs-plugin/xfwm4_plugin.c:2497
+#: mcs-plugin/xfwm4_plugin.c:2514
 msgid "New window focus"
 msgstr "Новите прозорци се фокусират"
 
-#: mcs-plugin/xfwm4_plugin.c:2501
+#: mcs-plugin/xfwm4_plugin.c:2518
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -473,11 +477,11 @@ msgstr ""
 "Автоматично се фокусират\n"
 "новосъздадените прозорци"
 
-#: mcs-plugin/xfwm4_plugin.c:2506
+#: mcs-plugin/xfwm4_plugin.c:2523
 msgid "Raise on focus"
 msgstr "Повдига при фокусиране"
 
-#: mcs-plugin/xfwm4_plugin.c:2514
+#: mcs-plugin/xfwm4_plugin.c:2531
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -485,23 +489,23 @@ msgstr ""
 "Автоматично повдига прозорците·\n"
 "когато се фокусират"
 
-#: mcs-plugin/xfwm4_plugin.c:2524
+#: mcs-plugin/xfwm4_plugin.c:2541
 msgid "Delay before raising focused window :"
 msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
 
-#: mcs-plugin/xfwm4_plugin.c:2530
+#: mcs-plugin/xfwm4_plugin.c:2547
 msgid "Slow"
 msgstr "Бавно"
 
-#: mcs-plugin/xfwm4_plugin.c:2536
+#: mcs-plugin/xfwm4_plugin.c:2553
 msgid "Fast"
 msgstr "Бързо"
 
-#: mcs-plugin/xfwm4_plugin.c:2552
+#: mcs-plugin/xfwm4_plugin.c:2569
 msgid "Raise on click"
 msgstr "Повдигане при натискане"
 
-#: mcs-plugin/xfwm4_plugin.c:2556
+#: mcs-plugin/xfwm4_plugin.c:2573
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -509,76 +513,76 @@ msgstr ""
 "Повдига прозореца когато се натисне\n"
 "в прозореца на приложението"
 
-#: mcs-plugin/xfwm4_plugin.c:2561
+#: mcs-plugin/xfwm4_plugin.c:2578
 #, fuzzy
 msgid "Focus"
 msgstr "Тип на фокуса"
 
-#: mcs-plugin/xfwm4_plugin.c:2571
+#: mcs-plugin/xfwm4_plugin.c:2588
 msgid "Windows snapping"
 msgstr "Прилепване на прозорците"
 
-#: mcs-plugin/xfwm4_plugin.c:2579
+#: mcs-plugin/xfwm4_plugin.c:2596
 msgid "Snap windows to screen border"
 msgstr "Прилепва прозорците по границата на екрана"
 
-#: mcs-plugin/xfwm4_plugin.c:2584
+#: mcs-plugin/xfwm4_plugin.c:2601
 msgid "Snap windows to other windows"
 msgstr "Прилеплва прозорците до другите прозорци"
 
-#: mcs-plugin/xfwm4_plugin.c:2594
+#: mcs-plugin/xfwm4_plugin.c:2611
 msgid "Distance :"
 msgstr "Разстояние :"
 
-#: mcs-plugin/xfwm4_plugin.c:2600 mcs-plugin/xfwm4_plugin.c:2650
+#: mcs-plugin/xfwm4_plugin.c:2617 mcs-plugin/xfwm4_plugin.c:2667
 msgid "Small"
 msgstr "Малко"
 
-#: mcs-plugin/xfwm4_plugin.c:2606 mcs-plugin/xfwm4_plugin.c:2656
+#: mcs-plugin/xfwm4_plugin.c:2623 mcs-plugin/xfwm4_plugin.c:2673
 msgid "Wide"
 msgstr "Голямо"
 
-#: mcs-plugin/xfwm4_plugin.c:2621
+#: mcs-plugin/xfwm4_plugin.c:2638
 msgid "Wrap workspaces"
 msgstr "Превключване на работните места"
 
-#: mcs-plugin/xfwm4_plugin.c:2629
+#: mcs-plugin/xfwm4_plugin.c:2646
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Превключва работните места когато курсора достигне края на екрана"
 
-#: mcs-plugin/xfwm4_plugin.c:2634
+#: mcs-plugin/xfwm4_plugin.c:2651
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Превклюва работните места когато се изтегля прозорец извън екрана"
 
-#: mcs-plugin/xfwm4_plugin.c:2644
+#: mcs-plugin/xfwm4_plugin.c:2661
 msgid "Edge Resistance :"
 msgstr "Съпротивление по краищата :"
 
-#: mcs-plugin/xfwm4_plugin.c:2671
+#: mcs-plugin/xfwm4_plugin.c:2688
 msgid "Opaque move and resize"
 msgstr "Непрозрачно местене и промяна на размера"
 
-#: mcs-plugin/xfwm4_plugin.c:2679
+#: mcs-plugin/xfwm4_plugin.c:2696
 msgid "Display content of windows when resizing"
 msgstr "Показва съдържанието на прозорците при промяна на размера"
 
-#: mcs-plugin/xfwm4_plugin.c:2684
+#: mcs-plugin/xfwm4_plugin.c:2701
 msgid "Display content of windows when moving"
 msgstr "Показва·съдържанието·на·прозорците·при местене"
 
-#: mcs-plugin/xfwm4_plugin.c:2689
+#: mcs-plugin/xfwm4_plugin.c:2706
 msgid "Double click action"
 msgstr "Действие при двойно натискане"
 
-#: mcs-plugin/xfwm4_plugin.c:2695
+#: mcs-plugin/xfwm4_plugin.c:2712
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Действие което да се извърши при двойно натискане на заглавната лента"
 
-#: mcs-plugin/xfwm4_plugin.c:2697
+#: mcs-plugin/xfwm4_plugin.c:2714
 msgid "Advanced"
 msgstr "Допълнителни"
 
-#: src/events.c:1604
+#: src/events.c:1607
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""

@@ -897,6 +897,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], getValue ("shortcut_10_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getValue ("fullscreen_key", rc));
 
     ungrabKeys (dpy, screen_info->gnome_win);
     grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->gnome_win);
@@ -994,6 +995,7 @@ loadSettings (ScreenInfo *screen_info)
         {"close_window_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
+        {"fullscreen_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},

@@ -272,39 +272,21 @@ clientGrabKeys (Client * c)
 
     screen_info = c->screen_info;
 
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_UP], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_ADD_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_CLOSE_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_CYCLE_WINDOWS], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_DEL_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_HIDE_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_LOWER_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MAXIMIZE_VERT], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_DOWN], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_LEFT], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_RIGHT], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_UP], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_DOWN], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_LEFT], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_RIGHT], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_CLOSE_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_HIDE_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MAXIMIZE_VERT], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHADE_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_STICK_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RAISE_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_LOWER_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_CYCLE_WINDOWS], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_NEXT_WORKSPACE], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_PREV_WORKSPACE], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_ADD_WORKSPACE], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_DEL_WORKSPACE], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_1], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_2], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_3], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_4], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_5], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_6], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_7], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_8], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_9], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_RIGHT], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_UP], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_1], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_2], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_3], c->window);
@@ -314,6 +296,16 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_7], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_8], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_MOVE_WORKSPACE_9], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_NEXT_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_PREV_WORKSPACE], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RAISE_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_DOWN], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_LEFT], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_RIGHT], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_RESIZE_UP], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHADE_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_STICK_WINDOW], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_1], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_2], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_3], c->window);
@@ -324,6 +316,15 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_8], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_9], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_10], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_1], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_2], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_3], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_4], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_5], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_6], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_7], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_8], c->window);
+    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_9], c->window);
 }
 
 void
@@ -2316,7 +2317,7 @@ void clientToggleFullscreen (Client * c)
     if (!clientIsTransientOrModal (c))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
-        clientUpdateAboveState (c);
+        clientUpdateFullscreenState (c);
     }
 }
 

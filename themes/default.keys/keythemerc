@@ -16,6 +16,7 @@ resize_window_left_key=Shift+Alt+Left
 resize_window_right_key=Shift+Alt+Right
 raise_window_key=Shift+Alt+Page_Up
 lower_window_key=Shift+Alt+Page_Down
+fullscreen_key=Alt+F11
 next_workspace_key=Control+Alt+Right
 prev_workspace_key=Control+Alt+Left
 add_workspace_key=Alt+Insert

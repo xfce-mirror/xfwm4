@@ -1262,6 +1262,11 @@ loadtheme_in_treeview (gchar * theme_file, gpointer data)
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
             gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Lower window"), COLUMN_SHORTCUT, rvalue, -1);
         }
+        else if (g_ascii_strcasecmp (lvalue, "fullscreen_key") == 0)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _("Toggle fullscreen"), COLUMN_SHORTCUT, rvalue, -1);
+        }
         else if (g_ascii_strcasecmp (lvalue, "next_workspace_key") == 0)
         {
             gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
@@ -1616,6 +1621,10 @@ savetree3_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIter * 
     else if (strcmp (command, _("Lower window")) == 0)
     {
         strcpy (xfwm4_command, "lower_window_key");
+    }
+    else if (strcmp (command, _("Toggle fullscreen")) == 0)
+    {
+        strcpy (xfwm4_command, "fullscreen_key");
     }
     else if (strcmp (command, _("Next workspace")) == 0)
     {

@@ -105,7 +105,8 @@
 #define KEY_SHORTCUT_10                 49
 #define KEY_LOWER_WINDOW                50
 #define KEY_RAISE_WINDOW                51
-#define KEY_COUNT                       52
+#define KEY_TOGGLE_FULLSCREEN           52
+#define KEY_COUNT                       53
 #define NB_KEY_SHORTCUTS                10
 
 #define ALIGN_LEFT                      0

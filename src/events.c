@@ -377,6 +377,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientLower (c);
                 clientPassGrabButton1 (NULL);
                 break;
+            case KEY_TOGGLE_FULLSCREEN:
+                clientToggleFullscreen (c);
+                break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (screen_info, screen_info->current_ws + 1, c);
                 break;
