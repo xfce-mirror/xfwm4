@@ -5295,7 +5295,7 @@ clientMove (Client * c, XEvent * e)
 
     if (e->type == KeyPress)
     {
-        last_timestamp = e->xkey.time;
+        last_timestamp = stashEventTime (last_timestamp, e);
         cursor = None;
         passdata.use_keys = TRUE;
         passdata.mx = e->xkey.x_root;
@@ -5303,7 +5303,7 @@ clientMove (Client * c, XEvent * e)
     }
     else if (e->type == ButtonPress)
     {
-        last_timestamp = e->xbutton.time;
+        last_timestamp = stashEventTime (last_timestamp, e);
         cursor = None;
         passdata.mx = e->xbutton.x_root;
         passdata.my = e->xbutton.y_root;
@@ -5693,13 +5693,13 @@ clientResize (Client * c, int corner, XEvent * e)
     if (e->type == KeyPress)
     {
         passdata.use_keys = TRUE;
-        last_timestamp = e->xkey.time;
+        last_timestamp = stashEventTime (last_timestamp, e);
         passdata.mx = e->xkey.x_root;
         passdata.my = e->xkey.y_root;
     }
     else if (e->type == ButtonPress)
     {
-        last_timestamp = e->xbutton.time;
+        last_timestamp = stashEventTime (last_timestamp, e);
         passdata.mx = e->xbutton.x_root;
         passdata.my = e->xbutton.y_root;
     }
@@ -5864,14 +5864,7 @@ clientCycle (Client * c, XEvent * e)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
 
-    if (e->type == KeyPress)
-    {
-        last_timestamp = e->xkey.time;
-    }
-    else
-    {
-        last_timestamp = e->xbutton.time;
-    }
+    last_timestamp = stashEventTime (last_timestamp, e);
     g1 = XGrabKeyboard (dpy, gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
         last_timestamp);
     g2 = XGrabPointer (dpy, gnome_win, FALSE, NoEventMask, GrabModeAsync,
