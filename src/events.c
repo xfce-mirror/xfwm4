@@ -840,7 +840,7 @@ handleUnmapNotify (XUnmapEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-        printf ("UnmapNotify for \"%s\" (0x%lx)\n", c->name, c->window);
+        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         /* Reparenting generates an unmapnotify, don't pass focus in that case */
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
