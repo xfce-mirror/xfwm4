@@ -209,6 +209,7 @@ GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gc
 #if ((GTK_MAJOR_VERSION <= 1) && (GTK_MINOR_VERSION <= 2))
   gtk_widget_set_usize (gtk_win, 5, 5);
   gtk_widget_set_uposition (gtk_win, -1000, -1000);
+  gtk_widget_set_double_buffered(GTK_WIDGET(gtk_win), FALSE);
 #else
   gtk_window_resize (GTK_WINDOW(gtk_win), 5, 5);
   gtk_window_move (GTK_WINDOW(gtk_win), -1000, -1000);
