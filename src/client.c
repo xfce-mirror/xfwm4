@@ -3502,7 +3502,6 @@ clientUnframe (Client * c, gboolean remap)
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
-    XUnmapWindow (dpy, c->window);
     XUnmapWindow (dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (dpy, c->window, NoEventMask);
@@ -3999,7 +3998,6 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     MyXGrabServer ();
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c);
-    XUnmapWindow (dpy, c->window);
     XUnmapWindow (dpy, c->frame);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
     {
@@ -4009,6 +4007,7 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     if (change_state)
     {
         CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
+        XUnmapWindow (dpy, c->window);
         setWMState (dpy, c->window, IconicState);
         workspaceUpdateArea (margins, gnome_margins);
     }
