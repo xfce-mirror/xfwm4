@@ -1998,14 +1998,6 @@ void clientHide(Client * c, int change_state)
     DBG("entering clientHide\n");
     DBG("hiding client \"%s\" (%#lx)\n", c->name, c->window);
 
-#if 0
-    if ((change_state) && !CAN_HIDE_WINDOW(c))
-    {
-        DBG("cowardly refusing to hide a client that is not shown is the taskbar\n");
-        gdk_beep ();
-        return;
-    }
-#endif
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
     for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
@@ -2038,11 +2030,7 @@ void clientHideAll(Client * c)
     {
         if(CAN_HIDE_WINDOW(c2) && !(c2->transient_for) && (c2 != c))
         {
-            if((c) && (c->transient_for != c2->window))
-            {
-                clientHide(c2, True);
-            }
-            else if(!c)
+            if(((c) && (c->transient_for != c2->window)) || (!c))
             {
                 clientHide(c2, True);
             }
