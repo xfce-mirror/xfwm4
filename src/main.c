@@ -245,17 +245,7 @@ initialize (int argc, char **argv)
 
     progname = argv[0];
 
-#if 0
-#ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
-    textdomain (GETTEXT_PACKAGE);
-#endif
-#else
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-#endif
 
     gtk_set_locale ();
     gtk_init (&argc, &argv);
@@ -276,6 +266,8 @@ initialize (int argc, char **argv)
     
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
+
+    xfce_setenv ("DISPLAY", gdk_display_get_name (gdisplay), TRUE);
 
     depth = DefaultDepth (dpy, screen);
     sn_init_display (dpy, screen);
