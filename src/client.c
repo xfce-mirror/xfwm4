@@ -3714,17 +3714,21 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 if (key_pressed)
                 {
+                    Client *c2 = NULL;
                     /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
                     if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
                     {
                         TRACE ("Cycle: previous");
-                        c = clientGetPrevious (c, passdata->cycle_range);
-                        passdata->c = c;
+                        c2 = clientGetPrevious (c, passdata->cycle_range);
                     }
                     else
                     {
                         TRACE ("Cycle: next");
-                        c = clientGetNext (c, passdata->cycle_range);
+                        c2 = clientGetNext (c, passdata->cycle_range);
+                    }
+                    if (c2)
+                    {
+                        c = c2;
                         passdata->c = c;
                     }
                 }
@@ -3833,7 +3837,7 @@ clientCycle (Client * c, XEvent * e)
     passdata.c = clientGetNext (c, passdata.cycle_range);
 
     /* If there is one single client, and if it's hidden, use it */
-    if ((passdata.c == NULL) && FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+    if (passdata.c == NULL)
     {
         passdata.c = c;
     }
