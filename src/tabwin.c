@@ -148,6 +148,7 @@ tabwinSetLabel (Tabwin * tabwin, GdkPixbuf *icon, const gchar * class, const gch
     if (icon)
     {
         gtk_image_set_from_pixbuf (GTK_IMAGE (tabwin->image), icon);
+	g_object_unref(icon);
     }
     else
     {

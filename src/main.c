@@ -86,10 +86,12 @@ cleanUp (void)
         myScreenClose (screen_info_n);
         g_free (screen_info_n);
     }
-    
     sn_close_display ();
-    
     sessionFreeWindowStates ();
+    
+    myDisplayClose (display_info);
+    g_free (display_info);
+    display_info = NULL;
 }
 
 static char *build_session_filename(SessionClient *client_session)

@@ -3443,11 +3443,12 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
                 if (c)
                 {
-                    /* Redraw frame draw */
+                    GdkPixbuf *icon;
+		    
+		    /* Redraw frame draw */
                     clientDrawOutline (c);
-                    tabwinSetLabel (passdata->tabwin, 
-                                    getAppIcon (clientGetXDisplay (c), 
-                                                c->window, 32, 32), 
+                    icon = getAppIcon (clientGetXDisplay (c), c->window, 32, 32);
+                    tabwinSetLabel (passdata->tabwin, icon, 
                                     c->class.res_class, c->name);
                 }
                 else
@@ -3537,9 +3538,12 @@ clientCycle (Client * c, XEvent * e)
     passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)
     {
-        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr,
-                                        getAppIcon (display_info->dpy, passdata.c->window, 32, 32),
-                                        passdata.c->class.res_class, passdata.c->name);
+        GdkPixbuf *icon;
+	
+	icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
+	passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
+                               passdata.c->class.res_class, passdata.c->name);
+			       
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);
@@ -3551,6 +3555,8 @@ clientCycle (Client * c, XEvent * e)
             /* Hide frame draw */
             clientDrawOutline (passdata.c);
         }
+	
+	
         TRACE ("leaving cycle loop");
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
