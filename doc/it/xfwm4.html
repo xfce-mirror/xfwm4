@@ -1,180 +1,202 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Gestore delle finestre di XFce 4</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.62.4"><link rel="home" href="#xfwm4" title="XFce 4 Window Manager"><link rel="next" href="#wm-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfwm4"></a>Gestore delle finestre di XFce 4</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Fran&#231;ois</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</tt></p></div></div></div><div class="author">Italian translation: Sascha Ales<div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:huysmans@users.sourceforge.net">europatriota@hotmail.com</a>&gt;</tt></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">Questo manuale descrive <b xmlns="" class="application"><tt>xfwm4</tt></b>, versione 4.0
-  <br></br></span></div><div><p class="copyright">Copyright &copy; 2003
-Fran&#231;ois Le Clainche</p></div><div><p class="copyright">Copyright &copy;
-2003 Jasper Huijsmans</p></div><div><p class="copyright">Copyright &copy; 2004
-Sascha Ales (Italian translation)</p></div></div><div></div><hr></div><div
-class="toc"><p><b>Tavola dei Contenuti</b></p><dl><dt><span class="sect1"><a
-href="#wm-intro">Introduzione</a></span></dt><dt><span class="sect1"><a
-href="#wm-using">Utilizzare xfwm4</a></span></dt><dd><dl><dt><span
-class="sect2"><a href="#wm-windows">Gestire le finestre</a></span></dt><dt><span
-class="sect2"><a href="#wm-keybindings">Sommario dei comandi da
-tastiera</a></span></dt></dl></dd><dt><span class="sect1"><a
-href="#wm-settings">Personalizzare xfwm4</a></span></dt><dd><dl><dt><span
-class="sect2"><a href="#wm-style">Stile delle
-decorazioni</a></span></dt><dt><span class="sect2"><a href="#wm-focus">Tastiera
-e focus</a></span></dt><dt><span class="sect2"><a
-href="#wm_advanced">Impostazioni avanzate</a></span></dt></dl></dd><dt><span
-class="sect1"><a href="#workspace-margins">Personalizzare i bordi degli spazi di
-lavoro</a></span></dt><dt><span class="sect1"><a
-href="#wm-copyright">Informazioni su xfwm4</a></span></dt></dl></div><p></p><div
-class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title"
-style="clear: both"><a
-name="wm-intro"></a>Introduzione</h2></div></div><div></div></div><p>Il Window
-Manager di XFce 4 √® parte dell'<a href="http://www.xfce.org"
-target="_top">Ambiente Desktop di XFce</a>.
-    Attualmente il comando per eseguirlo √® <b class="application"><tt>xfwm4</tt></b>. Per eseguirlo in background utilizzare 
-    <span><b class="command"><b class="application"><tt>xfwm4</tt></b> --daemon</b></span>. Il window manager √® responsabile della distribuzione delle finestre sullo schermo, fornisce le decorazioni delle finestre e ti permette di muoverle, ridimensionarle o chiuderle.
-  </p><p>Se hai gia avuto modo di utilizzare le precedenti versioni di Xfce, troverai molti cambiamenti. Il primo di tutti, <b class="application"><tt>xfwm4</tt></b> ora aderisce fermamente allo standard definito dalla
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>XFce 4 Window Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.66.0"><link rel="start" href="#xfwm4" title="XFce 4 Window Manager"><link rel="next" href="#wm-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfwm4"></a>XFce 4 Window Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">FranÁois</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</tt></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">This manual describes <b xmlns="" class="application"><tt>xfwm4</tt></b> version 4.0
+  <br></br></span></div><div><p class="copyright">Copyright © 2003 FranÁois Le Clainche</p></div><div><p class="copyright">Copyright © 2003 Jasper Huijsmans</p></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#wm-intro">Introduction</a></span></dt><dt><span class="sect1"><a href="#wm-using">Using <b class="application"><tt>xfwm4</tt></b></a></span></dt><dd><dl><dt><span class="sect2"><a href="#wm-windows">Manage windows</a></span></dt><dt><span class="sect2"><a href="#wm-keybindings">Keyboard shortcuts summary</a></span></dt></dl></dd><dt><span class="sect1"><a href="#wm-settings">Customizing <b class="application"><tt>xfwm4</tt></b></a></span></dt><dd><dl><dt><span class="sect2"><a href="#wm-style">Decoration style</a></span></dt><dt><span class="sect2"><a href="#wm-focus">Keyboard and focus</a></span></dt><dt><span class="sect2"><a href="#wm_advanced">Advanced settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="#workspaces">Workspaces and Margins</a></span></dt><dd><dl><dt><span class="sect2"><a href="#id2523789">Workspaces</a></span></dt><dt><span class="sect2"><a href="#workspace-margins">Workspace margins</a></span></dt></dl></dd><dt><span class="sect1"><a href="#wm-copyright">About <b class="application"><tt>xfwm4</tt></b></a></span></dt></dl></div><p>†</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-intro"></a>Introduction</h2></div></div></div><p>The XFce 4 Window Manager is part of the <a href="http://www.xfce.org" target="_top">XFce Desktop Environment</a>.
+    The actual command to run is <b class="application"><tt>xfwm4</tt></b>. To run it in the background use 
+    <span><b class="command"><b class="application"><tt>xfwm4</tt></b> --daemon</b></span>. The window manager is responsible for
+    the placement of windows on the screen, provides the window
+    decorations and allows you for instance to move, resize or close them.
+  </p><p>If you are familiar with previous versions of XFce you will find many
+    changes. First of all, <b class="application"><tt>xfwm4</tt></b> adheres strongly to the standards defined on
     <a href="http://www.freedesktop.org" target="_top">freedesktop.org</a>.
-    Di conseguenza, caratteristiche speciali, come la creazione delle finestre
-con i bordi, oppure l'inserimento di icone differenti a quelle predefinite di
-alcune applicazioni non possono pi√π essere fatti, non √® pi√π possibile, quindi,
-forzare il window manager. Il cambiamento pi√π visibile √® probabilmente quello
-della gestione dei temi. Le decorazioni delle finestre (bordi, barra del titolo
-e bottoni) possono essere configurati usando i temi del window manager. 
-  </p><p><b class="application"><tt>xfwm4</tt></b> offre il supporto a Xinerama,
-molto utile se hai pi√π di un monitor collegato al computer. Devi per√≤ essere
-sicuro che
-    <b class="application"><tt>libxfcegui4</tt></b> sia stato compilato con il comando
+    Consequently, special features such as making windows borderless, or 
+    providing an icon for the application must now be implemented in the 
+    application; you can no longer use the window manager to force different 
+    behaviour. Most visible change is probably the themeability. The window 
+    decorations (borders, title bar and window buttons) can be configured by 
+    using window manager themes. 
+  </p><p><b class="application"><tt>xfwm4</tt></b> offers Xinerama support, useful when you have more than one
+    monitor connected to your computer, but you have to make sure
+    <b class="application"><tt>libxfcegui4</tt></b> is compiled with
     <tt class="option">--enable-xinerama</tt>.
-  </p><p><b class="application"><tt>xfwm4</tt></b> pu√≤ essere lanciato
-separatamente, se utilizzi questo metodo, hai bisogno del <a
-href="xfce-mcs-manager.html" target="_top">Gestore delle Impostazioni di XFce
-4</a> se vuoi utilizzare la GUI per gestire le impostazioni. Altri processi come
-gestire le finestre, impostare l'immagine dello sfondo oppure lanciare delle
- applicazioni sono necessari per le performance di altri programmi.
-  </p></div><p></p><div class="sect1" lang="en"><div
-class="titlepage"><div><div><h2 class="title" style="clear: both"><a
-name="wm-using"></a>Utilizzare <b
-class="application"><tt>xfwm4</tt></b></h2></div></div><div></div></div><div
-class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a
-name="wm-windows"></a>Gestire le finestre</h3></div></div><div></div></div><p>Il
-window manager fornisce bordi, barra del titolo e bottoni per le finestre delle
-applicazioni. L'aspetto √® definito dal tema che si sta utilizzando per il window
-manager.</p><p>Nel tema predefinito di <b class="application"><tt>xfwm4</tt></b>
-sono previsti sei bottoni e una barra del titolo in una finestra
-dell'applicazione regolare. I Sei bottoni forniscono queste sei funzioni
-basilari:</p><div class="figure"><a name="titlebar-fig"></a><p
-class="title"><b>Figura 1. Bottoni nella barra del titolo in <tt
-class="application">xfwm4</tt></b></p><div class="screenshot"><div
-class="mediaobject"><img src="images/titlebar.png" alt="xfwm4 title bar buttons
-and functions"></div></div></div><p>Puoi aprire la finestra dei menu con un
-click nel bottone menu sulla barra del titolo, oppure cliccando con il tasto
-destro del mouse nell'area del titolo della finestra.
-    </p><p></p><div class="variablelist"><dl><dt><span class="term">Rendere attiva una finestra</span></dt><dd><p>Rendere attiva una finestra in modo da permettere l'input da mouse o tastiera. Il colore della decorazione della finestra cambia dopo aver ricevuto il focus. Per avere maggiori dettagli sulle opzioni di focus, leggere <a href="#wm-focus" title="Keyboard and focus">la sezione chiamata &#8220;Tastiera e focus&#8221;</a> pi√π in basso.
-	  </p><p>La scorciatoia da tastiera per scorrere tra le finestre attive √® la seguente: [ALT]+[TAB]. Se utilizzi questa combinazione noterai che i bordi della prossima finestra di <b class="application"><tt>xfwm4</tt></b> che riceve il focus, saranno ombreggiati.
+  </p><p><b class="application"><tt>xfwm4</tt></b> can be run stand-alone, but if you use it this way, you will
+    need the <a href="xfce-mcs-manager.html" target="_top">XFce 4 Settings
+      Manager</a> if you want GUI settings management. Tasks other than
+    managing windows, like setting a background image or launching programs, 
+    need to be performed by other programs.
+  </p></div><p>†</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-using"></a>Using <b class="application"><tt>xfwm4</tt></b></h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-windows"></a>Manage windows</h3></div></div></div><p>The window manager provides borders, a title bar and window buttons
+      to application windows. The look is defined by the window manager
+      theme.</p><p>In the default theme <b class="application"><tt>xfwm4</tt></b> shows six buttons and a title on regular
+      application windows. The six buttons perform these basic
+      functions:</p><div class="figure"><a name="titlebar-fig"></a><p class="title"><b>Figure†1.†<tt class="application">xfwm4</tt> title bar buttons</b></p><div class="screenshot"><div class="mediaobject"><img src="images/titlebar.png" alt="xfwm4 title bar buttons and functions"></div></div></div><p>You can open the window menu with a left-click on the menu button on
+      the title bar, or with a right-click on the window title area itself.
+    </p><p>†</p><div class="variablelist"><dl><dt><span class="term">Give focus to a window</span></dt><dd><p>You need to give the focus to a window if you want it to 
+	    receive keyboard and mouse input. Window decorations colors will 
+	    change, following the focus. To obtain more details about focus 
+	    options, please refer to <a href="#wm-focus" title="Keyboard and focus">the section called &#8220;Keyboard and focus&#8221;</a> below.
+	  </p><p>A keyboard shortcut allows to switch the focus from a window
+	    to others : Hold Alt and then you can press Tab repeatedly untill
+	    you get to the window you want to focus. If you use it, you will 
+	    see a small popup with the window title and also <b class="application"><tt>xfwm4</tt></b> will 
+	    highlight the outline of the window that will receive the focus.
 	  </p><p>
-	    Se preferisci che il pannello e le applicazioni non vengano visualizzate nella barra dei processi quando cambi il focus con la combinazione [ALT]+[TAB], devi modificare il file $HOME/.xfce4/xfwm4rc (oppure crearne uno totalmente nuovo) aggiungendo la linea: cycle_minimum=false</p><p>NOTA: L'uso della scorciatoia da tastiera necessita che almeno una finestra sia gia attiva :)
-	  </p></dd><dt><span class="term">Ingrandire / ripristinare le finestre</span></dt><dd><p>Se ingrandisci una finestra, puoi espanderla sul tuo schermo e utilizzare tutto lo spazio disponibile (questo √® definito nelle <a href="xfdesktop.html#xfdesktop-workspace" target="_top">Impostazioni degli Ambienti di lavoro</a>). Inoltre puoi ingrandire e deingrandire le finestre sia orizzontalmente che verticalmente.
-	</p><p>Per ingrandire una finestra, utilizza uno di questi metodi :</p><div class="itemizedlist"><ul type="disc"><li>clicca sul tasto di ingrandimento sulla barra del titolo</li><li>apri la finestra del menu dalla barra del titolo e scegli l'opzione "maximize"</li><li>utilizza la combinazione dei tasti [ALT]+[F5]</li></ul></div><p>Per ingrandire una finestra verticalmente :</p><div class="itemizedlist"><ul type="disc"><li>clicca con il tasto centrale del mouse sul tasto di ingrandimento sulla barra del titolo</li><li>utilizza la combinazione dei tasti [ALT]+[F6]</li></ul></div><p>Per ingrandire una finestra orizzontalmente :</p><div class="itemizedlist"><ul type="disc"><li>clicca con il tasto destro del mouse sul tasto di ingrandimento nella barra del titolo</li><li>utilizza la combinazione dei tasti [ALT]+[F7]</li></ul></div><p>Quando una finestra √® ingrandita in un modo o in un altro, puoi farla tornare alle dimensioni originali utilizzando uno di questi metodi :</p><div class="itemizedlist"><ul type="disc"><li>clicca sul tasto ripristina nella barra del titolo</li><li>utilizza le stesse combinazioni di tasti precedentemente descritte</li><li>scegli la voce "Unmaximize" dal menu della finestra</li></ul></div><p></p></dd><dt><span class="term">Ridimensionare le finestre</span></dt><dd><p>Molte finestre non hanno la possibilit√† di essere ridimensionate, puoi per√≤ farlo a mano ridimensionando varie parti delle stesse secondo le tue necessit√†.</p><div class="itemizedlist"><ul type="disc"><li>Puoi utilizzare le maniglie agli angoli delle finestra per modificare la grandezza, trascinandole con il mouse</li><li>Puoi utilizzare la combinazione [ALT]+[TASTO DESTRO MOUSE] quando il puntatore √® in qualunque parte del bordo della finestra</li><li>Puoi utilizzare la pratica combinazione della tastiera : [CTRL]+[SHIFT]+[ALT]+[FRECCIA] (su, gi√π, sinistra o destra)</li></ul></div><p></p></dd><dt><span class="term">Nascondi / mostra la finestra</span></dt><dd><p>Puoi nascondere una finestrautilizzando uno di questi metodi :</p><div class="itemizedlist"><ul type="disc"><li>cliccando sul tasto nascondi nella barra del titolo</li><li>aprendo il menu della finestra e selezionando la voce "Hide"</li><li>utilizzando la combinazione dei tasti [ALT]+[F8]</li></ul></div><p>In alternativa puoi nascondere tutte le finestre dello spazio di lavoro correntemente utilizzato, ad eccezione di quella che stai utilizzando al momento dell'operazione. La proceduta √® la seguente: clicca sul bottone menu della barra del titolo e seleziona la voce "Hide all others".</p><p>Per visualizzare nuovamente le finestre, puoi selezionare il loro nome o le loro icone da uno di questi componenti di XFce 4 :</p><div class="itemizedlist"><ul type="disc"><li><b class="application"><tt>xftaskbar4</tt></b></li><li>l' <b class="application"><tt>xfce4-iconbox</tt></b></li><li>la lista delle finestre, accessibile utilizzando il tasto destro del mouse sullo sfondo del desktop. Questa lista visualizza tutte le finestre aperte, classificate per spazio di lavoro. Le finestre che al momento sono nascoste sono marcate all'interno di parentesi quadre [ ].</li></ul></div><p></p></dd><dt><span class="term">Arrotola / ripristina le finestre</span></dt><dd><p>Se vuoi arrotolare una finestra (opzione nuova ai precedenti utilizzatori di Microsoft Windows) in modo che di questa risulti visibile solamente la barra del titolo devi utilizzare una delle seguenti combinazioni (la ripetizione far√† tornare la finestra allo stato normale) :</p><div class="itemizedlist"><ul type="disc"><li>clicca sul tasto shade/unshade della barra del titolo</li><li>apri il menu della finestra e scegli le voci "Shade" oppure "Unshade"</li><li>utilizza (se presente) la rotellina del mouse quando il puntatore √® sulla barra del titolo</li><li>utilizza la combinazione dei tasti [ALT]+[F9]</li></ul></div><p></p></dd><dt><span class="term">Attacca / stacca le finestre</span></dt><dd><p>Se vuoi "attaccare" una finestra in modo che sia visibile in tutti gli spazi di lavoro, utilizza una delle seguenti combinazioni (la ripetizione far√† tornare la finestra allo stato normale) :
-	</p><div class="itemizedlist"><ul type="disc"><li>clicca sul tasto stick/unstick della barra del titolo</li><li>apri il menu' della finestra e scegli le voci "Stick" oppure "Unstick"</li><li>utilizza la combinazione dei tasti [ALT]+[F10]</li></ul></div><p></p></dd><dt><span class="term">Spostare le finestre</span></dt><dd><p>Ci sono molti metodi per muovere le finestre :</p><div class="itemizedlist"><ul type="disc"><li>clicca con il tasto sinistro o destro sulla barra del titolo e trascinare la finestra</li><li>utilizza la combinazione [ALT]+[TASTO SINISTRO MOUSE] quando il puntatore si trova sul bordo della finestra attiva</li><li>utilizza la combinazione dei tasti [CTRL]+[ALT]+[SHIFT]+[FRECCIA] (su, gi√π, sinistra o destra)</li></ul></div><p></p></dd><dt><span class="term">Spostare la finestra in un altro Ambiente di lavoro</span></dt><dd><p>Puoi spostare una finestra in un altro spazio di lavoro seguendo una di queste procedure :</p><div class="itemizedlist"><ul type="disc"><li>attacca la finestra, entra in un altro spazio di lavoro, stacca la finestra.</li><li>utilizza la voce 'Send to' nel sottomenu del menu della finestra.</li><li>click con il tasto sinistro o destro del mouse sulla barra del titolo della finestra, trascinala nell'angolo dello schermo fino a che il puntatore del mouse non cambier√† facendo capire che ti trovi in un altro spazio di lavoro, rilascia la finestra. Il window manager deve essere configurato per questa opzione (identica a quella di KDE), per far ci√≤ devi entrare nella schermata delle <a href="xfwm4.html#wm_misc" target="_top">preferenze del Gestore delle finestre</a>.</li><li>utilizza le seguenti scorciatoie dei tasti :
-	  <div class="itemizedlist"><ul type="circle"><li>[ALT]+[CTRL]+[END] sposta la finestra nel successivo ambiente di lavoro</li><li>[ALT]+[CTRL]+[HOME] sposta la finestra nel precedente ambiente di lavoro</li><li>[ALT]+[CTRL]+[NUM-PAD] sposta la finestra nell'ambiente di lavoro corrispondente</li></ul></div></li><li>utilizza il <a href="xfce4-panel.html#switcher-item" target="_top">pager grafico</a> per cliccare sulla rappresentazione della finestra e spostarla nell'ambiente di lavoro prescelto
-	</li></ul></div><p></p></dd><dt><span class="term">Chiudere una finestra</span></dt><dd><p>Per chiudere una finestra :</p><div class="itemizedlist"><ul type="disc"><li>clicca con il mouse sul bottone chiudi nella barra del titolo</li><li>apri il menu della finestra e seleziona la voce "Close"</li><li>utilizza la combinazione dei tasti [ALT]+[F4]</li></ul></div></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-keybindings"></a>Sommario dei comandi da tastiera</h3></div></div><div></div></div><p>Nella configurazione predefinita sono presenti le seguenti scorciatoie da tastiera:</p><div class="itemizedlist"><ul type="disc"><li>Chiudere la finestra : Alt + F4</li><li>Ingrandire la finestra : Alt + F5</li><li>Ingrandire verticalmente : Alt + F6</li><li>Ingrandire orizzontalmente : Alt + F7</li><li>Nascondere la finestra : Alt + F8</li><li>Arrotolare la finestra : Alt + F9</li><li>Attaccare la finestra : Alt + F10</li><li>Scorrere tra le finestre attive : Alt + Tab</li><li>Spostare la finestra : Control + Shift + Alt + Arrow (su, gi√π, sinistra,
-	o destra)</li><li>Ridimensionare la finestra : Shift + Alt + Arrow (su, gi√π, sinistra, o
-	destra)</li><li>Successivo ambiente di lavoro : Control + Alt + Freccia destra</li><li>Precedente ambiente di lavoro : Control + Alt + Freccia sinistra</li><li>Aggiungere un ambiente di lavoro : Alt + Inser</li><li>Eliminare un ambiente di lavoro : Alt + Delete</li><li>Vai all'ambiente di lavoro N (1-9) : Control + F(N)</li><li>Sposta la finestra nel precedente|successivo ambiente di lavoro : Alt + Control +
-	Home|End</li><li>Sposta la finestra nell'ambiente di lavoro N (1-9) : Alt + Control +
-	+ Numero(Keypad)</li><li>Avviare xfhelp4 : Alt + F1</li><li>Avviare xfrun4 :
-Alt + F2</li><li>Bloccare lo schermo : Alt + Control +
-Delete</li></ul></div></div></div><p></p><div class="sect1" lang="en"><div
-class="titlepage"><div><div><h2 class="title" style="clear: both"><a
-name="wm-settings"></a>Personalizzare <b
-class="application"><tt>xfwm4</tt></b></h2></div></div><div></div></div><p>Per
-aprire la finestra delle preferenze del Gestore delle finestre, cliccare sul
-tasto chiamato "Window Manager" nella finestra delle <a
-href="xfce-mcs-manager.html#manager-dialog" target="_top">Impostazioni di XFce
-4</a>. La finestra che comparir√† √® formata da tre linguette : Decoration style,
-Keyboard and focus, Advanced. Tutte le modifiche avranno effetto immediato nel
-modulo selezionato.</p><div class="sect2" lang="en"><div
-class="titlepage"><div><div><h3 class="title"><a name="wm-style"></a>Stile delle
-decorazioni</h3></div></div><div></div></div><div class="figure"><a
-name="wm_decoration_style-fig"></a><p class="title"><b>Figura 2. Impostazioni
-dello stile delle decorazioni</b></p><div class="screenshot"><div
-class="mediaobject"><img src="images/decoration_style.png" alt="The decoration
-style tab"></div></div></div><div class="variablelist"><dl><dt><span
-class="term">Stile delle decorazioni</span></dt><dd><p>La lista nella parte
-sinistra della finestra di dialogo visualizza tutte le decorazioni disponibili. Il modulo di
-Xfce 4 offre la bellezza di 10 differenti temi, ma ce ne sono altri 50
-supplementari disponibili nel pacchetto extra xfwm4-theme. Puoi avere
-un'anteprima di queti visitando il <a href="http://www.xfce.org"
-target="_top">Sito web di XFce</a>.
-	</p></dd><dt><span class="term">Font per il titolo</span></dt><dd><p>Il bottone
-"Font per il titolo" visualizza la famiglia dei font in uso al momento per il
-titolo della finestra. Clicca su questa bottone se vuoi cambiare font, apparit√† una
-finestra di dialogo per la selezione del nuovo tipo di carattere. Per pi√π
-informazioni leggi le parte della guida relativa al <a
-href="xfce-mcs-plugins.html#id2811474" target="_top">Plugin delle impostazioni
-dell'Interfaccia Utente</a>.
-	</p></dd><dt><span class="term">Allineamento del titolo</span></dt><dd><p>Utilizzando queste opzioni puoi scegliere se visualizzare il titolo delle finestre nella parte sinistra, centrale o nella parte destra.
-	</p></dd><dt><span class="term">Disposizione dei bottoni</span></dt><dd><p>La
-configurazione della disposizione dei bottoni utilizza un'intuitiva interfaccia
-con i radio bottoni (molto comuni nelle pagine web). Tutte le modifiche effettuate
-avranno effetto immediato sulla barra del titolo.
-	</p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-focus"></a>Tastiera e focus</h3></div></div><div></div></div><div class="figure"><a name="wm_focus-fig"></a><p class="title"><b>Figura 3. Impostazioni della tastiera e del focus</b></p><div class="screenshot"><div class="mediaobject"><img src="images/keyboard_and_focus.png" alt="The keyboard and focus tab"></div></div></div><div class="variablelist"><dl><dt><span class="term">Scorciatoie da tastiera</span></dt><dd><p>La lista nella parte sinistra della finestra di dialogo visualizza tutti i temi per la tastiera. Utilizza il nome della directory che contiene il file keythemerc.
-	</p><p>Per default √® disponibile un solo tema: $(prefix)/share/xfwm4/themes/default.keys/keythemerc
-	</p><p>Puoi modificare le scorciatoie della tastiera editando direttamente il file keythemerc (sette scorciatoie sono state lasciate vuote per permetterti di aggiungere le tue), oppure puoi creare un nuovo tema, come questo : $(prefix)/share/xfwm4/themes/custom.keys/keythemerc, oppure come questo (nella tua directory $HOME) : $HOME/.themes/xfwm4/custom.keys/keythemerc.</p><p>NOTA : $prefix √® il prefisso di installazione usato durante il setup di Xfce 4, comunemente sono /usr oppure /usr/local.
-	</p><p>Se non conosci il nome dei tasti che hai modificato, puoi lanciare, direttamente da terminale, il comando "xev", in modo da poterli testare.
-	</p></dd><dt><span class="term">Modello di focus</span></dt><dd><p>Le finestre
-attive possono ricevere l'input da tastiera e da mouse. Puoi scegliere tra due differenti tipi
-di focus :</p><div class="itemizedlist"><ul type="disc"><li>Clicca per avere il
- focus: seleziona questa opzione se vuoi che una finestra diventi attiva quando
-clicchi con il mouse in qualunque parte sopra di essa.
-	  </li><li>Il focus segue il mouse : seleziona questa opzione se vuoi che una
-finestra diventi attiva non appena il puntatore de mouse passa sopra di essa.
-	  </li></ul></div><p></p></dd><dt><span
-class="term">Focus alle nuove finestre</span></dt><dd><p>Seleziona questa
-opzione se vuoi che il focus sia preso dalla finestra appena aperta o creata. Senza questa opzione per far si
-che diventi una finestra attiva dovrai passarci sopra con il mouse e utilizzare
-una delle due seguenti combinazioni sopracitate.
-	</p></dd><dt><span class="term">Porta in primo piano al
-focus</span></dt><dd><p>Se questa opzione √® selezionata, il bordo della nuova
-finestra che riceve il focus apparir√† automaticamente sopra tutti gli altri, dopo una certa quantit√† di tempo che
-avrai precedentemente impostato nella barra di scorrimento "Ritardo".
-	</p></dd><dt><span class="term">Portare in primo piano
-al click</span></dt><dd><p>Scegli questa opzione se vuoi che una finestra passi
-sopra tutte le altre quando avrai cliccato in qualunque parte sopra di essa. Se questa opzione non √® selezionata, puoi
-cliccare in qualunque parte sopra la sua decorazione (barra del titolo, bordi o
-angoli) per far in modo che passi in primo piano. 
-	</p></dd></dl></div></div><div class="sect2" lang="en"><div
-class="titlepage"><div><div><h3 class="title"><a
-name="wm_advanced"></a>Impostazioni
-avanzate</h3></div></div><div></div></div><div class="figure"><a
-name="misc_wm_prefs-fig"></a><p class="title"><b>Figura 4. Impostazioni
-avanzate</b></p><div class="screenshot"><div class="mediaobject"><img
-src="images/misc_wm_prefs.png" alt="Advanced tab"></div></div></div><div
-class="variablelist"><dl><dt><span
-class="term">Disposizione delle finestre</span></dt><dd><p>Puoi scegliere il
-bordo della finestre che si andr√† ad attaccare ai bordi di altre finestre o agli angoli dello schermo. La distanza da questi viene applicata
-impostando il valore desiderato nella barra di scorrimento
-"Distanza".</p></dd><dt><span class="term">Scorri
-gli spazi di lavoro</span></dt><dd><p>Seleziona la prima opzione se vuoi passare
-ad un'altro spazio di lavoro quando il puntatore del mouse raggiunge uno dei lati dello schermo. Seleziona la seconda se vuoi cambiare spazio di lacoro quando
-trascini una finestra ai lati dello schermo. Puoi specificare anche il tempo che
-deve passare prima che lo spazio di lavoro cambi utilizzando l'apposita barra di
-scorrimento.</p></dd><dt><span class="term">Spostamento e
-ridimensionamento opaco</span></dt><dd><p>Due opzioni ti permettono di scegliere
-se il contenuto delle finestre deve o no apparire quando sposti o ridimensioni una finestra (non visualizzare il contenuto far√† risparmiare molte risorse al sistema rendendolo
-di fatto pi√π veloce).</p></dd><dt><span
-class="term">Azione per il doppio click</span></dt><dd><p>Seleziona questa
-opzione se vuoi che tutte le azioni che agiscono sulle finestre, per essere eseguite necessitano di un doppio click.</p></dd></dl></div></div></div><p></p><div class="sect1" lang="en"><div
-class="titlepage"><div><div><h2 class="title" style="clear: both"><a
-name="workspace-margins"></a>Personalizzare i bordi degli spazi di
-lavoro</h2></div></div><div></div></div><div class="figure"><a
-name="workspace_margins-fig"></a><p class="title"><b>Figura 5. La finestra di
-dialogo per l'impostazione dei bordi degli spazi di lavoro</b></p><div
-class="screenshot"><div class="mediaobject"><img
-src="images/workspace_margins.png" alt="The workspace margins
-dialog"></div></div></div><p>Per aprire la finestra di dialogo dei bordi degli
-spazi di lavoro, clicca sul bottone chiamato "Desktop: spazi di lavoro" nella <a
-href="xfce-mcs-manager.html#manager-dialog" target="_top">Finestra di dialogo
-delle Impostazioni di XFce 4</a>.
-  </p><p>I margini, sono le aree ai lati dello schermo che le finestre massimizzate non possono occupare. Puoi impostare la grandezza in pixel di tutti i margini (sinistro, destro, alto e basso). Usa questa caratteristica, ad esempio, se non vuoi che una finestra massimizzata non vada ad occupare alcune parti dello schermo.</p></div><p></p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-copyright"></a>Informazioni <b class="application"><tt>xfwm4</tt></b></h2></div></div><div></div></div><p><b class="application"><tt>xfwm4</tt></b> √® stato scritto da Olivier Fourdan  
-    (<tt class="email">&lt;<a href="mailto:fourdan@xfce.org">fourdan@xfce.org</a>&gt;</tt>). Troverete informazioni supplementari visitando il 
-    <a href="http://www.xfce.org" target="_top">Sito web di XFce</a>. 
-  </p><p>Per inviare un commento su un bug e semplicemente inviare un suggerimento riguardo questa applicazione o questo manuale invia una email alla 
-    <a href="http://www.xfce.org/mailman/listinfo/xfce4-dev/" target="_top">xfce4-dev</a> mailing list &#8212; questo √® il metodo migliore &#8212; oppure utilizza il bug tracking system che puoi trovare sul
+	    If you want the panel, and apps that do not appear in the taskbar, 
+	    to be included when you switch the focus using the Alt+Tab 
+	    shortcut, edit your $HOME/.xfce4/xfwm4rc (or create an new one) 
+	    and add this line : cycle_minimum=false</p><p>NOTE: the use of a keyboard shortcut in an application needs 
+	    the application window to have the focus :)
+	  </p></dd><dt><span class="term">Maximize / unmaximize windows</span></dt><dd><p>If you maximize a window, it will expand on your display and use
+	  all avaible space (as it is defined by <a href="xfdesktop.html#xfdesktop-workspace" target="_top">workspace
+	    settings</a>). Moreover, you can maximize a window only
+	  vertically ou horizontally.
+	</p><p>To maximize a window, perform one of those actions:</p><div class="itemizedlist"><ul type="disc"><li>click the maximize button of the title bar</li><li>open the window menu from the title bar and choose the
+	    "maximize" item</li><li>use Alt + F5 keyboard shortcut</li></ul></div><p>To maximize a window vertically :</p><div class="itemizedlist"><ul type="disc"><li>middle-click the maximize button of the title bar</li><li>use Alt + F6 keyboard shortcut</li></ul></div><p>To maximize a window horizontally :</p><div class="itemizedlist"><ul type="disc"><li>right-click the maximize button of the title bar</li><li>use Alt + F7 keyboard shortcut</li></ul></div><p>When a window has been maximized in a way or another, it can be
+	  restored to its previous size doing one of these actions :</p><div class="itemizedlist"><ul type="disc"><li>click the unmaximize button of the title bar</li><li>use the same keyboard shortcut once again</li><li>choose the "Unmaximize" item in the window menu</li></ul></div><p>†</p></dd><dt><span class="term">Resize windows</span></dt><dd><p>Although certain special windows can not be resized, you are
+	  able to resize most of them to fit your needs.</p><div class="itemizedlist"><ul type="disc"><li>you can use the edges and corners of the window frame to
+	  modify its size, dragging them with the mouse</li><li>you can use the Alt + right click shortcut while you hold
+	  the mouse pointer anywhere over the window frame; it will act as if
+	  you were dragging the bottom-right corner of the window</li><li>you can use practical keyboard shortcuts : Shift +
+	  Alt + (up, down, right or left) Arrow</li></ul></div><p>†</p></dd><dt><span class="term">Hide / unhide windows</span></dt><dd><p>You can hide a window performing one of these actions :</p><div class="itemizedlist"><ul type="disc"><li>click the hide button of the title bar</li><li>open the window menu from the title bar and choose the
+	  "Hide" item</li><li>use Alt + F8 keyboard shortcut </li></ul></div><p>Alternatively, you can hide all windows of current workspace,
+	  excepted the one you are using, in only one action : click the menu
+	  button of the title bar and choose "Hide all others".</p><p>To "unhide" a window, you will have to select its name or its
+	  icon in one of those XFce 4 components :</p><div class="itemizedlist"><ul type="disc"><li><b class="application"><tt>xftaskbar4</tt></b></li><li>the <b class="application"><tt>xfce4-iconbox</tt></b></li><li>the list of windows, accessible with a middle-click on the
+	  desktop background. This list shows all opened windows, classified
+	  by workspaces. Windows that are currently hidden are marked between
+	  [  ].</li></ul></div><p>†</p></dd><dt><span class="term">Shade / unshade windows</span></dt><dd><p>If you "shade" a window, it will be reduced to the size of its
+	  title bar. The same repeated action makes a window to shade/unshade
+	  :</p><div class="itemizedlist"><ul type="disc"><li>click the shade/unshade button of the title bar</li><li>open the window menu from the title bar and choose "Shade"
+	  or "Unshade" item</li><li>use the mouse scrollwheel while you hold the pointer over
+	  the title bar</li><li>use the Alt + F9 keyboard shortcut</li></ul></div><p>†</p></dd><dt><span class="term">Stick / unstick windows</span></dt><dd><p>If you "stick" a window, it will be visible at the same place on 
+	  all your workspaces. The same repeated action make a window to
+	  stick/unstick :
+	</p><div class="itemizedlist"><ul type="disc"><li>click the stick/unstick button of the title bar</li><li>open the window menu button from the title bar and choose
+	    "Stick" or "Unstick" item</li><li>use the Alt + F10 keyboard shortcut</li></ul></div><p>†</p></dd><dt><span class="term">Raise / lower windows</span></dt><dd><p>The "raise window" function makes a window frame appear above all the other frames. 
+         To raise a window, you can :
+         </p><div class="itemizedlist"><ul type="disc"><li>left click on its titlebar</li><li>give the focus to the window, if the corresponding option is selected in the <a href="xfwm4.html#wm-focus" target="_top">Keyboard and focus preferences dialog</a></li><li>left click anywhere on its frame, if the corresponding option is selected in the <a href="xfwm4.html#wm-focus" target="_top">Keyboard and focus preferences dialog</a></li><li>click on its label in the taskbar or the iconbox</li><li>use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)</li></ul></div><p>The "lower" function sends a window frame below all other frames.
+	To "lower" a window, you can :
+	</p><div class="itemizedlist"><ul type="disc"><li>middle-click on its title bar</li><li>use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)</li></ul></div><p>†</p></dd><dt><span class="term">Move windows</span></dt><dd><p>There are several ways to move windows :</p><div class="itemizedlist"><ul type="disc"><li>left or right click on the title bar of the window and
+	    drag it</li><li>use Alt + left click while the pointer is anywhere over
+	    the window frame and move the mouse</li><li>use Control + Alt + Shift + (up, down, left or right)
+	    Arrow keyboard shortcut</li></ul></div><p>†</p></dd><dt><span class="term">Move a window to another workspace</span></dt><dd><p>You can send a window to another workspace by performing one of
+	  these actions :</p><div class="itemizedlist"><ul type="disc"><li>stick the window, move to another workspace, then unstick
+	    the window.</li><li>use the window menu and choose one of the "Send to" submenu
+	  items.</li><li>left or right click on the title bar of the window, drag it
+	  to the screen edge : the pointer will then go to the next workspace,
+	  still holding the window. Corresponding option needs to be selected
+	  in the <a href="xfwm4.html#wm_misc" target="_top">Window Manager
+	    Preferences dialog</a>.</li><li>use keyboard shortcuts :
+	  <div class="itemizedlist"><ul type="circle"><li>Alt + Control + End will move a window to the next
+	      workspace</li><li>Alt + Control + Home will move a window to the previous
+	      workspace</li><li>Alt + Control + Keypad-Number will move the current
+	      window to corresponding workspace</li></ul></div></li><li>use the <a href="xfce4-panel.html#switcher-item" target="_top">graphical pager </a> by clicking on the
+	  representation of the window, and move it to the desired
+	  workspace.
+	</li></ul></div><p>†</p></dd><dt><span class="term">Close a window</span></dt><dd><p>To close a window :</p><div class="itemizedlist"><ul type="disc"><li>click the close button of the title bar</li><li>Open the window menu from the title bar and choose the
+	  "Close" item</li><li>or use Alt + F4 keyboard shortcut</li></ul></div></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-keybindings"></a>Keyboard shortcuts summary</h3></div></div></div><p>In the default configuration the following keybindings are
+      defined:</p><div class="itemizedlist"><ul type="disc"><li>close window : Alt + F4</li><li>Maximize window : Alt + F5</li><li>Maximize vertically : Alt + F6</li><li>Maximize horizontally : Alt + F7</li><li>Hide window : Alt + F8</li><li>Shade window : Alt + F9</li><li>Stick window : Alt + F10</li><li>Cycle windows focus : Alt + Tab</li><li>Move window : Control + Shift + Alt + Arrow (up, down, left,
+	or right)</li><li>Resize window : Shift + Alt + Arrow (up, down, left, or
+	right)</li><li>Raise window : Shift + Alt + Page_Up</li><li>Lower window : Shift + Alt + Page_Down</li><li>Next workspace : Control + Alt + Arrow right
+	arrow</li><li>Previous workspace : Control + Alt + Arrow left</li><li>Add a workspace : Alt + Inser</li><li>Delete a workspace : Alt + Delete</li><li>Go to workspace number N (1-9) : Control + F(N)</li><li>Move the window to previous|next workspace : Alt + Control +
+	Home|End</li><li>Move a window to workspace number N (1-9) : Alt + Control +
+	keypad key number N</li><li>Start xfhelp4 : Alt + F1</li><li>Start xfrun4 : Alt + F2</li><li>Lock the screen : Alt + Control + Delete</li></ul></div></div></div><p>†</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-settings"></a>Customizing <b class="application"><tt>xfwm4</tt></b></h2></div></div></div><p>To open the Window Manager preferences dialog, click the button
+    labelled "Window Manager" in the <a href="xfce-mcs-manager.html#manager-dialog" target="_top">XFce 4 Settings
+      manager</a>. The dialog shows three tabs : Decoration style,
+    Keyboard and focus, Advanced. All modifications will have an immediate
+    effect on the behaviour of the selected module.</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-style"></a>Decoration style</h3></div></div></div><div class="figure"><a name="wm_decoration_style-fig"></a><p class="title"><b>Figure†2.†Decoration style preferences</b></p><div class="screenshot"><div class="mediaobject"><img src="images/decoration_style.png" alt="The decoration style tab"></div></div></div><div class="variablelist"><dl><dt><span class="term">Window style</span></dt><dd><p>The list on the left side of the dialog shows all avaible window
+	  decorations. The xfwm 4 module offers the choice between 10
+	  different themes, but there are more than 50 supplementary themes
+	  avaible in xfwm4-themes extra package. You can preview all of them on
+	  the official <a href="http://www.xfce.org" target="_top">XFce
+	    Website</a>
+	</p></dd><dt><span class="term">Title font</span></dt><dd><p>The "Font select" button shows the family font currently in use
+	  for the window title appearance. Click this button if you want to
+	  change it, and a "Font selection" dialog will appear. It works like
+	  the font selection dialog of the <a href="xfce-mcs-plugins.html#id2811474" target="_top">user interface
+	    settings manager plugin</a>.
+	</p></dd><dt><span class="term">Title alignment</span></dt><dd><p>Whatever the buttons layout is, you can choose the alignment of
+	  the title inside the title bar, selecting one of those simple
+	  options : align it to the left, center or right.
+	</p></dd><dt><span class="term">Button layout</span></dt><dd><p>The button layout configuration uses an intuitive interface with
+	  radio buttons. Just imagine that all selected items project
+	  themselves on the baseline of the frame. Moreover, all modifications
+	  will have an immediate effet on the title bar buttons
+	  position.
+	</p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-focus"></a>Keyboard and focus</h3></div></div></div><div class="figure"><a name="wm_focus-fig"></a><p class="title"><b>Figure†3.†Keyboard and focus preferences</b></p><div class="screenshot"><div class="mediaobject"><img src="images/keyboard_and_focus.png" alt="The keyboard and focus tab"></div></div></div><div class="variablelist"><dl><dt><span class="term">Keyboard Shortcuts</span></dt><dd><p>The list on the left side of the dialog shows all avaible
+	  shortcuts themes, using the name of directories that contain a
+	  keythemerc file.
+	</p><p>By default, there's only one theme :
+	  $(prefix)/share/xfwm4/themes/default.keys/keythemerc
+	</p><p>You can customize keyboard shortcuts by editing this default
+	  keythemerc file (seven shorcuts entries are left empty for your
+	  convenience), or you can create a new theme, either like this one :
+	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc, or like this one 
+	  (in your $HOME directory) : $HOME/.themes/xfwm4/custom.keys/keythemerc.</p><p>NOTE : $prefix is the install-prefix you used during xfwm 4
+	  setup, usually /usr or /usr/local.
+	</p><p>If you do not know the names of your keyboard modifier keys, you
+	  can launch the "xev" application from a terminal and test
+	  them.
+	</p></dd><dt><span class="term">Focus model</span></dt><dd><p>A focused window receives the keyboard and mouse input. You have
+	  the choice between two focus models :</p><div class="itemizedlist"><ul type="disc"><li>Click to focus : select this option if you want a window
+	    to receive the focus only when you click anywhere on its
+	    frame.
+	  </li><li>Focus follow mouse : select this option if you want a
+	    window to receive the focus as soon as the mouse pointer is over
+	    its frame.
+	  </li></ul></div><p>†</p></dd><dt><span class="term">New window focus</span></dt><dd><p>Selecting this option will automatically give the focus to newly
+	  created windows, without the need to click or move the mouse
+	  pointer.
+	</p></dd><dt><span class="term">Raise on focus</span></dt><dd><p>If this option is selected, the frame of a newly focused window
+	  will automatically appear over all other frames, after an amount of
+	  time that you can adjust with the "delay" slider.
+	</p></dd><dt><span class="term">Raise on click</span></dt><dd><p>Choose this option if you want a window to pass over the others
+	  when you click anywhere on its frame. If this option is not
+	  selected, you will have to click somewhere on its decorations (title
+	  bar, borders or corners) to raise it. 
+	</p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm_advanced"></a>Advanced settings</h3></div></div></div><div class="figure"><a name="misc_wm_prefs-fig"></a><p class="title"><b>Figure†4.†Advanced preferences</b></p><div class="screenshot"><div class="mediaobject"><img src="images/misc_wm_prefs.png" alt="Advanced tab"></div></div></div><div class="variablelist"><dl><dt><span class="term">Windows snapping</span></dt><dd><p>You can choose the windows borders to be attracted by the
+	  borders of other windows, or by the screen edges, when they are
+	  moved. The distance from which this effect will be applied can be
+	  specified with the "Distance" slider.</p></dd><dt><span class="term">Wrap workspaces</span></dt><dd><p>Select the first option if you want to switch to the next
+	  workspace when the mouse pointer reaches the screen edges. Select
+	  the second one if you want the same behaviour while dragging a
+	  window. You can specify the screen edges resistance using the
+	  corresponding slider.</p></dd><dt><span class="term">Opaque move and resize</span></dt><dd><p>Two options allow you to choose if the content of a window will
+	  appear or not, when you move or resize it (not displaying the
+	  content will save some system resources).</p></dd><dt><span class="term">Double click action</span></dt><dd><p>Select what must be the behaviour of the window manager when you
+	  double-click on the title bar of a window : shade window, hide
+	  window, maximize window or none.</p></dd></dl></div></div></div><p>†</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="workspaces"></a>Workspaces and Margins</h2></div></div></div><p><b class="application"><tt>xfwm4</tt></b> also manages workspaces. There is a special settings dialog to
+    change the workspace properties. You can start it by choosing 
+    <span class="emphasis"><em>Workspaces and Margins</em></span> from the the <a href="xfce-mcs-manager.html#manager-dialog" target="_top">settings manager
+      dialog</a>. The dialog contains two tab folders where you can 
+    change workspace settings and desktop margins.
+  </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2523789"></a>Workspaces</h3></div></div></div><div class="figure"><a name="xfwm-workspace-fig"></a><p class="title"><b>Figure†5.†Workspace Settings</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfwm_workspaces.png" alt="Shows workspace settings tab folder.
+	    "></div></div></div><div class="variablelist"><dl><dt><span class="term">Workspaces</span></dt><dd><p>This option allows you too choose the number of workspaces you
+	    want to use (between 1 and 32).
+	  </p></dd><dt><span class="term">Worspace names</span></dt><dd><p>This field shows the list of avaible workspaces. If you want to
+	    edit the name of one of them, click its number and a fill the entry
+	    of the dialog that will then appear. When it's done, click the
+	    "Apply" button, or just press the Enter key, to return to the
+	    list.
+	  </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="workspace-margins"></a>Workspace margins</h3></div></div></div><div class="figure"><a name="workspace_margins-fig"></a><p class="title"><b>Figure†6.†The workspace margins dialog</b></p><div class="screenshot"><div class="mediaobject"><img src="images/workspace_margins.png" alt="The workspace margins tab folder"></div></div></div><p>To open the Workspace Margins dialog, click the button labelled
+      "Workspaces and Margins" in the <a href="xfce-mcs-manager.html#manager-dialog" target="_top">settings manager
+	dialog</a> and choose the tab labelled "Margins".
+    </p><p>Margins are areas on the edges of the screen that maximized windows
+      won't cover. You can adjust the size, in pixels, of all margins (left,
+      right, top and bottom). Use this feature, for example, if you do not want
+      maximized windows to overlap panel or iconbox frames.</p></div><p>†</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-copyright"></a>About <b class="application"><tt>xfwm4</tt></b></h2></div></div></div><p><b class="application"><tt>xfwm4</tt></b> was written Olivier Fourdan  
+    (<tt class="email">&lt;<a href="mailto:fourdan@xfce.org">fourdan@xfce.org</a>&gt;</tt>). To find more information, please visit 
+    the <a href="http://www.xfce.org" target="_top">XFce web site</a>. 
+  </p><p>To report a bug or make a suggestion regarding this application or
+    this manual, send an email to the 
+    <a href="http://www.xfce.org/mailman/listinfo/xfce4-dev/" target="_top">xfce4-dev</a> mailing list &#8212; this is the preferred
+    method &#8212; or use the bug tracking system at the
     <a href="http://sourceforge.net/projects/xfce" target="_top">XFce SourceForge project site</a>. 
-    Se hai qualche domanda riguardo l'utilizzo o l'installazione di questo pacchetto, chiedi nella 
+    If you have questions about the use or installation of this package,
+    please ask on the 
     <a href="http://www.xfce.org/mailman/listinfo/xfce/" target="_top">xfce</a> mailing list. 
-  </p><p> Questo programma √® distribuito sotto i termini della GNU General Public License, pubblicata dalla Free Software Foundation; dalla versione 2 della licenza, o (a tua discrezione) ogni successiva versione.
-  </p><p>Inclusa a questo programma hai ricevuto una copia della GNU General Public License, se non √® stato cos√¨, scrivi alla Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  </p><p> This program is distributed under the terms of the
+    GNU General Public License as published by the Free Software Foundation; 
+    either version 2 of the License, or (at your option) any later version.
+  </p><p>You should have received a copy of the GNU General Public License 
+    along with this program; if not, write to the Free Software 
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.
   </p></div></div></body></html>
