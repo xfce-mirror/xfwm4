@@ -361,31 +361,16 @@ handleKeyPress (XKeyEvent * ev)
                 workspaceSwitch (workspace - 1, c);
                 break;
             case KEY_MOVE_WORKSPACE_1:
-                workspaceSwitch (0, c);
-                break;
             case KEY_MOVE_WORKSPACE_2:
-                workspaceSwitch (1, c);
-                break;
             case KEY_MOVE_WORKSPACE_3:
-                workspaceSwitch (2, c);
-                break;
             case KEY_MOVE_WORKSPACE_4:
-                workspaceSwitch (3, c);
-                break;
             case KEY_MOVE_WORKSPACE_5:
-                workspaceSwitch (4, c);
-                break;
             case KEY_MOVE_WORKSPACE_6:
-                workspaceSwitch (5, c);
-                break;
             case KEY_MOVE_WORKSPACE_7:
-                workspaceSwitch (6, c);
-                break;
             case KEY_MOVE_WORKSPACE_8:
-                workspaceSwitch (7, c);
-                break;
             case KEY_MOVE_WORKSPACE_9:
-                workspaceSwitch (8, c);
+                clientRaise (c);
+                workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, c);
                 break;
             default:
                 break;
@@ -420,61 +405,27 @@ handleKeyPress (XKeyEvent * ev)
             workspaceSetCount (params.workspace_count - 1);
             break;
         case KEY_WORKSPACE_1:
-            workspaceSwitch (0, NULL);
-            break;
         case KEY_WORKSPACE_2:
-            workspaceSwitch (1, NULL);
-            break;
         case KEY_WORKSPACE_3:
-            workspaceSwitch (2, NULL);
-            break;
         case KEY_WORKSPACE_4:
-            workspaceSwitch (3, NULL);
-            break;
         case KEY_WORKSPACE_5:
-            workspaceSwitch (4, NULL);
-            break;
         case KEY_WORKSPACE_6:
-            workspaceSwitch (5, NULL);
-            break;
         case KEY_WORKSPACE_7:
-            workspaceSwitch (6, NULL);
-            break;
         case KEY_WORKSPACE_8:
-            workspaceSwitch (7, NULL);
-            break;
         case KEY_WORKSPACE_9:
-            workspaceSwitch (8, NULL);
+            workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, NULL);
             break;
         case KEY_SHORTCUT_1:
-            spawn_shortcut (0);
-            break;
         case KEY_SHORTCUT_2:
-            spawn_shortcut (1);
-            break;
         case KEY_SHORTCUT_3:
-            spawn_shortcut (2);
-            break;
         case KEY_SHORTCUT_4:
-            spawn_shortcut (3);
-            break;
         case KEY_SHORTCUT_5:
-            spawn_shortcut (4);
-            break;
         case KEY_SHORTCUT_6:
-            spawn_shortcut (5);
-            break;
         case KEY_SHORTCUT_7:
-            spawn_shortcut (6);
-            break;
         case KEY_SHORTCUT_8:
-            spawn_shortcut (7);
-            break;
         case KEY_SHORTCUT_9:
-            spawn_shortcut (8);
-            break;
         case KEY_SHORTCUT_10:
-            spawn_shortcut (9);
+            spawn_shortcut (key - KEY_SHORTCUT_1);
             break;
         default:
             break;
