@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-15 00:02+0200\n"
+"POT-Creation-Date: 2004-05-16 23:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/events.c:1511
+#: src/events.c:1513
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -422,42 +422,42 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/settings.c:312
+#: src/settings.c:314
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr ""
 
-#: src/settings.c:545
+#: src/settings.c:547
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:552
+#: src/settings.c:554
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:596
+#: src/settings.c:598
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:603
+#: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:790
+#: src/settings.c:792
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:800
+#: src/settings.c:802
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1147
+#: src/settings.c:1149
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

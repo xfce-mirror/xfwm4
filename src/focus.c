@@ -131,6 +131,7 @@ clientFocusNew(Client * c)
 	if (FLAG_TEST(c->flags, CLIENT_FLAG_HAS_USER_TIME) &&
 	    FLAG_TEST(client_focus->flags, CLIENT_FLAG_HAS_USER_TIME))
 	{
+            TRACE ("Current %u, new %u", client_focus->user_time, c->user_time);
 	    if (c->user_time < client_focus->user_time)
 	    {
 		give_focus = FALSE;
