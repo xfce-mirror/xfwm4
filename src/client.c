@@ -82,6 +82,7 @@ struct _MoveResizeData
     int ox, oy;
     int oldw, oldh;
     int corner;
+    Window tmp_event_window;
     Client *c;
 };
 
@@ -2446,6 +2447,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
                 xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
+		XRaiseWindow (dpy, passdata->tmp_event_window);
             }
             else if((msx == XDisplayWidth(dpy, screen) - 1) && !((workspace == workspace_count - 1) && !wrap_workspaces))
             {
@@ -2454,6 +2456,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 xevent->xmotion.x_root = 10;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
+		XRaiseWindow (dpy, passdata->tmp_event_window);
             }
         }
 
@@ -2535,6 +2538,8 @@ void clientMove(Client * c, XEvent * e)
     XWindowChanges wc;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
+    XSetWindowAttributes attributes;
+
 
     g_return_if_fail(c != NULL);
     DBG("entering clientDoMove\n");
@@ -2549,7 +2554,25 @@ void clientMove(Client * c, XEvent * e)
         passdata.use_keys = True;
         g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
     }
-    g2 = XGrabPointer(dpy, c->frame, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, CurrentTime);
+    /* 
+       The following trick is experimental, based on a patch for Kwin 3.1alpha1 by aviv bergman
+    
+       It is supposed to reduce latency during move/resize by mapping a screen large window that 
+       receives all pointer events.
+       
+       Original mail message is available here :
+    
+       http://www.xfree86.org/pipermail/xpert/2002-July/019434.html
+       
+       Note:
+       
+       I'm note sure it makes any difference, but who knows... It doesn' thurt.
+     */
+    
+    attributes.event_mask = ButtonMotionMask;
+    passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
+    XMapRaised(dpy, passdata.tmp_event_window);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, CurrentTime);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2563,6 +2586,7 @@ void clientMove(Client * c, XEvent * e)
         {
             XUngrabPointer(dpy, CurrentTime);
         }
+	XDestroyWindow (dpy, passdata.tmp_event_window);
         return;
     }
 
@@ -2586,6 +2610,7 @@ void clientMove(Client * c, XEvent * e)
         XUngrabKeyboard(dpy, CurrentTime);
     }
     XUngrabPointer(dpy, CurrentTime);
+    XDestroyWindow (dpy, passdata.tmp_event_window);
 
     if(passdata.grab && box_move)
     {
@@ -2758,6 +2783,7 @@ void clientResize(Client * c, int corner, XEvent * e)
     XWindowChanges wc;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
+    XSetWindowAttributes attributes;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientResize\n");
@@ -2780,7 +2806,10 @@ void clientResize(Client * c, int corner, XEvent * e)
         passdata.use_keys = True;
         g1 = XGrabKeyboard(dpy, c->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
     }
-    g2 = XGrabPointer(dpy, c->frame, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], CurrentTime);
+    attributes.event_mask = ButtonMotionMask;
+    passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
+    XMapRaised(dpy, passdata.tmp_event_window);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], CurrentTime);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2794,6 +2823,7 @@ void clientResize(Client * c, int corner, XEvent * e)
         {
             XUngrabPointer(dpy, CurrentTime);
         }
+	XDestroyWindow (dpy, passdata.tmp_event_window);
         return;
     }
 
@@ -2820,6 +2850,7 @@ void clientResize(Client * c, int corner, XEvent * e)
         XUngrabKeyboard(dpy, CurrentTime);
     }
     XUngrabPointer(dpy, CurrentTime);
+    XDestroyWindow (dpy, passdata.tmp_event_window);
 
     if(passdata.grab && box_resize)
     {
