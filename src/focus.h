@@ -25,6 +25,7 @@
 #endif
 
 #include <glib.h>
+#include <sys/time.h>
 #include "client.h"
 
 #define NO_FOCUS_FLAG                   0
@@ -38,10 +39,12 @@ gboolean 	clientSelectMask (Client *, int);
 Client 	       *clientGetNext (Client *, int);
 Client         *clientGetPrevious (Client *, int);
 void 		clientPassFocus (Client *);
-gboolean 	clientAcceptFocus (Client *);
+gboolean        clientAcceptFocus (Client *);
 void 		clientSortRing(Client *);
 void 		clientUpdateFocus (Client *, unsigned short);
+void            clientSetFocus (Client *, Time, unsigned short);
 void            clientClearFocus (void);
+Client         *clientGetFocus (void);
 void            clientGrabButton1 (Client *);
 void            clientUngrabButton1 (Client *);
 void            clientPassGrabButton1(Client *);

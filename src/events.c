@@ -26,9 +26,10 @@
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
-#include <gtk/gtk.h>
+#include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 #ifdef HAVE_RANDR
 #include <X11/extensions/Xrandr.h>
 #endif
@@ -45,10 +46,11 @@
 #include "client.h"
 #include "transients.h"
 #include "focus.h"
-#include "events.h"
+#include "netwm.h"
 #include "menu.h"
 #include "hints.h"
 #include "startup_notification.h"
+#include "events.h"
 
 #define WIN_IS_BUTTON(win)      ((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || \
@@ -115,13 +117,13 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     button = ev->xbutton.button;
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
-    t0 = CurrentTime;
+    t0 = GDK_CURRENT_TIME;
     total = 0;
     clicks = 1;
 
     while ((ABS (x - xcurrent) < 2) && (ABS (y - ycurrent) < 2)
         && (total < params.dbl_click_time)
-        && ((CurrentTime - t0) < params.dbl_click_time))
+        && ((GDK_CURRENT_TIME - t0) < params.dbl_click_time))
     {
         g_usleep (10000);
         total += 10;
@@ -203,7 +205,7 @@ moveRequest (Client * c, XEvent * ev)
 static void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, NO_FOCUS_FLAG);
+    clientSetFocus (c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
 
     if (FLAG_TEST_ALL (c->flags,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -477,7 +479,7 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, NO_FOCUS_FLAG);
+    clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
     clientRaise (c);
     clientPassGrabButton1 (c);
 
@@ -543,7 +545,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, NO_FOCUS_FLAG);
+            clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
             if (params.raise_on_click)
             {
                 clientRaise (c);
@@ -652,7 +654,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, NO_FOCUS_FLAG);
+                clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -686,7 +688,7 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, NO_FOCUS_FLAG);
+                    clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
@@ -756,7 +758,7 @@ handleButtonPress (XButtonEvent * ev)
                 {
                     clientPassGrabButton1 (c);
                 }
-                clientSetFocus (c, NO_FOCUS_FLAG);
+                clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
                 if ((params.raise_on_click) || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
@@ -785,7 +787,7 @@ handleButtonPress (XButtonEvent * ev)
     }
     else
     {
-        XUngrabPointer (dpy, CurrentTime);
+        XUngrabPointer (dpy, GDK_CURRENT_TIME);
         XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask,
             (XEvent *) ev);
     }
@@ -1141,7 +1143,7 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
         {
-            clientSetFocus (c, FOCUS_FORCE);
+            clientSetFocus (c, ev->time, FOCUS_FORCE);
             if (!(params.raise_on_click))
             {
                 clientPassGrabButton1 (c);
@@ -1211,7 +1213,7 @@ handleFocusIn (XFocusChangeEvent * ev)
         c = clientGetFocus ();
         if (c)
         {
-            clientSetFocus (c, FOCUS_FORCE);
+            clientSetFocus (c, GDK_CURRENT_TIME, FOCUS_FORCE);
         }
         return;
     }
@@ -1521,7 +1523,7 @@ handleClientMessage (XClientMessageEvent * ev)
             clientSetWorkspace (c, workspace, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, NO_FOCUS_FLAG);
+            clientSetFocus (c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
             clientPassGrabButton1 (c);
         }
     }

@@ -32,6 +32,7 @@
 #include "client.h"
 #include "settings.h"
 #include "mywindow.h"
+#include "focus.h"
 #include "frame.h"
 
 int

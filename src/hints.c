@@ -27,9 +27,9 @@
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
 #include <glib.h>
-#include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 #include <stdarg.h>
 #include <string.h>
 #include <stdio.h>
@@ -890,7 +890,7 @@ sendSystrayReqDock(Display * dpy, Window window, Window systray)
     xev.window = systray;
     xev.message_type = net_system_tray_opcode;
     xev.format = 32;
-    xev.data.l[0] = CurrentTime;
+    xev.data.l[0] = GDK_CURRENT_TIME;
     xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
     xev.data.l[2] = window;
     xev.data.l[3] = 0; /* Nada */

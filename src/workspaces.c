@@ -25,9 +25,11 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
+
 #include "main.h"
 #include "misc.h"
 #include "transients.h"
@@ -68,7 +70,7 @@ workspaceSwitch (int new_ws, Client * c2)
 
     /* Grab the pointer to avoid side effects with EnterNotify events */
     XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-		       GrabModeAsync, None, None, CurrentTime);
+		       GrabModeAsync, None, None, GDK_CURRENT_TIME);
 
     workspace = new_ws;
     if (c2)
@@ -89,7 +91,7 @@ workspaceSwitch (int new_ws, Client * c2)
 	    if (c == previous)
 	    {
 		FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
-		clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
+		clientSetFocus (NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
 	    }
 	    if (!clientIsTransientOrModal (c))
 	    {
@@ -149,7 +151,7 @@ workspaceSwitch (int new_ws, Client * c2)
     workspaceUpdateArea (margins, gnome_margins);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabPointer (dpy, GDK_CURRENT_TIME);
 
     if (!(params.click_to_focus))
     {
@@ -162,7 +164,7 @@ workspaceSwitch (int new_ws, Client * c2)
 	    }
 	}
     }
-    clientSetFocus (new_focus, NO_FOCUS_FLAG);
+    clientSetFocus (new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
 }
 
 void

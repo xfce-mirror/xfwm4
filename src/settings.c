@@ -29,10 +29,12 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
+
 #include "main.h"
 #include "hints.h"
 #include "parserc.h"
 #include "client.h"
+#include "focus.h"
 #include "workspaces.h"
 
 #define CHANNEL1 "xfwm4"

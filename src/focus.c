@@ -26,10 +26,11 @@
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
-#include <gdk/gdkx.h>
+#include <sys/time.h>
 #include <glib.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -104,11 +105,11 @@ clientFocusTop (int layer)
     top_client = clientGetTopMostFocusable (layer, NULL);
     if (top_client.prefered)
     {
-	clientSetFocus (top_client.prefered, NO_FOCUS_FLAG);
+	clientSetFocus (top_client.prefered, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
     else
     {
-	clientSetFocus (top_client.highest, NO_FOCUS_FLAG);
+	clientSetFocus (top_client.highest, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
 }
 
@@ -139,7 +140,7 @@ clientFocusNew(Client * c)
     
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-	clientSetFocus (c, FOCUS_IGNORE_MODAL);
+	clientSetFocus (c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
 	clientPassGrabButton1 (c);
     }
     else
@@ -284,7 +285,7 @@ clientPassFocus (Client * c)
     {
 	new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (new_focus, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+    clientSetFocus (new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most.highest)
     {
 	clientPassGrabButton1 (new_focus);
@@ -411,7 +412,7 @@ clientUpdateFocus (Client * c, unsigned short flags)
 }
 
 void
-clientSetFocus (Client * c, unsigned short flags)
+clientSetFocus (Client * c, Time timestamp, unsigned short flags)
 {
     Client *c2;
 
@@ -444,11 +445,11 @@ clientSetFocus (Client * c, unsigned short flags)
 	if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
 	{
 	    pending_focus = c;
-	    XSetInputFocus (dpy, c->window, RevertToPointerRoot, CurrentTime);
+	    XSetInputFocus (dpy, c->window, RevertToPointerRoot, timestamp);
 	}
 	if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
 	{
-	    sendClientMessage (c->window, wm_protocols, wm_takefocus, CurrentTime);
+	    sendClientMessage (c->window, wm_protocols, wm_takefocus, timestamp);
 	}
 	XFlush (dpy);
     }
@@ -463,7 +464,7 @@ clientSetFocus (Client * c, unsigned short flags)
 	{
 	    frameDraw (c2, FALSE, FALSE);
 	}
-	XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, CurrentTime);
+	XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
 	XFlush (dpy);
 	data[0] = data[1] = None;
 	XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,

@@ -24,9 +24,9 @@
 
 #include <X11/Xlib.h>
 #include <glib.h>
-#include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -139,7 +139,7 @@ cleanUp ()
     params.workspace_names = NULL;
     removeTmpEventWin (sidewalk[0]);
     removeTmpEventWin (sidewalk[1]);
-    XSetInputFocus (dpy, root, RevertToPointerRoot, CurrentTime);
+    XSetInputFocus (dpy, root, RevertToPointerRoot, GDK_CURRENT_TIME);
     closeEventFilter ();
 }
 
@@ -362,7 +362,7 @@ initialize (int argc, char **argv)
     workspaceUpdateArea (margins, gnome_margins);
     initNetDesktopParams (dpy, screen, workspace);
     setNetWorkarea (dpy, screen, params.workspace_count, margins);
-    XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, CurrentTime);
+    XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
     initGtkCallbacks ();
     
     /* The first time the first Gtk application on a display uses pango,
