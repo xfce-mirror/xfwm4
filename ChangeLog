@@ -1,3 +1,84 @@
+2004-10-01 22:15  olivier
+
+	* src/compositor.c: Last touch
+
+2004-10-01 22:09  olivier
+
+	* src/compositor.c: Redo the checks, Fix a potential leak.
+
+2004-10-01 19:15  olivier
+
+	* src/compositor.c: Be paranoid about returned values in compositor
+
+2004-09-30 22:25  olivier
+
+	* configure, configure.ac, po/xfwm4.pot, src/client.c,
+	  themes/Makefile.am, themes/Makefile.in,
+	  themes/breeze/Makefile.am, themes/breeze/Makefile.in,
+	  themes/breeze/README, themes/breeze/bottom-active.xpm,
+	  themes/breeze/bottom-inactive.xpm,
+	  themes/breeze/bottom-left-active.xpm,
+	  themes/breeze/bottom-left-inactive.xpm,
+	  themes/breeze/bottom-right-active.xpm,
+	  themes/breeze/bottom-right-inactive.xpm,
+	  themes/breeze/close-active.xpm, themes/breeze/close-inactive.xpm,
+	  themes/breeze/close-pressed.xpm, themes/breeze/hide-active.xpm,
+	  themes/breeze/hide-inactive.xpm, themes/breeze/hide-pressed.xpm,
+	  themes/breeze/left-active.xpm, themes/breeze/left-inactive.xpm,
+	  themes/breeze/maximize-active.xpm,
+	  themes/breeze/maximize-inactive.xpm,
+	  themes/breeze/maximize-pressed.xpm,
+	  themes/breeze/maximize-toggled-active.xpm,
+	  themes/breeze/maximize-toggled-inactive.xpm,
+	  themes/breeze/maximize-toggled-pressed.xpm,
+	  themes/breeze/menu-active.xpm, themes/breeze/menu-inactive.xpm,
+	  themes/breeze/menu-pressed.xpm, themes/breeze/right-active.xpm,
+	  themes/breeze/right-inactive.xpm, themes/breeze/shade-active.xpm,
+	  themes/breeze/shade-inactive.xpm,
+	  themes/breeze/shade-pressed.xpm,
+	  themes/breeze/shade-toggled-active.xpm,
+	  themes/breeze/shade-toggled-inactive.xpm,
+	  themes/breeze/shade-toggled-pressed.xpm,
+	  themes/breeze/stick-active.xpm, themes/breeze/stick-inactive.xpm,
+	  themes/breeze/stick-pressed.xpm,
+	  themes/breeze/stick-toggled-active.xpm,
+	  themes/breeze/stick-toggled-inactive.xpm,
+	  themes/breeze/stick-toggled-pressed.xpm, themes/breeze/themerc,
+	  themes/breeze/title-1-active.xpm,
+	  themes/breeze/title-1-inactive.xpm,
+	  themes/breeze/title-2-active.xpm,
+	  themes/breeze/title-2-inactive.xpm,
+	  themes/breeze/title-3-active.png,
+	  themes/breeze/title-3-active.xpm,
+	  themes/breeze/title-3-inactive.png,
+	  themes/breeze/title-3-inactive.xpm,
+	  themes/breeze/title-4-active.xpm,
+	  themes/breeze/title-4-inactive.xpm,
+	  themes/breeze/title-5-active.xpm,
+	  themes/breeze/title-5-inactive.xpm,
+	  themes/breeze/top-left-active.xpm,
+	  themes/breeze/top-left-inactive.xpm,
+	  themes/breeze/top-right-active.xpm,
+	  themes/breeze/top-right-inactive.xpm,
+	  themes/default-4.0/Makefile.am, themes/default-4.0/Makefile.in,
+	  themes/opta/Makefile.am, themes/opta/Makefile.in: Jump to the
+	  next win instead of the previous if the current win vanishes
+	  during the alt-tab cycling, Adding (an old) theme "breeze" simply
+	  because it looks great with the compositor!
+
+2004-09-30 17:48  pollux
+
+	* po/: it.gmo, it.po: updated Italian translations from Luca
+	  Marrocco <buildup@libero.it>
+
+2004-09-30 00:31  olivier
+
+	* src/: compositor.c, inline-tabwin-icon.h: [no log message]
+
+2004-09-29 23:52  olivier
+
+	* ChangeLog: Updating ChangeLog
+
 2004-09-29 23:46  fleclainche
 
 	* src/: inline-tabwin-icon.h, tabwin-icon.png: Change tabwin icon.
