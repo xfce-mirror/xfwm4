@@ -1741,21 +1741,15 @@ void clientHideAll(Client * c)
 
     for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if ((c2 != c) && (c2->type == WINDOW_NORMAL))
+        if ((c2 != c) && (c2->transient_for == None) && (c2->visible) && (c2->type == WINDOW_NORMAL) && (c2->has_border) && !(c2->skip_taskbar))
 	{
-            if (c)
+	    if ((c) && (c->transient_for != c2->window))
 	    {
-	        if ((c->transient_for != c2->window) && (c2->transient_for != c->window) && (c2->win_workspace == c->win_workspace))
-		{
-		    clientHide(c2, True);
-		}
+		clientHide(c2, True);
 	    }
-	    else
+	    else if (!c)
 	    {
-	        if ((c2->transient_for == None) && (c2->win_workspace == workspace))
-		{
-		    clientHide(c2, True);
-		}
+		clientHide(c2, True);
 	    }
 	}
     }
