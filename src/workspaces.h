@@ -30,10 +30,6 @@
 #include <X11/Xmd.h>
 #include "client.h"
 
-
-extern int workspace_count, wrap_workspaces;
-extern int workspace;
-
 void workspaceSwitch(int, Client *);
 void workspaceSetCount(int);
 void workspaceUpdateArea(CARD32 *, CARD32 *);
