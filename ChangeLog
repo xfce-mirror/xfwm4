@@ -1,3 +1,19 @@
+2004-10-30 16:42  jasper
+
+	* po/: nl.gmo, nl.po: Update a few nl translations
+
+2004-10-30 16:00  pollux
+
+	* po/: lt.gmo, lt.po: update LT translations
+
+2004-10-30 14:46  jasper
+
+	* icons/scalable/: Makefile.am, Makefile.in: Fix svg location
+
+2004-10-30 14:03  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-10-30 14:00  olivier
 
 	* AUTHORS, COMPOSITOR: Update documentation for the compositing
