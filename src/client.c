@@ -1679,7 +1679,7 @@ clientFrameAll ()
     {
         XFree (wins);
     }
-    clientFocusTop ();
+    clientFocusTop (WIN_LAYER_NORMAL);
     removeTmpEventWin (shield);
     myXUngrabServer ();
     XSync (dpy, FALSE);
@@ -1983,15 +1983,15 @@ clientToggleShowDesktop (gboolean show_desktop)
 	{
             Client *c = (Client *) index->data;
             if (CLIENT_CAN_HIDE_WINDOW (c)
-        	&& FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_HIDDEN)
-        	&& !clientIsTransientOrModal (c))
+        	&& FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_HIDDEN))
             {
         	{
 		    FLAG_SET (c->flags, CLIENT_FLAG_WAS_SHOWN);
-                    clientHideSingle (c, TRUE);
+                    clientHide (c, c->win_workspace, TRUE);
         	}
             }
 	}
+        clientFocusTop (WIN_LAYER_DESKTOP);
     }
     else
     {
@@ -2001,10 +2001,12 @@ clientToggleShowDesktop (gboolean show_desktop)
             if (FLAG_TEST (c->flags, CLIENT_FLAG_WAS_SHOWN))
             {
         	{
-                    clientShowSingle (c, TRUE);
+                    clientShow (c, TRUE);
         	}
             }
+	    FLAG_UNSET (c->flags, CLIENT_FLAG_WAS_SHOWN);
 	}
+        clientFocusTop (WIN_LAYER_NORMAL);
     }
 }
 

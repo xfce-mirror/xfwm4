@@ -32,7 +32,7 @@
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
 
-void            clientFocusTop (void);
+void            clientFocusTop (int);
 void 		clientFocusNew(Client *);
 gboolean 	clientSelectMask (Client *, int);
 Client 	       *clientGetNext (Client *, int);

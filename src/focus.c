@@ -76,7 +76,8 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
 
-        if (c->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
+        if ((c->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
+	    || ((layer != WIN_LAYER_DESKTOP) && (c->type & WINDOW_DESKTOP)))
         {
             continue;
         }
@@ -102,11 +103,11 @@ clientGetTopMostFocusable (int layer, Client * exclude)
 }
 
 void
-clientFocusTop (void)
+clientFocusTop (int layer)
 {
     ClientPair top_client;
 
-    top_client = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
+    top_client = clientGetTopMostFocusable (layer, NULL);
     if (top_client.prefered)
     {
         clientSetFocus (top_client.prefered, NO_FOCUS_FLAG);
