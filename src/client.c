@@ -2195,12 +2195,12 @@ void clientFrame(Window w)
         {
             clientGravitate(c, APPLY);
         }
-        /* We must call clientApplyInitialNetState() after having placed the 
-           window so that the inital position values are correctly set if the
-           inital state is maximize or fullscreen
-         */
-        clientApplyInitialNetState(c);
     }
+    /* We must call clientApplyInitialNetState() after having placed the 
+       window so that the inital position values are correctly set if the
+       inital state is maximize or fullscreen
+     */
+    clientApplyInitialNetState(c);
 
     gdk_x11_grab_server();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
