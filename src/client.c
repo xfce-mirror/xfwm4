@@ -2790,7 +2790,7 @@ clientFrame (Window w, gboolean initial)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
     clientApplyStackList (windows_stack);
-    last_raise = c;
+    /* last_raise = c; */
 
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
