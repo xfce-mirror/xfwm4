@@ -1,3 +1,24 @@
+2004-12-12 10:42  olivier
+
+	* src/client.c: Fix #588 for good
+
+2004-12-12 10:20  olivier
+
+	* src/: client.c, compositor.c: Fix #588 Improve stacking mgt in
+	  compositor
+
+2004-12-11 18:51  olivier
+
+	* po/xfwm4.pot: Various changes and small fixes
+
+2004-12-11 17:54  olivier
+
+	* TODO: Update TODO file
+
+2004-12-11 17:52  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-12-11 17:41  olivier
 
 	* src/: client.c, compositor.c, events.c: Improve stacking, event
