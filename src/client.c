@@ -3439,13 +3439,8 @@ clientCycle (Client * c, XEvent * e)
     passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)
     {
-<<<<<<< client.c
         passdata.tabwin = tabwinCreate (getAppIcon (c->md->dpy, passdata.c->window, 32, 32),
                                         passdata.c->class.res_class, passdata.c->name);
-=======
-        passdata.tabwin = tabwinCreate (getAppIcon (md->dpy, passdata.c->window, 32, 32),
-                                        passdata.c->class.res_class, passdata.c->name);
->>>>>>> 1.380
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);

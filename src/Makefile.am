@@ -34,6 +34,7 @@ xfwm4_SOURCES =								\
 	placement.h							\
 	poswin.c							\
 	poswin.h							\
+	screen.h							\
 	session.c							\
 	session.h							\
 	settings.c							\
