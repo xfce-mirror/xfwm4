@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_MENU_H__
-#define INC_MENU_H__
+#ifndef INC_MENU_H
+#define INC_MENU_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -90,4 +90,4 @@ gboolean menu_check_and_close(void);
 gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp);
 void menu_free(Menu * menu);
 
-#endif /* INC_MENU_H__ */
+#endif /* INC_MENU_H */

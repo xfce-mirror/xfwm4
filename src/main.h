@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_MAIN_H__
-#define INC_MAIN_H__
+#ifndef INC_MAIN_H
+#define INC_MAIN_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -72,4 +72,4 @@ extern Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
  *
  */
 
-#endif /* INC_MAIN_H__ */
+#endif /* INC_MAIN_H */

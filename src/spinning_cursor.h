@@ -22,11 +22,11 @@
 #  include "config.h"
 #endif
 
-#ifndef INC_SPINNING_CURSOR_H__
-#define INC_SPINNING_CURSOR_H__
+#ifndef INC_SPINNING_CURSOR_H
+#define INC_SPINNING_CURSOR_H
 
 #include <X11/Xlib.h>
 
 Cursor cursorCreateSpinning(Display * dpy, Window window);
 
-#endif /* INC_SPINNING_CURSOR_H__ */
+#endif /* INC_SPINNING_CURSOR_H */

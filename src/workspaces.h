@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_WORKSPACES_H__
-#define INC_WORKSPACES_H__
+#ifndef INC_WORKSPACES_H
+#define INC_WORKSPACES_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -34,4 +34,4 @@ void workspaceSwitch(int, Client *);
 void workspaceSetCount(int);
 void workspaceUpdateArea(CARD32 *, CARD32 *);
 
-#endif /* INC_WORKSPACES_H__ */
+#endif /* INC_WORKSPACES_H */

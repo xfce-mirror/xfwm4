@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_MISC_H__
-#define INC_MISC_H__
+#ifndef INC_MISC_H
+#define INC_MISC_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -35,4 +35,4 @@ void sendClientMessage(Window, Atom, long, int);
 Window setTmpEventWin(long);
 void removeTmpEventWin(Window);
 
-#endif /* INC_MISC_H__ */
+#endif /* INC_MISC_H */

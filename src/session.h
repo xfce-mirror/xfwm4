@@ -16,8 +16,8 @@
 
  */
 
-#ifndef INC_SESSION_H__
-#define INC_SESSION_H__
+#ifndef INC_SESSION_H
+#define INC_SESSION_H
 
 #include <glib.h>
 #include "client.h"
@@ -33,14 +33,14 @@ gboolean sessionSaveWindowStates(gchar *);
 gboolean sessionLoadWindowStates(gchar *);
 
 /*
-** Free allocated structure. Should be called before xfwm4 dies 
+** Free allocated structure. Should be called before xfwm4 dies
 */
 void sessionFreeWindowStates(void);
 
 /*
 ** Search for existing client in saved session and update
-** relevant client fields if found. 
+** relevant client fields if found.
 */
 gboolean sessionMatchWinToSM(Client *);
 
-#endif /* INC_CLIENT_H__ */
+#endif /* INC_CLIENT_H */

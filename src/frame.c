@@ -707,10 +707,10 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
         myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, requires_clearing);
         myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, requires_clearing);
 
-        if (requires_clearing | force_shape_update)
-	{
-	    frameSetShape(c, state, &c->pm_cache, button_x);
-	}
+        if(requires_clearing | force_shape_update)
+        {
+            frameSetShape(c, state, &c->pm_cache, button_x);
+        }
     }
     else
     {

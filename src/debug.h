@@ -15,8 +15,8 @@
 
  */
 
-#ifndef INC_DEBUG_H__
-#define INC_DEBUG_H__
+#ifndef INC_DEBUG_H
+#define INC_DEBUG_H
 
 #if defined(DEBUG) && DEBUG
 #include <stdio.h>
@@ -25,4 +25,4 @@
 #define DBG(fmt, args...) do {} while(0)
 #endif
 
-#endif /* INC_DEBUG_H__ */
+#endif /* INC_DEBUG_H */

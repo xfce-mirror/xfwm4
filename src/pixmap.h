@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_PIXMAP_H__
-#define INC_PIXMAP_H__
+#ifndef INC_PIXMAP_H
+#define INC_PIXMAP_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -40,4 +40,4 @@ void createPixmap(Display *, MyPixmap *, gint, gint);
 void initPixmap(MyPixmap *);
 void freePixmap(Display *, MyPixmap *);
 
-#endif /* INC_PIXMAP_H__ */
+#endif /* INC_PIXMAP_H */

@@ -293,9 +293,9 @@ static int initialize(int argc, char **argv)
 
     act.sa_handler = handleSignal;
     act.sa_flags = 0;
-    sigaction(SIGINT,  &act, NULL);
+    sigaction(SIGINT, &act, NULL);
     sigaction(SIGTERM, &act, NULL);
-    sigaction(SIGHUP,  &act, NULL);
+    sigaction(SIGHUP, &act, NULL);
     sigaction(SIGSEGV, &act, NULL);
 
     return 0;

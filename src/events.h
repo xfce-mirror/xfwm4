@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_EVENTS_H__
-#define INC_EVENTS_H__
+#ifndef INC_EVENTS_H
+#define INC_EVENTS_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -36,4 +36,4 @@ void handleEvent(XEvent *);
 GtkToXEventFilterStatus xfwm4_event_filter(XEvent * xevent, gpointer data);
 void initGtkCallbacks(void);
 
-#endif /* INC_EVENTS_H__ */
+#endif /* INC_EVENTS_H */

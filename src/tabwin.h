@@ -21,8 +21,8 @@
 #  include "config.h"
 #endif
 
-#ifndef INC_TABWIN_H__
-#define INC_TABWIN_H__
+#ifndef INC_TABWIN_H
+#define INC_TABWIN_H
 
 #include <glib.h>
 #include <gdk/gdk.h>
@@ -41,4 +41,4 @@ Tabwin *tabwinCreate(gchar * label);
 void tabwinSetLabel(Tabwin * tabwin, gchar * label);
 void tabwinDestroy(Tabwin * tabwin);
 
-#endif /* INC_TABWIN_H__ */
+#endif /* INC_TABWIN_H */

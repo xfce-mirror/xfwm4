@@ -683,7 +683,8 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     wc.stack_mode = ev->detail;
     wc.border_width = ev->border_width;
 
-    c = clientGetFromWindow(ev->window, WINDOW);
+    /* We use any here because some app tend to raise the wm frame to achive fullscreen */
+    c = clientGetFromWindow(ev->window, ANY);
     if(c)
     {
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
@@ -821,14 +822,14 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         else if(ev->atom == motif_wm_hints)
         {
             XWindowChanges wc;
-	    
+
             DBG("client \"%s\" (%#lx) has received a motif_wm_hints notify\n", c->name, c->window);
             clientUpdateMWMHints(c);
-	    wc.x = c->x;
-	    wc.y = c->y;
-	    wc.width = c->width;
-	    wc.height = c->height;
-	    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
         }
         else if(ev->atom == XA_WM_HINTS)
         {

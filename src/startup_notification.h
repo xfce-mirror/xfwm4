@@ -18,8 +18,8 @@
 
  */
 
-#ifndef INC_STARTUP_NOTIFICATION_H__
-#define INC_STARTUP_NOTIFICATION_H__
+#ifndef INC_STARTUP_NOTIFICATION_H
+#define INC_STARTUP_NOTIFICATION_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -45,4 +45,4 @@ void sn_process_event(XEvent * event);
 #define sn_process_event(e) ;
 
 #endif /* HAVE_STARTUP_NOTIFICATION */
-#endif /* INC_STARTUP_NOTIFICATION_H__ */
+#endif /* INC_STARTUP_NOTIFICATION_H */
