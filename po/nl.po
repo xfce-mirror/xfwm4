@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"POT-Creation-Date: 2003-07-08 22:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,32 +273,32 @@ msgstr "Actie voor dubbelklikken op de titelbalk :"
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: src/client.c:444
+#: src/client.c:442
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
 
-#: src/events.c:1276
+#: src/events.c:1311
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Bewerking (nog) niet ondersteund\n"
 
-#: src/main.c:190
+#: src/main.c:226
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentatie fout"
 
-#: src/main.c:349
+#: src/main.c:396
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: een andere Window Manager is al in gebruik"
 
-#: src/main.c:354
+#: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/main.c:381
+#: src/main.c:428
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: er is een onbekende fout opgetreden"
@@ -369,37 +369,37 @@ msgstr "Bureaublad %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 
-#: src/settings.c:283
+#: src/settings.c:284
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: defaults bestand ontbreekt"
 
-#: src/settings.c:508
+#: src/settings.c:509
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet creëren\n"
 
-#: src/settings.c:515
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 
-#: src/settings.c:559
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 
-#: src/settings.c:566
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/settings.c:756
+#: src/settings.c:757
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%: Ontbrekende gegevens in defaults bestand"
 
-#: src/settings.c:1097
+#: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"

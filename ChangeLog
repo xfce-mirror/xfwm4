@@ -1,3 +1,28 @@
+2003-07-09 20:15  xfce
+
+	* po/: de.gmo, de.po, xfwm4.pot: Update de.po from Moe.
+
+2003-07-08 22:53  xfce
+
+	* po/Makefile.in.in: Don't perform an update-po on make dist as it
+	causes far too much trouble
+
+2003-07-08 00:40  xfce
+
+	* src/events.c: Fix compiler warning
+
+2003-07-08 00:26  xfce
+
+	* ltmain.sh: Update ltmain.sh with patched version
+
+2003-07-07 23:18  huysmans
+
+	* po/: ca.gmo, ca.po: Update catalan translations
+
+2003-07-06 21:45  huysmans
+
+	* ChangeLog: Updating ChangeLogs
+
 2003-07-05 14:31  xfce
 
 	* Makefile.in, ltconfig: Remove ltconfig script as it is generated

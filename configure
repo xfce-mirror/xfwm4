@@ -1759,7 +1759,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=xfwm4
- VERSION=3.92.0
+ VERSION=3.99.1
 
 
 cat >>confdefs.h <<_ACEOF

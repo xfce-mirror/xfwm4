@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"POT-Creation-Date: 2003-07-08 22:46+0200\n"
 "PO-Revision-Date: 2003-06-05 09:21+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <>\n"
@@ -272,32 +272,32 @@ msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: src/client.c:444
+#: src/client.c:442
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
 
-#: src/events.c:1276
+#: src/events.c:1311
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: İşlem desteklenmiyor (henüz)\n"
 
-#: src/main.c:190
+#: src/main.c:226
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Parçalanma hatası"
 
-#: src/main.c:349
+#: src/main.c:396
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
 
-#: src/main.c:354
+#: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Öntanımlı dosyalarda eksik veri"
 
-#: src/main.c:381
+#: src/main.c:428
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Bilinmeyen bir hata oluştu"
@@ -368,37 +368,37 @@ msgstr "Çalışma alanı %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: src/settings.c:283
+#: src/settings.c:284
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Öntanımlı dosyalar unutulmuş"
 
-#: src/settings.c:508
+#: src/settings.c:509
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: src/settings.c:515
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: src/settings.c:559
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
 
-#: src/settings.c:566
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
 
-#: src/settings.c:756
+#: src/settings.c:757
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Öntanımlı dosyalarda değerler unutulmuş"
 
-#: src/settings.c:1097
+#: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"

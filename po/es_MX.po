@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"POT-Creation-Date: 2003-07-08 22:46+0200\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -18,7 +18,6 @@ msgstr ""
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
-
 msgid "Workspace Margins"
 msgstr "Márgenes del espacio de trabajo"
 
@@ -30,16 +29,14 @@ msgstr "Ajustar los márgenes de trabajo"
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"Los márgenes son áreas a la orilla de la pantalla donde no se colocará"
-" ninguna ventana al maximizar."
+"Los márgenes son áreas a la orilla de la pantalla donde no se colocará "
+"ninguna ventana al maximizar."
 
 #: mcs-plugin/margins_plugin.c:281
-
 msgid "Left :"
 msgstr "Izquierda :"
 
 #: mcs-plugin/margins_plugin.c:301
-
 msgid "Right :"
 msgstr "Derecha :"
 
@@ -131,7 +128,7 @@ msgstr "Fuente del Título"
 msgid "Title Alignment"
 msgstr "Alineado del Título"
 
-
+#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
 msgstr "Alineado del texto en la barra de título :"
@@ -213,7 +210,6 @@ msgid "Keyboard and focus"
 msgstr "Teclado y foco"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
-
 msgid "Windows snapping"
 msgstr "Atracción de las ventanas"
 
@@ -222,7 +218,6 @@ msgid "Snap windows to screen border"
 msgstr "Pegar ventanas al borde del escritorio"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
-
 msgid "Snap windows to other windows"
 msgstr "Atraer ventanas entre si"
 
@@ -243,29 +238,24 @@ msgid "Wrap workspaces"
 msgstr "Saltar al escritorio siguiente"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
-
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Saltar al siguiente escritorio al mover el puntero"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
-
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Saltar al siguiente escritorio al mover ventanas"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
-
 msgid "Edge Resistance :"
 msgstr "Resistencia en la orilla :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
-
 msgid "Opaque move and resize"
 msgstr "Redimensionado y movimiento opaco"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
 msgstr "Mostrar el contenido al redimensionar"
-
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
@@ -275,42 +265,41 @@ msgstr "Mostrar contenido de la ventana cuando se mueva"
 msgid "Double click action"
 msgstr "Acción al pinchar dos veces"
 
-
+#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
-msgstr ""
-"Acción a realizar cuando se pincha dos veces en la barra de título :"
+msgstr "Acción a realizar cuando se pincha dos veces en la barra de título :"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/client.c:444
-
+#: src/client.c:442
+#, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana 0x%lx)"
 
-#: src/events.c:1276
+#: src/events.c:1311
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no activa (aún)\n"
 
-#: src/main.c:190
+#: src/main.c:226
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Error de segmentación"
 
-#: src/main.c:349
+#: src/main.c:396
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Otro administrador de ventanas está ejecutándose"
 
-#: src/main.c:354
+#: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Faltan datos en archivos de configuración por omisión"
 
-#: src/main.c:381
+#: src/main.c:428
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ha ocurrido un error desconocido"
@@ -373,7 +362,7 @@ msgid "Restart"
 msgstr "Reiniciar"
 
 #: src/menu.c:163
-
+#, c-format
 msgid "Workspace %i"
 msgstr "Escritorio %i"
 
@@ -382,37 +371,37 @@ msgstr "Escritorio %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no pudo posesionarse del puntero\n"
 
-#: src/settings.c:283
+#: src/settings.c:284
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Faltan datos en archivos de configuración por omisión"
 
-#: src/settings.c:508
+#: src/settings.c:509
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:515
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
 
-#: src/settings.c:559
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No se puede reservar el color inactivo %s\n"
 
-#: src/settings.c:566
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:756
+#: src/settings.c:757
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltan datos en archivos de configuración por omisión"
 
-#: src/settings.c:1097
+#: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Sin inicializar el contador de escritorios, usando el valor: %i"
@@ -448,7 +437,6 @@ msgstr "Cambiar a ..."
 #~ msgid "Snap to screen border"
 #~ msgstr "Atraer al borde del escritorio"
 
-
 #~ msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
 #~ msgstr "%s: Propiedad %s en ventana 0x%lx contiene UTF-8 inválido\n"
 
@@ -460,7 +448,6 @@ msgstr "Cambiar a ..."
 
 #~ msgid "Layout :"
 #~ msgstr "Disposición :"
-
 
 #~ msgid "%s: Unidentified client message for window 0x%lx"
 #~ msgstr "%s: Mensaje no identificado, ventana 0x%lx"

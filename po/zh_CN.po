@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"POT-Creation-Date: 2003-07-08 22:46+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -280,32 +280,32 @@ msgstr "双击标题栏所执行的动作 :"
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:444
+#: src/client.c:442
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %#lx)"
 
-#: src/events.c:1276
+#: src/events.c:1311
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
 
-#: src/main.c:190
+#: src/main.c:226
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:349
+#: src/main.c:396
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:354
+#: src/main.c:401
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:381
+#: src/main.c:428
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
@@ -377,37 +377,37 @@ msgstr "工作区(_k)"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:283
+#: src/settings.c:284
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:508
+#: src/settings.c:509
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:515
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:559
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:566
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:756
+#: src/settings.c:757
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:1097
+#: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
