@@ -307,6 +307,11 @@ clientConstrainPos (Client * c, gboolean show_full)
 		    c->y = c2->struts[TOP] + frame_top;
 		    frame_y = frameY (c);
 		}
+		if (frame_y + frame_height < c2->struts[TOP] + CLIENT_MIN_VISIBLE)
+		{
+		    c->y = c2->struts[TOP] + CLIENT_MIN_VISIBLE - frame_height + frame_top;
+		    frame_y = frameY (c);
+		}
 	    }
 
 	    /* Bottom */
