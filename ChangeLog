@@ -1,3 +1,217 @@
+2004-07-08 19:04  olivier
+
+	* ltmain.sh, defaults/Makefile.am, defaults/Makefile.in,
+	  defaults/defaults, defaults/defaults.in: Backport from HEAD:
+	  Remove useless generation of default file.
+
+2004-07-07 19:25  pollux
+
+	* po/: ar.gmo, az.gmo, bg.gmo, ca.gmo, ca.po, cs.gmo, de.gmo,
+	  es.gmo, es_MX.gmo, et.gmo, fa_IR.gmo, fi.gmo, fr.gmo, hi.gmo,
+	  hu.gmo, it.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo, no.gmo,
+	  pl.gmo, pt_BR.gmo, pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo,
+	  uk.gmo, vi.gmo, zh_CN.gmo, zh_TW.gmo: * apply patch from Xan
+	  <DXpublica@telefonica.net> for ca * BTW update gmo
+
+2004-07-07 00:33  olivier
+
+	* po/ar.po, po/az.po, po/bg.po, po/ca.po, po/cs.po, po/de.po,
+	  po/es.po, po/es_MX.po, po/et.po, po/fa_IR.po, po/fi.po, po/fr.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po,
+	  po/ms.po, po/nl.po, po/no.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
+	  po/ru.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po, src/client.c,
+	  src/client.h, src/events.c, src/events.h, src/frame.c,
+	  src/frame.h, src/hints.c, src/hints.h, src/keyboard.c,
+	  src/keyboard.h, src/main.c, src/main.h, src/menu.c, src/menu.h,
+	  src/misc.c, src/misc.h, src/mypixmap.c, src/mypixmap.h,
+	  src/mywindow.c, src/mywindow.h, src/parserc.c, src/parserc.h,
+	  src/session.c, src/session.h, src/settings.c, src/settings.h,
+	  src/spinning_cursor.c, src/spinning_cursor.h,
+	  src/startup_notification.c, src/startup_notification.h,
+	  src/tabwin.c, src/tabwin.h, src/workspaces.c, src/workspaces.h:
+	  Backport from HEAD: Remove win_layer on unmap, expand sources.
+
+2004-07-06 17:58  pollux
+
+	* configure, configure.ac, po/eu.gmo, po/eu.po: add basque
+	  translation from ^pi^ <pi@beobide.net>
+
+2004-07-05 22:26  olivier
+
+	* src/client.c: Bacport from HEAD: Fix base width/height not being
+	  initialized
+
+2004-07-02 08:22  olivier
+
+	* po/xfwm4.pot, src/client.c: Remove useless comment (with a typo!)
+
+2004-07-02 07:48  olivier
+
+	* src/client.c: Backport from HEAD: Improve window placement for
+	  some broken apps
+
+2004-07-01 23:16  olivier
+
+	* src/client.c: Backport from HEAD: Fix mapping/unmapping issues
+	  (again)
+
+2004-06-30 23:56  olivier
+
+	* po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/bg.gmo, po/bg.po,
+	  po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po,
+	  po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po, po/et.gmo,
+	  po/et.po, po/fa_IR.gmo, po/fa_IR.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po,
+	  po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po,
+	  po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
+	  po/no.gmo, po/no.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
+	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
+	  src/client.c: Backport from HEAD: Fix frame update when an app
+	  changes its own state to modal, Fix app window being remaped
+	  after a quick map request/unmap notify, Allow static gravity wins
+	  to place thenselves anywhere (for broken apps trying to get a
+	  fullscreen window this way)
+
+2004-06-29 21:56  olivier
+
+	* src/client.c: BAckport from HEAD: "Check for apps that set their
+	  group leader to themselves."
+
+2004-06-28 22:42  olivier
+
+	* po/ar.po, po/az.po, po/bg.po, po/ca.po, po/cs.po, po/de.po,
+	  po/es.po, po/es_MX.po, po/et.po, po/fa_IR.po, po/fi.po, po/fr.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po,
+	  po/ms.po, po/nl.po, po/no.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
+	  po/ru.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po, src/client.c: Backport
+	  from HEAD: "Grab server earlier when managing new windows, trying
+	  to fix #0000184 and other random issues reported with Java on the
+	  ML" Update po
+
+2004-06-26 19:56  olivier
+
+	* src/client.c: Backport map/unmap fixes
+
+2004-06-21 22:43  olivier
+
+	* src/client.c: Fix focus transition problem when unmapping last
+	  visible regular window, as reported by Bernhard Walle
+
+2004-06-19 18:38  olivier
+
+	* po/xfwm4.pot, src/client.c: Ignore ICCCM resize increments in
+	  fullscreen mode.
+
+2004-06-19 16:38  olivier
+
+	* src/: client.c, hints.c, settings.c: Back port various small
+	  fixes from HEAD
+
+2004-06-11 13:04  pollux
+
+	* configure, configure.ac, ltmain.sh, po/et.gmo, po/et.po: Estonian
+	  translations from Peeter Vois <peeter.vois@proekspert.ee> added
+
+2004-05-31 12:34  olivier
+
+	* src/main.c: Register with SM as late as possible, as per Benny's
+	  patch.
+
+2004-05-20 09:18  olivier
+
+	* src/: client.h, events.c: Backport from HEAD: Don't stick/unstick
+	  borderless windows using kbd shortcut
+
+2004-05-16 14:15  olivier
+
+	* po/xfwm4.pot, src/client.c, src/client.h, src/events.c,
+	  src/main.c, src/misc.c, src/misc.h, src/workspaces.c: Backport
+	  part of focus mgt from HEAD
+
+2004-05-14 23:55  olivier
+
+	* src/client.c: Fix for Opera improper use of modals, typos
+
+2004-05-14 00:24  olivier
+
+	* src/main.c: Fix typo as spotted by Eduard
+
+2004-05-12 22:08  olivier
+
+	* src/: client.c, main.c: Change revert to RevertToPointerRoot in
+	  XSetInputFocus()
+
+2004-05-04 22:35  olivier
+
+	* doc/C/: xfwm4.html, xfwm4.xml: Fix small error in documentation
+	  reported by Michaela Susan Buesing.
+
+2004-05-04 00:17  olivier
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, defaults/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
+	  mcs-plugin/Makefile.in, po/zh_TW.gmo, po/zh_TW.po,
+	  src/Makefile.in, themes/Makefile.in, themes/bbs/Makefile.in,
+	  themes/curve/Makefile.in, themes/default/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/exocet/Makefile.in,
+	  themes/meenee/Makefile.in, themes/microcurve/Makefile.in,
+	  themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	  themes/microdeck3/Makefile.in, themes/tgc/Makefile.in,
+	  themes/tgc-large/Makefile.in: Update zh_TW translations by umm
+	  <umm@pchome.com.tw>
+
+2004-05-03 22:00  olivier
+
+	* po/xfwm4.pot, src/client.c: Fix bug #0000185
+
+2004-04-22 20:02  olivier
+
+	* src/: client.c, events.c: Add Xutil.h for SUN header
+
+2004-04-16 19:00  olivier
+
+	* configure, configure.ac, po/xfwm4.pot, src/client.c: Don't honor
+	  stack request when sibling is specified as we don't honor it,
+	  Chenge version to 4.0.6
+
+2004-04-15 12:44  olivier
+
+	* src/events.c: Fix bug introduced when simplying kbd shortcuts
+
+2004-04-14 19:02  olivier
+
+	* src/client.c: Fix focus transition from fullscreen as reported by
+	  Jean-Francois Wauthy <pollux@xfce.org>
+
+2004-04-14 08:18  olivier
+
+	* po/: zh_TW.gmo, zh_TW.po: zh_TW po update by Ambrose Li
+	  <a.c.li@ieee.org>
+
+2004-04-14 07:26  olivier
+
+	* src/: events.c, workspaces.c: Simplify key shortcut routine
+
+2004-04-13 22:41  olivier
+
+	* src/workspaces.c: Prepare 4.0.5
+
+2004-04-08 21:47  olivier
+
+	* src/workspaces.c: Grab the pointer instead of flushing all
+	  EnterEvent on workspace switch
+
+2004-04-08 19:15  olivier
+
+	* ChangeLog, po/xfwm4.pot: Update ChangeLog
+
 2004-04-08 19:11  olivier
 
 	* src/: client.c, events.c: Fix bug #138 Remove some compilation
