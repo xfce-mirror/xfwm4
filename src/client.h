@@ -197,6 +197,7 @@ struct _Client
     int fullscreen_old_y;
     int fullscreen_old_width;
     int fullscreen_old_height;
+    int fullscreen_old_layer;
     int ncmap;
     int button_pressed[BUTTON_COUNT];
     int struts[4];

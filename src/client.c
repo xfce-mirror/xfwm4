@@ -654,24 +654,23 @@ static void clientWindowType(Client * c)
             layer = WIN_LAYER_ABOVE_DOCK;
         }
     }
-    else if(c->transient_for)
+    else
+    {
+        DBG("no \"net\" atom detected\n");
+        c->type = UNSET;
+        layer = c->win_layer;
+    }
+    if(c->transient_for)
     {
         Client *c2;
 
-        DBG("no \"net\" atom detected\n");
-
+        DBG("Window is a transient\n");
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
         if(c2)
         {
             c->type = c2->type;
             layer = c2->win_layer;
         }
-    }
-    else
-    {
-        DBG("no \"net\" atom detected, not even a transient\n");
-        c->type = UNSET;
-        layer = c->win_layer;
     }
     if((old_type != c->type) || (layer != c->win_layer))
     {
@@ -2202,6 +2201,7 @@ void clientToggleMaximized(Client * c, int mode)
 void clientToggleFullscreen(Client * c)
 {
     XWindowChanges wc;
+    int layer;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientToggleFullscreen\n");
@@ -2213,11 +2213,13 @@ void clientToggleFullscreen(Client * c)
         c->fullscreen_old_y = c->y;
         c->fullscreen_old_width = c->width;
         c->fullscreen_old_height = c->height;
+        c->fullscreen_old_layer = c->win_layer;
 
-        wc.x = (int)margins[MARGIN_LEFT];
-        wc.y = (int)margins[MARGIN_TOP];
-        wc.width = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_LEFT] - (int)margins[MARGIN_RIGHT];
-        wc.height = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_TOP] - (int)margins[MARGIN_BOTTOM];
+        wc.x = 0;
+        wc.y = 0;
+        wc.width = XDisplayWidth(dpy, screen);
+        wc.height = XDisplayHeight(dpy, screen);
+	layer = WIN_LAYER_ABOVE_DOCK;
     }
     else
     {
@@ -2225,8 +2227,10 @@ void clientToggleFullscreen(Client * c)
         wc.y = c->fullscreen_old_y;
         wc.width = c->fullscreen_old_width;
         wc.height = c->fullscreen_old_height;
+	layer = c->fullscreen_old_layer;
     }
     clientSetNetState(c);
+    clientSetLayer(c, layer);
     clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
 }
 
