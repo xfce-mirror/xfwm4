@@ -1265,8 +1265,7 @@ handleFocusIn (XFocusChangeEvent * ev)
         }
         else
         {
-            clientSetFocus (NULL, FOCUS_NONE);
-            clientPassGrabButton1 (NULL);
+            clientPassFocus (NULL);
         }
         return;
     }

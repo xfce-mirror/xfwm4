@@ -32,6 +32,7 @@
 #include <gtk/gtk.h>
 #include <X11/Xlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -164,10 +165,10 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
 
     for (i = 0; i < nws; i++)
     {
-        if (ptr && *ptr != 0)
+        if (ptr && *ptr)
         {
             name = g_strdup_printf (_("Workspace %i (%s)"), i + 1, ptr);
-            if (ptr-wsn+1 < wsnl)
+            if (ptr - wsn + 1 < wsnl)
             {
                 ptr += strlen (ptr) + 1;
             }
