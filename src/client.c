@@ -2493,7 +2493,7 @@ void clientMove(Client * c, XEvent * e)
 {
     XWindowChanges wc;
     MoveResizeData passdata;
-    int g1, g2;
+    int g1 = GrabSuccess, g2 = GrabSuccess;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientDoMove\n");
@@ -2721,7 +2721,7 @@ void clientResize(Client * c, int corner, XEvent * e)
 {
     XWindowChanges wc;
     MoveResizeData passdata;
-    int g1, g2;
+    int g1 = GrabSuccess, g2 = GrabSuccess;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientResize\n");
