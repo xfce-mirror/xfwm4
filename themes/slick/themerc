@@ -1,6 +1,6 @@
-full_width_title=false
+full_width_title=true
 title_vertical_offset=0
 button_offset=0
 button_spacing=2
 active_text_color=#000000
-inactive_text_color=#525052
+inactive_text_color=#828082
