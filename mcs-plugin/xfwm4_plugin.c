@@ -2039,9 +2039,10 @@ cb_browse_command (GtkWidget *widget, GtkEntry *entry_command)
 
     filesel_dialog = gtk_file_selection_new (_("Select command"));
 
-    if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_OK){
-      gtk_entry_set_text (entry_command,
-			  gtk_file_selection_get_filename (GTK_FILE_SELECTION (filesel_dialog)));
+    if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_OK)
+    {
+        gtk_entry_set_text (entry_command,
+			    gtk_file_selection_get_filename (GTK_FILE_SELECTION (filesel_dialog)));
     }
 
     gtk_widget_destroy (GTK_WIDGET (filesel_dialog));
