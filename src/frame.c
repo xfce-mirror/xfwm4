@@ -298,16 +298,16 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     g_object_unref(G_OBJECT(layout));
 }
 
-static int getButtonFromLetter(char c, Client * cl)
+static int getButtonFromLetter(char chr, Client * c)
 {
     int b=-1;
 
     DBG("entering getButtonFromLetter\n");
 
-    switch (c)
+    switch (chr)
     {
         case 'H':
-	    if (CAN_HIDE_WINDOW(cl))
+	    if (CAN_HIDE_WINDOW(c))
 	    {
                 b = HIDE_BUTTON;
 	    }
@@ -316,25 +316,25 @@ static int getButtonFromLetter(char c, Client * cl)
             b = CLOSE_BUTTON;
             break;
         case 'M':
-	    if (CAN_MAXIMIZE_WINDOW(cl))
+	    if (CAN_MAXIMIZE_WINDOW(c))
 	    {
                 b = MAXIMIZE_BUTTON;
 	    }
             break;
         case 'S':
-	    if (cl->has_menu)
+	    if (c->has_menu)
 	    {
                 b = SHADE_BUTTON;
 	    }
             break;
         case 'T':
-	    if (cl->has_menu)
+	    if (c->has_menu)
 	    {
                 b = STICK_BUTTON;
 	    }
             break;
         case 'O':
-	    if (cl->has_menu)
+	    if (c->has_menu)
 	    {
                 b = MENU_BUTTON;
 	    }
@@ -348,51 +348,51 @@ static int getButtonFromLetter(char c, Client * cl)
     return b;
 }
 
-static char getLetterFromButton(int b, Client * cl)
+static char getLetterFromButton(int i, Client * c)
 {
-    char c = 0;
+    char chr = 0;
 
     DBG("entering getLetterFromButton\n");
 
-    switch (b)
+    switch (i)
     {
         case HIDE_BUTTON:
-	    if (CAN_HIDE_WINDOW(cl))
+	    if (CAN_HIDE_WINDOW(c))
 	    {
-                c = 'H';
+                chr = 'H';
 	    }
             break;
         case CLOSE_BUTTON:
-            c = 'C';
+            chr = 'C';
             break;
         case MAXIMIZE_BUTTON:
-	    if (CAN_MAXIMIZE_WINDOW(cl))
+	    if (CAN_MAXIMIZE_WINDOW(c))
 	    {
-                c = 'M';
+                chr = 'M';
             }
             break;
         case SHADE_BUTTON:
-	    if (cl->has_menu)
+	    if (c->has_menu)
 	    {
-                c = 'S';
+                chr = 'S';
 	    }
             break;
         case STICK_BUTTON:
-	    if (cl->has_menu)
+	    if (c->has_menu)
 	    {
-                c = 'T';
+                chr = 'T';
 	    }
             break;
         case MENU_BUTTON:
-	    if (cl->has_menu)
+	    if (c->has_menu)
 	    {
-                c = 'O';
+                chr = 'O';
 	    }
             break;
         default:
-            c = 0;
+            chr = 0;
     }
-    return c;
+    return chr;
 }
 
 static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_sides[3], int button_x[BUTTON_COUNT])
@@ -489,7 +489,8 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
         XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, c->corners[CORNER_TOP_RIGHT], ShapeBounding, ShapeUnion);
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(strchr(button_layout, getLetterFromButton(i, c)))
+            char chr = getLetterFromButton(i, c);
+	    if((chr) && strchr(button_layout, chr))
             {
                 XShapeCombineShape(dpy, temp, ShapeBounding, button_x[i], (frameTop(c) - buttons[i][ACTIVE].height) / 2, c->buttons[i], ShapeBounding, ShapeUnion);
             }
@@ -555,7 +556,7 @@ void frameDraw(Client * c)
             {
                 break;
             }
-            else if(button >= 0)
+            else if (button >= 0)
             {
                 XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - buttons[button][ACTIVE].height) / 2, buttons[button][ACTIVE].width, buttons[button][ACTIVE].height);
                 button_x[button] = x;
