@@ -337,7 +337,7 @@ static int getButtonFromLetter(char chr, Client * c)
             b = SHADE_BUTTON;
             break;
         case 'T':
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
+            if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
             {
                 b = STICK_BUTTON;
             }
@@ -387,7 +387,7 @@ static char getLetterFromButton(int i, Client * c)
             chr = 'S';
             break;
         case STICK_BUTTON:
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
+            if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
             {
                 chr = 'T';
             }

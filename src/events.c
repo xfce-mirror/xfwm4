@@ -1256,7 +1256,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             ops |= MENU_OP_UNSTICK;
-            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
+            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 insensitive |= MENU_OP_UNSTICK;
             }
@@ -1264,7 +1264,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         else
         {
             ops |= MENU_OP_STICK;
-            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
+            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 insensitive |= MENU_OP_STICK;
             }
