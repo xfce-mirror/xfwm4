@@ -1311,21 +1311,26 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
     DBG("entering _clientConfigure (recursive)\n");
     DBG("configuring (recursive) client \"%s\" (%#lx), layer %i\n", c->name, c->window, c->win_layer);
 
-    if(mask & CWX)
+    if (mask & (CWX | CWY | CWWidth | CWHeight))
     {
-        c->x = wc->x;
-    }
-    if(mask & CWY)
-    {
-        c->y = wc->y;
-    }
-    if(mask & CWWidth)
-    {
-        clientSetWidth(c, wc->width);
-    }
-    if(mask & CWHeight)
-    {
-        clientSetHeight(c, wc->height);
+	if(mask & CWX)
+	{
+            c->x = wc->x;
+	}
+	if(mask & CWY)
+	{
+            c->y = wc->y;
+	}
+	if(mask & CWWidth)
+	{
+            clientSetWidth(c, wc->width);
+	}
+	if(mask & CWHeight)
+	{
+            clientSetHeight(c, wc->height);
+	}
+	/* Prevent arbitrary moves that could hide the title or the window completely */
+	clientConstraintPos(c);
     }
     if(mask & CWBorderWidth)
     {
@@ -2650,6 +2655,8 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     Client *c = passdata->c;
     gboolean resizing = TRUE;
     XWindowChanges wc;
+    int prev_y = 0;
+    int prev_height = 0;
 
     DBG("entering clientResize_event_filter\n");
 
@@ -2723,6 +2730,9 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         passdata->oldw = c->width;
         passdata->oldh = c->height;
+	/* Store previous values in case the resize puts the window title off bounds */
+	prev_y = c->y;
+	prev_height = c->height;
         if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
         {
             if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
@@ -2755,6 +2765,12 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             c->y = c->y - (c->height - passdata->oldh);
         }
+	if (frameY(c) < (int)margins[MARGIN_TOP])
+	{
+	    /* We've made an illegal move, revert... */
+            c->y = prev_y;
+	    c->height = prev_height;	    
+	}
         if(box_resize)
         {
             clientDrawOutline(c);
