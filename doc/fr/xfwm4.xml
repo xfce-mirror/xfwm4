@@ -1,0 +1,828 @@
+<?xml version='1.0'?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY date "Sep 2003"> 
+  <!ENTITY appversion "4.0"> 
+  <!ENTITY app "<application>xfwm4</application>">
+]>
+
+<article id="xfwm4" lang="fr">
+
+<!-- Header --> 
+<articleinfo>
+
+  <title>Gestionnaire de fenêtres de XFce 4</title>
+  
+  <copyright>
+    <year>2003</year> <holder>François Le Clainche</holder>
+  </copyright>
+
+  <copyright>
+    <year>2003</year> <holder>Jasper Huijsmans</holder>
+  </copyright>
+
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin
+   translation)</holder>
+  </copyright>
+
+ -->
+
+<!-- I don't know about this
+  <legalnotice id="legalnotice">
+    <para>
+      This document is provided under the terms of the GNU GPL, version
+      2 or (at your option) any later version.
+    </para>
+  </legalnotice>
+-->
+  <authorgroup>
+
+    <author>
+      <firstname>François</firstname> <surname>Le Clainche</surname>
+      <affiliation>
+	<address><email>fleclainche@wanadoo.fr</email></address>
+      </affiliation>
+    </author>
+
+<!-- This is appropriate place for other contributors: translators,
+maintainers, etc. Commented out by default.
+
+    <othercredit role="translator">
+      <firstname>Latin</firstname> <surname>Translator 1</surname>
+      <affiliation>
+	<orgname>Latin Translation Team</orgname>
+	<address><email>translator@gnome.org</email> </address>
+      </affiliation> <contrib>Latin translation</contrib>
+    </othercredit>
+-->
+
+  </authorgroup>
+
+  <!--
+  <revhistory>
+    <revision>
+      <revnumber>0.1</revnumber> 
+      <date>May 2003</date>
+      <authorinitials>ma</authorinitials>
+    </revision>
+  </revhistory>
+  -->
+
+  <releaseinfo>Ce manuel décrit &app; version &appversion;
+  </releaseinfo>
+
+</articleinfo>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-intro">
+  <title>Introduction</title>
+
+  <para>Le gestionnaire de fenêtres de XFce 4 est une partie de l'<ulink 
+      url="http://www.xfce.org" type="html">environnement de bureau XFce</ulink>. 
+	  La commande à lancer est &app;. Pour le lancer en arrière-plan, utiliser 
+	  <command>&app; --daemon</command>. Le gestionnaire de fenêtres a la charge 
+	  du placement des fenêtres sur l'écran, fournit le décor des fenêtres et vous 
+	  permet de déplacer, redimensionner ou fermer celles-ci.
+  </para>
+
+  <para>Si vous êtes un habitué des versions précédentes de XFce, vous trouverez 
+    beaucoup de changements. En premier lieu, &app; respecte scrupuleusement 
+	les standards définis par <ulink url="http://www.freedesktop.org"
+      type="html">freedesktop.org</ulink>.
+	Par conséquent, des fonctions spécifiques, comme des fenêtres sans bordures 
+	ou la fourniture d'une icône pour une application doit maintenant être inclus dans 
+	l'application elle-même ; vous ne pouvez plus utiliser le gestionnaire de 
+	fenêtres pour forcer un comportement différent. Le plus visible des changements 
+	est probablement l'utilisation de thèmes. Les décors de fenêtres (bordures, 
+	barre de titre et boutons) peuvent être configurés à partir du gestionnaire 
+	de thèmes.
+  </para>
+
+  <para>&app; offre un support du mode Xinerama, utile si vous possédez plus d'un 
+    écran connecté à votre ordinateur. Vous devez être sûr que 
+	<application>libxfcegui4</application> est compilée avec l'option 
+	<option>--enable-xinerama</option>.
+  </para>
+
+  <para>&app; peut être utilisé seul, mais si vous l'utilisez ainsi, vous 
+    aurez besoin du <ulink url="xfce-mcs-manager.html" type="http">gestionnaire 
+	de paramètres de XFce 4</ulink> si vous souhaitez disposer d'un gestionnaire 
+	graphique de ses paramètres. Les tâches autres que la gestion de fenêtres, comme 
+	l'installation un fond d'écran ou le lancement des applications devront être réalisées 
+	par d'autres programmes.
+  </para>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-using">
+  <title>Utiliser &app;</title>
+
+  <sect2 id="wm-windows">
+    <title>Gérer les fenêtres</title>
+  
+    <para>Le gestionnaire de fenêtres fournit les bordures, la barre de titre 
+	  et les boutons aux fenêtres d'applications. Le style est appliqué par 
+	  le gestionnaire de thèmes.</para>
+    
+    <para>Dans le thème par défaut, &app; affiche six boutons et un titre 
+	  sur une fenêtre d'application normale. Les six boutons permettent 
+	  ces fonctions de base :
+	</para>
+    
+
+    <figure id="titlebar-fig">
+      <title>&app; : boutons de la barre de titre</title>
+
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/titlebar.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>&app; rôle des boutons de la barre de titre</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>Vous pouvez ouvrir le menu de la fenêtre avec un clic gauche sur le 
+	  bouton de menu de la barre de titre, ou avec un clic droit sur la 
+	  barre de titre elle-même.
+    </para>
+
+      <para>&nbsp;</para>
+
+    <variablelist>
+
+      <varlistentry>
+	<term>Donner le focus à la fenêtre</term>
+	<listitem>
+	  <para>Vous devez donner le focus à une fenêtre si vous voulez 
+	    qu'elle reçoive les entrées du clavier ou de la souris. L'aspect 
+		de la fenêtre changera selon le focus. Pour en savoir plus sur les 
+		options de focus, reportez-vous à  <xref linkend="wm-focus"/> 
+		décrit plus loin.
+	  </para>
+	  <para>Un raccourci clavier permet de transférer le focus d'une 
+	    fenêtre à l'autre : garder la touche Alt enfoncée et presser 
+		la touche Tab plusieurs fois jusqu'à obtenir la fenêtre 
+		souhaitée. En utilisant cette méthode, vous verrez apparaître 
+		une fenêtre pop-up avec le titre de la fenêtre; de plus,  &app; 
+		surlignera les bords externes de la fenêtre recevant le focus.
+	  </para>
+
+	  <para>Si vous souhaitez que le panneau et les applications qui n'
+	    apparaissent pas dans la barre des tâches soient inclus dans ce 
+		transfert du focus par le raccourci Alt+Tab, modifiez votre 
+		$HOME/.xfce4/xfwm4rc (ou créez en un nouveau) et ajoutez cette 
+		ligne : cycle_minimum=false.
+	  </para>
+	  
+	  <para>NOTE : L'utilisation d'un raccourci clavier dans une 
+	    application nécessite que cette application ait le focus :)
+	  </para>
+
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Agrandir / réduire la fenêtre</term>
+	<listitem>
+	<para>Si vous maximiser une fenêtre, elle va s'étaler sur votre 
+	  écran et utiliser tout l'espace disponible (comme défini par les 
+	  <ulink url="xfdesktop.html#xfdesktop-workspace" type="http">paramètres 
+		de l'espace de travail</ulink>). Vous pouvez aussi agrandir une 
+		fenêtre seulement verticalement ou horizontalement.
+	</para>
+	<para>Pour agrandir une fenêtre, choisir une des ces méthodes :
+	</para>
+	<itemizedlist>
+	  <listitem>Clic sur le bouton agrandir de la barre de titre</listitem>
+	  <listitem>Ouvrir le menu de la fenêtre à partir de la barre de titre 
+	   et cliquer sur le choix "agrandir"</listitem>
+	  <listitem>Utiliser le raccourci clavier Alt + F5</listitem>
+	</itemizedlist>
+	<para>Agrandir une fenêtre verticalement :</para>
+	<itemizedlist>
+	<listitem>clic milieu sur le bouton agrandir 
+	  de la barre de titre</listitem>
+	<listitem>Utiliser le raccourci clavier Alt + F6</listitem>
+	</itemizedlist>
+	<para>Agrandir une fenêtre horizontalement :</para>
+	<itemizedlist>
+	<listitem>clic droit sur le bouton agrandir 
+	  de la barre de titre</listitem>
+	<listitem>Utiliser le raccourci clavier Alt + F7</listitem>
+	</itemizedlist>
+	<para>Quand une fenêtre est à la taille maximum, elle peut être 
+	  ramenée à sa taille initiale par l'une de ces méthodes : </para>
+	<itemizedlist>
+	<listitem>clic sur le bouton restaurer de la barre de titre</listitem>
+	<listitem>Refaire le même raccourci clavier</listitem>
+	<listitem>clic sur l'item "Restaurer" dans le menu de la fenêtre</listitem>
+	</itemizedlist>	
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Changer la taille d'une fenêtre</term>
+      <listitem>
+	<para>Bien que certaines fenêtres spéciales ne puissent être 
+	  redimensionnées, vous pouvez changer la dimension de la 
+	  plupart d'entre elles selon vos besoins.</para>
+	<itemizedlist>
+	<listitem>Vous pouvez utiliser les bords ou les coins de la fenêtre 
+	  pour modifier sa taille, en les tirant avec la souris.</listitem>
+	<listitem>Vous pouvez utiliser le raccourci Alt + clic droit 
+	  quand le curseur de la souris est dans la fenêtre ; cela 
+	  fonctionne comme si vous tiriez le coin en bas à droite de 
+	  la fenêtre.</listitem>
+	<listitem>Vous pouvez utiliser un raccourci clavier : Maj + Alt + 
+	  flêche (haut, bas, droite ou gauche).</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Cacher / Montrer une fenêtre</term>
+      <listitem>
+	<para>Vous pouvez cacher une fenêtre par l'une de ces actions :</para>
+	<itemizedlist>
+	<listitem>cliquer sur le bouton iconifier de la barre de titre</listitem>
+	<listitem>ouvrir le menu de fenêtre à partir de la barre de titre 
+	  et choisir "Cacher"</listitem>
+	<listitem>Utiliser le raccourci Alt + F8</listitem>
+	</itemizedlist>
+	<para>Vous pouvez aussi, d'un seul coup, cacher toutes les fenêtres 
+	  de l'espace de travail courant, sauf celle que vous utilisez : 
+	  cliquez sur le bouton menu de la barre de titre et choisir " Cacher 
+	  tous les autres".</para>
+	<para>Pour faire ré-apparaître une fenêtre cachée, vous devez sélectionner son nom 
+	  ou son icône dans l'un de ces programmes de XFce 4 :</para>
+	<itemizedlist>
+	<listitem><application>xftaskbar4</application></listitem>
+	<listitem>the <application>xfce4-iconbox</application></listitem>
+	<listitem>la liste des fenêtres, accessible par un clic du bouton du milieu 
+	  sur le fond du bureau. La liste montre toutes les fenêtres ouvertes, 
+	  classées par espace de travail. Les fenêtres cachées sont entre [ ].
+	</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Enrouler / Dérouler une fenêtre</term>
+      <listitem>
+	<para>Si vous "enroulez" une fenêtre, elle sera réduite à la taille 
+	  de sa barre de titre. La même action répétée peut enrouler / dérouler 
+	  une fenêtre :</para>
+	<itemizedlist>
+	<listitem>Cliquer sur le bouton enrouler/dérouler de la barre de titre</listitem>
+	<listitem>ouvrir le menu de la fenêtre et choisir "Enrouler" ou "Dérouler"</listitem>
+	<listitem>Utiliser la roulette de la souris alors que le pointeur est sur 
+	  la barre de titre</listitem>
+	<listitem>utiliser le raccourci clavier Alt + F9</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Coller / Décoller une fenêtre</term>
+      <listitem>
+	<para>Si vous "collez" une fenêtre, elle apparaîtra à la même place 
+	  sur tous les espaces de travail. La même commande colle / décolle 
+	  une fenêtre :
+	</para>
+	<itemizedlist>
+	  <listitem>cliquer le bouton coller/décoller de la barre de titre</listitem>
+	  <listitem>ouvrir le menu de la fenêtre et choisir "coller" ou "décoller"</listitem>
+	  <listitem>utiliser le raccourci Alt + F10</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+<varlistentry>
+      <term>Raise / lower windows</term>
+      <listitem>
+         <para>La fonction "raise window" fait apparaître le cadre d'une fenêtre au-dessus de toutes les autres fenêtres. 
+         Pour ce faire, vous pouvez :
+         </para>
+	<itemizedlist>
+	<listitem>cliquer gauche sur la barre de titre</listitem>
+	<listitem>donner le focus à la fenêtre, si l'option correspondante est sélectionnée dans la <ulink
+      url="xfwm4.html#wm-focus" type="http">fenêtre de dialogue Clavier et focalisation</ulink></listitem>
+	<listitem>cliquer gauche n'importe-où dans le cadre d'une fenêtre, si l'option correspondante est sélectionnée dans la <ulink
+      url="xfwm4.html#wm-focus" type="http">fenêtre de dialogue Clavier et focalisation</ulink></listitem>
+	<listitem>cliquer sur son label dans la barre des tâches ou la boîte à icônes</listitem>
+        <listitem>utiliser le raccourci clavier Shift + Alt + Page_Up (si la fenêtre possède déjà le focus)</listitem>
+	</itemizedlist>
+        <para>La fonction "lower window" envoie le cadre d'une fenêtre en-dessous de toutes les autres fenêtres.
+	Pour ce faire, vous pouvez :
+	</para>
+	<itemizedlist>
+	<listitem>cliquer milieu sur la barre de titre</listitem>
+   <listitem>utiliser le raccourci clavier Shift + Alt + Page_Down (si la fenêtre détient déjà le focus)</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Déplacer une fenêtre</term>
+      <listitem>
+	<para>Il y a plusieurs façons de déplacer une fenêtre :</para>
+	<itemizedlist>
+	  <listitem>cliquer avec le bouton droit ou gauche sur la barre 
+	    de titre et tirer la fenêtre dans la direction choisie</listitem>
+	  <listitem>utiliser Alt + clic gauche quand le pointeur de la souris 
+	    est dans la fenêtre et déplacer la souris</listitem>
+	  <listitem>utiliser Control + Alt + Maj + Flêche (haut, bas, gauche ou 
+	    droit)</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Déplacer une fenêtre vers un autre espace de travail</term>
+      <listitem>
+	<para>Vous pouvez déplacer une fenêtre vers un autre espace de travail 
+	  par l'une de ces méthodes :</para>
+	<itemizedlist>
+	  <listitem>coller la fenêtre, changer d'espace de travail et décoller 
+	    la fenêtre.</listitem>
+	<listitem>utiliser le menu de la fenêtre et choisir "Placer sur...", puis 
+	  choisir l'espace de travai</listitem>
+	<listitem>faire un clic droit ou gauche sur la barre de titre, tirer la 
+	  fenêtre vers le bord de l'écran : le pointeur ira alors sur l'espace 
+	  suivant en entrainant la fenêtre. Cette méthode nécessite que l'option 
+	  correspondante "basculer d'écran" soit cochée dans les <ulink 
+	  url="xfwm4.html#wm_misc" type="http">Préférences du gestionnaire de 
+	  fenêtres</ulink>.</listitem>
+	<listitem>utiliser des raccourcis clavier : 
+	  <itemizedlist>
+	    <listitem>Alt + Control + Fin déplace la fenêtre vers l'espace 
+		  suivant</listitem>
+	    <listitem>Alt + Control + Home déplace la fenêtre vers l'espace 
+		  précédent</listitem>
+	    <listitem>Alt + Control + clavier numérique déplace la fenêtre 
+		  vers l'espace de numéro correspondant</listitem>
+	  </itemizedlist>
+	</listitem>
+	<listitem>utiliser le <ulink url="xfce4-panel.html#switcher-item"
+	    type="http">pager graphique</ulink> en cliquant sur la représentation  
+		de la fenêtre et en la déplaçant vers l'espace choisi.
+	</listitem>
+      </itemizedlist>
+      <para>&nbsp;</para>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>Fermer une fenêtre</term>
+    <listitem>
+      <para>Pour fermer une fenêtre :</para>
+	<itemizedlist>
+	<listitem>cliquer sur le bouton de fermeture de la barre de titre</listitem>
+	<listitem>ouvrir le menu de la fenêtre depuis la barre de titre et choisir 
+	  "Fermer"</listitem>
+	<listitem>utiliser le raccourci clavier Alt + F4</listitem>
+	</itemizedlist>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+  <sect2 id="wm-keybindings">
+    <title>Récapitulatif des raccourcis clavier</title>
+
+    <para>Dans la configuration stantard, les raccourcis sont définis ainsi : </para>
+    <itemizedlist>
+      <listitem>fermer fenêtre : Alt + F4</listitem>
+      <listitem>agrandir fenêtre : Alt + F5</listitem>
+      <listitem>agrandir verticalement : Alt + F6</listitem>
+      <listitem>agrandir horizontalement : Alt + F7</listitem>
+      <listitem>cacher fenêtre : Alt + F8</listitem>
+      <listitem>enrouler fenêtre : Alt + F9</listitem>
+      <listitem>coller fenêtre : Alt + F10</listitem>
+      <listitem>transférer le focus : Alt + Tab</listitem>
+      <listitem>déplacer fenêtre : Control + Maj + Alt + Flêche (haut, bas, gauche, droite)</listitem>
+      <listitem>Redimensionner fenêtre : Maj + Alt + Flêche (haut, bas, gauche, droite)</listitem>
+      <listitem>Envoyer fenêtre au-dessus : Shift + Alt + Page_Up</listitem>
+      <listitem>Envoyer fenêtre en-dessous : Shift + Alt + Page_Down</listitem>
+      <listitem>espace de travail suivant : Control + Alt + Flêche droite</listitem>
+      <listitem>espace de travail précédent : Control + Alt + Flêche gauche</listitem>
+      <listitem>ajouter un espace de travail : Alt + Inser</listitem>
+      <listitem>supprimer un espace de travail : Alt + Suppr</listitem>
+      <listitem>aller à l'espace de travail N(1-9) : Control + F(N)</listitem>
+      <listitem>déplacer une fenêtre vers l'espace de travail précédent | suivant : 
+	    Alt + Control +	Home|Fin</listitem>
+      <listitem>déplacer une fenêtre vers l'espace de travail N (1-9) : Alt + Control + 
+	    N au clavier numérique</listitem>
+      <listitem>lancer l'aide  xfhelp4 : Alt + F1</listitem>
+      <listitem>lancer l'exécuteur xfrun4 : Alt + F2</listitem>
+      <listitem>verouiller l'écran : Alt + Control + Suppr</listitem>
+    </itemizedlist>
+
+  </sect2>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-settings">
+  <title>Paramétrer &app;</title>
+
+  <para>Pour ouvrir les préférences du gestionnaire de fenêtres, cliquez sur le bouton  
+    "gestionnaire de fenêtres" dans le <ulink url="xfce-mcs-manager.html#manager-dialog" 
+	type="http">gestionnaire de paramètres de XFce 4</ulink>. La fenêtre possède trois 
+	onglets : Habillage, Clavier et focalisation, Avancé. Toutes les modifications sont 
+	appliquées immédiatement sur le module choisi.</para>
+
+  <sect2 id="wm-style">
+    <title>Habillage</title>
+
+    <figure id="wm_decoration_style-fig">
+      <title>Préférences pour l'habillage</title>
+  
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/decoration_style.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>Onglet habillage</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <variablelist>
+
+      <varlistentry>
+	<term>Style de fenêtre</term>
+	<listitem>
+	<para>La liste dans la partie gauche comprend tous les habillages 
+	  de fenêtre disponibles. Le module xfwm 4 offre le choix entre 10 
+	  thèmes différents, mais il y a plus de 50 thèmes supplémentaires 
+	   dans le paquetage xfwm4-themes. Vous pouvez les prévisualiser 
+	   sur le <ulink url="http://www.xfce.org" type="html">site XFce
+	    </ulink>
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>fonte de titre</term>
+      <listitem>
+	<para>Le bouton "Sélection de fonte" montre la famille de fonte 
+	  actuellement utilisée pour les titres des fenêtres. Cliquez sur ce bouton 
+	  pour la changer et un dialogue de "Sélection de fonte" s'ouvre. Il 
+	  fonctionne comme la sélection de fonte du <ulink
+	    url="xfce-mcs-plugins.html#id2811474" type="http">module gestionnaire 
+		de paramètres de l'interface utilisateur</ulink>.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Alignement du titre</term>
+      <listitem>
+	<para>Quel que soit l'emplacement des boutons, vous pouvez choisir 
+	  l'alignement du titre dans la barre de titre : à gauche, centré ou 
+	  à droite.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Agencement des boutons</term>
+      <listitem>
+        <para>L'agencement des boutons utilise une interface intuitive 
+		  avec des boutons radio. Imaginez simplement que tous les items 
+		  se projètent sur une ligne horizontale, par exemple sur le bord 
+		  inférieur de la fenêtre, dans l'ordre choisi. De plus, chaque modification 
+		  entraîne un changement immédiat de la position des boutons de la barre de titre.
+	</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+<sect2 id="wm-focus">
+  <title>Clavier et focalisation</title>
+
+  <figure id="wm_focus-fig">
+    <title>Préférences pour le clavier et la focalisation</title>
+
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/keyboard_and_focus.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>L'onglet clavier et focalisation</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+
+    <varlistentry>
+      <term>Raccourcis clavier</term>
+      <listitem>
+	<para>La liste à gauche montre tous les thèmes de raccourcis 
+	  disponibles, en se basant sur les noms de répertoire qui 
+	  contiennent un fichier keythemerc.
+	</para>
+	<para>Par défaut, il n'y a qu'un thème :
+	  $(prefix)/share/xfwm4/themes/default.keys/keythemerc
+	</para>
+	<para>Vous pouvez adapter les raccourcis en modifiant ce thème 
+	  par défaut (sept possibilités sont laissées vierges, à votre 
+	  disposition) , ou créer un nouveau thème, soit de cette manière : 
+	  $(prefix)/share/xfwm4/themes/custom.keys/keythemerc, soit ainsi 
+	  (dans votre répertoire personnel) : $HOME/.themes/xfwm4/custom.keys
+	  /keythemerc.</para>
+
+	<para>NOTE : $prefix est le préfixe déclaré à l'installation de xfwm4, 
+	  normalement /usr ou /usr/local.
+	</para>
+	<para>Si vous ne connaissez pas le nom des touches de contrôle de 
+	  votre clavier, vous pouvez utiliser, à partir d'un terminal, le 
+	  programme "xev" et les tester.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Principe du focus</term>
+      <listitem>
+	<para>Une fenêtre qui possède le focus reçoit les entrées du clavier 
+	  et de la souris. Vous pouvez choisir entre deux modèles de focus :
+	</para>
+	<itemizedlist>
+	  <listitem>Cliquer pour avoir le focus : choisissez cette option 
+	    si vous souhaitez qu'une fenêtre ne reçoive le focus que quand 
+		vous cliquez dessus.
+	  </listitem>
+	  <listitem>Le focus suit la souris : choisissez cette option si vous 
+	    voulez qu'une fenêtre reçoive le focus dès que la souris la survole.
+	  </listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Focus sur nouvelle fenêtre</term>
+      <listitem>
+	<para>Choisir cette option donne automatiquement le focus à une 
+	  fenêtre qui vient d'être créée, sans qu'il soit besoin de cliquer 
+	  ou de déplacer le pointeur de la souris.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Mettre au premier plan lors de la focalisation</term>
+      <listitem>
+        <para>Si cette option est cochée, le cadre ou la fenêtre qui prend 
+		  le focus est placée au-dessus de toutes les autres, après un certain 
+		  délai que vous pouvez régler avec le curseur "délai".
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Mettre au premier plan lors d'un clic</term>
+      <listitem>
+	<para>Choisissez cette option si vous souhaitez qu'une fenêtre 
+	  passe au premier plan lorque vous cliquez dedans. Si cette 
+	  option n'est pas cochée, vous devrez cliquer sur la barre de titre 
+	  ou sur un bord pour la faire passer au premier plan.
+	</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+<sect2 id="wm_advanced">
+  <title>Paramètres avancés</title>
+
+  <figure id="misc_wm_prefs-fig">
+    <title>Préférences avancées</title>
+  
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/misc_wm_prefs.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>onglet Avancé</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+
+    <varlistentry>
+      <term>Aimantation des fenêtres</term>
+      <listitem>
+	<para>Vous pouvez décider qu'une fenêtre sera attirée par le bord 
+	  d'une autre fenêtre ou par le bord de l'écran, lors d'un déplacement.
+	  La distance à laquelle l'attraction commence est réglée par le 
+	  curseur "Distance".
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Basculer d'écran</term>
+      <listitem>
+	<para>Choisissez la première option si vous voulez basculez vers 
+	  l'espace de travail suivant quand la souris atteint le bord de 
+	  l'écran. Choisissez la seconde si vous souhaitez obtenir le 
+	  même effet quand vous déplacez une fenêtre hors de l'écran. 
+	  Vous pouvez préciser la résistance du bord grâce au curseur 
+	  correspondant.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Visibilité pendant le déplacement et le redimensionnement</term>
+      <listitem>
+	<para>Deux options vous permettent de décider si le contenu de la 
+	  fenêtre restera visible lors du déplacement ou du redimensionnement 
+	  de celle-ci (ne pas montrer le contenu peut économiser les ressources 
+	  système).</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Action du double clic</term>
+      <listitem>
+	<para>Choisissez le comportement du gestionnaire de fenêtres lors 
+	  d'un double clic sur la barre de titre : enroule/déroule la fenêtre, 
+	  mise en icône de la fenêtre, maximise/restaure la fenêtre ou aucun effet.
+	</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="workspaces">
+
+  <title>Workspaces and Margins</title>
+
+  <para>&app; gère également les espaces de travail. Il y a une fenêtre de dialogue 
+  dédiée au choix de leurs proriétés. Vous pouvez la lancer en choisissant 
+  <emphasis>Espaces virtuels et marges</emphasis> dans le <ulink
+      url="xfce-mcs-manager.html#manager-dialog" type="http">gestionnaire de paramètres</ulink>. 
+   La fenêtre de dialogue contient deux onglets depuis lesquel vous pouvez modifier 
+   les paramètres des espaces de travail virtuels et les marges du bureau.</para>
+
+  <sect2>
+
+    <title>Workspaces</title>
+
+    <figure id="xfwm-workspace-fig">
+      <title>Paramètres des espaces virtuels</title>
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/xfwm_workspaces.png" format="PNG"/>
+	  </imageobject> 
+	  <textobject>
+	    <phrase>Montre l'onglet de paramétrage des espaces virtuels.
+	    </phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <variablelist>
+
+      <varlistentry>
+	<term>Espaces de travail virtuels</term>
+	<listitem>
+	  <para>Cette option vous permet de choisir le nombre d'espaces 
+	  virtuels que vous souhaitez utiliser (entre 1 et 32).
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Nom des espaces virtuels</term>
+	<listitem>
+	  <para>Ce champ contient la liste des espaces disponibles. Si vous 
+	  modifier le nom de l'un d'eux, cliquez sur son numéro et remplissez 
+	  la zone de saisie qui s'ouvre. Ensuite, cliquez sur le bouton 
+	  "Appliquer" ou simplement sur la touche Entrée, pour revenir à 
+	  la liste.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 id="workspace-margins">
+    <title>Paramétrer les marges de l'espace de travail</title>
+
+    <figure id="workspace_margins-fig">
+      <title>La fenêtre de paramétrage des marges de l'espace de travail</title>
+
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/workspace_margins.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>Montre l'onglet de paramétrage des marges de l'espace de travail</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>Pour ouvrir la fenêtre de paramétrage des marges de l'espace de travail, 
+    cliquez sur le bouton "Espaces virtuels et marges" dans le <ulink
+	url="xfce-mcs-manager.html#manager-dialog" type="http">gestionnaire de 
+	paramètres</ulink> et choisissez l'onglet intitulé "Marges".
+    </para>
+
+    <para>Les marges sont des zones sur les bords de l'écran qui ne seront pas 
+    recouvertes par une fenêtre maximisée. Vous pouvez ajuster la taille, 
+	en pixel, de chaque marge (gauche, droite, haut et bas). Utilisez cette 
+	possibilité lorque vous ne voulez pas qu'une fenêtre agrandie au maximum 
+	recouvre le panneau ou la boîte d'icônes.</para>
+
+  </sect2>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+</sect1>
+  
+<sect1 id="wm-copyright">
+  <title>A propos de &app;</title>
+
+  <para>&app; est écrite par Olivier Fourdan  
+    (<email>fourdan@xfce.org</email>). Vous trouverez des informations 
+	supplémentaires sur le <ulink url="http://www.xfce.org" 
+	type="http">site XFce</ulink>. 
+  </para>
+
+  <para>Pour soumettre un bug ou faire une suggestion sur l'application 
+    ou sur le manuel, envoyez un e-mail à la liste de diffusion 
+	 <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+	type="http">xfce4-dev</ulink>  &mdash; méthode recommandée 
+     &mdash; ou utilisez le système de gestion des bugs sur 
+	 <ulink url="http://sourceforge.net/projects/xfce" 
+	type="http">XFce SourceForge project site</ulink>.
+	Si vous avez des questions sur l'utilisation ou l'installation de ce 
+	paquetage, vous pouvez les poser sur la liste de diffusion 
+	<ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+	type="http">xfce</ulink>. 
+  </para>
+    
+  <para>Ce programme est distribué selon les termes de la licence publique 
+     générale GNU, publiée par la Free Software Foundation, soit la version 2 
+	 de cette licence, soit (selon votre choix) toute version ultérieure.
+  </para>
+
+  <para>Vous devez avoir reçu une copie de la licence publique 
+     générale GNU avec ce programme. Sinon, écrivez à la Free Software 
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.
+  </para>
+
+</sect1>
+
+</article>
+
