@@ -31,7 +31,7 @@
 #include "settings.h"
 #include "debug.h"
 
-#define DEFAULT_THEME "exocet"
+#define DEFAULT_THEME "bbs"
 
 gboolean parseRc(gchar * file, gchar * dir, Settings rc[])
 {

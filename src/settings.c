@@ -83,6 +83,7 @@ void loadSettings()
         {"inactive_shadow_2", NULL, FALSE},     
         {"inactive_mid_2", NULL, FALSE},        
         {"theme", NULL, TRUE},                   
+        {"keytheme", NULL, FALSE},                   
         {"title_alignment", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
         {"button_layout", NULL, TRUE},
@@ -148,6 +149,8 @@ void loadSettings()
     };
     GValue tmp_val = { 0, };
     gchar *theme;
+    gchar *keytheme;
+    gchar *keythemevalue;
     XpmColorSymbol colsym[20];
     GtkWidget *widget;
     guint i;
@@ -182,15 +185,22 @@ void loadSettings()
         fprintf(stderr, "%s: Missing defaults file\n", progname);
         exit(1);
     }
+    parseRc(".xfwm4rc", getenv("HOME"), rc);
+    theme = getThemeDir(getValue("theme", rc));
+    parseRc("themerc", theme, rc);
+
+    keythemevalue = getValue("keytheme", rc);
+    if (keythemevalue)
+    {
+        keytheme = getThemeDir(keythemevalue);
+        parseRc("keythemerc", keytheme, rc);
+    }
+
     if(!checkRc(rc))
     {
         fprintf(stderr, "%s: Missing values in defaults file\n", progname);
         exit(1);
     }
-
-    parseRc(".xfwm4rc", getenv("HOME"), rc);
-    theme = getThemeDir(getValue("theme", rc));
-    parseRc("themerc", theme, rc);
 
     for (i = 0; i < 20; i++)
     {
@@ -423,6 +433,7 @@ void loadSettings()
     grabKey(dpy, &keys[KEY_WORKSPACE_8], gnome_win);
     grabKey(dpy, &keys[KEY_WORKSPACE_9], gnome_win);
     freeRc(rc);
+    g_free (keytheme);
     g_free (theme);
 }
 

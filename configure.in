@@ -49,6 +49,7 @@ themes/coldsteel/Makefile
 themes/crux/Makefile
 themes/cruxish/Makefile
 themes/curve/Makefile
+themes/default.keys/Makefile
 themes/eazel-blue/Makefile
 themes/exocet/Makefile
 themes/g2/Makefile

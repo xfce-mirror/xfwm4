@@ -3,7 +3,10 @@
 # You can use it as a template for your own configuration file
 
 # theme=name or theme=/full/path/to/themedir
-theme=exocet
+theme=bbs
+
+# keytheme=name or theme=/full/path/to/keythemedir
+keytheme=default.keys
 
 # title_alignment=left/right/center
 title_alignment=left
@@ -16,46 +19,7 @@ title_alignment=left
 #    M = maximize 
 #    C = close
 #    | = title
-
 button_layout=OTS|HMC
-
-# ???_key=modifier+key
-hide_window_key=Alt+F1
-close_window_key=Alt+F4
-maximize_window_key=Alt+F2
-shade_window_key=Alt+F3
-cycle_windows_key=Alt+Tab
-raise_window_layer_key=Alt+Page_Up
-lower_window_layer_key=Alt+Page_Down
-move_window_up_key=Control+Shift+Alt+Up
-move_window_down_key=Control+Shift+Alt+Down
-move_window_left_key=Control+Shift+Alt+Left
-move_window_right_key=Control+Shift+Alt+Right
-next_workspace_key=Control+Alt+Right
-prev_workspace_key=Control+Alt+Left
-add_workspace_key=Alt+Insert
-del_workspace_key=Alt+Delete
-stick_window_key=Alt+F5
-workspace_1_key=Control+F1
-workspace_2_key=Control+F2
-workspace_3_key=Control+F3
-workspace_4_key=Control+F4
-workspace_5_key=Control+F5
-workspace_6_key=Control+F6
-workspace_7_key=Control+F7
-workspace_8_key=Control+F8
-workspace_9_key=Control+F9
-move_window_next_workspace_key=Alt+Control+End
-move_window_prev_workspace_key=Alt+Control+Home
-move_window_workspace_1_key=Alt+Control+KP_1
-move_window_workspace_2_key=Alt+Control+KP_2
-move_window_workspace_3_key=Alt+Control+KP_3
-move_window_workspace_4_key=Alt+Control+KP_4
-move_window_workspace_5_key=Alt+Control+KP_5
-move_window_workspace_6_key=Alt+Control+KP_6
-move_window_workspace_7_key=Alt+Control+KP_7
-move_window_workspace_8_key=Alt+Control+KP_8
-move_window_workspace_9_key=Alt+Control+KP_9
 
 # double_click_action=shade/hide/maximize/none
 double_click_action=maximize
