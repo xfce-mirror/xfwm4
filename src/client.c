@@ -964,7 +964,7 @@ static void clientWindowType(Client * c)
         if (c->transient_for == root)
         {
             TRACE("window is transient  for root window");
-            c->initial_layer = WIN_LAYER_ONTOP;
+            /* c->initial_layer = WIN_LAYER_ONTOP; */
             CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
             /* Remove the transient field now */
             c->transient_for = None;
