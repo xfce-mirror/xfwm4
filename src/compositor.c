@@ -1394,17 +1394,13 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
 {
     ScreenInfo *screen_info = NULL;
     CWindow *new;
-    Status test;
 
     TRACE ("entering add_win: 0x%lx", id);
 
     new = g_new0 (CWindow, 1);
 
-    gdk_error_trap_push ();
     myDisplayGrabServer (display_info);
-    test = XGetWindowAttributes (display_info->dpy, id, &new->attr);
-
-    if (gdk_error_trap_pop () || !test)
+    if (!XGetWindowAttributes (display_info->dpy, id, &new->attr))
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
