@@ -15,10 +15,8 @@ xfwm4_plugin_la_SOURCES =						\
 	xfwm4-icon.h
 
 xfwm4_plugin_la_CFLAGS =						\
-	@CFLAGS@							\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@LIBXFCE4UTIL_CFLAGS@						\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-I$(top_builddir)/common					\
@@ -43,10 +41,8 @@ margins_plugin_la_SOURCES =						\
 	margins-icon.h
 
 margins_plugin_la_CFLAGS =						\
-	@CFLAGS@							\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@LIBXFCE4UTIL_CFLAGS@						\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-I$(top_builddir)/common					\

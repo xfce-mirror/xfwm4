@@ -37,9 +37,6 @@ xfwm4_SOURCES =								\
 	workspaces.h
 	
 xfwm4_CFLAGS =								\
-	@CFLAGS@							\
-	@GLIB_CFLAGS@							\
-	@GTK_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
 	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
@@ -49,9 +46,6 @@ xfwm4_CFLAGS =								\
 	-DDATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\
-	@LIBS@								\
-	@GLIB_LIBS@							\
-	@GTK_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCEGUI4_LIBS@						\

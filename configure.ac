@@ -37,11 +37,8 @@ dnl Check for X11 window system
 BM_LIBX11_REQUIRE
 BM_LIBXPM_REQUIRE
 
-BM_DEPEND(GLIB, glib-2.0, 2.0.0)
-BM_DEPEND(GTK, gtk+-2.0, 2.0.0)
 BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 0.0.3)
 BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 0.0.3)
-BM_DEPEND(LIBXFCE4UTIL, libxfce4util-1.0, 0.0)
 BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 0.0.16)
 BM_DEPEND(XFCE_MCS_MANAGER, xfce-mcs-manager, 0.1.0)
 

@@ -925,7 +925,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 
 static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
-    TRACE("entering handleFocusOut - Window (0x%lx)", w);
+    /*TRACE("entering handleFocusOut - Window (0x%lx)", w);*/
 }
 
 static inline void handlePropertyNotify(XPropertyEvent * ev)
