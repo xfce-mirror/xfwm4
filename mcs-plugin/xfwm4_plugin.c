@@ -2033,6 +2033,21 @@ command_exists (const gchar * command)
 }
 
 static void
+cb_browse_command (GtkWidget *widget, GtkEntry *entry_command)
+{
+    GtkWidget *filesel_dialog;
+
+    filesel_dialog = gtk_file_selection_new (_("Select command"));
+
+    if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_OK){
+      gtk_entry_set_text (entry_command,
+			  gtk_file_selection_get_filename (GTK_FILE_SELECTION (filesel_dialog)));
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (filesel_dialog));
+}
+
+static void
 cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColumn * column, gpointer data)
 {
     Itf *itf = (Itf *) data;
@@ -2074,6 +2089,7 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         hbox_entry = gtk_hbox_new (FALSE, 0);
         gtk_box_pack_start (GTK_BOX (hbox_entry), entry, FALSE, FALSE, 0);
         button = gtk_button_new_with_label ("...");
+	g_signal_connect ( (gpointer) button, "clicked", G_CALLBACK (cb_browse_command), entry);
         gtk_box_pack_start (GTK_BOX (hbox_entry), button, FALSE, FALSE, 0);
 
         hbox = gtk_hbox_new (FALSE, 10);
@@ -2093,14 +2109,16 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
                 need_shortcut = FALSE;
             }
             else if (command_exists (gtk_entry_get_text (GTK_ENTRY (entry))))
+	    {
                 gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_COMMAND, gtk_entry_get_text (GTK_ENTRY (entry)), -1);
+	    }
             else
             {
                 GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW (dialog),
                     GTK_DIALOG_DESTROY_WITH_PARENT,
                     GTK_MESSAGE_WARNING,
                     GTK_BUTTONS_OK,
-                    _("The command doesn't exist !"));
+                    _("The command doesn't exist or the file is not executable !"));
                 need_shortcut = FALSE;
 
                 gtk_dialog_run (GTK_DIALOG (dialog_warning));
@@ -2108,6 +2126,8 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
             }
 
         }
+	else
+  	    need_shortcut = FALSE;
 
         if (!need_shortcut)
         {
