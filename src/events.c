@@ -878,6 +878,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 }
                 if (screen_info->params->raise_on_click)
                 {
+                    /* Clear timeout */
+                    clear_timeout ();
                     clientRaise (c);
                 }
                 clientButtonPress (c, win, ev);
@@ -914,6 +916,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     }
                     if (screen_info->params->raise_on_click)
                     {
+                	/* Clear timeout */
+                	clear_timeout ();
                         clientRaise (c);
                     }
                     ev->window = ev->root;
@@ -967,9 +971,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             clientPassGrabMouseButton (c);
             if ((screen_info->params->raise_with_any_button) || (ev->button == Button1))
             {
-                /* Clear timeout */
-                clear_timeout ();
-
                 if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                 {
                     clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
@@ -977,6 +978,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 if ((screen_info->params->raise_on_click) || 
                     !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
                 {
+                    /* Clear timeout */
+                    clear_timeout ();
                     clientRaise (c);
                 }
             }
