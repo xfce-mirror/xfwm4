@@ -792,8 +792,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         ce.border_width = 0;
         ce.above = c->frame;
         ce.override_redirect = FALSE;
-        XSendEvent (clientGetXDisplay (c), c->window, FALSE, StructureNotifyMask,
-            (XEvent *) & ce);
+        XSendEvent (clientGetXDisplay (c), c->window, FALSE, 
+                    StructureNotifyMask, (XEvent *) & ce);
     }
 }
 

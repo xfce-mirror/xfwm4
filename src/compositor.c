@@ -870,6 +870,7 @@ get_window_picture (CWindow *cw)
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
 {
+    XserverRegion dest_region;
     DisplayInfo *display_info;
     Display *dpy;
     GList *index;
@@ -880,6 +881,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 
     TRACE ("entering paint_all");    
     g_return_if_fail (screen_info);
+
     
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
@@ -887,6 +889,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     screen_height = gdk_screen_get_height (screen_info->gscr);
     screen_number = screen_info->screen;
     xroot = screen_info->xroot;
+    dest_region = None;
 
     if (region == None)
     {
@@ -898,7 +901,14 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         r.width = screen_width;
         r.height = screen_height;
         region = XFixesCreateRegion (dpy, &r, 1);
+        dest_region = None;
+
         g_return_if_fail (region != None);
+    }
+    else
+    {
+	dest_region = XFixesCreateRegion (dpy, NULL, 0);
+	XFixesCopyRegion (dpy, dest_region, region);
     }
 
     /* Create root buffer if not done yet */
@@ -907,9 +917,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         screen_info->rootBuffer = create_root_buffer (screen_info);
         g_return_if_fail (screen_info->rootBuffer != None);
     }
-    
+        
     XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, region);
-    
     for (index = screen_info->cwindows; index; index = g_list_next (index))
     {        
         CWindow *cw = (CWindow *) index->data;
@@ -1029,12 +1038,16 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             cw->borderClip = None;
         }
     }
+    XFixesDestroyRegion (dpy, region);
     
     TRACE ("Copying data back to screen");
-    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
+    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, dest_region);
     XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
                         0, 0, 0, 0, 0, 0, screen_width, screen_height);
-    XFixesDestroyRegion (dpy, region);
+    if (dest_region != None)
+    {
+        XFixesDestroyRegion (dpy, dest_region);
+    }
 }
 
 static void
@@ -1191,7 +1204,7 @@ determine_mode(CWindow *cw)
     if (cw->extents)
     {
         XserverRegion damage;
-        damage = XFixesCreateRegion (myScreenGetXDisplay (screen_info), 0, 0);
+        damage = XFixesCreateRegion (myScreenGetXDisplay (screen_info), NULL, 0);
         if (damage != None)
         {
             XFixesCopyRegion (myScreenGetXDisplay (screen_info), damage, cw->extents);
@@ -1345,23 +1358,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
 
-    new->c = c;
-    new->screen_info = screen_info;
-    new->id = id;
-    new->damaged = FALSE;
-    new->viewable = (new->attr.map_state == IsViewable);
-#if HAVE_NAME_WINDOW_PIXMAP
-    if (display_info->have_name_window_pixmap)
-    {
-        new->name_window_pixmap = XCompositeNameWindowPixmap (display_info->dpy, id);
-    }               
-    else
-    {
-        new->name_window_pixmap = None;
-    }               
-#endif
-    new->picture = get_window_picture (new);
-    
     if (new->attr.class == InputOnly)
     {
         new->damage = None;
@@ -1370,6 +1366,16 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
     {
         new->damage = XDamageCreate (myScreenGetXDisplay (screen_info), id, XDamageReportNonEmpty);
     }
+
+    new->c = c;
+    new->screen_info = screen_info;
+    new->id = id;
+    new->damaged = FALSE;
+    new->viewable = (new->attr.map_state == IsViewable);
+#if HAVE_NAME_WINDOW_PIXMAP
+    new->name_window_pixmap = None;
+#endif
+    new->picture = None;
     new->alphaPict = None;
     new->shadowPict = None;
     new->borderSize = None;
@@ -1510,11 +1516,11 @@ resize_win (CWindow *cw, gint width, gint height)
         {
             XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
             XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
-            add_damage (cw->screen_info, damage);
         }
+        add_damage (cw->screen_info, damage);
+	cw->screen_info->clipChanged = TRUE;
+	repair_screen (cw->screen_info);
     }
-    cw->screen_info->clipChanged = TRUE;
-    repair_screen (cw->screen_info);
 }
 
 static void
@@ -1676,7 +1682,8 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
 {
     XserverRegion damage = None;
     CWindow *cw;
-    
+    gboolean clip_changed;
+        
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleConfigureNotify for 0x%lx", ev->window);    
@@ -1705,11 +1712,9 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         return;
     }
     
-    cw->screen_info->clipChanged = ((cw->attr.x != ev->x) || 
-                                    (cw->attr.y != ev->y) ||
-                                    (cw->attr.width != ev->width) || 
-                                    (cw->attr.height != ev->height) ||
-                                    (cw->attr.border_width != ev->border_width));
+    clip_changed = ((cw->attr.x != ev->x) || (cw->attr.y != ev->y) ||
+                    (cw->attr.width != ev->width) || (cw->attr.height != ev->height) ||
+                    (cw->attr.border_width != ev->border_width));
 
     damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
     if ((damage != None) && (cw->extents != None))
@@ -1754,10 +1759,11 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         {
             XFixesUnionRegion (display_info->dpy, damage, damage, extents);
             XFixesDestroyRegion (display_info->dpy, extents);
-            add_damage (cw->screen_info, damage);
         }
+        add_damage (cw->screen_info, damage);
+        cw->screen_info->clipChanged = clip_changed;
+	repair_screen (cw->screen_info);
     }
-    repair_screen (cw->screen_info);
 }
 
 static void
