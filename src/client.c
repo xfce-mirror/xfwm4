@@ -1818,18 +1818,25 @@ void clientUpdateMWMHints(Client * c)
     mwm_hints = getMotifHints(dpy, c->window);
     if(mwm_hints)
     {
-        if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
+        if(mwm_hints->flags & MWM_HINTS_DECORATIONS)
         {
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
-            CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ? CLIENT_FLAG_HAS_BORDER : 0);
-            CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MENU)) ? CLIENT_FLAG_HAS_MENU : 0);
-            /* 
-               CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE);
-               CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_MAXIMIZE);
-               CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? CLIENT_FLAG_HAS_HIDE : 0);
-               CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? CLIENT_FLAG_HAS_MAXIMIZE : 0);
-             */
-        }
+	    if (mwm_hints->decorations & MWM_DECOR_ALL)
+	    {
+        	CLIENT_FLAG_SET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
+	    }
+	    else
+	    {
+        	CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
+        	CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ? CLIENT_FLAG_HAS_BORDER : 0);
+        	CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MENU)) ? CLIENT_FLAG_HAS_MENU : 0);
+        	/* 
+        	   CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE);
+        	   CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_MAXIMIZE);
+        	   CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? CLIENT_FLAG_HAS_HIDE : 0);
+        	   CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? CLIENT_FLAG_HAS_MAXIMIZE : 0);
+        	 */
+            }
+	}
         /* The following is from Metacity : */
         if(mwm_hints->flags & MWM_HINTS_FUNCTIONS)
         {
