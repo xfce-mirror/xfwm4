@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-07 00:29+0200\n"
+"POT-Creation-Date: 2005-03-03 23:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -265,12 +265,12 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:528
+#: src/client.c:549
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1492
+#: src/events.c:1491
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""

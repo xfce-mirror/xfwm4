@@ -2626,8 +2626,16 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 
     XMoveResizeWindow (dpy, c->frame, frameX (c), frameY (c), 
                             frameWidth (c), frameHeight (c));
-    XMoveResizeWindow (dpy, c->window, frameLeft (c), frameTop (c), 
-                            c->width, c->height);
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    {
+        XMoveResizeWindow (dpy, c->window, frameLeft (c), - c->height,
+                                c->width, c->height);
+    }
+    else
+    {
+        XMoveResizeWindow (dpy, c->window, frameLeft (c), frameTop (c),
+                                c->width, c->height);
+    }
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
@@ -3409,6 +3417,11 @@ clientFrame (Window w, gboolean recapture)
     {
         myWindowCreate (dpy, c->frame, &c->buttons[i], None);
     }
+
+    /* Put the window on top to avoid XShape, that speeds up hw accelerated 
+       GL apps dramatically */
+    XRaiseWindow (dpy, c->window);
+    
     TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name,
         c->window);
     wc.x = c->x;
