@@ -855,6 +855,7 @@ handleMapRequest (XMapRequestEvent * ev)
             return;
         }
         clientShow (c, TRUE);
+        clientFocusNew(c);
     }
     else
     {
@@ -876,6 +877,7 @@ handleMapNotify (XMapEvent * ev)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
         CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAP_PENDING);
+        clientFocusNew(c);
     }
 }
 

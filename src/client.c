@@ -2919,6 +2919,22 @@ clientApplyInitialState (Client * c)
 }
 
 void
+clientFocusNew(Client * c)
+{
+    g_return_if_fail (c != NULL);
+
+    if (!clientAcceptFocus (c))
+    {
+        return;
+    }
+    
+    if (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
+    {
+        clientSetFocus (c, TRUE, FALSE);
+    }
+}
+
+void
 clientClearPixmapCache (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -3230,11 +3246,6 @@ clientFrame (Window w, gboolean recapture)
             if (recapture)
             {
                 clientSortRing(c);
-            }
-            else if (clientAcceptFocus (c) &&
-                (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL)))
-            {
-                clientSetFocus (c, TRUE, FALSE);
             }
         }
     }
