@@ -45,23 +45,30 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
 {
     char *k;
 
+    g_return_if_fail(key != NULL);
+
     TRACE("entering parseKeyString");
     TRACE("key string=%s", str);
 
     key->keycode = 0;
     key->modifier = 0;
 
-    if(!g_ascii_strcasecmp((gchar *) str, "none"))
-        return;
+    g_return_if_fail(str != NULL);
 
+    if(!g_ascii_strcasecmp(str, "none"))
+    {
+        return;
+    }
+    
     k = strrchr(str, '+');
     if(k)
     {
+        /* There is a modifier */
         gchar *tmp;
 
-        tmp = g_ascii_strdown(str, -1);
-
-        key->keycode = XKeysymToKeycode(dpy, XStringToKeysym(k + 1));
+        tmp = g_ascii_strdown((gchar *) str, -1);
+        
+        key->keycode = XKeysymToKeycode(dpy, XStringToKeysym(++k));
         if(strstr(tmp, "shift"))
         {
             key->modifier = key->modifier | ShiftMask;
@@ -86,8 +93,11 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
         {
             key->modifier = key->modifier | SuperMask;
         }
-
         g_free(tmp);
+    }
+    else
+    {
+        key->keycode = XKeysymToKeycode(dpy, XStringToKeysym(str));
     }
 }
 
