@@ -37,6 +37,11 @@ xfwm4_plugin_la_LIBADD =						\
 	@LIBXFCE4MCS_MANAGER_LIBS@					\
 	@LIBS@
 
+if HAVE_CYGWIN
+xfwm4_plugin_la_LIBADD +=						\
+	@LIBX11_LIBS@
+endif
+
 workspaces_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 workspaces_plugin_LTLIBRARIES = workspaces_plugin.la
