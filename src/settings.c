@@ -324,7 +324,7 @@ static void loadMcsData(Settings rc[])
         }
         if(mcs_client_get_setting(client, "Xfwm/WrapResistance", CHANNEL1, &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt("wrap_resistance", setting->data.v_int, rc);
+            setIntValueFromInt("wrap_resistance", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
         if(mcs_client_get_setting(client, "Xfwm/BoxMove", CHANNEL1, &setting) == MCS_SUCCESS)
