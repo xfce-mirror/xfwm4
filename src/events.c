@@ -1021,11 +1021,13 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
-            TRACE ("ignore_unmaps for \"%s\" is  now %i", 
+            TRACE ("ignore_unmaps for \"%s\" is now %i", 
                  c->name, c->ignore_unmap);
         }
         else
         {
+            TRACE ("unmapping \"%s\" as ignore_unmap is %i", 
+                 c->name, c->ignore_unmap);
             clientUnframe (c, FALSE);
         }
     }

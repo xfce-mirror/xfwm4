@@ -1426,6 +1426,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
                 "(unknown)");
     if (attr.map_state != IsUnmapped)
     {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
         XUnmapWindow (display_info->dpy, c->window);
     }
 
@@ -1585,7 +1586,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         if ((c->win_workspace == screen_info->current_ws) || 
             FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
         {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
             clientShow (c, TRUE);
             if (recapture)
             {
@@ -1632,7 +1632,6 @@ clientUnframe (Client * c, gboolean remap)
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
-    XUnmapWindow (display_info->dpy, c->window);
     XUnmapWindow (display_info->dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (display_info->dpy, c->window, NoEventMask);
