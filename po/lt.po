@@ -8,12 +8,12 @@ msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-24 23:50+0200\n"
-"PO-Revision-Date: 2004-06-11 23:09+0300\n"
+"PO-Revision-Date: 2004-10-30 01:46+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
@@ -136,11 +136,11 @@ msgstr "Dešinė"
 
 #: mcs-plugin/xfwm4_plugin.c:566
 msgid "Click and drag buttons to change the layout"
-msgstr ""
+msgstr "Paskauskite ir tempkite norėdami pakeisti išdėstymą"
 
 #: mcs-plugin/xfwm4_plugin.c:571
 msgid "Active"
-msgstr ""
+msgstr "Aktyvus"
 
 #: mcs-plugin/xfwm4_plugin.c:582
 msgid "Title"
@@ -148,7 +148,7 @@ msgstr "Pavadinimas"
 
 #: mcs-plugin/xfwm4_plugin.c:583
 msgid "The window title, it cannot be removed"
-msgstr ""
+msgstr "Lango antraštė, ji negali būti pašalinta"
 
 #: mcs-plugin/xfwm4_plugin.c:591
 msgid "Hidden"
@@ -184,9 +184,8 @@ msgid "Button layout"
 msgstr "Mygtukų išdėstymas"
 
 #: mcs-plugin/xfwm4_plugin.c:1450
-#, fuzzy
 msgid "Style"
-msgstr "Pavadinimas"
+msgstr "Stilius"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
 #, fuzzy
@@ -195,12 +194,11 @@ msgstr "Naujas langas dėmesio centre"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
 msgid "Command"
-msgstr ""
+msgstr "Komanda"
 
 #: mcs-plugin/xfwm4_plugin.c:1501 mcs-plugin/xfwm4_plugin.c:1529
-#, fuzzy
 msgid "Shortcut"
-msgstr "Klaviatūros nuoroda"
+msgstr "Nuoroda"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 #, fuzzy
@@ -208,9 +206,8 @@ msgid "Command shortcuts"
 msgstr "Klaviatūros nuoroda"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
-#, fuzzy
 msgid "Keyboard"
-msgstr "Klaviatūros nuoroda"
+msgstr "Klaviatūra"
 
 #: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Focus model"
@@ -270,9 +267,8 @@ msgstr ""
 "programos lango"
 
 #: mcs-plugin/xfwm4_plugin.c:1636
-#, fuzzy
 msgid "Focus"
-msgstr "Fokusavimo modelis"
+msgstr "Fokusavimas"
 
 #: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Windows snapping"
@@ -340,43 +336,39 @@ msgstr "Išplėstas"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Ar tikrai norite pašalinti šiuos klavišų susiejimus"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Pridėti klavišų susiejimų temą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Įveskite temos vardą:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:145
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Klavišų susiejimo tema tokiu vardu jau egzistuoja"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:151
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Turite nurodyti klavišų susiejimo temos vardą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:328 mcs-plugin/xfwm4_shortcuteditor.c:743
-#, fuzzy
 msgid "Close window"
 msgstr "Paslėpti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:338 mcs-plugin/xfwm4_shortcuteditor.c:751
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "išskleisti langą"
+msgstr "Išskleisti langą vertikaliai"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:343 mcs-plugin/xfwm4_shortcuteditor.c:755
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "išskleisti langą"
+msgstr "Išskleisti langą horizontaliai"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:358 mcs-plugin/xfwm4_shortcuteditor.c:767
-#, fuzzy
 msgid "Stick window"
-msgstr "Paslėpti langą"
+msgstr "Priklijuoti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:363 mcs-plugin/xfwm4_shortcuteditor.c:771
 #, fuzzy
@@ -424,9 +416,8 @@ msgid "Resize window right"
 msgstr "Paslėpti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:408 mcs-plugin/xfwm4_shortcuteditor.c:807
-#, fuzzy
 msgid "Raise window"
-msgstr "Paslėpti langą"
+msgstr "Iškelti langą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:413 mcs-plugin/xfwm4_shortcuteditor.c:811
 #, fuzzy
@@ -469,59 +460,48 @@ msgid "Previous workspace"
 msgstr "Laužyti darbo vietas"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:453 mcs-plugin/xfwm4_shortcuteditor.c:827
-#, fuzzy
 msgid "Add workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Pridėti darbo lauką"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:458 mcs-plugin/xfwm4_shortcuteditor.c:831
-#, fuzzy
 msgid "Delete workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Panaikinti Darbo lauką"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:463 mcs-plugin/xfwm4_shortcuteditor.c:835
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 1"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:468 mcs-plugin/xfwm4_shortcuteditor.c:839
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 2"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:473 mcs-plugin/xfwm4_shortcuteditor.c:843
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 3"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:478 mcs-plugin/xfwm4_shortcuteditor.c:847
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 4"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:483 mcs-plugin/xfwm4_shortcuteditor.c:851
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 5"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:488 mcs-plugin/xfwm4_shortcuteditor.c:855
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 6"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:493 mcs-plugin/xfwm4_shortcuteditor.c:859
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 7"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:498 mcs-plugin/xfwm4_shortcuteditor.c:863
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 8"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:503 mcs-plugin/xfwm4_shortcuteditor.c:867
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 9"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:508 mcs-plugin/xfwm4_shortcuteditor.c:871
 #, fuzzy
@@ -554,53 +534,44 @@ msgid "Move window to right workspace"
 msgstr "Naujas langas dėmesio centre"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:538 mcs-plugin/xfwm4_shortcuteditor.c:879
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 1"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:543 mcs-plugin/xfwm4_shortcuteditor.c:883
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 2"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:548 mcs-plugin/xfwm4_shortcuteditor.c:887
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 3"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:553 mcs-plugin/xfwm4_shortcuteditor.c:891
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 4"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:558 mcs-plugin/xfwm4_shortcuteditor.c:895
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 5"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:563 mcs-plugin/xfwm4_shortcuteditor.c:899
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 6"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:568 mcs-plugin/xfwm4_shortcuteditor.c:903
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 7"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:573 mcs-plugin/xfwm4_shortcuteditor.c:907
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 8"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:578 mcs-plugin/xfwm4_shortcuteditor.c:911
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į darbo lauką 9"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:963
 msgid "Cannot open the theme directory !"
-msgstr ""
+msgstr "Neįmanoma atidaryti temos katalogo !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:982
 #, c-format
@@ -608,6 +579,8 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
+"Neįmanoma atidaryti %s : \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:997
 #: mcs-plugin/xfwm4_shortcuteditor.c:1008
@@ -616,10 +589,12 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Neįmanoma įrašyti į %s : \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1058
 msgid "Select command"
-msgstr ""
+msgstr "Pasirinkite komandą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
@@ -648,16 +623,15 @@ msgstr "Klaviatūros nuoroda"
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Choose command"
-msgstr ""
+msgstr "Pasirinkite komandą"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1396
-#, fuzzy
 msgid "Command :"
-msgstr "Klaviatūros nuoroda"
+msgstr "Komanda"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
+msgstr "Tokios komandos nėra arba byla nėra paleidžiamoji !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
