@@ -1,6 +1,6 @@
 /* XPM */
 static char * stick_active_xpm[] = {
-"16 20 47 1",
+"16 20 48 1",
 " 	c None",
 ".	c #000000",
 "+	c #FFFF50",
@@ -48,6 +48,7 @@ static char * stick_active_xpm[] = {
 "f	c #AF7B00",
 "g	c #7F7F7F s active_shadow_2",
 "h	c #9D9D9D s active_mid_2",
+"i	c #BFBFBF s active_color_2",
 "................",
 "++++++++++++++++",
 "@#$$$$$$$$$$$$@#",
@@ -67,4 +68,4 @@ static char * stick_active_xpm[] = {
 "................",
 "gggggggggggggggg",
 "hhhhhhhhhhhhhhhh",
-"................"};
+"iiiiiiiiiiiiiiii"};

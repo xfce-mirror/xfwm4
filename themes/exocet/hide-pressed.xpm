@@ -1,6 +1,6 @@
 /* XPM */
 static char * hide_pressed_xpm[] = {
-"16 20 46 1",
+"16 20 47 1",
 " 	c None",
 ".	c #000000",
 "+	c #FFFF50",
@@ -47,6 +47,7 @@ static char * hide_pressed_xpm[] = {
 "e	c #AF7B00",
 "f	c #7F7F7F s active_shadow_2",
 "g	c #9D9D9D s active_mid_2",
+"h	c #BFBFBF s active_color_2",
 "................",
 "++++++++++++++++",
 "@@@@@@@@@@@@@@@#",
@@ -66,4 +67,4 @@ static char * hide_pressed_xpm[] = {
 ".bdeeeeeeeeeeee.",
 "f..............f",
 "gffffffffffffffg",
-"................"};
+"hhhhhhhhhhhhhhhh"};
