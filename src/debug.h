@@ -22,7 +22,8 @@
 #include <stdio.h>
 #define DBG(fmt, args...) ({fprintf(stderr, __FILE__ ", line %d: ", __LINE__); fprintf(stderr , fmt , ## args );})
 #else
-#define DBG(fmt, args...) do {} while(0)
+/* #define DBG(fmt, args...) do {} while(0) */
+#define DBG(fmt, args...)
 #endif
 
 #endif /* __DEBUG_H__ */
