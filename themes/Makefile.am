@@ -8,4 +8,5 @@ SUBDIRS =								\
 	default-4.0							\
 	opta								\
 	symphony							\
+	tyrex								\
 	waza

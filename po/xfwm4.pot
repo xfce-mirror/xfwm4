@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-27 01:16+0200\n"
+"POT-Creation-Date: 2004-10-27 23:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -597,7 +597,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1811
+#: src/events.c:1833
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""

@@ -126,5 +126,6 @@ themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/opta/Makefile
 themes/symphony/Makefile
+themes/tyrex/Makefile
 themes/waza/Makefile
 ])
