@@ -60,7 +60,6 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
         ThemeInfo *ti;
 
         gchar *theme_name = NULL;
-        gchar *theme_file = NULL;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2));
 
@@ -69,42 +68,41 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
 
         ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
 
-	if (!ti)
+	if (ti)
 	{
-	    g_warning ("Cannot find the keytheme !");
-	    g_free (theme_name);
-	    return;
+	    gchar *theme_file = NULL;
+
+	    theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
+	    if (unlink (theme_file) != 0)
+	      g_warning ("Unable to remove the theme file !");
+	    g_free (theme_file);
 	}
+	else
+	    g_warning ("Cannot find the keytheme !");
 
-        theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
-        
-        if (unlink (theme_file) == 0)
-        {
-            /* refresh list */
-          while (keybinding_theme_list)
-          {
-              theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
-              keybinding_theme_list = g_list_next (keybinding_theme_list);
-          }
-          g_list_free (keybinding_theme_list);
-        
-          g_free (current_key_theme);
-          current_key_theme = g_strdup ("Default");
-          keybinding_theme_list = NULL;
-          keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                               KEYBINDING_THEMES, current_key_theme);
-          gtk_widget_set_sensitive (itf->treeview3, FALSE);
-          gtk_widget_set_sensitive (itf->treeview4, FALSE);
-          loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
-        
-          /* tell it to the mcs manager */
-          mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
-          mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
-          write_options (itf->mcs_plugin);
-        }
-
+	/* refresh list */
+	while (keybinding_theme_list)
+	{
+	    theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+	    keybinding_theme_list = g_list_next (keybinding_theme_list);
+	}
+	g_list_free (keybinding_theme_list);
+	
+	g_free (current_key_theme);
+	current_key_theme = g_strdup ("Default");
+	keybinding_theme_list = NULL;
+	keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+					     KEYBINDING_THEMES, current_key_theme);
+	gtk_widget_set_sensitive (itf->treeview3, FALSE);
+	gtk_widget_set_sensitive (itf->treeview4, FALSE);
+	loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
+	
+	/* tell it to the mcs manager */
+	mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+	mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
+	write_options (itf->mcs_plugin);
+    
         g_free (theme_name);
-        g_free (theme_file);
     }
 }
 
