@@ -404,6 +404,10 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
             gdk_beep ();
             g_message (_("%s: GtkMenu failed to grab the pointer\n"),
                 g_get_prgname ());
+            gtk_menu_popdown (GTK_MENU (menu->menu));
+            menu_open = NULL;
+            popEventFilter ();
+            return FALSE;
         }
     }
     return TRUE;

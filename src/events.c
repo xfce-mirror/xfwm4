@@ -853,7 +853,11 @@ handleMapRequest (XMapRequestEvent * ev)
             return;
         }
         clientShow (c, TRUE);
-        clientFocusNew(c);
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY) ||
+            (c->win_workspace == workspace))
+        {
+            clientFocusNew(c);
+        }
     }
     else
     {
@@ -1288,6 +1292,13 @@ handlePropertyNotify (XPropertyEvent * ev)
                     c->group_leader = c->wmhints->window_group;
                 }
             }
+        }
+        else if (ev->atom == wm_protocols)
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a wm_protocols notify",
+                c->name, c->window);
+            clientGetWMProtocols (c);
         }
         else if (ev->atom == win_hints)
         {

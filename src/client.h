@@ -247,6 +247,7 @@ void clientGravitate (Client *, int);
 void clientConfigure (Client *, XWindowChanges *, int, unsigned short);
 void clientGetMWMHints (Client *, gboolean);
 void clientGetWMNormalHints (Client *, gboolean);
+void clientGetWMProtocols (Client *);
 void clientFocusNew(Client *);
 void clientClearPixmapCache (Client *);
 void clientFrame (Window, gboolean);

@@ -78,7 +78,10 @@
      !clientIsTransientOrModal(c))
 
 #define CONSTRAINED_WINDOW(c) \
-    ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
+    ((c->win_layer > WIN_LAYER_DESKTOP) && \
+     (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
+     !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
+     !(c->legacy_fullscreen))
 
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
@@ -2762,6 +2765,25 @@ clientGetWMNormalHints (Client * c, gboolean update)
     }
 }
 
+void
+clientGetWMProtocols (Client * c)
+{
+    unsigned int wm_protocols_flags = 0;
+    
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+    
+    TRACE ("entering clientGetWMProtocols client \"%s\" (0x%lx)", c->name,
+        c->window);
+    wm_protocols_flags = getWMProtocols (dpy, c->window);
+    CLIENT_FLAG_SET (c,
+        (wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ?
+        CLIENT_FLAG_WM_DELETE : 0);
+    CLIENT_FLAG_SET (c,
+        (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ?
+        CLIENT_FLAG_WM_TAKEFOCUS : 0);
+}
+
 static inline void
 clientFree (Client * c)
 {
@@ -2927,7 +2949,6 @@ clientFocusNew(Client * c)
     {
         return;
     }
-    
     if (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
     {
         clientSetFocus (c, TRUE, FALSE);
@@ -2957,7 +2978,6 @@ clientFrame (Window w, gboolean recapture)
     XSetWindowAttributes attributes;
     Client *c;
     unsigned long valuemask;
-    unsigned int wm_protocols_flags = 0;
     int i;
 
     g_return_if_fail (w != None);
@@ -2997,7 +3017,6 @@ clientFrame (Window w, gboolean recapture)
     getWindowName (dpy, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
     getTransientFor (dpy, screen, c->window, &c->transient_for);
-    wm_protocols_flags = getWMProtocols (dpy, c->window);
 
     /* Initialize structure */
     c->size = NULL;
@@ -3084,14 +3103,9 @@ clientFrame (Window w, gboolean recapture)
     c->type_atom = None;
 
     CLIENT_FLAG_SET (c, START_ICONIC (c) ? CLIENT_FLAG_HIDDEN : 0);
-    CLIENT_FLAG_SET (c,
-        (wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ?
-        CLIENT_FLAG_WM_DELETE : 0);
     CLIENT_FLAG_SET (c, ACCEPT_INPUT (c->wmhints) ? CLIENT_FLAG_WM_INPUT : 0);
-    CLIENT_FLAG_SET (c,
-        (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ?
-        CLIENT_FLAG_WM_TAKEFOCUS : 0);
 
+    clientGetWMProtocols (c);
     clientGetMWMHints (c, FALSE);
     getHint (dpy, w, win_hints, &c->win_hints);
     getHint (dpy, w, win_state, &c->win_state);
@@ -3124,7 +3138,6 @@ clientFrame (Window w, gboolean recapture)
         (c->type == WINDOW_NORMAL))
     {
         c->legacy_fullscreen = TRUE;
-        c->win_layer = WIN_LAYER_ABOVE_DOCK;
     }
 
     /* Once we know the type of window, we can initialize window position */
@@ -3790,8 +3803,15 @@ clientClose (Client * c)
     TRACE ("entering clientClose");
     TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
 
-    sendClientMessage (c->window, wm_protocols, wm_delete_window,
-        NoEventMask);
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_DELETE))
+    {
+        sendClientMessage (c->window, wm_protocols, wm_delete_window,
+            NoEventMask);
+    }
+    else
+    {
+        clientKill (c);
+    }
 }
 
 void
@@ -4490,6 +4510,25 @@ clientAcceptFocus (Client * c)
     return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT) ? TRUE : FALSE);
 }
 
+static inline void
+clientSortRing(Client *c)
+{
+    g_return_if_fail (c != NULL);
+
+    TRACE ("Sorting...");
+    if (client_count > 2 && c != clients)
+    {
+        c->prev->next = c->next;
+        c->next->prev = c->prev;
+
+        c->prev = clients->prev;
+        c->next = clients;
+        clients->prev->next = c;
+        clients->prev = c;
+    }
+    clients = c;
+}
+
 void
 clientUpdateFocus (Client * c)
 {
@@ -4515,6 +4554,10 @@ clientUpdateFocus (Client * c)
     {
         clientInstallColormaps (c);
         data[0] = c->window;
+        if (c->legacy_fullscreen)
+        {
+            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
+        }
         frameDraw (c, FALSE, FALSE);
     }
     else
@@ -4525,30 +4568,24 @@ clientUpdateFocus (Client * c)
     {
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
             c2->window);
+        /* Requires a bit of explabatio here... LEgacy apps automatically
+           switch to above layer when receiving focus, and return to
+           normal layer when loosing focus.
+           The following "logic" is in charge of that behaviour.
+         */
+        if (c2->legacy_fullscreen)
+        {
+            clientSetLayer (c2, WIN_LAYER_NORMAL);
+            if (c)
+            {
+                clientRaise(c);
+            }
+        }
         frameDraw (c2, FALSE, FALSE);
     }
     data[1] = None;
     XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,
         PropModeReplace, (unsigned char *) data, 2);
-}
-
-static inline void
-clientSortRing(Client *c)
-{
-    g_return_if_fail (c != NULL);
-
-    TRACE ("Sorting...");
-    if (client_count > 2 && c != clients)
-    {
-        c->prev->next = c->next;
-        c->next->prev = c->prev;
-
-        c->prev = clients->prev;
-        c->next = clients;
-        clients->prev->next = c;
-        clients->prev = c;
-    }
-    clients = c;
 }
 
 void
@@ -4584,7 +4621,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
                 ("client \"%s\" (0x%lx) is already focused, ignoring request",
                 c->name, c->window);
             return;
-        }
+        }        
         client_focus = c;
         clientInstallColormaps (c);
         if (sort)
@@ -4592,6 +4629,10 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        if (c->legacy_fullscreen)
+        {
+            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
+        }
         frameDraw (c, FALSE, FALSE);
         data[0] = c->window;
     }
@@ -4604,6 +4645,15 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     }
     if (c2)
     {
+        /* Legacy apps layer switching. See comment in clientUpdateFocus () */
+        if (c2->legacy_fullscreen)
+        {
+            clientSetLayer (c2, WIN_LAYER_NORMAL);
+            if (c)
+            {
+                clientRaise(c);
+            }
+        }
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
             c2->window);
         frameDraw (c2, FALSE, FALSE);
