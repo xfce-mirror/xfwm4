@@ -1852,10 +1852,10 @@ compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
     }
     
     /* 
-       We are only interested on override redirect windows, other will
+       We are only interested in top level windows, other will
        be caught by the WM.
      */
-    if (ev->override_redirect)
+    if (myDisplayGetScreenFromRoot(display_info, ev->parent) != NULL)
     {
         compositorAddWindow (display_info, ev->window, NULL);
     }
@@ -1957,7 +1957,14 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
-        cw->c = c;
+        /* 
+           The compositor window is already know, just update the client if
+           that is meaningfull
+         */
+        if (c)
+        {
+            cw->c = c;
+        }
     }
     else
     {
