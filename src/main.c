@@ -445,6 +445,7 @@ main (int argc, char **argv)
             exit (1);
             break;
     }
+    cleanUp ();
     DBG ("xfwm4 terminated");
     return 0;
 }
