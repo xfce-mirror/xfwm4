@@ -66,6 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/cruxish
 %{_datadir}/xfwm4/themes/eazel-blue
 %{_datadir}/xfwm4/themes/g2
+%{_datadir}/xfwm4/themes/gnububble
 %{_datadir}/xfwm4/themes/gorilla
 %{_datadir}/xfwm4/themes/gtk
 %{_datadir}/xfwm4/themes/iceg

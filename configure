@@ -4892,7 +4892,7 @@ echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gt
   fi
 
 
-ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/adept/Makefile themes/agua/Makefile themes/b5/Makefile themes/b6/Makefile themes/bbs/Makefile themes/coldsteel/Makefile themes/coolclean/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/curve/Makefile themes/default.keys/Makefile themes/eazel-blue/Makefile themes/exocet/Makefile themes/g2/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/iceg/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/microgui/Makefile themes/mofit/Makefile themes/next/Makefile themes/ops/Makefile themes/oroborus/Makefile themes/pills/Makefile themes/piranha/Makefile themes/platinum/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/slick/Makefile themes/slimline/Makefile themes/tabs/Makefile themes/trench/Makefile themes/xfce/Makefile"
+ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/adept/Makefile themes/agua/Makefile themes/b5/Makefile themes/b6/Makefile themes/bbs/Makefile themes/coldsteel/Makefile themes/coolclean/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/curve/Makefile themes/default.keys/Makefile themes/eazel-blue/Makefile themes/exocet/Makefile themes/g2/Makefile themes/gnububble/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/iceg/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/microgui/Makefile themes/mofit/Makefile themes/next/Makefile themes/ops/Makefile themes/oroborus/Makefile themes/pills/Makefile themes/piranha/Makefile themes/platinum/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/slick/Makefile themes/slimline/Makefile themes/tabs/Makefile themes/trench/Makefile themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -5400,6 +5400,7 @@ do
   "themes/eazel-blue/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/eazel-blue/Makefile" ;;
   "themes/exocet/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/exocet/Makefile" ;;
   "themes/g2/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/g2/Makefile" ;;
+  "themes/gnububble/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gnububble/Makefile" ;;
   "themes/gorilla/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gorilla/Makefile" ;;
   "themes/gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/gtk/Makefile" ;;
   "themes/iceg/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/iceg/Makefile" ;;

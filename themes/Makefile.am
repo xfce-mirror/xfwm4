@@ -13,6 +13,7 @@ default.keys \
 eazel-blue \
 exocet \
 g2 \
+gnububble \
 gorilla \
 gtk \
 iceg \
