@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-08-26 08:17+0200\n"
+"POT-Creation-Date: 2003-09-10 08:33+0200\n"
 "PO-Revision-Date: 2003-08-02 03:36+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,7 +271,7 @@ msgstr "고급 설정"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1386
+#: src/events.c:1442
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""

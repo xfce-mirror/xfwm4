@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-08-26 08:17+0200\n"
+"POT-Creation-Date: 2003-09-10 08:33+0200\n"
 "PO-Revision-Date: 2003-09-03 22:20+0300\n"
 "Last-Translator: Dan Korostelev <daniel@ats.energo.ru>\n"
 "Language-Team: Russian <daniel@ats.energo.ru>\n"
@@ -14,8 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133
-#: mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Поля рабочего места"
@@ -25,7 +24,8 @@ msgid "Adjust workspace margins"
 msgstr "Изменение отступов"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Поля - границы разворачивания окна"
 
 #: mcs-plugin/margins_plugin.c:281
@@ -108,8 +108,7 @@ msgstr "Скрыта"
 msgid "Font Selection Dialog"
 msgstr "Выбор шрифта"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
-#: mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Менеджер окон"
 
@@ -216,13 +215,11 @@ msgstr "Прилипание окон к другим окнам"
 msgid "Distance :"
 msgstr "Расстояние:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Маленькое"
 
-#: mcs-plugin/xfwm4_plugin.c:1577
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Большое"
 
@@ -271,7 +268,7 @@ msgstr "Дополнительно"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Не обрабатываемое net_wm_state (окно 0x%lx)"
 
-#: src/events.c:1386
+#: src/events.c:1442
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операция не поддерживается (пока)\n"
@@ -390,7 +387,8 @@ msgstr "%s: Ошибка обработки неактивного цвета %s
 #: src/settings.c:755
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: указанная тема клавиш \"%s\" отсутствует, используется тема по умолчанию"
+msgstr ""
+"%s: указанная тема клавиш \"%s\" отсутствует, используется тема по умолчанию"
 
 #: src/settings.c:765
 #, c-format
@@ -400,9 +398,9 @@ msgstr "%s: Отсутствуют значения в файле умолчан
 #: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: Не возможно установить число рабочих мест, используя значение rc: %i"
+msgstr ""
+"%s: Не возможно установить число рабочих мест, используя значение rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Переключиться на ..."
-
