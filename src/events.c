@@ -903,11 +903,8 @@ static inline void handleLeaveNotify(XCrossingEvent * ev)
 
     if ((ev->window == root) && (ev->mode == NotifyNormal) && (ev->detail != NotifyInferior))
     {
-        if(params.raise_on_focus && !params.click_to_focus)
-        {
-            reset_timeout();
-        }
-        clientSetFocus(NULL, FALSE);
+        /* Clear timeout */
+        clear_timeout();
     }
 }
 
@@ -920,12 +917,6 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
     {
         /* We're not interested in such notifications */
-        return;
-    }
-
-    if(ev->window == gnome_win)
-    {
-        /* Don't get fooled by our own gtk window ! */
         return;
     }
 
@@ -944,7 +935,24 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 
 static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
-    /*TRACE("entering handleFocusOut - Window (0x%lx)", w);*/
+    Client *c;
+    TRACE("entering handleFocusOut");
+
+    if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail != NotifyNonlinear))
+    {
+        /* We're not interested in such notifications */
+        return;
+    }
+
+    c = clientGetFromWindow(ev->window, WINDOW);
+    TRACE("focused out window is (0x%lx)", ev->window);
+    if(c && (c == clientGetFocus())) 
+    {
+        TRACE("focus lost from \"%s\" (0x%lx)", c->name, c->window);
+        clientUpdateFocus(NULL);
+        /* Clear timeout */
+        clear_timeout();
+    }
 }
 
 static inline void handlePropertyNotify(XPropertyEvent * ev)
