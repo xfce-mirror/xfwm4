@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 18:06+0200\n"
+"POT-Creation-Date: 2004-12-10 06:26+0100\n"
 "PO-Revision-Date: 2004-12-03 18:06+0200\n"
 "Last-Translator: Translate.org.za <info@translate.org.za>\n"
 "Language-Team: \n"
@@ -648,27 +648,27 @@ msgstr "Workspace %i (%s)"
 msgid "Workspace %i"
 msgstr "Workspace %i"
 
-#: src/menu.c:422
+#: src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
-#: src/settings.c:702
+#: src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Cannot allocate active colour %s\n"
 
-#: src/settings.c:708
+#: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Cannot parse active colour %s\n"
 
-#: src/settings.c:751
+#: src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Cannot allocate inactive colour %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive colour %s\n"
@@ -680,4 +680,3 @@ msgstr "Switch to..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Unknown application!"
-

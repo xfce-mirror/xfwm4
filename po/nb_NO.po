@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-02 23:33+0100\n"
+"POT-Creation-Date: 2004-12-10 06:26+0100\n"
 "PO-Revision-Date: 2004-12-04 00:57+0100\n"
 "Last-Translator: Eskild Hustvedt <eskild@goldenfiles.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,11 @@ msgstr "Skrivebord marginer"
 
 #: mcs-plugin/margins.c:137
 #, fuzzy
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli plassert"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli "
+"plassert"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -41,16 +44,13 @@ msgstr "Topp:"
 msgid "Bottom :"
 msgstr "Bunn:"
 
-#: mcs-plugin/plugin.c:109
-#: mcs-plugin/plugin.c:152
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Skrivebord og Marginer"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135
-#: mcs-plugin/plugin.c:166
-#: mcs-plugin/workspaces.c:544
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
 msgid "Workspaces"
 msgstr "Skrivebord"
 
@@ -63,16 +63,11 @@ msgstr "Marginer"
 msgid "Change name"
 msgstr "Endre navn"
 
-#: mcs-plugin/workspaces.c:355
-#: mcs-plugin/xfwm4_shortcuteditor.c:482
-#: mcs-plugin/xfwm4_shortcuteditor.c:491
-#: mcs-plugin/xfwm4_shortcuteditor.c:500
-#: mcs-plugin/xfwm4_shortcuteditor.c:509
-#: mcs-plugin/xfwm4_shortcuteditor.c:518
-#: mcs-plugin/xfwm4_shortcuteditor.c:527
-#: mcs-plugin/xfwm4_shortcuteditor.c:536
-#: mcs-plugin/xfwm4_shortcuteditor.c:545
-#: mcs-plugin/xfwm4_shortcuteditor.c:554
+#: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:482
+#: mcs-plugin/xfwm4_shortcuteditor.c:491 mcs-plugin/xfwm4_shortcuteditor.c:500
+#: mcs-plugin/xfwm4_shortcuteditor.c:509 mcs-plugin/xfwm4_shortcuteditor.c:518
+#: mcs-plugin/xfwm4_shortcuteditor.c:527 mcs-plugin/xfwm4_shortcuteditor.c:536
+#: mcs-plugin/xfwm4_shortcuteditor.c:545 mcs-plugin/xfwm4_shortcuteditor.c:554
 #, c-format
 msgid "Workspace %d"
 msgstr "Skrivebord %d"
@@ -118,18 +113,15 @@ msgstr "Maksimer"
 msgid "Close"
 msgstr "Lukk"
 
-#: mcs-plugin/xfwm4_plugin.c:86
-#: mcs-plugin/xfwm4_shortcuteditor.c:371
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
 msgstr "Fold sammen vindu"
 
-#: mcs-plugin/xfwm4_plugin.c:87
-#: mcs-plugin/xfwm4_shortcuteditor.c:366
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Hide window"
 msgstr "Skjul vindu"
 
-#: mcs-plugin/xfwm4_plugin.c:88
-#: mcs-plugin/xfwm4_shortcuteditor.c:351
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Maximize window"
 msgstr "Maksimer vindu"
 
@@ -175,8 +167,7 @@ msgstr "Skjult"
 msgid "Font Selection Dialog"
 msgstr "Skrifttypevalgsdialog"
 
-#: mcs-plugin/xfwm4_plugin.c:1384
-#: mcs-plugin/xfwm4_plugin.c:1903
+#: mcs-plugin/xfwm4_plugin.c:1384 mcs-plugin/xfwm4_plugin.c:1903
 msgid "Window Manager"
 msgstr "Vindushåndterer"
 
@@ -212,13 +203,11 @@ msgstr "Stil"
 msgid "Window shortcuts"
 msgstr "Vindussnarvei"
 
-#: mcs-plugin/xfwm4_plugin.c:1511
-#: mcs-plugin/xfwm4_plugin.c:1544
+#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1544
 msgid "Command"
 msgstr "Kommando"
 
-#: mcs-plugin/xfwm4_plugin.c:1516
-#: mcs-plugin/xfwm4_plugin.c:1548
+#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1548
 msgid "Shortcut"
 msgstr "Snarvei"
 
@@ -299,13 +288,11 @@ msgstr ""
 msgid "Distance :"
 msgstr "Avstand:"
 
-#: mcs-plugin/xfwm4_plugin.c:1699
-#: mcs-plugin/xfwm4_plugin.c:1749
+#: mcs-plugin/xfwm4_plugin.c:1699 mcs-plugin/xfwm4_plugin.c:1749
 msgid "Small"
 msgstr "Liten"
 
-#: mcs-plugin/xfwm4_plugin.c:1705
-#: mcs-plugin/xfwm4_plugin.c:1755
+#: mcs-plugin/xfwm4_plugin.c:1705 mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wide"
 msgstr "Vid"
 
@@ -354,8 +341,7 @@ msgstr "Avansert"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "VIl du virkelig fjerne dette hurtigtasttemaet?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:121
-#: mcs-plugin/xfwm4_shortcuteditor.c:127
+#: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
 msgstr "Legg til hurtigtasttema"
 
@@ -542,8 +528,7 @@ msgstr ""
 "Kan ikke åpne %s : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:873
-#: mcs-plugin/xfwm4_shortcuteditor.c:884
+#: mcs-plugin/xfwm4_shortcuteditor.c:873 mcs-plugin/xfwm4_shortcuteditor.c:884
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -642,8 +627,7 @@ msgstr ""
 msgid "Context _help"
 msgstr "Sammenheng _hjelp"
 
-#: src/menu.c:49
-#: src/menu.c:50
+#: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
 msgstr "Alltid øverst"
 
@@ -677,27 +661,27 @@ msgstr "Skrivebord %i (%s)"
 msgid "Workspace %i"
 msgstr "Skrivebord %i"
 
-#: src/menu.c:422
+#: src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"
 
-#: src/settings.c:702
+#: src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan ikke tildele aktiv farge %s\n"
 
-#: src/settings.c:708
+#: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan ikke parse aktiv farge %s\n"
 
-#: src/settings.c:751
+#: src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan ikke tildele inaktiv farge %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan ikke parse inaktiv farge %s\n"
@@ -709,4 +693,3 @@ msgstr "Bytt til ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Ukjent program!"
-
