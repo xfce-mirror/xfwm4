@@ -18,8 +18,8 @@
 
  */
 
-#ifndef __KEYBOARD_H
-#define __KEYBOARD_H
+#ifndef INC_KEYBOARD_H
+#define INC_KEYBOARD_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -50,4 +50,4 @@ void grabKey(Display *, MyKey *, Window);
 void ungrabKeys(Display *, Window);
 void initModifiers(Display *);
 
-#endif /* __KEYBOARD_H */
+#endif /* INC_KEYBOARD_H */

@@ -18,8 +18,8 @@
 
  */
 
-#ifndef __FRAME_H__
-#define __FRAME_H__
+#ifndef INC_FRAME_H__
+#define INC_FRAME_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -37,4 +37,4 @@ inline int frameWidth(Client *);
 inline int frameHeight(Client *);
 void frameDraw(Client *, gboolean, gboolean);
 
-#endif /* __FRAME_H__ */
+#endif /* INC_FRAME_H__ */

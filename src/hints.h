@@ -19,8 +19,8 @@
 
  */
 
-#ifndef __HINTS_H__
-#define __HINTS_H__
+#ifndef INC_HINTS_H__
+#define INC_HINTS_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -209,4 +209,4 @@ gboolean getWindowStartupId(Display *, Window, char **);
 #define setNetHint setGnomeHint
 #define getNetHint getGnomeHint
 
-#endif /* __HINTS_H__ */
+#endif /* INC_HINTS_H__ */

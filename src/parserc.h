@@ -18,8 +18,8 @@
 
  */
 
-#ifndef __PARSERC_H__
-#define __PARSERC_H__
+#ifndef INC_PARSERC_H__
+#define INC_PARSERC_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -37,4 +37,4 @@ gboolean setIntValueFromInt(const gchar *, int, Settings rc[]);
 gchar *getThemeDir(const gchar *);
 void freeRc(Settings rc[]);
 
-#endif /* __PARSERC_H__ */
+#endif /* INC_PARSERC_H__ */

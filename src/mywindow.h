@@ -18,8 +18,8 @@
 
  */
 
-#ifndef __MYWINDOW_H__
-#define __MYWINDOW_H__
+#ifndef INC_MYWINDOW_H__
+#define INC_MYWINDOW_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -45,4 +45,4 @@ void myWindowDelete(myWindow *);
 void myWindowShow(myWindow *, int, int, int, int, gboolean);
 void myWindowHide(myWindow *);
 
-#endif /* __MYWINDOW_H__ */
+#endif /* INC_MYWINDOW_H__ */

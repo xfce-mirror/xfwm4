@@ -18,8 +18,8 @@
 
  */
 
-#ifndef __CLIENT_H__
-#define __CLIENT_H__
+#ifndef INC_CLIENT_H__
+#define INC_CLIENT_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -260,4 +260,4 @@ Client *clientGetLeader(Client *);
 char *clientGetStartupId(Client *);
 #endif
 
-#endif /* __CLIENT_H__ */
+#endif /* INC_CLIENT_H__ */

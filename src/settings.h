@@ -18,8 +18,8 @@
 
  */
 
-#ifndef __SETTINGS_H__
-#define __SETTINGS_H__
+#ifndef INC_SETTINGS_H__
+#define INC_SETTINGS_H__
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -177,4 +177,4 @@ void unloadSettings(void);
 gboolean reloadSettings(int);
 gboolean initSettings(void);
 
-#endif /* __SETTINGS_H__ */
+#endif /* INC_SETTINGS_H__ */

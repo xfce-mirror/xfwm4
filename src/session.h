@@ -16,8 +16,8 @@
 
  */
 
-#ifndef __SESSION_H__
-#define __SESSION_H__
+#ifndef INC_SESSION_H__
+#define INC_SESSION_H__
 
 #include <glib.h>
 #include "client.h"
@@ -43,4 +43,4 @@ void sessionFreeWindowStates(void);
 */
 gboolean sessionMatchWinToSM(Client *);
 
-#endif /* __CLIENT_H__ */
+#endif /* INC_CLIENT_H__ */
