@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-01 19:10+0200\n"
 "PO-Revision-Date: 2003-05-27 22:53--200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team:  <>\n"
@@ -9,8 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:127
-#: mcs-plugin/margins_plugin.c:231
+#: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
 #: mcs-plugin/margins_plugin.c:250
 msgid "Workspace Margins"
 msgstr "Työpöydän marginaalit"
@@ -20,7 +20,8 @@ msgid "Adjust workspace margins"
 msgstr "Muuta työpöydän marginaaleja"
 
 #: mcs-plugin/margins_plugin.c:237
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marginaalit ovat näytön reunalla oleva alue jolle ikkunoita ei aseteta"
 
 #: mcs-plugin/margins_plugin.c:278
@@ -103,8 +104,7 @@ msgstr "Piilotettu"
 msgid "Font Selection Dialog"
 msgstr "Fontin valinta"
 
-#: mcs-plugin/xfwm4_plugin.c:1303
-#: mcs-plugin/xfwm4_plugin.c:1945
+#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1945
 msgid "Window Manager"
 msgstr "Ikkunamanageri"
 
@@ -157,9 +157,11 @@ msgid "Focus model"
 msgstr "Kohdistustapa"
 
 #: mcs-plugin/xfwm4_plugin.c:1506
-msgid "Automatically give focus to \n"
+msgid ""
+"Automatically give focus to \n"
 "newly created windows"
-msgstr "Automaattisesti kohdenna\n"
+msgstr ""
+"Automaattisesti kohdenna\n"
 "uusiin ikkunoihin"
 
 #: mcs-plugin/xfwm4_plugin.c:1514
@@ -167,9 +169,11 @@ msgid "New window focus"
 msgstr "Uuden ikkunan kohdistus"
 
 #: mcs-plugin/xfwm4_plugin.c:1529
-msgid "Automatically raise windows \n"
+msgid ""
+"Automatically raise windows \n"
 "when they receive focus"
-msgstr "Automaattisesti nosta ikkuna \n"
+msgstr ""
+"Automaattisesti nosta ikkuna \n"
 "kun se kohdistetaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1542
@@ -189,9 +193,11 @@ msgid "Raise on focus"
 msgstr "Nosta kohdennuksessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1592
-msgid "Raise window when clicking inside\n"
+msgid ""
+"Raise window when clicking inside\n"
 "application window"
-msgstr "Nosta ikkuna kun painetaan\n"
+msgstr ""
+"Nosta ikkuna kun painetaan\n"
 "sovellusikkunan sisällä"
 
 #: mcs-plugin/xfwm4_plugin.c:1601
@@ -214,13 +220,11 @@ msgstr "Liitä ikkunat toisiinsa"
 msgid "Distance :"
 msgstr "Etäisyys :"
 
-#: mcs-plugin/xfwm4_plugin.c:1659
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1659 mcs-plugin/xfwm4_plugin.c:1734
 msgid "Small"
 msgstr "Pieni"
 
-#: mcs-plugin/xfwm4_plugin.c:1667
-#: mcs-plugin/xfwm4_plugin.c:1742
+#: mcs-plugin/xfwm4_plugin.c:1667 mcs-plugin/xfwm4_plugin.c:1742
 msgid "Wide"
 msgstr "Leveä"
 
@@ -407,4 +411,3 @@ msgstr "%s: Työpöytien lukumäärää ei ole asetettu, käytetään oletusarvo
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Vaihda ..."
-
