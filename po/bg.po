@@ -1,406 +1,415 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Bulgarian translation of PACKAGE.
+# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Miroslav Yordanov <miordanov@i-space.org>, 2004.
+# , fuzzy
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-14 22:25+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2004-01-10 21:59+0100\n"
+"PO-Revision-Date: 2004-03-09 19:04+0200\n"
+"Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
-msgstr ""
+msgstr "Граница на работно място"
 
 #: mcs-plugin/margins_plugin.c:217
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "Настройване на границите на работното място"
 
 #: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
+"Границите са пространства по краищата на екрана където няма да бъде поставян прозорец"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
-msgstr ""
+msgstr "Ляво :"
 
 #: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
-msgstr ""
+msgstr "Дясно :"
 
 #: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
-msgstr ""
+msgstr "Горе :"
 
 #: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
-msgstr ""
+msgstr "Долу :"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
-msgstr ""
+msgstr "Заглавие"
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Menu"
-msgstr ""
+msgstr "Меню"
 
 #: mcs-plugin/xfwm4_plugin.c:118
 msgid "Stick"
-msgstr ""
+msgstr "Забодено"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Shade"
-msgstr ""
+msgstr "Сянка"
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Hide"
-msgstr ""
+msgstr "Скрива"
 
 #: mcs-plugin/xfwm4_plugin.c:121
 msgid "Maximize"
-msgstr ""
+msgstr "Максимизира"
 
 #: mcs-plugin/xfwm4_plugin.c:122
 msgid "Close"
-msgstr ""
+msgstr "Затваряне"
 
 #: mcs-plugin/xfwm4_plugin.c:126
 msgid "Shade window"
-msgstr ""
+msgstr "Засенчва прозореца"
 
 #: mcs-plugin/xfwm4_plugin.c:127
 msgid "Hide window"
-msgstr ""
+msgstr "Скрива прозореца"
 
 #: mcs-plugin/xfwm4_plugin.c:128
 msgid "Maximize window"
-msgstr ""
+msgstr "Максимизира прозореца"
 
 #: mcs-plugin/xfwm4_plugin.c:129
 msgid "Nothing"
-msgstr ""
+msgstr "Нищо"
 
 #: mcs-plugin/xfwm4_plugin.c:134
 msgid "Left"
-msgstr ""
+msgstr "Ляво"
 
 #: mcs-plugin/xfwm4_plugin.c:135
 msgid "Center"
-msgstr ""
+msgstr "Център"
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Right"
-msgstr ""
+msgstr "Дясно"
 
 #: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
-msgstr ""
+msgstr "Скрит"
 
 #: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
-msgstr ""
+msgstr "Диалог за избиране на шрифт"
 
 #: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
-msgstr ""
+msgstr "Мениджър на прозорци"
 
 #: mcs-plugin/xfwm4_plugin.c:1288
 msgid "Window Manager Preferences"
-msgstr ""
+msgstr "Настройки на мениджъра·на·прозорци"
 
 #: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
-msgstr ""
+msgstr "Шрифт на заглавието"
 
 #: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
-msgstr ""
+msgstr "Подравнение на заглавието"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
-msgstr ""
+msgstr "Подравнява текста в заглавната лента :"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
-msgstr ""
+msgstr "Разположение на бутоните"
 
 #: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
-msgstr ""
+msgstr "Стил на декорацията"
 
 #: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
-msgstr ""
+msgstr "Клавишни комбинации"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
-msgstr ""
+msgstr "Тип на фокуса"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
-msgstr ""
+msgstr "Натискане за фокус"
 
 #: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
-msgstr ""
+msgstr "Фокуса следва мишката"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
-msgstr ""
+msgstr "Новите прозорци се фокусират"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
+"Автоматично се фокусират\n"
+"новосъздадените прозорци"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
-msgstr ""
+msgstr "Повдига при фокусиране"
 
 #: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
+"Автоматично повдига прозорците·\n"
+"когато се фокусират"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
-msgstr ""
+msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
 
 #: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
-msgstr ""
+msgstr "Бавно"
 
 #: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Fast"
-msgstr ""
+msgstr "Бързо"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
-msgstr ""
+msgstr "Повдигане при натискане"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr ""
+"Повдига прозореца когато се натисне\n"
+"в прозореца на приложението"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
-msgstr ""
+msgstr "Клавиатура и фокус"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
-msgstr ""
+msgstr "Прилепване на прозорците"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
-msgstr ""
+msgstr "Прилепва прозорците по границата на екрана"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
-msgstr ""
+msgstr "Прилеплва прозорците до другите прозорци"
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
-msgstr ""
+msgstr "Разстояние :"
 
 #: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
-msgstr ""
+msgstr "Малко"
 
 #: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
-msgstr ""
+msgstr "Голямо"
 
 #: mcs-plugin/xfwm4_plugin.c:1600
 msgid "Wrap workspaces"
-msgstr ""
+msgstr "Превключване на работните места"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
+msgstr "Превключва работните места когато курсора достигне края на екрана"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
+msgstr "Превклюва работните места когато се изтегля прозорец извън екрана"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
-msgstr ""
+msgstr "Съпротивление по краищата :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr ""
+msgstr "Непрозрачно местене и промяна на размера"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
-msgstr ""
+msgstr "Показва съдържанието на прозорците при промяна на размера"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
-msgstr ""
+msgstr "Показва·съдържанието·на·прозорците·при местене"
 
 #: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
-msgstr ""
+msgstr "Действие при двойно натискане"
 
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
-msgstr ""
+msgstr "Действие което да се извърши при двойно натискане на заглавната лента"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr ""
+msgstr "Допълнителни"
 
-#: src/client.c:510
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1549
+#: src/events.c:1495
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
 
-#: src/main.c:229
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:406
+#: src/main.c:401
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:411
+#: src/main.c:406
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:438
+#: src/main.c:433
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
 
 #: src/menu.c:42
 msgid "Ma_ximize"
-msgstr ""
+msgstr "Максимизира"
 
 #: src/menu.c:43
 msgid "Un_maximize"
-msgstr ""
+msgstr "Смалява"
 
 #: src/menu.c:44
 msgid "_Hide"
-msgstr ""
+msgstr "Скрива"
 
 #: src/menu.c:45
 msgid "Hide _all others"
-msgstr ""
+msgstr "Скрива всички останали"
 
 #: src/menu.c:46
 msgid "S_how"
-msgstr ""
+msgstr "Показва"
 
 #: src/menu.c:47
 msgid "_Shade"
-msgstr ""
+msgstr "Сгъване"
 
 #: src/menu.c:48
 msgid "Un_shade"
-msgstr ""
+msgstr "Разгъва"
 
 #: src/menu.c:49
 msgid "S_tick"
-msgstr ""
+msgstr "Забожда"
 
 #: src/menu.c:50
 msgid "Uns_tick"
-msgstr ""
+msgstr "Отбожда"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr ""
+msgstr "Изпраща на..."
 
 #: src/menu.c:53
 msgid "_Close"
-msgstr ""
+msgstr "Затваря"
 
 #: src/menu.c:56
 msgid "Destroy"
-msgstr ""
+msgstr "Унищожава"
 
 #: src/menu.c:59
 msgid "_Quit"
-msgstr ""
+msgstr "Край"
 
 #: src/menu.c:60
 msgid "Restart"
-msgstr ""
+msgstr "Рестартиране"
 
 #: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
-msgstr ""
+msgstr "Работно място %i"
 
 #: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: src/settings.c:289
+#: src/settings.c:288
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr ""
 
-#: src/settings.c:516
+#: src/settings.c:520
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:523
+#: src/settings.c:527
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:567
+#: src/settings.c:571
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:574
+#: src/settings.c:578
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:761
+#: src/settings.c:765
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:771
+#: src/settings.c:775
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1118
+#: src/settings.c:1122
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr ""
+msgstr "Превключва на ..."
+
