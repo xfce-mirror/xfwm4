@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
 "PO-Revision-Date: 2003-11-23 06:01-0000\n"
 "Last-Translator: Artjom Simon <hoek@linuxartist.org>\n"
 "Language-Team: none <none@none>\n"
@@ -14,35 +14,75 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133
-#: mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
+#: mcs-plugin/margins.c:124
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt "
+"werden"
+
+#: mcs-plugin/margins.c:131
 msgid "Workspace Margins"
 msgstr "Desktopränder"
 
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "Desktopränder verändern"
-
-#: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt werden"
-
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:159
 msgid "Left :"
 msgstr "Links:"
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 msgid "Right :"
 msgstr "Rechts:"
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
 msgstr "Oben:"
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
 msgstr "Unten:"
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "Desktopränder"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "Virtueller Desktop %i"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "Virtueller Desktop %i"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "Virtuellen Desktop wechseln..."
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "Desktopränder"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -108,8 +148,7 @@ msgstr "Nicht anzeigen"
 msgid "Font Selection Dialog"
 msgstr "Schrift wählen"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
-#: mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Fenstermanager"
 
@@ -125,6 +164,7 @@ msgstr "Titelleistenschrift"
 msgid "Title Alignment"
 msgstr "Titelleistenausrichtung"
 
+#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
 msgstr "Textausrichtung in der Titelleiste:"
@@ -215,13 +255,11 @@ msgstr "Fenster an anderen Fensterrändern einschnappen lassen"
 msgid "Distance :"
 msgstr "Distanz:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Klein"
 
-#: mcs-plugin/xfwm4_plugin.c:1577
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Groß"
 
@@ -265,12 +303,12 @@ msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
 msgid "Advanced"
 msgstr "Weitere Optionen"
 
-#: src/client.c:496
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kein net_wm_state (Fenster %#lx)"
 
-#: src/events.c:1453
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation (noch) nicht unterstuetzt\n"
@@ -290,7 +328,17 @@ msgstr "%s: Es läuft bereits ein anderer Fenstermanager"
 msgid "%s: Missing data from default files"
 msgstr "%s: Einstellungen aus den Defaults fehlen"
 
-#: src/main.c:431
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr ""
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr ""
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ein unbekannter Fehler ist aufgetreten"
@@ -331,77 +379,85 @@ msgstr "Fest_kleben"
 msgid "Uns_tick"
 msgstr "_Lösen"
 
-#: src/menu.c:51
+#: src/menu.c:51 src/menu.c:52
+msgid "Always on top"
+msgstr ""
+
+#: src/menu.c:53
 msgid "Send to..."
 msgstr "Wechseln zu ..."
 
-#: src/menu.c:53
+#: src/menu.c:55
 msgid "_Close"
 msgstr "_Schließen"
 
-#: src/menu.c:56
+#: src/menu.c:58
 msgid "Destroy"
 msgstr "Zerstören"
 
-#: src/menu.c:59
+#: src/menu.c:61
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: src/menu.c:60
+#: src/menu.c:62
 msgid "Restart"
 msgstr "Neu starten"
 
-#: src/menu.c:163
+#: src/menu.c:165
 #, c-format
 msgid "Workspace %i"
 msgstr "Virtueller Desktop %i"
 
-#: src/menu.c:405
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenue konnte die Position des Mauszeigers nicht feststellen\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kann aktive Farbe nicht setzen %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kann aktive Farbe nicht einlesen %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht einlesen %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: Theme \"%s\" nicht gefunden. Es wird das Standard-Theme verwendet."
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: Anzahl der virtuellen Desktops nicht eingestellt. Es wird die Standardeinstellung verwendet: %i"
+msgstr ""
+"%s: Anzahl der virtuellen Desktops nicht eingestellt. Es wird die "
+"Standardeinstellung verwendet: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wechseln zu ..."
 
+#~ msgid "Adjust workspace margins"
+#~ msgstr "Desktopränder verändern"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
 "PO-Revision-Date: 2003-08-05 13:01+0100\n"
 "Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -14,36 +14,74 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
-msgid "Workspace Margins"
-msgstr "Marges de l'àrea de treball"
-
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "Ajusta els marges de l'àrea de treball"
-
-#: mcs-plugin/margins_plugin.c:241
+#: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Els marges són àrees a les vores de la pantalla on cap finestra es col·locarà"
 
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:131
+msgid "Workspace Margins"
+msgstr "Marges de l'àrea de treball"
+
+#: mcs-plugin/margins.c:159
 msgid "Left :"
 msgstr "Esquerre:"
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 msgid "Right :"
 msgstr "Dret:"
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
 msgstr "Superior:"
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
 msgstr "Inferior:"
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "Marges de l'àrea de treball"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "À_rea de treball %i"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "À_rea de treball %i"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "Ajustar les àrees de treball"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "Marges de l'àrea de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -273,12 +311,12 @@ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 msgid "Advanced"
 msgstr "Avançat"
 
-#: src/client.c:496
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
-#: src/events.c:1453
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operació encara no suportada\n"
@@ -298,7 +336,17 @@ msgstr "%s: Un altre gestor de finestres s'està executant"
 msgid "%s: Missing data from default files"
 msgstr "%s: Falten dades dels fitxers per defecte"
 
-#: src/main.c:431
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr ""
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr ""
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: S'ha produït un error desconegut"
@@ -339,74 +387,78 @@ msgstr "_Omnipresent"
 msgid "Uns_tick"
 msgstr "No _omnipresent"
 
-#: src/menu.c:51
+#: src/menu.c:51 src/menu.c:52
+msgid "Always on top"
+msgstr ""
+
+#: src/menu.c:53
 msgid "Send to..."
 msgstr "Envia a..."
 
-#: src/menu.c:53
+#: src/menu.c:55
 msgid "_Close"
 msgstr "Tan_ca"
 
-#: src/menu.c:56
+#: src/menu.c:58
 msgid "Destroy"
 msgstr "Destrueix"
 
-#: src/menu.c:59
+#: src/menu.c:61
 msgid "_Quit"
 msgstr "_Surt"
 
-#: src/menu.c:60
+#: src/menu.c:62
 msgid "Restart"
 msgstr "Reinicia"
 
-#: src/menu.c:163
+#: src/menu.c:165
 #, c-format
 msgid "Workspace %i"
 msgstr "À_rea de treball %i"
 
-#: src/menu.c:405
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut capturar el punter\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Falten els fitxers per defecte."
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No es pot allotjar el color actiu %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No es pot processar el color actiu %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No es pot allotjar el color inactiu %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No es pot processar el color inactiu %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: No sa trobat la configuració de tecles \"%s\", es fa servir la "
 "configuració per defecte"
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltes valors en els fitxers per defecte"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
@@ -416,3 +468,6 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Canvia a..."
+
+#~ msgid "Adjust workspace margins"
+#~ msgstr "Ajusta els marges de l'àrea de treball"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -16,40 +16,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
-#, fuzzy
-msgid "Workspace Margins"
-msgstr "Esc_ritorio"
-
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "Ajustar los bordes del escritorio"
-
-#: mcs-plugin/margins_plugin.c:241
+#: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "los bordes son areas en los lados de la pantalla donde no se colocará "
 "ninguna ventana"
 
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:131
+#, fuzzy
+msgid "Workspace Margins"
+msgstr "Esc_ritorio"
+
+#: mcs-plugin/margins.c:159
 #, fuzzy
 msgid "Left :"
 msgstr "Izquierda"
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 #, fuzzy
 msgid "Right :"
 msgstr "Derecha"
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
 msgstr "Arriba"
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
 msgstr "Abajo"
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "Esc_ritorio"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "Esc_ritorio"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "Esc_ritorio"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "Saltar al escritorio siguiente"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "Esc_ritorio"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -279,12 +317,12 @@ msgstr "Acción a realizar cuando se pinche dos veces la barra de título :"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/client.c:496
+#: src/client.c:508
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 
-#: src/events.c:1453
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
@@ -304,7 +342,17 @@ msgstr "%s: Otro Gestor de Ventanas ya está ejecutándose"
 msgid "%s: Missing data from default files"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/main.c:431
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr ""
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr ""
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ha ocurrido un error desconocido"
@@ -345,73 +393,77 @@ msgstr "P_egar"
 msgid "Uns_tick"
 msgstr "Des_pegar"
 
-#: src/menu.c:51
+#: src/menu.c:51 src/menu.c:52
+msgid "Always on top"
+msgstr ""
+
+#: src/menu.c:53
 #, fuzzy
 msgid "Send to..."
 msgstr "Cambiar a ..."
 
-#: src/menu.c:53
+#: src/menu.c:55
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: src/menu.c:56
+#: src/menu.c:58
 msgid "Destroy"
 msgstr "Destruir"
 
-#: src/menu.c:59
+#: src/menu.c:61
 msgid "_Quit"
 msgstr "_Salir"
 
-#: src/menu.c:60
+#: src/menu.c:62
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/menu.c:163
+#: src/menu.c:165
 #, fuzzy, c-format
 msgid "Workspace %i"
 msgstr "Esc_ritorio"
 
-#: src/menu.c:405
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltan datos en ficheros de configuración por defecto"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Sin inicializar el contador de escritorios, usando el valor:%i"
@@ -419,6 +471,9 @@ msgstr "%s: Sin inicializar el contador de escritorios, usando el valor:%i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Cambiar a ..."
+
+#~ msgid "Adjust workspace margins"
+#~ msgstr "Ajustar los bordes del escritorio"
 
 #~ msgid "Window style"
 #~ msgstr "Estilo de Ventana"

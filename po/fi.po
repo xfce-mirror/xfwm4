@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
 "PO-Revision-Date: 2003-05-27 22:53--200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team:  <>\n"
@@ -10,35 +10,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
-msgid "Workspace Margins"
-msgstr "Työpöydän marginaalit"
-
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "Muuta työpöydän marginaaleja"
-
-#: mcs-plugin/margins_plugin.c:241
+#: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marginaalit ovat näytön reunalla oleva alue jolle ikkunoita ei aseteta"
 
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:131
+msgid "Workspace Margins"
+msgstr "Työpöydän marginaalit"
+
+#: mcs-plugin/margins.c:159
 msgid "Left :"
 msgstr "Vasen :"
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 msgid "Right :"
 msgstr "Oikea :"
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
 msgstr "Yläosa :"
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
 msgstr "Alaosa :"
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "Työpöydän marginaalit"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "Työpöytä %i"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "Työpöytä %i"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "Kierrätä työpöytiä"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "Työpöydän marginaalit"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -265,12 +303,12 @@ msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
 msgid "Advanced"
 msgstr "Muut"
 
-#: src/client.c:496
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
 
-#: src/events.c:1453
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Toiminto ei ole (vielä) tuettu\n"
@@ -290,7 +328,17 @@ msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
 msgid "%s: Missing data from default files"
 msgstr "%s: Oletustiedostoista puuttuu tietoa"
 
-#: src/main.c:431
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr ""
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr ""
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Tuntematon virhe"
@@ -331,72 +379,76 @@ msgstr "_Kiinnitä"
 msgid "Uns_tick"
 msgstr "Pois_ta Kiinnitys"
 
-#: src/menu.c:51
+#: src/menu.c:51 src/menu.c:52
+msgid "Always on top"
+msgstr ""
+
+#: src/menu.c:53
 msgid "Send to..."
 msgstr "Vaihda ..."
 
-#: src/menu.c:53
+#: src/menu.c:55
 msgid "_Close"
 msgstr "Sulj_e"
 
-#: src/menu.c:56
+#: src/menu.c:58
 msgid "Destroy"
 msgstr "Tuhoa"
 
-#: src/menu.c:59
+#: src/menu.c:61
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: src/menu.c:60
+#: src/menu.c:62
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: src/menu.c:163
+#: src/menu.c:165
 #, c-format
 msgid "Workspace %i"
 msgstr "Työpöytä %i"
 
-#: src/menu.c:405
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Oletustiedostoista puuttuu tietoa"
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktiivista väriä %s ei voi käyttää\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktiivista väriä %s ei voi tunnistaa \n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ei-aktiivista väriä %s ei voi käyttää\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei-aktiivista väriä %s ei voi tunnistaa\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Oletustiedostoista puuttuu tietoa"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Työpöytien lukumäärää ei ole asetettu, käytetään oletusarvoa %i"
@@ -404,3 +456,6 @@ msgstr "%s: Työpöytien lukumäärää ei ole asetettu, käytetään oletusarvo
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Siirrä ..."
+
+#~ msgid "Adjust workspace margins"
+#~ msgstr "Muuta työpöydän marginaaleja"

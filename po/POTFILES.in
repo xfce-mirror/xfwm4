@@ -1,4 +1,6 @@
-mcs-plugin/margins_plugin.c
+mcs-plugin/margins.c
+mcs-plugin/plugin.c
+mcs-plugin/workspaces.c
 mcs-plugin/xfwm4_plugin.c
 src/client.c
 src/events.c

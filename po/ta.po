@@ -6,44 +6,82 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-30 09:15+0200\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
-msgid "Workspace Margins"
-msgstr "வேலையிட எல்லைகள்"
-
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "வேலையிட எல்லைகளை மாற்றுக"
-
-#: mcs-plugin/margins_plugin.c:241
+#: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "சாளரங்கள் எவையும் திரை எல்லைகளில் போடப்படாது"
 
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:131
+msgid "Workspace Margins"
+msgstr "வேலையிட எல்லைகள்"
+
+#: mcs-plugin/margins.c:159
 msgid "Left :"
 msgstr "இடது :"
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 msgid "Right :"
 msgstr "வலது :"
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
 msgstr "மேல் :"
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
 msgstr "கீழ் :"
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "வேலையிட எல்லைகள்"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "வேலை þடம் %i"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "வேலை þடம் %i"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "வேலையிட எல்லைகள்"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -270,32 +308,42 @@ msgstr "தலைப்புப் பட்டையில் þரட்ட�
 msgid "Advanced"
 msgstr "உயர்நிலை"
 
-#: src/client.c:443
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: மேலாண்மையற்ற net_wm_state (சாளரம் 0x%lx)"
 
-#: src/events.c:1318
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்பு þல்லை (þப்பொழுது)\n"
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: பகுதியாக்கல் பழுது"
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: கொடாநிலை கோப்புகளில் இல்லாத தரவுகள்"
 
-#: src/main.c:428
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr ""
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr ""
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: தெரியாத பிழை நடைபெற்றுள்ளது"
@@ -336,72 +384,76 @@ msgstr "ஒட்_டு"
 msgid "Uns_tick"
 msgstr "ஒட்டா_தே"
 
-#: src/menu.c:51
+#: src/menu.c:51 src/menu.c:52
+msgid "Always on top"
+msgstr ""
+
+#: src/menu.c:53
 msgid "Send to..."
 msgstr "இவ்வேலை இடத்தில் போடுக ..."
 
-#: src/menu.c:53
+#: src/menu.c:55
 msgid "_Close"
 msgstr "_மூடு"
 
-#: src/menu.c:56
+#: src/menu.c:58
 msgid "Destroy"
 msgstr "அழி"
 
-#: src/menu.c:59
+#: src/menu.c:61
 msgid "_Quit"
 msgstr "_வெளிச்செல்"
 
-#: src/menu.c:60
+#: src/menu.c:62
 msgid "Restart"
 msgstr "மறுபடியும் தொடங்கு"
 
-#: src/menu.c:163
+#: src/menu.c:165
 #, c-format
 msgid "Workspace %i"
 msgstr "வேலை þடம் %i"
 
-#: src/menu.c:405
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenuக்கு சுட்டியை பெற முடியவில்லை\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: கொடாநிலை கோப்புகள் þல்லை"
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: நடப்பு வண்ணம் ஒதுக்கீ வைக்க முடியவில்லை %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: நடப்பு வண்ணம் அலகிட முடியவில்லை %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் ஒதுக்கீ வைக்க முடியவில்லை %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் அழகிட முடியவில்லை %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s:ஃகுறிப்பிட்ட தோற்றம் \"%s\" காணவில்லை, கொடாநிலை பயன்படுத்தப்படுகின்றது"
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: கொடாநிலை கோப்பில் þல்லாத மதிப்புகள்"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: வேலை-þட எண்ணிக்கை அமைக்கவில்லை, rc மதிப்பை பயன்படுத்தும்: %i"
@@ -409,6 +461,9 @@ msgstr "%s: வேலை-þட எண்ணிக்கை அமைக்கவ
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "þதட்கு மாற்றவும் ..."
+
+#~ msgid "Adjust workspace margins"
+#~ msgstr "வேலையிட எல்லைகளை மாற்றுக"
 
 #~ msgid "Window style"
 #~ msgstr "சாளரம் பாணி"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-12-21 22:35+0100\n"
 "PO-Revision-Date: 2003-08-29 21:12+0800\n"
 "Last-Translator: umm <umm@pchome.com.tw>\n"
 "Language-Team:  <>\n"
@@ -13,35 +13,73 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
-#: mcs-plugin/margins_plugin.c:254
-msgid "Workspace Margins"
-msgstr "工作區邊緣"
-
-#: mcs-plugin/margins_plugin.c:217
-msgid "Adjust workspace margins"
-msgstr "調整工作區邊緣"
-
-#: mcs-plugin/margins_plugin.c:241
+#: mcs-plugin/margins.c:124
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "邊緣是螢幕邊上不能放置視窗的區域"
 
-#: mcs-plugin/margins_plugin.c:281
+#: mcs-plugin/margins.c:131
+msgid "Workspace Margins"
+msgstr "工作區邊緣"
+
+#: mcs-plugin/margins.c:159
 msgid "Left :"
 msgstr "左側："
 
-#: mcs-plugin/margins_plugin.c:301
+#: mcs-plugin/margins.c:179
 msgid "Right :"
 msgstr "右側："
 
-#: mcs-plugin/margins_plugin.c:321
+#: mcs-plugin/margins.c:199
 msgid "Top :"
 msgstr "頂部："
 
-#: mcs-plugin/margins_plugin.c:341
+#: mcs-plugin/margins.c:219
 msgid "Bottom :"
 msgstr "底部："
+
+#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "工作區邊緣"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#, fuzzy
+msgid "Workspaces"
+msgstr "工作區 %i"
+
+#: mcs-plugin/plugin.c:179
+msgid "Margins"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:337
+msgid "Change name"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:349
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "工作區 %i"
+
+#: mcs-plugin/workspaces.c:359
+msgid "Name:"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:447
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: mcs-plugin/workspaces.c:519
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "迴繞工作區"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:550
+#, fuzzy
+msgid "Workspace names"
+msgstr "工作區邊緣"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -268,12 +306,12 @@ msgstr "雙擊標題列執行的動作："
 msgid "Advanced"
 msgstr "進階"
 
-#: src/client.c:496
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 無法管理的 net_wm_state (window 0x%lx)"
 
-#: src/events.c:1453
+#: src/events.c:1490
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: (尚)未支援的操作\n"
@@ -293,7 +331,17 @@ msgstr "%s: 另一個視窗管理程式正在運行"
 msgid "%s: Missing data from default files"
 msgstr "%s: 預設文件中缺少資料"
 
-#: src/main.c:431
+#: src/main.c:413
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr ""
+
+#: src/main.c:421
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr ""
+
+#: src/main.c:442
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 發生未知的錯誤"
@@ -334,72 +382,76 @@ msgstr "貼連(_T)"
 msgid "Uns_tick"
 msgstr "分離(_T)"
 
-#: src/menu.c:51
+#: src/menu.c:51 src/menu.c:52
+msgid "Always on top"
+msgstr ""
+
+#: src/menu.c:53
 msgid "Send to..."
 msgstr "傳送到..."
 
-#: src/menu.c:53
+#: src/menu.c:55
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: src/menu.c:56
+#: src/menu.c:58
 msgid "Destroy"
 msgstr "結束"
 
-#: src/menu.c:59
+#: src/menu.c:61
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/menu.c:60
+#: src/menu.c:62
 msgid "Restart"
 msgstr "重新啟動"
 
-#: src/menu.c:163
+#: src/menu.c:165
 #, c-format
 msgid "Workspace %i"
 msgstr "工作區 %i"
 
-#: src/menu.c:405
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 無法取得鼠標\n"
 
-#: src/settings.c:285
+#: src/settings.c:315
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 缺少預設文件"
 
-#: src/settings.c:510
+#: src/settings.c:553
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 無法分配使用的顏色 %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:560
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 無法分析使用的顏色 %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:604
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 無法分配未使用的顏色 %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:611
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 無法分析未使用的顏色 %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:798
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "msgid \"%s: 指定的主題 \"%s\" 不存在，使用預設主題\""
 
-#: src/settings.c:765
+#: src/settings.c:808
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 預設文件中缺少數值"
 
-#: src/settings.c:1106
+#: src/settings.c:1155
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未設定工作區數量，使用 rc 文件值： %i"
@@ -407,3 +459,6 @@ msgstr "%s: 未設定工作區數量，使用 rc 文件值： %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "切換到..."
+
+#~ msgid "Adjust workspace margins"
+#~ msgstr "調整工作區邊緣"
