@@ -330,7 +330,7 @@ getGnomeDesktopMargins (Display * dpy, int screen, CARD32 * m)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    CARD32 *data = NULL;
+    unsigned long *data = NULL;
 
     TRACE ("entering getGnomeDesktopMargins");
 
@@ -339,10 +339,10 @@ getGnomeDesktopMargins (Display * dpy, int screen, CARD32 * m)
                 &real_type, &real_format, &items_read, &items_left,
                 (unsigned char **) &data) == Success) && (items_read >= 4))
     {
-        m[0] = data[0];
-        m[1] = data[1];
-        m[2] = data[2];
-        m[3] = data[3];
+        m[0] = (int) data[0];
+        m[1] = (int) data[1];
+        m[2] = (int) data[2];
+        m[3] = (int) data[3];
         XFree (data);
     }
     else
@@ -585,17 +585,12 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
 void
 set_net_workarea (Display * dpy, int screen, int nb_workspaces, CARD32 * m)
 {
-    CARD32 *data, *ptr;
+    unsigned long *data, *ptr;
     int i, j;
 
     TRACE ("entering set_net_workarea");
     j = (nb_workspaces ? nb_workspaces : 1);
-    data = (CARD32 *) malloc (sizeof (CARD32) * j * 4);
-    if (!data)
-    {
-        gdk_beep ();
-        return;
-    }
+    data = (unsigned long *) g_new (unsigned long, j * 4);
     ptr = data;
     for (i = 0; i < j; i++)
     {
@@ -610,7 +605,7 @@ set_net_workarea (Display * dpy, int screen, int nb_workspaces, CARD32 * m)
     }
     XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
         32, PropModeReplace, (unsigned char *) data, j * 4);
-    free (data);
+    g_free (data);
 }
 
 void

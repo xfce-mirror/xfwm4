@@ -1065,7 +1065,7 @@ clientGetNetStruts (Client * c)
         CLIENT_FLAG_SET (c, CLIENT_FLAG_HAS_STRUTS);
         for (i = 0; i < 4; i++)
         {
-            c->struts[i] = struts[i];
+            c->struts[i] = (int) struts[i];
         }
 
         TRACE ("NET_WM_STRUT for window \"%s\"= (%d,%d,%d,%d)", c->name,
@@ -1393,46 +1393,46 @@ clientCoordGravitate (Client * c, int mode, int *x, int *y)
     switch (c->gravity)
     {
         case CenterGravity:
-            dx = (c->border_width << 1) - ((frameLeft (c) +
-                    frameRight (c)) >> 1);
-            dy = (c->border_width << 1) - ((frameTop (c) +
-                    frameBottom (c)) >> 1);
+            dx = (c->border_width * 2) - ((frameLeft (c) +
+                    frameRight (c)) / 2);
+            dy = (c->border_width * 2) - ((frameTop (c) +
+                    frameBottom (c)) / 2);
             break;
         case NorthGravity:
-            dx = (c->border_width << 1) - ((frameLeft (c) +
-                    frameRight (c)) >> 1);
+            dx = (c->border_width * 2) - ((frameLeft (c) +
+                    frameRight (c)) / 2);
             dy = frameTop (c);
             break;
         case SouthGravity:
-            dx = (c->border_width << 1) - ((frameLeft (c) +
-                    frameRight (c)) >> 1);
-            dy = (c->border_width << 1) - frameBottom (c);
+            dx = (c->border_width * 2) - ((frameLeft (c) +
+                    frameRight (c)) / 2);
+            dy = (c->border_width * 2) - frameBottom (c);
             break;
         case EastGravity:
-            dx = (c->border_width << 1) - frameRight (c);
-            dy = (c->border_width << 1) - ((frameTop (c) +
-                    frameBottom (c)) >> 1);
+            dx = (c->border_width * 2) - frameRight (c);
+            dy = (c->border_width * 2) - ((frameTop (c) +
+                    frameBottom (c)) / 2);
             break;
         case WestGravity:
             dx = frameLeft (c);
-            dy = (c->border_width << 1) - ((frameTop (c) +
-                    frameBottom (c)) >> 1);
+            dy = (c->border_width * 2) - ((frameTop (c) +
+                    frameBottom (c)) / 2);
             break;
         case NorthWestGravity:
             dx = frameLeft (c);
             dy = frameTop (c);
             break;
         case NorthEastGravity:
-            dx = (c->border_width << 1) - frameRight (c);
+            dx = (c->border_width * 2) - frameRight (c);
             dy = frameTop (c);
             break;
         case SouthWestGravity:
             dx = frameLeft (c);
-            dy = (c->border_width << 1) - frameBottom (c);
+            dy = (c->border_width * 2) - frameBottom (c);
             break;
         case SouthEastGravity:
-            dx = (c->border_width << 1) - frameRight (c);
-            dy = (c->border_width << 1) - frameBottom (c);
+            dx = (c->border_width * 2) - frameRight (c);
+            dy = (c->border_width * 2) - frameBottom (c);
             break;
         default:
             dx = 0;
@@ -2088,8 +2088,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_top = frameTop (c);
     frame_left = frameLeft (c);
 
-    cx = frame_x + (frame_width >> 1);
-    cy = frame_y + (frame_height >> 1);
+    cx = frame_x + (frame_width / 2);
+    cy = frame_y + (frame_height / 2);
 
     leftMostHead = isLeftMostHead (dpy, screen, cx, cy);
     rightMostHead = isRightMostHead (dpy, screen, cx, cy);
@@ -4274,8 +4274,8 @@ clientToggleFullscreen (Client * c)
     {
         int cx, cy;
 
-        cx = frameX (c) + (frameWidth (c) >> 1);
-        cy = frameY (c) + (frameHeight (c) >> 1);
+        cx = frameX (c) + (frameWidth (c) / 2);
+        cy = frameY (c) + (frameHeight (c) / 2);
 
         c->fullscreen_old_x = c->x;
         c->fullscreen_old_y = c->y;
@@ -4384,8 +4384,8 @@ clientToggleMaximized (Client * c, int mode)
         return;
     }
 
-    cx = frameX (c) + (frameWidth (c) >> 1);
-    cy = frameY (c) + (frameHeight (c) >> 1);
+    cx = frameX (c) + (frameWidth (c) / 2);
+    cy = frameY (c) + (frameHeight (c) / 2);
 
     left =
         (isLeftMostHead (dpy, screen, cx,
@@ -4683,8 +4683,8 @@ clientSnapPosition (Client * c)
     frame_right = frameRight (c);
     frame_bottom = frameBottom (c);
 
-    cx = frame_x + (frame_width >> 1);
-    cy = frame_y + (frame_height >> 1);
+    cx = frame_x + (frame_width / 2);
+    cy = frame_y + (frame_height / 2);
 
     left =
         (isLeftMostHead (dpy, screen, cx,
@@ -5132,8 +5132,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     frame_right = frameRight (c);
     frame_bottom = frameBottom (c);
 
-    cx = frame_x + (frame_width >> 1);
-    cy = frame_y + (frame_height >> 1);
+    cx = frame_x + (frame_width / 2);
+    cy = frame_y + (frame_height / 2);
 
     left =
         (isLeftMostHead (dpy, screen, cx,
