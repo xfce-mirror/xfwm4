@@ -1,5 +1,14 @@
 2003-07-28  xfce
 
+	* src/client.c: Fix smart placement wasting pixels on right and
+	bottom side of the screen.
+
+2003-07-28  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-07-28  xfce
+
 	* Makefile.in, configure, configure.ac: Change version to 3.99.3
 	(rc3)
 
