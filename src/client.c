@@ -389,7 +389,7 @@ static void clientGetNetState(Client * c)
             else if(atoms[i] == net_wm_state_modal)
             {
                 TRACE("clientGetNetState : modal");
-                CLIENT_FLAG_SET(c, CLIENT_FLAG_STATE_MODAL);
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_STATE_MODAL | CLIENT_FLAG_STICKY);
             }
             else if(atoms[i] == net_wm_state_skip_pager)
             {
@@ -923,13 +923,14 @@ static void clientWindowType(Client * c)
             {
                 c->type = WINDOW_MODAL_DIALOG;
                 c->initial_layer = WIN_LAYER_ONTOP;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
             }
             else
             {
                 c->type = WINDOW_DIALOG;
                 c->initial_layer = WIN_LAYER_NORMAL;
             }
-            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
         }
         else if(c->type_atom == net_wm_window_type_normal)
         {
