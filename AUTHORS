@@ -3,7 +3,6 @@ Authors :
 
 Olivier Fourdan <fourdan@xfce.org>
 
-
 Credits :
 ---------
 
@@ -12,23 +11,4 @@ Portions of code based on the following projects :
 Oroborus: Ken Lynch <kenlynch@blueyonder.co.uk>
 Metacity: Havoc Pennington <hp@redhat.com>
 Sawfish:  John Harper <jsh@unfactored.org>
-
-The theme kindaker is based on a KDE theme called "Keramik" by :
-
-
-  Keramik style:
-  --------------
-  Malte Starostik (malte@kde.org)
-
-  Keramik decorations:
-  --------------------
-  Fredrik Hoglund (fredrik@kde.org)
-
-  See http://www.kde-look.org/content/show.php?content=1961 for details.
-
-The theme koynacity  is a port of Metacity's theme "Koynacity-Blue" (c) 
-by David Spencer Wysinger <spencer@wysinger.com>
-
-  See http://www.wysinger.com/personal/stuff/themes/koynacity
-
-Icons for task switcher and mcs-plugin are from GNOME icon collection.
+xcompmgr: Copyright © 2003 Keith Packard
