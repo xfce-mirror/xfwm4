@@ -161,6 +161,11 @@ typedef enum
 }
 WindowType;
 
+#define CAN_HIDE_WINDOW(c)	((c->type == WINDOW_NORMAL) && \
+				(c->visible) && \
+				(c->has_border) && \
+				!(c->skip_taskbar))
+
 typedef struct _Client Client;
 
 struct _Client

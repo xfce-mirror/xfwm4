@@ -1048,7 +1048,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         {
             ops |= MENU_OP_UNMINIMIZE;
         }
-        else
+        else if (CAN_HIDE_WINDOW(c))
         {
             ops |= MENU_OP_MINIMIZE;
         }
