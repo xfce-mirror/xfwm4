@@ -102,6 +102,10 @@ maintainers, etc. Commented out by default.
     using window manager themes. 
   </para>
 
+  <para>Like xfwm3, &app; offers Xinerama support.</para>
+
+  <para>&app; can be launched separately, but if you use it this way, you will need the <ulink url="xfce-mcs-manager.html" type="http">settings manager</ulink> if you want GUI settings management.</para>
+
 </sect1>
 
   <!-- extra space -->
@@ -411,8 +415,9 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 <listitem>
 	<para>The list on the left side of the dialog shows all avaible shortcuts themes, using the name of directories that contain a keythemerc file.</para>
 	<para>By default, there's only one theme : $(prefix)/share/xfwm4/themes/default.keys/keythemerc</para>
-	<para>You can customize keyboard shortcuts by editing this default keythemerc file, or you can create a new theme, like this one (for example) : $(prefix)/share/xfwm4/themes/custom.keys/keythemerc</para>
+	<para>You can customize keyboard shortcuts by editing this default keythemerc file (seven shorcuts entries are left empty for your convenience), or you can create a new theme, like this one (for example) : $(prefix)/share/xfwm4/themes/custom.keys/keythemerc</para>
 	<para>NOTE : $prefix is the install-prefix you used during xfwm 4 setup, usually /usr or /usr/local.</para>
+	<para>If you do not know the names of your keyboard modifier keys, you can launch the "xev" application from a terminal and test them.</para>
 </listitem>
 </varlistentry>
 
