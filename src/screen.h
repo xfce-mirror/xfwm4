@@ -54,7 +54,7 @@ typedef struct ScreenData
     Display *dpy;
     GdkDisplay *gdisplay;
     GdkScreen *gscr;
-    XfceFilterSetup *gtox_data;
+    XfceFilterSetup *xfilter;
     Screen *xscreen;
     Window gnome_win;
     Window xroot;

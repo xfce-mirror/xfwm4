@@ -33,7 +33,7 @@
 #include "poswin.h"
 
 Poswin *
-poswinCreate (void)
+poswinCreate (GdkScreen *gscr)
 {
     Poswin *poswin;
     GtkWidget *frame;
@@ -41,6 +41,7 @@ poswinCreate (void)
     poswin = g_new (Poswin, 1);
 
     poswin->window = gtk_window_new (GTK_WINDOW_POPUP);
+    gtk_window_set_screen (GTK_WINDOW (poswin->window), gscr);
     gtk_container_set_border_width (GTK_CONTAINER (poswin->window), 0);
     gtk_window_set_resizable (GTK_WINDOW (poswin->window), TRUE);
 

@@ -566,10 +566,10 @@ titleButton (Client * c, int state, XButtonEvent * ev)
             ev->window = ev->root;
             if (button_handler_id)
             {
-                g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)), button_handler_id);
+                g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (md->xfilter)), button_handler_id);
             }
             button_handler_id =
-                g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)),
+                g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->xfilter)),
                 "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
                 (gpointer) c);
             /* Let GTK handle this for us. */
@@ -708,10 +708,10 @@ handleButtonPress (ScreenData *md, XButtonEvent * ev)
                     ev->window = ev->root;
                     if (button_handler_id)
                     {
-                        g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)), button_handler_id);
+                        g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (md->xfilter)), button_handler_id);
                     }
                     button_handler_id =
-                        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)),
+                        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->xfilter)),
                         "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
                         (gpointer) c);
                     /* Let GTK handle this for us. */
@@ -1921,11 +1921,11 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 
     if (button_handler_id)
     {
-        g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (c->md->gtox_data)),
+        g_signal_handler_disconnect (GTK_OBJECT (xfce_get_default_gtk_widget (c->md->xfilter)),
             button_handler_id);
     }
     button_handler_id =
-        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (c->md->gtox_data)),
+        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (c->md->xfilter)),
         "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
         (gpointer) NULL);
 
@@ -1951,7 +1951,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 
     menu = menu_default (ops, insensitive, menu_callback, c->win_workspace,
                          params.workspace_count, params.workspace_names,
-                         params.workspace_names_length, c->md->gtox_data, c);
+                         params.workspace_names_length, c->md->xfilter, c);
 
     if (!menu_popup (menu, x, y, ev->button, ev->time))
     {
@@ -2015,9 +2015,9 @@ initGtkCallbacks (ScreenData *md)
     GtkSettings *settings;
 
     button_handler_id =
-        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)),
+        g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->xfilter)),
         "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) md);
-    g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->gtox_data)), "client_event",
+    g_signal_connect (GTK_OBJECT (xfce_get_default_gtk_widget (md->xfilter)), "client_event",
         GTK_SIGNAL_FUNC (client_event_cb), (gpointer) md);
 
     settings = gtk_settings_get_default ();

@@ -2829,20 +2829,20 @@ clientMove (Client * c, XEvent * e)
     }
 
 #ifdef SHOW_POSITION
-    passdata.poswin = poswinCreate();
+    passdata.poswin = poswinCreate(c->md->gscr);
     poswinSetPosition (passdata.poswin, c);
     poswinShow (passdata.poswin);
 #endif /* SHOW_POSITION */
 
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
-    xfce_push_event_filter (c->md->gtox_data, clientMove_event_filter, &passdata);
+    xfce_push_event_filter (c->md->xfilter, clientMove_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (c->md->dpy, e);
     }
     gtk_main ();
-    xfce_pop_event_filter (c->md->gtox_data);
+    xfce_pop_event_filter (c->md->xfilter);
     TRACE ("leaving move loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
 #ifdef SHOW_POSITION
@@ -3263,7 +3263,7 @@ clientResize (Client * c, int corner, XEvent * e)
     if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
 #endif /* SHOW_POSITION */
     {
-        passdata.poswin = poswinCreate();
+        passdata.poswin = poswinCreate(c->md->gscr);
         poswinSetPosition (passdata.poswin, c);
         poswinShow (passdata.poswin);
     }
@@ -3276,13 +3276,13 @@ clientResize (Client * c, int corner, XEvent * e)
     
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
-    xfce_push_event_filter (c->md->gtox_data, clientResize_event_filter, &passdata);
+    xfce_push_event_filter (c->md->xfilter, clientResize_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (c->md->dpy, e);
     }
     gtk_main ();
-    xfce_pop_event_filter (c->md->gtox_data);
+    xfce_pop_event_filter (c->md->xfilter);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     
@@ -3439,14 +3439,15 @@ clientCycle (Client * c, XEvent * e)
     passdata.c = clientGetNext (c, passdata.cycle_range);
     if (passdata.c)
     {
-        passdata.tabwin = tabwinCreate (getAppIcon (c->md->dpy, passdata.c->window, 32, 32),
+        passdata.tabwin = tabwinCreate (passdata.c->md->gscr,
+                                        getAppIcon (c->md->dpy, passdata.c->window, 32, 32),
                                         passdata.c->class.res_class, passdata.c->name);
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);
-        xfce_push_event_filter (c->md->gtox_data, clientCycle_event_filter, &passdata);
+        xfce_push_event_filter (c->md->xfilter, clientCycle_event_filter, &passdata);
         gtk_main ();
-        xfce_pop_event_filter (c->md->gtox_data);
+        xfce_pop_event_filter (c->md->xfilter);
         if (passdata.c)
         {
             /* Hide frame draw */
@@ -3553,9 +3554,9 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     frameDraw (c, FALSE, FALSE);
 
     TRACE ("entering button press loop");
-    xfce_push_event_filter (c->md->gtox_data, clientButtonPress_event_filter, &passdata);
+    xfce_push_event_filter (c->md->xfilter, clientButtonPress_event_filter, &passdata);
     gtk_main ();
-    xfce_pop_event_filter (c->md->gtox_data);
+    xfce_pop_event_filter (c->md->xfilter);
     TRACE ("leaving button press loop");
 
     XUngrabPointer (c->md->dpy, GDK_CURRENT_TIME);

@@ -37,7 +37,7 @@ struct _Tabwin
     GtkWidget *label;
 };
 
-Tabwin *tabwinCreate (GdkPixbuf *, const gchar *, const gchar *);
+Tabwin *tabwinCreate (GdkScreen *, GdkPixbuf *, const gchar *, const gchar *);
 void tabwinSetLabel (Tabwin *, GdkPixbuf *, const gchar *, const gchar *);
 void tabwinDestroy (Tabwin *);
 

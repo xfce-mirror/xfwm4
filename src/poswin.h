@@ -37,7 +37,7 @@ struct _Poswin
     GtkWidget *label;
 };
 
-Poswin *poswinCreate (void);
+Poswin *poswinCreate (GdkScreen *);
 void poswinSetPosition (Poswin * poswin,  Client *c);
 void poswinDestroy (Poswin * poswin);
 void poswinShow (Poswin * poswin);

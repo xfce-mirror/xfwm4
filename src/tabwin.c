@@ -30,7 +30,7 @@
 #include "tabwin.h"
 
 Tabwin *
-tabwinCreate (GdkPixbuf *icon, const gchar * class, const gchar * label)
+tabwinCreate (GdkScreen *gscr, GdkPixbuf *icon, const gchar * class, const gchar * label)
 {
     static GdkPixbuf *logo = NULL;
     Tabwin *tabwin;
@@ -47,6 +47,7 @@ tabwinCreate (GdkPixbuf *icon, const gchar * class, const gchar * label)
         g_object_ref (G_OBJECT (logo));
     }
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
+    gtk_window_set_screen (GTK_WINDOW (tabwin->window), gscr);
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);
     gtk_window_set_position (GTK_WINDOW (tabwin->window),
         GTK_WIN_POS_CENTER_ALWAYS);

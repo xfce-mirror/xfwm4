@@ -116,7 +116,7 @@ cleanUp (void)
     myWindowDelete (&md->sidewalk[0]);
     myWindowDelete (&md->sidewalk[1]);
     XSetInputFocus (md->dpy, md->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
-    xfce_close_event_filter (md->gtox_data);
+    xfce_close_event_filter (md->xfilter);
     g_free (md);
     md = NULL;
 }
@@ -296,14 +296,14 @@ initialize (int argc, char **argv)
 
     XDefineCursor (md->dpy, md->xroot, md->root_cursor);
 
-    md->gtox_data = xfce_init_event_filter (md->gscr, MAIN_EVENT_MASK, (gpointer) md, "xfwm");
-    if (!md->gtox_data)
+    md->xfilter = xfce_init_event_filter (md->gscr, MAIN_EVENT_MASK, (gpointer) md, "xfwm");
+    if (!md->xfilter)
     {
         return -1;
     }
-    xfce_push_event_filter (md->gtox_data, xfwm4_event_filter, (gpointer) md);
+    xfce_push_event_filter (md->xfilter, xfwm4_event_filter, (gpointer) md);
 
-    md->gnome_win = xfce_get_default_XID (md->gtox_data);
+    md->gnome_win = xfce_get_default_XID (md->xfilter);
     DBG ("Our event window is 0x%lx", md->gnome_win);
 
     if (!initSettings (md))
@@ -339,7 +339,7 @@ initialize (int argc, char **argv)
      * Therefore, force the cache window to be created now instead of
      * trying to do it while we have another grab and deadlocking the server.
      */
-    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (md->gtox_data), "-");
+    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (md->xfilter), "-");
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 
@@ -348,6 +348,10 @@ initialize (int argc, char **argv)
 
     act.sa_handler = handleSignal;
     act.sa_flags = 0;
+    sigaction (SIGINT,  &act, NULL);
+    sigaction (SIGTERM, &act, NULL);
+    sigaction (SIGHUP,  &act, NULL);
+    sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
     client_session = client_session_new (argc, argv, (gpointer) md, 
@@ -441,7 +445,6 @@ main (int argc, char **argv)
             exit (1);
             break;
     }
-    cleanUp ();
     DBG ("xfwm4 terminated");
     return 0;
 }
