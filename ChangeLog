@@ -1,3 +1,52 @@
+2004-12-11 17:41  olivier
+
+	* src/: client.c, compositor.c, events.c: Improve stacking, event
+	  monitoring of unmanaged windows in compositor, Remove monitoring
+	  of pixmap on root window (to make the WM more solid and faster,
+	  it will make no difference in XFce since we use a "fake" root
+	  with xfdesktop)
+
+2004-12-10 07:46  olivier
+
+	* po/xfwm4.pot, src/compositor.c: Keep track of all wins to try to
+	  fix #552
+
+2004-12-10 06:30  olivier
+
+	* po/: ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, en_GB.gmo, en_GB.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po,
+	  fa.gmo, fa.po, fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po,
+	  he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nb_NO.gmo, nb_NO.po, nl.gmo, nl.po, pa.gmo, pa.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo,
+	  sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo,
+	  uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Include korean update from David Choi
+	  <byunghyun.choi@gmail.com>
+
+2004-12-10 06:09  olivier
+
+	* src/: client.c, compositor.c, hints.c, workspaces.c: Fixes and
+	  cleanups
+
+2004-12-09 23:44  olivier
+
+	* src/: client.c, display.c, display.h, focus.c, hints.c, misc.c,
+	  misc.h: Add more internal controls
+
+2004-12-09 23:24  olivier
+
+	* src/: client.c, display.c, menu.c: Fix memory leak in menu code
+	  reported by David Agraz <dagraz@gmail.com>, fix
+	  "_NET_WM_CONTEXT_HELP", "_XROOTPMAP_ID" and "_XSETROOT_ID" atoms
+	  being mispelled
+
+2004-12-08 22:16  olivier
+
+	* ChangeLog, po/xfwm4.pot: Update ChangeLog
+
 2004-12-08 22:12  olivier
 
 	* src/events.c: Cancel raise timeout when window is raised by the
