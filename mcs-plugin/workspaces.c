@@ -532,7 +532,7 @@ add_count_spinbox (GtkWidget * vbox, McsManager * manager)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), ws_count);
 
-    g_signal_connect (spin, "changed", G_CALLBACK (count_changed), manager);
+    g_signal_connect (spin, "value-changed", G_CALLBACK (count_changed), manager);
 }
 
 void
