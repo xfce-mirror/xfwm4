@@ -425,8 +425,7 @@ clientGetNetState (Client * c)
             else if (atoms[i] == net_wm_state_modal)
             {
                 TRACE ("clientGetNetState : modal");
-                CLIENT_FLAG_SET (c,
-                    CLIENT_FLAG_STATE_MODAL | CLIENT_FLAG_STICKY);
+                CLIENT_FLAG_SET (c, CLIENT_FLAG_STATE_MODAL);
             }
             else if (atoms[i] == net_wm_state_skip_pager)
             {
@@ -1146,13 +1145,11 @@ clientWindowType (Client * c)
     {
         TRACE ("no \"net\" atom detected");
         c->type = UNSET;
-        c->initial_layer = c->win_layer;
     }
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
     {
         TRACE ("window is modal");
         c->type = WINDOW_MODAL_DIALOG;
-        c->initial_layer = WIN_LAYER_NORMAL /* was WIN_LAYER_ONTOP */;
         CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
         CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
@@ -1168,9 +1165,7 @@ clientWindowType (Client * c)
             c->initial_layer = c2->win_layer;
             TRACE ("Applied layer is %i", c->initial_layer);
         }
-        CLIENT_FLAG_UNSET (c,
-            CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK |
-            CLIENT_FLAG_STICKY);
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
     if ((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
