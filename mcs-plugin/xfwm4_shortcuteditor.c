@@ -989,7 +989,7 @@ savetreeview_in_theme (gchar * theme_file, gpointer data)
 
     fclose (file);
 
-    if (!g_str_has_prefix (theme_file, "/usr"))
+    if (g_str_has_prefix (theme_file, xfce_get_homedir ()))
     {
         if (unlink (theme_file))
         {
