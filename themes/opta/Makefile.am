@@ -64,10 +64,4 @@ EXTRA_DIST = $(theme_DATA)
 install-themeDATA:
 	rm -Rf $(DESTDIR)$(themedir); 					\
 	$(mkinstalldirs) $(DESTDIR)$(themedir); 			\
-	tar cf - $(theme_DATA) | (cd $(DESTDIR)$(themedir) ; tar xf - );\
-	if test `id -u` = "0"; then 					\
-	    chown root:root $(DESTDIR)$(themedir); 			\
-	    chown root:root $(DESTDIR)$(themedir)/*; 			\
-	fi; 								\
-	chmod 755 $(DESTDIR)$(themedir); 				\
-	chmod 644 $(DESTDIR)$(themedir)/*
+	tar cf - $(theme_DATA) | (cd $(DESTDIR)$(themedir) ; tar xf - --no-same-owner)
