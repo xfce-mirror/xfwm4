@@ -51,7 +51,7 @@
 
 /* Useful macros */
 #define ACCEPT_INPUT(wmhints) \
-    (!(focus_hint) || \
+    (!(params.focus_hint) || \
     ((!(wmhints) || \
     ((wmhints) && !(wmhints->flags & InputHint)) || \
     ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))))
@@ -76,7 +76,32 @@ static GSList *windows_stack = NULL;
 static Client *client_focus = NULL;
 
 /* Forward decl */
+static void clientToggleFullscreen(Client * c);
+static void clientToggleAbove(Client * c);
+static void clientToggleBelow(Client * c);
+static void clientGetNetState(Client * c);
+static void clientGetInitialNetWmDesktop(Client * c);
+static void clientSetNetClientList(Atom a, GSList * list);
+static void clientSetNetActions(Client * c);
 static void clientWindowType(Client * c);
+static void clientAddToList(Client * c);
+static void clientRemoveFromList(Client * c);
+static int clientGetWidthInc(Client * c);
+static int clientGetHeightInc(Client * c);
+static void clientSetWidth(Client * c, int w1);
+static void clientSetHeight(Client * c, int h1);
+static inline Client *clientGetTopMost(int layer, Client * exclude);
+static inline Client *clientGetBottomMost(int layer, Client * exclude);
+static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc);
+static inline void clientConstraintPos(Client * c);
+static inline void clientKeepVisible(Client * c);
+static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1);
+static void clientInitPosition(Client * c);
+static void _clientConfigure(Client * c, XWindowChanges * wc, int mask);
+static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
+static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
+static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointer data);
+static GtkToXEventFilterStatus clientButtonPress_event_filter(XEvent * xevent, gpointer data);
 
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
@@ -105,6 +130,89 @@ struct _ButtonPressData
     Client *c;
 };
 
+static void clientToggleFullscreen(Client * c)
+{
+    XWindowChanges wc;
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientToggleFullscreen\n");
+    DBG("toggle fullscreen client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    {
+        int cx, cy;
+
+        cx = frameX(c) + (frameWidth(c) >> 1);
+        cy = frameY(c) + (frameHeight(c) >> 1);
+
+        c->fullscreen_old_x = c->x;
+        c->fullscreen_old_y = c->y;
+        c->fullscreen_old_width = c->width;
+        c->fullscreen_old_height = c->height;
+        c->fullscreen_old_layer = c->win_layer;
+
+        wc.x = MyDisplayX(cx, cy);
+        wc.y = MyDisplayY(cx, cy);
+        wc.width = MyDisplayWidth(dpy, screen, cx, cy);
+        wc.height = MyDisplayHeight(dpy, screen, cx, cy);
+        layer = WIN_LAYER_FULLSCREEN;
+    }
+    else
+    {
+        wc.x = c->fullscreen_old_x;
+        wc.y = c->fullscreen_old_y;
+        wc.width = c->fullscreen_old_width;
+        wc.height = c->fullscreen_old_height;
+        layer = c->fullscreen_old_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
+    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
+}
+
+static void clientToggleAbove(Client * c)
+{
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientToggleAbove\n");
+    DBG("toggle above client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+    {
+        layer = WIN_LAYER_ABOVE;
+    }
+    else
+    {
+        layer = c->initial_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
+    clientRaise(c);
+}
+
+static void clientToggleBelow(Client * c)
+{
+    int layer;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientToggleBelow\n");
+    DBG("toggle below client \"%s\" (%#lx)\n", c->name, c->window);
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+    {
+        layer = WIN_LAYER_BELOW;
+    }
+    else
+    {
+        layer = c->initial_layer;
+    }
+    clientSetNetState(c);
+    clientSetLayer(c, layer);
+    clientLower(c);
+}
+
 void clientSetNetState(Client * c)
 {
     int i;
@@ -115,63 +223,63 @@ void clientSetNetState(Client * c)
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
 
     i = 0;
-    if(c->shaded)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
     {
         DBG("clientSetNetState : shaded\n");
         data[i++] = net_wm_state_shaded;
     }
-    if(c->sticky)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
         DBG("clientSetNetState : sticky\n");
         data[i++] = net_wm_state_sticky;
     }
-    if(c->state_modal)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
     {
         DBG("clientSetNetState : modal\n");
         data[i++] = net_wm_state_modal;
     }
-    if(c->skip_pager)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_PAGER))
     {
         DBG("clientSetNetState : skip_pager\n");
         data[i++] = net_wm_state_skip_pager;
     }
-    if(c->skip_taskbar)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_TASKBAR))
     {
         DBG("clientSetNetState : skip_taskbar\n");
         data[i++] = net_wm_state_skip_taskbar;
     }
-    if(c->win_state & WIN_STATE_MAXIMIZED)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
     {
         DBG("clientSetNetState : maximize vert + horiz\n");
         data[i++] = net_wm_state_maximized_horz;
         data[i++] = net_wm_state_maximized_vert;
     }
-    else if(c->win_state & WIN_STATE_MAXIMIZED_HORIZ)
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
         DBG("clientSetNetState : maximize horiz\n");
         data[i++] = net_wm_state_maximized_horz;
     }
-    else if(c->win_state & WIN_STATE_MAXIMIZED_VERT)
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_VERT))
     {
         DBG("clientSetNetState : vert\n");
         data[i++] = net_wm_state_maximized_vert;
     }
-    if(c->fullscreen)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         DBG("clientSetNetState : fullscreen\n");
         data[i++] = net_wm_state_fullscreen;
     }
-    else if(c->above)
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
     {
         DBG("clientSetNetState : above\n");
         data[i++] = net_wm_state_above;
     }
-    else if(c->below)
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
     {
         DBG("clientSetNetState : below\n");
         data[i++] = net_wm_state_below;
     }
-    if(c->hidden)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         DBG("clientSetNetState : hidden\n");
         data[i++] = net_wm_state_hidden;
@@ -201,60 +309,60 @@ static void clientGetNetState(Client * c)
             {
                 DBG("clientGetNetState : shaded\n");
                 c->win_state |= WIN_STATE_SHADED;
-                c->shaded = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_SHADED);
             }
             else if(atoms[i] == net_wm_state_hidden)
             {
                 DBG("clientGetNetState : hidden\n");
-                c->hidden = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_HIDDEN);
             }
             else if(atoms[i] == net_wm_state_sticky)
             {
                 DBG("clientGetNetState : sticky\n");
                 c->win_state |= WIN_STATE_STICKY;
-                c->sticky = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
             }
             else if(atoms[i] == net_wm_state_maximized_horz)
             {
                 DBG("clientGetNetState : maximized horiz\n");
                 c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
-                c->maximized = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_HORIZ);
             }
             else if(atoms[i] == net_wm_state_maximized_vert)
             {
                 DBG("clientGetNetState : maximized vert\n");
                 c->win_state |= WIN_STATE_MAXIMIZED_VERT;
-                c->maximized = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_VERT);
             }
-            else if((atoms[i] == net_wm_state_fullscreen) && !(c->above) && !(c->below))
+            else if((atoms[i] == net_wm_state_fullscreen) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
             {
                 DBG("clientGetNetState : fullscreen\n");
-                c->fullscreen = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_FULLSCREEN);
             }
-            else if((atoms[i] == net_wm_state_above) && !(c->fullscreen) && !(c->below))
+            else if((atoms[i] == net_wm_state_above) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
             {
                 DBG("clientGetNetState : above\n");
-                c->above = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
             }
-            else if((atoms[i] == net_wm_state_below) && !(c->above) && !(c->fullscreen))
+            else if((atoms[i] == net_wm_state_below) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
             {
                 DBG("clientGetNetState : below\n");
-                c->below = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_BELOW);
             }
             else if(atoms[i] == net_wm_state_modal)
             {
                 DBG("clientGetNetState : modal\n");
-                c->state_modal = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_STATE_MODAL);
             }
             else if(atoms[i] == net_wm_state_skip_pager)
             {
                 DBG("clientGetNetState : skip_pager\n");
-                c->skip_pager = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_PAGER);
             }
             else if(atoms[i] == net_wm_state_skip_taskbar)
             {
                 DBG("clientGetNetState : skip_taskbar\n");
-                c->skip_taskbar = True;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_TASKBAR);
             }
             else
             {
@@ -292,7 +400,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_shaded) || (second == net_wm_state_shaded))
     {
-        if(((action == NET_WM_STATE_ADD) && !(c->shaded)) || ((action == NET_WM_STATE_REMOVE) && (c->shaded)) || (action == NET_WM_STATE_TOGGLE))
+        if(((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED)) || ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED)) || (action == NET_WM_STATE_TOGGLE))
         {
             clientToggleShaded(c);
         }
@@ -308,9 +416,9 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
      */
     if((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
     {
-        if(((action == NET_WM_STATE_ADD) && !(c->hidden)) || ((action == NET_WM_STATE_REMOVE) && (c->hidden)) || (action == NET_WM_STATE_TOGGLE))
+        if(((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)) || ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)) || (action == NET_WM_STATE_TOGGLE))
         {
-            if(CAN_HIDE_WINDOW(c))
+            if(CLIENT_CAN_HIDE_WINDOW(c))
             {
                 clientHide(c, True);
             }
@@ -320,7 +428,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
-        if(((action == NET_WM_STATE_ADD) && !(c->sticky)) || ((action == NET_WM_STATE_REMOVE) && (c->sticky)) || (action == NET_WM_STATE_TOGGLE))
+        if(((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) || ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) || (action == NET_WM_STATE_TOGGLE))
         {
             clientToggleSticky(c);
         }
@@ -328,7 +436,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz) || (first == net_wm_state_maximized_vert) || (second == net_wm_state_maximized_vert))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->maximized))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
             unsigned long mode = 0;
             if((first == net_wm_state_maximized_horz) || (second == net_wm_state_maximized_horz))
@@ -346,7 +454,7 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
             }
             clientToggleMaximized(c, mode);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->maximized))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
             unsigned long mode = 0;
             if(mode & WIN_STATE_MAXIMIZED)
@@ -391,108 +499,108 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_modal) || (second == net_wm_state_modal))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->state_modal))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
         {
-            c->state_modal = True;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_STATE_MODAL);
             clientSetNetState(c);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->state_modal))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
         {
-            c->state_modal = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STATE_MODAL);
             clientSetNetState(c);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
-            c->state_modal = ((c->state_modal) ? False : True);
+            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_STATE_MODAL);
             clientSetNetState(c);
         }
     }
 
-    if(((first == net_wm_state_fullscreen) || (second == net_wm_state_fullscreen)) && !(c->above) && !(c->below))
+    if(((first == net_wm_state_fullscreen) || (second == net_wm_state_fullscreen)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->fullscreen))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
-            c->fullscreen = True;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_FULLSCREEN);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->fullscreen))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
-            c->fullscreen = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FULLSCREEN);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
-            c->fullscreen = ((c->fullscreen) ? False : True);
+            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_FULLSCREEN);
         }
         clientToggleFullscreen(c);
     }
 
-    if(((first == net_wm_state_above) || (second == net_wm_state_above)) && !(c->fullscreen) && !(c->below))
+    if(((first == net_wm_state_above) || (second == net_wm_state_above)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->above))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
-            c->above = True;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->above))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
-            c->above = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_ABOVE);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
-            c->above = ((c->above) ? False : True);
+            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_ABOVE);
         }
         clientToggleAbove(c);
     }
 
-    if(((first == net_wm_state_below) || (second == net_wm_state_below)) && !(c->fullscreen) && !(c->above))
+    if(((first == net_wm_state_below) || (second == net_wm_state_below)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_ABOVE))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->below))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
         {
-            c->below = True;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_BELOW);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->below))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
         {
-            c->below = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_BELOW);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
-            c->below = ((c->below) ? False : True);
+            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_BELOW);
         }
         clientToggleBelow(c);
     }
 
     if((first == net_wm_state_skip_pager) || (second == net_wm_state_skip_pager))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->skip_pager))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_PAGER))
         {
-            c->skip_pager = True;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_PAGER);
             clientSetNetState(c);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->skip_pager))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_PAGER))
         {
-            c->skip_pager = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_SKIP_PAGER);
             clientSetNetState(c);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
-            c->skip_pager = ((c->skip_pager) ? False : True);
+            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_SKIP_PAGER);
             clientSetNetState(c);
         }
     }
 
     if((first == net_wm_state_skip_taskbar) || (second == net_wm_state_skip_taskbar))
     {
-        if((action == NET_WM_STATE_ADD) && !(c->skip_taskbar))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_TASKBAR))
         {
-            c->skip_taskbar = True;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState(c);
         }
-        else if((action == NET_WM_STATE_REMOVE) && (c->skip_taskbar))
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SKIP_TASKBAR))
         {
-            c->skip_taskbar = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState(c);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
-            c->skip_taskbar = ((c->skip_taskbar) ? False : True);
+            CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState(c);
         }
     }
@@ -579,10 +687,10 @@ static void clientGetInitialNetWmDesktop(Client * c)
         c->win_workspace = (int)val;
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
-    if(c->win_workspace > workspace_count - 1)
+    if(c->win_workspace > params.workspace_count - 1)
     {
-        DBG("value off limits, using %i instead\n", workspace_count - 1);
-        c->win_workspace = workspace_count - 1;
+        DBG("value off limits, using %i instead\n", params.workspace_count - 1);
+        c->win_workspace = params.workspace_count - 1;
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
     setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
@@ -629,7 +737,7 @@ void clientGetNetStruts(Client * c)
     {
         c->struts[i] = 0;
     }
-    c->has_struts = False;
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_STRUTS);
 
     if(get_cardinal_list(dpy, c->window, net_wm_strut, &struts, &nitems))
     {
@@ -639,7 +747,7 @@ void clientGetNetStruts(Client * c)
             return;
         }
 
-        c->has_struts = True;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_HAS_STRUTS);
         for(i = 0; i < 4; i++)
         {
             c->struts[i] = struts[i];
@@ -661,7 +769,7 @@ static void clientSetNetActions(Client * c)
     atoms[i++] = net_wm_action_maximize_horz;
     atoms[i++] = net_wm_action_maximize_vert;
     atoms[i++] = net_wm_action_stick;
-    if(c->has_border)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER))
     {
         atoms[i++] = net_wm_action_shade;
     }
@@ -686,31 +794,22 @@ static void clientWindowType(Client * c)
             c->type = WINDOW_DESKTOP;
             c->initial_layer = WIN_LAYER_DESKTOP;
             c->win_state |= WIN_STATE_STICKY;
-            c->has_border = False;
-            c->sticky = True;
-            c->skip_pager = True;
-            c->skip_taskbar = True;
-            c->has_hide = False;
-            c->has_maximize = False;
-            c->has_menu = False;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
         }
         else if(c->type_atom == net_wm_window_type_dock)
         {
             DBG("atom net_wm_window_type_dock detected\n");
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
-            c->has_hide = False;
-            c->has_maximize = False;
-            c->has_menu = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
         }
         else if(c->type_atom == net_wm_window_type_toolbar)
         {
             DBG("atom net_wm_window_type_toolbar detected\n");
             c->type = WINDOW_TOOLBAR;
             c->initial_layer = WIN_LAYER_NORMAL;
-            c->has_hide = False;
-            c->has_maximize = False;
-            c->has_menu = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
         }
         else if(c->type_atom == net_wm_window_type_menu)
         {
@@ -720,24 +819,16 @@ static void clientWindowType(Client * c)
             /* The policy here is unclear :
                http://mail.gnome.org/archives/wm-spec-list/2002-May/msg00001.html
                As it seems, GNOME and KDE don't treat menu the same way...
-               c->win_state |= WIN_STATE_STICKY;
-               c->has_border = False;
-               c->sticky = True;
              */
-            c->skip_pager = True;
-            c->skip_taskbar = True;
-            c->has_hide = False;
-            c->has_maximize = False;
-            c->has_menu = False;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
         }
         else if(c->type_atom == net_wm_window_type_dialog)
         {
             DBG("atom net_wm_window_type_dialog detected\n");
             c->type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_ONTOP;
-            c->has_hide = False;
-            c->has_menu = False;
-            c->has_maximize = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
         }
         else if(c->type_atom == net_wm_window_type_normal)
         {
@@ -750,18 +841,14 @@ static void clientWindowType(Client * c)
             DBG("atom net_wm_window_type_utility detected\n");
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
-            c->has_border = False;
-            c->has_hide = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_BORDER);
         }
         else if(c->type_atom == net_wm_window_type_splashscreen)
         {
             DBG("atom net_wm_window_type_splashscreen detected\n");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
-            c->has_border = False;
-            c->has_resize = False;
-            c->has_move = False;
-            c->has_hide = False;
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_BORDER);
         }
     }
     else
@@ -780,9 +867,7 @@ static void clientWindowType(Client * c)
         {
             c->initial_layer = c2->win_layer;
         }
-        c->has_hide = False;
-        c->has_menu = False;
-        c->has_maximize = False;
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU);
     }
     if((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
@@ -874,46 +959,46 @@ void clientGrabKeys(Client * c)
     DBG("entering clientGrabKeys\n");
     DBG("grabbing keys for client \"%s\" (%#lx)\n", c->name, c->window);
 
-    grabKey(dpy, &keys[KEY_MOVE_UP], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_DOWN], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_LEFT], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_RIGHT], c->window);
-    grabKey(dpy, &keys[KEY_RESIZE_UP], c->window);
-    grabKey(dpy, &keys[KEY_RESIZE_DOWN], c->window);
-    grabKey(dpy, &keys[KEY_RESIZE_LEFT], c->window);
-    grabKey(dpy, &keys[KEY_RESIZE_RIGHT], c->window);
-    grabKey(dpy, &keys[KEY_CLOSE_WINDOW], c->window);
-    grabKey(dpy, &keys[KEY_HIDE_WINDOW], c->window);
-    grabKey(dpy, &keys[KEY_MAXIMIZE_WINDOW], c->window);
-    grabKey(dpy, &keys[KEY_MAXIMIZE_VERT], c->window);
-    grabKey(dpy, &keys[KEY_MAXIMIZE_HORIZ], c->window);
-    grabKey(dpy, &keys[KEY_SHADE_WINDOW], c->window);
-    grabKey(dpy, &keys[KEY_CYCLE_WINDOWS], c->window);
-    grabKey(dpy, &keys[KEY_NEXT_WORKSPACE], c->window);
-    grabKey(dpy, &keys[KEY_PREV_WORKSPACE], c->window);
-    grabKey(dpy, &keys[KEY_ADD_WORKSPACE], c->window);
-    grabKey(dpy, &keys[KEY_DEL_WORKSPACE], c->window);
-    grabKey(dpy, &keys[KEY_STICK_WINDOW], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_1], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_2], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_3], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_4], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_5], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_6], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_7], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_8], c->window);
-    grabKey(dpy, &keys[KEY_WORKSPACE_9], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_NEXT_WORKSPACE], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_PREV_WORKSPACE], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_1], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_2], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_3], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_4], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_5], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_6], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_7], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_8], c->window);
-    grabKey(dpy, &keys[KEY_MOVE_WORKSPACE_9], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_UP], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_DOWN], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_LEFT], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_RIGHT], c->window);
+    grabKey(dpy, &params.keys[KEY_RESIZE_UP], c->window);
+    grabKey(dpy, &params.keys[KEY_RESIZE_DOWN], c->window);
+    grabKey(dpy, &params.keys[KEY_RESIZE_LEFT], c->window);
+    grabKey(dpy, &params.keys[KEY_RESIZE_RIGHT], c->window);
+    grabKey(dpy, &params.keys[KEY_CLOSE_WINDOW], c->window);
+    grabKey(dpy, &params.keys[KEY_HIDE_WINDOW], c->window);
+    grabKey(dpy, &params.keys[KEY_MAXIMIZE_WINDOW], c->window);
+    grabKey(dpy, &params.keys[KEY_MAXIMIZE_VERT], c->window);
+    grabKey(dpy, &params.keys[KEY_MAXIMIZE_HORIZ], c->window);
+    grabKey(dpy, &params.keys[KEY_SHADE_WINDOW], c->window);
+    grabKey(dpy, &params.keys[KEY_CYCLE_WINDOWS], c->window);
+    grabKey(dpy, &params.keys[KEY_NEXT_WORKSPACE], c->window);
+    grabKey(dpy, &params.keys[KEY_PREV_WORKSPACE], c->window);
+    grabKey(dpy, &params.keys[KEY_ADD_WORKSPACE], c->window);
+    grabKey(dpy, &params.keys[KEY_DEL_WORKSPACE], c->window);
+    grabKey(dpy, &params.keys[KEY_STICK_WINDOW], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_1], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_2], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_3], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_4], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_5], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_6], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_7], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_8], c->window);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_9], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_NEXT_WORKSPACE], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_PREV_WORKSPACE], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_1], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_2], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_3], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_4], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_5], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_6], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_7], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_8], c->window);
+    grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_9], c->window);
 }
 
 void clientUngrabKeys(Client * c)
@@ -936,40 +1021,40 @@ void clientCoordGravitate(Client * c, int mode, int *x, int *y)
     switch (gravity)
     {
         case CenterGravity:
-            dx = (c->border_width * 2) - ((frameLeft(c) + frameRight(c)) / 2);
-            dy = (c->border_width * 2) - ((frameTop(c) + frameBottom(c)) / 2);
+            dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
+            dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
             break;
         case NorthGravity:
-            dx = (c->border_width * 2) - ((frameLeft(c) + frameRight(c)) / 2);
+            dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
             dy = frameTop(c);
             break;
         case SouthGravity:
-            dx = (c->border_width * 2) - ((frameLeft(c) + frameRight(c)) / 2);
-            dy = (c->border_width * 2) - frameBottom(c);
+            dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
+            dy = (c->border_width << 1) - frameBottom(c);
             break;
         case EastGravity:
-            dx = (c->border_width * 2) - frameRight(c);
-            dy = (c->border_width * 2) - ((frameTop(c) + frameBottom(c)) / 2);
+            dx = (c->border_width << 1) - frameRight(c);
+            dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
             break;
         case WestGravity:
             dx = frameLeft(c);
-            dy = (c->border_width * 2) - ((frameTop(c) + frameBottom(c)) / 2);
+            dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
             break;
         case NorthWestGravity:
             dx = frameLeft(c);
             dy = frameTop(c);
             break;
         case NorthEastGravity:
-            dx = (c->border_width * 2) - frameRight(c);
+            dx = (c->border_width << 1) - frameRight(c);
             dy = frameTop(c);
             break;
         case SouthWestGravity:
             dx = frameLeft(c);
-            dy = (c->border_width * 2) - frameBottom(c);
+            dy = (c->border_width << 1) - frameBottom(c);
             break;
         case SouthEastGravity:
-            dx = (c->border_width * 2) - frameRight(c);
-            dy = (c->border_width * 2) - frameBottom(c);
+            dx = (c->border_width << 1) - frameRight(c);
+            dy = (c->border_width << 1) - frameBottom(c);
             break;
         default:
             dx = 0;
@@ -1023,7 +1108,7 @@ static void clientAddToList(Client * c)
     clientSetNetClientList(win_client_list, windows);
     clientSetNetClientList(net_client_list_stacking, windows_stack);
 
-    c->managed = True;
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_MANAGED);
 }
 
 static void clientRemoveFromList(Client * c)
@@ -1032,7 +1117,7 @@ static void clientRemoveFromList(Client * c)
     DBG("entering clientRemoveFromList\n");
     g_assert(client_count > 0);
 
-    c->managed = False;
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MANAGED);
     client_count--;
     if(client_count == 0)
     {
@@ -1199,7 +1284,7 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
 
 static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc)
 {
-    if((c->managed) && (mask & CWStackMode))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
     {
         if((sibling) && (sibling != c) && (g_slist_index(windows_stack, sibling) > -1))
         {
@@ -1248,14 +1333,15 @@ static inline void clientConstraintPos(Client * c)
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if(!(c->has_border) || (c->fullscreen))
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         DBG("ignoring constraint for client \"%s\" (%#lx)\n", c->name, c->window);
         return;
     }
 
-    cx = frameX(c) + (frameWidth(c) / 2);
-    cy = frameY(c) + (frameHeight(c) / 2);
+    cx = frameX(c) + (frameWidth(c) >> 1);
+    cy = frameY(c) + (frameHeight(c) >> 1);
+
     left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
     right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
     top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
@@ -1292,8 +1378,9 @@ static inline void clientKeepVisible(Client * c)
     DBG("entering clientKeepVisible\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
 
-    cx = frameX(c) + (frameWidth(c) / 2);
-    cy = frameY(c) + (frameHeight(c) / 2);
+    cx = frameX(c) + (frameWidth(c) >> 1);
+    cy = frameY(c) + (frameHeight(c) >> 1);
+
     left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
     right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
     top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
@@ -1409,7 +1496,7 @@ static void clientInitPosition(Client * c)
             DBG("analyzing %i clients\n", client_count);
             for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
             {
-                if((c2 != c) && (c->win_workspace == c2->win_workspace) && (c2->visible))
+                if((c2 != c) && (c->win_workspace == c2->win_workspace) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
                 {
                     c->x = test_x;
                     c->y = test_y;
@@ -1622,7 +1709,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
     DBG("entering clientConfigure\n");
     DBG("configuring client \"%s\" (%#lx)\n", c->name, c->window);
     _clientConfigure(c, wc, mask);
-    if((c->managed) && (mask & CWStackMode))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
     {
         clientSetNetClientList(net_client_list_stacking, windows_stack);
     }
@@ -1631,7 +1718,6 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
 void clientUpdateMWMHints(Client * c)
 {
     PropMwmHints *mwm_hints;
-    gboolean toggle_value;
 
     g_return_if_fail(c != NULL);
     g_return_if_fail(c->window != None);
@@ -1642,11 +1728,14 @@ void clientUpdateMWMHints(Client * c)
     {
         if(mwm_hints->flags & MWM_HINTS_DECORATIONS && !(mwm_hints->decorations & MWM_DECOR_ALL))
         {
-            c->has_border = ((mwm_hints->decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ? True : False);
-            c->has_menu = ((mwm_hints->decorations & (MWM_DECOR_MENU)) ? True : False);
+            CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
+            CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ? CLIENT_FLAG_HAS_BORDER : 0);
+            CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MENU)) ? CLIENT_FLAG_HAS_MENU : 0);
             /* 
-               c->has_hide     = ((mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? True : False);
-               c->has_maximize = ((mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? True : False);
+               CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE);
+               CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_MAXIMIZE);
+               CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? CLIENT_FLAG_HAS_HIDE : 0);
+               CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? CLIENT_FLAG_HAS_MAXIMIZE : 0);
              */
         }
         /* The following is from Metacity : */
@@ -1654,38 +1743,32 @@ void clientUpdateMWMHints(Client * c)
         {
             if(!(mwm_hints->functions & MWM_FUNC_ALL))
             {
-                toggle_value = True;
-
-                c->has_close = False;
-                c->has_hide = False;
-                c->has_maximize = False;
-                c->has_move = False;
-                c->has_resize = False;
+                CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
             }
             else
             {
-                toggle_value = False;
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
             }
 
             if(mwm_hints->functions & MWM_FUNC_CLOSE)
             {
-                c->has_close = toggle_value;
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_HAS_CLOSE);
             }
             if(mwm_hints->functions & MWM_FUNC_MINIMIZE)
             {
-                c->has_hide = toggle_value;
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_HAS_HIDE);
             }
             if(mwm_hints->functions & MWM_FUNC_MAXIMIZE)
             {
-                c->has_maximize = toggle_value;
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_HAS_MAXIMIZE);
             }
             if(mwm_hints->functions & MWM_FUNC_RESIZE)
             {
-                c->has_resize = toggle_value;
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_HAS_RESIZE);
             }
             if(mwm_hints->functions & MWM_FUNC_MOVE)
             {
-                c->has_move = toggle_value;
+                CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_HAS_MOVE);
             }
         }
         XFree(mwm_hints);
@@ -1761,34 +1844,22 @@ void clientFrame(Window w)
     c->wmhints = XGetWMHints(dpy, c->window);
 
     /* Initialize structure */
-    c->focus = False;
-    c->above = False;
-    c->below = False;
-    c->fullscreen = False;
-    c->has_border = True;
-    c->has_menu = True;
-    c->has_maximize = True;
-    c->has_hide = True;
-    c->has_close = True;
-    c->has_move = True;
-    c->has_resize = True;
-    c->has_struts = False;
-    c->hidden = (START_ICONIC(c) ? True : False);
+    c->client_flag = (CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
+
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
-    c->managed = False;
-    c->maximized = False;
-    c->shaded = False;
-    c->skip_pager = False;
-    c->skip_taskbar = False;
-    c->state_modal = False;
-    c->sticky = False;
     c->type = UNSET;
     c->type_atom = None;
-    c->visible = False;
-    c->wm_delete = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
-    c->wm_input = (ACCEPT_INPUT(c->wmhints) ? True : False);
-    c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
-    c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
+
+    CLIENT_FLAG_SET(c, START_ICONIC(c) ? CLIENT_FLAG_HIDDEN : 0);
+    CLIENT_FLAG_SET(c, (wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? CLIENT_FLAG_WM_DELETE : 0);
+    CLIENT_FLAG_SET(c, ACCEPT_INPUT(c->wmhints) ? CLIENT_FLAG_WM_INPUT : 0);
+    CLIENT_FLAG_SET(c, (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? CLIENT_FLAG_WM_TAKEFOCUS : 0);
+
+    if(!(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height))))
+    {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_IS_RESIZABLE);
+    }
+
     clientUpdateMWMHints(c);
     getGnomeHint(dpy, w, win_hints, &c->win_hints);
     getGnomeHint(dpy, w, win_state, &c->win_state);
@@ -1796,9 +1867,11 @@ void clientFrame(Window w)
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
-    c->sticky = ((c->win_state & WIN_STATE_STICKY) ? True : False);
-    c->shaded = ((c->win_state & WIN_STATE_SHADED) ? True : False);
-    c->maximized = ((c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? True : False);
+
+    CLIENT_FLAG_SET(c, (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY)) ? CLIENT_FLAG_STICKY : 0);
+    CLIENT_FLAG_SET(c, (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED)) ? CLIENT_FLAG_SHADED : 0);
+    CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_VERT : 0);
+    CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_HORIZ : 0);
 
     /* Beware, order of calls is important here ! */
     clientGetNetState(c);
@@ -1807,17 +1880,17 @@ void clientFrame(Window w)
     clientGetNetStruts(c);
 
     /* We check that afterwards to make sure all states are now known */
-    if(c->fullscreen)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         DBG("Applying client's initial state: fullscreen\n");
         clientToggleFullscreen(c);
     }
-    if(c->above)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
     {
         DBG("Applying client's initial state: above\n");
         clientToggleAbove(c);
     }
-    if(c->below)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
     {
         DBG("Applying client's initial state: below\n");
         clientToggleBelow(c);
@@ -1897,10 +1970,10 @@ void clientFrame(Window w)
     wc.stack_mode = Above;
     clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth | CWStackMode);
 
-    if(!(c->hidden))
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
-        if(focus_new && clientAcceptFocus(c))
+        if(params.focus_new && clientAcceptFocus(c))
         {
             clientSetFocus(c, True);
         }
@@ -1944,7 +2017,7 @@ void clientUnframe(Client * c, int remap)
     XReparentWindow(dpy, c->window, root, c->x, c->y);
     XDestroyWindow(dpy, c->frame);
     clientRemoveFromList(c);
-    if(c->has_struts)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea(margins, gnome_margins);
     }
@@ -2068,6 +2141,47 @@ Client *clientGetFromWindow(Window w, int mode)
     return NULL;
 }
 
+Client *clientGetNext(Client * c, int mask)
+{
+    Client *c2;
+    unsigned int i, okay;
+
+    DBG("entering clientGetNext\n");
+
+    if(c)
+    {
+        for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
+        {
+            okay = True;
+            if((!clientAcceptFocus(c2)) && !(mask & INCLUDE_SKIP_FOCUS))
+            {
+                okay = False;
+            }
+            if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
+            {
+                okay = False;
+            }
+            if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_SKIP_PAGER) && !(mask & INCLUDE_SKIP_PAGER))
+            {
+                okay = False;
+            }
+            if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_SKIP_TASKBAR) && !(mask & INCLUDE_SKIP_TASKBAR))
+            {
+                okay = False;
+            }
+            if((c2->win_workspace != workspace) && !(mask & INCLUDE_ALL_WORKSPACES))
+            {
+                okay = False;
+            }
+            if(okay)
+            {
+                return c2;
+            }
+        }
+    }
+    return NULL;
+}
+
 void clientShow(Client * c, int change_state)
 {
     int i;
@@ -2088,7 +2202,7 @@ void clientShow(Client * c, int change_state)
         }
     }
 
-    if((c->win_workspace == ws) || (c->sticky))
+    if((c->win_workspace == ws) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
         for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
         {
@@ -2099,11 +2213,11 @@ void clientShow(Client * c, int change_state)
         }
         XMapWindow(dpy, c->window);
         XMapWindow(dpy, c->frame);
-        c->visible = True;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_VISIBLE);
     }
     if(change_state)
     {
-        c->hidden = False;
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HIDDEN);
         setWMState(dpy, c->window, NormalState);
         workspaceUpdateArea(margins, gnome_margins);
     }
@@ -2129,10 +2243,10 @@ void clientHide(Client * c, int change_state)
         }
     }
 
-    c->visible = False;
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_VISIBLE);
     if(change_state)
     {
-        c->hidden = True;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_HIDDEN);
         setWMState(dpy, c->window, IconicState);
         workspaceUpdateArea(margins, gnome_margins);
     }
@@ -2149,7 +2263,7 @@ void clientHideAll(Client * c)
 
     for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if(CAN_HIDE_WINDOW(c2) && (c2->has_border) && !(c2->transient_for) && (c2 != c))
+        if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && !(c2->transient_for) && (c2 != c))
         {
             if(((c) && (c->transient_for != c2->window)) || (!c))
             {
@@ -2165,7 +2279,7 @@ void clientClose(Client * c)
     DBG("entering clientClose\n");
     DBG("closing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->wm_delete)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_DELETE))
     {
         sendClientMessage(c->window, wm_protocols, wm_delete_window, NoEventMask);
     }
@@ -2192,7 +2306,7 @@ void clientRaise(Client * c)
     DBG("entering clientRaise\n");
     DBG("raising client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if((c->managed) && (c->type != WINDOW_DESKTOP))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (c->type != WINDOW_DESKTOP))
     {
         wc.stack_mode = Above;
         clientConfigure(c, &wc, CWStackMode);
@@ -2207,7 +2321,7 @@ void clientLower(Client * c)
     DBG("entering clientLower\n");
     DBG("lowering client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->managed)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         wc.stack_mode = Below;
         clientConfigure(c, &wc, CWStackMode);
@@ -2260,9 +2374,9 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     c->win_workspace = ws;
     setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
 
-    if(manage_mapping && !(c->hidden))
+    if(manage_mapping && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
-        if(c->sticky)
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientShow(c, False);
         }
@@ -2288,13 +2402,13 @@ void clientToggleShaded(Client * c)
     DBG("entering clientToggleShaded\n");
     DBG("shading/unshading client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(!(c->shaded) && (!(c->has_border) || (c->fullscreen)))
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN)))
     {
         DBG("cowardly refusing to shade \"%s\" (%#lx) because it has no border\n", c->name, c->window);
         return;
     }
     c->win_state = c->win_state ^ WIN_STATE_SHADED;
-    c->shaded = ((c->win_state & WIN_STATE_SHADED) ? True : False);
+    CLIENT_FLAG_TOGGLE(c, CLIENT_FLAG_SHADED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     wc.width = c->width;
     wc.height = c->height;
@@ -2309,7 +2423,7 @@ void clientStick(Client * c)
     DBG("sticking client \"%s\" (%#lx)\n", c->name, c->window);
 
     c->win_state |= WIN_STATE_STICKY;
-    c->sticky = True;
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetWorkspace(c, workspace, TRUE);
     clientSetNetState(c);
@@ -2322,7 +2436,7 @@ void clientUnstick(Client * c)
     DBG("unsticking client \"%s\" (%#lx)\n", c->name, c->window);
 
     c->win_state &= ~WIN_STATE_STICKY;
-    c->sticky = False;
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetWorkspace(c, workspace, TRUE);
     clientSetNetState(c);
@@ -2334,7 +2448,7 @@ void clientToggleSticky(Client * c)
     DBG("entering clientToggleSticky\n");
     DBG("sticking/unsticking client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->win_state & WIN_STATE_STICKY)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
         clientUnstick(c);
     }
@@ -2351,7 +2465,7 @@ inline void clientRemoveMaximizeFlag(Client * c)
     DBG("Removing maximize flag on client \"%s\" (%#lx)\n", c->name, c->window);
 
     c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
-    c->maximized = False;
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
 }
@@ -2364,18 +2478,19 @@ void clientToggleMaximized(Client * c, int mode)
     DBG("entering clientToggleMaximized\n");
     DBG("maximzing/unmaximizing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(!CAN_MAXIMIZE_WINDOW(c))
+    if(!CLIENT_CAN_MAXIMIZE_WINDOW(c))
     {
         return;
     }
 
-    if(c->win_state & WIN_STATE_MAXIMIZED)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
     {
         wc.width = c->old_width;
         wc.height = c->old_height;
         wc.x = c->old_x;
         wc.y = c->old_y;
         c->win_state &= ~WIN_STATE_MAXIMIZED;
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
     }
     else
     {
@@ -2386,29 +2501,32 @@ void clientToggleMaximized(Client * c, int mode)
         c->old_width = c->width;
         c->old_height = c->height;
 
-        cx = frameX(c) + (frameWidth(c) / 2);
-        cy = frameY(c) + (frameHeight(c) / 2);
+        cx = frameX(c) + (frameWidth(c) >> 1);
+        cy = frameY(c) + (frameHeight(c) >> 1);
+
         left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
         right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
         top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
         bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
-        if(mode != WIN_STATE_MAXIMIZED_VERT)
+        if(mode != WIN_STATE_MAXIMIZED_HORIZ)
         {
             wc.x = MyDisplayX(cx, cy) + frameLeft(c) + left;
             wc.width = MyDisplayWidth(dpy, screen, cx, cy) - frameLeft(c) - frameRight(c) - left - right;
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
         else
         {
             wc.x = c->x;
             wc.width = c->width;
         }
-        if(mode != WIN_STATE_MAXIMIZED_HORIZ)
+        if(mode != WIN_STATE_MAXIMIZED_VERT)
         {
             wc.y = MyDisplayY(cx, cy) + frameTop(c) + top;
             wc.height = MyDisplayHeight(dpy, screen, cx, cy) - frameTop(c) - frameBottom(c) - top - bottom;
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_MAXIMIZED_VERT);
         }
         else
         {
@@ -2416,93 +2534,29 @@ void clientToggleMaximized(Client * c, int mode)
             wc.height = c->height;
         }
     }
-    c->maximized = ((c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? True : False);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
     clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
 }
 
-void clientToggleFullscreen(Client * c)
+inline gboolean clientAcceptFocus(Client * c)
 {
-    XWindowChanges wc;
-    int layer;
+    g_return_val_if_fail(c != NULL, FALSE);
 
-    g_return_if_fail(c != NULL);
-    DBG("entering clientToggleFullscreen\n");
-    DBG("toggle fullscreen client \"%s\" (%#lx)\n", c->name, c->window);
+    DBG("entering clientAcceptFocus\n");
 
-    if(c->fullscreen)
+    /* First check GNOME protocol */
+    if(c->win_hints & WIN_HINTS_SKIP_FOCUS)
     {
-        int cx, cy;
-
-        cx = frameX(c) + (frameWidth(c) / 2);
-        cy = frameY(c) + (frameHeight(c) / 2);
-
-        c->fullscreen_old_x = c->x;
-        c->fullscreen_old_y = c->y;
-        c->fullscreen_old_width = c->width;
-        c->fullscreen_old_height = c->height;
-        c->fullscreen_old_layer = c->win_layer;
-
-        wc.x = MyDisplayX(cx, cy);
-        wc.y = MyDisplayY(cx, cy);
-        wc.width = MyDisplayWidth(dpy, screen, cx, cy);
-        wc.height = MyDisplayHeight(dpy, screen, cx, cy);
-        layer = WIN_LAYER_FULLSCREEN;
+        return FALSE;
     }
-    else
+    /* then try ICCCM */
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
     {
-        wc.x = c->fullscreen_old_x;
-        wc.y = c->fullscreen_old_y;
-        wc.width = c->fullscreen_old_width;
-        wc.height = c->fullscreen_old_height;
-        layer = c->fullscreen_old_layer;
+        return TRUE;
     }
-    clientSetNetState(c);
-    clientSetLayer(c, layer);
-    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);
-}
-
-void clientToggleAbove(Client * c)
-{
-    int layer;
-
-    g_return_if_fail(c != NULL);
-    DBG("entering clientToggleAbove\n");
-    DBG("toggle above client \"%s\" (%#lx)\n", c->name, c->window);
-
-    if(c->above)
-    {
-        layer = WIN_LAYER_ABOVE;
-    }
-    else
-    {
-        layer = c->initial_layer;
-    }
-    clientSetNetState(c);
-    clientSetLayer(c, layer);
-    clientRaise(c);
-}
-
-void clientToggleBelow(Client * c)
-{
-    int layer;
-
-    g_return_if_fail(c != NULL);
-    DBG("entering clientToggleBelow\n");
-    DBG("toggle below client \"%s\" (%#lx)\n", c->name, c->window);
-
-    if(c->below)
-    {
-        layer = WIN_LAYER_BELOW;
-    }
-    else
-    {
-        layer = c->initial_layer;
-    }
-    clientSetNetState(c);
-    clientSetLayer(c, layer);
-    clientLower(c);
+    /* At last, use wmhints */
+    return (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_INPUT) ? TRUE : FALSE);
 }
 
 void clientUpdateFocus(Client * c)
@@ -2536,26 +2590,6 @@ void clientUpdateFocus(Client * c)
     XChangeProperty(dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 2);
 }
 
-inline gboolean clientAcceptFocus(Client * c)
-{
-    g_return_val_if_fail(c != NULL, FALSE);
-
-    DBG("entering clientAcceptFocus\n");
-
-    /* First check GNOME protocol */
-    if(c->win_hints & WIN_HINTS_SKIP_FOCUS)
-    {
-        return FALSE;
-    }
-    /* then try ICCCM */
-    else if(c->wm_takefocus)
-    {
-        return TRUE;
-    }
-    /* At last, use wmhints */
-    return (c->wm_input);
-}
-
 void clientSetFocus(Client * c, int sort)
 {
     Client *tmp;
@@ -2564,7 +2598,7 @@ void clientSetFocus(Client * c, int sort)
 
     DBG("entering clientSetFocus\n");
 
-    if((c) && (c->visible))
+    if((c) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_VISIBLE))
     {
         DBG("setting focus to client \"%s\" (%#lx)\n", c->name, c->window);
         if(!clientAcceptFocus(c))
@@ -2618,10 +2652,10 @@ void clientDrawOutline(Client * c)
 {
     DBG("entering clientDrawOutline\n");
 
-    XDrawRectangle(dpy, root, box_gc, frameX(c), frameY(c), frameWidth(c) - 1, frameHeight(c) - 1);
-    if((c->has_border) && !(c->fullscreen) && !(c->shaded))
+    XDrawRectangle(dpy, root, params.box_gc, frameX(c), frameY(c), frameWidth(c) - 1, frameHeight(c) - 1);
+    if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_SHADED))
     {
-        XDrawRectangle(dpy, root, box_gc, c->x, c->y, c->width - 1, c->height - 1);
+        XDrawRectangle(dpy, root, params.box_gc, c->x, c->y, c->width - 1, c->height - 1);
     }
 }
 
@@ -2637,43 +2671,37 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
     if(xevent->type == KeyPress)
     {
-        if(!passdata->grab && box_move)
+        if(!passdata->grab && params.box_move)
         {
             gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
-        if(box_move)
+        if(params.box_move)
         {
             clientDrawOutline(c);
         }
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
+        if(xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
         {
-            if(xevent->xkey.keycode == keys[KEY_MOVE_LEFT].keycode)
-            {
-                c->x = c->x - 16;
-            }
-            if(xevent->xkey.keycode == keys[KEY_MOVE_RIGHT].keycode)
-            {
-                c->x = c->x + 16;
-            }
+            c->x = c->x - 16;
         }
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
+        if(xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
         {
-            if(xevent->xkey.keycode == keys[KEY_MOVE_UP].keycode)
-            {
-                c->y = c->y - 16;
-            }
-            if(xevent->xkey.keycode == keys[KEY_MOVE_DOWN].keycode)
-            {
-                c->y = c->y + 16;
-            }
+            c->x = c->x + 16;
+        }
+        if(xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
+        {
+            c->y = c->y - 16;
+        }
+        if(xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
+        {
+            c->y = c->y + 16;
         }
         if(CONSTRAINED_WINDOW(c))
         {
             clientConstraintPos(c);
         }
-        if(box_move)
+        if(params.box_move)
         {
             clientDrawOutline(c);
         }
@@ -2697,31 +2725,31 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         while(XCheckTypedEvent(dpy, MotionNotify, xevent));
 
-        if(!passdata->grab && box_move)
+        if(!passdata->grab && params.box_move)
         {
             gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
-        if(box_move)
+        if(params.box_move)
         {
             clientDrawOutline(c);
         }
 
-        if((workspace_count > 1) && !(c->transient_for))
+        if((params.workspace_count > 1) && !(c->transient_for))
         {
             int msx, msy;
 
             msx = xevent->xmotion.x_root;
             msy = xevent->xmotion.y_root;
 
-            if(msx == 0 && wrap_workspaces)
+            if(msx == 0 && params.wrap_workspaces)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
                 msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 workspaceSwitch(workspace - 1, c);
             }
-            else if((msx == XDisplayWidth(dpy, screen) - 1) && wrap_workspaces)
+            else if((msx == XDisplayWidth(dpy, screen) - 1) && params.wrap_workspaces)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 msx = xevent->xmotion.x_root = 10;
@@ -2732,30 +2760,30 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
+        cx = frameX(c) + (frameWidth(c) >> 1);
+        cy = frameY(c) + (frameHeight(c) >> 1);
+
         left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
         right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
         top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
         bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
-        cx = frameX(c) + (frameWidth(c) / 2);
-        cy = frameY(c) + (frameHeight(c) / 2);
-
-        if(snap_to_border)
+        if(params.snap_to_border)
         {
-            if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < snap_width)
+            if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < params.snap_width)
             {
                 c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
             }
-            if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < snap_width)
+            if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < params.snap_width)
             {
                 c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
             }
 
-            if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
+            if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < params.snap_width)
             {
                 c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
             }
-            else if(abs(frameY(c) - MyDisplayY(cx, cy)) < snap_width + top)
+            else if(abs(frameY(c) - MyDisplayY(cx, cy)) < params.snap_width + top)
             {
                 c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
             }
@@ -2772,7 +2800,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         {
             clientConstraintPos(c);
         }
-        if(box_move)
+        if(params.box_move)
         {
             clientDrawOutline(c);
         }
@@ -2844,7 +2872,7 @@ void clientMove(Client * c, XEvent * e)
 
     passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask | ButtonReleaseMask);
 
-    if(c->maximized)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
     {
         clientRemoveMaximizeFlag(c);
     }
@@ -2906,7 +2934,7 @@ void clientMove(Client * c, XEvent * e)
     XUngrabPointer(dpy, CurrentTime);
     removeTmpEventWin(passdata.tmp_event_window);
 
-    if(passdata.grab && box_move)
+    if(passdata.grab && params.box_move)
     {
         clientDrawOutline(c);
     }
@@ -2914,7 +2942,7 @@ void clientMove(Client * c, XEvent * e)
     wc.y = c->y;
     clientConfigure(c, &wc, CWX | CWY);
 
-    if(passdata.grab && box_move)
+    if(passdata.grab && params.box_move)
     {
         gdk_x11_ungrab_server();
     }
@@ -2933,8 +2961,9 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
 
     DBG("entering clientResize_event_filter\n");
 
-    cx = frameX(c) + (frameWidth(c) / 2);
-    cy = frameY(c) + (frameHeight(c) / 2);
+    cx = frameX(c) + (frameWidth(c) >> 1);
+    cy = frameY(c) + (frameHeight(c) >> 1);
+
     left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
     right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
     top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
@@ -2942,40 +2971,35 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
 
     if(xevent->type == KeyPress)
     {
-        if(!passdata->grab && box_resize)
+        if(!passdata->grab && params.box_resize)
         {
             gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
-        if(box_resize)
+        if(params.box_resize)
         {
             clientDrawOutline(c);
         }
         /* Store previous height in case the resize hides the window behind the curtain */
         prev_width = c->width;
         prev_height = c->height;
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
+
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
         {
-            if(xevent->xkey.keycode == keys[KEY_MOVE_UP].keycode)
-            {
-                c->height = c->height - (clientGetHeightInc(c) < 10 ? 10 : clientGetHeightInc(c));
-            }
-            if(xevent->xkey.keycode == keys[KEY_MOVE_DOWN].keycode)
-            {
-                c->height = c->height + (clientGetHeightInc(c) < 10 ? 10 : clientGetHeightInc(c));
-            }
+            c->height = c->height - (clientGetHeightInc(c) < 10 ? 10 : clientGetHeightInc(c));
         }
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
+        else if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
         {
-            if(xevent->xkey.keycode == keys[KEY_MOVE_LEFT].keycode)
-            {
-                c->width = c->width - (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
-            }
-            if(xevent->xkey.keycode == keys[KEY_MOVE_RIGHT].keycode)
-            {
-                c->width = c->width + (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
-            }
+            c->height = c->height + (clientGetHeightInc(c) < 10 ? 10 : clientGetHeightInc(c));
+        }
+        else if(xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
+        {
+            c->width = c->width - (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
+        }
+        else if(xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
+        {
+            c->width = c->width + (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
         }
         if(c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
         {
@@ -2985,7 +3009,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             c->height = prev_height;
         }
-        if(box_resize)
+        if(params.box_resize)
         {
             clientDrawOutline(c);
         }
@@ -3009,13 +3033,13 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     {
         while(XCheckTypedEvent(dpy, MotionNotify, xevent));
 
-        if(!passdata->grab && box_resize)
+        if(!passdata->grab && params.box_resize)
         {
             gdk_x11_grab_server();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
-        if(box_resize)
+        if(params.box_resize)
         {
             clientDrawOutline(c);
         }
@@ -3026,18 +3050,16 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         prev_y = c->y;
         prev_width = c->width;
         prev_height = c->height;
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
+
+        if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
-            if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
-            {
-                c->width = (c->x + c->width) - xevent->xmotion.x_root + passdata->mx - frameLeft(c);
-            }
-            if((passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
-            {
-                c->width = (xevent->xmotion.x_root - c->x) + passdata->mx - frameRight(c);
-            }
+            c->width = (c->x + c->width) - xevent->xmotion.x_root + passdata->mx - frameLeft(c);
         }
-        if(!((c->win_state & WIN_STATE_MAXIMIZED_VERT) || (c->win_state & WIN_STATE_SHADED)))
+        if((passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
+        {
+            c->width = (xevent->xmotion.x_root - c->x) + passdata->mx - frameRight(c);
+        }
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_TOP_RIGHT))
             {
@@ -3050,11 +3072,11 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         clientSetWidth(c, c->width);
         clientSetHeight(c, c->height);
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ) && ((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT)))
+        if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
             c->x = c->x - (c->width - passdata->oldw);
         }
-        if(!((c->win_state & WIN_STATE_MAXIMIZED_VERT) || (c->win_state & WIN_STATE_SHADED)) && (passdata->corner == CORNER_TOP_LEFT || passdata->corner == CORNER_TOP_RIGHT))
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && (passdata->corner == CORNER_TOP_LEFT || passdata->corner == CORNER_TOP_RIGHT))
         {
             c->y = c->y - (c->height - passdata->oldh);
         }
@@ -3093,7 +3115,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
                 c->width = prev_width;
             }
         }
-        if(box_resize)
+        if(params.box_resize)
         {
             clientDrawOutline(c);
         }
@@ -3151,12 +3173,7 @@ void clientResize(Client * c, int corner, XEvent * e)
     passdata.corner = corner;
     passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask | ButtonReleaseMask);
 
-    if(c->maximized)
-    {
-        clientRemoveMaximizeFlag(c);
-    }
-
-    if(c->maximized)
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
     {
         clientRemoveMaximizeFlag(c);
     }
@@ -3223,7 +3240,7 @@ void clientResize(Client * c, int corner, XEvent * e)
     XUngrabPointer(dpy, CurrentTime);
     removeTmpEventWin(passdata.tmp_event_window);
 
-    if(passdata.grab && box_resize)
+    if(passdata.grab && params.box_resize)
     {
         clientDrawOutline(c);
     }
@@ -3234,51 +3251,10 @@ void clientResize(Client * c, int corner, XEvent * e)
     wc.height = c->height;
     clientConfigure(c, &wc, (CWX | CWY | CWHeight | CWWidth));
 
-    if(passdata.grab && box_resize)
+    if(passdata.grab && params.box_resize)
     {
         gdk_x11_ungrab_server();
     }
-}
-
-Client *clientGetNext(Client * c, int mask)
-{
-    Client *c2;
-    unsigned int i, okay;
-
-    DBG("entering clientGetNext\n");
-
-    if(c)
-    {
-        for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
-        {
-            okay = True;
-            if((!clientAcceptFocus(c2)) && !(mask & INCLUDE_SKIP_FOCUS))
-            {
-                okay = False;
-            }
-            if((c2->hidden) && !(mask & INCLUDE_HIDDEN))
-            {
-                okay = False;
-            }
-            if((c2->skip_pager) && !(mask & INCLUDE_SKIP_PAGER))
-            {
-                okay = False;
-            }
-            if((c2->skip_taskbar) && !(mask & INCLUDE_SKIP_TASKBAR))
-            {
-                okay = False;
-            }
-            if((c2->win_workspace != workspace) && !(mask & INCLUDE_ALL_WORKSPACES))
-            {
-                okay = False;
-            }
-            if(okay)
-            {
-                return c2;
-            }
-        }
-    }
-    return NULL;
 }
 
 static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointer data)
@@ -3289,17 +3265,17 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
     ClientCycleData *passdata = (ClientCycleData *) data;
 
     DBG("entering clientCycle_event_filter\n");
-    
+
     switch (xevent->type)
     {
         case DestroyNotify:
-	    gone |= (passdata->c == clientGetFromWindow(((XDestroyWindowEvent *) xevent)->window, WINDOW));
+            gone |= (passdata->c == clientGetFromWindow(((XDestroyWindowEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
         case UnmapNotify:
-	    gone |= (passdata->c == clientGetFromWindow(((XUnmapEvent *) xevent)->window, WINDOW));
+            gone |= (passdata->c == clientGetFromWindow(((XUnmapEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
         case KeyPress:
-            if(gone || (xevent->xkey.keycode == keys[KEY_CYCLE_WINDOWS].keycode))
+            if(gone || (xevent->xkey.keycode == params.keys[KEY_CYCLE_WINDOWS].keycode))
             {
                 passdata->c = clientGetNext(passdata->c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
                 if(passdata->c)
@@ -3372,8 +3348,8 @@ void clientCycle(Client * c)
         gtk_main();
         popEventFilter();
         DBG("leaving cycle loop\n");
-	tabwinDestroy(passdata.tabwin);
-	g_free(passdata.tabwin);
+        tabwinDestroy(passdata.tabwin);
+        g_free(passdata.tabwin);
     }
 
     XUngrabKeyboard(dpy, CurrentTime);
@@ -3480,7 +3456,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         switch (b)
         {
             case HIDE_BUTTON:
-                if(CAN_HIDE_WINDOW(c))
+                if(CLIENT_CAN_HIDE_WINDOW(c))
                 {
                     clientHide(c, True);
                 }
@@ -3496,7 +3472,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
                 }
                 break;
             case MAXIMIZE_BUTTON:
-                if(CAN_MAXIMIZE_WINDOW(c))
+                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
                 {
                     if(bev->button == Button1)
                     {

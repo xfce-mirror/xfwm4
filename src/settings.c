@@ -37,49 +37,10 @@
 #define CHANNEL "xfwm4"
 #define TOINT(x) (x ? atoi(x) : 0)
 
-MyKey keys[KEY_COUNT];
-MyColor title_colors[2];
-int title_shadow[2];
-char button_layout[8];
-int title_alignment;
-int full_width_title;
-int button_spacing;
-int button_offset;
-int title_vertical_offset_active;
-int title_vertical_offset_inactive;
-int title_horizontal_offset;
-int double_click_action;
-int box_move;
-int box_resize;
-int click_to_focus;
-int raise_on_click;
-int focus_hint;
-int focus_new;
-int raise_on_focus;
-int raise_delay;
-int snap_to_border;
-int snap_width;
-int dbl_click_time;
-
-GC box_gc;
-GdkGC *black_gc;
-GdkGC *white_gc;
-MyPixmap sides[3][2];
-MyPixmap corners[4][2];
-MyPixmap buttons[BUTTON_COUNT][3];
-MyPixmap title[5][2];
+Params params;
 
 static McsClient *client = NULL;
 static int mcs_initted = FALSE;
-
-static gboolean mcs_manager_is_running(void)
-{
-    McsManagerCheck result;
-
-    result = mcs_manager_check_running(dpy, screen);
-
-    return ((result == MCS_MANAGER_MULTI_CHANNEL) || (result == MCS_MANAGER_BOTH));
-}
 
 static void notify_cb(const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
@@ -91,53 +52,53 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
     switch (action)
     {
         case MCS_ACTION_NEW:
-	    /* The following is to reduce initial startup time and reloads */
-	    if (!mcs_initted)
-	    {
-	        return;
-	    }
+            /* The following is to reduce initial startup time and reloads */
+            if(!mcs_initted)
+            {
+                return;
+            }
         case MCS_ACTION_CHANGED:
             if(setting->type == MCS_TYPE_INT)
             {
                 if(!strcmp(name, "Xfwm/ClickToFocus"))
                 {
-                    click_to_focus = setting->data.v_int;
+                    params.click_to_focus = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/FocusNewWindow"))
                 {
-                    focus_new = setting->data.v_int;
+                    params.focus_new = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/FocusRaise"))
                 {
-                    raise_on_focus = setting->data.v_int;
+                    params.raise_on_focus = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/RaiseDelay"))
                 {
-                    raise_delay = setting->data.v_int;
+                    params.raise_delay = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/RaiseOnClick"))
                 {
-                    raise_on_click = setting->data.v_int;
+                    params.raise_on_click = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/SnapToBorder"))
                 {
-                    snap_to_border = setting->data.v_int;
+                    params.snap_to_border = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/SnapWidth"))
                 {
-                    snap_width = setting->data.v_int;
+                    params.snap_width = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
                 {
-                    wrap_workspaces = setting->data.v_int;
+                    params.wrap_workspaces = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/BoxMove"))
                 {
-                    box_move = setting->data.v_int;
+                    params.box_move = setting->data.v_int;
                 }
                 else if(!strcmp(name, "Xfwm/BoxResize"))
                 {
-                    box_resize = setting->data.v_int;
+                    params.box_resize = setting->data.v_int;
                 }
             }
             else if(setting->type == MCS_TYPE_STRING)
@@ -188,23 +149,23 @@ static void watch_cb(Window window, Bool is_start, long mask, void *cb_data)
 
     gdkwin = gdk_window_lookup(window);
 
-    if (is_start)
+    if(is_start)
     {
-	if (!gdkwin)
-	{
-	    gdkwin = gdk_window_foreign_new (window);
-	}
-	else
-	{
-	    g_object_ref (gdkwin);
+        if(!gdkwin)
+        {
+            gdkwin = gdk_window_foreign_new(window);
+        }
+        else
+        {
+            g_object_ref(gdkwin);
         }
         gdk_window_add_filter(gdkwin, client_event_filter, cb_data);
     }
     else
     {
-	g_assert (gdkwin);
+        g_assert(gdkwin);
         gdk_window_remove_filter(gdkwin, client_event_filter, cb_data);
-	g_object_unref (gdkwin);
+        g_object_unref(gdkwin);
     }
 }
 
@@ -346,23 +307,23 @@ static void loadTheme(Settings rc[])
         colsym[i].value = rc[i].value;
     }
 
-    if(title_colors[ACTIVE].allocated)
+    if(params.title_colors[ACTIVE].allocated)
     {
-        gdk_colormap_free_colors(gdk_colormap_get_system(), &title_colors[ACTIVE].col, 1);
-        title_colors[ACTIVE].allocated = FALSE;
+        gdk_colormap_free_colors(gdk_colormap_get_system(), &params.title_colors[ACTIVE].col, 1);
+        params.title_colors[ACTIVE].allocated = FALSE;
     }
-    if(gdk_color_parse(rc[0].value, &title_colors[ACTIVE].col))
+    if(gdk_color_parse(rc[0].value, &params.title_colors[ACTIVE].col))
     {
-        if(gdk_colormap_alloc_color(gdk_colormap_get_system(), &title_colors[ACTIVE].col, FALSE, FALSE))
+        if(gdk_colormap_alloc_color(gdk_colormap_get_system(), &params.title_colors[ACTIVE].col, FALSE, FALSE))
         {
-            title_colors[ACTIVE].allocated = TRUE;
-            if(title_colors[ACTIVE].gc)
+            params.title_colors[ACTIVE].allocated = TRUE;
+            if(params.title_colors[ACTIVE].gc)
             {
-                g_object_unref(G_OBJECT(title_colors[ACTIVE].gc));
+                g_object_unref(G_OBJECT(params.title_colors[ACTIVE].gc));
             }
-            title_colors[ACTIVE].gc = gdk_gc_new(getDefaultGdkWindow());
-            gdk_gc_copy(title_colors[ACTIVE].gc, get_style_gc(widget, "text", "selected"));
-            gdk_gc_set_foreground(title_colors[ACTIVE].gc, &title_colors[ACTIVE].col);
+            params.title_colors[ACTIVE].gc = gdk_gc_new(getDefaultGdkWindow());
+            gdk_gc_copy(params.title_colors[ACTIVE].gc, get_style_gc(widget, "text", "selected"));
+            gdk_gc_set_foreground(params.title_colors[ACTIVE].gc, &params.title_colors[ACTIVE].col);
         }
         else
         {
@@ -376,37 +337,37 @@ static void loadTheme(Settings rc[])
         g_message("Cannot parse active color %s\n", rc[0].value);
     }
 
-    if(black_gc)
+    if(params.black_gc)
     {
-        g_object_unref(G_OBJECT(black_gc));
+        g_object_unref(G_OBJECT(params.black_gc));
     }
-    black_gc = widget->style->black_gc;
+    params.black_gc = widget->style->black_gc;
     g_object_ref(G_OBJECT(widget->style->black_gc));
 
-    if(white_gc)
+    if(params.white_gc)
     {
-        g_object_unref(G_OBJECT(white_gc));
+        g_object_unref(G_OBJECT(params.white_gc));
     }
-    white_gc = widget->style->white_gc;
+    params.white_gc = widget->style->white_gc;
     g_object_ref(G_OBJECT(widget->style->white_gc));
 
-    if(title_colors[INACTIVE].allocated)
+    if(params.title_colors[INACTIVE].allocated)
     {
-        gdk_colormap_free_colors(gdk_colormap_get_system(), &title_colors[INACTIVE].col, 1);
-        title_colors[INACTIVE].allocated = FALSE;
+        gdk_colormap_free_colors(gdk_colormap_get_system(), &params.title_colors[INACTIVE].col, 1);
+        params.title_colors[INACTIVE].allocated = FALSE;
     }
-    if(gdk_color_parse(rc[1].value, &title_colors[INACTIVE].col))
+    if(gdk_color_parse(rc[1].value, &params.title_colors[INACTIVE].col))
     {
-        if(gdk_colormap_alloc_color(gdk_colormap_get_system(), &title_colors[INACTIVE].col, FALSE, FALSE))
+        if(gdk_colormap_alloc_color(gdk_colormap_get_system(), &params.title_colors[INACTIVE].col, FALSE, FALSE))
         {
-            title_colors[INACTIVE].allocated = TRUE;
-            if(title_colors[INACTIVE].gc)
+            params.title_colors[INACTIVE].allocated = TRUE;
+            if(params.title_colors[INACTIVE].gc)
             {
-                g_object_unref(G_OBJECT(title_colors[INACTIVE].gc));
+                g_object_unref(G_OBJECT(params.title_colors[INACTIVE].gc));
             }
-            title_colors[INACTIVE].gc = gdk_gc_new(getDefaultGdkWindow());
-            gdk_gc_copy(title_colors[INACTIVE].gc, get_style_gc(widget, "text", "normal"));
-            gdk_gc_set_foreground(title_colors[INACTIVE].gc, &title_colors[INACTIVE].col);
+            params.title_colors[INACTIVE].gc = gdk_gc_new(getDefaultGdkWindow());
+            gdk_gc_copy(params.title_colors[INACTIVE].gc, get_style_gc(widget, "text", "normal"));
+            gdk_gc_set_foreground(params.title_colors[INACTIVE].gc, &params.title_colors[INACTIVE].col);
         }
         else
         {
@@ -421,83 +382,83 @@ static void loadTheme(Settings rc[])
     }
 
     font = getValue("title_font", rc);
-    if (font && strlen(font))
+    if(font && strlen(font))
     {
-        desc = pango_font_description_from_string (font);
-        if (desc) 
-	{
-	    gtk_widget_modify_font (widget, desc);
-	}
+        desc = pango_font_description_from_string(font);
+        if(desc)
+        {
+            gtk_widget_modify_font(widget, desc);
+        }
     }
 
-    loadPixmap(dpy, &sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 20);
-    loadPixmap(dpy, &sides[SIDE_LEFT][INACTIVE], theme, "left-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &sides[SIDE_RIGHT][ACTIVE], theme, "right-active.xpm", colsym, 20);
-    loadPixmap(dpy, &sides[SIDE_RIGHT][INACTIVE], theme, "right-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &sides[SIDE_BOTTOM][ACTIVE], theme, "bottom-active.xpm", colsym, 20);
-    loadPixmap(dpy, &sides[SIDE_BOTTOM][INACTIVE], theme, "bottom-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_TOP_LEFT][ACTIVE], theme, "top-left-active.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_TOP_LEFT][INACTIVE], theme, "top-left-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_TOP_RIGHT][ACTIVE], theme, "top-right-active.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_TOP_RIGHT][INACTIVE], theme, "top-right-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_LEFT][ACTIVE], theme, "bottom-left-active.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_LEFT][INACTIVE], theme, "bottom-left-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme, "bottom-right-active.xpm", colsym, 20);
-    loadPixmap(dpy, &corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme, "bottom-right-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[HIDE_BUTTON][ACTIVE], theme, "hide-active.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[HIDE_BUTTON][INACTIVE], theme, "hide-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[HIDE_BUTTON][PRESSED], theme, "hide-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[CLOSE_BUTTON][ACTIVE], theme, "close-active.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[CLOSE_BUTTON][INACTIVE], theme, "close-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[CLOSE_BUTTON][PRESSED], theme, "close-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][ACTIVE], theme, "maximize-active.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][INACTIVE], theme, "maximize-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[MAXIMIZE_BUTTON][PRESSED], theme, "maximize-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[SHADE_BUTTON][ACTIVE], theme, "shade-active.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[SHADE_BUTTON][INACTIVE], theme, "shade-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[SHADE_BUTTON][PRESSED], theme, "shade-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[STICK_BUTTON][ACTIVE], theme, "stick-active.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[STICK_BUTTON][INACTIVE], theme, "stick-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[STICK_BUTTON][PRESSED], theme, "stick-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_2][INACTIVE], theme, "title-2-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_3][ACTIVE], theme, "title-3-active.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_3][INACTIVE], theme, "title-3-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_4][ACTIVE], theme, "title-4-active.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_4][INACTIVE], theme, "title-4-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 20);
-    loadPixmap(dpy, &title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.sides[SIDE_LEFT][INACTIVE], theme, "left-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.sides[SIDE_RIGHT][ACTIVE], theme, "right-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.sides[SIDE_RIGHT][INACTIVE], theme, "right-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.sides[SIDE_BOTTOM][ACTIVE], theme, "bottom-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.sides[SIDE_BOTTOM][INACTIVE], theme, "bottom-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_TOP_LEFT][ACTIVE], theme, "top-left-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_TOP_LEFT][INACTIVE], theme, "top-left-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_TOP_RIGHT][ACTIVE], theme, "top-right-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_TOP_RIGHT][INACTIVE], theme, "top-right-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_LEFT][ACTIVE], theme, "bottom-left-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_LEFT][INACTIVE], theme, "bottom-left-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme, "bottom-right-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme, "bottom-right-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[HIDE_BUTTON][ACTIVE], theme, "hide-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[HIDE_BUTTON][INACTIVE], theme, "hide-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[HIDE_BUTTON][PRESSED], theme, "hide-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[CLOSE_BUTTON][ACTIVE], theme, "close-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[CLOSE_BUTTON][INACTIVE], theme, "close-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[CLOSE_BUTTON][PRESSED], theme, "close-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][ACTIVE], theme, "maximize-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][INACTIVE], theme, "maximize-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][PRESSED], theme, "maximize-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][ACTIVE], theme, "shade-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][INACTIVE], theme, "shade-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][PRESSED], theme, "shade-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[STICK_BUTTON][ACTIVE], theme, "stick-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[STICK_BUTTON][INACTIVE], theme, "stick-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[STICK_BUTTON][PRESSED], theme, "stick-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_2][INACTIVE], theme, "title-2-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_3][ACTIVE], theme, "title-3-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_3][INACTIVE], theme, "title-3-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_4][ACTIVE], theme, "title-4-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_4][INACTIVE], theme, "title-4-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 20);
 
     if(!g_ascii_strcasecmp("left", getValue("title_alignment", rc)))
     {
-        title_alignment = ALIGN_LEFT;
+        params.title_alignment = ALIGN_LEFT;
     }
     else if(!g_ascii_strcasecmp("right", getValue("title_alignment", rc)))
     {
-        title_alignment = ALIGN_RIGHT;
+        params.title_alignment = ALIGN_RIGHT;
     }
     else
     {
-        title_alignment = ALIGN_CENTER;
+        params.title_alignment = ALIGN_CENTER;
     }
 
-    full_width_title = !g_ascii_strcasecmp("true", getValue("full_width_title", rc));
-    title_shadow[ACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_active", rc));
-    title_shadow[INACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_inactive", rc));
+    params.full_width_title = !g_ascii_strcasecmp("true", getValue("full_width_title", rc));
+    params.title_shadow[ACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_active", rc));
+    params.title_shadow[INACTIVE] = !g_ascii_strcasecmp("true", getValue("title_shadow_inactive", rc));
 
-    strncpy(button_layout, getValue("button_layout", rc), 7);
-    button_spacing = TOINT(getValue("button_spacing", rc));
-    button_offset = TOINT(getValue("button_offset", rc));
-    title_vertical_offset_active = TOINT(getValue("title_vertical_offset_active", rc));
-    title_vertical_offset_inactive = TOINT(getValue("title_vertical_offset_inactive", rc));
-    title_horizontal_offset = TOINT(getValue("title_horizontal_offset", rc));
+    strncpy(params.button_layout, getValue("button_layout", rc), 7);
+    params.button_spacing = TOINT(getValue("button_spacing", rc));
+    params.button_offset = TOINT(getValue("button_offset", rc));
+    params.title_vertical_offset_active = TOINT(getValue("title_vertical_offset_active", rc));
+    params.title_vertical_offset_inactive = TOINT(getValue("title_vertical_offset_inactive", rc));
+    params.title_horizontal_offset = TOINT(getValue("title_horizontal_offset", rc));
 
-    box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
+    params.box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
 
     g_free(theme);
 }
@@ -521,155 +482,155 @@ static gboolean loadKeyBindings(Settings rc[])
         }
     }
 
-    parseKeyString(dpy, &keys[KEY_MOVE_UP], getValue("move_window_up_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_DOWN], getValue("move_window_down_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_LEFT], getValue("move_window_left_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_RIGHT], getValue("move_window_right_key", rc));
-    parseKeyString(dpy, &keys[KEY_RESIZE_UP], getValue("resize_window_up_key", rc));
-    parseKeyString(dpy, &keys[KEY_RESIZE_DOWN], getValue("resize_window_down_key", rc));
-    parseKeyString(dpy, &keys[KEY_RESIZE_LEFT], getValue("resize_window_left_key", rc));
-    parseKeyString(dpy, &keys[KEY_RESIZE_RIGHT], getValue("resize_window_right_key", rc));
-    parseKeyString(dpy, &keys[KEY_CYCLE_WINDOWS], getValue("cycle_windows_key", rc));
-    parseKeyString(dpy, &keys[KEY_CLOSE_WINDOW], getValue("close_window_key", rc));
-    parseKeyString(dpy, &keys[KEY_HIDE_WINDOW], getValue("hide_window_key", rc));
-    parseKeyString(dpy, &keys[KEY_MAXIMIZE_WINDOW], getValue("maximize_window_key", rc));
-    parseKeyString(dpy, &keys[KEY_MAXIMIZE_VERT], getValue("maximize_vert_key", rc));
-    parseKeyString(dpy, &keys[KEY_MAXIMIZE_HORIZ], getValue("maximize_horiz_key", rc));
-    parseKeyString(dpy, &keys[KEY_SHADE_WINDOW], getValue("shade_window_key", rc));
-    parseKeyString(dpy, &keys[KEY_NEXT_WORKSPACE], getValue("next_workspace_key", rc));
-    parseKeyString(dpy, &keys[KEY_PREV_WORKSPACE], getValue("prev_workspace_key", rc));
-    parseKeyString(dpy, &keys[KEY_ADD_WORKSPACE], getValue("add_workspace_key", rc));
-    parseKeyString(dpy, &keys[KEY_DEL_WORKSPACE], getValue("del_workspace_key", rc));
-    parseKeyString(dpy, &keys[KEY_STICK_WINDOW], getValue("stick_window_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_1], getValue("workspace_1_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_2], getValue("workspace_2_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_3], getValue("workspace_3_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_4], getValue("workspace_4_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_5], getValue("workspace_5_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_6], getValue("workspace_6_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_7], getValue("workspace_7_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_8], getValue("workspace_8_key", rc));
-    parseKeyString(dpy, &keys[KEY_WORKSPACE_9], getValue("workspace_9_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_NEXT_WORKSPACE], getValue("move_window_next_workspace_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_PREV_WORKSPACE], getValue("move_window_prev_workspace_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_1], getValue("move_window_workspace_1_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_2], getValue("move_window_workspace_2_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_3], getValue("move_window_workspace_3_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_4], getValue("move_window_workspace_4_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_5], getValue("move_window_workspace_5_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_6], getValue("move_window_workspace_6_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_7], getValue("move_window_workspace_7_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_8], getValue("move_window_workspace_8_key", rc));
-    parseKeyString(dpy, &keys[KEY_MOVE_WORKSPACE_9], getValue("move_window_workspace_9_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_UP], getValue("move_window_up_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_DOWN], getValue("move_window_down_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_LEFT], getValue("move_window_left_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_RIGHT], getValue("move_window_right_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_RESIZE_UP], getValue("resize_window_up_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_RESIZE_DOWN], getValue("resize_window_down_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_RESIZE_LEFT], getValue("resize_window_left_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_RESIZE_RIGHT], getValue("resize_window_right_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_CYCLE_WINDOWS], getValue("cycle_windows_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_CLOSE_WINDOW], getValue("close_window_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_HIDE_WINDOW], getValue("hide_window_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MAXIMIZE_WINDOW], getValue("maximize_window_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MAXIMIZE_VERT], getValue("maximize_vert_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MAXIMIZE_HORIZ], getValue("maximize_horiz_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHADE_WINDOW], getValue("shade_window_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_NEXT_WORKSPACE], getValue("next_workspace_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_PREV_WORKSPACE], getValue("prev_workspace_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_ADD_WORKSPACE], getValue("add_workspace_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_DEL_WORKSPACE], getValue("del_workspace_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_STICK_WINDOW], getValue("stick_window_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_1], getValue("workspace_1_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_2], getValue("workspace_2_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_3], getValue("workspace_3_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_4], getValue("workspace_4_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_5], getValue("workspace_5_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_6], getValue("workspace_6_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_7], getValue("workspace_7_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_8], getValue("workspace_8_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_WORKSPACE_9], getValue("workspace_9_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_NEXT_WORKSPACE], getValue("move_window_next_workspace_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_PREV_WORKSPACE], getValue("move_window_prev_workspace_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_1], getValue("move_window_workspace_1_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_2], getValue("move_window_workspace_2_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_3], getValue("move_window_workspace_3_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_4], getValue("move_window_workspace_4_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_5], getValue("move_window_workspace_5_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_6], getValue("move_window_workspace_6_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_7], getValue("move_window_workspace_7_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_8], getValue("move_window_workspace_8_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_9], getValue("move_window_workspace_9_key", rc));
     ungrabKeys(dpy, gnome_win);
-    grabKey(dpy, &keys[KEY_CYCLE_WINDOWS], gnome_win);
-    grabKey(dpy, &keys[KEY_NEXT_WORKSPACE], gnome_win);
-    grabKey(dpy, &keys[KEY_PREV_WORKSPACE], gnome_win);
-    grabKey(dpy, &keys[KEY_ADD_WORKSPACE], gnome_win);
-    grabKey(dpy, &keys[KEY_NEXT_WORKSPACE], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_1], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_2], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_3], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_4], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_5], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_6], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_7], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_8], gnome_win);
-    grabKey(dpy, &keys[KEY_WORKSPACE_9], gnome_win);
+    grabKey(dpy, &params.keys[KEY_CYCLE_WINDOWS], gnome_win);
+    grabKey(dpy, &params.keys[KEY_NEXT_WORKSPACE], gnome_win);
+    grabKey(dpy, &params.keys[KEY_PREV_WORKSPACE], gnome_win);
+    grabKey(dpy, &params.keys[KEY_ADD_WORKSPACE], gnome_win);
+    grabKey(dpy, &params.keys[KEY_NEXT_WORKSPACE], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_1], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_2], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_3], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_4], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_5], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_6], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_7], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_8], gnome_win);
+    grabKey(dpy, &params.keys[KEY_WORKSPACE_9], gnome_win);
     return TRUE;
 }
 
 gboolean loadSettings(void)
 {
     Settings rc[] = {
-	{"active_text_color", NULL, FALSE},
-	{"inactive_text_color", NULL, FALSE},
-	{"active_border_color", NULL, FALSE},
-	{"inactive_border_color", NULL, FALSE},
-	{"active_color_1", NULL, FALSE},
-	{"active_hilight_1", NULL, FALSE},
-	{"active_shadow_1", NULL, FALSE},
-	{"active_mid_1", NULL, FALSE},
-	{"active_color_2", NULL, FALSE},
-	{"active_hilight_2", NULL, FALSE},
-	{"active_shadow_2", NULL, FALSE},
-	{"active_mid_2", NULL, FALSE},
-	{"inactive_color_1", NULL, FALSE},
-	{"inactive_hilight_1", NULL, FALSE},
-	{"inactive_shadow_1", NULL, FALSE},
-	{"inactive_mid_1", NULL, FALSE},
-	{"inactive_color_2", NULL, FALSE},
-	{"inactive_hilight_2", NULL, FALSE},
-	{"inactive_shadow_2", NULL, FALSE},
-	{"inactive_mid_2", NULL, FALSE},
-	{"theme", NULL, TRUE},
-	{"keytheme", NULL, TRUE},
-	{"title_font", NULL, FALSE},
-	{"title_alignment", NULL, TRUE},
-	{"full_width_title", NULL, TRUE},
-	{"title_shadow_active", NULL, TRUE},
-	{"title_shadow_inactive", NULL, TRUE},
-	{"button_layout", NULL, TRUE},
-	{"button_spacing", NULL, TRUE},
-	{"title_vertical_offset_active", NULL, TRUE},
-	{"title_vertical_offset_inactive", NULL, TRUE},
-	{"title_horizontal_offset", NULL, TRUE},
-	{"button_offset", NULL, TRUE},
-	{"double_click_action", NULL, TRUE},
-	{"box_move", NULL, TRUE},
-	{"box_resize", NULL, TRUE},
-	{"click_to_focus", NULL, TRUE},
-	{"focus_hint", NULL, TRUE},
-	{"focus_new", NULL, TRUE},
-	{"raise_on_focus", NULL, TRUE},
-	{"raise_delay", NULL, TRUE},
-	{"snap_to_border", NULL, TRUE},
-	{"snap_width", NULL, TRUE},
-	{"dbl_click_time", NULL, TRUE},
-	{"workspace_count", NULL, TRUE},
-	{"wrap_workspaces", NULL, TRUE},
-	{"close_window_key", NULL, TRUE},
-	{"hide_window_key", NULL, TRUE},
-	{"maximize_window_key", NULL, TRUE},
-	{"maximize_vert_key", NULL, TRUE},
-	{"maximize_horiz_key", NULL, TRUE},
-	{"shade_window_key", NULL, TRUE},
-	{"cycle_windows_key", NULL, TRUE},
-	{"move_window_up_key", NULL, TRUE},
-	{"move_window_down_key", NULL, TRUE},
-	{"move_window_left_key", NULL, TRUE},
-	{"move_window_right_key", NULL, TRUE},
-	{"resize_window_up_key", NULL, TRUE},
-	{"resize_window_down_key", NULL, TRUE},
-	{"resize_window_left_key", NULL, TRUE},
-	{"resize_window_right_key", NULL, TRUE},
-	{"next_workspace_key", NULL, TRUE},
-	{"prev_workspace_key", NULL, TRUE},
-	{"add_workspace_key", NULL, TRUE},
-	{"del_workspace_key", NULL, TRUE},
-	{"stick_window_key", NULL, TRUE},
-	{"workspace_1_key", NULL, TRUE},
-	{"workspace_2_key", NULL, TRUE},
-	{"workspace_3_key", NULL, TRUE},
-	{"workspace_4_key", NULL, TRUE},
-	{"workspace_5_key", NULL, TRUE},
-	{"workspace_6_key", NULL, TRUE},
-	{"workspace_7_key", NULL, TRUE},
-	{"workspace_8_key", NULL, TRUE},
-	{"workspace_9_key", NULL, TRUE},
-	{"move_window_next_workspace_key", NULL, TRUE},
-	{"move_window_prev_workspace_key", NULL, TRUE},
-	{"move_window_workspace_1_key", NULL, TRUE},
-	{"move_window_workspace_2_key", NULL, TRUE},
-	{"move_window_workspace_3_key", NULL, TRUE},
-	{"move_window_workspace_4_key", NULL, TRUE},
-	{"move_window_workspace_5_key", NULL, TRUE},
-	{"move_window_workspace_6_key", NULL, TRUE},
-	{"move_window_workspace_7_key", NULL, TRUE},
-	{"move_window_workspace_8_key", NULL, TRUE},
-	{"move_window_workspace_9_key", NULL, TRUE},
-	{"raise_on_click", NULL, TRUE},
-	{NULL, NULL, FALSE}
+        {"active_text_color", NULL, FALSE},
+        {"inactive_text_color", NULL, FALSE},
+        {"active_border_color", NULL, FALSE},
+        {"inactive_border_color", NULL, FALSE},
+        {"active_color_1", NULL, FALSE},
+        {"active_hilight_1", NULL, FALSE},
+        {"active_shadow_1", NULL, FALSE},
+        {"active_mid_1", NULL, FALSE},
+        {"active_color_2", NULL, FALSE},
+        {"active_hilight_2", NULL, FALSE},
+        {"active_shadow_2", NULL, FALSE},
+        {"active_mid_2", NULL, FALSE},
+        {"inactive_color_1", NULL, FALSE},
+        {"inactive_hilight_1", NULL, FALSE},
+        {"inactive_shadow_1", NULL, FALSE},
+        {"inactive_mid_1", NULL, FALSE},
+        {"inactive_color_2", NULL, FALSE},
+        {"inactive_hilight_2", NULL, FALSE},
+        {"inactive_shadow_2", NULL, FALSE},
+        {"inactive_mid_2", NULL, FALSE},
+        {"theme", NULL, TRUE},
+        {"keytheme", NULL, TRUE},
+        {"title_font", NULL, FALSE},
+        {"title_alignment", NULL, TRUE},
+        {"full_width_title", NULL, TRUE},
+        {"title_shadow_active", NULL, TRUE},
+        {"title_shadow_inactive", NULL, TRUE},
+        {"button_layout", NULL, TRUE},
+        {"button_spacing", NULL, TRUE},
+        {"title_vertical_offset_active", NULL, TRUE},
+        {"title_vertical_offset_inactive", NULL, TRUE},
+        {"title_horizontal_offset", NULL, TRUE},
+        {"button_offset", NULL, TRUE},
+        {"double_click_action", NULL, TRUE},
+        {"box_move", NULL, TRUE},
+        {"box_resize", NULL, TRUE},
+        {"click_to_focus", NULL, TRUE},
+        {"focus_hint", NULL, TRUE},
+        {"focus_new", NULL, TRUE},
+        {"raise_on_focus", NULL, TRUE},
+        {"raise_delay", NULL, TRUE},
+        {"snap_to_border", NULL, TRUE},
+        {"snap_width", NULL, TRUE},
+        {"dbl_click_time", NULL, TRUE},
+        {"workspace_count", NULL, TRUE},
+        {"wrap_workspaces", NULL, TRUE},
+        {"close_window_key", NULL, TRUE},
+        {"hide_window_key", NULL, TRUE},
+        {"maximize_window_key", NULL, TRUE},
+        {"maximize_vert_key", NULL, TRUE},
+        {"maximize_horiz_key", NULL, TRUE},
+        {"shade_window_key", NULL, TRUE},
+        {"cycle_windows_key", NULL, TRUE},
+        {"move_window_up_key", NULL, TRUE},
+        {"move_window_down_key", NULL, TRUE},
+        {"move_window_left_key", NULL, TRUE},
+        {"move_window_right_key", NULL, TRUE},
+        {"resize_window_up_key", NULL, TRUE},
+        {"resize_window_down_key", NULL, TRUE},
+        {"resize_window_left_key", NULL, TRUE},
+        {"resize_window_right_key", NULL, TRUE},
+        {"next_workspace_key", NULL, TRUE},
+        {"prev_workspace_key", NULL, TRUE},
+        {"add_workspace_key", NULL, TRUE},
+        {"del_workspace_key", NULL, TRUE},
+        {"stick_window_key", NULL, TRUE},
+        {"workspace_1_key", NULL, TRUE},
+        {"workspace_2_key", NULL, TRUE},
+        {"workspace_3_key", NULL, TRUE},
+        {"workspace_4_key", NULL, TRUE},
+        {"workspace_5_key", NULL, TRUE},
+        {"workspace_6_key", NULL, TRUE},
+        {"workspace_7_key", NULL, TRUE},
+        {"workspace_8_key", NULL, TRUE},
+        {"workspace_9_key", NULL, TRUE},
+        {"move_window_next_workspace_key", NULL, TRUE},
+        {"move_window_prev_workspace_key", NULL, TRUE},
+        {"move_window_workspace_1_key", NULL, TRUE},
+        {"move_window_workspace_2_key", NULL, TRUE},
+        {"move_window_workspace_3_key", NULL, TRUE},
+        {"move_window_workspace_4_key", NULL, TRUE},
+        {"move_window_workspace_5_key", NULL, TRUE},
+        {"move_window_workspace_6_key", NULL, TRUE},
+        {"move_window_workspace_7_key", NULL, TRUE},
+        {"move_window_workspace_8_key", NULL, TRUE},
+        {"move_window_workspace_9_key", NULL, TRUE},
+        {"raise_on_click", NULL, TRUE},
+        {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };
 
@@ -682,54 +643,54 @@ gboolean loadSettings(void)
     if(!loadKeyBindings(rc))
     {
         freeRc(rc);
-	return FALSE;
+        return FALSE;
     }
 
-    box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
-    box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
+    params.box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
+    params.box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
 
-    click_to_focus = !g_ascii_strcasecmp("true", getValue("click_to_focus", rc));
-    focus_hint = !g_ascii_strcasecmp("true", getValue("focus_hint", rc));
-    focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
-    raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
-    raise_delay = abs(TOINT(getValue("raise_delay", rc)));
-    raise_on_click = !g_ascii_strcasecmp("true", getValue("raise_on_click", rc));
+    params.click_to_focus = !g_ascii_strcasecmp("true", getValue("click_to_focus", rc));
+    params.focus_hint = !g_ascii_strcasecmp("true", getValue("focus_hint", rc));
+    params.focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
+    params.raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
+    params.raise_delay = abs(TOINT(getValue("raise_delay", rc)));
+    params.raise_on_click = !g_ascii_strcasecmp("true", getValue("raise_on_click", rc));
 
-    snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
-    snap_width = abs(TOINT(getValue("snap_width", rc)));
-    dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
+    params.snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
+    params.snap_width = abs(TOINT(getValue("snap_width", rc)));
+    params.dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
     g_value_init(&tmp_val, G_TYPE_INT);
     if(gdk_setting_get("gtk-double-click-time", &tmp_val))
     {
-        dbl_click_time = abs(g_value_get_int(&tmp_val));
+        params.dbl_click_time = abs(g_value_get_int(&tmp_val));
     }
 
     if(!g_ascii_strcasecmp("shade", getValue("double_click_action", rc)))
     {
-        double_click_action = ACTION_SHADE;
+        params.double_click_action = ACTION_SHADE;
     }
     else if(!g_ascii_strcasecmp("hide", getValue("double_click_action", rc)))
     {
-        double_click_action = ACTION_HIDE;
+        params.double_click_action = ACTION_HIDE;
     }
     else if(!g_ascii_strcasecmp("maximize", getValue("double_click_action", rc)))
     {
-        double_click_action = ACTION_MAXIMIZE;
+        params.double_click_action = ACTION_MAXIMIZE;
     }
     else
     {
-        double_click_action = ACTION_NONE;
+        params.double_click_action = ACTION_NONE;
     }
 
-    if(workspace_count < 0)
+    if(params.workspace_count < 0)
     {
         unsigned long data[1];
-        workspace_count = abs(TOINT(getValue("workspace_count", rc)));
-        setGnomeHint(dpy, root, win_workspace_count, workspace_count);
-        data[0] = workspace_count;
+        params.workspace_count = abs(TOINT(getValue("workspace_count", rc)));
+        setGnomeHint(dpy, root, win_workspace_count, params.workspace_count);
+        data[0] = params.workspace_count;
         XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     }
-    wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
+    params.wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
     freeRc(rc);
     return TRUE;
 }
@@ -741,29 +702,29 @@ static void unloadTheme(void)
 
     for(i = 0; i < 3; i++)
     {
-        freePixmap(dpy, &sides[i][ACTIVE]);
-        freePixmap(dpy, &sides[i][INACTIVE]);
+        freePixmap(dpy, &params.sides[i][ACTIVE]);
+        freePixmap(dpy, &params.sides[i][INACTIVE]);
     }
     for(i = 0; i < 4; i++)
     {
-        freePixmap(dpy, &corners[i][ACTIVE]);
-        freePixmap(dpy, &corners[i][INACTIVE]);
+        freePixmap(dpy, &params.corners[i][ACTIVE]);
+        freePixmap(dpy, &params.corners[i][INACTIVE]);
     }
     for(i = 0; i < BUTTON_COUNT; i++)
     {
-        freePixmap(dpy, &buttons[i][ACTIVE]);
-        freePixmap(dpy, &buttons[i][INACTIVE]);
-        freePixmap(dpy, &buttons[i][PRESSED]);
+        freePixmap(dpy, &params.buttons[i][ACTIVE]);
+        freePixmap(dpy, &params.buttons[i][INACTIVE]);
+        freePixmap(dpy, &params.buttons[i][PRESSED]);
     }
     for(i = 0; i < 5; i++)
     {
-        freePixmap(dpy, &title[i][ACTIVE]);
-        freePixmap(dpy, &title[i][INACTIVE]);
+        freePixmap(dpy, &params.title[i][ACTIVE]);
+        freePixmap(dpy, &params.title[i][INACTIVE]);
     }
-    if(box_gc != None)
+    if(params.box_gc != None)
     {
-        XFreeGC(dpy, box_gc);
-        box_gc = None;
+        XFreeGC(dpy, params.box_gc);
+        params.box_gc = None;
     }
 }
 
@@ -791,39 +752,40 @@ gboolean initSettings(void)
     DBG("entering initSettings\n");
 
     mcs_initted = FALSE;
-    box_gc = None;
-    black_gc = NULL;
-    white_gc = NULL;
-    title_colors[ACTIVE].gc = NULL;
-    title_colors[ACTIVE].allocated = FALSE;
-    title_colors[INACTIVE].gc = NULL;
-    title_colors[INACTIVE].allocated = FALSE;
+    params.box_gc = None;
+    params.black_gc = NULL;
+    params.white_gc = NULL;
+    params.title_colors[ACTIVE].gc = NULL;
+    params.title_colors[ACTIVE].allocated = FALSE;
+    params.title_colors[INACTIVE].gc = NULL;
+    params.title_colors[INACTIVE].allocated = FALSE;
+    params.workspace_count = -1;
 
     for(i = 0; i < 3; i++)
     {
-        initPixmap(&sides[i][ACTIVE]);
-        initPixmap(&sides[i][INACTIVE]);
+        initPixmap(&params.sides[i][ACTIVE]);
+        initPixmap(&params.sides[i][INACTIVE]);
     }
     for(i = 0; i < 4; i++)
     {
-        initPixmap(&corners[i][ACTIVE]);
-        initPixmap(&corners[i][INACTIVE]);
+        initPixmap(&params.corners[i][ACTIVE]);
+        initPixmap(&params.corners[i][INACTIVE]);
     }
     for(i = 0; i < BUTTON_COUNT; i++)
     {
-        initPixmap(&buttons[i][ACTIVE]);
-        initPixmap(&buttons[i][INACTIVE]);
-        initPixmap(&buttons[i][PRESSED]);
+        initPixmap(&params.buttons[i][ACTIVE]);
+        initPixmap(&params.buttons[i][INACTIVE]);
+        initPixmap(&params.buttons[i][PRESSED]);
     }
     for(i = 0; i < 5; i++)
     {
-        initPixmap(&title[i][ACTIVE]);
-        initPixmap(&title[i][INACTIVE]);
+        initPixmap(&params.title[i][ACTIVE]);
+        initPixmap(&params.title[i][INACTIVE]);
     }
 
     if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
     {
-	g_warning("MCS manager not running");
+        g_warning("MCS manager not running");
     }
     client = mcs_client_new(dpy, screen, notify_cb, watch_cb, NULL);
     if(client)
@@ -841,7 +803,7 @@ gboolean initSettings(void)
     {
         return FALSE;
     }
-    
+
     return TRUE;
 }
 

@@ -37,9 +37,9 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, Xpm
     XpmAttributes attr;
 
     DBG("entering loadPixmap\n");
-    
-    g_return_val_if_fail (dir !=NULL, FALSE);
-    g_return_val_if_fail (file !=NULL, FALSE);
+
+    g_return_val_if_fail(dir != NULL, FALSE);
+    g_return_val_if_fail(file != NULL, FALSE);
 
     pm->pixmap = None;
     pm->mask = None;

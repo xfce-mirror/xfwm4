@@ -41,6 +41,7 @@
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
+#include "settings.h"
 #include "pixmap.h"
 
 #define ANY				0
@@ -74,98 +75,59 @@
 #define MARGIN_TOP			2
 #define MARGIN_BOTTOM			3
 
-#define CORNER_TOP_LEFT			0
-#define CORNER_TOP_RIGHT		1
-#define CORNER_BOTTOM_LEFT		2
-#define CORNER_BOTTOM_RIGHT		3
-
-#define SIDE_LEFT			0
-#define SIDE_RIGHT			1
-#define SIDE_BOTTOM			2
-
-#define TITLE_1				0
-#define TITLE_2				1
-#define TITLE_3				2
-#define TITLE_4				3
-#define TITLE_5				4
-
-#define HIDE_BUTTON			0
-#define SHADE_BUTTON			1
-#define MAXIMIZE_BUTTON			2
-#define CLOSE_BUTTON			3
-#define STICK_BUTTON			4
-#define MENU_BUTTON			5
-#define TITLE_SEPARATOR			6
-#define BUTTON_COUNT			6
-
-#define KEY_MOVE_UP			0
-#define KEY_MOVE_DOWN			1
-#define KEY_MOVE_LEFT			2
-#define KEY_MOVE_RIGHT			3
-#define KEY_RESIZE_UP			4
-#define KEY_RESIZE_DOWN			5
-#define KEY_RESIZE_LEFT			6
-#define KEY_RESIZE_RIGHT		7
-#define KEY_CYCLE_WINDOWS		8
-#define KEY_CLOSE_WINDOW		9
-#define KEY_HIDE_WINDOW			10
-#define KEY_MAXIMIZE_WINDOW		11
-#define KEY_MAXIMIZE_VERT		12
-#define KEY_MAXIMIZE_HORIZ		13
-#define KEY_SHADE_WINDOW		14
-#define KEY_NEXT_WORKSPACE		15
-#define KEY_PREV_WORKSPACE		16
-#define KEY_ADD_WORKSPACE		17
-#define KEY_DEL_WORKSPACE		18
-#define KEY_STICK_WINDOW		19
-#define KEY_WORKSPACE_1		        20
-#define KEY_WORKSPACE_2 	        21
-#define KEY_WORKSPACE_3        		22
-#define KEY_WORKSPACE_4        		23
-#define KEY_WORKSPACE_5        		24
-#define KEY_WORKSPACE_6        		25
-#define KEY_WORKSPACE_7        		26
-#define KEY_WORKSPACE_8        		27
-#define KEY_WORKSPACE_9        		28
-#define KEY_MOVE_NEXT_WORKSPACE		29
-#define KEY_MOVE_PREV_WORKSPACE		30
-#define KEY_MOVE_WORKSPACE_1		31
-#define KEY_MOVE_WORKSPACE_2		32
-#define KEY_MOVE_WORKSPACE_3		33
-#define KEY_MOVE_WORKSPACE_4		34
-#define KEY_MOVE_WORKSPACE_5		35
-#define KEY_MOVE_WORKSPACE_6        	36
-#define KEY_MOVE_WORKSPACE_7        	37
-#define KEY_MOVE_WORKSPACE_8        	38
-#define KEY_MOVE_WORKSPACE_9        	39
-#define KEY_COUNT			40
-
-#define ALIGN_LEFT			0
-#define ALIGN_RIGHT			1
-#define ALIGN_CENTER			2
-
-#define ACTION_NONE			0
-#define ACTION_MAXIMIZE			1
-#define ACTION_SHADE			2
-#define ACTION_HIDE			3
-
 #define CLIENT_MIN_VISIBLE              5
 
-#define CAN_HIDE_WINDOW(c)	(!(c->transient_for) && !(c->skip_taskbar) && (c->has_hide))
-#define CAN_MAXIMIZE_WINDOW(c)	((c->has_maximize) && (c->has_resize) && (c->is_resizable))
+#define CLIENT_FLAG_FOCUS	       (1L<<0)
+#define CLIENT_FLAG_ABOVE	       (1L<<1)
+#define CLIENT_FLAG_BELOW	       (1L<<2)
+#define CLIENT_FLAG_FULLSCREEN         (1L<<3)
+#define CLIENT_FLAG_HAS_BORDER         (1L<<4)
+#define CLIENT_FLAG_HAS_MENU 	       (1L<<5)
+#define CLIENT_FLAG_HAS_MAXIMIZE       (1L<<6)
+#define CLIENT_FLAG_HAS_CLOSE	       (1L<<7)
+#define CLIENT_FLAG_HAS_HIDE           (1L<<8)
+#define CLIENT_FLAG_HAS_MOVE           (1L<<9)
+#define CLIENT_FLAG_HAS_RESIZE         (1L<<10)
+#define CLIENT_FLAG_IS_RESIZABLE       (1L<<11)
+#define CLIENT_FLAG_HAS_STRUTS         (1L<<12)
+#define CLIENT_FLAG_HIDDEN	       (1L<<13)
+#define CLIENT_FLAG_MANAGED	       (1L<<14)
+#define CLIENT_FLAG_MAXIMIZED_VERT     (1L<<15)
+#define CLIENT_FLAG_MAXIMIZED_HORIZ    (1L<<16)
+#define CLIENT_FLAG_MAXIMIZED          (CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_MAXIMIZED_HORIZ)
+#define CLIENT_FLAG_SHADED	       (1L<<17)
+#define CLIENT_FLAG_SKIP_PAGER         (1L<<18)
+#define CLIENT_FLAG_SKIP_TASKBAR       (1L<<19)
+#define CLIENT_FLAG_STATE_MODAL        (1L<<20)
+#define CLIENT_FLAG_STICKY	       (1L<<21)
+#define CLIENT_FLAG_VISIBLE	       (1L<<22)
+#define CLIENT_FLAG_WM_DELETE	       (1L<<23)
+#define CLIENT_FLAG_WM_INPUT           (1L<<24)
+#define CLIENT_FLAG_WM_TAKEFOCUS       (1L<<25)
+
+/* Convenient macros */
+#define CLIENT_FLAG_TEST(c,f)			(c->client_flag & (f))
+#define CLIENT_FLAG_TEST_ALL(c,f)		((c->client_flag & (f)) == (f))
+#define CLIENT_FLAG_TEST_AND_NOT(c,f1,f2)	((c->client_flag & (f1 | f2)) == (f1))
+#define CLIENT_FLAG_SET(c,f)			(c->client_flag |= (f))
+#define CLIENT_FLAG_UNSET(c,f)			(c->client_flag &= ~(f))
+#define CLIENT_FLAG_TOGGLE(c,f)			(c->client_flag ^= (f))
+
+#define CLIENT_CAN_HIDE_WINDOW(c)	(!(c->transient_for) && CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_HIDE, CLIENT_FLAG_SKIP_TASKBAR))
+#define CLIENT_CAN_MAXIMIZE_WINDOW(c)	CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE)
 
 typedef enum
 {
-    UNSET               = 0,
-    WINDOW_NORMAL       = (1<<0),
-    WINDOW_DESKTOP      = (1<<1),
-    WINDOW_DOCK         = (1<<2),
-    WINDOW_DIALOG       = (1<<3),
-    WINDOW_MODAL_DIALOG = (1<<4),
-    WINDOW_TOOLBAR      = (1<<5),
-    WINDOW_MENU         = (1<<6),
-    WINDOW_UTILITY      = (1<<7),
-    WINDOW_SPLASHSCREEN = (1<<8)
+    UNSET = 0,
+    WINDOW_NORMAL = (1 << 0),
+    WINDOW_DESKTOP = (1 << 1),
+    WINDOW_DOCK = (1 << 2),
+    WINDOW_DIALOG = (1 << 3),
+    WINDOW_MODAL_DIALOG = (1 << 4),
+    WINDOW_TOOLBAR = (1 << 5),
+    WINDOW_MENU = (1 << 6),
+    WINDOW_UTILITY = (1 << 7),
+    WINDOW_SPLASHSCREEN = (1 << 8)
 }
 WindowType;
 
@@ -197,6 +159,7 @@ struct _Client
     int width;
     int height;
     int border_width;
+    unsigned int ignore_unmap;
     int old_x;
     int old_y;
     int old_width;
@@ -211,32 +174,7 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[4];
     char *name;
-    unsigned int focus:1;
-    unsigned int above:1;
-    unsigned int below:1;
-    unsigned int fullscreen:1;
-    unsigned int has_border:1;
-    unsigned int has_menu:1;
-    unsigned int has_maximize:1;
-    unsigned int has_close:1;
-    unsigned int has_hide:1;
-    unsigned int has_move:1;
-    unsigned int has_resize:1;
-    unsigned int is_resizable:1;
-    unsigned int has_struts:1;
-    unsigned int hidden:1;
-    unsigned int ignore_unmap;
-    unsigned int managed:1;
-    unsigned int maximized:1;
-    unsigned int shaded:1;
-    unsigned int skip_pager:1;
-    unsigned int skip_taskbar:1;
-    unsigned int state_modal:1;
-    unsigned int sticky:1;
-    unsigned int visible:1;
-    unsigned int wm_delete:1;
-    unsigned int wm_input:1;
-    unsigned int wm_takefocus:1;
+    unsigned long client_flag;
 };
 
 extern Client *clients;
@@ -261,6 +199,7 @@ void clientUpdateAllFrames(int);
 void clientGrabKeys(Client *);
 void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);
+Client *clientGetNext(Client *, int);
 void clientShow(Client *, int);
 void clientHide(Client *, int);
 void clientHideAll(Client *);
@@ -276,16 +215,12 @@ void clientUnstick(Client *);
 void clientToggleSticky(Client *);
 inline void clientRemoveMaximizeFlag(Client *);
 void clientToggleMaximized(Client *, int);
-void clientToggleFullscreen(Client *);
-void clientToggleAbove(Client *);
-void clientToggleBelow(Client *);
 void clientUpdateFocus(Client *);
 inline gboolean clientAcceptFocus(Client * c);
 void clientSetFocus(Client *, int);
 Client *clientGetFocus();
 void clientMove(Client *, XEvent *);
 void clientResize(Client *, int, XEvent *);
-Client *clientGetNext(Client *, int);
 void clientCycle(Client *);
 void clientButtonPress(Client *, Window, XButtonEvent *);
 

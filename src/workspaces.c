@@ -34,9 +34,6 @@
 #include "hints.h"
 #include "debug.h"
 
-int workspace_count = -1, wrap_workspaces;
-int workspace;
-
 void workspaceSwitch(int new_ws, Client * c2)
 {
     Client *c, *f = NULL;
@@ -47,11 +44,11 @@ void workspaceSwitch(int new_ws, Client * c2)
 
     DBG("entering workspaceSwitch\n");
 
-    if((new_ws < 0) && wrap_workspaces)
+    if((new_ws < 0) && params.wrap_workspaces)
     {
-        new_ws = workspace_count - 1;
+        new_ws = params.workspace_count - 1;
     }
-    if((new_ws > workspace_count - 1) && wrap_workspaces)
+    if((new_ws > params.workspace_count - 1) && params.wrap_workspaces)
     {
         new_ws = 0;
     }
@@ -63,8 +60,8 @@ void workspaceSwitch(int new_ws, Client * c2)
     previous = clientGetFocus();
     if(previous)
     {
-        previous->focus = True;
-        if(previous->sticky)
+        CLIENT_FLAG_SET(previous, CLIENT_FLAG_FOCUS);
+        if(CLIENT_FLAG_TEST(previous, CLIENT_FLAG_STICKY))
         {
             f = previous;
         }
@@ -89,7 +86,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     for(last = clients, i = 0; i < client_count; last = last->next, i++);
     for(c = last, i = 0; i < client_count; c = c->prev, i++)
     {
-        if((c->visible) && !(c->sticky) && !(c->transient_for) && ((c->win_workspace != new_ws)))
+        if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !(c->transient_for) && ((c->win_workspace != new_ws)))
         {
             clientHide(c, False);
         }
@@ -97,20 +94,20 @@ void workspaceSwitch(int new_ws, Client * c2)
     /* Second pass */
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
-        if(c->sticky)
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientSetWorkspace(c, new_ws, TRUE);
         }
         else
         {
-            if((c->win_workspace == new_ws) && !(c->transient_for) && !(c->hidden))
+            if((c->win_workspace == new_ws) && !(c->transient_for) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
             {
                 clientShow(c, False);
-                if((!f) && (c->focus))
+                if((!f) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_FOCUS))
                 {
                     f = c;
                 }
-                c->focus = False;
+                CLIENT_FLAG_UNSET(c, CLIENT_FLAG_FOCUS);
             }
         }
     }
@@ -121,7 +118,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     workspaceUpdateArea(margins, gnome_margins);
     /* Just get rid of EnterNotify events when using focus follow mouse */
     XSync(dpy, 0);
-    if(!click_to_focus)
+    if(!params.click_to_focus)
     {
         while(XCheckTypedEvent(dpy, EnterNotify, &an_event));
     }
@@ -140,7 +137,7 @@ void workspaceSetCount(int count)
     {
         count = 1;
     }
-    if(count == workspace_count)
+    if(count == params.workspace_count)
     {
         return;
     }
@@ -148,7 +145,7 @@ void workspaceSetCount(int count)
     setGnomeHint(dpy, root, win_workspace_count, count);
     data[0] = count;
     XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
-    workspace_count = count;
+    params.workspace_count = count;
 
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
@@ -161,7 +158,7 @@ void workspaceSetCount(int count)
     {
         workspaceSwitch(count - 1, NULL);
     }
-    set_net_workarea(dpy, root, workspace_count, margins);
+    set_net_workarea(dpy, root, params.workspace_count, margins);
 }
 
 void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
@@ -181,7 +178,7 @@ void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
     }
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
-        if((c->has_struts) && (c->visible))
+        if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STRUTS | CLIENT_FLAG_VISIBLE))
         {
             margins[MARGIN_TOP] = MAX(margins[MARGIN_TOP], c->struts[MARGIN_TOP]);
             margins[MARGIN_LEFT] = MAX(margins[MARGIN_LEFT], c->struts[MARGIN_LEFT]);
@@ -193,6 +190,6 @@ void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
     if((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
     {
         DBG("Margins have changed, updating net_workarea\n");
-        set_net_workarea(dpy, screen, workspace_count, margins);
+        set_net_workarea(dpy, screen, params.workspace_count, margins);
     }
 }

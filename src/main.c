@@ -60,6 +60,7 @@ Window root, gnome_win;
 Colormap cmap;
 int screen;
 int depth;
+int workspace;
 gboolean use_xinerama;
 int xinerama_heads;
 CARD32 margins[4];
@@ -162,6 +163,7 @@ static int initialize(int argc, char **argv)
     screen = XDefaultScreen(dpy);
     depth = DefaultDepth(dpy, screen);
     cmap = DefaultColormap(dpy, screen);
+    workspace = 0;
 
     XSetErrorHandler(handleXError);
     shape = XShapeQueryExtension(dpy, &shape_event, &dummy);
@@ -231,7 +233,7 @@ static int initialize(int argc, char **argv)
     set_net_supported_hint(dpy, screen, gnome_win);
     workspaceUpdateArea(margins, gnome_margins);
     init_net_desktop_params(dpy, screen, workspace);
-    set_net_workarea(dpy, screen, workspace_count, margins);
+    set_net_workarea(dpy, screen, params.workspace_count, margins);
     XSetInputFocus(dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks();
 
@@ -283,8 +285,8 @@ int run_daemon(int argc, char **argv, gboolean daemon_mode)
 
 int main(int argc, char **argv)
 {
-    pid_t pid, ppid;
-    static struct sigaction pact, cact;
+    pid_t pid;
+    static struct sigaction pact;
     int i;
     gboolean daemon_mode = FALSE;
 

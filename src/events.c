@@ -81,7 +81,7 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev, gboolean al
     total = 0;
     clicks = 1;
 
-    while((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < dbl_click_time) && ((t1 - t0) < dbl_click_time))
+    while((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < params.dbl_click_time) && ((t1 - t0) < params.dbl_click_time))
     {
         g_usleep(10000);
         total += 10;
@@ -137,12 +137,12 @@ static void reset_timeout(void)
     {
         gtk_timeout_remove(raise_timeout);
     }
-    raise_timeout = gtk_timeout_add(raise_delay, (GtkFunction) raise_cb, NULL);
+    raise_timeout = gtk_timeout_add(params.raise_delay, (GtkFunction) raise_cb, NULL);
 }
 
 static inline void _moveRequest(Client * c, XEvent * ev)
 {
-    if((c->has_border) && !(c->fullscreen) && (c->has_move))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MOVE) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove(c, ev);
     }
@@ -152,11 +152,11 @@ static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
 {
     clientSetFocus(c, True);
 
-    if((c->has_resize) && (c->is_resizable))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_RESIZE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE))
     {
         clientResize(c, corner, ev);
     }
-    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
+    else if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MOVE) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove(c, ev);
     }
@@ -174,7 +174,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
     state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
     for(key = 0; key < KEY_COUNT; key++)
     {
-        if((keys[key].keycode == ev->keycode) && (keys[key].modifier == state))
+        if((params.keys[key].keycode == ev->keycode) && (params.keys[key].modifier == state))
         {
             break;
         }
@@ -194,7 +194,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                if((c->has_resize) && (c->is_resizable))
+                if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_RESIZE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE))
                 {
                     clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 }
@@ -206,25 +206,25 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 clientClose(c);
                 break;
             case KEY_HIDE_WINDOW:
-                if(CAN_HIDE_WINDOW(c))
+                if(CLIENT_CAN_HIDE_WINDOW(c))
                 {
                     clientHide(c, True);
                 }
                 break;
             case KEY_MAXIMIZE_WINDOW:
-                if(CAN_MAXIMIZE_WINDOW(c))
+                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
                 {
                     clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
                 }
                 break;
             case KEY_MAXIMIZE_VERT:
-                if(CAN_MAXIMIZE_WINDOW(c))
+                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
                 {
                     clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
                 }
                 break;
             case KEY_MAXIMIZE_HORIZ:
-                if(CAN_MAXIMIZE_WINDOW(c))
+                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
                 {
                     clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
                 }
@@ -239,10 +239,10 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 workspaceSwitch(workspace - 1, NULL);
                 break;
             case KEY_ADD_WORKSPACE:
-                workspaceSetCount(workspace_count + 1);
+                workspaceSetCount(params.workspace_count + 1);
                 break;
             case KEY_DEL_WORKSPACE:
-                workspaceSetCount(workspace_count - 1);
+                workspaceSetCount(params.workspace_count - 1);
                 break;
             case KEY_STICK_WINDOW:
                 clientToggleSticky(c);
@@ -326,10 +326,10 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 workspaceSwitch(workspace - 1, NULL);
                 break;
             case KEY_ADD_WORKSPACE:
-                workspaceSetCount(workspace_count + 1);
+                workspaceSetCount(params.workspace_count + 1);
                 break;
             case KEY_DEL_WORKSPACE:
-                workspaceSetCount(workspace_count - 1);
+                workspaceSetCount(params.workspace_count - 1);
                 break;
             case KEY_WORKSPACE_1:
                 workspaceSwitch(0, NULL);
@@ -415,8 +415,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
         if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
             clientSetFocus(c, True);
-            if(raise_on_click)
+            if(params.raise_on_click)
+            {
                 clientRaise(c);
+            }
             clientButtonPress(c, win, ev);
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
@@ -441,8 +443,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
             else
             {
                 clientSetFocus(c, True);
-                if(raise_on_click)
+                if(params.raise_on_click)
+                {
                     clientRaise(c);
+                }
                 ev->window = ev->root;
                 if(button_handler_id)
                 {
@@ -466,10 +470,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
-                switch (double_click_action)
+                switch (params.double_click_action)
                 {
                     case ACTION_MAXIMIZE:
-                        if(CAN_MAXIMIZE_WINDOW(c))
+                        if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
                         {
                             clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
                         }
@@ -478,7 +482,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
                         clientToggleShaded(c);
                         break;
                     case ACTION_HIDE:
-                        if(CAN_HIDE_WINDOW(c))
+                        if(CLIENT_CAN_HIDE_WINDOW(c))
                         {
                             clientHide(c, True);
                         }
@@ -523,7 +527,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             if(ev->button == Button1)
             {
                 clientSetFocus(c, True);
-                if(raise_on_click)
+                if(params.raise_on_click)
                     clientRaise(c);
             }
             if(ev->window == c->window)
@@ -650,7 +654,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             wc.stack_mode &= ~CWStackMode;
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
-        if((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && c->maximized)
+        if((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag(c);
         }
@@ -673,7 +677,7 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
     DBG("EnterNotify window is (%#lx)\n", ev->window);
 
     c = clientGetFromWindow(ev->window, FRAME);
-    if(c && !(click_to_focus) && (clientAcceptFocus(c)))
+    if(c && !(params.click_to_focus) && (clientAcceptFocus(c)))
     {
         DBG("EnterNotify window is \"%s\"\n", c->name);
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
@@ -702,7 +706,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
         DBG("focus set to \"%s\" (%#lx)\n", c->name, c->window);
         clientUpdateFocus(c);
         frameDraw(c);
-        if(raise_on_focus && !click_to_focus)
+        if(params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout();
         }
@@ -736,13 +740,16 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
     {
         if(ev->atom == XA_WM_NORMAL_HINTS)
         {
-            gboolean previous_value;
+            unsigned long previous_value;
 
             DBG("client \"%s\" (%#lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
-            previous_value = c->is_resizable;
-            c->is_resizable = !(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height)));
-            if(c->is_resizable != previous_value)
+            previous_value = (c->client_flag & CLIENT_FLAG_IS_RESIZABLE);
+            if(!(c->size->flags & (PMinSize | PMaxSize)) || ((c->size->flags & (PMinSize | PMaxSize)) && ((c->size->min_width != c->size->max_width) || (c->size->min_height != c->size->max_height))))
+            {
+                CLIENT_FLAG_SET(c, CLIENT_FLAG_IS_RESIZABLE);
+            }
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE) != previous_value)
             {
                 frameDraw(c);
             }
@@ -830,7 +837,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             DBG("client \"%s\" (%#lx) has received a wm_change_state event\n", c->name, c->window);
-            if(CAN_HIDE_WINDOW(c))
+            if(CLIENT_CAN_HIDE_WINDOW(c))
             {
                 clientHide(c, True);
             }
@@ -1041,13 +1048,13 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
             break;
         case MENU_OP_MAXIMIZE:
         case MENU_OP_UNMAXIMIZE:
-            if((c) && CAN_MAXIMIZE_WINDOW(c))
+            if((c) && CLIENT_CAN_MAXIMIZE_WINDOW(c))
             {
                 clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
             }
             break;
         case MENU_OP_MINIMIZE:
-            if((c) && CAN_HIDE_WINDOW(c))
+            if((c) && CLIENT_CAN_HIDE_WINDOW(c))
             {
                 clientHide(c, True);
             }
@@ -1112,15 +1119,15 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
         insensitive = 0;
 
-        if(!(c->has_close))
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_CLOSE))
         {
             insensitive |= MENU_OP_DELETE;
         }
 
-        if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
             ops |= MENU_OP_UNMAXIMIZE;
-            if(!CAN_MAXIMIZE_WINDOW(c))
+            if(!CLIENT_CAN_MAXIMIZE_WINDOW(c))
             {
                 insensitive |= MENU_OP_UNMAXIMIZE;
             }
@@ -1128,16 +1135,16 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         else
         {
             ops |= MENU_OP_MAXIMIZE;
-            if(!CAN_MAXIMIZE_WINDOW(c))
+            if(!CLIENT_CAN_MAXIMIZE_WINDOW(c))
             {
                 insensitive |= MENU_OP_MAXIMIZE;
             }
         }
 
-        if(c->hidden)
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
         {
             ops |= MENU_OP_UNMINIMIZE;
-            if(!CAN_HIDE_WINDOW(c))
+            if(!CLIENT_CAN_HIDE_WINDOW(c))
             {
                 insensitive |= MENU_OP_UNMINIMIZE;
             }
@@ -1145,13 +1152,13 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         else
         {
             ops |= MENU_OP_MINIMIZE;
-            if(!CAN_HIDE_WINDOW(c))
+            if(!CLIENT_CAN_HIDE_WINDOW(c))
             {
                 insensitive |= MENU_OP_MINIMIZE;
             }
         }
 
-        if(c->win_state & WIN_STATE_SHADED)
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             ops |= MENU_OP_UNSHADE;
         }
@@ -1160,10 +1167,10 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
             ops |= MENU_OP_SHADE;
         }
 
-        if(c->sticky)
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             ops |= MENU_OP_UNSTICK;
-            if(!(c->has_menu))
+            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
             {
                 insensitive |= MENU_OP_UNSTICK;
             }
@@ -1171,7 +1178,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         else
         {
             ops |= MENU_OP_STICK;
-            if(!(c->has_menu))
+            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
             {
                 insensitive |= MENU_OP_STICK;
             }
@@ -1226,7 +1233,7 @@ static gboolean set_reload(void)
     return (TRUE);
 }
 
-static gboolean set_dbl_click_time(void)
+static gboolean dbl_click_time(void)
 {
     GValue tmp_val = { 0, };
 
@@ -1235,7 +1242,7 @@ static gboolean set_dbl_click_time(void)
     g_value_init(&tmp_val, G_TYPE_INT);
     if(gdk_setting_get("gtk-double-click-time", &tmp_val))
     {
-        dbl_click_time = abs(g_value_get_int(&tmp_val));
+        params.dbl_click_time = abs(g_value_get_int(&tmp_val));
     }
 
     return (TRUE);
@@ -1270,6 +1277,6 @@ void initGtkCallbacks(void)
     {
         g_signal_connect(settings, "notify::gtk-theme-name", G_CALLBACK(set_reload), NULL);
         g_signal_connect(settings, "notify::gtk-font-name", G_CALLBACK(set_reload), NULL);
-        g_signal_connect(settings, "notify::gtk-double-click-time", G_CALLBACK(set_dbl_click_time), NULL);
+        g_signal_connect(settings, "notify::gtk-double-click-time", G_CALLBACK(dbl_click_time), NULL);
     }
 }

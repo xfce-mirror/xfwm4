@@ -35,16 +35,15 @@
 #define DEFAULT_THEME "microdeck2"
 #endif
 
-gboolean parseRc(const gchar *file, const gchar *dir, Settings rc[])
+gboolean parseRc(const gchar * file, const gchar * dir, Settings rc[])
 {
     gchar buf[512];
     gchar *filename, *lvalue, *rvalue;
     FILE *fp;
-    gint i;
 
     DBG("entering parseRc\n");
-    
-    g_return_val_if_fail (file != NULL, FALSE);
+
+    g_return_val_if_fail(file != NULL, FALSE);
 
     if(dir)
     {
@@ -56,8 +55,8 @@ gboolean parseRc(const gchar *file, const gchar *dir, Settings rc[])
     }
 
     fp = fopen(filename, "r");
-    g_free (filename);
-    
+    g_free(filename);
+
     if(!fp)
     {
         return FALSE;
@@ -156,7 +155,7 @@ gboolean setIntValueFromInt(const gchar * lvalue, int value, Settings rc[])
     return result;
 }
 
-gchar *getThemeDir(const gchar *theme)
+gchar *getThemeDir(const gchar * theme)
 {
     if(!theme)
     {
