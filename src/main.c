@@ -437,6 +437,7 @@ initialize (int argc, char **argv, gint compositor_mode)
 
         XDefineCursor (display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(display_info));
     }
+
     /* No screen to manage, give up */
     if (!display_info->nb_screens)
     {

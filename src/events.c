@@ -2218,7 +2218,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 }
 
 static gboolean
-set_reload (void)
+set_reload (GObject * obj, GdkEvent * ev, gpointer data)
 {
     TRACE ("setting reload flag so all prefs will be reread at next event loop");
     xfwm4_reload = TRUE;
@@ -2226,13 +2226,12 @@ set_reload (void)
 }
 
 static gboolean
-dbl_click_time (gpointer data)
+dbl_click_time_cb (GObject * obj, GdkEvent * ev, gpointer data)
 {
     DisplayInfo *display_info = (DisplayInfo *) data;
     GValue tmp_val = { 0, };
 
     g_return_val_if_fail (display_info, TRUE);
-    g_print ("setting dbl_click_time\n");
     
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
@@ -2255,7 +2254,7 @@ client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
 
     if (ev->message_type == atom_rcfiles)
     {
-        set_reload ();
+        set_reload (G_OBJECT (widget), (GdkEvent *) ev, data);
     }
 
     return (FALSE);
@@ -2279,6 +2278,6 @@ initGtkCallbacks (ScreenInfo *screen_info)
         g_signal_connect (settings, "notify::gtk-font-name",
             G_CALLBACK (set_reload), NULL);
         g_signal_connect (settings, "notify::gtk-double-click-time",
-            G_CALLBACK (dbl_click_time), (gpointer) (screen_info->display_info));
+            G_CALLBACK (dbl_click_time_cb), (gpointer) (screen_info->display_info));
     }
 }
