@@ -112,8 +112,7 @@ build_session_filename(SessionClient *client_session)
     
     if (!xfce_mkdirhier(path, 0700, &error)) 
     {
-        g_warning("Unable to create session dir %s: %s",
-                   path, error->message);
+        g_warning("Unable to create session dir %s: %s", path, error->message);
         g_error_free (error);
         g_free (path);
         return NULL;
@@ -208,8 +207,7 @@ ensure_basedir_spec (void)
 
     if (!xfce_mkdirhier(new, 0700, &error)) 
     {
-        g_warning("Unable to create config dir %s: %s",
-                  new, error->message);
+        g_warning("Unable to create config dir %s: %s", new, error->message);
         g_error_free (error);
         g_free (new);
         return;
@@ -349,7 +347,7 @@ parse_compositor (const gchar *s)
         }
         else
         {
-            g_warning ("%s: Unrecognized compositor option \"%s\"", PACKAGE, rvalue);
+            g_warning ("Unrecognized compositor option \"%s\"", rvalue);
         }
     }
 
@@ -504,13 +502,11 @@ main (int argc, char **argv)
     switch (status)
     {
         case -1:
-            g_warning ("%s: Another Window Manager is already running",
-                PACKAGE);
+            g_warning ("Another Window Manager is already running");
             exit (1);
             break;
         case -2:
-            g_warning ("%s: Missing data from default files",
-                PACKAGE);
+            g_warning ("Missing data from default files");
             exit (1);
             break;
         case 0:
@@ -519,16 +515,14 @@ main (int argc, char **argv)
 #ifdef HAVE_DAEMON
                 if (daemon(TRUE, TRUE) < 0) 
                 {
-                        g_warning("%s: Failed to enter daemon mode: %s",
-                                        g_get_prgname(), g_strerror(errno));
+                        g_warning("Failed to enter daemon mode: %s", g_strerror(errno));
                         exit(EXIT_FAILURE);
                 }
 #else /* !HAVE_DAEMON */
                 switch (fork ())
                 {
                     case -1:
-                        g_warning ("%s: Failed to create new process: %s",
-                                                                g_get_prgname(), g_strerror(errno));
+                        g_warning ("Failed to create new process: %s", g_strerror(errno));
                         exit (1);
                         break;
                     case 0:    /* child */
@@ -549,7 +543,7 @@ main (int argc, char **argv)
             gtk_main ();
             break;
         default:
-            g_warning ("%s: Unknown error occured", PACKAGE);
+            g_warning ("Unknown error occured");
             exit (1);
             break;
     }

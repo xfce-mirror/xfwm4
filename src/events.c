@@ -317,7 +317,7 @@ spawn_shortcut (ScreenInfo *screen_info, int i)
     {
         if (error)
         {
-            g_warning ("%s: %s", g_get_prgname (), error->message);
+            g_warning ("%s", error->message);
             g_error_free (error);
         }
     }
@@ -1066,10 +1066,6 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
         clientPassFocus (c->screen_info, c, c);
         clientUnframe (c, FALSE);
-    }
-    else
-    {
-        compositorRemoveWindow (display_info, ev->window);
     }
 }
 

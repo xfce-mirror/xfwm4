@@ -1482,6 +1482,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
     {
         map_win (new);
     }
+    TRACE ("window 0x%lx added", id);
 
     myDisplayUngrabServer (display_info);
 }
@@ -1534,9 +1535,9 @@ restack_win (CWindow *cw, Window above)
         else
         {
             /* Don't know what to do */
-            DBG ("The window 0x%lx has not been restacked\n"
-                 "because the specified sibling 0x%lx was\n"
-                 "not found in our stack", cw->id, above);
+            g_warning ("The window 0x%lx has not been restacked\n"
+                       "because the specified sibling 0x%lx was "
+                       "not found in our stack", cw->id, above);
         }
     }
 }
@@ -1894,6 +1895,22 @@ compositorHandleReparentNotify (DisplayInfo *display_info, XReparentEvent *ev)
     }
 }
 
+static void
+compositorHandleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent *ev)
+{
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
+
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+    
+    compositorRemoveWindow (display_info, ev->window);
+}
+
 #endif /* HAVE_COMPOSITOR */
 
 void
@@ -2052,6 +2069,10 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleCreateNotify (display_info, (XCreateWindowEvent *) ev);
     }
+    else if (ev->type == DestroyNotify)
+    {
+        compositorHandleDestroyNotify (display_info, (XDestroyWindowEvent *) ev);
+    }
     else if (ev->type == ConfigureNotify)
     {
         compositorHandleConfigureNotify (display_info, (XConfigureEvent *) ev);
@@ -2115,7 +2136,7 @@ compositorInitDisplay (DisplayInfo *display_info)
                                 &display_info->composite_event_base,
                                 &display_info->composite_error_base))
     {
-        g_warning ("%s: The display does not support the XComposite extension.", PACKAGE);
+        g_warning ("The display does not support the XComposite extension.");
         display_info->have_composite = FALSE;
         display_info->composite_event_base = 0;
         display_info->composite_error_base = 0;
@@ -2128,7 +2149,7 @@ compositorInitDisplay (DisplayInfo *display_info)
                             &display_info->damage_event_base,
                             &display_info->damage_error_base))
     {
-        g_warning ("%s: The display does not support the XDamage extension.", PACKAGE);
+        g_warning ("The display does not support the XDamage extension.");
         display_info->have_damage = FALSE;
         display_info->damage_event_base = 0;
         display_info->damage_error_base = 0;
@@ -2141,7 +2162,7 @@ compositorInitDisplay (DisplayInfo *display_info)
                             &display_info->fixes_event_base,
                             &display_info->fixes_error_base))
     {
-        g_warning ("%s: The display does not support the XFixes extension.", PACKAGE);
+        g_warning ("The display does not support the XFixes extension.");
         display_info->have_fixes = FALSE;
         display_info->fixes_event_base = 0;
         display_info->fixes_error_base = 0;
@@ -2159,7 +2180,7 @@ compositorInitDisplay (DisplayInfo *display_info)
                                     && (display_info->have_fixes));
     if (!display_info->enable_compositor)
     {
-        g_warning ("%s: Compositing manager disabled.", PACKAGE);
+        g_warning ("Compositing manager disabled.");
     }
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
@@ -2213,7 +2234,7 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     XSync (display_info->dpy, FALSE);
     if (gdk_error_trap_pop ())
     {
-        g_warning ("%s: Another compositing manager is running on screen %i", PACKAGE, screen_info->screen);
+        g_warning ("Another compositing manager is running on screen %i", screen_info->screen);
         return FALSE;
     }
 
@@ -2228,7 +2249,7 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
                                                             screen_info->screen));
     if (!visual_format)
     {
-        g_warning ("%s: Cannot find visual format on screen %i", PACKAGE, screen_info->screen);
+        g_warning ("Cannot find visual format on screen %i", screen_info->screen);
         return FALSE;
     }
 
@@ -2238,7 +2259,7 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
 
     if (screen_info->rootPicture == None)
     {
-        g_warning ("%s: Cannot create root picture on screen %i", PACKAGE, screen_info->screen);
+        g_warning ("Cannot create root picture on screen %i", screen_info->screen);
         return FALSE;
     }
 

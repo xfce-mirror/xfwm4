@@ -408,7 +408,7 @@ loadRcData (ScreenInfo *screen_info, Settings rc[])
 
     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
-        g_warning ("%s: Missing defaults file", g_get_prgname ());
+        g_warning ("Missing defaults file");
         exit (1);
     }
     keythemevalue = getValue ("keytheme", rc);
@@ -961,14 +961,13 @@ loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
         keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
         if (!parseRc (KEYTHEMERC, keytheme, rc))
         {
-            g_warning ("%s: specified key theme \"%s\" missing, using default",
-                       g_get_prgname (), keythemevalue);
+            g_warning ("Specified key theme \"%s\" missing, using default", keythemevalue);
         }
         g_free (keytheme);
 
         if (!checkRc (rc))
         {
-            g_warning ("%s: Missing values in defaults file", g_get_prgname ());
+            g_warning ("Missing values in defaults file");
             return FALSE;
         }
     }
