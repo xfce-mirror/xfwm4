@@ -105,6 +105,8 @@ static inline void clientKeepVisible(Client * c);
 static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1);
 static void clientInitPosition(Client * c);
 static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained);
+static inline void clientFree(Client * c);
+static inline void clientApplyInitialNetState(Client *c);
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointer data);
@@ -175,7 +177,17 @@ static void clientToggleFullscreen(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
-    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    {
+        clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+    }
+    else
+    {
+        c->x = wc.x;
+        c->y = wc.y;
+        c->height = wc.height;
+        c->width = wc.width;
+    }
 }
 
 static void clientToggleAbove(Client * c)
@@ -1966,6 +1978,55 @@ static inline void clientFree(Client * c)
     free(c);
 }
 
+static inline void clientApplyInitialNetState(Client *c)
+{
+    g_return_if_fail(c != NULL);
+
+    DBG("entering clientApplyInitialNetState\n");
+
+    /* We check that afterwards to make sure all states are now known */
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
+    {
+        unsigned long mode = 0;
+	
+        DBG("Applying client's initial state: maximized\n");
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ))
+        {
+            DBG("initial state: maximized horiz.\n");
+            mode |= WIN_STATE_MAXIMIZED_HORIZ;
+        }
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_VERT))
+        {
+            DBG("initial state: maximized vert.\n");
+            mode |= WIN_STATE_MAXIMIZED_VERT;
+        }
+        if(mode & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT))
+        {
+            DBG("initial state: fully maximized\n");
+            mode |= WIN_STATE_MAXIMIZED;
+            mode &= ~(WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
+        }
+	/* Unset fullscreen mode so that clientToggleMaximized() really change the state */
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
+        clientToggleMaximized(c, mode);
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    {
+        DBG("Applying client's initial state: fullscreen\n");
+        clientToggleFullscreen(c);
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+    {
+        DBG("Applying client's initial state: above\n");
+        clientToggleAbove(c);
+    }
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
+    {
+        DBG("Applying client's initial state: below\n");
+        clientToggleBelow(c);
+    }
+}
+
 void clientClearPixmapCache(Client * c)
 {
     g_return_if_fail(c != NULL);
@@ -2122,24 +2183,7 @@ void clientFrame(Window w)
     clientGetInitialNetWmDesktop(c);
     clientGetNetWmType(c);
     clientGetNetStruts(c);
-
-    /* We check that afterwards to make sure all states are now known */
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
-    {
-        DBG("Applying client's initial state: fullscreen\n");
-        clientToggleFullscreen(c);
-    }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
-    {
-        DBG("Applying client's initial state: above\n");
-        clientToggleAbove(c);
-    }
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_BELOW))
-    {
-        DBG("Applying client's initial state: below\n");
-        clientToggleBelow(c);
-    }
-
+    
     /* Once we know the type of window, we can initialize window position */
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SESSION_MANAGED))
     {
@@ -2152,6 +2196,12 @@ void clientFrame(Window w)
             clientGravitate(c, APPLY);
         }
     }
+    /* We must call clientApplyInitialNetState() after having placed the 
+       window so that the inital position values are correctly set if the
+       inital state is maximize or fullscreen
+     */
+    clientApplyInitialNetState(c);
+    
     gdk_x11_grab_server();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
@@ -2655,10 +2705,13 @@ void clientShade(Client * c)
     c->win_state |= WIN_STATE_SHADED;
     CLIENT_FLAG_SET(c, CLIENT_FLAG_SHADED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
-    wc.width = c->width;
-    wc.height = c->height;
     clientSetNetState(c);
-    clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    {
+	wc.width = c->width;
+	wc.height = c->height;
+	clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
+    }
 }
 
 void clientUnshade(Client * c)
@@ -2677,10 +2730,13 @@ void clientUnshade(Client * c)
     c->win_state &= ~WIN_STATE_SHADED;
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_SHADED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
-    wc.width = c->width;
-    wc.height = c->height;
     clientSetNetState(c);
-    clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    {
+	wc.width = c->width;
+	wc.height = c->height;
+	clientConfigure(c, &wc, CWWidth | CWHeight, FALSE);
+    }
 }
 
 void clientToggleShaded(Client * c)
@@ -2854,7 +2910,17 @@ void clientToggleMaximized(Client * c, int mode)
     }
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
-    clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    {
+	clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+    }
+    else
+    {
+        c->x = wc.x;
+        c->y = wc.y;
+        c->height = wc.height;
+        c->width = wc.width;
+    }
 }
 
 inline gboolean clientAcceptFocus(Client * c)

@@ -34,6 +34,7 @@ metabox \
 microcurve \
 microdeck \
 microdeck2 \
+microdeck3 \
 microgui \
 mofit \
 next \

@@ -66,6 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/microcurve
 %{_datadir}/xfwm4/themes/microdeck
 %{_datadir}/xfwm4/themes/microdeck2
+%{_datadir}/xfwm4/themes/microdeck3
 %{_datadir}/xfwm4/themes/tgc
 %{_datadir}/xfwm4/themes/totem
 
