@@ -1333,6 +1333,14 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
     }
     
 
+    if (id == screen_info->xroot)
+    {
+        g_free (new);
+        myDisplayUngrabServer (display_info);
+        TRACE ("Not adding root window, 0x%lx not added", id);
+        return;
+    }
+    
     if (c == NULL)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
@@ -1345,14 +1353,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
        }
     }
 
-    if (id == screen_info->xroot)
-    {
-        g_free (new);
-        myDisplayUngrabServer (display_info);
-        TRACE ("Not adding root window, 0x%lx not added", id);
-        return;
-    }
-    
     new->c = c;
     new->screen_info = screen_info;
     new->id = id;
@@ -1594,7 +1594,7 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     XRectangle rect[1];        
     CWindow *cw;
     
-    TRACE ("entering compositorHandleExpose");
+    TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
     g_return_if_fail (display_info);
     if (!(display_info->enable_compositor))
     {
