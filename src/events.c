@@ -994,7 +994,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
     if (c)
     {
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
+        TRACE ("ignore_unmap for \"%s\" is %i", c->name, c->ignore_unmap);
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
         {
@@ -1018,8 +1018,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
          * Therefore, bypass the ignore_unmap counter and
          * unframe the client.
          */
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE) && 
-            (ev->event == screen_info->xroot) && (ev->send_event))
+        if ((ev->event == screen_info->xroot) && (ev->send_event))
         {
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
             clientUnframe (c, FALSE);
@@ -1028,7 +1027,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
-            TRACE ("ignore_unmaps for \"%s\" is now %i", 
+            TRACE ("ignore_unmap for \"%s\" is now %i", 
                  c->name, c->ignore_unmap);
         }
         else
