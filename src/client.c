@@ -2596,8 +2596,16 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
                 clientRaise (c);
                 break;
             case Below:
-                TRACE ("Below");
-                clientLower (c);
+                /* Don't do below if the app specified a sibling
+                 * since, as we don't honor sibling,  the window
+                 * would be sent to bottom which is not what the 
+                 * app meant at first....
+                 */
+                if (!(mask & CWSibling))
+                {
+                    TRACE ("Below");
+                    clientLower (c);
+                }
                 break;
             case TopIf:
             case BottomIf:
@@ -2605,8 +2613,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
             default:
                 break;
         }
-        mask &= ~(CWStackMode | CWSibling);
     }
+    mask &= ~(CWStackMode | CWSibling);
 
     if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && 
          CONSTRAINED_WINDOW (c))
