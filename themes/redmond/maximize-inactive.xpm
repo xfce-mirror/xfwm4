@@ -1,11 +1,17 @@
 /* XPM */
 static char * maximize_inactive_xpm[] = {
-"13 14 5 1",
-" 	c None",
-".	c #000000 s inactive_border_color",
-"+	c #FFFFFF s inactive_hilight_2",
-"@	c #D8D8D8 s inactive_color_2",
-"#	c #B2B2B2 s inactive_shadow_2",
+"13 24 5 1",
+"       c None",
+".      c #000000 s inactive_border_color",
+"+      c #FFFFFF s inactive_hilight_2",
+"@      c #D8D8D8 s inactive_color_2",
+"#      c #B2B2B2 s inactive_shadow_2",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
 "             ",
 "@@@@@@@@@@@@@",
 "@+++++++++++.",
@@ -19,4 +25,8 @@ static char * maximize_inactive_xpm[] = {
 "@+@.......@#.",
 "@+@@@@@@@@@#.",
 "@+##########.",
-"@............"};
+"@............",
+"             ",
+"             ",
+"             ",
+"             "};
