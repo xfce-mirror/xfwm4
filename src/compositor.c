@@ -26,15 +26,17 @@
 #include <config.h>
 #endif
 
+#include <X11/Xlib.h>
 #include <glib.h>
 
 #include "display.h"
+#include "screen.h"
 #include "client.h"
 #include "frame.h"
 
-#ifdef HAVE_COMPOSITE_EXTENSIONS
+#ifdef HAVE_COMPOSITOR
 
-#define SHADOW_OFFSET 3
+#define SHADOW_OFFSET 12
 #define FRAME_INTERVAL_MILLISECONDS ((int)(1000.0/40.0))
 
 static void
@@ -43,11 +45,8 @@ compositorWindowFree (Client *c)
     Display *dpy;
 
     g_return_if_fail (c != NULL);
-    g_return_if_fail (c->damage != NULL);
   
     dpy = clientGetXDisplay (c);
-    g_return_if_fail (dpy != NULL);
-
     XDamageDestroy (dpy, c->damage);
 
 #if HAVE_NAME_WINDOW_PIXMAP
@@ -59,7 +58,7 @@ compositorWindowFree (Client *c)
 }
 
 static void
-compositorRemoveRepairIdle (DisplayInfo *display)
+compositorRemoveRepairIdle (DisplayInfo *display_info)
 {
     if (display_info->repair_idle != 0)
     {
@@ -131,6 +130,7 @@ compositorPaintScreen (ScreenInfo *screen_info, XserverRegion damage_region)
     GC gc;
     gint screen_width;
     gint screen_height;
+    gint screen_number;
     Window xroot;
 
     dpy = myScreenGetXDisplay (screen_info);
@@ -192,7 +192,7 @@ compositorPaintScreen (ScreenInfo *screen_info, XserverRegion damage_region)
         compositorWindowGetPaintBounds (c, &x, &y, &w, &h);
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
-          
+            g_print ("move/rezise\n");
             XRenderComposite (dpy, PictOpOver, c->picture,
                               screen_info->trans_picture, buffer_picture,
                               0, 0, 0, 0, x, y, w, h);
@@ -201,6 +201,7 @@ compositorPaintScreen (ScreenInfo *screen_info, XserverRegion damage_region)
         {
             /* Draw window normally */
             /* TBD: create a drop shadow */
+            g_print ("normal\n");
             XRenderFillRectangle (dpy, PictOpOver, buffer_picture,
                                 &shadow_color,
                                 frameX(c) + SHADOW_OFFSET,
@@ -215,7 +216,6 @@ compositorPaintScreen (ScreenInfo *screen_info, XserverRegion damage_region)
 
     /* Copy buffer to root window */
     XFixesSetPictureClipRegion (dpy, screen_info->root_picture, 0, 0, region);
-    /* XFixesSetPictureClipRegion (dpy, buffer_picture, 0, 0, None); */
     XRenderComposite (dpy, PictOpSrc, buffer_picture, None,
                       screen_info->root_picture,
                       0, 0, 0, 0, 0, 0, screen_width, screen_height);
@@ -231,7 +231,7 @@ compositorDoRepair (DisplayInfo *display_info)
 {
     GSList *screens;
 
-    g_return_val_if_fail (display_info, FALSE);
+    g_return_if_fail (display_info);
     
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
@@ -275,12 +275,12 @@ compositorEnsureRepairIdle (DisplayInfo *display_info)
     {
         return;
     }
-    display_info->repair_idle = g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+    display_info->repair_idle = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
                                                  compositorRepairIdleFunc, 
                                                  display_info, NULL);
     display_info->repair_timeout = g_timeout_add (FRAME_INTERVAL_MILLISECONDS,
                                                   compositorRepairTimeoutFunc, 
-                                                  display_info));
+                                                  display_info);
 }
 
 static void
@@ -325,7 +325,7 @@ compositorHandleDamageNotify (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     Client *c;
     XserverRegion region;
   
-    c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
+    c = myDisplayGetClientFromWindow (display_info, ev->drawable, ANY);
     if (!c)
     {
         return;
@@ -354,19 +354,19 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         return;
     }
 
-    if (c->screen_info->xroot != event->event)
+    if (c->screen_info->xroot != ev->event)
     {
         return;
     }
   
     if (c->last_painted_extents)
     {
-        compositorMergeAndDestroyDamageRegion (screen_info, c->last_painted_extents);
+        compositorMergeAndDestroyDamageRegion (c->screen_info, c->last_painted_extents);
         c->last_painted_extents = None;
     }
 
     region = compositorWindowExtents (c);
-    compositorMergeDamageRegion (screen_info, region);
+    compositorMergeDamageRegion (c->screen_info, region);
     XFixesDestroyRegion (display_info->dpy, region);
 }
 
@@ -435,12 +435,12 @@ compositorHandleUnmap (DisplayInfo *display_info, XUnmapEvent *ev)
         }
     }
 }
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 
 void
 compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
+#ifdef HAVE_COMPOSITOR
     if (!(display_info->enable_compositor))
     {
         return;
@@ -465,13 +465,13 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleMap (display_info, (XMapEvent*) ev);
     }
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 }
 
 void
 compositorAddWindow (Client *c, gboolean viewable)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
+#ifdef HAVE_COMPOSITOR
     Damage damage;
     XRenderPictFormat *format;
     XRenderPictureAttributes pa;
@@ -503,7 +503,7 @@ compositorAddWindow (Client *c, gboolean viewable)
     {
         gdk_error_trap_push ();
         c->name_window_pixmap = XCompositeNameWindowPixmap (display_info->dpy,
-                                                            cwindow->window);
+                                                            c->window);
         gdk_error_trap_pop ();
     }
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
@@ -514,11 +514,10 @@ compositorAddWindow (Client *c, gboolean viewable)
     pa.subwindow_mode = IncludeInferiors;
 
     format = XRenderFindVisualFormat (display_info->dpy, c->visual);
-    c->picture = XRenderCreatePicture (display_info->dpy,
 #if HAVE_NAME_WINDOW_PIXMAP
     c->picture = XRenderCreatePicture (display_info->dpy, 
-                                       (c->pixmap != None ? c->pixmap : c->window),
-                                       format, CPSubwindowMode, &pa);
+            (c->name_window_pixmap != None ? c->name_window_pixmap : c->window),
+                                                  format, CPSubwindowMode, &pa);
 #else
     c->picture = XRenderCreatePicture (display_info->dpy, c->window,
                                        format, CPSubwindowMode, &pa);
@@ -526,13 +525,13 @@ compositorAddWindow (Client *c, gboolean viewable)
   
   region = compositorWindowExtents (c);
   compositorMergeAndDestroyDamageRegion (screen_info, region);
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 }
 
 void
 compositorRemoveWindow (Client *c)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
+#ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
  
@@ -551,13 +550,13 @@ compositorRemoveWindow (Client *c)
                                                c->last_painted_extents);
         c->last_painted_extents = None;
     }  
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 }
 
 void
 compositorManageScreen (ScreenInfo *screen_info)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
+#ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
     XRenderPictureAttributes pa;
     XRectangle r;
@@ -596,13 +595,13 @@ compositorManageScreen (ScreenInfo *screen_info)
     r.width = gdk_screen_get_width (screen_info->gscr);;
     r.height = gdk_screen_get_height (screen_info->gscr);;
     compositorMergeAndDestroyDamageRegion (screen_info, XFixesCreateRegion (display_info->dpy, &r, 1));
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 }
 
 void
 compositorUnmanageScreen (ScreenInfo *screen_info)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS  
+#ifdef HAVE_COMPOSITOR  
     DisplayInfo *display_info;
     GList *index;
   
@@ -623,15 +622,15 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         Client *c = (Client *) index->data;
-        compositorRemoveWindow (c);
+        // compositorRemoveWindow (c);
     }
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 }
 
 void
 compositorDamageClient (Client *c)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
+#ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
     Window xwindow;
@@ -652,5 +651,5 @@ compositorDamageClient (Client *c)
     }
 
     compositorMergeAndDestroyDamageRegion (screen_info, compositorWindowExtents (c));
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
+#endif /* HAVE_COMPOSITOR */
 }
