@@ -43,7 +43,7 @@ EndSection
                                                                                                               
 - Save the configuration file and restart the Xserver.
 
-3) Troobleshooting
+3) Troubleshooting
 ------------------
 
 The composite extensions in X.org look fairly new and there are several problems 
