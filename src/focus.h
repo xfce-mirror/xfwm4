@@ -39,7 +39,7 @@ void            clientFocusNew(Client *);
 gboolean        clientSelectMask (Client *, int, int);
 Client         *clientGetNext (Client *, int);
 Client         *clientGetPrevious (Client *, int);
-void            clientPassFocus (ScreenInfo *, Client *);
+void            clientPassFocus (ScreenInfo *, Client *, Client *);
 gboolean        clientAcceptFocus (Client *);
 void            clientSortRing(Client *);
 void            clientUpdateFocus (ScreenInfo *, Client *, unsigned short);

@@ -398,7 +398,7 @@ clientLower (Client * c)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
-
+        
         if (clientIsTransientOrModalForGroup (c))
         {
             client_sibling = clientGetTopMostForGroup (c);
@@ -434,7 +434,7 @@ clientLower (Client * c)
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
-	clientPassFocus (screen_info, c);
+        clientPassFocus (screen_info, c, NULL);
         if (screen_info->last_raise == c)
         {
             screen_info->last_raise = NULL;

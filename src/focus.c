@@ -244,7 +244,7 @@ clientGetPrevious (Client * c, int mask)
 }
 
 void
-clientPassFocus (ScreenInfo *screen_info, Client * c)
+clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
 {
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
@@ -267,7 +267,7 @@ clientPassFocus (ScreenInfo *screen_info, Client * c)
         return;
     }
 
-    top_most = clientGetTopMostFocusable (screen_info, look_in_layer, c);
+    top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude);
     if (screen_info->params->click_to_focus)
     {
         if (c)
@@ -292,7 +292,7 @@ clientPassFocus (ScreenInfo *screen_info, Client * c)
     }
     else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
     {
-        new_focus = clientAtPosition (screen_info, rx, ry, c);
+        new_focus = clientAtPosition (screen_info, rx, ry, exclude);
     }
     if (!new_focus)
     {

@@ -904,7 +904,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     if (c)
     {
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
-        clientPassFocus (c->screen_info, c);
+        clientPassFocus (c->screen_info, c, c);
         clientUnframe (c, FALSE);
     }
 }
@@ -1008,7 +1008,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         }
 
         screen_info = c->screen_info;
-        clientPassFocus (screen_info, c);
+        clientPassFocus (screen_info, c, c);
         
         /*
          * ICCCM spec states that a client wishing to switch

@@ -1933,7 +1933,7 @@ clientHideSingle (Client * c, gboolean change_state)
     
     myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    clientPassFocus(c->screen_info, c);
+    clientPassFocus(c->screen_info, c, c);
     XUnmapWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
