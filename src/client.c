@@ -1432,6 +1432,11 @@ static inline void clientConstraintPos(Client * c, gboolean show_title)
     {
         c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
     }
+    /* The top of screen is treated differently because the title bar of a window
+       should not disappear under a dock placed on top of the screen. Here we don't
+       check to see if the window has a border because we want to take into account
+       undecorated windows such as XMMS or others
+     */
     if(topMostHead && (c->y + (show_title ? -frameTop(c) : c->height) < MyDisplayY(cx, cy) + (show_title ? 0 : CLIENT_MIN_VISIBLE) + top))
     {
         c->y = MyDisplayY(cx, cy) + top + (show_title ? frameTop(c) : CLIENT_MIN_VISIBLE - c->height);
