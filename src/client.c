@@ -3527,6 +3527,7 @@ void clientUpdateFocus(Client * c)
     if(c)
     {
         data[0] = c->window;
+        frameDraw(c, FALSE, FALSE);
     }
     else
     {
@@ -3581,6 +3582,7 @@ void clientSetFocus(Client * c, gboolean sort)
             clients = c;
         }
         XSetInputFocus(dpy, c->window, RevertToNone, CurrentTime);
+        frameDraw(c, FALSE, FALSE);
         data[0] = c->window;
     }
     else

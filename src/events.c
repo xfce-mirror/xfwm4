@@ -915,7 +915,6 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     {
         TRACE("focus set to \"%s\" (0x%lx)", c->name, c->window);
         clientUpdateFocus(c);
-        frameDraw(c, FALSE, FALSE);
         if(params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout();
