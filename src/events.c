@@ -664,6 +664,11 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+	{
+	    /* Sorry, but it's not the right time for configure request */
+	    return;
+	}
         if(c->type == WINDOW_DESKTOP)
         {
             /* Ignore stacking request for DESKTOP windows */
