@@ -1135,7 +1135,6 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     icon = inline_icon_at_size(xfwm4_icon_data, 32, 32);
     gtk_window_set_icon(GTK_WINDOW(dialog->xfwm4_dialog), icon);
-    g_object_unref(icon);
 
     dialog->click_focus_radio_group = NULL;
 
@@ -1145,6 +1144,7 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     dialog->dialog_header = create_header(icon, _("Window Manager Preferences"));
     gtk_widget_show(dialog->dialog_header);
     gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox1), dialog->dialog_header, FALSE, TRUE, 0);
+    g_object_unref(icon);
 
     dialog->notebook1 = gtk_notebook_new();
     gtk_container_set_border_width(GTK_CONTAINER(dialog->notebook1), BORDER+1);

@@ -202,11 +202,11 @@ static void run_dialog(McsPlugin * mcs_plugin)
 
     icon = inline_icon_at_size(margins_icon_data, 32, 32);
     gtk_window_set_icon(GTK_WINDOW(dialog), icon);
-    g_object_unref(icon);
 
     header = create_header(icon, _("Workspace Margins"));
     gtk_widget_show(header);
     gtk_box_pack_start(GTK_BOX(mainvbox), header, TRUE, TRUE, 0);
+    g_object_unref(icon);
 
     label = gtk_label_new(_("Margins are areas on the edges of the screen where no window will be placed"));
     gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);    
