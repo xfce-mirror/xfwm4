@@ -396,14 +396,12 @@ main (int argc, char **argv)
 
     if (argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V")))
     {
-        g_print ("%s version %s using Xfce %s\n", 
+        g_print ("\tThis is %s version %s for Xfce %s\n", 
                       PACKAGE, VERSION,  xfce_version_string());
-        g_print ("  built against GTK+-%d.%d.%d, ", 
+        g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
                       GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-        g_print ("using GTK+-%d.%d.%d\n", 
+        g_print ("linked with GTK+-%d.%d.%d.\n", 
                       gtk_major_version, gtk_minor_version, gtk_micro_version);
-        g_print ("  specified base directory for data is \"%s\"\n", 
-                      DATADIR);
         exit (0);
     }
 
