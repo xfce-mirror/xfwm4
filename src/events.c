@@ -466,8 +466,8 @@ static inline void handleButtonPress(XButtonEvent * ev)
             if(ev->button == Button1)
             {
                 clientSetFocus(c, True);
-		if (raise_on_click)
-		    clientRaise(c);
+                if(raise_on_click)
+                    clientRaise(c);
             }
             if(ev->window == c->window)
             {

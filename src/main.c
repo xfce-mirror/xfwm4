@@ -201,7 +201,7 @@ static int initialize(int argc, char **argv)
 
     XDefineCursor(dpy, root, root_cursor);
 
-    if (!initEventFilter(MAIN_EVENT_MASK, NULL, "xfwm"))
+    if(!initEventFilter(MAIN_EVENT_MASK, NULL, "xfwm"))
     {
         return (-1);
     }
@@ -250,13 +250,16 @@ static void p_action(int sig)
 {
 }
 
-int run_daemon(int argc, char **argv)
+int run_daemon(int argc, char **argv, gboolean daemon_mode)
 {
     pid_t ppid;
     int status = initialize(argc, argv);
-    ppid = getppid();
-    kill(ppid, SIGUSR1);
-    if (status < 0)
+    if(daemon_mode)
+    {
+        ppid = getppid();
+        kill(ppid, SIGUSR1);
+    }
+    if(status < 0)
     {
         g_error("Another Window Manager is already running");
     }
@@ -273,24 +276,40 @@ int main(int argc, char **argv)
 {
     pid_t pid, ppid;
     static struct sigaction pact, cact;
+    int i;
+    gboolean daemon_mode = TRUE;
 
-    /* set SIGUSR1 action for parent */ ;
-    pact.sa_handler = p_action;
-    sigaction(SIGUSR1, &pact, NULL);
-
-    switch (pid = fork())
+    for(i = 1; i < argc; i++)
     {
-        case -1:
-            perror("fork()");
-            exit(1);
-            break;
-        case 0:                /* child */
-            return run_daemon(argc, argv);
-            break;
-        default:               /* parent */
-            pause();            /* wait for child signal */
-            g_message("init complete.");
+        if(!strcmp(argv[i], "--nodaemon"))
+        {
+            daemon_mode = FALSE;
+        }
+    }
+
+    if(daemon_mode)
+    {
+        /* set SIGUSR1 action for parent */ ;
+        pact.sa_handler = p_action;
+        sigaction(SIGUSR1, &pact, NULL);
+
+        switch (pid = fork())
+        {
+            case -1:
+                perror("fork()");
+                exit(1);
+                break;
+            case 0:            /* child */
+                return run_daemon(argc, argv, daemon_mode);
+                break;
+            default:           /* parent */
+                pause();        /* wait for child signal */
+                g_message("init complete.");
+        }
+    }
+    else
+    {
+        return run_daemon(argc, argv, daemon_mode);
     }
     return 0;
 }
-

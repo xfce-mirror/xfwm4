@@ -67,7 +67,6 @@
 Client *clients = NULL;
 unsigned int client_count = 0;
 
-static Window *client_list = NULL;
 static GSList *windows = NULL;
 static GSList *windows_stack = NULL;
 static Client *client_focus = NULL;
@@ -595,7 +594,8 @@ static void clientSetNetClientList(Atom a, GSList * list)
         DBG("%i windows in list for %i clients\n", size, client_count);
         for(i = 0, index_dest = listw, index_src = list; i < size; i++, index_dest++, index_src = g_slist_next(index_src))
         {
-            *index_dest = GPOINTER_TO_XWINDOW(index_src->data);
+            Client *c = (Client *) index_src->data;
+            *index_dest = c->window;
         }
         XChangeProperty(dpy, root, a, XA_WINDOW, 32, PropModeReplace, (unsigned char *)listw, size);
         free(listw);
@@ -951,27 +951,9 @@ void clientGravitate(Client * c, int mode)
 
 static void clientAddToList(Client * c)
 {
-    int i;
-    Window *new;
-
     g_return_if_fail(c != NULL);
     DBG("entering clientAddToList\n");
     client_count++;
-    new = malloc(sizeof(Window) * client_count);
-    if(new)
-    {
-        for(i = 0; i < client_count - 1; i++)
-        {
-            new[i] = client_list[i];
-        }
-        new[i] = c->window;
-        if(client_list)
-        {
-            free(client_list);
-        }
-        client_list = new;
-        XChangeProperty(dpy, root, win_client_list, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)client_list, client_count);
-    }
     if(clients)
     {
         c->prev = clients->prev;
@@ -985,49 +967,27 @@ static void clientAddToList(Client * c)
         c->next = c;
         c->prev = c;
     }
-    if(!(c->skip_taskbar))
-    {
-        DBG("adding window \"%s\" (%#lx) to windows list\n", c->name, c->window);
-        windows = g_slist_append(windows, XWINDOW_TO_GPOINTER(c->window));
-        clientSetNetClientList(net_client_list, windows);
-    }
 
-    if(!(c->skip_pager))
-    {
-        DBG("adding window \"%s\" (%#lx) to windows_stack list\n", c->name, c->window);
-        windows_stack = g_slist_append(windows_stack, XWINDOW_TO_GPOINTER(c->window));
-        clientSetNetClientList(net_client_list_stacking, windows_stack);
-    }
+    DBG("adding window \"%s\" (%#lx) to windows list\n", c->name, c->window);
+    windows = g_slist_append(windows, c);
+
+    DBG("adding window \"%s\" (%#lx) to windows_stack list\n", c->name, c->window);
+    windows_stack = g_slist_append(windows_stack, c);
+
+    clientSetNetClientList(net_client_list, windows);
+    clientSetNetClientList(win_client_list, windows);
+    clientSetNetClientList(net_client_list_stacking, windows_stack);
+
     c->managed = True;
 }
 
 static void clientRemoveFromList(Client * c)
 {
-    int i, j;
-    Window *new;
-
     g_return_if_fail(c != NULL);
     DBG("entering clientRemoveFromList\n");
     g_assert(client_count > 0);
 
     c->managed = False;
-    new = malloc(sizeof(Window) * client_count);
-    if(new)
-    {
-        for(i = 0, j = 0; i < client_count; i++)
-        {
-            if(client_list[i] != c->window)
-            {
-                new[j++] = client_list[i];
-            }
-        }
-        if(client_list)
-        {
-            free(client_list);
-        }
-        client_list = new;
-        XChangeProperty(dpy, root, win_client_list, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)client_list, client_count - 1);
-    }
     client_count--;
     if(client_count == 0)
     {
@@ -1043,18 +1003,15 @@ static void clientRemoveFromList(Client * c)
         }
     }
 
-    if(!(c->skip_taskbar))
-    {
-        DBG("removing window \"%s\" (%#lx) from windows list\n", c->name, c->window);
-        windows = g_slist_remove(windows, XWINDOW_TO_GPOINTER(c->window));
-        clientSetNetClientList(net_client_list, windows);
-    }
-    if(!(c->skip_pager))
-    {
-        DBG("removing window \"%s\" (%#lx) from windows_stack list\n", c->name, c->window);
-        windows_stack = g_slist_remove(windows_stack, XWINDOW_TO_GPOINTER(c->window));
-        clientSetNetClientList(net_client_list_stacking, windows_stack);
-    }
+    DBG("removing window \"%s\" (%#lx) from windows list\n", c->name, c->window);
+    windows = g_slist_remove(windows, c);
+
+    DBG("removing window \"%s\" (%#lx) from windows_stack list\n", c->name, c->window);
+    windows_stack = g_slist_remove(windows_stack, c);
+
+    clientSetNetClientList(net_client_list, windows);
+    clientSetNetClientList(win_client_list, windows);
+    clientSetNetClientList(net_client_list_stacking, windows_stack);
 }
 
 static int clientGetWidthInc(Client * c)
@@ -1147,95 +1104,75 @@ static void clientSetHeight(Client * c, int h1)
 
 static inline Client *clientGetTopMost(int layer, Client * exclude)
 {
-    Window w1, w2, *wins = NULL;
-    unsigned int i, count;
     Client *top = NULL, *c;
+    GSList *index;
 
     DBG("entering clientGetTopMost\n");
 
-    XQueryTree(dpy, root, &w1, &w2, &wins, &count);
-    DBG("XQueryTree returns %i child window(s)\n", count);
-    for(i = 0; i < count; i++)
+    for(index = windows_stack; index; index = g_slist_next(index))
     {
-        c = clientGetFromWindow(wins[i], FRAME);
-        if(c)
+        c = (Client *) index->data;
+        DBG("*** stack window \"%s\" (%lx), layer %i\n", c->name, c->window, c->win_layer);
+        if(!exclude || (c != exclude))
         {
-            DBG("*** stack window [%i]=(%lx) \"%s\", layer %i\n", i, c->window, c->name, c->win_layer);
-            if(!exclude || (c != exclude))
+            if(c->win_layer <= layer)
             {
-                if(c->win_layer <= layer)
-                {
-                    top = c;
-                }
+                top = c;
             }
         }
+
     }
-    if(wins)
-    {
-        XFree(wins);
-    }
+
     return top;
 }
 
 static inline Client *clientGetBottomMost(int layer, Client * exclude)
 {
-    Window w1, w2, *wins = NULL;
-    unsigned int i, count;
-    Client *c = NULL;
+    Client *bot = NULL, *c;
+    GSList *index;
 
     DBG("entering clientGetBottomMost\n");
 
-    XQueryTree(dpy, root, &w1, &w2, &wins, &count);
-    DBG("XQueryTree returns %i child window(s)\n", count);
-    for(i = 0; i < count; i++)
+    for(index = windows_stack; index; index = g_slist_next(index))
     {
-        c = clientGetFromWindow(wins[i], FRAME);
+        c = (Client *) index->data;
         if(c)
         {
-            DBG("*** stack window [%i]=(%lx) \"%s\", layer %i\n", i, c->window, c->name, c->win_layer);
+            DBG("*** stack window \"%s\" (%lx), layer %i\n", c->name, c->window, c->win_layer);
             if(!exclude || (c != exclude))
             {
                 if(c->win_layer >= layer)
                 {
+                    bot = c;
                     break;
                 }
             }
         }
     }
-    if(wins)
-    {
-        XFree(wins);
-    }
-    return c;
+    return bot;
 }
 
-static inline void clientComputeStackList(Client * c, Client * sibling, XWindowChanges * wc, int mask)
+static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc)
 {
-    if((c->managed) && !(c->skip_pager) && (mask & CWStackMode))
+    if((c->managed) && (mask & CWStackMode))
     {
-        if((sibling) && (sibling != c))
+        if((sibling) && (sibling != c) && (g_slist_index(windows_stack, sibling) > -1))
         {
             gint position;
 
             if(wc->stack_mode == Below)
             {
-                if(g_slist_index(windows_stack, XWINDOW_TO_GPOINTER(sibling->window)) > -1)
-                {
-                    DBG("Below with sibling -> inserting window \"%s\" (%#lx) at position %i in stack list\n", c->name, c->window, position);
-                    windows_stack = g_slist_remove(windows_stack, XWINDOW_TO_GPOINTER(c->window));
-                    position = g_slist_index(windows_stack, XWINDOW_TO_GPOINTER(sibling->window));
-                    windows_stack = g_slist_insert(windows_stack, XWINDOW_TO_GPOINTER(c->window), position);
-                }
+                windows_stack = g_slist_remove(windows_stack, c);
+                position = g_slist_index(windows_stack, sibling);
+                DBG("Below with sibling -> inserting window \"%s\" (%#lx) below \"%s\" (%#lx) at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position);
+                windows_stack = g_slist_insert(windows_stack, c, position);
             }
             else
             {
-                if(g_slist_index(windows_stack, XWINDOW_TO_GPOINTER(sibling->window)) > -1)
-                {
-                    windows_stack = g_slist_remove(windows_stack, XWINDOW_TO_GPOINTER(c->window));
-                    position = g_slist_index(windows_stack, XWINDOW_TO_GPOINTER(sibling->window));
-                    DBG("Above with sibling -> inserting window \"%s\" (%#lx) at position %i in stack list\n", c->name, c->window, position + 1);
-                    windows_stack = g_slist_insert(windows_stack, XWINDOW_TO_GPOINTER(c->window), position + 1);
-                }
+                windows_stack = g_slist_remove(windows_stack, c);
+                position = g_slist_index(windows_stack, sibling);
+                DBG("Above with sibling -> inserting window \"%s\" (%#lx) above \"%s\" (%#lx)  at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position + 1);
+                windows_stack = g_slist_insert(windows_stack, c, position + 1);
             }
         }
         else
@@ -1243,14 +1180,14 @@ static inline void clientComputeStackList(Client * c, Client * sibling, XWindowC
             if(wc->stack_mode == Below)
             {
                 DBG("Below without sibling -> inserting window \"%s\" (%#lx) at beginning of stack list\n", c->name, c->window);
-                windows_stack = g_slist_remove(windows_stack, XWINDOW_TO_GPOINTER(c->window));
-                windows_stack = g_slist_prepend(windows_stack, XWINDOW_TO_GPOINTER(c->window));
+                windows_stack = g_slist_remove(windows_stack, c);
+                windows_stack = g_slist_prepend(windows_stack, c);
             }
             else
             {
                 DBG("Above without sibling -> inserting window \"%s\" (%#lx) at end of stack list\n", c->name, c->window);
-                windows_stack = g_slist_remove(windows_stack, XWINDOW_TO_GPOINTER(c->window));
-                windows_stack = g_slist_append(windows_stack, XWINDOW_TO_GPOINTER(c->window));
+                windows_stack = g_slist_remove(windows_stack, c);
+                windows_stack = g_slist_append(windows_stack, c);
             }
         }
     }
@@ -1542,6 +1479,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 }
                 break;
             case Below:
+            default:
                 DBG("Below\n");
                 if((mask & CWSibling) && (c->transient_for != wc->sibling))
                 {
@@ -1570,7 +1508,6 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 {
                     DBG("unable to determine sibling!\n");
                     wc->stack_mode = Above;
-                    sibling = clientGetTopMost(c->win_layer, c);
                 }
                 break;
         }
@@ -1590,7 +1527,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
         {
             mask &= ~CWSibling;
         }
-        clientComputeStackList(c, sibling, wc, mask);
+        clientComputeStackList(c, sibling, mask, wc);
     }
 
     wc->x = frameX(c);
@@ -1816,17 +1753,17 @@ void clientFrame(Window w)
     clientGetNetStruts(c);
 
     /* We check that afterwards to make sure all states are now known */
-    if (c->fullscreen)
+    if(c->fullscreen)
     {
         DBG("Applying client's initial state: fullscreen\n");
         clientToggleFullscreen(c);
     }
-    if (c->above)
+    if(c->above)
     {
         DBG("Applying client's initial state: above\n");
         clientToggleAbove(c);
     }
-    if (c->below)
+    if(c->below)
     {
         DBG("Applying client's initial state: below\n");
         clientToggleBelow(c);
@@ -1988,8 +1925,6 @@ void clientFrameAll()
     /* Since this fn is called at startup, it's safe to initialize some vars here */
     client_count = 0;
     clients = NULL;
-    client_list = NULL;
-    client_list = NULL;
     windows = NULL;
     windows_stack = NULL;
     client_focus = NULL;
@@ -2705,7 +2640,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     else if(xevent->type == MotionNotify)
     {
         int cx, cy, left, right, top, bottom;
-            
+
         while(XCheckTypedEvent(dpy, MotionNotify, xevent));
 
         if(!passdata->grab && box_move)
@@ -2725,7 +2660,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             msx = xevent->xmotion.x_root;
             msy = xevent->xmotion.y_root;
-            
+
             if(msx == 0 && wrap_workspaces)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
@@ -2761,7 +2696,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             {
                 c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
             }
-            
+
             if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
             {
                 c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
@@ -2988,11 +2923,11 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
                 c->width = c->width + (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
             }
         }
-        if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+        if(c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
         {
             c->width = prev_width;
         }
-        if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+        if(c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
         {
             c->height = prev_height;
         }
@@ -3071,27 +3006,27 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_TOP_RIGHT))
         {
-            if ((frameY(c) < MyDisplayY(cx, cy) + top) || (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
+            if((frameY(c) < MyDisplayY(cx, cy) + top) || (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
             {
                 c->y = prev_y;
                 c->height = prev_height;
             }
-            if (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE)
+            if(c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE)
             {
                 c->y = prev_y;
                 c->height = prev_height;
             }
         }
-        else if ((passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_BOTTOM))
+        else if((passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_BOTTOM))
         {
-            if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+            if(c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
             {
                 c->height = prev_height;
             }
         }
         if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
         {
-            if (c->x > MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE)
+            if(c->x > MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE)
             {
                 c->x = prev_x;
                 c->width = prev_width;
@@ -3099,7 +3034,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         }
         else if((passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
         {
-            if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+            if(c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
             {
                 c->width = prev_width;
             }

@@ -248,20 +248,20 @@ void loadSettings()
         g_message("Cannot parse active color %s\n", rc[0].value);
     }
 
-    if (black_gc)
+    if(black_gc)
     {
-        g_object_unref (G_OBJECT(black_gc));
+        g_object_unref(G_OBJECT(black_gc));
     }
     black_gc = widget->style->black_gc;
-    g_object_ref (G_OBJECT(widget->style->black_gc));
+    g_object_ref(G_OBJECT(widget->style->black_gc));
 
-    if (white_gc)
+    if(white_gc)
     {
-        g_object_unref (G_OBJECT(white_gc));
+        g_object_unref(G_OBJECT(white_gc));
     }
     white_gc = widget->style->white_gc;
-    g_object_ref (G_OBJECT(widget->style->white_gc));
-    
+    g_object_ref(G_OBJECT(widget->style->white_gc));
+
     if(title_colors[INACTIVE].allocated)
     {
         gdk_colormap_free_colors(gdk_colormap_get_system(), &title_colors[INACTIVE].col, 1);
