@@ -4735,13 +4735,12 @@ clientAcceptFocus (Client * c)
     {
         return FALSE;
     }
-    /* then try ICCCM */
-    else if (FLAG_TEST (c->wm_flags, WM_FLAG_TAKEFOCUS))
+    if (!FLAG_TEST_ALL (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
     {
-        return TRUE;
+        return FALSE;
     }
-    /* At last, use wmhints */
-    return (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT) ? TRUE : FALSE);
+    
+    return TRUE;
 }
 
 static inline void
@@ -4870,12 +4869,18 @@ clientSetFocus (Client * c, unsigned short flags)
         {
             clientSortRing(c);
         }
-        XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-        XFlush (dpy);
+        
+        if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
+        {
+            XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+            XFlush (dpy);
+        }
+        
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             sendClientMessage (c->window, wm_protocols, wm_takefocus, CurrentTime);
         }
+        
         if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
