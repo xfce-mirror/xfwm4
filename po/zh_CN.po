@@ -6,79 +6,44 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2004-01-03 22:16+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-28 22:38+0200\n"
 "PO-Revision-Date: 2003-07-08 20:52+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins.c:124
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "工作区边缘"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "调整工作区边缘"
+
+#: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "边缘是屏幕边上不能放置窗口的区域。"
 
-#: mcs-plugin/margins.c:131
-msgid "Workspace Margins"
-msgstr "工作区边缘"
-
-#: mcs-plugin/margins.c:159
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr "左侧: "
 
-#: mcs-plugin/margins.c:179
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr "右侧:"
 
-#: mcs-plugin/margins.c:199
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr "顶端:"
 
-#: mcs-plugin/margins.c:219
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr "底部:"
-
-#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-msgid "Workspaces and Margins"
-msgstr "工作区边缘"
-
-#. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-msgid "Workspaces"
-msgstr "工作区"
-
-#: mcs-plugin/plugin.c:179
-msgid "Margins"
-msgstr "边缘"
-
-#: mcs-plugin/workspaces.c:337
-msgid "Change name"
-msgstr "改变名称"
-
-#: mcs-plugin/workspaces.c:349
-#, c-format
-msgid "Workspace %d"
-msgstr "工作区 %i"
-
-#: mcs-plugin/workspaces.c:359
-msgid "Name:"
-msgstr "名称: "
-
-#: mcs-plugin/workspaces.c:447
-msgid "Click on a workspace name to edit it"
-msgstr "点击一个工作区的名称来编辑它"
-
-#: mcs-plugin/workspaces.c:519
-msgid "Number of workspaces:"
-msgstr "工作区名称: "
-
-
-#. Workspace names
-#: mcs-plugin/workspaces.c:550
-msgid "Workspace names"
-msgstr "工作区个数"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -305,12 +270,12 @@ msgstr "双击标题栏所执行的动作 :"
 msgid "Advanced"
 msgstr "高级"
 
-#: src/client.c:508
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
 
-#: src/events.c:1490
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
@@ -320,27 +285,17 @@ msgstr "%s: 尚不支持的操作\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: 段错误"
 
-#: src/main.c:399
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:404
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:413
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: 无法进入守护进程模式: %s"
-
-#: src/main.c:421
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: 无法创建新进程: %s"
-
-#: src/main.c:442
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
@@ -382,79 +337,71 @@ msgid "Uns_tick"
 msgstr "分离(_T)"
 
 #: src/menu.c:51
-msgid "Context _help"
-msgstr "上下文帮助(_H)"
-
-#: src/menu.c:52 src/menu.c:53
-msgid "Always on top"
-msgstr "总是置顶"
-
-#: src/menu.c:54
 msgid "Send to..."
 msgstr "发送到 ..."
 
-#: src/menu.c:56
+#: src/menu.c:53
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: src/menu.c:59
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "结束"
 
-#: src/menu.c:62
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "重启"
 
-#: src/menu.c:166
+#: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
 msgstr "工作区 %i"
 
-#: src/menu.c:408
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:315
+#: src/settings.c:289
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 缺少默认文件"
 
-#: src/settings.c:553
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:523
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:604
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:611
+#: src/settings.c:574
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:798
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: 指定的主题 \\\"%s\\\" 不存在，使用默认主题"
 
-#: src/settings.c:808
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:1155
+#: src/settings.c:1119
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
@@ -463,8 +410,44 @@ msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
 msgid "Switch to ..."
 msgstr "切换到 ..."
 
-#~ msgid "Adjust workspace margins"
-#~ msgstr "调整工作区边缘"
+#~ msgid "Workspaces and Margins"
+#~ msgstr "工作区边缘"
+
+#~ msgid "Workspaces"
+#~ msgstr "工作区"
+
+#~ msgid "Margins"
+#~ msgstr "边缘"
+
+#~ msgid "Change name"
+#~ msgstr "改变名称"
+
+#~ msgid "Workspace %d"
+#~ msgstr "工作区 %i"
+
+#~ msgid "Name:"
+#~ msgstr "名称: "
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "点击一个工作区的名称来编辑它"
+
+#~ msgid "Number of workspaces:"
+#~ msgstr "工作区名称: "
+
+#~ msgid "Workspace names"
+#~ msgstr "工作区个数"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: 无法进入守护进程模式: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: 无法创建新进程: %s"
+
+#~ msgid "Context _help"
+#~ msgstr "上下文帮助(_H)"
+
+#~ msgid "Always on top"
+#~ msgstr "总是置顶"
 
 #~ msgid "Window style"
 #~ msgstr "窗口风格"

@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
-"POT-Creation-Date: 2003-11-11 16:23+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-28 22:38+0200\n"
 "PO-Revision-Date: 2003-08-05 13:01+0100\n"
 "Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -273,12 +274,12 @@ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 msgid "Advanced"
 msgstr "Avançat"
 
-#: src/client.c:499
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
-#: src/events.c:1496
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operació encara no suportada\n"
@@ -288,17 +289,17 @@ msgstr "%s: Operació encara no suportada\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault (violació de segment)"
 
-#: src/main.c:399
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Un altre gestor de finestres s'està executant"
 
-#: src/main.c:404
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Falten dades dels fitxers per defecte"
 
-#: src/main.c:431
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: S'ha produït un error desconegut"
@@ -369,44 +370,44 @@ msgstr "À_rea de treball %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut capturar el punter\n"
 
-#: src/settings.c:288
+#: src/settings.c:289
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Falten els fitxers per defecte."
 
-#: src/settings.c:520
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No es pot allotjar el color actiu %s\n"
 
-#: src/settings.c:527
+#: src/settings.c:523
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No es pot processar el color actiu %s\n"
 
-#: src/settings.c:571
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No es pot allotjar el color inactiu %s\n"
 
-#: src/settings.c:578
+#: src/settings.c:574
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No es pot processar el color inactiu %s\n"
 
-#: src/settings.c:765
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: No sa trobat la configuració de tecles \"%s\", es fa servir la "
 "configuració per defecte"
 
-#: src/settings.c:775
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltes valors en els fitxers per defecte"
 
-#: src/settings.c:1122
+#: src/settings.c:1119
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-12-21 22:35+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-28 22:38+0200\n"
 "PO-Revision-Date: 2004-01-18 00:16-0200\n"
 "Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
 "Language-Team: pt_BR <felix@online.eti.br>\n"
@@ -15,69 +16,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins.c:124
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Margens da área de trabalho"
+
+#: mcs-plugin/margins_plugin.c:217
+#, fuzzy
+msgid "Adjust workspace margins"
+msgstr "Margens da área de trabalho"
+
+#: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Margens são áreas no canto da tela onde nenhuma janela será colocada"
 
-#: mcs-plugin/margins.c:131
-msgid "Workspace Margins"
-msgstr "Margens da área de trabalho"
-
-#: mcs-plugin/margins.c:159
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr "Esquerdo :"
 
-#: mcs-plugin/margins.c:179
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr "Direito :"
 
-#: mcs-plugin/margins.c:199
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr "Topo :"
 
-#: mcs-plugin/margins.c:219
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr "Abaixo :"
-
-#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-msgid "Workspaces and Margins"
-msgstr "Área de trabalho e margens"
-
-#. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-msgid "Workspaces"
-msgstr "Áreas de trabalho"
-
-#: mcs-plugin/plugin.c:179
-msgid "Margins"
-msgstr "Margens"
-
-#: mcs-plugin/workspaces.c:337
-msgid "Change name"
-msgstr "Mudar nome"
-
-#: mcs-plugin/workspaces.c:349
-#, c-format
-msgid "Workspace %d"
-msgstr "Área de trabalho %d"
-
-#: mcs-plugin/workspaces.c:359
-msgid "Name:"
-msgstr "Nome:"
-
-#: mcs-plugin/workspaces.c:447
-msgid "Click on a workspace name to edit it"
-msgstr "Clique no nome da área de trabalho para editá-la"
-
-#: mcs-plugin/workspaces.c:519
-msgid "Number of workspaces:"
-msgstr "Número de áreas de trabalho:"
-
-#. Workspace names
-#: mcs-plugin/workspaces.c:550
-msgid "Workspace names"
-msgstr "Nome da área de trabalho"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -305,12 +273,12 @@ msgstr "Ação a realizar quando dar um clique duplo na barra de títulos :"
 msgid "Advanced"
 msgstr "Avançado"
 
-#: src/client.c:508
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1490
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operação não permitida (ainda)\n"
@@ -320,27 +288,17 @@ msgstr "%s: Operação não permitida (ainda)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Falha de segmentação"
 
-#: src/main.c:399
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Outro gerenciador de janelas já esta executando"
 
-#: src/main.c:404
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Perda de informações dos arquivos padrões"
 
-#: src/main.c:413
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:421
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: Falha ao criar novo processo: %s"
-
-#: src/main.c:442
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ocorreu um erro desconhecido"
@@ -381,76 +339,72 @@ msgstr ""
 msgid "Uns_tick"
 msgstr ""
 
-#: src/menu.c:51 src/menu.c:52
-msgid "Always on top"
-msgstr "Sempre no topo"
-
-#: src/menu.c:53
+#: src/menu.c:51
 msgid "Send to..."
 msgstr "enviar para..."
 
-#: src/menu.c:55
+#: src/menu.c:53
 msgid "_Close"
 msgstr "_Fechar"
 
-#: src/menu.c:58
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Destruir"
 
-#: src/menu.c:61
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "_Sair"
 
-#: src/menu.c:62
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/menu.c:165
+#: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
 msgstr "Área de trabalho %i"
 
-#: src/menu.c:407
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falhou para encontrar o mouse\n"
 
-#: src/settings.c:315
+#: src/settings.c:289
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Falta arquivos padrões"
 
-#: src/settings.c:553
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:560
+#: src/settings.c:523
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:604
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:611
+#: src/settings.c:574
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:798
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:808
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1155
+#: src/settings.c:1119
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
@@ -458,3 +412,36 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Mudar para ..."
+
+#~ msgid "Workspaces and Margins"
+#~ msgstr "Área de trabalho e margens"
+
+#~ msgid "Workspaces"
+#~ msgstr "Áreas de trabalho"
+
+#~ msgid "Margins"
+#~ msgstr "Margens"
+
+#~ msgid "Change name"
+#~ msgstr "Mudar nome"
+
+#~ msgid "Workspace %d"
+#~ msgstr "Área de trabalho %d"
+
+#~ msgid "Name:"
+#~ msgstr "Nome:"
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "Clique no nome da área de trabalho para editá-la"
+
+#~ msgid "Number of workspaces:"
+#~ msgstr "Número de áreas de trabalho:"
+
+#~ msgid "Workspace names"
+#~ msgstr "Nome da área de trabalho"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: Falha ao criar novo processo: %s"
+
+#~ msgid "Always on top"
+#~ msgstr "Sempre no topo"

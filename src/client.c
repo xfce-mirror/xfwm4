@@ -3179,31 +3179,30 @@ clientFrame (Window w, gboolean recapture)
     TRACE ("entering clientFrame");
     TRACE ("framing client (0x%lx)", w);
 
-    if (w == gnome_win)
-    {
-        TRACE ("Not managing our own window");
-        return;
-    }
-
     gdk_error_trap_push ();
-    if (checkKdeSystrayWindow (dpy, w) && (systray != None))
-    {
-        TRACE ("Not managing KDE systray windows");
-        sendSystrayReqDock (dpy, w, systray);
-        gdk_error_trap_pop ();
-        return;
-    }
+    MyXGrabServer ();
 
     if (!XGetWindowAttributes (dpy, w, &attr))
     {
         TRACE ("Cannot get window attributes");
+        MyXUngrabServer ();
         gdk_error_trap_pop ();
         return;
     }
 
-    if (attr.override_redirect)
+    if ((attr.override_redirect) || (w == gnome_win))
     {
         TRACE ("Not managing override_redirect windows");
+        MyXUngrabServer ();
+        gdk_error_trap_pop ();
+        return;
+    }
+
+    if (checkKdeSystrayWindow (dpy, w) && (systray != None))
+    {
+        TRACE ("Not managing KDE systray windows");
+        sendSystrayReqDock (dpy, w, systray);
+        MyXUngrabServer ();
         gdk_error_trap_pop ();
         return;
     }
@@ -3212,6 +3211,7 @@ clientFrame (Window w, gboolean recapture)
     if (!c)
     {
         TRACE ("Cannot allocate memory for the window structure");
+        MyXUngrabServer ();
         gdk_error_trap_pop ();
         return;
     }
@@ -3369,22 +3369,6 @@ clientFrame (Window w, gboolean recapture)
      */
     clientApplyInitialState (c);
 
-    if (!recapture)
-    {
-        MyXGrabServer ();
-    }
-    if (!MyCheckWindow(w))
-    {
-        TRACE ("Client has vanished");
-        clientFree(c);
-        if (!recapture)
-        {
-            MyXUngrabServer ();
-        }
-        gdk_error_trap_pop ();
-        return;
-    }
-
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame =
@@ -3401,13 +3385,11 @@ clientFrame (Window w, gboolean recapture)
     {
         XShapeSelectInput (dpy, c->window, ShapeNotifyMask);
     }
-    if (!recapture)
-    {
-        /* Window is reparented now, so we can safely release the grab 
-         * on the server 
-         */
-        MyXUngrabServer ();
-    }   
+
+    /* Window is reparented now, so we can safely release the grab 
+     * on the server 
+     */
+    MyXUngrabServer ();
 
     clientAddToList (c);
     clientSetNetActions (c);

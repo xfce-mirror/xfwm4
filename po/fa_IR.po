@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.fa_IR\n"
-"POT-Creation-Date: 2004-01-04 23:17+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-28 22:38+0200\n"
 "PO-Revision-Date: 2004-01-09 19:35+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -16,68 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
-#: mcs-plugin/margins.c:124
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "حاشیه‌ها مناطقی بر لبه‌های صفحه هستند که پنجره‌ها در آنجا گذارده نخواهند شد."
-
-#: mcs-plugin/margins.c:131
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "حاشیه‌های فضای کاری"
 
-#: mcs-plugin/margins.c:159
+#: mcs-plugin/margins_plugin.c:217
+#, fuzzy
+msgid "Adjust workspace margins"
+msgstr "حاشیه‌های فضای کاری"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"حاشیه‌ها مناطقی بر لبه‌های صفحه هستند که پنجره‌ها در آنجا گذارده نخواهند شد."
+
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr "چپ :"
 
-#: mcs-plugin/margins.c:179
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr "راست :"
 
-#: mcs-plugin/margins.c:199
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr "بالا :"
 
-#: mcs-plugin/margins.c:219
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr "انتها :"
-
-#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-msgid "Workspaces and Margins"
-msgstr "فضاهای کاری و حاشیه‌ها"
-
-#. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-msgid "Workspaces"
-msgstr "فضاهای کاری"
-
-#: mcs-plugin/plugin.c:179
-msgid "Margins"
-msgstr "حاشیه‌ها"
-
-#: mcs-plugin/workspaces.c:337
-msgid "Change name"
-msgstr "تغییر نام"
-
-#: mcs-plugin/workspaces.c:349
-#, c-format
-msgid "Workspace %d"
-msgstr "فضای کاری %d"
-
-#: mcs-plugin/workspaces.c:359
-msgid "Name:"
-msgstr "نام:"
-
-#: mcs-plugin/workspaces.c:447
-msgid "Click on a workspace name to edit it"
-msgstr "بر نام فضای کاریی برای ویرایش آن کلیک کنید"
-
-#: mcs-plugin/workspaces.c:519
-msgid "Number of workspaces:"
-msgstr "تعداد فضاهای کاری:"
-
-#. Workspace names
-#: mcs-plugin/workspaces.c:550
-msgid "Workspace names"
-msgstr "نام‌های فضای‌کاری"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -304,12 +274,12 @@ msgstr "عملی که هنگام دوکلیکه کردن بر نوار عنوا�
 msgid "Advanced"
 msgstr "پیشرفته"
 
-#: src/client.c:508
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) سازماندهی نشده"
 
-#: src/events.c:1497
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
@@ -319,27 +289,17 @@ msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: نقص در قطعه‌بندی"
 
-#: src/main.c:402
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
 
-#: src/main.c:407
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: فقدان داده‌ها از پرونده‌های پیش‌فرض"
 
-#: src/main.c:416
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
-
-#: src/main.c:424
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
-
-#: src/main.c:445
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: خطای ناشناسی رخ داد"
@@ -381,79 +341,71 @@ msgid "Uns_tick"
 msgstr "_چسباندن"
 
 #: src/menu.c:51
-msgid "Context _help"
-msgstr "را_هنمای زمینه"
-
-#: src/menu.c:52 src/menu.c:53
-msgid "Always on top"
-msgstr "همیشه در بالا"
-
-#: src/menu.c:54
 msgid "Send to..."
 msgstr "فرستادن به..."
 
-#: src/menu.c:56
+#: src/menu.c:53
 msgid "_Close"
 msgstr "_بستن"
 
-#: src/menu.c:59
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "تخریب"
 
-#: src/menu.c:62
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "_ترک"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "راه‌اندازی مجدد"
 
-#: src/menu.c:166
+#: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
 msgstr "فضای کاری %i"
 
-#: src/menu.c:408
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu موفق به گرفتن اشاره‌گر نشد\n"
 
-#: src/settings.c:315
+#: src/settings.c:289
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: فقدان پرونده‌ی پیش‌فرض‌ها"
 
-#: src/settings.c:553
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را جایابی کرد\n"
 
-#: src/settings.c:560
+#: src/settings.c:523
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را تجزیه کرد\n"
 
-#: src/settings.c:604
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\n"
 
-#: src/settings.c:611
+#: src/settings.c:574
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 
-#: src/settings.c:798
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: طرح کلید مشخص شده‌ی \"%s\" وجود ندارد، از پیش‌فرض استفاده می‌شود"
 
-#: src/settings.c:808
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: فقدان مقادیر در پرونده‌ی پیش‌فرض‌ها"
 
-#: src/settings.c:1155
+#: src/settings.c:1119
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: شمارش فضای کاری گذاشته نشده، استفاده از مقدار rc: %i"
@@ -462,3 +414,41 @@ msgstr "%s: شمارش فضای کاری گذاشته نشده، استفاده 
 msgid "Switch to ..."
 msgstr "تعویض به ..."
 
+#~ msgid "Workspaces and Margins"
+#~ msgstr "فضاهای کاری و حاشیه‌ها"
+
+#~ msgid "Workspaces"
+#~ msgstr "فضاهای کاری"
+
+#~ msgid "Margins"
+#~ msgstr "حاشیه‌ها"
+
+#~ msgid "Change name"
+#~ msgstr "تغییر نام"
+
+#~ msgid "Workspace %d"
+#~ msgstr "فضای کاری %d"
+
+#~ msgid "Name:"
+#~ msgstr "نام:"
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "بر نام فضای کاریی برای ویرایش آن کلیک کنید"
+
+#~ msgid "Number of workspaces:"
+#~ msgstr "تعداد فضاهای کاری:"
+
+#~ msgid "Workspace names"
+#~ msgstr "نام‌های فضای‌کاری"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
+
+#~ msgid "Context _help"
+#~ msgstr "را_هنمای زمینه"
+
+#~ msgid "Always on top"
+#~ msgstr "همیشه در بالا"

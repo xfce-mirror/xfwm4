@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XFce4\n"
-"POT-Creation-Date: 2004-01-13 23:31+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-28 22:38+0200\n"
 "PO-Revision-Date: 2004-03-11 14:02+0100\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -14,8 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133
-#: mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Bordi dello spazio di lavoro"
@@ -25,8 +25,11 @@ msgid "Adjust workspace margins"
 msgstr "Adatta bordi dello spazio di lavoro"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "I bordi sono aree agli angoli dello schermo dove non verrà  posta nessuna finestra"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"I bordi sono aree agli angoli dello schermo dove non verrà  posta nessuna "
+"finestra"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -108,8 +111,7 @@ msgstr "Nascosto"
 msgid "Font Selection Dialog"
 msgstr "Seleziona il Font"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
-#: mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Gestore di Finestre"
 
@@ -222,13 +224,11 @@ msgstr "Bordi delle finestre magnetiche"
 msgid "Distance :"
 msgstr "Distanza :"
 
-#: mcs-plugin/xfwm4_plugin.c:1569
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Piccolo"
 
-#: mcs-plugin/xfwm4_plugin.c:1577
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Ampio"
 
@@ -238,11 +238,13 @@ msgstr "Scorri gli spazi di lavoro"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Scorri gli spazi di lavoro se il puntatore raggiunge il bordo dello schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se il puntatore raggiunge il bordo dello schermo"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Scorri gli spazi di lavoro se una finestra viene spostata fuori dallo schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se una finestra viene spostata fuori dallo schermo"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
@@ -272,32 +274,32 @@ msgstr "Azione da intraprendere per il doppio click sulla barra del titolo :"
 msgid "Advanced"
 msgstr "Avanzato"
 
-#: src/client.c:510
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) non gestito"
 
-#: src/events.c:1546
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operazione non (ancora) implementata\n"
 
-#: src/main.c:229
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Errore di segmentazione"
 
-#: src/main.c:406
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Un altro gestore di finestre è attualmente in esecuzione"
 
-#: src/main.c:411
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Dati mancanti dai file di default"
 
-#: src/main.c:438
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Si è verificato un errore sconosciuto"
@@ -393,17 +395,17 @@ msgstr "%s: Impossibile allocare il colore inattivo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Impossibile interpretare il colore inattivo %s\n"
 
-#: src/settings.c:761
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: manca il tema \"%s\", uso il default"
 
-#: src/settings.c:771
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Valori mancanti nel file defaults"
 
-#: src/settings.c:1118
+#: src/settings.c:1119
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Numero di spazi di lavoro non impostato, uso il valore rc: %i"
@@ -411,4 +413,3 @@ msgstr "%s: Numero di spazi di lavoro non impostato, uso il valore rc: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Passa a ..."
-
