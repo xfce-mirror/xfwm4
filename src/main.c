@@ -259,6 +259,7 @@ static int initialize(int argc, char **argv)
     pushEventFilter(xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow();
+    DBG("Our event window is 0x%lx", gnome_win);
 
     if(!initSettings())
     {
