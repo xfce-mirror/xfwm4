@@ -286,13 +286,13 @@ int main(int argc, char **argv)
     pid_t pid, ppid;
     static struct sigaction pact, cact;
     int i;
-    gboolean daemon_mode = TRUE;
+    gboolean daemon_mode = FALSE;
 
     for(i = 1; i < argc; i++)
     {
-        if(!strcmp(argv[i], "--nodaemon"))
+        if(!strcmp(argv[i], "--daemon"))
         {
-            daemon_mode = FALSE;
+            daemon_mode = TRUE;
         }
     }
 
