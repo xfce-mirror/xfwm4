@@ -856,7 +856,7 @@ checkKdeSystrayWindow(Display * dpy, Window window)
     Window trayIconForWindow;
 
     TRACE ("entering GetWindowRole");
-    g_return_if_fail (window != None);
+    g_return_val_if_fail (window != None, FALSE);
     
     XGetWindowProperty(dpy, window, kde_net_wm_system_tray_window_for, 0L, 
             sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
