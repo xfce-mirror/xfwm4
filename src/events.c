@@ -246,9 +246,18 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
     ScreenInfo *screen_info = NULL;
     
     TRACE ("entering handleMotionNotify");
+
+#if 0    
+    if (display_info->nb_screens > 1)
+    {
+        /* Wrap workspace/wrap windows is disabled with multiscreen */
+        return;
+    }
+#endif
     
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
+
     if (!screen_info)
     {
         return;

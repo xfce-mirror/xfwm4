@@ -231,7 +231,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 
     TRACE ("entering clientRedrawAllFrames");
     XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                       GrabModeAsync, None, None, GDK_CURRENT_TIME);
+                       GrabModeAsync, screen_info->xroot, None, GDK_CURRENT_TIME);
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
         if (mask & UPDATE_KEYGRABS)
@@ -2470,7 +2470,7 @@ clientToggleMaximized (Client * c, int mode)
            avoid these effects
          */
         XGrabPointer (clientGetXDisplay (c), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                           GrabModeAsync, None, None, GDK_CURRENT_TIME);
+                           GrabModeAsync, screen_info->xroot, None, GDK_CURRENT_TIME);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
         XUngrabPointer (clientGetXDisplay (c), GDK_CURRENT_TIME);
     }
@@ -2758,7 +2758,11 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
 
+#if 0    
+        if ((display_info->nb_screens == 1) && (screen_info->workspace_count > 1) && !clientIsTransientOrModal (c))
+#else
         if ((screen_info->workspace_count > 1) && !clientIsTransientOrModal (c))
+#endif
         {
             if (screen_info->workspace_count && screen_info->params->wrap_windows && screen_info->params->wrap_resistance)
             {
@@ -2902,7 +2906,7 @@ clientMove (Client * c, XEvent * e)
                         FALSE, GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
     g2 = XGrabPointer (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
                         FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-                        GrabModeAsync, None, cursor, GDK_CURRENT_TIME);
+                        GrabModeAsync, screen_info->xroot, cursor, GDK_CURRENT_TIME);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -3344,7 +3348,7 @@ clientResize (Client * c, int corner, XEvent * e)
                         FALSE, GrabModeAsync, GrabModeAsync, GDK_CURRENT_TIME);
     g2 = XGrabPointer (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
                         FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-                        GrabModeAsync, None, myDisplayGetCursorResize(display_info, passdata.corner),
+                        GrabModeAsync, screen_info->xroot, myDisplayGetCursorResize(display_info, passdata.corner),
                         GDK_CURRENT_TIME);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
@@ -3522,7 +3526,7 @@ clientCycle (Client * c, XEvent * e)
     g1 = XGrabKeyboard (display_info->dpy, screen_info->gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
         GDK_CURRENT_TIME);
     g2 = XGrabPointer (display_info->dpy, screen_info->gnome_win, FALSE, NoEventMask, GrabModeAsync,
-        GrabModeAsync, None, None, GDK_CURRENT_TIME);
+        GrabModeAsync, screen_info->xroot, None, GDK_CURRENT_TIME);
     if ((g1 != GrabSuccess) || (g2 != GrabSuccess))
     {
         TRACE ("grab failed in clientCycle");
@@ -3662,7 +3666,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
     g1 = XGrabPointer (display_info->dpy, w, FALSE,
         ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync,
-        GrabModeAsync, None, None, GDK_CURRENT_TIME);
+        GrabModeAsync, screen_info->xroot, None, GDK_CURRENT_TIME);
 
     if (g1 != GrabSuccess)
     {

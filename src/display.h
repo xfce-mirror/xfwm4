@@ -71,6 +71,7 @@ struct _DisplayInfo
     int shape_event;
     int dbl_click_time;
     int xgrabcount;
+    int nb_screens;
 };
 
 DisplayInfo * myDisplayInit                 (GdkDisplay *); 

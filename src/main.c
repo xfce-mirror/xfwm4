@@ -190,7 +190,6 @@ initialize (int argc, char **argv)
     long ws;
     SessionClient *client_session;
     gint i, nscreens;
-    gboolean screen_managed = FALSE;
     
     TRACE ("entering initialize");
     
@@ -249,7 +248,6 @@ initialize (int argc, char **argv)
 	
         sn_init_display (screen_info);
         myDisplayAddScreen (display_info, screen_info);
-        screen_managed = TRUE;
         setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);
         setHint (display_info->dpy, screen_info->xroot, win_supporting_wm_check, screen_info->gnome_win);
         setHint (display_info->dpy, screen_info->xroot, win_desktop_button_proxy, screen_info->gnome_win);
@@ -271,7 +269,7 @@ initialize (int argc, char **argv)
         initGtkCallbacks (screen_info);
     }
     /* No screen to manage, give up */
-    if (!screen_managed)
+    if (!display_info->nb_screens)
     {
         return -1;
     }

@@ -474,9 +474,7 @@ clientAddToList (Client * c)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
-    Client *client_sibling = NULL;
-    GList *sibling = NULL;
-    
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientAddToList");
 

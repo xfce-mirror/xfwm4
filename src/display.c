@@ -86,6 +86,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->clients = NULL;
     display->xgrabcount = 0;
     display->dbl_click_time = 300;
+    display->nb_screens = 0;
 
     initICCCMHints (display->dpy);
     initMotifHints (display->dpy);
@@ -259,6 +260,7 @@ myDisplayAddScreen (DisplayInfo *display, ScreenInfo *screen)
     g_return_if_fail (display != NULL);
 
     display->screens = g_slist_append (display->screens, screen);
+    display->nb_screens = display->nb_screens + 1;
 }
 
 void 
@@ -268,6 +270,11 @@ myDisplayRemoveScreen (DisplayInfo *display, ScreenInfo *screen)
     g_return_if_fail (display != NULL);
 
     display->screens = g_slist_remove (display->screens, screen);
+    display->nb_screens = display->nb_screens - 1;
+    if (display->nb_screens < 0)
+    {
+        display->nb_screens = 0;
+    }
 }
 
 ScreenInfo *
