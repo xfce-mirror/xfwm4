@@ -116,7 +116,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     total = 0;
     clicks = 1;
 
-    while ((ABS (x - xcurrent) < 1) && (ABS (y - ycurrent) < 1)
+    while ((ABS (x - xcurrent) < 2) && (ABS (y - ycurrent) < 2)
         && (total < params.dbl_click_time)
         && ((t1 - t0) < params.dbl_click_time))
     {
