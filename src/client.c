@@ -2520,11 +2520,6 @@ void clientMove(Client * c, XEvent * e)
     DBG("entering clientDoMove\n");
     DBG("moving client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->maximized)
-    {
-        clientRemoveMaximizeFlag(c);
-    }
-
     passdata.c = c;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
