@@ -1,0 +1,60 @@
+elberg
+------
+
+A port of the sawfish theme Elberg by Dagmar.
+
+Here follows original README file :
+
+Elberg v1.0 
+
+This theme uses 95% original artwork done by me, Dagmar.
+
+2.5% is the colors of the outline borders for both normal and transient
+windows, which I freely admit I borrowed from the microGUI theme (as well as
+the initial theme.jl file, but I had to start *somewhere*... having been
+unable to find some reasonable documentation for sawfish-themer) since they
+work so well with everything.
+
+The remaining 2.5% are the colors taken right out of the classic Cheese GTK
+theme, which is also fine since this theme was meant to be used with it.
+
+I got *very* tired of the tinting of my widgets making my window titles appear
+to be slightly bleached out.  This theme also has properly smoothed ends on
+the rolled up windows, and all buttons have both highlight and clicked images.
+
+Oh... The ICONS are something entirely new.  I admit I am woefully bored with
+the somewhat overused arrows pointing this way and that, and just came up
+with some icons that have enough of an alien look to be interesting while
+still being obvious enough for people to figure out what they are from looking
+at them.
+
+ - The Three Dots represent increasing complexity, and refer to the fact
+   that this button reveals the window control menu.
+
+ - The Whoosh Mark represents the window being whisked away into a corner
+   and/or titlebar by iconification.
+
+ - The Expanding Dot represents making the window bigger, i.e., maximizing.
+
+ - The X is still the best and only way I can think of to represent killing
+   the app.
+
+
+TODOS:
+
+ - Think about convering the hollowed area for text into something that can be
+   configured to use different colors.
+
+ - Redo the two beveled edges around the hollow area to have a one-pixel
+   thickness instead of what it is now (closer to two).
+
+ - MAYBE go back through and re-twiddle all those PNGs explicitly nuke their
+   alpha layer.  Hopefully it's not going to impact people's performance.
+
+ - Find out how to assign Trebuchet MS as the default font for the titlebars.
+
+
+Comments, suggestions (don't ask me how to install, AND NO SPAM!)
+"Dagmar" d'Surreal
+        at
+          speakeasy.net

@@ -12,6 +12,7 @@ cruxish \
 curve \
 default.keys \
 eazel-blue \
+elberg \
 exocet \
 g2 \
 gnububble \
