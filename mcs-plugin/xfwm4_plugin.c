@@ -1486,7 +1486,7 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
 
-    dialog->wrap_resistance_scale = gtk_hscale_new(GTK_ADJUSTMENT(gtk_adjustment_new(snap_width, 5, 50, 5, 10, 0)));
+    dialog->wrap_resistance_scale = gtk_hscale_new(GTK_ADJUSTMENT(gtk_adjustment_new(wrap_resistance, 1, 50, 5, 10, 0)));
     gtk_widget_show(dialog->wrap_resistance_scale);
     gtk_table_attach(GTK_TABLE(table4), dialog->wrap_resistance_scale, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
     gtk_scale_set_draw_value(GTK_SCALE(dialog->wrap_resistance_scale), FALSE);
