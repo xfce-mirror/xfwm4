@@ -1,5 +1,15 @@
 2003-03-17  xfce
 
+	* Makefile.in, aclocal.m4, configure, ltcf-c.sh, ltconfig,
+	ltmain.sh: Make sure configure script is in line with Benny's
+	latest changes
+
+2003-03-17  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-03-17  xfce
+
 	* src/events.c, themes/microdeck/Makefile.am,
 	themes/microdeck/Makefile.in, themes/microdeck/bottom-active.xpm,
 	themes/microdeck/bottom-inactive.xpm,
