@@ -17,6 +17,7 @@ default.keys \
 eazel-blue \
 elberg \
 exocet \
+fbx \
 g2 \
 gnububble \
 gorilla \
