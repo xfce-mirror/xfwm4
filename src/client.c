@@ -34,26 +34,27 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "screen.h"
-#include "misc.h"
 #include "client.h"
+#include "compositor.h"
+#include "focus.h"
 #include "frame.h"
 #include "hints.h"
-#include "workspaces.h"
+#include "icons.h"
+#include "misc.h"
 #include "mypixmap.h"
 #include "mywindow.h"
-#include "settings.h"
-#include "tabwin.h"
-#include "poswin.h"
-#include "session.h"
 #include "netwm.h"
-#include "focus.h"
-#include "transients.h"
-#include "stacking.h"
 #include "placement.h"
-#include "icons.h"
+#include "poswin.h"
+#include "screen.h"
+#include "session.h"
+#include "settings.h"
+#include "stacking.h"
 #include "startup_notification.h"
-#include "compositor.h"
+#include "tabwin.h"
+#include "transients.h"
+#include "wireframe.h"
+#include "workspaces.h"
 
 /* Event mask definition */
 
@@ -115,6 +116,7 @@ struct _ClientCycleData
 {
     Client *c;
     Tabwin *tabwin;
+    Window wireframe;
     int cycle_range;
 };
 
@@ -3569,9 +3571,6 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
         case KeyPress:
             if (gone || key_pressed)
             {
-                /* Hide frame draw */
-                clientDrawOutline (c);
-
                 if (key_pressed)
                 {
                     /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
@@ -3588,13 +3587,18 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                         passdata->c = c;
                     }
                 }
+                else if (gone)
+                {
+
+                    c = clientGetPrevious (c, passdata->cycle_range);
+                    passdata->c = c;
+                }
 
                 if (c)
                 {
                     GdkPixbuf *icon;
                     
-                    /* Redraw frame draw */
-                    clientDrawOutline (c);
+                    wireframeUpdate (c, passdata->wireframe);
                     icon = getAppIcon (clientGetXDisplay (c), c->window, 32, 32);
                     tabwinSetLabel (passdata->tabwin, icon, 
                                     c->class.res_class, c->name);
@@ -3609,7 +3613,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 int keysym = XKeycodeToKeysym (clientGetXDisplay (c), xevent->xkey.keycode, 0);
 
-                /* If KEY_CYCE_WINDOWS has Shift, then stop cycling on Shift
+                /* If KEY_CYCLE_WINDOWS has Shift, then stop cycling on Shift
                  * release.
                  */
                 if (IsModifierKey (keysym)
@@ -3674,7 +3678,6 @@ clientCycle (Client * c, XEvent * e)
         return;
     }
 
-    myDisplayGrabServer (display_info);
     if (screen_info->params->cycle_hidden)
     {
         passdata.cycle_range = INCLUDE_HIDDEN;
@@ -3692,28 +3695,19 @@ clientCycle (Client * c, XEvent * e)
     {
         GdkPixbuf *icon;
         
+        TRACE ("entering cycle loop");
+        passdata.wireframe = wireframeCreate (passdata.c);
         icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
         passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
                                passdata.c->class.res_class, passdata.c->name);
-                               
-        TRACE ("entering cycle loop");
-        /* Draw frame draw */
-        clientDrawOutline (passdata.c);
         xfce_push_event_filter (display_info->xfilter, clientCycle_event_filter, &passdata);
         gtk_main ();
         xfce_pop_event_filter (display_info->xfilter);
-        if (passdata.c)
-        {
-            /* Hide frame draw */
-            clientDrawOutline (passdata.c);
-        }
-        
-        
+        wireframeDelete (screen_info, passdata.wireframe);
         TRACE ("leaving cycle loop");
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    myDisplayUngrabServer (display_info);
     XUngrabKeyboard (display_info->dpy, GDK_CURRENT_TIME);
     XUngrabPointer (display_info->dpy, GDK_CURRENT_TIME);
 

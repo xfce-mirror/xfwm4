@@ -95,7 +95,8 @@ cleanUp (void)
     display_info = NULL;
 }
 
-static char *build_session_filename(SessionClient *client_session)
+static char *
+build_session_filename(SessionClient *client_session)
 {
     gchar *filename, *path, *file, *tmp;
     GError *error = NULL;
@@ -173,7 +174,7 @@ handleSignal (int sig)
             break;
         case SIGSEGV:
             cleanUp ();
-            g_error (_("%s: Segmentation fault"), g_get_prgname ());
+            g_error (_("%s: Segmentation fault"), PACKAGE);
             break;
         default:
             break;
@@ -272,6 +273,27 @@ ensure_basedir_spec (void)
     }
     
     g_free (old);
+}
+
+static void
+print_usage (void)
+{
+    g_print ("%s [--sm-client-id=ID] [--display=DISPLAY] \
+[--disable-compositor] [--daemon] [--version|-V] \
+[--help|-H]\n", PACKAGE);
+    exit (0);
+}
+
+static void
+print_version (void)
+{
+    g_print ("\tThis is %s version %s for Xfce %s\n", 
+                    PACKAGE, VERSION, xfce_version_string());
+    g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
+                    GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+    g_print ("linked with GTK+-%d.%d.%d.\n", 
+                    gtk_major_version, gtk_minor_version, gtk_micro_version);
+    exit (0);
 }
 
 static int
@@ -397,13 +419,11 @@ main (int argc, char **argv)
         }
         else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
         {
-            g_print ("\tThis is %s version %s for Xfce %s\n", 
-                            PACKAGE, VERSION, xfce_version_string());
-            g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
-                            GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-            g_print ("linked with GTK+-%d.%d.%d.\n", 
-                            gtk_major_version, gtk_minor_version, gtk_micro_version);
-            exit (0);
+            print_version ();
+        }
+        else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-H"))
+        {
+            print_usage ();
         }
     }
 
@@ -412,12 +432,12 @@ main (int argc, char **argv)
     {
         case -1:
             g_warning (_("%s: Another Window Manager is already running"),
-                g_get_prgname ());
+                PACKAGE);
             exit (1);
             break;
         case -2:
             g_warning (_("%s: Missing data from default files"),
-                g_get_prgname ());
+                PACKAGE);
             exit (1);
             break;
         case 0:
@@ -455,7 +475,7 @@ main (int argc, char **argv)
             gtk_main ();
             break;
         default:
-            g_warning (_("%s: Unknown error occured"), g_get_prgname ());
+            g_warning (_("%s: Unknown error occured"), PACKAGE);
             exit (1);
             break;
     }

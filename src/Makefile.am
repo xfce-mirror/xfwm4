@@ -55,7 +55,9 @@ xfwm4_SOURCES =								\
 	transients.c							\
 	transients.h							\
 	workspaces.c							\
-	workspaces.h
+	workspaces.h							\
+	wireframe.c							\
+	wireframe.h
 
 xfwm4_CFLAGS =								\
 	@LIBX11_CFLAGS@							\

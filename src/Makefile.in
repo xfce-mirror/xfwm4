@@ -66,7 +66,7 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-compositor.$(OBJEXT) \
 	xfwm4-settings.$(OBJEXT) xfwm4-spinning_cursor.$(OBJEXT) \
 	xfwm4-stacking.$(OBJEXT) xfwm4-startup_notification.$(OBJEXT) \
 	xfwm4-tabwin.$(OBJEXT) xfwm4-transients.$(OBJEXT) \
-	xfwm4-workspaces.$(OBJEXT)
+	xfwm4-workspaces.$(OBJEXT) xfwm4-wireframe.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -98,6 +98,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-startup_notification.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-tabwin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-transients.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-wireframe.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -320,7 +321,9 @@ xfwm4_SOURCES = \
 	transients.c							\
 	transients.h							\
 	workspaces.c							\
-	workspaces.h
+	workspaces.h							\
+	wireframe.c							\
+	wireframe.h
 
 xfwm4_CFLAGS = \
 	@LIBX11_CFLAGS@							\
@@ -447,6 +450,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-startup_notification.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-tabwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-transients.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-wireframe.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
 
 .c.o:
@@ -1120,6 +1124,30 @@ xfwm4-workspaces.lo: workspaces.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-workspaces.Plo' tmpdepfile='$(DEPDIR)/xfwm4-workspaces.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-workspaces.lo `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c
+
+xfwm4-wireframe.o: wireframe.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-wireframe.o -MD -MP -MF "$(DEPDIR)/xfwm4-wireframe.Tpo" -c -o xfwm4-wireframe.o `test -f 'wireframe.c' || echo '$(srcdir)/'`wireframe.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-wireframe.Tpo" "$(DEPDIR)/xfwm4-wireframe.Po"; else rm -f "$(DEPDIR)/xfwm4-wireframe.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wireframe.c' object='xfwm4-wireframe.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-wireframe.Po' tmpdepfile='$(DEPDIR)/xfwm4-wireframe.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-wireframe.o `test -f 'wireframe.c' || echo '$(srcdir)/'`wireframe.c
+
+xfwm4-wireframe.obj: wireframe.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-wireframe.obj -MD -MP -MF "$(DEPDIR)/xfwm4-wireframe.Tpo" -c -o xfwm4-wireframe.obj `if test -f 'wireframe.c'; then $(CYGPATH_W) 'wireframe.c'; else $(CYGPATH_W) '$(srcdir)/wireframe.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-wireframe.Tpo" "$(DEPDIR)/xfwm4-wireframe.Po"; else rm -f "$(DEPDIR)/xfwm4-wireframe.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wireframe.c' object='xfwm4-wireframe.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-wireframe.Po' tmpdepfile='$(DEPDIR)/xfwm4-wireframe.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-wireframe.obj `if test -f 'wireframe.c'; then $(CYGPATH_W) 'wireframe.c'; else $(CYGPATH_W) '$(srcdir)/wireframe.c'; fi`
+
+xfwm4-wireframe.lo: wireframe.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-wireframe.lo -MD -MP -MF "$(DEPDIR)/xfwm4-wireframe.Tpo" -c -o xfwm4-wireframe.lo `test -f 'wireframe.c' || echo '$(srcdir)/'`wireframe.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-wireframe.Tpo" "$(DEPDIR)/xfwm4-wireframe.Plo"; else rm -f "$(DEPDIR)/xfwm4-wireframe.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wireframe.c' object='xfwm4-wireframe.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-wireframe.Plo' tmpdepfile='$(DEPDIR)/xfwm4-wireframe.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-wireframe.lo `test -f 'wireframe.c' || echo '$(srcdir)/'`wireframe.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
