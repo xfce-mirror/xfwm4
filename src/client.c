@@ -3813,7 +3813,6 @@ clientListTransientOrModal (Client * c)
 void
 clientPassFocus (Client * c)
 {
-    GList *list_of_windows = NULL;
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
     Client *top_most = NULL;
@@ -3838,44 +3837,20 @@ clientPassFocus (Client * c)
     top_most = clientGetTopMostFocusable (look_in_layer, c);
     if (params.click_to_focus)
     {
-        if (c)
+        if ((c) && clientIsModal (c))
         {
-            /* Fairly simple logic:
-               1) if the window is a modal, send focus back to its parent window
-               2) Otherwise, rewind the focus stack until we find an eligible window
-                  (by eligible, I mean a window that is not a transient for the current
-                  window)
+            /* If the window is a modal, send focus back to its parent window
+               Modals are transients, and we aren"t interested in modal
+               for group, so it safe to sue clientGetTransient because 
+               it's really what we want...
              */
-            if (clientIsModal (c))
-            {
-                 /* Modals are transients, and we aren"t interested in modal
-                    for group, so it safe to sue clientGetTransient because 
-                    it's really what we want...
-                  */
-                 c2 = clientGetTransient (c);
 
-                if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
-                {
-                    new_focus = c2;
-                    /* Usability: raise the parent, to grab user's attention */
-                    clientRaise (c2);
-                }
-            }
-
-            if (!new_focus)
+            c2 = clientGetTransient (c);
+            if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
             {
-                list_of_windows = clientListTransient (c);
-                for (c2 = c->next, i = 0; (c2) && (i < client_count);
-                    c2 = c2->next, i++)
-                {
-                    if (clientSelectMask (c2, 0)
-                        && !g_list_find (list_of_windows, (gconstpointer) c2))
-                    {
-                        new_focus = c2;
-                        break;
-                    }
-                }
-                g_list_free (list_of_windows);
+                new_focus = c2;
+                /* Usability: raise the parent, to grab user's attention */
+                clientRaise (c2);
             }
         }
     }
