@@ -73,7 +73,7 @@
 #define MARGIN_TOP                      2
 #define MARGIN_BOTTOM                   3
 
-#define CLIENT_MIN_VISIBLE              10      /* pixels */
+#define CLIENT_MIN_VISIBLE              10	/* pixels */
 
 #define CLIENT_FLAG_FOCUS              (1L<<0)
 #define CLIENT_FLAG_ABOVE              (1L<<1)
@@ -116,7 +116,7 @@
                                        CLIENT_FLAG_HAS_HIDE | \
                                        CLIENT_FLAG_HAS_CLOSE | \
                                        CLIENT_FLAG_HAS_MOVE | \
-                                       CLIENT_FLAG_HAS_RESIZE                                  
+                                       CLIENT_FLAG_HAS_RESIZE
 
 #define ALL_WORKSPACES                 (int) 0xFFFFFFFF
 
@@ -220,64 +220,64 @@ extern Client *clients;
 extern Window *client_list;
 extern unsigned int client_count;
 
-Client *clientGetTransient(Client *);
-gboolean clientIsTransient(Client *);
-gboolean clientSameGroup(Client *, Client *);
-gboolean clientIsTransientFor(Client *, Client *);
-gboolean clientIsTransientForGroup(Client *);
-gboolean clientTransientHasAncestor(Client *, int);
-void clientSetNetState(Client *);
-void clientUpdateWinState(Client *, XClientMessageEvent *);
-void clientUpdateNetState(Client *, XClientMessageEvent *);
-void clientGetNetWmType(Client * c);
-void clientCoordGravitate(Client *, int, int *, int *);
-void clientGravitate(Client *, int);
-void clientConfigure(Client *, XWindowChanges *, int, gboolean);
-void clientUpdateMWMHints(Client *);
-void clientClearPixmapCache(Client *);
-void clientFrame(Window, gboolean);
-void clientUnframe(Client *, gboolean);
-void clientFrameAll();
-void clientUnframeAll();
-void clientGetNetStruts(Client *);
-void clientInstallColormaps(Client *);
-void clientUpdateColormaps(Client *);
-void clientUpdateAllFrames(gboolean);
-void clientGrabKeys(Client *);
-void clientUngrabKeys(Client *);
-Client *clientGetFromWindow(Window, int);
-Client *clientAtPosition(int, int, Client *);
-Client *clientGetNext(Client *, int);
-void clientPassFocus(Client *);
-void clientShow(Client *, gboolean);
-void clientHide(Client *, int, gboolean);
-void clientHideAll(Client *, int);
-void clientClose(Client *);
-void clientKill(Client *);
-void clientRaise(Client *);
-void clientLower(Client *);
-void clientSetLayer(Client *, int);
-void clientSetWorkspace(Client *, int, gboolean);
-void clientShade(Client *);
-void clientUnshade(Client *);
-void clientToggleShaded(Client *);
-void clientStick(Client *, gboolean);
-void clientUnstick(Client *, gboolean);
-void clientToggleSticky(Client *, gboolean);
-inline void clientRemoveMaximizeFlag(Client *);
-void clientToggleMaximized(Client *, int);
-void clientUpdateFocus(Client *);
-inline gboolean clientAcceptFocus(Client * c);
-void clientSetFocus(Client *, gboolean);
-Client *clientGetFocus();
-void clientMove(Client *, XEvent *);
-void clientResize(Client *, int, XEvent *);
-void clientCycle(Client *);
-void clientButtonPress(Client *, Window, XButtonEvent *);
-Client *clientGetLeader(Client *);
-GSList *clientGetStackList(void);
+Client *clientGetTransient (Client *);
+gboolean clientIsTransient (Client *);
+gboolean clientSameGroup (Client *, Client *);
+gboolean clientIsTransientFor (Client *, Client *);
+gboolean clientIsTransientForGroup (Client *);
+gboolean clientTransientHasAncestor (Client *, int);
+void clientSetNetState (Client *);
+void clientUpdateWinState (Client *, XClientMessageEvent *);
+void clientUpdateNetState (Client *, XClientMessageEvent *);
+void clientGetNetWmType (Client * c);
+void clientCoordGravitate (Client *, int, int *, int *);
+void clientGravitate (Client *, int);
+void clientConfigure (Client *, XWindowChanges *, int, gboolean);
+void clientUpdateMWMHints (Client *);
+void clientClearPixmapCache (Client *);
+void clientFrame (Window, gboolean);
+void clientUnframe (Client *, gboolean);
+void clientFrameAll ();
+void clientUnframeAll ();
+void clientGetNetStruts (Client *);
+void clientInstallColormaps (Client *);
+void clientUpdateColormaps (Client *);
+void clientUpdateAllFrames (gboolean);
+void clientGrabKeys (Client *);
+void clientUngrabKeys (Client *);
+Client *clientGetFromWindow (Window, int);
+Client *clientAtPosition (int, int, Client *);
+Client *clientGetNext (Client *, int);
+void clientPassFocus (Client *);
+void clientShow (Client *, gboolean);
+void clientHide (Client *, int, gboolean);
+void clientHideAll (Client *, int);
+void clientClose (Client *);
+void clientKill (Client *);
+void clientRaise (Client *);
+void clientLower (Client *);
+void clientSetLayer (Client *, int);
+void clientSetWorkspace (Client *, int, gboolean);
+void clientShade (Client *);
+void clientUnshade (Client *);
+void clientToggleShaded (Client *);
+void clientStick (Client *, gboolean);
+void clientUnstick (Client *, gboolean);
+void clientToggleSticky (Client *, gboolean);
+inline void clientRemoveMaximizeFlag (Client *);
+void clientToggleMaximized (Client *, int);
+void clientUpdateFocus (Client *);
+inline gboolean clientAcceptFocus (Client * c);
+void clientSetFocus (Client *, gboolean);
+Client *clientGetFocus ();
+void clientMove (Client *, XEvent *);
+void clientResize (Client *, int, XEvent *);
+void clientCycle (Client *);
+void clientButtonPress (Client *, Window, XButtonEvent *);
+Client *clientGetLeader (Client *);
+GSList *clientGetStackList (void);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-char *clientGetStartupId(Client *);
+char *clientGetStartupId (Client *);
 #endif
 
 #endif /* INC_CLIENT_H */

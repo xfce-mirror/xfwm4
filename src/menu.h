@@ -56,7 +56,8 @@ typedef struct _Menu Menu;
 typedef struct _MenuItem MenuItem;
 typedef struct _MenuData MenuData;
 
-typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window client_xwindow, gpointer menu_data, gpointer item_data);
+typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window client_xwindow,
+			  gpointer menu_data, gpointer item_data);
 
 struct _MenuItem
 {
@@ -82,12 +83,14 @@ struct _Menu
     MenuOp insensitive;
 };
 
-Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data);
-Menu *menu_connect(Menu * menu);
-GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data);
-gboolean menu_is_opened(void);
-gboolean menu_check_and_close(void);
-gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp);
-void menu_free(Menu * menu);
+Menu *menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func,
+		    gpointer data);
+Menu *menu_connect (Menu * menu);
+GtkWidget *menu_item_connect (GtkWidget * item, MenuData * item_data);
+gboolean menu_is_opened (void);
+gboolean menu_check_and_close (void);
+gboolean menu_popup (Menu * menu, int root_x, int root_y, int button,
+		     guint32 timestamp);
+void menu_free (Menu * menu);
 
 #endif /* INC_MENU_H */

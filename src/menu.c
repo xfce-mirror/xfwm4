@@ -39,288 +39,318 @@
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-                                  {MENU_OP_MAXIMIZE, NULL, N_("Ma_ximize")},
-                                  {MENU_OP_UNMAXIMIZE, NULL, N_("Un_maximize")},
-                                  {MENU_OP_MINIMIZE, NULL, N_("_Hide")},
-                                  {MENU_OP_MINIMIZE_ALL, NULL, N_("Hide _all others")},
-                                  {MENU_OP_UNMINIMIZE, NULL, N_("S_how")},
-                                  {MENU_OP_SHADE, NULL, N_("_Shade")},
-                                  {MENU_OP_UNSHADE, NULL, N_("Un_shade")},
-                                  {MENU_OP_STICK, NULL, N_("S_tick")},
-                                  {MENU_OP_UNSTICK, NULL, N_("Uns_tick")},
-                                  {MENU_OP_MOVE, NULL, N_("_Move")},
-                                  {MENU_OP_RESIZE, NULL, N_("_Resize")},
-                                  {MENU_OP_SWITCH, NULL, N_("S_witch")},
-                                  {0, NULL, NULL},
-                                  {MENU_OP_DELETE, NULL, N_("_Close")},
+    {MENU_OP_MAXIMIZE, NULL, N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE, NULL, N_("Un_maximize")},
+    {MENU_OP_MINIMIZE, NULL, N_("_Hide")},
+    {MENU_OP_MINIMIZE_ALL, NULL, N_("Hide _all others")},
+    {MENU_OP_UNMINIMIZE, NULL, N_("S_how")},
+    {MENU_OP_SHADE, NULL, N_("_Shade")},
+    {MENU_OP_UNSHADE, NULL, N_("Un_shade")},
+    {MENU_OP_STICK, NULL, N_("S_tick")},
+    {MENU_OP_UNSTICK, NULL, N_("Uns_tick")},
+    {MENU_OP_MOVE, NULL, N_("_Move")},
+    {MENU_OP_RESIZE, NULL, N_("_Resize")},
+    {MENU_OP_SWITCH, NULL, N_("S_witch")},
+    {0, NULL, NULL},
+    {MENU_OP_DELETE, NULL, N_("_Close")},
 #if 0
-                                  {MENU_OP_DESTROY, NULL, N_("Destroy")},
-                                  {0, NULL, NULL},
-                                  {MENU_OP_WORKSPACES, NULL, N_("Wor_kspace")},
-                                  {0, NULL, NULL},
+    {MENU_OP_DESTROY, NULL, N_("Destroy")},
+    {0, NULL, NULL},
+    {MENU_OP_WORKSPACES, NULL, N_("Wor_kspace")},
+    {0, NULL, NULL},
 #endif
-                                  {MENU_OP_QUIT, NULL, N_("_Quit")},
-                                  {MENU_OP_RESTART, NULL, N_("Restart")},
-                              };
+    {MENU_OP_QUIT, NULL, N_("_Quit")},
+    {MENU_OP_RESTART, NULL, N_("Restart")},
+};
 
-static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
+static GtkToXEventFilterStatus
+menu_filter (XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
     {
-    case KeyPress:
-    case KeyRelease:
-    case ButtonPress:
-    case ButtonRelease:
-    case MotionNotify:
-    case EnterNotify:
-    case LeaveNotify:
-        return XEV_FILTER_STOP;
-        break;
-    default:
-        return XEV_FILTER_CONTINUE;
-        break;
+	case KeyPress:
+	case KeyRelease:
+	case ButtonPress:
+	case ButtonRelease:
+	case MotionNotify:
+	case EnterNotify:
+	case LeaveNotify:
+	    return XEV_FILTER_STOP;
+	    break;
+	default:
+	    return XEV_FILTER_CONTINUE;
+	    break;
     }
     return XEV_FILTER_STOP;
 }
 
 
-static void popup_position_func(GtkMenu * menu, gint * x, gint * y, gboolean * push_in, gpointer user_data)
+static void
+popup_position_func (GtkMenu * menu, gint * x, gint * y,
+		     gboolean * push_in, gpointer user_data)
 {
     GtkRequisition req;
     GdkPoint *pos;
 
     pos = user_data;
 
-    gtk_widget_size_request(GTK_WIDGET(menu), &req);
+    gtk_widget_size_request (GTK_WIDGET (menu), &req);
 
-    if(pos->x >= 0)
+    if (pos->x >= 0)
     {
-        *x = pos->x;
-        *x = CLAMP(*x, 0, MAX(0, gdk_screen_width() - req.width));
+	*x = pos->x;
+	*x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
     }
     else
     {
-        *x = (gdk_screen_width() - req.width) / 2;
+	*x = (gdk_screen_width () - req.width) / 2;
     }
-    if(pos->x >= 0)
+    if (pos->x >= 0)
     {
-        *y = pos->y;
-        *y = CLAMP(*y, 0, MAX(0, gdk_screen_height() - req.height));
+	*y = pos->y;
+	*y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
     }
     else
     {
-        *y = (gdk_screen_height() - req.height) / 2;
+	*y = (gdk_screen_height () - req.height) / 2;
     }
-    g_free(user_data);
+    g_free (user_data);
 }
 
-static gboolean activate_cb(GtkWidget * menuitem, gpointer data)
+static gboolean
+activate_cb (GtkWidget * menuitem, gpointer data)
 {
     MenuData *md;
 
-    TRACE("entering activate_cb");
-    g_return_val_if_fail(GTK_IS_WIDGET(menuitem), FALSE);
+    TRACE ("entering activate_cb");
+    g_return_val_if_fail (GTK_IS_WIDGET (menuitem), FALSE);
 
     menu_open = NULL;
 
     md = data;
 
-    TRACE("deactivating menu_filter");
-    popEventFilter();
-    (*md->menu->func) (md->menu, md->op, md->client_xwindow, md->menu->data, md->data);
+    TRACE ("deactivating menu_filter");
+    popEventFilter ();
+    (*md->menu->func) (md->menu, md->op, md->client_xwindow, md->menu->data,
+		       md->data);
     return (FALSE);
 }
 
-static gboolean menu_closed(GtkMenu * widget, gpointer data)
+static gboolean
+menu_closed (GtkMenu * widget, gpointer data)
 {
     Menu *menu;
 
-    TRACE("entering menu_closed");
+    TRACE ("entering menu_closed");
     menu = data;
     menu_open = NULL;
-    TRACE("deactivating menu_filter");
-    popEventFilter();
+    TRACE ("deactivating menu_filter");
+    popEventFilter ();
     (*menu->func) (menu, 0, None, menu->data, NULL);
     return (FALSE);
 }
 
-Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
+Menu *
+menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
 {
     int i;
     Menu *menu;
 
-    TRACE("entering menu_new");
-    menu = g_new(Menu, 1);
+    TRACE ("entering menu_new");
+    menu = g_new (Menu, 1);
     menu->func = func;
     menu->data = data;
     menu->ops = ops;
     menu->insensitive = insensitive;
-    menu->menu = gtk_menu_new();
+    menu->menu = gtk_menu_new ();
 
     i = 0;
-    while(i < (int)(sizeof(menuitems) / sizeof(MenuItem)))
+    while (i < (int) (sizeof (menuitems) / sizeof (MenuItem)))
     {
-        if(ops & menuitems[i].op || menuitems[i].op == 0)
-        {
-            GtkWidget *mi;
-            MenuData *md;
+	if (ops & menuitems[i].op || menuitems[i].op == 0)
+	{
+	    GtkWidget *mi;
+	    MenuData *md;
 
-            if(menuitems[i].op == 0)
-            {
-                mi = gtk_separator_menu_item_new();
-            }
-            else
-            {
-                mi = gtk_menu_item_new_with_mnemonic(_(menuitems[i].label));
-                if(insensitive & menuitems[i].op)
-                {
-                    gtk_widget_set_sensitive(mi, FALSE);
-                }
-                md = g_new(MenuData, 1);
-                md->menu = menu;
-                md->op = menuitems[i].op;
-                md->client_xwindow = None;
-                md->data = NULL;
-                menu_item_connect(mi, md);
-            }
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu->menu), mi);
-            gtk_widget_show(mi);
-        }
-        ++i;
+	    if (menuitems[i].op == 0)
+	    {
+		mi = gtk_separator_menu_item_new ();
+	    }
+	    else
+	    {
+		mi = gtk_menu_item_new_with_mnemonic (_(menuitems[i].label));
+		if (insensitive & menuitems[i].op)
+		{
+		    gtk_widget_set_sensitive (mi, FALSE);
+		}
+		md = g_new (MenuData, 1);
+		md->menu = menu;
+		md->op = menuitems[i].op;
+		md->client_xwindow = None;
+		md->data = NULL;
+		menu_item_connect (mi, md);
+	    }
+	    gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), mi);
+	    gtk_widget_show (mi);
+	}
+	++i;
     }
-    menu_connect(menu);
+    menu_connect (menu);
 
     return (menu);
 }
 
-Menu *menu_connect(Menu * menu)
+Menu *
+menu_connect (Menu * menu)
 {
-    TRACE("entering menu_connect");
-    g_return_val_if_fail(menu != NULL, NULL);
-    g_return_val_if_fail(GTK_IS_MENU(menu->menu), NULL);
-    g_signal_connect(GTK_OBJECT(menu->menu), "selection_done", GTK_SIGNAL_FUNC(menu_closed), menu);
+    TRACE ("entering menu_connect");
+    g_return_val_if_fail (menu != NULL, NULL);
+    g_return_val_if_fail (GTK_IS_MENU (menu->menu), NULL);
+    g_signal_connect (GTK_OBJECT (menu->menu), "selection_done",
+		      GTK_SIGNAL_FUNC (menu_closed), menu);
     return (menu);
 }
 
-static void closure_notify(gpointer data, GClosure * closure)
+static void
+closure_notify (gpointer data, GClosure * closure)
 {
-    TRACE("entering closure_notify");
-    if(data)
+    TRACE ("entering closure_notify");
+    if (data)
     {
-        TRACE("freeing data");
-        g_free(data);
+	TRACE ("freeing data");
+	g_free (data);
     }
 }
 
-GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data)
+GtkWidget *
+menu_item_connect (GtkWidget * item, MenuData * item_data)
 {
-    TRACE("entering menu_item_connect");
-    g_return_val_if_fail(item != NULL, NULL);
-    g_return_val_if_fail(GTK_IS_MENU_ITEM(item), NULL);
-    g_signal_connect_closure(GTK_OBJECT(item), "activate", g_cclosure_new(GTK_SIGNAL_FUNC(activate_cb), item_data, (GClosureNotify) closure_notify), FALSE);
+    TRACE ("entering menu_item_connect");
+    g_return_val_if_fail (item != NULL, NULL);
+    g_return_val_if_fail (GTK_IS_MENU_ITEM (item), NULL);
+    g_signal_connect_closure (GTK_OBJECT (item), "activate",
+			      g_cclosure_new (GTK_SIGNAL_FUNC (activate_cb),
+					      item_data,
+					      (GClosureNotify)
+					      closure_notify), FALSE);
     return (item);
 }
 
-gboolean menu_is_opened(void)
+gboolean
+menu_is_opened (void)
 {
-    TRACE("entering menu_is_opened");
+    TRACE ("entering menu_is_opened");
     return (menu_open != NULL);
 }
 
-gboolean menu_check_and_close(void)
+gboolean
+menu_check_and_close (void)
 {
-    TRACE("entering menu_check_or_close");
-    if(menu_open)
+    TRACE ("entering menu_check_or_close");
+    if (menu_open)
     {
-        TRACE("menu open, emitting deactivate signal");
-        g_signal_emit_by_name(GTK_OBJECT(menu_open), "deactivate");
-        menu_open = NULL;
-        return (TRUE);
+	TRACE ("menu open, emitting deactivate signal");
+	g_signal_emit_by_name (GTK_OBJECT (menu_open), "deactivate");
+	menu_open = NULL;
+	return (TRUE);
     }
     return (FALSE);
 }
 
-static gboolean grab_available(guint32 timestamp)
+static gboolean
+grab_available (guint32 timestamp)
 {
-    GdkEventMask mask = GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
+    GdkEventMask mask =
+	GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+	GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
+	GDK_POINTER_MOTION_MASK;
     GdkGrabStatus g1;
     GdkGrabStatus g2;
     gboolean grab_failed = FALSE;
     gint i = 0;
 
-    TRACE("entering grab_available");
+    TRACE ("entering grab_available");
 
-    g1 = gdk_pointer_grab(getGdkEventWindow(), TRUE, mask, NULL, NULL, timestamp);
-    g2 = gdk_keyboard_grab(getGdkEventWindow(), TRUE, timestamp);
+    g1 = gdk_pointer_grab (getGdkEventWindow (), TRUE, mask, NULL, NULL,
+			   timestamp);
+    g2 = gdk_keyboard_grab (getGdkEventWindow (), TRUE, timestamp);
 
-    while((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS) || (g2 != GDK_GRAB_SUCCESS))))
+    while ((i++ < 100) &&
+	   (grab_failed =
+	    ((g1 != GDK_GRAB_SUCCESS) || (g2 != GDK_GRAB_SUCCESS))))
     {
-        TRACE("grab not available yet, waiting... (%i)", i);
-        usleep(100);
-        if(g1 != GDK_GRAB_SUCCESS)
-        {
-            g1 = gdk_pointer_grab(getGdkEventWindow(), TRUE, mask, NULL, NULL, timestamp);
-        }
-        if(g2 != GDK_GRAB_SUCCESS)
-        {
-            g2 = gdk_keyboard_grab(getGdkEventWindow(), TRUE, timestamp);
-        }
+	TRACE ("grab not available yet, waiting... (%i)", i);
+	usleep (100);
+	if (g1 != GDK_GRAB_SUCCESS)
+	{
+	    g1 = gdk_pointer_grab (getGdkEventWindow (), TRUE, mask, NULL,
+				   NULL, timestamp);
+	}
+	if (g2 != GDK_GRAB_SUCCESS)
+	{
+	    g2 = gdk_keyboard_grab (getGdkEventWindow (), TRUE, timestamp);
+	}
     }
 
-    if(g1 == GDK_GRAB_SUCCESS)
+    if (g1 == GDK_GRAB_SUCCESS)
     {
-        gdk_pointer_ungrab(timestamp);
+	gdk_pointer_ungrab (timestamp);
     }
-    if(g2 == GDK_GRAB_SUCCESS)
+    if (g2 == GDK_GRAB_SUCCESS)
     {
-        gdk_keyboard_ungrab(timestamp);
+	gdk_keyboard_ungrab (timestamp);
     }
 
     return (!grab_failed);
 }
 
-gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp)
+gboolean
+menu_popup (Menu * menu, int root_x, int root_y, int button,
+	    guint32 timestamp)
 {
     GdkPoint *pt;
 
-    TRACE("entering menu_popup");
+    TRACE ("entering menu_popup");
 
-    g_return_val_if_fail(menu != NULL, FALSE);
-    g_return_val_if_fail(GTK_IS_MENU(menu->menu), FALSE);
+    g_return_val_if_fail (menu != NULL, FALSE);
+    g_return_val_if_fail (GTK_IS_MENU (menu->menu), FALSE);
 
-    pt = g_new(GdkPoint, 1);
+    pt = g_new (GdkPoint, 1);
     pt->x = root_x;
     pt->y = root_y;
 
-    if(!menu_check_and_close())
+    if (!menu_check_and_close ())
     {
-        if(!grab_available(timestamp))
-        {
-            g_free(pt);
-            TRACE("Cannot get grab on pointer/keyboard, cancel.");
-            return FALSE;
-        }
-        TRACE("opening new menu");
-        menu_open = menu->menu;
-        pushEventFilter(menu_filter, NULL);
-        gtk_menu_popup(GTK_MENU(menu->menu), NULL, NULL, popup_position_func, pt, button, timestamp);
+	if (!grab_available (timestamp))
+	{
+	    g_free (pt);
+	    TRACE ("Cannot get grab on pointer/keyboard, cancel.");
+	    return FALSE;
+	}
+	TRACE ("opening new menu");
+	menu_open = menu->menu;
+	pushEventFilter (menu_filter, NULL);
+	gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
+			popup_position_func, pt, button, timestamp);
 
-        if(!GTK_MENU_SHELL(GTK_MENU(menu->menu))->have_xgrab)
-        {
-            gdk_beep();
-            g_message(_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname());
-        }
+	if (!GTK_MENU_SHELL (GTK_MENU (menu->menu))->have_xgrab)
+	{
+	    gdk_beep ();
+	    g_message (_("%s: GtkMenu failed to grab the pointer\n"),
+		       g_get_prgname ());
+	}
     }
     return TRUE;
 }
 
-void menu_free(Menu * menu)
+void
+menu_free (Menu * menu)
 {
-    TRACE("entering menu_free");
-    g_return_if_fail(menu != NULL);
-    g_return_if_fail(menu->menu != NULL);
-    g_return_if_fail(GTK_IS_MENU(menu->menu));
-    TRACE("freeing menu");
-    gtk_widget_destroy(menu->menu);
-    g_free(menu);
+    TRACE ("entering menu_free");
+    g_return_if_fail (menu != NULL);
+    g_return_if_fail (menu->menu != NULL);
+    g_return_if_fail (GTK_IS_MENU (menu->menu));
+    TRACE ("freeing menu");
+    gtk_widget_destroy (menu->menu);
+    g_free (menu);
 }

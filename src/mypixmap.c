@@ -31,59 +31,65 @@
 #include "mypixmap.h"
 #include "main.h"
 
-gboolean myPixmapLoad(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
+gboolean
+myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
+	      XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
     XpmAttributes attr;
 
-    TRACE("entering myPixmapLoad");
+    TRACE ("entering myPixmapLoad");
 
-    g_return_val_if_fail(dir != NULL, FALSE);
-    g_return_val_if_fail(file != NULL, FALSE);
+    g_return_val_if_fail (dir != NULL, FALSE);
+    g_return_val_if_fail (file != NULL, FALSE);
 
     pm->pixmap = None;
     pm->mask = None;
     pm->width = 1;
     pm->height = 1;
-    filename = g_build_filename(dir, G_DIR_SEPARATOR_S, file, NULL);
+    filename = g_build_filename (dir, G_DIR_SEPARATOR_S, file, NULL);
     attr.colorsymbols = cs;
     attr.numsymbols = n;
     attr.colormap = cmap;
     attr.closeness = 65535;
     attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
-    if(n > 0 && cs)
+    if (n > 0 && cs)
     {
-        attr.valuemask = attr.valuemask | XpmColorSymbols;
+	attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-    if(XpmReadFileToPixmap(dpy, XDefaultRootWindow(dpy), filename, &pm->pixmap, &pm->mask, &attr))
+    if (XpmReadFileToPixmap
+	(dpy, XDefaultRootWindow (dpy), filename, &pm->pixmap, &pm->mask,
+	 &attr))
     {
-        g_free(filename);
-        return FALSE;
+	g_free (filename);
+	return FALSE;
     }
     pm->width = attr.width;
     pm->height = attr.height;
-    XpmFreeAttributes(&attr);
-    g_free(filename);
+    XpmFreeAttributes (&attr);
+    g_free (filename);
     return TRUE;
 }
 
-void myPixmapCreate(Display * dpy, MyPixmap * pm, gint width, gint height)
+void
+myPixmapCreate (Display * dpy, MyPixmap * pm, gint width, gint height)
 {
-    TRACE("entering myPixmapCreate, width=%i, height=%i", width, height);
-    if((width < 1) || (height < 1))
+    TRACE ("entering myPixmapCreate, width=%i, height=%i", width, height);
+    if ((width < 1) || (height < 1))
     {
-        myPixmapInit(pm);
+	myPixmapInit (pm);
     }
     else
     {
-        pm->pixmap = XCreatePixmap(dpy, root, width, height, depth);
-        pm->mask = XCreatePixmap(dpy, pm->pixmap, width, height, 1);
-        pm->width = width;
-        pm->height = height;
+	pm->pixmap = XCreatePixmap (dpy, root, width, height, depth);
+	pm->mask = XCreatePixmap (dpy, pm->pixmap, width, height, 1);
+	pm->width = width;
+	pm->height = height;
     }
 }
 
-void myPixmapInit(MyPixmap * pm)
+void
+myPixmapInit (MyPixmap * pm)
 {
     pm->pixmap = None;
     pm->mask = None;
@@ -91,18 +97,19 @@ void myPixmapInit(MyPixmap * pm)
     pm->height = 0;
 }
 
-void myPixmapFree(Display * dpy, MyPixmap * pm)
+void
+myPixmapFree (Display * dpy, MyPixmap * pm)
 {
-    TRACE("entering myPixmapFree");
+    TRACE ("entering myPixmapFree");
 
-    if(pm->pixmap != None)
+    if (pm->pixmap != None)
     {
-        XFreePixmap(dpy, pm->pixmap);
-        pm->pixmap = None;
+	XFreePixmap (dpy, pm->pixmap);
+	pm->pixmap = None;
     }
-    if(pm->mask != None)
+    if (pm->mask != None)
     {
-        XFreePixmap(dpy, pm->mask);
-        pm->mask = None;
+	XFreePixmap (dpy, pm->mask);
+	pm->mask = None;
     }
 }

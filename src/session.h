@@ -25,22 +25,22 @@
 /*
 **  Save window states to file which name is given in argument.
 */
-gboolean sessionSaveWindowStates(gchar *);
+gboolean sessionSaveWindowStates (gchar *);
 
 /*
 **  Load window states to file which name is given in argument.
 */
-gboolean sessionLoadWindowStates(gchar *);
+gboolean sessionLoadWindowStates (gchar *);
 
 /*
 ** Free allocated structure. Should be called before xfwm4 dies
 */
-void sessionFreeWindowStates(void);
+void sessionFreeWindowStates (void);
 
 /*
 ** Search for existing client in saved session and update
 ** relevant client fields if found.
 */
-gboolean sessionMatchWinToSM(Client *);
+gboolean sessionMatchWinToSM (Client *);
 
 #endif /* INC_CLIENT_H */

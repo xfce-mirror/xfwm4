@@ -40,9 +40,9 @@ struct _myWindow
     gboolean map;
 };
 
-void myWindowCreate(Display *, Window, myWindow *, Cursor);
-void myWindowDelete(myWindow *);
-void myWindowShow(myWindow *, int, int, int, int, gboolean);
-void myWindowHide(myWindow *);
+void myWindowCreate (Display *, Window, myWindow *, Cursor);
+void myWindowDelete (myWindow *);
+void myWindowShow (myWindow *, int, int, int, int, gboolean);
+void myWindowHide (myWindow *);
 
 #endif /* INC_MYWINDOW_H */

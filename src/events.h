@@ -32,8 +32,8 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 
-void handleEvent(XEvent *);
-GtkToXEventFilterStatus xfwm4_event_filter(XEvent * xevent, gpointer data);
-void initGtkCallbacks(void);
+void handleEvent (XEvent *);
+GtkToXEventFilterStatus xfwm4_event_filter (XEvent * xevent, gpointer data);
+void initGtkCallbacks (void);
 
 #endif /* INC_EVENTS_H */

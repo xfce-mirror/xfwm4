@@ -27,14 +27,14 @@
 
 #include "client.h"
 
-inline int frameLeft(Client *);
-inline int frameRight(Client *);
-inline int frameTop(Client *);
-inline int frameBottom(Client *);
-inline int frameX(Client *);
-inline int frameY(Client *);
-inline int frameWidth(Client *);
-inline int frameHeight(Client *);
-void frameDraw(Client *, gboolean, gboolean);
+inline int frameLeft (Client *);
+inline int frameRight (Client *);
+inline int frameTop (Client *);
+inline int frameBottom (Client *);
+inline int frameX (Client *);
+inline int frameY (Client *);
+inline int frameWidth (Client *);
+inline int frameHeight (Client *);
+void frameDraw (Client *, gboolean, gboolean);
 
 #endif /* INC_FRAME_H */

@@ -30,9 +30,9 @@
 #include <X11/Xmd.h>
 #include "client.h"
 
-void workspaceSwitch(int, Client *);
-void workspaceSetCount(int);
-void workspaceGetArea(CARD32 *, CARD32 *, Client *);
-void workspaceUpdateArea(CARD32 *, CARD32 *);
+void workspaceSwitch (int, Client *);
+void workspaceSetCount (int);
+void workspaceGetArea (CARD32 *, CARD32 *, Client *);
+void workspaceUpdateArea (CARD32 *, CARD32 *);
 
 #endif /* INC_WORKSPACES_H */

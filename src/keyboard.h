@@ -45,9 +45,9 @@ extern unsigned int CapsLockMask;
 extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 
-void parseKeyString(Display *, MyKey *, char *);
-void grabKey(Display *, MyKey *, Window);
-void ungrabKeys(Display *, Window);
-void initModifiers(Display *);
+void parseKeyString (Display *, MyKey *, char *);
+void grabKey (Display *, MyKey *, Window);
+void ungrabKeys (Display *, Window);
+void initModifiers (Display *);
 
 #endif /* INC_KEYBOARD_H */

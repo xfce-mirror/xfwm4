@@ -32,10 +32,10 @@
 
 #include "client.h"
 
-void sn_client_startup_properties(Client *);
-void sn_init_display(Display *, int);
-void sn_close_display(void);
-void sn_process_event(XEvent * event);
+void sn_client_startup_properties (Client *);
+void sn_init_display (Display *, int);
+void sn_close_display (void);
+void sn_process_event (XEvent * event);
 
 #else /* HAVE_LIBSTARTUP_NOTIFICATION */
 

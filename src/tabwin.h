@@ -36,8 +36,8 @@ struct _Tabwin
     GtkWidget *label;
 };
 
-Tabwin *tabwinCreate(gchar * label);
-void tabwinSetLabel(Tabwin * tabwin, gchar * label);
-void tabwinDestroy(Tabwin * tabwin);
+Tabwin *tabwinCreate (gchar * label);
+void tabwinSetLabel (Tabwin * tabwin, gchar * label);
+void tabwinDestroy (Tabwin * tabwin);
 
 #endif /* INC_TABWIN_H */

@@ -182,9 +182,9 @@ struct _Params
 
 extern Params params;
 
-gboolean loadSettings(void);
-void unloadSettings(void);
-gboolean reloadSettings(int);
-gboolean initSettings(void);
+gboolean loadSettings (void);
+void unloadSettings (void);
+gboolean reloadSettings (int);
+gboolean initSettings (void);
 
 #endif /* INC_SETTINGS_H */

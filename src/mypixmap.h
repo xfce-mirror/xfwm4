@@ -35,9 +35,10 @@ typedef struct
 }
 MyPixmap;
 
-gboolean myPixmapLoad(Display *, MyPixmap *, gchar *, gchar *, XpmColorSymbol *, gint);
-void myPixmapCreate(Display *, MyPixmap *, gint, gint);
-void myPixmapInit(MyPixmap *);
-void myPixmapFree(Display *, MyPixmap *);
+gboolean myPixmapLoad (Display *, MyPixmap *, gchar *, gchar *,
+		       XpmColorSymbol *, gint);
+void myPixmapCreate (Display *, MyPixmap *, gint, gint);
+void myPixmapInit (MyPixmap *);
+void myPixmapFree (Display *, MyPixmap *);
 
 #endif /* INC_MYPIXMAP_H */

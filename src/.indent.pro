@@ -1,13 +1,4 @@
+-gnu
 -i4
 -bli0
 -cli4
--l512
--nut
--npsl
--nbbo
--ncs
--npcs
--nprs
--nsafq
--nsai
--nsaw

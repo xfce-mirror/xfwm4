@@ -27,13 +27,13 @@
 
 #include <glib.h>
 
-void getMouseXY(Window, int *, int *);
-Window getMouseWindow(Window);
-GC createGC(Colormap, char *, int, XFontStruct *, int, gboolean);
-void sendClientMessage(Window, Atom, long, int);
-void MyXGrabServer(void);
-void MyXUngrabServer(void);
-Window setTmpEventWin(long);
-void removeTmpEventWin(Window);
+void getMouseXY (Window, int *, int *);
+Window getMouseWindow (Window);
+GC createGC (Colormap, char *, int, XFontStruct *, int, gboolean);
+void sendClientMessage (Window, Atom, long, int);
+void MyXGrabServer (void);
+void MyXUngrabServer (void);
+Window setTmpEventWin (long);
+void removeTmpEventWin (Window);
 
 #endif /* INC_MISC_H */

@@ -46,65 +46,70 @@
 
 static int xgrabcount = 0;
 
-void getMouseXY(Window w, int *x2, int *y2)
+void
+getMouseXY (Window w, int *x2, int *y2)
 {
     Window w1, w2;
     gint x1, y1, m;
 
-    TRACE("entering getMouseXY");
+    TRACE ("entering getMouseXY");
 
-    XQueryPointer(dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
+    XQueryPointer (dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
 }
 
-Window getMouseWindow(Window w)
+Window
+getMouseWindow (Window w)
 {
     Window w1, w2;
     int x1, y1, x2, y2, m;
 
-    TRACE("entering getMouseWindow");
+    TRACE ("entering getMouseWindow");
 
-    XQueryPointer(dpy, w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
+    XQueryPointer (dpy, w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
     return w2;
 }
 
-GC createGC(Colormap cmap, char *col, int func, XFontStruct * font, int line_width, gboolean inc_sw)
+GC
+createGC (Colormap cmap, char *col, int func, XFontStruct * font,
+	  int line_width, gboolean inc_sw)
 {
     XGCValues gv;
     XColor xc1, xc2;
     GC gc;
     int mask;
 
-    TRACE("entering createGC");
-    TRACE("color=%s", col);
+    TRACE ("entering createGC");
+    TRACE ("color=%s", col);
 
     mask = GCForeground | GCFunction;
-    XAllocNamedColor(dpy, cmap, col, &xc1, &xc2);
+    XAllocNamedColor (dpy, cmap, col, &xc1, &xc2);
     gv.foreground = xc2.pixel;
     gv.function = func;
-    if(font)
+    if (font)
     {
-        gv.font = font->fid;
-        mask = mask | GCFont;
+	gv.font = font->fid;
+	mask = mask | GCFont;
     }
-    if(inc_sw)
+    if (inc_sw)
     {
-        gv.subwindow_mode = IncludeInferiors;
-        mask = mask | GCSubwindowMode;
+	gv.subwindow_mode = IncludeInferiors;
+	mask = mask | GCSubwindowMode;
     }
-    if(line_width > -1)
+    if (line_width > -1)
     {
-        gv.line_width = line_width;
-        mask = mask | GCLineWidth;
+	gv.line_width = line_width;
+	mask = mask | GCLineWidth;
     }
-    gc = XCreateGC(dpy, XDefaultRootWindow(dpy), mask, &gv);
+    gc = XCreateGC (dpy, XDefaultRootWindow (dpy), mask, &gv);
     return gc;
 }
 
-void sendClientMessage(Window w, Atom a, long x, int mask)
+void
+sendClientMessage (Window w, Atom a, long x, int mask)
 {
     XEvent ev;
 
-    TRACE("entering sendClientMessage");
+    TRACE ("entering sendClientMessage");
 
     ev.type = ClientMessage;
     ev.xclient.window = w;
@@ -112,49 +117,55 @@ void sendClientMessage(Window w, Atom a, long x, int mask)
     ev.xclient.format = 32;
     ev.xclient.data.l[0] = x;
     ev.xclient.data.l[1] = CurrentTime;
-    XSendEvent(dpy, w, FALSE, mask, &ev);
+    XSendEvent (dpy, w, FALSE, mask, &ev);
 }
 
-void MyXGrabServer(void)         
-{        
-    TRACE("entering MyXGrabServer");     
-    if(xgrabcount == 0)  
-    {    
-        TRACE("grabbing server");        
-        XGrabServer(dpy);        
-    }    
-    xgrabcount++;        
-    TRACE("grabs : %i", xgrabcount);     
-}        
-
-void MyXUngrabServer(void)       
-{        
-    TRACE("entering MyXUngrabServer");   
-    if(--xgrabcount < 0)        /* should never happen */        
-    {    
-        xgrabcount = 0;  
-    }    
-    if(xgrabcount == 0)  
-    {    
-        TRACE("ungrabbing server");      
-        XUngrabServer(dpy);      
-    }    
-    TRACE("grabs : %i", xgrabcount);     
+void
+MyXGrabServer (void)
+{
+    TRACE ("entering MyXGrabServer");
+    if (xgrabcount == 0)
+    {
+	TRACE ("grabbing server");
+	XGrabServer (dpy);
+    }
+    xgrabcount++;
+    TRACE ("grabs : %i", xgrabcount);
 }
 
-Window setTmpEventWin(long eventmask)
+void
+MyXUngrabServer (void)
+{
+    TRACE ("entering MyXUngrabServer");
+    if (--xgrabcount < 0)	/* should never happen */
+    {
+	xgrabcount = 0;
+    }
+    if (xgrabcount == 0)
+    {
+	TRACE ("ungrabbing server");
+	XUngrabServer (dpy);
+    }
+    TRACE ("grabs : %i", xgrabcount);
+}
+
+Window
+setTmpEventWin (long eventmask)
 {
     Window w;
 
     XSetWindowAttributes attributes;
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
-    w = XCreateWindow(dpy, root, 0, 0, MyDisplayFullWidth(dpy, screen), MyDisplayFullHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
-    XMapRaised(dpy, w);
+    w = XCreateWindow (dpy, root, 0, 0, MyDisplayFullWidth (dpy, screen),
+		       MyDisplayFullHeight (dpy, screen), 0, 0, InputOnly,
+		       CopyFromParent, CWEventMask, &attributes);
+    XMapRaised (dpy, w);
     return (w);
 }
 
-void removeTmpEventWin(Window w)
+void
+removeTmpEventWin (Window w)
 {
-    XDestroyWindow(dpy, w);
+    XDestroyWindow (dpy, w);
 }
