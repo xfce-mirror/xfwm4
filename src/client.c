@@ -2865,6 +2865,17 @@ clientFrame (Window w, gboolean startup)
     clientGetInitialNetWmDesktop (c);
     clientGetNetStruts (c);
 
+    /* Fullscreen for older legacy apps */
+    if ((c->x == 0) && (c->y == 0) &&
+        (c->width == MyDisplayFullWidth (dpy, screen)) &&
+        (c->height == MyDisplayFullHeight (dpy, screen)) &&
+        !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) &&
+        (c->win_layer == WIN_LAYER_NORMAL) &&
+        (c->type == WINDOW_NORMAL))
+    {
+        c->win_layer = WIN_LAYER_ABOVE_DOCK;
+    }
+
     /* Once we know the type of window, we can initialize window position */
     if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SESSION_MANAGED))
     {
@@ -2877,6 +2888,7 @@ clientFrame (Window w, gboolean startup)
             clientGravitate (c, APPLY);
         }
     }
+
 
     /* We must call clientApplyInitialState() after having placed the
        window so that the inital position values are correctly set if the
