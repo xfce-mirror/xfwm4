@@ -2321,9 +2321,9 @@ clientToggleMaximized (Client * c, int mode)
     full_x = MAX (params.xfwm_margins[LEFT], rect.x);
     full_y = MAX (params.xfwm_margins[TOP], rect.y);
     full_w = MIN (gdk_screen_get_width (gscr) - params.xfwm_margins[RIGHT], 
-                  full_x + rect.width) - full_x;
+                  rect.x + rect.width) - full_x;
     full_h = MIN (gdk_screen_get_height (gscr) - params.xfwm_margins[BOTTOM], 
-                  full_y + rect.height) - full_y;
+                  rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
     clientMaxSpace (&full_x, &full_y, &full_w, &full_h);
