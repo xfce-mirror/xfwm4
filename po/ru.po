@@ -1,48 +1,48 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# translation of ru.po to Russian
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Poul Ionkin <wizzard@nmg.lv>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-07-19 09:56+0200\n"
-"PO-Revision-Date: 2003-06-08 16:48+0300\n"
-"Last-Translator: Dan Korostelev <digger_temp@netman.ru>\n"
-"Language-Team: Russian <digger_temp@netman.ru>\n"
+"Project-Id-Version: ru\n"
+"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"PO-Revision-Date: 2003-07-18 00:17+0000\n"
+"Last-Translator: Poul Ionkin <wizzard@nmg.lv>\n"
+"Language-Team: Russian <none>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.2beta2\n"
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
-msgstr "Поля рабочего стола"
+msgstr "Поля рабочей области"
 
 #: mcs-plugin/margins_plugin.c:217
 msgid "Adjust workspace margins"
 msgstr "Изменение отступов"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Отступы - области по краям экрана, где окна располагаться не будут"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
-msgstr "Слева:"
+msgstr "Слева :"
 
 #: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
-msgstr "Справа:"
+msgstr "Справа :"
 
 #: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
-msgstr "Сверху:"
+msgstr "Сверху :"
 
 #: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
-msgstr "Снизу:"
+msgstr "Снизу :"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -127,7 +127,7 @@ msgstr "Выравнивание текста"
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
-msgstr "Выравнивание текста заголовка."
+msgstr "Выравнивание текста заголовка :"
 
 #: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
@@ -139,11 +139,11 @@ msgstr "Стиль оформления"
 
 #: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
-msgstr ""
+msgstr "Клавиши быстрого вызова"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
-msgstr "Активизация окна"
+msgstr "Активизация окон"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
@@ -167,17 +167,19 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
-msgstr ""
+msgstr "Показывать при активизации"
 
 #: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
+"Автоматически проказывать окна\n"
+"при активизации"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
-msgstr ""
+msgstr "Задержка при показе активизированного окна:"
 
 #: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
@@ -189,111 +191,114 @@ msgstr "Быстро"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
-msgstr ""
+msgstr "Показывать при щелчке"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr ""
+"Показывать окно при щелчке\n"
+"в клиентской области"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
-msgstr ""
+msgstr "Клавиши и активизация"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
-msgstr ""
+msgstr "Привязка окон"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
-msgstr ""
+msgstr "Привязывать окна к краю экрана"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
-msgstr ""
+msgstr "Привязывать окна друг к другу"
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
-msgstr ""
+msgstr "Расстояние :"
 
 #: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
-msgstr ""
+msgstr "Близкое"
 
 #: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
-msgstr ""
+msgstr "Удалённое"
 
 #: mcs-plugin/xfwm4_plugin.c:1600
 msgid "Wrap workspaces"
-msgstr ""
+msgstr "Переключать рабочие области"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
+msgstr "Переключать рабочие области при достижении курсором края экрана"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
+msgstr "Переключать рабочие области при перемещении окна за экран"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
-msgstr ""
+msgstr "Сопротивление края :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
-msgstr ""
+msgstr "Перемещение и изменение размера"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
-msgstr ""
+msgstr "Показывать содержание окон при изменении размера"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
-msgstr ""
+msgstr "Показывать содержание окон при перемещении"
 
 #: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
 msgstr "Действие по двойному щелчку"
 
+#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
-msgstr ""
+msgstr "Действие по двойному щелчку в области заголовка :"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: src/client.c:442
+#: src/client.c:444
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr ""
+msgstr "%s: Не обрабатываемое net_wm_state (окно 0x%lx)"
 
-#: src/events.c:1317
+#: src/events.c:1276
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr ""
+msgstr "%s: Операция не поддерживается (пока)\n"
 
-#: src/main.c:226
+#: src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "%s: Ошибка доступа к памяти"
 
-#: src/main.c:396
+#: src/main.c:349
 #, c-format
 msgid "%s: Another Window Manager is already running"
-msgstr ""
+msgstr "%s: Запущен другой менеджер окон"
 
-#: src/main.c:401
+#: src/main.c:354
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr ""
+msgstr "%s: Отсутствуют данные в стандартных файлах"
 
-#: src/main.c:428
+#: src/main.c:381
 #, c-format
 msgid "%s: Unknown error occured"
-msgstr ""
+msgstr "%s: Произошла неизвестная ошибка"
 
 #: src/menu.c:42
 msgid "Ma_ximize"
@@ -354,54 +359,49 @@ msgstr "Перезапуск"
 #: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
-msgstr "Рабочий стол %i"
+msgstr "Рабочая область %i"
 
 #: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu не может получить курсор\n"
 
-#: src/settings.c:284
+#: src/settings.c:283
 #, c-format
 msgid "%s: Missing defaults file"
-msgstr ""
+msgstr "%s: Отсутствует стандартный файл"
 
-#: src/settings.c:509
+#: src/settings.c:508
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr ""
+msgstr "%s: Ошибка определения активного цвета %s\n"
 
-#: src/settings.c:516
+#: src/settings.c:515
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr ""
+msgstr "%s: Ошибка анализирования активного цвета %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:559
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr ""
+msgstr "%s: Ошибка определения неактивного цвета %s\n"
 
-#: src/settings.c:567
+#: src/settings.c:566
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr ""
+msgstr "%s: Ошибка анализирования неактивного цвета %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:756
 #, c-format
 msgid "%s: Missing values in defaults file"
-msgstr ""
+msgstr "%s: Отсутствуют значения в стандартном файле"
 
-#: src/settings.c:1098
+#: src/settings.c:1097
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr ""
+msgstr "%s: Не возможно установить число рабочих областей, используя значение rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr ""
+msgstr "Переключиться на ..."
 
-#~ msgid "Window style"
-#~ msgstr "Стиль обрамления"
-
-#~ msgid "Font select :"
-#~ msgstr "Выбор шрифта:"
