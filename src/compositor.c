@@ -38,6 +38,7 @@
 #include "client.h"
 #include "frame.h"
 #include "hints.h"
+#include "compositor.h"
 
 #ifdef HAVE_COMPOSITOR
 
@@ -1522,6 +1523,8 @@ restack_win (CWindow *cw, Window above)
     else
     {
         /* Insert at top of window stack */
+        g_warning ("The window 0x%lx has been placed on top of stack\n"
+        "because the specified sibling 0x%lx was not found in our stack", cw->id, above);
         screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
     }
 }
@@ -1833,6 +1836,31 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     add_repair (display_info);
 }
 
+static void
+compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
+{
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
+
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+    
+    /* 
+       We are only interested on override redirect windows, other will
+       be caught by the WM.
+     */
+    if (ev->override_redirect)
+    {
+        compositorAddWindow (display_info, ev->window, NULL);
+    }
+}
+
 #endif /* HAVE_COMPOSITOR */
 
 void
@@ -1882,10 +1910,6 @@ compositorMapWindow (DisplayInfo *display_info, Window id)
         {
             map_win (cw);
         }
-    }
-    else
-    {
-        add_win (display_info, id, NULL, NET_WM_OPAQUE);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -1984,7 +2008,11 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
         return;
     }
 
-    if (ev->type == ConfigureNotify)
+    if (ev->type == CreateNotify)
+    {
+        compositorHandleCreateNotify (display_info, (XCreateWindowEvent *) ev);
+    }
+    else if (ev->type == ConfigureNotify)
     {
         compositorHandleConfigureNotify (display_info, (XConfigureEvent *) ev);
     }

@@ -44,7 +44,7 @@ void     compositorRepairDisplay    (DisplayInfo *);
 
 gboolean compositorManageScreen     (ScreenInfo *, gboolean);
 void     compositorUnmanageScreen   (ScreenInfo *);
-void     compositorRepairScreen     (DisplayInfo *);
+void     compositorRepairScreen     (ScreenInfo *);
 
 void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 void     compositorDamageWindow     (DisplayInfo *, Window);
