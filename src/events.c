@@ -54,7 +54,7 @@ typedef enum
 }
 XfwmButtonClickType;
 
-static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
+static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev, gboolean allow_double_click)
 {
     unsigned int button;
     int xcurrent, ycurrent, x, y, total;
@@ -99,7 +99,7 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
             ycurrent = ev->xmotion.y_root;
             t1 = ev->xmotion.time;
         }
-        if((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
+        if((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK || (!allow_double_click && (XfwmButtonClickType) clicks == XFWM_BUTTON_CLICK))
         {
             break;
         }
@@ -151,7 +151,7 @@ static inline void _moveRequest(Client * c, XEvent * ev)
 static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
 {
     clientSetFocus(c, True);
-    clientRaise(c);
+
     if((c->has_resize) && (c->is_resizable))
     {
         clientResize(c, corner, ev);
@@ -352,6 +352,37 @@ static inline void handleKeyPress(XKeyEvent * ev)
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
 
+/* User has clicked on an edge or corner.
+ * Button 1 : Raise and resize
+ * Button 2 : Move
+ * Button 3 : Resize
+ */
+static inline void _edgeButton(Client *c, int part, XButtonEvent * ev)
+{
+    if(ev->button == Button2)
+    {
+	XfwmButtonClickType tclick;
+
+	tclick = typeOfClick(c->frame, (XEvent *) ev, FALSE);
+
+	if(tclick == XFWM_BUTTON_CLICK)
+	{
+	    clientLower(c);
+	}
+	else
+	{
+	    _moveRequest(c, (XEvent *) ev);
+	}
+    }
+    else
+    {
+	if(ev->button == Button1)
+	    clientRaise(c);
+	if(ev->button == Button1 || ev->button == Button3)
+	    _resizeRequest(c, part, (XEvent *) ev);
+    }
+}
+
 static inline void handleButtonPress(XButtonEvent * ev)
 {
     Client *c;
@@ -371,8 +402,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
 
         if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
+	    clientSetFocus(c, True);
+	    if(raise_on_click)
+		clientRaise(c);
             clientButtonPress(c, win, ev);
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
@@ -384,14 +416,21 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
 
-            if((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
+            tclick = typeOfClick(c->frame, &copy_event, win == c->buttons[MENU_BUTTON]);
+
+            if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
                 clientClose(c);
             }
+	    else if(ev->button == Button3 && tclick == XFWM_BUTTON_DRAG)
+	    {
+                _moveRequest(c, (XEvent *) ev);
+	    }
             else
             {
                 clientSetFocus(c, True);
-                clientRaise(c);
+		if(raise_on_click)
+		    clientRaise(c);
                 ev->window = ev->root;
                 if(button_handler_id)
                 {
@@ -408,7 +447,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
 
             clientSetFocus(c, True);
             clientRaise(c);
-            tclick = typeOfClick(c->frame, &copy_event);
+            tclick = typeOfClick(c->frame, &copy_event, TRUE);
             if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
             {
                 _moveRequest(c, (XEvent *) ev);
@@ -429,33 +468,33 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 }
             }
         }
-        else if((win == c->corners[CORNER_TOP_LEFT]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->corners[CORNER_TOP_LEFT]) && (state == 0))
         {
-            _resizeRequest(c, CORNER_TOP_LEFT, (XEvent *) ev);
+	    _edgeButton(c, CORNER_TOP_LEFT, ev);
         }
-        else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->corners[CORNER_TOP_RIGHT]) && (state == 0))
         {
-            _resizeRequest(c, CORNER_TOP_RIGHT, (XEvent *) ev);
+            _edgeButton(c, CORNER_TOP_RIGHT, ev);
         }
-        else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (state == 0))
         {
-            _resizeRequest(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
+            _edgeButton(c, CORNER_BOTTOM_LEFT, ev);
         }
-        else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (state == 0))
         {
-            _resizeRequest(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+            _edgeButton(c, CORNER_BOTTOM_RIGHT, ev);
         }
-        else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->sides[SIDE_BOTTOM]) && (state == 0))
         {
-            _resizeRequest(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
+            _edgeButton(c, 4 + SIDE_BOTTOM, ev);
         }
-        else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->sides[SIDE_LEFT]) && (state == 0))
         {
-            _resizeRequest(c, 4 + SIDE_LEFT, (XEvent *) ev);
+            _edgeButton(c, 4 + SIDE_LEFT, ev);
         }
-        else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
+        else if((win == c->sides[SIDE_RIGHT]) && (state == 0))
         {
-            _resizeRequest(c, 4 + SIDE_RIGHT, (XEvent *) ev);
+            _edgeButton(c, 4 + SIDE_RIGHT, ev);
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
