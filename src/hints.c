@@ -426,11 +426,9 @@ void set_net_supported_hint(Display * dpy, int screen, Window check_win)
     atoms[i++] = net_startup_id;
 #endif
 
-    /* Apparently not required
-       XChangeProperty (dpy, check_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
-     */
     XChangeProperty(dpy, RootWindow(dpy, screen), net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *)atoms, i);
     data[0] = check_win;
+    XChangeProperty(dpy, check_win, net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 1);
     XChangeProperty(dpy, RootWindow(dpy, screen), net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 1);
 }
 
