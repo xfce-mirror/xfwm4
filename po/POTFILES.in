@@ -10,7 +10,7 @@ src/menu.c
 src/misc.c
 src/mywindow.c
 src/parserc.c
-src/pixmap.c
+src/mypixmap.c
 src/session.c
 src/settings.c
 src/spinning_cursor.c
