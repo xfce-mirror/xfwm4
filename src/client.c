@@ -173,14 +173,8 @@ static void clientSetHeight (Client * c, int h1);
 static void clientApplyStackList (GList * list);
 static gboolean clientTransientOrModalHasAncestor (Client * c, int ws);
 static Client *clientGetLowestTransient (Client * c);
-#if 0 /* Not used */
-static Client *clientGetHighestTransientOrModal (Client * c);
-#endif
 static Client *clientGetHighestTransientOrModalFor (Client * c);
 static Client *clientGetTopMostForGroup (Client * c);
-#if 0 /* Not used */
-static gboolean clientVisibleForGroup (Client * c, int workspace);
-#endif
 static Client *clientGetNextTopMost (int layer, Client * exclude);
 static ClientPair clientGetTopMostFocusable (int layer, Client * exclude);
 static Client *clientGetBottomMost (int layer, Client * exclude);
@@ -196,9 +190,6 @@ static void clientGetWinState (Client * c);
 static void clientApplyInitialState (Client * c);
 static gboolean clientCheckShape (Client * c);
 static gboolean clientSelectMask (Client * c, int mask);
-#if 0 /* Not used */
-static GList *clientListTransient (Client * c);
-#endif
 static GList *clientListTransientOrModal (Client * c);
 static void clientShowSingle (Client * c, gboolean change_state);
 static void clientHideSingle (Client * c, int ws, gboolean change_state);
@@ -673,43 +664,6 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientToggleShaded (c);
         }
     }
-
-#if 0
-    /*
-     * EWMH V 1.2 Implementation note
-     * if an Application asks to toggle _NET_WM_STATE_HIDDEN the Window Manager
-     * should probably just ignore the request, since _NET_WM_STATE_HIDDEN is a
-     * function of some other aspect of the window such as minimization, rather
-     * than an independent state.
-     */
-    if ((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
-    {
-        if ((action == NET_WM_STATE_ADD)
-            && !FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
-        {
-            if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                clientHide (c, c->win_workspace, TRUE);
-            }
-        }
-        else if ((action == NET_WM_STATE_REMOVE)
-            && FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
-        {
-            clientShow (c, TRUE);
-        }
-        else if (action == NET_WM_STATE_TOGGLE)
-        {
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
-            {
-                clientShow (c, TRUE);
-            }
-            else if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                clientHide (c, c->win_workspace, TRUE);
-            }
-        }
-    }
-#endif
 
     if ((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
@@ -1898,53 +1852,6 @@ clientGetLowestTransient (Client * c)
     return lowest_transient;
 }
 
-#if 0 /* Not used */
-static Client *
-clientGetHighestTransientOrModal (Client * c)
-{
-    Client *highest_transient = NULL;
-    Client *c2, *c3;
-    GList *transients = NULL;
-    GList *index1, *index2;
-
-    g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetHighestTransientOrModal");
-
-    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
-    {
-        c2 = (Client *) index1->data;
-        if (c2)
-        {
-            if ((c2 != c) && clientIsTransientOrModalFor (c2, c))
-            {
-                transients = g_list_append (transients, c2);
-                highest_transient = c2;
-            }
-            else
-            {
-                for (index2 = transients; index2;
-                    index2 = g_list_next (index2))
-                {
-                    c3 = (Client *) index2->data;
-                    if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
-                    {
-                        transients = g_list_append (transients, c2);
-                        highest_transient = c2;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    if (transients)
-    {
-        g_list_free (transients);
-    }
-
-    return highest_transient;
-}
-#endif
-
 static Client *
 clientGetHighestTransientOrModalFor (Client * c)
 {
@@ -1994,34 +1901,6 @@ clientGetTopMostForGroup (Client * c)
 
     return top_most;
 }
-
-#if 0 /* Not used */
-static gboolean
-clientVisibleForGroup (Client * c, int workspace)
-{
-    gboolean has_visible = FALSE;
-    Client *c2;
-    GList *index;
-
-    g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientVisibleForGroup");
-
-    for (index = windows_stack; index; index = g_list_next (index))
-    {
-        c2 = (Client *) index->data;
-        if (c2)
-        {
-            if (clientSameGroup (c, c2) && (c2->win_workspace == workspace))
-            {
-                has_visible = TRUE;
-                break;
-            }
-        }
-    }
-
-    return has_visible;
-}
-#endif
 
 static Client *
 clientGetNextTopMost (int layer, Client * exclude)
@@ -3012,7 +2891,7 @@ clientFree (Client * c)
     {
         free (c->startup_id);
     }
-#endif
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
     if (c->size)
     {
         XFree (c->size);
@@ -3326,7 +3205,7 @@ clientFrame (Window w, gboolean recapture)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
-#endif
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
     TRACE ("\"%s\" (0x%lx) initial map_state = %s",
                 c->name, c->window,
                 (attr.map_state == IsUnmapped) ?
@@ -5286,6 +5165,12 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             }
             clientConstrainPos (c, FALSE);
 
+#ifdef SHOW_POSITION
+            if (passdata->poswin)
+            {
+                poswinSetPosition (passdata->poswin, c);
+            }
+#endif /* SHOW_POSITION */
             if (params.box_move)
             {
                 clientDrawOutline (c);
@@ -5381,7 +5266,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             poswinSetPosition (passdata->poswin, c);
         }
-#endif
+#endif /* SHOW_POSITION */
         if (params.box_move)
         {
             clientDrawOutline (c);
@@ -5505,23 +5390,17 @@ clientMove (Client * c, XEvent * e)
         return;
     }
 
+#ifdef SHOW_POSITION
+    passdata.poswin = poswinCreate();
+    poswinSetPosition (passdata.poswin, c);
+    poswinShow (passdata.poswin);
+#endif /* SHOW_POSITION */
+
     if (passdata.use_keys)
     {
         XPutBackEvent (dpy, e);
     }
 
-#ifdef SHOW_POSITION
-    if (!(passdata.use_keys))
-    {
-        passdata.poswin = poswinCreate();
-        poswinSetPosition (passdata.poswin, c);
-        poswinShow (passdata.poswin);
-    }
-    else
-    {
-        passdata.poswin = NULL;
-    }
-#endif
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     pushEventFilter (clientMove_event_filter, &passdata);
@@ -5534,7 +5413,7 @@ clientMove (Client * c, XEvent * e)
     {
         poswinDestroy (passdata.poswin);
     }
-#endif
+#endif /* SHOW_POSITION */
 
     if (passdata.grab && params.box_move)
     {
@@ -5668,6 +5547,10 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             if (corner >= 0)
             {
                 clientConstrainRatio (c, c->width, c->height, corner);
+            }
+            if (passdata->poswin)
+            {
+                poswinSetPosition (passdata->poswin, c);
             }
             if (params.box_resize)
             {
@@ -5925,25 +5808,25 @@ clientResize (Client * c, int corner, XEvent * e)
         removeTmpEventWin (passdata.tmp_event_window);
         return;
     }
-    if (passdata.use_keys)
-    {
-        XPutBackEvent (dpy, e);
-    }
-    
-#ifdef SHOW_POSITION
-    if (!(passdata.use_keys))
-#else
-    if (!(passdata.use_keys) && 
-         ((c->size->width_inc > 1) || (c->size->height_inc > 1)))
-#endif
+
+#ifndef SHOW_POSITION
+    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+#endif /* SHOW_POSITION */
     {
         passdata.poswin = poswinCreate();
         poswinSetPosition (passdata.poswin, c);
         poswinShow (passdata.poswin);
     }
+#ifndef SHOW_POSITION
     else
     {
         passdata.poswin = NULL;
+    }
+#endif /* SHOW_POSITION */
+    
+    if (passdata.use_keys)
+    {
+        XPutBackEvent (dpy, e);
     }
     
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
@@ -6335,4 +6218,4 @@ clientGetStartupId (Client * c)
     }
     return NULL;
 }
-#endif
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
