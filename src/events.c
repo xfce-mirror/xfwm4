@@ -334,12 +334,9 @@ toggle_show_desktop (ScreenInfo *screen_info)
 {
     long visible = 0;
 
-    if (!getHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &visible))
-    {
-        visible = FALSE;
-    }
-    
-    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, ( visible ) ? FALSE : TRUE, 
+    getHint (screen_info->display_info, screen_info->xroot, 
+             NET_SHOWING_DESKTOP, &visible);
+    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, !visible, 
                      myDisplayGetCurrentTime (screen_info->display_info));
 }
 
