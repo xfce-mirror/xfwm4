@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-06 14:20+0100\n"
+"POT-Creation-Date: 2004-11-10 07:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -559,41 +559,41 @@ msgstr ""
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1204
+#: mcs-plugin/xfwm4_shortcuteditor.c:1202
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1267
+#: mcs-plugin/xfwm4_shortcuteditor.c:1265
 msgid "Compose shortcut for :"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1270
-#: mcs-plugin/xfwm4_shortcuteditor.c:1498
+#: mcs-plugin/xfwm4_shortcuteditor.c:1268
+#: mcs-plugin/xfwm4_shortcuteditor.c:1496
 msgid "Compose shortcut"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1272
-#: mcs-plugin/xfwm4_shortcuteditor.c:1500
+#: mcs-plugin/xfwm4_shortcuteditor.c:1270
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
 msgid "No shortcut"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1394
+#: mcs-plugin/xfwm4_shortcuteditor.c:1392
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1396
+#: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Command :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1432
+#: mcs-plugin/xfwm4_shortcuteditor.c:1430
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1495
+#: mcs-plugin/xfwm4_shortcuteditor.c:1493
 msgid "Compose shortcut for command :"
 msgstr ""
 

@@ -87,11 +87,11 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
         {
             key->modifier = key->modifier | MetaMask;
         }
-        if (strstr (tmp, "hyper"))
+        if (strstr (tmp, "hyper") || strstr (tmp, "mod4"))
         {
             key->modifier = key->modifier | HyperMask;
         }
-        if (strstr (tmp, "super"))
+        if (strstr (tmp, "super") || strstr (tmp, "mod5"))
         {
             key->modifier = key->modifier | SuperMask;
         }
