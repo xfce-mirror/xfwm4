@@ -122,6 +122,7 @@
 #define CLIENT_FLAG_NAME_CHANGED       (1L<<28)
 #define CLIENT_FLAG_SESSION_MANAGED    (1L<<29)
 #define CLIENT_FLAG_WORKSPACE_SET      (1L<<30)
+#define CLIENT_FLAG_WAS_SHOWN          (1L<<31)
 
 #define WM_FLAG_DELETE                 (1L<<0)
 #define WM_FLAG_INPUT                  (1L<<1)
@@ -284,6 +285,7 @@ void clientPassFocus (Client *);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);
 void clientHideAll (Client *, int);
+void clientToggleShowDesktop (gboolean);
 void clientClose (Client *);
 void clientKill (Client *);
 void clientEnterContextMenuState (Client *);

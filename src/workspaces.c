@@ -35,6 +35,7 @@
 #include "settings.h"
 #include "client.h"
 #include "focus.h"
+#include "stacking.h"
 #include "hints.h"
 
 void
@@ -42,7 +43,6 @@ workspaceSwitch (int new_ws, Client * c2)
 {
     Client *c, *new_focus = NULL;
     Client *previous;
-    GList *list_of_windows;
     GList *index;
     GList *list_hide;
     Window dr, window;
@@ -78,9 +78,9 @@ workspaceSwitch (int new_ws, Client * c2)
 
     list_hide = NULL;
     previous = clientGetFocus ();
-    list_of_windows = clientGetStackList ();
+
     /* First pass */
-    for (index = list_of_windows; index; index = g_list_next (index))
+    for (index = windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_VISIBLE,
@@ -115,7 +115,7 @@ workspaceSwitch (int new_ws, Client * c2)
     }
 
     /* Second pass */
-    for (index = g_list_last(list_of_windows); index; index = g_list_previous (index))
+    for (index = g_list_last(windows_stack); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
@@ -140,12 +140,6 @@ workspaceSwitch (int new_ws, Client * c2)
             }
             FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
         }
-    }
-
-    /* Free the list */
-    if (list_of_windows)
-    {
-        g_list_free (list_of_windows);
     }
 
     setHint (dpy, root, win_workspace, new_ws);

@@ -131,27 +131,6 @@ Client *clients = NULL;
 unsigned int client_count = 0;
 unsigned long client_serial = 0;
 
-/* Forward decl */
-static void clientSetWidth (Client * c, int w1);
-static void clientSetHeight (Client * c, int h1);
-static void clientConstrainRatio (Client * c, int w1, int h1, int corner);
-static void clientFree (Client * c);
-static void clientGetWinState (Client * c);
-static void clientApplyInitialState (Client * c);
-static gboolean clientCheckShape (Client * c);
-static void clientShowSingle (Client * c, gboolean change_state);
-static void clientHideSingle (Client * c, int ws, gboolean change_state);
-static void clientSetWorkspaceSingle (Client * c, int ws);
-static void clientSnapPosition (Client * c);
-static GtkToXEventFilterStatus clientMove_event_filter (XEvent * xevent,
-    gpointer data);
-static GtkToXEventFilterStatus clientResize_event_filter (XEvent * xevent,
-    gpointer data);
-static GtkToXEventFilterStatus clientCycle_event_filter (XEvent * xevent,
-    gpointer data);
-static GtkToXEventFilterStatus clientButtonPress_event_filter (XEvent *
-    xevent, gpointer data);
-
 /* 
  * The following two functions are to limit the number of updates 
  * during resize operations.
@@ -1779,214 +1758,6 @@ clientGetFromWindow (Window w, int mode)
 }
 
 static void
-clientShowSingle (Client * c, gboolean change_state)
-{
-    g_return_if_fail (c != NULL);
-    myXGrabServer ();
-    if ((c->win_workspace == workspace)
-        || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-    {
-        TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
-        FLAG_SET (c->flags, CLIENT_FLAG_VISIBLE);
-        XMapWindow (dpy, c->frame);
-        XMapWindow (dpy, c->window);
-    }
-    if (change_state)
-    {
-        FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
-        setWMState (dpy, c->window, NormalState);
-        workspaceUpdateArea (margins, gnome_margins);
-    }
-    myXUngrabServer ();
-    clientSetNetState (c);
-}
-
-void
-clientShow (Client * c, gboolean change_state)
-{
-    GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]", 
-           c->name, c->window,
-           change_state ? "state change" : "no state change");
-             
-    list_of_windows = clientListTransientOrModal (c);
-    for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
-    {
-        c2 = (Client *) index->data;
-        clientSetWorkspaceSingle (c2, c->win_workspace);
-        /* Ignore request before if the window is not yet managed */
-        if (!FLAG_TEST (c2->flags, CLIENT_FLAG_MANAGED))
-        {
-            continue;
-        }
-        clientShowSingle (c2, change_state);
-    }
-    g_list_free (list_of_windows);
-}
-
-static void
-clientHideSingle (Client * c, int ws, gboolean change_state)
-{
-    g_return_if_fail (c != NULL);
-    myXGrabServer ();
-    TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    clientPassFocus(c);
-    XUnmapWindow (dpy, c->window);
-    XUnmapWindow (dpy, c->frame);
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
-    {
-        FLAG_UNSET (c->flags, CLIENT_FLAG_VISIBLE);
-        c->ignore_unmap++;
-    }
-    if (change_state)
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
-        setWMState (dpy, c->window, IconicState);
-        workspaceUpdateArea (margins, gnome_margins);
-    }
-    myXUngrabServer ();
-    clientSetNetState (c);
-}
-
-void
-clientHide (Client * c, int ws, gboolean change_state)
-{
-    GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientHide");
-
-    list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_list_next (index))
-    {
-        c2 = (Client *) index->data;
-
-        /* Ignore request before if the window is not yet managed */
-        if (!FLAG_TEST (c2->flags, CLIENT_FLAG_MANAGED))
-        {
-            continue;
-        }
-
-        /* ws is used when transitioning between desktops, to avoid
-           hiding a transient for group that will be shown again on the new
-           workspace (transient for groups can be transients for multiple 
-           ancesors splitted across workspaces...)
-         */
-        if (clientIsTransientOrModalForGroup (c2)
-            && clientTransientOrModalHasAncestor (c2, ws))
-        {
-            /* Other ancestors for that transient are still on screen, so don't
-               hide it...
-             */
-            continue;
-        }
-        clientHideSingle (c2, ws, change_state);
-    }
-    g_list_free (list_of_windows);
-}
-
-void
-clientHideAll (Client * c, int ws)
-{
-    Client *c2;
-    int i;
-
-    TRACE ("entering clientHideAll");
-
-    for (c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
-    {
-        if (CLIENT_CAN_HIDE_WINDOW (c2)
-            && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_BORDER)
-            && !clientIsTransientOrModal (c2) && (c2 != c))
-        {
-            if (((!c) && (c2->win_workspace == ws)) || ((c)
-                    && !clientIsTransientOrModalFor (c, c2)
-                    && (c2->win_workspace == c->win_workspace)))
-            {
-                clientHide (c2, ws, TRUE);
-            }
-        }
-    }
-}
-
-void
-clientClose (Client * c)
-{
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientClose");
-    TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
-    {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window, CurrentTime);
-    }
-    else
-    {
-        clientKill (c);
-    }
-}
-
-void
-clientKill (Client * c)
-{
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientKill");
-    TRACE ("killing client \"%s\" (0x%lx)", c->name, c->window);
-
-    XKillClient (dpy, c->window);
-}
-
-void
-clientEnterContextMenuState (Client * c)
-{
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientEnterContextMenuState");
-    TRACE ("Showing the what's this help for client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
-    {
-        sendClientMessage (c->window, wm_protocols, kde_net_wm_context_help, CurrentTime);
-    }
-}
-
-void
-clientSetLayer (Client * c, int l)
-{
-    GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetLayer");
-
-    list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_list_next (index))
-    {
-        c2 = (Client *) index->data;
-        if (c2->win_layer != l)
-        {
-            TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
-                c2->window, l);
-            c2->win_layer = l;
-            setHint (dpy, c2->window, win_layer, l);
-        }
-    }
-    g_list_free (list_of_windows);
-    if (clientGetLastRaise () == c)
-    {
-        clientClearLastRaise ();
-    }
-    clientRaise (c);
-    clientPassGrabButton1 (c);
-}
-
-static void
 clientSetWorkspaceSingle (Client * c, int ws)
 {
     g_return_if_fail (c != NULL);
@@ -2059,6 +1830,253 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
         }
     }
     g_list_free (list_of_windows);
+}
+
+static void
+clientShowSingle (Client * c, gboolean change_state)
+{
+    g_return_if_fail (c != NULL);
+    myXGrabServer ();
+    if ((c->win_workspace == workspace)
+        || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+    {
+        TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
+        FLAG_SET (c->flags, CLIENT_FLAG_VISIBLE);
+        XMapWindow (dpy, c->frame);
+        XMapWindow (dpy, c->window);
+    }
+    if (change_state)
+    {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
+        setWMState (dpy, c->window, NormalState);
+        workspaceUpdateArea (margins, gnome_margins);
+    }
+    myXUngrabServer ();
+    clientSetNetState (c);
+}
+
+void
+clientShow (Client * c, gboolean change_state)
+{
+    GList *list_of_windows = NULL;
+    GList *index;
+    Client *c2;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]", 
+           c->name, c->window,
+           change_state ? "state change" : "no state change");
+             
+    list_of_windows = clientListTransientOrModal (c);
+    for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
+    {
+        c2 = (Client *) index->data;
+        clientSetWorkspaceSingle (c2, c->win_workspace);
+        /* Ignore request before if the window is not yet managed */
+        if (!FLAG_TEST (c2->flags, CLIENT_FLAG_MANAGED))
+        {
+            continue;
+        }
+        clientShowSingle (c2, change_state);
+    }
+    g_list_free (list_of_windows);
+}
+
+static void
+clientHideSingle (Client * c, gboolean change_state)
+{
+    g_return_if_fail (c != NULL);
+    myXGrabServer ();
+    TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
+    clientPassFocus(c);
+    XUnmapWindow (dpy, c->window);
+    XUnmapWindow (dpy, c->frame);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
+    {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_VISIBLE);
+        c->ignore_unmap++;
+    }
+    if (change_state)
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
+        setWMState (dpy, c->window, IconicState);
+        workspaceUpdateArea (margins, gnome_margins);
+    }
+    myXUngrabServer ();
+    clientSetNetState (c);
+}
+
+void
+clientHide (Client * c, int ws, gboolean change_state)
+{
+    GList *list_of_windows = NULL;
+    GList *index;
+    Client *c2;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientHide");
+
+    list_of_windows = clientListTransientOrModal (c);
+    for (index = list_of_windows; index; index = g_list_next (index))
+    {
+        c2 = (Client *) index->data;
+
+        /* Ignore request before if the window is not yet managed */
+        if (!FLAG_TEST (c2->flags, CLIENT_FLAG_MANAGED))
+        {
+            continue;
+        }
+
+        /* ws is used when transitioning between desktops, to avoid
+           hiding a transient for group that will be shown again on the new
+           workspace (transient for groups can be transients for multiple 
+           ancesors splitted across workspaces...)
+         */
+        if (clientIsTransientOrModalForGroup (c2)
+            && clientTransientOrModalHasAncestor (c2, ws))
+        {
+            /* Other ancestors for that transient are still on screen, so don't
+               hide it...
+             */
+            continue;
+        }
+        clientHideSingle (c2, change_state);
+    }
+    g_list_free (list_of_windows);
+}
+
+void
+clientHideAll (Client * c, int ws)
+{
+    Client *c2;
+    int i;
+
+    TRACE ("entering clientHideAll");
+
+    for (c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+    {
+        if (CLIENT_CAN_HIDE_WINDOW (c2)
+            && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_BORDER)
+            && !clientIsTransientOrModal (c2) && (c2 != c))
+        {
+            if (((!c) && (c2->win_workspace == ws)) || ((c)
+                    && !clientIsTransientOrModalFor (c, c2)
+                    && (c2->win_workspace == c->win_workspace)))
+            {
+                clientHide (c2, ws, TRUE);
+            }
+        }
+    }
+}
+
+void
+clientToggleShowDesktop (gboolean show_desktop)
+{
+    GList *index;
+
+    TRACE ("entering clientToggleShowDesktop");
+
+    clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
+    if (show_desktop)
+    {
+        for (index = windows_stack; index; index = g_list_next (index))
+	{
+            Client *c = (Client *) index->data;
+            if (CLIENT_CAN_HIDE_WINDOW (c)
+        	&& FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_HIDDEN)
+        	&& !clientIsTransientOrModal (c))
+            {
+        	{
+		    FLAG_SET (c->flags, CLIENT_FLAG_WAS_SHOWN);
+                    clientHideSingle (c, TRUE);
+        	}
+            }
+	}
+    }
+    else
+    {
+        for (index = g_list_last(windows_stack); index; index = g_list_previous (index))
+	{
+            Client *c = (Client *) index->data;
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_WAS_SHOWN))
+            {
+        	{
+                    clientShowSingle (c, TRUE);
+        	}
+            }
+	}
+    }
+}
+
+void
+clientClose (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientClose");
+    TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
+    {
+        sendClientMessage (c->window, wm_protocols, wm_delete_window, CurrentTime);
+    }
+    else
+    {
+        clientKill (c);
+    }
+}
+
+void
+clientKill (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientKill");
+    TRACE ("killing client \"%s\" (0x%lx)", c->name, c->window);
+
+    XKillClient (dpy, c->window);
+}
+
+void
+clientEnterContextMenuState (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientEnterContextMenuState");
+    TRACE ("Showing the what's this help for client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
+    {
+        sendClientMessage (c->window, wm_protocols, kde_net_wm_context_help, CurrentTime);
+    }
+}
+
+void
+clientSetLayer (Client * c, int l)
+{
+    GList *list_of_windows = NULL;
+    GList *index;
+    Client *c2;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetLayer");
+
+    list_of_windows = clientListTransientOrModal (c);
+    for (index = list_of_windows; index; index = g_list_next (index))
+    {
+        c2 = (Client *) index->data;
+        if (c2->win_layer != l)
+        {
+            TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
+                c2->window, l);
+            c2->win_layer = l;
+            setHint (dpy, c2->window, win_layer, l);
+        }
+    }
+    g_list_free (list_of_windows);
+    if (clientGetLastRaise () == c)
+    {
+        clientClearLastRaise ();
+    }
+    clientRaise (c);
+    clientPassGrabButton1 (c);
 }
 
 void

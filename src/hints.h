@@ -136,6 +136,7 @@ extern Atom net_desktop_geometry;
 extern Atom net_desktop_viewport;
 extern Atom net_desktop_names;
 extern Atom net_number_of_desktops;
+extern Atom net_showing_desktop;
 extern Atom net_startup_id;
 extern Atom net_supported;
 extern Atom net_supporting_wm_check;

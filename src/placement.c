@@ -40,6 +40,34 @@ static unsigned long overlapY (int y0, int y1, int ty0, int ty1);
 static unsigned long overlap (int x0, int y0, int x1, int y1, 
 			      int tx0, int ty0, int tx1, int ty1);
 
+static unsigned long
+clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
+{
+    unsigned long sigma = 0;
+    
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
+    {
+	sigma = overlap (x, y, x + w, y + h, 
+		         0, c->struts[LEFT_START_Y], 
+			 c->struts[LEFT], 
+			 c->struts[LEFT_END_Y])
+	      + overlap (x, y, x + w, y + h,
+		         MyDisplayFullWidth (dpy, screen) - c->struts[RIGHT], 
+			 c->struts[RIGHT_START_Y],
+		         MyDisplayFullWidth (dpy, screen), c->struts[RIGHT_END_Y])
+	      + overlap (x, y, x + w, y + h,
+		         c->struts[TOP_START_X], 0, 
+		         c->struts[TOP_END_X], 
+			 c->struts[TOP])
+	      + overlap (x, y, x + w, y + h,
+		         c->struts[BOTTOM_START_X], 
+			 MyDisplayFullHeight (dpy, screen) - c->struts[BOTTOM],
+		         c->struts[BOTTOM_END_X], 
+			 MyDisplayFullHeight (dpy, screen));
+    }
+    return sigma;
+}
+
 /* Compute rectangle overlap area */
 
 static unsigned long
@@ -137,34 +165,6 @@ clientMaxSpace (int *x, int *y, int *w, int *h)
 	    }
 	}
     }
-}
-
-static unsigned long
-clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
-{
-    unsigned long sigma = 0;
-    
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
-    {
-	sigma = overlap (x, y, x + w, y + h, 
-		         0, c->struts[LEFT_START_Y], 
-			 c->struts[LEFT], 
-			 c->struts[LEFT_END_Y])
-	      + overlap (x, y, x + w, y + h,
-		         MyDisplayFullWidth (dpy, screen) - c->struts[RIGHT], 
-			 c->struts[RIGHT_START_Y],
-		         MyDisplayFullWidth (dpy, screen), c->struts[RIGHT_END_Y])
-	      + overlap (x, y, x + w, y + h,
-		         c->struts[TOP_START_X], 0, 
-		         c->struts[TOP_END_X], 
-			 c->struts[TOP])
-	      + overlap (x, y, x + w, y + h,
-		         c->struts[BOTTOM_START_X], 
-			 MyDisplayFullHeight (dpy, screen) - c->struts[BOTTOM],
-		         c->struts[BOTTOM_END_X], 
-			 MyDisplayFullHeight (dpy, screen));
-    }
-    return sigma;
 }
 
 gboolean
@@ -330,7 +330,6 @@ clientConstrainPos (Client * c, gboolean show_full)
 void
 clientKeepVisible (Client * c)
 {
-    int client_margins[4];
     int cx, cy;
     int diff_x, diff_y;
 
@@ -340,16 +339,6 @@ clientKeepVisible (Client * c)
 
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
-
-    client_margins[TOP] = margins[TOP];
-    client_margins[LEFT] = margins[LEFT];
-    client_margins[RIGHT] = margins[RIGHT];
-    client_margins[BOTTOM] = margins[BOTTOM];
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
-    {
-	workspaceGetArea (client_margins, NULL, c);
-    }
 
     /* Translate coodinates to center on physical screen */
 
@@ -378,7 +367,6 @@ clientKeepVisible (Client * c)
 void
 clientInitPosition (Client * c)
 {
-    int client_margins[4];
     int test_x = 0, test_y = 0;
     Client *c2;
     int xmax, ymax, best_x, best_y, i, msx, msy;
@@ -413,16 +401,6 @@ clientInitPosition (Client * c)
 	    clientKeepVisible (c);
 	}
 	return;
-    }
-
-    client_margins[TOP] = margins[TOP];
-    client_margins[LEFT] = margins[LEFT];
-    client_margins[RIGHT] = margins[RIGHT];
-    client_margins[BOTTOM] = margins[BOTTOM];
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
-    {
-	workspaceGetArea (client_margins, NULL, c);
     }
 
     getMouseXY (root, &msx, &msy);

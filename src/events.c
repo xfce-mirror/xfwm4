@@ -1555,6 +1555,13 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE ("root has received a net_system_tray_manager event");
             systray = getSystrayWindow (dpy);
         }
+        else if ((ev->message_type == net_showing_desktop)
+            && (ev->format == 32))
+        {
+            TRACE ("root has received a net_showing_desktop event");
+	    clientToggleShowDesktop (ev->data.l[0]);
+	    setHint (dpy, root, net_showing_desktop, ev->data.l[0]);
+        }
         else
         {
             TRACE ("unidentified client message for window 0x%lx",

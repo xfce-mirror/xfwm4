@@ -79,6 +79,7 @@ Atom net_desktop_geometry;
 Atom net_desktop_viewport;
 Atom net_desktop_names;
 Atom net_number_of_desktops;
+Atom net_showing_desktop;
 Atom net_startup_id;
 Atom net_supported;
 Atom net_supporting_wm_check;
@@ -429,6 +430,7 @@ initNetHints (Display * dpy)
     net_desktop_names = XInternAtom (dpy, "_NET_DESKTOP_NAMES", FALSE);
     net_number_of_desktops =
         XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
+    net_showing_desktop = XInternAtom (dpy, "_NET_SHOWING_DESKTOP", FALSE);
     net_startup_id = XInternAtom (dpy, "_NET_STARTUP_ID", FALSE);
     net_supported = XInternAtom (dpy, "_NET_SUPPORTED", FALSE);
     net_supporting_wm_check =
@@ -509,6 +511,7 @@ setNetSupportedHint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_desktop_viewport;
     atoms[i++] = net_desktop_names;
     atoms[i++] = net_number_of_desktops;
+    atoms[i++] = net_showing_desktop;
     atoms[i++] = net_supported;
     atoms[i++] = net_supporting_wm_check;
     atoms[i++] = net_wm_action_change_desktop;
