@@ -33,6 +33,14 @@
 #include "xfwm4_plugin.h"
 #include "xfwm4_shortcuteditor.h"
 
+struct _shortcut_tree_foreach_struct
+{
+    gchar *shortcut;
+    gchar *path;
+    GtkTreeSelection *selection;
+    gboolean found;
+};
+
 /**************/
 /* Popup menu */
 /**************/
@@ -1022,7 +1030,7 @@ shortcut_tree_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
 
     gtk_tree_model_get (model, iter, COLUMN_SHORTCUT, &current_shortcut, -1);
 
-    if (strcmp (shortcut_key, current_shortcut) == 0)
+    if (!gtk_tree_selection_path_is_selected (stfs->selection, path) && (strcmp (shortcut_key, current_shortcut) == 0))
     {
         stfs->found = TRUE;
         stfs->path = gtk_tree_path_to_string (path);
@@ -1182,11 +1190,13 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     stfs.shortcut = shortcut_string;
 
     stfs.found = FALSE;
+    stfs.selection = selection3;
     gtk_tree_model_foreach (model3, &shortcut_tree_foreach_func, &stfs);
     model_old = model3;
 
     if (!stfs.found)
     {
+        stfs.selection = selection4;
         gtk_tree_model_foreach (model4, &shortcut_tree_foreach_func, &stfs);
         model_old = model4;
     }

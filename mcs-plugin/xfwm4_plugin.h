@@ -64,13 +64,6 @@ struct _ThemeInfo
 
 
 typedef struct _shortcut_tree_foreach_struct shortcut_tree_foreach_struct;
-struct _shortcut_tree_foreach_struct
-{
-    gchar *shortcut;
-    gchar *path;
-    gboolean found;
-};
-
 typedef struct _Itf Itf;
 struct _Itf
 {
