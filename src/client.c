@@ -416,7 +416,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : below");
         data[i++] = net_wm_state_below;
     }
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_ICONIFIED))
     {
         TRACE ("clientSetNetState : hidden");
         data[i++] = net_wm_state_hidden;
@@ -443,29 +443,29 @@ clientGetNetState (Client * c)
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SESSION_MANAGED))
     {
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
-	{
+        {
             TRACE ("clientGetNetState : shaded from session management");
             c->win_state |= WIN_STATE_SHADED;
             CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
-	}
+        }
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
-	{
+        {
             TRACE ("clientGetNetState : sticky from session management");
             c->win_state |= WIN_STATE_STICKY;
             CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
-	}
+        }
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_HORIZ))
-	{
+        {
             TRACE ("clientGetNetState : maximized horiz from session management");
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
             CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_HORIZ);
-	}
+        }
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_VERT))
-	{
+        {
             TRACE ("clientGetNetState : maximized vert from session management");
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
             CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_VERT);
-	}
+        }
     }
     
     if (get_atom_list (dpy, c->window, net_wm_state, &atoms, &n_atoms))
@@ -502,27 +502,27 @@ clientGetNetState (Client * c)
             }
             else if ((atoms[i] == net_wm_state_fullscreen))
             {
-	        if (!CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
-		{
+                if (!CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
+                {
                     TRACE ("clientGetNetState : fullscreen");
                     CLIENT_FLAG_SET (c, CLIENT_FLAG_FULLSCREEN);
                 }
-	    }
+            }
             else if ((atoms[i] == net_wm_state_above))
             {
-	        if (!CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
-		{
+                if (!CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
+                {
                     TRACE ("clientGetNetState : above");
                     CLIENT_FLAG_SET (c, CLIENT_FLAG_ABOVE);
-		}
+                }
             }
             else if ((atoms[i] == net_wm_state_below))
             {
-	        if (!CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
-		{
+                if (!CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
+                {
                     TRACE ("clientGetNetState : below");
                     CLIENT_FLAG_SET (c, CLIENT_FLAG_BELOW);
-		}
+                }
             }
             else if (atoms[i] == net_wm_state_modal)
             {
@@ -538,6 +538,11 @@ clientGetNetState (Client * c)
             {
                 TRACE ("clientGetNetState : skip_taskbar");
                 CLIENT_FLAG_SET (c, CLIENT_FLAG_SKIP_TASKBAR);
+            }
+            else if (atoms[i] == net_wm_state_hidden)
+            {
+                TRACE ("clientGetNetState : state_hidden");
+                CLIENT_FLAG_SET (c, CLIENT_FLAG_ICONIFIED);
             }
             else
             {
