@@ -442,11 +442,11 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
 	}
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-	    if((c->button_pressed[i]) && (buttons[i][PRESSED].mask))
+	    if(c->button_pressed[i])
             {
                 XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][PRESSED].mask, ShapeSet);
             }
-            else if (buttons[i][state].mask)
+            else
             {
                 XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][state].mask, ShapeSet);
             }
