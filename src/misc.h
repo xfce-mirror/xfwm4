@@ -26,7 +26,6 @@
 #endif
 
 #include <sys/types.h>
-#include <sys/time.h>
 #include <X11/Xlib.h>
 #include <glib.h>
 
@@ -40,6 +39,5 @@ gboolean MyCheckWindow(Window);
 Window setTmpEventWin (int, int, unsigned int, unsigned int, long);
 void removeTmpEventWin (Window);
 void placeSidewalks(gboolean);
-Time stashEventTime (Time, XEvent *);
 
 #endif /* INC_MISC_H */

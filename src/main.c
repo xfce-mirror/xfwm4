@@ -66,7 +66,6 @@
     ColormapNotify
 
 char *progname;
-Time last_timestamp;
 Display *dpy;
 Window root, gnome_win, systray, sidewalk[2];
 Colormap cmap;
@@ -269,7 +268,6 @@ initialize (int argc, char **argv)
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
 
-    last_timestamp = CurrentTime;
     dpy = GDK_DISPLAY ();
     root = GDK_ROOT_WINDOW ();
     xscreen = DefaultScreenOfDisplay(dpy);

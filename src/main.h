@@ -56,7 +56,6 @@
  */
 
 extern char *progname;
-extern Time last_timestamp;
 extern Display *dpy;
 extern Window root, gnome_win, systray, sidewalk[2];
 extern Screen *xscreen;

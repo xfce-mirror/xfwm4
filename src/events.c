@@ -134,7 +134,6 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         }
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
-            last_timestamp = stashEventTime (last_timestamp, ev);
             if (ev->xbutton.button == button)
             {
                 clicks++;
@@ -148,7 +147,6 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         }
         if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
         {
-            last_timestamp = stashEventTime (last_timestamp, ev);
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
         }
@@ -276,9 +274,7 @@ handleMotionNotify (XMotionEvent * ev)
                 workspaceSwitch (workspace + 1, NULL);
             }
             while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-            {
-                last_timestamp = stashEventTime (last_timestamp, (XEvent *) ev);
-            }    
+                ; /* Skip event */
         }
     }
 }
@@ -984,7 +980,6 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     /* Compress events - logic taken from kwin */
     while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest, &otherEvent))
     {
-        last_timestamp = stashEventTime (last_timestamp, &otherEvent);
         if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
         {
             ev = &otherEvent.xconfigurerequest;
@@ -1603,7 +1598,6 @@ handleEvent (XEvent * ev)
     TRACE ("entering handleEvent");
 
     sn_process_event (ev);
-    last_timestamp = stashEventTime (last_timestamp, ev);
     switch (ev->type)
     {
         case MotionNotify:

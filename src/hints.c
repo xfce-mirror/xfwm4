@@ -976,7 +976,6 @@ getClientLeader (Display * dpy, Window window)
 gboolean
 getNetWMUserTime (Display * dpy, Window window, Time *time)
 {
-    Window client_leader = None;
     Atom actual_type;
     int actual_format;
     unsigned long nitems;
