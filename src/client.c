@@ -26,14 +26,13 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <glib.h>
-#include <gtktoxevent.h>
+#include <libxfcegui4.h>
 
 #include "main.h"
 #include "client.h"
 #include "frame.h"
 #include "hints.h"
 #include "workspaces.h"
-#include "xinerama.h"
 #include "settings.h"
 #include "debug.h"
 

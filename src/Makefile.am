@@ -24,11 +24,9 @@ xfwm4_SOURCES = \
 	parserc.h \
 	pixmap.h \
 	settings.h \
-	workspaces.h \
-	xinerama.c \
-	xinerama.h
-
+	workspaces.h
+	
 xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ \
 -DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \
 -DGDK_PIXBUF_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"
-xfwm4_LDADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @XINERAMA_LIBS@
+xfwm4_LDADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@

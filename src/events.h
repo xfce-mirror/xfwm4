@@ -26,7 +26,7 @@
 #endif
 
 #include <X11/Xlib.h>
-#include <gtktoxevent.h>
+#include <libxfcegui4.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>

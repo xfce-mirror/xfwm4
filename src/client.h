@@ -37,7 +37,7 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
-#include <gtktoxevent.h>
+#include <libxfcegui4.h>
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"

@@ -36,7 +36,6 @@
 #include "menu.h"
 #include "keyboard.h"
 #include "workspaces.h"
-#include "xinerama.h"
 #include "debug.h"
 
 #define MAIN_EVENT_MASK 	SubstructureNotifyMask|\

@@ -26,7 +26,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <gtktoxevent.h>
+#include <libxfcegui4.h>
 #include <gtk_style.h>
 #include "main.h"
 #include "parserc.h"
