@@ -41,6 +41,7 @@ gboolean        clientIsTransientOrModalForGroup (Client *);
 Client         *clientGetModalFor (Client *);
 GList          *clientListTransient (Client *);
 GList          *clientListTransientOrModal (Client *);
+gboolean        clientCheckTransientWindow (Client *, Window);
 
 
 #endif /* INC_TRANSIENTS_H */

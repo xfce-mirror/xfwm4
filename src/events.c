@@ -1410,6 +1410,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
+    Window w = None;
     char *names;
     int length;
 
@@ -1455,6 +1456,16 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_protocols notify", c->name, c->window);
             clientGetWMProtocols (c);
+        }
+        else if (ev->atom == wm_transient_for)
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a wm_transient_for notify", c->name, c->window);
+            getTransientFor (display_info->dpy, c->screen_info->screen, c->window, &w);
+            if (clientCheckTransientWindow (c, w))
+            {
+                c->transient_for = w;
+                clientRaise (c);
+            }
         }
         else if (ev->atom == win_hints)
         {

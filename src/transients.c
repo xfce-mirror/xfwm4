@@ -105,6 +105,7 @@ clientIsTransientFor (Client * c1, Client * c2)
     {
         if (c1->transient_for != c1->screen_info->xroot)
         {
+            if (c1->transient_for == c2->window)
             return (c1->transient_for == c2->window);
         }
         else if (c1->serial >= c2->serial)
@@ -299,3 +300,28 @@ clientListTransientOrModal (Client * c)
     return transients;
 }
 
+/* Check if a window is not already listed in transients of a client.
+   That's to avoid potential self transient relationship...
+ */
+gboolean
+clientCheckTransientWindow (Client *c, Window w)
+{
+    GList *transients = NULL;
+    GList *index;
+    Client *c2;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    transients = clientListTransient (c);
+    for (index = transients; index; index = g_list_next (index))
+    {
+        c2 = (Client *) index->data;
+        if (c2->window == w)
+        {
+            g_list_free (transients);
+            return FALSE;
+        }
+    }
+    g_list_free (transients);
+    return TRUE;
+}

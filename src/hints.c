@@ -57,6 +57,7 @@ Atom wm_hints;
 Atom wm_protocols;
 Atom wm_state;
 Atom wm_takefocus;
+Atom wm_transient_for;
 Atom wm_window_role;
 
 /* freedesktop.org protocol */
@@ -152,6 +153,7 @@ initICCCMHints (Display * dpy)
     wm_state = XInternAtom (dpy, "WM_STATE", FALSE);
     wm_takefocus = XInternAtom (dpy, "WM_TAKE_FOCUS", FALSE);
     wm_window_role = XInternAtom (dpy, "WM_WINDOW_ROLE", FALSE);
+    wm_transient_for = XInternAtom (dpy, "WM_TRANSIENT_FOR", FALSE);
 }
 
 unsigned long

@@ -137,6 +137,7 @@ extern Atom wm_delete_window;
 extern Atom wm_protocols;
 extern Atom wm_state;
 extern Atom wm_takefocus;
+extern Atom wm_transient_for;
 extern Atom wm_window_role;
 
 /* freedesktop.org protocol */
