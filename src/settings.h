@@ -48,9 +48,6 @@ typedef struct _Settings Settings;
 struct _Settings
 {
     gchar *option;
-    gchar *nick;
-    gchar *blurb;
-    SettingType type;
     gchar *value;
     gboolean required;
 };
