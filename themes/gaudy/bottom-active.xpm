@@ -4,7 +4,7 @@ static char * bottom_active_xpm[] = {
 " 	c None",
 ".	c #455FD7 s active_color_1",
 "+	c #384EB2 s active_shadow_1",
-"........",
+"++++++++",
 "........",
 "........",
 "........",
