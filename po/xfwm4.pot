@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-12-07 01:27+0100\n"
+"POT-Creation-Date: 2003-12-07 11:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:506
+#: src/client.c:508
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
