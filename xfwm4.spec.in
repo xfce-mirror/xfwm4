@@ -7,6 +7,9 @@ URL: 		http://www.xfce.org/
 Source0: 	%{name}-%{version}.tar.gz
 Group: 		User Interface/Desktops
 BuildRoot: 	%{_tmppath}/%{name}-root
+Requires:	gtk2
+Requires:	glib2
+Requires:	pango
 BuildRequires: 	gtk2-devel >= 2.0.0
 BuildRequires: 	glib2-devel >= 2.0.0
 BuildRequires: 	pango-devel >= 1.0.0
