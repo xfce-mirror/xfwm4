@@ -471,36 +471,38 @@ static void clientSetNetClientList (Atom a, GSList *list)
     }
 }
 
-void clientGetNetStrut (Client *c)
+void clientGetNetStruts(Client *c)
 {
     gulong *struts = NULL;
     int nitems;
     int i;
 
     g_return_if_fail (c != NULL);
-    DBG("entering clientGetNetStrut for \"%s\" (%#lx)\n",c->name, c->window);
+    DBG("entering clientGetNetStruts for \"%s\" (%#lx)\n",c->name, c->window);
 
     for(i = 0; i < 4; i++)
     {
-        c->strut[i] = 0;
+        c->struts[i] = 0;
     }
     c->has_struts = False;
   
     if (get_cardinal_list (dpy, c->window, net_wm_strut, &struts, &nitems))
     {
 	if (nitems != 4)
-          {
+        {
             XFree (struts);
-          }
+	    return;
+        }
 
-	c->has_struts = TRUE;
+	c->has_struts = True;
 	for(i = 0; i < 4; i++)
 	{
-            c->strut[i] = struts[i];
+            c->struts[i] = struts[i];
 	}
 
-	DBG("NET_WM_STRUT for window \"%s\"= (%d,%d,%d,%d)\n", c->name, c->strut[0], c->strut[1], c->strut[2], c->strut[3]);
+	DBG("NET_WM_STRUT for window \"%s\"= (%d,%d,%d,%d)\n", c->name, c->struts[0], c->struts[1], c->struts[2], c->struts[3]);
 	XFree (struts);
+        workspaceUpdateArea();
     }
 }
 
@@ -1341,11 +1343,6 @@ void clientFrame(Window w)
         c->button_pressed[i] = False;
     }
 
-    for(i = 0; i < 4; i++)
-    {
-        c->strut[i] = 0;
-    }
-  
     c->type_atom    = None;
     c->type         = UNSET;
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
@@ -1386,6 +1383,7 @@ void clientFrame(Window w)
     clientGetNetState (c);
     clientGetInitialNetWmDesktop (c);
     clientGetNetWmType (c);
+    clientGetNetStruts(c);
 
     /* Once we know the type of window, we can initialize window position */
     if(attr.map_state != IsViewable)
@@ -1504,6 +1502,7 @@ void clientUnframe(Client * c, int remap)
         XFree(c->size);
     }
     free(c);
+    workspaceUpdateArea();
     DBG("client_count=%d\n", client_count);
 }
 

@@ -30,5 +30,6 @@ extern int workspace;
 
 void workspaceSwitch(int, Client *);
 void workspaceSetCount(int);
+void workspaceUpdateArea(void);
 
 #endif /* __WORKSPACES_H__ */

@@ -615,7 +615,7 @@ void handlePropertyNotify(XPropertyEvent * ev)
 	else if (ev->atom == net_wm_strut)
         {
             DBG("client \"%s\" (%#lx) has received a net_wm_strut notify\n", c->name, c->window);
-	    clientGetNetStrut (c);
+	    clientGetNetStruts(c);
         }
     }
     else

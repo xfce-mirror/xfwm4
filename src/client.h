@@ -186,7 +186,7 @@ struct _Client
     int old_width;
     int old_height;
     int button_pressed[BUTTON_COUNT];
-    int strut[4];
+    int struts[4];
     char *name;
     unsigned int ignore_unmap;
     unsigned int managed      : 1;
@@ -216,7 +216,7 @@ void clientFrame(Window);
 void clientUnframe(Client *, int);
 void clientFrameAll();
 void clientUnframeAll();
-void clientGetNetStrut (Client *);
+void clientGetNetStruts(Client *);
 void clientGrabKeys(Client *);
 void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);

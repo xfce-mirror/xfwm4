@@ -113,6 +113,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         f = c2;
 	clientRaise (c2);
     }
+    workspaceUpdateArea();
     clientSetFocus(f, True);
     XSync (dpy, 0);
 }
@@ -150,4 +151,25 @@ void workspaceSetCount(int count)
     {
         workspaceSwitch(count - 1, NULL);
     }
+}
+
+void workspaceUpdateArea(void)
+{
+    Client *c;
+    int i;
+    
+    DBG("entering workspaceSetCount\n");
+
+    for(c = clients, i = 0; i < client_count; c = c->next, i++)
+    {
+        if(c->has_struts)
+	{
+	    margins[MARGIN_TOP]    = MAX(margins[MARGIN_TOP],    c->struts[MARGIN_TOP]);
+	    margins[MARGIN_LEFT]   = MAX(margins[MARGIN_LEFT],   c->struts[MARGIN_LEFT]);
+	    margins[MARGIN_RIGHT]  = MAX(margins[MARGIN_RIGHT],  c->struts[MARGIN_RIGHT]);
+	    margins[MARGIN_BOTTOM] = MAX(margins[MARGIN_BOTTOM], c->struts[MARGIN_BOTTOM]);
+	}
+    }
+    DBG("Desktop area computed : (%d,%d,%d,%d)\n", margins[0], margins[1], margins[2], margins[3]);
+    set_net_workarea (dpy, root, margins);
 }

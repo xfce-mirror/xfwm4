@@ -318,8 +318,8 @@ void set_net_supported_hint (Display * dpy, Window root_win, Window check_win)
   atoms[i++] = net_client_list;
   atoms[i++] = net_wm_state_skip_taskbar;
   atoms[i++] = net_wm_state_skip_pager;
-  /* Not supported (yet)
   atoms[i++] = net_wm_strut;
+  /* Not supported (yet)
   atoms[i++] = net_wm_moveresize;
    */
   atoms[i++] = net_wm_state_hidden;
