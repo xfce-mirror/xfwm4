@@ -698,7 +698,8 @@ msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 #: src/settings.c:840
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: toetsenbordthema \"%s\" ontbreekt; standaard waarden worden "
+"gebruikt"
 
 #: src/settings.c:847
 #, c-format
@@ -711,7 +712,7 @@ msgstr "Wisselen naar ..."
 
 #: src/tabwin.c:128
 msgid "Unknown application!"
-msgstr ""
+msgstr "Onbekend programma!"
 
 #, fuzzy
 #~ msgid ""
