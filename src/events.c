@@ -53,7 +53,6 @@
 
 #define DBL_CLICK_GRAB          (ButtonMotionMask | \
                                  PointerMotionMask | \
-                                 PointerMotionHintMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
                                  
@@ -111,14 +110,13 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     button = ev->xbutton.button;
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
-    t0 = ev->xbutton.time;
-    t1 = t0;
+    t0 = CurrentTime;
     total = 0;
     clicks = 1;
 
     while ((ABS (x - xcurrent) < 2) && (ABS (y - ycurrent) < 2)
         && (total < params.dbl_click_time)
-        && ((t1 - t0) < params.dbl_click_time))
+        && ((CurrentTime - t0) < params.dbl_click_time))
     {
         g_usleep (10000);
         total += 10;
@@ -128,15 +126,11 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
             {
                 clicks++;
             }
-            t1 = ev->xbutton.time;
         }
-        if (XCheckMaskEvent (dpy,
-                ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
-                ev))
+        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
         {
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
-            t1 = ev->xmotion.time;
         }
         if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK
             || (!allow_double_click
