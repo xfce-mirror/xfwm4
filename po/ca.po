@@ -1,21 +1,21 @@
 # Window manager for XFce desktop environment.
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the xfwm4 package.
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2003-06-21 14:14+0200\n"
-"PO-Revision-Date: 2003-05-11 13:58+0100\n"
+"PO-Revision-Date: 2003-07-05 17:36+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133
+#: mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Marges de l'àrea de treball"
@@ -25,11 +25,8 @@ msgid "Adjust workspace margins"
 msgstr "Ajusta els marges de l'àrea de treball"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Els marges són àrees en les vores de la pantalla on cap finestra es "
-"col·locarà"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Els marges són àrees en les vores de la pantalla on cap finestra es col·locarà"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -111,7 +108,8 @@ msgstr "Ocult"
 msgid "Font Selection Dialog"
 msgstr "Diàleg de sel·lecció del tipus de lletra"
 
-#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274
+#: mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Gestor de Finestres"
 
@@ -224,11 +222,13 @@ msgstr "Alinea les finestres amb les altres finestres"
 msgid "Distance :"
 msgstr "Distància:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
-msgstr "Petit"
+msgstr "Menut"
 
-#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Ample"
 
@@ -237,27 +237,20 @@ msgid "Wrap workspaces"
 msgstr "Ajusta les àrees de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Ajusta les àrees de treball quan s'arrossegui una finestra fora de la "
-"pantalla"
+msgstr "Salta de àrea de treball quan el punter assoleixi un dels laterals de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Ajusta les àrees de treball quan s'arrossegui una finestra fora de la "
-"pantalla"
+msgstr "Ajusta les àrees de treball quan s'arrossegui una finestra fora de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
-#, fuzzy
 msgid "Edge Resistance :"
-msgstr "Distància:"
+msgstr "Resistència del lateral:"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "Canvi de mida opac"
+msgstr "Canvi de mida i tamany opac"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
@@ -278,7 +271,7 @@ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr ""
+msgstr "Avançat"
 
 #: src/client.c:444
 #, c-format
@@ -311,77 +304,65 @@ msgid "%s: Unknown error occured"
 msgstr "%s: S'ha produït un error desconegut"
 
 #: src/menu.c:42
-#, fuzzy
 msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
 #: src/menu.c:43
-#, fuzzy
 msgid "Un_maximize"
 msgstr "Des_maximitza"
 
 #: src/menu.c:44
-#, fuzzy
 msgid "_Hide"
 msgstr "_Oculta"
 
 #: src/menu.c:45
-#, fuzzy
 msgid "Hide _all others"
 msgstr "Oculta _totes les altres"
 
 #: src/menu.c:46
-#, fuzzy
 msgid "S_how"
 msgstr "_Mostra"
 
 #: src/menu.c:47
-#, fuzzy
 msgid "_Shade"
 msgstr "_Enrotlla"
 
 #: src/menu.c:48
-#, fuzzy
 msgid "Un_shade"
 msgstr "Des_enrotlla"
 
 #: src/menu.c:49
-#, fuzzy
 msgid "S_tick"
 msgstr "_Omnipresent"
 
 #: src/menu.c:50
-#, fuzzy
 msgid "Uns_tick"
 msgstr "No _omnipresent"
 
 #: src/menu.c:51
-#, fuzzy
 msgid "Send to..."
-msgstr "Canvia a ..."
+msgstr "Envia a..."
 
 #: src/menu.c:53
-#, fuzzy
 msgid "_Close"
-msgstr "_Tanca"
+msgstr "Tan_ca"
 
 #: src/menu.c:56
 msgid "Destroy"
 msgstr "Destrueix"
 
 #: src/menu.c:59
-#, fuzzy
 msgid "_Quit"
 msgstr "_Surt"
 
 #: src/menu.c:60
 msgid "Restart"
-msgstr "Reinicia"
+msgstr "Reinicialitzar"
 
 #: src/menu.c:163
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i"
-msgstr "À_rea de treball"
+msgstr "À_rea de treball %i"
 
 #: src/menu.c:405
 #, c-format
@@ -421,37 +402,9 @@ msgstr "%s: Faltes valors en els fitxers per defecte"
 #: src/settings.c:1097
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr ""
-"%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el "
-"valor rc: %i"
+msgstr "%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el valor rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr "Canvia a ..."
+msgstr "Canvia a..."
 
-#~ msgid "Window style"
-#~ msgstr "Estil de Finestra"
-
-#~ msgid "Font select :"
-#~ msgstr "Sel·lecioneu el tipus de lletra:"
-
-#~ msgid "%s: Running without session manager"
-#~ msgstr "%s: Executant-se sense gestor de sessió"
-
-#, fuzzy
-#~ msgid "_Move"
-#~ msgstr "Mou"
-
-#, fuzzy
-#~ msgid "_Resize"
-#~ msgstr "_Canvia de mida"
-
-#, fuzzy
-#~ msgid "S_witch"
-#~ msgstr "Can_via"
-
-#~ msgid "Opaque move"
-#~ msgstr "Moviment opac"
-
-#~ msgid "Misc."
-#~ msgstr "Misc."
