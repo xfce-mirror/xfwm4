@@ -444,6 +444,7 @@ clientLower (Client * c)
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
+        clientPassGrabMouseButton (NULL);
         clientPassFocus (screen_info, c, NULL);
         if (screen_info->last_raise == c)
         {
