@@ -8,7 +8,7 @@ static char * title_active_xpm[] = {
 "#	c #567B9C s inactive_mid_1",
 "$	c #000000",
 "$$$$",
-"$$$$",
+"++++",
 "++++",
 "@@@@",
 "@@@@",
@@ -28,4 +28,4 @@ static char * title_active_xpm[] = {
 "@@@@",
 "@@@@",
 "@@@@",
-"####"};
+"@@@@"};
