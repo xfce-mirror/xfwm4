@@ -9002,13 +9002,13 @@ else
 fi;
   echo "$as_me:$LINENO: checking whether to build with debugging support" >&5
 echo $ECHO_N "checking whether to build with debugging support... $ECHO_C" >&6
-  if test x$ac_cv_debug != xno; then
+  if test x"$ac_cv_debug" != x"no"; then
 
 cat >>confdefs.h <<\_ACEOF
 #define DEBUG 1
 _ACEOF
 
-    if test x$ac_cv_debug == xfull; then
+    if test x"$ac_cv_debug" = x"full"; then
       CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       echo "$as_me:$LINENO: result: full" >&5
 echo "${ECHO_T}full" >&6
@@ -9018,6 +9018,7 @@ echo "${ECHO_T}full" >&6
 echo "${ECHO_T}yes" >&6
     fi
   else
+    CFLAGS="$CFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
     echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
   fi
