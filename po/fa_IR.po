@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.fa_IR\n"
-"POT-Creation-Date: 2004-01-04 23:17+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-07 14:51+0100\n"
 "PO-Revision-Date: 2004-01-09 19:35+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -17,8 +18,10 @@ msgstr ""
 "X-Generator: KBabel 1.0.2\n"
 
 #: mcs-plugin/margins.c:124
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "حاشیه‌ها مناطقی بر لبه‌های صفحه هستند که پنجره‌ها در آنجا گذارده نخواهند شد."
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"حاشیه‌ها مناطقی بر لبه‌های صفحه هستند که پنجره‌ها در آنجا گذارده نخواهند شد."
 
 #: mcs-plugin/margins.c:131
 msgid "Workspace Margins"
@@ -79,120 +82,120 @@ msgstr "تعداد فضاهای کاری:"
 msgid "Workspace names"
 msgstr "نام‌های فضای‌کاری"
 
-#: mcs-plugin/xfwm4_plugin.c:116
+#: mcs-plugin/xfwm4_plugin.c:121
 msgid "Title"
 msgstr "عنوان"
 
-#: mcs-plugin/xfwm4_plugin.c:117
+#: mcs-plugin/xfwm4_plugin.c:122
 msgid "Menu"
 msgstr "فهرست"
 
-#: mcs-plugin/xfwm4_plugin.c:118
+#: mcs-plugin/xfwm4_plugin.c:123
 msgid "Stick"
 msgstr "چسباندن"
 
-#: mcs-plugin/xfwm4_plugin.c:119
+#: mcs-plugin/xfwm4_plugin.c:124
 msgid "Shade"
 msgstr "سایه"
 
-#: mcs-plugin/xfwm4_plugin.c:120
+#: mcs-plugin/xfwm4_plugin.c:125
 msgid "Hide"
 msgstr "پنهان کردن"
 
-#: mcs-plugin/xfwm4_plugin.c:121
+#: mcs-plugin/xfwm4_plugin.c:126
 msgid "Maximize"
 msgstr "بزرگ‌سازی"
 
-#: mcs-plugin/xfwm4_plugin.c:122
+#: mcs-plugin/xfwm4_plugin.c:127
 msgid "Close"
 msgstr "بستن"
 
-#: mcs-plugin/xfwm4_plugin.c:126
+#: mcs-plugin/xfwm4_plugin.c:131
 msgid "Shade window"
 msgstr "سایه زدن پنجره"
 
-#: mcs-plugin/xfwm4_plugin.c:127
+#: mcs-plugin/xfwm4_plugin.c:132
 msgid "Hide window"
 msgstr "پنهان کردن پنجره"
 
-#: mcs-plugin/xfwm4_plugin.c:128
+#: mcs-plugin/xfwm4_plugin.c:133
 msgid "Maximize window"
 msgstr "بزرگ‌سازی پنجره"
 
-#: mcs-plugin/xfwm4_plugin.c:129
+#: mcs-plugin/xfwm4_plugin.c:134
 msgid "Nothing"
 msgstr "هیچی"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:139
 msgid "Left"
 msgstr "چپ"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:140
 msgid "Center"
 msgstr "مرکز"
 
-#: mcs-plugin/xfwm4_plugin.c:136
+#: mcs-plugin/xfwm4_plugin.c:141
 msgid "Right"
 msgstr "راست"
 
-#: mcs-plugin/xfwm4_plugin.c:436
+#: mcs-plugin/xfwm4_plugin.c:441
 msgid "Hidden"
 msgstr "پنهان"
 
-#: mcs-plugin/xfwm4_plugin.c:1206
+#: mcs-plugin/xfwm4_plugin.c:1205
 msgid "Font Selection Dialog"
 msgstr "گفتگوی گزینش قلم‌نگارش"
 
-#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1844
 msgid "Window Manager"
 msgstr "مدیر پنجره‌"
 
-#: mcs-plugin/xfwm4_plugin.c:1288
+#: mcs-plugin/xfwm4_plugin.c:1287
 msgid "Window Manager Preferences"
 msgstr "ترجیحات مدیر پنجره"
 
-#: mcs-plugin/xfwm4_plugin.c:1325
+#: mcs-plugin/xfwm4_plugin.c:1324
 msgid "Title font"
 msgstr "قلم‌نگارش عنوان"
 
-#: mcs-plugin/xfwm4_plugin.c:1338
+#: mcs-plugin/xfwm4_plugin.c:1337
 msgid "Title Alignment"
 msgstr "هم‌ترازی عنوان"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1344
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Text alignment inside title bar :"
 msgstr "هم‌ترازی متن درون نوار عنوان :"
 
-#: mcs-plugin/xfwm4_plugin.c:1349
+#: mcs-plugin/xfwm4_plugin.c:1348
 msgid "Button layout"
 msgstr "طرح دکمه"
 
-#: mcs-plugin/xfwm4_plugin.c:1356
+#: mcs-plugin/xfwm4_plugin.c:1355
 msgid "Decoration style"
 msgstr "سبک تزئین"
 
-#: mcs-plugin/xfwm4_plugin.c:1369
+#: mcs-plugin/xfwm4_plugin.c:1368
 msgid "Keyboard Shortcut"
 msgstr "میان‌بر صفحه‌کلید"
 
-#: mcs-plugin/xfwm4_plugin.c:1393
+#: mcs-plugin/xfwm4_plugin.c:1392
 msgid "Focus model"
 msgstr "مدل تمرکز"
 
-#: mcs-plugin/xfwm4_plugin.c:1402
+#: mcs-plugin/xfwm4_plugin.c:1401
 msgid "Click to focus"
 msgstr "کلیک برای تمرکز"
 
-#: mcs-plugin/xfwm4_plugin.c:1416
+#: mcs-plugin/xfwm4_plugin.c:1415
 msgid "Focus follows mouse"
 msgstr "تمرکز بدنبال موشی"
 
-#: mcs-plugin/xfwm4_plugin.c:1430
+#: mcs-plugin/xfwm4_plugin.c:1429
 msgid "New window focus"
 msgstr "تمرکز پنجره‌ی جدید"
 
-#: mcs-plugin/xfwm4_plugin.c:1435
+#: mcs-plugin/xfwm4_plugin.c:1434
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -200,11 +203,11 @@ msgstr ""
 "تمرکز دادن خودکار به پنجره‌هایی \n"
 "که بتازگی ایجاد شده‌اند"
 
-#: mcs-plugin/xfwm4_plugin.c:1442
+#: mcs-plugin/xfwm4_plugin.c:1441
 msgid "Raise on focus"
 msgstr "برافرازی با تمرکز"
 
-#: mcs-plugin/xfwm4_plugin.c:1451
+#: mcs-plugin/xfwm4_plugin.c:1450
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -212,23 +215,23 @@ msgstr ""
 "برافرازی پنجره بطور خودکار وقتی \n"
 "آنها تمرکز را دریافت می‌کنند"
 
-#: mcs-plugin/xfwm4_plugin.c:1464
+#: mcs-plugin/xfwm4_plugin.c:1463
 msgid "Delay before raising focused window :"
 msgstr "وقفه‌ی پیش از برافرازی پنجره‌ی تمرکز یافته :"
 
-#: mcs-plugin/xfwm4_plugin.c:1472
+#: mcs-plugin/xfwm4_plugin.c:1471
 msgid "Slow"
 msgstr "آهسته"
 
-#: mcs-plugin/xfwm4_plugin.c:1480
+#: mcs-plugin/xfwm4_plugin.c:1479
 msgid "Fast"
 msgstr "سریع"
 
-#: mcs-plugin/xfwm4_plugin.c:1504
+#: mcs-plugin/xfwm4_plugin.c:1503
 msgid "Raise on click"
 msgstr "برافرازی با کلیک کردن"
 
-#: mcs-plugin/xfwm4_plugin.c:1509
+#: mcs-plugin/xfwm4_plugin.c:1508
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -236,110 +239,110 @@ msgstr ""
 "برافرازی پنجره وقتی داخل پنجره‌ی\n"
 "برنامه کلیک شود"
 
-#: mcs-plugin/xfwm4_plugin.c:1517
+#: mcs-plugin/xfwm4_plugin.c:1516
 msgid "Keyboard and focus"
 msgstr "صفحه‌کلید و تمرکز"
 
-#: mcs-plugin/xfwm4_plugin.c:1530
+#: mcs-plugin/xfwm4_plugin.c:1529
 msgid "Windows snapping"
 msgstr "پنجره‌ربائی"
 
-#: mcs-plugin/xfwm4_plugin.c:1539
+#: mcs-plugin/xfwm4_plugin.c:1538
 msgid "Snap windows to screen border"
 msgstr "ربودن پنجره به کنار صفحه"
 
-#: mcs-plugin/xfwm4_plugin.c:1548
+#: mcs-plugin/xfwm4_plugin.c:1547
 msgid "Snap windows to other windows"
 msgstr "ربودن پنجره‌ها به پنجره‌های دیگر"
 
-#: mcs-plugin/xfwm4_plugin.c:1561
+#: mcs-plugin/xfwm4_plugin.c:1560
 msgid "Distance :"
 msgstr "فاصله :"
 
-#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1568 mcs-plugin/xfwm4_plugin.c:1637
 msgid "Small"
 msgstr "کوچک"
 
-#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1576 mcs-plugin/xfwm4_plugin.c:1645
 msgid "Wide"
 msgstr "پهن"
 
-#: mcs-plugin/xfwm4_plugin.c:1600
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Wrap workspaces"
 msgstr "پیچیدن فضاهای کاری"
 
-#: mcs-plugin/xfwm4_plugin.c:1609
+#: mcs-plugin/xfwm4_plugin.c:1608
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "پیچیدن فضاهای کاری وقتی که اشاره‌گر به لبه‌ی صفحه برسد"
 
-#: mcs-plugin/xfwm4_plugin.c:1618
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "پیچیدن فضاهای کاری وقتی که پنجره‌ای به خارج از صفحه کشیده شود"
 
-#: mcs-plugin/xfwm4_plugin.c:1630
+#: mcs-plugin/xfwm4_plugin.c:1629
 msgid "Edge Resistance :"
 msgstr "مقاومت لبه :"
 
-#: mcs-plugin/xfwm4_plugin.c:1671
+#: mcs-plugin/xfwm4_plugin.c:1670
 msgid "Opaque move and resize"
 msgstr "حرکت دادن آهسته و تغییر اندازه"
 
-#: mcs-plugin/xfwm4_plugin.c:1680
+#: mcs-plugin/xfwm4_plugin.c:1679
 msgid "Display content of windows when resizing"
 msgstr "نمایش محتویات پنجره‌ها هنگام تغییر اندازه"
 
-#: mcs-plugin/xfwm4_plugin.c:1688
+#: mcs-plugin/xfwm4_plugin.c:1687
 msgid "Display content of windows when moving"
 msgstr "نمایش محتویات پنجره‌ها هنگام حرکت دادن آنها"
 
-#: mcs-plugin/xfwm4_plugin.c:1695
+#: mcs-plugin/xfwm4_plugin.c:1694
 msgid "Double click action"
 msgstr "عمل دوکلیکه"
 
-#: mcs-plugin/xfwm4_plugin.c:1701
+#: mcs-plugin/xfwm4_plugin.c:1700
 msgid "Action to perform when double clicking on title bar :"
 msgstr "عملی که هنگام دوکلیکه کردن بر نوار عنوان انجام می‌گردد :"
 
-#: mcs-plugin/xfwm4_plugin.c:1706
+#: mcs-plugin/xfwm4_plugin.c:1705
 msgid "Advanced"
 msgstr "پیشرفته"
 
-#: src/client.c:508
+#: src/client.c:510
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (window 0x%lx) سازماندهی نشده"
 
-#: src/events.c:1497
+#: src/events.c:1555
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
 
-#: src/main.c:228
+#: src/main.c:231
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: نقص در قطعه‌بندی"
 
-#: src/main.c:402
+#: src/main.c:409
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
 
-#: src/main.c:407
+#: src/main.c:414
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: فقدان داده‌ها از پرونده‌های پیش‌فرض"
 
-#: src/main.c:416
+#: src/main.c:423
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
 
-#: src/main.c:424
+#: src/main.c:431
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
 
-#: src/main.c:445
+#: src/main.c:452
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: خطای ناشناسی رخ داد"
@@ -408,52 +411,57 @@ msgstr "_ترک"
 msgid "Restart"
 msgstr "راه‌اندازی مجدد"
 
-#: src/menu.c:166
+#: src/menu.c:169
+#, fuzzy, c-format
+msgid "Workspace %i (%s)"
+msgstr "فضای کاری %i"
+
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "فضای کاری %i"
 
-#: src/menu.c:408
+#: src/menu.c:424
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu موفق به گرفتن اشاره‌گر نشد\n"
 
-#: src/settings.c:315
+#: src/settings.c:318
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: فقدان پرونده‌ی پیش‌فرض‌ها"
 
-#: src/settings.c:553
+#: src/settings.c:551
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را جایابی کرد\n"
 
-#: src/settings.c:560
+#: src/settings.c:558
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را تجزیه کرد\n"
 
-#: src/settings.c:604
+#: src/settings.c:602
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\n"
 
-#: src/settings.c:611
+#: src/settings.c:609
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 
-#: src/settings.c:798
+#: src/settings.c:796
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: طرح کلید مشخص شده‌ی \"%s\" وجود ندارد، از پیش‌فرض استفاده می‌شود"
 
-#: src/settings.c:808
+#: src/settings.c:806
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: فقدان مقادیر در پرونده‌ی پیش‌فرض‌ها"
 
-#: src/settings.c:1155
+#: src/settings.c:1153
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: شمارش فضای کاری گذاشته نشده، استفاده از مقدار rc: %i"
@@ -461,4 +469,3 @@ msgstr "%s: شمارش فضای کاری گذاشته نشده، استفاده 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "تعویض به ..."
-

@@ -1340,6 +1340,8 @@ static inline void
 handlePropertyNotify (XPropertyEvent * ev)
 {
     Client *c = NULL;
+    char *names;
+    int length;
 
     TRACE ("entering handlePropertyNotify");
 
@@ -1432,6 +1434,14 @@ handlePropertyNotify (XPropertyEvent * ev)
         }
 #endif
 
+    }
+    else if (ev->atom == net_desktop_names)
+    {
+        TRACE ("root has received a net_desktop_names notify");
+        if (get_utf8_string (dpy, root, net_desktop_names, &names, &length))
+        {
+            workspaceSetNames (names, length);
+        }
     }
     else if (ev->atom == gnome_panel_desktop_area)
     {
@@ -1956,9 +1966,11 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                                         MyDisplayFullWidth (dpy, screen),
                                         MyDisplayFullHeight (dpy, screen), 
                                         NoEventMask);
-    menu =
-        menu_default (ops, insensitive, menu_callback, c->win_workspace,
-        params.workspace_count, c);
+
+    menu = menu_default (ops, insensitive, menu_callback, c->win_workspace,
+                         params.workspace_count, params.workspace_names,
+                         params.workspace_names_length, c);
+
     if (!menu_popup (menu, x, y, ev->button, ev->time))
     {
         TRACE ("Cannot open menu");

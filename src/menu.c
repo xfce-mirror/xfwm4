@@ -151,19 +151,35 @@ menu_closed (GtkMenu * widget, gpointer data)
 }
 
 static GtkWidget *
-menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws)
+menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, gint wsnl)
 {
     gint i;
     GtkWidget *menu_widget;
     GtkWidget *mi;
     MenuData *md;
     gchar *name;
+    gchar *ptr = wsn;
 
     menu_widget = gtk_menu_new ();
 
     for (i = 0; i < nws; i++)
     {
-        name = g_strdup_printf (_("Workspace %i"), i + 1);
+        if (ptr && *ptr != 0)
+        {
+            name = g_strdup_printf (_("Workspace %i (%s)"), i + 1, ptr);
+            if (ptr-wsn+1 < wsnl)
+            {
+                ptr += strlen (ptr) + 1;
+            }
+            else
+            {
+                ptr = NULL;
+            }
+        }
+        else
+        {
+            name = g_strdup_printf (_("Workspace %i"), i + 1);
+        }
         mi = gtk_check_menu_item_new_with_label (name);
         gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi), (i == ws));
         gtk_widget_show (mi);
@@ -188,7 +204,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws)
 
 Menu *
 menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
-    gint nws, gpointer data)
+    gint nws, gchar *wsn, gint wsnl, gpointer data)
 {
     int i;
     Menu *menu;
@@ -225,7 +241,7 @@ menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
                     {
                         gtk_widget_set_sensitive (mi, FALSE);
                     }
-                    ws_menu = menu_workspace (menu, insensitive, ws, nws);
+                    ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsnl);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), ws_menu);
 
                     md = g_new (MenuData, 1);

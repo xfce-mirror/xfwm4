@@ -31,6 +31,7 @@
 #include "client.h"
 
 void workspaceSwitch (int, Client *);
+void workspaceSetNames (char *, int);
 void workspaceSetCount (int);
 void workspaceGetArea (int *, int *, Client *);
 void workspaceUpdateArea (int *, int *);

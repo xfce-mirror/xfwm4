@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2004-01-03 22:16+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-07 14:51+0100\n"
 "PO-Revision-Date: 2003-08-02 03:36+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins.c:124
 msgid ""
@@ -84,261 +84,261 @@ msgstr "작업공간의 수:"
 msgid "Workspace names"
 msgstr "작업공간 여백"
 
-#: mcs-plugin/xfwm4_plugin.c:116
+#: mcs-plugin/xfwm4_plugin.c:121
 msgid "Title"
 msgstr "제목"
 
-#: mcs-plugin/xfwm4_plugin.c:117
+#: mcs-plugin/xfwm4_plugin.c:122
 msgid "Menu"
 msgstr "메뉴"
 
-#: mcs-plugin/xfwm4_plugin.c:118
+#: mcs-plugin/xfwm4_plugin.c:123
 msgid "Stick"
 msgstr "모든 작업공간에 보이기"
 
-#: mcs-plugin/xfwm4_plugin.c:119
+#: mcs-plugin/xfwm4_plugin.c:124
 msgid "Shade"
 msgstr "말아올리기"
 
-#: mcs-plugin/xfwm4_plugin.c:120
+#: mcs-plugin/xfwm4_plugin.c:125
 msgid "Hide"
 msgstr "숨기기"
 
-#: mcs-plugin/xfwm4_plugin.c:121
+#: mcs-plugin/xfwm4_plugin.c:126
 msgid "Maximize"
 msgstr "최대화"
 
-#: mcs-plugin/xfwm4_plugin.c:122
+#: mcs-plugin/xfwm4_plugin.c:127
 msgid "Close"
 msgstr "닫기"
 
-#: mcs-plugin/xfwm4_plugin.c:126
+#: mcs-plugin/xfwm4_plugin.c:131
 msgid "Shade window"
 msgstr "창 말아올리기"
 
-#: mcs-plugin/xfwm4_plugin.c:127
+#: mcs-plugin/xfwm4_plugin.c:132
 msgid "Hide window"
 msgstr "창 숨기기"
 
-#: mcs-plugin/xfwm4_plugin.c:128
+#: mcs-plugin/xfwm4_plugin.c:133
 msgid "Maximize window"
 msgstr "창 최대화"
 
-#: mcs-plugin/xfwm4_plugin.c:129
+#: mcs-plugin/xfwm4_plugin.c:134
 msgid "Nothing"
 msgstr "아무 짓도 안함"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:139
 msgid "Left"
 msgstr "좌측"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:140
 msgid "Center"
 msgstr "가운데"
 
-#: mcs-plugin/xfwm4_plugin.c:136
+#: mcs-plugin/xfwm4_plugin.c:141
 msgid "Right"
 msgstr "우측"
 
-#: mcs-plugin/xfwm4_plugin.c:436
+#: mcs-plugin/xfwm4_plugin.c:441
 msgid "Hidden"
 msgstr "숨김"
 
-#: mcs-plugin/xfwm4_plugin.c:1206
+#: mcs-plugin/xfwm4_plugin.c:1205
 msgid "Font Selection Dialog"
 msgstr "글꼴 선택"
 
-#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1844
 msgid "Window Manager"
 msgstr "창 관리자"
 
-#: mcs-plugin/xfwm4_plugin.c:1288
+#: mcs-plugin/xfwm4_plugin.c:1287
 msgid "Window Manager Preferences"
 msgstr "창 관리자 속성 설정"
 
-#: mcs-plugin/xfwm4_plugin.c:1325
+#: mcs-plugin/xfwm4_plugin.c:1324
 msgid "Title font"
 msgstr "창 제목 글꼴"
 
-#: mcs-plugin/xfwm4_plugin.c:1338
+#: mcs-plugin/xfwm4_plugin.c:1337
 msgid "Title Alignment"
 msgstr "창 제목 정렬"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1344
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Text alignment inside title bar :"
 msgstr "제목 틀의 내용 정렬"
 
-#: mcs-plugin/xfwm4_plugin.c:1349
+#: mcs-plugin/xfwm4_plugin.c:1348
 msgid "Button layout"
 msgstr "버튼 배치"
 
-#: mcs-plugin/xfwm4_plugin.c:1356
+#: mcs-plugin/xfwm4_plugin.c:1355
 msgid "Decoration style"
 msgstr "꾸미기"
 
-#: mcs-plugin/xfwm4_plugin.c:1369
+#: mcs-plugin/xfwm4_plugin.c:1368
 msgid "Keyboard Shortcut"
 msgstr "단축키"
 
-#: mcs-plugin/xfwm4_plugin.c:1393
+#: mcs-plugin/xfwm4_plugin.c:1392
 msgid "Focus model"
 msgstr "창 활성 방법"
 
-#: mcs-plugin/xfwm4_plugin.c:1402
+#: mcs-plugin/xfwm4_plugin.c:1401
 msgid "Click to focus"
 msgstr "클릭"
 
-#: mcs-plugin/xfwm4_plugin.c:1416
+#: mcs-plugin/xfwm4_plugin.c:1415
 msgid "Focus follows mouse"
 msgstr "마우스를 따라가기"
 
-#: mcs-plugin/xfwm4_plugin.c:1430
+#: mcs-plugin/xfwm4_plugin.c:1429
 msgid "New window focus"
 msgstr "새로운 창 활성 방법"
 
-#: mcs-plugin/xfwm4_plugin.c:1435
+#: mcs-plugin/xfwm4_plugin.c:1434
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr "새로운 창은 무조건 활성"
 
-#: mcs-plugin/xfwm4_plugin.c:1442
+#: mcs-plugin/xfwm4_plugin.c:1441
 msgid "Raise on focus"
 msgstr "활성된 창 올리기"
 
-#: mcs-plugin/xfwm4_plugin.c:1451
+#: mcs-plugin/xfwm4_plugin.c:1450
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr "활성된 창은 무조건 최상위로 올리기"
 
-#: mcs-plugin/xfwm4_plugin.c:1464
+#: mcs-plugin/xfwm4_plugin.c:1463
 msgid "Delay before raising focused window :"
 msgstr "지연 시간"
 
-#: mcs-plugin/xfwm4_plugin.c:1472
+#: mcs-plugin/xfwm4_plugin.c:1471
 msgid "Slow"
 msgstr "느림"
 
-#: mcs-plugin/xfwm4_plugin.c:1480
+#: mcs-plugin/xfwm4_plugin.c:1479
 msgid "Fast"
 msgstr "빠름"
 
-#: mcs-plugin/xfwm4_plugin.c:1504
+#: mcs-plugin/xfwm4_plugin.c:1503
 msgid "Raise on click"
 msgstr "클릭했을 때 창 올리기"
 
-#: mcs-plugin/xfwm4_plugin.c:1509
+#: mcs-plugin/xfwm4_plugin.c:1508
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr "창 내부를 클릭해야 올림"
 
-#: mcs-plugin/xfwm4_plugin.c:1517
+#: mcs-plugin/xfwm4_plugin.c:1516
 msgid "Keyboard and focus"
 msgstr "단축키 및 창 활성"
 
-#: mcs-plugin/xfwm4_plugin.c:1530
+#: mcs-plugin/xfwm4_plugin.c:1529
 msgid "Windows snapping"
 msgstr "창 움직임"
 
-#: mcs-plugin/xfwm4_plugin.c:1539
+#: mcs-plugin/xfwm4_plugin.c:1538
 msgid "Snap windows to screen border"
 msgstr "화면 경계에 따라 움직임"
 
-#: mcs-plugin/xfwm4_plugin.c:1548
+#: mcs-plugin/xfwm4_plugin.c:1547
 msgid "Snap windows to other windows"
 msgstr "다른 창에 맞추어 움직임"
 
-#: mcs-plugin/xfwm4_plugin.c:1561
+#: mcs-plugin/xfwm4_plugin.c:1560
 msgid "Distance :"
 msgstr "거리 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1568 mcs-plugin/xfwm4_plugin.c:1637
 msgid "Small"
 msgstr "좁게"
 
-#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1576 mcs-plugin/xfwm4_plugin.c:1645
 msgid "Wide"
 msgstr "넓게"
 
-#: mcs-plugin/xfwm4_plugin.c:1600
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Wrap workspaces"
 msgstr "작업 공간 전환"
 
-#: mcs-plugin/xfwm4_plugin.c:1609
+#: mcs-plugin/xfwm4_plugin.c:1608
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환"
 
-#: mcs-plugin/xfwm4_plugin.c:1618
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "창을 화면 밖으로 이동시키면 작업공간 전환"
 
-#: mcs-plugin/xfwm4_plugin.c:1630
+#: mcs-plugin/xfwm4_plugin.c:1629
 msgid "Edge Resistance :"
 msgstr "화면 모서리 저항 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1671
+#: mcs-plugin/xfwm4_plugin.c:1670
 msgid "Opaque move and resize"
 msgstr "창 이동 및 크기 변경"
 
-#: mcs-plugin/xfwm4_plugin.c:1680
+#: mcs-plugin/xfwm4_plugin.c:1679
 msgid "Display content of windows when resizing"
 msgstr "창 크기를 변경할 때 내용을 보이기"
 
-#: mcs-plugin/xfwm4_plugin.c:1688
+#: mcs-plugin/xfwm4_plugin.c:1687
 msgid "Display content of windows when moving"
 msgstr "창을 움직일 때 내용 보이기"
 
-#: mcs-plugin/xfwm4_plugin.c:1695
+#: mcs-plugin/xfwm4_plugin.c:1694
 msgid "Double click action"
 msgstr "더블클릭하면"
 
-#: mcs-plugin/xfwm4_plugin.c:1701
+#: mcs-plugin/xfwm4_plugin.c:1700
 msgid "Action to perform when double clicking on title bar :"
 msgstr "제목 틀을 더블클릭한 경우 취하는 동작"
 
-#: mcs-plugin/xfwm4_plugin.c:1706
+#: mcs-plugin/xfwm4_plugin.c:1705
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/client.c:508
+#: src/client.c:510
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1490
+#: src/events.c:1555
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
 
-#: src/main.c:228
+#: src/main.c:231
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:399
+#: src/main.c:409
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:404
+#: src/main.c:414
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:413
+#: src/main.c:423
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:421
+#: src/main.c:431
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:442
+#: src/main.c:452
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
@@ -407,52 +407,57 @@ msgstr "종료(_Q)"
 msgid "Restart"
 msgstr "다시 시작"
 
-#: src/menu.c:166
+#: src/menu.c:169
+#, fuzzy, c-format
+msgid "Workspace %i (%s)"
+msgstr "작업공간 %i"
+
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "작업공간 %i"
 
-#: src/menu.c:408
+#: src/menu.c:424
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: src/settings.c:315
+#: src/settings.c:318
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr ""
 
-#: src/settings.c:553
+#: src/settings.c:551
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:560
+#: src/settings.c:558
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:604
+#: src/settings.c:602
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:611
+#: src/settings.c:609
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:798
+#: src/settings.c:796
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:808
+#: src/settings.c:806
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1155
+#: src/settings.c:1153
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

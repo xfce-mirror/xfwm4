@@ -162,6 +162,8 @@ struct _Params
     int title_alignment;
     int title_horizontal_offset;
     int workspace_count;
+    gchar *workspace_names;
+    int workspace_names_length;
     int wrap_resistance;
     gboolean title_shadow[2];
     gboolean cycle_minimum;

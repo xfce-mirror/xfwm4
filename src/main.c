@@ -138,6 +138,8 @@ cleanUp ()
             params.shortcut_exec[i] = NULL;
         }
     }
+    g_free (params.workspace_names);
+    params.workspace_names = NULL;
     removeTmpEventWin (sidewalk[0]);
     removeTmpEventWin (sidewalk[1]);
     XSetInputFocus (dpy, root, RevertToPointerRoot, CurrentTime);

@@ -85,7 +85,7 @@ struct _Menu
 };
 
 Menu *menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func,
-                    gint ws, gint nws, gpointer data);
+                    gint ws, gint nws, gchar *wsn, gint wsnl, gpointer data);
 Menu *menu_connect (Menu * menu);
 GtkWidget *menu_item_connect (GtkWidget * item, MenuData * item_data);
 gboolean menu_is_opened (void);

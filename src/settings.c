@@ -1225,6 +1225,7 @@ initSettings (void)
 {
     int i;
     long val = 0;
+    char *names = NULL;
 
     TRACE ("entering initSettings");
 
@@ -1291,6 +1292,16 @@ initSettings (void)
     else if (getHint (dpy, root, win_workspace_count, &val))
     {
         workspaceSetCount (val);
+    }
+
+    if (get_utf8_string (dpy, root, net_desktop_names, &names, &i))
+    {
+        workspaceSetNames (names, i);
+    }
+    else
+    {
+        params.workspace_names = NULL;
+        params.workspace_names_length = 0;
     }
 
     if (!loadSettings ())

@@ -77,6 +77,7 @@ Atom net_close_window;
 Atom net_current_desktop;
 Atom net_desktop_geometry;
 Atom net_desktop_viewport;
+Atom net_desktop_names;
 Atom net_number_of_desktops;
 Atom net_startup_id;
 Atom net_supported;
@@ -423,6 +424,7 @@ initNetHints (Display * dpy)
     net_current_desktop = XInternAtom (dpy, "_NET_CURRENT_DESKTOP", FALSE);
     net_desktop_geometry = XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", FALSE);
     net_desktop_viewport = XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
+    net_desktop_names = XInternAtom (dpy, "_NET_DESKTOP_NAMES", FALSE);
     net_number_of_desktops =
         XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
     net_startup_id = XInternAtom (dpy, "_NET_STARTUP_ID", FALSE);
@@ -501,6 +503,7 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_current_desktop;
     atoms[i++] = net_desktop_geometry;
     atoms[i++] = net_desktop_viewport;
+    atoms[i++] = net_desktop_names;
     atoms[i++] = net_number_of_desktops;
     atoms[i++] = net_supported;
     atoms[i++] = net_supporting_wm_check;
@@ -706,7 +709,7 @@ getTransientFor (Display * dpy, int screen, Window w, Window * transient_for)
 }
 
 gboolean
-get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p)
+get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
 {
     Atom type;
     int format;
@@ -759,6 +762,7 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p)
     }
     
     *str_p = str;
+    *length = n_items;
 
     return TRUE;
 }
@@ -821,6 +825,7 @@ void
 getWindowName (Display * dpy, Window w, char **name)
 {
     char *str;
+    int len;
 
     TRACE ("entering getWindowName");
 
@@ -828,7 +833,7 @@ getWindowName (Display * dpy, Window w, char **name)
     *name = NULL;
     g_return_if_fail (w != None);
 
-    if (get_utf8_string (dpy, w, net_wm_name, &str))
+    if (get_utf8_string (dpy, w, net_wm_name, &str, &len))
     {
         *name = strdup (str);
         XFree (str);
