@@ -325,7 +325,7 @@ setHint (Display * dpy, Window w, Atom a, long value)
 }
 
 void
-getGnomeDesktopMargins (Display * dpy, int screen, CARD32 * m)
+getGnomeDesktopMargins (Display * dpy, int screen, int * m)
 {
     Atom real_type;
     int real_format;
@@ -583,7 +583,7 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
 }
 
 void
-set_net_workarea (Display * dpy, int screen, int nb_workspaces, CARD32 * m)
+set_net_workarea (Display * dpy, int screen, int nb_workspaces, int * m)
 {
     unsigned long *data, *ptr;
     int i, j;

@@ -2063,7 +2063,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
 static inline void
 clientConstrainPos (Client * c, gboolean show_full)
 {
-    CARD32 client_margins[4];
+    int client_margins[4];
     int cx, cy, left, right, top, bottom;
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
@@ -2181,7 +2181,7 @@ clientConstrainPos (Client * c, gboolean show_full)
 static inline void
 clientKeepVisible (Client * c)
 {
-    CARD32 client_margins[4];
+    int client_margins[4];
     int cx, cy, left, right, top, bottom;
     int diff_x, diff_y;
 
@@ -2269,7 +2269,7 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 static void
 clientInitPosition (Client * c)
 {
-    CARD32 client_margins[4];
+    int client_margins[4];
     int test_x = 0, test_y = 0;
     Client *c2;
     int xmax, ymax, best_x, best_y, i, msx, msy;

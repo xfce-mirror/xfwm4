@@ -32,7 +32,7 @@
 
 void workspaceSwitch (int, Client *);
 void workspaceSetCount (int);
-void workspaceGetArea (CARD32 *, CARD32 *, Client *);
-void workspaceUpdateArea (CARD32 *, CARD32 *);
+void workspaceGetArea (int *, int *, Client *);
+void workspaceUpdateArea (int *, int *);
 
 #endif /* INC_WORKSPACES_H */

@@ -204,7 +204,7 @@ workspaceSetCount (int count)
 }
 
 void
-workspaceGetArea (CARD32 * m1, CARD32 * m2, Client * c)
+workspaceGetArea (int * m1, int * m2, Client * c)
 {
     Client *c2;
     int i;
@@ -242,7 +242,7 @@ workspaceGetArea (CARD32 * m1, CARD32 * m2, Client * c)
 }
 
 void
-workspaceUpdateArea (CARD32 * m1, CARD32 * m2)
+workspaceUpdateArea (int * m1, int * m2)
 {
     int prev_top;
     int prev_left;
