@@ -1,3 +1,13 @@
+2003-07-10 11:24  huysmans
+
+	* ChangeLog, configure, configure.ac, po/ar.gmo, po/ar.po,
+	po/ca.gmo, po/ca.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
+	po/es_MX.gmo, po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	po/fr.po, po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo,
+	po/nl.po, po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo,
+	po/ta.po, po/tr.gmo, po/tr.po, po/zh_CN.gmo, po/zh_CN.po: Bump
+	version numbers for release and update po files
+
 2003-07-09 20:15  xfce
 
 	* po/: de.gmo, de.po, xfwm4.pot: Update de.po from Moe.
