@@ -706,7 +706,7 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
     static Time lastscroll = (Time) 0;
     ScreenInfo *screen_info = NULL;
 
-    if ((ev->time - lastscroll) < 100)  /* ms */
+    if ((ev->time - lastscroll) < 25)  /* ms */
     {
         /* Too many events in too little time, drop this event... */
         return;

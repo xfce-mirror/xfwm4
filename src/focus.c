@@ -44,6 +44,7 @@
 #include "transients.h"
 #include "workspaces.h"
 #include "hints.h"
+#include "netwm.h"
 
 typedef struct _ClientPair ClientPair;
 struct _ClientPair

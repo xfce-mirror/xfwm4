@@ -33,6 +33,7 @@
 #include "display.h"
 #include "screen.h"
 #include "client.h"
+#include "compositor.h"
 
 static int
 handleXError (Display * dpy, XErrorEvent * err)
