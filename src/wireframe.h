@@ -32,6 +32,6 @@
 
 void wireframeUpdate (Client *c, Window xwindow);
 Window wireframeCreate (Client *c);
-void wireframeDestroy (ScreenInfo *screen_info, Window xwindow);
+void wireframeDelete (ScreenInfo *screen_info, Window xwindow);
 
 #endif /* INC_WIREFRAME_H */
