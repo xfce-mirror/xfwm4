@@ -98,6 +98,7 @@ static int clientGetWidthInc(Client * c);
 static int clientGetHeightInc(Client * c);
 static void clientSetWidth(Client * c, int w1);
 static void clientSetHeight(Client * c, int h1);
+static inline void clientApplyStackList(GSList * list);
 static inline Client *clientGetLowestTransient(Client * c);
 static inline Client *clientGetHighestTransient(Client * c);
 static inline Client *clientGetNextTopMost(int layer, Client * exclude);
@@ -1336,6 +1337,32 @@ static void clientSetHeight(Client * c, int h1)
     c->height = h1;
 }
 
+static inline void clientApplyStackList(GSList * list)
+{
+    Client *c;
+    GSList *list_copy, *index;
+    Window *xwinstack;
+    guint nwindows;
+    gint i = 0;
+
+    g_return_if_fail(list != NULL);
+
+    list_copy = g_slist_copy(list);
+    list_copy = g_slist_reverse(list_copy);
+    nwindows = g_slist_length(list_copy);
+    c = (Client *) list_copy->data;
+    XRaiseWindow(dpy, c->frame);
+    xwinstack = g_new(Window, nwindows);
+    for(index = list_copy; index; index = g_slist_next(index))
+    {
+        c = (Client *) index->data;
+        xwinstack[i++] = c->frame;
+    }
+    XRestackWindows(dpy, xwinstack, (int)nwindows);
+    g_slist_free(list_copy);
+    g_free(xwinstack);
+}
+
 static inline Client *clientGetLowestTransient(Client * c)
 {
     Client *lowest_transient = NULL, *c2;
@@ -2191,9 +2218,9 @@ void clientFrame(Window w)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    wc.stack_mode = Above;
-    clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth | CWStackMode, FALSE);
-
+    clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
+    clientApplyStackList(windows_stack);
+    
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
@@ -2233,6 +2260,10 @@ void clientUnframe(Client * c, int remap)
     if(client_focus == c)
     {
         client_focus = NULL;
+    }
+    if(last_raise == c)
+    {
+        last_raise = NULL;
     }
     clientGravitate(c, REMOVE);
     clientUngrabKeys(c);
@@ -2531,32 +2562,6 @@ void clientKill(Client * c)
     XKillClient(dpy, c->window);
 }
 
-static inline void clientApplyStackList(GSList * list)
-{
-    Client *c;
-    GSList *list_copy, *index;
-    Window *xwinstack;
-    guint nwindows;
-    gint i = 0;
-
-    g_return_if_fail(list != NULL);
-
-    list_copy = g_slist_copy(list);
-    list_copy = g_slist_reverse(list_copy);
-    nwindows = g_slist_length(list_copy);
-    c = (Client *) list_copy->data;
-    XRaiseWindow(dpy, c->frame);
-    xwinstack = g_new(Window, nwindows);
-    for(index = list_copy; index; index = g_slist_next(index))
-    {
-        c = (Client *) index->data;
-        xwinstack[i++] = c->frame;
-    }
-    XRestackWindows(dpy, xwinstack, (int)nwindows);
-    g_slist_free(list_copy);
-    g_free(xwinstack);
-}
-
 void clientRaise(Client * c)
 {
     g_return_if_fail(c != NULL);
@@ -2687,7 +2692,10 @@ void clientLower(Client * c)
            We still need to tell the X Server to reflect the changes 
          */
         clientApplyStackList(windows_stack);
-        last_raise = NULL;
+	if(last_raise == c)
+	{
+            last_raise = NULL;
+	}
     }
 }
 
@@ -2743,7 +2751,10 @@ void clientSetLayer(Client * c, int l)
         }
     }
     g_slist_free(transients);
-    last_raise = NULL;
+    if(last_raise == c)
+    {
+        last_raise = NULL;
+    }
     clientRaise(c);
 }
 
