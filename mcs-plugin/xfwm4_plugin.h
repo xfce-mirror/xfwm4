@@ -21,9 +21,10 @@
 #ifndef __XFWM4_PLUGIN_H
 #define __XFWM4_PLUGIN_H
 
-#define RCDIR   "settings"
-#define RCFILE  "xfwm4.xml"
-#define CHANNEL "xfwm4"
+#define RCDIR    "mcs_settings"
+#define OLDRCDIR "settings"
+#define RCFILE   "xfwm4.xml"
+#define CHANNEL  "xfwm4"
 #define PLUGIN_NAME "xfwm4"
 
 #define DEFAULT_THEME "Default"

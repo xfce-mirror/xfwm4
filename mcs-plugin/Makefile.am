@@ -9,6 +9,12 @@ xfwm4_plugin_la_LDFLAGS =						\
 	-avoid-version							\
 	-module
 
+if HAVE_CYGWIN
+xfwm4_plugin_la_LDFLAGS +=                                              \
+	-no-undefined                                                   \
+	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
+endif
+
 xfwm4_plugin_la_SOURCES =						\
 	xfwm4_plugin.c							\
 	xfwm4_plugin.h							\
@@ -39,6 +45,12 @@ workspaces_plugin_la_LDFLAGS =						\
 	-avoid-version							\
 	-module
 
+if HAVE_CYGWIN
+workspaces_plugin_la_LDFLAGS +=                                         \
+	-no-undefined                                                   \
+	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
+endif
+
 workspaces_plugin_la_SOURCES =						\
 	margins.c							\
 	margins.h							\
@@ -62,6 +74,11 @@ workspaces_plugin_la_LIBADD =						\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXFCE4MCS_MANAGER_LIBS@					\
 	@LIBS@
+
+if HAVE_CYGWIN
+workspaces_plugin_la_LIBADD +=                                          \
+	@LIBX11_LIBS@
+endif
 
 noinst_DATA =								\
 	monitor-icon.h							\

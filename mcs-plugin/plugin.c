@@ -54,37 +54,39 @@ static void run_dialog (McsPlugin * mcs_plugin);
 void
 create_channel (McsManager * manager, const char *channel, const char *rcfile)
 {
-    char *homefile, *sysfile;
+    char *file, *path;
 
-    homefile = xfce_get_userfile ("settings", rcfile, NULL);
-    sysfile = g_build_filename (DATADIR, "xfce4", "settings", rcfile, NULL);
+    path = g_build_filename ("xfce4", "mcs_settings", rcfile, NULL);
+    file = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, path);
+    g_free (path);
 
-    if (g_file_test (homefile, G_FILE_TEST_EXISTS))
+    if (!file)
+        file = xfce_get_userfile ("settings", rcfile, NULL);
+
+    if (g_file_test (file, G_FILE_TEST_EXISTS))
     {
-        mcs_manager_add_channel_from_file (manager, channel, homefile);
-    }
-    else if (g_file_test (sysfile, G_FILE_TEST_EXISTS))
-    {
-        mcs_manager_add_channel_from_file (manager, channel, sysfile);
+        mcs_manager_add_channel_from_file (manager, channel, file);
     }
     else
     {
         mcs_manager_add_channel (manager, channel);
     }
 
-    g_free (homefile);
-    g_free (sysfile);
+    g_free (file);
 }
 
 gboolean
 save_channel (McsManager * manager, const char *channel, const char *rcfile)
 {
-    char *homefile;
+    char *homefile, *path;
     gboolean result;
 
-    homefile = xfce_get_userfile ("settings", rcfile, NULL);
+    path = g_build_filename ("xfce4", "mcs_settings", rcfile, NULL);
+    homefile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
+
     result = mcs_manager_save_channel_to_file (manager, channel, homefile);
 
+    g_free (path);
     g_free (homefile);
 
     return result;

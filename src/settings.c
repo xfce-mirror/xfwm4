@@ -333,7 +333,7 @@ watch_cb (Window window, Bool is_start, long mask, void *cb_data)
 static void
 loadRcData (ScreenInfo *screen_info, Settings rc[])
 {
-    const gchar *homedir = xfce_get_userdir ();
+    gchar *homedir;
     gchar *keytheme;
     gchar *keythemevalue;
 
@@ -349,7 +349,11 @@ loadRcData (ScreenInfo *screen_info, Settings rc[])
         parseRc (KEYTHEMERC, keytheme, rc);
         g_free (keytheme);
     }
+    homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 
+                                           "xfce4" G_DIR_SEPARATOR_S "xfwm4",
+                                           FALSE);
     parseRc ("xfwm4rc", homedir, rc);
+    g_free (homedir);
 }
 
 static void

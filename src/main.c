@@ -103,26 +103,22 @@ cleanUp (void)
 
 static char *build_session_filename(SessionClient *client_session)
 {
-    gchar *filename;
-    gchar *path;
-    gchar *file;
-    
-    path = (gchar *)xfce_get_userdir();
-    if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) {
-            g_warning("Unable to create xfce user dir %s: %s",
-                       path, g_strerror(errno));
-            return NULL;
-    }
+    gchar *filename, *path, *file, *tmp;
+    GError *error = NULL;
 
-    path = xfce_get_userfile("sessions", NULL);
-    if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) 
+    tmp = g_build_filename ("xfce4", "xfwm4", "sessions", NULL);
+    path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, tmp, FALSE);
+    g_free (tmp);
+    
+    if (!xfce_mkdirhier(path, 0700, &error)) 
     {
-        g_warning("Unable to create session dir %s: %s", 
-                  path, g_strerror(errno));
+        g_warning("Unable to create session dir %s: %s",
+                   path, error->message);
+        g_error_free (error);
         g_free (path);
         return NULL;
     }
-    
+
     file = g_strdup_printf("xfwm4-%s", client_session->given_client_id);
     filename = g_build_filename (path, file, NULL);
     g_free (file);
@@ -190,6 +186,100 @@ handleSignal (int sig)
     }
 }
 
+static void
+ensure_basedir_spec (void)
+{
+    char *new, *old, path[PATH_MAX];
+    GError *error = NULL;
+    GDir *gdir;
+    const char *name;
+
+    g_strlcpy (path, "xfce4/xfwm4/sessions", PATH_MAX);
+    new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, FALSE);
+
+    /* I'll take the existence of this file as a sign the configuration has
+     * been moved */
+    if (g_file_test (new, G_FILE_TEST_EXISTS))
+    {
+        g_free (new);
+        return;
+    }
+
+    if (!xfce_mkdirhier(new, 0700, &error)) 
+    {
+        g_warning("Unable to create session dir %s: %s",
+                   path, error->message);
+        g_error_free (error);
+        g_free (new);
+        return;
+    }
+
+    old = xfce_get_userfile ("sessions", NULL);
+    gdir = g_dir_open (old, 0, NULL);
+
+    if (gdir)
+    {
+        while ((name = g_dir_read_name (gdir)) != NULL)
+        {
+            FILE *r, *w;
+
+            g_snprintf (path, PATH_MAX, "%s/%s", old, name);
+            r = fopen (path, "r");
+
+            g_snprintf (path, PATH_MAX, "%s/%s", new, name);
+            w = fopen (path, "w");
+
+            if (w && r)
+            {
+                char c;
+                
+                while ((c = getc (r)) != EOF)
+                    putc (c, w);
+            }
+
+            if (r)
+                fclose (r);
+            if (w)
+                fclose (w);
+        }
+
+        g_dir_close (gdir);
+    }
+
+    g_free (old);
+    g_free (new);
+
+    old = xfce_get_userfile ("xfwm4rc", NULL);
+
+    if (g_file_test (old, G_FILE_TEST_EXISTS))
+    {
+        FILE *r, *w;
+
+        g_strlcpy (path, "xfce4/xfwm4/xfwm4rc", PATH_MAX);
+        new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
+
+        r = fopen (old, "r");
+        w = fopen (new, "w");
+
+        g_free (new);
+        
+        if (w && r)
+        {
+            char c;
+            
+            while ((c = getc (r)) != EOF)
+                putc (c, w);
+        }
+
+        if (r)
+            fclose (r);
+        if (w)
+            fclose (w);
+    }
+    
+    g_free (old);
+}
+
 static int
 initialize (int argc, char **argv)
 {
@@ -202,12 +292,13 @@ initialize (int argc, char **argv)
     
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
-    gtk_set_locale ();
     gtk_init (&argc, &argv);
 
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
 
+    ensure_basedir_spec ();
+    
     initMenuEventWin ();
     clientClearFocus ();
 

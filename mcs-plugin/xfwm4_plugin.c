@@ -757,14 +757,14 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
 
     gchar *tmp;
 
-    tmp = g_build_filename (theme_dir, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+    tmp = g_build_filename (theme_dir, KEY_SUFFIX, KEYTHEMERC, NULL);
     if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR) && parserc (tmp, &set_layout, &set_align, &set_font))
     {
         has_keybinding = TRUE;
     }
     g_free (tmp);
 
-    tmp = g_build_filename (theme_dir, G_DIR_SEPARATOR_S, SUFFIX, G_DIR_SEPARATOR_S, THEMERC, NULL);
+    tmp = g_build_filename (theme_dir, SUFFIX, THEMERC, NULL);
     if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR) && parserc (tmp, &set_layout, &set_align, &set_font))
     {
         has_decoration = TRUE;
@@ -845,16 +845,18 @@ themes_common_list_add_dir (const char *dirname, GList * theme_list)
 static GList *
 theme_common_init (GList * theme_list)
 {
-    gchar *dir;
+    gchar **dirs, **d;
     GList *list = theme_list;
 
-    dir = xfce_get_homefile (".themes", NULL);
-    list = themes_common_list_add_dir (dir, list);
-    g_free (dir);
+    xfce_resource_push_path (XFCE_RESOURCE_THEMES,
+                             DATADIR G_DIR_SEPARATOR_S "themes");
+    dirs = xfce_resource_dirs (XFCE_RESOURCE_THEMES);
+    xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
 
-    dir = g_build_filename (DATADIR, "themes", NULL);
-    list = themes_common_list_add_dir (dir, list);
-    g_free (dir);
+    for (d = dirs; *d != NULL; ++d)
+        list = themes_common_list_add_dir (*d, list);
+    
+    g_strfreev (dirs);
 
     return list;
 }
@@ -1354,7 +1356,7 @@ cb_shortcuttheme_changed (GtkTreeSelection * selection, Itf * itf)
 
         if (ti)
         {
-            gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+            gchar *theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
             loadtheme_in_treeview (theme_file, itf);
 
             g_free (theme_file);
@@ -1844,7 +1846,7 @@ setup_dialog (Itf * itf)
 
     if (ti)
     {
-        gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+        gchar *theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
         loadtheme_in_treeview (theme_file, itf);
 
         g_free (theme_file);
@@ -1891,11 +1893,23 @@ static void
 create_channel (McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
+    gchar *rcfile, *path;
 
-    gchar *rcfile;
+    path = g_build_filename ("xfce4", RCDIR, RCFILE, NULL);
+    rcfile = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, path);
+    g_free (path);
 
-    rcfile = xfce_get_userfile (RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
-    mcs_manager_add_channel_from_file (mcs_plugin->manager, CHANNEL, rcfile);
+    if (!rcfile)
+        rcfile = xfce_get_userfile (OLDRCDIR, RCFILE, NULL);
+
+    if (g_file_test (rcfile, G_FILE_TEST_EXISTS))
+    {
+        mcs_manager_add_channel_from_file (mcs_plugin->manager, CHANNEL, rcfile);
+    }
+    else
+    {
+        mcs_manager_add_channel (mcs_plugin->manager, CHANNEL);
+    }
     g_free (rcfile);
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL);
@@ -2165,11 +2179,14 @@ create_channel (McsPlugin * mcs_plugin)
 static gboolean
 write_options (McsPlugin * mcs_plugin)
 {
-    gchar *rcfile;
+    gchar *rcfile, *path;
     gboolean result;
 
-    rcfile = xfce_get_userfile (RCDIR, RCFILE, NULL);
+    path = g_build_filename ("xfce4", "mcs_settings", RCFILE, NULL);
+    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
+    
     result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL, rcfile);
+    g_free (path);
     g_free (rcfile);
 
     return result;
