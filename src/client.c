@@ -1321,6 +1321,29 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
     }
 }
 
+static inline void clientConstraintPos(Client *c)
+{
+    g_return_if_fail(c != NULL);
+    DBG("entering clientConstraintPos\n");
+    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    if (c->x + c->width < CLIENT_MIN_VISIBLE)
+    {
+	c->x = CLIENT_MIN_VISIBLE - c->width ;
+    }
+    else if (c->x > XDisplayWidth(dpy, screen) - CLIENT_MIN_VISIBLE)
+    {
+	c->x = XDisplayWidth(dpy, screen) - CLIENT_MIN_VISIBLE;
+    }
+    if (c->y + c->height < CLIENT_MIN_VISIBLE)
+    {
+	c->y = CLIENT_MIN_VISIBLE - c->height ;
+    }
+    else if (c->y > XDisplayHeight(dpy, screen) - CLIENT_MIN_VISIBLE)
+    {
+	c->y = XDisplayHeight(dpy, screen) - CLIENT_MIN_VISIBLE;
+    }
+}
+
 /* Compute rectangle overlap area */
 static unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 {
@@ -1363,6 +1386,22 @@ static void clientInitPosition(Client * c)
 
     if(c->size->flags & (PPosition | USPosition))
     {
+        if (c->x + c->width < 5)
+	{
+	    c->x = 5 - c->width ;
+	}
+        if (c->x > XDisplayWidth(dpy, screen))
+	{
+	    c->x = XDisplayWidth(dpy, screen) - 5;
+	}
+        if (c->y + c->height < 5)
+	{
+	    c->y = 5 - c->height ;
+	}
+        if (c->y > XDisplayHeight(dpy, screen))
+	{
+	    c->y = XDisplayHeight(dpy, screen) - 5;
+	}
         return;
     }
 
@@ -2289,6 +2328,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 c->y = c->y + 16;
             }
         }
+	clientConstraintPos(c);
         if(box_move)
         {
             clientDrawOutline(c);
@@ -2376,7 +2416,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 }
             }
         }
-
+	clientConstraintPos(c);
         if(box_move)
         {
             clientDrawOutline(c);

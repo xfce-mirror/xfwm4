@@ -144,6 +144,8 @@
 #define ACTION_SHADE			2
 #define ACTION_HIDE			3
 
+#define CLIENT_MIN_VISIBLE              5
+
 typedef enum
 {
     UNSET,

@@ -120,11 +120,11 @@ void initialize(int argc, char **argv)
     gtk_init(&argc, &argv);
     progname = argv[0];
 
-    dpy = GDK_DISPLAY();
-    root = GDK_ROOT_WINDOW();
+    dpy    = GDK_DISPLAY();
+    root   = GDK_ROOT_WINDOW();
     screen = XDefaultScreen(dpy);
-    depth = DefaultDepth(dpy, screen);
-    cmap = DefaultColormap(dpy, screen);
+    depth  = DefaultDepth(dpy, screen);
+    cmap   = DefaultColormap(dpy, screen);
 
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
     margins[MARGIN_LEFT] = gnome_margins[MARGIN_LEFT] = 0;
@@ -139,15 +139,15 @@ void initialize(int argc, char **argv)
     initGnomeHints(dpy);
     initNetHints(dpy);
 
-    root_cursor = XCreateFontCursor(dpy, XC_left_ptr);
-    move_cursor = XCreateFontCursor(dpy, XC_fleur);
-    resize_cursor[CORNER_TOP_LEFT] = XCreateFontCursor(dpy, XC_top_left_corner);
-    resize_cursor[CORNER_TOP_RIGHT] = XCreateFontCursor(dpy, XC_top_right_corner);
-    resize_cursor[CORNER_BOTTOM_LEFT] = XCreateFontCursor(dpy, XC_bottom_left_corner);
+    root_cursor                        = XCreateFontCursor(dpy, XC_left_ptr);
+    move_cursor                        = XCreateFontCursor(dpy, XC_fleur);
+    resize_cursor[CORNER_TOP_LEFT]     = XCreateFontCursor(dpy, XC_top_left_corner);
+    resize_cursor[CORNER_TOP_RIGHT]    = XCreateFontCursor(dpy, XC_top_right_corner);
+    resize_cursor[CORNER_BOTTOM_LEFT]  = XCreateFontCursor(dpy, XC_bottom_left_corner);
     resize_cursor[CORNER_BOTTOM_RIGHT] = XCreateFontCursor(dpy, XC_bottom_right_corner);
-    resize_cursor[4 + SIDE_LEFT] = XCreateFontCursor(dpy, XC_left_side);
-    resize_cursor[4 + SIDE_RIGHT] = XCreateFontCursor(dpy, XC_right_side);
-    resize_cursor[4 + SIDE_BOTTOM] = XCreateFontCursor(dpy, XC_bottom_side);
+    resize_cursor[4 + SIDE_LEFT]       = XCreateFontCursor(dpy, XC_left_side);
+    resize_cursor[4 + SIDE_RIGHT]      = XCreateFontCursor(dpy, XC_right_side);
+    resize_cursor[4 + SIDE_BOTTOM]     = XCreateFontCursor(dpy, XC_bottom_side);
 
     XDefineCursor(dpy, root, root_cursor);
 
