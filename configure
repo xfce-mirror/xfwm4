@@ -305,7 +305,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE CPP X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS EGREP PKG_CONFIG BASE_DEPENDENCIES_CFLAGS BASE_DEPENDENCIES_LIBS LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS EGREP PKG_CONFIG BASE_DEPENDENCIES_CFLAGS BASE_DEPENDENCIES_LIBS LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -1243,7 +1243,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 VERSION=`date +%y%m%d`
-am__api_version="1.6"
+am__api_version="1.7"
 ac_aux_dir=
 for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
   if test -f $ac_dir/install-sh; then
@@ -1495,6 +1495,16 @@ echo "$as_me: error: source directory already configured; run \"make distclean\"
    { (exit 1); exit 1; }; }
 fi
 
+# test whether we have cygpath
+if test -z "$CYGPATH_W"; then
+  if (cygpath --version) >/dev/null 2>/dev/null; then
+    CYGPATH_W='cygpath -w'
+  else
+    CYGPATH_W=echo
+  fi
+fi
+
+
 # Define the identity of the package.
  PACKAGE=xfwm4
  VERSION=$VERSION
@@ -1624,11 +1634,7 @@ INSTALL_STRIP_PROGRAM="\${SHELL} \$(install_sh) -c -s"
 
 
 
-# Add the stamp file to the list of files AC keeps track of,
-# along with our hook.
           ac_config_headers="$ac_config_headers config.h"
-
-
 
 
 # Honor aclocal flags
@@ -2478,7 +2484,7 @@ echo "include confinc" > confmf
 # In particular we don't look at `^make:' because GNU make might
 # be invoked under some other name (usually "gmake"), in which
 # case it prints its new name instead of `make'.
-if test "`$am_make -s -f confmf 2> /dev/null | fgrep -v 'ing directory'`" = "done"; then
+if test "`$am_make -s -f confmf 2> /dev/null | grep -v 'ing directory'`" = "done"; then
    am__include=include
    am__quote=
    _am_result=GNU
@@ -2569,7 +2575,7 @@ else
     if depmode=$depmode \
        source=conftest.c object=conftest.o \
        depfile=conftest.Po tmpdepfile=conftest.TPo \
-       $SHELL ./depcomp $depcc -c conftest.c -o conftest.o >/dev/null 2>&1 &&
+       $SHELL ./depcomp $depcc -c -o conftest.o conftest.c >/dev/null 2>&1 &&
        grep conftest.h conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
       am_cv_CC_dependencies_compiler_type=$depmode
@@ -2587,6 +2593,18 @@ fi
 echo "$as_me:$LINENO: result: $am_cv_CC_dependencies_compiler_type" >&5
 echo "${ECHO_T}$am_cv_CC_dependencies_compiler_type" >&6
 CCDEPMODE=depmode=$am_cv_CC_dependencies_compiler_type
+
+
+
+if
+  test "x$enable_dependency_tracking" != xno \
+  && test "$am_cv_CC_dependencies_compiler_type" = gcc3; then
+  am__fastdepCC_TRUE=
+  am__fastdepCC_FALSE='#'
+else
+  am__fastdepCC_TRUE='#'
+  am__fastdepCC_FALSE=
+fi
 
 
 # Find a good install program.  We prefer a C program (faster),
@@ -4782,7 +4800,7 @@ echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gt
   fi
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/adept/Makefile themes/agua/Makefile themes/atlanta/Makefile themes/b5/Makefile themes/b6/Makefile themes/bbs/Makefile themes/beastie/Makefile themes/biz/Makefile themes/coldsteel/Makefile themes/coolclean/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/curve/Makefile themes/default.keys/Makefile themes/eazel-blue/Makefile themes/elberg/Makefile themes/exocet/Makefile themes/g2/Makefile themes/gnububble/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/iceg/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/metabox/Makefile themes/microgui/Makefile themes/mofit/Makefile themes/next/Makefile themes/ops/Makefile themes/oroborus/Makefile themes/pills/Makefile themes/piranha/Makefile themes/platinum/Makefile themes/quiet-purple/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/silverado/Makefile themes/slick/Makefile themes/slimline/Makefile themes/tabs/Makefile themes/tgc/Makefile themes/trench/Makefile themes/tux/Makefile themes/variation/Makefile themes/xfce/Makefile"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/adept/Makefile themes/agua/Makefile themes/atlanta/Makefile themes/atlanta2/Makefile themes/b5/Makefile themes/b6/Makefile themes/bbs/Makefile themes/beastie/Makefile themes/biz/Makefile themes/coldsteel/Makefile themes/coolclean/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/curve/Makefile themes/default.keys/Makefile themes/eazel-blue/Makefile themes/elberg/Makefile themes/exocet/Makefile themes/g2/Makefile themes/gnububble/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/iceg/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/metabox/Makefile themes/microgui/Makefile themes/mofit/Makefile themes/next/Makefile themes/ops/Makefile themes/oroborus/Makefile themes/pills/Makefile themes/piranha/Makefile themes/platinum/Makefile themes/quiet-purple/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/silverado/Makefile themes/slick/Makefile themes/slimline/Makefile themes/tabs/Makefile themes/tgc/Makefile themes/trench/Makefile themes/tux/Makefile themes/variation/Makefile themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -4878,6 +4896,13 @@ if test -z "${AMDEP_TRUE}" && test -z "${AMDEP_FALSE}"; then
   { { echo "$as_me:$LINENO: error: conditional \"AMDEP\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"AMDEP\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"am__fastdepCC\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"am__fastdepCC\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -5312,6 +5337,7 @@ do
   "themes/adept/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/adept/Makefile" ;;
   "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/atlanta/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/atlanta/Makefile" ;;
+  "themes/atlanta2/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/atlanta2/Makefile" ;;
   "themes/b5/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/b5/Makefile" ;;
   "themes/b6/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/b6/Makefile" ;;
   "themes/bbs/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/bbs/Makefile" ;;
@@ -5445,6 +5471,7 @@ s,@LIBS@,$LIBS,;t t
 s,@INSTALL_PROGRAM@,$INSTALL_PROGRAM,;t t
 s,@INSTALL_SCRIPT@,$INSTALL_SCRIPT,;t t
 s,@INSTALL_DATA@,$INSTALL_DATA,;t t
+s,@CYGPATH_W@,$CYGPATH_W,;t t
 s,@PACKAGE@,$PACKAGE,;t t
 s,@VERSION@,$VERSION,;t t
 s,@ACLOCAL@,$ACLOCAL,;t t
@@ -5473,6 +5500,8 @@ s,@AMDEP_TRUE@,$AMDEP_TRUE,;t t
 s,@AMDEP_FALSE@,$AMDEP_FALSE,;t t
 s,@AMDEPBACKSLASH@,$AMDEPBACKSLASH,;t t
 s,@CCDEPMODE@,$CCDEPMODE,;t t
+s,@am__fastdepCC_TRUE@,$am__fastdepCC_TRUE,;t t
+s,@am__fastdepCC_FALSE@,$am__fastdepCC_FALSE,;t t
 s,@CPP@,$CPP,;t t
 s,@X_CFLAGS@,$X_CFLAGS,;t t
 s,@X_PRE_LIBS@,$X_PRE_LIBS,;t t
@@ -5909,12 +5938,19 @@ echo "$as_me: error: cannot create directory \"$ac_dir\"" >&2;}
     cat $tmp/config.h
     rm -f $tmp/config.h
   fi
-  # Run the commands associated with the file.
-  case $ac_file in
-    config.h ) # update the timestamp
-echo 'timestamp for config.h' >"./stamp-h1"
- ;;
-  esac
+_am_stamp_count=`expr ${_am_stamp_count-0} + 1`
+echo "timestamp for $ac_file" >`(dirname $ac_file) 2>/dev/null ||
+$as_expr X$ac_file : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
+         X$ac_file : 'X\(//\)[^/]' \| \
+         X$ac_file : 'X\(//\)$' \| \
+         X$ac_file : 'X\(/\)' \| \
+         .     : '\(.\)' 2>/dev/null ||
+echo X$ac_file |
+    sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
+  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+  	  /^X\(\/\/\)$/{ s//\1/; q; }
+  	  /^X\(\/\).*/{ s//\1/; q; }
+  	  s/.*/./; q'`/stamp-h$_am_stamp_count
 done
 _ACEOF
 cat >>$CONFIG_STATUS <<\_ACEOF

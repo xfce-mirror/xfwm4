@@ -2,6 +2,7 @@ SUBDIRS = \
 adept \
 agua \
 atlanta \
+atlanta2 \
 b5 \
 b6 \
 bbs \
