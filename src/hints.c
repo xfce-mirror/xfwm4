@@ -200,26 +200,22 @@ getMotifHints (Display * dpy, Window w)
     int real_format;
     unsigned long items_read, items_left;
     long *data = NULL;
-    PropMwmHints *result;
+    PropMwmHints *result = NULL;
 
     TRACE ("entering getMotifHints");
 
     if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, MWM_HINTS_ELEMENTS, 
-                FALSE, AnyPropertyType, &real_type, &real_format, &items_read,
-                &items_left, (unsigned char **) &data) == Success) && 
-        (items_read))
+                FALSE, motif_wm_hints, &real_type, &real_format, &items_read,
+                &items_left, (unsigned char **) &data) == Success))
     {
-        result = g_new(PropMwmHints, 1);
-        memset (result, 0, sizeof(PropMwmHints));
-        memcpy (result, data, MIN (items_read * real_format / 8, 
-                                   sizeof (PropMwmHints)));
+        if (items_read >= MWM_HINTS_ELEMENTS)
+        {    
+            result = g_new(PropMwmHints, 1);
+            memcpy (result, data, sizeof (PropMwmHints));
+        }
         XFree (data);
-        return result;
     }
-    else
-    {
-        return NULL;
-    }
+    return result;
 }
 
 unsigned int
