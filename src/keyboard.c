@@ -78,6 +78,14 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
         {
             key->modifier = key->modifier | MetaMask;
         }
+	if (strstr(tmp, "hyper"))
+	{
+	    key->modifier = key->modifier | HyperMask;
+	}
+	if (strstr(tmp, "super"))
+	{
+	    key->modifier = key->modifier | SuperMask;
+	}
 
         g_free(tmp);
     }

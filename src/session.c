@@ -373,23 +373,23 @@ gboolean sessionLoadWindowStates(gchar * filename)
             }
             else if(!strcmp(s1, "[GEOMETRY]"))
             {
-                sscanf(s, "%*s (%i,%i,%i,%i)", &(matches[num_match - 1].x), &(matches[num_match - 1].y), &(matches[num_match - 1].width), &(matches[num_match - 1].height));
+                sscanf(s, "%*s (%i,%i,%i,%i)", &matches[num_match - 1].x, &matches[num_match - 1].y, &matches[num_match - 1].width, &matches[num_match - 1].height);
             }
             else if(!strcmp(s1, "[GEOMETRY-MAXIMIZED]"))
             {
-                sscanf(s, "%*s (%i,%i,%i,%i)", &(matches[num_match - 1].old_x), &(matches[num_match - 1].old_y), &(matches[num_match - 1].old_width), &(matches[num_match - 1].old_height));
+                sscanf(s, "%*s (%i,%i,%i,%i)", &matches[num_match - 1].old_x, &matches[num_match - 1].old_y, &matches[num_match - 1].old_width, &matches[num_match - 1].old_height);
             }
             else if(!strcmp(s1, "[DESK]"))
             {
-                sscanf(s, "%*s %i", &(matches[num_match - 1].desktop));
+                sscanf(s, "%*s %i", &matches[num_match - 1].desktop);
             }
             else if(!strcmp(s1, "[CLIENT_LEADER]"))
             {
-                sscanf(s, "%*s 0x%lx", &(matches[num_match - 1].client_leader));
+                sscanf(s, "%*s 0x%lx", &matches[num_match - 1].client_leader);
             }
             else if(!strcmp(s1, "[FLAGS]"))
             {
-                sscanf(s, "%*s 0x%lx", &(matches[num_match - 1].flags));
+                sscanf(s, "%*s 0x%lx", &matches[num_match - 1].flags);
             }
             else if(!strcmp(s1, "[CLIENT_ID]"))
             {

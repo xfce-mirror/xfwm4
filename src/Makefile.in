@@ -176,6 +176,8 @@ xfwm4_SOURCES = \
 	menu.h \
 	misc.c \
 	misc.h \
+	mywindow.c \
+	mywindow.h \
 	parserc.c \
 	parserc.h \
 	pixmap.c \
@@ -214,9 +216,9 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-frame.$(OBJEXT) xfwm4-hints.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
-	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
-	xfwm4-session.$(OBJEXT) xfwm4-settings.$(OBJEXT) \
-	xfwm4-startup_notification.$(OBJEXT) \
+	xfwm4-mywindow.$(OBJEXT) xfwm4-parserc.$(OBJEXT) \
+	xfwm4-pixmap.$(OBJEXT) xfwm4-session.$(OBJEXT) \
+	xfwm4-settings.$(OBJEXT) xfwm4-startup_notification.$(OBJEXT) \
 	xfwm4-spinning_cursor.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
 	xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
@@ -233,6 +235,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-keyboard.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-main.Po ./$(DEPDIR)/xfwm4-menu.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-misc.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mywindow.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
@@ -310,6 +313,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-menu.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-misc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mywindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-parserc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
@@ -618,6 +622,39 @@ xfwm4-misc.lo: misc.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-misc.Plo' tmpdepfile='$(DEPDIR)/xfwm4-misc.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-misc.lo `test -f 'misc.c' || echo '$(srcdir)/'`misc.c
+
+xfwm4-mywindow.o: mywindow.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mywindow.o -MD -MP -MF "$(DEPDIR)/xfwm4-mywindow.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-mywindow.o `test -f 'mywindow.c' || echo '$(srcdir)/'`mywindow.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-mywindow.Tpo" "$(DEPDIR)/xfwm4-mywindow.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-mywindow.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mywindow.c' object='xfwm4-mywindow.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-mywindow.Po' tmpdepfile='$(DEPDIR)/xfwm4-mywindow.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mywindow.o `test -f 'mywindow.c' || echo '$(srcdir)/'`mywindow.c
+
+xfwm4-mywindow.obj: mywindow.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mywindow.obj -MD -MP -MF "$(DEPDIR)/xfwm4-mywindow.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-mywindow.obj `if test -f 'mywindow.c'; then $(CYGPATH_W) 'mywindow.c'; else $(CYGPATH_W) '$(srcdir)/mywindow.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-mywindow.Tpo" "$(DEPDIR)/xfwm4-mywindow.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-mywindow.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mywindow.c' object='xfwm4-mywindow.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-mywindow.Po' tmpdepfile='$(DEPDIR)/xfwm4-mywindow.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mywindow.obj `if test -f 'mywindow.c'; then $(CYGPATH_W) 'mywindow.c'; else $(CYGPATH_W) '$(srcdir)/mywindow.c'; fi`
+
+xfwm4-mywindow.lo: mywindow.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mywindow.lo -MD -MP -MF "$(DEPDIR)/xfwm4-mywindow.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-mywindow.lo `test -f 'mywindow.c' || echo '$(srcdir)/'`mywindow.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-mywindow.Tpo" "$(DEPDIR)/xfwm4-mywindow.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-mywindow.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mywindow.c' object='xfwm4-mywindow.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-mywindow.Plo' tmpdepfile='$(DEPDIR)/xfwm4-mywindow.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mywindow.lo `test -f 'mywindow.c' || echo '$(srcdir)/'`mywindow.c
 
 xfwm4-parserc.o: parserc.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-parserc.o -MD -MP -MF "$(DEPDIR)/xfwm4-parserc.Tpo" \

@@ -31,6 +31,7 @@
 #include "main.h"
 #include "workspaces.h"
 #include "settings.h"
+#include "mywindow.h"
 #include "frame.h"
 #include "client.h"
 #include "menu.h"
@@ -191,7 +192,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
     DBG("entering handleKeyEvent\n");
 
     c = clientGetFocus();
-    state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
+    state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask | HyperMask);
     for(key = 0; key < KEY_COUNT; key++)
     {
         if((params.keys[key].keycode == ev->keycode) && (params.keys[key].modifier == state))
@@ -431,10 +432,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
     c = clientGetFromWindow(ev->window, ANY);
     if(c)
     {
-        state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
+        state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask | HyperMask);
         win = ev->subwindow;
 
-        if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
+        if((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON]) || (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON]))))
         {
             clientSetFocus(c, True);
             if(params.raise_on_click)
@@ -443,7 +444,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             clientButtonPress(c, win, ev);
         }
-        else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
+        else if(((win == MYWINDOW_XWINDOW(c->title)) && (ev->button == Button3)) || ((win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON])) && (ev->button == Button1)))
         {
             /*
                We need to copy the event to keep the original event untouched
@@ -452,7 +453,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
 
-            tclick = typeOfClick(c->frame, &copy_event, win == c->buttons[MENU_BUTTON]);
+            tclick = typeOfClick(c->frame, &copy_event, win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON]));
 
             if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
@@ -478,7 +479,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 /* Let GTK handle this for us. */
             }
         }
-        else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
+        else if(((win == MYWINDOW_XWINDOW(c->title)) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
             XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
@@ -512,31 +513,31 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 }
             }
         }
-        else if((win == c->corners[CORNER_TOP_LEFT]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
         {
             _edgeButton(c, CORNER_TOP_LEFT, ev);
         }
-        else if((win == c->corners[CORNER_TOP_RIGHT]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_RIGHT])) && (state == 0))
         {
             _edgeButton(c, CORNER_TOP_RIGHT, ev);
         }
-        else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT])) && (state == 0))
         {
             _edgeButton(c, CORNER_BOTTOM_LEFT, ev);
         }
-        else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT])) && (state == 0))
         {
             _edgeButton(c, CORNER_BOTTOM_RIGHT, ev);
         }
-        else if((win == c->sides[SIDE_BOTTOM]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->sides[SIDE_BOTTOM])) && (state == 0))
         {
             _edgeButton(c, 4 + SIDE_BOTTOM, ev);
         }
-        else if((win == c->sides[SIDE_LEFT]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->sides[SIDE_LEFT])) && (state == 0))
         {
             _edgeButton(c, 4 + SIDE_LEFT, ev);
         }
-        else if((win == c->sides[SIDE_RIGHT]) && (state == 0))
+        else if((win == MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT])) && (state == 0))
         {
             _edgeButton(c, 4 + SIDE_RIGHT, ev);
         }
@@ -877,7 +878,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
                 free(c->startup_id);
                 c->startup_id = NULL;
             }
-            getWindowStartupId(dpy, c->window, &(c->startup_id));
+            getWindowStartupId(dpy, c->window, &c->startup_id);
         }
 #endif
     }

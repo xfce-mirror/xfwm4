@@ -35,6 +35,8 @@
 #include "frame.h"
 #include "hints.h"
 #include "workspaces.h"
+#include "pixmap.h"
+#include "mywindow.h"
 #include "settings.h"
 #include "tabwin.h"
 #include "session.h"
@@ -1910,14 +1912,14 @@ void clientClearPixmapCache(Client *c)
 {
     g_return_if_fail(c != NULL);
 
-    freePixmap(dpy, &(c->pm_cache.pm_title[ACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_title[INACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]));
-    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]));
+    freePixmap(dpy, &c->pm_cache.pm_title[ACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_title[INACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
 }
 
 void clientFrame(Window w)
@@ -1965,7 +1967,7 @@ void clientFrame(Window w)
     c->window = w;
     getWindowName(dpy, c->window, &c->name);
     DBG("name \"%s\"\n", c->name);
-    getTransientFor(dpy, c->window, &(c->transient_for));
+    getTransientFor(dpy, c->window, &c->transient_for);
     c->size = XAllocSizeHints();
     XGetWMNormalHints(dpy, w, c->size, &dummy);
     wm_protocols_flags = getWMProtocols(dpy, c->window);
@@ -1985,14 +1987,14 @@ void clientFrame(Window w)
     c->cmap = attr.colormap;
 
     /* Initialize pixmap caching */
-    initPixmap(&(c->pm_cache.pm_title[ACTIVE]));
-    initPixmap(&(c->pm_cache.pm_title[INACTIVE]));
-    initPixmap(&(c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]));
-    initPixmap(&(c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]));
-    initPixmap(&(c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]));
-    initPixmap(&(c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]));
-    initPixmap(&(c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]));
-    initPixmap(&(c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]));
+    initPixmap(&c->pm_cache.pm_title[ACTIVE]);
+    initPixmap(&c->pm_cache.pm_title[INACTIVE]);
+    initPixmap(&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+    initPixmap(&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+    initPixmap(&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+    initPixmap(&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+    initPixmap(&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+    initPixmap(&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
     c->pm_cache.previous_width = -1;
     c->pm_cache.previous_height = -1;
     
@@ -2019,7 +2021,7 @@ void clientFrame(Window w)
     c->client_leader = getClientLeader(dpy, c->window);
 #ifdef HAVE_STARTUP_NOTIFICATION
     c->startup_id = NULL;
-    getWindowStartupId(dpy, c->window, &(c->startup_id));
+    getWindowStartupId(dpy, c->window, &c->startup_id);
 #endif
 
     /* Initialize structure */
@@ -2119,26 +2121,17 @@ void clientFrame(Window w)
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
     gdk_x11_ungrab_server();
 
-    c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->sides[SIDE_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->sides[SIDE_BOTTOM] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->corners[CORNER_BOTTOM_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->corners[CORNER_BOTTOM_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->corners[CORNER_TOP_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->corners[CORNER_TOP_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-    c->title = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
-
-    for(i = 0; i < 4; i++)
-    {
-        XDefineCursor(dpy, c->corners[i], resize_cursor[i]);
-    }
-    for(i = 0; i < 3; i++)
-    {
-        XDefineCursor(dpy, c->sides[i], resize_cursor[4 + i]);
-    }
+    myWindowCreate(dpy, c->frame, &c->sides[SIDE_LEFT], resize_cursor[4 + SIDE_LEFT]);
+    myWindowCreate(dpy, c->frame, &c->sides[SIDE_RIGHT], resize_cursor[4 + SIDE_RIGHT]);
+    myWindowCreate(dpy, c->frame, &c->sides[SIDE_BOTTOM], resize_cursor[4 + SIDE_BOTTOM]);
+    myWindowCreate(dpy, c->frame, &c->corners[CORNER_BOTTOM_LEFT], resize_cursor[CORNER_BOTTOM_LEFT]);
+    myWindowCreate(dpy, c->frame, &c->corners[CORNER_BOTTOM_RIGHT], resize_cursor[CORNER_BOTTOM_RIGHT]);
+    myWindowCreate(dpy, c->frame, &c->corners[CORNER_TOP_LEFT], resize_cursor[CORNER_TOP_LEFT]);
+    myWindowCreate(dpy, c->frame, &c->corners[CORNER_TOP_RIGHT], resize_cursor[CORNER_TOP_RIGHT]);
+    myWindowCreate(dpy, c->frame, &c->title, None);
     for(i = 0; i < BUTTON_COUNT; i++)
     {
-        c->buttons[i] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
+        myWindowCreate(dpy, c->frame, &c->buttons[i], None);
     }
 
     wc.x = c->x;
@@ -2172,6 +2165,8 @@ void clientFrame(Window w)
 
 void clientUnframe(Client * c, int remap)
 {
+    int i;
+    
     DBG("entering clientUnframe\n");
     DBG("unframing client \"%s\" (%#lx)\n", c->name, c->window);
 
@@ -2191,6 +2186,18 @@ void clientUnframe(Client * c, int remap)
     else
     {
         setWMState(dpy, c->window, WithdrawnState);
+    }
+    myWindowDelete(&c->title);
+    myWindowDelete(&c->sides[SIDE_LEFT]);
+    myWindowDelete(&c->sides[SIDE_RIGHT]);
+    myWindowDelete(&c->sides[SIDE_BOTTOM]);
+    myWindowDelete(&c->sides[CORNER_BOTTOM_LEFT]);
+    myWindowDelete(&c->sides[CORNER_BOTTOM_RIGHT]);
+    myWindowDelete(&c->sides[CORNER_TOP_LEFT]);
+    myWindowDelete(&c->sides[CORNER_TOP_RIGHT]);
+    for(i = 0; i < BUTTON_COUNT; i++)
+    {
+        myWindowDelete(&c->buttons[i]);
     }
     XReparentWindow(dpy, c->window, root, c->x, c->y);
     XDestroyWindow(dpy, c->frame);
@@ -3678,7 +3685,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
 
     for(b = 0; b < BUTTON_COUNT; b++)
     {
-        if(c->buttons[b] == w)
+        if(MYWINDOW_XWINDOW(c->buttons[b]) == w)
         {
             break;
         }

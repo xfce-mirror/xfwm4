@@ -42,8 +42,8 @@
 #include "hints.h"
 #include "keyboard.h"
 #include "pixmap.h"
+#include "mywindow.h"
 #include "settings.h"
-#include "pixmap.h"
 
 #define ANY				0
 #define WINDOW				1
@@ -157,10 +157,10 @@ struct _Client
     Window frame;
     Window transient_for;
     Window *cmap_windows;
-    Window title;
-    Window sides[3];
-    Window corners[4];
-    Window buttons[BUTTON_COUNT];
+    myWindow title;
+    myWindow sides[3];
+    myWindow corners[4];
+    myWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
     Colormap cmap;

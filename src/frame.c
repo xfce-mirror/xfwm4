@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002 Olivier Fourdan
@@ -26,6 +26,7 @@
 #include "main.h"
 #include "client.h"
 #include "settings.h"
+#include "mywindow.h"
 #include "frame.h"
 #include "debug.h"
 
@@ -434,27 +435,27 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
     }
     if(pm_cache)
     {
-        XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, pm_cache->pm_title[state].mask, ShapeSet);
+        XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->title), ShapeBounding, 0, 0, pm_cache->pm_title[state].mask, ShapeSet);
         if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
-	{
-            XShapeCombineMask(dpy, c->sides[SIDE_LEFT], ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_LEFT][state].mask, ShapeSet);
-            XShapeCombineMask(dpy, c->sides[SIDE_RIGHT], ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_RIGHT][state].mask, ShapeSet);
+        {
+            XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_LEFT]), ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_LEFT][state].mask, ShapeSet);
+            XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT]), ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_RIGHT][state].mask, ShapeSet);
         }
-	XShapeCombineMask(dpy, c->sides[SIDE_BOTTOM], ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_BOTTOM][state].mask, ShapeSet);
-        XShapeCombineMask(dpy, c->corners[CORNER_BOTTOM_LEFT], ShapeBounding, 0, 0, params.corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
-        XShapeCombineMask(dpy, c->corners[CORNER_BOTTOM_RIGHT], ShapeBounding, 0, 0, params.corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
-        XShapeCombineMask(dpy, c->corners[CORNER_TOP_LEFT], ShapeBounding, 0, 0, params.corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
-        XShapeCombineMask(dpy, c->corners[CORNER_TOP_RIGHT], ShapeBounding, 0, 0, params.corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_BOTTOM]), ShapeBounding, 0, 0, pm_cache->pm_sides[SIDE_BOTTOM][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding, 0, 0, params.corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding, 0, 0, params.corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT]), ShapeBounding, 0, 0, params.corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_RIGHT]), ShapeBounding, 0, 0, params.corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
 
         for(i = 0; i < BUTTON_COUNT; i++)
         {
             if(c->button_pressed[i])
             {
-                XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, params.buttons[i][PRESSED].mask, ShapeSet);
+                XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->buttons[i]), ShapeBounding, 0, 0, params.buttons[i][PRESSED].mask, ShapeSet);
             }
             else
             {
-                XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, params.buttons[i][state].mask, ShapeSet);
+                XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->buttons[i]), ShapeBounding, 0, 0, params.buttons[i][state].mask, ShapeSet);
             }
         }
 
@@ -464,7 +465,7 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
             rect.y = frameHeight(c) - frameBottom(c) + 1;
             rect.width = params.corners[CORNER_TOP_LEFT][ACTIVE].width;
             rect.height = params.corners[CORNER_TOP_LEFT][ACTIVE].height - (frameHeight(c) - frameBottom(c) + 1);
-            XShapeCombineRectangles(dpy, c->corners[CORNER_TOP_LEFT], ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            XShapeCombineRectangles(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT]), ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
         if(params.corners[CORNER_TOP_RIGHT][ACTIVE].height > frameHeight(c) - frameBottom(c) + 1)
         {
@@ -472,7 +473,7 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
             rect.y = frameHeight(c) - frameBottom(c) + 1;
             rect.width = params.corners[CORNER_TOP_RIGHT][ACTIVE].width;
             rect.height = params.corners[CORNER_TOP_RIGHT][ACTIVE].height - (frameHeight(c) - frameBottom(c) + 1);
-            XShapeCombineRectangles(dpy, c->corners[CORNER_TOP_RIGHT], ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            XShapeCombineRectangles(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_RIGHT]), ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
         if(params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height > frameHeight(c) - frameTop(c) + 1)
         {
@@ -480,7 +481,7 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
             rect.y = 0;
             rect.width = params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width;
             rect.height = params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height - (frameHeight(c) - frameTop(c) + 1);
-            XShapeCombineRectangles(dpy, c->corners[CORNER_BOTTOM_LEFT], ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            XShapeCombineRectangles(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
         if(params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height > frameHeight(c) - frameTop(c) + 1)
         {
@@ -488,27 +489,27 @@ static void frameSetShape(Client *c, int state, ClientPixmapCache *pm_cache, int
             rect.y = 0;
             rect.width = params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width;
             rect.height = params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height - (frameHeight(c) - frameTop(c) + 1);
-            XShapeCombineRectangles(dpy, c->corners[CORNER_BOTTOM_RIGHT], ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
+            XShapeCombineRectangles(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
         if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
-	{
-            XShapeCombineShape(dpy, temp, ShapeBounding, 0, frameTop(c), c->sides[SIDE_LEFT], ShapeBounding, ShapeUnion);
-            XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - frameRight(c), frameTop(c), c->sides[SIDE_RIGHT], ShapeBounding, ShapeUnion);
+        {
+            XShapeCombineShape(dpy, temp, ShapeBounding, 0, frameTop(c), MYWINDOW_XWINDOW(c->sides[SIDE_LEFT]), ShapeBounding, ShapeUnion);
+            XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - frameRight(c), frameTop(c), MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT]), ShapeBounding, ShapeUnion);
         }
-	XShapeCombineShape(dpy, temp, ShapeBounding, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, c->title, ShapeBounding, ShapeUnion);
-        XShapeCombineShape(dpy, temp, ShapeBounding, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), c->sides[SIDE_BOTTOM], ShapeBounding, ShapeUnion);
-        XShapeCombineShape(dpy, temp, ShapeBounding, 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, c->corners[CORNER_BOTTOM_LEFT], ShapeBounding, ShapeUnion);
-        XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, c->corners[CORNER_BOTTOM_RIGHT], ShapeBounding, ShapeUnion);
-        XShapeCombineShape(dpy, temp, ShapeBounding, 0, 0, c->corners[CORNER_TOP_LEFT], ShapeBounding, ShapeUnion);
-        XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, c->corners[CORNER_TOP_RIGHT], ShapeBounding, ShapeUnion);
+        XShapeCombineShape(dpy, temp, ShapeBounding, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, MYWINDOW_XWINDOW(c->title), ShapeBounding, ShapeUnion);
+        XShapeCombineShape(dpy, temp, ShapeBounding, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), MYWINDOW_XWINDOW(c->sides[SIDE_BOTTOM]), ShapeBounding, ShapeUnion);
+        XShapeCombineShape(dpy, temp, ShapeBounding, 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding, ShapeUnion);
+        XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding, ShapeUnion);
+        XShapeCombineShape(dpy, temp, ShapeBounding, 0, 0, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT]), ShapeBounding, ShapeUnion);
+        XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_RIGHT]), ShapeBounding, ShapeUnion);
 
         for(i = 0; i < BUTTON_COUNT; i++)
         {
             char b = getLetterFromButton(i, c);
             if((b) && strchr(params.button_layout, b))
             {
-                XShapeCombineShape(dpy, temp, ShapeBounding, button_x[i], (frameTop(c) - params.buttons[i][ACTIVE].height) / 2, c->buttons[i], ShapeBounding, ShapeUnion);
+                XShapeCombineShape(dpy, temp, ShapeBounding, button_x[i], (frameTop(c) - params.buttons[i][ACTIVE].height) / 2, MYWINDOW_XWINDOW(c->buttons[i]), ShapeBounding, ShapeUnion);
             }
         }
     }
@@ -542,64 +543,40 @@ void frameDraw(Client * c, gboolean invalidate_cache)
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
         if (invalidate_cache)
-	{
-	    clientClearPixmapCache(c);
-	}
-	else
-	{
-	    if (c->pm_cache.previous_width != c->width)
-	    {
-	        freePixmap(dpy, &(c->pm_cache.pm_title[ACTIVE]));
-	        freePixmap(dpy, &(c->pm_cache.pm_title[INACTIVE]));
-                freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]));
-                freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]));
-		c->pm_cache.previous_width = c->width;
-	    }
-	    if (c->pm_cache.previous_height != c->height)
-	    {
-        	freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]));
-        	freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]));
-        	freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]));
-        	freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]));
-		c->pm_cache.previous_height = c->height;
-	    }
-	}
-	
-	XMapWindow(dpy, c->title);
-        XMapWindow(dpy, c->sides[SIDE_BOTTOM]);
-	if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
-	{
-	    XUnmapWindow(dpy, c->sides[SIDE_LEFT]);
-            XUnmapWindow(dpy, c->sides[SIDE_RIGHT]);
-	}
-	else
-	{
-            XMapWindow(dpy, c->sides[SIDE_LEFT]);
-            XMapWindow(dpy, c->sides[SIDE_RIGHT]);
-	}
-        for(i = 0; i < 4; i++)
         {
-            if(c->corners[i])
+            clientClearPixmapCache(c);
+        }
+        else
+        {
+            if (c->pm_cache.previous_width != c->width)
             {
-                XMapWindow(dpy, c->corners[i]);
+                freePixmap(dpy, &c->pm_cache.pm_title[ACTIVE]);
+                freePixmap(dpy, &c->pm_cache.pm_title[INACTIVE]);
+                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+                c->pm_cache.previous_width = c->width;
+            }
+            if (c->pm_cache.previous_height != c->height)
+            {
+                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+                c->pm_cache.previous_height = c->height;
             }
         }
-        for(i = 0; i < BUTTON_COUNT; i++)
+        
+        /* First, hide the buttons that we don't have... */
+	for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(c->buttons[i])
+            char b = getLetterFromButton(i, c);
+            if((!b) || !strchr(params.button_layout, b))
             {
-                char b = getLetterFromButton(i, c);
-                if((b) && strchr(params.button_layout, b))
-                {
-                    XMapWindow(dpy, c->buttons[i]);
-                }
-                else
-                {
-                    XUnmapWindow(dpy, c->buttons[i]);
-                }
+                myWindowHide(&c->buttons[i]);
             }
         }
 
+        /* Then, show the ones that we do have on right... */
         x = frameLeft(c) + params.button_offset;
         for(i = 0; i < strlen(params.button_layout); i++)
         {
@@ -608,15 +585,24 @@ void frameDraw(Client * c, gboolean invalidate_cache)
             {
                 break;
             }
-            else if((button >= 0) && (c->buttons[button]))
+            else if(button >= 0)
             {
-                XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - params.buttons[button][ACTIVE].height) / 2, params.buttons[button][ACTIVE].width, params.buttons[button][ACTIVE].height);
+                if((c->button_pressed[button]) && (params.buttons[button][PRESSED].pixmap))
+                {
+                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][PRESSED].pixmap);
+                }
+                else if(params.buttons[button][state].pixmap)
+                {
+                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][state].pixmap);
+                }
+                myWindowShow(&c->buttons[button], x, (frameTop(c) - params.buttons[button][ACTIVE].height) / 2, params.buttons[button][ACTIVE].width, params.buttons[button][ACTIVE].height, TRUE);
                 button_x[button] = x;
                 x = x + params.buttons[button][ACTIVE].width + params.button_spacing;
             }
         }
         left = x - params.button_spacing;
 
+        /* and those that we do have on left... */
         x = frameWidth(c) - frameRight(c) + params.button_spacing - params.button_offset;
         for(j = strlen(params.button_layout) - 1; j >= i; j--)
         {
@@ -625,10 +611,18 @@ void frameDraw(Client * c, gboolean invalidate_cache)
             {
                 break;
             }
-            else if((button >= 0) && (c->buttons[button]))
+            else if(button >= 0)
             {
+                if((c->button_pressed[button]) && (params.buttons[button][PRESSED].pixmap))
+                {
+                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][PRESSED].pixmap);
+                }
+                else if(params.buttons[button][state].pixmap)
+                {
+                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][state].pixmap);
+                }
                 x = x - params.buttons[button][ACTIVE].width - params.button_spacing;
-                XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - params.buttons[button][ACTIVE].height) / 2, params.buttons[button][ACTIVE].width, params.buttons[button][ACTIVE].height);
+                myWindowShow(&c->buttons[button], x, (frameTop(c) - params.buttons[button][ACTIVE].height) / 2, params.buttons[button][ACTIVE].width, params.buttons[button][ACTIVE].height, TRUE);
                 button_x[button] = x;
             }
         }
@@ -640,100 +634,83 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         right_height = frameHeight(c) - frameTop(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height;
 
         if (c->pm_cache.pm_title[state].pixmap == None)
-	{
-	    frameCreateTitlePixmap(c, state, left, right, &(c->pm_cache.pm_title[state]));
+        {
+            frameCreateTitlePixmap(c, state, left, right, &c->pm_cache.pm_title[state]);
         }
         
-	if (c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
-	{
-	    createPixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][state]), frameLeft(c), left_height);
+        if (c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
+        {
+            createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][state], frameLeft(c), left_height);
         }
-	fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap, params.sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
+        fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap, params.sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].mask, params.sides[SIDE_LEFT][state].mask, 0, 0, frameLeft(c), left_height);
 
         if (c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
-	{
-	    createPixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][state]), frameRight(c), right_height);
+        {
+            createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][state], frameRight(c), right_height);
         }
-	fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap, params.sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
+        fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap, params.sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].mask, params.sides[SIDE_RIGHT][state].mask, 0, 0, frameRight(c), right_height);
 
         if (c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
-	{
-	    createPixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][state]), bottom_width, frameBottom(c));
+        {
+            createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][state], bottom_width, frameBottom(c));
         }
-	fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap, params.sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width, frameBottom(c));
+        fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap, params.sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width, frameBottom(c));
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].mask, params.sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width, frameBottom(c));
 
-        XSetWindowBackgroundPixmap(dpy, c->title, c->pm_cache.pm_title[state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->sides[SIDE_LEFT], c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->sides[SIDE_RIGHT], c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->sides[SIDE_BOTTOM], c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_TOP_LEFT], params.corners[CORNER_TOP_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_TOP_RIGHT], params.corners[CORNER_TOP_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_BOTTOM_LEFT], params.corners[CORNER_BOTTOM_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_BOTTOM_RIGHT], params.corners[CORNER_BOTTOM_RIGHT][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->title), c->pm_cache.pm_title[state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_LEFT]), c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT]), c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->sides[SIDE_BOTTOM]), c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT]), params.corners[CORNER_TOP_LEFT][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_TOP_RIGHT]), params.corners[CORNER_TOP_RIGHT][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT]), params.corners[CORNER_BOTTOM_LEFT][state].pixmap);
+        XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT]), params.corners[CORNER_BOTTOM_RIGHT][state].pixmap);
 
-        for(i = 0; i < BUTTON_COUNT; i++)
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
-            if((c->button_pressed[i]) && (params.buttons[i][PRESSED].pixmap))
-            {
-                XSetWindowBackgroundPixmap(dpy, c->buttons[i], params.buttons[i][PRESSED].pixmap);
-            }
-            else if(params.buttons[i][state].pixmap)
-            {
-                XSetWindowBackgroundPixmap(dpy, c->buttons[i], params.buttons[i][state].pixmap);
-            }
+            myWindowHide(&c->sides[SIDE_LEFT]);
+            myWindowHide(&c->sides[SIDE_RIGHT]);
+        }
+        else
+        {
+            myWindowShow(&c->sides[SIDE_LEFT], 0, frameTop(c), frameLeft(c), left_height, TRUE);
+            myWindowShow(&c->sides[SIDE_RIGHT], frameWidth(c) - frameRight(c), frameTop(c), frameRight(c), right_height, TRUE);
         }
 
-        XMoveResizeWindow(dpy, c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width < 1 ? 1 : top_width, frameTop(c));
-        XMoveResizeWindow(dpy, c->sides[SIDE_LEFT], 0, frameTop(c), frameLeft(c), left_height < 1 ? 1 : left_height);
-        XMoveResizeWindow(dpy, c->sides[SIDE_RIGHT], frameWidth(c) - frameRight(c), frameTop(c), frameRight(c), right_height < 1 ? 1 : right_height);
-        XMoveResizeWindow(dpy, c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width < 1 ? 1 : bottom_width, frameBottom(c));
+        myWindowShow(&c->title, params.corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width, frameTop(c), TRUE);
+        myWindowShow(&c->sides[SIDE_BOTTOM], params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, frameHeight(c) - frameBottom(c), bottom_width, frameBottom(c), TRUE);
+        
+        myWindowShow(&c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height, TRUE);
+        myWindowShow(&c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height, TRUE);
+        myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, TRUE);
+        myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, TRUE);
 
-        XMoveResizeWindow(dpy, c->corners[CORNER_TOP_LEFT], 0, 0, params.corners[CORNER_TOP_LEFT][ACTIVE].width, params.corners[CORNER_TOP_LEFT][ACTIVE].height);
-        XMoveResizeWindow(dpy, c->corners[CORNER_TOP_RIGHT], frameWidth(c) - params.corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, params.corners[CORNER_TOP_RIGHT][ACTIVE].width, params.corners[CORNER_TOP_RIGHT][ACTIVE].height);
-        XMoveResizeWindow(dpy, c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height);
-        XMoveResizeWindow(dpy, c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height);
-
-        XClearWindow(dpy, c->title);
-        XClearWindow(dpy, c->sides[SIDE_LEFT]);
-        XClearWindow(dpy, c->sides[SIDE_RIGHT]);
-        XClearWindow(dpy, c->sides[SIDE_BOTTOM]);
-        XClearWindow(dpy, c->corners[CORNER_TOP_LEFT]);
-        XClearWindow(dpy, c->corners[CORNER_TOP_RIGHT]);
-        XClearWindow(dpy, c->corners[CORNER_BOTTOM_LEFT]);
-        XClearWindow(dpy, c->corners[CORNER_BOTTOM_RIGHT]);
-
-        for(i = 0; i < BUTTON_COUNT; i++)
-        {
-            XClearWindow(dpy, c->buttons[i]);
-        }
-
-        frameSetShape(c, state, &(c->pm_cache), button_x);
+        frameSetShape(c, state, &c->pm_cache, button_x);
     }
     else
     {
-        XUnmapWindow(dpy, c->title);
+        myWindowHide(&c->title);
         for(i = 0; i < 3; i++)
         {
-            if(c->sides[i])
+            if(MYWINDOW_XWINDOW(c->sides[i]))
             {
-                XUnmapWindow(dpy, c->sides[i]);
+                myWindowHide(&c->sides[i]);
             }
         }
         for(i = 0; i < 4; i++)
         {
-            if(c->corners[i])
+            if(MYWINDOW_XWINDOW(c->corners[i]))
             {
-                XUnmapWindow(dpy, c->corners[i]);
+                myWindowHide(&c->corners[i]);
             }
         }
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(c->buttons[i])
+            if(MYWINDOW_XWINDOW(c->buttons[i]))
             {
-                XUnmapWindow(dpy, c->buttons[i]);
+                myWindowHide(&c->buttons[i]);
             }
         }
         frameSetShape(c, 0, NULL, 0);

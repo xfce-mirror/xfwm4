@@ -17,6 +17,8 @@ xfwm4_SOURCES = \
 	menu.h \
 	misc.c \
 	misc.h \
+	mywindow.c \
+	mywindow.h \
 	parserc.c \
 	parserc.h \
 	pixmap.c \
