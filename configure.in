@@ -9,7 +9,7 @@ AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
 ## libtool support (for plugins)
-AC_DISABLE_STATIC
+AM_DISABLE_STATIC
 AM_PROG_LIBTOOL
 
 # Honor aclocal flags
