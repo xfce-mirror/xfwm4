@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-08 22:46+0200\n"
-"PO-Revision-Date: 2003-01-22 00:36+0100\n"
-"Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
+"POT-Creation-Date: 2003-06-21 14:14+0200\n"
+"PO-Revision-Date: 2003-07-08 20:52+0100\n"
+"Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,6 @@ msgstr ""
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
-#, fuzzy
 msgid "Workspace Margins"
 msgstr "工作区边缘"
 
@@ -31,22 +30,20 @@ msgid ""
 msgstr "边缘是屏幕边上不能放置窗口的区域。"
 
 #: mcs-plugin/margins_plugin.c:281
-#, fuzzy
 msgid "Left :"
-msgstr "左侧"
+msgstr "左侧: "
 
 #: mcs-plugin/margins_plugin.c:301
-#, fuzzy
 msgid "Right :"
-msgstr "右侧"
+msgstr "右侧:"
 
 #: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
-msgstr "顶端"
+msgstr "顶端:"
 
 #: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
-msgstr "底部"
+msgstr "底部:"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -210,18 +207,17 @@ msgid "Keyboard and focus"
 msgstr "键盘和鼠标"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
-#, fuzzy
 msgid "Windows snapping"
-msgstr "窗口管理器"
+msgstr "窗口吸引"
+
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
 msgstr "在屏幕边缘吸引窗口"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "在屏幕边缘吸引窗口"
+msgstr "将窗口吸引到其它窗口"
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
@@ -240,24 +236,22 @@ msgid "Wrap workspaces"
 msgstr "回绕工作区"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "拖拽窗口离开屏幕时回绕工作区"
+msgstr "鼠标到达屏幕边缘时回绕工作区"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
-#, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "拖拽窗口离开屏幕时回绕工作区"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 #, fuzzy
 msgid "Edge Resistance :"
-msgstr "距离 :"
+msgstr "屏幕边缘阻力 :"
+
 
 #: mcs-plugin/xfwm4_plugin.c:1671
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "实时缩放?"
+msgstr "移动及缩放时显示窗口内容"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
@@ -278,45 +272,45 @@ msgstr "双击标题栏所执行的动作 :"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
-#: src/client.c:442
-#, fuzzy, c-format
+
+#: src/client.c:444
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: 无法管理的net_wm_state  (window %#lx)"
+msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
 
-#: src/events.c:1311
+#: src/events.c:1276
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
 
-#: src/main.c:226
+#: src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:396
+#: src/main.c:349
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:401
+#: src/main.c:354
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:428
+#: src/main.c:381
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
 
 #: src/menu.c:42
 msgid "Ma_ximize"
-msgstr "最大化(_x)"
+msgstr "最大化(_X)"
 
 #: src/menu.c:43
 msgid "Un_maximize"
-msgstr "恢复(_n)"
+msgstr "恢复(_M)"
 
 #: src/menu.c:44
 msgid "_Hide"
@@ -324,11 +318,11 @@ msgstr "隐藏(_H)"
 
 #: src/menu.c:45
 msgid "Hide _all others"
-msgstr "隐藏其它全部窗口(_a)"
+msgstr "隐藏其它全部窗口(_A)"
 
 #: src/menu.c:46
 msgid "S_how"
-msgstr "显示(_h)"
+msgstr "显示(_H)"
 
 #: src/menu.c:47
 msgid "_Shade"
@@ -340,16 +334,16 @@ msgstr "展开(_s)"
 
 #: src/menu.c:49
 msgid "S_tick"
-msgstr "粘连(_t)"
+msgstr "粘连(_T)"
 
 #: src/menu.c:50
 msgid "Uns_tick"
-msgstr "Dé_coller"
+msgstr "分离(_T)"
+
 
 #: src/menu.c:51
-#, fuzzy
 msgid "Send to..."
-msgstr "切换到 ..."
+msgstr "发送到 ..."
 
 #: src/menu.c:53
 msgid "_Close"
@@ -368,46 +362,45 @@ msgid "Restart"
 msgstr "重启"
 
 #: src/menu.c:163
-#, fuzzy, c-format
 msgid "Workspace %i"
-msgstr "工作区(_k)"
+msgstr "工作区 %i"
 
 #: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:284
+#: src/settings.c:283
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
-msgstr "%s: 默认文件中缺少数据"
+msgstr "%s: 缺少默认文件"
 
-#: src/settings.c:509
+
+#: src/settings.c:508
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:516
+#: src/settings.c:515
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:559
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:567
+#: src/settings.c:566
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:757
-#, fuzzy, c-format
+#: src/settings.c:756
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:1098
+#: src/settings.c:1097
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
