@@ -862,7 +862,6 @@ get_window_picture (CWindow *cw)
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
 {
-    XserverRegion dest_region;
     DisplayInfo *display_info = NULL;
     Display *dpy;
     GList *index;
@@ -881,7 +880,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     screen_height = gdk_screen_get_height (screen_info->gscr);
     screen_number = screen_info->screen;
     xroot = screen_info->xroot;
-    dest_region = None;
 
     if (region == None)
     {
@@ -893,12 +891,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         r.width = screen_width;
         r.height = screen_height;
         region = XFixesCreateRegion (dpy, &r, 1);
-        dest_region = None;
-    }
-    else
-    {
-        dest_region = XFixesCreateRegion (dpy, NULL, 0);
-        XFixesCopyRegion (dpy, dest_region, region);
+        g_return_if_fail (region != None);
     }
 
     /* Create root buffer if not done yet */
@@ -1020,15 +1013,14 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             cw->borderClip = None;
         }
     }
-    XFixesDestroyRegion (dpy, region);
 
-    TRACE ("Copying data back to screen");
-    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, dest_region);
-    XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
-                      0, 0, 0, 0, 0, 0, screen_width, screen_height);
-    if (dest_region != None)
+    XFixesDestroyRegion (dpy, region);
+    if (screen_info->rootBuffer != screen_info->rootPicture)
     {
-        XFixesDestroyRegion (dpy, dest_region);
+        TRACE ("Copying data back to screen");
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
+        XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
+                          0, 0, 0, 0, 0, 0, screen_width, screen_height);
     }
 }
 
