@@ -835,6 +835,13 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
 
+    if (ev->window == systray)
+    {
+        /* systray window is gone */
+        systray = None;
+        return;
+    }
+    
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
@@ -1525,6 +1532,13 @@ handleClientMessage (XClientMessageEvent * ev)
             {
                 workspaceSetCount (ev->data.l[0]);
             }
+        }
+        else if ((ev->message_type == net_system_tray_manager)
+                  && (ev->data.l[1] == net_system_tray_selection)
+                  && (ev->format == 32))
+        {
+            TRACE ("root has received a net_system_tray_manager event");
+            systray = getSystrayWindow (dpy);
         }
         else
         {

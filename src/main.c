@@ -67,7 +67,7 @@
 
 char *progname;
 Display *dpy;
-Window root, gnome_win, sidewalk[2];
+Window root, gnome_win, systray, sidewalk[2];
 Colormap cmap;
 Screen *xscreen;
 int screen;
@@ -151,9 +151,9 @@ static char *build_session_filename(SessionClient *client_session)
     
     path = (gchar *)xfce_get_userdir();
     if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) {
-	    g_warning("Unable to create xfce user dir %s: %s",
-		       path, g_strerror(errno));
-	    return NULL;
+            g_warning("Unable to create xfce user dir %s: %s",
+                       path, g_strerror(errno));
+            return NULL;
     }
 
     path = xfce_get_userfile("sessions", NULL);
@@ -306,7 +306,8 @@ initialize (int argc, char **argv)
     initMotifHints (dpy);
     initGnomeHints (dpy);
     initNetHints (dpy);
-
+    initSystrayHints (dpy, screen);
+    
     initModifiers (dpy);
 
     root_cursor = XCreateFontCursor (dpy, XC_left_ptr);
@@ -340,6 +341,7 @@ initialize (int argc, char **argv)
         return -2;
     }
 
+    systray = getSystrayWindow (dpy);
     setGnomeProtocols (dpy, screen, gnome_win);
     setHint (dpy, root, win_supporting_wm_check, gnome_win);
     setHint (dpy, root, win_desktop_button_proxy, gnome_win);
