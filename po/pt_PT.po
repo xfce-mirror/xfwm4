@@ -1,0 +1,413 @@
+# Portuguese translation of PACKAGE.
+# Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Nuno Donato <nunodonato@sapo.pt>, 2003.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
+"PO-Revision-Date: 2003-09-12 22:02+0100\n"
+"Last-Translator: Nuno Donato <nunodonato@sapo.pt>\n"
+"Language-Team: Portuguese <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Margens da Area de Trabalho"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "Ajustar as margens da Area de Trabalho"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margens são areas nas bordas do ecrã onde nenhuma janela irá ser colocada"
+
+#: mcs-plugin/margins_plugin.c:281
+msgid "Left :"
+msgstr "Esquerda:"
+
+#: mcs-plugin/margins_plugin.c:301
+msgid "Right :"
+msgstr "Direita:"
+
+#: mcs-plugin/margins_plugin.c:321
+msgid "Top :"
+msgstr "Cima:"
+
+#: mcs-plugin/margins_plugin.c:341
+msgid "Bottom :"
+msgstr "Baixo:"
+
+#: mcs-plugin/xfwm4_plugin.c:116
+msgid "Title"
+msgstr "Título"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "Menu"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "Omnipresente"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "Enrolar"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "Esconder"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "Maximizar"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "Fechar"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr "Enrolar a janela"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "Esconder a janela"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "Maximizar a janela"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "Nada"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "Esquerda"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "Centro"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "Direita"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Escondido"
+
+#: mcs-plugin/xfwm4_plugin.c:1206
+msgid "Font Selection Dialog"
+msgstr "Dialog de Selecção de Tipos de Letra"
+
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+msgid "Window Manager"
+msgstr "Gestor de Janelas"
+
+#: mcs-plugin/xfwm4_plugin.c:1288
+msgid "Window Manager Preferences"
+msgstr "Preferências do Gestor de Janelas"
+
+#: mcs-plugin/xfwm4_plugin.c:1325
+msgid "Title font"
+msgstr "Tipo de letra do título"
+
+#: mcs-plugin/xfwm4_plugin.c:1338
+msgid "Title Alignment"
+msgstr "Alinhamento do título"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "Alinhamento do texto dentro da barra de título"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
+msgid "Button layout"
+msgstr "Disposição dos botões"
+
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "Estilo da decoração"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "Atalhos do Teclado"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Focus model"
+msgstr "Modelo de Foco"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr "Clicar para obter foco"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr "Foco segue o rato"
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr "Foco de novas janelas"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Dar foco automáticamente\n"
+"a novas janelas"
+
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "Subir com o foco"
+
+#: mcs-plugin/xfwm4_plugin.c:1451
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr "Subir automáticamente novas\n"
+"janelas quando recebem o foco"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Delay before raising focused window :"
+msgstr "Atraso antes de subir janela focada"
+
+#: mcs-plugin/xfwm4_plugin.c:1472
+msgid "Slow"
+msgstr "Lento"
+
+#: mcs-plugin/xfwm4_plugin.c:1480
+msgid "Fast"
+msgstr "Rápido"
+
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "Subir com o clique"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr "Subir janela quando se clica dentro\n"
+"da janela da aplicação"
+
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr "Teclado e foco"
+
+#: mcs-plugin/xfwm4_plugin.c:1530
+msgid "Windows snapping"
+msgstr "Atracção de Janelas"
+
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "Atrair janelas para a borda do ecrã"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "Atrair janelas para outras janelas"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "Distância :"
+
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "Estreita"
+
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr "Larga"
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "Mudança de Areas de Trabalho"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Mudar de Area de Trabalho quando o rato alcança a borda do ecrã"
+
+#: mcs-plugin/xfwm4_plugin.c:1618
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Mudar de Area de Trabalho quando se arrasta uma janela para fora do ecrã"
+
+#: mcs-plugin/xfwm4_plugin.c:1630
+msgid "Edge Resistance :"
+msgstr "Resistência da borda :"
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+msgid "Opaque move and resize"
+msgstr "Mover e redimensionar opaco"
+
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "Mostrar o conteúdo das janelas enquanto são redimensionadas"
+
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "Mostrar o conteúdo das janelas enquanto são movidas"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
+msgid "Double click action"
+msgstr "Acção do Duplo Clique"
+
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Acção a exectuar quando se faz um duplo clique na barra de título"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
+msgid "Advanced"
+msgstr "Avançadas"
+
+#: src/client.c:493
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: net_wm_state (window 0x%lx) não gerido"
+
+#: src/events.c:1386
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operação (ainda) não suportada\n"
+
+#: src/main.c:228
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Segmentation fault"
+
+#: src/main.c:399
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Ja está a correr outro Gestor de Janelas"
+
+#: src/main.c:404
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Faltam dados dos ficheiros"
+
+#: src/main.c:431
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Erro desconhecido"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "Ma_ximizar"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "Des_maximizar"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Esconder"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Esconder _todas as outras"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "M_ostrar"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "En_rolar"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "_Desenrolar"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "_Omnipresente"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Remo_ver Omnipresença"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Enviar para..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Fechar"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Destruir"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "_Sair"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Area de Trabalho %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu falhou a captar o ponteiro\n"
+
+#: src/settings.c:285
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Faltam ficheiros"
+
+#: src/settings.c:510
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Não foi possível alocar a cor activa %s\n"
+
+#: src/settings.c:517
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr ""
+
+#: src/settings.c:561
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr ""
+
+#: src/settings.c:568
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr ""
+
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: não foi encontrado o tema especificado \"%s\" , a usar o normal"
+
+#: src/settings.c:765
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr ""
+
+#: src/settings.c:1106
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr ""
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Mudar para..."
+
