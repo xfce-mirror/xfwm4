@@ -998,6 +998,13 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     return (TRUE);
 }
 
+static gboolean set_reload(void)
+{
+    DBG("setting reload flag so all prefs will be reread at next event loop\n");
+    reload = True;
+    return (TRUE);
+}
+
 static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev)
 {
     DBG("entering client_event_cb\n");
@@ -1009,8 +1016,7 @@ static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev)
 
     if(ev->message_type == atom_rcfiles)
     {
-        DBG("setting reload flag so all prefs will be reread at next event loop\n");
-        reload = True;
+        set_reload();
     }
 
     return (FALSE);
@@ -1024,6 +1030,6 @@ void initGtkCallbacks(void)
     g_signal_connect (GTK_OBJECT(getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC(client_event_cb), (gpointer) NULL);
 
     settings = gtk_settings_get_default();
-    g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (client_event_cb), NULL);
-    g_signal_connect (settings, "notify::gtk-font-name", G_CALLBACK (client_event_cb), NULL);
+    g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (set_reload), NULL);
+    g_signal_connect (settings, "notify::gtk-font-name", G_CALLBACK (set_reload), NULL);
 }
