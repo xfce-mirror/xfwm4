@@ -229,7 +229,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     Client *c2 = NULL;
     ScreenInfo *screen_info = NULL;
     int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
+    int frame_height, frame_width, frame_top, frame_left;
+    int frame_x, frame_y, frame_visible;
     GdkRectangle rect;
     gint monitor_nbr;
 
@@ -245,6 +246,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_width = frameWidth (c);
     frame_top = frameTop (c);
     frame_left = frameLeft (c);
+    frame_visible = (frame_top ? frame_top : frame_height);
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
@@ -427,7 +429,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapX (frame_x, frame_x + frame_width, 
                               c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
                 {
-                    if (overlapY (frame_y, frame_y + frame_top, 0, c2->struts[TOP]))
+                    if (overlapY (frame_y, frame_y + frame_visible, 0, c2->struts[TOP]))
                     {
                         c->y = c2->struts[TOP] + frame_top;
                         frame_y = frameY (c);
