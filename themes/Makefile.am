@@ -15,6 +15,7 @@ SUBDIRS =								\
 	microdeck3 							\
 	opta								\
 	prune								\
+	synthetic							\
 	tgc								\
 	tgc-large							\
 	tubular

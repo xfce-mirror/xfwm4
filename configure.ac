@@ -103,6 +103,7 @@ themes/microdeck2/Makefile
 themes/microdeck3/Makefile
 themes/opta/Makefile
 themes/prune/Makefile
+themes/synthetic/Makefile
 themes/tgc/Makefile
 themes/tgc-large/Makefile
 themes/tubular/Makefile
