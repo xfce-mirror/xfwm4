@@ -5110,7 +5110,7 @@ clientMove (Client * c, XEvent * e)
 
        Note:
 
-       I'm note sure it makes any difference, but who knows... It doesn' t hurt.
+       I'm not sure it makes any difference, but who knows... It doesn' t hurt.
      */
 
     passdata.tmp_event_window =
@@ -5372,33 +5372,26 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
             || (passdata->corner == 4 + SIDE_LEFT))
         {
-            c->width =
-                (c->x + c->width) - xevent->xmotion.x_root + passdata->mx -
-                frame_left;
+            c->width = passdata->ox - (xevent->xmotion.x_root - passdata->mx);
         }
-        if ((passdata->corner == CORNER_BOTTOM_RIGHT)
+        else if ((passdata->corner == CORNER_BOTTOM_RIGHT)
             || (passdata->corner == CORNER_TOP_RIGHT)
             || (passdata->corner == 4 + SIDE_RIGHT))
         {
-            c->width =
-                (xevent->xmotion.x_root - c->x) + passdata->mx - frame_right;
+            c->width = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         }
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
         {
             if ((passdata->corner == CORNER_TOP_LEFT)
                 || (passdata->corner == CORNER_TOP_RIGHT))
             {
-                c->height =
-                    (c->y + c->height) - xevent->xmotion.y_root +
-                    passdata->my - frame_top;
+                c->height = passdata->oy - (xevent->xmotion.y_root - passdata->my);
             }
-            if ((passdata->corner == CORNER_BOTTOM_RIGHT)
+            else if ((passdata->corner == CORNER_BOTTOM_RIGHT)
                 || (passdata->corner == CORNER_BOTTOM_LEFT)
                 || (passdata->corner == 4 + SIDE_BOTTOM))
             {
-                c->height =
-                    (xevent->xmotion.y_root - c->y) + passdata->my -
-                    frame_bottom;
+                c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
             }
         }
         clientSetWidth (c, c->width);
@@ -5513,6 +5506,8 @@ clientResize (Client * c, int corner, XEvent * e)
     TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
 
     passdata.c = c;
+    passdata.ox = c->width;
+    passdata.oy = c->height;
     passdata.last_timestamp = CurrentTime;
     passdata.corner = CORNER_BOTTOM_RIGHT;
     passdata.use_keys = FALSE;
@@ -5533,19 +5528,19 @@ clientResize (Client * c, int corner, XEvent * e)
     {
         passdata.use_keys = TRUE;
         passdata.last_timestamp = e->xkey.time;
-        passdata.mx = e->xkey.x;
-        passdata.my = e->xkey.y;
+        passdata.mx = e->xkey.x_root;
+        passdata.my = e->xkey.y_root;
     }
     else if (e->type == ButtonPress)
     {
         passdata.last_timestamp = e->xbutton.time;
-        passdata.mx = e->xbutton.x;
-        passdata.my = e->xbutton.y;
+        passdata.mx = e->xbutton.x_root;
+        passdata.my = e->xbutton.y_root;
     }
     else
     {
         passdata.last_timestamp = CurrentTime;
-        getMouseXY (c->frame, &passdata.mx, &passdata.my);
+        getMouseXY (root, &passdata.mx, &passdata.my);
     }
     g1 = XGrabKeyboard (dpy, passdata.tmp_event_window, FALSE,
         GrabModeAsync, GrabModeAsync, passdata.last_timestamp);
@@ -5573,19 +5568,6 @@ clientResize (Client * c, int corner, XEvent * e)
     {
         XPutBackEvent (dpy, e);
     }
-    if ((passdata.corner == CORNER_TOP_RIGHT)
-        || (passdata.corner == CORNER_BOTTOM_RIGHT)
-        || (passdata.corner == 4 + SIDE_RIGHT))
-    {
-        passdata.mx = frameWidth (c) - passdata.mx;
-    }
-    if ((passdata.corner == CORNER_BOTTOM_LEFT)
-        || (passdata.corner == CORNER_BOTTOM_RIGHT)
-        || (passdata.corner == 4 + SIDE_BOTTOM))
-    {
-        passdata.my = frameHeight (c) - passdata.my;
-    }
-
     CLIENT_FLAG_SET (c, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     pushEventFilter (clientResize_event_filter, &passdata);
