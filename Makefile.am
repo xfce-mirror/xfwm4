@@ -4,7 +4,7 @@ noinst_DATA = example.xfwm4rc
 
 EXTRA_DIST = example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec
 
-SUBDIRS = po src mcs-plugin defaults themes
+SUBDIRS = po doc src mcs-plugin defaults themes
 
 distclean-local:
 	rm -rf example.xfwm4rc xfwm4.spec *.cache
