@@ -50,7 +50,6 @@
 
 #define SHADOW_OFFSET_X (-SHADOW_RADIUS * 5 / 4)
 #define SHADOW_OFFSET_Y (-SHADOW_RADIUS * 5 / 4)
-#define OPAQUE          0xffffffff
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -748,7 +747,7 @@ win_extents (CWindow *cw)
                 double opacity = SHADOW_OPACITY;
                 if (cw->mode == WINDOW_TRANS)
                 {
-                    opacity = opacity * ((double) cw->opacity) / ((double) OPAQUE);
+                    opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
                 }
                 cw->shadow = shadow_picture (screen_info, opacity,
                                             cw->attr.width + cw->attr.border_width * 2,
@@ -1009,10 +1008,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
                             cw->attr.y + cw->shadow_dy,
                             cw->shadow_width, cw->shadow_height);
         }
-        if ((cw->opacity != OPAQUE) && !(cw->alphaPict))
+        if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
         {
             cw->alphaPict = solid_picture (screen_info, FALSE, 
-                                        (double) cw->opacity / OPAQUE, 0, 0, 0);
+                                        (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
         }
         if (cw->mode == WINDOW_TRANS)
         {
@@ -1156,34 +1155,6 @@ repair_win (CWindow *cw)
     }
 }
 
-static guint
-get_opacity_prop(CWindow *cw, guint def)
-{
-    ScreenInfo *screen_info;
-    Atom actual;
-    gint format;
-    unsigned long n, left;
-    guchar *data;
-    gint result;
-    
-    g_return_val_if_fail (cw, def);
-    TRACE ("entering get_opacity_prop");    
-    
-    screen_info = cw->screen_info;
-    result = XGetWindowProperty(myScreenGetXDisplay (screen_info), cw->id, net_wm_opacity, 
-                    0L, 1L, False, XA_CARDINAL, &actual, &format, &n, &left, &data);
-
-    if ((result == Success) && (data != None))
-    {
-        guint i;
-        memcpy (&i, data, sizeof (guint));
-        XFree( (void *) data);
-        return i;
-    }
-
-    return def;
-}
-
 static void
 determine_mode(CWindow *cw)
 {
@@ -1212,7 +1183,7 @@ determine_mode(CWindow *cw)
     {
         cw->mode = WINDOW_ARGB;
     }
-    else if (cw->opacity != OPAQUE)
+    else if (cw->opacity != NET_WM_OPAQUE)
     {
         cw->mode = WINDOW_TRANS;
     }
@@ -1250,6 +1221,41 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 }
 
 static void
+repair_screen (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info);
+    TRACE ("entering repair_screen");    
+    
+    if (screen_info->allDamage != None)
+    {
+        paint_all (screen_info, screen_info->allDamage);
+        screen_info->allDamage = None;
+        screen_info->clipChanged = FALSE;
+    }
+}
+
+static void
+set_win_opacity (CWindow *cw, guint opacity)
+{
+    TRACE ("entering set_win_opacity");
+    g_return_if_fail (cw != NULL);
+    
+    cw->opacity = opacity;
+    determine_mode(cw);
+    if (cw->shadow)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
+        cw->shadow = None;
+        if (cw->extents)
+        {
+            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
+        }                
+        cw->extents = win_extents (cw);
+        repair_screen (cw->screen_info);
+    }
+}
+
+static void
 map_win (CWindow *cw)
 {
     TRACE ("entering map_win");
@@ -1282,7 +1288,7 @@ unmap_win (CWindow *cw)
 }
 
 static void
-add_win (DisplayInfo *display_info, Window id, Client *c, Window above)
+add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint opacity)
 {
     ScreenInfo *screen_info;
     CWindow *new;
@@ -1367,7 +1373,8 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above)
     new->shadow_width = 0;
     new->shadow_height = 0;
     new->borderClip = None;
-    new->opacity = get_opacity_prop (new, OPAQUE);
+    new->opacity = opacity;
+    getOpacity (myScreenGetXDisplay (screen_info), id, &new->opacity);
     determine_mode (new);
     
     if (above != None)
@@ -1474,26 +1481,12 @@ destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
 }
 
 static void
-compositorRepairScreen (ScreenInfo *screen_info)
-{
-    g_return_if_fail (screen_info);
-    TRACE ("entering compositorRepairScreen");    
-    
-    if (screen_info->allDamage != None)
-    {
-        paint_all (screen_info, screen_info->allDamage);
-        screen_info->allDamage = None;
-        screen_info->clipChanged = FALSE;
-    }
-}
-
-static void
-compositorDoRepair (DisplayInfo *display_info)
+do_repair (DisplayInfo *display_info)
 {
     GSList *screens;
 
     g_return_if_fail (display_info);
-    TRACE ("entering compositorDoRepair");    
+    TRACE ("entering do_repair");    
     
     if (!(display_info->enable_compositor))
     {
@@ -1503,7 +1496,7 @@ compositorDoRepair (DisplayInfo *display_info)
     
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
-        compositorRepairScreen ((ScreenInfo *) screens->data);
+        repair_screen ((ScreenInfo *) screens->data);
     }
 }
 
@@ -1520,7 +1513,7 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     if (cw)
     {
         repair_win (cw);
-        compositorRepairScreen (cw->screen_info);
+        repair_screen (cw->screen_info);
     }
 }
 
@@ -1550,7 +1543,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, True);
                 XRenderFreePicture (myScreenGetXDisplay (screen_info), screen_info->rootTile);
                 screen_info->rootTile = None;
-                compositorRepairScreen (screen_info);
+                repair_screen (screen_info);
 
                 return;
             }
@@ -1566,18 +1559,9 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         if (cw)
         {
             TRACE ("Opacity changed for 0x%lx", cw->id);    
-            cw->opacity = get_opacity_prop (cw, OPAQUE);
-            determine_mode(cw);
-            if (cw->shadow)
+            if (getOpacity (display_info->dpy, cw->id, &cw->opacity))
             {
-                XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
-                cw->shadow = None;
-                if (cw->extents)
-                {
-                    XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
-                }                
-                cw->extents = win_extents (cw);
-                compositorRepairScreen (cw->screen_info);
+                set_win_opacity (cw, cw->opacity);
             }
         }
     }
@@ -1585,6 +1569,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     {
         TRACE ("No compositor property changed for id 0x%lx", ev->window);    
     }
+    
 }
 
 static void
@@ -1653,7 +1638,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
                 XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
                 screen_info->rootBuffer = None;
             }
-            compositorRepairScreen (screen_info);
+            repair_screen (screen_info);
         }
 
         return;
@@ -1706,7 +1691,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         }
     }
     cw->screen_info->clipChanged = TRUE;
-    compositorRepairScreen (cw->screen_info);
+    repair_screen (cw->screen_info);
 }
 
 static void
@@ -1746,10 +1731,34 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     }
     restack_win (cw, above);
     cw->screen_info->clipChanged = TRUE;
-    compositorRepairScreen (cw->screen_info);
+    repair_screen (cw->screen_info);
 }
 
 #endif /* HAVE_COMPOSITOR */
+
+void
+compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorSetOpacity for 0x%lx", id);
+    
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");    
+        return;
+    }
+    
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        set_win_opacity (cw, opacity);
+    }
+#endif
+}
 
 void
 compositorWindowMap (DisplayInfo *display_info, Window id)
@@ -1773,13 +1782,13 @@ compositorWindowMap (DisplayInfo *display_info, Window id)
         if (!(cw->viewable))
         {
             map_win (cw);
-            compositorRepairScreen (cw->screen_info);
+            repair_screen (cw->screen_info);
         }
     }
     else
     {
-        add_win (display_info, id, NULL, None);
-        compositorDoRepair (display_info);
+        add_win (display_info, id, NULL, None, NET_WM_OPAQUE);
+        do_repair (display_info);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -1804,7 +1813,7 @@ compositorWindowUnmap (DisplayInfo *display_info, Window id)
     if (cw)
     {
         unmap_win (cw);
-        compositorRepairScreen (cw->screen_info);
+        repair_screen (cw->screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -1832,8 +1841,11 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     }
     else
     {
-        add_win (display_info, id, c, None);
-        compositorDoRepair (display_info);
+        guint opacity;
+
+        opacity = ((c != NULL) ? c->opacity : NET_WM_OPAQUE);
+        add_win (display_info, id, c, None, opacity);
+        do_repair (display_info);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -1859,7 +1871,7 @@ compositorRemoveWindow (DisplayInfo *display_info, Window id)
     {
         ScreenInfo *screen_info = cw->screen_info;
         destroy_win (screen_info, id, FALSE);
-        compositorRepairScreen (screen_info);
+        repair_screen (screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2080,7 +2092,7 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     if (cw)
     {
         repair_win (cw);
-        compositorRepairScreen (cw->screen_info);
+        repair_screen (cw->screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
 }

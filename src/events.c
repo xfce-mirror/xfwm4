@@ -1571,6 +1571,13 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
             }
         }
+        else if (ev->atom == net_wm_opacity)
+        {
+            if (getOpacity (display_info->dpy, c->window, &c->opacity))
+            {
+                compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+            }
+        }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == net_startup_id)
         {

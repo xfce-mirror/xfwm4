@@ -106,6 +106,8 @@
 #define NET_WM_BOTTOMRIGHT                      2
 #define NET_WM_BOTTOMLEFT                       3
 
+#define NET_WM_OPAQUE				0xffffffff
+
 typedef struct
 {
     unsigned long orientation;
@@ -268,6 +270,7 @@ gboolean getClientID (Display *, Window, char **);
 gboolean getWindowCommand (Display *, Window, char ***, int *);
 gboolean getKDEIcon (Display *, Window, Pixmap *, Pixmap *);
 gboolean getRGBIconData (Display *, Window, unsigned long **, unsigned long *);
+gboolean getOpacity (Display *, Window, guint *);
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId (Display *, Window, char **);

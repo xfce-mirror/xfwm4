@@ -1268,6 +1268,34 @@ getRGBIconData (Display * dpy, Window window, unsigned long **data, unsigned lon
     return TRUE;
 }
 
+gboolean
+getOpacity (Display * dpy, Window window, guint *opacity)
+{
+    Atom actual;
+    gint format;
+    gulong n, left;
+    guchar *data;
+    gint result;
+    
+    TRACE ("entering getOpacity");    
+    
+    g_return_val_if_fail (window != None, FALSE);
+    g_return_val_if_fail (opacity != NULL, FALSE);
+
+    result = XGetWindowProperty(dpy, window, net_wm_opacity, 
+                    0L, 1L, False, XA_CARDINAL, &actual, &format, 
+                    &n, &left, &data);
+
+    if ((result == Success) && (data != None))
+    {
+        memcpy (opacity, data, sizeof (guint));
+        XFree( (void *) data);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean
 getWindowStartupId (Display * dpy, Window window, char **startup_id)

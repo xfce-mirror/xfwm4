@@ -1482,6 +1482,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         c->ncmap = 0;
     }
 
+    /* Opacity for compositing manager */
+    c->opacity = NET_WM_OPAQUE;
+    getOpacity (display_info->dpy, c->window, &c->opacity);
+
     /* Timeout for blinking on urgency */
     c->blink_timeout_id = 0;
 

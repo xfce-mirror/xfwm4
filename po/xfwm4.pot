@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-02 14:05+0200\n"
+"POT-Creation-Date: 2004-10-03 23:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,18 +104,18 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:345
-#: mcs-plugin/xfwm4_shortcuteditor.c:765
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:350
+#: mcs-plugin/xfwm4_shortcuteditor.c:760
 msgid "Shade window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:340
-#: mcs-plugin/xfwm4_shortcuteditor.c:761
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:345
+#: mcs-plugin/xfwm4_shortcuteditor.c:756
 msgid "Hide window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:325
-#: mcs-plugin/xfwm4_shortcuteditor.c:749
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:330
+#: mcs-plugin/xfwm4_shortcuteditor.c:744
 msgid "Maximize window"
 msgstr ""
 
@@ -344,285 +344,285 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:320 mcs-plugin/xfwm4_shortcuteditor.c:745
+#: mcs-plugin/xfwm4_shortcuteditor.c:325 mcs-plugin/xfwm4_shortcuteditor.c:740
 msgid "Close window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:330 mcs-plugin/xfwm4_shortcuteditor.c:753
+#: mcs-plugin/xfwm4_shortcuteditor.c:335 mcs-plugin/xfwm4_shortcuteditor.c:748
 msgid "Maximize window vertically"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:335 mcs-plugin/xfwm4_shortcuteditor.c:757
+#: mcs-plugin/xfwm4_shortcuteditor.c:340 mcs-plugin/xfwm4_shortcuteditor.c:752
 msgid "Maximize window horizontally"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:350 mcs-plugin/xfwm4_shortcuteditor.c:769
+#: mcs-plugin/xfwm4_shortcuteditor.c:355 mcs-plugin/xfwm4_shortcuteditor.c:764
 msgid "Stick window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:355 mcs-plugin/xfwm4_shortcuteditor.c:773
+#: mcs-plugin/xfwm4_shortcuteditor.c:360 mcs-plugin/xfwm4_shortcuteditor.c:768
 msgid "Cycle windows"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:360 mcs-plugin/xfwm4_shortcuteditor.c:777
+#: mcs-plugin/xfwm4_shortcuteditor.c:365 mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid "Move window up"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:365 mcs-plugin/xfwm4_shortcuteditor.c:781
+#: mcs-plugin/xfwm4_shortcuteditor.c:370 mcs-plugin/xfwm4_shortcuteditor.c:776
 msgid "Move window down"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:370 mcs-plugin/xfwm4_shortcuteditor.c:785
+#: mcs-plugin/xfwm4_shortcuteditor.c:375 mcs-plugin/xfwm4_shortcuteditor.c:780
 msgid "Move window left"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:375 mcs-plugin/xfwm4_shortcuteditor.c:789
+#: mcs-plugin/xfwm4_shortcuteditor.c:380 mcs-plugin/xfwm4_shortcuteditor.c:784
 msgid "Move window right"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:380 mcs-plugin/xfwm4_shortcuteditor.c:793
+#: mcs-plugin/xfwm4_shortcuteditor.c:385 mcs-plugin/xfwm4_shortcuteditor.c:788
 msgid "Resize window up"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:385 mcs-plugin/xfwm4_shortcuteditor.c:797
+#: mcs-plugin/xfwm4_shortcuteditor.c:390 mcs-plugin/xfwm4_shortcuteditor.c:792
 msgid "Resize window down"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:390 mcs-plugin/xfwm4_shortcuteditor.c:801
+#: mcs-plugin/xfwm4_shortcuteditor.c:395 mcs-plugin/xfwm4_shortcuteditor.c:796
 msgid "Resize window left"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:395 mcs-plugin/xfwm4_shortcuteditor.c:805
+#: mcs-plugin/xfwm4_shortcuteditor.c:400 mcs-plugin/xfwm4_shortcuteditor.c:800
 msgid "Resize window right"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:400 mcs-plugin/xfwm4_shortcuteditor.c:809
+#: mcs-plugin/xfwm4_shortcuteditor.c:405 mcs-plugin/xfwm4_shortcuteditor.c:804
 msgid "Raise window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:405 mcs-plugin/xfwm4_shortcuteditor.c:813
+#: mcs-plugin/xfwm4_shortcuteditor.c:410 mcs-plugin/xfwm4_shortcuteditor.c:808
 msgid "Lower window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:410 mcs-plugin/xfwm4_shortcuteditor.c:817
+#: mcs-plugin/xfwm4_shortcuteditor.c:415 mcs-plugin/xfwm4_shortcuteditor.c:812
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:415
+#: mcs-plugin/xfwm4_shortcuteditor.c:420
 msgid "Upper workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:420
+#: mcs-plugin/xfwm4_shortcuteditor.c:425
 msgid "Bottom workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:425
+#: mcs-plugin/xfwm4_shortcuteditor.c:430
 msgid "Left workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:430
+#: mcs-plugin/xfwm4_shortcuteditor.c:435
 msgid "Right workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:435 mcs-plugin/xfwm4_shortcuteditor.c:821
+#: mcs-plugin/xfwm4_shortcuteditor.c:440 mcs-plugin/xfwm4_shortcuteditor.c:816
 msgid "Next workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:440 mcs-plugin/xfwm4_shortcuteditor.c:825
+#: mcs-plugin/xfwm4_shortcuteditor.c:445 mcs-plugin/xfwm4_shortcuteditor.c:820
 msgid "Previous workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:445 mcs-plugin/xfwm4_shortcuteditor.c:829
+#: mcs-plugin/xfwm4_shortcuteditor.c:450 mcs-plugin/xfwm4_shortcuteditor.c:824
 msgid "Add workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:450 mcs-plugin/xfwm4_shortcuteditor.c:833
+#: mcs-plugin/xfwm4_shortcuteditor.c:455 mcs-plugin/xfwm4_shortcuteditor.c:828
 msgid "Delete workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:455 mcs-plugin/xfwm4_shortcuteditor.c:837
+#: mcs-plugin/xfwm4_shortcuteditor.c:460 mcs-plugin/xfwm4_shortcuteditor.c:832
 msgid "Workspace 1"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:460 mcs-plugin/xfwm4_shortcuteditor.c:841
+#: mcs-plugin/xfwm4_shortcuteditor.c:465 mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Workspace 2"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:465 mcs-plugin/xfwm4_shortcuteditor.c:845
+#: mcs-plugin/xfwm4_shortcuteditor.c:470 mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Workspace 3"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:470 mcs-plugin/xfwm4_shortcuteditor.c:849
+#: mcs-plugin/xfwm4_shortcuteditor.c:475 mcs-plugin/xfwm4_shortcuteditor.c:844
 msgid "Workspace 4"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:475 mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:480 mcs-plugin/xfwm4_shortcuteditor.c:848
 msgid "Workspace 5"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:480 mcs-plugin/xfwm4_shortcuteditor.c:857
+#: mcs-plugin/xfwm4_shortcuteditor.c:485 mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "Workspace 6"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:485 mcs-plugin/xfwm4_shortcuteditor.c:861
+#: mcs-plugin/xfwm4_shortcuteditor.c:490 mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Workspace 7"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:490 mcs-plugin/xfwm4_shortcuteditor.c:865
+#: mcs-plugin/xfwm4_shortcuteditor.c:495 mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "Workspace 8"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:495 mcs-plugin/xfwm4_shortcuteditor.c:869
+#: mcs-plugin/xfwm4_shortcuteditor.c:500 mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Workspace 9"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:500 mcs-plugin/xfwm4_shortcuteditor.c:873
+#: mcs-plugin/xfwm4_shortcuteditor.c:505 mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "Move window to next workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:505 mcs-plugin/xfwm4_shortcuteditor.c:877
+#: mcs-plugin/xfwm4_shortcuteditor.c:510 mcs-plugin/xfwm4_shortcuteditor.c:872
 msgid "Move window to previous workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:510
+#: mcs-plugin/xfwm4_shortcuteditor.c:515
 msgid "Move window to upper workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:515
+#: mcs-plugin/xfwm4_shortcuteditor.c:520
 msgid "Move window to bottom workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:520
+#: mcs-plugin/xfwm4_shortcuteditor.c:525
 msgid "Move window to left workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:525
+#: mcs-plugin/xfwm4_shortcuteditor.c:530
 msgid "Move window to right workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:530 mcs-plugin/xfwm4_shortcuteditor.c:881
+#: mcs-plugin/xfwm4_shortcuteditor.c:535 mcs-plugin/xfwm4_shortcuteditor.c:876
 msgid "Move window to workspace 1"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:535 mcs-plugin/xfwm4_shortcuteditor.c:885
+#: mcs-plugin/xfwm4_shortcuteditor.c:540 mcs-plugin/xfwm4_shortcuteditor.c:880
 msgid "Move window to workspace 2"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:540 mcs-plugin/xfwm4_shortcuteditor.c:889
+#: mcs-plugin/xfwm4_shortcuteditor.c:545 mcs-plugin/xfwm4_shortcuteditor.c:884
 msgid "Move window to workspace 3"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:545 mcs-plugin/xfwm4_shortcuteditor.c:893
+#: mcs-plugin/xfwm4_shortcuteditor.c:550 mcs-plugin/xfwm4_shortcuteditor.c:888
 msgid "Move window to workspace 4"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:550 mcs-plugin/xfwm4_shortcuteditor.c:897
+#: mcs-plugin/xfwm4_shortcuteditor.c:555 mcs-plugin/xfwm4_shortcuteditor.c:892
 msgid "Move window to workspace 5"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:555 mcs-plugin/xfwm4_shortcuteditor.c:901
+#: mcs-plugin/xfwm4_shortcuteditor.c:560 mcs-plugin/xfwm4_shortcuteditor.c:896
 msgid "Move window to workspace 6"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:560 mcs-plugin/xfwm4_shortcuteditor.c:905
+#: mcs-plugin/xfwm4_shortcuteditor.c:565 mcs-plugin/xfwm4_shortcuteditor.c:900
 msgid "Move window to workspace 7"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:565 mcs-plugin/xfwm4_shortcuteditor.c:909
+#: mcs-plugin/xfwm4_shortcuteditor.c:570 mcs-plugin/xfwm4_shortcuteditor.c:904
 msgid "Move window to workspace 8"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:570 mcs-plugin/xfwm4_shortcuteditor.c:913
+#: mcs-plugin/xfwm4_shortcuteditor.c:575 mcs-plugin/xfwm4_shortcuteditor.c:908
 msgid "Move window to workspace 9"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:965
+#: mcs-plugin/xfwm4_shortcuteditor.c:960
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:984
+#: mcs-plugin/xfwm4_shortcuteditor.c:979
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:999
-#: mcs-plugin/xfwm4_shortcuteditor.c:1010
+#: mcs-plugin/xfwm4_shortcuteditor.c:994
+#: mcs-plugin/xfwm4_shortcuteditor.c:1005
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1073
+#: mcs-plugin/xfwm4_shortcuteditor.c:1068
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1182
+#: mcs-plugin/xfwm4_shortcuteditor.c:1177
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1243
+#: mcs-plugin/xfwm4_shortcuteditor.c:1238
 msgid "Compose shortcut for :"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1246
-#: mcs-plugin/xfwm4_shortcuteditor.c:1431
+#: mcs-plugin/xfwm4_shortcuteditor.c:1241
+#: mcs-plugin/xfwm4_shortcuteditor.c:1426
 msgid "Compose shortcut"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1330
+#: mcs-plugin/xfwm4_shortcuteditor.c:1325
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1332
+#: mcs-plugin/xfwm4_shortcuteditor.c:1327
 msgid "Command :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1366
+#: mcs-plugin/xfwm4_shortcuteditor.c:1361
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1428
+#: mcs-plugin/xfwm4_shortcuteditor.c:1423
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1704
+#: src/events.c:1711
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
 
-#: src/main.c:177
+#: src/main.c:183
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:434
+#: src/main.c:440
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:439
+#: src/main.c:445
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:449
+#: src/main.c:455
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:457
+#: src/main.c:463
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:478
+#: src/main.c:484
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""

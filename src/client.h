@@ -247,6 +247,8 @@ struct _Client
     guint blink_timeout_id;
     /* Pixmap caching */
     ClientPixmapCache pm_cache;
+    /* Opacity for the compositor */
+    guint opacity;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification */
