@@ -190,8 +190,7 @@ maintainer-clean: distclean
 	rm -f $(GMOFILES)
 
 distdir = ../$(GETTEXT_PACKAGE)-$(VERSION)/$(subdir)
-dist : update-po distdir
-distdir: $(DISTFILES)
+dist distdir: $(DISTFILES)
 	dists="$(DISTFILES)"; \
 	for file in $$dists; do \
 	  ln $(srcdir)/$$file $(distdir) 2> /dev/null \
