@@ -171,6 +171,7 @@ struct _XfwmParams
     int title_alignment;
     int title_horizontal_offset;
     int wrap_resistance;
+    int restore_on_move;
     gboolean title_shadow[2];
     gboolean box_move;
     gboolean box_resize;

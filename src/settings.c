@@ -1114,6 +1114,7 @@ loadSettings (ScreenInfo *screen_info)
         {"dbl_click_time", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
         {"easy_click", NULL, FALSE},
+        {"restore_on_move", NULL, TRUE},
         {"focus_hint", NULL, FALSE},
         {"focus_new", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
@@ -1275,6 +1276,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
     screen_info->params->raise_with_any_button =
         !g_ascii_strcasecmp ("true", getValue ("raise_with_any_button", rc));
+    screen_info->params->restore_on_move =
+        !g_ascii_strcasecmp ("true", getValue ("restore_on_move", rc));
     screen_info->params->move_opacity = 
         abs (TOINT (getValue ("move_opacity", rc)));
     screen_info->params->resize_opacity = 

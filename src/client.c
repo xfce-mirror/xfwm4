@@ -2740,7 +2740,10 @@ clientToggleMaximized (Client * c, int mode)
         wc.y = c->y;
         wc.height = c->height;
     }
-
+    c->x = wc.x;
+    c->y = wc.y;
+    c->height = wc.height;
+    c->width = wc.width;
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
@@ -2753,13 +2756,6 @@ clientToggleMaximized (Client * c, int mode)
         myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
         myScreenUngrabPointer (screen_info, CurrentTime);
-    }
-    else
-    {
-        c->x = wc.x;
-        c->y = wc.y;
-        c->height = wc.height;
-        c->width = wc.width;
     }
 }
 
@@ -2946,6 +2942,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
+    static gboolean toggled_maximize = FALSE;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XfceFilterStatus status = XEV_FILTER_STOP;
@@ -3120,12 +3117,38 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 }
             }
         }
-
+        if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED) && screen_info->params->restore_on_move)
+        {
+            if (xevent->xmotion.y_root - passdata->oy > 15)
+            {
+                int oldw=c->width;
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                passdata->ox=c->x;
+                passdata->mx=c->x+c->width/2;
+                toggled_maximize = TRUE;
+            }
+            else
+            {
+                return XEV_FILTER_CONTINUE;
+            }
+        }
+       
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
         clientSnapPosition (c);
-        clientConstrainPos (c, FALSE);
+        if (screen_info->params->restore_on_move)
+        {
+            if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
+            {
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                toggled_maximize = FALSE;
+            }
+        }
+        else
+        {
+            clientConstrainPos(c, FALSE);
+        }
 
 #ifdef SHOW_POSITION
         if (passdata->poswin)
@@ -3171,6 +3194,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         TRACE ("event loop now finished");
         edge_scroll_x = 0;
         edge_scroll_y = 0;
+        toggled_maximize=FALSE;
         gtk_main_quit ();
     }
 

@@ -20,6 +20,7 @@ raise_on_click=true
 raise_on_focus=false
 raise_with_any_button=true
 resize_opacity=100
+restore_on_move=true
 scroll_workspaces=true
 shadow_delta_height=0
 shadow_delta_width=0
