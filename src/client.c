@@ -4914,52 +4914,58 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     TRACE ("entering clientMove_event_filter");
 
     passdata->last_timestamp = stashEventTime (passdata->last_timestamp, xevent);
-    if ((passdata->use_keys) && (xevent->type == KeyPress))
+    if (xevent->type == KeyPress)
     {
-        if (!passdata->grab && params.box_move)
+        if (passdata->use_keys)
         {
-            MyXGrabServer ();
-            passdata->grab = TRUE;
-            clientDrawOutline (c);
-        }
-        if (params.box_move)
-        {
-            clientDrawOutline (c);
-        }
-        if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
-        {
-            c->x = c->x - 16;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
-        {
-            c->x = c->x + 16;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
-        {
-            c->y = c->y - 16;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
-        {
-            c->y = c->y + 16;
-        }
-        clientConstrainPos (c, FALSE);
+            if (!passdata->grab && params.box_move)
+            {
+                MyXGrabServer ();
+                passdata->grab = TRUE;
+                clientDrawOutline (c);
+            }
+            if (params.box_move)
+            {
+                clientDrawOutline (c);
+            }
+            if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
+            {
+                c->x = c->x - 16;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
+            {
+                c->x = c->x + 16;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
+            {
+                c->y = c->y - 16;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
+            {
+                c->y = c->y + 16;
+            }
+            clientConstrainPos (c, FALSE);
 
-        if (params.box_move)
-        {
-            clientDrawOutline (c);
-        }
-        else
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+            if (params.box_move)
+            {
+                clientDrawOutline (c);
+            }
+            else
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+            }
         }
     }
-    else if ((passdata->use_keys) && (xevent->type == KeyRelease))
+    else if (xevent->type == KeyRelease)
     {
-        if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+        if (passdata->use_keys)
         {
-            moving = FALSE;
+            if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+            {
+                moving = FALSE;
+            }
         }
     }
     else if (xevent->type == MotionNotify)
@@ -5042,12 +5048,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
         }
     }
-    else if (!passdata->use_keys && xevent->type == ButtonRelease)
+    else if (xevent->type == ButtonRelease)
     {
-        moving = FALSE;
+        if (!passdata->use_keys)
+        {
+            moving = FALSE;
+        }
     }
-    else if (xevent->type == UnmapNotify
-        && xevent->xunmap.window == c->window)
+    else if (xevent->type == UnmapNotify && xevent->xunmap.window == c->window)
     {
         moving = FALSE;
     }
@@ -5239,88 +5247,94 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     passdata->last_timestamp = stashEventTime (passdata->last_timestamp, xevent);
     if (xevent->type == KeyPress)
     {
-        int key_width_inc, key_height_inc;
-        int corner = -1;
-        
-        key_width_inc = c->size->width_inc;
-        key_height_inc = c->size->height_inc;
-        
-        if (key_width_inc < 10)
+        if (passdata->use_keys)
         {
-            key_width_inc = ((int) (10 / key_width_inc)) * key_width_inc;
-        }
+            int key_width_inc, key_height_inc;
+            int corner = -1;
 
-        if (key_height_inc < 10)
-        {
-            key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
-        }
+            key_width_inc = c->size->width_inc;
+            key_height_inc = c->size->height_inc;
 
-        if (!passdata->grab && params.box_resize)
-        {
-            MyXGrabServer ();
-            passdata->grab = TRUE;
-            clientDrawOutline (c);
-        }
-        if (params.box_resize)
-        {
-            clientDrawOutline (c);
-        }
-        /* Store previous height in case the resize hides the window behind the curtain */
-        prev_width = c->width;
-        prev_height = c->height;
+            if (key_width_inc < 10)
+            {
+                key_width_inc = ((int) (10 / key_width_inc)) * key_width_inc;
+            }
 
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
-            && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
-        {
-            c->height = c->height - key_height_inc;
-            corner = 4 + SIDE_BOTTOM;
-        }
-        else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
-            && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
-        {
-            c->height = c->height + key_height_inc;
-            corner = 4 + SIDE_BOTTOM;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
-        {
-            c->width = c->width - key_width_inc;
-            corner = 4 + SIDE_RIGHT;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
-        {
-            c->width = c->width + key_width_inc;
-            corner = 4 + SIDE_RIGHT;
-        }
-        if (c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
-        {
-            c->width = prev_width;
-        }
-        if (c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
-        {
-            c->height = prev_height;
-        }
-        if (corner >= 0)
-        {
-            clientConstrainRatio (c, c->width, c->height, corner);
-        }
-        if (params.box_resize)
-        {
-            clientDrawOutline (c);
-        }
-        else
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+            if (key_height_inc < 10)
+            {
+                key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
+            }
+
+            if (!passdata->grab && params.box_resize)
+            {
+                MyXGrabServer ();
+                passdata->grab = TRUE;
+                clientDrawOutline (c);
+            }
+            if (params.box_resize)
+            {
+                clientDrawOutline (c);
+            }
+            /* Store previous height in case the resize hides the window behind the curtain */
+            prev_width = c->width;
+            prev_height = c->height;
+
+            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+                && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
+            {
+                c->height = c->height - key_height_inc;
+                corner = 4 + SIDE_BOTTOM;
+            }
+            else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+                && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
+            {
+                c->height = c->height + key_height_inc;
+                corner = 4 + SIDE_BOTTOM;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
+            {
+                c->width = c->width - key_width_inc;
+                corner = 4 + SIDE_RIGHT;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
+            {
+                c->width = c->width + key_width_inc;
+                corner = 4 + SIDE_RIGHT;
+            }
+            if (c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
+            {
+                c->width = prev_width;
+            }
+            if (c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
+            {
+                c->height = prev_height;
+            }
+            if (corner >= 0)
+            {
+                clientConstrainRatio (c, c->width, c->height, corner);
+            }
+            if (params.box_resize)
+            {
+                clientDrawOutline (c);
+            }
+            else
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                wc.width = c->width;
+                wc.height = c->height;
+                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+            }
         }
     }
-    else if ((passdata->use_keys) && (xevent->type == KeyRelease))
+    else if (xevent->type == KeyRelease)
     {
-        if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+        if (passdata->use_keys)
         {
-            resizing = FALSE;
+            if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+            {
+                resizing = FALSE;
+            }
         }
     }
     else if (xevent->type == MotionNotify)
@@ -5458,10 +5472,12 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == ButtonRelease)
     {
-        resizing = FALSE;
+        if (!passdata->use_keys)
+        {
+            resizing = FALSE;
+        }
     }
-    else if ((xevent->type == UnmapNotify)
-        && (xevent->xunmap.window == c->window))
+    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
         resizing = FALSE;
     }
