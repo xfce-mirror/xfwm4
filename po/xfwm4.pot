@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-27 00:12+0200\n"
+"POT-Creation-Date: 2004-09-27 23:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -592,7 +592,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1707
+#: src/events.c:1704
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -602,27 +602,27 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:404
+#: src/main.c:414
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:409
+#: src/main.c:419
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:419
+#: src/main.c:429
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:427
+#: src/main.c:437
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:448
+#: src/main.c:458
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""

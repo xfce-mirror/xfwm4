@@ -968,7 +968,7 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
 }
 
 static void
-free_win_data (CWindow *cw)
+free_win_data (CWindow *cw, gboolean delete)
 {
 #if HAVE_NAME_WINDOW_PIXMAP
     if (cw->name_window_pixmap)
@@ -995,7 +995,7 @@ free_win_data (CWindow *cw)
         XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadowPict);
         cw->shadowPict = None;
     }
-    if (cw->damage != None)
+    if ((delete) && (cw->damage != None))
     {
         XDamageDestroy (myScreenGetXDisplay (cw->screen_info), cw->damage);
         cw->damage = None;
@@ -1017,6 +1017,11 @@ free_win_data (CWindow *cw)
     {
         XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderClip);
         cw->borderClip = None;
+    }
+    
+    if (delete)
+    {
+        g_free (cw);
     }
 }
 
@@ -1168,7 +1173,7 @@ unmap_win (CWindow *cw)
         add_damage (screen_info, cw->extents);
         cw->extents = None;
     }
-    free_win_data (cw);  
+    free_win_data (cw, FALSE);  
     screen_info->clipChanged = TRUE;
 }
 
@@ -1351,9 +1356,8 @@ destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
         {
             unmap_win (cw);
         }
-        free_win_data (cw);
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
-        g_free (cw);
+        free_win_data (cw, TRUE);
         TRACE ("window 0x%lx removed", id);    
     }
 }
@@ -1862,8 +1866,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     for (index = screen_info->cwindows; index; index = g_list_next (index))
     {
         CWindow *cw2 = (CWindow *) index->data;
-        free_win_data (cw2);
-        g_free (cw2);
+        free_win_data (cw2, TRUE);
         i++;
     }
     g_list_free (screen_info->cwindows);
