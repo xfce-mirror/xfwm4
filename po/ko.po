@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-06 22:24+0100\n"
-"PO-Revision-Date: 2004-12-15 17l:120900\n"
+"POT-Creation-Date: 2005-01-28 07:27+0100\n"
+"PO-Revision-Date: 2005-01-29 18:50+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -65,8 +65,6 @@ msgstr "이름 변경"
 #: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
 #: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
 #: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
-#: mcs-plugin/xfwm4_shortcuteditor.c:577 mcs-plugin/xfwm4_shortcuteditor.c:586
-#: mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid "Workspace %d"
 msgstr "작업공간 %d"
@@ -445,90 +443,71 @@ msgstr "작업 공간 추가"
 msgid "Delete workspace"
 msgstr "작업 공간 제거"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:603
+#: mcs-plugin/xfwm4_shortcuteditor.c:576
 msgid "Move window to next workspace"
 msgstr "창을 다음 작업 공간으로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:608
+#: mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Move window to previous workspace"
 msgstr "창을 이전 작업 공간으로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:613
+#: mcs-plugin/xfwm4_shortcuteditor.c:586
 msgid "Move window to upper workspace"
 msgstr "창을 위 쪽 작업 공간으로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:618
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 msgid "Move window to bottom workspace"
 msgstr "창을 아래 쪽 작업 공간으로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:623
+#: mcs-plugin/xfwm4_shortcuteditor.c:596
 msgid "Move window to left workspace"
 msgstr "창을 왼쪽 작업 공간으로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:628
+#: mcs-plugin/xfwm4_shortcuteditor.c:601
 msgid "Move window to right workspace"
 msgstr "창을 오른쪽 작업 공간으로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:633
+#: mcs-plugin/xfwm4_shortcuteditor.c:606
 msgid "Move window to workspace 1"
 msgstr "창을 작업 공간 1로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:638
+#: mcs-plugin/xfwm4_shortcuteditor.c:611
 msgid "Move window to workspace 2"
 msgstr "창을 작업 공간 2로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:643
+#: mcs-plugin/xfwm4_shortcuteditor.c:616
 msgid "Move window to workspace 3"
 msgstr "창을 작업 공간 3로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:648
+#: mcs-plugin/xfwm4_shortcuteditor.c:621
 msgid "Move window to workspace 4"
 msgstr "창을 작업 공간 4로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:653
+#: mcs-plugin/xfwm4_shortcuteditor.c:626
 msgid "Move window to workspace 5"
 msgstr "창을 작업 공간 5로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:658
+#: mcs-plugin/xfwm4_shortcuteditor.c:631
 msgid "Move window to workspace 6"
 msgstr "창을 작업 공간 6로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:663
+#: mcs-plugin/xfwm4_shortcuteditor.c:636
 msgid "Move window to workspace 7"
 msgstr "창을 작업 공간 7로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:668
+#: mcs-plugin/xfwm4_shortcuteditor.c:641
 msgid "Move window to workspace 8"
 msgstr "창을 작업 공간 8로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:673
+#: mcs-plugin/xfwm4_shortcuteditor.c:646
 msgid "Move window to workspace 9"
 msgstr "창을 작업 공간 9로 이동"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:678
-#, fuzzy
-msgid "Move window to workspace 10"
-msgstr "창을 작업 공간 1로 이동"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:683
-#, fuzzy
-msgid "Move window to workspace 11"
-msgstr "창을 작업 공간 1로 이동"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:688
-#, fuzzy
-msgid "Move window to workspace 12"
-msgstr "창을 작업 공간 1로 이동"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:693
-msgid "Show desktop"
-msgstr ""
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:920
+#: mcs-plugin/xfwm4_shortcuteditor.c:853
 msgid "Cannot open the theme directory !"
 msgstr "테마 디렉토리를 열수 없습니다 !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:939
+#: mcs-plugin/xfwm4_shortcuteditor.c:872
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -537,7 +516,7 @@ msgstr ""
 "%s를(을) 열 수 없습니다 : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:954 mcs-plugin/xfwm4_shortcuteditor.c:965
+#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -546,11 +525,11 @@ msgstr ""
 "%s에 기록할 수 없습니다 : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1015
+#: mcs-plugin/xfwm4_shortcuteditor.c:948
 msgid "Select command"
 msgstr "명령 선택"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1161
+#: mcs-plugin/xfwm4_shortcuteditor.c:1094
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -558,35 +537,35 @@ msgstr ""
 "해당 단축키가 이미 사용 중이군요 !\n"
 "그래도 사용하실랍니까?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1224
+#: mcs-plugin/xfwm4_shortcuteditor.c:1157
 msgid "Compose shortcut for :"
 msgstr "단축키 구성 대상 : "
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1227
-#: mcs-plugin/xfwm4_shortcuteditor.c:1455
+#: mcs-plugin/xfwm4_shortcuteditor.c:1160
+#: mcs-plugin/xfwm4_shortcuteditor.c:1388
 msgid "Compose shortcut"
 msgstr "단축키 구성"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1229
-#: mcs-plugin/xfwm4_shortcuteditor.c:1457
+#: mcs-plugin/xfwm4_shortcuteditor.c:1162
+#: mcs-plugin/xfwm4_shortcuteditor.c:1390
 msgid "No shortcut"
 msgstr "단축키 없음"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1351
+#: mcs-plugin/xfwm4_shortcuteditor.c:1284
 msgid "Choose command"
 msgstr "명령 선택"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1353
+#: mcs-plugin/xfwm4_shortcuteditor.c:1286
 msgid "Command :"
 msgstr "명령 :"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1389
+#: mcs-plugin/xfwm4_shortcuteditor.c:1322
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "그런 명령이 있는 지 아니면, 실행화일인지 확인해 보십시오!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1452
+#: mcs-plugin/xfwm4_shortcuteditor.c:1385
 msgid "Compose shortcut for command :"
 msgstr "다음 명령에 대한 단축키 구성 :"
 
