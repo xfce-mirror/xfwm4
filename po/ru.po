@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-01 14:49+0100\n"
+"POT-Creation-Date: 2005-01-09 13:59+0100\n"
 "PO-Revision-Date: 2005-01-08 16:44+0500\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -25,7 +25,8 @@ msgid "Workspace Margins"
 msgstr "Поля рабочего места"
 
 #: mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Поля - это области экрана, где невозможно размещать окна"
 
 #: mcs-plugin/margins.c:168
@@ -681,4 +682,3 @@ msgstr "Переключиться на ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Неизвестное приложение!"
-

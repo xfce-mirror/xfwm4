@@ -108,10 +108,6 @@ Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
-doc/fr/Makefile
-doc/fr/images/Makefile
-doc/it/Makefile
-doc/it/images/Makefile
 defaults/Makefile
 icons/Makefile
 icons/48x48/Makefile

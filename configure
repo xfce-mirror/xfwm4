@@ -25253,7 +25253,7 @@ echo "${ECHO_T}yes" >&6
   fi
 
 
-                                                                                                                                                                                                                                                                              ac_config_files="$ac_config_files xfwm4.spec Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile doc/it/Makefile doc/it/images/Makefile defaults/Makefile icons/Makefile icons/48x48/Makefile icons/scalable/Makefile mcs-plugin/Makefile po/Makefile.in src/Makefile themes/Makefile themes/breeze/Makefile themes/default/Makefile themes/default.keys/Makefile themes/default-4.0/Makefile themes/opta/Makefile themes/symphony/Makefile themes/tyrex/Makefile themes/therapy/Makefile themes/waza/Makefile themes/wildbush/Makefile"
+                                                                                                                                                                                                                                      ac_config_files="$ac_config_files xfwm4.spec Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile defaults/Makefile icons/Makefile icons/48x48/Makefile icons/scalable/Makefile mcs-plugin/Makefile po/Makefile.in src/Makefile themes/Makefile themes/breeze/Makefile themes/default/Makefile themes/default.keys/Makefile themes/default-4.0/Makefile themes/opta/Makefile themes/symphony/Makefile themes/tyrex/Makefile themes/therapy/Makefile themes/waza/Makefile themes/wildbush/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -25837,10 +25837,6 @@ do
   "doc/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
   "doc/C/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/C/Makefile" ;;
   "doc/C/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/C/images/Makefile" ;;
-  "doc/fr/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/fr/Makefile" ;;
-  "doc/fr/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/fr/images/Makefile" ;;
-  "doc/it/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/it/Makefile" ;;
-  "doc/it/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/it/images/Makefile" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "icons/Makefile" ) CONFIG_FILES="$CONFIG_FILES icons/Makefile" ;;
   "icons/48x48/Makefile" ) CONFIG_FILES="$CONFIG_FILES icons/48x48/Makefile" ;;
