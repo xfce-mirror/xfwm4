@@ -1,0 +1,325 @@
+.\" t
+.\" @(#)xfwm 3.0.0 06/12/99
+.de EX		\"Begin example
+.ne 5
+.if n .sp 1
+.if t .sp .5
+.nf
+.in +.5i
+..
+.de EE
+.fi
+.in -.5i
+.if n .sp 1
+.if t .sp .5
+..
+.ta .3i .6i .9i 1.2i 1.5i 1.8i
+.TH xfwm 3.0 "12-Jun-1999"
+.UC
+.SH NAME
+xfwm \- XFce Window Manager
+.SH SYNOPSIS
+\fBxfwm\fP [ \fIoptions\fP ]
+.SH DESCRIPTION
+\fIxfwm\fP is a window manager for X11.  It is intially based on \fIfvwm2\fP 
+from Robert Nation, and \fIfvwm\fP was itself a derivated of \fItwm\fP, 
+redesigned to minimize memory consumption, provide a 3-D look to window frames, 
+and provide a simple virtual desktop.
+
+.SH COPYRIGHTS
+Since \fIxfwm\fP and \fIfvwm\fP are derived from \fItwm\fP code it
+shares \fItwm\fP's copyrights.  Since nearly every line of twm code 
+has been changed, the \fItwm\fP copyright has been removed from most 
+of the individual code files. xfwm's copyright is considered to be the 
+same as \fItwm\fP's.
+
+\fItwm\fP is copyright 1988 by Evans and Sutherland Computer
+Corporation, Salt Lake City, Utah, and 1989 by the Massachusetts
+Institute of Technology, Cambridge, Massachusetts, All rights
+reserved. 
+
+fvwm is also copyright 1993 and 1994 by Robert Nation.
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation, and that the names of Evans & Sutherland and
+M.I.T. not be used in advertising in publicity pertaining to
+distribution of the software without specific, written prior
+permission.
+
+ROBERT NATION, CHARLES HINES, EVANS & SUTHERLAND AND M.I.T. 
+DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING 
+ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL 
+EVANS & SUTHERLAND OR M.I.T. BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTUOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+
+.SH THE VIRTUAL DESKTOP
+\fIxfwm\fP provides multiple virtual desktops for users who wish to
+use them.  Several distinct desktops can be accessed (concept:
+one desktop for each project, or one desktop for each application,
+when view applications are distinct).
+
+"Sticky" windows are windows which transcend the virtual desktop by
+"Sticking to the screen's glass."  They always stay put on the screen.
+This is convenient for things like clocks and xbiff's, so you only need
+to run one such gadget and it always stays with you.  Icons can also be
+made to stick to the glass, if desired.
+
+Window geometries are specified relative to the current viewport.  That
+is:
+.EX
+xterm -geometry +0+0
+.EE
+will always show up in the upper-left hand
+corner of the visible portion of the screen.  It is permissible to
+specify geometries which place windows on the virtual desktop, but off
+the screen.  For example, if the visible screen is 1000 by 1000 pixels,
+and the desktop size is 3x3, and the current viewport is at the upper
+left hand corner of the desktop, then invoking:
+.EX
+xterm -geometry +1000+1000
+.EE
+will place the window just off of the lower right hand corner of the
+screen.
+
+Some applications that understand standard Xt command line arguments
+and X resources, like xterm and xfontsel, allow the user to specify
+the start-up desk on the command line:
+.EX
+xterm -xrm "*Desk:1"
+.EE
+will start an xterm on desk number 1. Not all applications understand
+this option, however.
+
+You could achieve the same result with the following line in your .Xdefaults
+file:
+.EX
+XTerm*Desk: 1
+.EE
+
+.SH INITIALIZATION
+During initialization, \fIxfwm\fP will search for a configuration file
+which describes key and button bindings, and a few other things.  The
+format of these files will be described later.  First, \fIxfwm\fP will
+search for a file named .xfwmrc in the users home directory.
+
+If this file is not present, \fIxfwm\fP will still work, but without some nice
+user friendly definitions.
+
+\fIxfwm\fP automatically starts up \fIxfce\fP (The panel), \fIxfbd\fP 
+(the Backdrop manager), \fIxfmouse\fP (mouse settings) and \fIxfsound\fP (sound).
+
+\fIxfwm\fP will set two environment variables which will be inherited
+by its children.  These are $DISPLAY which describes the display on
+which \fIxfwm\fP is running.  $DISPLAY may be unix:0.0 or :0.0, which
+doesn't work too well when passed through rsh to another machine, so
+$HOSTDISPLAY will also be set and will use a network-ready description
+of the display.  $HOSTDISPLAY will always use the TCP/IP transport
+protocol (even for a local connection) so $DISPLAY should be used for
+local connections, as it may use Unix-domain sockets, which are
+faster.
+
+\fIxfwm\fP has a two special functions for initialization:
+InitFunction and RestartFunction, which are executed during
+Initialization and Restarts (respectively).  These may be customized
+in the user's rc file via the AddToFunc facility (described later) to
+start up modules, xterms, or whatever you'd like have started by
+\fIwm\fP.
+
+\fIxfwm\fP also has a special exit function: ExitFunction, executed
+when exiting or restarting before actually quitting or anything else.
+It could be used to explicitly kill modules, etc.
+
+.SH MODULES
+A module is a separate program which runs as a separate Unix process
+but transmits commands to \fIxfwm\fP to execute.  Users can write
+their own modules to do any weird or bizarre manipulations without
+bloating or affecting the integrity of \fIxfwm\fP itself.
+
+Modules MUST be spawned by \fIxfwm\fP so that it can set up two pipes for
+\fIxfwm\fP and the module to communicate with.  The pipes will already be
+open for the module when it starts and the file descriptors for the
+pipes are provided as command line arguments.
+
+Modules can be spawned during \fIxfwm\fP at any time during the X
+session by use of the Module built-in command.  Modules can exist for
+the duration of the X session, or can perform a single task and exit.
+If the module is still active when \fIxfwm\fP is told to quit, then
+\fIxfwm\fP will close the communication pipes and wait to receive a
+SIGCHLD from the module, indicating that it has detected the pipe
+closure and has exited.  If modules fail to detect the pipe closure
+\fIxfwm\fP will exit after approximately 30 seconds anyway.  The
+number of simultaneously executing modules is limited by the operating
+system's maximum number of simultaneously open files, usually between
+60 and 256.
+
+Modules simply transmit text commands to the \fIxfwm\fP built-in
+command engine.  Text commands are formatted just as in the case of a
+mouse binding in the .xfwmrc setup file.  Certain auxiliary
+information is also transmitted, as in the sample module xfwmButtons.
+The xfwmButtons module is documented in its own man page.
+
+.SH ICCCM COMPLIANCE
+\fIxfwm\fP attempts to be ICCCM 1.1 compliant.  In addition, ICCCM
+states that it should be possible for applications to receive ANY
+keystroke, which is not consistent with the keyboard shortcut approach
+used in \fIxfwm\fP and most other window managers.
+
+.SH OPTIONS
+These are the command line options that are recognized by \fIxfwm\fP:
+.IP "\fB-f\fP \fIconfig_file\fP"
+Causes \fIxfwm\fP to Read \fIconfig_file\fP instead of ".xfwmrc" 
+as its initialization file.  This is equivalent to \fB-cmd\fP "Read \fIconfig_file\fP".
+.IP "\fB-cmd\fP \fIconfig_command\fP"
+Causes \fIxfwm\fP to use \fIconfig_command\fP instead of "Read .xfwmrc" 
+as its initialization command.
+(Note that up to 10 \fB-f\fP and \fB-cmd\fP parameters can be given,
+and they are executed in the order specified.)
+.IP "\fB-d\fP \fIdisplayname\fP"
+Manage the display called "displayname" instead of the name obtained from 
+the environment variable $DISPLAY.
+.IP "\fB-s\fP"
+On a multi-screen display, run \fIxfwm\fP only on the screen named in
+the $DISPLAY environment variable or provided through the -d
+option. Normally, \fIxfwm\fP will attempt to start up on all screens
+of a multi-screen display.
+.IP "\fB-version\fP"
+Print the version of \fIxfwm\fP to stderr.
+.IP "\fB-sync\fP"
+Force \fIxfwm\fP to run in synchronized mode. This can drastically reduce graphics
+performances.
+.IP "\fB-noxfce\fP"
+Avoid \fIxfwm\fP from staring the \fIxfce\fP panel.
+
+.SH CONFIGURATION FILES
+The configuration file is used to describe mouse and button bindings,
+colors, the virtual display size, and related items.  The
+initialization configuration file is typically called ".xfwmrc".  By
+using the "Read" built-in, it is easy to read in new configuration
+files as you go.
+
+Lines beginning with '#' will be ignored by \fIxfwm\fP.  Lines
+starting with '*' are expected to contain module configuration
+commands (rather than configuration commands for \fIxfwm\fP itself).
+
+xfwm makes no distinction between configuration commands and built-in
+commands, so anything mentioned in the built-in commands section  can
+be placed on a line by itself for xfwm to execute as it reads the
+configuration file, or it can be placed as an executable command in a
+menu or bound to a mouse button or a keyboard key.  It is left as an
+exercise for the user to decide which function make sense for
+initialization and which ones make sense for run-time.
+
+.SH BUILT IN FUNCTIONS
+\fIxfwm\fP supports a set of built-in functions which can be bound to
+keyboard or mouse buttons.  If xfwm expects to find a built-in function
+in a command, but fails, it will check to see if the specified command
+should have been "Function (rest of command)" or "Module (rest of
+command)".  This allows complex functions or modules to be invoked in a
+manner which is fairly transparent to the configuration file.
+
+Example: the .xfwmrc file contains the line "HelpMe".  xfwm will look
+for a built-in command called "HelpMe", and will fail. Next it will
+look for a user-defined complex function called "HelpMe".  If no such
+user defined function exists, xfwm will try to execute a module called
+"HelpMe".
+
+.SH DEFAULT VALUES
+
+Here come the default values. These values can be augmented by all user
+definitions thru .xfwmrc configuration file.
+
+.nf
+XORValue 0
+ModulePath $PATH
+
+DeskTopSize 1x1
+
+MenuFont   fixed
+IconFont   fixed
+WindowFont fixed
+
+# Gradient title bar
+TitleStyle      Active   Gradient #c7686b #aeb2c3
+TitleStyle      Inactive Gradient #606060 #a0a0a0
+# If Gradient consumes too much colors for your screen, try Solid
+#TitleStyle      Active   Solid #c7686b
+#TitleStyle      Inactive Solid #606060
+
+ActiveColor   #ffffe0 #aeb2c3
+InactiveColor #000000 #a0a0a0
+MenoColor     #000000 #aeb2c3 #ffffe0 #c7686b
+CursorColor red white
+
+AnimateWin On
+FocusMode ClickToFocus
+#FocusMode FollowMouse
+
+Style "*" Title, BorderWidth 5
+Style "*" RandomPlacement, SmartPlacement
+Style "XFce*" Sticky
+Style "XFbd*" Sticky
+Style "Popup*" Sticky
+
+AddToMenu builtin_menu "Builtin Menu" Title
++ "Exit xfwm" Quit
+
+AddToFunc WindowListFunc "I" WindowId $0 Iconify -1
++ "I" WindowId $0 Focus
++ "I" WindowId $0 Raise
++ "I" WindowId $0 WarpToWindow 5p 5p
+
+AddToFunc "InitFunction" 
++ "I" Module xfce
++ "I" Desk 0
++ "I" Exec xfbd -d
+
+AddToFunc "RestartFunction"
++ "I" Module xfce
++ "I" Desk 0
++ "I" Exec xfbd -d
+Mouse 0 T  A Move
+Mouse 0 1  A Close
+Mouse 0 2  A Maximize
+Mouse 0 4  A Iconify
+Mouse 0 FS A Resize
+Mouse 1 R  A Popup builtin_menu
+Mouse 1 I  A Iconify
+Mouse 2 I  A Move
+Mouse 3 I  A Move
+Mouse 3 R  A WindowList
+.fi
+
+.SH SUPPLIED CONFIGURATION
+A default configuration file, xfwmrc, is supplied with the \fIxfwm\fP
+distribution.  It is well commented and can be used as a source of
+examples for \fIxfwm\fP configuration.
+
+.SH USE ON MULTI-SCREEN DISPLAYS
+If the -s command line argument is not given, \fIxfwm\fP will
+automatically start up on every screen on the specified display.
+After \fIxfwm\fP starts each screen is treated independently.
+Restarts of \fIxfwm\fP need to be performed separately on each screen.
+The use of EdgeScroll 0 0 is strongly recommended for multi-screen
+displays.
+
+You may need to quit on each screen to quit from the X session
+completely.
+
+.SH BUGS
+
+Bug reports can be sent to fourdan@xfce.org.
+
+.SH AUTHOR
+
+xfwm is initially based on Fvwm2, deeply modified by Olivier Fourdan 
+(fourdan@xfce.org) for XFce needs. Xfwm and Fvwm2 codes are now very different.
+
+Robert Nation with help from many people, based on \fItwm\fP code,
+which was written by Tom LaStrange. 

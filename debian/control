@@ -1,0 +1,24 @@
+Source: xfwm4
+Section: x11
+Priority: optional
+Maintainer: Martin Loschwitz <madkiss@madkiss.org>
+Build-Depends: debhelper (>> 3.0.0), libatk1.0-dev, libglib2.0-dev, libgtk2.0-dev, libpango1.0-dev, libxfcegui-dev
+Standards-Version: 3.5.7
+
+Package: xfwm4
+Architecture: any
+Depends: ${shlibs:Depends}
+Recommends: xfwm4-themes (= ${Source-Version})
+Provides: x-window-manager
+Description: window manager of the XFce project
+ This package contains xfwm4 which is scheduled to be the window manager
+ of the Xfce project, version 4. Therefore, it is designed to run with
+ the Xfce panel. Of course, you can run xfwm4 also with any other WM or
+ even without one.
+
+Package: xfwm4-themes
+Architecture: all
+Depends: xfwm4 (= ${Source-Version})
+Description: Theme files for xfwm4
+ This package contains various theme files for xfwm4, the next-generation 
+ window manager of the Xfce project.
