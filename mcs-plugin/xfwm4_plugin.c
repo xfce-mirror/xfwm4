@@ -1270,8 +1270,6 @@ create_dialog (McsPlugin * mcs_plugin)
     dialog->mcs_plugin = mcs_plugin;
 
     dialog->xfwm4_dialog = gtk_dialog_new ();
-    gtk_window_set_position (GTK_WINDOW (dialog->xfwm4_dialog),
-                             GTK_WIN_POS_CENTER);
     gtk_window_set_title (GTK_WINDOW (dialog->xfwm4_dialog),
                           _("Window Manager"));
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog->xfwm4_dialog), FALSE);
@@ -1817,6 +1815,8 @@ setup_dialog (Itf * itf)
     g_signal_connect (G_OBJECT (itf->box_resize_check), "toggled",
                       G_CALLBACK (cb_box_resize_changed), itf);
 
+    gtk_window_set_position (GTK_WINDOW (itf->xfwm4_dialog),
+                             GTK_WIN_POS_CENTER);
     gtk_widget_show (itf->xfwm4_dialog);
 }
 

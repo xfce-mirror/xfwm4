@@ -2753,6 +2753,28 @@ clientFrame (Window w, gboolean startup)
         return;
     }
     
+    MyXGrabServer ();
+    gdk_error_trap_push ();
+
+    valuemask = CWEventMask;
+    attributes.event_mask = (CLIENT_EVENT_MASK);
+    XChangeWindowAttributes (dpy, w, valuemask, &attributes);
+    if (shape)
+    {
+        XShapeSelectInput (dpy, w, ShapeNotifyMask);
+    }
+    XSetWindowBorderWidth (dpy, w, 0);
+
+    XGrabButton (dpy, AnyButton, AnyModifier, w, FALSE,
+        POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
+
+    MyXUngrabServer ();
+    if (gdk_error_trap_pop ())
+    {
+        TRACE ("Client has vanished");
+        return;
+    }
+
     c->window = w;
     getWindowName (dpy, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
@@ -2772,6 +2794,10 @@ clientFrame (Window w, gboolean startup)
     c->old_y = c->y;
     c->old_width = c->width;
     c->old_height = c->height;
+    c->size->x = c->x;
+    c->size->y = c->y;
+    c->size->width = c->width;
+    c->size->height = c->height;
     c->fullscreen_old_x = c->x;
     c->fullscreen_old_y = c->y;
     c->fullscreen_old_width = c->width;
@@ -2890,38 +2916,17 @@ clientFrame (Window w, gboolean startup)
      */
     clientApplyInitialState (c);
 
-    MyXGrabServer ();
-    if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width,
-            &dummy_height, &dummy_bw, &dummy_depth) == 0)
-    {
-        clientFree (c);
-        MyXUngrabServer ();
-        return;
-    }
-
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame =
         XCreateWindow (dpy, root, frameX (c), frameY (c), frameWidth (c),
         frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
         valuemask, &attributes);
-
-    valuemask = CWEventMask;
-    attributes.event_mask = (CLIENT_EVENT_MASK);
-    XChangeWindowAttributes (dpy, c->window, valuemask, &attributes);
-    if (shape)
-    {
-        XShapeSelectInput (dpy, c->window, ShapeNotifyMask);
-    }
-    XSetWindowBorderWidth (dpy, c->window, 0);
     XReparentWindow (dpy, c->window, c->frame, frameLeft (c), frameTop (c));
 
     clientAddToList (c);
     clientSetNetActions (c);
     clientGrabKeys (c);
-    XGrabButton (dpy, AnyButton, AnyModifier, c->window, FALSE,
-        POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-    MyXUngrabServer ();
 
     myWindowCreate (dpy, c->frame, &c->sides[SIDE_LEFT],
         resize_cursor[4 + SIDE_LEFT]);
@@ -2995,6 +3000,8 @@ clientUnframe (Client * c, gboolean remap)
     {
         last_raise = NULL;
     }
+
+    gdk_error_trap_push ();
     clientGravitate (c, REMOVE);
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
@@ -3027,6 +3034,7 @@ clientUnframe (Client * c, gboolean remap)
     {
         workspaceUpdateArea (margins, gnome_margins);
     }
+    gdk_error_trap_pop ();
     clientFree (c);
 }
 
@@ -3050,7 +3058,6 @@ clientFrameAll ()
 
     clientSetFocus (NULL, FALSE);
     XSync (dpy, FALSE);
-    MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -3060,8 +3067,6 @@ clientFrameAll ()
             clientFrame (wins[i], TRUE);
         }
     }
-    MyXUngrabServer ();
-    /* Just get rid of EnterNotify events caused by reparenting */
     while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
         ;
     if (wins)
@@ -3081,8 +3086,8 @@ clientUnframeAll ()
 
     TRACE ("entering clientUnframeAll");
 
-    MyXGrabServer ();
     clientSetFocus (NULL, FALSE);
+    XSync (dpy, 0);
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
@@ -3092,7 +3097,6 @@ clientUnframeAll ()
             clientUnframe (c, TRUE);
         }
     }
-    MyXUngrabServer ();
     if (wins)
     {
         XFree (wins);

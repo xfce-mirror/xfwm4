@@ -217,8 +217,6 @@ run_dialog (McsPlugin * mcs_plugin)
         gtk_dialog_new_with_buttons (_("Adjust workspace margins"), NULL,
                                      GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE,
                                      GTK_RESPONSE_OK, NULL);
-
-    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
@@ -354,5 +352,6 @@ run_dialog (McsPlugin * mcs_plugin)
     g_signal_connect (G_OBJECT (spin), "value-changed",
                       G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
+    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
     gtk_widget_show (dialog);
 }
