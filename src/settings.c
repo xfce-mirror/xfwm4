@@ -1025,6 +1025,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_windows", NULL, TRUE},
         {"wrap_workspaces", NULL, TRUE},
         {"wrap_layout", NULL, TRUE},
+        {"scroll_workspaces", NULL, TRUE},
         {"wrap_resistance", NULL, TRUE},
         /* Keys */
         {"add_workspace_key", NULL, TRUE},
@@ -1181,6 +1182,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("wrap_layout", rc));
     screen_info->params->wrap_windows =
         !g_ascii_strcasecmp ("true", getValue ("wrap_windows", rc));
+    screen_info->params->scroll_workspaces =
+        !g_ascii_strcasecmp ("true", getValue ("scroll_workspaces", rc));
     screen_info->params->wrap_resistance = abs (TOINT (getValue ("wrap_resistance", rc)));
 
     freeRc (rc);

@@ -877,7 +877,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         return;
     }
     
-    if ((ev->window == screen_info->xroot) && ((ev->button == Button4) || (ev->button == Button5)))
+    if ((ev->window == screen_info->xroot) && (screen_info->params->scroll_workspaces)
+            && ((ev->button == Button4) || (ev->button == Button5)))
     {
         rootScrollButton (display_info, ev);
     }

@@ -2823,13 +2823,9 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
 
-#if 0    
-        if ((display_info->nb_screens == 1) && (screen_info->workspace_count > 1) && !clientIsTransientOrModal (c))
-#else
         if ((screen_info->workspace_count > 1) && !clientIsTransientOrModal (c))
-#endif
         {
-            if (screen_info->workspace_count && screen_info->params->wrap_windows && screen_info->params->wrap_resistance)
+            if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
             {
                 int msx, msy, max;
 
@@ -2848,14 +2844,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 if (edge_scroll_x > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_x = 0;
-                    if (msx == 0)
+                    if ((msx == 0) && (screen_info->current_ws > 0))
                     {
                         XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0,
                                       max - 10, msy);
                         msx = xevent->xmotion.x_root = max - 10;
                         workspaceSwitch (screen_info, screen_info->current_ws - 1, c);
                     }
-                    else if (msx == max)
+                    else if ((msx == max) && (screen_info->current_ws < (screen_info->workspace_count - 1)))
                     {
                         XWarpPointer (display_info->dpy, None, screen_info->xroot, 
                                       0, 0, 0, 0, 10, msy);

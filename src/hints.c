@@ -420,15 +420,30 @@ getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout *
             rows = data[2];
             start = (items_read >= 4) ? data[3] : NET_WM_TOPLEFT;
 
-            if (orientation > NET_WM_ORIENTATION_VERT) break;
-            if (start > NET_WM_BOTTOMLEFT) break;
-            if ((rows == 0) && (cols == 0)) break;
+            if (orientation > NET_WM_ORIENTATION_VERT) 
+	    {
+	        break;
+            }
+	    
+	    if (start > NET_WM_BOTTOMLEFT)
+	    {
+	        break;
+            }
+	    
+            if ((rows == 0) && (cols == 0))
+	    {
+	        break;
+            }
 
             if (rows == 0)
+	    {
                 rows = (ws_count-1) / cols + 1;
+            }
 
             if (cols == 0)
+	    {
                 cols = (ws_count-1) / rows + 1;
+            }
 
             layout->orientation = orientation;
             layout->cols = cols;
