@@ -1,7 +1,13 @@
 /* config.h.in.  Generated from configure.in by autoheader.  */
 
-/* "debug" */
+/* Define to 1 for debug. */
 #undef DEBUG
+
+/* Define glib required version. */
+#undef GLIB_REQUIRED_VERSION
+
+/* Define gtk required version. */
+#undef GTK_REQUIRED_VERSION
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
@@ -57,6 +63,9 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
+/* Define libxfcegui4 required version. */
+#undef LIBXFCEGUI4_REQUIRED_VERSION
+
 /* Name of package */
 #undef PACKAGE
 
@@ -74,6 +83,9 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
+
+/* Define pango required version. */
+#undef PANGO_REQUIRED_VERSION
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
