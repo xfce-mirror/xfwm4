@@ -236,6 +236,6 @@ int main(int argc, char **argv)
     initialize(argc, argv);
     gtk_main();
     cleanUp();
-    DBG("Window manager exits cleanly\n");
+    g_print("xfwm4 has quit\n");
     return 0;
 }
