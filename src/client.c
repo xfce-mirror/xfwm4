@@ -1259,6 +1259,8 @@ static inline void clientComputeStackList(Client * c, Client * sibling, XWindowC
 
 static inline void clientConstraintPos(Client * c)
 {
+    int cx, cy, left, right, top, bottom;
+
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
@@ -1268,21 +1270,28 @@ static inline void clientConstraintPos(Client * c)
         return;
     }
 
-    if((c->x + c->width) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT])
+    cx = frameX(c) + (frameWidth(c) / 2);
+    cy = frameY(c) + (frameHeight(c) / 2);
+    left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
+    right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
+    top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
+    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+
+    if((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left)
     {
-        c->x = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT] - c->width;
+        c->x = MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left - c->width;
     }
-    else if((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+    else if((c->x + CLIENT_MIN_VISIBLE) > MyDisplayMaxX(dpy, screen, cx, cy) - right)
     {
-        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
+        c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
     }
-    if(frameY(c) < (int)margins[MARGIN_TOP])
+    if(c->y + c->height < MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top)
     {
-        c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+        c->y = MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top - c->height;
     }
-    else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+    else if((c->y + CLIENT_MIN_VISIBLE) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom)
     {
-        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
+        c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
     }
 }
 
@@ -2757,14 +2766,14 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 {
                     c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
                 }
-                if(abs(frameY(c) - top - MyDisplayY(cx, cy)) < snap_width)
+                else if(abs(frameY(c) - MyDisplayY(cx, cy)) < snap_width + top)
                 {
                     c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
                 }
             }
             else
             {
-                if(frameY(c) < MyDisplayY(cx, cy) + top)
+                if(abs(frameY(c) - MyDisplayY(cx, cy)) < top)
                 {
                     c->y = frameTop(c) + MyDisplayY(cx, cy) + top;
                 }
@@ -2929,10 +2938,18 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     Client *c = passdata->c;
     gboolean resizing = TRUE;
     XWindowChanges wc;
-    int prev_y = 0;
-    int prev_height = 0;
+    int prev_y = 0, prev_x = 0;
+    int prev_height = 0, prev_width = 0;
+    int cx, cy, left, right, top, bottom;
 
     DBG("entering clientResize_event_filter\n");
+
+    cx = frameX(c) + (frameWidth(c) / 2);
+    cy = frameY(c) + (frameHeight(c) / 2);
+    left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
+    right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
+    top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
+    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
 
     if(xevent->type == KeyPress)
     {
@@ -2946,6 +2963,9 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             clientDrawOutline(c);
         }
+        /* Store previous height in case the resize hides the window behind the curtain */
+        prev_width = c->width;
+        prev_height = c->height;
         if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
         {
             if(xevent->xkey.keycode == keys[KEY_MOVE_UP].keycode)
@@ -2967,6 +2987,14 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
             {
                 c->width = c->width + (clientGetWidthInc(c) < 10 ? 10 : clientGetWidthInc(c));
             }
+        }
+	if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+        {
+            c->width = prev_width;
+        }
+	if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+        {
+            c->height = prev_height;
         }
         if(box_resize)
         {
@@ -3005,7 +3033,9 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         passdata->oldw = c->width;
         passdata->oldh = c->height;
         /* Store previous values in case the resize puts the window title off bounds */
+        prev_x = c->x;
         prev_y = c->y;
+        prev_width = c->width;
         prev_height = c->height;
         if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
         {
@@ -3039,12 +3069,41 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
         {
             c->y = c->y - (c->height - passdata->oldh);
         }
-        if(frameY(c) < (int)margins[MARGIN_TOP])
+        if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_TOP_RIGHT))
         {
-            /* We've made an illegal move, revert... */
-            c->y = prev_y;
-            c->height = prev_height;
+	    if ((frameY(c) < MyDisplayY(cx, cy) + top) || (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
+	    {
+        	c->y = prev_y;
+        	c->height = prev_height;
+	    }
+	    if (c->y > MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE)
+	    {
+        	c->y = prev_y;
+        	c->height = prev_height;
+	    }
         }
+	else if ((passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_BOTTOM))
+        {
+            if (c->y + c->height < MyDisplayY(cx, cy) + top + CLIENT_MIN_VISIBLE)
+	    {
+        	c->height = prev_height;
+	    }
+        }
+        if((passdata->corner == CORNER_TOP_LEFT) || (passdata->corner == CORNER_BOTTOM_LEFT) || (passdata->corner == 4 + SIDE_LEFT))
+        {
+	    if (c->x > MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE)
+	    {
+        	c->x = prev_x;
+        	c->width = prev_width;
+	    }
+	}
+        else if((passdata->corner == CORNER_TOP_RIGHT) || (passdata->corner == CORNER_BOTTOM_RIGHT) || (passdata->corner == 4 + SIDE_RIGHT))
+        {
+	    if (c->x + c->width < MyDisplayX(cx, cy) + left + CLIENT_MIN_VISIBLE)
+	    {
+        	c->width = prev_width;
+	    }
+	}
         if(box_resize)
         {
             clientDrawOutline(c);
