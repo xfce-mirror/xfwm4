@@ -123,7 +123,6 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         total += 10;
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
-            stashEventTime (ev);
             if (ev->xbutton.button == button)
             {
                 clicks++;
@@ -134,7 +133,6 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 ev))
         {
-            stashEventTime (ev);
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
             t1 = ev->xmotion.time;
@@ -267,9 +265,7 @@ handleMotionNotify (XMotionEvent * ev)
                 workspaceSwitch (workspace + 1, NULL);
             }
             while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-            {
-                stashEventTime ((XEvent *) ev);
-            }
+                ; /* VOID */
         }
     }
 }
@@ -800,7 +796,7 @@ handleButtonPress (XButtonEvent * ev)
     }
     else
     {
-        XUngrabPointer (dpy, getLastEventTime());
+        XUngrabPointer (dpy, CurrentTime);
         XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask,
             (XEvent *) ev);
     }
@@ -879,7 +875,6 @@ handleMapNotify (XMapEvent * ev)
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
         {
             CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAP_PENDING);
-            clientFocusNew(c);
         }
     }
 }
@@ -1472,7 +1467,6 @@ handleEvent (XEvent * ev)
     TRACE ("entering handleEvent");
 
     sn_process_event (ev);
-    stashEventTime (ev);
     switch (ev->type)
     {
         case MotionNotify:

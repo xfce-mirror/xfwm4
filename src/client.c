@@ -3247,6 +3247,10 @@ clientFrame (Window w, gboolean recapture)
             {
                 clientSortRing(c);
             }
+            else
+            {
+                clientFocusNew(c);
+            }
         }
     }
     else
@@ -4595,7 +4599,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         {
             clientSortRing(c);
         }
-        XSetInputFocus (dpy, c->window, RevertToNone, getLastEventTime());
+        XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
         frameDraw (c, FALSE, FALSE);
         data[0] = c->window;
     }
@@ -4603,7 +4607,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     {
         TRACE ("setting focus to none");
         client_focus = NULL;
-        XSetInputFocus (dpy, gnome_win, RevertToNone, getLastEventTime());
+        XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
         data[0] = None;
     }
     if (c2)
@@ -4823,7 +4827,6 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientMove_event_filter");
 
-    stashEventTime (xevent);
     if (xevent->type == KeyPress)
     {
         if (!passdata->grab && params.box_move)
@@ -4877,9 +4880,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (dpy,
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
-        {
-            stashEventTime (xevent);
-        }
+            ; /* VOID */
 
         if (xevent->type == ButtonRelease)
         {
@@ -5049,7 +5050,7 @@ clientMove (Client * c, XEvent * e)
     }
     else
     {
-        timestamp = getLastEventTime();
+        timestamp = CurrentTime;
         getMouseXY (root, &passdata.mx, &passdata.my);
         g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
             ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
@@ -5087,9 +5088,9 @@ clientMove (Client * c, XEvent * e)
 
     if (passdata.use_keys)
     {
-        XUngrabKeyboard (dpy, getLastEventTime());
+        XUngrabKeyboard (dpy, CurrentTime);
     }
-    XUngrabPointer (dpy, getLastEventTime());
+    XUngrabPointer (dpy, CurrentTime);
     removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_move)
@@ -5152,7 +5153,6 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     disp_max_x = MyDisplayMaxX (dpy, screen, cx, cy);
     disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
 
-    stashEventTime (xevent);
     if (xevent->type == KeyPress)
     {
         int key_width_inc, key_height_inc;
@@ -5244,9 +5244,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (dpy,
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
-        {
-            stashEventTime (xevent);
-        }
+            ; /* VOID */
 
         if (xevent->type == ButtonRelease)
         {
@@ -5447,7 +5445,7 @@ clientResize (Client * c, int corner, XEvent * e)
     }
     else
     {
-        timestamp = getLastEventTime();
+        timestamp = CurrentTime;
         getMouseXY (c->frame, &passdata.mx, &passdata.my);
     }
     g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
@@ -5497,9 +5495,9 @@ clientResize (Client * c, int corner, XEvent * e)
 
     if (passdata.use_keys)
     {
-        XUngrabKeyboard (dpy, getLastEventTime());
+        XUngrabKeyboard (dpy, CurrentTime);
     }
-    XUngrabPointer (dpy, getLastEventTime());
+    XUngrabPointer (dpy, CurrentTime);
     removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_resize)
@@ -5529,7 +5527,6 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientCycle_event_filter");
 
-    stashEventTime (xevent);
     switch (xevent->type)
     {
         case DestroyNotify:
@@ -5602,20 +5599,20 @@ clientCycle (Client * c)
     TRACE ("entering clientCycle");
 
     g1 = XGrabKeyboard (dpy, gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
-        getLastEventTime());
+        CurrentTime);
     g2 = XGrabPointer (dpy, gnome_win, FALSE, NoEventMask, GrabModeAsync,
-        GrabModeAsync, None, None, getLastEventTime());
+        GrabModeAsync, None, None, CurrentTime);
     if ((g1 != GrabSuccess) || (g2 != GrabSuccess))
     {
         TRACE ("grab failed in clientCycle");
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (dpy, getLastEventTime());
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, getLastEventTime());
+            XUngrabPointer (dpy, CurrentTime);
         }
         return;
     }
@@ -5649,8 +5646,8 @@ clientCycle (Client * c)
         g_free (passdata.tabwin);
     }
     MyXUngrabServer ();
-    XUngrabKeyboard (dpy, getLastEventTime());
-    XUngrabPointer (dpy, getLastEventTime());
+    XUngrabKeyboard (dpy, CurrentTime);
+    XUngrabPointer (dpy, CurrentTime);
 
     if (passdata.c)
     {
@@ -5668,7 +5665,6 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     Client *c = ((ButtonPressData *) data)->c;
     int b = ((ButtonPressData *) data)->b;
 
-    stashEventTime (xevent);
     if (xevent->type == EnterNotify)
     {
         c->button_pressed[b] = TRUE;
@@ -5725,7 +5721,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
     g1 = XGrabPointer (dpy, w, FALSE,
         ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync,
-        GrabModeAsync, None, None, getLastEventTime());
+        GrabModeAsync, None, None, CurrentTime);
 
     if (g1 != GrabSuccess)
     {
@@ -5733,7 +5729,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (dpy, getLastEventTime());
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         return;
     }
@@ -5750,7 +5746,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     popEventFilter ();
     TRACE ("leaving button press loop");
 
-    XUngrabPointer (dpy, getLastEventTime());
+    XUngrabPointer (dpy, CurrentTime);
 
     if (c->button_pressed[b])
     {

@@ -45,7 +45,6 @@
 #include "misc.h"
 
 static int xgrabcount = 0;
-static Time lastEventTime = CurrentTime;
 
 void
 getMouseXY (Window w, int *x2, int *y2)
@@ -117,7 +116,7 @@ sendClientMessage (Window w, Atom a, long x, int mask)
     ev.xclient.message_type = a;
     ev.xclient.format = 32;
     ev.xclient.data.l[0] = x;
-    ev.xclient.data.l[1] = lastEventTime;
+    ev.xclient.data.l[1] = CurrentTime;
     XSendEvent (dpy, w, FALSE, mask, &ev);
 }
 
@@ -216,53 +215,3 @@ placeSidewalks(gboolean activate)
                           1, MyDisplayFullHeight (dpy, screen));
     }
 }
-
-inline void
-stashEventTime (XEvent * ev)
-{
-    Time newEventTime = CurrentTime;
-
-    switch (ev->type)
-    {
-        case KeyPress:
-        case KeyRelease:
-            newEventTime = ev->xkey.time;
-            break;
-        case ButtonPress:
-        case ButtonRelease:
-            newEventTime = ev->xbutton.time;
-            break;
-        case MotionNotify:
-            newEventTime = ev->xmotion.time;
-            break;
-        case EnterNotify:
-        case LeaveNotify:
-            newEventTime = ev->xcrossing.time;
-            break;
-        case PropertyNotify:
-            newEventTime = ev->xproperty.time;
-            break;
-        case SelectionClear:
-            newEventTime = ev->xselectionclear.time;
-            break;
-        case SelectionRequest:
-            newEventTime = ev->xselectionrequest.time;
-            break;
-        case SelectionNotify:
-            newEventTime = ev->xselection.time;
-            break;
-        default:
-          return;
-    }
-    if ((newEventTime > CurrentTime) || ((CurrentTime - newEventTime) > 30000))
-    {
-        lastEventTime = newEventTime;
-    }
-}
-
-inline Time 
-getLastEventTime(void)
-{
-    return lastEventTime;
-}
-

@@ -153,9 +153,7 @@ workspaceSwitch (int new_ws, Client * c2)
     {
         /* Just get rid of EnterNotify events when using focus follow mouse */
         while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-        {
-            stashEventTime (&an_event);
-        }
+            ; /* VOID */
         if (!(c2)
             && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
                     &mask)))
