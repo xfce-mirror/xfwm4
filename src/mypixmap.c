@@ -1,20 +1,20 @@
 /*
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; You may only use version 2 of the License,
+	you have no option to use any other version.
  
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
  
-        You should have received a copy of the GNU General Public License
-        along with this program; if not, write to the Free Software
-        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+	oroborus - (c) 2001 Ken Lynch
+	xfwm4    - (c) 2002-2003 Olivier Fourdan
  
  */
 
@@ -24,11 +24,12 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
+#include <glib.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <libxfce4util/debug.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <glib.h>
-#include <gdk/gdkx.h>
 
 #include "mypixmap.h"
 #include "main.h"
@@ -49,8 +50,8 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
     
     if (!g_file_test (filename, G_FILE_TEST_IS_REGULAR))
     {
-        g_free (filename);
-        return FALSE;
+	g_free (filename);
+	return FALSE;
     }
     alpha = gdk_pixbuf_new_from_file (filename, &error);
     g_free (filename);
@@ -63,22 +64,22 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
     if (!gdk_pixbuf_get_has_alpha (alpha))
     {
 	g_object_unref (alpha);
-        return FALSE;
+	return FALSE;
     }
     destw = gdk_pixmap_foreign_new (pm->pixmap);
     if (!destw)
     {
 	DBG ("Cannot get pixmap");
 	g_object_unref (alpha);
-        return FALSE;
+	return FALSE;
     }
     
     src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), gdk_rgb_get_cmap (), 
-                                        0, 0, 0, 0, pm->width, pm->height);
+					0, 0, 0, 0, pm->width, pm->height);
     gdk_pixbuf_composite (alpha, src, 0, 0, pm->width, pm->height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+			  0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
-                     pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);                 
+		     pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);                 
     g_object_unref (alpha);
     g_object_unref (src);
     g_object_unref (destw);
@@ -113,14 +114,14 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
     if (n > 0 && cs)
     {
-        attr.valuemask = attr.valuemask | XpmColorSymbols;
+	attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
     if (XpmReadFileToPixmap (dpy, XDefaultRootWindow (dpy), filename,
-            &pm->pixmap, &pm->mask, &attr))
+	    &pm->pixmap, &pm->mask, &attr))
     {
-        TRACE ("%s not found", filename);
-        g_free (filename);
-        return FALSE;
+	TRACE ("%s not found", filename);
+	g_free (filename);
+	return FALSE;
     }
     pm->width = attr.width;
     pm->height = attr.height;
@@ -139,14 +140,14 @@ myPixmapCreate (Display * dpy, MyPixmap * pm, gint width, gint height)
     TRACE ("entering myPixmapCreate, width=%i, height=%i", width, height);
     if ((width < 1) || (height < 1))
     {
-        myPixmapInit (pm);
+	myPixmapInit (pm);
     }
     else
     {
-        pm->pixmap = XCreatePixmap (dpy, root, width, height, depth);
-        pm->mask = XCreatePixmap (dpy, pm->pixmap, width, height, 1);
-        pm->width = width;
-        pm->height = height;
+	pm->pixmap = XCreatePixmap (dpy, root, width, height, depth);
+	pm->mask = XCreatePixmap (dpy, pm->pixmap, width, height, 1);
+	pm->width = width;
+	pm->height = height;
     }
 }
 
@@ -166,12 +167,12 @@ myPixmapFree (Display * dpy, MyPixmap * pm)
 
     if (pm->pixmap != None)
     {
-        XFreePixmap (dpy, pm->pixmap);
-        pm->pixmap = None;
+	XFreePixmap (dpy, pm->pixmap);
+	pm->pixmap = None;
     }
     if (pm->mask != None)
     {
-        XFreePixmap (dpy, pm->mask);
-        pm->mask = None;
+	XFreePixmap (dpy, pm->mask);
+	pm->mask = None;
     }
 }

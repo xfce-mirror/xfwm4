@@ -22,10 +22,6 @@
 #include <config.h>
 #endif
 
-#ifdef GDK_MULTIHEAD_SAFE
-#undef GDK_MULTIHEAD_SAFE
-#endif
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -1413,8 +1409,8 @@ clientFrame (Window w, gboolean recapture)
     c->legacy_fullscreen = FALSE;
     /* Fullscreen for older legacy apps */
     if ((c->x == 0) && (c->y == 0) &&
-        (c->width == MyDisplayFullWidth (dpy, screen)) &&
-        (c->height == MyDisplayFullHeight (dpy, screen)) &&
+        (c->width == gdk_screen_get_width (gscr)) &&
+        (c->height == gdk_screen_get_height (gscr)) &&
         !FLAG_TEST(c->flags, CLIENT_FLAG_HAS_BORDER) &&
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
@@ -1660,8 +1656,8 @@ clientFrameAll ()
     clientSetFocus (NULL, NO_FOCUS_FLAG);
     shield =
         setTmpEventWin (0, 0, 
-                        MyDisplayFullWidth (dpy, screen),
-                        MyDisplayFullHeight (dpy, screen), 
+                        gdk_screen_get_width (gscr),
+                        gdk_screen_get_height (gscr), 
                         EnterWindowMask);
 
     XSync (dpy, FALSE);
@@ -1980,32 +1976,32 @@ clientToggleShowDesktop (gboolean show_desktop)
     if (show_desktop)
     {
         for (index = windows_stack; index; index = g_list_next (index))
-	{
+        {
             Client *c = (Client *) index->data;
             if (CLIENT_CAN_HIDE_WINDOW (c)
-        	&& FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_HIDDEN))
+                && FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_HIDDEN))
             {
-        	{
-		    FLAG_SET (c->flags, CLIENT_FLAG_WAS_SHOWN);
+                {
+                    FLAG_SET (c->flags, CLIENT_FLAG_WAS_SHOWN);
                     clientHide (c, c->win_workspace, TRUE);
-        	}
+                }
             }
-	}
+        }
         clientFocusTop (WIN_LAYER_DESKTOP);
     }
     else
     {
         for (index = g_list_last(windows_stack); index; index = g_list_previous (index))
-	{
+        {
             Client *c = (Client *) index->data;
             if (FLAG_TEST (c->flags, CLIENT_FLAG_WAS_SHOWN))
             {
-        	{
+                {
                     clientShow (c, TRUE);
-        	}
+                }
             }
-	    FLAG_UNSET (c->flags, CLIENT_FLAG_WAS_SHOWN);
-	}
+            FLAG_UNSET (c->flags, CLIENT_FLAG_WAS_SHOWN);
+        }
         clientFocusTop (WIN_LAYER_NORMAL);
     }
 }
@@ -2302,8 +2298,9 @@ void
 clientToggleMaximized (Client * c, int mode)
 {
     XWindowChanges wc;
-    int cx, cy, left, right, top, bottom;
-    int full_x, full_y, full_w, full_h;
+    int cx, cy, full_x, full_y, full_w, full_h;
+    GdkRectangle rect;
+    gint monitor_nbr;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleMaximized");
@@ -2318,15 +2315,17 @@ clientToggleMaximized (Client * c, int mode)
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
 
-    left   = (isLeftMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[LEFT] : 0);
-    right  = (isRightMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[RIGHT] : 0);
-    top    = (isTopMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[TOP] : 0);
-    bottom = (isBottomMostHead (dpy, screen, cx, cy) ? params.xfwm_margins[BOTTOM] : 0);
+    monitor_nbr = gdk_screen_get_monitor_at_point (gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (gscr, monitor_nbr, &rect);
 
-    full_x = MyDisplayX (cx, cy) + left;
-    full_y = MyDisplayY (cx, cy) + top;
-    full_w = MyDisplayWidth (dpy, screen, cx, cy) - left - right;
-    full_h = MyDisplayHeight (dpy, screen, cx, cy) - top - bottom;
+    full_x = MAX (params.xfwm_margins[LEFT], rect.x);
+    full_y = MAX (params.xfwm_margins[TOP], rect.y);
+    full_w = MIN (gdk_screen_get_width (gscr) - params.xfwm_margins[RIGHT], 
+                  full_x + rect.width) - full_x;
+    full_h = MIN (gdk_screen_get_height (gscr) - params.xfwm_margins[BOTTOM], 
+                  full_y + rect.height) - full_y;
+
+    /* Adjust size to the widest size available, not covering struts */
     clientMaxSpace (&full_x, &full_y, &full_w, &full_h);
 
     if (mode & WIN_STATE_MAXIMIZED_HORIZ)
@@ -2416,7 +2415,7 @@ clientScreenResize(void)
     {
         return;
     }
-	
+        
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
@@ -2460,7 +2459,9 @@ clientSnapPosition (Client * c)
     int best_delta_x = params.snap_width + 1;
     int best_delta_y = params.snap_width + 1;
     int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
-
+    GdkRectangle rect;
+    gint monitor_nbr;
+        
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSnapPosition");
     TRACE ("Snapping client \"%s\" (0x%lx)", c->name, c->window);
@@ -2482,11 +2483,14 @@ clientSnapPosition (Client * c)
     best_frame_x = frame_x;
     best_frame_y = frame_y;
 
-    disp_x = MyDisplayX (cx, cy);
-    disp_y = MyDisplayY (cx, cy);
-    disp_max_x = MyDisplayMaxX (dpy, screen, cx, cy);
-    disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
+        monitor_nbr = gdk_screen_get_monitor_at_point (gscr, cx, cy);
+        gdk_screen_get_monitor_geometry (gscr, monitor_nbr, &rect);
 
+    disp_x = rect.x;
+    disp_y = rect.y;
+    disp_max_x = rect.x + rect.width;
+    disp_max_y = rect.y + rect.height;
+    
     if (params.snap_to_border)
     {
         if (abs (disp_x - frame_x) < abs (disp_max_x - frame_x2))
@@ -2515,8 +2519,8 @@ clientSnapPosition (Client * c)
     for (c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
         if (FLAG_TEST (c2->flags, CLIENT_FLAG_VISIBLE)  && (c2 != c) && 
-	    (((params.snap_to_windows) && (c2->win_layer == c->win_layer))
-	     || ((params.snap_to_border) && FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))))
+            (((params.snap_to_windows) && (c2->win_layer == c->win_layer))
+             || ((params.snap_to_border) && FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))))
         {
             c_frame_x1 = frameX (c2);
             c_frame_x2 = c_frame_x1 + frameWidth (c2);
@@ -2645,7 +2649,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     {
         while (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
-	            
+                    
         if (xevent->type == ButtonRelease)
         {
             moving = FALSE;
@@ -2671,7 +2675,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
                 msx = xevent->xmotion.x_root;
                 msy = xevent->xmotion.y_root;
-                max = MyDisplayFullWidth (dpy, screen) - 1;
+                max = gdk_screen_get_width (gscr) - 1;
 
                 if ((msx == 0) || (msx == max))
                 {
@@ -2790,8 +2794,8 @@ clientMove (Client * c, XEvent * e)
 
     passdata.tmp_event_window =
         setTmpEventWin (0, 0, 
-                        MyDisplayFullWidth (dpy, screen),
-                        MyDisplayFullHeight (dpy, screen), 
+                        gdk_screen_get_width (gscr),
+                        gdk_screen_get_height (gscr), 
                         ButtonMotionMask | ButtonReleaseMask);
 
     if (e->type == KeyPress)
@@ -2889,6 +2893,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
+    GdkRectangle rect;
+    gint monitor_nbr;
 
     TRACE ("entering clientResize_event_filter");
     frame_x = frameX (c);
@@ -2903,10 +2909,13 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
 
-    disp_x = MyDisplayX (cx, cy);
-    disp_y = MyDisplayY (cx, cy);
-    disp_max_x = MyDisplayMaxX (dpy, screen, cx, cy);
-    disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
+    monitor_nbr = gdk_screen_get_monitor_at_point (gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (gscr, monitor_nbr, &rect);
+
+    disp_x = rect.x;
+    disp_y = rect.y;
+    disp_max_x = rect.x + rect.width;
+    disp_max_y = rect.y + rect.height;
 
     if (xevent->type == KeyPress)
     {
@@ -2968,24 +2977,24 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             {
                 clientConstrainRatio (c, c->width, c->height, corner);
             }
-	    if (!clientCkeckTitle (c))
-	    {
-        	c->height = prev_height;
-        	c->width = prev_width;
-	    }
-	    else
-	    {
-        	if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
-	            || (c->x + c->width < margins [LEFT] + CLIENT_MIN_VISIBLE))
-        	{
+            if (!clientCkeckTitle (c))
+            {
+                c->height = prev_height;
+                c->width = prev_width;
+            }
+            else
+            {
+                if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
+                    || (c->x + c->width < margins [LEFT] + CLIENT_MIN_VISIBLE))
+                {
                     c->width = prev_width;
-        	}
-        	if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
-	            || (c->y + c->height < margins [TOP] + CLIENT_MIN_VISIBLE))
-        	{
+                }
+                if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
+                    || (c->y + c->height < margins [TOP] + CLIENT_MIN_VISIBLE))
+                {
                     c->height = prev_height;
-        	}
-	    }
+                }
+            }
             if (passdata->poswin)
             {
                 poswinSetPosition (passdata->poswin, c);
@@ -3087,59 +3096,59 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->y = c->y - (c->height - passdata->oldh);
             frame_y = frameY (c);
         }
-	if (!clientCkeckTitle (c))
-	{
+        if (!clientCkeckTitle (c))
+        {
             c->x = prev_x;
             c->y = prev_y;
             c->height = prev_height;
             c->width = prev_width;
-	}
-	else
-	{
+        }
+        else
+        {
             if ((passdata->corner == CORNER_TOP_LEFT)
-        	|| (passdata->corner == CORNER_TOP_RIGHT))
+                || (passdata->corner == CORNER_TOP_RIGHT))
             {
-        	if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
-	            || (c->y > MyDisplayFullHeight (dpy, screen) 
-		               - margins [BOTTOM] - CLIENT_MIN_VISIBLE))
-        	{
+                if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
+                    || (c->y > gdk_screen_get_height (gscr) 
+                               - margins [BOTTOM] - CLIENT_MIN_VISIBLE))
+                {
                     c->y = prev_y;
                     c->height = prev_height;
-        	}
+                }
             }
             else if ((passdata->corner == CORNER_BOTTOM_LEFT)
-        	|| (passdata->corner == CORNER_BOTTOM_RIGHT)
-        	|| (passdata->corner == 4 + SIDE_BOTTOM))
+                || (passdata->corner == CORNER_BOTTOM_RIGHT)
+                || (passdata->corner == 4 + SIDE_BOTTOM))
             {
-        	if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
-	            || (c->y + c->height < margins [TOP] + CLIENT_MIN_VISIBLE))
-        	{
+                if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
+                    || (c->y + c->height < margins [TOP] + CLIENT_MIN_VISIBLE))
+                {
                     c->height = prev_height;
-        	}
+                }
             }
             if ((passdata->corner == CORNER_TOP_LEFT)
-        	|| (passdata->corner == CORNER_BOTTOM_LEFT)
-        	|| (passdata->corner == 4 + SIDE_LEFT))
+                || (passdata->corner == CORNER_BOTTOM_LEFT)
+                || (passdata->corner == 4 + SIDE_LEFT))
             {
-        	if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
-	            || (c->x > MyDisplayFullWidth (dpy, screen) 
-		               - margins [RIGHT] - CLIENT_MIN_VISIBLE))
-        	{
+                if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
+                    || (c->x > gdk_screen_get_width (gscr) 
+                               - margins [RIGHT] - CLIENT_MIN_VISIBLE))
+                {
                     c->x = prev_x;
                     c->width = prev_width;
-        	}
+                }
             }
             else if ((passdata->corner == CORNER_TOP_RIGHT)
-        	|| (passdata->corner == CORNER_BOTTOM_RIGHT)
-        	|| (passdata->corner == 4 + SIDE_RIGHT))
+                || (passdata->corner == CORNER_BOTTOM_RIGHT)
+                || (passdata->corner == 4 + SIDE_RIGHT))
             {
-        	if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
-	            || (c->x + c->width < margins [LEFT] + CLIENT_MIN_VISIBLE))
-        	{
+                if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
+                    || (c->x + c->width < margins [LEFT] + CLIENT_MIN_VISIBLE))
+                {
                     c->width = prev_width;
-        	}
+                }
             }
-	}
+        }
         if (passdata->poswin)
         {
             poswinSetPosition (passdata->poswin, c);
@@ -3212,8 +3221,8 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.corner = corner;
     passdata.tmp_event_window =
         setTmpEventWin (0, 0, 
-                        MyDisplayFullWidth (dpy, screen),
-                        MyDisplayFullHeight (dpy, screen), 
+                        gdk_screen_get_width (gscr),
+                        gdk_screen_get_height (gscr), 
                         ButtonMotionMask | ButtonReleaseMask);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))

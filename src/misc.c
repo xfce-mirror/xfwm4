@@ -22,17 +22,13 @@
 #include <config.h>
 #endif
 
-#ifdef GDK_MULTIHEAD_SAFE
-#undef GDK_MULTIHEAD_SAFE
-#endif
-
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xmd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -205,19 +201,19 @@ placeSidewalks(gboolean activate)
     {
         XMoveResizeWindow(dpy, sidewalk[0], 
                           0, 0,
-                          1, MyDisplayFullHeight (dpy, screen));
+                          1, gdk_screen_get_height (gscr));
         XMoveResizeWindow(dpy, sidewalk[1],
-                          MyDisplayFullWidth (dpy, screen) - 1, 0, 
-                          1, MyDisplayFullHeight (dpy, screen));
+                          gdk_screen_get_width (gscr) - 1, 0, 
+                          1, gdk_screen_get_height (gscr));
     }
     else
     {
         /* Place the windows off screen */
         XMoveResizeWindow(dpy, sidewalk[0], 
                           -1, 0,
-                          1, MyDisplayFullHeight (dpy, screen));
+                          1, gdk_screen_get_height (gscr));
         XMoveResizeWindow(dpy, sidewalk[1],
-                          MyDisplayFullWidth (dpy, screen), 0, 
-                          1, MyDisplayFullHeight (dpy, screen));
+                          gdk_screen_get_width (gscr), 0, 
+                          1, gdk_screen_get_height (gscr));
     }
 }

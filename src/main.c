@@ -22,6 +22,16 @@
 #include <config.h>
 #endif
 
+#include <X11/Xlib.h>
+#include <glib.h>
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
+#include <libxfce4util/util.h>
+#include <libxfcegui4/libxfcegui4.h>
+
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
@@ -32,16 +42,6 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <string.h>
-
-#include <gtk/gtk.h>
-#include <gdk/gdk.h>
-#include <gdk/gdkx.h>
-#include <glib.h>
-#include <X11/Xlib.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
 #include "events.h"
@@ -68,6 +68,8 @@
 
 char *progname;
 Display *dpy;
+GdkScreen *gscr;
+GdkDisplay *gdisplay;
 Window root, gnome_win, systray, sidewalk[2];
 Colormap cmap;
 Screen *xscreen;
@@ -242,6 +244,7 @@ initialize (int argc, char **argv)
     struct sigaction act;
     int dummy;
     long ws;
+    GdkWindow *groot;
 
     TRACE ("entering initialize");
 
@@ -263,18 +266,25 @@ initialize (int argc, char **argv)
     gtk_init (&argc, &argv);
     gdk_rgb_init();
 
-    gtk_widget_push_visual(gdk_rgb_get_visual ());
-    gtk_widget_push_colormap(gdk_rgb_get_cmap ());
+    gscr = gdk_screen_get_default ();
+    if (!gscr)
+    {
+        g_error (_("Cannot get default screen\n"));
+    }
+    gdisplay = gdk_screen_get_display (gscr);
+    gtk_widget_push_visual(gdk_screen_get_rgb_visual (gscr));
+    gtk_widget_push_colormap(gdk_screen_get_rgb_colormap (gscr));
+    dpy = gdk_x11_display_get_xdisplay (gdisplay);
+    xscreen = gdk_x11_screen_get_xscreen (gscr);
+    groot = gdk_screen_get_root_window (gscr);
+    root = (Window) gdk_x11_drawable_get_xid (groot);
+    screen = gdk_screen_get_number (gscr);
+    cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
     
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
 
-    dpy = GDK_DISPLAY ();
-    root = GDK_ROOT_WINDOW ();
-    xscreen = DefaultScreenOfDisplay(dpy);
-    screen = XDefaultScreen (dpy);
     depth = DefaultDepth (dpy, screen);
-    cmap = GDK_COLORMAP_XCOLORMAP(gdk_rgb_get_cmap ());
     sn_init_display (dpy, screen);
     workspace = 0;
 
@@ -296,11 +306,11 @@ initialize (int argc, char **argv)
 
     /* Create the side windows to detect edge movement */
     sidewalk[0] = setTmpEventWin (0, 0, 
-                                  1, MyDisplayFullHeight (dpy, screen), 
+                                  1, gdk_screen_get_height (gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
-    sidewalk[1] = setTmpEventWin (MyDisplayFullWidth (dpy, screen) - 1, 0, 
-                                  1, MyDisplayFullHeight (dpy, screen), 
+    sidewalk[1] = setTmpEventWin (gdk_screen_get_width (gscr) - 1, 0, 
+                                  1, gdk_screen_get_height (gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
     margins[TOP] = gnome_margins[TOP] = 0;

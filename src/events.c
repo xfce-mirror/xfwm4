@@ -22,10 +22,6 @@
 #include <config.h>
 #endif
 
-#ifdef GDK_MULTIHEAD_SAFE
-#undef GDK_MULTIHEAD_SAFE
-#endif
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -252,7 +248,7 @@ handleMotionNotify (XMotionEvent * ev)
     {
         msx = ev->x_root;
         msy = ev->y_root;
-        max = MyDisplayFullWidth (dpy, screen) - 1;
+        max = gdk_screen_get_width (gscr) - 1;
 
         if ((msx == 0) || (msx == max))
         {
@@ -1051,6 +1047,8 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
         if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
         {
+            GdkRectangle rect;
+            gint monitor_nbr;
             int cx, cy;
 
             /* size request from fullscreen windows get fullscreen */
@@ -1058,10 +1056,13 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             cx = frameX (c) + (frameWidth (c) / 2);
             cy = frameY (c) + (frameHeight (c) / 2);
 
-            wc.x = MyDisplayX (cx, cy);
-            wc.y = MyDisplayY (cx, cy);
-            wc.width = MyDisplayWidth (dpy, screen, cx, cy);
-            wc.height = MyDisplayHeight (dpy, screen, cx, cy);
+            monitor_nbr = gdk_screen_get_monitor_at_point (gscr, cx, cy);
+            gdk_screen_get_monitor_geometry (gscr, monitor_nbr, &rect);
+
+            wc.x = rect.x;
+            wc.y = rect.y;
+            wc.width = rect.width;
+            wc.height = rect.height;
 
             ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
         }
@@ -1093,8 +1094,8 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
         }
         if (ev->value_mask & CWStackMode)
         {
-	    clientPassGrabButton1 (NULL);
-	}
+            clientPassGrabButton1 (NULL);
+        }
 #if 0
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
@@ -1374,9 +1375,9 @@ handlePropertyNotify (XPropertyEvent * ev)
         else if (ev->atom == net_wm_user_time)
         {
             if (getNetWMUserTime (dpy, c->window, &c->user_time))
-	    {
+            {
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
-	    }
+            }
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == net_startup_id)
@@ -1559,8 +1560,8 @@ handleClientMessage (XClientMessageEvent * ev)
             && (ev->format == 32))
         {
             TRACE ("root has received a net_showing_desktop event");
-	    clientToggleShowDesktop (ev->data.l[0]);
-	    setHint (dpy, root, net_showing_desktop, ev->data.l[0]);
+            clientToggleShowDesktop (ev->data.l[0]);
+            setHint (dpy, root, net_showing_desktop, ev->data.l[0]);
         }
         else
         {
@@ -1925,8 +1926,8 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        trouble.
      */
     menu_event_window = setTmpEventWin (0, 0, 
-                                        MyDisplayFullWidth (dpy, screen),
-                                        MyDisplayFullHeight (dpy, screen), 
+                                        gdk_screen_get_width (gscr),
+                                        gdk_screen_get_height (gscr), 
                                         NoEventMask);
 
     menu = menu_default (ops, insensitive, menu_callback, c->win_workspace,

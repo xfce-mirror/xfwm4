@@ -504,10 +504,15 @@ clientUpdateFullscreenState (Client * c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
+        GdkRectangle rect;
+        gint monitor_nbr;
         int cx, cy;
 
         cx = frameX (c) + (frameWidth (c) / 2);
         cy = frameY (c) + (frameHeight (c) / 2);
+
+        monitor_nbr = gdk_screen_get_monitor_at_point (gscr, cx, cy);
+        gdk_screen_get_monitor_geometry (gscr, monitor_nbr, &rect);
 
         c->fullscreen_old_x = c->x;
         c->fullscreen_old_y = c->y;
@@ -515,10 +520,10 @@ clientUpdateFullscreenState (Client * c)
         c->fullscreen_old_height = c->height;
         c->fullscreen_old_layer = c->win_layer;
 
-        wc.x = MyDisplayX (cx, cy);
-        wc.y = MyDisplayY (cx, cy);
-        wc.width = MyDisplayWidth (dpy, screen, cx, cy);
-        wc.height = MyDisplayHeight (dpy, screen, cx, cy);
+        wc.x = rect.x;
+        wc.y = rect.y;
+        wc.width = rect.width;
+        wc.height = rect.height;
         layer = WIN_LAYER_ABOVE_DOCK;
     }
     else
@@ -778,18 +783,18 @@ clientGetNetStruts (Client * c)
         {
             c->struts[i] = (int) struts[i];
         }
-	for (i = 4; i < 12; i++)
-	{
+        for (i = 4; i < 12; i++)
+        {
             c->struts[i] = 0;
-	}
-	/* Fill(in values as for partial struts */
+        }
+        /* Fill(in values as for partial struts */
         c->struts[TOP_START_X] = c->struts[BOTTOM_START_X] = 0;
         c->struts[TOP_END_X] = c->struts[BOTTOM_END_X] = 
-	    MyDisplayFullWidth (dpy, screen);
+            gdk_screen_get_width (gscr);
         c->struts[LEFT_START_Y] = c->struts[RIGHT_START_Y] = 0;
         c->struts[LEFT_END_Y] = c->struts[RIGHT_END_Y] = 
-	    MyDisplayFullHeight (dpy, screen);
-	
+            gdk_screen_get_height (gscr);
+        
         XFree (struts);
         workspaceUpdateArea (margins, gnome_margins);
     }

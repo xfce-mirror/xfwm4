@@ -1,19 +1,19 @@
 /*
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; You may only use version 2 of the License,
+	you have no option to use any other version.
  
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
  
-        You should have received a copy of the GNU General Public License
-        along with this program; if not, write to the Free Software
-        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfwm4    - (c) 2003 Olivier Fourdan
+	xfwm4    - (c) 2003 Olivier Fourdan
  
  */
 
@@ -44,14 +44,14 @@ tabwinCreate (gchar * label)
 
     if (!icon)
     {
-        icon = inline_icon_at_size (tabwin_icon_data, 32, 32);
-        g_object_ref (G_OBJECT (icon));
+	icon = inline_icon_at_size (tabwin_icon_data, 32, 32);
+	g_object_ref (G_OBJECT (icon));
     }
 
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);
     gtk_window_set_position (GTK_WINDOW (tabwin->window),
-        GTK_WIN_POS_CENTER_ALWAYS);
+	GTK_WIN_POS_CENTER_ALWAYS);
     gtk_window_set_default_size (GTK_WINDOW (tabwin->window), 320, -1);
     gtk_widget_set_size_request (tabwin->window, 320, -1);
     gtk_window_set_resizable (GTK_WINDOW (tabwin->window), FALSE);
@@ -85,7 +85,7 @@ tabwinCreate (gchar * label)
     tabwin->label = gtk_label_new ("");
     if (label)
     {
-        tabwinSetLabel (tabwin, label);
+	tabwinSetLabel (tabwin, label);
     }
     gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.5, 0.5);
     gtk_widget_show (tabwin->label);
@@ -102,11 +102,11 @@ tabwinSetLabel (Tabwin * tabwin, gchar * label)
 
     if (label)
     {
-        gtk_label_set_text (GTK_LABEL (tabwin->label), label);
+	gtk_label_set_text (GTK_LABEL (tabwin->label), label);
     }
     else
     {
-        gtk_label_set_text (GTK_LABEL (tabwin->label), "");
+	gtk_label_set_text (GTK_LABEL (tabwin->label), "");
     }
     gtk_widget_queue_draw (tabwin->window);
 }

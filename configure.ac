@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.1.0])
+AM_INIT_AUTOMAKE([xfwm4], [4.1.1])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -48,6 +48,7 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
+BM_DEPEND([GTK], [gtk+-2.0], [2.2.0])
 BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 4.0.0)
 BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 4.0.0)
 BM_DEPEND([LIBXFCE4UTIL], [libxfce4util-1.0], [4.0.0])
@@ -95,5 +96,5 @@ themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/opta/Makefile
-themes/synthetic/Makefile
+themes/waza/Makefile
 ])

@@ -1,0 +1,8 @@
+button_offset=0
+button_spacing=2
+full_width_title=true
+title_horizontal_offset=2
+title_vertical_offset_active=3
+title_vertical_offset_inactive=3
+title_shadow_active=false
+title_shadow_inactive=false

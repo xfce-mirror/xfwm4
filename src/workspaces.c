@@ -1,20 +1,20 @@
 /*
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; You may only use version 2 of the License,
+	you have no option to use any other version.
  
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
  
-        You should have received a copy of the GNU General Public License
-        along with this program; if not, write to the Free Software
-        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2003 Olivier Fourdan
+	oroborus - (c) 2001 Ken Lynch
+	xfwm4    - (c) 2002-2003 Olivier Fourdan
  
  */
 
@@ -54,26 +54,26 @@ workspaceSwitch (int new_ws, Client * c2)
 
     if (new_ws > params.workspace_count - 1)
     {
-        new_ws = 0;
+	new_ws = 0;
     }
     else if (new_ws < 0)
     {
-        new_ws = params.workspace_count - 1;
+	new_ws = params.workspace_count - 1;
     }
 
     if (new_ws == workspace)
     {
-        return;
+	return;
     }
 
     /* Grab the pointer to avoid side effects with EnterNotify events */
     XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
-                       GrabModeAsync, None, None, CurrentTime);
+		       GrabModeAsync, None, None, CurrentTime);
 
     workspace = new_ws;
     if (c2)
     {
-        clientSetWorkspace (c2, new_ws, FALSE);
+	clientSetWorkspace (c2, new_ws, FALSE);
     }
 
     list_hide = NULL;
@@ -82,70 +82,70 @@ workspaceSwitch (int new_ws, Client * c2)
     /* First pass */
     for (index = windows_stack; index; index = g_list_next (index))
     {
-        c = (Client *) index->data;
-        if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_VISIBLE,
-                CLIENT_FLAG_STICKY) && ((c->win_workspace != new_ws)))
-        {
-            if (c == previous)
-            {
-                FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
-                clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
-            }
-            if (!clientIsTransientOrModal (c))
-            {
-                /* Just build of windows that will be hidden, so that
-                   we can record the previous focus even when on a
-                   transient (otherwise the transient vanishes along
-                   with its parent window which is placed below...
-                 */
-                list_hide = g_list_append (list_hide, c);
-            }
-        }
+	c = (Client *) index->data;
+	if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_VISIBLE,
+		CLIENT_FLAG_STICKY) && ((c->win_workspace != new_ws)))
+	{
+	    if (c == previous)
+	    {
+		FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
+		clientSetFocus (NULL, FOCUS_IGNORE_MODAL);
+	    }
+	    if (!clientIsTransientOrModal (c))
+	    {
+		/* Just build of windows that will be hidden, so that
+		   we can record the previous focus even when on a
+		   transient (otherwise the transient vanishes along
+		   with its parent window which is placed below...
+		 */
+		list_hide = g_list_append (list_hide, c);
+	    }
+	}
     }
 
     /* First pass and a half :) */
     if (list_hide)
     {
-        for (index = list_hide; index; index = g_list_next (index))
-        {
-            c = (Client *) index->data;
-            clientHide (c, new_ws, FALSE);
-        }
-        g_list_free (list_hide);
+	for (index = list_hide; index; index = g_list_next (index))
+	{
+	    c = (Client *) index->data;
+	    clientHide (c, new_ws, FALSE);
+	}
+	g_list_free (list_hide);
     }
 
     /* Second pass */
     for (index = g_list_last(windows_stack); index; index = g_list_previous (index))
     {
-        c = (Client *) index->data;
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
-        {
-            clientSetWorkspace (c, new_ws, TRUE);
-            if (c == previous)
-            {
-                new_focus = c;
-            }
-            FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
-        }
-        else if ((c->win_workspace == new_ws)
-            && !FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
-        {
-            if (!clientIsTransientOrModal (c))
-            {
-                clientShow (c, FALSE);
-            }
-            if ((!new_focus) && FLAG_TEST (c->flags, CLIENT_FLAG_FOCUS))
-            {
-                new_focus = c;
-            }
-            FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
-        }
+	c = (Client *) index->data;
+	if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
+	{
+	    clientSetWorkspace (c, new_ws, TRUE);
+	    if (c == previous)
+	    {
+		new_focus = c;
+	    }
+	    FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
+	}
+	else if ((c->win_workspace == new_ws)
+	    && !FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
+	{
+	    if (!clientIsTransientOrModal (c))
+	    {
+		clientShow (c, FALSE);
+	    }
+	    if ((!new_focus) && FLAG_TEST (c->flags, CLIENT_FLAG_FOCUS))
+	    {
+		new_focus = c;
+	    }
+	    FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
+	}
     }
 
     setHint (dpy, root, win_workspace, new_ws);
     data[0] = new_ws;
     XChangeProperty (dpy, root, net_current_desktop, XA_CARDINAL, 32,
-        PropModeReplace, (unsigned char *) data, 1);
+	PropModeReplace, (unsigned char *) data, 1);
     workspaceUpdateArea (margins, gnome_margins);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
@@ -153,14 +153,14 @@ workspaceSwitch (int new_ws, Client * c2)
 
     if (!(params.click_to_focus))
     {
-        if (!(c2) && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
-        {
-            c = clientAtPosition (rx, ry, NULL);
-            if (c)
-            {
-                new_focus = c;
-            }
-        }
+	if (!(c2) && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
+	{
+	    c = clientAtPosition (rx, ry, NULL);
+	    if (c)
+	    {
+		new_focus = c;
+	    }
+	}
     }
     clientSetFocus (new_focus, NO_FOCUS_FLAG);
 }
@@ -170,7 +170,7 @@ workspaceSetNames (char *names, int length)
 {
     if (params.workspace_names)
     {
-        g_free (params.workspace_names);
+	g_free (params.workspace_names);
     }
 
     params.workspace_names = names;
@@ -187,11 +187,11 @@ workspaceSetCount (int count)
 
     if (count < 1)
     {
-        count = 1;
+	count = 1;
     }
     if (count == params.workspace_count)
     {
-        return;
+	return;
     }
 
     setHint (dpy, root, win_workspace_count, count);
@@ -200,14 +200,14 @@ workspaceSetCount (int count)
 
     for (c = clients, i = 0; i < client_count; c = c->next, i++)
     {
-        if (c->win_workspace > count - 1)
-        {
-            clientSetWorkspace (c, count - 1, TRUE);
-        }
+	if (c->win_workspace > count - 1)
+	{
+	    clientSetWorkspace (c, count - 1, TRUE);
+	}
     }
     if (workspace > count - 1)
     {
-        workspaceSwitch (count - 1, NULL);
+	workspaceSwitch (count - 1, NULL);
     }
     setNetWorkarea (dpy, screen, params.workspace_count, margins);
 }
@@ -224,29 +224,29 @@ workspaceGetArea (int * m1, int * m2, Client * c)
 
     for (i = 0; i < 4; i++)
     {
-        if (m2 == NULL)
-        {
-            m1[i] = 0;
-        }
-        else
-        {
-            m1[i] = m2[i];
-        }
+	if (m2 == NULL)
+	{
+	    m1[i] = 0;
+	}
+	else
+	{
+	    m1[i] = m2[i];
+	}
     }
 
     for (c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if (((!c) || (c != c2))
-            && FLAG_TEST_ALL (c2->flags,
-                CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
-        {
-            m1[TOP] = MAX (m1[TOP], c2->struts[TOP]);
-            m1[LEFT] = MAX (m1[LEFT], c2->struts[LEFT]);
-            m1[RIGHT] =
-                MAX (m1[RIGHT], c2->struts[RIGHT]);
-            m1[BOTTOM] =
-                MAX (m1[BOTTOM], c2->struts[BOTTOM]);
-        }
+	if (((!c) || (c != c2))
+	    && FLAG_TEST_ALL (c2->flags,
+		CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
+	{
+	    m1[TOP] = MAX (m1[TOP], c2->struts[TOP]);
+	    m1[LEFT] = MAX (m1[LEFT], c2->struts[LEFT]);
+	    m1[RIGHT] =
+		MAX (m1[RIGHT], c2->struts[RIGHT]);
+	    m1[BOTTOM] =
+		MAX (m1[BOTTOM], c2->struts[BOTTOM]);
+	}
     }
 }
 
@@ -271,12 +271,12 @@ workspaceUpdateArea (int * m1, int * m2)
     workspaceGetArea (m1, m2, NULL);
 
     TRACE ("Desktop area computed : (%d,%d,%d,%d)", (int) m1[0], (int) m1[1],
-        (int) m1[2], (int) m1[3]);
+	(int) m1[2], (int) m1[3]);
     if ((prev_top != m1[TOP]) || (prev_left != m1[LEFT])
-        || (prev_right != m1[RIGHT])
-        || (prev_bottom != m1[BOTTOM]))
+	|| (prev_right != m1[RIGHT])
+	|| (prev_bottom != m1[BOTTOM]))
     {
-        TRACE ("Margins have changed, updating net_workarea");
-        setNetWorkarea (dpy, screen, params.workspace_count, m1);
+	TRACE ("Margins have changed, updating net_workarea");
+	setNetWorkarea (dpy, screen, params.workspace_count, m1);
     }
 }

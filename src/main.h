@@ -57,6 +57,8 @@
 
 extern char *progname;
 extern Display *dpy;
+extern GdkScreen *gscr;
+extern GdkDisplay *gdisplay;
 extern Window root, gnome_win, systray, sidewalk[2];
 extern Screen *xscreen;
 extern int screen;

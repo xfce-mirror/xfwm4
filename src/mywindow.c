@@ -1,19 +1,19 @@
 /*
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; You may only use version 2 of the License,
+	you have no option to use any other version.
  
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
  
-        You should have received a copy of the GNU General Public License
-        along with this program; if not, write to the Free Software
-        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfwm4    - (c) 2003 Olivier Fourdan
+	xfwm4    - (c) 2003 Olivier Fourdan
  
  */
 
@@ -23,11 +23,11 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include <libxfce4util/debug.h>
 #include <glib.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>
+#include <libxfce4util/debug.h>
 #include "mywindow.h"
 #include "main.h"
 
@@ -40,7 +40,7 @@ myWindowCreate (Display * dpy, Window parent, myWindow * win, Cursor cursor)
     TRACE ("Created XID 0x%lx", win->window);
     if (cursor != None)
     {
-        XDefineCursor (dpy, win->window, cursor);
+	XDefineCursor (dpy, win->window, cursor);
     }
     win->map = FALSE;
     win->dpy = dpy;
@@ -57,8 +57,8 @@ myWindowDelete (myWindow * win)
 
     if (win->window != None)
     {
-        XDestroyWindow (win->dpy, win->window);
-        win->window = None;
+	XDestroyWindow (win->dpy, win->window);
+	win->window = None;
     }
     win->map = FALSE;
 }
@@ -71,49 +71,49 @@ myWindowShow (myWindow * win, int x, int y, int width, int height,
 
     if (!(win->window))
     {
-        return;
+	return;
     }
     if ((width < 1) || (height < 1))
     {
-        myWindowHide (win);
-        return;
+	myWindowHide (win);
+	return;
     }
     if (!(win->map))
     {
-        XMapWindow (win->dpy, win->window);
-        win->map = TRUE;
+	XMapWindow (win->dpy, win->window);
+	win->map = TRUE;
     }
     TRACE ("Showing XID 0x%lx", win->window);
     if (((x != win->x) || (y != win->y)) && ((width != win->w)
-            || (height != win->h)))
+	    || (height != win->h)))
     {
-        XMoveResizeWindow (win->dpy, win->window, x, y, (unsigned int) width,
-            (unsigned int) height);
-        win->x = x;
-        win->y = y;
-        win->w = width;
-        win->h = height;
+	XMoveResizeWindow (win->dpy, win->window, x, y, (unsigned int) width,
+	    (unsigned int) height);
+	win->x = x;
+	win->y = y;
+	win->w = width;
+	win->h = height;
     }
     else if ((x != win->x) || (y != win->y))
     {
-        XMoveWindow (win->dpy, win->window, x, y);
-        if (refresh)
-        {
-            XClearWindow (win->dpy, win->window);
-        }
-        win->x = x;
-        win->y = y;
+	XMoveWindow (win->dpy, win->window, x, y);
+	if (refresh)
+	{
+	    XClearWindow (win->dpy, win->window);
+	}
+	win->x = x;
+	win->y = y;
     }
     else if ((width != win->w) || (height != win->h))
     {
-        XResizeWindow (win->dpy, win->window, (unsigned int) width,
-            (unsigned int) height);
-        win->w = width;
-        win->h = height;
+	XResizeWindow (win->dpy, win->window, (unsigned int) width,
+	    (unsigned int) height);
+	win->w = width;
+	win->h = height;
     }
     else if (refresh)
     {
-        XClearWindow (win->dpy, win->window);
+	XClearWindow (win->dpy, win->window);
     }
 }
 
@@ -124,7 +124,7 @@ myWindowHide (myWindow * win)
 
     if (win->map)
     {
-        XUnmapWindow (win->dpy, win->window);
-        win->map = FALSE;
+	XUnmapWindow (win->dpy, win->window);
+	win->map = FALSE;
     }
 }

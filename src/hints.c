@@ -23,27 +23,21 @@
 #include <config.h>
 #endif
 
-#ifdef GDK_MULTIHEAD_SAFE
-#undef GDK_MULTIHEAD_SAFE
-#endif
-
-#include <stdarg.h>
-#include <string.h>
-#include <stdio.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xmd.h>
+#include <stdarg.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfce4util/utf8.h>
 #include <libxfcegui4/xinerama.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "main.h"
 #include "hints.h"
 
@@ -652,10 +646,10 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int * m)
         *ptr++ = (unsigned long) m[LEFT];
         *ptr++ = (unsigned long) m[TOP];
         *ptr++ = (unsigned long) 
-            (MyDisplayFullWidth (dpy, screen) - 
+            (gdk_screen_get_width (gscr) - 
                 (m[LEFT] + m[RIGHT]));
         *ptr++ = (unsigned long) 
-            (MyDisplayFullHeight (dpy, screen) - 
+            (gdk_screen_get_height (gscr) - 
                 (m[TOP] + m[BOTTOM]));
     }
     XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
@@ -668,8 +662,8 @@ initNetDesktopParams (Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
     TRACE ("entering initNetDesktopParams");
-    data[0] = MyDisplayFullWidth (dpy, screen);
-    data[1] = MyDisplayFullHeight (dpy, screen);
+    data[0] = gdk_screen_get_width (gscr);
+    data[1] = gdk_screen_get_height (gscr);
     XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_geometry,
         XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
     data[0] = 0;

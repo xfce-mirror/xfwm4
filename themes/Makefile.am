@@ -6,4 +6,4 @@ SUBDIRS =								\
 	default.keys 							\
 	default-4.0 							\
 	opta								\
-	synthetic
+	waza
