@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-28 23:24+0100\n"
+"POT-Creation-Date: 2004-02-18 07:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -265,32 +265,32 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:511
+#: src/client.c:510
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1528
+#: src/events.c:1546
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
 
-#: src/main.c:228
+#: src/main.c:229
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:404
+#: src/main.c:406
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:409
+#: src/main.c:411
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:436
+#: src/main.c:438
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
