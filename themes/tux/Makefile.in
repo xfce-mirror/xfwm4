@@ -109,7 +109,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 themedir = $(pkgdatadir)/themes/tux
-theme_DATA = \
+theme_DATA = README \
 bottom-active.xpm \
 bottom-inactive.xpm \
 bottom-left-active.xpm \
@@ -148,6 +148,7 @@ title-4-active.xpm \
 title-4-inactive.xpm \
 title-5-active.xpm \
 title-5-inactive.xpm \
+themerc \
 top-left-active.xpm \
 top-left-inactive.xpm \
 top-right-active.xpm \
@@ -162,7 +163,7 @@ CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 DATA = $(theme_DATA)
 
-DIST_COMMON = Makefile.am Makefile.in
+DIST_COMMON = README Makefile.am Makefile.in
 all: all-am
 
 .SUFFIXES:

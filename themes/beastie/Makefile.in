@@ -110,7 +110,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
 themedir = $(pkgdatadir)/themes/beastie
-theme_DATA = \
+theme_DATA = README\
 	bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \
@@ -163,7 +163,7 @@ CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 DATA = $(theme_DATA)
 
-DIST_COMMON = Makefile.am Makefile.in
+DIST_COMMON = README Makefile.am Makefile.in
 all: all-am
 
 .SUFFIXES:
