@@ -115,6 +115,8 @@ static void clientGetInitialNetWmDesktop (Client * c);
 static void clientSetNetClientList (Atom a, GList * list);
 static void clientSetNetActions (Client * c);
 static void clientWindowType (Client * c);
+static void clientGrabButton1 (Client * c);
+static void clientUngrabButton1 (Client * c);
 static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
 static void clientSetWidth (Client * c, int w1);
@@ -1400,7 +1402,6 @@ clientGrabButtons (Client * c)
     TRACE ("entering clientGrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     
-    grabButton(dpy, Button1, 0, c->window);
     grabButton(dpy, Button1, AltMask, c->window);
     grabButton(dpy, Button2, AltMask, c->window);
     grabButton(dpy, Button3, AltMask, c->window);
@@ -1411,22 +1412,42 @@ clientUngrabButtons (Client * c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabButtons");
+    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    
+    XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
+}
+
+static void
+clientGrabButton1 (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientGrabButton1");
+    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    
+    grabButton(dpy, Button1, 0, c->window);
+}
+
+static void
+clientUngrabButton1 (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientUngrabButton1");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
     ungrabButton(dpy, Button1, 0, c->window);
 }
 
 void
-clientPassGrabButtons(Client * c)
+clientPassGrabButton1(Client * c)
 {
-    TRACE ("entering clientUngrabButtons");
+    TRACE ("entering clientPassGrabButton1");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c == NULL)
     {
         if (last_ungrab)
         {
-            clientGrabButtons (last_ungrab);
+            clientGrabButton1 (last_ungrab);
         }
         last_ungrab = NULL;
         return;
@@ -1439,10 +1460,10 @@ clientPassGrabButtons(Client * c)
     
     if (last_ungrab)
     {
-        clientGrabButtons (last_ungrab);
+        clientGrabButton1 (last_ungrab);
     }
     
-    clientUngrabButtons (c);
+    clientUngrabButton1 (c);
     last_ungrab = c;
 }
 
@@ -2518,13 +2539,13 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
             case TopIf:
                 TRACE ("Above");
                 clientRaise (c);
-                clientPassGrabButtons (c);
+                clientPassGrabButton1 (c);
                 break;
             case Below:
             case BottomIf:
                 TRACE ("Below");
                 clientLower (c);
-                clientPassGrabButtons (NULL);
+                clientPassGrabButton1 (NULL);
                 break;
             case Opposite:
             default:
@@ -3021,11 +3042,11 @@ clientFocusNew(Client * c)
     if (params.focus_new || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         clientSetFocus (c, TRUE, FALSE);
-        clientPassGrabButtons (c);
+        clientPassGrabButton1 (c);
     }
     else
     {
-        clientPassGrabButtons (NULL);
+        clientPassGrabButton1 (NULL);
     }
 }
 
@@ -3382,9 +3403,12 @@ clientUnframe (Client * c, gboolean remap)
     {
         last_ungrab = NULL;
     }
+
     clientRemoveFromList (c);
     MyXGrabServer ();
     gdk_error_trap_push ();
+    clientUngrabKeys (c);
+    clientGrabButtons (c);
     XUnmapWindow (dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (dpy, c->window, NoEventMask);
@@ -3413,8 +3437,6 @@ clientUnframe (Client * c, gboolean remap)
         XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
     }
     
-    clientUngrabKeys (c);
-    XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
     myWindowDelete (&c->title);
     myWindowDelete (&c->sides[SIDE_LEFT]);
     myWindowDelete (&c->sides[SIDE_RIGHT]);
@@ -3813,7 +3835,7 @@ clientPassFocus (Client * c)
     clientSetFocus (new_focus, TRUE, TRUE);
     if (new_focus == top_most)
     {
-        clientPassGrabButtons (new_focus);
+        clientPassGrabButton1 (new_focus);
     }
 }
 
@@ -4200,7 +4222,7 @@ clientSetLayer (Client * c, int l)
         last_raise = NULL;
     }
     clientRaise (c);
-    clientPassGrabButtons (c);
+    clientPassGrabButton1 (c);
 }
 
 static inline void
@@ -4795,7 +4817,7 @@ clientUpdateFocus (Client * c)
             if (c)
             {
                 clientRaise(c);
-                clientPassGrabButtons (c);
+                clientPassGrabButton1 (c);
             }
         }
         frameDraw (c2, FALSE, FALSE);
@@ -4884,7 +4906,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             if (c)
             {
                 clientRaise(c);
-                clientPassGrabButtons (c);
+                clientPassGrabButton1 (c);
             }
         }
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
@@ -5950,7 +5972,7 @@ clientCycle (Client * c, XEvent * e)
         clientShow (passdata.c, TRUE);
         clientRaise (passdata.c);
         clientSetFocus (passdata.c, TRUE, FALSE);
-        clientPassGrabButtons (passdata.c);
+        clientPassGrabButton1 (passdata.c);
     }
 }
 

@@ -134,7 +134,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         params.raise_on_click = setting->data.v_int;
-                        clientPassGrabButtons (NULL);
+                        clientPassGrabButton1 (NULL);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
                     {
