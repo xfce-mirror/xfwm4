@@ -308,7 +308,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS LIBXPM_CFLAGS LIBXPM_LDFLAGS LIBXPM_LIBS PKG_CONFIG GLIB_CFLAGS GLIB_LIBS GLIB_REQUIRED_VERSION GTK_CFLAGS GTK_LIBS GTK_REQUIRED_VERSION LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBXFCE4MCS_MANAGER_REQUIRED_VERSION LIBXFCE4UTIL_CFLAGS LIBXFCE4UTIL_LIBS LIBXFCE4UTIL_REQUIRED_VERSION LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS LIBXPM_CFLAGS LIBXPM_LDFLAGS LIBXPM_LIBS PKG_CONFIG GLIB_CFLAGS GLIB_LIBS GLIB_REQUIRED_VERSION GTK_CFLAGS GTK_LIBS GTK_REQUIRED_VERSION LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBXFCE4MCS_MANAGER_REQUIRED_VERSION LIBXFCE4UTIL_CFLAGS LIBXFCE4UTIL_LIBS LIBXFCE4UTIL_REQUIRED_VERSION LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -870,6 +870,10 @@ Optional Features:
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
+  --enable-profiling      Generate extra code to write profile information
+  --disable-profiling     No extra code for profiling (default)
+  --enable-asserts        Enable assert statements (default)
+  --disable-asserts       Disable assert statements (USE WITH CARE!!!)
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -1541,6 +1545,15 @@ echo "${ECHO_T}no" >&6
   SET_MAKE="MAKE=${MAKE-make}"
 fi
 
+rm -rf .tst 2>/dev/null
+mkdir .tst 2>/dev/null
+if test -d .tst; then
+  am__leading_dot=.
+else
+  am__leading_dot=_
+fi
+rmdir .tst 2>/dev/null
+
  # test to see if srcdir already configured
 if test "`cd $srcdir && pwd`" != "`pwd`" &&
    test -f $srcdir/config.status; then
@@ -1716,16 +1729,7 @@ fi
 
 
 
-rm -f .deps 2>/dev/null
-mkdir .deps 2>/dev/null
-if test -d .deps; then
-  DEPDIR=.deps
-else
-  # MS-DOS does not allow filenames that begin with a dot.
-  DEPDIR=_deps
-fi
-rmdir .deps 2>/dev/null
-
+DEPDIR="${am__leading_dot}deps"
 
           ac_config_commands="$ac_config_commands depfiles"
 
@@ -2706,11 +2710,17 @@ else
     if depmode=$depmode \
        source=conftest.c object=conftest.o \
        depfile=conftest.Po tmpdepfile=conftest.TPo \
-       $SHELL ./depcomp $depcc -c -o conftest.o conftest.c >/dev/null 2>&1 &&
+       $SHELL ./depcomp $depcc -c -o conftest.o conftest.c \
+         >/dev/null 2>conftest.err &&
        grep conftest.h conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
-      am_cv_CC_dependencies_compiler_type=$depmode
-      break
+      # icc doesn't choke on unknown options, it will just issue warnings
+      # (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored.
+      if grep 'ignoring option' conftest.err >/dev/null 2>&1; then :; else
+        am_cv_CC_dependencies_compiler_type=$depmode
+        break
+      fi
     fi
   done
 
@@ -4217,11 +4227,17 @@ else
     if depmode=$depmode \
        source=conftest.c object=conftest.o \
        depfile=conftest.Po tmpdepfile=conftest.TPo \
-       $SHELL ./depcomp $depcc -c -o conftest.o conftest.c >/dev/null 2>&1 &&
+       $SHELL ./depcomp $depcc -c -o conftest.o conftest.c \
+         >/dev/null 2>conftest.err &&
        grep conftest.h conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
-      am_cv_CC_dependencies_compiler_type=$depmode
-      break
+      # icc doesn't choke on unknown options, it will just issue warnings
+      # (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored.
+      if grep 'ignoring option' conftest.err >/dev/null 2>&1; then :; else
+        am_cv_CC_dependencies_compiler_type=$depmode
+        break
+      fi
     fi
   done
 
@@ -5110,7 +5126,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5113 "configure"' > conftest.$ac_ext
+  echo '#line 5129 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -6658,6 +6674,8 @@ CATOBJEXT=.mo
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
 	  INSTOBJEXT=.mo
+	else
+	  gt_cv_have_gettext=no
 	fi
       fi
 
@@ -9011,13 +9029,14 @@ echo "${ECHO_T}no" >&6
   # Check whether --enable-debug or --disable-debug was given.
 if test "${enable_debug+set}" = set; then
   enableval="$enable_debug"
-  ac_cv_debug=$enableval
+
 else
-  ac_cv_debug=no
+  enable_debug=no
 fi;
+
   echo "$as_me:$LINENO: checking whether to build with debugging support" >&5
 echo $ECHO_N "checking whether to build with debugging support... $ECHO_C" >&6
-  if test x"$ac_cv_debug" != x"no"; then
+  if test x"$enable_debug" != x"no"; then
 
 cat >>confdefs.h <<\_ACEOF
 #define DEBUG 1
@@ -9038,9 +9057,46 @@ echo "${ECHO_T}full" >&6
 echo "${ECHO_T}yes" >&6
     fi
   else
+    echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+  fi
+
+  # Check whether --enable-profiling or --disable-profiling was given.
+if test "${enable_profiling+set}" = set; then
+  enableval="$enable_profiling"
+
+else
+  enable_profiling=no
+fi;
+
+  echo "$as_me:$LINENO: checking whether to build with profiling support" >&5
+echo $ECHO_N "checking whether to build with profiling support... $ECHO_C" >&6
+  if test x"$enable_profiling" != x"no"; then
+    CFLAGS="$CFLAGS -pg"
+    echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+  else
+    echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+  fi
+
+  # Check whether --enable-asserts or --disable-asserts was given.
+if test "${enable_asserts+set}" = set; then
+  enableval="$enable_asserts"
+
+else
+  enable_asserts=yes
+fi;
+
+  echo "$as_me:$LINENO: checking whether to enable assert statements" >&5
+echo $ECHO_N "checking whether to enable assert statements... $ECHO_C" >&6
+  if test x"$enable_asserts" != x"yes"; then
     CFLAGS="$CFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
     echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
+  else
+    echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
   fi
 
 
@@ -9782,6 +9838,7 @@ s,@ac_ct_STRIP@,$ac_ct_STRIP,;t t
 s,@INSTALL_STRIP_PROGRAM@,$INSTALL_STRIP_PROGRAM,;t t
 s,@AWK@,$AWK,;t t
 s,@SET_MAKE@,$SET_MAKE,;t t
+s,@am__leading_dot@,$am__leading_dot,;t t
 s,@MAINTAINER_MODE_TRUE@,$MAINTAINER_MODE_TRUE,;t t
 s,@MAINTAINER_MODE_FALSE@,$MAINTAINER_MODE_FALSE,;t t
 s,@MAINT@,$MAINT,;t t
@@ -10294,7 +10351,16 @@ echo "$as_me: error: cannot create directory \"$ac_dir\"" >&2;}
     cat $tmp/config.h
     rm -f $tmp/config.h
   fi
-_am_stamp_count=`expr ${_am_stamp_count-0} + 1`
+# Compute $ac_file's index in $config_headers.
+_am_stamp_count=1
+for _am_header in $config_headers :; do
+  case $_am_header in
+    $ac_file | $ac_file:* )
+      break ;;
+    * )
+      _am_stamp_count=`expr $_am_stamp_count + 1` ;;
+  esac
+done
 echo "timestamp for $ac_file" >`(dirname $ac_file) 2>/dev/null ||
 $as_expr X$ac_file : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          X$ac_file : 'X\(//\)[^/]' \| \
