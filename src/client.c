@@ -4735,7 +4735,7 @@ clientAcceptFocus (Client * c)
     {
         return FALSE;
     }
-    if (!FLAG_TEST_ALL (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
+    if (!FLAG_TEST (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
     {
         return FALSE;
     }
@@ -4846,33 +4846,22 @@ clientSetFocus (Client * c, unsigned short flags)
             c = c3;
         }
     }
-    c2 = ((client_focus != c) ? client_focus : NULL);
     if ((c) && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
-        if (!clientAcceptFocus (c))
-        {
-            TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name,
-                c->window);
-            return;
-        }
-        if ((c == client_focus) && !(flags & FOCUS_FORCE))
-        {
-            TRACE
-                ("client \"%s\" (0x%lx) is already focused, ignoring request",
-                c->name, c->window);
-            return;
-        }        
-        client_focus = c;
-        clientInstallColormaps (c);
         if (flags & FOCUS_SORT)
         {
             clientSortRing(c);
         }
-        
+        if (!clientAcceptFocus (c))
+        {
+            TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
+            return;
+        }
         if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
         {
             XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+            frameDraw (c, FALSE, FALSE);
             XFlush (dpy);
         }
         
@@ -4880,13 +4869,6 @@ clientSetFocus (Client * c, unsigned short flags)
         {
             sendClientMessage (c->window, wm_protocols, wm_takefocus, CurrentTime);
         }
-        
-        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
-        }
-        frameDraw (c, FALSE, FALSE);
-        data[0] = c->window;
     }
     else
     {
@@ -4896,32 +4878,6 @@ clientSetFocus (Client * c, unsigned short flags)
         XFlush (dpy);
         data[0] = None;
     }
-    if (c2)
-    {
-        /* Legacy apps layer switching. See comment in clientUpdateFocus () */
-        if ((c2->legacy_fullscreen) || FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            if (FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
-            {
-                clientSetLayer (c2, c2->fullscreen_old_layer);
-            }
-            else
-            {
-                clientSetLayer (c2, WIN_LAYER_NORMAL);
-            }
-            if (c)
-            {
-                clientRaise(c);
-                clientPassGrabButton1 (c);
-            }
-        }
-        TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
-            c2->window);
-        frameDraw (c2, FALSE, FALSE);
-    }
-    data[1] = None;
-    XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,
-        PropModeReplace, (unsigned char *) data, 2);
 }
 
 Client *
