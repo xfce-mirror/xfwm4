@@ -5198,11 +5198,11 @@ clientMove (Client * c, XEvent * e)
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (dpy, passdata.last_timestamp);
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, passdata.last_timestamp);
+            XUngrabPointer (dpy, CurrentTime);
         }
         removeTmpEventWin (passdata.tmp_event_window);
         return;
@@ -5595,11 +5595,11 @@ clientResize (Client * c, int corner, XEvent * e)
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (dpy, passdata.last_timestamp);
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, passdata.last_timestamp);
+            XUngrabPointer (dpy, CurrentTime);
         }
         removeTmpEventWin (passdata.tmp_event_window);
         return;
@@ -5758,11 +5758,11 @@ clientCycle (Client * c, XEvent * e)
         gdk_beep ();
         if (g1 == GrabSuccess)
         {
-            XUngrabKeyboard (dpy, passdata.last_timestamp);
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, passdata.last_timestamp);
+            XUngrabPointer (dpy, CurrentTime);
         }
         return;
     }
