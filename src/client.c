@@ -102,11 +102,12 @@ Client *clients = NULL;
 unsigned int client_count = 0;
 unsigned long client_serial = 0;
 
-static GList *windows       = NULL;
-static GList *windows_stack = NULL;
-static Client *client_focus = NULL;
-static Client *last_raise   = NULL;
-static Client *last_ungrab  = NULL;
+static GList *windows        = NULL;
+static GList *windows_stack  = NULL;
+static Client *client_focus  = NULL;
+static Client *pending_focus = NULL;
+static Client *last_raise    = NULL;
+static Client *last_ungrab   = NULL;
 
 /* Forward decl */
 static void clientToggleFullscreen (Client * c);
@@ -3816,6 +3817,7 @@ clientPassFocus (Client * c)
 {
     GList *list_of_windows = NULL;
     Client *new_focus = NULL;
+    Client *current_focus = client_focus;
     Client *top_most = NULL;
     Client *c2;
     Window dr, window;
@@ -3825,7 +3827,12 @@ clientPassFocus (Client * c)
 
     TRACE ("entering clientPassFocus");
 
-    if ((c || client_focus) && (c != client_focus))
+    if (pending_focus)
+    {
+        current_focus = pending_focus;
+    }
+
+    if ((c || current_focus) && (c != current_focus))
     {
         return;
     }
@@ -3876,7 +3883,7 @@ clientPassFocus (Client * c)
     {
         new_focus = top_most;
     }
-    clientSetFocus (new_focus, FOCUS_IGNORE_MODAL);
+    clientSetFocus (new_focus, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most)
     {
         clientPassGrabButton1 (new_focus);
@@ -4759,6 +4766,7 @@ clientUpdateFocus (Client * c, unsigned short flags)
 
     TRACE ("entering clientUpdateFocus");
 
+    pending_focus = NULL;
     if ((c) && !clientAcceptFocus (c))
     {
         TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
@@ -4860,6 +4868,7 @@ clientSetFocus (Client * c, unsigned short flags)
         }
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT))
         {
+            pending_focus = c;
             XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
             XFlush (dpy);
         }
