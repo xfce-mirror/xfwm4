@@ -179,6 +179,12 @@ extern Atom net_workarea;
 
 /* KDE extension */
 extern Atom kde_net_wm_context_help;
+extern Atom kde_net_wm_system_tray_window_for;
+
+/* Systray similation for older KDE apps */
+extern Atom net_system_tray_manager;
+extern Atom net_system_tray_selection;
+extern Atom net_system_tray_opcode;
 
 void initICCCMHints (Display *);
 unsigned long getWMState (Display *, Window);
@@ -188,6 +194,7 @@ PropMwmHints *getMotifHints (Display *, Window);
 unsigned int getWMProtocols (Display *, Window);
 void initGnomeHints (Display *);
 void initKDEHints (Display *);
+void initSystrayHints (Display *, int);
 gboolean getHint (Display *, Window, Atom, long *);
 void setHint (Display *, Window, Atom, long);
 void getGnomeDesktopMargins (Display *, int, int *);
@@ -203,6 +210,9 @@ void getTransientFor (Display *, int, Window, Window *);
 void getWindowName (Display *, Window, char **);
 gboolean get_utf8_string (Display *, Window, Atom, char **);
 void getWindowName (Display *, Window, char **);
+gboolean checkKdeSystrayWindow(Display *, Window);
+void sendSystrayReqDock(Display *, Window, Window);
+Window getSystrayWindow (Display *);
 gboolean getWindowRole (Display *, Window, char **);
 Window getClientLeader (Display *, Window);
 gboolean getClientID (Display *, Window, char **);

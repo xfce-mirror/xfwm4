@@ -3003,6 +3003,14 @@ clientFrame (Window w, gboolean recapture)
     }
 
     gdk_error_trap_push ();
+    if (checkKdeSystrayWindow (dpy, w) && (systray != None))
+    {
+        TRACE ("Not managing KDE systray windows");
+        sendSystrayReqDock (dpy, w, systray);
+        gdk_error_trap_pop ();
+        return;
+    }
+
     if (!XGetWindowAttributes (dpy, w, &attr))
     {
         TRACE ("Cannot get window attributes");

@@ -123,6 +123,12 @@ Atom utf8_string;
 
 /* KDE extension */
 Atom kde_net_wm_context_help;
+Atom kde_net_wm_system_tray_window_for;
+
+/* Systray similation for older KDE apps */
+Atom net_system_tray_manager;
+Atom net_system_tray_selection;
+Atom net_system_tray_opcode;
 
 static gboolean
 check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
@@ -245,7 +251,7 @@ getWMProtocols (Display * dpy, Window w)
             {
                 result |= WM_PROTOCOLS_DELETE_WINDOW;
             }
-            // KDE extension
+            /* KDE extension */
             if (*ap == (Atom) kde_net_wm_context_help)
             {
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
@@ -268,7 +274,7 @@ getWMProtocols (Display * dpy, Window w)
                 {
                     result |= WM_PROTOCOLS_DELETE_WINDOW;
                 }
-                // KDE extension
+                /* KDE extension */
                 if (*ap == (Atom) kde_net_wm_context_help)
                 {
                     result |= WM_PROTOCOLS_CONTEXT_HELP;
@@ -309,7 +315,22 @@ initKDEHints (Display * dpy)
 {
     TRACE ("entering initKDEHints");
 
-    kde_net_wm_context_help = XInternAtom (dpy, "_NET_WM_CONTEXT_HELP", FALSE);
+    kde_net_wm_context_help = 
+        XInternAtom (dpy, "_NET_WM_CONTEXT_HELP", FALSE);
+    kde_net_wm_system_tray_window_for = 
+        XInternAtom (dpy, "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR", FALSE);
+}
+
+void
+initSystrayHints (Display * dpy, int nscreen)
+{
+    TRACE ("entering initSystrayHints");
+    gchar selection[32];
+
+    g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", nscreen);
+    net_system_tray_manager   = XInternAtom (dpy, "MANAGER", FALSE);
+    net_system_tray_opcode    = XInternAtom (dpy, "_NET_SYSTEM_TRAY_OPCODE", FALSE);
+    net_system_tray_selection = XInternAtom (dpy, selection, FALSE);
 }
 
 gboolean
@@ -795,7 +816,6 @@ get_text_property (Display * dpy, Window w, Atom a)
     return retval;
 }
 
-
 void
 getWindowName (Display * dpy, Window w, char **name)
 {
@@ -823,6 +843,69 @@ getWindowName (Display * dpy, Window w, char **name)
     {
         *name = strdup ("");
     }
+}
+
+gboolean
+checkKdeSystrayWindow(Display * dpy, Window window)
+{
+    Atom actual_type;
+    int actual_format;
+    unsigned long nitems;
+    unsigned long bytes_after;
+    Window trayIconForWindow;
+
+    TRACE ("entering GetWindowRole");
+    g_return_if_fail (window != None);
+    
+    XGetWindowProperty(dpy, window, kde_net_wm_system_tray_window_for, 0L, 
+            sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
+            &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
+
+    if ((actual_format == None) || 
+        (actual_type != XA_WINDOW) || 
+        (trayIconForWindow == None))
+    {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+void
+sendSystrayReqDock(Display * dpy, Window window, Window systray)
+{
+    XClientMessageEvent xev;
+
+    TRACE ("entering sendSystrayReqDock");
+    g_return_if_fail (window != None);
+    g_return_if_fail (systray != None);
+
+    xev.type = ClientMessage;
+    xev.window = systray;
+    xev.message_type = net_system_tray_opcode;
+    xev.format = 32;
+    xev.data.l[0] = CurrentTime;
+    xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
+    xev.data.l[2] = window;
+    xev.data.l[3] = 0; /* Nada */
+    xev.data.l[4] = 0; /* Niet */
+
+    XSendEvent (dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
+}
+
+Window
+getSystrayWindow (Display * dpy)
+{
+    Window systray_win = None;
+
+    TRACE ("entering getSystrayWindow");
+
+    systray_win = XGetSelectionOwner (dpy, net_system_tray_selection);
+    if (systray_win)
+    {
+        XSelectInput (dpy, systray_win, StructureNotifyMask);
+    }
+    TRACE ("New systray window:  0x%lx", systray_win);
+    return systray_win;
 }
 
 gboolean

@@ -67,7 +67,7 @@
 
 char *progname;
 Display *dpy;
-Window root, gnome_win, sidewalk[2];
+Window root, gnome_win, systray, sidewalk[2];
 Colormap cmap;
 Screen *xscreen;
 int screen;
@@ -307,6 +307,8 @@ initialize (int argc, char **argv)
     initGnomeHints (dpy);
     initNetHints (dpy);
     initKDEHints (dpy);
+    initSystrayHints (dpy, screen);
+    
     initModifiers (dpy);
 
     root_cursor = XCreateFontCursor (dpy, XC_left_ptr);
@@ -340,6 +342,7 @@ initialize (int argc, char **argv)
         return -2;
     }
 
+    systray = getSystrayWindow (dpy);
     setGnomeProtocols (dpy, screen, gnome_win);
     setHint (dpy, root, win_supporting_wm_check, gnome_win);
     setHint (dpy, root, win_desktop_button_proxy, gnome_win);
