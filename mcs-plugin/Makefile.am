@@ -71,6 +71,7 @@ noinst_DATA =								\
 	monitor-icon.h							\
 	workspaces-icon.h 						\
 	xfwm4-icon.png							\
+	keys.png							\
 	workspaces.png							\
 	margins-icon.png						\
 	monitor-icon.png
@@ -82,6 +83,10 @@ EXTRA_DIST = $(noinst_DATA) 						\
 xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	xfwm4_icon_data $(srcdir)/xfwm4-icon.png > xfwm4-icon.h
+
+keys-icon.h: $(srcdir)/keys.png
+	gdk-pixbuf-csource --raw --build-list				\
+	keys_icon_data $(srcdir)/keys.png > keys-icon.h
 
 margins-icon.h: $(srcdir)/margins-icon.png
 	gdk-pixbuf-csource --raw --build-list				\

@@ -42,6 +42,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 #include "xfwm4-icon.h"
+#include "keys-icon.h"
 
 #define RCDIR   "settings"
 #define RCFILE  "xfwm4.xml"
@@ -1971,6 +1972,9 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     GtkTreeIter iter;
     gchar *shortcut_name = NULL;
     GtkWidget *dialog;
+    GtkWidget *hbox;
+    GdkPixbuf *icon = NULL;
+    GtkWidget *image;
     GtkWidget *label;
     gchar *dialog_text = NULL;
 
@@ -1979,14 +1983,31 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     gtk_tree_selection_get_selected (selection, &model, &iter);
     gtk_tree_model_get (model, &iter, COLUMN_COMMAND, &shortcut_name, -1);
 
-    dialog_text = g_strdup_printf ("%s\n%s", _("Compose shortcut for :"), shortcut_name);
+    dialog_text = g_strdup_printf ("<i>%s</i>\n<b>%s</b>", _("Compose shortcut for :"), shortcut_name);
 
     /* Create dialog */
     dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
+
+    hbox = gtk_hbox_new (FALSE, 10);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
+    gtk_widget_show (hbox);
+
+    icon = xfce_inline_icon_at_size (keys_icon_data, 48, 48);
+    if (icon)
+    {
+        image = gtk_image_new_from_pixbuf (icon);
+	gtk_widget_show (image);
+	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
+    }
+
     label = gtk_label_new (dialog_text);
+    gtk_label_set_markup (GTK_LABEL (label), dialog_text);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_CENTER);
     gtk_widget_show (label);
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), label, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
+
+
+    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, FALSE, TRUE, 0);
 
     /* Center cancel button */
     gtk_button_box_set_layout (GTK_BUTTON_BOX (GTK_DIALOG (dialog)->action_area), GTK_BUTTONBOX_SPREAD);
