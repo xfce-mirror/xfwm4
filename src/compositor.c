@@ -557,9 +557,9 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     }
 
     c.alpha = a * 0xffff;
-    c.red = r * 0xffff;
+    c.red   = r * 0xffff;
     c.green = g * 0xffff;
-    c.blue = b * 0xffff;
+    c.blue  = b * 0xffff;
 
     XRenderFillRectangle (myScreenGetXDisplay (screen_info), PictOpSrc,
                           picture, &c, 0, 0, 1, 1);
@@ -601,8 +601,10 @@ root_tile (ScreenInfo *screen_info)
     gboolean fill = FALSE;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
+#ifdef MONITOR_ROOT_PIXMAP    
     gint p;
     Atom backgroundProps[2];
+#endif
 
     g_return_val_if_fail (screen_info != NULL, None);
     TRACE ("entering root_tile");
@@ -610,6 +612,7 @@ root_tile (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
     pixmap = None;
+#ifdef MONITOR_ROOT_PIXMAP    
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
 
@@ -637,7 +640,7 @@ root_tile (ScreenInfo *screen_info)
             break;
         }
     }
-
+#endif
     if (!pixmap)
     {
         pixmap = XCreatePixmap (dpy, screen_info->xroot, 1, 1,
@@ -654,7 +657,10 @@ root_tile (ScreenInfo *screen_info)
     {
         XRenderColor c;
 
-        c.red = c.green = c.blue = 0xd0d0;
+        /* Just a color by default #6985b7 - Same as xfdesktop */
+        c.red   = 0x6900;
+        c.green = 0x8500;
+        c.blue  = 0xB700;
         c.alpha = 0xffff;
         XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
     }
@@ -1378,12 +1384,11 @@ unmap_win (CWindow *cw)
 }
 
 static void
-add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint opacity)
+add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
 {
     ScreenInfo *screen_info = NULL;
     CWindow *new;
     Status test;
-    gboolean inserted = FALSE;
 
     TRACE ("entering add_win: 0x%lx", id);
 
@@ -1426,10 +1431,10 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         return;
     }
 
-    if ((c == NULL) && (new->attr.class != InputOnly))
+    if (c == NULL)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
-        XSelectInput (display_info->dpy, id, PropertyChangeMask | StructureNotifyMask);
+        XSelectInput (display_info->dpy, id, new->attr.your_event_mask | PropertyChangeMask | StructureNotifyMask);
     }
 
     /* Listen for XShape events if applicable */
@@ -1469,30 +1474,8 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
     getOpacity (display_info, id, &new->opacity);
     determine_mode (new);
 
-    if (above != None)
-    {
-        GList *index;
-
-        for (index = screen_info->cwindows; index; index = g_list_next (index))
-        {
-            CWindow *cw2 = (CWindow *) index->data;
-            if (cw2->id == above)
-            {
-                break;
-            }
-        }
-
-        if (index != NULL)
-        {
-            screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, new);
-            inserted = TRUE;
-        }
-    }
-
-    if (!inserted)
-    {
-        screen_info->cwindows = g_list_prepend (screen_info->cwindows, new);
-    }
+    /* Insert window at top of stack */
+    screen_info->cwindows = g_list_prepend (screen_info->cwindows, new);
 
     if (new->viewable)
     {
@@ -1543,8 +1526,14 @@ restack_win (CWindow *cw, Window above)
         {
             screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, cw);
         }
+        else if (above == None)
+        {
+            /* Insert at bottom of window stack */
+            screen_info->cwindows =  g_list_append (screen_info->cwindows, cw);
+        }
         else
         {
+            /* Insert at top of window stack */
             screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
         }
     }
@@ -1668,13 +1657,16 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 static void
 compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 {
+#ifdef MONITOR_ROOT_PIXMAP    
     gint p;
     Atom backgroundProps[2];
+#endif
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandlePropertyNotify for 0x%lx", ev->window);
- 
+
+#ifdef MONITOR_ROOT_PIXMAP    
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
 
@@ -1700,6 +1692,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             }
         }
     }
+#endif
 
     /* check if Trans property was changed */
     if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
@@ -1905,7 +1898,7 @@ compositorMapWindow (DisplayInfo *display_info, Window id)
     }
     else
     {
-        add_win (display_info, id, NULL, None, NET_WM_OPAQUE);
+        add_win (display_info, id, NULL, NET_WM_OPAQUE);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -1960,7 +1953,7 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
         guint opacity;
 
         opacity = ((c != NULL) ? c->opacity : NET_WM_OPAQUE);
-        add_win (display_info, id, c, None, opacity);
+        add_win (display_info, id, c, opacity);
     }
 #endif /* HAVE_COMPOSITOR */
 }

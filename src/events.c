@@ -916,8 +916,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     }
                     if (screen_info->params->raise_on_click)
                     {
-                	/* Clear timeout */
-                	clear_timeout ();
+                        /* Clear timeout */
+                        clear_timeout ();
                         clientRaise (c);
                     }
                     ev->window = ev->root;

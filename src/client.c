@@ -3036,7 +3036,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             moving = FALSE;
         }
     }
-    else if (xevent->type == UnmapNotify && xevent->xunmap.window == c->window)
+    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
         moving = FALSE;
     }
