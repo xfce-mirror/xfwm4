@@ -123,6 +123,7 @@ void handleSignal(int sig)
 
 void initialize(int argc, char **argv)
 {
+    PangoLayout *layout;
     struct sigaction act;
     int dummy;
     long ws;
@@ -195,6 +196,16 @@ void initialize(int argc, char **argv)
     set_net_workarea(dpy, root, workspace_count, margins);
     XSetInputFocus(dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks();
+
+    /* The first time the first Gtk application on a display uses pango,
+     * pango grabs the XServer while it creates the font cache window.
+     * Therefore, force the cache window to be created now instead of
+     * trying to do it while we have another grab and deadlocking the server.
+     */
+    layout = gtk_widget_create_pango_layout(getDefaultGtkWidget(), "-");
+    pango_layout_get_pixel_extents(layout, NULL, NULL);
+    g_object_unref(G_OBJECT(layout));
+
     clientFrameAll();
 }
 
