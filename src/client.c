@@ -2604,7 +2604,15 @@ Client *clientGetNext(Client * c, int mask)
             {
 	        okay = False;
             }
-	    if((getWMState(dpy, c2->window) == IconicState) && !(mask & INCLUDE_HIDDEN))
+	    if((c2->hidden) && !(mask & INCLUDE_HIDDEN))
+            {
+                okay = False;
+            }
+	    if((c2->skip_pager) && !(mask & INCLUDE_SKIP_PAGER))
+            {
+                okay = False;
+            }
+	    if((c2->skip_taskbar) && !(mask & INCLUDE_SKIP_TASKBAR))
             {
                 okay = False;
             }

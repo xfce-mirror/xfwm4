@@ -56,6 +56,8 @@
 #define INCLUDE_HIDDEN			(1<<0)
 #define INCLUDE_SKIP_FOCUS		(1<<1)
 #define INCLUDE_ALL_WORKSPACES		(1<<2)
+#define INCLUDE_SKIP_PAGER		(1<<3)
+#define INCLUDE_SKIP_TASKBAR		(1<<4)
 
 #define ACTIVE				0
 #define INACTIVE			1
