@@ -140,7 +140,7 @@
 #define CONSTRAINED_WINDOW(c)          ((c->win_layer > WIN_LAYER_DESKTOP) && \
                                         (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
-                                       !(c->legacy_fullscreen))
+                                       !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
 
 #define WINDOW_TYPE_DIALOG               (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
 #define WINDOW_TYPE_DONT_PLACE           (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
@@ -214,13 +214,6 @@ struct _Client
     Client *next;
     Client *prev;
     netWindowType type;
-    gboolean draw_active;
-    gboolean seen_active; /* For Urgency */
-    gboolean first_map;
-    gboolean legacy_fullscreen;
-    gboolean demands_attention;
-    gboolean urgent;
-    guint blink_timeout_id;
     int x;
     int y;
     int width;
@@ -248,6 +241,8 @@ struct _Client
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
+    /* Timout to manage blinking decorations for urgent windows */
+    guint blink_timeout_id;
     /* Pixmap caching */
     ClientPixmapCache pm_cache;
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
