@@ -1369,6 +1369,7 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *vbox6;
     GtkWidget *vbox7;
     GtkWidget *vbox8;
+    GtkTreeViewColumn *hidden_column;
 
     GtkCellRenderer *renderer;
     GtkListStore *model;
@@ -1484,7 +1485,7 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->scrolledwindow3);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow3), GTK_SHADOW_IN);
 
-    model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
+    model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     dialog->treeview3 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
     gtk_widget_show (dialog->treeview3);
     gtk_container_add (GTK_CONTAINER (dialog->scrolledwindow3), dialog->treeview3);
@@ -1499,6 +1500,11 @@ create_dialog (McsPlugin * mcs_plugin)
     g_object_set_data (G_OBJECT (renderer), "column", (gint *) COLUMN_SHORTCUT);
 
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview3), -1, _("Shortcut"), renderer, "text", COLUMN_SHORTCUT, NULL);
+    /* command name hidden column */
+    hidden_column = gtk_tree_view_column_new_with_attributes ("name", renderer, "text", COLUMN_NAME, NULL);
+    gtk_tree_view_column_set_visible (hidden_column, FALSE);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview3), hidden_column);
+
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview3), TRUE);
 
     frame = xfce_framebox_new (_("Command shortcuts"), FALSE);
@@ -1512,7 +1518,7 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->scrolledwindow4);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow4), GTK_SHADOW_IN);
 
-    model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
+    model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     dialog->treeview4 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
     gtk_widget_show (dialog->treeview4);
     gtk_container_add (GTK_CONTAINER (dialog->scrolledwindow4), dialog->treeview4);
@@ -1525,8 +1531,12 @@ create_dialog (McsPlugin * mcs_plugin)
     /* shortcut column */
     renderer = gtk_cell_renderer_text_new ();
     g_object_set_data (G_OBJECT (renderer), "column", (gint *) COLUMN_SHORTCUT);
-
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview4), -1, _("Shortcut"), renderer, "text", COLUMN_SHORTCUT, NULL);
+    /* command name hidden column */
+    hidden_column = gtk_tree_view_column_new_with_attributes ("name", renderer, "text", COLUMN_NAME, NULL);
+    gtk_tree_view_column_set_visible (hidden_column, FALSE);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview4), hidden_column);
+    
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview4), TRUE);
     /* popup menu */
     dialog->popup_menu = gtk_menu_new ();

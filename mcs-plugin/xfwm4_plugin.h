@@ -118,6 +118,7 @@ enum
 {
     COLUMN_COMMAND,
     COLUMN_SHORTCUT,
+    COLUMN_NAME,
     NUM_COLUMNS
 };
 
