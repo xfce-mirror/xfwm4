@@ -29,69 +29,66 @@
 #include <gdk/gdk.h>
 #include <X11/Xlib.h>
 
-typedef enum 
+typedef enum
 {
-  MENU_OP_MAXIMIZE     = 1 << 0,
-  MENU_OP_UNMAXIMIZE   = 1 << 1,
-  MENU_OP_MINIMIZE     = 1 << 2,
-  MENU_OP_MINIMIZE_ALL = 1 << 3,
-  MENU_OP_UNMINIMIZE   = 1 << 4,
-  MENU_OP_SHADE        = 1 << 5,
-  MENU_OP_UNSHADE      = 1 << 6,
-  MENU_OP_STICK        = 1 << 7,
-  MENU_OP_UNSTICK      = 1 << 8,
-  MENU_OP_MOVE         = 1 << 9,
-  MENU_OP_RESIZE       = 1 << 10,
-  MENU_OP_DELETE       = 1 << 11,
-  MENU_OP_DESTROY      = 1 << 12,
-  MENU_OP_WORKSPACES   = 1 << 13,
-  MENU_OP_QUIT         = 1 << 14,
-  MENU_OP_RESTART      = 1 << 15,
-  MENU_OP_SWITCH       = 1 << 16,
-  MENU_OP_OTHER        = 1 << 17
-} MenuOp;
+    MENU_OP_MAXIMIZE = 1 << 0,
+    MENU_OP_UNMAXIMIZE = 1 << 1,
+    MENU_OP_MINIMIZE = 1 << 2,
+    MENU_OP_MINIMIZE_ALL = 1 << 3,
+    MENU_OP_UNMINIMIZE = 1 << 4,
+    MENU_OP_SHADE = 1 << 5,
+    MENU_OP_UNSHADE = 1 << 6,
+    MENU_OP_STICK = 1 << 7,
+    MENU_OP_UNSTICK = 1 << 8,
+    MENU_OP_MOVE = 1 << 9,
+    MENU_OP_RESIZE = 1 << 10,
+    MENU_OP_DELETE = 1 << 11,
+    MENU_OP_DESTROY = 1 << 12,
+    MENU_OP_WORKSPACES = 1 << 13,
+    MENU_OP_QUIT = 1 << 14,
+    MENU_OP_RESTART = 1 << 15,
+    MENU_OP_SWITCH = 1 << 16,
+    MENU_OP_OTHER = 1 << 17
+}
+MenuOp;
 
 typedef struct _Menu Menu;
 typedef struct _MenuItem MenuItem;
 typedef struct _MenuData MenuData;
 
-typedef void (* MenuFunc) (Menu    *menu,
-			   MenuOp   op,
-			   Window   client_xwindow,
-			   gpointer menu_data,
-			   gpointer item_data);
+typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window client_xwindow, gpointer menu_data, gpointer item_data);
 
 struct _MenuItem
 {
-    MenuOp      op;
+    MenuOp op;
     const char *stock_id;
     const char *label;
 };
 
 struct _MenuData
 {
-    Menu    *menu;
-    MenuOp   op;
-    Window   client_xwindow;
+    Menu *menu;
+    MenuOp op;
+    Window client_xwindow;
     gpointer data;
 };
 
 struct _Menu
 {
     GtkWidget *menu;
-    MenuFunc   func;
-    gpointer   data;
-    MenuOp     ops;
-    MenuOp     insensitive;
+    MenuFunc func;
+    gpointer data;
+    MenuOp ops;
+    MenuOp insensitive;
 };
 
-Menu* menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data);
-Menu* menu_connect (Menu *menu);
-GtkWidget*   menu_item_connect (GtkWidget *item, MenuData *item_data);
-gboolean     menu_is_window (Window);
-gboolean     menu_is_opened (void);
-gboolean     menu_check_and_close (void);
-void         menu_popup (Menu *menu, int root_x, int root_y, int button, guint32 timestamp);
-void         menu_free (Menu *menu);
+Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data);
+Menu *menu_connect(Menu * menu);
+GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data);
+gboolean menu_is_window(Window);
+gboolean menu_is_opened(void);
+gboolean menu_check_and_close(void);
+void menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp);
+void menu_free(Menu * menu);
 
 #endif /* __MENU_H__ */

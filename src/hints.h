@@ -28,37 +28,37 @@
 
 #include <X11/Xatom.h>
 
-#define MWM_HINTS_DECORATIONS			(1L<<1) 	 	 
-#define MWM_DECOR_ALL				(1L<<0) 	 	 
-#define MWM_DECOR_BORDER			(1L<<1) 	 	 
-#define MWM_DECOR_TITLE 			(1L<<3) 	 	 
-#define MWM_DECOR_MAXIMIZE			(1L<<6) 	 	 
+#define MWM_HINTS_DECORATIONS			(1L<<1)
+#define MWM_DECOR_ALL				(1L<<0)
+#define MWM_DECOR_BORDER			(1L<<1)
+#define MWM_DECOR_TITLE 			(1L<<3)
+#define MWM_DECOR_MAXIMIZE			(1L<<6)
 
-#define WIN_STATE_STICKY			(1L<<0) 	 	 
-#define WIN_STATE_MAXIMIZED_VERT		(1L<<2) 	 	 
-#define WIN_STATE_MAXIMIZED_HORIZ		(1L<<3) 	 	 
-#define WIN_STATE_MAXIMIZED			((1L<<2)|(1L<<3))	 
-#define WIN_STATE_SHADED			(1L<<5) 	 	 
+#define WIN_STATE_STICKY			(1L<<0)
+#define WIN_STATE_MAXIMIZED_VERT		(1L<<2)
+#define WIN_STATE_MAXIMIZED_HORIZ		(1L<<3)
+#define WIN_STATE_MAXIMIZED			((1L<<2)|(1L<<3))
+#define WIN_STATE_SHADED			(1L<<5)
 
-#define WIN_HINTS_SKIP_FOCUS			(1L<<0) 	 	 
-#define WIN_HINTS_SKIP_TASKBAR  		(1L<<2) 	 	 
+#define WIN_HINTS_SKIP_FOCUS			(1L<<0)
+#define WIN_HINTS_SKIP_TASKBAR  		(1L<<2)
 
-#define WIN_LAYER_DESKTOP			0		 	 
-#define WIN_LAYER_BELOW 			2		 	 
-#define WIN_LAYER_NORMAL			4		 	 
-#define WIN_LAYER_ONTOP 			6		 	 
-#define WIN_LAYER_DOCK  			8		 	 
+#define WIN_LAYER_DESKTOP			0
+#define WIN_LAYER_BELOW 			2
+#define WIN_LAYER_NORMAL			4
+#define WIN_LAYER_ONTOP 			6
+#define WIN_LAYER_DOCK  			8
 #define WIN_LAYER_ABOVE_DOCK			10
 
-#define NET_WM_MOVERESIZE_SIZE_TOPLEFT  	0    
-#define NET_WM_MOVERESIZE_SIZE_TOP		1    
-#define NET_WM_MOVERESIZE_SIZE_TOPRIGHT 	2    
-#define NET_WM_MOVERESIZE_SIZE_RIGHT		3    
-#define NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT	4    
-#define NET_WM_MOVERESIZE_SIZE_BOTTOM		5    
-#define NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT	6    
-#define NET_WM_MOVERESIZE_SIZE_LEFT		7    
-#define NET_WM_MOVERESIZE_MOVE  		8    
+#define NET_WM_MOVERESIZE_SIZE_TOPLEFT  	0
+#define NET_WM_MOVERESIZE_SIZE_TOP		1
+#define NET_WM_MOVERESIZE_SIZE_TOPRIGHT 	2
+#define NET_WM_MOVERESIZE_SIZE_RIGHT		3
+#define NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT	4
+#define NET_WM_MOVERESIZE_SIZE_BOTTOM		5
+#define NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT	6
+#define NET_WM_MOVERESIZE_SIZE_LEFT		7
+#define NET_WM_MOVERESIZE_MOVE  		8
 
 #define NET_WM_STATE_REMOVE                     0
 #define NET_WM_STATE_ADD                        1
@@ -141,23 +141,23 @@ unsigned long getWMState(Display *, Window);
 void setWMState(Display *, Window, unsigned long state);
 void initMotifHints(Display *);
 PropMwmHints *getMotifHints(Display *, Window);
-int getWMInput (Display *, Window);
-int getWMTakeFocus (Display *, Window);
+int getWMInput(Display *, Window);
+int getWMTakeFocus(Display *, Window);
 void initGnomeHints(Display *);
 int getGnomeHint(Display *, Window, Atom, long *);
 void setGnomeHint(Display *, Window, Atom, long);
 void getGnomeDesktopMargins(Display *, CARD32 *);
 void initNetHints(Display * dpy);
 int getNetHint(Display *, Window, Atom, long *);
-void set_net_supported_hint (Display *, Window, Window);
-int get_atom_list (Display *, Window, Atom, Atom **, int *);
-int get_cardinal_list (Display *, Window, Atom, unsigned long **, int *);
-void set_net_workarea (Display *, Window, int, CARD32 *);
-void init_net_desktop_params (Display *, Window, int);
-void set_utf8_string_hint (Display *, Window, Atom, const char *);
-void getTransientFor(Display * dpy, Window w, Window *transient_for);
+void set_net_supported_hint(Display *, Window, Window);
+int get_atom_list(Display *, Window, Atom, Atom **, int *);
+int get_cardinal_list(Display *, Window, Atom, unsigned long **, int *);
+void set_net_workarea(Display *, Window, int, CARD32 *);
+void init_net_desktop_params(Display *, Window, int);
+void set_utf8_string_hint(Display *, Window, Atom, const char *);
+void getTransientFor(Display * dpy, Window w, Window * transient_for);
 void getWindowName(Display * dpy, Window w, char **name);
-int get_utf8_string (Display *, Window, Atom, char **);
+int get_utf8_string(Display *, Window, Atom, char **);
 void getWindowName(Display *, Window, char **);
 
 #define setNetHint setGnomeHint

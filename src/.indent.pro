@@ -1,13 +1,13 @@
 -i4
 -bli0
 -cli4
--l80
+-l512
 -nut
 -npsl
 -nbbo
 -ncs
 -npcs
 -nprs
--nsaf
+-nsafq
 -nsai
 -nsaw

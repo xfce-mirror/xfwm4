@@ -70,10 +70,8 @@ void grabKey(Display * dpy, MyKey * key, Window w)
 
     if(key->keycode)
     {
-        XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync,
-                 GrabModeAsync);
-        XGrabKey(dpy, key->keycode, key->modifier | LockMask, w, False,
-                 GrabModeAsync, GrabModeAsync);
+        XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync, GrabModeAsync);
+        XGrabKey(dpy, key->keycode, key->modifier | LockMask, w, False, GrabModeAsync, GrabModeAsync);
     }
 }
 

@@ -63,65 +63,65 @@ void workspaceSwitch(int new_ws, Client * c2)
     {
         f->focus = True;
     }
-    
+
     if(c2)
     {
         setGnomeHint(dpy, c2->window, win_workspace, new_ws);
         data[0] = new_ws;
-        XChangeProperty (dpy, c2->window, net_wm_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
+        XChangeProperty(dpy, c2->window, net_wm_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
         c2->win_workspace = new_ws;
     }
 
     setGnomeHint(dpy, root, win_workspace, new_ws);
     data[0] = new_ws;
-    XChangeProperty (dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
+    XChangeProperty(dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     workspace = new_ws;
-    
+
     /* 
        Do the switch in two passes :
        - The first one, unmapping windows from bottom to top 
        - The second pass, mapping from top to bottom
-       
+
        ==> this save a lot of expose events and make things a lot faster ;-)
      */
-     
+
     /* First pass */
     for(last = clients, i = 0; i < client_count; last = last->next, i++);
     for(c = last, i = 0; i < client_count; c = c->prev, i++)
     {
         if((c->visible) && !(c->sticky) && ((c->win_workspace != new_ws)))
-	{
+        {
             clientHide(c, False);
-	}
+        }
     }
     /* Second pass */
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if(c->sticky)
-	{
+        {
             clientSetWorkspace(c, new_ws);
         }
-	else
+        else
         {
             if((c->win_workspace == new_ws) && !(c->hidden))
             {
                 clientShow(c, False);
                 if(c->focus)
-		{
+                {
                     f = c;
                 }
-		c->focus = False;
+                c->focus = False;
             }
         }
     }
     if(c2)
     {
         f = c2;
-	clientRaise (c2);
+        clientRaise(c2);
     }
     workspaceUpdateArea(margins, gnome_margins);
     clientSetFocus(f, True);
-    XSync (dpy, 0);
+    XSync(dpy, 0);
 }
 
 void workspaceSetCount(int count)
@@ -143,52 +143,52 @@ void workspaceSetCount(int count)
 
     setGnomeHint(dpy, root, win_workspace_count, count);
     data[0] = count;
-    XChangeProperty (dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
+    XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     workspace_count = count;
 
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if(c->win_workspace > count - 1)
-	{
+        {
             clientSetWorkspace(c, count - 1);
-	}
+        }
     }
     if(workspace > count - 1)
     {
         workspaceSwitch(count - 1, NULL);
     }
-    set_net_workarea (dpy, root, workspace_count, margins);
+    set_net_workarea(dpy, root, workspace_count, margins);
 }
 
-void workspaceUpdateArea(CARD32 *margins, CARD32 *gnome_margins)
+void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
 {
     Client *c;
     int i;
-    int prev_top    = margins[MARGIN_TOP];
-    int prev_left   = margins[MARGIN_LEFT];
-    int prev_right  = margins[MARGIN_RIGHT];
+    int prev_top = margins[MARGIN_TOP];
+    int prev_left = margins[MARGIN_LEFT];
+    int prev_right = margins[MARGIN_RIGHT];
     int prev_bottom = margins[MARGIN_BOTTOM];
 
     DBG("entering workspaceSetCount\n");
 
-    for (i = 0; i < 4; i++)
+    for(i = 0; i < 4; i++)
     {
         margins[i] = gnome_margins[i];
     }
     for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if((c->has_struts) && (c->visible))
-	{
-	    margins[MARGIN_TOP]    = MAX(margins[MARGIN_TOP],    c->struts[MARGIN_TOP]);
-	    margins[MARGIN_LEFT]   = MAX(margins[MARGIN_LEFT],   c->struts[MARGIN_LEFT]);
-	    margins[MARGIN_RIGHT]  = MAX(margins[MARGIN_RIGHT],  c->struts[MARGIN_RIGHT]);
-	    margins[MARGIN_BOTTOM] = MAX(margins[MARGIN_BOTTOM], c->struts[MARGIN_BOTTOM]);
-	}
+        {
+            margins[MARGIN_TOP] = MAX(margins[MARGIN_TOP], c->struts[MARGIN_TOP]);
+            margins[MARGIN_LEFT] = MAX(margins[MARGIN_LEFT], c->struts[MARGIN_LEFT]);
+            margins[MARGIN_RIGHT] = MAX(margins[MARGIN_RIGHT], c->struts[MARGIN_RIGHT]);
+            margins[MARGIN_BOTTOM] = MAX(margins[MARGIN_BOTTOM], c->struts[MARGIN_BOTTOM]);
+        }
     }
     DBG("Desktop area computed : (%d,%d,%d,%d)\n", margins[0], margins[1], margins[2], margins[3]);
-    if ((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
+    if((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
     {
         DBG("Margins have changed, updating net_workarea\n");
-        set_net_workarea (dpy, root, workspace_count, margins);
+        set_net_workarea(dpy, root, workspace_count, margins);
     }
 }

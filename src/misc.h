@@ -32,7 +32,7 @@ void getMouseXY(Display *, Window, int *, int *);
 Window getMouseWindow(Display *, Window);
 GC createGC(Display *, Colormap, char *, int, XFontStruct *, int);
 void sendClientMessage(Display *, Window, Atom, long, int);
-void MyXGrabServer (Display *);
-void MyXUngrabServer (Display *);
+void MyXGrabServer(Display *);
+void MyXUngrabServer(Display *);
 
 #endif /* __MISC_H__ */

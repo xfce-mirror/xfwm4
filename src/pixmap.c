@@ -32,7 +32,7 @@
 #include "main.h"
 #include "debug.h"
 
-gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file, XpmColorSymbol * cs, gint n)
+gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
 {
     gchar filename[512];
     XpmAttributes attr;
@@ -40,20 +40,20 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file, XpmCo
     DBG("entering loadPixmap\n");
 
     pm->pixmap = None;
-    pm->mask   = None;
-    pm->width  = 1;
+    pm->mask = None;
+    pm->width = 1;
     pm->height = 1;
     g_snprintf(filename, sizeof(filename), "%s/%s", dir, file);
     attr.colorsymbols = cs;
-    attr.numsymbols   = n;
-    attr.colormap     = cmap;
-    attr.closeness    = 65535;
-    attr.valuemask    =  XpmCloseness | XpmColormap | XpmSize;
+    attr.numsymbols = n;
+    attr.colormap = cmap;
+    attr.closeness = 65535;
+    attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
     if(n > 0 && cs)
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-    if(XpmReadFileToPixmap (dpy, XDefaultRootWindow(dpy), filename, &pm->pixmap, &pm->mask, &attr))
+    if(XpmReadFileToPixmap(dpy, XDefaultRootWindow(dpy), filename, &pm->pixmap, &pm->mask, &attr))
     {
         return FALSE;
     }
@@ -66,8 +66,8 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file, XpmCo
 void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
 {
     pm->pixmap = XCreatePixmap(dpy, root, width, height, depth);
-    pm->mask   = XCreatePixmap(dpy, pm->pixmap, width, height, 1);
-    pm->width  = width;
+    pm->mask = XCreatePixmap(dpy, pm->pixmap, width, height, 1);
+    pm->width = width;
     pm->height = height;
 }
 

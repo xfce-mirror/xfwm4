@@ -63,7 +63,7 @@ PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
 
-EXTRA_DIST = example.xfwm4rc example.xfwm4rc.in xfwm4.spec xfwm4.spec.in
+EXTRA_DIST = example.xfwm4rc example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec xfwm4.spec.in
 
 SUBDIRS = src defaults themes
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4

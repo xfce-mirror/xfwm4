@@ -36,6 +36,6 @@ extern int workspace;
 
 void workspaceSwitch(int, Client *);
 void workspaceSetCount(int);
-void workspaceUpdateArea(CARD32*, CARD32*);
+void workspaceUpdateArea(CARD32 *, CARD32 *);
 
 #endif /* __WORKSPACES_H__ */

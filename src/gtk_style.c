@@ -47,178 +47,178 @@ char *names[] = {
 #define GTKSTYLE_DARK  5
 #define GTKSTYLE_MID   6
 
-static gint state_value (gchar *s)
+static gint state_value(gchar * s)
 {
     gchar *t;
-    gint   u;
-    
+    gint u;
+
     t = states[0];
     u = 0;
-    
-    while ((states[u]) && (strcmp (states[u], s)))
+
+    while((states[u]) && (strcmp(states[u], s)))
     {
         u++;
     }
-    if (states[u])
+    if(states[u])
     {
         return (u);
     }
     return (0);
 }
 
-static gint name_value (gchar *s)
+static gint name_value(gchar * s)
 {
     gchar *t;
-    gint   u;
-    
+    gint u;
+
     t = names[0];
     u = 0;
-    
-    while ((names[u]) && (strcmp (names[u], s)))
+
+    while((names[u]) && (strcmp(names[u], s)))
     {
         u++;
     }
-    if (names[u])
+    if(names[u])
     {
         return (u);
     }
     return (0);
 }
 
-static gchar *print_color (GdkColor *c)
+static gchar *print_color(GdkColor * c)
 {
     gchar *s;
-    
-    s = g_new (gchar, 8);
-    g_snprintf (s, 8, "#%02x%02x%02x", c->red / 256, c->green / 256, c->blue / 256);
+
+    s = g_new(gchar, 8);
+    g_snprintf(s, 8, "#%02x%02x%02x", c->red / 256, c->green / 256, c->blue / 256);
     return (s);
 }
 
-static gchar *print_colors (GdkColor *x, int n)
+static gchar *print_colors(GdkColor * x, int n)
 {
-    return (print_color (x + n));
+    return (print_color(x + n));
 }
 
-static gchar *print_rc_style (gchar *name,  gchar *state, GtkStyle *style)
+static gchar *print_rc_style(gchar * name, gchar * state, GtkStyle * style)
 {
     gchar *s;
     gint n, m;
-    g_return_val_if_fail (state != NULL, NULL);
-    g_return_val_if_fail (name != NULL, NULL);
-    
-    n = state_value (state);
-    m = name_value  (name);
-    
+    g_return_val_if_fail(state != NULL, NULL);
+    g_return_val_if_fail(name != NULL, NULL);
+
+    n = state_value(state);
+    m = name_value(name);
+
     switch (m)
     {
         case GTKSTYLE_FG:
-    	    s = print_colors (style->fg, n);
-	    break;
+            s = print_colors(style->fg, n);
+            break;
         case GTKSTYLE_BG:
-    	    s = print_colors (style->bg, n);
-	    break;
+            s = print_colors(style->bg, n);
+            break;
         case GTKSTYLE_TEXT:
-    	    s = print_colors (style->text, n);
-	    break;
+            s = print_colors(style->text, n);
+            break;
         case GTKSTYLE_BASE:
-    	    s = print_colors (style->base, n);
-	    break;
+            s = print_colors(style->base, n);
+            break;
         case GTKSTYLE_LIGHT:
-   	    s = print_colors (style->light, n);
-	    break;
+            s = print_colors(style->light, n);
+            break;
         case GTKSTYLE_DARK:
-    	    s = print_colors (style->dark, n);
-	    break;
-	default:
+            s = print_colors(style->dark, n);
+            break;
+        default:
         case GTKSTYLE_MID:
-  	    s = print_colors (style->mid, n);
-	    break;
+            s = print_colors(style->mid, n);
+            break;
     }
     return (s);
 }
 
-gchar *get_style (GtkWidget *win, gchar *name, gchar *state)
+gchar *get_style(GtkWidget * win, gchar * name, gchar * state)
 {
     GtkStyle *style = NULL;
     gchar *s = NULL;
 
     DBG("entering get_style\n");
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail(GTK_WIDGET_REALIZED(win), NULL);
 
-    style = gtk_rc_get_style (win);
-    if (!style)
+    style = gtk_rc_get_style(win);
+    if(!style)
     {
-	style = gtk_widget_get_style (win);
+        style = gtk_widget_get_style(win);
     }
-    s = print_rc_style (name, state, style);
+    s = print_rc_style(name, state, style);
     DBG("%s[%s]=%s\n", name, state, s);
     return (s);
 }
 
-static GdkGC *_get_style_gc (gchar *name,  gchar *state, GtkStyle *style)
+static GdkGC *_get_style_gc(gchar * name, gchar * state, GtkStyle * style)
 {
     GdkGC *gc = NULL;
     gint n, m;
-    g_return_val_if_fail (state != NULL, NULL);
-    g_return_val_if_fail (name != NULL, NULL);
-    
-    n = state_value (state);
-    m = name_value  (name);
-    
+    g_return_val_if_fail(state != NULL, NULL);
+    g_return_val_if_fail(name != NULL, NULL);
+
+    n = state_value(state);
+    m = name_value(name);
+
     switch (m)
     {
         case GTKSTYLE_FG:
-    	    gc = style->fg_gc[n];
-	    break;
+            gc = style->fg_gc[n];
+            break;
         case GTKSTYLE_BG:
-    	    gc = style->bg_gc[n];
-	    break;
+            gc = style->bg_gc[n];
+            break;
         case GTKSTYLE_TEXT:
-    	    gc = style->text_gc[n];
-	    break;
+            gc = style->text_gc[n];
+            break;
         case GTKSTYLE_BASE:
-    	    gc = style->base_gc[n];
-	    break;
+            gc = style->base_gc[n];
+            break;
         case GTKSTYLE_LIGHT:
-    	    gc = style->light_gc[n];
-	    break;
+            gc = style->light_gc[n];
+            break;
         case GTKSTYLE_DARK:
-    	    gc = style->dark_gc[n];
-	    break;
-	default:
+            gc = style->dark_gc[n];
+            break;
+        default:
         case GTKSTYLE_MID:
-    	    gc = style->mid_gc[n];
-	    break;
+            gc = style->mid_gc[n];
+            break;
     }
     return (gc);
 }
 
-GdkGC *get_style_gc (GtkWidget *win, gchar *name, gchar *state)
+GdkGC *get_style_gc(GtkWidget * win, gchar * name, gchar * state)
 {
     GtkStyle *style = NULL;
 
     DBG("entering get_style_gc\n");
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail(GTK_WIDGET_REALIZED(win), NULL);
 
-    style = gtk_rc_get_style (win);
-    if (!style)
+    style = gtk_rc_get_style(win);
+    if(!style)
     {
-	style = gtk_widget_get_style (win);
+        style = gtk_widget_get_style(win);
     }
     return (_get_style_gc(name, state, style));
 }
 
-PangoFontDescription *get_font_desc (GtkWidget *win)
+PangoFontDescription *get_font_desc(GtkWidget * win)
 {
     DBG("entering get_font_desc\n");
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail(GTK_WIDGET_REALIZED(win), NULL);
 
     return (win->style->font_desc);
 }
 
-PangoContext *pango_get_context (GtkWidget *win)
+PangoContext *pango_get_context(GtkWidget * win)
 {
     DBG("entering pango_get_context\n");
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
-    return (gtk_widget_get_pango_context (win));
+    g_return_val_if_fail(GTK_WIDGET_REALIZED(win), NULL);
+    return (gtk_widget_get_pango_context(win));
 }

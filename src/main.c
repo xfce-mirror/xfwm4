@@ -56,14 +56,13 @@ int handleXError(Display * dpy, XErrorEvent * err)
         case BadAccess:
             if(err->resourceid == root)
             {
-                fprintf(stderr, "%s: Another window manager is running\n",
-                        progname);
+                fprintf(stderr, "%s: Another window manager is running\n", progname);
                 exit(1);
             }
-	    break;
+            break;
         default:
-	    DBG("X error ignored\n");
-	    break;
+            DBG("X error ignored\n");
+            break;
     }
     return 0;
 }
@@ -94,9 +93,9 @@ void handleSignal(int sig)
     {
         case SIGINT:
         case SIGTERM:
-            gtk_main_quit ();
+            gtk_main_quit();
             quit = True;
-	    break;
+            break;
         case SIGHUP:
             reload = True;
             break;
@@ -105,8 +104,8 @@ void handleSignal(int sig)
             cleanUp();
             exit(1);
             break;
-	default:
-	    break;
+        default:
+            break;
     }
 }
 
@@ -117,21 +116,21 @@ void initialize(int argc, char **argv)
     long ws;
 
     DBG("entering initialize\n");
-    
+
     gtk_init(&argc, &argv);
     progname = argv[0];
 
-    dpy     = GDK_DISPLAY();
-    root    = GDK_ROOT_WINDOW();
-    screen  = XDefaultScreen(dpy);
-    depth   = DefaultDepth(dpy, screen);
-    cmap    = DefaultColormap(dpy, screen);
-    
-    margins[MARGIN_TOP]    = gnome_margins[MARGIN_TOP]    = 0;
-    margins[MARGIN_LEFT]   = gnome_margins[MARGIN_LEFT]   = 0;
-    margins[MARGIN_RIGHT]  = gnome_margins[MARGIN_RIGHT]  = 0;
+    dpy = GDK_DISPLAY();
+    root = GDK_ROOT_WINDOW();
+    screen = XDefaultScreen(dpy);
+    depth = DefaultDepth(dpy, screen);
+    cmap = DefaultColormap(dpy, screen);
+
+    margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
+    margins[MARGIN_LEFT] = gnome_margins[MARGIN_LEFT] = 0;
+    margins[MARGIN_RIGHT] = gnome_margins[MARGIN_RIGHT] = 0;
     margins[MARGIN_BOTTOM] = gnome_margins[MARGIN_BOTTOM] = 0;
-    
+
     XSetErrorHandler(handleXError);
     shape = XShapeQueryExtension(dpy, &shape_event, &dummy);
 
@@ -142,22 +141,20 @@ void initialize(int argc, char **argv)
 
     root_cursor = XCreateFontCursor(dpy, XC_left_ptr);
     move_cursor = XCreateFontCursor(dpy, XC_fleur);
-    resize_cursor[CORNER_TOP_LEFT]     = XCreateFontCursor(dpy, XC_top_left_corner);
-    resize_cursor[CORNER_TOP_RIGHT]    = XCreateFontCursor(dpy, XC_top_right_corner);
-    resize_cursor[CORNER_BOTTOM_LEFT]  = XCreateFontCursor(dpy, XC_bottom_left_corner);
+    resize_cursor[CORNER_TOP_LEFT] = XCreateFontCursor(dpy, XC_top_left_corner);
+    resize_cursor[CORNER_TOP_RIGHT] = XCreateFontCursor(dpy, XC_top_right_corner);
+    resize_cursor[CORNER_BOTTOM_LEFT] = XCreateFontCursor(dpy, XC_bottom_left_corner);
     resize_cursor[CORNER_BOTTOM_RIGHT] = XCreateFontCursor(dpy, XC_bottom_right_corner);
-    resize_cursor[4 + SIDE_LEFT]       = XCreateFontCursor(dpy, XC_left_side);
-    resize_cursor[4 + SIDE_RIGHT]      = XCreateFontCursor(dpy, XC_right_side);
-    resize_cursor[4 + SIDE_BOTTOM]     = XCreateFontCursor(dpy, XC_bottom_side);
-    
+    resize_cursor[4 + SIDE_LEFT] = XCreateFontCursor(dpy, XC_left_side);
+    resize_cursor[4 + SIDE_RIGHT] = XCreateFontCursor(dpy, XC_right_side);
+    resize_cursor[4 + SIDE_BOTTOM] = XCreateFontCursor(dpy, XC_bottom_side);
+
     XDefineCursor(dpy, root, root_cursor);
 
-    initEventFilter(SubstructureNotifyMask | StructureNotifyMask | SubstructureRedirectMask |
-        	 ButtonPressMask | ButtonReleaseMask | FocusChangeMask |
-        	 PropertyChangeMask | ColormapNotify, NULL, "xfwm");
-    pushEventFilter (xfwm4_event_filter, NULL);
+    initEventFilter(SubstructureNotifyMask | StructureNotifyMask | SubstructureRedirectMask | ButtonPressMask | ButtonReleaseMask | FocusChangeMask | PropertyChangeMask | ColormapNotify, NULL, "xfwm");
+    pushEventFilter(xfwm4_event_filter, NULL);
 
-    gnome_win = getDefaultXWindow ();
+    gnome_win = getDefaultXWindow();
 
     initSettings();
     loadSettings();
@@ -173,15 +170,15 @@ void initialize(int argc, char **argv)
     setGnomeHint(dpy, root, win_desktop_button_proxy, gnome_win);
     setGnomeHint(dpy, gnome_win, win_desktop_button_proxy, gnome_win);
     getGnomeHint(dpy, root, win_workspace, &ws);
-    workspace = (int) ws;
+    workspace = (int)ws;
     getGnomeDesktopMargins(dpy, gnome_margins);
-    set_utf8_string_hint (dpy, gnome_win, net_wm_name, "Xfwm4");
-    set_net_supported_hint (dpy, root, gnome_win);
+    set_utf8_string_hint(dpy, gnome_win, net_wm_name, "Xfwm4");
+    set_net_supported_hint(dpy, root, gnome_win);
     workspaceUpdateArea(margins, gnome_margins);
-    init_net_desktop_params (dpy, root, workspace);
-    set_net_workarea (dpy, root, workspace_count, margins);
+    init_net_desktop_params(dpy, root, workspace);
+    set_net_workarea(dpy, root, workspace_count, margins);
     XSetInputFocus(dpy, gnome_win, RevertToNone, CurrentTime);
-    initGtkCallbacks ();
+    initGtkCallbacks();
     clientFrameAll();
 }
 

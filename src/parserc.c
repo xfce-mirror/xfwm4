@@ -30,7 +30,7 @@
 #include "settings.h"
 #include "debug.h"
 
-gboolean parseRc(gchar *file, gchar *dir, Settings rc[])
+gboolean parseRc(gchar * file, gchar * dir, Settings rc[])
 {
     gchar filename[512], buf[512], *lvalue, *rvalue;
     FILE *fp;
@@ -64,10 +64,10 @@ gboolean parseRc(gchar *file, gchar *dir, Settings rc[])
                     if(rvalue)
                     {
                         if(rc[i].value)
-			{
+                        {
                             g_free(rc[i].value);
                         }
-			rc[i].value = g_strdup(rvalue);
+                        rc[i].value = g_strdup(rvalue);
                         DBG("%s=%s\n", rc[i].option, rc[i].value);
                     }
                 }
@@ -96,7 +96,7 @@ gboolean checkRc(Settings rc[])
     return rval;
 }
 
-gchar *getValue(gchar *option, Settings rc[])
+gchar *getValue(gchar * option, Settings rc[])
 {
     gint i;
 
@@ -105,9 +105,9 @@ gchar *getValue(gchar *option, Settings rc[])
     for(i = 0; rc[i].option; i++)
     {
         if(!g_strcasecmp(option, rc[i].option))
-	{
+        {
             break;
-	}
+        }
     }
     return rc[i].value;
 }

@@ -33,7 +33,7 @@
 #include <glib.h>
 
 void handleEvent(XEvent *);
-GtkToXEventFilterStatus xfwm4_event_filter(XEvent *xevent, gpointer  data);
-void initGtkCallbacks (void);
+GtkToXEventFilterStatus xfwm4_event_filter(XEvent * xevent, gpointer data);
+void initGtkCallbacks(void);
 
 #endif /* __EVENTS_H__ */

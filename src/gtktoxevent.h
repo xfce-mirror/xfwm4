@@ -28,24 +28,26 @@
 #include <gdk/gdk.h>
 #include <X11/Xlib.h>
 
-typedef enum 
+typedef enum
 {
-  XEV_FILTER_STOP = TRUE,
-  XEV_FILTER_CONTINUE = FALSE
-} GtkToXEventFilterStatus;
+    XEV_FILTER_STOP = TRUE,
+    XEV_FILTER_CONTINUE = FALSE
+}
+GtkToXEventFilterStatus;
 
-typedef GtkToXEventFilterStatus (*GtkToXEventFilter) (XEvent *xevent, gpointer data);
+typedef GtkToXEventFilterStatus(*GtkToXEventFilter) (XEvent * xevent, gpointer data);
 
 typedef struct GtkToXEventFilterStack
 {
-  GtkToXEventFilter            filter;
-  gpointer                     data;
-  struct GtkToXEventFilterStack *next;
-} GtkToXEventFilterStack;
+    GtkToXEventFilter filter;
+    gpointer data;
+    struct GtkToXEventFilterStack *next;
+}
+GtkToXEventFilterStack;
 
 GtkToXEventFilterStack *pushEventFilter(GtkToXEventFilter filter, gpointer data);
 GtkToXEventFilterStack *popEventFilter(void);
-GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gchar *widget_name);
+GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gchar * widget_name);
 void closeEventFilter(void);
 GtkWidget *getDefaultGtkWidget(void);
 Window getDefaultXWindow(void);

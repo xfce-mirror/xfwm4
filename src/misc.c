@@ -100,31 +100,29 @@ void sendClientMessage(Display * dpy, Window w, Atom a, long x, int mask)
     XSync(dpy, False);
 }
 
-void
-MyXGrabServer (Display *dpy)
+void MyXGrabServer(Display * dpy)
 {
     DBG("entering MyXGrabServer\n");
-    if (xgrabcount == 0)
+    if(xgrabcount == 0)
     {
         DBG("grabbing server\n");
-	XGrabServer (dpy);
+        XGrabServer(dpy);
     }
     xgrabcount++;
     DBG("grabs : %i\n", xgrabcount);
 }
 
-void
-MyXUngrabServer (Display *dpy)
+void MyXUngrabServer(Display * dpy)
 {
     DBG("entering MyXUngrabServer\n");
-    if (--xgrabcount < 0)		/* should never happen */
+    if(--xgrabcount < 0)        /* should never happen */
     {
-	xgrabcount = 0;
+        xgrabcount = 0;
     }
-    if (xgrabcount == 0)
+    if(xgrabcount == 0)
     {
         DBG("ungrabbing server\n");
-	XUngrabServer (dpy);
+        XUngrabServer(dpy);
     }
     DBG("grabs : %i\n", xgrabcount);
 }

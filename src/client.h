@@ -156,7 +156,8 @@ typedef enum
     WINDOW_MENU,
     WINDOW_UTILITY,
     WINDOW_SPLASHSCREEN
-} WindowType;
+}
+WindowType;
 
 typedef struct _Client Client;
 
@@ -198,30 +199,30 @@ struct _Client
     int struts[4];
     char *name;
     unsigned int ignore_unmap;
-    unsigned int managed      : 1;
-    unsigned int focus        : 1;
-    unsigned int has_border   : 1;
-    unsigned int sticky       : 1;
-    unsigned int maximized    : 1;
-    unsigned int fullscreen   : 1;
-    unsigned int shaded       : 1;
-    unsigned int visible      : 1;
-    unsigned int hidden       : 1;
-    unsigned int state_modal  : 1;
-    unsigned int skip_taskbar : 1;
-    unsigned int skip_pager   : 1;
-    unsigned int has_struts   : 1;
-    unsigned int wm_takefocus : 1;
-    unsigned int wm_input     : 1;
+    unsigned int managed:1;
+    unsigned int focus:1;
+    unsigned int has_border:1;
+    unsigned int sticky:1;
+    unsigned int maximized:1;
+    unsigned int fullscreen:1;
+    unsigned int shaded:1;
+    unsigned int visible:1;
+    unsigned int hidden:1;
+    unsigned int state_modal:1;
+    unsigned int skip_taskbar:1;
+    unsigned int skip_pager:1;
+    unsigned int has_struts:1;
+    unsigned int wm_takefocus:1;
+    unsigned int wm_input:1;
 };
 
 extern Client *clients;
 extern Window *client_list;
 extern unsigned int client_count;
 
-void clientSetNetState (Client *);
-void clientUpdateNetState (Client *, XClientMessageEvent *);
-void clientGetNetWmType (Client *c);
+void clientSetNetState(Client *);
+void clientUpdateNetState(Client *, XClientMessageEvent *);
+void clientGetNetWmType(Client * c);
 void clientGravitate(Client *, int);
 void clientConfigure(Client *, XWindowChanges *, int);
 void clientFrame(Window);
@@ -229,8 +230,8 @@ void clientUnframe(Client *, int);
 void clientFrameAll();
 void clientUnframeAll();
 void clientGetNetStruts(Client *);
-void clientInstallColormaps (Client *);
-void clientUpdateColormaps (Client *);
+void clientInstallColormaps(Client *);
+void clientUpdateColormaps(Client *);
 void clientGrabKeys(Client *);
 void clientUngrabKeys(Client *);
 Client *clientGetFromWindow(Window, int);
@@ -250,7 +251,7 @@ void clientToggleSticky(Client *);
 void clientToggleMaximized(Client *, int);
 void clientToggleFullscreen(Client *);
 void clientUpdateFocus(Client *);
-inline gboolean clientAcceptFocus(Client *c);
+inline gboolean clientAcceptFocus(Client * c);
 void clientSetFocus(Client *, int);
 Client *clientGetFocus();
 void clientMove(Client *, XEvent *);

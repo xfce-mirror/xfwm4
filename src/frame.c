@@ -184,20 +184,20 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
 
     w2 = title[TITLE_2][ACTIVE].width;
     w4 = title[TITLE_4][ACTIVE].width;
-    
-    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), c->name);
-    pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
-    
+
+    layout = gtk_widget_create_pango_layout(getDefaultGtkWidget(), c->name);
+    pango_layout_get_pixel_extents(layout, NULL, &logical_rect);
+
     if(full_width_title)
     {
         w1 = left;
         w5 = width - right;
         w3 = width - w1 - w2 - w4 - w5;
         if(w3 < 0)
-	{
+        {
             w3 = 0;
         }
-	switch (title_alignment)
+        switch (title_alignment)
         {
             case ALIGN_RIGHT:
                 tp = w3 - logical_rect.width;
@@ -207,22 +207,22 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
                 break;
         }
         if(tp < 0)
-	{
+        {
             tp = 0;
-	}
+        }
     }
     else
     {
         w3 = logical_rect.width;
         w5 = width;
         if(w3 > width - w2 - w4)
-	{
+        {
             w3 = width - w2 - w4;
-	}
+        }
         if(w3 < 0)
-	{
+        {
             w3 = 0;
-	}
+        }
         switch (title_alignment)
         {
             case ALIGN_LEFT:
@@ -236,33 +236,33 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
                 break;
         }
         if(w1 < left)
-	{
+        {
             w1 = left;
-	}
+        }
     }
 
-    createPixmap (dpy, pm, width, frameTop(c));
-    gpixmap = gdk_pixmap_foreign_new (pm->pixmap);
+    createPixmap(dpy, pm, width, frameTop(c));
+    gpixmap = gdk_pixmap_foreign_new(pm->pixmap);
     gdk_drawable_set_colormap(gpixmap, gdk_colormap_get_system());
     gc = gdk_gc_new(gpixmap);
-    gdk_gc_get_values (title_colors[state].gc, &values);
-    gdk_gc_set_values (gc, &values, GDK_GC_FOREGROUND);
-    
+    gdk_gc_get_values(title_colors[state].gc, &values);
+    gdk_gc_set_values(gc, &values, GDK_GC_FOREGROUND);
+
     if(w1 > 0)
     {
         fillRectangle(dpy, pm->pixmap, title[TITLE_1][state].pixmap, 0, 0, w1, frameTop(c));
-        fillRectangle(dpy, pm->mask,   title[TITLE_1][state].mask,   0, 0, w1, frameTop(c));
+        fillRectangle(dpy, pm->mask, title[TITLE_1][state].mask, 0, 0, w1, frameTop(c));
         x = x + w1;
     }
 
     fillRectangle(dpy, pm->pixmap, title[TITLE_2][state].pixmap, x, 0, w2, frameTop(c));
-    fillRectangle(dpy, pm->mask,   title[TITLE_2][state].mask,   x, 0, w2, frameTop(c));
+    fillRectangle(dpy, pm->mask, title[TITLE_2][state].mask, x, 0, w2, frameTop(c));
     x = x + w2;
 
     if(w3 > 0)
     {
         fillRectangle(dpy, pm->pixmap, title[TITLE_3][state].pixmap, x, 0, w3, frameTop(c));
-        fillRectangle(dpy, pm->mask,   title[TITLE_3][state].mask,   x, 0, w3, frameTop(c));
+        fillRectangle(dpy, pm->mask, title[TITLE_3][state].mask, x, 0, w3, frameTop(c));
         gdk_draw_layout(gpixmap, gc, x + tp, (frameTop(c) + title_vertical_offset - logical_rect.height) / 2, layout);
         x = x + w3;
     }
@@ -272,17 +272,17 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
         x = right - w4;
     }
     fillRectangle(dpy, pm->pixmap, title[TITLE_4][state].pixmap, x, 0, w4, frameTop(c));
-    fillRectangle(dpy, pm->mask,   title[TITLE_4][state].mask,   x, 0, w4, frameTop(c));
+    fillRectangle(dpy, pm->mask, title[TITLE_4][state].mask, x, 0, w4, frameTop(c));
     x = x + w4;
 
     if(w5 > 0)
     {
         fillRectangle(dpy, pm->pixmap, title[TITLE_5][state].pixmap, x, 0, w5, frameTop(c));
-        fillRectangle(dpy, pm->mask,   title[TITLE_5][state].mask,   x, 0, w5, frameTop(c));
+        fillRectangle(dpy, pm->mask, title[TITLE_5][state].mask, x, 0, w5, frameTop(c));
     }
-    g_object_unref (G_OBJECT (gc));
-    g_object_unref (G_OBJECT (gpixmap));
-    g_object_unref (G_OBJECT (layout));
+    g_object_unref(G_OBJECT(gc));
+    g_object_unref(G_OBJECT(gpixmap));
+    g_object_unref(G_OBJECT(layout));
 }
 
 static int getButtonFromLetter(char c)
@@ -362,7 +362,7 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     {
         return;
     }
-    
+
     temp = XCreateSimpleWindow(dpy, root, 0, 0, frameWidth(c), frameHeight(c), 0, 0, 0);
 
     if(c->shaded)
@@ -381,23 +381,23 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     {
         XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
         for(i = 0; i < 3; i++)
-	{
+        {
             XShapeCombineMask(dpy, c->sides[i], ShapeBounding, 0, 0, pm_sides[i].mask, ShapeSet);
-	}
+        }
         for(i = 0; i < 4; i++)
         {
-	    XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
+            XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
         }
-	for(i = 0; i < BUTTON_COUNT; i++)
+        for(i = 0; i < BUTTON_COUNT; i++)
         {
             if(c->button_pressed[i])
-	    {
+            {
                 XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][PRESSED].mask, ShapeSet);
             }
-	    else
+            else
             {
-	        XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][state].mask, ShapeSet);
-	    }
+                XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][state].mask, ShapeSet);
+            }
         }
 
         if(corners[CORNER_TOP_LEFT][ACTIVE].height > frameHeight(c) - frameBottom(c) + 1)
@@ -442,12 +442,12 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
         XShapeCombineShape(dpy, temp, ShapeBounding, 0, 0, c->corners[CORNER_TOP_LEFT], ShapeBounding, ShapeUnion);
         XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, c->corners[CORNER_TOP_RIGHT], ShapeBounding, ShapeUnion);
         for(i = 0; i < BUTTON_COUNT; i++)
-	{
+        {
             if(strchr(button_layout, getLetterFromButton(i)))
-	    {
+            {
                 XShapeCombineShape(dpy, temp, ShapeBounding, button_x[i], (frameTop(c) - buttons[i][ACTIVE].height) / 2, c->buttons[i], ShapeBounding, ShapeUnion);
-	    }
-	}
+            }
+        }
     }
     XShapeCombineShape(dpy, c->frame, ShapeBounding, 0, 0, temp, ShapeBounding, ShapeSet);
     XDestroyWindow(dpy, temp);
@@ -480,23 +480,23 @@ void frameDraw(Client * c)
     {
         XMapWindow(dpy, c->title);
         for(i = 0; i < 3; i++)
-	{
+        {
             XMapWindow(dpy, c->sides[i]);
         }
-	for(i = 0; i < 4; i++)
+        for(i = 0; i < 4; i++)
         {
-	    XMapWindow(dpy, c->corners[i]);
+            XMapWindow(dpy, c->corners[i]);
         }
-	for(i = 0; i < BUTTON_COUNT; i++)
+        for(i = 0; i < BUTTON_COUNT; i++)
         {
             if(strchr(button_layout, getLetterFromButton(i)))
-	    {
+            {
                 XMapWindow(dpy, c->buttons[i]);
             }
-	    else
-	    {
+            else
+            {
                 XUnmapWindow(dpy, c->buttons[i]);
-	    }
+            }
         }
 
         x = frameLeft(c) + button_offset;
@@ -510,9 +510,9 @@ void frameDraw(Client * c)
                 x = x + buttons[button][ACTIVE].width + button_spacing;
             }
             else
-	    {
+            {
                 break;
-	    }
+            }
         }
         left = x - button_spacing;
 
@@ -527,30 +527,30 @@ void frameDraw(Client * c)
                 button_x[button] = x;
             }
             else
-	    {
+            {
                 break;
             }
-	}
+        }
         right = x;
 
-        top_width    = frameWidth(c) - corners[CORNER_TOP_LEFT][ACTIVE].width - corners[CORNER_TOP_RIGHT][ACTIVE].width;
+        top_width = frameWidth(c) - corners[CORNER_TOP_LEFT][ACTIVE].width - corners[CORNER_TOP_RIGHT][ACTIVE].width;
         bottom_width = frameWidth(c) - corners[CORNER_BOTTOM_LEFT][ACTIVE].width - corners[CORNER_BOTTOM_RIGHT][ACTIVE].width;
-        left_height  = frameHeight(c) - frameTop(c) - corners[CORNER_BOTTOM_LEFT][ACTIVE].height;
+        left_height = frameHeight(c) - frameTop(c) - corners[CORNER_BOTTOM_LEFT][ACTIVE].height;
         right_height = frameHeight(c) - frameTop(c) - corners[CORNER_BOTTOM_RIGHT][ACTIVE].height;
 
         frameCreateTitlePixmap(c, state, left, right, &pm_title);
 
-        createPixmap (dpy, &pm_sides[SIDE_LEFT], frameLeft(c), left_height);
+        createPixmap(dpy, &pm_sides[SIDE_LEFT], frameLeft(c), left_height);
         fillRectangle(dpy, pm_sides[SIDE_LEFT].pixmap, sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
-        fillRectangle(dpy, pm_sides[SIDE_LEFT].mask,   sides[SIDE_LEFT][state].mask,   0, 0, frameLeft(c), left_height);
+        fillRectangle(dpy, pm_sides[SIDE_LEFT].mask, sides[SIDE_LEFT][state].mask, 0, 0, frameLeft(c), left_height);
 
-        createPixmap (dpy, &pm_sides[SIDE_RIGHT], frameRight(c), right_height);
+        createPixmap(dpy, &pm_sides[SIDE_RIGHT], frameRight(c), right_height);
         fillRectangle(dpy, pm_sides[SIDE_RIGHT].pixmap, sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
-        fillRectangle(dpy, pm_sides[SIDE_RIGHT].mask,   sides[SIDE_RIGHT][state].mask,   0, 0, frameRight(c), right_height);
+        fillRectangle(dpy, pm_sides[SIDE_RIGHT].mask, sides[SIDE_RIGHT][state].mask, 0, 0, frameRight(c), right_height);
 
-        createPixmap (dpy, &pm_sides[SIDE_BOTTOM], bottom_width, frameBottom(c));
+        createPixmap(dpy, &pm_sides[SIDE_BOTTOM], bottom_width, frameBottom(c));
         fillRectangle(dpy, pm_sides[SIDE_BOTTOM].pixmap, sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width, frameBottom(c));
-        fillRectangle(dpy, pm_sides[SIDE_BOTTOM].mask,   sides[SIDE_BOTTOM][state].mask,   0, 0, bottom_width, frameBottom(c));
+        fillRectangle(dpy, pm_sides[SIDE_BOTTOM].mask, sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width, frameBottom(c));
 
         XSetWindowBackgroundPixmap(dpy, c->title, pm_title.pixmap);
         XSetWindowBackgroundPixmap(dpy, c->sides[SIDE_LEFT], pm_sides[SIDE_LEFT].pixmap);
@@ -560,17 +560,17 @@ void frameDraw(Client * c)
         XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_TOP_RIGHT], corners[CORNER_TOP_RIGHT][state].pixmap);
         XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_BOTTOM_LEFT], corners[CORNER_BOTTOM_LEFT][state].pixmap);
         XSetWindowBackgroundPixmap(dpy, c->corners[CORNER_BOTTOM_RIGHT], corners[CORNER_BOTTOM_RIGHT][state].pixmap);
-                                       
+
         for(i = 0; i < BUTTON_COUNT; i++)
         {
             if(c->button_pressed[i])
-	    {
+            {
                 XSetWindowBackgroundPixmap(dpy, c->buttons[i], buttons[i][PRESSED].pixmap);
             }
-	    else
-	    {
+            else
+            {
                 XSetWindowBackgroundPixmap(dpy, c->buttons[i], buttons[i][state].pixmap);
-	    }
+            }
         }
 
         XMoveResizeWindow(dpy, c->title, corners[CORNER_TOP_LEFT][ACTIVE].width, 0, top_width < 1 ? 1 : top_width, frameTop(c));
@@ -584,39 +584,39 @@ void frameDraw(Client * c)
         XMoveResizeWindow(dpy, c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, corners[CORNER_BOTTOM_RIGHT][ACTIVE].height);
 
         XClearWindow(dpy, c->title);
-        XClearWindow(dpy, c->sides[SIDE_LEFT]); 
-        XClearWindow(dpy, c->sides[SIDE_RIGHT]); 
+        XClearWindow(dpy, c->sides[SIDE_LEFT]);
+        XClearWindow(dpy, c->sides[SIDE_RIGHT]);
         XClearWindow(dpy, c->sides[SIDE_BOTTOM]);
-	XClearWindow(dpy, c->corners[CORNER_TOP_LEFT]);
-	XClearWindow(dpy, c->corners[CORNER_TOP_RIGHT]);
-	XClearWindow(dpy, c->corners[CORNER_BOTTOM_LEFT]);
-	XClearWindow(dpy, c->corners[CORNER_BOTTOM_RIGHT]);
+        XClearWindow(dpy, c->corners[CORNER_TOP_LEFT]);
+        XClearWindow(dpy, c->corners[CORNER_TOP_RIGHT]);
+        XClearWindow(dpy, c->corners[CORNER_BOTTOM_LEFT]);
+        XClearWindow(dpy, c->corners[CORNER_BOTTOM_RIGHT]);
 
-	for(i = 0; i < BUTTON_COUNT; i++)
+        for(i = 0; i < BUTTON_COUNT; i++)
         {
-	    XClearWindow(dpy, c->buttons[i]);
+            XClearWindow(dpy, c->buttons[i]);
         }
 
-	frameSetShape(c, state, &pm_title, pm_sides, button_x);
+        frameSetShape(c, state, &pm_title, pm_sides, button_x);
 
         freePixmap(dpy, &pm_title);
-        freePixmap(dpy, &pm_sides[SIDE_LEFT]); 
-        freePixmap(dpy, &pm_sides[SIDE_RIGHT]); 
-        freePixmap(dpy, &pm_sides[SIDE_BOTTOM]); 
+        freePixmap(dpy, &pm_sides[SIDE_LEFT]);
+        freePixmap(dpy, &pm_sides[SIDE_RIGHT]);
+        freePixmap(dpy, &pm_sides[SIDE_BOTTOM]);
     }
     else
     {
         XUnmapWindow(dpy, c->title);
         for(i = 0; i < 3; i++)
-	{
+        {
             XUnmapWindow(dpy, c->sides[i]);
         }
-	for(i = 0; i < 4; i++)
-	{
+        for(i = 0; i < 4; i++)
+        {
             XUnmapWindow(dpy, c->corners[i]);
         }
         for(i = 0; i < BUTTON_COUNT; i++)
-	{
+        {
             XUnmapWindow(dpy, c->buttons[i]);
         }
         frameSetShape(c, 0, NULL, NULL, NULL);

@@ -32,9 +32,9 @@
 typedef struct _MyColor MyColor;
 struct _MyColor
 {
-    GdkColor  col;
-    GdkGC    *gc;
-    gboolean  allocated;
+    GdkColor col;
+    GdkGC *gc;
+    gboolean allocated;
 };
 
 extern MyKey keys[KEY_COUNT];
@@ -64,6 +64,6 @@ extern MyPixmap title[5][2];
 void loadSettings(void);
 void unloadSettings(void);
 void reloadSettings(void);
-void initSettings (void);
+void initSettings(void);
 
 #endif /* __SETTINGS_H__ */

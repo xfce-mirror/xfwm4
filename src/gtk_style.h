@@ -29,9 +29,9 @@
 #include <gtk/gtk.h>
 #include <pango/pango-font.h>
 
-gchar *get_style (GtkWidget *, gchar *, gchar *);
-GdkGC *get_style_gc (GtkWidget *, gchar *, gchar *);
-PangoFontDescription *get_font_desc (GtkWidget *);
-PangoContext *pango_get_context (GtkWidget *);
+gchar *get_style(GtkWidget *, gchar *, gchar *);
+GdkGC *get_style_gc(GtkWidget *, gchar *, gchar *);
+PangoFontDescription *get_font_desc(GtkWidget *);
+PangoContext *pango_get_context(GtkWidget *);
 
 #endif
