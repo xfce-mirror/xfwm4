@@ -2563,7 +2563,7 @@ void clientMove(Client * c, XEvent * e)
        I'm note sure it makes any difference, but who knows... It doesn' t hurt.
      */
     
-    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask);
+    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask| ButtonReleaseMask);
 
     if(e->type == KeyPress)
     {
@@ -2584,8 +2584,7 @@ void clientMove(Client * c, XEvent * e)
 	timestamp = CurrentTime;
         getMouseXY(root, &passdata.mx, &passdata.my);
     }
-    
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2803,7 +2802,7 @@ void clientResize(Client * c, int corner, XEvent *e)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;
-    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask);
+    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask| ButtonReleaseMask);
 
     if(c->maximized)
     {
@@ -2827,9 +2826,9 @@ void clientResize(Client * c, int corner, XEvent *e)
     else
     {
 	timestamp = CurrentTime;
-        getMouseXY(root, &passdata.mx, &passdata.my);
+        getMouseXY(c->frame, &passdata.mx, &passdata.my);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
