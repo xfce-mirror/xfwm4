@@ -300,6 +300,10 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
                     clientRaise (c2);
                 }
             }
+            else
+            {
+                new_focus = clientGetNext (c, 0);
+            }
         }
     }
     else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
