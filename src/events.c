@@ -560,6 +560,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             button1Action(c, ev);
         }
+        else if((ev->button == Button3) && (state == AltMask))
+        {
+            edgeButton(c, CORNER_BOTTOM_RIGHT, ev);
+        }
         else if(WIN_IS_BUTTON(win))
         {
             if (ev->button <= Button3)
