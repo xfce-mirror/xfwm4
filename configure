@@ -24824,6 +24824,7 @@ cat >>confdefs.h <<\_ACEOF
 #define HAVE_LIBSTARTUP_NOTIFICATION 1
 _ACEOF
 
+      LIBSTARTUP_NOTIFICATION_FOUND="yes"
     else
       echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
