@@ -2132,10 +2132,8 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
                 && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
             {
-                {
-                    FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
-                    clientHide (c, c->win_workspace, TRUE);
-                }
+                FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
+                clientHide (c, c->win_workspace, TRUE);
             }
         }
         clientFocusTop (screen_info, WIN_LAYER_DESKTOP);
@@ -2147,9 +2145,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
             Client *c = (Client *) index->data;
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
             {
-                {
-                    clientShow (c, TRUE);
-                }
+                clientShow (c, TRUE);
             }
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
         }
