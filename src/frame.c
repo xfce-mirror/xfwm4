@@ -298,6 +298,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
 
     xfwmPixmapCreate (screen_info, pm, width, frameTop (c));
     gpixmap = gdk_pixmap_foreign_new (pm->pixmap);
+    gdk_drawable_set_colormap (gpixmap, gdk_screen_get_rgb_colormap (screen_info->gscr));
     gc = gdk_gc_new (gpixmap);
 
     if (w1 > 0)
