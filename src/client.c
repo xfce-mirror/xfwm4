@@ -3117,11 +3117,12 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 }
             }
         }
-        if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED) && screen_info->params->restore_on_move)
+        if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED) 
+            && (screen_info->params->restore_on_move)
+            && !(screen_info->params->box_move))
         {
             if (xevent->xmotion.y_root - passdata->oy > 15)
             {
-                int oldw=c->width;
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
                 passdata->ox = c->x;
                 passdata->mx = c->x + c->width / 2;
@@ -3138,7 +3139,8 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
-        if (screen_info->params->restore_on_move)
+        if ((screen_info->params->restore_on_move) 
+            && !(screen_info->params->box_move))
         {
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
             {
@@ -3196,7 +3198,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         TRACE ("event loop now finished");
         edge_scroll_x = 0;
         edge_scroll_y = 0;
-        toggled_maximize=FALSE;
+        toggled_maximize = FALSE;
         gtk_main_quit ();
     }
 
