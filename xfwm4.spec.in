@@ -15,7 +15,7 @@ Requires:	libxfcegui4 >= 0.0.3
 BuildRequires: 	gtk2-devel >= 2.0.0
 BuildRequires: 	glib2-devel >= 2.0.0
 BuildRequires: 	pango-devel >= 1.0.0
-BuildRequires: 	libxfcegui4-devel >= 0.0.3
+BuildRequires: 	libxfcegui4-devel >= 0.0.7
 
 %description
 xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.
@@ -86,6 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/pills
 %{_datadir}/xfwm4/themes/piranha
 %{_datadir}/xfwm4/themes/platinum
+%{_datadir}/xfwm4/themes/quiet-purple
 %{_datadir}/xfwm4/themes/quinx
 %{_datadir}/xfwm4/themes/r9x
 %{_datadir}/xfwm4/themes/redmond

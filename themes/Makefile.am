@@ -33,6 +33,7 @@ oroborus \
 pills \
 piranha \
 platinum \
+quiet-purple \
 quinx \
 r9x \
 redmond \
