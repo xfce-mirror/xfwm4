@@ -1489,9 +1489,9 @@ void
 restack_win (CWindow *cw, Window above)
 {
     ScreenInfo *screen_info = NULL;
-    Window previous_above = None;
     GList *sibling;
     GList *next;
+    GList *index;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering restack_win");
@@ -1499,58 +1499,31 @@ restack_win (CWindow *cw, Window above)
     screen_info = cw->screen_info;
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
     next = g_list_next (sibling);
+    screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
 
-    if (next)
+    for (index = screen_info->cwindows; index; index = g_list_next (index))
     {
-        CWindow *ncw = (CWindow *) next;
-        previous_above = ncw->id;
+        CWindow *cw2 = (CWindow *) index->data;
+        if (cw2->id == above)
+        {
+            break;
+        }
     }
 
-    if (previous_above != above)
+    if (index != NULL)
     {
-        GList *index;
-
-        screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
-        sibling = NULL;
-
-        for (index = screen_info->cwindows; index; index = g_list_next (index))
-        {
-            CWindow *cw2 = (CWindow *) index->data;
-            if (cw2->id == above)
-            {
-                break;
-            }
-        }
-
-        if (index != NULL)
-        {
-            screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, cw);
-        }
-        else if (above == None)
-        {
-            /* Insert at bottom of window stack */
-            screen_info->cwindows =  g_list_append (screen_info->cwindows, cw);
-        }
-        else
-        {
-            /* Insert at top of window stack */
-            screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
-        }
+        screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, cw);
     }
-    
-#if 0
-    /* Dump stack */
+    else if (above == None)
     {
-        GList *index;
-        g_print ("top of stack\n");
-        for (index = screen_info->cwindows; index; index = g_list_next (index))
-        {
-            CWindow *cw2 = (CWindow *) index->data;
-            g_print ("Window id 0x%lx\n", cw2->id);
-        }
-        g_print ("top of stack\n");
+        /* Insert at bottom of window stack */
+        screen_info->cwindows =  g_list_append (screen_info->cwindows, cw);
     }
-#endif
+    else
+    {
+        /* Insert at top of window stack */
+        screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
+    }
 }
 
 void
