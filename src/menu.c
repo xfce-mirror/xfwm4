@@ -212,8 +212,18 @@ Menu* menu_connect (Menu *menu)
     DBG("entering menu_connect\n");
     g_return_val_if_fail (menu != NULL, NULL);
     g_return_val_if_fail (GTK_IS_MENU (menu->menu), NULL);
-    gtk_signal_connect (GTK_OBJECT (menu->menu), "selection_done", GTK_SIGNAL_FUNC (menu_closed), menu);  
+    g_signal_connect (GTK_OBJECT (menu->menu), "selection_done", GTK_SIGNAL_FUNC (menu_closed), menu);  
     return (menu);
+}
+
+static void closure_notify (gpointer data, GClosure *closure)
+{
+    DBG("entering closure_notify\n");
+    if (data)
+    {
+        DBG("freeing data\n");
+	g_free (data);
+    }
 }
 
 GtkWidget* menu_item_connect (GtkWidget *item, MenuData *item_data)
@@ -221,7 +231,7 @@ GtkWidget* menu_item_connect (GtkWidget *item, MenuData *item_data)
     DBG("entering menu_item_connect\n");
     g_return_val_if_fail (item != NULL, NULL);
     g_return_val_if_fail (GTK_IS_MENU_ITEM (item), NULL);
-    gtk_signal_connect_full (GTK_OBJECT (item), "activate", GTK_SIGNAL_FUNC (activate_cb), NULL, item_data, g_free, FALSE, FALSE);
+    g_signal_connect_closure (GTK_OBJECT (item), "activate", g_cclosure_new(GTK_SIGNAL_FUNC (activate_cb), item_data, (GClosureNotify) closure_notify), FALSE);
     return (item);
 }
 
@@ -237,7 +247,7 @@ gboolean menu_check_and_close (void)
     if (menu_open)
     {
 	DBG("menu open, emitting deactivate signal\n");
-	gtk_signal_emit_by_name (GTK_OBJECT (menu_open), "deactivate");
+	g_signal_emit_by_name (GTK_OBJECT (menu_open), "deactivate");
 	menu_open = NULL;
 	return (TRUE);
     }
@@ -321,6 +331,7 @@ void menu_free (Menu *menu)
     DBG("entering menu_free\n");
     g_return_if_fail (menu != NULL);
     g_return_if_fail (GTK_IS_MENU (menu->menu));
+    DBG("freeing menu\n");
     gtk_widget_destroy (menu->menu);
     g_free (menu);
 }

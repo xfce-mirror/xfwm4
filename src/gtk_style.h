@@ -33,6 +33,5 @@ gchar *get_style (GtkWidget *, gchar *, gchar *);
 GdkGC *get_style_gc (GtkWidget *, gchar *, gchar *);
 PangoFontDescription *get_font_desc (GtkWidget *);
 PangoContext *pango_get_context (GtkWidget *);
-GdkFont *get_style_font(GtkWidget *);
 
 #endif

@@ -222,17 +222,3 @@ PangoContext *pango_get_context (GtkWidget *win)
     g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
     return (gtk_widget_get_pango_context (win));
 }
-
-GdkFont *get_style_font(GtkWidget *win)
-{
-    GtkStyle *style = NULL;
-
-    DBG("entering get_style_font\n");
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
-    style = gtk_rc_get_style (win);
-    if (!style)
-    {
-	style = gtk_widget_get_style (win);
-    }
-    return (gtk_style_get_font (style));
-}

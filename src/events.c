@@ -303,9 +303,9 @@ static inline void handleButtonPress(XButtonEvent * ev)
 	    ev->window = ev->root;
 	    if (button_handler_id)
 	    {
-	        gtk_signal_disconnect (GTK_OBJECT (getDefaultGtkWidget()), button_handler_id);
+	        g_signal_handler_disconnect (GTK_OBJECT (getDefaultGtkWidget()), button_handler_id);
 	    }
-            button_handler_id = gtk_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) c);
+            button_handler_id = g_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) c);
             /* Let GTK handle this for us. */
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == Mod1Mask)))
@@ -980,9 +980,9 @@ static gboolean show_popup_cb (GtkWidget *widget, GdkEventButton *ev, gpointer d
 
      if (button_handler_id)
      {
-	 gtk_signal_disconnect (GTK_OBJECT (getDefaultGtkWidget()), button_handler_id);
+	 g_signal_handler_disconnect (GTK_OBJECT (getDefaultGtkWidget()), button_handler_id);
      }
-     button_handler_id = gtk_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
+     button_handler_id = g_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
 
      menu = menu_default (ops, insensitive, menu_callback, c);
      menu_popup (menu, x, y, ev->button, ev->time);
@@ -1009,6 +1009,6 @@ static gboolean client_event_cb (GtkWidget *widget,  GdkEventClient *ev)
 
 void initGtkCallbacks (void)
 {
-    button_handler_id = gtk_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
-    gtk_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC (client_event_cb), (gpointer) NULL);
+    button_handler_id = g_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
+    g_signal_connect (GTK_OBJECT (getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC (client_event_cb), (gpointer) NULL);
 }
