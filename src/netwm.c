@@ -133,6 +133,34 @@ clientGetNetState (Client * c)
     TRACE ("entering clientGetNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SESSION_MANAGED))
+    {
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+	{
+            TRACE ("clientGetNetState : shaded from session management");
+            c->win_state |= WIN_STATE_SHADED;
+            FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
+	}
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+	{
+            TRACE ("clientGetNetState : sticky from session management");
+            c->win_state |= WIN_STATE_STICKY;
+            FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
+	}
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+	{
+            TRACE ("clientGetNetState : maximized horiz from session management");
+            c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+	}
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+	{
+            TRACE ("clientGetNetState : maximized vert from session management");
+            c->win_state |= WIN_STATE_MAXIMIZED_VERT;
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+	}
+    }
+    
     if (getAtomList (clientGetXDisplay (c), c->window, net_wm_state, &atoms, &n_atoms))
     {
         int i;
@@ -141,9 +169,7 @@ clientGetNetState (Client * c)
         i = 0;
         while (i < n_atoms)
         {
-            if ((atoms[i] == net_wm_state_shaded)
-                || (FLAG_TEST_ALL (c->flags,
-                        CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_SHADED)))
+            if ((atoms[i] == net_wm_state_shaded))
             {
                 TRACE ("clientGetNetState : shaded");
                 c->win_state |= WIN_STATE_SHADED;
@@ -154,52 +180,47 @@ clientGetNetState (Client * c)
                 TRACE ("clientGetNetState : hidden");
                 FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
             }
-            else if ((atoms[i] == net_wm_state_sticky)
-                || (FLAG_TEST_ALL (c->flags,
-                        CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_STICKY)))
+            else if ((atoms[i] == net_wm_state_sticky))
             {
                 TRACE ("clientGetNetState : sticky");
                 c->win_state |= WIN_STATE_STICKY;
                 FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
             }
-            else if ((atoms[i] == net_wm_state_maximized_horz)
-                || (FLAG_TEST_ALL (c->flags,
-                        CLIENT_FLAG_SESSION_MANAGED |
-                        CLIENT_FLAG_MAXIMIZED_HORIZ)))
+            else if ((atoms[i] == net_wm_state_maximized_horz))
             {
                 TRACE ("clientGetNetState : maximized horiz");
                 c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
             }
-            else if ((atoms[i] == net_wm_state_maximized_vert)
-                || (FLAG_TEST_ALL (c->flags,
-                        CLIENT_FLAG_SESSION_MANAGED |
-                        CLIENT_FLAG_MAXIMIZED_VERT)))
+            else if ((atoms[i] == net_wm_state_maximized_vert))
             {
                 TRACE ("clientGetNetState : maximized vert");
                 c->win_state |= WIN_STATE_MAXIMIZED_VERT;
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
             }
-            else if ((atoms[i] == net_wm_state_fullscreen)
-                && !FLAG_TEST_ALL (c->flags,
-                    CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
+            else if ((atoms[i] == net_wm_state_fullscreen))
             {
-                TRACE ("clientGetNetState : fullscreen");
-                FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
+	        if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
+		{
+                    TRACE ("clientGetNetState : fullscreen");
+                    FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
+                }
+	    }
+            else if ((atoms[i] == net_wm_state_above))
+            {
+	        if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
+		{
+                    TRACE ("clientGetNetState : above");
+                    FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
+		}
             }
-            else if ((atoms[i] == net_wm_state_above)
-                && !FLAG_TEST_ALL (c->flags,
-                    CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
+            else if ((atoms[i] == net_wm_state_below))
             {
-                TRACE ("clientGetNetState : above");
-                FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
-            }
-            else if ((atoms[i] == net_wm_state_below)
-                && !FLAG_TEST_ALL (c->flags,
-                    CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
-            {
-                TRACE ("clientGetNetState : below");
-                FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
+	        if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
+		{
+                    TRACE ("clientGetNetState : below");
+                    FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
+		}
             }
             else if (atoms[i] == net_wm_state_modal)
             {

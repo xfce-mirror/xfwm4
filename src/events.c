@@ -1571,7 +1571,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             if ((ev->data.l[0] != c->win_layer) && !clientIsTransientOrModal (c))
             {
                 clientSetLayer (c, ev->data.l[0]);
-                clientSetNetState (c);
             }
         }
         else if ((ev->message_type == win_workspace) && (ev->format == 32))

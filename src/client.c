@@ -1888,10 +1888,10 @@ clientShowSingle (Client * c, gboolean change_state)
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
         setWMState (display_info->dpy, c->window, NormalState);
+	clientSetNetState (c);
         workspaceUpdateArea (screen_info);
     }
     myDisplayUngrabServer (display_info);
-    clientSetNetState (c);
 }
 
 void
@@ -1946,10 +1946,10 @@ clientHideSingle (Client * c, gboolean change_state)
         FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
         XUnmapWindow (display_info->dpy, c->window);
         setWMState (display_info->dpy, c->window, IconicState);
+	clientSetNetState (c);
         workspaceUpdateArea (c->screen_info);
     }
     myDisplayUngrabServer (display_info);
-    clientSetNetState (c);
 }
 
 void
