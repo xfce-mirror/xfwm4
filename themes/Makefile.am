@@ -6,6 +6,7 @@ SUBDIRS =								\
 	curve 							        \
 	default 							\
 	default.keys 							\
+	default-4.0 							\
 	exocet 							        \
 	meenee 							        \
 	microcurve 							\

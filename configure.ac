@@ -91,6 +91,7 @@ themes/bbs/Makefile
 themes/curve/Makefile
 themes/default/Makefile
 themes/default.keys/Makefile
+themes/default-4.0/Makefile
 themes/exocet/Makefile
 themes/meenee/Makefile
 themes/microcurve/Makefile
