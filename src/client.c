@@ -3295,6 +3295,7 @@ clientUnframe (Client * c, gboolean remap)
     {
         last_raise = NULL;
     }
+    clientRemoveFromList (c);
 
     MyXGrabServer ();
     gdk_error_trap_push ();
@@ -3325,7 +3326,12 @@ clientUnframe (Client * c, gboolean remap)
         setWMState (dpy, c->window, WithdrawnState);
     }
     XDestroyWindow (dpy, c->frame);
-    clientRemoveFromList (c);
+    /* Cleanup */
+    XDeleteProperty (dpy, c->window, net_wm_state);
+    XDeleteProperty (dpy, c->window, win_state);
+    XDeleteProperty (dpy, c->window, net_wm_desktop);
+    XDeleteProperty (dpy, c->window, win_workspace);
+    XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea (margins, gnome_margins);
