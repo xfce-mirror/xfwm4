@@ -43,6 +43,7 @@ defaults/Makefile
 themes/Makefile
 themes/adept/Makefile
 themes/agua/Makefile
+themes/atlanta/Makefile
 themes/b5/Makefile
 themes/b6/Makefile
 themes/bbs/Makefile
