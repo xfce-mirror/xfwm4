@@ -70,6 +70,7 @@ struct _DisplayInfo
     int shape;
     int shape_event;
     int dbl_click_time;
+    int xgrabcount;
 };
 
 DisplayInfo * myDisplayInit                 (GdkDisplay *); 
@@ -79,6 +80,8 @@ Cursor        myDisplayGetCursorMove        (DisplayInfo *);
 Cursor        myDisplayGetCursorRoot        (DisplayInfo *);
 Cursor        myDisplayGetCursorResize      (DisplayInfo *, 
                                              guint);
+void          myDisplayGrabServer           (DisplayInfo *);
+void          myDisplayUngrabServer         (DisplayInfo *);
 void          myDisplayAddClient            (DisplayInfo *,
                                              Client *);
 void          myDisplayRemoveClient         (DisplayInfo *, 

@@ -210,9 +210,11 @@ clientUpdateColormaps (Client * c)
     if (c->ncmap)
     {
         XFree (c->cmap_windows);
+        c->ncmap = 0;
     }
     if (!XGetWMColormapWindows (clientGetXDisplay (c), c->window, &c->cmap_windows, &c->ncmap))
     {
+        c->cmap_windows = NULL;
         c->ncmap = 0;
     }
     c->cmap = attr.colormap;
@@ -221,7 +223,7 @@ clientUpdateColormaps (Client * c)
 void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
-    Client *c;
+    Client *c = NULL;
     int i;
     XWindowChanges wc;
 
@@ -262,7 +264,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 void
 clientGrabKeys (Client * c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabKeys");
@@ -1017,7 +1019,7 @@ clientFree (Client * c)
     {
         XFree (c->wmhints);
     }
-    if (c->ncmap > 0)
+    if ((c->ncmap > 0) && (c->cmap_windows))
     {
         XFree (c->cmap_windows);
     }
@@ -1200,8 +1202,8 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
 static gboolean
 clientCheckShape (Client * c)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
     int boundingShaped, clipShaped;
@@ -1249,11 +1251,11 @@ clientGetUserTime (Client * c)
 void
 clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     XWindowAttributes attr;
     XWindowChanges wc;
     XSetWindowAttributes attributes;
-    Client *c;
+    Client *c = NULL;
     unsigned long valuemask;
     int i;
 
@@ -1264,14 +1266,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     TRACE ("framing client (0x%lx)", w);
 
     gdk_error_trap_push ();
-    if (checkKdeSystrayWindow (display_info->dpy, w) && (screen_info->systray != None))
-    {
-        TRACE ("Not managing KDE systray windows");
-        sendSystrayReqDock (display_info->dpy, w, screen_info->systray);
-        gdk_error_trap_pop ();
-        return;
-    }
-
     if (!XGetWindowAttributes (display_info->dpy, w, &attr))
     {
         TRACE ("Cannot get window attributes");
@@ -1287,6 +1281,13 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return;
     }
 
+    if (attr.override_redirect)
+    {
+        TRACE ("Not managing override_redirect windows");
+        gdk_error_trap_pop ();
+        return;
+    }
+
     if (w == screen_info->gnome_win)
     {
         TRACE ("Not managing our own window");
@@ -1294,9 +1295,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return;
     }
 
-    if (attr.override_redirect)
+    if (checkKdeSystrayWindow (display_info->dpy, w) && (screen_info->systray != None))
     {
-        TRACE ("Not managing override_redirect windows");
+        TRACE ("Not managing KDE systray windows");
+        sendSystrayReqDock (display_info->dpy, w, screen_info->systray);
         gdk_error_trap_pop ();
         return;
     }
@@ -1365,7 +1367,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         c->ncmap = 0;
     }
-
 
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
@@ -1471,16 +1472,16 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     if (!recapture)
     {
-        myXGrabServer (c->screen_info);
+        myDisplayGrabServer (display_info);
     }
-    if (!checkWindowOnRoot(c->screen_info, w))
+    if (!checkWindowOnRoot(screen_info, w))
     {
         TRACE ("Client has vanished");
-        clientFree(c);
         if (!recapture)
         {
-            myXUngrabServer (c->screen_info);
+            myDisplayUngrabServer (display_info);
         }
+        clientFree(c);
         gdk_error_trap_pop ();
         return;
     }
@@ -1506,7 +1507,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         /* Window is reparented now, so we can safely release the grab 
          * on the server 
          */
-        myXUngrabServer (screen_info);
+        myDisplayUngrabServer (display_info);
     }   
 
     clientAddToList (c);
@@ -1527,19 +1528,19 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->pm_cache.previous_height = -1;
 
     xfwmWindowCreate (display_info->dpy, c->frame, &c->sides[SIDE_LEFT],
-        myDisplayGetCursorResize(c->screen_info->display_info, 4 + SIDE_LEFT));
+        myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_LEFT));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->sides[SIDE_RIGHT],
-        myDisplayGetCursorResize(c->screen_info->display_info, 4 + SIDE_RIGHT));
+        myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_RIGHT));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->sides[SIDE_BOTTOM],
-        myDisplayGetCursorResize(c->screen_info->display_info, 4 + SIDE_BOTTOM));
+        myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_BOTTOM));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_BOTTOM_LEFT],
-        myDisplayGetCursorResize(c->screen_info->display_info, CORNER_BOTTOM_LEFT));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_LEFT));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_BOTTOM_RIGHT],
-        myDisplayGetCursorResize(c->screen_info->display_info, CORNER_BOTTOM_RIGHT));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_RIGHT));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_TOP_LEFT],
-        myDisplayGetCursorResize(c->screen_info->display_info, CORNER_TOP_LEFT));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_LEFT));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_TOP_RIGHT],
-        myDisplayGetCursorResize(c->screen_info->display_info, CORNER_TOP_RIGHT));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_RIGHT));
     xfwmWindowCreate (display_info->dpy, c->frame, &c->title, None);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -1552,7 +1553,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
-    clientApplyStackList (c->screen_info);
+    clientApplyStackList (screen_info);
     clientSetLastRaise (c);
 
     /* Clear time counter */
@@ -1590,6 +1591,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 void
 clientUnframe (Client * c, gboolean remap)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     int i;
     XEvent ev;
     gboolean reparented;
@@ -1599,6 +1602,10 @@ clientUnframe (Client * c, gboolean remap)
             c->name, c->window, remap ? "remap" : "no remap");
 
     g_return_if_fail (c != NULL);
+    
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    
     if (clientGetFocus () == c)
     {
         clientClearFocus ();
@@ -1613,37 +1620,37 @@ clientUnframe (Client * c, gboolean remap)
     }
 
     clientRemoveFromList (c);
-    myXGrabServer (c->screen_info);
+    myDisplayGrabServer (display_info);
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
-    XUnmapWindow (clientGetXDisplay (c), c->window);
-    XUnmapWindow (clientGetXDisplay (c), c->frame);
+    XUnmapWindow (display_info->dpy, c->window);
+    XUnmapWindow (display_info->dpy, c->frame);
     clientGravitate (c, REMOVE);
-    XSelectInput (clientGetXDisplay (c), c->window, NoEventMask);
-    reparented = XCheckTypedWindowEvent (clientGetXDisplay (c), c->window, ReparentNotify, &ev);
+    XSelectInput (display_info->dpy, c->window, NoEventMask);
+    reparented = XCheckTypedWindowEvent (display_info->dpy, c->window, ReparentNotify, &ev);
 
     if (remap || !reparented)
     {
-        XReparentWindow (clientGetXDisplay (c), c->window, c->screen_info->xroot, c->x, c->y);
-        XSetWindowBorderWidth (clientGetXDisplay (c), c->window, c->border_width);
+        XReparentWindow (display_info->dpy, c->window, c->screen_info->xroot, c->x, c->y);
+        XSetWindowBorderWidth (display_info->dpy, c->window, c->border_width);
         if (remap)
         {
-            XMapWindow (clientGetXDisplay (c), c->window);
+            XMapWindow (display_info->dpy, c->window);
         }
         else
         {
-            setWMState (clientGetXDisplay (c), c->window, WithdrawnState);
+            setWMState (display_info->dpy, c->window, WithdrawnState);
         }
     }
 
     if (!remap)
     {
-        XDeleteProperty (clientGetXDisplay (c), c->window, net_wm_state);
-        XDeleteProperty (clientGetXDisplay (c), c->window, win_state);
-        XDeleteProperty (clientGetXDisplay (c), c->window, net_wm_desktop);
-        XDeleteProperty (clientGetXDisplay (c), c->window, win_workspace);
-        XDeleteProperty (clientGetXDisplay (c), c->window, net_wm_allowed_actions);
+        XDeleteProperty (display_info->dpy, c->window, net_wm_state);
+        XDeleteProperty (display_info->dpy, c->window, win_state);
+        XDeleteProperty (display_info->dpy, c->window, net_wm_desktop);
+        XDeleteProperty (display_info->dpy, c->window, win_workspace);
+        XDeleteProperty (display_info->dpy, c->window, net_wm_allowed_actions);
     }
     
     xfwmWindowDelete (&c->title);
@@ -1659,13 +1666,13 @@ clientUnframe (Client * c, gboolean remap)
     {
         xfwmWindowDelete (&c->buttons[i]);
     }
-    XDestroyWindow (clientGetXDisplay (c), c->frame);
+    XDestroyWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceUpdateArea (c->screen_info);
     }
     
-    myXUngrabServer (c->screen_info);
+    myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
     clientFree (c);
 }
@@ -1673,6 +1680,8 @@ clientUnframe (Client * c, gboolean remap)
 void
 clientFrameAll (ScreenInfo *screen_info)
 {
+    DisplayInfo *display_info = NULL;
+
     unsigned int count, i;
     xfwmWindow shield;
     Window w1, w2, *wins = NULL;
@@ -1680,18 +1689,19 @@ clientFrameAll (ScreenInfo *screen_info)
 
     TRACE ("entering clientFrameAll");
 
+    display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
-    xfwmWindowTemp (myScreenGetXDisplay (screen_info), screen_info->xroot, &shield, 0, 0, 
+    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &shield, 0, 0, 
                         gdk_screen_get_width (screen_info->gscr),
                         gdk_screen_get_height (screen_info->gscr), 
                         EnterWindowMask);
 
-    XSync (myScreenGetXDisplay (screen_info), FALSE);
-    myXGrabServer (screen_info);
-    XQueryTree (myScreenGetXDisplay (screen_info), screen_info->xroot, &w1, &w2, &wins, &count);
+    XSync (display_info->dpy, FALSE);
+    myDisplayGrabServer (display_info);
+    XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
-        XGetWindowAttributes (myScreenGetXDisplay (screen_info), wins[i], &attr);
+        XGetWindowAttributes (display_info->dpy, wins[i], &attr);
         if ((!(attr.override_redirect)) && (attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
         {
             clientFrame (screen_info->display_info, wins[i], TRUE);
@@ -1703,23 +1713,25 @@ clientFrameAll (ScreenInfo *screen_info)
     }
     clientFocusTop (screen_info, WIN_LAYER_NORMAL);
     xfwmWindowDelete (&shield);
-    myXUngrabServer (screen_info);
-    XSync (myScreenGetXDisplay (screen_info), FALSE);
+    myDisplayUngrabServer (display_info);
+    XSync (display_info->dpy, FALSE);
 }
 
 void
 clientUnframeAll (ScreenInfo *screen_info)
 {
-    Client *c;
+    DisplayInfo *display_info = NULL;
+    Client *c = NULL;
     unsigned int count, i;
     Window w1, w2, *wins = NULL;
 
     TRACE ("entering clientUnframeAll");
 
+    display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
-    XSync (myScreenGetXDisplay (screen_info), FALSE);
-    myXGrabServer (screen_info);
-    XQueryTree (myScreenGetXDisplay (screen_info), screen_info->xroot, &w1, &w2, &wins, &count);
+    XSync (display_info->dpy, FALSE);
+    myDisplayGrabServer (display_info);
+    XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
         c = clientGetFromWindow (screen_info, wins[i], FRAME);
@@ -1728,8 +1740,8 @@ clientUnframeAll (ScreenInfo *screen_info)
             clientUnframe (c, TRUE);
         }
     }
-    myXUngrabServer (screen_info);
-    XSync(myScreenGetXDisplay (screen_info), FALSE);
+    myDisplayUngrabServer (display_info);
+    XSync(display_info->dpy, FALSE);
     if (wins)
     {
         XFree (wins);
@@ -1739,7 +1751,7 @@ clientUnframeAll (ScreenInfo *screen_info)
 Client *
 clientGetFromWindow (ScreenInfo *screen_info, Window w, int mode)
 {
-    Client *c;
+    Client *c = NULL;
     int i;
 
     g_return_val_if_fail (w != None, NULL);
@@ -1813,8 +1825,8 @@ void
 clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 {
     GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
+    GList *index = NULL;
+    Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
 
@@ -1855,22 +1867,29 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 static void
 clientShowSingle (Client * c, gboolean change_state)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+
     g_return_if_fail (c != NULL);
-    myXGrabServer (c->screen_info);
-    if ((c->win_workspace == c->screen_info->current_ws) || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+        
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    myDisplayGrabServer (display_info);
+    if ((c->win_workspace == screen_info->current_ws) || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->flags, CLIENT_FLAG_VISIBLE);
-        XMapWindow (clientGetXDisplay (c), c->frame);
-        XMapWindow (clientGetXDisplay (c), c->window);
+        XMapWindow (display_info->dpy, c->frame);
+        XMapWindow (display_info->dpy, c->window);
     }
     if (change_state)
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
-        setWMState (clientGetXDisplay (c), c->window, NormalState);
-        workspaceUpdateArea (c->screen_info);
+        setWMState (display_info->dpy, c->window, NormalState);
+        workspaceUpdateArea (screen_info);
     }
-    myXUngrabServer (c->screen_info);
+    myDisplayUngrabServer (display_info);
     clientSetNetState (c);
 }
 
@@ -1878,8 +1897,8 @@ void
 clientShow (Client * c, gboolean change_state)
 {
     GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
+    GList *index = NULL;
+    Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]", 
@@ -1904,12 +1923,19 @@ clientShow (Client * c, gboolean change_state)
 static void
 clientHideSingle (Client * c, gboolean change_state)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+
     g_return_if_fail (c != NULL);
-    myXGrabServer (c->screen_info);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    
+    myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c);
-    XUnmapWindow (clientGetXDisplay (c), c->window);
-    XUnmapWindow (clientGetXDisplay (c), c->frame);
+    XUnmapWindow (display_info->dpy, c->window);
+    XUnmapWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_VISIBLE);
@@ -1918,10 +1944,10 @@ clientHideSingle (Client * c, gboolean change_state)
     if (change_state)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
-        setWMState (clientGetXDisplay (c), c->window, IconicState);
+        setWMState (display_info->dpy, c->window, IconicState);
         workspaceUpdateArea (c->screen_info);
     }
-    myXUngrabServer (c->screen_info);
+    myDisplayUngrabServer (display_info);
     clientSetNetState (c);
 }
 
@@ -1929,8 +1955,8 @@ void
 clientHide (Client * c, int ws, gboolean change_state)
 {
     GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
+    GList *index = NULL;
+    Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientHide");
@@ -1967,8 +1993,8 @@ clientHide (Client * c, int ws, gboolean change_state)
 void
 clientHideAll (Client * c, int ws)
 {
-    Client *c2;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    ScreenInfo *screen_info = NULL;
     int i;
 
     g_return_if_fail (c != NULL);
@@ -1995,7 +2021,7 @@ clientHideAll (Client * c, int ws)
 void
 clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
 {
-    GList *index;
+    GList *index = NULL;
 
     TRACE ("entering clientToggleShowDesktop");
 
@@ -2077,8 +2103,8 @@ void
 clientSetLayer (Client * c, int l)
 {
     GList *list_of_windows = NULL;
-    GList *index;
-    Client *c2;
+    GList *index = NULL;
+    Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetLayer");
@@ -2180,7 +2206,7 @@ void
 clientStick (Client * c, gboolean include_transients)
 {
     GList *list_of_windows = NULL;
-    GList *index;
+    GList *index = NULL;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
@@ -2218,7 +2244,7 @@ void
 clientUnstick (Client * c, gboolean include_transients)
 {
     GList *list_of_windows = NULL;
-    GList *index;
+    GList *index = NULL;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
@@ -2324,7 +2350,7 @@ clientRemoveMaximizeFlag (Client * c)
 void
 clientToggleMaximized (Client * c, int mode)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     XWindowChanges wc;
     int cx, cy, full_x, full_y, full_w, full_h;
     GdkRectangle rect;
@@ -2479,8 +2505,8 @@ clientDrawOutline (Client * c)
 static void
 clientSnapPosition (Client * c)
 {
-    Client *c2;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    ScreenInfo *screen_info = NULL;
     int cx, cy, i, delta;
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
@@ -2611,10 +2637,11 @@ static XfceFilterStatus
 clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     XfceFilterStatus status = XEV_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
-    Client *c;
-    ScreenInfo *screen_info;
+    Client *c = NULL;
     gboolean moving = TRUE;
     XWindowChanges wc;
 
@@ -2622,6 +2649,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
     c = passdata->c;
     screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     if (xevent->type == KeyPress)
     {
@@ -2629,7 +2657,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             if (!passdata->grab && screen_info->params->box_move)
             {
-                myXGrabServer (screen_info);
+                myDisplayGrabServer (display_info);
                 passdata->grab = TRUE;
                 clientDrawOutline (c);
             }
@@ -2677,7 +2705,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     {
         if (passdata->use_keys)
         {
-            if (IsModifierKey (XKeycodeToKeysym (clientGetXDisplay (c), xevent->xkey.keycode, 0)))
+            if (IsModifierKey (XKeycodeToKeysym (display_info->dpy, xevent->xkey.keycode, 0)))
             {
                 moving = FALSE;
             }
@@ -2685,7 +2713,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == MotionNotify)
     {
-        while (XCheckMaskEvent (clientGetXDisplay (c), ButtonMotionMask | PointerMotionMask, xevent))
+        while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
                     
         if (xevent->type == ButtonRelease)
@@ -2695,7 +2723,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
         if (!passdata->grab && screen_info->params->box_move)
         {
-            myXGrabServer (screen_info);
+            myDisplayGrabServer (display_info);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
@@ -2727,14 +2755,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     edge_scroll_x = 0;
                     if (msx == 0)
                     {
-                        XWarpPointer (clientGetXDisplay (c), None, screen_info->xroot, 0, 0, 0, 0,
+                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0,
                                       max - 10, msy);
                         msx = xevent->xmotion.x_root = max - 10;
                         workspaceSwitch (screen_info, screen_info->current_ws - 1, c);
                     }
                     else if (msx == max)
                     {
-                        XWarpPointer (clientGetXDisplay (c), None, screen_info->xroot, 
+                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 
                                       0, 0, 0, 0, 10, msy);
                         msx = xevent->xmotion.x_root = 10;
                         workspaceSwitch (screen_info, screen_info->current_ws + 1, c);
@@ -2801,8 +2829,8 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 void
 clientMove (Client * c, XEvent * e)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     XWindowChanges wc;
     MoveResizeData passdata;
     Cursor cursor = None;
@@ -2904,17 +2932,18 @@ clientMove (Client * c, XEvent * e)
 
     if (passdata.grab && screen_info->params->box_move)
     {
-        myXUngrabServer (screen_info);
+        myDisplayUngrabServer (display_info);
     }
 }
 
 static XfceFilterStatus
 clientResize_event_filter (XEvent * xevent, gpointer data)
 {
+    Client *c = NULL;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     XfceFilterStatus status = XEV_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
-    Client *c;
-    ScreenInfo *screen_info;
     gboolean resizing = TRUE;
     XWindowChanges wc;
     int prev_y = 0, prev_x = 0;
@@ -2929,6 +2958,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
     c = passdata->c;
     screen_info = c->screen_info;
+    display_info = screen_info->display_info;
     
     frame_x = frameX (c);
     frame_y = frameY (c);
@@ -2972,7 +3002,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
             if (!passdata->grab && screen_info->params->box_resize)
             {
-                myXGrabServer (screen_info);
+                myDisplayGrabServer (display_info);
                 passdata->grab = TRUE;
                 clientDrawOutline (c);
             }
@@ -3050,7 +3080,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     {
         if (passdata->use_keys)
         {
-            if (IsModifierKey (XKeycodeToKeysym (clientGetXDisplay (c), xevent->xkey.keycode, 0)))
+            if (IsModifierKey (XKeycodeToKeysym (display_info->dpy, xevent->xkey.keycode, 0)))
             {
                 resizing = FALSE;
             }
@@ -3058,7 +3088,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == MotionNotify)
     {
-        while (XCheckMaskEvent (clientGetXDisplay (c), ButtonMotionMask | PointerMotionMask, xevent))
+        while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
         
         if (xevent->type == ButtonRelease)
@@ -3069,7 +3099,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
         if (!passdata->grab && screen_info->params->box_resize)
         {
-            myXGrabServer (screen_info);
+            myDisplayGrabServer (display_info);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
@@ -3237,8 +3267,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 void
 clientResize (Client * c, int corner, XEvent * e)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     XWindowChanges wc;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
@@ -3355,7 +3385,7 @@ clientResize (Client * c, int corner, XEvent * e)
 
     if (passdata.grab && screen_info->params->box_resize)
     {
-        myXUngrabServer (screen_info);
+        myDisplayUngrabServer (display_info);
     }
 }
 
@@ -3451,8 +3481,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 void
 clientCycle (Client * c, XEvent * e)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     ClientCycleData passdata;
     int g1, g2;
 
@@ -3481,7 +3511,7 @@ clientCycle (Client * c, XEvent * e)
         return;
     }
 
-    myXGrabServer (screen_info);
+    myDisplayGrabServer (display_info);
     if (screen_info->params->cycle_minimum)
     {
         passdata.cycle_range = INCLUDE_HIDDEN;
@@ -3511,7 +3541,7 @@ clientCycle (Client * c, XEvent * e)
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    myXUngrabServer (screen_info);
+    myDisplayUngrabServer (display_info);
     XUngrabKeyboard (display_info->dpy, GDK_CURRENT_TIME);
     XUngrabPointer (display_info->dpy, GDK_CURRENT_TIME);
 
@@ -3572,8 +3602,8 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
 void
 clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     ButtonPressData passdata;
     int b, g1;
 

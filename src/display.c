@@ -84,7 +84,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->xfilter = NULL;
     display->screens = NULL;
     display->clients = NULL;
-
+    display->xgrabcount = 0;
     display->dbl_click_time = 300;
 
     initICCCMHints (display->dpy);
@@ -156,6 +156,40 @@ myDisplayGetCursorResize (DisplayInfo *display, guint index)
     g_return_val_if_fail (index < 7, None);
 
     return display->resize_cursor [index];
+}
+
+
+void
+myDisplayGrabServer (DisplayInfo *display)
+{
+    g_return_if_fail (display);
+    
+    DBG ("entering myDisplayGrabServer");
+    if (display->xgrabcount == 0)
+    {
+        DBG ("grabbing server");
+        XGrabServer (display->dpy);
+    }
+    display->xgrabcount++;
+    DBG ("grabs : %i", display->xgrabcount);
+}
+
+void
+myDisplayUngrabServer (DisplayInfo *display)
+{
+    DBG ("entering myDisplayUngrabServer");
+    display->xgrabcount = display->xgrabcount - 1;
+    if (display->xgrabcount < 0)       /* should never happen */
+    {
+        display->xgrabcount = 0;
+    }
+    if (display->xgrabcount == 0)
+    {
+        DBG ("ungrabbing server");
+        XUngrabServer (display->dpy);
+        XFlush (display->dpy);
+    }
+    DBG ("grabs : %i", display->xgrabcount);
 }
 
 void 

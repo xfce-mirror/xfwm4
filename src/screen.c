@@ -41,9 +41,9 @@
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     GdkWindow *event_win;
-    PangoLayout *layout;
+    PangoLayout *layout = NULL;
     int i;
     
     g_return_val_if_fail (display_info, NULL);
@@ -167,7 +167,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 ScreenInfo *
 myScreenClose (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info;
+    DisplayInfo *display_info = NULL;
     
     g_return_val_if_fail (screen_info, NULL);
     
@@ -202,7 +202,7 @@ myScreenClose (ScreenInfo *screen_info)
 Display *
 myScreenGetXDisplay (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info;
+    DisplayInfo *display_info = NULL;
     
     g_return_val_if_fail (screen_info, NULL);
     g_return_val_if_fail (screen_info->display_info, NULL);

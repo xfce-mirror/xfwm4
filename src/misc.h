@@ -34,8 +34,6 @@ void getMouseXY (ScreenInfo *, Window, int *, int *);
 Window getMouseWindow (ScreenInfo *, Window);
 GC createGC (ScreenInfo *, char *, int, XFontStruct *, int, gboolean);
 void sendClientMessage (ScreenInfo *, Window, Atom, Atom, Time);
-void myXGrabServer (ScreenInfo *);
-void myXUngrabServer (ScreenInfo *);
 gboolean checkWindowOnRoot (ScreenInfo *, Window);
 void placeSidewalks(ScreenInfo *, gboolean);
 

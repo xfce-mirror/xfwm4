@@ -682,7 +682,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
 void
 frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     XfwmPixmap *my_pixmap;
     gboolean requires_clearing = FALSE;
     int state = ACTIVE;

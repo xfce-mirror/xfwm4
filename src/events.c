@@ -243,7 +243,7 @@ static void
 handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
 {
     int msx, msy, max;
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     
     TRACE ("entering handleMotionNotify");
     
@@ -509,8 +509,8 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
 static void
 button1Action (Client * c, XButtonEvent * ev)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     XEvent copy_event;
     XfwmButtonClickType tclick;
 
@@ -555,8 +555,8 @@ button1Action (Client * c, XButtonEvent * ev)
 static void
 titleButton (Client * c, int state, XButtonEvent * ev)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
@@ -631,7 +631,7 @@ static void
 rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 {
     static Time lastscroll = (Time) 0;
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
 
     if ((ev->time - lastscroll) < 100)  /* ms */
     {
@@ -860,7 +860,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 static void
 handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     TRACE ("entering handleButtonRelease");
 
     /* Get the screen structure from the root of the event */
@@ -877,7 +877,7 @@ static void
 handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 {
     Client *c = NULL;
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
 
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
@@ -961,7 +961,7 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
 static void
 handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     Client *c = NULL;
 
     TRACE ("entering handleUnmapNotify");
@@ -997,7 +997,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
             return;
         }
 
-        screen_info = c->screen_info;        
+        screen_info = c->screen_info;
         clientPassFocus (screen_info, c);
         
         /*
@@ -1030,7 +1030,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 static void
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
 
     TRACE ("entering handleConfigureNotify");
 
@@ -1226,7 +1226,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     c = myDisplayGetClientFromWindow (display_info, ev->window, FRAME);
     if (c)
     {
-        ScreenInfo *screen_info;
+        ScreenInfo *screen_info = NULL;
         
         screen_info = c->screen_info;
         
@@ -1248,7 +1248,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 static void
 handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
 
     TRACE ("entering handleLeaveNotify");
 
@@ -1276,7 +1276,7 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 static void
 handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     Client *c = NULL;
 
     TRACE ("entering handleFocusIn");
@@ -1396,7 +1396,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 static void
 handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     Client *c = NULL;
     char *names;
     int length;
@@ -2107,4 +2107,3 @@ initGtkCallbacks (ScreenInfo *screen_info)
             G_CALLBACK (dbl_click_time), (gpointer) screen_info->display_info);
     }
 }
-

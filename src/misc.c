@@ -41,8 +41,6 @@
 #include "client.h"
 #include "misc.h"
 
-static int xgrabcount = 0;
-
 void
 getMouseXY (ScreenInfo *screen_info, Window w, int *x2, int *y2)
 {
@@ -117,36 +115,6 @@ sendClientMessage (ScreenInfo *screen_info, Window w, Atom a, Atom x, Time times
     XSendEvent (myScreenGetXDisplay (screen_info), w, FALSE, 0L, (XEvent *)&ev);
 }
 
-void
-myXGrabServer (ScreenInfo *screen_info)
-{
-    DBG ("entering myXGrabServer");
-    if (xgrabcount == 0)
-    {
-        DBG ("grabbing server");
-        XGrabServer (myScreenGetXDisplay (screen_info));
-    }
-    xgrabcount++;
-    DBG ("grabs : %i", xgrabcount);
-}
-
-void
-myXUngrabServer (ScreenInfo *screen_info)
-{
-    DBG ("entering myXUngrabServer");
-    if (--xgrabcount < 0)       /* should never happen */
-    {
-        xgrabcount = 0;
-    }
-    if (xgrabcount == 0)
-    {
-        DBG ("ungrabbing server");
-        XUngrabServer (myScreenGetXDisplay (screen_info));
-        XFlush (myScreenGetXDisplay (screen_info));
-    }
-    DBG ("grabs : %i", xgrabcount);
-}
-
 /*
  * it's safer to grab the display before calling this routine
  * Returns true if the given window is present and mapped on root 
@@ -154,7 +122,7 @@ myXUngrabServer (ScreenInfo *screen_info)
 gboolean
 checkWindowOnRoot(ScreenInfo *screen_info, Window w)
 {
-    DisplayInfo *display_info;
+    DisplayInfo *display_info = NULL;
     Window dummy_root, parent;
     Window *wins = NULL;
     unsigned int count;

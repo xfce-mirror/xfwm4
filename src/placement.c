@@ -116,7 +116,7 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 void 
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
-    Client *c2;
+    Client *c2 = NULL;
     int i, delta = 0;
     
     g_return_if_fail (x != NULL);
@@ -170,8 +170,8 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 gboolean
 clientCkeckTitle (Client * c)
 {
-    Client *c2;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    ScreenInfo *screen_info = NULL;
     int i, frame_x, frame_y, frame_width, frame_top;
     
     frame_x = frameX (c);
@@ -197,8 +197,8 @@ clientCkeckTitle (Client * c)
 void
 clientConstrainPos (Client * c, gboolean show_full)
 {
-    Client *c2;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    ScreenInfo *screen_info = NULL;
     int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
     GdkRectangle rect;
@@ -432,8 +432,8 @@ clientKeepVisible (Client * c)
 void
 clientInitPosition (Client * c)
 {
-    Client *c2;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    ScreenInfo *screen_info = NULL;
     int test_x = 0, test_y = 0;
     int xmax, ymax, best_x, best_y, i, msx, msy;
     int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;

@@ -49,8 +49,8 @@ clientApplyStackList (ScreenInfo *screen_info)
 
     if (nwindows)
     {
-        GList *index;
-        Client *c;
+        GList *index = NULL;
+        Client *c = NULL;
         
         for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
         {
@@ -68,9 +68,9 @@ clientApplyStackList (ScreenInfo *screen_info)
 gboolean
 clientTransientOrModalHasAncestor (Client * c, int ws)
 {
-    Client *c2;
-    GList *index;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    GList *index = NULL;
+    ScreenInfo *screen_info = NULL;
     
     g_return_val_if_fail (c != NULL, FALSE);
 
@@ -101,8 +101,8 @@ Client *
 clientGetLowestTransient (Client * c)
 {
     Client *lowest_transient = NULL, *c2;
-    GList *index;
-    ScreenInfo *screen_info;
+    GList *index = NULL;
+    ScreenInfo *screen_info = NULL;
     
     g_return_val_if_fail (c != NULL, NULL);
 
@@ -125,9 +125,9 @@ Client *
 clientGetHighestTransientOrModalFor (Client * c)
 {
     Client *highest_transient = NULL;
-    Client *c2;
-    GList *index;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    GList *index = NULL;
+    ScreenInfo *screen_info = NULL;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetHighestTransientOrModalFor");
@@ -152,9 +152,9 @@ Client *
 clientGetTopMostForGroup (Client * c)
 {
     Client *top_most = NULL;
-    Client *c2;
-    GList *index;
-    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    GList *index = NULL;
+    ScreenInfo *screen_info = NULL;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetTopMostForGroup");
@@ -179,7 +179,7 @@ Client *
 clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
 {
     Client *top = NULL, *c;
-    GList *index;
+    GList *index = NULL;
 
     TRACE ("entering clientGetNextTopMost");
 
@@ -205,7 +205,7 @@ Client *
 clientGetBottomMost (ScreenInfo *screen_info, int layer, Client * exclude)
 {
     Client *bot = NULL, *c;
-    GList *index;
+    GList *index = NULL;
 
     TRACE ("entering clientGetBottomMost");
 
@@ -238,7 +238,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
     /* This function does the same as XQueryPointer but w/out the race
        conditions caused by querying the X server
      */
-    GList *index;
+    GList *index = NULL;
     Client *c = NULL;
     Client *c2 = NULL;
 
@@ -264,7 +264,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
 void
 clientRaise (Client * c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRaise");
@@ -384,7 +384,7 @@ clientRaise (Client * c)
 void
 clientLower (Client * c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientLower");
@@ -445,8 +445,8 @@ clientLower (Client * c)
 void
 clientAddToList (Client * c)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     Client *client_sibling = NULL;
     GList *sibling = NULL;
     
@@ -514,8 +514,8 @@ clientAddToList (Client * c)
 void
 clientRemoveFromList (Client * c)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
  
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRemoveFromList");
@@ -572,7 +572,7 @@ clientGetStackList (ScreenInfo *screen_info)
 void
 clientSetLastRaise (Client *c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
  
     g_return_if_fail (c != NULL);
 

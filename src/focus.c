@@ -59,8 +59,8 @@ static ClientPair
 clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
 {
     ClientPair top_client;
-    Client *c;
-    GList *index;
+    Client *c = NULL;
+    GList *index = NULL;
 
     TRACE ("entering clientGetTopMostFocusable");
 
@@ -116,7 +116,7 @@ clientFocusTop (ScreenInfo *screen_info, int layer)
 void
 clientFocusNew(Client * c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     gboolean give_focus;
 
     g_return_if_fail (c != NULL);
@@ -189,7 +189,7 @@ clientSelectMask (Client * c, int mask)
 Client *
 clientGetNext (Client * c, int mask)
 {
-    Client *c2;
+    Client *c2 = NULL;
     unsigned int i;
 
     TRACE ("entering clientGetNext");
@@ -216,7 +216,7 @@ clientGetNext (Client * c, int mask)
 Client *
 clientGetPrevious (Client * c, int mask)
 {
-    Client *c2;
+    Client *c2 = NULL;
     unsigned int i;
 
     TRACE ("entering clientGetPrevious");
@@ -246,7 +246,7 @@ clientPassFocus (ScreenInfo *screen_info, Client * c)
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
     ClientPair top_most;
-    Client *c2;
+    Client *c2 = NULL;
     Window dr, window;
     int rx, ry, wx, wy;
     unsigned int mask;
@@ -331,7 +331,7 @@ clientAcceptFocus (Client * c)
 void
 clientSortRing(Client *c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     
     g_return_if_fail (c != NULL);
 
@@ -424,7 +424,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 void
 clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned short flags)
 {
-    Client *c2;
+    Client *c2 = NULL;
 
     TRACE ("entering clientSetFocus");
     
