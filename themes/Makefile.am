@@ -29,6 +29,7 @@ kindaker \
 linea \
 metabox \
 microdeck \
+microdeck2 \
 microgui \
 mofit \
 next \
