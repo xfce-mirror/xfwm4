@@ -566,13 +566,17 @@ void frameDraw(Client * c, gboolean invalidate_cache)
 	}
 	
 	XMapWindow(dpy, c->title);
-        for(i = 0; i < 3; i++)
-        {
-            if(c->sides[i])
-            {
-                XMapWindow(dpy, c->sides[i]);
-            }
-        }
+        XMapWindow(dpy, c->sides[SIDE_BOTTOM]);
+	if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+	{
+	    XUnmapWindow(dpy, c->sides[SIDE_LEFT]);
+            XUnmapWindow(dpy, c->sides[SIDE_RIGHT]);
+	}
+	else
+	{
+            XMapWindow(dpy, c->sides[SIDE_LEFT]);
+            XMapWindow(dpy, c->sides[SIDE_RIGHT]);
+	}
         for(i = 0; i < 4; i++)
         {
             if(c->corners[i])
