@@ -27,7 +27,7 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <X11/Xlib.h>
-#include <gtktoxevent.h>
+#include <libxfcegui4.h>
 #include "main.h"
 #include "events.h"
 #include "frame.h"
@@ -60,6 +60,7 @@ CARD32 gnome_margins[4];
 int quit = False, reload = False;
 int shape, shape_event;
 Cursor resize_cursor[7], move_cursor, root_cursor;
+SessionClient *client_session;
 
 int handleXError(Display * dpy, XErrorEvent * err)
 {
@@ -134,6 +135,13 @@ void initialize(int argc, char **argv)
     gtk_init(&argc, &argv);
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
+    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IMMEDIATELY, 20);
+
+    if(!session_init(client_session))
+    {
+        g_message("Cannot connect to session manager");
+    }
+    
     dpy = GDK_DISPLAY();
     root = GDK_ROOT_WINDOW();
     screen = XDefaultScreen(dpy);
