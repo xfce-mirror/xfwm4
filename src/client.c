@@ -3306,16 +3306,23 @@ clientUnframe (Client * c, gboolean remap)
     clientRemoveFromList (c);
     MyXGrabServer ();
     gdk_error_trap_push ();
+    XUnmapWindow (dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (dpy, c->window, NoEventMask);
-    XUnmapWindow (dpy, c->frame);
-    setWMState (dpy, c->window, WithdrawnState);
     reparented = XCheckTypedWindowEvent (dpy, c->window, ReparentNotify, &ev);
 
     if (remap || !reparented)
     {
         XReparentWindow (dpy, c->window, root, c->x, c->y);
         XSetWindowBorderWidth (dpy, c->window, c->border_width);
+        if (remap)
+        {
+            XMapWindow (dpy, c->window);
+        }
+        else
+        {
+            setWMState (dpy, c->window, WithdrawnState);
+        }
     }
     else
     {
@@ -3325,6 +3332,7 @@ clientUnframe (Client * c, gboolean remap)
         XDeleteProperty (dpy, c->window, win_workspace);
         XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
     }
+
 
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
@@ -3419,6 +3427,7 @@ clientUnframeAll ()
         }
     }
     MyXUngrabServer ();
+    XSync(dpy, FALSE);
     if (wins)
     {
         XFree (wins);
