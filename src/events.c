@@ -286,19 +286,18 @@ static inline void handleButtonPress(XButtonEvent * ev)
     c = clientGetFromWindow(ev->window, ANY);
     if(c)
     {
-
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
 	win = ev->subwindow;
 	
-        clientSetFocus(c, True);
-
 	if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientButtonPress(c, win, ev);
         }
         else if(((win == c->title) && (ev->button == Button3)) || ((win == c->buttons[MENU_BUTTON]) && (ev->button == Button1)))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             ev->window = ev->root;
             if(button_handler_id)
@@ -310,8 +309,12 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
-            clientRaise(c);
-            if((ev->time - last_button_time <= 250) && (last_button_time != 0))
+            if (win == c->title)
+	    {
+	        clientSetFocus(c, True);
+                clientRaise(c);
+            }
+	    if((ev->time - last_button_time <= 250) && (last_button_time != 0))
             {
                 switch (double_click_action)
                 {
@@ -338,36 +341,43 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if((win == c->corners[CORNER_TOP_LEFT]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
         }
@@ -377,6 +387,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else
         {
+            clientSetFocus(c, True);
             clientRaise(c);
             if(ev->window == c->window)
             {
