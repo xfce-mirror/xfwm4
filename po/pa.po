@@ -1,0 +1,713 @@
+# translation of xfwm4.po to Punjabi
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Amanpreet Singh Alam <aalam@redhat.com>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-09-06 07:45+0200\n"
+"PO-Revision-Date: 2004-09-20 15:14+0530\n"
+"Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
+"Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+
+#: mcs-plugin/margins.c:123
+msgid "Workspace Margins"
+msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
+
+#: mcs-plugin/margins.c:133
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "ਮਾਰਜਨ ਪਰਦੇ ਦੇ ਕਿਨਾਰਿਆਂ ਤੇ ਅਜਿਹੇ ਖੇਤਰ ਹਨ ਜਿੱਥੇ ਕੋਈ ਝਰੋਖਾ ਸਥਾਪਤਨਹੀਂ ਹੋਵੇਗਾ"
+
+#: mcs-plugin/margins.c:164
+msgid "Left :"
+msgstr "ਖੱਬੇ:"
+
+#: mcs-plugin/margins.c:184
+msgid "Right :"
+msgstr "ਸੱਜੇ:"
+
+#: mcs-plugin/margins.c:204
+msgid "Top :"
+msgstr "ਉੱਪਰ:"
+
+#: mcs-plugin/margins.c:224
+msgid "Bottom :"
+msgstr "ਹੇਠਾਂ:"
+
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
+msgid "Workspaces and Margins"
+msgstr "ਅਖਾੜਾ ਤੇ ਹਾਸ਼ੀਆ"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:540
+msgid "Workspaces"
+msgstr "ਅਖਾੜਾ"
+
+#: mcs-plugin/plugin.c:169
+msgid "Margins"
+msgstr "ਹਾਸ਼ੀਆ"
+
+#: mcs-plugin/workspaces.c:339
+msgid "Change name"
+msgstr "ਨਾਂ-ਤਬਦੀਲ"
+
+#: mcs-plugin/workspaces.c:351
+#, c-format
+msgid "Workspace %d"
+msgstr "ਅਖਾੜਾ %d"
+
+#: mcs-plugin/workspaces.c:361
+msgid "Name:"
+msgstr "ਨਾਂ:"
+
+#: mcs-plugin/workspaces.c:449
+msgid "Click on a workspace name to edit it"
+msgstr "ਇਸ ਨੂੰ ਸੋਧਣ ਲਈ ਅਖਾੜਾ ਨਾਂ ਤੇ ਕਲਿੱਕ ਕਰੋ"
+
+#: mcs-plugin/workspaces.c:521
+msgid "Number of workspaces:"
+msgstr "ਅਖਾੜਿਆਂ ਦੀ ਗਿਣਤੀ:"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:552
+msgid "Workspace names"
+msgstr "ਅਖਾੜਾ ਨਾਂ"
+
+#: mcs-plugin/xfwm4_plugin.c:82
+msgid "Menu"
+msgstr "ਮੇਨੂ"
+
+#: mcs-plugin/xfwm4_plugin.c:83
+msgid "Stick"
+msgstr "ਚਿਪਕਿਆ"
+
+#: mcs-plugin/xfwm4_plugin.c:84
+msgid "Shade"
+msgstr "ਛਾਂ"
+
+#: mcs-plugin/xfwm4_plugin.c:85
+msgid "Hide"
+msgstr "ਓਹਲੇ"
+
+#: mcs-plugin/xfwm4_plugin.c:86
+msgid "Maximize"
+msgstr "ਅਧਿਕਤਮ"
+
+#: mcs-plugin/xfwm4_plugin.c:87
+msgid "Close"
+msgstr "ਬੰਦ"
+
+#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_shortcuteditor.c:90
+#: mcs-plugin/xfwm4_shortcuteditor.c:460
+msgid "Shade window"
+msgstr "ਝਰੋਖਾ ਛਾਂ"
+
+#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_shortcuteditor.c:85
+#: mcs-plugin/xfwm4_shortcuteditor.c:456
+msgid "Hide window"
+msgstr "ਝਰੋਖਾ ਓਹਲੇ"
+
+#: mcs-plugin/xfwm4_plugin.c:94 mcs-plugin/xfwm4_shortcuteditor.c:70
+#: mcs-plugin/xfwm4_shortcuteditor.c:444
+msgid "Maximize window"
+msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ"
+
+#: mcs-plugin/xfwm4_plugin.c:95
+msgid "Nothing"
+msgstr "ਕੁਝ ਨਹੀਂ"
+
+#: mcs-plugin/xfwm4_plugin.c:100
+msgid "Left"
+msgstr "ਖੱਬਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:101
+msgid "Center"
+msgstr "ਕੇਂਦਰੀ"
+
+#: mcs-plugin/xfwm4_plugin.c:102
+msgid "Right"
+msgstr "ਸੱਜਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:570
+msgid "Click and drag buttons to change the layout"
+msgstr "ਖਾਕਾ ਤਬਦੀਲ ਕਰਨ ਲਈ ਖਿੱਚੋ ਬਟਨ ਤੇ ਕਲਿੱਕ ਕਰੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:575
+msgid "Active"
+msgstr "ਸਰਗਰਮ"
+
+#: mcs-plugin/xfwm4_plugin.c:586
+msgid "Title"
+msgstr "ਸਿਰਲੇਖ"
+
+#: mcs-plugin/xfwm4_plugin.c:587
+msgid "The window title, it cannot be removed"
+msgstr "ਝਰੋਖਾ ਸਿਰਲੇਖ, ਇਹ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:595
+msgid "Hidden"
+msgstr "ਓਹਲੇ"
+
+#: mcs-plugin/xfwm4_plugin.c:1300
+msgid "Font Selection Dialog"
+msgstr "ਫੋਂਟ ਚੋਣ ਬਕਸਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:1395 mcs-plugin/xfwm4_plugin.c:1882
+msgid "Window Manager"
+msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
+
+#: mcs-plugin/xfwm4_plugin.c:1408
+msgid "Window Manager Preferences"
+msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਪਸੰਦ"
+
+#: mcs-plugin/xfwm4_plugin.c:1437
+msgid "Title font"
+msgstr "ਸਿਰਲੇਖ ਫੋਂਟ"
+
+#: mcs-plugin/xfwm4_plugin.c:1450
+msgid "Title Alignment"
+msgstr "ਸਿਰਲੇਖ ਸਥਿਤੀ"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1456
+msgid "Text alignment inside title bar :"
+msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਵਿੱਚ ਪਾਠ ਅਨੁਕੂਲਤਾ ਃ"
+
+#: mcs-plugin/xfwm4_plugin.c:1458
+msgid "Button layout"
+msgstr "ਹੇਠਾਂ ਖਾਕਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Style"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1490
+msgid "Windows shortcuts"
+msgstr "ਝਰੋਖਾ ਸ਼ਾਰਟਕੱਟ"
+
+#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1539
+msgid "Command"
+msgstr "ਕਮਾਂਡ"
+
+#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1544
+msgid "Shortcut"
+msgstr "ਸ਼ਾਰਟਕੱਟ"
+
+#: mcs-plugin/xfwm4_plugin.c:1519
+msgid "Command shortcuts"
+msgstr "ਕਮਾਂਡ ਸ਼ਾਰਟਕੱਟ"
+
+#: mcs-plugin/xfwm4_plugin.c:1547
+msgid "Keyboard"
+msgstr "ਕੀ-ਬੋਰਡ"
+
+#: mcs-plugin/xfwm4_plugin.c:1558
+msgid "Focus model"
+msgstr "ਕੇਂਦਰਿਤ ਮਾਡਲ"
+
+#: mcs-plugin/xfwm4_plugin.c:1566
+msgid "Click to focus"
+msgstr "ਕੇਂਦਰਿਤ ਕਰਨ ਲਈ ਦਬਾਓ"
+
+#: mcs-plugin/xfwm4_plugin.c:1573
+msgid "Focus follows mouse"
+msgstr "ਮਾਊਸ ਦੇ ਪਿੱਛੇ ਕੇਂਦਰਿਤ"
+
+#: mcs-plugin/xfwm4_plugin.c:1580
+msgid "New window focus"
+msgstr "ਨਵਾਂ ਝਰੋਖਾ ਕੇਂਦਰਿਤ"
+
+#: mcs-plugin/xfwm4_plugin.c:1584
+msgid "Automatically give focus to newly created windows"
+msgstr "ਨਵੇਂ ਝਰੋਖੇ ਉੱਪਰ ਸਵੈ ਕੇਂਦ੍ਰਿਤ ਕਰੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1589
+msgid "Raise on focus"
+msgstr "ਕੇਂਦਰਿਤ ਹੋਣ ਤੇ ਉਭਾਰੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1597
+msgid "Automatically raise windows when they receive focus"
+msgstr "ਕੇਂਦ੍ਰਿਤ ਹੋਣ ਉਪਰੰਤ ਝਰੋਖਾ ਸਵੈ-ਪੇਸ਼ ਕਰੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1607
+msgid "Delay before raising focused window :"
+msgstr "ਕੇਂਦ੍ਰਿਤ ਝਰੋਖਾ ਪੇਸ਼ਗੀ ਤੋਂ ਪਹਿਲਾਂ ਅੰਤਰਾਲ ਃ"
+
+#: mcs-plugin/xfwm4_plugin.c:1613
+msgid "Slow"
+msgstr "ਹੌਲੀ"
+
+#: mcs-plugin/xfwm4_plugin.c:1619
+msgid "Fast"
+msgstr "ਤੇਜ਼"
+
+#: mcs-plugin/xfwm4_plugin.c:1635
+msgid "Raise on click"
+msgstr "ਕਲਿੱਕ ਕਰਨ ਤੇ ਪੇਸ਼ਗੀ"
+
+#: mcs-plugin/xfwm4_plugin.c:1639
+msgid "Raise window when clicking inside application window"
+msgstr "ਕਾਰਜ ਝਰੋਖੇ ਵਿੱਚ ਕਲਿੱਕ ਕਰਨ ਉਪਰੰਤ ਝਰੋਖਾ ਪੇਸ਼ ਕਰੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1644
+msgid "Focus"
+msgstr "ਕੇਂਦਰਿਤ"
+
+#: mcs-plugin/xfwm4_plugin.c:1654
+msgid "Windows snapping"
+msgstr "ਝਰੋਖਾ ਤਸਵੀਰ"
+
+#: mcs-plugin/xfwm4_plugin.c:1662
+msgid "Snap windows to screen border"
+msgstr "ਪਰਦੇ ਦੇ ਹਾਸ਼ੀਏ ਵਿੱਚ ਝਰੋਖਾ ਤਸਵਿਰ"
+
+#: mcs-plugin/xfwm4_plugin.c:1667
+msgid "Snap windows to other windows"
+msgstr "ਹੋਰ ਝਰੋਖਿਆਂ ਵਿੱਚ ਝਰੋਖਾ ਤਸਵੀਰ"
+
+#: mcs-plugin/xfwm4_plugin.c:1677
+msgid "Distance :"
+msgstr "ਅੰਤਰ:"
+
+#: mcs-plugin/xfwm4_plugin.c:1683 mcs-plugin/xfwm4_plugin.c:1733
+msgid "Small"
+msgstr "ਛੋਟਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:1689 mcs-plugin/xfwm4_plugin.c:1739
+msgid "Wide"
+msgstr "ਵੱਡਾ"
+
+#: mcs-plugin/xfwm4_plugin.c:1704
+msgid "Wrap workspaces"
+msgstr "ਅਖਾੜਾ ਲਪੇਟੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1712
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "ਸੰਕੇਤਕ ਪਰਦੇ ਦੇ ਕਿਨਾਰੇ ਤੇ ਪਹੁੰਚਣ ਉਪਰੰਤ ਅਖਾੜਾ ਲਪੇਟੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1717
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "ਪਰਦਾ ਖਿੱਚਣ ਨਾਲ ਪਰਦਾ ਬੰਦ ਹੋਣ ਉਪਰੰਤ ਅਖਾੜਾ ਲਪੇਟੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1727
+msgid "Edge Resistance :"
+msgstr "ਕਿਨਾਰਾ ਵਿਰੋਧਤਾ ਃ"
+
+#: mcs-plugin/xfwm4_plugin.c:1754
+msgid "Opaque move and resize"
+msgstr "ਅਪਾਰਦਰਸ਼ੀ ਹਿਲਾਉਣ ਅਤੇ ਮੁੜ ਆਕਾਰ"
+
+#: mcs-plugin/xfwm4_plugin.c:1762
+msgid "Display content of windows when resizing"
+msgstr "ਮੁੜ ਆਕਾਰ ਦੇਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇਪ ਵਿਖਾਓ"
+
+#: mcs-plugin/xfwm4_plugin.c:1767
+msgid "Display content of windows when moving"
+msgstr "ਹਿਲਾਉਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇਪ ਵਿਖਾਓ"
+#: mcs-plugin/xfwm4_plugin.c:1772
+msgid "Double click action"
+msgstr "ਕਿਰਿਆ ਤੇ ਡਬਲ ਕਲਿੱਕ ਕਰੋ"
+
+#: mcs-plugin/xfwm4_plugin.c:1778
+msgid "Action to perform when double clicking on title bar :"
+msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਡਬਲ ਕਲਿੱਕ ਕਰਨ ਤੇ ਵਾਪਰਨ ਵਾਲੀ ਕਿਰਿਆ ਃ"
+
+#: mcs-plugin/xfwm4_plugin.c:1780
+msgid "Advanced"
+msgstr "ਤਕਨੀਕੀ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:65 mcs-plugin/xfwm4_shortcuteditor.c:440
+msgid "Close window"
+msgstr "ਝਰੋਖਾ ਬੰਦ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:75 mcs-plugin/xfwm4_shortcuteditor.c:448
+msgid "Maximize window vertically"
+msgstr "ਝਰੋਖਾ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:80 mcs-plugin/xfwm4_shortcuteditor.c:452
+msgid "Maximize window horizontally"
+msgstr "ਝਰੋਖਾ ਖਤਿਜੀ ਅਧਿਕਤਮ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:95 mcs-plugin/xfwm4_shortcuteditor.c:464
+msgid "Stick window"
+msgstr "ਉੱਭਰਿਆ ਝਰੋਖਾ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:100 mcs-plugin/xfwm4_shortcuteditor.c:468
+msgid "Cycle windows"
+msgstr "ਚੱਕਰ ਝਰੋਖਾ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:105 mcs-plugin/xfwm4_shortcuteditor.c:472
+msgid "Move window up"
+msgstr "ਝਰੋਖਾ ਉੱਪਰ ਹਿਲਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:110 mcs-plugin/xfwm4_shortcuteditor.c:476
+msgid "Move window down"
+msgstr "ਝਰੋਖਾ ਹੇਠਾਂ ਹਿਲਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:115 mcs-plugin/xfwm4_shortcuteditor.c:480
+msgid "Move window left"
+msgstr "ਝਰੋਖਾ ਖੱਬੇ ਹਿਲਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:120 mcs-plugin/xfwm4_shortcuteditor.c:484
+msgid "Move window right"
+msgstr "ਝਰੋਖਾ ਸੱਜੇ ਹਿਲਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:488
+msgid "Resize window up"
+msgstr "ਝਰੋਖਾ ਉੱਪਰ ਮੁੜ ਆਕਾਰ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:130 mcs-plugin/xfwm4_shortcuteditor.c:492
+msgid "Resize window down"
+msgstr "ਝਰੋਖਾ ਹੇਠਾਂ ਮੁੜ ਆਕਾਰ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:135 mcs-plugin/xfwm4_shortcuteditor.c:496
+msgid "Resize window left"
+msgstr "ਝਰੋਖਾ ਖੱਬੇ ਮੁੜ ਆਕਾਰ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:140 mcs-plugin/xfwm4_shortcuteditor.c:500
+msgid "Resize window right"
+msgstr "ਝਰੋਖਾ ਸੱਜੇ ਮੁੜ ਆਕਾਰ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:145 mcs-plugin/xfwm4_shortcuteditor.c:504
+msgid "Raise window"
+msgstr "ਝਰੋਖਾ ਪੇਸ਼ਗੀ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:150 mcs-plugin/xfwm4_shortcuteditor.c:508
+msgid "Lower window"
+msgstr "ਹੇਠਲਾ ਝਰੋਖਾ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:155 mcs-plugin/xfwm4_shortcuteditor.c:512
+msgid "Toggle fullscreen"
+msgstr "ਪੂਰਾ-ਪਰਦਾ ਲਿਆਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:160 mcs-plugin/xfwm4_shortcuteditor.c:516
+msgid "Next workspace"
+msgstr "ਅਗਲਾ ਅਖਾੜਾ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:165 mcs-plugin/xfwm4_shortcuteditor.c:520
+msgid "Previous workspace"
+msgstr "ਪਿਛਲਾ ਅਖਾੜਾ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:170 mcs-plugin/xfwm4_shortcuteditor.c:524
+msgid "Add workspace"
+msgstr "ਅਖਾੜਾ ਸ਼ਾਮਿਲ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:175 mcs-plugin/xfwm4_shortcuteditor.c:528
+msgid "Delete workspace"
+msgstr "ਅਖਾੜਾ ਹਟਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:180 mcs-plugin/xfwm4_shortcuteditor.c:532
+msgid "Workspace 1"
+msgstr "ਅਖਾੜਾ ੧"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:185 mcs-plugin/xfwm4_shortcuteditor.c:536
+msgid "Workspace 2"
+msgstr "ਅਖਾੜਾ ੨"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:190 mcs-plugin/xfwm4_shortcuteditor.c:540
+msgid "Workspace 3"
+msgstr "ਅਖਾੜਾ ੩"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:195 mcs-plugin/xfwm4_shortcuteditor.c:544
+msgid "Workspace 4"
+msgstr "ਅਖਾੜਾ ੪"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:200 mcs-plugin/xfwm4_shortcuteditor.c:548
+msgid "Workspace 5"
+msgstr "ਅਖਾੜਾ ੫"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:205 mcs-plugin/xfwm4_shortcuteditor.c:552
+msgid "Workspace 6"
+msgstr "ਅਖਾੜਾ ੬"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:210 mcs-plugin/xfwm4_shortcuteditor.c:556
+msgid "Workspace 7"
+msgstr "ਅਖਾੜਾ ੭"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:215 mcs-plugin/xfwm4_shortcuteditor.c:560
+msgid "Workspace 8"
+msgstr "ਅਖਾੜਾ ੮"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:220 mcs-plugin/xfwm4_shortcuteditor.c:564
+msgid "Workspace 9"
+msgstr "ਅਖਾੜਾ ੯"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:225 mcs-plugin/xfwm4_shortcuteditor.c:568
+msgid "Move window to next workspace"
+msgstr "ਝਰੋਖਾ ਅਗਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:230 mcs-plugin/xfwm4_shortcuteditor.c:572
+msgid "Move window to previous workspace"
+msgstr "ਝਰੋਖਾ ਪਿਛਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:235 mcs-plugin/xfwm4_shortcuteditor.c:576
+msgid "Move window to workspace 1"
+msgstr "ਅਖਾੜਾ ੧ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:240 mcs-plugin/xfwm4_shortcuteditor.c:580
+msgid "Move window to workspace 2"
+msgstr "ਅਖਾੜਾ ੨ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:245 mcs-plugin/xfwm4_shortcuteditor.c:584
+msgid "Move window to workspace 3"
+msgstr "ਅਖਾੜਾ ੩ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:250 mcs-plugin/xfwm4_shortcuteditor.c:588
+msgid "Move window to workspace 4"
+msgstr "ਅਖਾੜਾ ੪ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:255 mcs-plugin/xfwm4_shortcuteditor.c:592
+msgid "Move window to workspace 5"
+msgstr "ਅਖਾੜਾ ੯ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:260 mcs-plugin/xfwm4_shortcuteditor.c:596
+msgid "Move window to workspace 6"
+msgstr "ਅਖਾੜਾ ੫ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:265 mcs-plugin/xfwm4_shortcuteditor.c:600
+msgid "Move window to workspace 7"
+msgstr "ਅਖਾੜਾ ੬ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:270 mcs-plugin/xfwm4_shortcuteditor.c:604
+msgid "Move window to workspace 8"
+msgstr "ਅਖਾੜਾ ੭ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:275 mcs-plugin/xfwm4_shortcuteditor.c:608
+msgid "Move window to workspace 9"
+msgstr "ਅਖਾੜਾ ੮ ਵਿੱਚ ਜਾਓ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:656
+msgid "Cannot open the theme directory !"
+msgstr "ਸਰੂਪ ਡਾਇਰੈਕਟਰੀ ਖੋਲ ਨਹੀਂ ਸਕਿਆ !"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:675
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+"%s ਖੋਲ ਨਹੀਂ ਸਕਿਆ ਃ \n"
+"%s"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:690 mcs-plugin/xfwm4_shortcuteditor.c:701
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"%s ਵਿੱਚ ਲਿਖ ਨਹੀਂ ਸਕਿਆ ਃ \n"
+"%s"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:764
+msgid "Select command"
+msgstr "ਕਮਾਂਡ ਚੁਣੋ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:866
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
+" ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:928
+msgid "Compose shortcut for :"
+msgstr "ਲਈ ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ ਃ"
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:931
+#: mcs-plugin/xfwm4_shortcuteditor.c:1110
+msgid "Compose shortcut"
+msgstr "ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:963
+#: mcs-plugin/xfwm4_shortcuteditor.c:1141
+msgid "Cannot grab the keyboard"
+msgstr "ਕੀਬੋਰਡ ਖੋਹ ਨਹੀਂ ਸਕਿਆ"
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:1015
+msgid "Choose command"
+msgstr "ਕਮਾਂਡ ਚੁਣੋ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1017
+msgid "Command :"
+msgstr "ਕਮਾਂਡ ਃ"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1051
+msgid "The command doesn't exist or the file is not executable !"
+msgstr "ਕਮਾਂਡ ਮੌਜੂਦ ਨਹੀਂ ਜਾਂ ਫਾਇਲ ਚੱਲਣਯੋਗ ਨਹੀਂਂ !"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1107
+msgid "Compose shortcut for command :"
+msgstr "ਕਮਾਂਡ ਲਈ ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ ਃ"
+
+#: src/events.c:1623
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: ਕਿਰਿਆ ਨੂੰ ਸਹਿਯੋਗ ਨਹੀਂ (ਹਾਲੇ)\n"
+
+#: src/main.c:180
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: ਵਿਭਾਜਨ ਨੁਕਸ"
+
+#: src/main.c:313
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: ਹੋਰ ਝਰੋਖਾ ਮੈਨੇਜਰ ਪਹਿਲਾਂ ਚੱਲ ਰਿਹਾ ਹੈ"
+
+#: src/main.c:318
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: ਮੂਲ ਫਾਇਲਾਂ ਵਿੱਚੋਂ ਗੁੰਮ ਡਾਟਾ"
+
+#: src/main.c:328
+#, c-format
+msgid "%s: Failed to enter daemon mode: %s"
+msgstr "%s: ਡੈਮਨ ਵਿਧੀ ਵਿੱਚ ਸ਼ਾਮਿਲ ਹੋਣ ਤੋਂ ਅਸਫਲਃ %s"
+
+#: src/main.c:336
+#, c-format
+msgid "%s: Failed to create new process: %s"
+msgstr "%s: ਨਵਾਂ ਕਾਰਜ ਪੈਦਾ ਕਰਨ ਵਿੱਚ ਅਸਫਲਃ %s"
+
+#: src/main.c:357
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: ਅਣਪਛਾਤੀ ਗਲਤੀ"
+
+#: src/menu.c:39
+msgid "Ma_ximize"
+msgstr "_ਅਧਿਕਤਮ"
+
+#: src/menu.c:40
+msgid "Un_maximize"
+msgstr "_ਨਾ-ਅਧਿਕਤਮ"
+
+#: src/menu.c:41
+msgid "_Hide"
+msgstr "_ਢਕੋ"
+
+#: src/menu.c:42
+msgid "Hide _all others"
+msgstr "_ਹੋਰ ਸਾਰੇ ਢਕੋ"
+
+#: src/menu.c:43
+msgid "S_how"
+msgstr "_ਵਿਖਾਓ"
+
+#: src/menu.c:44
+msgid "_Shade"
+msgstr "ਛਾਂ"
+
+#: src/menu.c:45
+msgid "Un_shade"
+msgstr "ਨਾ-ਛਾਂ"
+
+#: src/menu.c:46
+msgid "S_tick"
+msgstr "ਉੱਭਰਿਆ"
+
+#: src/menu.c:47
+msgid "Uns_tick"
+msgstr "ਨਾ-ਉੱਭਰਿਆ"
+
+#: src/menu.c:48
+msgid "Context _help"
+msgstr "ਪ੍ਰਸੰਗ _ਸਹਾਇਤਾ"
+
+#: src/menu.c:49 src/menu.c:50
+msgid "Always on top"
+msgstr "ਹਮੇਸ਼ਾ ਸਿਖਰ ਤੇ"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "ਨੂੰ ਭੇਜੋ..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_ਬੰਦ"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "ਡਾਇਰੈਕਟਰੀ"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "_ਬਾਹਰ"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "ਮੁੜ ਚਾਲੂ ਕਰੋ"
+
+#: src/menu.c:170
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "ਅਖਾੜਾ %i (%s)"
+
+#: src/menu.c:182
+#, c-format
+msgid "Workspace %i"
+msgstr "ਅਖਾੜਾ %i"
+
+#: src/menu.c:425
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: Gtk-ਮੇਨੂੰ ਸੰਕੇਤਕ ਖੋਹਣ ਵਿੱਚ ਅਸਫਲ\n"
+
+#: src/netwm.c:252
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: ਬਿਨ-ਪ੍ਰਬੰਧ net_wm_state (ਝਰੋਖਾ 0x%lx)"
+
+#: src/settings.c:342
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: ਮੂਲ ਫਾਇਲ ਗੁੰਮ ਹੈ"
+
+#: src/settings.c:599
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+
+#: src/settings.c:605
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+
+#: src/settings.c:648
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: ਨਾ-ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+
+#: src/settings.c:654
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+
+#: src/settings.c:841
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: ਨਿਰਧਾਰਿਤ ਮੁੱਖ ਸਰੂਪ \"%s\" ਗੁੰਮ ਹੈ, ਮੂਲ ਵਰਤ ਰਿਹਾ ਹੈ"
+
+#: src/settings.c:848
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: ਮੂਲ ਫਾਇਲ ਵਿੱਚ ਗੁੰਮ ਕੀਮਤਾਂ"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "ਤੇ ਜਾਓ ..."
+
+#: src/tabwin.c:129
+msgid "Unknown application!"
+msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
+
