@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-07 14:51+0100\n"
+"POT-Creation-Date: 2004-04-06 13:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid "Workspaces and Margins"
 msgstr ""
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
+#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:542
 msgid "Workspaces"
 msgstr ""
 
@@ -54,29 +54,29 @@ msgstr ""
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:337
+#: mcs-plugin/workspaces.c:341
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:349
+#: mcs-plugin/workspaces.c:353
 #, c-format
 msgid "Workspace %d"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:359
+#: mcs-plugin/workspaces.c:363
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:447
+#: mcs-plugin/workspaces.c:451
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:519
+#: mcs-plugin/workspaces.c:523
 msgid "Number of workspaces:"
 msgstr ""
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: mcs-plugin/workspaces.c:554
 msgid "Workspace names"
 msgstr ""
 
@@ -299,12 +299,12 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:510
+#: src/client.c:519
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1555
+#: src/events.c:1560
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -339,81 +339,81 @@ msgstr ""
 msgid "%s: Unknown error occured"
 msgstr ""
 
-#: src/menu.c:42
+#: src/menu.c:43
 msgid "Ma_ximize"
 msgstr ""
 
-#: src/menu.c:43
+#: src/menu.c:44
 msgid "Un_maximize"
 msgstr ""
 
-#: src/menu.c:44
+#: src/menu.c:45
 msgid "_Hide"
 msgstr ""
 
-#: src/menu.c:45
+#: src/menu.c:46
 msgid "Hide _all others"
 msgstr ""
 
-#: src/menu.c:46
+#: src/menu.c:47
 msgid "S_how"
 msgstr ""
 
-#: src/menu.c:47
+#: src/menu.c:48
 msgid "_Shade"
 msgstr ""
 
-#: src/menu.c:48
+#: src/menu.c:49
 msgid "Un_shade"
 msgstr ""
 
-#: src/menu.c:49
+#: src/menu.c:50
 msgid "S_tick"
 msgstr ""
 
-#: src/menu.c:50
+#: src/menu.c:51
 msgid "Uns_tick"
 msgstr ""
 
-#: src/menu.c:51
+#: src/menu.c:52
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:53 src/menu.c:54
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:54
+#: src/menu.c:55
 msgid "Send to..."
 msgstr ""
 
-#: src/menu.c:56
+#: src/menu.c:57
 msgid "_Close"
 msgstr ""
 
-#: src/menu.c:59
+#: src/menu.c:60
 msgid "Destroy"
 msgstr ""
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "_Quit"
 msgstr ""
 
-#: src/menu.c:63
+#: src/menu.c:64
 msgid "Restart"
 msgstr ""
 
-#: src/menu.c:169
+#: src/menu.c:170
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr ""
 
-#: src/menu.c:181
+#: src/menu.c:182
 #, c-format
 msgid "Workspace %i"
 msgstr ""
 
-#: src/menu.c:424
+#: src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
