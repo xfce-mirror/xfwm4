@@ -216,8 +216,8 @@ resizeRequest (Client * c, int corner, XEvent * ev)
     {
         clientResize (c, corner, ev);
     }
-    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)))
+    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove (c, ev);
     }
