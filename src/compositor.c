@@ -1156,6 +1156,7 @@ repair_win (CWindow *cw)
     {
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
+        cw->screen_info->clipChanged = TRUE;
     }
 }
 
@@ -1505,7 +1506,7 @@ do_repair (DisplayInfo *display_info)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1544,7 +1545,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
 
@@ -1598,7 +1599,7 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     g_return_if_fail (display_info);
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1637,7 +1638,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1723,7 +1724,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1763,7 +1764,7 @@ compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1787,7 +1788,7 @@ compositorWindowMap (DisplayInfo *display_info, Window id)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1820,7 +1821,7 @@ compositorWindowUnmap (DisplayInfo *display_info, Window id)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1845,7 +1846,7 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
@@ -1902,7 +1903,7 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     
     if (!(display_info->enable_compositor))
     {
-        TRACE ("compositor disabled");    
+        TRACE ("compositor disabled");
         return;
     }
     
