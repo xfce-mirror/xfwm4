@@ -1,7 +1,6 @@
 themedir = $(datadir)/themes/Default/xfwm4
 theme_DATA = 								\
 	README 								\
-	themerc 							\
 	bottom-active.png						\
 	bottom-active.xpm						\
 	bottom-inactive.png						\
@@ -16,9 +15,11 @@ theme_DATA = 								\
 	bottom-right-inactive.xpm					\
 	close-active.xpm						\
 	close-inactive.xpm						\
+	close-pressed.png						\
 	close-pressed.xpm						\
 	hide-active.xpm							\
 	hide-inactive.xpm						\
+	hide-pressed.png						\
 	hide-pressed.xpm						\
 	left-active.png							\
 	left-active.xpm							\
@@ -26,12 +27,15 @@ theme_DATA = 								\
 	left-inactive.xpm						\
 	maximize-active.xpm						\
 	maximize-inactive.xpm						\
+	maximize-pressed.png						\
 	maximize-pressed.xpm						\
 	maximize-toggled-active.xpm					\
 	maximize-toggled-inactive.xpm					\
+	maximize-toggled-pressed.png					\
 	maximize-toggled-pressed.xpm					\
 	menu-active.xpm							\
 	menu-inactive.xpm						\
+	menu-pressed.png						\
 	menu-pressed.xpm						\
 	right-active.png						\
 	right-active.xpm						\
@@ -39,16 +43,21 @@ theme_DATA = 								\
 	right-inactive.xpm						\
 	shade-active.xpm						\
 	shade-inactive.xpm						\
+	shade-pressed.png						\
 	shade-pressed.xpm						\
 	shade-toggled-active.xpm					\
 	shade-toggled-inactive.xpm					\
+	shade-toggled-pressed.png					\
 	shade-toggled-pressed.xpm					\
 	stick-active.xpm						\
 	stick-inactive.xpm						\
+	stick-pressed.png						\
 	stick-pressed.xpm						\
 	stick-toggled-active.xpm					\
 	stick-toggled-inactive.xpm					\
+	stick-toggled-pressed.png					\
 	stick-toggled-pressed.xpm					\
+	themerc 							\
 	title-1-active.png						\
 	title-1-active.xpm						\
 	title-1-inactive.png						\
