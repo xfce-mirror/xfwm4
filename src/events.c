@@ -437,7 +437,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             {
                 clientClose(c);
             }
-            else if(ev->button == Button3 && tclick == XFWM_BUTTON_DRAG)
+            else if(ev->button == Button3 && (tclick == XFWM_BUTTON_DRAG))
             {
                 _moveRequest(c, (XEvent *) ev);
             }

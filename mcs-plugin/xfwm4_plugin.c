@@ -1646,7 +1646,7 @@ static void create_channel(McsPlugin * mcs_plugin)
     else
     {
         raise_on_click = TRUE;
-        mcs_manager_set_int(mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL, focus_raise ? 1 : 0);
+        mcs_manager_set_int(mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL, raise_on_click ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL);
