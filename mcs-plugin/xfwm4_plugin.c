@@ -981,9 +981,11 @@ read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, Them
     GList *new_list = theme_list;
     GtkTreeModel *model;
     GtkTreeView *tree_view;
+    GtkTreePath *path;
+    GtkTreeIter iter;
+    GtkTreeIter iter_found;
     gint i = 0;
     gboolean current_value_found = FALSE;
-    GtkTreeRowReference *row_ref = NULL;
 
     new_list = theme_common_init (new_list);
     tree_view = GTK_TREE_VIEW (treeview);
@@ -1008,10 +1010,8 @@ read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, Them
 
         if (strcmp (current_value, info->name) == 0)
         {
-            GtkTreePath *path = gtk_tree_model_get_path (model, &iter);
-            row_ref = gtk_tree_row_reference_new (model, path);
-            gtk_tree_path_free (path);
             current_value_found = TRUE;
+            iter_found = iter;
         }
 
         if (i == MAX_ELEMENTS_BEFORE_SCROLLING)
@@ -1026,26 +1026,16 @@ read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, Them
 
     if (!current_value_found)
     {
-        GtkTreeIter iter;
-        GtkTreePath *path;
-
         gtk_list_store_prepend (GTK_LIST_STORE (model), &iter);
         gtk_list_store_set (GTK_LIST_STORE (model), &iter, THEME_NAME_COLUMN, current_value, -1);
-
-        path = gtk_tree_model_get_path (model, &iter);
-        row_ref = gtk_tree_row_reference_new (model, path);
-        gtk_tree_path_free (path);
+        iter_found = iter;
     }
 
-    if (row_ref)
+    path = gtk_tree_model_get_path(model, &iter_found);
     {
-        GtkTreePath *path;
-
-        path = gtk_tree_row_reference_get_path (row_ref);
         gtk_tree_view_set_cursor (tree_view, path, NULL, FALSE);
         gtk_tree_view_scroll_to_cell (tree_view, path, NULL, TRUE, 0.5, 0.0);
         gtk_tree_path_free (path);
-        gtk_tree_row_reference_free (row_ref);
     }
     setting_model = FALSE;
 
