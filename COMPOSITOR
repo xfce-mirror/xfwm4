@@ -1,0 +1,77 @@
+Compositing manager notes.
+==========================
+
+xfwm4 now features a compositing manager. This code is new and has received only
+a moderate amount of testing, so it's disabled by default.
+
+If you want to stay safe, keep it disabled. If you still want to try the 
+compositor extensions with xfwm4, here follows how to enable the compositing
+manager.
+
+1) Enabling the compositor manager in xfwm4
+-------------------------------------------
+
+To enable the compositing manager in xfwm4, add --enable-compositor when running
+the configure script.
+
+eg:
+
+sh configure --prefix=/usr --sysconfdir=/etc --enable-compositor
+
+[...]
+checking for xcomposite >= 1.0 xfixes xdamage xrender... yes
+checking COMPOSITOR_CFLAGS... -DXTHREADS -D_REENTRANT -DXUSE_MTSAFE_API -I/usr/X11R6/include
+checking COMPOSITOR_LIBS... -L/usr/X11R6/lib -lXcomposite -lXdamage -lXfixes -lXrender -lX11 -lXext
+[...]
+
+2) Enabling the compositor extension in the Xserver
+---------------------------------------------------
+
+At this time, the compositor extensions are included in the X.org Xserver. I do
+not know if there are any plan to include these extension in XFree86, nor when
+it's planned.
+
+The following tips apply to the X.org Xserver X11R6.8.x
+
+- Edit the xorg.conf configure file (usually in /etc/X11/xorg.conf)
+- Add the following section:
+
+Section "Extensions"
+      Option "Composite" "Enable"
+EndSection
+                                                                                                              
+- Save the configuration file and restart the Xserver.
+
+3) Tips
+-------
+
+The following tips are from my own experience. I am not connected to any graphic
+card vendor.
+
+If you have usefull tips to improve XRender performance for your favorite video
+card, feel free to submit your own tips.
+
+3.1 NVidia
+~~~~~~~~~~
+
+The XRender extension can be very CPU consuming. The NVidia binary closed source
+drivers are able to perform the rendering in hardware.
+
+If you have an NVidia video card and the NVidia binary closed source drivers, 
+you can enable the XRender in hardwareby adding the following option to your 
+xorg.conf file:
+
+        Option      "RenderAccel" "true"
+
+in the device section:
+
+eg:
+Section "Device"
+        Identifier  "Videocard0"
+        Driver      "nvidia"
+        VendorName  "Videocard vendor"
+        BoardName   "NVIDIA GeForce 4 (generic)"
+        Option      "RenderAccel" "true"
+EndSection
+
+

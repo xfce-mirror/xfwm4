@@ -1156,14 +1156,18 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window prev)
 {
     ScreenInfo *screen_info;
     CWindow *new;
+    Status test;
     gboolean inserted = FALSE;
 
     TRACE ("entering add_win: 0x%lx", id);
 
     new = g_new0 (CWindow, 1);
 
+    gdk_error_trap_push ();
     myDisplayGrabServer (display_info);
-    if (!XGetWindowAttributes (display_info->dpy, id, &new->attr))
+    test = XGetWindowAttributes (display_info->dpy, id, &new->attr);
+    
+    if (gdk_error_trap_pop () || !test)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);

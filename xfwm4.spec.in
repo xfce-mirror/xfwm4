@@ -33,7 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc example.gtkrc-2.0 README INSTALL TODO COPYING AUTHORS
+%doc example.gtkrc-2.0 README INSTALL TODO COPYING AUTHORS COMPOSITOR
 %{_bindir}
 %{_libdir}/xfce4
 %{_datadir}/applications

@@ -1,6 +1,6 @@
 @SET_MAKE@
 
-EXTRA_DIST = example.gtkrc-2.0 xfwm4.spec
+EXTRA_DIST = example.gtkrc-2.0 xfwm4.spec COMPOSITOR
 
 SUBDIRS = po doc icons src mcs-plugin defaults themes
 

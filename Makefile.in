@@ -225,7 +225,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-EXTRA_DIST = example.gtkrc-2.0 xfwm4.spec
+EXTRA_DIST = example.gtkrc-2.0 xfwm4.spec COMPOSITOR
 SUBDIRS = po doc icons src mcs-plugin defaults themes
 ACLOCAL_AMFLAGS = -I m4
 all: config.h
