@@ -1,6 +1,6 @@
 /* XPM */
 static char * maximize_toggled_pressed_xpm[] = {
-"19 20 6 1",
+"19 21 6 1",
 "       c None",
 ".      c #949594 s active_shadow_2",
 "+      c #D5D6D5 s active_color_2",
@@ -26,5 +26,6 @@ static char * maximize_toggled_pressed_xpm[] = {
 ".@@@@@@........@@@=",
 ".@@@@@@@@@@@@@@@@@=",
 "+==================",
+"                   ",
 "                   "};
 
