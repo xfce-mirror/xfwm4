@@ -1,6 +1,7 @@
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the xfwm4 package.
 # umm <umm@pchome.com.tw>, 2003.
+# Minor correction by Ambrose Li <acli@ada.dhs.org>, 2004.
 #
 msgid ""
 msgstr ""
@@ -200,7 +201,7 @@ msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"自動位新建立\n"
+"自動為新建立\n"
 "視窗獲取焦點"
 
 #: mcs-plugin/xfwm4_plugin.c:1441
