@@ -451,28 +451,30 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     
     TRACE ("entering shadow_picture");    
     
-    shadowImage = make_shadow (screen_info, opacity, width, height);
+    render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
+                                            PictStandardA8);
+    if (!render_format)
+    {
+        return None;
+    }
 
-    if (!shadowImage)
+    shadowImage = make_shadow (screen_info, opacity, width, height);
+    if (shadowImage == None)
     {
         return None;
     }
 
     shadowPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, 
                                 shadowImage->width, shadowImage->height, 8);
-
-    if (!shadowPixmap)
+    if (shadowPixmap == None)
     {
         XDestroyImage (shadowImage);
         return None;
     }
 
-    render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
-                                            PictStandardA8);
     shadowPicture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
                                         shadowPixmap, render_format, 0, 0);
-
-    if (!shadowPicture)
+    if (shadowPicture == None)
     {
         XDestroyImage (shadowImage);
         XFreePixmap (myScreenGetXDisplay (screen_info), shadowPixmap);
@@ -480,7 +482,6 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     }
 
     gc = XCreateGC (myScreenGetXDisplay (screen_info), shadowPixmap, 0, 0);
-    
     if (!gc)
     {
         XDestroyImage (shadowImage);
@@ -513,18 +514,25 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     XRenderColor c;
 
     TRACE ("entering solid_picture");    
-    pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
-                            screen_info->xroot, 1, 1, argb ? 32 : 8);
-    if (!pixmap)
+
+    render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
+                                    argb ? PictStandardARGB32 : PictStandardA8);
+    if (!render_format)
     {
         return None;
     }
+
+    pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
+                            screen_info->xroot, 1, 1, argb ? 32 : 8);
+    if (pixmap == None)
+    {
+        return None;
+    }
+
     pa.repeat = True;
-    render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
-                                    argb ? PictStandardARGB32 : PictStandardA8);
     picture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), pixmap, 
                                     render_format, CPRepeat,  &pa);
-    if (!picture)
+    if (picture == None)
     {
         XFreePixmap (myScreenGetXDisplay (screen_info), pixmap);
         return None;
@@ -556,6 +564,11 @@ border_size (CWindow *cw)
     display_info = screen_info->display_info;
 
     border = XFixesCreateRegionFromWindow (display_info->dpy, cw->id, WindowRegionBounding);
+    if (!border)
+    {
+        return None;
+    }
+    
     XFixesTranslateRegion (display_info->dpy, border, 
                         cw->attr.x + cw->attr.border_width,
                         cw->attr.y + cw->attr.border_width);
@@ -612,12 +625,24 @@ root_tile (ScreenInfo *screen_info)
     {
         pixmap = XCreatePixmap (dpy, screen_info->xroot, 1, 1, 
                                 DefaultDepth (dpy, screen_info->screen));
+        if (!pixmap)
+        {
+            /* Give up! */
+            return None;
+        }
         fill = True;
     }
     pa.repeat = True;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
+    
+    if (!format)
+    {
+        /* Give up! */
+        return None;
+    }
+    
     picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
-    if (fill)
+    if ((picture != None) && (fill))
     {
         XRenderColor c;
         
@@ -628,13 +653,66 @@ root_tile (ScreenInfo *screen_info)
     return picture;
 }
 
+static Picture
+create_root_buffer (ScreenInfo *screen_info)
+{
+    Picture pict;
+    DisplayInfo *display_info;
+    XRenderPictFormat *format;
+    Pixmap  rootPixmap;
+    Visual *visual;
+    gint depth;
+    gint screen_width;
+    gint screen_height;
+    gint screen_number;
+
+    g_return_if_fail (screen_info != NULL);
+
+    screen_width = gdk_screen_get_width (screen_info->gscr);
+    screen_height = gdk_screen_get_height (screen_info->gscr);
+    screen_number = screen_info->screen;
+    visual = DefaultVisual (myScreenGetXDisplay (screen_info), screen_number);
+    depth = DefaultDepth (myScreenGetXDisplay (screen_info), screen_number);
+
+    format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), visual);
+    if (!format)
+    {
+        /* Give up! */
+        return (None);
+    }
+
+    rootPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
+                                screen_info->xroot, 
+                                screen_width, screen_height, depth);
+    if (rootPixmap == None)
+    {
+        /* Give up! */
+        return (None);
+    }
+    
+    pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
+                                 rootPixmap, format, 0, 0);
+    XFreePixmap (myScreenGetXDisplay (screen_info), rootPixmap);
+
+    return pict;
+}
+
 static void
 paint_root (ScreenInfo *screen_info)
 {
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (screen_info->rootBuffer != None);
+    
     TRACE ("entering paint_root");    
-    if (!(screen_info->rootTile))
+    if (screen_info->rootTile == None)
     {
         screen_info->rootTile = root_tile (screen_info);
+    }
+    
+    if (screen_info->rootTile == None)
+    {
+        /* Give up! */
+        return;
     }
     
     XRenderComposite (myScreenGetXDisplay (screen_info), PictOpSrc,
@@ -643,7 +721,6 @@ paint_root (ScreenInfo *screen_info)
                     gdk_screen_get_width (screen_info->gscr), 
                     gdk_screen_get_height (screen_info->gscr));
 }
-
 
 static XserverRegion
 win_extents (CWindow *cw)
@@ -774,11 +851,11 @@ get_window_picture (CWindow *cw)
     dpy = display_info->dpy;
 
 #if HAVE_NAME_WINDOW_PIXMAP
-    if ((display_info->have_name_window_pixmap) && !(cw->name_window_pixmap))
+    if ((display_info->have_name_window_pixmap) && (cw->name_window_pixmap == None))
     {
         cw->name_window_pixmap = XCompositeNameWindowPixmap (dpy, cw->id);
     }               
-    if (cw->name_window_pixmap)
+    if (cw->name_window_pixmap != None)
     {
         draw = cw->name_window_pixmap;
     }
@@ -824,22 +901,21 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         region = XFixesCreateRegion (dpy, &r, 1);
     }
 
+    if (region == None)
+    {
+        /* Give up! */
+        return;
+    }
+    
     /* Create root buffer if not done yet */
     if (screen_info->rootBuffer == None)
     {
-        XRenderPictFormat *format;
-        Pixmap  rootPixmap;
-        Visual *visual;
-        gint depth;
-        
-        TRACE ("rootBuffer is empty, creating rootBuffer");
-                
-        visual = DefaultVisual (dpy, screen_number);
-        depth = DefaultDepth (dpy, screen_number);
-        format = XRenderFindVisualFormat (dpy, visual);
-        rootPixmap = XCreatePixmap (dpy, xroot, screen_width, screen_height, depth);
-        screen_info->rootBuffer = XRenderCreatePicture (dpy, rootPixmap, format, 0, 0);
-        XFreePixmap (dpy, rootPixmap);
+        screen_info->rootBuffer = create_root_buffer (screen_info);
+        if (screen_info->rootBuffer == None)
+        {
+            /* Give up! */
+            return;
+        }
     }
     
     XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, region);
@@ -905,9 +981,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             XRenderComposite (dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer, 
                             0, 0, 0, 0, x, y, w, h);
         }
-        if (!cw->borderClip)
+        if (!(cw->borderClip))
         {
             cw->borderClip = XFixesCreateRegion (dpy, 0, 0);
+        }
+        if (cw->borderClip)
+        {
             XFixesCopyRegion (dpy, cw->borderClip, region);
         }
     }
@@ -927,7 +1006,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             continue;
         }
         
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
+        if (cw->borderClip)
+        {
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
+        }
         if (cw->shadow)
         {
             XRenderComposite (dpy, PictOpOver, screen_info->blackPicture, cw->shadow, 
@@ -955,8 +1037,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
                             screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
         }
-        XFixesDestroyRegion (dpy, cw->borderClip);
-        cw->borderClip = None;
+        if (cw->borderClip)
+        {
+            XFixesDestroyRegion (dpy, cw->borderClip);
+            cw->borderClip = None;
+        }
     }
     
     TRACE ("Copying data back to screen");
@@ -970,7 +1055,7 @@ static void
 add_damage (ScreenInfo *screen_info, XserverRegion damage)
 {
     TRACE ("entering add_damage");    
-    if (screen_info->allDamage)
+    if (screen_info->allDamage != None)
     {
         XFixesUnionRegion (myScreenGetXDisplay (screen_info), 
                         screen_info->allDamage, 
@@ -1063,14 +1148,20 @@ repair_win (CWindow *cw)
     else
     {
         parts = XFixesCreateRegion (myScreenGetXDisplay (screen_info), NULL, 0);
-        XDamageSubtract (myScreenGetXDisplay (screen_info), cw->damage, None, parts);
-        XFixesTranslateRegion (myScreenGetXDisplay (screen_info), parts,
-                            cw->attr.x + cw->attr.border_width,
-                            cw->attr.y + cw->attr.border_width);
-
+        if (parts)
+        {
+            XDamageSubtract (myScreenGetXDisplay (screen_info), cw->damage, None, parts);
+            XFixesTranslateRegion (myScreenGetXDisplay (screen_info), parts,
+                                cw->attr.x + cw->attr.border_width,
+                                cw->attr.y + cw->attr.border_width);
+        }
     }
-    add_damage (cw->screen_info, parts);
-    cw->damaged = TRUE;
+
+    if (parts)
+    {
+        add_damage (cw->screen_info, parts);
+        cw->damaged = TRUE;
+    }
 }
 
 static guint
@@ -1087,6 +1178,7 @@ get_opacity_prop(CWindow *cw, guint def)
     screen_info = cw->screen_info;
     result = XGetWindowProperty(myScreenGetXDisplay (screen_info), cw->id, net_wm_opacity, 
                     0L, 1L, False, XA_CARDINAL, &actual, &format, &n, &left, &data);
+
     if ((result == Success) && (data != None))
     {
         guint i;
@@ -1094,6 +1186,7 @@ get_opacity_prop(CWindow *cw, guint def)
         XFree( (void *) data);
         return i;
     }
+
     return def;
 }
 
@@ -1138,8 +1231,11 @@ determine_mode(CWindow *cw)
     {
         XserverRegion damage;
         damage = XFixesCreateRegion (myScreenGetXDisplay (screen_info), 0, 0);
-        XFixesCopyRegion (myScreenGetXDisplay (screen_info), damage, cw->extents);
-        add_damage (screen_info, damage);
+        if (damage != None)
+        {
+            XFixesCopyRegion (myScreenGetXDisplay (screen_info), damage, cw->extents);
+            add_damage (screen_info, damage);
+        }
     }
 }
 
@@ -1576,9 +1672,12 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     if (damage)
     {
         XserverRegion extents = win_extents (cw);
-        XFixesUnionRegion (display_info->dpy, damage, damage, extents);
-        XFixesDestroyRegion (display_info->dpy, extents);
-        add_damage (cw->screen_info, damage);
+	if (extents)
+	{
+            XFixesUnionRegion (display_info->dpy, damage, damage, extents);
+            XFixesDestroyRegion (display_info->dpy, extents);
+            add_damage (cw->screen_info, damage);
+	}
     }
     cw->screen_info->clipChanged = TRUE;
     compositorRepairScreen (cw->screen_info);
@@ -1833,16 +1932,28 @@ compositorManageScreen (ScreenInfo *screen_info)
         return;
     }
 
-    screen_info->gsize = -1;
-    screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
-    presum_gaussian (screen_info);
-        
-    pa.subwindow_mode = IncludeInferiors;
     visual_format = XRenderFindVisualFormat (display_info->dpy, 
                                             DefaultVisual (display_info->dpy, 
                                                             screen_info->screen));
+    if (!visual_format)
+    {
+        /* Give up! */
+        return;
+    }
+    
+    pa.subwindow_mode = IncludeInferiors;
     screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->xroot, 
                                                 visual_format, CPSubwindowMode, &pa);
+
+    if (screen_info->rootPicture == None)
+    {
+        /* Give up! */
+        return;
+    }
+
+    screen_info->gsize = -1;
+    screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
+    presum_gaussian (screen_info);        
     screen_info->rootBuffer = None;
     screen_info->blackPicture = solid_picture (screen_info, TRUE, 1, 0, 0, 0);
     screen_info->rootTile = None;
@@ -1853,8 +1964,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     
     XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
     paint_all (screen_info, None);    
-
-    XSync (display_info->dpy, FALSE);
 #endif /* HAVE_COMPOSITOR */
 }
 
