@@ -83,16 +83,11 @@ if test "$DIE" -eq 1; then
   exit 1
 fi
 
-if test -z "$*"; then
-  echo "**Message**: I am going to add --enable-maintainer-mode to \`configure'."
-  echo "If you wish to pass any other to it, please specify them on the"
-  echo \`$0\'" command line."
-  echo
-
-  conf_flags="--enable-maintainer-mode"
-else
-  unset conf_flags
-fi
+echo "**Message**: I am going to add --enable-maintainer-mode to \`configure'."
+echo "If you wish to pass any other to it, please specify them on the"
+echo \`$0\'" command line."
+echo
+conf_flags="--enable-maintainer-mode"
 
 case $CC in
 xlc )

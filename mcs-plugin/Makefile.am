@@ -1,7 +1,7 @@
 # mcs-plugin/Makefile.am
 #
 
-xfwm4_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
+xfwm4_plugindir = $(libdir)/xfce4/mcs-plugins
 
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 
@@ -42,7 +42,7 @@ xfwm4_plugin_la_LIBADD +=						\
 	@LIBX11_LIBS@
 endif
 
-workspaces_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
+workspaces_plugindir = $(libdir)/xfce4/mcs-plugins
 
 workspaces_plugin_LTLIBRARIES = workspaces_plugin.la
 
