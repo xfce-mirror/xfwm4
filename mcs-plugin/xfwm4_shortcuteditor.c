@@ -33,6 +33,7 @@
 #include "xfwm4_plugin.h"
 #include "xfwm4_shortcuteditor.h"
 
+typedef struct _shortcut_tree_foreach_struct shortcut_tree_foreach_struct;
 struct _shortcut_tree_foreach_struct
 {
     gchar *shortcut;

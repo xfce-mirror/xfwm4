@@ -63,7 +63,6 @@ struct _ThemeInfo
 };
 
 
-typedef struct _shortcut_tree_foreach_struct shortcut_tree_foreach_struct;
 typedef struct _Itf Itf;
 struct _Itf
 {
