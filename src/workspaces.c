@@ -280,7 +280,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
                 FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
                 clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
             }
-            if (!clientIsTransientOrModal (c))
+            if (!clientIsValidTransientOrModal (c))
             {
                 /* Just build of windows that will be hidden, so that
                    we can record the previous focus even when on a
@@ -320,7 +320,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         else if ((c->win_workspace == new_ws)
             && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
         {
-            if (!clientIsTransientOrModal (c))
+            if (!clientIsValidTransientOrModal (c))
             {
                 clientShow (c, FALSE);
             }

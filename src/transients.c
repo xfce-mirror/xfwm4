@@ -80,6 +80,39 @@ clientIsTransientOrModal (Client * c)
 }
 
 gboolean
+clientIsValidTransientOrModal (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientIsValidTransientOrModal");
+    if (clientIsTransientOrModalForGroup (c))
+    {
+        ScreenInfo *screen_info = c->screen_info;
+        GList *index;
+        
+        /* Look for a valid transient ormodal for the same group */
+        for (index = screen_info->windows_stack; index; index = g_list_next (index))
+        {
+            Client *c2 = (Client *) index->data;
+            if (c2 != c)
+            {
+                if (clientIsTransientOrModalFor (c, c2))
+                {
+                    /* We found one, look no further */
+                    return TRUE;
+                }
+            }
+        }
+    }
+    else if (clientIsTransientOrModal (c))
+    {
+        return (clientGetTransient (c) != NULL);
+    }
+
+    return (FALSE);
+}
+
+gboolean
 clientSameGroup (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -172,6 +205,38 @@ clientIsTransientOrModalForGroup (Client * c)
     TRACE ("entering clientIsTransientOrModalForGroup");
 
     return (clientIsTransientForGroup(c) || clientIsModalForGroup(c));
+}
+
+gboolean
+clientTransientOrModalHasAncestor (Client * c, int ws)
+{
+    Client *c2 = NULL;
+    GList *index = NULL;
+    ScreenInfo *screen_info = NULL;
+    
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientTransientOrModalHasAncestor");
+
+    if (!clientIsTransientOrModal (c))
+    {
+        return FALSE;
+    }
+
+    screen_info = c->screen_info;
+    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    {
+        c2 = (Client *) index->data;
+        if ((c2 != c) && !clientIsTransientOrModal (c2)
+            && clientIsTransientOrModalFor (c, c2)
+            && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED)
+            && (c2->win_workspace == ws))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+
 }
 
 Client *

@@ -83,7 +83,7 @@
 #define START_ICONIC(c) \
     ((c->wmhints) && \
      (c->wmhints->initial_state == IconicState) && \
-     !clientIsTransientOrModal(c))
+     !clientIsValidTransientOrModal (c))
 
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
@@ -1147,7 +1147,7 @@ clientGetWinState (Client * c)
 
     if (c->win_state & WIN_STATE_STICKY)
     {
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         }
@@ -1211,7 +1211,7 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: fullscreen");
             clientUpdateFullscreenState (c);
@@ -1219,7 +1219,7 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: above");
             clientUpdateAboveState (c);
@@ -1227,7 +1227,7 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: below");
             clientUpdateBelowState (c);
@@ -1236,7 +1236,7 @@ clientApplyInitialState (Client * c)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) && 
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: sticky");
             clientStick (c, TRUE);
@@ -1280,7 +1280,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
     {
         TRACE ("client \"%s\" (0x%lx) has received a win_state/stick event",
             c->name, c->window);
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             if (add_remove == WIN_STATE_STICKY)
             {
@@ -1927,7 +1927,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
         {
             TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
-            if (manage_mapping && !clientIsTransientOrModal (c2)
+            if (manage_mapping && !clientIsValidTransientOrModal (c2)
                 && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED))
             {
                 if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
@@ -2099,7 +2099,7 @@ clientHideAll (Client * c, int ws)
     {
         if (CLIENT_CAN_HIDE_WINDOW (c2)
             && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-            && !clientIsTransientOrModal (c2) && (c2 != c))
+            && !clientIsValidTransientOrModal (c2) && (c2 != c))
         {
             if (((!c) && (c2->win_workspace == ws)) || ((c)
                     && !clientIsTransientOrModalFor (c, c2)
@@ -2413,7 +2413,7 @@ void clientToggleFullscreen (Client * c)
         }
     }
 
-    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL))
+    if (!clientIsValidTransientOrModal (c) && (c->type == WINDOW_NORMAL))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);
@@ -2426,7 +2426,7 @@ void clientToggleAbove (Client * c)
     TRACE ("entering clientToggleAbove");
     TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+    if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
         clientUpdateAboveState (c);
@@ -2439,7 +2439,7 @@ void clientToggleBelow (Client * c)
     TRACE ("entering clientToggleBelow");
     TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
         clientUpdateAboveState (c);
@@ -2848,7 +2848,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
 
-        if ((screen_info->workspace_count > 1) && !clientIsTransientOrModal (c))
+        if ((screen_info->workspace_count > 1) && !clientIsValidTransientOrModal (c))
         {
             if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
             {

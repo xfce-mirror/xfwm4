@@ -1631,7 +1631,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 
     TRACE ("entering handleClientMessage");
 
-    /* Don't get surprised with the multiple "if (!clientIsTransientOrModal(c))" tests
+    /* Don't get surprised with the multiple "if (!clientIsValidTransientOrModal(c))" tests
        xfwm4 really treats transient differently
      */
 
@@ -1657,7 +1657,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == win_layer) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_layer event", c->name, c->window);
-            if ((ev->data.l[0] != c->win_layer) && !clientIsTransientOrModal (c))
+            if ((ev->data.l[0] != c->win_layer) && !clientIsValidTransientOrModal (c))
             {
                 clientSetLayer (c, ev->data.l[0]);
             }
@@ -1665,7 +1665,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == win_workspace) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_workspace event", c->name, c->window);
-            if ((ev->data.l[0] != c->win_workspace) && !clientIsTransientOrModal (c))
+            if ((ev->data.l[0] != c->win_workspace) && !clientIsValidTransientOrModal (c))
             {
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
             }
@@ -1673,7 +1673,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_desktop event", c->name, c->window);
-            if (!clientIsTransientOrModal (c))
+            if (!clientIsValidTransientOrModal (c))
             {
                 if (ev->data.l[0] == ALL_WORKSPACES)
                 {
@@ -2083,7 +2083,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
         {
             ops |= MENU_OP_NORMAL;
-            if (clientIsTransientOrModal (c) || 
+            if (clientIsValidTransientOrModal (c) || 
                 FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
             {
                 insensitive |= MENU_OP_NORMAL;
@@ -2092,14 +2092,14 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         else
         {
             ops |= MENU_OP_ABOVE;
-            if (clientIsTransientOrModal (c) || 
+            if (clientIsValidTransientOrModal (c) || 
                 FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
             {
                 insensitive |= MENU_OP_ABOVE;
             }
         }
 
-        if (clientIsTransientOrModal (c)
+        if (clientIsValidTransientOrModal (c)
             || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
             || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {

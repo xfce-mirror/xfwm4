@@ -30,7 +30,6 @@
 #include "client.h"
 
 void            clientApplyStackList (ScreenInfo *);
-gboolean        clientTransientOrModalHasAncestor (Client *, int);
 Client         *clientGetLowestTransient (Client *);
 Client         *clientGetHighestTransientOrModalFor (Client *);
 Client         *clientGetTopMostForGroup (Client *);

@@ -68,38 +68,6 @@ clientApplyStackList (ScreenInfo *screen_info)
     g_free (xwinstack);
 }
 
-gboolean
-clientTransientOrModalHasAncestor (Client * c, int ws)
-{
-    Client *c2 = NULL;
-    GList *index = NULL;
-    ScreenInfo *screen_info = NULL;
-    
-    g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("entering clientTransientOrModalHasAncestor");
-
-    if (!clientIsTransientOrModal (c))
-    {
-        return FALSE;
-    }
-
-    screen_info = c->screen_info;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
-    {
-        c2 = (Client *) index->data;
-        if ((c2 != c) && !clientIsTransientOrModal (c2)
-            && clientIsTransientOrModalFor (c, c2)
-            && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED)
-            && (c2->win_workspace == ws))
-        {
-            return TRUE;
-        }
-    }
-    return FALSE;
-
-}
-
 Client *
 clientGetLowestTransient (Client * c)
 {

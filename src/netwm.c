@@ -297,8 +297,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
-        if (!clientIsTransientOrModal (c)
-            && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
+        if (!clientIsValidTransientOrModal (c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
@@ -432,7 +431,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_fullscreen)
         || (second == net_wm_state_fullscreen))
     {
-        if (!clientIsTransientOrModal (c))
+        if (!clientIsValidTransientOrModal (c))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -456,7 +455,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_above) || (second == net_wm_state_above))
     {
-        if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+        if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
@@ -480,7 +479,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_below) || (second == net_wm_state_below))
     {
-        if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+        if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
         {
             if ((action == NET_WM_STATE_ADD)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
@@ -989,7 +988,7 @@ clientWindowType (Client * c)
         c->type = WINDOW_MODAL_DIALOG;
     }
 
-    if (clientIsTransientOrModal (c))
+    if (clientIsValidTransientOrModal (c))
     {
         Client *c2;
 
