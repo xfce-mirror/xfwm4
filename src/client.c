@@ -1794,8 +1794,7 @@ clientSetWorkspaceSingle (Client * c, int ws)
 
     if (c->win_workspace != ws)
     {
-        TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name,
-            c->window, ws);
+        TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
         c->win_workspace = ws;
         setHint (clientGetXDisplay (c), c->window, win_workspace, ws);
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
@@ -1827,8 +1826,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
         c2 = (Client *) index->data;
         if (c2->win_workspace != ws)
         {
-            TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name,
-                c->window, ws);
+            TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
             if (manage_mapping && !clientIsTransientOrModal (c2)
                 && !FLAG_TEST (c2->flags, CLIENT_FLAG_HIDDEN))
@@ -1859,8 +1857,7 @@ clientShowSingle (Client * c, gboolean change_state)
 {
     g_return_if_fail (c != NULL);
     myXGrabServer (c->screen_info);
-    if ((c->win_workspace == c->screen_info->current_ws)
-        || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+    if ((c->win_workspace == c->screen_info->current_ws) || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->flags, CLIENT_FLAG_VISIBLE);

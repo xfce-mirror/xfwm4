@@ -399,10 +399,8 @@ sessionLoadWindowStates (gchar * filename)
                 matches[num_match - 1].height = 100;
                 matches[num_match - 1].old_x = matches[num_match - 1].x;
                 matches[num_match - 1].old_y = matches[num_match - 1].y;
-                matches[num_match - 1].old_width =
-                    matches[num_match - 1].width;
-                matches[num_match - 1].old_height =
-                    matches[num_match - 1].height;
+                matches[num_match - 1].old_width = matches[num_match - 1].width;
+                matches[num_match - 1].old_height = matches[num_match - 1].height;
                 matches[num_match - 1].desktop = 0;
                 matches[num_match - 1].screen = 0;
                 matches[num_match - 1].used = FALSE;
@@ -465,22 +463,17 @@ sessionLoadWindowStates (gchar * filename)
             }
             else if (!strcmp (s1, "[WM_COMMAND]"))
             {
-                sscanf (s, "%*s (%i)%n",
-                    &matches[num_match - 1].wm_command_count, &pos);
-                matches[num_match - 1].wm_command =
-                    g_new (gchar *,
-                    matches[num_match - 1].wm_command_count + 1);
+                sscanf (s, "%*s (%i)%n", &matches[num_match - 1].wm_command_count, &pos);
+                matches[num_match - 1].wm_command = g_new (gchar *, matches[num_match - 1].wm_command_count + 1);
                 for (i = 0; i < matches[num_match - 1].wm_command_count; i++)
                 {
                     gchar *substring;
                     substring = getsubstring (s + pos, &pos1);
                     pos += pos1;
-                    matches[num_match - 1].wm_command[i] =
-                        unescape_quote (substring);
+                    matches[num_match - 1].wm_command[i] = unescape_quote (substring);
                     g_free (substring);
                 }
-                matches[num_match - 1].wm_command[matches[num_match -
-                        1].wm_command_count] = NULL;
+                matches[num_match - 1].wm_command[matches[num_match - 1].wm_command_count] = NULL;
             }
         }
         fclose (f);
@@ -573,7 +566,8 @@ matchWin (Client * c, Match * m)
         }
         else
         {
-            /* Compare res_class, res_name and WM_NAME, unless the
+            /* 
+	     * Compare res_class, res_name and WM_NAME, unless the
              * WM_NAME has changed
              */
             if (xstreq (c->class.res_name, m->res_name)
@@ -606,7 +600,8 @@ matchWin (Client * c, Match * m)
                             found = TRUE;
                         }
                     }           /* if (wm_command_count ==... */
-                    /* We have to deal with a now-SM-aware client, it means that it won't probably
+                    /* 
+		     * We have to deal with a now-SM-aware client, it means that it won't probably
                      * restore its state in a proper manner.
                      * Thus, we also mark all other instances of this application as used, to avoid
                      * dummy side effects in case we found a matching entry.
