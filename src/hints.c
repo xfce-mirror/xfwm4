@@ -36,7 +36,6 @@
 #include <stdlib.h>
 #include <libxfce4util/libxfce4util.h> 
 #include "hints.h"
-#include "client.h"
 
 Atom gnome_panel_desktop_area;
 Atom motif_wm_hints;
@@ -123,7 +122,6 @@ Atom kwm_win_icon;
 
 /* Systray similation for older KDE apps */
 Atom net_system_tray_manager;
-Atom net_system_tray_selection;
 Atom net_system_tray_opcode;
 
 static gboolean
@@ -171,7 +169,10 @@ getWMState (Display * dpy, Window w)
                 (unsigned char **) &data) == Success) && (items_read))
     {
         state = *data;
-        XFree (data);
+        if (data)
+        {
+            XFree (data);
+        }
     }
     return state;
 }
@@ -218,7 +219,10 @@ getMotifHints (Display * dpy, Window w)
             result = g_new0(PropMwmHints, 1);
             memcpy (result, data, sizeof (PropMwmHints));
         }
-        XFree (data);
+        if (data)        
+        {
+            XFree (data);
+        }
     }
     return result;
 }
@@ -318,9 +322,10 @@ initKDEHints (Display * dpy)
     kwm_win_icon = XInternAtom (dpy, "KWM_WIN_ICON", FALSE);
 }
 
-void
+Atom
 initSystrayHints (Display * dpy, int nscreen)
 {
+    Atom net_system_tray_selection;
     gchar selection[32];
 
     TRACE ("entering initSystrayHints");
@@ -329,6 +334,8 @@ initSystrayHints (Display * dpy, int nscreen)
     net_system_tray_manager   = XInternAtom (dpy, "MANAGER", FALSE);
     net_system_tray_opcode    = XInternAtom (dpy, "_NET_SYSTEM_TRAY_OPCODE", FALSE);
     net_system_tray_selection = XInternAtom (dpy, selection, FALSE);
+    
+    return net_system_tray_selection;
 }
 
 gboolean
@@ -349,7 +356,10 @@ getHint (Display * dpy, Window w, Atom a, long *value)
                 (unsigned char **) &data) == Success) && (items_read))
     {
         *value = *data;
-        XFree (data);
+        if (data)        
+        {
+            XFree (data);
+        }
         success = TRUE;
     }
     return success;
@@ -652,10 +662,10 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int width, int hei
 }
 
 void
-initNetDesktopParams (Display * dpy, int screen, int workspace, int width, int height)
+initNetDesktopInfo (Display * dpy, int screen, int workspace, int width, int height)
 {
     unsigned long data[2];
-    TRACE ("entering initNetDesktopParams");
+    TRACE ("entering initNetDesktopInfo");
     data[0] = width;
     data[1] = height;
     XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_geometry,
@@ -725,8 +735,7 @@ getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
         return FALSE;
     }
 
-    if (!check_type_and_format (dpy, w, xatom, 8, utf8_string, -1, format,
-            type))
+    if (!check_type_and_format (dpy, w, xatom, 8, utf8_string, -1, format, type))
     {
         TRACE ("utf8_string value invalid");
         if (str)
@@ -743,9 +752,7 @@ getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
         name = XGetAtomName (dpy, xatom);
         if (name)
         {
-            TRACE
-                ("Property %s on window 0x%lx contains invalid UTF-8 characters",
-                name, w);
+            TRACE ("Property %s on window 0x%lx contains invalid UTF-8 characters", name, w);
             XFree (name);
         }
         XFree (str);
@@ -775,9 +782,8 @@ text_property_to_utf8 (Display * dpy, const XTextProperty * prop)
 
     list = NULL;
     if ((count =
-            gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->
-                    encoding), prop->format, prop->value, prop->nitems,
-                &list)) == 0)
+            gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding), 
+                             prop->format, prop->value, prop->nitems, &list)) == 0)
     {
         TRACE ("gdk_text_property_to_utf8_list returned 0");
         return NULL;
@@ -896,7 +902,7 @@ sendSystrayReqDock(Display * dpy, Window window, Window systray)
 }
 
 Window
-getSystrayWindow (Display * dpy)
+getSystrayWindow (Display * dpy, Atom net_system_tray_selection)
 {
     Window systray_win = None;
 
@@ -1068,7 +1074,10 @@ getKDEIcon (Display * dpy, Window window, Pixmap * pixmap, Pixmap * mask)
 
     if (type != kwm_win_icon)
     {
-        XFree (icons);
+        if (icons)
+        {
+            XFree (icons);
+        }
         return FALSE;
     }
 
@@ -1091,14 +1100,17 @@ getRGBIconData (Display * dpy, Window window, unsigned long **data, unsigned lon
                             FALSE, XA_CARDINAL, &type, &format, nitems,
                             &bytes_after, (unsigned char **)data) != Success)
     {
-        data = NULL;
+        *data = NULL;
         return FALSE;
     }
     
     if (type != XA_CARDINAL)
     {
-        XFree (*data);
-        data = NULL;
+        if (*data)
+        {
+            XFree (*data);
+        }
+        *data = NULL;
         return FALSE;
     }
 

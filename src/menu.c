@@ -160,6 +160,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
     gchar *ptr = wsn;
 
     menu_widget = gtk_menu_new ();
+    gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
 
     for (i = 0; i < nws; i++)
     {
@@ -202,7 +203,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
 }
 
 Menu *
-menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
+menu_default (GdkScreen *gscr, MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
     gint nws, gchar *wsn, gint wsnl, XfceFilterSetup *filter_setup, gpointer data)
 {
     int i;
@@ -215,7 +216,9 @@ menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
     menu->data = data;
     menu->ops = ops;
     menu->insensitive = insensitive;
+    menu->screen = gscr;
     menu->menu = gtk_menu_new ();
+    gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
 
     i = 0;
     while (i < (int) (sizeof (menuitems) / sizeof (MenuItem)))
@@ -403,7 +406,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
 
     if (!menu_check_and_close ())
     {
-        if (!grab_available (xfce_get_gdk_event_window (menu->filter_setup), timestamp))
+        if (!grab_available (gdk_screen_get_root_window (menu->screen), timestamp))
         {
             g_free (pt);
             TRACE ("Cannot get grab on pointer/keyboard, cancel.");
@@ -418,8 +421,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         if (!GTK_MENU_SHELL (GTK_MENU (menu->menu))->have_xgrab)
         {
             gdk_beep ();
-            g_message (_("%s: GtkMenu failed to grab the pointer\n"),
-                g_get_prgname ());
+            g_message (_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname ());
             gtk_menu_popdown (GTK_MENU (menu->menu));
             menu_open = NULL;
             xfce_pop_event_filter (menu->filter_setup);

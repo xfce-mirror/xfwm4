@@ -31,21 +31,21 @@
 #include "mywindow.h"
         
 void
-myWindowInit (myWindow * win)
+xfwmWindowInit (xfwmWindow * win)
 {
     win->window = None;
     win->map = FALSE;
     win->dpy = NULL;
     win->x = 0;
     win->y = 0;
-    win->w = 0;
-    win->h = 0;
+    win->w = 1;
+    win->h = 1;
 }
 
 void
-myWindowCreate (Display * dpy, Window parent, myWindow * win, Cursor cursor)
+xfwmWindowCreate (Display * dpy, Window parent, xfwmWindow * win, Cursor cursor)
 {
-    TRACE ("entering myWindowCreate");
+    TRACE ("entering xfwmWindowCreate");
 
     win->window = XCreateSimpleWindow (dpy, parent, 0, 0, 1, 1, 0, 0, 0);
     TRACE ("Created XID 0x%lx", win->window);
@@ -62,9 +62,9 @@ myWindowCreate (Display * dpy, Window parent, myWindow * win, Cursor cursor)
 }
 
 void
-myWindowDelete (myWindow * win)
+xfwmWindowDelete (xfwmWindow * win)
 {
-    TRACE ("entering myWindowDelete");
+    TRACE ("entering xfwmWindowDelete");
 
     if (win->window != None)
     {
@@ -75,10 +75,10 @@ myWindowDelete (myWindow * win)
 }
 
 void
-myWindowShow (myWindow * win, int x, int y, int width, int height,
+xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
     gboolean refresh)
 {
-    TRACE ("entering myWindowShow");
+    TRACE ("entering xfwmWindowShow");
 
     if (!(win->window))
     {
@@ -86,7 +86,7 @@ myWindowShow (myWindow * win, int x, int y, int width, int height,
     }
     if ((width < 1) || (height < 1))
     {
-        myWindowHide (win);
+        xfwmWindowHide (win);
         return;
     }
     if (!(win->map))
@@ -129,19 +129,20 @@ myWindowShow (myWindow * win, int x, int y, int width, int height,
 }
 
 void
-myWindowHide (myWindow * win)
+xfwmWindowHide (xfwmWindow * win)
 {
-    TRACE ("entering myWindowHide");
+    TRACE ("entering xfwmWindowHide");
 
     if (win->map)
     {
+        g_assert (win->window);
         XUnmapWindow (win->dpy, win->window);
         win->map = FALSE;
     }
 }
 
 gboolean
-myWindowVisible (myWindow *win)
+xfwmWindowVisible (xfwmWindow *win)
 {
     g_return_val_if_fail (win, FALSE);
     
@@ -149,15 +150,15 @@ myWindowVisible (myWindow *win)
 }        
 
 gboolean
-myWindowDeleted (myWindow *win)
+xfwmWindowDeleted (xfwmWindow *win)
 {
     g_return_val_if_fail (win, TRUE);
 
-    return win->window == None;
+    return (win->window == None);
 }        
 
 void 
-myWindowTemp (Display * dpy, Window parent, myWindow * win, 
+xfwmWindowTemp (Display * dpy, Window parent, xfwmWindow * win, 
                 int x, int y, int w, int h, long eventmask)
 {
     XSetWindowAttributes attributes;

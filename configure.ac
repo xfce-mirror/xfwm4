@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.1.3])
+AM_INIT_AUTOMAKE([xfwm4], [4.1.4])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -52,7 +52,7 @@ BM_DEPEND([GTK], [gtk+-2.0], [2.2.0])
 BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 4.0.0)
 BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 4.0.0)
 BM_DEPEND([LIBXFCE4UTIL], [libxfce4util-1.0], [4.1.0])
-BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 4.1.18)
+BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 4.1.21)
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
 
 BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,

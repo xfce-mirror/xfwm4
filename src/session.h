@@ -22,11 +22,13 @@
 
 #include <glib.h>
 #include "client.h"
+#include "display.h"
+#include "screen.h"
 
 /*
 **  Save window states to file which name is given in argument.
 */
-gboolean sessionSaveWindowStates (gchar *);
+gboolean sessionSaveWindowStates (DisplayInfo *, gchar *);
 
 /*
 **  Load window states to file which name is given in argument.

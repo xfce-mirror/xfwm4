@@ -37,6 +37,6 @@
 
 void initMenuEventWin (void);
 XfceFilterStatus xfwm4_event_filter (XEvent * xevent, gpointer data);
-void initGtkCallbacks (ScreenData *);
+void initGtkCallbacks (ScreenInfo *);
 
 #endif /* INC_EVENTS_H */

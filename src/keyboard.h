@@ -27,12 +27,12 @@
 
 #include <X11/keysym.h>
 
-typedef struct
+typedef struct _MyKey             MyKey;
+struct _MyKey
 {
     KeyCode keycode;
     int modifier;
-}
-MyKey;
+};
 
 extern unsigned int KeyMask;
 extern unsigned int ButtonMask;

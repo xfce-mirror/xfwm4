@@ -41,7 +41,7 @@
 #include "hints.h"
 
 void
-workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
+workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 {
     Client *c, *new_focus = NULL;
     Client *previous;
@@ -54,25 +54,25 @@ workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
 
     TRACE ("entering workspaceSwitch");
 
-    if (new_ws > params.workspace_count - 1)
+    if (new_ws > screen_info->workspace_count - 1)
     {
         new_ws = 0;
     }
     else if (new_ws < 0)
     {
-        new_ws = params.workspace_count - 1;
+        new_ws = screen_info->workspace_count - 1;
     }
 
-    if (new_ws == md->current_ws)
+    if (new_ws == screen_info->current_ws)
     {
         return;
     }
 
     /* Grab the pointer to avoid side effects with EnterNotify events */
-    XGrabPointer (md->dpy, md->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+    XGrabPointer (myScreenGetXDisplay (screen_info), screen_info->gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
                        GrabModeAsync, None, None, GDK_CURRENT_TIME);
 
-    md->current_ws = new_ws;
+    screen_info->current_ws = new_ws;
     if (c2)
     {
         clientSetWorkspace (c2, new_ws, FALSE);
@@ -82,7 +82,7 @@ workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
     previous = clientGetFocus ();
 
     /* First pass */
-    for (index = windows_stack; index; index = g_list_next (index))
+    for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_VISIBLE,
@@ -91,7 +91,7 @@ workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
             if (c == previous)
             {
                 FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
-                clientSetFocus (md, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+                clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
             }
             if (!clientIsTransientOrModal (c))
             {
@@ -117,7 +117,7 @@ workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
     }
 
     /* Second pass */
-    for (index = g_list_last(windows_stack); index; index = g_list_previous (index))
+    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
@@ -144,20 +144,20 @@ workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
         }
     }
 
-    setHint (md->dpy, md->xroot, win_workspace, new_ws);
+    setHint (myScreenGetXDisplay (screen_info), screen_info->xroot, win_workspace, new_ws);
     data[0] = new_ws;
-    XChangeProperty (md->dpy, md->xroot, net_current_desktop, XA_CARDINAL, 32,
+    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_current_desktop, XA_CARDINAL, 32,
         PropModeReplace, (unsigned char *) data, 1);
-    workspaceUpdateArea (md);
+    workspaceUpdateArea (screen_info);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
-    XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
+    XUngrabPointer (myScreenGetXDisplay (screen_info), GDK_CURRENT_TIME);
 
-    if (!(params.click_to_focus))
+    if (!(screen_info->params->click_to_focus))
     {
-        if (!(c2) && (XQueryPointer (md->dpy, md->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
+        if (!(c2) && (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
         {
-            c = clientAtPosition (rx, ry, NULL);
+            c = clientAtPosition (screen_info, rx, ry, NULL);
             if (c)
             {
                 new_focus = c;
@@ -166,24 +166,24 @@ workspaceSwitch (ScreenData *md, int new_ws, Client * c2)
     }
     if (new_focus)
     {
-        clientSetFocus (new_focus->md, new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (new_focus->screen_info, new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
 }
 
 void
-workspaceSetNames (char *names, int length)
+workspaceSetNames (ScreenInfo * screen_info, char *names, int length)
 {
-    if (params.workspace_names)
+    if (screen_info->workspace_names)
     {
-        g_free (params.workspace_names);
+        g_free (screen_info->workspace_names);
     }
 
-    params.workspace_names = names;
-    params.workspace_names_length = length;
+    screen_info->workspace_names = names;
+    screen_info->workspace_names_length = length;
 }
 
 void
-workspaceSetCount (ScreenData * md, int count)
+workspaceSetCount (ScreenInfo * screen_info, int count)
 {
     Client *c;
     int i;
@@ -194,34 +194,34 @@ workspaceSetCount (ScreenData * md, int count)
     {
         count = 1;
     }
-    if (count == params.workspace_count)
+    if (count == screen_info->workspace_count)
     {
         return;
     }
 
-    setHint (md->dpy, md->xroot, win_workspace_count, count);
-    setHint (md->dpy, md->xroot, net_number_of_desktops, count);
-    params.workspace_count = count;
+    setHint (myScreenGetXDisplay (screen_info), screen_info->xroot, win_workspace_count, count);
+    setHint (myScreenGetXDisplay (screen_info), screen_info->xroot, net_number_of_desktops, count);
+    screen_info->workspace_count = count;
 
-    for (c = clients, i = 0; i < client_count; c = c->next, i++)
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
         if (c->win_workspace > count - 1)
         {
             clientSetWorkspace (c, count - 1, TRUE);
         }
     }
-    if (md->current_ws > count - 1)
+    if (screen_info->current_ws > count - 1)
     {
-        workspaceSwitch (md, count - 1, NULL);
+        workspaceSwitch (screen_info, count - 1, NULL);
     }
-    setNetWorkarea (md->dpy, md->screen, params.workspace_count, 
-                         gdk_screen_get_width (md->gscr),
-                         gdk_screen_get_height (md->gscr),
-                         md->margins);
+    setNetWorkarea (myScreenGetXDisplay (screen_info), screen_info->screen, screen_info->workspace_count, 
+                         gdk_screen_get_width (screen_info->gscr),
+                         gdk_screen_get_height (screen_info->gscr),
+                         screen_info->margins);
 }
 
 void
-workspaceUpdateArea (ScreenData *md)
+workspaceUpdateArea (ScreenInfo *screen_info)
 {
     Client *c;
     int prev_top;
@@ -230,41 +230,41 @@ workspaceUpdateArea (ScreenData *md)
     int prev_bottom;
     int i;
 
-    g_return_if_fail (md != NULL);
-    g_return_if_fail (md->margins != NULL);
-    g_return_if_fail (md->gnome_margins != NULL);
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (screen_info->margins != NULL);
+    g_return_if_fail (screen_info->gnome_margins != NULL);
 
     TRACE ("entering workspaceUpdateArea");
 
-    prev_top = md->margins[TOP];
-    prev_left = md->margins[LEFT];
-    prev_right = md->margins[RIGHT];
-    prev_bottom = md->margins[BOTTOM];
+    prev_top = screen_info->margins[TOP];
+    prev_left = screen_info->margins[LEFT];
+    prev_right = screen_info->margins[RIGHT];
+    prev_bottom = screen_info->margins[BOTTOM];
 
     for (i = 0; i < 4; i++)
     {
-        md->margins[i] = md->gnome_margins[i];
+        screen_info->margins[i] = screen_info->gnome_margins[i];
     }
 
-    for (c = clients, i = 0; i < client_count; c = c->next, i++)
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
         if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE))
         {
-            md->margins[TOP]    = MAX (md->margins[TOP],    c->struts[TOP]);
-            md->margins[LEFT]   = MAX (md->margins[LEFT],   c->struts[LEFT]);
-            md->margins[RIGHT]  = MAX (md->margins[RIGHT],  c->struts[RIGHT]);
-            md->margins[BOTTOM] = MAX (md->margins[BOTTOM], c->struts[BOTTOM]);
+            screen_info->margins[TOP]    = MAX (screen_info->margins[TOP],    c->struts[TOP]);
+            screen_info->margins[LEFT]   = MAX (screen_info->margins[LEFT],   c->struts[LEFT]);
+            screen_info->margins[RIGHT]  = MAX (screen_info->margins[RIGHT],  c->struts[RIGHT]);
+            screen_info->margins[BOTTOM] = MAX (screen_info->margins[BOTTOM], c->struts[BOTTOM]);
         }
     }
 
-    if ((prev_top != md->margins[TOP]) || (prev_left != md->margins[LEFT])
-        || (prev_right != md->margins[RIGHT])
-        || (prev_bottom != md->margins[BOTTOM]))
+    if ((prev_top != screen_info->margins[TOP]) || (prev_left != screen_info->margins[LEFT])
+        || (prev_right != screen_info->margins[RIGHT])
+        || (prev_bottom != screen_info->margins[BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
-        setNetWorkarea (md->dpy, md->screen, params.workspace_count, 
-                             gdk_screen_get_width (md->gscr),
-                             gdk_screen_get_height (md->gscr),
-                             md->margins);
+        setNetWorkarea (myScreenGetXDisplay (screen_info), screen_info->screen, screen_info->workspace_count, 
+                             gdk_screen_get_width (screen_info->gscr),
+                             gdk_screen_get_height (screen_info->gscr),
+                             screen_info->margins);
     }
 }

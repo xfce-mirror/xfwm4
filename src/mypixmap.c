@@ -34,7 +34,7 @@
 #include "mypixmap.h"
 
 static gboolean
-myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
+xfwmPixmapCompose (XfwmPixmap * pm, gchar * dir, gchar * file)
 {
     gchar *filepng;
     gchar *filename;
@@ -88,7 +88,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
     {
         g_object_ref (G_OBJECT (cmap));
     }
-    if (cmap == NULL)
+    else
     {
         if (gdk_drawable_get_depth (destw) == 1)
         {
@@ -96,7 +96,7 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
         }
         else
         {
-            cmap = gdk_screen_get_rgb_colormap (pm->md->gscr);
+            cmap = gdk_screen_get_rgb_colormap (pm->screen_info->gscr);
             g_object_ref (G_OBJECT (cmap));
         }
     }
@@ -126,19 +126,19 @@ myPixmapCompose (MyPixmap * pm, gchar * dir, gchar * file)
 }
 
 gboolean
-myPixmapLoad (ScreenData * md, MyPixmap * pm, gchar * dir, gchar * file,
+xfwmPixmapLoad (ScreenInfo * screen_info, XfwmPixmap * pm, gchar * dir, gchar * file,
     XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
     gchar *filexpm;
     XpmAttributes attr;
 
-    TRACE ("entering myPixmapLoad");
+    TRACE ("entering xfwmPixmapLoad");
 
     g_return_val_if_fail (dir != NULL, FALSE);
     g_return_val_if_fail (file != NULL, FALSE);
 
-    pm->md = md;
+    pm->screen_info = screen_info;
     pm->pixmap = None;
     pm->mask = None;
     pm->width = 1;
@@ -148,14 +148,14 @@ myPixmapLoad (ScreenData * md, MyPixmap * pm, gchar * dir, gchar * file,
     g_free (filexpm);
     attr.colorsymbols = cs;
     attr.numsymbols = n;
-    attr.colormap = pm->md->cmap;
+    attr.colormap = pm->screen_info->cmap;
     attr.closeness = 65535;
     attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
     if (n > 0 && cs)
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-    if (XpmReadFileToPixmap (md->dpy, md->xroot, filename, &pm->pixmap, &pm->mask, &attr))
+    if (XpmReadFileToPixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, filename, &pm->pixmap, &pm->mask, &attr))
     {
         TRACE ("%s not found", filename);
         g_free (filename);
@@ -167,33 +167,33 @@ myPixmapLoad (ScreenData * md, MyPixmap * pm, gchar * dir, gchar * file,
     g_free (filename);
 
     /* Apply the alpha channel if available */
-    myPixmapCompose (pm, dir, file);
+    xfwmPixmapCompose (pm, dir, file);
     
     return TRUE;
 }
 
 void
-myPixmapCreate (ScreenData * md, MyPixmap * pm, gint width, gint height)
+xfwmPixmapCreate (ScreenInfo * screen_info, XfwmPixmap * pm, gint width, gint height)
 {
-    TRACE ("entering myPixmapCreate, width=%i, height=%i", width, height);
-    if ((width < 1) || (height < 1) || (!md))
+    TRACE ("entering xfwmPixmapCreate, width=%i, height=%i", width, height);
+    if ((width < 1) || (height < 1) || (!screen_info))
     {
-        myPixmapInit (pm);
+        xfwmPixmapInit (screen_info, pm);
     }
     else
     {
-        pm->md = md;
-        pm->pixmap = XCreatePixmap (md->dpy, md->xroot, width, height, md->depth);
-        pm->mask = XCreatePixmap (md->dpy, pm->pixmap, width, height, 1);
+        pm->screen_info = screen_info;
+        pm->pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, width, height, screen_info->depth);
+        pm->mask = XCreatePixmap (myScreenGetXDisplay (screen_info), pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
     }
 }
 
 void
-myPixmapInit (MyPixmap * pm)
+xfwmPixmapInit (ScreenInfo * screen_info, XfwmPixmap * pm)
 {
-    pm->md = NULL;
+    pm->screen_info = screen_info;
     pm->pixmap = None;
     pm->mask = None;
     pm->width = 0;
@@ -201,18 +201,19 @@ myPixmapInit (MyPixmap * pm)
 }
 
 void
-myPixmapFree (MyPixmap * pm)
+xfwmPixmapFree (XfwmPixmap * pm)
 {
-    TRACE ("entering myPixmapFree");
-
+    
+    TRACE ("entering xfwmPixmapFree");
+    
     if (pm->pixmap != None)
     {
-        XFreePixmap (pm->md->dpy, pm->pixmap);
+        XFreePixmap (myScreenGetXDisplay(pm->screen_info), pm->pixmap);
         pm->pixmap = None;
     }
     if (pm->mask != None)
     {
-        XFreePixmap (pm->md->dpy, pm->mask);
+        XFreePixmap (myScreenGetXDisplay(pm->screen_info), pm->mask);
         pm->mask = None;
     }
 }

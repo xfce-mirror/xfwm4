@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-06-03 16:48+0200\n"
+"POT-Creation-Date: 2004-06-16 00:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -310,106 +310,102 @@ msgstr "Actie voor dubbelklikken op de titelbalk :"
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: src/events.c:1514
+#: src/events.c:1595
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Bewerking (nog) niet ondersteund\n"
 
-#: src/main.c:214
+#: src/main.c:178
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentatie fout"
 
-#: src/main.c:247
-msgid "Cannot get default screen"
-msgstr ""
-
-#: src/main.c:411
+#: src/main.c:307
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: een andere Window Manager is al in gebruik"
 
-#: src/main.c:416
+#: src/main.c:312
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/main.c:425
+#: src/main.c:322
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:433
+#: src/main.c:330
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:454
+#: src/main.c:351
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: er is een onbekende fout opgetreden"
 
-#: src/menu.c:39
+#: src/menu.c:38
 msgid "Ma_ximize"
 msgstr "Ma_ximaliseren"
 
-#: src/menu.c:40
+#: src/menu.c:39
 msgid "Un_maximize"
 msgstr "On_maximaliseren"
 
-#: src/menu.c:41
+#: src/menu.c:40
 msgid "_Hide"
 msgstr "_Verbergen"
 
-#: src/menu.c:42
+#: src/menu.c:41
 msgid "Hide _all others"
 msgstr "_Andere verbergen"
 
-#: src/menu.c:43
+#: src/menu.c:42
 msgid "S_how"
 msgstr "_Tonen"
 
-#: src/menu.c:44
+#: src/menu.c:43
 msgid "_Shade"
 msgstr "_Oprollen"
 
-#: src/menu.c:45
+#: src/menu.c:44
 msgid "Un_shade"
 msgstr "_Uitrollen"
 
-#: src/menu.c:46
+#: src/menu.c:45
 msgid "S_tick"
 msgstr "_Plakken"
 
-#: src/menu.c:47
+#: src/menu.c:46
 msgid "Uns_tick"
 msgstr "_Loslaten"
 
-#: src/menu.c:48
+#: src/menu.c:47
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:49 src/menu.c:50
+#: src/menu.c:48 src/menu.c:49
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:51
+#: src/menu.c:50
 msgid "Send to..."
 msgstr "Zenden naar..."
 
-#: src/menu.c:53
+#: src/menu.c:52
 msgid "_Close"
 msgstr "_Sluiten"
 
-#: src/menu.c:56
+#: src/menu.c:55
 msgid "Destroy"
 msgstr "Vernietigen"
 
-#: src/menu.c:59
+#: src/menu.c:58
 msgid "_Quit"
 msgstr "A_fsluiten"
 
-#: src/menu.c:60
+#: src/menu.c:59
 msgid "Restart"
 msgstr "_Herstarten"
 
@@ -423,7 +419,7 @@ msgstr "Bureaublad %i"
 msgid "Workspace %i"
 msgstr "Bureaublad %i"
 
-#: src/menu.c:423
+#: src/menu.c:424
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
@@ -433,51 +429,51 @@ msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
 
-#: src/settings.c:314
+#: src/settings.c:341
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: defaults bestand ontbreekt"
 
-#: src/settings.c:547
+#: src/settings.c:596
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet creëren\n"
 
-#: src/settings.c:554
+#: src/settings.c:602
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 
-#: src/settings.c:598
+#: src/settings.c:645
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 
-#: src/settings.c:605
+#: src/settings.c:651
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/settings.c:793
+#: src/settings.c:829
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:803
+#: src/settings.c:839
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%: Ontbrekende gegevens in defaults bestand"
 
-#: src/settings.c:1149
+#: src/settings.c:1125
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"
 
-#: src/tabwin.c:68
+#: src/tabwin.c:69
 msgid "Switch to ..."
 msgstr "Wisselen naar ..."
 
-#: src/tabwin.c:127
+#: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
 

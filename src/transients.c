@@ -37,9 +37,9 @@ clientGetTransient (Client * c)
 
     TRACE ("entering clientGetTransient");
 
-    if ((c->transient_for) && (c->transient_for != c->md->xroot))
+    if ((c->transient_for) && (c->transient_for != c->screen_info->xroot))
     {
-        c2 = clientGetFromWindow (c->transient_for, WINDOW);
+        c2 = clientGetFromWindow (c->screen_info, c->transient_for, WINDOW);
         return c2;
     }
     return NULL;
@@ -52,8 +52,8 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (((c->transient_for != c->md->xroot) && (c->transient_for != None)) || 
-            ((c->transient_for == c->md->xroot) && (c->group_leader != None)));
+    return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None)) || 
+            ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None)));
 }
 
 gboolean
@@ -64,7 +64,7 @@ clientIsModal (Client * c)
     TRACE ("entering clientIsModal");
 
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
-            (((c->transient_for != c->md->xroot) && (c->transient_for != None)) ||
+            (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None)) ||
              (c->group_leader != None)));
 }
 
@@ -103,7 +103,7 @@ clientIsTransientFor (Client * c1, Client * c2)
 
     if ((c1->transient_for) && (c1->serial >= c2->serial))
     {
-        if (c1->transient_for != c1->md->xroot)
+        if (c1->transient_for != c1->screen_info->xroot)
         {
             return (c1->transient_for == c2->window);
         }
@@ -148,7 +148,7 @@ clientIsTransientForGroup (Client * c)
 
     TRACE ("entering clientIsTransientForGroup");
 
-    return ((c->transient_for == c->md->xroot) && (c->group_leader != None));
+    return ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None));
 }
 
 gboolean
@@ -177,13 +177,15 @@ clientGetModalFor (Client * c)
 {
     Client *latest_modal = NULL;
     Client *c2, *c3;
+    ScreenInfo *screen_info;
     GList *modals = NULL;
     GList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
-
-    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
+    
+    screen_info = c->screen_info;
+    for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2)
@@ -221,14 +223,16 @@ clientGetModalFor (Client * c)
 GList *
 clientListTransient (Client * c)
 {
+    ScreenInfo *screen_info;
     GList *transients = NULL;
     GList *index1, *index2;
     Client *c2, *c3;
 
     g_return_val_if_fail (c != NULL, NULL);
 
+    screen_info = c->screen_info;
     transients = g_list_append (transients, c);
-    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
+    for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2 != c)
@@ -259,14 +263,16 @@ clientListTransient (Client * c)
 GList *
 clientListTransientOrModal (Client * c)
 {
+    ScreenInfo *screen_info;
     GList *transients = NULL;
     GList *index1, *index2;
     Client *c2, *c3;
 
     g_return_val_if_fail (c != NULL, NULL);
 
+    screen_info = c->screen_info;
     transients = g_list_append (transients, c);
-    for (index1 = windows_stack; index1; index1 = g_list_next (index1))
+    for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2 != c)

@@ -78,6 +78,7 @@ struct _MenuData
 
 struct _Menu
 {
+    GdkScreen *screen;
     GtkWidget *menu;
     XfceFilterSetup *filter_setup;
     MenuFunc func;
@@ -86,7 +87,8 @@ struct _Menu
     MenuOp insensitive;
 };
 
-Menu *menu_default             (MenuOp, 
+Menu *menu_default             (GdkScreen *,
+                                MenuOp, 
                                 MenuOp, 
                                 MenuFunc, 
                                 gint, 

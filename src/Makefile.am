@@ -3,6 +3,8 @@ bin_PROGRAMS = xfwm4
 xfwm4_SOURCES =								\
 	client.c							\
 	client.h							\
+	display.h							\
+	display.c							\
 	inline-default-icon.h						\
 	events.c							\
 	events.h							\
@@ -35,6 +37,7 @@ xfwm4_SOURCES =								\
 	poswin.c							\
 	poswin.h							\
 	screen.h							\
+	screen.c							\
 	session.c							\
 	session.h							\
 	settings.c							\

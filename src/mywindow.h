@@ -30,8 +30,8 @@
 
 #define MYWINDOW_XWINDOW(w) (w.window)
 
-typedef struct _myWindow myWindow;
-struct _myWindow
+typedef struct _xfwmWindow xfwmWindow;
+struct _xfwmWindow
 {
     Display *dpy;
     Window window;
@@ -40,30 +40,29 @@ struct _myWindow
     gboolean map;
 };
 
-void
-myWindowInit             (myWindow *);
-void myWindowCreate      (Display *, 
-                          Window, 
-                          myWindow *, 
-                          Cursor);
-void myWindowTemp        (Display *, 
-                          Window, 
-                          myWindow *, 
-                          int, 
-                          int,
-                          int,
-                          int,
-                          long); 
-void myWindowDelete      (myWindow *);
-void myWindowShow        (myWindow *, 
-                          int, 
-                          int, 
-                          int, 
-                          int, 
-                          gboolean);
-void myWindowHide        (myWindow *);
-gboolean myWindowVisible (myWindow *);
-gboolean myWindowDeleted (myWindow *);
+void xfwmWindowInit        (xfwmWindow *);
+void xfwmWindowCreate      (Display *, 
+                            Window, 
+                            xfwmWindow *, 
+                            Cursor);
+void xfwmWindowTemp        (Display *, 
+                            Window, 
+                            xfwmWindow *, 
+                            int, 
+                            int,
+                            int,
+                            int,
+                            long); 
+void xfwmWindowDelete      (xfwmWindow *);
+void xfwmWindowShow        (xfwmWindow *, 
+                            int, 
+                            int, 
+                            int, 
+                            int, 
+                            gboolean);
+void xfwmWindowHide        (xfwmWindow *);
+gboolean xfwmWindowVisible (xfwmWindow *);
+gboolean xfwmWindowDeleted (xfwmWindow *);
 
 
 #endif /* INC_MYWINDOW_H */

@@ -28,23 +28,21 @@
 #include "screen.h"
 #include "client.h"
 
-extern          GList *windows_stack;
-
-void            clientApplyStackList (ScreenData *);
+void            clientApplyStackList (ScreenInfo *);
 gboolean        clientTransientOrModalHasAncestor (Client *, int);
 Client         *clientGetLowestTransient (Client *);
 Client         *clientGetHighestTransientOrModalFor (Client *);
 Client         *clientGetTopMostForGroup (Client *);
-Client         *clientGetNextTopMost (int, Client *);
-Client         *clientGetBottomMost (int, Client *);
-Client         *clientAtPosition (int, int, Client *);
+Client         *clientGetNextTopMost (ScreenInfo *, int, Client *);
+Client         *clientGetBottomMost (ScreenInfo *, int, Client *);
+Client         *clientAtPosition (ScreenInfo *, int, int, Client *);
 void            clientRaise (Client *);
 void            clientLower (Client *);
 void            clientAddToList (Client *);
 void            clientRemoveFromList (Client *);
-GList          *clientGetStackList (void);
+GList          *clientGetStackList (ScreenInfo *);
 void            clientSetLastRaise (Client *);
-Client         *clientGetLastRaise (void);
-void            clientClearLastRaise (void);
+Client         *clientGetLastRaise (ScreenInfo *);
+void            clientClearLastRaise (ScreenInfo *);
 
 #endif /* INC_STACKING_H */

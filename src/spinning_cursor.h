@@ -13,7 +13,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        Metacity - (c) 2003 Havoc Pennington
+        mozilla  - (c) 1998 mozilla.org
         xfwm4    - (c) 2002-2004 Olivier Fourdan
  
  */
@@ -27,6 +27,6 @@
 
 #include <X11/Xlib.h>
 
-Cursor cursorCreateSpinning (Display * dpy, Window window);
+Cursor cursorCreateSpinning (Display * dpy);
 
 #endif /* INC_SPINNING_CURSOR_H */

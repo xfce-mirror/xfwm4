@@ -56,7 +56,7 @@ static Client *pending_focus = NULL;
 static Client *last_ungrab   = NULL;
 
 static ClientPair
-clientGetTopMostFocusable (ScreenData *md, int layer, Client * exclude)
+clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
 {
     ClientPair top_client;
     Client *c;
@@ -65,7 +65,7 @@ clientGetTopMostFocusable (ScreenData *md, int layer, Client * exclude)
     TRACE ("entering clientGetTopMostFocusable");
 
     top_client.prefered = top_client.highest = NULL;
-    for (index = windows_stack; index; index = g_list_next (index))
+    for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
@@ -98,25 +98,26 @@ clientGetTopMostFocusable (ScreenData *md, int layer, Client * exclude)
 }
 
 void
-clientFocusTop (ScreenData *md, int layer)
+clientFocusTop (ScreenInfo *screen_info, int layer)
 {
     ClientPair top_client;
 
-    top_client = clientGetTopMostFocusable (md, layer, NULL);
+    top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
     if (top_client.prefered)
     {
-        clientSetFocus (md, top_client.prefered, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (screen_info, top_client.prefered, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
     else
     {
-        clientSetFocus (md, top_client.highest, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+        clientSetFocus (screen_info, top_client.highest, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
     }
 }
 
 void
 clientFocusNew(Client * c)
 {
-    gboolean give_focus = params.focus_new;
+    ScreenInfo *screen_info;
+    gboolean give_focus;
 
     g_return_if_fail (c != NULL);
     
@@ -124,7 +125,8 @@ clientFocusNew(Client * c)
     {
         return;
     }
-
+    screen_info = c->screen_info;
+    give_focus = screen_info->params->focus_new;
 #if 0    
     /*  Try to avoid focus stealing */
     if (client_focus)
@@ -143,7 +145,7 @@ clientFocusNew(Client * c)
     
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-        clientSetFocus (c->md, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
+        clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
         clientPassGrabButton1 (c);
     }
     else
@@ -176,7 +178,7 @@ clientSelectMask (Client * c, int mask)
     {
         okay = FALSE;
     }
-    if ((c->win_workspace != c->md->current_ws) && !(mask & INCLUDE_ALL_WORKSPACES))
+    if ((c->win_workspace != c->screen_info->current_ws) && !(mask & INCLUDE_ALL_WORKSPACES))
     {
         okay = FALSE;
     }
@@ -194,7 +196,8 @@ clientGetNext (Client * c, int mask)
 
     if (c)
     {
-        for (c2 = c->next, i = 0; (c2) && (i < client_count);
+        ScreenInfo *screen_info = c->screen_info;
+        for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count);
             c2 = c2->next, i++)
         {
             if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
@@ -220,7 +223,8 @@ clientGetPrevious (Client * c, int mask)
 
     if (c)
     {
-        for (c2 = c->prev, i = 0; (c2) && (i < client_count);
+        ScreenInfo *screen_info = c->screen_info;
+        for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
             c2 = c2->prev, i++)
         {
             if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
@@ -237,7 +241,7 @@ clientGetPrevious (Client * c, int mask)
 }
 
 void
-clientPassFocus (ScreenData *md, Client * c)
+clientPassFocus (ScreenInfo *screen_info, Client * c)
 {
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
@@ -260,8 +264,8 @@ clientPassFocus (ScreenData *md, Client * c)
         return;
     }
 
-    top_most = clientGetTopMostFocusable (md, look_in_layer, c);
-    if (params.click_to_focus)
+    top_most = clientGetTopMostFocusable (screen_info, look_in_layer, c);
+    if (screen_info->params->click_to_focus)
     {
         if ((c) && clientIsModal (c))
         {
@@ -280,15 +284,15 @@ clientPassFocus (ScreenData *md, Client * c)
             }
         }
     }
-    else if (XQueryPointer (md->dpy, md->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
+    else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
     {
-        new_focus = clientAtPosition (rx, ry, c);
+        new_focus = clientAtPosition (screen_info, rx, ry, c);
     }
     if (!new_focus)
     {
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (md, new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+    clientSetFocus (screen_info, new_focus, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most.highest)
     {
         clientPassGrabButton1 (new_focus);
@@ -327,24 +331,27 @@ clientAcceptFocus (Client * c)
 void
 clientSortRing(Client *c)
 {
+    ScreenInfo *screen_info;
+    
     g_return_if_fail (c != NULL);
 
     TRACE ("Sorting...");
-    if (client_count > 2 && c != clients)
+    screen_info = c->screen_info;
+    if (screen_info->client_count > 2 && c != screen_info->clients)
     {
         c->prev->next = c->next;
         c->next->prev = c->prev;
 
-        c->prev = clients->prev;
-        c->next = clients;
-        clients->prev->next = c;
-        clients->prev = c;
+        c->prev = screen_info->clients->prev;
+        c->next = screen_info->clients;
+        screen_info->clients->prev->next = c;
+        screen_info->clients->prev = c;
     }
-    clients = c;
+    screen_info->clients = c;
 }
 
 void
-clientUpdateFocus (ScreenData *md, Client * c, unsigned short flags)
+clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 {
     Client *c2 = ((client_focus != c) ? client_focus : NULL);
     unsigned long data[2];
@@ -410,12 +417,12 @@ clientUpdateFocus (ScreenData *md, Client * c, unsigned short flags)
         frameDraw (c2, FALSE, FALSE);
     }
     data[1] = None;
-    XChangeProperty (md->dpy, md->xroot, net_active_window, XA_WINDOW, 32,
+    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
         PropModeReplace, (unsigned char *) data, 2);
 }
 
 void
-clientSetFocus (ScreenData *md, Client * c, Time timestamp, unsigned short flags)
+clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned short flags)
 {
     Client *c2;
 
@@ -448,13 +455,13 @@ clientSetFocus (ScreenData *md, Client * c, Time timestamp, unsigned short flags
         if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
         {
             pending_focus = c;
-            XSetInputFocus (md->dpy, c->window, RevertToPointerRoot, timestamp);
+            XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
-            sendClientMessage (c->md, c->window, wm_protocols, wm_takefocus, timestamp);
+            sendClientMessage (c->screen_info, c->window, wm_protocols, wm_takefocus, timestamp);
         }
-        XFlush (md->dpy);
+        XFlush (myScreenGetXDisplay (screen_info));
     }
     else
     {
@@ -467,13 +474,13 @@ clientSetFocus (ScreenData *md, Client * c, Time timestamp, unsigned short flags
         if (c2)
         {
             frameDraw (c2, FALSE, FALSE);
-            XChangeProperty (c2->md->dpy, c2->md->xroot, net_active_window, XA_WINDOW, 32,
+            XChangeProperty (clientGetXDisplay (c2), c2->screen_info->xroot, net_active_window, XA_WINDOW, 32,
                 PropModeReplace, (unsigned char *) data, 2);
         }
-        XChangeProperty (md->dpy, md->xroot, net_active_window, XA_WINDOW, 32,
+        XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
             PropModeReplace, (unsigned char *) data, 2);
-        XSetInputFocus (md->dpy, md->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
-        XFlush (md->dpy);
+        XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
+        XFlush (myScreenGetXDisplay (screen_info));
     }
 }
 
@@ -496,7 +503,7 @@ clientGrabButton1 (Client * c)
     TRACE ("entering clientGrabButton1");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     
-    grabButton(c->md->dpy, Button1, 0, c->window);
+    grabButton(clientGetXDisplay (c), Button1, 0, c->window);
 }
 
 void
@@ -506,7 +513,7 @@ clientUngrabButton1 (Client * c)
     TRACE ("entering clientUngrabButton1");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    ungrabButton(c->md->dpy, Button1, 0, c->window);
+    ungrabButton(clientGetXDisplay (c), Button1, 0, c->window);
 }
 
 void

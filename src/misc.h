@@ -18,9 +18,6 @@
  
  */
 
-#ifndef INC_MISC_H
-#define INC_MISC_H
-
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
@@ -30,13 +27,16 @@
 #include <glib.h>
 #include "screen.h"
 
-void getMouseXY (ScreenData *, Window, int *, int *);
-Window getMouseWindow (ScreenData *, Window);
-GC createGC (ScreenData *, char *, int, XFontStruct *, int, gboolean);
-void sendClientMessage (ScreenData *, Window, Atom, Atom, Time);
-void myXGrabServer (ScreenData *);
-void myXUngrabServer (ScreenData *);
-gboolean myCheckWindow(ScreenData *, Window);
-void placeSidewalks(ScreenData *, gboolean);
+#ifndef INC_MISC_H
+#define INC_MISC_H
+
+void getMouseXY (ScreenInfo *, Window, int *, int *);
+Window getMouseWindow (ScreenInfo *, Window);
+GC createGC (ScreenInfo *, char *, int, XFontStruct *, int, gboolean);
+void sendClientMessage (ScreenInfo *, Window, Atom, Atom, Time);
+void myXGrabServer (ScreenInfo *);
+void myXUngrabServer (ScreenInfo *);
+gboolean checkWindowOnRoot (ScreenInfo *, Window);
+void placeSidewalks(ScreenInfo *, gboolean);
 
 #endif /* INC_MISC_H */

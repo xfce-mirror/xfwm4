@@ -36,7 +36,7 @@ void            clientUpdateNetState (Client *, XClientMessageEvent *);
 void            clientUpdateFullscreenState (Client *);
 void            clientGetNetWmType (Client *);               
 void            clientGetInitialNetWmDesktop (Client *);     
-void            clientSetNetClientList (ScreenData *, Atom, GList *);      
+void            clientSetNetClientList (ScreenInfo *, Atom, GList *);      
 void            clientGetNetStruts (Client *);               
 void            clientSetNetActions (Client *);              
 void            clientWindowType (Client *);                 

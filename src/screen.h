@@ -18,58 +18,107 @@
  
  */
 
-#ifndef INC_MAIN_H
-#define INC_MAIN_H
-
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
 
 #include <X11/Xlib.h>
 #include <X11/cursorfont.h>
-#include <X11/extensions/shape.h>
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4mcs/mcs-client.h>
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
 #include <libsn/sn.h>
 #endif
 
-#include "mywindow.h"
+#ifndef INC_SCREEN_H
+#define INC_SCREEN_H
 
-typedef struct ScreenData
+#include "display.h"
+#include "settings.h"
+#include "mywindow.h"
+#include "mypixmap.h"
+#include "client.h"
+#include "hints.h"
+
+struct _ScreenInfo 
 {
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
+    /* Startup notification data, per screen */
     SnMonitorContext *sn_context;
     GSList *startup_sequences;
     guint startup_sequence_timeout;
 #endif
+
+    /* The display this screen belongs to */
+    DisplayInfo *display_info;
+    
+    /* There can be one systray per screen */
+    Atom net_system_tray_selection;
+    
+    /* Window stacking, per screen */
+    GList *windows_stack;
+    Client *last_raise;
+    GList *windows;
+    Client *clients;
+    unsigned int client_count;
+    unsigned long client_serial;
+    
+    /* Theme pixmaps and other params, per screen */
+    XfwmColor title_colors[2];
+    XfwmPixmap buttons[BUTTON_COUNT][6];
+    XfwmPixmap corners[4][2];
+    XfwmPixmap sides[3][2];
+    XfwmPixmap title[5][2];
+
+    /* Per screen graphic contexts */
+    GC box_gc;
+    GdkGC *black_gc;
+    GdkGC *white_gc;
+    
+    /* Screen data */
     Colormap cmap;
-    Cursor busy_cursor;
-    Cursor move_cursor;
-    Cursor resize_cursor[7];
-    Cursor root_cursor;
-    Display *dpy;
-    GdkDisplay *gdisplay;
     GdkScreen *gscr;
-    XfceFilterSetup *xfilter;
     Screen *xscreen;
+    int depth;
+
+    GtkWidget *gtk_win;
+    xfwmWindow sidewalk[2];
     Window gnome_win;
     Window xroot;
-    myWindow sidewalk[2];
     Window systray;
-    int depth;
+    
     int gnome_margins[4];
     int margins[4];
-    int quit;
-    int reload;
     int screen;
-    int shape;
-    int shape_event;
     int current_ws;
-} 
-ScreenData;
+
+    /* Workspace definitions */
+    int workspace_count;
+    gchar *workspace_names;
+    int workspace_names_length;
+
+    /* Button handler for GTK */
+    gulong button_handler_id;
+
+    /* MCS stuff */
+    McsClient *mcs_client;
+    gboolean mcs_initted;
+    
+    /* Per screen parameters */
+    XfwmParams *params;
+};
+
+ScreenInfo *     myScreenInit         (DisplayInfo *, 
+                                       GdkScreen *, 
+                                       unsigned long);
+ScreenInfo *     myScreenClose        (ScreenInfo *);
+Display *        myScreenGetXDisplay  (ScreenInfo *);
+GtkWidget *      myScreenGetGtkWidget (ScreenInfo *);
+GtkWidget *      myScreenGetGtkWidget (ScreenInfo *);
+GdkWindow *      myScreenGetGdkWindow (ScreenInfo *);
 
 #endif /* INC_SCREEN_H */

@@ -28,7 +28,7 @@
 #include <glib.h>
 #include "client.h"
 
-void            clientMaxSpace (int *, int *, int *, int *h);
+void            clientMaxSpace (ScreenInfo *, int *, int *, int *, int *h);
 gboolean        clientCkeckTitle (Client *);
 void            clientConstrainPos (Client *, gboolean);
 void            clientKeepVisible (Client *);

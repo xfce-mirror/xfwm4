@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2004-06-03 16:48+0200\n"
+"POT-Creation-Date: 2004-06-16 00:07+0200\n"
 "PO-Revision-Date: 2003-10-26 15:12+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -310,106 +310,102 @@ msgstr "Дія, що виконується при подвійному клац
 msgid "Advanced"
 msgstr "Додатково"
 
-#: src/events.c:1514
+#: src/events.c:1595
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операція не підтримується (поки-що)\n"
 
-#: src/main.c:214
+#: src/main.c:178
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Фатальна помилка"
 
-#: src/main.c:247
-msgid "Cannot get default screen"
-msgstr ""
-
-#: src/main.c:411
+#: src/main.c:307
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Вже активний інший менеджер вікон"
 
-#: src/main.c:416
+#: src/main.c:312
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: відсутні дані з типових файлів"
 
-#: src/main.c:425
+#: src/main.c:322
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:433
+#: src/main.c:330
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:454
+#: src/main.c:351
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Виникла невідома помилка"
 
-#: src/menu.c:39
+#: src/menu.c:38
 msgid "Ma_ximize"
 msgstr "М_аксимізувати"
 
-#: src/menu.c:40
+#: src/menu.c:39
 msgid "Un_maximize"
 msgstr "М_інімізувати"
 
-#: src/menu.c:41
+#: src/menu.c:40
 msgid "_Hide"
 msgstr "При_ховати"
 
-#: src/menu.c:42
+#: src/menu.c:41
 msgid "Hide _all others"
 msgstr "Приховати _всі інші"
 
-#: src/menu.c:43
+#: src/menu.c:42
 msgid "S_how"
 msgstr "_Показати"
 
-#: src/menu.c:44
+#: src/menu.c:43
 msgid "_Shade"
 msgstr "За_тінити"
 
-#: src/menu.c:45
+#: src/menu.c:44
 msgid "Un_shade"
 msgstr "Роз_тінити"
 
-#: src/menu.c:46
+#: src/menu.c:45
 msgid "S_tick"
 msgstr "При_ліпити"
 
-#: src/menu.c:47
+#: src/menu.c:46
 msgid "Uns_tick"
 msgstr "Від_ліпити"
 
-#: src/menu.c:48
+#: src/menu.c:47
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:49 src/menu.c:50
+#: src/menu.c:48 src/menu.c:49
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:51
+#: src/menu.c:50
 msgid "Send to..."
 msgstr "Відправити на..."
 
-#: src/menu.c:53
+#: src/menu.c:52
 msgid "_Close"
 msgstr "_Закрити"
 
-#: src/menu.c:56
+#: src/menu.c:55
 msgid "Destroy"
 msgstr "Знищити"
 
-#: src/menu.c:59
+#: src/menu.c:58
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/menu.c:60
+#: src/menu.c:59
 msgid "Restart"
 msgstr "Перезапустити"
 
@@ -423,7 +419,7 @@ msgstr "Робочу область %i"
 msgid "Workspace %i"
 msgstr "Робочу область %i"
 
-#: src/menu.c:423
+#: src/menu.c:424
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
@@ -433,52 +429,52 @@ msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: необроблене net_wm_state (вікно 0x%lx)"
 
-#: src/settings.c:314
+#: src/settings.c:341
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Відсутній файл з типовими значеннями"
 
-#: src/settings.c:547
+#: src/settings.c:596
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Неможливо зарезервувати активний колір %s\n"
 
-#: src/settings.c:554
+#: src/settings.c:602
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Неможливо проаналізувати активний колір %s\n"
 
-#: src/settings.c:598
+#: src/settings.c:645
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Неможливо зарезервувати неактивний колір %s\n"
 
-#: src/settings.c:605
+#: src/settings.c:651
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Неможливо проаналізувати неактивний колір %s\n"
 
-#: src/settings.c:793
+#: src/settings.c:829
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: вказаний ключ теми \"%s\" не існує, використовується типовий"
 
-#: src/settings.c:803
+#: src/settings.c:839
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Відсутні значення у файлі з типовими значеннями"
 
-#: src/settings.c:1149
+#: src/settings.c:1125
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
 "%s: Лічильник робочих областей не встановлено, використовується значення: %i"
 
-#: src/tabwin.c:68
+#: src/tabwin.c:69
 msgid "Switch to ..."
 msgstr "Перемикнутись на ..."
 
-#: src/tabwin.c:127
+#: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
 

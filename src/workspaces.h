@@ -31,9 +31,9 @@
 #include "screen.h"
 #include "client.h"
 
-void workspaceSwitch (ScreenData *, int, Client *);
-void workspaceSetNames (char *, int);
-void workspaceSetCount (ScreenData *, int);
-void workspaceUpdateArea (ScreenData *);
+void workspaceSwitch (ScreenInfo *, int, Client *);
+void workspaceSetNames (ScreenInfo *, char *, int);
+void workspaceSetCount (ScreenInfo *, int);
+void workspaceUpdateArea (ScreenInfo *);
 
 #endif /* INC_WORKSPACES_H */

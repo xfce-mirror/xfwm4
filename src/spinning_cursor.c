@@ -53,7 +53,7 @@ static const unsigned char xlib_spinning_mask_bits[] = {
 };
 
 Cursor
-cursorCreateSpinning (Display * dpy, Window window)
+cursorCreateSpinning (Display * dpy)
 {
     Pixmap cursor = None;
     Pixmap mask = None;
@@ -72,12 +72,12 @@ cursorCreateSpinning (Display * dpy, Window window)
     bg.blue = 0xffff;
     bg.flags = 0xf;
 
-    cursor =
-        XCreatePixmapFromBitmapData (dpy, window, (char *) xlib_spinning_bits,
-        32, 32, 0xffffffff, 0x0, 1);
-    mask =
-        XCreatePixmapFromBitmapData (dpy, window,
-        (char *) xlib_spinning_mask_bits, 32, 32, 0xffffffff, 0x0, 1);
+    cursor = XCreatePixmapFromBitmapData (dpy, DefaultRootWindow(dpy), 
+                                          (char *) xlib_spinning_bits,
+                                          32, 32, 0xffffffff, 0x0, 1);
+    mask   = XCreatePixmapFromBitmapData (dpy, DefaultRootWindow(dpy),
+                                          (char *) xlib_spinning_mask_bits, 
+                                          32, 32, 0xffffffff, 0x0, 1);
     xcursor = XCreatePixmapCursor (dpy, cursor, mask, &fg, &bg, 2, 2);
     XFreePixmap (dpy, mask);
     XFreePixmap (dpy, cursor);

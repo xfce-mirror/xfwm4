@@ -18,9 +18,6 @@
  
  */
 
-#ifndef INC_MYPIXMAP_H
-#define INC_MYPIXMAP_H
-
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
@@ -29,18 +26,28 @@
 #include <glib.h>
 #include "screen.h"
 
-typedef struct
+#ifndef INC_MYPIXMAP_H
+#define INC_MYPIXMAP_H
+
+struct _XfwmPixmap
 {
-    ScreenData *md;
+    ScreenInfo *screen_info;
     Pixmap pixmap, mask;
     gint width, height;
-}
-MyPixmap;
+};
 
-gboolean myPixmapLoad (ScreenData *, MyPixmap *, gchar *, gchar *,
-                       XpmColorSymbol *, gint);
-void myPixmapCreate (ScreenData *, MyPixmap *, gint, gint);
-void myPixmapInit (MyPixmap *);
-void myPixmapFree (MyPixmap *);
+gboolean xfwmPixmapLoad   (ScreenInfo *, 
+                           XfwmPixmap *, 
+                           gchar *, 
+                           gchar *,
+                           XpmColorSymbol *, 
+                           gint);
+void xfwmPixmapCreate     (ScreenInfo *, 
+                           XfwmPixmap *, 
+                           gint, 
+                           gint);
+void xfwmPixmapInit       (ScreenInfo *, 
+                           XfwmPixmap *);
+void xfwmPixmapFree       (XfwmPixmap *);
 
 #endif /* INC_MYPIXMAP_H */

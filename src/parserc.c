@@ -29,8 +29,8 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h> 
 
-#include "parserc.h"
 #include "settings.h"
+#include "parserc.h"
 
 #ifndef DEFAULT_THEME
 #define DEFAULT_THEME "Default"

@@ -18,9 +18,6 @@
  
  */
 
-#ifndef INC_CLIENT_H
-#define INC_CLIENT_H
-
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
@@ -39,17 +36,16 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include "screen.h"
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
 #include "mypixmap.h"
 #include "mywindow.h"
-#include "screen.h"
 #include "settings.h"
 
-#define ANY                             0
-#define WINDOW                          1
-#define FRAME                           2
+#ifndef INC_CLIENT_H
+#define INC_CLIENT_H
 
 #define APPLY                           1
 #define REMOVE                          -1
@@ -75,19 +71,6 @@
 #define UPDATE_GRAVITY                  (1<<2)
 #define UPDATE_CACHE                    (1<<3)
 #define UPDATE_ALL                      (UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY | UPDATE_CACHE)
-
-#define LEFT                            0
-#define RIGHT                           1
-#define TOP                             2
-#define BOTTOM                          3
-#define LEFT_START_Y                    4
-#define LEFT_END_Y                      5
-#define RIGHT_START_Y                   6
-#define RIGHT_END_Y                     7
-#define TOP_START_X                     8
-#define TOP_END_X                       9
-#define BOTTOM_START_X                  10
-#define BOTTOM_END_X                    11
 
 #define CLIENT_MIN_VISIBLE              10      /* pixels */
 
@@ -178,13 +161,10 @@ typedef enum
 WindowType;
 
 
-typedef struct _ClientPixmapCache ClientPixmapCache;
-typedef struct _Client Client;
-
 struct _ClientPixmapCache
 {
-    MyPixmap pm_title[2];
-    MyPixmap pm_sides[3][2];
+    XfwmPixmap pm_title[2];
+    XfwmPixmap pm_sides[3][2];
     int previous_width;
     int previous_height;
 };
@@ -192,16 +172,16 @@ struct _ClientPixmapCache
 struct _Client
 {
     /* Reference to our screen structure */
-    ScreenData *md;
+    ScreenInfo *screen_info;
     
     Window window;
     Window frame;
     Window transient_for;
     Window *cmap_windows;
-    myWindow title;
-    myWindow sides[3];
-    myWindow corners[4];
-    myWindow buttons[BUTTON_COUNT];
+    xfwmWindow title;
+    xfwmWindow sides[3];
+    xfwmWindow corners[4];
+    xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
     Colormap cmap;
@@ -256,7 +236,8 @@ struct _Client
 extern Client *clients;
 extern unsigned int client_count;
 
-void clientClearLastOpTime (Client * c);
+Display *clientGetXDisplay (Client *);
+void clientClearLastOpTime (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
@@ -265,23 +246,22 @@ void clientGetMWMHints (Client *, gboolean);
 void clientGetWMNormalHints (Client *, gboolean);
 void clientGetWMProtocols (Client *);
 void clientClearPixmapCache (Client *);
-void clientFrame (ScreenData *, Window, gboolean);
+void clientFrame (DisplayInfo *, Window, gboolean);
 void clientUnframe (Client *, gboolean);
-void clientFrameAll (ScreenData *);
-void clientUnframeAll (ScreenData *);
+void clientFrameAll (ScreenInfo *);
+void clientUnframeAll (ScreenInfo *);
 void clientInstallColormaps (Client *);
 void clientUpdateColormaps (Client *);
-void clientUpdateAllFrames (ScreenData *, gboolean);
+void clientUpdateAllFrames (ScreenInfo *, gboolean);
 void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
 void clientGrabButtons (Client *);
 void clientUngrabButtons (Client *);
-Client *clientGetFromWindow (Window, int);
-Client *clientAtPosition (int, int, Client *);
+Client *clientGetFromWindow (ScreenInfo *, Window, int);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);
 void clientHideAll (Client *, int);
-void clientToggleShowDesktop (ScreenData *, gboolean);
+void clientToggleShowDesktop (ScreenInfo *, gboolean);
 void clientClose (Client *);
 void clientKill (Client *);
 void clientEnterContextMenuState (Client *);
@@ -300,7 +280,7 @@ void clientToggleAbove (Client *);
 void clientToggleBelow (Client *);
 void clientRemoveMaximizeFlag (Client *);
 void clientToggleMaximized (Client *, int);
-void clientScreenResize(void);
+void clientScreenResize(ScreenInfo *);
 void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
 void clientCycle (Client *, XEvent *);

@@ -34,16 +34,16 @@
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
 
-void            clientFocusTop (ScreenData *, int);
+void            clientFocusTop (ScreenInfo *, int);
 void            clientFocusNew(Client *);
 gboolean        clientSelectMask (Client *, int);
 Client         *clientGetNext (Client *, int);
 Client         *clientGetPrevious (Client *, int);
-void            clientPassFocus (ScreenData *, Client *);
+void            clientPassFocus (ScreenInfo *, Client *);
 gboolean        clientAcceptFocus (Client *);
 void            clientSortRing(Client *);
-void            clientUpdateFocus (ScreenData *, Client *, unsigned short);
-void            clientSetFocus (ScreenData *, Client *, Time, unsigned short);
+void            clientUpdateFocus (ScreenInfo *, Client *, unsigned short);
+void            clientSetFocus (ScreenInfo *, Client *, Time, unsigned short);
 void            clientClearFocus (void);
 Client         *clientGetFocus (void);
 void            clientGrabButton1 (Client *);

@@ -7,6 +7,8 @@ mcs-plugin/workspaces.h
 mcs-plugin/xfwm4_plugin.c
 src/client.c
 src/client.h
+src/display.c
+src/display.c
 src/events.c
 src/events.h
 src/focus.c
@@ -20,7 +22,6 @@ src/icons.h
 src/keyboard.c
 src/keyboard.h
 src/main.c
-src/main.h
 src/menu.c
 src/menu.h
 src/misc.c
@@ -37,6 +38,8 @@ src/placement.c
 src/placement.h
 src/poswin.c
 src/poswin.h
+src/screen.c
+src/screen.c
 src/session.c
 src/session.h
 src/settings.c

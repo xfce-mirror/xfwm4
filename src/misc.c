@@ -35,6 +35,7 @@
 #include <unistd.h>
 #include <libxfce4util/libxfce4util.h> 
 
+#include "display.h"
 #include "screen.h"
 #include "mywindow.h"
 #include "client.h"
@@ -43,30 +44,30 @@
 static int xgrabcount = 0;
 
 void
-getMouseXY (ScreenData *md, Window w, int *x2, int *y2)
+getMouseXY (ScreenInfo *screen_info, Window w, int *x2, int *y2)
 {
     Window w1, w2;
     gint x1, y1, m;
 
     TRACE ("entering getMouseXY");
 
-    XQueryPointer (md->dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
+    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, x2, y2, &m);
 }
 
 Window
-getMouseWindow (ScreenData *md, Window w)
+getMouseWindow (ScreenInfo *screen_info, Window w)
 {
     Window w1, w2;
     int x1, y1, x2, y2, m;
 
     TRACE ("entering getMouseWindow");
 
-    XQueryPointer (md->dpy, w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
+    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
     return w2;
 }
 
 GC
-createGC (ScreenData *md, char *col, int func, XFontStruct * font,
+createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
     int line_width, gboolean inc_sw)
 {
     XGCValues gv;
@@ -78,7 +79,7 @@ createGC (ScreenData *md, char *col, int func, XFontStruct * font,
     TRACE ("color=%s", col);
 
     mask = GCForeground | GCFunction;
-    XAllocNamedColor (md->dpy, md->cmap, col, &xc1, &xc2);
+    XAllocNamedColor (myScreenGetXDisplay (screen_info), screen_info->cmap, col, &xc1, &xc2);
     gv.foreground = xc2.pixel;
     gv.function = func;
     if (font)
@@ -96,12 +97,12 @@ createGC (ScreenData *md, char *col, int func, XFontStruct * font,
         gv.line_width = line_width;
         mask = mask | GCLineWidth;
     }
-    gc = XCreateGC (md->dpy, md->xroot, mask, &gv);
+    gc = XCreateGC (myScreenGetXDisplay (screen_info), screen_info->xroot, mask, &gv);
     return gc;
 }
 
 void
-sendClientMessage (ScreenData *md, Window w, Atom a, Atom x, Time timestamp)
+sendClientMessage (ScreenInfo *screen_info, Window w, Atom a, Atom x, Time timestamp)
 {
     XClientMessageEvent ev;
 
@@ -113,24 +114,24 @@ sendClientMessage (ScreenData *md, Window w, Atom a, Atom x, Time timestamp)
     ev.format = 32;
     ev.data.l[0] = x;
     ev.data.l[1] = timestamp;
-    XSendEvent (md->dpy, w, FALSE, 0L, (XEvent *)&ev);
+    XSendEvent (myScreenGetXDisplay (screen_info), w, FALSE, 0L, (XEvent *)&ev);
 }
 
 void
-myXGrabServer (ScreenData *md)
+myXGrabServer (ScreenInfo *screen_info)
 {
     DBG ("entering myXGrabServer");
     if (xgrabcount == 0)
     {
         DBG ("grabbing server");
-        XGrabServer (md->dpy);
+        XGrabServer (myScreenGetXDisplay (screen_info));
     }
     xgrabcount++;
     DBG ("grabs : %i", xgrabcount);
 }
 
 void
-myXUngrabServer (ScreenData *md)
+myXUngrabServer (ScreenInfo *screen_info)
 {
     DBG ("entering myXUngrabServer");
     if (--xgrabcount < 0)       /* should never happen */
@@ -140,28 +141,31 @@ myXUngrabServer (ScreenData *md)
     if (xgrabcount == 0)
     {
         DBG ("ungrabbing server");
-        XUngrabServer (md->dpy);
-        XFlush (md->dpy);
+        XUngrabServer (myScreenGetXDisplay (screen_info));
+        XFlush (myScreenGetXDisplay (screen_info));
     }
     DBG ("grabs : %i", xgrabcount);
 }
 
 /*
  * it's safer to grab the display before calling this routine
- * Returns true if the given window is present and mapped on md->xroot 
+ * Returns true if the given window is present and mapped on root 
  */
 gboolean
-myCheckWindow(ScreenData *md, Window w)
+checkWindowOnRoot(ScreenInfo *screen_info, Window w)
 {
+    DisplayInfo *display_info;
     Window dummy_root, parent;
     Window *wins = NULL;
     unsigned int count;
     Status test;
     
+    g_return_val_if_fail (screen_info != NULL, FALSE);
     g_return_val_if_fail (w != None, FALSE);
 
+    display_info = screen_info->display_info;
     gdk_error_trap_push ();
-    test = XQueryTree(md->dpy, w, &dummy_root, &parent, &wins, &count);
+    test = XQueryTree(display_info->dpy, w, &dummy_root, &parent, &wins, &count);
     if (wins)
     {
         XFree (wins);
@@ -170,28 +174,28 @@ myCheckWindow(ScreenData *md, Window w)
 }
 
 void
-placeSidewalks(ScreenData *md, gboolean activate)
+placeSidewalks(ScreenInfo *screen_info, gboolean activate)
 {
-    g_return_if_fail (MYWINDOW_XWINDOW (md->sidewalk[0]) != None);
-    g_return_if_fail (MYWINDOW_XWINDOW (md->sidewalk[1]) != None);
+    g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[0]) != None);
+    g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[1]) != None);
 
     if (activate)
     {
-        myWindowShow (&md->sidewalk[0], 
+        xfwmWindowShow (&screen_info->sidewalk[0], 
                       0, 0,
-                      1, gdk_screen_get_height (md->gscr), FALSE);
-        myWindowShow (&md->sidewalk[1],
-                      gdk_screen_get_width (md->gscr) - 1, 0, 
-                      1, gdk_screen_get_height (md->gscr), FALSE);
+                      1, gdk_screen_get_height (screen_info->gscr), FALSE);
+        xfwmWindowShow (&screen_info->sidewalk[1],
+                      gdk_screen_get_width (screen_info->gscr) - 1, 0, 
+                      1, gdk_screen_get_height (screen_info->gscr), FALSE);
     }
     else
     {
         /* Place the windows off screen */
-        myWindowShow (&md->sidewalk[0], 
+        xfwmWindowShow (&screen_info->sidewalk[0], 
                       -1, 0,
-                       1, gdk_screen_get_height (md->gscr), FALSE);
-        myWindowShow (&md->sidewalk[1],
-                      gdk_screen_get_width (md->gscr), 0, 
-                      1, gdk_screen_get_height (md->gscr), FALSE);
+                       1, gdk_screen_get_height (screen_info->gscr), FALSE);
+        xfwmWindowShow (&screen_info->sidewalk[1],
+                      gdk_screen_get_width (screen_info->gscr), 0, 
+                      1, gdk_screen_get_height (screen_info->gscr), FALSE);
     }
 }

@@ -18,9 +18,6 @@
  
  */
 
-#ifndef INC_SETTINGS_H
-#define INC_SETTINGS_H
-
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
@@ -31,14 +28,8 @@
 #include "keyboard.h"
 #include "mypixmap.h"
 
-#define CORNER_TOP_LEFT                 0
-#define CORNER_TOP_RIGHT                1
-#define CORNER_BOTTOM_LEFT              2
-#define CORNER_BOTTOM_RIGHT             3
-
-#define SIDE_LEFT                       0
-#define SIDE_RIGHT                      1
-#define SIDE_BOTTOM                     2
+#ifndef INC_SETTINGS_H
+#define INC_SETTINGS_H
 
 #define TITLE_1                         0
 #define TITLE_2                         1
@@ -126,15 +117,13 @@
 #define ACTION_SHADE                    2
 #define ACTION_HIDE                     3
 
-typedef struct _MyColor MyColor;
-struct _MyColor
+struct _XfwmColor
 {
     GdkColor col;
     GdkGC *gc;
     gboolean allocated;
 };
 
-typedef struct _Settings Settings;
 struct _Settings
 {
     gchar *option;
@@ -142,29 +131,19 @@ struct _Settings
     gboolean required;
 };
 
-typedef struct _Params Params;
-struct _Params
+struct _XfwmParams
 {
-    MyColor title_colors[2];
     MyKey keys[KEY_COUNT];
-    MyPixmap buttons[BUTTON_COUNT][6];
-    MyPixmap corners[4][2];
-    MyPixmap sides[3][2];
-    MyPixmap title[5][2];
     gchar button_layout[8];
     gchar *shortcut_exec[NB_KEY_SHORTCUTS];
     unsigned int xfwm_margins[4];
     int button_offset;
     int button_spacing;
-    int dbl_click_time;
     int double_click_action;
     int raise_delay;
     int snap_width;
     int title_alignment;
     int title_horizontal_offset;
-    int workspace_count;
-    gchar *workspace_names;
-    int workspace_names_length;
     int wrap_resistance;
     gboolean title_shadow[2];
     gboolean cycle_minimum;
@@ -183,16 +162,12 @@ struct _Params
     gboolean title_vertical_offset_inactive;
     gboolean wrap_workspaces;
     gboolean wrap_windows;
-    GC box_gc;
-    GdkGC *black_gc;
-    GdkGC *white_gc;
 };
 
-extern Params params;
-
-gboolean loadSettings (ScreenData *);
-void unloadSettings (ScreenData *);
-gboolean reloadSettings (ScreenData *, int);
-gboolean initSettings (ScreenData *);
+gboolean loadSettings   (ScreenInfo *);
+gboolean reloadSettings (DisplayInfo *, 
+                         int);
+gboolean initSettings   (ScreenInfo *);
+void     closeSettings  (ScreenInfo *);
 
 #endif /* INC_SETTINGS_H */

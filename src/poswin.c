@@ -49,7 +49,6 @@ poswinCreate (GdkScreen *gscr)
     gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
     gtk_container_add (GTK_CONTAINER (poswin->window), frame);
-    gtk_widget_show (frame);
 
     poswin->label = gtk_label_new ("");
     gtk_misc_set_alignment (GTK_MISC (poswin->label), 0.5, 0.5);

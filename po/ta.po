@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
-"POT-Creation-Date: 2004-06-03 16:48+0200\n"
+"POT-Creation-Date: 2004-06-16 00:07+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -308,106 +308,102 @@ msgstr "தலைப்புப் பட்டையில் þரட்ட�
 msgid "Advanced"
 msgstr "உயர்நிலை"
 
-#: src/events.c:1514
+#: src/events.c:1595
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: இயக்கத்திட்கு ஆதரவளிப்பு þல்லை (þப்பொழுது)\n"
 
-#: src/main.c:214
+#: src/main.c:178
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: பகுதியாக்கல் பழுது"
 
-#: src/main.c:247
-msgid "Cannot get default screen"
-msgstr ""
-
-#: src/main.c:411
+#: src/main.c:307
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: மற்றொரு சாளரமேலாளர் ஏற்கெனவே þயக்கப்பட்டுள்ளது"
 
-#: src/main.c:416
+#: src/main.c:312
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: கொடாநிலை கோப்புகளில் இல்லாத தரவுகள்"
 
-#: src/main.c:425
+#: src/main.c:322
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:433
+#: src/main.c:330
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:454
+#: src/main.c:351
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: தெரியாத பிழை நடைபெற்றுள்ளது"
 
-#: src/menu.c:39
+#: src/menu.c:38
 msgid "Ma_ximize"
 msgstr "பெருதாக்குக"
 
-#: src/menu.c:40
+#: src/menu.c:39
 msgid "Un_maximize"
 msgstr "பெருதாக்குதல் நீக்கு"
 
-#: src/menu.c:41
+#: src/menu.c:40
 msgid "_Hide"
 msgstr "_மறை"
 
-#: src/menu.c:42
+#: src/menu.c:41
 msgid "Hide _all others"
 msgstr "மற்றவை அனைத்தையும் மறை"
 
-#: src/menu.c:43
+#: src/menu.c:42
 msgid "S_how"
 msgstr "காண்பிக்கவும்"
 
-#: src/menu.c:44
+#: src/menu.c:43
 msgid "_Shade"
 msgstr "நிழல்"
 
-#: src/menu.c:45
+#: src/menu.c:44
 msgid "Un_shade"
 msgstr "நிழல் நீக்கு"
 
-#: src/menu.c:46
+#: src/menu.c:45
 msgid "S_tick"
 msgstr "ஒட்_டு"
 
-#: src/menu.c:47
+#: src/menu.c:46
 msgid "Uns_tick"
 msgstr "ஒட்டா_தே"
 
-#: src/menu.c:48
+#: src/menu.c:47
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:49 src/menu.c:50
+#: src/menu.c:48 src/menu.c:49
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:51
+#: src/menu.c:50
 msgid "Send to..."
 msgstr "இவ்வேலை இடத்தில் போடுக ..."
 
-#: src/menu.c:53
+#: src/menu.c:52
 msgid "_Close"
 msgstr "_மூடு"
 
-#: src/menu.c:56
+#: src/menu.c:55
 msgid "Destroy"
 msgstr "அழி"
 
-#: src/menu.c:59
+#: src/menu.c:58
 msgid "_Quit"
 msgstr "_வெளிச்செல்"
 
-#: src/menu.c:60
+#: src/menu.c:59
 msgid "Restart"
 msgstr "மறுபடியும் தொடங்கு"
 
@@ -421,7 +417,7 @@ msgstr "வேலை þடம் %i"
 msgid "Workspace %i"
 msgstr "வேலை þடம் %i"
 
-#: src/menu.c:423
+#: src/menu.c:424
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenuக்கு சுட்டியை பெற முடியவில்லை\n"
@@ -431,51 +427,51 @@ msgstr "%s: GtkMenuக்கு சுட்டியை பெற முடி�
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: மேலாண்மையற்ற net_wm_state (சாளரம் 0x%lx)"
 
-#: src/settings.c:314
+#: src/settings.c:341
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: கொடாநிலை கோப்புகள் þல்லை"
 
-#: src/settings.c:547
+#: src/settings.c:596
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: நடப்பு வண்ணம் ஒதுக்கீ வைக்க முடியவில்லை %s\n"
 
-#: src/settings.c:554
+#: src/settings.c:602
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: நடப்பு வண்ணம் அலகிட முடியவில்லை %s\n"
 
-#: src/settings.c:598
+#: src/settings.c:645
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் ஒதுக்கீ வைக்க முடியவில்லை %s\n"
 
-#: src/settings.c:605
+#: src/settings.c:651
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் அழகிட முடியவில்லை %s\n"
 
-#: src/settings.c:793
+#: src/settings.c:829
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s:ஃகுறிப்பிட்ட தோற்றம் \"%s\" காணவில்லை, கொடாநிலை பயன்படுத்தப்படுகின்றது"
 
-#: src/settings.c:803
+#: src/settings.c:839
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: கொடாநிலை கோப்பில் þல்லாத மதிப்புகள்"
 
-#: src/settings.c:1149
+#: src/settings.c:1125
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: வேலை-þட எண்ணிக்கை அமைக்கவில்லை, rc மதிப்பை பயன்படுத்தும்: %i"
 
-#: src/tabwin.c:68
+#: src/tabwin.c:69
 msgid "Switch to ..."
 msgstr "þதட்கு மாற்றவும் ..."
 
-#: src/tabwin.c:127
+#: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
 

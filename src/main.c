@@ -41,6 +41,7 @@
 #include <signal.h>
 #include <string.h>
 
+#include "display.h"
 #include "screen.h"
 #include "events.h"
 #include "frame.h"
@@ -65,60 +66,31 @@
     PropertyChangeMask|\
     ColormapNotify
 
-static ScreenData *md = NULL;
-gboolean xfwm4_quit   = FALSE;
-gboolean xfwm4_reload = FALSE;
-
-static int
-handleXError (Display * dpy, XErrorEvent * err)
-{
-#if DEBUG            
-    char buf[64];
-
-    XGetErrorText (dpy, err->error_code, buf, 63);
-    g_print ("XError: %s\n", buf);                                                  
-    g_print ("==>  XID Ox%lx, Request %d, Error %d <==\n", 
-              err->resourceid, err->request_code, err->error_code); 
-#endif
-    return 0;
-}
+static DisplayInfo *display_info = NULL;
+gboolean xfwm4_quit           = FALSE;
+gboolean xfwm4_reload         = FALSE;
 
 static void
 cleanUp (void)
 {
     int i;
+    GSList *screens;
     
-    g_return_if_fail (md);
+    g_return_if_fail (display_info);
     
     TRACE ("entering cleanUp");
 
-    clientUnframeAll (md);
+    xfce_close_event_filter (display_info->xfilter);
+    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
+    {
+        ScreenInfo *screen_info_n = (ScreenInfo *) screens->data;
+        myScreenClose (screen_info_n);
+        g_free (screen_info_n);
+    }
+    
     sn_close_display ();
-    unloadSettings (md);
-    XFreeCursor (md->dpy, md->root_cursor);
-    XFreeCursor (md->dpy, md->move_cursor);
-    XFreeCursor (md->dpy, md->busy_cursor);
+    
     sessionFreeWindowStates ();
-    for (i = 0; i < 7; i++)
-    {
-        XFreeCursor (md->dpy, md->resize_cursor[i]);
-    }
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
-    {
-        if (params.shortcut_exec[i])
-        {
-            g_free (params.shortcut_exec[i]);
-            params.shortcut_exec[i] = NULL;
-        }
-    }
-    g_free (params.workspace_names);
-    params.workspace_names = NULL;
-    myWindowDelete (&md->sidewalk[0]);
-    myWindowDelete (&md->sidewalk[1]);
-    XSetInputFocus (md->dpy, md->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
-    xfce_close_event_filter (md->xfilter);
-    g_free (md);
-    md = NULL;
 }
 
 static char *build_session_filename(SessionClient *client_session)
@@ -173,7 +145,7 @@ save_phase_2 (gpointer data)
     filename = build_session_filename(client_session);
     if (filename)
     {
-        sessionSaveWindowStates (filename);
+        sessionSaveWindowStates (display_info, filename);
         g_free (filename);
     }
 }
@@ -213,16 +185,12 @@ handleSignal (int sig)
 static int
 initialize (int argc, char **argv)
 {
-    PangoLayout *layout;
     struct sigaction act;
-    int dummy;
     long ws;
-    GdkWindow *groot;
     SessionClient *client_session;
-
+    gint i, nscreens;
+    
     TRACE ("entering initialize");
-
-    md = g_new0 (ScreenData, 1);
     
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
@@ -232,119 +200,12 @@ initialize (int argc, char **argv)
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
 
-    md->gscr = gdk_screen_get_default ();
-    if (!md->gscr)
-    {
-        g_error (_("Cannot get default screen"));
-    }
-    md->gdisplay = gdk_screen_get_display (md->gscr);
-    gtk_widget_push_colormap(gdk_screen_get_rgb_colormap (md->gscr));
-    md->dpy = gdk_x11_display_get_xdisplay (md->gdisplay);
-    md->xscreen = gdk_x11_screen_get_xscreen (md->gscr);
-    groot = gdk_screen_get_root_window (md->gscr);
-    md->xroot = (Window) gdk_x11_drawable_get_xid (groot);
-    md->screen = gdk_screen_get_number (md->gscr);
-    md->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (md->gscr));
-    
-    xfce_setenv ("DISPLAY", gdk_display_get_name (md->gdisplay), TRUE);
-
-    md->depth = DefaultDepth (md->dpy, md->screen);
-    sn_init_display (md);
-    md->current_ws = 0;
-
-    XSetErrorHandler (handleXError);
-    md->shape = XShapeQueryExtension (md->dpy, &md->shape_event, &dummy);
-
-    /* Create the side windows to detect edge movement */
-    myWindowTemp (md->dpy, md->xroot, &md->sidewalk[0], 0, 0, 
-                                  1, gdk_screen_get_height (md->gscr), 
-                                  LeaveWindowMask | PointerMotionMask);
-
-    myWindowTemp (md->dpy, md->xroot, &md->sidewalk[1], 
-                                  gdk_screen_get_width (md->gscr) - 1, 0, 
-                                  1, gdk_screen_get_height (md->gscr), 
-                                  LeaveWindowMask | PointerMotionMask);
-
-    md->margins[TOP] = md->gnome_margins[TOP] = 0;
-    md->margins[LEFT] = md->gnome_margins[LEFT] = 0;
-    md->margins[RIGHT] = md->gnome_margins[RIGHT] = 0;
-    md->margins[BOTTOM] = md->gnome_margins[BOTTOM] = 0;
-
-    initICCCMHints (md->dpy);
-    initMotifHints (md->dpy);
-    initGnomeHints (md->dpy);
-    initNetHints (md->dpy);
-    initKDEHints (md->dpy);
-    initSystrayHints (md->dpy, md->screen);
-    
-    initModifiers (md->dpy);
-
-    md->root_cursor = XCreateFontCursor (md->dpy, XC_left_ptr);
-    md->move_cursor = XCreateFontCursor (md->dpy, XC_fleur);
-    md->busy_cursor = cursorCreateSpinning (md->dpy, md->xroot);
-    md->resize_cursor[CORNER_TOP_LEFT] =
-        XCreateFontCursor (md->dpy, XC_top_left_corner);
-    md->resize_cursor[CORNER_TOP_RIGHT] =
-        XCreateFontCursor (md->dpy, XC_top_right_corner);
-    md->resize_cursor[CORNER_BOTTOM_LEFT] =
-        XCreateFontCursor (md->dpy, XC_bottom_left_corner);
-    md->resize_cursor[CORNER_BOTTOM_RIGHT] =
-        XCreateFontCursor (md->dpy, XC_bottom_right_corner);
-    md->resize_cursor[4 + SIDE_LEFT] = XCreateFontCursor (md->dpy, XC_left_side);
-    md->resize_cursor[4 + SIDE_RIGHT] = XCreateFontCursor (md->dpy, XC_right_side);
-    md->resize_cursor[4 + SIDE_BOTTOM] = XCreateFontCursor (md->dpy, XC_bottom_side);
-
-    XDefineCursor (md->dpy, md->xroot, md->root_cursor);
-
-    md->xfilter = xfce_init_event_filter (md->gscr, MAIN_EVENT_MASK, (gpointer) md, "xfwm");
-    if (!md->xfilter)
-    {
-        return -1;
-    }
-    xfce_push_event_filter (md->xfilter, xfwm4_event_filter, (gpointer) md);
-
-    md->gnome_win = xfce_get_default_XID (md->xfilter);
-    DBG ("Our event window is 0x%lx", md->gnome_win);
-
-    if (!initSettings (md))
-    {
-        return -2;
-    }
-
-    md->systray = getSystrayWindow (md->dpy);
-    setGnomeProtocols (md->dpy, md->screen, md->gnome_win);
-    setHint (md->dpy, md->xroot, win_supporting_wm_check, md->gnome_win);
-    setHint (md->dpy, md->xroot, win_desktop_button_proxy, md->gnome_win);
-    setHint (md->dpy, md->gnome_win, win_desktop_button_proxy, md->gnome_win);
-    getHint (md->dpy, md->xroot, win_workspace, &ws);
-    md->current_ws = (int) ws;
-    getGnomeDesktopMargins (md->dpy, md->screen, md->gnome_margins);
-    set_utf8_string_hint (md->dpy, md->gnome_win, net_wm_name, "Xfwm4");
-    setNetSupportedHint (md->dpy, md->screen, md->gnome_win);
-    workspaceUpdateArea (md);
-    initNetDesktopParams (md->dpy, md->screen, 
-                               md->current_ws,
-                               gdk_screen_get_width (md->gscr), 
-                               gdk_screen_get_height (md->gscr));
-    setNetWorkarea (md->dpy, md->screen, params.workspace_count, 
-                         gdk_screen_get_width (md->gscr), 
-                         gdk_screen_get_height (md->gscr), 
-                         md->margins);
-    XSetInputFocus (md->dpy, md->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
-    initGtkCallbacks (md);
     initMenuEventWin ();
-    
-    /* The first time the first Gtk application on a display uses pango,
-     * pango grabs the XServer while it creates the font cache window.
-     * Therefore, force the cache window to be created now instead of
-     * trying to do it while we have another grab and deadlocking the server.
-     */
-    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (md->xfilter), "-");
-    pango_layout_get_pixel_extents (layout, NULL, NULL);
-    g_object_unref (G_OBJECT (layout));
-
     clientClearFocus ();
-    clientFrameAll (md);
+
+    display_info = myDisplayInit (gdk_display_get_default ());
+
+    initModifiers (display_info->dpy);
 
     act.sa_handler = handleSignal;
     act.sa_flags = 0;
@@ -354,7 +215,7 @@ initialize (int argc, char **argv)
     sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
-    client_session = client_session_new (argc, argv, (gpointer) md, 
+    client_session = client_session_new (argc, argv, (gpointer) display_info, 
                                          SESSION_RESTART_IF_RUNNING, 20);
     client_session->data = (gpointer) client_session;
     client_session->save_phase_2 = save_phase_2;
@@ -364,6 +225,51 @@ initialize (int argc, char **argv)
     {
         load_saved_session (client_session);
     }
+
+    nscreens = gdk_display_get_n_screens(display_info->gdisplay);
+    for(i = 0; i < nscreens; i++) 
+    {
+        ScreenInfo *screen_info = NULL;
+        GdkScreen *gscr;
+        
+        printf("Attemping to manage screen #%i\n", i);
+        gscr = gdk_display_get_screen(display_info->gdisplay, i);
+        screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK);
+        sn_init_display (screen_info);
+        myDisplayAddScreen (display_info, screen_info);
+
+        if (!screen_info)
+        {
+            printf("Cannot manage screen #%i\n", i);
+            continue;
+        }
+        if (!initSettings (screen_info))
+        {
+            return -2;
+        }
+        setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);
+        setHint (display_info->dpy, screen_info->xroot, win_supporting_wm_check, screen_info->gnome_win);
+        setHint (display_info->dpy, screen_info->xroot, win_desktop_button_proxy, screen_info->gnome_win);
+        setHint (display_info->dpy, screen_info->gnome_win, win_desktop_button_proxy, screen_info->gnome_win);
+        getHint (display_info->dpy, screen_info->xroot, win_workspace, &ws);
+        screen_info->current_ws = (int) ws;
+        getGnomeDesktopMargins (display_info->dpy, screen_info->screen, screen_info->gnome_margins);
+        set_utf8_string_hint (display_info->dpy, screen_info->gnome_win, net_wm_name, "Xfwm4");
+        setNetSupportedHint (display_info->dpy, screen_info->screen, screen_info->gnome_win);
+        initNetDesktopInfo (display_info->dpy, screen_info->screen, 
+                                   screen_info->current_ws,
+                                   gdk_screen_get_width (screen_info->gscr), 
+                                   gdk_screen_get_height (screen_info->gscr));
+        workspaceUpdateArea (screen_info);
+        XSetInputFocus (display_info->dpy, screen_info->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
+
+        clientFrameAll (screen_info);
+        
+        initGtkCallbacks (screen_info);
+    }
+
+    display_info->xfilter = xfce_init_event_filter ((gpointer) display_info);
+    xfce_push_event_filter (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
 
     return 0;
 }
@@ -411,11 +317,12 @@ main (int argc, char **argv)
             if (daemon_mode)
             {
 #ifdef HAVE_DAEMON
-                                if (daemon(TRUE, TRUE) < 0) {
-                                        g_warning(_("%s: Failed to enter daemon mode: %s"),
-                                                        g_get_prgname(), g_strerror(errno));
-                                        exit(EXIT_FAILURE);
-                                }
+                if (daemon(TRUE, TRUE) < 0) 
+                {
+                        g_warning(_("%s: Failed to enter daemon mode: %s"),
+                                        g_get_prgname(), g_strerror(errno));
+                        exit(EXIT_FAILURE);
+                }
 #else /* !HAVE_DAEMON */
                 switch (fork ())
                 {
@@ -426,8 +333,8 @@ main (int argc, char **argv)
                         break;
                     case 0:    /* child */
 #ifdef HAVE_SETSID
-                                                /* detach from terminal session */
-                                                (void)setsid();
+                        /* detach from terminal session */
+                        (void)setsid();
 #endif /* !HAVE_SETSID */
                         break;
                     default:   /* parent */
@@ -435,9 +342,9 @@ main (int argc, char **argv)
                         break;
                 }
 #endif /* !HAVE_DAEMON */
-                        }
+            }
 
-                        /* enter GTK main loop */
+            /* enter GTK main loop */
             gtk_main ();
             break;
         default:

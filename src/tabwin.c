@@ -128,7 +128,7 @@ pretty_string (const gchar *s)
         canonical = g_strdup(_("Unknown application!"));
     }
     markup = g_strdup_printf ("<b>%s</b>", canonical);
-    free (canonical);
+    g_free (canonical);
     return markup;
 }
 

@@ -97,6 +97,19 @@
 #define NET_WM_STATE_ADD                        1
 #define NET_WM_STATE_TOGGLE                     2
 
+#define LEFT                            0
+#define RIGHT                           1
+#define TOP                             2
+#define BOTTOM                          3
+#define LEFT_START_Y                    4
+#define LEFT_END_Y                      5
+#define RIGHT_START_Y                   6
+#define RIGHT_END_Y                     7
+#define TOP_START_X                     8
+#define TOP_END_X                       9
+#define BOTTOM_START_X                  10
+#define BOTTOM_END_X                    11
+
 typedef struct
 {
     unsigned long flags;
@@ -200,7 +213,7 @@ PropMwmHints *getMotifHints (Display *, Window);
 unsigned int getWMProtocols (Display *, Window);
 void initGnomeHints (Display *);
 void initKDEHints (Display *);
-void initSystrayHints (Display *, int);
+Atom initSystrayHints (Display *, int);
 gboolean getHint (Display *, Window, Atom, long *);
 void setHint (Display *, Window, Atom, long);
 void getGnomeDesktopMargins (Display *, int, int *);
@@ -210,7 +223,7 @@ void setNetSupportedHint (Display *, int, Window);
 gboolean getAtomList (Display *, Window, Atom, Atom **, int *);
 gboolean getCardinalList (Display *, Window, Atom, unsigned long **, int *);
 void setNetWorkarea (Display *, int, int, int, int, int *);
-void initNetDesktopParams (Display *, int, int, int, int);
+void initNetDesktopInfo (Display *, int, int, int, int);
 void set_utf8_string_hint (Display *, Window, Atom, const char *);
 void getTransientFor (Display *, int, Window, Window *);
 void getWindowName (Display *, Window, char **);
@@ -218,7 +231,7 @@ gboolean getUTF8String (Display *, Window, Atom, char **, int *);
 void getWindowName (Display *, Window, char **);
 gboolean checkKdeSystrayWindow(Display *, Window);
 void sendSystrayReqDock(Display *, Window, Window);
-Window getSystrayWindow (Display *);
+Window getSystrayWindow (Display *, Atom);
 gboolean getWindowRole (Display *, Window, char **);
 Window getClientLeader (Display *, Window);
 gboolean getNetWMUserTime (Display *, Window, Time *);

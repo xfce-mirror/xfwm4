@@ -60,6 +60,7 @@ typedef struct _match
     int old_width;
     int old_height;
     int desktop;
+    int screen;
     unsigned long flags;
     gboolean used;
 }
@@ -252,10 +253,9 @@ getsubstring (gchar * s, gint * length)
     return ns;
 }
 
-gboolean
-sessionSaveWindowStates (gchar * filename)
+static void
+sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 {
-    FILE *f;
     Client *c;
     gint client_idx;
     char *client_id = NULL;
@@ -263,87 +263,102 @@ sessionSaveWindowStates (gchar * filename)
     int wm_command_count = 0;
     char **wm_command = NULL;
 
+    for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
+        c = c->next, client_idx++)
+    {
+        if (c->client_leader != None)
+        {
+            getWindowRole (clientGetXDisplay (c), c->client_leader, &window_role);
+        }
+        else
+        {
+            window_role = NULL;
+        }
+
+        fprintf (f, "[CLIENT] 0x%lx\n", c->window);
+
+        getClientID (clientGetXDisplay (c), c->window, &client_id);
+        if (client_id)
+        {
+            fprintf (f, "  [CLIENT_ID] %s\n", client_id);
+            XFree (client_id);
+            client_id = NULL;
+        }
+
+        if (c->client_leader)
+        {
+            fprintf (f, "  [CLIENT_LEADER] 0x%lx\n", c->client_leader);
+        }
+
+        if (window_role)
+        {
+            fprintf (f, "  [WINDOW_ROLE] %s\n", window_role);
+            XFree (window_role);
+            window_role = NULL;
+        }
+
+        if (c->class.res_class)
+        {
+            fprintf (f, "  [RES_NAME] %s\n", c->class.res_name);
+        }
+
+        if (c->class.res_name)
+        {
+            fprintf (f, "  [RES_CLASS] %s\n", c->class.res_class);
+        }
+
+        if (c->name)
+        {
+            fprintf (f, "  [WM_NAME] %s\n", c->name);
+        }
+
+        wm_command_count = 0;
+        getWindowCommand (clientGetXDisplay (c), c->window, &wm_command, &wm_command_count);
+        if ((wm_command_count > 0) && (wm_command))
+        {
+            gint j;
+            fprintf (f, "  [WM_COMMAND] (%i)", wm_command_count);
+            for (j = 0; j < wm_command_count; j++)
+            {
+                gchar *escaped_string;
+                escaped_string = escape_quote (wm_command[j]);
+                fprintf (f, " \"%s\"", escaped_string);
+                g_free (escaped_string);
+            }
+            fprintf (f, "\n");
+            XFreeStringList (wm_command);
+            wm_command = NULL;
+            wm_command_count = 0;
+        }
+
+        fprintf (f, "  [GEOMETRY] (%i,%i,%i,%i)\n", c->x, c->y, c->width,
+            c->height);
+        fprintf (f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->old_x,
+            c->old_y, c->old_width, c->old_height);
+        fprintf (f, "  [SCREEN] %i\n", screen_info->screen);
+        fprintf (f, "  [DESK] %i\n", c->win_workspace);
+        fprintf (f, "  [FLAGS] 0x%lx\n", FLAG_TEST (c->flags,
+                CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN |
+                CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED |
+                CLIENT_FLAG_NAME_CHANGED));
+    }
+}
+
+gboolean
+sessionSaveWindowStates (DisplayInfo *display_info, gchar * filename)
+{
+    FILE *f;
+    GSList *screens;
+
     g_return_val_if_fail (filename != NULL, FALSE);
+    g_return_val_if_fail (display_info != NULL, FALSE);
 
     if ((f = fopen (filename, "w")))
     {
-        for (c = clients, client_idx = 0; client_idx < client_count;
-            c = c->next, client_idx++)
+        for (screens = display_info->screens; screens; screens = g_slist_next (screens))
         {
-            if (c->client_leader != None)
-            {
-                getWindowRole (c->md->dpy, c->client_leader, &window_role);
-            }
-            else
-            {
-                window_role = NULL;
-            }
-
-            fprintf (f, "[CLIENT] 0x%lx\n", c->window);
-
-            getClientID (c->md->dpy, c->window, &client_id);
-            if (client_id)
-            {
-                fprintf (f, "  [CLIENT_ID] %s\n", client_id);
-                XFree (client_id);
-                client_id = NULL;
-            }
-
-            if (c->client_leader)
-            {
-                fprintf (f, "  [CLIENT_LEADER] 0x%lx\n", c->client_leader);
-            }
-
-            if (window_role)
-            {
-                fprintf (f, "  [WINDOW_ROLE] %s\n", window_role);
-                XFree (window_role);
-                window_role = NULL;
-            }
-
-            if (c->class.res_class)
-            {
-                fprintf (f, "  [RES_NAME] %s\n", c->class.res_name);
-            }
-
-            if (c->class.res_name)
-            {
-                fprintf (f, "  [RES_CLASS] %s\n", c->class.res_class);
-            }
-
-            if (c->name)
-            {
-                fprintf (f, "  [WM_NAME] %s\n", c->name);
-            }
-
-            wm_command_count = 0;
-            getWindowCommand (c->md->dpy, c->window, &wm_command, &wm_command_count);
-            if ((wm_command_count > 0) && (wm_command))
-            {
-                gint j;
-                fprintf (f, "  [WM_COMMAND] (%i)", wm_command_count);
-                for (j = 0; j < wm_command_count; j++)
-                {
-                    gchar *escaped_string;
-                    escaped_string = escape_quote (wm_command[j]);
-                    fprintf (f, " \"%s\"", escaped_string);
-                    g_free (escaped_string);
-                }
-                fprintf (f, "\n");
-                XFreeStringList (wm_command);
-                wm_command = NULL;
-                wm_command_count = 0;
-            }
-
-            fprintf (f, "  [GEOMETRY] (%i,%i,%i,%i)\n", c->x, c->y, c->width,
-                c->height);
-            fprintf (f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->old_x,
-                c->old_y, c->old_width, c->old_height);
-            fprintf (f, "  [DESK] %i\n", c->win_workspace);
-            fprintf (f, "  [FLAGS] 0x%lx\n", FLAG_TEST (c->flags,
-                    CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN |
-                    CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED |
-                    CLIENT_FLAG_NAME_CHANGED));
+            ScreenInfo *screen_info_n = (ScreenInfo *) screens->data;
+            sessionSaveScreen (screen_info_n, f);
         }
         fclose (f);
         return TRUE;
@@ -389,6 +404,7 @@ sessionLoadWindowStates (gchar * filename)
                 matches[num_match - 1].old_height =
                     matches[num_match - 1].height;
                 matches[num_match - 1].desktop = 0;
+                matches[num_match - 1].screen = 0;
                 matches[num_match - 1].used = FALSE;
                 matches[num_match - 1].flags = 0;
             }
@@ -404,6 +420,10 @@ sessionLoadWindowStates (gchar * filename)
                     &matches[num_match - 1].old_y,
                     &matches[num_match - 1].old_width,
                     &matches[num_match - 1].old_height);
+            }
+            else if (!strcmp (s1, "[SCREEN]"))
+            {
+                sscanf (s, "%*s %i", &matches[num_match - 1].screen);
             }
             else if (!strcmp (s1, "[DESK]"))
             {
@@ -534,13 +554,13 @@ matchWin (Client * c, Match * m)
     g_return_val_if_fail (c != NULL, FALSE);
 
     found = FALSE;
-    getClientID (c->md->dpy, c->window, &client_id);
+    getClientID (clientGetXDisplay (c), c->window, &client_id);
     if (xstreq (client_id, m->client_id))
     {
         /* client_id's match */
         if (c->client_leader != None)
         {
-            getWindowRole (c->md->dpy, c->client_leader, &window_role);
+            getWindowRole (clientGetXDisplay (c), c->client_leader, &window_role);
         }
         else
         {
@@ -566,13 +586,12 @@ matchWin (Client * c, Match * m)
                     /* If we have a client_id, we don't compare
                        WM_COMMAND, since it will be different. */
                     found = TRUE;
-
                 }
                 else
                 {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
                     wm_command_count = 0;
-                    getWindowCommand (c->md->dpy, c->window, &wm_command,
+                    getWindowCommand (clientGetXDisplay (c), c->window, &wm_command,
                         &wm_command_count);
                     if (wm_command_count == m->wm_command_count)
                     {
@@ -640,7 +659,7 @@ sessionMatchWinToSM (Client * c)
     g_return_val_if_fail (c != NULL, FALSE);
     for (i = 0; i < num_match; i++)
     {
-        if (!matches[i].used && matchWin (c, &matches[i]))
+        if (!matches[i].used && (c->screen_info->screen != matches[i].screen) && matchWin (c, &matches[i]))
         {
             matches[i].used = TRUE;
             c->x = matches[i].x;

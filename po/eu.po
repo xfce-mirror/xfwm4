@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2004-06-03 16:48+0200\n"
+"POT-Creation-Date: 2004-06-16 00:07+0200\n"
 "PO-Revision-Date: 1996-01-26 02:39+0100\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -311,106 +311,102 @@ msgstr "Titulu barran bi aldiz klikatzerakoan egingo den ekintza :"
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: src/events.c:1514
+#: src/events.c:1595
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Ekintza ez da (oraindik) onartzen\n"
 
-#: src/main.c:214
+#: src/main.c:178
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentazio errorea"
 
-#: src/main.c:247
-msgid "Cannot get default screen"
-msgstr ""
-
-#: src/main.c:411
+#: src/main.c:307
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Beste leiho kudeatzaile bat abiarazirik dago"
 
-#: src/main.c:416
+#: src/main.c:312
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Berezko konfigurazio fitxategian datuak falta dira"
 
-#: src/main.c:425
+#: src/main.c:322
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:433
+#: src/main.c:330
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:454
+#: src/main.c:351
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Errore ezezagun bat gertatu da"
 
-#: src/menu.c:39
+#: src/menu.c:38
 msgid "Ma_ximize"
 msgstr "Ma_ximizatu"
 
-#: src/menu.c:40
+#: src/menu.c:39
 msgid "Un_maximize"
 msgstr "Ez_maximizatu"
 
-#: src/menu.c:41
+#: src/menu.c:40
 msgid "_Hide"
 msgstr "_Ezkutatu"
 
-#: src/menu.c:42
+#: src/menu.c:41
 msgid "Hide _all others"
 msgstr "Beste _guztiak ezkutatu"
 
-#: src/menu.c:43
+#: src/menu.c:42
 msgid "S_how"
 msgstr "E_rakutsi"
 
-#: src/menu.c:44
+#: src/menu.c:43
 msgid "_Shade"
 msgstr "_Bildu"
 
-#: src/menu.c:45
+#: src/menu.c:44
 msgid "Un_shade"
 msgstr "Ire_ki"
 
-#: src/menu.c:46
+#: src/menu.c:45
 msgid "S_tick"
 msgstr "I_tsasi"
 
-#: src/menu.c:47
+#: src/menu.c:46
 msgid "Uns_tick"
 msgstr "As_katu"
 
-#: src/menu.c:48
+#: src/menu.c:47
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:49 src/menu.c:50
+#: src/menu.c:48 src/menu.c:49
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:51
+#: src/menu.c:50
 msgid "Send to..."
 msgstr "Bidali hona..."
 
-#: src/menu.c:53
+#: src/menu.c:52
 msgid "_Close"
 msgstr "I_txi"
 
-#: src/menu.c:56
+#: src/menu.c:55
 msgid "Destroy"
 msgstr "Suntsitu"
 
-#: src/menu.c:59
+#: src/menu.c:58
 msgid "_Quit"
 msgstr "_Irten"
 
-#: src/menu.c:60
+#: src/menu.c:59
 msgid "Restart"
 msgstr "Berrabiarazi"
 
@@ -424,7 +420,7 @@ msgstr "%i Idazmahaia"
 msgid "Workspace %i"
 msgstr "%i Idazmahaia"
 
-#: src/menu.c:423
+#: src/menu.c:424
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
@@ -434,52 +430,52 @@ msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/settings.c:314
+#: src/settings.c:341
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Lehenespen fitxategia falta da"
 
-#: src/settings.c:547
+#: src/settings.c:596
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Ezin da esleitu kolore aktibo %s\n"
 
-#: src/settings.c:554
+#: src/settings.c:602
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Ezin da analizatu kolore aktibo %s\n"
 
-#: src/settings.c:598
+#: src/settings.c:645
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ezin da esleitu kolore ez-aktiboa %s\n"
 
-#: src/settings.c:605
+#: src/settings.c:651
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ezin da analizatu kolore ez-aktiboa %s\n"
 
-#: src/settings.c:793
+#: src/settings.c:829
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: \"%s\" ezarritako tekla gaia ez da aurkitzen lehentsitakoa erabiliko da"
 
-#: src/settings.c:803
+#: src/settings.c:839
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Lehenespen fixtategian balioak falta dira"
 
-#: src/settings.c:1149
+#: src/settings.c:1125
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s:Idazmahai kontatzailea ez dago ezarria, Balio hau erabiliko da:%i"
 
-#: src/tabwin.c:68
+#: src/tabwin.c:69
 msgid "Switch to ..."
 msgstr "Aldatu hona ..."
 
-#: src/tabwin.c:127
+#: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
 
