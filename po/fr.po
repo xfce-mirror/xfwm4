@@ -63,7 +63,7 @@ msgstr "Modifier le nom"
 #: mcs-plugin/workspaces.c:355
 #, c-format
 msgid "Workspace %d"
-msgstr "Espace %d"
+msgstr "Espace de travail %d"
 
 #: mcs-plugin/workspaces.c:365
 msgid "Name:"
