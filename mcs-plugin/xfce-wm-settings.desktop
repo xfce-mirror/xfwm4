@@ -10,3 +10,4 @@ Terminal=false
 Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;
 OnlyShowIn=XFCE;
+GenericName=Window Manager Settings
