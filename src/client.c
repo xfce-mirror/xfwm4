@@ -2261,16 +2261,16 @@ void clientShow(Client * c, int change_state)
 
     if((c->win_workspace == ws) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
     {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_VISIBLE);
         for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
         {
-            if((c2->transient_for == c->window) && (c2 != c))
+            if(((c2->transient_for == c->window) || (c->transient_for == c2->window)) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c))
             {
                 clientShow(c2, change_state);
             }
         }
         XMapWindow(dpy, c->window);
         XMapWindow(dpy, c->frame);
-        CLIENT_FLAG_SET(c, CLIENT_FLAG_VISIBLE);
     }
     if(change_state)
     {
@@ -2292,15 +2292,16 @@ void clientHide(Client * c, int change_state)
 
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
+    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_VISIBLE);
+    
     for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
-        if((c2->transient_for == c->window) && (c2 != c))
+        if(((c2->transient_for == c->window) || (c->transient_for == c2->window)) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c))
         {
             clientHide(c2, change_state);
         }
     }
 
-    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_VISIBLE);
     if(change_state)
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_HIDDEN);
