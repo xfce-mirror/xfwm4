@@ -61,6 +61,11 @@
     (c->wmhints->initial_state == IconicState) && \
     !(c->transient_for))
 
+#define CONSTRAINED_WINDOW(c) \
+    ((c->type == WINDOW_NORMAL) || \
+     (c->type == WINDOW_DIALOG) || \
+     (c->type == WINDOW_MODAL_DIALOG))
+
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
@@ -1361,7 +1366,7 @@ static void clientInitPosition(Client * c)
 
     if(c->size->flags & (PPosition | USPosition))
     {
-        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        if(CONSTRAINED_WINDOW(c))
         {
             clientKeepVisible(c);
         }
@@ -1373,8 +1378,10 @@ static void clientInitPosition(Client * c)
         /* Center transient relative to their parent window */
         c->x = c2->x + (c2->width - c->width) / 2;
         c->y = c2->y + (c2->height - c->height) / 2;
-        clientKeepVisible(c);
-
+        if(CONSTRAINED_WINDOW(c))
+        {
+            clientKeepVisible(c);
+        }
         return;
     }
 
@@ -2657,7 +2664,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 c->y = c->y + 16;
             }
         }
-        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        if(CONSTRAINED_WINDOW(c))
         {
             clientConstraintPos(c);
         }
@@ -2756,7 +2763,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             }
         }
 
-        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        if(CONSTRAINED_WINDOW(c))
         {
             clientConstraintPos(c);
         }
