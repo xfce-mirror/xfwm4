@@ -1900,7 +1900,7 @@ compositorHandleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent *e
 {
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
+    TRACE ("entering compositorHandleDestroyNotify for 0x%lx", ev->window);
 
     if (!(display_info->enable_compositor))
     {
