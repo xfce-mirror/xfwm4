@@ -232,7 +232,7 @@ void clientUpdateNetState (Client *, XClientMessageEvent *);
 void clientGetNetWmType (Client * c);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
-void clientConfigure (Client *, XWindowChanges *, int, gboolean);
+void clientConfigure (Client *, XWindowChanges *, int, gboolean, gboolean);
 void clientGetMWMHints (Client *, gboolean);
 void clientGetWMNormalHints (Client *, gboolean);
 void clientClearPixmapCache (Client *);

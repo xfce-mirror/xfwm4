@@ -1253,7 +1253,7 @@ clientUpdateAllFrames (int mask)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE, FALSE);
         }
         if (mask & UPDATE_FRAME)
         {
@@ -2214,7 +2214,7 @@ clientInitPosition (Client * c)
 
 void
 clientConfigure (Client * c, XWindowChanges * wc, int mask,
-    gboolean constrained)
+    gboolean constrained, gboolean configureRequest)
 {
     XConfigureEvent ce;
 
@@ -2293,9 +2293,13 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask,
     {
         frameDraw (c, FALSE, TRUE);
     }
-    if (mask)
+    
+    if ((configureRequest && !(mask & (CWX | CWY | CWWidth | CWHeight))) ||
+        ((mask & (CWX | CWY)) && !(mask & (CWWidth | CWHeight))))
     {
+        DBG ("Sending ConfigureNotify");
         ce.type = ConfigureNotify;
+        ce.display = dpy;
         ce.event = c->window;
         ce.window = c->window;
         ce.x = c->x;
@@ -2400,7 +2404,7 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE, FALSE);
     }
 }
 
@@ -2500,7 +2504,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
     {
         if ((c->width != wc.width) || (c->height != wc.height))
         {
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE);
         }
         else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE) != previous_value)
         {
@@ -2924,7 +2928,7 @@ clientFrame (Window w, gboolean startup)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
+    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE, FALSE);
     clientApplyStackList (windows_stack);
     last_raise = c;
 
@@ -3742,13 +3746,13 @@ clientShade (Client * c)
 
     c->win_state |= WIN_STATE_SHADED;
     CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
-    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, FALSE);
+        clientConfigure (c, &wc, CWWidth | CWHeight, FALSE, FALSE);
     }
+    clientSetNetState (c);
 }
 
 void
@@ -3767,13 +3771,13 @@ clientUnshade (Client * c)
     }
     c->win_state &= ~WIN_STATE_SHADED;
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_SHADED);
-    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, FALSE);
+        clientConfigure (c, &wc, CWWidth | CWHeight, FALSE, FALSE);
     }
+    clientSetNetState (c);
 }
 
 void
@@ -3920,7 +3924,7 @@ clientToggleFullscreen (Client * c)
     }
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE, FALSE);
     }
     else
     {
@@ -3929,7 +3933,6 @@ clientToggleFullscreen (Client * c)
         c->height = wc.height;
         c->width = wc.width;
     }
-
     clientSetNetState (c);
     clientSetLayer (c, layer);
 }
@@ -4079,10 +4082,9 @@ clientToggleMaximized (Client * c, int mode)
         wc.height = c->height;
     }
 
-    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE, FALSE);
     }
     else
     {
@@ -4091,6 +4093,7 @@ clientToggleMaximized (Client * c, int mode)
         c->height = wc.height;
         c->width = wc.width;
     }
+    clientSetNetState (c);
 }
 
 inline gboolean
@@ -4444,7 +4447,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, CWX | CWY, FALSE);
+            clientConfigure (c, &wc, CWX | CWY, FALSE, FALSE);
         }
     }
     else if (passdata->use_keys && xevent->type == KeyRelease)
@@ -4530,7 +4533,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, CWX | CWY, FALSE);
+            clientConfigure (c, &wc, CWX | CWY, FALSE, FALSE);
         }
     }
     else if (!passdata->use_keys && xevent->type == ButtonRelease)
@@ -4678,7 +4681,7 @@ clientMove (Client * c, XEvent * e)
     }
     wc.x = c->x;
     wc.y = c->y;
-    clientConfigure (c, &wc, CWX | CWY, FALSE);
+    clientConfigure (c, &wc, CWX | CWY, FALSE, FALSE);
 
     if (passdata.grab && params.box_move)
     {
@@ -4799,7 +4802,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE, FALSE);
         }
     }
     else if ((passdata->use_keys) && (xevent->type == KeyRelease))
@@ -4936,7 +4939,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE, FALSE);
         }
     }
     else if (xevent->type == ButtonRelease)
@@ -5077,7 +5080,7 @@ clientResize (Client * c, int corner, XEvent * e)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
+    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE, FALSE);
 
     if (passdata.grab && params.box_resize)
     {

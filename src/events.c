@@ -981,7 +981,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
                 }
             }
         }
-        clientConfigure (c, &wc, ev->value_mask, constrained);
+        clientConfigure (c, &wc, ev->value_mask, constrained, TRUE);
     }
     else
     {
