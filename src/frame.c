@@ -303,9 +303,9 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
 
     if (w1 > 0)
     {
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_2][state].pixmap,
+        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_1][state].pixmap,
             0, 0, w1, frameTop (c));
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_2][state].mask, 0, 0,
+        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_1][state].mask, 0, 0,
             w1, frameTop (c));
         x = x + w1;
     }
