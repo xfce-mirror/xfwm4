@@ -78,6 +78,7 @@ extern Atom wm_state;
 extern Atom wm_change_state;
 extern Atom wm_delete_window;
 extern Atom wm_protocols;
+extern Atom wm_colormap_windows;
 extern Atom motif_wm_hints;
 extern Atom win_hints;
 extern Atom win_state;

@@ -41,6 +41,7 @@ Atom wm_state;
 Atom wm_change_state;
 Atom wm_delete_window;
 Atom wm_protocols;
+Atom wm_colormap_windows;
 Atom motif_wm_hints;
 Atom win_hints;
 Atom win_state;
@@ -102,6 +103,7 @@ void initICCCMHints(Display * dpy)
     wm_change_state = XInternAtom(dpy, "WM_CHANGE_STATE", False);
     wm_delete_window = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
     wm_protocols = XInternAtom(dpy, "WM_PROTOCOLS", False);
+    wm_colormap_windows = XInternAtom (dpy, "WM_COLORMAP_WINDOWS", False);
 }
 
 unsigned long getWMState(Display * dpy, Window w)

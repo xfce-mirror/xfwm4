@@ -606,6 +606,51 @@ static void clientWindowType (Client *c)
     }
 }
 
+void clientInstallColormaps (Client *c)
+{
+    XWindowAttributes attr;
+    gboolean installed = False;
+    int i;
+    
+    g_return_if_fail (c != NULL);
+    DBG("entering clientInstallColormaps\n");
+
+    if (c->ncmap)
+    {
+	for (i = c->ncmap - 1; i >= 0; i--)
+	{
+	    XGetWindowAttributes (dpy, c->cmap_windows[i], &attr);
+	    XInstallColormap (dpy, attr.colormap);
+	    if (c->cmap_windows[i] == c->window)
+	    {
+		installed = True;
+	    }
+	}
+    }
+    if ((!installed) && (c->cmap))
+    {
+	XInstallColormap (dpy, c->cmap);
+    }
+}
+
+void clientUpdateColormaps (Client *c)
+{
+    XWindowAttributes attr;
+    
+    g_return_if_fail (c != NULL);
+    DBG("entering clientUpdateColormaps\n");
+
+    if (c->ncmap)
+    {
+    	XFree (c->cmap_windows);
+    }
+    if (!XGetWMColormapWindows (dpy, c->window, &c->cmap_windows, &c->ncmap))
+    {
+    	c->ncmap = 0;
+    }
+    c->cmap = attr.colormap;
+}
+
 void clientGrabKeys(Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -1330,10 +1375,16 @@ void clientFrame(Window w)
     c->width = attr.width;
     c->height = attr.height;
     c->border_width = attr.border_width;
-      
+    c->cmap = attr.colormap;
+
     for(i = 0; i < BUTTON_COUNT; i++)
     {
         c->button_pressed[i] = False;
+    }
+
+    if (!XGetWMColormapWindows (dpy, w, &c->cmap_windows, &c->ncmap))
+    {
+    	c->ncmap = 0;
     }
 
     c->type_atom    = None;
@@ -1508,6 +1559,10 @@ void clientUnframe(Client * c, int remap)
     if(c->size)
     {
         XFree(c->size);
+    }
+    if (c->ncmap > 0)
+    {
+	XFree (c->cmap_windows);
     }
     free(c);
     workspaceUpdateArea(margins, gnome_margins);
@@ -1955,6 +2010,7 @@ void clientSetFocus(Client * c, int sort)
             return;
         }
         client_focus = c;
+	clientInstallColormaps (c);
         if(sort)
         {
             DBG("Sorting...\n");

@@ -75,7 +75,7 @@ static void reset_timeout (void)
     raise_timeout = gtk_timeout_add (raise_delay, (GtkFunction) raise_cb, NULL);
 }
 
-void handleKeyPress(XKeyEvent * ev)
+static inline void handleKeyPress(XKeyEvent * ev)
 {
     Client *c;
     int state, key;
@@ -271,7 +271,7 @@ void handleKeyPress(XKeyEvent * ev)
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
 
-void handleButtonPress(XButtonEvent * ev)
+static inline void handleButtonPress(XButtonEvent * ev)
 {
     Client *c;
     Window win;
@@ -401,7 +401,7 @@ void handleButtonPress(XButtonEvent * ev)
     }
 }
 
-void handleButtonRelease(XButtonEvent * ev)
+static inline void handleButtonRelease(XButtonEvent * ev)
 {
     DBG("entering handleButtonRelease\n");
 
@@ -409,7 +409,7 @@ void handleButtonRelease(XButtonEvent * ev)
     XSync(dpy, False);
 }
 
-void handleDestroyNotify(XDestroyWindowEvent * ev)
+static inline void handleDestroyNotify(XDestroyWindowEvent * ev)
 {
     Client *c;
 
@@ -430,7 +430,7 @@ void handleDestroyNotify(XDestroyWindowEvent * ev)
     }
 }
 
-void handleUnmapNotify(XUnmapEvent * ev)
+static inline void handleUnmapNotify(XUnmapEvent * ev)
 {
     Client *c;
 
@@ -458,7 +458,7 @@ void handleUnmapNotify(XUnmapEvent * ev)
     }
 }
 
-void handleMapRequest(XMapRequestEvent * ev)
+static inline void handleMapRequest(XMapRequestEvent * ev)
 {
     Client *c;
 
@@ -480,7 +480,7 @@ void handleMapRequest(XMapRequestEvent * ev)
     }
 }
 
-void handleConfigureRequest(XConfigureRequestEvent * ev)
+static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
 {
     Client *c;
     XWindowChanges wc;
@@ -508,7 +508,7 @@ void handleConfigureRequest(XConfigureRequestEvent * ev)
     }
 }
 
-void handleEnterNotify(XCrossingEvent * ev)
+static inline void handleEnterNotify(XCrossingEvent * ev)
 {
     Client *c;
 
@@ -526,7 +526,7 @@ void handleEnterNotify(XCrossingEvent * ev)
     }
 }
 
-void handleFocusIn(XFocusChangeEvent * ev)
+static inline void handleFocusIn(XFocusChangeEvent * ev)
 {
     Client *c;
 
@@ -562,12 +562,12 @@ void handleFocusIn(XFocusChangeEvent * ev)
     }
 }
 
-void handleFocusOut(XFocusChangeEvent * ev)
+static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
     DBG("entering handleFocusOut\n");
 }
 
-void handlePropertyNotify(XPropertyEvent * ev)
+static inline void handlePropertyNotify(XPropertyEvent * ev)
 {
     Client *c;
     long dummy;
@@ -620,6 +620,14 @@ void handlePropertyNotify(XPropertyEvent * ev)
             DBG("client \"%s\" (%#lx) has received a net_wm_strut notify\n", c->name, c->window);
 	    clientGetNetStruts(c);
         }
+	else if (ev->atom == wm_colormap_windows)
+	{
+	    clientUpdateColormaps(c);
+	    if (c == clientGetFocus())
+	    {
+                clientInstallColormaps(c);
+	    }
+	}
     }
     else
     {
@@ -638,7 +646,7 @@ void handlePropertyNotify(XPropertyEvent * ev)
     }
 }
 
-void handleClientMessage(XClientMessageEvent * ev)
+static inline void handleClientMessage(XClientMessageEvent * ev)
 {
     Client *c;
 
@@ -724,7 +732,7 @@ void handleClientMessage(XClientMessageEvent * ev)
     }
 }
 
-void handleShape(XShapeEvent * ev)
+static inline void handleShape(XShapeEvent * ev)
 {
     Client *c;
 
@@ -734,6 +742,22 @@ void handleShape(XShapeEvent * ev)
     if(c)
     {
         frameDraw(c);
+    }
+}
+
+static inline void handleColormapNotify(XColormapEvent *ev)
+{
+    Client *c;
+    
+    DBG("entering handleColormapNotify\n");
+    
+    c = clientGetFromWindow(ev->window, WINDOW);
+    if ((c) && (ev->window == c->window) && (ev->new))
+    {
+	if (c == clientGetFocus())
+	{
+	    clientInstallColormaps (c);
+	}
     }
 }
 
@@ -778,6 +802,9 @@ void handleEvent(XEvent * ev)
             break;
         case ClientMessage:
             handleClientMessage((XClientMessageEvent *) ev);
+            break;
+        case ColormapNotify:
+            handleColormapNotify((XColormapEvent *) ev);
             break;
         default:
             if(shape && (ev->type == shape_event))
