@@ -133,9 +133,11 @@ maintainers, etc. Commented out by default.
   </screenshot>
 </figure>
 
-<para>Note : the use of a keyboard shortcut needs the window to have the focus :)</para>
+<para>You can open the window menu with a left-click on the menu button of the title bar, or with a right-click on the window title area itself.</para>
 
 <variablelist>
+
+<para>&nbsp;</para>
 
 <varlistentry>
 <term>Give focus to a window</term>
@@ -146,6 +148,9 @@ Give the focus to a window if you want it to receive keyboard and mouse input. W
 	<para>
 A keyboard shortcut allows to switch the focus from a window to others : Alt + Tab. If you use it, you will see a shadow superimposing the borders of the windows that successively own the focus.
 	</para>
+	<para>Note : the use of a keyboard shortcut needs the window to have the focus :)
+	</para>
+
 </listitem>
 </varlistentry>
 
@@ -156,7 +161,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<para>To maximize a window, perform one of those actions :</para>
 	<itemizedlist>
 	<listitem>click the maximize button of the title bar</listitem>
-	<listitem>click the menu button of the title bar and choose the "maximize" item</listitem>
+	<listitem>open the window menu from the title bar and choose the "maximize" item</listitem>
 	<listitem>use Alt + F5 keyboard shortcut</listitem>
 	</itemizedlist>
 	<para>To maximize a window vertically :</para>
@@ -173,7 +178,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<itemizedlist>
 	<listitem>click the unmaximize button of the title bar</listitem>
 	<listitem>use the same keyboard shortcut once again</listitem>
-	<listitem>choose the Unmaximize item in the window menu</listitem>
+	<listitem>choose the "Unmaximize" item in the window menu</listitem>
 	</itemizedlist>	
 	<para>&nbsp;</para>
 </listitem>
@@ -198,7 +203,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<para>You can hide a window performing one of these actions :</para>
 	<itemizedlist>
 	<listitem>click the hide button of the title bar</listitem>
-	<listitem>click the menu button of the title bar and choose the Hide item</listitem>
+	<listitem>open the window menu from the title bar and choose the "Hide" item</listitem>
 	<listitem>use Alt + F8 keyboard shortcut </listitem>
 	</itemizedlist>
 	<para>Alternatively, you can hide all windows of current workspace, excepted the one you are using, in only one action : click the menu button of the title bar and choose "Hide all others".</para>
@@ -218,7 +223,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<para>If you "shade" a window, it will be reduced to the size of its title bar. The same repeated action makes a window to shade/unshade :</para>
 	<itemizedlist>
 	<listitem>click the shade/unshade button of the title bar</listitem>
-	<listitem>click the menu button of the title bar and choose Shade or Unshade item</listitem>
+	<listitem>open the window menu from the title bar and choose "Shade" or "Unshade" item</listitem>
 	<listitem>use the mouse scrollwheel while you hold the pointer over the title bar</listitem>
 	<listitem>use the Alt + F9 keyboard shortcut</listitem>
 	</itemizedlist>
@@ -235,8 +240,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
     </para>
     <itemizedlist>
       <listitem>click the stick/unstick button of the title bar</listitem>
-      <listitem>click the menu button of the title bar and choose Stick or 
-	Unstick item</listitem>
+      <listitem>open the window menu button from the title bar and choose "Stick" or "Unstick" item</listitem>
       <listitem>use the Alt + F10 keyboard shortcut</listitem>
     </itemizedlist>
     <para>&nbsp;</para>
@@ -261,6 +265,8 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 <listitem>
 	<para>You can send a window to another workspace by performing one of these actions :</para>
 	<itemizedlist>
+	<listitem>stick the window, move to another workspace, then unstick the window.</listitem>
+	<listitem>use the window menu and choose one of the "Send to" submenu items.</listitem>
 	<listitem>left or right click on the title bar of the window, drag it to the screen edge : the pointer will then go to the next workspace, still holding the window. Corresponding option needs to be selected in the <ulink url="xfwm4.html#wm_misc" type="http">Window Manager Preferences dialog</ulink>.</listitem>
 	<listitem>use keyboard shortcuts :
 		<itemizedlist>
@@ -281,7 +287,7 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<para>To close a window :</para>
 	<itemizedlist>
 	<listitem>click the close button of the title bar</listitem>
-	<listitem>click the menu button of the title bar and choose Close item</listitem>
+	<listitem>Open the window menu from the title bar and choose the "Close" item</listitem>
 	<listitem>or use Alt + F4 keyboard shortcut</listitem>
 	</itemizedlist>
 </listitem>
@@ -302,16 +308,15 @@ A keyboard shortcut allows to switch the focus from a window to others : Alt + T
 	<listitem>Hide window : Alt + F8</listitem>
 	<listitem>Shade window : Alt + F9</listitem>
 	<listitem>Stick window : Alt + F10</listitem>
-	<listitem>Cycle windows : focus Alt + Tab</listitem>
+	<listitem>Cycle windows focus : Alt + Tab</listitem>
 	<listitem>Move window : Control + Shift + Alt + Arrow (up, down, left, or right)</listitem>
 	<listitem>Resize window : Shift + Alt + Arrow (up, down, left, or right)</listitem>
 	<listitem>Next workspace : Control + Alt + Right + right arrow</listitem>
 	<listitem>Previous workspace : Control + Alt + left arrow</listitem>
 	<listitem>Add a workspace : Alt + Inser</listitem>
 	<listitem>Delete a workspace : Alt + Delete</listitem>
-	<listitem>Go to workspace number : N (1-9) Control + F(N)</listitem>
-	<listitem>Move the window to next workspace : Alt + Control + End</listitem>
-	<listitem>Move a window to previous workspace : Alt + Control + Home</listitem>
+	<listitem>Go to workspace number N (1-9) : Control + F(N)</listitem>
+	<listitem>Move the window to previous|next workspace : Alt + Control + Home|End</listitem>
 	<listitem>Move a window to workspace number N (1-9) : Alt + Control + keypad key number N</listitem>
 	<listitem>Start xfhelp4 : Alt + F1</listitem>
 	<listitem>Start xfrun4 : Alt + F2</listitem>
