@@ -329,23 +329,23 @@ msgstr "Geavanceerd"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:46
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Wilt u dit toetsenbord-thema echt verwijderen?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:112 mcs-plugin/xfwm4_shortcuteditor.c:118
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Toetsenbordthema toevoegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:122
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Themanaam:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:145
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Een toetsenbordthema met deze naam bestaat reeds"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:151
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Het toetsenbordthema heeft nog geen naam"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:328 mcs-plugin/xfwm4_shortcuteditor.c:743
 msgid "Close window"
@@ -412,24 +412,20 @@ msgid "Toggle fullscreen"
 msgstr "Wissel volledig scherm"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:423
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Volgend bureaublad"
+msgstr "Bureaublad naar boven"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:428
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Volgend bureaublad"
+msgstr "Bureaublad naar beneden"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:433
-#, fuzzy
 msgid "Left workspace"
-msgstr "Volgend bureaublad"
+msgstr "Bureaublad naar links"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:438
-#, fuzzy
 msgid "Right workspace"
-msgstr "Volgend bureaublad"
+msgstr "Bureaublad naar rechts"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:443 mcs-plugin/xfwm4_shortcuteditor.c:819
 msgid "Next workspace"
@@ -492,24 +488,20 @@ msgid "Move window to previous workspace"
 msgstr "Venster naar vorig bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:518
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Venster naar volgend bureablad verplaatsen"
+msgstr "Venster naar bovenliggend bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:523
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Venster naar volgend bureablad verplaatsen"
+msgstr "Venster naar onderliggend bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:528
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Venster naar volgend bureablad verplaatsen"
+msgstr "Venster naar linker-bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:533
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Venster naar volgend bureablad verplaatsen"
+msgstr "Venster naar rechter-bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:538 mcs-plugin/xfwm4_shortcuteditor.c:879
 msgid "Move window to workspace 1"
@@ -594,9 +586,8 @@ msgstr "Sneltoets samenstellen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
 #: mcs-plugin/xfwm4_shortcuteditor.c:1500
-#, fuzzy
 msgid "No shortcut"
-msgstr "Sneltoets samenstellen"
+msgstr "Geen sneltoets"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1394
@@ -737,78 +728,3 @@ msgstr "Wisselen naar ..."
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
 
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: een andere Window Manager is al in gebruik"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: Kan inactieve kleur %s niet creëren\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: een andere Window Manager is al in gebruik"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%: Ontbrekende gegevens uit standaard bestanden"
-
-#~ msgid "%s: Failed to enter daemon mode: %s"
-#~ msgstr "%s: Kon daemon modus niet starten: %s"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: Kon nieuw proces niet creëren"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: er is een onbekende fout opgetreden"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: defaults bestand ontbreekt"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr ""
-#~ "%s: toetsenbordthema \"%s\" ontbreekt; standaard waarden worden gebruikt"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%: Ontbrekende gegevens in defaults bestand"
-
-#~ msgid "Cannot grab the keyboard"
-#~ msgstr "Kan toetsenbord niet vastzetten"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr ""
-#~ "Nieuwe venster krijgen focus \n"
-#~ "automatisch"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr "Venster met focus naar voren halen"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr ""
-#~ "Venster naar voren halen bij klikken\n"
-#~ "in het venster"
-
-#~ msgid "Decoration style"
-#~ msgstr "Vensterdecoratie"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "Toetsenbord en focus"
-
-#~ msgid "%s: Workspace count not set, using rc value: %i"
-#~ msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"
-
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Marges aanpassen"
-
-#~ msgid "Font select :"
-#~ msgstr "Lettertype :"
-
-#~ msgid "%s: Running without session manager"
-#~ msgstr "%s: geen sessie manager in gebruik"
