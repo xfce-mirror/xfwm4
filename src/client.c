@@ -1432,13 +1432,17 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return NULL;
     }
 
-    if (checkKdeSystrayWindow (display_info, w) && (screen_info->systray != None))
+    if (checkKdeSystrayWindow (display_info, w))
     {
-        TRACE ("Not managing KDE systray windows");
-        sendSystrayReqDock (display_info, w, screen_info->systray);
-        myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
-        return NULL;
+        TRACE ("Detected KDE systray windows");
+        if (screen_info->systray != None)
+        {
+            sendSystrayReqDock (display_info, w, screen_info->systray);
+            myDisplayUngrabServer (display_info);
+            gdk_error_trap_pop ();
+            return NULL;
+        }
+        TRACE ("No systray found for this screen");
     }
 
     c = g_new0 (Client, 1);

@@ -461,6 +461,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     if (session_init (client_session))
     {
         load_saved_session (client_session);
+        return 1;
     }
 
     return 0;
@@ -495,6 +496,11 @@ main (int argc, char **argv)
     }
 
     status = initialize (argc, argv, compositor);
+    /* 
+       status  < 0   =>   Error, cancel execution
+       status == 0   =>   Run w/out session manager
+       status == 1   =>   Connected to session manager
+     */
     switch (status)
     {
         case -1:
@@ -537,7 +543,9 @@ main (int argc, char **argv)
                 }
 #endif /* !HAVE_DAEMON */
             }
-
+            /* Walk through */
+        case 1:
+        g_print ("Main loop\n");
             /* enter GTK main loop */
             gtk_main ();
             break;
