@@ -189,6 +189,7 @@ initialize (int argc, char **argv)
     long ws;
     SessionClient *client_session;
     gint i, nscreens;
+    gboolean screen_managed = FALSE;
     
     TRACE ("entering initialize");
     
@@ -232,7 +233,6 @@ initialize (int argc, char **argv)
         ScreenInfo *screen_info = NULL;
         GdkScreen *gscr;
         
-        printf("Attemping to manage screen #%i\n", i);
         gscr = gdk_display_get_screen(display_info->gdisplay, i);
         screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK);
         sn_init_display (screen_info);
@@ -247,6 +247,7 @@ initialize (int argc, char **argv)
         {
             return -2;
         }
+        screen_managed = TRUE;
         setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);
         setHint (display_info->dpy, screen_info->xroot, win_supporting_wm_check, screen_info->gnome_win);
         setHint (display_info->dpy, screen_info->xroot, win_desktop_button_proxy, screen_info->gnome_win);
@@ -267,7 +268,11 @@ initialize (int argc, char **argv)
         
         initGtkCallbacks (screen_info);
     }
-
+    /* No screen to manage, give up */
+    if (!screen_managed)
+    {
+        return -1;
+    }
     display_info->xfilter = xfce_init_event_filter ((gpointer) display_info);
     xfce_push_event_filter (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
 

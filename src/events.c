@@ -288,18 +288,12 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
     }
 }
 
-static void
-handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
+static int
+getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;;
-    Client *c = NULL;
-    int state, key;
-
-    TRACE ("entering handleKeyEvent");
-
-    c = clientGetFocus ();
-    state = ev->state & MODIFIER_MASK;
+    int key, state;
     
+    state = ev->state & MODIFIER_MASK;
     for (key = 0; key < KEY_COUNT; key++)
     {
         if ((screen_info->params->keys[key].keycode == ev->keycode)
@@ -308,10 +302,24 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             break;
         }
     }
+    
+    return key;
+}
 
+static void
+handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
+{
+    ScreenInfo *screen_info = NULL;
+    Client *c = NULL;
+    int key;
+
+    TRACE ("entering handleKeyEvent");
+
+    c = clientGetFocus ();
     if (c)
     {
         screen_info = c->screen_info;
+        key = getKeyPressed (screen_info, ev);
         switch (key)
         {
             case KEY_MOVE_UP:
@@ -399,6 +407,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             return;
         }
         
+        key = getKeyPressed (screen_info, ev);
         switch (key)
         {
             case KEY_CYCLE_WINDOWS:
@@ -1325,7 +1334,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
-        screen_info = screen_info;
+        screen_info = c->screen_info;
         clientUpdateFocus (screen_info, c, FOCUS_SORT);
         if (screen_info->params->raise_on_focus && !screen_info->params->click_to_focus)
         {

@@ -119,22 +119,27 @@ add_margins_page (GtkBox *box)
     wmax = gdk_screen_width () / 4;
     hmax = gdk_screen_height () / 4;
 
+    frame = xfce_framebox_new (_("Workspace Margins"), FALSE);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, BORDER);
+    
+    vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_widget_show (vbox);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+
     label =
         gtk_label_new (_("Margins are areas on the edges of the screen where no window will be placed"));
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
-    gtk_misc_set_padding (GTK_MISC (label), BORDER, 4);
+    gtk_misc_set_padding (GTK_MISC (label), BORDER, 0);
     gtk_widget_show (label);
-    gtk_box_pack_start (box, label, FALSE, FALSE, 0);
-
-    frame = xfce_framebox_new (_("Workspace Margins"), FALSE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, BORDER);
-
+    gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, BORDER);
+    
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
     gtk_widget_show (hbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, BORDER);
 
     monitor = xfce_inline_icon_at_size (monitor_icon_data, -1, -1);
     image = gtk_image_new_from_pixbuf (monitor);
