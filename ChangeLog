@@ -1,3 +1,538 @@
+2003-03-13  xfce
+
+	* src/client.c, themes/microdeck/themerc: Add a flag to avoid
+	double desktop wrapping in clientMove_event_filter() iRemove shadow
+	under title text in micordeck theme
+
+2003-03-11  xfce
+
+	* themes/microdeck/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-active.xpm, close-inactive.xpm, hide-active.xpm,
+	hide-inactive.xpm, left-active.xpm, left-inactive.xpm,
+	maximize-active.xpm, maximize-inactive.xpm, menu-active.xpm,
+	menu-inactive.xpm, right-active.xpm, right-inactive.xpm,
+	shade-active.xpm, shade-inactive.xpm, stick-active.xpm,
+	stick-inactive.xpm: Redesign default "microdeck" theme
+
+2003-03-11  xfce
+
+	* src/client.c: Forgot to apply net_client_list_stacking atom so
+	that the pager was not displaying correct stack
+
+2003-03-11  xfce
+
+	* src/client.c: Fix some compiler warnings, make code slightly
+	simpler in clientSnapPosition()
+
+2003-03-11  xfce
+
+	* src/: client.c, settings.c, settings.h: Rearranged the code a
+	bit, made a separate inline function for snapping Added a separate
+	option for snapping between windows.  XFwm4 mcs plugin is updated
+	too so the gui reflect these changes.
+
+2003-03-11  xfce
+
+	* defaults/defaults.in, mcs-plugin/xfwm4_plugin.c, po/ar.gmo,
+	po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	po/zh_CN.po: Rearranged the code a bit, made a separate inline
+	function for snapping Added a separate option for snapping between
+	windows.  XFwm4 mcs plugin is updated too so the gui reflect these
+	changes.
+
+2003-03-09  xfce
+
+	* src/client.c: Committed patch for window snapping (Jens Guballa
+	<J.Guballa@t-online.de>)
+
+2003-03-09  xfce
+
+	* src/client.c: Fix a raising problem
+
+2003-03-09  xfce
+
+	* src/client.c: Some more optimizations based on latest changes
+
+2003-03-09  xfce
+
+	* src/: client.c, client.h, events.c, events.h, frame.c, frame.h,
+	hints.c, hints.h, keyboard.c, keyboard.h, main.c, main.h, menu.c,
+	menu.h, misc.c, misc.h, mywindow.h, parserc.c, parserc.h, pixmap.c,
+	pixmap.h, settings.c, settings.h, workspaces.c, workspaces.h: Major
+	rework of stacking management.	Removal of all recursive
+	procedures.  Update of (c) mention in .c/.h files.
+
+2003-03-06  xfce
+
+	* src/events.c: Revert last change, there is no such Button6 and
+	Button7 in X.h
+
+2003-03-06  xfce
+
+	* src/events.c: Include scroll left and right buttons for
+	shade/unshade
+
+2003-03-06  xfce
+
+	* src/: misc.c, misc.h, settings.c: Increase line width for outline
+	move/resize
+
+2003-03-05  xfce
+
+	* src/client.c: Improve move/resize of windows under heavy system
+	load.
+
+2003-03-05  xfce
+
+	* themes/microdeck/: title-3-active.xpm, title-3-inactive.xpm: Add
+	very light horiz stripes to title bar for microdeck theme.
+
+2003-03-04  xfce
+
+	* src/workspaces.c: Optimize desktop swtching
+
+2003-03-04  xfce
+
+	* themes/: microdeck/themerc, mofit/bottom-left-active.xpm,
+	mofit/bottom-left-inactive.xpm, tgc/themerc: Adjust themes and
+	colors.
+
+2003-03-03  xfce
+
+	* themes/: atlanta/themerc, atlanta2/themerc: Adjust horiz/vert
+	offset
+
+2003-03-03  xfce
+
+	* src/main.c: Add a DBG statement to tell the XID of the event
+	window
+
+2003-03-03  xfce
+
+	* src/client.c, themes/microdeck/bottom-left-active.xpm,
+	themes/microdeck/bottom-left-inactive.xpm,
+	themes/microdeck2/bottom-left-active.xpm,
+	themes/microdeck2/bottom-left-inactive.xpm: Apply initial net props
+	even if app is session managed
+
+2003-03-03  xfce
+
+	* src/client.c: Apply initial net state only when not session
+	managed
+
+2003-03-02  xfce
+
+	* configure, configure.in, xfwm4.spec.in, defaults/defaults.in,
+	mcs-plugin/xfwm4_plugin.c, src/client.c, src/parserc.c,
+	themes/Makefile.am, themes/Makefile.in, themes/microdeck/README,
+	themes/microdeck/bottom-active.xpm,
+	themes/microdeck/bottom-inactive.xpm,
+	themes/microdeck/bottom-left-active.xpm,
+	themes/microdeck/bottom-left-inactive.xpm,
+	themes/microdeck/bottom-right-active.xpm,
+	themes/microdeck/bottom-right-inactive.xpm,
+	themes/microdeck/close-active.xpm,
+	themes/microdeck/close-inactive.xpm,
+	themes/microdeck/close-pressed.xpm,
+	themes/microdeck/hide-active.xpm,
+	themes/microdeck/hide-inactive.xpm,
+	themes/microdeck/hide-pressed.xpm,
+	themes/microdeck/left-active.xpm,
+	themes/microdeck/left-inactive.xpm,
+	themes/microdeck/maximize-active.xpm,
+	themes/microdeck/maximize-inactive.xpm,
+	themes/microdeck/maximize-pressed.xpm,
+	themes/microdeck/menu-active.xpm,
+	themes/microdeck/menu-inactive.xpm,
+	themes/microdeck/menu-pressed.xpm,
+	themes/microdeck/right-active.xpm,
+	themes/microdeck/right-inactive.xpm,
+	themes/microdeck/shade-active.xpm,
+	themes/microdeck/shade-inactive.xpm,
+	themes/microdeck/shade-pressed.xpm,
+	themes/microdeck/stick-active.xpm,
+	themes/microdeck/stick-inactive.xpm,
+	themes/microdeck/stick-pressed.xpm,
+	themes/microdeck/title-1-active.xpm,
+	themes/microdeck/title-1-inactive.xpm,
+	themes/microdeck/title-2-active.xpm,
+	themes/microdeck/title-2-inactive.xpm,
+	themes/microdeck/title-3-active.xpm,
+	themes/microdeck/title-3-inactive.xpm,
+	themes/microdeck/title-4-active.xpm,
+	themes/microdeck/title-4-inactive.xpm,
+	themes/microdeck/title-5-active.xpm,
+	themes/microdeck/title-5-inactive.xpm,
+	themes/microdeck/top-left-active.xpm,
+	themes/microdeck/top-left-inactive.xpm,
+	themes/microdeck/top-right-active.xpm,
+	themes/microdeck/top-right-inactive.xpm,
+	themes/microdeck3/Makefile.am, themes/microdeck3/Makefile.in,
+	themes/microdeck3/README, themes/microdeck3/bottom-active.xpm,
+	themes/microdeck3/bottom-inactive.xpm,
+	themes/microdeck3/bottom-left-active.xpm,
+	themes/microdeck3/bottom-left-inactive.xpm,
+	themes/microdeck3/bottom-right-active.xpm,
+	themes/microdeck3/bottom-right-inactive.xpm,
+	themes/microdeck3/close-active.xpm,
+	themes/microdeck3/close-inactive.xpm,
+	themes/microdeck3/close-pressed.xpm,
+	themes/microdeck3/hide-active.xpm,
+	themes/microdeck3/hide-inactive.xpm,
+	themes/microdeck3/hide-pressed.xpm,
+	themes/microdeck3/left-active.xpm,
+	themes/microdeck3/left-inactive.xpm,
+	themes/microdeck3/maximize-active.xpm,
+	themes/microdeck3/maximize-inactive.xpm,
+	themes/microdeck3/maximize-pressed.xpm,
+	themes/microdeck3/menu-active.xpm,
+	themes/microdeck3/menu-inactive.xpm,
+	themes/microdeck3/menu-pressed.xpm,
+	themes/microdeck3/right-active.xpm,
+	themes/microdeck3/right-inactive.xpm,
+	themes/microdeck3/shade-active.xpm,
+	themes/microdeck3/shade-inactive.xpm,
+	themes/microdeck3/shade-pressed.xpm,
+	themes/microdeck3/stick-active.xpm,
+	themes/microdeck3/stick-inactive.xpm,
+	themes/microdeck3/stick-pressed.xpm, themes/microdeck3/themerc,
+	themes/microdeck3/title-1-active.xpm,
+	themes/microdeck3/title-1-inactive.xpm,
+	themes/microdeck3/title-2-active.xpm,
+	themes/microdeck3/title-2-inactive.xpm,
+	themes/microdeck3/title-3-active.xpm,
+	themes/microdeck3/title-3-inactive.xpm,
+	themes/microdeck3/title-4-active.xpm,
+	themes/microdeck3/title-4-inactive.xpm,
+	themes/microdeck3/title-5-active.xpm,
+	themes/microdeck3/title-5-inactive.xpm,
+	themes/microdeck3/top-left-active.xpm,
+	themes/microdeck3/top-left-inactive.xpm,
+	themes/microdeck3/top-right-active.xpm,
+	themes/microdeck3/top-right-inactive.xpm: Fix an issue with app
+	that set their initial net state to either maximized or fullscreen
+	as seen with mozilla/gtk2 Change default theme to microdeck
+	(different version, uses less colors) Rename microdeck to
+	microdeck3
+
+2003-03-02  xfce
+
+	* src/events.c: Rearrange button events handler in xfwm4 Update
+	french translation for xfce4 panel
+
+2003-03-01  xfce
+
+	* themes/xfce/Makefile.in: Fix initial placement Fix deprecated
+	gtk_widget_set_usize()
+
+2003-03-01  xfce
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltcf-c.sh,
+	ltconfig, ltmain.sh, common/Makefile.in, defaults/Makefile.in,
+	mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c, src/Makefile.in,
+	src/client.c, themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microcurve/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/totem/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in: Fix initial placement Fix deprecated
+	gtk_widget_set_usize()
+
+2003-02-28  xfce
+
+	* configure: Fix xfce-mcs-manager API/ABI versionning Update
+	configure/libtool to use libtool 1.4.3
+
+2003-02-28  bmeurer
+
+	* configure.in: Fixes xfce-mcs-manager issue.
+
+2003-02-28  xfce
+
+	* src/events.c: Add window shade/unshade with mouse wheel on title
+	bar
+
+2003-02-27  xfce
+
+	* po/: ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
+	es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo,
+	pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Updates (I'm sure you
+	wouldn't have guessed)
+
+2003-02-27  xfce
+
+	* themes/default.keys/keythemerc: Update default kbd shortcut to
+	call xfhelp4 and xflock4 instead of their xfce 3 counter parts
+
+2003-02-27  xfce
+
+	* src/: client.c, client.h, debug.h, events.c, events.h, frame.c,
+	frame.h, hints.c, hints.h, keyboard.c, keyboard.h, main.c, main.h,
+	menu.c, menu.h, misc.c, misc.h, mywindow.c, mywindow.h, parserc.c,
+	parserc.h, pixmap.c, pixmap.h, session.c, settings.c, settings.h,
+	spinning_cursor.c, spinning_cursor.h, startup_notification.c,
+	startup_notification.h, tabwin.c, tabwin.h, workspaces.c,
+	workspaces.h: Improve window move/resize and expand sources
+
+2003-02-26  xfce
+
+	* src/: client.c, client.h: Fine tuning and small optimizations
+
+2003-02-26  huysmans
+
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Unref icon after
+	last use, not before
+
+2003-02-26  xfce
+
+	* Makefile.in, configure, common/Makefile.in, defaults/Makefile.in,
+	mcs-plugin/Makefile.in, mcs-plugin/margins_plugin.c,
+	mcs-plugin/xfwm4_plugin.c, src/Makefile.in, src/main.c,
+	themes/Makefile.in, themes/adept/Makefile.in,
+	themes/agua/Makefile.in, themes/atlanta/Makefile.in,
+	themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
+	themes/b6/Makefile.in, themes/bbs/Makefile.in,
+	themes/beastie/Makefile.in, themes/biz/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/curve/Makefile.in, themes/default.keys/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
+	themes/exocet/Makefile.in, themes/fbx/Makefile.in,
+	themes/g2/Makefile.in, themes/gaudy/Makefile.in,
+	themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	themes/kindaker/Makefile.in, themes/koynacity/Makefile.in,
+	themes/linea/Makefile.in, themes/meenee/Makefile.in,
+	themes/metabox/Makefile.in, themes/microcurve/Makefile.in,
+	themes/microdeck/Makefile.in, themes/microdeck2/Makefile.in,
+	themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/ops/Makefile.in,
+	themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	themes/tgc/Makefile.in, themes/totem/Makefile.in,
+	themes/trench/Makefile.in, themes/tux/Makefile.in,
+	themes/variation/Makefile.in, themes/xfce/Makefile.in: Apply
+	Benedikt Meurer <Benedikt.Meurer@unix-ag.uni-siegen.de> patch
+	Replace all  occurences of g_getenv("HOME") with g_get_home_dir()
+	Regenerate all Makefiles.on and configure scripts
+
+2003-02-25  xfce
+
+	* src/client.c: Remove an unecessary test in clientConstraintPos()
+	that was preventing clientInitPosition() to do its job correctly.
+
+2003-02-25  huysmans
+
+	* configure, Makefile.am, Makefile.in, configure.in: autotool
+	cleanup
+
+2003-02-25  xfce
+
+	* mcs-plugin/margins_plugin.c, mcs-plugin/monitor-icon.h,
+	mcs-plugin/monitor-icon.png, mcs-plugin/xfwm4_plugin.c, po/ar.gmo,
+	po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	po/zh_CN.po, src/client.c, src/settings.c: Fix margins from mcs not
+	being taken in account at startup Change margin plugin GUI Update
+	xtions.
+
+2003-02-25  huysmans
+
+	* autogen.sh: Fix proper use of AC_PROG_LIBTOOL
+
+2003-02-25  huysmans
+
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Add frame to
+	margins dialog. Add space to wm dialog.
+
+2003-02-25  xfce
+
+	* mcs-plugin/margins_plugin.c, po/POTFILES.in, po/ar.gmo, po/ar.po,
+	po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	po/zh_CN.po, src/client.c, src/settings.c: Tweaking
+
+2003-02-25  xfce
+
+	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	mcs-plugin/margins_plugin.c, src/client.c, src/settings.c,
+	src/settings.h: Implement internal borders
+
+2003-02-24  xfce
+
+	* mcs-plugin/: Makefile.am, Makefile.in, icon.png, inline-icon.h,
+	margins-icon.h, margins-icon.png, margins_plugin.c, monitor-icon.h,
+	monitor-icon.png, xfwm4-icon.h, xfwm4-icon.png, xfwm4_plugin.c: Add
+	margin plugin
+
+2003-02-23  xfce
+
+	* po/ar.gmo, po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
+	po/es_MX.gmo, po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	po/fr.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot,
+	po/zh_CN.gmo, po/zh_CN.po, src/events.c: Revert the message about
+	unidentified client message, turn it into a debug message
+
+2003-02-23  xfce
+
+	* po/ar.gmo, po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
+	po/es_MX.gmo, po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	po/fr.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot,
+	po/zh_CN.gmo, po/zh_CN.po, src/events.c: Add a message when an
+	unidentified client message is received by the WM
+
+2003-02-23  xfce
+
+	* src/client.c, themes/totem/bottom-active.xpm,
+	themes/totem/bottom-left-active.xpm,
+	themes/totem/bottom-right-active.xpm: Add a comment on why/how
+	constraintPos() routine works
+
+2003-02-23  xfce
+
+	* src/events.c: Add test for apps that try to manipulate the WM
+	frame (bad idea anyway)
+
+2003-02-23  xfce
+
+	* src/client.c, themes/totem/bottom-left-active.xpm,
+	themes/totem/bottom-left-inactive.xpm,
+	themes/totem/bottom-right-active.xpm,
+	themes/totem/bottom-right-inactive.xpm,
+	themes/totem/left-active.xpm, themes/totem/left-inactive.xpm,
+	themes/totem/right-active.xpm, themes/totem/right-inactive.xpm:
+	Some more fine tweaking (plus totem  theme update :)
+
+2003-02-23  xfce
+
+	* configure, configure.in, xfwm4.spec.in, src/client.c,
+	src/client.h, src/events.c, src/hints.h, themes/Makefile.am,
+	themes/Makefile.in, themes/totem/Makefile.am,
+	themes/totem/Makefile.in, themes/totem/README,
+	themes/totem/bottom-active.xpm, themes/totem/bottom-inactive.xpm,
+	themes/totem/bottom-left-active.xpm,
+	themes/totem/bottom-left-inactive.xpm,
+	themes/totem/bottom-right-active.xpm,
+	themes/totem/bottom-right-inactive.xpm,
+	themes/totem/button-active.xpm, themes/totem/close-active.xpm,
+	themes/totem/close-inactive.xpm, themes/totem/close-pressed.xpm,
+	themes/totem/hide-active.xpm, themes/totem/hide-inactive.xpm,
+	themes/totem/hide-pressed.xpm, themes/totem/left-active.xpm,
+	themes/totem/left-inactive.xpm, themes/totem/maximize-active.xpm,
+	themes/totem/maximize-inactive.xpm,
+	themes/totem/maximize-pressed.xpm, themes/totem/menu-active.xpm,
+	themes/totem/menu-inactive.xpm, themes/totem/menu-pressed.xpm,
+	themes/totem/right-active.xpm, themes/totem/right-inactive.xpm,
+	themes/totem/shade-active.xpm, themes/totem/shade-inactive.xpm,
+	themes/totem/shade-pressed.xpm, themes/totem/stick-active.xpm,
+	themes/totem/stick-inactive.xpm, themes/totem/stick-pressed.xpm,
+	themes/totem/themerc, themes/totem/title-1-active.xpm,
+	themes/totem/title-1-inactive.xpm, themes/totem/title-2-active.xpm,
+	themes/totem/title-2-inactive.xpm, themes/totem/title-3-active.xpm,
+	themes/totem/title-3-inactive.xpm, themes/totem/title-4-active.xpm,
+	themes/totem/title-4-inactive.xpm, themes/totem/title-5-active.xpm,
+	themes/totem/title-5-inactive.xpm,
+	themes/totem/top-left-active.xpm,
+	themes/totem/top-left-inactive.xpm,
+	themes/totem/top-right-active.xpm,
+	themes/totem/top-right-inactive.xpm: Lot of changes in
+	constraintPos and other related areas Add totem theme
+
+2003-02-22  xfce
+
+	* src/: client.c, settings.c: Various stacking and placement
+	tweaking
+
+2003-02-21  xfce
+
+	* src/: client.c, client.h, debug.h, events.c, events.h, frame.c,
+	frame.h, hints.h, main.c, main.h, menu.h, misc.h, mywindow.h,
+	parserc.h, pixmap.h, session.h, settings.h, spinning_cursor.h,
+	startup_notification.h, tabwin.h, workspaces.h: Take the frame into
+	account when receiving a XConfigureRequest for apps that try to
+	manipulate the WM frame Rearrange headers
+
+2003-02-21  xfce
+
+	* src/hints.c: EWMH detection
+
+2003-02-20  xfce
+
+	* src/: client.h, debug.h, events.h, frame.h, hints.h, keyboard.h,
+	main.h, menu.h, misc.h, mywindow.h, parserc.h, pixmap.h, session.h,
+	settings.h, spinning_cursor.h, startup_notification.h, tabwin.h,
+	workspaces.h: Avoid using "__" for defines in headers as it could
+	be reserved for the compiler
+
+2003-02-19  xfce
+
+	* src/client.c, src/events.c, themes/kde/menu-active.xpm,
+	themes/kde/menu-inactive.xpm, themes/kde/menu-pressed.xpm,
+	themes/kde/stick-active.xpm, themes/kde/stick-inactive.xpm,
+	themes/kde/stick-pressed.xpm, themes/kde/themerc,
+	themes/kde/title-3-active.xpm: Make sure the CLIENT_FLAG_HAS_BORDER
+	is reset on Mwm hint event Add a call to configure when such an
+	event happen Update some of kde theme pixmaps
+
+2003-02-18  xfce
+
+	* src/main.c: Unframe all client first of all when calling
+	cleanup()
+
+2003-02-18  xfce
+
+	* src/main.c: Use g_error to cause an abort() on SIGSEGV signal
+
+2003-02-17  xfce
+
+	* themes/microcurve/: top-left-active.xpm, top-left-inactive.xpm,
+	top-right-active.xpm, top-right-inactive.xpm: [no log message]
+
+2003-02-16  xfce
+
+	* src/: main.c, startup_notification.c: Install sig handlers later
+	in startup sequence
+
+2003-02-13  xfce
+
+	* ChangeLog, src/debug.h: Update ChangeLog Revert change in debug.h
+
 2003-02-13  xfce
 
 	* src/client.c: Fix a bug introduced by recent optimizations...
