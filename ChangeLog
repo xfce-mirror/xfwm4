@@ -1,3 +1,20 @@
+2003-07-28  xfce
+
+	* Makefile.in, configure, configure.ac: Change version to 3.99.3
+	(rc3)
+
+2003-07-28  xfce
+
+	* src/client.c: Add (missing) aspect ratio support
+
+2003-07-27  xfce
+
+	* src/client.c: Add fullscreen autodetect for older legacy apps
+
+2003-07-26  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-07-26  xfce
 
 	* src/: client.c, client.h, events.c: Send ConfigureNotify at first
