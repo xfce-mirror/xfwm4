@@ -149,22 +149,28 @@ MyXUngrabServer (void)
     }
     DBG ("grabs : %i", xgrabcount);
 }
-
+/*
+ * it's safer to grab the display before calling this routine
+ * Returns true if the given window is present and mapped on root 
+ */
 gboolean
 MyCheckWindow(Window w)
 {
-    Window dummy_root;
-    unsigned int dummy_width, dummy_height, dummy_depth, dummy_bw;
+    Window dummy_root, parent;
+    Window *wins = NULL;
+    unsigned int count;
     int dummy_x, dummy_y;
     Status test;
     
     g_return_val_if_fail (w != None, FALSE);
 
     gdk_error_trap_push ();
-    test = XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y,
-                         &dummy_width, &dummy_height, &dummy_bw, &dummy_depth);
-
-    return (!gdk_error_trap_pop () && (test != 0));
+    test = XQueryTree(dpy, w, &dummy_root, &parent, &wins, &count);
+    if (wins)
+    {
+        XFree (wins);
+    }
+    return (!gdk_error_trap_pop () && (test != 0) && (dummy_root == parent));
 }
 
 Window
