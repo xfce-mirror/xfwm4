@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-30 23:52+0200\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: 2003-12-13 01:12+0200\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani Turkish <gnome@azitt.com>\n"
@@ -272,7 +272,7 @@ msgstr "Başlıq çubuğuna cüt tıqlandığında həyata keçiriləcək gediş
 msgid "Advanced"
 msgstr "Təfərruatlar"
 
-#: src/client.c:529
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: İdarə edilməyən net_wm_state (window 0x%lx)"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-30 23:52+0200\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -272,7 +272,7 @@ msgstr "Handling å utføre ved dobbel klikking på tittellinje :"
 msgid "Advanced"
 msgstr "Avansert"
 
-#: src/client.c:529
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Uhåndtert net_wm_state (vindu 0x%lx)"

@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -301,8 +301,8 @@ clientIsModalFor (Client * c1, Client * c2)
 
     if (CLIENT_FLAG_TEST (c1, CLIENT_FLAG_STATE_MODAL))
     {
-	return ((clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2)) 
-	        && (c1->serial >= c2->serial));
+        return ((clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2)) 
+                && (c1->serial >= c2->serial));
     }
     return FALSE;
 }
@@ -776,7 +776,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientSetNetState (c);
             clientWindowType (c);
         }
-	frameDraw (c, TRUE, FALSE);
+        frameDraw (c, TRUE, FALSE);
     }
 
     if ((first == net_wm_state_fullscreen)
@@ -1693,9 +1693,9 @@ clientSetWidth (Client * c, int w1)
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
     {
-	/* Bypass resize increment and max sizes for fullscreen */
-	c->width = w1;
-	return;
+        /* Bypass resize increment and max sizes for fullscreen */
+        c->width = w1;
+        return;
     }
     
     if ((c->size->flags & PResizeInc) && (c->size->width_inc))
@@ -1736,9 +1736,9 @@ clientSetHeight (Client * c, int h1)
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
     {
-	/* Bypass resize increment and max sizes for fullscreen */
-	c->height = h1;
-	return;
+        /* Bypass resize increment and max sizes for fullscreen */
+        c->height = h1;
+        return;
     }
     
     if ((c->size->flags & PResizeInc) && (c->size->height_inc))
@@ -2817,8 +2817,8 @@ clientGetWMNormalHints (Client * c, gboolean update)
     
     if (!(c->size->flags & PBaseSize))
     {
-	c->size->base_width = 0;
-	c->size->base_height = 0;
+        c->size->base_width = 0;
+        c->size->base_height = 0;
     }
 
     if (!(c->size->flags & PMinSize))
@@ -3506,7 +3506,7 @@ clientUnframe (Client * c, gboolean remap)
         else
         {
             XUnmapWindow (dpy, c->window);
-	    setWMState (dpy, c->window, WithdrawnState);
+            setWMState (dpy, c->window, WithdrawnState);
         }
     }
 
@@ -3516,6 +3516,7 @@ clientUnframe (Client * c, gboolean remap)
         XDeleteProperty (dpy, c->window, win_state);
         XDeleteProperty (dpy, c->window, net_wm_desktop);
         XDeleteProperty (dpy, c->window, win_workspace);
+        XDeleteProperty (dpy, c->window, win_layer);
         XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
     }
     
@@ -3889,26 +3890,26 @@ clientPassFocus (Client * c)
         if (c)
         {
             if (clientIsModal (c))
-	    {
-        	/* If the window is a modal, send focus back to its parent window
-        	   Modals are transients, and we aren"t interested in modal
-        	   for group, so it safe to sue clientGetTransient because 
-        	   it's really what we want...
-        	 */
+            {
+                /* If the window is a modal, send focus back to its parent window
+                   Modals are transients, and we aren"t interested in modal
+                   for group, so it safe to sue clientGetTransient because 
+                   it's really what we want...
+                 */
 
-        	c2 = clientGetTransient (c);
+                c2 = clientGetTransient (c);
 
-        	if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
-        	{
+                if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
+                {
                     new_focus = c2;
                     /* Usability: raise the parent, to grab user's attention */
                     clientRaise (c2);
-        	}
-	    }
-	    else
-	    {
-	        new_focus = clientGetNext (c, 0);
-	    }
+                }
+            }
+            else
+            {
+                new_focus = clientGetNext (c, 0);
+            }
         }
     }
     else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask))
@@ -4933,10 +4934,10 @@ clientSetFocus (Client * c, Time timestamp, unsigned short flags)
     else
     {
         unsigned long data[2];
-	
+        
         TRACE ("setting focus to none");
         
-	client_focus = NULL;
+        client_focus = NULL;
         if (c2)
         {
             frameDraw (c2, FALSE, FALSE);

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-30 23:52+0200\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: 2003-08-05 13:01+0100\n"
 "Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -274,7 +274,7 @@ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 msgid "Advanced"
 msgstr "Avançat"
 
-#: src/client.c:529
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"

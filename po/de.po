@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-30 23:52+0200\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: 2003-07-09 14:20+0100\n"
 "Last-Translator: Moritz Heiber <moritz-heiber@arcor.de>\n"
 "Language-Team: none <none@none>\n"
@@ -267,7 +267,7 @@ msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
 msgid "Advanced"
 msgstr "Mehr Optionen"
 
-#: src/client.c:529
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Kein net_wm_state (Fenster %#lx)"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-30 23:52+0200\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: 2004-04-20 16:38+0800\n"
 "Last-Translator: umm <umm@pchome.com.tw>\n"
 "Language-Team: \n"
@@ -271,7 +271,7 @@ msgstr "雙擊標題列執行的動作："
 msgid "Advanced"
 msgstr "進階"
 
-#: src/client.c:529
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 無法管理的 net_wm_state (window 0x%lx)"

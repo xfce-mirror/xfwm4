@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-30 23:52+0200\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: 2004-01-18 00:16-0200\n"
 "Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
 "Language-Team: pt_BR <felix@online.eti.br>\n"
@@ -273,7 +273,7 @@ msgstr "Ação a realizar quando dar um clique duplo na barra de títulos :"
 msgid "Advanced"
 msgstr "Avançado"
 
-#: src/client.c:529
+#: src/client.c:528
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
