@@ -8,7 +8,6 @@ static char * title_3_inactive_xpm[] = {
 "#	c #7C7976 s inactive_color_1",
 "$	c #63615F s inactive_shadow_1",
 "........",
-"++++++++",
 "@@@@@@@@",
 "########",
 "@@@@@@@@",
@@ -24,4 +23,5 @@ static char * title_3_inactive_xpm[] = {
 "@@@@@@@@",
 "########",
 "@@@@@@@@",
+"########",
 "$$$$$$$$"};
