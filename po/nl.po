@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-05-12 00:18+0200\n"
+"POT-Creation-Date: 2003-05-23 00:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,36 +15,36 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
-#: mcs-plugin/margins_plugin.c:232
+#: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
+#: mcs-plugin/margins_plugin.c:250
 #, fuzzy
 msgid "Workspace Margins"
 msgstr "_Bureaublad"
 
-#: mcs-plugin/margins_plugin.c:198
+#: mcs-plugin/margins_plugin.c:211
 msgid "Adjust workspace margins"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:219
+#: mcs-plugin/margins_plugin.c:237
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:260
+#: mcs-plugin/margins_plugin.c:278
 #, fuzzy
 msgid "Left :"
 msgstr "Links"
 
-#: mcs-plugin/margins_plugin.c:279
+#: mcs-plugin/margins_plugin.c:298
 #, fuzzy
 msgid "Right :"
 msgstr "Rechts"
 
-#: mcs-plugin/margins_plugin.c:298
+#: mcs-plugin/margins_plugin.c:318
 msgid "Top :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:317
+#: mcs-plugin/margins_plugin.c:338
 msgid "Bottom :"
 msgstr ""
 
@@ -104,67 +104,67 @@ msgstr "Midden"
 msgid "Right"
 msgstr "Rechts"
 
-#: mcs-plugin/xfwm4_plugin.c:406
+#: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
 msgstr "Verborgen"
 
-#: mcs-plugin/xfwm4_plugin.c:1072
+#: mcs-plugin/xfwm4_plugin.c:1233
 msgid "Font Selection Dialog"
 msgstr "Lettertype selecteren"
 
-#: mcs-plugin/xfwm4_plugin.c:1130 mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1945
 msgid "Window Manager"
 msgstr "Window Manager"
 
-#: mcs-plugin/xfwm4_plugin.c:1143
+#: mcs-plugin/xfwm4_plugin.c:1317
 msgid "Window Manager Preferences"
 msgstr "Window Manager Opties"
 
-#: mcs-plugin/xfwm4_plugin.c:1181
+#: mcs-plugin/xfwm4_plugin.c:1354
 msgid "Window style"
 msgstr "Venster stijl"
 
-#: mcs-plugin/xfwm4_plugin.c:1199
+#: mcs-plugin/xfwm4_plugin.c:1372
 msgid "Font select :"
 msgstr "Lettertype :"
 
-#: mcs-plugin/xfwm4_plugin.c:1209
+#: mcs-plugin/xfwm4_plugin.c:1382
 msgid "Title font"
 msgstr "Lettertype titel"
 
-#: mcs-plugin/xfwm4_plugin.c:1218
+#: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Text alignment inside title bar :"
 msgstr "Uitlijning tekst in titelbalk"
 
-#: mcs-plugin/xfwm4_plugin.c:1220
+#: mcs-plugin/xfwm4_plugin.c:1399
 msgid "Title Alignment"
 msgstr "Uitlijning titel"
 
-#: mcs-plugin/xfwm4_plugin.c:1231
+#: mcs-plugin/xfwm4_plugin.c:1411
 msgid "Button layout"
 msgstr "Knopvolgorde"
 
-#: mcs-plugin/xfwm4_plugin.c:1236
+#: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Decoration style"
 msgstr "Vensterdecoratie"
 
-#: mcs-plugin/xfwm4_plugin.c:1269
+#: mcs-plugin/xfwm4_plugin.c:1449
 msgid "Keyboard Shortcut"
 msgstr "Sneltoetsen"
 
-#: mcs-plugin/xfwm4_plugin.c:1287
+#: mcs-plugin/xfwm4_plugin.c:1468
 msgid "Click to focus"
 msgstr "Klik voor focus"
 
-#: mcs-plugin/xfwm4_plugin.c:1294
+#: mcs-plugin/xfwm4_plugin.c:1482
 msgid "Focus follows mouse"
 msgstr "Focus volgt muis"
 
-#: mcs-plugin/xfwm4_plugin.c:1301
+#: mcs-plugin/xfwm4_plugin.c:1496
 msgid "Focus model"
 msgstr "Vensterfocus"
 
-#: mcs-plugin/xfwm4_plugin.c:1310
+#: mcs-plugin/xfwm4_plugin.c:1506
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -172,33 +172,33 @@ msgstr ""
 "Nieuwe venster krijgen focus \n"
 "automatisch"
 
-#: mcs-plugin/xfwm4_plugin.c:1316
+#: mcs-plugin/xfwm4_plugin.c:1514
 msgid "New window focus"
 msgstr "Focus voor nieuwe vensters"
 
-#: mcs-plugin/xfwm4_plugin.c:1330
+#: mcs-plugin/xfwm4_plugin.c:1529
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr "Venster met focus naar voren halen"
 
-#: mcs-plugin/xfwm4_plugin.c:1340
+#: mcs-plugin/xfwm4_plugin.c:1542
 msgid "Delay before raising focused window :"
 msgstr "Vertraging voor naar voren halen vensters :"
 
-#: mcs-plugin/xfwm4_plugin.c:1346
+#: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Slow"
 msgstr "Langzaam"
 
-#: mcs-plugin/xfwm4_plugin.c:1352
+#: mcs-plugin/xfwm4_plugin.c:1558
 msgid "Fast"
 msgstr "Snel"
 
-#: mcs-plugin/xfwm4_plugin.c:1367
+#: mcs-plugin/xfwm4_plugin.c:1582
 msgid "Raise on focus"
 msgstr "Naar voren halen bij focus"
 
-#: mcs-plugin/xfwm4_plugin.c:1376
+#: mcs-plugin/xfwm4_plugin.c:1592
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -206,110 +206,115 @@ msgstr ""
 "Venster naar voren halen bij klikken\n"
 "in het venster"
 
-#: mcs-plugin/xfwm4_plugin.c:1382
+#: mcs-plugin/xfwm4_plugin.c:1601
 msgid "Raise on click"
 msgstr "Naar voren halen bij klik"
 
-#: mcs-plugin/xfwm4_plugin.c:1387
+#: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Keyboard and focus"
 msgstr "Toetsenbord en focus"
 
-#: mcs-plugin/xfwm4_plugin.c:1406
+#: mcs-plugin/xfwm4_plugin.c:1629
 msgid "Snap windows to screen border"
 msgstr "Vensters naar schermranden trekken"
 
-#: mcs-plugin/xfwm4_plugin.c:1411
+#: mcs-plugin/xfwm4_plugin.c:1638
 #, fuzzy
 msgid "Snap windows to other windows"
 msgstr "Vensters naar schermranden trekken"
 
-#: mcs-plugin/xfwm4_plugin.c:1421
+#: mcs-plugin/xfwm4_plugin.c:1651
 msgid "Distance :"
 msgstr "Afstand :"
 
-#: mcs-plugin/xfwm4_plugin.c:1427 mcs-plugin/xfwm4_plugin.c:1477
+#: mcs-plugin/xfwm4_plugin.c:1659 mcs-plugin/xfwm4_plugin.c:1734
 msgid "Small"
 msgstr "Klein"
 
-#: mcs-plugin/xfwm4_plugin.c:1433 mcs-plugin/xfwm4_plugin.c:1483
+#: mcs-plugin/xfwm4_plugin.c:1667 mcs-plugin/xfwm4_plugin.c:1742
 msgid "Wide"
 msgstr "Groot"
 
-#: mcs-plugin/xfwm4_plugin.c:1447
+#: mcs-plugin/xfwm4_plugin.c:1690
 #, fuzzy
 msgid "Windows snapping"
 msgstr "Window Manager"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1705
 #, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Wissel bureaubladen bij slepen voorbij de rand van het scherm"
 
-#: mcs-plugin/xfwm4_plugin.c:1471
+#: mcs-plugin/xfwm4_plugin.c:1714
+#, fuzzy
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Wissel bureaubladen bij slepen voorbij de rand van het scherm"
+
+#: mcs-plugin/xfwm4_plugin.c:1726
 #, fuzzy
 msgid "Edge Resistance :"
 msgstr "Afstand :"
 
-#: mcs-plugin/xfwm4_plugin.c:1497
+#: mcs-plugin/xfwm4_plugin.c:1767
 msgid "Wrap workspaces"
 msgstr "Wissel bureaublad"
 
-#: mcs-plugin/xfwm4_plugin.c:1511
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when resizing"
 msgstr "Inhoud venster tonen bij veranderen grootte"
 
-#: mcs-plugin/xfwm4_plugin.c:1516
+#: mcs-plugin/xfwm4_plugin.c:1790
 msgid "Display content of windows when moving"
 msgstr "Inhoud venster tonen bij verplaatsen"
 
-#: mcs-plugin/xfwm4_plugin.c:1521
+#: mcs-plugin/xfwm4_plugin.c:1797
 #, fuzzy
 msgid "Opaque move and resize"
 msgstr "Inhoud tonen"
 
-#: mcs-plugin/xfwm4_plugin.c:1530
+#: mcs-plugin/xfwm4_plugin.c:1808
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Actie voor dubbelklikken op de titelbalk"
 
-#: mcs-plugin/xfwm4_plugin.c:1532
+#: mcs-plugin/xfwm4_plugin.c:1814
 msgid "Double click action"
 msgstr "Dubbelklik actie"
 
-#: mcs-plugin/xfwm4_plugin.c:1537
-msgid "Misc."
-msgstr "Overig"
+#: mcs-plugin/xfwm4_plugin.c:1819
+msgid "Advanced"
+msgstr ""
 
-#: src/client.c:406
+#: src/client.c:441
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Onbeheerde net_wm_state (venster %#lx)"
 
-#: src/events.c:1165
+#: src/events.c:1290
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Bewerking (nog) niet ondersteund\n"
 
-#: src/main.c:173
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:223
+#: src/main.c:235
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: geen sessie manager in gebruik"
 
-#: src/main.c:323
+#: src/main.c:341
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: een andere Window Manager is al in gebruik"
 
-#: src/main.c:327
+#: src/main.c:346
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/main.c:353
+#: src/main.c:373
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: er is een onbekende fout opgetreden"
@@ -382,49 +387,52 @@ msgstr "A_fsluiten"
 msgid "Restart"
 msgstr "_Herstarten"
 
-#: src/menu.c:311
+#: src/menu.c:336
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 
-#: src/settings.c:269
+#: src/settings.c:282
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/settings.c:453
+#: src/settings.c:507
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet creëren\n"
 
-#: src/settings.c:459
+#: src/settings.c:514
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 
-#: src/settings.c:497
+#: src/settings.c:558
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 
-#: src/settings.c:503
+#: src/settings.c:565
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/settings.c:633
+#: src/settings.c:755
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/settings.c:905
+#: src/settings.c:1090
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"
 
-#: src/tabwin.c:68
+#: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wisselen naar ..."
+
+#~ msgid "Misc."
+#~ msgstr "Overig"
 
 #~ msgid "Opaque move"
 #~ msgstr "Inhoud tonen"

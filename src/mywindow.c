@@ -40,7 +40,7 @@ myWindowCreate (Display * dpy, Window parent, myWindow * win, Cursor cursor)
     TRACE ("Created XID 0x%lx", win->window);
     if (cursor != None)
     {
-	XDefineCursor (dpy, win->window, cursor);
+        XDefineCursor (dpy, win->window, cursor);
     }
     win->map = FALSE;
     win->dpy = dpy;
@@ -57,63 +57,63 @@ myWindowDelete (myWindow * win)
 
     if (win->window != None)
     {
-	XDestroyWindow (win->dpy, win->window);
-	win->window = None;
+        XDestroyWindow (win->dpy, win->window);
+        win->window = None;
     }
     win->map = FALSE;
 }
 
 void
 myWindowShow (myWindow * win, int x, int y, int width, int height,
-	      gboolean refresh)
+    gboolean refresh)
 {
     TRACE ("entering myWindowShow");
 
     if (!(win->window))
     {
-	return;
+        return;
     }
     if ((width < 1) || (height < 1))
     {
-	myWindowHide (win);
-	return;
+        myWindowHide (win);
+        return;
     }
     if (!(win->map))
     {
-	XMapWindow (win->dpy, win->window);
-	win->map = TRUE;
+        XMapWindow (win->dpy, win->window);
+        win->map = TRUE;
     }
     TRACE ("Showing XID 0x%lx", win->window);
-    if (((x != win->x) || (y != win->y)) &&
-	((width != win->w) || (height != win->h)))
+    if (((x != win->x) || (y != win->y)) && ((width != win->w)
+            || (height != win->h)))
     {
-	XMoveResizeWindow (win->dpy, win->window, x, y,
-			   (unsigned int) width, (unsigned int) height);
-	win->x = x;
-	win->y = y;
-	win->w = width;
-	win->h = height;
+        XMoveResizeWindow (win->dpy, win->window, x, y, (unsigned int) width,
+            (unsigned int) height);
+        win->x = x;
+        win->y = y;
+        win->w = width;
+        win->h = height;
     }
     else if ((x != win->x) || (y != win->y))
     {
-	XMoveWindow (win->dpy, win->window, x, y);
-	if (refresh)
-	{
-	    XClearWindow (win->dpy, win->window);
-	}
-	win->x = x;
-	win->y = y;
+        XMoveWindow (win->dpy, win->window, x, y);
+        if (refresh)
+        {
+            XClearWindow (win->dpy, win->window);
+        }
+        win->x = x;
+        win->y = y;
     }
     else if ((width != win->w) || (height != win->h))
     {
-	XResizeWindow (win->dpy, win->window, (unsigned int) width,
-		       (unsigned int) height);
-	win->w = width;
-	win->h = height;
+        XResizeWindow (win->dpy, win->window, (unsigned int) width,
+            (unsigned int) height);
+        win->w = width;
+        win->h = height;
     }
     else if (refresh)
     {
-	XClearWindow (win->dpy, win->window);
+        XClearWindow (win->dpy, win->window);
     }
 }
 
@@ -124,7 +124,7 @@ myWindowHide (myWindow * win)
 
     if (win->map)
     {
-	XUnmapWindow (win->dpy, win->window);
-	win->map = FALSE;
+        XUnmapWindow (win->dpy, win->window);
+        win->map = FALSE;
     }
 }

@@ -58,9 +58,9 @@ static GdkAtom atom_rcfiles = GDK_NONE;
 static Window menu_event_window = None;
 
 static void menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
-			   gpointer menu_data, gpointer item_data);
+    gpointer menu_data, gpointer item_data);
 static gboolean show_popup_cb (GtkWidget * widget, GdkEventButton * ev,
-			       gpointer data);
+    gpointer data);
 static gboolean client_event_cb (GtkWidget * widget, GdkEventClient * ev);
 
 typedef enum
@@ -86,12 +86,12 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
 
     g = XGrabPointer (dpy, w, FALSE, DBL_CLICK_GRAB, GrabModeAsync,
-		      GrabModeAsync, None, None, ev->xbutton.time);
+        GrabModeAsync, None, None, ev->xbutton.time);
     if (g != GrabSuccess)
     {
-	TRACE ("grab failed in typeOfClick");
-	gdk_beep ();
-	return XFWM_BUTTON_UNDEFINED;
+        TRACE ("grab failed in typeOfClick");
+        gdk_beep ();
+        return XFWM_BUTTON_UNDEFINED;
     }
 
     button = ev->xbutton.button;
@@ -102,35 +102,34 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     total = 0;
     clicks = 1;
 
-    while ((ABS (x - xcurrent) < 1) && (ABS (y - ycurrent) < 1) &&
-	   (total < params.dbl_click_time) &&
-	   ((t1 - t0) < params.dbl_click_time))
+    while ((ABS (x - xcurrent) < 1) && (ABS (y - ycurrent) < 1)
+        && (total < params.dbl_click_time)
+        && ((t1 - t0) < params.dbl_click_time))
     {
-	g_usleep (10000);
-	total += 10;
-	if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
-	{
-	    if (ev->xbutton.button == button)
-	    {
-		clicks++;
-	    }
-	    t1 = ev->xbutton.time;
-	}
-	if (XCheckMaskEvent
-	    (dpy,
-	     ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
-	     ev))
-	{
-	    xcurrent = ev->xmotion.x_root;
-	    ycurrent = ev->xmotion.y_root;
-	    t1 = ev->xmotion.time;
-	}
-	if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK ||
-	    (!allow_double_click &&
-	     (XfwmButtonClickType) clicks == XFWM_BUTTON_CLICK))
-	{
-	    break;
-	}
+        g_usleep (10000);
+        total += 10;
+        if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
+        {
+            if (ev->xbutton.button == button)
+            {
+                clicks++;
+            }
+            t1 = ev->xbutton.time;
+        }
+        if (XCheckMaskEvent (dpy,
+                ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
+                ev))
+        {
+            xcurrent = ev->xmotion.x_root;
+            ycurrent = ev->xmotion.y_root;
+            t1 = ev->xmotion.time;
+        }
+        if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK
+            || (!allow_double_click
+                && (XfwmButtonClickType) clicks == XFWM_BUTTON_CLICK))
+        {
+            break;
+        }
     }
     XUngrabPointer (dpy, ev->xbutton.time);
     return (XfwmButtonClickType) clicks;
@@ -141,8 +140,8 @@ clear_timeout (void)
 {
     if (raise_timeout)
     {
-	g_source_remove (raise_timeout);
-	raise_timeout = 0;
+        g_source_remove (raise_timeout);
+        raise_timeout = 0;
     }
 }
 
@@ -156,7 +155,7 @@ raise_cb (gpointer data)
     c = clientGetFocus ();
     if (c)
     {
-	clientRaise (c);
+        clientRaise (c);
     }
     return (TRUE);
 }
@@ -166,21 +165,21 @@ reset_timeout (void)
 {
     if (raise_timeout)
     {
-	g_source_remove (raise_timeout);
+        g_source_remove (raise_timeout);
     }
     raise_timeout =
-	g_timeout_add_full (0, params.raise_delay, (GtkFunction) raise_cb,
-			    NULL, NULL);
+        g_timeout_add_full (0, params.raise_delay, (GtkFunction) raise_cb,
+        NULL, NULL);
 }
 
 static inline void
 moveRequest (Client * c, XEvent * ev)
 {
-    if (CLIENT_FLAG_TEST_AND_NOT
-	(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE,
-	 CLIENT_FLAG_FULLSCREEN))
+    if (CLIENT_FLAG_TEST_AND_NOT (c,
+            CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE,
+            CLIENT_FLAG_FULLSCREEN))
     {
-	clientMove (c, ev);
+        clientMove (c, ev);
     }
 }
 
@@ -189,16 +188,16 @@ resizeRequest (Client * c, int corner, XEvent * ev)
 {
     clientSetFocus (c, TRUE);
 
-    if (CLIENT_FLAG_TEST_ALL
-	(c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
+    if (CLIENT_FLAG_TEST_ALL (c,
+            CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
     {
-	clientResize (c, corner, ev);
+        clientResize (c, corner, ev);
     }
-    else if (CLIENT_FLAG_TEST_AND_NOT
-	     (c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE,
-	      CLIENT_FLAG_FULLSCREEN))
+    else if (CLIENT_FLAG_TEST_AND_NOT (c,
+            CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE,
+            CLIENT_FLAG_FULLSCREEN))
     {
-	clientMove (c, ev);
+        clientMove (c, ev);
     }
 }
 
@@ -206,18 +205,18 @@ static inline void
 spawn_shortcut (int i)
 {
     GError *error = NULL;
-    if ((i >= NB_KEY_SHORTCUTS) || (!params.shortcut_exec[i]) ||
-	!strlen (params.shortcut_exec[i]))
+    if ((i >= NB_KEY_SHORTCUTS) || (!params.shortcut_exec[i])
+        || !strlen (params.shortcut_exec[i]))
     {
-	return;
+        return;
     }
     if (!g_spawn_command_line_async (params.shortcut_exec[i], &error))
     {
-	if (error)
-	{
-	    g_warning ("%s: %s", g_get_prgname (), error->message);
-	    g_error_free (error);
-	}
+        if (error)
+        {
+            g_warning ("%s: %s", g_get_prgname (), error->message);
+            g_error_free (error);
+        }
     }
 }
 
@@ -229,35 +228,35 @@ handleMotionNotify (XMotionEvent * ev)
 
     TRACE ("entering handleMotionNotify");
 
-    if (params.workspace_count && params.wrap_workspaces &&
-	params.wrap_resistance)
+    if (params.workspace_count && params.wrap_workspaces
+        && params.wrap_resistance)
     {
-	msx = ev->x_root;
-	msy = ev->y_root;
-	max = MyDisplayFullWidth (dpy, screen) - 1;
+        msx = ev->x_root;
+        msy = ev->y_root;
+        max = MyDisplayFullWidth (dpy, screen) - 1;
 
-	if ((msx == 0) || (msx == max))
-	{
-	    edge_scroll_x++;
-	}
-	else
-	{
-	    edge_scroll_x = 0;
-	}
-	if (edge_scroll_x > params.wrap_resistance)
-	{
-	    edge_scroll_x = 0;
-	    if (msx == 0)
-	    {
-		XWarpPointer (dpy, None, root, 0, 0, 0, 0, max - 10, msy);
-		workspaceSwitch (workspace - 1, NULL);
-	    }
-	    else if (msx == max)
-	    {
-		XWarpPointer (dpy, None, root, 0, 0, 0, 0, 10, msy);
-		workspaceSwitch (workspace + 1, NULL);
-	    }
-	}
+        if ((msx == 0) || (msx == max))
+        {
+            edge_scroll_x++;
+        }
+        else
+        {
+            edge_scroll_x = 0;
+        }
+        if (edge_scroll_x > params.wrap_resistance)
+        {
+            edge_scroll_x = 0;
+            if (msx == 0)
+            {
+                XWarpPointer (dpy, None, root, 0, 0, 0, 0, max - 10, msy);
+                workspaceSwitch (workspace - 1, NULL);
+            }
+            else if (msx == max)
+            {
+                XWarpPointer (dpy, None, root, 0, 0, 0, 0, 10, msy);
+                workspaceSwitch (workspace + 1, NULL);
+            }
+        }
     }
 }
 
@@ -271,187 +270,187 @@ handleKeyPress (XKeyEvent * ev)
 
     c = clientGetFocus ();
     state =
-	ev->
-	state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask |
-		 HyperMask);
+        ev->
+        state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask |
+        HyperMask);
     for (key = 0; key < KEY_COUNT; key++)
     {
-	if ((params.keys[key].keycode == ev->keycode) &&
-	    (params.keys[key].modifier == state))
-	{
-	    break;
-	}
+        if ((params.keys[key].keycode == ev->keycode)
+            && (params.keys[key].modifier == state))
+        {
+            break;
+        }
     }
 
     if (c)
     {
-	switch (key)
-	{
-	    case KEY_MOVE_UP:
-	    case KEY_MOVE_DOWN:
-	    case KEY_MOVE_LEFT:
-	    case KEY_MOVE_RIGHT:
-		moveRequest (c, (XEvent *) ev);
-		break;
-	    case KEY_RESIZE_UP:
-	    case KEY_RESIZE_DOWN:
-	    case KEY_RESIZE_LEFT:
-	    case KEY_RESIZE_RIGHT:
-		if (CLIENT_FLAG_TEST_ALL
-		    (c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
-		{
-		    clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
-		}
-		break;
-	    case KEY_CYCLE_WINDOWS:
-		clientCycle (c);
-		break;
-	    case KEY_CLOSE_WINDOW:
-		clientClose (c);
-		break;
-	    case KEY_HIDE_WINDOW:
-		clientHide (c, c->win_workspace, TRUE);
-		break;
-	    case KEY_MAXIMIZE_WINDOW:
-		clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
-		break;
-	    case KEY_MAXIMIZE_VERT:
-		clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT);
-		break;
-	    case KEY_MAXIMIZE_HORIZ:
-		clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ);
-		break;
-	    case KEY_SHADE_WINDOW:
-		clientToggleShaded (c);
-		break;
-	    case KEY_STICK_WINDOW:
-		clientToggleSticky (c, TRUE);
-		frameDraw (c, FALSE, FALSE);
-		break;
-	    case KEY_MOVE_NEXT_WORKSPACE:
-		workspaceSwitch (workspace + 1, c);
-		break;
-	    case KEY_MOVE_PREV_WORKSPACE:
-		workspaceSwitch (workspace - 1, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_1:
-		workspaceSwitch (0, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_2:
-		workspaceSwitch (1, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_3:
-		workspaceSwitch (2, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_4:
-		workspaceSwitch (3, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_5:
-		workspaceSwitch (4, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_6:
-		workspaceSwitch (5, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_7:
-		workspaceSwitch (6, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_8:
-		workspaceSwitch (7, c);
-		break;
-	    case KEY_MOVE_WORKSPACE_9:
-		workspaceSwitch (8, c);
-		break;
-	    default:
-		break;
-	}
+        switch (key)
+        {
+            case KEY_MOVE_UP:
+            case KEY_MOVE_DOWN:
+            case KEY_MOVE_LEFT:
+            case KEY_MOVE_RIGHT:
+                moveRequest (c, (XEvent *) ev);
+                break;
+            case KEY_RESIZE_UP:
+            case KEY_RESIZE_DOWN:
+            case KEY_RESIZE_LEFT:
+            case KEY_RESIZE_RIGHT:
+                if (CLIENT_FLAG_TEST_ALL (c,
+                        CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
+                {
+                    clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+                }
+                break;
+            case KEY_CYCLE_WINDOWS:
+                clientCycle (c);
+                break;
+            case KEY_CLOSE_WINDOW:
+                clientClose (c);
+                break;
+            case KEY_HIDE_WINDOW:
+                clientHide (c, c->win_workspace, TRUE);
+                break;
+            case KEY_MAXIMIZE_WINDOW:
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                break;
+            case KEY_MAXIMIZE_VERT:
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT);
+                break;
+            case KEY_MAXIMIZE_HORIZ:
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ);
+                break;
+            case KEY_SHADE_WINDOW:
+                clientToggleShaded (c);
+                break;
+            case KEY_STICK_WINDOW:
+                clientToggleSticky (c, TRUE);
+                frameDraw (c, FALSE, FALSE);
+                break;
+            case KEY_MOVE_NEXT_WORKSPACE:
+                workspaceSwitch (workspace + 1, c);
+                break;
+            case KEY_MOVE_PREV_WORKSPACE:
+                workspaceSwitch (workspace - 1, c);
+                break;
+            case KEY_MOVE_WORKSPACE_1:
+                workspaceSwitch (0, c);
+                break;
+            case KEY_MOVE_WORKSPACE_2:
+                workspaceSwitch (1, c);
+                break;
+            case KEY_MOVE_WORKSPACE_3:
+                workspaceSwitch (2, c);
+                break;
+            case KEY_MOVE_WORKSPACE_4:
+                workspaceSwitch (3, c);
+                break;
+            case KEY_MOVE_WORKSPACE_5:
+                workspaceSwitch (4, c);
+                break;
+            case KEY_MOVE_WORKSPACE_6:
+                workspaceSwitch (5, c);
+                break;
+            case KEY_MOVE_WORKSPACE_7:
+                workspaceSwitch (6, c);
+                break;
+            case KEY_MOVE_WORKSPACE_8:
+                workspaceSwitch (7, c);
+                break;
+            case KEY_MOVE_WORKSPACE_9:
+                workspaceSwitch (8, c);
+                break;
+            default:
+                break;
+        }
     }
     else
     {
-	switch (key)
-	{
-	    case KEY_CYCLE_WINDOWS:
-		if (clients)
-		{
-		    clientCycle (clients->prev);
-		}
-		break;
-	    default:
-		break;
-	}
+        switch (key)
+        {
+            case KEY_CYCLE_WINDOWS:
+                if (clients)
+                {
+                    clientCycle (clients->prev);
+                }
+                break;
+            default:
+                break;
+        }
     }
     switch (key)
     {
-	case KEY_NEXT_WORKSPACE:
-	    workspaceSwitch (workspace + 1, NULL);
-	    break;
-	case KEY_PREV_WORKSPACE:
-	    workspaceSwitch (workspace - 1, NULL);
-	    break;
-	case KEY_ADD_WORKSPACE:
-	    workspaceSetCount (params.workspace_count + 1);
-	    break;
-	case KEY_DEL_WORKSPACE:
-	    workspaceSetCount (params.workspace_count - 1);
-	    break;
-	case KEY_WORKSPACE_1:
-	    workspaceSwitch (0, NULL);
-	    break;
-	case KEY_WORKSPACE_2:
-	    workspaceSwitch (1, NULL);
-	    break;
-	case KEY_WORKSPACE_3:
-	    workspaceSwitch (2, NULL);
-	    break;
-	case KEY_WORKSPACE_4:
-	    workspaceSwitch (3, NULL);
-	    break;
-	case KEY_WORKSPACE_5:
-	    workspaceSwitch (4, NULL);
-	    break;
-	case KEY_WORKSPACE_6:
-	    workspaceSwitch (5, NULL);
-	    break;
-	case KEY_WORKSPACE_7:
-	    workspaceSwitch (6, NULL);
-	    break;
-	case KEY_WORKSPACE_8:
-	    workspaceSwitch (7, NULL);
-	    break;
-	case KEY_WORKSPACE_9:
-	    workspaceSwitch (8, NULL);
-	    break;
-	case KEY_SHORTCUT_1:
-	    spawn_shortcut (0);
-	    break;
-	case KEY_SHORTCUT_2:
-	    spawn_shortcut (1);
-	    break;
-	case KEY_SHORTCUT_3:
-	    spawn_shortcut (2);
-	    break;
-	case KEY_SHORTCUT_4:
-	    spawn_shortcut (3);
-	    break;
-	case KEY_SHORTCUT_5:
-	    spawn_shortcut (4);
-	    break;
-	case KEY_SHORTCUT_6:
-	    spawn_shortcut (5);
-	    break;
-	case KEY_SHORTCUT_7:
-	    spawn_shortcut (6);
-	    break;
-	case KEY_SHORTCUT_8:
-	    spawn_shortcut (7);
-	    break;
-	case KEY_SHORTCUT_9:
-	    spawn_shortcut (8);
-	    break;
-	case KEY_SHORTCUT_10:
-	    spawn_shortcut (9);
-	    break;
-	default:
-	    break;
+        case KEY_NEXT_WORKSPACE:
+            workspaceSwitch (workspace + 1, NULL);
+            break;
+        case KEY_PREV_WORKSPACE:
+            workspaceSwitch (workspace - 1, NULL);
+            break;
+        case KEY_ADD_WORKSPACE:
+            workspaceSetCount (params.workspace_count + 1);
+            break;
+        case KEY_DEL_WORKSPACE:
+            workspaceSetCount (params.workspace_count - 1);
+            break;
+        case KEY_WORKSPACE_1:
+            workspaceSwitch (0, NULL);
+            break;
+        case KEY_WORKSPACE_2:
+            workspaceSwitch (1, NULL);
+            break;
+        case KEY_WORKSPACE_3:
+            workspaceSwitch (2, NULL);
+            break;
+        case KEY_WORKSPACE_4:
+            workspaceSwitch (3, NULL);
+            break;
+        case KEY_WORKSPACE_5:
+            workspaceSwitch (4, NULL);
+            break;
+        case KEY_WORKSPACE_6:
+            workspaceSwitch (5, NULL);
+            break;
+        case KEY_WORKSPACE_7:
+            workspaceSwitch (6, NULL);
+            break;
+        case KEY_WORKSPACE_8:
+            workspaceSwitch (7, NULL);
+            break;
+        case KEY_WORKSPACE_9:
+            workspaceSwitch (8, NULL);
+            break;
+        case KEY_SHORTCUT_1:
+            spawn_shortcut (0);
+            break;
+        case KEY_SHORTCUT_2:
+            spawn_shortcut (1);
+            break;
+        case KEY_SHORTCUT_3:
+            spawn_shortcut (2);
+            break;
+        case KEY_SHORTCUT_4:
+            spawn_shortcut (3);
+            break;
+        case KEY_SHORTCUT_5:
+            spawn_shortcut (4);
+            break;
+        case KEY_SHORTCUT_6:
+            spawn_shortcut (5);
+            break;
+        case KEY_SHORTCUT_7:
+            spawn_shortcut (6);
+            break;
+        case KEY_SHORTCUT_8:
+            spawn_shortcut (7);
+            break;
+        case KEY_SHORTCUT_9:
+            spawn_shortcut (8);
+            break;
+        case KEY_SHORTCUT_10:
+            spawn_shortcut (9);
+            break;
+        default:
+            break;
     }
 }
 
@@ -465,29 +464,29 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
 {
     if (ev->button == Button2)
     {
-	XfwmButtonClickType tclick;
+        XfwmButtonClickType tclick;
 
-	tclick = typeOfClick (c->frame, (XEvent *) ev, FALSE);
+        tclick = typeOfClick (c->frame, (XEvent *) ev, FALSE);
 
-	if (tclick == XFWM_BUTTON_CLICK)
-	{
-	    clientLower (c);
-	}
-	else
-	{
-	    moveRequest (c, (XEvent *) ev);
-	}
+        if (tclick == XFWM_BUTTON_CLICK)
+        {
+            clientLower (c);
+        }
+        else
+        {
+            moveRequest (c, (XEvent *) ev);
+        }
     }
     else
     {
-	if (ev->button == Button1)
-	{
-	    clientRaise (c);
-	}
-	if ((ev->button == Button1) || (ev->button == Button3))
-	{
-	    resizeRequest (c, part, (XEvent *) ev);
-	}
+        if (ev->button == Button1)
+        {
+            clientRaise (c);
+        }
+        if ((ev->button == Button1) || (ev->button == Button3))
+        {
+            resizeRequest (c, part, (XEvent *) ev);
+        }
     }
 }
 
@@ -506,24 +505,24 @@ button1Action (Client * c, XButtonEvent * ev)
     tclick = typeOfClick (c->frame, &copy_event, TRUE);
 
     if ((tclick == XFWM_BUTTON_DRAG)
-	|| (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
+        || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
     {
-	moveRequest (c, (XEvent *) ev);
+        moveRequest (c, (XEvent *) ev);
     }
     else if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
     {
-	switch (params.double_click_action)
-	{
-	    case ACTION_MAXIMIZE:
-		clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
-		break;
-	    case ACTION_SHADE:
-		clientToggleShaded (c);
-		break;
-	    case ACTION_HIDE:
-		clientHide (c, c->win_workspace, TRUE);
-		break;
-	}
+        switch (params.double_click_action)
+        {
+            case ACTION_MAXIMIZE:
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                break;
+            case ACTION_SHADE:
+                clientToggleShaded (c);
+                break;
+            case ACTION_HIDE:
+                clientHide (c, c->win_workspace, TRUE);
+                break;
+        }
     }
 }
 
@@ -535,65 +534,63 @@ titleButton (Client * c, int state, XButtonEvent * ev)
 
     if (ev->button == Button1)
     {
-	button1Action (c, ev);
+        button1Action (c, ev);
     }
     else if (ev->button == Button2)
     {
-	clientLower (c);
+        clientLower (c);
     }
     else if (ev->button == Button3)
     {
-	/*
-	   We need to copy the event to keep the original event untouched
-	   for gtk to handle it (in case we open up the menu)
-	 */
+        /*
+           We need to copy the event to keep the original event untouched
+           for gtk to handle it (in case we open up the menu)
+         */
 
-	XEvent copy_event = (XEvent) * ev;
-	XfwmButtonClickType tclick;
+        XEvent copy_event = (XEvent) * ev;
+        XfwmButtonClickType tclick;
 
-	tclick = typeOfClick (c->frame, &copy_event, FALSE);
+        tclick = typeOfClick (c->frame, &copy_event, FALSE);
 
-	if (tclick == XFWM_BUTTON_DRAG)
-	{
-	    moveRequest (c, (XEvent *) ev);
-	}
-	else
-	{
-	    clientSetFocus (c, TRUE);
-	    if (params.raise_on_click)
-	    {
-		clientRaise (c);
-	    }
-	    ev->window = ev->root;
-	    if (button_handler_id)
-	    {
-		g_signal_handler_disconnect (GTK_OBJECT
-					     (getDefaultGtkWidget ()),
-					     button_handler_id);
-	    }
-	    button_handler_id =
-		g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
-				  "button_press_event",
-				  GTK_SIGNAL_FUNC (show_popup_cb),
-				  (gpointer) c);
-	    /* Let GTK handle this for us. */
-	}
+        if (tclick == XFWM_BUTTON_DRAG)
+        {
+            moveRequest (c, (XEvent *) ev);
+        }
+        else
+        {
+            clientSetFocus (c, TRUE);
+            if (params.raise_on_click)
+            {
+                clientRaise (c);
+            }
+            ev->window = ev->root;
+            if (button_handler_id)
+            {
+                g_signal_handler_disconnect (GTK_OBJECT (getDefaultGtkWidget
+                        ()), button_handler_id);
+            }
+            button_handler_id =
+                g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
+                "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
+                (gpointer) c);
+            /* Let GTK handle this for us. */
+        }
     }
     else if (ev->button == Button4)
     {
-	/* Mouse wheel scroll up */
-	if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
-	{
-	    clientShade (c);
-	}
+        /* Mouse wheel scroll up */
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        {
+            clientShade (c);
+        }
     }
     else if (ev->button == Button5)
     {
-	/* Mouse wheel scroll down */
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
-	{
-	    clientUnshade (c);
-	}
+        /* Mouse wheel scroll down */
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        {
+            clientUnshade (c);
+        }
     }
 }
 
@@ -605,24 +602,24 @@ rootScrollButton (XButtonEvent * ev)
 
     while (XCheckTypedWindowEvent (dpy, root, ButtonPress, &otherEvent))
     {
-	if (otherEvent.xbutton.button != ev->button)
-	{
-	    XPutBackEvent (dpy, &otherEvent);
-	}
+        if (otherEvent.xbutton.button != ev->button)
+        {
+            XPutBackEvent (dpy, &otherEvent);
+        }
     }
-    if ((ev->time - lastscroll) < 100)	/* ms */
+    if ((ev->time - lastscroll) < 100)  /* ms */
     {
-	/* Too many events in too little time, drop this event... */
-	return;
+        /* Too many events in too little time, drop this event... */
+        return;
     }
     lastscroll = ev->time;
     if (ev->button == Button4)
     {
-	workspaceSwitch (workspace - 1, NULL);
+        workspaceSwitch (workspace - 1, NULL);
     }
     else if (ev->button == Button5)
     {
-	workspaceSwitch (workspace + 1, NULL);
+        workspaceSwitch (workspace + 1, NULL);
     }
 }
 
@@ -642,154 +639,151 @@ handleButtonPress (XButtonEvent * ev)
     c = clientGetFromWindow (ev->window, ANY);
     if (c)
     {
-	state =
-	    ev->
-	    state & (ShiftMask | ControlMask | AltMask | MetaMask |
-		     SuperMask | HyperMask);
-	win = ev->subwindow;
+        state =
+            ev->
+            state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask
+            | HyperMask);
+        win = ev->subwindow;
 
-	if ((ev->button == Button1) && (state == AltMask))
-	{
-	    button1Action (c, ev);
-	}
-	else if ((ev->button == Button3) && (state == AltMask))
-	{
-	    edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
-	}
-	else if (WIN_IS_BUTTON (win))
-	{
-	    if (ev->button <= Button3)
-	    {
-		clientSetFocus (c, TRUE);
-		if (params.raise_on_click)
-		{
-		    clientRaise (c);
-		}
-		clientButtonPress (c, win, ev);
-	    }
-	}
-	else if (win == MYWINDOW_XWINDOW (c->title))
-	{
-	    titleButton (c, state, ev);
-	}
-	else if (win == MYWINDOW_XWINDOW (c->buttons[MENU_BUTTON]))
-	{
-	    if (ev->button == Button1)
-	    {
-		/*
-		   We need to copy the event to keep the original event untouched
-		   for gtk to handle it (in case we open up the menu)
-		 */
+        if ((ev->button == Button1) && (state == AltMask))
+        {
+            button1Action (c, ev);
+        }
+        else if ((ev->button == Button3) && (state == AltMask))
+        {
+            edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+        }
+        else if (WIN_IS_BUTTON (win))
+        {
+            if (ev->button <= Button3)
+            {
+                clientSetFocus (c, TRUE);
+                if (params.raise_on_click)
+                {
+                    clientRaise (c);
+                }
+                clientButtonPress (c, win, ev);
+            }
+        }
+        else if (win == MYWINDOW_XWINDOW (c->title))
+        {
+            titleButton (c, state, ev);
+        }
+        else if (win == MYWINDOW_XWINDOW (c->buttons[MENU_BUTTON]))
+        {
+            if (ev->button == Button1)
+            {
+                /*
+                   We need to copy the event to keep the original event untouched
+                   for gtk to handle it (in case we open up the menu)
+                 */
 
-		XEvent copy_event = (XEvent) * ev;
-		XfwmButtonClickType tclick;
+                XEvent copy_event = (XEvent) * ev;
+                XfwmButtonClickType tclick;
 
-		tclick = typeOfClick (c->frame, &copy_event, TRUE);
+                tclick = typeOfClick (c->frame, &copy_event, TRUE);
 
-		if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
-		{
-		    clientClose (c);
-		}
-		else
-		{
-		    clientSetFocus (c, TRUE);
-		    if (params.raise_on_click)
-		    {
-			clientRaise (c);
-		    }
-		    ev->window = ev->root;
-		    if (button_handler_id)
-		    {
-			g_signal_handler_disconnect (GTK_OBJECT
-						     (getDefaultGtkWidget
-						      ()), button_handler_id);
-		    }
-		    button_handler_id =
-			g_signal_connect (GTK_OBJECT
-					  (getDefaultGtkWidget ()),
-					  "button_press_event",
-					  GTK_SIGNAL_FUNC
-					  (show_popup_cb), (gpointer) c);
-		    /* Let GTK handle this for us. */
-		}
-	    }
-	}
-	else if (((ev->window != c->window) && (ev->button == Button2) &&
-		  (state == 0)) || ((ev->button == Button2) &&
-				    (state == (AltMask | ControlMask))))
-	{
-	    clientLower (c);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT])) &&
-		 (state == 0))
-	{
-	    edgeButton (c, CORNER_TOP_LEFT, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT])) &&
-		 (state == 0))
-	{
-	    edgeButton (c, CORNER_TOP_RIGHT, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]))
-		 && (state == 0))
-	{
-	    edgeButton (c, CORNER_BOTTOM_LEFT, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]))
-		 && (state == 0))
-	{
-	    edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM])) &&
-		 (state == 0))
-	{
-	    edgeButton (c, 4 + SIDE_BOTTOM, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]))
-		 && (state == 0))
-	{
-	    edgeButton (c, 4 + SIDE_LEFT, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT])) &&
-		 (state == 0))
-	{
-	    edgeButton (c, 4 + SIDE_RIGHT, ev);
-	}
-	else
-	{
-	    if (ev->button == Button1)
-	    {
-		clientSetFocus (c, TRUE);
-		if (params.raise_on_click)
-		{
-		    clientRaise (c);
-		}
-	    }
-	    if (ev->window == c->window)
-	    {
-		replay = TRUE;
-	    }
-	}
+                if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
+                {
+                    clientClose (c);
+                }
+                else
+                {
+                    clientSetFocus (c, TRUE);
+                    if (params.raise_on_click)
+                    {
+                        clientRaise (c);
+                    }
+                    ev->window = ev->root;
+                    if (button_handler_id)
+                    {
+                        g_signal_handler_disconnect (GTK_OBJECT
+                            (getDefaultGtkWidget ()), button_handler_id);
+                    }
+                    button_handler_id =
+                        g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
+                        "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
+                        (gpointer) c);
+                    /* Let GTK handle this for us. */
+                }
+            }
+        }
+        else if (((ev->window != c->window) && (ev->button == Button2)
+                && (state == 0)) || ((ev->button == Button2)
+                && (state == (AltMask | ControlMask))))
+        {
+            clientLower (c);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]))
+            && (state == 0))
+        {
+            edgeButton (c, CORNER_TOP_LEFT, ev);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]))
+            && (state == 0))
+        {
+            edgeButton (c, CORNER_TOP_RIGHT, ev);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]))
+            && (state == 0))
+        {
+            edgeButton (c, CORNER_BOTTOM_LEFT, ev);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]))
+            && (state == 0))
+        {
+            edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]))
+            && (state == 0))
+        {
+            edgeButton (c, 4 + SIDE_BOTTOM, ev);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]))
+            && (state == 0))
+        {
+            edgeButton (c, 4 + SIDE_LEFT, ev);
+        }
+        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]))
+            && (state == 0))
+        {
+            edgeButton (c, 4 + SIDE_RIGHT, ev);
+        }
+        else
+        {
+            if (ev->button == Button1)
+            {
+                clientSetFocus (c, TRUE);
+                if (params.raise_on_click)
+                {
+                    clientRaise (c);
+                }
+            }
+            if (ev->window == c->window)
+            {
+                replay = TRUE;
+            }
+        }
 
-	if (replay)
-	{
-	    XAllowEvents (dpy, ReplayPointer, ev->time);
-	}
-	else
-	{
-	    XAllowEvents (dpy, SyncPointer, ev->time);
-	}
+        if (replay)
+        {
+            XAllowEvents (dpy, ReplayPointer, ev->time);
+        }
+        else
+        {
+            XAllowEvents (dpy, SyncPointer, ev->time);
+        }
     }
-    else if ((ev->window == root) &&
-	     ((ev->button == Button4) || (ev->button == Button5)))
+    else if ((ev->window == root) && ((ev->button == Button4)
+            || (ev->button == Button5)))
     {
-	rootScrollButton (ev);
+        rootScrollButton (ev);
     }
     else
     {
-	XUngrabPointer (dpy, CurrentTime);
-	XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask,
-		    (XEvent *) ev);
+        XUngrabPointer (dpy, CurrentTime);
+        XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask,
+            (XEvent *) ev);
     }
 }
 
@@ -812,9 +806,9 @@ handleDestroyNotify (XDestroyWindowEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-	TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
-	clientPassFocus (c);
-	clientUnframe (c, FALSE);
+        TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
+        clientPassFocus (c);
+        clientUnframe (c, FALSE);
     }
 }
 
@@ -829,24 +823,24 @@ handleUnmapNotify (XUnmapEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-	TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
-	/* Reparenting generates an unmapnotify, don't pass focus in that case */
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
-	{
-	    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
-	}
-	else
-	{
-	    clientPassFocus (c);
-	}
-	if (c->ignore_unmap)
-	{
-	    c->ignore_unmap--;
-	}
-	else
-	{
-	    clientUnframe (c, FALSE);
-	}
+        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        /* Reparenting generates an unmapnotify, don't pass focus in that case */
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
+        {
+            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
+        }
+        else
+        {
+            clientPassFocus (c);
+        }
+        if (c->ignore_unmap)
+        {
+            c->ignore_unmap--;
+        }
+        else
+        {
+            clientUnframe (c, FALSE);
+        }
     }
 }
 
@@ -860,18 +854,18 @@ handleMapRequest (XMapRequestEvent * ev)
 
     if (ev->window == None)
     {
-	TRACE ("Mapping None ???");
-	return;
+        TRACE ("Mapping None ???");
+        return;
     }
 
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-	clientShow (c, TRUE);
+        clientShow (c, TRUE);
     }
     else
     {
-	clientFrame (ev->window, FALSE);
+        clientFrame (ev->window, FALSE);
     }
 }
 
@@ -886,18 +880,18 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     TRACE ("configured window is (0x%lx)", ev->window);
 
     /* Compress events - logic taken from kwin */
-    while (XCheckTypedWindowEvent
-	   (dpy, ev->window, ConfigureRequest, &otherEvent))
+    while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest,
+            &otherEvent))
     {
-	if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
-	{
-	    ev = &otherEvent.xconfigurerequest;
-	}
-	else
-	{
-	    XPutBackEvent (dpy, &otherEvent);
-	    break;
-	}
+        if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
+        {
+            ev = &otherEvent.xconfigurerequest;
+        }
+        else
+        {
+            XPutBackEvent (dpy, &otherEvent);
+            break;
+        }
     }
 
     wc.x = ev->x;
@@ -911,77 +905,76 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (!c)
     {
-	/* Some app tend or try to manipulate the wm frame to achieve fullscreen mode */
-	c = clientGetFromWindow (ev->window, FRAME);
-	if (c)
-	{
-	    TRACE
-		("client %s (0x%lx) is attempting to manipulate its frame!",
-		 c->name, c->window);
-	    if (ev->value_mask & CWX)
-	    {
-		wc.x += frameLeft (c);
-	    }
-	    if (ev->value_mask & CWY)
-	    {
-		wc.y += frameTop (c);
-	    }
-	    if (ev->value_mask & CWWidth)
-	    {
-		wc.width -= frameLeft (c) + frameRight (c);
-	    }
-	    if (ev->value_mask & CWHeight)
-	    {
-		wc.height -= frameTop (c) + frameBottom (c);
-	    }
-	    /* We don't allow changing stacking order by accessing the frame
-	       window because that would break the layer management in xfwm4
-	     */
-	    ev->value_mask &= ~(CWSibling | CWStackMode);
-	}
+        /* Some app tend or try to manipulate the wm frame to achieve fullscreen mode */
+        c = clientGetFromWindow (ev->window, FRAME);
+        if (c)
+        {
+            TRACE ("client %s (0x%lx) is attempting to manipulate its frame!",
+                c->name, c->window);
+            if (ev->value_mask & CWX)
+            {
+                wc.x += frameLeft (c);
+            }
+            if (ev->value_mask & CWY)
+            {
+                wc.y += frameTop (c);
+            }
+            if (ev->value_mask & CWWidth)
+            {
+                wc.width -= frameLeft (c) + frameRight (c);
+            }
+            if (ev->value_mask & CWHeight)
+            {
+                wc.height -= frameTop (c) + frameBottom (c);
+            }
+            /* We don't allow changing stacking order by accessing the frame
+               window because that would break the layer management in xfwm4
+             */
+            ev->value_mask &= ~(CWSibling | CWStackMode);
+        }
     }
     if (c)
     {
-	gboolean constrained = FALSE;
+        gboolean constrained = FALSE;
 
-	TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)",
-	       c->name, c->window);
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
-	{
-	    /* Sorry, but it's not the right time for configure request */
-	    return;
-	}
-	if (c->type == WINDOW_DESKTOP)
-	{
-	    /* Ignore stacking request for DESKTOP windows */
-	    ev->value_mask &= ~(CWSibling | CWStackMode);
-	}
-	clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
-	if (ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
-	{
-	    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
-	    {
-		clientRemoveMaximizeFlag (c);
-	    }
-	    constrained = TRUE;
-	}
-	/* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
-	if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
-	{
-	    if (c->win_workspace == workspace)
-	    {
-		if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
-		{
-		    clientShow (c, TRUE);
-		}
-	    }
-	}
-	clientConfigure (c, &wc, ev->value_mask, constrained);
+        TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)",
+            c->name, c->window);
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
+        {
+            /* Sorry, but it's not the right time for configure request */
+            return;
+        }
+        if (c->type == WINDOW_DESKTOP)
+        {
+            /* Ignore stacking request for DESKTOP windows */
+            ev->value_mask &= ~(CWSibling | CWStackMode);
+        }
+        clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        if (ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
+        {
+            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+            {
+                clientRemoveMaximizeFlag (c);
+            }
+            constrained = TRUE;
+        }
+        /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
+        if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
+        {
+            if (c->win_workspace == workspace)
+            {
+                if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+                {
+                    clientShow (c, TRUE);
+                }
+            }
+        }
+        clientConfigure (c, &wc, ev->value_mask, constrained);
     }
     else
     {
-	TRACE ("unmanaged configure request for win 0x%lx", ev->window);
-	XConfigureWindow (dpy, ev->window, ev->value_mask, &wc);
+        TRACE ("unmanaged configure request for win 0x%lx", ev->window);
+        XConfigureWindow (dpy, ev->window, ev->value_mask, &wc);
     }
 }
 
@@ -992,11 +985,11 @@ handleEnterNotify (XCrossingEvent * ev)
 
     TRACE ("entering handleEnterNotify");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
-	(ev->detail > NotifyNonlinearVirtual))
+    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
+        || (ev->detail > NotifyNonlinearVirtual))
     {
-	/* We're not interested in such notifications */
-	return;
+        /* We're not interested in such notifications */
+        return;
     }
 
     TRACE ("entered window is (0x%lx)", ev->window);
@@ -1004,11 +997,11 @@ handleEnterNotify (XCrossingEvent * ev)
     c = clientGetFromWindow (ev->window, FRAME);
     if (c && !(params.click_to_focus) && (clientAcceptFocus (c)))
     {
-	TRACE ("EnterNotify window is \"%s\"", c->name);
-	if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
-	{
-	    clientSetFocus (c, TRUE);
-	}
+        TRACE ("EnterNotify window is \"%s\"", c->name);
+        if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        {
+            clientSetFocus (c, TRUE);
+        }
     }
 }
 
@@ -1027,23 +1020,23 @@ handleFocusIn (XFocusChangeEvent * ev)
 
     TRACE ("entering handleFocusIn");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
-	(ev->detail > NotifyNonlinearVirtual))
+    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
+        || (ev->detail > NotifyNonlinearVirtual))
     {
-	/* We're not interested in such notifications */
-	return;
+        /* We're not interested in such notifications */
+        return;
     }
 
     c = clientGetFromWindow (ev->window, WINDOW);
     TRACE ("focused window is (0x%lx)", ev->window);
     if (c)
     {
-	TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
-	clientUpdateFocus (c);
-	if (params.raise_on_focus && !params.click_to_focus)
-	{
-	    reset_timeout ();
-	}
+        TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
+        clientUpdateFocus (c);
+        if (params.raise_on_focus && !params.click_to_focus)
+        {
+            reset_timeout ();
+        }
     }
 }
 
@@ -1053,21 +1046,21 @@ handleFocusOut (XFocusChangeEvent * ev)
     Client *c;
     TRACE ("entering handleFocusOut");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
-	(ev->detail != NotifyNonlinear))
+    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
+        || (ev->detail != NotifyNonlinear))
     {
-	/* We're not interested in such notifications */
-	return;
+        /* We're not interested in such notifications */
+        return;
     }
 
     c = clientGetFromWindow (ev->window, WINDOW);
     TRACE ("focused out window is (0x%lx)", ev->window);
     if (c && (c == clientGetFocus ()))
     {
-	TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-	clientUpdateFocus (NULL);
-	/* Clear timeout */
-	clear_timeout ();
+        TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
+        clientUpdateFocus (NULL);
+        /* Clear timeout */
+        clear_timeout ();
     }
 }
 
@@ -1082,116 +1075,114 @@ handlePropertyNotify (XPropertyEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-	if (ev->atom == XA_WM_NORMAL_HINTS)
-	{
-	    unsigned long previous_value;
+        if (ev->atom == XA_WM_NORMAL_HINTS)
+        {
+            unsigned long previous_value;
 
-	    TRACE
-		("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify",
-		 c->name, c->window);
-	    XGetWMNormalHints (dpy, c->window, c->size, &dummy);
-	    previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
-	    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_IS_RESIZABLE);
-	    if (((c->size->flags & (PMinSize | PMaxSize)) !=
-		 (PMinSize | PMaxSize)) ||
-		(((c->size->flags & (PMinSize | PMaxSize)) ==
-		  (PMinSize | PMaxSize)) &&
-		 ((c->size->min_width < c->size->max_width) ||
-		  (c->size->min_height < c->size->max_height))))
-	    {
-		CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
-	    }
-	    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE) !=
-		previous_value)
-	    {
-		frameDraw (c, TRUE, FALSE);
-	    }
-	}
-	else if ((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a XA_WM_NAME notify",
-		 c->name, c->window);
-	    if (c->name)
-	    {
-		free (c->name);
-	    }
-	    getWindowName (dpy, c->window, &c->name);
-	    CLIENT_FLAG_SET (c, CLIENT_FLAG_NAME_CHANGED);
-	    frameDraw (c, TRUE, FALSE);
-	}
-	else if (ev->atom == motif_wm_hints)
-	{
-	    XWindowChanges wc;
+            TRACE
+                ("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify",
+                c->name, c->window);
+            XGetWMNormalHints (dpy, c->window, c->size, &dummy);
+            previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
+            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_IS_RESIZABLE);
+            if (((c->size->flags & (PMinSize | PMaxSize)) !=
+                    (PMinSize | PMaxSize))
+                || (((c->size->flags & (PMinSize | PMaxSize)) ==
+                        (PMinSize | PMaxSize))
+                    && ((c->size->min_width < c->size->max_width)
+                        || (c->size->min_height < c->size->max_height))))
+            {
+                CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
+            }
+            if (CLIENT_FLAG_TEST (c,
+                    CLIENT_FLAG_IS_RESIZABLE) != previous_value)
+            {
+                frameDraw (c, TRUE, FALSE);
+            }
+        }
+        else if ((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME notify",
+                c->name, c->window);
+            if (c->name)
+            {
+                free (c->name);
+            }
+            getWindowName (dpy, c->window, &c->name);
+            CLIENT_FLAG_SET (c, CLIENT_FLAG_NAME_CHANGED);
+            frameDraw (c, TRUE, FALSE);
+        }
+        else if (ev->atom == motif_wm_hints)
+        {
+            XWindowChanges wc;
 
-	    TRACE
-		("client \"%s\" (0x%lx) has received a motif_wm_hints notify",
-		 c->name, c->window);
-	    clientUpdateMWMHints (c);
-	    wc.x = c->x;
-	    wc.y = c->y;
-	    wc.width = c->width;
-	    wc.height = c->height;
-	    clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
-	}
-	else if (ev->atom == XA_WM_HINTS)
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify\n",
-		 c->name, c->window);
-	    c->wmhints = XGetWMHints (dpy, c->window);
-	    if (c->wmhints)
-	    {
-		c->group_leader = c->wmhints->window_group;
-	    }
-	}
-	else if (ev->atom == win_hints)
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a win_hints notify",
-		 c->name, c->window);
-	    getGnomeHint (dpy, c->window, win_hints, &c->win_hints);
-	}
-	else if (ev->atom == net_wm_window_type)
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_wm_window_type notify",
-		 c->name, c->window);
-	    clientGetNetWmType (c);
-	    frameDraw (c, TRUE, FALSE);
-	}
-	else if (ev->atom == net_wm_strut)
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_wm_strut notify",
-		 c->name, c->window);
-	    clientGetNetStruts (c);
-	}
-	else if (ev->atom == wm_colormap_windows)
-	{
-	    clientUpdateColormaps (c);
-	    if (c == clientGetFocus ())
-	    {
-		clientInstallColormaps (c);
-	    }
-	}
+            TRACE
+                ("client \"%s\" (0x%lx) has received a motif_wm_hints notify",
+                c->name, c->window);
+            clientUpdateMWMHints (c);
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
+        }
+        else if (ev->atom == XA_WM_HINTS)
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify\n",
+                c->name, c->window);
+            c->wmhints = XGetWMHints (dpy, c->window);
+            if (c->wmhints)
+            {
+                c->group_leader = c->wmhints->window_group;
+            }
+        }
+        else if (ev->atom == win_hints)
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a win_hints notify",
+                c->name, c->window);
+            getGnomeHint (dpy, c->window, win_hints, &c->win_hints);
+        }
+        else if (ev->atom == net_wm_window_type)
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a net_wm_window_type notify",
+                c->name, c->window);
+            clientGetNetWmType (c);
+            frameDraw (c, TRUE, FALSE);
+        }
+        else if (ev->atom == net_wm_strut)
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a net_wm_strut notify",
+                c->name, c->window);
+            clientGetNetStruts (c);
+        }
+        else if (ev->atom == wm_colormap_windows)
+        {
+            clientUpdateColormaps (c);
+            if (c == clientGetFocus ())
+            {
+                clientInstallColormaps (c);
+            }
+        }
 #ifdef HAVE_STARTUP_NOTIFICATION
-	else if (ev->atom == net_startup_id)
-	{
-	    if (c->startup_id)
-	    {
-		free (c->startup_id);
-		c->startup_id = NULL;
-	    }
-	    getWindowStartupId (dpy, c->window, &c->startup_id);
-	}
+        else if (ev->atom == net_startup_id)
+        {
+            if (c->startup_id)
+            {
+                free (c->startup_id);
+                c->startup_id = NULL;
+            }
+            getWindowStartupId (dpy, c->window, &c->startup_id);
+        }
 #endif
+
     }
     else if (ev->atom == gnome_panel_desktop_area)
     {
-	TRACE ("root has received a gnome_panel_desktop_area notify");
-	getGnomeDesktopMargins (dpy, screen, gnome_margins);
-	workspaceUpdateArea (margins, gnome_margins);
+        TRACE ("root has received a gnome_panel_desktop_area notify");
+        getGnomeDesktopMargins (dpy, screen, gnome_margins);
+        workspaceUpdateArea (margins, gnome_margins);
     }
 }
 
@@ -1209,138 +1200,137 @@ handleClientMessage (XClientMessageEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-	if ((ev->message_type == wm_change_state) && (ev->format == 32) &&
-	    (ev->data.l[0] == IconicState))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a wm_change_state event",
-		 c->name, c->window);
-	    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN)
-		&& !clientIsTransient (c))
-	    {
-		clientHide (c, c->win_workspace, TRUE);
-	    }
-	}
-	else if ((ev->message_type == win_state) && (ev->format == 32))
-	{
-	    TRACE ("client \"%s\" (0x%lx) has received a win_state event",
-		   c->name, c->window);
-	    clientUpdateWinState (c, ev);
-	}
-	else if ((ev->message_type == win_layer) && (ev->format == 32))
-	{
-	    TRACE ("client \"%s\" (0x%lx) has received a win_layer event",
-		   c->name, c->window);
-	    if ((ev->data.l[0] != c->win_layer) && !clientIsTransient (c))
-	    {
-		clientSetLayer (c, ev->data.l[0]);
-		clientSetNetState (c);
-	    }
-	}
-	else if ((ev->message_type == win_workspace) && (ev->format == 32))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a win_workspace event",
-		 c->name, c->window);
-	    if ((ev->data.l[0] != c->win_workspace) && !clientIsTransient (c))
-	    {
-		clientSetWorkspace (c, ev->data.l[0], TRUE);
-	    }
-	}
-	else if ((ev->message_type == net_wm_desktop) && (ev->format == 32))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_wm_desktop event",
-		 c->name, c->window);
-	    if (!clientIsTransient (c))
-	    {
-		if (ev->data.l[0] == ALL_WORKSPACES)
-		{
-		    if (CLIENT_FLAG_TEST_AND_NOT
-			(c, CLIENT_FLAG_HAS_STICK, CLIENT_FLAG_STICKY))
-		    {
-			clientStick (c, TRUE);
-			frameDraw (c, FALSE, FALSE);
-		    }
-		}
-		else
-		{
-		    if (CLIENT_FLAG_TEST_ALL
-			(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY))
-		    {
-			clientUnstick (c, TRUE);
-			frameDraw (c, FALSE, FALSE);
-		    }
-		    if (ev->data.l[0] != c->win_workspace)
-		    {
-			clientSetWorkspace (c, ev->data.l[0], TRUE);
-		    }
-		}
-	    }
-	}
-	else if ((ev->message_type == net_close_window) && (ev->format == 32))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_close_window event",
-		 c->name, c->window);
-	    clientClose (c);
-	}
-	else if ((ev->message_type == net_wm_state) && (ev->format == 32))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_wm_state event",
-		 c->name, c->window);
-	    clientUpdateNetState (c, ev);
-	}
-	else if ((ev->message_type == net_wm_moveresize)
-		 && (ev->format == 32))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_wm_moveresize event",
-		 c->name, c->window);
-	    g_message (_("%s: Operation not supported (yet)\n"),
-		       g_get_prgname ());
-	    /* TBD */
-	}
-	else if ((ev->message_type == net_active_window)
-		 && (ev->format == 32))
-	{
-	    TRACE
-		("client \"%s\" (0x%lx) has received a net_active_window event",
-		 c->name, c->window);
-	    workspaceSwitch (c->win_workspace, NULL);
-	    clientShow (c, TRUE);
-	    clientRaise (c);
-	    clientSetFocus (c, TRUE);
-	}
+        if ((ev->message_type == wm_change_state) && (ev->format == 32)
+            && (ev->data.l[0] == IconicState))
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a wm_change_state event",
+                c->name, c->window);
+            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN)
+                && !clientIsTransient (c))
+            {
+                clientHide (c, c->win_workspace, TRUE);
+            }
+        }
+        else if ((ev->message_type == win_state) && (ev->format == 32))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a win_state event",
+                c->name, c->window);
+            clientUpdateWinState (c, ev);
+        }
+        else if ((ev->message_type == win_layer) && (ev->format == 32))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a win_layer event",
+                c->name, c->window);
+            if ((ev->data.l[0] != c->win_layer) && !clientIsTransient (c))
+            {
+                clientSetLayer (c, ev->data.l[0]);
+                clientSetNetState (c);
+            }
+        }
+        else if ((ev->message_type == win_workspace) && (ev->format == 32))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a win_workspace event",
+                c->name, c->window);
+            if ((ev->data.l[0] != c->win_workspace) && !clientIsTransient (c))
+            {
+                clientSetWorkspace (c, ev->data.l[0], TRUE);
+            }
+        }
+        else if ((ev->message_type == net_wm_desktop) && (ev->format == 32))
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a net_wm_desktop event",
+                c->name, c->window);
+            if (!clientIsTransient (c))
+            {
+                if (ev->data.l[0] == ALL_WORKSPACES)
+                {
+                    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_STICK,
+                            CLIENT_FLAG_STICKY))
+                    {
+                        clientStick (c, TRUE);
+                        frameDraw (c, FALSE, FALSE);
+                    }
+                }
+                else
+                {
+                    if (CLIENT_FLAG_TEST_ALL (c,
+                            CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY))
+                    {
+                        clientUnstick (c, TRUE);
+                        frameDraw (c, FALSE, FALSE);
+                    }
+                    if (ev->data.l[0] != c->win_workspace)
+                    {
+                        clientSetWorkspace (c, ev->data.l[0], TRUE);
+                    }
+                }
+            }
+        }
+        else if ((ev->message_type == net_close_window) && (ev->format == 32))
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a net_close_window event",
+                c->name, c->window);
+            clientClose (c);
+        }
+        else if ((ev->message_type == net_wm_state) && (ev->format == 32))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a net_wm_state event",
+                c->name, c->window);
+            clientUpdateNetState (c, ev);
+        }
+        else if ((ev->message_type == net_wm_moveresize)
+            && (ev->format == 32))
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a net_wm_moveresize event",
+                c->name, c->window);
+            g_message (_("%s: Operation not supported (yet)\n"),
+                g_get_prgname ());
+            /* TBD */
+        }
+        else if ((ev->message_type == net_active_window)
+            && (ev->format == 32))
+        {
+            TRACE
+                ("client \"%s\" (0x%lx) has received a net_active_window event",
+                c->name, c->window);
+            workspaceSwitch (c->win_workspace, NULL);
+            clientShow (c, TRUE);
+            clientRaise (c);
+            clientSetFocus (c, TRUE);
+        }
     }
     else
     {
-	if (((ev->message_type == win_workspace) ||
-	     (ev->message_type == net_current_desktop)) && (ev->format == 32))
-	{
-	    TRACE
-		("root has received a win_workspace or a net_current_desktop event");
-	    if (ev->data.l[0] != workspace)
-	    {
-		workspaceSwitch (ev->data.l[0], NULL);
-	    }
-	}
-	else if (((ev->message_type == win_workspace_count) ||
-		  (ev->message_type == net_number_of_desktops)) &&
-		 (ev->format == 32))
-	{
-	    TRACE ("root has received a win_workspace_count event");
-	    if (ev->data.l[0] != params.workspace_count)
-	    {
-		workspaceSetCount (ev->data.l[0]);
-	    }
-	}
-	else
-	{
-	    TRACE ("unidentified client message for window 0x%lx",
-		   ev->window);
-	}
+        if (((ev->message_type == win_workspace)
+                || (ev->message_type == net_current_desktop))
+            && (ev->format == 32))
+        {
+            TRACE
+                ("root has received a win_workspace or a net_current_desktop event");
+            if (ev->data.l[0] != workspace)
+            {
+                workspaceSwitch (ev->data.l[0], NULL);
+            }
+        }
+        else if (((ev->message_type == win_workspace_count)
+                || (ev->message_type == net_number_of_desktops))
+            && (ev->format == 32))
+        {
+            TRACE ("root has received a win_workspace_count event");
+            if (ev->data.l[0] != params.workspace_count)
+            {
+                workspaceSetCount (ev->data.l[0]);
+            }
+        }
+        else
+        {
+            TRACE ("unidentified client message for window 0x%lx",
+                ev->window);
+        }
     }
 }
 
@@ -1354,7 +1344,7 @@ handleShape (XShapeEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-	frameDraw (c, FALSE, TRUE);
+        frameDraw (c, FALSE, TRUE);
     }
 }
 
@@ -1368,10 +1358,10 @@ handleColormapNotify (XColormapEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if ((c) && (ev->window == c->window) && (ev->new))
     {
-	if (c == clientGetFocus ())
-	{
-	    clientInstallColormaps (c);
-	}
+        if (c == clientGetFocus ())
+        {
+            clientInstallColormaps (c);
+        }
     }
 }
 
@@ -1383,68 +1373,68 @@ handleEvent (XEvent * ev)
     sn_process_event (ev);
     switch (ev->type)
     {
-	case MotionNotify:
-	    handleMotionNotify ((XMotionEvent *) ev);
-	    break;
-	case KeyPress:
-	    handleKeyPress ((XKeyEvent *) ev);
-	    break;
-	case ButtonPress:
-	    handleButtonPress ((XButtonEvent *) ev);
-	    break;
-	case ButtonRelease:
-	    handleButtonRelease ((XButtonEvent *) ev);
-	    break;
-	case DestroyNotify:
-	    handleDestroyNotify ((XDestroyWindowEvent *) ev);
-	    break;
-	case UnmapNotify:
-	    handleUnmapNotify ((XUnmapEvent *) ev);
-	    break;
-	case MapRequest:
-	    handleMapRequest ((XMapRequestEvent *) ev);
-	    break;
-	case ConfigureRequest:
-	    handleConfigureRequest ((XConfigureRequestEvent *) ev);
-	    break;
-	case EnterNotify:
-	    handleEnterNotify ((XCrossingEvent *) ev);
-	    break;
-	case LeaveNotify:
-	    handleLeaveNotify ((XCrossingEvent *) ev);
-	    break;
-	case FocusIn:
-	    handleFocusIn ((XFocusChangeEvent *) ev);
-	    break;
-	case FocusOut:
-	    handleFocusOut ((XFocusChangeEvent *) ev);
-	    break;
-	case PropertyNotify:
-	    handlePropertyNotify ((XPropertyEvent *) ev);
-	    break;
-	case ClientMessage:
-	    handleClientMessage ((XClientMessageEvent *) ev);
-	    break;
-	case ColormapNotify:
-	    handleColormapNotify ((XColormapEvent *) ev);
-	    break;
-	default:
-	    if (shape && (ev->type == shape_event))
-	    {
-		handleShape ((XShapeEvent *) ev);
-	    }
+        case MotionNotify:
+            handleMotionNotify ((XMotionEvent *) ev);
+            break;
+        case KeyPress:
+            handleKeyPress ((XKeyEvent *) ev);
+            break;
+        case ButtonPress:
+            handleButtonPress ((XButtonEvent *) ev);
+            break;
+        case ButtonRelease:
+            handleButtonRelease ((XButtonEvent *) ev);
+            break;
+        case DestroyNotify:
+            handleDestroyNotify ((XDestroyWindowEvent *) ev);
+            break;
+        case UnmapNotify:
+            handleUnmapNotify ((XUnmapEvent *) ev);
+            break;
+        case MapRequest:
+            handleMapRequest ((XMapRequestEvent *) ev);
+            break;
+        case ConfigureRequest:
+            handleConfigureRequest ((XConfigureRequestEvent *) ev);
+            break;
+        case EnterNotify:
+            handleEnterNotify ((XCrossingEvent *) ev);
+            break;
+        case LeaveNotify:
+            handleLeaveNotify ((XCrossingEvent *) ev);
+            break;
+        case FocusIn:
+            handleFocusIn ((XFocusChangeEvent *) ev);
+            break;
+        case FocusOut:
+            handleFocusOut ((XFocusChangeEvent *) ev);
+            break;
+        case PropertyNotify:
+            handlePropertyNotify ((XPropertyEvent *) ev);
+            break;
+        case ClientMessage:
+            handleClientMessage ((XClientMessageEvent *) ev);
+            break;
+        case ColormapNotify:
+            handleColormapNotify ((XColormapEvent *) ev);
+            break;
+        default:
+            if (shape && (ev->type == shape_event))
+            {
+                handleShape ((XShapeEvent *) ev);
+            }
     }
     if (!gdk_events_pending () && !XPending (dpy))
     {
-	if (reload)
-	{
-	    reloadSettings (UPDATE_ALL);
-	    reload = FALSE;
-	}
-	else if (quit)
-	{
-	    gtk_main_quit ();
-	}
+        if (reload)
+        {
+            reloadSettings (UPDATE_ALL);
+            reload = FALSE;
+        }
+        else if (quit)
+        {
+            gtk_main_quit ();
+        }
     }
 }
 
@@ -1462,7 +1452,7 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
 
 static void
 menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
-	       gpointer menu_data, gpointer item_data)
+    gpointer menu_data, gpointer item_data)
 {
     Client *c = NULL;
 
@@ -1470,64 +1460,64 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
 
     if (menu_event_window)
     {
-	removeTmpEventWin (menu_event_window);
-	menu_event_window = None;
+        removeTmpEventWin (menu_event_window);
+        menu_event_window = None;
     }
 
     if (menu_data)
     {
-	c = (Client *) menu_data;
-	c = clientGetFromWindow (c->window, WINDOW);
-	if (!c)
-	{
-	    menu_free (menu);
-	    return;
-	}
-	c->button_pressed[MENU_BUTTON] = FALSE;
+        c = (Client *) menu_data;
+        c = clientGetFromWindow (c->window, WINDOW);
+        if (!c)
+        {
+            menu_free (menu);
+            return;
+        }
+        c->button_pressed[MENU_BUTTON] = FALSE;
     }
 
     switch (op)
     {
-	case MENU_OP_QUIT:
-	    gtk_main_quit ();
-	    break;
-	case MENU_OP_MAXIMIZE:
-	case MENU_OP_UNMAXIMIZE:
-	    if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
-	    {
-		clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
-	    }
-	    break;
-	case MENU_OP_MINIMIZE:
-	    if (CLIENT_CAN_HIDE_WINDOW (c))
-	    {
-		clientHide (c, c->win_workspace, TRUE);
-	    }
-	    frameDraw (c, FALSE, FALSE);
-	    break;
-	case MENU_OP_MINIMIZE_ALL:
-	    clientHideAll (c, c->win_workspace);
-	    frameDraw (c, FALSE, FALSE);
-	    break;
-	case MENU_OP_UNMINIMIZE:
-	    clientShow (c, TRUE);
-	    break;
-	case MENU_OP_SHADE:
-	case MENU_OP_UNSHADE:
-	    clientToggleShaded (c);
-	    break;
-	case MENU_OP_STICK:
-	case MENU_OP_UNSTICK:
-	    clientToggleSticky (c, TRUE);
-	    frameDraw (c, FALSE, FALSE);
-	    break;
-	case MENU_OP_DELETE:
-	    frameDraw (c, FALSE, FALSE);
-	    clientClose (c);
-	    break;
-	default:
-	    frameDraw (c, FALSE, FALSE);
-	    break;
+        case MENU_OP_QUIT:
+            gtk_main_quit ();
+            break;
+        case MENU_OP_MAXIMIZE:
+        case MENU_OP_UNMAXIMIZE:
+            if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
+            {
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+            }
+            break;
+        case MENU_OP_MINIMIZE:
+            if (CLIENT_CAN_HIDE_WINDOW (c))
+            {
+                clientHide (c, c->win_workspace, TRUE);
+            }
+            frameDraw (c, FALSE, FALSE);
+            break;
+        case MENU_OP_MINIMIZE_ALL:
+            clientHideAll (c, c->win_workspace);
+            frameDraw (c, FALSE, FALSE);
+            break;
+        case MENU_OP_UNMINIMIZE:
+            clientShow (c, TRUE);
+            break;
+        case MENU_OP_SHADE:
+        case MENU_OP_UNSHADE:
+            clientToggleShaded (c);
+            break;
+        case MENU_OP_STICK:
+        case MENU_OP_UNSTICK:
+            clientToggleSticky (c, TRUE);
+            frameDraw (c, FALSE, FALSE);
+            break;
+        case MENU_OP_DELETE:
+            frameDraw (c, FALSE, FALSE);
+            clientClose (c);
+            break;
+        default:
+            frameDraw (c, FALSE, FALSE);
+            break;
     }
     menu_free (menu);
 }
@@ -1546,96 +1536,96 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 
     if (((ev->button == 1) || (ev->button == 3)) && (c = (Client *) data))
     {
-	c->button_pressed[MENU_BUTTON] = TRUE;
-	frameDraw (c, FALSE, FALSE);
-	y = c->y;
-	ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
-	insensitive = 0;
+        c->button_pressed[MENU_BUTTON] = TRUE;
+        frameDraw (c, FALSE, FALSE);
+        y = c->y;
+        ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
+        insensitive = 0;
 
-	if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_CLOSE))
-	{
-	    insensitive |= MENU_OP_DELETE;
-	}
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_CLOSE))
+        {
+            insensitive |= MENU_OP_DELETE;
+        }
 
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
-	{
-	    ops |= MENU_OP_UNMAXIMIZE;
-	    if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-	    {
-		insensitive |= MENU_OP_UNMAXIMIZE;
-	    }
-	}
-	else
-	{
-	    ops |= MENU_OP_MAXIMIZE;
-	    if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-	    {
-		insensitive |= MENU_OP_MAXIMIZE;
-	    }
-	}
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+        {
+            ops |= MENU_OP_UNMAXIMIZE;
+            if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
+            {
+                insensitive |= MENU_OP_UNMAXIMIZE;
+            }
+        }
+        else
+        {
+            ops |= MENU_OP_MAXIMIZE;
+            if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
+            {
+                insensitive |= MENU_OP_MAXIMIZE;
+            }
+        }
 
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
-	{
-	    ops |= MENU_OP_UNMINIMIZE;
-	    if (!CLIENT_CAN_HIDE_WINDOW (c))
-	    {
-		insensitive |= MENU_OP_UNMINIMIZE;
-	    }
-	}
-	else
-	{
-	    ops |= MENU_OP_MINIMIZE;
-	    if (!CLIENT_CAN_HIDE_WINDOW (c))
-	    {
-		insensitive |= MENU_OP_MINIMIZE;
-	    }
-	}
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+        {
+            ops |= MENU_OP_UNMINIMIZE;
+            if (!CLIENT_CAN_HIDE_WINDOW (c))
+            {
+                insensitive |= MENU_OP_UNMINIMIZE;
+            }
+        }
+        else
+        {
+            ops |= MENU_OP_MINIMIZE;
+            if (!CLIENT_CAN_HIDE_WINDOW (c))
+            {
+                insensitive |= MENU_OP_MINIMIZE;
+            }
+        }
 
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
-	{
-	    ops |= MENU_OP_UNSHADE;
-	}
-	else
-	{
-	    ops |= MENU_OP_SHADE;
-	}
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        {
+            ops |= MENU_OP_UNSHADE;
+        }
+        else
+        {
+            ops |= MENU_OP_SHADE;
+        }
 
-	if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
-	{
-	    ops |= MENU_OP_UNSTICK;
-	    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
-	    {
-		insensitive |= MENU_OP_UNSTICK;
-	    }
-	}
-	else
-	{
-	    ops |= MENU_OP_STICK;
-	    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
-	    {
-		insensitive |= MENU_OP_STICK;
-	    }
-	}
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+        {
+            ops |= MENU_OP_UNSTICK;
+            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            {
+                insensitive |= MENU_OP_UNSTICK;
+            }
+        }
+        else
+        {
+            ops |= MENU_OP_STICK;
+            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            {
+                insensitive |= MENU_OP_STICK;
+            }
+        }
     }
     else
     {
-	return (TRUE);
+        return (TRUE);
     }
 
     if (button_handler_id)
     {
-	g_signal_handler_disconnect (GTK_OBJECT (getDefaultGtkWidget ()),
-				     button_handler_id);
+        g_signal_handler_disconnect (GTK_OBJECT (getDefaultGtkWidget ()),
+            button_handler_id);
     }
     button_handler_id =
-	g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
-			  "button_press_event",
-			  GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
+        g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
+        "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
+        (gpointer) NULL);
 
     if (menu_event_window)
     {
-	removeTmpEventWin (menu_event_window);
-	menu_event_window = None;
+        removeTmpEventWin (menu_event_window);
+        menu_event_window = None;
     }
     /*
        Since all button press/release events are catched by the windows frames, there is some
@@ -1652,13 +1642,13 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
     menu = menu_default (ops, insensitive, menu_callback, c);
     if (!menu_popup (menu, x, y, ev->button, ev->time))
     {
-	TRACE ("Cannot open menu");
-	gdk_beep ();
-	c->button_pressed[MENU_BUTTON] = FALSE;
-	frameDraw (c, FALSE, FALSE);
-	removeTmpEventWin (menu_event_window);
-	menu_event_window = None;
-	menu_free (menu);
+        TRACE ("Cannot open menu");
+        gdk_beep ();
+        c->button_pressed[MENU_BUTTON] = FALSE;
+        frameDraw (c, FALSE, FALSE);
+        removeTmpEventWin (menu_event_window);
+        menu_event_window = None;
+        menu_free (menu);
     }
     return (TRUE);
 }
@@ -1667,7 +1657,7 @@ static gboolean
 set_reload (void)
 {
     TRACE
-	("setting reload flag so all prefs will be reread at next event loop");
+        ("setting reload flag so all prefs will be reread at next event loop");
     reload = TRUE;
     return (TRUE);
 }
@@ -1682,7 +1672,7 @@ dbl_click_time (void)
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
     {
-	params.dbl_click_time = abs (g_value_get_int (&tmp_val));
+        params.dbl_click_time = abs (g_value_get_int (&tmp_val));
     }
 
     return (TRUE);
@@ -1695,12 +1685,12 @@ client_event_cb (GtkWidget * widget, GdkEventClient * ev)
 
     if (!atom_rcfiles)
     {
-	atom_rcfiles = gdk_atom_intern ("_GTK_READ_RCFILES", FALSE);
+        atom_rcfiles = gdk_atom_intern ("_GTK_READ_RCFILES", FALSE);
     }
 
     if (ev->message_type == atom_rcfiles)
     {
-	set_reload ();
+        set_reload ();
     }
 
     return (FALSE);
@@ -1712,20 +1702,20 @@ initGtkCallbacks (void)
     GtkSettings *settings;
 
     button_handler_id =
-	g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
-			  "button_press_event",
-			  GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
+        g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()),
+        "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb),
+        (gpointer) NULL);
     g_signal_connect (GTK_OBJECT (getDefaultGtkWidget ()), "client_event",
-		      GTK_SIGNAL_FUNC (client_event_cb), (gpointer) NULL);
+        GTK_SIGNAL_FUNC (client_event_cb), (gpointer) NULL);
 
     settings = gtk_settings_get_default ();
     if (settings)
     {
-	g_signal_connect (settings, "notify::gtk-theme-name",
-			  G_CALLBACK (set_reload), NULL);
-	g_signal_connect (settings, "notify::gtk-font-name",
-			  G_CALLBACK (set_reload), NULL);
-	g_signal_connect (settings, "notify::gtk-double-click-time",
-			  G_CALLBACK (dbl_click_time), NULL);
+        g_signal_connect (settings, "notify::gtk-theme-name",
+            G_CALLBACK (set_reload), NULL);
+        g_signal_connect (settings, "notify::gtk-font-name",
+            G_CALLBACK (set_reload), NULL);
+        g_signal_connect (settings, "notify::gtk-double-click-time",
+            G_CALLBACK (dbl_click_time), NULL);
     }
 }

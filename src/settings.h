@@ -175,6 +175,7 @@ struct _Params
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean wrap_workspaces;
+    gboolean wrap_windows;
     GC box_gc;
     GdkGC *black_gc;
     GdkGC *white_gc;

@@ -85,17 +85,17 @@ handleXError (Display * dpy, XErrorEvent * err)
 {
     switch (err->error_code)
     {
-	case BadAccess:
-	    if (err->resourceid == root)
-	    {
-		g_message ("%s: Another window manager is running\n",
-			   progname);
-		exit (1);
-	    }
-	    break;
-	default:
-	    TRACE ("X error ignored");
-	    break;
+        case BadAccess:
+            if (err->resourceid == root)
+            {
+                g_message ("%s: Another window manager is running\n",
+                    progname);
+                exit (1);
+            }
+            break;
+        default:
+            TRACE ("X error ignored");
+            break;
     }
     return 0;
 }
@@ -117,15 +117,15 @@ cleanUp ()
     sessionFreeWindowStates ();
     for (i = 0; i < 7; i++)
     {
-	XFreeCursor (dpy, resize_cursor[i]);
+        XFreeCursor (dpy, resize_cursor[i]);
     }
     for (i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
-	if (params.shortcut_exec[i])
-	{
-	    g_free (params.shortcut_exec[i]);
-	    params.shortcut_exec[i] = NULL;
-	}
+        if (params.shortcut_exec[i])
+        {
+            g_free (params.shortcut_exec[i]);
+            params.shortcut_exec[i] = NULL;
+        }
     }
     XSetInputFocus (dpy, root, RevertToPointerRoot, CurrentTime);
     closeEventFilter ();
@@ -138,7 +138,7 @@ load_saved_session (void)
     gchar *filename;
 
     filename =
-	g_build_filename (home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
+        g_build_filename (home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
     sessionLoadWindowStates (filename);
     g_free (filename);
 }
@@ -150,7 +150,7 @@ save_phase_2 (gpointer data)
     gchar *filename;
 
     filename =
-	g_build_filename (home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
+        g_build_filename (home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
     sessionSaveWindowStates (filename);
     g_free (filename);
 }
@@ -169,20 +169,20 @@ handleSignal (int sig)
 
     switch (sig)
     {
-	case SIGINT:
-	case SIGTERM:
-	    gtk_main_quit ();
-	    quit = TRUE;
-	    break;
-	case SIGHUP:
-	    reload = TRUE;
-	    break;
-	case SIGSEGV:
-	    cleanUp ();
-	    g_error (_("%s: Segmentation fault"), g_get_prgname ());
-	    break;
-	default:
-	    break;
+        case SIGINT:
+        case SIGTERM:
+            gtk_main_quit ();
+            quit = TRUE;
+            break;
+        case SIGHUP:
+            reload = TRUE;
+            break;
+        case SIGSEGV:
+            cleanUp ();
+            g_error (_("%s: Segmentation fault"), g_get_prgname ());
+            break;
+        default:
+            break;
     }
 }
 
@@ -209,7 +209,7 @@ initialize (int argc, char **argv)
     gtk_init (&argc, &argv);
 
     TRACE ("Using GTK+-%d.%d.%d", gtk_major_version, gtk_minor_version,
-	   gtk_micro_version);
+        gtk_micro_version);
     gtk_widget_set_default_colormap (gdk_colormap_get_system ());
 
     dpy = GDK_DISPLAY ();
@@ -226,18 +226,18 @@ initialize (int argc, char **argv)
     xinerama_heads = xineramaGetHeads ();
 
     client_session =
-	client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
+        client_session_new (argc, argv, NULL, SESSION_RESTART_IF_RUNNING, 20);
     client_session->save_phase_2 = save_phase_2;
     client_session->die = session_die;
 
     if (!session_init (client_session))
     {
-	g_message (_("%s: Running without session manager"),
-		   g_get_prgname ());
+        g_message (_("%s: Running without session manager"),
+            g_get_prgname ());
     }
     else
     {
-	load_saved_session ();
+        load_saved_session ();
     }
 
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
@@ -256,13 +256,13 @@ initialize (int argc, char **argv)
     move_cursor = XCreateFontCursor (dpy, XC_fleur);
     busy_cursor = cursorCreateSpinning (dpy, root);
     resize_cursor[CORNER_TOP_LEFT] =
-	XCreateFontCursor (dpy, XC_top_left_corner);
+        XCreateFontCursor (dpy, XC_top_left_corner);
     resize_cursor[CORNER_TOP_RIGHT] =
-	XCreateFontCursor (dpy, XC_top_right_corner);
+        XCreateFontCursor (dpy, XC_top_right_corner);
     resize_cursor[CORNER_BOTTOM_LEFT] =
-	XCreateFontCursor (dpy, XC_bottom_left_corner);
+        XCreateFontCursor (dpy, XC_bottom_left_corner);
     resize_cursor[CORNER_BOTTOM_RIGHT] =
-	XCreateFontCursor (dpy, XC_bottom_right_corner);
+        XCreateFontCursor (dpy, XC_bottom_right_corner);
     resize_cursor[4 + SIDE_LEFT] = XCreateFontCursor (dpy, XC_left_side);
     resize_cursor[4 + SIDE_RIGHT] = XCreateFontCursor (dpy, XC_right_side);
     resize_cursor[4 + SIDE_BOTTOM] = XCreateFontCursor (dpy, XC_bottom_side);
@@ -271,7 +271,7 @@ initialize (int argc, char **argv)
 
     if (!initEventFilter (MAIN_EVENT_MASK, NULL, "xfwm"))
     {
-	return -1;
+        return -1;
     }
     pushEventFilter (xfwm4_event_filter, NULL);
 
@@ -280,7 +280,7 @@ initialize (int argc, char **argv)
 
     if (!initSettings ())
     {
-	return -2;
+        return -2;
     }
 
     setGnomeProtocols (dpy, screen, gnome_win);
@@ -328,51 +328,51 @@ main (int argc, char **argv)
 
     for (i = 1; i < argc; i++)
     {
-	if (!strcmp (argv[i], "--daemon"))
-	{
-	    daemon_mode = TRUE;
-	}
+        if (!strcmp (argv[i], "--daemon"))
+        {
+            daemon_mode = TRUE;
+        }
     }
 
     status = initialize (argc, argv);
     switch (status)
     {
-	case -1:
-	    g_warning (_("%s: Another Window Manager is already running"),
-		       g_get_prgname ());
-	    exit (1);
-	    break;
-	case -2:
-	    g_warning (_("%s: Missing data from default files"),
-		       g_get_prgname ());
-	    exit (1);
-	    break;
-	case 0:
-	    if (daemon_mode)
-	    {
-		switch (fork ())
-		{
-		    case -1:
-			g_warning ("fork() failed");
-			exit (1);
-			break;
-		    case 0:	/* child */
-			gtk_main ();
-			break;
-		    default:	/* parent */
-			_exit (0);
-			break;
-		}
-	    }
-	    else
-	    {
-		gtk_main ();
-	    }
-	    break;
-	default:
-	    g_warning (_("%s: Unknown error occured"), g_get_prgname ());
-	    exit (1);
-	    break;
+        case -1:
+            g_warning (_("%s: Another Window Manager is already running"),
+                g_get_prgname ());
+            exit (1);
+            break;
+        case -2:
+            g_warning (_("%s: Missing data from default files"),
+                g_get_prgname ());
+            exit (1);
+            break;
+        case 0:
+            if (daemon_mode)
+            {
+                switch (fork ())
+                {
+                    case -1:
+                        g_warning ("fork() failed");
+                        exit (1);
+                        break;
+                    case 0:    /* child */
+                        gtk_main ();
+                        break;
+                    default:   /* parent */
+                        _exit (0);
+                        break;
+                }
+            }
+            else
+            {
+                gtk_main ();
+            }
+            break;
+        default:
+            g_warning (_("%s: Unknown error occured"), g_get_prgname ());
+            exit (1);
+            break;
     }
     cleanUp ();
     TRACE ("Terminated");

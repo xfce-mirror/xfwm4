@@ -78,15 +78,15 @@ create_channel (McsManager * manager, const char *channel, const char *rcfile)
 
     if (g_file_test (homefile, G_FILE_TEST_EXISTS))
     {
-	mcs_manager_add_channel_from_file (manager, channel, homefile);
+        mcs_manager_add_channel_from_file (manager, channel, homefile);
     }
     else if (g_file_test (sysfile, G_FILE_TEST_EXISTS))
     {
-	mcs_manager_add_channel_from_file (manager, channel, sysfile);
+        mcs_manager_add_channel_from_file (manager, channel, sysfile);
     }
     else
     {
-	mcs_manager_add_channel (manager, channel);
+        mcs_manager_add_channel (manager, channel);
     }
 
     g_free (homefile);
@@ -127,8 +127,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Workspace Margins"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon =
-	inline_icon_at_size (margins_icon_data, DEFAULT_ICON_SIZE,
-			     DEFAULT_ICON_SIZE);
+        inline_icon_at_size (margins_icon_data, DEFAULT_ICON_SIZE,
+                             DEFAULT_ICON_SIZE);
 
     create_margins_channel (mcs_plugin);
 
@@ -146,15 +146,15 @@ create_margins_channel (McsPlugin * mcs_plugin)
 
     for (i = 0; i < 4; i++)
     {
-	margins[i] = 0;
+        margins[i] = 0;
 
-	setting =
-	    mcs_manager_setting_lookup (mcs_plugin->manager, options[i],
-					MARGINS_CHANNEL);
+        setting =
+            mcs_manager_setting_lookup (mcs_plugin->manager, options[i],
+                                        MARGINS_CHANNEL);
 
-	n = (setting) ? setting->data.v_int : 0;
+        n = (setting) ? setting->data.v_int : 0;
 
-	set_margin (i, n);
+        set_margin (i, n);
     }
 }
 
@@ -200,26 +200,26 @@ run_dialog (McsPlugin * mcs_plugin)
 
     if (dialog)
     {
-	gtk_window_present (GTK_WINDOW (dialog));
-	return;
+        gtk_window_present (GTK_WINDOW (dialog));
+        return;
     }
 
     wmax = gdk_screen_width () / 4;
     hmax = gdk_screen_height () / 4;
 
     dialog =
-	gtk_dialog_new_with_buttons (_("Adjust workspace margins"), NULL,
-				     GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE,
-				     GTK_RESPONSE_OK, NULL);
+        gtk_dialog_new_with_buttons (_("Adjust workspace margins"), NULL,
+                                     GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE,
+                                     GTK_RESPONSE_OK, NULL);
 
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
     g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy),
-		      NULL);
+                      NULL);
     g_signal_connect (dialog, "delete-event", G_CALLBACK (gtk_widget_destroy),
-		      NULL);
+                      NULL);
 
     g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) & dialog);
 
@@ -234,8 +234,7 @@ run_dialog (McsPlugin * mcs_plugin)
     g_object_unref (icon);
 
     label =
-	gtk_label_new (_
-		       ("Margins are areas on the edges of the screen where no window will be placed"));
+        gtk_label_new (_("Margins are areas on the edges of the screen where no window will be placed"));
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_misc_set_padding (GTK_MISC (label), BORDER, 4);
@@ -288,7 +287,7 @@ run_dialog (McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-		      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     /* right */
     i++;
@@ -308,7 +307,7 @@ run_dialog (McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-		      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     /* top */
     i++;
@@ -328,7 +327,7 @@ run_dialog (McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-		      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     /* bottom */
     i++;
@@ -348,7 +347,7 @@ run_dialog (McsPlugin * mcs_plugin)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-		      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     gtk_widget_show (dialog);
 }

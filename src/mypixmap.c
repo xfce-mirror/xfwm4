@@ -33,7 +33,7 @@
 
 gboolean
 myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
-	      XpmColorSymbol * cs, gint n)
+    XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
     XpmAttributes attr;
@@ -55,14 +55,13 @@ myPixmapLoad (Display * dpy, MyPixmap * pm, gchar * dir, gchar * file,
     attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
     if (n > 0 && cs)
     {
-	attr.valuemask = attr.valuemask | XpmColorSymbols;
+        attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-    if (XpmReadFileToPixmap
-	(dpy, XDefaultRootWindow (dpy), filename, &pm->pixmap, &pm->mask,
-	 &attr))
+    if (XpmReadFileToPixmap (dpy, XDefaultRootWindow (dpy), filename,
+            &pm->pixmap, &pm->mask, &attr))
     {
-	g_free (filename);
-	return FALSE;
+        g_free (filename);
+        return FALSE;
     }
     pm->width = attr.width;
     pm->height = attr.height;
@@ -77,14 +76,14 @@ myPixmapCreate (Display * dpy, MyPixmap * pm, gint width, gint height)
     TRACE ("entering myPixmapCreate, width=%i, height=%i", width, height);
     if ((width < 1) || (height < 1))
     {
-	myPixmapInit (pm);
+        myPixmapInit (pm);
     }
     else
     {
-	pm->pixmap = XCreatePixmap (dpy, root, width, height, depth);
-	pm->mask = XCreatePixmap (dpy, pm->pixmap, width, height, 1);
-	pm->width = width;
-	pm->height = height;
+        pm->pixmap = XCreatePixmap (dpy, root, width, height, depth);
+        pm->mask = XCreatePixmap (dpy, pm->pixmap, width, height, 1);
+        pm->width = width;
+        pm->height = height;
     }
 }
 
@@ -104,12 +103,12 @@ myPixmapFree (Display * dpy, MyPixmap * pm)
 
     if (pm->pixmap != None)
     {
-	XFreePixmap (dpy, pm->pixmap);
-	pm->pixmap = None;
+        XFreePixmap (dpy, pm->pixmap);
+        pm->pixmap = None;
     }
     if (pm->mask != None)
     {
-	XFreePixmap (dpy, pm->mask);
-	pm->mask = None;
+        XFreePixmap (dpy, pm->mask);
+        pm->mask = None;
     }
 }

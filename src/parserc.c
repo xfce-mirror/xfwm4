@@ -48,11 +48,11 @@ parseRc (const gchar * file, const gchar * dir, Settings rc[])
 
     if (dir)
     {
-	filename = g_build_filename (dir, G_DIR_SEPARATOR_S, file, NULL);
+        filename = g_build_filename (dir, G_DIR_SEPARATOR_S, file, NULL);
     }
     else
     {
-	filename = g_strdup (file);
+        filename = g_strdup (file);
     }
 
     fp = fopen (filename, "r");
@@ -60,16 +60,16 @@ parseRc (const gchar * file, const gchar * dir, Settings rc[])
 
     if (!fp)
     {
-	return FALSE;
+        return FALSE;
     }
     while (fgets (buf, sizeof (buf), fp))
     {
-	lvalue = strtok (buf, "=");
-	rvalue = strtok (NULL, "\n");
-	if ((lvalue) && (rvalue))
-	{
-	    setValue (lvalue, rvalue, rc);
-	}
+        lvalue = strtok (buf, "=");
+        rvalue = strtok (NULL, "\n");
+        if ((lvalue) && (rvalue))
+        {
+            setValue (lvalue, rvalue, rc);
+        }
     }
     fclose (fp);
     return TRUE;
@@ -85,11 +85,11 @@ checkRc (Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (rc[i].required && !rc[i].value)
-	{
-	    fprintf (stderr, "missing value for option %s\n", rc[i].option);
-	    rval = FALSE;
-	}
+        if (rc[i].required && !rc[i].value)
+        {
+            fprintf (stderr, "missing value for option %s\n", rc[i].option);
+            rval = FALSE;
+        }
     }
     return rval;
 }
@@ -105,10 +105,10 @@ getValue (const gchar * option, Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (!g_ascii_strcasecmp (option, rc[i].option))
-	{
-	    return rc[i].value;
-	}
+        if (!g_ascii_strcasecmp (option, rc[i].option))
+        {
+            return rc[i].value;
+        }
     }
     return NULL;
 }
@@ -125,19 +125,19 @@ setValue (const gchar * lvalue, const gchar * rvalue, Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (!g_ascii_strcasecmp (lvalue, rc[i].option))
-	{
-	    if (rvalue)
-	    {
-		if (rc[i].value)
-		{
-		    g_free (rc[i].value);
-		}
-		rc[i].value = g_strdup (rvalue);
-		TRACE ("%s=%s", rc[i].option, rc[i].value);
-		return TRUE;
-	    }
-	}
+        if (!g_ascii_strcasecmp (lvalue, rc[i].option))
+        {
+            if (rvalue)
+            {
+                if (rc[i].value)
+                {
+                    g_free (rc[i].value);
+                }
+                rc[i].value = g_strdup (rvalue);
+                TRACE ("%s=%s", rc[i].option, rc[i].value);
+                return TRUE;
+            }
+        }
     }
     return FALSE;
 }
@@ -166,44 +166,44 @@ getThemeDir (const gchar * theme)
 {
     if (!theme)
     {
-	return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-				 G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
     }
     else if (g_path_is_absolute (theme))
     {
-	if (g_file_test (theme, G_FILE_TEST_IS_DIR))
-	{
-	    return g_strdup (theme);
-	}
-	else
-	{
-	    return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-				     G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
-	}
+        if (g_file_test (theme, G_FILE_TEST_IS_DIR))
+        {
+            return g_strdup (theme);
+        }
+        else
+        {
+            return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
+                G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        }
     }
     else
     {
-	gchar *test = g_build_filename (g_get_home_dir (), G_DIR_SEPARATOR_S,
-					".themes",
-					G_DIR_SEPARATOR_S, "xfwm4",
-					G_DIR_SEPARATOR_S,
-					theme, NULL);
-	if (g_file_test (test, G_FILE_TEST_IS_DIR))
-	{
-	    return test;
-	}
-	g_free (test);
-	test =
-	    g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-			      G_DIR_SEPARATOR_S, theme, NULL);
-	if (g_file_test (test, G_FILE_TEST_IS_DIR))
-	{
-	    return test;
-	}
-	g_free (test);
+        gchar *test = g_build_filename (g_get_home_dir (), G_DIR_SEPARATOR_S,
+            ".themes",
+            G_DIR_SEPARATOR_S, "xfwm4",
+            G_DIR_SEPARATOR_S,
+            theme, NULL);
+        if (g_file_test (test, G_FILE_TEST_IS_DIR))
+        {
+            return test;
+        }
+        g_free (test);
+        test =
+            g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, theme, NULL);
+        if (g_file_test (test, G_FILE_TEST_IS_DIR))
+        {
+            return test;
+        }
+        g_free (test);
     }
     return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-			     G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
 }
 
 void
@@ -215,10 +215,10 @@ freeRc (Settings rc[])
 
     for (i = 0; rc[i].option; i++)
     {
-	if (rc[i].value)
-	{
-	    g_free (rc[i].value);
-	    rc[i].value = NULL;
-	}
+        if (rc[i].value)
+        {
+            g_free (rc[i].value);
+            rc[i].value = NULL;
+        }
     }
 }

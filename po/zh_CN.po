@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-12 00:18+0200\n"
+"POT-Creation-Date: 2003-05-23 00:22+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -14,36 +14,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
-#: mcs-plugin/margins_plugin.c:232
+#: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
+#: mcs-plugin/margins_plugin.c:250
 #, fuzzy
 msgid "Workspace Margins"
 msgstr "工作区边缘"
 
-#: mcs-plugin/margins_plugin.c:198
+#: mcs-plugin/margins_plugin.c:211
 msgid "Adjust workspace margins"
 msgstr "调整工作区边缘"
 
-#: mcs-plugin/margins_plugin.c:219
+#: mcs-plugin/margins_plugin.c:237
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "边缘是屏幕边上不能放置窗口的区域。"
 
-#: mcs-plugin/margins_plugin.c:260
+#: mcs-plugin/margins_plugin.c:278
 #, fuzzy
 msgid "Left :"
 msgstr "左侧"
 
-#: mcs-plugin/margins_plugin.c:279
+#: mcs-plugin/margins_plugin.c:298
 #, fuzzy
 msgid "Right :"
 msgstr "右侧"
 
-#: mcs-plugin/margins_plugin.c:298
+#: mcs-plugin/margins_plugin.c:318
 msgid "Top :"
 msgstr "顶端"
 
-#: mcs-plugin/margins_plugin.c:317
+#: mcs-plugin/margins_plugin.c:338
 msgid "Bottom :"
 msgstr "底部"
 
@@ -103,67 +103,67 @@ msgstr "中间"
 msgid "Right"
 msgstr "右侧"
 
-#: mcs-plugin/xfwm4_plugin.c:406
+#: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
 msgstr "隐藏"
 
-#: mcs-plugin/xfwm4_plugin.c:1072
+#: mcs-plugin/xfwm4_plugin.c:1233
 msgid "Font Selection Dialog"
 msgstr "字体选择对话框"
 
-#: mcs-plugin/xfwm4_plugin.c:1130 mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1945
 msgid "Window Manager"
 msgstr "窗口管理器"
 
-#: mcs-plugin/xfwm4_plugin.c:1143
+#: mcs-plugin/xfwm4_plugin.c:1317
 msgid "Window Manager Preferences"
 msgstr "窗口管理器首选项"
 
-#: mcs-plugin/xfwm4_plugin.c:1181
+#: mcs-plugin/xfwm4_plugin.c:1354
 msgid "Window style"
 msgstr "窗口风格"
 
-#: mcs-plugin/xfwm4_plugin.c:1199
+#: mcs-plugin/xfwm4_plugin.c:1372
 msgid "Font select :"
 msgstr "字体选择 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1209
+#: mcs-plugin/xfwm4_plugin.c:1382
 msgid "Title font"
 msgstr "标题字体"
 
-#: mcs-plugin/xfwm4_plugin.c:1218
+#: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Text alignment inside title bar :"
 msgstr "标题拦内的文本对齐方式 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1220
+#: mcs-plugin/xfwm4_plugin.c:1399
 msgid "Title Alignment"
 msgstr "标题对齐方式"
 
-#: mcs-plugin/xfwm4_plugin.c:1231
+#: mcs-plugin/xfwm4_plugin.c:1411
 msgid "Button layout"
 msgstr "按钮布局"
 
-#: mcs-plugin/xfwm4_plugin.c:1236
+#: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Decoration style"
 msgstr "装饰风格"
 
-#: mcs-plugin/xfwm4_plugin.c:1269
+#: mcs-plugin/xfwm4_plugin.c:1449
 msgid "Keyboard Shortcut"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:1287
+#: mcs-plugin/xfwm4_plugin.c:1468
 msgid "Click to focus"
 msgstr "点击获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1294
+#: mcs-plugin/xfwm4_plugin.c:1482
 msgid "Focus follows mouse"
 msgstr "焦点跟随鼠标"
 
-#: mcs-plugin/xfwm4_plugin.c:1301
+#: mcs-plugin/xfwm4_plugin.c:1496
 msgid "Focus model"
 msgstr "焦点模式"
 
-#: mcs-plugin/xfwm4_plugin.c:1310
+#: mcs-plugin/xfwm4_plugin.c:1506
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -171,11 +171,11 @@ msgstr ""
 "自动为新建立\n"
 "窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1316
+#: mcs-plugin/xfwm4_plugin.c:1514
 msgid "New window focus"
 msgstr "新窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:1330
+#: mcs-plugin/xfwm4_plugin.c:1529
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -183,23 +183,23 @@ msgstr ""
 "当窗口获得焦点时\n"
 "自动将该窗口置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1340
+#: mcs-plugin/xfwm4_plugin.c:1542
 msgid "Delay before raising focused window :"
 msgstr "置顶焦点所在窗口前的延时 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1346
+#: mcs-plugin/xfwm4_plugin.c:1550
 msgid "Slow"
 msgstr "慢"
 
-#: mcs-plugin/xfwm4_plugin.c:1352
+#: mcs-plugin/xfwm4_plugin.c:1558
 msgid "Fast"
 msgstr "快"
 
-#: mcs-plugin/xfwm4_plugin.c:1367
+#: mcs-plugin/xfwm4_plugin.c:1582
 msgid "Raise on focus"
 msgstr "获得焦点时置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1376
+#: mcs-plugin/xfwm4_plugin.c:1592
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -207,110 +207,115 @@ msgstr ""
 "当在窗口客户区\n"
 "点击时将其置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1382
+#: mcs-plugin/xfwm4_plugin.c:1601
 msgid "Raise on click"
 msgstr "点击置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:1387
+#: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Keyboard and focus"
 msgstr "键盘和鼠标"
 
-#: mcs-plugin/xfwm4_plugin.c:1406
+#: mcs-plugin/xfwm4_plugin.c:1629
 msgid "Snap windows to screen border"
 msgstr "在屏幕边缘吸引窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:1411
+#: mcs-plugin/xfwm4_plugin.c:1638
 #, fuzzy
 msgid "Snap windows to other windows"
 msgstr "在屏幕边缘吸引窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:1421
+#: mcs-plugin/xfwm4_plugin.c:1651
 msgid "Distance :"
 msgstr "距离 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1427 mcs-plugin/xfwm4_plugin.c:1477
+#: mcs-plugin/xfwm4_plugin.c:1659 mcs-plugin/xfwm4_plugin.c:1734
 msgid "Small"
 msgstr "小"
 
-#: mcs-plugin/xfwm4_plugin.c:1433 mcs-plugin/xfwm4_plugin.c:1483
+#: mcs-plugin/xfwm4_plugin.c:1667 mcs-plugin/xfwm4_plugin.c:1742
 msgid "Wide"
 msgstr "宽"
 
-#: mcs-plugin/xfwm4_plugin.c:1447
+#: mcs-plugin/xfwm4_plugin.c:1690
 #, fuzzy
 msgid "Windows snapping"
 msgstr "窗口管理器"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1705
 #, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "拖拽窗口离开屏幕时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1471
+#: mcs-plugin/xfwm4_plugin.c:1714
+#, fuzzy
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "拖拽窗口离开屏幕时回绕工作区"
+
+#: mcs-plugin/xfwm4_plugin.c:1726
 #, fuzzy
 msgid "Edge Resistance :"
 msgstr "距离 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1497
+#: mcs-plugin/xfwm4_plugin.c:1767
 msgid "Wrap workspaces"
 msgstr "回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:1511
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when resizing"
 msgstr "改变窗口尺寸时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1516
+#: mcs-plugin/xfwm4_plugin.c:1790
 msgid "Display content of windows when moving"
 msgstr "移动窗口时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:1521
+#: mcs-plugin/xfwm4_plugin.c:1797
 #, fuzzy
 msgid "Opaque move and resize"
 msgstr "实时缩放?"
 
-#: mcs-plugin/xfwm4_plugin.c:1530
+#: mcs-plugin/xfwm4_plugin.c:1808
 msgid "Action to perform when double clicking on title bar :"
 msgstr "双击标题栏所执行的动作 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1532
+#: mcs-plugin/xfwm4_plugin.c:1814
 msgid "Double click action"
 msgstr "双击执行动作"
 
-#: mcs-plugin/xfwm4_plugin.c:1537
-msgid "Misc."
-msgstr "杂项"
+#: mcs-plugin/xfwm4_plugin.c:1819
+msgid "Advanced"
+msgstr ""
 
-#: src/client.c:406
+#: src/client.c:441
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %#lx)"
 
-#: src/events.c:1165
+#: src/events.c:1290
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
 
-#: src/main.c:173
+#: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:223
+#: src/main.c:235
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: 运行于无会话管理器方式"
 
-#: src/main.c:323
+#: src/main.c:341
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:327
+#: src/main.c:346
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:353
+#: src/main.c:373
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
@@ -383,49 +388,52 @@ msgstr "退出(_Q)"
 msgid "Restart"
 msgstr "重启"
 
-#: src/menu.c:311
+#: src/menu.c:336
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:269
+#: src/settings.c:282
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:453
+#: src/settings.c:507
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:459
+#: src/settings.c:514
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:497
+#: src/settings.c:558
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:503
+#: src/settings.c:565
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:633
+#: src/settings.c:755
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:905
+#: src/settings.c:1090
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
 
-#: src/tabwin.c:68
+#: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "切换到 ..."
+
+#~ msgid "Misc."
+#~ msgstr "杂项"
 
 #~ msgid "Opaque move"
 #~ msgstr "实时移动"

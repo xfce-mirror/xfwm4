@@ -71,7 +71,7 @@ getMouseWindow (Window w)
 
 GC
 createGC (Colormap cmap, char *col, int func, XFontStruct * font,
-	  int line_width, gboolean inc_sw)
+    int line_width, gboolean inc_sw)
 {
     XGCValues gv;
     XColor xc1, xc2;
@@ -87,18 +87,18 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
     gv.function = func;
     if (font)
     {
-	gv.font = font->fid;
-	mask = mask | GCFont;
+        gv.font = font->fid;
+        mask = mask | GCFont;
     }
     if (inc_sw)
     {
-	gv.subwindow_mode = IncludeInferiors;
-	mask = mask | GCSubwindowMode;
+        gv.subwindow_mode = IncludeInferiors;
+        mask = mask | GCSubwindowMode;
     }
     if (line_width > -1)
     {
-	gv.line_width = line_width;
-	mask = mask | GCLineWidth;
+        gv.line_width = line_width;
+        mask = mask | GCLineWidth;
     }
     gc = XCreateGC (dpy, XDefaultRootWindow (dpy), mask, &gv);
     return gc;
@@ -126,8 +126,8 @@ MyXGrabServer (void)
     TRACE ("entering MyXGrabServer");
     if (xgrabcount == 0)
     {
-	TRACE ("grabbing server");
-	XGrabServer (dpy);
+        TRACE ("grabbing server");
+        XGrabServer (dpy);
     }
     xgrabcount++;
     TRACE ("grabs : %i", xgrabcount);
@@ -137,14 +137,14 @@ void
 MyXUngrabServer (void)
 {
     TRACE ("entering MyXUngrabServer");
-    if (--xgrabcount < 0)	/* should never happen */
+    if (--xgrabcount < 0)       /* should never happen */
     {
-	xgrabcount = 0;
+        xgrabcount = 0;
     }
     if (xgrabcount == 0)
     {
-	TRACE ("ungrabbing server");
-	XUngrabServer (dpy);
+        TRACE ("ungrabbing server");
+        XUngrabServer (dpy);
     }
     TRACE ("grabs : %i", xgrabcount);
 }
@@ -158,8 +158,8 @@ setTmpEventWin (long eventmask)
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
     w = XCreateWindow (dpy, root, 0, 0, MyDisplayFullWidth (dpy, screen),
-		       MyDisplayFullHeight (dpy, screen), 0, 0, InputOnly,
-		       CopyFromParent, CWEventMask, &attributes);
+        MyDisplayFullHeight (dpy, screen), 0, 0, InputOnly, CopyFromParent,
+        CWEventMask, &attributes);
     XMapRaised (dpy, w);
     return (w);
 }

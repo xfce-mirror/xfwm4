@@ -144,13 +144,12 @@ getWMState (Display * dpy, Window w)
 
     TRACE ("entering getWmState");
 
-    if ((XGetWindowProperty
-	 (dpy, w, wm_state, 0, 3L, FALSE, wm_state, &real_type, &real_format,
-	  &items_read, &items_left, (unsigned char **) &data) == Success) &&
-	(items_read))
+    if ((XGetWindowProperty (dpy, w, wm_state, 0, 3L, FALSE, wm_state,
+                &real_type, &real_format, &items_read, &items_left,
+                (unsigned char **) &data) == Success) && (items_read))
     {
-	state = *data;
-	XFree (data);
+        state = *data;
+        XFree (data);
     }
     return state;
 }
@@ -166,7 +165,7 @@ setWMState (Display * dpy, Window w, unsigned long state)
     data[1] = None;
 
     XChangeProperty (dpy, w, wm_state, wm_state, 32, PropModeReplace,
-		     (unsigned char *) data, 2);
+        (unsigned char *) data, 2);
 }
 
 void
@@ -187,16 +186,16 @@ getMotifHints (Display * dpy, Window w)
 
     TRACE ("entering getMotifHints");
 
-    if ((XGetWindowProperty
-	 (dpy, w, motif_wm_hints, 0L, 20L, FALSE, motif_wm_hints, &real_type,
-	  &real_format, &items_read, &items_left,
-	  (unsigned char **) &data) == Success) && (items_read))
+    if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, 20L, FALSE,
+                motif_wm_hints, &real_type, &real_format, &items_read,
+                &items_left, (unsigned char **) &data) == Success)
+        && (items_read))
     {
-	return data;
+        return data;
     }
     else
     {
-	return NULL;
+        return NULL;
     }
 }
 
@@ -214,41 +213,40 @@ getWMProtocols (Display * dpy, Window w)
 
     if (XGetWMProtocols (dpy, w, &protocols, &n))
     {
-	for (i = 0, ap = protocols; i < n; i++, ap++)
-	{
-	    if (*ap == (Atom) wm_takefocus)
-	    {
-		result |= WM_PROTOCOLS_TAKE_FOCUS;
-	    }
-	    if (*ap == (Atom) wm_delete_window)
-	    {
-		result |= WM_PROTOCOLS_DELETE_WINDOW;
-	    }
-	}
+        for (i = 0, ap = protocols; i < n; i++, ap++)
+        {
+            if (*ap == (Atom) wm_takefocus)
+            {
+                result |= WM_PROTOCOLS_TAKE_FOCUS;
+            }
+            if (*ap == (Atom) wm_delete_window)
+            {
+                result |= WM_PROTOCOLS_DELETE_WINDOW;
+            }
+        }
     }
     else
     {
-	if ((XGetWindowProperty
-	     (dpy, w, wm_protocols, 0L, 10L, FALSE, wm_protocols, &atype,
-	      &aformat, &nitems, &bytes_remain,
-	      (unsigned char **) &protocols)) == Success)
-	{
-	    for (i = 0, ap = protocols; i < nitems; i++, ap++)
-	    {
-		if (*ap == (Atom) wm_takefocus)
-		{
-		    result |= WM_PROTOCOLS_TAKE_FOCUS;
-		}
-		if (*ap == (Atom) wm_delete_window)
-		{
-		    result |= WM_PROTOCOLS_DELETE_WINDOW;
-		}
-	    }
-	}
+        if ((XGetWindowProperty (dpy, w, wm_protocols, 0L, 10L, FALSE,
+                    wm_protocols, &atype, &aformat, &nitems, &bytes_remain,
+                    (unsigned char **) &protocols)) == Success)
+        {
+            for (i = 0, ap = protocols; i < nitems; i++, ap++)
+            {
+                if (*ap == (Atom) wm_takefocus)
+                {
+                    result |= WM_PROTOCOLS_TAKE_FOCUS;
+                }
+                if (*ap == (Atom) wm_delete_window)
+                {
+                    result |= WM_PROTOCOLS_DELETE_WINDOW;
+                }
+            }
+        }
     }
     if (protocols)
     {
-	XFree (protocols);
+        XFree (protocols);
     }
     return result;
 }
@@ -260,16 +258,16 @@ initGnomeHints (Display * dpy)
     TRACE ("entering initGnomeHints");
 
     gnome_panel_desktop_area =
-	XInternAtom (dpy, "GNOME_PANEL_DESKTOP_AREA", FALSE);
+        XInternAtom (dpy, "GNOME_PANEL_DESKTOP_AREA", FALSE);
     win_client_list = XInternAtom (dpy, "_WIN_CLIENT_LIST", FALSE);
     win_desktop_button_proxy =
-	XInternAtom (dpy, "_WIN_DESKTOP_BUTTON_PROXY", FALSE);
+        XInternAtom (dpy, "_WIN_DESKTOP_BUTTON_PROXY", FALSE);
     win_hints = XInternAtom (dpy, "_WIN_HINTS", FALSE);
     win_layer = XInternAtom (dpy, "_WIN_LAYER", FALSE);
     win_protocols = XInternAtom (dpy, "_WIN_PROTOCOLS", FALSE);
     win_state = XInternAtom (dpy, "_WIN_STATE", FALSE);
     win_supporting_wm_check =
-	XInternAtom (dpy, "_WIN_SUPPORTING_WM_CHECK", FALSE);
+        XInternAtom (dpy, "_WIN_SUPPORTING_WM_CHECK", FALSE);
     win_workspace_count = XInternAtom (dpy, "_WIN_WORKSPACE_COUNT", FALSE);
     win_workspace = XInternAtom (dpy, "_WIN_WORKSPACE", FALSE);
 }
@@ -287,14 +285,13 @@ getGnomeHint (Display * dpy, Window w, Atom a, long *value)
 
     *value = 0;
 
-    if ((XGetWindowProperty
-	 (dpy, w, a, 0L, 1L, FALSE, XA_CARDINAL, &real_type, &real_format,
-	  &items_read, &items_left, (unsigned char **) &data) == Success) &&
-	(items_read))
+    if ((XGetWindowProperty (dpy, w, a, 0L, 1L, FALSE, XA_CARDINAL,
+                &real_type, &real_format, &items_read, &items_left,
+                (unsigned char **) &data) == Success) && (items_read))
     {
-	*value = *data;
-	XFree (data);
-	success = TRUE;
+        *value = *data;
+        XFree (data);
+        success = TRUE;
     }
     return success;
 }
@@ -305,7 +302,7 @@ setGnomeHint (Display * dpy, Window w, Atom a, long value)
     TRACE ("entering setGnomeHint");
 
     XChangeProperty (dpy, w, a, XA_CARDINAL, 32, PropModeReplace,
-		     (unsigned char *) &value, 1);
+        (unsigned char *) &value, 1);
 }
 
 void
@@ -318,24 +315,23 @@ getGnomeDesktopMargins (Display * dpy, int screen, CARD32 * m)
 
     TRACE ("entering getGnomeDesktopMargins");
 
-    if ((XGetWindowProperty
-	 (dpy, RootWindow (dpy, screen), gnome_panel_desktop_area, 0L, 4L,
-	  FALSE, XA_CARDINAL, &real_type, &real_format, &items_read,
-	  &items_left, (unsigned char **) &data) == Success)
-	&& (items_read >= 4))
+    if ((XGetWindowProperty (dpy, RootWindow (dpy, screen),
+                gnome_panel_desktop_area, 0L, 4L, FALSE, XA_CARDINAL,
+                &real_type, &real_format, &items_read, &items_left,
+                (unsigned char **) &data) == Success) && (items_read >= 4))
     {
-	m[0] = data[0];
-	m[1] = data[1];
-	m[2] = data[2];
-	m[3] = data[3];
-	XFree (data);
+        m[0] = data[0];
+        m[1] = data[1];
+        m[2] = data[2];
+        m[3] = data[3];
+        XFree (data);
     }
     else
     {
-	m[0] = 0;
-	m[1] = 0;
-	m[2] = 0;
-	m[3] = 0;
+        m[0] = 0;
+        m[1] = 0;
+        m[2] = 0;
+        m[3] = 0;
     }
 }
 
@@ -346,10 +342,10 @@ setGnomeProtocols (Display * dpy, int screen, Window w)
 
     atoms[0] = win_layer;
     XChangeProperty (dpy, RootWindow (dpy, screen), win_protocols, XA_ATOM,
-		     32, PropModeReplace, (unsigned char *) atoms, 1);
+        32, PropModeReplace, (unsigned char *) atoms, 1);
     setGnomeHint (dpy, w, win_supporting_wm_check, w);
     setGnomeHint (dpy, RootWindow (dpy, screen), win_supporting_wm_check,
-		  gnome_win);
+        gnome_win);
 }
 
 void
@@ -359,31 +355,31 @@ initNetHints (Display * dpy)
 
     net_active_window = XInternAtom (dpy, "_NET_ACTIVE_WINDOW", FALSE);
     net_client_list_stacking =
-	XInternAtom (dpy, "_NET_CLIENT_LIST_STACKING", FALSE);
+        XInternAtom (dpy, "_NET_CLIENT_LIST_STACKING", FALSE);
     net_client_list = XInternAtom (dpy, "_NET_CLIENT_LIST", FALSE);
     net_close_window = XInternAtom (dpy, "_NET_CLOSE_WINDOW", FALSE);
     net_current_desktop = XInternAtom (dpy, "_NET_CURRENT_DESKTOP", FALSE);
     net_desktop_geometry = XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", FALSE);
     net_desktop_viewport = XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
     net_number_of_desktops =
-	XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
+        XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
     net_startup_id = XInternAtom (dpy, "_NET_STARTUP_ID", FALSE);
     net_supported = XInternAtom (dpy, "_NET_SUPPORTED", FALSE);
     net_supporting_wm_check =
-	XInternAtom (dpy, "_NET_SUPPORTING_WM_CHECK", FALSE);
+        XInternAtom (dpy, "_NET_SUPPORTING_WM_CHECK", FALSE);
     net_wm_action_change_desktop =
-	XInternAtom (dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", FALSE);
+        XInternAtom (dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", FALSE);
     net_wm_action_close = XInternAtom (dpy, "_NET_WM_ACTION_CLOSE", FALSE);
     net_wm_action_maximize_horz =
-	XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_HORZ", FALSE);
+        XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_HORZ", FALSE);
     net_wm_action_maximize_vert =
-	XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_VERT", FALSE);
+        XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_VERT", FALSE);
     net_wm_action_move = XInternAtom (dpy, "_NET_WM_ACTION_MOVE", FALSE);
     net_wm_action_resize = XInternAtom (dpy, "_NET_WM_ACTION_RESIZE", FALSE);
     net_wm_action_shade = XInternAtom (dpy, "_NET_WM_ACTION_SHADE", FALSE);
     net_wm_action_stick = XInternAtom (dpy, "_NET_WM_ACTION_STICK", FALSE);
     net_wm_allowed_actions =
-	XInternAtom (dpy, "_NET_WM_ALLOWED_ACTIONS", FALSE);
+        XInternAtom (dpy, "_NET_WM_ALLOWED_ACTIONS", FALSE);
     net_wm_desktop = XInternAtom (dpy, "_NET_WM_DESKTOP", FALSE);
     net_wm_icon_geometry = XInternAtom (dpy, "_NET_WM_ICON_GEOMETRY", FALSE);
     net_wm_icon_name = XInternAtom (dpy, "_NET_WM_ICON_NAME", FALSE);
@@ -393,37 +389,37 @@ initNetHints (Display * dpy)
     net_wm_state_above = XInternAtom (dpy, "_NET_WM_STATE_ABOVE", FALSE);
     net_wm_state_below = XInternAtom (dpy, "_NET_WM_STATE_BELOW", FALSE);
     net_wm_state_fullscreen =
-	XInternAtom (dpy, "_NET_WM_STATE_FULLSCREEN", FALSE);
+        XInternAtom (dpy, "_NET_WM_STATE_FULLSCREEN", FALSE);
     net_wm_state_hidden = XInternAtom (dpy, "_NET_WM_STATE_HIDDEN", FALSE);
     net_wm_state_maximized_horz =
-	XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", FALSE);
+        XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", FALSE);
     net_wm_state_maximized_vert =
-	XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_VERT", FALSE);
+        XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_VERT", FALSE);
     net_wm_state_modal = XInternAtom (dpy, "_NET_WM_STATE_MODAL", FALSE);
     net_wm_state_shaded = XInternAtom (dpy, "_NET_WM_STATE_SHADED", FALSE);
     net_wm_state_skip_pager =
-	XInternAtom (dpy, "_NET_WM_STATE_SKIP_PAGER", FALSE);
+        XInternAtom (dpy, "_NET_WM_STATE_SKIP_PAGER", FALSE);
     net_wm_state_skip_taskbar =
-	XInternAtom (dpy, "_NET_WM_STATE_SKIP_TASKBAR", FALSE);
+        XInternAtom (dpy, "_NET_WM_STATE_SKIP_TASKBAR", FALSE);
     net_wm_state_sticky = XInternAtom (dpy, "_NET_WM_STATE_STICKY", FALSE);
     net_wm_state = XInternAtom (dpy, "_NET_WM_STATE", FALSE);
     net_wm_strut = XInternAtom (dpy, "_NET_WM_STRUT", FALSE);
     net_wm_window_type_desktop =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
     net_wm_window_type_dialog =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DIALOG", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DIALOG", FALSE);
     net_wm_window_type_dock =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DOCK", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DOCK", FALSE);
     net_wm_window_type_menu =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_MENU", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_MENU", FALSE);
     net_wm_window_type_normal =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_NORMAL", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_NORMAL", FALSE);
     net_wm_window_type_splashscreen =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_SPLASHSCREEN", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_SPLASHSCREEN", FALSE);
     net_wm_window_type_toolbar =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", FALSE);
     net_wm_window_type_utility =
-	XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_UTILITY", FALSE);
+        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_UTILITY", FALSE);
     net_wm_window_type = XInternAtom (dpy, "_NET_WM_WINDOW_TYPE", FALSE);
     net_workarea = XInternAtom (dpy, "_NET_WORKAREA", FALSE);
     utf8_string = XInternAtom (dpy, "UTF8_STRING", FALSE);
@@ -489,31 +485,29 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
 #endif
 
     XChangeProperty (dpy, RootWindow (dpy, screen), net_supported, XA_ATOM,
-		     32, PropModeReplace, (unsigned char *) atoms, i);
+        32, PropModeReplace, (unsigned char *) atoms, i);
     data[0] = check_win;
     XChangeProperty (dpy, check_win, net_supporting_wm_check, XA_WINDOW, 32,
-		     PropModeReplace, (unsigned char *) data, 1);
+        PropModeReplace, (unsigned char *) data, 1);
     XChangeProperty (dpy, RootWindow (dpy, screen), net_supporting_wm_check,
-		     XA_WINDOW, 32, PropModeReplace, (unsigned char *) data,
-		     1);
+        XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
 }
 
 static gboolean
-check_type_and_format (Display * dpy, Window w, Atom a,
-		       int expected_format, Atom expected_type,
-		       int n_items, int format, Atom type)
+check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
+    Atom expected_type, int n_items, int format, Atom type)
 {
-    if ((expected_format == format) && (expected_type == type) &&
-	(n_items < 0 || n_items > 0))
+    if ((expected_format == format) && (expected_type == type) && (n_items < 0
+            || n_items > 0))
     {
-	return TRUE;
+        return TRUE;
     }
     return FALSE;
 }
 
 gboolean
 get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
-	       int *n_atoms_p)
+    int *n_atoms_p)
 {
     Atom type;
     int format;
@@ -524,23 +518,22 @@ get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    if ((XGetWindowProperty
-	 (dpy, w, a, 0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms,
-	  &bytes_after, (unsigned char **) &atoms) != Success)
-	|| (type == None))
+    if ((XGetWindowProperty (dpy, w, a, 0, G_MAXLONG, FALSE, XA_ATOM, &type,
+                &format, &n_atoms, &bytes_after,
+                (unsigned char **) &atoms) != Success) || (type == None))
     {
-	return FALSE;
+        return FALSE;
     }
 
     if (!check_type_and_format (dpy, w, a, 32, XA_ATOM, -1, format, type))
     {
-	if (atoms)
-	{
-	    XFree (atoms);
-	}
-	*atoms_p = NULL;
-	*n_atoms_p = 0;
-	return FALSE;
+        if (atoms)
+        {
+            XFree (atoms);
+        }
+        *atoms_p = NULL;
+        *n_atoms_p = 0;
+        return FALSE;
     }
 
     *atoms_p = atoms;
@@ -551,7 +544,7 @@ get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
 
 gboolean
 get_cardinal_list (Display * dpy, Window w, Atom xatom,
-		   unsigned long **cardinals_p, int *n_cardinals_p)
+    unsigned long **cardinals_p, int *n_cardinals_p)
 {
     Atom type;
     int format;
@@ -562,19 +555,18 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
-    if ((XGetWindowProperty
-	 (dpy, w, xatom, 0, G_MAXLONG, FALSE, XA_CARDINAL, &type, &format,
-	  &n_cardinals, &bytes_after,
-	  (unsigned char **) &cardinals) != Success) || (type == None))
+    if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, XA_CARDINAL,
+                &type, &format, &n_cardinals, &bytes_after,
+                (unsigned char **) &cardinals) != Success) || (type == None))
     {
-	return FALSE;
+        return FALSE;
     }
 
-    if (!check_type_and_format
-	(dpy, w, xatom, 32, XA_CARDINAL, -1, format, type))
+    if (!check_type_and_format (dpy, w, xatom, 32, XA_CARDINAL, -1, format,
+            type))
     {
-	XFree (cardinals);
-	return FALSE;
+        XFree (cardinals);
+        return FALSE;
     }
 
     *cardinals_p = cardinals;
@@ -594,23 +586,23 @@ set_net_workarea (Display * dpy, int screen, int nb_workspaces, CARD32 * m)
     data = (CARD32 *) malloc (sizeof (CARD32) * j * 4);
     if (!data)
     {
-	gdk_beep ();
-	return;
+        gdk_beep ();
+        return;
     }
     ptr = data;
     for (i = 0; i < j; i++)
     {
-	*ptr++ = m[MARGIN_LEFT];
-	*ptr++ = m[MARGIN_TOP];
-	*ptr++ =
-	    MyDisplayFullWidth (dpy,
-				screen) - (m[MARGIN_LEFT] + m[MARGIN_RIGHT]);
-	*ptr++ =
-	    MyDisplayFullHeight (dpy,
-				 screen) - (m[MARGIN_TOP] + m[MARGIN_BOTTOM]);
+        *ptr++ = m[MARGIN_LEFT];
+        *ptr++ = m[MARGIN_TOP];
+        *ptr++ =
+            MyDisplayFullWidth (dpy,
+            screen) - (m[MARGIN_LEFT] + m[MARGIN_RIGHT]);
+        *ptr++ =
+            MyDisplayFullHeight (dpy,
+            screen) - (m[MARGIN_TOP] + m[MARGIN_BOTTOM]);
     }
     XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
-		     32, PropModeReplace, (unsigned char *) data, j * 4);
+        32, PropModeReplace, (unsigned char *) data, j * 4);
     free (data);
 }
 
@@ -622,18 +614,15 @@ init_net_desktop_params (Display * dpy, int screen, int workspace)
     data[0] = MyDisplayFullWidth (dpy, screen);
     data[1] = MyDisplayFullHeight (dpy, screen);
     XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_geometry,
-		     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data,
-		     2);
+        XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
     data[0] = 0;
     data[1] = 0;
     XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_viewport,
-		     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data,
-		     2);
+        XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
     /* TBD : See why this prevents kdesktop from working properly */
     data[0] = workspace;
     XChangeProperty (dpy, RootWindow (dpy, screen), net_current_desktop,
-		     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data,
-		     1);
+        XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
 }
 
 void
@@ -642,7 +631,7 @@ set_utf8_string_hint (Display * dpy, Window w, Atom atom, const char *val)
     TRACE ("entering set_utf8_string_hint");
 
     XChangeProperty (dpy, w, atom, utf8_string, 8, PropModeReplace,
-		     (unsigned char *) val, strlen (val) + 1);
+        (unsigned char *) val, strlen (val) + 1);
 }
 
 void
@@ -652,20 +641,20 @@ getTransientFor (Display * dpy, int screen, Window w, Window * transient_for)
 
     if (XGetTransientForHint (dpy, w, transient_for))
     {
-	if (*transient_for == None)
-	{
-	    /* Treat transient for "none" same as transient for root */
-	    *transient_for = RootWindow (dpy, screen);
-	}
-	else if (*transient_for == w)
-	{
-	    /* Very unlikely to happen, but who knows, maybe a braindead app */
-	    *transient_for = None;
-	}
+        if (*transient_for == None)
+        {
+            /* Treat transient for "none" same as transient for root */
+            *transient_for = RootWindow (dpy, screen);
+        }
+        else if (*transient_for == w)
+        {
+            /* Very unlikely to happen, but who knows, maybe a braindead app */
+            *transient_for = None;
+        }
     }
     else
     {
-	*transient_for = None;
+        *transient_for = None;
     }
 
     TRACE ("Window (0x%lx) is transient for (0x%lx)", w, *transient_for);
@@ -683,41 +672,40 @@ get_utf8_string (Display * dpy, Window w, Atom xatom, char **str_p)
     TRACE ("entering get_utf8_string");
 
     *str_p = NULL;
-    if ((XGetWindowProperty
-	 (dpy, w, xatom, 0, G_MAXLONG, FALSE, utf8_string, &type, &format,
-	  &n_items, &bytes_after, (unsigned char **) &str) != Success) ||
-	(type == None))
+    if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, utf8_string,
+                &type, &format, &n_items, &bytes_after,
+                (unsigned char **) &str) != Success) || (type == None))
     {
-	TRACE ("no utf8_string value provided");
-	return FALSE;
+        TRACE ("no utf8_string value provided");
+        return FALSE;
     }
 
-    if (!check_type_and_format
-	(dpy, w, xatom, 8, utf8_string, -1, format, type))
+    if (!check_type_and_format (dpy, w, xatom, 8, utf8_string, -1, format,
+            type))
     {
-	TRACE ("utf8_string value invalid");
-	if (str)
-	{
-	    XFree (str);
-	}
-	return FALSE;
+        TRACE ("utf8_string value invalid");
+        if (str)
+        {
+            XFree (str);
+        }
+        return FALSE;
     }
 
     if (!g_utf8_validate (str, n_items, NULL))
     {
-	char *name;
+        char *name;
 
-	name = XGetAtomName (dpy, xatom);
-	if (name)
-	{
-	    TRACE
-		("Property %s on window 0x%lx contains invalid UTF-8 characters",
-		 name, w);
-	    XFree (name);
-	}
-	XFree (str);
+        name = XGetAtomName (dpy, xatom);
+        if (name)
+        {
+            TRACE
+                ("Property %s on window 0x%lx contains invalid UTF-8 characters",
+                name, w);
+            XFree (name);
+        }
+        XFree (str);
 
-	return FALSE;
+        return FALSE;
     }
 
     *str_p = str;
@@ -736,13 +724,12 @@ text_property_to_utf8 (Display * dpy, const XTextProperty * prop)
 
     list = NULL;
     if ((count =
-	 gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom
-					 (prop->encoding), prop->format,
-					 prop->value, prop->nitems,
-					 &list)) == 0)
+            gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->
+                    encoding), prop->format, prop->value, prop->nitems,
+                &list)) == 0)
     {
-	TRACE ("gdk_text_property_to_utf8_list returned 0");
-	return NULL;
+        TRACE ("gdk_text_property_to_utf8_list returned 0");
+        return NULL;
     }
     retval = list[0];
     list[0] = g_strdup ("");
@@ -761,16 +748,16 @@ get_text_property (Display * dpy, Window w, Atom a)
     text.nitems = 0;
     if (XGetTextProperty (dpy, w, &text, a))
     {
-	retval = text_property_to_utf8 (dpy, &text);
-	if ((text.value) && (text.nitems > 0))
-	{
-	    XFree (text.value);
-	}
+        retval = text_property_to_utf8 (dpy, &text);
+        if ((text.value) && (text.nitems > 0))
+        {
+            XFree (text.value);
+        }
     }
     else
     {
-	retval = NULL;
-	TRACE ("XGetTextProperty() failed");
+        retval = NULL;
+        TRACE ("XGetTextProperty() failed");
     }
 
     return retval;
@@ -790,19 +777,19 @@ getWindowName (Display * dpy, Window w, char **name)
 
     if (get_utf8_string (dpy, w, net_wm_name, &str))
     {
-	*name = strdup (str);
-	XFree (str);
-	return;
+        *name = strdup (str);
+        XFree (str);
+        return;
     }
     str = get_text_property (dpy, w, XA_WM_NAME);
     if (str)
     {
-	*name = strdup (str);
-	XFree (str);
+        *name = strdup (str);
+        XFree (str);
     }
     else
     {
-	*name = strdup ("");
+        *name = strdup ("");
     }
 }
 
@@ -819,13 +806,13 @@ getWindowRole (Display * dpy, Window window, char **role)
 
     if (XGetTextProperty (dpy, window, &tp, wm_window_role))
     {
-	if ((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8) &&
-	    (tp.nitems != 0))
-	{
-	    *role = strdup ((char *) tp.value);
-	    XFree (tp.value);
-	    return TRUE;
-	}
+        if ((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8)
+            && (tp.nitems != 0))
+        {
+            *role = strdup ((char *) tp.value);
+            XFree (tp.value);
+            return TRUE;
+        }
     }
 
     return FALSE;
@@ -845,20 +832,19 @@ getClientLeader (Display * dpy, Window window)
 
     g_return_val_if_fail (window != None, None);
 
-    if (XGetWindowProperty
-	(dpy, window, wm_client_leader, 0L, 1L, FALSE, AnyPropertyType,
-	 &actual_type, &actual_format, &nitems, &bytes_after,
-	 &prop) == Success)
+    if (XGetWindowProperty (dpy, window, wm_client_leader, 0L, 1L, FALSE,
+            AnyPropertyType, &actual_type, &actual_format, &nitems,
+            &bytes_after, &prop) == Success)
     {
-	if ((prop) && (actual_type == XA_WINDOW) && (actual_format == 32) &&
-	    (nitems == 1) && (bytes_after == 0))
-	{
-	    client_leader = *((Window *) prop);
-	}
-	if (prop)
-	{
-	    XFree (prop);
-	}
+        if ((prop) && (actual_type == XA_WINDOW) && (actual_format == 32)
+            && (nitems == 1) && (bytes_after == 0))
+        {
+            client_leader = *((Window *) prop);
+        }
+        if (prop)
+        {
+            XFree (prop);
+        }
     }
     return client_leader;
 }
@@ -877,15 +863,15 @@ getClientID (Display * dpy, Window window, char **client_id)
 
     if ((id = getClientLeader (dpy, window)))
     {
-	if (XGetTextProperty (dpy, id, &tp, sm_client_id))
-	{
-	    if (tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
-	    {
-		*client_id = strdup ((char *) tp.value);
-		XFree (tp.value);
-		return TRUE;
-	    }
-	}
+        if (XGetTextProperty (dpy, id, &tp, sm_client_id))
+        {
+            if (tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
+            {
+                *client_id = strdup ((char *) tp.value);
+                XFree (tp.value);
+                return TRUE;
+            }
+        }
     }
 
     return FALSE;
@@ -901,14 +887,14 @@ getWindowCommand (Display * dpy, Window window, char ***argv, int *argc)
 
     if (XGetCommand (dpy, window, argv, argc) && (*argc > 0))
     {
-	return TRUE;
+        return TRUE;
     }
     if ((id = getClientLeader (dpy, window)))
     {
-	if (XGetCommand (dpy, id, argv, argc) && (*argc > 0))
-	{
-	    return TRUE;
-	}
+        if (XGetCommand (dpy, id, argv, argc) && (*argc > 0))
+        {
+            return TRUE;
+        }
     }
     return FALSE;
 }
@@ -927,13 +913,13 @@ getWindowStartupId (Display * dpy, Window window, char **startup_id)
 
     if (XGetTextProperty (dpy, window, &tp, net_startup_id))
     {
-	if ((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8) &&
-	    (tp.nitems != 0))
-	{
-	    *startup_id = strdup ((char *) tp.value);
-	    XFree (tp.value);
-	    return TRUE;
-	}
+        if ((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8)
+            && (tp.nitems != 0))
+        {
+            *startup_id = strdup ((char *) tp.value);
+            XFree (tp.value);
+            return TRUE;
+        }
     }
 
     return FALSE;

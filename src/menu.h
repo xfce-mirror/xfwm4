@@ -62,7 +62,6 @@ typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window client_xwindow,
 struct _MenuItem
 {
     MenuOp op;
-    const char *stock_id;
     const char *label;
 };
 

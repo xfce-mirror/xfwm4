@@ -74,12 +74,11 @@ cursorCreateSpinning (Display * dpy, Window window)
     bg.flags = 0xf;
 
     cursor =
-	XCreatePixmapFromBitmapData (dpy, window, (char *) xlib_spinning_bits,
-				     32, 32, 0xffffffff, 0x0, 1);
+        XCreatePixmapFromBitmapData (dpy, window, (char *) xlib_spinning_bits,
+        32, 32, 0xffffffff, 0x0, 1);
     mask =
-	XCreatePixmapFromBitmapData (dpy, window,
-				     (char *) xlib_spinning_mask_bits, 32, 32,
-				     0xffffffff, 0x0, 1);
+        XCreatePixmapFromBitmapData (dpy, window,
+        (char *) xlib_spinning_mask_bits, 32, 32, 0xffffffff, 0x0, 1);
     xcursor = XCreatePixmapCursor (dpy, cursor, mask, &fg, &bg, 2, 2);
     XFreePixmap (dpy, mask);
     XFreePixmap (dpy, cursor);
