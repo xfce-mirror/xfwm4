@@ -55,11 +55,11 @@ typedef enum
 
 static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
 {
-    int xcurrent, ycurrent, x, y, total = 0;
+    int xcurrent, ycurrent, x, y, total;
     int g = GrabSuccess;
-    int clicks = 1;
-    Time t0;
-    
+    int clicks;
+    Time t0, t1;
+
     g_return_val_if_fail(ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail(w != None, XFWM_BUTTON_UNDEFINED);
 
@@ -70,22 +70,28 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
         gdk_beep();
         return XFWM_BUTTON_UNDEFINED;
     }
+    
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
-    t0 = CurrentTime;
+    t0 = ev->xbutton.time;
+    t1 = t0;
+    total = 0;
+    clicks = 1;
     
-    while ((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < dbl_click_time) && ((CurrentTime - t0) < dbl_click_time))
+    while ((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < dbl_click_time) && ((t1 - t0) < dbl_click_time))
     {
-        g_usleep (10);
+        g_usleep (10000);
         total += 10;
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
             clicks++;
+	    t1 = ev->xbutton.time;
         }
         if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, ev))
         {
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
+	    t1 = ev->xmotion.time;
         }
         if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
         {
