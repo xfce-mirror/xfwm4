@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "POT-Creation-Date: 2003-03-31 23:40+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
-"Last-Translator: Pawel Pastula <pastulap@poczta.onet.pl>\n"
+"Last-Translator: Paweł Pastuła <pastulap@poczta.onet.pl>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,38 +18,39 @@ msgstr ""
 #: mcs-plugin/margins_plugin.c:227
 #, fuzzy
 msgid "Workspace Margins"
-msgstr "Pu_lpit"
+msgstr "Marginesy obszaru roboczego"
 
 #: mcs-plugin/margins_plugin.c:193
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "Ustaw marginesy"
 
 #: mcs-plugin/margins_plugin.c:214
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
+"Margines to obszar ekranu, w którym nie zostanie umieszczone żadne z okien."
 
 #: mcs-plugin/margins_plugin.c:255
 #, fuzzy
 msgid "Left :"
-msgstr "Lewo"
+msgstr "Lewy :"
 
 #: mcs-plugin/margins_plugin.c:274
 #, fuzzy
 msgid "Right :"
-msgstr "Prawo"
+msgstr "Prawy :"
 
 #: mcs-plugin/margins_plugin.c:293
 msgid "Top :"
-msgstr ""
+msgstr "Górny :"
 
 #: mcs-plugin/margins_plugin.c:312
 msgid "Bottom :"
-msgstr ""
+msgstr "Dolny :"
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Title"
-msgstr "Tytul"
+msgstr "Tytuł"
 
 #: mcs-plugin/xfwm4_plugin.c:118
 msgid "Menu"
@@ -61,7 +62,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:120
 msgid "Shade"
-msgstr ""
+msgstr "Zwiń"
 
 #: mcs-plugin/xfwm4_plugin.c:121
 msgid "Hide"
@@ -77,7 +78,7 @@ msgstr "Zamknij"
 
 #: mcs-plugin/xfwm4_plugin.c:127
 msgid "Shade window"
-msgstr ""
+msgstr "Zwiń okno"
 
 #: mcs-plugin/xfwm4_plugin.c:128
 msgid "Hide window"
@@ -89,7 +90,7 @@ msgstr "Zminimalizuj okno"
 
 #: mcs-plugin/xfwm4_plugin.c:130
 msgid "Nothing"
-msgstr ""
+msgstr "Nic"
 
 #: mcs-plugin/xfwm4_plugin.c:135
 msgid "Left"
@@ -97,7 +98,7 @@ msgstr "Lewo"
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Center"
-msgstr "Srodek"
+msgstr "Środek"
 
 #: mcs-plugin/xfwm4_plugin.c:137
 msgid "Right"
@@ -113,11 +114,11 @@ msgstr "Dialog wyboru czcionki"
 
 #: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1602
 msgid "Window Manager"
-msgstr "Menadzer okien"
+msgstr "Menadżer okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1165
 msgid "Window Manager Preferences"
-msgstr "Wlasciwosci menadzera okien"
+msgstr "Wlaściwości menadżera okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1203
 msgid "Window style"
@@ -125,24 +126,24 @@ msgstr "Styl okna"
 
 #: mcs-plugin/xfwm4_plugin.c:1221
 msgid "Font select :"
-msgstr "Wybor czcionki"
+msgstr "Wybór czcionki"
 
 #. gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);
 #: mcs-plugin/xfwm4_plugin.c:1232
 msgid "Title font"
-msgstr "Czionka tytulowa"
+msgstr "Czionka tytułowa"
 
 #: mcs-plugin/xfwm4_plugin.c:1241
 msgid "Text alignment inside title bar :"
-msgstr "Wyrownanie tekstu wewnatrz paska tytulowego :"
+msgstr "Wyrównanie tekstu wewnątrz paska tytułowego :"
 
 #: mcs-plugin/xfwm4_plugin.c:1243
 msgid "Title Alignment"
-msgstr "Wyrownanie tekstu"
+msgstr "Wyrównanie tytułu"
 
 #: mcs-plugin/xfwm4_plugin.c:1254
 msgid "Button layout"
-msgstr ""
+msgstr "Rozmieszczenie przycisków"
 
 #: mcs-plugin/xfwm4_plugin.c:1259
 msgid "Decoration style"
@@ -150,15 +151,15 @@ msgstr "Styl dekorowania"
 
 #: mcs-plugin/xfwm4_plugin.c:1292
 msgid "Keyboard Shortcut"
-msgstr "Skrot klawiszowy"
+msgstr "Skrót klawiszowy"
 
 #: mcs-plugin/xfwm4_plugin.c:1310
 msgid "Click to focus"
-msgstr "Fokus na klikniecie"
+msgstr "Fokus na kliknięcie"
 
 #: mcs-plugin/xfwm4_plugin.c:1317
 msgid "Focus follows mouse"
-msgstr "Fokus podaza za mysza"
+msgstr "Fokus podąża za myszką"
 
 #: mcs-plugin/xfwm4_plugin.c:1324
 msgid "Focus model"
@@ -169,7 +170,7 @@ msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"Automatycznie przekaz focus \n"
+"Automatycznie przekaż fokus \n"
 "nowo utworzonemu oknu"
 
 #: mcs-plugin/xfwm4_plugin.c:1339
@@ -181,12 +182,12 @@ msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
-"Automatycznie przesun na wierzch okno \n"
-"ktore dostalo fokus"
+"Automatycznie umieść na wierzchu okno \n"
+"które dostało fokus"
 
 #: mcs-plugin/xfwm4_plugin.c:1363
 msgid "Delay before raising focused window :"
-msgstr "Opoznienie przesuniecia na wierzch okna z fokusem :"
+msgstr "Opóźnienie przesunięcia na wierzch okna z fokusem :"
 
 #: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Slow"
@@ -198,19 +199,19 @@ msgstr "Szybko"
 
 #: mcs-plugin/xfwm4_plugin.c:1390
 msgid "Raise on focus"
-msgstr "Przesun na wierzch po uzyskaniu fokusa"
+msgstr "Przesuń na wierzch po uzyskaniu fokusa"
 
 #: mcs-plugin/xfwm4_plugin.c:1399
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr ""
-"Przesun na wierzch po kliknieciu\n"
-"wewnatrz okna aplikacji"
+"Przesuń na wierzch po kliknięciu\n"
+"wewnątrz okna aplikacji"
 
 #: mcs-plugin/xfwm4_plugin.c:1405
 msgid "Raise on click"
-msgstr "Przesun na wierzch po kliknieciu"
+msgstr "Przesuń na wierzch po kliknięciu"
 
 #: mcs-plugin/xfwm4_plugin.c:1410
 msgid "Keyboard and focus"
@@ -218,65 +219,65 @@ msgstr "Klawiatura i fokus"
 
 #: mcs-plugin/xfwm4_plugin.c:1429
 msgid "Snap windows to screen border"
-msgstr "Przyciagaj okno do krawedzi ekranu"
+msgstr "Przyciągaj okno do krawędzi ekranu"
 
 #: mcs-plugin/xfwm4_plugin.c:1434
 #, fuzzy
 msgid "Snap windows to other windows"
-msgstr "Przyciagaj okno do krawedzi ekranu"
+msgstr "Przyciągaj okno do krawędzi innych okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1444
 msgid "Distance :"
-msgstr "Odleglosc :"
+msgstr "Odległość :"
 
 #: mcs-plugin/xfwm4_plugin.c:1450
 msgid "Small"
-msgstr "Mala"
+msgstr "Mała"
 
 #: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Wide"
-msgstr "Duza"
+msgstr "Duża"
 
 #: mcs-plugin/xfwm4_plugin.c:1470
 #, fuzzy
 msgid "Windows snapping"
-msgstr "Menadzer okien"
+msgstr "Przyciąganie okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1479
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Zamien pulpity podczas przesuniecia okna za ekran"
+msgstr "Przełącz obszar roboczy podczas przesuniecia okna poza ekran"
 
 #: mcs-plugin/xfwm4_plugin.c:1485
 msgid "Wrap workspaces"
-msgstr "Zamien pulpity"
+msgstr "Zmiana obszaru roboczego"
 
 #: mcs-plugin/xfwm4_plugin.c:1494
 msgid "Display content of windows when resizing"
-msgstr "Wyswietlaj zawartosc okien podczas zmiany wielkosci"
+msgstr "Wyświetlaj zawartość okien podczas zmiany wielkości"
 
 #: mcs-plugin/xfwm4_plugin.c:1500
 msgid "Opaque resize"
-msgstr "Przy zmianie rozmiaru okno nieprzezroczyste"
+msgstr "Zmiana rozmiaru okna"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid "Display content of windows when moving"
-msgstr "Wyswietlaj zawartosc okna podczas przesuwania"
+msgstr "Wyświetlaj zawartość okna podczas przesuwania"
 
 #: mcs-plugin/xfwm4_plugin.c:1515
 msgid "Opaque move"
-msgstr "Przy przesuwania okno nieprzezroczyste"
+msgstr "Przesuwanie okna"
 
 #: mcs-plugin/xfwm4_plugin.c:1524
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Akcja do wykonania przy podwojnym kliknieciu na pasku tytulowym :"
+msgstr "Akcja do wykonania przy podwójnym kliknięciu na pasku tytułowym :"
 
 #: mcs-plugin/xfwm4_plugin.c:1526
 msgid "Double click action"
-msgstr "Akcja przy podwojnym kliknieciu"
+msgstr "Akcja przy podwójnym kliknięciu"
 
 #: mcs-plugin/xfwm4_plugin.c:1531
 msgid "Misc."
-msgstr "Rozne"
+msgstr "Różne"
 
 #: src/client.c:397
 #, c-format
@@ -319,7 +320,7 @@ msgstr "Ma_ksymalizuj"
 
 #: src/menu.c:43
 msgid "Un_maximize"
-msgstr "P_rzywroc"
+msgstr "P_rzywróć"
 
 #: src/menu.c:44
 msgid "_Hide"
@@ -375,7 +376,7 @@ msgstr "Pu_lpit"
 
 #: src/menu.c:62
 msgid "_Quit"
-msgstr "_Wyjdz"
+msgstr "_Wyjdź"
 
 #: src/menu.c:63
 msgid "Restart"
