@@ -928,19 +928,19 @@ static void clientSetWidth(Client * c, int w1)
     DBG("entering clientSetWidth\n");
     DBG("setting width %i for client \"%s\" (%#lx)\n", w1, c->name, c->window);
 
-    if((c->size->flags & PResizeInc) && !(c->fullscreen))
+    if(c->size->flags & PResizeInc)
     {
         w2 = (w1 - c->size->min_width) / c->size->width_inc;
         w1 = c->size->min_width + (w2 * c->size->width_inc);
     }
-    if((c->size->flags & PMaxSize) && !(c->fullscreen))
+    if(c->size->flags & PMaxSize)
     {
         if(w1 > c->size->max_width)
 	{
             w1 = c->size->max_width;
 	}
     }
-    if((c->size->flags & PMinSize) && !(c->fullscreen))
+    if(c->size->flags & PMinSize)
     {
         if(w1 < c->size->min_width)
 	{
@@ -962,19 +962,19 @@ static void clientSetHeight(Client * c, int h1)
     DBG("entering clientSetHeight\n");
     DBG("setting height %i for client \"%s\" (%#lx)\n", h1, c->name, c->window);
 
-    if((c->size->flags & PResizeInc) && !(c->fullscreen))
+    if(c->size->flags & PResizeInc)
     {
         h2 = (h1 - c->size->min_height) / c->size->height_inc;
         h1 = c->size->min_height + (h2 * c->size->height_inc);
     }
-    if((c->size->flags & PMaxSize) && !(c->fullscreen))
+    if(c->size->flags & PMaxSize)
     {
         if(h1 > c->size->max_height)
 	{
             h1 = c->size->max_height;
 	}
     }
-    if((c->size->flags & PMinSize) && !(c->fullscreen))
+    if(c->size->flags & PMinSize)
     {
         if(h1 < c->size->min_height)
 	{
