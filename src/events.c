@@ -166,7 +166,7 @@ static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
 static inline void spawn_shortcut(int i)
 {
     GError *error = NULL;
-    if ((!params.shortcut_exec[i]) || !strlen(params.shortcut_exec[i]))
+    if ((i >= NB_KEY_SHORTCUTS) || (!params.shortcut_exec[i]) || !strlen(params.shortcut_exec[i]))
     {
         return;
     }

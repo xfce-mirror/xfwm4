@@ -469,22 +469,19 @@ static void loadShortcutCmd(Settings rc[])
 {
     int i;
     
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
         gchar *tmp, *shortcut;
 	tmp = g_strdup_printf("shortcut_%i_exec", i + 1);
 	if (params.shortcut_exec[i])
 	{
 	    g_free(params.shortcut_exec[i]);
+	    params.shortcut_exec[i] = NULL;
 	}
 	shortcut = getValue(tmp, rc);
 	if (shortcut)
 	{
 	    params.shortcut_exec[i] = g_strdup(shortcut);
-	}
-	else
-	{
-	    params.shortcut_exec[i] = NULL;
 	}
 	g_free (tmp);
     }
@@ -840,7 +837,7 @@ gboolean initSettings(void)
     params.title_colors[INACTIVE].allocated = FALSE;
     params.workspace_count = -1;
 
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
         params.shortcut_exec[i] = NULL;
     }

@@ -105,6 +105,7 @@
 #define KEY_SHORTCUT_9			48
 #define KEY_SHORTCUT_10			49
 #define KEY_COUNT			50
+#define NB_KEY_SHORTCUTS		10
 
 #define ALIGN_LEFT			0
 #define ALIGN_RIGHT			1
@@ -140,8 +141,8 @@ struct _Params
     MyPixmap corners[4][2];
     MyPixmap sides[3][2];
     MyPixmap title[5][2];
-    char button_layout[8];
-    char *shortcut_exec[10];
+    gchar button_layout[8];
+    gchar *shortcut_exec[NB_KEY_SHORTCUTS];
     int button_offset;
     int button_spacing;
     int dbl_click_time;

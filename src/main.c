@@ -104,6 +104,14 @@ static void cleanUp()
     {
         XFreeCursor(dpy, resize_cursor[i]);
     }
+    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
+    {
+	if (params.shortcut_exec[i])
+	{
+	    g_free(params.shortcut_exec[i]);
+	    params.shortcut_exec[i] = NULL;
+	}
+    }    
     XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
     closeEventFilter();
 }
