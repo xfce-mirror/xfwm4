@@ -660,7 +660,7 @@ savetreeview_in_theme (gchar * theme_file, gpointer data)
     model3 = gtk_tree_view_get_model (GTK_TREE_VIEW (itf->treeview3));
     model4 = gtk_tree_view_get_model (GTK_TREE_VIEW (itf->treeview4));
 
-    if (g_str_has_prefix (theme_file, "/usr"))
+    if (!g_str_has_prefix (theme_file, xfce_get_homedir ()))
     {
         gchar *hometheme_dir = NULL;
         gchar *theme_dir = NULL;
@@ -1201,4 +1201,3 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         g_free (shortcut);
     }
 }
-
