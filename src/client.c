@@ -1373,6 +1373,7 @@ void clientFrame(Window w)
     c->size = XAllocSizeHints();
     XGetWMNormalHints(dpy, w, c->size, &dummy);
     XGetWindowAttributes(dpy, w, &attr);
+    c->wmhints = XGetWMHints (dpy, w);
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
@@ -1405,6 +1406,7 @@ void clientFrame(Window w)
     c->skip_taskbar = False;
     c->skip_pager   = False;
     c->has_struts   = False;
+    c->wm_takefocus = getWMTakeFocus (dpy, c->window);
 
     mwm_hints = getMotifHints(dpy, c->window);
     if(mwm_hints)
@@ -1511,7 +1513,7 @@ void clientFrame(Window w)
     if(getWMState(dpy, c->window) != IconicState)
     {
         clientShow(c, True);
-        if(focus_new && !(c->win_hints & WIN_HINTS_SKIP_FOCUS))
+        if(focus_new && !!clientAcceptFocus(c))
 	{
             clientSetFocus(c, True);
 	}
@@ -1996,7 +1998,7 @@ void clientUpdateFocus(Client * c)
 
     DBG("entering clientUpdateFocus\n");
 
-    if((c) && (c->win_hints & WIN_HINTS_SKIP_FOCUS))
+    if((c) && (!clientAcceptFocus(c)))
     {
         DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
         return;
@@ -2020,6 +2022,26 @@ void clientUpdateFocus(Client * c)
     XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char*) data, 2);
 }
 
+inline gboolean clientAcceptFocus(Client *c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    DBG("entering clientAcceptFocus\n");
+
+    /* First check GNOME protocol */
+    if (c->win_hints & WIN_HINTS_SKIP_FOCUS)
+    {
+        return FALSE;
+    }
+    /* then try ICCCM */
+    else if (c->wm_takefocus)
+    {
+        return TRUE;
+    }
+    /* At last, use wmhints */
+    return ((!(c->wmhints) || ((c->wmhints) && !(c->wmhints->flags & InputHint)) || ((c->wmhints) && (c->wmhints->flags & InputHint) && (c->wmhints->input))));
+}
+
 void clientSetFocus(Client * c, int sort)
 {
     Client *tmp;
@@ -2031,7 +2053,7 @@ void clientSetFocus(Client * c, int sort)
     if((c) && (c->visible))
     {
         DBG("setting focus to client \"%s\" (%#lx)\n", c->name, c->window);
-        if(c->win_hints & WIN_HINTS_SKIP_FOCUS)
+        if(!clientAcceptFocus(c))
 	{
             DBG("SKIP_FOCUS set for client \"%s\" (%#lx)\n", c->name, c->window);
             return;
@@ -2578,7 +2600,7 @@ Client *clientGetNext(Client * c, int mask)
         for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
         {
             okay = True;
-            if((c2->win_hints & WIN_HINTS_SKIP_FOCUS) && !(mask & INCLUDE_SKIP_FOCUS))
+            if((!clientAcceptFocus(c2)) && !(mask & INCLUDE_SKIP_FOCUS))
             {
 	        okay = False;
             }

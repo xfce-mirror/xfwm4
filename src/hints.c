@@ -40,6 +40,7 @@
 Atom wm_state;
 Atom wm_change_state;
 Atom wm_delete_window;
+Atom wm_takefocus;
 Atom wm_protocols;
 Atom wm_colormap_windows;
 Atom motif_wm_hints;
@@ -102,6 +103,7 @@ void initICCCMHints(Display * dpy)
     wm_state = XInternAtom(dpy, "WM_STATE", False);
     wm_change_state = XInternAtom(dpy, "WM_CHANGE_STATE", False);
     wm_delete_window = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
+    wm_takefocus = XInternAtom(dpy, "WM_TAKE_FOCUS", False);
     wm_protocols = XInternAtom(dpy, "WM_PROTOCOLS", False);
     wm_colormap_windows = XInternAtom (dpy, "WM_COLORMAP_WINDOWS", False);
 }
@@ -160,6 +162,48 @@ PropMwmHints *getMotifHints(Display * dpy, Window w)
         return (NULL);
     }
 }
+
+int getWMTakeFocus (Display * dpy, Window w)
+{
+    Atom *protocols = None, *ap;
+    int i, n;
+    Atom atype;
+    int aformat;
+    int result = False;
+    unsigned long bytes_remain, nitems;
+
+    DBG("entering getWMTakeFocus\n");
+
+    if (XGetWMProtocols (dpy, w, &protocols, &n))
+    {
+	for (i = 0, ap = protocols; i < n; i++, ap++)
+	{
+	    if (*ap == (Atom) wm_takefocus)
+	    {
+		result = True;
+	    }
+	}
+    }
+    else
+    {
+	if ((XGetWindowProperty (dpy, w, wm_protocols, 0L, 10L, False, wm_protocols, &atype, &aformat, &nitems, &bytes_remain, (unsigned char **) &protocols)) == Success)
+	{
+	    for (i = 0, ap = protocols; i < nitems; i++, ap++)
+	    {
+		if (*ap == (Atom) wm_takefocus)
+		{
+		    result = True;
+		}
+	    }
+	}
+    }
+    if (protocols)
+    {
+	XFree (protocols);
+    }
+    return (result);
+}
+
 
 void initGnomeHints(Display * dpy)
 {

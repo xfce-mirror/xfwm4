@@ -175,6 +175,7 @@ struct _Client
     int win_workspace;
     Atom type_atom;
     XSizeHints *size;
+    XWMHints *wmhints;
     Client *next;
     Client *prev;
     WindowType type;
@@ -204,6 +205,7 @@ struct _Client
     unsigned int skip_taskbar : 1;
     unsigned int skip_pager   : 1;
     unsigned int has_struts   : 1;
+    unsigned int wm_takefocus : 1;
 };
 
 extern Client *clients;
@@ -240,6 +242,7 @@ void clientUnstick(Client *);
 void clientToggleSticky(Client *);
 void clientToggleMaximized(Client *, int);
 void clientUpdateFocus(Client *);
+inline gboolean clientAcceptFocus(Client *c);
 void clientSetFocus(Client *, int);
 Client *clientGetFocus();
 void clientMove(Client *, XEvent *);
