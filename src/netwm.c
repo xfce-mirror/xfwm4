@@ -29,6 +29,7 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
