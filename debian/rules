@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 # This is the debhelper compatibility version to use.
-export DH_COMPAT=3
+export DH_COMPAT=4
 
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
@@ -17,7 +17,7 @@ configure: configure-stamp
 configure-stamp:
 
 	dh_testdir
-	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr
+	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --enable-xinerama
 	touch configure-stamp
 
 build: configure build-stamp
@@ -48,9 +48,9 @@ install: build
 	dh_testroot
 	dh_clean -k
 
-	$(MAKE) install DESTDIR=`pwd`/debian/tmp/
+	$(MAKE) install DESTDIR=`pwd`/debian/tmp-install
 
-	dh_install --list-missing --sourcedir=debian/tmp
+	dh_install --list-missing --sourcedir=debian/tmp-install
 	
 binary-indep: build install
 

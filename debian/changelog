@@ -1,5 +1,5 @@
-xfwm4 (4.0.0+cvs.20021109-1) unstable; urgency=low
+xfwm4 (4.0.0+cvs.20021127-1) unstable; urgency=low
 
-  * Initial Release.
+  * Initial Release. (Closes: #166641)
   
- -- Martin Loschwitz <madkiss@madkiss.org>  Sat, 09 Nov 2002 16:05:04 +0200
+ -- Martin Loschwitz <madkiss@madkiss.org>  Wed, 27 Nov 2002 15:14:00 +0100

@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+# remove alternatives links
+
+if [ "$1" = "remove" ]; then
+  update-alternatives --remove x-window-manager /usr/bin/xfwm4 \
+  --slave /usr/share/man/man1/x-window-manager.1.gz \
+  x-window-manager.1.gz /usr/share/man/man1/xfwm4.1.gz
+fi
+
+#DEBHELPER#
+
+exit 0
