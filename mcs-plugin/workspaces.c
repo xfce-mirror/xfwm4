@@ -102,11 +102,13 @@ update_names (McsManager * manager, int n)
             tmpnames[i] = g_strdup (ws_names[i]);
         else
         {
-            const char *name;
+            const char *name = NULL;
             NetkWorkspace *ws = netk_screen_get_workspace (netk_screen, i);
 
-            name = netk_workspace_get_name (ws);
-
+            if (ws)
+            {
+                name = netk_workspace_get_name (ws);
+            }
             if (name && strlen (name))
             {
                 tmpnames[i] = g_strdup (name);
