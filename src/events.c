@@ -792,7 +792,7 @@ handleButtonPress (XButtonEvent * ev)
             if (ev->button == Button1)
             {
                 clientSetFocus (c, TRUE, FALSE);
-                if (params.raise_on_click)
+                if ((params.raise_on_click) || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
                 }
