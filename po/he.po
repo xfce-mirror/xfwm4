@@ -2,634 +2,343 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Dotan Kamber <kamberd@yahoo.com>, 2004
-# Jonatan Perry <Jonatan443@walla.co.il>, 2004.
-# Yuval Tanny <tanai@int.gov.il>, 2004.
+# Jonatan44 <Jonatan443@walla.co.il>, 2004.
+# Yuval Tanny <yuvaltanny@spymac.com>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-25 23:50+0200\n"
-"PO-Revision-Date: 2004-08-30 01:00+0300\n"
-"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
+"PO-Revision-Date: 2004-08-17 16:11+0300\n"
+"Last-Translator: Yuval Tanny <yuvaltanny@spymac.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: mcs-plugin/margins.c:123
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
-msgstr "שולי סביבת עבודה"
+msgstr "שולי משטח העבודה"
 
-#: mcs-plugin/margins.c:133
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "התאמת שולי משטח העבודה"
+
+#: mcs-plugin/margins_plugin.c:241
 msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
-#: mcs-plugin/margins.c:164
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr "שמאל:"
 
-#: mcs-plugin/margins.c:184
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr "ימין:"
 
-#: mcs-plugin/margins.c:204
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr "למעלה:"
 
-#: mcs-plugin/margins.c:224
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr "למטה:"
 
-#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
-msgid "Workspaces and Margins"
-msgstr "סביבות עבודה ושוליים"
-
-#. Number of workspaces
-#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:540
-msgid "Workspaces"
-msgstr "סביבות עבודה"
-
-#: mcs-plugin/plugin.c:169
-msgid "Margins"
-msgstr "שוליים"
-
-#: mcs-plugin/workspaces.c:339
-msgid "Change name"
-msgstr "שנה שם"
-
-#: mcs-plugin/workspaces.c:351
-#, c-format
-msgid "Workspace %d"
-msgstr "סביבת עבודה %d"
-
-#: mcs-plugin/workspaces.c:361
-msgid "Name:"
-msgstr "שם:"
-
-#: mcs-plugin/workspaces.c:449
-msgid "Click on a workspace name to edit it"
-msgstr "לחץ על שם סביבת העבודה כדי לערוך אותו"
-
-#: mcs-plugin/workspaces.c:521
-msgid "Number of workspaces:"
-msgstr "מספר סביבות עבודה:"
-
-#. Workspace names
-#: mcs-plugin/workspaces.c:552
-msgid "Workspace names"
-msgstr "שמות סביבות עבודה"
-
-#: mcs-plugin/xfwm4_plugin.c:82
-msgid "Menu"
-msgstr "תפריט"
-
-#: mcs-plugin/xfwm4_plugin.c:83
-msgid "Stick"
-msgstr "הדבק"
-
-#: mcs-plugin/xfwm4_plugin.c:84
-msgid "Shade"
-msgstr "גלול"
-
-#: mcs-plugin/xfwm4_plugin.c:85
-msgid "Hide"
-msgstr "הסתר"
-
-#: mcs-plugin/xfwm4_plugin.c:86
-msgid "Maximize"
-msgstr "הגדל"
-
-#: mcs-plugin/xfwm4_plugin.c:87
-msgid "Close"
-msgstr "סגור"
-
-#: mcs-plugin/xfwm4_plugin.c:92 mcs-plugin/xfwm4_shortcuteditor.c:90
-#: mcs-plugin/xfwm4_shortcuteditor.c:460
-msgid "Shade window"
-msgstr "גלול חלון"
-
-#: mcs-plugin/xfwm4_plugin.c:93 mcs-plugin/xfwm4_shortcuteditor.c:85
-#: mcs-plugin/xfwm4_shortcuteditor.c:456
-msgid "Hide window"
-msgstr "הסתר חלון"
-
-#: mcs-plugin/xfwm4_plugin.c:94 mcs-plugin/xfwm4_shortcuteditor.c:70
-#: mcs-plugin/xfwm4_shortcuteditor.c:444
-msgid "Maximize window"
-msgstr "הגדל חלון"
-
-#: mcs-plugin/xfwm4_plugin.c:95
-msgid "Nothing"
-msgstr "כלום"
-
-#: mcs-plugin/xfwm4_plugin.c:100
-msgid "Left"
-msgstr "שמאל"
-
-#: mcs-plugin/xfwm4_plugin.c:101
-msgid "Center"
-msgstr "מרכז"
-
-#: mcs-plugin/xfwm4_plugin.c:102
-msgid "Right"
-msgstr "ימין"
-
-#: mcs-plugin/xfwm4_plugin.c:570
-msgid "Click and drag buttons to change the layout"
-msgstr "לחץ ושחרר לחצן כדי לשנות את הפריסה"
-
-#: mcs-plugin/xfwm4_plugin.c:575
-msgid "Active"
-msgstr "פעיל"
-
-#: mcs-plugin/xfwm4_plugin.c:586
+#: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
 msgstr "כותרת"
 
-#: mcs-plugin/xfwm4_plugin.c:587
-msgid "The window title, it cannot be removed"
-msgstr "החלון מסומן, אין אפשרות להסיר אותו"
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "תפריט"
 
-#: mcs-plugin/xfwm4_plugin.c:595
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "הדבק"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "גלול"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "הסתר"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "הגדל"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "סגור"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr "גלול חלון"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "הסתר חלון"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "הגדל חלון"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "כלום"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "שמאל"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "מרכז"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "ימין"
+
+#: mcs-plugin/xfwm4_plugin.c:436
 msgid "Hidden"
 msgstr "מוסתר"
 
-#: mcs-plugin/xfwm4_plugin.c:1300
+#: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
 msgstr "תיבת בחירת גופנים"
 
-#: mcs-plugin/xfwm4_plugin.c:1395 mcs-plugin/xfwm4_plugin.c:1882
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "מנהל חלונות"
 
-#: mcs-plugin/xfwm4_plugin.c:1408
+#: mcs-plugin/xfwm4_plugin.c:1288
 msgid "Window Manager Preferences"
 msgstr "העדפות מנהל החלונות"
 
-#: mcs-plugin/xfwm4_plugin.c:1437
+#: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
 msgstr "גופן כותרת"
 
-#: mcs-plugin/xfwm4_plugin.c:1450
+#: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
 msgstr "יישור כותרת"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1456
+#: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
 msgstr "יישור טקסט בשורת הכותרת:"
 
-#: mcs-plugin/xfwm4_plugin.c:1458
+#: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
 msgstr "פרישת כפתורים"
 
-#: mcs-plugin/xfwm4_plugin.c:1464
-msgid "Style"
-msgstr "סגנון"
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "סגנון עיטור"
 
-#: mcs-plugin/xfwm4_plugin.c:1490
-msgid "Windows shortcuts"
-msgstr "קיצורי דרך של חלונות"
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "קיצור דרך במקלדת"
 
-#: mcs-plugin/xfwm4_plugin.c:1511 mcs-plugin/xfwm4_plugin.c:1539
-msgid "Command"
-msgstr "פקודה"
-
-#: mcs-plugin/xfwm4_plugin.c:1516 mcs-plugin/xfwm4_plugin.c:1544
-msgid "Shortcut"
-msgstr "קיצור דרך"
-
-#: mcs-plugin/xfwm4_plugin.c:1519
-msgid "Command shortcuts"
-msgstr "פקודת קיצור דרך"
-
-#: mcs-plugin/xfwm4_plugin.c:1547
-msgid "Keyboard"
-msgstr "מקלדת"
-
-#: mcs-plugin/xfwm4_plugin.c:1558
+#: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
 msgstr "אופן ההתמקדות"
 
-#: mcs-plugin/xfwm4_plugin.c:1566
+#: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
 msgstr "לחצה להתמקדות"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
 msgstr "התמקדות עוקבת אחר העכבר"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
 msgstr "התמקדות על חלון חדש"
 
-#: mcs-plugin/xfwm4_plugin.c:1584
-msgid "Automatically give focus to newly created windows"
-msgstr "התמקד באופן אוטומטי על חלון חדש שנוצר"
+#: mcs-plugin/xfwm4_plugin.c:1435
 
-#: mcs-plugin/xfwm4_plugin.c:1589
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"התמקד באופן אוטומטי על \n"
+"חלון חדש שנוצר"
+
+#: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
 msgstr "הבא לחזית בהתמקדות"
 
-#: mcs-plugin/xfwm4_plugin.c:1597
-msgid "Automatically raise windows when they receive focus"
-msgstr "הבא לחזית חלונות באופו אוטומט כאשר מתמקדים עליהן"
+#: mcs-plugin/xfwm4_plugin.c:1451
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"הבא חלונות לחזית באופן אוטומטי\n"
+"כאשר מתמקדים עליהם"
 
-#: mcs-plugin/xfwm4_plugin.c:1607
+#: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
 msgstr "השהה בטרם הבא חלונות ממוקדים לחזית:"
 
-#: mcs-plugin/xfwm4_plugin.c:1613
+#: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
 msgstr "לאט"
 
-#: mcs-plugin/xfwm4_plugin.c:1619
+#: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Fast"
 msgstr "מהר"
 
-#: mcs-plugin/xfwm4_plugin.c:1635
+#: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
 msgstr "הבא לחזית בלחיצה"
 
-#: mcs-plugin/xfwm4_plugin.c:1639
-msgid "Raise window when clicking inside application window"
-msgstr "הבא חלון לחזית כאשר לוחצים בתוך חלון היישום"
+#: mcs-plugin/xfwm4_plugin.c:1509
 
-#: mcs-plugin/xfwm4_plugin.c:1644
-msgid "Focus"
-msgstr "התמקדות"
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"הבא חלון לחזית כאשר לוחצים\n"
+"בתוך חלון היישום"
 
-#: mcs-plugin/xfwm4_plugin.c:1654
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr "מקלדת והתמקדות"
+
+#: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
 msgstr "הצמדת חלונות"
 
-#: mcs-plugin/xfwm4_plugin.c:1662
+#: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
 msgstr "הצמד חלונות לגבולות המרקע"
 
-#: mcs-plugin/xfwm4_plugin.c:1667
+#: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
 msgstr "הצמד חלונות לחלונות סמוכים"
 
-#: mcs-plugin/xfwm4_plugin.c:1677
+#: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
 msgstr "מרחק:"
 
-#: mcs-plugin/xfwm4_plugin.c:1683 mcs-plugin/xfwm4_plugin.c:1733
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "קטן"
 
-#: mcs-plugin/xfwm4_plugin.c:1689 mcs-plugin/xfwm4_plugin.c:1739
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "גדול"
 
-#: mcs-plugin/xfwm4_plugin.c:1704
+#: mcs-plugin/xfwm4_plugin.c:1600
 msgid "Wrap workspaces"
-msgstr "גלישת סביבות עבודה"
+msgstr "גלישת משטחי עבודה"
 
-#: mcs-plugin/xfwm4_plugin.c:1712
+#: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע לגבול המסך"
+msgstr "גלוש בין משטחי עבודה כאשר המצביע מגיע לגבול המסך"
 
-#: mcs-plugin/xfwm4_plugin.c:1717
+#: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "גלוש בין סביבות עבודה כאשר חלון נגרר אל מחוץ למסך"
+msgstr "גלוש בין משטחי עבודה כאשר חלון נגרר אל מחוץ למסך"
 
-#: mcs-plugin/xfwm4_plugin.c:1727
+#: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
 msgstr "התנגדות למעבר:"
 
-#: mcs-plugin/xfwm4_plugin.c:1754
+#: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
 msgstr "הזזה ושינוי גודל"
 
-#: mcs-plugin/xfwm4_plugin.c:1762
+#: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
 msgstr "הצג את תוכן החלון בעת שינוי גודל"
 
-#: mcs-plugin/xfwm4_plugin.c:1767
+#: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
 msgstr "הצג את תוכן החלון בעת הזזה"
 
-#: mcs-plugin/xfwm4_plugin.c:1772
+#: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
 msgstr "פעולת לחיצה כפולה"
 
-#: mcs-plugin/xfwm4_plugin.c:1778
+#: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "פעולה לביצוע בעת לחיצה כפולה בשורת הכותרת"
 
-#: mcs-plugin/xfwm4_plugin.c:1780
+#: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:65 mcs-plugin/xfwm4_shortcuteditor.c:440
-msgid "Close window"
-msgstr "סגור חלון"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:75 mcs-plugin/xfwm4_shortcuteditor.c:448
-msgid "Maximize window vertically"
-msgstr "הגדל חלון אנכית"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:80 mcs-plugin/xfwm4_shortcuteditor.c:452
-msgid "Maximize window horizontally"
-msgstr "הגדל חלון אופקית"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:95 mcs-plugin/xfwm4_shortcuteditor.c:464
-msgid "Stick window"
-msgstr "הדבק חלון"
-
-#
-#: mcs-plugin/xfwm4_shortcuteditor.c:100 mcs-plugin/xfwm4_shortcuteditor.c:468
-msgid "Cycle windows"
-msgstr "החלפת חלונות פעילים"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:105 mcs-plugin/xfwm4_shortcuteditor.c:472
-msgid "Move window up"
-msgstr "הזז חלון למעלה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:110 mcs-plugin/xfwm4_shortcuteditor.c:476
-msgid "Move window down"
-msgstr "הזז חלון למטה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:115 mcs-plugin/xfwm4_shortcuteditor.c:480
-msgid "Move window left"
-msgstr "הזז חלון שמאלה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:120 mcs-plugin/xfwm4_shortcuteditor.c:484
-msgid "Move window right"
-msgstr "הזז חלון ימינה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:488
-msgid "Resize window up"
-msgstr "הזז קצה עליון של חלון"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:130 mcs-plugin/xfwm4_shortcuteditor.c:492
-msgid "Resize window down"
-msgstr "הזז קצה תחתון של חלון"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:135 mcs-plugin/xfwm4_shortcuteditor.c:496
-msgid "Resize window left"
-msgstr "הזז קצה שמאלי של חלון"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:140 mcs-plugin/xfwm4_shortcuteditor.c:500
-msgid "Resize window right"
-msgstr "הזז קצה ימני של חלון"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:145 mcs-plugin/xfwm4_shortcuteditor.c:504
-msgid "Raise window"
-msgstr "שנה גודל של חלון"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:150 mcs-plugin/xfwm4_shortcuteditor.c:508
-msgid "Lower window"
-msgstr "העבר חלון לרקע"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:155 mcs-plugin/xfwm4_shortcuteditor.c:512
-msgid "Toggle fullscreen"
-msgstr "חלון במצב מסך מלא"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:160 mcs-plugin/xfwm4_shortcuteditor.c:516
-msgid "Next workspace"
-msgstr "סביבת עבודה הבאה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:165 mcs-plugin/xfwm4_shortcuteditor.c:520
-msgid "Previous workspace"
-msgstr "סביבת עבודה קודמת"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:170 mcs-plugin/xfwm4_shortcuteditor.c:524
-msgid "Add workspace"
-msgstr "הוסף סביבת עבודה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:175 mcs-plugin/xfwm4_shortcuteditor.c:528
-msgid "Delete workspace"
-msgstr "מחק סביבת עבודה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:180 mcs-plugin/xfwm4_shortcuteditor.c:532
-msgid "Workspace 1"
-msgstr "סביבת עבודה 1"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:185 mcs-plugin/xfwm4_shortcuteditor.c:536
-msgid "Workspace 2"
-msgstr "סביבת עבודה 2"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:190 mcs-plugin/xfwm4_shortcuteditor.c:540
-msgid "Workspace 3"
-msgstr "סביבת עבודה 3"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:195 mcs-plugin/xfwm4_shortcuteditor.c:544
-msgid "Workspace 4"
-msgstr "סביבת עבודה 4"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:200 mcs-plugin/xfwm4_shortcuteditor.c:548
-msgid "Workspace 5"
-msgstr "סביבת עבודה 5"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:205 mcs-plugin/xfwm4_shortcuteditor.c:552
-msgid "Workspace 6"
-msgstr "סביבת עבודה 6"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:210 mcs-plugin/xfwm4_shortcuteditor.c:556
-msgid "Workspace 7"
-msgstr "סביבת עבודה 7"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:215 mcs-plugin/xfwm4_shortcuteditor.c:560
-msgid "Workspace 8"
-msgstr "סביבת עבודה 8"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:220 mcs-plugin/xfwm4_shortcuteditor.c:564
-msgid "Workspace 9"
-msgstr "סביבת עבודה 9"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:225 mcs-plugin/xfwm4_shortcuteditor.c:568
-msgid "Move window to next workspace"
-msgstr "העבר חלון לסביבת עבודה הבאה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:230 mcs-plugin/xfwm4_shortcuteditor.c:572
-msgid "Move window to previous workspace"
-msgstr "העבר חלון לסביבת עבודה קודמת"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:235 mcs-plugin/xfwm4_shortcuteditor.c:576
-msgid "Move window to workspace 1"
-msgstr "העבר חלון לסביבת עבודה 1"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:240 mcs-plugin/xfwm4_shortcuteditor.c:580
-msgid "Move window to workspace 2"
-msgstr "העבר חלון לסביבת עבודה 2"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:245 mcs-plugin/xfwm4_shortcuteditor.c:584
-msgid "Move window to workspace 3"
-msgstr "העבר חלון לסביבת עבודה 3"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:250 mcs-plugin/xfwm4_shortcuteditor.c:588
-msgid "Move window to workspace 4"
-msgstr "העבר חלון לסביבת עבודה 4"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:255 mcs-plugin/xfwm4_shortcuteditor.c:592
-msgid "Move window to workspace 5"
-msgstr "העבר חלון לסביבת עבודה 5"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:260 mcs-plugin/xfwm4_shortcuteditor.c:596
-msgid "Move window to workspace 6"
-msgstr "העבר חלון לסביבת עבודה 6"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:265 mcs-plugin/xfwm4_shortcuteditor.c:600
-msgid "Move window to workspace 7"
-msgstr "העבר חלון לסביבת עבודה 7"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:270 mcs-plugin/xfwm4_shortcuteditor.c:604
-msgid "Move window to workspace 8"
-msgstr "העבר חלון לסביבת עבודה 8"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:275 mcs-plugin/xfwm4_shortcuteditor.c:608
-msgid "Move window to workspace 9"
-msgstr "העבר חלון לסביבת עבודה 9"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:656
-msgid "Cannot open the theme directory !"
-msgstr "אין אפשרות לפתוח תיקיית ערכת הנושא."
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:675
+#: src/client.c:528
 #, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-"אין אפשרות לפתוח %s : \n"
-"%s"
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:690 mcs-plugin/xfwm4_shortcuteditor.c:701
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"אין אפשרות לכתוב  %s : \n"
-"%s"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:764
-msgid "Select command"
-msgstr "בחר פקודה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:866
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-"קיצור כבר בשימוש.\n"
-"האם ברצונך להשתמש בו בכל זאת?"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:928
-msgid "Compose shortcut for :"
-msgstr "צור קיצור ל:"
-
-#. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:931
-#: mcs-plugin/xfwm4_shortcuteditor.c:1110
-msgid "Compose shortcut"
-msgstr "צור קיצור"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:963
-#: mcs-plugin/xfwm4_shortcuteditor.c:1141
-msgid "Cannot grab the keyboard"
-msgstr "אין אפשר לתפוס את קיצור המקלדת"
-
-#. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1015
-msgid "Choose command"
-msgstr "בחר פקודה"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:1017
-msgid "Command :"
-msgstr "פקודה:"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:1051
-msgid "The command doesn't exist or the file is not executable !"
-msgstr "הפקודה לא קיימת או שהקובץ לא בר-הרצה."
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:1107
-msgid "Compose shortcut for command :"
-msgstr "צור קיצור לפקודה:"
-
-#: src/events.c:1626
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s פעולה לא נתמכת (עדיין) \n"
 
-#: src/main.c:180
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
 
-#: src/main.c:313
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: מנהל חלונות אחר כבר מופעל"
 
-#: src/main.c:318
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: חסר מידע מקבצי ברירת המחדל"
 
-#: src/main.c:328
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr "%s נכשל בניסיון להיכנס למצב daemon: %s"
-
-#: src/main.c:336
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr "%s: נכשל ביצירת תהליך חדש: %s"
-
-#: src/main.c:357
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: שיגאה לא מוכרת התרחשה"
 
-#: src/menu.c:39
+#: src/menu.c:42
 msgid "Ma_ximize"
 msgstr "_הגדל"
 
-#: src/menu.c:40
+#: src/menu.c:43
 msgid "Un_maximize"
 msgstr "_שחזר"
 
-#: src/menu.c:41
+#: src/menu.c:44
 msgid "_Hide"
 msgstr "_מזער"
 
-#: src/menu.c:42
+#: src/menu.c:45
 msgid "Hide _all others"
 msgstr "מזער את _כל האחרים"
 
-#: src/menu.c:43
+#: src/menu.c:46
 msgid "S_how"
 msgstr "הצ_ג"
 
-#: src/menu.c:44
+#: src/menu.c:47
 msgid "_Shade"
 msgstr "ג_לול"
 
-#: src/menu.c:45
+#: src/menu.c:48
 msgid "Un_shade"
 msgstr "_בטל גלילה"
 
-#: src/menu.c:46
+#: src/menu.c:49
 msgid "S_tick"
 msgstr "_דביק"
 
-#: src/menu.c:47
+#: src/menu.c:50
 msgid "Uns_tick"
 msgstr "ב_טל דביק"
-
-#: src/menu.c:48
-msgid "Context _help"
-msgstr "עזרה"
-
-#: src/menu.c:49 src/menu.c:50
-msgid "Always on top"
-msgstr "תמיד עליון"
 
 #: src/menu.c:51
 msgid "Send to..."
@@ -651,66 +360,57 @@ msgstr "_צא"
 msgid "Restart"
 msgstr "_אתחל"
 
-#: src/menu.c:170
-#, c-format
-msgid "Workspace %i (%s)"
-msgstr "סביבת עבודה %i (%s)"
-
-#: src/menu.c:182
+#: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה %i"
 
-#: src/menu.c:425
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu כשל בלכידת המצביע \n"
 
-#: src/netwm.c:242
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
-
-#: src/settings.c:342
+#: src/settings.c:289
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: חסרים קבצי ברירת מחדל"
 
-#: src/settings.c:599
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: אין אפשרות לאתר צבע פעיל %s\n"
 
-#: src/settings.c:605
+#: src/settings.c:523
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: אין אפשרות לקבוע צבע פעיל %s\n"
 
-#: src/settings.c:648
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: אין אפשרות לאתר צבע שאינו פעיל %s\n"
 
-#: src/settings.c:654
+#: src/settings.c:574
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: אין אפשרות לקבוע צבע לא פעיל %s\n"
 
-#: src/settings.c:841
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: ערכת הנושא \"%s\" חסרה, משתמש בברירת המחדל"
 
-#: src/settings.c:848
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s ערכים חסרים בקבצי ברירת המחדל"
 
+#: src/settings.c:1119
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s מספור משטח העבודה לא צוין, משתמש בערך rc %i"
+
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "החלף ל..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "יישום לא ידוע."
 
