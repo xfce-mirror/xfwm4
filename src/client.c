@@ -1547,6 +1547,10 @@ void clientFrame(Window w)
     XSetWindowBorderWidth(dpy, c->window, 0);
     XReparentWindow(dpy, c->window, c->frame, frameLeft(c), frameTop(c));
 
+    clientSetNetActions(c);
+    clientAddToList(c);
+    clientGrabKeys(c);
+
     MyXUngrabServer(dpy);
 
     XGrabButton(dpy, AnyButton, AnyModifier, c->frame, False, ButtonPressMask, GrabModeSync, GrabModeAsync, None, None);
@@ -1572,10 +1576,6 @@ void clientFrame(Window w)
     {
         c->buttons[i] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     }
-
-    clientSetNetActions(c);
-    clientAddToList(c);
-    clientGrabKeys(c);
 
     wc.x = c->x;
     wc.y = c->y;
