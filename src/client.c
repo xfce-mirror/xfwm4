@@ -509,8 +509,10 @@ void clientGetNetWmType(Client * c)
                 c->type_atom = net_wm_window_type_dock;
                 break;
             case WIN_LAYER_NORMAL:
-            default:
                 c->type_atom = net_wm_window_type_normal;
+                break;
+            default:
+                c->type_atom = None;
                 break;
         }
     }
@@ -727,7 +729,7 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_normal detected\n");
             c->type = WINDOW_NORMAL;
-            c->initial_layer = c->win_layer;
+            c->initial_layer = WIN_LAYER_NORMAL;
         }
         else if(c->type_atom == net_wm_window_type_utility)
         {
