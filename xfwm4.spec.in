@@ -17,8 +17,10 @@ xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.
 %package themes
 Summary:	Additionnal themes for xfwm4
 Group:		User Interface/Desktops
-# BuildArch:	noarch
 Requires:	xfwm4
+# This should be really noarch, but if I set noarch here, even the arch
+# dependent stuff is marked as noarch, so... no noarch.
+# BuildArch:	noarch
 
 %description themes
 Various themes for xfwm4.
