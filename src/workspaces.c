@@ -167,7 +167,7 @@ workspaceSwitch (int new_ws, Client * c2)
             }
         }
     }
-    clientSetFocus (new_focus, FOCUS_SORT);
+    clientSetFocus (new_focus, NO_FOCUS_FLAG);
 }
 
 void

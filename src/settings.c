@@ -176,7 +176,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 {
                     if (!strcmp (name, "Xfwm/DblClickAction"))
                     {
-                        reloadSettings (UPDATE_NONE);
+                        reloadSettings (NO_UPDATE_FLAG);
                     }
                     else if (!strcmp (name, "Xfwm/KeyThemeName"))
                     {

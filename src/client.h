@@ -55,13 +55,13 @@
 #define PLACEMENT_MOUSE                 0
 #define PLACEMENT_ROOT                  1
 
-#define CFG_NONE                        0
+#define NO_CFG_FLAG                     0
 #define CFG_CONSTRAINED                 (1<<0)
 #define CFG_REQUEST                     (1<<1)
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
 
-#define FOCUS_NONE                      0
+#define NO_FOCUS_FLAG                   0
 #define FOCUS_SORT                      (1<<0)
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
@@ -72,7 +72,7 @@
 #define INCLUDE_SKIP_PAGER              (1<<3)
 #define INCLUDE_SKIP_TASKBAR            (1<<4)
 
-#define UPDATE_NONE                     0
+#define NO_UPDATE_FLAG                  0
 #define UPDATE_KEYGRABS                 (1<<0)
 #define UPDATE_FRAME                    (1<<1)
 #define UPDATE_GRAVITY                  (1<<2)

@@ -200,7 +200,7 @@ moveRequest (Client * c, XEvent * ev)
 static inline void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, FOCUS_SORT);
+    clientSetFocus (c, NO_FOCUS_FLAG);
 
     if (FLAG_TEST_ALL (c->flags,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -525,7 +525,7 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, FOCUS_SORT);
+    clientSetFocus (c, NO_FOCUS_FLAG);
     clientRaise (c);
     clientPassGrabButton1 (c);
 
@@ -589,7 +589,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, FOCUS_SORT);
+            clientSetFocus (c, NO_FOCUS_FLAG);
             if (params.raise_on_click)
             {
                 clientRaise (c);
@@ -707,7 +707,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, FOCUS_SORT);
+                clientSetFocus (c, NO_FOCUS_FLAG);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -740,7 +740,7 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, FOCUS_SORT);
+                    clientSetFocus (c, NO_FOCUS_FLAG);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
@@ -810,7 +810,7 @@ handleButtonPress (XButtonEvent * ev)
                 {
                     clientPassGrabButton1 (c);
                 }
-                clientSetFocus (c, FOCUS_SORT);
+                clientSetFocus (c, NO_FOCUS_FLAG);
                 if ((params.raise_on_click) || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
@@ -1191,7 +1191,7 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            clientSetFocus (c, FOCUS_SORT);
+            clientSetFocus (c, NO_FOCUS_FLAG);
             if (!(params.raise_on_click))
             {
                 clientPassGrabButton1 (c);
@@ -1281,7 +1281,7 @@ handleFocusIn (XFocusChangeEvent * ev)
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
-        clientUpdateFocus (c, FOCUS_NONE);
+        clientUpdateFocus (c, FOCUS_SORT);
         if (params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout ();
@@ -1331,7 +1331,7 @@ handleFocusOut (XFocusChangeEvent * ev)
         if ((c) && (c == clientGetFocus ()))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-            clientUpdateFocus (NULL, FOCUS_NONE);
+            clientUpdateFocus (NULL, NO_FOCUS_FLAG);
             clientPassGrabButton1 (NULL);
             /* Clear timeout */
             clear_timeout ();
@@ -1568,7 +1568,7 @@ handleClientMessage (XClientMessageEvent * ev)
             clientSetWorkspace (c, workspace, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, FOCUS_SORT);
+            clientSetFocus (c, NO_FOCUS_FLAG);
             clientPassGrabButton1 (c);
         }
     }
