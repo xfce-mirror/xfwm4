@@ -1373,7 +1373,6 @@ void clientFrame(Window w)
     c->size = XAllocSizeHints();
     XGetWMNormalHints(dpy, w, c->size, &dummy);
     XGetWindowAttributes(dpy, w, &attr);
-    c->wmhints = XGetWMHints (dpy, w);
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
@@ -1406,7 +1405,8 @@ void clientFrame(Window w)
     c->skip_taskbar = False;
     c->skip_pager   = False;
     c->has_struts   = False;
-    c->wm_takefocus = getWMTakeFocus (dpy, c->window);
+    c->wm_takefocus = (getWMTakeFocus (dpy, c->window) ? True : False);
+    c->wm_input     = (getWMInput (dpy, c->window) ? True : False);
 
     mwm_hints = getMotifHints(dpy, c->window);
     if(mwm_hints)
@@ -2039,7 +2039,7 @@ inline gboolean clientAcceptFocus(Client *c)
         return TRUE;
     }
     /* At last, use wmhints */
-    return ((!(c->wmhints) || ((c->wmhints) && !(c->wmhints->flags & InputHint)) || ((c->wmhints) && (c->wmhints->flags & InputHint) && (c->wmhints->input))));
+    return (c->wm_input);
 }
 
 void clientSetFocus(Client * c, int sort)

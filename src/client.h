@@ -175,7 +175,6 @@ struct _Client
     int win_workspace;
     Atom type_atom;
     XSizeHints *size;
-    XWMHints *wmhints;
     Client *next;
     Client *prev;
     WindowType type;
@@ -206,6 +205,7 @@ struct _Client
     unsigned int skip_pager   : 1;
     unsigned int has_struts   : 1;
     unsigned int wm_takefocus : 1;
+    unsigned int wm_input     : 1;
 };
 
 extern Client *clients;

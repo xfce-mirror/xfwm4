@@ -1,7 +1,7 @@
-theme=@prefix@/share/xfwm4/themes/crux
+theme=@prefix@/share/xfwm4/themes/kde
 title_alignment=left
 full_width_title=true
-button_layout=O|SHMC
+button_layout=OT|SHMC
 button_spacing=1
 button_offset=0
 title_vertical_offset=0

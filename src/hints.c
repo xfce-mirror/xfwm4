@@ -163,6 +163,22 @@ PropMwmHints *getMotifHints(Display * dpy, Window w)
     }
 }
 
+int getWMInput (Display * dpy, Window w)
+{
+    XWMHints *wmhints;
+    int result;
+    
+    DBG("entering getWMInput\n");
+
+    wmhints = XGetWMHints (dpy, w);
+    result = ((!(wmhints) || ((wmhints) && !(wmhints->flags & InputHint)) || ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input))));
+    if (wmhints)
+    {
+        XFree (wmhints);
+    }
+    return (result);
+}
+
 int getWMTakeFocus (Display * dpy, Window w)
 {
     Atom *protocols = None, *ap;

@@ -82,5 +82,7 @@ You can also choose what buttons are visible and where they are located
 
 The default is
 
-button_layout=O|SHMC
+button_layout=OT|SHMC
+theme=kde
+
 

@@ -3,7 +3,7 @@
 # You can use it as a template for your own configuration file
 
 # theme=directory
-theme=/usr/local/share/xfwm4/themes/crux
+theme=/usr/local/share/xfwm4/themes/kde
 
 # title_alignment=left/right/center
 title_alignment=left
@@ -17,7 +17,7 @@ title_alignment=left
 #    C = close
 #    | = title
 
-button_layout=O|SHMC
+button_layout=OT|SHMC
 
 # ???_key=modifier+key
 hide_window_key=Mod1+F1
