@@ -507,7 +507,7 @@ static inline void titleButton(Client *c, int state, XButtonEvent * ev)
             /* Let GTK handle this for us. */
         }
     }
-    else if(ev->button == Button4)
+    else if((ev->button == Button4) || (ev->button == Button6))
     {
         /* Mouse wheel scroll up */
         if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
@@ -515,7 +515,7 @@ static inline void titleButton(Client *c, int state, XButtonEvent * ev)
             clientShade(c);
         }
     }
-    else if(ev->button == Button5)
+    else if((ev->button == Button5) || (ev->button == Button7))
     {
         /* Mouse wheel scroll down */
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
