@@ -322,7 +322,7 @@ handleKeyPress (XKeyEvent * ev)
                 clientClose (c);
                 break;
             case KEY_HIDE_WINDOW:
-                if (CLIENT_CAN_HIDE_WINDOW (c))
+                if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER) && CLIENT_CAN_HIDE_WINDOW (c))
                 {
                     clientHide (c, c->win_workspace, TRUE);
                 }
@@ -339,10 +339,13 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_SHADE_WINDOW:
                 clientToggleShaded (c);
                 break;
-            case KEY_STICK_WINDOW:
-                clientToggleSticky (c, TRUE);
-                frameDraw (c, FALSE, FALSE);
-                break;
+	    case KEY_STICK_WINDOW:
+		if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER) && CLIENT_CAN_STICK_WINDOW (c))
+		{
+		    clientToggleSticky (c, TRUE);
+		    frameDraw (c, FALSE, FALSE);
+		}
+		break;
             case KEY_RAISE_WINDOW:
                 clientRaise (c);
                 clientPassGrabButton1 (NULL);
@@ -1809,7 +1812,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
         {
             ops |= MENU_OP_UNSTICK;
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            if (!CLIENT_CAN_STICK_WINDOW(c))
             {
                 insensitive |= MENU_OP_UNSTICK;
             }
@@ -1817,7 +1820,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         else
         {
             ops |= MENU_OP_STICK;
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            if (!CLIENT_CAN_STICK_WINDOW(c))
             {
                 insensitive |= MENU_OP_STICK;
             }
