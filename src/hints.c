@@ -428,7 +428,7 @@ int get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_atoms
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    if(XGetWindowProperty(dpy, w, a, 0L, 1L, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (guchar **) & atoms) != Success || type == None)
+    if((XGetWindowProperty(dpy, w, a, 0L, 1L, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (unsigned char **)&atoms) != Success) || (type == None))
     {
         return (False);
     }

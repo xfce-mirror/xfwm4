@@ -149,8 +149,9 @@ static void clientGetNetState(Client * c)
     if(get_atom_list(dpy, c->window, net_wm_state, &atoms, &n_atoms))
     {
         int i;
-
-        i = 0;
+        DBG("clientGetNetState: %i atoms detected\n", n_atoms);
+        
+	i = 0;
         while(i < n_atoms)
         {
             if(atoms[i] == net_wm_state_shaded)
@@ -197,6 +198,10 @@ static void clientGetNetState(Client * c)
                 DBG("clientGetNetState : skip_taskbar\n");
                 c->skip_taskbar = True;
             }
+            else
+            {
+		g_message ("Unmanaged net_wm_state");
+            }
 
             ++i;
         }
@@ -205,6 +210,7 @@ static void clientGetNetState(Client * c)
             XFree(atoms);
         }
     }
+
     if(c->win_state & (WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ))
     {
         c->win_state |= WIN_STATE_MAXIMIZED;
@@ -1398,6 +1404,7 @@ void clientFrame(Window w)
         return;
     }
 
+    XSync (dpy, 0);
     c->window = w;
     getWindowName(dpy, c->window, &c->name);
     DBG("name \"%s\"\n", c->name);
