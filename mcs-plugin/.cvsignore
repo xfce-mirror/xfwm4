@@ -1,7 +1,0 @@
-Makefile
-Makefile.in
-Makefile.in.in
-*.o
-core
-xfce-wm-settings.desktop
-xfce-workspaces-settings.desktop
