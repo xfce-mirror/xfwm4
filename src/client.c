@@ -1231,6 +1231,7 @@ clientWindowType (Client * c)
         c2 = clientGetHighestTransientOrModalFor (c);
         if (c2)
         {
+#if 0
             if (clientIsTransient (c))
             {
                 c->initial_layer = c2->win_layer;
@@ -1239,6 +1240,9 @@ clientWindowType (Client * c)
             {
                 c->initial_layer = c2->win_layer;
             }
+#else
+            c->initial_layer = c2->win_layer;
+#endif
             TRACE ("Applied layer is %i", c->initial_layer);
         }
         CLIENT_FLAG_UNSET (c,
@@ -4052,8 +4056,7 @@ clientRaise (Client * c)
         if (client_sibling)
         {
             /* If there is one, look for its place in the list */
-            sibling =
-                g_list_find (windows_stack, (gconstpointer) client_sibling);
+            sibling = g_list_find (windows_stack, (gconstpointer) client_sibling);
             /* Place the raised window just before it */
             windows_stack = g_list_insert_before (windows_stack, sibling, c);
         }
@@ -4063,8 +4066,7 @@ clientRaise (Client * c)
             windows_stack = g_list_append (windows_stack, c);
         }
         /* Now, look for transients, transients of transients, etc. */
-        for (index1 = windows_stack_copy; index1;
-            index1 = g_list_next (index1))
+        for (index1 = windows_stack_copy; index1; index1 = g_list_next (index1))
         {
             c2 = (Client *) index1->data;
             if (c2)
@@ -4075,19 +4077,13 @@ clientRaise (Client * c)
                     if (sibling)
                     {
                         /* Place the transient window just before sibling */
-                        windows_stack =
-                            g_list_remove (windows_stack,
-                            (gconstpointer) c2);
-                        windows_stack =
-                            g_list_insert_before (windows_stack, sibling,
-                            c2);
+                        windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
+                        windows_stack = g_list_insert_before (windows_stack, sibling, c2);
                     }
                     else
                     {
                         /* There will be no window on top of the transient window, so place it at the end of list */
-                        windows_stack =
-                            g_list_remove (windows_stack,
-                            (gconstpointer) c2);
+                        windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
                         windows_stack = g_list_append (windows_stack, c2);
                     }
                 }
@@ -4103,21 +4099,14 @@ clientRaise (Client * c)
                             if (sibling)
                             {
                                 /* Place the transient window just before sibling */
-                                windows_stack =
-                                    g_list_remove (windows_stack,
-                                    (gconstpointer) c2);
-                                windows_stack =
-                                    g_list_insert_before (windows_stack,
-                                    sibling, c2);
+                                windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
+                                windows_stack = g_list_insert_before (windows_stack, sibling, c2);
                             }
                             else
                             {
                                 /* There will be no window on top of the transient window, so place it at the end of list */
-                                windows_stack =
-                                    g_list_remove (windows_stack,
-                                    (gconstpointer) c2);
-                                windows_stack =
-                                    g_list_append (windows_stack, c2);
+                                windows_stack = g_list_remove (windows_stack, (gconstpointer) c2);
+                                windows_stack = g_list_append (windows_stack, c2);
                             }
                             break;
                         }
