@@ -2387,7 +2387,7 @@ clientGetMWMHints (Client * c, gboolean update)
                 CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_HAS_MOVE);
             }
         }
-        XFree (mwm_hints);
+        g_free (mwm_hints);
     }
     
     if (update)

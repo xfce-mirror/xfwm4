@@ -27,6 +27,9 @@
 #undef GDK_MULTIHEAD_SAFE
 #endif
 
+#include <stdarg.h>
+#include <string.h>
+#include <stdio.h>
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -196,16 +199,22 @@ getMotifHints (Display * dpy, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    PropMwmHints *data = NULL;
+    long *data = NULL;
+    PropMwmHints *result;
 
     TRACE ("entering getMotifHints");
 
-    if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, 20L, FALSE,
-                motif_wm_hints, &real_type, &real_format, &items_read,
-                &items_left, (unsigned char **) &data) == Success)
-        && (items_read))
+    if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, MWM_HINTS_ELEMENTS, 
+                FALSE, AnyPropertyType, &real_type, &real_format, &items_read,
+                &items_left, (unsigned char **) &data) == Success) && 
+        (items_read))
     {
-        return data;
+        result = g_new(PropMwmHints, 1);
+        memset (result, 0, sizeof(PropMwmHints));
+        memcpy (result, data, MIN (items_read * real_format / 8, 
+                                   sizeof (PropMwmHints)));
+        XFree (data);
+        return result;
     }
     else
     {
