@@ -2685,6 +2685,8 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     }
     else if(xevent->type == MotionNotify)
     {
+        int cx, cy, left, right, top, bottom;
+	    
         while(XCheckTypedEvent(dpy, MotionNotify, &ev));
 
         if(!passdata->grab && box_move)
@@ -2719,60 +2721,45 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             }
         }
 
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_HORIZ))
+        c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
+        c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
+
+        left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
+        right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
+        top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
+        bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+
+        cx = frameX(c) + (frameWidth(c) / 2);
+        cy = frameY(c) + (frameHeight(c) / 2);
+
+        if(snap_to_border)
         {
-            int cx, cy, left, right;
-
-            c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
-
-            cx = frameX(c) + (frameWidth(c) / 2);
-            cy = frameY(c) + (frameHeight(c) / 2);
-            left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
-            right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
-
-            if(snap_to_border)
+            if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < snap_width)
             {
-                if(abs(frameX(c) - MyDisplayMaxX(dpy, screen, cx, cy) + frameWidth(c) + right) < snap_width)
-                {
-                    c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
-                }
-                if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < snap_width)
-                {
-                    c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
-                }
+                c->x = MyDisplayMaxX(dpy, screen, cx, cy) - frameRight(c) - c->width - right;
+            }
+            if(abs(frameX(c) - left - MyDisplayX(cx, cy)) < snap_width)
+            {
+                c->x = MyDisplayX(cx, cy) + frameLeft(c) + left;
+            }
+	    
+            if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
+            {
+                c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
+            }
+            else if(abs(frameY(c) - MyDisplayY(cx, cy)) < snap_width + top)
+            {
+                c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
+            }
+        }
+        else
+        {
+            if(abs(frameY(c) - MyDisplayY(cx, cy)) < top)
+            {
+                c->y = frameTop(c) + MyDisplayY(cx, cy) + top;
             }
         }
 
-        if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
-        {
-            int cx, cy, top, bottom;
-
-            c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
-
-            cx = frameX(c) + (frameWidth(c) / 2);
-            cy = frameY(c) + (frameHeight(c) / 2);
-            top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
-            bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
-
-            if(snap_to_border)
-            {
-                if(abs(frameY(c) - MyDisplayMaxY(dpy, screen, cx, cy) + frameHeight(c) + bottom) < snap_width)
-                {
-                    c->y = MyDisplayMaxY(dpy, screen, cx, cy) - frameHeight(c) + frameTop(c) - bottom;
-                }
-                else if(abs(frameY(c) - MyDisplayY(cx, cy)) < snap_width + top)
-                {
-                    c->y = MyDisplayY(cx, cy) + frameTop(c) + top;
-                }
-            }
-            else
-            {
-                if(abs(frameY(c) - MyDisplayY(cx, cy)) < top)
-                {
-                    c->y = frameTop(c) + MyDisplayY(cx, cy) + top;
-                }
-            }
-        }
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
             clientConstraintPos(c);
