@@ -2281,7 +2281,7 @@ void clientFrame(Window w, gboolean initial)
     clientApplyStackList(windows_stack);
     last_raise = c;
 
-    if((c->win_workspace == workspace) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
         if(!initial && params.focus_new && clientAcceptFocus(c))
@@ -2584,11 +2584,14 @@ void clientShow(Client * c, gboolean change_state)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-        DBG("showing client \"%s\" (0x%lx)\n", c2->name, c2->window);
-        CLIENT_FLAG_SET(c2, CLIENT_FLAG_VISIBLE);
-        XMapWindow(dpy, c2->window);
-        XMapWindow(dpy, c2->frame);
-        if(change_state)
+	if ((c->win_workspace == workspace) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+	{
+            DBG("showing client \"%s\" (0x%lx)\n", c2->name, c2->window);
+            CLIENT_FLAG_SET(c2, CLIENT_FLAG_VISIBLE);
+            XMapWindow(dpy, c2->window);
+            XMapWindow(dpy, c2->frame);
+        }
+	if(change_state)
         {
             CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_HIDDEN);
             setWMState(dpy, c2->window, NormalState);
