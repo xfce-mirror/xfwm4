@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-13 21:26+0100\n"
-"PO-Revision-Date: 2005-02-18 06:59+0900\n"
+"PO-Revision-Date: 2005-03-08 21:39+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "余白"
 
 #: mcs-plugin/workspaces.c:343
 msgid "Change name"
-msgstr "名前変更"
+msgstr "名前を変更"
 
 #: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:486
 #: mcs-plugin/xfwm4_shortcuteditor.c:495 mcs-plugin/xfwm4_shortcuteditor.c:504
@@ -525,15 +525,15 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:938
 msgid "Select command"
-msgstr "コマンド選択"
+msgstr "コマンドを選択して下さい"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1084
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"ショートカットは既に使用されています !\n"
-"これに使用してよろしいですか ?"
+"ショートカットは既に使用されています！\n"
+"これに使用してよろしいですか？"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1147
 msgid "Compose shortcut for :"
@@ -553,7 +553,7 @@ msgstr "ショートカット無し"
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1274
 msgid "Choose command"
-msgstr "コマンド選択"
+msgstr "コマンドを選択して下さい"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1276
 msgid "Command :"
@@ -574,11 +574,11 @@ msgstr "%s: セグメンテーション違反です"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
-msgstr "最大化(_x)"
+msgstr "最大化(_X)"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "元に戻す(_m)"
+msgstr "元に戻す(_M)"
 
 #: src/menu.c:41
 msgid "_Hide"
@@ -586,11 +586,11 @@ msgstr "隠す(_H)"
 
 #: src/menu.c:42
 msgid "Hide _all others"
-msgstr "他を隠す(_a)"
+msgstr "他を隠す(_A)"
 
 #: src/menu.c:43
 msgid "S_how"
-msgstr "表示(_h)"
+msgstr "表示(_H)"
 
 #: src/menu.c:44
 msgid "_Shade"
@@ -598,7 +598,7 @@ msgstr "折畳む(_S)"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr "伸ばす(_s)"
+msgstr "伸ばす(_S)"
 
 #: src/menu.c:46
 msgid "S_tick"
@@ -677,4 +677,4 @@ msgstr "切替え ..."
 
 #: src/tabwin.c:129
 msgid "Unknown application!"
-msgstr "不明なアプリケーションです!"
+msgstr "不明なアプリケーションです！"
