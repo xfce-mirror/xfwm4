@@ -1,3 +1,46 @@
+2003-02-13  xfce
+
+	* src/client.c: Fix a bug introduced by recent optimizations...
+
+2003-02-13  xfce
+
+	* src/: client.c, events.c, frame.c, frame.h: Okay, promise, I'll
+	stop with optimizations :)
+
+2003-02-13  xfce
+
+	* src/events.c: Fix a small glitch with shaped windows
+
+2003-02-13  xfce
+
+	* src/frame.c: even more optimizations!
+
+2003-02-13  xfce
+
+	* mcs-plugin/inline-icon.h, mcs-plugin/xfwm4_plugin.c,
+	src/client.c, src/client.h, src/events.c, src/frame.c,
+	src/keyboard.c, src/main.c, src/mywindow.c, src/spinning_cursor.c,
+	src/spinning_cursor.h, src/startup_notification.c: Ran indent on
+	sources
+
+2003-02-13  xfce
+
+	* src/: client.c, client.h, frame.c: ...even more optimizations
+
+2003-02-13  xfce
+
+	* src/: Makefile.am, Makefile.in, client.c, client.h, events.c,
+	frame.c, keyboard.c, mywindow.c, mywindow.h, session.c: Add
+	optimizations
+
+2003-02-12  xfce
+
+	* src/frame.c: Unmap window sides when shaded
+
+2003-02-11  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-02-11  xfce
 
 	* src/startup_notification.c: Add additional sanity checks to
