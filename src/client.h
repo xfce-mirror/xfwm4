@@ -264,6 +264,7 @@ void clientResize(Client *, int, XEvent *);
 void clientCycle(Client *);
 void clientButtonPress(Client *, Window, XButtonEvent *);
 Client *clientGetLeader(Client *);
+GSList *clientGetStackList(void);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char *clientGetStartupId(Client *);
 #endif

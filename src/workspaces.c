@@ -38,8 +38,9 @@ void workspaceSwitch(int new_ws, Client * c2)
 {
     Client *c, *f = NULL;
     Client *previous;
+    GSList *list_of_windows;
+    GSList *index;
     unsigned long data[1];
-    int i;
     XEvent an_event;
 
     DBG("entering workspaceSwitch\n");
@@ -74,18 +75,22 @@ void workspaceSwitch(int new_ws, Client * c2)
     }
     clientSetFocus(c2, FALSE);
     
-
+    list_of_windows = clientGetStackList();
     /* First pass */
-    for(c = clients->prev, i = 0; i < client_count; c = c->prev, i++)
+    for(index = list_of_windows; index; index = g_slist_next(index))
     {
+        c = (Client *) index->data;
         if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !(c->transient_for) && ((c->win_workspace != new_ws)))
         {
             clientHide(c, FALSE);
         }
     }
+
     /* Second pass */
-    for(c = clients, i = 0; i < client_count; c = c->next, i++)
+    list_of_windows = g_slist_reverse(list_of_windows);
+    for(index = list_of_windows; index; index = g_slist_next(index))
     {
+        c = (Client *) index->data;
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientSetWorkspace(c, new_ws, TRUE);
@@ -103,11 +108,24 @@ void workspaceSwitch(int new_ws, Client * c2)
             }
         }
     }
-
+    
+    /* Free the list */
+    if (list_of_windows)
+    {
+        g_slist_free(list_of_windows);
+    }
+    
     setGnomeHint(dpy, root, win_workspace, new_ws);
     data[0] = new_ws;
     XChangeProperty(dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     workspaceUpdateArea(margins, gnome_margins);
+    /* Just get rid of EnterNotify events when using focus follow mouse */
+    gdk_flush();
+    if(!params.click_to_focus)
+    {
+        while(XCheckTypedEvent(dpy, EnterNotify, &an_event))
+            ;
+    }
     clientSetFocus(f, TRUE);
 }
 

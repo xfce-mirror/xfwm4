@@ -2281,7 +2281,7 @@ void clientFrame(Window w, gboolean initial)
     clientApplyStackList(windows_stack);
     last_raise = c;
 
-    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+    if((c->win_workspace == workspace) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
         if(!initial && params.focus_new && clientAcceptFocus(c))
@@ -2640,7 +2640,7 @@ void clientHideAll(Client * c)
     {
         if(CLIENT_CAN_HIDE_WINDOW(c2) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && !(c2->transient_for) && (c2 != c))
         {
-            if((!c) || (c->transient_for != c2->window))
+            if((!c) || ((c->transient_for != c2->window) && (c2->win_workspace == c->win_workspace)))
             {
                 clientHide(c2, True);
             }
@@ -4274,6 +4274,16 @@ Client *clientGetLeader(Client * c)
         c2 = clientGetFromWindow(c->client_leader, WINDOW);
     }
     return c2;
+}
+
+GSList *clientGetStackList(void)
+{
+    GSList *windows_stack_copy = NULL;
+    if (windows_stack)
+    {
+        windows_stack_copy = g_slist_copy(windows_stack);
+    }
+    return windows_stack_copy;
 }
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION

@@ -800,13 +800,16 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
-            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+            if (c->win_workspace == workspace)
             {
-                clientShow(c, TRUE);
-            }
-            if(params.focus_new && clientAcceptFocus(c))
-            {
-                clientSetFocus(c, TRUE);
+                if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+                {
+                    clientShow(c, TRUE);
+                }
+                if(params.focus_new && clientAcceptFocus(c))
+                {
+                    clientSetFocus(c, TRUE);
+                }
             }
         }
         clientConfigure(c, &wc, ev->value_mask, constrained);
