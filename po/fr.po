@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-25 22:34+0100\n"
+"POT-Creation-Date: 2003-02-27 22:16+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:207
+#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:206
 #: mcs-plugin/margins_plugin.c:224
 msgid "Workspace Margins"
 msgstr "Marges de l'espace de travail"
@@ -26,7 +26,9 @@ msgstr "Ajuster les marges de l'espace de travail"
 #: mcs-plugin/margins_plugin.c:211
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Les marges sont des zones sur les bords de l'écran où aucune fenêtre ne sera placée"
+msgstr ""
+"Les marges sont des zones sur les bords de l'écran où aucune fenêtre ne sera "
+"placée"
 
 #: mcs-plugin/margins_plugin.c:251
 msgid "Left :"
@@ -112,7 +114,7 @@ msgstr "Sélection de Fonte"
 msgid "Window Manager"
 msgstr "Gestionnaire de fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:1145
+#: mcs-plugin/xfwm4_plugin.c:1144
 msgid "Window Manager Preferences"
 msgstr "Préférences du gestionnaire de fenêtres"
 
@@ -270,9 +272,8 @@ msgid "Misc."
 msgstr "Divers"
 
 #: src/client.c:376
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window %#lx)"
-msgstr "%s: net_wm_state non géré (window %#lx)"
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: net_wm_state non géré (window 0x%lx)"
 
 #: src/events.c:1019
 #, c-format
@@ -280,10 +281,9 @@ msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation pas (encore) supportée\n"
 
 #: src/hints.c:598
-#, c-format
-msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
 msgstr ""
-"%s: Propriété %s de la fenêtre (%lx) contient des caractères UTF-8 non "
+"%s: Propriété %s de la fenêtre 0x%lx contient des caractères UTF-8 non "
 "valides\n"
 
 #: src/main.c:174
@@ -433,4 +433,3 @@ msgstr ""
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "Basculer vers ..."
-

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-25 22:34+0100\n"
+"POT-Creation-Date: 2003-02-27 22:16+0100\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:207
+#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:206
 #: mcs-plugin/margins_plugin.c:224
 #, fuzzy
 msgid "Workspace Margins"
@@ -116,7 +116,7 @@ msgstr "Diálogo de Selección de Fuente"
 msgid "Window Manager"
 msgstr "Administrador de Ventanas"
 
-#: mcs-plugin/xfwm4_plugin.c:1145
+#: mcs-plugin/xfwm4_plugin.c:1144
 msgid "Window Manager Preferences"
 msgstr "Preferencias del Administrador de Ventanas"
 
@@ -280,8 +280,8 @@ msgid "Misc."
 msgstr "Misc."
 
 #: src/client.c:376
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window %#lx)"
+#, fuzzy, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 
 #: src/events.c:1019
@@ -290,8 +290,8 @@ msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no activa (aún)\n"
 
 #: src/hints.c:598
-#, c-format
-msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+#, fuzzy, c-format
+msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
 msgstr "%s: Propiedad %s en ventana (%lx) contenía UTF-8 inválido\n"
 
 #: src/main.c:174

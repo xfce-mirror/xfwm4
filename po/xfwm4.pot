@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-02-25 22:34+0100\n"
+"POT-Creation-Date: 2003-02-27 22:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:207
+#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:206
 #: mcs-plugin/margins_plugin.c:224
 msgid "Workspace Margins"
 msgstr ""
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Window Manager"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1145
+#: mcs-plugin/xfwm4_plugin.c:1144
 msgid "Window Manager Preferences"
 msgstr ""
 
@@ -266,7 +266,7 @@ msgstr ""
 
 #: src/client.c:376
 #, c-format
-msgid "%s: Unmanaged net_wm_state (window %#lx)"
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
 #: src/events.c:1019
@@ -276,7 +276,7 @@ msgstr ""
 
 #: src/hints.c:598
 #, c-format
-msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
 msgstr ""
 
 #: src/main.c:174

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-25 22:34+0100\n"
+"POT-Creation-Date: 2003-02-27 22:16+0100\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:207
+#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:206
 #: mcs-plugin/margins_plugin.c:224
 #, fuzzy
 msgid "Workspace Margins"
@@ -115,7 +115,7 @@ msgstr "Fontin valinta"
 msgid "Window Manager"
 msgstr "Ikkuna manageri"
 
-#: mcs-plugin/xfwm4_plugin.c:1145
+#: mcs-plugin/xfwm4_plugin.c:1144
 msgid "Window Manager Preferences"
 msgstr "Ikkunoiden Asetukset"
 
@@ -271,8 +271,8 @@ msgid "Misc."
 msgstr "Sekalaiset"
 
 #: src/client.c:376
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window %#lx)"
+#, fuzzy, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
 
 #: src/events.c:1019
@@ -281,8 +281,8 @@ msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Toiminto ei tuettu (vielÃ€)\n"
 
 #: src/hints.c:598
-#, c-format
-msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+#, fuzzy, c-format
+msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
 msgstr "%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8\n"
 
 #: src/main.c:174

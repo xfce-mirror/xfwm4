@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-02-25 22:34+0100\n"
+"POT-Creation-Date: 2003-02-27 22:16+0100\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:207
+#: mcs-plugin/margins_plugin.c:110 mcs-plugin/margins_plugin.c:206
 #: mcs-plugin/margins_plugin.c:224
 #, fuzzy
 msgid "Workspace Margins"
@@ -116,7 +116,7 @@ msgstr "مربع حوار اختيار الخط"
 msgid "Window Manager"
 msgstr "مدير النوافذ"
 
-#: mcs-plugin/xfwm4_plugin.c:1145
+#: mcs-plugin/xfwm4_plugin.c:1144
 msgid "Window Manager Preferences"
 msgstr "تفضيلات مدير النوافذ"
 
@@ -274,8 +274,8 @@ msgid "Misc."
 msgstr "متفرقات"
 
 #: src/client.c:376
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window %#lx)"
+#, fuzzy, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
 #: src/events.c:1019
@@ -284,8 +284,8 @@ msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"
 
 #: src/hints.c:598
-#, c-format
-msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+#, fuzzy, c-format
+msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
 msgstr "%s: الخاصية %s على النافذة (%lx) تحتوي على UTF-8 غير صحيحة \n"
 
 #: src/main.c:174
