@@ -3051,7 +3051,7 @@ clientFocusNew(Client * c)
     }
     if (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
     {
-        clientSetFocus (c, FOCUS_SORT | FOCUS_IGNORE_MODAL);
+        clientSetFocus (c, FOCUS_IGNORE_MODAL);
         clientPassGrabButton1 (c);
     }
     else
@@ -3489,7 +3489,7 @@ clientFrameAll ()
     windows_stack = NULL;
     client_focus = NULL;
 
-    clientSetFocus (NULL, FOCUS_NONE);
+    clientSetFocus (NULL, NO_FOCUS_FLAG);
     shield =
         setTmpEventWin (0, 0, 
                         MyDisplayFullWidth (dpy, screen),
@@ -3512,7 +3512,7 @@ clientFrameAll ()
         XFree (wins);
     }
     new_focus = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
-    clientSetFocus (new_focus, FOCUS_SORT);
+    clientSetFocus (new_focus, NO_FOCUS_FLAG);
     removeTmpEventWin (shield);
     MyXUngrabServer ();
     XSync (dpy, FALSE);
@@ -3795,7 +3795,7 @@ clientPassFocus (Client * c)
 
     TRACE ("entering clientPassFocus");
 
-    if ((client_focus) && (c != client_focus))
+    if ((c || client_focus) && (c != client_focus))
     {
         return;
     }
@@ -3846,7 +3846,7 @@ clientPassFocus (Client * c)
     {
         new_focus = top_most;
     }
-    clientSetFocus (new_focus, (FOCUS_SORT | FOCUS_IGNORE_MODAL));
+    clientSetFocus (new_focus, FOCUS_IGNORE_MODAL);
     if (new_focus == top_most)
     {
         clientPassGrabButton1 (new_focus);
@@ -4502,7 +4502,7 @@ clientToggleFullscreen (Client * c)
     clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
     }
     else
     {
@@ -4690,7 +4690,7 @@ clientAcceptFocus (Client * c)
     {
         return FALSE;
     }
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT | CLIENT_FLAG_WM_TAKEFOCUS))
+    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT))
     {
         return FALSE;
     }
@@ -4727,8 +4727,7 @@ clientUpdateFocus (Client * c, unsigned short flags)
 
     if ((c) && !clientAcceptFocus (c))
     {
-        TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name,
-            c->window);
+        TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
         return;
     }
     if ((c == client_focus) && !(flags & FOCUS_FORCE))
@@ -4741,6 +4740,10 @@ clientUpdateFocus (Client * c, unsigned short flags)
     if (c)
     {
         clientInstallColormaps (c);
+        if (flags & FOCUS_SORT)
+        {
+            clientSortRing(c);
+        }
         data[0] = c->window;
         if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
@@ -4811,10 +4814,6 @@ clientSetFocus (Client * c, unsigned short flags)
                 c->name, c->window);
             return;
         }        
-        if (flags & FOCUS_SORT)
-        {
-            clientSortRing(c);
-        }
         if (!clientAcceptFocus (c))
         {
             TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
@@ -5092,7 +5091,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             {
                 wc.x = c->x;
                 wc.y = c->y;
-                clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+                clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
             }
         }
     }
@@ -5182,7 +5181,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+            clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
         }
     }
     else if (xevent->type == ButtonRelease)
@@ -5321,7 +5320,7 @@ clientMove (Client * c, XEvent * e)
     }
     wc.x = c->x;
     wc.y = c->y;
-    clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+    clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
 
     XUngrabKeyboard (dpy, last_timestamp);
     XUngrabPointer (dpy, last_timestamp);
@@ -5458,7 +5457,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 wc.y = c->y;
                 wc.width = c->width;
                 wc.height = c->height;
-                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
             }
         }
     }
@@ -5594,7 +5593,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             wc.y = c->y;
             wc.width = c->width;
             wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
         }
     }
     else if (xevent->type == ButtonRelease)
@@ -5887,7 +5886,7 @@ clientCycle (Client * c, XEvent * e)
     {
         clientShow (passdata.c, TRUE);
         clientRaise (passdata.c);
-        clientSetFocus (passdata.c, FOCUS_SORT);
+        clientSetFocus (passdata.c, NO_FOCUS_FLAG);
         clientPassGrabButton1 (passdata.c);
     }
 }
