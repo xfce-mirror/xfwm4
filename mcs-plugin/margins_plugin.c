@@ -107,6 +107,17 @@ static gboolean save_channel(McsManager * manager, const char *channel, const ch
 
 McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
 {
+#ifdef ENABLE_NLS
+    /* 
+       This is required for UTF-8 at least - Please don't remove it
+       And it needs to be done here for the label to be properly
+       localized....
+     */
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+#endif
+
     manager = mcs_plugin->manager;
 
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
@@ -180,12 +191,6 @@ static void run_dialog(McsPlugin * mcs_plugin)
         gtk_window_present(GTK_WINDOW(dialog));
         return;
     }
-
-#ifdef ENABLE_NLS
-    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain(GETTEXT_PACKAGE);
-#endif
 
     wmax = gdk_screen_width() / 4;
     hmax = gdk_screen_height() / 4;
