@@ -1,4 +1,27 @@
+Authors :
+---------
+
+Olivier Fourdan <fourdan@xfce.org>
+
+
+Credits :
+---------
+
+Portions of code based on the following projects :
+
 Oroborus: Ken Lynch <kenlynch@blueyonder.co.uk>
 Metacity: Havoc Pennington <hp@redhat.com>
 Sawfish:  John Harper <jsh@unfactored.org>
-xfwm4:    Olivier Fourdan <fourdan@xfce.org>
+
+The default theme (kindaker) is based on a KDE theme called "Keramik" by :
+
+
+  Keramik style:
+  --------------
+  Malte Starostik (malte@kde.org)
+
+  Keramik decorations:
+  --------------------
+  Fredrik Hoglund (fredrik@kde.org)
+
+See http://www.kde-look.org/content/show.php?content=1961 for details.
