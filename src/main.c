@@ -66,7 +66,6 @@
     ColormapNotify
 
 char *progname;
-Time last_timestamp;
 Display *dpy;
 Window root, gnome_win, systray, sidewalk[2];
 Colormap cmap;
@@ -140,7 +139,7 @@ cleanUp ()
     }
     removeTmpEventWin (sidewalk[0]);
     removeTmpEventWin (sidewalk[1]);
-    XSetInputFocus (dpy, root, RevertToPointerRoot, CurrentTime);
+    XSetInputFocus (dpy, root, RevertToPointerRoot, GDK_CURRENT_TIME);
     closeEventFilter ();
 }
 
@@ -267,7 +266,6 @@ initialize (int argc, char **argv)
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
 
-    last_timestamp = CurrentTime;
     dpy = GDK_DISPLAY ();
     root = GDK_ROOT_WINDOW ();
     xscreen = DefaultScreenOfDisplay(dpy);
@@ -359,7 +357,7 @@ initialize (int argc, char **argv)
     workspaceUpdateArea (margins, gnome_margins);
     init_net_desktop_params (dpy, screen, workspace);
     set_net_workarea (dpy, screen, params.workspace_count, margins);
-    XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, CurrentTime);
+    XSetInputFocus (dpy, gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
     initGtkCallbacks ();
     
     /* The first time the first Gtk application on a display uses pango,

@@ -30,6 +30,7 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
+#include <sys/time.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
@@ -293,7 +294,7 @@ void clientRemoveMaximizeFlag (Client *);
 void clientToggleMaximized (Client *, int);
 gboolean clientAcceptFocus (Client * c);
 void clientUpdateFocus (Client *, unsigned short);
-void clientSetFocus (Client *, unsigned short);
+void clientSetFocus (Client *, Time, unsigned short);
 Client *clientGetFocus ();
 void clientScreenResize(void);
 void clientMove (Client *, XEvent *);

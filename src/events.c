@@ -114,13 +114,13 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     button = ev->xbutton.button;
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
-    t0 = CurrentTime;
+    t0 = GDK_CURRENT_TIME;
     total = 0;
     clicks = 1;
 
     while ((ABS (x - xcurrent) < 2) && (ABS (y - ycurrent) < 2)
         && (total < params.dbl_click_time)
-        && ((CurrentTime - t0) < params.dbl_click_time))
+        && ((GDK_CURRENT_TIME - t0) < params.dbl_click_time))
     {
         g_usleep (10000);
         total += 10;
@@ -130,7 +130,6 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         }
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
-            last_timestamp = stashEventTime (last_timestamp, ev);
             if (ev->xbutton.button == button)
             {
                 clicks++;
@@ -144,7 +143,6 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         }
         if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
         {
-            last_timestamp = stashEventTime (last_timestamp, ev);
             xcurrent = ev->xmotion.x_root;
             ycurrent = ev->xmotion.y_root;
         }
@@ -204,7 +202,7 @@ moveRequest (Client * c, XEvent * ev)
 static void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, NO_FOCUS_FLAG);
+    clientSetFocus (c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
 
     if (CLIENT_FLAG_TEST_ALL (c,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -272,9 +270,7 @@ handleMotionNotify (XMotionEvent * ev)
                 workspaceSwitch (workspace + 1, NULL);
             }
             while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-            {
-                last_timestamp = stashEventTime (last_timestamp, (XEvent *) ev);
-            }    
+                ; /* void */
         }
     }
 }
@@ -480,7 +476,7 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, NO_FOCUS_FLAG);
+    clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
     clientRaise (c);
     clientPassGrabButton1 (c);
 
@@ -546,7 +542,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, NO_FOCUS_FLAG);
+            clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
             if (params.raise_on_click)
             {
                 clientRaise (c);
@@ -655,7 +651,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, NO_FOCUS_FLAG);
+                clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -689,7 +685,7 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, NO_FOCUS_FLAG);
+                    clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
@@ -759,7 +755,7 @@ handleButtonPress (XButtonEvent * ev)
                 {
                     clientPassGrabButton1 (c);
                 }
-                clientSetFocus (c, NO_FOCUS_FLAG);
+                clientSetFocus (c, ev->time, NO_FOCUS_FLAG);
                 if ((params.raise_on_click) || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
@@ -788,7 +784,7 @@ handleButtonPress (XButtonEvent * ev)
     }
     else
     {
-        XUngrabPointer (dpy, CurrentTime);
+        XUngrabPointer (dpy, GDK_CURRENT_TIME);
         XSendEvent (dpy, gnome_win, FALSE, SubstructureNotifyMask,
             (XEvent *) ev);
     }
@@ -980,7 +976,6 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
     /* Compress events - logic taken from kwin */
     while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest, &otherEvent))
     {
-        last_timestamp = stashEventTime (last_timestamp, &otherEvent);
         if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
         {
             ev = &otherEvent.xconfigurerequest;
@@ -1140,7 +1135,7 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
         {
-            clientSetFocus (c, FOCUS_FORCE);
+            clientSetFocus (c, ev->time, FOCUS_FORCE);
             if (!(params.raise_on_click))
             {
                 clientPassGrabButton1 (c);
@@ -1211,7 +1206,7 @@ handleFocusIn (XFocusChangeEvent * ev)
         c = clientGetFocus ();
         if (c)
         {
-            clientSetFocus (c, FOCUS_FORCE);
+            clientSetFocus (c, GDK_CURRENT_TIME, FOCUS_FORCE);
         }
         return;
     }
@@ -1504,7 +1499,7 @@ handleClientMessage (XClientMessageEvent * ev)
             clientSetWorkspace (c, workspace, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, NO_FOCUS_FLAG);
+            clientSetFocus (c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
             clientPassGrabButton1 (c);
         }
     }
@@ -1583,7 +1578,6 @@ handleEvent (XEvent * ev)
     TRACE ("entering handleEvent");
 
     sn_process_event (ev);
-    last_timestamp = stashEventTime (last_timestamp, ev);
     switch (ev->type)
     {
         case MotionNotify:
