@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Aug 2004"> 
-  <!ENTITY appversion "4.1.x"> 
+  <!ENTITY date "Oct 2004"> 
+  <!ENTITY appversion "4.2"> 
   <!ENTITY app "<application>xfwm4</application>">
 ]>
 
@@ -111,6 +111,16 @@ maintainers, etc. Commented out by default.
     managing windows, like setting a background image or launching programs, 
     need to be performed by other programs.
   </para>
+  
+  <para>&app; includes its own compositing manager, which takes advantage 
+  of the new <ulink url="http://freedesktop.org/Software/xorg" type="html">X.org</ulink>'s 
+  server extensions. The compositor is like a WM on its own, it manages a stack 
+  of all windows, monitor all kinds on X event and reacts accordingly. Having the 
+  compositing manager embedded in the window manager also helps keeping the 
+  various visual effects in sync with window events. If you want to use the compositor, 
+  you have to build &app; using the --enable-compositor configure option. In any case, 
+  you can disable the compositor on &app; startup using the '--compositor=off' argument.
+  </para>
 
 </sect1>
 
@@ -165,7 +175,7 @@ maintainers, etc. Commented out by default.
 	  <para>You need to give the focus to a window if you want it to 
 	    receive keyboard and mouse input. Window decorations colors will 
 	    change, following the focus. To obtain more details about focus 
-	    options, please refer to <xref linkend="wm-focus"/> below.
+	    options, please refer to the <ulink url="#focus">corresponding section</ulink> below.
 	  </para>
 	  <para>A keyboard shortcut allows to switch the focus from a window
 	    to others : Hold Alt and then you can press Tab repeatedly untill
@@ -178,12 +188,12 @@ maintainers, etc. Commented out by default.
 	  <para>
 	    If you want the panel, and apps that do not appear in the taskbar, 
 	    to be included when you switch the focus using the Alt+Tab 
-	    shortcut, edit your $HOME/.xfce4/xfwm4rc (or create an new one) 
+	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) 
 	    and add this line : cycle_minimum=false</para>
 	  
 	  <para>
 	    To exclude hidden windows from the list presented when using
-		Alt+Tab edit your $HOME/.xfce4/xfwm4rc (or create a new one) and
+		Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create a new one) and
 		add this line : cycle_hidden=false
 	  </para>
 
@@ -255,7 +265,7 @@ maintainers, etc. Commented out by default.
 	
 		<para>If you want to disable the ability to move and resize windows 
 		using the Alt button + mouse click shortcut, edit your 
-		$HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
+		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
 		easy_click=false</para>
 	
 	<para>&nbsp;</para>
@@ -371,7 +381,7 @@ maintainers, etc. Commented out by default.
 	
 		<para>If you want to disable the ability to move and resize windows 
 		using the Alt button + mouse click shortcut, edit your 
-		$HOME/.xfce4/xfwm4rc (or create an new one) and add this line : 
+		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
 		easy_click=false</para>
 	
 	<para>&nbsp;</para>
@@ -470,9 +480,7 @@ maintainers, etc. Commented out by default.
 	<para>The list on the left side of the dialog shows all avaible window
 	  decorations. The xfwm 4 module offers the choice between 4
 	  different themes, but there are more than 60 supplementary themes
-	  avaible in xfwm4-themes extra package. You can preview all of them on
-	  the official <ulink url="http://www.xfce.org" type="html">Xfce
-	    Website</ulink>
+	  avaible in xfwm4-themes extra package.
 	</para>
       </listitem>
     </varlistentry>
@@ -543,7 +551,7 @@ maintainers, etc. Commented out by default.
 	  keythemerc file.
 	</para>
 	<para>By default, there's only one theme :
-	  $(datadir)/xfwm4/themes/default.keys/keythemerc
+	  $(datadir)/themes/Default/xfwm4/keythemerc
 	</para>
 	
     <para>In the default configuration the following keybindings are
