@@ -195,7 +195,8 @@ SUBDIRS = \
 	microdeck 							\
 	microdeck2 							\
 	microdeck3 							\
-	tgc
+	tgc								\
+	tgc-large
 
 subdir = themes
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4

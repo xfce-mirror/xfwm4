@@ -214,22 +214,29 @@ xfwm4_plugin_la_LIBADD = \
 	@LIBS@
 
 
-margins_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
+workspaces_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
-margins_plugin_LTLIBRARIES = margins_plugin.la
+workspaces_plugin_LTLIBRARIES = workspaces_plugin.la
 
-margins_plugin_la_LDFLAGS = \
+workspaces_plugin_la_LDFLAGS = \
 	-avoid-version							\
 	-export-dynamic							\
 	-module
 
 
-margins_plugin_la_SOURCES = \
-	margins_plugin.c						\
+workspaces_plugin_la_SOURCES = \
+	margins.c						\
+	margins.h						\
+	workspaces.c						\
+	workspaces.h						\
+	plugin.c						\
+	plugin.h						\
+	workspaces-icon.h						\
+	monitor-icon.h						\
 	margins-icon.h
 
 
-margins_plugin_la_CFLAGS = \
+workspaces_plugin_la_CFLAGS = \
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
@@ -240,37 +247,35 @@ margins_plugin_la_CFLAGS = \
 	-DDATADIR=\"$(pkgdatadir)\" 
 
 
-margins_plugin_la_LIBADD = \
+workspaces_plugin_la_LIBADD = \
 	@LIBS@
-
-
-EXTRA_DIST = \
-	xfwm4-icon.h							\
-	margins-icon.h							\
-	monitor-icon.h							\
-	xfwm4-icon.png							\
-	margins-icon.png						\
-	monitor-icon.png
 
 
 noinst_DATA = \
 	xfwm4-icon.h							\
 	margins-icon.h							\
 	monitor-icon.h							\
+	workspaces-icon.h 						\
 	xfwm4-icon.png							\
+	workspaces.png						\
 	margins-icon.png						\
 	monitor-icon.png
 
+
+EXTRA_DIST = $(noinst_DATA)
 subdir = mcs-plugin
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-LTLIBRARIES = $(margins_plugin_LTLIBRARIES) $(xfwm4_plugin_LTLIBRARIES)
+LTLIBRARIES = $(workspaces_plugin_LTLIBRARIES) \
+	$(xfwm4_plugin_LTLIBRARIES)
 
-margins_plugin_la_DEPENDENCIES =
-am_margins_plugin_la_OBJECTS = margins_plugin_la-margins_plugin.lo
-margins_plugin_la_OBJECTS = $(am_margins_plugin_la_OBJECTS)
+workspaces_plugin_la_DEPENDENCIES =
+am_workspaces_plugin_la_OBJECTS = workspaces_plugin_la-margins.lo \
+	workspaces_plugin_la-workspaces.lo \
+	workspaces_plugin_la-plugin.lo
+workspaces_plugin_la_OBJECTS = $(am_workspaces_plugin_la_OBJECTS)
 xfwm4_plugin_la_DEPENDENCIES =
 am_xfwm4_plugin_la_OBJECTS = xfwm4_plugin_la-xfwm4_plugin.lo
 xfwm4_plugin_la_OBJECTS = $(am_xfwm4_plugin_la_OBJECTS)
@@ -278,7 +283,9 @@ xfwm4_plugin_la_OBJECTS = $(am_xfwm4_plugin_la_OBJECTS)
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/margins_plugin_la-margins_plugin.Plo \
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/workspaces_plugin_la-margins.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/workspaces_plugin_la-plugin.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/workspaces_plugin_la-workspaces.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -287,11 +294,12 @@ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-DIST_SOURCES = $(margins_plugin_la_SOURCES) $(xfwm4_plugin_la_SOURCES)
+DIST_SOURCES = $(workspaces_plugin_la_SOURCES) \
+	$(xfwm4_plugin_la_SOURCES)
 DATA = $(noinst_DATA)
 
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(margins_plugin_la_SOURCES) $(xfwm4_plugin_la_SOURCES)
+SOURCES = $(workspaces_plugin_la_SOURCES) $(xfwm4_plugin_la_SOURCES)
 
 all: all-am
 
@@ -302,29 +310,29 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configu
 	  $(AUTOMAKE) --foreign  mcs-plugin/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
-margins_pluginLTLIBRARIES_INSTALL = $(INSTALL)
-install-margins_pluginLTLIBRARIES: $(margins_plugin_LTLIBRARIES)
+workspaces_pluginLTLIBRARIES_INSTALL = $(INSTALL)
+install-workspaces_pluginLTLIBRARIES: $(workspaces_plugin_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(margins_plugindir)
-	@list='$(margins_plugin_LTLIBRARIES)'; for p in $$list; do \
+	$(mkinstalldirs) $(DESTDIR)$(workspaces_plugindir)
+	@list='$(workspaces_plugin_LTLIBRARIES)'; for p in $$list; do \
 	  if test -f $$p; then \
 	    f="`echo $$p | sed -e 's|^.*/||'`"; \
-	    echo " $(LIBTOOL) --mode=install $(margins_pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(margins_plugindir)/$$f"; \
-	    $(LIBTOOL) --mode=install $(margins_pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(margins_plugindir)/$$f; \
+	    echo " $(LIBTOOL) --mode=install $(workspaces_pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(workspaces_plugindir)/$$f"; \
+	    $(LIBTOOL) --mode=install $(workspaces_pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(workspaces_plugindir)/$$f; \
 	  else :; fi; \
 	done
 
-uninstall-margins_pluginLTLIBRARIES:
+uninstall-workspaces_pluginLTLIBRARIES:
 	@$(NORMAL_UNINSTALL)
-	@list='$(margins_plugin_LTLIBRARIES)'; for p in $$list; do \
+	@list='$(workspaces_plugin_LTLIBRARIES)'; for p in $$list; do \
 	    p="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(margins_plugindir)/$$p"; \
-	  $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(margins_plugindir)/$$p; \
+	  echo " $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(workspaces_plugindir)/$$p"; \
+	  $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(workspaces_plugindir)/$$p; \
 	done
 
-clean-margins_pluginLTLIBRARIES:
-	-test -z "$(margins_plugin_LTLIBRARIES)" || rm -f $(margins_plugin_LTLIBRARIES)
-	@list='$(margins_plugin_LTLIBRARIES)'; for p in $$list; do \
+clean-workspaces_pluginLTLIBRARIES:
+	-test -z "$(workspaces_plugin_LTLIBRARIES)" || rm -f $(workspaces_plugin_LTLIBRARIES)
+	@list='$(workspaces_plugin_LTLIBRARIES)'; for p in $$list; do \
 	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
 	  test "$$dir" = "$$p" && dir=.; \
 	  echo "rm -f \"$${dir}/so_locations\""; \
@@ -358,8 +366,8 @@ clean-xfwm4_pluginLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-margins_plugin.la: $(margins_plugin_la_OBJECTS) $(margins_plugin_la_DEPENDENCIES) 
-	$(LINK) -rpath $(margins_plugindir) $(margins_plugin_la_LDFLAGS) $(margins_plugin_la_OBJECTS) $(margins_plugin_la_LIBADD) $(LIBS)
+workspaces_plugin.la: $(workspaces_plugin_la_OBJECTS) $(workspaces_plugin_la_DEPENDENCIES) 
+	$(LINK) -rpath $(workspaces_plugindir) $(workspaces_plugin_la_LDFLAGS) $(workspaces_plugin_la_OBJECTS) $(workspaces_plugin_la_LIBADD) $(LIBS)
 xfwm4_plugin.la: $(xfwm4_plugin_la_OBJECTS) $(xfwm4_plugin_la_DEPENDENCIES) 
 	$(LINK) -rpath $(xfwm4_plugindir) $(xfwm4_plugin_la_LDFLAGS) $(xfwm4_plugin_la_OBJECTS) $(xfwm4_plugin_la_LIBADD) $(LIBS)
 
@@ -369,7 +377,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/margins_plugin_la-margins_plugin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_plugin_la-margins.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_plugin_la-plugin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_plugin_la-workspaces.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo@am__quote@
 
 distclean-depend:
@@ -408,38 +418,104 @@ distclean-depend:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 
-margins_plugin_la-margins_plugin.o: margins_plugin.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -MT margins_plugin_la-margins_plugin.o -MD -MP -MF "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o margins_plugin_la-margins_plugin.o `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" "$(DEPDIR)/margins_plugin_la-margins_plugin.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo"; exit 1; \
+workspaces_plugin_la-margins.o: margins.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-margins.o -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-margins.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-margins.o `test -f 'margins.c' || echo '$(srcdir)/'`margins.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-margins.Tpo" "$(DEPDIR)/workspaces_plugin_la-margins.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-margins.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins_plugin.c' object='margins_plugin_la-margins_plugin.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/margins_plugin_la-margins_plugin.Po' tmpdepfile='$(DEPDIR)/margins_plugin_la-margins_plugin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins.c' object='workspaces_plugin_la-margins.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-margins.Po' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-margins.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -c -o margins_plugin_la-margins_plugin.o `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-margins.o `test -f 'margins.c' || echo '$(srcdir)/'`margins.c
 
-margins_plugin_la-margins_plugin.obj: margins_plugin.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -MT margins_plugin_la-margins_plugin.obj -MD -MP -MF "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o margins_plugin_la-margins_plugin.obj `if test -f 'margins_plugin.c'; then $(CYGPATH_W) 'margins_plugin.c'; else $(CYGPATH_W) '$(srcdir)/margins_plugin.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" "$(DEPDIR)/margins_plugin_la-margins_plugin.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo"; exit 1; \
+workspaces_plugin_la-margins.obj: margins.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-margins.obj -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-margins.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-margins.obj `if test -f 'margins.c'; then $(CYGPATH_W) 'margins.c'; else $(CYGPATH_W) '$(srcdir)/margins.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-margins.Tpo" "$(DEPDIR)/workspaces_plugin_la-margins.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-margins.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins_plugin.c' object='margins_plugin_la-margins_plugin.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/margins_plugin_la-margins_plugin.Po' tmpdepfile='$(DEPDIR)/margins_plugin_la-margins_plugin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins.c' object='workspaces_plugin_la-margins.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-margins.Po' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-margins.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -c -o margins_plugin_la-margins_plugin.obj `if test -f 'margins_plugin.c'; then $(CYGPATH_W) 'margins_plugin.c'; else $(CYGPATH_W) '$(srcdir)/margins_plugin.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-margins.obj `if test -f 'margins.c'; then $(CYGPATH_W) 'margins.c'; else $(CYGPATH_W) '$(srcdir)/margins.c'; fi`
 
-margins_plugin_la-margins_plugin.lo: margins_plugin.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -MT margins_plugin_la-margins_plugin.lo -MD -MP -MF "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o margins_plugin_la-margins_plugin.lo `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo" "$(DEPDIR)/margins_plugin_la-margins_plugin.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/margins_plugin_la-margins_plugin.Tpo"; exit 1; \
+workspaces_plugin_la-margins.lo: margins.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-margins.lo -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-margins.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-margins.lo `test -f 'margins.c' || echo '$(srcdir)/'`margins.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-margins.Tpo" "$(DEPDIR)/workspaces_plugin_la-margins.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-margins.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins_plugin.c' object='margins_plugin_la-margins_plugin.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/margins_plugin_la-margins_plugin.Plo' tmpdepfile='$(DEPDIR)/margins_plugin_la-margins_plugin.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='margins.c' object='workspaces_plugin_la-margins.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-margins.Plo' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-margins.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(margins_plugin_la_CFLAGS) $(CFLAGS) -c -o margins_plugin_la-margins_plugin.lo `test -f 'margins_plugin.c' || echo '$(srcdir)/'`margins_plugin.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-margins.lo `test -f 'margins.c' || echo '$(srcdir)/'`margins.c
+
+workspaces_plugin_la-workspaces.o: workspaces.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-workspaces.o -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-workspaces.o `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo" "$(DEPDIR)/workspaces_plugin_la-workspaces.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces.c' object='workspaces_plugin_la-workspaces.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-workspaces.Po' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-workspaces.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-workspaces.o `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c
+
+workspaces_plugin_la-workspaces.obj: workspaces.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-workspaces.obj -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-workspaces.obj `if test -f 'workspaces.c'; then $(CYGPATH_W) 'workspaces.c'; else $(CYGPATH_W) '$(srcdir)/workspaces.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo" "$(DEPDIR)/workspaces_plugin_la-workspaces.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces.c' object='workspaces_plugin_la-workspaces.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-workspaces.Po' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-workspaces.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-workspaces.obj `if test -f 'workspaces.c'; then $(CYGPATH_W) 'workspaces.c'; else $(CYGPATH_W) '$(srcdir)/workspaces.c'; fi`
+
+workspaces_plugin_la-workspaces.lo: workspaces.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-workspaces.lo -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-workspaces.lo `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo" "$(DEPDIR)/workspaces_plugin_la-workspaces.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-workspaces.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces.c' object='workspaces_plugin_la-workspaces.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-workspaces.Plo' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-workspaces.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-workspaces.lo `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c
+
+workspaces_plugin_la-plugin.o: plugin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-plugin.o -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-plugin.o `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo" "$(DEPDIR)/workspaces_plugin_la-plugin.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='plugin.c' object='workspaces_plugin_la-plugin.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-plugin.Po' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-plugin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-plugin.o `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
+
+workspaces_plugin_la-plugin.obj: plugin.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-plugin.obj -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-plugin.obj `if test -f 'plugin.c'; then $(CYGPATH_W) 'plugin.c'; else $(CYGPATH_W) '$(srcdir)/plugin.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo" "$(DEPDIR)/workspaces_plugin_la-plugin.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='plugin.c' object='workspaces_plugin_la-plugin.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-plugin.Po' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-plugin.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-plugin.obj `if test -f 'plugin.c'; then $(CYGPATH_W) 'plugin.c'; else $(CYGPATH_W) '$(srcdir)/plugin.c'; fi`
+
+workspaces_plugin_la-plugin.lo: plugin.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -MT workspaces_plugin_la-plugin.lo -MD -MP -MF "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o workspaces_plugin_la-plugin.lo `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo" "$(DEPDIR)/workspaces_plugin_la-plugin.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_plugin_la-plugin.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='plugin.c' object='workspaces_plugin_la-plugin.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_plugin_la-plugin.Plo' tmpdepfile='$(DEPDIR)/workspaces_plugin_la-plugin.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_plugin_la_CFLAGS) $(CFLAGS) -c -o workspaces_plugin_la-plugin.lo `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
 
 xfwm4_plugin_la-xfwm4_plugin.o: xfwm4_plugin.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -MT xfwm4_plugin_la-xfwm4_plugin.o -MD -MP -MF "$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Tpo" \
@@ -574,7 +650,7 @@ check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(margins_plugindir) $(DESTDIR)$(xfwm4_plugindir)
+	$(mkinstalldirs) $(DESTDIR)$(workspaces_plugindir) $(DESTDIR)$(xfwm4_plugindir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -601,7 +677,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool clean-margins_pluginLTLIBRARIES \
+clean-am: clean-generic clean-libtool clean-workspaces_pluginLTLIBRARIES \
 	clean-xfwm4_pluginLTLIBRARIES mostlyclean-am
 
 distclean: distclean-am
@@ -617,7 +693,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-margins_pluginLTLIBRARIES \
+install-data-am: install-workspaces_pluginLTLIBRARIES \
 	install-xfwm4_pluginLTLIBRARIES
 
 install-exec-am:
@@ -645,23 +721,23 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-margins_pluginLTLIBRARIES \
+uninstall-am: uninstall-info-am uninstall-workspaces_pluginLTLIBRARIES \
 	uninstall-xfwm4_pluginLTLIBRARIES
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libtool clean-margins_pluginLTLIBRARIES \
+	clean-libtool clean-workspaces_pluginLTLIBRARIES \
 	clean-xfwm4_pluginLTLIBRARIES ctags distclean distclean-compile \
 	distclean-depend distclean-generic distclean-libtool \
 	distclean-tags distdir dvi dvi-am info info-am install \
 	install-am install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am install-man \
-	install-margins_pluginLTLIBRARIES install-strip \
+	install-strip install-workspaces_pluginLTLIBRARIES \
 	install-xfwm4_pluginLTLIBRARIES installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
 	uninstall-am uninstall-info-am \
-	uninstall-margins_pluginLTLIBRARIES \
+	uninstall-workspaces_pluginLTLIBRARIES \
 	uninstall-xfwm4_pluginLTLIBRARIES
 
 
@@ -672,6 +748,10 @@ xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
 margins-icon.h: $(srcdir)/margins-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	margins_icon_data $(srcdir)/margins-icon.png > margins-icon.h
+
+workspaces-icon.h: $(srcdir)/workspaces.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	workspaces_icon_data $(srcdir)/workspaces.png > workspaces-icon.h
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list				\

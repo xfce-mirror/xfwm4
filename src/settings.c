@@ -43,8 +43,11 @@
 
 #define CHANNEL1 "xfwm4"
 #define CHANNEL2 "margins"
+#define CHANNEL3 "workspaces"
 #define TOINT(x) (x ? atoi(x) : 0)
 #define DEFAULT_KEYTHEME "default.keys"
+#define WS_SEP ';'
+#define WS_SEP_S ";"
 
 Params params;
 
@@ -238,6 +241,30 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                 break;
         }
     }
+    else if (!g_ascii_strcasecmp (CHANNEL3, channel_name))
+    {
+        switch (action)
+        {
+            case MCS_ACTION_NEW:
+                /* The following is to reduce initial startup time and reloads */
+                if (!mcs_initted)
+                {
+                    return;
+                }
+            case MCS_ACTION_CHANGED:
+                if (setting->type == MCS_TYPE_INT)
+                {
+                    if (!strcmp (name, "Xfwm/WorkspaceCount"))
+                    {
+                        workspaceSetCount(setting->data.v_int);
+                    }
+                }
+                break;
+            case MCS_ACTION_DELETED:
+            default:
+                break;
+        }
+    }
 }
 
 static GdkFilterReturn
@@ -280,10 +307,20 @@ static void
 loadRcData (Settings rc[])
 {
     const gchar *homedir = xfce_get_userdir ();
+    gchar *keytheme;
+    gchar *keythemevalue;
+
     if (!parseRc ("defaults", DATADIR, rc))
     {
         g_warning (_("%s: Missing defaults file"), progname);
         exit (1);
+    }
+    keythemevalue = getValue ("keytheme", rc);
+    if (keythemevalue)
+    {
+        keytheme = getThemeDir (keythemevalue);
+        parseRc ("keythemerc", keytheme, rc);
+        g_free (keytheme);
     }
     parseRc ("xfwm4rc", homedir, rc);
 }
@@ -436,6 +473,12 @@ loadMcsData (Settings rc[])
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("margin_top", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (client, "Xfwm/WorkspaceCount", CHANNEL3,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("workspace_count", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
     }
@@ -1025,8 +1068,8 @@ loadSettings (void)
         {"shortcut_8_exec", NULL, FALSE},
         {"shortcut_9_exec", NULL, FALSE},
         {"shortcut_10_exec", NULL, FALSE},
-        {"raise_window_key", NULL, FALSE},
-        {"lower_window_key", NULL, FALSE},
+        {"raise_window_key", NULL, TRUE},
+        {"lower_window_key", NULL, TRUE},
         {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };
@@ -1234,6 +1277,7 @@ initSettings (void)
     {
         mcs_client_add_channel (client, CHANNEL1);
         mcs_client_add_channel (client, CHANNEL2);
+        mcs_client_add_channel (client, CHANNEL3);
     }
     else
     {

@@ -340,6 +340,12 @@ handleKeyPress (XKeyEvent * ev)
                 clientToggleSticky (c, TRUE);
                 frameDraw (c, FALSE, FALSE);
                 break;
+            case KEY_RAISE_WINDOW:
+                clientRaise (c);
+                break;
+            case KEY_LOWER_WINDOW:
+                clientLower (c);
+                break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (workspace + 1, c);
                 break;
@@ -372,12 +378,6 @@ handleKeyPress (XKeyEvent * ev)
                 break;
             case KEY_MOVE_WORKSPACE_9:
                 workspaceSwitch (8, c);
-                break;
-            case KEY_RAISE_WINDOW:
-                clientRaise (c);
-                break;
-            case KEY_LOWER_WINDOW:
-                clientLower (c);
                 break;
             default:
                 break;
@@ -1051,6 +1051,22 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+        {
+            int cx, cy;
+
+            /* size request from fullscreen windows get fullscreen */
+            
+            cx = frameX (c) + (frameWidth (c) / 2);
+            cy = frameY (c) + (frameHeight (c) / 2);
+
+            wc.x = MyDisplayX (cx, cy);
+            wc.y = MyDisplayY (cx, cy);
+            wc.width = MyDisplayWidth (dpy, screen, cx, cy);
+            wc.height = MyDisplayHeight (dpy, screen, cx, cy);
+
+            ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
+        }
         /* Clean up buggy requests that set all flags */
         if ((ev->value_mask & CWX) && (wc.x == c->x))
         {

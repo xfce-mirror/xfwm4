@@ -1759,7 +1759,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=xfwm4
- VERSION=4.0.0
+ VERSION=4.1.0
 
 
 cat >>confdefs.h <<_ACEOF
@@ -23228,7 +23228,7 @@ echo "${ECHO_T}yes" >&6
   fi
 
 
-                                                                                                                                                                                                                  ac_config_files="$ac_config_files xfwm4.spec Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile defaults/Makefile mcs-plugin/Makefile po/Makefile.in src/Makefile themes/Makefile themes/bbs/Makefile themes/curve/Makefile themes/default/Makefile themes/default.keys/Makefile themes/exocet/Makefile themes/meenee/Makefile themes/microcurve/Makefile themes/microdeck/Makefile themes/microdeck2/Makefile themes/microdeck3/Makefile themes/tgc/Makefile"
+                                                                                                                                                                                                                            ac_config_files="$ac_config_files xfwm4.spec Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile defaults/Makefile mcs-plugin/Makefile po/Makefile.in src/Makefile themes/Makefile themes/bbs/Makefile themes/curve/Makefile themes/default/Makefile themes/default.keys/Makefile themes/exocet/Makefile themes/meenee/Makefile themes/microcurve/Makefile themes/microdeck/Makefile themes/microdeck2/Makefile themes/microdeck3/Makefile themes/tgc/Makefile themes/tgc-large/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -23820,6 +23820,7 @@ do
   "themes/microdeck2/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/microdeck2/Makefile" ;;
   "themes/microdeck3/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/microdeck3/Makefile" ;;
   "themes/tgc/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/tgc/Makefile" ;;
+  "themes/tgc-large/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/tgc-large/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;

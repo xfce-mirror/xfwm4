@@ -27,20 +27,27 @@ xfwm4_plugin_la_CFLAGS =						\
 xfwm4_plugin_la_LIBADD =						\
 	@LIBS@
 
-margins_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
+workspaces_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
-margins_plugin_LTLIBRARIES = margins_plugin.la
+workspaces_plugin_LTLIBRARIES = workspaces_plugin.la
 
-margins_plugin_la_LDFLAGS =						\
+workspaces_plugin_la_LDFLAGS =						\
 	-avoid-version							\
 	-export-dynamic							\
 	-module
 
-margins_plugin_la_SOURCES =						\
-	margins_plugin.c						\
+workspaces_plugin_la_SOURCES =						\
+	margins.c						\
+	margins.h						\
+	workspaces.c						\
+	workspaces.h						\
+	plugin.c						\
+	plugin.h						\
+	workspaces-icon.h						\
+	monitor-icon.h						\
 	margins-icon.h
 
-margins_plugin_la_CFLAGS =						\
+workspaces_plugin_la_CFLAGS =						\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
@@ -50,24 +57,20 @@ margins_plugin_la_CFLAGS =						\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\" 
 
-margins_plugin_la_LIBADD =						\
+workspaces_plugin_la_LIBADD =						\
 	@LIBS@
-
-EXTRA_DIST =								\
-	xfwm4-icon.h							\
-	margins-icon.h							\
-	monitor-icon.h							\
-	xfwm4-icon.png							\
-	margins-icon.png						\
-	monitor-icon.png
 
 noinst_DATA =								\
 	xfwm4-icon.h							\
 	margins-icon.h							\
 	monitor-icon.h							\
+	workspaces-icon.h 						\
 	xfwm4-icon.png							\
+	workspaces.png						\
 	margins-icon.png						\
 	monitor-icon.png
+
+EXTRA_DIST = $(noinst_DATA)
 
 xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
@@ -76,6 +79,10 @@ xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
 margins-icon.h: $(srcdir)/margins-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	margins_icon_data $(srcdir)/margins-icon.png > margins-icon.h
+
+workspaces-icon.h: $(srcdir)/workspaces.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	workspaces_icon_data $(srcdir)/workspaces.png > workspaces-icon.h
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
