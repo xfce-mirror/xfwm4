@@ -116,29 +116,28 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 }
 
 static void
-clientAutoMaximize (Client * c, int monitor)
+clientAutoMaximize (Client * c)
 {
     ScreenInfo *screen_info = NULL;
-    int maximize = 0;
     GdkRectangle rect;
     gint monitor_nbr;
+    int cx, cy;
+
+    cx = frameX (c) + (frameWidth (c) / 2);
+    cy = frameY (c) + (frameHeight (c) / 2);
 
     screen_info = c->screen_info;
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor, &rect);
+    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > rect.width))
     {
-        maximize |= WIN_STATE_MAXIMIZED_HORIZ;
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > rect.height))
     {
-        maximize |= WIN_STATE_MAXIMIZED_VERT;
-    }
-
-    if (maximize)
-    {
-        clientToggleMaximized (c, maximize);
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
     }
 }
 
@@ -322,8 +321,6 @@ clientConstrainPos (Client * c, gboolean show_full)
                     }
                 }
             }
-
-            clientAutoMaximize (c, monitor_nbr);
         }
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
@@ -518,7 +515,9 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
+            clientAutoMaximize (c);
         }
+
         return;
     }
 
@@ -530,7 +529,9 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
+            clientAutoMaximize (c);
         }
+
         return;
     }
 
@@ -591,7 +592,8 @@ clientInitPosition (Client * c)
                 TRACE ("overlaps is 0 so it's the best we can get");
                 c->x = test_x;
                 c->y = test_y;
-                clientAutoMaximize (c, monitor_nbr);
+                clientAutoMaximize (c);
+
                 return;
             }
             else if ((count_overlaps < best_overlaps) || (first))
@@ -612,6 +614,6 @@ clientInitPosition (Client * c)
     c->x = best_x;
     c->y = best_y;
 
-    clientAutoMaximize (c, monitor_nbr);
+    clientAutoMaximize (c);
     return;
 }
