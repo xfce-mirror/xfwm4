@@ -84,6 +84,13 @@
      !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
      !(c->legacy_fullscreen))
 
+#define WINDOW_TYPE_DONT_PLACE \
+    WINDOW_DESKTOP | \
+    WINDOW_DOCK | \
+    WINDOW_SPLASHSCREEN | \
+    WINDOW_DIALOG | \
+    WINDOW_MODAL_DIALOG
+
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
@@ -2291,7 +2298,8 @@ clientInitPosition (Client * c)
 
     clientGravitate (c, APPLY);
 
-    if (c->size->flags & (PPosition | USPosition))
+    if ((c->size->flags & (PPosition | USPosition)) ||
+        (c->type & (WINDOW_TYPE_DONT_PLACE)))
     {
         if (CONSTRAINED_WINDOW (c))
         {
@@ -5014,8 +5022,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     else if (xevent->type == MotionNotify)
     {
         while (XCheckMaskEvent (dpy,
-                ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
-                xevent))
+                ButtonMotionMask | PointerMotionMask, xevent))
             passdata->last_timestamp 
                 = stashEventTime (passdata->last_timestamp, xevent);
 
@@ -5383,8 +5390,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     else if (xevent->type == MotionNotify)
     {
         while (XCheckMaskEvent (dpy,
-                ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
-                xevent))
+                ButtonMotionMask | PointerMotionMask, xevent))
             passdata->last_timestamp 
                 = stashEventTime (passdata->last_timestamp, xevent);
 
