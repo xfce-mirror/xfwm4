@@ -28,11 +28,7 @@ xfwm4_SOURCES = \
 	parserc.h \
 	pixmap.h \
 	settings.h \
-	workspaces.h \
-	xsettings-common.c \
-	xsettings-common.h \
-	xsettings-client.c \
-	xsettings-client.h
+	workspaces.h
 
 xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ \
 -DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \

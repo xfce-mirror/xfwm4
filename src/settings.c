@@ -15,7 +15,6 @@
 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002 Olivier Fourdan
-        xsettings sample implementation,  by Owen Taylor (c) 2001 Red Hat, Inc.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -33,7 +32,6 @@
 #include "gtk_style.h"
 #include "gtktoxevent.h"
 #include "workspaces.h"
-#include "xsettings-client.h"
 #include "debug.h"
 
 MyKey keys[KEY_COUNT];
@@ -60,13 +58,6 @@ MyPixmap sides[3][2];
 MyPixmap corners[4][2];
 MyPixmap buttons[BUTTON_COUNT][3];
 MyPixmap title[5][2];
-XSettingsClient *client;
-
-/* Forward decls */
-static void notify_cb (const char *, XSettingsAction, XSettingsSetting *, void *);
-static GdkFilterReturn  client_event_filter (GdkXEvent *, GdkEvent *, gpointer);
-static void watch_cb (Window, Bool, long, void *);
-
 
 void loadSettings()
 {
@@ -513,58 +504,4 @@ void initSettings(void)
     title_colors[ACTIVE].allocated = FALSE;
     title_colors[INACTIVE].gc = NULL;
     title_colors[INACTIVE].allocated = FALSE;
-    /* client = xsettings_client_new (gdk_display, DefaultScreen (gdk_display), notify_cb, watch_cb, NULL); */
 }
-
-static void notify_cb (const char *name, XSettingsAction action, XSettingsSetting *setting, void *data)
-{
-    int row;
-    char *text[4];
-
-    printf("xsettings notification\n");
-    switch (action)
-    {
-	case XSETTINGS_ACTION_NEW:
-          break;
-	case XSETTINGS_ACTION_CHANGED:
-          break;
-	case XSETTINGS_ACTION_DELETED:
-          break;
-    }
-}
-
-static GdkFilterReturn  client_event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
-{
-    if (xsettings_client_process_event (client, (XEvent *)xevent))
-    {
-	return GDK_FILTER_REMOVE;
-    }
-    else
-    {
-	return GDK_FILTER_CONTINUE;
-    }
-}
-
-static void watch_cb (Window window, Bool is_start, long mask, void *cb_data)
-{
-    GdkWindow *gdkwin;
-
-    if (is_start)
-    {
-	printf("Starting watch on %#lx with mask %#lx\n", window, mask);
-    }
-    else
-    {
-	printf("Stopping watch on %#lx \n", window);
-    }
-    gdkwin = gdk_window_lookup (window);
-    if (is_start)
-    {
-	gdk_window_add_filter (gdkwin, client_event_filter, NULL);
-    }
-    else
-    {
-	gdk_window_remove_filter (gdkwin, client_event_filter, NULL);
-    }
-}
-
