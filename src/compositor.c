@@ -460,7 +460,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     
     g_return_val_if_fail (screen_info != NULL, None);
     TRACE ("entering shadow_picture");    
-   
+
     render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
                                             PictStandardA8);
     g_return_val_if_fail (render_format != NULL, None);
@@ -633,7 +633,7 @@ root_tile (ScreenInfo *screen_info)
     pa.repeat = True;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
     g_return_val_if_fail (format != NULL, None);
-       
+    
     picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
     if ((picture != None) && (fill))
     {
@@ -677,7 +677,7 @@ create_root_buffer (ScreenInfo *screen_info)
     g_return_val_if_fail (rootPixmap != None, None);
     
     pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
-                                 rootPixmap, format, 0, 0);
+                                rootPixmap, format, 0, 0);
     XFreePixmap (myScreenGetXDisplay (screen_info), rootPixmap);
 
     return pict;
@@ -707,14 +707,14 @@ static XserverRegion
 win_extents (CWindow *cw)
 {
     ScreenInfo *screen_info;
-    Client *c = cw->c;
+    Client *c;
     XRectangle r;
 
     g_return_val_if_fail (cw != NULL, None);
-
     TRACE ("entering win_extents: 0x%lx", cw->id);    
 
     screen_info = cw->screen_info;
+    c = cw->c;
     r.x = cw->attr.x;
     r.y = cw->attr.y;
     r.width = cw->attr.width + cw->attr.border_width * 2;
@@ -1679,12 +1679,12 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     if (damage)
     {
         XserverRegion extents = win_extents (cw);
-	if (extents)
-	{
+        if (extents)
+        {
             XFixesUnionRegion (display_info->dpy, damage, damage, extents);
             XFixesDestroyRegion (display_info->dpy, extents);
             add_damage (cw->screen_info, damage);
-	}
+        }
     }
     cw->screen_info->clipChanged = TRUE;
     compositorRepairScreen (cw->screen_info);
