@@ -546,10 +546,14 @@ static void clientWindowType (Client *c)
 	{
             DBG("atom net_wm_window_type_menu detected\n");
             c->type = WINDOW_MENU;
-	    layer = WIN_LAYER_ONTOP;
+	    layer = WIN_LAYER_NORMAL;
+	    /* The policy here is unclear :
+	      http://mail.gnome.org/archives/wm-spec-list/2002-May/msg00001.html
+	      As it seems, GNOME and KDE don't treat menu the same way...
 	    c->win_state |= WIN_STATE_STICKY;
 	    c->has_border = False;
 	    c->sticky = True;
+	     */
 	    c->skip_pager = True;
 	    c->skip_taskbar = True;
 	}
@@ -1207,8 +1211,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
     wc->y = frameTop(c);
     wc->width = c->width;
     wc->height = c->height;
-    mask = mask & ~CWStackMode;
-    mask = mask & ~CWSibling;
+    mask &= ~(CWStackMode | CWSibling);
     XConfigureWindow(dpy, c->window, mask, wc);
 
     if(mask & (CWWidth | CWHeight))
