@@ -35,6 +35,7 @@
 #include "mywindow.h"
 #include "focus.h"
 #include "frame.h"
+#include "compositor.h"
 
 int
 frameLeft (Client * c)

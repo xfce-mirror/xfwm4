@@ -1659,8 +1659,8 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         return;
     }
     
-    damage = XFixesCreateRegion (display_info->dpy, 0, 0);
-    if (cw->extents != None)
+    damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+    if ((damage != None) && (cw->extents != None))
     {
         XFixesCopyRegion (display_info->dpy, damage, cw->extents);
     }
@@ -1905,8 +1905,8 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
         TRACE ("compositor disabled");
         return;
     }
-    
-    else if (ev->type == ConfigureNotify)
+
+    if (ev->type == ConfigureNotify)
     {
         compositorHandleConfigureNotify (display_info, (XConfigureEvent *) ev);
     }
@@ -2090,6 +2090,7 @@ void
 compositorDamageWindow (DisplayInfo *display_info, Window id)
 {
 #ifdef HAVE_COMPOSITOR
+    XserverRegion damage = None;
     CWindow *cw;
     
     g_return_if_fail (display_info != NULL);
@@ -2105,8 +2106,19 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
+        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+
+        if (damage)
+        {
+            if (cw->extents != None)
+            {
+                XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+                add_damage (cw->screen_info, damage);
+        	cw->screen_info->clipChanged = TRUE;
+            }
+        }
+
         repair_win (cw);
-        cw->screen_info->clipChanged = TRUE;
         repair_screen (cw->screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
