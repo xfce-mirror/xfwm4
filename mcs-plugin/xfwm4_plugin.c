@@ -1895,17 +1895,10 @@ create_channel (McsPlugin * mcs_plugin)
 static gboolean
 write_options (McsPlugin * mcs_plugin)
 {
-#if 0
-    const gchar *home = g_get_home_dir ();
-#endif
     gchar *rcfile;
     gboolean result;
 
-#if 0
-    rcfile = g_strconcat (home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
-#else
     rcfile = xfce_get_userfile (RCDIR, RCFILE, NULL);
-#endif
     result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL, rcfile);
     g_free (rcfile);
 
