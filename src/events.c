@@ -413,7 +413,7 @@ handleKeyPress (XKeyEvent * ev)
         case KEY_WORKSPACE_7:
         case KEY_WORKSPACE_8:
         case KEY_WORKSPACE_9:
-            workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, NULL);
+            workspaceSwitch (key - KEY_WORKSPACE_1, NULL);
             break;
         case KEY_SHORTCUT_1:
         case KEY_SHORTCUT_2:
