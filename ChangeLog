@@ -1,3 +1,157 @@
+2004-09-27 00:07  olivier
+
+	* COMPOSITOR, Makefile.am, Makefile.in, configure, configure.ac,
+	  ltmain.sh, xfwm4.spec.in, src/compositor.c: Various tweaking
+
+2004-09-26 23:22  olivier
+
+	* src/: client.c, compositor.c, compositor.h: Fix a crash when
+	  window XRender visual can't be determined
+
+2004-09-26 20:01  olivier
+
+	* src/: compositor.c, compositor.h, display.h, screen.h: Port
+	  latest changes from xcompmgr, Fix bug when unmapping override
+	  redirects
+
+2004-09-26 14:27  olivier
+
+	* src/: display.c, events.c, focus.c: Reduce drop threshold for
+	  mouse wheel events and fix a couple of compilation warnings.
+
+2004-09-26 14:12  olivier
+
+	* defaults/defaults, src/settings.c, src/settings.h,
+	  src/workspaces.c: Add wrap_cyle option enabled by default for
+	  Brian and Francois.
+
+2004-09-26 12:30  jasper
+
+	* configure, ltmain.sh, mcs-plugin/xfwm4_shortcuteditor.c: autogen
+	  for jean-francois
+
+2004-09-26 12:18  pollux
+
+	* configure.ac: bump version in libxfce4util to 4.1.17 and make
+	  xfwm4 depends on it
+
+2004-09-26 11:56  jasper
+
+	* doc/: C/Makefile.am, C/Makefile.in, C/xfwm4.html, fr/xfwm4.html,
+	  it/xfwm4.html: Fix html target for docs. Not build by default.
+
+2004-09-26 11:03  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.h: fn shouldn't be declared
+	  "extern"
+
+2004-09-26 11:02  olivier
+
+	* mcs-plugin/xfwm4_plugin.c: Fix [Bug 336]  New: Moving hidden
+	  buttons in settings changes button layout of all windows
+
+2004-09-25 23:49  olivier
+
+	* Makefile.in, config.h.in, configure, configure.ac, ltmain.sh,
+	  defaults/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
+	  doc/it/images/Makefile.in, icons/Makefile.in,
+	  icons/48x48/Makefile.in, icons/scalable/Makefile.in,
+	  mcs-plugin/Makefile.in, po/xfwm4.pot, src/Makefile.am,
+	  src/Makefile.in, src/client.c, src/compositor.c,
+	  src/compositor.h, src/display.c, src/display.h, src/events.c,
+	  src/hints.c, src/hints.h, src/screen.c, src/screen.h,
+	  themes/Makefile.in, themes/default/Makefile.in,
+	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
+	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
+	  themes/waza/Makefile.in: Add compositor.
+
+2004-09-25 17:56  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: deactivate the del entry in
+	  the popup menu when a not user_writable entry is selected
+
+2004-09-25 17:32  pollux
+
+	* mcs-plugin/: xfwm4_plugin.c, xfwm4_plugin.h,
+	  xfwm4_shortcuteditor.c, xfwm4_shortcuteditor.h: fix shortcut
+	  editor, Default is no more editable, user can create his own
+	  themes
+
+2004-09-24 18:34  benny
+
+	* mcs-plugin/xfwm4_plugin.c: Simplify writable test.
+
+2004-09-24 16:03  pollux
+
+	* mcs-plugin/: xfwm4_plugin.c, xfwm4_plugin.h,
+	  xfwm4_shortcuteditor.c, xfwm4_shortcuteditor.h: commit things
+	  before going back home for the w-e
+
+2004-09-24 08:49  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: temporaly fix the
+	  shortcuteditor
+
+2004-09-24 08:19  kelnos
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix first-time edit if $prefix
+	  != /usr
+
+2004-09-23 23:37  pollux
+
+	* configure, configure.ac, ltmain.sh, mcs-plugin/xfwm4_plugin.c,
+	  mcs-plugin/xfwm4_shortcuteditor.c,
+	  mcs-plugin/xfwm4_shortcuteditor.h, po/gu.gmo, po/gu.po,
+	  po/nl.gmo: add Gujarati translations (GU) from Ankit Patel
+	  <ankit@redhat.com>
+
+2004-09-23 19:15  olivier
+
+	* src/events.c, src/stacking.c, themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/left-active.xpm, themes/default/left-inactive.xpm,
+	  themes/default/right-active.xpm,
+	  themes/default/right-inactive.xpm,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Fix bugs from the sidewalk
+	  stacking
+
+2004-09-23 15:43  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: minor fixes
+
+2004-09-23 11:09  jasper
+
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop, po/nl.po: Better
+	  translation
+
+2004-09-23 10:22  jasper
+
+	* mcs-plugin/: xfce-wm-settings.desktop,
+	  xfce-workspaces-settings.desktop: Add nl translations
+
+2004-09-23 08:29  olivier
+
+	* ChangeLog, po/xfwm4.pot: Update ChangeLog
+
 2004-09-23 08:26  olivier
 
 	* po/xfwm4.pot, src/events.c, src/misc.c, src/screen.c,
