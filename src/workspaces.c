@@ -351,7 +351,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, 
                      display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
                      PropModeReplace, (unsigned char *) data, 1);
-    workspaceUpdateArea (screen_info);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
     XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);

@@ -2017,6 +2017,11 @@ clientShowSingle (Client * c, gboolean change_state)
     display_info = screen_info->display_info;
 
     myDisplayGrabServer (display_info);
+    if (change_state)
+    {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
+        setWMState (display_info, c->window, NormalState);
+    }
     if ((c->win_workspace == screen_info->current_ws) || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
@@ -2026,12 +2031,6 @@ clientShowSingle (Client * c, gboolean change_state)
         XMapWindow (display_info->dpy, c->window);
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
-    }
-    if (change_state)
-    {
-        FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
-        setWMState (display_info, c->window, NormalState);
-        workspaceUpdateArea (screen_info);
     }
     myDisplayUngrabServer (display_info);
     clientSetNetState (c);
@@ -2062,6 +2061,9 @@ clientShow (Client * c, gboolean change_state)
         clientShowSingle (c2, change_state);
     }
     g_list_free (list_of_windows);
+
+    /* Update working area as windows have been shown */
+    workspaceUpdateArea (c->screen_info);
 }
 
 static void
@@ -2078,8 +2080,6 @@ clientHideSingle (Client * c, gboolean change_state)
     myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c, c);
-    compositorUnmapWindow (display_info, c->frame);
-    XUnmapWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
@@ -2090,10 +2090,11 @@ clientHideSingle (Client * c, gboolean change_state)
     if (change_state)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
-        XUnmapWindow (display_info->dpy, c->window);
         setWMState (display_info, c->window, IconicState);
-        workspaceUpdateArea (c->screen_info);
     }
+    compositorUnmapWindow (display_info, c->frame);
+    XUnmapWindow (display_info->dpy, c->frame);
+    XUnmapWindow (display_info->dpy, c->window);
     myDisplayUngrabServer (display_info);
     clientSetNetState (c);
 }
@@ -2135,6 +2136,9 @@ clientHide (Client * c, int ws, gboolean change_state)
         clientHideSingle (c2, change_state);
     }
     g_list_free (list_of_windows);
+
+    /* Update working area as windows have been hidden */
+    workspaceUpdateArea (c->screen_info);
 }
 
 void

@@ -132,16 +132,16 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
         {
-            if (*ap == (Atom) display_info->atoms[WM_TAKE_FOCUS])
+            if (*ap == display_info->atoms[WM_TAKE_FOCUS])
             {
                 result |= WM_PROTOCOLS_TAKE_FOCUS;
             }
-            if (*ap == (Atom) display_info->atoms[WM_DELETE_WINDOW])
+            if (*ap == display_info->atoms[WM_DELETE_WINDOW])
             {
                 result |= WM_PROTOCOLS_DELETE_WINDOW;
             }
             /* KDE extension */
-            if (*ap == (Atom) display_info->atoms[NET_WM_CONTEXT_HELP])
+            if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
             {
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
             }
@@ -155,16 +155,16 @@ getWMProtocols (DisplayInfo *display_info, Window w)
         {
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
-                if (*ap == (Atom) display_info->atoms[WM_TAKE_FOCUS])
+                if (*ap == display_info->atoms[WM_TAKE_FOCUS])
                 {
                     result |= WM_PROTOCOLS_TAKE_FOCUS;
                 }
-                if (*ap == (Atom) display_info->atoms[WM_DELETE_WINDOW])
+                if (*ap == display_info->atoms[WM_DELETE_WINDOW])
                 {
                     result |= WM_PROTOCOLS_DELETE_WINDOW;
                 }
                 /* KDE extension */
-                if (*ap == (Atom) display_info->atoms[NET_WM_CONTEXT_HELP])
+                if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
                 {
                     result |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
@@ -976,25 +976,15 @@ getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, 
 gboolean
 getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
 {
-    Atom actual;
-    gint format;
-    gulong n, left;
-    guchar *data;
-    gint result;
-    
-    TRACE ("entering getOpacity");    
+    long val = 0;
     
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (opacity != NULL, FALSE);
+    TRACE ("entering getOpacity");    
 
-    result = XGetWindowProperty(display_info->dpy, window, display_info->atoms[NET_WM_WINDOW_OPACITY], 
-                    0L, 1L, False, XA_CARDINAL, &actual, &format, 
-                    &n, &left, &data);
-
-    if ((result == Success) && (data != None))
+    if (getHint (display_info, window, NET_WM_WINDOW_OPACITY, &val))
     {
-        memcpy (opacity, data, sizeof (guint));
-        XFree( (void *) data);
+        *opacity = (guint) val;
         return TRUE;
     }
 

@@ -598,7 +598,7 @@ root_tile (ScreenInfo *screen_info)
     Display *dpy;
     Picture picture;
     Pixmap pixmap;
-    Bool fill;
+    gboolean fill = FALSE;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
     gint p;
@@ -633,7 +633,7 @@ root_tile (ScreenInfo *screen_info)
         {
             memcpy (&pixmap, prop, 4);
             XFree (prop);
-            fill = False;
+            fill = FALSE;
             break;
         }
     }
@@ -643,7 +643,7 @@ root_tile (ScreenInfo *screen_info)
         pixmap = XCreatePixmap (dpy, screen_info->xroot, 1, 1,
                                 DefaultDepth (dpy, screen_info->screen));
         g_return_val_if_fail (pixmap != None, None);
-        fill = True;
+        fill = TRUE;
     }
     pa.repeat = True;
     format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
