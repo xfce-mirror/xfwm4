@@ -1160,6 +1160,143 @@ static inline void clientComputeStackList(Client * c, Client * sibling, XWindowC
     }
 }
 
+/* Compute rectangle overlap area */
+static unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
+{
+    /* Compute overlapping box */
+    if(tx0 > x0)
+    {
+        x0 = tx0;
+    }
+    if(ty0 > y0)
+    {
+        y0 = ty0;
+    }
+    if(tx1 < x1)
+    {
+        x1 = tx1;
+    }
+    if(ty1 < y1)
+    {
+        y1 = ty1;
+    }
+    if(x1 <= x0 || y1 <= y0)
+    {
+        return 0;
+    }
+    return (x1 - x0) * (y1 - y0);
+}
+
+static void clientInitPosition(Client * c)
+{
+    int test_x = 0, test_y = 0;
+    Client *c2;
+    int xmax, ymax, best_x, best_y, i;
+    unsigned long best_overlaps = 0;
+    gboolean first = TRUE;
+
+    g_return_if_fail(c != NULL);
+    DBG("entering clientInitPosition\n");
+
+    clientGravitate(c, APPLY);
+
+    if(c->size->flags & (PPosition | USPosition))
+    {
+        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        {
+            if((frameX(c) + frameWidth(c)) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+            {
+                c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - frameWidth(c) + frameLeft(c);
+            }
+            if(frameX(c) < (int)margins[MARGIN_LEFT])
+            {
+                c->x = (int)margins[MARGIN_LEFT] + frameLeft(c);
+            }
+            if((frameY(c) + frameHeight(c)) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+            {
+                c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c);
+            }
+            if(frameY(c) < (int)margins[MARGIN_TOP])
+            {
+                c->y = (int)margins[MARGIN_TOP] + frameTop(c);
+            }
+        }
+        return;
+    }
+
+    xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - (int)margins[MARGIN_RIGHT];
+    ymax = XDisplayHeight(dpy, screen) - frameHeight(c) - (int)margins[MARGIN_BOTTOM];
+    best_x = frameLeft(c) + (int)margins[MARGIN_LEFT];
+    best_y = frameTop(c) + (int)margins[MARGIN_TOP];
+
+    for(test_y = frameTop(c) + (int)margins[MARGIN_TOP]; test_y < ymax; test_y += 8)
+    {
+        for(test_x = frameLeft(c) + (int)margins[MARGIN_LEFT]; test_x < xmax; test_x += 8)
+        {
+            unsigned long count_overlaps = 0;
+            DBG("analyzing %i clients\n", client_count);
+            for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
+            {
+                if((c2 != c) && (c->win_workspace == c2->win_workspace) && (c2->visible))
+                {
+                    c->x = test_x;
+                    c->y = test_y;
+                    count_overlaps += overlap(frameX(c), frameY(c), frameX(c) + frameWidth(c), frameY(c) + frameHeight(c), frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
+                }
+            }
+            DBG("overlaps so far is %u\n", count_overlaps);
+            if(count_overlaps == 0)
+            {
+                DBG("overlaps is 0 so it's the best we can get\n");
+                return;
+            }
+            else if((count_overlaps < best_overlaps) || (first))
+            {
+                DBG("overlaps %u is better than the best we have %u\n", count_overlaps, best_overlaps);
+                best_x = test_x;
+                best_y = test_y;
+                best_overlaps = count_overlaps;
+            }
+            if(first)
+            {
+                first = FALSE;
+            }
+        }
+    }
+    c->x = best_x;
+    c->y = best_y;
+    return;
+}
+
+static inline void clientConstraintPos(Client * c)
+{
+    g_return_if_fail(c != NULL);
+    DBG("entering clientConstraintPos\n");
+    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
+    if(!(c->has_border) || (c->fullscreen))
+    {
+        DBG("ignoring constraint for client \"%s\" (%#lx)\n", c->name, c->window);
+        return;
+    }
+
+    if((c->x + c->width) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT])
+    {
+        c->x = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT] - c->width;
+    }
+    else if((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+    {
+        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
+    }
+    if(frameY(c) < (int)margins[MARGIN_TOP])
+    {
+        c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+    }
+    else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+    {
+        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
+    }
+}
+
 static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 {
     gboolean transients = FALSE;
@@ -1174,21 +1311,25 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
     DBG("entering _clientConfigure (recursive)\n");
     DBG("configuring (recursive) client \"%s\" (%#lx), layer %i\n", c->name, c->window, c->win_layer);
 
-    if(mask & CWX)
+    if (mask & (CWX | CWY | CWWidth | CWHeight))
     {
-        c->x = wc->x;
-    }
-    if(mask & CWY)
-    {
-        c->y = wc->y;
-    }
-    if(mask & CWWidth)
-    {
-        clientSetWidth(c, wc->width);
-    }
-    if(mask & CWHeight)
-    {
-        clientSetHeight(c, wc->height);
+        if(mask & CWX)
+        {
+            c->x = wc->x;
+        }
+        if(mask & CWY)
+        {
+            c->y = wc->y;
+        }
+        if(mask & CWWidth)
+        {
+            clientSetWidth(c, wc->width);
+        }
+        if(mask & CWHeight)
+        {
+            clientSetHeight(c, wc->height);
+        }
+        clientConstraintPos (c);
     }
     if(mask & CWBorderWidth)
     {
@@ -1346,137 +1487,6 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
     {
         clientSetNetClientList(net_client_list_stacking, windows_stack);
     }
-}
-
-static inline void clientConstraintPos(Client * c)
-{
-    g_return_if_fail(c != NULL);
-    DBG("entering clientConstraintPos\n");
-    DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if((c->x + c->width) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT])
-    {
-        c->x = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT] - c->width;
-    }
-    else if((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
-    {
-        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
-    }
-    if((c->y) < (int)margins[MARGIN_TOP])
-    {
-        c->y = (int)margins[MARGIN_TOP];
-    }
-    else if((c->y + CLIENT_MIN_VISIBLE) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
-    {
-        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
-    }
-}
-
-/* Compute rectangle overlap area */
-static unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
-{
-    /* Compute overlapping box */
-    if(tx0 > x0)
-    {
-        x0 = tx0;
-    }
-    if(ty0 > y0)
-    {
-        y0 = ty0;
-    }
-    if(tx1 < x1)
-    {
-        x1 = tx1;
-    }
-    if(ty1 < y1)
-    {
-        y1 = ty1;
-    }
-    if(x1 <= x0 || y1 <= y0)
-    {
-        return 0;
-    }
-    return (x1 - x0) * (y1 - y0);
-}
-
-static void clientInitPosition(Client * c)
-{
-    int test_x = 0, test_y = 0;
-    Client *c2;
-    int xmax, ymax, best_x, best_y, i;
-    unsigned long best_overlaps = 0;
-    gboolean first = TRUE;
-
-    g_return_if_fail(c != NULL);
-    DBG("entering clientInitPosition\n");
-
-    clientGravitate(c, APPLY);
-
-    if(c->size->flags & (PPosition | USPosition))
-    {
-        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
-        {
-            if((frameX(c) + frameWidth(c)) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
-            {
-                c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - frameWidth(c) + frameLeft(c);
-            }
-            if(frameX(c) < (int)margins[MARGIN_LEFT])
-            {
-                c->x = (int)margins[MARGIN_LEFT] + frameLeft(c);
-            }
-            if((frameY(c) + frameHeight(c)) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
-            {
-                c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c);
-            }
-            if(frameY(c) < (int)margins[MARGIN_TOP])
-            {
-                c->y = (int)margins[MARGIN_TOP] + frameTop(c);
-            }
-        }
-        return;
-    }
-
-    xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - (int)margins[MARGIN_RIGHT];
-    ymax = XDisplayHeight(dpy, screen) - frameHeight(c) - (int)margins[MARGIN_BOTTOM];
-    best_x = frameLeft(c) + (int)margins[MARGIN_LEFT];
-    best_y = frameTop(c) + (int)margins[MARGIN_TOP];
-
-    for(test_y = frameTop(c) + (int)margins[MARGIN_TOP]; test_y < ymax; test_y += 8)
-    {
-        for(test_x = frameLeft(c) + (int)margins[MARGIN_LEFT]; test_x < xmax; test_x += 8)
-        {
-            unsigned long count_overlaps = 0;
-            DBG("analyzing %i clients\n", client_count);
-            for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
-            {
-                if((c2 != c) && (c->win_workspace == c2->win_workspace) && (c2->visible))
-                {
-                    c->x = test_x;
-                    c->y = test_y;
-                    count_overlaps += overlap(frameX(c), frameY(c), frameX(c) + frameWidth(c), frameY(c) + frameHeight(c), frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
-                }
-            }
-            DBG("overlaps so far is %u\n", count_overlaps);
-            if(count_overlaps == 0)
-            {
-                DBG("overlaps is 0 so it's the best we can get\n");
-                return;
-            }
-            else if((count_overlaps < best_overlaps) || (first))
-            {
-                DBG("overlaps %u is better than the best we have %u\n", count_overlaps, best_overlaps);
-                best_x = test_x;
-                best_y = test_y;
-                best_overlaps = count_overlaps;
-            }
-            if(first)
-            {
-                first = FALSE;
-            }
-        }
-    }
-    c->x = best_x;
-    c->y = best_y;
-    return;
 }
 
 void clientFrame(Window w)
@@ -2009,14 +2019,7 @@ void clientSetLayer(Client * c, int l)
 
     setGnomeHint(dpy, c->window, win_layer, l);
     c->win_layer = l;
-    if(l > old_layer)
-    {
-        clientRaise(c);
-    }
-    else
-    {
-        clientLower(c);
-    }
+    clientRaise(c);
 }
 
 void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
@@ -2219,7 +2222,7 @@ void clientToggleFullscreen(Client * c)
         wc.y = 0;
         wc.width = XDisplayWidth(dpy, screen);
         wc.height = XDisplayHeight(dpy, screen);
-	layer = WIN_LAYER_ABOVE_DOCK;
+        layer = WIN_LAYER_ABOVE_DOCK;
     }
     else
     {
@@ -2227,7 +2230,7 @@ void clientToggleFullscreen(Client * c)
         wc.y = c->fullscreen_old_y;
         wc.width = c->fullscreen_old_width;
         wc.height = c->fullscreen_old_height;
-	layer = c->fullscreen_old_layer;
+        layer = c->fullscreen_old_layer;
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
@@ -2491,13 +2494,13 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                     c->y = (XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c));
                 }
             }
-	    else
-	    {
-        	if(frameY(c) < (int)margins[MARGIN_TOP])
-        	{
+            else
+            {
+                if(frameY(c) < (int)margins[MARGIN_TOP])
+                {
                     c->y = frameTop(c) + (int)margins[MARGIN_TOP];
-        	}
-	    }
+                }
+            }
         }
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
