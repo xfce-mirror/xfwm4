@@ -144,7 +144,7 @@ static void reset_timeout(void)
     raise_timeout = gtk_timeout_add(params.raise_delay, (GtkFunction) raise_cb, NULL);
 }
 
-static inline void _moveRequest(Client * c, XEvent * ev)
+static inline void moveRequest(Client * c, XEvent * ev)
 {
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
@@ -152,7 +152,7 @@ static inline void _moveRequest(Client * c, XEvent * ev)
     }
 }
 
-static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
+static inline void resizeRequest(Client * c, int corner, XEvent * ev)
 {
     clientSetFocus(c, True);
 
@@ -209,7 +209,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_DOWN:
             case KEY_MOVE_LEFT:
             case KEY_MOVE_RIGHT:
-                _moveRequest(c, (XEvent *) ev);
+                moveRequest(c, (XEvent *) ev);
                 break;
             case KEY_RESIZE_UP:
             case KEY_RESIZE_DOWN:
@@ -392,7 +392,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
  * Button 2 : Move
  * Button 3 : Resize
  */
-static inline void _edgeButton(Client * c, int part, XButtonEvent * ev)
+static inline void edgeButton(Client * c, int part, XButtonEvent * ev)
 {
     if(ev->button == Button2)
     {
@@ -406,15 +406,122 @@ static inline void _edgeButton(Client * c, int part, XButtonEvent * ev)
         }
         else
         {
-            _moveRequest(c, (XEvent *) ev);
+            moveRequest(c, (XEvent *) ev);
         }
     }
     else
     {
         if(ev->button == Button1)
+	{
             clientRaise(c);
-        if(ev->button == Button1 || ev->button == Button3)
-            _resizeRequest(c, part, (XEvent *) ev);
+        }
+	if((ev->button == Button1) || (ev->button == Button3))
+        {
+	    resizeRequest(c, part, (XEvent *) ev);
+        }
+    }
+}
+
+static inline void button1Action(Client *c, XButtonEvent * ev)
+{
+    XEvent copy_event = (XEvent) * ev;
+    XfwmButtonClickType tclick;
+
+    g_return_if_fail(c != NULL);
+    g_return_if_fail(ev != NULL);
+
+    clientSetFocus(c, True);
+    clientRaise(c);
+
+    tclick = typeOfClick(c->frame, &copy_event, TRUE);
+
+    if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
+    {
+        moveRequest(c, (XEvent *) ev);
+    }
+    else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
+    {
+        switch (params.double_click_action)
+        {
+            case ACTION_MAXIMIZE:
+                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+                {
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+                }
+                break;
+            case ACTION_SHADE:
+                clientToggleShaded(c);
+                break;
+            case ACTION_HIDE:
+                if(CLIENT_CAN_HIDE_WINDOW(c))
+                {
+                    clientHide(c, TRUE);
+                }
+                break;
+        }
+    }
+}
+
+static inline void titleButton(Client *c, int state, XButtonEvent * ev)
+{
+    g_return_if_fail(c != NULL);
+    g_return_if_fail(ev != NULL);
+    
+    if(ev->button == Button1)
+    {
+        button1Action(c, ev);
+    }
+    else if(ev->button == Button2)
+    {
+        clientLower(c);
+    }
+    else if(ev->button == Button3)
+    {
+	/*
+	   We need to copy the event to keep the original event untouched
+	   for gtk to handle it (in case we open up the menu)
+	 */
+
+	XEvent copy_event = (XEvent) * ev;
+	XfwmButtonClickType tclick;
+
+        tclick = typeOfClick(c->frame, &copy_event, FALSE);
+
+        if(tclick == XFWM_BUTTON_DRAG)
+        {
+            moveRequest(c, (XEvent *) ev);
+        }
+        else
+        {
+            clientSetFocus(c, True);
+            if(params.raise_on_click)
+            {
+                clientRaise(c);
+            }
+            ev->window = ev->root;
+            if(button_handler_id)
+            {
+                g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
+            }
+            button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
+            /* Let GTK handle this for us. */
+        }
+    }
+    else if(ev->button == Button4)
+    {
+        /* Mouse wheel scroll up */
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        {
+            clientShade(c);
+        }
+    }
+    else if(ev->button == Button5)
+    {
+        /* Mouse wheel scroll down */
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        {
+            clientUnshade(c);
+        }
     }
 }
 
@@ -435,7 +542,15 @@ static inline void handleButtonPress(XButtonEvent * ev)
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask | HyperMask);
         win = ev->subwindow;
 
-        if((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON]) || (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON]))))
+        if ((ev->button == Button1) && (state == AltMask))
+	{
+            button1Action(c, ev);
+	}
+        else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
+        {
+            clientLower(c);
+        }
+        else if((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON]) || (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON]))))
         {
             clientSetFocus(c, True);
             if(params.raise_on_click)
@@ -444,120 +559,69 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             clientButtonPress(c, win, ev);
         }
-        else if(((win == MYWINDOW_XWINDOW(c->title)) && (ev->button == Button3)) || ((win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON])) && (ev->button == Button1)))
+	else if (win == MYWINDOW_XWINDOW(c->title))
+	{
+            titleButton(c, state, ev);
+	}
+	else if ((win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON])) && (ev->button == Button1))
         {
             /*
                We need to copy the event to keep the original event untouched
                for gtk to handle it (in case we open up the menu)
              */
-            XEvent copy_event = (XEvent) * ev;
+            
+	    XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
 
-            tclick = typeOfClick(c->frame, &copy_event, win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON]));
+            tclick = typeOfClick(c->frame, &copy_event, TRUE);
 
             if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
                 clientClose(c);
             }
-            else if(ev->button == Button3 && (tclick == XFWM_BUTTON_DRAG))
-            {
-                _moveRequest(c, (XEvent *) ev);
-            }
             else
             {
-                clientSetFocus(c, True);
-                if(params.raise_on_click)
-                {
+        	clientSetFocus(c, True);
+        	if(params.raise_on_click)
+        	{
                     clientRaise(c);
-                }
-                ev->window = ev->root;
-                if(button_handler_id)
-                {
+        	}
+        	ev->window = ev->root;
+        	if(button_handler_id)
+        	{
                     g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
-                }
-                button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
-                /* Let GTK handle this for us. */
-            }
-        }
-        else if(((win == MYWINDOW_XWINDOW(c->title)) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
-        {
-            XEvent copy_event = (XEvent) * ev;
-            XfwmButtonClickType tclick;
-
-            clientSetFocus(c, True);
-            clientRaise(c);
-            tclick = typeOfClick(c->frame, &copy_event, TRUE);
-            if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
-            {
-                _moveRequest(c, (XEvent *) ev);
-            }
-            else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
-            {
-                switch (params.double_click_action)
-                {
-                    case ACTION_MAXIMIZE:
-                        if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-                        {
-                            clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                        }
-                        break;
-                    case ACTION_SHADE:
-                        clientToggleShaded(c);
-                        break;
-                    case ACTION_HIDE:
-                        if(CLIENT_CAN_HIDE_WINDOW(c))
-                        {
-                            clientHide(c, True);
-                        }
-                        break;
-                }
-            }
-        }
-        else if((win == MYWINDOW_XWINDOW(c->title)) && (ev->button == Button4))
-	{
-            if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
-            {
-        	clientShade(c);
+        	}
+        	button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
+        	/* Let GTK handle this for us. */
             }
 	}
-        else if((win == MYWINDOW_XWINDOW(c->title)) && (ev->button == Button5))
-	{
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
-            {
-        	clientUnshade(c);
-            }
-	}
-        else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
+	else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
         {
-            _edgeButton(c, CORNER_TOP_LEFT, ev);
+            edgeButton(c, CORNER_TOP_LEFT, ev);
         }
         else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_RIGHT])) && (state == 0))
         {
-            _edgeButton(c, CORNER_TOP_RIGHT, ev);
+            edgeButton(c, CORNER_TOP_RIGHT, ev);
         }
         else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_LEFT])) && (state == 0))
         {
-            _edgeButton(c, CORNER_BOTTOM_LEFT, ev);
+            edgeButton(c, CORNER_BOTTOM_LEFT, ev);
         }
         else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_BOTTOM_RIGHT])) && (state == 0))
         {
-            _edgeButton(c, CORNER_BOTTOM_RIGHT, ev);
+            edgeButton(c, CORNER_BOTTOM_RIGHT, ev);
         }
         else if((win == MYWINDOW_XWINDOW(c->sides[SIDE_BOTTOM])) && (state == 0))
         {
-            _edgeButton(c, 4 + SIDE_BOTTOM, ev);
+            edgeButton(c, 4 + SIDE_BOTTOM, ev);
         }
         else if((win == MYWINDOW_XWINDOW(c->sides[SIDE_LEFT])) && (state == 0))
         {
-            _edgeButton(c, 4 + SIDE_LEFT, ev);
+            edgeButton(c, 4 + SIDE_LEFT, ev);
         }
         else if((win == MYWINDOW_XWINDOW(c->sides[SIDE_RIGHT])) && (state == 0))
         {
-            _edgeButton(c, 4 + SIDE_RIGHT, ev);
-        }
-        else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
-        {
-            clientLower(c);
+            edgeButton(c, 4 + SIDE_RIGHT, ev);
         }
         else
         {
@@ -565,8 +629,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
             {
                 clientSetFocus(c, True);
                 if(params.raise_on_click)
+		{
                     clientRaise(c);
-            }
+                }
+	    }
             if(ev->window == c->window)
             {
                 replay = True;
