@@ -63,13 +63,17 @@ PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
 
-EXTRA_DIST = example.xfwm4rc example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec xfwm4.spec.in
+noinst_DATA = example.xfwm4rc
+
+EXTRA_DIST = example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec xfwm4.spec.in
 
 SUBDIRS = src defaults themes
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES =  xfwm4.spec
+DATA =  $(noinst_DATA)
+
 DIST_COMMON =  README ./stamp-h.in AUTHORS COPYING ChangeLog INSTALL \
 Makefile.am Makefile.in NEWS TODO acconfig.h aclocal.m4 config.h.in \
 configure configure.in install-sh missing mkinstalldirs xfwm4.spec.in
@@ -295,7 +299,7 @@ install-am: all-am
 install: install-recursive
 uninstall-am:
 uninstall: uninstall-recursive
-all-am: Makefile config.h
+all-am: Makefile $(DATA) config.h
 all-redirect: all-recursive-am
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
@@ -353,10 +357,10 @@ maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 distclean-local:
 	rm -f example.xfwm4rc xfwm4.spec
 
-example.xfwm4rc :
+example.xfwm4rc:
 	@sed -e "s%_pkgdatadir_%$(pkgdatadir)%g" example.xfwm4rc.in > example.xfwm4rc
 
-rpm : dist
+rpm: dist
 	rpm -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
