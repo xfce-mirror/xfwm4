@@ -15,7 +15,7 @@ dnl
 AC_DEFUN([BM_DEPEND_CHECK],
 [
   AC_MSG_CHECKING([for $2 >= $3])
-  if $PKG_CONFIG --atleast-version $2 $3 2> /dev/null; then
+  if $PKG_CONFIG --atleast-version=$3 $2 2> /dev/null; then
     AC_MSG_RESULT([yes])
     BM_DEPEND([$1], [$2], [$3])
     AC_DEFINE([HAVE_$1], [1], [Define if you have $2 >= $3])

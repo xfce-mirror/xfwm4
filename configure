@@ -8876,7 +8876,7 @@ echo "$as_me: error: Library requirements (xfce-mcs-manager >= 0.1) not met; con
 
   echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.4" >&5
 echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.4... $ECHO_C" >&6
-  if $PKG_CONFIG --atleast-version libstartup-notification-1.0 0.4 2> /dev/null; then
+  if $PKG_CONFIG --atleast-version=0.4 libstartup-notification-1.0 2> /dev/null; then
     echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 
