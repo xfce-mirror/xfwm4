@@ -3,10 +3,10 @@
 # You can use it as a template for your own configuration file
 
 # theme=directory
-theme=_pkgdatadir_/themes/kde
+theme=_pkgdatadir_/themes/kindaker
 
 # title_alignment=left/right/center
-title_alignment=left
+title_alignment=right
 
 # button_layout :
 #    O = Option menu
@@ -17,7 +17,7 @@ title_alignment=left
 #    C = close
 #    | = title
 
-button_layout=OT|SHMC
+button_layout=OTS|HMC
 
 # ???_key=modifier+key
 hide_window_key=Mod1+F1

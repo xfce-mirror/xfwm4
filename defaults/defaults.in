@@ -1,7 +1,7 @@
-theme=_pkgdatadir_/themes/kde
-title_alignment=left
+theme=_pkgdatadir_/themes/kindaker
+title_alignment=right
 full_width_title=true
-button_layout=OT|SHMC
+button_layout=OTS|HMC
 button_spacing=1
 button_offset=0
 title_vertical_offset=0
