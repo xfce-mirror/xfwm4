@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-18 07:41+0200\n"
+"POT-Creation-Date: 2004-06-19 11:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -582,27 +582,27 @@ msgstr "%s: Bewerking (nog) niet ondersteund\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentatie fout"
 
-#: src/main.c:312
+#: src/main.c:313
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: een andere Window Manager is al in gebruik"
 
-#: src/main.c:317
+#: src/main.c:318
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/main.c:327
+#: src/main.c:328
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:335
+#: src/main.c:336
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:356
+#: src/main.c:357
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: er is een onbekende fout opgetreden"
@@ -696,32 +696,32 @@ msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
 msgid "%s: Missing defaults file"
 msgstr "%s: defaults bestand ontbreekt"
 
-#: src/settings.c:596
+#: src/settings.c:599
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet creëren\n"
 
-#: src/settings.c:602
+#: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 
-#: src/settings.c:645
+#: src/settings.c:648
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 
-#: src/settings.c:651
+#: src/settings.c:654
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/settings.c:829
+#: src/settings.c:832
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:839
+#: src/settings.c:842
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%: Ontbrekende gegevens in defaults bestand"

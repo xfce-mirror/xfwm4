@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-18 07:41+0200\n"
+"POT-Creation-Date: 2004-06-19 11:56+0200\n"
 "PO-Revision-Date: 2003-10-26 15:12+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -582,27 +582,27 @@ msgstr "%s: Операція не підтримується (поки-що)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Фатальна помилка"
 
-#: src/main.c:312
+#: src/main.c:313
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Вже активний інший менеджер вікон"
 
-#: src/main.c:317
+#: src/main.c:318
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: відсутні дані з типових файлів"
 
-#: src/main.c:327
+#: src/main.c:328
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:335
+#: src/main.c:336
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:356
+#: src/main.c:357
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Виникла невідома помилка"
@@ -696,32 +696,32 @@ msgstr "%s: необроблене net_wm_state (вікно 0x%lx)"
 msgid "%s: Missing defaults file"
 msgstr "%s: Відсутній файл з типовими значеннями"
 
-#: src/settings.c:596
+#: src/settings.c:599
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Неможливо зарезервувати активний колір %s\n"
 
-#: src/settings.c:602
+#: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Неможливо проаналізувати активний колір %s\n"
 
-#: src/settings.c:645
+#: src/settings.c:648
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Неможливо зарезервувати неактивний колір %s\n"
 
-#: src/settings.c:651
+#: src/settings.c:654
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Неможливо проаналізувати неактивний колір %s\n"
 
-#: src/settings.c:829
+#: src/settings.c:832
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: вказаний ключ теми \"%s\" не існує, використовується типовий"
 
-#: src/settings.c:839
+#: src/settings.c:842
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Відсутні значення у файлі з типовими значеннями"

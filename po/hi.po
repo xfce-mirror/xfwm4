@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.hi.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-18 07:41+0200\n"
+"POT-Creation-Date: 2004-06-19 11:56+0200\n"
 "PO-Revision-Date: 2003-11-01 18:18+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -586,27 +586,27 @@ msgstr "%s: आपरेशन हेतु समर्थन उपलब्�
 msgid "%s: Segmentation fault"
 msgstr "%s: सेगमेन्टेशन फाल्ट"
 
-#: src/main.c:312
+#: src/main.c:313
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s:  पहले से ही एक अन्य विंडो प्रबंधक चल रहा है."
 
-#: src/main.c:317
+#: src/main.c:318
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: डिफाल्ट फाइलों में से डाटा खो गया है."
 
-#: src/main.c:327
+#: src/main.c:328
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:335
+#: src/main.c:336
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:356
+#: src/main.c:357
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: अज्ञात त्रुटी हुई"
@@ -701,32 +701,32 @@ msgstr "%s: अप्रबंधनीय net_wm_state (window 0x%lx)"
 msgid "%s: Missing defaults file"
 msgstr "%s:   डिफाल्ट फाइल खो गया है"
 
-#: src/settings.c:596
+#: src/settings.c:599
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: सक्रिय रंग निर्धारित नहीं कर सकता %s\n"
 
-#: src/settings.c:602
+#: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s:  सक्रिय रंग पारसे नहीं कर सकता  %s\n"
 
-#: src/settings.c:645
+#: src/settings.c:648
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s:  अक्रिय रंग निर्धारित नहीं कर सकता %s\n"
 
-#: src/settings.c:651
+#: src/settings.c:654
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: अक्रिय रंग पारसे नहीं कर सकता %s\n"
 
-#: src/settings.c:829
+#: src/settings.c:832
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: उल्लेखित कुंजी थीम \"%s\" नहीं है, डिफाल्ट उपयोग में"
 
-#: src/settings.c:839
+#: src/settings.c:842
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: डिफाल्ट फाइल में मान खो गया है"

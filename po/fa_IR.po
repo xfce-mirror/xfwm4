@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.fa_IR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-18 07:41+0200\n"
+"POT-Creation-Date: 2004-06-19 11:56+0200\n"
 "PO-Revision-Date: 2004-01-09 19:35+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -579,27 +579,27 @@ msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: نقص در قطعه‌بندی"
 
-#: src/main.c:312
+#: src/main.c:313
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: مدیر پنجره‌ی دیگری از قبل در حال اجرا است"
 
-#: src/main.c:317
+#: src/main.c:318
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: فقدان داده‌ها از پرونده‌های پیش‌فرض"
 
-#: src/main.c:327
+#: src/main.c:328
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: موفق به وارد شدن به حالت شبح نشد: %s"
 
-#: src/main.c:335
+#: src/main.c:336
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: ناموفق در ایجاد پروسه‌ی جدید: %s"
 
-#: src/main.c:356
+#: src/main.c:357
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: خطای ناشناسی رخ داد"
@@ -693,32 +693,32 @@ msgstr "%s: net_wm_state (window 0x%lx) سازماندهی نشده"
 msgid "%s: Missing defaults file"
 msgstr "%s: فقدان پرونده‌ی پیش‌فرض‌ها"
 
-#: src/settings.c:596
+#: src/settings.c:599
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را جایابی کرد\n"
 
-#: src/settings.c:602
+#: src/settings.c:605
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را تجزیه کرد\n"
 
-#: src/settings.c:645
+#: src/settings.c:648
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\n"
 
-#: src/settings.c:651
+#: src/settings.c:654
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 
-#: src/settings.c:829
+#: src/settings.c:832
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: طرح کلید مشخص شده‌ی \"%s\" وجود ندارد، از پیش‌فرض استفاده می‌شود"
 
-#: src/settings.c:839
+#: src/settings.c:842
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: فقدان مقادیر در پرونده‌ی پیش‌فرض‌ها"
