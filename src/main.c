@@ -98,6 +98,18 @@ void cleanUp()
     closeEventFilter();
 }
 
+static void session_save_yourself (gpointer client_data, int save_style, gboolean shutdown, int interact_style, gboolean fast)
+{
+    g_print ("TODO: Save session\n");
+}
+
+static void session_die (gpointer client_data)
+{
+    gtk_main_quit();
+    quit = True;
+    gdk_flush ();
+}
+
 void handleSignal(int sig)
 {
     DBG("entering handleSignal\n");
@@ -135,19 +147,21 @@ void initialize(int argc, char **argv)
     gtk_init(&argc, &argv);
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
-    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IMMEDIATELY, 20);
-
-    if(!session_init(client_session))
-    {
-        g_message("Cannot connect to session manager");
-    }
-    
     dpy = GDK_DISPLAY();
     root = GDK_ROOT_WINDOW();
     screen = XDefaultScreen(dpy);
     depth = DefaultDepth(dpy, screen);
     cmap = DefaultColormap(dpy, screen);
 
+    client_session = client_session_new(argc, argv, NULL , SESSION_RESTART_IF_RUNNING, 20);
+    client_session->save_yourself = session_save_yourself;
+    client_session->die = session_die;
+
+    if(!session_init(client_session))
+    {
+        g_message("Cannot connect to session manager");
+    }
+    
     margins[MARGIN_TOP] = gnome_margins[MARGIN_TOP] = 0;
     margins[MARGIN_LEFT] = gnome_margins[MARGIN_LEFT] = 0;
     margins[MARGIN_RIGHT] = gnome_margins[MARGIN_RIGHT] = 0;

@@ -26,7 +26,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
-#include <gtktoxevent.h>
+#include <libxfcegui4.h>
 #include "main.h"
 #include "workspaces.h"
 #include "settings.h"
