@@ -1,0 +1,409 @@
+# Lithuania translation of xfwm4
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# This file is distributed under the same license as the xfwm4 package.
+# Mantas <zaz@xxx.lt>, 2003.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 3.99.2\n"
+"POT-Creation-Date: 2003-07-20 19:16+0200\n"
+"PO-Revision-Date: 2003-08-16 15:44+0300\n"
+"Last-Translator: Mantas <zaz@xxx.lt>\n"
+"Language-Team: Lithuania <komp_lt@konf.lt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:133
+#: mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Darbo vietos paraštės"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "Derinti darbo vietos paraštes"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:281
+msgid "Left :"
+msgstr "Kairė"
+
+#: mcs-plugin/margins_plugin.c:301
+msgid "Right :"
+msgstr "Dešinė"
+
+#: mcs-plugin/margins_plugin.c:321
+msgid "Top :"
+msgstr "Viršus"
+
+#: mcs-plugin/margins_plugin.c:341
+msgid "Bottom :"
+msgstr "Apačia:"
+
+#: mcs-plugin/xfwm4_plugin.c:116
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "Meniu"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "Prisegti"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "Šešėlis"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "Paslėpti"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "išskleisti"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "Uždaryti"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "Paslėpti langą"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "išskleisti langą"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "Nieko"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "Kairė"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "Centras"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "Dešinė"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Slepiamas"
+
+#: mcs-plugin/xfwm4_plugin.c:1206
+msgid "Font Selection Dialog"
+msgstr "Šrifto pasirinkimo dialogas"
+
+#: mcs-plugin/xfwm4_plugin.c:1274
+#: mcs-plugin/xfwm4_plugin.c:1845
+msgid "Window Manager"
+msgstr "Langų tvarkyklė"
+
+#: mcs-plugin/xfwm4_plugin.c:1288
+msgid "Window Manager Preferences"
+msgstr "Langų tvarkyklės nuostatos"
+
+#: mcs-plugin/xfwm4_plugin.c:1325
+msgid "Title font"
+msgstr "Pavadinimo šriftas"
+
+#: mcs-plugin/xfwm4_plugin.c:1338
+msgid "Title Alignment"
+msgstr "Pavadinimo lygiavimas"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "Teksto lygiavimas pavadinimo juostoje :"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
+msgid "Button layout"
+msgstr "Mygtukų išdėstymas"
+
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "Dekoravimo stilius"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "Klaviatūros nuoroda"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Focus model"
+msgstr "Fokusavimo modelis"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "aiškelti kai fokusuojama"
+
+#: mcs-plugin/xfwm4_plugin.c:1451
+#, fuzzy
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Automatiškai iškelti langus\n"
+"kai jie gauna fokusą"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Delay before raising focused window :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1472
+msgid "Slow"
+msgstr "Lėtai"
+
+#: mcs-plugin/xfwm4_plugin.c:1480
+msgid "Fast"
+msgstr "Greitai"
+
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "Iškelti paspaudus"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Iškelti langą kai spaudžiama viduje\n"
+"programos lango"
+
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1530
+msgid "Windows snapping"
+msgstr "Langų pritraukimas"
+
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "Užsklęsti langą į ekrano sieną"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "Pritraukti langus prie kitų langų"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "Atstumas :"
+
+#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "Mažas"
+
+#: mcs-plugin/xfwm4_plugin.c:1577
+#: mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "Laužyti darbo vietas"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
+
+#: mcs-plugin/xfwm4_plugin.c:1618
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Laužyti darbo vietas kai tempiamas langas yra už ekrano"
+
+#: mcs-plugin/xfwm4_plugin.c:1630
+msgid "Edge Resistance :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+#, fuzzy
+msgid "Opaque move and resize"
+msgstr "Neskaidrus perkėlimas ir dydžio pakeitimas"
+
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "Keičiant lango dydį rodyti jo turinį"
+
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "Perkeliant langą rodyti jo turinį"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
+msgid "Double click action"
+msgstr "Veiksmas dukart spragtelėti"
+
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
+msgid "Advanced"
+msgstr "Išplėstas"
+
+#: src/client.c:442
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr ""
+
+#: src/events.c:1317
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operacija nėra palaikoma (kolkas)\n"
+
+#: src/main.c:226
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr ""
+
+#: src/main.c:396
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Kita langų tvarkyklė jau veikia"
+
+#: src/main.c:401
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Trūksta duomenų iš numatytojo failo"
+
+#: src/main.c:428
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Įvyko nežinoma klaida"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "Iš_skleisti"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "A_tstatyti"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Paslėpti"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Visus kitus p_aslėpti"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "_Rodyti"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr ""
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr ""
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "Priseg_ti"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Nuseg_ti"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Siųsti į..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Uždaryti"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Sunaikinti"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "_Baigti"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Perkrauti"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Darbo laukas %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr ""
+
+#: src/settings.c:284
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s:Nėra numatytojo failo"
+
+#: src/settings.c:509
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr ""
+
+#: src/settings.c:516
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr ""
+
+#: src/settings.c:560
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr ""
+
+#: src/settings.c:567
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr ""
+
+#: src/settings.c:757
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Trūksta reikšmių numatytame faile"
+
+#: src/settings.c:1098
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: Darbo vietų skaičius nenustatytas, naudojamos rc reikšmės: %i"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Perjungti į ..."
+
