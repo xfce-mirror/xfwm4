@@ -1790,6 +1790,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             if ((ev->data.l[0] != c->win_workspace) && !is_transient)
             {
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
+                clientPassGrabMouseButton (NULL);
             }
         }
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
@@ -1815,6 +1816,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     if (ev->data.l[0] != c->win_workspace)
                     {
                         clientSetWorkspace (c, ev->data.l[0], TRUE);
+                        clientPassGrabMouseButton (NULL);
                     }
                 }
             }
