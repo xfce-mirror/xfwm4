@@ -2061,8 +2061,8 @@ clientKeepVisible (Client * c)
 
     /* Translate coodinates to center on physical screen */
 
-    diff_x = abs (c->x - ((MyDisplayFullWidth (dpy, screen) - c->width) / 2));
-    diff_y = abs (c->y - ((MyDisplayFullHeight (dpy, screen) - c->height) / 2));
+    diff_x = abs (c->size->x - ((MyDisplayFullWidth (dpy, screen) - c->width) / 2));
+    diff_y = abs (c->size->y - ((MyDisplayFullHeight (dpy, screen) - c->height) / 2));
 
     if ((use_xinerama) && (diff_x < 25) && (diff_y < 25))
     {
@@ -2127,7 +2127,15 @@ clientInitPosition (Client * c)
 
     clientGravitate (c, APPLY);
 
-    if (c->size->flags & (PPosition | USPosition))
+    /* 
+       Use of c->size->{x|y} is deprecated, so we use them
+       for our own use...  It seems there is a bug in GTK
+       that doesn't set PPosition flag even if it should,
+       so we also take the initial (x, y) values to see if
+       they were set at first
+     */ 
+    if ((c->size->flags & (PPosition | USPosition)) || 
+        ((c->size->x > 0) && (c->size->y > 0)))
     {
         if (CONSTRAINED_WINDOW (c))
         {

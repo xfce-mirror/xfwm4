@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-06-15 23:58+0200\n"
+"POT-Creation-Date: 2003-06-18 23:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:237
-#: mcs-plugin/margins_plugin.c:256
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr ""
 
@@ -24,24 +24,24 @@ msgstr ""
 msgid "Adjust workspace margins"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:243
+#: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:283
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:303
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:323
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:343
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr ""
 
@@ -109,168 +109,168 @@ msgstr ""
 msgid "Font Selection Dialog"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1276 mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1290
+#: mcs-plugin/xfwm4_plugin.c:1288
 msgid "Window Manager Preferences"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1327
+#: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1340
+#: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
 msgstr ""
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1346
+#: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1351
+#: mcs-plugin/xfwm4_plugin.c:1349
 msgid "Button layout"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1358
+#: mcs-plugin/xfwm4_plugin.c:1356
 msgid "Decoration style"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1371
+#: mcs-plugin/xfwm4_plugin.c:1369
 msgid "Keyboard Shortcut"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1395
+#: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1404
+#: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1418
+#: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1432
+#: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1437
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1444
+#: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1453
+#: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1466
+#: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1474
+#: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1482
+#: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Fast"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1506
+#: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1511
+#: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1519
+#: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1532
+#: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Windows snapping"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1541
+#: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1550
+#: mcs-plugin/xfwm4_plugin.c:1548
 msgid "Snap windows to other windows"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1563
+#: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1571 mcs-plugin/xfwm4_plugin.c:1640
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1579 mcs-plugin/xfwm4_plugin.c:1648
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1602
+#: mcs-plugin/xfwm4_plugin.c:1600
 msgid "Wrap workspaces"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1611
+#: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1632
+#: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1673
+#: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1682
+#: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1690
+#: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1697
+#: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
 msgstr ""
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1703
+#: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1708
+#: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:443
+#: src/client.c:444
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1292
+#: src/events.c:1267
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
@@ -396,7 +396,7 @@ msgstr ""
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1093
+#: src/settings.c:1096
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
