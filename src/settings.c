@@ -50,6 +50,7 @@ int double_click_action;
 int box_move;
 int box_resize;
 int click_to_focus;
+int raise_on_click;
 int focus_hint;
 int focus_new;
 int raise_on_focus;
@@ -153,6 +154,7 @@ void loadSettings()
         {"move_window_workspace_7_key", NULL, TRUE},
         {"move_window_workspace_8_key", NULL, TRUE},
         {"move_window_workspace_9_key", NULL, TRUE},
+        {"raise_on_click", NULL, TRUE},
         {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };
@@ -365,6 +367,7 @@ void loadSettings()
     focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
     raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
     raise_delay = abs(TOINT(getValue("raise_delay", rc)));
+    raise_on_click = !g_ascii_strcasecmp("true", getValue("raise_on_click", rc));
 
     snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
     snap_width = abs(TOINT(getValue("snap_width", rc)));

@@ -14,6 +14,7 @@ double_click_action=maximize
 box_move=false
 box_resize=false
 click_to_focus=true
+raise_on_click=true
 focus_hint=false
 focus_new=true
 raise_on_focus=false

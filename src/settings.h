@@ -68,6 +68,7 @@ extern int double_click_action;
 extern int box_move;
 extern int box_resize;
 extern int click_to_focus;
+extern int raise_on_click;
 extern int focus_new;
 extern int focus_hint;
 extern int raise_on_focus;

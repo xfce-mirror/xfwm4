@@ -995,7 +995,7 @@ static void clientAddToList(Client * c)
     if(!(c->skip_pager))
     {
         DBG("adding window \"%s\" (%#lx) to windows_stack list\n", c->name, c->window);
-        windows_stack = g_slist_append(windows_stack, XWINDOW_TO_GPOINTER(c->window));
+        windows_stack = g_slist_prepend(windows_stack, XWINDOW_TO_GPOINTER(c->window));
         clientSetNetClientList(net_client_list_stacking, windows_stack);
     }
     c->managed = True;
@@ -1871,8 +1871,8 @@ void clientFrame(Window w)
     XSetWindowBorderWidth(dpy, c->window, 0);
     XReparentWindow(dpy, c->window, c->frame, frameLeft(c), frameTop(c));
 
-    clientSetNetActions(c);
     clientAddToList(c);
+    clientSetNetActions(c);
     clientGrabKeys(c);
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
     gdk_x11_ungrab_server();
