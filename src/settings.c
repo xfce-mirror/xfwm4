@@ -484,7 +484,7 @@ loadTheme (Settings rc[])
     gchar *theme;
     gchar *font;
     XpmColorSymbol colsym[20];
-    GtkWidget *widget = getDefaultGtkWidget (md->gtox_data);
+    GtkWidget *widget = xfce_get_default_gtk_widget (md->gtox_data);
     PangoFontDescription *desc;
     guint i;
 
@@ -535,7 +535,7 @@ loadTheme (Settings rc[])
                 g_object_unref (G_OBJECT (params.title_colors[ACTIVE].gc));
             }
             params.title_colors[ACTIVE].gc =
-                gdk_gc_new (getDefaultGdkWindow (md->gtox_data));
+                gdk_gc_new (xfce_get_default_gdk_window (md->gtox_data));
             gdk_gc_copy (params.title_colors[ACTIVE].gc, get_style_gc (widget,
                     "text", "selected"));
             gdk_gc_set_foreground (params.title_colors[ACTIVE].gc,
@@ -586,7 +586,7 @@ loadTheme (Settings rc[])
                 g_object_unref (G_OBJECT (params.title_colors[INACTIVE].gc));
             }
             params.title_colors[INACTIVE].gc =
-                gdk_gc_new (getDefaultGdkWindow (md->gtox_data));
+                gdk_gc_new (xfce_get_default_gdk_window (md->gtox_data));
             gdk_gc_copy (params.title_colors[INACTIVE].gc,
                 get_style_gc (widget, "text", "normal"));
             gdk_gc_set_foreground (params.title_colors[INACTIVE].gc,

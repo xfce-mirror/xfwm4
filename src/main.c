@@ -125,7 +125,7 @@ cleanUp ()
     removeTmpEventWin (md->sidewalk[0]);
     removeTmpEventWin (md->sidewalk[1]);
     XSetInputFocus (md->dpy, md->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
-    closeEventFilter (md->gtox_data);
+    xfce_close_event_filter (md->gtox_data);
     g_free (md);
 }
 
@@ -307,14 +307,14 @@ initialize (int argc, char **argv)
 
     XDefineCursor (md->dpy, md->xroot, md->root_cursor);
 
-    md->gtox_data = initEventFilter (md->gscr, MAIN_EVENT_MASK, NULL, "xfwm");
+    md->gtox_data = xfce_init_event_filter (md->gscr, MAIN_EVENT_MASK, NULL, "xfwm");
     if (!md->gtox_data)
     {
         return -1;
     }
-    pushEventFilter (md->gtox_data, xfwm4_event_filter, NULL);
+    xfce_push_event_filter (md->gtox_data, xfwm4_event_filter, NULL);
 
-    md->gnome_win = getDefaultXWindow (md->gtox_data);
+    md->gnome_win = xfce_get_default_XID (md->gtox_data);
     DBG ("Our event window is 0x%lx", md->gnome_win);
 
     if (!initSettings ())
@@ -349,7 +349,7 @@ initialize (int argc, char **argv)
      * Therefore, force the cache window to be created now instead of
      * trying to do it while we have another grab and deadlocking the server.
      */
-    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (md->gtox_data), "-");
+    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (md->gtox_data), "-");
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 

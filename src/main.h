@@ -65,7 +65,7 @@ typedef struct MainData
     Display *dpy;
     GdkDisplay *gdisplay;
     GdkScreen *gscr;
-    GtkToXEventFilterSetup *gtox_data;
+    XfceFilterSetup *gtox_data;
     Screen *xscreen;
     Window gnome_win;
     Window xroot;

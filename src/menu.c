@@ -60,7 +60,7 @@ static MenuItem menuitems[] = {
     {MENU_OP_RESTART, "gtk-refresh", N_("Restart")},
 };
 
-static GtkToXEventFilterStatus
+static XfceFilterStatus
 menu_filter (XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
@@ -127,7 +127,7 @@ activate_cb (GtkWidget * menuitem, gpointer data)
     menudata = data;
 
     TRACE ("deactivating menu_filter");
-    popEventFilter (md->gtox_data);
+    xfce_pop_event_filter (md->gtox_data);
     (*menudata->menu->func) (menudata->menu, 
                              menudata->op, 
                              menudata->client_xwindow, 
@@ -145,7 +145,7 @@ menu_closed (GtkMenu * widget, gpointer data)
     menu = data;
     menu_open = NULL;
     TRACE ("deactivating menu_filter");
-    popEventFilter (md->gtox_data);
+    xfce_pop_event_filter (md->gtox_data);
     (*menu->func) (menu, 0, None, menu->data, NULL);
     return (FALSE);
 }
@@ -356,9 +356,9 @@ grab_available (guint32 timestamp)
 
     TRACE ("entering grab_available");
 
-    g1 = gdk_pointer_grab (getGdkEventWindow (md->gtox_data), TRUE, mask, NULL, NULL,
+    g1 = gdk_pointer_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, mask, NULL, NULL,
         timestamp);
-    g2 = gdk_keyboard_grab (getGdkEventWindow (md->gtox_data), TRUE, timestamp);
+    g2 = gdk_keyboard_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, timestamp);
 
     while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
                 || (g2 != GDK_GRAB_SUCCESS))))
@@ -367,12 +367,12 @@ grab_available (guint32 timestamp)
         g_usleep (100);
         if (g1 != GDK_GRAB_SUCCESS)
         {
-            g1 = gdk_pointer_grab (getGdkEventWindow (md->gtox_data), TRUE, mask, NULL,
+            g1 = gdk_pointer_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, mask, NULL,
                 NULL, timestamp);
         }
         if (g2 != GDK_GRAB_SUCCESS)
         {
-            g2 = gdk_keyboard_grab (getGdkEventWindow (md->gtox_data), TRUE, timestamp);
+            g2 = gdk_keyboard_grab (xfce_get_gdk_event_window (md->gtox_data), TRUE, timestamp);
         }
     }
 
@@ -413,7 +413,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         }
         TRACE ("opening new menu");
         menu_open = menu->menu;
-        pushEventFilter (md->gtox_data, menu_filter, NULL);
+        xfce_push_event_filter (md->gtox_data, menu_filter, NULL);
         gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
             popup_position_func, pt, 0, timestamp);
 
@@ -424,7 +424,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
                 g_get_prgname ());
             gtk_menu_popdown (GTK_MENU (menu->menu));
             menu_open = NULL;
-            popEventFilter (md->gtox_data);
+            xfce_pop_event_filter (md->gtox_data);
             return FALSE;
         }
     }

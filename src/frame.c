@@ -231,7 +231,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right,
     w2 = params.title[TITLE_2][ACTIVE].width;
     w4 = params.title[TITLE_4][ACTIVE].width;
 
-    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (md->gtox_data), c->name);
+    layout = gtk_widget_create_pango_layout (xfce_get_default_gtk_widget (md->gtox_data), c->name);
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     if (params.full_width_title)

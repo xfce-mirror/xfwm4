@@ -2571,11 +2571,11 @@ clientSnapPosition (Client * c)
     }
 }
 
-static GtkToXEventFilterStatus
+static XfceFilterStatus
 clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
-    GtkToXEventFilterStatus status = XEV_FILTER_STOP;
+    XfceFilterStatus status = XEV_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = passdata->c;
     gboolean moving = TRUE;
@@ -2844,13 +2844,13 @@ clientMove (Client * c, XEvent * e)
 
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
-    pushEventFilter (md->gtox_data, clientMove_event_filter, &passdata);
+    xfce_push_event_filter (md->gtox_data, clientMove_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (md->dpy, e);
     }
     gtk_main ();
-    popEventFilter (md->gtox_data);
+    xfce_pop_event_filter (md->gtox_data);
     TRACE ("leaving move loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
 #ifdef SHOW_POSITION
@@ -2878,10 +2878,10 @@ clientMove (Client * c, XEvent * e)
     }
 }
 
-static GtkToXEventFilterStatus
+static XfceFilterStatus
 clientResize_event_filter (XEvent * xevent, gpointer data)
 {
-    GtkToXEventFilterStatus status = XEV_FILTER_STOP;
+    XfceFilterStatus status = XEV_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = passdata->c;
     gboolean resizing = TRUE;
@@ -3282,13 +3282,13 @@ clientResize (Client * c, int corner, XEvent * e)
     
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
-    pushEventFilter (md->gtox_data, clientResize_event_filter, &passdata);
+    xfce_push_event_filter (md->gtox_data, clientResize_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (md->dpy, e);
     }
     gtk_main ();
-    popEventFilter (md->gtox_data);
+    xfce_pop_event_filter (md->gtox_data);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     
@@ -3317,10 +3317,10 @@ clientResize (Client * c, int corner, XEvent * e)
     }
 }
 
-static GtkToXEventFilterStatus
+static XfceFilterStatus
 clientCycle_event_filter (XEvent * xevent, gpointer data)
 {
-    GtkToXEventFilterStatus status = XEV_FILTER_STOP;
+    XfceFilterStatus status = XEV_FILTER_STOP;
     gboolean cycling = TRUE;
     gboolean gone = FALSE;
     ClientCycleData *passdata = (ClientCycleData *) data;
@@ -3452,9 +3452,9 @@ clientCycle (Client * c, XEvent * e)
         TRACE ("entering cycle loop");
         /* Draw frame draw */
         clientDrawOutline (passdata.c);
-        pushEventFilter (md->gtox_data, clientCycle_event_filter, &passdata);
+        xfce_push_event_filter (md->gtox_data, clientCycle_event_filter, &passdata);
         gtk_main ();
-        popEventFilter (md->gtox_data);
+        xfce_pop_event_filter (md->gtox_data);
         if (passdata.c)
         {
             /* Hide frame draw */
@@ -3477,10 +3477,10 @@ clientCycle (Client * c, XEvent * e)
     }
 }
 
-static GtkToXEventFilterStatus
+static XfceFilterStatus
 clientButtonPress_event_filter (XEvent * xevent, gpointer data)
 {
-    GtkToXEventFilterStatus status = XEV_FILTER_STOP;
+    XfceFilterStatus status = XEV_FILTER_STOP;
     gboolean pressed = TRUE;
     Client *c = ((ButtonPressData *) data)->c;
     int b = ((ButtonPressData *) data)->b;
@@ -3561,9 +3561,9 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     frameDraw (c, FALSE, FALSE);
 
     TRACE ("entering button press loop");
-    pushEventFilter (md->gtox_data, clientButtonPress_event_filter, &passdata);
+    xfce_push_event_filter (md->gtox_data, clientButtonPress_event_filter, &passdata);
     gtk_main ();
-    popEventFilter (md->gtox_data);
+    xfce_pop_event_filter (md->gtox_data);
     TRACE ("leaving button press loop");
 
     XUngrabPointer (md->dpy, GDK_CURRENT_TIME);
