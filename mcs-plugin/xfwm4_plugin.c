@@ -1351,25 +1351,24 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox1);
     gtk_box_pack_start (GTK_BOX (hbox), vbox1, TRUE, TRUE, 0);
 
-    frame = frame_box (_("Font select :"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Font select :"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, TRUE, 0);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
-    gtk_container_add (GTK_CONTAINER (frame), hbox);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
 
     dialog->font_button = gtk_button_new ();
     gtk_button_set_label (GTK_BUTTON (dialog->font_button), current_font);
     gtk_widget_show (dialog->font_button);
     gtk_box_pack_start (GTK_BOX (hbox), dialog->font_button, TRUE, TRUE, 0);
 
-    dialog->frame_align = frame_box (_("Title Alignment"), GTK_SHADOW_NONE);
+    dialog->frame_align = xfce_framebox_new (_("Title Alignment"), TRUE);
     gtk_widget_show (dialog->frame_align);
     gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_align, TRUE, TRUE, 0);
 
-    gtk_container_add (GTK_CONTAINER (dialog->frame_align),
+    xfce_framebox_add (XFCE_FRAMEBOX (dialog->frame_align),
                        create_radio_button_table (title_align_values, 3,
                                                   _("Text alignment inside title bar :"),
                                                   title_align,
@@ -1377,11 +1376,11 @@ create_dialog (McsPlugin * mcs_plugin)
                                                   (cb_title_align_value_changed),
                                                   mcs_plugin));
 
-    dialog->frame_layout = frame_box (_("Button layout"), GTK_SHADOW_NONE);
+    dialog->frame_layout = xfce_framebox_new (_("Button layout"), TRUE);
     gtk_widget_show (dialog->frame_layout);
     gtk_box_pack_start (GTK_BOX (vbox1), dialog->frame_layout, TRUE, TRUE, 0);
 
-    gtk_container_add (GTK_CONTAINER (dialog->frame_layout),
+    xfce_framebox_add (XFCE_FRAMEBOX (dialog->frame_layout),
                        create_layout_buttons (current_layout, mcs_plugin));
 
     label = gtk_label_new (_("Decoration style"));
@@ -1397,7 +1396,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (hbox);
     gtk_container_add (GTK_CONTAINER (notebook), hbox);
 
-    frame = frame_box (_("Keyboard Shortcut"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Keyboard Shortcut"), FALSE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (hbox), frame, TRUE, TRUE, 0);
 
@@ -1405,7 +1404,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow2),
                                     BORDER);
     gtk_widget_show (dialog->scrolledwindow2);
-    gtk_container_add (GTK_CONTAINER (frame), dialog->scrolledwindow2);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->scrolledwindow2);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW
                                          (dialog->scrolledwindow2),
                                          GTK_SHADOW_IN);
@@ -1421,14 +1420,13 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox2);
     gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
 
-    frame = frame_box (_("Focus model"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Focus model"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
-    gtk_container_add (GTK_CONTAINER (frame), hbox);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
 
     dialog->click_focus_radio =
         gtk_radio_button_new_with_mnemonic (NULL, _("Click to focus"));
@@ -1459,27 +1457,25 @@ create_dialog (McsPlugin * mcs_plugin)
                                   (dialog->focus_follow_mouse_radio),
                                   !click_to_focus);
 
-    frame = frame_box (_("New window focus"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("New window focus"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
     dialog->focus_new_check =
         gtk_check_button_new_with_mnemonic (_("Automatically give focus to \nnewly created windows"));
     gtk_widget_show (dialog->focus_new_check);
-    gtk_container_add (GTK_CONTAINER (frame), dialog->focus_new_check);
-    gtk_container_set_border_width (GTK_CONTAINER (dialog->focus_new_check),
-                                    BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), 
+                       dialog->focus_new_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_new_check),
                                   focus_new);
 
-    frame = frame_box (_("Raise on focus"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Raise on focus"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
     vbox4 = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox4);
-    gtk_container_add (GTK_CONTAINER (frame), vbox4);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox4), BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox4);
 
     dialog->raise_on_focus_check =
         gtk_check_button_new_with_mnemonic (_("Automatically raise windows \nwhen they receive focus"));
@@ -1535,16 +1531,15 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_range_set_inverted (GTK_RANGE (dialog->raise_delay_scale), TRUE);
     gtk_widget_set_sensitive (dialog->raise_delay_scale, focus_raise);
 
-    frame = frame_box (_("Raise on click"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Raise on click"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
 
     dialog->click_raise_check =
         gtk_check_button_new_with_mnemonic (_("Raise window when clicking inside\napplication window"));
     gtk_widget_show (dialog->click_raise_check);
-    gtk_container_add (GTK_CONTAINER (frame), dialog->click_raise_check);
-    gtk_container_set_border_width (GTK_CONTAINER (dialog->click_raise_check),
-                                    BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), 
+                       dialog->click_raise_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
                                   (dialog->click_raise_check),
                                   raise_on_click);
@@ -1562,14 +1557,13 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox3);
     gtk_container_add (GTK_CONTAINER (notebook), vbox3);
 
-    frame = frame_box (_("Windows snapping"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Windows snapping"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
     vbox5 = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox5);
-    gtk_container_add (GTK_CONTAINER (frame), vbox5);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox5), BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox5);
 
     dialog->snap_to_border_check =
         gtk_check_button_new_with_mnemonic (_("Snap windows to screen border"));
@@ -1633,14 +1627,13 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_set_sensitive (dialog->snap_width_scale, snap_to_border
                               || snap_to_windows);
 
-    frame = frame_box (_("Wrap workspaces"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Wrap workspaces"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
     vbox6 = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox6);
-    gtk_container_add (GTK_CONTAINER (frame), vbox6);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox6), BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox6);
 
     dialog->wrap_workspaces_check =
         gtk_check_button_new_with_mnemonic (_("Wrap workspaces when the pointer reaches a screen edge"));
@@ -1705,14 +1698,13 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_set_sensitive (dialog->wrap_resistance_scale, wrap_workspaces
                               || wrap_windows);
 
-    frame = frame_box (_("Opaque move and resize"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Opaque move and resize"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
     vbox7 = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox7);
-    gtk_container_add (GTK_CONTAINER (frame), vbox7);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox6), BORDER);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox7);
 
     dialog->box_resize_check =
         gtk_check_button_new_with_mnemonic (_("Display content of windows when resizing"));
@@ -1730,11 +1722,11 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_move_check),
                                   !box_move);
 
-    frame = frame_box (_("Double click action"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Double click action"), TRUE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox3), frame, TRUE, TRUE, 0);
 
-    gtk_container_add (GTK_CONTAINER (frame),
+    xfce_framebox_add (XFCE_FRAMEBOX (frame),
                        create_radio_button_table (dbl_click_values, 4,
                                                   _("Action to perform when double clicking on title bar :"),
                                                   dbl_click_action,

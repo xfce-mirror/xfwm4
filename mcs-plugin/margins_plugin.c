@@ -247,15 +247,14 @@ run_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (mainvbox), vbox, TRUE, TRUE, 5);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 
-    frame = frame_box (_("Workspace Margins"), GTK_SHADOW_NONE);
+    frame = xfce_framebox_new (_("Workspace Margins"), FALSE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 5);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
     gtk_widget_show (hbox);
-    gtk_container_add (GTK_CONTAINER (frame), hbox);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
 
     monitor = inline_icon_at_size (monitor_icon_data, -1, -1);
     image = gtk_image_new_from_pixbuf (monitor);
