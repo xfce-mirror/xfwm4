@@ -806,10 +806,12 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
                 {
                     clientShow(c, TRUE);
                 }
+#if 0
                 if(params.focus_new && clientAcceptFocus(c))
                 {
                     clientSetFocus(c, TRUE);
                 }
+#endif
             }
         }
         clientConfigure(c, &wc, ev->value_mask, constrained);

@@ -222,6 +222,7 @@ gboolean clientIsTransient(Client *);
 gboolean clientSameGroup(Client *, Client *);
 gboolean clientIsTransientFor(Client *, Client *);
 gboolean clientIsTransientForGroup(Client *);
+gboolean clientTransientHasAncestor(Client *);
 void clientSetNetState(Client *);
 void clientUpdateNetState(Client *, XClientMessageEvent *);
 void clientGetNetWmType(Client * c);

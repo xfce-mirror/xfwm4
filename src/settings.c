@@ -61,9 +61,9 @@ static void set_settings_margin(int idx, int value)
         {
             val = 0;
         }
-        else if(value > gdk_screen_width() / 4)
+        else if(value > XDisplayWidth(dpy, screen) / 4)
         {
-            val = gdk_screen_width() / 4;
+            val = XDisplayWidth(dpy, screen) / 4;
         }
         else
         {
@@ -77,9 +77,9 @@ static void set_settings_margin(int idx, int value)
         {
             val = 0;
         }
-        else if(value > gdk_screen_height() / 4)
+        else if(value > XDisplayHeight(dpy, screen) / 4)
         {
-            val = gdk_screen_height() / 4;
+            val = XDisplayHeight(dpy, screen) / 4;
         }
         else
         {

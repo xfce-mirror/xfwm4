@@ -281,7 +281,7 @@ void setGnomeHint(Display * dpy, Window w, Atom a, long value)
     XChangeProperty(dpy, w, a, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)&value, 1);
 }
 
-void getGnomeDesktopMargins(Display * dpy, int screen, CARD32 * margins)
+void getGnomeDesktopMargins(Display * dpy, int screen, CARD32 * m)
 {
     Atom real_type;
     int real_format;
@@ -292,18 +292,18 @@ void getGnomeDesktopMargins(Display * dpy, int screen, CARD32 * margins)
 
     if((XGetWindowProperty(dpy, RootWindow(dpy, screen), gnome_panel_desktop_area, 0L, 4L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read >= 4))
     {
-        margins[0] = data[0];
-        margins[1] = data[1];
-        margins[2] = data[2];
-        margins[3] = data[3];
+        m[0] = data[0];
+        m[1] = data[1];
+        m[2] = data[2];
+        m[3] = data[3];
         XFree(data);
     }
     else
     {
-        margins[0] = 0;
-        margins[1] = 0;
-        margins[2] = 0;
-        margins[3] = 0;
+        m[0] = 0;
+        m[1] = 0;
+        m[2] = 0;
+        m[3] = 0;
     }
 }
 
@@ -507,7 +507,7 @@ gboolean get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **
     return TRUE;
 }
 
-void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * margins)
+void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * m)
 {
     CARD32 *data, *ptr;
     int i, j;
@@ -523,10 +523,10 @@ void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * mar
     ptr = data;
     for(i = 0; i < j; i++)
     {
-        *ptr++ = margins[MARGIN_LEFT];
-        *ptr++ = margins[MARGIN_TOP];
-        *ptr++ = gdk_screen_width() - (margins[MARGIN_LEFT] + margins[MARGIN_RIGHT]);
-        *ptr++ = gdk_screen_height() - (margins[MARGIN_TOP] + margins[MARGIN_BOTTOM]);
+        *ptr++ = m[MARGIN_LEFT];
+        *ptr++ = m[MARGIN_TOP];
+        *ptr++ = XDisplayWidth(dpy, screen) - (m[MARGIN_LEFT] + m[MARGIN_RIGHT]);
+        *ptr++ = XDisplayHeight(dpy, screen) - (m[MARGIN_TOP] + m[MARGIN_BOTTOM]);
     }
     XChangeProperty(dpy, RootWindow(dpy, screen), net_workarea, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, j * 4);
     free(data);
@@ -536,8 +536,8 @@ void init_net_desktop_params(Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
     TRACE("entering init_net_desktop_params");
-    data[0] = gdk_screen_width();
-    data[1] = gdk_screen_height();
+    data[0] = XDisplayWidth(dpy, screen);
+    data[1] = XDisplayHeight(dpy, screen);
     XChangeProperty(dpy, RootWindow(dpy, screen), net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
     data[0] = 0;
     data[1] = 0;

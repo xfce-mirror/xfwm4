@@ -158,6 +158,10 @@ Client *clientGetTransient(Client *c)
 {
     Client *c2 = NULL;
     
+    g_return_val_if_fail(c != NULL, NULL);
+
+    TRACE("entering clientGetTransient");
+
     if ((c->transient_for) && (c->transient_for != root))
     {
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
@@ -168,11 +172,20 @@ Client *clientGetTransient(Client *c)
 
 gboolean clientIsTransient(Client *c)
 {
+    g_return_val_if_fail(c != NULL, FALSE);
+
+    TRACE("entering clientIsTransient");
+    
     return (c->transient_for != None); 
 }
 
 gboolean clientSameGroup(Client *c1, Client *c2)
 {
+    g_return_val_if_fail(c1 != NULL, FALSE);
+    g_return_val_if_fail(c2 != NULL, FALSE);
+
+    TRACE("entering clientSameGroup");
+
     return ((c1 != c2) && (c1->group_leader != None) && (c1->group_leader == c2->group_leader));
 }
 
@@ -180,6 +193,11 @@ gboolean clientIsTransientFor(Client *c1, Client *c2)
 {
     Client *c3 = NULL;
     
+    g_return_val_if_fail(c1 != NULL, FALSE);
+    g_return_val_if_fail(c2 != NULL, FALSE);
+
+    TRACE("entering clientIsTransientFor");
+
     if (c1->transient_for) 
     {
         if (c1->transient_for != root)
@@ -197,7 +215,37 @@ gboolean clientIsTransientFor(Client *c1, Client *c2)
 
 gboolean clientIsTransientForGroup(Client *c)
 {
+    g_return_val_if_fail(c != NULL, FALSE);
+
+    TRACE("entering clientIsTransientForGroup");
+    
     return ((c->transient_for) && (c->transient_for == root));
+}
+
+gboolean clientTransientHasAncestor(Client *c)
+{
+    Client *c2;
+    GSList *index;
+
+    g_return_val_if_fail(c != NULL, FALSE);
+
+    TRACE("entering clientTransientHasAncestor");
+    
+    if (!clientIsTransient(c))
+    {
+        return FALSE;
+    }
+
+    for(index = windows_stack; index; index = g_slist_next(index))
+    {
+        c2 = (Client *) index->data;
+        if((c2 != c) && clientIsTransientFor(c2, c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c->win_workspace == c2->win_workspace))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+    
 }
 
 void clientSetNetState(Client * c)
@@ -692,7 +740,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
     TRACE("entering clientGetInitialNetWmDesktop");
     TRACE("client \"%s\" (0x%lx)", c->name, c->window);
 
-    /* This is to make sure that transient are shown with their "master" window */
+    /* This is to make sure that transient are shown with their "ancestor" window */
     if ((c2 = clientGetTransient(c)))
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
@@ -1576,11 +1624,12 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
  */
 static inline void clientConstraintPos(Client * c, gboolean show_full)
 {
+    CARD32 client_margins[4];
     int cx, cy, left, right, top, bottom;
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
     gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
-
+    
     g_return_if_fail(c != NULL);
     TRACE("entering clientConstraintPos %s", show_full ? "(with show full)" : "(w/out show full)");
     TRACE("client \"%s\" (0x%lx)", c->name, c->window);
@@ -1606,10 +1655,20 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     topMostHead = isTopMostHead(dpy, screen, cx, cy);
     bottomMostHead = isBottomMostHead(dpy, screen, cx, cy);
 
-    left = (leftMostHead ? (int)margins[MARGIN_LEFT] : 0);
-    right = (rightMostHead ? (int)margins[MARGIN_RIGHT] : 0);
-    top = (topMostHead ? (int)margins[MARGIN_TOP] : 0);
-    bottom = (bottomMostHead ? (int)margins[MARGIN_BOTTOM] : 0);
+    client_margins[MARGIN_TOP] = margins[MARGIN_TOP];
+    client_margins[MARGIN_LEFT] = margins[MARGIN_LEFT];
+    client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT]; 
+
+    client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STRUTS))
+    {
+        workspaceGetArea(client_margins, NULL, c);
+    }
+
+    left = (leftMostHead ? (int)client_margins[MARGIN_LEFT] : 0);
+    right = (rightMostHead ? (int)client_margins[MARGIN_RIGHT] : 0);
+    top = (topMostHead ? (int)client_margins[MARGIN_TOP] : 0);
+    bottom = (bottomMostHead ? (int)client_margins[MARGIN_BOTTOM] : 0);
 
     disp_x = MyDisplayX(cx, cy);
     disp_y = MyDisplayY(cx, cy);
@@ -1670,6 +1729,7 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
  */
 static inline void clientKeepVisible(Client * c)
 {
+    CARD32 client_margins[4];
     int cx, cy, left, right, top, bottom;
 
     g_return_if_fail(c != NULL);
@@ -1679,13 +1739,23 @@ static inline void clientKeepVisible(Client * c)
     cx = frameX(c) + (frameWidth(c) >> 1);
     cy = frameY(c) + (frameHeight(c) >> 1);
 
-    left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_LEFT] : 0);
-    right = (isRightMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_RIGHT] : 0);
-    top = (isTopMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_TOP] : 0);
-    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)margins[MARGIN_BOTTOM] : 0);
+    client_margins[MARGIN_TOP] = margins[MARGIN_TOP];
+    client_margins[MARGIN_LEFT] = margins[MARGIN_LEFT];
+    client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT]; 
+    client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
+
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STRUTS))
+    {
+        workspaceGetArea(client_margins, NULL, c);
+    }
+
+    left = (isLeftMostHead(dpy, screen, cx, cy) ? (int)client_margins[MARGIN_LEFT] : 0);
+    right = (isRightMostHead(dpy, screen, cx, cy) ? (int)client_margins[MARGIN_RIGHT] : 0);
+    top = (isTopMostHead(dpy, screen, cx, cy) ? (int)client_margins[MARGIN_TOP] : 0);
+    bottom = (isBottomMostHead(dpy, screen, cx, cy) ? (int)client_margins[MARGIN_BOTTOM] : 0);
 
     /* Translate coodinates to center on physical screen */
-    if((use_xinerama) && (abs(c->x - ((gdk_screen_width() - c->width) / 2)) < 20) && (abs(c->y - ((gdk_screen_height() - c->height) / 2)) < 20))
+    if((use_xinerama) && (abs(c->x - ((XDisplayWidth(dpy, screen) - c->width) / 2)) < 20) && (abs(c->y - ((XDisplayHeight(dpy, screen) - c->height) / 2)) < 20))
     {
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
@@ -1726,6 +1796,7 @@ static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int
 
 static void clientInitPosition(Client * c)
 {
+    CARD32 client_margins[4];
     int test_x = 0, test_y = 0;
     Client *c2;
     int xmax, ymax, best_x, best_y, i, msx, msy;
@@ -1760,11 +1831,21 @@ static void clientInitPosition(Client * c)
         return;
     }
 
+    client_margins[MARGIN_TOP] = margins[MARGIN_TOP];
+    client_margins[MARGIN_LEFT] = margins[MARGIN_LEFT];
+    client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT]; 
+    client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
+
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STRUTS))
+    {
+        workspaceGetArea(client_margins, NULL, c);
+    }
+
     getMouseXY(root, &msx, &msy);
-    left = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
-    right = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
-    top = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
-    bottom = (isBottomMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
+    left = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)client_margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+    right = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)client_margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+    top = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)client_margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+    bottom = (isBottomMostHead(dpy, screen, msx, msy) ? MAX((int)client_margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
 
     frame_x = frameX(c);
     frame_y = frameY(c);
@@ -2271,6 +2352,7 @@ void clientFrame(Window w, gboolean initial)
             clientGravitate(c, APPLY);
         }
     }
+
     /* We must call clientApplyInitialNetState() after having placed the
        window so that the inital position values are correctly set if the
        inital state is maximize or fullscreen
@@ -2681,7 +2763,12 @@ void clientHide(Client * c, gboolean change_state)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-        TRACE("hiding client \"%s\" (0x%lx)", c2->name, c2->window);
+	
+	if (clientIsTransientForGroup(c2) && clientTransientHasAncestor(c2))
+	{
+	    continue;
+	}
+	TRACE("hiding client \"%s\" (0x%lx)", c2->name, c2->window);
 
         XUnmapWindow(dpy, c2->window);
         XUnmapWindow(dpy, c2->frame);
@@ -3681,12 +3768,12 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             if((msx == 0) && params.wrap_workspaces && !wrapped)
             {
-                XWarpPointer(dpy, None, root, 0, 0, 0, 0, gdk_screen_width() - 11, msy);
-                msx = xevent->xmotion.x_root = gdk_screen_width() - 11;
+                XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
+                msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 workspaceSwitch(workspace - 1, c);
                 wrapped = TRUE;
             }
-            else if((msx == gdk_screen_width() - 1) && params.wrap_workspaces && !wrapped)
+            else if((msx == XDisplayWidth(dpy, screen) - 1) && params.wrap_workspaces && !wrapped)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 msx = xevent->xmotion.x_root = 10;

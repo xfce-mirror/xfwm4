@@ -166,35 +166,62 @@ void workspaceSetCount(int count)
     set_net_workarea(dpy, root, params.workspace_count, margins);
 }
 
-void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
+void workspaceGetArea(CARD32 * m1, CARD32 * m2, Client * c)
 {
-    Client *c;
+    Client *c2;
     int i;
-    int prev_top = margins[MARGIN_TOP];
-    int prev_left = margins[MARGIN_LEFT];
-    int prev_right = margins[MARGIN_RIGHT];
-    int prev_bottom = margins[MARGIN_BOTTOM];
 
-    TRACE("entering workspaceSetCount");
+    TRACE("entering workspaceGetArea");
+    
+    g_return_if_fail (m1 != NULL);
 
     for(i = 0; i < 4; i++)
     {
-        margins[i] = gnome_margins[i];
+        if (m2 == NULL)
+	{
+	    m1[i] = 0;
+	}
+	else
+	{
+	    m1[i] = m2[i];
+	}
     }
-    for(c = clients, i = 0; i < client_count; c = c->next, i++)
+    
+    for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STRUTS | CLIENT_FLAG_VISIBLE))
+        if(((!c) || (c != c2)) && CLIENT_FLAG_TEST_ALL(c2, CLIENT_FLAG_HAS_STRUTS | CLIENT_FLAG_VISIBLE))
         {
-            margins[MARGIN_TOP] = MAX(margins[MARGIN_TOP], c->struts[MARGIN_TOP]);
-            margins[MARGIN_LEFT] = MAX(margins[MARGIN_LEFT], c->struts[MARGIN_LEFT]);
-            margins[MARGIN_RIGHT] = MAX(margins[MARGIN_RIGHT], c->struts[MARGIN_RIGHT]);
-            margins[MARGIN_BOTTOM] = MAX(margins[MARGIN_BOTTOM], c->struts[MARGIN_BOTTOM]);
+            m1[MARGIN_TOP] = MAX(m1[MARGIN_TOP], c2->struts[MARGIN_TOP]);
+            m1[MARGIN_LEFT] = MAX(m1[MARGIN_LEFT], c2->struts[MARGIN_LEFT]);
+            m1[MARGIN_RIGHT] = MAX(m1[MARGIN_RIGHT], c2->struts[MARGIN_RIGHT]);
+            m1[MARGIN_BOTTOM] = MAX(m1[MARGIN_BOTTOM], c2->struts[MARGIN_BOTTOM]);
         }
     }
-    TRACE("Desktop area computed : (%d,%d,%d,%d)", (int)margins[0], (int)margins[1], (int)margins[2], (int)margins[3]);
-    if((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
+}
+
+void workspaceUpdateArea(CARD32 * m1, CARD32 * m2)
+{
+    int prev_top;
+    int prev_left;
+    int prev_right;
+    int prev_bottom;
+    
+    g_return_if_fail (m1 != NULL);
+    g_return_if_fail (m2 != NULL);
+
+    TRACE("entering workspaceUpdateArea");
+    
+    prev_top = m1[MARGIN_TOP];
+    prev_left = m1[MARGIN_LEFT];
+    prev_right = m1[MARGIN_RIGHT];
+    prev_bottom = m1[MARGIN_BOTTOM];
+    
+    workspaceGetArea(m1, m2, NULL);
+    
+    TRACE("Desktop area computed : (%d,%d,%d,%d)", (int)m1[0], (int)m1[1], (int)m1[2], (int)m1[3]);
+    if((prev_top != m1[MARGIN_TOP]) || (prev_left != m1[MARGIN_LEFT]) || (prev_right != m1[MARGIN_RIGHT]) || (prev_bottom != m1[MARGIN_BOTTOM]))
     {
         TRACE("Margins have changed, updating net_workarea");
-        set_net_workarea(dpy, screen, params.workspace_count, margins);
+        set_net_workarea(dpy, screen, params.workspace_count, m1);
     }
 }
