@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   id="svg727"
+   sodipodi:version="0.33"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="128pt"
+   height="128pt"
+   sodipodi:docbase="/home/francois/waiting/new_theme/scalable"
+   sodipodi:docname="/home/francois/waiting/new_theme/scalable/wksp.svg">
+  <defs
+     id="defs729" />
+  <sodipodi:namedview
+     id="base"
+     showgrid="true"
+     snaptogrid="true"
+     gridspacingx="1mm"
+     gridspacingy="1mm" />
+  <rect
+     style="font-size:12.000;fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:3.750000;fill-opacity:0.4603;"
+     id="rect741"
+     width="145.2756"
+     height="145.2756"
+     x="10.62991"
+     y="11.18108" />
+  <rect
+     style="font-size:12.000;fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:3.750000;"
+     id="rect731"
+     width="145.2756"
+     height="145.2756"
+     x="3.543307"
+     y="4.094477" />
+  <rect
+     style="font-size:12.000;fill:#979796;fill-rule:evenodd;stroke-width:1;fill-opacity:1.0000;"
+     id="rect735"
+     width="63.77953"
+     height="63.77953"
+     x="10.62992"
+     y="11.18109" />
+  <rect
+     style="font-size:12.000;fill:#979796;fill-rule:evenodd;stroke-width:1;fill-opacity:1.0000;"
+     id="rect737"
+     width="63.77953"
+     height="63.77953"
+     x="77.95276"
+     y="11.18109" />
+  <rect
+     style="font-size:12.000;fill:#979796;fill-rule:evenodd;stroke-width:1;fill-opacity:1.0000;"
+     id="rect738"
+     width="63.77953"
+     height="63.77953"
+     x="10.62992"
+     y="78.50391" />
+  <rect
+     style="font-size:12.000;fill:#979796;fill-rule:evenodd;stroke-width:1;fill-opacity:1.0000;"
+     id="rect740"
+     width="63.77953"
+     height="63.77953"
+     x="77.95276"
+     y="78.50391" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-width:2.5000;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 10.62992 67.87401 L 74.40945 67.87401 "
+     id="path742" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-width:2.5000;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 77.95276 67.87401 L 141.7323 67.87401 "
+     id="path743" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-width:2.5000;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 77.95276 135.1968 L 141.7323 135.1968 "
+     id="path744" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-width:2.5000;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 10.62991 135.1968 L 74.40945 135.1968 "
+     id="path745" />
+  <path
+     style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.5000;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 67.32284 11.18111 L 67.32284 74.96063 "
+     id="path746" />
+  <path
+     style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.5000;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 134.6457 11.18111 L 134.6457 74.96063 "
+     id="path747" />
+  <path
+     style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.5000;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 134.6457 78.50395 L 134.6457 142.2835 "
+     id="path748" />
+  <path
+     style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.5000;stroke-dasharray:5.000000,5.000000;stroke-dashoffset:0;"
+     d="M 67.32284 78.50391 L 67.32284 142.2835 "
+     id="path749" />
+</svg>

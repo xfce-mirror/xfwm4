@@ -93,6 +93,9 @@ doc/fr/images/Makefile
 doc/it/Makefile
 doc/it/images/Makefile
 defaults/Makefile
+icons/Makefile
+icons/48x48/Makefile
+icons/scalable/Makefile
 mcs-plugin/Makefile
 po/Makefile.in 
 src/Makefile

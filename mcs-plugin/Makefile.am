@@ -76,13 +76,6 @@ desktop_DATA =								\
 	xfce-wm-settings.desktop					\
 	xfce-workspaces-settings.desktop
 
-iconsdir = $(datadir)/icons/hicolor/48x48/apps
-icons_DATA =								\
-	xfce4-keys.png							\
-	xfce4-workspaces.png						\
-	xfwm4.png
-
 EXTRA_DIST =								\
 	$(desktop_DATA)							\
-	$(icons_DATA)							\
 	$(noinst_DATA)
