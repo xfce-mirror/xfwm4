@@ -3,7 +3,7 @@ static char * close_pressed_xpm[] = {
 "16 20 60 1",
 " 	c None",
 ".	c #000000",
-"+	c #FFFFFF",
+"+	c #DCAEA2",
 "@	c #9E6454",
 "#	c #B87E6E",
 "$	c #9A6252",

@@ -3,7 +3,7 @@ static char * top_right_active_xpm[] = {
 "8 32 33 1",
 " 	c None",
 ".	c #000000",
-"+	c #FFFFFF",
+"+	c #DCAEA2",
 "@	c #B1705E",
 "#	c #6E493F",
 "$	c #AC6E5C",
