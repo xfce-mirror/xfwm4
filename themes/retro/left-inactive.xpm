@@ -6,7 +6,7 @@ static char * left_inactive_xpm[] = {
 "+	c #D8D3CB",
 "@	c #D3D0C7",
 "#	c #C7C1B8",
-"$	c #BBB5AA",
+"$	c #9A9489",
 ".+@#$.",
 ".+@#$.",
 ".+@#$.",
