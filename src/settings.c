@@ -144,8 +144,8 @@ void loadSettings()
 
     widget = getDefaultGtkWidget();
 
-    rc[0].value = get_style(widget, "text", "selected");
-    rc[1].value = get_style(widget, "text", "normal");
+    rc[0].value = get_style(widget, "fg", "selected");
+    rc[1].value = get_style(widget, "fg", "normal");
     rc[2].value = get_style(widget, "fg", "active");
     rc[3].value = get_style(widget, "fg", "normal");
     rc[4].value = get_style(widget, "bg", "selected");
