@@ -613,7 +613,7 @@ clientInitPosition (Client * c)
     }
     c->x = best_x;
     c->y = best_y;
-
     clientAutoMaximize (c);
+
     return;
 }
