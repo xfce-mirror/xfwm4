@@ -40,6 +40,17 @@ AC_DEFUN([XFCE_PANEL_PLUGIN],
 [
   BM_DEPEND([$1], [xfce4-panel-1.0], [$2])
 
+  dnl Check if the panel is threaded
+  ac_CFLAGS=$$1_CFLAGS
+  AC_MSG_CHECKING([whether the panel is threaded])
+  if $PKG_CONFIG --atleast-version=4.1.8 xfce4-panel-1.0; then
+    $1_CFLAGS="$ac_CFLAGS -DXFCE_PANEL_THREADED=1 -DXFCE_PANEL_LOCK\(\)=gdk_threads_enter\(\) -DXFCE_PANEL_UNLOCK\(\)=gdk_threads_leave\(\)"
+    AC_MSG_RESULT([yes])
+  else
+    $1_CFLAGS="$ac_CFLAGS -DXFCE_PANEL_LOCK\(\)=do{}while\(0\) -DXFCE_PANEL_UNLOCK\(\)=do{}while\(0\)"
+    AC_MSG_RESULT([no])
+  fi
+
   dnl Check where to put the plugins to
   AC_ARG_WITH([pluginsdir],
 AC_HELP_STRING([--with-pluginsdir=DIR], [Install plugins dir DIR]),
@@ -47,22 +58,6 @@ AC_HELP_STRING([--with-pluginsdir=DIR], [Install plugins dir DIR]),
 [$1_PLUGINSDIR=`$PKG_CONFIG --variable=pluginsdir xfce4-panel-1.0`])
 
   AC_MSG_CHECKING([where to install panel plugins])
-  AC_SUBST([$1_PLUGINSDIR])
-  AC_MSG_RESULT([$$1_PLUGINSDIR])
-])
-
-dnl
-dnl XFCE_MCS_PLUGIN(var, version)
-dnl
-dnl sets $var_CFLAGS, $var_LIBS and $var_PLUGINSDIR
-dnl
-AC_DEFUN([XFCE_MCS_PLUGIN],
-[
-  BM_DEPEND([$1], [xfce-mcs-manager], [$2])
-
-  dnl Check where to put the plugins to
-  AC_MSG_CHECKING([where to install MCS plugins])
-  $1_PLUGINSDIR=`$PKG_CONFIG --variable=pluginsdir xfce-mcs-manager`
   AC_SUBST([$1_PLUGINSDIR])
   AC_MSG_RESULT([$$1_PLUGINSDIR])
 ])
