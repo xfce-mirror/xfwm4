@@ -1,3 +1,124 @@
+2002-07-24 xfce
+
+	* themes/redmond/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: Theme tweaking.
+
+2002-07-23 xfce
+
+	* src/client.c: Last tweakings. Should be back to a fairly stable
+	state now...
+
+2002-07-23 xfce
+
+	* src/events.c: Comments
+
+2002-07-23 xfce
+
+	* src/: events.c, menu.c, menu.h: [no log message]
+
+2002-07-23 xfce
+
+	* src/: client.c, client.h, events.c, misc.c: Some more tweaking in
+	event management (specifically button press/release).
+
+2002-07-23 xfce
+
+	* src/menu.c: [no log message]
+
+2002-07-23 xfce
+
+	* src/: client.c, client.h, events.c, menu.c, menu.h, misc.c,
+	misc.h, settings.c: Bunch of changes, some being tricky. Still
+	handle with care (although things are getting better now)
+
+2002-07-22 xfce
+
+	* src/events.c: [no log message]
+
+2002-07-22 xfce
+
+	* src/events.c: [no log message]
+
+2002-07-22 xfce
+
+	* src/events.c: Improve double click management.
+
+2002-07-22 xfce
+
+	* src/events.c: Whoops! Typos in g_return_if_fail() causing
+	troubles...
+
+2002-07-22 xfce
+
+	* src/events.c: Change time in grabs for double click to use event
+	time instead of CurrentTime
+
+2002-07-21 xfce
+
+	* src/: client.c, events.c: Implement a much smarter way of
+	detecting double clicks, and implement double click on menu button
+	= close.
+
+2002-07-21 xfce
+
+	* src/client.c: While we're at it, use the tmp event window to grab
+	the keyboard too.
+
+2002-07-21 xfce
+
+	* src/client.c: Implement a patch for kde 2.1alpha1 (experimental)
+	published on xfree86 mailing list to speedup move/resize.
+
+2002-07-20 xfce
+
+	* src/events.c: Change the click=raise+focus policy. Alt+click not
+	necessarily raise and focus window (unless click occurs in the
+	frame)
+
+2002-07-20 xfce
+
+	* themes/iceg/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	left-active.xpm, left-inactive.xpm, right-active.xpm,
+	right-inactive.xpm: Enlarge border for iceg theme
+
+2002-07-20 xfce
+
+	* src/events.c: Improve button press callback handler
+
+2002-07-20 xfce
+
+	* src/: client.c, events.c, main.c, menu.c: Change event mask to
+	avoid side effects on gtk menu.
+
+2002-07-19 xfce
+
+	* src/client.c: Cleanup/finishing up previous fix.
+
+2002-07-19 xfce
+
+	* src/: client.c, events.c, main.c: Fixed a really tricky problem
+	with mouse button events (causing trouble to dosemu) Handle with
+	care.
+
+2002-07-18 xfce
+
+	* themes/kde/themerc: [no log message]
+
+2002-07-18 xfce
+
+	* themes/kde/title-3-active.xpm: Remove the "dots" on title active
+	(I really prefer flat, slick look)
+
+2002-07-18 xfce
+
+	* ChangeLog: Update ChangeLog
+
 2002-07-18 xfce
 
 	* src/settings.c: Use proper GTK color for active title text.
