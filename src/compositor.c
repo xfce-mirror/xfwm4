@@ -40,8 +40,14 @@
 #define WINDOW_TRANS    1
 #define WINDOW_ARGB     2
 
+#ifndef SHADOW_RADIUS
 #define SHADOW_RADIUS   5
+#endif /* SHADOW_RADIUS */
+
+#ifndef SHADOW_OPACITY
 #define SHADOW_OPACITY  0.50
+#endif /* SHADOW_OPACITY */
+
 #define SHADOW_OFFSET_X (-SHADOW_RADIUS * 5 / 4)
 #define SHADOW_OFFSET_Y (-SHADOW_RADIUS * 5 / 4)
 #define OPAQUE          0xffffffff
@@ -762,7 +768,6 @@ get_window_picture (CWindow *cw)
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
     Drawable draw = cw->id;
-    Picture p;
     
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -1090,15 +1095,6 @@ get_opacity_prop(CWindow *cw, guint def)
         return i;
     }
     return def;
-}
-
-static double
-get_opacity_percent(CWindow *cw, double def)
-{
-    guint opacity = get_opacity_prop (cw, (guint) (OPAQUE * def));
-
-    TRACE ("entering get_opacity_percent");    
-    return opacity * 1.0 / OPAQUE;
 }
 
 static void
