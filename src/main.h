@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -25,6 +25,10 @@
 #  include "config.h"
 #endif
 
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -52,8 +56,9 @@
  */
 
 extern char *progname;
+extern Time last_timestamp;
 extern Display *dpy;
-extern Window root, gnome_win, sidewalk[2];
+extern Window root, gnome_win, systray, sidewalk[2];
 extern Screen *xscreen;
 extern int screen;
 extern int depth;

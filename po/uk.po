@@ -1,0 +1,414 @@
+# Ukrainian translation of xfwm4.
+# Copyright (C) Free Software Foundation
+# This file is distributed under the same license as the xfwm4 package.
+# Maxim Dziumanenko <mvd@mylinux.com.ua>, 2003.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
+"PO-Revision-Date: 2003-10-26 15:12+0200\n"
+"Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Поля стільниці"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "Корегування полів робочої області"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Поля - це області на краях екрану, у яких не розташовуватимуться вікна"
+
+#: mcs-plugin/margins_plugin.c:281
+msgid "Left :"
+msgstr "Зліва:"
+
+#: mcs-plugin/margins_plugin.c:301
+msgid "Right :"
+msgstr "Справа:"
+
+#: mcs-plugin/margins_plugin.c:321
+msgid "Top :"
+msgstr "Згори:"
+
+#: mcs-plugin/margins_plugin.c:341
+msgid "Bottom :"
+msgstr "Знизу:"
+
+#: mcs-plugin/xfwm4_plugin.c:116
+msgid "Title"
+msgstr "Заголовок"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "Меню"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "Приліплення"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "Затінення"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "Приховування"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "Максимізація"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "Закривання"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr "Затінити вікно"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "Приховати вікно"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "Максимізувати вікно"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "Нічого не робити"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "Зліва"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "По центру"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "Справа"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Прихована"
+
+#: mcs-plugin/xfwm4_plugin.c:1206
+msgid "Font Selection Dialog"
+msgstr "Вибір шрифту"
+
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+msgid "Window Manager"
+msgstr "Менеджер вікон"
+
+#: mcs-plugin/xfwm4_plugin.c:1288
+msgid "Window Manager Preferences"
+msgstr "Властивості менеджера вікон"
+
+#: mcs-plugin/xfwm4_plugin.c:1325
+msgid "Title font"
+msgstr "Шрифт заголовка"
+
+#: mcs-plugin/xfwm4_plugin.c:1338
+msgid "Title Alignment"
+msgstr "Вирівнювання заголовку"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "Вирівнювання тексту всередині заголовка:"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
+msgid "Button layout"
+msgstr "Розташування кнопок"
+
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "Стиль оздоблення"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "Комбінації клавіш"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Focus model"
+msgstr "Модель передачі фокусу"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr "При клацанні"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr "Фокус слідкує за мишею"
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr "Фокусування нових вікон"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Автоматично передавати фокус \n"
+"створюваним новим вікнам"
+
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "Піднімання при передачі фокусу"
+
+#: mcs-plugin/xfwm4_plugin.c:1451
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Автоматично піднімати вікно при \n"
+"отриманні ним фокусу"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Delay before raising focused window :"
+msgstr "Затримка перед підніманням вікна з фокусом:"
+
+#: mcs-plugin/xfwm4_plugin.c:1472
+msgid "Slow"
+msgstr "Повільно"
+
+#: mcs-plugin/xfwm4_plugin.c:1480
+msgid "Fast"
+msgstr "Швидко"
+
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "Піднімання при клацанні"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Піднімати вікно при клацанні у середині \n"
+"вікна програми"
+
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr "Клавіатура та фокус"
+
+#: mcs-plugin/xfwm4_plugin.c:1530
+msgid "Windows snapping"
+msgstr "Припасування вікон"
+
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "Припасовувати вікна до меж екрана"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "Припасовувати вікна до інших вікон"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "Відстань:"
+
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "Маленька"
+
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr "Велика"
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "Загортання робочих областей"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Переходити на іншу робочу область при досягненні межі екрану"
+
+#: mcs-plugin/xfwm4_plugin.c:1618
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr ""
+"Переходити на іншу робочу область при перетягуванні вікна за межі екрану"
+
+#: mcs-plugin/xfwm4_plugin.c:1630
+msgid "Edge Resistance :"
+msgstr "Область нечутливості до переносу:"
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+msgid "Opaque move and resize"
+msgstr "Непрозоре переміщення та зміна розмірів "
+
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "Відображати вміст вікон при зміні розміру"
+
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "Відображати вміст вікон при переміщенні"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
+msgid "Double click action"
+msgstr "Дія при подвійному клацанні"
+
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Дія, що виконується при подвійному клацанні на заголовку:"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
+msgid "Advanced"
+msgstr "Додатково"
+
+#: src/client.c:528
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: необроблене net_wm_state (вікно 0x%lx)"
+
+#: src/events.c:1492
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Операція не підтримується (поки-що)\n"
+
+#: src/main.c:228
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Фатальна помилка"
+
+#: src/main.c:404
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Вже активний інший менеджер вікон"
+
+#: src/main.c:409
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: відсутні дані з типових файлів"
+
+#: src/main.c:436
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Виникла невідома помилка"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "М_аксимізувати"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "М_інімізувати"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "При_ховати"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Приховати _всі інші"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "_Показати"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "За_тінити"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "Роз_тінити"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "При_ліпити"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Від_ліпити"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Відправити на..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Закрити"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Знищити"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "Ви_йти"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Перезапустити"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Робочу область %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
+
+#: src/settings.c:289
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Відсутній файл з типовими значеннями"
+
+#: src/settings.c:516
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Неможливо зарезервувати активний колір %s\n"
+
+#: src/settings.c:523
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Неможливо проаналізувати активний колір %s\n"
+
+#: src/settings.c:567
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Неможливо зарезервувати неактивний колір %s\n"
+
+#: src/settings.c:574
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Неможливо проаналізувати неактивний колір %s\n"
+
+#: src/settings.c:762
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: вказаний ключ теми \"%s\" не існує, використовується типовий"
+
+#: src/settings.c:772
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Відсутні значення у файлі з типовими значеннями"
+
+#: src/settings.c:1119
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr ""
+"%s: Лічильник робочих областей не встановлено, використовується значення: %i"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Перемикнутись на ..."

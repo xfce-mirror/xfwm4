@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -105,19 +105,19 @@ createGC (Colormap cmap, char *col, int func, XFontStruct * font,
 }
 
 void
-sendClientMessage (Window w, Atom a, long x, int mask)
+sendClientMessage (Window w, Atom a, Atom x, Time timestamp)
 {
-    XEvent ev;
+    XClientMessageEvent ev;
 
     TRACE ("entering sendClientMessage");
 
     ev.type = ClientMessage;
-    ev.xclient.window = w;
-    ev.xclient.message_type = a;
-    ev.xclient.format = 32;
-    ev.xclient.data.l[0] = x;
-    ev.xclient.data.l[1] = CurrentTime;
-    XSendEvent (dpy, w, FALSE, mask, &ev);
+    ev.window = w;
+    ev.message_type = a;
+    ev.format = 32;
+    ev.data.l[0] = x;
+    ev.data.l[1] = timestamp;
+    XSendEvent (dpy, w, FALSE, 0L, (XEvent *)&ev);
 }
 
 void
@@ -149,22 +149,27 @@ MyXUngrabServer (void)
     }
     DBG ("grabs : %i", xgrabcount);
 }
-
+/*
+ * it's safer to grab the display before calling this routine
+ * Returns true if the given window is present and mapped on root 
+ */
 gboolean
 MyCheckWindow(Window w)
 {
-    Window dummy_root;
-    unsigned int dummy_width, dummy_height, dummy_depth, dummy_bw;
-    int dummy_x, dummy_y;
+    Window dummy_root, parent;
+    Window *wins = NULL;
+    unsigned int count;
     Status test;
     
     g_return_val_if_fail (w != None, FALSE);
 
     gdk_error_trap_push ();
-    test = XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y,
-                         &dummy_width, &dummy_height, &dummy_bw, &dummy_depth);
-
-    return (!gdk_error_trap_pop () && (test != 0));
+    test = XQueryTree(dpy, w, &dummy_root, &parent, &wins, &count);
+    if (wins)
+    {
+        XFree (wins);
+    }
+    return (!gdk_error_trap_pop () && (test != 0) && (dummy_root == parent));
 }
 
 Window

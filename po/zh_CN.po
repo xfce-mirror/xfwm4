@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
 "PO-Revision-Date: 2003-07-08 20:52+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
@@ -270,12 +270,12 @@ msgstr "双击标题栏所执行的动作 :"
 msgid "Advanced"
 msgstr "高级"
 
-#: src/client.c:493
-#, fuzzy, c-format
+#: src/client.c:528
+#, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
 
-#: src/events.c:1442
+#: src/events.c:1492
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
@@ -285,17 +285,17 @@ msgstr "%s: 尚不支持的操作\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: 段错误"
 
-#: src/main.c:399
+#: src/main.c:404
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:404
+#: src/main.c:409
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:431
+#: src/main.c:436
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
@@ -366,42 +366,42 @@ msgstr "工作区 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:285
+#: src/settings.c:289
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 缺少默认文件"
 
-#: src/settings.c:510
+#: src/settings.c:516
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:523
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:567
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:574
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:755
+#: src/settings.c:762
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: 指定的主题 \\\"%s\\\" 不存在，使用默认主题"
 
-#: src/settings.c:765
+#: src/settings.c:772
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:1106
+#: src/settings.c:1119
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
@@ -409,6 +409,45 @@ msgstr "%s: 未设置工作区个数，使用rc文件值: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "切换到 ..."
+
+#~ msgid "Workspaces and Margins"
+#~ msgstr "工作区边缘"
+
+#~ msgid "Workspaces"
+#~ msgstr "工作区"
+
+#~ msgid "Margins"
+#~ msgstr "边缘"
+
+#~ msgid "Change name"
+#~ msgstr "改变名称"
+
+#~ msgid "Workspace %d"
+#~ msgstr "工作区 %i"
+
+#~ msgid "Name:"
+#~ msgstr "名称: "
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "点击一个工作区的名称来编辑它"
+
+#~ msgid "Number of workspaces:"
+#~ msgstr "工作区名称: "
+
+#~ msgid "Workspace names"
+#~ msgstr "工作区个数"
+
+#~ msgid "%s: Failed to enter daemon mode: %s"
+#~ msgstr "%s: 无法进入守护进程模式: %s"
+
+#~ msgid "%s: Failed to create new process: %s"
+#~ msgstr "%s: 无法创建新进程: %s"
+
+#~ msgid "Context _help"
+#~ msgstr "上下文帮助(_H)"
+
+#~ msgid "Always on top"
+#~ msgstr "总是置顶"
 
 #~ msgid "Window style"
 #~ msgstr "窗口风格"

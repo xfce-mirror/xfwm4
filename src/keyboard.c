@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -99,6 +99,7 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
     else
     {
         key->keycode = XKeysymToKeycode (dpy, XStringToKeysym (str));
+        key->modifier = 0;
     }
 }
 
@@ -109,9 +110,9 @@ grabKey (Display * dpy, MyKey * key, Window w)
 
     if (key->keycode)
     {
-        if ((key->modifier == AnyModifier) || (key->modifier == 0))
+        if (key->modifier == 0)
         {
-            XGrabKey (dpy, key->keycode, key->modifier, w, FALSE,
+            XGrabKey (dpy, key->keycode, AnyModifier, w, FALSE,
                 GrabModeAsync, GrabModeAsync);
         }
         else
@@ -147,6 +148,80 @@ ungrabKeys (Display * dpy, Window w)
     TRACE ("entering ungrabKeys");
 
     XUngrabKey (dpy, AnyKey, AnyModifier, w);
+}
+
+void
+grabButton (Display * dpy, int button, int modifier, Window w)
+{
+    TRACE ("entering grabButton");
+
+    if (modifier == AnyModifier)
+    {
+        XGrabButton (dpy, button, AnyModifier, w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+    }
+    else
+    {
+        /* Here we grab all combinations of well known modifiers */
+        XGrabButton (dpy, button, modifier, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, modifier | ScrollLockMask, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, modifier | NumLockMask, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, modifier | CapsLockMask, w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, modifier | ScrollLockMask | CapsLockMask, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, modifier | CapsLockMask | NumLockMask, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+        XGrabButton (dpy, button, 
+            modifier | ScrollLockMask | CapsLockMask | NumLockMask, 
+            w, FALSE,
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            None, None);
+    }
+}
+
+void
+ungrabButton (Display * dpy, int button, int modifier, Window w)
+{
+    TRACE ("entering ungrabKeys");
+
+    TRACE ("entering grabButton");
+
+    if (modifier == AnyModifier)
+    {
+        XUngrabButton (dpy, button, AnyModifier, w);
+    }
+    else
+    {
+        /* Here we ungrab all combinations of well known modifiers */
+        XUngrabButton (dpy, button, modifier, w);
+        XUngrabButton (dpy, button, modifier | ScrollLockMask, w);
+        XUngrabButton (dpy, button, modifier | NumLockMask, w);
+        XUngrabButton (dpy, button, modifier | CapsLockMask, w);
+        XUngrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask, w);
+        XUngrabButton (dpy, button, modifier | ScrollLockMask | CapsLockMask, w);
+        XUngrabButton (dpy, button, modifier | CapsLockMask | NumLockMask, w);
+        XUngrabButton (dpy, button, modifier | ScrollLockMask | CapsLockMask | NumLockMask, w);
+    }
 }
 
 void
@@ -269,3 +344,4 @@ initModifiers (Display * dpy)
 
     ButtonKeyMask = KeyMask | ButtonMask;
 }
+

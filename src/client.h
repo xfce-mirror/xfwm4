@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -30,6 +30,7 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
+#include <sys/time.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
@@ -55,11 +56,16 @@
 #define PLACEMENT_MOUSE                 0
 #define PLACEMENT_ROOT                  1
 
-#define CFG_NONE                        0
+#define NO_CFG_FLAG                     0
 #define CFG_CONSTRAINED                 (1<<0)
 #define CFG_REQUEST                     (1<<1)
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
+
+#define NO_FOCUS_FLAG                   0
+#define FOCUS_SORT                      (1<<0)
+#define FOCUS_IGNORE_MODAL              (1<<1)
+#define FOCUS_FORCE                     (1<<2)
 
 #define INCLUDE_HIDDEN                  (1<<0)
 #define INCLUDE_SKIP_FOCUS              (1<<1)
@@ -67,7 +73,7 @@
 #define INCLUDE_SKIP_PAGER              (1<<3)
 #define INCLUDE_SKIP_TASKBAR            (1<<4)
 
-#define UPDATE_NONE                     0
+#define NO_UPDATE_FLAG                  0
 #define UPDATE_KEYGRABS                 (1<<0)
 #define UPDATE_FRAME                    (1<<1)
 #define UPDATE_GRAVITY                  (1<<2)
@@ -136,6 +142,7 @@
 
 #define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_HIDE, CLIENT_FLAG_SKIP_TASKBAR))
 #define CLIENT_CAN_MAXIMIZE_WINDOW(c)   CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE)
+#define CLIENT_CAN_STICK_WINDOW(c)      (!(c->transient_for) && CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_STICK, CLIENT_FLAG_SKIP_TASKBAR))
 
 typedef enum
 {
@@ -180,6 +187,7 @@ struct _Client
     unsigned long win_hints;
     unsigned long win_state;
     unsigned long win_layer;
+    unsigned long serial;
 
     int win_workspace;
     Atom type_atom;
@@ -224,24 +232,24 @@ struct _Client
 };
 
 extern Client *clients;
-extern Window *client_list;
 extern unsigned int client_count;
 
-inline Client *clientGetTransient (Client *);
-inline gboolean clientIsTransient (Client *);
-inline gboolean clientIsModal (Client *);
-inline gboolean clientIsTransientOrModal (Client *);
-inline gboolean clientSameGroup (Client *, Client *);
-inline gboolean clientIsTransientFor (Client *, Client *);
-inline gboolean clientIsModalFor (Client *, Client *);
-inline gboolean clientIsTransientOrModalFor (Client *, Client *);
-inline gboolean clientIsTransientForGroup (Client *);
-inline gboolean clientIsModalForGroup (Client *);
-inline gboolean clientIsTransientOrModalForGroup (Client *);
+Client *clientGetTransient (Client *);
+gboolean clientIsTransient (Client *);
+gboolean clientIsModal (Client *);
+gboolean clientIsTransientOrModal (Client *);
+gboolean clientSameGroup (Client *, Client *);
+gboolean clientIsTransientFor (Client *, Client *);
+gboolean clientIsModalFor (Client *, Client *);
+gboolean clientIsTransientOrModalFor (Client *, Client *);
+gboolean clientIsTransientForGroup (Client *);
+gboolean clientIsModalForGroup (Client *);
+gboolean clientIsTransientOrModalForGroup (Client *);
 void clientSetNetState (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
 void clientUpdateNetState (Client *, XClientMessageEvent *);
-void clientGetNetWmType (Client * c);
+void clientGetNetWmType (Client *);
+void clientPassGrabButton1(Client *);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
 void clientConfigure (Client *, XWindowChanges *, int, unsigned short);
@@ -260,9 +268,13 @@ void clientUpdateColormaps (Client *);
 void clientUpdateAllFrames (gboolean);
 void clientGrabKeys (Client *);
 void clientUngrabKeys (Client *);
+void clientGrabButtons (Client *);
+void clientUngrabButtons (Client *);
+void clientPassGrabButtons(Client *);
 Client *clientGetFromWindow (Window, int);
 Client *clientAtPosition (int, int, Client *);
 Client *clientGetNext (Client *, int);
+Client *clientGetPrevious (Client *, int);
 void clientPassFocus (Client *);
 void clientShow (Client *, gboolean);
 void clientHide (Client *, int, gboolean);
@@ -279,16 +291,16 @@ void clientToggleShaded (Client *);
 void clientStick (Client *, gboolean);
 void clientUnstick (Client *, gboolean);
 void clientToggleSticky (Client *, gboolean);
-inline void clientRemoveMaximizeFlag (Client *);
+void clientRemoveMaximizeFlag (Client *);
 void clientToggleMaximized (Client *, int);
-void clientUpdateFocus (Client *);
-inline gboolean clientAcceptFocus (Client * c);
-void clientSetFocus (Client *, gboolean, gboolean);
+gboolean clientAcceptFocus (Client * c);
+void clientUpdateFocus (Client *, unsigned short);
+void clientSetFocus (Client *, Time, unsigned short);
 Client *clientGetFocus ();
 void clientScreenResize(void);
 void clientMove (Client *, XEvent *);
 void clientResize (Client *, int, XEvent *);
-void clientCycle (Client *);
+void clientCycle (Client *, XEvent *);
 void clientButtonPress (Client *, Window, XButtonEvent *);
 Client *clientGetLeader (Client *);
 GList *clientGetStackList (void);

@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,14 +26,13 @@
 #endif
 
 #include <sys/types.h>
-#include <sys/time.h>
 #include <X11/Xlib.h>
 #include <glib.h>
 
 void getMouseXY (Window, int *, int *);
 Window getMouseWindow (Window);
 GC createGC (Colormap, char *, int, XFontStruct *, int, gboolean);
-void sendClientMessage (Window, Atom, long, int);
+void sendClientMessage (Window, Atom, Atom, Time);
 void MyXGrabServer (void);
 void MyXUngrabServer (void);
 gboolean MyCheckWindow(Window);

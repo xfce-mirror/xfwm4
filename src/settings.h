@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -111,7 +111,9 @@
 #define KEY_SHORTCUT_8                  47
 #define KEY_SHORTCUT_9                  48
 #define KEY_SHORTCUT_10                 49
-#define KEY_COUNT                       50
+#define KEY_LOWER_WINDOW                50
+#define KEY_RAISE_WINDOW                51
+#define KEY_COUNT                       52
 #define NB_KEY_SHORTCUTS                10
 
 #define ALIGN_LEFT                      0

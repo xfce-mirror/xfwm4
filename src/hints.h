@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -176,6 +176,12 @@ extern Atom net_wm_window_type_toolbar;
 extern Atom net_wm_window_type_utility;
 extern Atom net_workarea;
 
+/* Systray similation for older KDE apps */
+extern Atom kde_net_wm_system_tray_window_for;
+extern Atom net_system_tray_manager;
+extern Atom net_system_tray_selection;
+extern Atom net_system_tray_opcode;
+
 void initICCCMHints (Display *);
 unsigned long getWMState (Display *, Window);
 void setWMState (Display *, Window, unsigned long);
@@ -183,6 +189,7 @@ void initMotifHints (Display *);
 PropMwmHints *getMotifHints (Display *, Window);
 unsigned int getWMProtocols (Display *, Window);
 void initGnomeHints (Display *);
+void initSystrayHints (Display *, int);
 gboolean getHint (Display *, Window, Atom, long *);
 void setHint (Display *, Window, Atom, long);
 void getGnomeDesktopMargins (Display *, int, int *);
@@ -198,6 +205,9 @@ void getTransientFor (Display *, int, Window, Window *);
 void getWindowName (Display *, Window, char **);
 gboolean get_utf8_string (Display *, Window, Atom, char **);
 void getWindowName (Display *, Window, char **);
+gboolean checkKdeSystrayWindow(Display *, Window);
+void sendSystrayReqDock(Display *, Window, Window);
+Window getSystrayWindow (Display *);
 gboolean getWindowRole (Display *, Window, char **);
 Window getClientLeader (Display *, Window);
 gboolean getClientID (Display *, Window, char **);

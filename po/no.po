@@ -1,0 +1,413 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Arbeidsplass marginer"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "Juster arbeidsplass marginer"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Marginer er områder på kantene av skjermen hvor ingen vinduer vil vises"
+
+#: mcs-plugin/margins_plugin.c:281
+msgid "Left :"
+msgstr "Venstre :"
+
+#: mcs-plugin/margins_plugin.c:301
+msgid "Right :"
+msgstr "Høyre :"
+
+#: mcs-plugin/margins_plugin.c:321
+msgid "Top :"
+msgstr "Topp :"
+
+#: mcs-plugin/margins_plugin.c:341
+msgid "Bottom :"
+msgstr "Bunn :"
+
+#: mcs-plugin/xfwm4_plugin.c:116
+msgid "Title"
+msgstr "Tittel"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "Meny"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "Sitte fast"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "Skygge"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "Skjul"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "Maksimer"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "Lukk"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr "Skygg vindu"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "Skjul vindu"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "Maksimer vindu"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "Ingenting"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "Venstre"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "Senter"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "Høyre"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Skjult"
+
+#: mcs-plugin/xfwm4_plugin.c:1206
+msgid "Font Selection Dialog"
+msgstr "Skrift utvalg dialog"
+
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+msgid "Window Manager"
+msgstr "Vindu håndterer"
+
+#: mcs-plugin/xfwm4_plugin.c:1288
+msgid "Window Manager Preferences"
+msgstr "Vindu håndterer instillinger"
+
+#: mcs-plugin/xfwm4_plugin.c:1325
+msgid "Title font"
+msgstr "Tittel skrift"
+
+#: mcs-plugin/xfwm4_plugin.c:1338
+msgid "Title Alignment"
+msgstr "Tittel tilpasning"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "Tekst tilpasning inni tittel bar :"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
+msgid "Button layout"
+msgstr "Knapp layout"
+
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "Dekorasjons stil"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "Tastatur snarvei"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Focus model"
+msgstr "Fokus modell"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr "Klikk for fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr "Fokus følger musen"
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr "Ny vindu fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Autmatisk gi fokus til \n"
+"nye vinduer"
+
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "Løft ved fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1451
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Automatisk løft vinduer \n"
+"når de får fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Delay before raising focused window :"
+msgstr "Forsinkelse før løfting av fokusert vindu :"
+
+#: mcs-plugin/xfwm4_plugin.c:1472
+msgid "Slow"
+msgstr "Sakte"
+
+#: mcs-plugin/xfwm4_plugin.c:1480
+msgid "Fast"
+msgstr "Kjapp"
+
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "Løft ved klikk"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Løft vindu når det blir klikket inni\n"
+"program vinudet"
+
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr "Tastatur og fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1530
+msgid "Windows snapping"
+msgstr "Vindu snapping"
+
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "Snapp vinduer til skjerm grense"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "Snapp vinduer til andre vinduer"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "Avstand :"
+
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "Liten"
+
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr "Vidde"
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "Pakke inn arbeidsplasser"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Pakke inn arbeidsplasser når musepekeren når skjermkant"
+
+#: mcs-plugin/xfwm4_plugin.c:1618
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Pakke inn arbeidsplasser når et vindu blir dratt av skjermen"
+
+#: mcs-plugin/xfwm4_plugin.c:1630
+msgid "Edge Resistance :"
+msgstr "Kant motstand :"
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+msgid "Opaque move and resize"
+msgstr "Ugjennomsiktig flytt og redimensjonere"
+
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "Vis innhold av vinder under redimensjonering"
+
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "Vis innhold av vinduer under flytting"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
+msgid "Double click action"
+msgstr "Dobbel klikk handling"
+
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Handling å utføre ved dobbel klikking på tittellinje :"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
+msgid "Advanced"
+msgstr "Avansert"
+
+#: src/client.c:528
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: Uhåndtert net_wm_state (vindu 0x%lx)"
+
+#: src/events.c:1492
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operajson ikke støttet (ennå)\n"
+
+#: src/main.c:228
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Minnesegmentsfeil"
+
+#: src/main.c:404
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: En annen vindushåndterer kjører allerede"
+
+#: src/main.c:409
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Mangler data fra standard filer"
+
+#: src/main.c:436
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Det oppstod en ukjent feil"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "Ma_ksimer"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "U_maksimer"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Skjul"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Skjul _alle andre"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "V_is"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "_Skygge"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "U_skygg"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "S_ette fast"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Sli_pp løs"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Send til..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Lukk"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Ødelegg"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "_Avslutt"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Restart"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Arbeidsområde %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu klarte ikke å gripe musepekeren\n"
+
+#: src/settings.c:289
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Mangler standard fil"
+
+#: src/settings.c:516
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Ikke i stand til å allokere aktiv farge %s\n"
+
+#: src/settings.c:523
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Kan ikke analysere aktiv farge %s\n"
+
+#: src/settings.c:567
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Kan ikke allokere inaktiv farge %s\n"
+
+#: src/settings.c:574
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Kan ikke analysere inaktiv farge %s\n"
+
+#: src/settings.c:762
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: spesifisert nøkkel tema \"%s\" mangler, bruker standard"
+
+#: src/settings.c:772
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Mangler verdier i standard fil"
+
+#: src/settings.c:1119
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: Arbeidsområde teller ikke satt, bruker rc verdi: %i"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Bytt til..."

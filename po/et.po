@@ -1,0 +1,410 @@
+# Estonian translation of xfwm4.
+# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfwm4 package.
+# peeter <Peeter.Vois@mail.ee>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-07 00:29+0200\n"
+"PO-Revision-Date: 2004-02-03 10:04+0200\n"
+"Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
+"Language-Team: Estonian <et@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Tööala ääred"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "Muuda tööala ääri"
+
+#: mcs-plugin/margins_plugin.c:241
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Ääred on alad ekraani äärtes, kuhu aknaid ei panda"
+
+#: mcs-plugin/margins_plugin.c:281
+msgid "Left :"
+msgstr "Vasak :"
+
+#: mcs-plugin/margins_plugin.c:301
+msgid "Right :"
+msgstr "Parem :"
+
+#: mcs-plugin/margins_plugin.c:321
+msgid "Top :"
+msgstr "Ülal :"
+
+#: mcs-plugin/margins_plugin.c:341
+msgid "Bottom :"
+msgstr "All :"
+
+#: mcs-plugin/xfwm4_plugin.c:116
+msgid "Title"
+msgstr "Pealkiri"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Menu"
+msgstr "Menüü"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Stick"
+msgstr "Nael"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Shade"
+msgstr "Varja"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Hide"
+msgstr "Peida"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Maximize"
+msgstr "Suurenda"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Close"
+msgstr "Sulge"
+
+#: mcs-plugin/xfwm4_plugin.c:126
+msgid "Shade window"
+msgstr "Varja aken"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Hide window"
+msgstr "Peida aken"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Maximize window"
+msgstr "Suurenda aken"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Nothing"
+msgstr "Ei midagi"
+
+#: mcs-plugin/xfwm4_plugin.c:134
+msgid "Left"
+msgstr "Vasak"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Center"
+msgstr "Keskel"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Right"
+msgstr "Parem"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Varjatud"
+
+#: mcs-plugin/xfwm4_plugin.c:1206
+msgid "Font Selection Dialog"
+msgstr "Teksti valimise dialoog"
+
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
+msgid "Window Manager"
+msgstr "Akna haldur"
+
+#: mcs-plugin/xfwm4_plugin.c:1288
+msgid "Window Manager Preferences"
+msgstr "Akna halduri seaded"
+
+#: mcs-plugin/xfwm4_plugin.c:1325
+msgid "Title font"
+msgstr "Pealkirja kiri"
+
+#: mcs-plugin/xfwm4_plugin.c:1338
+msgid "Title Alignment"
+msgstr "Pealkirja paigutus"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1344
+msgid "Text alignment inside title bar :"
+msgstr "Teksti paigutus pealkirjas :"
+
+#: mcs-plugin/xfwm4_plugin.c:1349
+msgid "Button layout"
+msgstr "Nuppude asetus"
+
+#: mcs-plugin/xfwm4_plugin.c:1356
+msgid "Decoration style"
+msgstr "Kaunistuse stiil"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Keyboard Shortcut"
+msgstr "Kiirklahvid"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Focus model"
+msgstr "Fookuse mudel"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Click to focus"
+msgstr "Klõpsa fookuseks"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Focus follows mouse"
+msgstr "Fookus järgib hiirt"
+
+#: mcs-plugin/xfwm4_plugin.c:1430
+msgid "New window focus"
+msgstr "Uue akna fookus"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Automaatselt anna fookus \n"
+"uuesti loodud aknale"
+
+#: mcs-plugin/xfwm4_plugin.c:1442
+msgid "Raise on focus"
+msgstr "Tõstmine fookusel"
+
+#: mcs-plugin/xfwm4_plugin.c:1451
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Tõsta aknaid automaatselt,\n"
+"kui nad saavad fookuse"
+
+#: mcs-plugin/xfwm4_plugin.c:1464
+msgid "Delay before raising focused window :"
+msgstr "Viivis enne fokuseeritud akna tõstmist :"
+
+#: mcs-plugin/xfwm4_plugin.c:1472
+msgid "Slow"
+msgstr "Aeglane"
+
+#: mcs-plugin/xfwm4_plugin.c:1480
+msgid "Fast"
+msgstr "Kiire"
+
+#: mcs-plugin/xfwm4_plugin.c:1504
+msgid "Raise on click"
+msgstr "Tõsta klõpsates"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Tõsta aken, kui klõpsatakse\n"
+"akna sees"
+
+#: mcs-plugin/xfwm4_plugin.c:1517
+msgid "Keyboard and focus"
+msgstr "Klaviatuur ja fookus"
+
+#: mcs-plugin/xfwm4_plugin.c:1530
+msgid "Windows snapping"
+msgstr "Akna haakumine"
+
+#: mcs-plugin/xfwm4_plugin.c:1539
+msgid "Snap windows to screen border"
+msgstr "Haagi aknaid ekraani äärtel"
+
+#: mcs-plugin/xfwm4_plugin.c:1548
+msgid "Snap windows to other windows"
+msgstr "Haagi aknaid teistel akendel"
+
+#: mcs-plugin/xfwm4_plugin.c:1561
+msgid "Distance :"
+msgstr "Kaugus :"
+
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
+msgid "Small"
+msgstr "Väike"
+
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
+msgid "Wide"
+msgstr "Lai"
+
+#: mcs-plugin/xfwm4_plugin.c:1600
+msgid "Wrap workspaces"
+msgstr "Töölaua vahetus"
+
+#: mcs-plugin/xfwm4_plugin.c:1609
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Vaheta töölauda, kui nool jõuab akna äärde"
+
+#: mcs-plugin/xfwm4_plugin.c:1618
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Vaheta töölauda, kui akent kantakse üle ekraani ääre"
+
+#: mcs-plugin/xfwm4_plugin.c:1630
+msgid "Edge Resistance :"
+msgstr "Äre vastupanu :"
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+msgid "Opaque move and resize"
+msgstr "Akna liigutamine ja suuruse muutmine"
+
+#: mcs-plugin/xfwm4_plugin.c:1680
+msgid "Display content of windows when resizing"
+msgstr "Näita akna sisu selle suurus muutmisel"
+
+#: mcs-plugin/xfwm4_plugin.c:1688
+msgid "Display content of windows when moving"
+msgstr "Näita akna sisu selle liigutamisel"
+
+#: mcs-plugin/xfwm4_plugin.c:1695
+msgid "Double click action"
+msgstr "Topeltklõpsu tegevus"
+
+#: mcs-plugin/xfwm4_plugin.c:1701
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
+
+#: mcs-plugin/xfwm4_plugin.c:1706
+msgid "Advanced"
+msgstr "Edendatud"
+
+#: src/client.c:528
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: manageerimatu net_wm_state (window 0x%lx)"
+
+#: src/events.c:1492
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operatsioon pole (veel) toetatud\n"
+
+#: src/main.c:228
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: segmendi viga"
+
+#: src/main.c:404
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Teine akna haldur juba töötab"
+
+#: src/main.c:409
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Puuduvad andmed vaikimisi failidest"
+
+#: src/main.c:436
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Juhtus tundmatu viga"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "_Suurenda"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "_Taassuurenda"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "_Peida"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Peida _kõik teised"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "_Näita"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "_Varja"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "Taas_varja"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "N_aeluta"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "_Eemalda nael"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Saada ..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "_Sulge"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Hävita"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "Vä_lja"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Restart"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Töölaud %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: 'GtkMenu'-l ebaõnnestus noole haaramine\n"
+
+#: src/settings.c:289
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Puudub algandmete fail"
+
+#: src/settings.c:516
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Ei suutnud tekitada aktiivse värvi %s\n"
+
+#: src/settings.c:523
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Ei suutnud parsida aktiivse värvi %s\n"
+
+#: src/settings.c:567
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Ei suutnud tekitada aktiivitu värvi %s\n"
+
+#: src/settings.c:574
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Ei suutnud parsida aktiivitu värvi %s\n"
+
+#: src/settings.c:762
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: määratud klahvi teema \"%s\" puudub, kasutan vaikimist"
+
+#: src/settings.c:772
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Puuduvad väärtused algandmete failis"
+
+#: src/settings.c:1119
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: Töölaudade hulk pole määratud, kasutan rc väärtust: %i"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Lülitu ..."

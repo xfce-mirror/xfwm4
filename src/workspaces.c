@@ -1,8 +1,8 @@
 /*
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; You may only use version 2 of the License,
-        you have no option to use any other version.
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
  
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -47,7 +47,6 @@ workspaceSwitch (int new_ws, Client * c2)
     int rx, ry, wx, wy;
     unsigned int mask;
     unsigned long data[1];
-    XEvent an_event;
 
     TRACE ("entering workspaceSwitch");
 
@@ -64,6 +63,10 @@ workspaceSwitch (int new_ws, Client * c2)
     {
         return;
     }
+
+    /* Grab the pointer to avoid side effects with EnterNotify events */
+    XGrabPointer (dpy, gnome_win, FALSE, EnterWindowMask, GrabModeAsync,
+                       GrabModeAsync, None, None, GDK_CURRENT_TIME);
 
     workspace = new_ws;
     if (c2)
@@ -84,7 +87,7 @@ workspaceSwitch (int new_ws, Client * c2)
             if (c == previous)
             {
                 CLIENT_FLAG_SET (previous, CLIENT_FLAG_FOCUS);
-                clientSetFocus (NULL, FALSE, TRUE);
+                clientSetFocus (NULL, GDK_CURRENT_TIME, FOCUS_IGNORE_MODAL);
             }
             if (!clientIsTransientOrModal (c))
             {
@@ -148,15 +151,13 @@ workspaceSwitch (int new_ws, Client * c2)
     XChangeProperty (dpy, root, net_current_desktop, XA_CARDINAL, 32,
         PropModeReplace, (unsigned char *) data, 1);
     workspaceUpdateArea (margins, gnome_margins);
-    XSync (dpy, FALSE);
+
+    /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
+    XUngrabPointer (dpy, GDK_CURRENT_TIME);
+
     if (!(params.click_to_focus))
     {
-        /* Just get rid of EnterNotify events when using focus follow mouse */
-        while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
-            ; /* VOID */
-        if (!(c2)
-            && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
-                    &mask)))
+        if (!(c2) && (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
         {
             c = clientAtPosition (rx, ry, NULL);
             if (c)
@@ -165,7 +166,7 @@ workspaceSwitch (int new_ws, Client * c2)
             }
         }
     }
-    clientSetFocus (new_focus, TRUE, FALSE);
+    clientSetFocus (new_focus, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
 }
 
 void
