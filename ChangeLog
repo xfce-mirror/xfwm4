@@ -1,3 +1,133 @@
+2003-08-26 09:12  huysmans
+
+	* po/: ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
+	es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po,
+	ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo,
+	nl.po, pl.gmo, pl.po, ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	xfwm4.pot, zh_CN.gmo, zh_CN.po: Update version numbers and po files
+	for release
+
+2003-08-25 23:38  xfce
+
+	* themes/default/: bottom-active.xpm, bottom-inactive.xpm,
+	right-active.xpm, right-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Smoothen frame shadow on default theme
+
+2003-08-25 07:22  xfce
+
+	* src/: client.c, events.c, misc.c, misc.h, workspaces.c: Remove
+	the "stashEventTime()" and "getEventTime()" functions as it causes
+	more trouble than it fixes.
+
+2003-08-24 22:44  xfce
+
+	* src/workspaces.c: Fix focus on transients not being restored on
+	w/s switch
+
+2003-08-24 20:49  xfce
+
+	* src/events.c: Fix focus on desktop switch
+
+2003-08-24 18:46  xfce
+
+	* src/: client.c, client.h, events.c: Fix focus problem with
+	Motif/Lesstif apps
+
+2003-08-24 15:49  xfce
+
+	* src/: client.c, client.h, events.c: Reimplement MapRequest
+	handling in a cleaner way.
+
+2003-08-17 13:36  huysmans
+
+	* configure, configure.ac, po/lt.gmo, po/lt.po: Add lithuanian
+	translations
+
+2003-08-14 20:15  xfce
+
+	* src/: client.c, events.c: Simplify the mapping/unmapping
+	management and bug fixes
+
+2003-08-14 02:09  xfce
+
+	* po/xfwm4.pot: Update
+
+2003-08-14 02:06  xfce
+
+	* src/: client.c, events.c: Even more changes and fixes (I hope)
+
+2003-08-13 07:39  xfce
+
+	* src/: client.c, events.c, events.h, misc.c, misc.h, workspaces.c:
+	Code reorg.
+
+2003-08-13 01:17  xfce
+
+	* src/: client.c, events.c: Unset CLIENT_FLAG_MAPPED when
+	iconifying (and only then)
+
+2003-08-13 00:49  xfce
+
+	* src/: client.c, client.h, events.c, events.h, menu.c, misc.c,
+	workspaces.c: Adopt a MapRequest/MapNotify/UnmapNotify scheme that
+	is similar to xfwm3 that was rock solid...
+
+2003-08-12 13:14  xfce
+
+	* src/client.c: Send configure notify after resizing
+
+2003-08-12 07:42  xfce
+
+	* src/client.c: Remove some XSync() calls that were introduced in
+	the debug process lately.
+
+2003-08-12 00:04  xfce
+
+	* src/: client.c, client.h, events.c, hints.c, hints.h, main.c,
+	settings.c, workspaces.c: A deseperate attempt to fix remaining
+	bugs in xfwm4
+
+2003-08-10 21:54  huysmans
+
+	* po/: zh_CN.gmo, zh_CN.po: Update chinese translations
+
+2003-08-08 07:57  xfce
+
+	* src/events.c: Bug fixes in MapNotify handler
+
+2003-08-08 01:09  xfce
+
+	* src/: client.c, hints.c, misc.c, misc.h: Revert to an old (and
+	probably safer) way of framing new windows.
+
+2003-08-08 00:09  huysmans
+
+	* aclocal.m4, configure, po/ca.gmo, po/ca.po: Update catalan
+	translations
+
+2003-08-07 22:24  huysmans
+
+	* src/hints.c: Revert changes
+
+2003-08-06 23:06  xfce
+
+	* src/client.c: Small optimization
+
+2003-08-06 23:02  xfce
+
+	* src/: client.c, client.h, events.c: Try to address the reparent
+	bug...
+
+2003-08-04 20:17  xfce
+
+	* configure, configure.ac, po/ko.gmo, po/ko.po, themes/bbs/themerc:
+	Add Korean translation from ByungHyun Choi
+	<byunghyunchoi@hotmail.com>
+
+2003-08-03 20:45  bmeurer
+
+	* ChangeLog: Updated ChangeLogs
+
 2003-08-03 20:37  bmeurer
 
 	* m4/X11.m4: grep -q does not work with Solaris grep, fixed it.
