@@ -1255,7 +1255,6 @@ handleFocusIn (XFocusChangeEvent * ev)
            window has vanished and the focus is returned to the root
          */
         c = clientGetFocus ();
-        XSync(dpy, FALSE);
         if (c)
         {
             clientSetFocus (c, FOCUS_FORCE);
