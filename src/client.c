@@ -1978,7 +1978,8 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         {
             if ((c->win_layer <= layer) && clientAcceptFocus (c)
                 && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE)
-                && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
+                && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK))
+                && clientSelectMask (c, 0))
             {
                 top = c;
             }
@@ -3819,7 +3820,7 @@ clientPassFocus (Client * c)
     Client *c2;
     Window dr, window;
     int rx, ry, wx, wy;
-    unsigned int i, mask;
+    unsigned int mask;
     int look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
 
     TRACE ("entering clientPassFocus");
