@@ -98,7 +98,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     g_return_val_if_fail (ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
     
-    XFlush (dpy, 0);
+    XFlush (dpy);
     g = XGrabPointer (dpy, w, FALSE, DBL_CLICK_GRAB, GrabModeAsync,
         GrabModeAsync, None, None, ev->xbutton.time);
     if (g != GrabSuccess)
@@ -146,7 +146,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
         }
     }
     XUngrabPointer (dpy, ev->xbutton.time);
-    XFlush (dpy, 0);
+    XFlush (dpy);
     return (XfwmButtonClickType) clicks;
 }
 
