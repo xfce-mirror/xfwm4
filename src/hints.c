@@ -554,11 +554,24 @@ void set_utf8_string_hint(Display * dpy, Window w, Atom atom, const char *val)
     XChangeProperty(dpy, w, atom, utf8_string, 8, PropModeReplace, (unsigned char *)val, strlen(val) + 1);
 }
 
-void getTransientFor(Display * dpy, Window w, Window * transient_for)
+void getTransientFor(Display * dpy, int screen, Window w, Window * transient_for)
 {
     TRACE("entering getTransientFor");
 
-    if(!XGetTransientForHint(dpy, w, transient_for) || (*transient_for == w))
+    if(XGetTransientForHint(dpy, w, transient_for))
+    {
+        if (transient_for == None)
+	{
+	    /* Treat transient for "none" same as transient for root */
+	    *transient_for = RootWindow(dpy, screen);
+	}
+	else if (transient_for == w)
+	{
+            /* Very unlikely to happen, but who knows, maybe a braindead app */
+	    *transient_for = None;
+	}
+    }
+    else
     {
         *transient_for = None;
     }

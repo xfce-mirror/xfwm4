@@ -959,22 +959,26 @@ static void clientWindowType(Client * c)
     }
     if(c->transient_for)
     {
-        Client *c2;
 
         TRACE("Window is a transient");
-        c2 = clientGetFromWindow(c->transient_for, WINDOW);
-        if(c2)
+        if (c->transient_for == root)
         {
-            c->initial_layer = c2->win_layer;
-        }
-	else if (c->transient_for == root)
-	{
             TRACE("window is transient  for root window");
             c->initial_layer = WIN_LAYER_ONTOP;
             CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
-	    /* Remove the transient field now */
-	    c->transient_for = None;
-	}
+            /* Remove the transient field now */
+            c->transient_for = None;
+        }
+        else
+        {
+            Client *c2;
+            
+            c2 = clientGetFromWindow(c->transient_for, WINDOW);
+            if(c2)
+            {
+                c->initial_layer = c2->win_layer;
+            }
+        }
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
     if((old_type != c->type) || (c->initial_layer != c->win_layer))
@@ -2131,7 +2135,7 @@ void clientFrame(Window w, gboolean initial)
     c->window = w;
     getWindowName(dpy, c->window, &c->name);
     TRACE("name \"%s\"", c->name);
-    getTransientFor(dpy, c->window, &c->transient_for);
+    getTransientFor(dpy, screen, c->window, &c->transient_for);
     c->size = XAllocSizeHints();
     XGetWMNormalHints(dpy, w, c->size, &dummy);
     wm_protocols_flags = getWMProtocols(dpy, c->window);
