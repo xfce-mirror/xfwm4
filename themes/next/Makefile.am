@@ -1,4 +1,4 @@
-themedir = $(prefix)/share/xfwm4/themes/next
+themedir = $(XFWM4_DIR)/themes/next
 theme_DATA = bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \

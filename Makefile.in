@@ -62,6 +62,7 @@ MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
+XFWM4_DIR = @XFWM4_DIR@
 
 EXTRA_DIST = example.xfwm4rc
 
@@ -318,7 +319,8 @@ clean-am:  clean-hdr clean-tags clean-generic mostlyclean-am
 
 clean: clean-recursive
 
-distclean-am:  distclean-hdr distclean-tags distclean-generic clean-am
+distclean-am:  distclean-hdr distclean-tags distclean-generic clean-am \
+		distclean-local
 
 distclean: distclean-recursive
 	-rm -f config.status
@@ -344,6 +346,9 @@ install uninstall-am uninstall all-redirect all-am all installdirs-am \
 installdirs mostlyclean-generic distclean-generic clean-generic \
 maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
+
+distclean-local:
+	rm -f example.xfwm4rc
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

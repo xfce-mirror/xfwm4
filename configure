@@ -3926,6 +3926,21 @@ EOF
 
 fi;
 
+echo "$as_me:3929: checking xfwm4 directory structure" >&5
+echo $ECHO_N "checking xfwm4 directory structure... $ECHO_C" >&6
+if test "x$datadir" = "x\${prefix}/share" -o "x$prefix" = "xNONE";
+then
+  XFWM4_DIR="/usr/local/share/xfwm4"
+else
+  XFWM4_DIR="$datadir/xfwm4"
+fi
+echo "$as_me:3937: result: xfwm4 data dir set to $XFWM4_DIR" >&5
+echo "${ECHO_T}xfwm4 data dir set to $XFWM4_DIR" >&6
+
+cat >>confdefs.h <<\EOF
+#define XFWM4_DIR $XFWM4_DIR
+EOF
+
 ## Versions of dependencies
 GLIB_REQUIRED_VERSION=2.0.0
 GTK_REQUIRED_VERSION=2.0.0
@@ -3936,7 +3951,7 @@ PANGO_REQUIRED_VERSION=1.0.0
   if test -z "$PKG_CONFIG"; then
     # Extract the first word of "pkg-config", so it can be a program name with args.
 set dummy pkg-config; ac_word=$2
-echo "$as_me:3939: checking for $ac_word" >&5
+echo "$as_me:3954: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
 if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
@@ -3953,7 +3968,7 @@ for ac_dir in $ac_dummy; do
   test -z "$ac_dir" && ac_dir=.
   if $as_executable_p "$ac_dir/$ac_word"; then
    ac_cv_path_PKG_CONFIG="$ac_dir/$ac_word"
-   echo "$as_me:3956: found $ac_dir/$ac_word" >&5
+   echo "$as_me:3971: found $ac_dir/$ac_word" >&5
    break
 fi
 done
@@ -3965,10 +3980,10 @@ fi
 PKG_CONFIG=$ac_cv_path_PKG_CONFIG
 
 if test -n "$PKG_CONFIG"; then
-  echo "$as_me:3968: result: $PKG_CONFIG" >&5
+  echo "$as_me:3983: result: $PKG_CONFIG" >&5
 echo "${ECHO_T}$PKG_CONFIG" >&6
 else
-  echo "$as_me:3971: result: no" >&5
+  echo "$as_me:3986: result: no" >&5
 echo "${ECHO_T}no" >&6
 fi
 
@@ -3982,24 +3997,24 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:3985: checking for glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION" >&5
+        echo "$as_me:4000: checking for glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION" >&5
 echo $ECHO_N "checking for glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION... $ECHO_C" >&6
 
         if $PKG_CONFIG --exists "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION" ; then
-            echo "$as_me:3989: result: yes" >&5
+            echo "$as_me:4004: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
-            echo "$as_me:3993: checking BASE_DEPENDENCIES_CFLAGS" >&5
+            echo "$as_me:4008: checking BASE_DEPENDENCIES_CFLAGS" >&5
 echo $ECHO_N "checking BASE_DEPENDENCIES_CFLAGS... $ECHO_C" >&6
             BASE_DEPENDENCIES_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION"`
-            echo "$as_me:3996: result: $BASE_DEPENDENCIES_CFLAGS" >&5
+            echo "$as_me:4011: result: $BASE_DEPENDENCIES_CFLAGS" >&5
 echo "${ECHO_T}$BASE_DEPENDENCIES_CFLAGS" >&6
 
-            echo "$as_me:3999: checking BASE_DEPENDENCIES_LIBS" >&5
+            echo "$as_me:4014: checking BASE_DEPENDENCIES_LIBS" >&5
 echo $ECHO_N "checking BASE_DEPENDENCIES_LIBS... $ECHO_C" >&6
             BASE_DEPENDENCIES_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION"`
-            echo "$as_me:4002: result: $BASE_DEPENDENCIES_LIBS" >&5
+            echo "$as_me:4017: result: $BASE_DEPENDENCIES_LIBS" >&5
 echo "${ECHO_T}$BASE_DEPENDENCIES_LIBS" >&6
         else
             BASE_DEPENDENCIES_CFLAGS=""
@@ -4019,12 +4034,15 @@ echo "${ECHO_T}$BASE_DEPENDENCIES_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:4022: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+     { { echo "$as_me:4037: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
 echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-ac_config_files="$ac_config_files Makefile src/Makefile defaults/defaults defaults/Makefile themes/Makefile themes/agua/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/gtk/Makefile themes/kde/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/oroborus/Makefile themes/platinum/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
+sed -e "s%XFWM4_DIR%$XFWM4_DIR%g" example.xfwm4rc.in > example.xfwm4rc
+sed -e "s%XFWM4_DIR%$XFWM4_DIR%g" defaults/defaults.in > defaults/defaults
+
+ac_config_files="$ac_config_files Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/gtk/Makefile themes/kde/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/oroborus/Makefile themes/platinum/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -4104,7 +4122,7 @@ DEFS=-DHAVE_CONFIG_H
 : ${CONFIG_STATUS=./config.status}
 ac_clean_files_save=$ac_clean_files
 ac_clean_files="$ac_clean_files $CONFIG_STATUS"
-{ echo "$as_me:4107: creating $CONFIG_STATUS" >&5
+{ echo "$as_me:4125: creating $CONFIG_STATUS" >&5
 echo "$as_me: creating $CONFIG_STATUS" >&6;}
 cat >$CONFIG_STATUS <<_ACEOF
 #! $SHELL
@@ -4280,7 +4298,7 @@ cat >>$CONFIG_STATUS <<\EOF
     echo "$ac_cs_version"; exit 0 ;;
   --he | --h)
     # Conflict between --help and --header
-    { { echo "$as_me:4283: error: ambiguous option: $1
+    { { echo "$as_me:4301: error: ambiguous option: $1
 Try \`$0 --help' for more information." >&5
 echo "$as_me: error: ambiguous option: $1
 Try \`$0 --help' for more information." >&2;}
@@ -4299,7 +4317,7 @@ Try \`$0 --help' for more information." >&2;}
     ac_need_defaults=false;;
 
   # This is an error.
-  -*) { { echo "$as_me:4302: error: unrecognized option: $1
+  -*) { { echo "$as_me:4320: error: unrecognized option: $1
 Try \`$0 --help' for more information." >&5
 echo "$as_me: error: unrecognized option: $1
 Try \`$0 --help' for more information." >&2;}
@@ -4343,7 +4361,6 @@ do
   # Handling of arguments.
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
   "src/Makefile" ) CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
-  "defaults/defaults" ) CONFIG_FILES="$CONFIG_FILES defaults/defaults" ;;
   "defaults/Makefile" ) CONFIG_FILES="$CONFIG_FILES defaults/Makefile" ;;
   "themes/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/Makefile" ;;
   "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
@@ -4364,7 +4381,7 @@ do
   "themes/xfce/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/xfce/Makefile" ;;
   "default-1" ) CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
-  *) { { echo "$as_me:4367: error: invalid argument: $ac_config_target" >&5
+  *) { { echo "$as_me:4384: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
    { (exit 1); exit 1; }; };;
   esac
@@ -4469,6 +4486,7 @@ s,@X_CFLAGS@,$X_CFLAGS,;t t
 s,@X_PRE_LIBS@,$X_PRE_LIBS,;t t
 s,@X_LIBS@,$X_LIBS,;t t
 s,@X_EXTRA_LIBS@,$X_EXTRA_LIBS,;t t
+s,@XFWM4_DIR@,$XFWM4_DIR,;t t
 s,@PKG_CONFIG@,$PKG_CONFIG,;t t
 s,@BASE_DEPENDENCIES_CFLAGS@,$BASE_DEPENDENCIES_CFLAGS,;t t
 s,@BASE_DEPENDENCIES_LIBS@,$BASE_DEPENDENCIES_LIBS,;t t
@@ -4586,7 +4604,7 @@ done; }
   esac
 
   if test x"$ac_file" != x-; then
-    { echo "$as_me:4589: creating $ac_file" >&5
+    { echo "$as_me:4607: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
     rm -f "$ac_file"
   fi
@@ -4604,7 +4622,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:4607: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:4625: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -4617,7 +4635,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:4620: error: cannot find input file: $f" >&5
+           { { echo "$as_me:4638: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -4678,7 +4696,7 @@ for ac_file in : $CONFIG_HEADERS; do test "x$ac_file" = x: && continue
   * )   ac_file_in=$ac_file.in ;;
   esac
 
-  test x"$ac_file" != x- && { echo "$as_me:4681: creating $ac_file" >&5
+  test x"$ac_file" != x- && { echo "$as_me:4699: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
 
   # First look for the input files in the build tree, otherwise in the
@@ -4689,7 +4707,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:4692: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:4710: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -4702,7 +4720,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:4705: error: cannot find input file: $f" >&5
+           { { echo "$as_me:4723: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -4819,7 +4837,7 @@ cat >>$CONFIG_STATUS <<\EOF
   rm -f $tmp/in
   if test x"$ac_file" != x-; then
     if cmp -s $ac_file $tmp/config.h 2>/dev/null; then
-      { echo "$as_me:4822: $ac_file is unchanged" >&5
+      { echo "$as_me:4840: $ac_file is unchanged" >&5
 echo "$as_me: $ac_file is unchanged" >&6;}
     else
       ac_dir=`$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \

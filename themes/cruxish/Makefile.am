@@ -1,4 +1,4 @@
-themedir = $(prefix)/share/xfwm4/themes/cruxish
+themedir = $(XFWM4_DIR)/themes/cruxish
 theme_DATA = bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \

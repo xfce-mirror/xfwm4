@@ -1,4 +1,4 @@
-themedir = $(prefix)/share/xfwm4/themes/redmondxp
+themedir = $(XFWM4_DIR)/themes/redmondxp
 theme_DATA = bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \

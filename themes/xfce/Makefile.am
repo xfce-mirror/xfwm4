@@ -1,4 +1,4 @@
-themedir = $(prefix)/share/xfwm4/themes/xfce
+themedir = $(XFWM4_DIR)/themes/xfce
 theme_DATA = bottom-active.xpm \
 	bottom-inactive.xpm \
 	bottom-left-active.xpm \

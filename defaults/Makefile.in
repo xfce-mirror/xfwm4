@@ -62,15 +62,16 @@ MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
+XFWM4_DIR = @XFWM4_DIR@
 
-defaultsdir = $(prefix)/share/xfwm4
+defaultsdir = $(pkgdatadir)/xfwm4
 defaults_DATA = defaults
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
-CONFIG_CLEAN_FILES =  defaults
+CONFIG_CLEAN_FILES = 
 DATA =  $(defaults_DATA)
 
-DIST_COMMON =  Makefile.am Makefile.in defaults.in
+DIST_COMMON =  Makefile.am Makefile.in
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
@@ -86,8 +87,6 @@ Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
-defaults: $(top_builddir)/config.status defaults.in
-	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 install-defaultsDATA: $(defaults_DATA)
 	@$(NORMAL_INSTALL)
