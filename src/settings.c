@@ -170,6 +170,7 @@ void loadSettings()
     parseRc(".xfwm4rc", getenv("HOME"), rc);
 
     widget = getDefaultGtkWidget ();
+
     colsym[0].name   = "active_text_color";
     colsym[0].value  = get_style (widget, "text", "selected");
     
@@ -185,39 +186,39 @@ void loadSettings()
     colsym[4].name   = "active_color_1";
     colsym[4].value  = get_style (widget, "bg", "selected");
     
-    colsym[5].name   = "inactive_color_1";
-    colsym[5].value  = get_style (widget, "bg", "normal");
+    colsym[5].name   = "active_hilight_1";
+    colsym[5].value  = get_style (widget, "light", "selected");
     
     colsym[6].name   = "active_shadow_1";
     colsym[6].value  = get_style (widget, "dark", "selected");
     
-    colsym[7].name   = "inactive_shadow_1";
-    colsym[7].value  = get_style (widget, "dark", "normal");
+    colsym[7].name  = "active_color_2";
+    colsym[7].value = get_style (widget, "bg", "normal");
     
-    colsym[8].name   = "active_hilight_1";
-    colsym[8].value  = get_style (widget, "light", "selected");
+    colsym[8].name  = "active_hilight_2";
+    colsym[8].value = get_style (widget, "light", "normal");
     
-    colsym[9].name   = "inactive_hilight_1";
-    colsym[9].value  = get_style (widget, "light", "normal");
+    colsym[9].name  = "active_shadow_2";
+    colsym[9].value = get_style (widget, "dark", "normal");
     
-    colsym[10].name  = "active_color_2";
-    colsym[10].value = get_style (widget, "bg", "active");
+    colsym[10].name   = "inactive_color_1";
+    colsym[10].value  = get_style (widget, "bg", "active");
     
-    colsym[11].name  = "inactive_color_2";
-    colsym[11].value = get_style (widget, "bg", "active");
+    colsym[11].name   = "inactive_hilight_1";
+    colsym[11].value  = get_style (widget, "light", "active");
     
-    colsym[12].name  = "active_shadow_2";
-    colsym[12].value = get_style (widget, "dark", "active");
+    colsym[12].name   = "inactive_shadow_1";
+    colsym[12].value  = get_style (widget, "dark", "active");
     
-    colsym[13].name  = "inactive_shadow_2";
-    colsym[13].value = get_style (widget, "dark", "active");
+    colsym[13].name  = "inactive_color_2";
+    colsym[13].value = get_style (widget, "bg", "normal");
     
-    colsym[14].name  = "active_hilight_2";
-    colsym[14].value = get_style (widget, "light", "active");
-    
-    colsym[15].name  = "inactive_hilight_2";
-    colsym[15].value = get_style (widget, "light", "active");
+    colsym[14].name  = "inactive_hilight_2";
+    colsym[14].value = get_style (widget, "light", "normal");
 
+    colsym[15].name  = "inactive_shadow_2";
+    colsym[15].value = get_style (widget, "dark", "normal");
+    
     rc[0].value = get_style (widget, "text", "selected");
     rc[1].value = get_style (widget, "text", "normal");
 
