@@ -15,12 +15,9 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         xcompmgr - (c) 2003 Keith Packard
-        metacity - (c) 2003, 2004 Red Hat, Inc.
         xfwm4    - (c) 2004 Olivier Fourdan
  
  */
-
-/* THIS CODE IS NOT FINISHED YET, IT WON'T COMPILE, PLEASE BE PATIENT */
 
 #ifndef INC_COMPOSITOR_H
 #define INC_COMPOSITOR_H

@@ -19,8 +19,6 @@
  
  */
 
-/* THIS CODE IS NOT FINISHED YET, IT WON'T COMPILE, PLEASE BE PATIENT */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -183,7 +181,7 @@ make_gaussian_map (gdouble r)
  *  center  +-----+-------------------+-----+
  */
  
-static unsigned char
+static guchar
 sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, gint height)
 {
     gint fx, fy;
@@ -234,15 +232,73 @@ sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, g
         v = 1;
     }
     
-    return ((unsigned char) (v * opacity * 255.0));
+    return ((guchar) (v * opacity * 255.0));
+}
+
+/* precompute shadow corners and sides to save time for large windows */
+static void
+presum_gaussian (ScreenInfo *screen_info)
+{
+    gint center;
+    gint opacity, x, y;
+    gaussian_conv * map;
+    
+    map = screen_info->gaussianMap;
+    screen_info->gsize = map->size;
+    center = map->size / 2;
+
+    if (screen_info->shadowCorner)
+    {
+        g_free (screen_info->shadowCorner);
+    }
+    if (screen_info->shadowTop)
+    {
+        g_free (screen_info->shadowTop);
+    }
+
+    screen_info->shadowCorner = (guchar *) (g_malloc ((screen_info->gsize + 1) * (screen_info->gsize + 1) * 26));
+    screen_info->shadowTop = (guchar *) (g_malloc ((screen_info->gsize + 1) * 26));
+    
+    for (x = 0; x <= screen_info->gsize; x++)
+    {
+        screen_info->shadowTop[25 * (screen_info->gsize + 1) + x] = 
+            sum_gaussian (map, 1, x - center, center, screen_info->gsize * 2, screen_info->gsize * 2);
+            
+        for(opacity = 0; opacity < 25; opacity++)
+        {
+            screen_info->shadowTop[opacity * (screen_info->gsize + 1) + x] = 
+                screen_info->shadowTop[25 * (screen_info->gsize + 1) + x] * opacity / 25;
+        }
+        
+        for(y = 0; y <= x; y++)
+        {
+            screen_info->shadowCorner[25 * (screen_info->gsize + 1) * (screen_info->gsize + 1) 
+                                     + y * (screen_info->gsize + 1) + x]
+                = sum_gaussian (map, 1, x - center, y - center, screen_info->gsize * 2, screen_info->gsize * 2);
+            screen_info->shadowCorner[25 * (screen_info->gsize + 1) * (screen_info->gsize + 1)
+                                     + x * (screen_info->gsize + 1) + y]
+                = screen_info->shadowCorner[25 * (screen_info->gsize + 1) *  (screen_info->gsize + 1) 
+                                           + y * (screen_info->gsize + 1) + x];
+                            
+            for(opacity = 0; opacity < 25; opacity++)
+            {
+                screen_info->shadowCorner[opacity * (screen_info->gsize + 1) * (screen_info->gsize + 1) 
+                                              + y * (screen_info->gsize + 1) + x]
+                    = screen_info->shadowCorner[opacity * (screen_info->gsize + 1) * (screen_info->gsize + 1) 
+                                                    + x * (screen_info->gsize + 1) + y]
+                    = screen_info->shadowCorner[25 * (screen_info->gsize + 1) * (screen_info->gsize + 1) 
+                                               + y * (screen_info->gsize + 1) + x] * opacity / 25;
+            }
+        }
+    }
 }
 
 static XImage *
 make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
 {
     XImage *ximage;
-    unsigned char *data;
-    unsigned char d;
+    guchar *data;
+    guchar d;
     gint gsize = screen_info->gaussianMap->size;
     gint ylimit, xlimit;
     gint swidth = width + gsize;
@@ -250,17 +306,15 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     gint center = gsize / 2;
     gint x, y;
     gint x_diff;
+    gint opacity_int = (gint) (opacity * 25);
     
     TRACE ("entering make_shadow");    
-    data = g_malloc (swidth * sheight * sizeof (unsigned char));
-    if (!data)
-    {
-        return 0;
-    }
+    data = g_malloc (swidth * sheight * sizeof (guchar));
+    
     ximage = XCreateImage (myScreenGetXDisplay (screen_info),
-                           DefaultVisual(myScreenGetXDisplay (screen_info), screen_info->screen),
-                           8, ZPixmap, 0, (char *) data,
-                           swidth, sheight, 8, swidth * sizeof (unsigned char));
+                        DefaultVisual(myScreenGetXDisplay (screen_info), screen_info->screen),
+                        8, ZPixmap, 0, (char *) data,
+                        swidth, sheight, 8, swidth * sizeof (guchar));
     if (!ximage)
     {
         free (data);
@@ -268,16 +322,26 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     }
     
     /*
-     * Build the gaussian in sections
-     */
+    * Build the gaussian in sections
+    */
 
+    if (screen_info->gsize > 0)
+    {
+        d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + screen_info->gsize];
+    }
+    else
+    {
+        d = sum_gaussian (screen_info->gaussianMap, opacity, center, center, width, height);
+    }
+    memset(data, d, sheight * swidth);
+    
     d = sum_gaussian (screen_info->gaussianMap, opacity, center, center, width, height);
     memset(data, d, sheight * swidth);
     
     /*
-     * corners
-     */
-     
+    * corners
+    */
+    
     ylimit = gsize;
     if (ylimit > sheight / 2)
     {
@@ -292,6 +356,16 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     {
         for (x = 0; x < xlimit; x++)
         {
+            if ((xlimit == screen_info->gsize) && (ylimit == screen_info->gsize))
+            {
+                d = screen_info->shadowCorner[opacity_int * (screen_info->gsize + 1) * (screen_info->gsize + 1) 
+                                                    + y * (screen_info->gsize + 1) + x];
+            }
+            else
+            {
+                d = sum_gaussian (screen_info->gaussianMap, opacity, x - center, y - center, width, height);
+            }
+            
             d = sum_gaussian (screen_info->gaussianMap, opacity, x - center, y - center, width, height);
             data[y * swidth + x] = d;
             data[(sheight - y - 1) * swidth + x] = d;
@@ -301,27 +375,41 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     }
 
     /*
-     * top/bottom
-     */
-     
+    * top/bottom
+    */
+    
     x_diff = swidth - (gsize * 2);
     if (x_diff > 0 && ylimit > 0)
     {
         for (y = 0; y < ylimit; y++)
         {
-            d = sum_gaussian (screen_info->gaussianMap, opacity, center, y - center, width, height);
+            if (ylimit == screen_info->gsize)
+            {    
+                d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + y];
+            }
+            else
+            {    
+                d = sum_gaussian (screen_info->gaussianMap, opacity, center, y - center, width, height);
+            }
             memset (&data[y * swidth + gsize], d, x_diff);
             memset (&data[(sheight - y - 1) * swidth + gsize], d, x_diff);
         }
     }
 
     /*
-     * sides
-     */
+    * sides
+    */
     
     for (x = 0; x < xlimit; x++)
     {
-        d = sum_gaussian (screen_info->gaussianMap, opacity, x - center, center, width, height);
+        if (xlimit == screen_info->gsize)
+        {    
+            d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + x];
+        }
+        else
+        {
+            d = sum_gaussian (screen_info->gaussianMap, opacity, x - center, center, width, height);
+        }
         for (y = gsize; y < sheight - gsize; y++)
         {
             data[y * swidth + x] = d;
@@ -482,7 +570,7 @@ root_tile (ScreenInfo *screen_info)
         int actual_format;
         unsigned long nitems;
         unsigned long bytes_after;
-        unsigned char *prop;
+        guchar *prop;
         int result;
         
         result = XGetWindowProperty (dpy, screen_info->xroot, backgroundProps[p],
@@ -868,7 +956,7 @@ get_opacity_prop(CWindow *cw, unsigned int def)
     Atom actual;
     int format;
     unsigned long n, left;
-    unsigned char *data;
+    guchar *data;
     int result;
      
     TRACE ("entering get_opacity_prop");    
@@ -1042,7 +1130,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, XWindowAttributes *att
     {
         screen_info = myDisplayGetScreenFromRoot (display_info, new->attr.root);
         /* We must be notified of property changes for transparency, even if the win is not managed */
-        XSelectInput (display_info->dpy, id, PropertyChangeMask | SubstructureNotifyMask);
+        XSelectInput (display_info->dpy, id, PropertyChangeMask | StructureNotifyMask);
     }
 
     if (!screen_info)
@@ -1185,7 +1273,7 @@ destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
         }
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
         g_free (cw);
-        TRACE ("0x%lx removed", id);    
+        TRACE ("window 0x%lx removed", id);    
     }
 }
 
@@ -1681,8 +1769,10 @@ compositorManageScreen (ScreenInfo *screen_info)
         return;
     }
 
+    screen_info->gsize = -1;
     screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
-    
+    presum_gaussian (screen_info);
+        
     pa.subwindow_mode = IncludeInferiors;
     visual_format = XRenderFindVisualFormat (display_info->dpy, 
                                              DefaultVisual (display_info->dpy, 
@@ -1699,6 +1789,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     
     XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
     paint_all (screen_info, None);    
+
+    XSync (display_info->dpy, FALSE);
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -1727,6 +1819,26 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         XRenderFreePicture (display_info->dpy, screen_info->blackPicture);
         screen_info->blackPicture = None;
     }
+
+    if (screen_info->shadowTop)
+    {
+        g_free (screen_info->shadowTop);
+        screen_info->shadowTop = NULL;
+    }
+
+    if (screen_info->shadowCorner)
+    {
+        g_free (screen_info->shadowCorner);
+        screen_info->shadowCorner = NULL;
+    }
+    
+    if (screen_info->gaussianMap)
+    {
+        g_free (screen_info->gaussianMap);
+        screen_info->gaussianMap = NULL;
+    }
+    
+    screen_info->gsize = -1;
 #endif /* HAVE_COMPOSITOR */
 }
 

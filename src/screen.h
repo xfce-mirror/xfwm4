@@ -123,8 +123,13 @@ struct _ScreenInfo
 #endif
 
 #ifdef HAVE_COMPOSITOR
-    gaussian_conv *gaussianMap;
     GList *cwindows;
+
+    gaussian_conv *gaussianMap;
+    gint gsize;
+    guchar *shadowCorner;
+    guchar *shadowTop;
+
     
     Picture rootPicture;
     Picture rootBuffer;

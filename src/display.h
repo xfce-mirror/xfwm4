@@ -80,21 +80,21 @@ struct _DisplayInfo
     GSList *screens;
     GSList *clients;
 
-    int shape;
-    int shape_event;
-    int dbl_click_time;
-    int xgrabcount;
-    int nb_screens;
+    gint shape;
+    gint shape_event;
+    gint dbl_click_time;
+    gint xgrabcount;
+    gint nb_screens;
 
     gboolean enable_compositor;
 
 #ifdef HAVE_COMPOSITOR
-    int composite_error_base;
-    int composite_event_base;
-    int damage_error_base;
-    int damage_event_base;
-    int fixes_error_base;
-    int fixes_event_base;
+    gint composite_error_base;
+    gint composite_event_base;
+    gint damage_error_base;
+    gint damage_event_base;
+    gint fixes_error_base;
+    gint fixes_event_base;
 
     gboolean have_composite;
     gboolean have_damage;
