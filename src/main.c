@@ -258,17 +258,20 @@ initialize (int argc, char **argv)
 
     gtk_set_locale ();
     gtk_init (&argc, &argv);
+    gdk_rgb_init();
 
+    gtk_widget_push_visual(gdk_rgb_get_visual ());
+    gtk_widget_push_colormap(gdk_rgb_get_cmap ());
+    
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
          gtk_minor_version, gtk_micro_version);
-    gtk_widget_set_default_colormap (gdk_colormap_get_system ());
 
     dpy = GDK_DISPLAY ();
     root = GDK_ROOT_WINDOW ();
     xscreen = DefaultScreenOfDisplay(dpy);
     screen = XDefaultScreen (dpy);
     depth = DefaultDepth (dpy, screen);
-    cmap = DefaultColormap (dpy, screen);
+    cmap = GDK_COLORMAP_XCOLORMAP(gdk_rgb_get_cmap ());
     sn_init_display (dpy, screen);
     workspace = 0;
 

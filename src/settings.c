@@ -131,6 +131,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action,
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         params.raise_on_click = setting->data.v_int;
+                        clientPassGrabButtons (NULL);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
                     {
@@ -307,8 +308,7 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/ClickToFocus", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("click_to_focus", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("click_to_focus", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/FocusNewWindow", CHANNEL1,
@@ -320,8 +320,7 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/FocusRaise", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("raise_on_focus", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("raise_on_focus", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/RaiseDelay", CHANNEL1,
@@ -333,15 +332,13 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/RaiseOnClick", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("raise_on_click", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/SnapToBorder", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("snap_to_border", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("snap_to_border", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/SnapToWindows", CHANNEL1,
@@ -360,8 +357,7 @@ loadMcsData (Settings rc[])
         if (mcs_client_get_setting (client, "Xfwm/WrapWorkspaces", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int,
-                rc);
+            setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (client, "Xfwm/WrapWindows", CHANNEL1,
@@ -493,13 +489,13 @@ loadTheme (Settings rc[])
 
     if (params.title_colors[ACTIVE].allocated)
     {
-        gdk_colormap_free_colors (gdk_colormap_get_system (),
+        gdk_colormap_free_colors (gdk_rgb_get_cmap (),
             &params.title_colors[ACTIVE].col, 1);
         params.title_colors[ACTIVE].allocated = FALSE;
     }
     if (gdk_color_parse (rc[0].value, &params.title_colors[ACTIVE].col))
     {
-        if (gdk_colormap_alloc_color (gdk_colormap_get_system (),
+        if (gdk_colormap_alloc_color (gdk_rgb_get_cmap (),
                 &params.title_colors[ACTIVE].col, FALSE, FALSE))
         {
             params.title_colors[ACTIVE].allocated = TRUE;
@@ -544,13 +540,13 @@ loadTheme (Settings rc[])
 
     if (params.title_colors[INACTIVE].allocated)
     {
-        gdk_colormap_free_colors (gdk_colormap_get_system (),
+        gdk_colormap_free_colors (gdk_rgb_get_cmap (),
             &params.title_colors[INACTIVE].col, 1);
         params.title_colors[INACTIVE].allocated = FALSE;
     }
     if (gdk_color_parse (rc[1].value, &params.title_colors[INACTIVE].col))
     {
-        if (gdk_colormap_alloc_color (gdk_colormap_get_system (),
+        if (gdk_colormap_alloc_color (gdk_rgb_get_cmap (),
                 &params.title_colors[INACTIVE].col, FALSE, FALSE))
         {
             params.title_colors[INACTIVE].allocated = TRUE;
