@@ -48,6 +48,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc example.xfwm4rc example.gtkrc-2.0 README INSTALL TODO COPYING AUTHORS
 %{_bindir}/*
 %{_datadir}/xfwm4/defaults
+%{_datadir}/xfwm4/themes/bbs
+%{_datadir}/xfwm4/themes/exocet
 %{_datadir}/xfwm4/themes/kindaker
 
 %files themes
@@ -59,7 +61,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/crux
 %{_datadir}/xfwm4/themes/cruxish
 %{_datadir}/xfwm4/themes/eazel-blue
-%{_datadir}/xfwm4/themes/exocet
 %{_datadir}/xfwm4/themes/g2
 %{_datadir}/xfwm4/themes/gorilla
 %{_datadir}/xfwm4/themes/gtk

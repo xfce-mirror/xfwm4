@@ -4892,7 +4892,7 @@ echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gt
   fi
 
 
-ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/b5/Makefile themes/b6/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/eazel-blue/Makefile themes/exocet/Makefile themes/g2/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/iceg/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/ops/Makefile themes/oroborus/Makefile themes/piranha/Makefile themes/platinum/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/slick/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
+ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/b5/Makefile themes/b6/Makefile themes/bbs/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/eazel-blue/Makefile themes/exocet/Makefile themes/g2/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/iceg/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/ops/Makefile themes/oroborus/Makefile themes/piranha/Makefile themes/platinum/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/slick/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -5389,6 +5389,7 @@ do
   "themes/agua/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/agua/Makefile" ;;
   "themes/b5/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/b5/Makefile" ;;
   "themes/b6/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/b6/Makefile" ;;
+  "themes/bbs/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/bbs/Makefile" ;;
   "themes/coldsteel/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/coldsteel/Makefile" ;;
   "themes/crux/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/crux/Makefile" ;;
   "themes/cruxish/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/cruxish/Makefile" ;;
