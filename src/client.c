@@ -50,9 +50,10 @@
 
 /* Useful macros */
 #define ACCEPT_INPUT(wmhints) \
+    (!(focus_hint) || \
     ((!(wmhints) || \
     ((wmhints) && !(wmhints->flags & InputHint)) || \
-    ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input))))
+    ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))))
 
 #define START_ICONIC(c) \
     ((c->wmhints) && \

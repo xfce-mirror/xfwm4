@@ -45,6 +45,7 @@ int double_click_action;
 int box_move;
 int box_resize;
 int click_to_focus;
+int focus_hint;
 int focus_new;
 int raise_on_focus;
 int raise_delay;
@@ -90,6 +91,7 @@ void loadSettings()
         {"box_move", NULL, TRUE},
         {"box_resize", NULL, TRUE},
         {"click_to_focus", NULL, TRUE},
+        {"focus_hint", NULL, TRUE},
         {"focus_new", NULL, TRUE},
         {"raise_on_focus", NULL, TRUE},
         {"raise_delay", NULL, TRUE},
@@ -319,6 +321,7 @@ void loadSettings()
     box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
 
     click_to_focus = !g_ascii_strcasecmp("true", getValue("click_to_focus", rc));
+    focus_hint = !g_ascii_strcasecmp("true", getValue("focus_hint", rc));
     focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
     raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
     raise_delay = abs(atoi(getValue("raise_delay", rc)));

@@ -50,6 +50,7 @@ extern int box_move;
 extern int box_resize;
 extern int click_to_focus;
 extern int focus_new;
+extern int focus_hint;
 extern int raise_on_focus;
 extern int raise_delay;
 extern int snap_to_border;

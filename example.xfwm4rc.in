@@ -72,6 +72,9 @@ click_to_focus=true
 # focus_new=true/false
 focus_new=true
 
+# focus_hint=true/false
+focus_hint=false
+
 # raise_on_focus=true/false
 raise_on_focus=false
 
