@@ -1624,7 +1624,7 @@ create_channel (McsPlugin * mcs_plugin)
     const gchar *home = g_get_home_dir ();
     gchar *rcfile;
 
-    rcfile = g_strconcat (home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
+    rcfile = xfce_get_userfile (RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
     mcs_manager_add_channel_from_file (mcs_plugin->manager, CHANNEL, rcfile);
     g_free (rcfile);
 
