@@ -120,6 +120,10 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     {
         g_usleep (10000);
         total += 10;
+        if (XCheckMaskEvent (dpy, FocusChangeMask, ev))
+        {
+            handleEvent (ev);
+        }
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
             last_timestamp = stashEventTime (last_timestamp, ev);
