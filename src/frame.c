@@ -128,7 +128,11 @@ static inline void fillRectangle(Display * dpy, Drawable d, Pixmap pm, int x, in
     unsigned long mask;
 
     DBG("entering fillRectangle\n");
-
+    
+    if ((width < 1) || (height < 1))
+    {
+        return;
+    }
     gv.fill_style = FillTiled;
     gv.tile = pm;
     gv.ts_x_origin = x;

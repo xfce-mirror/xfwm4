@@ -17,6 +17,7 @@ quinx \
 r9x \
 redmond \
 redmondxp \
+retro \
 slick \
 slimline \
 trench \

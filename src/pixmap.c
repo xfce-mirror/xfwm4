@@ -65,10 +65,21 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, Xpm
 
 void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
 {
-    pm->pixmap = XCreatePixmap(dpy, root, width, height, depth);
-    pm->mask = XCreatePixmap(dpy, pm->pixmap, width, height, 1);
-    pm->width = width;
-    pm->height = height;
+    if ((width < 1) || (height < 1))
+    {
+	pm->pixmap = None;
+	pm->mask = None;
+        pm->width = 0;
+        pm->height = 0;
+    
+    }
+    else
+    {
+        pm->pixmap = XCreatePixmap(dpy, root, width, height, depth);
+        pm->mask = XCreatePixmap(dpy, pm->pixmap, width, height, 1);
+        pm->width = width;
+        pm->height = height;
+    }
 }
 
 void freePixmap(Display * dpy, MyPixmap * pm)
@@ -78,9 +89,11 @@ void freePixmap(Display * dpy, MyPixmap * pm)
     if(pm->pixmap != None)
     {
         XFreePixmap(dpy, pm->pixmap);
+	pm->pixmap = None;
     }
     if(pm->mask != None)
     {
         XFreePixmap(dpy, pm->mask);
+	pm->mask = None;
     }
 }

@@ -4892,7 +4892,7 @@ echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gt
   fi
 
 
-ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/eazel-blue/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/oroborus/Makefile themes/platinum/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/slick/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
+ac_config_files="$ac_config_files xfwm4.spec Makefile src/Makefile defaults/Makefile themes/Makefile themes/agua/Makefile themes/coldsteel/Makefile themes/crux/Makefile themes/cruxish/Makefile themes/eazel-blue/Makefile themes/gorilla/Makefile themes/gtk/Makefile themes/kde/Makefile themes/kindaker/Makefile themes/linea/Makefile themes/mofit/Makefile themes/next/Makefile themes/oroborus/Makefile themes/platinum/Makefile themes/quinx/Makefile themes/r9x/Makefile themes/redmond/Makefile themes/redmondxp/Makefile themes/retro/Makefile themes/slick/Makefile themes/slimline/Makefile themes/trench/Makefile themes/xfce/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -5404,6 +5404,7 @@ do
   "themes/r9x/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/r9x/Makefile" ;;
   "themes/redmond/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmond/Makefile" ;;
   "themes/redmondxp/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/redmondxp/Makefile" ;;
+  "themes/retro/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/retro/Makefile" ;;
   "themes/slick/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slick/Makefile" ;;
   "themes/slimline/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/slimline/Makefile" ;;
   "themes/trench/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/trench/Makefile" ;;
