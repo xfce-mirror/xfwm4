@@ -589,7 +589,7 @@ clientUpdateFullscreenState (Client * c)
            avoid these effects
          */
         myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
         myScreenUngrabPointer (c->screen_info, CurrentTime);
     }
     else
