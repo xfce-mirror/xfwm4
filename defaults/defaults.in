@@ -1,7 +1,7 @@
-theme=@prefix@/share/xfwm4/themes/xfce
-title_alignment=center
+theme=@prefix@/share/xfwm4/themes/crux
+title_alignment=left
 full_width_title=true
-button_layout=OTS|HMC
+button_layout=O|SHMC
 button_spacing=1
 button_offset=0
 title_vertical_offset=0

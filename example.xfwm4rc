@@ -3,10 +3,10 @@
 # You can use it as a template for your own configuration file
 
 # theme=directory
-theme=/usr/local/share/xfwm4/themes/xfce
+theme=/usr/local/share/xfwm4/themes/crux
 
 # title_alignment=left/right/center
-title_alignment=center
+title_alignment=left
 
 # button_layout :
 #    O = Option menu
@@ -17,7 +17,7 @@ title_alignment=center
 #    C = close
 #    | = title
 
-button_layout=OTS|HMC
+button_layout=O|SHMC
 
 # ???_key=modifier+key
 hide_window_key=Mod1+F1
