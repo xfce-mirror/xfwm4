@@ -127,7 +127,8 @@
 #define CONSTRAINED_WINDOW(c)          ((c->win_layer > WIN_LAYER_DESKTOP) && \
                                         (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
-                                       !(c->legacy_fullscreen))
+                                       !(c->legacy_fullscreen) && \
+				       !(c->gravity == StaticGravity))
 
 #define WINDOW_TYPE_DIALOG               (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
 #define WINDOW_TYPE_DONT_PLACE           (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)

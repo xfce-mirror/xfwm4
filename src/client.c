@@ -1508,10 +1508,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
     }
-    /* Window is reparented now, so we can safely release the grab 
-     * on the server 
-     */
-    myDisplayUngrabServer (display_info);
 
     clientAddToList (c);
     clientSetNetActions (c);
@@ -1584,6 +1580,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info->dpy, c->window, IconicState);
         clientSetNetState (c);
     }
+    /* Window is reparented now, so we can safely release the grab 
+     * on the server 
+     */
+    myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
