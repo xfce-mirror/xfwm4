@@ -165,6 +165,7 @@ struct _Params
     gboolean box_move;
     gboolean box_resize;
     gboolean click_to_focus;
+    gboolean easy_click;
     gboolean focus_hint;
     gboolean focus_new;
     gboolean full_width_title;

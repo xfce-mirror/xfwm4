@@ -922,6 +922,7 @@ loadSettings (void)
         {"click_to_focus", NULL, TRUE},
         {"dbl_click_time", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
+        {"easy_click", NULL, TRUE},
         {"focus_hint", NULL, TRUE},
         {"focus_new", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
@@ -1031,6 +1032,8 @@ loadSettings (void)
 
     params.click_to_focus =
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
+    params.easy_click =
+        !g_ascii_strcasecmp ("true", getValue ("easy_click", rc));
     params.focus_hint =
         !g_ascii_strcasecmp ("true", getValue ("focus_hint", rc));
     params.focus_new =

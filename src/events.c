@@ -51,6 +51,13 @@
                                  PointerMotionHintMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
+                                 
+#define MODIFIER_MASK           (ShiftMask | \
+                                 ControlMask | \
+                                 AltMask | \
+                                 MetaMask | \
+                                 SuperMask | \
+                                 HyperMask)
 
 static guint raise_timeout = 0;
 static gulong button_handler_id = 0;
@@ -269,10 +276,8 @@ handleKeyPress (XKeyEvent * ev)
     TRACE ("entering handleKeyEvent");
 
     c = clientGetFocus ();
-    state =
-        ev->
-        state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask |
-        HyperMask);
+    state = ev->state & MODIFIER_MASK;
+    
     for (key = 0; key < KEY_COUNT; key++)
     {
         if ((params.keys[key].keycode == ev->keycode)
@@ -639,17 +644,14 @@ handleButtonPress (XButtonEvent * ev)
     c = clientGetFromWindow (ev->window, ANY);
     if (c)
     {
-        state =
-            ev->
-            state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask
-            | HyperMask);
+        state = ev->state &  MODIFIER_MASK;
         win = ev->subwindow;
 
-        if ((ev->button == Button1) && (state == AltMask))
+        if ((ev->button == Button1) && (state == AltMask) && (params.easy_click))
         {
             button1Action (c, ev);
         }
-        else if ((ev->button == Button3) && (state == AltMask))
+        else if ((ev->button == Button3) && (state == AltMask) && (params.easy_click))
         {
             edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
         }
