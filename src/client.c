@@ -3301,12 +3301,7 @@ clientFrame (Window w, gboolean recapture)
                 "(unknown)");
     if (attr.map_state != IsUnmapped)
     {
-        /* XReparentWindow() will cause an UnmapNotify followed by 
-         * a MapNotify. 
-         * Unset the "mapped" flag to avoid a transition to 
-         * withdrawn state.
-         */ 
-        XUnmapWindow (dpy, c->window);
+        /* Reparent will send us unmap/map events */ 
         CLIENT_FLAG_SET (c, CLIENT_FLAG_MAP_PENDING);
     }
 
@@ -3501,7 +3496,8 @@ clientUnframe (Client * c, gboolean remap)
         }
         else
         {
-            setWMState (dpy, c->window, WithdrawnState);
+            XUnmapWindow (dpy, c->window);
+	    setWMState (dpy, c->window, WithdrawnState);
         }
     }
 
