@@ -2818,25 +2818,18 @@ clientFrame (Window w, gboolean startup)
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
-    TRACE ("window \"%s\"(0x%lx) map_state = %d (%s)",
-            c->name,                              
-            c->window,                            
-            attr.map_state,                       
-            (attr.map_state == IsUnmapped) ?      
-            "IsUnmapped" :                        
-            (attr.map_state == IsViewable) ?      
-            "IsViewable" :                        
-            (attr.map_state == IsUnviewable) ?    
-            "IsUnviewable" :                      
-            "(unknown)");                         
-    /* This flag is used to avoid focus transition when reparenting */
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
-    /* 
-     * Reparenting generates an UnmapNotify event, followed by a MapNotify.
-     * Set ignore_unmap to 1 so that the window won't return to withdrawn
-     * state when unmapnotify is received
-     */
-    c->ignore_unmap = 1;
+    c->ignore_unmap = 0;
+    if (attr.map_state != IsUnmapped)
+    {
+        /* This flag is used to avoid focus transition when reparenting */
+        CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
+        /* 
+         * Reparenting generates an UnmapNotify event, followed by a MapNotify.
+         * Set ignore_unmap to 1 so that the window won't return to withdrawn
+         * state when unmapnotify is received
+         */
+        c->ignore_unmap++;
+    }
     c->type = UNSET;
     c->type_atom = None;
 
@@ -2970,7 +2963,8 @@ clientUnframe (Client * c, gboolean remap)
     int i;
 
     TRACE ("entering clientUnframe");
-    DBG ("unframing client \"%s\" (0x%lx)", c->name, c->window);
+    DBG ("unframing client \"%s\" (0x%lx) [%s]", 
+            c->name, c->window, remap ? "remap" : "no remap");
 
     g_return_if_fail (c != NULL);
     if (client_focus == c)
@@ -3317,7 +3311,9 @@ clientShow (Client * c, gboolean change_state)
     Client *c2;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientShow");
+    TRACE ("entering clientShow [%s]", 
+           change_state ? "state change" : "no state change");
+             
 
     list_of_windows = clientListTransients (c);
     list_of_windows = g_slist_reverse (list_of_windows);
@@ -3326,6 +3322,11 @@ clientShow (Client * c, gboolean change_state)
     {
         c2 = (Client *) index->data;
         clientSetWorkspaceSingle (c2, c->win_workspace);
+        /* Ignore request before if the window is not yet managed */
+        if (!CLIENT_FLAG_TEST (c2, CLIENT_FLAG_MANAGED))
+        {
+            continue;
+        }
         if ((c->win_workspace == workspace)
             || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
         {
@@ -3359,6 +3360,12 @@ clientHide (Client * c, int ws, gboolean change_state)
     for (index = list_of_windows; index; index = g_slist_next (index))
     {
         c2 = (Client *) index->data;
+
+        /* Ignore request before if the window is not yet managed */
+        if (!CLIENT_FLAG_TEST (c2, CLIENT_FLAG_MANAGED))
+        {
+            continue;
+        }
 
         /* ws is used when transitioning between desktops, to avoid
            hiding a transient for group that will be shown again on the new

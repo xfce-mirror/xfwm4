@@ -840,8 +840,8 @@ handleUnmapNotify (XUnmapEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
+        DBG ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        DBG ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
         /* Reparenting generates an unmapnotify, don't pass focus in that case */
         if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
@@ -854,8 +854,8 @@ handleUnmapNotify (XUnmapEvent * ev)
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
-            TRACE ("ignore_unmaps for \"%s\" is  now %i", 
-                    c->name, c->ignore_unmap);
+            DBG ("ignore_unmaps for \"%s\" is  now %i", 
+                 c->name, c->ignore_unmap);
         }
         else
         {
@@ -881,10 +881,12 @@ handleMapRequest (XMapRequestEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
+        DBG ("handleMapRequest: clientShow");
         clientShow (c, TRUE);
     }
     else
     {
+        DBG ("handleMapRequest: clientFrame");
         clientFrame (ev->window, FALSE);
     }
 }
@@ -1000,7 +1002,8 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
-            if (c->win_workspace == workspace)
+            if ((c->win_workspace == workspace) || 
+                (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY)))
             {
                 if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
                 {
