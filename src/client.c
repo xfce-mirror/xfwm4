@@ -1629,9 +1629,9 @@ void clientShow(Client * c, int change_state)
     {
 	c->hidden = False;
         setWMState(dpy, c->window, NormalState);
+        workspaceUpdateArea(margins, gnome_margins);
     }
     clientSetNetState (c);
-    workspaceUpdateArea(margins, gnome_margins);
     XFlush (dpy);
 }
 
@@ -1654,15 +1654,15 @@ void clientHide(Client * c, int change_state)
 	}
     }
     
+    c->visible = False;
     if(change_state)
     {
         c->hidden = True;
         setWMState(dpy, c->window, IconicState);
+        workspaceUpdateArea(margins, gnome_margins);
     }
     c->ignore_unmap++;
-    c->visible = False;
     clientSetNetState (c);
-    workspaceUpdateArea(margins, gnome_margins);
     XFlush (dpy);
 }
 
