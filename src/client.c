@@ -1575,6 +1575,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
+    c->fullscreen_old_layer = c->win_layer;
 
     /* Reload from session */
     if (sessionMatchWinToSM (c))
