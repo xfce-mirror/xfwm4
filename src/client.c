@@ -1203,11 +1203,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 {
                     DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
-		    if (!sibling)
-		    {
+                    if(!sibling)
+                    {
                         DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
                         sibling = clientGetTopMost(c->win_layer, c);
-		    }
+                    }
                 }
                 else
                 {
@@ -1267,11 +1267,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 {
                     DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
-		    if (!sibling)
-		    {
+                    if(!sibling)
+                    {
                         DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
                         sibling = clientGetBottomMost(c->win_layer, c);
-		    }
+                    }
                 }
                 else
                 {
@@ -1414,22 +1414,25 @@ static void clientInitPosition(Client * c)
 
     if(c->size->flags & (PPosition | USPosition))
     {
-	if((c->x + c->width) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
-	{
-            c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - c->width;
-	}
-	if(c->x < (int)margins[MARGIN_LEFT])
-	{
-            c->x = (int)margins[MARGIN_LEFT];
-	}
-	if((c->y + c->height) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
-	{
-            c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - c->height;
-	}
-	if(c->y < (int)margins[MARGIN_TOP])
-	{
-            c->y = (int)margins[MARGIN_TOP];
-	}
+        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        {
+            if((c->x + c->width) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+            {
+                c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - c->width;
+            }
+            if(c->x < (int)margins[MARGIN_LEFT])
+            {
+                c->x = (int)margins[MARGIN_LEFT];
+            }
+            if((c->y + c->height) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+            {
+                c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - c->height;
+            }
+            if(c->y < (int)margins[MARGIN_TOP])
+            {
+                c->y = (int)margins[MARGIN_TOP];
+            }
+        }
         return;
     }
 
@@ -1545,9 +1548,9 @@ void clientFrame(Window w)
     {
         c->ncmap = 0;
     }
-    
+
     c->wmhints = XGetWMHints(dpy, c->window);
-    
+
     /* Initialize structure */
     c->focus = False;
     c->fullscreen = False;
@@ -1718,7 +1721,7 @@ void clientUnframe(Client * c, int remap)
     XReparentWindow(dpy, c->window, root, c->x, c->y);
     XDestroyWindow(dpy, c->frame);
     clientRemoveFromList(c);
-    if (c->has_struts)
+    if(c->has_struts)
     {
         workspaceUpdateArea(margins, gnome_margins);
     }
@@ -2362,7 +2365,10 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 c->y = c->y + 16;
             }
         }
-        clientConstraintPos(c);
+        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        {
+            clientConstraintPos(c);
+        }
         if(box_move)
         {
             clientDrawOutline(c);
@@ -2450,7 +2456,10 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 }
             }
         }
-        clientConstraintPos(c);
+        if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
+        {
+            clientConstraintPos(c);
+        }
         if(box_move)
         {
             clientDrawOutline(c);

@@ -79,8 +79,7 @@ static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
 }
 
 
-static void
-popup_position_func(GtkMenu * menu, gint * x, gint * y, gboolean * push_in, gpointer user_data)
+static void popup_position_func(GtkMenu * menu, gint * x, gint * y, gboolean * push_in, gpointer user_data)
 {
     GtkRequisition req;
     GdkPoint *pos;

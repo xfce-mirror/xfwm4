@@ -496,11 +496,11 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        if (c->type == WINDOW_DESKTOP)
-	{
-	    /* Ignore stacking request for DESKTOP windows */
-	    wc.stack_mode &= ~CWStackMode;
-	}
+        if(c->type == WINDOW_DESKTOP)
+        {
+            /* Ignore stacking request for DESKTOP windows */
+            wc.stack_mode &= ~CWStackMode;
+        }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
         clientConfigure(c, &wc, ev->value_mask);
     }
@@ -1025,14 +1025,14 @@ static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev)
 void initGtkCallbacks(void)
 {
     GtkSettings *settings;
-    
+
     button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) NULL);
-    g_signal_connect (GTK_OBJECT(getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC(client_event_cb), (gpointer) NULL);
+    g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "client_event", GTK_SIGNAL_FUNC(client_event_cb), (gpointer) NULL);
 
     settings = gtk_settings_get_default();
-    if (settings)
+    if(settings)
     {
-	g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (set_reload), NULL);
-	g_signal_connect (settings, "notify::gtk-font-name", G_CALLBACK (set_reload), NULL);
+        g_signal_connect(settings, "notify::gtk-theme-name", G_CALLBACK(set_reload), NULL);
+        g_signal_connect(settings, "notify::gtk-font-name", G_CALLBACK(set_reload), NULL);
     }
 }
