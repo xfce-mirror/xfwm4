@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2004-03-09 19:04+0200\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -582,7 +582,7 @@ msgstr "Действие което да се извърши при двойно
 msgid "Advanced"
 msgstr "Допълнителни"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""

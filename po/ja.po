@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2003-12-10 14:20+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -578,7 +578,7 @@ msgstr "タイトルバーをダブルクリックした時の動作 :"
 msgid "Advanced"
 msgstr "上級"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: この操作はサポート外です\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -581,7 +581,7 @@ msgstr "Åtgärd vid dubbelklick på titelraden:"
 msgid "Advanced"
 msgstr "Avancerat"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Åtgärd ej understödd (ännu)\n"

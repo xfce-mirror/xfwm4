@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2003-05-27 22:53--200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team:  <>\n"
@@ -573,7 +573,7 @@ msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
 msgid "Advanced"
 msgstr "Muut"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Toiminto ei ole (vielä) tuettu\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2003-10-26 15:12+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -580,7 +580,7 @@ msgstr "Дія, що виконується при подвійному клац
 msgid "Advanced"
 msgstr "Додатково"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операція не підтримується (поки-що)\n"

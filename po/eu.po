@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 1996-01-26 02:39+0100\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -581,7 +581,7 @@ msgstr "Titulu barran bi aldiz klikatzerakoan egingo den ekintza :"
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Ekintza ez da (oraindik) onartzen\n"

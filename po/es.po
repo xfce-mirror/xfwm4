@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2004-01-13 00:00+0100\n"
 "Last-Translator: Jaime Buffery <nestu@lunar-linux.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -591,7 +591,7 @@ msgstr "Acción a realizar cuando se haga doble click en la barra de título :"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"

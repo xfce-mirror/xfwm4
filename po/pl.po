@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2003-12-25 19:40+0100\n"
 "Last-Translator: Daniel Mróz <beorn@alpha.pl>\n"
 "Language-Team: none <none@none>\n"
@@ -584,7 +584,7 @@ msgstr "Akcja do wykonania przy podwójnym kliknięciu na pasku tytułowym :"
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operaracja jeszcze nie obsługiwana\n"

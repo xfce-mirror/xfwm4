@@ -82,6 +82,9 @@ EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
 
 noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 
+build.h:
+	echo "#define BUILD_ID \""`date +%H%M-%y%m%d`"\"" > build.h
+
 inline-tabwin-icon.h: $(srcdir)/tabwin-icon.png
 	gdk-pixbuf-csource --raw --build-list 				\
 	tabwin_icon_data $(srcdir)/tabwin-icon.png > inline-tabwin-icon.h

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.fa_IR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-24 22:03+0200\n"
+"POT-Creation-Date: 2004-06-26 23:16+0200\n"
 "PO-Revision-Date: 2004-01-09 19:35+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -577,7 +577,7 @@ msgstr "عملی که هنگام دوکلیکه کردن بر نوار عنوا�
 msgid "Advanced"
 msgstr "پیشرفته"
 
-#: src/events.c:1607
+#: src/events.c:1609
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: عملیات (هنوز) پشتیبانی ندارد\n"
