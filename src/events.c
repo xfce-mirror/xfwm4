@@ -631,7 +631,10 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     {
         if (ev->button == Button1)
         {
-            clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+            if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+            {
+                clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
+            }
             clientRaise (c);
             clientPassGrabButton1 (c);
         }
@@ -656,7 +659,10 @@ button1Action (Client * c, XButtonEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+    if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+    {
+        clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+    }
     clientRaise (c);
     clientPassGrabButton1 (c);
 
@@ -729,7 +735,10 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else if (tclick != XFWM_BUTTON_UNDEFINED)
         {
-            clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+            if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+            {
+                clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+            }
             if (screen_info->params->raise_on_click)
             {
                 clientRaise (c);
@@ -846,7 +855,10 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+                if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+                {
+                    clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+                }
                 if (screen_info->params->raise_on_click)
                 {
                     clientRaise (c);
@@ -880,7 +892,10 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 }
                 else if (tclick != XFWM_BUTTON_UNDEFINED)
                 {
-                    clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+                    if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+                    {
+                        clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+                    }
                     if (screen_info->params->raise_on_click)
                     {
                         clientRaise (c);
@@ -940,7 +955,10 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 {
                     clientPassGrabButton1 (c);
                 }
-                clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+                if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+                {
+                    clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
+                }
                 if ((screen_info->params->raise_on_click) 
                     || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
                 {
@@ -1378,7 +1396,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
             TRACE ("EnterNotify window is \"%s\"", c->name);
-            if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
+            if (!(c->type & WINDOW_DOCK | WINDOW_DESKTOP))
             {
                 clientSetFocus (c->screen_info, c, ev->time, FOCUS_FORCE);
                 if (!(screen_info->params->raise_on_click))

@@ -143,9 +143,10 @@
                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
                                        !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
 
-#define WINDOW_TYPE_DIALOG               (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
-#define WINDOW_TYPE_DONT_PLACE           (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
-    
+#define WINDOW_TYPE_DIALOG             (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
+#define WINDOW_TYPE_DONT_PLACE         (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
+#define WINDOW_TYPE_DONT_FOCUS         (WINDOW_DOCK)
+
 
 /* Convenient macros */
 #define FLAG_TEST(flag,bits)                   (flag & (bits))

@@ -125,7 +125,7 @@ clientFocusNew(Client * c)
 
     g_return_if_fail (c != NULL);
     
-    if (!clientAcceptFocus (c))
+    if (!clientAcceptFocus (c)|| (c->type & WINDOW_TYPE_DONT_FOCUS))
     {
         return;
     }
@@ -470,10 +470,10 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         {
             frameDraw (c2, FALSE, FALSE);
             XChangeProperty (clientGetXDisplay (c2), c2->screen_info->xroot, net_active_window, XA_WINDOW, 32,
-                PropModeReplace, (unsigned char *) data, 2);
+                             PropModeReplace, (unsigned char *) data, 2);
         }
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
-            PropModeReplace, (unsigned char *) data, 2);
+                         PropModeReplace, (unsigned char *) data, 2);
         XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, GDK_CURRENT_TIME);
     }
 }
