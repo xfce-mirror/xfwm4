@@ -31,6 +31,7 @@
 gboolean parseRc(gchar *, gchar *, Settings rc[]);
 gboolean checkRc(Settings rc[]);
 gchar *getValue(gchar *, Settings rc[]);
+gchar *getThemeDir(const gchar *);
 void freeRc(Settings rc[]);
 
 #endif /* __PARSERC_H__ */

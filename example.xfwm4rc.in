@@ -2,8 +2,8 @@
 #
 # You can use it as a template for your own configuration file
 
-# theme=directory
-theme=_pkgdatadir_/themes/kindaker
+# theme=name or theme=/full/path/to/themedir
+theme=exocet
 
 # title_alignment=left/right/center
 title_alignment=left

@@ -147,7 +147,7 @@ void loadSettings()
         {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };
-    char *theme;
+    gchar *theme;
     XpmColorSymbol colsym[20];
     GtkWidget *widget;
     guint i;
@@ -189,7 +189,7 @@ void loadSettings()
     }
 
     parseRc(".xfwm4rc", getenv("HOME"), rc);
-    theme = getValue("theme", rc);
+    theme = getThemeDir(getValue("theme", rc));
     parseRc("themerc", theme, rc);
 
     for (i = 0; i < 20; i++)
@@ -423,6 +423,7 @@ void loadSettings()
     grabKey(dpy, &keys[KEY_WORKSPACE_8], gnome_win);
     grabKey(dpy, &keys[KEY_WORKSPACE_9], gnome_win);
     freeRc(rc);
+    g_free (theme);
 }
 
 void unloadSettings()
