@@ -261,6 +261,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             frame_y = frameY (c);
         }
         /* Struts and other partial struts */
+
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
             if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
@@ -275,21 +276,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                                   gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT], 
                                   gdk_screen_get_width (screen_info->gscr)))
                     {
-                        /* Coord shouldn't shrink, thus the MAX, otherwise you end up off screen */
-                        c->x = MAX (gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - frame_width, 
-                                    c->x);
-                        frame_x = frameX (c);
-                    }
-                }
-
-                /* Left */
-                if (overlapY (frame_y, frame_y + frame_height, 
-                              c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
-                {
-                    if (overlapX (frame_x, frame_x + frame_width, 
-                                  0, c2->struts[LEFT]))
-                    {
-                        c->x = c2->struts[LEFT] + frame_left;
+                        c->x = gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - frame_width + frame_left;
                         frame_x = frameX (c);
                     }
                 }
@@ -302,10 +289,28 @@ clientConstrainPos (Client * c, gboolean show_full)
                                   gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM], 
                                   gdk_screen_get_height (screen_info->gscr)))
                     {
-                        /* Coord shouldn't shrink, thus the MAX, otherwise you end up off screen */
-                        c->y = MAX (gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - frame_height,
-                                    c->y);
+                        c->y = gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - frame_height + frame_top;
                         frame_y = frameY (c);
+                    }
+                }
+            }
+        }
+
+        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+        {
+            if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
+                && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
+                && (c2 != c))
+            {
+                /* Left */
+                if (overlapY (frame_y, frame_y + frame_height, 
+                              c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
+                {
+                    if (overlapX (frame_x, frame_x + frame_width, 
+                                  0, c2->struts[LEFT]))
+                    {
+                        c->x = c2->struts[LEFT] + frame_left;
+                        frame_x = frameX (c);
                     }
                 }
 
