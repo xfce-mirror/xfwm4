@@ -300,7 +300,7 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
 
 static int getButtonFromLetter(char chr, Client * c)
 {
-    int b=-1;
+    int b = -1;
 
     DBG("entering getButtonFromLetter\n");
 
@@ -431,22 +431,31 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     }
     if((c->has_border) && !(c->fullscreen))
     {
-        XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
-        for(i = 0; i < 3; i++)
-        {
-            XShapeCombineMask(dpy, c->sides[i], ShapeBounding, 0, 0, pm_sides[i].mask, ShapeSet);
+        if (title->mask)
+	{
+	    XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
         }
+	for(i = 0; i < 3; i++)
+        {
+            if (pm_sides[i].mask)
+	    {
+	        XShapeCombineMask(dpy, c->sides[i], ShapeBounding, 0, 0, pm_sides[i].mask, ShapeSet);
+            }
+	}
         for(i = 0; i < 4; i++)
         {
-            XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
-        }
+            if (corners[i][state].mask)
+	    {
+                XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
+            }
+	}
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(c->button_pressed[i])
+	    if((c->button_pressed[i]) && (buttons[i][PRESSED].mask))
             {
                 XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][PRESSED].mask, ShapeSet);
             }
-            else
+            else if (buttons[i][state].mask)
             {
                 XShapeCombineMask(dpy, c->buttons[i], ShapeBounding, 0, 0, buttons[i][state].mask, ShapeSet);
             }
@@ -535,23 +544,32 @@ void frameDraw(Client * c)
         XMapWindow(dpy, c->title);
         for(i = 0; i < 3; i++)
         {
-            XMapWindow(dpy, c->sides[i]);
+            if (c->sides[i])
+	    {
+	        XMapWindow(dpy, c->sides[i]);
+	    }
         }
         for(i = 0; i < 4; i++)
         {
-            XMapWindow(dpy, c->corners[i]);
+            if (c->corners[i])
+	    {
+	        XMapWindow(dpy, c->corners[i]);
+	    }
         }
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-	    char b = getLetterFromButton(i, c);
-            if(strchr(button_layout, b))
-            {
-                XMapWindow(dpy, c->buttons[i]);
-            }
-            else
-            {
-                XUnmapWindow(dpy, c->buttons[i]);
-            }
+	    if (c->buttons[i])
+	    {
+		char b = getLetterFromButton(i, c);
+        	if(strchr(button_layout, b))
+        	{
+                    XMapWindow(dpy, c->buttons[i]);
+        	}
+        	else
+        	{
+                    XUnmapWindow(dpy, c->buttons[i]);
+        	}
+	    }
         }
 
         x = frameLeft(c) + button_offset;
@@ -562,14 +580,14 @@ void frameDraw(Client * c)
             {
                 break;
             }
-            else if (button >= 0)
+            else if ((button >= 0) && (c->buttons[button]))
             {
                 XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - buttons[button][ACTIVE].height) / 2, buttons[button][ACTIVE].width, buttons[button][ACTIVE].height);
                 button_x[button] = x;
                 x = x + buttons[button][ACTIVE].width + button_spacing;
             }
         }
-        left = x - button_spacing;
+        left = x;
 
         x = frameWidth(c) - frameRight(c) + button_spacing - button_offset;
         for(j = strlen(button_layout) - 1; j >= i; j--)
@@ -579,7 +597,7 @@ void frameDraw(Client * c)
             {
                 break;
             }
-            else if(button >= 0)
+            else if ((button >= 0) && (c->buttons[button]))
             {
                 x = x - buttons[button][ACTIVE].width - button_spacing;
                 XMoveResizeWindow(dpy, c->buttons[button], x, (frameTop(c) - buttons[button][ACTIVE].height) / 2, buttons[button][ACTIVE].width, buttons[button][ACTIVE].height);
@@ -618,11 +636,11 @@ void frameDraw(Client * c)
 
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(c->button_pressed[i])
+            if((c->button_pressed[i]) && (buttons[i][PRESSED].pixmap))
             {
                 XSetWindowBackgroundPixmap(dpy, c->buttons[i], buttons[i][PRESSED].pixmap);
             }
-            else
+            else if (buttons[i][state].pixmap)
             {
                 XSetWindowBackgroundPixmap(dpy, c->buttons[i], buttons[i][state].pixmap);
             }
@@ -664,15 +682,24 @@ void frameDraw(Client * c)
         XUnmapWindow(dpy, c->title);
         for(i = 0; i < 3; i++)
         {
-            XUnmapWindow(dpy, c->sides[i]);
+            if (c->sides[i])
+	    {
+	        XUnmapWindow(dpy, c->sides[i]);
+	    }
         }
         for(i = 0; i < 4; i++)
         {
-            XUnmapWindow(dpy, c->corners[i]);
+            if (c->corners[i])
+	    {
+	        XUnmapWindow(dpy, c->corners[i]);
+	    }
         }
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            XUnmapWindow(dpy, c->buttons[i]);
+            if (c->buttons[i])
+	    {
+	        XUnmapWindow(dpy, c->buttons[i]);
+	    }
         }
         frameSetShape(c, 0, NULL, NULL, NULL);
     }

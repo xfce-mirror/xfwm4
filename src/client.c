@@ -424,19 +424,26 @@ void clientGetNetWmType(Client * c)
 
     if(!get_atom_list(dpy, c->window, net_wm_window_type, &atoms, &n_atoms))
     {
-        switch (c->win_layer)
-        {
-            case WIN_LAYER_DESKTOP:
-                c->type_atom = net_wm_window_type_desktop;
-                break;
-            case WIN_LAYER_DOCK:
-                c->type_atom = net_wm_window_type_dock;
-                break;
-            case WIN_LAYER_NORMAL:
-            default:
-                c->type_atom = net_wm_window_type_normal;
-                break;
-        }
+	if (c->transient_for)
+	{
+            c->type_atom = net_wm_window_type_dialog;
+	}
+        else
+	{
+            switch (c->win_layer)
+            {
+        	case WIN_LAYER_DESKTOP:
+                    c->type_atom = net_wm_window_type_desktop;
+                    break;
+        	case WIN_LAYER_DOCK:
+                    c->type_atom = net_wm_window_type_dock;
+                    break;
+        	case WIN_LAYER_NORMAL:
+        	default:
+                    c->type_atom = net_wm_window_type_normal;
+                    break;
+            }
+	}
     }
     else
     {
@@ -682,12 +689,9 @@ static void clientWindowType(Client * c)
         Client *c2;
 
         DBG("Window is a transient\n");
-	c->has_hide = False;
-	c->has_maximize = False;
         c2 = clientGetFromWindow(c->transient_for, WINDOW);
         if(c2)
         {
-            c->type = c2->type;
             layer = c2->win_layer;
         }
     }

@@ -128,6 +128,28 @@ static void reset_timeout(void)
     raise_timeout = gtk_timeout_add(raise_delay, (GtkFunction) raise_cb, NULL);
 }
 
+static inline _moveRequest(Client *c, XEvent *ev)
+{
+    if((c->has_border) && !(c->fullscreen) && (c->has_move))
+    {
+        clientMove(c, ev);
+    }
+}
+
+static inline _resizeRequest(Client *c, int corner, XEvent *ev)
+{
+    clientSetFocus(c, True);
+    clientRaise(c);
+    if ((c->has_resize) && (c->is_resizable))
+    {
+	clientResize(c, corner, ev);
+    }
+    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
+    {
+	clientMove(c, ev);
+    }
+}
+
 static inline void handleKeyPress(XKeyEvent * ev)
 {
     Client *c;
@@ -154,10 +176,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_DOWN:
             case KEY_MOVE_LEFT:
             case KEY_MOVE_RIGHT:
-                if((c->has_border) && !(c->fullscreen) && (c->has_move))
-                {
-                    clientMove(c, (XEvent *) ev);
-                }
+                _moveRequest(c, (XEvent *) ev);
                 break;
             case KEY_RESIZE_UP:
             case KEY_RESIZE_DOWN:
@@ -386,10 +405,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             tclick = typeOfClick(c->frame, &copy_event);
             if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
             {
-                if((c->has_border) && !(c->fullscreen) && (c->has_move))
-                {
-                    clientMove(c, (XEvent *) ev);
-                }
+                _moveRequest(c, (XEvent *) ev);
             }
             else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
             {
@@ -409,94 +425,31 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else if((win == c->corners[CORNER_TOP_LEFT]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, CORNER_TOP_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, CORNER_TOP_RIGHT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
         }
         else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, 4 + SIDE_LEFT, (XEvent *) ev);
         }
         else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
-            clientSetFocus(c, True);
-            clientRaise(c);
-	    if ((c->has_resize) && (c->is_resizable))
-	    {
-                clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
-	    }
-	    else if((c->has_border) && !(c->fullscreen) && (c->has_move))
-            {
-                clientMove(c, (XEvent *) ev);
-            }
+	    _resizeRequest(c, 4 + SIDE_RIGHT, (XEvent *) ev);
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
