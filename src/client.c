@@ -3951,9 +3951,6 @@ clientToggleFullscreen (Client * c)
         wc.height = c->fullscreen_old_height;
         layer = c->fullscreen_old_layer;
     }
-    clientSetNetState (c);
-    clientSetLayer (c, layer);
-
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
@@ -3965,6 +3962,9 @@ clientToggleFullscreen (Client * c)
         c->height = wc.height;
         c->width = wc.width;
     }
+
+    clientSetNetState (c);
+    clientSetLayer (c, layer);
 }
 
 static void
