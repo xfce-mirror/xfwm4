@@ -26,6 +26,8 @@ xfwm4_plugin_la_CFLAGS =						\
         -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_plugin_la_LIBADD =						\
+	@LIBXFCEGUI4_LIBS@						\
+	@LIBXFCE4MCS_MANAGER_LIBS@					\
 	@LIBS@
 
 workspaces_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
@@ -59,6 +61,8 @@ workspaces_plugin_la_CFLAGS =						\
 	-DDATADIR=\"$(pkgdatadir)\" 
 
 workspaces_plugin_la_LIBADD =						\
+	@LIBXFCEGUI4_LIBS@						\
+	@LIBXFCE4MCS_MANAGER_LIBS@					\
 	@LIBS@
 
 noinst_DATA =								\
