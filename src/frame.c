@@ -185,7 +185,7 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     w2 = title[TITLE_2][ACTIVE].width;
     w4 = title[TITLE_4][ACTIVE].width;
     
-    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), "toto\0" /*c->name */);
+    layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), c->name);
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
     
     if(full_width_title)
