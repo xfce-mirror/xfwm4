@@ -22,6 +22,7 @@
 #include <config.h>
 #endif
 
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/wait.h>

@@ -4364,7 +4364,8 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     
     if ((c) && !(ignore_modal))
     {
-        Client *c3 = clientGetModalFor (c);
+        c3 = clientGetModalFor (c);
+
         if (c3)
         {
             c = c3;
