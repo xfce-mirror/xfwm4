@@ -5,7 +5,7 @@ images_DATA = \
 	focus.png	\
 	keyboard_shortcuts.png	\
 	misc_wm_prefs.png	\
-	titlebar.png	\
+	titlebar.png		\
 	workspace_margins.png	\
 	xfwm_workspaces.png
 

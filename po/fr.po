@@ -597,9 +597,8 @@ msgstr "Composer le raccourci"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1272
 #: mcs-plugin/xfwm4_shortcuteditor.c:1500
-#, fuzzy
 msgid "No shortcut"
-msgstr "Composer le raccourci"
+msgstr "Pas de raccourci"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1394
