@@ -1386,6 +1386,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XSetWindowAttributes attributes;
     Client *c = NULL;
     gboolean shaped;
+    gboolean grabbed;
     unsigned long valuemask;
     int i;
 
@@ -1687,6 +1688,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     compositorAddWindow (display_info, c->frame, c);
 
     clientRaise (c);
+    grabbed = FALSE;
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
         if ((c->win_workspace == screen_info->current_ws) ||
@@ -1700,6 +1702,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             else
             {
                 clientFocusNew(c);
+                grabbed = TRUE;
             }
         }
     }
@@ -1707,9 +1710,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         setWMState (display_info, c->window, IconicState);
         clientSetNetState (c);
-        clientGrabMouseButton (c);
     }
     
+    if (!grabbed)
+    {
+        clientGrabMouseButton (c);
+    }
     setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
                                                  frameRight (c), frameBottom (c)); 
     
