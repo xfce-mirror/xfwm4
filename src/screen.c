@@ -116,25 +116,41 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->button_handler_id = 0L;
     
     /* Create the side windows to detect edge movement */
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[0], 
-                                  0, 0, 
-                                  1, gdk_screen_get_height (gscr), 
-                                  LeaveWindowMask | PointerMotionMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &screen_info->sidewalk[0], 
+                    0, 0, 
+                    1, gdk_screen_get_height (gscr), 
+                    LeaveWindowMask | PointerMotionMask);
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[1], 
-                                  gdk_screen_get_width (gscr) - 1, 0, 
-                                  1, gdk_screen_get_height (gscr), 
-                                  LeaveWindowMask | PointerMotionMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &screen_info->sidewalk[1], 
+                    gdk_screen_get_width (gscr) - 1, 0, 
+                    1, gdk_screen_get_height (gscr), 
+                    LeaveWindowMask | PointerMotionMask);
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[2], 
-                                  0, 0, 
-                                  gdk_screen_get_width (gscr), 1,
-                                  LeaveWindowMask | PointerMotionMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &screen_info->sidewalk[2], 
+                    0, 0, 
+                    gdk_screen_get_width (gscr), 1,
+                    LeaveWindowMask | PointerMotionMask);
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[3], 
-                                  0, gdk_screen_get_height (gscr) - 1, 
-                                  gdk_screen_get_width (gscr), 1,
-                                  LeaveWindowMask | PointerMotionMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &screen_info->sidewalk[3], 
+                    0, gdk_screen_get_height (gscr) - 1, 
+                    gdk_screen_get_width (gscr), 1,
+                    LeaveWindowMask | PointerMotionMask);
 
     screen_info->gnome_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 

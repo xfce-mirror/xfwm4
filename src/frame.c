@@ -192,38 +192,7 @@ frameHeight (Client * c)
 }
 
 static void
-fillRectangle (Display *dpy, int screen, Drawable d, Pixmap pm, int x, int y, int width, int height)
-{
-    XGCValues gv;
-    GC gc;
-    unsigned long mask;
-
-    TRACE ("entering fillRectangle");
-
-    if ((width < 1) || (height < 1))
-    {
-        return;
-    }
-    gv.fill_style = FillTiled;
-    gv.tile = pm;
-    gv.ts_x_origin = x;
-    gv.ts_y_origin = y;
-    gv.foreground = WhitePixel (dpy, screen);
-    if (gv.tile != None)
-    {
-        mask = GCTile | GCFillStyle | GCTileStipXOrigin;
-    }
-    else
-    {
-        mask = GCForeground;
-    }
-    gc = XCreateGC (dpy, d, mask, &gv);
-    XFillRectangle (dpy, d, gc, x, y, width, height);
-    XFreeGC (dpy, gc);
-}
-
-static void
-frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap * pm)
+frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * pm)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
@@ -349,17 +318,11 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
 
     if (w1 > 0)
     {
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_1][state].pixmap,
-            0, 0, w1, frameTop (c));
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_1][state].mask, 0, 0,
-            w1, frameTop (c));
+        xfwmPixmapFill (&screen_info->title[TITLE_1][state], pm, 0, 0, w1, frameTop (c)); 
         x = x + w1;
     }
 
-    fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_2][state].pixmap, x, 0,
-        w2, frameTop (c));
-    fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_2][state].mask, x, 0, w2,
-        frameTop (c));
+    xfwmPixmapFill (&screen_info->title[TITLE_2][state], pm, x, 0, w2, frameTop (c)); 
     x = x + w2;
 
     if (w3 > 0)
@@ -372,10 +335,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
         {
             voffset = screen_info->params->title_vertical_offset_inactive;
         }
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_3][state].pixmap,
-            x, 0, w3, frameTop (c));
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_3][state].mask, x, 0,
-            w3, frameTop (c));
+        xfwmPixmapFill (&screen_info->title[TITLE_3][state], pm, x, 0, w3, frameTop (c)); 
         if (screen_info->params->title_shadow[state])
         {
             gdk_gc_get_values (screen_info->black_gc, &values);
@@ -395,18 +355,12 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
     {
         x = right - w4;
     }
-    fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_4][state].pixmap, x, 0,
-        w4, frameTop (c));
-    fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_4][state].mask, x, 0, w4,
-        frameTop (c));
+    xfwmPixmapFill (&screen_info->title[TITLE_4][state], pm, x, 0, w4, frameTop (c)); 
     x = x + w4;
 
     if (w5 > 0)
     {
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->pixmap, screen_info->title[TITLE_5][state].pixmap,
-            x, 0, w5, frameTop (c));
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, pm->mask, screen_info->title[TITLE_5][state].mask, x, 0,
-            w5, frameTop (c));
+        xfwmPixmapFill (&screen_info->title[TITLE_5][state], pm, x, 0, w5, frameTop (c)); 
     }
     g_object_unref (G_OBJECT (gc));
     g_object_unref (G_OBJECT (gpixmap));
@@ -512,7 +466,7 @@ getLetterFromButton (int i, Client * c)
     return chr;
 }
 
-static XfwmPixmap *
+static xfwmPixmap *
 frameGetPixmap (Client * c, int button, int state)
 {
     ScreenInfo *screen_info = c->screen_info;
@@ -557,7 +511,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
     DisplayInfo *display_info = screen_info->display_info;
     Window temp;
     XRectangle rect;
-    XfwmPixmap *my_pixmap;
+    xfwmPixmap *my_pixmap;
     int i;
    
     TRACE ("entering frameSetShape");
@@ -568,7 +522,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
         return;
     }
 
-    temp = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
+    temp = XCreateSimpleWindow (display_info->dpy, c->frame, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
@@ -759,7 +713,7 @@ void
 frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 {
     ScreenInfo *screen_info = NULL;
-    XfwmPixmap *my_pixmap;
+    xfwmPixmap *my_pixmap;
     gboolean requires_clearing = FALSE;
     int state = ACTIVE;
     int i;
@@ -874,8 +828,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                     my_pixmap = frameGetPixmap (c, button, c->button_pressed[button] ? PRESSED : state);
                     if (my_pixmap->pixmap)
                     {
-                        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-                            MYWINDOW_XWINDOW (c->buttons[button]), my_pixmap->pixmap);
+                        xfwmWindowSetBG (&c->buttons[button], my_pixmap);
                     }
                     xfwmWindowShow (&c->buttons[button], x,
                         (frameTop (c) - screen_info->buttons[button][state].height) / 2,
@@ -910,8 +863,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                     my_pixmap = frameGetPixmap (c, button, c->button_pressed[button] ? PRESSED : state);
                     if (my_pixmap->pixmap)
                     {
-                        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-                            MYWINDOW_XWINDOW (c->buttons[button]), my_pixmap->pixmap);
+                        xfwmWindowSetBG (&c->buttons[button], my_pixmap);
                     }
                     x = x - screen_info->buttons[button][state].width -
                         screen_info->params->button_spacing;
@@ -957,62 +909,44 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 frameLeft (c), left_height);
             requires_clearing = TRUE;
         }
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap,
-            screen_info->sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft (c),
-            left_height);
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_LEFT][state].mask,
-            screen_info->sides[SIDE_LEFT][state].mask, 0, 0, frameLeft (c),
-            left_height);
-
+        xfwmPixmapFill (&screen_info->sides[SIDE_LEFT][state], 
+                        &c->pm_cache.pm_sides[SIDE_LEFT][state],
+                        0, 0, frameLeft (c), left_height); 
         if (c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_RIGHT][state],
                 frameRight (c), right_height);
             requires_clearing = TRUE;
         }
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap,
-            screen_info->sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight (c),
-            right_height);
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_RIGHT][state].mask,
-            screen_info->sides[SIDE_RIGHT][state].mask, 0, 0, frameRight (c),
-            right_height);
-
+        xfwmPixmapFill (&screen_info->sides[SIDE_RIGHT][state], 
+                        &c->pm_cache.pm_sides[SIDE_RIGHT][state], 
+                        0, 0, frameRight (c), right_height); 
         if (c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
         {
             xfwmPixmapCreate (screen_info, &c->pm_cache.pm_sides[SIDE_BOTTOM][state],
                 bottom_width, frameBottom (c));
             requires_clearing = TRUE;
         }
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap,
-            screen_info->sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width,
-            frameBottom (c));
-        fillRectangle (clientGetXDisplay (c), screen_info->screen, c->pm_cache.pm_sides[SIDE_BOTTOM][state].mask,
-            screen_info->sides[SIDE_BOTTOM][state].mask, 0, 0, bottom_width,
-            frameBottom (c));
+        xfwmPixmapFill (&screen_info->sides[SIDE_BOTTOM][state], 
+                        &c->pm_cache.pm_sides[SIDE_BOTTOM][state], 
+                        0, 0, bottom_width, frameBottom (c)); 
 
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c), MYWINDOW_XWINDOW (c->title),
-            c->pm_cache.pm_title[state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
-            c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]),
-            c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]),
-            c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
-            screen_info->corners[CORNER_TOP_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
-            screen_info->corners[CORNER_TOP_RIGHT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
-            screen_info->corners[CORNER_BOTTOM_LEFT][state].pixmap);
-        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-            MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
-            screen_info->corners[CORNER_BOTTOM_RIGHT][state].pixmap);
+        xfwmWindowSetBG (&c->title, 
+                         &c->pm_cache.pm_title[state]);
+        xfwmWindowSetBG (&c->sides[SIDE_LEFT], 
+                         &c->pm_cache.pm_sides[SIDE_LEFT][state]);
+        xfwmWindowSetBG (&c->sides[SIDE_RIGHT], 
+                         &c->pm_cache.pm_sides[SIDE_RIGHT][state]);
+        xfwmWindowSetBG (&c->sides[SIDE_BOTTOM], 
+                         &c->pm_cache.pm_sides[SIDE_BOTTOM][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_TOP_LEFT], 
+                         &screen_info->corners[CORNER_TOP_LEFT][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_TOP_RIGHT], 
+                         &screen_info->corners[CORNER_TOP_RIGHT][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_LEFT], 
+                         &screen_info->corners[CORNER_BOTTOM_LEFT][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_RIGHT], 
+                         &screen_info->corners[CORNER_BOTTOM_RIGHT][state]);
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {

@@ -39,12 +39,12 @@
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
-#if DEBUG            
+#if DEBUG
     char buf[64];
 
     XGetErrorText (dpy, err->error_code, buf, 63);
     g_print ("XError: %s\n", buf);                                                  
-    g_print ("==>  XID Ox%lx, Request %d, Error %d <==\n", 
+    g_print ("==>  XID 0x%lx, Request %d, Error %d <==\n", 
               err->resourceid, err->request_code, err->error_code); 
 #endif
     return 0;

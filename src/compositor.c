@@ -42,6 +42,10 @@
 
 #ifdef HAVE_COMPOSITOR
 
+#include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xdamage.h>
+#include <X11/extensions/Xrender.h>
+
 #define WINDOW_SOLID    0
 #define WINDOW_TRANS    1
 #define WINDOW_ARGB     2
@@ -760,7 +764,7 @@ win_extents (CWindow *cw)
                 double opacity = SHADOW_OPACITY;
                 if (cw->mode == WINDOW_TRANS)
                 {
-                    opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
+                    opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE) * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
                 }
                 cw->shadow = shadow_picture (screen_info, opacity,
                                              cw->attr.width + 2 * cw->attr.border_width,
@@ -791,6 +795,10 @@ win_extents (CWindow *cw)
             {
                 r.height = sr.y + sr.height - r.y;
             }
+        }
+        else
+        {
+            cw->shadow = None;
         }
     }
 
@@ -1001,6 +1009,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
                               cw->attr.y + cw->shadow_dy,
                               cw->shadow_width, cw->shadow_height);
         }
+
         if (cw->mode != WINDOW_SOLID)
         {
             gint x, y, w, h;
@@ -2133,6 +2142,24 @@ compositorInitDisplay (DisplayInfo *display_info)
     g_return_if_fail (display_info != NULL);
     TRACE ("entering compositorInitDisplay");
 
+    if (!XRenderQueryExtension (display_info->dpy,
+                                &display_info->render_event_base,
+                                &display_info->render_error_base))
+    {
+        g_warning ("The display does not support the XRender extension.");
+        display_info->have_render = FALSE;
+        display_info->render_event_base = 0;
+        display_info->render_error_base = 0;
+    }
+    else
+    {
+        display_info->have_render = TRUE;
+#if DEBUG
+        g_print ("render event base: %i\n", display_info->render_event_base);
+        g_print ("render error base: %i\n", display_info->render_error_base);
+#endif
+    }
+
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,
                                 &display_info->composite_error_base))
@@ -2145,7 +2172,12 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_composite = TRUE;
+#if DEBUG
+        g_print ("composite event base: %i\n", display_info->composite_event_base);
+        g_print ("composite error base: %i\n", display_info->composite_error_base);
+#endif
     }
+
     if (!XDamageQueryExtension (display_info->dpy,
                             &display_info->damage_event_base,
                             &display_info->damage_error_base))
@@ -2158,7 +2190,12 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_damage = TRUE;
+#if DEBUG
+        g_print ("damage event base: %i\n", display_info->damage_event_base);
+        g_print ("damage error base: %i\n", display_info->damage_error_base);
+#endif
     }
+
     if (!XFixesQueryExtension (display_info->dpy,
                             &display_info->fixes_event_base,
                             &display_info->fixes_error_base))
@@ -2171,12 +2208,17 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_fixes = TRUE;
+#if DEBUG
+        g_print ("fixes event base: %i\n", display_info->fixes_event_base);
+        g_print ("fixes error base: %i\n", display_info->fixes_error_base);
+#endif
     }
 
     display_info->compositor_idle_id = 0;
     display_info->compositor_timeout_id = 0;
 
-    display_info->enable_compositor = ((display_info->have_composite)
+    display_info->enable_compositor = ((display_info->have_render)
+                                    && (display_info->have_composite)
                                     && (display_info->have_damage)
                                     && (display_info->have_fixes));
     if (!display_info->enable_compositor)
@@ -2413,7 +2455,7 @@ compositorUpdateWindow (DisplayInfo *display_info, Window id, gint new_width, gi
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
-        TRACE ("Resizing Ox%ld to (%i, %i)", cw->id, new_width, new_height);
+        TRACE ("Resizing 0x%ld to (%i, %i)", cw->id, new_width, new_height);
         resize_win (cw, cw->attr.x, cw->attr.y, new_width, new_height, cw->attr.border_width, shape_notify);
     }
 #endif /* HAVE_COMPOSITOR */

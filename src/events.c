@@ -776,8 +776,14 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     }
     else if (ev->button == Button4)
     {
+
         /* Mouse wheel scroll up */
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+
+        if (state == AltMask)
+        {
+            clientIncOpacity(c);
+        }
+        else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             clientShade (c);
         }
@@ -785,7 +791,12 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button5)
     {
         /* Mouse wheel scroll down */
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+
+        if (state == AltMask)
+        {
+            clientDecOpacity(c);
+        }
+        else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             clientUnshade (c);
         }
@@ -2280,10 +2291,14 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        Don't forget to delete that window once the menu is closed, though, or we'll get in
        trouble.
      */
-    xfwmWindowTemp (clientGetXDisplay (c), screen_info->xroot, &menu_event_window, 0, 0, 
-                              gdk_screen_get_width (screen_info->gscr),
-                              gdk_screen_get_height (screen_info->gscr), 
-                              NoEventMask);
+    xfwmWindowTemp (clientGetXDisplay (c),  
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &menu_event_window, 0, 0, 
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr), 
+                    NoEventMask);
 
     menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback, 
                          c->win_workspace, screen_info->workspace_count, 

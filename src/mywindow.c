@@ -29,22 +29,51 @@
 #include <stdio.h>
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h> 
+#include "mypixmap.h"
 #include "mywindow.h"
-        
+
+#ifdef HAVE_COMPOSITOR
+#include <X11/extensions/Xrender.h>
+#endif
+
+static void
+xfwmWindowSetVisual (xfwmWindow * win, Visual *visual, gint depth)
+{
+    if (visual)
+    {
+        win->visual = visual;
+    }
+    else
+    {
+        win->visual = DefaultVisual (win->dpy, win->screen);
+    }
+    
+    if (depth)
+    {
+        win->depth = depth;
+    }
+    else
+    {
+        win->depth = DefaultDepth (win->dpy, win->screen);
+    }
+}
+
 void
 xfwmWindowInit (xfwmWindow * win)
 {
     win->window = None;
     win->map = FALSE;
     win->dpy = NULL;
+    win->depth = 0;
     win->x = 0;
     win->y = 0;
-    win->w = 1;
-    win->h = 1;
+    win->width = 1;
+    win->height = 1;
 }
 
 void
-xfwmWindowCreate (Display * dpy, Window parent, xfwmWindow * win, Cursor cursor)
+xfwmWindowCreate (Display * dpy, gint screen, Visual *visual, gint depth, Window parent,  
+                  xfwmWindow * win, Cursor cursor)
 {
     TRACE ("entering xfwmWindowCreate");
 
@@ -56,10 +85,13 @@ xfwmWindowCreate (Display * dpy, Window parent, xfwmWindow * win, Cursor cursor)
     }
     win->map = FALSE;
     win->dpy = dpy;
+    win->depth = depth;
+    win->screen = screen;
     win->x = 0;
     win->y = 0;
-    win->w = 1;
-    win->h = 1;
+    win->width = 1;
+    win->height = 1;
+    xfwmWindowSetVisual (win, visual, depth);
 }
 
 void
@@ -96,15 +128,15 @@ xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
         win->map = TRUE;
     }
     TRACE ("Showing XID 0x%lx", win->window);
-    if (((x != win->x) || (y != win->y)) && ((width != win->w)
-            || (height != win->h)))
+    if (((x != win->x) || (y != win->y)) && ((width != win->width)
+            || (height != win->height)))
     {
         XMoveResizeWindow (win->dpy, win->window, x, y, (unsigned int) width,
             (unsigned int) height);
         win->x = x;
         win->y = y;
-        win->w = width;
-        win->h = height;
+        win->width = width;
+        win->height = height;
     }
     else if ((x != win->x) || (y != win->y))
     {
@@ -116,12 +148,12 @@ xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
         win->x = x;
         win->y = y;
     }
-    else if ((width != win->w) || (height != win->h))
+    else if ((width != win->width) || (height != win->height))
     {
         XResizeWindow (win->dpy, win->window, (unsigned int) width,
             (unsigned int) height);
-        win->w = width;
-        win->h = height;
+        win->width = width;
+        win->height = height;
     }
     else if (refresh)
     {
@@ -159,14 +191,15 @@ xfwmWindowDeleted (xfwmWindow *win)
 }        
 
 void 
-xfwmWindowTemp (Display * dpy, Window parent, xfwmWindow * win, 
-                int x, int y, int w, int h, long eventmask)
+xfwmWindowTemp (Display * dpy, gint screen, Visual *visual, gint depth, Window parent,
+                xfwmWindow * win, int x, int y, 
+                int width, int height, long eventmask)
 {
     XSetWindowAttributes attributes;
 
     attributes.event_mask = eventmask;
     attributes.override_redirect = TRUE;
-    win->window = XCreateWindow (dpy, parent, x, y, w, h, 0, 0, 
+    win->window = XCreateWindow (dpy, parent, x, y, width, height, 0, 0, 
                          InputOnly, CopyFromParent,
                          CWEventMask | CWOverrideRedirect, &attributes);
     XMapRaised (dpy, win->window);
@@ -174,9 +207,56 @@ xfwmWindowTemp (Display * dpy, Window parent, xfwmWindow * win,
 
     win->map = TRUE;
     win->dpy = dpy;
+    win->screen = screen;
     win->x = x;
     win->y = y;
-    win->w = w;
-    win->h = h;
+    win->width = width;
+    win->height = height;
+    xfwmWindowSetVisual (win, visual, depth);
 }
 
+void
+xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
+{
+    if ((win->width < 1) || (win->height < 1) || (pix->width < 1) || (pix->height < 1))
+    {
+        return;
+    }
+
+    if ((win->visual == DefaultVisual (win->dpy, win->screen))
+        && (win->depth == DefaultDepth (win->dpy, win->screen)))
+    {
+        XSetWindowBackgroundPixmap (win->dpy, win->window, pix->pixmap);
+    }
+#ifdef HAVE_COMPOSITOR
+    else
+    {
+        Picture psrc, pdst;
+        XRenderPictFormat *format_src, *format_dst;
+        Pixmap temp;
+
+        format_src = XRenderFindVisualFormat (win->dpy, DefaultVisual (win->dpy, win->screen));
+        format_dst = XRenderFindVisualFormat (win->dpy, win->visual);
+
+        if (!format_src || !format_dst)
+        {
+            g_warning ("Cannot get XRender picture format");
+            return;
+        }
+
+        temp = XCreatePixmap (win->dpy, win->window, pix->width, pix->height, win->depth);
+
+        psrc = XRenderCreatePicture (win->dpy, pix->pixmap, format_src, 0, NULL);
+        pdst = XRenderCreatePicture (win->dpy, temp, format_dst, 0, NULL);
+
+        XRenderComposite (win->dpy, PictOpSrc, psrc, None, pdst, 0, 0, 0, 0, 0, 0, pix->width, pix->height);
+
+        XRenderFreePicture (win->dpy, psrc);
+        XRenderFreePicture (win->dpy, pdst);
+
+        XSetWindowBackgroundPixmap (win->dpy, win->window, temp);
+
+        XFreePixmap (win->dpy, temp);
+    }
+#endif
+}

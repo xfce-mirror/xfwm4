@@ -153,7 +153,7 @@ typedef struct _Client            Client;
 typedef struct _ClientPixmapCache ClientPixmapCache;
 typedef struct _DisplayInfo       DisplayInfo;
 typedef struct _XfwmColor         XfwmColor;
-typedef struct _XfwmPixmap        XfwmPixmap;
+typedef struct _xfwmPixmap        xfwmPixmap;
 typedef struct _XfwmParams        XfwmParams;
 typedef struct _ScreenInfo        ScreenInfo;
 typedef struct _Settings          Settings;
@@ -185,6 +185,8 @@ struct _DisplayInfo
     gboolean enable_compositor;
 
 #ifdef HAVE_COMPOSITOR
+    gint render_error_base;
+    gint render_event_base;
     gint composite_error_base;
     gint composite_event_base;
     gint damage_error_base;
@@ -192,6 +194,7 @@ struct _DisplayInfo
     gint fixes_error_base;
     gint fixes_event_base;
 
+    gboolean have_render;
     gboolean have_composite;
     gboolean have_damage;
     gboolean have_fixes;

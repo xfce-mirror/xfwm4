@@ -30,25 +30,33 @@
 #ifndef INC_MYPIXMAP_H
 #define INC_MYPIXMAP_H
 
-struct _XfwmPixmap
+#define MYPIXMAP_XPIXMAP(p) (p.pixmap)
+
+struct _xfwmPixmap
 {
     ScreenInfo *screen_info;
     Pixmap pixmap, mask;
     gint width, height;
 };
 
-gboolean xfwmPixmapLoad   (ScreenInfo *, 
-                           XfwmPixmap *, 
+gboolean xfwmPixmapLoad   (ScreenInfo *,
+                           xfwmPixmap *, 
                            gchar *, 
                            gchar *,
                            XpmColorSymbol *, 
                            gint);
-void xfwmPixmapCreate     (ScreenInfo *, 
-                           XfwmPixmap *, 
+void xfwmPixmapCreate     (ScreenInfo *,
+                           xfwmPixmap *, 
                            gint, 
                            gint);
-void xfwmPixmapInit       (ScreenInfo *, 
-                           XfwmPixmap *);
-void xfwmPixmapFree       (XfwmPixmap *);
+void xfwmPixmapInit       (ScreenInfo *,
+                           xfwmPixmap *);
+void xfwmPixmapFree       (xfwmPixmap *);
+void xfwmPixmapFill       (xfwmPixmap *, 
+                           xfwmPixmap *,
+                           gint, 
+                           gint, 
+                           gint, 
+                           gint);
 
 #endif /* INC_MYPIXMAP_H */

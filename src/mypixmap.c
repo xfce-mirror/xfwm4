@@ -35,7 +35,7 @@
 #include "mypixmap.h"
 
 static gboolean
-xfwmPixmapCompose (XfwmPixmap * pm, gchar * dir, gchar * file)
+xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
 {
     gchar *filepng;
     gchar *filename;
@@ -117,7 +117,7 @@ xfwmPixmapCompose (XfwmPixmap * pm, gchar * dir, gchar * file)
     gdk_pixbuf_composite (alpha, src, 0, 0, width, height,
                           0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
-                     pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);                 
+                     pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);
 
     if (cmap)
     {
@@ -131,8 +131,7 @@ xfwmPixmapCompose (XfwmPixmap * pm, gchar * dir, gchar * file)
 }
 
 gboolean
-xfwmPixmapLoad (ScreenInfo * screen_info, XfwmPixmap * pm, gchar * dir, gchar * file,
-    XpmColorSymbol * cs, gint n)
+xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
     gchar *filexpm;
@@ -178,7 +177,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, XfwmPixmap * pm, gchar * dir, gchar * 
 }
 
 void
-xfwmPixmapCreate (ScreenInfo * screen_info, XfwmPixmap * pm, gint width, gint height)
+xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm, gint width, gint height)
 {
     TRACE ("entering xfwmPixmapCreate, width=%i, height=%i", width, height);
     if ((width < 1) || (height < 1) || (!screen_info))
@@ -196,7 +195,7 @@ xfwmPixmapCreate (ScreenInfo * screen_info, XfwmPixmap * pm, gint width, gint he
 }
 
 void
-xfwmPixmapInit (ScreenInfo * screen_info, XfwmPixmap * pm)
+xfwmPixmapInit (ScreenInfo * screen_info, xfwmPixmap * pm)
 {
     pm->screen_info = screen_info;
     pm->pixmap = None;
@@ -206,7 +205,7 @@ xfwmPixmapInit (ScreenInfo * screen_info, XfwmPixmap * pm)
 }
 
 void
-xfwmPixmapFree (XfwmPixmap * pm)
+xfwmPixmapFree (xfwmPixmap * pm)
 {
     
     TRACE ("entering xfwmPixmapFree");
@@ -221,4 +220,32 @@ xfwmPixmapFree (XfwmPixmap * pm)
         XFreePixmap (myScreenGetXDisplay(pm->screen_info), pm->mask);
         pm->mask = None;
     }
+}
+
+void
+xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, gint x, gint y, gint width, gint height)
+{
+    XGCValues gv;
+    GC gc;
+
+    TRACE ("entering xfwmWindowFill");
+
+    if ((width < 1) || (height < 1))
+    {
+        return;
+    }
+
+    gv.fill_style = FillTiled;
+    gv.ts_x_origin = x;
+    gv.ts_y_origin = y;
+
+    gv.tile = src->pixmap;
+    gc = XCreateGC (myScreenGetXDisplay (src->screen_info), dst->pixmap, GCTile | GCFillStyle | GCTileStipXOrigin, &gv);
+    XFillRectangle (myScreenGetXDisplay (src->screen_info), dst->pixmap, gc, x, y, width, height);
+    XFreeGC (myScreenGetXDisplay (src->screen_info), gc);
+
+    gv.tile = src->mask;
+    gc = XCreateGC (myScreenGetXDisplay (src->screen_info), dst->mask, GCTile | GCFillStyle | GCTileStipXOrigin, &gv);
+    XFillRectangle (myScreenGetXDisplay (src->screen_info), dst->mask, gc, x, y, width, height);
+    XFreeGC (myScreenGetXDisplay (src->screen_info), gc);
 }

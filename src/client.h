@@ -185,8 +185,8 @@ netWindowType;
 
 struct _ClientPixmapCache
 {
-    XfwmPixmap pm_title[2];
-    XfwmPixmap pm_sides[3][2];
+    xfwmPixmap pm_title[2];
+    xfwmPixmap pm_sides[3][2];
     int previous_width;
     int previous_height;
 };
@@ -223,6 +223,7 @@ struct _Client
     int y;
     int width;
     int height;
+    int depth;
     int border_width;
     int gravity;
     int win_workspace;

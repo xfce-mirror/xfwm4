@@ -97,6 +97,9 @@
 #define MAX_RESIZES_PER_SECOND  20.0
 #endif
 
+#define OPACITY_SET_STEP        (guint) 0x16000000
+#define OPACITY_SET_MIN         (guint) 0x40000000
+
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
 {
@@ -1392,6 +1395,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XWindowAttributes attr;
     XWindowChanges wc;
     XSetWindowAttributes attributes;
+    Visual *frame_visual = NULL;
     Client *c = NULL;
     gboolean shaped;
     gboolean grabbed;
@@ -1481,7 +1485,14 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
+#ifdef HAVE_COMPOSITOR
     c->visual = attr.visual;
+    c->depth = attr.depth;
+#else
+    /* We don't support multiple depth/visual w/out compositor */
+    c->visual = DefaultVisual (display_info->dpy, screen_info->screen);
+    c->depth = DefaultDepth (display_info->dpy, screen_info->screen);
+#endif
     clientGetWMNormalHints (c, FALSE);
 
     c->old_x = c->x;
@@ -1623,22 +1634,33 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
      */
     clientApplyInitialState (c);
 
-    valuemask = CWEventMask|CWBitGravity|CWWinGravity;
+    valuemask = CWEventMask|CWBitGravity|CWWinGravity|CWColormap;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     attributes.win_gravity = StaticGravity;
     attributes.bit_gravity = StaticGravity;
+    attributes.colormap = attr.colormap;
+#ifdef HAVE_COMPOSITOR
+    if (c->depth == 32)
+    {
+        attributes.background_pixmap = None;
+        attributes.border_pixel = 0;
+        attributes.background_pixel = 0;
+        valuemask |= CWBackPixmap|CWBackPixel|CWBorderPixel;
+    }
+#endif
     
     c->frame =
-        XCreateWindow (display_info->dpy, screen_info->xroot, 
-        frameX (c), frameY (c), frameWidth (c), frameHeight (c), 0, 
-        screen_info->depth, InputOutput, screen_info->visual,
-        valuemask, &attributes);
+        XCreateWindow (display_info->dpy, screen_info->xroot, 0, 0, 1, 1, 0, 
+        c->depth, InputOutput, c->visual, valuemask, &attributes);
+        
+    XSelectInput (display_info->dpy, c->window, 0);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
     XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
 
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
+    XSelectInput (display_info->dpy, c->window, CLIENT_EVENT_MASK);
     if ((shaped) && (display_info->shape))
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
@@ -1661,24 +1683,33 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->pm_cache.previous_width = -1;
     c->pm_cache.previous_height = -1;
 
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->sides[SIDE_LEFT],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->sides[SIDE_LEFT], 
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_LEFT));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->sides[SIDE_RIGHT],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->sides[SIDE_RIGHT],
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_RIGHT));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->sides[SIDE_BOTTOM],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->sides[SIDE_BOTTOM],
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_BOTTOM));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_BOTTOM_LEFT],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->corners[CORNER_BOTTOM_LEFT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_LEFT));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_BOTTOM_RIGHT],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->corners[CORNER_BOTTOM_RIGHT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_RIGHT));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_TOP_LEFT],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->corners[CORNER_TOP_LEFT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_LEFT));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->corners[CORNER_TOP_RIGHT],
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->corners[CORNER_TOP_RIGHT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_RIGHT));
-    xfwmWindowCreate (display_info->dpy, c->frame, &c->title, None);
+    xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame,  
+        &c->title, None);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
-        xfwmWindowCreate (display_info->dpy, c->frame, &c->buttons[i], None);
+        xfwmWindowCreate (display_info->dpy, screen_info->screen, c->visual, c->depth, c->frame, 
+            &c->buttons[i], None);
     }
 
     /* Put the window on top to avoid XShape, that speeds up hw accelerated 
@@ -1735,6 +1766,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Window is reparented now, so we can safely release the grab
      * on the server
      */
+     stop:
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
 
@@ -1842,10 +1874,15 @@ clientFrameAll (ScreenInfo *screen_info)
 
     display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, CurrentTime, NO_FOCUS_FLAG);
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &shield, 0, 0,
-                        gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr),
-                        EnterWindowMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &shield, 
+                    0, 0,
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr),
+                    EnterWindowMask);
 
     XSync (display_info->dpy, FALSE);
     myDisplayGrabServer (display_info);
@@ -2316,6 +2353,43 @@ clientSetLayer (Client * c, int l)
         clientClearLastRaise (c->screen_info);
     }
     clientRaise (c);
+}
+
+void
+clientDecOpacity (Client * c)
+{
+   ScreenInfo *screen_info = NULL;
+   DisplayInfo *display_info = NULL;
+
+   screen_info = c->screen_info;
+   display_info = screen_info->display_info;
+
+   if ( c->opacity > OPACITY_SET_MIN )
+   {
+        c->opacity -= OPACITY_SET_STEP;
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+   }
+}
+
+void
+clientIncOpacity (Client * c)
+{
+   ScreenInfo *screen_info = NULL;
+   DisplayInfo *display_info = NULL;
+
+   screen_info = c->screen_info;
+   display_info = screen_info->display_info;
+
+   if ( c->opacity < NET_WM_OPAQUE )
+   {
+        c->opacity += OPACITY_SET_STEP;
+
+        if ( c->opacity < OPACITY_SET_MIN )
+        {
+            c->opacity = NET_WM_OPAQUE ;
+        }
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+   }
 }
 
 void
@@ -3107,10 +3181,15 @@ clientMove (Client * c, XEvent * e)
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0,
-                        gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr),
-                        ButtonMotionMask | ButtonReleaseMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &passdata.tmp_event_window, 
+                    0, 0,
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr),
+                    ButtonMotionMask | ButtonReleaseMask);
 
     if (e->type == KeyPress)
     {
@@ -3575,10 +3654,15 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.grab = FALSE;
     passdata.corner = corner;
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0,
-                        gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr),
-                        ButtonMotionMask | ButtonReleaseMask);
+    xfwmWindowTemp (display_info->dpy, 
+                    screen_info->screen,
+                    NULL, 0,
+                    screen_info->xroot,
+                    &passdata.tmp_event_window, 
+                    0, 0,
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr),
+                    ButtonMotionMask | ButtonReleaseMask);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
