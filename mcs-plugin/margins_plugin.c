@@ -53,11 +53,11 @@ static McsManager *manager = NULL;
 static int margins[4];
 
 static char *options[] = {
-    "Xfwm/LeftMargin",
-    "Xfwm/RightMargin",
-    "Xfwm/TopMargin",
-    "Xfwm/BottomMargin"
-};
+                             "Xfwm/LeftMargin",
+                             "Xfwm/RightMargin",
+                             "Xfwm/TopMargin",
+                             "Xfwm/BottomMargin"
+                         };
 
 static void run_dialog(McsPlugin * mcs_plugin);
 static void create_margins_channel(McsPlugin * mcs_plugin);
@@ -192,7 +192,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
-    
+
     g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
     g_signal_connect(dialog, "delete-event", G_CALLBACK(gtk_widget_destroy), NULL);
 
@@ -209,7 +209,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
     g_object_unref(icon);
 
     label = gtk_label_new(_("Margins are areas on the edges of the screen where no window will be placed"));
-    gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);    
+    gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);
     gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
     gtk_misc_set_padding(GTK_MISC(label), BORDER, 4);
     gtk_widget_show(label);

@@ -1,20 +1,20 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; You may only use version 2 of the License,
+ you have no option to use any other version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
         xfce4 mcs plugin   - (c) 2002 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -116,29 +116,29 @@ struct _RadioTmpl
 };
 
 TitleButton title_buttons[] = {
-    {N_("Title"), '|'},
-    {N_("Menu"), 'O'},
-    {N_("Stick"), 'T'},
-    {N_("Shade"), 'S'},
-    {N_("Hide"), 'H'},
-    {N_("Maximize"), 'M'},
-    {N_("Close"), 'C'}
-};
+                                  {N_("Title"), '|'},
+                                  {N_("Menu"), 'O'},
+                                  {N_("Stick"), 'T'},
+                                  {N_("Shade"), 'S'},
+                                  {N_("Hide"), 'H'},
+                                  {N_("Maximize"), 'M'},
+                                  {N_("Close"), 'C'}
+                              };
 
 RadioTmpl dbl_click_values[] = {
-    {N_("Shade window"), "shade", NULL},
-    {N_("Hide window"), "hide", NULL},
-    {N_("Maximize window"), "maximize", NULL},
-    {N_("Nothing"), "none", NULL},
-    {NULL, NULL, NULL}
-};
+                                   {N_("Shade window"), "shade", NULL},
+                                   {N_("Hide window"), "hide", NULL},
+                                   {N_("Maximize window"), "maximize", NULL},
+                                   {N_("Nothing"), "none", NULL},
+                                   {NULL, NULL, NULL}
+                               };
 
 RadioTmpl title_align_values[] = {
-    {N_("Left"), "left", NULL},
-    {N_("Center"), "center", NULL},
-    {N_("Right"), "right", NULL},
-    {NULL, NULL, NULL}
-};
+                                     {N_("Left"), "left", NULL},
+                                     {N_("Center"), "center", NULL},
+                                     {N_("Right"), "right", NULL},
+                                     {NULL, NULL, NULL}
+                                 };
 
 enum
 {
@@ -411,12 +411,12 @@ static GtkWidget *create_layout_buttons(gchar * layout, gpointer user_data)
     gtk_widget_show(table);
     gtk_container_set_border_width(GTK_CONTAINER(table), BORDER);
 
-/*    label = gtk_label_new(_("Layout :"));
-    gtk_widget_show(label);
-    gtk_table_attach(GTK_TABLE(table), label, 0, 9, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
-*/
+    /*    label = gtk_label_new(_("Layout :"));
+        gtk_widget_show(label);
+        gtk_table_attach(GTK_TABLE(table), label, 0, 9, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+        gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+        gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    */
     for(i = TITLE; i < END; i++)
     {
         temp = g_strdup_printf("<small><i>%s :</i></small> ", _(title_buttons[i].label));
@@ -498,13 +498,21 @@ static GtkWidget *create_radio_button_table(RadioTmpl template[], guint size, gc
 
     for(i = 0; i < size; i++)
     {
-        template[i].radio_button = gtk_radio_button_new_with_mnemonic(NULL, _(template[i].label));
-        gtk_widget_show(template[i].radio_button);
-        gtk_table_attach(GTK_TABLE(table), template[i].radio_button, i, i + 1, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-        gtk_radio_button_set_group(GTK_RADIO_BUTTON(template[i].radio_button), radio_group);
-        radio_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(template[i].radio_button));
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(template[i].radio_button), strcmp(value, template[i].action) ? FALSE : TRUE);
-        g_signal_connect(G_OBJECT(template[i].radio_button), "toggled", G_CALLBACK(handler), user_data);
+        template[i]
+        .radio_button = gtk_radio_button_new_with_mnemonic(NULL, _(template[i].label))
+        ;
+        gtk_widget_show(template[i].radio_button)
+        ;
+        gtk_table_attach(GTK_TABLE(table), template[i].radio_button, i, i + 1, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0)
+        ;
+        gtk_radio_button_set_group(GTK_RADIO_BUTTON(template[i].radio_button), radio_group)
+        ;
+        radio_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(template[i].radio_button))
+        ;
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(template[i].radio_button), strcmp(value, template[i].action) ? FALSE : TRUE)
+        ;
+        g_signal_connect(G_OBJECT(template[i].radio_button), "toggled", G_CALLBACK(handler), user_data)
+        ;
     }
 
     return table;
@@ -1221,7 +1229,7 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_button_set_label(GTK_BUTTON(dialog->font_button), current_font);
     gtk_widget_show(dialog->font_button);
     gtk_box_pack_start(GTK_BOX(dialog->hbox6), dialog->font_button, TRUE, TRUE, 0);
-/*    gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);*/
+    /*    gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);*/
 
     dialog->label7 = gtk_label_new(_("Title font"));
     gtk_widget_show(dialog->label7);
@@ -1875,6 +1883,7 @@ static void run_dialog(McsPlugin * mcs_plugin)
         return;
 
 #ifdef ENABLE_NLS
+
     bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);

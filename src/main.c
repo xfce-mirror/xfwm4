@@ -3,19 +3,19 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2003 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -54,15 +54,15 @@
 #include "my_intl.h"
 
 #define MAIN_EVENT_MASK         SubstructureNotifyMask|\
-                                StructureNotifyMask|\
-                                SubstructureRedirectMask|\
-                                ButtonPressMask|\
-                                ButtonReleaseMask|\
-                                PointerMotionMask|\
-                                PointerMotionHintMask|\
-                                FocusChangeMask|\
-                                PropertyChangeMask|\
-                                ColormapNotify
+    StructureNotifyMask|\
+    SubstructureRedirectMask|\
+    ButtonPressMask|\
+    ButtonReleaseMask|\
+    PointerMotionMask|\
+    PointerMotionHintMask|\
+    FocusChangeMask|\
+    PropertyChangeMask|\
+    ColormapNotify
 
 char *progname;
 Display *dpy;
@@ -84,16 +84,16 @@ static int handleXError(Display * dpy, XErrorEvent * err)
 {
     switch (err->error_code)
     {
-        case BadAccess:
-            if(err->resourceid == root)
-            {
-                g_message("%s: Another window manager is running\n", progname);
-                exit(1);
-            }
-            break;
-        default:
-            DBG("X error ignored\n");
-            break;
+    case BadAccess:
+        if(err->resourceid == root)
+        {
+            g_message("%s: Another window manager is running\n", progname);
+            exit(1);
+        }
+        break;
+    default:
+        DBG("X error ignored\n");
+        break;
     }
     return 0;
 }
@@ -161,20 +161,20 @@ static void handleSignal(int sig)
 
     switch (sig)
     {
-        case SIGINT:
-        case SIGTERM:
-            gtk_main_quit();
-            quit = True;
-            break;
-        case SIGHUP:
-            reload = True;
-            break;
-        case SIGSEGV:
-            cleanUp();
-            g_error(_("%s: Segmentation fault"), g_get_prgname());
-            break;
-        default:
-            break;
+    case SIGINT:
+    case SIGTERM:
+        gtk_main_quit();
+        quit = True;
+        break;
+    case SIGHUP:
+        reload = True;
+        break;
+    case SIGSEGV:
+        cleanUp();
+        g_error(_("%s: Segmentation fault"), g_get_prgname());
+        break;
+    default:
+        break;
     }
 }
 
@@ -190,6 +190,7 @@ static int initialize(int argc, char **argv)
     progname = argv[0];
 
 #ifdef ENABLE_NLS
+
     bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
@@ -319,40 +320,40 @@ int main(int argc, char **argv)
     status = initialize(argc, argv);
     switch (status)
     {
-        case -1:
-            g_warning(_("%s: Another Window Manager is already running"), g_get_prgname());
-            exit(1);
-            break;
-        case -2:
-            g_warning(_("%s: Missing data from default files"), g_get_prgname());
-            exit(1);
-            break;
-        case 0:
-            if(daemon_mode)
+    case -1:
+        g_warning(_("%s: Another Window Manager is already running"), g_get_prgname());
+        exit(1);
+        break;
+    case -2:
+        g_warning(_("%s: Missing data from default files"), g_get_prgname());
+        exit(1);
+        break;
+    case 0:
+        if(daemon_mode)
+        {
+            switch (fork())
             {
-                switch (fork())
-                {
-                    case -1:
-                        g_warning("fork() failed");
-                        exit(1);
-                        break;
-                    case 0:    /* child */
-                        gtk_main();
-                        break;
-                    default:   /* parent */
-                        _exit(0);
-                        break;
-                }
-            }
-            else
-            {
+            case -1:
+                g_warning("fork() failed");
+                exit(1);
+                break;
+            case 0:    /* child */
                 gtk_main();
+                break;
+            default:   /* parent */
+                _exit(0);
+                break;
             }
-            break;
-        default:
-            g_warning(_("%s: Unknown error occured"), g_get_prgname());
-            exit(1);
-            break;
+        }
+        else
+        {
+            gtk_main();
+        }
+        break;
+    default:
+        g_warning(_("%s: Unknown error occured"), g_get_prgname());
+        exit(1);
+        break;
     }
     cleanUp();
     DBG("Terminated\n");

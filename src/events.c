@@ -3,19 +3,19 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2003 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -205,186 +205,187 @@ static inline void handleKeyPress(XKeyEvent * ev)
     {
         switch (key)
         {
-            case KEY_MOVE_UP:
-            case KEY_MOVE_DOWN:
-            case KEY_MOVE_LEFT:
-            case KEY_MOVE_RIGHT:
-                moveRequest(c, (XEvent *) ev);
-                break;
-            case KEY_RESIZE_UP:
-            case KEY_RESIZE_DOWN:
-            case KEY_RESIZE_LEFT:
-            case KEY_RESIZE_RIGHT:
-                if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
-                {
-                    clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
-                }
-                break;
-            case KEY_CYCLE_WINDOWS:
-                clientCycle(c);
-                break;
-            case KEY_CLOSE_WINDOW:
-                clientClose(c);
-                break;
-            case KEY_HIDE_WINDOW:
-                if(CLIENT_CAN_HIDE_WINDOW(c))
-                {
-                    clientHide(c, True);
-                }
-                break;
-            case KEY_MAXIMIZE_WINDOW:
-                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                }
-                break;
-            case KEY_MAXIMIZE_VERT:
-                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
-                }
-                break;
-            case KEY_MAXIMIZE_HORIZ:
-                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
-                }
-                break;
-            case KEY_SHADE_WINDOW:
-                clientToggleShaded(c);
-                break;
-            case KEY_STICK_WINDOW:
-                if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
-                {
-                    clientToggleSticky(c, TRUE);
-                }
-                break;
-            case KEY_MOVE_NEXT_WORKSPACE:
-                workspaceSwitch(workspace + 1, c);
-                break;
-            case KEY_MOVE_PREV_WORKSPACE:
-                workspaceSwitch(workspace - 1, c);
-                break;
-            case KEY_MOVE_WORKSPACE_1:
-                workspaceSwitch(0, c);
-                break;
-            case KEY_MOVE_WORKSPACE_2:
-                workspaceSwitch(1, c);
-                break;
-            case KEY_MOVE_WORKSPACE_3:
-                workspaceSwitch(2, c);
-                break;
-            case KEY_MOVE_WORKSPACE_4:
-                workspaceSwitch(3, c);
-                break;
-            case KEY_MOVE_WORKSPACE_5:
-                workspaceSwitch(4, c);
-                break;
-            case KEY_MOVE_WORKSPACE_6:
-                workspaceSwitch(5, c);
-                break;
-            case KEY_MOVE_WORKSPACE_7:
-                workspaceSwitch(6, c);
-                break;
-            case KEY_MOVE_WORKSPACE_8:
-                workspaceSwitch(7, c);
-                break;
-            case KEY_MOVE_WORKSPACE_9:
-                workspaceSwitch(8, c);
-                break;
-            default:
-                break;
+        case KEY_MOVE_UP:
+        case KEY_MOVE_DOWN:
+        case KEY_MOVE_LEFT:
+        case KEY_MOVE_RIGHT:
+            moveRequest(c, (XEvent *) ev);
+            break;
+        case KEY_RESIZE_UP:
+        case KEY_RESIZE_DOWN:
+        case KEY_RESIZE_LEFT:
+        case KEY_RESIZE_RIGHT:
+            if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
+            {
+                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+            }
+            break;
+        case KEY_CYCLE_WINDOWS:
+            clientCycle(c);
+            break;
+        case KEY_CLOSE_WINDOW:
+            clientClose(c);
+            break;
+        case KEY_HIDE_WINDOW:
+            if(CLIENT_CAN_HIDE_WINDOW(c))
+            {
+                clientHide(c, True);
+            }
+            break;
+        case KEY_MAXIMIZE_WINDOW:
+            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+            {
+                clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+            }
+            break;
+        case KEY_MAXIMIZE_VERT:
+            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+            {
+                clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
+            }
+            break;
+        case KEY_MAXIMIZE_HORIZ:
+            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+            {
+                clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
+            }
+            break;
+        case KEY_SHADE_WINDOW:
+            clientToggleShaded(c);
+            break;
+        case KEY_STICK_WINDOW:
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
+            {
+                clientToggleSticky(c, TRUE);
+            }
+            break;
+        case KEY_MOVE_NEXT_WORKSPACE:
+            workspaceSwitch(workspace + 1, c);
+            break;
+        case KEY_MOVE_PREV_WORKSPACE:
+            workspaceSwitch(workspace - 1, c);
+            break;
+        case KEY_MOVE_WORKSPACE_1:
+            workspaceSwitch(0, c);
+            break;
+        case KEY_MOVE_WORKSPACE_2:
+            workspaceSwitch(1, c);
+            break;
+        case KEY_MOVE_WORKSPACE_3:
+            workspaceSwitch(2, c);
+            break;
+        case KEY_MOVE_WORKSPACE_4:
+            workspaceSwitch(3, c);
+            break;
+        case KEY_MOVE_WORKSPACE_5:
+            workspaceSwitch(4, c);
+            break;
+        case KEY_MOVE_WORKSPACE_6:
+            workspaceSwitch(5, c);
+            break;
+        case KEY_MOVE_WORKSPACE_7:
+            workspaceSwitch(6, c);
+            break;
+        case KEY_MOVE_WORKSPACE_8:
+            workspaceSwitch(7, c);
+            break;
+        case KEY_MOVE_WORKSPACE_9:
+            workspaceSwitch(8, c);
+            break;
+        default:
+            break;
         }
     }
     else
     {
         switch (key)
         {
-            case KEY_CYCLE_WINDOWS:
-                if(clients)
-                {
-                    clientCycle(clients->prev);
-                }
-                break;
-            default:
-                break;
+        case KEY_CYCLE_WINDOWS:
+            if(clients)
+            {
+                clientCycle(clients->prev);
+            }
+            break;
+        default:
+            break;
         }
     }
     switch (key)
     {
-        case KEY_NEXT_WORKSPACE:
-            workspaceSwitch(workspace + 1, NULL);
-            break;
-        case KEY_PREV_WORKSPACE:
-            workspaceSwitch(workspace - 1, NULL);
-            break;
-        case KEY_ADD_WORKSPACE:
-            workspaceSetCount(params.workspace_count + 1);
-            break;
-        case KEY_DEL_WORKSPACE:
-            workspaceSetCount(params.workspace_count - 1);
-            break;
-        case KEY_WORKSPACE_1:
-            workspaceSwitch(0, NULL);
-            break;
-        case KEY_WORKSPACE_2:
-            workspaceSwitch(1, NULL);
-            break;
-        case KEY_WORKSPACE_3:
-            workspaceSwitch(2, NULL);
-            break;
-        case KEY_WORKSPACE_4:
-            workspaceSwitch(3, NULL);
-            break;
-        case KEY_WORKSPACE_5:
-            workspaceSwitch(4, NULL);
-            break;
-        case KEY_WORKSPACE_6:
-            workspaceSwitch(5, NULL);
-            break;
-        case KEY_WORKSPACE_7:
-            workspaceSwitch(6, NULL);
-            break;
-        case KEY_WORKSPACE_8:
-            workspaceSwitch(7, NULL);
-            break;
-        case KEY_WORKSPACE_9:
-            workspaceSwitch(8, NULL);
-            break;
-        case KEY_SHORTCUT_1:
-            spawn_shortcut(0);
-            break;
-        case KEY_SHORTCUT_2:
-            spawn_shortcut(1);
-            break;
-        case KEY_SHORTCUT_3:
-            spawn_shortcut(2);
-            break;
-        case KEY_SHORTCUT_4:
-            spawn_shortcut(3);
-            break;
-        case KEY_SHORTCUT_5:
-            spawn_shortcut(4);
-            break;
-        case KEY_SHORTCUT_6:
-            spawn_shortcut(5);
-            break;
-        case KEY_SHORTCUT_7:
-            spawn_shortcut(6);
-            break;
-        case KEY_SHORTCUT_8:
-            spawn_shortcut(7);
-            break;
-        case KEY_SHORTCUT_9:
-            spawn_shortcut(8);
-            break;
-        case KEY_SHORTCUT_10:
-            spawn_shortcut(9);
-            break;
-        default:
-            break;
+    case KEY_NEXT_WORKSPACE:
+        workspaceSwitch(workspace + 1, NULL);
+        break;
+    case KEY_PREV_WORKSPACE:
+        workspaceSwitch(workspace - 1, NULL);
+        break;
+    case KEY_ADD_WORKSPACE:
+        workspaceSetCount(params.workspace_count + 1);
+        break;
+    case KEY_DEL_WORKSPACE:
+        workspaceSetCount(params.workspace_count - 1);
+        break;
+    case KEY_WORKSPACE_1:
+        workspaceSwitch(0, NULL);
+        break;
+    case KEY_WORKSPACE_2:
+        workspaceSwitch(1, NULL);
+        break;
+    case KEY_WORKSPACE_3:
+        workspaceSwitch(2, NULL);
+        break;
+    case KEY_WORKSPACE_4:
+        workspaceSwitch(3, NULL);
+        break;
+    case KEY_WORKSPACE_5:
+        workspaceSwitch(4, NULL);
+        break;
+    case KEY_WORKSPACE_6:
+        workspaceSwitch(5, NULL);
+        break;
+    case KEY_WORKSPACE_7:
+        workspaceSwitch(6, NULL);
+        break;
+    case KEY_WORKSPACE_8:
+        workspaceSwitch(7, NULL);
+        break;
+    case KEY_WORKSPACE_9:
+        workspaceSwitch(8, NULL);
+        break;
+    case KEY_SHORTCUT_1:
+        spawn_shortcut(0);
+        break;
+    case KEY_SHORTCUT_2:
+        spawn_shortcut(1);
+        break;
+    case KEY_SHORTCUT_3:
+        spawn_shortcut(2);
+        break;
+    case KEY_SHORTCUT_4:
+        spawn_shortcut(3);
+        break;
+    case KEY_SHORTCUT_5:
+        spawn_shortcut(4);
+        break;
+    case KEY_SHORTCUT_6:
+        spawn_shortcut(5);
+        break;
+    case KEY_SHORTCUT_7:
+        spawn_shortcut(6);
+        break;
+    case KEY_SHORTCUT_8:
+        spawn_shortcut(7);
+        break;
+    case KEY_SHORTCUT_9:
+        spawn_shortcut(8);
+        break;
+    case KEY_SHORTCUT_10:
+        spawn_shortcut(9);
+        break;
+    default:
+        break;
     }
-    while(XCheckTypedEvent(dpy, EnterNotify, &e));
+    while(XCheckTypedEvent(dpy, EnterNotify, &e))
+        ;
 }
 
 /* User has clicked on an edge or corner.
@@ -443,21 +444,21 @@ static inline void button1Action(Client * c, XButtonEvent * ev)
     {
         switch (params.double_click_action)
         {
-            case ACTION_MAXIMIZE:
-                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                }
-                break;
-            case ACTION_SHADE:
-                clientToggleShaded(c);
-                break;
-            case ACTION_HIDE:
-                if(CLIENT_CAN_HIDE_WINDOW(c))
-                {
-                    clientHide(c, TRUE);
-                }
-                break;
+        case ACTION_MAXIMIZE:
+            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+            {
+                clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+            }
+            break;
+        case ACTION_SHADE:
+            clientToggleShaded(c);
+            break;
+        case ACTION_HIDE:
+            if(CLIENT_CAN_HIDE_WINDOW(c))
+            {
+                clientHide(c, TRUE);
+            }
+            break;
         }
     }
 }
@@ -841,7 +842,8 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
     DBG("entering handleEnterNotify\n");
 
-    while(XCheckTypedEvent(dpy, EnterNotify, (XEvent *) ev));
+    while(XCheckTypedEvent(dpy, EnterNotify, (XEvent *) ev))
+        ;
 
     DBG("EnterNotify window is (0x%lx)\n", ev->window);
 
@@ -1004,6 +1006,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             getWindowStartupId(dpy, c->window, &c->startup_id);
         }
 #endif
+
     }
     else
     {
@@ -1169,50 +1172,50 @@ void handleEvent(XEvent * ev)
     sn_process_event(ev);
     switch (ev->type)
     {
-        case KeyPress:
-            handleKeyPress((XKeyEvent *) ev);
-            break;
-        case ButtonPress:
-            handleButtonPress((XButtonEvent *) ev);
-            break;
-        case ButtonRelease:
-            handleButtonRelease((XButtonEvent *) ev);
-            break;
-        case DestroyNotify:
-            handleDestroyNotify((XDestroyWindowEvent *) ev);
-            break;
-        case UnmapNotify:
-            handleUnmapNotify((XUnmapEvent *) ev);
-            break;
-        case MapRequest:
-            handleMapRequest((XMapRequestEvent *) ev);
-            break;
-        case ConfigureRequest:
-            handleConfigureRequest((XConfigureRequestEvent *) ev);
-            break;
-        case EnterNotify:
-            handleEnterNotify((XCrossingEvent *) ev);
-            break;
-        case FocusIn:
-            handleFocusIn((XFocusChangeEvent *) ev);
-            break;
-        case FocusOut:
-            handleFocusOut((XFocusChangeEvent *) ev);
-            break;
-        case PropertyNotify:
-            handlePropertyNotify((XPropertyEvent *) ev);
-            break;
-        case ClientMessage:
-            handleClientMessage((XClientMessageEvent *) ev);
-            break;
-        case ColormapNotify:
-            handleColormapNotify((XColormapEvent *) ev);
-            break;
-        default:
-            if(shape && (ev->type == shape_event))
-            {
-                handleShape((XShapeEvent *) ev);
-            }
+    case KeyPress:
+        handleKeyPress((XKeyEvent *) ev);
+        break;
+    case ButtonPress:
+        handleButtonPress((XButtonEvent *) ev);
+        break;
+    case ButtonRelease:
+        handleButtonRelease((XButtonEvent *) ev);
+        break;
+    case DestroyNotify:
+        handleDestroyNotify((XDestroyWindowEvent *) ev);
+        break;
+    case UnmapNotify:
+        handleUnmapNotify((XUnmapEvent *) ev);
+        break;
+    case MapRequest:
+        handleMapRequest((XMapRequestEvent *) ev);
+        break;
+    case ConfigureRequest:
+        handleConfigureRequest((XConfigureRequestEvent *) ev);
+        break;
+    case EnterNotify:
+        handleEnterNotify((XCrossingEvent *) ev);
+        break;
+    case FocusIn:
+        handleFocusIn((XFocusChangeEvent *) ev);
+        break;
+    case FocusOut:
+        handleFocusOut((XFocusChangeEvent *) ev);
+        break;
+    case PropertyNotify:
+        handlePropertyNotify((XPropertyEvent *) ev);
+        break;
+    case ClientMessage:
+        handleClientMessage((XClientMessageEvent *) ev);
+        break;
+    case ColormapNotify:
+        handleColormapNotify((XColormapEvent *) ev);
+        break;
+    default:
+        if(shape && (ev->type == shape_event))
+        {
+            handleShape((XShapeEvent *) ev);
+        }
     }
     if(!gdk_events_pending() && !XPending(dpy))
     {
@@ -1263,59 +1266,59 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
 
     switch (op)
     {
-        case MENU_OP_QUIT:
-            gtk_main_quit();
-            break;
-        case MENU_OP_MAXIMIZE:
-        case MENU_OP_UNMAXIMIZE:
-            if((c) && CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-            }
-            break;
-        case MENU_OP_MINIMIZE:
-            if((c) && CLIENT_CAN_HIDE_WINDOW(c))
-            {
-                clientHide(c, True);
-            }
-            break;
-        case MENU_OP_MINIMIZE_ALL:
-            clientHideAll(c);
-            break;
-        case MENU_OP_UNMINIMIZE:
-            if(c)
-            {
-                clientShow(c, True);
-            }
-            break;
-        case MENU_OP_SHADE:
-        case MENU_OP_UNSHADE:
-            if(c)
-            {
-                clientToggleShaded(c);
-            }
-            break;
-        case MENU_OP_STICK:
-        case MENU_OP_UNSTICK:
-            if(c)
-            {
-                frameDraw(c, FALSE, FALSE);
-                clientToggleSticky(c, TRUE);
-            }
-            break;
-        case MENU_OP_DELETE:
-            if(c)
-            {
-                frameDraw(c, FALSE, FALSE);
-                clientClose(c);
-            }
-            break;
-        default:
-            if(c)
-            {
-                frameDraw(c, FALSE, FALSE);
-            }
-            break;
+    case MENU_OP_QUIT:
+        gtk_main_quit();
+        break;
+    case MENU_OP_MAXIMIZE:
+    case MENU_OP_UNMAXIMIZE:
+        if((c) && CLIENT_CAN_MAXIMIZE_WINDOW(c))
+        {
+            clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+        }
+        break;
+    case MENU_OP_MINIMIZE:
+        if((c) && CLIENT_CAN_HIDE_WINDOW(c))
+        {
+            clientHide(c, True);
+        }
+        break;
+    case MENU_OP_MINIMIZE_ALL:
+        clientHideAll(c);
+        break;
+    case MENU_OP_UNMINIMIZE:
+        if(c)
+        {
+            clientShow(c, True);
+        }
+        break;
+    case MENU_OP_SHADE:
+    case MENU_OP_UNSHADE:
+        if(c)
+        {
+            clientToggleShaded(c);
+        }
+        break;
+    case MENU_OP_STICK:
+    case MENU_OP_UNSTICK:
+        if(c)
+        {
+            frameDraw(c, FALSE, FALSE);
+            clientToggleSticky(c, TRUE);
+        }
+        break;
+    case MENU_OP_DELETE:
+        if(c)
+        {
+            frameDraw(c, FALSE, FALSE);
+            clientClose(c);
+        }
+        break;
+    default:
+        if(c)
+        {
+            frameDraw(c, FALSE, FALSE);
+        }
+        break;
     }
     menu_free(menu);
 }

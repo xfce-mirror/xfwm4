@@ -3,16 +3,16 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2003 Olivier Fourdan
  */
@@ -51,40 +51,40 @@ static void set_settings_margin(int idx, int value)
 
     switch (idx)
     {
-        case MARGIN_LEFT:
-        case MARGIN_RIGHT:
-            if(value < 0)
-            {
-                val = 0;
-            }
-            else if(value > gdk_screen_width() / 4)
-            {
-                val = gdk_screen_width() / 4;
-            }
-            else
-            {
-                val = value;
-            }
-            params.xfwm_margins[idx] = val;
-            break;
-        case MARGIN_TOP:
-        case MARGIN_BOTTOM:
-            if(value < 0)
-            {
-                val = 0;
-            }
-            else if(value > gdk_screen_height() / 4)
-            {
-                val = gdk_screen_height() / 4;
-            }
-            else
-            {
-                val = value;
-            }
-            params.xfwm_margins[idx] = val;
-            break;
-        default:
-            break;
+    case MARGIN_LEFT:
+    case MARGIN_RIGHT:
+        if(value < 0)
+        {
+            val = 0;
+        }
+        else if(value > gdk_screen_width() / 4)
+        {
+            val = gdk_screen_width() / 4;
+        }
+        else
+        {
+            val = value;
+        }
+        params.xfwm_margins[idx] = val;
+        break;
+    case MARGIN_TOP:
+    case MARGIN_BOTTOM:
+        if(value < 0)
+        {
+            val = 0;
+        }
+        else if(value > gdk_screen_height() / 4)
+        {
+            val = gdk_screen_height() / 4;
+        }
+        else
+        {
+            val = value;
+        }
+        params.xfwm_margins[idx] = val;
+        break;
+    default:
+        break;
     }
 }
 
@@ -94,127 +94,127 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
     {
         switch (action)
         {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reloads */
-                if(!mcs_initted)
+        case MCS_ACTION_NEW:
+            /* The following is to reduce initial startup time and reloads */
+            if(!mcs_initted)
+            {
+                return;
+            }
+        case MCS_ACTION_CHANGED:
+            if(setting->type == MCS_TYPE_INT)
+            {
+                if(!strcmp(name, "Xfwm/ClickToFocus"))
                 {
-                    return;
+                    params.click_to_focus = setting->data.v_int;
                 }
-            case MCS_ACTION_CHANGED:
-                if(setting->type == MCS_TYPE_INT)
+                else if(!strcmp(name, "Xfwm/FocusNewWindow"))
                 {
-                    if(!strcmp(name, "Xfwm/ClickToFocus"))
-                    {
-                        params.click_to_focus = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/FocusNewWindow"))
-                    {
-                        params.focus_new = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/FocusRaise"))
-                    {
-                        params.raise_on_focus = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/RaiseDelay"))
-                    {
-                        params.raise_delay = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/RaiseOnClick"))
-                    {
-                        params.raise_on_click = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/SnapToBorder"))
-                    {
-                        params.snap_to_border = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/SnapToWindows"))
-                    {
-                        params.snap_to_windows = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/SnapWidth"))
-                    {
-                        params.snap_width = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
-                    {
-                        params.wrap_workspaces = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/BoxMove"))
-                    {
-                        params.box_move = setting->data.v_int;
-                    }
-                    else if(!strcmp(name, "Xfwm/BoxResize"))
-                    {
-                        params.box_resize = setting->data.v_int;
-                    }
+                    params.focus_new = setting->data.v_int;
                 }
-                else if(setting->type == MCS_TYPE_STRING)
+                else if(!strcmp(name, "Xfwm/FocusRaise"))
                 {
-                    if(!strcmp(name, "Xfwm/DblClickAction"))
-                    {
-                        reloadSettings(UPDATE_NONE);
-                    }
-                    else if(!strcmp(name, "Xfwm/KeyThemeName"))
-                    {
-                        reloadSettings(UPDATE_KEYGRABS);
-                    }
-                    else if(!strcmp(name, "Xfwm/ThemeName"))
-                    {
-                        reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
-                    }
-                    else if(!strcmp(name, "Xfwm/ButtonLayout"))
-                    {
-                        reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
-                    }
-                    if(!strcmp(name, "Xfwm/TitleAlign"))
-                    {
-                        reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
-                    }
-                    if(!strcmp(name, "Xfwm/TitleFont"))
-                    {
-                        reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
-                    }
+                    params.raise_on_focus = setting->data.v_int;
                 }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
+                else if(!strcmp(name, "Xfwm/RaiseDelay"))
+                {
+                    params.raise_delay = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/RaiseOnClick"))
+                {
+                    params.raise_on_click = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/SnapToBorder"))
+                {
+                    params.snap_to_border = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/SnapToWindows"))
+                {
+                    params.snap_to_windows = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/SnapWidth"))
+                {
+                    params.snap_width = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/WrapWorkspaces"))
+                {
+                    params.wrap_workspaces = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/BoxMove"))
+                {
+                    params.box_move = setting->data.v_int;
+                }
+                else if(!strcmp(name, "Xfwm/BoxResize"))
+                {
+                    params.box_resize = setting->data.v_int;
+                }
+            }
+            else if(setting->type == MCS_TYPE_STRING)
+            {
+                if(!strcmp(name, "Xfwm/DblClickAction"))
+                {
+                    reloadSettings(UPDATE_NONE);
+                }
+                else if(!strcmp(name, "Xfwm/KeyThemeName"))
+                {
+                    reloadSettings(UPDATE_KEYGRABS);
+                }
+                else if(!strcmp(name, "Xfwm/ThemeName"))
+                {
+                    reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
+                }
+                else if(!strcmp(name, "Xfwm/ButtonLayout"))
+                {
+                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                }
+                if(!strcmp(name, "Xfwm/TitleAlign"))
+                {
+                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                }
+                if(!strcmp(name, "Xfwm/TitleFont"))
+                {
+                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
+                }
+            }
+            break;
+        case MCS_ACTION_DELETED:
+        default:
+            break;
         }
     }
     else if(!g_ascii_strcasecmp(CHANNEL2, channel_name))
     {
         switch (action)
         {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reloads */
-                if(!mcs_initted)
+        case MCS_ACTION_NEW:
+            /* The following is to reduce initial startup time and reloads */
+            if(!mcs_initted)
+            {
+                return;
+            }
+        case MCS_ACTION_CHANGED:
+            if(setting->type == MCS_TYPE_INT)
+            {
+                if(!strcmp(name, "Xfwm/LeftMargin"))
                 {
-                    return;
+                    set_settings_margin(MARGIN_LEFT, setting->data.v_int);
                 }
-            case MCS_ACTION_CHANGED:
-                if(setting->type == MCS_TYPE_INT)
+                else if(!strcmp(name, "Xfwm/RightMargin"))
                 {
-                    if(!strcmp(name, "Xfwm/LeftMargin"))
-                    {
-                        set_settings_margin(MARGIN_LEFT, setting->data.v_int);
-                    }
-                    else if(!strcmp(name, "Xfwm/RightMargin"))
-                    {
-                        set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
-                    }
-                    else if(!strcmp(name, "Xfwm/BottomMargin"))
-                    {
-                        set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
-                    }
-                    else if(!strcmp(name, "Xfwm/TopMargin"))
-                    {
-                        set_settings_margin(MARGIN_TOP, setting->data.v_int);
-                    }
+                    set_settings_margin(MARGIN_RIGHT, setting->data.v_int);
                 }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
+                else if(!strcmp(name, "Xfwm/BottomMargin"))
+                {
+                    set_settings_margin(MARGIN_BOTTOM, setting->data.v_int);
+                }
+                else if(!strcmp(name, "Xfwm/TopMargin"))
+                {
+                    set_settings_margin(MARGIN_TOP, setting->data.v_int);
+                }
+            }
+            break;
+        case MCS_ACTION_DELETED:
+        default:
+            break;
         }
     }
 }
@@ -697,123 +697,123 @@ static gboolean loadKeyBindings(Settings rc[])
 gboolean loadSettings(void)
 {
     Settings rc[] = {
-        /* Do not chnage the order of the following parameters */
-        {"active_text_color", NULL, FALSE},
-        {"inactive_text_color", NULL, FALSE},
-        {"active_border_color", NULL, FALSE},
-        {"inactive_border_color", NULL, FALSE},
-        {"active_color_1", NULL, FALSE},
-        {"active_hilight_1", NULL, FALSE},
-        {"active_shadow_1", NULL, FALSE},
-        {"active_mid_1", NULL, FALSE},
-        {"active_color_2", NULL, FALSE},
-        {"active_hilight_2", NULL, FALSE},
-        {"active_shadow_2", NULL, FALSE},
-        {"active_mid_2", NULL, FALSE},
-        {"inactive_color_1", NULL, FALSE},
-        {"inactive_hilight_1", NULL, FALSE},
-        {"inactive_shadow_1", NULL, FALSE},
-        {"inactive_mid_1", NULL, FALSE},
-        {"inactive_color_2", NULL, FALSE},
-        {"inactive_hilight_2", NULL, FALSE},
-        {"inactive_shadow_2", NULL, FALSE},
-        {"inactive_mid_2", NULL, FALSE},
-        /* You can change the order of the following parameters */
-        {"box_move", NULL, TRUE},
-        {"box_resize", NULL, TRUE},
-        {"button_layout", NULL, TRUE},
-        {"button_offset", NULL, TRUE},
-        {"button_spacing", NULL, TRUE},
-        {"click_to_focus", NULL, TRUE},
-        {"dbl_click_time", NULL, TRUE},
-        {"double_click_action", NULL, TRUE},
-        {"focus_hint", NULL, TRUE},
-        {"focus_new", NULL, TRUE},
-        {"full_width_title", NULL, TRUE},
-        {"keytheme", NULL, TRUE},
-        {"margin_left", NULL, FALSE},
-        {"margin_right", NULL, FALSE},
-        {"margin_bottom", NULL, FALSE},
-        {"margin_top", NULL, FALSE},
-        {"raise_delay", NULL, TRUE},
-        {"raise_on_click", NULL, TRUE},
-        {"raise_on_focus", NULL, TRUE},
-        {"snap_to_border", NULL, TRUE},
-        {"snap_to_windows", NULL, TRUE},
-        {"snap_width", NULL, TRUE},
-        {"theme", NULL, TRUE},
-        {"title_alignment", NULL, TRUE},
-        {"title_font", NULL, FALSE},
-        {"title_horizontal_offset", NULL, TRUE},
-        {"title_shadow_active", NULL, TRUE},
-        {"title_shadow_inactive", NULL, TRUE},
-        {"title_vertical_offset_active", NULL, TRUE},
-        {"title_vertical_offset_inactive", NULL, TRUE},
-        {"workspace_count", NULL, TRUE},
-        {"wrap_workspaces", NULL, TRUE},
-        /* Keys */
-        {"add_workspace_key", NULL, TRUE},
-        {"close_window_key", NULL, TRUE},
-        {"cycle_windows_key", NULL, TRUE},
-        {"del_workspace_key", NULL, TRUE},
-        {"hide_window_key", NULL, TRUE},
-        {"maximize_horiz_key", NULL, TRUE},
-        {"maximize_vert_key", NULL, TRUE},
-        {"maximize_window_key", NULL, TRUE},
-        {"move_window_down_key", NULL, TRUE},
-        {"move_window_left_key", NULL, TRUE},
-        {"move_window_next_workspace_key", NULL, TRUE},
-        {"move_window_prev_workspace_key", NULL, TRUE},
-        {"move_window_right_key", NULL, TRUE},
-        {"move_window_up_key", NULL, TRUE},
-        {"move_window_workspace_1_key", NULL, TRUE},
-        {"move_window_workspace_2_key", NULL, TRUE},
-        {"move_window_workspace_3_key", NULL, TRUE},
-        {"move_window_workspace_4_key", NULL, TRUE},
-        {"move_window_workspace_5_key", NULL, TRUE},
-        {"move_window_workspace_6_key", NULL, TRUE},
-        {"move_window_workspace_7_key", NULL, TRUE},
-        {"move_window_workspace_8_key", NULL, TRUE},
-        {"move_window_workspace_9_key", NULL, TRUE},
-        {"next_workspace_key", NULL, TRUE},
-        {"prev_workspace_key", NULL, TRUE},
-        {"resize_window_down_key", NULL, TRUE},
-        {"resize_window_left_key", NULL, TRUE},
-        {"resize_window_right_key", NULL, TRUE},
-        {"resize_window_up_key", NULL, TRUE},
-        {"shade_window_key", NULL, TRUE},
-        {"stick_window_key", NULL, TRUE},
-        {"workspace_1_key", NULL, TRUE},
-        {"workspace_2_key", NULL, TRUE},
-        {"workspace_3_key", NULL, TRUE},
-        {"workspace_4_key", NULL, TRUE},
-        {"workspace_5_key", NULL, TRUE},
-        {"workspace_6_key", NULL, TRUE},
-        {"workspace_7_key", NULL, TRUE},
-        {"workspace_8_key", NULL, TRUE},
-        {"workspace_9_key", NULL, TRUE},
-        {"shortcut_1_key", NULL, TRUE},
-        {"shortcut_2_key", NULL, TRUE},
-        {"shortcut_3_key", NULL, TRUE},
-        {"shortcut_4_key", NULL, TRUE},
-        {"shortcut_5_key", NULL, TRUE},
-        {"shortcut_6_key", NULL, TRUE},
-        {"shortcut_7_key", NULL, TRUE},
-        {"shortcut_8_key", NULL, TRUE},
-        {"shortcut_9_key", NULL, TRUE},
-        {"shortcut_10_key", NULL, TRUE},
-        {"shortcut_1_exec", NULL, FALSE},
-        {"shortcut_2_exec", NULL, FALSE},
-        {"shortcut_3_exec", NULL, FALSE},
-        {"shortcut_4_exec", NULL, FALSE},
-        {"shortcut_5_exec", NULL, FALSE},
-        {"shortcut_6_exec", NULL, FALSE},
-        {"shortcut_7_exec", NULL, FALSE},
-        {"shortcut_8_exec", NULL, FALSE},
-        {"shortcut_9_exec", NULL, FALSE},
-        {"shortcut_10_exec", NULL, FALSE},
-        {NULL, NULL, FALSE}
-    };
+                        /* Do not chnage the order of the following parameters */
+                        {"active_text_color", NULL, FALSE},
+                        {"inactive_text_color", NULL, FALSE},
+                        {"active_border_color", NULL, FALSE},
+                        {"inactive_border_color", NULL, FALSE},
+                        {"active_color_1", NULL, FALSE},
+                        {"active_hilight_1", NULL, FALSE},
+                        {"active_shadow_1", NULL, FALSE},
+                        {"active_mid_1", NULL, FALSE},
+                        {"active_color_2", NULL, FALSE},
+                        {"active_hilight_2", NULL, FALSE},
+                        {"active_shadow_2", NULL, FALSE},
+                        {"active_mid_2", NULL, FALSE},
+                        {"inactive_color_1", NULL, FALSE},
+                        {"inactive_hilight_1", NULL, FALSE},
+                        {"inactive_shadow_1", NULL, FALSE},
+                        {"inactive_mid_1", NULL, FALSE},
+                        {"inactive_color_2", NULL, FALSE},
+                        {"inactive_hilight_2", NULL, FALSE},
+                        {"inactive_shadow_2", NULL, FALSE},
+                        {"inactive_mid_2", NULL, FALSE},
+                        /* You can change the order of the following parameters */
+                        {"box_move", NULL, TRUE},
+                        {"box_resize", NULL, TRUE},
+                        {"button_layout", NULL, TRUE},
+                        {"button_offset", NULL, TRUE},
+                        {"button_spacing", NULL, TRUE},
+                        {"click_to_focus", NULL, TRUE},
+                        {"dbl_click_time", NULL, TRUE},
+                        {"double_click_action", NULL, TRUE},
+                        {"focus_hint", NULL, TRUE},
+                        {"focus_new", NULL, TRUE},
+                        {"full_width_title", NULL, TRUE},
+                        {"keytheme", NULL, TRUE},
+                        {"margin_left", NULL, FALSE},
+                        {"margin_right", NULL, FALSE},
+                        {"margin_bottom", NULL, FALSE},
+                        {"margin_top", NULL, FALSE},
+                        {"raise_delay", NULL, TRUE},
+                        {"raise_on_click", NULL, TRUE},
+                        {"raise_on_focus", NULL, TRUE},
+                        {"snap_to_border", NULL, TRUE},
+                        {"snap_to_windows", NULL, TRUE},
+                        {"snap_width", NULL, TRUE},
+                        {"theme", NULL, TRUE},
+                        {"title_alignment", NULL, TRUE},
+                        {"title_font", NULL, FALSE},
+                        {"title_horizontal_offset", NULL, TRUE},
+                        {"title_shadow_active", NULL, TRUE},
+                        {"title_shadow_inactive", NULL, TRUE},
+                        {"title_vertical_offset_active", NULL, TRUE},
+                        {"title_vertical_offset_inactive", NULL, TRUE},
+                        {"workspace_count", NULL, TRUE},
+                        {"wrap_workspaces", NULL, TRUE},
+                        /* Keys */
+                        {"add_workspace_key", NULL, TRUE},
+                        {"close_window_key", NULL, TRUE},
+                        {"cycle_windows_key", NULL, TRUE},
+                        {"del_workspace_key", NULL, TRUE},
+                        {"hide_window_key", NULL, TRUE},
+                        {"maximize_horiz_key", NULL, TRUE},
+                        {"maximize_vert_key", NULL, TRUE},
+                        {"maximize_window_key", NULL, TRUE},
+                        {"move_window_down_key", NULL, TRUE},
+                        {"move_window_left_key", NULL, TRUE},
+                        {"move_window_next_workspace_key", NULL, TRUE},
+                        {"move_window_prev_workspace_key", NULL, TRUE},
+                        {"move_window_right_key", NULL, TRUE},
+                        {"move_window_up_key", NULL, TRUE},
+                        {"move_window_workspace_1_key", NULL, TRUE},
+                        {"move_window_workspace_2_key", NULL, TRUE},
+                        {"move_window_workspace_3_key", NULL, TRUE},
+                        {"move_window_workspace_4_key", NULL, TRUE},
+                        {"move_window_workspace_5_key", NULL, TRUE},
+                        {"move_window_workspace_6_key", NULL, TRUE},
+                        {"move_window_workspace_7_key", NULL, TRUE},
+                        {"move_window_workspace_8_key", NULL, TRUE},
+                        {"move_window_workspace_9_key", NULL, TRUE},
+                        {"next_workspace_key", NULL, TRUE},
+                        {"prev_workspace_key", NULL, TRUE},
+                        {"resize_window_down_key", NULL, TRUE},
+                        {"resize_window_left_key", NULL, TRUE},
+                        {"resize_window_right_key", NULL, TRUE},
+                        {"resize_window_up_key", NULL, TRUE},
+                        {"shade_window_key", NULL, TRUE},
+                        {"stick_window_key", NULL, TRUE},
+                        {"workspace_1_key", NULL, TRUE},
+                        {"workspace_2_key", NULL, TRUE},
+                        {"workspace_3_key", NULL, TRUE},
+                        {"workspace_4_key", NULL, TRUE},
+                        {"workspace_5_key", NULL, TRUE},
+                        {"workspace_6_key", NULL, TRUE},
+                        {"workspace_7_key", NULL, TRUE},
+                        {"workspace_8_key", NULL, TRUE},
+                        {"workspace_9_key", NULL, TRUE},
+                        {"shortcut_1_key", NULL, TRUE},
+                        {"shortcut_2_key", NULL, TRUE},
+                        {"shortcut_3_key", NULL, TRUE},
+                        {"shortcut_4_key", NULL, TRUE},
+                        {"shortcut_5_key", NULL, TRUE},
+                        {"shortcut_6_key", NULL, TRUE},
+                        {"shortcut_7_key", NULL, TRUE},
+                        {"shortcut_8_key", NULL, TRUE},
+                        {"shortcut_9_key", NULL, TRUE},
+                        {"shortcut_10_key", NULL, TRUE},
+                        {"shortcut_1_exec", NULL, FALSE},
+                        {"shortcut_2_exec", NULL, FALSE},
+                        {"shortcut_3_exec", NULL, FALSE},
+                        {"shortcut_4_exec", NULL, FALSE},
+                        {"shortcut_5_exec", NULL, FALSE},
+                        {"shortcut_6_exec", NULL, FALSE},
+                        {"shortcut_7_exec", NULL, FALSE},
+                        {"shortcut_8_exec", NULL, FALSE},
+                        {"shortcut_9_exec", NULL, FALSE},
+                        {"shortcut_10_exec", NULL, FALSE},
+                        {NULL, NULL, FALSE}
+                    };
     GValue tmp_val = { 0, };
 
     DBG("entering loadSettings\n");

@@ -87,7 +87,7 @@ static void my_free_string_list(gchar ** list, gint n)
     }
 }
 
-/* 
+/*
    2-pass function to compute new string length,
    allocate memory and finally copy string 
    - Returned value must be freed -
@@ -107,11 +107,15 @@ static gchar *escape_quote(gchar * s)
     while(*idx1)
     {
         if(*(idx1++) == '"')
+        {
             nbquotes++;
+        }
     }
     /* If there is no quote in the string, return it */
     if(!nbquotes)
+    {
         return (g_strdup(s));
+    }
 
     /* Or else, allocate memory for the new string */
     ns = g_new(gchar, lg + nbquotes + 1);
@@ -136,7 +140,7 @@ static gchar *escape_quote(gchar * s)
     return ns;
 }
 
-/* 
+/*
    single-pass function to replace backslash+quotes
    by quotes. 
    - Returned value must be freed -

@@ -3,19 +3,19 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2003 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -213,15 +213,15 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
         }
         switch (params.title_alignment)
         {
-            case ALIGN_LEFT:
-                tp = params.title_horizontal_offset;
-                break;
-            case ALIGN_RIGHT:
-                tp = w3 - logical_rect.width - params.title_horizontal_offset;
-                break;
-            case ALIGN_CENTER:
-                tp = (w3 >> 1) - (logical_rect.width >> 1);
-                break;
+        case ALIGN_LEFT:
+            tp = params.title_horizontal_offset;
+            break;
+        case ALIGN_RIGHT:
+            tp = w3 - logical_rect.width - params.title_horizontal_offset;
+            break;
+        case ALIGN_CENTER:
+            tp = (w3 >> 1) - (logical_rect.width >> 1);
+            break;
         }
         if(tp < params.title_horizontal_offset)
         {
@@ -242,15 +242,15 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
         }
         switch (params.title_alignment)
         {
-            case ALIGN_LEFT:
-                w1 = left + params.title_horizontal_offset;
-                break;
-            case ALIGN_RIGHT:
-                w1 = right - w2 - w3 - w4 - params.title_horizontal_offset;
-                break;
-            case ALIGN_CENTER:
-                w1 = left + ((right - left) / 2) - (w3 >> 1) - w2;
-                break;
+        case ALIGN_LEFT:
+            w1 = left + params.title_horizontal_offset;
+            break;
+        case ALIGN_RIGHT:
+            w1 = right - w2 - w3 - w4 - params.title_horizontal_offset;
+            break;
+        case ALIGN_CENTER:
+            w1 = left + ((right - left) / 2) - (w3 >> 1) - w2;
+            break;
         }
         if(w1 < left)
         {
@@ -316,44 +316,44 @@ static int getButtonFromLetter(char chr, Client * c)
 
     switch (chr)
     {
-        case 'H':
-            if(CLIENT_CAN_HIDE_WINDOW(c))
-            {
-                b = HIDE_BUTTON;
-            }
-            break;
-        case 'C':
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_CLOSE))
-            {
-                b = CLOSE_BUTTON;
-            }
-            break;
-        case 'M':
-            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                b = MAXIMIZE_BUTTON;
-            }
-            break;
-        case 'S':
-            b = SHADE_BUTTON;
-            break;
-        case 'T':
-            if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
-            {
-                b = STICK_BUTTON;
-            }
-            break;
-        case 'O':
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
-            {
-                b = MENU_BUTTON;
-            }
-            break;
-        case '|':
-            b = TITLE_SEPARATOR;
-            break;
-        default:
-            b = -1;
+    case 'H':
+        if(CLIENT_CAN_HIDE_WINDOW(c))
+        {
+            b = HIDE_BUTTON;
+        }
+        break;
+    case 'C':
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_CLOSE))
+        {
+            b = CLOSE_BUTTON;
+        }
+        break;
+    case 'M':
+        if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+        {
+            b = MAXIMIZE_BUTTON;
+        }
+        break;
+    case 'S':
+        b = SHADE_BUTTON;
+        break;
+    case 'T':
+        if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
+        {
+            b = STICK_BUTTON;
+        }
+        break;
+    case 'O':
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
+        {
+            b = MENU_BUTTON;
+        }
+        break;
+    case '|':
+        b = TITLE_SEPARATOR;
+        break;
+    default:
+        b = -1;
     }
     return b;
 }
@@ -366,41 +366,41 @@ static char getLetterFromButton(int i, Client * c)
 
     switch (i)
     {
-        case HIDE_BUTTON:
-            if(CLIENT_CAN_HIDE_WINDOW(c))
-            {
-                chr = 'H';
-            }
-            break;
-        case CLOSE_BUTTON:
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_CLOSE))
-            {
-                chr = 'C';
-            }
-            break;
-        case MAXIMIZE_BUTTON:
-            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-            {
-                chr = 'M';
-            }
-            break;
-        case SHADE_BUTTON:
-            chr = 'S';
-            break;
-        case STICK_BUTTON:
-            if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
-            {
-                chr = 'T';
-            }
-            break;
-        case MENU_BUTTON:
-            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
-            {
-                chr = 'O';
-            }
-            break;
-        default:
-            chr = 0;
+    case HIDE_BUTTON:
+        if(CLIENT_CAN_HIDE_WINDOW(c))
+        {
+            chr = 'H';
+        }
+        break;
+    case CLOSE_BUTTON:
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_CLOSE))
+        {
+            chr = 'C';
+        }
+        break;
+    case MAXIMIZE_BUTTON:
+        if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+        {
+            chr = 'M';
+        }
+        break;
+    case SHADE_BUTTON:
+        chr = 'S';
+        break;
+    case STICK_BUTTON:
+        if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
+        {
+            chr = 'T';
+        }
+        break;
+    case MENU_BUTTON:
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_MENU))
+        {
+            chr = 'O';
+        }
+        break;
+    default:
+        chr = 0;
     }
     return chr;
 }

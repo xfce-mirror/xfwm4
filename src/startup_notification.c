@@ -3,19 +3,19 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         Metacity - (c) 2003 Havoc Pennington
         xfwm4    - (c) 2003 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -188,21 +188,21 @@ static void sn_screen_event(SnMonitorEvent * event, void *user_data)
 
     switch (sn_monitor_event_get_type(event))
     {
-        case SN_MONITOR_EVENT_INITIATED:
-            wmclass = sn_startup_sequence_get_wmclass(sequence);
-            sn_add_sequence(sequence);
-            break;
+    case SN_MONITOR_EVENT_INITIATED:
+        wmclass = sn_startup_sequence_get_wmclass(sequence);
+        sn_add_sequence(sequence);
+        break;
 
-        case SN_MONITOR_EVENT_COMPLETED:
-            sn_remove_sequence(sn_monitor_event_get_startup_sequence(event));
-            break;
+    case SN_MONITOR_EVENT_COMPLETED:
+        sn_remove_sequence(sn_monitor_event_get_startup_sequence(event));
+        break;
 
-        case SN_MONITOR_EVENT_CHANGED:
-            break;
+    case SN_MONITOR_EVENT_CHANGED:
+        break;
 
-        case SN_MONITOR_EVENT_CANCELED:
-        default:
-            break;
+    case SN_MONITOR_EVENT_CANCELED:
+    default:
+        break;
     }
 }
 

@@ -3,19 +3,19 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         Metacity - (c) 2001 Havoc Pennington
         xfwm4    - (c) 2002-2003 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -35,46 +35,46 @@
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE, NULL, N_("Ma_ximize")},
-    {MENU_OP_UNMAXIMIZE, NULL, N_("Un_maximize")},
-    {MENU_OP_MINIMIZE, NULL, N_("_Hide")},
-    {MENU_OP_MINIMIZE_ALL, NULL, N_("Hide _all others")},
-    {MENU_OP_UNMINIMIZE, NULL, N_("S_how")},
-    {MENU_OP_SHADE, NULL, N_("_Shade")},
-    {MENU_OP_UNSHADE, NULL, N_("Un_shade")},
-    {MENU_OP_STICK, NULL, N_("S_tick")},
-    {MENU_OP_UNSTICK, NULL, N_("Uns_tick")},
-    {MENU_OP_MOVE, NULL, N_("_Move")},
-    {MENU_OP_RESIZE, NULL, N_("_Resize")},
-    {MENU_OP_SWITCH, NULL, N_("S_witch")},
-    {0, NULL, NULL},
-    {MENU_OP_DELETE, NULL, N_("_Close")},
+                                  {MENU_OP_MAXIMIZE, NULL, N_("Ma_ximize")},
+                                  {MENU_OP_UNMAXIMIZE, NULL, N_("Un_maximize")},
+                                  {MENU_OP_MINIMIZE, NULL, N_("_Hide")},
+                                  {MENU_OP_MINIMIZE_ALL, NULL, N_("Hide _all others")},
+                                  {MENU_OP_UNMINIMIZE, NULL, N_("S_how")},
+                                  {MENU_OP_SHADE, NULL, N_("_Shade")},
+                                  {MENU_OP_UNSHADE, NULL, N_("Un_shade")},
+                                  {MENU_OP_STICK, NULL, N_("S_tick")},
+                                  {MENU_OP_UNSTICK, NULL, N_("Uns_tick")},
+                                  {MENU_OP_MOVE, NULL, N_("_Move")},
+                                  {MENU_OP_RESIZE, NULL, N_("_Resize")},
+                                  {MENU_OP_SWITCH, NULL, N_("S_witch")},
+                                  {0, NULL, NULL},
+                                  {MENU_OP_DELETE, NULL, N_("_Close")},
 #if 0
-    {MENU_OP_DESTROY, NULL, N_("Destroy")},
-    {0, NULL, NULL},
-    {MENU_OP_WORKSPACES, NULL, N_("Wor_kspace")},
-    {0, NULL, NULL},
+                                  {MENU_OP_DESTROY, NULL, N_("Destroy")},
+                                  {0, NULL, NULL},
+                                  {MENU_OP_WORKSPACES, NULL, N_("Wor_kspace")},
+                                  {0, NULL, NULL},
 #endif
-    {MENU_OP_QUIT, NULL, N_("_Quit")},
-    {MENU_OP_RESTART, NULL, N_("Restart")},
-};
+                                  {MENU_OP_QUIT, NULL, N_("_Quit")},
+                                  {MENU_OP_RESTART, NULL, N_("Restart")},
+                              };
 
 static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
     {
-        case KeyPress:
-        case KeyRelease:
-        case ButtonPress:
-        case ButtonRelease:
-        case MotionNotify:
-        case EnterNotify:
-        case LeaveNotify:
-            return XEV_FILTER_STOP;
-            break;
-        default:
-            return XEV_FILTER_CONTINUE;
-            break;
+    case KeyPress:
+    case KeyRelease:
+    case ButtonPress:
+    case ButtonRelease:
+    case MotionNotify:
+    case EnterNotify:
+    case LeaveNotify:
+        return XEV_FILTER_STOP;
+        break;
+    default:
+        return XEV_FILTER_CONTINUE;
+        break;
     }
     return XEV_FILTER_STOP;
 }

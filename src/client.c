@@ -3,19 +3,19 @@
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; You may only use version 2 of the License,
         you have no option to use any other version.
-
+ 
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
-
+ 
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+ 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2003 Olivier Fourdan
-
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -47,26 +47,26 @@
 /* Event mask definition */
 
 #define POINTER_EVENT_MASK      ButtonPressMask|\
-                                ButtonReleaseMask
+    ButtonReleaseMask
 
 #define FRAME_EVENT_MASK        SubstructureNotifyMask|\
-                                SubstructureRedirectMask|\
-                                EnterWindowMask
+    SubstructureRedirectMask|\
+    EnterWindowMask
 
 #define CLIENT_EVENT_MASK       FocusChangeMask|\
-                                PropertyChangeMask
+    PropertyChangeMask
 
 /* Useful macros */
 #define ACCEPT_INPUT(wmhints) \
     (!(params.focus_hint) || \
-    ((!(wmhints) || \
-    ((wmhints) && !(wmhints->flags & InputHint)) || \
-    ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))))
+     ((!(wmhints) || \
+       ((wmhints) && !(wmhints->flags & InputHint)) || \
+       ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))))
 
 #define START_ICONIC(c) \
     ((c->wmhints) && \
-    (c->wmhints->initial_state == IconicState) && \
-    !(c->transient_for))
+     (c->wmhints->initial_state == IconicState) && \
+     !(c->transient_for))
 
 #define CONSTRAINED_WINDOW(c) \
     ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
@@ -678,18 +678,18 @@ void clientGetNetWmType(Client * c)
     {
         switch (c->win_layer)
         {
-            case WIN_LAYER_DESKTOP:
-                c->type_atom = net_wm_window_type_desktop;
-                break;
-            case WIN_LAYER_DOCK:
-                c->type_atom = net_wm_window_type_dock;
-                break;
-            case WIN_LAYER_NORMAL:
-                c->type_atom = net_wm_window_type_normal;
-                break;
-            default:
-                c->type_atom = None;
-                break;
+        case WIN_LAYER_DESKTOP:
+            c->type_atom = net_wm_window_type_desktop;
+            break;
+        case WIN_LAYER_DOCK:
+            c->type_atom = net_wm_window_type_dock;
+            break;
+        case WIN_LAYER_NORMAL:
+            c->type_atom = net_wm_window_type_normal;
+            break;
+        default:
+            c->type_atom = None;
+            break;
         }
     }
     else
@@ -1104,46 +1104,46 @@ void clientCoordGravitate(Client * c, int mode, int *x, int *y)
     c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
     switch (c->gravity)
     {
-        case CenterGravity:
-            dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
-            dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
-            break;
-        case NorthGravity:
-            dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
-            dy = frameTop(c);
-            break;
-        case SouthGravity:
-            dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
-            dy = (c->border_width << 1) - frameBottom(c);
-            break;
-        case EastGravity:
-            dx = (c->border_width << 1) - frameRight(c);
-            dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
-            break;
-        case WestGravity:
-            dx = frameLeft(c);
-            dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
-            break;
-        case NorthWestGravity:
-            dx = frameLeft(c);
-            dy = frameTop(c);
-            break;
-        case NorthEastGravity:
-            dx = (c->border_width << 1) - frameRight(c);
-            dy = frameTop(c);
-            break;
-        case SouthWestGravity:
-            dx = frameLeft(c);
-            dy = (c->border_width << 1) - frameBottom(c);
-            break;
-        case SouthEastGravity:
-            dx = (c->border_width << 1) - frameRight(c);
-            dy = (c->border_width << 1) - frameBottom(c);
-            break;
-        default:
-            dx = 0;
-            dy = 0;
-            break;
+    case CenterGravity:
+        dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
+        dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
+        break;
+    case NorthGravity:
+        dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
+        dy = frameTop(c);
+        break;
+    case SouthGravity:
+        dx = (c->border_width << 1) - ((frameLeft(c) + frameRight(c)) >> 1);
+        dy = (c->border_width << 1) - frameBottom(c);
+        break;
+    case EastGravity:
+        dx = (c->border_width << 1) - frameRight(c);
+        dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
+        break;
+    case WestGravity:
+        dx = frameLeft(c);
+        dy = (c->border_width << 1) - ((frameTop(c) + frameBottom(c)) >> 1);
+        break;
+    case NorthWestGravity:
+        dx = frameLeft(c);
+        dy = frameTop(c);
+        break;
+    case NorthEastGravity:
+        dx = (c->border_width << 1) - frameRight(c);
+        dy = frameTop(c);
+        break;
+    case SouthWestGravity:
+        dx = frameLeft(c);
+        dy = (c->border_width << 1) - frameBottom(c);
+        break;
+    case SouthEastGravity:
+        dx = (c->border_width << 1) - frameRight(c);
+        dy = (c->border_width << 1) - frameBottom(c);
+        break;
+    default:
+        dx = 0;
+        dy = 0;
+        break;
     }
     *x = *x + (dx * mode);
     *y = *y + (dy * mode);
@@ -1353,7 +1353,7 @@ static inline void clientApplyStackList(GSList * list)
     {
         return;
     }
-    
+
     list_copy = g_slist_copy(list);
     list_copy = g_slist_reverse(list_copy);
     xwinstack = g_new(Window, nwindows);
@@ -1428,7 +1428,7 @@ static inline Client *clientGetHighestTransient(Client * c)
     {
         g_slist_free(transients);
     }
-    
+
     return highest_transient;
 }
 
@@ -1756,6 +1756,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
 #else /* 0 */
             c->x = wc->x;
 #endif /* 0 */
+
         }
     }
     if(mask & CWY)
@@ -1774,6 +1775,7 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
 #else /* 0 */
             c->y = wc->y;
 #endif /* 0 */
+
         }
     }
     if(mask & CWWidth)
@@ -1792,20 +1794,20 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
     {
         switch (wc->stack_mode)
         {
-                /* Limitation: we don't support sibling... */
-            case Above:
-            case TopIf:
-                DBG("Above\n");
-                clientRaise(c);
-                break;
-            case Below:
-            case BottomIf:
-                DBG("Below\n");
-                clientLower(c);
-                break;
-            case Opposite:
-            default:
-                break;
+            /* Limitation: we don't support sibling... */
+        case Above:
+        case TopIf:
+            DBG("Above\n");
+            clientRaise(c);
+            break;
+        case Below:
+        case BottomIf:
+            DBG("Below\n");
+            clientLower(c);
+            break;
+        case Opposite:
+        default:
+            break;
         }
         mask &= ~(CWStackMode | CWSibling);
     }
@@ -2115,6 +2117,7 @@ void clientFrame(Window w)
     c->client_leader = None;
     c->client_leader = getClientLeader(dpy, c->window);
 #ifdef HAVE_STARTUP_NOTIFICATION
+
     c->startup_id = NULL;
     getWindowStartupId(dpy, c->window, &c->startup_id);
 #endif
@@ -2225,7 +2228,7 @@ void clientFrame(Window w)
     clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
     clientApplyStackList(windows_stack);
     last_raise = c;
-    
+
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
         clientShow(c, True);
@@ -2376,28 +2379,28 @@ Client *clientGetFromWindow(Window w, int mode)
     {
         switch (mode)
         {
-            case WINDOW:
-                if(c->window == w)
-                {
-                    DBG("found \"%s\" (mode WINDOW)\n", c->name);
-                    return (c);
-                }
-                break;
-            case FRAME:
-                if(c->frame == w)
-                {
-                    DBG("found \"%s\" (mode FRAME)\n", c->name);
-                    return (c);
-                }
-                break;
-            case ANY:
-            default:
-                if((c->frame == w) || (c->window == w))
-                {
-                    DBG("found \"%s\" (mode ANY)\n", c->name);
-                    return (c);
-                }
-                break;
+        case WINDOW:
+            if(c->window == w)
+            {
+                DBG("found \"%s\" (mode WINDOW)\n", c->name);
+                return (c);
+            }
+            break;
+        case FRAME:
+            if(c->frame == w)
+            {
+                DBG("found \"%s\" (mode FRAME)\n", c->name);
+                return (c);
+            }
+            break;
+        case ANY:
+        default:
+            if((c->frame == w) || (c->window == w))
+            {
+                DBG("found \"%s\" (mode ANY)\n", c->name);
+                return (c);
+            }
+            break;
         }
     }
     DBG("no client found\n");
@@ -2583,7 +2586,7 @@ void clientRaise(Client * c)
     {
         return;
     }
-    
+
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         Client *c2, *c3;
@@ -2658,14 +2661,14 @@ void clientRaise(Client * c)
                 }
             }
         }
-	if(transients)
-	{
+        if(transients)
+        {
             g_slist_free(transients);
-	}
-	if(windows_stack_copy)
-	{
+        }
+        if(windows_stack_copy)
+        {
             g_slist_free(windows_stack_copy);
-	}
+        }
         /* Now, windows_stack contains the correct window stack
            We still need to tell the X Server to reflect the changes 
          */
@@ -2685,7 +2688,7 @@ void clientLower(Client * c)
     {
         return;
     }
-    
+
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
@@ -3208,7 +3211,7 @@ static inline void clientSnapPosition(Client * c)
     g_return_if_fail(c != NULL);
     DBG("entering clientSnapPosition\n");
     DBG("Snapping client \"%s\" (0x%lx)\n", c->name, c->window);
-    
+
     frame_x = frameX(c);
     frame_y = frameY(c);
     frame_height = frameHeight(c);
@@ -3238,50 +3241,50 @@ static inline void clientSnapPosition(Client * c)
         int i;
         int frame_x2 = frame_x + frame_width;
         int frame_y2 = frame_y + frame_height;
-	int best_frame_x = frame_x;
-	int best_frame_y = frame_y;
-        int best_delta_x = params.snap_width + 1; 
-	int best_delta_y = params.snap_width + 1;
+        int best_frame_x = frame_x;
+        int best_frame_y = frame_y;
+        int best_delta_x = params.snap_width + 1;
+        int best_delta_y = params.snap_width + 1;
         int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
         int delta;
         Client * c2;
 
-	disp_x = MyDisplayX(cx, cy);
-	disp_y = MyDisplayY(cx, cy);
-	disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
-	disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
+        disp_x = MyDisplayX(cx, cy);
+        disp_y = MyDisplayY(cx, cy);
+        disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
+        disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
 
         if (params.snap_to_border)
-	{
+        {
             if (abs(disp_x + left - frame_x) < abs(disp_max_x - right - frame_x2))
             {
-        	best_delta_x = abs(disp_x + left - frame_x);
-        	best_frame_x = disp_x + left;
+                best_delta_x = abs(disp_x + left - frame_x);
+                best_frame_x = disp_x + left;
             }
             else
             {
-        	best_delta_x = abs(disp_max_x - right - frame_x2);
-        	best_frame_x = disp_max_x - right - frame_width;
+                best_delta_x = abs(disp_max_x - right - frame_x2);
+                best_frame_x = disp_max_x - right - frame_width;
             }
 
             if (abs(disp_y + top - frame_y) < abs(disp_max_y - bottom - frame_y2))
             {
-        	best_delta_y = abs(disp_y + top - frame_y);
-        	best_frame_y = disp_y + top;
+                best_delta_y = abs(disp_y + top - frame_y);
+                best_frame_y = disp_y + top;
             }
             else
             {
-        	best_delta_y = abs(disp_max_y - bottom - frame_y2);
-        	best_frame_y = disp_max_y - bottom - frame_height;
+                best_delta_y = abs(disp_max_y - bottom - frame_y2);
+                best_frame_y = disp_max_y - bottom - frame_height;
             }
         }
 
         if(params.snap_to_windows)
         {
-	    for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
+            for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
             {
-        	if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c)) 
-        	{
+                if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c))
+                {
                     c_frame_x1 = frameX(c2);
                     c_frame_x2 = c_frame_x1 + frameWidth(c2);
                     c_frame_y1 = frameY(c2);
@@ -3289,42 +3292,42 @@ static inline void clientSnapPosition(Client * c)
 
                     if ((c_frame_y1 <= frame_y2) && (c_frame_y2 >= frame_y))
                     {
-                	delta = abs(c_frame_x2 - frame_x);
-                	if (delta < best_delta_x) 
-                	{
+                        delta = abs(c_frame_x2 - frame_x);
+                        if (delta < best_delta_x)
+                        {
                             best_delta_x = delta;
                             best_frame_x = c_frame_x2;
-                	}
+                        }
 
-                	delta = abs(c_frame_x1 - frame_x2);
-                	if (delta < best_delta_x) 
-                	{
+                        delta = abs(c_frame_x1 - frame_x2);
+                        if (delta < best_delta_x)
+                        {
                             best_delta_x = delta;
                             best_frame_x = c_frame_x1 - frame_width;
-                	}
+                        }
                     }
 
                     if ((c_frame_x1 <= frame_x2) && (c_frame_x2 >= frame_x))
                     {
-                	delta = abs(c_frame_y2 - frame_y);                    
-                	if (delta < best_delta_y) 
-                	{
+                        delta = abs(c_frame_y2 - frame_y);
+                        if (delta < best_delta_y)
+                        {
                             best_delta_y = delta;
                             best_frame_y = c_frame_y2;
-                	}
+                        }
 
-                	delta = abs(c_frame_y1 - frame_y2); 
-                	if (delta < best_delta_y)
-                	{
+                        delta = abs(c_frame_y1 - frame_y2);
+                        if (delta < best_delta_y)
+                        {
                             best_delta_y = delta;
                             best_frame_y = c_frame_y1 - frame_height;
-                	}
+                        }
 
                     }
-        	}
+                }
             }
-	}
-        
+        }
+
         if (best_delta_x <= params.snap_width)
         {
             c->x = best_frame_x + frame_left;
@@ -3402,7 +3405,8 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     }
     else if(xevent->type == MotionNotify)
     {
-        while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent));
+        while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent))
+            ;
 
         if(xevent->type == ButtonRelease)
         {
@@ -3422,7 +3426,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         if((params.workspace_count > 1) && !(c->transient_for))
         {
-	    static gboolean wrapped = FALSE;
+            static gboolean wrapped = FALSE;
             int msx, msy;
 
             msx = xevent->xmotion.x_root;
@@ -3433,26 +3437,26 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
                 msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 workspaceSwitch(workspace - 1, c);
-		wrapped = TRUE;
+                wrapped = TRUE;
             }
             else if((msx == XDisplayWidth(dpy, screen) - 1) && params.wrap_workspaces && !wrapped)
             {
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 msx = xevent->xmotion.x_root = 10;
                 workspaceSwitch(workspace + 1, c);
-		wrapped = TRUE;
+                wrapped = TRUE;
             }
-	    else if (wrapped)
-	    {
-	        wrapped = FALSE;
-	    }
+            else if (wrapped)
+            {
+                wrapped = FALSE;
+            }
         }
 
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
-        
-	clientSnapPosition(c);
-	
+
+        clientSnapPosition(c);
+
         if(CONSTRAINED_WINDOW(c))
         {
             clientConstraintPos(c, FALSE);
@@ -3707,7 +3711,8 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     }
     else if(xevent->type == MotionNotify)
     {
-        while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent));
+        while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent))
+            ;
 
         if(xevent->type == ButtonRelease)
         {
@@ -3950,41 +3955,41 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
 
     switch (xevent->type)
     {
-        case DestroyNotify:
-            gone |= (passdata->c == clientGetFromWindow(((XDestroyWindowEvent *) xevent)->window, WINDOW));
-            status = XEV_FILTER_CONTINUE;
-        case UnmapNotify:
-            gone |= (passdata->c == clientGetFromWindow(((XUnmapEvent *) xevent)->window, WINDOW));
-            status = XEV_FILTER_CONTINUE;
-        case KeyPress:
-            if(gone || (xevent->xkey.keycode == params.keys[KEY_CYCLE_WINDOWS].keycode))
+    case DestroyNotify:
+        gone |= (passdata->c == clientGetFromWindow(((XDestroyWindowEvent *) xevent)->window, WINDOW));
+        status = XEV_FILTER_CONTINUE;
+    case UnmapNotify:
+        gone |= (passdata->c == clientGetFromWindow(((XUnmapEvent *) xevent)->window, WINDOW));
+        status = XEV_FILTER_CONTINUE;
+    case KeyPress:
+        if(gone || (xevent->xkey.keycode == params.keys[KEY_CYCLE_WINDOWS].keycode))
+        {
+            passdata->c = clientGetNext(passdata->c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
+            if(passdata->c)
             {
-                passdata->c = clientGetNext(passdata->c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
-                if(passdata->c)
-                {
-                    tabwinSetLabel(passdata->tabwin, passdata->c->name);
-                }
-                else
-                {
-                    cycling = FALSE;
-                }
+                tabwinSetLabel(passdata->tabwin, passdata->c->name);
             }
-            break;
-        case KeyRelease:
-            if(IsModifierKey(XKeycodeToKeysym(dpy, xevent->xkey.keycode, 0)))
+            else
             {
                 cycling = FALSE;
             }
-            break;
-        case ButtonPress:
-        case ButtonRelease:
-        case EnterNotify:
-        case LeaveNotify:
-        case MotionNotify:
-            break;
-        default:
-            status = XEV_FILTER_CONTINUE;
-            break;
+        }
+        break;
+    case KeyRelease:
+        if(IsModifierKey(XKeycodeToKeysym(dpy, xevent->xkey.keycode, 0)))
+        {
+            cycling = FALSE;
+        }
+        break;
+    case ButtonPress:
+    case ButtonRelease:
+    case EnterNotify:
+    case LeaveNotify:
+    case MotionNotify:
+        break;
+    default:
+        status = XEV_FILTER_CONTINUE;
+        break;
     }
 
     if(!cycling)
@@ -4072,8 +4077,7 @@ static GtkToXEventFilterStatus clientButtonPress_event_filter(XEvent * xevent, g
         c->button_pressed[b] = False;
     }
     else if((xevent->type == KeyPress) || (xevent->type == KeyRelease))
-    {
-    }
+    {}
     else
     {
         status = XEV_FILTER_CONTINUE;
@@ -4137,45 +4141,45 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         frameDraw(c, FALSE, FALSE);
         switch (b)
         {
-            case HIDE_BUTTON:
-                if(CLIENT_CAN_HIDE_WINDOW(c))
+        case HIDE_BUTTON:
+            if(CLIENT_CAN_HIDE_WINDOW(c))
+            {
+                clientHide(c, True);
+            }
+            break;
+        case CLOSE_BUTTON:
+            if(bev->button == Button3)
+            {
+                clientKill(c);
+            }
+            else
+            {
+                clientClose(c);
+            }
+            break;
+        case MAXIMIZE_BUTTON:
+            if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
+            {
+                if(bev->button == Button1)
                 {
-                    clientHide(c, True);
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
                 }
-                break;
-            case CLOSE_BUTTON:
-                if(bev->button == Button3)
+                else if(bev->button == Button2)
                 {
-                    clientKill(c);
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
                 }
-                else
+                else if(bev->button == Button3)
                 {
-                    clientClose(c);
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
                 }
-                break;
-            case MAXIMIZE_BUTTON:
-                if(CLIENT_CAN_MAXIMIZE_WINDOW(c))
-                {
-                    if(bev->button == Button1)
-                    {
-                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                    }
-                    else if(bev->button == Button2)
-                    {
-                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
-                    }
-                    else if(bev->button == Button3)
-                    {
-                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
-                    }
-                }
-                break;
-            case SHADE_BUTTON:
-                clientToggleShaded(c);
-                break;
-            case STICK_BUTTON:
-                clientToggleSticky(c, TRUE);
-                break;
+            }
+            break;
+        case SHADE_BUTTON:
+            clientToggleShaded(c);
+            break;
+        case STICK_BUTTON:
+            clientToggleSticky(c, TRUE);
+            break;
         }
     }
 }
