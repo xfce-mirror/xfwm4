@@ -310,7 +310,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (screen_info, new_focus, CurrentTime, FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+    clientSetFocus (screen_info, new_focus, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL | FOCUS_FORCE);
     if (new_focus == top_most.highest)
     {
         clientPassGrabMouseButton (new_focus);
