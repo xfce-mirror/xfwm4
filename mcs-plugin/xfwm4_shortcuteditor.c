@@ -287,8 +287,8 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
     gtk_list_store_clear (GTK_LIST_STORE (model4));
 
     user_theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
-    default_theme_file = g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, "Default",
-					   G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S KEYTHEMERC, NULL);
+    default_theme_file = g_build_filename (DATADIR, "themes", "Default",
+					   KEY_SUFFIX, KEYTHEMERC, NULL);
 
     if (g_ascii_strcasecmp (ti->name, "Default") == 0)
     {
