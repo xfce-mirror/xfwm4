@@ -4707,6 +4707,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        XFlush (dpy);
         if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
@@ -4719,6 +4720,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         TRACE ("setting focus to none");
         client_focus = NULL;
         XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
+        XFlush (dpy);
         data[0] = None;
     }
     if (c2)
