@@ -659,7 +659,7 @@ sessionMatchWinToSM (Client * c)
     g_return_val_if_fail (c != NULL, FALSE);
     for (i = 0; i < num_match; i++)
     {
-        if (!matches[i].used && (c->screen_info->screen != matches[i].screen) && matchWin (c, &matches[i]))
+        if (!matches[i].used && (c->screen_info->screen == matches[i].screen) && matchWin (c, &matches[i]))
         {
             matches[i].used = TRUE;
             c->x = matches[i].x;
