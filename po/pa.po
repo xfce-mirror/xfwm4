@@ -1,16 +1,19 @@
+# translation of xfwm4.po to 
+# translation of xfwm4.po to
 # translation of xfwm4.po to Punjabi
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Amanpreet Singh Alam <aalam@redhat.com>, 2004.
+# root <root@Phulewala>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-09-06 07:45+0200\n"
-"PO-Revision-Date: 2004-09-20 15:14+0530\n"
-"Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
-"Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
+"PO-Revision-Date: 2004-10-04 02:59+0530\n"
+"Last-Translator: root <root@Phulewala>\n"
+"Language-Team:  <pa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +26,7 @@ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 
 #: mcs-plugin/margins.c:133
 msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "ਮਾਰਜਨ ਪਰਦੇ ਦੇ ਕਿਨਾਰਿਆਂ ਤੇ ਅਜਿਹੇ ਖੇਤਰ ਹਨ ਜਿੱਥੇ ਕੋਈ ਝਰੋਖਾ ਸਥਾਪਤਨਹੀਂ ਹੋਵੇਗਾ"
+msgstr "ਮਾਰਜਨ ਪਰਦੇ ਦੇ ਕਿਨਾਰਿਆਂ ਤੇ ਅਜਿਹੇ ਖੇਤਰ ਹਨ ਜਿੱਥੇ ਕੋਈ ਝਰੋਖਾ ਸਥਾਪਤ ਨਹੀਂ ਹੋਵੇਗਾ"
 
 #: mcs-plugin/margins.c:164
 msgid "Left :"
@@ -186,7 +189,7 @@ msgstr "ਹੇਠਾਂ ਖਾਕਾ"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Style"
-msgstr ""
+msgstr "ਸ਼ੈਲੀ"
 
 #: mcs-plugin/xfwm4_plugin.c:1490
 msgid "Windows shortcuts"
@@ -310,7 +313,10 @@ msgstr "ਮੁੜ ਆਕਾਰ ਦੇਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ 
 
 #: mcs-plugin/xfwm4_plugin.c:1767
 msgid "Display content of windows when moving"
-msgstr "ਹਿਲਾਉਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇਪ ਵਿਖਾਓ"
+msgstr ""
+"ਹਿਲਾਉਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇਪ ਵਿਖਾਓ"
+"+-"
+
 #: mcs-plugin/xfwm4_plugin.c:1772
 msgid "Double click action"
 msgstr "ਕਿਰਿਆ ਤੇ ਡਬਲ ਕਲਿੱਕ ਕਰੋ"
