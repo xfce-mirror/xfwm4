@@ -774,13 +774,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 }
             }
         }
-        else if (((ev->window != c->window) && (ev->button == Button2)
-                && (state == 0)) || ((ev->button == Button2)
-                && (state == (AltMask | ControlMask))))
-        {
-            clientLower (c);
-            clientPassGrabButton1 (NULL);
-        }
         else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]))
             && (state == 0))
         {
