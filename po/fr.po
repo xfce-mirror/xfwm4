@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-03-31 23:40+0200\n"
+"POT-Creation-Date: 2003-05-04 19:45+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -14,35 +14,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:113 mcs-plugin/margins_plugin.c:209
-#: mcs-plugin/margins_plugin.c:227
+#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:232
 msgid "Workspace Margins"
 msgstr "Marges de l'espace de travail"
 
-#: mcs-plugin/margins_plugin.c:193
+#: mcs-plugin/margins_plugin.c:198
 msgid "Adjust workspace margins"
 msgstr "Ajuster les marges de l'espace de travail"
 
-#: mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:219
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Les marges sont des zones sur les bords de l'écran où aucune fenêtre ne sera "
 "placée"
 
-#: mcs-plugin/margins_plugin.c:255
+#: mcs-plugin/margins_plugin.c:260
 msgid "Left :"
 msgstr "Gauche :"
 
-#: mcs-plugin/margins_plugin.c:274
+#: mcs-plugin/margins_plugin.c:279
 msgid "Right :"
 msgstr "Droit :"
 
-#: mcs-plugin/margins_plugin.c:293
+#: mcs-plugin/margins_plugin.c:298
 msgid "Top :"
 msgstr "Haut :"
 
-#: mcs-plugin/margins_plugin.c:312
+#: mcs-plugin/margins_plugin.c:317
 msgid "Bottom :"
 msgstr "Bas :"
 
@@ -110,7 +110,7 @@ msgstr "Caché"
 msgid "Font Selection Dialog"
 msgstr "Sélection de Fonte"
 
-#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1602
+#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
 msgid "Window Manager"
 msgstr "Gestionnaire de fenêtres"
 
@@ -275,12 +275,12 @@ msgstr "Action du double clic"
 msgid "Misc."
 msgstr "Divers"
 
-#: src/client.c:397
+#: src/client.c:406
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state non géré (window 0x%lx)"
 
-#: src/events.c:1101
+#: src/events.c:1110
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation pas (encore) supportée\n"

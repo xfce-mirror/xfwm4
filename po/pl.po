@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-03-31 23:40+0200\n"
+"POT-Creation-Date: 2003-05-04 19:45+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Paweł Pastuła <pastulap@poczta.onet.pl>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -14,37 +14,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:113 mcs-plugin/margins_plugin.c:209
-#: mcs-plugin/margins_plugin.c:227
+#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:232
 #, fuzzy
 msgid "Workspace Margins"
 msgstr "Marginesy obszaru roboczego"
 
-#: mcs-plugin/margins_plugin.c:193
+#: mcs-plugin/margins_plugin.c:198
 msgid "Adjust workspace margins"
 msgstr "Ustaw marginesy"
 
-#: mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:219
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Margines to obszar ekranu, w którym nie zostanie umieszczone żadne z okien."
 
-#: mcs-plugin/margins_plugin.c:255
+#: mcs-plugin/margins_plugin.c:260
 #, fuzzy
 msgid "Left :"
 msgstr "Lewy :"
 
-#: mcs-plugin/margins_plugin.c:274
+#: mcs-plugin/margins_plugin.c:279
 #, fuzzy
 msgid "Right :"
 msgstr "Prawy :"
 
-#: mcs-plugin/margins_plugin.c:293
+#: mcs-plugin/margins_plugin.c:298
 msgid "Top :"
 msgstr "Górny :"
 
-#: mcs-plugin/margins_plugin.c:312
+#: mcs-plugin/margins_plugin.c:317
 msgid "Bottom :"
 msgstr "Dolny :"
 
@@ -112,7 +112,7 @@ msgstr "Ukryty"
 msgid "Font Selection Dialog"
 msgstr "Dialog wyboru czcionki"
 
-#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1602
+#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
 msgid "Window Manager"
 msgstr "Menadżer okien"
 
@@ -279,12 +279,12 @@ msgstr "Akcja przy podwójnym kliknięciu"
 msgid "Misc."
 msgstr "Różne"
 
-#: src/client.c:397
+#: src/client.c:406
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1101
+#: src/events.c:1110
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operaracja jeszcze niaktywna\n"

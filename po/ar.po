@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-03-31 23:40+0200\n"
+"POT-Creation-Date: 2003-05-04 19:45+0200\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -15,36 +15,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: mcs-plugin/margins_plugin.c:113 mcs-plugin/margins_plugin.c:209
-#: mcs-plugin/margins_plugin.c:227
+#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:232
 #, fuzzy
 msgid "Workspace Margins"
 msgstr "_بيئة العمل"
 
-#: mcs-plugin/margins_plugin.c:193
+#: mcs-plugin/margins_plugin.c:198
 msgid "Adjust workspace margins"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:219
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:255
+#: mcs-plugin/margins_plugin.c:260
 #, fuzzy
 msgid "Left :"
 msgstr "يسار"
 
-#: mcs-plugin/margins_plugin.c:274
+#: mcs-plugin/margins_plugin.c:279
 #, fuzzy
 msgid "Right :"
 msgstr "يمين"
 
-#: mcs-plugin/margins_plugin.c:293
+#: mcs-plugin/margins_plugin.c:298
 msgid "Top :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:312
+#: mcs-plugin/margins_plugin.c:317
 msgid "Bottom :"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr "مخفى"
 msgid "Font Selection Dialog"
 msgstr "مربع حوار اختيار الخط"
 
-#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1602
+#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
 msgid "Window Manager"
 msgstr "مدير النوافذ"
 
@@ -279,12 +279,12 @@ msgstr "المهمة عند النقر مرتين "
 msgid "Misc."
 msgstr "متفرقات"
 
-#: src/client.c:397
+#: src/client.c:406
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
-#: src/events.c:1101
+#: src/events.c:1110
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"

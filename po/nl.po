@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-03-31 23:40+0200\n"
+"POT-Creation-Date: 2003-05-04 19:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,36 +15,36 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:113 mcs-plugin/margins_plugin.c:209
-#: mcs-plugin/margins_plugin.c:227
+#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:232
 #, fuzzy
 msgid "Workspace Margins"
 msgstr "_Bureaublad"
 
-#: mcs-plugin/margins_plugin.c:193
+#: mcs-plugin/margins_plugin.c:198
 msgid "Adjust workspace margins"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:219
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:255
+#: mcs-plugin/margins_plugin.c:260
 #, fuzzy
 msgid "Left :"
 msgstr "Links"
 
-#: mcs-plugin/margins_plugin.c:274
+#: mcs-plugin/margins_plugin.c:279
 #, fuzzy
 msgid "Right :"
 msgstr "Rechts"
 
-#: mcs-plugin/margins_plugin.c:293
+#: mcs-plugin/margins_plugin.c:298
 msgid "Top :"
 msgstr ""
 
-#: mcs-plugin/margins_plugin.c:312
+#: mcs-plugin/margins_plugin.c:317
 msgid "Bottom :"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr "Verborgen"
 msgid "Font Selection Dialog"
 msgstr "Lettertype selecteren"
 
-#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1602
+#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
 msgid "Window Manager"
 msgstr "Window Manager"
 
@@ -277,12 +277,12 @@ msgstr "Dubbelklik actie"
 msgid "Misc."
 msgstr "Overig"
 
-#: src/client.c:397
+#: src/client.c:406
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Onbeheerde net_wm_state (venster %#lx)"
 
-#: src/events.c:1101
+#: src/events.c:1110
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Bewerking (nog) niet ondersteund\n"
