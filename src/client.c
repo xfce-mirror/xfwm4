@@ -1,17 +1,17 @@
 /*
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; You may only use version 2 of the License,
-	you have no option to use any other version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; You may only use version 2 of the License,
+        you have no option to use any other version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002 Olivier Fourdan
@@ -38,15 +38,15 @@
 
 /* Event mask definition */
 
-#define POINTER_EVENT_MASK	ButtonPressMask|\
-				ButtonReleaseMask
-				
-#define FRAME_EVENT_MASK	SubstructureNotifyMask|\
-				SubstructureRedirectMask|\
-				EnterWindowMask
-				
-#define CLIENT_EVENT_MASK	FocusChangeMask|\
-				PropertyChangeMask
+#define POINTER_EVENT_MASK      ButtonPressMask|\
+                                ButtonReleaseMask
+                                
+#define FRAME_EVENT_MASK        SubstructureNotifyMask|\
+                                SubstructureRedirectMask|\
+                                EnterWindowMask
+                                
+#define CLIENT_EVENT_MASK       FocusChangeMask|\
+                                PropertyChangeMask
 
 /* Useful macros */
 #define ACCEPT_INPUT(wmhints) \
@@ -60,8 +60,8 @@
     !(c->transient_for))
 
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
-#define XWINDOW_TO_GPOINTER(w)	((gpointer) (Window) (w))
-#define GPOINTER_TO_XWINDOW(p)	((Window) (p))
+#define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
+#define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
 
 Client *clients = NULL;
 unsigned int client_count = 0;
@@ -1402,7 +1402,7 @@ static void clientInitPosition(Client * c)
 {
     int test_x = 0, test_y = 0;
     Client *c2;
-    int xmax, ymax, best_x, best_y, bw, bh, i;
+    int xmax, ymax, best_x, best_y, i;
     unsigned long best_overlaps = 0;
     gboolean first = TRUE;
 
@@ -1435,10 +1435,8 @@ static void clientInitPosition(Client * c)
         return;
     }
 
-    bw = frameWidth(c);
-    bh = frameHeight(c);
-    xmax = XDisplayWidth(dpy, screen) - bw - margins[MARGIN_RIGHT];
-    ymax = XDisplayHeight(dpy, screen) - bh - margins[MARGIN_BOTTOM];
+    xmax = XDisplayWidth(dpy, screen) - frameWidth(c) - margins[MARGIN_RIGHT];
+    ymax = XDisplayHeight(dpy, screen) - frameHeight(c) - margins[MARGIN_BOTTOM];
     best_x = frameLeft(c) + margins[MARGIN_LEFT];
     best_y = frameTop(c) + margins[MARGIN_TOP];
 
@@ -1454,7 +1452,7 @@ static void clientInitPosition(Client * c)
                 {
                     c->x = test_x;
                     c->y = test_y;
-                    count_overlaps += overlap(frameX(c), frameY(c), frameX(c) + bw, frameY(c) + bh, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
+                    count_overlaps += overlap(frameX(c), frameY(c), frameX(c) + frameWidth(c), frameY(c) + frameHeight(c), frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
                 }
             }
             DBG("overlaps so far is %u\n", count_overlaps);
@@ -1466,6 +1464,8 @@ static void clientInitPosition(Client * c)
             else if((count_overlaps < best_overlaps) || (first))
             {
                 DBG("overlaps %u is better than the best we have %u\n", count_overlaps, best_overlaps);
+                best_x = test_x;
+                best_y = test_y;
                 best_overlaps = count_overlaps;
             }
             if(first)
@@ -1856,10 +1856,10 @@ void clientShow(Client * c, int change_state)
     if ((c->transient_for) && (c2 = clientGetFromWindow(c->transient_for, WINDOW)) && (c2 != c))
     {
         ws = c2->win_workspace;
-	if (c->win_workspace != ws)
-	{
-	    clientSetWorkspace (c, ws, FALSE);
-	}
+        if (c->win_workspace != ws)
+        {
+            clientSetWorkspace (c, ws, FALSE);
+        }
     }
 
     if((c->win_workspace == ws) || (c->sticky))
@@ -2035,10 +2035,10 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     
     for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
-	if ((c2->transient_for == c->window) && (c2 != c))
-	{
-	    clientSetWorkspace(c2, ws, manage_mapping);
-	}
+        if ((c2->transient_for == c->window) && (c2 != c))
+        {
+            clientSetWorkspace(c2, ws, manage_mapping);
+        }
     }
     
     setGnomeHint(dpy, c->window, win_workspace, ws);
@@ -2443,7 +2443,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
                 xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
-		XRaiseWindow (dpy, passdata->tmp_event_window);
+                XRaiseWindow (dpy, passdata->tmp_event_window);
             }
             else if((msx == XDisplayWidth(dpy, screen) - 1) && !((workspace == workspace_count - 1) && !wrap_workspaces))
             {
@@ -2452,7 +2452,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
                 xevent->xmotion.x_root = 10;
                 while(XCheckTypedEvent(dpy, MotionNotify, &e));
-		XRaiseWindow (dpy, passdata->tmp_event_window);
+                XRaiseWindow (dpy, passdata->tmp_event_window);
             }
         }
 
@@ -2566,20 +2566,20 @@ void clientMove(Client * c, XEvent * e)
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-	timestamp = e->xkey.time;
-	passdata.mx = e->xkey.x_root;
-	passdata.my = e->xkey.y_root;
+        timestamp = e->xkey.time;
+        passdata.mx = e->xkey.x_root;
+        passdata.my = e->xkey.y_root;
         g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
     }
     else if (e->type == ButtonPress)
     {
-	timestamp = e->xbutton.time;
-	passdata.mx = e->xbutton.x_root;
-	passdata.my = e->xbutton.y_root;
+        timestamp = e->xbutton.time;
+        passdata.mx = e->xbutton.x_root;
+        passdata.my = e->xbutton.y_root;
     }
     else
     {
-	timestamp = CurrentTime;
+        timestamp = CurrentTime;
         getMouseXY(root, &passdata.mx, &passdata.my);
     }
     g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
@@ -2596,7 +2596,7 @@ void clientMove(Client * c, XEvent * e)
         {
             XUngrabPointer(dpy, timestamp);
         }
-	removeTmpEventWin (passdata.tmp_event_window);
+        removeTmpEventWin (passdata.tmp_event_window);
         return;
     }
 
@@ -2810,20 +2810,20 @@ void clientResize(Client * c, int corner, XEvent *e)
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-	timestamp = e->xkey.time;
-	passdata.mx = e->xkey.x;
-	passdata.my = e->xkey.y;
+        timestamp = e->xkey.time;
+        passdata.mx = e->xkey.x;
+        passdata.my = e->xkey.y;
         g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
     }
     else if (e->type == ButtonPress)
     {
-	timestamp = e->xbutton.time;
-	passdata.mx = e->xbutton.x;
-	passdata.my = e->xbutton.y;
+        timestamp = e->xbutton.time;
+        passdata.mx = e->xbutton.x;
+        passdata.my = e->xbutton.y;
     }
     else
     {
-	timestamp = CurrentTime;
+        timestamp = CurrentTime;
         getMouseXY(c->frame, &passdata.mx, &passdata.my);
     }
     g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask| ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
@@ -2840,7 +2840,7 @@ void clientResize(Client * c, int corner, XEvent *e)
         {
             XUngrabPointer(dpy, timestamp);
         }
-	removeTmpEventWin (passdata.tmp_event_window);
+        removeTmpEventWin (passdata.tmp_event_window);
         return;
     }
 
