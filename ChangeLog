@@ -1,3 +1,12 @@
+2003-09-14  xfce
+
+	* src/client.c: Use the same technique for real EWMH fullscreen
+	windows as for legacy emulated fullscreen
+
+2003-09-13  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-09-13  xfce
 
 	* src/client.c: Add check for non-EWMH compliance before applying
