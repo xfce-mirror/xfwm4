@@ -2597,7 +2597,8 @@ clientGetMWMHints (Client * c, gboolean update)
     {
         /* EWMH window type takes precedences over Motif hints */ 
         clientWindowType (c);
-        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->legacy_fullscreen))
+        if (CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN) && 
+           (c->legacy_fullscreen))
         {
             /* legacy app changed its decoration, put it back on regular layer */
             c->legacy_fullscreen = FALSE;
@@ -4560,7 +4561,7 @@ clientUpdateFocus (Client * c)
     {
         clientInstallColormaps (c);
         data[0] = c->window;
-        if (c->legacy_fullscreen)
+        if ((c->legacy_fullscreen) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
         }
@@ -4574,12 +4575,12 @@ clientUpdateFocus (Client * c)
     {
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
             c2->window);
-        /* Requires a bit of explabatio here... LEgacy apps automatically
+        /* Requires a bit of explabatio here... Legacy apps automatically
            switch to above layer when receiving focus, and return to
            normal layer when loosing focus.
            The following "logic" is in charge of that behaviour.
          */
-        if (c2->legacy_fullscreen)
+        if ((c2->legacy_fullscreen) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c2, WIN_LAYER_NORMAL);
             if (c)
@@ -4635,7 +4636,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-        if (c->legacy_fullscreen)
+        if ((c->legacy_fullscreen) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
         }
@@ -4652,7 +4653,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     if (c2)
     {
         /* Legacy apps layer switching. See comment in clientUpdateFocus () */
-        if (c2->legacy_fullscreen)
+        if ((c2->legacy_fullscreen) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c2, WIN_LAYER_NORMAL);
             if (c)
