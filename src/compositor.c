@@ -1287,11 +1287,7 @@ determine_mode(CWindow *cw)
         cw->shadowPict = None;
     }
 
-    if (cw->attr.class != InputOnly)
-    {
-        format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), cw->attr.visual);
-    }
-
+    format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), cw->attr.visual);
     if ((format) && (format->type == PictTypeDirect) && (format->direct.alphaMask))
     {
         cw->mode = WINDOW_ARGB;
@@ -1412,7 +1408,15 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         TRACE ("An error occured getting window attributes, 0x%lx not added", id);
         return;
     }
-
+    
+    if (new->attr.class == InputOnly)
+    {
+        g_free (new);
+        myDisplayUngrabServer (display_info);
+        TRACE ("InputOnly window, 0x%lx not added", id);
+        return;
+    }
+    
     if (c)
     {
         screen_info = c->screen_info;
@@ -1458,20 +1462,13 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
 
-    if (new->attr.class == InputOnly)
-    {
-        new->damage = None;
-    }
-    else
-    {
-        new->damage = XDamageCreate (myScreenGetXDisplay (screen_info), id, XDamageReportNonEmpty);
-    }
 
     new->c = c;
     new->screen_info = screen_info;
     new->id = id;
     new->damaged = FALSE;
     new->viewable = (new->attr.map_state == IsViewable);
+    new->damage = XDamageCreate (myScreenGetXDisplay (screen_info), id, XDamageReportNonEmpty);
 #if HAVE_NAME_WINDOW_PIXMAP
     new->name_window_pixmap = None;
 #endif

@@ -344,9 +344,13 @@ client_event_filter (GdkXEvent * xevent, GdkEvent * event, gpointer data)
     ScreenInfo *screen_info = (ScreenInfo *) data;
     
     if (mcs_client_process_event (screen_info->mcs_client, (XEvent *) xevent))
+    {
         return GDK_FILTER_REMOVE;
+    }
     else
+    {
         return GDK_FILTER_CONTINUE;
+    }
 }
 
 static void
