@@ -1,15 +1,14 @@
 /* XPM */
 static char * stick_active_xpm[] = {
 "16 20 7 1",
-" 	c None",
-".	c #000000",
-"+	c #0000CF s active_hilight_1",
-"@	c #00009C s active_color_1",
-"#	c #EBEBEB s active_text_color",
-"$	c #10105A s active_shadow_1",
-"%	c #FFFFFF s active_hilight_2",
-"++++++++++++++++",
-"@@@@@@@@@@@@@@@@",
+"       c None",
+".      c #000000",
+"+      c #0000CF s active_hilight_1",
+"@      c #00009C s active_color_1",
+"#      c #EBEBEB s active_text_color",
+"$      c #10105A s active_shadow_1",
+"%      c #FFFFFF s active_hilight_2",
+"                ",
 "@@@@@@@@@@@@@@@@",
 "@@@@@@@@@@@@@@@@",
 "@@@@@@@@@@@@@@@@",
@@ -26,5 +25,6 @@ static char * stick_active_xpm[] = {
 "@@@@@@@@@@@@@@@@",
 "@@@@@@@@@@@@@@@@",
 "@@@@@@@@@@@@@@@@",
-"$$$$$$$$$$$$$$$$",
-"%%%%%%%%%%%%%%%%"};
+"                ",
+"                ",
+"                "};
