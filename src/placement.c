@@ -259,16 +259,6 @@ clientConstrainPos (Client * c, gboolean show_full)
         {
             if (FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE) && (c2 != c))
             {
-                /* Left */
-                if (overlapY (frame_y, frame_y + frame_height, c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
-                {
-                    if (overlapX (frame_x, frame_x + frame_width, 0, c2->struts[LEFT]))
-                    {
-                        c->x = c2->struts[LEFT] + frame_left;
-                        frame_x = frameX (c);
-                    }
-                }
-
                 /* Right */
                 if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
                 {
@@ -280,13 +270,13 @@ clientConstrainPos (Client * c, gboolean show_full)
                     }
                 }
 
-                /* Top */
-                if (overlapX (frame_x, frame_x + frame_width, c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
+                /* Left */
+                if (overlapY (frame_y, frame_y + frame_height, c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
                 {
-                    if (overlapY (frame_y, frame_y + frame_height, 0, c2->struts[TOP]))
+                    if (overlapX (frame_x, frame_x + frame_width, 0, c2->struts[LEFT]))
                     {
-                        c->y = c2->struts[TOP] + frame_top;
-                        frame_y = frameY (c);
+                        c->x = c2->struts[LEFT] + frame_left;
+                        frame_x = frameX (c);
                     }
                 }
 
@@ -300,21 +290,37 @@ clientConstrainPos (Client * c, gboolean show_full)
                         frame_y = frameY (c);
                     }
                 }
+
+                /* Top */
+                if (overlapX (frame_x, frame_x + frame_width, c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
+                {
+                    if (overlapY (frame_y, frame_y + frame_height, 0, c2->struts[TOP]))
+                    {
+                        c->y = c2->struts[TOP] + frame_top;
+                        frame_y = frameY (c);
+                    }
+                }
             }
         }
     }
     else
     {
-        if (frame_x + CLIENT_MIN_VISIBLE > disp_max_x)
-        {
-            c->x = disp_max_x - CLIENT_MIN_VISIBLE + frame_left;
-            frame_x = frameX (c);
-        }
         if (frame_x + frame_width < disp_x + CLIENT_MIN_VISIBLE)
         {
             c->x = disp_x + CLIENT_MIN_VISIBLE - frame_width + frame_left;
             frame_x = frameX (c);
         }
+        if (frame_x + CLIENT_MIN_VISIBLE > disp_max_x)
+        {
+            c->x = disp_max_x - CLIENT_MIN_VISIBLE + frame_left;
+            frame_x = frameX (c);
+        }
+        if (frame_y + frame_height < disp_y + CLIENT_MIN_VISIBLE)
+        {
+            c->y = disp_y + CLIENT_MIN_VISIBLE  - frame_height + frame_top;
+            frame_y = frameY (c);
+        }
+
         if (frame_y + CLIENT_MIN_VISIBLE > disp_max_y)
         {
             c->y = disp_max_y - CLIENT_MIN_VISIBLE + frame_top;
@@ -325,17 +331,21 @@ clientConstrainPos (Client * c, gboolean show_full)
             c->y = disp_y + frame_top;
             frame_y = frameY (c);
         }
-        if (frame_y + frame_height < disp_y + CLIENT_MIN_VISIBLE)
-        {
-            c->y = disp_y + CLIENT_MIN_VISIBLE  - frame_height + frame_top;
-            frame_y = frameY (c);
-        }
-
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
             if (FLAG_TEST_ALL (c2->flags, CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_VISIBLE) && (c2 != c))
             {
+                /* Right */
+                if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
+                {
+                    if (frame_x > gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE)
+                    {
+                        c->x = gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE + frame_left;
+                        frame_x = frameX (c);
+                    }
+                }
+
                 /* Left */
                 if (overlapY (frame_y, frame_y + frame_height, c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
                 {
@@ -346,13 +356,13 @@ clientConstrainPos (Client * c, gboolean show_full)
                     }
                 }
 
-                /* Right */
-                if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
+                /* Bottom */
+                if (overlapX (frame_x, frame_x + frame_width, c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
                 {
-                    if (frame_x > gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE)
+                    if (frame_y > gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE)
                     {
-                        c->x = gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE + frame_left;
-                        frame_x = frameX (c);
+                        c->y = gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE + frame_top;
+                        frame_y = frameY (c);
                     }
                 }
 
@@ -367,16 +377,6 @@ clientConstrainPos (Client * c, gboolean show_full)
                     if (frame_y + frame_height < c2->struts[TOP] + CLIENT_MIN_VISIBLE)
                     {
                         c->y = c2->struts[TOP] + CLIENT_MIN_VISIBLE - frame_height + frame_top;
-                        frame_y = frameY (c);
-                    }
-                }
-
-                /* Bottom */
-                if (overlapX (frame_x, frame_x + frame_width, c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
-                {
-                    if (frame_y > gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE)
-                    {
-                        c->y = gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE + frame_top;
                         frame_y = frameY (c);
                     }
                 }

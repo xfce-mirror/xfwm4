@@ -1015,6 +1015,18 @@ clientFree (Client * c)
     TRACE ("entering clientFree");
     TRACE ("freeing client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (clientGetFocus () == c)
+    {
+        clientClearFocus ();
+    }
+    if (clientGetLastRaise (c->screen_info) == c)
+    {
+        clientClearLastRaise (c->screen_info);
+    }
+    if (clientGetLastGrab () == c)
+    {
+        clientClearLastGrab ();
+    }
     if (c->name)
     {
         free (c->name);
@@ -1620,19 +1632,6 @@ clientUnframe (Client * c, gboolean remap)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     
-    if (clientGetFocus () == c)
-    {
-        clientClearFocus ();
-    }
-    if (clientGetLastRaise (c->screen_info) == c)
-    {
-        clientClearLastRaise (c->screen_info);
-    }
-    if (clientGetLastGrab () == c)
-    {
-        clientClearLastGrab ();
-    }
-
     clientRemoveFromList (c);
     myDisplayGrabServer (display_info);
     gdk_error_trap_push ();

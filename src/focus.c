@@ -367,7 +367,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
         return;
     }
-    if ((c == client_focus) && !(flags & FOCUS_FORCE))
+    if ((c) && (c == client_focus) && !(flags & FOCUS_FORCE))
     {
         TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
             c->name, c->window);
