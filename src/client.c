@@ -2198,7 +2198,9 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
 
     TRACE ("entering clientToggleShowDesktop");
 
-    clientSetFocus (screen_info, NULL, CurrentTime, FOCUS_IGNORE_MODAL);
+    clientSetFocus (screen_info, NULL, 
+                    myDisplayGetCurrentTime (screen_info->display_info), 
+                    FOCUS_IGNORE_MODAL);
     if (show_desktop)
     {
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
@@ -2245,7 +2247,8 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, CurrentTime);
+        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, 
+                           myDisplayGetCurrentTime (display_info));
     }
     else
     {
@@ -2279,7 +2282,8 @@ clientEnterContextMenuState (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP, CurrentTime);
+        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP, 
+                           myDisplayGetCurrentTime (display_info));
     }
 }
 
