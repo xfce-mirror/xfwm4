@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-15 08:34+0200\n"
+"POT-Creation-Date: 2004-10-17 23:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -716,37 +716,37 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/settings.c:365
+#: src/settings.c:369
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr ""
 
-#: src/settings.c:643
+#: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:649
+#: src/settings.c:659
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:692
+#: src/settings.c:702
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:698
+#: src/settings.c:708
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:885
+#: src/settings.c:895
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 
-#: src/settings.c:892
+#: src/settings.c:902
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
