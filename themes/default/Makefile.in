@@ -204,11 +204,17 @@ themedir = $(datadir)/themes/Default/xfwm4
 theme_DATA = \
 	README 								\
 	themerc 							\
+	bottom-active.png						\
 	bottom-active.xpm						\
+	bottom-inactive.png						\
 	bottom-inactive.xpm						\
+	bottom-left-active.png						\
 	bottom-left-active.xpm						\
+	bottom-left-inactive.png					\
 	bottom-left-inactive.xpm					\
+	bottom-right-active.png						\
 	bottom-right-active.xpm						\
+	bottom-right-inactive.png					\
 	bottom-right-inactive.xpm					\
 	close-active.xpm						\
 	close-inactive.xpm						\
@@ -216,7 +222,9 @@ theme_DATA = \
 	hide-active.xpm							\
 	hide-inactive.xpm						\
 	hide-pressed.xpm						\
+	left-active.png							\
 	left-active.xpm							\
+	left-inactive.png						\
 	left-inactive.xpm						\
 	maximize-active.xpm						\
 	maximize-inactive.xpm						\
@@ -227,7 +235,9 @@ theme_DATA = \
 	menu-active.xpm							\
 	menu-inactive.xpm						\
 	menu-pressed.xpm						\
+	right-active.png						\
 	right-active.xpm						\
+	right-inactive.png						\
 	right-inactive.xpm						\
 	shade-active.xpm						\
 	shade-inactive.xpm						\
