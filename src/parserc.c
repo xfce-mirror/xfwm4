@@ -31,7 +31,9 @@
 #include "settings.h"
 #include "debug.h"
 
-#define DEFAULT_THEME "bbs"
+#ifndef DEFAULT_THEME
+#define DEFAULT_THEME "microdeck"
+#endif
 
 gboolean parseRc(gchar * file, gchar * dir, Settings rc[])
 {
