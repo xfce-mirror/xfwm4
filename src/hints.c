@@ -373,6 +373,34 @@ int get_atom_list (Display *dpy, Window  w, Atom a, Atom **atoms_p, int *n_atoms
   return (True);
 }
 
+int get_cardinal_list (Display *dpy, Window w, Atom xatom, unsigned long **cardinals_p, int *n_cardinals_p)
+{
+  Atom type;
+  int format;
+  unsigned long n_cardinals;
+  unsigned long bytes_after;
+  unsigned long *cardinals;
+
+  *cardinals_p = NULL;
+  *n_cardinals_p = 0;
+  
+  if ((XGetWindowProperty (dpy, w, xatom, 0, 32, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
+    {
+      return False;
+    }
+
+  if (!check_type_and_format (dpy, w, xatom, 32, XA_CARDINAL, -1, format, type))
+    {
+      XFree (cardinals);
+      return False;
+    }
+
+  *cardinals_p = cardinals;
+  *n_cardinals_p = n_cardinals;
+
+  return True;
+}
+
 void set_net_workarea (Display * dpy, Window w, CARD32 *margins)
 {
     unsigned long data[4];
