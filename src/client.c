@@ -2094,15 +2094,7 @@ clientInitPosition (Client * c)
 
     clientGravitate (c, APPLY);
 
-    /* 
-       Use of c->size->{x|y} is deprecated, so we use them
-       for our own use...  It seems there is a bug in GTK
-       that doesn't set PPosition flag even if it should,
-       so we also take the initial (x, y) values to see if
-       they were set at first
-     */ 
-    if ((c->size->flags & (PPosition | USPosition)) || 
-        ((c->size->x > 0) && (c->size->y > 0)))
+    if (c->size->flags & (PPosition | USPosition))
     {
         if (CONSTRAINED_WINDOW (c))
         {
