@@ -185,7 +185,7 @@ maintainers, etc. Commented out by default.
 	    will receive the focus.
 	  </para>
 
-	  <para>
+<!--	  <para>
 	    If you want the panel, and apps that do not appear in the taskbar, 
 	    to be included when you switch the focus using the Alt+Tab 
 	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) 
@@ -196,6 +196,7 @@ maintainers, etc. Commented out by default.
 		Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create a new one) and
 		add this line : cycle_hidden=false
 	  </para>
+-->
 
 	  <para>NOTE: the use of a keyboard shortcut in an application needs 
 	    the application window to have the focus :)
@@ -262,12 +263,14 @@ maintainers, etc. Commented out by default.
 	<listitem>you can use practical keyboard shortcuts : Shift +
 	  Alt + (up, down, right or left) Arrow</listitem>
 	</itemizedlist>
-	
+
+<!--
 		<para>If you want to disable the ability to move and resize windows 
 		using the Alt button + mouse click shortcut, edit your 
 		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
 		easy_click=false</para>
-	
+-->
+
 	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
@@ -379,10 +382,13 @@ maintainers, etc. Commented out by default.
 	    Arrow keyboard shortcut</listitem>
 	</itemizedlist>
 	
+<!--
+
 		<para>If you want to disable the ability to move and resize windows 
 		using the Alt button + mouse click shortcut, edit your 
 		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
 		easy_click=false</para>
+-->
 	
 	<para>&nbsp;</para>
       </listitem>
@@ -698,6 +704,8 @@ maintainers, etc. Commented out by default.
       </listitem>
     </varlistentry>
 
+
+
   </variablelist>
 </sect2>
 
@@ -762,6 +770,64 @@ maintainers, etc. Commented out by default.
 
   </variablelist>
 </sect2>
+
+
+<sect2 id="hidden_options">
+  <title>Hidden options</title>
+
+	<para>Some hidden options allow you to customize &app; behaviour. They have to be added by hand to your  		HOME/.config/xfce4/xfwm4/xfwm4rc file. You may have to create this file.</para>
+
+<variablelist>
+    	<varlistentry>
+		<term>cycle_minimum=false</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want apps that do not appear 
+			in the taskbar to be included when you switch the focus using the Alt+Tab 
+			shortcut.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>cycle_hidden=false</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want to exclude hidden windows 
+			from the list presented when using the Alt+Tab shortcut.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>raise_with_any_button=true</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want to raise a window when you click 
+			on its frame with any of your mouse buttons, instead of only the left button.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>toggle_workspaces=true</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want the Control+F(N) keyboard shortcut
+			to remember the previous workspace.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>easy_click=false</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want to disable the ability to move 
+			and resize windows using the Alt button + mouse click shortcut.
+			</para>
+			</listitem>
+	</varlistentry>
+
+</variablelist>
+
+</sect2>
+
 </sect1>
 
   <!-- extra space -->
