@@ -352,9 +352,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
                      display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
                      PropModeReplace, (unsigned char *) data, 1);
     
-    /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
-    XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
-    
     if (!(screen_info->params->click_to_focus))
     {
         if (!(c2) && (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask)))
@@ -370,6 +367,9 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
     {
         clientSetFocus (new_focus->screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     }
+    
+    /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
+    XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
 }
 
 void
