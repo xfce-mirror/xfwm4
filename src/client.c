@@ -71,7 +71,7 @@
 #define START_ICONIC(c) \
     ((c->wmhints) && \
      (c->wmhints->initial_state == IconicState) && \
-     !clientIsTransient(c))
+     !clientIsTransientOrModal(c))
 
 #define CONSTRAINED_WINDOW(c) \
     ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
@@ -101,12 +101,17 @@ static void clientAddToList (Client * c);
 static void clientRemoveFromList (Client * c);
 static int clientGetWidthInc (Client * c);
 static int clientGetHeightInc (Client * c);
+static int clientGetMinAspectX (Client * c);
+static int clientGetMinAspectY (Client * c);
+static int clientGetMaxAspectX (Client * c);
+static int clientGetMaxAspectY (Client * c);
 static void clientSetWidth (Client * c, int w1);
 static void clientSetHeight (Client * c, int h1);
 static inline void clientApplyStackList (GSList * list);
+static inline gboolean clientTransientOrModalHasAncestor (Client * c, int ws);
 static inline Client *clientGetLowestTransient (Client * c);
-static inline Client *clientGetHighestTransient (Client * c);
-static inline Client *clientGetHighestForTransient (Client * c);
+static inline Client *clientGetHighestTransientOrModal (Client * c);
+static inline Client *clientGetHighestTransientOrModalFor (Client * c);
 static inline Client *clientGetTopMostForGroup (Client * c);
 static inline gboolean clientVisibleForGroup (Client * c, int workspace);
 static inline Client *clientGetNextTopMost (int layer, Client * exclude);
@@ -123,7 +128,8 @@ static inline void clientFree (Client * c);
 static inline void clientGetWinState (Client * c);
 static inline void clientApplyInitialState (Client * c);
 static inline gboolean clientSelectMask (Client * c, int mask);
-static GSList *clientListTransients (Client * c);
+static GSList *clientListTransient (Client * c);
+static GSList *clientListTransientOrModal (Client * c);
 static inline void clientSetWorkspaceSingle (Client * c, int ws);
 static inline void clientSnapPosition (Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter (XEvent * xevent,
@@ -192,6 +198,28 @@ clientIsTransient (Client * c)
 }
 
 gboolean
+clientIsModal (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientIsModal");
+
+    return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL) && 
+            (((c->transient_for != root) && (c->transient_for != None)) ||
+             (c->group_leader != None)));
+}
+
+gboolean
+clientIsTransientOrModal (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientIsTransientOrModal");
+
+    return (clientIsTransient(c) || clientIsModal(c));
+}
+
+gboolean
 clientSameGroup (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -229,6 +257,32 @@ clientIsTransientFor (Client * c1, Client * c2)
 }
 
 gboolean
+clientIsModalFor (Client * c1, Client * c2)
+{
+    g_return_val_if_fail (c1 != NULL, FALSE);
+    g_return_val_if_fail (c2 != NULL, FALSE);
+
+    TRACE ("entering clientIsModalFor");
+
+    if (CLIENT_FLAG_TEST (c1, CLIENT_FLAG_STATE_MODAL))
+    {
+        return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
+    }
+    return FALSE;
+}
+
+gboolean
+clientIsTransientOrModalFor (Client * c1, Client * c2)
+{
+    g_return_val_if_fail (c1 != NULL, FALSE);
+    g_return_val_if_fail (c2 != NULL, FALSE);
+
+    TRACE ("entering clientIsTransientOrModalFor");
+
+    return (clientIsTransientFor(c1, c2) || clientIsModalFor(c1, c2));
+}
+
+gboolean
 clientIsTransientForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -239,66 +293,24 @@ clientIsTransientForGroup (Client * c)
 }
 
 gboolean
-clientIsModalFor (Client * c1, Client * c2)
-{
-    g_return_val_if_fail (c1 != NULL, FALSE);
-    g_return_val_if_fail (c2 != NULL, FALSE);
-
-    TRACE ("entering clientIsModalFor");
-
-    if (CLIENT_FLAG_TEST (c1, CLIENT_FLAG_STATE_MODAL))
-    {
-        if (c1->transient_for != root)
-        {
-            return (c1->transient_for == c2->window);
-        }
-        else
-        {
-            return (clientSameGroup (c1, c2));
-        }
-    }
-    return FALSE;
-}
-
-gboolean
 clientIsModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsTransientForGroup");
+    TRACE ("entering clientIsModalForGroup");
 
     return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL) && 
-            clientIsTransientForGroup (c));
+            !clientIsTransient(c) && (c->group_leader != None));
 }
 
 gboolean
-clientTransientHasAncestor (Client * c, int ws)
+clientIsTransientOrModalForGroup (Client * c)
 {
-    Client *c2;
-    GSList *index;
-
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientTransientHasAncestor");
+    TRACE ("entering clientIsTransientOrModalForGroup");
 
-    if (!clientIsTransient (c))
-    {
-        return FALSE;
-    }
-
-    for (index = windows_stack; index; index = g_slist_next (index))
-    {
-        c2 = (Client *) index->data;
-        if ((c2 != c) && !clientIsTransient (c2)
-            && clientIsTransientFor (c, c2)
-            && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN)
-            && (c2->win_workspace == ws))
-        {
-            return TRUE;
-        }
-    }
-    return FALSE;
-
+    return (clientIsTransientForGroup(c) || clientIsModalForGroup(c));
 }
 
 void
@@ -521,7 +533,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
     {
         TRACE ("client \"%s\" (0x%lx) has received a win_state/stick event",
             c->name, c->window);
-        if (!clientIsTransient (c))
+        if (!clientIsTransientOrModal (c))
         {
             if (add_remove == WIN_STATE_STICKY)
             {
@@ -616,7 +628,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
-        if (!clientIsTransient (c)
+        if (!clientIsTransientOrModal (c)
             && CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
         {
             if ((action == NET_WM_STATE_ADD)
@@ -733,7 +745,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_fullscreen)
         || (second == net_wm_state_fullscreen))
     {
-        if (!clientIsTransient (c)
+        if (!clientIsTransientOrModal (c)
             && !CLIENT_FLAG_TEST_ALL (c,
                 CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
         {
@@ -757,7 +769,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_above) || (second == net_wm_state_above))
     {
-        if (!clientIsTransient (c)
+        if (!clientIsTransientOrModal (c)
             && !CLIENT_FLAG_TEST_ALL (c,
                 CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
         {
@@ -781,7 +793,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_below) || (second == net_wm_state_below))
     {
-        if (!clientIsTransient (c)
+        if (!clientIsTransientOrModal (c)
             && !CLIENT_FLAG_TEST_ALL (c,
                 CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_ABOVE))
         {
@@ -1110,9 +1122,9 @@ clientWindowType (Client * c)
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);
             CLIENT_FLAG_UNSET (c,
-                CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_HIDE |
-                CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU |
-                CLIENT_FLAG_HAS_STICK);
+                CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE | 
+                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
+                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_dock)
         {
@@ -1120,9 +1132,9 @@ clientWindowType (Client * c)
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
             CLIENT_FLAG_UNSET (c,
-                CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_HIDE |
-                CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MENU |
-                CLIENT_FLAG_HAS_STICK);
+                CLIENT_FLAG_HAS_BORDER |  CLIENT_FLAG_HAS_MOVE |
+                CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
+                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_toolbar)
         {
@@ -1185,19 +1197,19 @@ clientWindowType (Client * c)
         c->type = UNSET;
         c->initial_layer = c->win_layer;
     }
-    if (clientIsTransient (c))
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
+    {
+        TRACE ("window is modal");
+        c->type = WINDOW_MODAL_DIALOG;
+    }
+
+    if (clientIsTransientOrModal (c))
     {
         Client *c2;
 
-        TRACE ("Window is a transient");
+        TRACE ("Window is a transient or a modal");
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
-        {
-            TRACE ("window is modal transient");
-            c->type = WINDOW_MODAL_DIALOG;
-        }
-
-        c2 = clientGetHighestForTransient (c);
+        c2 = clientGetHighestTransientOrModalFor (c);
         if (c2)
         {
             c->initial_layer = c2->win_layer;
@@ -1544,8 +1556,8 @@ clientRemoveFromList (Client * c)
 static int
 clientGetWidthInc (Client * c)
 {
-    g_return_val_if_fail (c != NULL, 0);
-    if (c->size->flags & PResizeInc)
+    g_return_val_if_fail (c != NULL, 1);
+    if ((c->size->flags & PResizeInc) && (c->size->width_inc))
     {
         return c->size->width_inc;
     }
@@ -1555,10 +1567,54 @@ clientGetWidthInc (Client * c)
 static int
 clientGetHeightInc (Client * c)
 {
-    g_return_val_if_fail (c != NULL, 0);
-    if (c->size->flags & PResizeInc)
+    g_return_val_if_fail (c != NULL, 1);
+    if ((c->size->flags & PResizeInc) && (c->size->height_inc))
     {
         return c->size->height_inc;
+    }
+    return 1;
+}
+
+static int
+clientGetMinAspectX (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 1);
+    if ((c->size->flags & PAspect) && (c->size->min_aspect.x))
+    {
+        return c->size->min_aspect.x;
+    }
+    return 1;
+}
+
+static int
+clientGetMinAspectY (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 1);
+    if ((c->size->flags & PAspect) && (c->size->min_aspect.y))
+    {
+        return c->size->min_aspect.y;
+    }
+    return 1;
+}
+
+static int
+clientGetMaxAspectX (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 1);
+    if ((c->size->flags & PAspect) && (c->size->max_aspect.x))
+    {
+        return c->size->max_aspect.x;
+    }
+    return 1;
+}
+
+static int
+clientGetMaxAspectY (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 1);
+    if ((c->size->flags & PAspect) && (c->size->max_aspect.y))
+    {
+        return c->size->max_aspect.y;
     }
     return 1;
 }
@@ -1573,7 +1629,7 @@ clientSetWidth (Client * c, int w1)
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w1, c->name,
         c->window);
 
-    if (c->size->flags & PResizeInc)
+    if ((c->size->flags & PResizeInc) && (c->size->width_inc))
     {
         w2 = (w1 - c->size->min_width) / c->size->width_inc;
         w1 = c->size->min_width + (w2 * c->size->width_inc);
@@ -1609,7 +1665,7 @@ clientSetHeight (Client * c, int h1)
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h1, c->name,
         c->window);
 
-    if (c->size->flags & PResizeInc)
+    if ((c->size->flags & PResizeInc) && (c->size->height_inc))
     {
         h2 = (h1 - c->size->min_height) / c->size->height_inc;
         h1 = c->size->min_height + (h2 * c->size->height_inc);
@@ -1674,6 +1730,36 @@ clientApplyStackList (GSList * list)
     g_free (xwinstack);
 }
 
+static inline gboolean
+clientTransientOrModalHasAncestor (Client * c, int ws)
+{
+    Client *c2;
+    GSList *index;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientTransientOrModalHasAncestor");
+
+    if (!clientIsTransientOrModal (c))
+    {
+        return FALSE;
+    }
+
+    for (index = windows_stack; index; index = g_slist_next (index))
+    {
+        c2 = (Client *) index->data;
+        if ((c2 != c) && !clientIsTransientOrModal (c2)
+            && clientIsTransientOrModalFor (c, c2)
+            && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN)
+            && (c2->win_workspace == ws))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+
+}
+
 static inline Client *
 clientGetLowestTransient (Client * c)
 {
@@ -1682,7 +1768,7 @@ clientGetLowestTransient (Client * c)
 
     g_return_val_if_fail (c != NULL, NULL);
 
-    TRACE ("entering lowest_transient");
+    TRACE ("entering clientGetLowestTransient");
 
     for (index = windows_stack; index; index = g_slist_next (index))
     {
@@ -1697,7 +1783,7 @@ clientGetLowestTransient (Client * c)
 }
 
 static inline Client *
-clientGetHighestTransient (Client * c)
+clientGetHighestTransientOrModal (Client * c)
 {
     Client *highest_transient = NULL;
     Client *c2, *c3;
@@ -1705,14 +1791,14 @@ clientGetHighestTransient (Client * c)
     GSList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetHighestTransient");
+    TRACE ("entering clientGetHighestTransientOrModal");
 
     for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
     {
         c2 = (Client *) index1->data;
         if (c2)
         {
-            if ((c2 != c) && clientIsTransientFor (c2, c))
+            if ((c2 != c) && clientIsTransientOrModalFor (c2, c))
             {
                 transients = g_slist_append (transients, c2);
                 highest_transient = c2;
@@ -1723,7 +1809,7 @@ clientGetHighestTransient (Client * c)
                     index2 = g_slist_next (index2))
                 {
                     c3 = (Client *) index2->data;
-                    if ((c3 != c2) && clientIsTransientFor (c2, c3))
+                    if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                     {
                         transients = g_slist_append (transients, c2);
                         highest_transient = c2;
@@ -1742,21 +1828,21 @@ clientGetHighestTransient (Client * c)
 }
 
 static inline Client *
-clientGetHighestForTransient (Client * c)
+clientGetHighestTransientOrModalFor (Client * c)
 {
     Client *highest_transient = NULL;
     Client *c2;
     GSList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetHighestForTransient");
+    TRACE ("entering clientGetHighestTransientOrModalFor");
 
     for (index = windows_stack; index; index = g_slist_next (index))
     {
         c2 = (Client *) index->data;
         if (c2)
         {
-            if (clientIsTransientFor (c, c2))
+            if (clientIsTransientOrModalFor (c, c2))
             {
                 highest_transient = c2;
             }
@@ -1907,30 +1993,49 @@ clientGetBottomMost (int layer, Client * exclude)
 static inline Client *
 clientGetModalFor (Client * c)
 {
-    Client *c2;
-    Client *modal = NULL;
-    GSList *index;
+    Client *latest_modal = NULL;
+    Client *c2, *c3;
+    GSList *modals = NULL;
+    GSList *index1, *index2;
 
-    g_return_val_if_fail (c != NULL, FALSE);
+    g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
 
-    for (index = windows_stack; index; index = g_slist_next (index))
+    for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
     {
-        c2 = (Client *) index->data;
-        if (c2 != c)
+        c2 = (Client *) index1->data;
+        if (c2)
         {
-            if (clientIsModalFor (c2, c) && 
-                CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) &&
-                (c2->win_workspace == workspace))
+            if ((c2 != c) && clientIsModalFor (c2, c))
             {
-                modal = c2;
+                modals = g_slist_append (modals, c2);
+                latest_modal = c2;
+            }
+            else
+            {
+                for (index2 = modals; index2;
+                    index2 = g_slist_next (index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if ((c3 != c2) && clientIsModalFor (c2, c3))
+                    {
+                        modals = g_slist_append (modals, c2);
+                        latest_modal = c2;
+                        break;
+                    }
+                }
             }
         }
     }
-    return modal;
+    if (modals)
+    {
+        g_slist_free (modals);
+    }
+
+    return latest_modal;
 }
 
-/* ConstrainSize - adjust the given width and height to account for
+/* clientConstrainRatio - adjust the given width and height to account for
    the constraints imposed by size hints
 
    The aspect ratio stuff, is borrowed from uwm's CheckConsistency routine.
@@ -1940,41 +2045,38 @@ clientGetModalFor (Client * c)
 static inline void
 clientConstrainRatio (Client * c, int w1, int h1, int corner)
 {
-    int xinc, yinc, delta;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientConstrainRatio");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (c->size->flags & PResizeInc)
-    {
-        xinc = c->size->width_inc;
-        yinc = c->size->height_inc;
-    }
-    else
-    {
-        xinc = 1;
-        yinc = 1;
-    }
     
     if (c->size->flags & PAspect)
     {
-        if ((c->size->min_aspect.x * h1 > c->size->min_aspect.y * w1) && 
-            (corner == 4 + SIDE_BOTTOM))
+        int xinc, yinc, minx, miny, maxx, maxy, delta;
+
+        xinc = clientGetWidthInc(c);
+        yinc = clientGetHeightInc(c);
+        minx = clientGetMinAspectX(c);
+        miny = clientGetMinAspectY(c);
+        maxx = clientGetMaxAspectX(c);
+        maxy = clientGetMaxAspectY(c);
+
+        if ((minx * h1 > miny * w1) && 
+            (miny) && (corner == 4 + SIDE_BOTTOM))
         {
             /* Change width to match */
-            delta = MAKE_MULT (c->size->min_aspect.x * h1 / 
-                              c->size->min_aspect.y - w1, xinc);
+            delta = MAKE_MULT (minx * h1 /  miny - w1, xinc);
             if (!(c->size->flags & PMaxSize) || 
                 (w1 + delta <= c->size->max_width))
             {
                 w1 += delta;
             }
         }
-        if (c->size->min_aspect.x * h1 > c->size->min_aspect.y * w1)
+        if ((minx * h1 > miny * w1) &&
+            (minx))
         {
-            delta = MAKE_MULT (h1 - w1 * c->size->min_aspect.y / 
-                              c->size->min_aspect.x, yinc);
+            delta = MAKE_MULT (h1 - w1 * miny / minx, yinc);
             if (!(c->size->flags & PMinSize) ||
                 (h1 - delta >= c->size->min_height))
             {
@@ -1982,29 +2084,28 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
             }
             else
             {
-                delta = MAKE_MULT (c->size->min_aspect.x * h1 / 
-                                  c->size->min_aspect.y - w1, xinc);
+                delta = MAKE_MULT (minx * h1 / miny - w1, xinc);
                 if (!(c->size->flags & PMaxSize) ||
                     (w1 + delta <= c->size->max_width))
                   w1 += delta;
             }
         }
 
-        if ((c->size->max_aspect.x * h1 < c->size->max_aspect.y * w1) && 
+        if ((maxx * h1 < maxy * w1) &&
+            (maxx) &&
             ((corner == 4 + SIDE_LEFT) || (corner == 4 + SIDE_RIGHT)))
         {
-            delta = MAKE_MULT (w1 * c->size->max_aspect.y / 
-                              c->size->max_aspect.x - h1, yinc);
+            delta = MAKE_MULT (w1 * maxy / maxx - h1, yinc);
             if (!(c->size->flags & PMaxSize) ||
                 (h1 + delta <= c->size->max_height))
             {
                 h1 += delta;
             }
         }
-        if ((c->size->max_aspect.x * h1 < c->size->max_aspect.y * w1))
+        if ((maxx * h1 < maxy * w1) &&
+             (maxy))
         {
-            delta = MAKE_MULT (w1 - c->size->max_aspect.x * h1 / 
-                              c->size->max_aspect.y, xinc);
+            delta = MAKE_MULT (w1 - maxx * h1 / maxy, xinc);
             if (!(c->size->flags & PMinSize) ||
                 (w1 - delta >= c->size->min_width))
             {
@@ -2012,8 +2113,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
             }
             else
             {
-                delta = MAKE_MULT (w1 * c->size->max_aspect.y / 
-                                  c->size->max_aspect.x - h1, yinc);
+                delta = MAKE_MULT (w1 * maxy / maxx - h1, yinc);
                 if (!(c->size->flags & PMaxSize) ||
                     (h1 + delta <= c->size->max_height))
                 {
@@ -2556,6 +2656,8 @@ clientGetMWMHints (Client * c, gboolean update)
     
     if (update)
     {
+        /* EWMH window type takes precedences over Motif hints */ 
+        clientWindowType (c);
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->legacy_fullscreen))
         {
             /* legacy app changed its decoration, put it back on regular layer */
@@ -2731,7 +2833,7 @@ clientGetWinState (Client * c)
 
     if (c->win_state & WIN_STATE_STICKY)
     {
-        if (!clientIsTransient (c))
+        if (!clientIsTransientOrModal (c))
         {
             CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
         }
@@ -2797,7 +2899,7 @@ clientApplyInitialState (Client * c)
     if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_FULLSCREEN,
             CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
     {
-        if (!clientIsTransient (c))
+        if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: fullscreen");
             clientToggleFullscreen (c);
@@ -2806,7 +2908,7 @@ clientApplyInitialState (Client * c)
     if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_ABOVE,
             CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
     {
-        if (!clientIsTransient (c))
+        if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: above");
             clientToggleAbove (c);
@@ -2815,7 +2917,7 @@ clientApplyInitialState (Client * c)
     if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_BELOW,
             CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
     {
-        if (!clientIsTransient (c))
+        if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: below");
             clientToggleBelow (c);
@@ -2823,7 +2925,7 @@ clientApplyInitialState (Client * c)
     }
     if (CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_STICKY | CLIENT_FLAG_HAS_STICK))
     {
-        if (!clientIsTransient (c))
+        if (!clientIsTransientOrModal (c))
         {
             TRACE ("Applying client's initial state: sticky");
             clientStick (c, TRUE);
@@ -2990,11 +3092,8 @@ clientFrame (Window w, gboolean startup)
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
-    if (attr.map_state != IsUnmapped)
-    {
-        /* This flag is used to avoid focus transition when reparenting */
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
-    }
+    /* This flag is used to avoid focus transition when reparenting */
+    CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
     /* 
      * Reparenting generates an UnmapNotify event, followed by a MapNotify.
      * Set ignore_unmap to 1 so that the window won't return to withdrawn
@@ -3139,7 +3238,7 @@ clientUnframe (Client * c, gboolean remap)
     int i;
 
     TRACE ("entering clientUnframe");
-    DBG ("unframing client \"%s\" (0x%lx) [%s]", 
+    TRACE ("unframing client \"%s\" (0x%lx) [%s]", 
             c->name, c->window, remap ? "remap" : "no remap");
 
     g_return_if_fail (c != NULL);
@@ -3399,7 +3498,7 @@ clientGetNext (Client * c, int mask)
 
 /* Build a GSList of clients that have a transient relationship */
 static GSList *
-clientListTransients (Client * c)
+clientListTransient (Client * c)
 {
     GSList *transients = NULL;
     GSList *index1, *index2;
@@ -3435,6 +3534,44 @@ clientListTransients (Client * c)
     return transients;
 }
 
+/* Build a GSList of clients that have a transient or modal relationship */
+static GSList *
+clientListTransientOrModal (Client * c)
+{
+    GSList *transients = NULL;
+    GSList *index1, *index2;
+    Client *c2, *c3;
+
+    g_return_val_if_fail (c != NULL, NULL);
+
+    transients = g_slist_append (transients, c);
+    for (index1 = windows_stack; index1; index1 = g_slist_next (index1))
+    {
+        c2 = (Client *) index1->data;
+        if (c2 != c)
+        {
+            if (clientIsTransientOrModalFor (c2, c))
+            {
+                transients = g_slist_append (transients, c2);
+            }
+            else
+            {
+                for (index2 = transients; index2;
+                    index2 = g_slist_next (index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
+                    {
+                        transients = g_slist_append (transients, c2);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return transients;
+}
+
 void
 clientPassFocus (Client * c)
 {
@@ -3454,7 +3591,7 @@ clientPassFocus (Client * c)
 
     if (params.click_to_focus)
     {
-        list_of_windows = clientListTransients (c);
+        list_of_windows = clientListTransient (c);
         for (c2 = c->next, i = 0; (c2) && (i < client_count);
             c2 = c2->next, i++)
         {
@@ -3491,7 +3628,7 @@ clientShow (Client * c, gboolean change_state)
            change_state ? "state change" : "no state change");
              
 
-    list_of_windows = clientListTransients (c);
+    list_of_windows = clientListTransientOrModal (c);
     list_of_windows = g_slist_reverse (list_of_windows);
 
     for (index = list_of_windows; index; index = g_slist_next (index))
@@ -3503,6 +3640,7 @@ clientShow (Client * c, gboolean change_state)
         {
             continue;
         }
+        MyXGrabServer ();
         if ((c->win_workspace == workspace)
             || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
         {
@@ -3517,6 +3655,8 @@ clientShow (Client * c, gboolean change_state)
             setWMState (dpy, c2->window, NormalState);
             workspaceUpdateArea (margins, gnome_margins);
         }
+        MyXUngrabServer ();
+        XFlush (dpy);
         clientSetNetState (c2);
     }
     g_slist_free (list_of_windows);
@@ -3532,7 +3672,7 @@ clientHide (Client * c, int ws, gboolean change_state)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientHide");
 
-    list_of_windows = clientListTransients (c);
+    list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_slist_next (index))
     {
         c2 = (Client *) index->data;
@@ -3548,8 +3688,8 @@ clientHide (Client * c, int ws, gboolean change_state)
            workspace (transient for groups can be transients for multiple 
            ancesors splitted across workspaces...)
          */
-        if (clientIsTransientForGroup (c2)
-            && clientTransientHasAncestor (c2, ws))
+        if (clientIsTransientOrModalForGroup (c2)
+            && clientTransientOrModalHasAncestor (c2, ws))
         {
             /* Other ancestors for that transient are still on screen, so don't
                hide it...
@@ -3585,10 +3725,10 @@ clientHideAll (Client * c, int ws)
     {
         if (CLIENT_CAN_HIDE_WINDOW (c2)
             && CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HAS_BORDER)
-            && !clientIsTransient (c2) && (c2 != c))
+            && !clientIsTransientOrModal (c2) && (c2 != c))
         {
             if (((!c) && (c2->win_workspace == ws)) || ((c)
-                    && !clientIsTransientFor (c, c2)
+                    && !clientIsTransientOrModalFor (c, c2)
                     && (c2->win_workspace == c->win_workspace)))
             {
                 clientHide (c2, ws, TRUE);
@@ -3677,7 +3817,7 @@ clientRaise (Client * c)
             c2 = (Client *) index1->data;
             if (c2)
             {
-                if ((c2 != c) && clientIsTransientFor (c2, c))
+                if ((c2 != c) && clientIsTransientOrModalFor (c2, c))
                 {
                     transients = g_slist_append (transients, c2);
                     if (sibling)
@@ -3705,7 +3845,7 @@ clientRaise (Client * c)
                         index2 = g_slist_next (index2))
                     {
                         c3 = (Client *) index2->data;
-                        if ((c3 != c2) && clientIsTransientFor (c2, c3))
+                        if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                         {
                             transients = g_slist_append (transients, c2);
                             if (sibling)
@@ -3762,16 +3902,11 @@ clientLower (Client * c)
         return;
     }
 
-    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
-    {
-        return;
-    }
-
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
 
-        if (clientIsTransientForGroup (c))
+        if (clientIsTransientOrModalForGroup (c))
         {
             client_sibling = clientGetTopMostForGroup (c);
         }
@@ -3819,7 +3954,7 @@ clientSetLayer (Client * c, int l)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetLayer");
 
-    list_of_windows = clientListTransients (c);
+    list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_slist_next (index))
     {
         c2 = (Client *) index->data;
@@ -3882,7 +4017,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 
     TRACE ("entering clientSetWorkspace");
 
-    list_of_windows = clientListTransients (c);
+    list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_slist_next (index))
     {
         c2 = (Client *) index->data;
@@ -3891,7 +4026,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
             TRACE ("setting client \"%s\" (0x%lx) to workspace %d", c->name,
                 c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
-            if (manage_mapping && !clientIsTransient (c2)
+            if (manage_mapping && !clientIsTransientOrModal (c2)
                 && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN))
             {
                 if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_STICKY))
@@ -3999,7 +4134,7 @@ clientStick (Client * c, gboolean include_transients)
 
     if (include_transients)
     {
-        list_of_windows = clientListTransients (c);
+        list_of_windows = clientListTransientOrModal (c);
         for (index = list_of_windows; index; index = g_slist_next (index))
         {
             c2 = (Client *) index->data;
@@ -4038,7 +4173,7 @@ clientUnstick (Client * c, gboolean include_transients)
 
     if (include_transients)
     {
-        list_of_windows = clientListTransients (c);
+        list_of_windows = clientListTransientOrModal (c);
         for (index = list_of_windows; index; index = g_slist_next (index))
         {
             c2 = (Client *) index->data;
@@ -4705,7 +4840,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
 
-        if ((params.workspace_count > 1) && !clientIsTransient (c))
+        if ((params.workspace_count > 1) && !clientIsTransientOrModal (c))
         {
             if (params.workspace_count && params.wrap_windows
                 && params.wrap_resistance)

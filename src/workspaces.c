@@ -85,7 +85,7 @@ workspaceSwitch (int new_ws, Client * c2)
                 CLIENT_FLAG_SET (previous, CLIENT_FLAG_FOCUS);
                 clientSetFocus (NULL, FALSE, TRUE);
             }
-            if (!clientIsTransient (c))
+            if (!clientIsTransientOrModal (c))
             {
                 /* Just build of windows that will be hidden, so that
                    we can record the previous focus even when on a
@@ -125,7 +125,7 @@ workspaceSwitch (int new_ws, Client * c2)
         else if ((c->win_workspace == new_ws)
             && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
         {
-            if (!clientIsTransient (c))
+            if (!clientIsTransientOrModal (c))
             {
                 clientShow (c, FALSE);
             }

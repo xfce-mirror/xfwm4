@@ -187,9 +187,7 @@ reset_timeout (void)
 static inline void
 moveRequest (Client * c, XEvent * ev)
 {
-    if (CLIENT_FLAG_TEST_AND_NOT (c,
-            CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE,
-            CLIENT_FLAG_FULLSCREEN))
+    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove (c, ev);
     }
@@ -205,9 +203,7 @@ resizeRequest (Client * c, int corner, XEvent * ev)
     {
         clientResize (c, corner, ev);
     }
-    else if (CLIENT_FLAG_TEST_AND_NOT (c,
-            CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE,
-            CLIENT_FLAG_FULLSCREEN))
+    else if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove (c, ev);
     }
@@ -840,21 +836,17 @@ handleUnmapNotify (XUnmapEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-        DBG ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        DBG ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
+        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
         /* Reparenting generates an unmapnotify, don't pass focus in that case */
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
-        {
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
-        }
-        else
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
         {
             clientPassFocus (c);
         }
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
-            DBG ("ignore_unmaps for \"%s\" is  now %i", 
+            TRACE ("ignore_unmaps for \"%s\" is  now %i", 
                  c->name, c->ignore_unmap);
         }
         else
@@ -881,13 +873,40 @@ handleMapRequest (XMapRequestEvent * ev)
     c = clientGetFromWindow (ev->window, WINDOW);
     if (c)
     {
-        DBG ("handleMapRequest: clientShow");
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_REPARENTING))
+        {
+            TRACE ("handleMapRequest: another request for \"%s\" (0x%lx)", 
+                   c->name, c->window);
+            /* There is already a request in the pipe... */
+            return;
+        }
+        TRACE ("handleMapRequest: clientShow");
         clientShow (c, TRUE);
     }
     else
     {
-        DBG ("handleMapRequest: clientFrame");
+        TRACE ("handleMapRequest: clientFrame");
         clientFrame (ev->window, FALSE);
+    }
+}
+
+static inline void
+handleMapNotify (XMapEvent * ev)
+{
+    Client *c;
+
+    TRACE ("entering handleMapNotify");
+    TRACE ("mapped window is (0x%lx)", ev->window);
+
+    c = clientGetFromWindow (ev->window, WINDOW);
+    if (c)
+    {
+        TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_REPARENTING);
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+        {
+            clientShow (c, TRUE);
+        }
     }
 }
 
@@ -1224,7 +1243,7 @@ handleClientMessage (XClientMessageEvent * ev)
 
     TRACE ("entering handleClientMessage");
 
-    /* Don't get surprised with the multiple "if (!clientIsTransient(c))" tests
+    /* Don't get surprised with the multiple "if (!clientIsTransientOrModal(c))" tests
        xfwm4 really treats transient differently
      */
 
@@ -1253,7 +1272,7 @@ handleClientMessage (XClientMessageEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_layer event",
                 c->name, c->window);
-            if ((ev->data.l[0] != c->win_layer) && !clientIsTransient (c))
+            if ((ev->data.l[0] != c->win_layer) && !clientIsTransientOrModal (c))
             {
                 clientSetLayer (c, ev->data.l[0]);
                 clientSetNetState (c);
@@ -1263,7 +1282,7 @@ handleClientMessage (XClientMessageEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_workspace event",
                 c->name, c->window);
-            if ((ev->data.l[0] != c->win_workspace) && !clientIsTransient (c))
+            if ((ev->data.l[0] != c->win_workspace) && !clientIsTransientOrModal (c))
             {
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
             }
@@ -1273,7 +1292,7 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE
                 ("client \"%s\" (0x%lx) has received a net_wm_desktop event",
                 c->name, c->window);
-            if (!clientIsTransient (c))
+            if (!clientIsTransientOrModal (c))
             {
                 if (ev->data.l[0] == ALL_WORKSPACES)
                 {
@@ -1424,6 +1443,9 @@ handleEvent (XEvent * ev)
             break;
         case MapRequest:
             handleMapRequest ((XMapRequestEvent *) ev);
+            break;
+        case MapNotify:
+            handleMapNotify ((XMapEvent *) ev);
             break;
         case ConfigureNotify:
             handleConfigureNotify ((XConfigureEvent *) ev);
@@ -1644,7 +1666,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
             }
         }
 
-        if (clientIsTransient (c)
+        if (clientIsTransientOrModal (c)
             || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK)
             || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
         {

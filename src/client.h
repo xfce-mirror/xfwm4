@@ -228,12 +228,15 @@ extern unsigned int client_count;
 
 Client *clientGetTransient (Client *);
 gboolean clientIsTransient (Client *);
+gboolean clientIsModal (Client *);
+gboolean clientIsTransientOrModal (Client *);
 gboolean clientSameGroup (Client *, Client *);
 gboolean clientIsTransientFor (Client *, Client *);
-gboolean clientIsTransientForGroup (Client *);
 gboolean clientIsModalFor (Client *, Client *);
+gboolean clientIsTransientOrModalFor (Client *, Client *);
+gboolean clientIsTransientForGroup (Client *);
 gboolean clientIsModalForGroup (Client *);
-gboolean clientTransientHasAncestor (Client *, int);
+gboolean clientIsTransientOrModalForGroup (Client *);
 void clientSetNetState (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
 void clientUpdateNetState (Client *, XClientMessageEvent *);
