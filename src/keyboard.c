@@ -280,6 +280,10 @@ initModifiers (Display * dpy)
                 {
                     NumLockMask |= (1 << ( i / modmap->max_keypermod));
                 }
+                else if (syms[j] == XK_Caps_Lock)
+                {
+                    CapsLockMask |= (1 << ( i / modmap->max_keypermod));
+                }
                 else if (syms[j] == XK_Scroll_Lock)
                 {
                     ScrollLockMask |= (1 << ( i / modmap->max_keypermod));
