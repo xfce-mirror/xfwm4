@@ -199,8 +199,8 @@ reset_timeout (ScreenInfo *screen_info)
 static void
 moveRequest (Client * c, XEvent * ev)
 {
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove (c, ev);
     }
