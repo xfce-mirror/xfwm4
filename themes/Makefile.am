@@ -6,6 +6,7 @@ bbs \
 coldsteel \
 crux \
 cruxish \
+curve \
 eazel-blue \
 exocet \
 g2 \
