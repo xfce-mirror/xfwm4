@@ -30,6 +30,8 @@
 #include "keyboard.h"
 #include "debug.h"
 
+#define PARSEKEY(s, k) strstr(g_ascii_strdown (s, strlen (s)), g_ascii_strdown(k, strlen (k)))
+
 unsigned int KeyMask;
 unsigned int ButtonMask;
 unsigned int ButtonKeyMask;
@@ -58,13 +60,13 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
     if(k)
     {
         key->keycode = XKeysymToKeycode(dpy, XStringToKeysym(k + 1));
-        if(strstr(str, "Shift"))
+        if(PARSEKEY(str, "Shift"))
             key->modifier = key->modifier | ShiftMask;
-        if(strstr(str, "Control"))
+        if(PARSEKEY(str, "Control"))
             key->modifier = key->modifier | ControlMask;
-        if(strstr(str, "Alt"))
+        if(PARSEKEY(str, "Alt") || PARSEKEY(str, "Mod1"))
             key->modifier = key->modifier | AltMask;
-        if(strstr(str, "Meta"))
+        if(PARSEKEY(str, "Meta") || PARSEKEY(str, "Mod2"))
             key->modifier = key->modifier | MetaMask;
     }
 }
