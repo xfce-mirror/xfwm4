@@ -55,6 +55,9 @@
 #include "transients.h"
 #include "wireframe.h"
 #include "workspaces.h"
+#include "inline-tabwin-icon.h"
+GtkWidget *new_windowlist = NULL;
+GList *tabwin_item = NULL;
 
 /* Event mask definition */
 
@@ -3606,8 +3609,18 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                     
                     wireframeUpdate (c, passdata->wireframe);
                     icon = getAppIcon (clientGetXDisplay (c), c->window, 32, 32);
-                    tabwinSetLabel (passdata->tabwin, icon, 
-                                    c->class.res_class, c->name);
+//                    tabwinSetLabel (passdata->tabwin, icon, 
+//                                    c->class.res_class, c->name);
+		    gtk_widget_set_state (GTK_WIDGET (tabwin_item->data), GTK_STATE_NORMAL);
+                    if ( tabwin_item->next == NULL )
+                    {
+                        tabwin_item = g_list_first (tabwin_item);
+                    }
+                    else
+                    {
+                        tabwin_item = g_list_next (tabwin_item);
+                    }
+                    gtk_widget_set_state (GTK_WIDGET (tabwin_item->data), GTK_STATE_PRELIGHT);
                 }
                 else
                 {
@@ -3711,15 +3724,19 @@ clientCycle (Client * c, XEvent * e)
         TRACE ("entering cycle loop");
         passdata.wireframe = wireframeCreate (passdata.c);
         icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
-        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
-                               passdata.c->class.res_class, passdata.c->name);
+//        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
+//                               passdata.c->class.res_class, passdata.c->name);
+        create_new_windowlist (c, passdata.cycle_range, passdata.c->screen_info->gscr);                               
         xfce_push_event_filter (display_info->xfilter, clientCycle_event_filter, &passdata);
         gtk_main ();
         xfce_pop_event_filter (display_info->xfilter);
         wireframeDelete (screen_info, passdata.wireframe);
         TRACE ("leaving cycle loop");
-        tabwinDestroy (passdata.tabwin);
-        g_free (passdata.tabwin);
+//        tabwinDestroy (passdata.tabwin);
+//        g_free (passdata.tabwin);
+        gtk_widget_destroy (new_windowlist);
+        new_windowlist = NULL;
+        tabwin_item = NULL;
     }
     XUngrabKeyboard (display_info->dpy, GDK_CURRENT_TIME);
     XUngrabPointer (display_info->dpy, GDK_CURRENT_TIME);
@@ -3928,3 +3945,95 @@ clientGetStartupId (Client * c)
     return NULL;
 }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
+void
+create_new_windowlist (Client * c, int mask, GdkScreen *gscr)
+{
+    int i;
+    static GdkPixbuf *logo = NULL;
+    GdkPixbuf *icon;
+    Client *c2;
+    GtkWidget *frame, *vbox, *hbox, *header, *hbox1, *image, *label, *item;
+    char *win_label;
+
+    if (!logo)
+    {
+        logo = xfce_inline_icon_at_size (tabwin_icon_data, 20, 20);
+        g_object_ref (G_OBJECT (logo));
+    }
+
+    new_windowlist = gtk_window_new (GTK_WINDOW_POPUP);
+    gtk_window_set_screen (GTK_WINDOW (new_windowlist), gscr);
+    gtk_container_set_border_width (GTK_CONTAINER (new_windowlist), 0);
+    gtk_window_set_position (GTK_WINDOW (new_windowlist),
+        GTK_WIN_POS_CENTER_ALWAYS);
+    gtk_window_set_default_size (GTK_WINDOW (new_windowlist), 600, -1);
+    gtk_widget_set_size_request (new_windowlist, 600, -1);
+    gtk_window_set_resizable (GTK_WINDOW (new_windowlist), FALSE);
+
+    frame = gtk_frame_new (NULL);
+    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
+    gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
+    gtk_container_add (GTK_CONTAINER (new_windowlist), frame);
+    gtk_widget_show (frame);
+
+    vbox = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
+    gtk_container_add (GTK_CONTAINER (frame), vbox);
+
+    header = xfce_create_header (logo, _("Switch to ..."));
+    gtk_widget_show (header);
+    gtk_box_pack_start (GTK_BOX (vbox), header, FALSE, TRUE, 0);
+
+    header = gtk_separator_menu_item_new();
+    gtk_widget_show(header);
+    gtk_box_pack_start (GTK_BOX (vbox), header, FALSE, TRUE, 0);
+
+    if (c)
+    {
+       ScreenInfo *screen_info = c->screen_info;
+        for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count);
+            c2 = c2->next, i++)
+        {
+            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
+            {
+              item = gtk_menu_item_new ();
+              tabwin_item = g_list_append(tabwin_item, item);
+              gtk_widget_show ( item );
+
+               hbox1 = gtk_hbox_new (FALSE, 0);
+               gtk_container_set_border_width (GTK_CONTAINER (hbox1), 0);
+               gtk_widget_show (hbox1);
+               gtk_container_add (GTK_CONTAINER (item), hbox1);
+
+               image = gtk_image_new ();
+               icon = getAppIcon (screen_info->display_info->dpy, c2->window, 20, 20);
+               if (icon)
+               {
+                       gtk_image_set_from_pixbuf (GTK_IMAGE (image), icon);
+               }
+               else
+               {
+                       gtk_image_set_from_stock (GTK_IMAGE (image), "gtk-missing-image",
+                                                               GTK_ICON_SIZE_DIALOG);
+               }
+               gtk_widget_show (image);
+               gtk_box_pack_start (GTK_BOX (hbox1), image, FALSE, FALSE, 0);
+
+               win_label = g_strconcat(" ", c2->name, NULL);
+               label = gtk_label_new (win_label);
+               g_free (win_label);
+               gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+               gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+               gtk_widget_show (label);
+               gtk_box_pack_start (GTK_BOX (hbox1), label, FALSE, FALSE, 0);
+               gtk_widget_show (item);
+               gtk_box_pack_start (GTK_BOX (vbox), item, TRUE, TRUE, 0);
+            }
+        }
+    }
+    gtk_widget_show (new_windowlist);
+    tabwin_item = g_list_first (tabwin_item);
+    gtk_widget_set_state (GTK_WIDGET (tabwin_item->data), GTK_STATE_PRELIGHT);
+}
