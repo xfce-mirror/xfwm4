@@ -1548,7 +1548,7 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE
                 ("client \"%s\" (0x%lx) has received a net_active_window event",
                 c->name, c->window);
-            workspaceSwitch (c->win_workspace, NULL);
+            clientSetWorkspace (c, workspace, TRUE);
             clientShow (c, TRUE);
             clientRaise (c);
             clientSetFocus (c, FOCUS_SORT);
