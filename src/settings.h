@@ -54,6 +54,13 @@
 #define TITLE_SEPARATOR                 6
 #define BUTTON_COUNT                    6
 
+#define ACTIVE                          0
+#define INACTIVE                        1
+#define PRESSED                         2
+#define T_ACTIVE                        3
+#define T_INACTIVE                      4
+#define T_PRESSED                       5
+
 #define KEY_MOVE_UP                     0
 #define KEY_MOVE_DOWN                   1
 #define KEY_MOVE_LEFT                   2
@@ -137,7 +144,7 @@ struct _Params
 {
     MyColor title_colors[2];
     MyKey keys[KEY_COUNT];
-    MyPixmap buttons[BUTTON_COUNT][3];
+    MyPixmap buttons[BUTTON_COUNT][6];
     MyPixmap corners[4][2];
     MyPixmap sides[3][2];
     MyPixmap title[5][2];

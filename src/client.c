@@ -4138,7 +4138,6 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     if(c->button_pressed[b])
     {
         c->button_pressed[b] = False;
-        frameDraw(c, FALSE, FALSE);
         switch (b)
         {
         case HIDE_BUTTON:
@@ -4181,6 +4180,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
             clientToggleSticky(c, TRUE);
             break;
         }
+        frameDraw(c, FALSE, FALSE);
     }
 }
 

@@ -152,7 +152,7 @@ static inline void fillRectangle(Display * dpy, Drawable d, Pixmap pm, int x, in
     XFreeGC(dpy, gc);
 }
 
-static void frameCreateTitlePixmap(Client * c, int state, int left, int right, MyPixmap * pm)
+static inline void frameCreateTitlePixmap(Client * c, int state, int left, int right, MyPixmap * pm)
 {
     int width, x = 0, tp = 0, w1 = 0, w2, w3, w4, w5, temp;
     GdkPixmap *gpixmap = NULL;
@@ -308,7 +308,7 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     g_object_unref(G_OBJECT(layout));
 }
 
-static int getButtonFromLetter(char chr, Client * c)
+static inline int getButtonFromLetter(char chr, Client * c)
 {
     int b = -1;
 
@@ -358,7 +358,7 @@ static int getButtonFromLetter(char chr, Client * c)
     return b;
 }
 
-static char getLetterFromButton(int i, Client * c)
+static inline char getLetterFromButton(int i, Client * c)
 {
     char chr = 0;
 
@@ -405,11 +405,44 @@ static char getLetterFromButton(int i, Client * c)
     return chr;
 }
 
-static void frameSetShape(Client * c, int state, ClientPixmapCache * pm_cache, int button_x[BUTTON_COUNT])
+static inline MyPixmap *frameGetPixmap(Client * c, int button, int state)
+{
+    switch (button)
+    {
+        case SHADE_BUTTON:
+            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && params.buttons[SHADE_BUTTON][state + 3].pixmap) 
+            {
+                return &params.buttons[SHADE_BUTTON][state + 3];
+            }
+            return &params.buttons[SHADE_BUTTON][state];
+            break;
+        case STICK_BUTTON:
+            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY) && params.buttons[STICK_BUTTON][state + 3].pixmap) 
+            {
+                return &params.buttons[STICK_BUTTON][state + 3];
+            }
+            return &params.buttons[STICK_BUTTON][state];
+            break;
+        case MAXIMIZE_BUTTON:
+            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED) && params.buttons[MAXIMIZE_BUTTON][state + 3].pixmap) 
+            {
+                return &params.buttons[MAXIMIZE_BUTTON][state + 3];
+            }
+            return &params.buttons[MAXIMIZE_BUTTON][state];
+            break;
+        default:
+            break;
+    }
+    return &params.buttons[button][state];
+}
+
+
+static inline void frameSetShape(Client * c, int state, ClientPixmapCache * pm_cache, int button_x[BUTTON_COUNT])
 {
     Window temp;
     int i;
     XRectangle rect;
+    MyPixmap * my_pixmap;
 
     DBG("entering frameSetShape\n");
     DBG("setting shape for client (0x%lx)\n", c->window);
@@ -449,14 +482,8 @@ static void frameSetShape(Client * c, int state, ClientPixmapCache * pm_cache, i
 
         for(i = 0; i < BUTTON_COUNT; i++)
         {
-            if(c->button_pressed[i])
-            {
-                XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->buttons[i]), ShapeBounding, 0, 0, params.buttons[i][PRESSED].mask, ShapeSet);
-            }
-            else
-            {
-                XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->buttons[i]), ShapeBounding, 0, 0, params.buttons[i][state].mask, ShapeSet);
-            }
+            my_pixmap = frameGetPixmap(c, i, c->button_pressed[i] ? PRESSED : state);
+            XShapeCombineMask(dpy, MYWINDOW_XWINDOW(c->buttons[i]), ShapeBounding, 0, 0, my_pixmap->mask, ShapeSet);
         }
 
         if(params.corners[CORNER_TOP_LEFT][ACTIVE].height > frameHeight(c) - frameBottom(c) + 1)
@@ -532,6 +559,7 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
     int right_height;
     int button_x[BUTTON_COUNT];
     gboolean requires_clearing = FALSE;
+    MyPixmap * my_pixmap;
 
     DBG("entering frameDraw\n");
     DBG("drawing frame for \"%s\" (0x%lx)\n", c->name, c->window);
@@ -603,13 +631,10 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
             }
             else if(button >= 0)
             {
-                if((c->button_pressed[button]) && (params.buttons[button][PRESSED].pixmap))
+                my_pixmap = frameGetPixmap(c, button, c->button_pressed[button] ? PRESSED : state);
+                if(my_pixmap->pixmap)
                 {
-                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][PRESSED].pixmap);
-                }
-                else if(params.buttons[button][state].pixmap)
-                {
-                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][state].pixmap);
+                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), my_pixmap->pixmap);
                 }
                 myWindowShow(&c->buttons[button], x, (frameTop(c) - params.buttons[button][ACTIVE].height) / 2, params.buttons[button][ACTIVE].width, params.buttons[button][ACTIVE].height, TRUE);
                 button_x[button] = x;
@@ -629,13 +654,10 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
             }
             else if(button >= 0)
             {
-                if((c->button_pressed[button]) && (params.buttons[button][PRESSED].pixmap))
+                my_pixmap = frameGetPixmap(c, button, c->button_pressed[button] ? PRESSED : state);
+                if(my_pixmap->pixmap)
                 {
-                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][PRESSED].pixmap);
-                }
-                else if(params.buttons[button][state].pixmap)
-                {
-                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), params.buttons[button][state].pixmap);
+                    XSetWindowBackgroundPixmap(dpy, MYWINDOW_XWINDOW(c->buttons[button]), my_pixmap->pixmap);
                 }
                 x = x - params.buttons[button][ACTIVE].width - params.button_spacing;
                 myWindowShow(&c->buttons[button], x, (frameTop(c) - params.buttons[button][ACTIVE].height) / 2, params.buttons[button][ACTIVE].width, params.buttons[button][ACTIVE].height, TRUE);

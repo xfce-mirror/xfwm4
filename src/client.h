@@ -68,10 +68,6 @@
 #define UPDATE_CACHE                    (1<<3)
 #define UPDATE_ALL                      (UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY | UPDATE_CACHE)
 
-#define ACTIVE                          0
-#define INACTIVE                        1
-#define PRESSED                         2
-
 #define MARGIN_LEFT                     0
 #define MARGIN_RIGHT                    1
 #define MARGIN_TOP                      2

@@ -532,6 +532,15 @@ static void loadTheme(Settings rc[])
     loadPixmap(dpy, &params.buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 20);
     loadPixmap(dpy, &params.buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 20);
     loadPixmap(dpy, &params.buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][T_ACTIVE], theme, "shade-toggled-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][T_INACTIVE], theme, "shade-toggled-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][T_PRESSED], theme, "shade-toggled-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[STICK_BUTTON][T_ACTIVE], theme, "stick-toggled-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[STICK_BUTTON][T_INACTIVE], theme, "stick-toggled-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[STICK_BUTTON][T_PRESSED], theme, "stick-toggled-pressed.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme, "maximize-toggled-active.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme, "maximize-toggled-inactive.xpm", colsym, 20);
+    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][T_PRESSED], theme, "maximize-toggled-pressed.xpm", colsym, 20);
     loadPixmap(dpy, &params.title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 20);
     loadPixmap(dpy, &params.title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 20);
     loadPixmap(dpy, &params.title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 20);
@@ -908,6 +917,9 @@ static void unloadTheme(void)
         freePixmap(dpy, &params.buttons[i][ACTIVE]);
         freePixmap(dpy, &params.buttons[i][INACTIVE]);
         freePixmap(dpy, &params.buttons[i][PRESSED]);
+        freePixmap(dpy, &params.buttons[i][T_ACTIVE]);
+        freePixmap(dpy, &params.buttons[i][T_INACTIVE]);
+        freePixmap(dpy, &params.buttons[i][T_PRESSED]);
     }
     for(i = 0; i < 5; i++)
     {
@@ -974,6 +986,9 @@ gboolean initSettings(void)
         initPixmap(&params.buttons[i][ACTIVE]);
         initPixmap(&params.buttons[i][INACTIVE]);
         initPixmap(&params.buttons[i][PRESSED]);
+        initPixmap(&params.buttons[i][T_ACTIVE]);
+        initPixmap(&params.buttons[i][T_INACTIVE]);
+        initPixmap(&params.buttons[i][T_PRESSED]);
     }
     for(i = 0; i < 5; i++)
     {
