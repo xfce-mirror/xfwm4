@@ -1473,6 +1473,58 @@ restack_win (CWindow *cw, Window above)
     }
 }
 
+void
+resize_win (CWindow *cw, gint width, gint height)
+{
+    XserverRegion damage = None;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering resize_win");
+    
+    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
+    if ((damage != None) && (cw->extents != None))
+    {
+        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
+    }
+
+    if ((cw->attr.width != width) || (cw->attr.height != height))
+    {
+#if HAVE_NAME_WINDOW_PIXMAP
+        if (cw->name_window_pixmap)
+        {
+            XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
+            cw->name_window_pixmap = None;
+        }
+#endif
+        if (cw->picture)
+        {
+            XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
+            cw->picture = None;
+        }
+    
+        if (cw->shadow)
+        {
+            XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
+            cw->shadow = None;
+        }
+    }
+    cw->attr.width = width;
+    cw->attr.height = height;
+
+    if (damage)
+    {
+        XserverRegion extents = win_extents (cw);
+        if (extents)
+        {
+            XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
+            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
+            add_damage (cw->screen_info, damage);
+        }
+    }
+    cw->screen_info->clipChanged = TRUE;
+    repair_screen (cw->screen_info);
+}
+
 static void
 destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
 {
@@ -1659,6 +1711,15 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
         return;
     }
     
+    if ((cw->attr.x == ev->x) && (cw->attr.y == ev->y) &&
+        (cw->attr.width == ev->width) && (cw->attr.height == ev->height) &&
+        (cw->attr.border_width == ev->border_width))
+    {
+        /* Nothing has changed, just adjust stack */
+        restack_win (cw, ev->above);
+        return;
+    }
+
     damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
     if ((damage != None) && (cw->extents != None))
     {
@@ -2120,6 +2181,30 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
 
         repair_win (cw);
         repair_screen (cw->screen_info);
+    }
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorResizeWindow (DisplayInfo *display_info, Window id, gint new_width, gint new_height)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+    
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorResizeWindow: 0x%lx", id);
+    
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        resize_win (cw, new_width, new_height);
     }
 #endif /* HAVE_COMPOSITOR */
 }

@@ -36,7 +36,6 @@ void compositorWindowMap (DisplayInfo *, Window);
 void compositorWindowUnmap (DisplayInfo *, Window);
 void compositorAddWindow (DisplayInfo *, Window, Client *c);
 void compositorRemoveWindow (DisplayInfo *, Window);
-void compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 
 void compositorHandleEvent (DisplayInfo *, XEvent *);
 void compositorInitDisplay (DisplayInfo *);
@@ -44,6 +43,8 @@ void compositorInitDisplay (DisplayInfo *);
 void compositorManageScreen (ScreenInfo *);
 void compositorUnmanageScreen (ScreenInfo *);
 
+void compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 void compositorDamageWindow (DisplayInfo *, Window);
+void compositorResizeWindow (DisplayInfo *, Window, gint, gint);
 
 #endif /* INC_COMPOSITOR_H */

@@ -1359,6 +1359,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XWindowChanges wc;
     XSetWindowAttributes attributes;
     Client *c = NULL;
+    gboolean shaped;
     unsigned long valuemask;
     int i;
 
@@ -1457,8 +1458,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->fullscreen_old_height = c->height;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
-    
-    if (clientCheckShape(c))
+
+    shaped = clientCheckShape(c);
+    if (shaped)
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER);
     }
@@ -1593,7 +1595,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
-    if (display_info->shape)
+    if ((shaped) && (display_info->shape))
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
     }
