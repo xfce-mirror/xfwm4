@@ -691,7 +691,7 @@ create_root_buffer (ScreenInfo *screen_info)
     g_return_val_if_fail (rootPixmap != None, None);
 
     pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info),
-                                 rootPixmap, format, 0, 0);
+                                 rootPixmap, format, 0, NULL);
     XFreePixmap (myScreenGetXDisplay (screen_info), rootPixmap);
 
     return pict;
@@ -850,10 +850,10 @@ get_window_picture (CWindow *cw)
         draw = cw->name_window_pixmap;
     }
 #endif
-    pa.subwindow_mode = IncludeInferiors;
     format = get_window_format (cw);
     if (format)
     {
+        pa.subwindow_mode = IncludeInferiors;
         return XRenderCreatePicture (dpy, draw, format, CPSubwindowMode, &pa);
     }
     return None;
@@ -952,9 +952,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             gint x, y, w, h;
             get_paint_bounds (cw, &x, &y, &w, &h);
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
-            XFixesSubtractRegion (dpy, region, region, cw->borderSize);
             XRenderComposite (dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer,
                               0, 0, 0, 0, x, y, w, h);
+            XFixesSubtractRegion (dpy, region, region, cw->borderSize);
         }
         if (cw->borderClip == None)
         {
