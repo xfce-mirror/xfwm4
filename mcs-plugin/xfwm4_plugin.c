@@ -1331,15 +1331,11 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (hbox);
     gtk_container_add (GTK_CONTAINER (notebook), hbox);
 
-    frame = gtk_frame_new (NULL);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (hbox), frame, TRUE, TRUE, 0);
-
     dialog->scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (dialog->scrolledwindow1);
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow1),
                                     BORDER);
-    gtk_container_add (GTK_CONTAINER (frame), dialog->scrolledwindow1);
+    gtk_box_pack_start (GTK_BOX (hbox), dialog->scrolledwindow1, TRUE, TRUE, 0);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW
                                          (dialog->scrolledwindow1),
                                          GTK_SHADOW_IN);
@@ -1350,11 +1346,6 @@ create_dialog (McsPlugin * mcs_plugin)
                        dialog->treeview1);
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview1),
                                        FALSE);
-
-    label = gtk_label_new (_("Window style"));
-    gtk_widget_show (label);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox1 = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox1);
@@ -1427,6 +1418,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_container_add (GTK_CONTAINER (notebook), hbox);
 
     frame = gtk_frame_new (NULL);
+    gtk_frame_set_shadow_type(frame, GTK_SHADOW_NONE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (hbox), frame, TRUE, TRUE, 0);
 
