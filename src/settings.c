@@ -995,7 +995,7 @@ loadSettings (ScreenInfo *screen_info)
         {"close_window_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
-        {"fullscreen_key", NULL, TRUE},
+        {"fullscreen_key", NULL, FALSE},
         {"hide_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
