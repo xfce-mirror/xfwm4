@@ -3045,7 +3045,7 @@ clientFocusNew(Client * c)
     }
     if (params.focus_new || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-        clientSetFocus (c, FOCUS_SORT);
+        clientSetFocus (c, FOCUS_SORT | FOCUS_IGNORE_MODAL);
         clientPassGrabButton1 (c);
     }
     else
