@@ -939,13 +939,13 @@ handleUnmapNotify (XUnmapEvent * ev)
     
     if (ev->from_configure)
     {
-        TRACE ("Ignoring UnmapNotify caused by parent's resize\n");
+        TRACE ("Ignoring UnmapNotify caused by parent's resize");
         return;
     }
 
     if ((ev->event != ev->window) && (ev->event != root || !ev->send_event))
     {
-        TRACE ("handleUnmapNotify (): Event ignored\n");
+        TRACE ("handleUnmapNotify (): Event ignored");
         return;
     }
 
@@ -1262,7 +1262,7 @@ handleFocusIn (XFocusChangeEvent * ev)
         }
         else
         {
-            clientUpdateFocus (c, FOCUS_NONE);
+            clientSetFocus (NULL, FOCUS_NONE);
             clientPassGrabButton1 (NULL);
         }
         return;
