@@ -1015,7 +1015,7 @@ static inline void handleShape(XShapeEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        frameDraw(c, FALSE);
+        frameDraw(c, TRUE);
     }
 }
 
