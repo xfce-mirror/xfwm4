@@ -108,13 +108,6 @@ void workspaceSwitch(int new_ws, Client * c2)
     data[0] = new_ws;
     XChangeProperty(dpy, root, net_current_desktop, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     workspaceUpdateArea(margins, gnome_margins);
-    /* Just get rid of EnterNotify events when using focus follow mouse */
-    XSync(dpy, 0);
-    if(!params.click_to_focus)
-    {
-        while(XCheckTypedEvent(dpy, EnterNotify, &an_event))
-            ;
-    }
     clientSetFocus(f, TRUE);
 }
 

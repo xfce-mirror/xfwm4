@@ -28,7 +28,7 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 #include "keyboard.h"
-#include "pixmap.h"
+#include "mypixmap.h"
 
 #define CORNER_TOP_LEFT                 0
 #define CORNER_TOP_RIGHT                1

@@ -504,57 +504,57 @@ static void loadTheme(Settings rc[])
         }
     }
 
-    loadPixmap(dpy, &params.sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.sides[SIDE_LEFT][INACTIVE], theme, "left-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.sides[SIDE_RIGHT][ACTIVE], theme, "right-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.sides[SIDE_RIGHT][INACTIVE], theme, "right-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.sides[SIDE_BOTTOM][ACTIVE], theme, "bottom-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.sides[SIDE_BOTTOM][INACTIVE], theme, "bottom-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_TOP_LEFT][ACTIVE], theme, "top-left-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_TOP_LEFT][INACTIVE], theme, "top-left-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_TOP_RIGHT][ACTIVE], theme, "top-right-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_TOP_RIGHT][INACTIVE], theme, "top-right-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_LEFT][ACTIVE], theme, "bottom-left-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_LEFT][INACTIVE], theme, "bottom-left-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme, "bottom-right-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme, "bottom-right-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[HIDE_BUTTON][ACTIVE], theme, "hide-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[HIDE_BUTTON][INACTIVE], theme, "hide-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[HIDE_BUTTON][PRESSED], theme, "hide-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[CLOSE_BUTTON][ACTIVE], theme, "close-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[CLOSE_BUTTON][INACTIVE], theme, "close-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[CLOSE_BUTTON][PRESSED], theme, "close-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][ACTIVE], theme, "maximize-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][INACTIVE], theme, "maximize-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][PRESSED], theme, "maximize-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][ACTIVE], theme, "shade-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][INACTIVE], theme, "shade-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][PRESSED], theme, "shade-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[STICK_BUTTON][ACTIVE], theme, "stick-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[STICK_BUTTON][INACTIVE], theme, "stick-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[STICK_BUTTON][PRESSED], theme, "stick-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][T_ACTIVE], theme, "shade-toggled-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][T_INACTIVE], theme, "shade-toggled-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[SHADE_BUTTON][T_PRESSED], theme, "shade-toggled-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[STICK_BUTTON][T_ACTIVE], theme, "stick-toggled-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[STICK_BUTTON][T_INACTIVE], theme, "stick-toggled-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[STICK_BUTTON][T_PRESSED], theme, "stick-toggled-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme, "maximize-toggled-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme, "maximize-toggled-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.buttons[MAXIMIZE_BUTTON][T_PRESSED], theme, "maximize-toggled-pressed.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_2][INACTIVE], theme, "title-2-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_3][ACTIVE], theme, "title-3-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_3][INACTIVE], theme, "title-3-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_4][ACTIVE], theme, "title-4-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_4][INACTIVE], theme, "title-4-inactive.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 20);
-    loadPixmap(dpy, &params.title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.sides[SIDE_LEFT][ACTIVE], theme, "left-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.sides[SIDE_LEFT][INACTIVE], theme, "left-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.sides[SIDE_RIGHT][ACTIVE], theme, "right-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.sides[SIDE_RIGHT][INACTIVE], theme, "right-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.sides[SIDE_BOTTOM][ACTIVE], theme, "bottom-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.sides[SIDE_BOTTOM][INACTIVE], theme, "bottom-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_TOP_LEFT][ACTIVE], theme, "top-left-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_TOP_LEFT][INACTIVE], theme, "top-left-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_TOP_RIGHT][ACTIVE], theme, "top-right-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_TOP_RIGHT][INACTIVE], theme, "top-right-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_BOTTOM_LEFT][ACTIVE], theme, "bottom-left-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_BOTTOM_LEFT][INACTIVE], theme, "bottom-left-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme, "bottom-right-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme, "bottom-right-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[HIDE_BUTTON][ACTIVE], theme, "hide-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[HIDE_BUTTON][INACTIVE], theme, "hide-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[HIDE_BUTTON][PRESSED], theme, "hide-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[CLOSE_BUTTON][ACTIVE], theme, "close-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[CLOSE_BUTTON][INACTIVE], theme, "close-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[CLOSE_BUTTON][PRESSED], theme, "close-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MAXIMIZE_BUTTON][ACTIVE], theme, "maximize-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MAXIMIZE_BUTTON][INACTIVE], theme, "maximize-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MAXIMIZE_BUTTON][PRESSED], theme, "maximize-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[SHADE_BUTTON][ACTIVE], theme, "shade-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[SHADE_BUTTON][INACTIVE], theme, "shade-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[SHADE_BUTTON][PRESSED], theme, "shade-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[STICK_BUTTON][ACTIVE], theme, "stick-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[STICK_BUTTON][INACTIVE], theme, "stick-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[STICK_BUTTON][PRESSED], theme, "stick-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MENU_BUTTON][ACTIVE], theme, "menu-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MENU_BUTTON][INACTIVE], theme, "menu-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MENU_BUTTON][PRESSED], theme, "menu-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[SHADE_BUTTON][T_ACTIVE], theme, "shade-toggled-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[SHADE_BUTTON][T_INACTIVE], theme, "shade-toggled-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[SHADE_BUTTON][T_PRESSED], theme, "shade-toggled-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[STICK_BUTTON][T_ACTIVE], theme, "stick-toggled-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[STICK_BUTTON][T_INACTIVE], theme, "stick-toggled-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[STICK_BUTTON][T_PRESSED], theme, "stick-toggled-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme, "maximize-toggled-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme, "maximize-toggled-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.buttons[MAXIMIZE_BUTTON][T_PRESSED], theme, "maximize-toggled-pressed.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_1][ACTIVE], theme, "title-1-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_1][INACTIVE], theme, "title-1-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_2][ACTIVE], theme, "title-2-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_2][INACTIVE], theme, "title-2-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_3][ACTIVE], theme, "title-3-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_3][INACTIVE], theme, "title-3-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_4][ACTIVE], theme, "title-4-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_4][INACTIVE], theme, "title-4-inactive.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 20);
+    myPixmapLoad(dpy, &params.title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 20);
 
     if(!g_ascii_strcasecmp("left", getValue("title_alignment", rc)))
     {
@@ -908,27 +908,27 @@ static void unloadTheme(void)
 
     for(i = 0; i < 3; i++)
     {
-        freePixmap(dpy, &params.sides[i][ACTIVE]);
-        freePixmap(dpy, &params.sides[i][INACTIVE]);
+        myPixmapFree(dpy, &params.sides[i][ACTIVE]);
+        myPixmapFree(dpy, &params.sides[i][INACTIVE]);
     }
     for(i = 0; i < 4; i++)
     {
-        freePixmap(dpy, &params.corners[i][ACTIVE]);
-        freePixmap(dpy, &params.corners[i][INACTIVE]);
+        myPixmapFree(dpy, &params.corners[i][ACTIVE]);
+        myPixmapFree(dpy, &params.corners[i][INACTIVE]);
     }
     for(i = 0; i < BUTTON_COUNT; i++)
     {
-        freePixmap(dpy, &params.buttons[i][ACTIVE]);
-        freePixmap(dpy, &params.buttons[i][INACTIVE]);
-        freePixmap(dpy, &params.buttons[i][PRESSED]);
-        freePixmap(dpy, &params.buttons[i][T_ACTIVE]);
-        freePixmap(dpy, &params.buttons[i][T_INACTIVE]);
-        freePixmap(dpy, &params.buttons[i][T_PRESSED]);
+        myPixmapFree(dpy, &params.buttons[i][ACTIVE]);
+        myPixmapFree(dpy, &params.buttons[i][INACTIVE]);
+        myPixmapFree(dpy, &params.buttons[i][PRESSED]);
+        myPixmapFree(dpy, &params.buttons[i][T_ACTIVE]);
+        myPixmapFree(dpy, &params.buttons[i][T_INACTIVE]);
+        myPixmapFree(dpy, &params.buttons[i][T_PRESSED]);
     }
     for(i = 0; i < 5; i++)
     {
-        freePixmap(dpy, &params.title[i][ACTIVE]);
-        freePixmap(dpy, &params.title[i][INACTIVE]);
+        myPixmapFree(dpy, &params.title[i][ACTIVE]);
+        myPixmapFree(dpy, &params.title[i][INACTIVE]);
     }
     if(params.box_gc != None)
     {
@@ -977,27 +977,27 @@ gboolean initSettings(void)
     }
     for(i = 0; i < 3; i++)
     {
-        initPixmap(&params.sides[i][ACTIVE]);
-        initPixmap(&params.sides[i][INACTIVE]);
+        myPixmapInit(&params.sides[i][ACTIVE]);
+        myPixmapInit(&params.sides[i][INACTIVE]);
     }
     for(i = 0; i < 4; i++)
     {
-        initPixmap(&params.corners[i][ACTIVE]);
-        initPixmap(&params.corners[i][INACTIVE]);
+        myPixmapInit(&params.corners[i][ACTIVE]);
+        myPixmapInit(&params.corners[i][INACTIVE]);
     }
     for(i = 0; i < BUTTON_COUNT; i++)
     {
-        initPixmap(&params.buttons[i][ACTIVE]);
-        initPixmap(&params.buttons[i][INACTIVE]);
-        initPixmap(&params.buttons[i][PRESSED]);
-        initPixmap(&params.buttons[i][T_ACTIVE]);
-        initPixmap(&params.buttons[i][T_INACTIVE]);
-        initPixmap(&params.buttons[i][T_PRESSED]);
+        myPixmapInit(&params.buttons[i][ACTIVE]);
+        myPixmapInit(&params.buttons[i][INACTIVE]);
+        myPixmapInit(&params.buttons[i][PRESSED]);
+        myPixmapInit(&params.buttons[i][T_ACTIVE]);
+        myPixmapInit(&params.buttons[i][T_INACTIVE]);
+        myPixmapInit(&params.buttons[i][T_PRESSED]);
     }
     for(i = 0; i < 5; i++)
     {
-        initPixmap(&params.title[i][ACTIVE]);
-        initPixmap(&params.title[i][INACTIVE]);
+        myPixmapInit(&params.title[i][ACTIVE]);
+        myPixmapInit(&params.title[i][INACTIVE]);
     }
     if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
     {

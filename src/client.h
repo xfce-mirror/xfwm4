@@ -41,7 +41,7 @@
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
-#include "pixmap.h"
+#include "mypixmap.h"
 #include "mywindow.h"
 #include "settings.h"
 

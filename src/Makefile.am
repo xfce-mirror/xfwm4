@@ -18,12 +18,12 @@ xfwm4_SOURCES =								\
 	menu.h 								\
 	misc.c 								\
 	misc.h 								\
+	mypixmap.c 							\
+	mypixmap.h 							\
 	mywindow.c 							\
 	mywindow.h 							\
 	parserc.c 							\
 	parserc.h 							\
-	pixmap.c 							\
-	pixmap.h 							\
 	session.c 							\
 	session.h 							\
 	settings.c 							\

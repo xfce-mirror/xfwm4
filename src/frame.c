@@ -259,7 +259,7 @@ static inline void frameCreateTitlePixmap(Client * c, int state, int left, int r
         }
     }
 
-    createPixmap(dpy, pm, width, frameTop(c));
+    myPixmapCreate(dpy, pm, width, frameTop(c));
     gpixmap = gdk_pixmap_foreign_new(pm->pixmap);
     gdk_drawable_set_colormap(gpixmap, gdk_colormap_get_system());
     gc = gdk_gc_new(gpixmap);
@@ -601,19 +601,19 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
         {
             if(c->pm_cache.previous_width != c->width)
             {
-                freePixmap(dpy, &c->pm_cache.pm_title[ACTIVE]);
-                freePixmap(dpy, &c->pm_cache.pm_title[INACTIVE]);
-                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_title[ACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_title[INACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
                 c->pm_cache.previous_width = c->width;
                 requires_clearing = TRUE;
             }
             if(c->pm_cache.previous_height != c->height)
             {
-                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-                freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+                myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
                 c->pm_cache.previous_height = c->height;
                 requires_clearing = TRUE;
             }
@@ -688,7 +688,7 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
 
         if(c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap == None)
         {
-            createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][state], frameLeft(c), left_height);
+            myPixmapCreate(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][state], frameLeft(c), left_height);
             requires_clearing = TRUE;
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_LEFT][state].pixmap, params.sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
@@ -696,7 +696,7 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
 
         if(c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap == None)
         {
-            createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][state], frameRight(c), right_height);
+            myPixmapCreate(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][state], frameRight(c), right_height);
             requires_clearing = TRUE;
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_RIGHT][state].pixmap, params.sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
@@ -704,7 +704,7 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
 
         if(c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap == None)
         {
-            createPixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][state], bottom_width, frameBottom(c));
+            myPixmapCreate(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][state], bottom_width, frameBottom(c));
             requires_clearing = TRUE;
         }
         fillRectangle(dpy, c->pm_cache.pm_sides[SIDE_BOTTOM][state].pixmap, params.sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width, frameBottom(c));

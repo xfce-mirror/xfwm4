@@ -27,16 +27,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>
-#include "pixmap.h"
+#include "mypixmap.h"
 #include "main.h"
 #include "debug.h"
 
-gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
+gboolean myPixmapLoad(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, XpmColorSymbol * cs, gint n)
 {
     gchar *filename;
     XpmAttributes attr;
 
-    DBG("entering loadPixmap\n");
+    DBG("entering myPixmapLoad\n");
 
     g_return_val_if_fail(dir != NULL, FALSE);
     g_return_val_if_fail(file != NULL, FALSE);
@@ -67,12 +67,12 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, Xpm
     return TRUE;
 }
 
-void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
+void myPixmapCreate(Display * dpy, MyPixmap * pm, gint width, gint height)
 {
-    DBG("entering createPixmap, width=%i, height=%i\n", width, height);
+    DBG("entering myPixmapCreate, width=%i, height=%i\n", width, height);
     if((width < 1) || (height < 1))
     {
-        initPixmap(pm);
+        myPixmapInit(pm);
     }
     else
     {
@@ -83,7 +83,7 @@ void createPixmap(Display * dpy, MyPixmap * pm, gint width, gint height)
     }
 }
 
-void initPixmap(MyPixmap * pm)
+void myPixmapInit(MyPixmap * pm)
 {
     pm->pixmap = None;
     pm->mask = None;
@@ -91,9 +91,9 @@ void initPixmap(MyPixmap * pm)
     pm->height = 0;
 }
 
-void freePixmap(Display * dpy, MyPixmap * pm)
+void myPixmapFree(Display * dpy, MyPixmap * pm)
 {
-    DBG("entering freePixmap\n");
+    DBG("entering myPixmapFree\n");
 
     if(pm->pixmap != None)
     {

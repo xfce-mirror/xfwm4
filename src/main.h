@@ -42,7 +42,7 @@
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
-#include "pixmap.h"
+#include "mypixmap.h"
 #include "parserc.h"
 
 /*

@@ -18,8 +18,8 @@
  
  */
 
-#ifndef INC_PIXMAP_H
-#define INC_PIXMAP_H
+#ifndef INC_MYPIXMAP_H
+#define INC_MYPIXMAP_H
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -35,9 +35,9 @@ typedef struct
 }
 MyPixmap;
 
-gboolean loadPixmap(Display *, MyPixmap *, gchar *, gchar *, XpmColorSymbol *, gint);
-void createPixmap(Display *, MyPixmap *, gint, gint);
-void initPixmap(MyPixmap *);
-void freePixmap(Display *, MyPixmap *);
+gboolean myPixmapLoad(Display *, MyPixmap *, gchar *, gchar *, XpmColorSymbol *, gint);
+void myPixmapCreate(Display *, MyPixmap *, gint, gint);
+void myPixmapInit(MyPixmap *);
+void myPixmapFree(Display *, MyPixmap *);
 
-#endif /* INC_PIXMAP_H */
+#endif /* INC_MYPIXMAP_H */

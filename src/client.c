@@ -39,7 +39,7 @@
 #include "frame.h"
 #include "hints.h"
 #include "workspaces.h"
-#include "pixmap.h"
+#include "mypixmap.h"
 #include "mywindow.h"
 #include "settings.h"
 #include "tabwin.h"
@@ -2043,14 +2043,14 @@ void clientClearPixmapCache(Client * c)
 {
     g_return_if_fail(c != NULL);
 
-    freePixmap(dpy, &c->pm_cache.pm_title[ACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_title[INACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-    freePixmap(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_title[ACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_title[INACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+    myPixmapFree(dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
 }
 
 void clientFrame(Window w, gboolean initial)
@@ -2118,14 +2118,14 @@ void clientFrame(Window w, gboolean initial)
     c->cmap = attr.colormap;
 
     /* Initialize pixmap caching */
-    initPixmap(&c->pm_cache.pm_title[ACTIVE]);
-    initPixmap(&c->pm_cache.pm_title[INACTIVE]);
-    initPixmap(&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-    initPixmap(&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-    initPixmap(&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-    initPixmap(&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-    initPixmap(&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-    initPixmap(&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_title[ACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_title[INACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+    myPixmapInit(&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
     c->pm_cache.previous_width = -1;
     c->pm_cache.previous_height = -1;
 
@@ -2588,13 +2588,13 @@ void clientShow(Client * c, gboolean change_state)
         CLIENT_FLAG_SET(c2, CLIENT_FLAG_VISIBLE);
         XMapWindow(dpy, c2->window);
         XMapWindow(dpy, c2->frame);
-	if(change_state)
-	{
+        if(change_state)
+        {
             CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_HIDDEN);
             setWMState(dpy, c2->window, NormalState);
             workspaceUpdateArea(margins, gnome_margins);
-	}
-	clientSetNetState(c2);
+        }
+        clientSetNetState(c2);
     }
     g_slist_free(list_of_windows);
 }
@@ -2617,14 +2617,14 @@ void clientHide(Client * c, gboolean change_state)
         XUnmapWindow(dpy, c2->window);
         XUnmapWindow(dpy, c2->frame);
         CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_VISIBLE);
-	if(change_state)
-	{
+        if(change_state)
+        {
             CLIENT_FLAG_SET(c2, CLIENT_FLAG_HIDDEN);
             setWMState(dpy, c2->window, IconicState);
             workspaceUpdateArea(margins, gnome_margins);
-	}
-	c2->ignore_unmap++;
-	clientSetNetState(c2);
+        }
+        c2->ignore_unmap++;
+        clientSetNetState(c2);
     }
     g_slist_free(list_of_windows);
 }
@@ -2841,12 +2841,12 @@ void clientSetLayer(Client * c, int l)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-	if(c2->win_layer != l)
-	{
+        if(c2->win_layer != l)
+        {
             DBG("setting client \"%s\" (0x%lx) layer to %d\n", c2->name, c2->window, l);
             c2->win_layer = l;
             setGnomeHint(dpy, c2->window, win_layer, l);
-	}
+        }
     }
     g_slist_free(list_of_windows);
     if(last_raise == c)
@@ -2870,33 +2870,33 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
-	if(c2->win_workspace != ws)
-	{
+        if(c2->win_workspace != ws)
+        {
             DBG("setting client \"%s\" (0x%lx) to workspace %d\n", c2->name, c2->window, ws);
-	    setGnomeHint(dpy, c2->window, win_workspace, ws);
-	    c2->win_workspace = ws;
-	    setNetHint(dpy, c2->window, net_wm_desktop, (unsigned long)c2->win_workspace);
-	    CLIENT_FLAG_SET(c2, CLIENT_FLAG_WORKSPACE_SET);
+            setGnomeHint(dpy, c2->window, win_workspace, ws);
+            c2->win_workspace = ws;
+            setNetHint(dpy, c2->window, net_wm_desktop, (unsigned long)c2->win_workspace);
+            CLIENT_FLAG_SET(c2, CLIENT_FLAG_WORKSPACE_SET);
 
-	    if(manage_mapping && !(c2->transient_for) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
-	    {
-        	if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
-        	{
-        	    clientShow(c2, False);
-        	}
-        	else
-        	{
-        	    if(ws == workspace)
-        	    {
-                	clientShow(c2, False);
-        	    }
-        	    else
-        	    {
-                	clientHide(c2, False);
-        	    }
-        	}
-	    }
-	}
+            if(manage_mapping && !(c2->transient_for) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
+            {
+                if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+                {
+                    clientShow(c2, False);
+                }
+                else
+                {
+                    if(ws == workspace)
+                    {
+                        clientShow(c2, False);
+                    }
+                    else
+                    {
+                        clientHide(c2, False);
+                    }
+                }
+            }
+        }
     }
     g_slist_free(list_of_windows);
 }
@@ -2982,22 +2982,22 @@ void clientStick(Client * c, gboolean include_transients)
     if(include_transients)
     {
         list_of_windows = clientListTransients(c);
-	for(index = list_of_windows; index; index = g_slist_next(index))
-	{
+        for(index = list_of_windows; index; index = g_slist_next(index))
+        {
             c2 = (Client *) index->data;
-	    c2->win_state |= WIN_STATE_STICKY;
-	    CLIENT_FLAG_SET(c2, CLIENT_FLAG_STICKY);
-	    setGnomeHint(dpy, c2->window, win_state, c2->win_state);
+            c2->win_state |= WIN_STATE_STICKY;
+            CLIENT_FLAG_SET(c2, CLIENT_FLAG_STICKY);
+            setGnomeHint(dpy, c2->window, win_state, c2->win_state);
             clientSetNetState(c2);
-	}
+        }
         clientSetWorkspace(c, workspace, TRUE);
-	g_slist_free(list_of_windows);
+        g_slist_free(list_of_windows);
     }
     else
     {
-	c->win_state |= WIN_STATE_STICKY;
-	CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
-	setGnomeHint(dpy, c->window, win_state, c->win_state);
+        c->win_state |= WIN_STATE_STICKY;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+        setGnomeHint(dpy, c->window, win_state, c->win_state);
         clientSetNetState(c);
         clientSetWorkspace(c, workspace, TRUE);
     }
@@ -3016,23 +3016,23 @@ void clientUnstick(Client * c, gboolean include_transients)
     if(include_transients)
     {
         list_of_windows = clientListTransients(c);
-	for(index = list_of_windows; index; index = g_slist_next(index))
-	{
+        for(index = list_of_windows; index; index = g_slist_next(index))
+        {
             c2 = (Client *) index->data;
-	    c2->win_state &= ~WIN_STATE_STICKY;
-	    CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_STICKY);
-	    setGnomeHint(dpy, c2->window, win_state, c2->win_state);
-	    clientSetNetState(c2);
-	}
+            c2->win_state &= ~WIN_STATE_STICKY;
+            CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_STICKY);
+            setGnomeHint(dpy, c2->window, win_state, c2->win_state);
+            clientSetNetState(c2);
+        }
         clientSetWorkspace(c, workspace, TRUE);
-	g_slist_free(list_of_windows);
+        g_slist_free(list_of_windows);
     }
     else
     {
-	c->win_state &= ~WIN_STATE_STICKY;
-	CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
-	setGnomeHint(dpy, c->window, win_state, c->win_state);
-	clientSetNetState(c);
+        c->win_state &= ~WIN_STATE_STICKY;
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
+        setGnomeHint(dpy, c->window, win_state, c->win_state);
+        clientSetNetState(c);
         clientSetWorkspace(c, workspace, TRUE);
     }
 }

@@ -190,12 +190,12 @@ xfwm4_SOURCES = \
 	menu.h 								\
 	misc.c 								\
 	misc.h 								\
+	mypixmap.c 							\
+	mypixmap.h 							\
 	mywindow.c 							\
 	mywindow.h 							\
 	parserc.c 							\
 	parserc.h 							\
-	pixmap.c 							\
-	pixmap.h 							\
 	session.c 							\
 	session.h 							\
 	settings.c 							\
@@ -255,8 +255,8 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-frame.$(OBJEXT) xfwm4-hints.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
-	xfwm4-mywindow.$(OBJEXT) xfwm4-parserc.$(OBJEXT) \
-	xfwm4-pixmap.$(OBJEXT) xfwm4-session.$(OBJEXT) \
+	xfwm4-mypixmap.$(OBJEXT) xfwm4-mywindow.$(OBJEXT) \
+	xfwm4-parserc.$(OBJEXT) xfwm4-session.$(OBJEXT) \
 	xfwm4-settings.$(OBJEXT) xfwm4-startup_notification.$(OBJEXT) \
 	xfwm4-spinning_cursor.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
 	xfwm4-workspaces.$(OBJEXT)
@@ -273,9 +273,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-keyboard.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-main.Po ./$(DEPDIR)/xfwm4-menu.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-misc.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mypixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-mywindow.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-spinning_cursor.Po \
@@ -351,9 +351,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-menu.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-misc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mypixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-mywindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-parserc.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-spinning_cursor.Po@am__quote@
@@ -661,6 +661,39 @@ xfwm4-misc.lo: misc.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-misc.lo `test -f 'misc.c' || echo '$(srcdir)/'`misc.c
 
+xfwm4-mypixmap.o: mypixmap.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mypixmap.o -MD -MP -MF "$(DEPDIR)/xfwm4-mypixmap.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-mypixmap.o `test -f 'mypixmap.c' || echo '$(srcdir)/'`mypixmap.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-mypixmap.Tpo" "$(DEPDIR)/xfwm4-mypixmap.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-mypixmap.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mypixmap.c' object='xfwm4-mypixmap.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-mypixmap.Po' tmpdepfile='$(DEPDIR)/xfwm4-mypixmap.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mypixmap.o `test -f 'mypixmap.c' || echo '$(srcdir)/'`mypixmap.c
+
+xfwm4-mypixmap.obj: mypixmap.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mypixmap.obj -MD -MP -MF "$(DEPDIR)/xfwm4-mypixmap.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-mypixmap.obj `if test -f 'mypixmap.c'; then $(CYGPATH_W) 'mypixmap.c'; else $(CYGPATH_W) '$(srcdir)/mypixmap.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-mypixmap.Tpo" "$(DEPDIR)/xfwm4-mypixmap.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-mypixmap.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mypixmap.c' object='xfwm4-mypixmap.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-mypixmap.Po' tmpdepfile='$(DEPDIR)/xfwm4-mypixmap.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mypixmap.obj `if test -f 'mypixmap.c'; then $(CYGPATH_W) 'mypixmap.c'; else $(CYGPATH_W) '$(srcdir)/mypixmap.c'; fi`
+
+xfwm4-mypixmap.lo: mypixmap.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mypixmap.lo -MD -MP -MF "$(DEPDIR)/xfwm4-mypixmap.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-mypixmap.lo `test -f 'mypixmap.c' || echo '$(srcdir)/'`mypixmap.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-mypixmap.Tpo" "$(DEPDIR)/xfwm4-mypixmap.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-mypixmap.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mypixmap.c' object='xfwm4-mypixmap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-mypixmap.Plo' tmpdepfile='$(DEPDIR)/xfwm4-mypixmap.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-mypixmap.lo `test -f 'mypixmap.c' || echo '$(srcdir)/'`mypixmap.c
+
 xfwm4-mywindow.o: mywindow.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-mywindow.o -MD -MP -MF "$(DEPDIR)/xfwm4-mywindow.Tpo" \
 @am__fastdepCC_TRUE@	  -c -o xfwm4-mywindow.o `test -f 'mywindow.c' || echo '$(srcdir)/'`mywindow.c; \
@@ -726,39 +759,6 @@ xfwm4-parserc.lo: parserc.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-parserc.Plo' tmpdepfile='$(DEPDIR)/xfwm4-parserc.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-parserc.lo `test -f 'parserc.c' || echo '$(srcdir)/'`parserc.c
-
-xfwm4-pixmap.o: pixmap.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-pixmap.o -MD -MP -MF "$(DEPDIR)/xfwm4-pixmap.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o xfwm4-pixmap.o `test -f 'pixmap.c' || echo '$(srcdir)/'`pixmap.c; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-pixmap.Tpo" "$(DEPDIR)/xfwm4-pixmap.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-pixmap.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='pixmap.c' object='xfwm4-pixmap.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-pixmap.Po' tmpdepfile='$(DEPDIR)/xfwm4-pixmap.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-pixmap.o `test -f 'pixmap.c' || echo '$(srcdir)/'`pixmap.c
-
-xfwm4-pixmap.obj: pixmap.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-pixmap.obj -MD -MP -MF "$(DEPDIR)/xfwm4-pixmap.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o xfwm4-pixmap.obj `if test -f 'pixmap.c'; then $(CYGPATH_W) 'pixmap.c'; else $(CYGPATH_W) '$(srcdir)/pixmap.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-pixmap.Tpo" "$(DEPDIR)/xfwm4-pixmap.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-pixmap.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='pixmap.c' object='xfwm4-pixmap.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-pixmap.Po' tmpdepfile='$(DEPDIR)/xfwm4-pixmap.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-pixmap.obj `if test -f 'pixmap.c'; then $(CYGPATH_W) 'pixmap.c'; else $(CYGPATH_W) '$(srcdir)/pixmap.c'; fi`
-
-xfwm4-pixmap.lo: pixmap.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-pixmap.lo -MD -MP -MF "$(DEPDIR)/xfwm4-pixmap.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o xfwm4-pixmap.lo `test -f 'pixmap.c' || echo '$(srcdir)/'`pixmap.c; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-pixmap.Tpo" "$(DEPDIR)/xfwm4-pixmap.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-pixmap.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='pixmap.c' object='xfwm4-pixmap.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-pixmap.Plo' tmpdepfile='$(DEPDIR)/xfwm4-pixmap.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-pixmap.lo `test -f 'pixmap.c' || echo '$(srcdir)/'`pixmap.c
 
 xfwm4-session.o: session.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-session.o -MD -MP -MF "$(DEPDIR)/xfwm4-session.Tpo" \
