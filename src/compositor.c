@@ -1401,14 +1401,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         return;
     }
     
-    if (new->attr.class == InputOnly)
-    {
-        g_free (new);
-        myDisplayUngrabServer (display_info);
-        TRACE ("InputOnly window, 0x%lx not added", id);
-        return;
-    }
-    
     if (c)
     {
         screen_info = c->screen_info;
@@ -1434,33 +1426,31 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
         return;
     }
 
-    if (id == screen_info->xroot)
-    {
-        g_free (new);
-        myDisplayUngrabServer (display_info);
-        TRACE ("Not adding root window, 0x%lx not added", id);
-        return;
-    }
-
-    if (c == NULL)
+    if ((c == NULL) && (new->attr.class != InputOnly))
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
         XSelectInput (display_info->dpy, id, PropertyChangeMask | StructureNotifyMask);
     }
 
-    /* Same for shape events */
+    /* Listen for XShape events if applicable */
     if (display_info->shape)
     {
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
-
 
     new->c = c;
     new->screen_info = screen_info;
     new->id = id;
     new->damaged = FALSE;
     new->viewable = (new->attr.map_state == IsViewable);
-    new->damage = XDamageCreate (myScreenGetXDisplay (screen_info), id, XDamageReportNonEmpty);
+    if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
+    {
+        new->damage = XDamageCreate (myScreenGetXDisplay (screen_info), id, XDamageReportNonEmpty);
+    }
+    else
+    {
+        new->damage = None;
+    }
 #if HAVE_NAME_WINDOW_PIXMAP
     new->name_window_pixmap = None;
 #endif
