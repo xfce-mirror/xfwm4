@@ -1227,12 +1227,19 @@ clientWindowType (Client * c)
     {
         Client *c2;
 
-        TRACE ("Window is a transient or a modal");
+        TRACE ("Window \"%s\" is a transient or a modal", c->name);
 
         c2 = clientGetHighestTransientOrModalFor (c);
         if (c2)
         {
-            c->initial_layer = c2->win_layer;
+            if (clientIsTransient (c));
+            {
+                c->initial_layer = c2->win_layer;
+            }
+            else if (c->initial_layer < c2->win_layer) /* clientIsModal (c) */
+            {
+                c->initial_layer = c2->win_layer;
+            }
             TRACE ("Applied layer is %i", c->initial_layer);
         }
         CLIENT_FLAG_UNSET (c,
