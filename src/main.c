@@ -49,6 +49,7 @@
 #include "workspaces.h"
 #include "session.h"
 #include "startup_notification.h"
+#include "spinning_cursor.h"
 #include "debug.h"
 #include "my_intl.h"
 
@@ -241,7 +242,7 @@ static int initialize(int argc, char **argv)
 
     root_cursor = XCreateFontCursor(dpy, XC_left_ptr);
     move_cursor = XCreateFontCursor(dpy, XC_fleur);
-    busy_cursor = XCreateFontCursor(dpy, XC_watch);
+    busy_cursor = cursorCreateSpinning(dpy, root);
     resize_cursor[CORNER_TOP_LEFT] = XCreateFontCursor(dpy, XC_top_left_corner);
     resize_cursor[CORNER_TOP_RIGHT] = XCreateFontCursor(dpy, XC_top_right_corner);
     resize_cursor[CORNER_BOTTOM_LEFT] = XCreateFontCursor(dpy, XC_bottom_left_corner);

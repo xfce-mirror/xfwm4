@@ -27,6 +27,8 @@ xfwm4_SOURCES = \
 	settings.h \
 	startup_notification.c \
 	startup_notification.h \
+	spinning_cursor.c \
+	spinning_cursor.h \
 	tabwin.c \
 	tabwin.h \
 	workspaces.c \

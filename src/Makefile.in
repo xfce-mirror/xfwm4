@@ -186,6 +186,8 @@ xfwm4_SOURCES = \
 	settings.h \
 	startup_notification.c \
 	startup_notification.h \
+	spinning_cursor.c \
+	spinning_cursor.h \
 	tabwin.c \
 	tabwin.h \
 	workspaces.c \
@@ -214,7 +216,8 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
 	xfwm4-session.$(OBJEXT) xfwm4-settings.$(OBJEXT) \
-	xfwm4-startup_notification.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
+	xfwm4-startup_notification.$(OBJEXT) \
+	xfwm4-spinning_cursor.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
 	xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
@@ -234,6 +237,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-spinning_cursor.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-startup_notification.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-tabwin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
@@ -310,6 +314,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-spinning_cursor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-startup_notification.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-tabwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
@@ -778,6 +783,39 @@ xfwm4-startup_notification.lo: startup_notification.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Plo' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
+
+xfwm4-spinning_cursor.o: spinning_cursor.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-spinning_cursor.o -MD -MP -MF "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-spinning_cursor.o `test -f 'spinning_cursor.c' || echo '$(srcdir)/'`spinning_cursor.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" "$(DEPDIR)/xfwm4-spinning_cursor.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-spinning_cursor.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='spinning_cursor.c' object='xfwm4-spinning_cursor.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-spinning_cursor.Po' tmpdepfile='$(DEPDIR)/xfwm4-spinning_cursor.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-spinning_cursor.o `test -f 'spinning_cursor.c' || echo '$(srcdir)/'`spinning_cursor.c
+
+xfwm4-spinning_cursor.obj: spinning_cursor.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-spinning_cursor.obj -MD -MP -MF "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-spinning_cursor.obj `if test -f 'spinning_cursor.c'; then $(CYGPATH_W) 'spinning_cursor.c'; else $(CYGPATH_W) '$(srcdir)/spinning_cursor.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" "$(DEPDIR)/xfwm4-spinning_cursor.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-spinning_cursor.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='spinning_cursor.c' object='xfwm4-spinning_cursor.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-spinning_cursor.Po' tmpdepfile='$(DEPDIR)/xfwm4-spinning_cursor.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-spinning_cursor.obj `if test -f 'spinning_cursor.c'; then $(CYGPATH_W) 'spinning_cursor.c'; else $(CYGPATH_W) '$(srcdir)/spinning_cursor.c'; fi`
+
+xfwm4-spinning_cursor.lo: spinning_cursor.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-spinning_cursor.lo -MD -MP -MF "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-spinning_cursor.lo `test -f 'spinning_cursor.c' || echo '$(srcdir)/'`spinning_cursor.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-spinning_cursor.Tpo" "$(DEPDIR)/xfwm4-spinning_cursor.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-spinning_cursor.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='spinning_cursor.c' object='xfwm4-spinning_cursor.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-spinning_cursor.Plo' tmpdepfile='$(DEPDIR)/xfwm4-spinning_cursor.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-spinning_cursor.lo `test -f 'spinning_cursor.c' || echo '$(srcdir)/'`spinning_cursor.c
 
 xfwm4-tabwin.o: tabwin.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-tabwin.o -MD -MP -MF "$(DEPDIR)/xfwm4-tabwin.Tpo" \
