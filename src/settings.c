@@ -280,10 +280,20 @@ static void
 loadRcData (Settings rc[])
 {
     const gchar *homedir = xfce_get_userdir ();
+    gchar *keytheme;
+    gchar *keythemevalue;
+
     if (!parseRc ("defaults", DATADIR, rc))
     {
         g_warning (_("%s: Missing defaults file"), progname);
         exit (1);
+    }
+    keythemevalue = getValue ("keytheme", rc);
+    if (keythemevalue)
+    {
+        keytheme = getThemeDir (keythemevalue);
+        parseRc ("keythemerc", keytheme, rc);
+        g_free (keytheme);
     }
     parseRc ("xfwm4rc", homedir, rc);
 }
@@ -970,6 +980,7 @@ loadSettings (void)
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},
+        {"lower_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
         {"maximize_window_key", NULL, TRUE},
@@ -990,6 +1001,7 @@ loadSettings (void)
         {"move_window_workspace_9_key", NULL, TRUE},
         {"next_workspace_key", NULL, TRUE},
         {"prev_workspace_key", NULL, TRUE},
+        {"raise_window_key", NULL, TRUE},
         {"resize_window_down_key", NULL, TRUE},
         {"resize_window_left_key", NULL, TRUE},
         {"resize_window_right_key", NULL, TRUE},
@@ -1025,8 +1037,6 @@ loadSettings (void)
         {"shortcut_8_exec", NULL, FALSE},
         {"shortcut_9_exec", NULL, FALSE},
         {"shortcut_10_exec", NULL, FALSE},
-        {"raise_window_key", NULL, FALSE},
-        {"lower_window_key", NULL, FALSE},
         {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };

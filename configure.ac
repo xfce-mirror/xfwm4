@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.0.0])
+AM_INIT_AUTOMAKE([xfwm4], [4.0.1])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -98,4 +98,5 @@ themes/microdeck/Makefile
 themes/microdeck2/Makefile
 themes/microdeck3/Makefile
 themes/tgc/Makefile
+themes/tgc-large/Makefile
 ])

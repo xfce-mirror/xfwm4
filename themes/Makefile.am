@@ -12,4 +12,5 @@ SUBDIRS =								\
 	microdeck 							\
 	microdeck2 							\
 	microdeck3 							\
-	tgc
+	tgc 	 							\
+	tgc-large

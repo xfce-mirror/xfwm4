@@ -1335,12 +1335,14 @@ clientGrabKeys (Client * c)
     grabKey (dpy, &params.keys[KEY_MAXIMIZE_VERT], c->window);
     grabKey (dpy, &params.keys[KEY_MAXIMIZE_HORIZ], c->window);
     grabKey (dpy, &params.keys[KEY_SHADE_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_STICK_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_RAISE_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_LOWER_WINDOW], c->window);
     grabKey (dpy, &params.keys[KEY_CYCLE_WINDOWS], c->window);
     grabKey (dpy, &params.keys[KEY_NEXT_WORKSPACE], c->window);
     grabKey (dpy, &params.keys[KEY_PREV_WORKSPACE], c->window);
     grabKey (dpy, &params.keys[KEY_ADD_WORKSPACE], c->window);
     grabKey (dpy, &params.keys[KEY_DEL_WORKSPACE], c->window);
-    grabKey (dpy, &params.keys[KEY_STICK_WINDOW], c->window);
     grabKey (dpy, &params.keys[KEY_WORKSPACE_1], c->window);
     grabKey (dpy, &params.keys[KEY_WORKSPACE_2], c->window);
     grabKey (dpy, &params.keys[KEY_WORKSPACE_3], c->window);
@@ -1371,8 +1373,6 @@ clientGrabKeys (Client * c)
     grabKey (dpy, &params.keys[KEY_SHORTCUT_8], c->window);
     grabKey (dpy, &params.keys[KEY_SHORTCUT_9], c->window);
     grabKey (dpy, &params.keys[KEY_SHORTCUT_10], c->window);
-    grabKey (dpy, &params.keys[KEY_RAISE_WINDOW], c->window);
-    grabKey (dpy, &params.keys[KEY_LOWER_WINDOW], c->window);
 }
 
 void
@@ -2610,7 +2610,7 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY, CFG_FORCE_REDRAW);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
 
@@ -4162,13 +4162,13 @@ clientShade (Client * c)
 
     c->win_state |= WIN_STATE_SHADED;
     CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
-    clientSetNetState (c);
 }
 
 void
@@ -4187,13 +4187,13 @@ clientUnshade (Client * c)
     }
     c->win_state &= ~WIN_STATE_SHADED;
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_SHADED);
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
-    clientSetNetState (c);
 }
 
 void
@@ -4338,6 +4338,7 @@ clientToggleFullscreen (Client * c)
         wc.height = c->fullscreen_old_height;
         layer = c->fullscreen_old_layer;
     }
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
@@ -4349,7 +4350,6 @@ clientToggleFullscreen (Client * c)
         c->height = wc.height;
         c->width = wc.width;
     }
-    clientSetNetState (c);
     clientSetLayer (c, layer);
 }
 
@@ -4498,6 +4498,7 @@ clientToggleMaximized (Client * c, int mode)
         wc.height = c->height;
     }
 
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
@@ -4509,7 +4510,6 @@ clientToggleMaximized (Client * c, int mode)
         c->height = wc.height;
         c->width = wc.width;
     }
-    clientSetNetState (c);
 }
 
 inline gboolean
