@@ -128,12 +128,6 @@
                                         (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
                                        !(c->legacy_fullscreen))
-/* If you want static gravity windows to be alse excluded jusr add the
-   following statement to the list above. 
-                                        && \
-				       !(c->gravity == StaticGravity))
-
- */
 
 #define WINDOW_TYPE_DIALOG               (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
 #define WINDOW_TYPE_DONT_PLACE           (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
