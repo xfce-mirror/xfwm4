@@ -714,14 +714,14 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     if (c != clientGetFocus ())
     {
         TRACE ("\"%s\" is not the active window", c->name);
-	if (c->urgent)
-	{
+        if (c->urgent)
+        {
             state = (c->seen_active ? ACTIVE : INACTIVE);
-	}
-	else
-	{
+        }
+        else
+        {
             state = INACTIVE;
-	}
+        }
     }
 
     if ((state == INACTIVE) && ((c->draw_active) || (c->first_map)))

@@ -386,7 +386,7 @@ clientUpdateUrgency (Client *c)
     c->seen_active = FALSE;
     if (c->blink_timeout_id)
     {
-	g_source_remove (c->blink_timeout_id);
+        g_source_remove (c->blink_timeout_id);
         frameDraw (c, FALSE, FALSE);
     }
     c->urgent = FALSE;
@@ -394,7 +394,7 @@ clientUpdateUrgency (Client *c)
     c->blink_timeout_id = 0;
     if ((c->wmhints) && (c->wmhints->flags & XUrgencyHint))
     {
-	c->urgent = TRUE;
+        c->urgent = TRUE;
         c->blink_timeout_id =  g_timeout_add_full (0, 500, (GtkFunction) urgent_cb, (gpointer) c, NULL);
     }
     
@@ -3221,7 +3221,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             }
         }
         clientConstrainRatio (c, c->width, c->height, passdata->corner);
-	
+        
         clientSetWidth (c, c->width);
         if ((passdata->corner == CORNER_TOP_LEFT)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
