@@ -1098,7 +1098,7 @@ is_modifier (guint keycode)
 }
 
 static gboolean
-cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer data)
+cb_compose_dialog_key_press (GtkWidget * widget, GdkEventKey * event, gpointer data)
 {
     Itf *itf = (Itf *) data;
 
@@ -1114,7 +1114,7 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
     guint keyval;
     gchar *accelerator;
     gchar **shortcut;
-    
+
     /* Release keyboard */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
@@ -1290,7 +1290,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     gtk_button_box_set_layout (GTK_BUTTON_BOX (GTK_DIALOG (dialog)->action_area), GTK_BUTTONBOX_SPREAD);
 
     /* Connect signals */
-    g_signal_connect (G_OBJECT (dialog), "key-release-event", G_CALLBACK (cb_compose_dialog_key_release), itf);
+    g_signal_connect (G_OBJECT (dialog), "key-press-event", G_CALLBACK (cb_compose_dialog_key_press), itf);
 
     /* Take control on the keyboard */
     if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE, GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
@@ -1508,7 +1508,7 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         gtk_button_box_set_layout (GTK_BUTTON_BOX (GTK_DIALOG (dialog)->action_area), GTK_BUTTONBOX_SPREAD);
 
         /* Connect signals */
-        g_signal_connect (G_OBJECT (dialog), "key-release-event", G_CALLBACK (cb_compose_dialog_key_release), itf);
+        g_signal_connect (G_OBJECT (dialog), "key-pess-event", G_CALLBACK (cb_compose_dialog_key_press), itf);
 
         /* Take control on the keyboard */
         if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE, GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
