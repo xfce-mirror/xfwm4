@@ -71,6 +71,7 @@ workspaceSwitch (int new_ws, Client * c2)
     workspace = new_ws;
     if (c2)
     {
+        clientRaise (c2);
         clientSetWorkspace (c2, new_ws, FALSE);
     }
 
