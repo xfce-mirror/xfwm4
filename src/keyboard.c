@@ -38,7 +38,6 @@ unsigned int AltMask;
 unsigned int MetaMask;
 unsigned int NumLockMask;
 unsigned int ScrollLockMask;
-unsigned int CapsLockMask;
 unsigned int SuperMask;
 unsigned int HyperMask;
 
@@ -145,19 +144,19 @@ grabKey (Display * dpy, MyKey * key, Window w)
                 FALSE, GrabModeAsync, GrabModeAsync);
             XGrabKey (dpy, key->keycode, key->modifier | NumLockMask, w,
                 FALSE, GrabModeAsync, GrabModeAsync);
-            XGrabKey (dpy, key->keycode, key->modifier | CapsLockMask, w,
+            XGrabKey (dpy, key->keycode, key->modifier | LockMask, w,
                 FALSE, GrabModeAsync, GrabModeAsync);
             XGrabKey (dpy, key->keycode,
                 key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
                 GrabModeAsync, GrabModeAsync);
             XGrabKey (dpy, key->keycode,
-                key->modifier | ScrollLockMask | CapsLockMask, w, FALSE,
+                key->modifier | ScrollLockMask | LockMask, w, FALSE,
                 GrabModeAsync, GrabModeAsync);
             XGrabKey (dpy, key->keycode,
-                key->modifier | CapsLockMask | NumLockMask, w, FALSE,
+                key->modifier | LockMask | NumLockMask, w, FALSE,
                 GrabModeAsync, GrabModeAsync);
             XGrabKey (dpy, key->keycode,
-                key->modifier | ScrollLockMask | CapsLockMask | NumLockMask,
+                key->modifier | ScrollLockMask | LockMask | NumLockMask,
                 w, FALSE, GrabModeAsync, GrabModeAsync);
         }
     }
@@ -197,23 +196,23 @@ grabButton (Display * dpy, int button, int modifier, Window w)
             w, FALSE,
             ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
             None, None);
-        XGrabButton (dpy, button, modifier | CapsLockMask, w, FALSE,
+        XGrabButton (dpy, button, modifier | LockMask, w, FALSE,
             ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
             None, None);
         XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask, 
             w, FALSE,
             ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
             None, None);
-        XGrabButton (dpy, button, modifier | ScrollLockMask | CapsLockMask, 
+        XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask, 
             w, FALSE,
             ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
             None, None);
-        XGrabButton (dpy, button, modifier | CapsLockMask | NumLockMask, 
+        XGrabButton (dpy, button, modifier | LockMask | NumLockMask, 
             w, FALSE,
             ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
             None, None);
         XGrabButton (dpy, button, 
-            modifier | ScrollLockMask | CapsLockMask | NumLockMask, 
+            modifier | ScrollLockMask | LockMask | NumLockMask, 
             w, FALSE,
             ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
             None, None);
@@ -237,11 +236,11 @@ ungrabButton (Display * dpy, int button, int modifier, Window w)
         XUngrabButton (dpy, button, modifier, w);
         XUngrabButton (dpy, button, modifier | ScrollLockMask, w);
         XUngrabButton (dpy, button, modifier | NumLockMask, w);
-        XUngrabButton (dpy, button, modifier | CapsLockMask, w);
+        XUngrabButton (dpy, button, modifier | LockMask, w);
         XUngrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask, w);
-        XUngrabButton (dpy, button, modifier | ScrollLockMask | CapsLockMask, w);
-        XUngrabButton (dpy, button, modifier | CapsLockMask | NumLockMask, w);
-        XUngrabButton (dpy, button, modifier | ScrollLockMask | CapsLockMask | NumLockMask, w);
+        XUngrabButton (dpy, button, modifier | ScrollLockMask | LockMask, w);
+        XUngrabButton (dpy, button, modifier | LockMask | NumLockMask, w);
+        XUngrabButton (dpy, button, modifier | ScrollLockMask | LockMask | NumLockMask, w);
     }
 }
 
@@ -255,8 +254,12 @@ initModifiers (Display * dpy)
     int min_keycode;
     int max_keycode;
 
-    AltMask = MetaMask = NumLockMask = ScrollLockMask = CapsLockMask =
-        SuperMask = HyperMask = 0;
+    AltMask = 0;
+    MetaMask = 0;
+    NumLockMask = 0;
+    ScrollLockMask = 0;
+    SuperMask = 0;
+    HyperMask = 0;
     keysyms_per_keycode = 0;
     min_keycode = 0;
     max_keycode = 0;
@@ -271,7 +274,7 @@ initModifiers (Display * dpy)
 
         if ((keycode >= min_keycode) && (keycode <= max_keycode))
         {
-            int j = 0;
+            int j;
             KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
 
             for (j = 0; j < keysyms_per_keycode; j++)
@@ -279,10 +282,6 @@ initModifiers (Display * dpy)
                 if (syms[j] == XK_Num_Lock)
                 {
                     NumLockMask |= (1 << ( i / modmap->max_keypermod));
-                }
-                else if (syms[j] == XK_Caps_Lock)
-                {
-                    CapsLockMask |= (1 << ( i / modmap->max_keypermod));
                 }
                 else if (syms[j] == XK_Scroll_Lock)
                 {
@@ -307,7 +306,6 @@ initModifiers (Display * dpy)
             }
         }
     }
-
     KeyMask =
         ControlMask | ShiftMask | AltMask | MetaMask | SuperMask | HyperMask;
 
