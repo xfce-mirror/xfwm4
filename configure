@@ -3028,14 +3028,13 @@ fi
 rm -f conftest*
 
 
-
-        echo "$as_me:$LINENO: checking for strerror in -lcposix" >&5
-echo $ECHO_N "checking for strerror in -lcposix... $ECHO_C" >&6
-if test "${ac_cv_lib_cposix_strerror+set}" = set; then
+echo "$as_me:$LINENO: checking for library containing strerror" >&5
+echo $ECHO_N "checking for library containing strerror... $ECHO_C" >&6
+if test "${ac_cv_search_strerror+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lcposix  $LIBS"
+  ac_func_search_save_LIBS=$LIBS
+ac_cv_search_strerror=no
 cat >conftest.$ac_ext <<_ACEOF
 #line $LINENO "configure"
 /* confdefs.h.  */
@@ -3071,23 +3070,69 @@ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_lib_cposix_strerror=yes
+  ac_cv_search_strerror="none required"
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-ac_cv_lib_cposix_strerror=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-echo "$as_me:$LINENO: result: $ac_cv_lib_cposix_strerror" >&5
-echo "${ECHO_T}$ac_cv_lib_cposix_strerror" >&6
-if test $ac_cv_lib_cposix_strerror = yes; then
-  LIBS="$LIBS -lcposix"
-fi
+if test "$ac_cv_search_strerror" = no; then
+  for ac_lib in cposix; do
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
 
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char strerror ();
+int
+main ()
+{
+strerror ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_search_strerror="-l$ac_lib"
+break
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
 
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+  done
+fi
+LIBS=$ac_func_search_save_LIBS
+fi
+echo "$as_me:$LINENO: result: $ac_cv_search_strerror" >&5
+echo "${ECHO_T}$ac_cv_search_strerror" >&6
+if test "$ac_cv_search_strerror" != no; then
+  test "$ac_cv_search_strerror" = "none required" || LIBS="$ac_cv_search_strerror $LIBS"
+
+fi
 
 echo "$as_me:$LINENO: checking for ANSI C header files" >&5
 echo $ECHO_N "checking for ANSI C header files... $ECHO_C" >&6
@@ -4680,7 +4725,7 @@ irix5* | irix6*)
 # This must be Linux ELF.
 linux-gnu*)
   case $host_cpu in
-  alpha* | hppa* | i*86 | mips | mipsel | powerpc* | sparc* | ia64* )
+  alpha* | hppa* | i*86 | powerpc* | sparc* | ia64* )
     lt_cv_deplibs_check_method=pass_all ;;
   *)
     # glibc up to 2.1.1 does not perform some relocations on ARM
@@ -5080,7 +5125,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5083 "configure"' > conftest.$ac_ext
+  echo '#line 5128 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -6623,8 +6668,94 @@ else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-CATOBJEXT=.mo
-             DATADIRNAME=lib
+case $host in
+	    *-*-solaris*)
+	    	                	    	                echo "$as_me:$LINENO: checking for bind_textdomain_codeset" >&5
+echo $ECHO_N "checking for bind_textdomain_codeset... $ECHO_C" >&6
+if test "${ac_cv_func_bind_textdomain_codeset+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char bind_textdomain_codeset (); below.
+    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+    <limits.h> exists even on freestanding compilers.  */
+#ifdef __STDC__
+# include <limits.h>
+#else
+# include <assert.h>
+#endif
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char bind_textdomain_codeset ();
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_bind_textdomain_codeset) || defined (__stub___bind_textdomain_codeset)
+choke me
+#else
+char (*f) () = bind_textdomain_codeset;
+#endif
+#ifdef __cplusplus
+}
+#endif
+
+int
+main ()
+{
+return f != bind_textdomain_codeset;
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_func_bind_textdomain_codeset=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_func_bind_textdomain_codeset=no
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+fi
+echo "$as_me:$LINENO: result: $ac_cv_func_bind_textdomain_codeset" >&5
+echo "${ECHO_T}$ac_cv_func_bind_textdomain_codeset" >&6
+if test $ac_cv_func_bind_textdomain_codeset = yes; then
+  CATOBJEXT=.gmo
+               DATADIRNAME=share
+else
+  CATOBJEXT=.mo
+               DATADIRNAME=lib
+fi
+
+	    ;;
+	    *)
+	    CATOBJEXT=.mo
+            DATADIRNAME=lib
+	    ;;
+	    esac
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
 	  INSTOBJEXT=.mo
@@ -6685,10 +6816,26 @@ echo "${ECHO_T}found xgettext program is not GNU xgettext; ignore it" >&6
        echo "$as_me:$LINENO: checking for catalogs to be installed" >&5
 echo $ECHO_N "checking for catalogs to be installed... $ECHO_C" >&6
        NEW_LINGUAS=
-       for lang in ${LINGUAS=$ALL_LINGUAS}; do
-         case "$ALL_LINGUAS" in
-          *$lang*) NEW_LINGUAS="$NEW_LINGUAS $lang" ;;
-         esac
+       for presentlang in $ALL_LINGUAS; do
+         useit=no
+         if test "%UNSET%" != "${LINGUAS-%UNSET%}"; then
+           desiredlanguages="$LINGUAS"
+         else
+           desiredlanguages="$ALL_LINGUAS"
+         fi
+         for desiredlang in $desiredlanguages; do
+ 	   # Use the presentlang catalog if desiredlang is
+           #   a. equal to presentlang, or
+           #   b. a variant of presentlang (because in this case,
+           #      presentlang can be used as a fallback for messages
+           #      which are not translated in the desiredlang catalog).
+           case "$desiredlang" in
+             "$presentlang"*) useit=yes;;
+           esac
+         done
+         if test $useit = yes; then
+           NEW_LINGUAS="$NEW_LINGUAS $presentlang"
+         fi
        done
        LINGUAS=$NEW_LINGUAS
        echo "$as_me:$LINENO: result: $LINGUAS" >&5
@@ -8239,23 +8386,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= 0.0.3" >&5
-echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= 0.0.3... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= 3.91.0" >&5
+echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= 3.91.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4mcs-client-1.0 >= 0.0.3" ; then
+        if $PKG_CONFIG --exists "libxfce4mcs-client-1.0 >= 3.91.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_CLIENT_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_CLIENT_CFLAGS... $ECHO_C" >&6
-            LIBXFCE4MCS_CLIENT_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-client-1.0 >= 0.0.3"`
+            LIBXFCE4MCS_CLIENT_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-client-1.0 >= 3.91.0"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_CLIENT_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_CLIENT_LIBS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_CLIENT_LIBS... $ECHO_C" >&6
-            LIBXFCE4MCS_CLIENT_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-client-1.0 >= 0.0.3"`
+            LIBXFCE4MCS_CLIENT_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-client-1.0 >= 3.91.0"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_CLIENT_LIBS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
         else
@@ -8263,7 +8410,7 @@ echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
             LIBXFCE4MCS_CLIENT_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCE4MCS_CLIENT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-client-1.0 >= 0.0.3"`
+            LIBXFCE4MCS_CLIENT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-client-1.0 >= 3.91.0"`
             echo $LIBXFCE4MCS_CLIENT_PKG_ERRORS
         fi
 
@@ -8278,12 +8425,12 @@ echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-client-1.0 >= 0.0.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4mcs-client-1.0 >= 0.0.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-client-1.0 >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4mcs-client-1.0 >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCE4MCS_CLIENT_REQUIRED_VERSION=0.0.3
+  LIBXFCE4MCS_CLIENT_REQUIRED_VERSION=3.91.0
 
 
 
@@ -8341,23 +8488,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4mcs-manager-1.0 >= 0.0.3" >&5
-echo $ECHO_N "checking for libxfce4mcs-manager-1.0 >= 0.0.3... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfce4mcs-manager-1.0 >= 3.91.0" >&5
+echo $ECHO_N "checking for libxfce4mcs-manager-1.0 >= 3.91.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4mcs-manager-1.0 >= 0.0.3" ; then
+        if $PKG_CONFIG --exists "libxfce4mcs-manager-1.0 >= 3.91.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_MANAGER_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_MANAGER_CFLAGS... $ECHO_C" >&6
-            LIBXFCE4MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-manager-1.0 >= 0.0.3"`
+            LIBXFCE4MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-manager-1.0 >= 3.91.0"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_MANAGER_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_MANAGER_LIBS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_MANAGER_LIBS... $ECHO_C" >&6
-            LIBXFCE4MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-manager-1.0 >= 0.0.3"`
+            LIBXFCE4MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-manager-1.0 >= 3.91.0"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_MANAGER_LIBS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
         else
@@ -8365,7 +8512,7 @@ echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
             LIBXFCE4MCS_MANAGER_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCE4MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-manager-1.0 >= 0.0.3"`
+            LIBXFCE4MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-manager-1.0 >= 3.91.0"`
             echo $LIBXFCE4MCS_MANAGER_PKG_ERRORS
         fi
 
@@ -8380,12 +8527,12 @@ echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-manager-1.0 >= 0.0.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4mcs-manager-1.0 >= 0.0.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-manager-1.0 >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4mcs-manager-1.0 >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCE4MCS_MANAGER_REQUIRED_VERSION=0.0.3
+  LIBXFCE4MCS_MANAGER_REQUIRED_VERSION=3.91.0
 
 
 
@@ -8546,23 +8693,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for xfce-mcs-manager >= 0.2.0" >&5
-echo $ECHO_N "checking for xfce-mcs-manager >= 0.2.0... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for xfce-mcs-manager >= 3.91.0" >&5
+echo $ECHO_N "checking for xfce-mcs-manager >= 3.91.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "xfce-mcs-manager >= 0.2.0" ; then
+        if $PKG_CONFIG --exists "xfce-mcs-manager >= 3.91.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking XFCE_MCS_MANAGER_CFLAGS" >&5
 echo $ECHO_N "checking XFCE_MCS_MANAGER_CFLAGS... $ECHO_C" >&6
-            XFCE_MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "xfce-mcs-manager >= 0.2.0"`
+            XFCE_MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "xfce-mcs-manager >= 3.91.0"`
             echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_CFLAGS" >&5
 echo "${ECHO_T}$XFCE_MCS_MANAGER_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking XFCE_MCS_MANAGER_LIBS" >&5
 echo $ECHO_N "checking XFCE_MCS_MANAGER_LIBS... $ECHO_C" >&6
-            XFCE_MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "xfce-mcs-manager >= 0.2.0"`
+            XFCE_MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "xfce-mcs-manager >= 3.91.0"`
             echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_LIBS" >&5
 echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
         else
@@ -8570,7 +8717,7 @@ echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
             XFCE_MCS_MANAGER_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            XFCE_MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "xfce-mcs-manager >= 0.2.0"`
+            XFCE_MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "xfce-mcs-manager >= 3.91.0"`
             echo $XFCE_MCS_MANAGER_PKG_ERRORS
         fi
 
@@ -8585,12 +8732,12 @@ echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (xfce-mcs-manager >= 0.2.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (xfce-mcs-manager >= 0.2.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (xfce-mcs-manager >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (xfce-mcs-manager >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  XFCE_MCS_MANAGER_REQUIRED_VERSION=0.2.0
+  XFCE_MCS_MANAGER_REQUIRED_VERSION=3.91.0
 
 
 
@@ -8612,9 +8759,9 @@ else
 fi;
 
   if test x"$ac_cv_LIBSTARTUP_NOTIFICATION_check" = x"yes"; then
-    echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.4" >&5
-echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.4... $ECHO_C" >&6
-    if $PKG_CONFIG --atleast-version=0.4 libstartup-notification-1.0 2> /dev/null; then
+    echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.5" >&5
+echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.5... $ECHO_C" >&6
+    if $PKG_CONFIG --atleast-version=0.5 libstartup-notification-1.0 2> /dev/null; then
       echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 
@@ -8672,23 +8819,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.4" >&5
-echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.4... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.5" >&5
+echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.5... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libstartup-notification-1.0 >= 0.4" ; then
+        if $PKG_CONFIG --exists "libstartup-notification-1.0 >= 0.5" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBSTARTUP_NOTIFICATION_CFLAGS" >&5
 echo $ECHO_N "checking LIBSTARTUP_NOTIFICATION_CFLAGS... $ECHO_C" >&6
-            LIBSTARTUP_NOTIFICATION_CFLAGS=`$PKG_CONFIG --cflags "libstartup-notification-1.0 >= 0.4"`
+            LIBSTARTUP_NOTIFICATION_CFLAGS=`$PKG_CONFIG --cflags "libstartup-notification-1.0 >= 0.5"`
             echo "$as_me:$LINENO: result: $LIBSTARTUP_NOTIFICATION_CFLAGS" >&5
 echo "${ECHO_T}$LIBSTARTUP_NOTIFICATION_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBSTARTUP_NOTIFICATION_LIBS" >&5
 echo $ECHO_N "checking LIBSTARTUP_NOTIFICATION_LIBS... $ECHO_C" >&6
-            LIBSTARTUP_NOTIFICATION_LIBS=`$PKG_CONFIG --libs "libstartup-notification-1.0 >= 0.4"`
+            LIBSTARTUP_NOTIFICATION_LIBS=`$PKG_CONFIG --libs "libstartup-notification-1.0 >= 0.5"`
             echo "$as_me:$LINENO: result: $LIBSTARTUP_NOTIFICATION_LIBS" >&5
 echo "${ECHO_T}$LIBSTARTUP_NOTIFICATION_LIBS" >&6
         else
@@ -8696,7 +8843,7 @@ echo "${ECHO_T}$LIBSTARTUP_NOTIFICATION_LIBS" >&6
             LIBSTARTUP_NOTIFICATION_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBSTARTUP_NOTIFICATION_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libstartup-notification-1.0 >= 0.4"`
+            LIBSTARTUP_NOTIFICATION_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libstartup-notification-1.0 >= 0.5"`
             echo $LIBSTARTUP_NOTIFICATION_PKG_ERRORS
         fi
 
@@ -8711,12 +8858,12 @@ echo "${ECHO_T}$LIBSTARTUP_NOTIFICATION_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libstartup-notification-1.0 >= 0.4) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libstartup-notification-1.0 >= 0.4) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libstartup-notification-1.0 >= 0.5) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libstartup-notification-1.0 >= 0.5) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION=0.4
+  LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION=0.5
 
 
 

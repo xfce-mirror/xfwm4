@@ -37,12 +37,12 @@ dnl Check for X11 window system
 BM_LIBX11_REQUIRE
 BM_LIBXPM_REQUIRE
 
-BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 0.0.3)
-BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 0.0.3)
+BM_DEPEND(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, 3.91.0)
+BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 3.91.0)
 BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 3.91.0)
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [0.2.0])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [3.91.0])
 
-BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.4,
+BM_DEPEND_CHECK(LIBSTARTUP_NOTIFICATION, libstartup-notification-1.0, 0.5,
   [startup-notification], [startup notification library], [yes])
 
 dnl Check for debugging support

@@ -27,7 +27,7 @@
 /* Define if your <locale.h> file defines LC_MESSAGES. */
 #undef HAVE_LC_MESSAGES
 
-/* Define if you have libstartup-notification-1.0 >= 0.4 */
+/* Define if you have libstartup-notification-1.0 >= 0.5 */
 #undef HAVE_LIBSTARTUP_NOTIFICATION
 
 /* Define if libX11 is available */
