@@ -1,29 +1,26 @@
 # Window manager for XFce desktop environment.
-# Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2003, 2004 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the xfwm4 package.
-# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003.
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-03-07 14:51+0100\n"
-"PO-Revision-Date: 2003-08-05 13:01+0100\n"
-"Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
-"Language-Team: ca <LL@li.org>\n"
+"PO-Revision-Date: 2004-03-29 22:19+0100\n"
+"Last-Translator: Carles Munoz Gorriz <carlesmu@internautas.org>\n"
+"Language-Team: ca <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: mcs-plugin/margins.c:124
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Els marges són àrees a les vores de la pantalla on cap finestra es col·locarà"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Els marges són espais a les vores de la pantalla on cap finestra es col·locarà"
 
 #: mcs-plugin/margins.c:131
 msgid "Workspace Margins"
-msgstr "Marges de l'àrea de treball"
+msgstr "Marges dels espais de treball"
 
 #: mcs-plugin/margins.c:159
 msgid "Left :"
@@ -41,48 +38,47 @@ msgstr "Superior:"
 msgid "Bottom :"
 msgstr "Inferior:"
 
-#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-#, fuzzy
+#: mcs-plugin/plugin.c:112
+#: mcs-plugin/plugin.c:157
 msgid "Workspaces and Margins"
-msgstr "Marges de l'àrea de treball"
+msgstr "Espais de treball i marges"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-#, fuzzy
+#: mcs-plugin/plugin.c:139
+#: mcs-plugin/plugin.c:172
+#: mcs-plugin/workspaces.c:538
 msgid "Workspaces"
-msgstr "À_rea de treball %i"
+msgstr "Espais de treball"
 
 #: mcs-plugin/plugin.c:179
 msgid "Margins"
-msgstr ""
+msgstr "Marges"
 
 #: mcs-plugin/workspaces.c:337
 msgid "Change name"
-msgstr ""
+msgstr "Canvia el nom"
 
 #: mcs-plugin/workspaces.c:349
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "À_rea de treball %i"
+msgstr "Espai de treball %d"
 
 #: mcs-plugin/workspaces.c:359
 msgid "Name:"
-msgstr ""
+msgstr "Nom:"
 
 #: mcs-plugin/workspaces.c:447
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Pitjeu en un espai de treball per editar-lo"
 
 #: mcs-plugin/workspaces.c:519
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "Ajustar les àrees de treball"
+msgstr "Nombre d'espais de treball"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:550
-#, fuzzy
 msgid "Workspace names"
-msgstr "Marges de l'àrea de treball"
+msgstr "Noms dels espais de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:121
 msgid "Title"
@@ -148,7 +144,8 @@ msgstr "Ocult"
 msgid "Font Selection Dialog"
 msgstr "Diàleg de selecció del tipus de lletra"
 
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1844
+#: mcs-plugin/xfwm4_plugin.c:1273
+#: mcs-plugin/xfwm4_plugin.c:1844
 msgid "Window Manager"
 msgstr "Gestor de Finestres"
 
@@ -187,7 +184,7 @@ msgstr "Tipus d'enfocament"
 
 #: mcs-plugin/xfwm4_plugin.c:1401
 msgid "Click to focus"
-msgstr "Pitjar per enfocar"
+msgstr "Pitjeu per enfocar"
 
 #: mcs-plugin/xfwm4_plugin.c:1415
 msgid "Focus follows mouse"
@@ -231,7 +228,7 @@ msgstr "Ràpid"
 
 #: mcs-plugin/xfwm4_plugin.c:1503
 msgid "Raise on click"
-msgstr "Col·locar en primer pla al pitjar"
+msgstr "Col·loca en primer pla al pitjar"
 
 #: mcs-plugin/xfwm4_plugin.c:1508
 msgid ""
@@ -261,28 +258,27 @@ msgstr "Alinea les finestres amb les altres finestres"
 msgid "Distance :"
 msgstr "Distància:"
 
-#: mcs-plugin/xfwm4_plugin.c:1568 mcs-plugin/xfwm4_plugin.c:1637
+#: mcs-plugin/xfwm4_plugin.c:1568
+#: mcs-plugin/xfwm4_plugin.c:1637
 msgid "Small"
 msgstr "Menuda"
 
-#: mcs-plugin/xfwm4_plugin.c:1576 mcs-plugin/xfwm4_plugin.c:1645
+#: mcs-plugin/xfwm4_plugin.c:1576
+#: mcs-plugin/xfwm4_plugin.c:1645
 msgid "Wide"
 msgstr "Gran"
 
 #: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Wrap workspaces"
-msgstr "Ajustar les àrees de treball"
+msgstr "Ajustar els espais de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:1608
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Salta de àrea de treball quan el punter assoleixi un dels laterals de la "
-"pantalla"
+msgstr "Salta de espai de treball quan el punter assoleixi un dels laterals de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Salta de àrea de treball quan s'arrossegui una finestra fora de la pantalla"
+msgstr "Salta de espai de treball quan s'arrossegui una finestra fora de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1629
 msgid "Edge Resistance :"
@@ -340,12 +336,12 @@ msgstr "%s: Falten dades dels fitxers per defecte"
 #: src/main.c:423
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
+msgstr "%s: No s'ha pogut entrar en mode dimoni: %s"
 
 #: src/main.c:431
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: No s'ha pogut crear el procés nou: %s"
 
 #: src/main.c:452
 #, c-format
@@ -390,11 +386,12 @@ msgstr "No _omnipresent"
 
 #: src/menu.c:51
 msgid "Context _help"
-msgstr ""
+msgstr "A_juda contextual"
 
-#: src/menu.c:52 src/menu.c:53
+#: src/menu.c:52
+#: src/menu.c:53
 msgid "Always on top"
-msgstr ""
+msgstr "Sempre al damunt"
 
 #: src/menu.c:54
 msgid "Send to..."
@@ -417,14 +414,14 @@ msgid "Restart"
 msgstr "Reinicia"
 
 #: src/menu.c:169
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "À_rea de treball %i"
+msgstr "Espai de treball %i  (%s)"
 
 #: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
-msgstr "À_rea de treball %i"
+msgstr "Espai de treball %i"
 
 #: src/menu.c:424
 #, c-format
@@ -459,9 +456,7 @@ msgstr "%s: No es pot processar el color inactiu %s\n"
 #: src/settings.c:796
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
-"%s: No sa trobat la configuració de tecles \"%s\", es fa servir la "
-"configuració per defecte"
+msgstr "%s: No sa trobat la configuració de tecles \"%s\", es fa servir la configuració per defecte"
 
 #: src/settings.c:806
 #, c-format
@@ -471,13 +466,9 @@ msgstr "%s: Faltes valors en els fitxers per defecte"
 #: src/settings.c:1153
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr ""
-"%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el "
-"valor rc: %i"
+msgstr "%s: El comptador d'espais de treball no està inicialitzat, es fa servir el valor rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Canvia a..."
 
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Ajusta els marges de l'àrea de treball"
