@@ -134,7 +134,6 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
-PAX = @PAX@
 PKG_CONFIG = @PKG_CONFIG@
 POFILES = @POFILES@
 POSUB = @POSUB@
@@ -297,6 +296,15 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-themeDATA: $(theme_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkdir_p) $(DESTDIR)$(themedir)
+	@list='$(theme_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(themeDATA_INSTALL) $$d$$p $(DESTDIR)$(themedir)/$$f"; \
+	  $(themeDATA_INSTALL) $$d$$p $(DESTDIR)$(themedir)/$$f; \
+	done
 
 uninstall-themeDATA:
 	@$(NORMAL_UNINSTALL)
@@ -424,11 +432,6 @@ uninstall-am: uninstall-info-am uninstall-themeDATA
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	uninstall uninstall-am uninstall-info-am uninstall-themeDATA
 
-
-install-themeDATA:
-	rm -Rf $(DESTDIR)$(themedir); 					\
-	$(mkinstalldirs) $(DESTDIR)$(themedir); 			\
-	pax -rw $(theme_DATA) $(DESTDIR)$(themedir)
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
