@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-21 01:05+0100\n"
-"PO-Revision-Date: 2005-01-29 18:50+0900\n"
+"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"PO-Revision-Date: 2005-03-22 22:25+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -506,23 +506,20 @@ msgid "Move window to workspace 9"
 msgstr "창을 작업 공간 9로 이동"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:678
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "창을 작업 공간 1로 이동"
+msgstr "창을 작업 공간 10으로 이동"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:683
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "창을 작업 공간 1로 이동"
+msgstr "창을 작업 공간 11로 이동"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:688
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "창을 작업 공간 1로 이동"
+msgstr "창을 작업 공간 12로 이동"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:693
 msgid "Show desktop"
-msgstr ""
+msgstr "데스크탑 보이기"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:920
 msgid "Cannot open the theme directory !"
@@ -677,22 +674,22 @@ msgstr "%s: GtkMenu가 포인터를 얻지 못 했습니다.\n"
 #: src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr ""
+msgstr "%s: 활성 표시색 %s을 할당하지 못 했습니다.\n"
 
 #: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr ""
+msgstr "%s: 활성 표시색 %s을 분석하지 못 했습니다.\n"
 
 #: src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr ""
+msgstr "%s: 비활성 표시색 %s을 할당하지 못 했습니다.\n"
 
 #: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr ""
+msgstr "%s: 비활성 표시색 %s을 분석하지 못 했습니다.\n"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
@@ -702,18 +699,18 @@ msgstr "작업공간 전환"
 msgid "Unknown application!"
 msgstr "무슨 프로그램이죠!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "창관리자 설정"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+#: mcs-plugin/xfce-wm-settings.desktop.in:5
 msgid "Xfce 4 Window Manager Settings"
 msgstr "Xfce 4 창관리자 설정"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "작업공간 설정"
+#: mcs-plugin/xfce-wm-settings.desktop.in:6
+msgid "Window Manager Settings"
+msgstr "창관리자 설정"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 작업공간 설정"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+msgid "Workspaces Settings"
+msgstr "작업공간 설정"
