@@ -156,16 +156,16 @@ getWMState (Display * dpy, Window w)
 {
     Atom real_type;
     int real_format;
-    unsigned long items_read, items_left, state = WithdrawnState;
-    unsigned char *data = NULL;
+    unsigned long items_read, items_left;
+    unsigned long *data = NULL, state = WithdrawnState;
 
     TRACE ("entering getWmState");
 
     if ((XGetWindowProperty (dpy, w, wm_state, 0, 3L, FALSE, wm_state,
                 &real_type, &real_format, &items_read, &items_left,
-                &data) == Success) && (items_read))
+                (unsigned char **) &data) == Success) && (items_read))
     {
-        state = (unsigned long)*data;
+        state = *data;
         XFree (data);
     }
     return state;
@@ -199,14 +199,14 @@ getMotifHints (Display * dpy, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data = NULL;
+    long *data = NULL;
     PropMwmHints *result = NULL;
 
     TRACE ("entering getMotifHints");
 
     if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, MWM_HINTS_ELEMENTS, 
                 FALSE, motif_wm_hints, &real_type, &real_format, &items_read,
-                &items_left, &data) == Success))
+                &items_left, (unsigned char **) &data) == Success))
     {
         if (items_read >= MWM_HINTS_ELEMENTS)
         {    
@@ -227,7 +227,6 @@ getWMProtocols (Display * dpy, Window w)
     int aformat;
     int result = 0;
     unsigned long bytes_remain, nitems;
-    unsigned char *data = NULL;
 
     TRACE ("entering getWMProtocols");
 
@@ -249,9 +248,8 @@ getWMProtocols (Display * dpy, Window w)
     {
         if ((XGetWindowProperty (dpy, w, wm_protocols, 0L, 10L, FALSE,
                     wm_protocols, &atype, &aformat, &nitems, &bytes_remain,
-                    &data)) == Success)
+                    (unsigned char **) &protocols)) == Success)
         {
-	    protocols = (Atom*)data;
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
                 if (*ap == (Atom) wm_takefocus)
@@ -300,7 +298,7 @@ getGnomeHint (Display * dpy, Window w, Atom a, long *value)
     int real_format;
     gboolean success = FALSE;
     unsigned long items_read, items_left;
-    unsigned char *data = NULL;
+    long *data = NULL;
 
     TRACE ("entering getGnomeHint");
 
@@ -308,9 +306,9 @@ getGnomeHint (Display * dpy, Window w, Atom a, long *value)
 
     if ((XGetWindowProperty (dpy, w, a, 0L, 1L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
-                &data) == Success) && (items_read))
+                (unsigned char **) &data) == Success) && (items_read))
     {
-        *value = (long)*data;
+        *value = *data;
         XFree (data);
         success = TRUE;
     }
@@ -332,19 +330,19 @@ getGnomeDesktopMargins (Display * dpy, int screen, CARD32 * m)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data = NULL;
+    CARD32 *data = NULL;
 
     TRACE ("entering getGnomeDesktopMargins");
 
     if ((XGetWindowProperty (dpy, RootWindow (dpy, screen),
                 gnome_panel_desktop_area, 0L, 4L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
-                &data) == Success) && (items_read >= 4))
+                (unsigned char **) &data) == Success) && (items_read >= 4))
     {
-        m[0] = (CARD32)data[0];
-        m[1] = (CARD32)data[1];
-        m[2] = (CARD32)data[2];
-        m[3] = (CARD32)data[3];
+        m[0] = data[0];
+        m[1] = data[1];
+        m[2] = data[2];
+        m[3] = data[3];
         XFree (data);
     }
     else
@@ -522,14 +520,14 @@ get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
     int format;
     unsigned long n_atoms;
     unsigned long bytes_after;
-    unsigned char *atoms;
+    Atom *atoms;
 
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
     if ((XGetWindowProperty (dpy, w, a, 0, G_MAXLONG, FALSE, XA_ATOM, &type,
                 &format, &n_atoms, &bytes_after,
-                &atoms) != Success) || (type == None))
+                (unsigned char **) &atoms) != Success) || (type == None))
     {
         return FALSE;
     }
@@ -545,7 +543,7 @@ get_atom_list (Display * dpy, Window w, Atom a, Atom ** atoms_p,
         return FALSE;
     }
 
-    *atoms_p = (Atom*)atoms;
+    *atoms_p = atoms;
     *n_atoms_p = n_atoms;
 
     return TRUE;
@@ -559,14 +557,14 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
     int format;
     unsigned long n_cardinals;
     unsigned long bytes_after;
-    unsigned char *cardinals;
+    unsigned long *cardinals;
 
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
     if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, XA_CARDINAL,
                 &type, &format, &n_cardinals, &bytes_after,
-                &cardinals) != Success) || (type == None))
+                (unsigned char **) &cardinals) != Success) || (type == None))
     {
         return FALSE;
     }
@@ -578,7 +576,7 @@ get_cardinal_list (Display * dpy, Window w, Atom xatom,
         return FALSE;
     }
 
-    *cardinals_p = (unsigned long*)cardinals;
+    *cardinals_p = cardinals;
     *n_cardinals_p = n_cardinals;
 
     return TRUE;
