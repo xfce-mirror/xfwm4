@@ -4,6 +4,7 @@ agua \
 b5 \
 b6 \
 bbs \
+beastie \
 biz \
 coldsteel \
 coolclean \
