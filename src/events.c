@@ -709,6 +709,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             DBG("client \"%s\" (%#lx) has received a net_wm_window_type notify\n", c->name, c->window);
             clientGetNetWmType(c);
+	    frameDraw(c);
         }
         else if((ev->atom == win_workspace) && !(c->transient_for))
         {
