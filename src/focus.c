@@ -165,7 +165,7 @@ clientFocusNew(Client * c)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
-        clientPassGrabMouseButton (NULL);
+        clientGrabMouseButton (c);
     }
 }
 

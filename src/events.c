@@ -229,6 +229,20 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     return (XfwmButtonClickType) passdata.clicks;
 }
 
+static gboolean
+check_button_time (XButtonEvent *ev)
+{
+    static Time last_button_time = (Time) 0;
+    
+    if (last_button_time > ev->time)
+    {
+        return FALSE;
+    }
+
+    last_button_time = ev->time;
+    return TRUE;
+}
+
 static void
 clear_timeout (void)
 {
@@ -813,8 +827,12 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 
     TRACE ("entering handleButtonPress");
 
-    /* Clear timeout */
-    clear_timeout ();
+    /* Avoid treating the same event twice */
+    if (!check_button_time (ev))
+    {
+        TRACE ("ignoring ButtonPress event because it has been already handled");
+        return;
+    }
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     if (c)
@@ -949,6 +967,9 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             clientPassGrabMouseButton (c);
             if ((screen_info->params->raise_with_any_button) || (ev->button == Button1))
             {
+                /* Clear timeout */
+                clear_timeout ();
+
                 if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                 {
                     clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
@@ -1001,6 +1022,13 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     TRACE ("entering handleButtonRelease");
+
+    /* Avoid treating the same event twice */
+    if (!check_button_time (ev))
+    {
+        TRACE ("ignoring ButtonRelease event because it has been already handled");
+        return;
+    }
 
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);

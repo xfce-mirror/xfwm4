@@ -419,7 +419,7 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     {
         workspaceSwitch (screen_info, count - 1, NULL);
     }
-    setNetWorkarea (display_info, screen_info->screen, screen_info->workspace_count, 
+    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
                     gdk_screen_get_width (screen_info->gscr),
                     gdk_screen_get_height (screen_info->gscr),
                     screen_info->margins);
@@ -473,7 +473,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         || (prev_bottom != screen_info->margins[BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
-        setNetWorkarea (display_info, screen_info->screen, screen_info->workspace_count, 
+        setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
                         gdk_screen_get_width (screen_info->gscr),
                         gdk_screen_get_height (screen_info->gscr),
                         screen_info->margins);
