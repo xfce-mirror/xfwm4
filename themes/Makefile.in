@@ -81,6 +81,7 @@ am__quote = @am__quote@
 install_sh = @install_sh@
 SUBDIRS = \
 agua \
+b5 \
 coldsteel \
 crux \
 cruxish \

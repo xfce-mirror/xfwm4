@@ -42,6 +42,7 @@ src/Makefile
 defaults/Makefile
 themes/Makefile
 themes/agua/Makefile
+themes/b5/Makefile
 themes/coldsteel/Makefile
 themes/crux/Makefile
 themes/cruxish/Makefile
