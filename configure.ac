@@ -101,6 +101,8 @@ themes/microcurve/Makefile
 themes/microdeck/Makefile
 themes/microdeck2/Makefile
 themes/microdeck3/Makefile
+themes/prune/Makefile
 themes/tgc/Makefile
 themes/tgc-large/Makefile
+themes/tubular/Makefile
 ])
