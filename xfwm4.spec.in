@@ -36,7 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc example.xfwm4rc example.gtkrc-2.0 README INSTALL TODO COPYING AUTHORS
 %{_bindir}
 %{_libdir}/xfce4
-%{_datadir}/xfwm4/defaults
-%{_datadir}/xfwm4/themes
-%{_datadir}/xfce4/doc
+%{_datadir}/applications
+%{_datadir}/icons
 %{_datadir}/locale
+%{_datadir}/xfce4
+%{_datadir}/xfwm4
+%{_datadir}/themes
