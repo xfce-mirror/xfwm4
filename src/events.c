@@ -1511,6 +1511,10 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
             clientToggleSticky (c, TRUE);
             frameDraw (c, FALSE, FALSE);
             break;
+        case MENU_OP_WORKSPACES:
+            clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
+            frameDraw (c, FALSE, FALSE);
+            break;
         case MENU_OP_DELETE:
             frameDraw (c, FALSE, FALSE);
             clientClose (c);
@@ -1539,7 +1543,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         c->button_pressed[MENU_BUTTON] = TRUE;
         frameDraw (c, FALSE, FALSE);
         y = c->y;
-        ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
+        ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
         insensitive = 0;
 
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_CLOSE))
@@ -1606,6 +1610,13 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                 insensitive |= MENU_OP_STICK;
             }
         }
+
+        if (clientIsTransient (c)
+            || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK)
+            || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+        {
+            insensitive |= MENU_OP_WORKSPACES;
+        }
     }
     else
     {
@@ -1639,7 +1650,9 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        trouble.
      */
     menu_event_window = setTmpEventWin (NoEventMask);
-    menu = menu_default (ops, insensitive, menu_callback, c);
+    menu =
+        menu_default (ops, insensitive, menu_callback, c->win_workspace,
+        params.workspace_count, c);
     if (!menu_popup (menu, x, y, ev->button, ev->time))
     {
         TRACE ("Cannot open menu");

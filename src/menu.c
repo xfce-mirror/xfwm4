@@ -39,28 +39,25 @@
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE, N_("Ma_ximize")},
-    {MENU_OP_UNMAXIMIZE, N_("Un_maximize")},
-    {MENU_OP_MINIMIZE, N_("_Hide")},
-    {MENU_OP_MINIMIZE_ALL, N_("Hide _all others")},
-    {MENU_OP_UNMINIMIZE, N_("S_how")},
-    {MENU_OP_SHADE, N_("_Shade")},
-    {MENU_OP_UNSHADE, N_("Un_shade")},
-    {MENU_OP_STICK, N_("S_tick")},
-    {MENU_OP_UNSTICK, N_("Uns_tick")},
-    {MENU_OP_MOVE, N_("_Move")},
-    {MENU_OP_RESIZE, N_("_Resize")},
-    {MENU_OP_SWITCH, N_("S_witch")},
-    {0, NULL},
-    {MENU_OP_DELETE, N_("_Close")},
+    {MENU_OP_MAXIMIZE, "gtk-zoom-100", N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE, "gtk-zoom-out", N_("Un_maximize")},
+    {MENU_OP_MINIMIZE, "gtk-undo", N_("_Hide")},
+    {MENU_OP_MINIMIZE_ALL, "gtk-clear", N_("Hide _all others")},
+    {MENU_OP_UNMINIMIZE, "gtk-add", N_("S_how")},
+    {MENU_OP_SHADE, "gtk-goto-top", N_("_Shade")},
+    {MENU_OP_UNSHADE, "gtk-goto-bottom", N_("Un_shade")},
+    {MENU_OP_STICK, "gtk-add", N_("S_tick")},
+    {MENU_OP_UNSTICK, "gtk-remove", N_("Uns_tick")},
+    {MENU_OP_WORKSPACES, NULL, N_("Send to...")},
+    {0, NULL, NULL},
+    {MENU_OP_DELETE, "gtk-close", N_("_Close")},
 #if 0
-    {MENU_OP_DESTROY, N_("Destroy")},
-    {0, NULL},
-    {MENU_OP_WORKSPACES, N_("Wor_kspace")},
-    {0, NULL},
+    {0,, NULL NULL},
+    {MENU_OP_DESTROY, "gtk-delete", N_("Destroy")},
+    {0, NULL, NULL},
 #endif
-    {MENU_OP_QUIT, N_("_Quit")},
-    {MENU_OP_RESTART, N_("Restart")},
+    {MENU_OP_QUIT, "gtk-quit", N_("_Quit")},
+    {MENU_OP_RESTART, "gtk-refresh", N_("Restart")},
 };
 
 static GtkToXEventFilterStatus
@@ -150,8 +147,45 @@ menu_closed (GtkMenu * widget, gpointer data)
     return (FALSE);
 }
 
+static GtkWidget *
+menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws)
+{
+    gint i;
+    GtkWidget *menu_widget;
+    GtkWidget *mi;
+    MenuData *md;
+    gchar *name;
+
+    menu_widget = gtk_menu_new ();
+
+    for (i = 0; i < nws; i++)
+    {
+        name = g_strdup_printf (_("Workspace %i"), i + 1);
+        mi = gtk_check_menu_item_new_with_label (name);
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi), (i == ws));
+        gtk_widget_show (mi);
+        if (insensitive & MENU_OP_WORKSPACES)
+        {
+            gtk_widget_set_sensitive (mi, FALSE);
+        }
+        g_free (name);
+
+        md = g_new (MenuData, 1);
+        md->menu = menu;
+        md->op = MENU_OP_WORKSPACES;
+        md->client_xwindow = None;
+        md->data = GINT_TO_POINTER (i);
+        menu_item_connect (mi, md);
+
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu_widget), mi);
+    }
+
+    return (menu_widget);
+}
+
 Menu *
-menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
+menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gint ws,
+    gint nws, gpointer data)
 {
     int i;
     Menu *menu;
@@ -167,28 +201,63 @@ menu_default (MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
     i = 0;
     while (i < (int) (sizeof (menuitems) / sizeof (MenuItem)))
     {
-        if (ops & menuitems[i].op || menuitems[i].op == 0)
+        if ((ops & menuitems[i].op) || (menuitems[i].op == MENU_OP_SEPARATOR))
         {
             GtkWidget *mi;
+            GtkWidget *image;
+            GtkWidget *ws_menu;
             MenuData *md;
+            const gchar *label;
 
-            if (menuitems[i].op == 0)
+            label = _(menuitems[i].label);
+            ws_menu = NULL;
+            switch (menuitems[i].op)
             {
-                mi = gtk_separator_menu_item_new ();
-            }
-            else
-            {
-                mi = gtk_menu_item_new_with_mnemonic (_(menuitems[i].label));
-                if (insensitive & menuitems[i].op)
-                {
-                    gtk_widget_set_sensitive (mi, FALSE);
-                }
-                md = g_new (MenuData, 1);
-                md->menu = menu;
-                md->op = menuitems[i].op;
-                md->client_xwindow = None;
-                md->data = NULL;
-                menu_item_connect (mi, md);
+                case MENU_OP_SEPARATOR:
+                    mi = gtk_separator_menu_item_new ();
+                    break;
+                case MENU_OP_WORKSPACES:
+                    mi = gtk_menu_item_new_with_mnemonic (label);
+                    if (insensitive & menuitems[i].op)
+                    {
+                        gtk_widget_set_sensitive (mi, FALSE);
+                    }
+                    ws_menu = menu_workspace (menu, insensitive, ws, nws);
+                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), ws_menu);
+
+                    md = g_new (MenuData, 1);
+                    md->menu = menu;
+                    md->op = menuitems[i].op;
+                    md->client_xwindow = None;
+                    md->data = NULL;
+                    break;
+                default:
+                    if (menuitems[i].image_name)
+                    {
+                        mi = gtk_image_menu_item_new_with_mnemonic (label);
+                        image =
+                            gtk_image_new_from_stock (menuitems[i].image_name,
+                            GTK_ICON_SIZE_MENU);
+                        gtk_widget_show (image);
+                        gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
+                            (mi), image);
+
+                    }
+                    else
+                    {
+                        mi = gtk_menu_item_new_with_mnemonic (label);
+                    }
+                    if (insensitive & menuitems[i].op)
+                    {
+                        gtk_widget_set_sensitive (mi, FALSE);
+                    }
+                    md = g_new (MenuData, 1);
+                    md->menu = menu;
+                    md->op = menuitems[i].op;
+                    md->client_xwindow = None;
+                    md->data = NULL;
+                    menu_item_connect (mi, md);
+                    break;
             }
             gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), mi);
             gtk_widget_show (mi);
