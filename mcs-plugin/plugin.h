@@ -27,8 +27,8 @@
 
 #define BORDER 5
 
-void create_channel (McsManager * manager, const char *channel,
-		     const char *rcfile);
+void ws_create_channel (McsManager * manager, const char *channel,
+		        const char *rcfile);
 
 gboolean save_channel (McsManager * manager, const char *channel,
 		       const char *rcfile);

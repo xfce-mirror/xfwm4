@@ -64,7 +64,7 @@ create_margins_channel (McsPlugin * mcs_plugin)
 
     mcs_manager = mcs_plugin->manager;
     
-    create_channel (mcs_plugin->manager, CHANNEL2, RCFILE2);
+    ws_create_channel (mcs_plugin->manager, CHANNEL2, RCFILE2);
 
     for (i = 0; i < 4; i++)
     {

@@ -137,7 +137,7 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
     netk_screen = netk_screen_get_default ();
     netk_screen_force_update (netk_screen);
 
-    create_channel (mcs_manager, CHANNEL1, RCFILE1);
+    ws_create_channel (mcs_manager, CHANNEL1, RCFILE1);
 
     /* ws names */
     setting = mcs_manager_setting_lookup (mcs_manager, "names", CHANNEL1);

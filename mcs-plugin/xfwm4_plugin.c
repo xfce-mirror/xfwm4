@@ -109,7 +109,7 @@ enum
     N_COLUMNS
 };
 
-static void create_channel (McsPlugin * mcs_plugin);
+static void xfwm4_create_channel (McsPlugin * mcs_plugin);
 static gboolean write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
@@ -1879,7 +1879,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
 {
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
-    create_channel (mcs_plugin);
+    xfwm4_create_channel (mcs_plugin);
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
     mcs_plugin->caption = g_strdup (_("Window Manager"));
     mcs_plugin->run_dialog = run_dialog;
@@ -1890,7 +1890,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
 }
 
 static void
-create_channel (McsPlugin * mcs_plugin)
+xfwm4_create_channel (McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
     gchar *rcfile, *path;

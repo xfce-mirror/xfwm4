@@ -52,7 +52,7 @@ static void run_dialog (McsPlugin * mcs_plugin);
 
 /* exported functions */
 void
-create_channel (McsManager * manager, const char *channel, const char *rcfile)
+ws_create_channel (McsManager * manager, const char *channel, const char *rcfile)
 {
     char *file, *path;
 
