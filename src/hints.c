@@ -119,7 +119,7 @@ Atom utf8_string;
 
 void initICCCMHints(Display * dpy)
 {
-    DBG("entering initICCCMHints\n");
+    TRACE("entering initICCCMHints");
 
     sm_client_id = XInternAtom(dpy, "SM_CLIENT_ID", False);
     wm_change_state = XInternAtom(dpy, "WM_CHANGE_STATE", False);
@@ -139,7 +139,7 @@ unsigned long getWMState(Display * dpy, Window w)
     unsigned long items_read, items_left;
     unsigned long *data = NULL, state = WithdrawnState;
 
-    DBG("entering getWmState\n");
+    TRACE("entering getWmState");
 
     if((XGetWindowProperty(dpy, w, wm_state, 0, 3L, False, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
@@ -153,7 +153,7 @@ void setWMState(Display * dpy, Window w, unsigned long state)
 {
     CARD32 data[2];
 
-    DBG("entering setWmState\n");
+    TRACE("entering setWmState");
 
     data[0] = state;
     data[1] = None;
@@ -163,7 +163,7 @@ void setWMState(Display * dpy, Window w, unsigned long state)
 
 void initMotifHints(Display * dpy)
 {
-    DBG("entering initMotifHints\n");
+    TRACE("entering initMotifHints");
 
     motif_wm_hints = XInternAtom(dpy, "_MOTIF_WM_HINTS", False);
 }
@@ -175,7 +175,7 @@ PropMwmHints *getMotifHints(Display * dpy, Window w)
     unsigned long items_read, items_left;
     PropMwmHints *data = NULL;
 
-    DBG("entering getMotifHints\n");
+    TRACE("entering getMotifHints");
 
     if((XGetWindowProperty(dpy, w, motif_wm_hints, 0L, 20L, False, motif_wm_hints, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
@@ -196,7 +196,7 @@ unsigned int getWMProtocols(Display * dpy, Window w)
     int result = 0;
     unsigned long bytes_remain, nitems;
 
-    DBG("entering getWMProtocols\n");
+    TRACE("entering getWMProtocols");
 
     if(XGetWMProtocols(dpy, w, &protocols, &n))
     {
@@ -239,7 +239,7 @@ unsigned int getWMProtocols(Display * dpy, Window w)
 
 void initGnomeHints(Display * dpy)
 {
-    DBG("entering initGnomeHints\n");
+    TRACE("entering initGnomeHints");
 
     gnome_panel_desktop_area = XInternAtom(dpy, "GNOME_PANEL_DESKTOP_AREA", False);
     win_client_list = XInternAtom(dpy, "_WIN_CLIENT_LIST", False);
@@ -261,7 +261,7 @@ gboolean getGnomeHint(Display * dpy, Window w, Atom a, long *value)
     unsigned long items_read, items_left;
     long *data = NULL;
 
-    DBG("entering getGnomeHint\n");
+    TRACE("entering getGnomeHint");
 
     *value = 0;
 
@@ -276,7 +276,7 @@ gboolean getGnomeHint(Display * dpy, Window w, Atom a, long *value)
 
 void setGnomeHint(Display * dpy, Window w, Atom a, long value)
 {
-    DBG("entering setGnomeHint\n");
+    TRACE("entering setGnomeHint");
 
     XChangeProperty(dpy, w, a, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)&value, 1);
 }
@@ -288,7 +288,7 @@ void getGnomeDesktopMargins(Display * dpy, int screen, CARD32 * margins)
     unsigned long items_read, items_left;
     CARD32 *data = NULL;
 
-    DBG("entering getGnomeDesktopMargins\n");
+    TRACE("entering getGnomeDesktopMargins");
 
     if((XGetWindowProperty(dpy, RootWindow(dpy, screen), gnome_panel_desktop_area, 0L, 4L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read >= 4))
     {
@@ -319,7 +319,7 @@ void setGnomeProtocols(Display * dpy, int screen, Window w)
 
 void initNetHints(Display * dpy)
 {
-    DBG("entering initNetHints\n");
+    TRACE("entering initNetHints");
 
     net_active_window = XInternAtom(dpy, "_NET_ACTIVE_WINDOW", False);
     net_client_list_stacking = XInternAtom(dpy, "_NET_CLIENT_LIST_STACKING", False);
@@ -512,7 +512,7 @@ void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * mar
     CARD32 *data, *ptr;
     int i, j;
 
-    DBG("entering set_net_workarea\n");
+    TRACE("entering set_net_workarea");
     j = (nb_workspaces ? nb_workspaces : 1);
     data = (CARD32 *) malloc(sizeof(CARD32) * j * 4);
     if(!data)
@@ -535,7 +535,7 @@ void set_net_workarea(Display * dpy, int screen, int nb_workspaces, CARD32 * mar
 void init_net_desktop_params(Display * dpy, int screen, int workspace)
 {
     unsigned long data[2];
-    DBG("entering init_net_desktop_params\n");
+    TRACE("entering init_net_desktop_params");
     data[0] = gdk_screen_width();
     data[1] = gdk_screen_height();
     XChangeProperty(dpy, RootWindow(dpy, screen), net_desktop_geometry, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 2);
@@ -549,21 +549,21 @@ void init_net_desktop_params(Display * dpy, int screen, int workspace)
 
 void set_utf8_string_hint(Display * dpy, Window w, Atom atom, const char *val)
 {
-    DBG("entering set_utf8_string_hint\n");
+    TRACE("entering set_utf8_string_hint");
 
     XChangeProperty(dpy, w, atom, utf8_string, 8, PropModeReplace, (unsigned char *)val, strlen(val) + 1);
 }
 
 void getTransientFor(Display * dpy, Window w, Window * transient_for)
 {
-    DBG("entering getTransientFor\n");
+    TRACE("entering getTransientFor");
 
     if(!XGetTransientForHint(dpy, w, transient_for) || (*transient_for == w))
     {
         *transient_for = None;
     }
 
-    DBG("Window (0x%lx) is transient for (0x%lx)\n", w, *transient_for);
+    TRACE("Window (0x%lx) is transient for (0x%lx)", w, *transient_for);
 }
 
 gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
@@ -574,18 +574,18 @@ gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
     unsigned char *str;
     unsigned long n_items;
 
-    DBG("entering get_utf8_string\n");
+    TRACE("entering get_utf8_string");
 
     *str_p = NULL;
     if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
     {
-        DBG("no utf8_string value provided\n");
+        TRACE("no utf8_string value provided");
         return FALSE;
     }
 
     if(!check_type_and_format(dpy, w, xatom, 8, utf8_string, -1, format, type))
     {
-        DBG("utf8_string value invalid\n");
+        TRACE("utf8_string value invalid");
         if(str)
         {
             XFree(str);
@@ -600,7 +600,7 @@ gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
         name = XGetAtomName(dpy, xatom);
         if(name)
         {
-            DBG("Property %s on window 0x%lx contains invalid UTF-8 characters\n", name, w);
+            TRACE("Property %s on window 0x%lx contains invalid UTF-8 characters", name, w);
             XFree(name);
         }
         XFree(str);
@@ -619,12 +619,12 @@ static char *text_property_to_utf8(Display * dpy, const XTextProperty * prop)
     int count;
     char *retval;
 
-    DBG("entering text_property_to_utf8\n");
+    TRACE("entering text_property_to_utf8");
 
     list = NULL;
     if((count = gdk_text_property_to_utf8_list(gdk_x11_xatom_to_atom(prop->encoding), prop->format, prop->value, prop->nitems, &list)) == 0)
     {
-        DBG("gdk_text_property_to_utf8_list returned 0\n");
+        TRACE("gdk_text_property_to_utf8_list returned 0");
         return NULL;
     }
     retval = list[0];
@@ -639,7 +639,7 @@ static char *get_text_property(Display * dpy, Window w, Atom a)
     XTextProperty text;
     char *retval;
 
-    DBG("entering get_text_property\n");
+    TRACE("entering get_text_property");
     text.nitems = 0;
     if(XGetTextProperty(dpy, w, &text, a))
     {
@@ -652,7 +652,7 @@ static char *get_text_property(Display * dpy, Window w, Atom a)
     else
     {
         retval = NULL;
-        DBG("XGetTextProperty() failed\n");
+        TRACE("XGetTextProperty() failed");
     }
 
     return retval;
@@ -663,7 +663,7 @@ void getWindowName(Display * dpy, Window w, char **name)
 {
     char *str;
 
-    DBG("entering getWindowName\n");
+    TRACE("entering getWindowName");
 
     g_return_if_fail(name != NULL);
     *name = NULL;
@@ -691,7 +691,7 @@ gboolean getWindowRole(Display * dpy, Window window, char **role)
 {
     XTextProperty tp;
 
-    DBG("entering GetWindowRole\n");
+    TRACE("entering GetWindowRole");
 
     g_return_val_if_fail(role != NULL, FALSE);
     *role = NULL;
@@ -719,7 +719,7 @@ Window getClientLeader(Display * dpy, Window window)
     unsigned long bytes_after;
     unsigned char *prop = NULL;
 
-    DBG("entering getClientLeader\n");
+    TRACE("entering getClientLeader");
 
     g_return_val_if_fail(window != None, None);
 
@@ -742,7 +742,7 @@ gboolean getClientID(Display * dpy, Window window, char **client_id)
     Window id;
     XTextProperty tp;
 
-    DBG("entering getClientID\n");
+    TRACE("entering getClientID");
 
     g_return_val_if_fail(client_id != NULL, FALSE);
     *client_id = NULL;
@@ -790,7 +790,7 @@ gboolean getWindowStartupId(Display * dpy, Window window, char **startup_id)
 {
     XTextProperty tp;
 
-    DBG("entering getWindowStartupId\n");
+    TRACE("entering getWindowStartupId");
 
     g_return_val_if_fail(startup_id != NULL, FALSE);
     *startup_id = NULL;

@@ -33,10 +33,10 @@
 
 void myWindowCreate(Display * dpy, Window parent, myWindow * win, Cursor cursor)
 {
-    DBG("entering myWindowCreate\n");
+    TRACE("entering myWindowCreate");
 
     win->window = XCreateSimpleWindow(dpy, parent, 0, 0, 1, 1, 0, 0, 0);
-    DBG("Created XID 0x%lx\n", win->window);
+    TRACE("Created XID 0x%lx", win->window);
     if(cursor != None)
     {
         XDefineCursor(dpy, win->window, cursor);
@@ -51,7 +51,7 @@ void myWindowCreate(Display * dpy, Window parent, myWindow * win, Cursor cursor)
 
 void myWindowDelete(myWindow * win)
 {
-    DBG("entering myWindowDelete\n");
+    TRACE("entering myWindowDelete");
 
     if(win->window != None)
     {
@@ -63,7 +63,7 @@ void myWindowDelete(myWindow * win)
 
 void myWindowShow(myWindow * win, int x, int y, int width, int height, gboolean refresh)
 {
-    DBG("entering myWindowShow\n");
+    TRACE("entering myWindowShow");
 
     if(!(win->window))
     {
@@ -79,7 +79,7 @@ void myWindowShow(myWindow * win, int x, int y, int width, int height, gboolean 
         XMapWindow(win->dpy, win->window);
         win->map = TRUE;
     }
-    DBG("Showing XID 0x%lx\n", win->window);
+    TRACE("Showing XID 0x%lx", win->window);
     if(((x != win->x) || (y != win->y)) && ((width != win->w) || (height != win->h)))
     {
         XMoveResizeWindow(win->dpy, win->window, x, y, (unsigned int)width, (unsigned int)height);
@@ -112,7 +112,7 @@ void myWindowShow(myWindow * win, int x, int y, int width, int height, gboolean 
 
 void myWindowHide(myWindow * win)
 {
-    DBG("entering myWindowHide\n");
+    TRACE("entering myWindowHide");
 
     if(win->map)
     {

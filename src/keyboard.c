@@ -45,8 +45,8 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
 {
     char *k;
 
-    DBG("entering parseKeyString\n");
-    DBG("key string=%s\n", str);
+    TRACE("entering parseKeyString");
+    TRACE("key string=%s", str);
 
     key->keycode = 0;
     key->modifier = 0;
@@ -93,7 +93,7 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
 
 void grabKey(Display * dpy, MyKey * key, Window w)
 {
-    DBG("entering grabKey\n");
+    TRACE("entering grabKey");
 
     if(key->keycode)
     {
@@ -118,7 +118,7 @@ void grabKey(Display * dpy, MyKey * key, Window w)
 
 void ungrabKeys(Display * dpy, Window w)
 {
-    DBG("entering ungrabKeys\n");
+    TRACE("entering ungrabKeys");
 
     XUngrabKey(dpy, AnyKey, AnyModifier, w);
 }

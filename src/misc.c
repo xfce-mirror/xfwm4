@@ -48,7 +48,7 @@ void getMouseXY(Window w, int *x2, int *y2)
     Window w1, w2;
     gint x1, y1, m;
 
-    DBG("entering getMouseXY\n");
+    TRACE("entering getMouseXY");
 
     XQueryPointer(dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
 }
@@ -58,7 +58,7 @@ Window getMouseWindow(Window w)
     Window w1, w2;
     int x1, y1, x2, y2, m;
 
-    DBG("entering getMouseWindow\n");
+    TRACE("entering getMouseWindow");
 
     XQueryPointer(dpy, w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
     return w2;
@@ -71,8 +71,8 @@ GC createGC(Colormap cmap, char *col, int func, XFontStruct * font, int line_wid
     GC gc;
     int mask;
 
-    DBG("entering createGC\n");
-    DBG("color=%s\n", col);
+    TRACE("entering createGC");
+    TRACE("color=%s", col);
 
     mask = GCForeground | GCFunction;
     XAllocNamedColor(dpy, cmap, col, &xc1, &xc2);
@@ -101,7 +101,7 @@ void sendClientMessage(Window w, Atom a, long x, int mask)
 {
     XEvent ev;
 
-    DBG("entering sendClientMessage\n");
+    TRACE("entering sendClientMessage");
 
     ev.type = ClientMessage;
     ev.xclient.window = w;

@@ -36,7 +36,7 @@ gboolean myPixmapLoad(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, X
     gchar *filename;
     XpmAttributes attr;
 
-    DBG("entering myPixmapLoad\n");
+    TRACE("entering myPixmapLoad");
 
     g_return_val_if_fail(dir != NULL, FALSE);
     g_return_val_if_fail(file != NULL, FALSE);
@@ -69,7 +69,7 @@ gboolean myPixmapLoad(Display * dpy, MyPixmap * pm, gchar * dir, gchar * file, X
 
 void myPixmapCreate(Display * dpy, MyPixmap * pm, gint width, gint height)
 {
-    DBG("entering myPixmapCreate, width=%i, height=%i\n", width, height);
+    TRACE("entering myPixmapCreate, width=%i, height=%i", width, height);
     if((width < 1) || (height < 1))
     {
         myPixmapInit(pm);
@@ -93,7 +93,7 @@ void myPixmapInit(MyPixmap * pm)
 
 void myPixmapFree(Display * dpy, MyPixmap * pm)
 {
-    DBG("entering myPixmapFree\n");
+    TRACE("entering myPixmapFree");
 
     if(pm->pixmap != None)
     {

@@ -92,7 +92,7 @@ static int handleXError(Display * dpy, XErrorEvent * err)
         }
         break;
     default:
-        DBG("X error ignored\n");
+        TRACE("X error ignored");
         break;
     }
     return 0;
@@ -102,7 +102,7 @@ static void cleanUp()
 {
     int i;
 
-    DBG("entering cleanUp\n");
+    TRACE("entering cleanUp");
 
     clientUnframeAll();
     sn_close_display();
@@ -157,7 +157,7 @@ static void session_die(gpointer client_data)
 
 static void handleSignal(int sig)
 {
-    DBG("entering handleSignal\n");
+    TRACE("entering handleSignal");
 
     switch (sig)
     {
@@ -185,7 +185,7 @@ static int initialize(int argc, char **argv)
     int dummy;
     long ws;
 
-    DBG("entering initialize\n");
+    TRACE("entering initialize");
 
     progname = argv[0];
 
@@ -199,7 +199,7 @@ static int initialize(int argc, char **argv)
     gtk_set_locale();
     gtk_init(&argc, &argv);
 
-    DBG("Using GTK+-%d.%d.%d\n", gtk_major_version, gtk_minor_version, gtk_micro_version);
+    TRACE("Using GTK+-%d.%d.%d", gtk_major_version, gtk_minor_version, gtk_micro_version);
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
     dpy = GDK_DISPLAY();
@@ -260,7 +260,7 @@ static int initialize(int argc, char **argv)
     pushEventFilter(xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow();
-    DBG("Our event window is 0x%lx\n", gnome_win);
+    TRACE("Our event window is 0x%lx", gnome_win);
 
     if(!initSettings())
     {
@@ -356,6 +356,6 @@ int main(int argc, char **argv)
         break;
     }
     cleanUp();
-    DBG("Terminated\n");
+    TRACE("Terminated");
     return 0;
 }

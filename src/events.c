@@ -72,7 +72,7 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev, gboolean al
     g = XGrabPointer(dpy, w, FALSE, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);
     if(g != GrabSuccess)
     {
-        DBG("grab failed in typeOfClick\n");
+        TRACE("grab failed in typeOfClick");
         gdk_beep();
         return XFWM_BUTTON_UNDEFINED;
     }
@@ -124,7 +124,7 @@ static void clear_timeout(void)
 static gboolean raise_cb(gpointer data)
 {
     Client *c;
-    DBG("entering raise_cb\n");
+    TRACE("entering raise_cb");
 
     clear_timeout();
     c = clientGetFocus();
@@ -189,7 +189,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
     int state, key;
     XEvent e;
 
-    DBG("entering handleKeyEvent\n");
+    TRACE("entering handleKeyEvent");
 
     c = clientGetFocus();
     state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask | HyperMask);
@@ -511,7 +511,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
     Window win;
     int state, replay = FALSE;
 
-    DBG("entering handleButtonPress\n");
+    TRACE("entering handleButtonPress");
 
     /* Clear timeout */
     clear_timeout();
@@ -637,7 +637,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
 
 static inline void handleButtonRelease(XButtonEvent * ev)
 {
-    DBG("entering handleButtonRelease\n");
+    TRACE("entering handleButtonRelease");
 
     XSendEvent(dpy, gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
 }
@@ -646,13 +646,13 @@ static inline void handleDestroyNotify(XDestroyWindowEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleDestroyNotify\n");
-    DBG("destroyed window is (0x%lx)\n", ev->window);
+    TRACE("entering handleDestroyNotify");
+    TRACE("destroyed window is (0x%lx)", ev->window);
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        DBG("DestroyNotify for \"%s\" (0x%lx)\n", c->name, c->window);
+        TRACE("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
         clientPassFocus(c);
         clientUnframe(c, FALSE);
     }
@@ -662,13 +662,13 @@ static inline void handleUnmapNotify(XUnmapEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleUnmapNotify\n");
-    DBG("unmapped window is (0x%lx)\n", ev->window);
+    TRACE("entering handleUnmapNotify");
+    TRACE("unmapped window is (0x%lx)", ev->window);
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        DBG("UnmapNotify for \"%s\" (0x%lx)\n", c->name, c->window);
+        TRACE("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         /* Reparenting generates an unmapnotify, don't pass focus in that case */
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_REPARENTING))
         {
@@ -693,12 +693,12 @@ static inline void handleMapRequest(XMapRequestEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleMapRequest\n");
-    DBG("mapped window is (0x%lx)\n", ev->window);
+    TRACE("entering handleMapRequest");
+    TRACE("mapped window is (0x%lx)", ev->window);
 
     if(ev->window == None)
     {
-        DBG("Mapping None ???\n");
+        TRACE("Mapping None ???");
         return;
     }
     c = clientGetFromWindow(ev->window, WINDOW);
@@ -718,8 +718,8 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     XWindowChanges wc;
     XEvent otherEvent;
 
-    DBG("entering handleConfigureRequest\n");
-    DBG("configured window is (0x%lx)\n", ev->window);
+    TRACE("entering handleConfigureRequest");
+    TRACE("configured window is (0x%lx)", ev->window);
 
     /* Compress events - logic taken from kwin */
     while(XCheckTypedWindowEvent(dpy, ev->window, ConfigureRequest, &otherEvent))
@@ -750,7 +750,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         c = clientGetFromWindow(ev->window, FRAME);
         if(c)
         {
-            DBG("client %s (0x%lx) is attempting to manipulate its frame!\n", c->name, c->window);
+            TRACE("client %s (0x%lx) is attempting to manipulate its frame!", c->name, c->window);
             if(ev->value_mask & CWX)
             {
                 wc.x += frameLeft(c);
@@ -777,7 +777,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     {
         gboolean constrained = FALSE;
 
-        DBG("handleConfigureRequest managed window \"%s\" (0x%lx)\n", c->name, c->window);
+        TRACE("handleConfigureRequest managed window \"%s\" (0x%lx)", c->name, c->window);
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
@@ -816,7 +816,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     }
     else
     {
-        DBG("unmanaged configure request for win 0x%lx\n", ev->window);
+        TRACE("unmanaged configure request for win 0x%lx", ev->window);
         XConfigureWindow(dpy, ev->window, ev->value_mask, &wc);
     }
 }
@@ -825,17 +825,17 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleEnterNotify\n");
+    TRACE("entering handleEnterNotify");
 
     while(XCheckTypedEvent(dpy, EnterNotify, (XEvent *) ev))
         ;
 
-    DBG("entered window is (0x%lx)\n", ev->window);
+    TRACE("entered window is (0x%lx)", ev->window);
 
     c = clientGetFromWindow(ev->window, FRAME);
     if(c && !(params.click_to_focus) && (clientAcceptFocus(c)))
     {
-        DBG("EnterNotify window is \"%s\"\n", c->name);
+        TRACE("EnterNotify window is \"%s\"", c->name);
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
             clientSetFocus(c, TRUE);
@@ -847,7 +847,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleFocusIn\n");
+    TRACE("entering handleFocusIn");
 
     if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
     {
@@ -866,20 +866,20 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     while(XCheckTypedEvent(dpy, FocusIn, (XEvent *) ev))
     {
         if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
-	{
-	    continue;
-	}
+        {
+            continue;
+        }
         c2 = clientGetFromWindow(ev->window, WINDOW);
-	if (c2)
-	{
-	    c = c2;
-	}
+        if (c2)
+        {
+            c = c2;
+        }
     }
 #endif
-    DBG("focused window is (0x%lx)\n", ev->window);
+    TRACE("focused window is (0x%lx)", ev->window);
     if(c)
     {
-        DBG("focus set to \"%s\" (0x%lx)\n", c->name, c->window);
+        TRACE("focus set to \"%s\" (0x%lx)", c->name, c->window);
         clientUpdateFocus(c);
         frameDraw(c, FALSE, FALSE);
         if(params.raise_on_focus && !params.click_to_focus)
@@ -892,7 +892,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 static inline void handleFocusOut(XFocusChangeEvent * ev)
 {
 #if 0
-    DBG("entering handleFocusOut - Window (0x%lx)\n", w);
+    TRACE("entering handleFocusOut - Window (0x%lx)", w);
 #endif
 }
 
@@ -901,7 +901,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
     Client *c;
     long dummy;
 
-    DBG("entering handlePropertyNotify\n");
+    TRACE("entering handlePropertyNotify");
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
@@ -910,7 +910,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             unsigned long previous_value;
 
-            DBG("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify", c->name, c->window);
             XGetWMNormalHints(dpy, c->window, c->size, &dummy);
             previous_value = CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE);
             CLIENT_FLAG_UNSET(c, CLIENT_FLAG_IS_RESIZABLE);
@@ -925,7 +925,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
         else if((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
-            DBG("client \"%s\" (0x%lx) has received a XA_WM_NAME notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a XA_WM_NAME notify", c->name, c->window);
             if(c->name)
             {
                 free(c->name);
@@ -938,7 +938,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             XWindowChanges wc;
 
-            DBG("client \"%s\" (0x%lx) has received a motif_wm_hints notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a motif_wm_hints notify", c->name, c->window);
             clientUpdateMWMHints(c);
             wc.x = c->x;
             wc.y = c->y;
@@ -948,7 +948,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
         else if(ev->atom == XA_WM_HINTS)
         {
-            DBG("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify\n", c->name, c->window);
             c->wmhints = XGetWMHints(dpy, c->window);
             if(c->wmhints)
             {
@@ -957,31 +957,31 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         }
         else if(ev->atom == win_hints)
         {
-            DBG("client \"%s\" (0x%lx) has received a win_hints notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_hints notify", c->name, c->window);
             getGnomeHint(dpy, c->window, win_hints, &c->win_hints);
         }
         else if(ev->atom == win_layer)
         {
-            DBG("client \"%s\" (0x%lx) has received a win_layer notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_layer notify\n", c->name, c->window);
             getGnomeHint(dpy, c->window, win_layer, &dummy);
             clientSetLayer(c, dummy);
             clientSetNetState(c);
         }
         else if(ev->atom == net_wm_window_type)
         {
-            DBG("client \"%s\" (0x%lx) has received a net_wm_window_type notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_wm_window_type notify", c->name, c->window);
             clientGetNetWmType(c);
             frameDraw(c, TRUE, FALSE);
         }
         else if((ev->atom == win_workspace) && !(c->transient_for))
         {
-            DBG("client \"%s\" (0x%lx) has received a win_workspace notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_workspace notify", c->name, c->window);
             getGnomeHint(dpy, c->window, win_workspace, &dummy);
             clientSetWorkspace(c, dummy, TRUE);
         }
         else if(ev->atom == net_wm_strut)
         {
-            DBG("client \"%s\" (0x%lx) has received a net_wm_strut notify\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_wm_strut notify", c->name, c->window);
             clientGetNetStruts(c);
         }
         else if(ev->atom == wm_colormap_windows)
@@ -1009,13 +1009,13 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
     {
         if(ev->atom == win_workspace_count)
         {
-            DBG("root has received a win_workspace_count notify\n");
+            TRACE("root has received a win_workspace_count notify");
             getGnomeHint(dpy, root, win_workspace_count, &dummy);
             workspaceSetCount(dummy);
         }
         else if(ev->atom == gnome_panel_desktop_area)
         {
-            DBG("root has received a gnome_panel_desktop_area notify\n");
+            TRACE("root has received a gnome_panel_desktop_area notify");
             getGnomeDesktopMargins(dpy, screen, gnome_margins);
             workspaceUpdateArea(margins, gnome_margins);
         }
@@ -1026,19 +1026,19 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleClientMessage\n");
+    TRACE("entering handleClientMessage");
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
-            DBG("client \"%s\" (0x%lx) has received a wm_change_state event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
             clientHide(c, TRUE);
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
-            DBG("client \"%s\" (0x%lx) has received a win_state/shaded event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_state/shaded event", c->name, c->window);
             if(ev->data.l[1] == WIN_STATE_SHADED)
             {
                 clientShade(c);
@@ -1051,7 +1051,7 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
         {
-            DBG("client \"%s\" (0x%lx) has received a win_state/stick event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_state/stick event", c->name, c->window);
             if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 if(ev->data.l[1] == WIN_STATE_STICKY)
@@ -1067,17 +1067,17 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {
-            DBG("client \"%s\" (0x%lx) has received a win_layer event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_layer event", c->name, c->window);
             clientSetLayer(c, ev->data.l[0]);
         }
         else if((ev->message_type == win_workspace) && (ev->format == 32) && !(c->transient_for))
         {
-            DBG("client \"%s\" (0x%lx) has received a win_workspace event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a win_workspace event", c->name, c->window);
             clientSetWorkspace(c, ev->data.l[0], TRUE);
         }
         else if((ev->message_type == net_wm_desktop) && (ev->format == 32))
         {
-            DBG("client \"%s\" (0x%lx) has received a net_wm_desktop event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_wm_desktop event", c->name, c->window);
             if((ev->data.l[0] == (int)0xFFFFFFFF) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STICK))
             {
                 clientStick(c, TRUE);
@@ -1089,23 +1089,23 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         }
         else if((ev->message_type == net_close_window) && (ev->format == 32))
         {
-            DBG("client \"%s\" (0x%lx) has received a net_close_window event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_close_window event", c->name, c->window);
             clientClose(c);
         }
         else if((ev->message_type == net_wm_state) && (ev->format == 32))
         {
-            DBG("client \"%s\" (0x%lx) has received a net_wm_state event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_wm_state event", c->name, c->window);
             clientUpdateNetState(c, ev);
         }
         else if((ev->message_type == net_wm_moveresize) && (ev->format == 32))
         {
-            DBG("client \"%s\" (0x%lx) has received a net_wm_moveresize event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_wm_moveresize event", c->name, c->window);
             g_message(_("%s: Operation not supported (yet)\n"), g_get_prgname());
             /* TBD */
         }
         else if((ev->message_type == net_active_window) && (ev->format == 32))
         {
-            DBG("client \"%s\" (0x%lx) has received a net_active_window event\n", c->name, c->window);
+            TRACE("client \"%s\" (0x%lx) has received a net_active_window event", c->name, c->window);
             workspaceSwitch(c->win_workspace, NULL);
             clientShow(c, TRUE);
             clientRaise(c);
@@ -1116,17 +1116,17 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
     {
         if(((ev->message_type == win_workspace) || (ev->message_type == net_current_desktop)) && (ev->format == 32))
         {
-            DBG("root has received a win_workspace or a net_current_desktop event\n");
+            TRACE("root has received a win_workspace or a net_current_desktop event");
             workspaceSwitch(ev->data.l[0], NULL);
         }
         else if(((ev->message_type == win_workspace_count) || (ev->message_type == net_number_of_desktops)) && (ev->format == 32))
         {
-            DBG("root has received a win_workspace_count event\n");
+            TRACE("root has received a win_workspace_count event");
             workspaceSetCount(ev->data.l[0]);
         }
         else
         {
-            DBG("unidentified client message for window 0x%lx\n", ev->window);
+            TRACE("unidentified client message for window 0x%lx", ev->window);
         }
     }
 }
@@ -1135,7 +1135,7 @@ static inline void handleShape(XShapeEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleShape\n");
+    TRACE("entering handleShape");
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
@@ -1148,7 +1148,7 @@ static inline void handleColormapNotify(XColormapEvent * ev)
 {
     Client *c;
 
-    DBG("entering handleColormapNotify\n");
+    TRACE("entering handleColormapNotify");
 
     c = clientGetFromWindow(ev->window, WINDOW);
     if((c) && (ev->window == c->window) && (ev->new))
@@ -1162,7 +1162,7 @@ static inline void handleColormapNotify(XColormapEvent * ev)
 
 void handleEvent(XEvent * ev)
 {
-    DBG("entering handleEvent\n");
+    TRACE("entering handleEvent");
 
     sn_process_event(ev);
     switch (ev->type)
@@ -1229,9 +1229,9 @@ void handleEvent(XEvent * ev)
 
 GtkToXEventFilterStatus xfwm4_event_filter(XEvent * xevent, gpointer data)
 {
-    DBG("entering xfwm4_event_filter\n");
+    TRACE("entering xfwm4_event_filter");
     handleEvent(xevent);
-    DBG("leaving xfwm4_event_filter\n");
+    TRACE("leaving xfwm4_event_filter");
     return XEV_FILTER_STOP;
 }
 
@@ -1241,7 +1241,7 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
 {
     Client *c = NULL;
 
-    DBG("entering menu_callback\n");
+    TRACE("entering menu_callback");
 
     if(menu_event_window)
     {
@@ -1316,7 +1316,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     gint x = ev->x_root;
     gint y = ev->y_root;
 
-    DBG("entering show_popup_cb\n");
+    TRACE("entering show_popup_cb");
 
     if(((ev->button == 1) || (ev->button == 3)) && (c = (Client *) data))
     {
@@ -1422,7 +1422,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     menu = menu_default(ops, insensitive, menu_callback, c);
     if(!menu_popup(menu, x, y, ev->button, ev->time))
     {
-        DBG("Cannot open menu\n");
+        TRACE("Cannot open menu");
         gdk_beep();
         c->button_pressed[MENU_BUTTON] = FALSE;
         frameDraw(c, FALSE, FALSE);
@@ -1435,7 +1435,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
 
 static gboolean set_reload(void)
 {
-    DBG("setting reload flag so all prefs will be reread at next event loop\n");
+    TRACE("setting reload flag so all prefs will be reread at next event loop");
     reload = TRUE;
     return (TRUE);
 }
@@ -1444,7 +1444,7 @@ static gboolean dbl_click_time(void)
 {
     GValue tmp_val = { 0, };
 
-    DBG("setting dbl_click_time\n");
+    TRACE("setting dbl_click_time");
 
     g_value_init(&tmp_val, G_TYPE_INT);
     if(gdk_setting_get("gtk-double-click-time", &tmp_val))
@@ -1457,7 +1457,7 @@ static gboolean dbl_click_time(void)
 
 static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev)
 {
-    DBG("entering client_event_cb\n");
+    TRACE("entering client_event_cb");
 
     if(!atom_rcfiles)
     {

@@ -829,7 +829,7 @@ gboolean loadSettings(void)
                     };
     GValue tmp_val = { 0, };
 
-    DBG("entering loadSettings\n");
+    TRACE("entering loadSettings");
 
     loadRcData(rc);
     loadMcsData(rc);
@@ -904,7 +904,7 @@ gboolean loadSettings(void)
 static void unloadTheme(void)
 {
     int i;
-    DBG("entering unloadTheme\n");
+    TRACE("entering unloadTheme");
 
     for(i = 0; i < 3; i++)
     {
@@ -939,7 +939,7 @@ static void unloadTheme(void)
 
 gboolean reloadSettings(int mask)
 {
-    DBG("entering reloadSettings\n");
+    TRACE("entering reloadSettings");
 
     unloadTheme();
     if(!loadSettings())
@@ -959,7 +959,7 @@ gboolean initSettings(void)
     int i;
     long val = 0;
 
-    DBG("entering initSettings\n");
+    TRACE("entering initSettings");
 
     mcs_initted = FALSE;
     params.box_gc = None;
@@ -1035,7 +1035,7 @@ gboolean initSettings(void)
 
 void unloadSettings(void)
 {
-    DBG("entering unloadSettings\n");
+    TRACE("entering unloadSettings");
 
     unloadTheme();
 }

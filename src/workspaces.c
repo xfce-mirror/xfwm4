@@ -43,7 +43,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     unsigned long data[1];
     XEvent an_event;
 
-    DBG("entering workspaceSwitch\n");
+    TRACE("entering workspaceSwitch");
 
     if((new_ws < 0) && params.wrap_workspaces)
     {
@@ -134,7 +134,7 @@ void workspaceSetCount(int count)
     Client *c;
     int i;
 
-    DBG("entering workspaceSetCount\n");
+    TRACE("entering workspaceSetCount");
 
     if(count < 1)
     {
@@ -172,7 +172,7 @@ void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
     int prev_right = margins[MARGIN_RIGHT];
     int prev_bottom = margins[MARGIN_BOTTOM];
 
-    DBG("entering workspaceSetCount\n");
+    TRACE("entering workspaceSetCount");
 
     for(i = 0; i < 4; i++)
     {
@@ -188,10 +188,10 @@ void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
             margins[MARGIN_BOTTOM] = MAX(margins[MARGIN_BOTTOM], c->struts[MARGIN_BOTTOM]);
         }
     }
-    DBG("Desktop area computed : (%d,%d,%d,%d)\n", (int)margins[0], (int)margins[1], (int)margins[2], (int)margins[3]);
+    TRACE("Desktop area computed : (%d,%d,%d,%d)", (int)margins[0], (int)margins[1], (int)margins[2], (int)margins[3]);
     if((prev_top != margins[MARGIN_TOP]) || (prev_left != margins[MARGIN_LEFT]) || (prev_right != margins[MARGIN_RIGHT]) || (prev_bottom != margins[MARGIN_BOTTOM]))
     {
-        DBG("Margins have changed, updating net_workarea\n");
+        TRACE("Margins have changed, updating net_workarea");
         set_net_workarea(dpy, screen, params.workspace_count, margins);
     }
 }

@@ -111,12 +111,12 @@
 
 #define CLIENT_FLAG_INITIAL_VALUES     CLIENT_FLAG_HAS_BORDER | \
                                        CLIENT_FLAG_HAS_MENU | \
-				       CLIENT_FLAG_HAS_MAXIMIZE | \
-				       CLIENT_FLAG_HAS_STICK | \
-				       CLIENT_FLAG_HAS_HIDE | \
-				       CLIENT_FLAG_HAS_CLOSE | \
-				       CLIENT_FLAG_HAS_MOVE | \
-				       CLIENT_FLAG_HAS_RESIZE				       
+                                       CLIENT_FLAG_HAS_MAXIMIZE | \
+                                       CLIENT_FLAG_HAS_STICK | \
+                                       CLIENT_FLAG_HAS_HIDE | \
+                                       CLIENT_FLAG_HAS_CLOSE | \
+                                       CLIENT_FLAG_HAS_MOVE | \
+                                       CLIENT_FLAG_HAS_RESIZE                                  
 
 /* Convenient macros */
 #define CLIENT_FLAG_TEST(c,f)                   (c->client_flag & (f))

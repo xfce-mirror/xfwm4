@@ -32,7 +32,7 @@
 
 inline int frameLeft(Client * c)
 {
-    DBG("entering frameLeft\n");
+    TRACE("entering frameLeft");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -43,7 +43,7 @@ inline int frameLeft(Client * c)
 
 inline int frameRight(Client * c)
 {
-    DBG("entering frameRight\n");
+    TRACE("entering frameRight");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -54,7 +54,7 @@ inline int frameRight(Client * c)
 
 inline int frameTop(Client * c)
 {
-    DBG("entering frameTop\n");
+    TRACE("entering frameTop");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -65,7 +65,7 @@ inline int frameTop(Client * c)
 
 inline int frameBottom(Client * c)
 {
-    DBG("entering frameBottom\n");
+    TRACE("entering frameBottom");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -76,7 +76,7 @@ inline int frameBottom(Client * c)
 
 inline int frameX(Client * c)
 {
-    DBG("entering frameX\n");
+    TRACE("entering frameX");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -87,7 +87,7 @@ inline int frameX(Client * c)
 
 inline int frameY(Client * c)
 {
-    DBG("entering frameY\n");
+    TRACE("entering frameY");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -98,7 +98,7 @@ inline int frameY(Client * c)
 
 inline int frameWidth(Client * c)
 {
-    DBG("entering frameWidth\n");
+    TRACE("entering frameWidth");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN))
     {
@@ -109,7 +109,7 @@ inline int frameWidth(Client * c)
 
 inline int frameHeight(Client * c)
 {
-    DBG("entering frameHeight\n");
+    TRACE("entering frameHeight");
 
     if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_SHADED, CLIENT_FLAG_FULLSCREEN))
     {
@@ -128,7 +128,7 @@ static inline void fillRectangle(Display * dpy, Drawable d, Pixmap pm, int x, in
     GC gc;
     unsigned long mask;
 
-    DBG("entering fillRectangle\n");
+    TRACE("entering fillRectangle");
 
     if((width < 1) || (height < 1))
     {
@@ -162,7 +162,7 @@ static inline void frameCreateTitlePixmap(Client * c, int state, int left, int r
     PangoLayout *layout = NULL;
     PangoRectangle logical_rect;
 
-    DBG("entering frameCreateTitlePixmap\n");
+    TRACE("entering frameCreateTitlePixmap");
 
     if(left > right)
     {
@@ -321,7 +321,7 @@ static inline int getButtonFromLetter(char chr, Client * c)
 {
     int b = -1;
 
-    DBG("entering getButtonFromLetter\n");
+    TRACE("entering getButtonFromLetter");
 
     switch (chr)
     {
@@ -371,7 +371,7 @@ static inline char getLetterFromButton(int i, Client * c)
 {
     char chr = 0;
 
-    DBG("entering getLetterFromButton\n");
+    TRACE("entering getLetterFromButton");
 
     switch (i)
     {
@@ -453,8 +453,8 @@ static inline void frameSetShape(Client * c, int state, ClientPixmapCache * pm_c
     XRectangle rect;
     MyPixmap * my_pixmap;
 
-    DBG("entering frameSetShape\n");
-    DBG("setting shape for client (0x%lx)\n", c->window);
+    TRACE("entering frameSetShape");
+    TRACE("setting shape for client (0x%lx)", c->window);
 
     if(!shape)
     {
@@ -570,14 +570,14 @@ void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_updat
     gboolean requires_clearing = FALSE;
     MyPixmap * my_pixmap;
 
-    DBG("entering frameDraw\n");
-    DBG("drawing frame for \"%s\" (0x%lx)\n", c->name, c->window);
+    TRACE("entering frameDraw");
+    TRACE("drawing frame for \"%s\" (0x%lx)", c->name, c->window);
 
     g_return_if_fail(c != NULL);
 
     if(c != clientGetFocus())
     {
-        DBG("\"%s\" is not the active window\n", c->name);
+        TRACE("\"%s\" is not the active window", c->name);
         state = INACTIVE;
     }
     if((state == INACTIVE) && (c->draw_active))

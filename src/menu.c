@@ -118,14 +118,14 @@ static gboolean activate_cb(GtkWidget * menuitem, gpointer data)
 {
     MenuData *md;
 
-    DBG("entering activate_cb\n");
+    TRACE("entering activate_cb");
     g_return_val_if_fail(GTK_IS_WIDGET(menuitem), FALSE);
 
     menu_open = NULL;
 
     md = data;
 
-    DBG("deactivating menu_filter\n");
+    TRACE("deactivating menu_filter");
     popEventFilter();
     (*md->menu->func) (md->menu, md->op, md->client_xwindow, md->menu->data, md->data);
     return (FALSE);
@@ -135,10 +135,10 @@ static gboolean menu_closed(GtkMenu * widget, gpointer data)
 {
     Menu *menu;
 
-    DBG("entering menu_closed\n");
+    TRACE("entering menu_closed");
     menu = data;
     menu_open = NULL;
-    DBG("deactivating menu_filter\n");
+    TRACE("deactivating menu_filter");
     popEventFilter();
     (*menu->func) (menu, 0, None, menu->data, NULL);
     return (FALSE);
@@ -149,7 +149,7 @@ Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
     int i;
     Menu *menu;
 
-    DBG("entering menu_new\n");
+    TRACE("entering menu_new");
     menu = g_new(Menu, 1);
     menu->func = func;
     menu->data = data;
@@ -195,7 +195,7 @@ Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
 
 Menu *menu_connect(Menu * menu)
 {
-    DBG("entering menu_connect\n");
+    TRACE("entering menu_connect");
     g_return_val_if_fail(menu != NULL, NULL);
     g_return_val_if_fail(GTK_IS_MENU(menu->menu), NULL);
     g_signal_connect(GTK_OBJECT(menu->menu), "selection_done", GTK_SIGNAL_FUNC(menu_closed), menu);
@@ -204,17 +204,17 @@ Menu *menu_connect(Menu * menu)
 
 static void closure_notify(gpointer data, GClosure * closure)
 {
-    DBG("entering closure_notify\n");
+    TRACE("entering closure_notify");
     if(data)
     {
-        DBG("freeing data\n");
+        TRACE("freeing data");
         g_free(data);
     }
 }
 
 GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data)
 {
-    DBG("entering menu_item_connect\n");
+    TRACE("entering menu_item_connect");
     g_return_val_if_fail(item != NULL, NULL);
     g_return_val_if_fail(GTK_IS_MENU_ITEM(item), NULL);
     g_signal_connect_closure(GTK_OBJECT(item), "activate", g_cclosure_new(GTK_SIGNAL_FUNC(activate_cb), item_data, (GClosureNotify) closure_notify), FALSE);
@@ -223,16 +223,16 @@ GtkWidget *menu_item_connect(GtkWidget * item, MenuData * item_data)
 
 gboolean menu_is_opened(void)
 {
-    DBG("entering menu_is_opened\n");
+    TRACE("entering menu_is_opened");
     return (menu_open != NULL);
 }
 
 gboolean menu_check_and_close(void)
 {
-    DBG("entering menu_check_or_close\n");
+    TRACE("entering menu_check_or_close");
     if(menu_open)
     {
-        DBG("menu open, emitting deactivate signal\n");
+        TRACE("menu open, emitting deactivate signal");
         g_signal_emit_by_name(GTK_OBJECT(menu_open), "deactivate");
         menu_open = NULL;
         return (TRUE);
@@ -248,14 +248,14 @@ static gboolean grab_available(guint32 timestamp)
     gboolean grab_failed = FALSE;
     gint i = 0;
 
-    DBG("entering grab_available\n");
+    TRACE("entering grab_available");
 
     g1 = gdk_pointer_grab(getGdkEventWindow(), TRUE, mask, NULL, NULL, timestamp);
     g2 = gdk_keyboard_grab(getGdkEventWindow(), TRUE, timestamp);
 
     while((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS) || (g2 != GDK_GRAB_SUCCESS))))
     {
-        DBG("grab not available yet, waiting... (%i)\n", i);
+        TRACE("grab not available yet, waiting... (%i)", i);
         usleep(100);
         if(g1 != GDK_GRAB_SUCCESS)
         {
@@ -283,7 +283,7 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
 {
     GdkPoint *pt;
 
-    DBG("entering menu_popup\n");
+    TRACE("entering menu_popup");
 
     g_return_val_if_fail(menu != NULL, FALSE);
     g_return_val_if_fail(GTK_IS_MENU(menu->menu), FALSE);
@@ -297,10 +297,10 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
         if(!grab_available(timestamp))
         {
             g_free(pt);
-            DBG("Cannot get grab on pointer/keyboard, cancel.\n");
+            TRACE("Cannot get grab on pointer/keyboard, cancel.");
             return FALSE;
         }
-        DBG("opening new menu\n");
+        TRACE("opening new menu");
         menu_open = menu->menu;
         pushEventFilter(menu_filter, NULL);
         gtk_menu_popup(GTK_MENU(menu->menu), NULL, NULL, popup_position_func, pt, button, timestamp);
@@ -316,11 +316,11 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
 
 void menu_free(Menu * menu)
 {
-    DBG("entering menu_free\n");
+    TRACE("entering menu_free");
     g_return_if_fail(menu != NULL);
     g_return_if_fail(menu->menu != NULL);
     g_return_if_fail(GTK_IS_MENU(menu->menu));
-    DBG("freeing menu\n");
+    TRACE("freeing menu");
     gtk_widget_destroy(menu->menu);
     g_free(menu);
 }

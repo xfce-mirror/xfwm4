@@ -41,7 +41,7 @@ gboolean parseRc(const gchar * file, const gchar * dir, Settings rc[])
     gchar *filename, *lvalue, *rvalue;
     FILE *fp;
 
-    DBG("entering parseRc\n");
+    TRACE("entering parseRc");
 
     g_return_val_if_fail(file != NULL, FALSE);
 
@@ -79,7 +79,7 @@ gboolean checkRc(Settings rc[])
     gint i;
     gboolean rval = True;
 
-    DBG("entering checkRc\n");
+    TRACE("entering checkRc");
 
     for(i = 0; rc[i].option; i++)
     {
@@ -96,7 +96,7 @@ gchar *getValue(const gchar * option, Settings rc[])
 {
     gint i;
 
-    DBG("entering getValue\n");
+    TRACE("entering getValue");
 
     g_return_val_if_fail(option != NULL, NULL);
 
@@ -114,7 +114,7 @@ gboolean setValue(const gchar * lvalue, const gchar * rvalue, Settings rc[])
 {
     gint i;
 
-    DBG("entering setValue\n");
+    TRACE("entering setValue");
 
     g_return_val_if_fail(lvalue != NULL, FALSE);
     g_return_val_if_fail(rvalue != NULL, FALSE);
@@ -130,7 +130,7 @@ gboolean setValue(const gchar * lvalue, const gchar * rvalue, Settings rc[])
                     g_free(rc[i].value);
                 }
                 rc[i].value = g_strdup(rvalue);
-                DBG("%s=%s\n", rc[i].option, rc[i].value);
+                TRACE("%s=%s", rc[i].option, rc[i].value);
                 return TRUE;
             }
         }
@@ -194,7 +194,7 @@ void freeRc(Settings rc[])
 {
     gint i;
 
-    DBG("entering freeRc\n");
+    TRACE("entering freeRc");
 
     for(i = 0; rc[i].option; i++)
     {
