@@ -774,8 +774,16 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 
     XMoveResizeWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c),
                             frameWidth (c), frameHeight (c));
-    XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
-                            c->width, c->height);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), - c->height,
+                                c->width, c->height);
+    }
+    else
+    {
+        XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
+                                c->width, c->height);
+    }
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
@@ -1673,17 +1681,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         xfwmWindowCreate (display_info->dpy, c->frame, &c->buttons[i], None);
     }
 
-    /* Put client window on top of frame stack if visible, on bottom if shaded.
-       Putting the window on top avoid the XShape efefct that slows down
-       GLX apps dramatically */
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
-    {
-        XLowerWindow (display_info->dpy, c->window);
-    }
-    else
-    {
-        XRaiseWindow (display_info->dpy, c->window);
-    }
+    /* Put the window on top to avoid XShape, that speeds up hw accelerated 
+       GL apps dramatically */
+    XRaiseWindow (display_info->dpy, c->window);
     
     TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name, c->window);
     wc.x = c->x;
@@ -2346,7 +2346,6 @@ clientShade (Client * c)
     {
         wc.width = c->width;
         wc.height = c->height;
-        XLowerWindow (clientGetXDisplay (c), c->window);
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
@@ -2372,7 +2371,6 @@ clientUnshade (Client * c)
     {
         wc.width = c->width;
         wc.height = c->height;
-        XRaiseWindow (clientGetXDisplay (c), c->window);
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
