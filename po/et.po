@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-17 23:15+0200\n"
+"POT-Creation-Date: 2004-10-20 22:51+0200\n"
 "PO-Revision-Date: 2004-02-03 10:04+0200\n"
 "Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -601,7 +601,7 @@ msgstr "Käsku ei ole olemas, või fail ei ole käivitatav !"
 msgid "Compose shortcut for command :"
 msgstr "Moodusta kiirvalik käsule :"
 
-#: src/events.c:1777
+#: src/events.c:1776
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operatsioon pole (veel) toetatud\n"

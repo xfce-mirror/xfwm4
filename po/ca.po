@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-12 08:48+0200\n"
+"POT-Creation-Date: 2004-10-20 22:51+0200\n"
 "PO-Revision-Date: 2004-03-29 22:19+0100\n"
 "Last-Translator: Carles Munoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <ca@li.org>\n"
@@ -625,49 +625,49 @@ msgstr ""
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1196
+#: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1259
+#: mcs-plugin/xfwm4_shortcuteditor.c:1267
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Dreceres de Teclat"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1262
-#: mcs-plugin/xfwm4_shortcuteditor.c:1491
+#: mcs-plugin/xfwm4_shortcuteditor.c:1270
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Dreceres de Teclat"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1264
-#: mcs-plugin/xfwm4_shortcuteditor.c:1493
+#: mcs-plugin/xfwm4_shortcuteditor.c:1272
+#: mcs-plugin/xfwm4_shortcuteditor.c:1500
 #, fuzzy
 msgid "No shortcut"
 msgstr "Dreceres de Teclat"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1386
+#: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1396
 #, fuzzy
 msgid "Command :"
 msgstr "Dreceres de Teclat"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1424
+#: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1488
+#: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1713
+#: src/events.c:1776
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operació encara no suportada\n"
@@ -677,27 +677,27 @@ msgstr "%s: Operació encara no suportada\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault (violació de segment)"
 
-#: src/main.c:456
+#: src/main.c:495
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Un altre gestor de finestres s'està executant"
 
-#: src/main.c:461
+#: src/main.c:500
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Falten dades dels fitxers per defecte"
 
-#: src/main.c:471
+#: src/main.c:510
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: No s'ha pogut entrar en mode dimoni: %s"
 
-#: src/main.c:479
+#: src/main.c:518
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: No s'ha pogut crear el procés nou: %s"
 
-#: src/main.c:500
+#: src/main.c:539
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: S'ha produït un error desconegut"
@@ -786,39 +786,39 @@ msgstr "%s: GtkMenu no ha pogut capturar el punter\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
-#: src/settings.c:365
+#: src/settings.c:369
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Falten els fitxers per defecte."
 
-#: src/settings.c:643
+#: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No es pot allotjar el color actiu %s\n"
 
-#: src/settings.c:649
+#: src/settings.c:659
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No es pot processar el color actiu %s\n"
 
-#: src/settings.c:692
+#: src/settings.c:702
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No es pot allotjar el color inactiu %s\n"
 
-#: src/settings.c:698
+#: src/settings.c:708
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No es pot processar el color inactiu %s\n"
 
-#: src/settings.c:885
+#: src/settings.c:895
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: No sa trobat la configuració de tecles \"%s\", es fa servir la "
 "configuració per defecte"
 
-#: src/settings.c:892
+#: src/settings.c:902
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltes valors en els fitxers per defecte"

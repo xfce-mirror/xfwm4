@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-12 08:48+0200\n"
+"POT-Creation-Date: 2004-10-20 22:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -627,49 +627,49 @@ msgstr ""
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1196
+#: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1259
+#: mcs-plugin/xfwm4_shortcuteditor.c:1267
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Klávesové zkratky"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1262
-#: mcs-plugin/xfwm4_shortcuteditor.c:1491
+#: mcs-plugin/xfwm4_shortcuteditor.c:1270
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Klávesové zkratky"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1264
-#: mcs-plugin/xfwm4_shortcuteditor.c:1493
+#: mcs-plugin/xfwm4_shortcuteditor.c:1272
+#: mcs-plugin/xfwm4_shortcuteditor.c:1500
 #, fuzzy
 msgid "No shortcut"
 msgstr "Klávesové zkratky"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1386
+#: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1396
 #, fuzzy
 msgid "Command :"
 msgstr "Klávesové zkratky"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1424
+#: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1488
+#: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1713
+#: src/events.c:1776
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "s: Operace není podporována (prozatím)\n"
@@ -679,27 +679,27 @@ msgstr "s: Operace není podporována (prozatím)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
 
-#: src/main.c:456
+#: src/main.c:495
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Již běží jiný správce oken"
 
-#: src/main.c:461
+#: src/main.c:500
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Missing data from default files"
 
-#: src/main.c:471
+#: src/main.c:510
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr ""
 
-#: src/main.c:479
+#: src/main.c:518
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr ""
 
-#: src/main.c:500
+#: src/main.c:539
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Vyskytla se neznámá chyba"
@@ -788,37 +788,37 @@ msgstr "%s: GtkMenu failed to grab the pointer\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/settings.c:365
+#: src/settings.c:369
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Missing defaults file"
 
-#: src/settings.c:643
+#: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Cannot allocate active color %s\n"
 
-#: src/settings.c:649
+#: src/settings.c:659
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Cannot parse active color %s\n"
 
-#: src/settings.c:692
+#: src/settings.c:702
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Cannot allocate inactive color %s\n"
 
-#: src/settings.c:698
+#: src/settings.c:708
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive color %s\n"
 
-#: src/settings.c:885
+#: src/settings.c:895
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: specified key theme \"%s\" missing, using default"
 
-#: src/settings.c:892
+#: src/settings.c:902
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Missing values in defaults file"

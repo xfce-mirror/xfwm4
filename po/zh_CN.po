@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-12 08:48+0200\n"
+"POT-Creation-Date: 2004-10-20 22:51+0200\n"
 "PO-Revision-Date: 2004-09-28 01:05-0700\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -571,7 +571,7 @@ msgstr ""
 msgid "Select command"
 msgstr "选择命令"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1196
+#: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -579,40 +579,40 @@ msgstr ""
 "快捷键已被使用！\n"
 "您确定要使用它吗？"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1259
+#: mcs-plugin/xfwm4_shortcuteditor.c:1267
 msgid "Compose shortcut for :"
 msgstr "组合快捷键用于："
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1262
-#: mcs-plugin/xfwm4_shortcuteditor.c:1491
+#: mcs-plugin/xfwm4_shortcuteditor.c:1270
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
 msgid "Compose shortcut"
 msgstr "组合快捷键"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1264
-#: mcs-plugin/xfwm4_shortcuteditor.c:1493
+#: mcs-plugin/xfwm4_shortcuteditor.c:1272
+#: mcs-plugin/xfwm4_shortcuteditor.c:1500
 #, fuzzy
 msgid "No shortcut"
 msgstr "组合快捷键"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1386
+#: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Choose command"
 msgstr "选择命令"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1396
 msgid "Command :"
 msgstr "命令："
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1424
+#: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "该命令不存在或者该文件不是可执行文件！"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1488
+#: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
 msgstr "组合快捷键用于："
 
-#: src/events.c:1713
+#: src/events.c:1776
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
@@ -622,27 +622,27 @@ msgstr "%s: 尚不支持的操作\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: 段错误"
 
-#: src/main.c:456
+#: src/main.c:495
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 另一个窗口管理正在运行"
 
-#: src/main.c:461
+#: src/main.c:500
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/main.c:471
+#: src/main.c:510
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: 无法进入守护进程模式: %s"
 
-#: src/main.c:479
+#: src/main.c:518
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: 无法创建新进程: %s"
 
-#: src/main.c:500
+#: src/main.c:539
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 发生了未知错误"
@@ -731,37 +731,37 @@ msgstr "%s: GtkMenu 无法获取鼠标\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
 
-#: src/settings.c:365
+#: src/settings.c:369
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 缺少默认文件"
 
-#: src/settings.c:643
+#: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:649
+#: src/settings.c:659
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:692
+#: src/settings.c:702
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:698
+#: src/settings.c:708
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:885
+#: src/settings.c:895
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: 指定的主题 \\\"%s\\\" 不存在，使用默认主题"
 
-#: src/settings.c:892
+#: src/settings.c:902
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"

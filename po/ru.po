@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-12 08:48+0200\n"
+"POT-Creation-Date: 2004-10-20 22:51+0200\n"
 "PO-Revision-Date: 2004-08-24 14:47+0600\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Select command"
 msgstr "Выбрать команду"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1196
+#: mcs-plugin/xfwm4_shortcuteditor.c:1204
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -583,40 +583,40 @@ msgstr ""
 "Сочетание клавиш уже используется!\n"
 "Вы уверены, что хотите назначить это сочетание клавиш?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1259
+#: mcs-plugin/xfwm4_shortcuteditor.c:1267
 msgid "Compose shortcut for :"
 msgstr "Нажмите сочетание клавиш для:"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1262
-#: mcs-plugin/xfwm4_shortcuteditor.c:1491
+#: mcs-plugin/xfwm4_shortcuteditor.c:1270
+#: mcs-plugin/xfwm4_shortcuteditor.c:1498
 msgid "Compose shortcut"
 msgstr "Выбор сочетания клавиш"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1264
-#: mcs-plugin/xfwm4_shortcuteditor.c:1493
+#: mcs-plugin/xfwm4_shortcuteditor.c:1272
+#: mcs-plugin/xfwm4_shortcuteditor.c:1500
 #, fuzzy
 msgid "No shortcut"
 msgstr "Выбор сочетания клавиш"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1386
+#: mcs-plugin/xfwm4_shortcuteditor.c:1394
 msgid "Choose command"
 msgstr "Выберите команду"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:1396
 msgid "Command :"
 msgstr "Команда:"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1424
+#: mcs-plugin/xfwm4_shortcuteditor.c:1432
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "Команда не существует или файл не является исполняемым!"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1488
+#: mcs-plugin/xfwm4_shortcuteditor.c:1495
 msgid "Compose shortcut for command :"
 msgstr "Нажмите сочетание клавиш для:"
 
-#: src/events.c:1713
+#: src/events.c:1776
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Операция не поддерживается (пока)\n"
@@ -626,27 +626,27 @@ msgstr "%s: Операция не поддерживается (пока)\n"
 msgid "%s: Segmentation fault"
 msgstr "%s: Нарушение сегментации"
 
-#: src/main.c:456
+#: src/main.c:495
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Уже запущен другой менеджер окон"
 
-#: src/main.c:461
+#: src/main.c:500
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Отсутствуют данные в стандартных файлах"
 
-#: src/main.c:471
+#: src/main.c:510
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
 msgstr "%s: Ошибка входа в режим демона: %s"
 
-#: src/main.c:479
+#: src/main.c:518
 #, c-format
 msgid "%s: Failed to create new process: %s"
 msgstr "%s: Ошибка создания нового процесса: %s"
 
-#: src/main.c:500
+#: src/main.c:539
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Произошла неизвестная ошибка"
@@ -735,38 +735,38 @@ msgstr "%s: GtkMenu не смог получить курсор\n"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Не обрабатываемое net_wm_state (окно 0x%lx)"
 
-#: src/settings.c:365
+#: src/settings.c:369
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Отсутствует файл настроек по умолчанию"
 
-#: src/settings.c:643
+#: src/settings.c:653
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Ошибка выделения активного цвета %s\n"
 
-#: src/settings.c:649
+#: src/settings.c:659
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Ошибка обработки активного цвета %s\n"
 
-#: src/settings.c:692
+#: src/settings.c:702
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ошибка выделения неактивного цвета %s\n"
 
-#: src/settings.c:698
+#: src/settings.c:708
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ошибка обработки неактивного цвета %s\n"
 
-#: src/settings.c:885
+#: src/settings.c:895
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr ""
 "%s: указанная тема клавиш \"%s\" отсутствует, используется тема по умолчанию"
 
-#: src/settings.c:892
+#: src/settings.c:902
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Отсутствуют значения в файле настроек по умолчанию"
