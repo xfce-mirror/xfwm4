@@ -409,29 +409,29 @@ static inline MyPixmap *frameGetPixmap(Client * c, int button, int state)
 {
     switch (button)
     {
-        case SHADE_BUTTON:
-            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && params.buttons[SHADE_BUTTON][state + 3].pixmap) 
-            {
-                return &params.buttons[SHADE_BUTTON][state + 3];
-            }
-            return &params.buttons[SHADE_BUTTON][state];
-            break;
-        case STICK_BUTTON:
-            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY) && params.buttons[STICK_BUTTON][state + 3].pixmap) 
-            {
-                return &params.buttons[STICK_BUTTON][state + 3];
-            }
-            return &params.buttons[STICK_BUTTON][state];
-            break;
-        case MAXIMIZE_BUTTON:
-            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED) && params.buttons[MAXIMIZE_BUTTON][state + 3].pixmap) 
-            {
-                return &params.buttons[MAXIMIZE_BUTTON][state + 3];
-            }
-            return &params.buttons[MAXIMIZE_BUTTON][state];
-            break;
-        default:
-            break;
+    case SHADE_BUTTON:
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED) && params.buttons[SHADE_BUTTON][state + 3].pixmap)
+        {
+            return &params.buttons[SHADE_BUTTON][state + 3];
+        }
+        return &params.buttons[SHADE_BUTTON][state];
+        break;
+    case STICK_BUTTON:
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY) && params.buttons[STICK_BUTTON][state + 3].pixmap)
+        {
+            return &params.buttons[STICK_BUTTON][state + 3];
+        }
+        return &params.buttons[STICK_BUTTON][state];
+        break;
+    case MAXIMIZE_BUTTON:
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED) && params.buttons[MAXIMIZE_BUTTON][state + 3].pixmap)
+        {
+            return &params.buttons[MAXIMIZE_BUTTON][state + 3];
+        }
+        return &params.buttons[MAXIMIZE_BUTTON][state];
+        break;
+    default:
+        break;
     }
     return &params.buttons[button][state];
 }
