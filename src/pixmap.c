@@ -40,13 +40,15 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file, XpmCo
     DBG("entering loadPixmap\n");
 
     pm->pixmap = None;
-    pm->mask = None;
-    pm->width = 1;
+    pm->mask   = None;
+    pm->width  = 1;
     pm->height = 1;
     g_snprintf(filename, sizeof(filename), "%s/%s", dir, file);
     attr.colorsymbols = cs;
-    attr.numsymbols = n;
-    attr.valuemask = XpmSize;
+    attr.numsymbols   = n;
+    attr.colormap     = cmap;
+    attr.closeness    = 65535;
+    attr.valuemask    =  XpmCloseness | XpmColormap | XpmSize;
     if(n > 0 && cs)
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
