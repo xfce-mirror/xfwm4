@@ -11,4 +11,5 @@ redmond \
 gtk \
 xfce \
 mofit \
-trench
+trench \
+linea

@@ -76,7 +76,8 @@ redmond \
 gtk \
 xfce \
 mofit \
-trench
+trench \
+linea
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
