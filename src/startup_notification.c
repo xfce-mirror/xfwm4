@@ -39,12 +39,7 @@
 #include "client.h"
 #include "main.h"
 
-/* This should be fairly long, as it should never be required unless
- * apps or .desktop files are buggy, and it's confusing if
- * OpenOffice or whatever seems to stop launching - people
- * might decide they need to launch it again.
- */
-#define STARTUP_TIMEOUT 15000
+#define STARTUP_TIMEOUT (30 /* seconds */ * 1000)
 
 SnDisplay *sn_display;
 SnMonitorContext *sn_context;
