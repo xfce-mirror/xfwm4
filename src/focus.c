@@ -183,7 +183,7 @@ clientSelectMask (Client * c, int mask, int type)
     {
         return FALSE;
     }
-    if (c->type && type)
+    if (c->type & type)
     {
         return TRUE;
     }
