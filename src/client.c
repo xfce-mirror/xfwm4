@@ -109,6 +109,7 @@ static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int
 static void clientInitPosition(Client * c);
 static inline void clientFree(Client * c);
 static inline void clientApplyInitialNetState(Client * c);
+static inline void clientSnapPosition(Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointer data);
@@ -2572,8 +2573,6 @@ void clientKill(Client * c)
 
 void clientRaise(Client * c)
 {
-    gint nwindows;
-    
     g_return_if_fail(c != NULL);
     DBG("entering clientRaise\n");
 
@@ -3201,7 +3200,7 @@ void clientDrawOutline(Client * c)
     }
 }
 
-static inline clientSnapPosition(Client * c)
+static inline void clientSnapPosition(Client * c)
 {
     int cx, cy, left, right, top, bottom;
     int disp_x, disp_y, disp_max_x, disp_max_y;
@@ -3235,15 +3234,8 @@ static inline clientSnapPosition(Client * c)
         {
             c->y = frame_top + top;
         }
-        return;
     }
-    
-    disp_x = MyDisplayX(cx, cy);
-    disp_y = MyDisplayY(cx, cy);
-    disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
-    disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
-
-    if(params.snap_to_windows)
+    else
     {
         int i;
         int frame_x2 = frame_x + frame_width;
@@ -3255,6 +3247,11 @@ static inline clientSnapPosition(Client * c)
         int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
         int delta;
         Client * c2;
+
+	disp_x = MyDisplayX(cx, cy);
+	disp_y = MyDisplayY(cx, cy);
+	disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
+	disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
 
         if (params.snap_to_border)
 	{
@@ -3281,51 +3278,54 @@ static inline clientSnapPosition(Client * c)
             }
         }
 
-        for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
+        if(params.snap_to_windows)
         {
-            if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c)) 
+	    for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
             {
-                c_frame_x1 = frameX(c2);
-                c_frame_x2 = c_frame_x1 + frameWidth(c2);
-                c_frame_y1 = frameY(c2);
-                c_frame_y2 = c_frame_y1 + frameHeight(c2);
+        	if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c)) 
+        	{
+                    c_frame_x1 = frameX(c2);
+                    c_frame_x2 = c_frame_x1 + frameWidth(c2);
+                    c_frame_y1 = frameY(c2);
+                    c_frame_y2 = c_frame_y1 + frameHeight(c2);
 
-                if ((c_frame_y1 <= frame_y2) && (c_frame_y2 >= frame_y))
-                {
-                    delta = abs(c_frame_x2 - frame_x);
-                    if (delta < best_delta_x) 
+                    if ((c_frame_y1 <= frame_y2) && (c_frame_y2 >= frame_y))
                     {
-                        best_delta_x = delta;
-                        best_frame_x = c_frame_x2;
+                	delta = abs(c_frame_x2 - frame_x);
+                	if (delta < best_delta_x) 
+                	{
+                            best_delta_x = delta;
+                            best_frame_x = c_frame_x2;
+                	}
+
+                	delta = abs(c_frame_x1 - frame_x2);
+                	if (delta < best_delta_x) 
+                	{
+                            best_delta_x = delta;
+                            best_frame_x = c_frame_x1 - frame_width;
+                	}
                     }
 
-                    delta = abs(c_frame_x1 - frame_x2);
-                    if (delta < best_delta_x) 
+                    if ((c_frame_x1 <= frame_x2) && (c_frame_x2 >= frame_x))
                     {
-                        best_delta_x = delta;
-                        best_frame_x = c_frame_x1 - frame_width;
-                    }
-                }
+                	delta = abs(c_frame_y2 - frame_y);                    
+                	if (delta < best_delta_y) 
+                	{
+                            best_delta_y = delta;
+                            best_frame_y = c_frame_y2;
+                	}
 
-                if ((c_frame_x1 <= frame_x2) && (c_frame_x2 >= frame_x))
-                {
-                    delta = abs(c_frame_y2 - frame_y);                    
-                    if (delta < best_delta_y) 
-                    {
-                        best_delta_y = delta;
-                        best_frame_y = c_frame_y2;
-                    }
+                	delta = abs(c_frame_y1 - frame_y2); 
+                	if (delta < best_delta_y)
+                	{
+                            best_delta_y = delta;
+                            best_frame_y = c_frame_y1 - frame_height;
+                	}
 
-                    delta = abs(c_frame_y1 - frame_y2); 
-                    if (delta < best_delta_y)
-                    {
-                        best_delta_y = delta;
-                        best_frame_y = c_frame_y1 - frame_height;
                     }
-
-                }
+        	}
             }
-        }
+	}
         
         if (best_delta_x <= params.snap_width)
         {
@@ -3338,29 +3338,6 @@ static inline clientSnapPosition(Client * c)
         else if ((frame_y + frame_top > 0) && (frame_y < top))
         {
             c->y = frame_top + top;
-        }
-    }
-    else if(params.snap_to_border)
-    {
-        if(abs(frame_x - disp_max_x + frame_width + right) < params.snap_width)
-        {
-            c->x = disp_max_x - frame_right - c->width - right;
-            frame_x = frameX(c);
-        }
-        if(abs(frame_x - disp_x) < params.snap_width + left)
-        {
-            c->x = disp_x + frame_left + left;
-            frame_x = frameX(c);
-        }
-        if(abs(frame_y - disp_max_y + frame_height + bottom) < params.snap_width)
-        {
-            c->y = disp_max_y - frame_height + frame_top - bottom;
-            frame_y = frameY(c);
-        }
-        if((frame_y + frame_top > disp_y) && (frame_y < disp_y + top + params.snap_width))
-        {
-            c->y = disp_y + frame_top + top;
-            frame_y = frameY(c);
         }
     }
 }
