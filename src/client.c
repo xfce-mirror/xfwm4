@@ -119,6 +119,7 @@ static inline void clientFree(Client * c);
 static inline void clientApplyInitialNetState(Client * c);
 static inline gboolean clientSelectMask(Client * c, int mask);
 static GSList *clientListTransients(Client *c);
+static inline void clientSetWorkspaceSingle(Client * c, int ws);
 static inline void clientSnapPosition(Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
@@ -317,6 +318,11 @@ void clientSetNetState(Client * c)
     }
     XChangeProperty(dpy, c->window, net_wm_state, XA_ATOM, 32, PropModeReplace, (unsigned char *)data, i);
     setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
+    /* 
+       We also set GNOME hint here for consistency and convenience, 
+       although the meaning of net_wm_state and win_state aren't the same.
+     */
+    setGnomeHint(dpy, c->window, win_state, c->win_state);
 }
 
 static void clientGetNetState(Client * c)
@@ -736,40 +742,41 @@ static void clientGetInitialNetWmDesktop(Client * c)
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
         c->win_workspace = c2->win_workspace;
-	if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
-	{
-            clientStick(c, FALSE);
-	}
+        if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
+        {
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+            c->win_state |= WIN_STATE_STICKY;
+        }
     }
     else
     {
-	if(!CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
-	{
+        if(!CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
+        {
             CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
             c->win_workspace = workspace;
-	}
-	if(getNetHint(dpy, c->window, net_wm_desktop, &val))
-	{
+        }
+        if(getNetHint(dpy, c->window, net_wm_desktop, &val))
+        {
             DBG("atom net_wm_desktop detected\n");
             if(val == (int)0xFFFFFFFF)
             {
-        	DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
-        	c->win_workspace = workspace;
-        	clientStick(c, FALSE);
+                DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
+                c->win_workspace = workspace;
+                clientStick(c, FALSE);
             }
             else
             {
-        	DBG("atom net_wm_desktop specifies window \"%s\" is on desk %i\n", c->name, (int)val);
-        	c->win_workspace = (int)val;
+                DBG("atom net_wm_desktop specifies window \"%s\" is on desk %i\n", c->name, (int)val);
+                c->win_workspace = (int)val;
             }
             CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
-	}
-	else if(getGnomeHint(dpy, c->window, win_workspace, &val))
-	{
+        }
+        else if(getGnomeHint(dpy, c->window, win_workspace, &val))
+        {
             DBG("atom win_workspace specifies window \"%s\" is on desk %i\n", c->name, (int)val);
             c->win_workspace = (int)val;
             CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
-	}
+        }
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
     if(c->win_workspace > params.workspace_count - 1)
@@ -1386,7 +1393,7 @@ static inline void clientApplyStackList(GSList * list)
         c = (Client *) index->data;
         xwinstack[i++] = c->frame;
     }
-    XRaiseWindow(dpy, xwinstack[0]);
+    /* XRaiseWindow(dpy, xwinstack[0]); */
     XRestackWindows(dpy, xwinstack, (int)nwindows);
     g_slist_free(list_copy);
     g_free(xwinstack);
@@ -2615,6 +2622,7 @@ void clientShow(Client * c, gboolean change_state)
     for(index = list_of_windows; index; index = g_slist_next(index))
     {
         c2 = (Client *) index->data;
+        clientSetWorkspaceSingle(c2, c->win_workspace);
         if ((c->win_workspace == workspace) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             DBG("showing client \"%s\" (0x%lx)\n", c2->name, c2->window);
@@ -2890,6 +2898,28 @@ void clientSetLayer(Client * c, int l)
     clientRaise(c);
 }
 
+static inline void clientSetWorkspaceSingle(Client * c, int ws)
+{
+    g_return_if_fail(c != NULL);
+    
+    DBG("entering clientSetWorkspaceSingle\n");
+
+    if(ws > params.workspace_count - 1)
+    {
+        ws = params.workspace_count - 1;
+        DBG("value off limits, using %i instead\n", ws);
+    }
+
+    if(c->win_workspace != ws)
+    {
+        DBG("setting client \"%s\" (0x%lx) to workspace %d\n", c->name, c->window, ws);
+        c->win_workspace = ws;
+        setGnomeHint(dpy, c->window, win_workspace, ws);
+        setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
+    }
+}
+
 void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
 {
     GSList *list_of_windows = NULL;
@@ -2906,12 +2936,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
         c2 = (Client *) index->data;
         if(c2->win_workspace != ws)
         {
-            DBG("setting client \"%s\" (0x%lx) to workspace %d\n", c2->name, c2->window, ws);
-            setGnomeHint(dpy, c2->window, win_workspace, ws);
-            c2->win_workspace = ws;
-            setNetHint(dpy, c2->window, net_wm_desktop, (unsigned long)c2->win_workspace);
-            CLIENT_FLAG_SET(c2, CLIENT_FLAG_WORKSPACE_SET);
-
+            clientSetWorkspaceSingle(c2, ws);
             if(manage_mapping && !(c2->transient_for) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_HIDDEN))
             {
                 if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
@@ -2956,7 +2981,6 @@ void clientShade(Client * c)
 
     c->win_state |= WIN_STATE_SHADED;
     CLIENT_FLAG_SET(c, CLIENT_FLAG_SHADED);
-    setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
@@ -2981,7 +3005,6 @@ void clientUnshade(Client * c)
     }
     c->win_state &= ~WIN_STATE_SHADED;
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_SHADED);
-    setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
@@ -3021,7 +3044,6 @@ void clientStick(Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             c2->win_state |= WIN_STATE_STICKY;
             CLIENT_FLAG_SET(c2, CLIENT_FLAG_STICKY);
-            setGnomeHint(dpy, c2->window, win_state, c2->win_state);
             clientSetNetState(c2);
         }
         clientSetWorkspace(c, workspace, TRUE);
@@ -3031,7 +3053,6 @@ void clientStick(Client * c, gboolean include_transients)
     {
         c->win_state |= WIN_STATE_STICKY;
         CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
-        setGnomeHint(dpy, c->window, win_state, c->win_state);
         clientSetNetState(c);
         clientSetWorkspace(c, workspace, TRUE);
     }
@@ -3055,7 +3076,6 @@ void clientUnstick(Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
             CLIENT_FLAG_UNSET(c2, CLIENT_FLAG_STICKY);
-            setGnomeHint(dpy, c2->window, win_state, c2->win_state);
             clientSetNetState(c2);
         }
         clientSetWorkspace(c, workspace, TRUE);
@@ -3065,7 +3085,6 @@ void clientUnstick(Client * c, gboolean include_transients)
     {
         c->win_state &= ~WIN_STATE_STICKY;
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_STICKY);
-        setGnomeHint(dpy, c->window, win_state, c->win_state);
         clientSetNetState(c);
         clientSetWorkspace(c, workspace, TRUE);
     }
@@ -3096,7 +3115,6 @@ inline void clientRemoveMaximizeFlag(Client * c)
     c->win_state &= ~(WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT | WIN_STATE_MAXIMIZED_HORIZ);
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_MAXIMIZED);
     frameDraw(c, FALSE, FALSE);
-    setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
 }
 
@@ -3164,7 +3182,6 @@ void clientToggleMaximized(Client * c, int mode)
             wc.height = c->height;
         }
     }
-    setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
@@ -4344,4 +4361,3 @@ char *clientGetStartupId(Client * c)
     return NULL;
 }
 #endif
-
