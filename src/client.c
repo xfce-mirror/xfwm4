@@ -2177,12 +2177,11 @@ clientHideAll (Client * c, int ws)
     for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count); c2 = c2->next, i++)
     {
         if (CLIENT_CAN_HIDE_WINDOW (c2)
-            && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_HAS_BORDER)
             && !clientIsValidTransientOrModal (c2) && (c2 != c))
         {
-            if (((!c) && (c2->win_workspace == ws)) || ((c)
-                    && !clientIsTransientOrModalFor (c, c2)
-                    && (c2->win_workspace == c->win_workspace)))
+            if (((!c) && (c2->win_workspace == ws)) 
+                 || ((c) && !clientIsTransientOrModalFor (c, c2)
+                         && (c2->win_workspace == c->win_workspace)))
             {
                 clientHide (c2, ws, TRUE);
             }
@@ -2206,7 +2205,6 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
         {
             Client *c = (Client *) index->data;
             if (CLIENT_CAN_HIDE_WINDOW (c)
-                && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
