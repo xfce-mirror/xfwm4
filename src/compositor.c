@@ -1,23 +1,23 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xcompmgr - (c) 2003 Keith Packard
         xfwm4    - (c) 2004 Olivier Fourdan
- 
- */
+
+*/
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -164,22 +164,22 @@ make_gaussian_map (gdouble r)
 }
 
 /*
- * A picture will help
- *
- *      -center   0                width  width+center
- *  -center +-----+-------------------+-----+
- *          |     |                   |     |
- *          |     |                   |     |
- *        0 +-----+-------------------+-----+
- *          |     |                   |     |
- *          |     |                   |     |
- *          |     |                   |     |
- *   height +-----+-------------------+-----+
- *          |     |                   |     |
- * height+  |     |                   |     |
- *  center  +-----+-------------------+-----+
- */
- 
+* A picture will help
+*
+*      -center   0                width  width+center
+*  -center +-----+-------------------+-----+
+*          |     |                   |     |
+*          |     |                   |     |
+*        0 +-----+-------------------+-----+
+*          |     |                   |     |
+*          |     |                   |     |
+*          |     |                   |     |
+*   height +-----+-------------------+-----+
+*          |     |                   |     |
+* height+  |     |                   |     |
+*  center  +-----+-------------------+-----+
+*/
+
 static guchar
 sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, gint height)
 {
@@ -256,15 +256,15 @@ presum_gaussian (ScreenInfo *screen_info)
     }
 
     screen_info->shadowCorner = (guchar *) (g_malloc ((screen_info->gsize + 1) 
-                                                      * (screen_info->gsize + 1) * 26));
+                                                    * (screen_info->gsize + 1) * 26));
     screen_info->shadowTop = (guchar *) (g_malloc ((screen_info->gsize + 1) * 26));
     
     for (x = 0; x <= screen_info->gsize; x++)
     {
         screen_info->shadowTop[25 * (screen_info->gsize + 1) + x] = 
             sum_gaussian (map, 1, x - center, center, 
-                                  screen_info->gsize * 2, 
-                                  screen_info->gsize * 2);
+                                screen_info->gsize * 2, 
+                                screen_info->gsize * 2);
             
         for(opacity = 0; opacity < 25; opacity++)
         {
@@ -275,30 +275,30 @@ presum_gaussian (ScreenInfo *screen_info)
         for(y = 0; y <= x; y++)
         {
             screen_info->shadowCorner[25 * (screen_info->gsize + 1) 
-                                         * (screen_info->gsize + 1) 
-                                     + y * (screen_info->gsize + 1) + x]
+                                        * (screen_info->gsize + 1) 
+                                    + y * (screen_info->gsize + 1) + x]
                 = sum_gaussian (map, 1, x - center, 
                                         y - center, 
                                         screen_info->gsize * 2, 
                                         screen_info->gsize * 2);
             screen_info->shadowCorner[25 * (screen_info->gsize + 1) 
-                                         * (screen_info->gsize + 1)
-                                     + x * (screen_info->gsize + 1) + y]
+                                        * (screen_info->gsize + 1)
+                                    + x * (screen_info->gsize + 1) + y]
                 = screen_info->shadowCorner[25 * (screen_info->gsize + 1) 
-                                               * (screen_info->gsize + 1) 
-                                           + y * (screen_info->gsize + 1) + x];
+                                            * (screen_info->gsize + 1) 
+                                        + y * (screen_info->gsize + 1) + x];
                             
             for(opacity = 0; opacity < 25; opacity++)
             {
                 screen_info->shadowCorner[opacity * (screen_info->gsize + 1) 
-                                                  * (screen_info->gsize + 1) 
-                                              + y * (screen_info->gsize + 1) + x]
+                                                * (screen_info->gsize + 1) 
+                                            + y * (screen_info->gsize + 1) + x]
                     = screen_info->shadowCorner[opacity * (screen_info->gsize + 1) 
                                                         * (screen_info->gsize + 1) 
                                                     + x * (screen_info->gsize + 1) + y]
                     = screen_info->shadowCorner[25 * (screen_info->gsize + 1) 
-                                                   * (screen_info->gsize + 1) 
-                                               + y * (screen_info->gsize + 1) + x] * opacity / 25;
+                                                * (screen_info->gsize + 1) 
+                                            + y * (screen_info->gsize + 1) + x] * opacity / 25;
             }
         }
     }
@@ -370,13 +370,13 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
             if ((xlimit == screen_info->gsize) && (ylimit == screen_info->gsize))
             {
                 d = screen_info->shadowCorner[opacity_gint * (screen_info->gsize + 1) 
-                                                           * (screen_info->gsize + 1) 
-                                                       + y * (screen_info->gsize + 1) + x];
+                                                        * (screen_info->gsize + 1) 
+                                                    + y * (screen_info->gsize + 1) + x];
             }
             else
             {
                 d = sum_gaussian (screen_info->gaussianMap, opacity, 
-                                  x - center, y - center, width, height);
+                                x - center, y - center, width, height);
             }
             
             data[y * swidth + x] = d;
@@ -452,7 +452,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     }
 
     shadowPixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), screen_info->xroot, 
-                                  shadowImage->width, shadowImage->height, 8);
+                                shadowImage->width, shadowImage->height, 8);
 
     if (!shadowPixmap)
     {
@@ -461,9 +461,9 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     }
 
     render_format = XRenderFindStandardFormat (myScreenGetXDisplay (screen_info), 
-                                               PictStandardA8);
+                                            PictStandardA8);
     shadowPicture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
-                                          shadowPixmap, render_format, 0, 0);
+                                        shadowPixmap, render_format, 0, 0);
 
     if (!shadowPicture)
     {
@@ -483,7 +483,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
     }
     
     XPutImage (myScreenGetXDisplay (screen_info), shadowPixmap, gc, shadowImage, 0, 0, 0, 0, 
-               shadowImage->width, shadowImage->height);
+            shadowImage->width, shadowImage->height);
 
     *wp = shadowImage->width;
     *hp = shadowImage->height;
@@ -497,7 +497,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity, Picture alpha_pict,
 
 static Picture
 solid_picture (ScreenInfo *screen_info, gboolean argb, 
-               gdouble a, gdouble r, gdouble g, gdouble b)
+            gdouble a, gdouble r, gdouble g, gdouble b)
 {
     Pixmap pixmap;
     Picture picture;
@@ -529,7 +529,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     c.blue = b * 0xffff;
 
     XRenderFillRectangle (myScreenGetXDisplay (screen_info), PictOpSrc, 
-                          picture, &c, 0, 0, 1, 1);
+                        picture, &c, 0, 0, 1, 1);
     XFreePixmap (myScreenGetXDisplay (screen_info), pixmap);
 
     return picture;
@@ -550,8 +550,8 @@ border_size (CWindow *cw)
 
     border = XFixesCreateRegionFromWindow (display_info->dpy, cw->id, WindowRegionBounding);
     XFixesTranslateRegion (display_info->dpy, border, 
-                           cw->attr.x + cw->attr.border_width,
-                           cw->attr.y + cw->attr.border_width);
+                        cw->attr.x + cw->attr.border_width,
+                        cw->attr.y + cw->attr.border_width);
 
     return border;
 }
@@ -631,10 +631,10 @@ paint_root (ScreenInfo *screen_info)
     }
     
     XRenderComposite (myScreenGetXDisplay (screen_info), PictOpSrc,
-                      screen_info->rootTile, None, screen_info->rootBuffer,
-                      0, 0, 0, 0, 0, 0, 
-                      gdk_screen_get_width (screen_info->gscr), 
-                      gdk_screen_get_height (screen_info->gscr));
+                    screen_info->rootTile, None, screen_info->rootBuffer,
+                    0, 0, 0, 0, 0, 0, 
+                    gdk_screen_get_width (screen_info->gscr), 
+                    gdk_screen_get_height (screen_info->gscr));
 }
 
 
@@ -684,9 +684,9 @@ win_extents (CWindow *cw)
                 opacity = opacity * ((double) cw->opacity) / ((double) OPAQUE);
             }
             cw->shadow = shadow_picture (screen_info, opacity, cw->alphaPict,
-                                         cw->attr.width + cw->attr.border_width * 2,
-                                         cw->attr.height + cw->attr.border_width * 2,
-                                         &cw->shadow_width, &cw->shadow_height);
+                                        cw->attr.width + cw->attr.border_width * 2,
+                                        cw->attr.height + cw->attr.border_width * 2,
+                                        &cw->shadow_width, &cw->shadow_height);
         }
 
         sr.x = cw->attr.x + cw->shadow_dx;
@@ -745,8 +745,8 @@ get_window_format (CWindow *cw)
     if (!format)
     {    
         format = XRenderFindVisualFormat (myScreenGetXDisplay (cw->screen_info), 
-                                          DefaultVisual (myScreenGetXDisplay (cw->screen_info),
-                                                         cw->screen_info->screen));
+                                        DefaultVisual (myScreenGetXDisplay (cw->screen_info),
+                                                        cw->screen_info->screen));
     }
 
     return format;
@@ -887,7 +887,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
             XFixesSubtractRegion (dpy, region, region, cw->borderSize);
             XRenderComposite (dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer, 
-                              0, 0, 0, 0, x, y, w, h);
+                            0, 0, 0, 0, x, y, w, h);
         }
         if (!cw->borderClip)
         {
@@ -914,29 +914,29 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         if (cw->shadow)
         {
             XRenderComposite (dpy, PictOpOver, screen_info->blackPicture, cw->shadow, 
-                              screen_info->rootBuffer, 0, 0, 0, 0, 
-                              cw->attr.x + cw->shadow_dx,
-                              cw->attr.y + cw->shadow_dy,
-                              cw->shadow_width, cw->shadow_height);
+                            screen_info->rootBuffer, 0, 0, 0, 0, 
+                            cw->attr.x + cw->shadow_dx,
+                            cw->attr.y + cw->shadow_dy,
+                            cw->shadow_width, cw->shadow_height);
         }
         if ((cw->opacity != OPAQUE) && !(cw->alphaPict))
         {
             cw->alphaPict = solid_picture (screen_info, FALSE, 
-                                          (double) cw->opacity / OPAQUE, 0, 0, 0);
+                                        (double) cw->opacity / OPAQUE, 0, 0, 0);
         }
         if (cw->mode == WINDOW_TRANS)
         {
             gint x, y, w, h;
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
-                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+                            screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
         }
         else if (cw->mode == WINDOW_ARGB)
         {
             gint x, y, w, h;
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
-                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+                            screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
         }
         XFixesDestroyRegion (dpy, cw->borderClip);
         cw->borderClip = None;
@@ -956,9 +956,9 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
     if (screen_info->allDamage)
     {
         XFixesUnionRegion (myScreenGetXDisplay (screen_info), 
-                           screen_info->allDamage, 
-                           screen_info->allDamage, 
-                           damage);
+                        screen_info->allDamage, 
+                        screen_info->allDamage, 
+                        damage);
         XFixesDestroyRegion (myScreenGetXDisplay (screen_info), damage);
     }
     else
@@ -967,6 +967,58 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
     }
 }
 
+static void
+free_win_data (CWindow *cw)
+{
+#if HAVE_NAME_WINDOW_PIXMAP
+    if (cw->name_window_pixmap)
+    {
+        XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
+        cw->name_window_pixmap = None;
+    }
+#endif
+    
+    if (cw->picture)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
+        cw->picture = None;
+    }
+    
+    if (cw->alphaPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaPict);
+        cw->alphaPict = None;
+    }
+    
+    if (cw->shadowPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadowPict);
+        cw->shadowPict = None;
+    }
+    if (cw->damage != None)
+    {
+        XDamageDestroy (myScreenGetXDisplay (cw->screen_info), cw->damage);
+        cw->damage = None;
+    }
+    
+    if (cw->borderSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
+        cw->borderSize = None;
+    }
+
+    if (cw->shadow)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
+        cw->shadow = None;
+    }
+    
+    if (cw->borderClip)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderClip);
+        cw->borderClip = None;
+    }
+}
 
 static void
 repair_win (CWindow *cw)
@@ -991,8 +1043,8 @@ repair_win (CWindow *cw)
         parts = XFixesCreateRegion (myScreenGetXDisplay (screen_info), NULL, 0);
         XDamageSubtract (myScreenGetXDisplay (screen_info), cw->damage, None, parts);
         XFixesTranslateRegion (myScreenGetXDisplay (screen_info), parts,
-                               cw->attr.x + cw->attr.border_width,
-                               cw->attr.y + cw->attr.border_width);
+                            cw->attr.x + cw->attr.border_width,
+                            cw->attr.y + cw->attr.border_width);
 
     }
     add_damage (cw->screen_info, parts);
@@ -1008,7 +1060,7 @@ get_opacity_prop(CWindow *cw, guint def)
     unsigned long n, left;
     guchar *data;
     gint result;
-     
+    
     TRACE ("entering get_opacity_prop");    
     screen_info = cw->screen_info;
     result = XGetWindowProperty(myScreenGetXDisplay (screen_info), cw->id, net_wm_opacity, 
@@ -1053,7 +1105,7 @@ determine_mode(CWindow *cw)
 
     if (cw->attr.class != InputOnly)
     {
-	format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), cw->attr.visual);
+        format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), cw->attr.visual);
     }
 
     if ((format) && (format->type == PictTypeDirect) && (format->direct.alphaMask))
@@ -1082,7 +1134,7 @@ static void
 expose_root (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 {
     XserverRegion region;
-     
+    
     TRACE ("entering expose_root");    
     region = XFixesCreateRegion (myScreenGetXDisplay (screen_info), rects, nrects);
     add_damage (screen_info, region);
@@ -1116,43 +1168,12 @@ unmap_win (CWindow *cw)
         add_damage (screen_info, cw->extents);
         cw->extents = None;
     }
-    
-#if HAVE_NAME_WINDOW_PIXMAP
-    if (cw->name_window_pixmap)
-    {
-        XFreePixmap (myScreenGetXDisplay (screen_info), cw->name_window_pixmap);
-        cw->name_window_pixmap = None;
-    }
-#endif
-
-    if (cw->picture)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->picture);
-        cw->picture = None;
-    }
-
-    if (cw->borderSize)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (screen_info), cw->borderSize);
-        cw->borderSize = None;
-    }
-
-    if (cw->shadow)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->shadow);
-        cw->shadow = None;
-    }
-    if (cw->borderClip)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (screen_info), cw->borderClip);
-        cw->borderClip = None;
-    }
-
+    free_win_data (cw);  
     screen_info->clipChanged = TRUE;
 }
 
 static void
-add_win (DisplayInfo *display_info, Window id, Client *c, Window prev)
+add_win (DisplayInfo *display_info, Window id, Client *c, Window above)
 {
     ScreenInfo *screen_info;
     CWindow *new;
@@ -1171,6 +1192,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window prev)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
+        TRACE ("An error occured getting window attributes, 0x%lx not added", id);
         return;
     }
     
@@ -1189,6 +1211,15 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window prev)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
+        TRACE ("Couldn't get screen from window, 0x%lx not added", id);
+        return;
+    }
+    
+    if (id == screen_info->xroot)
+    {
+        g_free (new);
+        myDisplayUngrabServer (display_info);
+        TRACE ("Not adding root window, 0x%lx not added", id);
         return;
     }
     
@@ -1230,22 +1261,23 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window prev)
     new->opacity = get_opacity_prop (new, OPAQUE);
     determine_mode (new);
     
-    if (prev != None)
+    if (above != None)
     {
-        CWindow *pcw;
+        GList *index;
         
-        pcw = find_cwindow_in_screen (screen_info, prev);
-        if (pcw)
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
         {
-            GList *sibling;
-            sibling = g_list_find (screen_info->cwindows, (gconstpointer) pcw);
-            if (sibling)
+            CWindow *cw2 = (CWindow *) index->data;
+            if (cw2->id == above)
             {
-                screen_info->cwindows = 
-                    g_list_insert_before (screen_info->cwindows, 
-                                          g_list_next (sibling), new);
-                inserted = TRUE;
+                break;
             }
+        }
+        
+        if (index != NULL)
+        {
+            screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, new);
+            inserted = TRUE;
         }
     }
 
@@ -1263,12 +1295,12 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window prev)
 }
 
 void
-restack_win (ScreenInfo *screen_info, CWindow *cw, Window new_above)
+restack_win (ScreenInfo *screen_info, CWindow *cw, Window above)
 {
-    Window old_above;
+    Window previous_above = None;
     GList *sibling;
     GList *next;
- 
+
     TRACE ("entering restack_win");
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
     next = g_list_next (sibling);
@@ -1276,27 +1308,33 @@ restack_win (ScreenInfo *screen_info, CWindow *cw, Window new_above)
     if (next)
     {
         CWindow *ncw = (CWindow *) next;
-        old_above = ncw->id;
-    }
-    else
-    {
-        old_above = None;
+        previous_above = ncw->id;
     }
 
-    if (old_above != new_above)
+    if (previous_above != above)
     {
-        CWindow **prev;
-        
+        GList *index;
+
+        screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
         sibling = NULL;
-        if (new_above)
+        
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
         {
-            CWindow *naw;
-            naw = find_cwindow_in_screen (screen_info, new_above);
-            sibling = g_list_find (screen_info->cwindows, (gconstpointer) naw);
+            CWindow *cw2 = (CWindow *) index->data;
+            if (cw2->id == above)
+            {
+                break;
+            }
         }
 
-        screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
-        screen_info->cwindows = g_list_insert_before (screen_info->cwindows, sibling, cw);
+        if (index != NULL)
+        {
+            screen_info->cwindows =  g_list_insert_before (screen_info->cwindows, index, cw);
+        }
+        else
+        {
+            screen_info->cwindows =  g_list_prepend (screen_info->cwindows, cw);
+        }
     }
 }
 
@@ -1309,33 +1347,11 @@ destroy_win (ScreenInfo *screen_info, Window id, gboolean gone)
     cw = find_cwindow_in_screen (screen_info, id);
     if (cw)
     {
-        cw->viewable = FALSE;
-
         if (!gone)
         {
             unmap_win (cw);
         }
-
-        if (cw->picture)
-        {
-            XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->picture);
-            cw->picture = None;
-        }
-        if (cw->alphaPict)
-        {
-            XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->alphaPict);
-            cw->alphaPict = None;
-        }
-        if (cw->shadowPict)
-        {
-            XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->shadowPict);
-            cw->shadowPict = None;
-        }
-        if (cw->damage != None)
-        {
-            XDamageDestroy (myScreenGetXDisplay (screen_info), cw->damage);
-            cw->damage = None;
-        }
+        free_win_data (cw);
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
         g_free (cw);
         TRACE ("window 0x%lx removed", id);    
@@ -1562,7 +1578,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     CWindow *cw;
     CWindow *top;
     GList *first;
-    Window new_above = None;
+    Window above = None;
 
     TRACE ("entering compositorHandleCirculateNotify");
     g_return_if_fail (display_info);
@@ -1583,44 +1599,15 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     
     if ((ev->place == PlaceOnTop) && (top))
     {
-        new_above = top->id;
+        above = top->id;
     }
     else
     {
-        new_above = None;
+        above = None;
     }
-    restack_win (cw->screen_info, cw, new_above);
+    restack_win (cw->screen_info, cw, above);
     cw->screen_info->clipChanged = TRUE;
     compositorRepairScreen (cw->screen_info);
-}
-
-static void
-compositorHandleReparentNotify (DisplayInfo *display_info, XReparentEvent *ev)
-{
-    CWindow *cw;
-
-    TRACE ("entering compositorHandleReparentNotify");    
-    g_return_if_fail (display_info);
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");    
-        return;
-    }
-    
-    cw = find_cwindow_in_display (display_info, ev->window);
-    if (cw)
-    {
-        ScreenInfo *screen_info = cw->screen_info;
-        if (ev->parent = screen_info->xroot)
-        {
-            add_win (display_info, ev->window, NULL, None);
-        }
-        else
-        {
-            destroy_win (screen_info, ev->window, FALSE);
-        }
-        compositorRepairScreen (screen_info);
-    }
 }
 
 #endif /* HAVE_COMPOSITOR */
@@ -1743,10 +1730,6 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleConfigureNotify (display_info, (XConfigureEvent *) ev);
     }
-    else if (ev->type == ReparentNotify)
-    {
-        compositorHandleReparentNotify (display_info, (XReparentEvent *) ev);
-    }
     else if (ev->type == Expose)
     {
         compositorHandleExpose (display_info, (XExposeEvent *) ev);
@@ -1773,8 +1756,8 @@ compositorInitDisplay (DisplayInfo *display_info)
     TRACE ("entering compositorInitDisplay");    
     
     if (!XCompositeQueryExtension (display_info->dpy,
-                                 &display_info->composite_event_base,
-                                 &display_info->composite_error_base))
+                                &display_info->composite_event_base,
+                                &display_info->composite_error_base))
     {
         display_info->have_composite = FALSE;
         display_info->composite_event_base = 0;
@@ -1785,8 +1768,8 @@ compositorInitDisplay (DisplayInfo *display_info)
         display_info->have_composite = TRUE;
     }
     if (!XDamageQueryExtension (display_info->dpy,
-                              &display_info->damage_event_base,
-                              &display_info->damage_error_base))
+                            &display_info->damage_event_base,
+                            &display_info->damage_error_base))
     {
         display_info->have_damage = FALSE;
         display_info->damage_event_base = 0;
@@ -1797,8 +1780,8 @@ compositorInitDisplay (DisplayInfo *display_info)
         display_info->have_damage = TRUE;
     }
     if (!XFixesQueryExtension (display_info->dpy,
-                             &display_info->fixes_event_base,
-                             &display_info->fixes_error_base))
+                            &display_info->fixes_event_base,
+                            &display_info->fixes_error_base))
     {
         display_info->have_fixes = FALSE;
         display_info->fixes_event_base = 0;
@@ -1825,7 +1808,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
-  
+
     TRACE ("entering compositorManageScreen");    
     
     display_info = screen_info->display_info;
@@ -1841,10 +1824,10 @@ compositorManageScreen (ScreenInfo *screen_info)
         
     pa.subwindow_mode = IncludeInferiors;
     visual_format = XRenderFindVisualFormat (display_info->dpy, 
-                                             DefaultVisual (display_info->dpy, 
+                                            DefaultVisual (display_info->dpy, 
                                                             screen_info->screen));
     screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->xroot, 
-                                                 visual_format, CPSubwindowMode, &pa);
+                                                visual_format, CPSubwindowMode, &pa);
     screen_info->rootBuffer = None;
     screen_info->blackPicture = solid_picture (screen_info, TRUE, 1, 0, 0, 0);
     screen_info->rootTile = None;
@@ -1866,7 +1849,8 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_COMPOSITOR  
     DisplayInfo *display_info;
     GList *index;
-
+    gint i = 0;
+    
     TRACE ("entering compositorUnmanageScreen");    
     
     display_info = screen_info->display_info;
@@ -1875,6 +1859,17 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         return;
     }
 
+    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    {
+        CWindow *cw2 = (CWindow *) index->data;
+        free_win_data (cw2);
+        g_free (cw2);
+        i++;
+    }
+    g_list_free (screen_info->cwindows);
+    screen_info->cwindows = NULL;
+    TRACE ("Compositor: removed %i window(s) remaining", i);
+    
     if (screen_info->rootPicture)
     {
         XRenderFreePicture (display_info->dpy, screen_info->rootPicture);

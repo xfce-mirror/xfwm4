@@ -1700,6 +1700,7 @@ clientUnframe (Client * c, gboolean remap)
     gdk_error_trap_push ();
     clientUngrabKeys (c);
     clientGrabButtons (c);
+    compositorRemoveWindow (display_info, c->frame);
     XUnmapWindow (display_info->dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (display_info->dpy, c->window, NoEventMask);
@@ -1711,6 +1712,7 @@ clientUnframe (Client * c, gboolean remap)
         XSetWindowBorderWidth (display_info->dpy, c->window, c->border_width);
         if (remap)
         {
+            compositorAddWindow (display_info, c->window, NULL);
             XMapWindow (display_info->dpy, c->window);
         }
         else

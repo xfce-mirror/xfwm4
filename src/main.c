@@ -275,7 +275,7 @@ ensure_basedir_spec (void)
 }
 
 static int
-initialize (int argc, char **argv)
+initialize (int argc, char **argv, gboolean enable_compositor)
 {
     struct sigaction act;
     long ws;
@@ -297,7 +297,13 @@ initialize (int argc, char **argv)
     clientClearFocus ();
 
     display_info = myDisplayInit (gdk_display_get_default ());
-
+    
+    /* Disabling compositor from command line */
+    if (!enable_compositor)
+    {
+        display_info->enable_compositor = FALSE;
+    }
+    
     initModifiers (display_info->dpy);
 
     act.sa_handler = handleSignal;
@@ -376,18 +382,8 @@ main (int argc, char **argv)
 {
     int i;
     gboolean daemon_mode = FALSE;
+    gboolean compositor = TRUE;
     int status;
-
-    if (argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V")))
-    {
-        g_print ("\tThis is %s version %s for Xfce %s\n", 
-                      PACKAGE, VERSION, xfce_version_string());
-        g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
-                      GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-        g_print ("linked with GTK+-%d.%d.%d.\n", 
-                      gtk_major_version, gtk_minor_version, gtk_micro_version);
-        exit (0);
-    }
 
     for (i = 1; i < argc; i++)
     {
@@ -395,9 +391,23 @@ main (int argc, char **argv)
         {
             daemon_mode = TRUE;
         }
+        else if (!strcmp (argv[i], "--disable-compositor"))
+        {
+            compositor = FALSE;
+        }
+        else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
+        {
+            g_print ("\tThis is %s version %s for Xfce %s\n", 
+                            PACKAGE, VERSION, xfce_version_string());
+            g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
+                            GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+            g_print ("linked with GTK+-%d.%d.%d.\n", 
+                            gtk_major_version, gtk_minor_version, gtk_micro_version);
+            exit (0);
+        }
     }
 
-    status = initialize (argc, argv);
+    status = initialize (argc, argv, compositor);
     switch (status)
     {
         case -1:
