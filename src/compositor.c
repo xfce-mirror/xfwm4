@@ -42,6 +42,10 @@
 
 #ifdef HAVE_COMPOSITOR
 
+#include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xdamage.h>
+#include <X11/extensions/Xrender.h>
+
 #define WINDOW_SOLID    0
 #define WINDOW_TRANS    1
 #define WINDOW_ARGB     2
