@@ -6,7 +6,7 @@ static char * top_right_inactive_xpm[] = {
 "+	c #FFFFFF s inactive_hilight_2",
 "@	c #E6E6E6 s inactive_color_2",
 "#	c #A4A19C s inactive_shadow_2",
-"....... ",
+"........",
 "++++++@.",
 "@@@@@@#.",
 "@@@@@@#.",
