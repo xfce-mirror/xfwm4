@@ -2,7 +2,7 @@ include ".gtkrc"
 
 style "titlebar"
 {
-  font_name = "Trebuchet Bold 12"
+  font_name = "Sans Bold 12"
 }
 
 widget "xfwm"        style "titlebar"
