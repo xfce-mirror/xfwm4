@@ -1971,7 +1971,7 @@ void clientShow(Client * c, int change_state)
     {
         for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
         {
-            if((c2->transient_for == c->window) && (!c2->hidden) && (c2 != c))
+            if((c2->transient_for == c->window) && (c2 != c))
             {
                 clientShow(c2, change_state);
             }
@@ -1998,12 +1998,14 @@ void clientHide(Client * c, int change_state)
     DBG("entering clientHide\n");
     DBG("hiding client \"%s\" (%#lx)\n", c->name, c->window);
 
+#if 0
     if ((change_state) && !CAN_HIDE_WINDOW(c))
     {
         DBG("cowardly refusing to hide a client that is not shown is the taskbar\n");
         gdk_beep ();
         return;
     }
+#endif
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
     for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
