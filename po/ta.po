@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
-"POT-Creation-Date: 2003-07-30 09:15+0200\n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
 "PO-Revision-Date: 2003-05-08 22:59+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -273,32 +273,32 @@ msgstr "¾¨ÄôÒô Àð¨¼Â¢ø þÃð¨¼ «Óò¾ø ¦ºÂø :"
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:443
+#: src/client.c:493
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: §ÁÄ¡ñ¨ÁÂüÈ net_wm_state (º¡ÇÃõ 0x%lx)"
 
-#: src/events.c:1318
+#: src/events.c:1386
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: ­Âì¸ò¾¢ðÌ ¬¾ÃÅÇ¢ôÒ þø¨Ä (þô¦À¡ØÐ)\n"
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: ÀÌ¾¢Â¡ì¸ø ÀØÐ"
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Áü¦È¡Õ º¡ÇÃ§ÁÄ¡Ç÷ ²ü¦¸É§Å þÂì¸ôÀðÎûÇÐ"
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: ¦¸¡¼¡¿¢¨Ä §¸¡ôÒ¸Ç¢ø ­øÄ¡¾ ¾Ã×¸û"
 
-#: src/main.c:428
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: ¦¾Ã¢Â¡¾ À¢¨Æ ¿¨¼¦ÀüÚûÇÐ"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-30 09:15+0200\n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
 "PO-Revision-Date: 2003-05-27 22:00+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: none <none@none>\n"
@@ -270,32 +270,32 @@ msgstr "タイトルバーをダブルクリックした時の動作 :"
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:443
+#: src/client.c:493
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1318
+#: src/events.c:1386
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: この操作はサポート外です\n"
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: セグメンテーション違反です"
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: 別のウィンドウ・マネージャが実行中"
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: 標準ファイルにデータが見付かりません"
 
-#: src/main.c:428
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: 未知のエラーが発生"

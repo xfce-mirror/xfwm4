@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-20 19:16+0200\n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
 "PO-Revision-Date: 2003-08-02 03:36+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,9 @@ msgstr "작업공간 여백 설정"
 #: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "여백은 스크린의 구석에 있는 영역으로,\n 윈도우가 위치할 수 없는 공간입니다."
+msgstr ""
+"여백은 스크린의 구석에 있는 영역으로,\n"
+" 윈도우가 위치할 수 없는 공간입니다."
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -264,32 +266,32 @@ msgstr "제목 틀을 더블클릭한 경우 취하는 동작"
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/client.c:442
+#: src/client.c:493
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1317
+#: src/events.c:1386
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr ""
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr ""
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr ""
 
-#: src/main.c:428
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr ""
@@ -360,37 +362,42 @@ msgstr "작업공간 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: src/settings.c:284
+#: src/settings.c:285
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr ""
 
-#: src/settings.c:509
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:516
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:560
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:567
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:757
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr ""
+
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr ""
 
-#: src/settings.c:1098
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

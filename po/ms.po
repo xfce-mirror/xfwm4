@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-30 09:15+0200\n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
 "PO-Revision-Date: 2003-05-29 02:24+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -270,32 +270,32 @@ msgstr "Aksi untuk dilakukan apabila dwiklik pada bar tajuk :"
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: src/client.c:443
+#: src/client.c:493
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Takterurus net_wm_state (tetingkap 0x%lx)"
 
-#: src/events.c:1318
+#: src/events.c:1386
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operasi tidak disokong (lagi)\n"
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Kesilapan segmentasi"
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Kehilangan data dari fail default"
 
-#: src/main.c:428
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Ralat tidak diketahui terjadi"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
-"POT-Creation-Date: 2003-07-20 19:16+0200\n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
 "PO-Revision-Date: 2003-08-16 15:44+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
@@ -14,8 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133
-#: mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Darbo vietos paraštės"
@@ -25,7 +24,8 @@ msgid "Adjust workspace margins"
 msgstr "Derinti darbo vietos paraštes"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
 #: mcs-plugin/margins_plugin.c:281
@@ -108,8 +108,7 @@ msgstr "Slepiamas"
 msgid "Font Selection Dialog"
 msgstr "Šrifto pasirinkimo dialogas"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
-#: mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Langų tvarkyklė"
 
@@ -221,13 +220,11 @@ msgstr "Pritraukti langus prie kitų langų"
 msgid "Distance :"
 msgstr "Atstumas :"
 
-#: mcs-plugin/xfwm4_plugin.c:1569
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Mažas"
 
-#: mcs-plugin/xfwm4_plugin.c:1577
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr ""
 
@@ -272,32 +269,32 @@ msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
 msgid "Advanced"
 msgstr "Išplėstas"
 
-#: src/client.c:442
+#: src/client.c:493
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1317
+#: src/events.c:1386
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operacija nėra palaikoma (kolkas)\n"
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Kita langų tvarkyklė jau veikia"
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Trūksta duomenų iš numatytojo failo"
 
-#: src/main.c:428
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Įvyko nežinoma klaida"
@@ -368,37 +365,42 @@ msgstr "Darbo laukas %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: src/settings.c:284
+#: src/settings.c:285
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s:Nėra numatytojo failo"
 
-#: src/settings.c:509
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr ""
 
-#: src/settings.c:516
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:560
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:567
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:757
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr ""
+
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Trūksta reikšmių numatytame faile"
 
-#: src/settings.c:1098
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Darbo vietų skaičius nenustatytas, naudojamos rc reikšmės: %i"
@@ -406,4 +408,3 @@ msgstr "%s: Darbo vietų skaičius nenustatytas, naudojamos rc reikšmės: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Perjungti į ..."
-

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
-"POT-Creation-Date: 2003-07-30 09:15+0200\n"
+"POT-Creation-Date: 2003-08-26 08:17+0200\n"
 "PO-Revision-Date: 2003-08-05 13:01+0100\n"
 "Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -14,8 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133
-#: mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Marges de l'àrea de treball"
@@ -25,8 +24,10 @@ msgid "Adjust workspace margins"
 msgstr "Ajusta els marges de l'àrea de treball"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Els marges són àrees a les vores de la pantalla on cap finestra es col·locarà"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Els marges són àrees a les vores de la pantalla on cap finestra es col·locarà"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -108,8 +109,7 @@ msgstr "Ocult"
 msgid "Font Selection Dialog"
 msgstr "Diàleg de selecció del tipus de lletra"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
-#: mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Gestor de Finestres"
 
@@ -222,13 +222,11 @@ msgstr "Alinea les finestres amb les altres finestres"
 msgid "Distance :"
 msgstr "Distància:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Menuda"
 
-#: mcs-plugin/xfwm4_plugin.c:1577
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Gran"
 
@@ -238,11 +236,14 @@ msgstr "Ajustar les àrees de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Salta de àrea de treball quan el punter assoleixi un dels laterals de la pantalla"
+msgstr ""
+"Salta de àrea de treball quan el punter assoleixi un dels laterals de la "
+"pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Salta de àrea de treball quan s'arrossegui una finestra fora de la pantalla"
+msgstr ""
+"Salta de àrea de treball quan s'arrossegui una finestra fora de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
@@ -272,32 +273,32 @@ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 msgid "Advanced"
 msgstr "Avançat"
 
-#: src/client.c:443
+#: src/client.c:493
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
-#: src/events.c:1318
+#: src/events.c:1386
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operació encara no suportada\n"
 
-#: src/main.c:226
+#: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault (violació de segment)"
 
-#: src/main.c:396
+#: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Un altre gestor de finestres s'està executant"
 
-#: src/main.c:401
+#: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Falten dades dels fitxers per defecte"
 
-#: src/main.c:428
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: S'ha produït un error desconegut"
@@ -396,7 +397,9 @@ msgstr "%s: No es pot processar el color inactiu %s\n"
 #: src/settings.c:755
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr "%s: No sa trobat la configuració de tecles \"%s\", es fa servir la configuració per defecte"
+msgstr ""
+"%s: No sa trobat la configuració de tecles \"%s\", es fa servir la "
+"configuració per defecte"
 
 #: src/settings.c:765
 #, c-format
@@ -406,9 +409,10 @@ msgstr "%s: Faltes valors en els fitxers per defecte"
 #: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el valor rc: %i"
+msgstr ""
+"%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el "
+"valor rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Canvia a..."
-
