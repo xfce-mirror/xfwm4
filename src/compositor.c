@@ -1531,15 +1531,13 @@ restack_win (CWindow *cw, Window above)
             screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
             screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
         }
-#ifdef DEBUG
         else
         {
             /* Don't know what to do */
-            g_warning ("The window 0x%lx has not been restacked\n"
-                       "because the specified sibling 0x%lx was\n"
-                       "not found in our stack", cw->id, above);
+            DBG ("The window 0x%lx has not been restacked\n"
+                 "because the specified sibling 0x%lx was\n"
+                 "not found in our stack", cw->id, above);
         }
-#endif
     }
 }
 
@@ -1867,9 +1865,32 @@ compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
        We are only interested in top level windows, other will
        be caught by the WM.
      */
-    if (myDisplayGetScreenFromRoot(display_info, ev->parent) != NULL)
+    if (myDisplayGetScreenFromRoot (display_info, ev->parent) != NULL)
     {
         compositorAddWindow (display_info, ev->window, NULL);
+    }
+}
+
+static void
+compositorHandleReparentNotify (DisplayInfo *display_info, XReparentEvent *ev)
+{
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleReparentNotify for 0x%lx", ev->window);
+
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+    
+    if (myDisplayGetScreenFromRoot (display_info, ev->parent) != NULL)
+    {
+        compositorAddWindow (display_info, ev->window, NULL);
+    }
+    else
+    {
+        compositorRemoveWindow (display_info, ev->window);
     }
 }
 
@@ -2034,6 +2055,10 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     else if (ev->type == ConfigureNotify)
     {
         compositorHandleConfigureNotify (display_info, (XConfigureEvent *) ev);
+    }
+    else if (ev->type == ReparentNotify)
+    {
+        compositorHandleReparentNotify (display_info, (XReparentEvent *) ev);
     }
     else if (ev->type == Expose)
     {
