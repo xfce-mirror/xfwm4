@@ -2713,6 +2713,10 @@ void clientPassFocus(Client * c)
         }
     }
     g_slist_free(list_of_windows);
+    if (!new_focus)
+    {
+        new_focus = clientGetTopMostFocusable(c->win_layer, c);
+    }
     clientSetFocus(new_focus, TRUE);
 }
 
@@ -4294,7 +4298,7 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
     ClientCycleData *passdata = (ClientCycleData *) data;
 
     TRACE("entering clientCycle_event_filter");
-
+		
     switch (xevent->type)
     {
     case DestroyNotify:
@@ -4306,9 +4310,13 @@ static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointe
     case KeyPress:
         if(gone || (xevent->xkey.keycode == params.keys[KEY_CYCLE_WINDOWS].keycode))
         {
+            /* Hide frame draw */
+	    clientDrawOutline(passdata->c);
             passdata->c = clientGetNext(passdata->c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
             if(passdata->c)
             {
+                /* Redraw frame draw */
+        	clientDrawOutline(passdata->c);
                 tabwinSetLabel(passdata->tabwin, passdata->c->name);
             }
             else
@@ -4368,19 +4376,27 @@ void clientCycle(Client * c)
         return;
     }
 
+    MyXGrabServer();
     passdata.c = clientGetNext(c, INCLUDE_HIDDEN | INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER);
     if(passdata.c)
     {
         passdata.tabwin = tabwinCreate(passdata.c->name);
         TRACE("entering cycle loop");
+        /* Draw frame draw */
+        clientDrawOutline(passdata.c);
         pushEventFilter(clientCycle_event_filter, &passdata);
         gtk_main();
         popEventFilter();
+	if (passdata.c)
+	{
+            /* Hide frame draw */
+            clientDrawOutline(passdata.c);
+	}
         TRACE("leaving cycle loop");
         tabwinDestroy(passdata.tabwin);
         g_free(passdata.tabwin);
     }
-
+    MyXUngrabServer();
     XUngrabKeyboard(dpy, CurrentTime);
     XUngrabPointer(dpy, CurrentTime);
 

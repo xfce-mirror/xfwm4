@@ -53,7 +53,8 @@
 #include "startup_notification.h"
 #include "spinning_cursor.h"
 
-#define MAIN_EVENT_MASK         SubstructureNotifyMask|\
+#define MAIN_EVENT_MASK\
+    SubstructureNotifyMask|\
     StructureNotifyMask|\
     SubstructureRedirectMask|\
     ButtonPressMask|\

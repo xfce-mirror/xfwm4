@@ -26,6 +26,9 @@
 #  include "config.h"
 #endif
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
 #include <X11/Xatom.h>
 #include <glib.h>
 
@@ -172,7 +175,6 @@ extern Atom net_wm_window_type_splashscreen;
 extern Atom net_wm_window_type_toolbar;
 extern Atom net_wm_window_type_utility;
 extern Atom net_workarea;
-
 
 void initICCCMHints(Display *);
 unsigned long getWMState(Display *, Window);

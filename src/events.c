@@ -31,6 +31,7 @@
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "main.h"
+#include "hints.h"
 #include "workspaces.h"
 #include "settings.h"
 #include "mywindow.h"
@@ -701,6 +702,7 @@ static inline void handleMapRequest(XMapRequestEvent * ev)
         TRACE("Mapping None ???");
         return;
     }
+
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
@@ -1008,7 +1010,6 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             getWindowStartupId(dpy, c->window, &c->startup_id);
         }
 #endif
-
     }
     else
     {

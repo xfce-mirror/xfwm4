@@ -105,6 +105,7 @@ void tabwinSetLabel(Tabwin * tabwin, gchar * label)
     {
         gtk_label_set_text(GTK_LABEL(tabwin->label), "");
     }
+    gtk_widget_queue_draw(tabwin->window);
 }
 
 void tabwinDestroy(Tabwin * tabwin)
