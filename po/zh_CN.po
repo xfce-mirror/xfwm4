@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "POT-Creation-Date: 2004-06-03 16:48+0200\n"
-"PO-Revision-Date: 2003-07-08 20:52+0100\n"
+"PO-Revision-Date: 2004-06-11 16:52+0200\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -316,7 +316,7 @@ msgstr "%s: 段错误"
 
 #: src/main.c:247
 msgid "Cannot get default screen"
-msgstr ""
+msgstr "无法获取默认屏幕"
 
 #: src/main.c:411
 #, c-format
@@ -408,9 +408,9 @@ msgid "Restart"
 msgstr "重启"
 
 #: src/menu.c:169
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "工作区 %i"
+msgstr "工作区 %i (%s)"
 
 #: src/menu.c:181
 #, c-format
@@ -473,7 +473,7 @@ msgstr "切换到 ..."
 
 #: src/tabwin.c:127
 msgid "Unknown application!"
-msgstr ""
+msgstr "未知的应用程序！"
 
 #~ msgid "Adjust workspace margins"
 #~ msgstr "调整工作区边缘"
