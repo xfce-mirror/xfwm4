@@ -25,6 +25,10 @@
 #  include "config.h"
 #endif
 
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -52,6 +56,7 @@
  */
 
 extern char *progname;
+extern Time last_timestamp;
 extern Display *dpy;
 extern Window root, gnome_win, systray, sidewalk[2];
 extern Screen *xscreen;
