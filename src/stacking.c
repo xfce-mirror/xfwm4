@@ -434,6 +434,7 @@ clientLower (Client * c)
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
+	clientPassFocus (screen_info, c);
         if (screen_info->last_raise == c)
         {
             screen_info->last_raise = NULL;
