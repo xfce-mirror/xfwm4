@@ -65,6 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/atlanta2
 %{_datadir}/xfwm4/themes/b5
 %{_datadir}/xfwm4/themes/b6
+%{_datadir}/xfwm4/themes/beastie
 %{_datadir}/xfwm4/themes/biz
 %{_datadir}/xfwm4/themes/coldsteel
 %{_datadir}/xfwm4/themes/coolclean
@@ -83,8 +84,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/microgui
 %{_datadir}/xfwm4/themes/mofit
 %{_datadir}/xfwm4/themes/next
-%{_datadir}/xfwm4/themes/oroborus
 %{_datadir}/xfwm4/themes/ops
+%{_datadir}/xfwm4/themes/oroborus
 %{_datadir}/xfwm4/themes/pills
 %{_datadir}/xfwm4/themes/piranha
 %{_datadir}/xfwm4/themes/platinum
@@ -103,4 +104,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/tux
 %{_datadir}/xfwm4/themes/variation
 %{_datadir}/xfwm4/themes/xfce
+
 
