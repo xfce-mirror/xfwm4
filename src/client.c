@@ -1425,18 +1425,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return NULL;
     }
 
-    if (attr.override_redirect)
-    {
-        TRACE ("Override redirect window 0x%lx", w);
-        compositorAddWindow (display_info, w, NULL);
-        myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
-        return NULL;
-    }
-
     if (checkKdeSystrayWindow (display_info, w))
     {
-        TRACE ("Detected KDE systray windows");
+        g_print ("Detected KDE systray windows\n");
         if (screen_info->systray != None)
         {
             sendSystrayReqDock (display_info, w, screen_info->systray);
@@ -1444,7 +1435,16 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             gdk_error_trap_pop ();
             return NULL;
         }
-        TRACE ("No systray found for this screen");
+        g_print ("No systray found for this screen\n");
+    }
+
+    if (attr.override_redirect)
+    {
+        TRACE ("Override redirect window 0x%lx", w);
+        compositorAddWindow (display_info, w, NULL);
+        myDisplayUngrabServer (display_info);
+        gdk_error_trap_pop ();
+        return NULL;
     }
 
     c = g_new0 (Client, 1);

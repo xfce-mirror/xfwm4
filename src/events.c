@@ -1871,7 +1871,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
             }
         }
-        else if ((ev->message_type == display_info->atoms[NET_SYSTEM_TRAY_MANAGER]) && (ev->data.l[1] == screen_info->net_system_tray_selection) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[MANAGER]) && (ev->data.l[1] == screen_info->net_system_tray_selection) && (ev->format == 32))
         {
             TRACE ("root has received a net_system_tray_manager event");
             screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);

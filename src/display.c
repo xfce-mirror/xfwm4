@@ -74,7 +74,6 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_STARTUP_ID",
         "_NET_SUPPORTED",
         "_NET_SUPPORTING_WM_CHECK",
-        "_NET_SYSTEM_TRAY_MANAGER",
         "_NET_SYSTEM_TRAY_OPCODE",
         "_NET_WM_ACTION_CHANGE_DESKTOP",
         "_NET_WM_ACTION_CLOSE",
@@ -119,6 +118,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_WINDOW_TYPE_TOOLBAR",
         "_NET_WM_WINDOW_TYPE_UTILITY",
         "_NET_WORKAREA",
+        "MANAGER",
         "PIXMAP",
         "SM_CLIENT_ID",
         "UTF8_STRING",
@@ -157,9 +157,9 @@ myDisplayInit (GdkDisplay *gdisplay)
 {
     DisplayInfo *display;
     int dummy;
-    
+
     display = g_new0 (DisplayInfo, 1);
-    
+
     display->gdisplay = gdisplay;
     display->dpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
 
