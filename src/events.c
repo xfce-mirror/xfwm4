@@ -313,7 +313,7 @@ handleKeyPress (XKeyEvent * ev)
                 }
                 break;
             case KEY_CYCLE_WINDOWS:
-                clientCycle (c);
+                clientCycle (c, (XEvent *) ev);
                 break;
             case KEY_CLOSE_WINDOW:
                 clientClose (c);
@@ -339,6 +339,12 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_STICK_WINDOW:
                 clientToggleSticky (c, TRUE);
                 frameDraw (c, FALSE, FALSE);
+                break;
+            case KEY_RAISE_WINDOW:
+                clientRaise (c);
+                break;
+            case KEY_LOWER_WINDOW:
+                clientLower (c);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (workspace + 1, c);
@@ -384,7 +390,7 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_CYCLE_WINDOWS:
                 if (clients)
                 {
-                    clientCycle (clients->prev);
+                    clientCycle (clients->prev, (XEvent *) ev);
                 }
                 break;
             default:
@@ -668,7 +674,22 @@ handleButtonPress (XButtonEvent * ev)
         }
         else if ((ev->button == Button3) && (state == AltMask) && (params.easy_click))
         {
-            edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+            if ((ev->x < c->width / 2) && (ev->y < c->height / 2))
+            {
+                edgeButton (c, CORNER_TOP_LEFT, ev);
+            }
+            else if ((ev->x < c->width / 2) && (ev->y > c->height / 2))
+            {
+                edgeButton (c, CORNER_BOTTOM_LEFT, ev);
+            }
+            else if ((ev->x > c->width / 2) && (ev->y < c->height / 2))
+            {
+                edgeButton (c, CORNER_TOP_RIGHT, ev);
+            }
+            else
+            {
+                edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+            }
         }
         else if (WIN_IS_BUTTON (win))
         {
@@ -771,7 +792,7 @@ handleButtonPress (XButtonEvent * ev)
             if (ev->button == Button1)
             {
                 clientSetFocus (c, TRUE, FALSE);
-                if (params.raise_on_click)
+                if ((params.raise_on_click) || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
                 }
@@ -896,6 +917,12 @@ handleUnmapNotify (XUnmapEvent * ev)
     if (ev->from_configure)
     {
         TRACE ("Ignoring UnmapNotify caused by parent's resize\n");
+        return;
+    }
+
+    if ((ev->event != ev->window) && (ev->event != root || !ev->send_event))
+    {
+        TRACE ("handleUnmapNotify (): Event ignored\n");
         return;
     }
 
@@ -1045,6 +1072,22 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+        {
+            int cx, cy;
+
+            /* size request from fullscreen windows get fullscreen */
+            
+            cx = frameX (c) + (frameWidth (c) / 2);
+            cy = frameY (c) + (frameHeight (c) / 2);
+
+            wc.x = MyDisplayX (cx, cy);
+            wc.y = MyDisplayY (cx, cy);
+            wc.width = MyDisplayWidth (dpy, screen, cx, cy);
+            wc.height = MyDisplayHeight (dpy, screen, cx, cy);
+
+            ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
+        }
         /* Clean up buggy requests that set all flags */
         if ((ev->value_mask & CWX) && (wc.x == c->x))
         {

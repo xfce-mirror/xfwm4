@@ -62,6 +62,7 @@
     EnterWindowMask
 
 #define CLIENT_EVENT_MASK \
+    StructureNotifyMask|\
     FocusChangeMask|\
     PropertyChangeMask
 
@@ -156,6 +157,7 @@ struct _MoveResizeData
     int corner;
     Window tmp_event_window;
     Client *c;
+    Time last_timestamp;
 };
 
 typedef struct _ClientCycleData ClientCycleData;
@@ -164,6 +166,7 @@ struct _ClientCycleData
     Client *c;
     Tabwin *tabwin;
     int cycle_range;
+    Time last_timestamp;
 };
 
 typedef struct _ButtonPressData ButtonPressData;
@@ -1335,12 +1338,14 @@ clientGrabKeys (Client * c)
     grabKey (dpy, &params.keys[KEY_MAXIMIZE_VERT], c->window);
     grabKey (dpy, &params.keys[KEY_MAXIMIZE_HORIZ], c->window);
     grabKey (dpy, &params.keys[KEY_SHADE_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_STICK_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_RAISE_WINDOW], c->window);
+    grabKey (dpy, &params.keys[KEY_LOWER_WINDOW], c->window);
     grabKey (dpy, &params.keys[KEY_CYCLE_WINDOWS], c->window);
     grabKey (dpy, &params.keys[KEY_NEXT_WORKSPACE], c->window);
     grabKey (dpy, &params.keys[KEY_PREV_WORKSPACE], c->window);
     grabKey (dpy, &params.keys[KEY_ADD_WORKSPACE], c->window);
     grabKey (dpy, &params.keys[KEY_DEL_WORKSPACE], c->window);
-    grabKey (dpy, &params.keys[KEY_STICK_WINDOW], c->window);
     grabKey (dpy, &params.keys[KEY_WORKSPACE_1], c->window);
     grabKey (dpy, &params.keys[KEY_WORKSPACE_2], c->window);
     grabKey (dpy, &params.keys[KEY_WORKSPACE_3], c->window);
@@ -2608,7 +2613,7 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY, CFG_FORCE_REDRAW);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
 
@@ -3282,6 +3287,8 @@ void
 clientUnframe (Client * c, gboolean remap)
 {
     int i;
+    XEvent ev;
+    gboolean reparented;
 
     TRACE ("entering clientUnframe");
     TRACE ("unframing client \"%s\" (0x%lx) [%s]", 
@@ -3297,10 +3304,36 @@ clientUnframe (Client * c, gboolean remap)
         last_raise = NULL;
     }
     clientRemoveFromList (c);
-
     MyXGrabServer ();
     gdk_error_trap_push ();
+    XUnmapWindow (dpy, c->frame);
     clientGravitate (c, REMOVE);
+    XSelectInput (dpy, c->window, NoEventMask);
+    reparented = XCheckTypedWindowEvent (dpy, c->window, ReparentNotify, &ev);
+
+    if (remap || !reparented)
+    {
+        XReparentWindow (dpy, c->window, root, c->x, c->y);
+        XSetWindowBorderWidth (dpy, c->window, c->border_width);
+        if (remap)
+        {
+            XMapWindow (dpy, c->window);
+        }
+        else
+        {
+            setWMState (dpy, c->window, WithdrawnState);
+        }
+    }
+    else
+    {
+        XDeleteProperty (dpy, c->window, net_wm_state);
+        XDeleteProperty (dpy, c->window, win_state);
+        XDeleteProperty (dpy, c->window, net_wm_desktop);
+        XDeleteProperty (dpy, c->window, win_workspace);
+        XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
+    }
+
+
     clientUngrabKeys (c);
     XUngrabButton (dpy, AnyButton, AnyModifier, c->window);
     myWindowDelete (&c->title);
@@ -3315,28 +3348,12 @@ clientUnframe (Client * c, gboolean remap)
     {
         myWindowDelete (&c->buttons[i]);
     }
-    XUnmapWindow (dpy, c->window);
-    XReparentWindow (dpy, c->window, root, c->x, c->y);
-    XSetWindowBorderWidth (dpy, c->window, c->border_width);
     XDestroyWindow (dpy, c->frame);
-    if (remap)
-    {
-        XMapWindow (dpy, c->window);
-    }
-    else
-    {
-        setWMState (dpy, c->window, WithdrawnState);
-        /* Cleanup */
-        XDeleteProperty (dpy, c->window, net_wm_state);
-        XDeleteProperty (dpy, c->window, win_state);
-        XDeleteProperty (dpy, c->window, net_wm_desktop);
-        XDeleteProperty (dpy, c->window, win_workspace);
-        XDeleteProperty (dpy, c->window, net_wm_allowed_actions);
-    }
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea (margins, gnome_margins);
     }
+    
     MyXUngrabServer ();
     gdk_error_trap_pop ();
     clientFree (c);
@@ -3410,6 +3427,7 @@ clientUnframeAll ()
         }
     }
     MyXUngrabServer ();
+    XSync(dpy, FALSE);
     if (wins)
     {
         XFree (wins);
@@ -3547,6 +3565,33 @@ clientGetNext (Client * c, int mask)
     return NULL;
 }
 
+Client *
+clientGetPrevious (Client * c, int mask)
+{
+    Client *c2;
+    unsigned int i;
+
+    TRACE ("entering clientGetPrevious");
+
+    if (c)
+    {
+        for (c2 = c->prev, i = 0; (c2) && (i < client_count);
+            c2 = c2->prev, i++)
+        {
+            if ((c2->type == WINDOW_SPLASHSCREEN)
+                || (c2->type == WINDOW_DESKTOP))
+            {
+                continue;
+            }
+            if (clientSelectMask (c2, mask))
+            {
+                return c2;
+            }
+        }
+    }
+    return NULL;
+}
+
 /* Build a GList of clients that have a transient relationship */
 static GList *
 clientListTransient (Client * c)
@@ -3642,18 +3687,37 @@ clientPassFocus (Client * c)
 
     if (params.click_to_focus)
     {
-        list_of_windows = clientListTransient (c);
-        for (c2 = c->next, i = 0; (c2) && (i < client_count);
-            c2 = c2->next, i++)
+        /* Fairly simple logic:
+           1) if the window is a modal, send focus back to its parent window
+           2) Otherwise, rewind the focus stack until we find an eligible window
+              (by eligible, I mean a windw that is not a transient for the current
+              window)
+         */
+        if (clientIsModal (c))
         {
-            if (clientSelectMask (c2, 0)
-                && !g_list_find (list_of_windows, (gconstpointer) c2))
+            c2 = clientGetTransient (c);
+            
+            if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
             {
                 new_focus = c2;
-                break;
             }
         }
-        g_list_free (list_of_windows);
+        
+        if (!new_focus)
+        {
+            list_of_windows = clientListTransient (c);
+            for (c2 = c->next, i = 0; (c2) && (i < client_count);
+                c2 = c2->next, i++)
+            {
+                if (clientSelectMask (c2, 0)
+                    && !g_list_find (list_of_windows, (gconstpointer) c2))
+                {
+                    new_focus = c2;
+                    break;
+                }
+            }
+            g_list_free (list_of_windows);
+        }
     }
     else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
             &mask))
@@ -4141,13 +4205,13 @@ clientShade (Client * c)
 
     c->win_state |= WIN_STATE_SHADED;
     CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
-    clientSetNetState (c);
 }
 
 void
@@ -4166,13 +4230,13 @@ clientUnshade (Client * c)
     }
     c->win_state &= ~WIN_STATE_SHADED;
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_SHADED);
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
-    clientSetNetState (c);
 }
 
 void
@@ -4317,6 +4381,7 @@ clientToggleFullscreen (Client * c)
         wc.height = c->fullscreen_old_height;
         layer = c->fullscreen_old_layer;
     }
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
@@ -4328,7 +4393,6 @@ clientToggleFullscreen (Client * c)
         c->height = wc.height;
         c->width = wc.width;
     }
-    clientSetNetState (c);
     clientSetLayer (c, layer);
 }
 
@@ -4477,6 +4541,7 @@ clientToggleMaximized (Client * c, int mode)
         wc.height = c->height;
     }
 
+    clientSetNetState (c);
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
@@ -4488,7 +4553,6 @@ clientToggleMaximized (Client * c, int mode)
         c->height = wc.height;
         c->width = wc.width;
     }
-    clientSetNetState (c);
 }
 
 inline gboolean
@@ -4890,52 +4954,59 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientMove_event_filter");
 
+    passdata->last_timestamp = stashEventTime (passdata->last_timestamp, xevent);
     if (xevent->type == KeyPress)
     {
-        if (!passdata->grab && params.box_move)
+        if (passdata->use_keys)
         {
-            MyXGrabServer ();
-            passdata->grab = TRUE;
-            clientDrawOutline (c);
-        }
-        if (params.box_move)
-        {
-            clientDrawOutline (c);
-        }
-        if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
-        {
-            c->x = c->x - 16;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
-        {
-            c->x = c->x + 16;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
-        {
-            c->y = c->y - 16;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
-        {
-            c->y = c->y + 16;
-        }
-        clientConstrainPos (c, FALSE);
+            if (!passdata->grab && params.box_move)
+            {
+                MyXGrabServer ();
+                passdata->grab = TRUE;
+                clientDrawOutline (c);
+            }
+            if (params.box_move)
+            {
+                clientDrawOutline (c);
+            }
+            if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
+            {
+                c->x = c->x - 16;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
+            {
+                c->x = c->x + 16;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
+            {
+                c->y = c->y - 16;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
+            {
+                c->y = c->y + 16;
+            }
+            clientConstrainPos (c, FALSE);
 
-        if (params.box_move)
-        {
-            clientDrawOutline (c);
-        }
-        else
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+            if (params.box_move)
+            {
+                clientDrawOutline (c);
+            }
+            else
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+            }
         }
     }
-    else if (passdata->use_keys && xevent->type == KeyRelease)
+    else if (xevent->type == KeyRelease)
     {
-        if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+        if (passdata->use_keys)
         {
-            moving = FALSE;
+            if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+            {
+                moving = FALSE;
+            }
         }
     }
     else if (xevent->type == MotionNotify)
@@ -4943,7 +5014,8 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (dpy,
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
-            ; /* VOID */
+            passdata->last_timestamp 
+                = stashEventTime (passdata->last_timestamp, xevent);
 
         if (xevent->type == ButtonRelease)
         {
@@ -5017,12 +5089,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
         }
     }
-    else if (!passdata->use_keys && xevent->type == ButtonRelease)
+    else if (xevent->type == ButtonRelease)
     {
-        moving = FALSE;
+        if (!passdata->use_keys)
+        {
+            moving = FALSE;
+        }
     }
-    else if (xevent->type == UnmapNotify
-        && xevent->xunmap.window == c->window)
+    else if (xevent->type == UnmapNotify && xevent->xunmap.window == c->window)
     {
         moving = FALSE;
     }
@@ -5051,17 +5125,18 @@ void
 clientMove (Client * c, XEvent * e)
 {
     XWindowChanges wc;
-    Time timestamp;
     MoveResizeData passdata;
+    Cursor cursor = None;
     int g1 = GrabSuccess, g2 = GrabSuccess;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientDoMove");
     TRACE ("moving client \"%s\" (0x%lx)", c->name, c->window);
 
+    passdata.c = c;
+    passdata.last_timestamp = CurrentTime;
     passdata.ox = c->x;
     passdata.oy = c->y;
-    passdata.c = c;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     /*
@@ -5076,7 +5151,7 @@ clientMove (Client * c, XEvent * e)
 
        Note:
 
-       I'm note sure it makes any difference, but who knows... It doesn' t hurt.
+       I'm not sure it makes any difference, but who knows... It doesn' t hurt.
      */
 
     passdata.tmp_event_window =
@@ -5092,33 +5167,30 @@ clientMove (Client * c, XEvent * e)
 
     if (e->type == KeyPress)
     {
+        passdata.last_timestamp = e->xkey.time;
+        cursor = None;
         passdata.use_keys = TRUE;
-        timestamp = e->xkey.time;
         passdata.mx = e->xkey.x_root;
         passdata.my = e->xkey.y_root;
-        g1 = XGrabKeyboard (dpy, passdata.tmp_event_window, FALSE,
-            GrabModeAsync, GrabModeAsync, timestamp);
-        g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
-            ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-            GrabModeAsync, None, move_cursor, timestamp);
     }
     else if (e->type == ButtonPress)
     {
-        timestamp = e->xbutton.time;
+        passdata.last_timestamp = e->xbutton.time;
+        cursor = None;
         passdata.mx = e->xbutton.x_root;
         passdata.my = e->xbutton.y_root;
-        g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
-            ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-            GrabModeAsync, None, None, timestamp);
     }
     else
     {
-        timestamp = CurrentTime;
+        passdata.last_timestamp = CurrentTime;
+        cursor = move_cursor;
         getMouseXY (root, &passdata.mx, &passdata.my);
-        g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
-            ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
-            GrabModeAsync, None, move_cursor, timestamp);
     }
+    g1 = XGrabKeyboard (dpy, passdata.tmp_event_window, FALSE,
+        GrabModeAsync, GrabModeAsync, passdata.last_timestamp);
+    g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
+        ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
+        GrabModeAsync, None, cursor, passdata.last_timestamp);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -5126,11 +5198,11 @@ clientMove (Client * c, XEvent * e)
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (dpy, timestamp);
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, timestamp);
+            XUngrabPointer (dpy, CurrentTime);
         }
         removeTmpEventWin (passdata.tmp_event_window);
         return;
@@ -5149,11 +5221,8 @@ clientMove (Client * c, XEvent * e)
     TRACE ("leaving move loop");
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MOVING_RESIZING);
 
-    if (passdata.use_keys)
-    {
-        XUngrabKeyboard (dpy, CurrentTime);
-    }
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabKeyboard (dpy, passdata.last_timestamp);
+    XUngrabPointer (dpy, passdata.last_timestamp);
     removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_move)
@@ -5216,90 +5285,97 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     disp_max_x = MyDisplayMaxX (dpy, screen, cx, cy);
     disp_max_y = MyDisplayMaxY (dpy, screen, cx, cy);
 
+    passdata->last_timestamp = stashEventTime (passdata->last_timestamp, xevent);
     if (xevent->type == KeyPress)
     {
-        int key_width_inc, key_height_inc;
-        int corner = -1;
-        
-        key_width_inc = c->size->width_inc;
-        key_height_inc = c->size->height_inc;
-        
-        if (key_width_inc < 10)
+        if (passdata->use_keys)
         {
-            key_width_inc = ((int) (10 / key_width_inc)) * key_width_inc;
-        }
+            int key_width_inc, key_height_inc;
+            int corner = -1;
 
-        if (key_height_inc < 10)
-        {
-            key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
-        }
+            key_width_inc = c->size->width_inc;
+            key_height_inc = c->size->height_inc;
 
-        if (!passdata->grab && params.box_resize)
-        {
-            MyXGrabServer ();
-            passdata->grab = TRUE;
-            clientDrawOutline (c);
-        }
-        if (params.box_resize)
-        {
-            clientDrawOutline (c);
-        }
-        /* Store previous height in case the resize hides the window behind the curtain */
-        prev_width = c->width;
-        prev_height = c->height;
+            if (key_width_inc < 10)
+            {
+                key_width_inc = ((int) (10 / key_width_inc)) * key_width_inc;
+            }
 
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
-            && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
-        {
-            c->height = c->height - key_height_inc;
-            corner = 4 + SIDE_BOTTOM;
-        }
-        else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
-            && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
-        {
-            c->height = c->height + key_height_inc;
-            corner = 4 + SIDE_BOTTOM;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
-        {
-            c->width = c->width - key_width_inc;
-            corner = 4 + SIDE_RIGHT;
-        }
-        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
-        {
-            c->width = c->width + key_width_inc;
-            corner = 4 + SIDE_RIGHT;
-        }
-        if (c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
-        {
-            c->width = prev_width;
-        }
-        if (c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
-        {
-            c->height = prev_height;
-        }
-        if (corner >= 0)
-        {
-            clientConstrainRatio (c, c->width, c->height, corner);
-        }
-        if (params.box_resize)
-        {
-            clientDrawOutline (c);
-        }
-        else
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+            if (key_height_inc < 10)
+            {
+                key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
+            }
+
+            if (!passdata->grab && params.box_resize)
+            {
+                MyXGrabServer ();
+                passdata->grab = TRUE;
+                clientDrawOutline (c);
+            }
+            if (params.box_resize)
+            {
+                clientDrawOutline (c);
+            }
+            /* Store previous height in case the resize hides the window behind the curtain */
+            prev_width = c->width;
+            prev_height = c->height;
+
+            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+                && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
+            {
+                c->height = c->height - key_height_inc;
+                corner = 4 + SIDE_BOTTOM;
+            }
+            else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+                && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
+            {
+                c->height = c->height + key_height_inc;
+                corner = 4 + SIDE_BOTTOM;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_LEFT].keycode)
+            {
+                c->width = c->width - key_width_inc;
+                corner = 4 + SIDE_RIGHT;
+            }
+            else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
+            {
+                c->width = c->width + key_width_inc;
+                corner = 4 + SIDE_RIGHT;
+            }
+            if (c->x + c->width < disp_x + left + CLIENT_MIN_VISIBLE)
+            {
+                c->width = prev_width;
+            }
+            if (c->y + c->height < disp_y + top + CLIENT_MIN_VISIBLE)
+            {
+                c->height = prev_height;
+            }
+            if (corner >= 0)
+            {
+                clientConstrainRatio (c, c->width, c->height, corner);
+            }
+            if (params.box_resize)
+            {
+                clientDrawOutline (c);
+            }
+            else
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                wc.width = c->width;
+                wc.height = c->height;
+                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
+            }
         }
     }
-    else if ((passdata->use_keys) && (xevent->type == KeyRelease))
+    else if (xevent->type == KeyRelease)
     {
-        if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+        if (passdata->use_keys)
         {
-            resizing = FALSE;
+            if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0)))
+            {
+                resizing = FALSE;
+            }
         }
     }
     else if (xevent->type == MotionNotify)
@@ -5307,7 +5383,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (dpy,
                 ButtonMotionMask | PointerMotionMask | PointerMotionHintMask,
                 xevent))
-            ; /* VOID */
+            passdata->last_timestamp 
+                = stashEventTime (passdata->last_timestamp, xevent);
 
         if (xevent->type == ButtonRelease)
         {
@@ -5336,33 +5413,26 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
             || (passdata->corner == 4 + SIDE_LEFT))
         {
-            c->width =
-                (c->x + c->width) - xevent->xmotion.x_root + passdata->mx -
-                frame_left;
+            c->width = passdata->ox - (xevent->xmotion.x_root - passdata->mx);
         }
-        if ((passdata->corner == CORNER_BOTTOM_RIGHT)
+        else if ((passdata->corner == CORNER_BOTTOM_RIGHT)
             || (passdata->corner == CORNER_TOP_RIGHT)
             || (passdata->corner == 4 + SIDE_RIGHT))
         {
-            c->width =
-                (xevent->xmotion.x_root - c->x) + passdata->mx - frame_right;
+            c->width = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         }
         if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
         {
             if ((passdata->corner == CORNER_TOP_LEFT)
                 || (passdata->corner == CORNER_TOP_RIGHT))
             {
-                c->height =
-                    (c->y + c->height) - xevent->xmotion.y_root +
-                    passdata->my - frame_top;
+                c->height = passdata->oy - (xevent->xmotion.y_root - passdata->my);
             }
-            if ((passdata->corner == CORNER_BOTTOM_RIGHT)
+            else if ((passdata->corner == CORNER_BOTTOM_RIGHT)
                 || (passdata->corner == CORNER_BOTTOM_LEFT)
                 || (passdata->corner == 4 + SIDE_BOTTOM))
             {
-                c->height =
-                    (xevent->xmotion.y_root - c->y) + passdata->my -
-                    frame_bottom;
+                c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
             }
         }
         clientSetWidth (c, c->width);
@@ -5436,10 +5506,12 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == ButtonRelease)
     {
-        resizing = FALSE;
+        if (!passdata->use_keys)
+        {
+            resizing = FALSE;
+        }
     }
-    else if ((xevent->type == UnmapNotify)
-        && (xevent->xunmap.window == c->window))
+    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
         resizing = FALSE;
     }
@@ -5467,7 +5539,6 @@ void
 clientResize (Client * c, int corner, XEvent * e)
 {
     XWindowChanges wc;
-    Time timestamp;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
 
@@ -5476,6 +5547,9 @@ clientResize (Client * c, int corner, XEvent * e)
     TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
 
     passdata.c = c;
+    passdata.ox = c->width;
+    passdata.oy = c->height;
+    passdata.last_timestamp = CurrentTime;
     passdata.corner = CORNER_BOTTOM_RIGHT;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
@@ -5494,26 +5568,26 @@ clientResize (Client * c, int corner, XEvent * e)
     if (e->type == KeyPress)
     {
         passdata.use_keys = TRUE;
-        timestamp = e->xkey.time;
-        passdata.mx = e->xkey.x;
-        passdata.my = e->xkey.y;
-        g1 = XGrabKeyboard (dpy, passdata.tmp_event_window, FALSE,
-            GrabModeAsync, GrabModeAsync, timestamp);
+        passdata.last_timestamp = e->xkey.time;
+        passdata.mx = e->xkey.x_root;
+        passdata.my = e->xkey.y_root;
     }
     else if (e->type == ButtonPress)
     {
-        timestamp = e->xbutton.time;
-        passdata.mx = e->xbutton.x;
-        passdata.my = e->xbutton.y;
+        passdata.last_timestamp = e->xbutton.time;
+        passdata.mx = e->xbutton.x_root;
+        passdata.my = e->xbutton.y_root;
     }
     else
     {
-        timestamp = CurrentTime;
-        getMouseXY (c->frame, &passdata.mx, &passdata.my);
+        passdata.last_timestamp = CurrentTime;
+        getMouseXY (root, &passdata.mx, &passdata.my);
     }
+    g1 = XGrabKeyboard (dpy, passdata.tmp_event_window, FALSE,
+        GrabModeAsync, GrabModeAsync, passdata.last_timestamp);
     g2 = XGrabPointer (dpy, passdata.tmp_event_window, FALSE,
         ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync,
-        None, resize_cursor[passdata.corner], timestamp);
+        None, resize_cursor[passdata.corner], passdata.last_timestamp);
 
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -5521,11 +5595,11 @@ clientResize (Client * c, int corner, XEvent * e)
         gdk_beep ();
         if ((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard (dpy, timestamp);
+            XUngrabKeyboard (dpy, CurrentTime);
         }
         if (g2 == GrabSuccess)
         {
-            XUngrabPointer (dpy, timestamp);
+            XUngrabPointer (dpy, CurrentTime);
         }
         removeTmpEventWin (passdata.tmp_event_window);
         return;
@@ -5535,19 +5609,6 @@ clientResize (Client * c, int corner, XEvent * e)
     {
         XPutBackEvent (dpy, e);
     }
-    if ((passdata.corner == CORNER_TOP_RIGHT)
-        || (passdata.corner == CORNER_BOTTOM_RIGHT)
-        || (passdata.corner == 4 + SIDE_RIGHT))
-    {
-        passdata.mx = frameWidth (c) - passdata.mx;
-    }
-    if ((passdata.corner == CORNER_BOTTOM_LEFT)
-        || (passdata.corner == CORNER_BOTTOM_RIGHT)
-        || (passdata.corner == 4 + SIDE_BOTTOM))
-    {
-        passdata.my = frameHeight (c) - passdata.my;
-    }
-
     CLIENT_FLAG_SET (c, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     pushEventFilter (clientResize_event_filter, &passdata);
@@ -5556,11 +5617,8 @@ clientResize (Client * c, int corner, XEvent * e)
     TRACE ("leaving resize loop");
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MOVING_RESIZING);
 
-    if (passdata.use_keys)
-    {
-        XUngrabKeyboard (dpy, CurrentTime);
-    }
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabKeyboard (dpy, passdata.last_timestamp);
+    XUngrabPointer (dpy, passdata.last_timestamp);
     removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_resize)
@@ -5590,6 +5648,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientCycle_event_filter");
 
+    passdata->last_timestamp = stashEventTime (passdata->last_timestamp, xevent);
     switch (xevent->type)
     {
         case DestroyNotify:
@@ -5611,8 +5670,19 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 /* Hide frame draw */
                 clientDrawOutline (passdata->c);
-                passdata->c =
-                    clientGetNext (passdata->c, passdata->cycle_range);
+
+                /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
+                if (!(params.keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask)
+                        && xevent->xkey.state & ShiftMask) {
+                    passdata->c =
+                        clientGetPrevious (passdata->c, passdata->cycle_range);
+                }
+                else
+                {
+                    passdata->c =
+                        clientGetNext (passdata->c, passdata->cycle_range);
+                }
+
                 if (passdata->c)
                 {
                     /* Redraw frame draw */
@@ -5626,10 +5696,19 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             }
             break;
         case KeyRelease:
-            if (IsModifierKey (XKeycodeToKeysym (dpy, xevent->xkey.keycode,
-                        0)))
             {
-                cycling = FALSE;
+                int keysym = XKeycodeToKeysym (dpy, xevent->xkey.keycode, 0);
+
+                /* If KEY_CYCE_WINDOWS has Shift, then stop cycling on Shift
+                 * release.
+                 */
+                if (IsModifierKey (keysym)
+                        && ( (params.keys[KEY_CYCLE_WINDOWS].modifier
+                             & ShiftMask)
+                        || (keysym != XK_Shift_L && keysym != XK_Shift_R) ) )
+                {
+                    cycling = FALSE;
+                }
             }
             break;
         case ButtonPress:
@@ -5653,7 +5732,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 }
 
 void
-clientCycle (Client * c)
+clientCycle (Client * c, XEvent * e)
 {
     ClientCycleData passdata;
     int g1, g2;
@@ -5661,10 +5740,18 @@ clientCycle (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
 
+    if (e->type == KeyPress)
+    {
+        passdata.last_timestamp = e->xkey.time;
+    }
+    else
+    {
+        passdata.last_timestamp = e->xbutton.time;
+    }
     g1 = XGrabKeyboard (dpy, gnome_win, FALSE, GrabModeAsync, GrabModeAsync,
-        CurrentTime);
+        passdata.last_timestamp);
     g2 = XGrabPointer (dpy, gnome_win, FALSE, NoEventMask, GrabModeAsync,
-        GrabModeAsync, None, None, CurrentTime);
+        GrabModeAsync, None, None, passdata.last_timestamp);
     if ((g1 != GrabSuccess) || (g2 != GrabSuccess))
     {
         TRACE ("grab failed in clientCycle");
@@ -5709,8 +5796,8 @@ clientCycle (Client * c)
         g_free (passdata.tabwin);
     }
     MyXUngrabServer ();
-    XUngrabKeyboard (dpy, CurrentTime);
-    XUngrabPointer (dpy, CurrentTime);
+    XUngrabKeyboard (dpy, passdata.last_timestamp);
+    XUngrabPointer (dpy, passdata.last_timestamp);
 
     if (passdata.c)
     {
