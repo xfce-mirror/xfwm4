@@ -596,8 +596,8 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
         colsym[i].value = rc[i].value;
     }
 
-    g_value_init (&tmp_val, G_TYPE_INT);
     display_info->dbl_click_time = abs (TOINT (getValue ("dbl_click_time", rc)));
+    g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
     {
         display_info->dbl_click_time = abs (g_value_get_int (&tmp_val));
