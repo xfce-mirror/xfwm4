@@ -461,7 +461,7 @@ static void clientGetInitialNetWmDesktop(Client * c)
         {
             DBG("atom net_wm_desktop specifies window \"%s\" is sticky\n", c->name);
             c->win_workspace = workspace;
-            clientStick(c);
+            c->sticky = True;
         }
         else
         {
@@ -481,8 +481,6 @@ static void clientGetInitialNetWmDesktop(Client * c)
         c->win_workspace = workspace_count - 1;
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
-    setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
-    setNetHint(dpy, c->window, net_wm_desktop, c->win_workspace);
 }
 
 static void clientSetNetClientList(Atom a, GSList * list)
@@ -659,12 +657,7 @@ static void clientWindowType(Client * c)
             layer = c2->win_layer;
         }
     }
-    if((old_type != c->type) || (layer != c->win_layer))
-    {
-        DBG("setting layer %i\n", layer);
-        clientSetNetState(c);
-        clientSetLayer(c, layer);
-    }
+    c->win_layer = layer;
 }
 
 void clientInstallColormaps(Client * c)
@@ -1448,25 +1441,27 @@ void clientFrame(Window w)
         c->ncmap = 0;
     }
     
-    c->type_atom = None;
-    c->type = UNSET;
+    /* Initialize structure */
+    c->firstmap     = True;
+    c->focus        = False;
+    c->fullscreen   = False;
+    c->has_border   = True;
+    c->has_struts   = False;
+    c->hidden       = False;
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
-    c->managed = False;
-    c->focus = False;
-    c->has_border = True;
-    c->sticky = False;
-    c->maximized = False;
-    c->fullscreen = False;
-    c->shaded = False;
-    c->visible = False;
-    c->hidden = False;
-    c->state_modal = False;
+    c->managed      = False;
+    c->maximized    = False;
+    c->shaded       = False;
+    c->skip_pager   = False;
     c->skip_taskbar = False;
-    c->skip_pager = False;
-    c->has_struts = False;
+    c->state_modal  = False;
+    c->sticky       = False;
+    c->type         = UNSET;
+    c->type_atom    = None;
+    c->visible      = False;
+    c->wm_delete    = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
+    c->wm_input     = (getWMInput(dpy, c->window) ? True : False);
     c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
-    c->wm_delete = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
-    c->wm_input = (getWMInput(dpy, c->window) ? True : False);
 
     mwm_hints = getMotifHints(dpy, c->window);
     if(mwm_hints)
@@ -1560,7 +1555,6 @@ void clientFrame(Window w)
         c->buttons[i] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     }
 
-    clientSetNetActions(c);
     clientAddToList(c);
     clientGrabKeys(c);
 
@@ -1759,6 +1753,19 @@ void clientShow(Client * c, int change_state)
         c->hidden = False;
         setWMState(dpy, c->window, NormalState);
         workspaceUpdateArea(margins, gnome_margins);
+    }
+    /* We initialize all Net properties once the window is mapped */
+    if (c->firstmap)
+    {
+        c->firstmap = False;
+        setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
+        setGnomeHint(dpy, c->window, win_layer, c->win_layer);
+        setNetHint(dpy, c->window, net_wm_desktop, c->win_workspace);
+        if (c->sticky)
+	{
+	    clientStick (c);
+        }
+        clientSetNetActions(c);
     }
     clientSetNetState(c);
 }

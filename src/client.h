@@ -198,6 +198,7 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[4];
     char *name;
+    unsigned int firstmap:1;
     unsigned int focus:1;
     unsigned int fullscreen:1;
     unsigned int has_border:1;
