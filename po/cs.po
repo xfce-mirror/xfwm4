@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-11-11 16:23+0100\n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgstr "Vlevo"
 
 #: mcs-plugin/xfwm4_plugin.c:135
 msgid "Center"
-msgstr "Vystředit"
+msgstr "Vystředit"#:Centrovat
 
 #: mcs-plugin/xfwm4_plugin.c:136
 msgid "Right"
@@ -244,9 +244,8 @@ msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Přepnout plochu při přetáhnutí okna mimo oblast obrazovky"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
-#, fuzzy
-msgid "Edge Resistance :"
-msgstr "Přilnavost :"
+msgid "Citlivost :"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1671
 msgid "Opaque move and resize"
@@ -272,12 +271,12 @@ msgstr "Akce při dvojkliku na titulkový pruh :"
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: src/client.c:499
+#: src/client.c:496
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
 
-#: src/events.c:1496
+#: src/events.c:1453
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "s: Operace není podporována (prozatím)\n"
@@ -368,42 +367,42 @@ msgstr "Plocha %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
-#: src/settings.c:288
+#: src/settings.c:285
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Missing defaults file"
 
-#: src/settings.c:520
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Cannot allocate active color %s\n"
 
-#: src/settings.c:527
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Cannot parse active color %s\n"
 
-#: src/settings.c:571
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Cannot allocate inactive color %s\n"
 
-#: src/settings.c:578
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive color %s\n"
 
-#: src/settings.c:765
+#: src/settings.c:755
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
 msgstr "%s: specified key theme \"%s\" missing, using default"
 
-#: src/settings.c:775
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Missing values in defaults file"
 
-#: src/settings.c:1122
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Workspace count not set, using rc value: %i"
