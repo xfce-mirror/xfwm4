@@ -38,10 +38,7 @@
 
 /* Event mask definition */
 
-#define POINTER_EVENT_MASK	ButtonPressMask|\
-				ButtonReleaseMask|\
-				PointerMotionMask|\
-				PointerMotionHintMask
+#define POINTER_EVENT_MASK	ButtonPressMask
 				
 #define FRAME_EVENT_MASK	SubstructureNotifyMask|\
 				SubstructureRedirectMask|\
@@ -1641,10 +1638,10 @@ void clientFrame(Window w)
     clientSetNetActions(c);
     clientAddToList(c);
     clientGrabKeys(c);
+    XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
 
     MyXUngrabServer(dpy);
 
-    XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, ButtonPressMask, GrabModeSync, GrabModeAsync, None, None);
 
     c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     c->sides[SIDE_RIGHT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);

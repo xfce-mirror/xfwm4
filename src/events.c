@@ -288,8 +288,8 @@ static inline void handleButtonPress(XButtonEvent * ev)
     {
 
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
-        win = getMouseWindow(dpy, c->frame);
-
+	win = getMouseWindow(dpy, c->frame);
+	
         clientSetFocus(c, True);
 
         if((win == c->buttons[HIDE_BUTTON]) || (win == c->buttons[CLOSE_BUTTON]) || (win == c->buttons[MAXIMIZE_BUTTON]) || (win == c->buttons[SHADE_BUTTON]) || (win == c->buttons[STICK_BUTTON]))
@@ -390,7 +390,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
         }
         else
         {
-            XAllowEvents(dpy, AsyncPointer, ev->time);
+            XAllowEvents(dpy, SyncPointer, ev->time);
         }
     }
     else

@@ -69,7 +69,7 @@ static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
         case MotionNotify:
         case EnterNotify:
         case LeaveNotify:
-            return XEV_FILTER_STOP;
+             return XEV_FILTER_STOP;
             break;
         default:
             return XEV_FILTER_CONTINUE;
