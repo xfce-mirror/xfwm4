@@ -2693,10 +2693,10 @@ void clientLower(Client * c)
            We still need to tell the X Server to reflect the changes 
          */
         clientApplyStackList(windows_stack);
-	if(last_raise == c)
-	{
+        if(last_raise == c)
+        {
             last_raise = NULL;
-	}
+        }
     }
 }
 
@@ -3309,25 +3309,94 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         if(params.snap_to_border)
         {
-            if(abs(frame_x - disp_max_x + frame_width + right) < params.snap_width)
+            int i;
+            Client * c2;
+            int frame_x2 = frame_x + frame_width;
+            int frame_y2 = frame_y + frame_height;
+            int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
+            int delta;
+            int best_delta_x, best_delta_y, best_frame_x, best_frame_y;
+            
+            if (abs(disp_x + left - frame_x) < abs(disp_max_x - right - frame_x2))
             {
-                c->x = disp_max_x - frame_right - c->width - right;
-                frame_x = frameX(c);
+                best_delta_x = abs(disp_x + left - frame_x);
+                best_frame_x = disp_x + left;
             }
-            if(abs(frame_x - disp_x) < params.snap_width + left)
+            else
             {
-                c->x = disp_x + frame_left + left;
-                frame_x = frameX(c);
+                best_delta_x = abs(disp_max_x - right - frame_x2);
+                best_frame_x = disp_max_x - right - frame_width;
             }
-            if(abs(frame_y - disp_max_y + frame_height + bottom) < params.snap_width)
+            
+            if (abs(disp_y + top - frame_y) < abs(disp_max_y - bottom - frame_y2))
             {
-                c->y = disp_max_y - frame_height + frame_top - bottom;
-                frame_y = frameY(c);
+                best_delta_y = abs(disp_y + top - frame_y);
+                best_frame_y = disp_y + top;
             }
-            if((frame_y + frame_top > disp_y) && (frame_y < disp_y + top + params.snap_width))
+            else
             {
-                c->y = disp_y + frame_top + top;
-                frame_y = frameY(c);
+                best_delta_y = abs(disp_max_y - bottom - frame_y2);
+                best_frame_y = disp_max_y - bottom - frame_height;
+            }
+
+            for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
+            {
+                if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE)) 
+                {
+                    c_frame_x1 = frameX(c2);
+                    c_frame_x2 = c_frame_x1 + frameWidth(c2);
+                    c_frame_y1 = frameY(c2);
+                    c_frame_y2 = c_frame_y1 + frameHeight(c2);
+
+                    if ((c_frame_y1 <= frame_y2) && (c_frame_y2 >= frame_y))
+                    {
+                        delta = abs(c_frame_x2 - frame_x);
+                        if (delta < best_delta_x) 
+                        {
+                            best_delta_x = delta;
+                            best_frame_x = c_frame_x2;
+                        }
+
+                        delta = abs(c_frame_x1 - frame_x2);
+                        if (delta < best_delta_x) 
+                        {
+                            best_delta_x = delta;
+                            best_frame_x = c_frame_x1 - frame_width;
+                        }
+                    }
+
+                    if ((c_frame_x1 <= frame_x2) && (c_frame_x2 >= frame_x))
+                    {
+                        delta = abs(c_frame_y2 - frame_y);                    
+                        if (delta < best_delta_y) 
+                        {
+                            best_delta_y = delta;
+                            best_frame_y = c_frame_y2;
+                        }
+                        
+                        delta = abs(c_frame_y1 - frame_y2); 
+                        if (delta < best_delta_y)
+                        {
+                            best_delta_y = delta;
+                            best_frame_y = c_frame_y1 - frame_height;
+                        }
+                    
+                    }
+                }
+            }
+
+            if (best_delta_x <= params.snap_width)
+            {
+                c->x = best_frame_x + frame_left;
+            }
+            
+            if (best_delta_y <= params.snap_width)
+            {
+                c->y = ((best_frame_y < top) ? top : best_frame_y ) + frame_top;
+            }
+            else if ((frame_y + frame_top > 0) && (frame_y < top))
+            {
+                c->y = frame_top + top;
             }
         }
         else
