@@ -1193,6 +1193,11 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 {
                     DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
+		    if (!sibling)
+		    {
+                        DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
+                        sibling = clientGetTopMost(c->win_layer, c);
+		    }
                 }
                 else
                 {
@@ -1250,11 +1255,23 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 }
                 else if(mask & CWSibling)
                 {
+                    DBG("Sibling specified for \"%s\" (%#lx) is (%#lx)\n", c->name, c->window, wc->sibling);
                     sibling = clientGetFromWindow(wc->sibling, WINDOW);
+		    if (!sibling)
+		    {
+                        DBG("Sibling specified for \"%s\" (%#lx) cannot be found\n", c->name, c->window);
+                        sibling = clientGetBottomMost(c->win_layer, c);
+		    }
                 }
                 else
                 {
+                    DBG("No sibling specified for \"%s\" (%#lx)\n", c->name, c->window);
                     sibling = clientGetBottomMost(c->win_layer, c);
+                }
+                if(!sibling)
+                {
+                    DBG("unable to determine sibling!\n");
+                    wc->stack_mode = Above;
                 }
                 break;
         }
