@@ -10,7 +10,7 @@ BuildRoot: 	%{_tmppath}/%{name}-root
 Requires:	gtk2
 Requires:	glib2
 Requires:	pango
-BuildRequires: 	autoconf >= 2.52
+# BuildRequires: 	autoconf >= 2.52
 BuildRequires: 	gtk2-devel >= 2.0.0
 BuildRequires: 	glib2-devel >= 2.0.0
 BuildRequires: 	pango-devel >= 1.0.0
