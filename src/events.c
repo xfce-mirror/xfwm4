@@ -314,7 +314,10 @@ handleKeyPress (XKeyEvent * ev)
                 clientClose (c);
                 break;
             case KEY_HIDE_WINDOW:
-                clientHide (c, c->win_workspace, TRUE);
+                if (CLIENT_CAN_HIDE_WINDOW (c))
+                {
+                    clientHide (c, c->win_workspace, TRUE);
+                }
                 break;
             case KEY_MAXIMIZE_WINDOW:
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
@@ -525,7 +528,10 @@ button1Action (Client * c, XButtonEvent * ev)
                 clientToggleShaded (c);
                 break;
             case ACTION_HIDE:
-                clientHide (c, c->win_workspace, TRUE);
+                if (CLIENT_CAN_HIDE_WINDOW (c))
+                {
+                    clientHide (c, c->win_workspace, TRUE);
+                }
                 break;
         }
     }
@@ -1074,7 +1080,6 @@ static inline void
 handlePropertyNotify (XPropertyEvent * ev)
 {
     Client *c;
-    long dummy;
 
     TRACE ("entering handlePropertyNotify");
 
@@ -1187,8 +1192,8 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE
                 ("client \"%s\" (0x%lx) has received a wm_change_state event",
                 c->name, c->window);
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN)
-                && !clientIsTransient (c))
+            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN) && 
+                 CLIENT_CAN_HIDE_WINDOW (c))
             {
                 clientHide (c, c->win_workspace, TRUE);
             }
