@@ -1,88 +1,50 @@
 # translation of xfwm4.po to Turkish
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # Erçin EKER <erc.caldera@gmx.net>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-12-21 22:35+0100\n"
-"PO-Revision-Date: 2003-07-17 20:44+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"PO-Revision-Date: 2003-12-13 22:56+0200\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.2\n"
+"Content-Transfer-Encoding: 8bit"
 
-#: mcs-plugin/margins.c:124
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:254
+msgid "Workspace Margins"
+msgstr "Çalışma Alanı Sınırları"
+
+#: mcs-plugin/margins_plugin.c:217
+msgid "Adjust workspace margins"
+msgstr "Çalışma alanı sınırlarını ayarlayın"
+
+#: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belirler"
 
-#: mcs-plugin/margins.c:131
-msgid "Workspace Margins"
-msgstr "Çalışma Alanı Sınırları"
-
-#: mcs-plugin/margins.c:159
+#: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
 msgstr "Sol :"
 
-#: mcs-plugin/margins.c:179
+#: mcs-plugin/margins_plugin.c:301
 msgid "Right :"
 msgstr "Sağ :"
 
-#: mcs-plugin/margins.c:199
+#: mcs-plugin/margins_plugin.c:321
 msgid "Top :"
 msgstr "Üst :"
 
-#: mcs-plugin/margins.c:219
+#: mcs-plugin/margins_plugin.c:341
 msgid "Bottom :"
 msgstr "Alt :"
-
-#: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-#, fuzzy
-msgid "Workspaces and Margins"
-msgstr "Çalışma Alanı Sınırları"
-
-#. Number of workspaces
-#: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-#, fuzzy
-msgid "Workspaces"
-msgstr "Çalışma alanı %i"
-
-#: mcs-plugin/plugin.c:179
-msgid "Margins"
-msgstr ""
-
-#: mcs-plugin/workspaces.c:337
-msgid "Change name"
-msgstr ""
-
-#: mcs-plugin/workspaces.c:349
-#, fuzzy, c-format
-msgid "Workspace %d"
-msgstr "Çalışma alanı %i"
-
-#: mcs-plugin/workspaces.c:359
-msgid "Name:"
-msgstr ""
-
-#: mcs-plugin/workspaces.c:447
-msgid "Click on a workspace name to edit it"
-msgstr ""
-
-#: mcs-plugin/workspaces.c:519
-#, fuzzy
-msgid "Number of workspaces:"
-msgstr "Çalışma alanlarını değiştir"
-
-#. Workspace names
-#: mcs-plugin/workspaces.c:550
-#, fuzzy
-msgid "Workspace names"
-msgstr "Çalışma Alanı Sınırları"
 
 #: mcs-plugin/xfwm4_plugin.c:116
 msgid "Title"
@@ -309,12 +271,12 @@ msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: src/client.c:508
+#: src/client.c:496
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
 
-#: src/events.c:1490
+#: src/events.c:1453
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: İşlem desteklenmiyor (henüz)\n"
@@ -334,17 +296,7 @@ msgstr "%s: Başka bir pencere yöneticisi zaten çalışıyor"
 msgid "%s: Missing data from default files"
 msgstr "%s: Öntanımlı dosyalarda eksik veri"
 
-#: src/main.c:413
-#, c-format
-msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
-
-#: src/main.c:421
-#, c-format
-msgid "%s: Failed to create new process: %s"
-msgstr ""
-
-#: src/main.c:442
+#: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Bilinmeyen bir hata oluştu"
@@ -385,76 +337,72 @@ msgstr "Sa_bit"
 msgid "Uns_tick"
 msgstr "Sab_it değil"
 
-#: src/menu.c:51 src/menu.c:52
-msgid "Always on top"
-msgstr ""
-
-#: src/menu.c:53
+#: src/menu.c:51
 msgid "Send to..."
 msgstr "Gönder..."
 
-#: src/menu.c:55
+#: src/menu.c:53
 msgid "_Close"
 msgstr "_Kapat"
 
-#: src/menu.c:58
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Yok Et"
 
-#: src/menu.c:61
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "_Çıkış"
 
-#: src/menu.c:62
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Yeni_den Başlat"
 
-#: src/menu.c:165
+#: src/menu.c:163
 #, c-format
 msgid "Workspace %i"
 msgstr "Çalışma alanı %i"
 
-#: src/menu.c:407
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: src/settings.c:315
+#: src/settings.c:285
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Öntanımlı dosyalar unutulmuş"
 
-#: src/settings.c:553
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: src/settings.c:604
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
 
-#: src/settings.c:611
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
 
-#: src/settings.c:798
+#: src/settings.c:755
 #, c-format
 msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: belirlenen \"%s\" tuş teması bulunamıyor, öntanımlı olan kullanılıyor"
 
-#: src/settings.c:808
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Öntanımlı dosyalarda değerler unutulmuş"
 
-#: src/settings.c:1155
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
@@ -463,5 +411,3 @@ msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
 msgid "Switch to ..."
 msgstr "Geç ..."
 
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Çalışma alanı sınırlarını ayarlayın"
