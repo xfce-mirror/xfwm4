@@ -171,56 +171,13 @@ struct _Itf
     GtkWidget *closebutton1;
     GtkWidget *dialog_action_area1;
     GtkWidget *dialog_header;
-    GtkWidget *dialog_vbox1;
+    GtkWidget *dialog_vbox;
     GtkWidget *focus_follow_mouse_radio;
     GtkWidget *focus_new_check;
     GtkWidget *font_button;
     GtkWidget *font_selection;
-    GtkWidget *frame1;
-    GtkWidget *frame2;
-    GtkWidget *frame3;
-    GtkWidget *frame4;
-    GtkWidget *frame5;
-    GtkWidget *frame6;
-    GtkWidget *frame8;
-    GtkWidget *frame9;
-    GtkWidget *frame10;
-    GtkWidget *frame11;
-    GtkWidget *frame12;
-    GtkWidget *frame13;
-    GtkWidget *frame14;
-    GtkWidget *frame15;
-    GtkWidget *hbox1;
-    GtkWidget *hbox2;
-    GtkWidget *hbox3;
-    GtkWidget *hbox4;
-    GtkWidget *hbox5;
-    GtkWidget *hbox6;
-    GtkWidget *label1;
-    GtkWidget *label2;
-    GtkWidget *label3;
-    GtkWidget *label4;
-    GtkWidget *label5;
-    GtkWidget *label6;
-    GtkWidget *label7;
-    GtkWidget *label32;
-    GtkWidget *label33;
-    GtkWidget *label34;
-    GtkWidget *label35;
-    GtkWidget *label37;
-    GtkWidget *label38;
-    GtkWidget *label39;
-    GtkWidget *label40;
-    GtkWidget *label41;
-    GtkWidget *label42;
-    GtkWidget *label43;
-    GtkWidget *label44;
-    GtkWidget *label45;
-    GtkWidget *label46;
-    GtkWidget *label47;
-    GtkWidget *label48;
-    GtkWidget *label49;
-    GtkWidget *notebook1;
+    GtkWidget *frame_layout;
+    GtkWidget *frame_align;
     GtkWidget *raise_delay_scale;
     GtkWidget *raise_on_focus_check;
     GtkWidget *scrolledwindow1;
@@ -228,18 +185,10 @@ struct _Itf
     GtkWidget *snap_to_border_check;
     GtkWidget *snap_to_windows_check;
     GtkWidget *snap_width_scale;
-    GtkWidget *table2;
-    GtkWidget *table3;
     GtkWidget *treeview1;
     GtkWidget *treeview2;
-    GtkWidget *vbox1;
-    GtkWidget *vbox2;
-    GtkWidget *vbox3;
-    GtkWidget *vbox4;
-    GtkWidget *vbox5;
-    GtkWidget *vbox6;
-    GtkWidget *vbox7;
     GtkWidget *wrap_workspaces_check;
+    GtkWidget *wrap_resistance_scale;
     GtkWidget *xfwm4_dialog;
 };
 
@@ -266,6 +215,7 @@ static gboolean box_move = FALSE;
 static gboolean box_resize = FALSE;
 static int raise_delay;
 static int snap_width;
+static int wrap_resistance;
 static TitleRadioButton title_radio_buttons[END];
 
 static GList *decoration_theme_list = NULL;
@@ -706,8 +656,8 @@ static gboolean dialog_update_from_theme(Itf * itf, const gchar * theme_name, GL
     info = find_theme_info_by_name(theme_name, theme_list);
     if(info)
     {
-        gtk_container_foreach(GTK_CONTAINER(itf->frame2), sensitive_cb, GINT_TO_POINTER((gint) ! (info->set_layout)));
-        gtk_container_foreach(GTK_CONTAINER(itf->frame14), sensitive_cb, GINT_TO_POINTER((gint) ! (info->set_align)));
+        gtk_container_foreach(GTK_CONTAINER(itf->frame_layout), sensitive_cb, GINT_TO_POINTER((gint) ! (info->set_layout)));
+        gtk_container_foreach(GTK_CONTAINER(itf->frame_align), sensitive_cb, GINT_TO_POINTER((gint) ! (info->set_align)));
         gtk_widget_set_sensitive(itf->font_button, !(info->set_font));
         return TRUE;
     }
@@ -990,12 +940,24 @@ static void cb_snap_width_changed(GtkWidget * dialog, gpointer user_data)
     write_options(mcs_plugin);
 }
 
+static void cb_wrap_resistance_changed(GtkWidget * dialog, gpointer user_data)
+{
+    Itf *itf = (Itf *) user_data;
+    McsPlugin *mcs_plugin = itf->mcs_plugin;
+
+    wrap_resistance = (int)gtk_range_get_value(GTK_RANGE(itf->wrap_resistance_scale));
+    mcs_manager_set_int(mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL, wrap_resistance);
+    mcs_manager_notify(mcs_plugin->manager, CHANNEL);
+    write_options(mcs_plugin);
+}
+
 static void cb_wrap_workspaces_changed(GtkWidget * dialog, gpointer user_data)
 {
     Itf *itf = (Itf *) user_data;
     McsPlugin *mcs_plugin = itf->mcs_plugin;
 
     wrap_workspaces = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(itf->wrap_workspaces_check));
+    gtk_widget_set_sensitive(itf->wrap_resistance_scale, wrap_workspaces);
 
     mcs_manager_set_int(mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL, wrap_workspaces ? 1 : 0);
     mcs_manager_notify(mcs_plugin->manager, CHANNEL);
@@ -1142,6 +1104,22 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 {
     Itf *dialog;
     GdkPixbuf *icon;
+    GtkWidget *frame;
+    GtkWidget *hbox;
+    GtkWidget *label;
+    GtkWidget *notebook;
+    GtkWidget *table2;
+    GtkWidget *table3;
+    GtkWidget *table4;
+    GtkWidget *vbox1;
+    GtkWidget *vbox2;
+    GtkWidget *vbox3;
+    GtkWidget *vbox4;
+    GtkWidget *vbox5;
+    GtkWidget *vbox6;
+    GtkWidget *vbox7;
+    GtkWidget *vbox8;
+    GtkWidget *vbox9;
 
     dialog = g_new(Itf, 1);
 
@@ -1159,40 +1137,40 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     dialog->click_focus_radio_group = NULL;
 
-    dialog->dialog_vbox1 = GTK_DIALOG(dialog->xfwm4_dialog)->vbox;
-    gtk_widget_show(dialog->dialog_vbox1);
+    dialog->dialog_vbox = GTK_DIALOG(dialog->xfwm4_dialog)->vbox;
+    gtk_widget_show(dialog->dialog_vbox);
 
     dialog->dialog_header = create_header(icon, _("Window Manager Preferences"));
     gtk_widget_show(dialog->dialog_header);
-    gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox1), dialog->dialog_header, FALSE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox), dialog->dialog_header, FALSE, TRUE, 0);
     g_object_unref(icon);
 
-    dialog->notebook1 = gtk_notebook_new();
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->notebook1), BORDER+1);
-    gtk_widget_show(dialog->notebook1);
-    gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox1), dialog->notebook1, TRUE, TRUE, 0);
+    notebook = gtk_notebook_new();
+    gtk_container_set_border_width(GTK_CONTAINER(notebook), BORDER+1);
+    gtk_widget_show(notebook);
+    gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox), notebook, TRUE, TRUE, 0);
 
-    dialog->hbox1 = gtk_hbox_new(FALSE, BORDER);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->hbox1), BORDER);
-    gtk_widget_show(dialog->hbox1);
-    gtk_container_add(GTK_CONTAINER(dialog->notebook1), dialog->hbox1);
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
+    gtk_widget_show(hbox);
+    gtk_container_add(GTK_CONTAINER(notebook), hbox);
 
-    dialog->frame1 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame1);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox1), dialog->frame1, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(hbox), frame, TRUE, TRUE, 0);
 
-    dialog->vbox1 = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->vbox1);
-    gtk_container_add(GTK_CONTAINER(dialog->frame1), dialog->vbox1);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->vbox1), BORDER);
+    vbox1 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox1);
+    gtk_container_add(GTK_CONTAINER(frame), vbox1);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox1), BORDER);
 
-    dialog->hbox2 = gtk_hbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->hbox2);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox1), dialog->hbox2, TRUE, TRUE, 0);
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);
 
     dialog->scrolledwindow1 = gtk_scrolled_window_new(NULL, NULL);
     gtk_widget_show(dialog->scrolledwindow1);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox2), dialog->scrolledwindow1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), dialog->scrolledwindow1, TRUE, TRUE, 0);
     gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(dialog->scrolledwindow1), GTK_SHADOW_IN);
 
     dialog->treeview1 = gtk_tree_view_new();
@@ -1200,88 +1178,87 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_container_add(GTK_CONTAINER(dialog->scrolledwindow1), dialog->treeview1);
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(dialog->treeview1), FALSE);
 
-    dialog->label4 = gtk_label_new(_("Window style"));
-    gtk_widget_show(dialog->label4);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame1), dialog->label4);
-    gtk_label_set_justify(GTK_LABEL(dialog->label4), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Window style"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->vbox2 = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->vbox2);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox1), dialog->vbox2, TRUE, TRUE, 0);
+    vbox2 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox2);
+    gtk_box_pack_start(GTK_BOX(hbox), vbox2, TRUE, TRUE, 0);
 
-    dialog->frame15 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame15);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox2), dialog->frame15, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox2), frame, TRUE, TRUE, 0);
 
-    dialog->hbox6 = gtk_hbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->hbox6);
-    gtk_container_add(GTK_CONTAINER(dialog->frame15), dialog->hbox6);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->hbox6), BORDER);
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_container_add(GTK_CONTAINER(frame), hbox);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
 
-    dialog->label6 = gtk_label_new(_("Font select :"));
-    gtk_widget_show(dialog->label6);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox6), dialog->label6, FALSE, FALSE, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label6), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Font select :"));
+    gtk_widget_show(label);
+    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
     dialog->font_button = gtk_button_new();
     gtk_button_set_label(GTK_BUTTON(dialog->font_button), current_font);
     gtk_widget_show(dialog->font_button);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox6), dialog->font_button, TRUE, TRUE, 0);
-    /*    gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);*/
+    gtk_box_pack_start(GTK_BOX(hbox), dialog->font_button, TRUE, TRUE, 0);
 
-    dialog->label7 = gtk_label_new(_("Title font"));
-    gtk_widget_show(dialog->label7);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame15), dialog->label7);
-    gtk_label_set_justify(GTK_LABEL(dialog->label7), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Title font"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame14 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame14);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox2), dialog->frame14, TRUE, TRUE, 0);
+    dialog->frame_align = gtk_frame_new(NULL);
+    gtk_widget_show(dialog->frame_align);
+    gtk_box_pack_start(GTK_BOX(vbox2), dialog->frame_align, TRUE, TRUE, 0);
 
-    gtk_container_add(GTK_CONTAINER(dialog->frame14), create_radio_button_table(title_align_values, 3, _("Text alignment inside title bar :"), title_align, G_CALLBACK(cb_title_align_value_changed), mcs_plugin));
+    gtk_container_add(GTK_CONTAINER(dialog->frame_align), create_radio_button_table(title_align_values, 3, _("Text alignment inside title bar :"), title_align, G_CALLBACK(cb_title_align_value_changed), mcs_plugin));
 
-    dialog->label48 = gtk_label_new(_("Title Alignment"));
-    gtk_widget_show(dialog->label48);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame14), dialog->label48);
-    gtk_label_set_justify(GTK_LABEL(dialog->label48), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Title Alignment"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame_align), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame2 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame2);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox2), dialog->frame2, TRUE, TRUE, 0);
+    dialog->frame_layout = gtk_frame_new(NULL);
+    gtk_widget_show(dialog->frame_layout);
+    gtk_box_pack_start(GTK_BOX(vbox2), dialog->frame_layout, TRUE, TRUE, 0);
 
-    gtk_container_add(GTK_CONTAINER(dialog->frame2), create_layout_buttons(current_layout, mcs_plugin));
+    gtk_container_add(GTK_CONTAINER(dialog->frame_layout), create_layout_buttons(current_layout, mcs_plugin));
 
-    dialog->label5 = gtk_label_new(_("Button layout"));
-    gtk_widget_show(dialog->label5);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame2), dialog->label5);
-    gtk_label_set_justify(GTK_LABEL(dialog->label5), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Button layout"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame_layout), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->label1 = gtk_label_new(_("Decoration style"));
-    gtk_widget_show(dialog->label1);
-    gtk_notebook_set_tab_label(GTK_NOTEBOOK(dialog->notebook1), gtk_notebook_get_nth_page(GTK_NOTEBOOK(dialog->notebook1), 0), dialog->label1);
-    gtk_label_set_justify(GTK_LABEL(dialog->label1), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Decoration style"));
+    gtk_widget_show(label);
+    gtk_notebook_set_tab_label(GTK_NOTEBOOK(notebook), gtk_notebook_get_nth_page(GTK_NOTEBOOK(notebook), 0), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->hbox3 = gtk_hbox_new(FALSE, BORDER);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->hbox3), BORDER);
-    gtk_widget_show(dialog->hbox3);
-    gtk_container_add(GTK_CONTAINER(dialog->notebook1), dialog->hbox3);
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
+    gtk_widget_show(hbox);
+    gtk_container_add(GTK_CONTAINER(notebook), hbox);
 
-    dialog->frame3 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame3);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox3), dialog->frame3, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(hbox), frame, TRUE, TRUE, 0);
 
-    dialog->vbox3 = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->vbox3);
-    gtk_container_add(GTK_CONTAINER(dialog->frame3), dialog->vbox3);
+    vbox3 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox3);
+    gtk_container_add(GTK_CONTAINER(frame), vbox3);
 
-    dialog->hbox4 = gtk_hbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->hbox4);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox3), dialog->hbox4, TRUE, TRUE, 0);
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_box_pack_start(GTK_BOX(vbox3), hbox, TRUE, TRUE, 0);
 
     dialog->scrolledwindow2 = gtk_scrolled_window_new(NULL, NULL);
     gtk_container_set_border_width(GTK_CONTAINER(dialog->scrolledwindow2), BORDER);
     gtk_widget_show(dialog->scrolledwindow2);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox4), dialog->scrolledwindow2, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), dialog->scrolledwindow2, TRUE, TRUE, 0);
     gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(dialog->scrolledwindow2), GTK_SHADOW_IN);
 
     dialog->treeview2 = gtk_tree_view_new();
@@ -1289,249 +1266,278 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_container_add(GTK_CONTAINER(dialog->scrolledwindow2), dialog->treeview2);
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(dialog->treeview2), FALSE);
 
-    dialog->label32 = gtk_label_new(_("Keyboard Shortcut"));
-    gtk_widget_show(dialog->label32);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame3), dialog->label32);
-    gtk_label_set_justify(GTK_LABEL(dialog->label32), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Keyboard Shortcut"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->vbox4 = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->vbox4);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox3), dialog->vbox4, TRUE, TRUE, 0);
+    vbox4 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox4);
+    gtk_box_pack_start(GTK_BOX(hbox), vbox4, TRUE, TRUE, 0);
 
-    dialog->frame4 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame4);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox4), dialog->frame4, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox4), frame, TRUE, TRUE, 0);
 
-    dialog->hbox5 = gtk_hbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->hbox5);
-    gtk_container_add(GTK_CONTAINER(dialog->frame4), dialog->hbox5);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->hbox5), BORDER);
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_container_add(GTK_CONTAINER(frame), hbox);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
 
     dialog->click_focus_radio = gtk_radio_button_new_with_mnemonic(NULL, _("Click to focus"));
     gtk_widget_show(dialog->click_focus_radio);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox5), dialog->click_focus_radio, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), dialog->click_focus_radio, TRUE, FALSE, 0);
     gtk_radio_button_set_group(GTK_RADIO_BUTTON(dialog->click_focus_radio), dialog->click_focus_radio_group);
     dialog->click_focus_radio_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(dialog->click_focus_radio));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->click_focus_radio), click_to_focus);
 
     dialog->focus_follow_mouse_radio = gtk_radio_button_new_with_mnemonic(NULL, _("Focus follows mouse"));
     gtk_widget_show(dialog->focus_follow_mouse_radio);
-    gtk_box_pack_start(GTK_BOX(dialog->hbox5), dialog->focus_follow_mouse_radio, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), dialog->focus_follow_mouse_radio, TRUE, FALSE, 0);
     gtk_radio_button_set_group(GTK_RADIO_BUTTON(dialog->focus_follow_mouse_radio), dialog->click_focus_radio_group);
     dialog->click_focus_radio_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(dialog->focus_follow_mouse_radio));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->focus_follow_mouse_radio), !click_to_focus);
 
-    dialog->label33 = gtk_label_new(_("Focus model"));
-    gtk_widget_show(dialog->label33);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame4), dialog->label33);
-    gtk_label_set_justify(GTK_LABEL(dialog->label33), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Focus model"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame5 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame5);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox4), dialog->frame5, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox4), frame, TRUE, TRUE, 0);
 
     dialog->focus_new_check = gtk_check_button_new_with_mnemonic(_("Automatically give focus to \nnewly created windows"));
     gtk_widget_show(dialog->focus_new_check);
-    gtk_container_add(GTK_CONTAINER(dialog->frame5), dialog->focus_new_check);
+    gtk_container_add(GTK_CONTAINER(frame), dialog->focus_new_check);
     gtk_container_set_border_width(GTK_CONTAINER(dialog->focus_new_check), BORDER);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->focus_new_check), focus_new);
 
-    dialog->label34 = gtk_label_new(_("New window focus"));
-    gtk_widget_show(dialog->label34);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame5), dialog->label34);
-    gtk_label_set_justify(GTK_LABEL(dialog->label34), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("New window focus"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame6 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame6);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox4), dialog->frame6, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox4), frame, TRUE, TRUE, 0);
 
-    dialog->vbox6 = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->vbox6);
-    gtk_container_add(GTK_CONTAINER(dialog->frame6), dialog->vbox6);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->vbox6), BORDER);
+    vbox6 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox6);
+    gtk_container_add(GTK_CONTAINER(frame), vbox6);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox6), BORDER);
 
     dialog->raise_on_focus_check = gtk_check_button_new_with_mnemonic(_("Automatically raise windows \nwhen they receive focus"));
     gtk_widget_show(dialog->raise_on_focus_check);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox6), dialog->raise_on_focus_check, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox6), dialog->raise_on_focus_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->raise_on_focus_check), focus_raise);
 
-    dialog->table2 = gtk_table_new(2, 3, FALSE);
-    gtk_widget_show(dialog->table2);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox6), dialog->table2, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->table2), BORDER);
+    table2 = gtk_table_new(2, 3, FALSE);
+    gtk_widget_show(table2);
+    gtk_box_pack_start(GTK_BOX(vbox6), table2, TRUE, TRUE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(table2), BORDER);
 
-    dialog->label37 = gtk_label_new(_("Delay before raising focused window :"));
-    gtk_widget_show(dialog->label37);
-    gtk_table_attach(GTK_TABLE(dialog->table2), dialog->label37, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label37), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(dialog->label37), 0, 0.5);
+    label = gtk_label_new(_("Delay before raising focused window :"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table2), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
 
-    dialog->label38 = small_label(_("Slow"));
-    gtk_widget_show(dialog->label38);
-    gtk_table_attach(GTK_TABLE(dialog->table2), dialog->label38, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label38), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(dialog->label38), 1, 0.5);
+    label = small_label(_("Slow"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table2), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 1, 0.5);
 
-    dialog->label39 = small_label(_("Fast"));
-    gtk_widget_show(dialog->label39);
-    gtk_table_attach(GTK_TABLE(dialog->table2), dialog->label39, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label39), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(dialog->label39), 0, 0.5);
+    label = small_label(_("Fast"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table2), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
 
     dialog->raise_delay_scale = gtk_hscale_new(GTK_ADJUSTMENT(gtk_adjustment_new(raise_delay, 100, 2000, 10, 100, 0)));
     gtk_widget_show(dialog->raise_delay_scale);
-    gtk_table_attach(GTK_TABLE(dialog->table2), dialog->raise_delay_scale, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_table_attach(GTK_TABLE(table2), dialog->raise_delay_scale, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
     gtk_scale_set_draw_value(GTK_SCALE(dialog->raise_delay_scale), FALSE);
     gtk_scale_set_digits(GTK_SCALE(dialog->raise_delay_scale), 0);
     gtk_range_set_update_policy(GTK_RANGE(dialog->raise_delay_scale), GTK_UPDATE_DISCONTINUOUS);
     gtk_range_set_inverted(GTK_RANGE(dialog->raise_delay_scale), TRUE);
     gtk_widget_set_sensitive(dialog->raise_delay_scale, focus_raise);
 
-    dialog->label35 = gtk_label_new(_("Raise on focus"));
-    gtk_widget_show(dialog->label35);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame6), dialog->label35);
-    gtk_label_set_justify(GTK_LABEL(dialog->label35), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Raise on focus"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame13 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame13);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox4), dialog->frame13, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox4), frame, TRUE, TRUE, 0);
 
     dialog->click_raise_check = gtk_check_button_new_with_mnemonic(_("Raise window when clicking inside\napplication window"));
     gtk_widget_show(dialog->click_raise_check);
-    gtk_container_add(GTK_CONTAINER(dialog->frame13), dialog->click_raise_check);
+    gtk_container_add(GTK_CONTAINER(frame), dialog->click_raise_check);
     gtk_container_set_border_width(GTK_CONTAINER(dialog->click_raise_check), BORDER);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->click_raise_check), raise_on_click);
 
-    dialog->label49 = gtk_label_new(_("Raise on click"));
-    gtk_widget_show(dialog->label49);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame13), dialog->label49);
-    gtk_label_set_justify(GTK_LABEL(dialog->label49), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Raise on click"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->label2 = gtk_label_new(_("Keyboard and focus"));
-    gtk_widget_show(dialog->label2);
-    gtk_notebook_set_tab_label(GTK_NOTEBOOK(dialog->notebook1), gtk_notebook_get_nth_page(GTK_NOTEBOOK(dialog->notebook1), 1), dialog->label2);
-    gtk_label_set_justify(GTK_LABEL(dialog->label2), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Keyboard and focus"));
+    gtk_widget_show(label);
+    gtk_notebook_set_tab_label(GTK_NOTEBOOK(notebook), gtk_notebook_get_nth_page(GTK_NOTEBOOK(notebook), 1), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->vbox5 = gtk_vbox_new(FALSE, BORDER);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->vbox5), BORDER);
-    gtk_widget_show(dialog->vbox5);
-    gtk_container_add(GTK_CONTAINER(dialog->notebook1), dialog->vbox5);
+    vbox5 = gtk_vbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox5), BORDER);
+    gtk_widget_show(vbox5);
+    gtk_container_add(GTK_CONTAINER(notebook), vbox5);
 
-    dialog->frame8 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame8);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox5), dialog->frame8, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox5), frame, TRUE, TRUE, 0);
 
-    dialog->vbox7 = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(dialog->vbox7);
-    gtk_container_add(GTK_CONTAINER(dialog->frame8), dialog->vbox7);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->vbox7), BORDER);
+    vbox7 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox7);
+    gtk_container_add(GTK_CONTAINER(frame), vbox7);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox7), BORDER);
 
     dialog->snap_to_border_check = gtk_check_button_new_with_mnemonic(_("Snap windows to screen border"));
     gtk_widget_show(dialog->snap_to_border_check);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox7), dialog->snap_to_border_check, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox7), dialog->snap_to_border_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->snap_to_border_check), snap_to_border);
 
     dialog->snap_to_windows_check = gtk_check_button_new_with_mnemonic(_("Snap windows to other windows"));
     gtk_widget_show(dialog->snap_to_windows_check);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox7), dialog->snap_to_windows_check, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox7), dialog->snap_to_windows_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->snap_to_windows_check), snap_to_windows);
 
-    dialog->table3 = gtk_table_new(2, 3, FALSE);
-    gtk_widget_show(dialog->table3);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox7), dialog->table3, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->table3), BORDER);
+    table3 = gtk_table_new(2, 3, FALSE);
+    gtk_widget_show(table3);
+    gtk_box_pack_start(GTK_BOX(vbox7), table3, TRUE, TRUE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(table3), BORDER);
 
-    dialog->label41 = gtk_label_new(_("Distance :"));
-    gtk_widget_show(dialog->label41);
-    gtk_table_attach(GTK_TABLE(dialog->table3), dialog->label41, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label41), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(dialog->label41), 0, 0.5);
+    label = gtk_label_new(_("Distance :"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table3), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
 
-    dialog->label42 = small_label(_("Small"));
-    gtk_widget_show(dialog->label42);
-    gtk_table_attach(GTK_TABLE(dialog->table3), dialog->label42, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label42), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(dialog->label42), 1, 0.5);
+    label = small_label(_("Small"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table3), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 1, 0.5);
 
-    dialog->label43 = small_label(_("Wide"));
-    gtk_widget_show(dialog->label43);
-    gtk_table_attach(GTK_TABLE(dialog->table3), dialog->label43, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify(GTK_LABEL(dialog->label43), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment(GTK_MISC(dialog->label43), 0, 0.5);
+    label = small_label(_("Wide"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table3), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
 
     dialog->snap_width_scale = gtk_hscale_new(GTK_ADJUSTMENT(gtk_adjustment_new(snap_width, 5, 50, 5, 10, 0)));
     gtk_widget_show(dialog->snap_width_scale);
-    gtk_table_attach(GTK_TABLE(dialog->table3), dialog->snap_width_scale, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_table_attach(GTK_TABLE(table3), dialog->snap_width_scale, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
     gtk_scale_set_draw_value(GTK_SCALE(dialog->snap_width_scale), FALSE);
     gtk_scale_set_digits(GTK_SCALE(dialog->snap_width_scale), 0);
     gtk_range_set_update_policy(GTK_RANGE(dialog->snap_width_scale), GTK_UPDATE_DISCONTINUOUS);
     gtk_widget_set_sensitive(dialog->snap_width_scale, snap_to_border || snap_to_windows);
 
-    dialog->label40 = gtk_label_new(_("Windows snapping"));
-    gtk_widget_show(dialog->label40);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame8), dialog->label40);
-    gtk_label_set_justify(GTK_LABEL(dialog->label40), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Windows snapping"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame9 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame9);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox5), dialog->frame9, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox5), frame, TRUE, TRUE, 0);
 
-    dialog->wrap_workspaces_check = gtk_check_button_new_with_mnemonic(_("Wrap workspaces when dragging a window off the screen"));
+    vbox8 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox8);
+    gtk_container_add(GTK_CONTAINER(frame), vbox8);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox8), BORDER);
+
+    dialog->wrap_workspaces_check = gtk_check_button_new_with_mnemonic(_("Wrap workspaces when the pointer reaches a screen edge"));
     gtk_widget_show(dialog->wrap_workspaces_check);
-    gtk_container_add(GTK_CONTAINER(dialog->frame9), dialog->wrap_workspaces_check);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->wrap_workspaces_check), BORDER);
+    gtk_box_pack_start(GTK_BOX(vbox8), dialog->wrap_workspaces_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->wrap_workspaces_check), wrap_workspaces);
 
-    dialog->label44 = gtk_label_new(_("Wrap workspaces"));
-    gtk_widget_show(dialog->label44);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame9), dialog->label44);
-    gtk_label_set_justify(GTK_LABEL(dialog->label44), GTK_JUSTIFY_LEFT);
+    table4 = gtk_table_new(2, 3, FALSE);
+    gtk_widget_show(table4);
+    gtk_box_pack_start(GTK_BOX(vbox8), table4, TRUE, TRUE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(table4), BORDER);
 
-    dialog->frame10 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame10);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox5), dialog->frame10, TRUE, TRUE, 0);
+    label = gtk_label_new(_("Edge Resistance :"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table4), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+
+    label = small_label(_("Small"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table4), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 1, 0.5);
+
+    label = small_label(_("Wide"));
+    gtk_widget_show(label);
+    gtk_table_attach(GTK_TABLE(table4), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+
+    dialog->wrap_resistance_scale = gtk_hscale_new(GTK_ADJUSTMENT(gtk_adjustment_new(snap_width, 5, 50, 5, 10, 0)));
+    gtk_widget_show(dialog->wrap_resistance_scale);
+    gtk_table_attach(GTK_TABLE(table4), dialog->wrap_resistance_scale, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_scale_set_draw_value(GTK_SCALE(dialog->wrap_resistance_scale), FALSE);
+    gtk_scale_set_digits(GTK_SCALE(dialog->wrap_resistance_scale), 0);
+    gtk_range_set_update_policy(GTK_RANGE(dialog->wrap_resistance_scale), GTK_UPDATE_DISCONTINUOUS);
+    gtk_widget_set_sensitive(dialog->wrap_resistance_scale, wrap_workspaces);
+
+    label = gtk_label_new(_("Wrap workspaces"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox5), frame, TRUE, TRUE, 0);
+
+    vbox9 = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox9);
+    gtk_container_add(GTK_CONTAINER(frame), vbox9);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox8), BORDER);
 
     dialog->box_resize_check = gtk_check_button_new_with_mnemonic(_("Display content of windows when resizing"));
     gtk_widget_show(dialog->box_resize_check);
-    gtk_container_add(GTK_CONTAINER(dialog->frame10), dialog->box_resize_check);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->box_resize_check), BORDER);
+    gtk_box_pack_start(GTK_BOX(vbox9), dialog->box_resize_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->box_resize_check), !box_resize);
-
-    dialog->label45 = gtk_label_new(_("Opaque resize"));
-    gtk_widget_show(dialog->label45);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame10), dialog->label45);
-    gtk_label_set_justify(GTK_LABEL(dialog->label45), GTK_JUSTIFY_LEFT);
-
-    dialog->frame11 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame11);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox5), dialog->frame11, TRUE, TRUE, 0);
 
     dialog->box_move_check = gtk_check_button_new_with_mnemonic(_("Display content of windows when moving"));
     gtk_widget_show(dialog->box_move_check);
-    gtk_container_add(GTK_CONTAINER(dialog->frame11), dialog->box_move_check);
-    gtk_container_set_border_width(GTK_CONTAINER(dialog->box_move_check), BORDER);
+    gtk_box_pack_start(GTK_BOX(vbox9), dialog->box_move_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialog->box_move_check), !box_move);
 
-    dialog->label46 = gtk_label_new(_("Opaque move"));
-    gtk_widget_show(dialog->label46);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame11), dialog->label46);
-    gtk_label_set_justify(GTK_LABEL(dialog->label46), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Opaque move and resize"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->frame12 = gtk_frame_new(NULL);
-    gtk_widget_show(dialog->frame12);
-    gtk_box_pack_start(GTK_BOX(dialog->vbox5), dialog->frame12, TRUE, TRUE, 0);
+    frame = gtk_frame_new(NULL);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(vbox5), frame, TRUE, TRUE, 0);
 
-    gtk_container_add(GTK_CONTAINER(dialog->frame12), create_radio_button_table(dbl_click_values, 4, _("Action to perform when double clicking on title bar :"), dbl_click_action, G_CALLBACK(cb_dblclick_action_value_changed), mcs_plugin));
+    gtk_container_add(GTK_CONTAINER(frame), create_radio_button_table(dbl_click_values, 4, _("Action to perform when double clicking on title bar :"), dbl_click_action, G_CALLBACK(cb_dblclick_action_value_changed), mcs_plugin));
 
-    dialog->label47 = gtk_label_new(_("Double click action"));
-    gtk_widget_show(dialog->label47);
-    gtk_frame_set_label_widget(GTK_FRAME(dialog->frame12), dialog->label47);
-    gtk_label_set_justify(GTK_LABEL(dialog->label47), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Double click action"));
+    gtk_widget_show(label);
+    gtk_frame_set_label_widget(GTK_FRAME(frame), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
-    dialog->label3 = gtk_label_new(_("Misc."));
-    gtk_widget_show(dialog->label3);
-    gtk_notebook_set_tab_label(GTK_NOTEBOOK(dialog->notebook1), gtk_notebook_get_nth_page(GTK_NOTEBOOK(dialog->notebook1), 2), dialog->label3);
-    gtk_label_set_justify(GTK_LABEL(dialog->label3), GTK_JUSTIFY_LEFT);
+    label = gtk_label_new(_("Misc."));
+    gtk_widget_show(label);
+    gtk_notebook_set_tab_label(GTK_NOTEBOOK(notebook), gtk_notebook_get_nth_page(GTK_NOTEBOOK(notebook), 2), label);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
     dialog->dialog_action_area1 = GTK_DIALOG(dialog->xfwm4_dialog)->action_area;
     gtk_widget_show(dialog->dialog_action_area1);
@@ -1589,6 +1595,7 @@ static void setup_dialog(Itf * itf)
     g_signal_connect(G_OBJECT(itf->snap_to_windows_check), "toggled", G_CALLBACK(cb_snap_to_windows_changed), itf);
     g_signal_connect(G_OBJECT(itf->snap_width_scale), "value_changed", (GCallback) cb_snap_width_changed, itf);
     g_signal_connect(G_OBJECT(itf->wrap_workspaces_check), "toggled", G_CALLBACK(cb_wrap_workspaces_changed), itf);
+    g_signal_connect(G_OBJECT(itf->wrap_resistance_scale), "value_changed", (GCallback) cb_wrap_resistance_changed, itf);
     g_signal_connect(G_OBJECT(itf->box_move_check), "toggled", (GCallback) cb_box_move_changed, itf);
     g_signal_connect(G_OBJECT(itf->box_resize_check), "toggled", G_CALLBACK(cb_box_resize_changed), itf);
 
@@ -1815,6 +1822,17 @@ static void create_channel(McsPlugin * mcs_plugin)
     {
         snap_width = 10;
         mcs_manager_set_int(mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL, snap_width);
+    }
+
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL);
+    if(setting)
+    {
+        wrap_resistance = setting->data.v_int;
+    }
+    else
+    {
+        wrap_resistance = 10;
+        mcs_manager_set_int(mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL, wrap_resistance);
     }
 
     setting = mcs_manager_setting_lookup(mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL);

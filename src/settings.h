@@ -160,6 +160,7 @@ struct _Params
     int title_alignment;
     int title_horizontal_offset;
     int workspace_count;
+    int wrap_resistance;
     gboolean title_shadow[2];
     gboolean box_move;
     gboolean box_resize;

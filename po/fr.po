@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-04 19:45+0200\n"
+"POT-Creation-Date: 2003-05-12 00:18+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -102,68 +102,67 @@ msgstr "Centre"
 msgid "Right"
 msgstr "Droit"
 
-#: mcs-plugin/xfwm4_plugin.c:456
+#: mcs-plugin/xfwm4_plugin.c:406
 msgid "Hidden"
 msgstr "Caché"
 
-#: mcs-plugin/xfwm4_plugin.c:1110
+#: mcs-plugin/xfwm4_plugin.c:1072
 msgid "Font Selection Dialog"
 msgstr "Sélection de Fonte"
 
-#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
+#: mcs-plugin/xfwm4_plugin.c:1130 mcs-plugin/xfwm4_plugin.c:1620
 msgid "Window Manager"
 msgstr "Gestionnaire de fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:1165
+#: mcs-plugin/xfwm4_plugin.c:1143
 msgid "Window Manager Preferences"
 msgstr "Préférences du gestionnaire de fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:1203
+#: mcs-plugin/xfwm4_plugin.c:1181
 msgid "Window style"
 msgstr "Style de fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:1221
+#: mcs-plugin/xfwm4_plugin.c:1199
 msgid "Font select :"
 msgstr "Sélection de la fonte :"
 
-#. gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);
-#: mcs-plugin/xfwm4_plugin.c:1232
+#: mcs-plugin/xfwm4_plugin.c:1209
 msgid "Title font"
 msgstr "Fonte de titre"
 
-#: mcs-plugin/xfwm4_plugin.c:1241
+#: mcs-plugin/xfwm4_plugin.c:1218
 msgid "Text alignment inside title bar :"
 msgstr "Alignement du texte dans la barre de titre :"
 
-#: mcs-plugin/xfwm4_plugin.c:1243
+#: mcs-plugin/xfwm4_plugin.c:1220
 msgid "Title Alignment"
 msgstr "Alignement du titre"
 
-#: mcs-plugin/xfwm4_plugin.c:1254
+#: mcs-plugin/xfwm4_plugin.c:1231
 msgid "Button layout"
 msgstr "Agencement des boutons"
 
-#: mcs-plugin/xfwm4_plugin.c:1259
+#: mcs-plugin/xfwm4_plugin.c:1236
 msgid "Decoration style"
 msgstr "Habillage"
 
-#: mcs-plugin/xfwm4_plugin.c:1292
+#: mcs-plugin/xfwm4_plugin.c:1269
 msgid "Keyboard Shortcut"
 msgstr "Raccourcis clavier"
 
-#: mcs-plugin/xfwm4_plugin.c:1310
+#: mcs-plugin/xfwm4_plugin.c:1287
 msgid "Click to focus"
 msgstr "Cliquer pour focaliser"
 
-#: mcs-plugin/xfwm4_plugin.c:1317
+#: mcs-plugin/xfwm4_plugin.c:1294
 msgid "Focus follows mouse"
 msgstr "La focalisation suit la souris"
 
-#: mcs-plugin/xfwm4_plugin.c:1324
+#: mcs-plugin/xfwm4_plugin.c:1301
 msgid "Focus model"
 msgstr "Modèle de focalisation"
 
-#: mcs-plugin/xfwm4_plugin.c:1333
+#: mcs-plugin/xfwm4_plugin.c:1310
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -171,11 +170,11 @@ msgstr ""
 "Focaliser automatiquement\n"
 "les nouvelles fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:1339
+#: mcs-plugin/xfwm4_plugin.c:1316
 msgid "New window focus"
 msgstr "Focus sur nouvelle fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:1353
+#: mcs-plugin/xfwm4_plugin.c:1330
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -183,23 +182,23 @@ msgstr ""
 "Mettre automatiquement au premier plan les fenêtres \n"
 "lorsqu'elles reçoivent le focus"
 
-#: mcs-plugin/xfwm4_plugin.c:1363
+#: mcs-plugin/xfwm4_plugin.c:1340
 msgid "Delay before raising focused window :"
 msgstr "Délai avant la mise au premier plan :"
 
-#: mcs-plugin/xfwm4_plugin.c:1369
+#: mcs-plugin/xfwm4_plugin.c:1346
 msgid "Slow"
 msgstr "Lent"
 
-#: mcs-plugin/xfwm4_plugin.c:1375
+#: mcs-plugin/xfwm4_plugin.c:1352
 msgid "Fast"
 msgstr "Rapide"
 
-#: mcs-plugin/xfwm4_plugin.c:1390
+#: mcs-plugin/xfwm4_plugin.c:1367
 msgid "Raise on focus"
 msgstr "Mettre au premier plan lors de la focalisation"
 
-#: mcs-plugin/xfwm4_plugin.c:1399
+#: mcs-plugin/xfwm4_plugin.c:1376
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -207,71 +206,71 @@ msgstr ""
 "Mettre au premier plan en\n"
 "cliquant dans la fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:1405
+#: mcs-plugin/xfwm4_plugin.c:1382
 msgid "Raise on click"
 msgstr "Mettre au premier plan lors d'un clic"
 
-#: mcs-plugin/xfwm4_plugin.c:1410
+#: mcs-plugin/xfwm4_plugin.c:1387
 msgid "Keyboard and focus"
 msgstr "Clavier et focalisation"
 
-#: mcs-plugin/xfwm4_plugin.c:1429
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Snap windows to screen border"
 msgstr "Accrocher les fenêtres aux bords de l'écran"
 
-#: mcs-plugin/xfwm4_plugin.c:1434
+#: mcs-plugin/xfwm4_plugin.c:1411
 msgid "Snap windows to other windows"
 msgstr "Accrocher les fenêtres aux autres fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:1444
+#: mcs-plugin/xfwm4_plugin.c:1421
 msgid "Distance :"
 msgstr "Distance :"
 
-#: mcs-plugin/xfwm4_plugin.c:1450
+#: mcs-plugin/xfwm4_plugin.c:1427 mcs-plugin/xfwm4_plugin.c:1477
 msgid "Small"
 msgstr "Petite"
 
-#: mcs-plugin/xfwm4_plugin.c:1456
+#: mcs-plugin/xfwm4_plugin.c:1433 mcs-plugin/xfwm4_plugin.c:1483
 msgid "Wide"
 msgstr "Grande"
 
-#: mcs-plugin/xfwm4_plugin.c:1470
+#: mcs-plugin/xfwm4_plugin.c:1447
 msgid "Windows snapping"
 msgstr "Aimantation des fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:1479
-msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Basculer d'écran lors du déplacement d'une fenêtre"
+#: mcs-plugin/xfwm4_plugin.c:1461
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Basculer d'écran lorsque le pointeur arrive au bord"
 
-#: mcs-plugin/xfwm4_plugin.c:1485
+#: mcs-plugin/xfwm4_plugin.c:1471
+msgid "Edge Resistance :"
+msgstr "Resistance au bord :"
+
+#: mcs-plugin/xfwm4_plugin.c:1497
 msgid "Wrap workspaces"
 msgstr "Basculer d'écran"
 
-#: mcs-plugin/xfwm4_plugin.c:1494
+#: mcs-plugin/xfwm4_plugin.c:1511
 msgid "Display content of windows when resizing"
 msgstr "Afficher le contenu durant le redimensionnement"
 
-#: mcs-plugin/xfwm4_plugin.c:1500
-msgid "Opaque resize"
-msgstr "Contenu visible durant le redimensionnement"
-
-#: mcs-plugin/xfwm4_plugin.c:1509
+#: mcs-plugin/xfwm4_plugin.c:1516
 msgid "Display content of windows when moving"
 msgstr "Afficher le contenu des fénêtres lors de leur déplacement"
 
-#: mcs-plugin/xfwm4_plugin.c:1515
-msgid "Opaque move"
-msgstr "Contenu visible durant le déplacement"
+#: mcs-plugin/xfwm4_plugin.c:1521
+msgid "Opaque move and resize"
+msgstr "Contenu visible durant le déplacement et redimensionnement"
 
-#: mcs-plugin/xfwm4_plugin.c:1524
+#: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Action à effectuer lors d'un double clic sur la barre de titre :"
 
-#: mcs-plugin/xfwm4_plugin.c:1526
+#: mcs-plugin/xfwm4_plugin.c:1532
 msgid "Double click action"
 msgstr "Action du double clic"
 
-#: mcs-plugin/xfwm4_plugin.c:1531
+#: mcs-plugin/xfwm4_plugin.c:1537
 msgid "Misc."
 msgstr "Divers"
 
@@ -280,32 +279,32 @@ msgstr "Divers"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state non géré (window 0x%lx)"
 
-#: src/events.c:1110
+#: src/events.c:1165
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operation pas (encore) supportée\n"
 
-#: src/main.c:174
+#: src/main.c:173
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Erreur de segmentation"
 
-#: src/main.c:224
+#: src/main.c:223
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: Fonctionnement sans gestionnaire de session"
 
-#: src/main.c:324
+#: src/main.c:323
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Un autre gestionnaire de fenêtre est déja actif"
 
-#: src/main.c:328
+#: src/main.c:327
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Il manque des données dans le ficher de défaut"
 
-#: src/main.c:354
+#: src/main.c:353
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Erreur inconnue"
@@ -383,37 +382,37 @@ msgstr "Redémarrer"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu n'a pas pu capturer le pointeur\n"
 
-#: src/settings.c:265
+#: src/settings.c:269
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Il manque le ficher de défaut"
 
-#: src/settings.c:444
+#: src/settings.c:453
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Ne peut allouer la couleur active %s\n"
 
-#: src/settings.c:450
+#: src/settings.c:459
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Ne peut lire la couleur inactive %s\n"
 
-#: src/settings.c:488
+#: src/settings.c:497
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ne peut allouer la couleur inactive %s\n"
 
-#: src/settings.c:494
+#: src/settings.c:503
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ne peut lire la couleur inactive %s\n"
 
-#: src/settings.c:624
+#: src/settings.c:633
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Il manque des données dans le ficher de défaut"
 
-#: src/settings.c:895
+#: src/settings.c:905
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

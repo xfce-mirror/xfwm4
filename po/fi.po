@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-04 19:45+0200\n"
+"POT-Creation-Date: 2003-05-12 00:18+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -103,68 +103,67 @@ msgstr "Keskellä"
 msgid "Right"
 msgstr "Oikea"
 
-#: mcs-plugin/xfwm4_plugin.c:456
+#: mcs-plugin/xfwm4_plugin.c:406
 msgid "Hidden"
 msgstr "Piilotettu"
 
-#: mcs-plugin/xfwm4_plugin.c:1110
+#: mcs-plugin/xfwm4_plugin.c:1072
 msgid "Font Selection Dialog"
 msgstr "Fontin valinta"
 
-#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
+#: mcs-plugin/xfwm4_plugin.c:1130 mcs-plugin/xfwm4_plugin.c:1620
 msgid "Window Manager"
 msgstr "Ikkunamanageri"
 
-#: mcs-plugin/xfwm4_plugin.c:1165
+#: mcs-plugin/xfwm4_plugin.c:1143
 msgid "Window Manager Preferences"
 msgstr "Ikkunamanagerin Asetukset"
 
-#: mcs-plugin/xfwm4_plugin.c:1203
+#: mcs-plugin/xfwm4_plugin.c:1181
 msgid "Window style"
 msgstr "Ikkunan tyyli"
 
-#: mcs-plugin/xfwm4_plugin.c:1221
+#: mcs-plugin/xfwm4_plugin.c:1199
 msgid "Font select :"
 msgstr "Fontin valinta :"
 
-#. gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);
-#: mcs-plugin/xfwm4_plugin.c:1232
+#: mcs-plugin/xfwm4_plugin.c:1209
 msgid "Title font"
 msgstr "Otsikkofontti"
 
-#: mcs-plugin/xfwm4_plugin.c:1241
+#: mcs-plugin/xfwm4_plugin.c:1218
 msgid "Text alignment inside title bar :"
 msgstr "Tekstin tasaus otsikkopalkin sisällä :"
 
-#: mcs-plugin/xfwm4_plugin.c:1243
+#: mcs-plugin/xfwm4_plugin.c:1220
 msgid "Title Alignment"
 msgstr "Otsikon tasaus"
 
-#: mcs-plugin/xfwm4_plugin.c:1254
+#: mcs-plugin/xfwm4_plugin.c:1231
 msgid "Button layout"
 msgstr "Nappien ulkoasu"
 
-#: mcs-plugin/xfwm4_plugin.c:1259
+#: mcs-plugin/xfwm4_plugin.c:1236
 msgid "Decoration style"
 msgstr "Koristelutyyli"
 
-#: mcs-plugin/xfwm4_plugin.c:1292
+#: mcs-plugin/xfwm4_plugin.c:1269
 msgid "Keyboard Shortcut"
 msgstr "Näppäinoikotiet"
 
-#: mcs-plugin/xfwm4_plugin.c:1310
+#: mcs-plugin/xfwm4_plugin.c:1287
 msgid "Click to focus"
 msgstr "Kohdistus painettaessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1317
+#: mcs-plugin/xfwm4_plugin.c:1294
 msgid "Focus follows mouse"
 msgstr "Kohdistus seuraa hiirtä"
 
-#: mcs-plugin/xfwm4_plugin.c:1324
+#: mcs-plugin/xfwm4_plugin.c:1301
 msgid "Focus model"
 msgstr "Kohdistustapa"
 
-#: mcs-plugin/xfwm4_plugin.c:1333
+#: mcs-plugin/xfwm4_plugin.c:1310
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
@@ -172,11 +171,11 @@ msgstr ""
 "Automaattisesti kohdenna\n"
 "uusiin ikkunoihin"
 
-#: mcs-plugin/xfwm4_plugin.c:1339
+#: mcs-plugin/xfwm4_plugin.c:1316
 msgid "New window focus"
 msgstr "Uuden ikkunan kohdistus"
 
-#: mcs-plugin/xfwm4_plugin.c:1353
+#: mcs-plugin/xfwm4_plugin.c:1330
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
@@ -184,23 +183,23 @@ msgstr ""
 "Automaattisesti nosta ikkuna \n"
 "kun se kohdistetaan"
 
-#: mcs-plugin/xfwm4_plugin.c:1363
+#: mcs-plugin/xfwm4_plugin.c:1340
 msgid "Delay before raising focused window :"
 msgstr "Viive ennen tarkennetun ikkunan nostoa :"
 
-#: mcs-plugin/xfwm4_plugin.c:1369
+#: mcs-plugin/xfwm4_plugin.c:1346
 msgid "Slow"
 msgstr "Hidas"
 
-#: mcs-plugin/xfwm4_plugin.c:1375
+#: mcs-plugin/xfwm4_plugin.c:1352
 msgid "Fast"
 msgstr "Nopea"
 
-#: mcs-plugin/xfwm4_plugin.c:1390
+#: mcs-plugin/xfwm4_plugin.c:1367
 msgid "Raise on focus"
 msgstr "Nosta kohdennuksessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1399
+#: mcs-plugin/xfwm4_plugin.c:1376
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
@@ -208,71 +207,74 @@ msgstr ""
 "Nosta ikkuna kun painetaan\n"
 "sovellusikkunan sisällä"
 
-#: mcs-plugin/xfwm4_plugin.c:1405
+#: mcs-plugin/xfwm4_plugin.c:1382
 msgid "Raise on click"
 msgstr "Nosta painettaessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1410
+#: mcs-plugin/xfwm4_plugin.c:1387
 msgid "Keyboard and focus"
 msgstr "Näppäimistö ja kohdistus"
 
-#: mcs-plugin/xfwm4_plugin.c:1429
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Snap windows to screen border"
 msgstr "Liitä ikkunat näytön reunaan"
 
-#: mcs-plugin/xfwm4_plugin.c:1434
+#: mcs-plugin/xfwm4_plugin.c:1411
 msgid "Snap windows to other windows"
 msgstr "Liitä ikkunat toisiinsa"
 
-#: mcs-plugin/xfwm4_plugin.c:1444
+#: mcs-plugin/xfwm4_plugin.c:1421
 msgid "Distance :"
 msgstr "Etäisyys :"
 
-#: mcs-plugin/xfwm4_plugin.c:1450
+#: mcs-plugin/xfwm4_plugin.c:1427 mcs-plugin/xfwm4_plugin.c:1477
 msgid "Small"
 msgstr "Pieni"
 
-#: mcs-plugin/xfwm4_plugin.c:1456
+#: mcs-plugin/xfwm4_plugin.c:1433 mcs-plugin/xfwm4_plugin.c:1483
 msgid "Wide"
 msgstr "Leveä"
 
-#: mcs-plugin/xfwm4_plugin.c:1470
+#: mcs-plugin/xfwm4_plugin.c:1447
 msgid "Windows snapping"
 msgstr "Ikkunoiden kiinnitys"
 
-#: mcs-plugin/xfwm4_plugin.c:1479
-msgid "Wrap workspaces when dragging a window off the screen"
+#: mcs-plugin/xfwm4_plugin.c:1461
+#, fuzzy
+msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Kierrätä työpöytiä kun ikkuna raahataan ulos näytöstä"
 
-#: mcs-plugin/xfwm4_plugin.c:1485
+#: mcs-plugin/xfwm4_plugin.c:1471
+#, fuzzy
+msgid "Edge Resistance :"
+msgstr "Etäisyys :"
+
+#: mcs-plugin/xfwm4_plugin.c:1497
 msgid "Wrap workspaces"
 msgstr "Kierrätä työpöytiä"
 
-#: mcs-plugin/xfwm4_plugin.c:1494
+#: mcs-plugin/xfwm4_plugin.c:1511
 msgid "Display content of windows when resizing"
 msgstr "Näytä ikkunan sisältö kokoa muutettaessa"
 
-#: mcs-plugin/xfwm4_plugin.c:1500
-msgid "Opaque resize"
-msgstr "Samea koon muutos"
-
-#: mcs-plugin/xfwm4_plugin.c:1509
+#: mcs-plugin/xfwm4_plugin.c:1516
 msgid "Display content of windows when moving"
 msgstr "Näytä ikkunan sisältö siirrettäessä"
 
-#: mcs-plugin/xfwm4_plugin.c:1515
-msgid "Opaque move"
-msgstr "Samea siirto"
+#: mcs-plugin/xfwm4_plugin.c:1521
+#, fuzzy
+msgid "Opaque move and resize"
+msgstr "Samea koon muutos"
 
-#: mcs-plugin/xfwm4_plugin.c:1524
+#: mcs-plugin/xfwm4_plugin.c:1530
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Suoritettava toiminto tuplaklikatessa otsikkopalkkia:"
 
-#: mcs-plugin/xfwm4_plugin.c:1526
+#: mcs-plugin/xfwm4_plugin.c:1532
 msgid "Double click action"
 msgstr "Tuplaklikkaustoiminto"
 
-#: mcs-plugin/xfwm4_plugin.c:1531
+#: mcs-plugin/xfwm4_plugin.c:1537
 msgid "Misc."
 msgstr "Sekalaiset"
 
@@ -281,32 +283,32 @@ msgstr "Sekalaiset"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
 
-#: src/events.c:1110
+#: src/events.c:1165
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Toiminto ei ole (vielä) tuettu\n"
 
-#: src/main.c:174
+#: src/main.c:173
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: src/main.c:224
+#: src/main.c:223
 #, c-format
 msgid "%s: Running without session manager"
 msgstr "%s: Ajetaan ilman istunnon hallintaa"
 
-#: src/main.c:324
+#: src/main.c:323
 #, c-format
 msgid "%s: Another Window Manager is already running"
 msgstr "%s: Toinen ikkunamanageri on jo käynnistetty"
 
-#: src/main.c:328
+#: src/main.c:327
 #, c-format
 msgid "%s: Missing data from default files"
 msgstr "%s: Oletustiedostoista puuttuu tietoa"
 
-#: src/main.c:354
+#: src/main.c:353
 #, c-format
 msgid "%s: Unknown error occured"
 msgstr "%s: Tuntematon virhe"
@@ -384,37 +386,37 @@ msgstr "Käynnistä uudelleen"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
-#: src/settings.c:265
+#: src/settings.c:269
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Oletustiedostoista puuttuu tietoa"
 
-#: src/settings.c:444
+#: src/settings.c:453
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktiivista väriä %s ei voi käyttää\n"
 
-#: src/settings.c:450
+#: src/settings.c:459
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktiivista väriä %s ei voi tunnistaa \n"
 
-#: src/settings.c:488
+#: src/settings.c:497
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ei-aktiivista väriä %s ei voi käyttaää\n"
 
-#: src/settings.c:494
+#: src/settings.c:503
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei-aktiivista väriä %s ei voi tunnistaa\n"
 
-#: src/settings.c:624
+#: src/settings.c:633
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Oletustiedostoista puuttuu tietoa"
 
-#: src/settings.c:895
+#: src/settings.c:905
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Työpöytien määrää ei asetettu, käytetään oletusarvoa: %i"
@@ -422,3 +424,6 @@ msgstr "%s: Työpöytien määrää ei asetettu, käytetään oletusarvoa: %i"
 #: src/tabwin.c:68
 msgid "Switch to ..."
 msgstr "Vaihta sovellukseen..."
+
+#~ msgid "Opaque move"
+#~ msgstr "Samea siirto"

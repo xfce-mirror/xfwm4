@@ -3760,6 +3760,7 @@ static inline void clientSnapPosition(Client * c)
 
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data)
 {
+    static int edge_scroll_x = 0;
     GtkToXEventFilterStatus status = XEV_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = passdata->c;
@@ -3841,32 +3842,38 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         if((params.workspace_count > 1) && !clientIsTransient(c))
         {
-            static gboolean wrapped = FALSE;
-            int msx, msy;
-
-            msx = xevent->xmotion.x_root;
-            msy = xevent->xmotion.y_root;
-
-            if (params.workspace_count && params.wrap_workspaces && !wrapped)
+            if (params.workspace_count && params.wrap_workspaces && params.wrap_resistance)
             {
-                if(msx == 0)
+                int msx, msy, max;
+
+                msx = xevent->xmotion.x_root;
+                msy = xevent->xmotion.y_root;
+                max = XDisplayWidth(dpy, screen) - 1;
+
+                if ((msx == 0) || (msx == max))
                 {
-                    XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
-                    msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
-                    workspaceSwitch(workspace - 1, c);
-                    wrapped = TRUE;
+                    edge_scroll_x++;
                 }
-                else if(msx == XDisplayWidth(dpy, screen) - 1)
+                else
                 {
-                    XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
-                    msx = xevent->xmotion.x_root = 10;
-                    workspaceSwitch(workspace + 1, c);
-                    wrapped = TRUE;
+                    edge_scroll_x = 0;
                 }
-            }
-            else if (wrapped)
-            {
-                wrapped = FALSE;
+                if (edge_scroll_x > params.wrap_resistance)
+                {
+                    edge_scroll_x = 0;
+                    if(msx == 0)
+                    {
+                        XWarpPointer(dpy, None, root, 0, 0, 0, 0, max - 10, msy);
+                        msx = xevent->xmotion.x_root = max - 10;
+                        workspaceSwitch(workspace - 1, c);
+                    }
+                    else if(msx == max)
+                    {
+                        XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
+                        msx = xevent->xmotion.x_root = 10;
+                        workspaceSwitch(workspace + 1, c);
+                    }
+                }
             }
         }
 
@@ -3912,6 +3919,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     if(!moving)
     {
         TRACE("event loop now finished");
+        edge_scroll_x = 0;
         gtk_main_quit();
     }
 

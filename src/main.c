@@ -60,7 +60,6 @@
     ButtonPressMask|\
     ButtonReleaseMask|\
     PointerMotionMask|\
-    PointerMotionHintMask|\
     FocusChangeMask|\
     PropertyChangeMask|\
     ColormapNotify

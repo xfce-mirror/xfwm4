@@ -190,6 +190,44 @@ static inline void spawn_shortcut(int i)
     }
 }
 
+static inline void handleMotionNotify(XMotionEvent * ev)
+{
+    int msx, msy, max;
+    static int edge_scroll_x = 0;
+
+    TRACE("entering handleMotionNotify");
+
+    if (params.workspace_count && params.wrap_workspaces && params.wrap_resistance)
+    {
+        msx = ev->x_root;
+        msy = ev->y_root;
+        max = XDisplayWidth(dpy, screen) - 1;
+
+        if ((msx == 0) || (msx == max))
+        {
+            edge_scroll_x++;
+        }
+        else
+        {
+            edge_scroll_x = 0;
+        }
+        if (edge_scroll_x > params.wrap_resistance)
+        {
+            edge_scroll_x = 0;
+            if(msx == 0)
+            {
+                XWarpPointer(dpy, None, root, 0, 0, 0, 0, max - 10, msy);
+                workspaceSwitch(workspace - 1, NULL);
+            }
+            else if(msx == max) 
+            {
+                XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
+                workspaceSwitch(workspace + 1, NULL);
+            }
+        }
+    }
+}
+
 static inline void handleKeyPress(XKeyEvent * ev)
 {
     Client *c;
@@ -893,19 +931,9 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
 static inline void handleLeaveNotify(XCrossingEvent * ev)
 {
-    /* 
-     * If we leave the root window, that means the mouse has
-     * moved to another screen on a multiple screen display.
-     * => Reset focus
-     */
-
     TRACE("entering handleLeaveNotify");
 
-    if ((ev->window == root) && (ev->mode == NotifyNormal) && (ev->detail != NotifyInferior))
-    {
-        /* Clear timeout */
-        clear_timeout();
-    }
+    /* Actually, we have nothing to do here... */
 }
 
 static inline void handleFocusIn(XFocusChangeEvent * ev)
@@ -1207,6 +1235,9 @@ void handleEvent(XEvent * ev)
     sn_process_event(ev);
     switch (ev->type)
     {
+    case MotionNotify:
+        handleMotionNotify((XMotionEvent *) ev);
+        break;
     case KeyPress:
         handleKeyPress((XKeyEvent *) ev);
         break;

@@ -25,3 +25,4 @@ snap_width=10
 dbl_click_time=400
 workspace_count=4
 wrap_workspaces=true
+wrap_resistance=10

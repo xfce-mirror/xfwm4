@@ -143,6 +143,10 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
                 {
                     params.wrap_workspaces = setting->data.v_int;
                 }
+                else if(!strcmp(name, "Xfwm/WrapResistance"))
+                {
+                    params.wrap_resistance = setting->data.v_int;
+                }
                 else if(!strcmp(name, "Xfwm/BoxMove"))
                 {
                     params.box_move = setting->data.v_int;
@@ -316,6 +320,11 @@ static void loadMcsData(Settings rc[])
         if(mcs_client_get_setting(client, "Xfwm/WrapWorkspaces", CHANNEL1, &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt("wrap_workspaces", setting->data.v_int, rc);
+            mcs_setting_free(setting);
+        }
+        if(mcs_client_get_setting(client, "Xfwm/WrapResistance", CHANNEL1, &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt("wrap_resistance", setting->data.v_int, rc);
             mcs_setting_free(setting);
         }
         if(mcs_client_get_setting(client, "Xfwm/BoxMove", CHANNEL1, &setting) == MCS_SUCCESS)
@@ -764,6 +773,7 @@ gboolean loadSettings(void)
                         {"title_vertical_offset_inactive", NULL, TRUE},
                         {"workspace_count", NULL, TRUE},
                         {"wrap_workspaces", NULL, TRUE},
+                        {"wrap_resistance", NULL, TRUE},
                         /* Keys */
                         {"add_workspace_key", NULL, TRUE},
                         {"close_window_key", NULL, TRUE},
@@ -897,6 +907,8 @@ gboolean loadSettings(void)
     }
 
     params.wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
+    params.wrap_resistance = abs(TOINT(getValue("wrap_resistance", rc)));
+
     freeRc(rc);
     return TRUE;
 }
