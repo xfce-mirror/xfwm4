@@ -699,14 +699,14 @@ maintainers, etc. Commented out by default.
 
   <para>To report a bug or make a suggestion regarding this application or
     this manual, send an email to the 
-    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+    <ulink url="http://www.xfce.org/mailman/listinfo/xfce4-dev/"
       type="http">xfce4-dev</ulink> mailing list &mdash; this is the preferred
     method &mdash; or use the bug tracking system at the
     <ulink url="http://sourceforge.net/projects/xfce" 
       type="http">XFce SourceForge project site</ulink>. 
     If you have questions about the use or installation of this package,
     please ask on the 
-    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+    <ulink url="http://www.xfce.org/mailman/listinfo/xfce/"
       type="http">xfce</ulink> mailing list. 
   </para>
     

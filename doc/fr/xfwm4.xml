@@ -734,14 +734,14 @@
 
   <para>Pour soumettre un bug ou faire une suggestion sur l'application 
     ou sur le manuel, envoyez un e-mail à la liste de diffusion 
-	 <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+	 <ulink url="http://www.xfce.org/mailman/listinfo/xfce4-dev/"
 	type="http">xfce4-dev</ulink>  &mdash; méthode recommandée 
      &mdash; ou utilisez le système de gestion des bugs sur 
 	 <ulink url="http://sourceforge.net/projects/xfce" 
 	type="http">XFce SourceForge project site</ulink>.
 	Si vous avez des questions sur l'utilisation ou l'installation de ce 
 	paquetage, vous pouvez les poser sur la liste de diffusion 
-	<ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+	<ulink url="http://www.xfce.org/mailman/listinfo/xfce/"
 	type="http">xfce</ulink>. 
   </para>
     
