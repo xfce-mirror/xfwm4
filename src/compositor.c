@@ -1345,12 +1345,12 @@ add_win (DisplayInfo *display_info, Window id, Client *c, Window above, guint op
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
         XSelectInput (display_info->dpy, id, PropertyChangeMask | StructureNotifyMask);
+    }
 
-       /* Same for shape events */
-       if (display_info->shape)
-       {
-           XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
-       }
+    /* Same for shape events */
+    if (display_info->shape)
+    {
+        XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
 
     new->c = c;
