@@ -111,6 +111,10 @@ struct _Itf
     GtkWidget *wrap_windows_check;
     GtkWidget *wrap_resistance_scale;
     GtkWidget *xfwm4_dialog;
+    GtkWidget *popup_menu;
+    GtkWidget* popup_add_menuitem;
+    GtkWidget* popup_del_menuitem;
+
 };
 
 enum
@@ -120,9 +124,16 @@ enum
     NUM_COLUMNS
 };
 
+typedef enum
+{
+    DECORATION_THEMES = 0,
+    KEYBINDING_THEMES = 1
+}
+ThemeType;
+
 extern gchar *current_key_theme;
 extern GList *keybinding_theme_list;
 
 extern ThemeInfo *find_theme_info_by_name (const gchar *, GList *);
-
+extern GList *read_themes (GList *, GtkWidget *, GtkWidget *, ThemeType, gchar *);
 #endif

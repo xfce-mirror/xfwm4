@@ -31,6 +31,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -47,13 +48,6 @@
 #include "xfwm4_shortcuteditor.h"
 
 #define INDICATOR_SIZE 11
-
-typedef enum
-{
-    DECORATION_THEMES = 0,
-    KEYBINDING_THEMES = 1
-}
-ThemeType;
 
 typedef struct _TitleRadioButton TitleRadioButton;
 struct _TitleRadioButton
@@ -754,13 +748,23 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
     gboolean set_layout = FALSE;
     gboolean set_align = FALSE;
     gboolean set_font = FALSE;
+    gboolean user_writable = FALSE;
 
     gchar *tmp;
 
     tmp = g_build_filename (theme_dir, KEY_SUFFIX, KEYTHEMERC, NULL);
     if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR) && parserc (tmp, &set_layout, &set_align, &set_font))
     {
+        int fd;
+
         has_keybinding = TRUE;
+
+	fd = open (tmp, O_WRONLY);
+	if (fd != -1)
+	{
+	  user_writable = TRUE;
+	  close (fd); 
+	}
     }
     g_free (tmp);
 
@@ -789,6 +793,7 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
             info->set_layout = set_layout;
             info->set_align = set_align;
             info->set_font = set_font;
+	    info->user_writable = user_writable;
         }
     }
     else
@@ -803,7 +808,7 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
             info->set_layout = set_layout;
             info->set_align = set_align;
             info->set_font = set_font;
-
+	    info->user_writable = user_writable;
             list = g_list_prepend (list, info);
         }
     }
@@ -954,16 +959,27 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
     {
         if (current_key_theme && strcmp (current_key_theme, new_key_theme))
         {
+	    ThemeInfo *ti;
+
             g_free (current_key_theme);
             current_key_theme = new_key_theme;
             mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL, current_key_theme);
             mcs_manager_notify (mcs_plugin->manager, CHANNEL);
             write_options (mcs_plugin);
-        }
+
+	    ti = find_theme_info_by_name (new_key_theme, keybinding_theme_list);
+	    
+	    if (ti)
+	    {
+	        gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
+		gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
+		loadtheme_in_treeview (ti, itf);
+	    }
+	}
     }
 }
 
-static GList *
+GList *
 read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, ThemeType type, gchar * current_value)
 {
     GList *list;
@@ -1340,28 +1356,6 @@ cb_dialog_response (GtkWidget * dialog, gint response_id)
     }
 }
 
-static void
-cb_shortcuttheme_changed (GtkTreeSelection * selection, Itf * itf)
-{
-    ThemeInfo *ti;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-    gchar *theme_name;
-
-    if (gtk_tree_selection_get_selected (selection, &model, &iter))
-    {
-        gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
-
-        ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
-
-        if (ti)
-        {
-            loadtheme_in_treeview (ti, itf);
-        }
-        g_free (theme_name);
-    }
-}
-
 Itf *
 create_dialog (McsPlugin * mcs_plugin)
 {
@@ -1500,7 +1494,6 @@ create_dialog (McsPlugin * mcs_plugin)
     dialog->treeview3 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
     gtk_widget_show (dialog->treeview3);
     gtk_container_add (GTK_CONTAINER (dialog->scrolledwindow3), dialog->treeview3);
-    /* gtk_widget_set_size_request (dialog->treeview3, 250, -1); */
 
     /* command column */
     renderer = gtk_cell_renderer_text_new ();
@@ -1541,6 +1534,13 @@ create_dialog (McsPlugin * mcs_plugin)
 
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview4), -1, _("Shortcut"), renderer, "text", COLUMN_SHORTCUT, NULL);
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview4), TRUE);
+    /* popup menu */
+    dialog->popup_menu = gtk_menu_new ();
+    dialog->popup_add_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD,NULL);
+    gtk_container_add (GTK_CONTAINER (dialog->popup_menu), dialog->popup_add_menuitem);
+    dialog->popup_del_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_REMOVE, NULL);
+    gtk_container_add (GTK_CONTAINER (dialog->popup_menu), dialog->popup_del_menuitem);
+    gtk_widget_show_all (dialog->popup_menu);
 
     label = gtk_label_new (_("Keyboard"));
     gtk_widget_show (label);
@@ -1825,10 +1825,12 @@ setup_dialog (Itf * itf)
 
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2));
     gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+
     g_signal_connect (G_OBJECT (selection), "changed", (GCallback) keybinding_selection_changed, itf);
 
+    g_signal_connect (G_OBJECT (itf->treeview2), "button-press-event", G_CALLBACK (cb_popup_menu), itf);
+    g_signal_connect (G_OBJECT (itf->popup_add_menuitem), "activate", G_CALLBACK (cb_popup_add_menu), itf);
 
-    g_signal_connect (G_OBJECT (gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2))), "changed", G_CALLBACK (cb_shortcuttheme_changed), itf);
     g_signal_connect (G_OBJECT (itf->treeview3), "row-activated", G_CALLBACK (cb_activate_treeview3), itf);
     g_signal_connect (G_OBJECT (itf->treeview4), "row-activated", G_CALLBACK (cb_activate_treeview4), itf);
 
@@ -1842,6 +1844,8 @@ setup_dialog (Itf * itf)
 
     if (ti)
     {
+        gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
+        gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
         loadtheme_in_treeview (ti, itf);
     }
     else
