@@ -1416,21 +1416,21 @@ static void clientInitPosition(Client * c)
     {
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            if((c->x + c->width) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
+            if((frameX(c) + frameWidth(c)) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
             {
-                c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - c->width;
+                c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - frameWidth(c) + frameLeft(c);
             }
-            if(c->x < (int)margins[MARGIN_LEFT])
+            if(frameX(c) < (int)margins[MARGIN_LEFT])
             {
-                c->x = (int)margins[MARGIN_LEFT];
+                c->x = (int)margins[MARGIN_LEFT] + frameLeft(c);
             }
-            if((c->y + c->height) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
+            if((frameY(c) + frameHeight(c)) > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
             {
-                c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - c->height;
+                c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c);
             }
-            if(c->y - frameTop(c) < (int)margins[MARGIN_TOP])
+            if(frameY(c) < (int)margins[MARGIN_TOP])
             {
-                c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+                c->y = (int)margins[MARGIN_TOP] + frameTop(c);
             }
         }
         return;
@@ -2476,17 +2476,24 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         if(!(c->win_state & WIN_STATE_MAXIMIZED_VERT))
         {
             c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
-            if(abs(frameY(c)) < (int)margins[MARGIN_TOP])
-            {
-                c->y = frameTop(c) + (int)margins[MARGIN_TOP];
-            }
             if(snap_to_border)
             {
+                if(frameY(c) - (int)margins[MARGIN_TOP] < snap_width)
+                {
+                    c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+                }
                 if(abs(frameY(c) - XDisplayHeight(dpy, screen) + frameHeight(c) + (int)margins[MARGIN_BOTTOM]) < snap_width)
                 {
                     c->y = (XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - frameHeight(c) + frameTop(c));
                 }
             }
+	    else
+	    {
+        	if(frameY(c) < (int)margins[MARGIN_TOP])
+        	{
+                    c->y = frameTop(c) + (int)margins[MARGIN_TOP];
+        	}
+	    }
         }
         if((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
