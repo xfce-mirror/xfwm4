@@ -1,5 +1,6 @@
 full_width_title=false
-title_vertical_offset=-1
+title_vertical_offset_active=-1
+title_vertical_offset_inactive=-1
 title_alignment=left
 button_offset=4
 button_spacing=0

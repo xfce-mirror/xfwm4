@@ -34,6 +34,8 @@
 #include "workspaces.h"
 #include "debug.h"
 
+#define TOINT(x) (x ? atoi(x) : 0)
+
 MyKey keys[KEY_COUNT];
 MyColor title_colors[2];
 char button_layout[8];
@@ -41,7 +43,8 @@ int title_alignment;
 int full_width_title;
 int button_spacing;
 int button_offset;
-int title_vertical_offset;
+int title_vertical_offset_active;
+int title_vertical_offset_inactive;
 int title_horizontal_offset;
 int double_click_action;
 int box_move;
@@ -89,7 +92,8 @@ void loadSettings()
         {"full_width_title", NULL, TRUE},
         {"button_layout", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
-        {"title_vertical_offset", NULL, TRUE},
+        {"title_vertical_offset_active", NULL, TRUE},
+        {"title_vertical_offset_inactive", NULL, TRUE},
         {"title_horizontal_offset", NULL, TRUE},
         {"button_offset", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
@@ -326,10 +330,11 @@ void loadSettings()
     full_width_title = !g_ascii_strcasecmp("true", getValue("full_width_title", rc));
 
     strncpy(button_layout, getValue("button_layout", rc), 7);
-    button_spacing = atoi(getValue("button_spacing", rc));
-    button_offset = atoi(getValue("button_offset", rc));
-    title_vertical_offset = atoi(getValue("title_vertical_offset", rc));
-    title_horizontal_offset = atoi(getValue("title_horizontal_offset", rc));
+    button_spacing = TOINT(getValue("button_spacing", rc));
+    button_offset = TOINT(getValue("button_offset", rc));
+    title_vertical_offset_active = TOINT(getValue("title_vertical_offset_active", rc));
+    title_vertical_offset_inactive = TOINT(getValue("title_vertical_offset_inactive", rc));
+    title_horizontal_offset = TOINT(getValue("title_horizontal_offset", rc));
 
     box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
     box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
@@ -339,11 +344,11 @@ void loadSettings()
     focus_hint = !g_ascii_strcasecmp("true", getValue("focus_hint", rc));
     focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
     raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
-    raise_delay = abs(atoi(getValue("raise_delay", rc)));
+    raise_delay = abs(TOINT(getValue("raise_delay", rc)));
 
     snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
-    snap_width = abs(atoi(getValue("snap_width", rc)));
-    dbl_click_time = abs(atoi(getValue("dbl_click_time", rc)));
+    snap_width = abs(TOINT(getValue("snap_width", rc)));
+    dbl_click_time = abs(TOINT(getValue("dbl_click_time", rc)));
     g_value_init(&tmp_val, G_TYPE_INT);
     if(gdk_setting_get("gtk-double-click-time", &tmp_val))
     {
@@ -370,7 +375,7 @@ void loadSettings()
     if(workspace_count < 0)
     {
         unsigned long data[1];
-        workspace_count = abs(atoi(getValue("workspace_count", rc)));
+        workspace_count = abs(TOINT(getValue("workspace_count", rc)));
         setGnomeHint(dpy, root, win_workspace_count, workspace_count);
         data[0] = workspace_count;
         XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);

@@ -90,6 +90,7 @@ themes/gorilla/Makefile
 themes/gtk/Makefile
 themes/iceg/Makefile
 themes/kde/Makefile
+themes/keramik/Makefile
 themes/kindaker/Makefile
 themes/linea/Makefile
 themes/metabox/Makefile

@@ -24,6 +24,7 @@ gorilla \
 gtk \
 iceg \
 kde \
+keramik \
 kindaker \
 linea \
 metabox \

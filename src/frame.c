@@ -279,7 +279,7 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
     {
         fillRectangle(dpy, pm->pixmap, title[TITLE_3][state].pixmap, x, 0, w3, frameTop(c));
         fillRectangle(dpy, pm->mask, title[TITLE_3][state].mask, x, 0, w3, frameTop(c));
-        gdk_draw_layout(gpixmap, gc, x + tp, (frameTop(c) + title_vertical_offset - logical_rect.height) / 2, layout);
+        gdk_draw_layout(gpixmap, gc, x + tp, (frameTop(c) + (state == INACTIVE ? title_vertical_offset_inactive : title_vertical_offset_active) - logical_rect.height) / 2, layout);
         x = x + w3;
     }
 
