@@ -109,7 +109,11 @@ xfwm4_SOURCES = \
 	parserc.h \
 	pixmap.h \
 	settings.h \
-	workspaces.h
+	workspaces.h \
+	xsettings-common.c \
+	xsettings-common.h \
+	xsettings-client.c \
+	xsettings-client.h
 
 
 xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ \
@@ -130,7 +134,9 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
-	xfwm4-settings.$(OBJEXT) xfwm4-workspaces.$(OBJEXT)
+	xfwm4-settings.$(OBJEXT) xfwm4-workspaces.$(OBJEXT) \
+	xfwm4-xsettings-common.$(OBJEXT) \
+	xfwm4-xsettings-client.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 xfwm4_LDFLAGS =
@@ -154,7 +160,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-parserc.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-xsettings-client.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-xsettings-common.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
@@ -213,6 +221,8 @@ xfwm4-parserc.$(OBJEXT): parserc.c
 xfwm4-pixmap.$(OBJEXT): pixmap.c
 xfwm4-settings.$(OBJEXT): settings.c
 xfwm4-workspaces.$(OBJEXT): workspaces.c
+xfwm4-xsettings-common.$(OBJEXT): xsettings-common.c
+xfwm4-xsettings-client.$(OBJEXT): xsettings-client.c
 xfwm4$(EXEEXT): $(xfwm4_OBJECTS) $(xfwm4_DEPENDENCIES) 
 	@rm -f xfwm4$(EXEEXT)
 	$(LINK) $(xfwm4_LDFLAGS) $(xfwm4_OBJECTS) $(xfwm4_LDADD) $(LIBS)
@@ -237,6 +247,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-xsettings-client.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-xsettings-common.Po@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
@@ -420,6 +432,30 @@ xfwm4-workspaces.obj: workspaces.c
 @AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-workspaces.Po' tmpdepfile='$(DEPDIR)/xfwm4-workspaces.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-workspaces.obj `cygpath -w workspaces.c`
+
+xfwm4-xsettings-common.o: xsettings-common.c
+@AMDEP_TRUE@	source='xsettings-common.c' object='xfwm4-xsettings-common.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-xsettings-common.Po' tmpdepfile='$(DEPDIR)/xfwm4-xsettings-common.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-xsettings-common.o `test -f 'xsettings-common.c' || echo '$(srcdir)/'`xsettings-common.c
+
+xfwm4-xsettings-common.obj: xsettings-common.c
+@AMDEP_TRUE@	source='xsettings-common.c' object='xfwm4-xsettings-common.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-xsettings-common.Po' tmpdepfile='$(DEPDIR)/xfwm4-xsettings-common.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-xsettings-common.obj `cygpath -w xsettings-common.c`
+
+xfwm4-xsettings-client.o: xsettings-client.c
+@AMDEP_TRUE@	source='xsettings-client.c' object='xfwm4-xsettings-client.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-xsettings-client.Po' tmpdepfile='$(DEPDIR)/xfwm4-xsettings-client.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-xsettings-client.o `test -f 'xsettings-client.c' || echo '$(srcdir)/'`xsettings-client.c
+
+xfwm4-xsettings-client.obj: xsettings-client.c
+@AMDEP_TRUE@	source='xsettings-client.c' object='xfwm4-xsettings-client.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-xsettings-client.Po' tmpdepfile='$(DEPDIR)/xfwm4-xsettings-client.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-xsettings-client.obj `cygpath -w xsettings-client.c`
 CCDEPMODE = @CCDEPMODE@
 uninstall-info-am:
 
