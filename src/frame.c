@@ -212,8 +212,11 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
         }
         switch (title_alignment)
         {
+            case ALIGN_LEFT:
+                tp = title_horizontal_offset;
+                break;
             case ALIGN_RIGHT:
-                tp = w3 - logical_rect.width;
+                tp = w3 - logical_rect.width - title_horizontal_offset;
                 break;
             case ALIGN_CENTER:
                 tp = (w3 / 2) - (logical_rect.width / 2);
@@ -239,10 +242,10 @@ static void frameCreateTitlePixmap(Client * c, int state, int left, int right, M
         switch (title_alignment)
         {
             case ALIGN_LEFT:
-                w1 = left;
+                w1 = left + title_horizontal_offset;
                 break;
             case ALIGN_RIGHT:
-                w1 = right - w2 - w3 - w4;
+                w1 = right - w2 - w3 - w4 - title_horizontal_offset;
                 break;
             case ALIGN_CENTER:
                 w1 = left + ((right - left) / 2) - (w3 / 2) - w2;

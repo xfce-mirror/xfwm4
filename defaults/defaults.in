@@ -6,6 +6,7 @@ button_layout=OTS|HMC
 button_spacing=1
 button_offset=0
 title_vertical_offset=0
+title_horizontal_offset=0
 double_click_action=maximize
 box_move=false
 box_resize=false

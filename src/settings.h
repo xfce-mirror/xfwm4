@@ -60,6 +60,7 @@ extern int full_width_title;
 extern int button_spacing;
 extern int button_offset;
 extern int title_vertical_offset;
+extern int title_horizontal_offset;
 extern int double_click_action;
 extern int box_move;
 extern int box_resize;

@@ -42,6 +42,7 @@ int full_width_title;
 int button_spacing;
 int button_offset;
 int title_vertical_offset;
+int title_horizontal_offset;
 int double_click_action;
 int box_move;
 int box_resize;
@@ -89,6 +90,7 @@ void loadSettings()
         {"button_layout", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
         {"title_vertical_offset", NULL, TRUE},
+        {"title_horizontal_offset", NULL, TRUE},
         {"button_offset", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
         {"box_move", NULL, TRUE},
@@ -327,6 +329,7 @@ void loadSettings()
     button_spacing = atoi(getValue("button_spacing", rc));
     button_offset = atoi(getValue("button_offset", rc));
     title_vertical_offset = atoi(getValue("title_vertical_offset", rc));
+    title_horizontal_offset = atoi(getValue("title_horizontal_offset", rc));
 
     box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
     box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
