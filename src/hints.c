@@ -24,6 +24,9 @@
 #endif
 
 #include <glib.h>
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
@@ -289,116 +292,116 @@ int getNetHint(Display * dpy, Window w, Atom a, long *value)
 
 void set_net_supported_hint (Display * dpy, Window root_win, Window check_win)
 {
-  Atom atoms[30];
-  unsigned long data[1];
-  int i = 0;
-  
-  atoms[i++] = net_wm_name;
-  atoms[i++] = net_close_window;
-  atoms[i++] = net_wm_state;
-  atoms[i++] = net_wm_state_shaded;
-  atoms[i++] = net_wm_state_sticky;
-  atoms[i++] = net_wm_state_maximized_vert;
-  atoms[i++] = net_wm_state_maximized_horz;
-  atoms[i++] = net_wm_desktop;
-  atoms[i++] = net_number_of_desktops;
-  atoms[i++] = net_current_desktop;
-  atoms[i++] = net_desktop_geometry;
-  atoms[i++] = net_desktop_viewport;
-  atoms[i++] = net_workarea;
-  atoms[i++] = net_wm_window_type;
-  atoms[i++] = net_wm_window_type_desktop;
-  atoms[i++] = net_wm_window_type_dock;
-  atoms[i++] = net_wm_window_type_toolbar;
-  atoms[i++] = net_wm_window_type_menu;
-  atoms[i++] = net_wm_window_type_dialog;
-  atoms[i++] = net_wm_window_type_normal;
-  atoms[i++] = net_wm_state_modal;
-  atoms[i++] = net_client_list_stacking;
-  atoms[i++] = net_client_list;
-  atoms[i++] = net_wm_state_skip_taskbar;
-  atoms[i++] = net_wm_state_skip_pager;
-  atoms[i++] = net_wm_strut;
-  /* Not supported (yet)
-  atoms[i++] = net_wm_moveresize;
-   */
-  atoms[i++] = net_wm_state_hidden;
-  atoms[i++] = net_wm_window_type_utility;
-  atoms[i++] = net_wm_window_type_splashscreen;
-  
-  XChangeProperty (dpy, check_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
-  data[0] = check_win;
-  XChangeProperty (dpy, root_win, net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
+    Atom atoms[30];
+    unsigned long data[1];
+    int i = 0;
+
+    atoms[i++] = net_wm_name;
+    atoms[i++] = net_close_window;
+    atoms[i++] = net_wm_state;
+    atoms[i++] = net_wm_state_shaded;
+    atoms[i++] = net_wm_state_sticky;
+    atoms[i++] = net_wm_state_maximized_vert;
+    atoms[i++] = net_wm_state_maximized_horz;
+    atoms[i++] = net_wm_desktop;
+    atoms[i++] = net_number_of_desktops;
+    atoms[i++] = net_current_desktop;
+    atoms[i++] = net_desktop_geometry;
+    atoms[i++] = net_desktop_viewport;
+    atoms[i++] = net_workarea;
+    atoms[i++] = net_wm_window_type;
+    atoms[i++] = net_wm_window_type_desktop;
+    atoms[i++] = net_wm_window_type_dock;
+    atoms[i++] = net_wm_window_type_toolbar;
+    atoms[i++] = net_wm_window_type_menu;
+    atoms[i++] = net_wm_window_type_dialog;
+    atoms[i++] = net_wm_window_type_normal;
+    atoms[i++] = net_wm_state_modal;
+    atoms[i++] = net_client_list_stacking;
+    atoms[i++] = net_client_list;
+    atoms[i++] = net_wm_state_skip_taskbar;
+    atoms[i++] = net_wm_state_skip_pager;
+    atoms[i++] = net_wm_strut;
+    /* Not supported (yet)
+    atoms[i++] = net_wm_moveresize;
+     */
+    atoms[i++] = net_wm_state_hidden;
+    atoms[i++] = net_wm_window_type_utility;
+    atoms[i++] = net_wm_window_type_splashscreen;
+
+    XChangeProperty (dpy, check_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
+    data[0] = check_win;
+    XChangeProperty (dpy, root_win, net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
 }
 
 static int check_type_and_format (Display *dpy, Window w, Atom a, int expected_format, Atom expected_type, int n_items,  int format, Atom type)
 {
-  if ((expected_format == format) && (expected_type == type) && (n_items < 0 || n_items > 0))
-  {
-      return (True);  
-  }
-  return (False);
+    if ((expected_format == format) && (expected_type == type) && (n_items < 0 || n_items > 0))
+    {
+	return (True);  
+    }
+    return (False);
 }
 
 int get_atom_list (Display *dpy, Window  w, Atom a, Atom **atoms_p, int *n_atoms_p)
 {
-  Atom type;
-  int format;
-  unsigned long n_atoms;
-  unsigned long bytes_after;
-  Atom *atoms;
+    Atom type;
+    int format;
+    unsigned long n_atoms;
+    unsigned long bytes_after;
+    Atom *atoms;
 
-  *atoms_p = NULL;
-  *n_atoms_p = 0;
-  
-  if (XGetWindowProperty (dpy, w, a, 0L, 1L, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (guchar **)&atoms) != Success || type == None)
-  {
-      return (False);
-  }
+    *atoms_p = NULL;
+    *n_atoms_p = 0;
 
-  if (!check_type_and_format (dpy, w, a, 32, XA_ATOM, -1, format, type))
-  {
-      if (atoms)
-      {
-          XFree (atoms);
-      }
-      *atoms_p = NULL;
-      *n_atoms_p = 0;
-      return (False);
-  }
+    if (XGetWindowProperty (dpy, w, a, 0L, 1L, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (guchar **)&atoms) != Success || type == None)
+    {
+	return (False);
+    }
 
-  *atoms_p = atoms;
-  *n_atoms_p = n_atoms;
+    if (!check_type_and_format (dpy, w, a, 32, XA_ATOM, -1, format, type))
+    {
+	if (atoms)
+	{
+            XFree (atoms);
+	}
+	*atoms_p = NULL;
+	*n_atoms_p = 0;
+	return (False);
+    }
 
-  return (True);
+    *atoms_p = atoms;
+    *n_atoms_p = n_atoms;
+
+    return (True);
 }
 
 int get_cardinal_list (Display *dpy, Window w, Atom xatom, unsigned long **cardinals_p, int *n_cardinals_p)
 {
-  Atom type;
-  int format;
-  unsigned long n_cardinals;
-  unsigned long bytes_after;
-  unsigned long *cardinals;
+    Atom type;
+    int format;
+    unsigned long n_cardinals;
+    unsigned long bytes_after;
+    unsigned long *cardinals;
 
-  *cardinals_p = NULL;
-  *n_cardinals_p = 0;
-  
-  if ((XGetWindowProperty (dpy, w, xatom, 0, 32, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
+    *cardinals_p = NULL;
+    *n_cardinals_p = 0;
+
+    if ((XGetWindowProperty (dpy, w, xatom, 0, 32, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
     {
-      return False;
+	return False;
     }
 
-  if (!check_type_and_format (dpy, w, xatom, 32, XA_CARDINAL, -1, format, type))
+    if (!check_type_and_format (dpy, w, xatom, 32, XA_CARDINAL, -1, format, type))
     {
-      XFree (cardinals);
-      return False;
+	XFree (cardinals);
+	return False;
     }
 
-  *cardinals_p = cardinals;
-  *n_cardinals_p = n_cardinals;
+    *cardinals_p = cardinals;
+    *n_cardinals_p = n_cardinals;
 
-  return True;
+    return True;
 }
 
 void set_net_workarea (Display * dpy, Window w, CARD32 *margins)
@@ -430,68 +433,119 @@ void init_net_desktop_params (Display * dpy, Window w, int workspace)
 void
 set_utf8_string_hint (Display *dpy, Window w, Atom atom, const char *val)
 {
-  XChangeProperty (dpy, w, atom, utf8_string,  8, PropModeReplace, (unsigned char *) val, strlen (val) + 1);
+    XChangeProperty (dpy, w, atom, utf8_string,  8, PropModeReplace, (unsigned char *) val, strlen (val) + 1);
 }
 
 void getTransientFor(Display * dpy, Window w, Window *transient_for)
 {
-  DBG("entering getTransientFor\n");
+    DBG("entering getTransientFor\n");
 
-  if (!XGetTransientForHint (dpy, w, transient_for))
-  {
-    *transient_for = None;
-  }
+    if (!XGetTransientForHint (dpy, w, transient_for))
+    {
+	*transient_for = None;
+    }
 
-  DBG("Window (%#lx) is transient for (%#lx)\n", w, *transient_for);
+    DBG("Window (%#lx) is transient for (%#lx)\n", w, *transient_for);
 }
 
 int get_utf8_string (Display *dpy, Window w, Atom xatom, char **str_p)
 {
-  Atom type;
-  int format;
-  unsigned long bytes_after;
-  unsigned char *str;
-  unsigned long n_items;
-  
-  *str_p = NULL;
-  
-  if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
-  {
-      return False;
-  }
+    Atom type;
+    int format;
+    unsigned long bytes_after;
+    unsigned char *str;
+    unsigned long n_items;
 
-  if (!check_type_and_format (dpy, w, xatom, 8, utf8_string, -1, format, type))
-  {
-      XFree (str);
-      return False;
-  }
+    DBG("entering get_utf8_string\n");
 
-  if (!g_utf8_validate (str, n_items, NULL))
+    *str_p = NULL;
+    if ((XGetWindowProperty (dpy, w, xatom, 0, 32, False, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
     {
-      char *name;
-
-      name = XGetAtomName (dpy, xatom);
-      DBG ("Property %s on window (%lx) contained invalid UTF-8\n", name, w);
-      XFree (name);
-      XFree (str);
-
-      return False;
+        DBG("no utf8_string value provided\n");
+	return False;
     }
-  
-  *str_p = str;
 
-  return True;
+    if (!check_type_and_format (dpy, w, xatom, 8, utf8_string, -1, format, type))
+    {
+        DBG("utf8_string value invalid\n");
+	if (str)
+	{
+            XFree (str);
+	}
+	return False;
+    }
+
+    if (!g_utf8_validate (str, n_items, NULL))
+    {
+	char *name;
+
+	name = XGetAtomName (dpy, xatom);
+	if (name)
+	{
+	    g_message("Property %s on window (%lx) contained invalid UTF-8\n", name, w);
+	    XFree (name);
+	}
+	XFree (str);
+
+	return False;
+    }
+
+    *str_p = str;
+
+    return True;
 }
+
+static char* text_property_to_utf8 (Display *dpy, const XTextProperty *prop)
+{
+    char **list;
+    int count;
+    char *retval;
+
+    DBG("entering text_property_to_utf8\n");
+
+    list = NULL;
+    if ((count = gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding), prop->format, prop->value, prop->nitems, &list)) == 0)
+    {
+        DBG("gdk_text_property_to_utf8_list returned 0\n");
+	return NULL;
+    }
+    retval = list[0];
+    list[0] = g_strdup ("");
+    g_strfreev (list);
+
+    return retval;
+}
+
+static char* get_text_property (Display *dpy, Window w, Atom a)
+{
+    XTextProperty text;
+    char *retval;
+
+    DBG("entering get_text_property\n");
+    text.nitems = 0;
+    if (XGetTextProperty (dpy, w, &text, a))
+    {
+	retval = text_property_to_utf8 (dpy, &text);
+	if ((text.value) && (text.nitems > 0))
+	{
+            XFree (text.value);
+	}
+    }
+    else
+    {
+	retval = NULL;
+	DBG("XGetTextProperty() failed\n");
+    }
+
+    return retval;
+}
+
 
 void getWindowName(Display * dpy, Window w, char **name)
 {
-    int status, num;
-    char **list;
     char *str;
-    XTextProperty text_prop;
 
     DBG("entering getWindowName\n");
-
     *name = NULL;
     if (get_utf8_string (dpy, w, net_wm_name, &str))
     {
@@ -499,31 +553,16 @@ void getWindowName(Display * dpy, Window w, char **name)
 	XFree (str);
 	return;
     }
-    
-    status = XGetWMName(dpy, w, &text_prop);
-    if((!status) || (!text_prop.value) || (!text_prop.nitems))
+    str = get_text_property (dpy, w, XA_WM_NAME);
+    if (str)
     {
-        *name = strdup("");
-        return;
-    }
-    
-    if(text_prop.encoding == XA_STRING)
-    {
-        if(text_prop.value)
-        {
-            *name = strdup(text_prop.value);
-            XFree(text_prop.value);
-        }
-    }
+        *name = strdup (str);
+	XFree (str);
+    }    
     else
     {
-        XmbTextPropertyToTextList(dpy, &text_prop, &list, &num);
-        if(num && *list)
-        {
-            XFree(text_prop.value);
-            *name = strdup(*list);
-            XFreeStringList(list);
-        }
+        *name = strdup("");
     }
+
     return;
 }

@@ -1,6 +1,7 @@
 SUBDIRS = \
 agua \
 coldsteel \
+crux \
 cruxish \
 gtk \
 kde \

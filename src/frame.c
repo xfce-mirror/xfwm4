@@ -121,8 +121,7 @@ inline int frameHeight(Client * c)
     return c->height;
 }
 
-void fillRectangle(Display * dpy, Drawable d, Pixmap pm, int x, int y,
-                   int width, int height)
+static inline void fillRectangle(Display * dpy, Drawable d, Pixmap pm, int x, int y, int width, int height)
 {
     XGCValues gv;
     GC gc;
@@ -149,7 +148,7 @@ void fillRectangle(Display * dpy, Drawable d, Pixmap pm, int x, int y,
     XFreeGC(dpy, gc);
 }
 
-void frameCreateTitlePixmap(Client * c, int state, int left, int right,
+static void frameCreateTitlePixmap(Client * c, int state, int left, int right,
                             MyPixmap * pm)
 {
     int width, x = 0, tp = 0, w1 = 0, w2, w3, w4, w5, temp;
@@ -253,9 +252,8 @@ void frameCreateTitlePixmap(Client * c, int state, int left, int right,
     
     if(w1 > 0)
     {
-        scalePixmap(dpy, &title[TITLE_1][state], &title1, w1, frameTop(c));
-        fillRectangle(dpy, pm->pixmap, title1.pixmap, 0, 0, w1, frameTop(c));
-        fillRectangle(dpy, pm->mask, title1.mask, 0, 0, w1, frameTop(c));
+        fillRectangle(dpy, pm->pixmap, title[TITLE_1][state].pixmap, 0, 0, w1, frameTop(c));
+        fillRectangle(dpy, pm->mask, title[TITLE_1][state].mask, 0, 0, w1, frameTop(c));
         x = x + w1;
     }
 
@@ -265,9 +263,8 @@ void frameCreateTitlePixmap(Client * c, int state, int left, int right,
 
     if(w3 > 0)
     {
-        scalePixmap(dpy, &title[TITLE_3][state], &title3, w3, frameTop(c));
-        fillRectangle(dpy, pm->pixmap, title3.pixmap, x, 0, w3, frameTop(c));
-        fillRectangle(dpy, pm->mask, title3.mask, x, 0, w3, frameTop(c));
+        fillRectangle(dpy, pm->pixmap, title[TITLE_3][state].pixmap, x, 0, w3, frameTop(c));
+        fillRectangle(dpy, pm->mask, title[TITLE_3][state].mask, x, 0, w3, frameTop(c));
         gdk_draw_layout(gpixmap, gc, x + tp, (frameTop(c) + title_vertical_offset - logical_rect.height) / 2, layout);
         x = x + w3;
     }
@@ -282,9 +279,8 @@ void frameCreateTitlePixmap(Client * c, int state, int left, int right,
 
     if(w5 > 0)
     {
-        scalePixmap(dpy, &title[TITLE_5][state], &title5, w5, frameTop(c));
-        fillRectangle(dpy, pm->pixmap, title5.pixmap, x, 0, w5, frameTop(c));
-        fillRectangle(dpy, pm->mask, title5.mask, x, 0, w5, frameTop(c));
+        fillRectangle(dpy, pm->pixmap, title[TITLE_5][state].pixmap, x, 0, w5, frameTop(c));
+        fillRectangle(dpy, pm->mask, title[TITLE_5][state].mask, x, 0, w5, frameTop(c));
     }
     g_object_unref (G_OBJECT (layout));
     g_object_unref (G_OBJECT (gc));
@@ -294,7 +290,7 @@ void frameCreateTitlePixmap(Client * c, int state, int left, int right,
     freePixmap(dpy, &title5);
 }
 
-int getButtonFromLetter(char c)
+static int getButtonFromLetter(char c)
 {
     int b;
 
@@ -326,7 +322,7 @@ int getButtonFromLetter(char c)
     return b;
 }
 
-char getLetterFromButton(int b)
+static char getLetterFromButton(int b)
 {
     char c;
 
@@ -358,8 +354,7 @@ char getLetterFromButton(int b)
     return c;
 }
 
-void frameSetShape(Client * c, int state, MyPixmap * title,
-                   MyPixmap pm_sides[3], int button_x[BUTTON_COUNT])
+static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_sides[3], int button_x[BUTTON_COUNT])
 {
     Window temp;
     int i;
@@ -381,8 +376,7 @@ void frameSetShape(Client * c, int state, MyPixmap * title,
         rect.y = 0;
         rect.width = frameWidth(c);
         rect.height = frameHeight(c);
-        XShapeCombineRectangles(dpy, temp, ShapeBounding, 0, 0, &rect, 1,
-                                ShapeSubtract, 0);
+        XShapeCombineRectangles(dpy, temp, ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
     }
     else
     {
@@ -550,11 +544,23 @@ void frameDraw(Client * c)
         right_height = frameHeight(c) - frameTop(c) - corners[CORNER_BOTTOM_RIGHT][ACTIVE].height;
 
         frameCreateTitlePixmap(c, state, left, right, &pm_title);
-        scalePixmap(dpy, &sides[SIDE_LEFT][state], &pm_sides[SIDE_LEFT], frameLeft(c), left_height);
-        scalePixmap(dpy, &sides[SIDE_RIGHT][state], &pm_sides[SIDE_RIGHT], frameRight(c), right_height);
-        scalePixmap(dpy, &sides[SIDE_BOTTOM][state], &pm_sides[SIDE_BOTTOM], bottom_width, frameBottom(c));
-
         XSetWindowBackgroundPixmap(dpy, c->title, pm_title.pixmap);
+
+        pm_sides[SIDE_LEFT].pixmap   = XCreatePixmap(dpy, root, frameLeft(c), left_height, depth);
+        pm_sides[SIDE_LEFT].mask     = XCreatePixmap(dpy, pm_sides[SIDE_LEFT].pixmap, frameLeft(c), left_height, 1);
+        fillRectangle(dpy, pm_sides[SIDE_LEFT].pixmap, sides[SIDE_LEFT][state].pixmap, 0, 0, frameLeft(c), left_height);
+        fillRectangle(dpy, pm_sides[SIDE_LEFT].mask,   sides[SIDE_LEFT][state].mask,   0, 0, frameLeft(c), left_height);
+
+        pm_sides[SIDE_RIGHT].pixmap  = XCreatePixmap(dpy, root, frameRight(c), right_height, depth);
+        pm_sides[SIDE_RIGHT].mask    = XCreatePixmap(dpy, pm_sides[SIDE_RIGHT].pixmap, frameRight(c), right_height, 1);
+        fillRectangle(dpy, pm_sides[SIDE_RIGHT].pixmap, sides[SIDE_RIGHT][state].pixmap, 0, 0, frameRight(c), right_height);
+        fillRectangle(dpy, pm_sides[SIDE_RIGHT].mask,   sides[SIDE_RIGHT][state].mask,   0, 0, frameRight(c), right_height);
+
+        pm_sides[SIDE_BOTTOM].pixmap = XCreatePixmap(dpy, root, bottom_width, frameBottom(c), depth);
+        pm_sides[SIDE_BOTTOM].mask   = XCreatePixmap(dpy, pm_sides[SIDE_BOTTOM].pixmap, bottom_width, frameBottom(c), 1);
+        fillRectangle(dpy, pm_sides[SIDE_BOTTOM].pixmap, sides[SIDE_BOTTOM][state].pixmap, 0, 0, bottom_width, frameBottom(c));
+        fillRectangle(dpy, pm_sides[SIDE_BOTTOM].mask,   sides[SIDE_BOTTOM][state].mask,   0, 0, bottom_width, frameBottom(c));
+
         for(i = 0; i < 3; i++)
 	{
             XSetWindowBackgroundPixmap(dpy, c->sides[i], pm_sides[i].pixmap);

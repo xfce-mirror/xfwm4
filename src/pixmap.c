@@ -27,11 +27,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <malloc.h>
+#include <glib.h>
 #include "pixmap.h"
+#include "main.h"
 #include "debug.h"
 
-gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file,
-               XpmColorSymbol * cs, gint n)
+gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file, XpmColorSymbol * cs, gint n)
 {
     gchar filename[512];
     XpmAttributes attr;
@@ -47,10 +48,13 @@ gboolean loadPixmap(Display * dpy, MyPixmap * pm, gchar *dir, gchar *file,
     attr.numsymbols = n;
     attr.valuemask = XpmSize;
     if(n > 0 && cs)
+    {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
-    if(XpmReadFileToPixmap
-       (dpy, XDefaultRootWindow(dpy), filename, &pm->pixmap, &pm->mask, &attr))
+    }
+    if(XpmReadFileToPixmap (dpy, XDefaultRootWindow(dpy), filename, &pm->pixmap, &pm->mask, &attr))
+    {
         return FALSE;
+    }
     pm->width = attr.width;
     pm->height = attr.height;
     XpmFreeAttributes(&attr);
@@ -62,47 +66,11 @@ void freePixmap(Display * dpy, MyPixmap * pm)
     DBG("entering freePixmap\n");
 
     if(pm->pixmap != None)
-        XFreePixmap(dpy, pm->pixmap);
-    if(pm->mask != None)
-        XFreePixmap(dpy, pm->mask);
-}
-
-void scalePixmap(Display * dpy, MyPixmap * src, MyPixmap * dst, gint width, gint height)
-{
-    XpmImage xi_src, xi_dst;
-    gint x, y, sx, sy, *src_data, *dst_data;
-
-    DBG("entering scalePixmap\n");
-
-    if(width < 1)
-        width = 1;
-    if(height < 1)
-        height = 1;
-
-    XpmCreateXpmImageFromPixmap(dpy, src->pixmap, src->mask, &xi_src, NULL);
-    dst->width = width;
-    dst->height = height;
-    xi_dst.width = width;
-    xi_dst.height = height;
-    xi_dst.cpp = xi_src.cpp;
-    xi_dst.ncolors = xi_src.ncolors;
-    xi_dst.colorTable = xi_src.colorTable;
-    xi_dst.data = malloc(sizeof(int) * (xi_dst.width * xi_dst.height));
-    dst_data = xi_dst.data;
-    src_data = xi_src.data;
-    for(y = 0; y < xi_dst.height; y++)
     {
-        dst_data = xi_dst.data + (y * xi_dst.width);
-        for(x = 0; x < xi_dst.width; x++)
-        {
-            sx = (x * xi_src.width) / xi_dst.width;
-            sy = (y * xi_src.height) / xi_dst.height;
-            *dst_data = *(src_data + sx + (sy * xi_src.width));
-            dst_data++;
-        }
+        XFreePixmap(dpy, pm->pixmap);
     }
-    XpmCreatePixmapFromXpmImage(dpy, DefaultRootWindow(dpy), &xi_dst,
-                                &dst->pixmap, &dst->mask, NULL);
-    free(xi_dst.data);
-    XpmFreeXpmImage(&xi_src);
+    if(pm->mask != None)
+    {
+        XFreePixmap(dpy, pm->mask);
+    }
 }

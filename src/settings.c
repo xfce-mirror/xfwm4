@@ -476,8 +476,6 @@ void unloadSettings()
         freePixmap(dpy, &title[i][ACTIVE]);
         freePixmap(dpy, &title[i][INACTIVE]);
     }
-    // XFreeGC(dpy, title_gc[ACTIVE]);
-    // XFreeGC(dpy, title_gc[INACTIVE]);
     XFreeGC(dpy, box_gc);
 }
 

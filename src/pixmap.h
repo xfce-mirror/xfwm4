@@ -37,6 +37,5 @@ MyPixmap;
 
 gboolean loadPixmap(Display *, MyPixmap *, gchar *, gchar *, XpmColorSymbol *, gint);
 void freePixmap(Display *, MyPixmap *);
-void scalePixmap(Display *, MyPixmap *, MyPixmap *, gint width, gint height);
 
 #endif /* __PIXMAP_H__ */
