@@ -14,6 +14,15 @@ BuildRequires: 	pango-devel >= 1.0.0
 %description
 xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.
 
+%package themes
+Summary:	Additionnal themes for xfwm4
+Group:		User Interface/Desktops
+BuildArch:	noarch
+Requires:	xfwm4
+
+%description themes
+Various themes for xfwm4.
+
 %prep
 %setup -q
 
@@ -32,6 +41,24 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc example.xfwm4rc example.gtkrc-2.0 README INSTALL TODO COPYING AUTHORS
 %{_bindir}/*
-%{_datadir}/xfwm4
+%{_datadir}/xfwm4/defaults
+%{_datadir}/xfwm4/themes/kde
 
+%files themes
+%defattr(-, root, root)
+%{_datadir}/xfwm4/themes/agua
+%{_datadir}/xfwm4/themes/coldsteel
+%{_datadir}/xfwm4/themes/crux
+%{_datadir}/xfwm4/themes/cruxish
+%{_datadir}/xfwm4/themes/gtk
+%{_datadir}/xfwm4/themes/linea
+%{_datadir}/xfwm4/themes/mofit
+%{_datadir}/xfwm4/themes/next
+%{_datadir}/xfwm4/themes/oroborus
+%{_datadir}/xfwm4/themes/platinum
+%{_datadir}/xfwm4/themes/redmond
+%{_datadir}/xfwm4/themes/redmondxp
+%{_datadir}/xfwm4/themes/slimline
+%{_datadir}/xfwm4/themes/trench
+%{_datadir}/xfwm4/themes/xfce
 

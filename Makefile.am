@@ -12,3 +12,4 @@ example.xfwm4rc :
 
 rpm : dist
 	rpm -ta $(PACKAGE)-$(VERSION).tar.gz
+	@rm -f $(PACKAGE)-$(VERSION).tar.gz
