@@ -395,7 +395,12 @@ clientUpdateUrgency (Client *c)
     if ((c->wmhints) && (c->wmhints->flags & XUrgencyHint))
     {
         FLAG_SET (c->wm_flags, WM_FLAG_URGENT);
-        c->blink_timeout_id =  g_timeout_add_full (0, 500, (GtkFunction) urgent_cb, (gpointer) c, NULL);
+	if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+	{
+            c->blink_timeout_id =  
+	        g_timeout_add_full (0, 500, (GtkFunction) urgent_cb,
+		                            (gpointer) c, NULL);
+        }
     }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE)
         && !FLAG_TEST (c->wm_flags, WM_FLAG_URGENT)
@@ -1642,9 +1647,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         clientSetNetState (c);
     }
     
-    /* Adjust to urgency state once the window is ready */
-    clientUpdateUrgency (c);
-
     /* Window is reparented now, so we can safely release the grab 
      * on the server 
      */
@@ -1937,6 +1939,8 @@ clientShowSingle (Client * c, gboolean change_state)
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
         XMapWindow (display_info->dpy, c->frame);
         XMapWindow (display_info->dpy, c->window);
+        /* Adjust to urgency state as the window is visible */
+        clientUpdateUrgency (c);
     }
     if (change_state)
     {
@@ -1994,6 +1998,8 @@ clientHideSingle (Client * c, gboolean change_state)
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
         c->ignore_unmap++;
+        /* Adjust to urgency state as the window is not visible */
+        clientUpdateUrgency (c);
     }
     if (change_state)
     {
