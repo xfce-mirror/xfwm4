@@ -104,12 +104,10 @@ cleanUp (void)
 static char *
 build_session_filename(SessionClient *client_session)
 {
-    gchar *filename, *path, *file, *tmp;
+    gchar *filename, *path, *file;
     GError *error = NULL;
 
-    tmp = g_build_filename ("xfce4", "xfwm4", "sessions", NULL);
-    path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, tmp, FALSE);
-    g_free (tmp);
+    path = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
     
     if (!xfce_mkdirhier(path, 0700, &error)) 
     {
@@ -195,12 +193,13 @@ ensure_basedir_spec (void)
     GDir *gdir;
     const char *name;
 
-    g_strlcpy (path, "xfce4/xfwm4/sessions", PATH_MAX);
-    new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, FALSE);
-
-    /* I'll take the existence of this file as a sign the configuration has
-     * been moved */
-    if (g_file_test (new, G_FILE_TEST_EXISTS))
+    /* test if new directory is there */
+    
+    new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 
+                                       "xfce4" G_DIR_SEPARATOR_S "xfwm4", 
+                                       FALSE);
+    
+    if (g_file_test (new, G_FILE_TEST_IS_DIR))
     {
         g_free (new);
         return;
@@ -208,8 +207,55 @@ ensure_basedir_spec (void)
 
     if (!xfce_mkdirhier(new, 0700, &error)) 
     {
+        g_warning("Unable to create config dir %s: %s",
+                  new, error->message);
+        g_error_free (error);
+        g_free (new);
+        return;
+    }
+
+    g_free (new);
+
+    /* copy xfwm4rc */
+    
+    old = xfce_get_userfile ("xfwm4rc", NULL);
+
+    if (g_file_test (old, G_FILE_TEST_EXISTS))
+    {
+        FILE *r, *w;
+
+        g_strlcpy (path, "xfce4/xfwm4/xfwm4rc", PATH_MAX);
+        new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, FALSE);
+
+        r = fopen (old, "r");
+        w = fopen (new, "w");
+
+        g_free (new);
+        
+        if (w && r)
+        {
+            char c;
+            
+            while ((c = getc (r)) != EOF)
+                putc (c, w);
+        }
+
+        if (r)
+            fclose (r);
+        if (w)
+            fclose (w);
+    }
+    
+    g_free (old);
+
+    /* copy saved session data */
+    
+    new = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
+
+    if (!xfce_mkdirhier(new, 0700, &error)) 
+    {
         g_warning("Unable to create session dir %s: %s",
-                   path, error->message);
+                  new, error->message);
         g_error_free (error);
         g_free (new);
         return;
@@ -249,36 +295,6 @@ ensure_basedir_spec (void)
 
     g_free (old);
     g_free (new);
-
-    old = xfce_get_userfile ("xfwm4rc", NULL);
-
-    if (g_file_test (old, G_FILE_TEST_EXISTS))
-    {
-        FILE *r, *w;
-
-        g_strlcpy (path, "xfce4/xfwm4/xfwm4rc", PATH_MAX);
-        new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
-
-        r = fopen (old, "r");
-        w = fopen (new, "w");
-
-        g_free (new);
-        
-        if (w && r)
-        {
-            char c;
-            
-            while ((c = getc (r)) != EOF)
-                putc (c, w);
-        }
-
-        if (r)
-            fclose (r);
-        if (w)
-            fclose (w);
-    }
-    
-    g_free (old);
 }
 
 static void

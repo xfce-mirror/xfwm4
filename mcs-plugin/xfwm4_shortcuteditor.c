@@ -155,8 +155,8 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
 	    /* create theme (copy default) */
 	    new_theme_path = g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
 	    new_theme_file = xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
-	    default_theme_file = g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes", G_DIR_SEPARATOR_S, "Default",
-						   G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S KEYTHEMERC, NULL);
+	    default_theme_file = g_build_filename (DATADIR, "themes", "Default",
+						   KEY_SUFFIX, KEYTHEMERC, NULL);
 	    
 	    new_theme = fopen (new_theme_file, "w+");
 	    if (!new_theme)
