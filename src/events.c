@@ -546,10 +546,6 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             button1Action(c, ev);
         }
-        else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
-        {
-            clientLower(c);
-        }
         else if((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON]) || (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON]))))
         {
             clientSetFocus(c, True);
@@ -594,6 +590,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
                 /* Let GTK handle this for us. */
             }
+        }
+        else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
+        {
+            clientLower(c);
         }
         else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
         {
