@@ -2313,7 +2313,26 @@ void clientToggleFullscreen (Client * c)
     TRACE ("entering clientToggleFullscreen");
     TRACE ("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsTransientOrModal (c))
+    /* Can we switch to full screen, does it make any sense? */
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && (c->size->flags & PMaxSize))
+    {
+        GdkRectangle rect;
+        gint monitor_nbr;
+        int cx, cy;
+
+        cx = frameX (c) + (frameWidth (c) / 2);
+        cy = frameY (c) + (frameHeight (c) / 2);
+
+        monitor_nbr = gdk_screen_get_monitor_at_point (c->screen_info->gscr, cx, cy);
+        gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
+        
+	if ((c->size->max_width < rect.width) || (c->size->max_height < rect.height))
+	{
+	    return;
+	}
+    }
+
+    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);
