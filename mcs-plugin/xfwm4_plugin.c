@@ -165,7 +165,7 @@ struct _Itf
 
     GSList *click_focus_radio_group;
 
-    GtkWidget *dialog1;
+    GtkWidget *xfwm4_dialog;
     GtkWidget *dialog_vbox1;
     GtkWidget *dialog_header;
     GtkWidget *notebook1;
@@ -1011,20 +1011,21 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
 
     dialog->mcs_plugin = mcs_plugin;
 
-    dialog->dialog1 = gtk_dialog_new();
+    dialog->xfwm4_dialog = gtk_dialog_new();
+    gtk_window_set_position(GTK_WINDOW(dialog->xfwm4_dialog), GTK_WIN_POS_CENTER);
 
     icon = default_icon_at_size(32, 32);
-    gtk_window_set_icon(GTK_WINDOW(dialog->dialog1), icon);
+    gtk_window_set_icon(GTK_WINDOW(dialog->xfwm4_dialog), icon);
     g_object_unref(icon);
 
     dialog->click_focus_radio_group = NULL;
 
-    dialog->dialog_vbox1 = GTK_DIALOG(dialog->dialog1)->vbox;
+    dialog->dialog_vbox1 = GTK_DIALOG(dialog->xfwm4_dialog)->vbox;
     gtk_widget_show(dialog->dialog_vbox1);
 
     dialog->dialog_header = create_header(icon, _("Window Manager Preferences"));
     gtk_widget_show(dialog->dialog_header);
-    gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox1), dialog->dialog_header, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(dialog->dialog_vbox1), dialog->dialog_header, FALSE, TRUE, 0);
 
     dialog->notebook1 = gtk_notebook_new();
     gtk_widget_show(dialog->notebook1);
@@ -1362,13 +1363,13 @@ Itf *create_dialog(McsPlugin * mcs_plugin)
     gtk_notebook_set_tab_label(GTK_NOTEBOOK(dialog->notebook1), gtk_notebook_get_nth_page(GTK_NOTEBOOK(dialog->notebook1), 2), dialog->label3);
     gtk_label_set_justify(GTK_LABEL(dialog->label3), GTK_JUSTIFY_LEFT);
 
-    dialog->dialog_action_area1 = GTK_DIALOG(dialog->dialog1)->action_area;
+    dialog->dialog_action_area1 = GTK_DIALOG(dialog->xfwm4_dialog)->action_area;
     gtk_widget_show(dialog->dialog_action_area1);
     gtk_button_box_set_layout(GTK_BUTTON_BOX(dialog->dialog_action_area1), GTK_BUTTONBOX_END);
 
     dialog->closebutton1 = gtk_button_new_from_stock("gtk-close");
     gtk_widget_show(dialog->closebutton1);
-    gtk_dialog_add_action_widget(GTK_DIALOG(dialog->dialog1), dialog->closebutton1, GTK_RESPONSE_CLOSE);
+    gtk_dialog_add_action_widget(GTK_DIALOG(dialog->xfwm4_dialog), dialog->closebutton1, GTK_RESPONSE_CLOSE);
     GTK_WIDGET_SET_FLAGS(dialog->closebutton1, GTK_CAN_DEFAULT);
 
     gtk_widget_grab_focus(dialog->closebutton1);
@@ -1406,7 +1407,7 @@ static void setup_dialog(Itf * itf)
     decoration_theme_list = read_themes(decoration_theme_list, itf->treeview1, itf->scrolledwindow1, DECORATION_THEMES, current_theme);
     keybinding_theme_list = read_themes(keybinding_theme_list, itf->treeview2, itf->scrolledwindow2, KEYBINDING_THEMES, current_key_theme);
 
-    g_signal_connect(G_OBJECT(itf->dialog1), "response", G_CALLBACK(cb_dialog_response), itf->mcs_plugin);
+    g_signal_connect(G_OBJECT(itf->xfwm4_dialog), "response", G_CALLBACK(cb_dialog_response), itf->mcs_plugin);
     g_signal_connect(G_OBJECT(itf->click_focus_radio), "toggled", G_CALLBACK(cb_click_to_focus_changed), itf);
     g_signal_connect(G_OBJECT(itf->focus_new_check), "toggled", G_CALLBACK(cb_focus_new_changed), itf);
     g_signal_connect(G_OBJECT(itf->raise_on_focus_check), "toggled", G_CALLBACK(cb_raise_on_focus_changed), itf);
@@ -1418,7 +1419,7 @@ static void setup_dialog(Itf * itf)
     g_signal_connect(G_OBJECT(itf->box_move_check), "toggled", (GCallback) cb_box_move_changed, itf);
     g_signal_connect(G_OBJECT(itf->box_resize_check), "toggled", G_CALLBACK(cb_box_resize_changed), itf);
 
-    gtk_widget_show(itf->dialog1);
+    gtk_widget_show(itf->xfwm4_dialog);
 }
 
 McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
