@@ -769,19 +769,14 @@ gboolean initSettings(void)
         return FALSE;
     }
 
+    if(!mcs_client_check_manager(dpy, screen))
+    {
+	g_warning("MCS manager not running");
+    }
     client = mcs_client_new(dpy, screen, notify_cb, watch_cb, NULL);
     if(client)
     {
-        if(mcs_manager_is_running())
-        {
-            mcs_client_add_channel(client, CHANNEL);
-        }
-        else
-        {
-	    g_warning("MCS manager not running");
-            mcs_client_destroy(client);
-            client = NULL;
-        }
+        mcs_client_add_channel(client, CHANNEL);
     }
     else
     {
