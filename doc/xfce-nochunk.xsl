@@ -6,8 +6,10 @@
 
 <!-- Load onechunk.xsl stylesheet 
      TODO: how can I put a location independent link here?
+This should work. The url can be translated to a local one in the catalog
+file"
 -->
-<xsl:import href="/usr/share/docbook-xsl/html/onechunk.xsl"/>
+<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/onechunk.xsl"/>
 
 <xsl:param name="suppress.navigation">1</xsl:param>
 
