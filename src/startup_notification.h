@@ -26,6 +26,7 @@
 #endif
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+#define SN_API_NOT_YET_FROZEN
 
 #include <libsn/sn.h>
 
