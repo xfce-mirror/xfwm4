@@ -29,8 +29,7 @@
 #include "inline-tabwin-icon.h"
 #include "tabwin.h"
 #include "debug.h"
-
-#define _(x) x
+#include "my_intl.h"
 
 Tabwin *tabwinCreate(gchar * label)
 {

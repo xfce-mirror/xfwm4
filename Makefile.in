@@ -140,7 +140,7 @@ noinst_DATA = example.xfwm4rc
 
 EXTRA_DIST = example.xfwm4rc.in example.gtkrc-2.0 xfwm4.spec xfwm4.spec.in
 
-SUBDIRS = src mcs-plugin defaults themes
+SUBDIRS = common src mcs-plugin defaults themes
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

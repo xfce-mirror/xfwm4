@@ -69,6 +69,7 @@ xfwm4.spec
 Makefile
 src/Makefile
 mcs-plugin/Makefile
+common/Makefile
 defaults/Makefile
 themes/Makefile
 themes/adept/Makefile
