@@ -23,17 +23,6 @@ BuildRequires:	xfce-mcs-manager-devel >= @XFCE_MCS_MANAGER_REQUIRED_VERSION@
 %description
 xfwm4 is a window manager compatable with GNOME, GNOME2, KDE2, KDE3 and Xfce.
 
-%package themes
-Summary:	Additionnal themes for xfwm4
-Group:		User Interface/Desktops
-Requires:	xfwm4
-# This should be really noarch, but if I set noarch here, even the arch
-# dependent stuff is marked as noarch, so... no noarch.
-# BuildArch:	noarch
-
-%description themes
-Various themes for xfwm4.
-
 %prep
 %setup -q
 
@@ -54,71 +43,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_libdir}/*
 %{_datadir}/xfwm4/defaults
-%{_datadir}/xfwm4/themes/adept
-%{_datadir}/xfwm4/themes/atlanta
-%{_datadir}/xfwm4/themes/bbs
-%{_datadir}/xfwm4/themes/curve
-%{_datadir}/xfwm4/themes/default
-%{_datadir}/xfwm4/themes/default.keys
-%{_datadir}/xfwm4/themes/elberg
-%{_datadir}/xfwm4/themes/exocet
-%{_datadir}/xfwm4/themes/kindaker
-%{_datadir}/xfwm4/themes/meenee
-%{_datadir}/xfwm4/themes/microcurve
-%{_datadir}/xfwm4/themes/microdeck
-%{_datadir}/xfwm4/themes/microdeck2
-%{_datadir}/xfwm4/themes/microdeck3
-%{_datadir}/xfwm4/themes/tgc
-%{_datadir}/xfwm4/themes/totem
-
-%files themes
-%defattr(-, root, root)
-%{_datadir}/xfwm4/themes/agua
-%{_datadir}/xfwm4/themes/atlanta2
-%{_datadir}/xfwm4/themes/b5
-%{_datadir}/xfwm4/themes/b6
-%{_datadir}/xfwm4/themes/beastie
-%{_datadir}/xfwm4/themes/biz
-%{_datadir}/xfwm4/themes/coldsteel
-%{_datadir}/xfwm4/themes/coolclean
-%{_datadir}/xfwm4/themes/crux
-%{_datadir}/xfwm4/themes/cruxish
-%{_datadir}/xfwm4/themes/eazel-blue
-%{_datadir}/xfwm4/themes/fbx
-%{_datadir}/xfwm4/themes/g2
-%{_datadir}/xfwm4/themes/gaudy
-%{_datadir}/xfwm4/themes/gnububble
-%{_datadir}/xfwm4/themes/gorilla
-%{_datadir}/xfwm4/themes/gtk
-%{_datadir}/xfwm4/themes/iceg
-%{_datadir}/xfwm4/themes/kde
-%{_datadir}/xfwm4/themes/keramik
-%{_datadir}/xfwm4/themes/koynacity
-%{_datadir}/xfwm4/themes/linea
-%{_datadir}/xfwm4/themes/metabox
-%{_datadir}/xfwm4/themes/microgui
-%{_datadir}/xfwm4/themes/mofit
-%{_datadir}/xfwm4/themes/next
-%{_datadir}/xfwm4/themes/ops
-%{_datadir}/xfwm4/themes/oroborus
-%{_datadir}/xfwm4/themes/perl
-%{_datadir}/xfwm4/themes/pills
-%{_datadir}/xfwm4/themes/piranha
-%{_datadir}/xfwm4/themes/platinum
-%{_datadir}/xfwm4/themes/quiet-purple
-%{_datadir}/xfwm4/themes/quinx
-%{_datadir}/xfwm4/themes/r9x
-%{_datadir}/xfwm4/themes/redmond
-%{_datadir}/xfwm4/themes/redmondxp
-%{_datadir}/xfwm4/themes/retro
-%{_datadir}/xfwm4/themes/silverado
-%{_datadir}/xfwm4/themes/slick
-%{_datadir}/xfwm4/themes/slimline
-%{_datadir}/xfwm4/themes/tabs
-%{_datadir}/xfwm4/themes/trench
-%{_datadir}/xfwm4/themes/tux
-%{_datadir}/xfwm4/themes/triviality
-%{_datadir}/xfwm4/themes/variation
-%{_datadir}/xfwm4/themes/xfce
-
-
+%{_datadir}/xfwm4/themes

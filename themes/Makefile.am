@@ -2,67 +2,14 @@
 #
 
 SUBDIRS =								\
-	adept								\
-	agua 								\
-	atlanta 							\
-	atlanta2 							\
-	b5 								\
-	b6 								\
-	bbs 								\
-	beastie 							\
-	biz 								\
-	coldsteel 							\
-	coolclean 							\
-	crux 								\
-	cruxish 							\
-	curve 								\
+	bbs 							        \
+	curve 							        \
 	default 							\
 	default.keys 							\
-	eazel-blue 							\
-	elberg 								\
-	exocet 								\
-	fbx 								\
-	g2 								\
-	gaudy 								\
-	gnububble 							\
-	gorilla 							\
-	gtk 								\
-	iceg 								\
-	kde 								\
-	keramik 							\
-	kindaker 							\
-	koynacity 							\
-	linea 								\
-	meenee 								\
-	metabox 							\
+	exocet 							        \
+	meenee 							        \
 	microcurve 							\
 	microdeck 							\
 	microdeck2 							\
 	microdeck3 							\
-	microgui 							\
-	mofit 								\
-	next 								\
-	ops 								\
-	oroborus 							\
-	perl 								\
-	pills 								\
-	piranha 							\
-	platinum 							\
-	quiet-purple 							\
-	quinx 								\
-	r9x 								\
-	redmond 							\
-	redmondxp 							\
-	retro 								\
-	silverado 							\
-	slick 								\
-	slimline 							\
-	tabs 								\
-	tgc 								\
-	totem 								\
-	trench 								\
-	triviality							\
-	tux 								\
-	variation 							\
-	xfce
-
+	tgc

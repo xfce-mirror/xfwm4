@@ -1,4 +1,4 @@
-# generated automatically by aclocal 1.7.4 -*- Autoconf -*-
+# generated automatically by aclocal 1.7.3 -*- Autoconf -*-
 
 # Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002
 # Free Software Foundation, Inc.
@@ -16,7 +16,7 @@
 # This macro actually does too much some checks are only needed if
 # your package does certain things.  But this isn't really a big deal.
 
-# Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
+# Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
 # Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,14 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-# serial 10
+# serial 9
+
+# There are a few dirty hacks below to avoid letting `AC_PROG_CC' be
+# written in clear, in which case automake, when reading aclocal.m4,
+# will think it sees a *use*, and therefore will trigger all it's
+# C support machinery.  Also note that it means that autoscan, seeing
+# CC etc. in the Makefile, will ask for an AC_PROG_CC use...
+
 
 AC_PREREQ([2.54])
 
@@ -163,7 +170,7 @@ AC_DEFUN([AM_AUTOMAKE_VERSION],[am__api_version="1.7"])
 # Call AM_AUTOMAKE_VERSION so it can be traced.
 # This function is AC_REQUIREd by AC_INIT_AUTOMAKE.
 AC_DEFUN([AM_SET_CURRENT_AUTOMAKE_VERSION],
-	 [AM_AUTOMAKE_VERSION([1.7.4])])
+	 [AM_AUTOMAKE_VERSION([1.7.3])])
 
 # Helper functions for option handling.                    -*- Autoconf -*-
 
