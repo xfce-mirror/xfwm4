@@ -967,6 +967,14 @@ static void clientWindowType(Client * c)
         {
             c->initial_layer = c2->win_layer;
         }
+	else if (c->transient_for == root)
+	{
+            TRACE("window is transient  for root window");
+            c->initial_layer = WIN_LAYER_ONTOP;
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
+	    /* Remove the transient field now */
+	    c->transient_for = None;
+	}
         CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
     if((old_type != c->type) || (c->initial_layer != c->win_layer))
