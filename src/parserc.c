@@ -167,8 +167,11 @@ getThemeDir (const gchar * theme, const gchar * file)
 {
     if (!theme)
     {
-        return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-            G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+        return g_build_filename (DATADIR, 
+                G_DIR_SEPARATOR_S, "themes",
+                G_DIR_SEPARATOR_S, DEFAULT_THEME, 
+                G_DIR_SEPARATOR_S, "xfwm4", 
+                NULL);
     }
     else if (g_path_is_absolute (theme))
     {
@@ -178,8 +181,11 @@ getThemeDir (const gchar * theme, const gchar * file)
         }
         else
         {
-            return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-                G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+            return g_build_filename (DATADIR, 
+                    G_DIR_SEPARATOR_S, "themes",
+                    G_DIR_SEPARATOR_S, DEFAULT_THEME, 
+                    G_DIR_SEPARATOR_S, "xfwm4", 
+                    NULL);
         }
     }
     else
@@ -270,8 +276,11 @@ getThemeDir (const gchar * theme, const gchar * file)
         g_free (test_dir);
     }
     
-    return g_build_filename (DATADIR, G_DIR_SEPARATOR_S, "themes",
-        G_DIR_SEPARATOR_S, DEFAULT_THEME, NULL);
+    return g_build_filename (DATADIR, 
+            G_DIR_SEPARATOR_S, "themes",
+            G_DIR_SEPARATOR_S, DEFAULT_THEME, 
+            G_DIR_SEPARATOR_S, "xfwm4", 
+            NULL);
 }
 
 void

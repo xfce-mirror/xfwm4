@@ -43,6 +43,7 @@ xfwmPixmapCompose (XfwmPixmap * pm, gchar * dir, gchar * file)
     GdkPixmap *destw;
     GdkColormap *cmap;
     GError *error = NULL;
+    gint width, height;
 
     filepng = g_strdup_printf ("%s.%s", file, "png");
     filename = g_build_filename (dir, filepng, NULL);
@@ -107,9 +108,12 @@ xfwmPixmapCompose (XfwmPixmap * pm, gchar * dir, gchar * file)
         cmap = NULL;
     }
 
+    width = MIN (gdk_pixbuf_get_width (alpha), pm->width);
+    height = MIN (gdk_pixbuf_get_height (alpha), pm->height);
+    
     src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap, 
                                         0, 0, 0, 0, pm->width, pm->height);
-    gdk_pixbuf_composite (alpha, src, 0, 0, pm->width, pm->height,
+    gdk_pixbuf_composite (alpha, src, 0, 0, width, height,
                           0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
                      pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);                 

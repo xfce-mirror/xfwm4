@@ -773,8 +773,9 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
             }
         }
 
-        /* Then, show the ones that we do have on right... */
+        /* Then, show the ones that we do have on left... */
         x = frameLeft (c) + screen_info->params->button_offset;
+        right = frameWidth (c) - frameRight (c) - screen_info->params->button_offset;
         for (i = 0; i < strlen (screen_info->params->button_layout); i++)
         {
             button = getButtonFromLetter (screen_info->params->button_layout[i], c);
@@ -784,27 +785,31 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
             }
             else if (button >= 0)
             {
-                my_pixmap =
-                    frameGetPixmap (c, button,
-                    c->button_pressed[button] ? PRESSED : state);
-                if (my_pixmap->pixmap)
+                if (x + screen_info->buttons[button][state].width + screen_info->params->button_spacing < right)
                 {
-                    XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-                        MYWINDOW_XWINDOW (c->buttons[button]),
-                        my_pixmap->pixmap);
+                    my_pixmap = frameGetPixmap (c, button, c->button_pressed[button] ? PRESSED : state);
+                    if (my_pixmap->pixmap)
+                    {
+                        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                            MYWINDOW_XWINDOW (c->buttons[button]), my_pixmap->pixmap);
+                    }
+                    xfwmWindowShow (&c->buttons[button], x,
+                        (frameTop (c) - screen_info->buttons[button][state].height) / 2,
+                        screen_info->buttons[button][state].width,
+                        screen_info->buttons[button][state].height, TRUE);
+                    button_x[button] = x;
+                    x = x + screen_info->buttons[button][state].width +
+                        screen_info->params->button_spacing;
                 }
-                xfwmWindowShow (&c->buttons[button], x,
-                    (frameTop (c) - screen_info->buttons[button][state].height) / 2,
-                    screen_info->buttons[button][state].width,
-                    screen_info->buttons[button][state].height, TRUE);
-                button_x[button] = x;
-                x = x + screen_info->buttons[button][state].width +
-                    screen_info->params->button_spacing;
+                else
+                {
+                    xfwmWindowHide (&c->buttons[button]);
+                }
             }
         }
-        left = x - screen_info->params->button_spacing;
+        left = x + screen_info->params->button_spacing;
 
-        /* and those that we do have on left... */
+        /* and those that we do have on right... */
         x = frameWidth (c) - frameRight (c) + screen_info->params->button_spacing -
             screen_info->params->button_offset;
         for (j = strlen (screen_info->params->button_layout) - 1; j >= i; j--)
@@ -816,24 +821,29 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
             }
             else if (button >= 0)
             {
-                my_pixmap =
-                    frameGetPixmap (c, button,
-                    c->button_pressed[button] ? PRESSED : state);
-                if (my_pixmap->pixmap)
+                if (x - screen_info->buttons[button][state].width - screen_info->params->button_spacing > left)
                 {
-                    XSetWindowBackgroundPixmap (clientGetXDisplay (c),
-                        MYWINDOW_XWINDOW (c->buttons[button]),
-                        my_pixmap->pixmap);
+                    my_pixmap = frameGetPixmap (c, button, c->button_pressed[button] ? PRESSED : state);
+                    if (my_pixmap->pixmap)
+                    {
+                        XSetWindowBackgroundPixmap (clientGetXDisplay (c),
+                            MYWINDOW_XWINDOW (c->buttons[button]), my_pixmap->pixmap);
+                    }
+                    x = x - screen_info->buttons[button][state].width -
+                        screen_info->params->button_spacing;
+                    xfwmWindowShow (&c->buttons[button], x,
+                        (frameTop (c) - screen_info->buttons[button][state].height) / 2,
+                        screen_info->buttons[button][state].width,
+                        screen_info->buttons[button][state].height, TRUE);
+                    button_x[button] = x;
                 }
-                x = x - screen_info->buttons[button][state].width -
-                    screen_info->params->button_spacing;
-                xfwmWindowShow (&c->buttons[button], x,
-                    (frameTop (c) - screen_info->buttons[button][state].height) / 2,
-                    screen_info->buttons[button][state].width,
-                    screen_info->buttons[button][state].height, TRUE);
-                button_x[button] = x;
+                else
+                {
+                    xfwmWindowHide (&c->buttons[button]);
+                }
             }
         }
+        left = left - 2 * screen_info->params->button_spacing;
         right = x;
 
         top_width =
