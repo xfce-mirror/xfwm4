@@ -37,7 +37,7 @@
 #include "my_intl.h"
 
 #define CHANNEL1 "xfwm4"
-#define CHANNEL2 "borders"
+#define CHANNEL2 "margins"
 #define TOINT(x) (x ? atoi(x) : 0)
 
 Params params;

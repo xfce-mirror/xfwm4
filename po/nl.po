@@ -7,13 +7,50 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-02-23 22:52+0100\n"
+"POT-Creation-Date: 2003-02-25 08:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:110
+msgid "Desktop margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:190
+msgid "Adjust desktop margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:206
+msgid "Desktop Margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:210
+msgid ""
+"Margins are areas on the edges\n"
+"of the screen where no windows\n"
+"will be placed"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:238
+#, fuzzy
+msgid "Left :"
+msgstr "Links"
+
+#: mcs-plugin/margins_plugin.c:258
+#, fuzzy
+msgid "Right :"
+msgstr "Rechts"
+
+#: mcs-plugin/margins_plugin.c:278
+msgid "Top :"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Bottom:"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Title"
@@ -364,37 +401,37 @@ msgstr "_Herstarten"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 
-#: src/settings.c:179
+#: src/settings.c:257
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/settings.c:333
+#: src/settings.c:431
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet creëren\n"
 
-#: src/settings.c:339
+#: src/settings.c:437
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 
-#: src/settings.c:377
+#: src/settings.c:475
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 
-#: src/settings.c:383
+#: src/settings.c:481
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/settings.c:504
+#: src/settings.c:602
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 
-#: src/settings.c:763
+#: src/settings.c:871
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"

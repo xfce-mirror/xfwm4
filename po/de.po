@@ -6,13 +6,50 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-02-23 22:52+0100\n"
+"POT-Creation-Date: 2003-02-25 08:17+0100\n"
 "PO-Revision-Date: 2003-01-25 01:20+0100\n"
 "Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:110
+msgid "Desktop margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:190
+msgid "Adjust desktop margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:206
+msgid "Desktop Margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:210
+msgid ""
+"Margins are areas on the edges\n"
+"of the screen where no windows\n"
+"will be placed"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:238
+#, fuzzy
+msgid "Left :"
+msgstr "Links"
+
+#: mcs-plugin/margins_plugin.c:258
+#, fuzzy
+msgid "Right :"
+msgstr "Rechts"
+
+#: mcs-plugin/margins_plugin.c:278
+msgid "Top :"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Bottom:"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Title"
@@ -366,37 +403,37 @@ msgstr "Neu starten"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenü hat Maus nicht gefunden\n"
 
-#: src/settings.c:179
+#: src/settings.c:257
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/settings.c:333
+#: src/settings.c:431
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kann aktive Farbe nicht setzen %s\n"
 
-#: src/settings.c:339
+#: src/settings.c:437
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kann aktive Farbe nicht feststellen %s\n"
 
-#: src/settings.c:377
+#: src/settings.c:475
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht setzen %s\n"
 
-#: src/settings.c:383
+#: src/settings.c:481
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kann inaktive Farbe nicht feststellen %s\n"
 
-#: src/settings.c:504
+#: src/settings.c:602
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Fehlende Einstellungen aus den Defaults"
 
-#: src/settings.c:763
+#: src/settings.c:871
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

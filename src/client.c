@@ -100,7 +100,7 @@ static void clientSetHeight(Client * c, int h1);
 static inline Client *clientGetTopMost(int layer, Client * exclude);
 static inline Client *clientGetBottomMost(int layer, Client * exclude);
 static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc);
-static inline void clientConstraintPos(Client * c, gboolean show_title);
+static inline void clientConstraintPos(Client * c, gboolean show_full);
 static inline void clientKeepVisible(Client * c);
 static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1);
 static void clientInitPosition(Client * c);
@@ -1396,13 +1396,13 @@ static inline void clientComputeStackList(Client * c, Client * sibling, int mask
 /* clientConstraintPos() is used when moving windows 
    to ensure that the window stays accessible to the user
  */
-static inline void clientConstraintPos(Client * c, gboolean show_title)
+static inline void clientConstraintPos(Client * c, gboolean show_full)
 {
     int cx, cy, left, right, top, bottom;
     gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
     
     g_return_if_fail(c != NULL);
-    DBG("entering clientConstraintPos %s\n", show_title ? "(with show title)" : "(w/out show title)");
+    DBG("entering clientConstraintPos %s\n", show_title ? "(with show full)" : "(w/out show full)");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
     
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
@@ -1424,26 +1424,43 @@ static inline void clientConstraintPos(Client * c, gboolean show_title)
     top    = (topMostHead ? (int)margins[MARGIN_TOP] : 0);
     bottom = (bottomMostHead ? (int)margins[MARGIN_BOTTOM] : 0);
 
-    if(leftMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && ((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left))
+    if (show_full)
     {
-        c->x = MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left - c->width;
+	if(rightMostHead && (frameX(c) < MyDisplayX(cx, cy) + left))
+	{
+            c->x = MyDisplayX(cx, cy) + left + frameLeft(c);
+	}
+	else if(leftMostHead && (frameX(c) + frameWidth(c) > MyDisplayMaxX(dpy, screen, cx, cy) - right))
+	{
+            c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - frameWidth(c) + frameLeft(c);
+	}
+	if(topMostHead && (frameY(c) < MyDisplayY(cx, cy) + top))
+	{
+            c->y = MyDisplayY(cx, cy) + top + frameTop(c);
+	}
+	else if(topMostHead && (frameY(c) + frameHeight(c) > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
+	{
+            c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - frameHeight(c) + frameTop(c);
+	}
     }
-    else if(rightMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->x + CLIENT_MIN_VISIBLE > MyDisplayMaxX(dpy, screen, cx, cy) - right))
+    else
     {
-        c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
-    }
-    /* The top of screen is treated differently because the title bar of a window
-       should not disappear under a dock placed on top of the screen. Here we don't
-       check to see if the window has a border because we want to take into account
-       undecorated windows such as XMMS or others
-     */
-    if(topMostHead && (c->y + (show_title ? -frameTop(c) : c->height) < MyDisplayY(cx, cy) + (show_title ? 0 : CLIENT_MIN_VISIBLE) + top))
-    {
-        c->y = MyDisplayY(cx, cy) + top + (show_title ? frameTop(c) : CLIENT_MIN_VISIBLE - c->height);
-    }
-    else if(bottomMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->y + CLIENT_MIN_VISIBLE > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
-    {
-        c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
+	if(leftMostHead && ((c->x + c->width) < MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left))
+	{
+	    c->x = MyDisplayX(cx, cy) + CLIENT_MIN_VISIBLE + left - c->width;
+	}
+	else if(rightMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->x + CLIENT_MIN_VISIBLE > MyDisplayMaxX(dpy, screen, cx, cy) - right))
+	{
+	    c->x = MyDisplayMaxX(dpy, screen, cx, cy) - right - CLIENT_MIN_VISIBLE;
+	}
+	if(topMostHead && (c->y + c->height < MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top))
+	{
+	    c->y = MyDisplayY(cx, cy) + CLIENT_MIN_VISIBLE + top - c->height;
+	}
+	else if(bottomMostHead && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->y + CLIENT_MIN_VISIBLE > MyDisplayMaxY(dpy, screen, cx, cy) - bottom))
+	{
+	    c->y = MyDisplayMaxY(dpy, screen, cx, cy) - bottom - CLIENT_MIN_VISIBLE;
+	}
     }
 }
 

@@ -41,9 +41,9 @@
 #include "monitor-icon.h"
 #include "my_intl.h"
 
-#define RCFILE "borders.xml"
-#define PLUGIN_NAME "borders"
-#define MARGINS_CHANNEL "borders"
+#define RCFILE "margins.xml"
+#define PLUGIN_NAME "xfwm_margins"
+#define MARGINS_CHANNEL "margins"
 
 #define DEFAULT_ICON_SIZE 48
 #define BORDER 5

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-02-23 22:52+0100\n"
+"POT-Creation-Date: 2003-02-25 08:17+0100\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -14,6 +14,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
+
+#: mcs-plugin/margins_plugin.c:110
+msgid "Desktop margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:190
+msgid "Adjust desktop margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:206
+msgid "Desktop Margins"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:210
+msgid ""
+"Margins are areas on the edges\n"
+"of the screen where no windows\n"
+"will be placed"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:238
+#, fuzzy
+msgid "Left :"
+msgstr "يسار"
+
+#: mcs-plugin/margins_plugin.c:258
+#, fuzzy
+msgid "Right :"
+msgstr "يمين"
+
+#: mcs-plugin/margins_plugin.c:278
+msgid "Top :"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Bottom:"
+msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Title"
@@ -366,37 +403,37 @@ msgstr "إعادة تشغيل"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
 
-#: src/settings.c:179
+#: src/settings.c:257
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
-#: src/settings.c:333
+#: src/settings.c:431
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: لا أستطيع تخصيص اللون النشط%s\n"
 
-#: src/settings.c:339
+#: src/settings.c:437
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون النشط %s\n"
 
-#: src/settings.c:377
+#: src/settings.c:475
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 
-#: src/settings.c:383
+#: src/settings.c:481
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 
-#: src/settings.c:504
+#: src/settings.c:602
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
-#: src/settings.c:763
+#: src/settings.c:871
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم قيمة rc: %i"
