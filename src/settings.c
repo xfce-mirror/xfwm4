@@ -778,9 +778,14 @@ gboolean initSettings(void)
         }
         else
         {
+	    g_warning("MCS manager not running");
             mcs_client_destroy(client);
             client = NULL;
         }
+    }
+    else
+    {
+        g_warning("Cannot create MCS client channel");
     }
 
     return TRUE;
