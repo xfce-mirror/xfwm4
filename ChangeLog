@@ -1,3 +1,46 @@
+2005-02-12 22:29  olivier
+
+	* src/: client.c, events.c, netwm.c, screen.c, screen.h,
+	  workspaces.c: Backport from HEAD: Implements our own grab
+	  functions, to avoid using InputOnly window for grabbing mouse
+	  when moving/resizing windows (This is for bug #761, "Delayed
+	  action when clicking and dragging a window title/border")
+
+2005-02-11 21:11  olivier
+
+	* src/focus.c: Grab mouse button by default on newly created
+	  windows; Use current time to focus newly created windows to make
+	  sure the windows gets focused.
+
+2005-02-10 23:09  olivier
+
+	* mcs-plugin/workspaces.c: Check for actual returned value to avoid
+	  critical warnings at startup.
+
+2005-02-10 21:40  olivier
+
+	* src/client.c: Force cache update when refreashing all frames
+	  (required because of the new fine grained caching)
+
+2005-02-10 21:38  olivier
+
+	* src/: client.c, focus.c: Use our internal timer for focus
+	  transitions.
+
+2005-02-09 22:03  olivier
+
+	* src/mypixmap.c: Try to avoid colormap issues on Solaris as
+	  reported on the ML.
+
+2005-02-09 21:28  olivier
+
+	* src/client.c: Use internal time counter for grabbing/ungrabbing
+	  kbd+mouse whrn moving/Resizing windows.
+
+2005-02-08 23:19  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2005-02-08 23:16  olivier
 
 	* src/stacking.c: Don't get through excluded windows when searching
