@@ -40,7 +40,7 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
     key->keycode = 0;
     key->modifier = 0;
 
-    if(!g_strcasecmp((gchar *) str, "none"))
+    if(!g_ascii_strcasecmp((gchar *) str, "none"))
         return;
 
     k = strrchr(str, '+');

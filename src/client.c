@@ -30,6 +30,7 @@
 #include "main.h"
 #include "client.h"
 #include "frame.h"
+#include "hints.h"
 #include "workspaces.h"
 #include "settings.h"
 #include "gtktoxevent.h"
@@ -543,6 +544,23 @@ void clientGetNetStruts(Client * c)
         XFree(struts);
         workspaceUpdateArea(margins, gnome_margins);
     }
+}
+
+static void clientSetNetActions(Client * c)
+{
+    Atom atoms[6];
+    int i = 0;
+    
+    atoms[i++] = net_wm_action_change_desktop;
+    atoms[i++] = net_wm_action_close;
+    atoms[i++] = net_wm_action_maximize_horz;
+    atoms[i++] = net_wm_action_maximize_vert;
+    atoms[i++] = net_wm_action_stick;
+    if (c->has_border)
+    {
+        atoms[i++] = net_wm_action_shade;
+    }
+    XChangeProperty(dpy, c->window, net_wm_allowed_actions, XA_ATOM, 32, PropModeReplace, (unsigned char *)atoms, i);
 }
 
 static void clientWindowType(Client * c)
@@ -1377,17 +1395,18 @@ static void clientInitPosition(Client * c)
 
 void clientFrame(Window w)
 {
-    Client *c;
     XWindowAttributes attr;
     XWindowChanges wc;
-    unsigned long dummy;
     PropMwmHints *mwm_hints;
-    int i;
-    unsigned long valuemask;
     XSetWindowAttributes attributes;
     Window dummy_root;
-    int dummy_x, dummy_y;
+    Client *c;
+    unsigned long dummy;
+    unsigned long valuemask;
     unsigned int dummy_width, dummy_height, dummy_depth, dummy_bw;
+    unsigned int wm_protocols_flags = 0;
+    int i;
+    int dummy_x, dummy_y;
 
     g_return_if_fail(w != None);
     DBG("entering clientFrame\n");
@@ -1411,6 +1430,7 @@ void clientFrame(Window w)
     c->size = XAllocSizeHints();
     XGetWMNormalHints(dpy, w, c->size, &dummy);
     XGetWindowAttributes(dpy, w, &attr);
+    wm_protocols_flags = getWMProtocols(dpy, c->window);
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
@@ -1427,7 +1447,7 @@ void clientFrame(Window w)
     {
         c->ncmap = 0;
     }
-
+    
     c->type_atom = None;
     c->type = UNSET;
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
@@ -1444,7 +1464,8 @@ void clientFrame(Window w)
     c->skip_taskbar = False;
     c->skip_pager = False;
     c->has_struts = False;
-    c->wm_takefocus = (getWMTakeFocus(dpy, c->window) ? True : False);
+    c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
+    c->wm_delete = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
     c->wm_input = (getWMInput(dpy, c->window) ? True : False);
 
     mwm_hints = getMotifHints(dpy, c->window);
@@ -1539,6 +1560,7 @@ void clientFrame(Window w)
         c->buttons[i] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
     }
 
+    clientSetNetActions(c);
     clientAddToList(c);
     clientGrabKeys(c);
 
@@ -1800,7 +1822,14 @@ void clientClose(Client * c)
     DBG("entering clientClose\n");
     DBG("closing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    sendClientMessage(dpy, c->window, wm_protocols, wm_delete_window, NoEventMask);
+    if (c->wm_delete)
+    {
+        sendClientMessage(dpy, c->window, wm_protocols, wm_delete_window, NoEventMask);
+    }
+    else
+    {
+        clientKill(c);
+    }
 }
 
 void clientKill(Client * c)

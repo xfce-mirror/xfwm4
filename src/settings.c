@@ -329,11 +329,11 @@ void loadSettings()
     loadPixmap(dpy, &title[TITLE_5][ACTIVE], theme, "title-5-active.xpm", colsym, 16);
     loadPixmap(dpy, &title[TITLE_5][INACTIVE], theme, "title-5-inactive.xpm", colsym, 16);
 
-    if(!g_strcasecmp("left", getValue("title_alignment", rc)))
+    if(!g_ascii_strcasecmp("left", getValue("title_alignment", rc)))
     {
         title_alignment = ALIGN_LEFT;
     }
-    else if(!g_strcasecmp("right", getValue("title_alignment", rc)))
+    else if(!g_ascii_strcasecmp("right", getValue("title_alignment", rc)))
     {
         title_alignment = ALIGN_RIGHT;
     }
@@ -341,7 +341,7 @@ void loadSettings()
     {
         title_alignment = ALIGN_CENTER;
     }
-    full_width_title = !g_strcasecmp("true", getValue("full_width_title", rc));
+    full_width_title = !g_ascii_strcasecmp("true", getValue("full_width_title", rc));
 
     strncpy(button_layout, getValue("button_layout", rc), 7);
     button_spacing = atoi(getValue("button_spacing", rc));
@@ -349,15 +349,15 @@ void loadSettings()
     title_vertical_offset = atoi(getValue("title_vertical_offset", rc));
 
     box_gc = createGC(dpy, cmap, "#FFFFFF", GXxor, NULL, True);
-    box_resize = !g_strcasecmp("true", getValue("box_resize", rc));
-    box_move = !g_strcasecmp("true", getValue("box_move", rc));
+    box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
+    box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
 
-    click_to_focus = !g_strcasecmp("true", getValue("click_to_focus", rc));
-    focus_new = !g_strcasecmp("true", getValue("focus_new", rc));
-    raise_on_focus = !g_strcasecmp("true", getValue("raise_on_focus", rc));
+    click_to_focus = !g_ascii_strcasecmp("true", getValue("click_to_focus", rc));
+    focus_new = !g_ascii_strcasecmp("true", getValue("focus_new", rc));
+    raise_on_focus = !g_ascii_strcasecmp("true", getValue("raise_on_focus", rc));
     raise_delay = abs(atoi(getValue("raise_delay", rc)));
 
-    if(!g_strcasecmp("center_root", getValue("window_placement", rc)))
+    if(!g_ascii_strcasecmp("center_root", getValue("window_placement", rc)))
     {
         window_placement = PLACEMENT_ROOT;
     }
@@ -365,18 +365,18 @@ void loadSettings()
     {
         window_placement = PLACEMENT_MOUSE;
     }
-    snap_to_border = !g_strcasecmp("true", getValue("snap_to_border", rc));
+    snap_to_border = !g_ascii_strcasecmp("true", getValue("snap_to_border", rc));
     snap_width = abs(atoi(getValue("snap_width", rc)));
 
-    if(!g_strcasecmp("shade", getValue("double_click_action", rc)))
+    if(!g_ascii_strcasecmp("shade", getValue("double_click_action", rc)))
     {
         double_click_action = ACTION_SHADE;
     }
-    else if(!g_strcasecmp("hide", getValue("double_click_action", rc)))
+    else if(!g_ascii_strcasecmp("hide", getValue("double_click_action", rc)))
     {
         double_click_action = ACTION_HIDE;
     }
-    else if(!g_strcasecmp("maximize", getValue("double_click_action", rc)))
+    else if(!g_ascii_strcasecmp("maximize", getValue("double_click_action", rc)))
     {
         double_click_action = ACTION_MAXIMIZE;
     }
@@ -393,7 +393,7 @@ void loadSettings()
         data[0] = workspace_count;
         XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
     }
-    wrap_workspaces = !g_strcasecmp("true", getValue("wrap_workspaces", rc));
+    wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
     parseKeyString(dpy, &keys[KEY_MOVE_UP], getValue("move_window_up_key", rc));
     parseKeyString(dpy, &keys[KEY_MOVE_DOWN], getValue("move_window_down_key", rc));
     parseKeyString(dpy, &keys[KEY_MOVE_LEFT], getValue("move_window_left_key", rc));

@@ -43,6 +43,9 @@
 #define WIN_HINTS_SKIP_FOCUS			(1L<<0)
 #define WIN_HINTS_SKIP_TASKBAR  		(1L<<2)
 
+#define WM_PROTOCOLS_TAKE_FOCUS			(1L<<0)
+#define WM_PROTOCOLS_DELETE_WINDOW  		(1L<<1)
+
 #define WIN_LAYER_DESKTOP			0
 #define WIN_LAYER_BELOW 			2
 #define WIN_LAYER_NORMAL			4
@@ -74,66 +77,74 @@ typedef struct
 }
 PropMwmHints;
 
-extern Atom wm_state;
-extern Atom wm_change_state;
-extern Atom wm_delete_window;
-extern Atom wm_takefocus;
-extern Atom wm_protocols;
-extern Atom wm_colormap_windows;
-extern Atom wm_window_role;
-extern Atom wm_client_leader;
-extern Atom sm_client_id;
+extern Atom gnome_panel_desktop_area;
 extern Atom motif_wm_hints;
-extern Atom win_hints;
-extern Atom win_state;
+extern Atom sm_client_id;
 extern Atom win_client_list;
+extern Atom win_desktop_button_proxy;
+extern Atom win_hints;
 extern Atom win_layer;
+extern Atom win_state;
+extern Atom win_supporting_wm_check;
 extern Atom win_workspace;
 extern Atom win_workspace_count;
-extern Atom win_desktop_button_proxy;
-extern Atom win_supporting_wm_check;
-extern Atom gnome_panel_desktop_area;
+extern Atom wm_change_state;
+extern Atom wm_client_leader;
+extern Atom wm_colormap_windows;
+extern Atom wm_delete_window;
+extern Atom wm_protocols;
+extern Atom wm_state;
+extern Atom wm_takefocus;
+extern Atom wm_window_role;
 
 /* freedesktop.org protocol */
 
-extern Atom net_wm_name;
-extern Atom net_close_window;
-extern Atom net_wm_state;
-extern Atom motif_wm_hints;
-extern Atom net_wm_state_shaded;
-extern Atom net_wm_state_sticky;
-extern Atom net_wm_state_maximized_horz;
-extern Atom net_wm_state_maximized_vert;
-extern Atom net_wm_state_fullscreen;
-extern Atom net_wm_desktop;
-extern Atom net_number_of_desktops;
-extern Atom net_current_desktop;
-extern Atom net_desktop_viewport;
-extern Atom net_desktop_geometry;
-extern Atom net_workarea;
-extern Atom net_supporting_wm_check;
-extern Atom net_supported;
-extern Atom net_wm_window_type;
-extern Atom net_wm_window_type_desktop;
-extern Atom net_wm_window_type_dock;
-extern Atom net_wm_window_type_toolbar;
-extern Atom net_wm_window_type_menu;
-extern Atom net_wm_window_type_dialog;
-extern Atom net_wm_window_type_normal;
-extern Atom net_wm_state_modal;
+extern Atom net_active_window;
 extern Atom net_client_list;
 extern Atom net_client_list_stacking;
-extern Atom net_wm_state_skip_taskbar;
-extern Atom net_wm_state_skip_pager;
-extern Atom net_wm_icon_name;
+extern Atom net_close_window;
+extern Atom net_current_desktop;
+extern Atom net_desktop_geometry;
+extern Atom net_desktop_viewport;
+extern Atom net_number_of_desktops;
+extern Atom net_supported;
+extern Atom net_supporting_wm_check;
+extern Atom net_wm_action_change_desktop;
+extern Atom net_wm_action_close;
+extern Atom net_wm_action_maximize_horz;
+extern Atom net_wm_action_maximize_vert;
+extern Atom net_wm_action_move;
+extern Atom net_wm_action_resize;
+extern Atom net_wm_action_shade;
+extern Atom net_wm_action_stick;
+extern Atom net_wm_allowed_actions;
+extern Atom net_wm_desktop;
 extern Atom net_wm_icon;
 extern Atom net_wm_icon_geometry;
+extern Atom net_wm_icon_name;
 extern Atom net_wm_moveresize;
-extern Atom net_active_window;
-extern Atom net_wm_strut;
+extern Atom net_wm_name;
+extern Atom net_wm_state;
+extern Atom net_wm_state_fullscreen;
 extern Atom net_wm_state_hidden;
-extern Atom net_wm_window_type_utility;
+extern Atom net_wm_state_maximized_horz;
+extern Atom net_wm_state_maximized_vert;
+extern Atom net_wm_state_modal;
+extern Atom net_wm_state_shaded;
+extern Atom net_wm_state_skip_pager;
+extern Atom net_wm_state_skip_taskbar;
+extern Atom net_wm_state_sticky;
+extern Atom net_wm_strut;
+extern Atom net_wm_window_type;
+extern Atom net_wm_window_type_desktop;
+extern Atom net_wm_window_type_dialog;
+extern Atom net_wm_window_type_dock;
+extern Atom net_wm_window_type_menu;
+extern Atom net_wm_window_type_normal;
 extern Atom net_wm_window_type_splashscreen;
+extern Atom net_wm_window_type_toolbar;
+extern Atom net_wm_window_type_utility;
+extern Atom net_workarea;
 
 
 void initICCCMHints(Display *);
@@ -142,7 +153,7 @@ void setWMState(Display *, Window, unsigned long state);
 void initMotifHints(Display *);
 PropMwmHints *getMotifHints(Display *, Window);
 int getWMInput(Display *, Window);
-int getWMTakeFocus(Display *, Window);
+unsigned int getWMProtocols(Display *, Window);
 void initGnomeHints(Display *);
 int getGnomeHint(Display *, Window, Atom, long *);
 void setGnomeHint(Display *, Window, Atom, long);

@@ -58,7 +58,7 @@ gboolean parseRc(gchar * file, gchar * dir, Settings rc[])
         {
             for(i = 0; rc[i].option; i++)
             {
-                if(!g_strcasecmp(lvalue, rc[i].option))
+                if(!g_ascii_strcasecmp(lvalue, rc[i].option))
                 {
                     rvalue = strtok(NULL, "\n");
                     if(rvalue)
@@ -104,7 +104,7 @@ gchar *getValue(gchar * option, Settings rc[])
 
     for(i = 0; rc[i].option; i++)
     {
-        if(!g_strcasecmp(option, rc[i].option))
+        if(!g_ascii_strcasecmp(option, rc[i].option))
         {
             break;
         }
