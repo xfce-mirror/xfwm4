@@ -179,8 +179,8 @@ fillRectangle (Display *dpy, int screen, Drawable d, Pixmap pm, int x, int y, in
 static void
 frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap * pm)
 {
-    ScreenInfo *screen_info = c->screen_info;
-    DisplayInfo *display_info = screen_info->display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     GdkPixmap *gpixmap = NULL;
     GdkGCValues values;
     GdkGC *gc = NULL;
@@ -190,6 +190,12 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
     int voffset = 0;
 
     TRACE ("entering frameCreateTitlePixmap");
+
+    g_return_if_fail (c);
+    g_return_if_fail (pm);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     if (left > right)
     {
@@ -292,7 +298,6 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, XfwmPixmap *
 
     xfwmPixmapCreate (screen_info, pm, width, frameTop (c));
     gpixmap = gdk_pixmap_foreign_new (pm->pixmap);
-    gdk_drawable_set_colormap (gpixmap, gdk_colormap_get_system ());
     gc = gdk_gc_new (gpixmap);
 
     if (w1 > 0)

@@ -508,15 +508,17 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
 static void
 loadTheme (ScreenInfo *screen_info, Settings rc[])
 {
-    GtkWidget *widget = myScreenGetGtkWidget (screen_info);
-    DisplayInfo *display_info = screen_info->display_info;
-    GSList *screens;
+    GtkWidget *widget = NULL;
+    DisplayInfo *display_info = NULL;
     gchar *theme;
     gchar *font;
     XpmColorSymbol colsym[20];
     PangoFontDescription *desc = NULL;
     guint i;
     GValue tmp_val = { 0, };
+
+    widget = myScreenGetGtkWidget (screen_info);
+    display_info = screen_info->display_info;
 
     rc[0].value = get_style (widget, "fg", "selected");
     rc[1].value = get_style (widget, "fg", "normal");
@@ -538,6 +540,7 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
     rc[17].value = get_style (widget, "light", "normal");
     rc[18].value = get_style (widget, "dark", "normal");
     rc[19].value = get_style (widget, "mid", "normal");
+
 
     theme = getThemeDir (getValue ("theme", rc), THEMERC);
     parseRc (THEMERC, theme, rc);
@@ -1138,8 +1141,6 @@ loadSettings (ScreenInfo *screen_info)
 static void
 unloadTheme (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = screen_info->display_info;
-    GSList *screens;
     int i;
 
     TRACE ("entering unloadTheme");
@@ -1219,7 +1220,7 @@ reloadSettings (DisplayInfo *display_info, int mask)
 {
     GSList *screens;
 
-    g_return_if_fail (display_info);
+    g_return_val_if_fail (display_info, FALSE);
     
     TRACE ("entering reloadSettings");
     
@@ -1243,7 +1244,7 @@ initSettings (ScreenInfo *screen_info)
     long val = 0;
     char *names = NULL;
 
-    g_return_if_fail (screen_info);
+    g_return_val_if_fail (screen_info, FALSE);
     
     TRACE ("entering initSettings");
 

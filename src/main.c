@@ -235,18 +235,19 @@ initialize (int argc, char **argv)
         
         gscr = gdk_display_get_screen(display_info->gdisplay, i);
         screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK);
-        sn_init_display (screen_info);
-        myDisplayAddScreen (display_info, screen_info);
 
         if (!screen_info)
         {
-            printf("Cannot manage screen #%i\n", i);
             continue;
         }
+	
         if (!initSettings (screen_info))
         {
             return -2;
         }
+	
+        sn_init_display (screen_info);
+        myDisplayAddScreen (display_info, screen_info);
         screen_managed = TRUE;
         setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);
         setHint (display_info->dpy, screen_info->xroot, win_supporting_wm_check, screen_info->gnome_win);
