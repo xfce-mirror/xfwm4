@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "POT-Creation-Date: 2003-12-21 22:35+0100\n"
-"PO-Revision-Date: 2003-11-23 06:01-0000\n"
-"Last-Translator: Artjom Simon <hoek@linuxartist.org>\n"
+"PO-Revision-Date: 2003-12-23 22:55-0000\n"
+"Last-Translator: Moritz Heiber <moe@lunar-linux.org>\n"
 "Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,45 +42,41 @@ msgid "Bottom :"
 msgstr "Unten:"
 
 #: mcs-plugin/plugin.c:112 mcs-plugin/plugin.c:157
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "Desktopränder"
+msgstr "V. Desktops und Desktopränder"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:139 mcs-plugin/plugin.c:172 mcs-plugin/workspaces.c:538
-#, fuzzy
 msgid "Workspaces"
-msgstr "Virtueller Desktop %i"
+msgstr "Virtueller Desktops"
 
 #: mcs-plugin/plugin.c:179
 msgid "Margins"
-msgstr ""
+msgstr "Desktopränder"
 
 #: mcs-plugin/workspaces.c:337
 msgid "Change name"
-msgstr ""
+msgstr "Namen ändern"
 
 #: mcs-plugin/workspaces.c:349
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
 msgstr "Virtueller Desktop %i"
 
 #: mcs-plugin/workspaces.c:359
 msgid "Name:"
-msgstr ""
+msgstr "Name:"
 
 #: mcs-plugin/workspaces.c:447
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Klicken Sie einen Namen an, um ihn zu ändern"
 
 #: mcs-plugin/workspaces.c:519
-#, fuzzy
 msgid "Number of workspaces:"
 msgstr "Virtuellen Desktop wechseln..."
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:550
-#, fuzzy
 msgid "Workspace names"
 msgstr "Desktopränder"
 
@@ -164,7 +160,6 @@ msgstr "Titelleistenschrift"
 msgid "Title Alignment"
 msgstr "Titelleistenausrichtung"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
 msgid "Text alignment inside title bar :"
 msgstr "Textausrichtung in der Titelleiste:"
@@ -381,7 +376,7 @@ msgstr "_Lösen"
 
 #: src/menu.c:51 src/menu.c:52
 msgid "Always on top"
-msgstr ""
+msgstr "Immer obenauf"
 
 #: src/menu.c:53
 msgid "Send to..."
@@ -458,6 +453,3 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wechseln zu ..."
-
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Desktopränder verändern"
