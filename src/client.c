@@ -3774,7 +3774,7 @@ clientPassFocus (Client * c)
               (by eligible, I mean a window that is not a transient for the current
               window)
          */
-        if (clientIsModal (c))
+        if (clientIsTransientOrModal (c))
         {
             c2 = clientGetTransient (c);
             
@@ -3782,6 +3782,22 @@ clientPassFocus (Client * c)
             {
                 new_focus = c2;
             }
+        }
+        
+        if (!new_focus)
+        {
+            list_of_windows = clientListTransient (c);
+            for (c2 = c->next, i = 0; (c2) && (i < client_count);
+                c2 = c2->next, i++)
+            {
+                if (clientSelectMask (c2, 0)
+                    && !g_list_find (list_of_windows, (gconstpointer) c2))
+                {
+                    new_focus = c2;
+                    break;
+                }
+            }
+            g_list_free (list_of_windows);
         }
     }
     else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy,
