@@ -81,7 +81,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         {
             if ((c->win_layer <= layer) && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
             {
-                if (clientSelectMask (c, 0))
+                if (clientSelectMask (c, 0, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
                 {
                     top_client.prefered = c;
                 }
@@ -95,6 +95,29 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
     }
 
     return top_client;
+}
+
+static Client *
+clientGetLastFocused (Client * c, int mask)
+{
+    Client *c2 = NULL;
+    unsigned int i;
+
+    TRACE ("entering clientGetPrevious");
+
+    if (c)
+    {
+        ScreenInfo *screen_info = c->screen_info;
+        for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
+            c2 = c2->prev, i++)
+        {
+            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
+            {
+                return c2;
+            }
+        }
+    }
+    return NULL;
 }
 
 void
@@ -155,35 +178,39 @@ clientFocusNew(Client * c)
 }
 
 gboolean
-clientSelectMask (Client * c, int mask)
+clientSelectMask (Client * c, int mask, int type)
 {
-    gboolean okay = TRUE;
-
     TRACE ("entering clientSelectMask");
+
+    g_return_val_if_fail (c != NULL, FALSE);
+
     if ((!clientAcceptFocus (c)) && !(mask & INCLUDE_SKIP_FOCUS))
     {
-        okay = FALSE;
+        return FALSE;
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
     {
-        okay = FALSE;
+        return FALSE;
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER)
         && !(mask & INCLUDE_SKIP_PAGER))
     {
-        okay = FALSE;
+        return FALSE;
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR)
         && !(mask & INCLUDE_SKIP_TASKBAR))
     {
-        okay = FALSE;
+        return FALSE;
     }
     if ((c->win_workspace != c->screen_info->current_ws) && !(mask & INCLUDE_ALL_WORKSPACES))
     {
-        okay = FALSE;
+        return FALSE;
     }
-
-    return okay;
+    if (c->type && type)
+    {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 Client *
@@ -200,11 +227,7 @@ clientGetNext (Client * c, int mask)
         for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count);
             c2 = c2->next, i++)
         {
-            if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
-            {
-                continue;
-            }
-            if (clientSelectMask (c2, mask))
+            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
             {
                 return c2;
             }
@@ -227,11 +250,7 @@ clientGetPrevious (Client * c, int mask)
         for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
             c2 = c2->prev, i++)
         {
-            if (c2->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
-            {
-                continue;
-            }
-            if (clientSelectMask (c2, mask))
+            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
             {
                 return c2;
             }
@@ -267,21 +286,28 @@ clientPassFocus (ScreenInfo *screen_info, Client * c)
     top_most = clientGetTopMostFocusable (screen_info, look_in_layer, c);
     if (screen_info->params->click_to_focus)
     {
-        if ((c) && clientIsModal (c))
+        if (c)
         {
-            /* If the window is a modal, send focus back to its parent window
-               Modals are transients, and we aren"t interested in modal
-               for group, so it safe to use clientGetTransient because 
-               it's really what we want...
-             */
+            if (clientIsModal (c))
+	    {
+		/* If the window is a modal, send focus back to its parent window
+        	   Modals are transients, and we aren"t interested in modal
+        	   for group, so it safe to use clientGetTransient because 
+        	   it's really what we want...
+        	 */
 
-            c2 = clientGetTransient (c);
-            if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
-            {
-                new_focus = c2;
-                /* Usability: raise the parent, to grab user's attention */
-                clientRaise (c2);
-            }
+        	c2 = clientGetTransient (c);
+        	if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
+        	{
+                    new_focus = c2;
+                    /* Usability: raise the parent, to grab user's attention */
+                    clientRaise (c2);
+        	}
+	    }
+	    else
+	    {
+	        new_focus = clientGetNext (c, 0);
+	    }
         }
     }
     else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))

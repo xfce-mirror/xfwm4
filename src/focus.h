@@ -36,7 +36,7 @@
 
 void            clientFocusTop (ScreenInfo *, int);
 void            clientFocusNew(Client *);
-gboolean        clientSelectMask (Client *, int);
+gboolean        clientSelectMask (Client *, int, int);
 Client         *clientGetNext (Client *, int);
 Client         *clientGetPrevious (Client *, int);
 void            clientPassFocus (ScreenInfo *, Client *);

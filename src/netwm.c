@@ -831,7 +831,7 @@ clientSetNetActions (Client * c)
 void
 clientWindowType (Client * c)
 {
-    WindowType old_type;
+    netWindowType old_type;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientWindowType");

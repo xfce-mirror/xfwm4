@@ -186,8 +186,7 @@ clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
-        TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
-            c->window, (int) c->win_layer);
+        TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name, c->window, (int) c->win_layer);
         if (!exclude || (c != exclude))
         {
             if (c->win_layer > layer)
@@ -247,7 +246,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
     for (index = g_list_last (screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c2 = (Client *) index->data;
-        if (clientSelectMask (c2, 0) && (c2 != exclude))
+        if (clientSelectMask (c2, 0, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG) && (c2 != exclude))
         {
             if ((frameX (c2) < x) && (frameX (c2) + frameWidth (c2) > x)
                 && (frameY (c2) < y) && (frameY (c2) + frameHeight (c2) > y))
@@ -560,7 +559,7 @@ clientGetStackList (ScreenInfo *screen_info)
 {
     GList *windows_stack_copy = NULL;
 
-    g_return_if_fail (screen_info);
+    g_return_val_if_fail (screen_info, NULL);
 
     if (screen_info->windows_stack)
     {

@@ -64,6 +64,9 @@
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
 #define INCLUDE_SKIP_PAGER              (1<<3)
 #define INCLUDE_SKIP_TASKBAR            (1<<4)
+#define INCLUDE_TOOLBAR                 (1<<5)
+#define INCLUDE_UTILITY                 (1<<6)
+#define INCLUDE_MENU                    (1<<7)
 
 #define NO_UPDATE_FLAG                  0
 #define UPDATE_KEYGRABS                 (1<<0)
@@ -158,8 +161,7 @@ typedef enum
     WINDOW_UTILITY      = (1 << 7),
     WINDOW_SPLASHSCREEN = (1 << 8)
 }
-WindowType;
-
+netWindowType;
 
 struct _ClientPixmapCache
 {
@@ -195,7 +197,7 @@ struct _Client
     XClassHint class;
     Client *next;
     Client *prev;
-    WindowType type;
+    netWindowType type;
     gboolean draw_active;
     gboolean first_map;
     gboolean legacy_fullscreen;
