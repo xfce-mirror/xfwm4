@@ -146,7 +146,7 @@
 #define CLIENT_MIN_VISIBLE              5
 
 #define CAN_HIDE_WINDOW(c)	((c->visible) &&  (c->has_border) && !(c->skip_taskbar) && (c->has_hide))
-#define CAN_MAXIMIZE_WINDOW(c)	((c->has_maximize) && (c->is_resizable))
+#define CAN_MAXIMIZE_WINDOW(c)	((c->has_maximize) && (c->has_resize) && (c->is_resizable))
 
 typedef enum
 {
