@@ -335,7 +335,6 @@ myDisplayGetRootFromWindow(DisplayInfo *display, Window w)
 ScreenInfo *
 myDisplayGetScreenFromWindow (DisplayInfo *display, Window w)
 {
-    GSList *index;
     Window root;
 
     g_return_val_if_fail (w != None, NULL);

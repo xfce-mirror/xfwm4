@@ -73,7 +73,6 @@ gboolean xfwm4_reload         = FALSE;
 static void
 cleanUp (void)
 {
-    int i;
     GSList *screens;
     
     g_return_if_fail (display_info);

@@ -582,7 +582,7 @@ clientSetLastRaise (Client *c)
 Client *
 clientGetLastRaise (ScreenInfo *screen_info)
 {
-    g_return_if_fail (screen_info);
+    g_return_val_if_fail (screen_info, NULL);
     return (screen_info->last_raise);
 }
 

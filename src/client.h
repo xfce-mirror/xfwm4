@@ -64,9 +64,6 @@
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
 #define INCLUDE_SKIP_PAGER              (1<<3)
 #define INCLUDE_SKIP_TASKBAR            (1<<4)
-#define INCLUDE_TOOLBAR                 (1<<5)
-#define INCLUDE_UTILITY                 (1<<6)
-#define INCLUDE_MENU                    (1<<7)
 
 #define NO_UPDATE_FLAG                  0
 #define UPDATE_KEYGRABS                 (1<<0)

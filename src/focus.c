@@ -97,29 +97,6 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
     return top_client;
 }
 
-static Client *
-clientGetLastFocused (Client * c, int mask)
-{
-    Client *c2 = NULL;
-    unsigned int i;
-
-    TRACE ("entering clientGetPrevious");
-
-    if (c)
-    {
-        ScreenInfo *screen_info = c->screen_info;
-        for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
-            c2 = c2->prev, i++)
-        {
-            if (clientSelectMask (c2, mask, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
-            {
-                return c2;
-            }
-        }
-    }
-    return NULL;
-}
-
 void
 clientFocusTop (ScreenInfo *screen_info, int layer)
 {
