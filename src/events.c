@@ -1087,6 +1087,17 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         removeTmpEventWin (menu_event_window);
         menu_event_window = None;
     }
+    /* 
+       Since all button press/release events are catched by the windows frames, there is some 
+       side effect with GTK menu. When a menu is opened, any click on the window frame is not
+       detected as a click outside the menu, and the menu doesn't close.
+       To avoid this (painless but annoying) behaviour, we just setup a no event window that 
+       "hides" the events to regular windows. 
+       That might look tricky, but it's very efficient and save plenty of lines of complicated 
+       code.
+       Don't forget to delete that window once the menu is closed, though, or we'll get in 
+       trouble.
+     */
     menu_event_window = setTmpEventWin(NoEventMask);
     menu = menu_default(ops, insensitive, menu_callback, c);
     if(!menu_popup(menu, x, y, ev->button, ev->time))
