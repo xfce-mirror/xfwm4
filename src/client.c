@@ -2705,23 +2705,18 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
             msx = xevent->xmotion.x_root;
             msy = xevent->xmotion.y_root;
-            if(msx == 0 && !((workspace == 0) && !wrap_workspaces))
+	    
+            if(msx == 0 && wrap_workspaces)
             {
-                XEvent e;
-                workspaceSwitch(workspace - 1, c);
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, XDisplayWidth(dpy, screen) - 11, msy);
-                xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
-                while(XCheckTypedEvent(dpy, MotionNotify, &e));
-                XRaiseWindow(dpy, passdata->tmp_event_window);
+                msx = xevent->xmotion.x_root = XDisplayWidth(dpy, screen) - 11;
+		workspaceSwitch(workspace - 1, c);
             }
-            else if((msx == XDisplayWidth(dpy, screen) - 1) && !((workspace == workspace_count - 1) && !wrap_workspaces))
+            else if((msx == XDisplayWidth(dpy, screen) - 1) && wrap_workspaces)
             {
-                XEvent e;
-                workspaceSwitch(workspace + 1, c);
                 XWarpPointer(dpy, None, root, 0, 0, 0, 0, 10, msy);
-                xevent->xmotion.x_root = 10;
-                while(XCheckTypedEvent(dpy, MotionNotify, &e));
-                XRaiseWindow(dpy, passdata->tmp_event_window);
+                msx = xevent->xmotion.x_root = 10;
+                workspaceSwitch(workspace + 1, c);
             }
         }
 
