@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-08-15 23:28+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
+"PO-Revision-Date: 2004-08-25 20:11+0200\n"
+"Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -25,7 +25,7 @@ msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Marges zijn gebieden aan de randen van het scherm waar geen "
-"venstersgeplaatst worden"
+"vensters geplaatst worden"
 
 #: mcs-plugin/margins.c:163
 msgid "Left :"
@@ -44,47 +44,43 @@ msgid "Bottom :"
 msgstr "Onder :"
 
 #: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "Bureaublad Marges"
+msgstr "Bureaubladen en Marges"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:539
-#, fuzzy
 msgid "Workspaces"
-msgstr "Bureaublad %i"
+msgstr "Bureaubladen"
 
 #: mcs-plugin/plugin.c:169
 msgid "Margins"
-msgstr ""
+msgstr "Marges"
 
 #: mcs-plugin/workspaces.c:338
 msgid "Change name"
-msgstr ""
+msgstr "Naam veranderen"
 
 #: mcs-plugin/workspaces.c:350
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad %d"
 
 #: mcs-plugin/workspaces.c:360
 msgid "Name:"
-msgstr ""
+msgstr "Naam:"
 
 #: mcs-plugin/workspaces.c:448
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Klik op naam bureaublad om hem te bewerken"
 
 #: mcs-plugin/workspaces.c:520
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "Wissel bureaublad"
+msgstr "Aantal bureaubladen"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:551
-#, fuzzy
 msgid "Workspace names"
-msgstr "Bureaublad Marges"
+msgstr "Bureaubladnamen"
 
 #: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
@@ -143,11 +139,11 @@ msgstr "Rechts"
 
 #: mcs-plugin/xfwm4_plugin.c:569
 msgid "Click and drag buttons to change the layout"
-msgstr ""
+msgstr "Klik en sleep de knoppen om de layout te veranderen"
 
 #: mcs-plugin/xfwm4_plugin.c:574
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 #: mcs-plugin/xfwm4_plugin.c:585
 msgid "Title"
@@ -155,7 +151,7 @@ msgstr "Titel"
 
 #: mcs-plugin/xfwm4_plugin.c:586
 msgid "The window title, it cannot be removed"
-msgstr ""
+msgstr "De venstertitel; kan niet worden verwijderd."
 
 #: mcs-plugin/xfwm4_plugin.c:594
 msgid "Hidden"
@@ -191,33 +187,28 @@ msgid "Button layout"
 msgstr "Knopvolgorde"
 
 #: mcs-plugin/xfwm4_plugin.c:1463
-#, fuzzy
 msgid "Style"
-msgstr "Titel"
+msgstr "Stijl"
 
 #: mcs-plugin/xfwm4_plugin.c:1489
-#, fuzzy
 msgid "Windows shortcuts"
-msgstr "Venster stijl"
+msgstr "Venster-sneltoetsen"
 
 #: mcs-plugin/xfwm4_plugin.c:1510 mcs-plugin/xfwm4_plugin.c:1538
 msgid "Command"
-msgstr ""
+msgstr "Commando"
 
 #: mcs-plugin/xfwm4_plugin.c:1515 mcs-plugin/xfwm4_plugin.c:1543
-#, fuzzy
 msgid "Shortcut"
-msgstr "Sneltoetsen"
+msgstr "Sneltoets"
 
 #: mcs-plugin/xfwm4_plugin.c:1518
-#, fuzzy
 msgid "Command shortcuts"
-msgstr "Sneltoetsen"
+msgstr "Commando-sneltoetsen"
 
 #: mcs-plugin/xfwm4_plugin.c:1546
-#, fuzzy
 msgid "Keyboard"
-msgstr "Sneltoetsen"
+msgstr "Toetsenbord"
 
 #: mcs-plugin/xfwm4_plugin.c:1557
 msgid "Focus model"
@@ -236,20 +227,16 @@ msgid "New window focus"
 msgstr "Focus voor nieuwe vensters"
 
 #: mcs-plugin/xfwm4_plugin.c:1583
-#, fuzzy
 msgid "Automatically give focus to newly created windows"
-msgstr ""
-"Nieuwe venster krijgen focus \n"
-"automatisch"
+msgstr "Nieuwe venster krijgen focus automatisch"
 
 #: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Raise on focus"
 msgstr "Naar voren halen bij focus"
 
 #: mcs-plugin/xfwm4_plugin.c:1596
-#, fuzzy
 msgid "Automatically raise windows when they receive focus"
-msgstr "Venster met focus naar voren halen"
+msgstr "Venster met focus automatisch naar voren halen"
 
 #: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Delay before raising focused window :"
@@ -268,16 +255,12 @@ msgid "Raise on click"
 msgstr "Naar voren halen bij klik"
 
 #: mcs-plugin/xfwm4_plugin.c:1638
-#, fuzzy
 msgid "Raise window when clicking inside application window"
-msgstr ""
-"Venster naar voren halen bij klikken\n"
-"in het venster"
+msgstr "Venster naar voren halen bij klikken in het venster"
 
 #: mcs-plugin/xfwm4_plugin.c:1643
-#, fuzzy
 msgid "Focus"
-msgstr "Vensterfocus"
+msgstr "Focus"
 
 #: mcs-plugin/xfwm4_plugin.c:1653
 msgid "Windows snapping"
@@ -345,266 +328,228 @@ msgid "Advanced"
 msgstr "Geavanceerd"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:64 mcs-plugin/xfwm4_shortcuteditor.c:439
-#, fuzzy
 msgid "Close window"
-msgstr "Venster verbergen"
+msgstr "Venster sluiten"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:74 mcs-plugin/xfwm4_shortcuteditor.c:447
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "Venster maximaliseren"
+msgstr "Venster verticaal maximaliseren"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:79 mcs-plugin/xfwm4_shortcuteditor.c:451
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "Venster maximaliseren"
+msgstr "Venster horizontaal maximaliseren"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:94 mcs-plugin/xfwm4_shortcuteditor.c:463
-#, fuzzy
 msgid "Stick window"
-msgstr "Venster verbergen"
+msgstr "Venster zichtbaar op alle bureaubladen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:99 mcs-plugin/xfwm4_shortcuteditor.c:467
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Venster verbergen"
+msgstr "Venster wisselen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:104 mcs-plugin/xfwm4_shortcuteditor.c:471
-#, fuzzy
 msgid "Move window up"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar voren halen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:109 mcs-plugin/xfwm4_shortcuteditor.c:475
-#, fuzzy
 msgid "Move window down"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar achteren brengen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:114 mcs-plugin/xfwm4_shortcuteditor.c:479
-#, fuzzy
 msgid "Move window left"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar links verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:119 mcs-plugin/xfwm4_shortcuteditor.c:483
-#, fuzzy
 msgid "Move window right"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar rechts verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:124 mcs-plugin/xfwm4_shortcuteditor.c:487
-#, fuzzy
 msgid "Resize window up"
-msgstr "Venster verbergen"
+msgstr "Venster vergroten of verkleinen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:129 mcs-plugin/xfwm4_shortcuteditor.c:491
-#, fuzzy
 msgid "Resize window down"
-msgstr "Venster verbergen"
+msgstr "Venster vergroten naar beneden"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:134 mcs-plugin/xfwm4_shortcuteditor.c:495
-#, fuzzy
 msgid "Resize window left"
-msgstr "Venster verbergen"
+msgstr "Venster vergroten naar links"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:139 mcs-plugin/xfwm4_shortcuteditor.c:499
-#, fuzzy
 msgid "Resize window right"
-msgstr "Venster verbergen"
+msgstr "Venster vergroten naar rechts"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:144 mcs-plugin/xfwm4_shortcuteditor.c:503
-#, fuzzy
 msgid "Raise window"
-msgstr "Venster verbergen"
+msgstr "Venster naar de voorgrond halen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:149 mcs-plugin/xfwm4_shortcuteditor.c:507
-#, fuzzy
 msgid "Lower window"
-msgstr "Venster verbergen"
+msgstr "Venster naar de achtergrond brengen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154 mcs-plugin/xfwm4_shortcuteditor.c:511
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Wissel volledig scherm"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:159 mcs-plugin/xfwm4_shortcuteditor.c:515
-#, fuzzy
 msgid "Next workspace"
-msgstr "Wissel bureaublad"
+msgstr "Volgend bureaublad"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:164 mcs-plugin/xfwm4_shortcuteditor.c:519
-#, fuzzy
 msgid "Previous workspace"
-msgstr "Wissel bureaublad"
+msgstr "Vorig bureaublad"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:169 mcs-plugin/xfwm4_shortcuteditor.c:523
-#, fuzzy
 msgid "Add workspace"
-msgstr "Wissel bureaublad"
+msgstr "Bureaublad toevoegen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:174 mcs-plugin/xfwm4_shortcuteditor.c:527
-#, fuzzy
 msgid "Delete workspace"
-msgstr "Wissel bureaublad"
+msgstr "Bureaublad verwijderen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:179 mcs-plugin/xfwm4_shortcuteditor.c:531
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 1"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:184 mcs-plugin/xfwm4_shortcuteditor.c:535
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 2"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:189 mcs-plugin/xfwm4_shortcuteditor.c:539
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 3"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:194 mcs-plugin/xfwm4_shortcuteditor.c:543
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 4"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:199 mcs-plugin/xfwm4_shortcuteditor.c:547
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 5"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:204 mcs-plugin/xfwm4_shortcuteditor.c:551
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 6"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:209 mcs-plugin/xfwm4_shortcuteditor.c:555
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 7"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:214 mcs-plugin/xfwm4_shortcuteditor.c:559
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 8"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:219 mcs-plugin/xfwm4_shortcuteditor.c:563
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad 9"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:224 mcs-plugin/xfwm4_shortcuteditor.c:567
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar volgend bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:229 mcs-plugin/xfwm4_shortcuteditor.c:571
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "Wissel bureaublad"
+msgstr "Venster naar vorig bureablad verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:234 mcs-plugin/xfwm4_shortcuteditor.c:575
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 1 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:239 mcs-plugin/xfwm4_shortcuteditor.c:579
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 2 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:244 mcs-plugin/xfwm4_shortcuteditor.c:583
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 3 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:249 mcs-plugin/xfwm4_shortcuteditor.c:587
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 4 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:254 mcs-plugin/xfwm4_shortcuteditor.c:591
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 5 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:259 mcs-plugin/xfwm4_shortcuteditor.c:595
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 6 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:264 mcs-plugin/xfwm4_shortcuteditor.c:599
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 7 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:269 mcs-plugin/xfwm4_shortcuteditor.c:603
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 8 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:274 mcs-plugin/xfwm4_shortcuteditor.c:607
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Focus voor nieuwe vensters"
+msgstr "Venster naar bureablad 9 verplaatsen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:655
 msgid "Cannot open the theme directory !"
-msgstr ""
+msgstr "Kan thema-map niet openen!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:674
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
-msgstr ""
+msgstr "Kan %s niet openen:\n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:689 mcs-plugin/xfwm4_shortcuteditor.c:700
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
-msgstr ""
+msgstr "Kan niet schrijven in %s:\n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:763
 msgid "Select command"
-msgstr ""
+msgstr "Commando selecteren"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:865
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
+"Sneltoets reeds in gebruik!\n"
+"Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:927
-#, fuzzy
 msgid "Compose shortcut for :"
-msgstr "Sneltoetsen"
+msgstr "Sneltoets maken voor:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:930
 #: mcs-plugin/xfwm4_shortcuteditor.c:1109
-#, fuzzy
 msgid "Compose shortcut"
-msgstr "Sneltoetsen"
+msgstr "Sneltoets samenstellen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:962
 #: mcs-plugin/xfwm4_shortcuteditor.c:1140
 msgid "Cannot grab the keyboard"
-msgstr ""
+msgstr "Kan toetsenbord niet vastzetten"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1014
 msgid "Choose command"
-msgstr ""
+msgstr "Commando kiezen"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1016
-#, fuzzy
 msgid "Command :"
-msgstr "Sneltoetsen"
+msgstr "Commando :"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1050
 msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
+msgstr "Het commando bestaat niet of het bestand is niet uitvoerbaar!"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1106
 msgid "Compose shortcut for command :"
-msgstr ""
+msgstr "Sneltoets instellen voor commando:"
 
 #: src/events.c:1627
 #, c-format
@@ -629,12 +574,12 @@ msgstr "%: Ontbrekende gegevens uit standaard bestanden"
 #: src/main.c:327
 #, c-format
 msgid "%s: Failed to enter daemon mode: %s"
-msgstr ""
+msgstr "%s: Kon daemon modus niet starten: %s"
 
 #: src/main.c:335
 #, c-format
 msgid "%s: Failed to create new process: %s"
-msgstr ""
+msgstr "%s: Kon nieuw proces niet creëren"
 
 #: src/main.c:356
 #, c-format
@@ -679,11 +624,11 @@ msgstr "_Loslaten"
 
 #: src/menu.c:47
 msgid "Context _help"
-msgstr ""
+msgstr "Context _help"
 
 #: src/menu.c:48 src/menu.c:49
 msgid "Always on top"
-msgstr ""
+msgstr "Altijd boven"
 
 #: src/menu.c:50
 msgid "Send to..."
@@ -706,9 +651,9 @@ msgid "Restart"
 msgstr "_Herstarten"
 
 #: src/menu.c:169
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "Bureaublad %i"
+msgstr "Bureaublad %i (%s)"
 
 #: src/menu.c:181
 #, c-format
