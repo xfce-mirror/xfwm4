@@ -1,3 +1,20 @@
+2003-01-14  xfce
+
+	* aclocal.m4, config.guess, config.sub, configure, ltmain.sh,
+	mcs-plugin/xfwm4_plugin.c, src/Makefile.am, src/Makefile.in,
+	src/client.c, src/inline-tabwin-icon.h, src/tabwin-icon.png,
+	src/tabwin.c, src/tabwin.h: Add a more "civilized" task switcher
+	when pressing Alt+Tab
+
+2003-01-13  xfce
+
+	* aclocal.m4, config.guess, config.sub, configure, ltmain.sh:
+	Configure stuff
+
+2003-01-13  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-01-13  xfce
 
 	* src/settings.c: Optimize initial startup time by ignoring channel
