@@ -1271,7 +1271,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->xfwm4_dialog = gtk_dialog_new ();
     gtk_window_set_position (GTK_WINDOW (dialog->xfwm4_dialog),
-                             GTK_WIN_POS_CENTER_ALWAYS);
+                             GTK_WIN_POS_CENTER);
     gtk_window_set_title (GTK_WINDOW (dialog->xfwm4_dialog),
                           _("Window Manager"));
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog->xfwm4_dialog), FALSE);

@@ -1655,17 +1655,17 @@ clientApplyStackList (GSList * list)
        avoid flickering during restack.
        (contributed by Thomas Leonard <tal00r@ecs.soton.ac.uk>)
      */
-    if (top_of_stack)
+    if ((top_of_stack) && (top_of_stack->frame != xwinstack[0]))
     {
         wc.stack_mode = Above;
         wc.sibling = top_of_stack->frame;
         XConfigureWindow(dpy, xwinstack[0], CWStackMode | CWSibling, &wc);
+        top_of_stack = (Client *) list_copy->data;
     }
     XRestackWindows (dpy, xwinstack, (int) nwindows);
     XFlush (dpy);
     
     /* Update top_of_stackfor next restacking */
-    top_of_stack = (Client *) list_copy->data;
     
     g_slist_free (list_copy);
     g_free (xwinstack);
@@ -1943,8 +1943,8 @@ clientConstraintPos (Client * c, gboolean show_full)
     client_margins[MARGIN_TOP] = margins[MARGIN_TOP];
     client_margins[MARGIN_LEFT] = margins[MARGIN_LEFT];
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
-
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
+
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceGetArea (client_margins, NULL, c);
@@ -2027,13 +2027,14 @@ clientKeepVisible (Client * c)
 {
     CARD32 client_margins[4];
     int cx, cy, left, right, top, bottom;
+    int diff_x, diff_y;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientKeepVisible");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    cx = frameX (c) + (frameWidth (c) >> 1);
-    cy = frameY (c) + (frameHeight (c) >> 1);
+    cx = frameX (c) + (frameWidth (c) / 2);
+    cy = frameY (c) + (frameHeight (c) / 2);
 
     client_margins[MARGIN_TOP] = margins[MARGIN_TOP];
     client_margins[MARGIN_LEFT] = margins[MARGIN_LEFT];
@@ -2059,11 +2060,11 @@ clientKeepVisible (Client * c)
             cy) ? (int) client_margins[MARGIN_BOTTOM] : 0);
 
     /* Translate coodinates to center on physical screen */
-    if ((use_xinerama)
-        && (abs (c->x - ((MyDisplayFullWidth (dpy,
-                            screen) - c->width) / 2)) < 20)
-        && (abs (c->y - ((MyDisplayFullHeight (dpy,
-                            screen) - c->height) / 2)) < 20))
+
+    diff_x = abs (c->x - ((MyDisplayFullWidth (dpy, screen) - c->width) / 2));
+    diff_y = abs (c->y - ((MyDisplayFullHeight (dpy, screen) - c->height) / 2));
+
+    if ((use_xinerama) && (diff_x < 25) && (diff_y < 25))
     {
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
@@ -4318,15 +4319,15 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             c->x = c->x - 16;
         }
-        if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
+        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_RIGHT].keycode)
         {
             c->x = c->x + 16;
         }
-        if (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
+        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode)
         {
             c->y = c->y - 16;
         }
-        if (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
+        else if (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode)
         {
             c->y = c->y + 16;
         }

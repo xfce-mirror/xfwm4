@@ -214,7 +214,7 @@ run_dialog (McsPlugin * mcs_plugin)
                                      GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE,
                                      GTK_RESPONSE_OK, NULL);
 
-    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER_ALWAYS);
+    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
