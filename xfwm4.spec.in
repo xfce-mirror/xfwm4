@@ -48,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc example.xfwm4rc example.gtkrc-2.0 README INSTALL TODO COPYING AUTHORS
 %{_bindir}/*
 %{_datadir}/xfwm4/defaults
-%{_datadir}/xfwm4/default.keys
+%{_datadir}/xfwm4/themes/default.keys
 %{_datadir}/xfwm4/themes/adept
 %{_datadir}/xfwm4/themes/bbs
 %{_datadir}/xfwm4/themes/curve
@@ -85,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/retro
 %{_datadir}/xfwm4/themes/slick
 %{_datadir}/xfwm4/themes/slimline
+%{_datadir}/xfwm4/themes/tabs
 %{_datadir}/xfwm4/themes/trench
 %{_datadir}/xfwm4/themes/xfce
 

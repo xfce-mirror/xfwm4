@@ -75,6 +75,7 @@ themes/redmondxp/Makefile
 themes/retro/Makefile
 themes/slick/Makefile
 themes/slimline/Makefile
+themes/tabs/Makefile
 themes/trench/Makefile
 themes/xfce/Makefile
 ])

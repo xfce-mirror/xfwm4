@@ -33,5 +33,6 @@ redmondxp \
 retro \
 slick \
 slimline \
+tabs \
 trench \
 xfce
