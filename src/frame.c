@@ -517,7 +517,7 @@ static void frameSetShape(Client * c, int state, ClientPixmapCache * pm_cache, i
     XDestroyWindow(dpy, temp);
 }
 
-void frameDraw(Client * c, gboolean invalidate_cache)
+void frameDraw(Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 {
     int state = ACTIVE;
     int i;
@@ -707,7 +707,7 @@ void frameDraw(Client * c, gboolean invalidate_cache)
         myWindowShow(&c->corners[CORNER_BOTTOM_LEFT], 0, frameHeight(c) - params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].width, params.corners[CORNER_BOTTOM_LEFT][ACTIVE].height, requires_clearing);
         myWindowShow(&c->corners[CORNER_BOTTOM_RIGHT], frameWidth(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, params.corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, requires_clearing);
 
-        if (requires_clearing)
+        if (requires_clearing | force_shape_update)
 	{
 	    frameSetShape(c, state, &c->pm_cache, button_x);
 	}

@@ -1009,7 +1009,7 @@ void clientUpdateAllFrames(int mask)
         }
         if(mask & UPDATE_FRAME)
         {
-            frameDraw(c, FALSE);
+            frameDraw(c, FALSE, FALSE);
         }
     }
 }
@@ -1778,7 +1778,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 
     if(mask & (CWWidth | CWHeight))
     {
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
     }
     if(mask)
     {
@@ -2154,14 +2154,14 @@ void clientFrame(Window w)
         {
             /* We set the draw_active value to the wrong value to force a draw */
             c->draw_active = TRUE;
-            frameDraw(c, FALSE);
+            frameDraw(c, FALSE, FALSE);
         }
     }
     else
     {
         /* We set the draw_active value to the wrong value to force a draw */
         c->draw_active = TRUE;
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
         setWMState(dpy, c->window, IconicState);
         clientSetNetState(c);
     }
@@ -2849,7 +2849,7 @@ void clientUpdateFocus(Client * c)
     if(c2)
     {
         DBG("redrawing previous focus client \"%s\" (%#lx)\n", c2->name, c2->window);
-        frameDraw(c2, FALSE);
+        frameDraw(c2, FALSE, FALSE);
     }
     data[1] = None;
     XChangeProperty(dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 2);
@@ -2907,7 +2907,7 @@ void clientSetFocus(Client * c, int sort)
     if(c2)
     {
         DBG("redrawing previous focus client \"%s\" (%#lx)\n", c2->name, c2->window);
-        frameDraw(c2, FALSE);
+        frameDraw(c2, FALSE, FALSE);
     }
     data[1] = None;
     XChangeProperty(dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 2);
@@ -3648,12 +3648,12 @@ static GtkToXEventFilterStatus clientButtonPress_event_filter(XEvent * xevent, g
     if(xevent->type == EnterNotify)
     {
         c->button_pressed[b] = True;
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
     }
     else if(xevent->type == LeaveNotify)
     {
         c->button_pressed[b] = False;
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
     }
     else if(xevent->type == ButtonRelease)
     {
@@ -3714,7 +3714,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     passdata.b = b;
 
     c->button_pressed[b] = True;
-    frameDraw(c, FALSE);
+    frameDraw(c, FALSE, FALSE);
 
     DBG("entering button press loop\n");
     pushEventFilter(clientButtonPress_event_filter, &passdata);
@@ -3727,7 +3727,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     if(c->button_pressed[b])
     {
         c->button_pressed[b] = False;
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
         switch (b)
         {
             case HIDE_BUTTON:

@@ -757,7 +757,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     {
         DBG("focus set to \"%s\" (%#lx)\n", c->name, c->window);
         clientUpdateFocus(c);
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
         if(params.raise_on_focus && !params.click_to_focus)
         {
             reset_timeout();
@@ -804,7 +804,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             }
             if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_IS_RESIZABLE) != previous_value)
             {
-                frameDraw(c, TRUE);
+                frameDraw(c, TRUE, FALSE);
             }
         }
         else if((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
@@ -816,13 +816,13 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             }
             getWindowName(dpy, c->window, &c->name);
             CLIENT_FLAG_SET(c, CLIENT_FLAG_NAME_CHANGED);
-            frameDraw(c, TRUE);
+            frameDraw(c, TRUE, FALSE);
         }
         else if(ev->atom == motif_wm_hints)
         {
             DBG("client \"%s\" (%#lx) has received a motif_wm_hints notify\n", c->name, c->window);
             clientUpdateMWMHints(c);
-            frameDraw(c, TRUE);
+            frameDraw(c, TRUE, FALSE);
         }
         else if(ev->atom == XA_WM_HINTS)
         {
@@ -849,7 +849,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
         {
             DBG("client \"%s\" (%#lx) has received a net_wm_window_type notify\n", c->name, c->window);
             clientGetNetWmType(c);
-            frameDraw(c, TRUE);
+            frameDraw(c, TRUE, FALSE);
         }
         else if((ev->atom == win_workspace) && !(c->transient_for))
         {
@@ -1015,7 +1015,7 @@ static inline void handleShape(XShapeEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        frameDraw(c, TRUE);
+        frameDraw(c, FALSE, TRUE);
     }
 }
 
@@ -1172,21 +1172,21 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
         case MENU_OP_UNSTICK:
             if(c)
             {
-                frameDraw(c, FALSE);
+                frameDraw(c, FALSE, FALSE);
                 clientToggleSticky(c, TRUE);
             }
             break;
         case MENU_OP_DELETE:
             if(c)
             {
-                frameDraw(c, FALSE);
+                frameDraw(c, FALSE, FALSE);
                 clientClose(c);
             }
             break;
         default:
             if(c)
             {
-                frameDraw(c, FALSE);
+                frameDraw(c, FALSE, FALSE);
             }
             break;
     }
@@ -1207,7 +1207,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     if(((ev->button == 1) || (ev->button == 3)) && (c = (Client *) data))
     {
         c->button_pressed[MENU_BUTTON] = True;
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
         y = c->y;
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL;
         insensitive = 0;
@@ -1311,7 +1311,7 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         DBG("Cannot open menu\n");
         gdk_beep();
         c->button_pressed[MENU_BUTTON] = False;
-        frameDraw(c, FALSE);
+        frameDraw(c, FALSE, FALSE);
         removeTmpEventWin(menu_event_window);
         menu_event_window = None;
         menu_free(menu);
