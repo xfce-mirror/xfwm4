@@ -22,15 +22,17 @@ AC_ARG_ENABLE(debug, [  --enable-debug  	use this option if you want to debug xf
 
 dnl The following is to ensure $prefix is properly expanded
 AC_MSG_CHECKING(xfwm4 directory structure)
-if test "x$datadir" = "x\${prefix}/share" -o "x$prefix" = "xNONE";
+if test "x$prefix" = "xNONE";
 then
   XFWM4_DIR="/usr/local/share/xfwm4"
+elif test "x$datadir" = "x\${prefix}/share"
+then
+  XFWM4_DIR="$prefix/share/xfwm4"
 else
   XFWM4_DIR="$datadir/xfwm4"
 fi
 AC_MSG_RESULT(xfwm4 data dir set to $XFWM4_DIR)
 AC_SUBST(XFWM4_DIR)
-AC_DEFINE(XFWM4_DIR, $XFWM4_DIR)
 
 ## Versions of dependencies
 GLIB_REQUIRED_VERSION=2.0.0
