@@ -35,7 +35,7 @@ frameLeft (Client * c)
 {
     TRACE ("entering frameLeft");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return params.sides[SIDE_LEFT][ACTIVE].width;
@@ -48,7 +48,7 @@ frameRight (Client * c)
 {
     TRACE ("entering frameRight");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return params.sides[SIDE_RIGHT][ACTIVE].width;
@@ -61,7 +61,7 @@ frameTop (Client * c)
 {
     TRACE ("entering frameTop");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return params.title[TITLE_3][ACTIVE].height;
@@ -74,7 +74,7 @@ frameBottom (Client * c)
 {
     TRACE ("entering frameBottom");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return params.sides[SIDE_BOTTOM][ACTIVE].height;
@@ -87,7 +87,7 @@ frameX (Client * c)
 {
     TRACE ("entering frameX");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return c->x - frameLeft (c);
@@ -100,7 +100,7 @@ frameY (Client * c)
 {
     TRACE ("entering frameY");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return c->y - frameTop (c);
@@ -113,7 +113,7 @@ frameWidth (Client * c)
 {
     TRACE ("entering frameWidth");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return c->width + frameLeft (c) + frameRight (c);
@@ -126,13 +126,13 @@ frameHeight (Client * c)
 {
     TRACE ("entering frameHeight");
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c,
+    if (FLAG_TEST_AND_NOT (c->flags,
             CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_SHADED,
             CLIENT_FLAG_FULLSCREEN))
     {
         return frameTop (c) + frameBottom (c);
     }
-    else if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    else if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         return c->height + frameTop (c) + frameBottom (c);
@@ -372,7 +372,7 @@ getButtonFromLetter (char chr, Client * c)
             }
             break;
         case 'C':
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_CLOSE))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_CLOSE))
             {
                 b = CLOSE_BUTTON;
             }
@@ -387,14 +387,14 @@ getButtonFromLetter (char chr, Client * c)
             b = SHADE_BUTTON;
             break;
         case 'T':
-            if (CLIENT_FLAG_TEST_ALL (c,
+            if (FLAG_TEST_ALL (c->flags,
                     CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
             {
                 b = STICK_BUTTON;
             }
             break;
         case 'O':
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MENU))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MENU))
             {
                 b = MENU_BUTTON;
             }
@@ -424,7 +424,7 @@ getLetterFromButton (int i, Client * c)
             }
             break;
         case CLOSE_BUTTON:
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_CLOSE))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_CLOSE))
             {
                 chr = 'C';
             }
@@ -439,14 +439,14 @@ getLetterFromButton (int i, Client * c)
             chr = 'S';
             break;
         case STICK_BUTTON:
-            if (CLIENT_FLAG_TEST_ALL (c,
+            if (FLAG_TEST_ALL (c->flags,
                     CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_HAS_MENU))
             {
                 chr = 'T';
             }
             break;
         case MENU_BUTTON:
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MENU))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MENU))
             {
                 chr = 'O';
             }
@@ -463,7 +463,7 @@ frameGetPixmap (Client * c, int button, int state)
     switch (button)
     {
         case SHADE_BUTTON:
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && params.buttons[SHADE_BUTTON][state + 3].pixmap)
             {
                 return &params.buttons[SHADE_BUTTON][state + 3];
@@ -471,7 +471,7 @@ frameGetPixmap (Client * c, int button, int state)
             return &params.buttons[SHADE_BUTTON][state];
             break;
         case STICK_BUTTON:
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY)
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
                 && params.buttons[STICK_BUTTON][state + 3].pixmap)
             {
                 return &params.buttons[STICK_BUTTON][state + 3];
@@ -479,7 +479,7 @@ frameGetPixmap (Client * c, int button, int state)
             return &params.buttons[STICK_BUTTON][state];
             break;
         case MAXIMIZE_BUTTON:
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED)
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
                 && params.buttons[MAXIMIZE_BUTTON][state + 3].pixmap)
             {
                 return &params.buttons[MAXIMIZE_BUTTON][state + 3];
@@ -514,7 +514,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
         XCreateSimpleWindow (dpy, root, 0, 0, frameWidth (c), frameHeight (c),
         0, 0, 0);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         rect.x = 0;
         rect.y = 0;
@@ -532,7 +532,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
     {
         XShapeCombineMask (dpy, MYWINDOW_XWINDOW (c->title), ShapeBounding, 0,
             0, pm_cache->pm_title[state].mask, ShapeSet);
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             XShapeCombineMask (dpy, MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]),
                 ShapeBounding, 0, 0,
@@ -618,7 +618,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache,
                 ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             XShapeCombineShape (dpy, temp, ShapeBounding, 0, frameTop (c),
                 MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]), ShapeBounding,
@@ -718,7 +718,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         c->first_map = FALSE;
     }
 
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN))
     {
         /* Cache mgmt */
@@ -912,7 +912,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
             MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
             params.corners[CORNER_BOTTOM_RIGHT][state].pixmap);
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             myWindowHide (&c->sides[SIDE_LEFT]);
             myWindowHide (&c->sides[SIDE_RIGHT]);

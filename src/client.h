@@ -107,13 +107,15 @@
 #define CLIENT_FLAG_SKIP_TASKBAR       (1L<<22)
 #define CLIENT_FLAG_STATE_MODAL        (1L<<23)
 #define CLIENT_FLAG_STICKY             (1L<<24)
-#define CLIENT_FLAG_WM_DELETE          (1L<<25)
-#define CLIENT_FLAG_WM_INPUT           (1L<<26)
-#define CLIENT_FLAG_WM_TAKEFOCUS       (1L<<27)
-#define CLIENT_FLAG_MOVING_RESIZING    (1L<<28)
-#define CLIENT_FLAG_NAME_CHANGED       (1L<<29)
-#define CLIENT_FLAG_SESSION_MANAGED    (1L<<30)
-#define CLIENT_FLAG_WORKSPACE_SET      (1L<<31)
+#define CLIENT_FLAG_MOVING_RESIZING    (1L<<25)
+#define CLIENT_FLAG_NAME_CHANGED       (1L<<26)
+#define CLIENT_FLAG_SESSION_MANAGED    (1L<<27)
+#define CLIENT_FLAG_WORKSPACE_SET      (1L<<28)
+
+#define WM_FLAG_DELETE                 (1L<<0)
+#define WM_FLAG_INPUT                  (1L<<1)
+#define WM_FLAG_TAKEFOCUS              (1L<<2)
+#define WM_FLAG_CONTEXT_HELP           (1L<<3)
 
 #define CLIENT_FLAG_INITIAL_VALUES     CLIENT_FLAG_HAS_BORDER | \
                                        CLIENT_FLAG_HAS_MENU | \
@@ -126,28 +128,37 @@
 
 #define ALL_WORKSPACES                 (int) 0xFFFFFFFF
 
-/* Convenient macros */
+/*
 #define CLIENT_FLAG_TEST(c,f)                   (c->client_flag & (f))
 #define CLIENT_FLAG_TEST_ALL(c,f)               ((c->client_flag & (f)) == (f))
 #define CLIENT_FLAG_TEST_AND_NOT(c,f1,f2)       ((c->client_flag & (f1 | f2)) == (f1))
 #define CLIENT_FLAG_SET(c,f)                    (c->client_flag |= (f))
 #define CLIENT_FLAG_UNSET(c,f)                  (c->client_flag &= ~(f))
 #define CLIENT_FLAG_TOGGLE(c,f)                 (c->client_flag ^= (f))
+ */
 
-#define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_HIDE, CLIENT_FLAG_SKIP_TASKBAR))
-#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE)
+/* Convenient macros */
+#define FLAG_TEST(flag,bits)                   (flag & (bits))
+#define FLAG_TEST_ALL(flag,bits)               ((flag & (bits)) == (bits))
+#define FLAG_TEST_AND_NOT(flag,bits1,bits2)    ((flag & (bits1 | bits2)) == (bits1))
+#define FLAG_SET(flag,bits)                    (flag |= (bits))
+#define FLAG_UNSET(flag,bits)                  (flag &= ~(bits))
+#define FLAG_TOGGLE(flag,bits)                 (flag ^= (bits))
+
+#define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && FLAG_TEST_AND_NOT(c->flags, CLIENT_FLAG_HAS_HIDE, CLIENT_FLAG_SKIP_TASKBAR))
+#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   FLAG_TEST_ALL(c->flags, CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE)
 
 typedef enum
 {
     UNSET = 0,
-    WINDOW_NORMAL = (1 << 0),
-    WINDOW_DESKTOP = (1 << 1),
-    WINDOW_DOCK = (1 << 2),
-    WINDOW_DIALOG = (1 << 3),
+    WINDOW_NORMAL       = (1 << 0),
+    WINDOW_DESKTOP      = (1 << 1),
+    WINDOW_DOCK         = (1 << 2),
+    WINDOW_DIALOG       = (1 << 3),
     WINDOW_MODAL_DIALOG = (1 << 4),
-    WINDOW_TOOLBAR = (1 << 5),
-    WINDOW_MENU = (1 << 6),
-    WINDOW_UTILITY = (1 << 7),
+    WINDOW_TOOLBAR      = (1 << 5),
+    WINDOW_MENU         = (1 << 6),
+    WINDOW_UTILITY      = (1 << 7),
     WINDOW_SPLASHSCREEN = (1 << 8)
 }
 WindowType;
@@ -218,7 +229,8 @@ struct _Client
     char *startup_id;
 #endif
 
-    unsigned long client_flag;
+    unsigned long flags;
+    unsigned long wm_flags;
     /* Pixmap caching */
     ClientPixmapCache pm_cache;
 };

@@ -78,12 +78,12 @@ workspaceSwitch (int new_ws, Client * c2)
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
-        if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_VISIBLE,
+        if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_VISIBLE,
                 CLIENT_FLAG_STICKY) && ((c->win_workspace != new_ws)))
         {
             if (c == previous)
             {
-                CLIENT_FLAG_SET (previous, CLIENT_FLAG_FOCUS);
+                FLAG_SET (previous->flags, CLIENT_FLAG_FOCUS);
                 clientSetFocus (NULL, FALSE, TRUE);
             }
             if (!clientIsTransientOrModal (c))
@@ -113,27 +113,27 @@ workspaceSwitch (int new_ws, Client * c2)
     for (index = g_list_last(list_of_windows); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_VISIBLE))
         {
             clientSetWorkspace (c, new_ws, TRUE);
             if (c == previous)
             {
                 new_focus = c;
             }
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_FOCUS);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
         }
         else if ((c->win_workspace == new_ws)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
         {
             if (!clientIsTransientOrModal (c))
             {
                 clientShow (c, FALSE);
             }
-            if ((!new_focus) && CLIENT_FLAG_TEST (c, CLIENT_FLAG_FOCUS))
+            if ((!new_focus) && FLAG_TEST (c->flags, CLIENT_FLAG_FOCUS))
             {
                 new_focus = c;
             }
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_FOCUS);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_FOCUS);
         }
     }
 
@@ -228,7 +228,7 @@ workspaceGetArea (int * m1, int * m2, Client * c)
     for (c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
     {
         if (((!c) || (c != c2))
-            && CLIENT_FLAG_TEST_ALL (c2,
+            && FLAG_TEST_ALL (c2->flags,
                 CLIENT_FLAG_HAS_STRUTS | CLIENT_FLAG_VISIBLE))
         {
             m1[MARGIN_TOP] = MAX (m1[MARGIN_TOP], c2->struts[MARGIN_TOP]);

@@ -220,7 +220,7 @@ clientIsModal (Client * c)
 
     TRACE ("entering clientIsModal");
 
-    return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL) && 
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
             (((c->transient_for != root) && (c->transient_for != None)) ||
              (c->group_leader != None)));
 }
@@ -280,7 +280,7 @@ clientIsModalFor (Client * c1, Client * c2)
 
     TRACE ("entering clientIsModalFor");
 
-    if (CLIENT_FLAG_TEST (c1, CLIENT_FLAG_STATE_MODAL))
+    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL))
     {
         return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
     }
@@ -315,7 +315,7 @@ clientIsModalForGroup (Client * c)
 
     TRACE ("entering clientIsModalForGroup");
 
-    return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL) && 
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
             !clientIsTransient(c) && (c->group_leader != None));
 }
 
@@ -340,63 +340,63 @@ clientSetNetState (Client * c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     i = 0;
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         TRACE ("clientSetNetState : shaded");
         data[i++] = net_wm_state_shaded;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("clientSetNetState : sticky");
         data[i++] = net_wm_state_sticky;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         TRACE ("clientSetNetState : modal");
         data[i++] = net_wm_state_modal;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_PAGER))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER))
     {
         TRACE ("clientSetNetState : skip_pager");
         data[i++] = net_wm_state_skip_pager;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_TASKBAR))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR))
     {
         TRACE ("clientSetNetState : skip_taskbar");
         data[i++] = net_wm_state_skip_taskbar;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         TRACE ("clientSetNetState : maximize vert + horiz");
         data[i++] = net_wm_state_maximized_horz;
         data[i++] = net_wm_state_maximized_vert;
     }
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_HORIZ))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
         TRACE ("clientSetNetState : maximize horiz");
         data[i++] = net_wm_state_maximized_horz;
     }
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_VERT))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
     {
         TRACE ("clientSetNetState : vert");
         data[i++] = net_wm_state_maximized_vert;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         TRACE ("clientSetNetState : fullscreen");
         data[i++] = net_wm_state_fullscreen;
     }
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         TRACE ("clientSetNetState : above");
         data[i++] = net_wm_state_above;
     }
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         TRACE ("clientSetNetState : below");
         data[i++] = net_wm_state_below;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
     {
         TRACE ("clientSetNetState : hidden");
         data[i++] = net_wm_state_hidden;
@@ -429,79 +429,79 @@ clientGetNetState (Client * c)
         while (i < n_atoms)
         {
             if ((atoms[i] == net_wm_state_shaded)
-                || (CLIENT_FLAG_TEST_ALL (c,
+                || (FLAG_TEST_ALL (c->flags,
                         CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_SHADED)))
             {
                 TRACE ("clientGetNetState : shaded");
                 c->win_state |= WIN_STATE_SHADED;
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
+                FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
             }
             else if (atoms[i] == net_wm_state_hidden)
             {
                 TRACE ("clientGetNetState : hidden");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
+                FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
             }
             else if ((atoms[i] == net_wm_state_sticky)
-                || (CLIENT_FLAG_TEST_ALL (c,
+                || (FLAG_TEST_ALL (c->flags,
                         CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_STICKY)))
             {
                 TRACE ("clientGetNetState : sticky");
                 c->win_state |= WIN_STATE_STICKY;
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
+                FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
             }
             else if ((atoms[i] == net_wm_state_maximized_horz)
-                || (CLIENT_FLAG_TEST_ALL (c,
+                || (FLAG_TEST_ALL (c->flags,
                         CLIENT_FLAG_SESSION_MANAGED |
                         CLIENT_FLAG_MAXIMIZED_HORIZ)))
             {
                 TRACE ("clientGetNetState : maximized horiz");
                 c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_HORIZ);
+                FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
             }
             else if ((atoms[i] == net_wm_state_maximized_vert)
-                || (CLIENT_FLAG_TEST_ALL (c,
+                || (FLAG_TEST_ALL (c->flags,
                         CLIENT_FLAG_SESSION_MANAGED |
                         CLIENT_FLAG_MAXIMIZED_VERT)))
             {
                 TRACE ("clientGetNetState : maximized vert");
                 c->win_state |= WIN_STATE_MAXIMIZED_VERT;
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_VERT);
+                FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
             }
             else if ((atoms[i] == net_wm_state_fullscreen)
-                && !CLIENT_FLAG_TEST_ALL (c,
+                && !FLAG_TEST_ALL (c->flags,
                     CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
             {
                 TRACE ("clientGetNetState : fullscreen");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_FULLSCREEN);
+                FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
             }
             else if ((atoms[i] == net_wm_state_above)
-                && !CLIENT_FLAG_TEST_ALL (c,
+                && !FLAG_TEST_ALL (c->flags,
                     CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
             {
                 TRACE ("clientGetNetState : above");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_ABOVE);
+                FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
             }
             else if ((atoms[i] == net_wm_state_below)
-                && !CLIENT_FLAG_TEST_ALL (c,
+                && !FLAG_TEST_ALL (c->flags,
                     CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
             {
                 TRACE ("clientGetNetState : below");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_BELOW);
+                FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
             }
             else if (atoms[i] == net_wm_state_modal)
             {
                 TRACE ("clientGetNetState : modal");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_STATE_MODAL);
+                FLAG_SET (c->flags, CLIENT_FLAG_STATE_MODAL);
             }
             else if (atoms[i] == net_wm_state_skip_pager)
             {
                 TRACE ("clientGetNetState : skip_pager");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_SKIP_PAGER);
+                FLAG_SET (c->flags, CLIENT_FLAG_SKIP_PAGER);
             }
             else if (atoms[i] == net_wm_state_skip_taskbar)
             {
                 TRACE ("clientGetNetState : skip_taskbar");
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_SKIP_TASKBAR);
+                FLAG_SET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             }
             else
             {
@@ -545,7 +545,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
         }
     }
     else if ((action & WIN_STATE_STICKY)
-        && CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+        && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
     {
         TRACE ("client \"%s\" (0x%lx) has received a win_state/stick event",
             c->name, c->window);
@@ -563,7 +563,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
         }
     }
     else if ((action & WIN_STATE_MAXIMIZED)
-        && CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MAXIMIZE))
+        && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
     {
         TRACE
             ("client \"%s\" (0x%lx) has received a win_state/maximize event",
@@ -590,12 +590,12 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_shaded) || (second == net_wm_state_shaded))
     {
         if ((action == NET_WM_STATE_ADD)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             clientShade (c);
         }
         else if ((action == NET_WM_STATE_REMOVE)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+            && FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             clientUnshade (c);
         }
@@ -616,7 +616,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
     {
         if ((action == NET_WM_STATE_ADD)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
         {
             if (CLIENT_CAN_HIDE_WINDOW (c))
             {
@@ -624,13 +624,13 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             }
         }
         else if ((action == NET_WM_STATE_REMOVE)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+            && FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
         {
             clientShow (c, TRUE);
         }
         else if (action == NET_WM_STATE_TOGGLE)
         {
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
             {
                 clientShow (c, TRUE);
             }
@@ -645,15 +645,15 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
         if (!clientIsTransientOrModal (c)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
         {
             if ((action == NET_WM_STATE_ADD)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
             {
                 clientStick (c, TRUE);
             }
             else if ((action == NET_WM_STATE_REMOVE)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+                && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
             {
                 clientUnstick (c, TRUE);
             }
@@ -670,17 +670,17 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         || (first == net_wm_state_maximized_vert)
         || (second == net_wm_state_maximized_vert))
     {
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MAXIMIZE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
         {
             if ((action == NET_WM_STATE_ADD)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
                 unsigned long mode = 0;
                 if ((first == net_wm_state_maximized_horz)
                     || (second == net_wm_state_maximized_horz))
                 {
                     mode |=
-                        !CLIENT_FLAG_TEST (c,
+                        !FLAG_TEST (c->flags,
                         CLIENT_FLAG_MAXIMIZED_HORIZ) ?
                         WIN_STATE_MAXIMIZED_HORIZ : 0;
                 }
@@ -688,21 +688,21 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                     || (second == net_wm_state_maximized_vert))
                 {
                     mode |=
-                        !CLIENT_FLAG_TEST (c,
+                        !FLAG_TEST (c->flags,
                         CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT
                         : 0;
                 }
                 clientToggleMaximized (c, mode);
             }
             else if ((action == NET_WM_STATE_REMOVE)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+                && FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
                 unsigned long mode = 0;
                 if ((first == net_wm_state_maximized_horz)
                     || (second == net_wm_state_maximized_horz))
                 {
                     mode |=
-                        CLIENT_FLAG_TEST (c,
+                        FLAG_TEST (c->flags,
                         CLIENT_FLAG_MAXIMIZED_HORIZ) ?
                         WIN_STATE_MAXIMIZED_HORIZ : 0;
                 }
@@ -710,7 +710,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                     || (second == net_wm_state_maximized_vert))
                 {
                     mode |=
-                        CLIENT_FLAG_TEST (c,
+                        FLAG_TEST (c->flags,
                         CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT
                         : 0;
                 }
@@ -737,22 +737,22 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first == net_wm_state_modal) || (second == net_wm_state_modal))
     {
         if ((action == NET_WM_STATE_ADD)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_STATE_MODAL);
+            FLAG_SET (c->flags, CLIENT_FLAG_STATE_MODAL);
             clientSetNetState (c);
             clientWindowType (c);
         }
         else if ((action == NET_WM_STATE_REMOVE)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
+            && FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
         {
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_STATE_MODAL);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_STATE_MODAL);
             clientSetNetState (c);
             clientWindowType (c);
         }
         else if (action == NET_WM_STATE_TOGGLE)
         {
-            CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_STATE_MODAL);
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_STATE_MODAL);
             clientSetNetState (c);
             clientWindowType (c);
         }
@@ -764,18 +764,18 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         if (!clientIsTransientOrModal (c))
         {
             if ((action == NET_WM_STATE_ADD)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
             {
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_FULLSCREEN);
+                FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
             }
             else if ((action == NET_WM_STATE_REMOVE)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+                && FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
             {
-                CLIENT_FLAG_UNSET (c, CLIENT_FLAG_FULLSCREEN);
+                FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREEN);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_FULLSCREEN);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
             }
             clientUpdateFullscreenState (c);
         }
@@ -783,21 +783,21 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_above) || (second == net_wm_state_above))
     {
-        if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+        if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
         {
             if ((action == NET_WM_STATE_ADD)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_ABOVE);
+                FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
             }
             else if ((action == NET_WM_STATE_REMOVE)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+                && FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
-                CLIENT_FLAG_UNSET (c, CLIENT_FLAG_ABOVE);
+                FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_ABOVE);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
             }
             clientUpdateAboveState (c);
         }
@@ -805,21 +805,21 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 
     if ((first == net_wm_state_below) || (second == net_wm_state_below))
     {
-        if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+        if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
         {
             if ((action == NET_WM_STATE_ADD)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
-                CLIENT_FLAG_SET (c, CLIENT_FLAG_BELOW);
+                FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
             }
             else if ((action == NET_WM_STATE_REMOVE)
-                && CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+                && FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
-                CLIENT_FLAG_UNSET (c, CLIENT_FLAG_BELOW);
+                FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_BELOW);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
             }
             clientUpdateBelowState (c);
         }
@@ -829,20 +829,20 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         || (second == net_wm_state_skip_pager))
     {
         if ((action == NET_WM_STATE_ADD)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_PAGER))
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_SKIP_PAGER);
+            FLAG_SET (c->flags, CLIENT_FLAG_SKIP_PAGER);
             clientSetNetState (c);
         }
         else if ((action == NET_WM_STATE_REMOVE)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_PAGER))
+            && FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER))
         {
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_SKIP_PAGER);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_SKIP_PAGER);
             clientSetNetState (c);
         }
         else if (action == NET_WM_STATE_TOGGLE)
         {
-            CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_SKIP_PAGER);
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_SKIP_PAGER);
             clientSetNetState (c);
         }
     }
@@ -851,20 +851,20 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         || (second == net_wm_state_skip_taskbar))
     {
         if ((action == NET_WM_STATE_ADD)
-            && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_TASKBAR))
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_SKIP_TASKBAR);
+            FLAG_SET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState (c);
         }
         else if ((action == NET_WM_STATE_REMOVE)
-            && CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_TASKBAR))
+            && FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR))
         {
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_SKIP_TASKBAR);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState (c);
         }
         else if (action == NET_WM_STATE_TOGGLE)
         {
-            CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_SKIP_TASKBAR);
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState (c);
         }
     }
@@ -943,20 +943,20 @@ clientGetInitialNetWmDesktop (Client * c)
     c2 = clientGetTransient (c);
     if (c2)
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+        FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
         c->win_workspace = c2->win_workspace;
-        if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_STICKY))
+        if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
+            FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
             c->win_state |= WIN_STATE_STICKY;
         }
     }
     else
     {
-        if (!CLIENT_FLAG_TEST_ALL (c,
+        if (!FLAG_TEST_ALL (c->flags,
                 CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
             c->win_workspace = workspace;
         }
         if (getHint (dpy, c->window, net_wm_desktop, &val))
@@ -964,13 +964,13 @@ clientGetInitialNetWmDesktop (Client * c)
             TRACE ("atom net_wm_desktop detected");
             if (val == (int) ALL_WORKSPACES)
             {
-                if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_STICK,
+                if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_STICK,
                         CLIENT_FLAG_STICKY))
                 {
                     TRACE
                         ("atom net_wm_desktop specifies window \"%s\" is sticky",
                         c->name);
-                    CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
+                    FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
                     c->win_state |= WIN_STATE_STICKY;
                 }
                 c->win_workspace = workspace;
@@ -982,14 +982,14 @@ clientGetInitialNetWmDesktop (Client * c)
                     c->name, (int) val);
                 c->win_workspace = (int) val;
             }
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
         }
         else if (getHint (dpy, c->window, win_workspace, &val))
         {
             TRACE ("atom win_workspace specifies window \"%s\" is on desk %i",
                 c->name, (int) val);
             c->win_workspace = (int) val;
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
         }
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name,
@@ -999,12 +999,12 @@ clientGetInitialNetWmDesktop (Client * c)
         TRACE ("value off limits, using %i instead",
             params.workspace_count - 1);
         c->win_workspace = params.workspace_count - 1;
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+        FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name,
         c->win_workspace);
     setHint (dpy, c->window, win_workspace, c->win_workspace);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) ALL_WORKSPACES);
@@ -1061,7 +1061,7 @@ clientGetNetStruts (Client * c)
     {
         c->struts[i] = 0;
     }
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_STRUTS);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUTS);
 
     if (get_cardinal_list (dpy, c->window, net_wm_strut, &struts, &nitems))
     {
@@ -1071,7 +1071,7 @@ clientGetNetStruts (Client * c)
             return;
         }
 
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_HAS_STRUTS);
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUTS);
         for (i = 0; i < 4; i++)
         {
             c->struts[i] = (int) struts[i];
@@ -1096,12 +1096,12 @@ clientSetNetActions (Client * c)
         atoms[i++] = net_wm_action_maximize_horz;
         atoms[i++] = net_wm_action_maximize_vert;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
     {
         atoms[i++] = net_wm_action_change_desktop;
         atoms[i++] = net_wm_action_stick;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
     {
         atoms[i++] = net_wm_action_shade;
     }
@@ -1128,10 +1128,10 @@ clientWindowType (Client * c)
             c->type = WINDOW_DESKTOP;
             c->initial_layer = WIN_LAYER_DESKTOP;
             c->win_state |= WIN_STATE_STICKY;
-            CLIENT_FLAG_SET (c,
+            FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);
-            CLIENT_FLAG_UNSET (c,
+            FLAG_UNSET (c->flags,
                 CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE | 
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
                 CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
@@ -1141,7 +1141,7 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_dock detected");
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
-            CLIENT_FLAG_UNSET (c,
+            FLAG_UNSET (c->flags,
                 CLIENT_FLAG_HAS_BORDER |  CLIENT_FLAG_HAS_MOVE |
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
                 CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
@@ -1151,7 +1151,7 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_toolbar detected");
             c->type = WINDOW_TOOLBAR;
             c->initial_layer = WIN_LAYER_NORMAL;
-            CLIENT_FLAG_UNSET (c,
+            FLAG_UNSET (c->flags,
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE |
                 CLIENT_FLAG_HAS_STICK);
         }
@@ -1164,9 +1164,9 @@ clientWindowType (Client * c)
                http://mail.gnome.org/archives/wm-spec-list/2002-May/msg00001.html
                As it seems, GNOME and KDE don't treat menu the same way...
              */
-            CLIENT_FLAG_SET (c,
+            FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
-            CLIENT_FLAG_UNSET (c,
+            FLAG_UNSET (c->flags,
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE |
                 CLIENT_FLAG_HAS_STICK);
         }
@@ -1187,7 +1187,7 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_utility detected");
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
-            CLIENT_FLAG_UNSET (c,
+            FLAG_UNSET (c->flags,
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
         }
         else if (c->type_atom == net_wm_window_type_splashscreen)
@@ -1195,7 +1195,7 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_splashscreen detected");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
-            CLIENT_FLAG_UNSET (c,
+            FLAG_UNSET (c->flags,
                 CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_HIDE |
                 CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MOVE |
                 CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_STICK);
@@ -1207,7 +1207,7 @@ clientWindowType (Client * c)
         c->type = UNSET;
         c->initial_layer = c->win_layer;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         TRACE ("window is modal");
         c->type = WINDOW_MODAL_DIALOG;
@@ -1225,7 +1225,7 @@ clientWindowType (Client * c)
             c->initial_layer = c2->win_layer;
             TRACE ("Applied layer is %i", c->initial_layer);
         }
-        CLIENT_FLAG_UNSET (c,
+        FLAG_UNSET (c->flags,
             CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK |
             CLIENT_FLAG_STICKY);
     }
@@ -1524,7 +1524,7 @@ clientAddToList (Client * c)
     clientSetNetClientList (win_client_list, windows);
     clientSetNetClientList (net_client_list_stacking, windows_stack);
   
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_MANAGED);
+    FLAG_SET (c->flags, CLIENT_FLAG_MANAGED);
 }
 
 static void
@@ -1534,7 +1534,7 @@ clientRemoveFromList (Client * c)
     TRACE ("entering clientRemoveFromList");
     g_assert (client_count > 0);
 
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MANAGED);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MANAGED);
     client_count--;
     if (client_count == 0)
     {
@@ -1562,7 +1562,7 @@ clientRemoveFromList (Client * c)
     clientSetNetClientList (win_client_list, windows);
     clientSetNetClientList (net_client_list_stacking, windows_stack);
 
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MANAGED);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MANAGED);
 }
 
 static void
@@ -1691,7 +1691,7 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
         c2 = (Client *) index->data;
         if ((c2 != c) && !clientIsTransientOrModal (c2)
             && clientIsTransientOrModalFor (c, c2)
-            && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN)
+            && !FLAG_TEST (c2->flags, CLIENT_FLAG_HIDDEN)
             && (c2->win_workspace == ws))
         {
             return TRUE;
@@ -1886,7 +1886,7 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         if (!exclude || (c != exclude))
         {
             if ((c->win_layer <= layer) && clientAcceptFocus (c)
-                && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
             {
                 top = c;
             }
@@ -2085,7 +2085,7 @@ clientConstrainPos (Client * c, gboolean show_full)
         show_full ? "(with show full)" : "(w/out show full)");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         TRACE ("ignoring constrained for client \"%s\" (0x%lx)", c->name,
             c->window);
@@ -2112,7 +2112,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceGetArea (client_margins, NULL, c);
     }
@@ -2208,7 +2208,7 @@ clientKeepVisible (Client * c)
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceGetArea (client_margins, NULL, c);
     }
@@ -2322,7 +2322,7 @@ clientInitPosition (Client * c)
     client_margins[MARGIN_RIGHT] = margins[MARGIN_RIGHT];
     client_margins[MARGIN_BOTTOM] = margins[MARGIN_BOTTOM];
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceGetArea (client_margins, NULL, c);
     }
@@ -2369,7 +2369,7 @@ clientInitPosition (Client * c)
             {
                 if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
                     && (c->win_workspace == c2->win_workspace)
-                    && CLIENT_FLAG_TEST (c2, CLIENT_FLAG_VISIBLE))
+                    && FLAG_TEST (c2->flags, CLIENT_FLAG_VISIBLE))
                 {
                     count_overlaps +=
                         overlap (test_x - frame_left, 
@@ -2427,7 +2427,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     if (mask & CWX)
     {
         moved = TRUE;
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MOVING_RESIZING))
         {
             c->x = wc->x;
         }
@@ -2435,7 +2435,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     if (mask & CWY)
     {
         moved = TRUE;
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MOVING_RESIZING))
         {
             c->y = wc->y;
         }
@@ -2538,26 +2538,26 @@ clientGetMWMHints (Client * c, gboolean update)
         {
             if (mwm_hints->decorations & MWM_DECOR_ALL)
             {
-                CLIENT_FLAG_SET (c,
+                FLAG_SET (c->flags,
                     CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
             }
             else
             {
-                CLIENT_FLAG_UNSET (c,
+                FLAG_UNSET (c->flags,
                     CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
-                CLIENT_FLAG_SET (c,
+                FLAG_SET (c->flags,
                     (mwm_hints->
                         decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ?
                     CLIENT_FLAG_HAS_BORDER : 0);
-                CLIENT_FLAG_SET (c,
+                FLAG_SET (c->flags,
                     (mwm_hints->
                         decorations & (MWM_DECOR_MENU)) ? CLIENT_FLAG_HAS_MENU
                     : 0);
                 /*
-                   CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE);
-                   CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_MAXIMIZE);
-                   CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? CLIENT_FLAG_HAS_HIDE : 0);
-                   CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? CLIENT_FLAG_HAS_MAXIMIZE : 0);
+                   FLAG_UNSET(c->flags, CLIENT_FLAG_HAS_HIDE);
+                   FLAG_UNSET(c->flags, CLIENT_FLAG_HAS_MAXIMIZE);
+                   FLAG_SET(c->flags, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? CLIENT_FLAG_HAS_HIDE : 0);
+                   FLAG_SET(c->flags, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? CLIENT_FLAG_HAS_MAXIMIZE : 0);
                  */
             }
         }
@@ -2566,14 +2566,14 @@ clientGetMWMHints (Client * c, gboolean update)
         {
             if (!(mwm_hints->functions & MWM_FUNC_ALL))
             {
-                CLIENT_FLAG_UNSET (c,
+                FLAG_UNSET (c->flags,
                     CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_HIDE |
                     CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MOVE |
                     CLIENT_FLAG_HAS_RESIZE);
             }
             else
             {
-                CLIENT_FLAG_SET (c,
+                FLAG_SET (c->flags,
                     CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_HIDE |
                     CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_MOVE |
                     CLIENT_FLAG_HAS_RESIZE);
@@ -2581,23 +2581,23 @@ clientGetMWMHints (Client * c, gboolean update)
 
             if (mwm_hints->functions & MWM_FUNC_CLOSE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_HAS_CLOSE);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_HAS_CLOSE);
             }
             if (mwm_hints->functions & MWM_FUNC_MINIMIZE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_HAS_HIDE);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_HAS_HIDE);
             }
             if (mwm_hints->functions & MWM_FUNC_MAXIMIZE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_HAS_MAXIMIZE);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_HAS_MAXIMIZE);
             }
             if (mwm_hints->functions & MWM_FUNC_RESIZE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_HAS_RESIZE);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_HAS_RESIZE);
             }
             if (mwm_hints->functions & MWM_FUNC_MOVE)
             {
-                CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_HAS_MOVE);
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_HAS_MOVE);
             }
         }
         g_free (mwm_hints);
@@ -2607,7 +2607,7 @@ clientGetMWMHints (Client * c, gboolean update)
     {
         /* EWMH window type takes precedences over Motif hints */ 
         clientWindowType (c);
-        if (CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN) && 
+        if (FLAG_TEST_AND_NOT(c->flags, CLIENT_FLAG_HAS_BORDER, CLIENT_FLAG_FULLSCREEN) && 
            (c->legacy_fullscreen))
         {
             /* legacy app changed its decoration, put it back on regular layer */
@@ -2645,8 +2645,8 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size->flags = 0;
     }
     
-    previous_value = CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE);
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_IS_RESIZABLE);
+    previous_value = FLAG_TEST (c->flags, CLIENT_FLAG_IS_RESIZABLE);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_IS_RESIZABLE);
 
     wc.x = c->x;
     wc.y = c->y;
@@ -2755,7 +2755,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
     if ((c->size->min_width < c->size->max_width) || 
         (c->size->min_height < c->size->max_height))
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
+        FLAG_SET (c->flags, CLIENT_FLAG_IS_RESIZABLE);
     }
     
     if (update)
@@ -2764,7 +2764,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
         {
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED);
         }
-        else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_IS_RESIZABLE) != previous_value)
+        else if (FLAG_TEST (c->flags, CLIENT_FLAG_IS_RESIZABLE) != previous_value)
         {
             frameDraw (c, TRUE, FALSE);
         }
@@ -2787,12 +2787,12 @@ clientGetWMProtocols (Client * c)
     TRACE ("entering clientGetWMProtocols client \"%s\" (0x%lx)", c->name,
         c->window);
     wm_protocols_flags = getWMProtocols (dpy, c->window);
-    CLIENT_FLAG_SET (c,
+    FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ?
-        CLIENT_FLAG_WM_DELETE : 0);
-    CLIENT_FLAG_SET (c,
+        WM_FLAG_DELETE : 0);
+    FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ?
-        CLIENT_FLAG_WM_TAKEFOCUS : 0);
+        WM_FLAG_TAKEFOCUS : 0);
 }
 
 static inline void
@@ -2848,32 +2848,32 @@ clientGetWinState (Client * c)
     {
         if (!clientIsTransientOrModal (c))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
+            FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         }
     }
     if (c->win_state & WIN_STATE_SHADED)
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
+        FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
     }
     if (c->win_state & WIN_STATE_MAXIMIZED_HORIZ)
     {
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MAXIMIZE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
     }
     if (c->win_state & WIN_STATE_MAXIMIZED_VERT)
     {
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MAXIMIZE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_VERT);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
         }
     }
     if (c->win_state & WIN_STATE_MAXIMIZED)
     {
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MAXIMIZE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
         }
     }
 }
@@ -2886,30 +2886,30 @@ clientApplyInitialState (Client * c)
     TRACE ("entering clientApplyInitialState");
 
     /* We check that afterwards to make sure all states are now known */
-    if (CLIENT_FLAG_TEST (c,
+    if (FLAG_TEST (c->flags,
             CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
     {
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_MAXIMIZE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_MAXIMIZE))
         {
             unsigned long mode = 0;
 
             TRACE ("Applying client's initial state: maximized");
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_HORIZ))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
             {
                 TRACE ("initial state: maximized horiz.");
                 mode |= WIN_STATE_MAXIMIZED_HORIZ;
             }
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_VERT))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
             {
                 TRACE ("initial state: maximized vert.");
                 mode |= WIN_STATE_MAXIMIZED_VERT;
             }
             /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAXIMIZED);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
             clientToggleMaximized (c, mode);
         }
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         if (!clientIsTransientOrModal (c))
         {
@@ -2917,7 +2917,7 @@ clientApplyInitialState (Client * c)
             clientUpdateFullscreenState (c);
         }
     }
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
         if (!clientIsTransientOrModal (c))
         {
@@ -2925,7 +2925,7 @@ clientApplyInitialState (Client * c)
             clientUpdateAboveState (c);
         }
     }
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
         if (!clientIsTransientOrModal (c))
         {
@@ -2933,7 +2933,7 @@ clientApplyInitialState (Client * c)
             clientUpdateBelowState (c);
         }
     }
-    if (CLIENT_FLAG_TEST_ALL (c, CLIENT_FLAG_STICKY | CLIENT_FLAG_HAS_STICK))
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_STICKY | CLIENT_FLAG_HAS_STICK))
     {
         if (!clientIsTransientOrModal (c))
         {
@@ -2941,7 +2941,7 @@ clientApplyInitialState (Client * c)
             clientStick (c, TRUE);
         }
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         TRACE ("Applying client's initial state: sticky");
         clientShade (c);
@@ -2957,7 +2957,7 @@ clientFocusNew(Client * c)
     {
         return;
     }
-    if (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
+    if (params.focus_new || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         clientSetFocus (c, TRUE, FALSE);
     }
@@ -3028,7 +3028,8 @@ clientFrame (Window w, gboolean recapture)
 
     /* Initialize structure */
     c->size = NULL;
-    c->client_flag = CLIENT_FLAG_INITIAL_VALUES;
+    c->flags = CLIENT_FLAG_INITIAL_VALUES;
+    c->wm_flags = 0L;
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
@@ -3056,7 +3057,7 @@ clientFrame (Window w, gboolean recapture)
             && ((c->size->min_width < c->size->max_width)
                 || (c->size->min_height < c->size->max_height))))
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_IS_RESIZABLE);
+        FLAG_SET (c->flags, CLIENT_FLAG_IS_RESIZABLE);
     }
 
     for (i = 0; i < BUTTON_COUNT; i++)
@@ -3103,15 +3104,15 @@ clientFrame (Window w, gboolean recapture)
          * withdrawn state.
          */ 
         XUnmapWindow (dpy, c->window);
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_MAP_PENDING);
+        FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
     }
 
     c->ignore_unmap = 0;
     c->type = UNSET;
     c->type_atom = None;
 
-    CLIENT_FLAG_SET (c, START_ICONIC (c) ? CLIENT_FLAG_HIDDEN : 0);
-    CLIENT_FLAG_SET (c, ACCEPT_INPUT (c->wmhints) ? CLIENT_FLAG_WM_INPUT : 0);
+    FLAG_SET (c->flags, START_ICONIC (c) ? CLIENT_FLAG_HIDDEN : 0);
+    FLAG_SET (c->wm_flags, ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
 
     clientGetWMProtocols (c);
     clientGetMWMHints (c, FALSE);
@@ -3125,7 +3126,7 @@ clientFrame (Window w, gboolean recapture)
     /* Reload from session */
     if (sessionMatchWinToSM (c))
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_SESSION_MANAGED);
+        FLAG_SET (c->flags, CLIENT_FLAG_SESSION_MANAGED);
     }
 
     /* Beware, order of calls is important here ! */
@@ -3141,7 +3142,7 @@ clientFrame (Window w, gboolean recapture)
     if ((c->x == 0) && (c->y == 0) &&
         (c->width == MyDisplayFullWidth (dpy, screen)) &&
         (c->height == MyDisplayFullHeight (dpy, screen)) &&
-        !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) &&
+        !FLAG_TEST(c->flags, CLIENT_FLAG_HAS_BORDER) &&
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
@@ -3149,7 +3150,7 @@ clientFrame (Window w, gboolean recapture)
     }
 
     /* Once we know the type of window, we can initialize window position */
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SESSION_MANAGED))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_SESSION_MANAGED))
     {
         if ((attr.map_state != IsUnmapped))
         {
@@ -3257,12 +3258,12 @@ clientFrame (Window w, gboolean recapture)
 
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
     {
         if ((c->win_workspace == workspace) || 
-            CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+            FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
         {
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAP_PENDING);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAP_PENDING);
             clientShow (c, TRUE);
             if (recapture)
             {
@@ -3352,7 +3353,7 @@ clientUnframe (Client * c, gboolean remap)
         myWindowDelete (&c->buttons[i]);
     }
     XDestroyWindow (dpy, c->frame);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STRUTS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUTS))
     {
         workspaceUpdateArea (margins, gnome_margins);
     }
@@ -3519,16 +3520,16 @@ clientSelectMask (Client * c, int mask)
     {
         okay = FALSE;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN) && !(mask & INCLUDE_HIDDEN))
     {
         okay = FALSE;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_PAGER)
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER)
         && !(mask & INCLUDE_SKIP_PAGER))
     {
         okay = FALSE;
     }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SKIP_TASKBAR)
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR)
         && !(mask & INCLUDE_SKIP_TASKBAR))
     {
         okay = FALSE;
@@ -3700,7 +3701,7 @@ clientPassFocus (Client * c)
         {
             c2 = clientGetTransient (c);
             
-            if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
+            if (c2 && FLAG_TEST(c2->flags, CLIENT_FLAG_VISIBLE))
             {
                 new_focus = c2;
             }
@@ -3740,16 +3741,16 @@ clientShowSingle (Client * c, gboolean change_state)
     g_return_if_fail (c != NULL);
     MyXGrabServer ();
     if ((c->win_workspace == workspace)
-        || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+        || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_VISIBLE);
+        FLAG_SET (c->flags, CLIENT_FLAG_VISIBLE);
         XMapWindow (dpy, c->frame);
         XMapWindow (dpy, c->window);
     }
     if (change_state)
     {
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HIDDEN);
+        FLAG_UNSET (c->flags, CLIENT_FLAG_HIDDEN);
         setWMState (dpy, c->window, NormalState);
         workspaceUpdateArea (margins, gnome_margins);
     }
@@ -3775,7 +3776,7 @@ clientShow (Client * c, gboolean change_state)
         c2 = (Client *) index->data;
         clientSetWorkspaceSingle (c2, c->win_workspace);
         /* Ignore request before if the window is not yet managed */
-        if (!CLIENT_FLAG_TEST (c2, CLIENT_FLAG_MANAGED))
+        if (!FLAG_TEST (c2->flags, CLIENT_FLAG_MANAGED))
         {
             continue;
         }
@@ -3792,14 +3793,14 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     XUnmapWindow (dpy, c->window);
     XUnmapWindow (dpy, c->frame);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
+        FLAG_UNSET (c->flags, CLIENT_FLAG_VISIBLE);
         c->ignore_unmap++;
     }
     if (change_state)
     {
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
+        FLAG_SET (c->flags, CLIENT_FLAG_HIDDEN);
         setWMState (dpy, c->window, IconicState);
         workspaceUpdateArea (margins, gnome_margins);
     }
@@ -3823,7 +3824,7 @@ clientHide (Client * c, int ws, gboolean change_state)
         c2 = (Client *) index->data;
 
         /* Ignore request before if the window is not yet managed */
-        if (!CLIENT_FLAG_TEST (c2, CLIENT_FLAG_MANAGED))
+        if (!FLAG_TEST (c2->flags, CLIENT_FLAG_MANAGED))
         {
             continue;
         }
@@ -3857,7 +3858,7 @@ clientHideAll (Client * c, int ws)
     for (c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
         if (CLIENT_CAN_HIDE_WINDOW (c2)
-            && CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HAS_BORDER)
+            && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_BORDER)
             && !clientIsTransientOrModal (c2) && (c2 != c))
         {
             if (((!c) && (c2->win_workspace == ws)) || ((c)
@@ -3877,7 +3878,7 @@ clientClose (Client * c)
     TRACE ("entering clientClose");
     TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_DELETE))
+    if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
         sendClientMessage (c->window, wm_protocols, wm_delete_window);
     }
@@ -3915,7 +3916,7 @@ clientRaise (Client * c)
         return;
     }
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         Client *c2, *c3;
         Client *client_sibling = NULL;
@@ -4034,7 +4035,7 @@ clientLower (Client * c)
         return;
     }
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
 
@@ -4125,7 +4126,7 @@ clientSetWorkspaceSingle (Client * c, int ws)
             c->window, ws);
         c->win_workspace = ws;
         setHint (dpy, c->window, win_workspace, ws);
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             setHint (dpy, c->window, net_wm_desktop,
                 (unsigned long) ALL_WORKSPACES);
@@ -4135,7 +4136,7 @@ clientSetWorkspaceSingle (Client * c, int ws)
             setHint (dpy, c->window, net_wm_desktop, (unsigned long) ws);
         }
     }
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+    FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
 }
 
 void
@@ -4159,9 +4160,9 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
                 c->window, ws);
             clientSetWorkspaceSingle (c2, ws);
             if (manage_mapping && !clientIsTransientOrModal (c2)
-                && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_HIDDEN))
+                && !FLAG_TEST (c2->flags, CLIENT_FLAG_HIDDEN))
             {
-                if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_STICKY))
+                if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
                 {
                     clientShow (c2, FALSE);
                 }
@@ -4191,24 +4192,24 @@ clientShade (Client * c)
     TRACE ("entering clientToggleShaded");
     TRACE ("shading client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER)
-        || CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER)
+        || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         TRACE
             ("cowardly refusing to shade \"%s\" (0x%lx) because it has no border",
             c->name, c->window);
         return;
     }
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         TRACE ("\"%s\" (0x%lx) is already shaded", c->name, c->window);
         return;
     }
 
     c->win_state |= WIN_STATE_SHADED;
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_SHADED);
+    FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
     clientSetNetState (c);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
@@ -4225,15 +4226,15 @@ clientUnshade (Client * c)
     TRACE ("entering clientToggleShaded");
     TRACE ("shading/unshading client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         TRACE ("\"%s\" (0x%lx) is not shaded", c->name, c->window);
         return;
     }
     c->win_state &= ~WIN_STATE_SHADED;
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_SHADED);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_SHADED);
     clientSetNetState (c);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
@@ -4244,7 +4245,7 @@ clientUnshade (Client * c)
 void
 clientToggleShaded (Client * c)
 {
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         clientUnshade (c);
     }
@@ -4272,7 +4273,7 @@ clientStick (Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
-            CLIENT_FLAG_SET (c2, CLIENT_FLAG_STICKY);
+            FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (dpy, c2->window, net_wm_desktop,
                 (unsigned long) ALL_WORKSPACES);
             clientSetNetState (c2);
@@ -4284,7 +4285,7 @@ clientStick (Client * c, gboolean include_transients)
     {
         TRACE ("sticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state |= WIN_STATE_STICKY;
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
+        FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) ALL_WORKSPACES);
         clientSetNetState (c);
@@ -4310,7 +4311,7 @@ clientUnstick (Client * c, gboolean include_transients)
         {
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
-            CLIENT_FLAG_UNSET (c2, CLIENT_FLAG_STICKY);
+            FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (dpy, c2->window, net_wm_desktop,
                 (unsigned long) workspace);
             clientSetNetState (c2);
@@ -4321,7 +4322,7 @@ clientUnstick (Client * c, gboolean include_transients)
     else
     {
         c->win_state &= ~WIN_STATE_STICKY;
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_STICKY);
+        FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
         setHint (dpy, c->window, net_wm_desktop,
             (unsigned long) workspace);
         clientSetNetState (c);
@@ -4336,7 +4337,7 @@ clientToggleSticky (Client * c, gboolean include_transients)
     TRACE ("entering clientToggleSticky");
     TRACE ("sticking/unsticking client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         clientUnstick (c, include_transients);
     }
@@ -4356,7 +4357,7 @@ clientUpdateFullscreenState (Client * c)
     TRACE ("entering clientUpdateFullscreenState");
     TRACE ("Update fullscreen state for client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         int cx, cy;
 
@@ -4384,7 +4385,7 @@ clientUpdateFullscreenState (Client * c)
         layer = c->fullscreen_old_layer;
     }
     clientSetNetState (c);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NONE);
     }
@@ -4406,7 +4407,7 @@ void clientToggleFullscreen (Client * c)
 
     if (!clientIsTransientOrModal (c))
     {
-        CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_FULLSCREEN);
+        FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateAboveState (c);
     }
 }
@@ -4420,7 +4421,7 @@ clientUpdateAboveState (Client * c)
     TRACE ("entering clientUpdateAboveState");
     TRACE ("Update above state for client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         layer = WIN_LAYER_ABOVE_DOCK;
     }
@@ -4438,9 +4439,9 @@ void clientToggleAbove (Client * c)
     TRACE ("entering clientToggleAbove");
     TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+    if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
-        CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_ABOVE);
+        FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
         clientUpdateAboveState (c);
     }
 }
@@ -4454,7 +4455,7 @@ clientUpdateBelowState (Client * c)
     TRACE ("entering clientUpdateBelowState");
     TRACE ("Update below state for client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         layer = WIN_LAYER_BELOW;
     }
@@ -4472,9 +4473,9 @@ void clientToggleBelow (Client * c)
     TRACE ("entering clientToggleBelow");
     TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsTransientOrModal (c) && !CLIENT_FLAG_TEST (c, CLIENT_FLAG_ABOVE))
+    if (!clientIsTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
-        CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_BELOW);
+        FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
         clientUpdateAboveState (c);
     }
 }
@@ -4488,7 +4489,7 @@ clientRemoveMaximizeFlag (Client * c)
         c->window);
 
     c->win_state &= ~WIN_STATE_MAXIMIZED;
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAXIMIZED);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     frameDraw (c, FALSE, FALSE);
     clientSetNetState (c);
 }
@@ -4530,7 +4531,7 @@ clientToggleMaximized (Client * c, int mode)
 
     if (mode & WIN_STATE_MAXIMIZED_HORIZ)
     {
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_HORIZ))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
             c->old_x = c->x;
             c->old_width = c->width;
@@ -4539,14 +4540,14 @@ clientToggleMaximized (Client * c, int mode)
                 MyDisplayWidth (dpy, screen, cx,
                 cy) - frameLeft (c) - frameRight (c) - left - right;
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
         else
         {
             wc.x = c->old_x;
             wc.width = c->old_width;
             c->win_state &= ~WIN_STATE_MAXIMIZED_HORIZ;
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
     }
     else
@@ -4557,7 +4558,7 @@ clientToggleMaximized (Client * c, int mode)
 
     if (mode & WIN_STATE_MAXIMIZED_VERT)
     {
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED_VERT))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
             c->old_y = c->y;
             c->old_height = c->height;
@@ -4566,14 +4567,14 @@ clientToggleMaximized (Client * c, int mode)
                 MyDisplayHeight (dpy, screen, cx,
                 cy) - frameTop (c) - frameBottom (c) - top - bottom;
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_MAXIMIZED_VERT);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
         }
         else
         {
             wc.y = c->old_y;
             wc.height = c->old_height;
             c->win_state &= ~WIN_STATE_MAXIMIZED_VERT;
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAXIMIZED_VERT);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
         }
     }
     else
@@ -4583,7 +4584,7 @@ clientToggleMaximized (Client * c, int mode)
     }
 
     clientSetNetState (c);
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MANAGED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
     }
@@ -4604,7 +4605,7 @@ clientAcceptFocus (Client * c)
     TRACE ("entering clientAcceptFocus");
 
     /* Modal dialogs *always* accept focus */
-    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
+    if (FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         return TRUE; 
     }
@@ -4614,12 +4615,12 @@ clientAcceptFocus (Client * c)
         return FALSE;
     }
     /* then try ICCCM */
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_TAKEFOCUS))
+    else if (FLAG_TEST (c->wm_flags, WM_FLAG_TAKEFOCUS))
     {
         return TRUE;
     }
     /* At last, use wmhints */
-    return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT) ? TRUE : FALSE);
+    return (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT) ? TRUE : FALSE);
 }
 
 static inline void
@@ -4666,7 +4667,7 @@ clientUpdateFocus (Client * c)
     {
         clientInstallColormaps (c);
         data[0] = c->window;
-        if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
         }
@@ -4685,9 +4686,9 @@ clientUpdateFocus (Client * c)
            normal layer when loosing focus.
            The following "logic" is in charge of that behaviour.
          */
-        if ((c2->legacy_fullscreen) || CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+        if ((c2->legacy_fullscreen) || FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
         {
-            if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+            if (FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
             {
                 clientSetLayer (c2, c2->fullscreen_old_layer);
             }
@@ -4725,7 +4726,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         }
     }
     c2 = ((client_focus != c) ? client_focus : NULL);
-    if ((c) && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
+    if ((c) && FLAG_TEST (c->flags, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
         if (!clientAcceptFocus (c))
@@ -4748,12 +4749,12 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
+        if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             sendClientMessage (c->window, wm_protocols, wm_takefocus);
         }
         XFlush (dpy);
-        if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+        if ((c->legacy_fullscreen) || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
         }
@@ -4771,9 +4772,9 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
     if (c2)
     {
         /* Legacy apps layer switching. See comment in clientUpdateFocus () */
-        if ((c2->legacy_fullscreen) || CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+        if ((c2->legacy_fullscreen) || FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
         {
-            if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
+            if (FLAG_TEST(c2->flags, CLIENT_FLAG_FULLSCREEN))
             {
                 clientSetLayer (c2, c2->fullscreen_old_layer);
             }
@@ -4829,7 +4830,7 @@ clientDrawOutline (Client * c)
 
     XDrawRectangle (dpy, root, params.box_gc, frameX (c), frameY (c),
         frameWidth (c) - 1, frameHeight (c) - 1);
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_BORDER,
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_BORDER,
             CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_SHADED))
     {
         XDrawRectangle (dpy, root, params.box_gc, c->x, c->y, c->width - 1,
@@ -4929,7 +4930,7 @@ clientSnapPosition (Client * c)
         {
             for (c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
             {
-                if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_VISIBLE)
+                if (FLAG_TEST (c2->flags, CLIENT_FLAG_VISIBLE)
                     && (c2->win_layer == c->win_layer) && (c2 != c))
                 {
                     c_frame_x1 = frameX (c2);
@@ -5206,7 +5207,7 @@ clientMove (Client * c, XEvent * e)
                         MyDisplayFullHeight (dpy, screen), 
                         ButtonMotionMask | ButtonReleaseMask);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         clientRemoveMaximizeFlag (c);
     }
@@ -5259,13 +5260,13 @@ clientMove (Client * c, XEvent * e)
         XPutBackEvent (dpy, e);
     }
 
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_MOVING_RESIZING);
+    FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     pushEventFilter (clientMove_event_filter, &passdata);
     gtk_main ();
     popEventFilter ();
     TRACE ("leaving move loop");
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MOVING_RESIZING);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
 
     if (passdata.grab && params.box_move)
     {
@@ -5366,13 +5367,13 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             prev_width = c->width;
             prev_height = c->height;
 
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && (xevent->xkey.keycode == params.keys[KEY_MOVE_UP].keycode))
             {
                 c->height = c->height - key_height_inc;
                 corner = 4 + SIDE_BOTTOM;
             }
-            else if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+            else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && (xevent->xkey.keycode == params.keys[KEY_MOVE_DOWN].keycode))
             {
                 c->height = c->height + key_height_inc;
@@ -5466,7 +5467,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         {
             c->width = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         }
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             if ((passdata->corner == CORNER_TOP_LEFT)
                 || (passdata->corner == CORNER_TOP_RIGHT))
@@ -5491,7 +5492,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED)
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
             && (passdata->corner == CORNER_TOP_LEFT
                 || passdata->corner == CORNER_TOP_RIGHT))
         {
@@ -5605,7 +5606,7 @@ clientResize (Client * c, int corner, XEvent * e)
                         MyDisplayFullHeight (dpy, screen), 
                         ButtonMotionMask | ButtonReleaseMask);
 
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         clientRemoveMaximizeFlag (c);
     }
@@ -5654,13 +5655,13 @@ clientResize (Client * c, int corner, XEvent * e)
     {
         XPutBackEvent (dpy, e);
     }
-    CLIENT_FLAG_SET (c, CLIENT_FLAG_MOVING_RESIZING);
+    FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     pushEventFilter (clientResize_event_filter, &passdata);
     gtk_main ();
     popEventFilter ();
     TRACE ("leaving resize loop");
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MOVING_RESIZING);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
 
     if (passdata.grab && params.box_resize)
     {

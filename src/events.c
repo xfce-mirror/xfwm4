@@ -184,7 +184,7 @@ reset_timeout (void)
 static inline void
 moveRequest (Client * c, XEvent * ev)
 {
-    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove (c, ev);
     }
@@ -195,12 +195,12 @@ resizeRequest (Client * c, int corner, XEvent * ev)
 {
     clientSetFocus (c, TRUE, FALSE);
 
-    if (CLIENT_FLAG_TEST_ALL (c,
+    if (FLAG_TEST_ALL (c->flags,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
     {
         clientResize (c, corner, ev);
     }
-    else if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
+    else if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_MOVE, CLIENT_FLAG_FULLSCREEN))
     {
         clientMove (c, ev);
     }
@@ -300,7 +300,7 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                if (CLIENT_FLAG_TEST_ALL (c,
+                if (FLAG_TEST_ALL (c->flags,
                         CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
                 {
                     clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
@@ -595,7 +595,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button4)
     {
         /* Mouse wheel scroll up */
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             clientShade (c);
         }
@@ -603,7 +603,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button5)
     {
         /* Mouse wheel scroll down */
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             clientUnshade (c);
         }
@@ -786,7 +786,7 @@ handleButtonPress (XButtonEvent * ev)
             if (ev->button == Button1)
             {
                 clientSetFocus (c, TRUE, FALSE);
-                if ((params.raise_on_click) || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_BORDER))
+                if ((params.raise_on_click) || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_BORDER))
                 {
                     clientRaise (c);
                 }
@@ -862,13 +862,13 @@ handleMapRequest (XMapRequestEvent * ev)
     if (c)
     {
         TRACE ("handleMapRequest: clientShow");
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
         {
             TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
             return;
         }
         clientShow (c, TRUE);
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY) ||
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) ||
             (c->win_workspace == workspace))
         {
             clientFocusNew(c);
@@ -893,9 +893,9 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
         {
-            CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAP_PENDING);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAP_PENDING);
         }
     }
 }
@@ -926,7 +926,7 @@ handleUnmapNotify (XUnmapEvent * ev)
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAP_PENDING))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAP_PENDING))
         {
             /* 
              * This UnmapNotify event is caused by reparenting
@@ -1055,7 +1055,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
 
         TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)",
             c->name, c->window);
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MOVING_RESIZING))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
             return;
@@ -1066,7 +1066,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_FULLSCREEN))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             int cx, cy;
 
@@ -1102,7 +1102,7 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
         /* Still a move/resize after cleanup? */
         if (ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
         {
-            if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
                 clientRemoveMaximizeFlag (c);
             }
@@ -1113,9 +1113,9 @@ handleConfigureRequest (XConfigureRequestEvent * ev)
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
             if ((c->win_workspace == workspace) || 
-                (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY)))
+                (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)))
             {
-                if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+                if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
                 {
                     clientShow (c, TRUE);
                 }
@@ -1307,7 +1307,7 @@ handlePropertyNotify (XPropertyEvent * ev)
                 free (c->name);
             }
             getWindowName (dpy, c->window, &c->name);
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_NAME_CHANGED);
+            FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
             frameDraw (c, TRUE, FALSE);
         }
         else if (ev->atom == motif_wm_hints)
@@ -1406,7 +1406,7 @@ handleClientMessage (XClientMessageEvent * ev)
             TRACE
                 ("client \"%s\" (0x%lx) has received a wm_change_state event",
                 c->name, c->window);
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN) && 
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN) && 
                  CLIENT_CAN_HIDE_WINDOW (c))
             {
                 clientHide (c, c->win_workspace, TRUE);
@@ -1446,7 +1446,7 @@ handleClientMessage (XClientMessageEvent * ev)
             {
                 if (ev->data.l[0] == ALL_WORKSPACES)
                 {
-                    if (CLIENT_FLAG_TEST_AND_NOT (c, CLIENT_FLAG_HAS_STICK,
+                    if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_HAS_STICK,
                             CLIENT_FLAG_STICKY))
                     {
                         clientStick (c, TRUE);
@@ -1455,7 +1455,7 @@ handleClientMessage (XClientMessageEvent * ev)
                 }
                 else
                 {
-                    if (CLIENT_FLAG_TEST_ALL (c,
+                    if (FLAG_TEST_ALL (c->flags,
                             CLIENT_FLAG_HAS_STICK | CLIENT_FLAG_STICKY))
                     {
                         clientUnstick (c, TRUE);
@@ -1755,12 +1755,12 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
         insensitive = 0;
 
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_CLOSE))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_CLOSE))
         {
             insensitive |= MENU_OP_DELETE;
         }
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAXIMIZED))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             ops |= MENU_OP_UNMAXIMIZE;
             if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
@@ -1777,7 +1777,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
             }
         }
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HIDDEN))
         {
             ops |= MENU_OP_UNMINIMIZE;
             if (!CLIENT_CAN_HIDE_WINDOW (c))
@@ -1794,7 +1794,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
             }
         }
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_SHADED))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             ops |= MENU_OP_UNSHADE;
         }
@@ -1803,10 +1803,10 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
             ops |= MENU_OP_SHADE;
         }
 
-        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             ops |= MENU_OP_UNSTICK;
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
             {
                 insensitive |= MENU_OP_UNSTICK;
             }
@@ -1814,17 +1814,17 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         else
         {
             ops |= MENU_OP_STICK;
-            if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK))
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK))
             {
                 insensitive |= MENU_OP_STICK;
             }
         }
 
-        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+        if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
         {
             ops |= MENU_OP_NORMAL;
             if (clientIsTransientOrModal (c) || 
-                CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+                FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
             {
                 insensitive |= MENU_OP_NORMAL;
             }
@@ -1833,15 +1833,15 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         {
             ops |= MENU_OP_ABOVE;
             if (clientIsTransientOrModal (c) || 
-                CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+                FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
             {
                 insensitive |= MENU_OP_ABOVE;
             }
         }
 
         if (clientIsTransientOrModal (c)
-            || !CLIENT_FLAG_TEST (c, CLIENT_FLAG_HAS_STICK)
-            || CLIENT_FLAG_TEST (c, CLIENT_FLAG_STICKY))
+            || !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STICK)
+            || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             insensitive |= MENU_OP_WORKSPACES;
         }

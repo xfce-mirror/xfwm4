@@ -337,7 +337,7 @@ sessionSaveWindowStates (gchar * filename)
             fprintf (f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->old_x,
                 c->old_y, c->old_width, c->old_height);
             fprintf (f, "  [DESK] %i\n", c->win_workspace);
-            fprintf (f, "  [FLAGS] 0x%lx\n", CLIENT_FLAG_TEST (c,
+            fprintf (f, "  [FLAGS] 0x%lx\n", FLAG_TEST (c->flags,
                     CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN |
                     CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED |
                     CLIENT_FLAG_NAME_CHANGED));
@@ -554,7 +554,7 @@ matchWin (Client * c, Match * m)
              * WM_NAME has changed
              */
             if (xstreq (c->class.res_name, m->res_name)
-                && (CLIENT_FLAG_TEST (c, CLIENT_FLAG_NAME_CHANGED)
+                && (FLAG_TEST (c->flags, CLIENT_FLAG_NAME_CHANGED)
                     || (m->flags & CLIENT_FLAG_NAME_CHANGED)
                     || xstreq (c->name, m->wm_name)))
             {
@@ -649,11 +649,11 @@ sessionMatchWinToSM (Client * c)
             c->old_width = matches[i].old_width;
             c->old_height = matches[i].old_height;
             c->win_workspace = matches[i].desktop;
-            CLIENT_FLAG_SET (c,
+            FLAG_SET (c->flags,
                 matches[i].
                 flags & (CLIENT_FLAG_STICKY | CLIENT_FLAG_SHADED |
                     CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_HIDDEN));
-            CLIENT_FLAG_SET (c, CLIENT_FLAG_WORKSPACE_SET);
+            FLAG_SET (c->flags, CLIENT_FLAG_WORKSPACE_SET);
             return TRUE;
         }
     }
