@@ -1608,6 +1608,7 @@ clientApplyStackList (GSList * list)
 
     g_return_if_fail (list != NULL);
 
+    DBG ("applying stack list");
     nwindows = g_slist_length (list);
     if (nwindows < 1)
     {
@@ -1621,6 +1622,7 @@ clientApplyStackList (GSList * list)
     {
         c = (Client *) index->data;
         xwinstack[i++] = c->frame;
+        DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
     }
     /* XRaiseWindow (dpy, xwinstack[0]); */
     XRestackWindows (dpy, xwinstack, (int) nwindows);
@@ -2545,7 +2547,7 @@ clientClearPixmapCache (Client * c)
 }
 
 void
-clientFrame (Window w, gboolean initial)
+clientFrame (Window w, gboolean startup)
 {
     XWindowAttributes attr;
     XWindowChanges wc;
@@ -2723,18 +2725,12 @@ clientFrame (Window w, gboolean initial)
      */
     clientApplyInitialState (c);
 
-    if (!initial)
-    {
-        MyXGrabServer ();
-    }
+    MyXGrabServer ();
     if (XGetGeometry (dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width,
             &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
         clientFree (c);
-        if (!initial)
-        {
-            MyXUngrabServer ();
-        }
+        MyXUngrabServer ();
         return;
     }
     valuemask = CWEventMask;
@@ -2743,7 +2739,7 @@ clientFrame (Window w, gboolean initial)
         XCreateWindow (dpy, root, frameX (c), frameY (c), frameWidth (c),
         frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
         valuemask, &attributes);
-    TRACE ("frame id (0x%lx)", c->frame);
+    DBG ("framing client \"%s\" (0x%lx)", c->name, c->window);
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (dpy, c->window, valuemask, &attributes);
@@ -2759,10 +2755,7 @@ clientFrame (Window w, gboolean initial)
     clientGrabKeys (c);
     XGrabButton (dpy, AnyButton, AnyModifier, c->window, FALSE,
         POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
-    if (!initial)
-    {
-        MyXUngrabServer ();
-    }
+    MyXUngrabServer ();
 
     myWindowCreate (dpy, c->frame, &c->sides[SIDE_LEFT],
         resize_cursor[4 + SIDE_LEFT]);
@@ -2798,7 +2791,7 @@ clientFrame (Window w, gboolean initial)
     if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_HIDDEN))
     {
         clientShow (c, TRUE);
-        if (!initial && params.focus_new && clientAcceptFocus (c)
+        if (!startup && params.focus_new && clientAcceptFocus (c)
             && (c->win_workspace == workspace))
         {
             clientSetFocus (c, TRUE);
@@ -2815,7 +2808,7 @@ clientFrame (Window w, gboolean initial)
         clientSetNetState (c);
     }
 
-    TRACE ("client_count=%d", client_count);
+    DBG ("client_count=%d", client_count);
 }
 
 void
@@ -2824,7 +2817,7 @@ clientUnframe (Client * c, gboolean remap)
     int i;
 
     TRACE ("entering clientUnframe");
-    TRACE ("unframing client \"%s\" (0x%lx)", c->name, c->window);
+    DBG ("unframing client \"%s\" (0x%lx)", c->name, c->window);
 
     g_return_if_fail (c != NULL);
     if (client_focus == c)
@@ -2900,11 +2893,11 @@ clientFrameAll ()
             clientFrame (wins[i], TRUE);
         }
     }
+    MyXUngrabServer ();
     XSync (dpy, FALSE);
     /* Just get rid of EnterNotify events caused by reparenting */
     while (XCheckTypedEvent (dpy, EnterNotify, &an_event))
         ;
-    MyXUngrabServer ();
     if (wins)
     {
         XFree (wins);
@@ -2934,6 +2927,7 @@ clientUnframeAll ()
         }
     }
     MyXUngrabServer ();
+    XSync (dpy, 0);
     if (wins)
     {
         XFree (wins);
@@ -2989,7 +2983,6 @@ clientAtPosition (int x, int y, Client * exclude)
     /* This function does the same as XQueryPointer but w/out the race
        conditions caused by querying the X server
      */
-    GSList *reverse = NULL;
     GSList *windows_stack_copy = NULL;
     GSList *list_of_windows = NULL;
     GSList *index;

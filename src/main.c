@@ -83,6 +83,9 @@ SessionClient *client_session;
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
+#if DEBUG            
+    char buf[64];
+#endif
     switch (err->error_code)
     {
         case BadAccess:
@@ -94,7 +97,12 @@ handleXError (Display * dpy, XErrorEvent * err)
             }
             break;
         default:
-            TRACE ("X error ignored");
+#if DEBUG            
+            XGetErrorText (dpy, err->error_code, buf, 63);
+            g_print ("XError: %s\n", buf);                                                  
+            g_print ("==>  XID Ox%lx, Request %d, Error %d <==\n", 
+                      err->resourceid, err->request_code, err->error_code); 
+#endif
             break;
     }
     return 0;
@@ -210,8 +218,8 @@ initialize (int argc, char **argv)
     gtk_set_locale ();
     gtk_init (&argc, &argv);
 
-    TRACE ("Using GTK+-%d.%d.%d", gtk_major_version, gtk_minor_version,
-        gtk_micro_version);
+    DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
+         gtk_minor_version, gtk_micro_version);
     gtk_widget_set_default_colormap (gdk_colormap_get_system ());
 
     dpy = GDK_DISPLAY ();
@@ -278,7 +286,7 @@ initialize (int argc, char **argv)
     pushEventFilter (xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow ();
-    TRACE ("Our event window is 0x%lx", gnome_win);
+    DBG ("Our event window is 0x%lx", gnome_win);
 
     if (!initSettings ())
     {
@@ -308,6 +316,10 @@ initialize (int argc, char **argv)
     layout = gtk_widget_create_pango_layout (getDefaultGtkWidget (), "-");
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
+
+    /* Make sure all gtk+ events are processed */
+    while (gtk_events_pending ())
+	gtk_main_iteration ();
 
     clientFrameAll ();
 
@@ -377,6 +389,6 @@ main (int argc, char **argv)
             break;
     }
     cleanUp ();
-    TRACE ("Terminated");
+    DBG ("xfwm4 terminated");
     return 0;
 }

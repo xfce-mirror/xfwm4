@@ -123,30 +123,30 @@ sendClientMessage (Window w, Atom a, long x, int mask)
 void
 MyXGrabServer (void)
 {
-    TRACE ("entering MyXGrabServer");
+    DBG ("entering MyXGrabServer");
     if (xgrabcount == 0)
     {
-        TRACE ("grabbing server");
+        DBG ("grabbing server");
         XGrabServer (dpy);
     }
     xgrabcount++;
-    TRACE ("grabs : %i", xgrabcount);
+    DBG ("grabs : %i", xgrabcount);
 }
 
 void
 MyXUngrabServer (void)
 {
-    TRACE ("entering MyXUngrabServer");
+    DBG ("entering MyXUngrabServer");
     if (--xgrabcount < 0)       /* should never happen */
     {
         xgrabcount = 0;
     }
     if (xgrabcount == 0)
     {
-        TRACE ("ungrabbing server");
+        DBG ("ungrabbing server");
         XUngrabServer (dpy);
     }
-    TRACE ("grabs : %i", xgrabcount);
+    DBG ("grabs : %i", xgrabcount);
 }
 
 Window
