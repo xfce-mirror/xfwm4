@@ -587,7 +587,7 @@ void frameDraw(Client * c)
                 x = x + buttons[button][ACTIVE].width + button_spacing;
             }
         }
-        left = x;
+        left = x - button_spacing;
 
         x = frameWidth(c) - frameRight(c) + button_spacing - button_offset;
         for(j = strlen(button_layout) - 1; j >= i; j--)

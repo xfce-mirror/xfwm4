@@ -652,6 +652,8 @@ static void clientWindowType(Client * c)
             c->type = WINDOW_DIALOG;
             layer = WIN_LAYER_ONTOP;
 	    c->has_hide = False;
+	    c->has_menu = False;
+	    c->has_maximize = False;
         }
         else if(c->type_atom == net_wm_window_type_normal)
         {
@@ -663,18 +665,18 @@ static void clientWindowType(Client * c)
         {
             DBG("atom net_wm_window_type_utility detected\n");
             c->type = WINDOW_UTILITY;
-            c->has_border = False;
             layer = WIN_LAYER_NORMAL;
+            c->has_border = False;
 	    c->has_hide = False;
         }
         else if(c->type_atom == net_wm_window_type_splashscreen)
         {
             DBG("atom net_wm_window_type_splashscreen detected\n");
             c->type = WINDOW_SPLASHSCREEN;
+            layer = WIN_LAYER_ABOVE_DOCK;
             c->has_border = False;
             c->has_resize = False;
             c->has_move = False;
-            layer = WIN_LAYER_ABOVE_DOCK;
 	    c->has_hide = False;
         }
     }
