@@ -33,7 +33,7 @@
 void getMouseXY (Window, int *, int *);
 Window getMouseWindow (Window);
 GC createGC (Colormap, char *, int, XFontStruct *, int, gboolean);
-void sendClientMessage (Window, Atom, long, int);
+void sendClientMessage (Window, Atom, Atom);
 void MyXGrabServer (void);
 void MyXUngrabServer (void);
 gboolean MyCheckWindow(Window);

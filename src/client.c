@@ -3887,8 +3887,7 @@ clientClose (Client * c)
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_DELETE))
     {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window,
-            NoEventMask);
+        sendClientMessage (c->window, wm_protocols, wm_delete_window);
     }
     else
     {
@@ -4718,6 +4717,10 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
             clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
+        {
+            sendClientMessage (c->window, wm_protocols, wm_takefocus);
+        }
         XFlush (dpy);
         if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
@@ -4731,6 +4734,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         TRACE ("setting focus to none");
         client_focus = NULL;
         XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
+        
         XFlush (dpy);
         data[0] = None;
     }
