@@ -683,8 +683,31 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     wc.stack_mode = ev->detail;
     wc.border_width = ev->border_width;
 
-    /* We use any here because some app tend to raise the wm frame to achive fullscreen */
-    c = clientGetFromWindow(ev->window, ANY);
+    c = clientGetFromWindow(ev->window, WINDOW);
+    if (!c)
+    {
+        /* Some app tend or try to manipulate the wm frame to achieve fullscreen mode */
+	c = clientGetFromWindow(ev->window, FRAME);
+	if (c)
+	{
+            if(ev->value_mask & CWX)
+            {
+		wc.x += frameLeft(c);
+            }
+            if(ev->value_mask & CWY)
+            {
+		wc.y += frameTop(c);
+            }
+            if(ev->value_mask & CWWidth)
+            {
+		wc.width -= frameLeft(c) + frameRight(c);
+            }
+            if(ev->value_mask & CWHeight)
+            {
+		wc.height -= frameTop(c) + frameBottom(c);
+            }
+	}
+    }
     if(c)
     {
         gboolean constrained = FALSE;
