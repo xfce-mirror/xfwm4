@@ -64,7 +64,7 @@ clientIsModal (Client * c)
 
     TRACE ("entering clientIsModal");
 
-    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
             (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
              ((c->group_leader != None) && (c->group_leader != c->window))));
 }
@@ -125,7 +125,7 @@ clientIsModalFor (Client * c1, Client * c2)
 
     TRACE ("entering clientIsModalFor");
 
-    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->serial >= c2->serial))
+    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->type & WINDOW_REGULAR_FOCUSABLE) && (c1->serial >= c2->serial))
     {
         return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
     }
@@ -160,7 +160,7 @@ clientIsModalForGroup (Client * c)
 
     TRACE ("entering clientIsModalForGroup");
 
-    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
             !clientIsTransient(c) && (c->group_leader != None));
 }
 

@@ -46,11 +46,6 @@
 #include "hints.h"
 #include "netwm.h"
 
-#define WINDOW_REGULAR_FOCUSABLE (WINDOW_NORMAL | \
-                                  WINDOW_UTILITY | \
-                                  WINDOW_DIALOG | \
-                                  WINDOW_MODAL_DIALOG)
-
 typedef struct _ClientPair ClientPair;
 struct _ClientPair
 {

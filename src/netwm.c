@@ -988,11 +988,6 @@ clientWindowType (Client * c)
         c->type = UNSET;
         c->initial_layer = c->win_layer;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
-    {
-        TRACE ("window is modal");
-        c->type = WINDOW_MODAL_DIALOG;
-    }
 
     if (clientIsValidTransientOrModal (c))
     {
