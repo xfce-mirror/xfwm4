@@ -29,6 +29,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
 #include "main.h"
+#include "hints.h"
 #include "parserc.h"
 #include "client.h"
 #include "workspaces.h"
@@ -684,12 +685,11 @@ gboolean loadSettings(void)
 
     if(params.workspace_count < 0)
     {
-        unsigned long data[1];
         params.workspace_count = abs(TOINT(getValue("workspace_count", rc)));
         setGnomeHint(dpy, root, win_workspace_count, params.workspace_count);
-        data[0] = params.workspace_count;
-        XChangeProperty(dpy, root, net_number_of_desktops, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)data, 1);
+	setNetHint(dpy, root, net_number_of_desktops, params.workspace_count);
     }
+
     params.wrap_workspaces = !g_ascii_strcasecmp("true", getValue("wrap_workspaces", rc));
     freeRc(rc);
     return TRUE;
@@ -748,6 +748,7 @@ gboolean reloadSettings(int mask)
 gboolean initSettings(void)
 {
     int i;
+    long val = 0;
 
     DBG("entering initSettings\n");
 
@@ -782,7 +783,16 @@ gboolean initSettings(void)
         initPixmap(&params.title[i][ACTIVE]);
         initPixmap(&params.title[i][INACTIVE]);
     }
-
+    if(getNetHint(dpy, root, net_number_of_desktops, &val))
+    {
+        params.workspace_count = (int) val;
+	setGnomeHint(dpy, root, win_workspace_count, params.workspace_count);
+    }
+    else if(getGnomeHint(dpy, root, win_workspace_count, &val))
+    {
+        params.workspace_count = (int) val;
+	setNetHint(dpy, root, net_number_of_desktops, params.workspace_count);
+    }
     if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
     {
         g_warning("MCS manager not running");
