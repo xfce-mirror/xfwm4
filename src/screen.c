@@ -122,6 +122,15 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                                   1, gdk_screen_get_height (gscr), 
                                   LeaveWindowMask | PointerMotionMask);
 
+    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[2], 0, 0, 
+                                  gdk_screen_get_width (gscr), 1,
+                                  LeaveWindowMask | PointerMotionMask);
+
+    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &screen_info->sidewalk[3], 
+                                  0, gdk_screen_get_height (gscr) - 1, 
+                                  gdk_screen_get_width (gscr), 1,
+                                  LeaveWindowMask | PointerMotionMask);
+
     screen_info->gnome_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 
     screen_info->net_system_tray_selection = 
@@ -184,6 +193,8 @@ myScreenClose (ScreenInfo *screen_info)
 
     xfwmWindowDelete (&screen_info->sidewalk[0]);
     xfwmWindowDelete (&screen_info->sidewalk[1]);
+    xfwmWindowDelete (&screen_info->sidewalk[2]);
+    xfwmWindowDelete (&screen_info->sidewalk[3]);
     XSetInputFocus (display_info->dpy, screen_info->xroot, RevertToPointerRoot, GDK_CURRENT_TIME);
 
     g_free (screen_info->params);

@@ -2726,6 +2726,7 @@ static XfceFilterStatus
 clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
+    static int edge_scroll_y = 0;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XfceFilterStatus status = XEV_FILTER_STOP;
@@ -2825,13 +2826,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
             {
-                int msx, msy, max;
+                int msx, msy, maxx, maxy;
 
                 msx = xevent->xmotion.x_root;
                 msy = xevent->xmotion.y_root;
-                max = gdk_screen_get_width (screen_info->gscr) - 1;
+                maxx = gdk_screen_get_width (screen_info->gscr) - 1;
+                maxy = gdk_screen_get_height (screen_info->gscr) - 1;
 
-                if ((msx == 0) || (msx == max))
+                if ((msx == 0) || (msx == maxx))
                 {
                     edge_scroll_x++;
                 }
@@ -2839,22 +2841,57 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 {
                     edge_scroll_x = 0;
                 }
+                if ((msy == 0) || (msy == maxy))
+                {
+                    edge_scroll_y++;
+                }
+                else
+                {
+                    edge_scroll_y = 0;
+                }
+
                 if (edge_scroll_x > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_x = 0;
-                    if ((msx == 0) && (screen_info->current_ws > 0))
+                    if (msx == 0)
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0,
-                                      max - 10, msy);
-                        msx = xevent->xmotion.x_root = max - 10;
-                        workspaceSwitch (screen_info, screen_info->current_ws - 1, c);
+                        if (workspaceMove (screen_info, 0, -1, c))
+                        {
+                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
+                                          0, 0, 0, 0, maxx - 10, msy);
+                            msx = xevent->xmotion.x_root = maxx - 10;
+                        }
                     }
-                    else if ((msx == max) && (screen_info->current_ws < (screen_info->workspace_count - 1)))
+                    else if (msx == maxx)
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 
-                                      0, 0, 0, 0, 10, msy);
-                        msx = xevent->xmotion.x_root = 10;
-                        workspaceSwitch (screen_info, screen_info->current_ws + 1, c);
+                        if (workspaceMove (screen_info, 0, 1, c))
+                        {
+                            XWarpPointer (display_info->dpy, None, screen_info->xroot, 
+                                          0, 0, 0, 0, 10, msy);
+                            msx = xevent->xmotion.x_root = 10;
+                        }
+                    }
+                }
+                if (edge_scroll_y > screen_info->params->wrap_resistance)
+                {
+                    edge_scroll_y = 0;
+                    if (msy == 0)
+                    {
+                        if (workspaceMove (screen_info, -1, 0, c))
+                        {
+                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
+                                          0, 0, 0, 0, msx, maxy - 10);
+                            msy = xevent->xmotion.y_root = maxy - 10;
+                        }
+                    }
+                    else if (msy == maxy)
+                    {
+                        if (workspaceMove (screen_info, 1, 0, c))
+                        {
+                            XWarpPointer (display_info->dpy, None, screen_info->xroot, 
+                                          0, 0, 0, 0, msx, 10);
+                            msy = xevent->xmotion.y_root = 10;
+                        }
                     }
                 }
             }
@@ -2909,6 +2946,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     {
         TRACE ("event loop now finished");
         edge_scroll_x = 0;
+        edge_scroll_y = 0;
         gtk_main_quit ();
     }
 

@@ -32,7 +32,7 @@
 #include "screen.h"
 #include "client.h"
 
-void workspaceMove (ScreenInfo *, int, int, Client *);
+gboolean workspaceMove (ScreenInfo *, int, int, Client *);
 void workspaceSwitch (ScreenInfo *, int, Client *);
 void workspaceSetNames (ScreenInfo *, char *, int);
 void workspaceSetCount (ScreenInfo *, int);

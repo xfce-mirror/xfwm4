@@ -80,7 +80,7 @@ struct _ScreenInfo
     int depth;
 
     GtkWidget *gtk_win;
-    xfwmWindow sidewalk[2];
+    xfwmWindow sidewalk[4];
     Window gnome_win;
     Window xroot;
     Window systray;

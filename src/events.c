@@ -78,6 +78,7 @@ static guint raise_timeout = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
 static int edge_scroll_x = 0;
+static int edge_scroll_y = 0;
 
 static void handleEvent (DisplayInfo *display_info, XEvent * ev);
 static void menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
@@ -245,7 +246,7 @@ spawn_shortcut (ScreenInfo *screen_info, int i)
 static void
 handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
 {
-    int msx, msy, max;
+    int msx, msy, maxx, maxy;
     ScreenInfo *screen_info = NULL;
     
     TRACE ("entering handleMotionNotify");
@@ -269,9 +270,10 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
     {
         msx = ev->x_root;
         msy = ev->y_root;
-        max = gdk_screen_get_width (screen_info->gscr) - 1;
+        maxx = gdk_screen_get_width (screen_info->gscr) - 1;
+        maxy = gdk_screen_get_height (screen_info->gscr) - 1;
 
-        if ((msx == 0) || (msx == max))
+        if ((msx == 0) || (msx == maxx))
         {
             edge_scroll_x++;
         }
@@ -279,18 +281,51 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
         {
             edge_scroll_x = 0;
         }
+        if ((msy == 0) || (msy == maxy))
+        {
+            edge_scroll_y++;
+        }
+        else
+        {
+            edge_scroll_y = 0;
+        }
+
         if (edge_scroll_x > screen_info->params->wrap_resistance)
         {
             edge_scroll_x = 0;
             if (msx == 0)
             {
-                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, max - 10, msy);
-                workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL);
+                if (workspaceMove (screen_info, 0, -1, NULL))
+                {
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, maxx - 10, msy);
+                }
             }
-            else if (msx == max)
+            else if (msx == maxx)
             {
-                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 10, msy);
-                workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL);
+                if (workspaceMove (screen_info, 0, 1, NULL))
+                {
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 10, msy);
+                }
+            }
+            while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
+                ; /* Skip event */
+        }
+        if (edge_scroll_y > screen_info->params->wrap_resistance)
+        {
+            edge_scroll_y = 0;
+            if (msy == 0)
+            {
+                if (workspaceMove (screen_info, -1, 0, NULL))
+                {
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, maxy - 10);
+                }
+            }
+            else if (msy == maxy)
+            {
+                if (workspaceMove (screen_info, 1, 0, NULL))
+                {
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, 10);
+                }
             }
             while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
                 ; /* Skip event */
@@ -1303,7 +1338,9 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[1])))
     {
         TRACE ("Reset edge_scroll_x");
+        TRACE ("Reset edge_scroll_y");
         edge_scroll_x = 0;
+        edge_scroll_y = 0;
     }
 }
 

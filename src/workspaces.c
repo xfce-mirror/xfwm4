@@ -165,7 +165,9 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
     return value;
 }
 
-void
+/* returns TRUE if the workspace was changed, FALSE otherwise */
+
+gboolean
 workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 {
     int row, col, newrow, newcol, n;
@@ -177,7 +179,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 
     if (n == screen_info->current_ws) 
     {
-        return;
+        return FALSE;
     }
 
     if (n < screen_info->workspace_count)
@@ -206,14 +208,15 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
             }
             else 
             {
-                g_return_if_fail(FALSE);
+                g_return_val_if_fail(FALSE, FALSE);
             }
 
             n = workspaceGetNumber(screen_info, newrow, newcol);
         }
-        g_return_if_fail(n < screen_info->workspace_count);
+        g_return_val_if_fail(n < screen_info->workspace_count, FALSE);
         workspaceSwitch(screen_info, n, c2);
     }
+    return TRUE;
 }
 
 void
