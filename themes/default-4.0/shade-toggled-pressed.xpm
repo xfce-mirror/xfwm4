@@ -28,6 +28,5 @@ static char * shade_toggled_pressed_xpm[] = {
 ".@@@@@@@@@@@@@@@=",
 "+================",
 "                 ",
-"                 ",
 "                 "};
 
