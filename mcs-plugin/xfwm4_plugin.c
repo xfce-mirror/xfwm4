@@ -43,8 +43,9 @@
 
 #define _(String) String
 
-#define CHANNEL "xfwm4"
+#define RCDIR   "settings"
 #define RCFILE  "xfwm4.xml"
+#define CHANNEL "xfwm4"
 #define PLUGIN_NAME "xfwm4"
 
 #define DEFAULT_THEME "microdeck2"
@@ -1492,7 +1493,9 @@ static void create_channel(McsPlugin * mcs_plugin)
     McsSetting *setting;
 
     const gchar *home = g_getenv("HOME");
-    gchar *rcfile = g_strconcat(home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCFILE, NULL);
+    gchar *rcfile;
+    
+    rcfile = g_strconcat(home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
     mcs_manager_add_channel_from_file(mcs_plugin->manager, CHANNEL, rcfile);
     g_free(rcfile);
 
@@ -1730,9 +1733,10 @@ static void create_channel(McsPlugin * mcs_plugin)
 static gboolean write_options(McsPlugin * mcs_plugin)
 {
     const gchar *home = g_getenv("HOME");
-    gchar *rcfile = g_strconcat(home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCFILE, NULL);
+    gchar *rcfile;
     gboolean result;
 
+    rcfile = g_strconcat(home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
     result = mcs_manager_save_channel_to_file(mcs_plugin->manager, CHANNEL, rcfile);
     g_free(rcfile);
 
