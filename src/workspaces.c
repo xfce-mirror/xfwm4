@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002 Olivier Fourdan
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
 
  */
 
@@ -75,7 +75,7 @@ void workspaceSwitch(int new_ws, Client * c2)
     workspace = new_ws;
 
     /* First pass */
-    for(c = clients->prev, i = 0; (c) && (i < client_count); c = c->prev, i++)
+    for(c = clients->prev, i = 0; i < client_count; c = c->prev, i++)
     {
         if(CLIENT_FLAG_TEST_AND_NOT(c, CLIENT_FLAG_VISIBLE, CLIENT_FLAG_STICKY) && !(c->transient_for) && ((c->win_workspace != new_ws)))
         {
@@ -83,7 +83,7 @@ void workspaceSwitch(int new_ws, Client * c2)
         }
     }
     /* Second pass */
-    for(c = clients, i = 0; (c) && (i < client_count); c = c->next, i++)
+    for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
@@ -136,7 +136,7 @@ void workspaceSetCount(int count)
     setNetHint(dpy, root, net_number_of_desktops, count);
     params.workspace_count = count;
 
-    for(c = clients, i = 0; (c) && (i < client_count); c = c->next, i++)
+    for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if(c->win_workspace > count - 1)
         {
@@ -165,7 +165,7 @@ void workspaceUpdateArea(CARD32 * margins, CARD32 * gnome_margins)
     {
         margins[i] = gnome_margins[i];
     }
-    for(c = clients, i = 0; (c) && (i < client_count); c = c->next, i++)
+    for(c = clients, i = 0; i < client_count; c = c->next, i++)
     {
         if(CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_HAS_STRUTS | CLIENT_FLAG_VISIBLE))
         {

@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002 Olivier Fourdan
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
 
  */
 
@@ -70,12 +70,13 @@
 
 #define CONSTRAINED_WINDOW(c) \
     ((c->win_layer > WIN_LAYER_DESKTOP) && (c->win_layer < WIN_LAYER_ABOVE_DOCK) && !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
- 
+
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
 
 Client *clients = NULL;
+Client *last_raise = NULL;
 unsigned int client_count = 0;
 
 static GSList *windows = NULL;
@@ -97,16 +98,16 @@ static int clientGetWidthInc(Client * c);
 static int clientGetHeightInc(Client * c);
 static void clientSetWidth(Client * c, int w1);
 static void clientSetHeight(Client * c, int h1);
-static inline Client *clientGetTopMost(int layer, Client * exclude);
+static inline Client *clientGetLowestTransient(Client * c);
+static inline Client *clientGetHighestTransient(Client * c);
+static inline Client *clientGetNextTopMost(int layer, Client * exclude);
 static inline Client *clientGetBottomMost(int layer, Client * exclude);
-static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc);
 static inline void clientConstraintPos(Client * c, gboolean show_full);
 static inline void clientKeepVisible(Client * c);
 static inline unsigned long overlap(int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1);
 static void clientInitPosition(Client * c);
-static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained);
 static inline void clientFree(Client * c);
-static inline void clientApplyInitialNetState(Client *c);
+static inline void clientApplyInitialNetState(Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpointer data);
 static GtkToXEventFilterStatus clientCycle_event_filter(XEvent * xevent, gpointer data);
@@ -177,7 +178,8 @@ static void clientToggleFullscreen(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
-    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
     }
@@ -208,7 +210,6 @@ static void clientToggleAbove(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
-    clientRaise(c);
 }
 
 static void clientToggleBelow(Client * c)
@@ -229,7 +230,6 @@ static void clientToggleBelow(Client * c)
     }
     clientSetNetState(c);
     clientSetLayer(c, layer);
-    clientLower(c);
 }
 
 void clientSetNetState(Client * c)
@@ -434,11 +434,11 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
     }
 
 #if 0
-    /* 
-     * EWMH V 1.2 Implementation note 
+    /*
+     * EWMH V 1.2 Implementation note
      * if an Application asks to toggle _NET_WM_STATE_HIDDEN the Window Manager
-     * should probably just ignore the request, since _NET_WM_STATE_HIDDEN is a 
-     * function of some other aspect of the window such as minimization, rather 
+     * should probably just ignore the request, since _NET_WM_STATE_HIDDEN is a
+     * function of some other aspect of the window such as minimization, rather
      * than an independent state.
      */
     if((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
@@ -935,7 +935,7 @@ static void clientWindowType(Client * c)
         {
             c->initial_layer = c2->win_layer;
         }
-        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_STICK);
+        CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
     }
     if((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
@@ -1163,8 +1163,12 @@ void clientGravitate(Client * c, int mode)
 
 static void clientAddToList(Client * c)
 {
+    Client *client_sibling = NULL;
+    GSList *sibling = NULL;
+
     g_return_if_fail(c != NULL);
     DBG("entering clientAddToList\n");
+
     client_count++;
     if(clients)
     {
@@ -1183,8 +1187,26 @@ static void clientAddToList(Client * c)
     DBG("adding window \"%s\" (0x%lx) to windows list\n", c->name, c->window);
     windows = g_slist_append(windows, c);
 
-    DBG("adding window \"%s\" (0x%lx) to windows_stack list\n", c->name, c->window);
-    windows_stack = g_slist_append(windows_stack, c);
+    client_sibling = clientGetLowestTransient(c);
+    if(client_sibling)
+    {
+        /* The client has already a transient mapped */
+        sibling = g_slist_find(windows_stack, (gconstpointer) client_sibling);
+        windows_stack = g_slist_insert_before(windows_stack, sibling, c);
+    }
+    else
+    {
+        client_sibling = clientGetNextTopMost(c->win_layer, c);
+        if(client_sibling)
+        {
+            sibling = g_slist_find(windows_stack, (gconstpointer) client_sibling);
+            windows_stack = g_slist_insert_before(windows_stack, sibling, c);
+        }
+        else
+        {
+            windows_stack = g_slist_append(windows_stack, c);
+        }
+    }
 
     clientSetNetClientList(net_client_list, windows);
     clientSetNetClientList(win_client_list, windows);
@@ -1314,12 +1336,73 @@ static void clientSetHeight(Client * c, int h1)
     c->height = h1;
 }
 
-static inline Client *clientGetTopMost(int layer, Client * exclude)
+static inline Client *clientGetLowestTransient(Client * c)
+{
+    Client *lowest_transient = NULL, *c2;
+    GSList *index;
+
+    g_return_val_if_fail(c != NULL, NULL);
+
+    DBG("entering lowest_transient\n");
+
+    for(index = windows_stack; index; index = g_slist_next(index))
+    {
+        c2 = (Client *) index->data;
+        if((c2 != c) && (c2->transient_for == c->window))
+        {
+            lowest_transient = c2;
+            break;
+        }
+    }
+    return lowest_transient;
+}
+
+static inline Client *clientGetHighestTransient(Client * c)
+{
+    Client *highest_transient = NULL;
+    Client *c2, *c3;
+    GSList *transients = NULL;
+    GSList *index1, *index2;
+
+    g_return_val_if_fail(c != NULL, NULL);
+    DBG("entering clientGetHighestTransient\n");
+
+    for(index1 = windows_stack; index1; index1 = g_slist_next(index1))
+    {
+        c2 = (Client *) index1->data;
+        if(c2)
+        {
+            if((c2 != c) && (c2->transient_for == c->window))
+            {
+                transients = g_slist_append(transients, c2);
+                highest_transient = c2;
+            }
+            else
+            {
+                for(index2 = transients; index2; index2 = g_slist_next(index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if((c3 != c2) && (c2->transient_for == c3->window))
+                    {
+                        transients = g_slist_append(transients, c2);
+                        highest_transient = c2;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    g_slist_free(transients);
+
+    return highest_transient;
+}
+
+static inline Client *clientGetNextTopMost(int layer, Client * exclude)
 {
     Client *top = NULL, *c;
     GSList *index;
 
-    DBG("entering clientGetTopMost\n");
+    DBG("entering clientGetNextTopMost\n");
 
     for(index = windows_stack; index; index = g_slist_next(index))
     {
@@ -1327,12 +1410,12 @@ static inline Client *clientGetTopMost(int layer, Client * exclude)
         DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
         if(!exclude || (c != exclude))
         {
-            if(c->win_layer <= layer)
+            if(c->win_layer > layer)
             {
                 top = c;
+                break;
             }
         }
-
     }
 
     return top;
@@ -1353,9 +1436,12 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
             DBG("*** stack window \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
             if(!exclude || (c != exclude))
             {
-                if(c->win_layer >= layer)
+                if(c->win_layer < layer)
                 {
                     bot = c;
+                }
+                else if(c->win_layer >= layer)
+                {
                     break;
                 }
             }
@@ -1364,48 +1450,7 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
     return bot;
 }
 
-static inline void clientComputeStackList(Client * c, Client * sibling, int mask, XWindowChanges * wc)
-{
-    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
-    {
-        if((sibling) && (sibling != c) && (g_slist_index(windows_stack, sibling) > -1))
-        {
-            gint position;
-
-            if(wc->stack_mode == Below)
-            {
-                windows_stack = g_slist_remove(windows_stack, c);
-                position = g_slist_index(windows_stack, sibling);
-                DBG("Below with sibling -> inserting window \"%s\" (0x%lx) below \"%s\" (0x%lx) at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position);
-                windows_stack = g_slist_insert(windows_stack, c, position);
-            }
-            else
-            {
-                windows_stack = g_slist_remove(windows_stack, c);
-                position = g_slist_index(windows_stack, sibling);
-                DBG("Above with sibling -> inserting window \"%s\" (0x%lx) above \"%s\" (0x%lx)  at position %i in stack list\n", c->name, c->window, sibling->name, sibling->window, position + 1);
-                windows_stack = g_slist_insert(windows_stack, c, position + 1);
-            }
-        }
-        else
-        {
-            if(wc->stack_mode == Below)
-            {
-                DBG("Below without sibling -> inserting window \"%s\" (0x%lx) at beginning of stack list\n", c->name, c->window);
-                windows_stack = g_slist_remove(windows_stack, c);
-                windows_stack = g_slist_prepend(windows_stack, c);
-            }
-            else
-            {
-                DBG("Above without sibling -> inserting window \"%s\" (0x%lx) at end of stack list\n", c->name, c->window);
-                windows_stack = g_slist_remove(windows_stack, c);
-                windows_stack = g_slist_append(windows_stack, c);
-            }
-        }
-    }
-}
-
-/* clientConstraintPos() is used when moving windows 
+/* clientConstraintPos() is used when moving windows
    to ensure that the window stays accessible to the user
  */
 static inline void clientConstraintPos(Client * c, gboolean show_full)
@@ -1414,50 +1459,50 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width, frame_top, frame_left;
     gboolean leftMostHead, rightMostHead, topMostHead, bottomMostHead;
-    
+
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos %s\n", show_title ? "(with show full)" : "(w/out show full)");
     DBG("client \"%s\" (0x%lx)\n", c->name, c->window);
-    
+
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
     {
         DBG("ignoring constrained for client \"%s\" (0x%lx)\n", c->name, c->window);
         return;
     }
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
-    frame_x      = frameX(c);
-    frame_y      = frameY(c);
+    frame_x = frameX(c);
+    frame_y = frameY(c);
     frame_height = frameHeight(c);
-    frame_width  = frameWidth(c);
-    frame_top    = frameTop(c);
-    frame_left   = frameLeft(c);
-    
+    frame_width = frameWidth(c);
+    frame_top = frameTop(c);
+    frame_left = frameLeft(c);
+
     cx = frame_x + (frame_width >> 1);
     cy = frame_y + (frame_height >> 1);
 
-    leftMostHead   = isLeftMostHead(dpy, screen, cx, cy);
-    rightMostHead  = isRightMostHead(dpy, screen, cx, cy);
-    topMostHead    = isTopMostHead(dpy, screen, cx, cy);
+    leftMostHead = isLeftMostHead(dpy, screen, cx, cy);
+    rightMostHead = isRightMostHead(dpy, screen, cx, cy);
+    topMostHead = isTopMostHead(dpy, screen, cx, cy);
     bottomMostHead = isBottomMostHead(dpy, screen, cx, cy);
 
-    left   = (leftMostHead ? (int)margins[MARGIN_LEFT] : 0);
-    right  = (rightMostHead ? (int)margins[MARGIN_RIGHT] : 0);
-    top    = (topMostHead ? (int)margins[MARGIN_TOP] : 0);
+    left = (leftMostHead ? (int)margins[MARGIN_LEFT] : 0);
+    right = (rightMostHead ? (int)margins[MARGIN_RIGHT] : 0);
+    top = (topMostHead ? (int)margins[MARGIN_TOP] : 0);
     bottom = (bottomMostHead ? (int)margins[MARGIN_BOTTOM] : 0);
 
-    disp_x     = MyDisplayX(cx, cy);
-    disp_y     = MyDisplayY(cx, cy);
+    disp_x = MyDisplayX(cx, cy);
+    disp_y = MyDisplayY(cx, cy);
     disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
     disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
-    
-    frame_x      = frameX(c);
-    frame_y      = frameY(c);
+
+    frame_x = frameX(c);
+    frame_y = frameY(c);
     frame_height = frameHeight(c);
-    frame_width  = frameWidth(c);
-    frame_top    = frameTop(c);
-    frame_left   = frameLeft(c);
-    
-    if (show_full)
+    frame_width = frameWidth(c);
+    frame_top = frameTop(c);
+    frame_left = frameLeft(c);
+
+    if(show_full)
     {
         if(rightMostHead && (frame_x + frame_width > disp_max_x - right))
         {
@@ -1497,8 +1542,8 @@ static inline void clientConstraintPos(Client * c, gboolean show_full)
     }
 }
 
-/* clientKeepVisible is used at initial mapping, to make sure 
-   the window is visible on screen. It also does coordonate 
+/* clientKeepVisible is used at initial mapping, to make sure
+   the window is visible on screen. It also does coordonate
    translation in Xinerama to center window on physical screen
    Not to be confused with clientConstraintPos()
  */
@@ -1522,7 +1567,7 @@ static inline void clientKeepVisible(Client * c)
     if((use_xinerama) && (abs(c->x - ((XDisplayWidth(dpy, screen) - c->width) / 2)) < 20) && (abs(c->y - ((XDisplayHeight(dpy, screen) - c->height) / 2)) < 20))
     {
         /* We consider that the windows is centered on screen,
-         * Thus, will move it so its center on the current 
+         * Thus, will move it so its center on the current
          * physical screen
          */
         c->x = MyDisplayX(cx, cy) + (MyDisplayWidth(dpy, screen, cx, cy) - c->width) / 2;
@@ -1594,18 +1639,18 @@ static void clientInitPosition(Client * c)
     }
 
     getMouseXY(root, &msx, &msy);
-    left   = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
-    right  = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
-    top    = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
+    left = (isLeftMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_LEFT], params.xfwm_margins[MARGIN_LEFT]) : 0);
+    right = (isRightMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_RIGHT], params.xfwm_margins[MARGIN_RIGHT]) : 0);
+    top = (isTopMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_TOP], params.xfwm_margins[MARGIN_TOP]) : 0);
     bottom = (isBottomMostHead(dpy, screen, msx, msy) ? MAX((int)margins[MARGIN_BOTTOM], params.xfwm_margins[MARGIN_BOTTOM]) : 0);
 
-    frame_x      = frameX(c);
-    frame_y      = frameY(c);
+    frame_x = frameX(c);
+    frame_y = frameY(c);
     frame_height = frameHeight(c);
-    frame_width  = frameWidth(c);
+    frame_width = frameWidth(c);
 
-    xmax   = MyDisplayMaxX(dpy, screen, msx, msy) - frame_width - right;
-    ymax   = MyDisplayMaxY(dpy, screen, msx, msy) - frame_height - bottom;
+    xmax = MyDisplayMaxX(dpy, screen, msx, msy) - frame_width - right;
+    ymax = MyDisplayMaxY(dpy, screen, msx, msy) - frame_height - bottom;
     best_x = MyDisplayX(msx, msy) + frameLeft(c) + left;
     best_y = MyDisplayY(msx, msy) + frameTop(c) + top;
 
@@ -1650,19 +1695,15 @@ static void clientInitPosition(Client * c)
     return;
 }
 
-static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained)
+void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained)
 {
-    gboolean transients = FALSE;
     XConfigureEvent ce;
-    Client *sibling = NULL;
-    Client *c2 = NULL;
-    Client *lowest_transient = NULL;
-    int i;
 
     g_return_if_fail(c != NULL);
     g_return_if_fail(c->window != None);
-    DBG("entering _clientConfigure (recursive)\n");
-    DBG("configuring (recursive) client \"%s\" (0x%lx), layer %i\n", c->name, c->window, c->win_layer);
+
+    DBG("entering clientConfigure\n");
+    DBG("configuring client \"%s\" (0x%lx) %s, type %u\n", c->name, c->window, constrained ? "constrained" : "not contrained", c->type);
 
     if(mask & CWX)
     {
@@ -1716,113 +1757,25 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
     {
         switch (wc->stack_mode)
         {
+                /* Limitation: we don't support sibling... */
             case Above:
+            case TopIf:
                 DBG("Above\n");
-                if(mask & CWSibling)
-                {
-                    DBG("Sibling specified for \"%s\" (0x%lx) is (0x%lx)\n", c->name, c->window, wc->sibling);
-                    sibling = clientGetFromWindow(wc->sibling, WINDOW);
-                    if(!sibling)
-                    {
-                        DBG("Sibling specified for \"%s\" (0x%lx) cannot be found\n", c->name, c->window);
-                        sibling = clientGetTopMost(c->win_layer, c);
-                    }
-                }
-                else
-                {
-                    DBG("No sibling specified for \"%s\" (0x%lx)\n", c->name, c->window);
-                    sibling = clientGetTopMost(c->win_layer, c);
-                }
-                if(!sibling)
-                {
-                    DBG("unable to determine sibling!\n");
-                    wc->stack_mode = Below;
-                }
-                DBG("looking for transients\n");
-                for(c2 = clients, i = 0; i < client_count; c2 = c2->next, i++)
-                {
-                    DBG("checking \"%s\" (0x%lx)\n", c2->name, c2->window);
-                    if((c2->transient_for == c->window) && (c2 != c))
-                    {
-                        XWindowChanges wc2;
-                        DBG("transient \"%s\" (0x%lx) found for \"%s\" (0x%lx)\n", c2->name, c2->window, c->name, c->window);
-                        if(!transients)
-                        {
-                            transients = TRUE;
-                            wc2.stack_mode = Above;
-                            DBG("recursive call 1\n");
-                            _clientConfigure(c2, &wc2, CWStackMode, FALSE);
-                        }
-                        else
-                        {
-                            wc2.sibling = lowest_transient->window;
-                            wc2.stack_mode = Below;
-                            DBG("recursive call 2\n");
-                            _clientConfigure(c2, &wc2, CWStackMode | CWSibling, FALSE);
-                        }
-                        lowest_transient = c2;
-                    }
-                }
-                if(transients && lowest_transient)
-                {
-                    DBG("Transient is %s (0x%lx)\n", sibling->name, sibling->window);
-                    sibling = lowest_transient;
-                    wc->stack_mode = Below;
-                }
+                clientRaise(c);
                 break;
             case Below:
-            default:
+            case BottomIf:
                 DBG("Below\n");
-                if((mask & CWSibling) && (c->transient_for != wc->sibling))
-                {
-                    DBG("Sibling specified for \"%s\" (0x%lx) is (0x%lx)\n", c->name, c->window, wc->sibling);
-                    sibling = clientGetFromWindow(wc->sibling, WINDOW);
-                    if(!sibling)
-                    {
-                        DBG("Sibling specified for \"%s\" (0x%lx) cannot be found\n", c->name, c->window);
-                        sibling = clientGetBottomMost(c->win_layer, c);
-                    }
-                }
-                else if(c->transient_for)
-                {
-                    wc->sibling = c->transient_for;
-                    wc->stack_mode = Above;
-                    mask |= (CWSibling | CWStackMode);
-                    sibling = clientGetFromWindow(wc->sibling, WINDOW);
-                    DBG("lowering transient \"%s\" (0x%lx) for \"%s\" (0x%lx)\n", c->name, c->window, c->transient_for, sibling->name);
-                }
-                else
-                {
-                    DBG("No sibling specified for \"%s\" (0x%lx)\n", c->name, c->window);
-                    sibling = clientGetBottomMost(c->win_layer, c);
-                }
-                if(!sibling)
-                {
-                    DBG("unable to determine sibling!\n");
-                    wc->stack_mode = Above;
-                }
+                clientLower(c);
+                break;
+            case Opposite:
+            default:
                 break;
         }
-        if(sibling)
-        {
-            if(sibling != c)
-            {
-                wc->sibling = sibling->frame;
-                mask |= CWSibling;
-            }
-            else
-            {
-                mask &= ~(CWSibling | CWStackMode);
-            }
-        }
-        else
-        {
-            mask &= ~CWSibling;
-        }
-        clientComputeStackList(c, sibling, mask, wc);
+        mask &= ~(CWStackMode | CWSibling);
     }
 
-    if (constrained && CONSTRAINED_WINDOW(c))
+    if(constrained && CONSTRAINED_WINDOW(c))
     {
         clientConstraintPos(c, TRUE);
     }
@@ -1836,7 +1789,6 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
     wc->y = frameTop(c);
     wc->width = c->width;
     wc->height = c->height;
-    mask &= ~(CWStackMode | CWSibling);
     XConfigureWindow(dpy, c->window, mask, wc);
 
     if(mask & (CWWidth | CWHeight))
@@ -1857,13 +1809,6 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean
         ce.override_redirect = False;
         XSendEvent(dpy, c->window, False, StructureNotifyMask, (XEvent *) & ce);
     }
-}
-
-void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constrained)
-{
-    DBG("entering clientConfigure\n");
-    DBG("configuring client \"%s\" (0x%lx) %s, type %u\n", c->name, c->window, constrained ? "constrained" : "not contrained", c->type);
-    _clientConfigure(c, wc, mask, constrained);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (mask & CWStackMode))
     {
         clientSetNetClientList(net_client_list_stacking, windows_stack);
@@ -1892,7 +1837,7 @@ void clientUpdateMWMHints(Client * c)
                 CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU);
                 CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ? CLIENT_FLAG_HAS_BORDER : 0);
                 CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MENU)) ? CLIENT_FLAG_HAS_MENU : 0);
-                /* 
+                /*
                    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_HIDE);
                    CLIENT_FLAG_UNSET(c, CLIENT_FLAG_HAS_MAXIMIZE);
                    CLIENT_FLAG_SET(c, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? CLIENT_FLAG_HAS_HIDE : 0);
@@ -1978,7 +1923,7 @@ static inline void clientFree(Client * c)
     free(c);
 }
 
-static inline void clientApplyInitialNetState(Client *c)
+static inline void clientApplyInitialNetState(Client * c)
 {
     g_return_if_fail(c != NULL);
 
@@ -1988,7 +1933,7 @@ static inline void clientApplyInitialNetState(Client *c)
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
     {
         unsigned long mode = 0;
-        
+
         DBG("Applying client's initial state: maximized\n");
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
@@ -2183,7 +2128,7 @@ void clientFrame(Window w)
     clientGetInitialNetWmDesktop(c);
     clientGetNetWmType(c);
     clientGetNetStruts(c);
-    
+
     /* Once we know the type of window, we can initialize window position */
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SESSION_MANAGED))
     {
@@ -2196,7 +2141,7 @@ void clientFrame(Window w)
             clientGravitate(c, APPLY);
         }
     }
-    /* We must call clientApplyInitialNetState() after having placed the 
+    /* We must call clientApplyInitialNetState() after having placed the
        window so that the inital position values are correctly set if the
        inital state is maximize or fullscreen
      */
@@ -2241,7 +2186,7 @@ void clientFrame(Window w)
     {
         myWindowCreate(dpy, c->frame, &c->buttons[i], None);
     }
-
+    DBG("now calling configure for the new window \"%s\" (0x%lx)\n", c->name, c->window);
     wc.x = c->x;
     wc.y = c->y;
     wc.width = c->width;
@@ -2586,53 +2531,219 @@ void clientKill(Client * c)
     XKillClient(dpy, c->window);
 }
 
+static inline void clientApplyStackList(GSList * list)
+{
+    Client *c;
+    GSList *list_copy, *index;
+    Window *xwinstack;
+    guint nwindows;
+    gint i = 0;
+
+    g_return_if_fail(list != NULL);
+
+    list_copy = g_slist_copy(list);
+    list_copy = g_slist_reverse(list_copy);
+    nwindows = g_slist_length(list_copy);
+    c = (Client *) list_copy->data;
+    XRaiseWindow(dpy, c->frame);
+    xwinstack = g_new(Window, nwindows);
+    for(index = list_copy; index; index = g_slist_next(index))
+    {
+        c = (Client *) index->data;
+        xwinstack[i++] = c->frame;
+    }
+    XRestackWindows(dpy, xwinstack, (int)nwindows);
+    g_slist_free(list_copy);
+    g_free(xwinstack);
+}
+
 void clientRaise(Client * c)
 {
-    XWindowChanges wc;
-
     g_return_if_fail(c != NULL);
     DBG("entering clientRaise\n");
+
+    if(c == last_raise)
+    {
+        DBG("client \"%s\" (0x%lx) already raised\n", c->name, c->window);
+        return;
+    }
     DBG("raising client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) && (c->type != WINDOW_DESKTOP))
     {
-        wc.stack_mode = Above;
-        clientConfigure(c, &wc, CWStackMode, FALSE);
+        Client *c2, *c3;
+        Client *client_sibling = NULL;
+        GSList *transients = NULL;
+        GSList *sibling = NULL;
+        GSList *index1, *index2;
+        GSList *windows_stack_copy;
+
+        /* Copy the existing window stack temporarily as reference */
+        windows_stack_copy = g_slist_copy(windows_stack);
+        /* Search for the window that will be just on top of the raised window (layers...) */
+        client_sibling = clientGetNextTopMost(c->win_layer, c);
+        windows_stack = g_slist_remove(windows_stack, (gconstpointer) c);
+        if(client_sibling)
+        {
+            /* If there is one, look for its place in the list */
+            sibling = g_slist_find(windows_stack, (gconstpointer) client_sibling);
+            /* Place the raised window just before it */
+            windows_stack = g_slist_insert_before(windows_stack, sibling, c);
+        }
+        else
+        {
+            /* There will be no window on top of the raised window, so place it at the end of list */
+            windows_stack = g_slist_append(windows_stack, c);
+        }
+        /* Now, look for transients, transients of transients, etc. */
+        for(index1 = windows_stack_copy; index1; index1 = g_slist_next(index1))
+        {
+            c2 = (Client *) index1->data;
+            if(c2)
+            {
+                if((c2 != c) && (c2->transient_for == c->window))
+                {
+                    transients = g_slist_append(transients, c2);
+                    if(sibling)
+                    {
+                        /* Place the transient window just before sibling */
+                        windows_stack = g_slist_remove(windows_stack, (gconstpointer) c2);
+                        windows_stack = g_slist_insert_before(windows_stack, sibling, c2);
+                    }
+                    else
+                    {
+                        /* There will be no window on top of the transient window, so place it at the end of list */
+                        windows_stack = g_slist_remove(windows_stack, (gconstpointer) c2);
+                        windows_stack = g_slist_append(windows_stack, c2);
+                    }
+                }
+                else
+                {
+                    for(index2 = transients; index2; index2 = g_slist_next(index2))
+                    {
+                        c3 = (Client *) index2->data;
+                        if((c3 != c2) && (c2->transient_for == c3->window))
+                        {
+                            transients = g_slist_append(transients, c2);
+                            if(sibling)
+                            {
+                                /* Place the transient window just before sibling */
+                                windows_stack = g_slist_remove(windows_stack, (gconstpointer) c2);
+                                windows_stack = g_slist_insert_before(windows_stack, sibling, c2);
+                            }
+                            else
+                            {
+                                /* There will be no window on top of the transient window, so place it at the end of list */
+                                windows_stack = g_slist_remove(windows_stack, (gconstpointer) c2);
+                                windows_stack = g_slist_append(windows_stack, c2);
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        g_slist_free(transients);
+        g_slist_free(windows_stack_copy);
+        /* Now, windows_stack contains the correct window stack
+           We still need to tell the X Server to reflect the changes 
+         */
+        clientApplyStackList(windows_stack);
+        last_raise = c;
     }
 }
 
 void clientLower(Client * c)
 {
-    XWindowChanges wc;
-
     g_return_if_fail(c != NULL);
     DBG("entering clientLower\n");
     DBG("lowering client \"%s\" (0x%lx)\n", c->name, c->window);
 
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
-        wc.stack_mode = Below;
-        clientConfigure(c, &wc, CWStackMode, FALSE);
+        Client *client_sibling = NULL;
+
+        if(c->transient_for)
+        {
+            client_sibling = clientGetFromWindow(c->transient_for, WINDOW);
+        }
+        if(!client_sibling)
+        {
+            client_sibling = clientGetBottomMost(c->win_layer, c);
+        }
+        windows_stack = g_slist_remove(windows_stack, (gconstpointer) c);
+        if(client_sibling)
+        {
+            GSList *sibling = g_slist_find(windows_stack, (gconstpointer) client_sibling);
+            gint position = g_slist_position(windows_stack, sibling) + 1;
+            windows_stack = g_slist_insert(windows_stack, c, position);
+            DBG("lowest client is \"%s\" (0x%lx) at position %i\n", client_sibling->name, client_sibling->window, position);
+        }
+        else
+        {
+            windows_stack = g_slist_prepend(windows_stack, c);
+        }
+        /* Now, windows_stack contains the correct window stack
+           We still need to tell the X Server to reflect the changes 
+         */
+        clientApplyStackList(windows_stack);
+        last_raise = NULL;
     }
 }
 
 void clientSetLayer(Client * c, int l)
 {
-    int old_layer;
+    Client *c2, *c3;
+    GSList *transients = NULL;
+    GSList *index1, *index2;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientSetLayer\n");
-    DBG("setting client \"%s\" (0x%lx) layer to %d\n", c->name, c->window, l);
 
-    old_layer = c->win_layer;
-    if(l == old_layer)
+    if(c->win_layer != l)
     {
-        DBG("client \"%s\" (0x%lx) already at layer %d\n", c->name, c->window, l);
-        return;
+        DBG("1) setting client \"%s\" (0x%lx) layer to %d\n", c->name, c->window, l);
+        c->win_layer = l;
+        setGnomeHint(dpy, c->window, win_layer, l);
     }
 
-    setGnomeHint(dpy, c->window, win_layer, l);
-    c->win_layer = l;
+    for(index1 = windows_stack; index1; index1 = g_slist_next(index1))
+    {
+        c2 = (Client *) index1->data;
+        if(c2 != c)
+        {
+            if(c2->transient_for == c->window)
+            {
+                transients = g_slist_append(transients, c2);
+                if(c2->win_layer != l)
+                {
+                    DBG("2) setting client \"%s\" (0x%lx) layer to %d\n", c2->name, c2->window, l);
+                    c2->win_layer = l;
+                    setGnomeHint(dpy, c2->window, win_layer, l);
+                }
+            }
+            else
+            {
+                for(index2 = transients; index2; index2 = g_slist_next(index2))
+                {
+                    c3 = (Client *) index2->data;
+                    if((c3 != c2) && (c2->transient_for == c3->window))
+                    {
+                        transients = g_slist_append(transients, c2);
+                        if(c2->win_layer != l)
+                        {
+                            DBG("3) setting client \"%s\" (0x%lx) layer to %d\n", c2->name, c2->window, l);
+                            c2->win_layer = l;
+                            setGnomeHint(dpy, c2->window, win_layer, l);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    g_slist_free(transients);
+    last_raise = NULL;
     clientRaise(c);
 }
 
@@ -2706,7 +2817,7 @@ void clientShade(Client * c)
     CLIENT_FLAG_SET(c, CLIENT_FLAG_SHADED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
-    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
@@ -2731,7 +2842,7 @@ void clientUnshade(Client * c)
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_SHADED);
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
-    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         wc.width = c->width;
         wc.height = c->height;
@@ -2910,7 +3021,7 @@ void clientToggleMaximized(Client * c, int mode)
     }
     setGnomeHint(dpy, c->window, win_state, c->win_state);
     clientSetNetState(c);
-    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
+    if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED))
     {
         clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight, FALSE);
     }
@@ -3121,12 +3232,12 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         int frame_top, frame_left, frame_right, frame_bottom;
 
         while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent));
-        
-	if (xevent->type == ButtonRelease)
+
+        if(xevent->type == ButtonRelease)
         {
             moving = FALSE;
-	}
-	
+        }
+
         if(!passdata->grab && params.box_move)
         {
             gdk_x11_grab_server();
@@ -3162,13 +3273,13 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
-        frame_x      = frameX(c);
-        frame_y      = frameY(c);
+        frame_x = frameX(c);
+        frame_y = frameY(c);
         frame_height = frameHeight(c);
-        frame_width  = frameWidth(c);
-        frame_top    = frameTop(c);
-        frame_left   = frameLeft(c);
-        frame_right  = frameRight(c);
+        frame_width = frameWidth(c);
+        frame_top = frameTop(c);
+        frame_left = frameLeft(c);
+        frame_right = frameRight(c);
         frame_bottom = frameBottom(c);
 
         cx = frame_x + (frame_width >> 1);
@@ -3183,7 +3294,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         disp_y = MyDisplayY(cx, cy);
         disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
         disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
-        
+
         if(params.snap_to_border)
         {
             if(abs(frame_x - disp_max_x + frame_width + right) < params.snap_width)
@@ -3195,7 +3306,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
             {
                 c->x = disp_x + frame_left + left;
                 frame_x = frameX(c);
-           }
+            }
             if(abs(frame_y - disp_max_y + frame_height + bottom) < params.snap_width)
             {
                 c->y = disp_max_y - frame_height + frame_top - bottom;
@@ -3246,7 +3357,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     {
         status = XEV_FILTER_CONTINUE;
     }
-    
+
     DBG("leaving clientMove_event_filter\n");
 
     if(!moving)
@@ -3275,10 +3386,10 @@ void clientMove(Client * c, XEvent * e)
     passdata.c = c;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
-    /* 
+    /*
        The following trick is experimental, based on a patch for Kwin 3.1alpha1 by aviv bergman
 
-       It is supposed to reduce latency during move/resize by mapping a screen large window that 
+       It is supposed to reduce latency during move/resize by mapping a screen large window that
        receives all pointer events.
 
        Original mail message is available here :
@@ -3386,13 +3497,13 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
 
     DBG("entering clientResize_event_filter\n");
 
-    frame_x      = frameX(c);
-    frame_y      = frameY(c);
+    frame_x = frameX(c);
+    frame_y = frameY(c);
     frame_height = frameHeight(c);
-    frame_width  = frameWidth(c);
-    frame_top    = frameTop(c);
-    frame_left   = frameLeft(c);
-    frame_right  = frameRight(c);
+    frame_width = frameWidth(c);
+    frame_top = frameTop(c);
+    frame_left = frameLeft(c);
+    frame_right = frameRight(c);
     frame_bottom = frameBottom(c);
 
     cx = frame_x + (frame_width >> 1);
@@ -3407,7 +3518,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     disp_y = MyDisplayY(cx, cy);
     disp_max_x = MyDisplayMaxX(dpy, screen, cx, cy);
     disp_max_y = MyDisplayMaxY(dpy, screen, cx, cy);
-        
+
     if(xevent->type == KeyPress)
     {
         if(!passdata->grab && params.box_resize)
@@ -3471,12 +3582,12 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     else if(xevent->type == MotionNotify)
     {
         while(XCheckMaskEvent(dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, xevent));
-        
-	if (xevent->type == ButtonRelease)
+
+        if(xevent->type == ButtonRelease)
         {
             resizing = FALSE;
-	}
-	
+        }
+
         if(!passdata->grab && params.box_resize)
         {
             gdk_x11_grab_server();
@@ -3585,7 +3696,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     {
         status = XEV_FILTER_CONTINUE;
     }
-    
+
     DBG("leaving clientResize_event_filter\n");
 
     if(!resizing)

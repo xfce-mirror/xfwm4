@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002 Olivier Fourdan
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
 
  */
 
@@ -87,7 +87,7 @@ static int handleXError(Display * dpy, XErrorEvent * err)
         case BadAccess:
             if(err->resourceid == root)
             {
-                fprintf(stderr, "%s: Another window manager is running\n", progname);
+                g_message("%s: Another window manager is running\n", progname);
                 exit(1);
             }
             break;
@@ -198,7 +198,7 @@ static int initialize(int argc, char **argv)
     gtk_set_locale();
     gtk_init(&argc, &argv);
 
-    g_message(_("%s: Using GTK+-%d.%d.%d"), g_get_prgname(), gtk_major_version, gtk_minor_version, gtk_micro_version);
+    DBG("Using GTK+-%d.%d.%d\n", gtk_major_version, gtk_minor_version, gtk_micro_version);
     gtk_widget_set_default_colormap(gdk_colormap_get_system());
 
     dpy = GDK_DISPLAY();
@@ -259,7 +259,7 @@ static int initialize(int argc, char **argv)
     pushEventFilter(xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow();
-    DBG("Our event window is 0x%lx", gnome_win);
+    DBG("Our event window is 0x%lx\n", gnome_win);
 
     if(!initSettings())
     {
@@ -355,6 +355,6 @@ int main(int argc, char **argv)
             break;
     }
     cleanUp();
-    g_message(_("%s: Terminated\n"), g_get_prgname());
+    DBG("Terminated\n");
     return 0;
 }

@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002 Olivier Fourdan
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H
@@ -48,16 +48,16 @@ static int mcs_initted = FALSE;
 static void set_settings_margin(int idx, int value)
 {
     int val;
-    
+
     switch (idx)
     {
         case MARGIN_LEFT:
         case MARGIN_RIGHT:
-            if (value < 0)
+            if(value < 0)
             {
-                 val = 0;
+                val = 0;
             }
-            else if (value > gdk_screen_width() / 4)
+            else if(value > gdk_screen_width() / 4)
             {
                 val = gdk_screen_width() / 4;
             }
@@ -69,11 +69,11 @@ static void set_settings_margin(int idx, int value)
             break;
         case MARGIN_TOP:
         case MARGIN_BOTTOM:
-            if (value < 0)
+            if(value < 0)
             {
-                 val = 0;
+                val = 0;
             }
-            else if (value > gdk_screen_height() / 4)
+            else if(value > gdk_screen_height() / 4)
             {
                 val = gdk_screen_height() / 4;
             }
@@ -83,7 +83,7 @@ static void set_settings_margin(int idx, int value)
             }
             params.xfwm_margins[idx] = val;
             break;
-         default:
+        default:
             break;
     }
 }

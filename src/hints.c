@@ -15,7 +15,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002 Olivier Fourdan
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
 
  */
 
@@ -595,7 +595,7 @@ gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
         name = XGetAtomName(dpy, xatom);
         if(name)
         {
-            g_message(_("%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"), g_get_prgname(), name, w);
+            DBG("Property %s on window 0x%lx contains invalid UTF-8 characters\n", name, w);
             XFree(name);
         }
         XFree(str);

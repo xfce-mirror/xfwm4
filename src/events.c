@@ -14,7 +14,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002 Olivier Fourdan
+        xfwm4    - (c) 2002-2003 Olivier Fourdan
 
  */
 
@@ -412,17 +412,17 @@ static inline void edgeButton(Client * c, int part, XButtonEvent * ev)
     else
     {
         if(ev->button == Button1)
-	{
+        {
             clientRaise(c);
         }
-	if((ev->button == Button1) || (ev->button == Button3))
+        if((ev->button == Button1) || (ev->button == Button3))
         {
-	    resizeRequest(c, part, (XEvent *) ev);
+            resizeRequest(c, part, (XEvent *) ev);
         }
     }
 }
 
-static inline void button1Action(Client *c, XButtonEvent * ev)
+static inline void button1Action(Client * c, XButtonEvent * ev)
 {
     XEvent copy_event = (XEvent) * ev;
     XfwmButtonClickType tclick;
@@ -462,11 +462,11 @@ static inline void button1Action(Client *c, XButtonEvent * ev)
     }
 }
 
-static inline void titleButton(Client *c, int state, XButtonEvent * ev)
+static inline void titleButton(Client * c, int state, XButtonEvent * ev)
 {
     g_return_if_fail(c != NULL);
     g_return_if_fail(ev != NULL);
-    
+
     if(ev->button == Button1)
     {
         button1Action(c, ev);
@@ -477,13 +477,13 @@ static inline void titleButton(Client *c, int state, XButtonEvent * ev)
     }
     else if(ev->button == Button3)
     {
-	/*
-	   We need to copy the event to keep the original event untouched
-	   for gtk to handle it (in case we open up the menu)
-	 */
+        /*
+           We need to copy the event to keep the original event untouched
+           for gtk to handle it (in case we open up the menu)
+         */
 
-	XEvent copy_event = (XEvent) * ev;
-	XfwmButtonClickType tclick;
+        XEvent copy_event = (XEvent) * ev;
+        XfwmButtonClickType tclick;
 
         tclick = typeOfClick(c->frame, &copy_event, FALSE);
 
@@ -542,10 +542,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
         state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask | SuperMask | HyperMask);
         win = ev->subwindow;
 
-        if ((ev->button == Button1) && (state == AltMask))
-	{
+        if((ev->button == Button1) && (state == AltMask))
+        {
             button1Action(c, ev);
-	}
+        }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
             clientLower(c);
@@ -559,18 +559,18 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             clientButtonPress(c, win, ev);
         }
-	else if (win == MYWINDOW_XWINDOW(c->title))
-	{
+        else if(win == MYWINDOW_XWINDOW(c->title))
+        {
             titleButton(c, state, ev);
-	}
-	else if ((win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON])) && (ev->button == Button1))
+        }
+        else if((win == MYWINDOW_XWINDOW(c->buttons[MENU_BUTTON])) && (ev->button == Button1))
         {
             /*
                We need to copy the event to keep the original event untouched
                for gtk to handle it (in case we open up the menu)
              */
-            
-	    XEvent copy_event = (XEvent) * ev;
+
+            XEvent copy_event = (XEvent) * ev;
             XfwmButtonClickType tclick;
 
             tclick = typeOfClick(c->frame, &copy_event, TRUE);
@@ -581,21 +581,21 @@ static inline void handleButtonPress(XButtonEvent * ev)
             }
             else
             {
-        	clientSetFocus(c, True);
-        	if(params.raise_on_click)
-        	{
+                clientSetFocus(c, True);
+                if(params.raise_on_click)
+                {
                     clientRaise(c);
-        	}
-        	ev->window = ev->root;
-        	if(button_handler_id)
-        	{
+                }
+                ev->window = ev->root;
+                if(button_handler_id)
+                {
                     g_signal_handler_disconnect(GTK_OBJECT(getDefaultGtkWidget()), button_handler_id);
-        	}
-        	button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
-        	/* Let GTK handle this for us. */
+                }
+                button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
+                /* Let GTK handle this for us. */
             }
-	}
-	else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
+        }
+        else if((win == MYWINDOW_XWINDOW(c->corners[CORNER_TOP_LEFT])) && (state == 0))
         {
             edgeButton(c, CORNER_TOP_LEFT, ev);
         }
@@ -629,10 +629,10 @@ static inline void handleButtonPress(XButtonEvent * ev)
             {
                 clientSetFocus(c, True);
                 if(params.raise_on_click)
-		{
+                {
                     clientRaise(c);
                 }
-	    }
+            }
             if(ev->window == c->window)
             {
                 replay = True;
@@ -764,12 +764,13 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     wc.border_width = ev->border_width;
 
     c = clientGetFromWindow(ev->window, WINDOW);
-    if (!c)
+    if(!c)
     {
         /* Some app tend or try to manipulate the wm frame to achieve fullscreen mode */
         c = clientGetFromWindow(ev->window, FRAME);
-        if (c)
+        if(c)
         {
+            DBG("client %s (0x%lx) is attempting to manipulate its frame!\n", c->name, c->window);
             if(ev->value_mask & CWX)
             {
                 wc.x += frameLeft(c);
@@ -786,12 +787,16 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
             {
                 wc.height -= frameTop(c) + frameBottom(c);
             }
+            /* We don't allow changing stacking order by accessing the frame
+               window because that would break the layer management in xfwm4
+             */
+            ev->value_mask &= ~(CWSibling | CWStackMode);
         }
     }
     if(c)
     {
         gboolean constrained = FALSE;
-        
+
         DBG("handleConfigureRequest managed window \"%s\" (0x%lx)\n", c->name, c->window);
         if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
         {
@@ -801,7 +806,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         if(c->type == WINDOW_DESKTOP)
         {
             /* Ignore stacking request for DESKTOP windows */
-            ev->value_mask &= ~CWStackMode;
+            ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
         if(ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
@@ -825,6 +830,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     }
     else
     {
+        DBG("unmanaged configure request for win 0x%lx\n", ev->window);
         XConfigureWindow(dpy, ev->window, ev->value_mask, &wc);
     }
 }
@@ -1414,15 +1420,15 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
         removeTmpEventWin(menu_event_window);
         menu_event_window = None;
     }
-    /* 
-       Since all button press/release events are catched by the windows frames, there is some 
+    /*
+       Since all button press/release events are catched by the windows frames, there is some
        side effect with GTK menu. When a menu is opened, any click on the window frame is not
        detected as a click outside the menu, and the menu doesn't close.
-       To avoid this (painless but annoying) behaviour, we just setup a no event window that 
-       "hides" the events to regular windows. 
-       That might look tricky, but it's very efficient and save plenty of lines of complicated 
+       To avoid this (painless but annoying) behaviour, we just setup a no event window that
+       "hides" the events to regular windows.
+       That might look tricky, but it's very efficient and save plenty of lines of complicated
        code.
-       Don't forget to delete that window once the menu is closed, though, or we'll get in 
+       Don't forget to delete that window once the menu is closed, though, or we'll get in
        trouble.
      */
     menu_event_window = setTmpEventWin(NoEventMask);
