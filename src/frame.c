@@ -924,7 +924,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                         &c->pm_cache.pm_sides[SIDE_BOTTOM][state], 
                         0, 0, bottom_width, frameBottom (c));
 
-        if (requires_clearing || title_changed || width_changed)
+        if (requires_clearing || title_changed)
         {
             xfwmWindowSetBG (&c->title, 
                              &c->pm_cache.pm_title[state]);
@@ -972,7 +972,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 
         xfwmWindowShow (&c->title,
             screen_info->corners[CORNER_TOP_LEFT][state].width, 0, top_width,
-            frameTop (c), (requires_clearing | title_changed | width_changed));
+            frameTop (c), (requires_clearing | title_changed));
         xfwmWindowShow (&c->sides[SIDE_BOTTOM],
             screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
             frameHeight (c) - frameBottom (c), bottom_width, frameBottom (c),
