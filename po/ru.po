@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4\n"
+"POT-Creation-Date: 2003-06-01 19:10+0200\n"
+"PO-Revision-Date: 2003-06-08 16:48+0300\n"
+"Last-Translator: Dan Korostelev <digger_temp@netman.ru>\n"
+"Language-Team: Russian <digger_temp@netman.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:127
+#: mcs-plugin/margins_plugin.c:231
+#: mcs-plugin/margins_plugin.c:250
+msgid "Workspace Margins"
+msgstr "Поля рабочего стола"
+
+#: mcs-plugin/margins_plugin.c:211
+msgid "Adjust workspace margins"
+msgstr "Изменение отступов"
+
+#: mcs-plugin/margins_plugin.c:237
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+
+#: mcs-plugin/margins_plugin.c:278
+msgid "Left :"
+msgstr "Слева:"
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Right :"
+msgstr "Справа:"
+
+#: mcs-plugin/margins_plugin.c:318
+msgid "Top :"
+msgstr "Сверху:"
+
+#: mcs-plugin/margins_plugin.c:338
+msgid "Bottom :"
+msgstr "Снизу:"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "Заголовок"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr "Меню"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr "Приклеить"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr "Свернуть в заголовок"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "Скрыть"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "Развернуть"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "Закрыть"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr "Свернуть окно в заголовок"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "Скрыть окно"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "Развернуть окно"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr "Ничего"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "Слева"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "По центру"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "Справа"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "Скрыта"
+
+#: mcs-plugin/xfwm4_plugin.c:1233
+msgid "Font Selection Dialog"
+msgstr "Выбор шрифта"
+
+#: mcs-plugin/xfwm4_plugin.c:1303
+#: mcs-plugin/xfwm4_plugin.c:1945
+msgid "Window Manager"
+msgstr "Менеджер окон"
+
+#: mcs-plugin/xfwm4_plugin.c:1317
+msgid "Window Manager Preferences"
+msgstr "Настройки менеджера окон"
+
+#: mcs-plugin/xfwm4_plugin.c:1354
+msgid "Window style"
+msgstr "Стиль обрамления"
+
+#: mcs-plugin/xfwm4_plugin.c:1372
+msgid "Font select :"
+msgstr "Выбор шрифта:"
+
+#: mcs-plugin/xfwm4_plugin.c:1382
+msgid "Title font"
+msgstr "Шрифт загаловка окна"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Text alignment inside title bar :"
+msgstr "Выравнивание текста заголовка."
+
+#: mcs-plugin/xfwm4_plugin.c:1399
+msgid "Title Alignment"
+msgstr "Выравнивание текста"
+
+#: mcs-plugin/xfwm4_plugin.c:1411
+msgid "Button layout"
+msgstr "Расположение кнопок"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Decoration style"
+msgstr "Стиль оформления"
+
+#: mcs-plugin/xfwm4_plugin.c:1449
+msgid "Keyboard Shortcut"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1468
+msgid "Click to focus"
+msgstr "Щелчок для активизации"
+
+#: mcs-plugin/xfwm4_plugin.c:1482
+msgid "Focus follows mouse"
+msgstr "Активизация при наведении мыши"
+
+#: mcs-plugin/xfwm4_plugin.c:1496
+msgid "Focus model"
+msgstr "Активизация окна"
+
+#: mcs-plugin/xfwm4_plugin.c:1506
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Автоматически активизировать\n"
+"вновь созданные окна"
+
+#: mcs-plugin/xfwm4_plugin.c:1514
+msgid "New window focus"
+msgstr "Активизация новых окон"
+
+#: mcs-plugin/xfwm4_plugin.c:1529
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1542
+msgid "Delay before raising focused window :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1550
+msgid "Slow"
+msgstr "Медленно"
+
+#: mcs-plugin/xfwm4_plugin.c:1558
+msgid "Fast"
+msgstr "Быстро"
+
+#: mcs-plugin/xfwm4_plugin.c:1582
+msgid "Raise on focus"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1592
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1601
+msgid "Raise on click"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1606
+msgid "Keyboard and focus"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1629
+msgid "Snap windows to screen border"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1638
+msgid "Snap windows to other windows"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1651
+msgid "Distance :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1659
+#: mcs-plugin/xfwm4_plugin.c:1734
+msgid "Small"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1667
+#: mcs-plugin/xfwm4_plugin.c:1742
+msgid "Wide"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1690
+msgid "Windows snapping"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1705
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1714
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1726
+msgid "Edge Resistance :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1767
+msgid "Wrap workspaces"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1782
+msgid "Display content of windows when resizing"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1790
+msgid "Display content of windows when moving"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1797
+msgid "Opaque move and resize"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1808
+msgid "Action to perform when double clicking on title bar :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1814
+msgid "Double click action"
+msgstr "Действие по двойному щелчку"
+
+#: mcs-plugin/xfwm4_plugin.c:1819
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#: src/client.c:441
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr ""
+
+#: src/events.c:1290
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr ""
+
+#: src/main.c:182
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr ""
+
+#: src/main.c:235
+#, c-format
+msgid "%s: Running without session manager"
+msgstr ""
+
+#: src/main.c:341
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr ""
+
+#: src/main.c:346
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr ""
+
+#: src/main.c:373
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr ""
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "Развернуть"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "Восстановить"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "Скрыть"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "Скрыть все остальные"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "Показать"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "Свернуть в заголовок"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "Развернуть из заголовка"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "Приклеить"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "Отклеить"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Перенести на..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "Закрыть"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Убить"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "Выход"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Перезапуск"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "Рабочий стол %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr ""
+
+#: src/settings.c:282
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr ""
+
+#: src/settings.c:507
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr ""
+
+#: src/settings.c:514
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr ""
+
+#: src/settings.c:558
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr ""
+
+#: src/settings.c:565
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr ""
+
+#: src/settings.c:755
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr ""
+
+#: src/settings.c:1090
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr ""
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr ""
+
