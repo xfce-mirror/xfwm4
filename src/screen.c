@@ -299,12 +299,10 @@ unsigned int
 myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
 {
     g_return_val_if_fail (screen_info, 0);
+    g_return_val_if_fail (screen_info->key_grabs > 0, 0);
 
     screen_info->key_grabs = screen_info->key_grabs - 1;
-    if (screen_info->key_grabs < 0)
-    {
-        screen_info->key_grabs = 0;
-    }
+
     if (screen_info->key_grabs == 0)
     {
         XUngrabKeyboard (myScreenGetXDisplay (screen_info), time);
@@ -317,12 +315,10 @@ unsigned int
 myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
 {
     g_return_val_if_fail (screen_info, 0);
+    g_return_val_if_fail (screen_info->pointer_grabs > 0, 0);
 
     screen_info->pointer_grabs = screen_info->pointer_grabs - 1;
-    if (screen_info->pointer_grabs < 0)
-    {
-        screen_info->pointer_grabs = 0;
-    }
+
     if (screen_info->pointer_grabs == 0)
     {
         XUngrabPointer (myScreenGetXDisplay (screen_info), time);
