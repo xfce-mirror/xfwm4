@@ -304,6 +304,32 @@ maintainers, etc. Commented out by default.
     </varlistentry>
 
     <varlistentry>
+      <term>Raise / lower windows</term>
+      <listitem>
+         <para>The "raise window" function makes a window frame appear above all the other frames. 
+         To raise a window, you can :
+         </para>
+	<itemizedlist>
+	<listitem>left click on its titlebar</listitem>
+	<listitem>give the focus to the window, if the corresponding option is selected in the <ulink
+      url="xfwm4.html#wm-focus" type="http">Keyboard and focus preferences dialog</ulink></listitem>
+	<listitem>left click anywhere on its frame, if the corresponding option is selected in the <ulink
+      url="xfwm4.html#wm-focus" type="http">Keyboard and focus preferences dialog</ulink></listitem>
+	<listitem>click on its label in the taskbar or the iconbox</listitem>
+        <listitem>use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)</listitem>
+	</itemizedlist>
+        <para>The "lower" function sends a window frame below all other frames.
+	To "lower" a window, you can :
+	</para>
+	<itemizedlist>
+	<listitem>middle-click on its title bar</listitem>
+        <listitem>use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Move windows</term>
       <listitem>
 	<para>There are several ways to move windows :</para>
@@ -388,6 +414,8 @@ maintainers, etc. Commented out by default.
 	or right)</listitem>
       <listitem>Resize window : Shift + Alt + Arrow (up, down, left, or
 	right)</listitem>
+      <listitem>Raise window : Shift + Alt + Page_Up</listitem>
+      <listitem>Lower window : Shift + Alt + Page_Down</listitem>
       <listitem>Next workspace : Control + Alt + Arrow right
 	arrow</listitem>
       <listitem>Previous workspace : Control + Alt + Arrow left</listitem>
@@ -732,9 +760,9 @@ maintainers, etc. Commented out by default.
     </figure>
 
     <para>To open the Workspace Margins dialog, click the button labelled
-      "Workspace Margins" in the <ulink
+      "Workspaces and Margins" in the <ulink
 	url="xfce-mcs-manager.html#manager-dialog" type="http">settings manager
-	dialog</ulink>.
+	dialog</ulink> and choose the tab labelled "Margins".
     </para>
 
     <para>Margins are areas on the edges of the screen that maximized windows
