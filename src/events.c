@@ -1243,8 +1243,27 @@ handleFocusIn (XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
-        || (ev->detail > NotifyNonlinearVirtual))
+    if ((ev->window == root) && (ev->mode == NotifyNormal) && 
+        (ev->detail == NotifyDetailNone))
+    {
+        /* Handle focus transition to root (means that an unknown
+           window has vanished and the focus is returned to the root
+         */
+         
+        c = clientGetFocus ();
+        if (c)
+        {
+            clientSetFocus (c, FOCUS_FORCE);
+        }
+        else
+        {
+            clientUpdateFocus (c, FOCUS_NONE);
+            clientPassGrabButton1 (NULL);
+        }
+        return;
+    }
+    else if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
+             (ev->detail > NotifyNonlinearVirtual))
     {
         /* We're not interested in such notifications */
         return;
@@ -1267,7 +1286,7 @@ static inline void
 handleFocusOut (XFocusChangeEvent * ev)
 {
     Client *c = NULL;
-    Client *c2 = NULL;
+    
     TRACE ("entering handleFocusOut");
     TRACE ("handleFocusOut (0x%lx) mode = %s",
                 ev->window,
@@ -1301,21 +1320,14 @@ handleFocusOut (XFocusChangeEvent * ev)
             || (ev->detail == NotifyNonlinearVirtual)))
     {
         c = clientGetFromWindow (ev->window, WINDOW);
-        c2 = clientGetFocus ();
         TRACE ("FocusOut on window (0x%lx)", ev->window);
-        if ((c) && (c == c2))
+        if ((c) && (c == clientGetFocus ()))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
             clientUpdateFocus (NULL, FOCUS_NONE);
             clientPassGrabButton1 (NULL);
             /* Clear timeout */
             clear_timeout ();
-        }
-        else if ((c2) && (ev->window == root) && 
-                 (ev->detail == NotifyNonlinearVirtual))
-        {
-            /* Handle focus transition for Motif combo menu */
-            clientSetFocus (c2, FOCUS_FORCE);
         }
     }
 }
