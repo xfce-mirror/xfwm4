@@ -23,12 +23,12 @@ msgstr "Esc_ritorio"
 
 #: mcs-plugin/margins_plugin.c:190
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "Ajustar los bordes del escritorio"
 
 #: mcs-plugin/margins_plugin.c:211
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "los bordes son areas en los lados de la pantalla donde no se colocará ninguna ventana"
 
 #: mcs-plugin/margins_plugin.c:251
 #, fuzzy
@@ -42,11 +42,11 @@ msgstr "Derecha"
 
 #: mcs-plugin/margins_plugin.c:291
 msgid "Top :"
-msgstr ""
+msgstr "Arriba"
 
 #: mcs-plugin/margins_plugin.c:311
 msgid "Bottom :"
-msgstr ""
+msgstr "Abajo"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Title"
@@ -293,12 +293,12 @@ msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 #: src/events.c:1105
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr "%s: Operación no soportada (aún)\n"
+msgstr "%s: Operación no soportada (aÃºn)\n"
 
 #: src/main.c:174
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "%s: Violación de segmento"
 
 #: src/main.c:223
 #, c-format
