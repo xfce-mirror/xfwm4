@@ -1993,7 +1993,6 @@ void
 compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 {
 #ifdef HAVE_COMPOSITOR
-    
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleEvent");    
@@ -2025,6 +2024,30 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
         compositorHandleDamage (display_info, (XDamageNotifyEvent *) ev);
     }
 #endif /* HAVE_COMPOSITOR */
+}
+
+gboolean
+compositorCheckDamageEvent (DisplayInfo *display_info)
+{
+#ifdef HAVE_COMPOSITOR
+    XEvent ev;
+
+    g_return_val_if_fail (display_info != NULL, FALSE);
+    TRACE ("entering compositorCheckDamageEvent");    
+    
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return FALSE;
+    }
+
+    if (XCheckTypedEvent (display_info->dpy, (display_info->damage_event_base + XDamageNotify), &ev))
+    {
+        compositorHandleDamage (display_info, (XDamageNotifyEvent *) &ev);
+        return TRUE;
+    }
+#endif /* HAVE_COMPOSITOR */
+    return FALSE;
 }
 
 void

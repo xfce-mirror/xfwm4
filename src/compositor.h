@@ -32,21 +32,22 @@
 #include "screen.h"
 #include "client.h"
 
-void compositorMapWindow        (DisplayInfo *, Window);
-void compositorUnmapWindow      (DisplayInfo *, Window);
-void compositorAddWindow        (DisplayInfo *, Window, Client *c);
-void compositorRemoveWindow     (DisplayInfo *, Window);
+void     compositorMapWindow        (DisplayInfo *, Window);
+void     compositorUnmapWindow      (DisplayInfo *, Window);
+void     compositorAddWindow        (DisplayInfo *, Window, Client *c);
+void     compositorRemoveWindow     (DisplayInfo *, Window);
 
-void compositorHandleEvent      (DisplayInfo *, XEvent *);
-void compositorInitDisplay      (DisplayInfo *);
-void compositorRepairDisplay    (DisplayInfo *);
+void     compositorHandleEvent      (DisplayInfo *, XEvent *);
+gboolean compositorCheckDamageEvent (DisplayInfo *display_info);
+void     compositorInitDisplay      (DisplayInfo *);
+void     compositorRepairDisplay    (DisplayInfo *);
 
-void compositorManageScreen     (ScreenInfo *);
-void compositorUnmanageScreen   (ScreenInfo *);
-void compositorRepairScreen     (DisplayInfo *);
+void     compositorManageScreen     (ScreenInfo *);
+void     compositorUnmanageScreen   (ScreenInfo *);
+void     compositorRepairScreen     (DisplayInfo *);
 
-void compositorWindowSetOpacity (DisplayInfo *, Window, guint);
-void compositorDamageWindow     (DisplayInfo *, Window);
-void compositorResizeWindow     (DisplayInfo *, Window, gint, gint);
+void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
+void     compositorDamageWindow     (DisplayInfo *, Window);
+void     compositorResizeWindow     (DisplayInfo *, Window, gint, gint);
 
 #endif /* INC_COMPOSITOR_H */
