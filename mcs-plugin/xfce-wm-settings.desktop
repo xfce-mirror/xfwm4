@@ -1,12 +1,15 @@
 [Desktop Entry]
+Version=1.0
 Encoding=UTF-8
 Name=Xfce 4 Window Manager Settings
+Name[et]=Xfce 4 aknahalduri seaded
 Name[fr]=Paramètres du gestionnaire de fenêtres de Xfce 4
 Name[he]=הגדרות מנהל החלונות Xfce 4
 Name[ko]=Xfce 4 창관리자 설정
 Name[nl]=Instellingen Xfce 4 Window Manager
 Name[zh_TW]=Xfce 4 視窗管理程式設定
 Comment=Window Manager Settings
+Comment[et]=Aknahalduri seaded
 Comment[fr]=Paramétrage du gestionnaire de fenêtres
 Comment[he]=הגדרות מנהל החלונות
 Comment[ko]=창관리자 설정
@@ -19,5 +22,6 @@ Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;
 OnlyShowIn=XFCE;
 GenericName=Window Manager Settings
+GenericName[et]=Aknahalduri seaded
 GenericName[ko]=창관리자 설정
 GenericName[nl]=Instellingen Window Manager

@@ -1,12 +1,15 @@
 [Desktop Entry]
+Version=1.0
 Encoding=UTF-8
 Name=Xfce 4 Workspaces Settings
+Name[et]=Xfce 4 töölaua seaded
 Name[fr]=Paramètres des espaces virtuels de Xfce 4
 Name[he]=הגדרות סביבות העבודה Xfce 4
 Name[ko]=Xfce 4 작업공간 설정
 Name[nl]=Instellingen Xfce 4 Virtuele Bureaubladen
 Name[zh_TW]=Xfce 4 工作區設定
 Comment=Workspaces Settings
+Comment[et]=Töölaua seaded
 Comment[fr]=Paramétrage des espaces virtuels
 Comment[he]=הגדרות סביבות העבודה
 Comment[ko]=작업공간 설정
@@ -19,5 +22,7 @@ Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;
 OnlyShowIn=XFCE;
 GenericName=Workspaces Settings
+Genericname[et]=Töölaua seaded
 GenericName[ko]=작업공간 설정
 GenericName[nl]=Instellingen Virtuele Bureaubladen
+
