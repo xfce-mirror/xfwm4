@@ -64,7 +64,7 @@ PKG_CONFIG = @PKG_CONFIG@
 VERSION = @VERSION@
 XFWM4_DIR = @XFWM4_DIR@
 
-defaultsdir = $(pkgdatadir)/xfwm4
+defaultsdir = $(XFWM4_DIR)
 defaults_DATA = defaults
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h

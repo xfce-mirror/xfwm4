@@ -1,4 +1,4 @@
-defaultsdir = $(pkgdatadir)/xfwm4
+defaultsdir = $(XFWM4_DIR)
 defaults_DATA = defaults
 
 distclean-local:
