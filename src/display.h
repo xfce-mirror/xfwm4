@@ -100,6 +100,8 @@ struct _DisplayInfo
     gboolean have_damage;
     gboolean have_fixes;
 
+    guint compositor_idle_id;
+
 #if HAVE_NAME_WINDOW_PIXMAP
     gboolean have_name_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
