@@ -67,11 +67,13 @@ noinst_DATA =								\
 	monitor-icon.h							\
 	workspaces-icon.h 						\
 	xfwm4-icon.png							\
-	workspaces.png						\
+	workspaces.png							\
 	margins-icon.png						\
 	monitor-icon.png
 
-EXTRA_DIST = $(noinst_DATA)
+EXTRA_DIST = $(noinst_DATA) 						\
+	xfce-wm-settings.desktop					\
+	xfce-workspaces-settings.desktop
 
 xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
 	gdk-pixbuf-csource --raw --build-list				\

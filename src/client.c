@@ -4902,7 +4902,6 @@ void
 clientSetFocus (Client * c, unsigned short flags)
 {
     Client *c2;
-    unsigned long data[2];
 
     TRACE ("entering clientSetFocus");
     
@@ -4943,15 +4942,20 @@ clientSetFocus (Client * c, unsigned short flags)
     }
     else
     {
-        TRACE ("setting focus to none");
-        client_focus = NULL;
+        unsigned long data[2];
+        
+	TRACE ("setting focus to none");
+        
+	client_focus = NULL;
         if (c2)
         {
             frameDraw (c2, FALSE, FALSE);
         }
         XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
         XFlush (dpy);
-        data[0] = None;
+        data[0] = data[1] = None;
+        XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,
+            PropModeReplace, (unsigned char *) data, 2);
     }
 }
 

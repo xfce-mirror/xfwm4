@@ -295,11 +295,14 @@ noinst_DATA = \
 	monitor-icon.h							\
 	workspaces-icon.h 						\
 	xfwm4-icon.png							\
-	workspaces.png						\
+	workspaces.png							\
 	margins-icon.png						\
 	monitor-icon.png
 
-EXTRA_DIST = $(noinst_DATA)
+EXTRA_DIST = $(noinst_DATA) 						\
+	xfce-wm-settings.desktop					\
+	xfce-workspaces-settings.desktop
+
 appsdir = $(datadir)/applications
 apps_DATA = xfce-wm-settings.desktop xfce-workspaces-settings.desktop
 all: all-am
