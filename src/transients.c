@@ -52,8 +52,8 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None)) || 
-            ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None)));
+    return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) || 
+            ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None) && (c->group_leader != c->window)));
 }
 
 gboolean
@@ -64,8 +64,8 @@ clientIsModal (Client * c)
     TRACE ("entering clientIsModal");
 
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && 
-            (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None)) ||
-             (c->group_leader != None)));
+            (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
+             ((c->group_leader != None) && (c->group_leader != c->window))));
 }
 
 gboolean
