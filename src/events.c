@@ -277,8 +277,6 @@ moveRequest (Client * c, XEvent * ev)
 static void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
-
     if (FLAG_TEST_ALL (c->xfwm_flags,
             XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
     {
@@ -633,6 +631,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     {
         if (ev->button == Button1)
         {
+            clientSetFocus (c->screen_info, c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
             clientRaise (c);
             clientPassGrabButton1 (c);
         }
