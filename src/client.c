@@ -1452,22 +1452,20 @@ static void clientInitPosition(Client * c)
             {
                 if((c2 != c) && (c->win_layer == c2->win_layer) && (c->win_workspace == c2->win_workspace) && (c2->visible))
                 {
-                    count_overlaps += overlap(test_x, test_y, test_x + bw, test_y + bh, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
+                    c->x = test_x;
+                    c->y = test_y;
+                    count_overlaps += overlap(frameX(c), frameY(c), frameX(c) + bw, frameY(c) + bh, frameX(c2), frameY(c2), frameX(c2) + frameWidth(c2), frameY(c2) + frameHeight(c2));
                 }
             }
             DBG("overlaps so far is %u\n", count_overlaps);
             if(count_overlaps == 0)
             {
                 DBG("overlaps is 0 so it's the best we can get\n");
-                c->x = test_x;
-                c->y = test_y;
                 return;
             }
             else if((count_overlaps < best_overlaps) || (first))
             {
                 DBG("overlaps %u is better than the best we have %u\n", count_overlaps, best_overlaps);
-                best_x = test_x;
-                best_y = test_y;
                 best_overlaps = count_overlaps;
             }
             if(first)
