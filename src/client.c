@@ -5233,10 +5233,6 @@ clientMove (Client * c, XEvent * e)
     TRACE ("leaving move loop");
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MOVING_RESIZING);
 
-    XUngrabKeyboard (dpy, passdata.last_timestamp);
-    XUngrabPointer (dpy, passdata.last_timestamp);
-    removeTmpEventWin (passdata.tmp_event_window);
-
     if (passdata.grab && params.box_move)
     {
         clientDrawOutline (c);
@@ -5244,6 +5240,10 @@ clientMove (Client * c, XEvent * e)
     wc.x = c->x;
     wc.y = c->y;
     clientConfigure (c, &wc, CWX | CWY, CFG_NONE);
+
+    XUngrabKeyboard (dpy, passdata.last_timestamp);
+    XUngrabPointer (dpy, passdata.last_timestamp);
+    removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_move)
     {
@@ -5628,10 +5628,6 @@ clientResize (Client * c, int corner, XEvent * e)
     TRACE ("leaving resize loop");
     CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MOVING_RESIZING);
 
-    XUngrabKeyboard (dpy, passdata.last_timestamp);
-    XUngrabPointer (dpy, passdata.last_timestamp);
-    removeTmpEventWin (passdata.tmp_event_window);
-
     if (passdata.grab && params.box_resize)
     {
         clientDrawOutline (c);
@@ -5642,6 +5638,10 @@ clientResize (Client * c, int corner, XEvent * e)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
+
+    XUngrabKeyboard (dpy, passdata.last_timestamp);
+    XUngrabPointer (dpy, passdata.last_timestamp);
+    removeTmpEventWin (passdata.tmp_event_window);
 
     if (passdata.grab && params.box_resize)
     {
