@@ -1138,9 +1138,10 @@ clientWindowType (Client * c)
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);
             CLIENT_FLAG_UNSET (c,
-                CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE | 
+                CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_MOVE | 
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
-                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
+                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK |
+                CLIENT_FLAG_HAS_BORDER);
         }
         else if (c->type_atom == net_wm_window_type_dock)
         {
@@ -3896,7 +3897,7 @@ clientClose (Client * c)
 
     if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_DELETE))
     {
-        sendClientMessage (c->window, wm_protocols, wm_delete_window);
+        sendClientMessage (c->window, wm_protocols, wm_delete_window, CurrentTime);
     }
     else
     {
@@ -4658,7 +4659,7 @@ clientUpdateFocus (Client * c)
     {
         TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
             c2->window);
-        /* Requires a bit of explabatio here... Legacy apps automatically
+        /* Requires a bit of explanation here... Legacy apps automatically
            switch to above layer when receiving focus, and return to
            normal layer when loosing focus.
            The following "logic" is in charge of that behaviour.
@@ -4690,6 +4691,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
 {
     Client *c2, *c3;
     unsigned long data[2];
+    Time timestamp;
 
     TRACE ("entering clientSetFocus");
     
@@ -4725,12 +4727,13 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         {
             clientSortRing(c);
         }
-        XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+        timestamp = CurrentTime;
+        XSetInputFocus (dpy, c->window, RevertToNone, timestamp);
+        XFlush (dpy);
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
         {
-            sendClientMessage (c->window, wm_protocols, wm_takefocus);
+            sendClientMessage (c->window, wm_protocols, wm_takefocus, timestamp);
         }
-        XFlush (dpy);
         if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
