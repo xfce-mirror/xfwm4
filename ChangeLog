@@ -1,3 +1,88 @@
+2004-10-22 21:33  olivier
+
+	* po/xfwm4.pot: Theme fixes update locale [fr] for desktop files
+
+2004-10-22 20:44  olivier
+
+	* src/settings.c: Fix bug #409
+
+2004-10-21 00:05  pollux
+
+	* po/: et.gmo, et.po: update ET translations
+
+2004-10-20 22:49  olivier
+
+	* src/: compositor.c, misc.c: glib-2.2 has no G_MAXUINT32, Play
+	  with compositor priorities.
+
+2004-10-20 22:30  olivier
+
+	* src/: compositor.c, compositor.h, events.c: Small optimizations
+
+2004-10-20 19:47  olivier
+
+	* src/placement.c: Fix initial placement issue reported on the ML
+	  by Brian
+
+2004-10-19 07:42  olivier
+
+	* mcs-plugin/Makefile.in, po/xfwm4.pot: autogen for Maarten
+
+2004-10-18 15:19  boekhold
+
+	* mcs-plugin/Makefile.am: cygwin: add X11 libs to xfwm4_plugin
+	  library list
+
+2004-10-17 22:30  pollux
+
+	* po/: fi.gmo, fi.po: update FI translations
+
+2004-10-17 16:01  olivier
+
+	* src/compositor.c: Cleanup
+
+2004-10-17 14:45  olivier
+
+	* src/compositor.c: Fix compiler warnings.
+
+2004-10-17 14:12  fleclainche
+
+	* doc/C/: xfwm4.html, xfwm4.xml: Small doc update :	- xdg
+	  basedir spec fix  - some words about compositing manager  - fix
+	  an internal broken link
+
+2004-10-17 13:57  olivier
+
+	* src/misc.c: Do monitor search in one pass.
+
+2004-10-17 10:41  olivier
+
+	* src/: client.c, events.c, misc.c, misc.h, netwm.c, placement.c:
+	  Replace gdk_screen_get_monitor_at_point () with our own
+	  implementation.
+
+2004-10-16 19:15  olivier
+
+	* src/: compositor.c, display.h: Add a timout in case the idle
+	  callback occurs too rarely.
+
+2004-10-16 16:27  olivier
+
+	* defaults/defaults, po/xfwm4.pot, src/compositor.c, src/focus.c,
+	  src/settings.c, src/settings.h: Add new hidden option
+	  "prevent_focus_stealing" disable by default to fix #400 Increase
+	  compositor repaint priority
+
+2004-10-16 00:12  olivier
+
+	* src/: compositor.c, display.h: Repaint in an idle function, it
+	  seems to be faster on slower hw (like my laptop which has no
+	  accelerated xrender)
+
+2004-10-15 08:32  olivier
+
+	* ChangeLog, po/xfwm4.pot: Update ChangeLog
+
 2004-10-15 08:29  olivier
 
 	* mcs-plugin/xfwm4_shortcuteditor.c: Forgot to notify the raw
