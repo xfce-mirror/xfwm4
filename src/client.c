@@ -2220,6 +2220,7 @@ void clientFrame(Window w)
     wc.height = c->height;
     clientConfigure(c, &wc, CWX | CWY | CWHeight | CWWidth, FALSE);
     clientApplyStackList(windows_stack);
+    last_raise = c;
     
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
