@@ -688,12 +688,21 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         if(c->type == WINDOW_DESKTOP)
         {
             /* Ignore stacking request for DESKTOP windows */
-            wc.stack_mode &= ~CWStackMode;
+            ev->value_mask &= ~CWStackMode;
         }
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
         if((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag(c);
+        }
+	/* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
+	if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
+	{
+	    clientShow(c, True);
+	}
+        if(params.focus_new && clientAcceptFocus(c))
+        {
+            clientSetFocus(c, True);
         }
         clientConfigure(c, &wc, ev->value_mask);
     }
