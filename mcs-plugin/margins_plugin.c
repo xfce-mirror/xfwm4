@@ -33,7 +33,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -159,21 +158,11 @@ static void set_margin(int side, int margin)
 }
 
 /* useful widgets */
-static void margin_changed(GtkWidget * widget, gpointer p)
+static void margin_changed(GtkSpinButton * spin, gpointer p)
 {
-    gdouble val;
-    gint i = GPOINTER_TO_INT(p);
-    gint n = 0;
-    
-    val = gtk_adjustment_get_value(GTK_ADJUSTMENT(widget));
-    if (val - floor (val) < ceil (val) - val)
-    {
-        n = floor (val);
-    }
-    else
-    {
-        n = ceil (val);
-    }
+    int i = GPOINTER_TO_INT(p);
+    int n = gtk_spin_button_get_value_as_int(spin);
+
     set_margin(i, n);
 }
 
@@ -273,8 +262,8 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_widget_show(spin);
     gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, TRUE, 0);
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[0]);
-    g_signal_connect(G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin))), "value_changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[i]);
+    g_signal_connect(G_OBJECT(spin), "value-changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     /* right */
     i++;
@@ -292,8 +281,8 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_widget_show(spin);
     gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, TRUE, 0);
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[1]);
-    g_signal_connect(G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin))), "value_changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[i]);
+    g_signal_connect(G_OBJECT(spin), "value-changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     /* top */
     i++;
@@ -311,8 +300,8 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_widget_show(spin);
     gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, TRUE, 0);
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[2]);
-    g_signal_connect(G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin))), "value_changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[i]);
+    g_signal_connect(G_OBJECT(spin), "value-changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     /* bottom */
     i++;
@@ -330,8 +319,8 @@ static void run_dialog(McsPlugin * mcs_plugin)
     gtk_widget_show(spin);
     gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, TRUE, 0);
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[3]);
-    g_signal_connect(G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin))), "value_changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin), margins[i]);
+    g_signal_connect(G_OBJECT(spin), "value-changed", G_CALLBACK(margin_changed), GINT_TO_POINTER(i));
 
     gtk_widget_show(dialog);
 }

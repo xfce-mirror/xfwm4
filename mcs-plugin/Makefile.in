@@ -665,7 +665,7 @@ xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	xfwm4_icon_data $(srcdir)/xfwm4-icon.png > xfwm4-icon.h
 
-margins-icon.h: $(srcdir)/margins-icon.h
+margins-icon.h: $(srcdir)/margins-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	margins_icon_data $(srcdir)/margins-icon.png > margins-icon.h
 

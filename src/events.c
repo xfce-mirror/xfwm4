@@ -862,6 +862,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
     }
 
     c = clientGetFromWindow(ev->window, WINDOW);
+#if 0
     while(XCheckTypedEvent(dpy, FocusIn, (XEvent *) ev))
     {
         if((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || (ev->detail > NotifyNonlinearVirtual))
@@ -874,7 +875,7 @@ static inline void handleFocusIn(XFocusChangeEvent * ev)
 	    c = c2;
 	}
     }
-
+#endif
     DBG("focused window is (0x%lx)\n", ev->window);
     if(c)
     {
