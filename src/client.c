@@ -2319,7 +2319,8 @@ clientKeepVisible (Client * c)
     diff_x = abs (c->size->x - ((MyDisplayFullWidth (dpy, screen) - c->width) / 2));
     diff_y = abs (c->size->y - ((MyDisplayFullHeight (dpy, screen) - c->height) / 2));
 
-    if ((use_xinerama) && (diff_x < 25) && (diff_y < 25))
+    if (((use_xinerama) && (diff_x < 25) && (diff_y < 25)) ||
+        ((frameX (c) == 0) && (frameY (c) == 0) && (c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))
     {
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
