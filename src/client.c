@@ -2520,7 +2520,7 @@ void clientMove(Client * c, XEvent * e)
     DBG("entering clientDoMove\n");
     DBG("moving client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT |  WIN_STATE_MAXIMIZED_HORIZ))
+    if(c->maximized)
     {
         clientRemoveMaximizeFlag(c);
     }
@@ -2748,7 +2748,7 @@ void clientResize(Client * c, int corner, XEvent * e)
     DBG("entering clientResize\n");
     DBG("resizing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->win_state & (WIN_STATE_MAXIMIZED | WIN_STATE_MAXIMIZED_VERT |  WIN_STATE_MAXIMIZED_HORIZ))
+    if(c->maximized)
     {
         clientRemoveMaximizeFlag(c);
     }
