@@ -1,19 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Olivier Fourdan <fourdan@xfce.org>
+# none translation of xfwm4.
+# Copyright (C) 2004 Olivier Fourdan <fourdan@xfce.org>
 # This file is distributed under the same license as the PACKAGE package.
 # Olivier Fourdan <fourdan@xfce.org>.
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 21:54+0200\n"
-"PO-Revision-Date: 2003-01-22 00:36+0100\n"
+"POT-Creation-Date: 2004-08-04 18:47+0200\n"
+"PO-Revision-Date: 2004-08-04 18:50+0200\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
-"Language-Team: none <LL@li.org>\n"
+"Language-Team: none <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: mcs-plugin/margins.c:122
 msgid "Workspace Margins"
@@ -42,512 +43,288 @@ msgstr "Haut :"
 msgid "Bottom :"
 msgstr "Bas :"
 
-#: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
 msgid "Workspaces and Margins"
 msgstr "Marges et espaces de travail"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:539
 msgid "Workspaces"
 msgstr "Espaces de travail"
 
-#: mcs-plugin/plugin.c:178
+#: mcs-plugin/plugin.c:169
 msgid "Margins"
 msgstr "Marges"
 
-#: mcs-plugin/workspaces.c:340
+#: mcs-plugin/workspaces.c:338
 msgid "Change name"
 msgstr "Modifier le nom"
 
-#: mcs-plugin/workspaces.c:352
+#: mcs-plugin/workspaces.c:350
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace %d"
 
-#: mcs-plugin/workspaces.c:362
+#: mcs-plugin/workspaces.c:360
 msgid "Name:"
 msgstr "Nom :"
 
-#: mcs-plugin/workspaces.c:450
+#: mcs-plugin/workspaces.c:448
 msgid "Click on a workspace name to edit it"
 msgstr "Cliquer sur le nom d'un espace pour l'éditer"
 
-#: mcs-plugin/workspaces.c:522
+#: mcs-plugin/workspaces.c:520
 msgid "Number of workspaces:"
 msgstr "Nombre d'espaces de travail :"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:553
+#: mcs-plugin/workspaces.c:551
 msgid "Workspace names"
 msgstr "Noms des espaces de travail"
 
-#: mcs-plugin/xfwm4_plugin.c:129
-msgid "Title"
-msgstr "Titre"
-
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "Menu"
 
-#: mcs-plugin/xfwm4_plugin.c:131
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "Coller"
 
-#: mcs-plugin/xfwm4_plugin.c:132
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "Enrouler"
 
-#: mcs-plugin/xfwm4_plugin.c:133
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "Iconifier"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "Agrandir"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "Fermer"
 
-#: mcs-plugin/xfwm4_plugin.c:139 mcs-plugin/xfwm4_plugin.c:1203
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:91
 msgid "Shade window"
 msgstr "Enrouler la fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:140 mcs-plugin/xfwm4_plugin.c:1198
-#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:92
 msgid "Hide window"
 msgstr "Iconifier la fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:141 mcs-plugin/xfwm4_plugin.c:1183
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: mcs-plugin/xfwm4_plugin.c:93
 msgid "Maximize window"
 msgstr "Agrandir la fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:142
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "Aucun"
 
-#: mcs-plugin/xfwm4_plugin.c:147
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "Gauche"
 
-#: mcs-plugin/xfwm4_plugin.c:148
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "Centre"
 
-#: mcs-plugin/xfwm4_plugin.c:149
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "Droit"
 
-#: mcs-plugin/xfwm4_plugin.c:423
+#: mcs-plugin/xfwm4_plugin.c:569
+msgid "Click and drag buttons to change the layout"
+msgstr "Cliquer et faire glisser les boutons pour\n"
+"modifier l'agencement"
+
+#: mcs-plugin/xfwm4_plugin.c:573
+msgid "Active"
+msgstr "Actifs"
+
+#: mcs-plugin/xfwm4_plugin.c:584
+msgid "Title"
+msgstr "Titre"
+
+#: mcs-plugin/xfwm4_plugin.c:585
+msgid "The window title, it cannot be removed"
+msgstr "The titre de fenêtre, ne peut être supprimé"
+
+#: mcs-plugin/xfwm4_plugin.c:593
 msgid "Hidden"
 msgstr "Caché"
 
-#: mcs-plugin/xfwm4_plugin.c:1107
+#: mcs-plugin/xfwm4_plugin.c:1298
 msgid "Font Selection Dialog"
 msgstr "Sélection de Fonte"
 
-#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1553
-msgid "Close window"
-msgstr "Fermer la fenêtre"
-
-#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1561
-msgid "Maximize window vertically"
-msgstr "Agrandir la fenêtre verticalement"
-
-#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1565
-msgid "Maximize window horizontally"
-msgstr "Agrandir la fenêtre horizontalement"
-
-#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1577
-msgid "Stick window"
-msgstr "Coller la fenêtre"
-
-#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1581
-msgid "Cycle windows"
-msgstr "Basculer entre les fenêtres"
-
-#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1585
-msgid "Move window up"
-msgstr "Déplacer la fenêtre vers le haut"
-
-#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1589
-msgid "Move window down"
-msgstr "Déplacer la fenêtre vers le bas"
-
-#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1593
-msgid "Move window left"
-msgstr "Déplacer la fenêtre vers la gauche"
-
-#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1597
-msgid "Move window right"
-msgstr "Déplacer la fenêtre vers la droite"
-
-#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1601
-msgid "Resize window up"
-msgstr "Retailler la fenêtre vers le haut"
-
-#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1605
-msgid "Resize window down"
-msgstr "Retailler la fenêtre vers le bas"
-
-#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1609
-msgid "Resize window left"
-msgstr "Retailler la fenêtre vers la gauche"
-
-#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1613
-msgid "Resize window right"
-msgstr "Retailler la fenêtre vers la droite"
-
-#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1617
-msgid "Raise window"
-msgstr "Relever la fenêtre"
-
-#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1621
-msgid "Lower window"
-msgstr "Abaisser la fenêtre"
-
-#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1625
-msgid "Toggle fullscreen"
-msgstr "Basculer en mode plein écran"
-
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1629
-msgid "Next workspace"
-msgstr "Espace de travail suivant"
-
-#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1633
-msgid "Previous workspace"
-msgstr "Espace de travail précédent"
-
-#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1637
-msgid "Add workspace"
-msgstr "Ajouter un espace de travail"
-
-#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1641
-msgid "Delete workspace"
-msgstr "Supprimer un espace de travail"
-
-#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1645
-msgid "Workspace 1"
-msgstr "Espace de travail 1"
-
-#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1649
-msgid "Workspace 2"
-msgstr "Espace de travail 2"
-
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1653
-msgid "Workspace 3"
-msgstr "Espace de travail 3"
-
-#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1657
-msgid "Workspace 4"
-msgstr "Espace de travail 4"
-
-#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1661
-msgid "Workspace 5"
-msgstr "Espace de travail 5"
-
-#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1665
-msgid "Workspace 6"
-msgstr "Espace de travail 6"
-
-#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1669
-msgid "Workspace 7"
-msgstr "Espace de travail 7"
-
-#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1673
-msgid "Workspace 8"
-msgstr "Espace de travail 8"
-
-#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1677
-msgid "Workspace 9"
-msgstr "Espace de travail 9"
-
-#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1681
-msgid "Move window to next workspace"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
-
-#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1685
-msgid "Move window to previous workspace"
-msgstr "Déplacer la fenêtre vers l'espace précédent"
-
-#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1689
-msgid "Move window to workspace 1"
-msgstr "Déplacer la fenêtre vers l'espace précédent 1"
-
-#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1693
-msgid "Move window to workspace 2"
-msgstr "Déplacer la fenêtre vers l'espace précédent 2"
-
-#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1697
-msgid "Move window to workspace 3"
-msgstr "Déplacer la fenêtre vers l'espace précédent 3"
-
-#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1701
-msgid "Move window to workspace 4"
-msgstr "Déplacer la fenêtre vers l'espace précédent 4"
-
-#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1705
-msgid "Move window to workspace 5"
-msgstr "Déplacer la fenêtre vers l'espace précédent 5"
-
-#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1709
-msgid "Move window to workspace 6"
-msgstr "Déplacer la fenêtre vers l'espace précédent 6"
-
-#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1713
-msgid "Move window to workspace 7"
-msgstr "Déplacer la fenêtre vers l'espace précédent 7"
-
-#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1717
-msgid "Move window to workspace 8"
-msgstr "Déplacer la fenêtre vers l'espace précédent 8"
-
-#: mcs-plugin/xfwm4_plugin.c:1388 mcs-plugin/xfwm4_plugin.c:1721
-msgid "Move window to workspace 9"
-msgstr "Déplacer la fenêtre vers l'espace précédent 9"
-
-#: mcs-plugin/xfwm4_plugin.c:1769
-msgid "Cannot open the theme directory !"
-msgstr "Impossible d'ouvrir le répertoire de thèmes !"
-
-#: mcs-plugin/xfwm4_plugin.c:1788
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-"Impossible d'ouvrir %s : \n"
-"%s"
-
-#: mcs-plugin/xfwm4_plugin.c:1803 mcs-plugin/xfwm4_plugin.c:1814
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"Impossible d'écrire %s : \n"
-"%s"
-
-#: mcs-plugin/xfwm4_plugin.c:1934
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-"Raccourci déjà utilisé !\n"
-"Êtes-vous sûr de vouloir l'utiliser ?"
-
-#: mcs-plugin/xfwm4_plugin.c:1995
-msgid "Compose shortcut for :"
-msgstr "Composer le raccourci pour :"
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:1998 mcs-plugin/xfwm4_plugin.c:2219
-msgid "Compose shortcut"
-msgstr "Composer le raccourci"
-
-#: mcs-plugin/xfwm4_plugin.c:2030 mcs-plugin/xfwm4_plugin.c:2250
-msgid "Cannot grab the keyboard"
-msgstr "Impossible d'obtenir le clavier"
-
-#: mcs-plugin/xfwm4_plugin.c:2070
-#, fuzzy
-msgid "Select command"
-msgstr "Choisissez la commande"
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:2124
-msgid "Choose command"
-msgstr "Choisissez la commande"
-
-#: mcs-plugin/xfwm4_plugin.c:2126
-msgid "Command :"
-msgstr "Commande :"
-
-#: mcs-plugin/xfwm4_plugin.c:2160
-#, fuzzy
-msgid "The command doesn't exist or the file is not executable !"
-msgstr "Cette commande n'existe pas !"
-
-#: mcs-plugin/xfwm4_plugin.c:2216
-msgid "Compose shortcut for command :"
-msgstr "Composer le raccourci pour la commande :"
-
-#: mcs-plugin/xfwm4_plugin.c:2328 mcs-plugin/xfwm4_plugin.c:2831
+#: mcs-plugin/xfwm4_plugin.c:1393 mcs-plugin/xfwm4_plugin.c:1880
 msgid "Window Manager"
 msgstr "Gestionnaire de fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:2341
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Window Manager Preferences"
 msgstr "Préférences du gestionnaire de fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:2371
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Title font"
 msgstr "Fonte de titre"
 
-#: mcs-plugin/xfwm4_plugin.c:2384
+#: mcs-plugin/xfwm4_plugin.c:1448
 msgid "Title Alignment"
 msgstr "Alignement du titre"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:2390
+#: mcs-plugin/xfwm4_plugin.c:1454
 msgid "Text alignment inside title bar :"
 msgstr "Alignement du texte dans la barre de titre :"
 
-#: mcs-plugin/xfwm4_plugin.c:2392
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Button layout"
 msgstr "Agencement des boutons"
 
-#: mcs-plugin/xfwm4_plugin.c:2398
+#: mcs-plugin/xfwm4_plugin.c:1462
 msgid "Style"
 msgstr "Style"
 
-#: mcs-plugin/xfwm4_plugin.c:2424
+#: mcs-plugin/xfwm4_plugin.c:1488
 msgid "Windows shortcuts"
 msgstr "Raccourcis de fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:2445 mcs-plugin/xfwm4_plugin.c:2473
+#: mcs-plugin/xfwm4_plugin.c:1509 mcs-plugin/xfwm4_plugin.c:1537
 msgid "Command"
 msgstr "Commande"
 
-#: mcs-plugin/xfwm4_plugin.c:2450 mcs-plugin/xfwm4_plugin.c:2478
+#: mcs-plugin/xfwm4_plugin.c:1514 mcs-plugin/xfwm4_plugin.c:1542
 msgid "Shortcut"
 msgstr "Raccourcis clavier"
 
-#: mcs-plugin/xfwm4_plugin.c:2453
+#: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Command shortcuts"
 msgstr "Raccourcis de commandes"
 
-#: mcs-plugin/xfwm4_plugin.c:2481
+#: mcs-plugin/xfwm4_plugin.c:1545
 msgid "Keyboard"
 msgstr "Clavier"
 
-#: mcs-plugin/xfwm4_plugin.c:2492
+#: mcs-plugin/xfwm4_plugin.c:1556
 msgid "Focus model"
 msgstr "Modèle de focalisation"
 
-#: mcs-plugin/xfwm4_plugin.c:2500
+#: mcs-plugin/xfwm4_plugin.c:1564
 msgid "Click to focus"
 msgstr "Cliquer pour focaliser"
 
-#: mcs-plugin/xfwm4_plugin.c:2507
+#: mcs-plugin/xfwm4_plugin.c:1571
 msgid "Focus follows mouse"
 msgstr "La focalisation suit la souris"
 
-#: mcs-plugin/xfwm4_plugin.c:2514
+#: mcs-plugin/xfwm4_plugin.c:1578
 msgid "New window focus"
 msgstr "Focus sur nouvelle fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:2518
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
+#: mcs-plugin/xfwm4_plugin.c:1582
+msgid "Automatically give focus to newly created windows"
 msgstr ""
-"Focaliser automatiquement\n"
-"les nouvelles fenêtres"
+"Focaliser automatiquement les nouvelles fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:2523
+#: mcs-plugin/xfwm4_plugin.c:1587
 msgid "Raise on focus"
 msgstr "Mettre au premier plan lors de la focalisation"
 
-#: mcs-plugin/xfwm4_plugin.c:2531
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
+#: mcs-plugin/xfwm4_plugin.c:1595
+msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Mettre automatiquement au premier plan les fenêtres \n"
 "lorsqu'elles reçoivent le focus"
 
-#: mcs-plugin/xfwm4_plugin.c:2541
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Delay before raising focused window :"
 msgstr "Délai avant la mise au premier plan :"
 
-#: mcs-plugin/xfwm4_plugin.c:2547
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Slow"
 msgstr "Lent"
 
-#: mcs-plugin/xfwm4_plugin.c:2553
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Fast"
 msgstr "Rapide"
 
-#: mcs-plugin/xfwm4_plugin.c:2569
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Raise on click"
 msgstr "Mettre au premier plan lors d'un clic"
 
-#: mcs-plugin/xfwm4_plugin.c:2573
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
+#: mcs-plugin/xfwm4_plugin.c:1637
+msgid "Raise window when clicking inside application window"
 msgstr ""
-"Mettre au premier plan en\n"
-"cliquant dans la fenêtre"
+"Mettre au premier plan en cliquant dans la fenêtre"
 
-#: mcs-plugin/xfwm4_plugin.c:2578
+#: mcs-plugin/xfwm4_plugin.c:1642
 msgid "Focus"
 msgstr "Focalisation"
 
-#: mcs-plugin/xfwm4_plugin.c:2588
+#: mcs-plugin/xfwm4_plugin.c:1652
 msgid "Windows snapping"
 msgstr "Aimantation des fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:2596
+#: mcs-plugin/xfwm4_plugin.c:1660
 msgid "Snap windows to screen border"
 msgstr "Accrocher les fenêtres aux bords de l'écran"
 
-#: mcs-plugin/xfwm4_plugin.c:2601
+#: mcs-plugin/xfwm4_plugin.c:1665
 msgid "Snap windows to other windows"
 msgstr "Accrocher les fenêtres aux autres fenêtres"
 
-#: mcs-plugin/xfwm4_plugin.c:2611
+#: mcs-plugin/xfwm4_plugin.c:1675
 msgid "Distance :"
 msgstr "Distance :"
 
-#: mcs-plugin/xfwm4_plugin.c:2617 mcs-plugin/xfwm4_plugin.c:2667
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Small"
 msgstr "Petite"
 
-#: mcs-plugin/xfwm4_plugin.c:2623 mcs-plugin/xfwm4_plugin.c:2673
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Wide"
 msgstr "Grande"
 
-#: mcs-plugin/xfwm4_plugin.c:2638
+#: mcs-plugin/xfwm4_plugin.c:1702
 msgid "Wrap workspaces"
 msgstr "Basculer d'écran"
 
-#: mcs-plugin/xfwm4_plugin.c:2646
+#: mcs-plugin/xfwm4_plugin.c:1710
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Basculer d'écran lorsque le pointeur arrive au bord"
 
-#: mcs-plugin/xfwm4_plugin.c:2651
+#: mcs-plugin/xfwm4_plugin.c:1715
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Basculer d'écran en déplaçant une fenêtre au bord"
 
-#: mcs-plugin/xfwm4_plugin.c:2661
+#: mcs-plugin/xfwm4_plugin.c:1725
 msgid "Edge Resistance :"
 msgstr "Resistance au bord :"
 
-#: mcs-plugin/xfwm4_plugin.c:2688
+#: mcs-plugin/xfwm4_plugin.c:1752
 msgid "Opaque move and resize"
 msgstr "Contenu visible durant le déplacement et redimensionnement"
 
-#: mcs-plugin/xfwm4_plugin.c:2696
+#: mcs-plugin/xfwm4_plugin.c:1760
 msgid "Display content of windows when resizing"
 msgstr "Afficher le contenu durant le redimensionnement"
 
-#: mcs-plugin/xfwm4_plugin.c:2701
+#: mcs-plugin/xfwm4_plugin.c:1765
 msgid "Display content of windows when moving"
 msgstr "Afficher le contenu des fénêtres lors de leur déplacement"
 
-#: mcs-plugin/xfwm4_plugin.c:2706
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Double click action"
 msgstr "Action du double clic"
 
-#: mcs-plugin/xfwm4_plugin.c:2712
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Action à effectuer lors d'un double clic sur la barre de titre :"
 
-#: mcs-plugin/xfwm4_plugin.c:2714
+#: mcs-plugin/xfwm4_plugin.c:1778
 msgid "Advanced"
 msgstr "Avancé"
 
@@ -714,6 +491,174 @@ msgstr "Basculer vers ..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr "Application inconnue!"
+
+#~ msgid "Close window"
+#~ msgstr "Fermer la fenêtre"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "Agrandir la fenêtre verticalement"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Agrandir la fenêtre horizontalement"
+
+#~ msgid "Stick window"
+#~ msgstr "Coller la fenêtre"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Basculer entre les fenêtres"
+
+#~ msgid "Move window up"
+#~ msgstr "Déplacer la fenêtre vers le haut"
+
+#~ msgid "Move window down"
+#~ msgstr "Déplacer la fenêtre vers le bas"
+
+#~ msgid "Move window left"
+#~ msgstr "Déplacer la fenêtre vers la gauche"
+
+#~ msgid "Move window right"
+#~ msgstr "Déplacer la fenêtre vers la droite"
+
+#~ msgid "Resize window up"
+#~ msgstr "Retailler la fenêtre vers le haut"
+
+#~ msgid "Resize window down"
+#~ msgstr "Retailler la fenêtre vers le bas"
+
+#~ msgid "Resize window left"
+#~ msgstr "Retailler la fenêtre vers la gauche"
+
+#~ msgid "Resize window right"
+#~ msgstr "Retailler la fenêtre vers la droite"
+
+#~ msgid "Raise window"
+#~ msgstr "Relever la fenêtre"
+
+#~ msgid "Lower window"
+#~ msgstr "Abaisser la fenêtre"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Basculer en mode plein écran"
+
+#~ msgid "Next workspace"
+#~ msgstr "Espace de travail suivant"
+
+#~ msgid "Previous workspace"
+#~ msgstr "Espace de travail précédent"
+
+#~ msgid "Add workspace"
+#~ msgstr "Ajouter un espace de travail"
+
+#~ msgid "Delete workspace"
+#~ msgstr "Supprimer un espace de travail"
+
+#~ msgid "Workspace 1"
+#~ msgstr "Espace de travail 1"
+
+#~ msgid "Workspace 2"
+#~ msgstr "Espace de travail 2"
+
+#~ msgid "Workspace 3"
+#~ msgstr "Espace de travail 3"
+
+#~ msgid "Workspace 4"
+#~ msgstr "Espace de travail 4"
+
+#~ msgid "Workspace 5"
+#~ msgstr "Espace de travail 5"
+
+#~ msgid "Workspace 6"
+#~ msgstr "Espace de travail 6"
+
+#~ msgid "Workspace 7"
+#~ msgstr "Espace de travail 7"
+
+#~ msgid "Workspace 8"
+#~ msgstr "Espace de travail 8"
+
+#~ msgid "Workspace 9"
+#~ msgstr "Espace de travail 9"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "Déplacer la fenêtre vers l'espace suivant"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent"
+
+#~ msgid "Move window to workspace 1"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 1"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 2"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 3"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 4"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 5"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 6"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 7"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 8"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Déplacer la fenêtre vers l'espace précédent 9"
+
+#~ msgid "Cannot open the theme directory !"
+#~ msgstr "Impossible d'ouvrir le répertoire de thèmes !"
+
+#~ msgid ""
+#~ "Cannot open %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Impossible d'ouvrir %s : \n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Impossible d'écrire %s : \n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Shortcut already in use !\n"
+#~ "Are you sure you want to use it ?"
+#~ msgstr ""
+#~ "Raccourci déjà utilisé !\n"
+#~ "Êtes-vous sûr de vouloir l'utiliser ?"
+
+#~ msgid "Compose shortcut for :"
+#~ msgstr "Composer le raccourci pour :"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Composer le raccourci"
+
+#~ msgid "Cannot grab the keyboard"
+#~ msgstr "Impossible d'obtenir le clavier"
+
+#~ msgid "Select command"
+#~ msgstr "Choisissez la commande"
+
+#~ msgid "Choose command"
+#~ msgstr "Choisissez la commande"
+
+#~ msgid "Command :"
+#~ msgstr "Commande :"
+
+#~ msgid "The command doesn't exist or the file is not executable !"
+#~ msgstr "Cette commande n'existe pas ou le fichier n'est pas exécutable !"
+
+#~ msgid "Compose shortcut for command :"
+#~ msgstr "Composer le raccourci pour la commande :"
 
 #~ msgid "Decoration style"
 #~ msgstr "Habillage"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 21:54+0200\n"
+"POT-Creation-Date: 2004-08-04 18:47+0200\n"
 "PO-Revision-Date: 1996-01-26 02:39+0100\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -43,541 +43,302 @@ msgstr "Goian :"
 msgid "Bottom :"
 msgstr "Behean :"
 
-#: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Idazmahai Marjinak"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:539
 #, fuzzy
 msgid "Workspaces"
 msgstr "%i Idazmahaia"
 
-#: mcs-plugin/plugin.c:178
+#: mcs-plugin/plugin.c:169
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:340
+#: mcs-plugin/workspaces.c:338
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:352
+#: mcs-plugin/workspaces.c:350
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "%i Idazmahaia"
 
-#: mcs-plugin/workspaces.c:362
+#: mcs-plugin/workspaces.c:360
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:450
+#: mcs-plugin/workspaces.c:448
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:522
+#: mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Joan hurrengo idazmahaiera"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:553
+#: mcs-plugin/workspaces.c:551
 #, fuzzy
 msgid "Workspace names"
 msgstr "Idazmahai Marjinak"
 
-#: mcs-plugin/xfwm4_plugin.c:129
-msgid "Title"
-msgstr "Izenburua"
-
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "Menua"
 
-#: mcs-plugin/xfwm4_plugin.c:131
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "Finkatu"
 
-#: mcs-plugin/xfwm4_plugin.c:132
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "Bildu"
 
-#: mcs-plugin/xfwm4_plugin.c:133
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "Ezkutatu"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "Handitu"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "Itxi"
 
-#: mcs-plugin/xfwm4_plugin.c:139 mcs-plugin/xfwm4_plugin.c:1203
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:91
 msgid "Shade window"
 msgstr "Bildu leihoa"
 
-#: mcs-plugin/xfwm4_plugin.c:140 mcs-plugin/xfwm4_plugin.c:1198
-#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:92
 msgid "Hide window"
 msgstr "Ezkutatu leihoa"
 
-#: mcs-plugin/xfwm4_plugin.c:141 mcs-plugin/xfwm4_plugin.c:1183
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: mcs-plugin/xfwm4_plugin.c:93
 msgid "Maximize window"
 msgstr "Handitu leihoa"
 
-#: mcs-plugin/xfwm4_plugin.c:142
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "Ezer ez"
 
-#: mcs-plugin/xfwm4_plugin.c:147
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "Ezkerra"
 
-#: mcs-plugin/xfwm4_plugin.c:148
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "Zentratuta"
 
-#: mcs-plugin/xfwm4_plugin.c:149
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "Eskuina"
 
-#: mcs-plugin/xfwm4_plugin.c:423
+#: mcs-plugin/xfwm4_plugin.c:569
+msgid "Click and drag buttons to change the layout"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:573
+msgid "Active"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:584
+msgid "Title"
+msgstr "Izenburua"
+
+#: mcs-plugin/xfwm4_plugin.c:585
+msgid "The window title, it cannot be removed"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:593
 msgid "Hidden"
 msgstr "Ezkutukoa"
 
-#: mcs-plugin/xfwm4_plugin.c:1107
+#: mcs-plugin/xfwm4_plugin.c:1298
 msgid "Font Selection Dialog"
 msgstr "Karaktere-joko Aukera lehioa"
 
-#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1553
-#, fuzzy
-msgid "Close window"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1561
-#, fuzzy
-msgid "Maximize window vertically"
-msgstr "Handitu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1565
-#, fuzzy
-msgid "Maximize window horizontally"
-msgstr "Handitu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1577
-#, fuzzy
-msgid "Stick window"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1581
-#, fuzzy
-msgid "Cycle windows"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1585
-#, fuzzy
-msgid "Move window up"
-msgstr "Leiho foko berria"
-
-#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1589
-#, fuzzy
-msgid "Move window down"
-msgstr "Leiho foko berria"
-
-#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1593
-#, fuzzy
-msgid "Move window left"
-msgstr "Leiho foko berria"
-
-#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1597
-msgid "Move window right"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1601
-#, fuzzy
-msgid "Resize window up"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1605
-#, fuzzy
-msgid "Resize window down"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
-msgid "Resize window left"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1613
-#, fuzzy
-msgid "Resize window right"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1617
-#, fuzzy
-msgid "Raise window"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1621
-#, fuzzy
-msgid "Lower window"
-msgstr "Ezkutatu leihoa"
-
-#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1625
-msgid "Toggle fullscreen"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1629
-#, fuzzy
-msgid "Next workspace"
-msgstr "Joan hurrengo idazmahaiera"
-
-#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1633
-#, fuzzy
-msgid "Previous workspace"
-msgstr "Joan hurrengo idazmahaiera"
-
-#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1637
-#, fuzzy
-msgid "Add workspace"
-msgstr "Joan hurrengo idazmahaiera"
-
-#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1641
-#, fuzzy
-msgid "Delete workspace"
-msgstr "Joan hurrengo idazmahaiera"
-
-#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
-msgid "Workspace 1"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1649
-#, fuzzy
-msgid "Workspace 2"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1653
-#, fuzzy
-msgid "Workspace 3"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1657
-#, fuzzy
-msgid "Workspace 4"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1661
-#, fuzzy
-msgid "Workspace 5"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1665
-#, fuzzy
-msgid "Workspace 6"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1669
-#, fuzzy
-msgid "Workspace 7"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1673
-#, fuzzy
-msgid "Workspace 8"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1677
-#, fuzzy
-msgid "Workspace 9"
-msgstr "%i Idazmahaia"
-
-#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1681
-msgid "Move window to next workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1685
-msgid "Move window to previous workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1689
-msgid "Move window to workspace 1"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1693
-msgid "Move window to workspace 2"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1697
-msgid "Move window to workspace 3"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1701
-msgid "Move window to workspace 4"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1705
-msgid "Move window to workspace 5"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1709
-msgid "Move window to workspace 6"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1713
-msgid "Move window to workspace 7"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1717
-msgid "Move window to workspace 8"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1388 mcs-plugin/xfwm4_plugin.c:1721
-msgid "Move window to workspace 9"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1769
-msgid "Cannot open the theme directory !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1788
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1803 mcs-plugin/xfwm4_plugin.c:1814
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1934
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1995
-msgid "Compose shortcut for :"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:1998 mcs-plugin/xfwm4_plugin.c:2219
-msgid "Compose shortcut"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2030 mcs-plugin/xfwm4_plugin.c:2250
-msgid "Cannot grab the keyboard"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2070
-msgid "Select command"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:2124
-msgid "Choose command"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2126
-msgid "Command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2160
-msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2216
-msgid "Compose shortcut for command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2328 mcs-plugin/xfwm4_plugin.c:2831
+#: mcs-plugin/xfwm4_plugin.c:1393 mcs-plugin/xfwm4_plugin.c:1880
 msgid "Window Manager"
 msgstr "Leiho Kudeatzailea"
 
-#: mcs-plugin/xfwm4_plugin.c:2341
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Window Manager Preferences"
 msgstr "Leiho Kudeatzailea hobespenak"
 
-#: mcs-plugin/xfwm4_plugin.c:2371
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Title font"
 msgstr "Izenburuaren karakter-jokoa"
 
-#: mcs-plugin/xfwm4_plugin.c:2384
+#: mcs-plugin/xfwm4_plugin.c:1448
 msgid "Title Alignment"
 msgstr "Izenburua lerrokatu"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:2390
+#: mcs-plugin/xfwm4_plugin.c:1454
 msgid "Text alignment inside title bar :"
 msgstr "Izenburu barra barnean testu lerrokatzea :"
 
-#: mcs-plugin/xfwm4_plugin.c:2392
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Button layout"
 msgstr "Botoi-diseinua"
 
-#: mcs-plugin/xfwm4_plugin.c:2398
+#: mcs-plugin/xfwm4_plugin.c:1462
 #, fuzzy
 msgid "Style"
 msgstr "Izenburua"
 
-#: mcs-plugin/xfwm4_plugin.c:2424
+#: mcs-plugin/xfwm4_plugin.c:1488
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "Estilo de Ventana"
 
-#: mcs-plugin/xfwm4_plugin.c:2445 mcs-plugin/xfwm4_plugin.c:2473
+#: mcs-plugin/xfwm4_plugin.c:1509 mcs-plugin/xfwm4_plugin.c:1537
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2450 mcs-plugin/xfwm4_plugin.c:2478
+#: mcs-plugin/xfwm4_plugin.c:1514 mcs-plugin/xfwm4_plugin.c:1542
 #, fuzzy
 msgid "Shortcut"
 msgstr "Teklatu lasterbideak"
 
-#: mcs-plugin/xfwm4_plugin.c:2453
+#: mcs-plugin/xfwm4_plugin.c:1517
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "Teklatu lasterbideak"
 
-#: mcs-plugin/xfwm4_plugin.c:2481
+#: mcs-plugin/xfwm4_plugin.c:1545
 #, fuzzy
 msgid "Keyboard"
 msgstr "Teklatu lasterbideak"
 
-#: mcs-plugin/xfwm4_plugin.c:2492
+#: mcs-plugin/xfwm4_plugin.c:1556
 msgid "Focus model"
 msgstr "Foku modelua"
 
-#: mcs-plugin/xfwm4_plugin.c:2500
+#: mcs-plugin/xfwm4_plugin.c:1564
 msgid "Click to focus"
 msgstr "Egin klik fokoa ezartzeko"
 
-#: mcs-plugin/xfwm4_plugin.c:2507
+#: mcs-plugin/xfwm4_plugin.c:1571
 msgid "Focus follows mouse"
 msgstr "Fokoak arratoia jarraitzen du"
 
-#: mcs-plugin/xfwm4_plugin.c:2514
+#: mcs-plugin/xfwm4_plugin.c:1578
 msgid "New window focus"
 msgstr "Leiho foko berria"
 
-#: mcs-plugin/xfwm4_plugin.c:2518
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
+#: mcs-plugin/xfwm4_plugin.c:1582
+#, fuzzy
+msgid "Automatically give focus to newly created windows"
 msgstr ""
 "Automatikoki ezarri fokoa\n"
 "leiho berrietan"
 
-#: mcs-plugin/xfwm4_plugin.c:2523
+#: mcs-plugin/xfwm4_plugin.c:1587
 msgid "Raise on focus"
 msgstr "Bistaratu fokoaz"
 
-#: mcs-plugin/xfwm4_plugin.c:2531
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
+#: mcs-plugin/xfwm4_plugin.c:1595
+#, fuzzy
+msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Automatikoki bistaratu leihoak\n"
 "fokoa dutenean"
 
-#: mcs-plugin/xfwm4_plugin.c:2541
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Delay before raising focused window :"
 msgstr "Fokoa duen lehioa bistaratu arte itxarongo den denbora :"
 
-#: mcs-plugin/xfwm4_plugin.c:2547
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Slow"
 msgstr "Motela"
 
-#: mcs-plugin/xfwm4_plugin.c:2553
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Fast"
 msgstr "Azkarra"
 
-#: mcs-plugin/xfwm4_plugin.c:2569
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Raise on click"
 msgstr "Bistaratu klikatzerakoan"
 
-#: mcs-plugin/xfwm4_plugin.c:2573
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
+#: mcs-plugin/xfwm4_plugin.c:1637
+#, fuzzy
+msgid "Raise window when clicking inside application window"
 msgstr ""
 "Bistaratu lehioa, honen barenan\n"
 "klikatzerakoan"
 
-#: mcs-plugin/xfwm4_plugin.c:2578
+#: mcs-plugin/xfwm4_plugin.c:1642
 #, fuzzy
 msgid "Focus"
 msgstr "Foku modelua"
 
-#: mcs-plugin/xfwm4_plugin.c:2588
+#: mcs-plugin/xfwm4_plugin.c:1652
 msgid "Windows snapping"
 msgstr "Leiho Itsaskarritasuna"
 
-#: mcs-plugin/xfwm4_plugin.c:2596
+#: mcs-plugin/xfwm4_plugin.c:1660
 msgid "Snap windows to screen border"
 msgstr "Itxasi leihoak pantaila ertzari"
 
-#: mcs-plugin/xfwm4_plugin.c:2601
+#: mcs-plugin/xfwm4_plugin.c:1665
 msgid "Snap windows to other windows"
 msgstr "Itsasi lehioak berien artean"
 
-#: mcs-plugin/xfwm4_plugin.c:2611
+#: mcs-plugin/xfwm4_plugin.c:1675
 msgid "Distance :"
 msgstr "Tartea :"
 
-#: mcs-plugin/xfwm4_plugin.c:2617 mcs-plugin/xfwm4_plugin.c:2667
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Small"
 msgstr "Txikia"
 
-#: mcs-plugin/xfwm4_plugin.c:2623 mcs-plugin/xfwm4_plugin.c:2673
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Wide"
 msgstr "Zabala"
 
-#: mcs-plugin/xfwm4_plugin.c:2638
+#: mcs-plugin/xfwm4_plugin.c:1702
 msgid "Wrap workspaces"
 msgstr "Joan hurrengo idazmahaiera"
 
-#: mcs-plugin/xfwm4_plugin.c:2646
+#: mcs-plugin/xfwm4_plugin.c:1710
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Joan hurrengo idazmahaiera sagua pantaila ertzera ailatzerakoan"
 
-#: mcs-plugin/xfwm4_plugin.c:2651
+#: mcs-plugin/xfwm4_plugin.c:1715
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Lehioak mugitzen hurrengo mahaigainera pasa"
 
-#: mcs-plugin/xfwm4_plugin.c:2661
+#: mcs-plugin/xfwm4_plugin.c:1725
 msgid "Edge Resistance :"
 msgstr "Ertzaren erresistentzia :"
 
-#: mcs-plugin/xfwm4_plugin.c:2688
+#: mcs-plugin/xfwm4_plugin.c:1752
 msgid "Opaque move and resize"
 msgstr "Tamaina aldatza eta mugitze ikusezina"
 
-#: mcs-plugin/xfwm4_plugin.c:2696
+#: mcs-plugin/xfwm4_plugin.c:1760
 msgid "Display content of windows when resizing"
 msgstr "Tamainaz aldatzean erakutsi leihoaren edukia"
 
-#: mcs-plugin/xfwm4_plugin.c:2701
+#: mcs-plugin/xfwm4_plugin.c:1765
 msgid "Display content of windows when moving"
 msgstr "Mugitzerakoan  erakutsi leihoaren edukia"
 
-#: mcs-plugin/xfwm4_plugin.c:2706
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Double click action"
 msgstr "Klik bikoitzaren ekintza"
 
-#: mcs-plugin/xfwm4_plugin.c:2712
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Titulu barran bi aldiz klikatzerakoan egingo den ekintza :"
 
-#: mcs-plugin/xfwm4_plugin.c:2714
+#: mcs-plugin/xfwm4_plugin.c:1778
 msgid "Advanced"
 msgstr "Aurreratua"
 
@@ -743,6 +504,114 @@ msgstr "Aldatu hona ..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Close window"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Maximize window vertically"
+#~ msgstr "Handitu leihoa"
+
+#, fuzzy
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Handitu leihoa"
+
+#, fuzzy
+#~ msgid "Stick window"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Cycle windows"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Move window up"
+#~ msgstr "Leiho foko berria"
+
+#, fuzzy
+#~ msgid "Move window down"
+#~ msgstr "Leiho foko berria"
+
+#, fuzzy
+#~ msgid "Move window left"
+#~ msgstr "Leiho foko berria"
+
+#, fuzzy
+#~ msgid "Resize window up"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Resize window down"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Resize window left"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Resize window right"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Raise window"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Lower window"
+#~ msgstr "Ezkutatu leihoa"
+
+#, fuzzy
+#~ msgid "Next workspace"
+#~ msgstr "Joan hurrengo idazmahaiera"
+
+#, fuzzy
+#~ msgid "Previous workspace"
+#~ msgstr "Joan hurrengo idazmahaiera"
+
+#, fuzzy
+#~ msgid "Add workspace"
+#~ msgstr "Joan hurrengo idazmahaiera"
+
+#, fuzzy
+#~ msgid "Delete workspace"
+#~ msgstr "Joan hurrengo idazmahaiera"
+
+#, fuzzy
+#~ msgid "Workspace 1"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 2"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 3"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 4"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 5"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 6"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 7"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 8"
+#~ msgstr "%i Idazmahaia"
+
+#, fuzzy
+#~ msgid "Workspace 9"
+#~ msgstr "%i Idazmahaia"
 
 #~ msgid "Decoration style"
 #~ msgstr "Dekorazio estiloa"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 21:54+0200\n"
+"POT-Creation-Date: 2004-08-04 18:47+0200\n"
 "PO-Revision-Date: 2003-12-10 14:20+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -40,541 +40,302 @@ msgstr "上 :"
 msgid "Bottom :"
 msgstr "下 :"
 
-#: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "ワークスペース・マージン"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:539
 #, fuzzy
 msgid "Workspaces"
 msgstr "ワークスペース %i"
 
-#: mcs-plugin/plugin.c:178
+#: mcs-plugin/plugin.c:169
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:340
+#: mcs-plugin/workspaces.c:338
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:352
+#: mcs-plugin/workspaces.c:350
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %i"
 
-#: mcs-plugin/workspaces.c:362
+#: mcs-plugin/workspaces.c:360
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:450
+#: mcs-plugin/workspaces.c:448
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:522
+#: mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "ワークスペース循環"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:553
+#: mcs-plugin/workspaces.c:551
 #, fuzzy
 msgid "Workspace names"
 msgstr "ワークスペース・マージン"
 
-#: mcs-plugin/xfwm4_plugin.c:129
-msgid "Title"
-msgstr "タイトル"
-
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "メニュー"
 
-#: mcs-plugin/xfwm4_plugin.c:131
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "貼り付け"
 
-#: mcs-plugin/xfwm4_plugin.c:132
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "折りたたみ"
 
-#: mcs-plugin/xfwm4_plugin.c:133
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "隠す"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "最大化"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "閉じる"
 
-#: mcs-plugin/xfwm4_plugin.c:139 mcs-plugin/xfwm4_plugin.c:1203
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:91
 msgid "Shade window"
 msgstr "ウィンドウを折りたたむ"
 
-#: mcs-plugin/xfwm4_plugin.c:140 mcs-plugin/xfwm4_plugin.c:1198
-#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:92
 msgid "Hide window"
 msgstr "ウィンドウを隠す"
 
-#: mcs-plugin/xfwm4_plugin.c:141 mcs-plugin/xfwm4_plugin.c:1183
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: mcs-plugin/xfwm4_plugin.c:93
 msgid "Maximize window"
 msgstr "ウィンドウの最大化"
 
-#: mcs-plugin/xfwm4_plugin.c:142
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "なし"
 
-#: mcs-plugin/xfwm4_plugin.c:147
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "左"
 
-#: mcs-plugin/xfwm4_plugin.c:148
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "中央"
 
-#: mcs-plugin/xfwm4_plugin.c:149
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "右"
 
-#: mcs-plugin/xfwm4_plugin.c:423
+#: mcs-plugin/xfwm4_plugin.c:569
+msgid "Click and drag buttons to change the layout"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:573
+msgid "Active"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:584
+msgid "Title"
+msgstr "タイトル"
+
+#: mcs-plugin/xfwm4_plugin.c:585
+msgid "The window title, it cannot be removed"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:593
 msgid "Hidden"
 msgstr "隠す"
 
-#: mcs-plugin/xfwm4_plugin.c:1107
+#: mcs-plugin/xfwm4_plugin.c:1298
 msgid "Font Selection Dialog"
 msgstr "フォント選択ダイアログ"
 
-#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1553
-#, fuzzy
-msgid "Close window"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1561
-#, fuzzy
-msgid "Maximize window vertically"
-msgstr "ウィンドウの最大化"
-
-#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1565
-#, fuzzy
-msgid "Maximize window horizontally"
-msgstr "ウィンドウの最大化"
-
-#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1577
-#, fuzzy
-msgid "Stick window"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1581
-#, fuzzy
-msgid "Cycle windows"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1585
-#, fuzzy
-msgid "Move window up"
-msgstr "新規ウィンドウのフォーカス"
-
-#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1589
-#, fuzzy
-msgid "Move window down"
-msgstr "新規ウィンドウのフォーカス"
-
-#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1593
-#, fuzzy
-msgid "Move window left"
-msgstr "新規ウィンドウのフォーカス"
-
-#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1597
-msgid "Move window right"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1601
-#, fuzzy
-msgid "Resize window up"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1605
-#, fuzzy
-msgid "Resize window down"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
-msgid "Resize window left"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1613
-#, fuzzy
-msgid "Resize window right"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1617
-#, fuzzy
-msgid "Raise window"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1621
-#, fuzzy
-msgid "Lower window"
-msgstr "ウィンドウを隠す"
-
-#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1625
-msgid "Toggle fullscreen"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1629
-#, fuzzy
-msgid "Next workspace"
-msgstr "ワークスペース循環"
-
-#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1633
-#, fuzzy
-msgid "Previous workspace"
-msgstr "ワークスペース循環"
-
-#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1637
-#, fuzzy
-msgid "Add workspace"
-msgstr "ワークスペース循環"
-
-#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1641
-#, fuzzy
-msgid "Delete workspace"
-msgstr "ワークスペース循環"
-
-#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
-msgid "Workspace 1"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1649
-#, fuzzy
-msgid "Workspace 2"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1653
-#, fuzzy
-msgid "Workspace 3"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1657
-#, fuzzy
-msgid "Workspace 4"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1661
-#, fuzzy
-msgid "Workspace 5"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1665
-#, fuzzy
-msgid "Workspace 6"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1669
-#, fuzzy
-msgid "Workspace 7"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1673
-#, fuzzy
-msgid "Workspace 8"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1677
-#, fuzzy
-msgid "Workspace 9"
-msgstr "ワークスペース %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1681
-msgid "Move window to next workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1685
-msgid "Move window to previous workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1689
-msgid "Move window to workspace 1"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1693
-msgid "Move window to workspace 2"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1697
-msgid "Move window to workspace 3"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1701
-msgid "Move window to workspace 4"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1705
-msgid "Move window to workspace 5"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1709
-msgid "Move window to workspace 6"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1713
-msgid "Move window to workspace 7"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1717
-msgid "Move window to workspace 8"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1388 mcs-plugin/xfwm4_plugin.c:1721
-msgid "Move window to workspace 9"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1769
-msgid "Cannot open the theme directory !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1788
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1803 mcs-plugin/xfwm4_plugin.c:1814
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1934
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1995
-msgid "Compose shortcut for :"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:1998 mcs-plugin/xfwm4_plugin.c:2219
-msgid "Compose shortcut"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2030 mcs-plugin/xfwm4_plugin.c:2250
-msgid "Cannot grab the keyboard"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2070
-msgid "Select command"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:2124
-msgid "Choose command"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2126
-msgid "Command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2160
-msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2216
-msgid "Compose shortcut for command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2328 mcs-plugin/xfwm4_plugin.c:2831
+#: mcs-plugin/xfwm4_plugin.c:1393 mcs-plugin/xfwm4_plugin.c:1880
 msgid "Window Manager"
 msgstr "ウィンドウ・マネージャ"
 
-#: mcs-plugin/xfwm4_plugin.c:2341
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Window Manager Preferences"
 msgstr "ウィンドウ・マネージャ設定"
 
-#: mcs-plugin/xfwm4_plugin.c:2371
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Title font"
 msgstr "タイトル・フォント"
 
-#: mcs-plugin/xfwm4_plugin.c:2384
+#: mcs-plugin/xfwm4_plugin.c:1448
 msgid "Title Alignment"
 msgstr "タイトル位置"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:2390
+#: mcs-plugin/xfwm4_plugin.c:1454
 msgid "Text alignment inside title bar :"
 msgstr "タイトルバー内のテキスト位置 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2392
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Button layout"
 msgstr "ボタン配置"
 
-#: mcs-plugin/xfwm4_plugin.c:2398
+#: mcs-plugin/xfwm4_plugin.c:1462
 #, fuzzy
 msgid "Style"
 msgstr "タイトル"
 
-#: mcs-plugin/xfwm4_plugin.c:2424
+#: mcs-plugin/xfwm4_plugin.c:1488
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "ウィンドウ・スタイル"
 
-#: mcs-plugin/xfwm4_plugin.c:2445 mcs-plugin/xfwm4_plugin.c:2473
+#: mcs-plugin/xfwm4_plugin.c:1509 mcs-plugin/xfwm4_plugin.c:1537
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2450 mcs-plugin/xfwm4_plugin.c:2478
+#: mcs-plugin/xfwm4_plugin.c:1514 mcs-plugin/xfwm4_plugin.c:1542
 #, fuzzy
 msgid "Shortcut"
 msgstr "キーボード・ショートカット"
 
-#: mcs-plugin/xfwm4_plugin.c:2453
+#: mcs-plugin/xfwm4_plugin.c:1517
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "キーボード・ショートカット"
 
-#: mcs-plugin/xfwm4_plugin.c:2481
+#: mcs-plugin/xfwm4_plugin.c:1545
 #, fuzzy
 msgid "Keyboard"
 msgstr "キーボード・ショートカット"
 
-#: mcs-plugin/xfwm4_plugin.c:2492
+#: mcs-plugin/xfwm4_plugin.c:1556
 msgid "Focus model"
 msgstr "フォーカス・モデル"
 
-#: mcs-plugin/xfwm4_plugin.c:2500
+#: mcs-plugin/xfwm4_plugin.c:1564
 msgid "Click to focus"
 msgstr "クリックでフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:2507
+#: mcs-plugin/xfwm4_plugin.c:1571
 msgid "Focus follows mouse"
 msgstr "マウスを追ってフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:2514
+#: mcs-plugin/xfwm4_plugin.c:1578
 msgid "New window focus"
 msgstr "新規ウィンドウのフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:2518
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
+#: mcs-plugin/xfwm4_plugin.c:1582
+#, fuzzy
+msgid "Automatically give focus to newly created windows"
 msgstr ""
 "新規作成されたウィンドウを  \n"
 "自動でフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:2523
+#: mcs-plugin/xfwm4_plugin.c:1587
 msgid "Raise on focus"
 msgstr "フォーカスで最前面"
 
-#: mcs-plugin/xfwm4_plugin.c:2531
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
+#: mcs-plugin/xfwm4_plugin.c:1595
+#, fuzzy
+msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "ウィンドウがフォーカスを取得\n"
 "した時に、自動で最前面にする"
 
-#: mcs-plugin/xfwm4_plugin.c:2541
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Delay before raising focused window :"
 msgstr "フォーカスを取得後、最前面へする遅延 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2547
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Slow"
 msgstr "遅い"
 
-#: mcs-plugin/xfwm4_plugin.c:2553
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Fast"
 msgstr "速い"
 
-#: mcs-plugin/xfwm4_plugin.c:2569
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Raise on click"
 msgstr "クリックで最前面"
 
-#: mcs-plugin/xfwm4_plugin.c:2573
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
+#: mcs-plugin/xfwm4_plugin.c:1637
+#, fuzzy
+msgid "Raise window when clicking inside application window"
 msgstr ""
 "アプリケーション・ウィンドウ内で \n"
 "クリックして最前面"
 
-#: mcs-plugin/xfwm4_plugin.c:2578
+#: mcs-plugin/xfwm4_plugin.c:1642
 #, fuzzy
 msgid "Focus"
 msgstr "フォーカス・モデル"
 
-#: mcs-plugin/xfwm4_plugin.c:2588
+#: mcs-plugin/xfwm4_plugin.c:1652
 msgid "Windows snapping"
 msgstr "ウィンドウ・スナップ"
 
-#: mcs-plugin/xfwm4_plugin.c:2596
+#: mcs-plugin/xfwm4_plugin.c:1660
 msgid "Snap windows to screen border"
 msgstr "スクリーン境界でウィンドウを止める"
 
-#: mcs-plugin/xfwm4_plugin.c:2601
+#: mcs-plugin/xfwm4_plugin.c:1665
 msgid "Snap windows to other windows"
 msgstr "他のウィンドウでウィンドウを止める"
 
-#: mcs-plugin/xfwm4_plugin.c:2611
+#: mcs-plugin/xfwm4_plugin.c:1675
 msgid "Distance :"
 msgstr "距離 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2617 mcs-plugin/xfwm4_plugin.c:2667
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Small"
 msgstr "狭い"
 
-#: mcs-plugin/xfwm4_plugin.c:2623 mcs-plugin/xfwm4_plugin.c:2673
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Wide"
 msgstr "広い"
 
-#: mcs-plugin/xfwm4_plugin.c:2638
+#: mcs-plugin/xfwm4_plugin.c:1702
 msgid "Wrap workspaces"
 msgstr "ワークスペース循環"
 
-#: mcs-plugin/xfwm4_plugin.c:2646
+#: mcs-plugin/xfwm4_plugin.c:1710
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "ポインターがスクリーン端に来たら、ワークスペースを循環"
 
-#: mcs-plugin/xfwm4_plugin.c:2651
+#: mcs-plugin/xfwm4_plugin.c:1715
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "スクリーンでウィンドウをドラッグ中、ワークスペースを循環"
 
-#: mcs-plugin/xfwm4_plugin.c:2661
+#: mcs-plugin/xfwm4_plugin.c:1725
 msgid "Edge Resistance :"
 msgstr "エッジ抵抗 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2688
+#: mcs-plugin/xfwm4_plugin.c:1752
 msgid "Opaque move and resize"
 msgstr "不透明表示の移動とサイズ変更"
 
-#: mcs-plugin/xfwm4_plugin.c:2696
+#: mcs-plugin/xfwm4_plugin.c:1760
 msgid "Display content of windows when resizing"
 msgstr "サイズ変更時のウィンドウ表示"
 
-#: mcs-plugin/xfwm4_plugin.c:2701
+#: mcs-plugin/xfwm4_plugin.c:1765
 msgid "Display content of windows when moving"
 msgstr "移動時のウィンドウ表示"
 
-#: mcs-plugin/xfwm4_plugin.c:2706
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Double click action"
 msgstr "ダブルクリック動作"
 
-#: mcs-plugin/xfwm4_plugin.c:2712
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Action to perform when double clicking on title bar :"
 msgstr "タイトルバーをダブルクリックした時の動作 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2714
+#: mcs-plugin/xfwm4_plugin.c:1778
 msgid "Advanced"
 msgstr "上級"
 
@@ -739,6 +500,114 @@ msgstr "切替え..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Close window"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Maximize window vertically"
+#~ msgstr "ウィンドウの最大化"
+
+#, fuzzy
+#~ msgid "Maximize window horizontally"
+#~ msgstr "ウィンドウの最大化"
+
+#, fuzzy
+#~ msgid "Stick window"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Cycle windows"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Move window up"
+#~ msgstr "新規ウィンドウのフォーカス"
+
+#, fuzzy
+#~ msgid "Move window down"
+#~ msgstr "新規ウィンドウのフォーカス"
+
+#, fuzzy
+#~ msgid "Move window left"
+#~ msgstr "新規ウィンドウのフォーカス"
+
+#, fuzzy
+#~ msgid "Resize window up"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Resize window down"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Resize window left"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Resize window right"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Raise window"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Lower window"
+#~ msgstr "ウィンドウを隠す"
+
+#, fuzzy
+#~ msgid "Next workspace"
+#~ msgstr "ワークスペース循環"
+
+#, fuzzy
+#~ msgid "Previous workspace"
+#~ msgstr "ワークスペース循環"
+
+#, fuzzy
+#~ msgid "Add workspace"
+#~ msgstr "ワークスペース循環"
+
+#, fuzzy
+#~ msgid "Delete workspace"
+#~ msgstr "ワークスペース循環"
+
+#, fuzzy
+#~ msgid "Workspace 1"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 2"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 3"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 4"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 5"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 6"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 7"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 8"
+#~ msgstr "ワークスペース %i"
+
+#, fuzzy
+#~ msgid "Workspace 9"
+#~ msgstr "ワークスペース %i"
 
 #~ msgid "Decoration style"
 #~ msgstr "装飾スタイル"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 21:54+0200\n"
+"POT-Creation-Date: 2004-08-04 18:47+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -40,541 +40,302 @@ msgstr "மேல் :"
 msgid "Bottom :"
 msgstr "கீழ் :"
 
-#: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "வேலையிட எல்லைகள்"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:539
 #, fuzzy
 msgid "Workspaces"
 msgstr "வேலை þடம் %i"
 
-#: mcs-plugin/plugin.c:178
+#: mcs-plugin/plugin.c:169
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:340
+#: mcs-plugin/workspaces.c:338
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:352
+#: mcs-plugin/workspaces.c:350
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "வேலை þடம் %i"
 
-#: mcs-plugin/workspaces.c:362
+#: mcs-plugin/workspaces.c:360
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:450
+#: mcs-plugin/workspaces.c:448
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:522
+#: mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:553
+#: mcs-plugin/workspaces.c:551
 #, fuzzy
 msgid "Workspace names"
 msgstr "வேலையிட எல்லைகள்"
 
-#: mcs-plugin/xfwm4_plugin.c:129
-msgid "Title"
-msgstr "தலைப்பு"
-
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "பட்டி"
 
-#: mcs-plugin/xfwm4_plugin.c:131
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "ஒட்டு"
 
-#: mcs-plugin/xfwm4_plugin.c:132
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "நிழல் தரம்"
 
-#: mcs-plugin/xfwm4_plugin.c:133
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "மறை"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "பெருதாக்கு"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "மூடு"
 
-#: mcs-plugin/xfwm4_plugin.c:139 mcs-plugin/xfwm4_plugin.c:1203
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:91
 msgid "Shade window"
 msgstr "வண்ண-சாளரம்"
 
-#: mcs-plugin/xfwm4_plugin.c:140 mcs-plugin/xfwm4_plugin.c:1198
-#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:92
 msgid "Hide window"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_plugin.c:141 mcs-plugin/xfwm4_plugin.c:1183
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: mcs-plugin/xfwm4_plugin.c:93
 msgid "Maximize window"
 msgstr "சாளரம் பெருதாக்கு"
 
-#: mcs-plugin/xfwm4_plugin.c:142
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "ஏதும் þல்லை"
 
-#: mcs-plugin/xfwm4_plugin.c:147
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "இடது"
 
-#: mcs-plugin/xfwm4_plugin.c:148
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "நடுவில்"
 
-#: mcs-plugin/xfwm4_plugin.c:149
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "வலது"
 
-#: mcs-plugin/xfwm4_plugin.c:423
+#: mcs-plugin/xfwm4_plugin.c:569
+msgid "Click and drag buttons to change the layout"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:573
+msgid "Active"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:584
+msgid "Title"
+msgstr "தலைப்பு"
+
+#: mcs-plugin/xfwm4_plugin.c:585
+msgid "The window title, it cannot be removed"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:593
 msgid "Hidden"
 msgstr "மறைந்தது"
 
-#: mcs-plugin/xfwm4_plugin.c:1107
+#: mcs-plugin/xfwm4_plugin.c:1298
 msgid "Font Selection Dialog"
 msgstr "ஏழுத்துரு தேர்ந்தெடுக்கும் உரையாடல்"
 
-#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1553
-#, fuzzy
-msgid "Close window"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1561
-#, fuzzy
-msgid "Maximize window vertically"
-msgstr "சாளரம் பெருதாக்கு"
-
-#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1565
-#, fuzzy
-msgid "Maximize window horizontally"
-msgstr "சாளரம் பெருதாக்கு"
-
-#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1577
-#, fuzzy
-msgid "Stick window"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1581
-#, fuzzy
-msgid "Cycle windows"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1585
-#, fuzzy
-msgid "Move window up"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1589
-#, fuzzy
-msgid "Move window down"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1593
-#, fuzzy
-msgid "Move window left"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1597
-msgid "Move window right"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1601
-#, fuzzy
-msgid "Resize window up"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1605
-#, fuzzy
-msgid "Resize window down"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
-msgid "Resize window left"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1613
-#, fuzzy
-msgid "Resize window right"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1617
-#, fuzzy
-msgid "Raise window"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1621
-#, fuzzy
-msgid "Lower window"
-msgstr "சாளரம் மறை"
-
-#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1625
-msgid "Toggle fullscreen"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1629
-#, fuzzy
-msgid "Next workspace"
-msgstr "வேலை þடங்கள் மடிப்பு"
-
-#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1633
-#, fuzzy
-msgid "Previous workspace"
-msgstr "வேலை þடங்கள் மடிப்பு"
-
-#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1637
-#, fuzzy
-msgid "Add workspace"
-msgstr "வேலை þடங்கள் மடிப்பு"
-
-#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1641
-#, fuzzy
-msgid "Delete workspace"
-msgstr "வேலை þடங்கள் மடிப்பு"
-
-#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
-msgid "Workspace 1"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1649
-#, fuzzy
-msgid "Workspace 2"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1653
-#, fuzzy
-msgid "Workspace 3"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1657
-#, fuzzy
-msgid "Workspace 4"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1661
-#, fuzzy
-msgid "Workspace 5"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1665
-#, fuzzy
-msgid "Workspace 6"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1669
-#, fuzzy
-msgid "Workspace 7"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1673
-#, fuzzy
-msgid "Workspace 8"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1677
-#, fuzzy
-msgid "Workspace 9"
-msgstr "வேலை þடம் %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1681
-msgid "Move window to next workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1685
-msgid "Move window to previous workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1689
-msgid "Move window to workspace 1"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1693
-msgid "Move window to workspace 2"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1697
-msgid "Move window to workspace 3"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1701
-msgid "Move window to workspace 4"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1705
-msgid "Move window to workspace 5"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1709
-msgid "Move window to workspace 6"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1713
-msgid "Move window to workspace 7"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1717
-msgid "Move window to workspace 8"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1388 mcs-plugin/xfwm4_plugin.c:1721
-msgid "Move window to workspace 9"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1769
-msgid "Cannot open the theme directory !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1788
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1803 mcs-plugin/xfwm4_plugin.c:1814
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1934
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1995
-msgid "Compose shortcut for :"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:1998 mcs-plugin/xfwm4_plugin.c:2219
-msgid "Compose shortcut"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2030 mcs-plugin/xfwm4_plugin.c:2250
-msgid "Cannot grab the keyboard"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2070
-msgid "Select command"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:2124
-msgid "Choose command"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2126
-msgid "Command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2160
-msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2216
-msgid "Compose shortcut for command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2328 mcs-plugin/xfwm4_plugin.c:2831
+#: mcs-plugin/xfwm4_plugin.c:1393 mcs-plugin/xfwm4_plugin.c:1880
 msgid "Window Manager"
 msgstr "சாளரமேலாளர்"
 
-#: mcs-plugin/xfwm4_plugin.c:2341
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Window Manager Preferences"
 msgstr "சாளரமேலாளர் விருப்பங்கள்"
 
-#: mcs-plugin/xfwm4_plugin.c:2371
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Title font"
 msgstr "தலைப்பு எழுத்துரு"
 
-#: mcs-plugin/xfwm4_plugin.c:2384
+#: mcs-plugin/xfwm4_plugin.c:1448
 msgid "Title Alignment"
 msgstr "தலைப்பு þடம் அமைப்பு"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:2390
+#: mcs-plugin/xfwm4_plugin.c:1454
 msgid "Text alignment inside title bar :"
 msgstr "சாளரத்தின் தலைப்புப் பட்டையில் அரை பொருத்தம் :"
 
-#: mcs-plugin/xfwm4_plugin.c:2392
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Button layout"
 msgstr "பொத்தான் அமைப்பு"
 
-#: mcs-plugin/xfwm4_plugin.c:2398
+#: mcs-plugin/xfwm4_plugin.c:1462
 #, fuzzy
 msgid "Style"
 msgstr "தலைப்பு"
 
-#: mcs-plugin/xfwm4_plugin.c:2424
+#: mcs-plugin/xfwm4_plugin.c:1488
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "சாளரம் பாணி"
 
-#: mcs-plugin/xfwm4_plugin.c:2445 mcs-plugin/xfwm4_plugin.c:2473
+#: mcs-plugin/xfwm4_plugin.c:1509 mcs-plugin/xfwm4_plugin.c:1537
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2450 mcs-plugin/xfwm4_plugin.c:2478
+#: mcs-plugin/xfwm4_plugin.c:1514 mcs-plugin/xfwm4_plugin.c:1542
 #, fuzzy
 msgid "Shortcut"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
-#: mcs-plugin/xfwm4_plugin.c:2453
+#: mcs-plugin/xfwm4_plugin.c:1517
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
-#: mcs-plugin/xfwm4_plugin.c:2481
+#: mcs-plugin/xfwm4_plugin.c:1545
 #, fuzzy
 msgid "Keyboard"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
-#: mcs-plugin/xfwm4_plugin.c:2492
+#: mcs-plugin/xfwm4_plugin.c:1556
 msgid "Focus model"
 msgstr "சாளரம் பெறும் முறைமை"
 
-#: mcs-plugin/xfwm4_plugin.c:2500
+#: mcs-plugin/xfwm4_plugin.c:1564
 msgid "Click to focus"
 msgstr "அமுக்கவேண்டும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2507
+#: mcs-plugin/xfwm4_plugin.c:1571
 msgid "Focus follows mouse"
 msgstr "சுட்டி þருக்குமிடத்தில்"
 
-#: mcs-plugin/xfwm4_plugin.c:2514
+#: mcs-plugin/xfwm4_plugin.c:1578
 msgid "New window focus"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_plugin.c:2518
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
+#: mcs-plugin/xfwm4_plugin.c:1582
+#, fuzzy
+msgid "Automatically give focus to newly created windows"
 msgstr ""
 "புதிதாக படைக்கப்பட்ட சாளரங்களுக்கு \n"
 "தானாக சுட்டி கைப்பிடி கொடுக்கவும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2523
+#: mcs-plugin/xfwm4_plugin.c:1587
 msgid "Raise on focus"
 msgstr "கைப்பிடிப்பு/உயர்த்தல்"
 
-#: mcs-plugin/xfwm4_plugin.c:2531
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
+#: mcs-plugin/xfwm4_plugin.c:1595
+#, fuzzy
+msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "சாளரங்களுக்கு கைப்பிடி கிடைக்கும்போது \n"
 "அவைகளை தானாக மேல் உயர்த்தவும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2541
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Delay before raising focused window :"
 msgstr "சாளரத்தை உயர்த்தும் தாமதம் :"
 
-#: mcs-plugin/xfwm4_plugin.c:2547
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Slow"
 msgstr "மெதுவாக"
 
-#: mcs-plugin/xfwm4_plugin.c:2553
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Fast"
 msgstr "வேகமாக"
 
-#: mcs-plugin/xfwm4_plugin.c:2569
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Raise on click"
 msgstr "அமுத்தும் போது உயர்த்து"
 
-#: mcs-plugin/xfwm4_plugin.c:2573
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
+#: mcs-plugin/xfwm4_plugin.c:1637
+#, fuzzy
+msgid "Raise window when clicking inside application window"
 msgstr ""
 "நிரல் சாளரத்திற்குள் அமுத்தும்போது\n"
 "சாளரத்தை உயர்த்து"
 
-#: mcs-plugin/xfwm4_plugin.c:2578
+#: mcs-plugin/xfwm4_plugin.c:1642
 #, fuzzy
 msgid "Focus"
 msgstr "சாளரம் பெறும் முறைமை"
 
-#: mcs-plugin/xfwm4_plugin.c:2588
+#: mcs-plugin/xfwm4_plugin.c:1652
 msgid "Windows snapping"
 msgstr "சாளரங்கள் போடுதல்"
 
-#: mcs-plugin/xfwm4_plugin.c:2596
+#: mcs-plugin/xfwm4_plugin.c:1660
 msgid "Snap windows to screen border"
 msgstr "சாளரங்களை திறை எல்லையுடன் போடுக"
 
-#: mcs-plugin/xfwm4_plugin.c:2601
+#: mcs-plugin/xfwm4_plugin.c:1665
 msgid "Snap windows to other windows"
 msgstr "சாளரங்களை மற்ற சாளரங்களுடன் போடுக"
 
-#: mcs-plugin/xfwm4_plugin.c:2611
+#: mcs-plugin/xfwm4_plugin.c:1675
 msgid "Distance :"
 msgstr "தூரம் :"
 
-#: mcs-plugin/xfwm4_plugin.c:2617 mcs-plugin/xfwm4_plugin.c:2667
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Small"
 msgstr "அருகில்"
 
-#: mcs-plugin/xfwm4_plugin.c:2623 mcs-plugin/xfwm4_plugin.c:2673
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Wide"
 msgstr "அகலம்"
 
-#: mcs-plugin/xfwm4_plugin.c:2638
+#: mcs-plugin/xfwm4_plugin.c:1702
 msgid "Wrap workspaces"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_plugin.c:2646
+#: mcs-plugin/xfwm4_plugin.c:1710
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "சுட்டி அம்பு திரை எல்லையை அடைந்தவுடன் வேலைஃþடத்தைஃமடிக்கவும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2651
+#: mcs-plugin/xfwm4_plugin.c:1715
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "ஓர் சாளரத்தை திரை எல்லைக்கு வெளியே þழுக்கும் போது வேலை þடத்தை மடி"
 
-#: mcs-plugin/xfwm4_plugin.c:2661
+#: mcs-plugin/xfwm4_plugin.c:1725
 msgid "Edge Resistance :"
 msgstr "விளிம்பு மறிப்பு :"
 
-#: mcs-plugin/xfwm4_plugin.c:2688
+#: mcs-plugin/xfwm4_plugin.c:1752
 msgid "Opaque move and resize"
 msgstr "ஒளி பாயாத அளவு மாற்றமும் நகர்த்துதலும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2696
+#: mcs-plugin/xfwm4_plugin.c:1760
 msgid "Display content of windows when resizing"
 msgstr "சாளரத்தின் அளவு மாற்றும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2701
+#: mcs-plugin/xfwm4_plugin.c:1765
 msgid "Display content of windows when moving"
 msgstr "சாளரத்தை நகர்த்தும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
 
-#: mcs-plugin/xfwm4_plugin.c:2706
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Double click action"
 msgstr "þரட்டை அமுத்தல் செயல்"
 
-#: mcs-plugin/xfwm4_plugin.c:2712
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Action to perform when double clicking on title bar :"
 msgstr "தலைப்புப் பட்டையில் þரட்டை அமுத்தல் செயல் :"
 
-#: mcs-plugin/xfwm4_plugin.c:2714
+#: mcs-plugin/xfwm4_plugin.c:1778
 msgid "Advanced"
 msgstr "உயர்நிலை"
 
@@ -739,6 +500,114 @@ msgstr "þதட்கு மாற்றவும் ..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Close window"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Maximize window vertically"
+#~ msgstr "சாளரம் பெருதாக்கு"
+
+#, fuzzy
+#~ msgid "Maximize window horizontally"
+#~ msgstr "சாளரம் பெருதாக்கு"
+
+#, fuzzy
+#~ msgid "Stick window"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Cycle windows"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Move window up"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window down"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window left"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Resize window up"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Resize window down"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Resize window left"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Resize window right"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Raise window"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Lower window"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Next workspace"
+#~ msgstr "வேலை þடங்கள் மடிப்பு"
+
+#, fuzzy
+#~ msgid "Previous workspace"
+#~ msgstr "வேலை þடங்கள் மடிப்பு"
+
+#, fuzzy
+#~ msgid "Add workspace"
+#~ msgstr "வேலை þடங்கள் மடிப்பு"
+
+#, fuzzy
+#~ msgid "Delete workspace"
+#~ msgstr "வேலை þடங்கள் மடிப்பு"
+
+#, fuzzy
+#~ msgid "Workspace 1"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 2"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 3"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 4"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 5"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 6"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 7"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 8"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace 9"
+#~ msgstr "வேலை þடம் %i"
 
 #~ msgid "Decoration style"
 #~ msgstr "அலங்காரம் பாணி"

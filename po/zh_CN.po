@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 21:54+0200\n"
+"POT-Creation-Date: 2004-08-04 18:47+0200\n"
 "PO-Revision-Date: 2004-06-11 16:52+0200\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -40,538 +40,298 @@ msgstr "顶端:"
 msgid "Bottom :"
 msgstr "底部:"
 
-#: mcs-plugin/plugin.c:111 mcs-plugin/plugin.c:156
+#: mcs-plugin/plugin.c:107 mcs-plugin/plugin.c:148
 msgid "Workspaces and Margins"
 msgstr "工作区边缘"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:138 mcs-plugin/plugin.c:171 mcs-plugin/workspaces.c:541
+#: mcs-plugin/plugin.c:131 mcs-plugin/plugin.c:162 mcs-plugin/workspaces.c:539
 msgid "Workspaces"
 msgstr "工作区"
 
-#: mcs-plugin/plugin.c:178
+#: mcs-plugin/plugin.c:169
 msgid "Margins"
 msgstr "边缘"
 
-#: mcs-plugin/workspaces.c:340
+#: mcs-plugin/workspaces.c:338
 msgid "Change name"
 msgstr "改变名称"
 
-#: mcs-plugin/workspaces.c:352
+#: mcs-plugin/workspaces.c:350
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %i"
 
-#: mcs-plugin/workspaces.c:362
+#: mcs-plugin/workspaces.c:360
 msgid "Name:"
 msgstr "名称: "
 
-#: mcs-plugin/workspaces.c:450
+#: mcs-plugin/workspaces.c:448
 msgid "Click on a workspace name to edit it"
 msgstr "点击一个工作区的名称来编辑它"
 
-#: mcs-plugin/workspaces.c:522
+#: mcs-plugin/workspaces.c:520
 msgid "Number of workspaces:"
 msgstr "工作区名称: "
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:553
+#: mcs-plugin/workspaces.c:551
 msgid "Workspace names"
 msgstr "工作区个数"
 
-#: mcs-plugin/xfwm4_plugin.c:129
-msgid "Title"
-msgstr "标题"
-
-#: mcs-plugin/xfwm4_plugin.c:130
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Menu"
 msgstr "菜单"
 
-#: mcs-plugin/xfwm4_plugin.c:131
+#: mcs-plugin/xfwm4_plugin.c:82
 msgid "Stick"
 msgstr "粘连"
 
-#: mcs-plugin/xfwm4_plugin.c:132
+#: mcs-plugin/xfwm4_plugin.c:83
 msgid "Shade"
 msgstr "卷起"
 
-#: mcs-plugin/xfwm4_plugin.c:133
+#: mcs-plugin/xfwm4_plugin.c:84
 msgid "Hide"
 msgstr "隐藏"
 
-#: mcs-plugin/xfwm4_plugin.c:134
+#: mcs-plugin/xfwm4_plugin.c:85
 msgid "Maximize"
 msgstr "最大化"
 
-#: mcs-plugin/xfwm4_plugin.c:135
+#: mcs-plugin/xfwm4_plugin.c:86
 msgid "Close"
 msgstr "关闭"
 
-#: mcs-plugin/xfwm4_plugin.c:139 mcs-plugin/xfwm4_plugin.c:1203
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:91
 msgid "Shade window"
 msgstr "卷起窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:140 mcs-plugin/xfwm4_plugin.c:1198
-#: mcs-plugin/xfwm4_plugin.c:1569
+#: mcs-plugin/xfwm4_plugin.c:92
 msgid "Hide window"
 msgstr "隐藏窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:141 mcs-plugin/xfwm4_plugin.c:1183
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: mcs-plugin/xfwm4_plugin.c:93
 msgid "Maximize window"
 msgstr "最大化窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:142
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Nothing"
 msgstr "无"
 
-#: mcs-plugin/xfwm4_plugin.c:147
+#: mcs-plugin/xfwm4_plugin.c:99
 msgid "Left"
 msgstr "左侧"
 
-#: mcs-plugin/xfwm4_plugin.c:148
+#: mcs-plugin/xfwm4_plugin.c:100
 msgid "Center"
 msgstr "中间"
 
-#: mcs-plugin/xfwm4_plugin.c:149
+#: mcs-plugin/xfwm4_plugin.c:101
 msgid "Right"
 msgstr "右侧"
 
-#: mcs-plugin/xfwm4_plugin.c:423
+#: mcs-plugin/xfwm4_plugin.c:569
+msgid "Click and drag buttons to change the layout"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:573
+msgid "Active"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:584
+msgid "Title"
+msgstr "标题"
+
+#: mcs-plugin/xfwm4_plugin.c:585
+msgid "The window title, it cannot be removed"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:593
 msgid "Hidden"
 msgstr "隐藏"
 
-#: mcs-plugin/xfwm4_plugin.c:1107
+#: mcs-plugin/xfwm4_plugin.c:1298
 msgid "Font Selection Dialog"
 msgstr "字体选择对话框"
 
-#: mcs-plugin/xfwm4_plugin.c:1178 mcs-plugin/xfwm4_plugin.c:1553
-#, fuzzy
-msgid "Close window"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1188 mcs-plugin/xfwm4_plugin.c:1561
-#, fuzzy
-msgid "Maximize window vertically"
-msgstr "最大化窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1193 mcs-plugin/xfwm4_plugin.c:1565
-#, fuzzy
-msgid "Maximize window horizontally"
-msgstr "最大化窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1208 mcs-plugin/xfwm4_plugin.c:1577
-#, fuzzy
-msgid "Stick window"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1213 mcs-plugin/xfwm4_plugin.c:1581
-#, fuzzy
-msgid "Cycle windows"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1218 mcs-plugin/xfwm4_plugin.c:1585
-#, fuzzy
-msgid "Move window up"
-msgstr "新窗口获取焦点"
-
-#: mcs-plugin/xfwm4_plugin.c:1223 mcs-plugin/xfwm4_plugin.c:1589
-#, fuzzy
-msgid "Move window down"
-msgstr "新窗口获取焦点"
-
-#: mcs-plugin/xfwm4_plugin.c:1228 mcs-plugin/xfwm4_plugin.c:1593
-#, fuzzy
-msgid "Move window left"
-msgstr "新窗口获取焦点"
-
-#: mcs-plugin/xfwm4_plugin.c:1233 mcs-plugin/xfwm4_plugin.c:1597
-msgid "Move window right"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1238 mcs-plugin/xfwm4_plugin.c:1601
-#, fuzzy
-msgid "Resize window up"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1243 mcs-plugin/xfwm4_plugin.c:1605
-#, fuzzy
-msgid "Resize window down"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1248 mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
-msgid "Resize window left"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1253 mcs-plugin/xfwm4_plugin.c:1613
-#, fuzzy
-msgid "Resize window right"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1258 mcs-plugin/xfwm4_plugin.c:1617
-#, fuzzy
-msgid "Raise window"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1263 mcs-plugin/xfwm4_plugin.c:1621
-#, fuzzy
-msgid "Lower window"
-msgstr "隐藏窗口"
-
-#: mcs-plugin/xfwm4_plugin.c:1268 mcs-plugin/xfwm4_plugin.c:1625
-#, fuzzy
-msgid "Toggle fullscreen"
-msgstr "无法获取默认屏幕"
-
-#: mcs-plugin/xfwm4_plugin.c:1273 mcs-plugin/xfwm4_plugin.c:1629
-#, fuzzy
-msgid "Next workspace"
-msgstr "回绕工作区"
-
-#: mcs-plugin/xfwm4_plugin.c:1278 mcs-plugin/xfwm4_plugin.c:1633
-#, fuzzy
-msgid "Previous workspace"
-msgstr "回绕工作区"
-
-#: mcs-plugin/xfwm4_plugin.c:1283 mcs-plugin/xfwm4_plugin.c:1637
-#, fuzzy
-msgid "Add workspace"
-msgstr "回绕工作区"
-
-#: mcs-plugin/xfwm4_plugin.c:1288 mcs-plugin/xfwm4_plugin.c:1641
-#, fuzzy
-msgid "Delete workspace"
-msgstr "回绕工作区"
-
-#: mcs-plugin/xfwm4_plugin.c:1293 mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
-msgid "Workspace 1"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1298 mcs-plugin/xfwm4_plugin.c:1649
-#, fuzzy
-msgid "Workspace 2"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1653
-#, fuzzy
-msgid "Workspace 3"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1308 mcs-plugin/xfwm4_plugin.c:1657
-#, fuzzy
-msgid "Workspace 4"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1313 mcs-plugin/xfwm4_plugin.c:1661
-#, fuzzy
-msgid "Workspace 5"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1318 mcs-plugin/xfwm4_plugin.c:1665
-#, fuzzy
-msgid "Workspace 6"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1323 mcs-plugin/xfwm4_plugin.c:1669
-#, fuzzy
-msgid "Workspace 7"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1328 mcs-plugin/xfwm4_plugin.c:1673
-#, fuzzy
-msgid "Workspace 8"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1333 mcs-plugin/xfwm4_plugin.c:1677
-#, fuzzy
-msgid "Workspace 9"
-msgstr "工作区 %i"
-
-#: mcs-plugin/xfwm4_plugin.c:1338 mcs-plugin/xfwm4_plugin.c:1681
-msgid "Move window to next workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1343 mcs-plugin/xfwm4_plugin.c:1685
-msgid "Move window to previous workspace"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1348 mcs-plugin/xfwm4_plugin.c:1689
-msgid "Move window to workspace 1"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1353 mcs-plugin/xfwm4_plugin.c:1693
-msgid "Move window to workspace 2"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1358 mcs-plugin/xfwm4_plugin.c:1697
-msgid "Move window to workspace 3"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1363 mcs-plugin/xfwm4_plugin.c:1701
-msgid "Move window to workspace 4"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1368 mcs-plugin/xfwm4_plugin.c:1705
-msgid "Move window to workspace 5"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1373 mcs-plugin/xfwm4_plugin.c:1709
-msgid "Move window to workspace 6"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1378 mcs-plugin/xfwm4_plugin.c:1713
-msgid "Move window to workspace 7"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1383 mcs-plugin/xfwm4_plugin.c:1717
-msgid "Move window to workspace 8"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1388 mcs-plugin/xfwm4_plugin.c:1721
-msgid "Move window to workspace 9"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1769
-msgid "Cannot open the theme directory !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1788
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1803 mcs-plugin/xfwm4_plugin.c:1814
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1934
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:1995
-msgid "Compose shortcut for :"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:1998 mcs-plugin/xfwm4_plugin.c:2219
-msgid "Compose shortcut"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2030 mcs-plugin/xfwm4_plugin.c:2250
-msgid "Cannot grab the keyboard"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2070
-msgid "Select command"
-msgstr ""
-
-#. Create dialog
-#: mcs-plugin/xfwm4_plugin.c:2124
-msgid "Choose command"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2126
-msgid "Command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2160
-msgid "The command doesn't exist or the file is not executable !"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2216
-msgid "Compose shortcut for command :"
-msgstr ""
-
-#: mcs-plugin/xfwm4_plugin.c:2328 mcs-plugin/xfwm4_plugin.c:2831
+#: mcs-plugin/xfwm4_plugin.c:1393 mcs-plugin/xfwm4_plugin.c:1880
 msgid "Window Manager"
 msgstr "窗口管理器"
 
-#: mcs-plugin/xfwm4_plugin.c:2341
+#: mcs-plugin/xfwm4_plugin.c:1406
 msgid "Window Manager Preferences"
 msgstr "窗口管理器首选项"
 
-#: mcs-plugin/xfwm4_plugin.c:2371
+#: mcs-plugin/xfwm4_plugin.c:1435
 msgid "Title font"
 msgstr "标题字体"
 
-#: mcs-plugin/xfwm4_plugin.c:2384
+#: mcs-plugin/xfwm4_plugin.c:1448
 msgid "Title Alignment"
 msgstr "标题对齐方式"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:2390
+#: mcs-plugin/xfwm4_plugin.c:1454
 msgid "Text alignment inside title bar :"
 msgstr "标题拦内的文本对齐方式 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2392
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Button layout"
 msgstr "按钮布局"
 
-#: mcs-plugin/xfwm4_plugin.c:2398
+#: mcs-plugin/xfwm4_plugin.c:1462
 #, fuzzy
 msgid "Style"
 msgstr "标题"
 
-#: mcs-plugin/xfwm4_plugin.c:2424
+#: mcs-plugin/xfwm4_plugin.c:1488
 #, fuzzy
 msgid "Windows shortcuts"
 msgstr "窗口风格"
 
-#: mcs-plugin/xfwm4_plugin.c:2445 mcs-plugin/xfwm4_plugin.c:2473
+#: mcs-plugin/xfwm4_plugin.c:1509 mcs-plugin/xfwm4_plugin.c:1537
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:2450 mcs-plugin/xfwm4_plugin.c:2478
+#: mcs-plugin/xfwm4_plugin.c:1514 mcs-plugin/xfwm4_plugin.c:1542
 #, fuzzy
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:2453
+#: mcs-plugin/xfwm4_plugin.c:1517
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:2481
+#: mcs-plugin/xfwm4_plugin.c:1545
 #, fuzzy
 msgid "Keyboard"
 msgstr "快捷键"
 
-#: mcs-plugin/xfwm4_plugin.c:2492
+#: mcs-plugin/xfwm4_plugin.c:1556
 msgid "Focus model"
 msgstr "焦点模式"
 
-#: mcs-plugin/xfwm4_plugin.c:2500
+#: mcs-plugin/xfwm4_plugin.c:1564
 msgid "Click to focus"
 msgstr "点击获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:2507
+#: mcs-plugin/xfwm4_plugin.c:1571
 msgid "Focus follows mouse"
 msgstr "焦点跟随鼠标"
 
-#: mcs-plugin/xfwm4_plugin.c:2514
+#: mcs-plugin/xfwm4_plugin.c:1578
 msgid "New window focus"
 msgstr "新窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:2518
-msgid ""
-"Automatically give focus to \n"
-"newly created windows"
+#: mcs-plugin/xfwm4_plugin.c:1582
+#, fuzzy
+msgid "Automatically give focus to newly created windows"
 msgstr ""
 "自动为新建立\n"
 "窗口获取焦点"
 
-#: mcs-plugin/xfwm4_plugin.c:2523
+#: mcs-plugin/xfwm4_plugin.c:1587
 msgid "Raise on focus"
 msgstr "获得焦点时置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:2531
-msgid ""
-"Automatically raise windows \n"
-"when they receive focus"
+#: mcs-plugin/xfwm4_plugin.c:1595
+#, fuzzy
+msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "当窗口获得焦点时\n"
 "自动将该窗口置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:2541
+#: mcs-plugin/xfwm4_plugin.c:1605
 msgid "Delay before raising focused window :"
 msgstr "置顶焦点所在窗口前的延时 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2547
+#: mcs-plugin/xfwm4_plugin.c:1611
 msgid "Slow"
 msgstr "慢"
 
-#: mcs-plugin/xfwm4_plugin.c:2553
+#: mcs-plugin/xfwm4_plugin.c:1617
 msgid "Fast"
 msgstr "快"
 
-#: mcs-plugin/xfwm4_plugin.c:2569
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Raise on click"
 msgstr "点击置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:2573
-msgid ""
-"Raise window when clicking inside\n"
-"application window"
+#: mcs-plugin/xfwm4_plugin.c:1637
+#, fuzzy
+msgid "Raise window when clicking inside application window"
 msgstr ""
 "当在窗口客户区\n"
 "点击时将其置顶"
 
-#: mcs-plugin/xfwm4_plugin.c:2578
+#: mcs-plugin/xfwm4_plugin.c:1642
 #, fuzzy
 msgid "Focus"
 msgstr "焦点模式"
 
-#: mcs-plugin/xfwm4_plugin.c:2588
+#: mcs-plugin/xfwm4_plugin.c:1652
 msgid "Windows snapping"
 msgstr "窗口吸引"
 
-#: mcs-plugin/xfwm4_plugin.c:2596
+#: mcs-plugin/xfwm4_plugin.c:1660
 msgid "Snap windows to screen border"
 msgstr "在屏幕边缘吸引窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:2601
+#: mcs-plugin/xfwm4_plugin.c:1665
 msgid "Snap windows to other windows"
 msgstr "将窗口吸引到其它窗口"
 
-#: mcs-plugin/xfwm4_plugin.c:2611
+#: mcs-plugin/xfwm4_plugin.c:1675
 msgid "Distance :"
 msgstr "距离 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2617 mcs-plugin/xfwm4_plugin.c:2667
+#: mcs-plugin/xfwm4_plugin.c:1681 mcs-plugin/xfwm4_plugin.c:1731
 msgid "Small"
 msgstr "小"
 
-#: mcs-plugin/xfwm4_plugin.c:2623 mcs-plugin/xfwm4_plugin.c:2673
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
 msgid "Wide"
 msgstr "宽"
 
-#: mcs-plugin/xfwm4_plugin.c:2638
+#: mcs-plugin/xfwm4_plugin.c:1702
 msgid "Wrap workspaces"
 msgstr "回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:2646
+#: mcs-plugin/xfwm4_plugin.c:1710
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "鼠标到达屏幕边缘时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:2651
+#: mcs-plugin/xfwm4_plugin.c:1715
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "拖拽窗口离开屏幕时回绕工作区"
 
-#: mcs-plugin/xfwm4_plugin.c:2661
+#: mcs-plugin/xfwm4_plugin.c:1725
 msgid "Edge Resistance :"
 msgstr "屏幕边缘阻力 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2688
+#: mcs-plugin/xfwm4_plugin.c:1752
 msgid "Opaque move and resize"
 msgstr "移动及缩放时显示窗口内容"
 
-#: mcs-plugin/xfwm4_plugin.c:2696
+#: mcs-plugin/xfwm4_plugin.c:1760
 msgid "Display content of windows when resizing"
 msgstr "改变窗口尺寸时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:2701
+#: mcs-plugin/xfwm4_plugin.c:1765
 msgid "Display content of windows when moving"
 msgstr "移动窗口时显示其内容"
 
-#: mcs-plugin/xfwm4_plugin.c:2706
+#: mcs-plugin/xfwm4_plugin.c:1770
 msgid "Double click action"
 msgstr "双击执行动作"
 
-#: mcs-plugin/xfwm4_plugin.c:2712
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Action to perform when double clicking on title bar :"
 msgstr "双击标题栏所执行的动作 :"
 
-#: mcs-plugin/xfwm4_plugin.c:2714
+#: mcs-plugin/xfwm4_plugin.c:1778
 msgid "Advanced"
 msgstr "高级"
 
@@ -736,6 +496,118 @@ msgstr "切换到 ..."
 #: src/tabwin.c:128
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
+
+#, fuzzy
+#~ msgid "Close window"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Maximize window vertically"
+#~ msgstr "最大化窗口"
+
+#, fuzzy
+#~ msgid "Maximize window horizontally"
+#~ msgstr "最大化窗口"
+
+#, fuzzy
+#~ msgid "Stick window"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Cycle windows"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Move window up"
+#~ msgstr "新窗口获取焦点"
+
+#, fuzzy
+#~ msgid "Move window down"
+#~ msgstr "新窗口获取焦点"
+
+#, fuzzy
+#~ msgid "Move window left"
+#~ msgstr "新窗口获取焦点"
+
+#, fuzzy
+#~ msgid "Resize window up"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Resize window down"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Resize window left"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Resize window right"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Raise window"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Lower window"
+#~ msgstr "隐藏窗口"
+
+#, fuzzy
+#~ msgid "Toggle fullscreen"
+#~ msgstr "无法获取默认屏幕"
+
+#, fuzzy
+#~ msgid "Next workspace"
+#~ msgstr "回绕工作区"
+
+#, fuzzy
+#~ msgid "Previous workspace"
+#~ msgstr "回绕工作区"
+
+#, fuzzy
+#~ msgid "Add workspace"
+#~ msgstr "回绕工作区"
+
+#, fuzzy
+#~ msgid "Delete workspace"
+#~ msgstr "回绕工作区"
+
+#, fuzzy
+#~ msgid "Workspace 1"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 2"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 3"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 4"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 5"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 6"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 7"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 8"
+#~ msgstr "工作区 %i"
+
+#, fuzzy
+#~ msgid "Workspace 9"
+#~ msgstr "工作区 %i"
 
 #~ msgid "Decoration style"
 #~ msgstr "装饰风格"
