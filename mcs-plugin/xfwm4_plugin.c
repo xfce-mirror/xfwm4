@@ -2174,6 +2174,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         dbl_click_action = g_strdup (DEFAULT_ACTION);
         mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL, dbl_click_action);
     }
+
+    write_options (mcs_plugin);
 }
 
 static gboolean

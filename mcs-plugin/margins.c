@@ -42,6 +42,8 @@
 #include "monitor-icon.h"
 #include "margins.h"
 
+static void save_margins_channel (void);
+
 static McsManager *mcs_manager;
 
 static int margins[4];
@@ -78,6 +80,8 @@ create_margins_channel (McsPlugin * mcs_plugin)
 
         set_margin (i, n);
     }
+
+    save_margins_channel ();
 }
 
 /* write channel to file */
