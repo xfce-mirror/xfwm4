@@ -3202,6 +3202,7 @@ clientMove (Client * c, XEvent * ev)
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
 
+#ifdef USE_TEMP_WIN
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
@@ -3210,7 +3211,7 @@ clientMove (Client * c, XEvent * ev)
                     gdk_screen_get_width (screen_info->gscr),
                     gdk_screen_get_height (screen_info->gscr),
                     ButtonMotionMask | ButtonReleaseMask);
-
+#endif
     if (ev->type == KeyPress)
     {
         cursor = None;
@@ -3229,6 +3230,7 @@ clientMove (Client * c, XEvent * ev)
         cursor = myDisplayGetCursorMove(display_info);
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
+#ifdef USE_TEMP_WIN
     g1 = XGrabKeyboard (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
                         FALSE, GrabModeAsync, GrabModeAsync, 
                         myDisplayGetCurrentTime (display_info));
@@ -3236,7 +3238,15 @@ clientMove (Client * c, XEvent * ev)
                         FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
                         GrabModeAsync, screen_info->xroot, cursor, 
                         myDisplayGetCurrentTime (display_info));
-
+#else
+    g1 = XGrabKeyboard (display_info->dpy, screen_info->gnome_win,
+                        FALSE, GrabModeAsync, GrabModeAsync, 
+                        myDisplayGetCurrentTime (display_info));
+    g2 = XGrabPointer (display_info->dpy, screen_info->gnome_win,
+                        FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
+                        GrabModeAsync, screen_info->xroot, cursor, 
+                        myDisplayGetCurrentTime (display_info));
+#endif
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
         TRACE ("grab failed in clientMove");
@@ -3302,8 +3312,9 @@ clientMove (Client * c, XEvent * ev)
 
     XUngrabKeyboard (display_info->dpy, myDisplayGetCurrentTime (display_info));
     XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
+#ifdef USE_TEMP_WIN
     xfwmWindowDelete (&passdata.tmp_event_window);
-
+#endif
     if (passdata.grab && screen_info->params->box_move)
     {
         myDisplayUngrabServer (display_info);
@@ -3676,6 +3687,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     passdata.grab = FALSE;
     passdata.corner = corner;
 
+#ifdef USE_TEMP_WIN
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
@@ -3684,6 +3696,7 @@ clientResize (Client * c, int corner, XEvent * ev)
                     gdk_screen_get_width (screen_info->gscr),
                     gdk_screen_get_height (screen_info->gscr),
                     ButtonMotionMask | ButtonReleaseMask);
+#endif
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
@@ -3706,6 +3719,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
 
+#ifdef USE_TEMP_WIN
     g1 = XGrabKeyboard (display_info->dpy, MYWINDOW_XWINDOW (passdata.tmp_event_window),
                         FALSE, GrabModeAsync, GrabModeAsync, 
                         myDisplayGetCurrentTime (display_info));
@@ -3714,7 +3728,16 @@ clientResize (Client * c, int corner, XEvent * ev)
                         GrabModeAsync, screen_info->xroot, 
                         myDisplayGetCursorResize(display_info, passdata.corner), 
                         myDisplayGetCurrentTime (display_info));
-
+#else
+    g1 = XGrabKeyboard (display_info->dpy, screen_info->gnome_win,
+                        FALSE, GrabModeAsync, GrabModeAsync, 
+                        myDisplayGetCurrentTime (display_info));
+    g2 = XGrabPointer (display_info->dpy, screen_info->gnome_win,
+                        FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync,
+                        GrabModeAsync, screen_info->xroot, 
+                        myDisplayGetCursorResize(display_info, passdata.corner), 
+                        myDisplayGetCurrentTime (display_info));
+#endif
     if (((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
         TRACE ("grab failed in clientResize");
@@ -3788,7 +3811,9 @@ clientResize (Client * c, int corner, XEvent * ev)
 
     XUngrabKeyboard (display_info->dpy, myDisplayGetCurrentTime (display_info));
     XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
+#ifdef USE_TEMP_WIN
     xfwmWindowDelete (&passdata.tmp_event_window);
+#endif
 
     if (passdata.grab && screen_info->params->box_resize)
     {
