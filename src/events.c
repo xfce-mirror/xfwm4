@@ -418,7 +418,7 @@ static inline void handleDestroyNotify(XDestroyWindowEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-         clientUnframe(c, False);
+        clientUnframe(c, False);
         if(clients)
 	{
             clientSetFocus(clientGetNext(clients->prev, 0), True);
