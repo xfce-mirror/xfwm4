@@ -1,3 +1,298 @@
+2004-04-08 19:11  olivier
+
+	* src/: client.c, events.c: Fix bug #138 Remove some compilation
+	  warnings
+
+2004-04-02 23:59  olivier
+
+	* src/client.c: Backport from HEAD as a bug fix: Use separate
+	  "prefered" and "highest" clients when selecting top most
+	  focusable
+
+2004-04-01 23:13  olivier
+
+	* src/client.c: Fix #0000165 a much better way
+
+2004-03-31 00:09  olivier
+
+	* src/: client.c, workspaces.c: Fix bug #0000165
+
+2004-03-29 22:15  olivier
+
+	* src/client.c: Use the same window selection algorithm in pass
+	  focus as in window cycling
+
+2004-03-28 23:00  olivier
+
+	* src/: client.c, events.c: Fix focus problem with rox as reported
+	  by Francois.
+
+2004-03-28 21:52  olivier
+
+	* src/client.c: Simplify focus transition
+
+2004-03-28 00:35  olivier
+
+	* src/client.c: Focus passing
+
+2004-03-25 22:47  olivier
+
+	* src/client.c: Bug fix and small usability improvement in focus
+	  transition
+
+2004-03-24 21:39  olivier
+
+	* po/xfwm4.pot, src/client.c: Change focus transition routine Do
+	  not react on BottomIf, TopIf and Opposite stack requests
+
+2004-03-22 23:21  olivier
+
+	* po/xfwm4.pot, src/client.c: Add a "pending_focus" variable that
+	  helps with XSetInputFocus() transitions
+
+2004-03-22 20:59  olivier
+
+	* src/: client.h, events.c, misc.c: Fix compilation warnings
+
+2004-03-22 20:54  olivier
+
+	* src/: client.c, client.h, events.c, frame.c, frame.h: Apply patch
+	  for SUN Forte compiler
+
+2004-03-22 07:47  olivier
+
+	* src/client.c: Change the paranoids
+
+2004-03-21 21:06  olivier
+
+	* po/xfwm4.pot: autogen
+
+2004-03-20 11:59  olivier
+
+	* src/client.c: Add some paranoid checks
+
+2004-03-18 21:25  olivier
+
+	* src/: client.c, events.c: Do not decorate shaped windows (fix
+	  #0000145)
+
+2004-03-18 19:17  olivier
+
+	* src/client.c: Focus transition bug fix.
+
+2004-03-17 23:47  olivier
+
+	* src/keyboard.c: Fix key w/out modifier requiring "+"
+
+2004-03-17 18:59  olivier
+
+	* src/: client.c, events.c: Still bug fix in new focus code
+
+2004-03-16 21:54  olivier
+
+	* src/: client.c, client.h, events.c, settings.c, workspaces.c: Fix
+	  a bunch of focus problems with new focus mgt code.
+
+2004-03-15 00:26  olivier
+
+	* configure, configure.ac, po/ar.gmo, po/ar.po, po/bg.gmo,
+	  po/bg.po, po/it.gmo, po/it.po, po/xfwm4.pot: Add/update i18n for:
+	  Bulgarian from Miroslav Yordanov <miordanov@i-space.org> and
+	  Peter Slavov <peshka@i-space.org> Italian from Alex Dupre
+	  <ale@FreeBSD.org> Arabic from Saleh Hathal
+	  <hathalsal@hotmail.com>
+
+2004-03-14 22:25  olivier
+
+	* src/: client.c, events.c: Improve focus transition Fix a couple
+	  of compilation warnings
+
+2004-03-12 23:18  olivier
+
+	* src/events.c: Treat focus change events while checking for dbl
+	  click.
+
+2004-03-12 23:01  olivier
+
+	* aclocal.m4, configure, configure.ac, po/xfwm4.pot, src/client.c:
+	  Set version to 4.0.5 Handle focus transitions the way it should
+	  be. I know that the dbl click detection *will* introduce some
+	  lags, but that's the proper way.
+
+2004-03-07 10:09  olivier
+
+	* src/client.c: Fix a bug reported by danny last night regarding
+	  default placement of non-transient dialogs
+
+2004-03-05 00:15  olivier
+
+	* src/events.c: Partial fix for #0000128
+
+2004-03-03 19:34  olivier
+
+	* po/xfwm4.pot: pot file (?)
+
+2004-03-03 19:18  olivier
+
+	* po/xfwm4.pot, src/client.c: Fix circular linked list bug
+
+2004-03-02 23:53  olivier
+
+	* src/client.c: Enforce layer on modals as it breaks xfwm4 internal
+	  logics otherwise
+
+2004-03-02 22:16  olivier
+
+	* po/xfwm4.pot: Dummy
+
+2004-02-28 18:24  olivier
+
+	* ltmain.sh, po/xfwm4.pot: sync for 4.0.4 release
+
+2004-02-28 16:04  olivier
+
+	* src/client.c: Fix for apps using cascading modals
+
+2004-02-18 07:53  olivier
+
+	* src/: client.c, client.h: Use a serial number instead of a
+	  timestamp for transient property check
+
+2004-02-17 23:25  olivier
+
+	* src/client.c: Simplify code a bit, should be handled with care.
+
+2004-02-17 23:16  olivier
+
+	* src/: client.c, client.h, events.c, main.c, main.h, workspaces.c:
+	  Keep track of window creation timestamp for "transient for group"
+	  management
+
+2004-02-16 21:19  olivier
+
+	* src/client.c: Typo
+
+2004-02-15 22:13  olivier
+
+	* src/: client.c, events.c: Place (non transients) modals at a
+	  normal layer, or on top of its parent window if on a upper layer,
+	  Restore windows on current workspace as default (bug id #0000115
+	  and #0000116)
+
+2004-02-09 23:17  olivier
+
+	* src/client.c: Experimental fix for windows not being withdrawn
+	  when unmap occurs before fist map.
+
+2004-02-09 07:51  olivier
+
+	* src/client.c: Make sure we grab buttons when passing focus
+
+2004-02-08 23:34  olivier
+
+	* src/client.c: Bug fix in getTopMostFocusable() Pass focus in
+	  clientUnmap()
+
+2004-01-30 08:07  jasper
+
+	* configure, configure.ac, ltmain.sh, po/es.gmo, po/es.po,
+	  po/fa_IR.gmo, po/fa_IR.po, po/pt_BR.gmo, po/pt_BR.po,
+	  po/zh_CN.gmo, po/zh_CN.po: Update translations for spanish,
+	  persian, brasilian and chinese
+
+2004-01-29 21:57  olivier
+
+	* src/events.c: Rework the patch from yesterday to handle FocusIn
+	  on the root win (ie more general case)
+
+2004-01-28 23:33  olivier
+
+	* po/xfwm4.pot, src/client.c, src/client.h, src/events.c,
+	  src/workspaces.c: Use bit based flag param for clientSetFocus
+	  instead of a bunch of gbooleans Add FOCUS_FORCE to clientSetFocus
+	  Handle FocusOut from Motif combo menu nicely and force focus back
+	  to dialog
+
+2004-01-27 21:13  olivier
+
+	* po/xfwm4.pot, src/client.c, src/events.c: Improve grab/ungrab of
+	  Button1
+
+2004-01-25 15:16  olivier
+
+	* src/: client.c, events.c, settings.c: Rearrange grab/ungrab of
+	  button1
+
+2004-01-25 01:11  olivier
+
+	* configure, configure.ac, po/fa_IR.gmo, po/fa_IR.po, src/client.c:
+	  Update libtool and other automake, autoconf and gettext.
+
+2004-01-24 17:36  olivier
+
+	* po/xfwm4.pot, src/client.c: A bit too much of cleanup in
+	  clientPassFocus()
+
+2004-01-24 16:19  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.h.in,
+	  config.sub, configure, configure.ac, depcomp, install-sh,
+	  ltmain.sh, missing, mkinstalldirs, defaults/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
+	  mcs-plugin/Makefile.in, po/xfwm4.pot, src/Makefile.in,
+	  src/client.c, src/client.h, src/events.c, src/keyboard.c,
+	  src/keyboard.h, src/main.c, src/settings.c, themes/Makefile.in,
+	  themes/bbs/Makefile.in, themes/curve/Makefile.in,
+	  themes/default/Makefile.in, themes/default.keys/Makefile.in,
+	  themes/exocet/Makefile.in, themes/meenee/Makefile.in,
+	  themes/microcurve/Makefile.in, themes/microdeck/Makefile.in,
+	  themes/microdeck2/Makefile.in, themes/microdeck3/Makefile.in,
+	  themes/tgc/Makefile.in, themes/tgc-large/Makefile.in: Try to fix
+	  bug #92 by properly ungrabbing buttons when needed. Beware, this
+	  is fairly sensiteite and might be still a bit rough on the edges.
+	  Try to fix bug #82 by selecting a more appropriate visual Update
+	  auto* and libtool chain.
+
+2004-01-13 23:08  olivier
+
+	* src/hints.c: Sync with HEAD: Fix a return w/out value as rightly
+	  spotted by Benny.
+
+2004-01-13 21:12  olivier
+
+	* themes/default/: close-active.xpm, close-inactive.xpm,
+	  close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	  hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	  maximize-pressed.xpm, maximize-toggled-active.xpm,
+	  maximize-toggled-inactive.xpm, maximize-toggled-pressed.xpm,
+	  menu-active.xpm, menu-inactive.xpm, menu-pressed.xpm,
+	  shade-active.xpm, shade-inactive.xpm, shade-pressed.xpm,
+	  shade-toggled-active.xpm, shade-toggled-inactive.xpm,
+	  shade-toggled-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	  stick-pressed.xpm, stick-toggled-active.xpm,
+	  stick-toggled-inactive.xpm, stick-toggled-pressed.xpm: Pixmap for
+	  buttons were actually larger than advertised.
+
+2004-01-11 21:42  olivier
+
+	* configure, configure.ac: Set version to 4.0.3.1
+
+2004-01-11 09:42  olivier
+
+	* xfwm4.spec.in: Very small change in spec file
+
+2004-01-10 22:08  olivier
+
+	* configure, configure.ac, po/xfwm4.pot, src/client.c,
+	  src/events.c, src/misc.c, src/misc.h: Focus management issuesas
+	  reported in http://bugs.xfce.org/view_bug_page.php?f_id=0000070
+
+2004-01-07 21:38  olivier
+
+	* ChangeLog, po/ChangeLog: Huge update before 4.0.3 release,
+	  mainly: ChangeLog update, Version number updates.
+
 2004-01-07 19:58  olivier
 
 	* xfwm4.spec.in, po/xfwm4.pot: Fix spec files so that debug files
@@ -62,7 +357,7 @@
 2004-01-03 21:54  olivier
 
 	* po/: pl.gmo, pl.po, xfwm4.pot: Fix Polish translation from Daniel
-	  MrÃ³z <beorn@alpha.pl>
+	  Mróz <beorn@alpha.pl>
 
 2003-12-31 00:25  olivier
 
