@@ -432,14 +432,16 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
     if((c->has_border) && !(c->fullscreen))
     {
         XShapeCombineMask(dpy, c->title, ShapeBounding, 0, 0, title->mask, ShapeSet);
-	for(i = 0; i < 3; i++)
-        {
-	    XShapeCombineMask(dpy, c->sides[i], ShapeBounding, 0, 0, pm_sides[i].mask, ShapeSet);
-	}
-        for(i = 0; i < 4; i++)
-        {
-            XShapeCombineMask(dpy, c->corners[i], ShapeBounding, 0, 0, corners[i][state].mask, ShapeSet);
-	}
+
+	XShapeCombineMask(dpy, c->sides[SIDE_LEFT], ShapeBounding, 0, 0, pm_sides[SIDE_LEFT].mask, ShapeSet);
+	XShapeCombineMask(dpy, c->sides[SIDE_RIGHT], ShapeBounding, 0, 0, pm_sides[SIDE_RIGHT].mask, ShapeSet);
+	XShapeCombineMask(dpy, c->sides[SIDE_BOTTOM], ShapeBounding, 0, 0, pm_sides[SIDE_BOTTOM].mask, ShapeSet);
+
+        XShapeCombineMask(dpy, c->corners[CORNER_BOTTOM_LEFT], ShapeBounding, 0, 0, corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, c->corners[CORNER_BOTTOM_RIGHT], ShapeBounding, 0, 0, corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, c->corners[CORNER_TOP_LEFT], ShapeBounding, 0, 0, corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
+        XShapeCombineMask(dpy, c->corners[CORNER_TOP_RIGHT], ShapeBounding, 0, 0, corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
+
         for(i = 0; i < BUTTON_COUNT; i++)
         {
 	    if(c->button_pressed[i])
@@ -493,6 +495,7 @@ static void frameSetShape(Client * c, int state, MyPixmap * title, MyPixmap pm_s
         XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - corners[CORNER_BOTTOM_RIGHT][ACTIVE].width, frameHeight(c) - corners[CORNER_BOTTOM_RIGHT][ACTIVE].height, c->corners[CORNER_BOTTOM_RIGHT], ShapeBounding, ShapeUnion);
         XShapeCombineShape(dpy, temp, ShapeBounding, 0, 0, c->corners[CORNER_TOP_LEFT], ShapeBounding, ShapeUnion);
         XShapeCombineShape(dpy, temp, ShapeBounding, frameWidth(c) - corners[CORNER_TOP_RIGHT][ACTIVE].width, 0, c->corners[CORNER_TOP_RIGHT], ShapeBounding, ShapeUnion);
+
         for(i = 0; i < BUTTON_COUNT; i++)
         {
             char b = getLetterFromButton(i, c);
