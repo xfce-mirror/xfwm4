@@ -113,6 +113,7 @@
 #define WM_FLAG_INPUT                  (1L<<1)
 #define WM_FLAG_TAKEFOCUS              (1L<<2)
 #define WM_FLAG_CONTEXT_HELP           (1L<<3)
+#define WM_FLAG_CONTEXT_HELP           (1L<<3)
 
 #define CLIENT_FLAG_INITIAL_VALUES     CLIENT_FLAG_HAS_BORDER | \
                                        CLIENT_FLAG_HAS_MENU | \
@@ -197,8 +198,11 @@ struct _Client
     Client *prev;
     netWindowType type;
     gboolean draw_active;
+    gboolean seen_active; /* For Urgency */
     gboolean first_map;
     gboolean legacy_fullscreen;
+    gboolean urgent;
+    guint blink_timeout_id;
     int x;
     int y;
     int width;
@@ -239,6 +243,7 @@ extern unsigned int client_count;
 Display *clientGetXDisplay (Client *);
 void clientClearLastOpTime (Client *);
 void clientUpdateWinState (Client *, XClientMessageEvent *);
+void clientUpdateUrgency (Client *);
 void clientCoordGravitate (Client *, int, int *, int *);
 void clientGravitate (Client *, int);
 void clientConfigure (Client *, XWindowChanges *, int, unsigned short);

@@ -714,8 +714,16 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     if (c != clientGetFocus ())
     {
         TRACE ("\"%s\" is not the active window", c->name);
-        state = INACTIVE;
+	if (c->urgent)
+	{
+            state = (c->seen_active ? ACTIVE : INACTIVE);
+	}
+	else
+	{
+            state = INACTIVE;
+	}
     }
+
     if ((state == INACTIVE) && ((c->draw_active) || (c->first_map)))
     {
         requires_clearing = TRUE;
@@ -726,7 +734,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
         requires_clearing = TRUE;
         c->draw_active = TRUE;
     }
-
     /* Flag clearance */
     if (c->first_map)
     {

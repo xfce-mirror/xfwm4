@@ -1451,6 +1451,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                     c->group_leader = c->wmhints->window_group;
                 }
             }
+            clientUpdateUrgency (c);
         }
         else if (ev->atom == wm_protocols)
         {

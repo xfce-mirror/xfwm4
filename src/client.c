@@ -360,6 +360,51 @@ clientUngrabButtons (Client * c)
     XUngrabButton (clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
 }
 
+static gboolean
+urgent_cb (gpointer data)
+{
+    Client *c = (Client *) data;
+    g_return_val_if_fail (c, FALSE);
+
+    TRACE ("entering urgent_cb");
+
+    if (c != clientGetFocus ())
+    {
+        c->seen_active = !(c->seen_active);
+        frameDraw (c, FALSE, FALSE);
+    }
+    return (TRUE);
+}
+
+void
+clientUpdateUrgency (Client *c)
+{
+    g_return_if_fail (c != NULL);
+    
+    TRACE ("entering clientUpdateUrgency");
+
+    c->seen_active = FALSE;
+    if (c->blink_timeout_id)
+    {
+	g_source_remove (c->blink_timeout_id);
+        frameDraw (c, FALSE, FALSE);
+    }
+    c->urgent = FALSE;
+
+    c->blink_timeout_id = 0;
+    if ((c->wmhints) && (c->wmhints->flags & XUrgencyHint))
+    {
+	c->urgent = TRUE;
+        c->blink_timeout_id =  g_timeout_add_full (0, 500, (GtkFunction) urgent_cb, (gpointer) c, NULL);
+    }
+    
+    if (!(c->urgent) && (c->seen_active) && (c != clientGetFocus ()))
+    {
+        c->seen_active = FALSE;
+        frameDraw (c, FALSE, FALSE);
+    }
+}
+
 void
 clientCoordGravitate (Client * c, int mode, int *x, int *y)
 {
@@ -1039,6 +1084,10 @@ clientFree (Client * c)
     {
         clientClearLastGrab ();
     }
+    if (c->blink_timeout_id)
+    {
+        g_source_remove (c->blink_timeout_id);
+    }
     if (c->name)
     {
         free (c->name);
@@ -1406,6 +1455,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         c->ncmap = 0;
     }
 
+    /* Timeout for blinking on urgency */
+    c->blink_timeout_id = 0;
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
 
@@ -1591,6 +1642,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info->dpy, c->window, IconicState);
         clientSetNetState (c);
     }
+    
+    /* Adjust to urgency state once the window is ready */
+    clientUpdateUrgency (c);
+
     /* Window is reparented now, so we can safely release the grab 
      * on the server 
      */
