@@ -263,6 +263,25 @@ static TitleRadioButton title_radio_buttons[END];
 GList *decoration_theme_list = NULL;
 GList *keybinding_theme_list = NULL;
 
+#if (GLIB_MAJOR_VERSION < 2) || ((GLIB_MAJOR_VERSION >= 2) && (GLIB_MINOR_VERSION < 1))
+gboolean g_str_has_suffix (const gchar  *str, const gchar  *suffix)
+{
+    int str_len;
+    int suffix_len;
+
+    g_return_val_if_fail (str != NULL, FALSE);
+    g_return_val_if_fail (suffix != NULL, FALSE);
+
+    str_len = strlen (str);
+    suffix_len = strlen (suffix);
+
+    if (str_len < suffix_len)
+	return FALSE;
+
+    return strcmp (str + str_len - suffix_len, suffix) == 0;
+}
+#endif
+
 static GdkPixbuf *default_icon_at_size(int width, int height)
 {
 

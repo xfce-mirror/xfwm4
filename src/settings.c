@@ -70,7 +70,6 @@ MyPixmap buttons[BUTTON_COUNT][3];
 MyPixmap title[5][2];
 
 static McsClient *client = NULL;
-static gboolean loading = FALSE;
 static Settings rc[] = {
     {"active_text_color", NULL, FALSE},
     {"inactive_text_color", NULL, FALSE},
@@ -240,19 +239,19 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
                 }
                 else if(!strcmp(name, "Xfwm/KeyThemeName"))
                 {
-                    reloadSettings(!loading);
+                    reloadSettings(TRUE);
                 }
                 else if(!strcmp(name, "Xfwm/ThemeName"))
                 {
-                    reloadSettings(!loading);
+                    reloadSettings(TRUE);
                 }
                 else if(!strcmp(name, "Xfwm/ButtonLayout"))
                 {
-                    reloadSettings(!loading);
+                    reloadSettings(TRUE);
                 }
                 if(!strcmp(name, "Xfwm/TitleAlign"))
                 {
-                    reloadSettings(!loading);
+                    reloadSettings(TRUE);
                 }
             }
             break;
@@ -784,9 +783,7 @@ gboolean initSettings(void)
     {
         if(mcs_manager_is_running())
         {
-            loading = TRUE;
             mcs_client_add_channel(client, CHANNEL);
-            loading = FALSE;
         }
         else
         {
