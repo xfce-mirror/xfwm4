@@ -4738,7 +4738,7 @@ clientAcceptFocus (Client * c)
     {
         return FALSE;
     }
-    if (!FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
+    if (!FLAG_TEST (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
     {
         return FALSE;
     }
