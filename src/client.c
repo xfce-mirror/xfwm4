@@ -62,9 +62,7 @@
     !(c->transient_for))
 
 #define CONSTRAINED_WINDOW(c) \
-    ((c->type == WINDOW_NORMAL) || \
-     (c->type == WINDOW_DIALOG) || \
-     (c->type == WINDOW_MODAL_DIALOG))
+    (c->type & (WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG | WINDOW_SPLASHSCREEN))
 
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
@@ -1240,7 +1238,9 @@ static inline void clientComputeStackList(Client * c, Client * sibling, int mask
     }
 }
 
-
+/* clientConstraintPos() is used when moving windows 
+   to ensure that the window stays accessible to the user
+ */
 static inline void clientConstraintPos(Client * c)
 {
     int cx, cy, left, right, top, bottom;
@@ -1279,6 +1279,11 @@ static inline void clientConstraintPos(Client * c)
     }
 }
 
+/* clientKeepVisible is used at initial mapping, to make sure 
+   the window is visible on screen. It also does coordonate 
+   translation in Xinerama to center window on physical screen
+   Not to be confused with clientConstraintPos()
+ */
 static inline void clientKeepVisible(Client * c)
 {
     int cx, cy, left, right, top, bottom;

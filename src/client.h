@@ -156,16 +156,16 @@
 
 typedef enum
 {
-    UNSET,
-    WINDOW_NORMAL,
-    WINDOW_DESKTOP,
-    WINDOW_DOCK,
-    WINDOW_DIALOG,
-    WINDOW_MODAL_DIALOG,
-    WINDOW_TOOLBAR,
-    WINDOW_MENU,
-    WINDOW_UTILITY,
-    WINDOW_SPLASHSCREEN
+    UNSET               = 0,
+    WINDOW_NORMAL       = (1<<0),
+    WINDOW_DESKTOP      = (1<<1),
+    WINDOW_DOCK         = (1<<2),
+    WINDOW_DIALOG       = (1<<3),
+    WINDOW_MODAL_DIALOG = (1<<4),
+    WINDOW_TOOLBAR      = (1<<5),
+    WINDOW_MENU         = (1<<6),
+    WINDOW_UTILITY      = (1<<7),
+    WINDOW_SPLASHSCREEN = (1<<8)
 }
 WindowType;
 
