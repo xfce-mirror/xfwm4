@@ -13,6 +13,7 @@ SUBDIRS =								\
 	microdeck 							\
 	microdeck2 							\
 	microdeck3 							\
+	opta								\
 	prune								\
 	tgc								\
 	tgc-large							\

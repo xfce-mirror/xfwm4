@@ -23313,7 +23313,7 @@ echo "${ECHO_T}yes" >&6
   fi
 
 
-                                                                                                                                                                                                                                                                              ac_config_files="$ac_config_files xfwm4.spec Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile defaults/Makefile mcs-plugin/Makefile po/Makefile.in src/Makefile themes/Makefile themes/bbs/Makefile themes/curve/Makefile themes/default/Makefile themes/default.keys/Makefile themes/default-4.0/Makefile themes/exocet/Makefile themes/meenee/Makefile themes/microcurve/Makefile themes/microdeck/Makefile themes/microdeck2/Makefile themes/microdeck3/Makefile themes/prune/Makefile themes/tgc/Makefile themes/tgc-large/Makefile themes/tubular/Makefile"
+                                                                                                                                                                                                                                                                                        ac_config_files="$ac_config_files xfwm4.spec Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile defaults/Makefile mcs-plugin/Makefile po/Makefile.in src/Makefile themes/Makefile themes/bbs/Makefile themes/curve/Makefile themes/default/Makefile themes/default.keys/Makefile themes/default-4.0/Makefile themes/exocet/Makefile themes/meenee/Makefile themes/microcurve/Makefile themes/microdeck/Makefile themes/microdeck2/Makefile themes/microdeck3/Makefile themes/opta/Makefile themes/prune/Makefile themes/tgc/Makefile themes/tgc-large/Makefile themes/tubular/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -23907,6 +23907,7 @@ do
   "themes/microdeck/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/microdeck/Makefile" ;;
   "themes/microdeck2/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/microdeck2/Makefile" ;;
   "themes/microdeck3/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/microdeck3/Makefile" ;;
+  "themes/opta/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/opta/Makefile" ;;
   "themes/prune/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/prune/Makefile" ;;
   "themes/tgc/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/tgc/Makefile" ;;
   "themes/tgc-large/Makefile" ) CONFIG_FILES="$CONFIG_FILES themes/tgc-large/Makefile" ;;

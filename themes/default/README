@@ -1,5 +1,5 @@
 default
 -------
 
-Default xfwm4 theme. Not very sexy, but I guess the default theme doesn't have
-to be anyway...
+A much more colored default theme for xfwm4. Inspired by various other themes.
+To be used with new default gtk theme/engine for xfce.
