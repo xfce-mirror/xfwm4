@@ -18,16 +18,16 @@ msgstr ""
 #: mcs-plugin/margins_plugin.c:227
 #, fuzzy
 msgid "Workspace Margins"
-msgstr "工作区(_k)"
+msgstr "工作区边缘"
 
 #: mcs-plugin/margins_plugin.c:193
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "调整工作区边缘"
 
 #: mcs-plugin/margins_plugin.c:214
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "边缘是屏幕边上不能放置窗口的区域。"
 
 #: mcs-plugin/margins_plugin.c:255
 #, fuzzy
@@ -41,11 +41,11 @@ msgstr "右侧"
 
 #: mcs-plugin/margins_plugin.c:293
 msgid "Top :"
-msgstr ""
+msgstr "顶端"
 
 #: mcs-plugin/margins_plugin.c:312
 msgid "Bottom :"
-msgstr ""
+msgstr "底部"
 
 #: mcs-plugin/xfwm4_plugin.c:117
 msgid "Title"
