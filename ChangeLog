@@ -1,5 +1,15 @@
 2002-07-24 xfce
 
+	* themes/kde/: title-1-inactive.xpm, title-2-inactive.xpm,
+	title-3-inactive.xpm, title-4-inactive.xpm, title-5-inactive.xpm,
+	top-left-inactive.xpm: Really, nothing important.
+
+2002-07-24 xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-24 xfce
+
 	* themes/redmond/: close-active.xpm, close-inactive.xpm,
 	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
 	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
