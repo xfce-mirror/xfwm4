@@ -4687,13 +4687,12 @@ clientAcceptFocus (Client * c)
     {
         return FALSE;
     }
-    /* then try ICCCM */
-    else if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_TAKEFOCUS))
+    if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT | CLIENT_FLAG_WM_TAKEFOCUS))
     {
-        return TRUE;
+        return FALSE;
     }
-    /* At last, use wmhints */
-    return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT) ? TRUE : FALSE);
+    
+    return TRUE;
 }
 
 static inline void
@@ -4803,73 +4802,44 @@ clientSetFocus (Client * c, unsigned short flags)
     if ((c) && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
-        if (!clientAcceptFocus (c))
-        {
-            TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name,
-                c->window);
-            return;
-        }
         if ((c == client_focus) && !(flags & FOCUS_FORCE))
         {
-            TRACE
-                ("client \"%s\" (0x%lx) is already focused, ignoring request",
+            TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
                 c->name, c->window);
             return;
         }        
-        client_focus = c;
-        clientInstallColormaps (c);
         if (flags & FOCUS_SORT)
         {
             clientSortRing(c);
         }
-        XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-        XFlush (dpy);
+        if (!clientAcceptFocus (c))
+        {
+            TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
+            return;
+        }
+        if (!clientAcceptFocus (c))
+        {
+            TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
+            return;
+        }
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_WM_INPUT))
+        {
+            XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
+            XFlush (dpy);
+        }
         if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_WM_TAKEFOCUS))
         {
             sendClientMessage (c->window, wm_protocols, wm_takefocus, CurrentTime);
         }
-        if ((c->legacy_fullscreen) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
-        {
-            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
-        }
-        frameDraw (c, FALSE, FALSE);
-        data[0] = c->window;
     }
     else
     {
         TRACE ("setting focus to none");
         client_focus = NULL;
         XSetInputFocus (dpy, gnome_win, RevertToNone, CurrentTime);
-        
         XFlush (dpy);
         data[0] = None;
     }
-    if (c2)
-    {
-        /* Legacy apps layer switching. See comment in clientUpdateFocus () */
-        if ((c2->legacy_fullscreen) || CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
-        {
-            if (CLIENT_FLAG_TEST(c2, CLIENT_FLAG_FULLSCREEN))
-            {
-                clientSetLayer (c2, c2->fullscreen_old_layer);
-            }
-            else
-            {
-                clientSetLayer (c2, WIN_LAYER_NORMAL);
-            }
-            if (c)
-            {
-                clientRaise(c);
-                clientPassGrabButton1 (c);
-            }
-        }
-        TRACE ("redrawing previous focus client \"%s\" (0x%lx)", c2->name,
-            c2->window);
-        frameDraw (c2, FALSE, FALSE);
-    }
-    data[1] = None;
-    XChangeProperty (dpy, root, net_active_window, XA_WINDOW, 32,
-        PropModeReplace, (unsigned char *) data, 2);
 }
 
 Client *
