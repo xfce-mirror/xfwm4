@@ -1,4 +1,4 @@
-xfwm4_plugindir = $(libdir)/libxfce4mcs/settings/
+xfwm4_plugindir = $(libdir)/xfce-mcs-manager/plugins
 
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 xfwm4_plugin_la_LDFLAGS =  -module -avoid-version

@@ -769,7 +769,7 @@ gboolean initSettings(void)
         return FALSE;
     }
 
-    if(!mcs_client_check_manager(dpy, screen))
+    if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
     {
 	g_warning("MCS manager not running");
     }
