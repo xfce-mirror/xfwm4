@@ -1968,7 +1968,7 @@ clientShowSingle (Client * c, gboolean change_state)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
-        compositorWindowMap (display_info, c->frame);
+        compositorMapWindow (display_info, c->frame);
         XMapWindow (display_info->dpy, c->frame);
         XMapWindow (display_info->dpy, c->window);
         /* Adjust to urgency state as the window is visible */
@@ -2025,7 +2025,7 @@ clientHideSingle (Client * c, gboolean change_state)
     myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c, c);
-    compositorWindowUnmap (display_info, c->frame);
+    compositorUnmapWindow (display_info, c->frame);
     XUnmapWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {

@@ -383,4 +383,3 @@ myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
 
     return NULL;
 }
-

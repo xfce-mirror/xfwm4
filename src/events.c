@@ -1030,7 +1030,7 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
     }
     else if (myDisplayGetScreenFromRoot (display_info, ev->event))
     {
-        compositorWindowMap (display_info, ev->window);
+        compositorMapWindow (display_info, ev->window);
     }
 }
 
@@ -1105,7 +1105,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
     }
     else
     {
-        compositorWindowUnmap (display_info, ev->window);
+        compositorUnmapWindow (display_info, ev->window);
     }
 }
 
@@ -1637,7 +1637,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     {
         screen_info = c->screen_info;
         is_transient = clientIsValidTransientOrModal (c);
-	
+        
         if ((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);

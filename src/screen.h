@@ -123,6 +123,8 @@ struct _ScreenInfo
 #endif
 
 #ifdef HAVE_COMPOSITOR
+    gboolean compositor_active;
+
     GList *cwindows;
 
     gaussian_conv *gaussianMap;
