@@ -3,7 +3,7 @@ static char * title_3_inactive_xpm[] = {
 "20 19 19 1",
 " 	g None",
 ".	g #000000",
-"+	g #DEDEDE",
+"+	g #FFFFFF",
 "@	g #D9D9D9",
 "#	g #D4D4D4",
 "$	g #FFFFFF s inactive_color_1",
