@@ -302,7 +302,7 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
         menu_open = menu->menu;
         pushEventFilter(menu_filter, NULL);
 	menu->tmp_event_window = setTmpEventWin(NoEventMask);
-        gtk_menu_popup(GTK_MENU(menu->menu), NULL, getDefaultGtkWidget(), popup_position_func, pt, button, timestamp);
+        gtk_menu_popup(GTK_MENU(menu->menu), NULL, NULL, popup_position_func, pt, button, timestamp);
 	
         if(!GTK_MENU_SHELL(GTK_MENU(menu->menu))->have_xgrab)
         {
