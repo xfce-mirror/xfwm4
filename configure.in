@@ -48,6 +48,7 @@ themes/cruxish/Makefile
 themes/eazel-blue/Makefile
 themes/gorilla/Makefile
 themes/gtk/Makefile
+themes/iceg/Makefile
 themes/kde/Makefile
 themes/kindaker/Makefile
 themes/linea/Makefile
