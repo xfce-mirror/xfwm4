@@ -1095,7 +1095,7 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         GtkTreeSelection *selection;
         GtkTreeModel *model;
         GtkTreeIter iter;
-        gchar *shortcut_name = NULL;
+        gchar *command = NULL;
         gchar *shortcut = NULL;
         GtkWidget *dialog;
 	GtkWidget *hbox;
@@ -1104,14 +1104,20 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         GtkWidget *label;
         gchar *dialog_text = NULL;
 
-
         /* Get shortcut name */
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         gtk_tree_selection_get_selected (selection, &model, &iter);
-        gtk_tree_model_get (model, &iter, COLUMN_COMMAND, &shortcut_name, -1);
+        gtk_tree_model_get (model, &iter, COLUMN_COMMAND, &command, -1);
         gtk_tree_model_get (model, &iter, COLUMN_SHORTCUT, &shortcut, -1);
 
-        dialog_text = g_strdup_printf ("<i>%s</i>\n<b>%s</b>", _("Compose shortcut for command :"), shortcut_name);
+	if (strcmp (command, "none") == 0)
+	{
+	    g_free (shortcut);
+	    g_free (command);
+	    return;
+	}
+	  
+        dialog_text = g_strdup_printf ("<i>%s</i>\n<b>%s</b>", _("Compose shortcut for command :"), command);
 
         /* Create dialog */
         dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
@@ -1147,7 +1153,8 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         {
             g_warning (_("Cannot grab the keyboard"));
             g_free (dialog_text);
-            g_free (shortcut_name);
+	    g_free (shortcut);
+            g_free (command);
             return;
         }
 
@@ -1163,7 +1170,7 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
 
         gtk_widget_destroy (dialog);
         g_free (dialog_text);
-        g_free (shortcut_name);
+        g_free (command);
         g_free (shortcut);
     }
 }
