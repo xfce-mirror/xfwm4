@@ -62,6 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfwm4/themes/agua
 %{_datadir}/xfwm4/themes/b5
 %{_datadir}/xfwm4/themes/b6
+%{_datadir}/xfwm4/themes/biz
 %{_datadir}/xfwm4/themes/coldsteel
 %{_datadir}/xfwm4/themes/coolclean
 %{_datadir}/xfwm4/themes/crux
