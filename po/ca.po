@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2003-07-08 22:46+0200\n"
+"POT-Creation-Date: 2003-07-16 11:37+0200\n"
 "PO-Revision-Date: 2003-07-15 23:59+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -14,8 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins_plugin.c:133
-#: mcs-plugin/margins_plugin.c:235
+#: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
 msgid "Workspace Margins"
 msgstr "Marges de l'àrea de treball"
@@ -25,8 +24,11 @@ msgid "Adjust workspace margins"
 msgstr "Ajusta els marges de l'àrea de treball"
 
 #: mcs-plugin/margins_plugin.c:241
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Els marges són àrees en les vores de la pantalla on cap finestra es col·locarà"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Els marges són àrees en les vores de la pantalla on cap finestra es "
+"col·locarà"
 
 #: mcs-plugin/margins_plugin.c:281
 msgid "Left :"
@@ -108,8 +110,7 @@ msgstr "Ocult"
 msgid "Font Selection Dialog"
 msgstr "Diàleg de selecció del tipus de lletra"
 
-#: mcs-plugin/xfwm4_plugin.c:1274
-#: mcs-plugin/xfwm4_plugin.c:1845
+#: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
 msgstr "Gestor de Finestres"
 
@@ -222,13 +223,11 @@ msgstr "Alinea les finestres amb les altres finestres"
 msgid "Distance :"
 msgstr "Distància:"
 
-#: mcs-plugin/xfwm4_plugin.c:1569
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1569 mcs-plugin/xfwm4_plugin.c:1638
 msgid "Small"
 msgstr "Menut"
 
-#: mcs-plugin/xfwm4_plugin.c:1577
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1577 mcs-plugin/xfwm4_plugin.c:1646
 msgid "Wide"
 msgstr "Ample"
 
@@ -238,11 +237,15 @@ msgstr "Ajusta les àrees de treball"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Salta de àrea de treball quan el punter assoleixi un dels laterals de la pantalla"
+msgstr ""
+"Salta de àrea de treball quan el punter assoleixi un dels laterals de la "
+"pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Ajusta les àrees de treball quan s'arrossegui una finestra fora de la pantalla"
+msgstr ""
+"Ajusta les àrees de treball quan s'arrossegui una finestra fora de la "
+"pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
 msgid "Edge Resistance :"
@@ -264,7 +267,6 @@ msgstr "Mostra el contingut de les finestres quan es mouen"
 msgid "Double click action"
 msgstr "Acció del doble clic"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
@@ -278,7 +280,7 @@ msgstr "Avançat"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
-#: src/events.c:1311
+#: src/events.c:1317
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operació encara no suportada\n"
@@ -402,9 +404,10 @@ msgstr "%s: Faltes valors en els fitxers per defecte"
 #: src/settings.c:1098
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el valor rc: %i"
+msgstr ""
+"%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el "
+"valor rc: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Canvia a..."
-

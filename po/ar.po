@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-07-08 22:46+0200\n"
+"POT-Creation-Date: 2003-07-16 11:37+0200\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -272,7 +272,6 @@ msgstr "عرض محتوى النوافذ عند التنقل"
 msgid "Double click action"
 msgstr "المهمة عند النقر مرتين "
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "تنفيذ المهمة التالية عند النقر مرتين على عمود العنوان"
@@ -286,7 +285,7 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
-#: src/events.c:1311
+#: src/events.c:1317
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"

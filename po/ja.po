@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-08 22:46+0200\n"
+"POT-Creation-Date: 2003-07-16 11:37+0200\n"
 "PO-Revision-Date: 2003-05-27 22:00+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: none <none@none>\n"
@@ -262,7 +262,6 @@ msgstr "移動時のウィンドウ表示"
 msgid "Double click action"
 msgstr "ダブルクリック動作"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "タイトルバーをダブルクリックした時の動作 :"
@@ -276,7 +275,7 @@ msgstr ""
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1311
+#: src/events.c:1317
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: この操作はサポート外です\n"

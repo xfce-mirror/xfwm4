@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-08 22:46+0200\n"
+"POT-Creation-Date: 2003-07-16 11:37+0200\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -271,7 +271,6 @@ msgstr "Mostrar contenido de la ventana cuando se mueva"
 msgid "Double click action"
 msgstr "Acción al pinchar dos veces"
 
-#. XXX
 #: mcs-plugin/xfwm4_plugin.c:1701
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Acción a realizar cuando se pinche dos veces la barra de título :"
@@ -285,7 +284,7 @@ msgstr "Avanzado"
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state sin soporte (ventana %#lx)"
 
-#: src/events.c:1311
+#: src/events.c:1317
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operación no soportada (aún)\n"
