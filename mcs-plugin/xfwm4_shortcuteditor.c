@@ -1115,9 +1115,6 @@ cb_compose_dialog_key_press (GtkWidget * widget, GdkEventKey * event, gpointer d
     gchar *accelerator;
     gchar **shortcut;
 
-    /* Release keyboard */
-    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
-
     if (is_modifier (event->hardware_keycode))
       return TRUE;
 
@@ -1134,6 +1131,9 @@ cb_compose_dialog_key_press (GtkWidget * widget, GdkEventKey * event, gpointer d
 
     if (keyval != event->keyval && (consumed_modifiers & GDK_SHIFT_MASK))
         consumed_modifiers &= ~GDK_SHIFT_MASK;
+
+    /* Release keyboard */
+    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
     accelerator = gtk_accelerator_name (keyval, event->state & ~consumed_modifiers);
 
