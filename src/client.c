@@ -4896,12 +4896,12 @@ clientSetFocus (Client * c, unsigned short flags)
         {
             pending_focus = c;
             XSetInputFocus (dpy, c->window, RevertToNone, CurrentTime);
-            XFlush (dpy);
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             sendClientMessage (c->window, wm_protocols, wm_takefocus, CurrentTime);
         }
+        XFlush (dpy);
     }
     else
     {
