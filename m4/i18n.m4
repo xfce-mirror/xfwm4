@@ -14,6 +14,9 @@ AC_DEFUN([BM_I18N],
 
   AM_GLIB_GNU_GETTEXT
 
+  dnl This is required on some linux systems
+  AC_CHECK_FUNC([bind_textdomain_codeset])
+
   AC_MSG_CHECKING([for locales directory])
   AC_ARG_WITH([locales-dir],
     AC_HELP_STRING([--with-locales-dir=DIR], [Install locales into DIR]),

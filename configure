@@ -1734,8 +1734,9 @@ DEPDIR="${am__leading_dot}deps"
 
 am_make=${MAKE-make}
 cat > confinc << 'END'
-doit:
+am__doit:
 	@echo done
+.PHONY: am__doit
 END
 # If we don't find an include directive, just comment out the code.
 echo "$as_me:$LINENO: checking for style of include used by $am_make" >&5
@@ -3027,14 +3028,13 @@ fi
 rm -f conftest*
 
 
-
-        echo "$as_me:$LINENO: checking for strerror in -lcposix" >&5
-echo $ECHO_N "checking for strerror in -lcposix... $ECHO_C" >&6
-if test "${ac_cv_lib_cposix_strerror+set}" = set; then
+echo "$as_me:$LINENO: checking for library containing strerror" >&5
+echo $ECHO_N "checking for library containing strerror... $ECHO_C" >&6
+if test "${ac_cv_search_strerror+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lcposix  $LIBS"
+  ac_func_search_save_LIBS=$LIBS
+ac_cv_search_strerror=no
 cat >conftest.$ac_ext <<_ACEOF
 #line $LINENO "configure"
 /* confdefs.h.  */
@@ -3070,23 +3070,69 @@ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_lib_cposix_strerror=yes
+  ac_cv_search_strerror="none required"
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-ac_cv_lib_cposix_strerror=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-echo "$as_me:$LINENO: result: $ac_cv_lib_cposix_strerror" >&5
-echo "${ECHO_T}$ac_cv_lib_cposix_strerror" >&6
-if test $ac_cv_lib_cposix_strerror = yes; then
-  LIBS="$LIBS -lcposix"
-fi
+if test "$ac_cv_search_strerror" = no; then
+  for ac_lib in cposix; do
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
 
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char strerror ();
+int
+main ()
+{
+strerror ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_search_strerror="-l$ac_lib"
+break
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
 
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+  done
+fi
+LIBS=$ac_func_search_save_LIBS
+fi
+echo "$as_me:$LINENO: result: $ac_cv_search_strerror" >&5
+echo "${ECHO_T}$ac_cv_search_strerror" >&6
+if test "$ac_cv_search_strerror" != no; then
+  test "$ac_cv_search_strerror" = "none required" || LIBS="$ac_cv_search_strerror $LIBS"
+
+fi
 
 echo "$as_me:$LINENO: checking for ANSI C header files" >&5
 echo $ECHO_N "checking for ANSI C header files... $ECHO_C" >&6
@@ -4679,7 +4725,7 @@ irix5* | irix6*)
 # This must be Linux ELF.
 linux-gnu*)
   case $host_cpu in
-  alpha* | hppa* | i*86 | mips | mipsel | powerpc* | sparc* | ia64* )
+  alpha* | hppa* | i*86 | powerpc* | sparc* | ia64* )
     lt_cv_deplibs_check_method=pass_all ;;
   *)
     # glibc up to 2.1.1 does not perform some relocations on ARM
@@ -5079,7 +5125,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5082 "configure"' > conftest.$ac_ext
+  echo '#line 5128 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -6721,6 +6767,80 @@ echo "${ECHO_T}$LINGUAS" >&6
    rm -f po/POTFILES
    sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$posrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
 	< $srcdir/po/POTFILES.in > po/POTFILES
+
+
+    echo "$as_me:$LINENO: checking for bind_textdomain_codeset" >&5
+echo $ECHO_N "checking for bind_textdomain_codeset... $ECHO_C" >&6
+if test "${ac_cv_func_bind_textdomain_codeset+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char bind_textdomain_codeset (); below.
+    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+    <limits.h> exists even on freestanding compilers.  */
+#ifdef __STDC__
+# include <limits.h>
+#else
+# include <assert.h>
+#endif
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char bind_textdomain_codeset ();
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_bind_textdomain_codeset) || defined (__stub___bind_textdomain_codeset)
+choke me
+#else
+char (*f) () = bind_textdomain_codeset;
+#endif
+#ifdef __cplusplus
+}
+#endif
+
+int
+main ()
+{
+return f != bind_textdomain_codeset;
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_func_bind_textdomain_codeset=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_func_bind_textdomain_codeset=no
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+fi
+echo "$as_me:$LINENO: result: $ac_cv_func_bind_textdomain_codeset" >&5
+echo "${ECHO_T}$ac_cv_func_bind_textdomain_codeset" >&6
 
 
   echo "$as_me:$LINENO: checking for locales directory" >&5
@@ -8368,23 +8488,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 0.0.23" >&5
-echo $ECHO_N "checking for libxfcegui4-1.0 >= 0.0.23... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 3.91.0" >&5
+echo $ECHO_N "checking for libxfcegui4-1.0 >= 3.91.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 0.0.23" ; then
+        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 3.91.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCEGUI4_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCEGUI4_CFLAGS... $ECHO_C" >&6
-            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 0.0.23"`
+            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 3.91.0"`
             echo "$as_me:$LINENO: result: $LIBXFCEGUI4_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCEGUI4_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCEGUI4_LIBS" >&5
 echo $ECHO_N "checking LIBXFCEGUI4_LIBS... $ECHO_C" >&6
-            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 0.0.23"`
+            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 3.91.0"`
             echo "$as_me:$LINENO: result: $LIBXFCEGUI4_LIBS" >&5
 echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
         else
@@ -8392,7 +8512,7 @@ echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
             LIBXFCEGUI4_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 0.0.23"`
+            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 3.91.0"`
             echo $LIBXFCEGUI4_PKG_ERRORS
         fi
 
@@ -8407,12 +8527,12 @@ echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 0.0.23) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 0.0.23) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 3.91.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCEGUI4_REQUIRED_VERSION=0.0.23
+  LIBXFCEGUI4_REQUIRED_VERSION=3.91.0
 
 
 
