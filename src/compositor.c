@@ -1523,7 +1523,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
     if ((damage != None) && (cw->extents != None))
     {
-        XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, cw->extents);
+        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
     }
 
     if ((cw->attr.width != width) || (cw->attr.height != height))
