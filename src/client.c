@@ -299,8 +299,11 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
     {
         if(((action == NET_WM_STATE_ADD) && !(c->hidden)) || ((action == NET_WM_STATE_REMOVE) && (c->hidden)) || (action == NET_WM_STATE_TOGGLE))
         {
-            clientHide(c, True);
-        }
+            if (CAN_HIDE_WINDOW(c))
+	    {
+	        clientHide(c, True);
+            }
+	}
     }
 #endif
 
@@ -3424,8 +3427,11 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         switch (b)
         {
             case HIDE_BUTTON:
-                clientHide(c, True);
-                break;
+                if (CAN_HIDE_WINDOW(c))
+		{
+		    clientHide(c, True);
+                }
+		break;
             case CLOSE_BUTTON:
                 if(bev->button == Button3)
                 {
@@ -3437,18 +3443,21 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
                 }
                 break;
             case MAXIMIZE_BUTTON:
-                if(bev->button == Button1)
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                }
-                else if(bev->button == Button2)
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
-                }
-                else if(bev->button == Button3)
-                {
-                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
-                }
+                if (CAN_MAXIMIZE_WINDOW(c))
+		{
+		    if(bev->button == Button1)
+                    {
+                	clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+                    }
+                    else if(bev->button == Button2)
+                    {
+                	clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
+                    }
+                    else if(bev->button == Button3)
+                    {
+                	clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
+                    }
+		}
                 break;
             case SHADE_BUTTON:
                 clientToggleShaded(c);

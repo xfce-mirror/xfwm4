@@ -206,17 +206,29 @@ static inline void handleKeyPress(XKeyEvent * ev)
                 clientClose(c);
                 break;
             case KEY_HIDE_WINDOW:
-                clientHide(c, True);
-                break;
+	        if (CAN_HIDE_WINDOW(c))
+		{
+                    clientHide(c, True);
+                }
+		break;
             case KEY_MAXIMIZE_WINDOW:
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                break;
+	        if (CAN_MAXIMIZE_WINDOW(c))
+		{
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+                }
+		break;
             case KEY_MAXIMIZE_VERT:
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
-                break;
+	        if (CAN_MAXIMIZE_WINDOW(c))
+		{
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_VERT);
+                }
+		break;
             case KEY_MAXIMIZE_HORIZ:
-                clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
-                break;
+	        if (CAN_MAXIMIZE_WINDOW(c))
+		{
+                    clientToggleMaximized(c, WIN_STATE_MAXIMIZED_HORIZ);
+                }
+		break;
             case KEY_SHADE_WINDOW:
                 clientToggleShaded(c);
                 break;
@@ -457,14 +469,20 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 switch (double_click_action)
                 {
                     case ACTION_MAXIMIZE:
-                        clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
-                        break;
+		        if (CAN_MAXIMIZE_WINDOW(c))
+			{
+                            clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
+                        }
+			break;
                     case ACTION_SHADE:
                         clientToggleShaded(c);
                         break;
                     case ACTION_HIDE:
-                        clientHide(c, True);
-                        break;
+		        if (CAN_HIDE_WINDOW(c))
+			{
+                            clientHide(c, True);
+                        }
+			break;
                 }
             }
         }
@@ -812,8 +830,11 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         if((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             DBG("client \"%s\" (%#lx) has received a wm_change_state event\n", c->name, c->window);
-            clientHide(c, True);
-        }
+            if (CAN_HIDE_WINDOW(c))
+	    {
+	        clientHide(c, True);
+            }
+	}
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/shaded event\n", c->name, c->window);
@@ -1020,13 +1041,13 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
             break;
         case MENU_OP_MAXIMIZE:
         case MENU_OP_UNMAXIMIZE:
-            if(c)
+            if((c) && CAN_MAXIMIZE_WINDOW(c))
             {
                 clientToggleMaximized(c, WIN_STATE_MAXIMIZED);
             }
             break;
         case MENU_OP_MINIMIZE:
-            if(c)
+            if((c) && CAN_HIDE_WINDOW(c))
             {
                 clientHide(c, True);
             }
