@@ -1053,7 +1053,7 @@ static inline Client *clientGetTopMost(int layer, Client * exclude)
         if(c)
         {
             DBG("*** stack window [%i]=(%lx) \"%s\", layer %i\n", i, c->window, c->name, c->win_layer);
-            if((c->visible) && (!exclude || (c != exclude)))
+            if(!exclude || (c != exclude))
             {
                 if(c->win_layer <= layer)
                 {
@@ -1085,7 +1085,7 @@ static inline Client *clientGetBottomMost(int layer, Client * exclude)
         if(c)
         {
             DBG("*** stack window [%i]=(%lx) \"%s\", layer %i\n", i, c->window, c->name, c->win_layer);
-            if((c->visible) && (!exclude || (c != exclude)))
+            if(!exclude || (c != exclude))
             {
                 if(c->win_layer >= layer)
                 {
