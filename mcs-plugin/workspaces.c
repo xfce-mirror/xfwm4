@@ -180,7 +180,14 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
     save_workspaces_channel (mcs_manager);
 
     /* check for changes made by other programs */
-    watch_workspaces_hint (mcs_manager);
+    /* XXX I don't think this should be called at all.
+       Problem is when the module is unloaded, the callback
+       remains and crashes the MCS manager on workspace count
+       change.
+       Safer to remove it for now.
+       
+       watch_workspaces_hint (mcs_manager);
+     */
 }
 
 static void
