@@ -41,6 +41,7 @@
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
+#include "pixmap.h"
 #include "settings.h"
 #include "pixmap.h"
 
@@ -64,7 +65,8 @@
 #define UPDATE_KEYGRABS			(1<<0)
 #define UPDATE_FRAME			(1<<1)
 #define UPDATE_GRAVITY			(1<<2)
-#define UPDATE_ALL			(UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY)
+#define UPDATE_CACHE			(1<<3)
+#define UPDATE_ALL			(UPDATE_KEYGRABS | UPDATE_FRAME | UPDATE_GRAVITY | UPDATE_CACHE)
 
 #define ACTIVE				0
 #define INACTIVE			1
@@ -137,7 +139,17 @@ typedef enum
 }
 WindowType;
 
+
+typedef struct _ClientPixmapCache ClientPixmapCache;
 typedef struct _Client Client;
+
+struct _ClientPixmapCache
+{
+    MyPixmap pm_title[2]; 
+    MyPixmap pm_sides[3][2];
+    int previous_width;
+    int previous_height;
+};
 
 struct _Client
 {
@@ -189,6 +201,8 @@ struct _Client
     char *startup_id;
 #endif
     unsigned long client_flag;
+    /* Pixmap caching */
+    ClientPixmapCache pm_cache;
 };
 
 extern Client *clients;
@@ -202,6 +216,7 @@ void clientCoordGravitate(Client *, int, int *, int *);
 void clientGravitate(Client *, int);
 void clientConfigure(Client *, XWindowChanges *, int);
 void clientUpdateMWMHints(Client *);
+void clientClearPixmapCache(Client *);
 void clientFrame(Window);
 void clientUnframe(Client *, int);
 void clientFrameAll();

@@ -115,19 +115,19 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
                 }
                 else if(!strcmp(name, "Xfwm/ThemeName"))
                 {
-                    reloadSettings(UPDATE_GRAVITY);
+                    reloadSettings(UPDATE_GRAVITY | UPDATE_CACHE);
                 }
                 else if(!strcmp(name, "Xfwm/ButtonLayout"))
                 {
-                    reloadSettings(UPDATE_FRAME);
+                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
                 }
                 if(!strcmp(name, "Xfwm/TitleAlign"))
                 {
-                    reloadSettings(UPDATE_FRAME);
+                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
                 }
                 if(!strcmp(name, "Xfwm/TitleFont"))
                 {
-                    reloadSettings(UPDATE_FRAME);
+                    reloadSettings(UPDATE_FRAME | UPDATE_CACHE);
                 }
             }
             break;

@@ -991,6 +991,10 @@ void clientUpdateAllFrames(int mask)
             clientUngrabKeys(c);
             clientGrabKeys(c);
         }
+        if(mask & UPDATE_CACHE)
+        {
+            clientClearPixmapCache(c);
+        }
         if(mask & UPDATE_GRAVITY)
         {
             clientGravitate(c, REMOVE);
@@ -1003,7 +1007,7 @@ void clientUpdateAllFrames(int mask)
         }
         if(mask & UPDATE_FRAME)
         {
-            frameDraw(c);
+            frameDraw(c, FALSE);
         }
     }
 }
@@ -1772,7 +1776,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 
     if(mask & (CWWidth | CWHeight))
     {
-        frameDraw(c);
+        frameDraw(c, FALSE);
     }
     if(mask)
     {
@@ -1902,6 +1906,20 @@ static inline void clientFree(Client * c)
     free(c);
 }
 
+void clientClearPixmapCache(Client *c)
+{
+    g_return_if_fail(c != NULL);
+
+    freePixmap(dpy, &(c->pm_cache.pm_title[ACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_title[INACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]));
+    freePixmap(dpy, &(c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]));
+}
+
 void clientFrame(Window w)
 {
     XWindowAttributes attr;
@@ -1966,6 +1984,18 @@ void clientFrame(Window w)
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
 
+    /* Initialize pixmap caching */
+    initPixmap(&(c->pm_cache.pm_title[ACTIVE]));
+    initPixmap(&(c->pm_cache.pm_title[INACTIVE]));
+    initPixmap(&(c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]));
+    initPixmap(&(c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]));
+    initPixmap(&(c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]));
+    initPixmap(&(c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]));
+    initPixmap(&(c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]));
+    initPixmap(&(c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]));
+    c->pm_cache.previous_width = -1;
+    c->pm_cache.previous_height = -1;
+    
     for(i = 0; i < BUTTON_COUNT; i++)
     {
         c->button_pressed[i] = False;
@@ -2127,12 +2157,12 @@ void clientFrame(Window w)
         }
         else
         {
-            frameDraw(c);
+            frameDraw(c, FALSE);
         }
     }
     else
     {
-        frameDraw(c);
+        frameDraw(c, FALSE);
         setWMState(dpy, c->window, IconicState);
         clientSetNetState(c);
     }
@@ -2164,6 +2194,7 @@ void clientUnframe(Client * c, int remap)
     }
     XReparentWindow(dpy, c->window, root, c->x, c->y);
     XDestroyWindow(dpy, c->frame);
+    clientClearPixmapCache(c);
     clientRemoveFromList(c);
     if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_STRUTS))
     {
@@ -2805,7 +2836,7 @@ void clientUpdateFocus(Client * c)
     if(c2)
     {
         DBG("redrawing previous focus client \"%s\" (%#lx)\n", c2->name, c2->window);
-        frameDraw(c2);
+        frameDraw(c2, FALSE);
     }
     data[1] = None;
     XChangeProperty(dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 2);
@@ -2863,7 +2894,7 @@ void clientSetFocus(Client * c, int sort)
     if(c2)
     {
         DBG("redrawing previous focus client \"%s\" (%#lx)\n", c2->name, c2->window);
-        frameDraw(c2);
+        frameDraw(c2, FALSE);
     }
     data[1] = None;
     XChangeProperty(dpy, root, net_active_window, XA_WINDOW, 32, PropModeReplace, (unsigned char *)data, 2);
@@ -3604,12 +3635,12 @@ static GtkToXEventFilterStatus clientButtonPress_event_filter(XEvent * xevent, g
     if(xevent->type == EnterNotify)
     {
         c->button_pressed[b] = True;
-        frameDraw(c);
+        frameDraw(c, FALSE);
     }
     else if(xevent->type == LeaveNotify)
     {
         c->button_pressed[b] = False;
-        frameDraw(c);
+        frameDraw(c, FALSE);
     }
     else if(xevent->type == ButtonRelease)
     {
@@ -3670,7 +3701,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     passdata.b = b;
 
     c->button_pressed[b] = True;
-    frameDraw(c);
+    frameDraw(c, FALSE);
 
     DBG("entering button press loop\n");
     pushEventFilter(clientButtonPress_event_filter, &passdata);
@@ -3683,7 +3714,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     if(c->button_pressed[b])
     {
         c->button_pressed[b] = False;
-        frameDraw(c);
+        frameDraw(c, FALSE);
         switch (b)
         {
             case HIDE_BUTTON:
