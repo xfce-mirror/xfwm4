@@ -3825,7 +3825,8 @@ clientCycle (Client * c, XEvent * ev)
     passdata.c = clientGetNext (c, passdata.cycle_range);
 
     /* If there is one single client, and if it's eligible for focus, use it */
-    if ((passdata.c == NULL) && clientSelectMask (c, passdata.cycle_range, WINDOW_REGULAR_FOCUSABLE))
+    if ((passdata.c == NULL) && (c != clientGetFocus()) && 
+        clientSelectMask (c, passdata.cycle_range, WINDOW_REGULAR_FOCUSABLE))
     {
         passdata.c = c;
     }
