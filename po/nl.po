@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,38 +356,32 @@ msgid "Uns_tick"
 msgstr "_Loslaten"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "V_erplaatsen"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "_Grootte veranderen"
+#, fuzzy
+msgid "Send to..."
+msgstr "Wisselen naar ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "_Wisselen"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_Sluiten"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Vernietigen"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "_Bureaublad"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "A_fsluiten"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "_Herstarten"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "_Bureaublad"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
@@ -430,6 +424,15 @@ msgstr "%s: Aantal bureaubladen niet ingesteld, waarde uit rc gebruiken: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wisselen naar ..."
+
+#~ msgid "_Move"
+#~ msgstr "V_erplaatsen"
+
+#~ msgid "_Resize"
+#~ msgstr "_Grootte veranderen"
+
+#~ msgid "S_witch"
+#~ msgstr "_Wisselen"
 
 #~ msgid "Misc."
 #~ msgstr "Overig"

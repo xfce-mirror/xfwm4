@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-05-11 13:58+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -367,43 +367,33 @@ msgstr "No _omnipresent"
 
 #: src/menu.c:51
 #, fuzzy
-msgid "_Move"
-msgstr "Mou"
-
-#: src/menu.c:52
-#, fuzzy
-msgid "_Resize"
-msgstr "_Canvia de mida"
+msgid "Send to..."
+msgstr "Canvia a ..."
 
 #: src/menu.c:53
-#, fuzzy
-msgid "S_witch"
-msgstr "Can_via"
-
-#: src/menu.c:55
 #, fuzzy
 msgid "_Close"
 msgstr "_Tanca"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Destrueix"
 
 #: src/menu.c:59
 #, fuzzy
-msgid "Wor_kspace"
-msgstr "À_rea de treball"
-
-#: src/menu.c:62
-#, fuzzy
 msgid "_Quit"
 msgstr "_Surt"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Reinicia"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "À_rea de treball"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut capturar el punter\n"
@@ -448,6 +438,18 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Canvia a ..."
+
+#, fuzzy
+#~ msgid "_Move"
+#~ msgstr "Mou"
+
+#, fuzzy
+#~ msgid "_Resize"
+#~ msgstr "_Canvia de mida"
+
+#, fuzzy
+#~ msgid "S_witch"
+#~ msgstr "Can_via"
 
 #~ msgid "Opaque move"
 #~ msgstr "Moviment opac"

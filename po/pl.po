@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Paweł Pastuła <pastulap@poczta.onet.pl>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -358,38 +358,32 @@ msgid "Uns_tick"
 msgstr "Odep_nij"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "Prz_esun"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "Z_mien rozmiar"
+#, fuzzy
+msgid "Send to..."
+msgstr "Przelacz do  ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "Przela_cz"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_Zamknij"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Zniszcz"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "Pu_lpit"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Wyjdź"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr ""
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "Pu_lpit"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nie uzyskalo wskaznika\n"
@@ -432,6 +426,15 @@ msgstr "%s: Liczba pulpitow nie ustawiona, uzywam wartosc: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Przelacz do  ..."
+
+#~ msgid "_Move"
+#~ msgstr "Prz_esun"
+
+#~ msgid "_Resize"
+#~ msgstr "Z_mien rozmiar"
+
+#~ msgid "S_witch"
+#~ msgstr "Przela_cz"
 
 #~ msgid "Misc."
 #~ msgstr "Różne"

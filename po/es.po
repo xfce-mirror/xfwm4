@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-01-23 22:06+0100\n"
 "Last-Translator: Jaime Buffery <the_new_guiri@yahoo.es>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -368,38 +368,32 @@ msgid "Uns_tick"
 msgstr "Des_pegar"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "_Mover"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "_Redimensionar"
+#, fuzzy
+msgid "Send to..."
+msgstr "Cambiar a ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "A_lt Tab"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Destruir"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "Esc_ritorio"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Salir"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "Esc_ritorio"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
@@ -444,6 +438,15 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Cambiar a ..."
+
+#~ msgid "_Move"
+#~ msgstr "_Mover"
+
+#~ msgid "_Resize"
+#~ msgstr "_Redimensionar"
+
+#~ msgid "S_witch"
+#~ msgstr "A_lt Tab"
 
 #~ msgid "Misc."
 #~ msgstr "Misc."

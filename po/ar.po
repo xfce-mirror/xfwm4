@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -358,38 +358,32 @@ msgid "Uns_tick"
 msgstr "ا_لغاء الصاق"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "_حرك"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "اعادة تحجي_م"
+#, fuzzy
+msgid "Send to..."
+msgstr "تغيير الى ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "_تغيير"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "اغل_ق"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "إبادة"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "_بيئة العمل"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "إ_غلاق"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "إعادة تشغيل"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "_بيئة العمل"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
@@ -432,6 +426,15 @@ msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم ق�
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "تغيير الى ..."
+
+#~ msgid "_Move"
+#~ msgstr "_حرك"
+
+#~ msgid "_Resize"
+#~ msgstr "اعادة تحجي_م"
+
+#~ msgid "S_witch"
+#~ msgstr "_تغيير"
 
 #~ msgid "Misc."
 #~ msgstr "متفرقات"

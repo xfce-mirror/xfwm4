@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-05-21 15:13+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <>\n"
@@ -352,38 +352,32 @@ msgid "Uns_tick"
 msgstr "Sab_it değil"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "T_aşı"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "Yeniden bo_yutlandır"
+#, fuzzy
+msgid "Send to..."
+msgstr "Geç ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "G_eç"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_Kapat"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Yok Et"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "Çalış_ma Alanı"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Çıkış"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Yeni_den Başlat"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "Çalış_ma Alanı"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
@@ -426,6 +420,15 @@ msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Geç ..."
+
+#~ msgid "_Move"
+#~ msgstr "T_aşı"
+
+#~ msgid "_Resize"
+#~ msgstr "Yeniden bo_yutlandır"
+
+#~ msgid "S_witch"
+#~ msgstr "G_eç"
 
 #~ msgid "Opaque move"
 #~ msgstr "Mat taşıma"

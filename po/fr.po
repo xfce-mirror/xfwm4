@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-01-22 00:36+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -350,38 +350,30 @@ msgid "Uns_tick"
 msgstr "Dé_coller"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "_Déplacer"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "_Redimensionner"
+msgid "Send to..."
+msgstr "Placer sur..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "_Basculer"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_Fermer"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Détruire"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "Espace de tra_vail"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Quitter"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: src/menu.c:336
+#: src/menu.c:163
+msgid "Workspace %i"
+msgstr "Bureau %i"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu n'a pas pu capturer le pointeur\n"
@@ -425,3 +417,12 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Basculer vers ..."
+
+#~ msgid "_Move"
+#~ msgstr "_Déplacer"
+
+#~ msgid "_Resize"
+#~ msgstr "_Redimensionner"
+
+#~ msgid "S_witch"
+#~ msgstr "_Basculer"

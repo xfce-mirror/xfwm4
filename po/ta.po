@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-05-08 22:59+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -351,38 +351,32 @@ msgid "Uns_tick"
 msgstr "´ð¼¡_§¾"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "_¿¸÷òÐ"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "_«Ç× Á¡üÚ"
+#, fuzzy
+msgid "Send to..."
+msgstr "þ¾ðÌ Á¡üÈ×õ ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "Á¡üÚ¸"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_ãÎ"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "«Æ¢"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "§Å¨Ä þ¼õ"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "_¦ÅÇ¢î¦ºø"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "ÁÚÀÊÔõ ¦¾¡¼íÌ"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "§Å¨Ä þ¼õ"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenuìÌ ÍðÊ¨Â ¦ÀÈ ÓÊÂÅ¢ø¨Ä\n"
@@ -425,6 +419,15 @@ msgstr "%s: §Å¨Ä-þ¼ ±ñ½¢ì¨¸ «¨Áì¸Å¢ø¨Ä, rc Á¾¢ô¨À �
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "þ¾ðÌ Á¡üÈ×õ ..."
+
+#~ msgid "_Move"
+#~ msgstr "_¿¸÷òÐ"
+
+#~ msgid "_Resize"
+#~ msgstr "_«Ç× Á¡üÚ"
+
+#~ msgid "S_witch"
+#~ msgstr "Á¡üÚ¸"
 
 #~ msgid "Opaque move"
 #~ msgstr "´Ç¢ À¡Â¡¾ ¿¸÷ò¾ø"

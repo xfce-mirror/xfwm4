@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-05-23 00:22+0200\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
 "PO-Revision-Date: 2003-01-25 01:20+0100\n"
 "Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
 "Language-Team: none <none@none>\n"
@@ -359,38 +359,32 @@ msgid "Uns_tick"
 msgstr "Nicht_klebrig"
 
 #: src/menu.c:51
-msgid "_Move"
-msgstr "_Bewegen"
-
-#: src/menu.c:52
-msgid "_Resize"
-msgstr "_Größenänderung"
+#, fuzzy
+msgid "Send to..."
+msgstr "Wechseln zu ..."
 
 #: src/menu.c:53
-msgid "S_witch"
-msgstr "Um_schalten"
-
-#: src/menu.c:55
 msgid "_Close"
 msgstr "_Schließen"
 
-#: src/menu.c:57
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Zerstören"
 
 #: src/menu.c:59
-msgid "Wor_kspace"
-msgstr "Virtueller_Desktop"
-
-#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: src/menu.c:63
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Neu starten"
 
-#: src/menu.c:336
+#: src/menu.c:163
+#, fuzzy, c-format
+msgid "Workspace %i"
+msgstr "Virtueller_Desktop"
+
+#: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenue hat Maus nicht gefunden\n"
@@ -435,6 +429,15 @@ msgstr ""
 #: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Wechseln zu ..."
+
+#~ msgid "_Move"
+#~ msgstr "_Bewegen"
+
+#~ msgid "_Resize"
+#~ msgstr "_Größenänderung"
+
+#~ msgid "S_witch"
+#~ msgstr "Um_schalten"
 
 #~ msgid "Misc."
 #~ msgstr "Verschiedenes"
