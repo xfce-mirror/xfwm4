@@ -112,6 +112,7 @@ static inline gboolean clientVisibleForGroup (Client * c, int workspace);
 static inline Client *clientGetNextTopMost (int layer, Client * exclude);
 static inline Client *clientGetTopMostFocusable (int layer, Client * exclude);
 static inline Client *clientGetBottomMost (int layer, Client * exclude);
+static inline Client *clientGetModalFor (Client * c);
 static inline void clientConstrainRatio (Client * c, int w1, int h1, int corner);
 static inline void clientConstrainPos (Client * c, gboolean show_full);
 static inline void clientKeepVisible (Client * c);
@@ -186,7 +187,8 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (c->transient_for != None);
+    return (((c->transient_for != root) && (c->transient_for != None)) || 
+            ((c->transient_for == root) && (c->group_leader != None)));
 }
 
 gboolean
@@ -197,8 +199,11 @@ clientSameGroup (Client * c1, Client * c2)
 
     TRACE ("entering clientSameGroup");
 
-    return ((c1 != c2) && (c1->group_leader != None)
-        && (c1->group_leader == c2->group_leader));
+    return ((c1 != c2) && 
+            (((c1->group_leader != None) && 
+              (c1->group_leader == c2->group_leader)) ||
+             (c1->group_leader == c2->window) ||
+             (c2->group_leader == c1->window)));
 }
 
 gboolean
@@ -230,7 +235,40 @@ clientIsTransientForGroup (Client * c)
 
     TRACE ("entering clientIsTransientForGroup");
 
-    return (c->transient_for == root);
+    return ((c->transient_for == root) && (c->group_leader != None));
+}
+
+gboolean
+clientIsModalFor (Client * c1, Client * c2)
+{
+    g_return_val_if_fail (c1 != NULL, FALSE);
+    g_return_val_if_fail (c2 != NULL, FALSE);
+
+    TRACE ("entering clientIsModalFor");
+
+    if (CLIENT_FLAG_TEST (c1, CLIENT_FLAG_STATE_MODAL))
+    {
+        if (c1->transient_for != root)
+        {
+            return (c1->transient_for == c2->window);
+        }
+        else
+        {
+            return (clientSameGroup (c1, c2));
+        }
+    }
+    return FALSE;
+}
+
+gboolean
+clientIsModalForGroup (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientIsTransientForGroup");
+
+    return (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL) && 
+            clientIsTransientForGroup (c));
 }
 
 gboolean
@@ -1145,13 +1183,7 @@ clientWindowType (Client * c)
     {
         TRACE ("no \"net\" atom detected");
         c->type = UNSET;
-    }
-    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
-    {
-        TRACE ("window is modal");
-        c->type = WINDOW_MODAL_DIALOG;
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_STICKY);
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
+        c->initial_layer = c->win_layer;
     }
     if (clientIsTransient (c))
     {
@@ -1159,13 +1191,21 @@ clientWindowType (Client * c)
 
         TRACE ("Window is a transient");
 
+        if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_STATE_MODAL))
+        {
+            TRACE ("window is modal transient");
+            c->type = WINDOW_MODAL_DIALOG;
+        }
+
         c2 = clientGetHighestForTransient (c);
         if (c2)
         {
             c->initial_layer = c2->win_layer;
             TRACE ("Applied layer is %i", c->initial_layer);
         }
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK);
+        CLIENT_FLAG_UNSET (c,
+            CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_STICK |
+            CLIENT_FLAG_STICKY);
     }
     if ((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
@@ -1739,7 +1779,7 @@ clientGetTopMostForGroup (Client * c)
     for (index = windows_stack; index; index = g_slist_next (index))
     {
         c2 = (Client *) index->data;
-        if (c2)
+        if (c2 != c)
         {
             if (clientSameGroup (c, c2))
             {
@@ -1862,6 +1902,32 @@ clientGetBottomMost (int layer, Client * exclude)
         }
     }
     return bot;
+}
+
+static inline Client *
+clientGetModalFor (Client * c)
+{
+    Client *c2;
+    Client *modal = NULL;
+    GSList *index;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering clientGetModalFor");
+
+    for (index = windows_stack; index; index = g_slist_next (index))
+    {
+        c2 = (Client *) index->data;
+        if (c2 != c)
+        {
+            if (clientIsModalFor (c2, c) && 
+                CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) &&
+                (c2->win_workspace == workspace))
+            {
+                modal = c2;
+            }
+        }
+    }
+    return modal;
 }
 
 /* ConstrainSize - adjust the given width and height to account for
@@ -2409,13 +2475,13 @@ clientGetMWMHints (Client * c, gboolean update)
 {
     PropMwmHints *mwm_hints;
     XWindowChanges wc;
-
+    
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
     
     TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name,
         c->window);
-
+    
     mwm_hints = getMotifHints (dpy, c->window);
     if (mwm_hints)
     {
@@ -2490,6 +2556,12 @@ clientGetMWMHints (Client * c, gboolean update)
     
     if (update)
     {
+        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER) && (c->legacy_fullscreen))
+        {
+            /* legacy app changed its decoration, put it back on regular layer */
+            c->legacy_fullscreen = FALSE;
+            clientSetLayer (c, WIN_LAYER_NORMAL);
+        }
         wc.x = c->x;
         wc.y = c->y;
         wc.width = c->width;
@@ -2908,26 +2980,27 @@ clientFrame (Window w, gboolean startup)
     c->group_leader = None;
     if (c->wmhints)
     {
-        c->group_leader = c->wmhints->window_group;
+        if (c->wmhints->flags & WindowGroupHint)
+        {
+            c->group_leader = c->wmhints->window_group;
+        }
     }
-    c->client_leader = None;
     c->client_leader = getClientLeader (dpy, c->window);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
     getWindowStartupId (dpy, c->window, &c->startup_id);
 #endif
-    c->ignore_unmap = 0;
-    if (attr.map_state == IsViewable)
+    if (attr.map_state != IsUnmapped)
     {
         /* This flag is used to avoid focus transition when reparenting */
         CLIENT_FLAG_SET (c, CLIENT_FLAG_REPARENTING);
-        /* 
-         * Reparenting generates an UnmapNotify event, followed by a MapNotify.
-         * Set ignore_unmap to 1 so that the window won't return to withdrawn
-         * state when unmapnotify is received
-         */
-        c->ignore_unmap++;
     }
+    /* 
+     * Reparenting generates an UnmapNotify event, followed by a MapNotify.
+     * Set ignore_unmap to 1 so that the window won't return to withdrawn
+     * state when unmapnotify is received
+     */
+    c->ignore_unmap = 1;
     c->type = UNSET;
     c->type_atom = None;
 
@@ -2962,6 +3035,7 @@ clientFrame (Window w, gboolean startup)
     clientGetInitialNetWmDesktop (c);
     clientGetNetStruts (c);
 
+    c->legacy_fullscreen = FALSE;
     /* Fullscreen for older legacy apps */
     if ((c->x == 0) && (c->y == 0) &&
         (c->width == MyDisplayFullWidth (dpy, screen)) &&
@@ -2970,6 +3044,7 @@ clientFrame (Window w, gboolean startup)
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
+        c->legacy_fullscreen = TRUE;
         c->win_layer = WIN_LAYER_ABOVE_DOCK;
     }
 
@@ -3044,7 +3119,7 @@ clientFrame (Window w, gboolean startup)
             clientShow (c, TRUE);
             if (!startup && params.focus_new && clientAcceptFocus (c))
             {
-                clientSetFocus (c, TRUE);
+                clientSetFocus (c, TRUE, FALSE);
             }
         }
     }
@@ -3132,7 +3207,7 @@ clientFrameAll ()
     windows_stack = NULL;
     client_focus = NULL;
 
-    clientSetFocus (NULL, FALSE);
+    clientSetFocus (NULL, FALSE, FALSE);
     XSync (dpy, FALSE);
     MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
@@ -3152,7 +3227,7 @@ clientFrameAll ()
         XFree (wins);
     }
     new_focus = clientGetTopMostFocusable (WIN_LAYER_NORMAL, NULL);
-    clientSetFocus (new_focus, TRUE);
+    clientSetFocus (new_focus, TRUE, FALSE);
 }
 
 void
@@ -3164,7 +3239,7 @@ clientUnframeAll ()
 
     TRACE ("entering clientUnframeAll");
 
-    clientSetFocus (NULL, FALSE);
+    clientSetFocus (NULL, FALSE, TRUE);
     XSync (dpy, 0);
     MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
@@ -3401,7 +3476,7 @@ clientPassFocus (Client * c)
             new_focus = clientGetTopMostFocusable (c->win_layer, c);
         }
     }
-    clientSetFocus (new_focus, TRUE);
+    clientSetFocus (new_focus, TRUE, TRUE);
 }
 
 void
@@ -3683,6 +3758,11 @@ clientLower (Client * c)
     TRACE ("lowering client \"%s\" (0x%lx)", c->name, c->window);
 
     if (g_slist_length (windows_stack) < 1)
+    {
+        return;
+    }
+
+    if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL))
     {
         return;
     }
@@ -4274,14 +4354,23 @@ clientUpdateFocus (Client * c)
 }
 
 void
-clientSetFocus (Client * c, gboolean sort)
+clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
 {
     Client *tmp;
-    Client *c2 = ((client_focus != c) ? client_focus : NULL);
+    Client *c2, *c3;
     unsigned long data[2];
 
     TRACE ("entering clientSetFocus");
-
+    
+    if ((c) && !(ignore_modal))
+    {
+        Client *c3 = clientGetModalFor (c);
+        if (c3)
+        {
+            c = c3;
+        }
+    }
+    c2 = ((client_focus != c) ? client_focus : NULL);
     if ((c) && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
@@ -5370,7 +5459,7 @@ clientCycle (Client * c)
     {
         clientShow (passdata.c, TRUE);
         clientRaise (passdata.c);
-        clientSetFocus (passdata.c, TRUE);
+        clientSetFocus (passdata.c, TRUE, FALSE);
     }
 }
 

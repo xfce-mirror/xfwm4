@@ -198,7 +198,7 @@ moveRequest (Client * c, XEvent * ev)
 static inline void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    clientSetFocus (c, TRUE);
+    clientSetFocus (c, TRUE, FALSE);
 
     if (CLIENT_FLAG_TEST_ALL (c,
             CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_IS_RESIZABLE))
@@ -512,7 +512,7 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    clientSetFocus (c, TRUE);
+    clientSetFocus (c, TRUE, FALSE);
     clientRaise (c);
 
     tclick = typeOfClick (c->frame, &copy_event, TRUE);
@@ -574,7 +574,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
         }
         else
         {
-            clientSetFocus (c, TRUE);
+            clientSetFocus (c, TRUE, FALSE);
             if (params.raise_on_click)
             {
                 clientRaise (c);
@@ -674,7 +674,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
-                clientSetFocus (c, TRUE);
+                clientSetFocus (c, TRUE, FALSE);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -706,7 +706,7 @@ handleButtonPress (XButtonEvent * ev)
                 }
                 else
                 {
-                    clientSetFocus (c, TRUE);
+                    clientSetFocus (c, TRUE, FALSE);
                     if (params.raise_on_click)
                     {
                         clientRaise (c);
@@ -770,7 +770,7 @@ handleButtonPress (XButtonEvent * ev)
         {
             if (ev->button == Button1)
             {
-                clientSetFocus (c, TRUE);
+                clientSetFocus (c, TRUE, FALSE);
                 if (params.raise_on_click)
                 {
                     clientRaise (c);
@@ -1043,7 +1043,7 @@ handleEnterNotify (XCrossingEvent * ev)
         TRACE ("EnterNotify window is \"%s\"", c->name);
         if ((c->type != WINDOW_DOCK) && (c->type != WINDOW_DESKTOP))
         {
-            clientSetFocus (c, TRUE);
+            clientSetFocus (c, TRUE, FALSE);
         }
     }
 }
@@ -1162,7 +1162,10 @@ handlePropertyNotify (XPropertyEvent * ev)
             c->wmhints = XGetWMHints (dpy, c->window);
             if (c->wmhints)
             {
-                c->group_leader = c->wmhints->window_group;
+                if (c->wmhints->flags & WindowGroupHint)
+                {
+                    c->group_leader = c->wmhints->window_group;
+                }
             }
         }
         else if (ev->atom == win_hints)
@@ -1328,7 +1331,7 @@ handleClientMessage (XClientMessageEvent * ev)
             workspaceSwitch (c->win_workspace, NULL);
             clientShow (c, TRUE);
             clientRaise (c);
-            clientSetFocus (c, TRUE);
+            clientSetFocus (c, TRUE, FALSE);
         }
     }
     else
