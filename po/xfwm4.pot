@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-17 19:27+0200\n"
+"POT-Creation-Date: 2004-06-18 07:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -680,11 +680,6 @@ msgstr ""
 #: src/settings.c:839
 #, c-format
 msgid "%s: Missing values in defaults file"
-msgstr ""
-
-#: src/settings.c:1125
-#, c-format
-msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""
 
 #: src/tabwin.c:69
