@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-09 13:59+0100\n"
-"PO-Revision-Date: 2004-09-28 01:05-0700\n"
+"PO-Revision-Date: 2005-01-24 17:24+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -327,23 +327,23 @@ msgstr "高级"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "您确实要删除这个快捷键设置主题吗？"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "添加快捷键设置主题"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "请为该主题输入名称："
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:154
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "已经存在一个同名的快捷键设置主题"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:160
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "您必须为该快捷键设置主题提供名称"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Close window"
@@ -410,24 +410,20 @@ msgid "Toggle fullscreen"
 msgstr "切换全屏显示方式"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:445
-#, fuzzy
 msgid "Upper workspace"
-msgstr "下一个工作区"
+msgstr "上方工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:450
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "下一个工作区"
+msgstr "下方工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:455
-#, fuzzy
 msgid "Left workspace"
-msgstr "下一个工作区"
+msgstr "左边工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:460
-#, fuzzy
 msgid "Right workspace"
-msgstr "下一个工作区"
+msgstr "右边工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:465
 msgid "Next workspace"
@@ -454,24 +450,20 @@ msgid "Move window to previous workspace"
 msgstr "移动窗口至上一个工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:576
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至上方工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:581
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至下方工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:586
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至左边工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:591
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至右边工作区"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:596
 msgid "Move window to workspace 1"
@@ -555,9 +547,8 @@ msgstr "组合快捷键"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1152
 #: mcs-plugin/xfwm4_shortcuteditor.c:1380
-#, fuzzy
 msgid "No shortcut"
-msgstr "组合快捷键"
+msgstr "无快捷键"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1274
