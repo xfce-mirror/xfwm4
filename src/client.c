@@ -183,7 +183,12 @@ static void clientGetNetState(Client * c)
                 c->win_state |= WIN_STATE_SHADED;
                 c->shaded = True;
             }
-            if(atoms[i] == net_wm_state_sticky)
+            else if(atoms[i] == net_wm_state_hidden)
+            {
+                DBG("clientGetNetState : hidden\n");
+                c->hidden = True;
+            }
+            else if(atoms[i] == net_wm_state_sticky)
             {
                 DBG("clientGetNetState : sticky\n");
                 c->win_state |= WIN_STATE_STICKY;
@@ -223,7 +228,7 @@ static void clientGetNetState(Client * c)
             }
             else
             {
-                g_message("Unmanaged net_wm_state\n");
+                g_message("Unmanaged net_wm_state (window %#lx)", c->window);
             }
 
             ++i;
@@ -260,6 +265,14 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         if(((action == NET_WM_STATE_ADD) && !(c->shaded)) || ((action == NET_WM_STATE_REMOVE) && (c->shaded)) || (action == NET_WM_STATE_TOGGLE))
         {
             clientToggleShaded(c);
+        }
+    }
+
+    if((first == net_wm_state_hidden) || (second == net_wm_state_hidden))
+    {
+        if(((action == NET_WM_STATE_ADD) && !(c->hidden)) || ((action == NET_WM_STATE_REMOVE) && (c->hidden)) || (action == NET_WM_STATE_TOGGLE))
+        {
+            clientHide(c, True);
         }
     }
 
@@ -2028,7 +2041,7 @@ void clientHideAll(Client * c)
 
     for(c2 = c->next, i = 0; i < client_count; c2 = c2->next, i++)
     {
-        if(CAN_HIDE_WINDOW(c2) && !(c2->transient_for) && (c2 != c))
+        if(CAN_HIDE_WINDOW(c2) && (c2->has_border) && !(c2->transient_for) && (c2 != c))
         {
             if(((c) && (c->transient_for != c2->window)) || (!c))
             {
