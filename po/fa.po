@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"POT-Creation-Date: 2004-10-23 21:39+0200\n"
 "PO-Revision-Date: 2004-09-30 08:16+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -193,7 +193,7 @@ msgid "Style"
 msgstr "سبک"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
-msgid "Windows shortcuts"
+msgid "Window shortcuts"
 msgstr "میانبرهای پنجره‌ها"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524

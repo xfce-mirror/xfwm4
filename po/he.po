@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"POT-Creation-Date: 2004-10-23 21:39+0200\n"
 "PO-Revision-Date: 2004-08-30 01:00+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
@@ -191,7 +191,7 @@ msgid "Style"
 msgstr "סגנון"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
-msgid "Windows shortcuts"
+msgid "Window shortcuts"
 msgstr "קיצורי דרך של חלונות"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524

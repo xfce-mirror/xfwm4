@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"POT-Creation-Date: 2004-10-23 21:39+0200\n"
 "PO-Revision-Date: 2004-08-26 21:32+0200\n"
 "Last-Translator: Juraj Brosz <Juraj.Brosz@pobox.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -189,7 +189,7 @@ msgid "Style"
 msgstr "Štýl"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
-msgid "Windows shortcuts"
+msgid "Window shortcuts"
 msgstr "Klávesové skratky okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524

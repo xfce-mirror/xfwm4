@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"POT-Creation-Date: 2004-10-23 21:39+0200\n"
 "PO-Revision-Date: 2004-08-07 22:24+0200\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <en@li.org>\n"
@@ -193,7 +193,7 @@ msgid "Style"
 msgstr "Style"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
-msgid "Windows shortcuts"
+msgid "Window shortcuts"
 msgstr "Raccourcis de fenêtres"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524

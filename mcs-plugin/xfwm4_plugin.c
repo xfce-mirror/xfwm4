@@ -1473,7 +1473,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (hbox), vbox8, TRUE, TRUE, 0);
     gtk_widget_show (vbox8);
 
-    frame = xfce_framebox_new (_("Windows shortcuts"), FALSE);
+    frame = xfce_framebox_new (_("Window shortcuts"), FALSE);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox8), frame, TRUE, TRUE, 0);
 

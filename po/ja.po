@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-20 22:51+0200\n"
+"POT-Creation-Date: 2004-10-23 21:39+0200\n"
 "PO-Revision-Date: 2003-12-10 14:20+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -194,7 +194,7 @@ msgstr "タイトル"
 
 #: mcs-plugin/xfwm4_plugin.c:1476
 #, fuzzy
-msgid "Windows shortcuts"
+msgid "Window shortcuts"
 msgstr "ウィンドウ・スタイル"
 
 #: mcs-plugin/xfwm4_plugin.c:1496 mcs-plugin/xfwm4_plugin.c:1524
