@@ -1353,11 +1353,13 @@ initSettings (ScreenInfo *screen_info)
     {
         screen_info->params->shortcut_exec[i] = NULL;
     }
+
     if (!mcs_client_check_manager (myScreenGetXDisplay (screen_info), screen_info->screen, "xfce-mcs-manager"))
     {
         g_warning ("MCS manager not running, startup delayed for 5 seconds");
         sleep (5);
     }
+
     screen_info->mcs_client = mcs_client_new (myScreenGetXDisplay (screen_info), screen_info->screen, notify_cb, watch_cb, (gpointer) screen_info);
     if (screen_info->mcs_client)
     {
@@ -1371,9 +1373,12 @@ initSettings (ScreenInfo *screen_info)
     {
         g_warning ("Cannot create MCS client channel");
     }
-
     screen_info->mcs_initted = TRUE;
 
+    if (!loadSettings (screen_info))
+    {
+        return FALSE;
+    }
     if (getHint (myScreenGetXDisplay (screen_info), screen_info->xroot, net_number_of_desktops, &val))
     {
         workspaceSetCount (screen_info, val);
@@ -1394,11 +1399,6 @@ initSettings (ScreenInfo *screen_info)
     }
 
     getDesktopLayout(myScreenGetXDisplay (screen_info), screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
-
-    if (!loadSettings (screen_info))
-    {
-        return FALSE;
-    }
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
     return TRUE;
