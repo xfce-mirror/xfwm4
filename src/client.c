@@ -1617,7 +1617,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     attributes.win_gravity = StaticGravity;
     attributes.bit_gravity = StaticGravity;
-
+    
     c->frame =
         XCreateWindow (display_info->dpy, screen_info->xroot, frameX (c), frameY (c), frameWidth (c),
         frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,

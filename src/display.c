@@ -55,7 +55,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
 {
     char *atom_names[] = {
         "GNOME_PANEL_DESKTOP_AREA",
-        "_KDE_NET_WM_CONTEXT_HELP",
+        "_NET_WM_CONTEXT_HELP",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",
@@ -141,8 +141,8 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "WM_TAKE_FOCUS",
         "WM_TRANSIENT_FOR",
         "WM_WINDOW_ROLE",
-        "_XROOTPMAP",
-        "_XSETROOT"
+        "_XROOTPMAP_ID",
+        "_XSETROOT_ID"
     };
     
     return (XInternAtoms (display_info->dpy, 

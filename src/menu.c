@@ -246,11 +246,6 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     }
                     ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsnl);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
-
-                    menudata = g_new (MenuData, 1);
-                    menudata->menu = menu;
-                    menudata->op = menuitems[i].op;
-                    menudata->data = data;
                     break;
                 default:
                     if (menuitems[i].image_name)
@@ -261,7 +256,6 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                             GTK_ICON_SIZE_MENU);
                         gtk_widget_show (image);
                         gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
-
                     }
                     else
                     {
