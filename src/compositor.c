@@ -1156,7 +1156,6 @@ repair_win (CWindow *cw)
     {
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
-        cw->screen_info->clipChanged = TRUE;
     }
 }
 
@@ -2018,7 +2017,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->rootBuffer = None;
     screen_info->blackPicture = solid_picture (screen_info, TRUE, 1, 0, 0, 0);
     screen_info->rootTile = None;
-    screen_info->clipChanged = TRUE;
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
     screen_info->clipChanged = FALSE;
@@ -2108,6 +2106,7 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     if (cw)
     {
         repair_win (cw);
+        cw->screen_info->clipChanged = TRUE;
         repair_screen (cw->screen_info);
     }
 #endif /* HAVE_COMPOSITOR */
