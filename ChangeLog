@@ -1,5 +1,16 @@
 2003-03-23  xfce
 
+	* themes/default/: top-right-active.xpm, top-right-inactive.xpm:
+	[no log message]
+
+2003-03-23  xfce
+
+	* ChangeLog, mcs-plugin/xfwm4_plugin.c, po/fi.gmo, po/fi.po: Update
+	Finnish translation from Ilkka Ollakka
+	(ilkka.j.ollakka@students.oamk.fi)
+
+2003-03-23  xfce
+
 	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/hints.c, src/misc.c:
 	Use gdk_screen[width|height]
 
