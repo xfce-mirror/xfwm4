@@ -823,8 +823,8 @@ get_window_format (CWindow *cw)
     if (!format)
     {    
         format = XRenderFindVisualFormat (myScreenGetXDisplay (cw->screen_info), 
-                                        DefaultVisual (myScreenGetXDisplay (cw->screen_info),
-                                                        cw->screen_info->screen));
+                                          DefaultVisual (myScreenGetXDisplay (cw->screen_info),
+                                                         cw->screen_info->screen));
     }
 
     return format;
