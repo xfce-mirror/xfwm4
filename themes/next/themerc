@@ -1,3 +1,5 @@
 full_width_title=true
 button_offset=-1
 button_spacing=-1
+active_border_color=#000000
+inactive_border_color=#000000

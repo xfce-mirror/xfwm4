@@ -57,18 +57,6 @@ MyPixmap corners[4][2];
 MyPixmap buttons[BUTTON_COUNT][3];
 MyPixmap title[5][2];
 
-static void freeColSymbol (XpmColorSymbol colsym[], guint size)
-{
-    guint i;
-    for (i = 0; i < size; i++)
-    {
-        if (colsym[i].value)
-	{
-	    g_free (colsym[i].value);
-	}
-    }
-}
-
 void loadSettings()
 {
     Settings rc[] = {
@@ -156,6 +144,25 @@ void loadSettings()
 
     DBG("entering settingsLoad\n");
 
+    widget = getDefaultGtkWidget ();
+
+    rc[0].value  = get_style (widget, "text",  "selected");
+    rc[1].value  = get_style (widget, "text",  "normal");
+    rc[2].value  = get_style (widget, "fg",    "active");
+    rc[3].value  = get_style (widget, "fg",    "normal");
+    rc[4].value  = get_style (widget, "bg",    "selected");
+    rc[5].value  = get_style (widget, "light", "selected");
+    rc[6].value  = get_style (widget, "dark",  "selected");
+    rc[7].value  = get_style (widget, "bg",    "normal");
+    rc[8].value  = get_style (widget, "light", "normal");
+    rc[9].value  = get_style (widget, "dark",  "normal");
+    rc[10].value = get_style (widget, "bg",    "active");
+    rc[11].value = get_style (widget, "light", "active");
+    rc[12].value = get_style (widget, "dark",  "active");
+    rc[13].value = get_style (widget, "bg",    "normal");
+    rc[14].value = get_style (widget, "light", "normal");
+    rc[15].value = get_style (widget, "dark",  "normal");
+
     if(!parseRc("defaults", DATADIR, rc))
     {
         fprintf(stderr, "%s: Missing defaults file\n", progname);
@@ -168,62 +175,56 @@ void loadSettings()
     }
 
     parseRc(".xfwm4rc", getenv("HOME"), rc);
-
-    widget = getDefaultGtkWidget ();
-
-    colsym[0].name   = "active_text_color";
-    colsym[0].value  = get_style (widget, "text", "selected");
-    
-    colsym[1].name   = "inactive_text_color";
-    colsym[1].value  = get_style (widget, "text", "normal");
-    
-    colsym[2].name   = "active_border_color";
-    colsym[2].value  = get_style (widget, "fg", "active");
-    
-    colsym[3].name   = "inactive_border_color";
-    colsym[3].value  = get_style (widget, "fg", "normal");
-    
-    colsym[4].name   = "active_color_1";
-    colsym[4].value  = get_style (widget, "bg", "selected");
-    
-    colsym[5].name   = "active_hilight_1";
-    colsym[5].value  = get_style (widget, "light", "selected");
-    
-    colsym[6].name   = "active_shadow_1";
-    colsym[6].value  = get_style (widget, "dark", "selected");
-    
-    colsym[7].name  = "active_color_2";
-    colsym[7].value = get_style (widget, "bg", "normal");
-    
-    colsym[8].name  = "active_hilight_2";
-    colsym[8].value = get_style (widget, "light", "normal");
-    
-    colsym[9].name  = "active_shadow_2";
-    colsym[9].value = get_style (widget, "dark", "normal");
-    
-    colsym[10].name   = "inactive_color_1";
-    colsym[10].value  = get_style (widget, "bg", "active");
-    
-    colsym[11].name   = "inactive_hilight_1";
-    colsym[11].value  = get_style (widget, "light", "active");
-    
-    colsym[12].name   = "inactive_shadow_1";
-    colsym[12].value  = get_style (widget, "dark", "active");
-    
-    colsym[13].name  = "inactive_color_2";
-    colsym[13].value = get_style (widget, "bg", "normal");
-    
-    colsym[14].name  = "inactive_hilight_2";
-    colsym[14].value = get_style (widget, "light", "normal");
-
-    colsym[15].name  = "inactive_shadow_2";
-    colsym[15].value = get_style (widget, "dark", "normal");
-    
-    rc[0].value = get_style (widget, "text", "selected");
-    rc[1].value = get_style (widget, "text", "normal");
-
     theme = getValue("theme", rc);
     parseRc("themerc", theme, rc);
+    
+    colsym[0].name   = "active_text_color";
+    colsym[0].value  = rc[0].value;
+    
+    colsym[1].name   = "inactive_text_color";
+    colsym[1].value  = rc[1].value;
+    
+    colsym[2].name   = "active_border_color";
+    colsym[2].value  = rc[2].value;
+    
+    colsym[3].name   = "inactive_border_color";
+    colsym[3].value  = rc[3].value;
+    
+    colsym[4].name   = "active_color_1";
+    colsym[4].value  = rc[4].value;
+    
+    colsym[5].name   = "active_hilight_1";
+    colsym[5].value  = rc[5].value;
+    
+    colsym[6].name   = "active_shadow_1";
+    colsym[6].value  = rc[6].value;
+    
+    colsym[7].name  = "active_color_2";
+    colsym[7].value = rc[7].value;
+    
+    colsym[8].name  = "active_hilight_2";
+    colsym[8].value = rc[8].value;
+    
+    colsym[9].name  = "active_shadow_2";
+    colsym[9].value = rc[9].value;
+    
+    colsym[10].name   = "inactive_color_1";
+    colsym[10].value  = rc[10].value;
+    
+    colsym[11].name   = "inactive_hilight_1";
+    colsym[11].value  = rc[11].value;
+    
+    colsym[12].name   = "inactive_shadow_1";
+    colsym[12].value  = rc[12].value;
+    
+    colsym[13].name  = "inactive_color_2";
+    colsym[13].value = rc[13].value;
+    
+    colsym[14].name  = "inactive_hilight_2";
+    colsym[14].value = rc[14].value;
+
+    colsym[15].name  = "inactive_shadow_2";
+    colsym[15].value = rc[15].value;
     
     if (title_colors[ACTIVE].allocated)
     {
@@ -314,9 +315,9 @@ void loadSettings()
     loadPixmap(dpy, &buttons[STICK_BUTTON][ACTIVE],          theme, "stick-active.xpm",          colsym, 16);
     loadPixmap(dpy, &buttons[STICK_BUTTON][INACTIVE],        theme, "stick-inactive.xpm",        colsym, 16);
     loadPixmap(dpy, &buttons[STICK_BUTTON][PRESSED],         theme, "stick-pressed.xpm",         colsym, 16);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][ACTIVE],           theme, "menu-active.xpm",          colsym, 16);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][INACTIVE],         theme, "menu-inactive.xpm",        colsym, 16);
-    loadPixmap(dpy, &buttons[MENU_BUTTON][PRESSED],          theme, "menu-pressed.xpm",         colsym, 16);
+    loadPixmap(dpy, &buttons[MENU_BUTTON][ACTIVE],           theme, "menu-active.xpm",           colsym, 16);
+    loadPixmap(dpy, &buttons[MENU_BUTTON][INACTIVE],         theme, "menu-inactive.xpm",         colsym, 16);
+    loadPixmap(dpy, &buttons[MENU_BUTTON][PRESSED],          theme, "menu-pressed.xpm",          colsym, 16);
     loadPixmap(dpy, &title[TITLE_1][ACTIVE],                 theme, "title-1-active.xpm",        colsym, 16);
     loadPixmap(dpy, &title[TITLE_1][INACTIVE],               theme, "title-1-inactive.xpm",      colsym, 16);
     loadPixmap(dpy, &title[TITLE_2][ACTIVE],                 theme, "title-2-active.xpm",        colsym, 16);
@@ -451,7 +452,6 @@ void loadSettings()
     grabKey(dpy, &keys[KEY_WORKSPACE_8], gnome_win);
     grabKey(dpy, &keys[KEY_WORKSPACE_9], gnome_win);
     freeRc(rc);
-    freeColSymbol(colsym, 16);
 }
 
 void unloadSettings()

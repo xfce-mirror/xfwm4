@@ -161,6 +161,10 @@ void initialize(int argc, char **argv)
     pushEventFilter (xfwm4_event_filter, NULL);
 
     gnome_win = getDefaultXWindow ();
+
+    initSettings();
+    loadSettings();
+
     setGnomeHint(dpy, root, win_supporting_wm_check, gnome_win);
     setGnomeHint(dpy, gnome_win, win_supporting_wm_check, gnome_win);
     setGnomeHint(dpy, root, win_desktop_button_proxy, gnome_win);
@@ -172,8 +176,6 @@ void initialize(int argc, char **argv)
     set_net_supported_hint (dpy, root, gnome_win);
     workspaceUpdateArea(margins, gnome_margins);
     init_net_desktop_params (dpy, root, workspace);
-    initSettings();
-    loadSettings();
     set_net_workarea (dpy, root, workspace_count, margins);
     XSetInputFocus(dpy, gnome_win, RevertToNone, CurrentTime);
     initGtkCallbacks ();
