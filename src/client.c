@@ -1488,7 +1488,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->flags = 0L;
     c->wm_flags = 0L;
     c->xfwm_flags = CLIENT_FLAG_INITIAL_VALUES;
-    c->toggled_maximize = FALSE;
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
@@ -2866,10 +2865,8 @@ clientSnapPosition (Client * c)
             best_delta_x = abs (disp_max_x - frame_x2);
             best_frame_x = disp_max_x - frame_width;
         }
-        /* if the window is being dragged around after being restored from a maximized
-         * window, snapping to the top of the screen prevents it from getting constrained,
-         * so in this case, snapping to top is disabled.*/
-        if (abs (disp_y - frame_y) < abs (disp_max_y - frame_y2) && !(c->toggled_maximize))
+
+        if (abs (disp_y - frame_y) < abs (disp_max_y - frame_y2))
         {
             best_delta_y = abs (disp_y - frame_y);
             best_frame_y = disp_y;
@@ -2945,6 +2942,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
+    static gboolean toggled_maximize = FALSE;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XfceFilterStatus status = XEV_FILTER_STOP;
@@ -3121,14 +3119,15 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         }
         if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED) && screen_info->params->restore_on_move)
         {
-            if (xevent->xmotion.y_root - passdata->oy > 50)
+            if (xevent->xmotion.y_root - passdata->oy > 15)
             {
+                int oldw=c->width;
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
                 passdata->ox = c->x;
                 passdata->mx = c->x + c->width / 2;
                 passdata->oy = c->y;
                 passdata->my = c->y - frameTop(c) / 2;
-                c->toggled_maximize = TRUE;
+                toggled_maximize = TRUE;
             }
             else
             {
@@ -3139,19 +3138,19 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
-        clientSnapPosition (c);
         if (screen_info->params->restore_on_move)
         {
-            if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && c->toggled_maximize)
+            if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
             {
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
-                c->toggled_maximize = FALSE;
+                toggled_maximize = FALSE;
             }
         }
         else
         {
             clientConstrainPos(c, FALSE);
         }
+        clientSnapPosition (c);
 
 #ifdef SHOW_POSITION
         if (passdata->poswin)
@@ -3197,7 +3196,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         TRACE ("event loop now finished");
         edge_scroll_x = 0;
         edge_scroll_y = 0;
-        c->toggled_maximize = FALSE;
+        toggled_maximize=FALSE;
         gtk_main_quit ();
     }
 
