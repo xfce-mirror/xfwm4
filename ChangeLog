@@ -1,42 +1,97 @@
-2005-02-19 15:13  olivier
+2005-02-19 21:21  olivier
 
-	* ChangeLog, src/focus.c: Update ChangeLog
+	* src/placement.c: [no log message]
 
-2005-02-12 22:52  olivier
+2005-02-19 20:40  olivier
 
-	* src/screen.c: Small implementation cleanup.
+	* src/: .cvsignore, placement.c: Much better implementation of
+	  previous change.
 
-2005-02-12 22:42  olivier
+2005-02-19 17:41  olivier
+
+	* src/placement.c: Auto maximize windows larger that screen size.
+
+2005-02-19 15:19  olivier
 
 	* ChangeLog: Update ChangeLog
 
-2005-02-12 22:29  olivier
+2005-02-19 15:14  olivier
+
+	* src/focus.c: Use time stamp when focusing windows at first map.
+
+2005-02-19 15:00  olivier
+
+	* src/focus.c: Use time stamp when focusing windows at first map.
+
+2005-02-19 13:50  olivier
+
+	* themes/default/: bottom-left-active.xpm,
+	  bottom-left-inactive.xpm, bottom-right-active.xpm,
+	  bottom-right-inactive.xpm, themerc, title-1-active.png,
+	  title-1-active.xpm, title-1-inactive.png, title-1-inactive.xpm,
+	  title-2-active.png, title-2-active.xpm, title-2-inactive.png,
+	  title-2-inactive.xpm, title-3-active.png, title-3-active.xpm,
+	  title-3-inactive.png, title-3-inactive.xpm, title-4-active.png,
+	  title-4-active.xpm, title-4-inactive.png, title-4-inactive.xpm,
+	  title-5-active.png, title-5-active.xpm, title-5-inactive.png,
+	  title-5-inactive.xpm, top-left-active.png, top-left-active.xpm,
+	  top-left-inactive.png, top-left-inactive.xpm,
+	  top-right-active.png, top-right-active.xpm,
+	  top-right-inactive.png, top-right-inactive.xpm: 1 pix smaller
+
+2005-02-13 13:39  pollux
+
+	* po/ko.po: update KO translations (with a big delay)
+
+2005-02-12 22:48  olivier
+
+	* src/screen.c: Small implementation cleanup.
+
+2005-02-12 22:12  olivier
 
 	* src/: client.c, events.c, netwm.c, screen.c, screen.h,
-	  workspaces.c: Backport from HEAD: Implements our own grab
-	  functions, to avoid using InputOnly window for grabbing mouse
-	  when moving/resizing windows (This is for bug #761, "Delayed
-	  action when clicking and dragging a window title/border")
+	  workspaces.c: Implements our own grab functions.
 
-2005-02-11 21:11  olivier
+2005-02-12 10:10  olivier
+
+	* src/: client.c, workspaces.c: Don't use a InputOnly window for
+	  grabbing mouse when moving/resizing windows.
+
+2005-02-11 21:09  olivier
+
+	* themes/default/: bottom-active.xpm, bottom-inactive.xpm,
+	  bottom-left-active.xpm, bottom-left-inactive.xpm,
+	  bottom-right-active.xpm, bottom-right-inactive.xpm,
+	  left-active.xpm, left-inactive.xpm, right-active.xpm,
+	  right-inactive.xpm, top-left-active.png, top-left-active.xpm,
+	  top-left-inactive.png, top-left-inactive.xpm,
+	  top-right-active.png, top-right-active.xpm,
+	  top-right-inactive.png, top-right-inactive.xpm: Small change in
+	  theme.
+
+2005-02-11 21:06  olivier
+
+	* src/focus.c: Typo!
+
+2005-02-11 21:04  olivier
 
 	* src/focus.c: Grab mouse button by default on newly created
 	  windows; Use current time to focus newly created windows to make
 	  sure the windows gets focused.
 
-2005-02-10 23:09  olivier
+2005-02-10 23:06  olivier
 
 	* mcs-plugin/workspaces.c: Check for actual returned value to avoid
 	  critical warnings at startup.
 
-2005-02-10 21:40  olivier
+2005-02-10 21:25  olivier
 
 	* src/client.c: Force cache update when refreashing all frames
 	  (required because of the new fine grained caching)
 
-2005-02-10 21:38  olivier
+2005-02-10 21:09  olivier
 
-	* src/: client.c, focus.c: Use our internal timer for focus
+	* src/: client.c, focus.c: Use out internal timer for focus
 	  transitions.
 
 2005-02-09 22:03  olivier
@@ -44,220 +99,120 @@
 	* src/mypixmap.c: Try to avoid colormap issues on Solaris as
 	  reported on the ML.
 
-2005-02-09 21:28  olivier
+2005-02-09 21:31  olivier
 
 	* src/client.c: Use internal time counter for grabbing/ungrabbing
-	  kbd+mouse whrn moving/Resizing windows.
+	  kbd+mouse when moving/Resizing windows.
 
-2005-02-08 23:19  olivier
+2005-02-08 23:47  olivier
 
-	* ChangeLog: Update ChangeLog
+	* themes/default/: bottom-active.png, bottom-active.xpm,
+	  bottom-inactive.png, bottom-inactive.xpm, bottom-left-active.png,
+	  bottom-left-active.xpm, bottom-left-inactive.png,
+	  bottom-left-inactive.xpm, bottom-right-active.png,
+	  bottom-right-active.xpm, bottom-right-inactive.png,
+	  bottom-right-inactive.xpm, close-active.png, close-active.xpm,
+	  close-inactive.png, close-inactive.xpm, close-pressed.xpm,
+	  hide-active.png, hide-active.xpm, hide-inactive.png,
+	  hide-inactive.xpm, hide-pressed.xpm, left-active.png,
+	  left-inactive.png, maximize-active.png, maximize-active.xpm,
+	  maximize-inactive.png, maximize-inactive.xpm,
+	  maximize-pressed.xpm, maximize-toggled-active.png,
+	  maximize-toggled-active.xpm, maximize-toggled-inactive.png,
+	  maximize-toggled-inactive.xpm, maximize-toggled-pressed.xpm,
+	  menu-active.png, menu-active.xpm, menu-inactive.png,
+	  menu-inactive.xpm, menu-pressed.xpm, right-active.png,
+	  right-active.xpm, right-inactive.png, right-inactive.xpm,
+	  shade-active.png, shade-active.xpm, shade-inactive.png,
+	  shade-inactive.xpm, shade-pressed.xpm, shade-toggled-active.png,
+	  shade-toggled-active.xpm, shade-toggled-inactive.png,
+	  shade-toggled-inactive.xpm, shade-toggled-pressed.xpm,
+	  stick-active.png, stick-active.xpm, stick-inactive.png,
+	  stick-inactive.xpm, stick-pressed.xpm, stick-toggled-active.png,
+	  stick-toggled-active.xpm, stick-toggled-inactive.png,
+	  stick-toggled-inactive.xpm, stick-toggled-pressed.xpm,
+	  title-1-active.png, title-1-active.xpm, title-1-inactive.png,
+	  title-1-inactive.xpm, title-2-active.png, title-2-active.xpm,
+	  title-2-inactive.png, title-2-inactive.xpm, title-3-active.png,
+	  title-3-active.xpm, title-3-inactive.png, title-3-inactive.xpm,
+	  title-4-active.png, title-4-active.xpm, title-4-inactive.png,
+	  title-4-inactive.xpm, title-5-active.png, title-5-active.xpm,
+	  title-5-inactive.png, title-5-inactive.xpm, top-left-active.png,
+	  top-left-active.xpm, top-left-inactive.png,
+	  top-left-inactive.xpm, top-right-active.png,
+	  top-right-active.xpm, top-right-inactive.png,
+	  top-right-inactive.xpm: Smoother theme.
 
-2005-02-08 23:16  olivier
+2005-02-08 23:13  olivier
 
 	* src/stacking.c: Don't get through excluded windows when searching
 	  windows ata given position.
 
-2005-02-04 22:25  olivier
+2005-02-07 23:19  olivier
 
-	* src/settings.c: Fix for dark themes.
+	* themes/default/: bottom-active.png, bottom-active.xpm,
+	  bottom-inactive.png, bottom-inactive.xpm, bottom-left-active.png,
+	  bottom-left-active.xpm, bottom-left-inactive.png,
+	  bottom-left-inactive.xpm, bottom-right-active.png,
+	  bottom-right-active.xpm, bottom-right-inactive.png,
+	  bottom-right-inactive.xpm, close-active.png, close-inactive.png,
+	  hide-active.png, hide-inactive.png, left-active.png,
+	  left-active.xpm, left-inactive.png, left-inactive.xpm,
+	  maximize-active.png, maximize-inactive.png,
+	  maximize-toggled-active.png, maximize-toggled-inactive.png,
+	  menu-active.png, menu-inactive.png, right-active.png,
+	  right-active.xpm, right-inactive.png, right-inactive.xpm,
+	  shade-active.png, shade-inactive.png, shade-toggled-active.png,
+	  shade-toggled-inactive.png, stick-active.png, stick-inactive.png,
+	  stick-toggled-active.png, stick-toggled-inactive.png,
+	  title-1-active.png, title-1-active.xpm, title-1-inactive.png,
+	  title-1-inactive.xpm, title-2-active.png, title-2-active.xpm,
+	  title-2-inactive.png, title-2-inactive.xpm, title-3-active.png,
+	  title-3-active.xpm, title-3-inactive.png, title-3-inactive.xpm,
+	  title-4-active.png, title-4-active.xpm, title-4-inactive.png,
+	  title-4-inactive.xpm, title-5-active.png, title-5-active.xpm,
+	  title-5-inactive.png, title-5-inactive.xpm, top-left-active.png,
+	  top-left-active.xpm, top-left-inactive.png,
+	  top-left-inactive.xpm, top-right-active.png,
+	  top-right-active.xpm, top-right-inactive.png,
+	  top-right-inactive.xpm: Playing with theme again.
 
-2005-02-04 19:23  olivier
+2005-02-06 22:28  olivier
 
-	* src/mypixmap.c: Simplify colormap management in pixmap loading.
-
-2005-02-01 18:25  pollux
-
-	* mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo,
-	  po/zh_CN.gmo, po/zh_CN.po: update zh_CN translations
-
-2005-01-31 23:24  olivier
-
-	* src/stacking.c: Fix button not being regrabbed when the focused
-	  window is lowered in focus follow mode.
-
-2005-01-30 14:24  olivier
-
-	* src/compositor.c: Include headers
-
-2005-01-30 12:34  olivier
-
-	* src/compositor.c: Clear root win on startup.
-
-2005-01-30 10:39  pollux
-
-	* po/fi.po: update FI translations
-
-2005-01-28 23:19  olivier
-
-	* src/frame.c: Again, optimize.
-
-2005-01-28 23:03  olivier
-
-	* themes/default/top-left-active.xpm,
-	  themes/default/top-left-inactive.xpm,
-	  themes/default/top-right-active.xpm,
-	  themes/default/top-right-inactive.xpm, src/frame.c: Sync with
-	  HEAD, improve optimizations.
-
-2005-01-28 06:29  olivier
-
-	* themes/default/: themerc, title-2-active.png, title-2-active.xpm,
-	  title-2-inactive.png, title-2-inactive.xpm, title-4-active.png,
-	  title-4-active.xpm, title-4-inactive.png, title-4-inactive.xpm,
-	  top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
-	  top-right-inactive.xpm: Sync theme with HEAD
-
-2005-01-25 23:24  olivier
-
-	* themes/default/: bottom-left-active.xpm,
-	  bottom-left-inactive.xpm, bottom-right-active.xpm,
-	  bottom-right-inactive.xpm, close-active.xpm, close-inactive.xpm,
-	  close-pressed.png, close-pressed.xpm, hide-active.xpm,
-	  hide-inactive.xpm, hide-pressed.png, hide-pressed.xpm,
-	  maximize-active.xpm, maximize-inactive.xpm, maximize-pressed.png,
-	  maximize-pressed.xpm, maximize-toggled-active.xpm,
-	  maximize-toggled-inactive.xpm, maximize-toggled-pressed.png,
-	  maximize-toggled-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
-	  menu-pressed.png, menu-pressed.xpm, shade-active.xpm,
-	  shade-inactive.xpm, shade-pressed.png, shade-pressed.xpm,
-	  shade-toggled-active.xpm, shade-toggled-inactive.xpm,
-	  shade-toggled-pressed.png, shade-toggled-pressed.xpm,
-	  stick-active.xpm, stick-inactive.xpm, stick-pressed.png,
-	  stick-pressed.xpm, stick-toggled-active.xpm,
-	  stick-toggled-inactive.xpm, stick-toggled-pressed.png,
-	  stick-toggled-pressed.xpm, title-1-active.png,
-	  title-1-active.xpm, title-1-inactive.png, title-1-inactive.xpm,
-	  title-2-active.png, title-2-active.xpm, title-2-inactive.png,
-	  title-2-inactive.xpm, title-3-active.png, title-3-active.xpm,
-	  title-3-inactive.png, title-3-inactive.xpm, title-4-active.png,
-	  title-4-active.xpm, title-4-inactive.png, title-4-inactive.xpm,
-	  title-5-active.png, title-5-active.xpm, title-5-inactive.png,
-	  title-5-inactive.xpm, top-left-active.xpm, top-left-inactive.xpm,
-	  top-right-active.xpm, top-right-inactive.xpm: Adjust frame
-	  corners as application window is now placed on top of frame.
-
-2005-01-23 18:09  pollux
-
-	* po/: lt.gmo, lt.po: update LT translations
-
-2005-01-23 17:48  pollux
-
-	* mcs-plugin/xfce-wm-settings.desktop,
-	  mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo, po/fi.po:
-	  update FI translations
-
-2005-01-22 09:57  pollux
-
-	* po/: ko.gmo, ko.po: update KO translations
-
-2005-01-21 21:25  olivier
-
-	* src/focus.c: Fix an odd bug with focus follow mouse and
-	  userhelper
-
-2005-01-20 00:30  olivier
-
-	* src/frame.c: Use frame as parent for temp shaped window.
-
-2005-01-19 21:28  olivier
-
-	* src/client.c: Improve previous patch.
-
-2005-01-19 00:14  olivier
-
-	* src/client.c: Don't focus a randow window whth Alt+Tab when no
-	  focusable window is present.
-
-2005-01-18 23:12  olivier
-
-	* src/client.c: Small optimization to speed up GL apps in windowed
-	  mode.
-
-2005-01-18 19:33  olivier
-
-	* COMPOSITOR: Fix bug #611 (Documentation on command line option to
-	  enable/disable xfwm4 compositor)
-
-2005-01-17 21:58  olivier
-
-	* src/compositor.c: Fix bug #694: Window not showing when
-	  compositor is enabled.
-
-2005-01-17 21:27  olivier
-
-	* src/client.c: Fix bug #700
-
-2005-01-16 22:21  olivier
-
-	* src/: keyboard.c, keyboard.h: Fix modifers not working when caps
-	  lock is enabled (bug #689)
-
-2005-01-14 12:41  pollux
-
-	* mcs-plugin/: xfwm4_plugin.c, xfwm4_shortcuteditor.c: backport
-	  from HEAD
-
-2005-01-14 11:31  pollux
-
-	* mcs-plugin/: xfwm4_plugin.c, xfwm4_shortcuteditor.c: should fix
-	  #681
-
-2005-01-13 20:56  olivier
-
-	* configure, configure.ac, ltmain.sh, po/xfwm4.pot,
-	  themes/Makefile.am, themes/Makefile.in, themes/default/README,
-	  themes/default/bottom-active.png,
+	* configure.ac, po/ar.po, po/az.po, po/be.po, po/bg.po, po/ca.po,
+	  po/cs.po, po/de.po, po/en_GB.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po,
+	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
+	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
+	  po/zh_TW.po, themes/Makefile.am, themes/breeze/.cvsignore,
 	  themes/default/bottom-active.xpm,
-	  themes/default/bottom-inactive.png,
 	  themes/default/bottom-inactive.xpm,
-	  themes/default/bottom-left-active.png,
 	  themes/default/bottom-left-active.xpm,
-	  themes/default/bottom-left-inactive.png,
 	  themes/default/bottom-left-inactive.xpm,
-	  themes/default/bottom-right-active.png,
 	  themes/default/bottom-right-active.xpm,
-	  themes/default/bottom-right-inactive.png,
 	  themes/default/bottom-right-inactive.xpm,
-	  themes/default/close-active.xpm,
-	  themes/default/close-inactive.xpm,
-	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
-	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
-	  themes/default/left-active.png, themes/default/left-active.xpm,
-	  themes/default/left-inactive.png,
-	  themes/default/left-inactive.xpm,
-	  themes/default/maximize-active.xpm,
-	  themes/default/maximize-inactive.xpm,
-	  themes/default/maximize-pressed.png,
-	  themes/default/maximize-pressed.xpm,
-	  themes/default/maximize-toggled-active.xpm,
-	  themes/default/maximize-toggled-inactive.xpm,
-	  themes/default/maximize-toggled-pressed.png,
-	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
-	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
-	  themes/default/right-active.png, themes/default/right-active.xpm,
-	  themes/default/right-inactive.png,
+	  themes/default/close-active.png,
+	  themes/default/close-inactive.png,
+	  themes/default/hide-active.png, themes/default/hide-inactive.png,
+	  themes/default/left-active.xpm, themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/menu-active.png, themes/default/menu-inactive.png,
+	  themes/default/right-active.xpm,
 	  themes/default/right-inactive.xpm,
-	  themes/default/shade-active.xpm,
-	  themes/default/shade-inactive.xpm,
-	  themes/default/shade-pressed.png,
-	  themes/default/shade-pressed.xpm,
-	  themes/default/shade-toggled-active.xpm,
-	  themes/default/shade-toggled-inactive.xpm,
-	  themes/default/shade-toggled-pressed.png,
-	  themes/default/shade-toggled-pressed.xpm,
-	  themes/default/stick-active.xpm,
-	  themes/default/stick-inactive.xpm,
-	  themes/default/stick-pressed.png,
-	  themes/default/stick-pressed.xpm,
-	  themes/default/stick-toggled-active.xpm,
-	  themes/default/stick-toggled-inactive.xpm,
-	  themes/default/stick-toggled-pressed.png,
-	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
-	  themes/default/title-1-active.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/stick-active.png,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/themerc, themes/default/title-1-active.png,
 	  themes/default/title-1-active.xpm,
 	  themes/default/title-1-inactive.png,
 	  themes/default/title-1-inactive.xpm,
@@ -284,94 +239,577 @@
 	  themes/default/top-right-active.png,
 	  themes/default/top-right-active.xpm,
 	  themes/default/top-right-inactive.png,
-	  themes/default/top-right-inactive.xpm: Promote "breeze" as
-	  default theme!
+	  themes/default/top-right-inactive.xpm,
+	  themes/default-4.2/.cvsignore, themes/default-4.2/Makefile.am,
+	  themes/default-4.2/README, themes/default-4.2/bottom-active.png,
+	  themes/default-4.2/bottom-active.xpm,
+	  themes/default-4.2/bottom-inactive.png,
+	  themes/default-4.2/bottom-inactive.xpm,
+	  themes/default-4.2/bottom-left-active.png,
+	  themes/default-4.2/bottom-left-active.xpm,
+	  themes/default-4.2/bottom-left-inactive.png,
+	  themes/default-4.2/bottom-left-inactive.xpm,
+	  themes/default-4.2/bottom-right-active.png,
+	  themes/default-4.2/bottom-right-active.xpm,
+	  themes/default-4.2/bottom-right-inactive.png,
+	  themes/default-4.2/bottom-right-inactive.xpm,
+	  themes/default-4.2/close-active.xpm,
+	  themes/default-4.2/close-inactive.xpm,
+	  themes/default-4.2/close-pressed.png,
+	  themes/default-4.2/close-pressed.xpm,
+	  themes/default-4.2/hide-active.xpm,
+	  themes/default-4.2/hide-inactive.xpm,
+	  themes/default-4.2/hide-pressed.png,
+	  themes/default-4.2/hide-pressed.xpm,
+	  themes/default-4.2/left-active.png,
+	  themes/default-4.2/left-active.xpm,
+	  themes/default-4.2/left-inactive.png,
+	  themes/default-4.2/left-inactive.xpm,
+	  themes/default-4.2/maximize-active.xpm,
+	  themes/default-4.2/maximize-inactive.xpm,
+	  themes/default-4.2/maximize-pressed.png,
+	  themes/default-4.2/maximize-pressed.xpm,
+	  themes/default-4.2/maximize-toggled-active.xpm,
+	  themes/default-4.2/maximize-toggled-inactive.xpm,
+	  themes/default-4.2/maximize-toggled-pressed.png,
+	  themes/default-4.2/maximize-toggled-pressed.xpm,
+	  themes/default-4.2/menu-active.xpm,
+	  themes/default-4.2/menu-inactive.xpm,
+	  themes/default-4.2/menu-pressed.png,
+	  themes/default-4.2/menu-pressed.xpm,
+	  themes/default-4.2/right-active.png,
+	  themes/default-4.2/right-active.xpm,
+	  themes/default-4.2/right-inactive.png,
+	  themes/default-4.2/right-inactive.xpm,
+	  themes/default-4.2/shade-active.xpm,
+	  themes/default-4.2/shade-inactive.xpm,
+	  themes/default-4.2/shade-pressed.png,
+	  themes/default-4.2/shade-pressed.xpm,
+	  themes/default-4.2/shade-toggled-active.xpm,
+	  themes/default-4.2/shade-toggled-inactive.xpm,
+	  themes/default-4.2/shade-toggled-pressed.png,
+	  themes/default-4.2/shade-toggled-pressed.xpm,
+	  themes/default-4.2/stick-active.xpm,
+	  themes/default-4.2/stick-inactive.xpm,
+	  themes/default-4.2/stick-pressed.png,
+	  themes/default-4.2/stick-pressed.xpm,
+	  themes/default-4.2/stick-toggled-active.xpm,
+	  themes/default-4.2/stick-toggled-inactive.xpm,
+	  themes/default-4.2/stick-toggled-pressed.png,
+	  themes/default-4.2/stick-toggled-pressed.xpm,
+	  themes/default-4.2/themerc,
+	  themes/default-4.2/title-1-active.png,
+	  themes/default-4.2/title-1-active.xpm,
+	  themes/default-4.2/title-1-inactive.png,
+	  themes/default-4.2/title-1-inactive.xpm,
+	  themes/default-4.2/title-2-active.png,
+	  themes/default-4.2/title-2-active.xpm,
+	  themes/default-4.2/title-2-inactive.png,
+	  themes/default-4.2/title-2-inactive.xpm,
+	  themes/default-4.2/title-3-active.png,
+	  themes/default-4.2/title-3-active.xpm,
+	  themes/default-4.2/title-3-inactive.png,
+	  themes/default-4.2/title-3-inactive.xpm,
+	  themes/default-4.2/title-4-active.png,
+	  themes/default-4.2/title-4-active.xpm,
+	  themes/default-4.2/title-4-inactive.png,
+	  themes/default-4.2/title-4-inactive.xpm,
+	  themes/default-4.2/title-5-active.png,
+	  themes/default-4.2/title-5-active.xpm,
+	  themes/default-4.2/title-5-inactive.png,
+	  themes/default-4.2/title-5-inactive.xpm,
+	  themes/default-4.2/top-left-active.png,
+	  themes/default-4.2/top-left-active.xpm,
+	  themes/default-4.2/top-left-inactive.png,
+	  themes/default-4.2/top-left-inactive.xpm,
+	  themes/default-4.2/top-right-active.png,
+	  themes/default-4.2/top-right-active.xpm,
+	  themes/default-4.2/top-right-inactive.png,
+	  themes/default-4.2/top-right-inactive.xpm: Theme reorg.
 
-2005-01-12 18:51  olivier
+2005-02-05 22:54  olivier
 
-	* src/: events.c, workspaces.c: Backport: Focus patch again
+	* po/: ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, en_GB.po,
+	  es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po,
+	  hi.po, hu.po, it.po, ja.po, ko.po, lt.po, ms.po, nb_NO.po, nl.po,
+	  pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po,
+	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Update
+	  cvsignore
 
-2005-01-11 21:23  olivier
+2005-02-05 22:51  olivier
 
-	* src/: keyboard.c, workspaces.c: Backport from HEAD: Change the
-	  modifier computation, Apply patch from Juho Vähä-Herttua
-	  <juhovh@iki.fi> for modifiers, Fix the focus not being restored
-	  when switching desktop in focus follow mode.
+	* .cvsignore: Update cvsignore
 
-2005-01-10 20:04  benny
+2005-02-05 21:53  olivier
 
-	* ChangeLog, po/lt.gmo, po/lt.po: Final touch before the tag (lt
-	  update!)
+	* themes/default/: bottom-active.png, bottom-active.xpm,
+	  bottom-inactive.png, bottom-inactive.xpm, bottom-left-active.xpm,
+	  bottom-left-inactive.xpm, bottom-right-active.xpm,
+	  bottom-right-inactive.xpm, left-active.png, left-active.xpm,
+	  left-inactive.png, left-inactive.xpm, right-active.png,
+	  right-active.xpm, right-inactive.png, right-inactive.xpm: reduce
+	  border width, change corners.
 
-2005-01-10 13:56  pollux
+2005-02-05 21:33  olivier
 
-	* po/: hu.gmo, hu.po: update HU translations
+	* themes/default/: top-left-active.xpm, top-left-inactive.xpm,
+	  top-right-active.xpm, top-right-inactive.xpm: top corners
 
-2005-01-10 13:23  pollux
+2005-02-05 17:06  olivier
 
-	* mcs-plugin/: xfce-wm-settings.desktop,
-	  xfce-workspaces-settings.desktop: update LT translations
+	* src/mywindow.c: Avoid displaying spurious messages
 
-2005-01-09 14:42  pollux
+2005-02-05 14:12  olivier
 
-	* mcs-plugin/: xfce-wm-settings.desktop,
-	  xfce-workspaces-settings.desktop: update RO translations
+	* themes/default/: Makefile.am, README, bottom-active.xpm,
+	  bottom-inactive.xpm, bottom-left-active.xpm,
+	  bottom-left-inactive.xpm, bottom-right-active.xpm,
+	  bottom-right-inactive.xpm, close-active.png, close-active.xpm,
+	  close-inactive.png, close-inactive.xpm, close-pressed.png,
+	  close-pressed.xpm, hide-active.png, hide-active.xpm,
+	  hide-inactive.png, hide-inactive.xpm, hide-pressed.png,
+	  hide-pressed.xpm, left-active.xpm, left-inactive.xpm,
+	  maximize-active.png, maximize-active.xpm, maximize-inactive.png,
+	  maximize-inactive.xpm, maximize-pressed.png,
+	  maximize-pressed.xpm, maximize-toggled-active.png,
+	  maximize-toggled-active.xpm, maximize-toggled-inactive.png,
+	  maximize-toggled-inactive.xpm, maximize-toggled-pressed.png,
+	  maximize-toggled-pressed.xpm, menu-active.png, menu-active.xpm,
+	  menu-inactive.png, menu-inactive.xpm, menu-pressed.png,
+	  menu-pressed.xpm, right-active.xpm, right-inactive.xpm,
+	  shade-active.png, shade-active.xpm, shade-inactive.png,
+	  shade-inactive.xpm, shade-pressed.png, shade-pressed.xpm,
+	  shade-toggled-active.png, shade-toggled-active.xpm,
+	  shade-toggled-inactive.png, shade-toggled-inactive.xpm,
+	  shade-toggled-pressed.png, shade-toggled-pressed.xpm,
+	  stick-active.png, stick-active.xpm, stick-inactive.png,
+	  stick-inactive.xpm, stick-pressed.png, stick-pressed.xpm,
+	  stick-toggled-active.png, stick-toggled-active.xpm,
+	  stick-toggled-inactive.png, stick-toggled-inactive.xpm,
+	  stick-toggled-pressed.png, stick-toggled-pressed.xpm, themerc,
+	  title-1-active.png, title-1-active.xpm, title-1-inactive.png,
+	  title-1-inactive.xpm, title-2-active.png, title-2-active.xpm,
+	  title-2-inactive.png, title-2-inactive.xpm, title-3-active.png,
+	  title-3-active.xpm, title-3-inactive.png, title-3-inactive.xpm,
+	  title-4-active.png, title-4-active.xpm, title-4-inactive.png,
+	  title-4-inactive.xpm, title-5-active.png, title-5-active.xpm,
+	  title-5-inactive.png, title-5-inactive.xpm, top-left-active.png,
+	  top-left-active.xpm, top-left-inactive.png,
+	  top-left-inactive.xpm, top-right-active.png,
+	  top-right-active.xpm, top-right-inactive.png,
+	  top-right-inactive.xpm: Just for fun theme
 
-2005-01-09 14:22  benny
+2005-02-04 19:23  olivier
 
-	* configure, configure.ac, doc/Makefile.am, doc/Makefile.in,
-	  doc/C/xfwm4.html, doc/C/xfwm4.xml, doc/fr/Makefile.am,
-	  doc/fr/Makefile.in, doc/fr/xfwm4.html, doc/fr/xfwm4.xml,
-	  doc/fr/images/Makefile.am, doc/fr/images/Makefile.in,
-	  doc/fr/images/compose_shortcut.png,
-	  doc/fr/images/decoration_style.png, doc/fr/images/focus.png,
-	  doc/fr/images/keyboard_and_focus.png,
-	  doc/fr/images/keyboard_shortcuts.png,
-	  doc/fr/images/misc_wm_prefs.png, doc/fr/images/titlebar.png,
-	  doc/fr/images/workspace_margins.png,
-	  doc/fr/images/xfwm_workspaces.png, doc/it/Makefile.am,
-	  doc/it/Makefile.in, doc/it/xfwm4.html, doc/it/xfwm4.xml,
-	  doc/it/images/Makefile.am, doc/it/images/Makefile.in,
-	  doc/it/images/compose_shortcut.png,
-	  doc/it/images/decoration_style.png, doc/it/images/focus.png,
-	  doc/it/images/keyboard_and_focus.png,
-	  doc/it/images/keyboard_shortcuts.png,
-	  doc/it/images/misc_wm_prefs.png, doc/it/images/titlebar.png,
-	  doc/it/images/workspace_margins.png,
-	  doc/it/images/xfwm_workspaces.png, po/ar.gmo, po/ar.po,
-	  po/az.gmo, po/az.po, po/be.gmo, po/be.po, po/bg.gmo, po/bg.po,
-	  po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po,
-	  po/en_GB.gmo, po/en_GB.po, po/es.gmo, po/es.po, po/es_MX.gmo,
-	  po/es_MX.po, po/et.gmo, po/et.po, po/eu.gmo, po/eu.po, po/fa.gmo,
-	  po/fa.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/gu.gmo,
-	  po/gu.po, po/he.gmo, po/he.po, po/hi.gmo, po/hi.po, po/hu.gmo,
-	  po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo,
-	  po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nb_NO.gmo,
-	  po/nb_NO.po, po/nl.gmo, po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo,
-	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
-	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
-	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
-	  po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
-	  po/zh_TW.gmo, po/zh_TW.po: Remove outdated translations of the
-	  documentation. Update version in the documentation
+	* src/mypixmap.c: Simplify colormap management in pixmap loading.
 
-2005-01-09 13:03  pollux
+2005-02-02 00:31  olivier
 
-	* po/: ro.gmo, ro.po: update RO translations
+	* src/events.c: Even simpler
+
+2005-02-02 00:25  olivier
+
+	* src/events.c: Actually use the correct default value...
+
+2005-02-02 00:04  olivier
+
+	* mcs-plugin/xfwm4_plugin.c, mcs-plugin/xfwm4_shortcuteditor.c,
+	  src/client.c, src/events.c, src/misc.c, src/misc.h,
+	  src/settings.c, src/settings.h, themes/default.keys/keythemerc:
+	  Based on patches submitted by pasi.ov@gmail.com : - Add shortcut
+	  for show desktop () - Add shortcuts upt to 12 for   Workspace
+	  Move window to workspace   Launcher key
+
+2005-02-01 22:03  olivier
+
+	* po/xfwm4.pot, src/settings.c, themes/default/close-active.xpm,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Adapt theme for dark
+	  colors such as "Xfce-dusk" from James Golden <chibifs@gmail.com>
+
+2005-02-01 21:59  olivier
+
+	* po/.cvsignore: Update cvsignore for po dir
+
+2005-02-01 12:45  pollux
+
+	* po/zh_CN.po: update zh_CN translations
+
+2005-01-31 23:22  olivier
+
+	* src/stacking.c:
+	  Fix button not being regrabbed when the focused window is lowered
+	  in focus follow mode.
+
+2005-01-31 00:06  olivier
+
+	* themes/: waza/.cvsignore, wildbush/.cvsignore: add .cvsignore for
+	  generated files
+
+2005-01-31 00:03  olivier
+
+	* themes/: default/.cvsignore, default-4.0/.cvsignore,
+	  default.keys/.cvsignore, opta/.cvsignore, symphony/.cvsignore,
+	  therapy/.cvsignore, tyrex/.cvsignore: add .cvsignore for
+	  generated files
+
+2005-01-31 00:00  olivier
+
+	* .cvsignore, defaults/.cvsignore, doc/.cvsignore,
+	  doc/C/.cvsignore, doc/C/images/.cvsignore, doc/fr/.cvsignore,
+	  doc/fr/images/.cvsignore, doc/it/.cvsignore,
+	  doc/it/images/.cvsignore, icons/.cvsignore,
+	  icons/48x48/.cvsignore, icons/scalable/.cvsignore, m4/.cvsignore,
+	  mcs-plugin/.cvsignore, po/.cvsignore, src/.cvsignore,
+	  themes/.cvsignore, themes/breeze/.cvsignore: add .cvsignore for
+	  generated files
+
+2005-01-30 12:34  olivier
+
+	* src/compositor.c: Clear root win on startup.
+
+2005-01-29 14:43  olivier
+
+	* src/: client.c, compositor.c, display.c, display.h, events.c,
+	  frame.c, mypixmap.c, mywindow.c, mywindow.h, screen.c,
+	  wireframe.c: Internal reorg.
+
+2005-01-29 10:10  olivier
+
+	* configure.ac, src/Makefile.am, src/mywindow.c: Separate parts
+	  that require Render from those who depend on XFixes, XDamage and
+	  so.
+
+2005-01-28 23:19  olivier
+
+	* src/frame.c: Again, optimize.
+
+2005-01-28 23:15  olivier
+
+	* src/frame.c: Forgot one line
+
+2005-01-28 23:14  olivier
+
+	* src/frame.c: Port optimizations from 4.2 branch.
+
+2005-01-28 18:40  olivier
+
+	* src/frame.c, src/mypixmap.c, themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Fix issue with themes
+	  w/out pixmap mask, Add trivial optimization frame draw.
+
+2005-01-28 07:40  olivier
+
+	* configure.ac, po/ar.po, po/az.po, po/be.po, po/bg.po, po/ca.po,
+	  po/cs.po, po/de.po, po/en_GB.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po,
+	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
+	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
+	  po/zh_TW.po: Use new m4 macros
+
+2005-01-28 06:52  olivier
+
+	* configure.ac, themes/Makefile.am, themes/breeze/Makefile.am,
+	  themes/breeze/README, themes/breeze/bottom-active.xpm,
+	  themes/breeze/bottom-inactive.xpm,
+	  themes/breeze/bottom-left-active.xpm,
+	  themes/breeze/bottom-left-inactive.xpm,
+	  themes/breeze/bottom-right-active.xpm,
+	  themes/breeze/bottom-right-inactive.xpm,
+	  themes/breeze/close-active.xpm, themes/breeze/close-inactive.xpm,
+	  themes/breeze/close-pressed.xpm, themes/breeze/hide-active.xpm,
+	  themes/breeze/hide-inactive.xpm, themes/breeze/hide-pressed.xpm,
+	  themes/breeze/left-active.xpm, themes/breeze/left-inactive.xpm,
+	  themes/breeze/maximize-active.xpm,
+	  themes/breeze/maximize-inactive.xpm,
+	  themes/breeze/maximize-pressed.xpm,
+	  themes/breeze/maximize-toggled-active.xpm,
+	  themes/breeze/maximize-toggled-inactive.xpm,
+	  themes/breeze/maximize-toggled-pressed.xpm,
+	  themes/breeze/menu-active.xpm, themes/breeze/menu-inactive.xpm,
+	  themes/breeze/menu-pressed.xpm, themes/breeze/right-active.xpm,
+	  themes/breeze/right-inactive.xpm, themes/breeze/shade-active.xpm,
+	  themes/breeze/shade-inactive.xpm,
+	  themes/breeze/shade-pressed.xpm,
+	  themes/breeze/shade-toggled-active.xpm,
+	  themes/breeze/shade-toggled-inactive.xpm,
+	  themes/breeze/shade-toggled-pressed.xpm,
+	  themes/breeze/stick-active.xpm, themes/breeze/stick-inactive.xpm,
+	  themes/breeze/stick-pressed.xpm,
+	  themes/breeze/stick-toggled-active.xpm,
+	  themes/breeze/stick-toggled-inactive.xpm,
+	  themes/breeze/stick-toggled-pressed.xpm, themes/breeze/themerc,
+	  themes/breeze/title-1-active.xpm,
+	  themes/breeze/title-1-inactive.xpm,
+	  themes/breeze/title-2-active.xpm,
+	  themes/breeze/title-2-inactive.xpm,
+	  themes/breeze/title-3-active.png,
+	  themes/breeze/title-3-active.xpm,
+	  themes/breeze/title-3-inactive.png,
+	  themes/breeze/title-3-inactive.xpm,
+	  themes/breeze/title-4-active.xpm,
+	  themes/breeze/title-4-inactive.xpm,
+	  themes/breeze/title-5-active.xpm,
+	  themes/breeze/title-5-inactive.xpm,
+	  themes/breeze/top-left-active.xpm,
+	  themes/breeze/top-left-inactive.xpm,
+	  themes/breeze/top-right-active.xpm,
+	  themes/breeze/top-right-inactive.xpm: Remove theme as in 4.2
+
+2005-01-28 06:49  olivier
+
+	* themes/: therapy/Makefile.in, tyrex/Makefile.in,
+	  waza/Makefile.in, wildbush/Makefile.in: Remove autogenerated
+	  files from CVS.
+
+2005-01-28 06:46  olivier
+
+	* .cvsignore, Makefile.in, aclocal.m4, autoclean.sh, autogen.sh,
+	  compile, config.guess, config.h.in, config.sub, configure,
+	  depcomp, install-sh, ltmain.sh, missing, mkinstalldirs,
+	  stamp-h.in, defaults/Makefile.in, doc/Makefile.in,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
+	  doc/it/images/Makefile.in, icons/Makefile.in,
+	  icons/48x48/Makefile.in, icons/scalable/Makefile.in,
+	  mcs-plugin/Makefile.in, po/.cvsignore, po/Makefile.in.in,
+	  po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo,
+	  po/de.gmo, po/en_GB.gmo, po/es.gmo, po/es_MX.gmo, po/et.gmo,
+	  po/eu.gmo, po/fa.gmo, po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo,
+	  po/hi.gmo, po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo,
+	  po/ms.gmo, po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo,
+	  po/pt_BR.gmo, po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo,
+	  po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo,
+	  po/zh_CN.gmo, po/zh_TW.gmo, src/Makefile.in, themes/Makefile.in,
+	  themes/breeze/Makefile.in, themes/default/Makefile.in,
+	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
+	  themes/opta/Makefile.in, themes/symphony/Makefile.in: Remove
+	  autogenerated files from CVS.
+
+2005-01-28 00:00  olivier
+
+	* src/client.c, src/client.h, src/compositor.c, src/display.c,
+	  src/display.h, src/events.c, src/focus.c, src/frame.c,
+	  src/mypixmap.c, src/mypixmap.h, src/mywindow.c, src/mywindow.h,
+	  src/screen.c, src/screen.h, themes/default/themerc,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Add support for ARGB
+	  clients.
+
+2005-01-25 23:27  olivier
+
+	* themes/default/: README, bottom-active.png, bottom-active.xpm,
+	  bottom-inactive.png, bottom-inactive.xpm, bottom-left-active.png,
+	  bottom-left-active.xpm, bottom-left-inactive.png,
+	  bottom-left-inactive.xpm, bottom-right-active.png,
+	  bottom-right-active.xpm, bottom-right-inactive.png,
+	  bottom-right-inactive.xpm, close-active.xpm, close-inactive.xpm,
+	  close-pressed.png, close-pressed.xpm, hide-active.xpm,
+	  hide-inactive.xpm, hide-pressed.png, hide-pressed.xpm,
+	  left-active.png, left-active.xpm, left-inactive.png,
+	  left-inactive.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	  maximize-pressed.png, maximize-pressed.xpm,
+	  maximize-toggled-active.xpm, maximize-toggled-inactive.xpm,
+	  maximize-toggled-pressed.png, maximize-toggled-pressed.xpm,
+	  menu-active.xpm, menu-inactive.xpm, menu-pressed.png,
+	  menu-pressed.xpm, right-active.png, right-active.xpm,
+	  right-inactive.png, right-inactive.xpm, shade-active.xpm,
+	  shade-inactive.xpm, shade-pressed.png, shade-pressed.xpm,
+	  shade-toggled-active.xpm, shade-toggled-inactive.xpm,
+	  shade-toggled-pressed.png, shade-toggled-pressed.xpm,
+	  stick-active.xpm, stick-inactive.xpm, stick-pressed.png,
+	  stick-pressed.xpm, stick-toggled-active.xpm,
+	  stick-toggled-inactive.xpm, stick-toggled-pressed.png,
+	  stick-toggled-pressed.xpm, themerc, title-1-active.png,
+	  title-1-active.xpm, title-1-inactive.png, title-1-inactive.xpm,
+	  title-2-active.png, title-2-active.xpm, title-2-inactive.png,
+	  title-2-inactive.xpm, title-3-active.png, title-3-active.xpm,
+	  title-3-inactive.png, title-3-inactive.xpm, title-4-active.png,
+	  title-4-active.xpm, title-4-inactive.png, title-4-inactive.xpm,
+	  title-5-active.png, title-5-active.xpm, title-5-inactive.png,
+	  title-5-inactive.xpm, top-left-active.png, top-left-active.xpm,
+	  top-left-inactive.png, top-left-inactive.xpm,
+	  top-right-active.png, top-right-active.xpm,
+	  top-right-inactive.png, top-right-inactive.xpm: Sync with 4.2
+	  branch.
+
+2005-01-22 13:22  pollux
+
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo, po/fi.po:
+	  update FI translations
+
+2005-01-19 21:35  olivier
+
+	* src/client.c: Improve previous patch.
+
+2005-01-19 00:14  olivier
+
+	* src/client.c: Don't focus a randow window whth Alt+Tab when no
+	  focusable window is present.
+
+2005-01-18 22:59  olivier
+
+	* src/client.c: Small optimization to speed up GL apps in windowed
+	  mode.
+
+2005-01-18 19:33  olivier
+
+	* COMPOSITOR: Fix bug #611 (Documentation on command line option to
+	  enable/disable xfwm4 compositor)
+
+2005-01-17 21:58  olivier
+
+	* src/compositor.c: Fix bug #694: Window not showing when
+	  compositor is enabled.
+
+2005-01-17 21:31  olivier
+
+	* src/client.c: Fix bug #700
+
+2005-01-16 22:27  olivier
+
+	* po/xfwm4.pot, src/keyboard.c, src/keyboard.h: Fix modifers not
+	  working when caps lock is enabled (bug #689)
+
+2005-01-14 12:36  pollux
+
+	* mcs-plugin/: xfwm4_plugin.c, xfwm4_shortcuteditor.c: detect
+	  removed keytheme file
+
+2005-01-14 11:33  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: port from xfce_4_2
+
+2005-01-12 18:49  olivier
+
+	* po/xfwm4.pot, src/events.c, src/workspaces.c,
+	  themes/default/themerc: Focus patch again
+
+2005-01-11 22:57  olivier
+
+	* themes/default/themerc: Title offset
+
+2005-01-11 22:38  olivier
+
+	* themes/default/: bottom-active.png, bottom-inactive.png,
+	  bottom-left-active.png, bottom-left-active.xpm,
+	  bottom-left-inactive.png, bottom-left-inactive.xpm,
+	  bottom-right-active.png, bottom-right-active.xpm,
+	  bottom-right-inactive.png, bottom-right-inactive.xpm,
+	  left-active.png, left-inactive.png, right-active.png,
+	  right-inactive.png, themerc, title-1-active.png,
+	  title-1-active.xpm, title-1-inactive.png, title-1-inactive.xpm,
+	  title-2-active.png, title-2-active.xpm, title-2-inactive.png,
+	  title-2-inactive.xpm, title-3-active.png, title-3-active.xpm,
+	  title-3-inactive.png, title-3-inactive.xpm, title-4-active.png,
+	  title-4-active.xpm, title-4-inactive.png, title-4-inactive.xpm,
+	  title-5-active.png, title-5-active.xpm, title-5-inactive.png,
+	  title-5-inactive.xpm, top-left-active.png, top-left-active.xpm,
+	  top-left-inactive.png, top-left-inactive.xpm,
+	  top-right-active.png, top-right-active.xpm,
+	  top-right-inactive.png, top-right-inactive.xpm: BEtter default
+	  theme
+
+2005-01-11 21:15  olivier
+
+	* configure, configure.ac: Start 4.3.x
+
+2005-01-11 21:05  olivier
+
+	* src/workspaces.c: Try to fix the focus not being restored when
+	  switching desktop in focus follow mode.
+
+2005-01-11 07:44  olivier
+
+	* src/keyboard.c: Forgot caps lock mask.
+
+2005-01-10 21:22  olivier
+
+	* src/keyboard.c: Apply patch from Juho Vähä-Herttua
+	  <juhovh@iki.fi> for modifiers.
+
+2005-01-10 21:07  olivier
+
+	* src/keyboard.c: Change the mofifier computation.
 
 2005-01-09 11:08  olivier
 
 	* src/compositor.c: Fix bug #666
 
-2005-01-08 16:49  pollux
+2005-01-08 16:04  pollux
 
 	* mcs-plugin/xfce-wm-settings.desktop,
 	  mcs-plugin/xfce-workspaces-settings.desktop, po/ru.gmo, po/ru.po:
 	  update RU translations
-
-2005-01-07 21:29  olivier
-
-	* ChangeLog: Update ChangeLog
 
 2005-01-07 20:58  olivier
 
@@ -385,18 +823,9 @@
 	  top-left-active.png, top-left-inactive.png, top-right-active.png,
 	  top-right-inactive.png: Small change in title bar shadow
 
-2005-01-06 21:33  pollux
+2005-01-06 21:31  pollux
 
-	* po/: uk.gmo, uk.po: update UK translations, i hope i didn't
-	  forget any file this time
-
-2005-01-06 00:30  benny
-
-	* ChangeLog: Update ChangeLog
-
-2005-01-06 00:23  benny
-
-	* ChangeLog, ltmain.sh: Final updates
+	* po/: uk.gmo, uk.po: update UK translations
 
 2005-01-05 21:59  olivier
 
@@ -414,7 +843,7 @@
 	  top-right-inactive.png: Put back button on inactive frame (as
 	  it's the default theme, it should not be too confusing to users)
 
-2005-01-05 17:14  pollux
+2005-01-05 17:01  pollux
 
 	* po/: he.gmo, he.po: update HE translations
 
@@ -1151,8 +1580,8 @@
 
 2004-11-28 00:14  olivier
 
-	* src/: events.c, focus.c, keyboard.c: Fix focus timing on revert,
-	  Fix modifiers mismatch.
+	* .cdtproject, .project, src/events.c, src/focus.c, src/keyboard.c:
+	  Fix focus timing on revert, Fix modifiers mismatch.
 
 2004-11-27 21:44  pollux
 
@@ -1333,6 +1762,7 @@
 	* ltmain.sh, doc/C/images/Makefile.am, doc/C/images/Makefile.in,
 	  doc/C/images/compose_shortcut.png,
 	  doc/C/images/decoration_style.png, doc/C/images/focus.png,
+	  doc/C/images/keyboard_and_focus.png,
 	  doc/C/images/keyboard_shortcuts.png,
 	  doc/C/images/misc_wm_prefs.png, doc/C/images/titlebar.png,
 	  doc/C/images/workspace_margins.png,
@@ -1981,8 +2411,8 @@
 
 2004-10-09 16:20  pollux
 
-	* configure, configure.ac, po/fa.gmo, po/fa.po: update FA
-	  translations
+	* configure, configure.ac, po/fa.gmo, po/fa.po, po/fa_IR.gmo,
+	  po/fa_IR.po: update FA translations
 
 2004-10-09 15:48  pollux
 
@@ -2535,14 +2965,14 @@
 
 	* po/: ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
-	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fi.gmo, fi.po,
-	  fr.gmo, fr.po, he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po,
-	  it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po,
-	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po,
-	  pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo, sk.po, sv.gmo, sv.po,
-	  ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
-	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Run make
-	  update-po at Moe's request.
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa_IR.gmo,
+	  fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, he.gmo, he.po, hi.gmo,
+	  hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo,
+	  ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo,
+	  pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po,
+	  sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  zh_TW.gmo, zh_TW.po: Run make update-po at Moe's request.
 
 2004-09-21 08:40  olivier
 
@@ -2702,8 +3132,8 @@
 
 2004-09-08 00:12  olivier
 
-	* Makefile.am, Makefile.in, TODO, xfwm4.spec.in: Remove outdated
-	  example.xfwm4rc
+	* Makefile.am, Makefile.in, TODO, example.xfwm4rc.in,
+	  xfwm4.spec.in: Remove outdated example.xfwm4rc
 
 2004-09-07 23:52  olivier
 
@@ -3204,14 +3634,14 @@
 
 	* po/: POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
-	  es_MX.gmo, es_MX.po, eu.gmo, eu.po, fi.gmo, fi.po, fr.gmo, fr.po,
-	  he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
-	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
-	  nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
-	  pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo,
-	  tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
-	  zh_CN.po, zh_TW.gmo, zh_TW.po: Referencing a local working file
-	  in potfiles...
+	  es_MX.gmo, es_MX.po, eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo,
+	  fi.po, fr.gmo, fr.po, he.gmo, he.po, hi.gmo, hi.po, hu.gmo,
+	  hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo,
+	  lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo,
+	  pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Referencing
+	  a local working file in potfiles...
 
 2004-08-15 21:39  olivier
 
@@ -3220,16 +3650,17 @@
 	  mcs-plugin/xfwm4_plugin.c, po/POTFILES.in, po/ar.gmo, po/ar.po,
 	  po/az.gmo, po/az.po, po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po,
 	  po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
-	  po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po, po/fi.gmo,
-	  po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo,
-	  po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo,
-	  po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo,
-	  po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po,
-	  po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po, po/sv.gmo,
-	  po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo,
-	  po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo,
-	  po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po, src/hints.c, src/hints.h,
-	  src/netwm.c, themes/default/title-1-active.png,
+	  po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po, po/fa_IR.gmo,
+	  po/fa_IR.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo,
+	  po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo,
+	  po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo,
+	  po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
+	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
+	  src/hints.c, src/hints.h, src/netwm.c,
+	  themes/default/title-1-active.png,
 	  themes/default/title-1-inactive.png,
 	  themes/default/title-2-active.png,
 	  themes/default/title-2-inactive.png,
@@ -3285,13 +3716,13 @@
 
 	* po/: ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
-	  eu.gmo, eu.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po,
-	  hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
-	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
-	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo,
-	  sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo,
-	  vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po:
-	  Update translations
+	  eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo,
+	  uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Update translations
 
 2004-08-04 17:22  olivier
 
@@ -3401,7 +3832,9 @@
 	  icons/48x48/xfwm4.png, icons/scalable/Makefile.am,
 	  icons/scalable/Makefile.in, icons/scalable/xfce4-workspaces.svg,
 	  icons/scalable/xfwm4.svg, mcs-plugin/Makefile.am,
-	  mcs-plugin/Makefile.in: Added icons from Francois.
+	  mcs-plugin/Makefile.in, mcs-plugin/xfce4-keys.png,
+	  mcs-plugin/xfce4-workspaces.png, mcs-plugin/xfwm4.png: Added
+	  icons from Francois.
 
 2004-07-24 20:52  benny
 
@@ -3421,11 +3854,17 @@
 2004-07-24 14:57  benny
 
 	* aclocal.m4, configure, ltmain.sh, mcs-plugin/Makefile.am,
-	  mcs-plugin/Makefile.in, mcs-plugin/plugin.c,
-	  mcs-plugin/workspaces.c, mcs-plugin/xfce-wm-settings.desktop,
-	  mcs-plugin/xfwm4_plugin.c, mcs-plugin/xfwm4_plugin.h,
-	  mcs-plugin/xfwm4_shortcuteditor.c, src/events.c: Made icons
-	  themable. Fix compile error in events.c with --enable-debug=full.
+	  mcs-plugin/Makefile.in, mcs-plugin/keys-icon.h,
+	  mcs-plugin/keys.png, mcs-plugin/margins-icon.h,
+	  mcs-plugin/margins-icon.png, mcs-plugin/plugin.c,
+	  mcs-plugin/workspaces-icon.h, mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces.png, mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce4-keys.png, mcs-plugin/xfce4-workspaces.png,
+	  mcs-plugin/xfwm4-icon.h, mcs-plugin/xfwm4-icon.png,
+	  mcs-plugin/xfwm4.png, mcs-plugin/xfwm4_plugin.c,
+	  mcs-plugin/xfwm4_plugin.h, mcs-plugin/xfwm4_shortcuteditor.c,
+	  src/events.c: Made icons themable. Fix compile error in events.c
+	  with --enable-debug=full.
 
 2004-07-24 14:43  benny
 
@@ -3696,7 +4135,8 @@
 2004-07-07 21:18  olivier
 
 	* defaults/Makefile.am, defaults/Makefile.in, defaults/defaults,
-	  po/xfwm4.pot: Remove useless generation of default file.
+	  defaults/defaults.in, po/xfwm4.pot: Remove useless generation of
+	  default file.
 
 2004-07-07 00:22  olivier
 
@@ -3712,18 +4152,18 @@
 	* po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/bg.gmo, po/bg.po,
 	  po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po,
 	  po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po, po/eu.gmo,
-	  po/eu.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo,
-	  po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo,
-	  po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo,
-	  po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
-	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
-	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
-	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
-	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
-	  src/screen.c, src/screen.h, src/workspaces.c: Apply Vebjorn
-	  Ljosa's patch for workspace toggle, Don't cycle workspaces with
-	  using keyboard (I found this too confusing when used with
-	  Vebjorn's patch), Update po.
+	  po/eu.po, po/fa_IR.gmo, po/fa_IR.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po,
+	  po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po,
+	  po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
+	  po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo,
+	  po/pt_PT.po, po/ru.gmo, po/ru.po, po/sv.gmo, po/sv.po, po/ta.gmo,
+	  po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	  po/zh_TW.po, src/screen.c, src/screen.h, src/workspaces.c: Apply
+	  Vebjorn Ljosa's patch for workspace toggle, Don't cycle
+	  workspaces with using keyboard (I found this too confusing when
+	  used with Vebjorn's patch), Update po.
 
 2004-07-05 22:45  olivier
 
@@ -3824,21 +4264,22 @@
 2004-06-27 15:12  olivier
 
 	* po/ar.gmo, po/az.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo, po/de.gmo,
-	  po/es.gmo, po/es_MX.gmo, po/eu.gmo, po/fi.gmo, po/fr.gmo,
-	  po/hi.gmo, po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo,
-	  po/ms.gmo, po/nl.gmo, po/pl.gmo, po/pt_BR.gmo, po/pt_PT.gmo,
-	  po/ru.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo,
-	  po/zh_CN.gmo, po/zh_TW.gmo, src/client.c, src/display.c,
-	  src/display.h, src/events.c, src/main.c, src/stacking.c: Confine
-	  pointer to current root window for multiscreen
+	  po/es.gmo, po/es_MX.gmo, po/eu.gmo, po/fa_IR.gmo, po/fi.gmo,
+	  po/fr.gmo, po/hi.gmo, po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo,
+	  po/lt.gmo, po/ms.gmo, po/nl.gmo, po/pl.gmo, po/pt_BR.gmo,
+	  po/pt_PT.gmo, po/ru.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo,
+	  po/uk.gmo, po/vi.gmo, po/zh_CN.gmo, po/zh_TW.gmo, src/client.c,
+	  src/display.c, src/display.h, src/events.c, src/main.c,
+	  src/stacking.c: Confine pointer to current root window for
+	  multiscreen
 
 2004-06-26 23:20  olivier
 
 	* po/ar.po, po/az.po, po/bg.po, po/ca.po, po/cs.po, po/de.po,
-	  po/es.po, po/es_MX.po, po/eu.po, po/fi.po, po/fr.po, po/hi.po,
-	  po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po, po/ms.po,
-	  po/nl.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ru.po, po/sv.po,
-	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/es.po, po/es_MX.po, po/eu.po, po/fa_IR.po, po/fi.po, po/fr.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po,
+	  po/ms.po, po/nl.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ru.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
 	  po/zh_CN.po, po/zh_TW.po, src/Makefile.am, src/Makefile.in,
 	  src/main.c: Sync
 
@@ -3870,17 +4311,18 @@
 	* mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/az.gmo,
 	  po/az.po, po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po, po/cs.gmo,
 	  po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
-	  po/es_MX.po, po/eu.gmo, po/eu.po, po/fi.gmo, po/fi.po, po/fr.gmo,
-	  po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo,
-	  po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
-	  po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo,
-	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
-	  po/ru.gmo, po/ru.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po,
-	  po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po,
-	  po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
-	  po/zh_TW.po, src/client.c, src/events.c, src/netwm.c,
-	  src/settings.c, src/settings.h, themes/default.keys/keythemerc:
-	  Add a key shortcut to toggle fullscreen; Default key is "Alt+F11"
+	  po/es_MX.po, po/eu.gmo, po/eu.po, po/fa_IR.gmo, po/fa_IR.po,
+	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po,
+	  po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po,
+	  po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po,
+	  po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
+	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
+	  src/client.c, src/events.c, src/netwm.c, src/settings.c,
+	  src/settings.h, themes/default.keys/keythemerc: Add a key
+	  shortcut to toggle fullscreen; Default key is "Alt+F11"
 
 2004-06-23 21:20  olivier
 
@@ -3919,12 +4361,12 @@
 
 	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, po/ar.po,
 	  po/az.po, po/bg.po, po/ca.po, po/cs.po, po/de.po, po/es.po,
-	  po/es_MX.po, po/eu.po, po/fi.po, po/fr.po, po/hi.po, po/hu.po,
-	  po/it.po, po/ja.po, po/ko.po, po/lt.po, po/ms.po, po/nl.po,
-	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ru.po, po/sv.po, po/ta.po,
-	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
-	  po/zh_TW.po, src/placement.c: Add key-icon.h so that make dist
-	  actually works, Fix placement issue, Update po
+	  po/es_MX.po, po/eu.po, po/fa_IR.po, po/fi.po, po/fr.po, po/hi.po,
+	  po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po, po/ms.po,
+	  po/nl.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ru.po, po/sv.po,
+	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po, src/placement.c: Add key-icon.h so that
+	  make dist actually works, Fix placement issue, Update po
 
 2004-06-21 22:42  olivier
 
@@ -3946,9 +4388,9 @@
 
 2004-06-20 22:42  pollux
 
-	* mcs-plugin/: Makefile.am, Makefile.in, xfwm4_plugin.c: Add icon
-	  from Fran�ois and change text formatting in the shortcut key
-	  chooser dialog
+	* mcs-plugin/: Makefile.am, Makefile.in, keys-icon.h, keys.png,
+	  xfwm4_plugin.c: Add icon from Fran�ois and change text formatting
+	  in the shortcut key chooser dialog
 
 2004-06-20 12:12  olivier
 
@@ -3986,13 +4428,13 @@
 
 	* po/: ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
-	  eu.gmo, eu.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po,
-	  hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
-	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
-	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo,
-	  sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo,
-	  vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po:
-	  Update po Update French localization
+	  eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo,
+	  uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Update po Update French localization
 
 2004-06-19 09:34  olivier
 
@@ -4010,9 +4452,10 @@
 2004-06-18 07:42  olivier
 
 	* po/: ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po,
-	  eu.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po,
-	  ms.po, nl.po, pl.po, pt_BR.po, pt_PT.po, ru.po, sv.po, ta.po,
-	  tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Update-po
+	  eu.po, fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, ms.po, nl.po, pl.po, pt_BR.po, pt_PT.po, ru.po, sv.po,
+	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po:
+	  Update-po
 
 2004-06-18 07:38  olivier
 
@@ -4048,15 +4491,15 @@
 	  po/ar.po, po/az.gmo, po/az.po, po/bg.gmo, po/bg.po, po/ca.gmo,
 	  po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo,
 	  po/es.po, po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po,
-	  po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po,
-	  po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po,
-	  po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
-	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
-	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
-	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
-	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po: Fix
-	  packaging issues.
+	  po/fa_IR.gmo, po/fa_IR.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	  po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo,
+	  po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
+	  po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo,
+	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
+	  po/ru.gmo, po/ru.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po,
+	  po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po,
+	  po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	  po/zh_TW.po: Fix packaging issues.
 
 2004-06-16 00:42  olivier
 
@@ -4072,24 +4515,25 @@
 	* configure, configure.ac, po/POTFILES.in, po/ar.gmo, po/ar.po,
 	  po/az.gmo, po/az.po, po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po,
 	  po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
-	  po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po, po/fi.gmo,
-	  po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo,
-	  po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo,
-	  po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo,
-	  po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po,
-	  po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po, po/sv.gmo,
-	  po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo,
-	  po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo,
-	  po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po, src/Makefile.am,
-	  src/Makefile.in, src/client.c, src/client.h, src/events.c,
-	  src/events.h, src/focus.c, src/focus.h, src/frame.c, src/hints.c,
-	  src/hints.h, src/keyboard.h, src/main.c, src/menu.c, src/menu.h,
-	  src/misc.c, src/misc.h, src/mypixmap.c, src/mypixmap.h,
-	  src/mywindow.c, src/mywindow.h, src/netwm.c, src/netwm.h,
-	  src/parserc.c, src/placement.c, src/placement.h, src/poswin.c,
-	  src/screen.h, src/session.c, src/session.h, src/settings.c,
-	  src/settings.h, src/spinning_cursor.c, src/spinning_cursor.h,
-	  src/stacking.c, src/stacking.h, src/startup_notification.c,
+	  po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po, po/fa_IR.gmo,
+	  po/fa_IR.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo,
+	  po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo,
+	  po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo,
+	  po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
+	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
+	  src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
+	  src/events.c, src/events.h, src/focus.c, src/focus.h,
+	  src/frame.c, src/hints.c, src/hints.h, src/keyboard.h,
+	  src/main.c, src/menu.c, src/menu.h, src/misc.c, src/misc.h,
+	  src/mypixmap.c, src/mypixmap.h, src/mywindow.c, src/mywindow.h,
+	  src/netwm.c, src/netwm.h, src/parserc.c, src/placement.c,
+	  src/placement.h, src/poswin.c, src/screen.h, src/session.c,
+	  src/session.h, src/settings.c, src/settings.h,
+	  src/spinning_cursor.c, src/spinning_cursor.h, src/stacking.c,
+	  src/stacking.h, src/startup_notification.c,
 	  src/startup_notification.h, src/tabwin.c, src/transients.c,
 	  src/workspaces.c, src/workspaces.h: Add multiscreen support.
 
@@ -4134,14 +4578,15 @@
 
 	* src/: Makefile.am, Makefile.in, client.c, client.h, events.c,
 	  events.h, focus.c, focus.h, frame.c, frame.h, hints.c, hints.h,
-	  icons.c, icons.h, keyboard.c, keyboard.h, main.c, menu.c, menu.h,
-	  misc.c, misc.h, mypixmap.c, mypixmap.h, mywindow.c, mywindow.h,
-	  netwm.c, netwm.h, parserc.c, parserc.h, placement.c, placement.h,
-	  poswin.c, poswin.h, session.c, session.h, settings.c, settings.h,
-	  spinning_cursor.c, spinning_cursor.h, stacking.c, stacking.h,
-	  startup_notification.c, startup_notification.h, tabwin.c,
-	  tabwin.h, transients.c, transients.h, workspaces.c, workspaces.h:
-	  Change internals to prepare multi-screen (not quite there yet)
+	  icons.c, icons.h, keyboard.c, keyboard.h, main.c, main.h, menu.c,
+	  menu.h, misc.c, misc.h, mypixmap.c, mypixmap.h, mywindow.c,
+	  mywindow.h, netwm.c, netwm.h, parserc.c, parserc.h, placement.c,
+	  placement.h, poswin.c, poswin.h, session.c, session.h,
+	  settings.c, settings.h, spinning_cursor.c, spinning_cursor.h,
+	  stacking.c, stacking.h, startup_notification.c,
+	  startup_notification.h, tabwin.c, tabwin.h, transients.c,
+	  transients.h, workspaces.c, workspaces.h: Change internals to
+	  prepare multi-screen (not quite there yet)
 
 2004-06-04 16:11  olivier
 
@@ -4154,15 +4599,15 @@
 	  po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/bg.gmo, po/bg.po,
 	  po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo, po/de.po,
 	  po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po, po/eu.gmo,
-	  po/eu.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo,
-	  po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo,
-	  po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo,
-	  po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
-	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
-	  po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
-	  po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot,
-	  po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po,
-	  src/Makefile.am, src/Makefile.in, src/client.c,
+	  po/eu.po, po/fa_IR.gmo, po/fa_IR.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po,
+	  po/it.gmo, po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po,
+	  po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
+	  po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo,
+	  po/pt_PT.po, po/ru.gmo, po/ru.po, po/sv.gmo, po/sv.po, po/ta.gmo,
+	  po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	  po/zh_TW.po, src/Makefile.am, src/Makefile.in, src/client.c,
 	  src/default_icon.png, src/hints.c, src/icons.c, src/icons.h,
 	  src/inline-default-icon.h, src/main.c, src/settings.c,
 	  src/tabwin.c, src/tabwin.h: Add icon and application class to the
@@ -4178,7 +4623,7 @@
 2004-05-31 12:27  olivier
 
 	* configure, configure.ac, src/client.c, src/events.c,
-	  src/events.h, src/frame.c, src/main.c, src/menu.c,
+	  src/events.h, src/frame.c, src/main.c, src/main.h, src/menu.c,
 	  src/settings.c: Change namespace to xfce_* and put back older
 	  deprecated fns for backward compat.
 
@@ -4187,8 +4632,8 @@
 	* configure, configure.ac, po/xfwm4.pot, src/client.c,
 	  src/client.h, src/events.c, src/events.h, src/focus.c,
 	  src/focus.h, src/frame.c, src/frame.h, src/hints.c, src/hints.h,
-	  src/keyboard.c, src/keyboard.h, src/main.c, src/menu.c,
-	  src/menu.h, src/misc.c, src/misc.h, src/mypixmap.c,
+	  src/keyboard.c, src/keyboard.h, src/main.c, src/main.h,
+	  src/menu.c, src/menu.h, src/misc.c, src/misc.h, src/mypixmap.c,
 	  src/mypixmap.h, src/mywindow.c, src/mywindow.h, src/netwm.c,
 	  src/netwm.h, src/parserc.c, src/parserc.h, src/placement.c,
 	  src/placement.h, src/poswin.c, src/poswin.h, src/session.c,
@@ -4263,11 +4708,12 @@
 	* mcs-plugin/margins.c, mcs-plugin/plugin.c,
 	  mcs-plugin/workspaces.c, mcs-plugin/xfwm4_plugin.c, po/xfwm4.pot,
 	  src/client.c, src/events.c, src/focus.c, src/frame.c,
-	  src/hints.c, src/keyboard.c, src/main.c, src/menu.c, src/misc.c,
-	  src/mypixmap.c, src/mywindow.c, src/netwm.c, src/parserc.c,
-	  src/placement.c, src/poswin.c, src/settings.c, src/stacking.c,
-	  src/tabwin.c, src/transients.c, src/workspaces.c: Fix some
-	  compiler warnings and get rid of a bunch of deprecated calls
+	  src/hints.c, src/keyboard.c, src/main.c, src/main.h, src/menu.c,
+	  src/misc.c, src/mypixmap.c, src/mywindow.c, src/netwm.c,
+	  src/parserc.c, src/placement.c, src/poswin.c, src/settings.c,
+	  src/stacking.c, src/tabwin.c, src/transients.c, src/workspaces.c:
+	  Fix some compiler warnings and get rid of a bunch of deprecated
+	  calls
 
 2004-05-14 21:44  olivier
 
@@ -4282,20 +4728,21 @@
 	  src/client.c, src/client.h, src/events.c, src/events.h,
 	  src/focus.c, src/focus.h, src/frame.c, src/frame.h, src/hints.c,
 	  src/hints.h, src/keyboard.c, src/keyboard.h, src/main.c,
-	  src/menu.c, src/menu.h, src/misc.c, src/misc.h, src/mypixmap.c,
-	  src/mypixmap.h, src/mywindow.c, src/mywindow.h, src/netwm.c,
-	  src/netwm.h, src/parserc.c, src/parserc.h, src/placement.c,
-	  src/poswin.c, src/poswin.h, src/session.c, src/session.h,
-	  src/settings.c, src/settings.h, src/spinning_cursor.c,
-	  src/spinning_cursor.h, src/stacking.c, src/stacking.h,
-	  src/startup_notification.c, src/startup_notification.h,
-	  src/tabwin.c, src/tabwin.h, src/transients.c, src/transients.h,
-	  src/workspaces.c, src/workspaces.h, themes/Makefile.am,
-	  themes/Makefile.in, themes/default/Makefile.in,
-	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
-	  themes/opta/Makefile.in, themes/waza/Makefile.am,
-	  themes/waza/Makefile.in, themes/waza/README,
-	  themes/waza/bottom-active.xpm, themes/waza/bottom-inactive.xpm,
+	  src/main.h, src/menu.c, src/menu.h, src/misc.c, src/misc.h,
+	  src/mypixmap.c, src/mypixmap.h, src/mywindow.c, src/mywindow.h,
+	  src/netwm.c, src/netwm.h, src/parserc.c, src/parserc.h,
+	  src/placement.c, src/poswin.c, src/poswin.h, src/session.c,
+	  src/session.h, src/settings.c, src/settings.h,
+	  src/spinning_cursor.c, src/spinning_cursor.h, src/stacking.c,
+	  src/stacking.h, src/startup_notification.c,
+	  src/startup_notification.h, src/tabwin.c, src/tabwin.h,
+	  src/transients.c, src/transients.h, src/workspaces.c,
+	  src/workspaces.h, themes/Makefile.am, themes/Makefile.in,
+	  themes/default/Makefile.in, themes/default-4.0/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/opta/Makefile.in,
+	  themes/waza/Makefile.am, themes/waza/Makefile.in,
+	  themes/waza/README, themes/waza/bottom-active.xpm,
+	  themes/waza/bottom-inactive.xpm,
 	  themes/waza/bottom-left-active.xpm,
 	  themes/waza/bottom-left-inactive.xpm,
 	  themes/waza/bottom-right-active.xpm,
@@ -4407,13 +4854,13 @@
 
 	* po/: POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
-	  es_MX.gmo, es_MX.po, eu.gmo, eu.po, fi.gmo, fi.po, fr.gmo, fr.po,
-	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
-	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
-	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
-	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo,
-	  uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
-	  zh_TW.po: Potfiles
+	  es_MX.gmo, es_MX.po, eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo,
+	  fi.po, fr.gmo, fr.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo,
+	  it.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo,
+	  ms.po, nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po,
+	  pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po,
+	  tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot,
+	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Potfiles
 
 2004-05-09 23:59  olivier
 
@@ -4438,8 +4885,9 @@
 
 2004-05-04 23:41  olivier
 
-	* src/: client.c, events.c, hints.c, main.c, misc.c, misc.h: Remove
-	  our internal time event tracking and use GDK_CURRENT_TIME instead
+	* src/: client.c, events.c, hints.c, main.c, main.h, misc.c,
+	  misc.h: Remove our internal time event tracking and use
+	  GDK_CURRENT_TIME instead
 
 2004-05-04 22:35  olivier
 
@@ -4627,35 +5075,49 @@
 	  themes/default/bottom-left-inactive.xpm,
 	  themes/default/bottom-right-active.xpm,
 	  themes/default/bottom-right-inactive.xpm,
-	  themes/default/close-active.xpm,
+	  themes/default/close-active.png, themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.xpm, themes/default/hide-inactive.png,
 	  themes/default/hide-inactive.xpm,
 	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.png,
 	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
 	  themes/default/maximize-inactive.xpm,
 	  themes/default/maximize-pressed.png,
 	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
 	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
 	  themes/default/maximize-toggled-inactive.xpm,
 	  themes/default/maximize-toggled-pressed.png,
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.xpm,
 	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
-	  themes/default/shade-active.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
 	  themes/default/shade-inactive.xpm,
 	  themes/default/shade-pressed.png,
 	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
 	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
 	  themes/default/shade-toggled-inactive.xpm,
 	  themes/default/shade-toggled-pressed.png,
 	  themes/default/shade-toggled-pressed.xpm,
-	  themes/default/stick-active.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
 	  themes/default/stick-inactive.xpm,
 	  themes/default/stick-pressed.png,
 	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
 	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
 	  themes/default/stick-toggled-inactive.xpm,
 	  themes/default/stick-toggled-pressed.png,
 	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
@@ -4727,35 +5189,50 @@
 2004-04-06 21:12  olivier
 
 	* po/xfwm4.pot, themes/default/Makefile.am,
-	  themes/default/Makefile.in, themes/default/close-active.xpm,
+	  themes/default/Makefile.in, themes/default/close-active.png,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.xpm, themes/default/hide-inactive.png,
 	  themes/default/hide-inactive.xpm,
 	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.png,
 	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
 	  themes/default/maximize-inactive.xpm,
 	  themes/default/maximize-pressed.png,
 	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
 	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
 	  themes/default/maximize-toggled-inactive.xpm,
 	  themes/default/maximize-toggled-pressed.png,
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.xpm,
 	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
-	  themes/default/shade-active.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
 	  themes/default/shade-inactive.xpm,
 	  themes/default/shade-pressed.png,
 	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
 	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
 	  themes/default/shade-toggled-inactive.xpm,
 	  themes/default/shade-toggled-pressed.png,
 	  themes/default/shade-toggled-pressed.xpm,
-	  themes/default/stick-active.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
 	  themes/default/stick-inactive.xpm,
 	  themes/default/stick-pressed.png,
 	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
 	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
 	  themes/default/stick-toggled-inactive.xpm,
 	  themes/default/stick-toggled-pressed.png,
 	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
@@ -4773,14 +5250,29 @@
 2004-04-06 13:19  olivier
 
 	* src/mypixmap.c, src/settings.c, themes/default/Makefile.am,
-	  themes/default/Makefile.in, themes/default/close-pressed.png,
+	  themes/default/Makefile.in, themes/default/close-active.png,
+	  themes/default/close-inactive.png,
+	  themes/default/close-pressed.png, themes/default/hide-active.png,
+	  themes/default/hide-inactive.png,
 	  themes/default/hide-pressed.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-inactive.png,
 	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-inactive.png,
 	  themes/default/maximize-toggled-pressed.png,
-	  themes/default/menu-pressed.png,
+	  themes/default/menu-active.png, themes/default/menu-pressed.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-inactive.png,
 	  themes/default/shade-pressed.png,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-inactive.png,
 	  themes/default/shade-toggled-pressed.png,
+	  themes/default/stick-active.png,
+	  themes/default/stick-inactive.png,
 	  themes/default/stick-pressed.png,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-inactive.png,
 	  themes/default/stick-toggled-pressed.png,
 	  themes/default/title-1-active.png,
 	  themes/default/title-1-inactive.png,
@@ -5047,18 +5539,19 @@
 
 	* po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/ca.gmo, po/ca.po,
 	  po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
-	  po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po, po/fi.gmo,
-	  po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo, po/hi.po, po/hu.gmo,
-	  po/hu.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
-	  po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo,
-	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
-	  po/ru.gmo, po/ru.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po,
-	  po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po,
-	  po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
-	  po/zh_TW.po, src/events.c, src/hints.c, src/hints.h, src/main.c,
-	  src/menu.c, src/menu.h, src/settings.c, src/settings.h,
-	  src/workspaces.c, src/workspaces.h: Include patch for desktop
-	  names from Aurelien Foret <orelien@chez.com>
+	  po/es_MX.gmo, po/es_MX.po, po/eu.gmo, po/eu.po, po/fa_IR.gmo,
+	  po/fa_IR.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hi.gmo,
+	  po/hi.po, po/hu.gmo, po/hu.po, po/ja.gmo, po/ja.po, po/ko.gmo,
+	  po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo,
+	  po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo, po/pt_BR.po,
+	  po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po, po/sv.gmo,
+	  po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo,
+	  po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo,
+	  po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po, src/events.c,
+	  src/hints.c, src/hints.h, src/main.c, src/menu.c, src/menu.h,
+	  src/settings.c, src/settings.h, src/workspaces.c,
+	  src/workspaces.h: Include patch for desktop names from Aurelien
+	  Foret <orelien@chez.com>
 
 2004-03-07 10:06  olivier
 
@@ -5196,12 +5689,12 @@
 
 2004-02-27 22:31  olivier
 
-	* config.h.in, configure, configure.ac, mcs-plugin/Makefile.am,
-	  mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c,
-	  src/Makefile.am, src/Makefile.in, src/parserc.c, src/parserc.h,
-	  src/settings.c, themes/Makefile.am, themes/Makefile.in,
-	  themes/default/Makefile.am, themes/default/Makefile.in,
-	  themes/default/bottom-active.xpm,
+	* config.h.in, configure, configure.ac, defaults/defaults.in,
+	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	  mcs-plugin/xfwm4_plugin.c, src/Makefile.am, src/Makefile.in,
+	  src/parserc.c, src/parserc.h, src/settings.c, themes/Makefile.am,
+	  themes/Makefile.in, themes/default/Makefile.am,
+	  themes/default/Makefile.in, themes/default/bottom-active.xpm,
 	  themes/default/bottom-inactive.xpm,
 	  themes/default/bottom-left-active.xpm,
 	  themes/default/bottom-left-inactive.xpm,
@@ -5289,10 +5782,10 @@
 	  themes/default/top-left-active.xpm,
 	  themes/default/top-left-inactive.xpm,
 	  themes/default/top-right-active.xpm,
-	  themes/default/top-right-inactive.xpm, configure, configure.ac,
-	  ltmain.sh, themes/Makefile.am, themes/Makefile.in: Reorg xfwm4
-	  theme by moving most theme from xfwm4 base package to
-	  xfwm4-themes
+	  themes/default/top-right-inactive.xpm, .cdtproject, configure,
+	  configure.ac, ltmain.sh, .project, themes/Makefile.am,
+	  themes/Makefile.in: Reorg xfwm4 theme by moving most theme from
+	  xfwm4 base package to xfwm4-themes
 
 2004-02-25 20:03  olivier
 
@@ -5416,10 +5909,10 @@
 
 2004-02-17 23:36  olivier
 
-	* src/: client.c, client.h, events.c, main.c, workspaces.c: Resync
-	  with xfce_4_0 branch: Keep track of window creation timestamp for
-	  "transient for group" management, Simplify code a bit, should be
-	  handled with care.
+	* src/: client.c, client.h, events.c, main.c, main.h, workspaces.c:
+	  Resync with xfce_4_0 branch: Keep track of window creation
+	  timestamp for "transient for group" management, Simplify code a
+	  bit, should be handled with care.
 
 2004-02-17 20:36  jasper
 
@@ -5694,6 +6187,10 @@
 	  title-5-inactive.xpm, top-left-active.xpm, top-left-inactive.xpm,
 	  top-right-active.xpm, top-right-inactive.xpm: Smaller title
 
+2004-01-29 16:51  jasper
+
+	* po/: fa_IR.gmo, fa_IR.po: Update Persian translations
+
 2004-01-28 23:50  olivier
 
 	* src/: client.c, client.h, events.c, workspaces.c: Use bit based
@@ -5800,10 +6297,11 @@
 
 2004-01-21 14:43  jasper
 
-	* configure, configure.ac, po/es.gmo, po/es.po, po/ja.gmo,
-	  po/ja.po, po/ko.gmo, po/ko.po, po/pt_BR.gmo, po/pt_BR.po,
-	  po/zh_CN.gmo, po/zh_CN.po: Translations added/updated for
-	  spanish, persian, japanese, korean, brasilian and chinese
+	* configure, configure.ac, po/es.gmo, po/es.po, po/fa_IR.gmo,
+	  po/fa_IR.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po,
+	  po/pt_BR.gmo, po/pt_BR.po, po/zh_CN.gmo, po/zh_CN.po:
+	  Translations added/updated for spanish, persian, japanese,
+	  korean, brasilian and chinese
 
 2004-01-20 22:57  olivier
 
@@ -6090,9 +6588,9 @@
 
 2004-01-04 00:05  olivier
 
-	* src/: client.c, events.c, hints.c, hints.h, main.c: Fix C++
-	  comment in Bernhard's patch Implement experimental support for
-	  KDE systray protocol (xfwm4 acting like a proxy between KDE
+	* src/: client.c, events.c, hints.c, hints.h, main.c, main.h: Fix
+	  C++ comment in Bernhard's patch Implement experimental support
+	  for KDE systray protocol (xfwm4 acting like a proxy between KDE
 	  systray protocol and Freedesktop systray protocol)
 
 2004-01-03 22:21  olivier
@@ -7828,8 +8326,10 @@
 	  doc/C/images/Makefile.am, doc/C/images/Makefile.in,
 	  doc/C/images/xfwm_workspaces.png, mcs-plugin/Makefile.am,
 	  mcs-plugin/Makefile.in, mcs-plugin/margins.c,
-	  mcs-plugin/margins.h, mcs-plugin/plugin.c, mcs-plugin/plugin.h,
-	  mcs-plugin/workspaces.c, mcs-plugin/workspaces.h, src/client.c,
+	  mcs-plugin/margins.h, mcs-plugin/margins_plugin.c,
+	  mcs-plugin/plugin.c, mcs-plugin/plugin.h,
+	  mcs-plugin/workspaces-icon.h, mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces.h, mcs-plugin/workspaces.png, src/client.c,
 	  src/events.c, src/settings.c, themes/Makefile.am,
 	  themes/Makefile.in, themes/default/bottom-active.xpm,
 	  themes/default/bottom-inactive.xpm,
@@ -8337,10 +8837,10 @@
 
 2003-09-19 23:11  xfce
 
-	* doc/C/images/: decoration_style.png, misc_wm_prefs.png,
-	  workspace_margins.png: Change default background color to #336699
-	  and update screen captures for doc (default WM decorations are
-	  rounded)
+	* doc/C/images/: decoration_style.png, keyboard_and_focus.png,
+	  misc_wm_prefs.png, workspace_margins.png: Change default
+	  background color to #336699 and update screen captures for doc
+	  (default WM decorations are rounded)
 
 2003-09-16 19:51  xfce
 
@@ -8452,7 +8952,7 @@
 
 2003-09-01 00:46  xfce
 
-	* src/: client.c, hints.c, hints.h, main.c, workspaces.c,
+	* src/: client.c, hints.c, hints.h, main.c, main.h, workspaces.c,
 	  workspaces.h: Use "int" where "int" is to be used instead of
 	  CARD32 (for portability)
 
@@ -8473,8 +8973,14 @@
 
 2003-08-30 14:49  huysmans
 
-	* aclocal.m4, configure, configure.ac, po/zh_TW.gmo, po/zh_TW.po:
-	  Rename zh_TW.Big5 -> zh_TW
+	* aclocal.m4, configure, configure.ac, po/zh_TW.Big5.gmo,
+	  po/zh_TW.Big5.po, po/zh_TW.gmo, po/zh_TW.po: Rename zh_TW.Big5 ->
+	  zh_TW
+
+2003-08-30 10:58  huysmans
+
+	* po/: zh_TW.Big5.gmo, zh_TW.Big5.po: Add traditional chinese
+	  translations
 
 2003-08-30 01:34  xfce
 
@@ -8686,9 +9192,9 @@
 
 2003-07-29 14:24  huysmans
 
-	* doc/C/images/: decoration_style.png, misc_wm_prefs.png,
-	  titlebar.png, workspace_margins.png: Update all images to new
-	  defaults
+	* doc/C/images/: decoration_style.png, keyboard_and_focus.png,
+	  misc_wm_prefs.png, titlebar.png, workspace_margins.png: Update
+	  all images to new defaults
 
 2003-07-29 08:28  huysmans
 
@@ -8887,11 +9393,12 @@
 
 2003-07-05 14:31  xfce
 
-	* Makefile.in: Remove ltconfig script as it is generated
+	* Makefile.in, ltconfig: Remove ltconfig script as it is generated
 
 2003-07-05 01:37  xfce
 
-	* Makefile.in, po/es.gmo, po/es_MX.gmo: libttol update and all
+	* Makefile.in, ltcf-c.sh, po/es.gmo, po/es_MX.gmo: libttol update
+	  and all
 
 2003-07-03 23:26  xfce
 
@@ -8919,9 +9426,9 @@
 
 2003-07-01 00:24  xfce
 
-	* src/: client.c, client.h, events.c, main.c, misc.c, misc.h,
-	  settings.c: Improve Xrandr support Hide sidewalks off screen when
-	  wrap workspace is turned off
+	* src/: client.c, client.h, events.c, main.c, main.h, misc.c,
+	  misc.h, settings.c: Improve Xrandr support Hide sidewalks off
+	  screen when wrap workspace is turned off
 
 2003-06-30 20:11  huysmans
 
@@ -8938,12 +9445,13 @@
 
 2003-06-27 00:41  xfce
 
-	* Makefile.in, aclocal.m4, configure, configure.ac, ltmain.sh,
-	  defaults/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, mcs-plugin/Makefile.in,
-	  src/Makefile.am, src/Makefile.in, src/events.c, src/main.c,
-	  themes/Makefile.in, themes/default/Makefile.in,
-	  themes/default.keys/Makefile.in: Add Xrandr support
+	* Makefile.in, aclocal.m4, configure, configure.ac, ltcf-c.sh,
+	  ltconfig, ltmain.sh, defaults/Makefile.in, doc/Makefile.in,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  mcs-plugin/Makefile.in, src/Makefile.am, src/Makefile.in,
+	  src/events.c, src/main.c, src/main.h, themes/Makefile.in,
+	  themes/default/Makefile.in, themes/default.keys/Makefile.in: Add
+	  Xrandr support
 
 2003-06-26 22:32  xfce
 
@@ -8952,14 +9460,14 @@
 
 2003-06-25 22:22  bmeurer
 
-	* aclocal.m4, configure, configure.ac, ltmain.sh: Fixed -lXext on
-	  Solaris.
+	* aclocal.m4, configure, configure.ac, ltcf-c.sh, ltconfig,
+	  ltmain.sh: Fixed -lXext on Solaris.
 
 2003-06-25 22:18  xfce
 
-	* aclocal.m4, configure, configure.ac, ltmain.sh, src/client.c,
-	  src/client.h, src/events.c: Improve ICCCM compliance for
-	  configure events
+	* aclocal.m4, configure, configure.ac, ltcf-c.sh, ltconfig,
+	  ltmain.sh, src/client.c, src/client.h, src/events.c: Improve
+	  ICCCM compliance for configure events
 
 2003-06-24 08:36  xfce
 
@@ -8967,9 +9475,9 @@
 
 2003-06-23 00:09  xfce
 
-	* src/: client.c, events.c, main.c, misc.c, misc.h: Use small input
-	  only window located on screen edges to detect mouse move on the
-	  screen edge.
+	* src/: client.c, events.c, main.c, main.h, misc.c, misc.h: Use
+	  small input only window located on screen edges to detect mouse
+	  move on the screen edge.
 
 2003-06-21 22:40  xfce
 
@@ -8981,8 +9489,8 @@
 
 2003-06-21 20:28  bmeurer
 
-	* aclocal.m4, config.h.in, configure, configure.ac, ltmain.sh:
-	  Fixes.
+	* aclocal.m4, config.h.in, configure, configure.ac, ltcf-c.sh,
+	  ltconfig, ltmain.sh: Fixes.
 
 2003-06-21 14:15  xfce
 
@@ -9026,14 +9534,15 @@
 
 2003-06-19 00:24  bmeurer
 
-	* doc/C/images/: decoration_style.png, misc_wm_prefs.png,
-	  workspace_margins.png: Updated images. Thanks to Francois.
+	* doc/C/images/: decoration_style.png, keyboard_and_focus.png,
+	  misc_wm_prefs.png, workspace_margins.png: Updated images. Thanks
+	  to Francois.
 
 2003-06-18 22:33  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/client.c: Improve clientFrame()
-	  Call gtk_window_set_position () as late at possible as it seems
-	  there is a race cond in gtk+
+	* mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  src/client.c: Improve clientFrame() Call gtk_window_set_position
+	  () as late at possible as it seems there is a race cond in gtk+
 
 2003-06-18 21:57  xfce
 
@@ -9042,8 +9551,8 @@
 
 2003-06-18 08:37  xfce
 
-	* src/: client.c, settings.c, settings.h: Exclude panel from
-	  cycling by default
+	* defaults/defaults.in, src/client.c, src/settings.c,
+	  src/settings.h: Exclude panel from cycling by default
 
 2003-06-18 01:28  xfce
 
@@ -9056,8 +9565,8 @@
 
 2003-06-16 00:32  xfce
 
-	* aclocal.m4, configure, configure.ac, ltmain.sh, po/xfwm4.pot:
-	  Switch to version 3.91.0
+	* aclocal.m4, configure, configure.ac, ltcf-c.sh, ltconfig,
+	  ltmain.sh, po/xfwm4.pot: Switch to version 3.91.0
 
 2003-06-15 00:56  xfce
 
@@ -9065,16 +9574,18 @@
 
 2003-06-14 23:53  bmeurer
 
-	* Makefile.in, config.guess, config.sub, install-sh, ltmain.sh,
-	  defaults/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, mcs-plugin/Makefile.in,
+	* Makefile.in, config.guess, config.sub, install-sh, ltcf-c.sh,
+	  ltconfig, ltmain.sh, defaults/Makefile.in, doc/Makefile.in,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  mcs-plugin/Makefile.in, mcs-plugin/margins_plugin.c,
 	  mcs-plugin/xfwm4_plugin.c, src/Makefile.in, src/main.c,
 	  themes/Makefile.in, themes/default/Makefile.in,
 	  themes/default.keys/Makefile.in: Introduced xfce_textdomain()
 
 2003-06-14 17:59  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/client.c: Improve restacking
+	* mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  src/client.c: Improve restacking
 
 2003-06-14 02:28  xfce
 
@@ -9082,7 +9593,8 @@
 
 2003-06-14 01:51  xfce
 
-	* mcs-plugin/xfwm4_plugin.c: apply Benny's patch for mcs plugins
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: apply Benny's
+	  patch for mcs plugins
 
 2003-06-14 00:58  xfce
 
@@ -9105,16 +9617,19 @@
 
 2003-06-11 00:08  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/main.c: Various updates
+	* mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  src/main.c: Various updates
 
 2003-06-10 01:39  xfce
 
-	* mcs-plugin/xfwm4_plugin.c: Add new widget xfce_framebox to unify
-	  look across UI Migrate all plugins to this new widget
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Add new widget
+	  xfce_framebox to unify look across UI Migrate all plugins to this
+	  new widget
 
 2003-06-09 19:18  xfce
 
-	* configure.ac, mcs-plugin/xfwm4_plugin.c: Redesign UI
+	* configure.ac, mcs-plugin/margins_plugin.c,
+	  mcs-plugin/xfwm4_plugin.c: Redesign UI
 
 2003-06-09 00:58  xfce
 
@@ -9163,8 +9678,9 @@
 
 2003-06-03 14:28  huysmans
 
-	* doc/C/images/: decoration_style.png, misc_wm_prefs.png,
-	  workspace_margins.png: Use properly compressed images
+	* doc/C/images/: decoration_style.png, keyboard_and_focus.png,
+	  misc_wm_prefs.png, workspace_margins.png: Use properly compressed
+	  images
 
 2003-06-02 23:35  xfce
 
@@ -9173,9 +9689,10 @@
 
 2003-06-02 22:08  xfce
 
-	* src/: events.c, settings.c, settings.h: Add a hidden option to
-	  disable Alt+Click action Add easy_click=false to ~/.xfwm4rc to
-	  disable Alt+Click => move/resize
+	* defaults/defaults.in, src/events.c, src/settings.c,
+	  src/settings.h: Add a hidden option to disable Alt+Click action
+	  Add easy_click=false to ~/.xfwm4rc to disable Alt+Click =>
+	  move/resize
 
 2003-06-01 19:25  huysmans
 
@@ -9187,8 +9704,8 @@
 
 2003-06-01 14:06  huysmans
 
-	* doc/C/images/: decoration_style.png, misc_wm_prefs.png: Updated
-	  images by Francois
+	* doc/C/images/: decoration_style.png, keyboard_and_focus.png,
+	  misc_wm_prefs.png: Updated images by Francois
 
 2003-05-31 14:18  huysmans
 
@@ -9247,8 +9764,8 @@
 
 	* doc/C/: xfwm4.html, xfwm4.xml, images/Makefile.am,
 	  images/Makefile.in, images/decoration_style.png,
-	  images/misc_wm_prefs.png, images/titlebar.png: Add documentation
-	  by Francois
+	  images/keyboard_and_focus.png, images/misc_wm_prefs.png,
+	  images/titlebar.png: Add documentation by Francois
 
 2003-05-26 23:18  xfce
 
@@ -9274,7 +9791,8 @@
 
 2003-05-23 00:29  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/ca.gmo,
+	* defaults/defaults.in, mcs-plugin/margins_plugin.c,
+	  mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/ca.gmo,
 	  po/ca.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
 	  po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
 	  po/nl.po, po/pl.gmo, po/pl.po, po/ta.gmo, po/ta.po, po/tr.gmo,
@@ -9309,14 +9827,14 @@
 
 2003-05-16 21:18  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/.indent.pro, src/client.c,
-	  src/client.h, src/events.c, src/events.h, src/frame.c,
-	  src/frame.h, src/hints.c, src/hints.h, src/keyboard.c,
-	  src/keyboard.h, src/main.c, src/menu.c, src/menu.h, src/misc.c,
-	  src/misc.h, src/mypixmap.c, src/mypixmap.h, src/mywindow.c,
-	  src/mywindow.h, src/parserc.c, src/parserc.h, src/session.c,
-	  src/session.h, src/settings.c, src/settings.h,
-	  src/spinning_cursor.c, src/spinning_cursor.h,
+	* mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  src/.indent.pro, src/client.c, src/client.h, src/events.c,
+	  src/events.h, src/frame.c, src/frame.h, src/hints.c, src/hints.h,
+	  src/keyboard.c, src/keyboard.h, src/main.c, src/menu.c,
+	  src/menu.h, src/misc.c, src/misc.h, src/mypixmap.c,
+	  src/mypixmap.h, src/mywindow.c, src/mywindow.h, src/parserc.c,
+	  src/parserc.h, src/session.c, src/session.h, src/settings.c,
+	  src/settings.h, src/spinning_cursor.c, src/spinning_cursor.h,
 	  src/startup_notification.c, src/startup_notification.h,
 	  src/tabwin.c, src/tabwin.h, src/workspaces.c, src/workspaces.h:
 	  Various small cleanups, rerun indent with new settings.
@@ -9400,14 +9918,14 @@
 
 2003-05-12 00:26  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo, po/nl.po,
-	  po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
-	  src/client.c, src/events.c, src/main.c, src/settings.c,
-	  src/settings.h: Add wrap workspace even when not moving windows,
-	  add edge resistance, update mcs plugin, and huge code cleaup in
-	  mcs plugin.  Update french i18n
+	* defaults/defaults.in, mcs-plugin/xfwm4_plugin.c, po/ar.gmo,
+	  po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	  po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	  po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	  po/zh_CN.po, src/client.c, src/events.c, src/main.c,
+	  src/settings.c, src/settings.h: Add wrap workspace even when not
+	  moving windows, add edge resistance, update mcs plugin, and huge
+	  code cleaup in mcs plugin.  Update french i18n
 
 2003-05-11 00:43  xfce
 
@@ -9464,14 +9982,14 @@
 2003-05-04 20:19  huysmans
 
 	* Makefile.am, Makefile.in, aclocal.m4, config.guess, config.sub,
-	  configure, ltmain.sh, defaults/Makefile.am, defaults/Makefile.in,
-	  mcs-plugin/Makefile.in, po/ar.gmo, po/ar.po, po/de.gmo, po/de.po,
-	  po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po, po/fi.gmo,
-	  po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo, po/nl.po, po/pl.gmo,
-	  po/pl.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
-	  src/Makefile.in, themes/Makefile.in, themes/default/Makefile.in,
-	  themes/default.keys/Makefile.in: Fix rpm target and some
-	  distcheck stuff. distcheck still fails
+	  configure, ltcf-c.sh, ltconfig, ltmain.sh, defaults/Makefile.am,
+	  defaults/Makefile.in, mcs-plugin/Makefile.in, po/ar.gmo,
+	  po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	  po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	  po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	  po/zh_CN.po, src/Makefile.in, themes/Makefile.in,
+	  themes/default/Makefile.in, themes/default.keys/Makefile.in: Fix
+	  rpm target and some distcheck stuff. distcheck still fails
 
 2003-05-04 00:02  xfce
 
@@ -9668,8 +10186,9 @@
 
 2003-04-21 19:47  bmeurer
 
-	* Makefile.in, aclocal.m4, configure, ltmain.sh, m4/X11.m4: Remove
-	  rpath stuff (up to the package maintainer to take care of this).
+	* Makefile.in, aclocal.m4, configure, ltcf-c.sh, ltconfig,
+	  ltmain.sh, m4/X11.m4, m4/rpath.m4: Remove rpath stuff (up to the
+	  package maintainer to take care of this).
 
 2003-04-21 11:56  xfce
 
@@ -9742,9 +10261,10 @@
 
 2003-04-10 00:15  xfce
 
-	* Makefile.in, aclocal.m4, configure, configure.ac, ltmain.sh,
-	  xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in: Add new
-	  theme "triviality", switch to automake-1.7.3
+	* Makefile.in, aclocal.m4, configure, configure.ac, ltcf-c.sh,
+	  ltconfig, ltmain.sh, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "triviality", switch to
+	  automake-1.7.3
 
 2003-04-09 23:46  xfce
 
@@ -9762,7 +10282,7 @@
 2003-04-09 22:42  bmeurer
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
-	  depcomp, defaults/Makefile.in, m4/debug.m4,
+	  depcomp, ltconfig, defaults/Makefile.in, m4/debug.m4,
 	  mcs-plugin/Makefile.in, src/Makefile.in, themes/Makefile.in,
 	  themes/default/Makefile.in, themes/default.keys/Makefile.in:
 	  Improved debug.m4:
@@ -9886,14 +10406,14 @@
 
 	* aclocal.m4, config.h.in, configure, m4/debug.m4,
 	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/Makefile.am,
-	  src/Makefile.in, src/client.c, src/events.c, src/frame.c,
-	  src/hints.c, src/keyboard.c, src/main.c, src/menu.c, src/misc.c,
-	  src/misc.h, src/mypixmap.c, src/mywindow.c, src/parserc.c,
-	  src/settings.c, src/tabwin.c, src/tabwin.h, src/workspaces.c:
-	  Debugging stuff now provided by libxfce4util. As a result of this
-	  change libxfcegui4 now depends on libxfce4util.  Some other
-	  updates.  added a hint to the libxfcegui4 README for Xinerama
-	  problems with XFree86.
+	  src/Makefile.in, src/client.c, src/debug.h, src/events.c,
+	  src/frame.c, src/hints.c, src/keyboard.c, src/main.c, src/menu.c,
+	  src/misc.c, src/misc.h, src/mypixmap.c, src/mywindow.c,
+	  src/parserc.c, src/settings.c, src/tabwin.c, src/tabwin.h,
+	  src/workspaces.c: Debugging stuff now provided by libxfce4util.
+	  As a result of this change libxfcegui4 now depends on
+	  libxfce4util.  Some other updates.  added a hint to the
+	  libxfcegui4 README for Xinerama problems with XFree86.
 
 2003-04-02 19:33  bmeurer
 
@@ -9903,20 +10423,21 @@
 2003-04-02 18:02  bmeurer
 
 	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
-	  ltmain.sh, m4/debug.m4, mcs-plugin/xfwm4_plugin.c, src/client.c,
-	  src/events.c, src/frame.c, src/hints.c, src/keyboard.c,
-	  src/main.c, src/menu.c, src/misc.c, src/mypixmap.c,
-	  src/mywindow.c, src/parserc.c, src/session.c, src/settings.c,
-	  src/spinning_cursor.c, src/startup_notification.c, src/tabwin.c,
-	  src/workspaces.c: Updated i18n stuff (libxfce4util now provides a
-	  i18n.h).  updated X11.m4 updated xfwm4 to compile well with
-	  -Werror -Wall updated xfce-mcs-plugins and added a hint to the
-	  README for XFree86 users
+	  ltcf-c.sh, ltconfig, ltmain.sh, m4/debug.m4, m4/rpath.m4,
+	  mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  src/client.c, src/events.c, src/frame.c, src/hints.c,
+	  src/keyboard.c, src/main.c, src/menu.c, src/misc.c,
+	  src/mypixmap.c, src/mywindow.c, src/parserc.c, src/session.c,
+	  src/settings.c, src/spinning_cursor.c,
+	  src/startup_notification.c, src/tabwin.c, src/workspaces.c:
+	  Updated i18n stuff (libxfce4util now provides a i18n.h).  updated
+	  X11.m4 updated xfwm4 to compile well with -Werror -Wall updated
+	  xfce-mcs-plugins and added a hint to the README for XFree86 users
 
 2003-04-01 23:33  xfce
 
-	* mcs-plugin/xfwm4_plugin.c: Initialize early i18n in mcs plugins
-	  Add Etria theme
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Initialize early
+	  i18n in mcs plugins Add Etria theme
 
 2003-03-31 23:44  xfce
 
@@ -9944,14 +10465,20 @@
 
 2003-03-30 23:26  xfce
 
-	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/events.c: Fix
-	  dependecy loop in mcs Makefile Revert to use spin instead of
-	  adjustment as callback object in margins plugin
+	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	  mcs-plugin/margins_plugin.c, src/events.c: Fix dependecy loop in
+	  mcs Makefile Revert to use spin instead of adjustment as callback
+	  object in margins plugin
 
 2003-03-30 22:52  xfce
 
 	* src/: client.c, events.c: Improve focus passing on unmap/destroy
 	  events
+
+2003-03-30 16:37  xfce
+
+	* mcs-plugin/margins_plugin.c: Fix bug in original impl. of spin
+	  button for margin plugin.
 
 2003-03-30 16:04  xfce
 
@@ -9965,8 +10492,8 @@
 2003-03-30 14:17  xfce
 
 	* src/: Makefile.am, Makefile.in, client.c, client.h, events.c,
-	  frame.c, mypixmap.c, mypixmap.h, settings.c, settings.h,
-	  workspaces.c: Small code reorganization
+	  frame.c, main.h, mypixmap.c, mypixmap.h, pixmap.c, pixmap.h,
+	  settings.c, settings.h, workspaces.c: Small code reorganization
 
 2003-03-29 23:06  xfce
 
@@ -9979,7 +10506,8 @@
 
 2003-03-27 22:37  xfce
 
-	* src/: client.c, hints.c, menu.c, misc.c, settings.c: Prefer
+	* mcs-plugin/margins_plugin.c, src/client.c, src/hints.c,
+	  src/menu.c, src/misc.c, src/settings.c: Prefer
 	  gdk_screen[width|height] instead of XDisplay[Width|Height]
 
 2003-03-27 21:32  xfce
@@ -9988,8 +10516,8 @@
 
 2003-03-27 20:45  xfce
 
-	* src/: client.c, client.h, events.c, frame.c: Fix a bug in focus
-	  management as shown when using OO 1.1-beta
+	* src/: client.c, client.h, events.c, frame.c, main.h: Fix a bug in
+	  focus management as shown when using OO 1.1-beta
 
 2003-03-26 00:04  xfce
 
@@ -10078,8 +10606,8 @@
 
 2003-03-20 20:48  xfce
 
-	* configure, configure.ac, xfwm4.spec.in, src/parserc.c,
-	  themes/Makefile.am, themes/Makefile.in,
+	* configure, configure.ac, xfwm4.spec.in, defaults/defaults.in,
+	  src/parserc.c, themes/Makefile.am, themes/Makefile.in,
 	  themes/default/Makefile.am, themes/default/Makefile.in,
 	  themes/default/README, themes/default/bottom-active.xpm,
 	  themes/default/bottom-inactive.xpm,
@@ -10142,8 +10670,9 @@
 
 2003-03-17 23:37  xfce
 
-	* Makefile.in, aclocal.m4, configure, ltmain.sh: Make sure
-	  configure script is in line with Benny's latest changes
+	* Makefile.in, aclocal.m4, configure, ltcf-c.sh, ltconfig,
+	  ltmain.sh: Make sure configure script is in line with Benny's
+	  latest changes
 
 2003-03-17 22:59  xfce
 
@@ -10165,15 +10694,16 @@
 2003-03-17 19:41  bmeurer
 
 	* Makefile.am, Makefile.in, aclocal.m4, autogen.sh, config.h.in,
-	  configure, configure.ac, ltmain.sh, xfwm4.spec.in,
-	  defaults/Makefile.in, m4/X11.m4, m4/debug.m4, m4/depends.m4,
-	  m4/i18n.m4, mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
-	  mcs-plugin/xfwm4_plugin.c, po/Makefile.in.in, src/Makefile.am,
-	  src/Makefile.in, src/client.c, src/client.h, src/hints.c,
-	  src/hints.h, src/startup_notification.c,
-	  src/startup_notification.h, themes/Makefile.am,
-	  themes/Makefile.in, themes/default.keys/Makefile.in: Major
-	  autostuff update.
+	  configure, configure.ac, configure.in, ltcf-c.sh, ltconfig,
+	  ltmain.sh, xfwm4.spec.in, defaults/Makefile.in, m4/X11.m4,
+	  m4/debug.m4, m4/depends.m4, m4/i18n.m4, m4/rpath.m4,
+	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	  mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  po/Makefile.in.in, src/Makefile.am, src/Makefile.in,
+	  src/client.c, src/client.h, src/hints.c, src/hints.h,
+	  src/startup_notification.c, src/startup_notification.h,
+	  themes/Makefile.am, themes/Makefile.in,
+	  themes/default.keys/Makefile.in: Major autostuff update.
 
 2003-03-16 23:51  xfce
 
@@ -10187,12 +10717,13 @@
 
 2003-03-16 15:26  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/client.h,
-	  src/events.c, src/events.h, src/frame.c, src/frame.h,
-	  src/hints.c, src/hints.h, src/inline-tabwin-icon.h,
-	  src/keyboard.c, src/keyboard.h, src/main.c, src/menu.c,
-	  src/menu.h, src/misc.c, src/misc.h, src/mywindow.c,
-	  src/mywindow.h, src/parserc.c, src/parserc.h, src/session.c,
+	* mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
+	  src/client.c, src/client.h, src/debug.h, src/events.c,
+	  src/events.h, src/frame.c, src/frame.h, src/hints.c, src/hints.h,
+	  src/inline-tabwin-icon.h, src/keyboard.c, src/keyboard.h,
+	  src/main.c, src/main.h, src/menu.c, src/menu.h, src/misc.c,
+	  src/misc.h, src/mywindow.c, src/mywindow.h, src/parserc.c,
+	  src/parserc.h, src/pixmap.c, src/pixmap.h, src/session.c,
 	  src/session.h, src/settings.c, src/settings.h,
 	  src/spinning_cursor.c, src/spinning_cursor.h,
 	  src/startup_notification.c, src/startup_notification.h,
@@ -10237,13 +10768,14 @@
 
 2003-03-11 00:04  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo, po/nl.po,
-	  po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po:
-	  Rearranged the code a bit, made a separate inline function for
-	  snapping Added a separate option for snapping between windows.
-	  XFwm4 mcs plugin is updated too so the gui reflect these changes.
+	* defaults/defaults.in, mcs-plugin/xfwm4_plugin.c, po/ar.gmo,
+	  po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	  po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	  po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	  po/zh_CN.po: Rearranged the code a bit, made a separate inline
+	  function for snapping Added a separate option for snapping
+	  between windows.  XFwm4 mcs plugin is updated too so the gui
+	  reflect these changes.
 
 2003-03-09 23:11  xfce
 
@@ -10261,11 +10793,11 @@
 2003-03-09 15:47  xfce
 
 	* src/: client.c, client.h, events.c, events.h, frame.c, frame.h,
-	  hints.c, hints.h, keyboard.c, keyboard.h, main.c, menu.c, menu.h,
-	  misc.c, misc.h, mywindow.h, parserc.c, parserc.h, settings.c,
-	  settings.h, workspaces.c, workspaces.h: Major rework of stacking
-	  management.  Removal of all recursive procedures.  Update of (c)
-	  mention in .c/.h files.
+	  hints.c, hints.h, keyboard.c, keyboard.h, main.c, main.h, menu.c,
+	  menu.h, misc.c, misc.h, mywindow.h, parserc.c, parserc.h,
+	  pixmap.c, pixmap.h, settings.c, settings.h, workspaces.c,
+	  workspaces.h: Major rework of stacking management.  Removal of
+	  all recursive procedures.  Update of (c) mention in .c/.h files.
 
 2003-03-06 20:23  xfce
 
@@ -10308,12 +10840,13 @@
 
 2003-03-02 23:16  xfce
 
-	* configure, xfwm4.spec.in, mcs-plugin/xfwm4_plugin.c,
-	  src/client.c, src/parserc.c, themes/Makefile.am,
-	  themes/Makefile.in: Fix an issue with app that set their initial
-	  net state to either maximized or fullscreen as seen with
-	  mozilla/gtk2 Change default theme to microdeck (different
-	  version, uses less colors) Rename microdeck to microdeck3
+	* configure, configure.in, xfwm4.spec.in, defaults/defaults.in,
+	  mcs-plugin/xfwm4_plugin.c, src/client.c, src/parserc.c,
+	  themes/Makefile.am, themes/Makefile.in: Fix an issue with app
+	  that set their initial net state to either maximized or
+	  fullscreen as seen with mozilla/gtk2 Change default theme to
+	  microdeck (different version, uses less colors) Rename microdeck
+	  to microdeck3
 
 2003-03-02 18:11  xfce
 
@@ -10322,16 +10855,21 @@
 
 2003-03-01 00:07  xfce
 
-	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
-	  defaults/Makefile.in, mcs-plugin/Makefile.in,
-	  mcs-plugin/xfwm4_plugin.c, src/Makefile.in, src/client.c,
-	  themes/Makefile.in, themes/default.keys/Makefile.in: Fix initial
-	  placement Fix deprecated gtk_widget_set_usize()
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltcf-c.sh,
+	  ltconfig, ltmain.sh, defaults/Makefile.in,
+	  mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c,
+	  src/Makefile.in, src/client.c, themes/Makefile.in,
+	  themes/default.keys/Makefile.in: Fix initial placement Fix
+	  deprecated gtk_widget_set_usize()
 
 2003-02-28 19:43  xfce
 
 	* configure: Fix xfce-mcs-manager API/ABI versionning Update
 	  configure/libtool to use libtool 1.4.3
+
+2003-02-28 11:59  bmeurer
+
+	* configure.in: Fixes xfce-mcs-manager issue.
 
 2003-02-28 07:41  xfce
 
@@ -10352,13 +10890,14 @@
 
 2003-02-27 21:14  xfce
 
-	* src/: client.c, client.h, events.c, events.h, frame.c, frame.h,
-	  hints.c, hints.h, keyboard.c, keyboard.h, main.c, menu.c, menu.h,
-	  misc.c, misc.h, mywindow.c, mywindow.h, parserc.c, parserc.h,
-	  session.c, settings.c, settings.h, spinning_cursor.c,
-	  spinning_cursor.h, startup_notification.c,
-	  startup_notification.h, tabwin.c, tabwin.h, workspaces.c,
-	  workspaces.h: Improve window move/resize and expand sources
+	* src/: client.c, client.h, debug.h, events.c, events.h, frame.c,
+	  frame.h, hints.c, hints.h, keyboard.c, keyboard.h, main.c,
+	  main.h, menu.c, menu.h, misc.c, misc.h, mywindow.c, mywindow.h,
+	  parserc.c, parserc.h, pixmap.c, pixmap.h, session.c, settings.c,
+	  settings.h, spinning_cursor.c, spinning_cursor.h,
+	  startup_notification.c, startup_notification.h, tabwin.c,
+	  tabwin.h, workspaces.c, workspaces.h: Improve window move/resize
+	  and expand sources
 
 2003-02-26 22:30  xfce
 
@@ -10366,17 +10905,18 @@
 
 2003-02-26 13:03  huysmans
 
-	* mcs-plugin/xfwm4_plugin.c: Unref icon after last use, not before
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Unref icon after
+	  last use, not before
 
 2003-02-26 08:17  xfce
 
 	* Makefile.in, configure, defaults/Makefile.in,
-	  mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c,
-	  src/Makefile.in, src/main.c, themes/Makefile.in,
-	  themes/default.keys/Makefile.in: Apply Benedikt Meurer
-	  <Benedikt.Meurer@unix-ag.uni-siegen.de> patch Replace all
-	  occurences of g_getenv("HOME") with g_get_home_dir() Regenerate
-	  all Makefiles.on and configure scripts
+	  mcs-plugin/Makefile.in, mcs-plugin/margins_plugin.c,
+	  mcs-plugin/xfwm4_plugin.c, src/Makefile.in, src/main.c,
+	  themes/Makefile.in, themes/default.keys/Makefile.in: Apply
+	  Benedikt Meurer <Benedikt.Meurer@unix-ag.uni-siegen.de> patch
+	  Replace all  occurences of g_getenv("HOME") with g_get_home_dir()
+	  Regenerate all Makefiles.on and configure scripts
 
 2003-02-25 23:46  xfce
 
@@ -10385,18 +10925,19 @@
 
 2003-02-25 23:16  huysmans
 
-	* configure, Makefile.am, Makefile.in: autotool cleanup
+	* configure, Makefile.am, Makefile.in, configure.in: autotool
+	  cleanup
 
 2003-02-25 22:43  xfce
 
-	* mcs-plugin/monitor-icon.h, mcs-plugin/monitor-icon.png,
-	  mcs-plugin/xfwm4_plugin.c, po/ar.gmo, po/ar.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo, po/nl.po,
-	  po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
-	  src/client.c, src/settings.c: Fix margins from mcs not being
-	  taken in account at startup Change margin plugin GUI Update
-	  xtions.
+	* mcs-plugin/margins_plugin.c, mcs-plugin/monitor-icon.h,
+	  mcs-plugin/monitor-icon.png, mcs-plugin/xfwm4_plugin.c,
+	  po/ar.gmo, po/ar.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
+	  po/es_MX.gmo, po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	  po/fr.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot,
+	  po/zh_CN.gmo, po/zh_CN.po, src/client.c, src/settings.c: Fix
+	  margins from mcs not being taken in account at startup Change
+	  margin plugin GUI Update xtions.
 
 2003-02-25 22:21  huysmans
 
@@ -10404,26 +10945,29 @@
 
 2003-02-25 10:59  huysmans
 
-	* mcs-plugin/xfwm4_plugin.c: Add frame to margins dialog. Add space
-	  to wm dialog.
+	* mcs-plugin/: margins_plugin.c, xfwm4_plugin.c: Add frame to
+	  margins dialog. Add space to wm dialog.
 
 2003-02-25 08:19  xfce
 
-	* po/POTFILES.in, po/ar.gmo, po/ar.po, po/de.gmo, po/de.po,
-	  po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po, po/fi.gmo,
-	  po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo, po/nl.po, po/pl.gmo,
-	  po/pl.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, src/client.c,
-	  src/settings.c: Tweaking
+	* mcs-plugin/margins_plugin.c, po/POTFILES.in, po/ar.gmo, po/ar.po,
+	  po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	  po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/nl.gmo,
+	  po/nl.po, po/pl.gmo, po/pl.po, po/xfwm4.pot, po/zh_CN.gmo,
+	  po/zh_CN.po, src/client.c, src/settings.c: Tweaking
 
 2003-02-25 00:22  xfce
 
-	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/client.c,
-	  src/settings.c, src/settings.h: Implement internal borders
+	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
+	  mcs-plugin/margins_plugin.c, src/client.c, src/settings.c,
+	  src/settings.h: Implement internal borders
 
 2003-02-24 23:23  xfce
 
-	* mcs-plugin/: Makefile.am, Makefile.in, monitor-icon.h,
-	  monitor-icon.png, xfwm4_plugin.c: Add margin plugin
+	* mcs-plugin/: Makefile.am, Makefile.in, icon.png, inline-icon.h,
+	  margins-icon.h, margins-icon.png, margins_plugin.c,
+	  monitor-icon.h, monitor-icon.png, xfwm4-icon.h, xfwm4-icon.png,
+	  xfwm4_plugin.c: Add margin plugin
 
 2003-02-23 22:58  xfce
 
@@ -10458,8 +11002,8 @@
 
 2003-02-23 00:21  xfce
 
-	* configure, xfwm4.spec.in, src/client.c, src/client.h,
-	  src/events.c, src/hints.h, themes/Makefile.am,
+	* configure, configure.in, xfwm4.spec.in, src/client.c,
+	  src/client.h, src/events.c, src/hints.h, themes/Makefile.am,
 	  themes/Makefile.in: Lot of changes in constraintPos and other
 	  related areas Add totem theme
 
@@ -10470,12 +11014,12 @@
 
 2003-02-21 19:21  xfce
 
-	* src/: client.c, client.h, events.c, events.h, frame.c, frame.h,
-	  hints.h, main.c, menu.h, misc.h, mywindow.h, parserc.h,
-	  session.h, settings.h, spinning_cursor.h, startup_notification.h,
-	  tabwin.h, workspaces.h: Take the frame into account when
-	  receiving a XConfigureRequest for apps that try to manipulate the
-	  WM frame Rearrange headers
+	* src/: client.c, client.h, debug.h, events.c, events.h, frame.c,
+	  frame.h, hints.h, main.c, main.h, menu.h, misc.h, mywindow.h,
+	  parserc.h, pixmap.h, session.h, settings.h, spinning_cursor.h,
+	  startup_notification.h, tabwin.h, workspaces.h: Take the frame
+	  into account when receiving a XConfigureRequest for apps that try
+	  to manipulate the WM frame Rearrange headers
 
 2003-02-21 00:27  xfce
 
@@ -10483,11 +11027,11 @@
 
 2003-02-20 23:26  xfce
 
-	* src/: client.h, events.h, frame.h, hints.h, keyboard.h, menu.h,
-	  misc.h, mywindow.h, parserc.h, session.h, settings.h,
-	  spinning_cursor.h, startup_notification.h, tabwin.h,
-	  workspaces.h: Avoid using "__" for defines in headers as it could
-	  be reserved for the compiler
+	* src/: client.h, debug.h, events.h, frame.h, hints.h, keyboard.h,
+	  main.h, menu.h, misc.h, mywindow.h, parserc.h, pixmap.h,
+	  session.h, settings.h, spinning_cursor.h, startup_notification.h,
+	  tabwin.h, workspaces.h: Avoid using "__" for defines in headers
+	  as it could be reserved for the compiler
 
 2003-02-19 22:05  xfce
 
@@ -10511,7 +11055,7 @@
 
 2003-02-13 20:13  xfce
 
-	* ChangeLog: Update ChangeLog Revert change in debug.h
+	* ChangeLog, src/debug.h: Update ChangeLog Revert change in debug.h
 
 2003-02-13 16:19  xfce
 
@@ -10532,9 +11076,10 @@
 
 2003-02-13 11:12  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/client.h,
-	  src/events.c, src/frame.c, src/keyboard.c, src/main.c,
-	  src/mywindow.c, src/spinning_cursor.c, src/spinning_cursor.h,
+	* mcs-plugin/inline-icon.h, mcs-plugin/xfwm4_plugin.c,
+	  src/client.c, src/client.h, src/events.c, src/frame.c,
+	  src/keyboard.c, src/main.c, src/mywindow.c,
+	  src/spinning_cursor.c, src/spinning_cursor.h,
 	  src/startup_notification.c: Ran indent on sources
 
 2003-02-13 11:08  xfce
@@ -10609,13 +11154,14 @@
 
 2003-02-09 23:30  xfce
 
-	* Makefile.in, config.h.in, configure, defaults/Makefile.in,
-	  mcs-plugin/Makefile.in, src/Makefile.am, src/Makefile.in,
-	  src/client.c, src/client.h, src/events.c, src/hints.c,
-	  src/hints.h, src/main.c, src/session.c, src/settings.c,
-	  src/startup_notification.c, src/startup_notification.h,
-	  themes/Makefile.in, themes/default.keys/Makefile.in: Add startup
-	  notification support (from freedesktop.org standard)
+	* Makefile.in, config.h.in, configure, configure.in,
+	  defaults/Makefile.in, mcs-plugin/Makefile.in, src/Makefile.am,
+	  src/Makefile.in, src/client.c, src/client.h, src/events.c,
+	  src/hints.c, src/hints.h, src/main.c, src/session.c,
+	  src/settings.c, src/startup_notification.c,
+	  src/startup_notification.h, themes/Makefile.in,
+	  themes/default.keys/Makefile.in: Add startup notification support
+	  (from freedesktop.org standard)
 
 2003-02-08 17:11  xfce
 
@@ -10624,9 +11170,9 @@
 
 2003-02-08 17:06  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/main.c: mcs-plugin:
-	  Make button grayed out when a theme for values xfwm4: show menu
-	  button in dialogs.
+	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/main.c, src/main.h:
+	  mcs-plugin: Make button grayed out when a theme for values xfwm4:
+	  show menu button in dialogs.
 
 2003-02-08 09:40  xfce
 
@@ -10718,7 +11264,8 @@
 
 2003-01-28 14:40  huysmans
 
-	* po/: pl.gmo, pl.po: Add polish translations by Pablo
+	* configure.in, po/pl.gmo, po/pl.po: Add polish translations by
+	  Pablo
 
 2003-01-28 13:48  xfce
 
@@ -10728,12 +11275,12 @@
 
 2003-01-28 11:47  xfce
 
-	* configure, po/ar.gmo, po/ar.po: Add arabic translation from
-	  Nabil. Thanks a lot, Nabil :)
+	* configure, configure.in, po/ar.gmo, po/ar.po: Add arabic
+	  translation from Nabil. Thanks a lot, Nabil :)
 
 2003-01-27 11:27  xfce
 
-	* Makefile.am, Makefile.in, autogen.sh, configure,
+	* Makefile.am, Makefile.in, autogen.sh, configure, configure.in,
 	  defaults/Makefile.in, mcs-plugin/Makefile.in, src/Makefile.in,
 	  themes/Makefile.in, themes/default.keys/Makefile.in: Update
 	  Makefiles
@@ -10744,8 +11291,8 @@
 
 2003-01-26 00:03  xfce
 
-	* configure, po/fi.gmo, po/fi.po: Add Finnish translation by Ilkka
-	  Ollakka (ilkka.j.ollakka.oamk.fi)
+	* configure, configure.in, po/fi.gmo, po/fi.po: Add Finnish
+	  translation by Ilkka Ollakka (ilkka.j.ollakka.oamk.fi)
 
 2003-01-25 19:56  xfce
 
@@ -10760,39 +11307,40 @@
 2003-01-25 12:07  xfce
 
 	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.h.in,
-	  config.sub, configure, install-sh, ltmain.sh, mkinstalldirs,
-	  defaults/Makefile.in, mcs-plugin/Makefile.in, po/Makefile.in.in,
-	  po/de.gmo, po/de.po, src/Makefile.in, themes/Makefile.in,
-	  themes/default.keys/Makefile.in: Add German translation from
-	  MisterMoe <MisterMoe@hackerboard.de> and Michael Jakl
-	  <mj@int-x.org>
+	  config.sub, configure, configure.in, install-sh, ltmain.sh,
+	  mkinstalldirs, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	  po/Makefile.in.in, po/de.gmo, po/de.po, src/Makefile.in,
+	  themes/Makefile.in, themes/default.keys/Makefile.in: Add German
+	  translation from MisterMoe <MisterMoe@hackerboard.de> and Michael
+	  Jakl <mj@int-x.org>
 
 2003-01-24 15:23  edscott
 
 	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.h.in,
-	  config.sub, configure, install-sh, ltmain.sh, mkinstalldirs,
-	  defaults/Makefile.in, mcs-plugin/Makefile.in, po/Makefile.in.in,
-	  po/es_MX.gmo, po/es_MX.po, src/Makefile.in, themes/Makefile.in,
-	  themes/default.keys/Makefile.in: added mexican spanish files
+	  config.sub, configure, configure.in, install-sh, ltmain.sh,
+	  mkinstalldirs, defaults/Makefile.in, mcs-plugin/Makefile.in,
+	  po/Makefile.in.in, po/es_MX.gmo, po/es_MX.po, src/Makefile.in,
+	  themes/Makefile.in, themes/default.keys/Makefile.in: added
+	  mexican spanish files
 
 2003-01-24 14:06  huysmans
 
-	* po/: nl.gmo, nl.po: Add Dutch translations
+	* configure.in, po/nl.gmo, po/nl.po: Add Dutch translations
 
 2003-01-24 11:06  xfce
 
-	* configure, po/zh_CN.gmo, po/zh_CN.po: Rename po/zh_CN.GB2312.* to
-	  po/zh_CN.*
+	* configure, configure.in, po/zh_CN.GB2312.gmo, po/zh_CN.GB2312.po,
+	  po/zh_CN.gmo, po/zh_CN.po: Rename po/zh_CN.GB2312.* to po/zh_CN.*
 
 2003-01-24 09:59  xfce
 
-	* configure: Add Chinese translation by Yongtao Yang
-	  <yongtao.yang@telia.com>
+	* configure, configure.in, po/zh_CN.GB2312.gmo, po/zh_CN.GB2312.po:
+	  Add Chinese translation by Yongtao Yang <yongtao.yang@telia.com>
 
 2003-01-23 23:59  xfce
 
-	* configure, po/es.gmo, po/es.po: Add spanish translation. Thanks
-	  nestu!
+	* configure, configure.in, po/es.gmo, po/es.po: Add spanish
+	  translation. Thanks nestu!
 
 2003-01-23 21:32  xfce
 
@@ -10808,27 +11356,33 @@
 	* COPYING, INSTALL, autogen.sh, config.guess, config.sub, depcomp,
 	  install-sh, missing, mkinstalldirs: Update auto* stuff
 
+2003-01-23 10:15  xfce
+
+	* configure.in: Use AM_DISABLE_STATIC instead of AC_DISABLE_STATIC
+
 2003-01-23 10:12  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, po/fr.gmo: Replace AC_PROG_LIBTOOL
-	  with AM_PROG_LIBTOOL Remove gtk_set_locale() from plugin init.
+	* configure.in, mcs-plugin/xfwm4_plugin.c, po/fr.gmo: Replace
+	  AC_PROG_LIBTOOL with AM_PROG_LIBTOOL Remove gtk_set_locale() from
+	  plugin init.
 
 2003-01-22 23:25  xfce
 
-	* Makefile.in, configure, po/fr.po, po/xfwm4.pot: Small stuff
+	* Makefile.in, configure, configure.in, po/fr.po, po/xfwm4.pot:
+	  Small stuff
 
 2003-01-22 22:53  xfce
 
 	* ChangeLog, Makefile.am, Makefile.in, aclocal.m4, autogen.sh,
-	  config.h.in, configure, mkinstalldirs, defaults/Makefile.in,
-	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
-	  mcs-plugin/xfwm4_plugin.c, po/ChangeLog, po/Makefile.in.in,
-	  po/POTFILES.in, po/fr.gmo, po/fr.po, po/po2tbl.sed.in,
-	  po/xfwm4.pot, src/Makefile.am, src/Makefile.in, src/main.c,
-	  themes/Makefile.in, themes/default.keys/Makefile.in: Update
-	  autogen.sh script, Add internationalization support Add french
-	  locale Add dependency on libxfcegui4 v .14 Other stuff I don't
-	  remember :)
+	  config.h.in, configure, configure.in, mkinstalldirs,
+	  defaults/Makefile.in, mcs-plugin/Makefile.am,
+	  mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c, po/ChangeLog,
+	  po/Makefile.in.in, po/POTFILES.in, po/fr.gmo, po/fr.po,
+	  po/po2tbl.sed.in, po/xfwm4.pot, src/Makefile.am, src/Makefile.in,
+	  src/main.c, themes/Makefile.in, themes/default.keys/Makefile.in:
+	  Update autogen.sh script, Add internationalization support Add
+	  french locale Add dependency on libxfcegui4 v .14 Other stuff I
+	  don't remember :)
 
 2003-01-22 00:45  xfce
 
@@ -10836,9 +11390,9 @@
 
 2003-01-21 23:07  xfce
 
-	* Makefile.am, Makefile.in, configure, mcs-plugin/Makefile.am,
-	  mcs-plugin/Makefile.in, src/Makefile.am, src/Makefile.in,
-	  src/tabwin.c: [no log message]
+	* Makefile.am, Makefile.in, configure, configure.in, my_intl.h,
+	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/Makefile.am,
+	  src/Makefile.in, src/tabwin.c: [no log message]
 
 2003-01-21 17:59  xfce
 
@@ -10846,7 +11400,7 @@
 
 2003-01-21 16:30  xfce
 
-	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/events.c,
+	* my_intl.h, mcs-plugin/xfwm4_plugin.c, src/client.c, src/events.c,
 	  src/hints.c, src/main.c, src/menu.c, src/settings.c: Prepare i18n
 
 2003-01-20 14:54  xfce
@@ -10866,9 +11420,10 @@
 
 2003-01-18 23:04  xfce
 
-	* configure, xfwm4.spec.in, src/client.c, themes/Makefile.am,
-	  themes/Makefile.in: * Exclude spalshscreen and desktop type
-	  windows from window cycling.	* Add new theme microcurve.
+	* configure, configure.in, xfwm4.spec.in, src/client.c,
+	  themes/Makefile.am, themes/Makefile.in: * Exclude spalshscreen
+	  and desktop type windows from window cycling.  * Add new theme
+	  microcurve.
 
 2003-01-18 17:33  xfce
 
@@ -10879,10 +11434,11 @@
 
 2003-01-18 00:36  xfce
 
-	* src/: client.c, client.h, events.c, frame.c,
-	  inline-tabwin-icon.h, main.c, parserc.c, settings.c, settings.h,
-	  tabwin.c, tabwin.h, workspaces.c: Huge code cleanup, various
-	  optimizations and reorg.
+	* defaults/defaults.in, src/client.c, src/client.h, src/events.c,
+	  src/frame.c, src/inline-tabwin-icon.h, src/main.c, src/main.h,
+	  src/parserc.c, src/pixmap.c, src/settings.c, src/settings.h,
+	  src/tabwin.c, src/tabwin.h, src/workspaces.c: Huge code cleanup,
+	  various optimizations and reorg.
 
 2003-01-16 18:47  xfce
 
@@ -10930,8 +11486,9 @@
 
 2003-01-12 21:44  xfce
 
-	* Makefile.in, configure, xfwm4.spec.in, defaults/Makefile.in,
-	  src/Makefile.in, src/settings.c, themes/Makefile.in,
+	* Makefile.in, configure, configure.in, xfwm4.spec.in,
+	  defaults/Makefile.in, src/Makefile.in, src/pixmap.c,
+	  src/pixmap.h, src/settings.c, themes/Makefile.in,
 	  themes/default.keys/Makefile.in: [no log message]
 
 2003-01-12 21:28  xfce
@@ -10940,8 +11497,8 @@
 
 2003-01-12 15:53  xfce
 
-	* configure, mcs-plugin/xfwm4_plugin.c: Update to take advantage of
-	  libxfcegui4 0.0.12
+	* configure, configure.in, mcs-plugin/xfwm4_plugin.c: Update to
+	  take advantage of libxfcegui4 0.0.12
 
 2003-01-12 14:46  xfce
 
@@ -10955,13 +11512,14 @@
 
 2003-01-11 16:34  xfce
 
-	* configure, mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
-	  src/settings.c: Update to libxfce4mcs 0.0.3
+	* configure, configure.in, mcs-plugin/Makefile.am,
+	  mcs-plugin/Makefile.in, src/settings.c: Update to libxfce4mcs
+	  0.0.3
 
 2003-01-11 11:38  xfce
 
-	* configure, src/settings.c: Fix detection of mcs manager when
-	  started afterwards.
+	* configure, configure.in, src/settings.c: Fix detection of mcs
+	  manager when started afterwards.
 
 2003-01-11 09:57  xfce
 
@@ -10990,7 +11548,7 @@
 
 2003-01-10 00:12  xfce
 
-	* Makefile.in, configure, defaults/Makefile.in,
+	* Makefile.in, configure, configure.in, defaults/Makefile.in,
 	  mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c,
 	  src/Makefile.in, themes/Makefile.in,
 	  themes/default.keys/Makefile.in: Update libxfce4mcs and
@@ -10999,12 +11557,13 @@
 2003-01-09 22:20  xfce
 
 	* Makefile.am, Makefile.in, aclocal.m4, autogen.sh, config.guess,
-	  config.h.in, config.sub, configure, ltmain.sh, xfwm4.spec.in,
-	  defaults/Makefile.in, mcs-plugin/Makefile.am,
-	  mcs-plugin/Makefile.in, mcs-plugin/xfwm4_plugin.c,
+	  config.h.in, config.sub, configure, configure.in, ltmain.sh,
+	  xfwm4.spec.in, defaults/Makefile.in, mcs-plugin/Makefile.am,
+	  mcs-plugin/Makefile.in, mcs-plugin/icon.png,
+	  mcs-plugin/inline-icon.h, mcs-plugin/xfwm4_plugin.c,
 	  src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
 	  src/events.c, src/main.c, src/parserc.c, src/parserc.h,
-	  src/settings.c, src/settings.h, src/workspaces.c,
+	  src/pixmap.c, src/settings.c, src/settings.h, src/workspaces.c,
 	  themes/Makefile.in, themes/default.keys/Makefile.in: Lot of
 	  udpdates and bug fixes, and added MCS support along with plugin
 	  for xfwm4 preferences.
@@ -11020,9 +11579,9 @@
 
 2002-12-30 22:59  xfce
 
-	* ChangeLog, configure, xfwm4.spec.in, themes/Makefile.am,
-	  themes/Makefile.in: Add theme "meenee" derived from Michael Graf
-	  theme
+	* ChangeLog, configure, configure.in, xfwm4.spec.in,
+	  themes/Makefile.am, themes/Makefile.in: Add theme "meenee"
+	  derived from Michael Graf theme
 
 2002-12-30 22:48  xfce
 
@@ -11064,19 +11623,20 @@
 
 2002-12-27 11:28  xfce
 
-	* src/: client.c, events.c, settings.c, settings.h: Apply Thomas
-	  Leonard's patch for raise_on-click option Fix a problem with
-	  stacking order for EWMH
+	* defaults/defaults.in, src/client.c, src/events.c, src/settings.c,
+	  src/settings.h: Apply Thomas Leonard's patch for raise_on-click
+	  option Fix a problem with stacking order for EWMH
 
 2002-12-20 13:05  xfce
 
-	* configure, src/main.c: Change startup behaviour so that xfwm4
-	  turns into a deamon once initialization is performed.  *Beware*
-	  requires libxfcegui4 >= 0.0.9
+	* configure, configure.in, src/main.c: Change startup behaviour so
+	  that xfwm4 turns into a deamon once initialization is performed.
+	  *Beware* requires libxfcegui4 >= 0.0.9
 
 2002-12-19 10:52  xfce
 
-	* AUTHORS, configure, xfwm4.spec.in, src/frame.c, src/settings.c,
+	* AUTHORS, configure, configure.in, xfwm4.spec.in,
+	  defaults/defaults.in, src/frame.c, src/settings.c,
 	  src/settings.h, themes/Makefile.am, themes/Makefile.in: Add
 	  optional title_shadow_active and title_shadow_inactive options to
 	  themes, Add koynacity theme ported from David Spencer Wysinger's
@@ -11113,7 +11673,7 @@
 
 2002-12-06 22:19  xfce
 
-	* src/parserc.c: [no log message]
+	* src/parserc.c, defaults/defaults.in: [no log message]
 
 2002-12-06 21:36  xfce
 
@@ -11133,34 +11693,37 @@
 
 2002-11-26 21:19  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Themes stuff...
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Themes stuff...
 
 2002-11-25 23:11  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add microdeck2, a small variation on microdeck theme.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add microdeck2, a small variation on
+	  microdeck theme.
 
 2002-11-23 18:36  xfce
 
-	* src/: client.c, client.h, events.c, events.h, main.c, menu.c,
-	  settings.c: Update for libxfcegui4 new include base dir.
+	* src/: client.c, client.h, events.c, events.h, main.c, main.h,
+	  menu.c, settings.c: Update for libxfcegui4 new include base dir.
 
 2002-11-22 15:52  xfce
 
-	* Makefile.in, config.h.in, configure, defaults/Makefile.in,
-	  src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
-	  src/events.h, src/main.c, src/menu.c, src/settings.c,
+	* Makefile.in, config.h.in, configure, configure.in,
+	  defaults/Makefile.in, src/Makefile.am, src/Makefile.in,
+	  src/client.c, src/client.h, src/events.h, src/main.c, src/main.h,
+	  src/menu.c, src/settings.c, src/xinerama.c, src/xinerama.h,
 	  themes/Makefile.in, themes/default.keys/Makefile.in: Remove
 	  xinerama code to move it to libxfcegui4 (xfwm4 now requires
 	  libxfcegui4 >= 0.0.8)
 
 2002-11-21 15:40  xfce
 
-	* configure, xfwm4.spec.in, src/frame.c, src/settings.c,
-	  src/settings.h, themes/Makefile.am, themes/Makefile.in: Add new
-	  theme "keramik" from KDE 3.0.3 Change "title_vertical_offset"
-	  themerc option to "title_vertical_offset_active" and
+	* configure, configure.in, xfwm4.spec.in, defaults/defaults.in,
+	  src/frame.c, src/settings.c, src/settings.h, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "keramik" from KDE 3.0.3 Change
+	  "title_vertical_offset" themerc option to
+	  "title_vertical_offset_active" and
 	  "title_vertical_offset_inactive" Update existing themerc files to
 	  reflect this change
 
@@ -11182,14 +11745,15 @@
 
 2002-11-11 00:09  xfce
 
-	* Makefile.in, config.h.in, configure, defaults/Makefile.in,
-	  src/Makefile.am, src/Makefile.in, src/client.c, src/events.c,
-	  src/frame.c, src/hints.c, src/keyboard.c, src/main.c, src/menu.c,
-	  src/misc.c, src/parserc.c, src/settings.c, src/settings.h,
-	  src/workspaces.c, themes/Makefile.in,
-	  themes/default.keys/Makefile.in: Add support for xinerama, and
-	  optimize window move (unrelated, but I just came across an easy
-	  optimization while reviewing the code :)
+	* Makefile.in, config.h.in, configure, configure.in,
+	  defaults/Makefile.in, src/Makefile.am, src/Makefile.in,
+	  src/client.c, src/events.c, src/frame.c, src/hints.c,
+	  src/keyboard.c, src/main.c, src/main.h, src/menu.c, src/misc.c,
+	  src/parserc.c, src/pixmap.c, src/settings.c, src/settings.h,
+	  src/workspaces.c, src/xinerama.c, src/xinerama.h,
+	  themes/Makefile.in, themes/default.keys/Makefile.in: Add support
+	  for xinerama, and optimize window move (unrelated, but I just
+	  came across an easy optimization while reviewing the code :)
 
 2002-11-10 15:04  xfce
 
@@ -11201,11 +11765,11 @@
 
 2002-11-08 23:06  xfce
 
-	* Makefile.in, aclocal.m4, config.h.in, configure, xfwm4.spec.in,
-	  defaults/Makefile.in, src/Makefile.in, themes/Makefile.in,
-	  themes/default.keys/Makefile.in: make sure required libs for
-	  build/rpm are listed, with versions and keep the minimum version
-	  required at only one place (configure.in)
+	* Makefile.in, aclocal.m4, config.h.in, configure, configure.in,
+	  xfwm4.spec.in, defaults/Makefile.in, src/Makefile.in,
+	  themes/Makefile.in, themes/default.keys/Makefile.in: make sure
+	  required libs for build/rpm are listed, with versions and keep
+	  the minimum version required at only one place (configure.in)
 
 2002-11-08 15:25  xfce
 
@@ -11218,9 +11782,14 @@
 	* src/client.c: Take into account implementation note on EWMH 1.2
 	  regarding NET_STATE_HIDDEN
 
+2002-11-07 23:45  xfce
+
+	* defaults/defaults.in: Change initial theme to "microdeck"
+	  (default fallback remains "bbs")
+
 2002-11-07 23:15  xfce
 
-	* Makefile.in, aclocal.m4, configure, xfwm4.spec.in,
+	* Makefile.in, aclocal.m4, configure, configure.in, xfwm4.spec.in,
 	  defaults/Makefile.in, src/Makefile.in, themes/Makefile.am,
 	  themes/Makefile.in, themes/default.keys/Makefile.in: Add theme
 	  "microdeck" that I find fairly nice for a theme that uses only
@@ -11232,31 +11801,32 @@
 
 2002-11-05 12:22  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add "fbx" theme.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add "fbx" theme.
 
 2002-11-04 15:27  xfce
 
-	* Makefile.in, aclocal.m4, configure, xfwm4.spec.in,
+	* Makefile.in, aclocal.m4, configure, configure.in, xfwm4.spec.in,
 	  defaults/Makefile.in, src/Makefile.in, themes/Makefile.am,
 	  themes/Makefile.in, themes/default.keys/Makefile.in: [no log
 	  message]
 
 2002-11-03 21:56  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add theme "quiet-purple" ported/adapted from metacity.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add theme "quiet-purple" ported/adapted from
+	  metacity.
 
 2002-11-02 17:55  xfce
 
-	* Makefile.in, configure, xfwm4.spec.in, themes/Makefile.am,
-	  themes/Makefile.in: Add theme tgc and remove Makefiles added by
-	  mistake for themes beastie and tux
+	* Makefile.in, configure, configure.in, xfwm4.spec.in,
+	  themes/Makefile.am, themes/Makefile.in: Add theme tgc and remove
+	  Makefiles added by mistake for themes beastie and tux
 
 2002-11-02 11:56  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add theme "atlanta" ported from metacity
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add theme "atlanta" ported from metacity
 
 2002-11-01 20:28  huysmans
 
@@ -11267,6 +11837,10 @@
 
 	* themes/: Makefile.am, Makefile.in: Still not right ...
 
+2002-11-01 20:04  huysmans
+
+	* configure.in: Forgot to update configure.in
+
 2002-11-01 19:56  huysmans
 
 	* Makefile.in, themes/Makefile.am, themes/Makefile.in: Add two
@@ -11275,21 +11849,21 @@
 
 2002-11-01 15:01  xfce
 
-	* Makefile.in, aclocal.m4, configure, xfwm4.spec.in,
+	* Makefile.in, aclocal.m4, configure, configure.in, xfwm4.spec.in,
 	  defaults/Makefile.in, src/Makefile.in, themes/Makefile.am,
 	  themes/Makefile.in, themes/default.keys/Makefile.in: Port theme
 	  "elberg" from Sawfish
 
 2002-10-31 15:54  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add theme "biz"
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add theme "biz"
 
 2002-10-28 23:02  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add variation theme, a very simplistic theme with large borders
-	  and buttons.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add variation theme, a very simplistic theme
+	  with large borders and buttons.
 
 2002-10-28 11:58  xfce
 
@@ -11354,20 +11928,23 @@
 
 2002-10-18 11:21  xfce
 
-	* configure, src/Makefile.am, src/Makefile.in, src/client.c,
-	  src/client.h, src/events.c, src/events.h, src/main.c, src/menu.c,
+	* configure, configure.in, src/Makefile.am, src/Makefile.in,
+	  src/client.c, src/client.h, src/events.c, src/events.h,
+	  src/gtk_style.c, src/gtk_style.h, src/gtktoxevent.c,
+	  src/gtktoxevent.h, src/main.c, src/main.h, src/menu.c,
 	  src/settings.c: Move some routines out of xfwm4 to libxfwmgui4,
 	  make xfwm4 depend on libxfcegui4
 
 2002-10-17 22:16  xfce
 
-	* src/: frame.c, settings.c, settings.h: Add new option
-	  "title_horizontal_offset" for themerc
+	* defaults/defaults.in, src/frame.c, src/settings.c,
+	  src/settings.h: Add new option "title_horizontal_offset" for
+	  themerc
 
 2002-10-17 13:57  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add theme "silverado"
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add theme "silverado"
 
 2002-10-16 10:44  xfce
 
@@ -11399,8 +11976,9 @@
 
 2002-10-01 22:07  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add "metabox" theme, a theme from Metacity ported to xfwm4.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add "metabox" theme, a theme from Metacity
+	  ported to xfwm4.
 
 2002-09-29 19:14  xfce
 
@@ -11420,8 +11998,8 @@
 
 2002-09-27 23:42  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "gnububble"
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "gnububble"
 
 2002-09-24 11:56  xfce
 
@@ -11433,8 +12011,8 @@
 
 2002-09-22 15:51  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "pills"
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "pills"
 
 2002-09-22 11:50  xfce
 
@@ -11450,8 +12028,9 @@
 
 2002-09-19 23:25  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "tabs" (really nice, check it out)
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "tabs" (really nice, check it
+	  out)
 
 2002-09-18 12:36  xfce
 
@@ -11481,7 +12060,7 @@
 
 2002-09-14 23:35  xfce
 
-	* Makefile.in, aclocal.m4, configure, xfwm4.spec.in,
+	* Makefile.in, aclocal.m4, configure, configure.in, xfwm4.spec.in,
 	  defaults/Makefile.in, themes/Makefile.am, themes/Makefile.in,
 	  themes/default.keys/Makefile.in: Port "adept" theme from Sawfish.
 
@@ -11521,18 +12100,19 @@
 
 2002-09-10 21:58  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add them "microgui" ported from sawfish.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add them "microgui" ported from sawfish.
 
 2002-09-09 09:52  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add "coolclean" theme ported from Sawfish by Biju Chacko
-	  <botsie@myrealbox.com>
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add "coolclean" theme ported from Sawfish by
+	  Biju Chacko <botsie@myrealbox.com>
 
 2002-09-06 15:41  xfce
 
-	* configure, xfwm4.spec.in, src/parserc.c, src/settings.c,
+	* configure, configure.in, example.xfwm4rc.in, xfwm4.spec.in,
+	  defaults/defaults.in, src/parserc.c, src/settings.c,
 	  themes/Makefile.am, themes/Makefile.in,
 	  themes/default.keys/Makefile.am, themes/default.keys/Makefile.in,
 	  themes/default.keys/keythemerc: [no log message]
@@ -11555,11 +12135,11 @@
 
 2002-09-04 23:24  xfce
 
-	* src/: parserc.c, parserc.h, settings.c: cans dirs for theme so
-	  there is no need to specify full path anymore (but still work for
-	  backward compatibilty). E.g: you can use "theme=exocet" now.
-	  Also make sure the theme dir exists, fallback to default
-	  otherwise.
+	* example.xfwm4rc.in, defaults/defaults.in, src/parserc.c,
+	  src/parserc.h, src/settings.c: cans dirs for theme so there is no
+	  need to specify full path anymore (but still work for backward
+	  compatibilty). E.g: you can use "theme=exocet" now.  Also make
+	  sure the theme dir exists, fallback to default otherwise.
 
 2002-09-04 22:16  xfce
 
@@ -11580,8 +12160,8 @@
 
 2002-09-03 00:00  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add theme "curve"
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add theme "curve"
 
 2002-09-02 09:38  xfce
 
@@ -11589,30 +12169,33 @@
 
 2002-08-30 14:50  xfce
 
-	* src/: Makefile.am, Makefile.in, settings.c: Remove xsettings
-	  sample implementation (as we'll use gtk mechanism anyway)
+	* src/: Makefile.am, Makefile.in, settings.c, xsettings-client.c,
+	  xsettings-client.h, xsettings-common.c, xsettings-common.h:
+	  Remove xsettings sample implementation (as we'll use gtk
+	  mechanism anyway)
 
 2002-08-30 14:45  xfce
 
-	* example.gtkrc-2.0: [no log message]
+	* example.gtkrc-2.0, defaults/defaults.in: [no log message]
 
 2002-08-29 21:47  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "bbs", put "exocet" and "bbs" themes in xfwm4 spec
-	  file (ie not xfwm4-themes), use bbs as default theme instead of
-	  "kindaker".
+	* configure, configure.in, xfwm4.spec.in, defaults/defaults.in,
+	  themes/Makefile.am, themes/Makefile.in: Add new theme "bbs", put
+	  "exocet" and "bbs" themes in xfwm4 spec file (ie not
+	  xfwm4-themes), use bbs as default theme instead of "kindaker".
 
 2002-08-28 00:11  xfce
 
-	* configure, xfwm4.spec.in, src/parserc.h, src/settings.c,
-	  src/settings.h, themes/Makefile.am, themes/Makefile.in: Add new
-	  theme "exocet", begin xsettings support using GtkSettings.
+	* configure, configure.in, xfwm4.spec.in, src/parserc.h,
+	  src/settings.c, src/settings.h, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "exocet", begin xsettings
+	  support using GtkSettings.
 
 2002-08-26 11:43  xfce
 
-	* src/: events.c, settings.c, settings.h: Use gtk-double-click-time
-	  value.
+	* defaults/defaults.in, src/events.c, src/settings.c,
+	  src/settings.h: Use gtk-double-click-time value.
 
 2002-08-26 00:18  xfce
 
@@ -11635,15 +12218,17 @@
 
 2002-08-22 22:48  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "b6". Interesting because it uses both own colors
-	  and theme colors to display nice hilights and shadows.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "b6". Interesting because it
+	  uses both own colors and theme colors to display nice hilights
+	  and shadows.
 
 2002-08-21 17:40  xfce
 
-	* src/: client.c, settings.c, settings.h: Add new option
-	  "focus_hint" (boolean) to specify whether or not app focus hint
-	  should be honored by xfwm4.
+	* example.xfwm4rc.in, defaults/defaults.in, src/client.c,
+	  src/settings.c, src/settings.h: Add new option "focus_hint"
+	  (boolean) to specify whether or not app focus hint should be
+	  honored by xfwm4.
 
 2002-08-21 12:09  xfce
 
@@ -11651,8 +12236,8 @@
 
 2002-08-19 23:40  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add a new theme "piranha" I did just for fun.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add a new theme "piranha" I did just for fun.
 
 2002-08-17 13:13  xfce
 
@@ -11660,16 +12245,17 @@
 
 2002-08-17 12:16  xfce
 
-	* src/client.c: Fix a slight overlapping area in
-	  clientInitPosition()
+	* src/: client.c, xsettings-client.c, xsettings-client.h,
+	  xsettings-common.c, xsettings-common.h: Fix a slight overlapping
+	  area in clientInitPosition()
 
 2002-08-10 22:40  xfce
 
-	* configure, xfwm4.spec.in, src/settings.c, themes/Makefile.am,
-	  themes/Makefile.in: Introduce a new color for themes, "mid"
-	  corresponding to the gtk color of the same name, and add a new
-	  theme "ops" that makes use of this (mainly as a proof of concept
-	  ;-) )
+	* configure, configure.in, xfwm4.spec.in, src/gtktoxevent.c,
+	  src/settings.c, themes/Makefile.am, themes/Makefile.in: Introduce
+	  a new color for themes, "mid" corresponding to the gtk color of
+	  the same name, and add a new theme "ops" that makes use of this
+	  (mainly as a proof of concept ;-) )
 
 2002-07-24 17:24  xfce
 
@@ -11795,13 +12381,14 @@
 
 2002-07-13 18:44  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add "b5" theme
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add "b5" theme
 
 2002-07-09 23:48  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "g2" based on a screen capture of GNOME2.
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "g2" based on a screen capture
+	  of GNOME2.
 
 2002-07-09 13:08  xfce
 
@@ -11810,8 +12397,8 @@
 
 2002-07-08 21:56  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  [no log message]
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: [no log message]
 
 2002-07-07 22:24  xfce
 
@@ -11827,13 +12414,13 @@
 
 2002-07-07 09:38  xfce
 
-	* src/frame.c: Fix a bug when window title was < 0
+	* src/: frame.c, pixmap.c: Fix a bug when window title was < 0
 
 2002-07-07 00:26  xfce
 
-	* configure, src/frame.c, themes/Makefile.am, themes/Makefile.in:
-	  Fixed a (potential ?) bug in frameDraw when window is shaded, add
-	  a new theme "retro"
+	* configure, configure.in, src/frame.c, src/pixmap.c,
+	  themes/Makefile.am, themes/Makefile.in: Fixed a (potential ?) bug
+	  in frameDraw when window is shaded, add a new theme "retro"
 
 2002-07-05 17:53  xfce
 
@@ -11895,8 +12482,9 @@
 
 2002-07-03 10:22  xfce
 
-	* Makefile.in, config.h.in, configure: Fix deprecated AC_DEFINE use
-	  and remove acconfig.h as it's deprecated with automake 2.5x
+	* Makefile.in, acconfig.h, config.h.in, configure, configure.in:
+	  Fix deprecated AC_DEFINE use and remove acconfig.h as it's
+	  deprecated with automake 2.5x
 
 2002-07-02 22:26  xfce
 
@@ -11912,8 +12500,12 @@
 
 2002-07-01 22:12  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "quinx".
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "quinx".
+
+2002-07-01 10:41  xfce
+
+	* src/debug.h: [no log message]
 
 2002-07-01 10:08  xfce
 
@@ -11926,7 +12518,8 @@
 
 2002-06-30 22:10  xfce
 
-	* config.h.in, configure, src/events.c: [no log message]
+	* config.h.in, configure, example.xfwm4rc.in, defaults/defaults.in,
+	  src/events.c: [no log message]
 
 2002-06-28 17:38  xfce
 
@@ -11942,12 +12535,18 @@
 
 2002-06-28 00:06  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme "r9x" ported from a theme for Enlightenment e16
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme "r9x" ported from a theme for
+	  Enlightenment e16
 
 2002-06-26 18:02  xfce
 
 	* src/client.c: Check struts at clientUnframe()
+
+2002-06-26 17:47  xfce
+
+	* example.xfwm4rc.in, defaults/defaults.in: Change default title
+	  alignment fir default theme (kindaker) to left instead of right.
 
 2002-06-26 12:28  xfce
 
@@ -11986,10 +12585,11 @@
 
 2002-06-18 17:37  xfce
 
-	* src/: client.c, events.c, hints.c, keyboard.c, keyboard.h,
-	  main.c, menu.c: Change key modifiers' name, use Alt, Meta instead
-	  of Mod1 and Mod2 Other stuff (sorry, I can't remember right now
-	  :-( )
+	* example.xfwm4rc.in, defaults/defaults.in, src/client.c,
+	  src/events.c, src/gtktoxevent.c, src/hints.c, src/keyboard.c,
+	  src/keyboard.h, src/main.c, src/menu.c: Change key modifiers'
+	  name, use Alt, Meta instead of Mod1 and Mod2 Other stuff (sorry,
+	  I can't remember right now :-( )
 
 2002-06-17 23:03  xfce
 
@@ -12034,8 +12634,8 @@
 
 2002-06-11 23:16  xfce
 
-	* Makefile.in, aclocal.m4, compile, configure, missing,
-	  xfwm4.spec.in, defaults/Makefile.in, src/Makefile.am,
+	* Makefile.in, aclocal.m4, compile, configure, configure.in,
+	  missing, xfwm4.spec.in, defaults/Makefile.in, src/Makefile.am,
 	  src/Makefile.in, themes/Makefile.am, themes/Makefile.in: Add new
 	  theme "gorilla" inspired by Sawfish and Metacity themes and
 	  migrate to autoconf 1.6
@@ -12054,6 +12654,11 @@
 
 	* src/: client.c, hints.c: Grab server when framing/unframing all
 	  clients at startup/exit
+
+2002-06-10 12:36  xfce
+
+	* src/gtktoxevent.c: Fix a possible crash when popEventFilter is
+	  called during filter stack processing
 
 2002-06-05 22:52  xfce
 
@@ -12085,7 +12690,8 @@
 
 2002-06-03 21:34  xfce
 
-	* xfwm4.spec.in: Change default theme to "kindaker"
+	* example.xfwm4rc.in, xfwm4.spec.in, defaults/defaults.in: Change
+	  default theme to "kindaker"
 
 2002-06-02 23:58  xfce
 
@@ -12094,9 +12700,10 @@
 
 2002-06-01 13:25  xfce
 
-	* configure, xfwm4.spec.in, src/client.c, src/hints.c,
-	  themes/Makefile.am, themes/Makefile.in: Add new theme "kindaker"
-	  based on KDE theme "keramik", add a README file for all themes.
+	* configure, configure.in, xfwm4.spec.in, src/client.c,
+	  src/hints.c, themes/Makefile.am, themes/Makefile.in: Add new
+	  theme "kindaker" based on KDE theme "keramik", add a README file
+	  for all themes.
 
 2002-05-31 18:25  xfce
 
@@ -12113,13 +12720,13 @@
 
 2002-05-27 23:38  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme
 
 2002-05-26 23:34  xfce
 
-	* configure, xfwm4.spec.in, themes/Makefile.am, themes/Makefile.in:
-	  Add new theme (ported from sawfish)
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	  themes/Makefile.in: Add new theme (ported from sawfish)
 
 2002-05-25 15:57  xfce
 
@@ -12142,17 +12749,19 @@
 
 	* Makefile.am, Makefile.in, src/.indent.pro, src/Makefile.in,
 	  src/client.c, src/client.h, src/events.c, src/events.h,
-	  src/frame.c, src/hints.c, src/hints.h, src/keyboard.c,
+	  src/frame.c, src/gtk_style.c, src/gtk_style.h, src/gtktoxevent.c,
+	  src/gtktoxevent.h, src/hints.c, src/hints.h, src/keyboard.c,
 	  src/main.c, src/menu.c, src/menu.h, src/misc.c, src/misc.h,
-	  src/parserc.c, src/parserc.h, src/settings.c, src/settings.h,
-	  src/workspaces.c, src/workspaces.h, themes/Makefile.in: As
-	  suggested by JAsper, adjust .indent.pro options for my own taste
-	  and apply on sources.
+	  src/parserc.c, src/parserc.h, src/pixmap.c, src/settings.c,
+	  src/settings.h, src/workspaces.c, src/workspaces.h,
+	  themes/Makefile.in: As suggested by JAsper, adjust .indent.pro
+	  options for my own taste and apply on sources.
 
 2002-05-24 00:23  xfce
 
 	* AUTHORS, Makefile.am, Makefile.in, autogen.sh, configure,
-	  xfwm4.spec.in, defaults/Makefile.am, defaults/Makefile.in,
+	  configure.in, example.xfwm4rc.in, xfwm4.spec, xfwm4.spec.in,
+	  defaults/Makefile.am, defaults/Makefile.in, defaults/defaults.in,
 	  src/Makefile.am, src/Makefile.in, themes/Makefile.in: Improve
 	  build process, add automatic xfwm4.spec generation
 
@@ -12162,15 +12771,16 @@
 
 2002-05-23 18:44  xfce
 
-	* config.h.in, configure, src/Makefile.am, src/Makefile.in: [no log
-	  message]
+	* acconfig.h, config.h.in, configure, configure.in,
+	  src/Makefile.am, src/Makefile.in: [no log message]
 
 2002-05-23 12:06  xfce
 
-	* Makefile.am, Makefile.in, config.h.in, configure,
-	  defaults/Makefile.am, defaults/Makefile.in, src/Makefile.in,
-	  themes/Makefile.in: Clean up build/install procedure and add a
-	  spec file so we have now a rpm
+	* Makefile.am, Makefile.in, acconfig.h, config.h.in, configure,
+	  configure.in, example.xfwm4rc, example.xfwm4rc.in, xfwm4.spec,
+	  defaults/Makefile.am, defaults/Makefile.in, defaults/defaults.in,
+	  src/Makefile.in, themes/Makefile.in: Clean up build/install
+	  procedure and add a spec file so we have now a rpm
 
 2002-05-22 18:36  xfce
 
@@ -12188,6 +12798,11 @@
 
 	* src/: client.c, client.h, events.c, frame.c, hints.c, hints.h:
 	  Add net_wm_state_fullscreen support
+
+2002-05-22 10:54  xfce
+
+	* src/gtktoxevent.c: Disable double buffereing on internal gtk
+	  widget
 
 2002-05-21 23:14  xfce
 
@@ -12208,8 +12823,8 @@
 
 2002-05-18 01:25  xfce
 
-	* src/: events.c, menu.c: Make sure it compiles without warnings
-	  when adding -DGTK_DISABLE_DEPRECATED
+	* src/: events.c, gtk_style.c, gtk_style.h, menu.c: Make sure it
+	  compiles without warnings when adding -DGTK_DISABLE_DEPRECATED
 
 2002-05-17 15:11  xfce
 
@@ -12222,8 +12837,9 @@
 
 2002-05-17 11:25  xfce
 
-	* README, src/client.c, src/client.h, src/hints.c, src/hints.h:
-	  Change focus handling to be faster and use less memory
+	* README, example.xfwm4rc, defaults/defaults.in, src/client.c,
+	  src/client.h, src/hints.c, src/hints.h: Change focus handling to
+	  be faster and use less memory
 
 2002-05-16 23:16  xfce
 
@@ -12234,6 +12850,15 @@
 2002-05-15 23:56  xfce
 
 	* README: Update README file
+
+2002-05-15 23:46  xfce
+
+	* example.xfwm4rc, defaults/defaults.in: Change defaults
+
+2002-05-15 23:41  xfce
+
+	* src/pixmap.c: Add colorcloseness and colormap to loadPixmap
+	  attributes
 
 2002-05-14 23:46  xfce
 
@@ -12276,7 +12901,8 @@
 
 2002-05-12 02:11  xfce
 
-	* src/: client.c, frame.c: Fix a bug introduced earlier today
+	* src/: client.c, frame.c, pixmap.c, pixmap.h: Fix a bug introduced
+	  earlier today
 
 2002-05-11 23:26  xfce
 
@@ -12288,10 +12914,11 @@
 
 2002-05-11 23:24  xfce
 
-	* README, configure, src/frame.c, src/hints.c, src/settings.c,
-	  themes/Makefile.am, themes/Makefile.in: Enhance speed, fix bug
-	  with window name property vs. pango and UTF8, add crux theme from
-	  Sawfish (GNOME) window manager.
+	* README, configure, configure.in, src/frame.c, src/hints.c,
+	  src/pixmap.c, src/pixmap.h, src/settings.c, themes/Makefile.am,
+	  themes/Makefile.in: Enhance speed, fix bug with window name
+	  property vs. pango and UTF8, add crux theme from Sawfish (GNOME)
+	  window manager.
 
 2002-05-08 11:19  xfce
 
@@ -12301,7 +12928,8 @@
 
 2002-05-08 00:22  xfce
 
-	* ChangeLog, configure, src/main.c, themes/Makefile.am,
+	* ChangeLog, configure, configure.in, src/gtktoxevent.c,
+	  src/gtktoxevent.h, src/main.c, themes/Makefile.am,
 	  themes/Makefile.in: Use Jens' idea about gtk style to set
 	  color/fonts on window decorations.
 
@@ -12319,9 +12947,9 @@
 
 2002-05-07 10:20  xfce
 
-	* configure, themes/Makefile.am, themes/Makefile.in: Rename
-	  "windows" theme to "redmond" and rename previous "redmond" to
-	  "redmondxp"
+	* configure, configure.in, themes/Makefile.am, themes/Makefile.in:
+	  Rename "windows" theme to "redmond" and rename previous "redmond"
+	  to "redmondxp"
 
 2002-05-07 00:35  xfce
 
@@ -12334,8 +12962,8 @@
 
 2002-05-06 17:28  xfce
 
-	* src/: client.c, events.c, main.c, workspaces.c, workspaces.h:
-	  Improve net_wm_strut implementation
+	* src/: client.c, events.c, main.c, main.h, workspaces.c,
+	  workspaces.h: Improve net_wm_strut implementation
 
 2002-05-06 16:42  xfce
 
@@ -12357,8 +12985,8 @@
 
 2002-05-05 20:38  xfce
 
-	* configure, themes/Makefile.am, themes/Makefile.in: Add linea
-	  theme
+	* configure, configure.in, themes/Makefile.am, themes/Makefile.in:
+	  Add linea theme
 
 2002-05-05 17:06  xfce
 
@@ -12366,30 +12994,29 @@
 
 2002-05-05 15:37  xfce
 
-	* configure, src/workspaces.c, themes/Makefile.am,
+	* configure, configure.in, src/workspaces.c, themes/Makefile.am,
 	  themes/Makefile.in: Add trench theme, fix a problem when switch
 	  workspaces and transients
 
 2002-05-04 22:25  xfce
 
-	* configure, themes/Makefile.am, themes/Makefile.in: Add mofit
-	  theme
-
-2002-05-03 23:51  xfce
-
-	* NEWS, stamp-h.in: Initial CVS import
+	* configure, configure.in, themes/Makefile.am, themes/Makefile.in:
+	  Add mofit theme
 
 2002-05-03 23:51  xfce
 
 	* AUTHORS, README, COPYING, ChangeLog, INSTALL, Makefile.am,
-	  Makefile.in, TODO, aclocal.m4, configure, install-sh, missing,
-	  config.h.in, mkinstalldirs, src/Makefile.am, src/Makefile.in,
+	  Makefile.in, NEWS, TODO, aclocal.m4, configure, configure.in,
+	  install-sh, missing, acconfig.h, config.h.in, example.xfwm4rc,
+	  mkinstalldirs, stamp-h.in, src/Makefile.am, src/Makefile.in,
 	  src/client.c, src/frame.c, src/misc.c, src/parserc.c,
 	  src/settings.c, src/events.c, src/hints.c, src/keyboard.c,
-	  src/hints.h, src/keyboard.h, src/misc.h, src/parserc.h,
-	  src/workspaces.c, src/.indent.pro, src/main.c, src/menu.c,
-	  src/menu.h, defaults/Makefile.am, src/client.h, src/events.h,
-	  src/frame.h, src/settings.h, src/workspaces.h,
-	  defaults/Makefile.in, themes/Makefile.am, themes/Makefile.in:
-	  Initial revision
+	  src/hints.h, src/keyboard.h, src/main.h, src/misc.h,
+	  src/parserc.h, src/pixmap.c, src/workspaces.c, src/.indent.pro,
+	  src/debug.h, src/main.c, src/menu.c, src/pixmap.h,
+	  src/gtktoxevent.c, src/gtktoxevent.h, src/menu.h,
+	  defaults/Makefile.am, src/client.h, src/events.h, src/frame.h,
+	  src/gtk_style.c, src/gtk_style.h, src/settings.h,
+	  src/workspaces.h, defaults/Makefile.in, defaults/defaults.in,
+	  themes/Makefile.am, themes/Makefile.in: Initial revision
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-12-10 13:00-0300\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: pt_BR <>\n"
@@ -706,3 +706,23 @@ msgstr "Mudar para ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Aplicativo desconhecido!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+#, fuzzy
+msgid "Window Manager Settings"
+msgstr "Gerenciador de janelas"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Preferências do gerenciador de janelas"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+#, fuzzy
+msgid "Workspaces Settings"
+msgstr "Margens da área de trabalho"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Margens da área de trabalho"

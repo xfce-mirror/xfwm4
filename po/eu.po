@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-09-13 22:46+0200\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -712,6 +712,26 @@ msgstr "Aldatu hona ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Aplikazio ezezaguna!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+#, fuzzy
+msgid "Window Manager Settings"
+msgstr "Leiho Kudeatzailea"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Leiho Kudeatzailea hobespenak"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+#, fuzzy
+msgid "Workspaces Settings"
+msgstr "Idazmahai Marjinak"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Idazmahai Marjinak"
 
 #~ msgid "Workspace 1"
 #~ msgstr "1 Idazmahaia"

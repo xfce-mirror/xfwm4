@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-08-07 22:24+0200\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <en@li.org>\n"
@@ -714,6 +714,22 @@ msgstr "Basculer vers ..."
 msgid "Unknown application!"
 msgstr "Application inconnue!"
 
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "Paramétrage du gestionnaire de fenêtres"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Paramètres du gestionnaire de fenêtres de Xfce 4"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "Paramétrage des espaces virtuels"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Paramètres des espaces virtuels de Xfce 4"
+
 #~ msgid "Workspace 1"
 #~ msgstr "Espace de travail 1"
 
@@ -810,19 +826,3 @@ msgstr "Application inconnue!"
 #~ msgid "%s: Workspace count not set, using rc value: %i"
 #~ msgstr ""
 #~ "%s: Nombre d'espaces de travail non fixé, utilisation de la valeur rc: %i"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:5
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Paramètres du gestionnaire de fenêtres de Xfce 4"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:6
-msgid "Window Manager Settings"
-msgstr "Paramétrage du gestionnaire de fenêtres"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Paramètres des espaces virtuels de Xfce 4"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
-msgid "Workspaces Settings"
-msgstr "Paramétrage des espaces virtuels"

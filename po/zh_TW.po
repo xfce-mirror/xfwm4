@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-04-20 16:38+0800\n"
 "Last-Translator: Ambrose Li <acli@ada.dhs.org>\n"
 "Language-Team: \n"
@@ -723,6 +723,22 @@ msgstr "切換到..."
 msgid "Unknown application!"
 msgstr "不明的應用程式！"
 
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "設定視窗管理程式"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 視窗管理程式設定"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "設定工作區"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 工作區設定"
+
 #~ msgid "Workspace 1"
 #~ msgstr "工作區 1"
 
@@ -827,19 +843,3 @@ msgstr "不明的應用程式！"
 
 #~ msgid "%s: Workspace count not set, using rc value: %i"
 #~ msgstr "%s: 未設定工作區數量，使用 rc 文件值： %i"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:5
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 視窗管理程式設定"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:6
-msgid "Window Manager Settings"
-msgstr "設定視窗管理程式"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 工作區設定"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
-msgid "Workspaces Settings"
-msgstr "設定工作區"

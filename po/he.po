@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-10-26 18:28+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
@@ -702,6 +702,22 @@ msgstr "החלף ל..."
 msgid "Unknown application!"
 msgstr "יישום לא ידוע."
 
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "הגדרות מנהל החלונות"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "הגדרות מנהל החלונות Xfce 4"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "הגדרות סביבות העבודה"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "הגדרות סביבות העבודה Xfce 4"
+
 #~ msgid "Workspace 1"
 #~ msgstr "סביבת עבודה 1"
 
@@ -734,19 +750,3 @@ msgstr "יישום לא ידוע."
 
 #~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 #~ msgstr "%s: Unmanaged net_wm_state (window 0x%lx)"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:5
-msgid "Xfce 4 Window Manager Settings"
-msgstr "הגדרות מנהל החלונות Xfce 4"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:6
-msgid "Window Manager Settings"
-msgstr "הגדרות מנהל החלונות"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
-msgid "Xfce 4 Workspaces Settings"
-msgstr "הגדרות סביבות העבודה Xfce 4"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
-msgid "Workspaces Settings"
-msgstr "הגדרות סביבות העבודה"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-03 15:51+0900\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2005-03-03 15:54+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -85,22 +85,6 @@ msgstr "ワークスペースの数:"
 #: mcs-plugin/workspaces.c:558
 msgid "Workspace names"
 msgstr "ワークスペース名"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "ウィンドウマネージャ設定"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 ウィンドウマネージャ設定"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "ワークスペース設定"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 ワークスペース設定"
 
 #: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
@@ -712,3 +696,19 @@ msgstr "切替え ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "不明なアプリケーションです!"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "ウィンドウマネージャ設定"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 ウィンドウマネージャ設定"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "ワークスペース設定"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 ワークスペース設定"

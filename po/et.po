@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-12-09 01:45+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: \n"
@@ -698,18 +698,18 @@ msgstr "Lülitu ..."
 msgid "Unknown application!"
 msgstr "Tundmatu rakendus!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in:5
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 aknahalduri seaded"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:6
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Aknahalduri seaded"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 töölaua seaded"
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 aknahalduri seaded"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
 msgstr "Töölaua seaded"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 töölaua seaded"

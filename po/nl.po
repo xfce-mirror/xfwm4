@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 23:07+0100\n"
+"POT-Creation-Date: 2005-03-21 01:05+0100\n"
 "PO-Revision-Date: 2004-08-25 20:11+0200\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -703,6 +703,22 @@ msgstr "Wisselen naar ..."
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
 
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "Instellingen voor de window manager"
+
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Instellingen Xfce 4 Window Manager"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "Instellingen voor virtuele bureaubladen"
+
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
+
 #~ msgid "Workspace 1"
 #~ msgstr "Bureaublad 1"
 
@@ -735,19 +751,3 @@ msgstr "Onbekend programma!"
 
 #~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 #~ msgstr "%s: Onbeheerde net_wm_state (venster 0x%#lx)"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:5
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Instellingen Xfce 4 Window Manager"
-
-#: mcs-plugin/xfce-wm-settings.desktop.in:6
-msgid "Window Manager Settings"
-msgstr "Instellingen voor de window manager"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:5
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
-
-#: mcs-plugin/xfce-workspaces-settings.desktop.in:6
-msgid "Workspaces Settings"
-msgstr "Instellingen voor virtuele bureaubladen"

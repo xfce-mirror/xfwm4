@@ -205,6 +205,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     {
         TRACE ("grab failed in typeOfClick");
         gdk_beep ();
+        myScreenUngrabPointer (screen_info, ev->xbutton.time);
         return XFWM_BUTTON_UNDEFINED;
     }
 
