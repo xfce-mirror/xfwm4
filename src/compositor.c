@@ -70,6 +70,7 @@ struct _CWindow
     gint shadow_height;
     gint mode;
     guint opacity;
+    gboolean skipped;
 
     XserverRegion last_painted_extents;
     XserverRegion borderClip;
@@ -614,7 +615,7 @@ root_tile (ScreenInfo *screen_info)
     {
         XRenderColor c;
         
-        c.red = c.green = c.blue = 0x8080;
+        c.red = c.green = c.blue = 0xd0d0;
         c.alpha = 0xffff;
         XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
     }
@@ -843,17 +844,27 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         CWindow *cw = (CWindow *) index->data;
 
         TRACE ("painting forward 0x%lx", cw->id);
+        
         if (!(cw->damaged) || !(cw->viewable))
         {
             TRACE ("skipped, not damaged or not viewable 0x%lx", cw->id);
+            cw->skipped = TRUE;
             continue;
         }
         
+        if ((cw->attr.x + cw->attr.width < 1) || (cw->attr.y + cw->attr.height < 1) || 
+            (cw->attr.x >= screen_width) || (cw->attr.y >= screen_height))
+        {
+            TRACE ("skipped, off screen 0x%lx", cw->id);
+            cw->skipped = TRUE;
+            continue;
+        }
+        
+        cw->skipped = FALSE;    
         if (!(cw->picture))
         {
             cw->picture = get_window_picture (cw);
         }
-    
         if (screen_info->clipChanged)
         {
             if (cw->borderSize)
@@ -904,9 +915,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         CWindow *cw = (CWindow *) index->data;
 
         TRACE ("painting backward 0x%lx", cw->id);
-        if (!(cw->damaged) || !(cw->viewable))
+        
+        if (cw->skipped)
         {
-            TRACE ("skipped, not damaged or not viewable 0x%lx", cw->id);
+            TRACE ("skipped 0x%lx", cw->id);
             continue;
         }
         
