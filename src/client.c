@@ -1132,9 +1132,10 @@ clientWindowType (Client * c)
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->flags,
-                CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MOVE | 
+                CLIENT_FLAG_HAS_RESIZE | CLIENT_FLAG_HAS_MOVE | 
                 CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_MAXIMIZE | 
-                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK);
+                CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_STICK |
+                CLIENT_FLAG_HAS_BORDER);
         }
         else if (c->type_atom == net_wm_window_type_dock)
         {
