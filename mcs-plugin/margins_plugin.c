@@ -110,17 +110,21 @@ save_channel (McsManager * manager, const char *channel, const char *rcfile)
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
+#if 0
 #ifdef ENABLE_NLS
-    /* 
-       This is required for UTF-8 at least - Please don't remove it
-       And it needs to be done here for the label to be properly
-       localized....
-     */
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
 #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #endif
     textdomain (GETTEXT_PACKAGE);
+#endif
+#else
+    /* 
+       This is required for UTF-8 at least - Please don't remove it
+       And it needs to be done here for the label to be properly
+       localized....
+     */
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 #endif
 
     manager = mcs_plugin->manager;
