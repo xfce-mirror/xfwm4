@@ -116,7 +116,7 @@ static void clear_timeout(void)
 {
     if(raise_timeout)
     {
-        gtk_timeout_remove(raise_timeout);
+        g_source_remove(raise_timeout);
         raise_timeout = 0;
     }
 }
@@ -139,9 +139,9 @@ static void reset_timeout(void)
 {
     if(raise_timeout)
     {
-        gtk_timeout_remove(raise_timeout);
+        g_source_remove(raise_timeout);
     }
-    raise_timeout = gtk_timeout_add(params.raise_delay, (GtkFunction) raise_cb, NULL);
+    raise_timeout = g_timeout_add_full(0, params.raise_delay, (GtkFunction) raise_cb, NULL, NULL);
 }
 
 static inline void moveRequest(Client * c, XEvent * ev)
