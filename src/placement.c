@@ -268,20 +268,26 @@ clientConstrainPos (Client * c, gboolean show_full)
                 && (c2 != c))
             {
                 /* Right */
-                if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
+                if (overlapY (frame_y, frame_y + frame_height, 
+                              c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
                 {
                     if (overlapX (frame_x, frame_x + frame_width, 
-                                  gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT], gdk_screen_get_width (screen_info->gscr)))
+                                  gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT], 
+                                  gdk_screen_get_width (screen_info->gscr)))
                     {
-                        c->x = gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - frame_width;
+                        /* Coord shouldn't shrink, thus the MAX, otherwise you end up off screen */
+                        c->x = MAX (gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - frame_width, 
+                                    c->x);
                         frame_x = frameX (c);
                     }
                 }
 
                 /* Left */
-                if (overlapY (frame_y, frame_y + frame_height, c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
+                if (overlapY (frame_y, frame_y + frame_height, 
+                              c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
                 {
-                    if (overlapX (frame_x, frame_x + frame_width, 0, c2->struts[LEFT]))
+                    if (overlapX (frame_x, frame_x + frame_width, 
+                                  0, c2->struts[LEFT]))
                     {
                         c->x = c2->struts[LEFT] + frame_left;
                         frame_x = frameX (c);
@@ -289,20 +295,28 @@ clientConstrainPos (Client * c, gboolean show_full)
                 }
 
                 /* Bottom */
-                if (overlapX (frame_x, frame_x + frame_width, c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
+                if (overlapX (frame_x, frame_x + frame_width, 
+                              c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
                 {
                     if (overlapY (frame_y, frame_y + frame_height, 
-                        gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM], gdk_screen_get_height (screen_info->gscr)))
+                                  gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM], 
+                                  gdk_screen_get_height (screen_info->gscr)))
                     {
-                        c->y = gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - frame_height;
+                        /* Coord shouldn't shrink, thus the MAX, otherwise you end up off screen */
+                        c->y = MAX (gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - frame_height,
+                                    c->y);
                         frame_y = frameY (c);
                     }
                 }
 
                 /* Top */
-                if (overlapX (frame_x, frame_x + frame_width, c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
+                if (overlapX (frame_x, 
+                              frame_x + frame_width, 
+                              c2->struts[TOP_START_X], 
+                              c2->struts[TOP_END_X]))
                 {
-                    if (overlapY (frame_y, frame_y + frame_height, 0, c2->struts[TOP]))
+                    if (overlapY (frame_y, frame_y + frame_height, 
+                                  0, c2->struts[TOP]))
                     {
                         c->y = c2->struts[TOP] + frame_top;
                         frame_y = frameY (c);
@@ -346,7 +360,8 @@ clientConstrainPos (Client * c, gboolean show_full)
                 && (c2 != c))
             {
                 /* Right */
-                if (overlapY (frame_y, frame_y + frame_height, c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
+                if (overlapY (frame_y, frame_y + frame_height, 
+                              c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
                 {
                     if (frame_x > gdk_screen_get_width (screen_info->gscr) - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE)
                     {
@@ -356,7 +371,8 @@ clientConstrainPos (Client * c, gboolean show_full)
                 }
 
                 /* Left */
-                if (overlapY (frame_y, frame_y + frame_height, c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
+                if (overlapY (frame_y, frame_y + frame_height, 
+                              c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
                 {
                     if (frame_x + frame_width < c2->struts[LEFT] + CLIENT_MIN_VISIBLE)
                     {
@@ -366,7 +382,8 @@ clientConstrainPos (Client * c, gboolean show_full)
                 }
 
                 /* Bottom */
-                if (overlapX (frame_x, frame_x + frame_width, c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
+                if (overlapX (frame_x, frame_x + frame_width, 
+                              c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
                 {
                     if (frame_y > gdk_screen_get_height (screen_info->gscr) - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE)
                     {
@@ -376,7 +393,8 @@ clientConstrainPos (Client * c, gboolean show_full)
                 }
 
                 /* Top */
-                if (overlapX (frame_x, frame_x + frame_width, c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
+                if (overlapX (frame_x, frame_x + frame_width, 
+                              c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
                 {
                     if (overlapY (frame_y, frame_y + frame_top, 0, c2->struts[TOP]))
                     {
