@@ -4273,6 +4273,8 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         case STICK_BUTTON:
             clientToggleSticky(c, TRUE);
             break;
+	default:
+	    break;
         }
         frameDraw(c, FALSE, FALSE);
     }

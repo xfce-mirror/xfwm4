@@ -1278,10 +1278,11 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
         {
             clientHide(c, TRUE);
         }
+        frameDraw(c, FALSE, FALSE);
         break;
     case MENU_OP_MINIMIZE_ALL:
-        frameDraw(c, FALSE, FALSE);
         clientHideAll(c);
+        frameDraw(c, FALSE, FALSE);
         break;
     case MENU_OP_UNMINIMIZE:
         clientShow(c, TRUE);
@@ -1292,8 +1293,8 @@ static void menu_callback(Menu * menu, MenuOp op, Window client_xwindow, gpointe
         break;
     case MENU_OP_STICK:
     case MENU_OP_UNSTICK:
-        frameDraw(c, FALSE, FALSE);
         clientToggleSticky(c, TRUE);
+        frameDraw(c, FALSE, FALSE);
         break;
     case MENU_OP_DELETE:
         frameDraw(c, FALSE, FALSE);
