@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2003-07-19 09:56+0200\n"
+"POT-Creation-Date: 2003-07-30 09:15+0200\n"
 "PO-Revision-Date: 2003-07-15 23:59+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -275,12 +275,12 @@ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 msgid "Advanced"
 msgstr "Avançat"
 
-#: src/client.c:442
+#: src/client.c:443
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state (finestra 0x%lx) no gestionada"
 
-#: src/events.c:1317
+#: src/events.c:1318
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: Operació encara no suportada\n"
@@ -371,37 +371,42 @@ msgstr "À_rea de treball %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut capturar el punter\n"
 
-#: src/settings.c:284
+#: src/settings.c:285
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Falten els fitxers per defecte."
 
-#: src/settings.c:509
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No es pot allotjar el color actiu %s\n"
 
-#: src/settings.c:516
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No es pot processar el color actiu %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No es pot allotjar el color inactiu %s\n"
 
-#: src/settings.c:567
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No es pot processar el color inactiu %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr ""
+
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Faltes valors en els fitxers per defecte"
 
-#: src/settings.c:1098
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr ""

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-07-19 09:56+0200\n"
+"POT-Creation-Date: 2003-07-30 09:15+0200\n"
 "PO-Revision-Date: 2003-07-08 20:52+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -271,12 +271,12 @@ msgstr "双击标题栏所执行的动作 :"
 msgid "Advanced"
 msgstr "高级"
 
-#: src/client.c:442
+#: src/client.c:443
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
 
-#: src/events.c:1317
+#: src/events.c:1318
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: 尚不支持的操作\n"
@@ -367,37 +367,42 @@ msgstr "工作区 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:284
+#: src/settings.c:285
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: 缺少默认文件"
 
-#: src/settings.c:509
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:516
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:567
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr ""
+
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: 默认文件中缺少数据"
 
-#: src/settings.c:1098
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: 未设置工作区个数，使用rc文件值: %i"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-07-19 09:56+0200\n"
+"POT-Creation-Date: 2003-07-30 09:15+0200\n"
 "PO-Revision-Date: 2003-01-31 12:54+0100\n"
 "Last-Translator: Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>\n"
 "Language-Team:  Arabic \n"
@@ -280,12 +280,12 @@ msgstr "تنفيذ المهمة التالية عند النقر مرتين عل
 msgid "Advanced"
 msgstr ""
 
-#: src/client.c:442
+#: src/client.c:443
 #, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: net_wm_state غير مدار (نافذة %#lx)"
 
-#: src/events.c:1317
+#: src/events.c:1318
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: العملية ليست مدعومة (بعد)\n"
@@ -377,37 +377,42 @@ msgstr "_بيئة العمل"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
 
-#: src/settings.c:284
+#: src/settings.c:285
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
-#: src/settings.c:509
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: لا أستطيع تخصيص اللون النشط%s\n"
 
-#: src/settings.c:516
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون النشط %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 
-#: src/settings.c:567
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr ""
+
+#: src/settings.c:765
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: هناك بيانات منقوصة في الملفات الإفتراضية"
 
-#: src/settings.c:1098
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s:العد في بيئة العمل غير محدد, سأستخدم قيمة rc: %i"

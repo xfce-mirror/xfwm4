@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-07-19 09:56+0200\n"
+"POT-Creation-Date: 2003-07-30 09:15+0200\n"
 "PO-Revision-Date: 2003-07-17 20:44+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -271,12 +271,12 @@ msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: src/client.c:442
+#: src/client.c:443
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: Yönetilmeyen net_wm_stat (pencere 0x%lx)"
 
-#: src/events.c:1317
+#: src/events.c:1318
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
 msgstr "%s: İşlem desteklenmiyor (henüz)\n"
@@ -367,37 +367,42 @@ msgstr "Çalışma alanı %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: src/settings.c:284
+#: src/settings.c:285
 #, c-format
 msgid "%s: Missing defaults file"
 msgstr "%s: Öntanımlı dosyalar unutulmuş"
 
-#: src/settings.c:509
+#: src/settings.c:510
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: src/settings.c:516
+#: src/settings.c:517
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: src/settings.c:560
+#: src/settings.c:561
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
 
-#: src/settings.c:567
+#: src/settings.c:568
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
 
-#: src/settings.c:757
+#: src/settings.c:755
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr ""
+
+#: src/settings.c:765
 #, c-format
 msgid "%s: Missing values in defaults file"
 msgstr "%s: Öntanımlı dosyalarda değerler unutulmuş"
 
-#: src/settings.c:1098
+#: src/settings.c:1106
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
 msgstr "%s: Çalışma alanı uygulanamıyor, rc değeri kullanılıyor: %i"

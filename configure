@@ -22442,23 +22442,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= 3.99.2" >&5
-echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= 3.99.2... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= 3.99.3" >&5
+echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= 3.99.3... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4mcs-client-1.0 >= 3.99.2" ; then
+        if $PKG_CONFIG --exists "libxfce4mcs-client-1.0 >= 3.99.3" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_CLIENT_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_CLIENT_CFLAGS... $ECHO_C" >&6
-            LIBXFCE4MCS_CLIENT_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-client-1.0 >= 3.99.2"`
+            LIBXFCE4MCS_CLIENT_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-client-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_CLIENT_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_CLIENT_LIBS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_CLIENT_LIBS... $ECHO_C" >&6
-            LIBXFCE4MCS_CLIENT_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-client-1.0 >= 3.99.2"`
+            LIBXFCE4MCS_CLIENT_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-client-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_CLIENT_LIBS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
         else
@@ -22466,7 +22466,7 @@ echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
             LIBXFCE4MCS_CLIENT_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCE4MCS_CLIENT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-client-1.0 >= 3.99.2"`
+            LIBXFCE4MCS_CLIENT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-client-1.0 >= 3.99.3"`
             echo $LIBXFCE4MCS_CLIENT_PKG_ERRORS
         fi
 
@@ -22481,12 +22481,12 @@ echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-client-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4mcs-client-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-client-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4mcs-client-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCE4MCS_CLIENT_REQUIRED_VERSION=3.99.2
+  LIBXFCE4MCS_CLIENT_REQUIRED_VERSION=3.99.3
 
 
 
@@ -22544,23 +22544,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4mcs-manager-1.0 >= 3.99.2" >&5
-echo $ECHO_N "checking for libxfce4mcs-manager-1.0 >= 3.99.2... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfce4mcs-manager-1.0 >= 3.99.3" >&5
+echo $ECHO_N "checking for libxfce4mcs-manager-1.0 >= 3.99.3... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4mcs-manager-1.0 >= 3.99.2" ; then
+        if $PKG_CONFIG --exists "libxfce4mcs-manager-1.0 >= 3.99.3" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_MANAGER_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_MANAGER_CFLAGS... $ECHO_C" >&6
-            LIBXFCE4MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-manager-1.0 >= 3.99.2"`
+            LIBXFCE4MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-manager-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_MANAGER_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCE4MCS_MANAGER_LIBS" >&5
 echo $ECHO_N "checking LIBXFCE4MCS_MANAGER_LIBS... $ECHO_C" >&6
-            LIBXFCE4MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-manager-1.0 >= 3.99.2"`
+            LIBXFCE4MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-manager-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCE4MCS_MANAGER_LIBS" >&5
 echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
         else
@@ -22568,7 +22568,7 @@ echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
             LIBXFCE4MCS_MANAGER_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCE4MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-manager-1.0 >= 3.99.2"`
+            LIBXFCE4MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-manager-1.0 >= 3.99.3"`
             echo $LIBXFCE4MCS_MANAGER_PKG_ERRORS
         fi
 
@@ -22583,12 +22583,12 @@ echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-manager-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4mcs-manager-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-manager-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4mcs-manager-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCE4MCS_MANAGER_REQUIRED_VERSION=3.99.2
+  LIBXFCE4MCS_MANAGER_REQUIRED_VERSION=3.99.3
 
 
 
@@ -22646,23 +22646,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4util-1.0 >= 3.99.2" >&5
-echo $ECHO_N "checking for libxfce4util-1.0 >= 3.99.2... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfce4util-1.0 >= 3.99.3" >&5
+echo $ECHO_N "checking for libxfce4util-1.0 >= 3.99.3... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4util-1.0 >= 3.99.2" ; then
+        if $PKG_CONFIG --exists "libxfce4util-1.0 >= 3.99.3" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCE4UTIL_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCE4UTIL_CFLAGS... $ECHO_C" >&6
-            LIBXFCE4UTIL_CFLAGS=`$PKG_CONFIG --cflags "libxfce4util-1.0 >= 3.99.2"`
+            LIBXFCE4UTIL_CFLAGS=`$PKG_CONFIG --cflags "libxfce4util-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCE4UTIL_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCE4UTIL_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCE4UTIL_LIBS" >&5
 echo $ECHO_N "checking LIBXFCE4UTIL_LIBS... $ECHO_C" >&6
-            LIBXFCE4UTIL_LIBS=`$PKG_CONFIG --libs "libxfce4util-1.0 >= 3.99.2"`
+            LIBXFCE4UTIL_LIBS=`$PKG_CONFIG --libs "libxfce4util-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCE4UTIL_LIBS" >&5
 echo "${ECHO_T}$LIBXFCE4UTIL_LIBS" >&6
         else
@@ -22670,7 +22670,7 @@ echo "${ECHO_T}$LIBXFCE4UTIL_LIBS" >&6
             LIBXFCE4UTIL_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCE4UTIL_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4util-1.0 >= 3.99.2"`
+            LIBXFCE4UTIL_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4util-1.0 >= 3.99.3"`
             echo $LIBXFCE4UTIL_PKG_ERRORS
         fi
 
@@ -22685,12 +22685,12 @@ echo "${ECHO_T}$LIBXFCE4UTIL_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4util-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4util-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4util-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4util-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCE4UTIL_REQUIRED_VERSION=3.99.2
+  LIBXFCE4UTIL_REQUIRED_VERSION=3.99.3
 
 
 
@@ -22748,23 +22748,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 3.99.2" >&5
-echo $ECHO_N "checking for libxfcegui4-1.0 >= 3.99.2... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 3.99.3" >&5
+echo $ECHO_N "checking for libxfcegui4-1.0 >= 3.99.3... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 3.99.2" ; then
+        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 3.99.3" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCEGUI4_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCEGUI4_CFLAGS... $ECHO_C" >&6
-            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 3.99.2"`
+            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCEGUI4_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCEGUI4_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCEGUI4_LIBS" >&5
 echo $ECHO_N "checking LIBXFCEGUI4_LIBS... $ECHO_C" >&6
-            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 3.99.2"`
+            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 3.99.3"`
             echo "$as_me:$LINENO: result: $LIBXFCEGUI4_LIBS" >&5
 echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
         else
@@ -22772,7 +22772,7 @@ echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
             LIBXFCEGUI4_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 3.99.2"`
+            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 3.99.3"`
             echo $LIBXFCEGUI4_PKG_ERRORS
         fi
 
@@ -22787,12 +22787,12 @@ echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCEGUI4_REQUIRED_VERSION=3.99.2
+  LIBXFCEGUI4_REQUIRED_VERSION=3.99.3
 
 
 
@@ -22851,23 +22851,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for xfce-mcs-manager >= 3.99.2" >&5
-echo $ECHO_N "checking for xfce-mcs-manager >= 3.99.2... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for xfce-mcs-manager >= 3.99.3" >&5
+echo $ECHO_N "checking for xfce-mcs-manager >= 3.99.3... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "xfce-mcs-manager >= 3.99.2" ; then
+        if $PKG_CONFIG --exists "xfce-mcs-manager >= 3.99.3" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking XFCE_MCS_MANAGER_CFLAGS" >&5
 echo $ECHO_N "checking XFCE_MCS_MANAGER_CFLAGS... $ECHO_C" >&6
-            XFCE_MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "xfce-mcs-manager >= 3.99.2"`
+            XFCE_MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "xfce-mcs-manager >= 3.99.3"`
             echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_CFLAGS" >&5
 echo "${ECHO_T}$XFCE_MCS_MANAGER_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking XFCE_MCS_MANAGER_LIBS" >&5
 echo $ECHO_N "checking XFCE_MCS_MANAGER_LIBS... $ECHO_C" >&6
-            XFCE_MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "xfce-mcs-manager >= 3.99.2"`
+            XFCE_MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "xfce-mcs-manager >= 3.99.3"`
             echo "$as_me:$LINENO: result: $XFCE_MCS_MANAGER_LIBS" >&5
 echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
         else
@@ -22875,7 +22875,7 @@ echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
             XFCE_MCS_MANAGER_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            XFCE_MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "xfce-mcs-manager >= 3.99.2"`
+            XFCE_MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "xfce-mcs-manager >= 3.99.3"`
             echo $XFCE_MCS_MANAGER_PKG_ERRORS
         fi
 
@@ -22890,12 +22890,12 @@ echo "${ECHO_T}$XFCE_MCS_MANAGER_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (xfce-mcs-manager >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (xfce-mcs-manager >= 3.99.2) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (xfce-mcs-manager >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (xfce-mcs-manager >= 3.99.3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  XFCE_MCS_MANAGER_REQUIRED_VERSION=3.99.2
+  XFCE_MCS_MANAGER_REQUIRED_VERSION=3.99.3
 
 
 
