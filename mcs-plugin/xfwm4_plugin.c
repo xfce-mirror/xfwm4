@@ -48,7 +48,7 @@
 #define CHANNEL "xfwm4"
 #define PLUGIN_NAME "xfwm4"
 
-#define DEFAULT_THEME "microdeck"
+#define DEFAULT_THEME "default"
 #define DEFAULT_KEY_THEME "default.keys"
 #define DEFAULT_LAYOUT "OTS|HMC"
 #define DEFAULT_ACTION "maximize"
