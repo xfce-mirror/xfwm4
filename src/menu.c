@@ -28,7 +28,7 @@
 #include <gtk/gtk.h>
 #include <X11/Xlib.h>
 #include <unistd.h>
-#include <libxfcegui4.h>
+#include <libxfcegui4/libxfcegui4.h>
 #include "menu.h"
 #include "debug.h"
 

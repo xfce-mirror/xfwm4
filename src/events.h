@@ -26,11 +26,11 @@
 #endif
 
 #include <X11/Xlib.h>
-#include <libxfcegui4.h>
-
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <glib.h>
+#include <libxfcegui4/libxfcegui4.h>
+
 
 void handleEvent(XEvent *);
 GtkToXEventFilterStatus xfwm4_event_filter(XEvent * xevent, gpointer data);

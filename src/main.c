@@ -27,7 +27,7 @@
 #include <gdk/gdkx.h>
 #include <glib.h>
 #include <X11/Xlib.h>
-#include <libxfcegui4.h>
+#include <libxfcegui4/libxfcegui4.h>
 #include "main.h"
 #include "events.h"
 #include "frame.h"

@@ -22,11 +22,11 @@
 #  include "config.h"
 #endif
 
+#include <X11/Xlib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <X11/Xlib.h>
-#include <libxfcegui4.h>
+#include <libxfcegui4/libxfcegui4.h>
 #include "main.h"
 #include "workspaces.h"
 #include "settings.h"

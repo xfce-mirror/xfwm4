@@ -25,19 +25,19 @@
 #  include "config.h"
 #endif
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xmd.h>
-#include <X11/cursorfont.h>
-#include <X11/extensions/shape.h>
-#include <gtk/gtk.h>
-#include <glib.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
-#include <libxfcegui4.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xmd.h>
+#include <X11/cursorfont.h>
+#include <X11/extensions/shape.h>
+#include <glib.h>
+#include <gtk/gtk.h>
+#include <libxfcegui4/libxfcegui4.h>
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"

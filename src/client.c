@@ -26,7 +26,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <glib.h>
-#include <libxfcegui4.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
 #include "client.h"
