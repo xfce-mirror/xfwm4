@@ -55,6 +55,7 @@ typedef enum
 
 static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
 {
+    unsigned int button;
     int xcurrent, ycurrent, x, y, total;
     int g = GrabSuccess;
     int clicks;
@@ -71,6 +72,7 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
         return XFWM_BUTTON_UNDEFINED;
     }
     
+    button = ev->xbutton.button;
     x = xcurrent = ev->xbutton.x_root;
     y = ycurrent = ev->xbutton.y_root;
     t0 = ev->xbutton.time;
@@ -84,7 +86,10 @@ static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
         total += 10;
         if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
         {
-            clicks++;
+            if (ev->xbutton.button == button)
+	    {
+	        clicks++;
+	    }
 	    t1 = ev->xbutton.time;
         }
         if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, ev))
