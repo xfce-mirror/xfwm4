@@ -1,0 +1,1927 @@
+2002-07-01  xfce
+
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	themes/Makefile.in, themes/quinx/Makefile.am,
+	themes/quinx/Makefile.in, themes/quinx/README,
+	themes/quinx/bottom-active.xpm, themes/quinx/bottom-inactive.xpm,
+	themes/quinx/bottom-left-active.xpm,
+	themes/quinx/bottom-left-inactive.xpm,
+	themes/quinx/bottom-right-active.xpm,
+	themes/quinx/bottom-right-inactive.xpm,
+	themes/quinx/close-active.xpm, themes/quinx/close-inactive.xpm,
+	themes/quinx/close-pressed.xpm, themes/quinx/hide-active.xpm,
+	themes/quinx/hide-inactive.xpm, themes/quinx/hide-pressed.xpm,
+	themes/quinx/left-active.xpm, themes/quinx/left-inactive.xpm,
+	themes/quinx/maximize-active.xpm,
+	themes/quinx/maximize-inactive.xpm,
+	themes/quinx/maximize-pressed.xpm, themes/quinx/menu-active.xpm,
+	themes/quinx/menu-inactive.xpm, themes/quinx/menu-pressed.xpm,
+	themes/quinx/right-active.xpm, themes/quinx/right-inactive.xpm,
+	themes/quinx/themerc, themes/quinx/title-1-active.xpm,
+	themes/quinx/title-1-inactive.xpm, themes/quinx/title-2-active.xpm,
+	themes/quinx/title-2-inactive.xpm, themes/quinx/title-3-active.xpm,
+	themes/quinx/title-3-inactive.xpm, themes/quinx/title-4-active.xpm,
+	themes/quinx/title-4-inactive.xpm, themes/quinx/title-5-active.xpm,
+	themes/quinx/title-5-inactive.xpm,
+	themes/quinx/top-left-active.xpm,
+	themes/quinx/top-left-inactive.xpm,
+	themes/quinx/top-right-active.xpm,
+	themes/quinx/top-right-inactive.xpm: Add new theme "quinx".
+
+2002-07-01  xfce
+
+	* themes/kde/themerc: Small theme tweaking
+
+2002-07-01  xfce
+
+	* src/debug.h: [no log message]
+
+2002-07-01  xfce
+
+	* src/client.c: Constraint window initial placement within the
+	margins.
+
+2002-06-30  xfce
+
+	* src/: settings.c, settings.h: [no log message]
+
+2002-06-30  xfce
+
+	* config.h.in, configure, example.xfwm4rc.in, defaults/defaults.in,
+	src/events.c: [no log message]
+
+2002-06-28  xfce
+
+	* src/events.c: [no log message]
+
+2002-06-28  xfce
+
+	* src/events.c: [no log message]
+
+2002-06-28  xfce
+
+	* config.h.in, configure, src/events.c: [no log message]
+
+2002-06-28  xfce
+
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	themes/Makefile.in, themes/r9x/Makefile.am, themes/r9x/Makefile.in,
+	themes/r9x/README, themes/r9x/bottom-active.xpm,
+	themes/r9x/bottom-inactive.xpm, themes/r9x/bottom-left-active.xpm,
+	themes/r9x/bottom-left-inactive.xpm,
+	themes/r9x/bottom-right-active.xpm,
+	themes/r9x/bottom-right-inactive.xpm, themes/r9x/close-active.xpm,
+	themes/r9x/close-inactive.xpm, themes/r9x/close-pressed.xpm,
+	themes/r9x/hide-active.xpm, themes/r9x/hide-inactive.xpm,
+	themes/r9x/hide-pressed.xpm, themes/r9x/left-active.xpm,
+	themes/r9x/left-inactive.xpm, themes/r9x/maximize-active.xpm,
+	themes/r9x/maximize-inactive.xpm, themes/r9x/maximize-pressed.xpm,
+	themes/r9x/menu-active.xpm, themes/r9x/menu-inactive.xpm,
+	themes/r9x/menu-pressed.xpm, themes/r9x/right-active.xpm,
+	themes/r9x/right-inactive.xpm, themes/r9x/shade-active.xpm,
+	themes/r9x/shade-inactive.xpm, themes/r9x/shade-pressed.xpm,
+	themes/r9x/stick-active.xpm, themes/r9x/stick-inactive.xpm,
+	themes/r9x/stick-pressed.xpm, themes/r9x/themerc,
+	themes/r9x/title-1-active.xpm, themes/r9x/title-1-inactive.xpm,
+	themes/r9x/title-2-active.xpm, themes/r9x/title-2-inactive.xpm,
+	themes/r9x/title-3-active.xpm, themes/r9x/title-3-inactive.xpm,
+	themes/r9x/title-4-active.xpm, themes/r9x/title-4-inactive.xpm,
+	themes/r9x/title-5-active.xpm, themes/r9x/title-5-inactive.xpm,
+	themes/r9x/top-left-active.xpm, themes/r9x/top-left-inactive.xpm,
+	themes/r9x/top-right-active.xpm, themes/r9x/top-right-inactive.xpm:
+	Add new theme "r9x" ported from a theme for Enlightenment e16
+
+2002-06-26  xfce
+
+	* src/client.c: Check struts at clientUnframe()
+
+2002-06-26  xfce
+
+	* example.xfwm4rc.in, defaults/defaults.in: Change default title
+	alignment fir default theme (kindaker) to left instead of right.
+
+2002-06-26  xfce
+
+	* src/: client.c, events.c: Block stacking request for
+	WINDOW_DESKTOP type windows.
+
+2002-06-26  xfce
+
+	* src/client.c: Code cleanup
+
+2002-06-26  xfce
+
+	* src/: client.c, client.h, events.c, hints.c, hints.h: Add support
+	for initial_state
+
+2002-06-25  xfce
+
+	* src/: client.c, events.c, misc.c, workspaces.c: Remove XSync()
+
+2002-06-24  xfce
+
+	* src/client.c: [no log message]
+
+2002-06-23  xfce
+
+	* src/client.c: Improve stacking for ROX.
+
+2002-06-23  xfce
+
+	* src/client.c: Include non visible windows in stack computation
+	(with the hope that fixes the bug reported by Jasper)
+
+2002-06-22  xfce
+
+	* themes/slick/themerc: [no log message]
+
+2002-06-22  xfce
+
+	* themes/slick/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: Theme tweaking...
+
+2002-06-22  xfce
+
+	* themes/slick/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	right-active.xpm, right-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Theme tweaking
+
+2002-06-21  xfce
+
+	* themes/platinum/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	right-active.xpm, right-inactive.xpm, themerc,
+	top-right-active.xpm, top-right-inactive.xpm: Theme tweaking...
+
+2002-06-20  xfce
+
+	* themes/gorilla/themerc: Theme tweaking.
+
+2002-06-19  xfce
+
+	* themes/redmond/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
+	maximize-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: [no log message]
+
+2002-06-19  xfce
+
+	* themes/redmond/menu-pressed.xpm: [no log message]
+
+2002-06-19  xfce
+
+	* themes/redmond/: close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, themerc: Theme tweaking
+
+2002-06-19  xfce
+
+	* themes/redmond/: menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, themerc: Theme tweaking
+
+2002-06-19  xfce
+
+	* src/keyboard.c: [no log message]
+
+2002-06-18  xfce
+
+	* example.xfwm4rc.in, defaults/defaults.in, src/client.c,
+	src/events.c, src/gtktoxevent.c, src/hints.c, src/keyboard.c,
+	src/keyboard.h, src/main.c, src/menu.c: Change key modifiers' name,
+	use Alt, Meta instead of Mod1 and Mod2 Other stuff (sorry, I can't
+	remember right now :-( )
+
+2002-06-17  xfce
+
+	* src/client.c: Add margins for in clientConstraintPos()
+
+2002-06-17  xfce
+
+	* src/client.c: Revert last change
+
+2002-06-17  xfce
+
+	* src/client.c: Use margins in clientConstraintPos()
+
+2002-06-17  xfce
+
+	* src/main.c: Install system colormap as widget colormap
+
+2002-06-14  xfce
+
+	* src/: client.c, client.h, main.c: Add a threshold for client
+	visibility
+
+2002-06-14  xfce
+
+	* themes/gorilla/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	close-active.xpm, close-inactive.xpm, close-pressed.xpm,
+	hide-active.xpm, hide-inactive.xpm, hide-pressed.xpm,
+	left-active.xpm, left-inactive.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, maximize-pressed.xpm, menu-active.xpm,
+	menu-inactive.xpm, menu-pressed.xpm, right-active.xpm,
+	right-inactive.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-06-13  xfce
+
+	* src/: Makefile.am, Makefile.in, client.c, menu.c: Various
+	cleanups
+
+2002-06-13  xfce
+
+	* src/: client.c, events.c, menu.c, menu.h: Grab keyboard only when
+	absolutely necessary (in clientMove(), clientResize()) Test result
+	of menu_popup() and repaint titlebar accordingly
+
+2002-06-13  xfce
+
+	* themes/gorilla/: bottom-inactive.xpm, bottom-left-inactive.xpm,
+	bottom-right-inactive.xpm, close-inactive.xpm, hide-inactive.xpm,
+	left-inactive.xpm, maximize-inactive.xpm, menu-inactive.xpm,
+	right-inactive.xpm, shade-inactive.xpm, stick-inactive.xpm,
+	title-1-inactive.xpm, title-2-inactive.xpm, title-3-inactive.xpm,
+	title-4-inactive.xpm, title-5-inactive.xpm, top-left-inactive.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-06-12  xfce
+
+	* themes/gorilla/: bottom-inactive.xpm, bottom-left-inactive.xpm,
+	bottom-right-inactive.xpm, left-inactive.xpm, title-1-inactive.xpm,
+	title-2-inactive.xpm, title-3-inactive.xpm, title-4-inactive.xpm,
+	title-5-inactive.xpm, top-left-inactive.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-06-12  xfce
+
+	* themes/gorilla/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	left-inactive.xpm, right-active.xpm, right-inactive.xpm,
+	title-3-inactive.xpm, top-right-active.xpm, top-right-inactive.xpm:
+	[no log message]
+
+2002-06-12  xfce
+
+	* themes/gorilla/: bottom-inactive.xpm, bottom-left-inactive.xpm,
+	bottom-right-inactive.xpm, close-inactive.xpm, hide-inactive.xpm,
+	left-inactive.xpm, maximize-inactive.xpm, menu-inactive.xpm,
+	right-inactive.xpm, shade-inactive.xpm, stick-inactive.xpm,
+	title-1-inactive.xpm, title-2-inactive.xpm, title-3-inactive.xpm,
+	title-4-inactive.xpm, title-5-inactive.xpm, top-left-inactive.xpm,
+	top-right-inactive.xpm: [no log message]
+
+2002-06-12  xfce
+
+	* src/: client.c, client.h, events.c: Improve window gravity
+	management
+
+2002-06-11  xfce
+
+	* depcomp: Add depcomp for automake 1.6
+
+2002-06-11  xfce
+
+	* Makefile.in, aclocal.m4, compile, configure, configure.in,
+	missing, xfwm4.spec.in, defaults/Makefile.in, src/Makefile.am,
+	src/Makefile.in, themes/Makefile.am, themes/Makefile.in,
+	themes/agua/Makefile.in, themes/coldsteel/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/gorilla/Makefile.am,
+	themes/gorilla/Makefile.in, themes/gorilla/README,
+	themes/gorilla/bottom-active.xpm,
+	themes/gorilla/bottom-inactive.xpm,
+	themes/gorilla/bottom-left-active.xpm,
+	themes/gorilla/bottom-left-inactive.xpm,
+	themes/gorilla/bottom-right-active.xpm,
+	themes/gorilla/bottom-right-inactive.xpm,
+	themes/gorilla/close-active.xpm, themes/gorilla/close-inactive.xpm,
+	themes/gorilla/close-pressed.xpm, themes/gorilla/hide-active.xpm,
+	themes/gorilla/hide-inactive.xpm, themes/gorilla/hide-pressed.xpm,
+	themes/gorilla/left-active.xpm, themes/gorilla/left-inactive.xpm,
+	themes/gorilla/maximize-active.xpm,
+	themes/gorilla/maximize-inactive.xpm,
+	themes/gorilla/maximize-pressed.xpm,
+	themes/gorilla/menu-active.xpm, themes/gorilla/menu-inactive.xpm,
+	themes/gorilla/menu-pressed.xpm, themes/gorilla/right-active.xpm,
+	themes/gorilla/right-inactive.xpm, themes/gorilla/shade-active.xpm,
+	themes/gorilla/shade-inactive.xpm,
+	themes/gorilla/shade-pressed.xpm, themes/gorilla/stick-active.xpm,
+	themes/gorilla/stick-inactive.xpm,
+	themes/gorilla/stick-pressed.xpm, themes/gorilla/themerc,
+	themes/gorilla/title-1-active.xpm,
+	themes/gorilla/title-1-inactive.xpm,
+	themes/gorilla/title-2-active.xpm,
+	themes/gorilla/title-2-inactive.xpm,
+	themes/gorilla/title-3-active.xpm,
+	themes/gorilla/title-3-inactive.xpm,
+	themes/gorilla/title-4-active.xpm,
+	themes/gorilla/title-4-inactive.xpm,
+	themes/gorilla/title-5-active.xpm,
+	themes/gorilla/title-5-inactive.xpm,
+	themes/gorilla/top-left-active.xpm,
+	themes/gorilla/top-left-inactive.xpm,
+	themes/gorilla/top-right-active.xpm,
+	themes/gorilla/top-right-inactive.xpm, themes/gtk/Makefile.in,
+	themes/kde/Makefile.in, themes/kindaker/Makefile.in,
+	themes/linea/Makefile.in, themes/mofit/Makefile.in,
+	themes/next/Makefile.in, themes/oroborus/Makefile.in,
+	themes/platinum/Makefile.in, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.in, themes/slick/Makefile.in,
+	themes/slimline/Makefile.in, themes/trench/Makefile.in,
+	themes/xfce/Makefile.in: Add new theme "gorilla" inspired by
+	Sawfish and Metacity themes and migrate to autoconf 1.6
+
+2002-06-11  xfce
+
+	* src/client.c: Improve NET type detection for apps/windows that do
+	not support the NET standards
+
+2002-06-11  xfce
+
+	* src/client.c: Set NET_* properties while the server is grabbed
+	when framing clients (should make the framing faster).
+
+2002-06-10  xfce
+
+	* themes/slick/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm: [no log
+	message]
+
+2002-06-10  xfce
+
+	* themes/slick/: bottom-right-active.xpm,
+	bottom-right-inactive.xpm, right-active.xpm, right-inactive.xpm,
+	top-right-active.xpm, top-right-inactive.xpm: [no log message]
+
+2002-06-10  xfce
+
+	* themes/slick/bottom-left-active.xpm: [no log message]
+
+2002-06-10  xfce
+
+	* themes/slick/: bottom-left-active.xpm, bottom-left-inactive.xpm,
+	left-active.xpm, left-inactive.xpm, title-1-active.xpm,
+	title-1-inactive.xpm, title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm, title-5-active.xpm, title-5-inactive.xpm,
+	top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Slick revisited
+
+2002-06-10  xfce
+
+	* themes/slick/: bottom-active.xpm, bottom-inactive.xpm,
+	bottom-left-active.xpm, bottom-left-inactive.xpm,
+	bottom-right-active.xpm, bottom-right-inactive.xpm,
+	left-active.xpm, left-inactive.xpm, right-active.xpm,
+	right-inactive.xpm, title-1-active.xpm, title-1-inactive.xpm,
+	title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
+	title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm,
+	title-5-active.xpm, title-5-inactive.xpm, top-left-active.xpm,
+	top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Slick revisited
+
+2002-06-10  xfce
+
+	* src/: client.c, hints.c: Grab server when framing/unframing all
+	clients at startup/exit
+
+2002-06-10  xfce
+
+	* src/gtktoxevent.c: Fix a possible crash when popEventFilter is
+	called during filter stack processing
+
+2002-06-05  xfce
+
+	* src/: client.c, client.h, hints.c, hints.h, main.c: Fix a problem
+	with StarOffice6.0/OpenOffice1.0
+
+2002-06-05  xfce
+
+	* src/client.c: [no log message]
+
+2002-06-05  xfce
+
+	* src/: client.c, client.h: Set various hints *after* first map of
+	window
+
+2002-06-04  xfce
+
+	* src/events.c: Drag'n drop of windows between workspaces in GNOME
+	Workspace Switcher works now.
+
+2002-06-04  xfce
+
+	* Makefile.am, Makefile.in: Fix a problem with example.xfwm4rc
+	genaration
+
+2002-06-04  xfce
+
+	* AUTHORS: [no log message]
+
+2002-06-04  xfce
+
+	* themes/kindaker/: README, close-pressed.xpm, hide-pressed.xpm,
+	maximize-pressed.xpm, menu-pressed.xpm, shade-pressed.xpm,
+	stick-pressed.xpm: Improve rendering
+
+2002-06-03  xfce
+
+	* example.xfwm4rc.in, xfwm4.spec.in, defaults/defaults.in: Change
+	default theme to "kindaker"
+
+2002-06-03  xfce
+
+	* themes/kindaker/README: Add names of the original Keramik authors
+	for credits in the README file.
+
+2002-06-03  xfce
+
+	* themes/kindaker/themerc: Change inactive title color to dark blue
+	instead of black for "kindaker" theme.
+
+2002-06-02  xfce
+
+	* src/: client.c, client.h, hints.c, hints.h, keyboard.c,
+	parserc.c, settings.c: [no log message]
+
+2002-06-01  xfce
+
+	* themes/: agua/README, coldsteel/README, crux/README,
+	cruxish/README, eazel-blue/README, gtk/README, kde/README,
+	kindaker/README, linea/README, mofit/README, next/README,
+	oroborus/README, platinum/README, redmond/README, redmondxp/README,
+	slick/README, slimline/README, trench/README, xfce/README: Add
+	README files
+
+2002-06-01  xfce
+
+	* configure, configure.in, xfwm4.spec.in, src/client.c,
+	src/hints.c, themes/Makefile.am, themes/Makefile.in,
+	themes/agua/Makefile.am, themes/agua/Makefile.in,
+	themes/coldsteel/Makefile.am, themes/coldsteel/Makefile.in,
+	themes/crux/Makefile.am, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.am, themes/cruxish/Makefile.in,
+	themes/eazel-blue/Makefile.am, themes/eazel-blue/Makefile.in,
+	themes/gtk/Makefile.am, themes/gtk/Makefile.in,
+	themes/kde/Makefile.am, themes/kde/Makefile.in,
+	themes/kindaker/Makefile.am, themes/kindaker/Makefile.in,
+	themes/kindaker/bottom-active.xpm,
+	themes/kindaker/bottom-inactive.xpm,
+	themes/kindaker/bottom-left-active.xpm,
+	themes/kindaker/bottom-left-inactive.xpm,
+	themes/kindaker/bottom-right-active.xpm,
+	themes/kindaker/bottom-right-inactive.xpm,
+	themes/kindaker/close-active.xpm,
+	themes/kindaker/close-inactive.xpm,
+	themes/kindaker/close-pressed.xpm, themes/kindaker/hide-active.xpm,
+	themes/kindaker/hide-inactive.xpm,
+	themes/kindaker/hide-pressed.xpm, themes/kindaker/left-active.xpm,
+	themes/kindaker/left-inactive.xpm,
+	themes/kindaker/maximize-active.xpm,
+	themes/kindaker/maximize-inactive.xpm,
+	themes/kindaker/maximize-pressed.xpm,
+	themes/kindaker/menu-active.xpm, themes/kindaker/menu-inactive.xpm,
+	themes/kindaker/menu-pressed.xpm, themes/kindaker/right-active.xpm,
+	themes/kindaker/right-inactive.xpm,
+	themes/kindaker/shade-active.xpm,
+	themes/kindaker/shade-inactive.xpm,
+	themes/kindaker/shade-pressed.xpm,
+	themes/kindaker/stick-active.xpm,
+	themes/kindaker/stick-inactive.xpm,
+	themes/kindaker/stick-pressed.xpm, themes/kindaker/themerc,
+	themes/kindaker/title-1-active.xpm,
+	themes/kindaker/title-1-inactive.xpm,
+	themes/kindaker/title-2-active.xpm,
+	themes/kindaker/title-2-inactive.xpm,
+	themes/kindaker/title-3-active.xpm,
+	themes/kindaker/title-3-inactive.xpm,
+	themes/kindaker/title-4-active.xpm,
+	themes/kindaker/title-4-inactive.xpm,
+	themes/kindaker/title-5-active.xpm,
+	themes/kindaker/title-5-inactive.xpm,
+	themes/kindaker/top-left-active.xpm,
+	themes/kindaker/top-left-inactive.xpm,
+	themes/kindaker/top-right-active.xpm,
+	themes/kindaker/top-right-inactive.xpm, themes/linea/Makefile.am,
+	themes/linea/Makefile.in, themes/mofit/Makefile.am,
+	themes/mofit/Makefile.in, themes/next/Makefile.am,
+	themes/next/Makefile.in, themes/oroborus/Makefile.am,
+	themes/oroborus/Makefile.in, themes/platinum/Makefile.am,
+	themes/platinum/Makefile.in, themes/redmond/Makefile.am,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.am,
+	themes/redmondxp/Makefile.in, themes/slick/Makefile.am,
+	themes/slick/Makefile.in, themes/slimline/Makefile.am,
+	themes/slimline/Makefile.in, themes/trench/Makefile.am,
+	themes/trench/Makefile.in, themes/xfce/Makefile.am,
+	themes/xfce/Makefile.in: Add new theme "kindaker" based on KDE
+	theme "keramik", add a README file for all themes.
+
+2002-05-31  xfce
+
+	* src/: client.c, hints.c: [no log message]
+
+2002-05-31  xfce
+
+	* src/client.c: [no log message]
+
+2002-05-31  xfce
+
+	* themes/next/: maximize-pressed.xpm, shade-pressed.xpm: [no log
+	message]
+
+2002-05-28  xfce
+
+	* src/Makefile.am, src/Makefile.in, themes/Makefile.in,
+	themes/agua/Makefile.in, themes/coldsteel/Makefile.in,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.in,
+	themes/eazel-blue/Makefile.in, themes/gtk/Makefile.in,
+	themes/kde/Makefile.in, themes/linea/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/oroborus/Makefile.in, themes/platinum/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/slick/Makefile.in, themes/slimline/Makefile.in,
+	themes/trench/Makefile.in, themes/xfce/Makefile.in: Add
+	-DG_DISABLE_DEPRECATED in Makefile.am
+
+2002-05-27  xfce
+
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	themes/Makefile.in, themes/slick/Makefile.am,
+	themes/slick/Makefile.in, themes/slick/bottom-active.xpm,
+	themes/slick/bottom-inactive.xpm,
+	themes/slick/bottom-left-active.xpm,
+	themes/slick/bottom-left-inactive.xpm,
+	themes/slick/bottom-right-active.xpm,
+	themes/slick/bottom-right-inactive.xpm,
+	themes/slick/close-active.xpm, themes/slick/close-inactive.xpm,
+	themes/slick/close-pressed.xpm, themes/slick/hide-active.xpm,
+	themes/slick/hide-inactive.xpm, themes/slick/hide-pressed.xpm,
+	themes/slick/left-active.xpm, themes/slick/left-inactive.xpm,
+	themes/slick/maximize-active.xpm,
+	themes/slick/maximize-inactive.xpm,
+	themes/slick/maximize-pressed.xpm, themes/slick/menu-active.xpm,
+	themes/slick/menu-inactive.xpm, themes/slick/menu-pressed.xpm,
+	themes/slick/right-active.xpm, themes/slick/right-inactive.xpm,
+	themes/slick/shade-active.xpm, themes/slick/shade-inactive.xpm,
+	themes/slick/shade-pressed.xpm, themes/slick/stick-active.xpm,
+	themes/slick/stick-inactive.xpm, themes/slick/stick-pressed.xpm,
+	themes/slick/themerc, themes/slick/title-1-active.xpm,
+	themes/slick/title-1-inactive.xpm, themes/slick/title-2-active.xpm,
+	themes/slick/title-2-inactive.xpm, themes/slick/title-3-active.xpm,
+	themes/slick/title-3-inactive.xpm, themes/slick/title-4-active.xpm,
+	themes/slick/title-4-inactive.xpm, themes/slick/title-5-active.xpm,
+	themes/slick/title-5-inactive.xpm,
+	themes/slick/top-left-active.xpm,
+	themes/slick/top-left-inactive.xpm,
+	themes/slick/top-right-active.xpm,
+	themes/slick/top-right-inactive.xpm: Add new theme
+
+2002-05-26  xfce
+
+	* configure, configure.in, xfwm4.spec.in, themes/Makefile.am,
+	themes/Makefile.in, themes/eazel-blue/Makefile.am,
+	themes/eazel-blue/Makefile.in, themes/eazel-blue/bottom-active.xpm,
+	themes/eazel-blue/bottom-inactive.xpm,
+	themes/eazel-blue/bottom-left-active.xpm,
+	themes/eazel-blue/bottom-left-inactive.xpm,
+	themes/eazel-blue/bottom-right-active.xpm,
+	themes/eazel-blue/bottom-right-inactive.xpm,
+	themes/eazel-blue/close-active.xpm,
+	themes/eazel-blue/close-inactive.xpm,
+	themes/eazel-blue/close-pressed.xpm,
+	themes/eazel-blue/hide-active.xpm,
+	themes/eazel-blue/hide-inactive.xpm,
+	themes/eazel-blue/hide-pressed.xpm,
+	themes/eazel-blue/left-active.xpm,
+	themes/eazel-blue/left-inactive.xpm,
+	themes/eazel-blue/maximize-active.xpm,
+	themes/eazel-blue/maximize-inactive.xpm,
+	themes/eazel-blue/maximize-pressed.xpm,
+	themes/eazel-blue/menu-active.xpm,
+	themes/eazel-blue/menu-inactive.xpm,
+	themes/eazel-blue/menu-pressed.xpm,
+	themes/eazel-blue/right-active.xpm,
+	themes/eazel-blue/right-inactive.xpm,
+	themes/eazel-blue/shade-active.xpm,
+	themes/eazel-blue/shade-inactive.xpm,
+	themes/eazel-blue/shade-pressed.xpm,
+	themes/eazel-blue/stick-active.xpm,
+	themes/eazel-blue/stick-inactive.xpm,
+	themes/eazel-blue/stick-pressed.xpm, themes/eazel-blue/themerc,
+	themes/eazel-blue/title-1-active.xpm,
+	themes/eazel-blue/title-1-inactive.xpm,
+	themes/eazel-blue/title-2-active.xpm,
+	themes/eazel-blue/title-2-inactive.xpm,
+	themes/eazel-blue/title-3-active.xpm,
+	themes/eazel-blue/title-3-inactive.xpm,
+	themes/eazel-blue/title-4-active.xpm,
+	themes/eazel-blue/title-4-inactive.xpm,
+	themes/eazel-blue/title-5-active.xpm,
+	themes/eazel-blue/title-5-inactive.xpm,
+	themes/eazel-blue/top-left-active.xpm,
+	themes/eazel-blue/top-left-inactive.xpm,
+	themes/eazel-blue/top-right-active.xpm,
+	themes/eazel-blue/top-right-inactive.xpm: Add new theme (ported
+	from sawfish)
+
+2002-05-25  xfce
+
+	* xfwm4.spec.in: [no log message]
+
+2002-05-25  xfce
+
+	* xfwm4.spec.in: [no log message]
+
+2002-05-24  xfce
+
+	* xfwm4.spec.in: [no log message]
+
+2002-05-24  xfce
+
+	* Makefile.am, Makefile.in, xfwm4.spec.in, src/Makefile.in,
+	themes/Makefile.in, themes/agua/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/gtk/Makefile.in,
+	themes/kde/Makefile.in, themes/linea/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/oroborus/Makefile.in, themes/platinum/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/slimline/Makefile.in, themes/trench/Makefile.in,
+	themes/xfce/Makefile.in: Make separate noarch rpm for themes
+
+2002-05-24  xfce
+
+	* Makefile.am, Makefile.in, src/.indent.pro, src/Makefile.in,
+	src/client.c, src/client.h, src/events.c, src/events.h,
+	src/frame.c, src/gtk_style.c, src/gtk_style.h, src/gtktoxevent.c,
+	src/gtktoxevent.h, src/hints.c, src/hints.h, src/keyboard.c,
+	src/main.c, src/menu.c, src/menu.h, src/misc.c, src/misc.h,
+	src/parserc.c, src/parserc.h, src/pixmap.c, src/settings.c,
+	src/settings.h, src/workspaces.c, src/workspaces.h,
+	themes/Makefile.in, themes/agua/Makefile.in,
+	themes/coldsteel/Makefile.in, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.in, themes/gtk/Makefile.in,
+	themes/kde/Makefile.in, themes/linea/Makefile.in,
+	themes/mofit/Makefile.in, themes/next/Makefile.in,
+	themes/oroborus/Makefile.in, themes/platinum/Makefile.in,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
+	themes/slimline/Makefile.in, themes/trench/Makefile.in,
+	themes/xfce/Makefile.in: As suggested by JAsper, adjust .indent.pro
+	options for my own taste and apply on sources.
+
+2002-05-24  xfce
+
+	* AUTHORS, Makefile.am, Makefile.in, autogen.sh, configure,
+	configure.in, example.xfwm4rc.in, xfwm4.spec, xfwm4.spec.in,
+	defaults/Makefile.am, defaults/Makefile.in, defaults/defaults.in,
+	src/Makefile.am, src/Makefile.in, themes/Makefile.in,
+	themes/agua/Makefile.am, themes/agua/Makefile.in,
+	themes/coldsteel/Makefile.am, themes/coldsteel/Makefile.in,
+	themes/crux/Makefile.am, themes/crux/Makefile.in,
+	themes/cruxish/Makefile.am, themes/cruxish/Makefile.in,
+	themes/gtk/Makefile.am, themes/gtk/Makefile.in,
+	themes/kde/Makefile.am, themes/kde/Makefile.in,
+	themes/linea/Makefile.am, themes/linea/Makefile.in,
+	themes/mofit/Makefile.am, themes/mofit/Makefile.in,
+	themes/next/Makefile.am, themes/next/Makefile.in,
+	themes/oroborus/Makefile.am, themes/oroborus/Makefile.in,
+	themes/platinum/Makefile.am, themes/platinum/Makefile.in,
+	themes/redmond/Makefile.am, themes/redmond/Makefile.in,
+	themes/redmondxp/Makefile.am, themes/redmondxp/Makefile.in,
+	themes/slimline/Makefile.am, themes/slimline/Makefile.in,
+	themes/trench/Makefile.am, themes/trench/Makefile.in,
+	themes/xfce/Makefile.am, themes/xfce/Makefile.in: Improve build
+	process, add automatic xfwm4.spec generation
+
+2002-05-23  xfce
+
+	* defaults/: Makefile.am, Makefile.in: [no log message]
+
+2002-05-23  xfce
+
+	* acconfig.h, config.h.in, configure, configure.in,
+	src/Makefile.am, src/Makefile.in: [no log message]
+
+2002-05-23  xfce
+
+	* Makefile.am, Makefile.in, acconfig.h, config.h.in, configure,
+	configure.in, example.xfwm4rc, example.xfwm4rc.in, xfwm4.spec,
+	defaults/Makefile.am, defaults/Makefile.in, defaults/defaults.in,
+	src/Makefile.in, themes/Makefile.in, themes/agua/Makefile.am,
+	themes/agua/Makefile.in, themes/coldsteel/Makefile.am,
+	themes/coldsteel/Makefile.in, themes/crux/Makefile.am,
+	themes/crux/Makefile.in, themes/cruxish/Makefile.am,
+	themes/cruxish/Makefile.in, themes/gtk/Makefile.am,
+	themes/gtk/Makefile.in, themes/kde/Makefile.am,
+	themes/kde/Makefile.in, themes/linea/Makefile.am,
+	themes/linea/Makefile.in, themes/mofit/Makefile.am,
+	themes/mofit/Makefile.in, themes/next/Makefile.am,
+	themes/next/Makefile.in, themes/oroborus/Makefile.am,
+	themes/oroborus/Makefile.in, themes/platinum/Makefile.am,
+	themes/platinum/Makefile.in, themes/redmond/Makefile.am,
+	themes/redmond/Makefile.in, themes/redmondxp/Makefile.am,
+	themes/redmondxp/Makefile.in, themes/slimline/Makefile.am,
+	themes/slimline/Makefile.in, themes/trench/Makefile.am,
+	themes/trench/Makefile.in, themes/xfce/Makefile.am,
+	themes/xfce/Makefile.in: Clean up build/install procedure and add a
+	spec file so we have now a rpm
+
+2002-05-22  xfce
+
+	* src/: client.c, client.c: [no log message]
+
+2002-05-22  xfce
+
+	* src/: client.c, client.h, frame.c: [no log message]
+
+2002-05-22  xfce
+
+	* src/: client.c, frame.c, hints.c: [no log message]
+
+2002-05-22  xfce
+
+	* src/: client.c, client.h, events.c, frame.c, hints.c, hints.h:
+	Add net_wm_state_fullscreen support
+
+2002-05-22  xfce
+
+	* src/gtktoxevent.c: Disable double buffereing on internal gtk
+	widget
+
+2002-05-21  xfce
+
+	* src/menu.c: [no log message]
+
+2002-05-20  xfce
+
+	* src/frame.c: Whoops.
+
+2002-05-20  xfce
+
+	* src/frame.c: Huh ?
+
+2002-05-19  xfce
+
+	* src/: client.c, events.c, hints.c, hints.h, main.c, misc.c:
+	Improve responsiveness when sigterm/sigkill is received
+
+2002-05-18  xfce
+
+	* src/: events.c, gtk_style.c, gtk_style.h, menu.c: Make sure it
+	compiles without warnings when adding -DGTK_DISABLE_DEPRECATED
+
+2002-05-17  xfce
+
+	* src/: client.c, client.h: Improve focus switching in case of
+	unmap/destroy notify
+
+2002-05-17  xfce
+
+	* src/events.c: [no log message]
+
+2002-05-17  xfce
+
+	* README, example.xfwm4rc, defaults/defaults.in, src/client.c,
+	src/client.h, src/hints.c, src/hints.h: Change focus handling to be
+	faster and use less memory
+
+2002-05-16  xfce
+
+	* src/: client.c, client.h, events.c, hints.c, hints.h: Improve
+	focus handling by using GNOME protocol, ICCCM and wm hints (in this
+	order)
+
+2002-05-15  xfce
+
+	* README: Update README file
+
+2002-05-15  xfce
+
+	* example.xfwm4rc, defaults/defaults.in: Change defaults
+
+2002-05-15  xfce
+
+	* src/pixmap.c: Add colorcloseness and colormap to loadPixmap
+	attributes
+
+2002-05-14  xfce
+
+	* src/client.c: [no log message]
+
+2002-05-14  xfce
+
+	* src/: client.c, client.h, events.c, menu.c, menu.h: Rearrange
+	menu and add a new option "hide all others"
+
+2002-05-14  xfce
+
+	* themes/crux/: menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm: Change menu button for the crux theme
+
+2002-05-14  xfce
+
+	* src/client.c: Revert to decorating net_wm_window_type_menu
+	windows
+
+2002-05-14  xfce
+
+	* src/client.c: [no log message]
+
+2002-05-13  xfce
+
+	* src/: client.c, client.h, events.c, hints.c, hints.h, main.c: Add
+	support for colormaps handling/notification
+
+2002-05-12  xfce
+
+	* src/main.c, src/settings.c, themes/coldsteel/themerc,
+	themes/cruxish/themerc, themes/gtk/themerc, themes/kde/themerc,
+	themes/linea/themerc, themes/next/themerc, themes/oroborus/themerc,
+	themes/platinum/themerc, themes/redmond/themerc,
+	themes/slimline/themerc, themes/trench/themerc,
+	themes/xfce/themerc: Add the ability to override gtk colors from
+	within themerc or user pref.
+
+2002-05-12  xfce
+
+	* src/: client.c, hints.c, hints.h, main.c, workspaces.c: Fix the
+	problem with Kdesktop not starting properly (the problem was with
+	net_workarea property)
+
+2002-05-12  xfce
+
+	* src/hints.c: Set net_wm_desktop as startup although it prevents
+	kdesktop to start properly (which is still a mystery for me)
+
+2002-05-12  xfce
+
+	* src/: client.c, frame.c, pixmap.c, pixmap.h: Fix a bug introduced
+	earlier today
+
+2002-05-11  xfce
+
+	* example.gtkrc-2.0: [no log message]
+
+2002-05-11  xfce
+
+	* example.gtkrc-2.0: Add an example of gtkrc-2.0 file for xfwm4
+
+2002-05-11  xfce
+
+	* README, configure, configure.in, src/frame.c, src/hints.c,
+	src/pixmap.c, src/pixmap.h, src/settings.c, themes/Makefile.am,
+	themes/Makefile.in, themes/agua/themerc, themes/coldsteel/themerc,
+	themes/crux/Makefile.am, themes/crux/Makefile.in,
+	themes/crux/bottom-active.xpm, themes/crux/bottom-inactive.xpm,
+	themes/crux/bottom-left-active.xpm,
+	themes/crux/bottom-left-inactive.xpm,
+	themes/crux/bottom-right-active.xpm,
+	themes/crux/bottom-right-inactive.xpm,
+	themes/crux/button-active.xpm, themes/crux/button-inactive.xpm,
+	themes/crux/button-pressed.xpm, themes/crux/close-active.xpm,
+	themes/crux/close-inactive.xpm, themes/crux/close-pressed.xpm,
+	themes/crux/hide-active.xpm, themes/crux/hide-inactive.xpm,
+	themes/crux/hide-pressed.xpm, themes/crux/left-active.xpm,
+	themes/crux/left-inactive.xpm, themes/crux/maximize-active.xpm,
+	themes/crux/maximize-inactive.xpm,
+	themes/crux/maximize-pressed.xpm, themes/crux/menu-active.xpm,
+	themes/crux/menu-inactive.xpm, themes/crux/menu-pressed.xpm,
+	themes/crux/right-active.xpm, themes/crux/right-inactive.xpm,
+	themes/crux/shade-active.xpm, themes/crux/shade-inactive.xpm,
+	themes/crux/shade-pressed.xpm, themes/crux/stick-active.xpm,
+	themes/crux/stick-inactive.xpm, themes/crux/stick-pressed.xpm,
+	themes/crux/themerc, themes/crux/title-1-active.xpm,
+	themes/crux/title-1-inactive.xpm, themes/crux/title-2-active.xpm,
+	themes/crux/title-2-inactive.xpm, themes/crux/title-3-active.xpm,
+	themes/crux/title-3-inactive.xpm, themes/crux/title-4-active.xpm,
+	themes/crux/title-4-inactive.xpm, themes/crux/title-5-active.xpm,
+	themes/crux/title-5-inactive.xpm, themes/crux/top-left-active.xpm,
+	themes/crux/top-left-inactive.xpm,
+	themes/crux/top-right-active.xpm,
+	themes/crux/top-right-inactive.xpm, themes/cruxish/themerc,
+	themes/gtk/themerc, themes/kde/shade-active.xpm,
+	themes/kde/shade-inactive.xpm, themes/kde/shade-pressed.xpm,
+	themes/kde/themerc, themes/kde/title-3-active.xpm,
+	themes/linea/themerc, themes/next/themerc,
+	themes/oroborus/stick-inactive.xpm, themes/oroborus/themerc,
+	themes/platinum/themerc, themes/redmond/themerc,
+	themes/slimline/themerc, themes/trench/themerc,
+	themes/xfce/themerc: Enhance speed, fix bug with window name
+	property vs. pango and UTF8, add crux theme from Sawfish (GNOME)
+	window manager.
+
+2002-05-08  xfce
+
+	* themes/kde/menu-pressed.xpm: [no log message]
+
+2002-05-08  xfce
+
+	* themes/kde/: shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm: Again shade button
+
+2002-05-08  xfce
+
+	* themes/kde/: menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm: Change kde theme buttons shade and menu
+
+2002-05-08  xfce
+
+	* themes/kde/: menu-active.xpm, menu-inactive.xpm,
+	menu-pressed.xpm, shade-active.xpm, shade-inactive.xpm,
+	shade-pressed.xpm, stick-active.xpm, stick-inactive.xpm,
+	stick-pressed.xpm: Improve some of the KDE theme buttons
+
+2002-05-08  xfce
+
+	* src/client.c: Reduce the portion of code when the server is
+	grabbed so application windows have a better chance to set their
+	settings when mapping.
+
+2002-05-08  xfce
+
+	* ChangeLog, configure, configure.in, src/gtktoxevent.c,
+	src/gtktoxevent.h, src/main.c, themes/Makefile.am,
+	themes/Makefile.in, themes/agua/themerc, themes/coldsteel/themerc,
+	themes/cruxish/themerc, themes/gtk/themerc,
+	themes/kde/shade-active.xpm, themes/kde/shade-inactive.xpm,
+	themes/kde/shade-pressed.xpm, themes/kde/themerc,
+	themes/linea/themerc, themes/next/themerc, themes/oroborus/themerc,
+	themes/platinum/themerc, themes/redmond/themerc,
+	themes/slimline/themerc, themes/trench/themerc,
+	themes/xfce/themerc: Use Jens' idea about gtk style to set
+	color/fonts on window decorations.
+	
+	Something like :
+	
+	style "titlebar" {   font_name = "Sans 14" }
+	
+	widget "xfwm"	     style "titlebar"
+	
+	does the trick now.
+
+2002-05-07  xfce
+
+	* themes/kde/: Makefile.am, Makefile.in, bottom-active.xpm,
+	bottom-inactive.xpm, bottom-left-active.xpm,
+	bottom-left-inactive.xpm, bottom-right-active.xpm,
+	bottom-right-inactive.xpm, close-active.xpm, close-inactive.xpm,
+	close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+	hide-pressed.xpm, left-active.xpm, left-inactive.xpm,
+	maximize-active.xpm, maximize-inactive.xpm, maximize-pressed.xpm,
+	menu-active.xpm, menu-inactive.xpm, menu-pressed.xpm,
+	right-active.xpm, right-inactive.xpm, shade-active.xpm,
+	shade-inactive.xpm, shade-pressed.xpm, stick-active.xpm,
+	stick-inactive.xpm, stick-pressed.xpm, themerc, title-1-active.xpm,
+	title-1-inactive.xpm, title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm, title-5-active.xpm, title-5-inactive.xpm,
+	top-left-active.xpm, top-left-inactive.xpm, top-right-active.xpm,
+	top-right-inactive.xpm: Add kde like theme
+
+2002-05-07  xfce
+
+	* src/: client.c, menu.c: Fix some pedantic warnings
+
+2002-05-07  xfce
+
+	* configure, configure.in, themes/Makefile.am, themes/Makefile.in,
+	themes/redmond/bottom-active.xpm,
+	themes/redmond/bottom-inactive.xpm,
+	themes/redmond/bottom-left-active.xpm,
+	themes/redmond/bottom-left-inactive.xpm,
+	themes/redmond/bottom-right-active.xpm,
+	themes/redmond/bottom-right-inactive.xpm,
+	themes/redmond/close-active.xpm, themes/redmond/close-inactive.xpm,
+	themes/redmond/close-pressed.xpm, themes/redmond/hide-active.xpm,
+	themes/redmond/hide-inactive.xpm, themes/redmond/hide-pressed.xpm,
+	themes/redmond/left-active.xpm, themes/redmond/left-inactive.xpm,
+	themes/redmond/maximize-active.xpm,
+	themes/redmond/maximize-inactive.xpm,
+	themes/redmond/maximize-pressed.xpm,
+	themes/redmond/menu-active.xpm, themes/redmond/menu-inactive.xpm,
+	themes/redmond/menu-pressed.xpm, themes/redmond/right-active.xpm,
+	themes/redmond/right-inactive.xpm, themes/redmond/shade-active.xpm,
+	themes/redmond/shade-inactive.xpm,
+	themes/redmond/shade-pressed.xpm, themes/redmond/stick-active.xpm,
+	themes/redmond/stick-inactive.xpm,
+	themes/redmond/stick-pressed.xpm, themes/redmond/themerc,
+	themes/redmond/title-1-active.xpm,
+	themes/redmond/title-1-inactive.xpm,
+	themes/redmond/title-2-active.xpm,
+	themes/redmond/title-2-inactive.xpm,
+	themes/redmond/title-3-active.xpm,
+	themes/redmond/title-3-inactive.xpm,
+	themes/redmond/title-4-active.xpm,
+	themes/redmond/title-4-inactive.xpm,
+	themes/redmond/title-5-active.xpm,
+	themes/redmond/title-5-inactive.xpm,
+	themes/redmond/top-left-active.xpm,
+	themes/redmond/top-left-inactive.xpm,
+	themes/redmond/top-right-active.xpm,
+	themes/redmond/top-right-inactive.xpm,
+	themes/redmondxp/Makefile.am, themes/redmondxp/Makefile.in,
+	themes/redmondxp/bottom-active.xpm,
+	themes/redmondxp/bottom-inactive.xpm,
+	themes/redmondxp/bottom-left-active.xpm,
+	themes/redmondxp/bottom-left-inactive.xpm,
+	themes/redmondxp/bottom-right-active.xpm,
+	themes/redmondxp/bottom-right-inactive.xpm,
+	themes/redmondxp/close-active.xpm,
+	themes/redmondxp/close-inactive.xpm,
+	themes/redmondxp/close-pressed.xpm,
+	themes/redmondxp/hide-active.xpm,
+	themes/redmondxp/hide-inactive.xpm,
+	themes/redmondxp/hide-pressed.xpm,
+	themes/redmondxp/left-active.xpm,
+	themes/redmondxp/left-inactive.xpm,
+	themes/redmondxp/maximize-active.xpm,
+	themes/redmondxp/maximize-inactive.xpm,
+	themes/redmondxp/maximize-pressed.xpm,
+	themes/redmondxp/menu-active.xpm,
+	themes/redmondxp/menu-inactive.xpm,
+	themes/redmondxp/menu-pressed.xpm,
+	themes/redmondxp/right-active.xpm,
+	themes/redmondxp/right-inactive.xpm,
+	themes/redmondxp/shade-active.xpm,
+	themes/redmondxp/shade-inactive.xpm,
+	themes/redmondxp/shade-pressed.xpm,
+	themes/redmondxp/stick-active.xpm,
+	themes/redmondxp/stick-inactive.xpm,
+	themes/redmondxp/stick-pressed.xpm, themes/redmondxp/themerc,
+	themes/redmondxp/title-1-active.xpm,
+	themes/redmondxp/title-1-inactive.xpm,
+	themes/redmondxp/title-2-active.xpm,
+	themes/redmondxp/title-2-inactive.xpm,
+	themes/redmondxp/title-3-active.xpm,
+	themes/redmondxp/title-3-inactive.xpm,
+	themes/redmondxp/title-4-active.xpm,
+	themes/redmondxp/title-4-inactive.xpm,
+	themes/redmondxp/title-5-active.xpm,
+	themes/redmondxp/title-5-inactive.xpm,
+	themes/redmondxp/top-left-active.xpm,
+	themes/redmondxp/top-left-inactive.xpm,
+	themes/redmondxp/top-right-active.xpm,
+	themes/redmondxp/top-right-inactive.xpm: Rename "windows" theme to
+	"redmond" and rename previous "redmond" to "redmondxp"
+
+2002-05-07  xfce
+
+	* src/: events.c, main.c, menu.c, menu.h: Various small fixes
+
+2002-05-06  xfce
+
+	* src/: client.c, workspaces.c: net_wm-strut stuff (try to
+	pronounce this sentence 10 times as fast as you can)
+
+2002-05-06  xfce
+
+	* src/: client.c, events.c, main.c, main.h, workspaces.c,
+	workspaces.h: Improve net_wm_strut implementation
+
+2002-05-06  xfce
+
+	* src/: client.c, client.h, events.c, hints.c, workspaces.c,
+	workspaces.h: Complete net_wm_strut support
+
+2002-05-06  xfce
+
+	* src/: client.c, client.h, events.c, hints.c, hints.h: preliminary
+	struts support
+
+2002-05-06  xfce
+
+	* src/settings.c: Change use of GTK colors for frame rendering
+
+2002-05-06  xfce
+
+	* src/workspaces.c, themes/mofit/bottom-left-inactive.xpm: [no log
+	message]
+
+2002-05-05  xfce
+
+	* configure, configure.in, themes/Makefile.am, themes/Makefile.in,
+	themes/linea/Makefile.am, themes/linea/Makefile.in,
+	themes/linea/bottom-active.xpm, themes/linea/bottom-inactive.xpm,
+	themes/linea/bottom-left-active.xpm,
+	themes/linea/bottom-left-inactive.xpm,
+	themes/linea/bottom-right-active.xpm,
+	themes/linea/bottom-right-inactive.xpm,
+	themes/linea/close-active.xpm, themes/linea/close-inactive.xpm,
+	themes/linea/close-pressed.xpm, themes/linea/hide-active.xpm,
+	themes/linea/hide-inactive.xpm, themes/linea/hide-pressed.xpm,
+	themes/linea/left-active.xpm, themes/linea/left-inactive.xpm,
+	themes/linea/maximize-active.xpm,
+	themes/linea/maximize-inactive.xpm,
+	themes/linea/maximize-pressed.xpm, themes/linea/menu-active.xpm,
+	themes/linea/menu-inactive.xpm, themes/linea/menu-pressed.xpm,
+	themes/linea/right-active.xpm, themes/linea/right-inactive.xpm,
+	themes/linea/shade-active.xpm, themes/linea/shade-inactive.xpm,
+	themes/linea/shade-pressed.xpm, themes/linea/stick-active.xpm,
+	themes/linea/stick-inactive.xpm, themes/linea/stick-pressed.xpm,
+	themes/linea/themerc, themes/linea/title-1-active.xpm,
+	themes/linea/title-1-inactive.xpm, themes/linea/title-2-active.xpm,
+	themes/linea/title-2-inactive.xpm, themes/linea/title-3-active.xpm,
+	themes/linea/title-3-inactive.xpm, themes/linea/title-4-active.xpm,
+	themes/linea/title-4-inactive.xpm, themes/linea/title-5-active.xpm,
+	themes/linea/title-5-inactive.xpm,
+	themes/linea/top-left-active.xpm,
+	themes/linea/top-left-inactive.xpm,
+	themes/linea/top-right-active.xpm,
+	themes/linea/top-right-inactive.xpm: Add linea theme
+
+2002-05-05  xfce
+
+	* src/workspaces.c: transient/workspace inconsistency fixed
+
+2002-05-05  xfce
+
+	* configure, configure.in, src/workspaces.c, themes/Makefile.am,
+	themes/Makefile.in, themes/trench/Makefile.am,
+	themes/trench/Makefile.in, themes/trench/bottom-active.xpm,
+	themes/trench/bottom-inactive.xpm,
+	themes/trench/bottom-left-active.xpm,
+	themes/trench/bottom-left-inactive.xpm,
+	themes/trench/bottom-right-active.xpm,
+	themes/trench/bottom-right-inactive.xpm,
+	themes/trench/close-active.xpm, themes/trench/close-inactive.xpm,
+	themes/trench/close-pressed.xpm, themes/trench/hide-active.xpm,
+	themes/trench/hide-inactive.xpm, themes/trench/hide-pressed.xpm,
+	themes/trench/left-active.xpm, themes/trench/left-inactive.xpm,
+	themes/trench/maximize-active.xpm,
+	themes/trench/maximize-inactive.xpm,
+	themes/trench/maximize-pressed.xpm, themes/trench/menu-active.xpm,
+	themes/trench/menu-inactive.xpm, themes/trench/menu-pressed.xpm,
+	themes/trench/right-active.xpm, themes/trench/right-inactive.xpm,
+	themes/trench/shade-active.xpm, themes/trench/shade-inactive.xpm,
+	themes/trench/shade-pressed.xpm, themes/trench/stick-active.xpm,
+	themes/trench/stick-inactive.xpm, themes/trench/stick-pressed.xpm,
+	themes/trench/themerc, themes/trench/title-1-active.xpm,
+	themes/trench/title-1-inactive.xpm,
+	themes/trench/title-2-active.xpm,
+	themes/trench/title-2-inactive.xpm,
+	themes/trench/title-3-active.xpm,
+	themes/trench/title-3-inactive.xpm,
+	themes/trench/title-4-active.xpm,
+	themes/trench/title-4-inactive.xpm,
+	themes/trench/title-5-active.xpm,
+	themes/trench/title-5-inactive.xpm,
+	themes/trench/top-left-active.xpm,
+	themes/trench/top-left-inactive.xpm,
+	themes/trench/top-right-active.xpm,
+	themes/trench/top-right-inactive.xpm,
+	themes/xfce/bottom-inactive.xpm,
+	themes/xfce/bottom-left-inactive.xpm,
+	themes/xfce/bottom-right-inactive.xpm,
+	themes/xfce/left-inactive.xpm, themes/xfce/right-inactive.xpm,
+	themes/xfce/title-1-inactive.xpm, themes/xfce/title-2-inactive.xpm,
+	themes/xfce/title-3-inactive.xpm, themes/xfce/title-4-inactive.xpm,
+	themes/xfce/title-5-inactive.xpm,
+	themes/xfce/top-left-inactive.xpm,
+	themes/xfce/top-right-inactive.xpm: Add trench theme, fix a problem
+	when switch workspaces and transients
+
+2002-05-04  xfce
+
+	* configure, configure.in, themes/Makefile.am, themes/Makefile.in,
+	themes/mofit/Makefile.am, themes/mofit/Makefile.in,
+	themes/mofit/bottom-active.xpm, themes/mofit/bottom-inactive.xpm,
+	themes/mofit/bottom-left-active.xpm,
+	themes/mofit/bottom-left-inactive.xpm,
+	themes/mofit/bottom-right-active.xpm,
+	themes/mofit/bottom-right-inactive.xpm,
+	themes/mofit/close-active.xpm, themes/mofit/close-inactive.xpm,
+	themes/mofit/close-pressed.xpm, themes/mofit/hide-active.xpm,
+	themes/mofit/hide-inactive.xpm, themes/mofit/hide-pressed.xpm,
+	themes/mofit/left-active.xpm, themes/mofit/left-inactive.xpm,
+	themes/mofit/maximize-active.xpm,
+	themes/mofit/maximize-inactive.xpm,
+	themes/mofit/maximize-pressed.xpm, themes/mofit/menu-active.xpm,
+	themes/mofit/menu-inactive.xpm, themes/mofit/menu-pressed.xpm,
+	themes/mofit/right-active.xpm, themes/mofit/right-inactive.xpm,
+	themes/mofit/shade-active.xpm, themes/mofit/shade-inactive.xpm,
+	themes/mofit/shade-pressed.xpm, themes/mofit/stick-active.xpm,
+	themes/mofit/stick-inactive.xpm, themes/mofit/stick-pressed.xpm,
+	themes/mofit/themerc, themes/mofit/title-1-active.xpm,
+	themes/mofit/title-1-inactive.xpm, themes/mofit/title-2-active.xpm,
+	themes/mofit/title-2-inactive.xpm, themes/mofit/title-3-active.xpm,
+	themes/mofit/title-3-inactive.xpm, themes/mofit/title-4-active.xpm,
+	themes/mofit/title-4-inactive.xpm, themes/mofit/title-5-active.xpm,
+	themes/mofit/title-5-inactive.xpm,
+	themes/mofit/top-left-active.xpm,
+	themes/mofit/top-left-inactive.xpm,
+	themes/mofit/top-right-active.xpm,
+	themes/mofit/top-right-inactive.xpm: Add mofit theme
+
+2002-05-03  xfce
+
+	* AUTHORS, README, COPYING, ChangeLog, INSTALL, Makefile.am,
+	Makefile.in, NEWS, TODO, aclocal.m4, configure, configure.in,
+	install-sh, missing, acconfig.h, config.h.in, example.xfwm4rc,
+	mkinstalldirs, stamp-h.in, src/Makefile.am, src/Makefile.in,
+	src/client.c, src/frame.c, src/misc.c, src/parserc.c,
+	src/settings.c, src/events.c, src/hints.c, src/keyboard.c,
+	src/hints.h, src/keyboard.h, src/main.h, src/misc.h, src/parserc.h,
+	src/pixmap.c, src/workspaces.c, src/.indent.pro, src/debug.h,
+	src/main.c, src/menu.c, src/pixmap.h, src/gtktoxevent.c,
+	src/gtktoxevent.h, src/menu.h, defaults/Makefile.am, src/client.h,
+	src/events.h, src/frame.h, src/gtk_style.c, src/gtk_style.h,
+	src/settings.h, src/workspaces.h, defaults/Makefile.in,
+	defaults/defaults.in, themes/Makefile.am, themes/Makefile.in,
+	themes/cruxish/Makefile.am, themes/cruxish/Makefile.in,
+	themes/cruxish/bottom-active.xpm,
+	themes/cruxish/bottom-inactive.xpm,
+	themes/cruxish/bottom-left-active.xpm,
+	themes/cruxish/bottom-left-inactive.xpm,
+	themes/cruxish/bottom-right-active.xpm,
+	themes/cruxish/bottom-right-inactive.xpm,
+	themes/cruxish/close-active.xpm, themes/cruxish/close-inactive.xpm,
+	themes/cruxish/close-pressed.xpm, themes/cruxish/hide-active.xpm,
+	themes/cruxish/hide-inactive.xpm, themes/cruxish/hide-pressed.xpm,
+	themes/cruxish/left-active.xpm, themes/cruxish/left-inactive.xpm,
+	themes/cruxish/maximize-active.xpm,
+	themes/cruxish/maximize-inactive.xpm,
+	themes/cruxish/maximize-pressed.xpm,
+	themes/cruxish/right-active.xpm, themes/cruxish/right-inactive.xpm,
+	themes/cruxish/shade-active.xpm, themes/cruxish/shade-inactive.xpm,
+	themes/cruxish/shade-pressed.xpm, themes/cruxish/themerc,
+	themes/cruxish/title-1-active.xpm,
+	themes/cruxish/title-1-inactive.xpm,
+	themes/cruxish/title-2-active.xpm,
+	themes/cruxish/title-2-inactive.xpm,
+	themes/cruxish/title-3-active.xpm,
+	themes/cruxish/title-3-inactive.xpm,
+	themes/cruxish/menu-active.xpm, themes/cruxish/menu-inactive.xpm,
+	themes/cruxish/menu-pressed.xpm, themes/cruxish/stick-active.xpm,
+	themes/cruxish/stick-inactive.xpm,
+	themes/cruxish/stick-pressed.xpm,
+	themes/cruxish/title-4-active.xpm,
+	themes/cruxish/title-4-inactive.xpm,
+	themes/cruxish/title-5-active.xpm,
+	themes/cruxish/title-5-inactive.xpm,
+	themes/cruxish/top-left-active.xpm,
+	themes/cruxish/top-left-inactive.xpm,
+	themes/cruxish/top-right-active.xpm,
+	themes/cruxish/top-right-inactive.xpm, themes/next/Makefile.am,
+	themes/next/Makefile.in, themes/next/bottom-active.xpm,
+	themes/next/bottom-inactive.xpm,
+	themes/next/bottom-left-active.xpm,
+	themes/next/bottom-left-inactive.xpm,
+	themes/next/bottom-right-active.xpm,
+	themes/next/bottom-right-inactive.xpm,
+	themes/next/close-active.xpm, themes/next/close-inactive.xpm,
+	themes/next/close-pressed.xpm, themes/next/hide-active.xpm,
+	themes/next/hide-inactive.xpm, themes/next/hide-pressed.xpm,
+	themes/next/left-active.xpm, themes/next/left-inactive.xpm,
+	themes/next/maximize-active.xpm, themes/next/maximize-inactive.xpm,
+	themes/next/maximize-pressed.xpm, themes/next/menu-active.xpm,
+	themes/next/menu-inactive.xpm, themes/next/right-active.xpm,
+	themes/next/right-inactive.xpm, themes/next/shade-active.xpm,
+	themes/next/shade-inactive.xpm, themes/next/shade-pressed.xpm,
+	themes/next/themerc, themes/next/title-1-active.xpm,
+	themes/next/title-1-inactive.xpm, themes/next/title-2-active.xpm,
+	themes/next/title-2-inactive.xpm, themes/next/title-3-active.xpm,
+	themes/next/title-3-inactive.xpm, themes/next/title-4-active.xpm,
+	themes/next/title-4-inactive.xpm, themes/next/title-5-active.xpm,
+	themes/next/title-5-inactive.xpm, themes/next/top-left-active.xpm,
+	themes/next/top-left-inactive.xpm,
+	themes/next/top-right-active.xpm,
+	themes/next/top-right-inactive.xpm, themes/next/menu-pressed.xpm,
+	themes/next/stick-active.xpm, themes/next/stick-inactive.xpm,
+	themes/next/stick-pressed.xpm, themes/oroborus/Makefile.am,
+	themes/oroborus/Makefile.in, themes/oroborus/bottom-active.xpm,
+	themes/oroborus/bottom-inactive.xpm,
+	themes/oroborus/bottom-left-active.xpm,
+	themes/oroborus/bottom-left-inactive.xpm,
+	themes/oroborus/bottom-right-active.xpm,
+	themes/oroborus/bottom-right-inactive.xpm,
+	themes/oroborus/close-active.xpm,
+	themes/oroborus/close-inactive.xpm,
+	themes/oroborus/close-pressed.xpm, themes/oroborus/hide-active.xpm,
+	themes/oroborus/hide-inactive.xpm,
+	themes/oroborus/hide-pressed.xpm, themes/oroborus/left-active.xpm,
+	themes/oroborus/left-inactive.xpm,
+	themes/oroborus/maximize-active.xpm,
+	themes/oroborus/maximize-inactive.xpm,
+	themes/oroborus/maximize-pressed.xpm,
+	themes/oroborus/menu-active.xpm, themes/oroborus/menu-inactive.xpm,
+	themes/oroborus/menu-pressed.xpm, themes/oroborus/right-active.xpm,
+	themes/oroborus/right-inactive.xpm,
+	themes/oroborus/shade-active.xpm,
+	themes/oroborus/shade-inactive.xpm,
+	themes/oroborus/shade-pressed.xpm,
+	themes/oroborus/stick-active.xpm,
+	themes/oroborus/stick-inactive.xpm,
+	themes/oroborus/stick-pressed.xpm, themes/oroborus/themerc,
+	themes/oroborus/title-1-active.xpm,
+	themes/oroborus/title-1-inactive.xpm,
+	themes/oroborus/title-2-active.xpm,
+	themes/oroborus/title-2-inactive.xpm,
+	themes/oroborus/title-3-active.xpm,
+	themes/oroborus/title-3-inactive.xpm,
+	themes/oroborus/title-4-active.xpm,
+	themes/oroborus/title-4-inactive.xpm,
+	themes/oroborus/title-5-active.xpm,
+	themes/oroborus/title-5-inactive.xpm,
+	themes/oroborus/top-left-active.xpm,
+	themes/oroborus/top-left-inactive.xpm,
+	themes/oroborus/top-right-active.xpm,
+	themes/oroborus/top-right-inactive.xpm,
+	themes/platinum/Makefile.am, themes/platinum/Makefile.in,
+	themes/platinum/bottom-active.xpm,
+	themes/platinum/bottom-inactive.xpm,
+	themes/platinum/bottom-left-active.xpm,
+	themes/platinum/bottom-left-inactive.xpm,
+	themes/platinum/bottom-right-active.xpm,
+	themes/platinum/bottom-right-inactive.xpm,
+	themes/platinum/close-active.xpm,
+	themes/platinum/close-inactive.xpm,
+	themes/platinum/close-pressed.xpm, themes/platinum/hide-active.xpm,
+	themes/platinum/hide-inactive.xpm,
+	themes/platinum/hide-pressed.xpm, themes/platinum/left-active.xpm,
+	themes/platinum/left-inactive.xpm,
+	themes/platinum/maximize-active.xpm,
+	themes/platinum/maximize-inactive.xpm,
+	themes/platinum/maximize-pressed.xpm,
+	themes/platinum/right-active.xpm,
+	themes/platinum/right-inactive.xpm,
+	themes/platinum/shade-active.xpm,
+	themes/platinum/shade-inactive.xpm,
+	themes/platinum/menu-active.xpm, themes/platinum/menu-inactive.xpm,
+	themes/platinum/menu-pressed.xpm,
+	themes/platinum/shade-pressed.xpm,
+	themes/platinum/stick-active.xpm,
+	themes/platinum/stick-inactive.xpm,
+	themes/platinum/stick-pressed.xpm, themes/platinum/themerc,
+	themes/platinum/title-1-active.xpm,
+	themes/platinum/title-1-inactive.xpm,
+	themes/platinum/title-2-active.xpm,
+	themes/platinum/title-2-inactive.xpm,
+	themes/platinum/title-3-active.xpm,
+	themes/platinum/title-3-inactive.xpm,
+	themes/platinum/title-4-active.xpm,
+	themes/platinum/title-4-inactive.xpm,
+	themes/platinum/title-5-active.xpm,
+	themes/platinum/title-5-inactive.xpm,
+	themes/platinum/top-left-active.xpm,
+	themes/platinum/top-left-inactive.xpm,
+	themes/platinum/top-right-active.xpm,
+	themes/platinum/top-right-inactive.xpm,
+	themes/slimline/Makefile.am, themes/slimline/Makefile.in,
+	themes/slimline/bottom-active.xpm,
+	themes/slimline/bottom-inactive.xpm,
+	themes/slimline/bottom-left-active.xpm,
+	themes/slimline/bottom-left-inactive.xpm,
+	themes/slimline/bottom-right-active.xpm,
+	themes/slimline/bottom-right-inactive.xpm,
+	themes/slimline/close-active.xpm,
+	themes/slimline/close-inactive.xpm,
+	themes/slimline/close-pressed.xpm, themes/slimline/hide-active.xpm,
+	themes/slimline/hide-inactive.xpm,
+	themes/slimline/hide-pressed.xpm, themes/slimline/left-active.xpm,
+	themes/slimline/left-inactive.xpm,
+	themes/slimline/maximize-active.xpm,
+	themes/slimline/maximize-inactive.xpm,
+	themes/slimline/maximize-pressed.xpm,
+	themes/slimline/right-active.xpm,
+	themes/slimline/right-inactive.xpm,
+	themes/slimline/shade-active.xpm,
+	themes/slimline/shade-inactive.xpm,
+	themes/slimline/shade-pressed.xpm, themes/slimline/themerc,
+	themes/slimline/title-1-active.xpm,
+	themes/slimline/title-1-inactive.xpm,
+	themes/slimline/title-2-active.xpm,
+	themes/slimline/title-2-inactive.xpm,
+	themes/slimline/title-3-active.xpm,
+	themes/slimline/menu-active.xpm, themes/slimline/menu-inactive.xpm,
+	themes/slimline/menu-pressed.xpm, themes/slimline/stick-active.xpm,
+	themes/slimline/stick-inactive.xpm,
+	themes/slimline/stick-pressed.xpm,
+	themes/slimline/title-3-inactive.xpm,
+	themes/slimline/title-4-active.xpm,
+	themes/slimline/title-4-inactive.xpm,
+	themes/slimline/title-5-active.xpm,
+	themes/slimline/title-5-inactive.xpm,
+	themes/slimline/top-left-active.xpm,
+	themes/slimline/top-left-inactive.xpm,
+	themes/slimline/top-right-active.xpm,
+	themes/slimline/top-right-inactive.xpm,
+	themes/coldsteel/Makefile.am, themes/coldsteel/Makefile.in,
+	themes/coldsteel/bottom-active.xpm,
+	themes/coldsteel/bottom-inactive.xpm,
+	themes/coldsteel/bottom-left-active.xpm,
+	themes/coldsteel/bottom-left-inactive.xpm,
+	themes/coldsteel/bottom-right-active.xpm,
+	themes/coldsteel/bottom-right-inactive.xpm,
+	themes/coldsteel/close-active.xpm,
+	themes/coldsteel/close-inactive.xpm,
+	themes/coldsteel/close-pressed.xpm,
+	themes/coldsteel/hide-active.xpm,
+	themes/coldsteel/hide-inactive.xpm,
+	themes/coldsteel/hide-pressed.xpm,
+	themes/coldsteel/left-active.xpm,
+	themes/coldsteel/left-inactive.xpm,
+	themes/coldsteel/maximize-active.xpm,
+	themes/coldsteel/maximize-inactive.xpm,
+	themes/coldsteel/maximize-pressed.xpm,
+	themes/coldsteel/menu-active.xpm,
+	themes/coldsteel/menu-inactive.xpm,
+	themes/coldsteel/menu-pressed.xpm,
+	themes/coldsteel/right-active.xpm,
+	themes/coldsteel/right-inactive.xpm,
+	themes/coldsteel/shade-active.xpm,
+	themes/coldsteel/shade-inactive.xpm,
+	themes/coldsteel/shade-pressed.xpm,
+	themes/coldsteel/stick-active.xpm,
+	themes/coldsteel/stick-inactive.xpm,
+	themes/coldsteel/stick-pressed.xpm, themes/coldsteel/themerc,
+	themes/coldsteel/title-1-active.xpm,
+	themes/coldsteel/title-1-inactive.xpm,
+	themes/coldsteel/title-2-active.xpm,
+	themes/coldsteel/title-2-inactive.xpm,
+	themes/coldsteel/title-3-active.xpm,
+	themes/coldsteel/title-3-inactive.xpm,
+	themes/coldsteel/title-4-active.xpm,
+	themes/coldsteel/title-4-inactive.xpm,
+	themes/coldsteel/title-5-active.xpm,
+	themes/coldsteel/title-5-inactive.xpm,
+	themes/coldsteel/top-left-active.xpm,
+	themes/coldsteel/top-left-inactive.xpm,
+	themes/coldsteel/top-right-active.xpm,
+	themes/coldsteel/top-right-inactive.xpm, themes/agua/Makefile.am,
+	themes/agua/Makefile.in, themes/agua/bottom-active.xpm,
+	themes/agua/bottom-inactive.xpm,
+	themes/agua/bottom-left-active.xpm,
+	themes/agua/bottom-left-inactive.xpm,
+	themes/agua/bottom-right-active.xpm,
+	themes/agua/bottom-right-inactive.xpm,
+	themes/agua/close-active.xpm, themes/agua/close-inactive.xpm,
+	themes/agua/close-pressed.xpm, themes/agua/hide-active.xpm,
+	themes/agua/hide-inactive.xpm, themes/agua/hide-pressed.xpm,
+	themes/agua/left-active.xpm, themes/agua/left-inactive.xpm,
+	themes/agua/maximize-active.xpm, themes/agua/maximize-inactive.xpm,
+	themes/agua/maximize-pressed.xpm, themes/agua/right-active.xpm,
+	themes/agua/right-inactive.xpm, themes/agua/shade-active.xpm,
+	themes/agua/shade-inactive.xpm, themes/agua/shade-pressed.xpm,
+	themes/agua/stick-active.xpm, themes/agua/themerc,
+	themes/agua/title-1-active.xpm, themes/agua/title-1-inactive.xpm,
+	themes/agua/title-2-active.xpm, themes/agua/title-2-inactive.xpm,
+	themes/agua/title-3-active.xpm, themes/agua/title-3-inactive.xpm,
+	themes/agua/title-4-active.xpm, themes/agua/title-4-inactive.xpm,
+	themes/agua/title-5-active.xpm, themes/agua/title-5-inactive.xpm,
+	themes/agua/top-left-active.xpm, themes/agua/top-left-inactive.xpm,
+	themes/agua/top-right-active.xpm,
+	themes/agua/top-right-inactive.xpm, themes/agua/menu-active.xpm,
+	themes/agua/menu-inactive.xpm, themes/agua/stick-inactive.xpm,
+	themes/agua/stick-pressed.xpm, themes/agua/menu-pressed.xpm,
+	themes/redmond/bottom-active.xpm,
+	themes/redmond/bottom-inactive.xpm,
+	themes/redmond/bottom-left-active.xpm,
+	themes/redmond/bottom-left-inactive.xpm,
+	themes/redmond/bottom-right-active.xpm,
+	themes/redmond/bottom-right-inactive.xpm,
+	themes/redmond/close-active.xpm, themes/redmond/close-inactive.xpm,
+	themes/redmond/close-pressed.xpm, themes/redmond/hide-active.xpm,
+	themes/redmond/hide-inactive.xpm, themes/redmond/hide-pressed.xpm,
+	themes/redmond/left-active.xpm, themes/redmond/left-inactive.xpm,
+	themes/redmond/maximize-active.xpm,
+	themes/redmond/maximize-inactive.xpm,
+	themes/redmond/maximize-pressed.xpm,
+	themes/redmond/right-active.xpm, themes/redmond/right-inactive.xpm,
+	themes/redmond/shade-active.xpm, themes/redmond/shade-inactive.xpm,
+	themes/redmond/shade-pressed.xpm,
+	themes/redmond/top-left-active.xpm,
+	themes/redmond/top-left-inactive.xpm,
+	themes/redmond/top-right-active.xpm,
+	themes/redmond/top-right-inactive.xpm, themes/redmond/Makefile.am,
+	themes/redmond/Makefile.in, themes/redmond/themerc,
+	themes/redmond/title-1-active.xpm,
+	themes/redmond/title-1-inactive.xpm,
+	themes/redmond/title-2-active.xpm,
+	themes/redmond/title-2-inactive.xpm,
+	themes/redmond/title-3-active.xpm,
+	themes/redmond/title-3-inactive.xpm,
+	themes/redmond/title-4-active.xpm,
+	themes/redmond/title-4-inactive.xpm,
+	themes/redmond/title-5-active.xpm,
+	themes/redmond/title-5-inactive.xpm, themes/gtk/bottom-active.xpm,
+	themes/gtk/bottom-inactive.xpm, themes/redmond/menu-active.xpm,
+	themes/redmond/menu-inactive.xpm, themes/redmond/menu-pressed.xpm,
+	themes/redmond/stick-active.xpm, themes/redmond/stick-inactive.xpm,
+	themes/redmond/stick-pressed.xpm,
+	themes/gtk/bottom-left-active.xpm,
+	themes/gtk/bottom-left-inactive.xpm,
+	themes/gtk/bottom-right-active.xpm,
+	themes/gtk/bottom-right-inactive.xpm, themes/gtk/close-active.xpm,
+	themes/gtk/close-inactive.xpm, themes/gtk/close-pressed.xpm,
+	themes/gtk/hide-active.xpm, themes/gtk/hide-inactive.xpm,
+	themes/gtk/hide-pressed.xpm, themes/gtk/left-active.xpm,
+	themes/gtk/left-inactive.xpm, themes/gtk/maximize-active.xpm,
+	themes/gtk/maximize-inactive.xpm, themes/gtk/maximize-pressed.xpm,
+	themes/gtk/menu-active.xpm, themes/gtk/menu-inactive.xpm,
+	themes/gtk/menu-pressed.xpm, themes/gtk/right-active.xpm,
+	themes/gtk/right-inactive.xpm, themes/gtk/shade-active.xpm,
+	themes/gtk/shade-inactive.xpm, themes/gtk/Makefile.am,
+	themes/gtk/Makefile.in, themes/gtk/shade-pressed.xpm,
+	themes/gtk/stick-active.xpm, themes/gtk/stick-inactive.xpm,
+	themes/gtk/stick-pressed.xpm, themes/gtk/themerc,
+	themes/gtk/title-1-active.xpm, themes/gtk/title-1-inactive.xpm,
+	themes/gtk/title-2-active.xpm, themes/gtk/title-2-inactive.xpm,
+	themes/gtk/title-3-active.xpm, themes/gtk/title-3-inactive.xpm,
+	themes/gtk/title-4-active.xpm, themes/gtk/title-4-inactive.xpm,
+	themes/gtk/title-5-active.xpm, themes/gtk/title-5-inactive.xpm,
+	themes/gtk/top-left-active.xpm, themes/gtk/top-left-inactive.xpm,
+	themes/gtk/top-right-active.xpm, themes/gtk/top-right-inactive.xpm,
+	themes/xfce/bottom-active.xpm, themes/xfce/bottom-inactive.xpm,
+	themes/xfce/bottom-left-active.xpm,
+	themes/xfce/bottom-left-inactive.xpm,
+	themes/xfce/bottom-right-active.xpm,
+	themes/xfce/bottom-right-inactive.xpm,
+	themes/xfce/close-active.xpm, themes/xfce/close-inactive.xpm,
+	themes/xfce/close-pressed.xpm, themes/xfce/hide-active.xpm,
+	themes/xfce/hide-inactive.xpm, themes/xfce/hide-pressed.xpm,
+	themes/xfce/left-active.xpm, themes/xfce/left-inactive.xpm,
+	themes/xfce/maximize-active.xpm, themes/xfce/maximize-inactive.xpm,
+	themes/xfce/maximize-pressed.xpm, themes/xfce/menu-active.xpm,
+	themes/xfce/menu-inactive.xpm, themes/xfce/menu-pressed.xpm,
+	themes/xfce/right-active.xpm, themes/xfce/right-inactive.xpm,
+	themes/xfce/shade-active.xpm, themes/xfce/shade-inactive.xpm,
+	themes/xfce/shade-pressed.xpm, themes/xfce/stick-active.xpm,
+	themes/xfce/stick-inactive.xpm, themes/xfce/stick-pressed.xpm,
+	themes/xfce/themerc, themes/xfce/title-1-active.xpm,
+	themes/xfce/title-1-inactive.xpm, themes/xfce/Makefile.am,
+	themes/xfce/Makefile.in, themes/xfce/title-2-active.xpm,
+	themes/xfce/title-2-inactive.xpm, themes/xfce/title-3-active.xpm,
+	themes/xfce/title-3-inactive.xpm, themes/xfce/title-4-active.xpm,
+	themes/xfce/title-4-inactive.xpm, themes/xfce/title-5-active.xpm,
+	themes/xfce/title-5-inactive.xpm, themes/xfce/top-left-active.xpm,
+	themes/xfce/top-left-inactive.xpm,
+	themes/xfce/top-right-active.xpm,
+	themes/xfce/top-right-inactive.xpm: Initial revision
+
+2002-05-03  xfce
+
+	* AUTHORS, README, COPYING, ChangeLog, INSTALL, Makefile.am,
+	Makefile.in, NEWS, TODO, aclocal.m4, configure, configure.in,
+	install-sh, missing, acconfig.h, config.h.in, example.xfwm4rc,
+	mkinstalldirs, stamp-h.in, src/Makefile.am, src/Makefile.in,
+	src/client.c, src/frame.c, src/misc.c, src/parserc.c,
+	src/settings.c, src/events.c, src/hints.c, src/keyboard.c,
+	src/hints.h, src/keyboard.h, src/main.h, src/misc.h, src/parserc.h,
+	src/pixmap.c, src/workspaces.c, src/.indent.pro, src/debug.h,
+	src/main.c, src/menu.c, src/pixmap.h, src/gtktoxevent.c,
+	src/gtktoxevent.h, src/menu.h, defaults/Makefile.am, src/client.h,
+	src/events.h, src/frame.h, src/gtk_style.c, src/gtk_style.h,
+	src/settings.h, src/workspaces.h, defaults/Makefile.in,
+	defaults/defaults.in, themes/Makefile.am, themes/Makefile.in,
+	themes/cruxish/Makefile.am, themes/cruxish/Makefile.in,
+	themes/cruxish/bottom-active.xpm,
+	themes/cruxish/bottom-inactive.xpm,
+	themes/cruxish/bottom-left-active.xpm,
+	themes/cruxish/bottom-left-inactive.xpm,
+	themes/cruxish/bottom-right-active.xpm,
+	themes/cruxish/bottom-right-inactive.xpm,
+	themes/cruxish/close-active.xpm, themes/cruxish/close-inactive.xpm,
+	themes/cruxish/close-pressed.xpm, themes/cruxish/hide-active.xpm,
+	themes/cruxish/hide-inactive.xpm, themes/cruxish/hide-pressed.xpm,
+	themes/cruxish/left-active.xpm, themes/cruxish/left-inactive.xpm,
+	themes/cruxish/maximize-active.xpm,
+	themes/cruxish/maximize-inactive.xpm,
+	themes/cruxish/maximize-pressed.xpm,
+	themes/cruxish/right-active.xpm, themes/cruxish/right-inactive.xpm,
+	themes/cruxish/shade-active.xpm, themes/cruxish/shade-inactive.xpm,
+	themes/cruxish/shade-pressed.xpm, themes/cruxish/themerc,
+	themes/cruxish/title-1-active.xpm,
+	themes/cruxish/title-1-inactive.xpm,
+	themes/cruxish/title-2-active.xpm,
+	themes/cruxish/title-2-inactive.xpm,
+	themes/cruxish/title-3-active.xpm,
+	themes/cruxish/title-3-inactive.xpm,
+	themes/cruxish/menu-active.xpm, themes/cruxish/menu-inactive.xpm,
+	themes/cruxish/menu-pressed.xpm, themes/cruxish/stick-active.xpm,
+	themes/cruxish/stick-inactive.xpm,
+	themes/cruxish/stick-pressed.xpm,
+	themes/cruxish/title-4-active.xpm,
+	themes/cruxish/title-4-inactive.xpm,
+	themes/cruxish/title-5-active.xpm,
+	themes/cruxish/title-5-inactive.xpm,
+	themes/cruxish/top-left-active.xpm,
+	themes/cruxish/top-left-inactive.xpm,
+	themes/cruxish/top-right-active.xpm,
+	themes/cruxish/top-right-inactive.xpm, themes/next/Makefile.am,
+	themes/next/Makefile.in, themes/next/bottom-active.xpm,
+	themes/next/bottom-inactive.xpm,
+	themes/next/bottom-left-active.xpm,
+	themes/next/bottom-left-inactive.xpm,
+	themes/next/bottom-right-active.xpm,
+	themes/next/bottom-right-inactive.xpm,
+	themes/next/close-active.xpm, themes/next/close-inactive.xpm,
+	themes/next/close-pressed.xpm, themes/next/hide-active.xpm,
+	themes/next/hide-inactive.xpm, themes/next/hide-pressed.xpm,
+	themes/next/left-active.xpm, themes/next/left-inactive.xpm,
+	themes/next/maximize-active.xpm, themes/next/maximize-inactive.xpm,
+	themes/next/maximize-pressed.xpm, themes/next/menu-active.xpm,
+	themes/next/menu-inactive.xpm, themes/next/right-active.xpm,
+	themes/next/right-inactive.xpm, themes/next/shade-active.xpm,
+	themes/next/shade-inactive.xpm, themes/next/shade-pressed.xpm,
+	themes/next/themerc, themes/next/title-1-active.xpm,
+	themes/next/title-1-inactive.xpm, themes/next/title-2-active.xpm,
+	themes/next/title-2-inactive.xpm, themes/next/title-3-active.xpm,
+	themes/next/title-3-inactive.xpm, themes/next/title-4-active.xpm,
+	themes/next/title-4-inactive.xpm, themes/next/title-5-active.xpm,
+	themes/next/title-5-inactive.xpm, themes/next/top-left-active.xpm,
+	themes/next/top-left-inactive.xpm,
+	themes/next/top-right-active.xpm,
+	themes/next/top-right-inactive.xpm, themes/next/menu-pressed.xpm,
+	themes/next/stick-active.xpm, themes/next/stick-inactive.xpm,
+	themes/next/stick-pressed.xpm, themes/oroborus/Makefile.am,
+	themes/oroborus/Makefile.in, themes/oroborus/bottom-active.xpm,
+	themes/oroborus/bottom-inactive.xpm,
+	themes/oroborus/bottom-left-active.xpm,
+	themes/oroborus/bottom-left-inactive.xpm,
+	themes/oroborus/bottom-right-active.xpm,
+	themes/oroborus/bottom-right-inactive.xpm,
+	themes/oroborus/close-active.xpm,
+	themes/oroborus/close-inactive.xpm,
+	themes/oroborus/close-pressed.xpm, themes/oroborus/hide-active.xpm,
+	themes/oroborus/hide-inactive.xpm,
+	themes/oroborus/hide-pressed.xpm, themes/oroborus/left-active.xpm,
+	themes/oroborus/left-inactive.xpm,
+	themes/oroborus/maximize-active.xpm,
+	themes/oroborus/maximize-inactive.xpm,
+	themes/oroborus/maximize-pressed.xpm,
+	themes/oroborus/menu-active.xpm, themes/oroborus/menu-inactive.xpm,
+	themes/oroborus/menu-pressed.xpm, themes/oroborus/right-active.xpm,
+	themes/oroborus/right-inactive.xpm,
+	themes/oroborus/shade-active.xpm,
+	themes/oroborus/shade-inactive.xpm,
+	themes/oroborus/shade-pressed.xpm,
+	themes/oroborus/stick-active.xpm,
+	themes/oroborus/stick-inactive.xpm,
+	themes/oroborus/stick-pressed.xpm, themes/oroborus/themerc,
+	themes/oroborus/title-1-active.xpm,
+	themes/oroborus/title-1-inactive.xpm,
+	themes/oroborus/title-2-active.xpm,
+	themes/oroborus/title-2-inactive.xpm,
+	themes/oroborus/title-3-active.xpm,
+	themes/oroborus/title-3-inactive.xpm,
+	themes/oroborus/title-4-active.xpm,
+	themes/oroborus/title-4-inactive.xpm,
+	themes/oroborus/title-5-active.xpm,
+	themes/oroborus/title-5-inactive.xpm,
+	themes/oroborus/top-left-active.xpm,
+	themes/oroborus/top-left-inactive.xpm,
+	themes/oroborus/top-right-active.xpm,
+	themes/oroborus/top-right-inactive.xpm,
+	themes/platinum/Makefile.am, themes/platinum/Makefile.in,
+	themes/platinum/bottom-active.xpm,
+	themes/platinum/bottom-inactive.xpm,
+	themes/platinum/bottom-left-active.xpm,
+	themes/platinum/bottom-left-inactive.xpm,
+	themes/platinum/bottom-right-active.xpm,
+	themes/platinum/bottom-right-inactive.xpm,
+	themes/platinum/close-active.xpm,
+	themes/platinum/close-inactive.xpm,
+	themes/platinum/close-pressed.xpm, themes/platinum/hide-active.xpm,
+	themes/platinum/hide-inactive.xpm,
+	themes/platinum/hide-pressed.xpm, themes/platinum/left-active.xpm,
+	themes/platinum/left-inactive.xpm,
+	themes/platinum/maximize-active.xpm,
+	themes/platinum/maximize-inactive.xpm,
+	themes/platinum/maximize-pressed.xpm,
+	themes/platinum/right-active.xpm,
+	themes/platinum/right-inactive.xpm,
+	themes/platinum/shade-active.xpm,
+	themes/platinum/shade-inactive.xpm,
+	themes/platinum/menu-active.xpm, themes/platinum/menu-inactive.xpm,
+	themes/platinum/menu-pressed.xpm,
+	themes/platinum/shade-pressed.xpm,
+	themes/platinum/stick-active.xpm,
+	themes/platinum/stick-inactive.xpm,
+	themes/platinum/stick-pressed.xpm, themes/platinum/themerc,
+	themes/platinum/title-1-active.xpm,
+	themes/platinum/title-1-inactive.xpm,
+	themes/platinum/title-2-active.xpm,
+	themes/platinum/title-2-inactive.xpm,
+	themes/platinum/title-3-active.xpm,
+	themes/platinum/title-3-inactive.xpm,
+	themes/platinum/title-4-active.xpm,
+	themes/platinum/title-4-inactive.xpm,
+	themes/platinum/title-5-active.xpm,
+	themes/platinum/title-5-inactive.xpm,
+	themes/platinum/top-left-active.xpm,
+	themes/platinum/top-left-inactive.xpm,
+	themes/platinum/top-right-active.xpm,
+	themes/platinum/top-right-inactive.xpm,
+	themes/slimline/Makefile.am, themes/slimline/Makefile.in,
+	themes/slimline/bottom-active.xpm,
+	themes/slimline/bottom-inactive.xpm,
+	themes/slimline/bottom-left-active.xpm,
+	themes/slimline/bottom-left-inactive.xpm,
+	themes/slimline/bottom-right-active.xpm,
+	themes/slimline/bottom-right-inactive.xpm,
+	themes/slimline/close-active.xpm,
+	themes/slimline/close-inactive.xpm,
+	themes/slimline/close-pressed.xpm, themes/slimline/hide-active.xpm,
+	themes/slimline/hide-inactive.xpm,
+	themes/slimline/hide-pressed.xpm, themes/slimline/left-active.xpm,
+	themes/slimline/left-inactive.xpm,
+	themes/slimline/maximize-active.xpm,
+	themes/slimline/maximize-inactive.xpm,
+	themes/slimline/maximize-pressed.xpm,
+	themes/slimline/right-active.xpm,
+	themes/slimline/right-inactive.xpm,
+	themes/slimline/shade-active.xpm,
+	themes/slimline/shade-inactive.xpm,
+	themes/slimline/shade-pressed.xpm, themes/slimline/themerc,
+	themes/slimline/title-1-active.xpm,
+	themes/slimline/title-1-inactive.xpm,
+	themes/slimline/title-2-active.xpm,
+	themes/slimline/title-2-inactive.xpm,
+	themes/slimline/title-3-active.xpm,
+	themes/slimline/menu-active.xpm, themes/slimline/menu-inactive.xpm,
+	themes/slimline/menu-pressed.xpm, themes/slimline/stick-active.xpm,
+	themes/slimline/stick-inactive.xpm,
+	themes/slimline/stick-pressed.xpm,
+	themes/slimline/title-3-inactive.xpm,
+	themes/slimline/title-4-active.xpm,
+	themes/slimline/title-4-inactive.xpm,
+	themes/slimline/title-5-active.xpm,
+	themes/slimline/title-5-inactive.xpm,
+	themes/slimline/top-left-active.xpm,
+	themes/slimline/top-left-inactive.xpm,
+	themes/slimline/top-right-active.xpm,
+	themes/slimline/top-right-inactive.xpm,
+	themes/coldsteel/Makefile.am, themes/coldsteel/Makefile.in,
+	themes/coldsteel/bottom-active.xpm,
+	themes/coldsteel/bottom-inactive.xpm,
+	themes/coldsteel/bottom-left-active.xpm,
+	themes/coldsteel/bottom-left-inactive.xpm,
+	themes/coldsteel/bottom-right-active.xpm,
+	themes/coldsteel/bottom-right-inactive.xpm,
+	themes/coldsteel/close-active.xpm,
+	themes/coldsteel/close-inactive.xpm,
+	themes/coldsteel/close-pressed.xpm,
+	themes/coldsteel/hide-active.xpm,
+	themes/coldsteel/hide-inactive.xpm,
+	themes/coldsteel/hide-pressed.xpm,
+	themes/coldsteel/left-active.xpm,
+	themes/coldsteel/left-inactive.xpm,
+	themes/coldsteel/maximize-active.xpm,
+	themes/coldsteel/maximize-inactive.xpm,
+	themes/coldsteel/maximize-pressed.xpm,
+	themes/coldsteel/menu-active.xpm,
+	themes/coldsteel/menu-inactive.xpm,
+	themes/coldsteel/menu-pressed.xpm,
+	themes/coldsteel/right-active.xpm,
+	themes/coldsteel/right-inactive.xpm,
+	themes/coldsteel/shade-active.xpm,
+	themes/coldsteel/shade-inactive.xpm,
+	themes/coldsteel/shade-pressed.xpm,
+	themes/coldsteel/stick-active.xpm,
+	themes/coldsteel/stick-inactive.xpm,
+	themes/coldsteel/stick-pressed.xpm, themes/coldsteel/themerc,
+	themes/coldsteel/title-1-active.xpm,
+	themes/coldsteel/title-1-inactive.xpm,
+	themes/coldsteel/title-2-active.xpm,
+	themes/coldsteel/title-2-inactive.xpm,
+	themes/coldsteel/title-3-active.xpm,
+	themes/coldsteel/title-3-inactive.xpm,
+	themes/coldsteel/title-4-active.xpm,
+	themes/coldsteel/title-4-inactive.xpm,
+	themes/coldsteel/title-5-active.xpm,
+	themes/coldsteel/title-5-inactive.xpm,
+	themes/coldsteel/top-left-active.xpm,
+	themes/coldsteel/top-left-inactive.xpm,
+	themes/coldsteel/top-right-active.xpm,
+	themes/coldsteel/top-right-inactive.xpm, themes/agua/Makefile.am,
+	themes/agua/Makefile.in, themes/agua/bottom-active.xpm,
+	themes/agua/bottom-inactive.xpm,
+	themes/agua/bottom-left-active.xpm,
+	themes/agua/bottom-left-inactive.xpm,
+	themes/agua/bottom-right-active.xpm,
+	themes/agua/bottom-right-inactive.xpm,
+	themes/agua/close-active.xpm, themes/agua/close-inactive.xpm,
+	themes/agua/close-pressed.xpm, themes/agua/hide-active.xpm,
+	themes/agua/hide-inactive.xpm, themes/agua/hide-pressed.xpm,
+	themes/agua/left-active.xpm, themes/agua/left-inactive.xpm,
+	themes/agua/maximize-active.xpm, themes/agua/maximize-inactive.xpm,
+	themes/agua/maximize-pressed.xpm, themes/agua/right-active.xpm,
+	themes/agua/right-inactive.xpm, themes/agua/shade-active.xpm,
+	themes/agua/shade-inactive.xpm, themes/agua/shade-pressed.xpm,
+	themes/agua/stick-active.xpm, themes/agua/themerc,
+	themes/agua/title-1-active.xpm, themes/agua/title-1-inactive.xpm,
+	themes/agua/title-2-active.xpm, themes/agua/title-2-inactive.xpm,
+	themes/agua/title-3-active.xpm, themes/agua/title-3-inactive.xpm,
+	themes/agua/title-4-active.xpm, themes/agua/title-4-inactive.xpm,
+	themes/agua/title-5-active.xpm, themes/agua/title-5-inactive.xpm,
+	themes/agua/top-left-active.xpm, themes/agua/top-left-inactive.xpm,
+	themes/agua/top-right-active.xpm,
+	themes/agua/top-right-inactive.xpm, themes/agua/menu-active.xpm,
+	themes/agua/menu-inactive.xpm, themes/agua/stick-inactive.xpm,
+	themes/agua/stick-pressed.xpm, themes/agua/menu-pressed.xpm,
+	themes/redmond/bottom-active.xpm,
+	themes/redmond/bottom-inactive.xpm,
+	themes/redmond/bottom-left-active.xpm,
+	themes/redmond/bottom-left-inactive.xpm,
+	themes/redmond/bottom-right-active.xpm,
+	themes/redmond/bottom-right-inactive.xpm,
+	themes/redmond/close-active.xpm, themes/redmond/close-inactive.xpm,
+	themes/redmond/close-pressed.xpm, themes/redmond/hide-active.xpm,
+	themes/redmond/hide-inactive.xpm, themes/redmond/hide-pressed.xpm,
+	themes/redmond/left-active.xpm, themes/redmond/left-inactive.xpm,
+	themes/redmond/maximize-active.xpm,
+	themes/redmond/maximize-inactive.xpm,
+	themes/redmond/maximize-pressed.xpm,
+	themes/redmond/right-active.xpm, themes/redmond/right-inactive.xpm,
+	themes/redmond/shade-active.xpm, themes/redmond/shade-inactive.xpm,
+	themes/redmond/shade-pressed.xpm,
+	themes/redmond/top-left-active.xpm,
+	themes/redmond/top-left-inactive.xpm,
+	themes/redmond/top-right-active.xpm,
+	themes/redmond/top-right-inactive.xpm, themes/redmond/Makefile.am,
+	themes/redmond/Makefile.in, themes/redmond/themerc,
+	themes/redmond/title-1-active.xpm,
+	themes/redmond/title-1-inactive.xpm,
+	themes/redmond/title-2-active.xpm,
+	themes/redmond/title-2-inactive.xpm,
+	themes/redmond/title-3-active.xpm,
+	themes/redmond/title-3-inactive.xpm,
+	themes/redmond/title-4-active.xpm,
+	themes/redmond/title-4-inactive.xpm,
+	themes/redmond/title-5-active.xpm,
+	themes/redmond/title-5-inactive.xpm, themes/gtk/bottom-active.xpm,
+	themes/gtk/bottom-inactive.xpm, themes/redmond/menu-active.xpm,
+	themes/redmond/menu-inactive.xpm, themes/redmond/menu-pressed.xpm,
+	themes/redmond/stick-active.xpm, themes/redmond/stick-inactive.xpm,
+	themes/redmond/stick-pressed.xpm,
+	themes/gtk/bottom-left-active.xpm,
+	themes/gtk/bottom-left-inactive.xpm,
+	themes/gtk/bottom-right-active.xpm,
+	themes/gtk/bottom-right-inactive.xpm, themes/gtk/close-active.xpm,
+	themes/gtk/close-inactive.xpm, themes/gtk/close-pressed.xpm,
+	themes/gtk/hide-active.xpm, themes/gtk/hide-inactive.xpm,
+	themes/gtk/hide-pressed.xpm, themes/gtk/left-active.xpm,
+	themes/gtk/left-inactive.xpm, themes/gtk/maximize-active.xpm,
+	themes/gtk/maximize-inactive.xpm, themes/gtk/maximize-pressed.xpm,
+	themes/gtk/menu-active.xpm, themes/gtk/menu-inactive.xpm,
+	themes/gtk/menu-pressed.xpm, themes/gtk/right-active.xpm,
+	themes/gtk/right-inactive.xpm, themes/gtk/shade-active.xpm,
+	themes/gtk/shade-inactive.xpm, themes/gtk/Makefile.am,
+	themes/gtk/Makefile.in, themes/gtk/shade-pressed.xpm,
+	themes/gtk/stick-active.xpm, themes/gtk/stick-inactive.xpm,
+	themes/gtk/stick-pressed.xpm, themes/gtk/themerc,
+	themes/gtk/title-1-active.xpm, themes/gtk/title-1-inactive.xpm,
+	themes/gtk/title-2-active.xpm, themes/gtk/title-2-inactive.xpm,
+	themes/gtk/title-3-active.xpm, themes/gtk/title-3-inactive.xpm,
+	themes/gtk/title-4-active.xpm, themes/gtk/title-4-inactive.xpm,
+	themes/gtk/title-5-active.xpm, themes/gtk/title-5-inactive.xpm,
+	themes/gtk/top-left-active.xpm, themes/gtk/top-left-inactive.xpm,
+	themes/gtk/top-right-active.xpm, themes/gtk/top-right-inactive.xpm,
+	themes/xfce/bottom-active.xpm, themes/xfce/bottom-inactive.xpm,
+	themes/xfce/bottom-left-active.xpm,
+	themes/xfce/bottom-left-inactive.xpm,
+	themes/xfce/bottom-right-active.xpm,
+	themes/xfce/bottom-right-inactive.xpm,
+	themes/xfce/close-active.xpm, themes/xfce/close-inactive.xpm,
+	themes/xfce/close-pressed.xpm, themes/xfce/hide-active.xpm,
+	themes/xfce/hide-inactive.xpm, themes/xfce/hide-pressed.xpm,
+	themes/xfce/left-active.xpm, themes/xfce/left-inactive.xpm,
+	themes/xfce/maximize-active.xpm, themes/xfce/maximize-inactive.xpm,
+	themes/xfce/maximize-pressed.xpm, themes/xfce/menu-active.xpm,
+	themes/xfce/menu-inactive.xpm, themes/xfce/menu-pressed.xpm,
+	themes/xfce/right-active.xpm, themes/xfce/right-inactive.xpm,
+	themes/xfce/shade-active.xpm, themes/xfce/shade-inactive.xpm,
+	themes/xfce/shade-pressed.xpm, themes/xfce/stick-active.xpm,
+	themes/xfce/stick-inactive.xpm, themes/xfce/stick-pressed.xpm,
+	themes/xfce/themerc, themes/xfce/title-1-active.xpm,
+	themes/xfce/title-1-inactive.xpm, themes/xfce/Makefile.am,
+	themes/xfce/Makefile.in, themes/xfce/title-2-active.xpm,
+	themes/xfce/title-2-inactive.xpm, themes/xfce/title-3-active.xpm,
+	themes/xfce/title-3-inactive.xpm, themes/xfce/title-4-active.xpm,
+	themes/xfce/title-4-inactive.xpm, themes/xfce/title-5-active.xpm,
+	themes/xfce/title-5-inactive.xpm, themes/xfce/top-left-active.xpm,
+	themes/xfce/top-left-inactive.xpm,
+	themes/xfce/top-right-active.xpm,
+	themes/xfce/top-right-inactive.xpm: Initial CVS import
+        
+
