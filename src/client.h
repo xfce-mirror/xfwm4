@@ -30,8 +30,6 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
@@ -189,7 +187,7 @@ struct _Client
     unsigned long win_hints;
     unsigned long win_state;
     unsigned long win_layer;
-    Time creation;
+    unsigned long serial;
 
     int win_workspace;
     Atom type_atom;

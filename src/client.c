@@ -99,6 +99,7 @@
 
 Client *clients = NULL;
 unsigned int client_count = 0;
+unsigned long client_serial = 0;
 
 static GList *windows       = NULL;
 static GList *windows_stack = NULL;
@@ -267,7 +268,7 @@ clientIsTransientFor (Client * c1, Client * c2)
         }
         else
         {
-            return (clientSameGroup (c1, c2) && (c1->creation >= c2->creation));
+            return (clientSameGroup (c1, c2) && (c1->serial >= c2->serial));
         }
     }
     return FALSE;
@@ -3120,7 +3121,7 @@ clientFrame (Window w, gboolean recapture)
     }
     
     c->window = w;
-    c->creation = last_timestamp;
+    c->serial = client_serial++;
 
     getWindowName (dpy, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
