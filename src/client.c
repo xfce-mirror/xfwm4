@@ -1272,6 +1272,7 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
                 {
                     DBG("unable to determine sibling!\n");
                     wc->stack_mode = Above;
+                    sibling = clientGetTopMost(c->win_layer, c);
                 }
                 break;
         }
