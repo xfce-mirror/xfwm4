@@ -150,7 +150,7 @@ typeOfClick (Window w, XEvent * ev, gboolean allow_double_click)
     return (XfwmButtonClickType) clicks;
 }
 
-static void
+static inline void
 clear_timeout (void)
 {
     if (raise_timeout)
@@ -160,7 +160,7 @@ clear_timeout (void)
     }
 }
 
-static gboolean
+static inline gboolean
 raise_cb (gpointer data)
 {
     Client *c;
@@ -175,7 +175,7 @@ raise_cb (gpointer data)
     return (TRUE);
 }
 
-static void
+static inline void
 reset_timeout (void)
 {
     if (raise_timeout)
@@ -875,7 +875,7 @@ handleMapNotify (XMapEvent * ev)
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        CLIENT_FLAG_SET (c, CLIENT_FLAG_MAPPED);
+        clientShow (c, TRUE);
     }
 }
 
@@ -892,12 +892,28 @@ handleUnmapNotify (XUnmapEvent * ev)
     {
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmaps for \"%s\" is %i", c->name, c->ignore_unmap);
-        /* Reparenting generates an unmapnotify, ignore event in that case */
-        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED | CLIENT_FLAG_HIDDEN))
+
+        if (!CLIENT_FLAG_TEST (c, CLIENT_FLAG_MAPPED))
         {
-            TRACE ("Ignoring UnmapNotify on window (0x%lx)", ev->window);
+            /*
+             * ICCCM spec states that a client wishing to switch
+             * to WithdrawnState should send a synthetic UnmapNotify 
+             * with the event field set to root if the client window 
+             * is already unmapped.
+             */
+            if ((ev->event == root) && (ev->send_event))
+            {
+                clientPassFocus (c);
+                clientUnframe (c, FALSE);
+            }
+            /* 
+             * Otherwise this UnmapNotify event is caused by reparenting
+             * so we just ignore it, so the window won't return 
+             * to withdrawn state by mistake.
+             */
             return;
         }
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAPPED);
         clientPassFocus (c);
         if (c->ignore_unmap)
         {

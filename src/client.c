@@ -131,6 +131,7 @@ static GList *clientListTransientOrModal (Client * c);
 static inline void clientShowSingle (Client * c, gboolean change_state);
 static inline void clientHideSingle (Client * c, int ws, gboolean change_state);
 static inline void clientSetWorkspaceSingle (Client * c, int ws);
+static inline void clientSortRing(Client *c);
 static inline void clientSnapPosition (Client * c);
 static GtkToXEventFilterStatus clientMove_event_filter (XEvent * xevent,
     gpointer data);
@@ -3214,7 +3215,11 @@ clientFrame (Window w, gboolean recapture)
             CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientShow (c, TRUE);
-            if (!recapture && clientAcceptFocus (c) &&
+            if (recapture)
+            {
+                clientSortRing(c);
+            }
+            else if (clientAcceptFocus (c) &&
                 (params.focus_new || CLIENT_FLAG_TEST(c, CLIENT_FLAG_STATE_MODAL)))
             {
                 clientSetFocus (c, TRUE, FALSE);
@@ -3343,7 +3348,7 @@ clientUnframeAll ()
     TRACE ("entering clientUnframeAll");
 
     clientSetFocus (NULL, FALSE, TRUE);
-    XSync (dpy, 0);
+    XSync (dpy, FALSE);
     MyXGrabServer ();
     XQueryTree (dpy, root, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
@@ -3670,15 +3675,17 @@ clientHideSingle (Client * c, int ws, gboolean change_state)
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     XUnmapWindow (dpy, c->frame);
     XUnmapWindow (dpy, c->window);
-    CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
+    {
+        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_VISIBLE);
+        c->ignore_unmap++;
+    }
     if (change_state)
     {
-        CLIENT_FLAG_UNSET (c, CLIENT_FLAG_MAPPED);
         CLIENT_FLAG_SET (c, CLIENT_FLAG_HIDDEN);
         setWMState (dpy, c->window, IconicState);
         workspaceUpdateArea (margins, gnome_margins);
     }
-    c->ignore_unmap++;
     MyXUngrabServer ();
     clientSetNetState (c);
 }
@@ -3693,6 +3700,7 @@ clientHide (Client * c, int ws, gboolean change_state)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientHide");
 
+    clientPassFocus(c);
     list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_list_next (index))
     {
@@ -4502,10 +4510,28 @@ clientUpdateFocus (Client * c)
         PropModeReplace, (unsigned char *) data, 2);
 }
 
+static inline void
+clientSortRing(Client *c)
+{
+    g_return_if_fail (c != NULL);
+
+    TRACE ("Sorting...");
+    if (client_count > 2 && c != clients)
+    {
+        c->prev->next = c->next;
+        c->next->prev = c->prev;
+
+        c->prev = clients->prev;
+        c->next = clients;
+        clients->prev->next = c;
+        clients->prev = c;
+    }
+    clients = c;
+}
+
 void
 clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
 {
-    Client *tmp;
     Client *c2, *c3;
     unsigned long data[2];
 
@@ -4541,19 +4567,7 @@ clientSetFocus (Client * c, gboolean sort, gboolean ignore_modal)
         clientInstallColormaps (c);
         if (sort)
         {
-            TRACE ("Sorting...");
-            if (client_count > 2 && c != clients)
-            {
-                tmp = c;
-                c->prev->next = c->next;
-                c->next->prev = c->prev;
-
-                c->prev = clients->prev;
-                c->next = clients;
-                clients->prev->next = c;
-                clients->prev = c;
-            }
-            clients = c;
+            clientSortRing(c);
         }
         XSetInputFocus (dpy, c->window, RevertToNone, getLastEventTime());
         frameDraw (c, FALSE, FALSE);
