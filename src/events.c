@@ -891,6 +891,26 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
     }
 }
 
+static inline void handleLeaveNotify(XCrossingEvent * ev)
+{
+    /* If we leave the root window, then we're really moving
+     * to another screen on a multiple screen display, and we
+     * need to de-focus and unhighlight to make sure that we
+     * don't end up with more than one highlighted window at 
+     * a time */
+
+    TRACE("entering handleLeaveNotify");
+
+    if ((ev->window == root) && (ev->mode == NotifyNormal) && (ev->detail != NotifyInferior))
+    {
+        if(params.raise_on_focus && !params.click_to_focus)
+        {
+            reset_timeout();
+        }
+        clientSetFocus(NULL, TRUE);
+    }
+}
+
 static inline void handleFocusIn(XFocusChangeEvent * ev)
 {
     Client *c;
@@ -1202,6 +1222,9 @@ void handleEvent(XEvent * ev)
         break;
     case EnterNotify:
         handleEnterNotify((XCrossingEvent *) ev);
+        break;
+    case LeaveNotify:
+        handleLeaveNotify((XCrossingEvent *) ev);
         break;
     case FocusIn:
         handleFocusIn((XFocusChangeEvent *) ev);
