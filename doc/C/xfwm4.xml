@@ -1,0 +1,180 @@
+<?xml version='1.0'?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY appversion "3.90"> 
+  <!ENTITY date "May 2003"> 
+  <!ENTITY app "<application>xfwm4</application>">
+]>
+
+<article id="xfwm4" lang="en">
+
+<!-- Header --> 
+<articleinfo>
+
+  <title>XFce 4 Window Manager</title>
+  
+  <copyright>
+    <year>2003</year> <holder>AUTHOR</holder>
+  </copyright>
+
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin
+   translation)</holder>
+  </copyright>
+
+ -->
+
+<!-- I don't know about this
+  <legalnotice id="legalnotice">
+    <para>
+      This document is provided under the terms of the GNU GPL, version
+      2 or (at your option) any later version.
+    </para>
+  </legalnotice>
+-->
+  <authorgroup>
+
+    <author>
+      <firstname>MAIN</firstname> <surname>AUTHOR</surname>
+      <affiliation>
+	<address><email>m.author@users.sourceforge.net</email></address>
+      </affiliation>
+    </author>
+
+<!-- This is appropriate place for other contributors: translators,
+maintainers, etc. Commented out by default.
+
+    <othercredit role="translator">
+      <firstname>Latin</firstname> <surname>Translator 1</surname>
+      <affiliation>
+	<orgname>Latin Translation Team</orgname>
+	<address><email>translator@gnome.org</email> </address>
+      </affiliation> <contrib>Latin translation</contrib>
+    </othercredit>
+-->
+
+  </authorgroup>
+
+  <revhistory>
+    <revision>
+      <revnumber>0.1</revnumber> 
+      <date>May 2003</date>
+      <authorinitials>ma</authorinitials>
+    </revision>
+  </revhistory>
+
+  <releaseinfo>This manual describes &app; version &appversion;
+  </releaseinfo>
+
+</articleinfo>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-intro">
+  <title>Introduction</title>
+
+  <para>The XFce 4 Window Manager is part of the 
+    <ulink url="http://www.xfce.org" 
+      type="html">XFce Desktop Environment</ulink>. The actual command to 
+    run is &app;. To run it in the background use 
+    <command>&app; --daemon</command>. The window manager is responsible for
+    the placement of windows on the screen, provides the window
+    decorations and allows you for instance to move, resize or close them.
+  </para>
+
+  <para>If you are familiar with previous versions of XFce you will find many
+    changes. First of all, &app; adheres strongly to the standards defined on
+    <ulink linkend="http://freedesktop.org"
+      type="html">freedesktop.org</ulink>. Consequently, special features such
+    as making windows borderless, or providing an icon for the application
+    must now be implemented in the application; you can no longer use the
+    window manager to force different behaviour. Most visible change is
+    probably the themeability. The window decorations (borders, title bar and
+    window buttons) can be configured by using window manager themes. 
+  </para>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-using">
+  <title>Using &app;</title>
+
+  <sect2 id="wm-windows">
+    <title>Windows</title>
+  
+    <para>The window manager provides borders, a title bar and window buttons to
+      application windows. The look is defined by the window manager theme. The
+      edges and corners of the window frame can be used to resize a window,
+      although certain special windows can not be resized.
+    </para>
+    
+    <para>
+      In the default theme &app; shows six buttons and a title on regular 
+      application windows. The six buttons perform these basic functions: 
+      menu, shade, stick, minimize, mizimize and close.
+    </para>
+
+  </sect2>
+
+  <sect2 id="wm-keybindings">
+    <title>Keyboard shortcuts</title>
+
+    <para>&app; also provides a limited number of keyboard shortcuts to
+      quickly perform certain tasks. Although the default configuration should
+      work fine for everyone it is possible to redefine the key combinations
+      by making a personal keybinding configuration file.
+    </para>
+
+    <para>In the default configuration the following kybindings are defined:
+    </para>
+
+  </sect2>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-settings">
+  <title>Customizing &app;</title>
+
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-copyright">
+  <title>About &app;</title>
+
+  <para>&app; was written Olivier Fourdan  
+    (<email>fourdan@xfce.org</email>). To find more information, please visit 
+    the <ulink url="http://www.xfce.org" type="http">XFce web site</ulink>. 
+  </para>
+
+  <para>To report a bug or make a suggestion regarding this application or
+    this manual send an e-mail to the xfce4-dev mailing list, or use the bug 
+    tracking system at the 
+    <ulink url="http://sourceforge.net/projects/xfce" type="http">XFce 
+      sourceforge project site</ulink>. 
+  </para>
+    
+  <para> This program is distributed under the terms of the
+    GNU General Public License as published by the Free Software Foundation; 
+    either version 2 of the License, or (at your option) any later version.
+  </para>
+
+  <para>You should have received a copy of the GNU General Public License 
+    along with this program; if not, write to the Free Software 
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.
+  </para>
+
+</sect1>
+
+</article>

@@ -20,7 +20,7 @@ VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
-top_builddir = ../..
+top_builddir = ../../..
 
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 INSTALL = @INSTALL@
@@ -163,16 +163,16 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-themedir = $(pkgdatadir)/themes/default.keys
-theme_DATA = keythemerc
-EXTRA_DIST = $(theme_DATA)
-subdir = themes/default.keys
+EXTRA_DIST = $(images_DATA)
+imagesdir = $(pkgdatadir)/doc/C/images
+images_DATA = 
+subdir = doc/C/images
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
-DATA = $(theme_DATA)
+DATA = $(images_DATA)
 
 DIST_COMMON = Makefile.am Makefile.in
 all: all-am
@@ -180,7 +180,7 @@ all: all-am
 .SUFFIXES:
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign  themes/default.keys/Makefile
+	  $(AUTOMAKE) --foreign  doc/C/images/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
 
@@ -193,23 +193,23 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-themeDATA_INSTALL = $(INSTALL_DATA)
-install-themeDATA: $(theme_DATA)
+imagesDATA_INSTALL = $(INSTALL_DATA)
+install-imagesDATA: $(images_DATA)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(themedir)
-	@list='$(theme_DATA)'; for p in $$list; do \
+	$(mkinstalldirs) $(DESTDIR)$(imagesdir)
+	@list='$(images_DATA)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(themeDATA_INSTALL) $$d$$p $(DESTDIR)$(themedir)/$$f"; \
-	  $(themeDATA_INSTALL) $$d$$p $(DESTDIR)$(themedir)/$$f; \
+	  echo " $(imagesDATA_INSTALL) $$d$$p $(DESTDIR)$(imagesdir)/$$f"; \
+	  $(imagesDATA_INSTALL) $$d$$p $(DESTDIR)$(imagesdir)/$$f; \
 	done
 
-uninstall-themeDATA:
+uninstall-imagesDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(theme_DATA)'; for p in $$list; do \
+	@list='$(images_DATA)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(themedir)/$$f"; \
-	  rm -f $(DESTDIR)$(themedir)/$$f; \
+	  echo " rm -f $(DESTDIR)$(imagesdir)/$$f"; \
+	  rm -f $(DESTDIR)$(imagesdir)/$$f; \
 	done
 tags: TAGS
 TAGS:
@@ -219,7 +219,7 @@ CTAGS:
 
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 
-top_distdir = ../..
+top_distdir = ../../..
 distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
 
 distdir: $(DISTFILES)
@@ -254,7 +254,7 @@ check: check-am
 all-am: Makefile $(DATA)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(themedir)
+	$(mkinstalldirs) $(DESTDIR)$(imagesdir)
 
 install: install-am
 install-exec: install-exec-am
@@ -296,7 +296,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-themeDATA
+install-data-am: install-imagesDATA
 
 install-exec-am:
 
@@ -322,17 +322,17 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-themeDATA
+uninstall-am: uninstall-imagesDATA uninstall-info-am
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
 	dvi-am info info-am install install-am install-data \
-	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-man install-strip install-themeDATA \
+	install-data-am install-exec install-exec-am install-imagesDATA \
+	install-info install-info-am install-man install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am \
-	uninstall-info-am uninstall-themeDATA
+	uninstall-imagesDATA uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

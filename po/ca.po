@@ -1,0 +1,442 @@
+# Window manager for XFce desktop environment.
+# Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2003-05-04 19:45+0200\n"
+"PO-Revision-Date: 2003-05-11 13:58+0100\n"
+"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
+"Language-Team: ca <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:124 mcs-plugin/margins_plugin.c:214
+#: mcs-plugin/margins_plugin.c:232
+msgid "Workspace Margins"
+msgstr "Marges de l'àrea de treball"
+
+#: mcs-plugin/margins_plugin.c:198
+msgid "Adjust workspace margins"
+msgstr "Ajusta els marges de l'àrea de treball"
+
+#: mcs-plugin/margins_plugin.c:219
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Els marges són àrees en les vores de la pantalla on cap finestra es "
+"col·locarà"
+
+#: mcs-plugin/margins_plugin.c:260
+msgid "Left :"
+msgstr "Esquerra:"
+
+#: mcs-plugin/margins_plugin.c:279
+msgid "Right :"
+msgstr "Dreta:"
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Top :"
+msgstr "Superior:"
+
+#: mcs-plugin/margins_plugin.c:317
+msgid "Bottom :"
+msgstr "Inferior:"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "Títol"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr "Menú"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr "Omnipresent"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr "Enrotlla"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "Oculta"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "Maximitza"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "Tanca"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr "Enrotlla la finestra"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "Oculta la finestra"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "Maximitza la finestra"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr "Res"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "Esquerra"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "Centre"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "Dreta"
+
+#: mcs-plugin/xfwm4_plugin.c:456
+msgid "Hidden"
+msgstr "Ocult"
+
+#: mcs-plugin/xfwm4_plugin.c:1110
+msgid "Font Selection Dialog"
+msgstr "Diàleg de sel·lecció del tipus de lletra"
+
+#: mcs-plugin/xfwm4_plugin.c:1152 mcs-plugin/xfwm4_plugin.c:1613
+msgid "Window Manager"
+msgstr "Gestor de Finestres"
+
+#: mcs-plugin/xfwm4_plugin.c:1165
+msgid "Window Manager Preferences"
+msgstr "Ajustaments del Gestor de Finestres"
+
+#: mcs-plugin/xfwm4_plugin.c:1203
+msgid "Window style"
+msgstr "Estil de Finestra"
+
+#: mcs-plugin/xfwm4_plugin.c:1221
+msgid "Font select :"
+msgstr "Sel·lecioneu el tipus de lletra:"
+
+#. gtk_container_set_border_width(GTK_CONTAINER(dialog->font_button), BORDER);
+#: mcs-plugin/xfwm4_plugin.c:1232
+msgid "Title font"
+msgstr "Títol del tipus de lletra"
+
+#: mcs-plugin/xfwm4_plugin.c:1241
+msgid "Text alignment inside title bar :"
+msgstr "Alineació dintre de la barra de títol:"
+
+#: mcs-plugin/xfwm4_plugin.c:1243
+msgid "Title Alignment"
+msgstr "Alineació del títol"
+
+#: mcs-plugin/xfwm4_plugin.c:1254
+msgid "Button layout"
+msgstr "Disseny del botó"
+
+#: mcs-plugin/xfwm4_plugin.c:1259
+msgid "Decoration style"
+msgstr "Estil de decoració"
+
+#: mcs-plugin/xfwm4_plugin.c:1292
+msgid "Keyboard Shortcut"
+msgstr "Dreceres de Teclat"
+
+#: mcs-plugin/xfwm4_plugin.c:1310
+msgid "Click to focus"
+msgstr "Cliqueu per enfocar"
+
+#: mcs-plugin/xfwm4_plugin.c:1317
+msgid "Focus follows mouse"
+msgstr "L'enfocament segueix el ratolí"
+
+#: mcs-plugin/xfwm4_plugin.c:1324
+msgid "Focus model"
+msgstr "Model d'enfocament."
+
+#: mcs-plugin/xfwm4_plugin.c:1333
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Automàticament enfoca \n"
+"les finestres noves"
+
+#: mcs-plugin/xfwm4_plugin.c:1339
+msgid "New window focus"
+msgstr "Enfoca les noves finestres"
+
+#: mcs-plugin/xfwm4_plugin.c:1353
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Automàticament col·loca en \n"
+"primer pla les finestres enfocades"
+
+#: mcs-plugin/xfwm4_plugin.c:1363
+msgid "Delay before raising focused window :"
+msgstr "Retard abans de col·locar en primer pla la finestra:"
+
+#: mcs-plugin/xfwm4_plugin.c:1369
+msgid "Slow"
+msgstr "Lent"
+
+#: mcs-plugin/xfwm4_plugin.c:1375
+msgid "Fast"
+msgstr "Ràpid"
+
+#: mcs-plugin/xfwm4_plugin.c:1390
+msgid "Raise on focus"
+msgstr "Col·loca en primer pla al enfocar"
+
+#: mcs-plugin/xfwm4_plugin.c:1399
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Col·loca en primer pla la finestra quan es\n"
+"cliqui dins la finestra de l'aplicació"
+
+#: mcs-plugin/xfwm4_plugin.c:1405
+msgid "Raise on click"
+msgstr "Col·loca en primer pla al clicar."
+
+#: mcs-plugin/xfwm4_plugin.c:1410
+msgid "Keyboard and focus"
+msgstr "Teclat i enfocament"
+
+#: mcs-plugin/xfwm4_plugin.c:1429
+msgid "Snap windows to screen border"
+msgstr "Alinea les finestres a la vora de la pantalla"
+
+#: mcs-plugin/xfwm4_plugin.c:1434
+msgid "Snap windows to other windows"
+msgstr "Alinea les finestres amb les altres finestres"
+
+#: mcs-plugin/xfwm4_plugin.c:1444
+msgid "Distance :"
+msgstr "Distància:"
+
+#: mcs-plugin/xfwm4_plugin.c:1450
+msgid "Small"
+msgstr "Petit"
+
+#: mcs-plugin/xfwm4_plugin.c:1456
+msgid "Wide"
+msgstr "Ample"
+
+#: mcs-plugin/xfwm4_plugin.c:1470
+msgid "Windows snapping"
+msgstr "Alineació de finestres"
+
+#: mcs-plugin/xfwm4_plugin.c:1479
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr ""
+"Ajusta les àrees de treball quan s'arrossegui una finestra fora de la "
+"pantalla"
+
+#: mcs-plugin/xfwm4_plugin.c:1485
+msgid "Wrap workspaces"
+msgstr "Ajusta les àrees de treball"
+
+#: mcs-plugin/xfwm4_plugin.c:1494
+msgid "Display content of windows when resizing"
+msgstr "Mostra el contingut de les finestres quan canvian de mida"
+
+#: mcs-plugin/xfwm4_plugin.c:1500
+msgid "Opaque resize"
+msgstr "Canvi de mida opac"
+
+#: mcs-plugin/xfwm4_plugin.c:1509
+msgid "Display content of windows when moving"
+msgstr "Mostra el contingut de les finestres quan es mouen"
+
+#: mcs-plugin/xfwm4_plugin.c:1515
+msgid "Opaque move"
+msgstr "Moviment opac"
+
+#: mcs-plugin/xfwm4_plugin.c:1524
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
+
+#: mcs-plugin/xfwm4_plugin.c:1526
+msgid "Double click action"
+msgstr "Acció del doble clic"
+
+#: mcs-plugin/xfwm4_plugin.c:1531
+msgid "Misc."
+msgstr "Misc."
+
+#: src/client.c:406
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr "%s: net_wrm_state (finestra 0x%lx) no gestionada"
+
+#: src/events.c:1110
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operació encara no soportada\n"
+
+#: src/main.c:174
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Segmentation fault (violació de segment)"
+
+#: src/main.c:224
+#, c-format
+msgid "%s: Running without session manager"
+msgstr "%s: Executant-se sense gestor de sessió"
+
+#: src/main.c:324
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Un altre gestor de finestres s'està executant"
+
+#: src/main.c:328
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Falten dades dels fixers per defecte"
+
+#: src/main.c:354
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: S'ha produït un error desconegut"
+
+#: src/menu.c:42
+#, fuzzy
+msgid "Ma_ximize"
+msgstr "Ma_ximitza"
+
+#: src/menu.c:43
+#, fuzzy
+msgid "Un_maximize"
+msgstr "Des_maximitza"
+
+#: src/menu.c:44
+#, fuzzy
+msgid "_Hide"
+msgstr "_Oculta"
+
+#: src/menu.c:45
+#, fuzzy
+msgid "Hide _all others"
+msgstr "Oculta _totes les altres"
+
+#: src/menu.c:46
+#, fuzzy
+msgid "S_how"
+msgstr "_Mostra"
+
+#: src/menu.c:47
+#, fuzzy
+msgid "_Shade"
+msgstr "_Enrotlla"
+
+#: src/menu.c:48
+#, fuzzy
+msgid "Un_shade"
+msgstr "Des_enrotlla"
+
+#: src/menu.c:49
+#, fuzzy
+msgid "S_tick"
+msgstr "_Omnipresent"
+
+#: src/menu.c:50
+#, fuzzy
+msgid "Uns_tick"
+msgstr "No _omnipresent"
+
+#: src/menu.c:51
+#, fuzzy
+msgid "_Move"
+msgstr "Mou"
+
+#: src/menu.c:52
+#, fuzzy
+msgid "_Resize"
+msgstr "_Canvia de mida"
+
+#: src/menu.c:53
+#, fuzzy
+msgid "S_witch"
+msgstr "Can_via"
+
+#: src/menu.c:55
+#, fuzzy
+msgid "_Close"
+msgstr "_Tanca"
+
+#: src/menu.c:57
+msgid "Destroy"
+msgstr "Destrueix"
+
+#: src/menu.c:59
+#, fuzzy
+msgid "Wor_kspace"
+msgstr "À_rea de treball"
+
+#: src/menu.c:62
+#, fuzzy
+msgid "_Quit"
+msgstr "_Surt"
+
+#: src/menu.c:63
+msgid "Restart"
+msgstr "Reinicia"
+
+#: src/menu.c:311
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu no ha pogut capturar el punter\n"
+
+#: src/settings.c:265
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: Falten els fitxers per defecte."
+
+#: src/settings.c:444
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: No es pot allotjar el color actiu %s\n"
+
+#: src/settings.c:450
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: No es pot processar el color actiu %s\n"
+
+#: src/settings.c:488
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: No es pot allotjar el color inactiu %s\n"
+
+#: src/settings.c:494
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: No es pot processar el color inactiu %s\n"
+
+#: src/settings.c:624
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: Faltes valors en els fitxers per defecte"
+
+#: src/settings.c:895
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr ""
+"%s: El comptador d'àrees de treball no està inicialitzat, es fa servir el "
+"valor rc: %i"
+
+#: src/tabwin.c:68
+msgid "Switch to ..."
+msgstr "Canvia a ..."

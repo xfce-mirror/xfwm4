@@ -31,7 +31,7 @@ dnl check for standard header files
 AC_HEADER_STDC
 
 dnl Check for i18n support
-BM_I18N([xfwm4], [ar de es es_MX fi fr nl pl zh_CN])
+BM_I18N([xfwm4], [ar ca de es es_MX fi fr nl pl zh_CN])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE
@@ -51,6 +51,9 @@ BM_DEBUG_SUPPORT
 AC_OUTPUT([ 
 xfwm4.spec
 Makefile
+doc/Makefile
+doc/C/Makefile
+doc/C/images/Makefile
 defaults/Makefile
 mcs-plugin/Makefile
 po/Makefile.in 
