@@ -528,11 +528,11 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
-    memcpy(&copy_event, ev, sizeof(XEvent));
     clientSetFocus (c, NO_FOCUS_FLAG);
     clientRaise (c);
     clientPassGrabButton1 (c);
 
+    memcpy(&copy_event, ev, sizeof(XEvent));
     tclick = typeOfClick (c->frame, &copy_event, TRUE);
 
     if ((tclick == XFWM_BUTTON_DRAG)
@@ -734,9 +734,10 @@ handleButtonPress (XButtonEvent * ev)
                    for gtk to handle it (in case we open up the menu)
                  */
 
-                XEvent copy_event = (XEvent) * ev;
+                XEvent copy_event;
                 XfwmButtonClickType tclick;
 
+                memcpy(&copy_event, ev, sizeof(XEvent));
                 tclick = typeOfClick (c->frame, &copy_event, TRUE);
 
                 if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
