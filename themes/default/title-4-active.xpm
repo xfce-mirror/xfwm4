@@ -1,10 +1,10 @@
 /* XPM */
 static char * title_4_active_xpm[] = {
-"4 20 10 1",
+"4 21 10 1",
 "       c None",
 ".      c #000000",
 "+      c #FFFFFF s active_hilight_2",
-"@      c #D5D6D4 s active_color_2",
+"@      c #D5D6D5 s active_color_2",
 "#      c #949594 s active_shadow_2",
 "$      c #4B58A2 s active_shadow_1",
 "%      c #848FD6 s active_mid_1",
@@ -30,4 +30,5 @@ static char * title_4_active_xpm[] = {
 "$@@@",
 "$@@@",
 "$@@@",
+"@@@@",
 "@@@@"};
