@@ -10,14 +10,14 @@ AC_DEFUN([BM_DEPEND],
 ])
 
 dnl
-dnl BM_DEPEND_CHECK(var, pkg, version, name, helpstring)
+dnl BM_DEPEND_CHECK(var, pkg, version, name, helpstring, default)
 dnl
 AC_DEFUN([BM_DEPEND_CHECK],
 [
-  AC_ARG_ENABLE([$4-check],
-AC_HELP_STRING([--enable-$4-check], [Enable checking for $5 (default)])
-AC_HELP_STRING([--disable-$4-check], [Disable checking for $5]),
-    [ac_cv_$1_check=$enableval], [ac_cv_$1_check=yes])
+  AC_ARG_ENABLE([$4],
+AC_HELP_STRING([--enable-$4], [Enable checking for $5 (default=$6)])
+AC_HELP_STRING([--disable-$4], [Disable checking for $5]),
+    [ac_cv_$1_check=$enableval], [ac_cv_$1_check=$6])
 
   if test x"$ac_cv_$1_check" = x"yes"; then
     AC_MSG_CHECKING([for $2 >= $3])
