@@ -34,7 +34,7 @@
 #define DEFAULT_LAYOUT "OTS|HMC"
 #define DEFAULT_ACTION "maximize"
 #define DEFAULT_ALIGN "center"
-#define DEFAULT_FONT "Sans Bold 9"
+#define DEFAULT_FONT "Sans 9"
 
 #define MAX_ELEMENTS_BEFORE_SCROLLING 6
 

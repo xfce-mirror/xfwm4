@@ -225,7 +225,8 @@ SUBDIRS = \
 	opta								\
 	symphony							\
 	tyrex								\
-	waza
+	waza								\
+	wildbush
 
 all: all-recursive
 

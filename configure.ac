@@ -128,4 +128,5 @@ themes/opta/Makefile
 themes/symphony/Makefile
 themes/tyrex/Makefile
 themes/waza/Makefile
+themes/wildbush/Makefile
 ])

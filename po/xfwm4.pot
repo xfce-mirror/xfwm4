@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-15 23:49+0100\n"
+"POT-Creation-Date: 2004-12-17 00:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -561,7 +561,7 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/main.c:182
+#: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""

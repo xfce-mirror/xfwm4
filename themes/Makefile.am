@@ -9,4 +9,5 @@ SUBDIRS =								\
 	opta								\
 	symphony							\
 	tyrex								\
-	waza
+	waza								\
+	wildbush
