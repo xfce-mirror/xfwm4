@@ -41,6 +41,11 @@
     ((wmhints) && !(wmhints->flags & InputHint)) || \
     ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input))))
 
+#define START_ICONIC(c) \
+    ((c->wmhints) && \
+    (c->wmhints->initial_state == IconicState) && \
+    (c->transient_for == None))
+
 /* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
 #define XWINDOW_TO_GPOINTER(w)	((gpointer) (Window) (w))
 #define GPOINTER_TO_XWINDOW(p)	((Window) (p))
@@ -1548,7 +1553,7 @@ void clientFrame(Window w)
     c->fullscreen = False;
     c->has_border = True;
     c->has_struts = False;
-    c->hidden = (((c->wmhints) && (c->wmhints->initial_state == IconicState)) ? True : False);
+    c->hidden = (START_ICONIC(c) ? True : False);
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
     c->managed = False;
     c->maximized = False;
