@@ -130,7 +130,7 @@ static void cleanUp()
 
 static void load_saved_session(void)
 {
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     gchar *filename;
 
     filename = g_build_filename(home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
@@ -140,7 +140,7 @@ static void load_saved_session(void)
 
 static void save_phase_2(gpointer data)
 {
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     gchar *filename;
 
     filename = g_build_filename(home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);

@@ -1584,7 +1584,7 @@ static void create_channel(McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
 
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     gchar *rcfile;
 
     rcfile = g_strconcat(home, G_DIR_SEPARATOR_S, ".xfce4", G_DIR_SEPARATOR_S, RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
@@ -1824,7 +1824,7 @@ static void create_channel(McsPlugin * mcs_plugin)
 
 static gboolean write_options(McsPlugin * mcs_plugin)
 {
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     gchar *rcfile;
     gboolean result;
 

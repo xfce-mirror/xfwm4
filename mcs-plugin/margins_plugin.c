@@ -65,7 +65,7 @@ static void set_margin(int side, int margin);
 
 static void create_channel(McsManager * manager, const char *channel, const char *rcfile)
 {
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     char *homefile, *sysfile;
 
     homefile = g_build_filename(home, ".xfce4", "settings", rcfile, NULL);
@@ -90,7 +90,7 @@ static void create_channel(McsManager * manager, const char *channel, const char
 
 static gboolean save_channel(McsManager * manager, const char *channel, const char *rcfile)
 {
-    const char *home = g_getenv("HOME");
+    const char *home = g_get_home_dir();
     char *homefile;
     gboolean result;
 
