@@ -54,7 +54,7 @@ clientApplyStackList (ScreenInfo *screen_info)
     {
         GList *index = NULL;
         Client *c = NULL;
-        
+
         for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
         {
             c = (Client *) index->data;
@@ -64,7 +64,7 @@ clientApplyStackList (ScreenInfo *screen_info)
     }
 
     XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) nwindows + 4);
-    
+
     g_free (xwinstack);
 }
 
@@ -74,11 +74,11 @@ clientGetLowestTransient (Client * c)
     Client *lowest_transient = NULL, *c2;
     GList *index = NULL;
     ScreenInfo *screen_info = NULL;
-    
+
     g_return_val_if_fail (c != NULL, NULL);
 
     TRACE ("entering clientGetLowestTransient");
-    
+
     screen_info = c->screen_info;
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
@@ -343,7 +343,7 @@ clientRaise (Client * c)
             g_list_free (windows_stack_copy);
         }
         /* Now, screen_info->windows_stack contains the correct window stack
-           We still need to tell the X Server to reflect the changes 
+           We still need to tell the X Server to reflect the changes
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (c->screen_info, net_client_list_stacking, screen_info->windows_stack);
@@ -369,7 +369,7 @@ clientLower (Client * c)
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
-        
+
         if (clientIsTransientOrModalForGroup (c))
         {
             client_sibling = clientGetTopMostForGroup (c);
@@ -392,7 +392,7 @@ clientLower (Client * c)
                 gint position = g_list_position (screen_info->windows_stack, sibling) + 1;
 
                 screen_info->windows_stack = g_list_insert (screen_info->windows_stack, c, position);
-                TRACE ("lowest client is \"%s\" (0x%lx) at position %i", 
+                TRACE ("lowest client is \"%s\" (0x%lx) at position %i",
                         client_sibling->name, client_sibling->window, position);
             }
             else
@@ -401,7 +401,7 @@ clientLower (Client * c)
             }
         }
         /* Now, screen_info->windows_stack contains the correct window stack
-           We still need to tell the X Server to reflect the changes 
+           We still need to tell the X Server to reflect the changes
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
@@ -417,10 +417,10 @@ gboolean
 clientAdjustFullscreenLayer (Client *c, gboolean set)
 {
     g_return_val_if_fail (c, FALSE);
-       
+
     if (set)
     {
-        if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN) 
+        if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN)
             || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
@@ -429,7 +429,7 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
     }
     else if (c->win_layer == WIN_LAYER_ABOVE_DOCK)
     {
-        if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN) 
+        if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN)
             || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -458,7 +458,7 @@ clientAddToList (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     myDisplayAddClient (display_info, c);
-    
+
     screen_info->client_count++;
     if (screen_info->clients)
     {
@@ -481,7 +481,7 @@ clientAddToList (Client * c)
     clientSetNetClientList (screen_info, net_client_list, screen_info->windows);
     clientSetNetClientList (screen_info, win_client_list, screen_info->windows);
     clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
-  
+
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }
 
@@ -490,7 +490,7 @@ clientRemoveFromList (Client * c)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
- 
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRemoveFromList");
 
@@ -499,7 +499,7 @@ clientRemoveFromList (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     myDisplayRemoveClient (display_info, c);
-    
+
     g_assert (screen_info->client_count > 0);
     screen_info->client_count--;
     if (screen_info->client_count == 0)
@@ -547,7 +547,7 @@ void
 clientSetLastRaise (Client *c)
 {
     ScreenInfo *screen_info = NULL;
- 
+
     g_return_if_fail (c != NULL);
 
     screen_info = c->screen_info;

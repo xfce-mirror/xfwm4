@@ -227,6 +227,20 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     return (XfwmButtonClickType) passdata.clicks;
 }
 
+static gboolean
+check_button_time (XButtonEvent *ev)
+{
+    static Time last_button_time = (Time) 0;
+    
+    if (last_button_time > ev->time)
+    {
+        return FALSE;
+    }
+
+    last_button_time = ev->time;
+    return TRUE;
+}
+
 static void
 clear_timeout (void)
 {
@@ -806,7 +820,6 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 static void
 handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 {
-    static Time last_button_time = (Time) 0;
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
     Window win;
@@ -815,13 +828,12 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     TRACE ("entering handleButtonPress");
 
     /* Avoid treating the same event twice */
-    if (last_button_time > ev->time)
+    if (!check_button_time (ev))
     {
         TRACE ("ignoring ButtonPress event because it has been already handled");
         return;
     }
-    last_button_time = ev->time;
-    
+
     /* Clear timeout */
     clear_timeout ();
 
@@ -1020,6 +1032,13 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     TRACE ("entering handleButtonRelease");
+
+    /* Avoid treating the same event twice */
+    if (!check_button_time (ev))
+    {
+        TRACE ("ignoring ButtonRelease event because it has been already handled");
+        return;
+    }
 
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
@@ -1453,6 +1472,8 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
+    Client *last_raised = NULL;
+        
 
     TRACE ("entering handleFocusIn");
     TRACE ("handleFocusIn (0x%lx) mode = %s",
@@ -1511,9 +1532,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
         screen_info = c->screen_info;
         clientUpdateFocus (screen_info, c, FOCUS_SORT);
+        last_raised = clientGetLastRaise (screen_info);
         if ((screen_info->params->click_to_focus) && 
             (screen_info->params->raise_on_click) && 
-            (c != clientGetLastRaise (screen_info)))
+            (last_raised != NULL) && (c != last_raised))
         {
             clientRaise (c);
             clientPassGrabButton1 (c);

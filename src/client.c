@@ -31,7 +31,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "client.h"
@@ -90,7 +90,7 @@
 #define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
 
 #ifndef EPSILON
-#define EPSILON                 (1e-6)  
+#define EPSILON                 (1e-6)
 #endif
 
 #ifndef MAX_RESIZES_PER_SECOND
@@ -134,10 +134,10 @@ clientGetXDisplay (Client * c)
     g_return_val_if_fail (c, NULL);
 
     return myScreenGetXDisplay (c->screen_info);
-}            
+}
 
-/* 
- * The following two functions are to limit the number of updates 
+/*
+ * The following two functions are to limit the number of updates
  * during resize operations.
  * It's taken from Metacity
  */
@@ -145,7 +145,7 @@ void
 clientClearLastOpTime (Client * c)
 {
     g_return_if_fail (c != NULL);
-    
+
     TRACE ("entering clientClearLastOpTime");
     c->last_op_time.tv_sec = 0;
     c->last_op_time.tv_usec = 0;
@@ -156,7 +156,7 @@ clientCheckLastOpTime (Client * c)
 {
     GTimeVal current_time;
     double elapsed;
-  
+
     g_return_val_if_fail (c != NULL, FALSE);
 
     g_get_current_time (&current_time);
@@ -173,7 +173,7 @@ clientCheckLastOpTime (Client * c)
         clientClearLastOpTime (c);
     }
     c->last_op_time = current_time;
-  
+
     return TRUE;
 }
 
@@ -271,7 +271,7 @@ void
 clientGrabKeys (Client * c)
 {
     ScreenInfo *screen_info = NULL;
-    
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabKeys");
     TRACE ("grabbing keys for client \"%s\" (0x%lx)", c->name, c->window);
@@ -357,7 +357,7 @@ clientGrabButtons (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
-    
+
     grabButton(clientGetXDisplay (c), Button1, AltMask, c->window);
     grabButton(clientGetXDisplay (c), Button2, AltMask, c->window);
     grabButton(clientGetXDisplay (c), Button3, AltMask, c->window);
@@ -369,7 +369,7 @@ clientUngrabButtons (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
-    
+
     XUngrabButton (clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
 }
 
@@ -393,7 +393,7 @@ void
 clientUpdateUrgency (Client *c)
 {
     g_return_if_fail (c != NULL);
-    
+
     TRACE ("entering clientUpdateUrgency");
 
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
@@ -410,7 +410,7 @@ clientUpdateUrgency (Client *c)
         FLAG_SET (c->wm_flags, WM_FLAG_URGENT);
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
-            c->blink_timeout_id =  
+            c->blink_timeout_id =
                 g_timeout_add_full (0, 500, (GtkFunction) urgent_cb,
                                             (gpointer) c, NULL);
         }
@@ -518,7 +518,7 @@ clientSetWidth (Client * c, int w1)
         c->width = w1;
         return;
     }
-    
+
     if ((c->size->flags & PResizeInc) && (c->size->width_inc))
     {
         w2 = (w1 - c->size->min_width) / c->size->width_inc;
@@ -561,7 +561,7 @@ clientSetHeight (Client * c, int h1)
         c->height = h1;
         return;
     }
-    
+
     if ((c->size->flags & PResizeInc) && (c->size->height_inc))
     {
         h2 = (h1 - c->size->min_height) / c->size->height_inc;
@@ -602,7 +602,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
     TRACE ("entering clientConstrainRatio");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    
+
     if (c->size->flags & PAspect)
     {
         int xinc, yinc, minx, miny, maxx, maxy, delta;
@@ -614,12 +614,12 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
         maxx = c->size->max_aspect.x;
         maxy = c->size->max_aspect.y;
 
-        if ((minx * h1 > miny * w1) && 
+        if ((minx * h1 > miny * w1) &&
             (miny) && (corner == 4 + SIDE_BOTTOM))
         {
             /* Change width to match */
             delta = MAKE_MULT (minx * h1 /  miny - w1, xinc);
-            if (!(c->size->flags & PMaxSize) || 
+            if (!(c->size->flags & PMaxSize) ||
                 (w1 + delta <= c->size->max_width))
             {
                 w1 += delta;
@@ -685,7 +685,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     XConfigureEvent ce;
     gboolean moved = FALSE;
     gboolean resized = FALSE;
-    
+
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
@@ -727,9 +727,9 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     {
         switch (wc->stack_mode)
         {
-            /* 
+            /*
              * Limitation: we don't support neither sibling,
-             * TopIf, BottomIf nor Opposite ... 
+             * TopIf, BottomIf nor Opposite ...
              */
             case Above:
                 TRACE ("Above");
@@ -738,7 +738,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
             case Below:
                 /* Don't do below if the app specified a sibling
                  * since, as we don't honor sibling,  the window
-                 * would be sent to bottom which is not what the 
+                 * would be sent to bottom which is not what the
                  * app meant at first....
                  */
                 if (!(mask & CWSibling))
@@ -756,26 +756,26 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     }
     mask &= ~(CWStackMode | CWSibling);
 
-    /* 
+    /*
        Some broken apps try to achieve fullscreen by using static gravity and a
        (0,0) position, the second part of the test is for this case.
      */
-    if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c) 
+    if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c)
          && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0))))
     {
         clientConstrainPos (c, TRUE);
     }
 
-    XMoveResizeWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c), 
+    XMoveResizeWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c),
                             frameWidth (c), frameHeight (c));
-    XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c), 
+    XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
                             c->width, c->height);
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
         frameDraw (c, (flags & CFG_FORCE_REDRAW), TRUE);
     }
-    
+
     if ((flags & CFG_NOTIFY) ||
         ((flags & CFG_REQUEST) && !(moved || resized)) ||
         (moved && !resized))
@@ -792,7 +792,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         ce.border_width = 0;
         ce.above = c->frame;
         ce.override_redirect = FALSE;
-        XSendEvent (clientGetXDisplay (c), c->window, FALSE, 
+        XSendEvent (clientGetXDisplay (c), c->window, FALSE,
                     StructureNotifyMask, (XEvent *) & ce);
     }
 }
@@ -802,13 +802,13 @@ clientGetMWMHints (Client * c, gboolean update)
 {
     PropMwmHints *mwm_hints;
     XWindowChanges wc;
-    
+
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-    
+
     TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name,
         c->window);
-    
+
     mwm_hints = getMotifHints (clientGetXDisplay (c), c->window);
     if (mwm_hints)
     {
@@ -878,10 +878,10 @@ clientGetMWMHints (Client * c, gboolean update)
         }
         g_free (mwm_hints);
     }
-    
+
     if (update)
     {
-        /* EWMH window type takes precedences over Motif hints */ 
+        /* EWMH window type takes precedences over Motif hints */
         clientWindowType (c);
         if (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_LEGACY_FULLSCREEN)
             && !FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -907,7 +907,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-    
+
     TRACE ("entering clientGetWMNormalHints client \"%s\" (0x%lx)", c->name,
         c->window);
 
@@ -920,7 +920,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
     {
         c->size->flags = 0;
     }
-    
+
     previous_value = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
 
@@ -935,7 +935,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size->max_height = G_MAXINT;
         c->size->flags |= PMaxSize;
     }
-    
+
     if (!(c->size->flags & PBaseSize))
     {
         c->size->base_width = 0;
@@ -1034,12 +1034,12 @@ clientGetWMNormalHints (Client * c, gboolean update)
         wc.height = c->size->min_height;
     }
 
-    if ((c->size->min_width < c->size->max_width) || 
+    if ((c->size->min_width < c->size->max_width) ||
         (c->size->min_height < c->size->max_height))
     {
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     }
-    
+
     if (update)
     {
         if ((c->width != wc.width) || (c->height != wc.height))
@@ -1062,10 +1062,10 @@ void
 clientGetWMProtocols (Client * c)
 {
     unsigned int wm_protocols_flags = 0;
-    
+
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-    
+
     TRACE ("entering clientGetWMProtocols client \"%s\" (0x%lx)", c->name,
         c->window);
     wm_protocols_flags = getWMProtocols (clientGetXDisplay (c), c->window);
@@ -1076,7 +1076,7 @@ clientGetWMProtocols (Client * c)
         (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ?
         WM_FLAG_TAKEFOCUS : 0);
     /* KDE extension */
-    FLAG_SET (c->wm_flags, 
+    FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_CONTEXT_HELP) ?
         WM_FLAG_CONTEXT_HELP : 0);
 }
@@ -1234,7 +1234,7 @@ clientApplyInitialState (Client * c)
             clientUpdateBelowState (c);
         }
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) && 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) &&
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
         if (!clientIsValidTransientOrModal (c))
@@ -1311,15 +1311,15 @@ clientCheckShape (Client * c)
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
     int boundingShaped, clipShaped;
-    
+
     g_return_val_if_fail (c != NULL, FALSE);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    
+
     if (display_info->shape)
     {
-        XShapeQueryExtents (display_info->dpy, c->window, &boundingShaped, &xws, &yws, &wws, 
+        XShapeQueryExtents (display_info->dpy, c->window, &boundingShaped, &xws, &yws, &wws,
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
         return (boundingShaped != 0);
     }
@@ -1345,7 +1345,7 @@ void
 clientGetUserTime (Client * c)
 {
     g_return_if_fail (c != NULL);
-    
+
     if (getNetWMUserTime (clientGetXDisplay (c), c->window, &c->user_time))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
@@ -1366,7 +1366,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     g_return_if_fail (w != None);
     g_return_if_fail (display_info != NULL);
-    
+
     TRACE ("entering clientFrame");
     TRACE ("framing client (0x%lx)", w);
 
@@ -1380,7 +1380,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         gdk_error_trap_pop ();
         return;
     }
-    
+
     screen_info = myDisplayGetScreenFromRoot (display_info, attr.root);
     if (!screen_info)
     {
@@ -1424,7 +1424,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         gdk_error_trap_pop ();
         return;
     }
-    
+
     c->window = w;
     c->screen_info = screen_info;
     c->serial = screen_info->client_serial++;
@@ -1544,7 +1544,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED);
     }
-    
+
     /* Beware, order of calls is important here ! */
     sn_client_startup_properties (c);
     clientGetWinState (c);
@@ -1577,7 +1577,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         }
     }
 
-    /* 
+    /*
        We must call clientApplyInitialState() after having placed the
        window so that the inital position values are correctly set if the
        inital state is maximize or fullscreen
@@ -1588,14 +1588,14 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     attributes.win_gravity = StaticGravity;
     attributes.bit_gravity = StaticGravity;
-    
+
     c->frame =
         XCreateWindow (display_info->dpy, screen_info->xroot, frameX (c), frameY (c), frameWidth (c),
         frameHeight (c), 0, CopyFromParent, InputOutput, CopyFromParent,
         valuemask, &attributes);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
     XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
-    
+
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
@@ -1659,7 +1659,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientRaise (c);
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
-        if ((c->win_workspace == screen_info->current_ws) || 
+        if ((c->win_workspace == screen_info->current_ws) ||
             FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
         {
             clientShow (c, TRUE);
@@ -1678,9 +1678,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info->dpy, c->window, IconicState);
         clientSetNetState (c);
     }
-    
-    /* Window is reparented now, so we can safely release the grab 
-     * on the server 
+
+    /* Window is reparented now, so we can safely release the grab
+     * on the server
      */
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
@@ -1699,14 +1699,14 @@ clientUnframe (Client * c, gboolean remap)
     gboolean reparented;
 
     TRACE ("entering clientUnframe");
-    TRACE ("unframing client \"%s\" (0x%lx) [%s]", 
+    TRACE ("unframing client \"%s\" (0x%lx) [%s]",
             c->name, c->window, remap ? "remap" : "no remap");
 
     g_return_if_fail (c != NULL);
-    
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    
+
     clientRemoveFromList (c);
     myDisplayGrabServer (display_info);
     gdk_error_trap_push ();
@@ -1743,7 +1743,7 @@ clientUnframe (Client * c, gboolean remap)
         XDeleteProperty (display_info->dpy, c->window, win_layer);
         XDeleteProperty (display_info->dpy, c->window, net_wm_allowed_actions);
     }
-    
+
     xfwmWindowDelete (&c->title);
     xfwmWindowDelete (&c->sides[SIDE_LEFT]);
     xfwmWindowDelete (&c->sides[SIDE_RIGHT]);
@@ -1762,7 +1762,7 @@ clientUnframe (Client * c, gboolean remap)
     {
         workspaceUpdateArea (c->screen_info);
     }
-    
+
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
     clientFree (c);
@@ -1782,9 +1782,9 @@ clientFrameAll (ScreenInfo *screen_info)
 
     display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &shield, 0, 0, 
+    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &shield, 0, 0,
                         gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr), 
+                        gdk_screen_get_height (screen_info->gscr),
                         EnterWindowMask);
 
     XSync (display_info->dpy, FALSE);
@@ -1962,7 +1962,7 @@ clientShowSingle (Client * c, gboolean change_state)
     DisplayInfo *display_info = NULL;
 
     g_return_if_fail (c != NULL);
-        
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -1995,10 +1995,10 @@ clientShow (Client * c, gboolean change_state)
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]", 
+    TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]",
            c->name, c->window,
            change_state ? "state change" : "no state change");
-             
+
     list_of_windows = clientListTransientOrModal (c);
     for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
     {
@@ -2024,7 +2024,7 @@ clientHideSingle (Client * c, gboolean change_state)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    
+
     myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c, c);
@@ -2071,7 +2071,7 @@ clientHide (Client * c, int ws, gboolean change_state)
 
         /* ws is used when transitioning between desktops, to avoid
            hiding a transient for group that will be shown again on the new
-           workspace (transient for groups can be transients for multiple 
+           workspace (transient for groups can be transients for multiple
            ancesors splitted across workspaces...)
          */
         if (clientIsTransientOrModalForGroup (c2)
@@ -2095,7 +2095,7 @@ clientHideAll (Client * c, int ws)
     int i;
 
     g_return_if_fail (c != NULL);
-    
+
     TRACE ("entering clientHideAll");
 
     screen_info = c->screen_info;
@@ -2406,7 +2406,7 @@ void clientToggleFullscreen (Client * c)
 
         monitor_nbr = find_monitor_at_point (c->screen_info->gscr, cx, cy);
         gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
-        
+
         if ((c->size->max_width < rect.width) || (c->size->max_height < rect.height))
         {
             return;
@@ -2468,7 +2468,7 @@ clientToggleMaximized (Client * c, int mode)
     int cx, cy, full_x, full_y, full_w, full_h;
     GdkRectangle rect;
     gint monitor_nbr;
-    
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleMaximized");
     TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name,
@@ -2489,9 +2489,9 @@ clientToggleMaximized (Client * c, int mode)
 
     full_x = MAX (screen_info->params->xfwm_margins[LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[TOP], rect.y);
-    full_w = MIN (gdk_screen_get_width (screen_info->gscr) - screen_info->params->xfwm_margins[RIGHT], 
+    full_w = MIN (gdk_screen_get_width (screen_info->gscr) - screen_info->params->xfwm_margins[RIGHT],
                   rect.x + rect.width) - full_x;
-    full_h = MIN (gdk_screen_get_height (screen_info->gscr) - screen_info->params->xfwm_margins[BOTTOM], 
+    full_h = MIN (gdk_screen_get_height (screen_info->gscr) - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
@@ -2550,7 +2550,7 @@ clientToggleMaximized (Client * c, int mode)
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        /* 
+        /*
            For some reason, the configure can generate EnterNotify events
            on lower windows, causing a nasty race cond with apps trying to
            grab focus in focus follow mouse mode. Grab the pointer to
@@ -2571,20 +2571,20 @@ clientToggleMaximized (Client * c, int mode)
 }
 
 /* Xrandr stuff: on screen size change, make sure all clients are still visible */
-void 
+void
 clientScreenResize(ScreenInfo *screen_info)
 {
     Client *c = NULL;
     GList *index, *list_of_windows;
     XWindowChanges wc;
-    
+
     list_of_windows = clientGetStackList (screen_info);
 
     if (!list_of_windows)
     {
         return;
     }
-        
+
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
@@ -2596,7 +2596,7 @@ clientScreenResize(ScreenInfo *screen_info)
         wc.y = c->y;
         clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED);
     }
-    
+
     g_list_free (list_of_windows);
 }
 
@@ -2630,7 +2630,7 @@ clientSnapPosition (Client * c)
     int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
     GdkRectangle rect;
     gint monitor_nbr;
-        
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSnapPosition");
     TRACE ("Snapping client \"%s\" (0x%lx)", c->name, c->window);
@@ -2638,7 +2638,7 @@ clientSnapPosition (Client * c)
     screen_info = c->screen_info;
     best_delta_x = screen_info->params->snap_width + 1;
     best_delta_y = screen_info->params->snap_width + 1;
-    
+
     frame_x = frameX (c);
     frame_y = frameY (c);
     frame_height = frameHeight (c);
@@ -2663,7 +2663,7 @@ clientSnapPosition (Client * c)
     disp_y = rect.y;
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
-    
+
     if (screen_info->params->snap_to_border)
     {
         if (abs (disp_x - frame_x) < abs (disp_max_x - frame_x2))
@@ -2691,9 +2691,9 @@ clientSnapPosition (Client * c)
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) && 
+        if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
             (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
-             || ((screen_info->params->snap_to_border) 
+             || ((screen_info->params->snap_to_border)
                   && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
                   && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))
         {
@@ -2831,7 +2831,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     {
         while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
-                    
+
         if (xevent->type == ButtonRelease)
         {
             moving = FALSE;
@@ -2892,7 +2892,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     {
                         if (workspaceMove (screen_info, 0, 1, c))
                         {
-                            XWarpPointer (display_info->dpy, None, screen_info->xroot, 
+                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
                                           0, 0, 0, 0, 10, msy);
                             msx = xevent->xmotion.x_root = 10;
                         }
@@ -2914,7 +2914,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     {
                         if (workspaceMove (screen_info, 1, 0, c))
                         {
-                            XWarpPointer (display_info->dpy, None, screen_info->xroot, 
+                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
                                           0, 0, 0, 0, msx, 10);
                             msy = xevent->xmotion.y_root = 10;
                         }
@@ -3003,9 +3003,9 @@ clientMove (Client * c, XEvent * e)
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0, 
+    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0,
                         gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr), 
+                        gdk_screen_get_height (screen_info->gscr),
                         ButtonMotionMask | ButtonReleaseMask);
 
     if (e->type == KeyPress)
@@ -3113,7 +3113,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     c = passdata->c;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    
+
     frame_x = frameX (c);
     frame_y = frameY (c);
     frame_height = frameHeight (c);
@@ -3244,7 +3244,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     {
         while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
             ; /* Skip event */
-        
+
         if (xevent->type == ButtonRelease)
         {
             resizing = FALSE;
@@ -3296,7 +3296,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             }
         }
         clientConstrainRatio (c, c->width, c->height, passdata->corner);
-        
+
         clientSetWidth (c, c->width);
         if ((passdata->corner == CORNER_TOP_LEFT)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
@@ -3305,8 +3305,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
-        if (((passdata->corner == CORNER_TOP_LEFT) 
-             || (passdata->corner == CORNER_TOP_RIGHT)) 
+        if (((passdata->corner == CORNER_TOP_LEFT)
+             || (passdata->corner == CORNER_TOP_RIGHT))
             && !clientCkeckTitle (c))
         {
             c->x = prev_x;
@@ -3321,8 +3321,8 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->y = c->y - (c->height - passdata->oldh);
             frame_y = frameY (c);
         }
-        if (((passdata->corner == CORNER_TOP_LEFT) 
-             || (passdata->corner == CORNER_TOP_RIGHT)) 
+        if (((passdata->corner == CORNER_TOP_LEFT)
+             || (passdata->corner == CORNER_TOP_RIGHT))
             && !clientCkeckTitle (c))
         {
             c->y = prev_y;
@@ -3333,7 +3333,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             || (passdata->corner == CORNER_TOP_RIGHT))
         {
             if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
-                || (c->y > gdk_screen_get_height (screen_info->gscr) 
+                || (c->y > gdk_screen_get_height (screen_info->gscr)
                            - screen_info->margins [BOTTOM] - CLIENT_MIN_VISIBLE))
             {
                 c->y = prev_y;
@@ -3355,7 +3355,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             || (passdata->corner == 4 + SIDE_LEFT))
         {
             if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
-                || (c->x > gdk_screen_get_width (screen_info->gscr) 
+                || (c->x > gdk_screen_get_width (screen_info->gscr)
                            - screen_info->margins [RIGHT] - CLIENT_MIN_VISIBLE))
             {
                 c->x = prev_x;
@@ -3392,7 +3392,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
             }
         }
-        
+
     }
     else if (xevent->type == ButtonRelease)
     {
@@ -3449,9 +3449,9 @@ clientResize (Client * c, int corner, XEvent * e)
     passdata.grab = FALSE;
     passdata.corner = corner;
 
-    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0, 
+    xfwmWindowTemp (display_info->dpy, screen_info->xroot, &passdata.tmp_event_window, 0, 0,
                         gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr), 
+                        gdk_screen_get_height (screen_info->gscr),
                         ButtonMotionMask | ButtonReleaseMask);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -3513,7 +3513,7 @@ clientResize (Client * c, int corner, XEvent * e)
         passdata.poswin = NULL;
     }
 #endif /* SHOW_POSITION */
-    
+
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     xfce_push_event_filter (display_info->xfilter, clientResize_event_filter, &passdata);
@@ -3525,7 +3525,7 @@ clientResize (Client * c, int corner, XEvent * e)
     xfce_pop_event_filter (display_info->xfilter);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
-    
+
     if (passdata.poswin)
     {
         poswinDestroy (passdata.poswin);
@@ -3563,7 +3563,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     gboolean key_pressed = ((xevent->type == KeyPress) && (xevent->xkey.keycode == keycode));
     gboolean cycling = TRUE;
     gboolean gone = FALSE;
-    
+
     TRACE ("entering clientCycle_event_filter");
     switch (xevent->type)
     {
@@ -3604,10 +3604,10 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 if (c)
                 {
                     GdkPixbuf *icon;
-                    
+
                     wireframeUpdate (c, passdata->wireframe);
                     icon = getAppIcon (clientGetXDisplay (c), c->window, 32, 32);
-                    tabwinSetLabel (passdata->tabwin, icon, 
+                    tabwinSetLabel (passdata->tabwin, icon,
                                     c->class.res_class, c->name);
                 }
                 else
@@ -3704,11 +3704,11 @@ clientCycle (Client * c, XEvent * e)
     {
         passdata.c = c;
     }
-    
+
     if (passdata.c)
     {
         GdkPixbuf *icon;
-        
+
         TRACE ("entering cycle loop");
         passdata.wireframe = wireframeCreate (passdata.c);
         icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
@@ -3728,7 +3728,7 @@ clientCycle (Client * c, XEvent * e)
     if (passdata.c)
     {
         Client *focused;
-        
+
         focused = clientGetFocus ();
         clientShow (passdata.c, TRUE);
         clientSetFocus (passdata.c->screen_info, passdata.c, GDK_CURRENT_TIME, NO_FOCUS_FLAG);
