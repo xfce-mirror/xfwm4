@@ -64,10 +64,7 @@ struct _ThemeInfo
 typedef struct _shortcut_tree_foreach_struct shortcut_tree_foreach_struct;
 struct _shortcut_tree_foreach_struct
 {
-    gchar *key;
-    gboolean modifier_control;
-    gboolean modifier_shift;
-    gboolean modifier_alt;
+    gchar *shortcut;
     gchar *path;
     gboolean found;
 };

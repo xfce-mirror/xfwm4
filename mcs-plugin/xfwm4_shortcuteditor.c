@@ -25,6 +25,7 @@
 #include <string.h>
 #include <errno.h>
 
+#include <gdk/gdkkeysyms.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
@@ -1016,25 +1017,12 @@ static gboolean
 shortcut_tree_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIter * iter, gpointer data)
 {
     shortcut_tree_foreach_struct *stfs = (shortcut_tree_foreach_struct *) data;
-    gchar *shortcut_key = stfs->key;
+    gchar *shortcut_key = stfs->shortcut;
     gchar *current_shortcut = NULL;
-
-    gboolean current_modifiers[3] = { FALSE, FALSE, FALSE };
-    gboolean key_found = FALSE;
 
     gtk_tree_model_get (model, iter, COLUMN_SHORTCUT, &current_shortcut, -1);
 
-    if (g_strrstr (current_shortcut, "Control") != NULL)
-        current_modifiers[0] = TRUE;
-    if (g_strrstr (current_shortcut, "Shift") != NULL)
-        current_modifiers[1] = TRUE;
-    if (g_strrstr (current_shortcut, "Alt") != NULL)
-        current_modifiers[2] = TRUE;
-    if (g_strrstr (current_shortcut, shortcut_key) != NULL)
-        key_found = TRUE;
-
-    if ((stfs->modifier_control == current_modifiers[0]) &&
-        (stfs->modifier_shift == current_modifiers[1]) && (stfs->modifier_alt == current_modifiers[2]) && key_found)
+    if (strcmp (shortcut_key, current_shortcut) == 0)
     {
         stfs->found = TRUE;
         stfs->path = gtk_tree_path_to_string (path);
@@ -1090,6 +1078,26 @@ cb_browse_command (GtkWidget *widget, GtkEntry *entry_command)
 }
 
 static gboolean
+is_modifier (guint keycode)
+{
+    XModifierKeymap *keymap;
+    gboolean         result = FALSE;
+    gint             n;
+    
+    keymap = XGetModifierMapping (gdk_display);
+    for (n = 0; n < keymap->max_keypermod * 8; ++n)
+      if (keycode == keymap->modifiermap[n])
+      {
+          result = TRUE;
+          break;
+      }
+
+    XFreeModifiermap (keymap);
+    
+    return result;
+}
+
+static gboolean
 cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer data)
 {
     Itf *itf = (Itf *) data;
@@ -1102,43 +1110,52 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
     GtkTreeSelection *selection3, *selection4;
     shortcut_tree_foreach_struct stfs;
     ThemeInfo *ti;
+    GdkModifierType consumed_modifiers = 0;
+    guint keyval;
+    gchar *accelerator;
+    gchar **shortcut;
+    
+    /* Release keyboard */
+    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
-    if (!gdk_keyval_name (event->keyval))
+    if (is_modifier (event->hardware_keycode))
+      return TRUE;
+
+    gdk_keymap_translate_keyboard_state (gdk_keymap_get_default (),
+					 event->hardware_keycode,
+					 event->state,
+					 event->group,
+					 NULL, NULL, NULL,
+					 &consumed_modifiers);
+    
+    keyval = gdk_keyval_to_lower (event->keyval);
+    if (keyval == GDK_ISO_Left_Tab)
+        keyval = GDK_Tab;
+
+    if (keyval != event->keyval && (consumed_modifiers & GDK_SHIFT_MASK))
+        consumed_modifiers &= ~GDK_SHIFT_MASK;
+
+    accelerator = gtk_accelerator_name (keyval, event->state & ~consumed_modifiers);
+
+    shortcut = g_strsplit_set (accelerator, "<>", 0);
+
+    while (*shortcut)
     {
-        gdk_beep();
-        return FALSE;
+	if (strlen (*shortcut) > 0 && (strcmp (*shortcut, "Mod2") != 0))
+	{
+	    strcat (shortcut_string, *shortcut);
+	    strcat (shortcut_string, "+");
+	}
+	g_free(*shortcut);
+	*shortcut++;
     }
+     
+    shortcut_string[strlen (shortcut_string) - 1] = '\0';
+    g_free (accelerator);
+   
 
     selection3 = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
     selection4 = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview4));
-
-    stfs.modifier_control = FALSE;
-    stfs.modifier_shift = FALSE;
-    stfs.modifier_alt = FALSE;
-
-    if (event->state & GDK_CONTROL_MASK)
-    {
-        stfs.modifier_control = TRUE;
-        strcat (shortcut_string, "Control+");
-    }
-
-    if (event->state & GDK_SHIFT_MASK)
-    {
-        stfs.modifier_shift = TRUE;
-        strcat (shortcut_string, "Shift+");
-    }
-
-    if (event->state & GDK_MOD1_MASK)
-    {
-        stfs.modifier_alt = TRUE;
-        strcat (shortcut_string, "Alt+");
-    }
-
-    if (gdk_keyval_name (event->keyval))
-        strcat (shortcut_string, gdk_keyval_name (event->keyval));
-
-    /* Release keyboard */
-    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
     /* Apply change */
     gtk_tree_selection_get_selected (selection3, &model3, &iter3);
@@ -1156,7 +1173,7 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
     }
 
     /* check if shorcut already exists */
-    stfs.key = gdk_keyval_name (event->keyval);
+    stfs.shortcut = shortcut_string;
 
     stfs.found = FALSE;
     gtk_tree_model_foreach (model3, &shortcut_tree_foreach_func, &stfs);
@@ -1190,9 +1207,9 @@ cb_compose_dialog_key_release (GtkWidget * widget, GdkEventKey * event, gpointer
         gtk_tree_path_free (path_old);
 
         if (model_old == model4)
-            gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "None", -1);
+            gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "none", -1);
         else
-            gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "", -1);
+            gtk_list_store_set (GTK_LIST_STORE (model_old), &iter_old, COLUMN_SHORTCUT, "None", -1);
 
     }
 
