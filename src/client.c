@@ -1293,9 +1293,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     TRACE ("framing client (0x%lx)", w);
 
     gdk_error_trap_push ();
+    myDisplayGrabServer (display_info);
+
     if (!XGetWindowAttributes (display_info->dpy, w, &attr))
     {
         TRACE ("Cannot get window attributes");
+        myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
     }
@@ -1304,20 +1307,15 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (!screen_info)
     {
         TRACE ("Cannot determine screen info from windows");
+        myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
     }
 
-    if (attr.override_redirect)
+    if ((attr.override_redirect) || (w == screen_info->gnome_win))
     {
         TRACE ("Not managing override_redirect windows");
-        gdk_error_trap_pop ();
-        return;
-    }
-
-    if (w == screen_info->gnome_win)
-    {
-        TRACE ("Not managing our own window");
+        myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
     }
@@ -1326,6 +1324,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         TRACE ("Not managing KDE systray windows");
         sendSystrayReqDock (display_info->dpy, w, screen_info->systray);
+        myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
     }
@@ -1334,6 +1333,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (!c)
     {
         TRACE ("Cannot allocate memory for the window structure");
+        myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
     }
@@ -1492,22 +1492,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
      */
     clientApplyInitialState (c);
 
-    if (!recapture)
-    {
-        myDisplayGrabServer (display_info);
-    }
-    if (!checkWindowOnRoot(screen_info, w))
-    {
-        TRACE ("Client has vanished");
-        if (!recapture)
-        {
-            myDisplayUngrabServer (display_info);
-        }
-        clientFree(c);
-        gdk_error_trap_pop ();
-        return;
-    }
-
     valuemask = CWEventMask;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     c->frame =
@@ -1524,13 +1508,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
     }
-    if (!recapture)
-    {
-        /* Window is reparented now, so we can safely release the grab 
-         * on the server 
-         */
-        myDisplayUngrabServer (display_info);
-    }   
+    /* Window is reparented now, so we can safely release the grab 
+     * on the server 
+     */
+    myDisplayUngrabServer (display_info);
 
     clientAddToList (c);
     clientSetNetActions (c);
