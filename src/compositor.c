@@ -1776,7 +1776,6 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
 static void
 compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
 {
-    XserverRegion extents;
     CWindow *cw;
 
     g_return_if_fail (display_info != NULL);
@@ -2164,12 +2163,21 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     visual_format = XRenderFindVisualFormat (display_info->dpy,
                                              DefaultVisual (display_info->dpy,
                                                             screen_info->screen));
-    g_return_if_fail (visual_format != NULL);
+    if (!visual_format)
+    {
+        g_warning (_("%s: Cannot find visual format on screen %i"), PACKAGE, screen_info->screen);
+        return FALSE;
+    }
 
     pa.subwindow_mode = IncludeInferiors;
     screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->xroot,
                                                      visual_format, CPSubwindowMode, &pa);
-    g_return_if_fail (screen_info->rootPicture != None);
+
+    if (screen_info->rootPicture == None)
+    {
+        g_warning (_("%s: Cannot create root picture on screen %i"), PACKAGE, screen_info->screen);
+        return FALSE;
+    }
 
     screen_info->gsize = -1;
     screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
