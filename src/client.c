@@ -3498,9 +3498,11 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
         case DestroyNotify:
             gone |= (c == clientGetFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
+            /* Walk though */
         case UnmapNotify:
             gone |= (c == clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW));
             status = XEV_FILTER_CONTINUE;
+            /* Walk though */
         case KeyPress:
             if (gone || key_pressed)
             {
