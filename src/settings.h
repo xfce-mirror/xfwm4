@@ -94,7 +94,17 @@
 #define KEY_MOVE_WORKSPACE_7        	37
 #define KEY_MOVE_WORKSPACE_8        	38
 #define KEY_MOVE_WORKSPACE_9        	39
-#define KEY_COUNT			40
+#define KEY_SHORTCUT_1			40
+#define KEY_SHORTCUT_2			41
+#define KEY_SHORTCUT_3			42
+#define KEY_SHORTCUT_4			43
+#define KEY_SHORTCUT_5			44
+#define KEY_SHORTCUT_6			45
+#define KEY_SHORTCUT_7			46
+#define KEY_SHORTCUT_8			47
+#define KEY_SHORTCUT_9			48
+#define KEY_SHORTCUT_10			49
+#define KEY_COUNT			50
 
 #define ALIGN_LEFT			0
 #define ALIGN_RIGHT			1
@@ -131,6 +141,7 @@ struct _Params
     MyPixmap sides[3][2];
     MyPixmap title[5][2];
     char button_layout[8];
+    char *shortcut_exec[10];
     int button_offset;
     int button_spacing;
     int dbl_click_time;

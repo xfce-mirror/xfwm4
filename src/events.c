@@ -163,6 +163,22 @@ static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
     }
 }
 
+static inline void spawn_shortcut(int i)
+{
+    GError *error = NULL;
+    if ((!params.shortcut_exec[i]) || !strlen(params.shortcut_exec[i]))
+    {
+        return;
+    }
+    if (!g_spawn_command_line_async (params.shortcut_exec[i], &error))
+    {
+        if (error)
+	{
+	    g_warning("%s: %s",  g_get_prgname(), error->message);
+	}
+    }
+}
+
 static inline void handleKeyPress(XKeyEvent * ev)
 {
     Client *c;
@@ -233,47 +249,8 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_SHADE_WINDOW:
                 clientToggleShaded(c);
                 break;
-            case KEY_NEXT_WORKSPACE:
-                workspaceSwitch(workspace + 1, NULL);
-                break;
-            case KEY_PREV_WORKSPACE:
-                workspaceSwitch(workspace - 1, NULL);
-                break;
-            case KEY_ADD_WORKSPACE:
-                workspaceSetCount(params.workspace_count + 1);
-                break;
-            case KEY_DEL_WORKSPACE:
-                workspaceSetCount(params.workspace_count - 1);
-                break;
             case KEY_STICK_WINDOW:
                 clientToggleSticky(c, TRUE);
-                break;
-            case KEY_WORKSPACE_1:
-                workspaceSwitch(0, NULL);
-                break;
-            case KEY_WORKSPACE_2:
-                workspaceSwitch(1, NULL);
-                break;
-            case KEY_WORKSPACE_3:
-                workspaceSwitch(2, NULL);
-                break;
-            case KEY_WORKSPACE_4:
-                workspaceSwitch(3, NULL);
-                break;
-            case KEY_WORKSPACE_5:
-                workspaceSwitch(4, NULL);
-                break;
-            case KEY_WORKSPACE_6:
-                workspaceSwitch(5, NULL);
-                break;
-            case KEY_WORKSPACE_7:
-                workspaceSwitch(6, NULL);
-                break;
-            case KEY_WORKSPACE_8:
-                workspaceSwitch(7, NULL);
-                break;
-            case KEY_WORKSPACE_9:
-                workspaceSwitch(8, NULL);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch(workspace + 1, c);
@@ -308,6 +285,8 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_9:
                 workspaceSwitch(8, c);
                 break;
+	    default:
+	        break;
         }
     }
     else
@@ -320,48 +299,84 @@ static inline void handleKeyPress(XKeyEvent * ev)
                     clientCycle(clients->prev);
                 }
                 break;
-            case KEY_NEXT_WORKSPACE:
-                workspaceSwitch(workspace + 1, NULL);
-                break;
-            case KEY_PREV_WORKSPACE:
-                workspaceSwitch(workspace - 1, NULL);
-                break;
-            case KEY_ADD_WORKSPACE:
-                workspaceSetCount(params.workspace_count + 1);
-                break;
-            case KEY_DEL_WORKSPACE:
-                workspaceSetCount(params.workspace_count - 1);
-                break;
-            case KEY_WORKSPACE_1:
-                workspaceSwitch(0, NULL);
-                break;
-            case KEY_WORKSPACE_2:
-                workspaceSwitch(1, NULL);
-                break;
-            case KEY_WORKSPACE_3:
-                workspaceSwitch(2, NULL);
-                break;
-            case KEY_WORKSPACE_4:
-                workspaceSwitch(3, NULL);
-                break;
-            case KEY_WORKSPACE_5:
-                workspaceSwitch(4, NULL);
-                break;
-            case KEY_WORKSPACE_6:
-                workspaceSwitch(5, NULL);
-                break;
-            case KEY_WORKSPACE_7:
-                workspaceSwitch(6, NULL);
-                break;
-            case KEY_WORKSPACE_8:
-                workspaceSwitch(7, NULL);
-                break;
-            case KEY_WORKSPACE_9:
-                workspaceSwitch(8, NULL);
-                break;
+	    default:
+	        break;
         }
     }
-
+    switch (key)
+    {
+        case KEY_NEXT_WORKSPACE:
+            workspaceSwitch(workspace + 1, NULL);
+            break;
+        case KEY_PREV_WORKSPACE:
+            workspaceSwitch(workspace - 1, NULL);
+            break;
+        case KEY_ADD_WORKSPACE:
+            workspaceSetCount(params.workspace_count + 1);
+            break;
+        case KEY_DEL_WORKSPACE:
+            workspaceSetCount(params.workspace_count - 1);
+            break;
+        case KEY_WORKSPACE_1:
+            workspaceSwitch(0, NULL);
+            break;
+        case KEY_WORKSPACE_2:
+            workspaceSwitch(1, NULL);
+            break;
+        case KEY_WORKSPACE_3:
+            workspaceSwitch(2, NULL);
+            break;
+        case KEY_WORKSPACE_4:
+            workspaceSwitch(3, NULL);
+            break;
+        case KEY_WORKSPACE_5:
+            workspaceSwitch(4, NULL);
+            break;
+        case KEY_WORKSPACE_6:
+            workspaceSwitch(5, NULL);
+            break;
+        case KEY_WORKSPACE_7:
+            workspaceSwitch(6, NULL);
+            break;
+        case KEY_WORKSPACE_8:
+            workspaceSwitch(7, NULL);
+            break;
+        case KEY_WORKSPACE_9:
+            workspaceSwitch(8, NULL);
+            break;
+        case KEY_SHORTCUT_1:
+	    spawn_shortcut(0);
+            break;
+        case KEY_SHORTCUT_2:
+	    spawn_shortcut(1);
+            break;
+        case KEY_SHORTCUT_3:
+	    spawn_shortcut(2);
+            break;
+        case KEY_SHORTCUT_4:
+	    spawn_shortcut(3);
+            break;
+        case KEY_SHORTCUT_5:
+	    spawn_shortcut(4);
+            break;
+        case KEY_SHORTCUT_6:
+	    spawn_shortcut(5);
+            break;
+        case KEY_SHORTCUT_7:
+	    spawn_shortcut(6);
+            break;
+        case KEY_SHORTCUT_8:
+	    spawn_shortcut(7);
+            break;
+        case KEY_SHORTCUT_9:
+	    spawn_shortcut(8);
+            break;
+        case KEY_SHORTCUT_10:
+	    spawn_shortcut(9);
+            break;
+	default:
+	    break;
+    }
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
 

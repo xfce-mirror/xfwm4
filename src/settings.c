@@ -465,10 +465,36 @@ static void loadTheme(Settings rc[])
     g_free(theme);
 }
 
+static void loadShortcutCmd(Settings rc[])
+{
+    int i;
+    
+    for (i = 0; i < 10; i++)
+    {
+        gchar *tmp, *shortcut;
+	tmp = g_strdup_printf("shortcut_%i_exec", i + 1);
+	if (params.shortcut_exec[i])
+	{
+	    g_free(params.shortcut_exec[i]);
+	}
+	shortcut = getValue(tmp, rc);
+	if (shortcut)
+	{
+	    params.shortcut_exec[i] = g_strdup(shortcut);
+	}
+	else
+	{
+	    params.shortcut_exec[i] = NULL;
+	}
+	g_free (tmp);
+    }
+}
+
 static gboolean loadKeyBindings(Settings rc[])
 {
     gchar *keytheme;
     gchar *keythemevalue;
+    int i;
 
     keythemevalue = getValue("keytheme", rc);
     if(keythemevalue)
@@ -483,6 +509,8 @@ static gboolean loadKeyBindings(Settings rc[])
             return FALSE;
         }
     }
+
+    loadShortcutCmd(rc);
 
     parseKeyString(dpy, &params.keys[KEY_MOVE_UP], getValue("move_window_up_key", rc));
     parseKeyString(dpy, &params.keys[KEY_MOVE_DOWN], getValue("move_window_down_key", rc));
@@ -524,6 +552,16 @@ static gboolean loadKeyBindings(Settings rc[])
     parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_7], getValue("move_window_workspace_7_key", rc));
     parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_8], getValue("move_window_workspace_8_key", rc));
     parseKeyString(dpy, &params.keys[KEY_MOVE_WORKSPACE_9], getValue("move_window_workspace_9_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_1], getValue("shortcut_1_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_2], getValue("shortcut_2_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_3], getValue("shortcut_3_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_4], getValue("shortcut_4_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_5], getValue("shortcut_5_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_6], getValue("shortcut_6_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_7], getValue("shortcut_7_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_8], getValue("shortcut_8_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_9], getValue("shortcut_9_key", rc));
+    parseKeyString(dpy, &params.keys[KEY_SHORTCUT_10], getValue("shortcut_10_key", rc));
     ungrabKeys(dpy, gnome_win);
     grabKey(dpy, &params.keys[KEY_CYCLE_WINDOWS], gnome_win);
     grabKey(dpy, &params.keys[KEY_NEXT_WORKSPACE], gnome_win);
@@ -539,6 +577,17 @@ static gboolean loadKeyBindings(Settings rc[])
     grabKey(dpy, &params.keys[KEY_WORKSPACE_7], gnome_win);
     grabKey(dpy, &params.keys[KEY_WORKSPACE_8], gnome_win);
     grabKey(dpy, &params.keys[KEY_WORKSPACE_9], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_1], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_2], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_3], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_4], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_5], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_6], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_7], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_8], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_9], gnome_win);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_10], gnome_win);
+    
     return TRUE;
 }
 
@@ -635,6 +684,26 @@ gboolean loadSettings(void)
         {"workspace_7_key", NULL, TRUE},
         {"workspace_8_key", NULL, TRUE},
         {"workspace_9_key", NULL, TRUE},
+        {"shortcut_1_key", NULL, TRUE},
+        {"shortcut_2_key", NULL, TRUE},
+        {"shortcut_3_key", NULL, TRUE},
+        {"shortcut_4_key", NULL, TRUE},
+        {"shortcut_5_key", NULL, TRUE},
+        {"shortcut_6_key", NULL, TRUE},
+        {"shortcut_7_key", NULL, TRUE},
+        {"shortcut_8_key", NULL, TRUE},
+        {"shortcut_9_key", NULL, TRUE},
+        {"shortcut_10_key", NULL, TRUE},
+        {"shortcut_1_exec", NULL, FALSE},
+        {"shortcut_2_exec", NULL, FALSE},
+        {"shortcut_3_exec", NULL, FALSE},
+        {"shortcut_4_exec", NULL, FALSE},
+        {"shortcut_5_exec", NULL, FALSE},
+        {"shortcut_6_exec", NULL, FALSE},
+        {"shortcut_7_exec", NULL, FALSE},
+        {"shortcut_8_exec", NULL, FALSE},
+        {"shortcut_9_exec", NULL, FALSE},
+        {"shortcut_10_exec", NULL, FALSE},
         {NULL, NULL, FALSE}
     };
     GValue tmp_val = { 0, };
@@ -771,6 +840,10 @@ gboolean initSettings(void)
     params.title_colors[INACTIVE].allocated = FALSE;
     params.workspace_count = -1;
 
+    for (i = 0; i < 10; i++)
+    {
+        params.shortcut_exec[i] = NULL;
+    }
     for(i = 0; i < 3; i++)
     {
         initPixmap(&params.sides[i][ACTIVE]);

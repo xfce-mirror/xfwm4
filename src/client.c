@@ -1031,6 +1031,16 @@ void clientGrabKeys(Client * c)
     grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_7], c->window);
     grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_8], c->window);
     grabKey(dpy, &params.keys[KEY_MOVE_WORKSPACE_9], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_1], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_2], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_3], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_4], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_5], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_6], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_7], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_8], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_9], c->window);
+    grabKey(dpy, &params.keys[KEY_SHORTCUT_10], c->window);
 }
 
 void clientUngrabKeys(Client * c)
