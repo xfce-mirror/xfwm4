@@ -2026,22 +2026,22 @@ void clientToggleFullscreen(Client * c)
 
     if(c->fullscreen)
     {
-        c->old_x = c->x;
-        c->old_y = c->y;
-        c->old_width = c->width;
-        c->old_height = c->height;
+        c->fullscreen_old_x      = c->x;
+        c->fullscreen_old_y      = c->y;
+        c->fullscreen_old_width  = c->width;
+        c->fullscreen_old_height = c->height;
 
-        wc.x = margins[MARGIN_LEFT];
-        wc.y = margins[MARGIN_TOP];
-        wc.width = XDisplayWidth(dpy, screen) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
+        wc.x      = margins[MARGIN_LEFT];
+        wc.y      = margins[MARGIN_TOP];
+        wc.width  = XDisplayWidth(dpy, screen) - margins[MARGIN_LEFT] - margins[MARGIN_RIGHT];
         wc.height = XDisplayHeight(dpy, screen) - margins[MARGIN_TOP] - margins[MARGIN_BOTTOM];
     }
     else
     {
-        wc.width = c->old_width;
-        wc.height = c->old_height;
-        wc.x = c->old_x;
-        wc.y = c->old_y;
+        wc.x      = c->fullscreen_old_x;
+        wc.y      = c->fullscreen_old_y;
+        wc.width  = c->fullscreen_old_width;
+        wc.height = c->fullscreen_old_height;
     }
     clientSetNetState (c);
     clientConfigure(c, &wc, CWX | CWY | CWWidth | CWHeight);

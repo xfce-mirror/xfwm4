@@ -606,6 +606,7 @@ void frameDraw(Client * c)
     }
     else
     {
+        XUnmapWindow(dpy, c->title);
         for(i = 0; i < 3; i++)
 	{
             XUnmapWindow(dpy, c->sides[i]);
