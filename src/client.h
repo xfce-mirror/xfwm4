@@ -108,6 +108,7 @@
 #define CLIENT_FLAG_MOVING             (1L<<27)
 #define CLIENT_FLAG_NAME_CHANGED       (1L<<28)
 #define CLIENT_FLAG_SESSION_MANAGED    (1L<<29)
+#define CLIENT_FLAG_WORKSPACE_SET      (1L<<30)
 
 /* Convenient macros */
 #define CLIENT_FLAG_TEST(c,f)			(c->client_flag & (f))
@@ -148,6 +149,7 @@ struct _Client
     Window corners[4];
     Window buttons[BUTTON_COUNT];
     Window client_leader;
+    Window group_leader;
     Colormap cmap;
     unsigned long win_hints;
     unsigned long win_state;
@@ -182,6 +184,9 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[4];
     char *name;
+#ifdef HAVE_STARTUP_NOTIFICATION
+    char *startup_id;
+#endif
     unsigned long client_flag;
 };
 
@@ -233,5 +238,9 @@ void clientMove(Client *, XEvent *);
 void clientResize(Client *, int, XEvent *);
 void clientCycle(Client *);
 void clientButtonPress(Client *, Window, XButtonEvent *);
+Client *clientGetLeader(Client *);
+#ifdef HAVE_STARTUP_NOTIFICATION
+char *clientGetStartupId(Client *);
+#endif
 
 #endif /* __CLIENT_H__ */

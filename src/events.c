@@ -23,6 +23,7 @@
 #endif
 
 #include <X11/Xlib.h>
+#include <X11/Xatom.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
@@ -33,6 +34,7 @@
 #include "frame.h"
 #include "client.h"
 #include "menu.h"
+#include "startup_notification.h"
 #include "debug.h"
 #include "my_intl.h"
 
@@ -166,17 +168,17 @@ static inline void _resizeRequest(Client * c, int corner, XEvent * ev)
 static inline void spawn_shortcut(int i)
 {
     GError *error = NULL;
-    if ((i >= NB_KEY_SHORTCUTS) || (!params.shortcut_exec[i]) || !strlen(params.shortcut_exec[i]))
+    if((i >= NB_KEY_SHORTCUTS) || (!params.shortcut_exec[i]) || !strlen(params.shortcut_exec[i]))
     {
         return;
     }
-    if (!g_spawn_command_line_async (params.shortcut_exec[i], &error))
+    if(!g_spawn_command_line_async(params.shortcut_exec[i], &error))
     {
-        if (error)
-	{
-	    g_warning("%s: %s",  g_get_prgname(), error->message);
-	    g_error_free(error);
-	}
+        if(error)
+        {
+            g_warning("%s: %s", g_get_prgname(), error->message);
+            g_error_free(error);
+        }
     }
 }
 
@@ -286,8 +288,8 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_9:
                 workspaceSwitch(8, c);
                 break;
-	    default:
-	        break;
+            default:
+                break;
         }
     }
     else
@@ -300,8 +302,8 @@ static inline void handleKeyPress(XKeyEvent * ev)
                     clientCycle(clients->prev);
                 }
                 break;
-	    default:
-	        break;
+            default:
+                break;
         }
     }
     switch (key)
@@ -346,37 +348,37 @@ static inline void handleKeyPress(XKeyEvent * ev)
             workspaceSwitch(8, NULL);
             break;
         case KEY_SHORTCUT_1:
-	    spawn_shortcut(0);
+            spawn_shortcut(0);
             break;
         case KEY_SHORTCUT_2:
-	    spawn_shortcut(1);
+            spawn_shortcut(1);
             break;
         case KEY_SHORTCUT_3:
-	    spawn_shortcut(2);
+            spawn_shortcut(2);
             break;
         case KEY_SHORTCUT_4:
-	    spawn_shortcut(3);
+            spawn_shortcut(3);
             break;
         case KEY_SHORTCUT_5:
-	    spawn_shortcut(4);
+            spawn_shortcut(4);
             break;
         case KEY_SHORTCUT_6:
-	    spawn_shortcut(5);
+            spawn_shortcut(5);
             break;
         case KEY_SHORTCUT_7:
-	    spawn_shortcut(6);
+            spawn_shortcut(6);
             break;
         case KEY_SHORTCUT_8:
-	    spawn_shortcut(7);
+            spawn_shortcut(7);
             break;
         case KEY_SHORTCUT_9:
-	    spawn_shortcut(8);
+            spawn_shortcut(8);
             break;
         case KEY_SHORTCUT_10:
-	    spawn_shortcut(9);
+            spawn_shortcut(9);
             break;
-	default:
-	    break;
+        default:
+            break;
     }
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
@@ -656,14 +658,14 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     DBG("entering handleConfigureRequest\n");
 
     /* Compress events - logic taken from kwin */
-    while (XCheckTypedWindowEvent (dpy, ev->window, ConfigureRequest, &otherEvent)) 
+    while(XCheckTypedWindowEvent(dpy, ev->window, ConfigureRequest, &otherEvent))
     {
-        if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
-	{
+        if(otherEvent.xconfigurerequest.value_mask == ev->value_mask)
+        {
             ev = &otherEvent.xconfigurerequest;
         }
-	else 
-	{
+        else
+        {
             XPutBackEvent(dpy, &otherEvent);
             break;
         }
@@ -680,11 +682,11 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
-	{
-	    /* Sorry, but it's not the right time for configure request */
-	    return;
-	}
+        if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        {
+            /* Sorry, but it's not the right time for configure request */
+            return;
+        }
         if(c->type == WINDOW_DESKTOP)
         {
             /* Ignore stacking request for DESKTOP windows */
@@ -695,15 +697,15 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
         {
             clientRemoveMaximizeFlag(c);
         }
-	/* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
-	if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
-	{
-	    clientShow(c, True);
+        /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
+        if((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN)))
+        {
+            clientShow(c, True);
             if(params.focus_new && clientAcceptFocus(c))
             {
-        	clientSetFocus(c, True);
+                clientSetFocus(c, True);
             }
-	}
+        }
         clientConfigure(c, &wc, ev->value_mask);
     }
     else
@@ -809,7 +811,7 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
                 free(c->name);
             }
             getWindowName(dpy, c->window, &c->name);
-	    CLIENT_FLAG_SET(c, CLIENT_FLAG_NAME_CHANGED);
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_NAME_CHANGED);
             frameDraw(c);
         }
         else if(ev->atom == motif_wm_hints)
@@ -817,6 +819,15 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
             DBG("client \"%s\" (%#lx) has received a motif_wm_hints notify\n", c->name, c->window);
             clientUpdateMWMHints(c);
             frameDraw(c);
+        }
+        else if(ev->atom == XA_WM_HINTS)
+        {
+            DBG("client \"%s\" (%#lx) has received a XA_WM_HINTS notify\n", c->name, c->window);
+            c->wmhints = XGetWMHints(dpy, c->window);
+            if(c->wmhints)
+            {
+                c->group_leader = c->wmhints->window_group;
+            }
         }
         else if(ev->atom == win_hints)
         {
@@ -855,6 +866,17 @@ static inline void handlePropertyNotify(XPropertyEvent * ev)
                 clientInstallColormaps(c);
             }
         }
+#ifdef HAVE_STARTUP_NOTIFICATION
+        else if(ev->atom == net_startup_id)
+        {
+            if(c->startup_id)
+            {
+                free(c->startup_id);
+                c->startup_id = NULL;
+            }
+            getWindowStartupId(dpy, c->window, &(c->startup_id));
+        }
+#endif
     }
     else
     {
@@ -893,27 +915,27 @@ static inline void handleClientMessage(XClientMessageEvent * ev)
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_SHADED))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/shaded event\n", c->name, c->window);
-	    if (ev->data.l[1] == WIN_STATE_SHADED)
-	    {
+            if(ev->data.l[1] == WIN_STATE_SHADED)
+            {
                 clientShade(c);
-	    }
-	    else
-	    {
+            }
+            else
+            {
                 clientUnshade(c);
-	    }
+            }
             clientToggleShaded(c);
         }
         else if((ev->message_type == win_state) && (ev->format == 32) && (ev->data.l[0] & WIN_STATE_STICKY))
         {
             DBG("client \"%s\" (%#lx) has received a win_state/stick event\n", c->name, c->window);
-	    if (ev->data.l[1] == WIN_STATE_STICKY)
-	    {
+            if(ev->data.l[1] == WIN_STATE_STICKY)
+            {
                 clientStick(c, TRUE);
-	    }
-	    else
-	    {
+            }
+            else
+            {
                 clientUnstick(c, TRUE);
-	    }
+            }
         }
         else if((ev->message_type == win_layer) && (ev->format == 32))
         {
@@ -1010,6 +1032,7 @@ void handleEvent(XEvent * ev)
 {
     DBG("entering handleEvent\n");
 
+    sn_process_event(ev);
     switch (ev->type)
     {
         case KeyPress:

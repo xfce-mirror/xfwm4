@@ -47,6 +47,7 @@ GTK_REQUIRED_VERSION=2.0.0
 PANGO_REQUIRED_VERSION=1.0.0
 LIBXFCEGUI4_REQUIRED_VERSION=0.0.14
 LIBXFCE4MCS_REQUIRED_VERSION=0.0.3
+STARTUP_NOTIFICATION_VERSION=0.4
 
 AC_DEFINE_UNQUOTED(GLIB_REQUIRED_VERSION, $GLIB_REQUIRED_VERSION, [Define glib required version.])
 AC_DEFINE_UNQUOTED(GTK_REQUIRED_VERSION, $GTK_REQUIRED_VERSION, [Define gtk required version.])
@@ -64,6 +65,19 @@ PKG_CHECK_MODULES(BASE_DEPENDENCIES, glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0
 PKG_CHECK_MODULES(MCS_CLIENT,  libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION)
 PKG_CHECK_MODULES(MCS_MANAGER, libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION)
 PKG_CHECK_MODULES(XFCE_MCS_MANAGER, xfce-mcs-manager = 1)
+AC_MSG_CHECKING([Startup notification library >= $STARTUP_NOTIFICATION_VERSION])
+
+if $PKG_CONFIG --atleast-version $STARTUP_NOTIFICATION_VERSION libstartup-notification-1.0; then
+    have_startup_notification=yes
+else
+    have_startup_notification=no
+fi
+AC_MSG_RESULT($have_startup_notification)
+
+if test x$have_startup_notification = xyes; then
+    AC_DEFINE(HAVE_STARTUP_NOTIFICATION, 1, [Define startup notification support])
+    PKG_CHECK_MODULES(STARTUP_NOTIFICATION, libstartup-notification-1.0 >= $STARTUP_NOTIFICATION_VERSION)
+fi
 
 AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
 

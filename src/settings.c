@@ -468,22 +468,22 @@ static void loadTheme(Settings rc[])
 static void loadShortcutCmd(Settings rc[])
 {
     int i;
-    
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
+
+    for(i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
         gchar *tmp, *shortcut;
-	tmp = g_strdup_printf("shortcut_%i_exec", i + 1);
-	if (params.shortcut_exec[i])
-	{
-	    g_free(params.shortcut_exec[i]);
-	    params.shortcut_exec[i] = NULL;
-	}
-	shortcut = getValue(tmp, rc);
-	if (shortcut)
-	{
-	    params.shortcut_exec[i] = g_strdup(shortcut);
-	}
-	g_free (tmp);
+        tmp = g_strdup_printf("shortcut_%i_exec", i + 1);
+        if(params.shortcut_exec[i])
+        {
+            g_free(params.shortcut_exec[i]);
+            params.shortcut_exec[i] = NULL;
+        }
+        shortcut = getValue(tmp, rc);
+        if(shortcut)
+        {
+            params.shortcut_exec[i] = g_strdup(shortcut);
+        }
+        g_free(tmp);
     }
 }
 
@@ -491,7 +491,6 @@ static gboolean loadKeyBindings(Settings rc[])
 {
     gchar *keytheme;
     gchar *keythemevalue;
-    int i;
 
     keythemevalue = getValue("keytheme", rc);
     if(keythemevalue)
@@ -584,7 +583,7 @@ static gboolean loadKeyBindings(Settings rc[])
     grabKey(dpy, &params.keys[KEY_SHORTCUT_8], gnome_win);
     grabKey(dpy, &params.keys[KEY_SHORTCUT_9], gnome_win);
     grabKey(dpy, &params.keys[KEY_SHORTCUT_10], gnome_win);
-    
+
     return TRUE;
 }
 
@@ -640,7 +639,7 @@ gboolean loadSettings(void)
         {"title_vertical_offset_inactive", NULL, TRUE},
         {"workspace_count", NULL, TRUE},
         {"wrap_workspaces", NULL, TRUE},
-	/* Keys */
+        /* Keys */
         {"add_workspace_key", NULL, TRUE},
         {"close_window_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
@@ -757,10 +756,10 @@ gboolean loadSettings(void)
     {
         gint workspace_count;
         workspace_count = abs(TOINT(getValue("workspace_count", rc)));
-	if (workspace_count < 0)
-	{
-	    workspace_count = 0;
-	}
+        if(workspace_count < 0)
+        {
+            workspace_count = 0;
+        }
         g_message(_("%s: Workspace count not set, using rc value: %i"), g_get_prgname(), workspace_count);
         workspaceSetCount(workspace_count);
     }
@@ -837,7 +836,7 @@ gboolean initSettings(void)
     params.title_colors[INACTIVE].allocated = FALSE;
     params.workspace_count = -1;
 
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
+    for(i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
         params.shortcut_exec[i] = NULL;
     }
@@ -886,7 +885,7 @@ gboolean initSettings(void)
     {
         workspaceSetCount(val);
     }
-    
+
     if(!loadSettings())
     {
         return FALSE;

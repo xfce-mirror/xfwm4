@@ -111,6 +111,8 @@ PO_IN_DATADIR_TRUE = @PO_IN_DATADIR_TRUE@
 RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+STARTUP_NOTIFICATION_CFLAGS = @STARTUP_NOTIFICATION_CFLAGS@
+STARTUP_NOTIFICATION_LIBS = @STARTUP_NOTIFICATION_LIBS@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
@@ -182,14 +184,16 @@ xfwm4_SOURCES = \
 	session.h \
 	settings.c \
 	settings.h \
+	startup_notification.c \
+	startup_notification.h \
 	tabwin.c \
 	tabwin.h \
 	workspaces.c \
 	workspaces.h
 
 
-xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_CLIENT_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"
-xfwm4_LDADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @MCS_CLIENT_LIBS@
+xfwm4_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @STARTUP_NOTIFICATION_CFLAGS@ @MCS_CLIENT_CFLAGS@ -I$(top_builddir)/common -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" -DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\"  -DSN_API_NOT_YET_FROZEN=1
+xfwm4_LDADD = @LIBS@ @X_LIBS@ @BASE_DEPENDENCIES_LIBS@ @STARTUP_NOTIFICATION_LIBS@ @MCS_CLIENT_LIBS@
 
 IMAGES = tabwin-icon.png
 VARIABLES = tabwin_icon_data $(srcdir)/$(IMAGES)
@@ -210,7 +214,8 @@ am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
 	xfwm4-session.$(OBJEXT) xfwm4-settings.$(OBJEXT) \
-	xfwm4-tabwin.$(OBJEXT) xfwm4-workspaces.$(OBJEXT)
+	xfwm4-startup_notification.$(OBJEXT) xfwm4-tabwin.$(OBJEXT) \
+	xfwm4-workspaces.$(OBJEXT)
 xfwm4_OBJECTS = $(am_xfwm4_OBJECTS)
 xfwm4_DEPENDENCIES =
 xfwm4_LDFLAGS =
@@ -229,6 +234,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-pixmap.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-session.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-settings.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-startup_notification.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-tabwin.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-workspaces.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -304,6 +310,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-session.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-settings.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-startup_notification.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-tabwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-workspaces.Po@am__quote@
 
@@ -738,6 +745,39 @@ xfwm4-settings.lo: settings.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-settings.Plo' tmpdepfile='$(DEPDIR)/xfwm4-settings.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-settings.lo `test -f 'settings.c' || echo '$(srcdir)/'`settings.c
+
+xfwm4-startup_notification.o: startup_notification.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.o -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-startup_notification.o `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Po' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.o `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
+
+xfwm4-startup_notification.obj: startup_notification.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.obj -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-startup_notification.obj `if test -f 'startup_notification.c'; then $(CYGPATH_W) 'startup_notification.c'; else $(CYGPATH_W) '$(srcdir)/startup_notification.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Po' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.obj `if test -f 'startup_notification.c'; then $(CYGPATH_W) 'startup_notification.c'; else $(CYGPATH_W) '$(srcdir)/startup_notification.c'; fi`
+
+xfwm4-startup_notification.lo: startup_notification.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-startup_notification.lo -MD -MP -MF "$(DEPDIR)/xfwm4-startup_notification.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/xfwm4-startup_notification.Tpo" "$(DEPDIR)/xfwm4-startup_notification.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfwm4-startup_notification.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='startup_notification.c' object='xfwm4-startup_notification.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-startup_notification.Plo' tmpdepfile='$(DEPDIR)/xfwm4-startup_notification.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-startup_notification.lo `test -f 'startup_notification.c' || echo '$(srcdir)/'`startup_notification.c
 
 xfwm4-tabwin.o: tabwin.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-tabwin.o -MD -MP -MF "$(DEPDIR)/xfwm4-tabwin.Tpo" \

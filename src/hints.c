@@ -54,6 +54,7 @@ Atom wm_change_state;
 Atom wm_client_leader;
 Atom wm_colormap_windows;
 Atom wm_delete_window;
+Atom wm_hints;
 Atom wm_protocols;
 Atom wm_state;
 Atom wm_takefocus;
@@ -68,6 +69,7 @@ Atom net_current_desktop;
 Atom net_desktop_geometry;
 Atom net_desktop_viewport;
 Atom net_number_of_desktops;
+Atom net_startup_id;
 Atom net_supported;
 Atom net_supporting_wm_check;
 Atom net_wm_action_change_desktop;
@@ -323,6 +325,7 @@ void initNetHints(Display * dpy)
     net_desktop_geometry = XInternAtom(dpy, "_NET_DESKTOP_GEOMETRY", False);
     net_desktop_viewport = XInternAtom(dpy, "_NET_DESKTOP_VIEWPORT", False);
     net_number_of_desktops = XInternAtom(dpy, "_NET_NUMBER_OF_DESKTOPS", False);
+    net_startup_id = XInternAtom(dpy, "_NET_STARTUP_ID", False);
     net_supported = XInternAtom(dpy, "_NET_SUPPORTED", False);
     net_supporting_wm_check = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", False);
     net_wm_action_change_desktop = XInternAtom(dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", False);
@@ -366,27 +369,6 @@ void initNetHints(Display * dpy)
     utf8_string = XInternAtom(dpy, "UTF8_STRING", False);
 }
 
-gboolean getNetHint(Display * dpy, Window w, Atom a, long *value)
-{
-    Atom real_type;
-    int real_format;
-    gboolean success = FALSE;
-    unsigned long items_read, items_left;
-    long *data = NULL;
-
-    DBG("entering getNetHint\n");
-
-    *value = 0;
-
-    if((XGetWindowProperty(dpy, w, a, 0L, 1L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
-    {
-        *value = *data;
-        XFree(data);
-        success = TRUE;
-    }
-    return success;
-}
-
 void set_net_supported_hint(Display * dpy, int screen, Window check_win)
 {
     Atom atoms[64];
@@ -416,9 +398,6 @@ void set_net_supported_hint(Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_icon;
     atoms[i++] = net_wm_icon_geometry;
     atoms[i++] = net_wm_icon_name;
-    /* not supported yet
-       atoms[i++] = net_wm_moveresize;
-     */
     atoms[i++] = net_wm_name;
     atoms[i++] = net_wm_state;
     atoms[i++] = net_wm_state_above;
@@ -443,6 +422,9 @@ void set_net_supported_hint(Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_window_type_toolbar;
     atoms[i++] = net_wm_window_type_utility;
     atoms[i++] = net_workarea;
+#ifdef HAVE_STARTUP_NOTIFICATION
+    atoms[i++] = net_startup_id;
+#endif
 
     /* Apparently not required
        XChangeProperty (dpy, check_win, net_supported, XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
@@ -677,13 +659,13 @@ static char *get_text_property(Display * dpy, Window w, Atom a)
 void getWindowName(Display * dpy, Window w, char **name)
 {
     char *str;
-    
+
     DBG("entering getWindowName\n");
 
-    g_return_if_fail (name != NULL);
+    g_return_if_fail(name != NULL);
     *name = NULL;
-    g_return_if_fail (w != None);
-    
+    g_return_if_fail(w != None);
+
     if(get_utf8_string(dpy, w, net_wm_name, &str))
     {
         *name = strdup(str);
@@ -707,18 +689,18 @@ gboolean getWindowRole(Display * dpy, Window window, char **role)
     XTextProperty tp;
 
     DBG("entering GetWindowRole\n");
-    
-    g_return_val_if_fail (role != NULL, FALSE);
+
+    g_return_val_if_fail(role != NULL, FALSE);
     *role = NULL;
-    g_return_val_if_fail (window != None, FALSE);
-    
+    g_return_val_if_fail(window != None, FALSE);
+
     if(XGetTextProperty(dpy, window, &tp, wm_window_role))
     {
         if((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
         {
             *role = strdup((char *)tp.value);
             XFree(tp.value);
-	    return TRUE;
+            return TRUE;
         }
     }
 
@@ -735,9 +717,9 @@ Window getClientLeader(Display * dpy, Window window)
     unsigned char *prop = NULL;
 
     DBG("entering getClientLeader\n");
-    
-    g_return_val_if_fail (window != None, None);
-    
+
+    g_return_val_if_fail(window != None, None);
+
     if(XGetWindowProperty(dpy, window, wm_client_leader, 0L, 1L, False, AnyPropertyType, &actual_type, &actual_format, &nitems, &bytes_after, &prop) == Success)
     {
         if((prop) && (actual_type == XA_WINDOW) && (actual_format == 32) && (nitems == 1) && (bytes_after == 0))
@@ -759,20 +741,20 @@ gboolean getClientID(Display * dpy, Window window, char **client_id)
 
     DBG("entering getClientID\n");
 
-    g_return_val_if_fail (client_id != NULL, FALSE);
+    g_return_val_if_fail(client_id != NULL, FALSE);
     *client_id = NULL;
-    g_return_val_if_fail (window != None, FALSE);
+    g_return_val_if_fail(window != None, FALSE);
 
     if((id = getClientLeader(dpy, window)))
     {
         if(XGetTextProperty(dpy, id, &tp, sm_client_id))
         {
             if(tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
-	    {
+            {
                 *client_id = strdup((char *)tp.value);
                 XFree(tp.value);
-	        return TRUE;
-	    }
+                return TRUE;
+            }
         }
     }
 
@@ -800,3 +782,27 @@ gboolean getWindowCommand(Display * dpy, Window window, char ***argv, int *argc)
     return FALSE;
 }
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+gboolean getWindowStartupId(Display * dpy, Window window, char **startup_id)
+{
+    XTextProperty tp;
+
+    DBG("entering getWindowStartupId\n");
+
+    g_return_val_if_fail(startup_id != NULL, FALSE);
+    *startup_id = NULL;
+    g_return_val_if_fail(window != None, FALSE);
+
+    if(XGetTextProperty(dpy, window, &tp, net_startup_id))
+    {
+        if((tp.value) && (tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
+        {
+            *startup_id = strdup((char *)tp.value);
+            XFree(tp.value);
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+#endif

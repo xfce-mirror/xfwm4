@@ -65,20 +65,20 @@ Match;
 static int num_match = 0;
 static Match *matches = NULL;
 
-static void my_free_string_list(gchar **list, gint n)
+static void my_free_string_list(gchar ** list, gint n)
 {
     gchar **s;
     gint i;
-    
-    if (!list || !n)
+
+    if(!list || !n)
     {
-        return; /* silently... :) */
+        return;                 /* silently... :) */
     }
-    
+
     i = 0;
     s = list;
-    
-    while ((i < n) && (s))
+
+    while((i < n) && (s))
     {
         g_free(*s);
         *s = NULL;
@@ -241,7 +241,7 @@ static gchar *getsubstring(gchar * s, gint * length)
     return ns;
 }
 
-gboolean sessionSaveWindowStates(gchar *filename)
+gboolean sessionSaveWindowStates(gchar * filename)
 {
     FILE *f;
     Client *c;
@@ -252,94 +252,94 @@ gboolean sessionSaveWindowStates(gchar *filename)
     char **wm_command = NULL;
 
     g_return_val_if_fail(filename != NULL, FALSE);
-    
+
     if((f = fopen(filename, "w")))
     {
-	for(c = clients, client_idx = 0; client_idx < client_count; c = c->next, client_idx++)
-	{
-	    if (c->client_leader != None)
-	    {
-        	getWindowRole(dpy, c->client_leader, &window_role);
-	    }
-	    else
-	    {
-        	window_role = NULL;
-	    }
-            
-	    fprintf(f, "[CLIENT] 0x%lx\n", c->window);
+        for(c = clients, client_idx = 0; client_idx < client_count; c = c->next, client_idx++)
+        {
+            if(c->client_leader != None)
+            {
+                getWindowRole(dpy, c->client_leader, &window_role);
+            }
+            else
+            {
+                window_role = NULL;
+            }
+
+            fprintf(f, "[CLIENT] 0x%lx\n", c->window);
 
             getClientID(dpy, c->window, &client_id);
             if(client_id)
             {
-        	fprintf(f, "  [CLIENT_ID] %s\n", client_id);
-        	XFree(client_id);
-		client_id = NULL;
+                fprintf(f, "  [CLIENT_ID] %s\n", client_id);
+                XFree(client_id);
+                client_id = NULL;
             }
 
             if(c->client_leader)
             {
-        	fprintf(f, "  [CLIENT_LEADER] 0x%lx\n", c->client_leader);
+                fprintf(f, "  [CLIENT_LEADER] 0x%lx\n", c->client_leader);
             }
 
             if(window_role)
             {
-        	fprintf(f, "  [WINDOW_ROLE] %s\n", window_role);
-        	XFree(window_role);
-		window_role = NULL;
+                fprintf(f, "  [WINDOW_ROLE] %s\n", window_role);
+                XFree(window_role);
+                window_role = NULL;
             }
 
             if(c->class.res_class)
             {
-        	fprintf(f, "  [RES_NAME] %s\n", c->class.res_name);
+                fprintf(f, "  [RES_NAME] %s\n", c->class.res_name);
             }
 
             if(c->class.res_name)
             {
-        	fprintf(f, "  [RES_CLASS] %s\n", c->class.res_class);
+                fprintf(f, "  [RES_CLASS] %s\n", c->class.res_class);
             }
 
             if(c->name)
             {
-        	fprintf(f, "  [WM_NAME] %s\n", c->name);
+                fprintf(f, "  [WM_NAME] %s\n", c->name);
             }
 
-	    wm_command_count = 0;
-	    getWindowCommand(dpy, c->window, &wm_command, &wm_command_count);
+            wm_command_count = 0;
+            getWindowCommand(dpy, c->window, &wm_command, &wm_command_count);
             if((wm_command_count > 0) && (wm_command))
             {
-        	gint j;
-		fprintf(f, "  [WM_COMMAND] (%i)", wm_command_count);
-        	for(j = 0; j < wm_command_count; j++)
-        	{
+                gint j;
+                fprintf(f, "  [WM_COMMAND] (%i)", wm_command_count);
+                for(j = 0; j < wm_command_count; j++)
+                {
                     gchar *escaped_string;
                     escaped_string = escape_quote(wm_command[j]);
                     fprintf(f, " \"%s\"", escaped_string);
                     g_free(escaped_string);
-        	}
-        	fprintf(f, "\n");
-        	XFreeStringList(wm_command);
-		wm_command = NULL;
-		wm_command_count = 0;
+                }
+                fprintf(f, "\n");
+                XFreeStringList(wm_command);
+                wm_command = NULL;
+                wm_command_count = 0;
             }
 
             fprintf(f, "  [GEOMETRY] (%i,%i,%i,%i)\n", c->x, c->y, c->width, c->height);
             fprintf(f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->old_x, c->old_y, c->old_width, c->old_height);
             fprintf(f, "  [DESK] %i\n", c->win_workspace);
             fprintf(f, "  [FLAGS] 0x%lx\n", CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY | CLIENT_FLAG_HIDDEN | CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_NAME_CHANGED));
-	}
-	fclose(f);
-	return TRUE;
+        }
+        fclose(f);
+        return TRUE;
     }
     return FALSE;
 }
 
-gboolean sessionLoadWindowStates(gchar *filename)
+gboolean sessionLoadWindowStates(gchar * filename)
 {
     FILE *f;
     char s[4096], s1[4096];
     int i, pos, pos1;
     unsigned long w;
-    
+
     g_return_val_if_fail(filename != NULL, FALSE);
     if((f = fopen(filename, "r")))
     {
@@ -419,7 +419,7 @@ gboolean sessionLoadWindowStates(gchar *filename)
             else if(!strcmp(s1, "[WM_COMMAND]"))
             {
                 sscanf(s, "%*s (%i)%n", &matches[num_match - 1].wm_command_count, &pos);
-                matches[num_match - 1].wm_command = g_new (gchar *, matches[num_match - 1].wm_command_count + 1);
+                matches[num_match - 1].wm_command = g_new(gchar *, matches[num_match - 1].wm_command_count + 1);
                 for(i = 0; i < matches[num_match - 1].wm_command_count; i++)
                 {
                     gchar *substring;
@@ -432,7 +432,7 @@ gboolean sessionLoadWindowStates(gchar *filename)
             }
         }
         fclose(f);
-	return TRUE;
+        return TRUE;
     }
     return FALSE;
 }
@@ -445,41 +445,41 @@ void sessionFreeWindowStates(void)
         if(matches[i].client_id)
         {
             free(matches[i].client_id);
-	    matches[i].client_id = NULL;
+            matches[i].client_id = NULL;
         }
         if(matches[i].res_name)
         {
             free(matches[i].res_name);
-	    matches[i].res_name = NULL;
+            matches[i].res_name = NULL;
         }
         if(matches[i].res_class)
         {
             free(matches[i].res_class);
-	    matches[i].res_class = NULL;
+            matches[i].res_class = NULL;
         }
         if(matches[i].window_role)
         {
             free(matches[i].window_role);
-	    matches[i].window_role = NULL;
+            matches[i].window_role = NULL;
         }
         if(matches[i].wm_name)
         {
             free(matches[i].wm_name);
-	    matches[i].wm_name = NULL;
+            matches[i].wm_name = NULL;
         }
         if((matches[i].wm_command_count) && (matches[i].wm_command))
         {
             my_free_string_list(matches[i].wm_command, matches[i].wm_command_count);
-            g_free (matches[i].wm_command);
-	    matches[i].wm_command_count = 0;
-	    matches[i].wm_command = NULL;
+            g_free(matches[i].wm_command);
+            matches[i].wm_command_count = 0;
+            matches[i].wm_command = NULL;
         }
     }
-    if (matches)
+    if(matches)
     {
         g_free(matches);
-	matches = NULL;
-	num_match = 0;
+        matches = NULL;
+        num_match = 0;
     }
 }
 
@@ -496,57 +496,57 @@ static gboolean matchWin(Client * c, Match * m)
     gboolean found;
     int i;
 
-    g_return_val_if_fail (c != NULL, FALSE);
+    g_return_val_if_fail(c != NULL, FALSE);
 
     found = FALSE;
     getClientID(dpy, c->window, &client_id);
     if(xstreq(client_id, m->client_id))
     {
         /* client_id's match */
-	if (c->client_leader != None)
-	{
+        if(c->client_leader != None)
+        {
             getWindowRole(dpy, c->client_leader, &window_role);
-	}
-	else
-	{
+        }
+        else
+        {
             window_role = NULL;
-	}
+        }
         if((window_role) || (m->window_role))
         {
             /* We have or had a window role, base decision on it */
             found = xstreq(window_role, m->window_role);
         }
-	else
-	{
+        else
+        {
             /* Compare res_class, res_name and WM_NAME, unless the
              * WM_NAME has changed
              */
             if(xstreq(c->class.res_name, m->res_name) && (CLIENT_FLAG_TEST(c, CLIENT_FLAG_NAME_CHANGED) || (m->flags & CLIENT_FLAG_NAME_CHANGED) || xstreq(c->name, m->wm_name)))
             {
-        	if(client_id)
-        	{
+                if(client_id)
+                {
                     /* If we have a client_id, we don't compare
                        WM_COMMAND, since it will be different. */
                     found = TRUE;
 
-        	}
-        	else
-        	{
+                }
+                else
+                {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
-		    wm_command_count = 0;
-		    getWindowCommand(dpy, c->window, &wm_command, &wm_command_count);
+                    wm_command_count = 0;
+                    getWindowCommand(dpy, c->window, &wm_command, &wm_command_count);
                     if(wm_command_count == m->wm_command_count)
                     {
-                	for(i = 0; i < wm_command_count; i++)
-                	{
+                        for(i = 0; i < wm_command_count; i++)
+                        {
                             if(strcmp(wm_command[i], m->wm_command[i]) != 0)
-                        	break;
-                	}
+                                break;
+                        }
 
-                	if((i == wm_command_count) && (wm_command_count))
-                	{
+                        if((i == wm_command_count) && (wm_command_count))
+                        {
                             found = TRUE;
-                	}
+                        }
                     }           /* if (wm_command_count ==... */
                     /* We have to deal with a now-SM-aware client, it means that it won't probably
                      * restore its state in a proper manner.
@@ -555,51 +555,51 @@ static gboolean matchWin(Client * c, Match * m)
                      */
                     if(found)
                     {
-                	for(i = 0; i < num_match; i++)
-                	{
+                        for(i = 0; i < num_match; i++)
+                        {
                             if(!(matches[i].used) && !(&matches[i] == m) && (m->client_leader) && (matches[i].client_leader == m->client_leader))
                             {
-                        	matches[i].used = TRUE;
+                                matches[i].used = TRUE;
                             }
-                	}
+                        }
                     }
-        	}
+                }
             }
-	}
+        }
     }
 
     if(client_id)
     {
         XFree(client_id);
-	client_id = NULL;
+        client_id = NULL;
     }
 
     if(window_role)
     {
         XFree(window_role);
-	window_role = NULL;
+        window_role = NULL;
     }
 
     if((wm_command_count > 0) && (wm_command))
     {
-	XFreeStringList(wm_command);
-	wm_command = NULL;
-	wm_command_count = 0;
+        XFreeStringList(wm_command);
+        wm_command = NULL;
+        wm_command_count = 0;
     }
-    
+
     return found;
 }
 
-gboolean sessionMatchWinToSM(Client *c)
+gboolean sessionMatchWinToSM(Client * c)
 {
     int i;
-    
-    g_return_val_if_fail (c != NULL, FALSE);
+
+    g_return_val_if_fail(c != NULL, FALSE);
     for(i = 0; i < num_match; i++)
     {
         if(!matches[i].used && matchWin(c, &matches[i]))
         {
-	    matches[i].used = TRUE;
+            matches[i].used = TRUE;
             c->x = matches[i].x;
             c->y = matches[i].y;
             c->width = matches[i].width;
@@ -610,6 +610,7 @@ gboolean sessionMatchWinToSM(Client *c)
             c->old_height = matches[i].old_height;
             c->win_workspace = matches[i].desktop;
             CLIENT_FLAG_SET(c, matches[i].flags & (CLIENT_FLAG_STICKY | CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_HIDDEN));
+            CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
             return TRUE;
         }
     }

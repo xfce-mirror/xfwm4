@@ -22,6 +22,8 @@
 #  include "config.h"
 #endif
 
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
@@ -36,6 +38,7 @@
 #include "settings.h"
 #include "tabwin.h"
 #include "session.h"
+#include "startup_notification.h"
 #include "debug.h"
 #include "my_intl.h"
 
@@ -402,18 +405,18 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if((first == net_wm_state_shaded) || (second == net_wm_state_shaded))
     {
-        if ((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
         {
             clientShade(c);
         }
-	else if ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
-	{
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_SHADED))
+        {
             clientUnshade(c);
-	}
-	else if (action == NET_WM_STATE_TOGGLE)
-	{
+        }
+        else if(action == NET_WM_STATE_TOGGLE)
+        {
             clientToggleShaded(c);
-	}
+        }
     }
 
 #if 0
@@ -433,35 +436,35 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
                 clientHide(c, True);
             }
         }
-	else if ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
-	{
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+        {
             clientShow(c, True);
-	}
-	else if (action == NET_WM_STATE_TOGGLE)
-	{
-            if (CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
-	    {
+        }
+        else if(action == NET_WM_STATE_TOGGLE)
+        {
+            if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
+            {
                 clientShow(c, True);
-	    }
-	    else if (CLIENT_CAN_HIDE_WINDOW(c))
-	    {
+            }
+            else if(CLIENT_CAN_HIDE_WINDOW(c))
+            {
                 clientHide(c, True);
-	    }
-	}
+            }
+        }
     }
 #endif
 
     if((first == net_wm_state_sticky) || (second == net_wm_state_sticky))
     {
-        if ((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
         {
             clientStick(c, TRUE);
         }
-	else if ((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
-	{
+        else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_STICKY))
+        {
             clientUnstick(c, TRUE);
-	}
-	else if (action == NET_WM_STATE_TOGGLE)
+        }
+        else if(action == NET_WM_STATE_TOGGLE)
         {
             clientToggleSticky(c, TRUE);
         }
@@ -698,8 +701,9 @@ static void clientGetInitialNetWmDesktop(Client * c)
     DBG("entering clientGetInitialNetWmDesktop\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SESSION_MANAGED))
+    if(!CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_SESSION_MANAGED | CLIENT_FLAG_WORKSPACE_SET))
     {
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
         c->win_workspace = workspace;
     }
     if(getNetHint(dpy, c->window, net_wm_desktop, &val))
@@ -716,17 +720,20 @@ static void clientGetInitialNetWmDesktop(Client * c)
             DBG("atom net_wm_desktop specifies window \"%s\" is on desk %i\n", c->name, (int)val);
             c->win_workspace = (int)val;
         }
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
     }
     else if(getGnomeHint(dpy, c->window, win_workspace, &val))
     {
         DBG("atom win_workspace specifies window \"%s\" is on desk %i\n", c->name, (int)val);
         c->win_workspace = (int)val;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
     if(c->win_workspace > params.workspace_count - 1)
     {
         DBG("value off limits, using %i instead\n", params.workspace_count - 1);
         c->win_workspace = params.workspace_count - 1;
+        CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
     }
     DBG("initial desktop for window \"%s\" is %i\n", c->name, c->win_workspace);
     setGnomeHint(dpy, c->window, win_workspace, c->win_workspace);
@@ -1589,31 +1596,31 @@ static void _clientConfigure(Client * c, XWindowChanges * wc, int mask)
 
     if(mask & CWX)
     {
-        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
-	{
-            if ((c->gravity !=StaticGravity) && (wc->x == frameX(c)))
-	    {
-	        mask &= ~CWX;
-	    }
-	    else
-	    {
-	        c->x = wc->x;
-	    }
-	}
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        {
+            if((c->gravity != StaticGravity) && (wc->x == frameX(c)))
+            {
+                mask &= ~CWX;
+            }
+            else
+            {
+                c->x = wc->x;
+            }
+        }
     }
     if(mask & CWY)
     {
-        if (!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
-	{
-            if ((c->gravity !=StaticGravity) && (wc->y == frameY(c)))
-	    {
-	        mask &= ~CWY;
-	    }
-	    else
-	    {
-	        c->y = wc->y;
-	    }
-	}
+        if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MOVING | CLIENT_FLAG_RESIZING))
+        {
+            if((c->gravity != StaticGravity) && (wc->y == frameY(c)))
+            {
+                mask &= ~CWY;
+            }
+            else
+            {
+                c->y = wc->y;
+            }
+        }
         c->y = wc->y;
     }
     if(mask & CWWidth)
@@ -1842,10 +1849,10 @@ void clientUpdateMWMHints(Client * c)
     }
 }
 
-static inline void clientFree(Client *c)
-{    
-    g_return_if_fail (c != NULL);
-    
+static inline void clientFree(Client * c)
+{
+    g_return_if_fail(c != NULL);
+
     DBG("entering clientFree\n");
     DBG("freeing client \"%s\" (%#lx)\n", c->name, c->window);
 
@@ -1853,6 +1860,12 @@ static inline void clientFree(Client *c)
     {
         free(c->name);
     }
+#ifdef HAVE_STARTUP_NOTIFICATION
+    if(c->startup_id)
+    {
+        free(c->startup_id);
+    }
+#endif
     if(c->size)
     {
         XFree(c->size);
@@ -1873,7 +1886,7 @@ static inline void clientFree(Client *c)
     {
         XFree(c->class.res_class);
     }
-    
+
     free(c);
 }
 
@@ -1953,11 +1966,20 @@ void clientFrame(Window w)
 
     c->class.res_name = NULL;
     c->class.res_class = NULL;
-    XGetClassHint (dpy, w, &c->class);
+    XGetClassHint(dpy, w, &c->class);
     c->wmhints = XGetWMHints(dpy, c->window);
+    c->group_leader = None;
+    if(c->wmhints)
+    {
+        c->group_leader = c->wmhints->window_group;
+    }
     c->client_leader = None;
     c->client_leader = getClientLeader(dpy, c->window);
-    
+#ifdef HAVE_STARTUP_NOTIFICATION
+    c->startup_id = NULL;
+    getWindowStartupId(dpy, c->window, &(c->startup_id));
+#endif
+
     /* Initialize structure */
     c->client_flag = (CLIENT_FLAG_HAS_BORDER | CLIENT_FLAG_HAS_MENU | CLIENT_FLAG_HAS_MAXIMIZE | CLIENT_FLAG_HAS_HIDE | CLIENT_FLAG_HAS_CLOSE | CLIENT_FLAG_HAS_MOVE | CLIENT_FLAG_HAS_RESIZE);
 
@@ -1984,7 +2006,7 @@ void clientFrame(Window w)
     }
 
     /* Reload from session */
-    if (sessionMatchWinToSM (c))
+    if(sessionMatchWinToSM(c))
     {
         CLIENT_FLAG_SET(c, CLIENT_FLAG_SESSION_MANAGED);
     }
@@ -1993,6 +2015,7 @@ void clientFrame(Window w)
     CLIENT_FLAG_SET(c, (c->win_state & (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED)) ? CLIENT_FLAG_MAXIMIZED_HORIZ : 0);
 
     /* Beware, order of calls is important here ! */
+    sn_client_startup_properties(c);
     clientGetNetState(c);
     clientGetInitialNetWmDesktop(c);
     clientGetNetWmType(c);
@@ -2018,14 +2041,14 @@ void clientFrame(Window w)
     /* Once we know the type of window, we can initialize window position */
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_SESSION_MANAGED))
     {
-        if (attr.map_state != IsViewable)
-	{
+        if(attr.map_state != IsViewable)
+        {
             clientInitPosition(c);
-	}
-	else
-	{
+        }
+        else
+        {
             clientGravitate(c, APPLY);
-	}
+        }
     }
     gdk_x11_grab_server();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
@@ -2248,7 +2271,7 @@ Client *clientGetNext(Client * c, int mask)
     {
         for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
         {
-	    if ((c2->type == WINDOW_SPLASHSCREEN) || (c2->type == WINDOW_DESKTOP))
+            if((c2->type == WINDOW_SPLASHSCREEN) || (c2->type == WINDOW_DESKTOP))
             {
                 continue;
             }
@@ -2336,7 +2359,7 @@ void clientHide(Client * c, int change_state)
     XUnmapWindow(dpy, c->window);
     XUnmapWindow(dpy, c->frame);
     CLIENT_FLAG_UNSET(c, CLIENT_FLAG_VISIBLE);
-    
+
     for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
     {
         if(((c2->transient_for == c->window) || (c->transient_for == c2->window)) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE) && (c2 != c))
@@ -2474,6 +2497,7 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
     setGnomeHint(dpy, c->window, win_workspace, ws);
     c->win_workspace = ws;
     setNetHint(dpy, c->window, net_wm_desktop, (unsigned long)c->win_workspace);
+    CLIENT_FLAG_SET(c, CLIENT_FLAG_WORKSPACE_SET);
 
     if(manage_mapping && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
@@ -2571,16 +2595,16 @@ void clientStick(Client * c, gboolean include_transients)
         DBG("\"%s\" (%#lx) is already sticky\n", c->name, c->window);
         return;
     }
-    
-    if (include_transients)
+
+    if(include_transients)
     {
-	for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
-	{
+        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+        {
             if((c2->transient_for == c->window) && (c2 != c) && !CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
             {
-        	clientStick(c2, include_transients);
+                clientStick(c2, include_transients);
             }
-	}
+        }
     }
     c->win_state |= WIN_STATE_STICKY;
     CLIENT_FLAG_SET(c, CLIENT_FLAG_STICKY);
@@ -2604,15 +2628,15 @@ void clientUnstick(Client * c, gboolean include_transients)
         return;
     }
 
-    if (include_transients)
+    if(include_transients)
     {
-	for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
-	{
+        for(c2 = c->next, i = 0; (c2) && (i < client_count); c2 = c2->next, i++)
+        {
             if((c2->transient_for == c->window) && (c2 != c) && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
             {
-        	clientUnstick(c2, include_transients);
+                clientUnstick(c2, include_transients);
             }
-	}
+        }
     }
 
     c->win_state &= ~WIN_STATE_STICKY;
@@ -3110,7 +3134,7 @@ void clientMove(Client * c, XEvent * e)
     {
         XPutBackEvent(dpy, e);
     }
-    
+
     CLIENT_FLAG_SET(c, CLIENT_FLAG_MOVING);
     DBG("entering move loop\n");
     pushEventFilter(clientMove_event_filter, &passdata);
@@ -3692,3 +3716,45 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         }
     }
 }
+
+Client *clientGetLeader(Client * c)
+{
+    Client *c2 = NULL;
+
+    DBG("entering clientGetLeader\n");
+    g_return_val_if_fail(c != NULL, NULL);
+
+    if(c->group_leader != None)
+    {
+        c2 = clientGetFromWindow(c->group_leader, WINDOW);
+    }
+    else if(c->client_leader != None)
+    {
+        c2 = clientGetFromWindow(c->client_leader, WINDOW);
+    }
+    return c2;
+}
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+char *clientGetStartupId(Client * c)
+{
+    DBG("entering clientStartupId\n");
+    g_return_val_if_fail(c != NULL, NULL);
+
+    if(c->startup_id)
+    {
+        return c->startup_id;
+    }
+    else
+    {
+        Client *c2 = NULL;
+
+        c2 = clientGetLeader(c);
+        if(c2)
+        {
+            return c2->startup_id;
+        }
+    }
+    return NULL;
+}
+#endif

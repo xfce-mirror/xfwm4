@@ -48,6 +48,7 @@
 #include "keyboard.h"
 #include "workspaces.h"
 #include "session.h"
+#include "startup_notification.h"
 #include "debug.h"
 #include "my_intl.h"
 
@@ -102,6 +103,7 @@ static void cleanUp()
 
     DBG("entering cleanUp\n");
 
+    sn_close_display();
     clientUnframeAll();
     unloadSettings();
     XFreeCursor(dpy, root_cursor);
@@ -113,14 +115,14 @@ static void cleanUp()
     {
         XFreeCursor(dpy, resize_cursor[i]);
     }
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
+    for(i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
-	if (params.shortcut_exec[i])
-	{
-	    g_free(params.shortcut_exec[i]);
-	    params.shortcut_exec[i] = NULL;
-	}
-    }    
+        if(params.shortcut_exec[i])
+        {
+            g_free(params.shortcut_exec[i]);
+            params.shortcut_exec[i] = NULL;
+        }
+    }
     XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
     closeEventFilter();
 }
@@ -129,7 +131,7 @@ static void load_saved_session(void)
 {
     const gchar *home = g_getenv("HOME");
     gchar *filename;
-    
+
     filename = g_build_filename(home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
     sessionLoadWindowStates(filename);
     g_free(filename);
@@ -139,7 +141,7 @@ static void save_phase_2(gpointer data)
 {
     const gchar *home = g_getenv("HOME");
     gchar *filename;
-    
+
     filename = g_build_filename(home, G_DIR_SEPARATOR_S, ".xfwm4-session", NULL);
     sessionSaveWindowStates(filename);
     g_free(filename);
@@ -188,12 +190,12 @@ static int initialize(int argc, char **argv)
     progname = argv[0];
 
 #ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
+    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
 #endif
 
-    gtk_set_locale ();
+    gtk_set_locale();
     gtk_init(&argc, &argv);
 
     g_message(_("%s: Using GTK+-%d.%d.%d"), g_get_prgname(), gtk_major_version, gtk_minor_version, gtk_micro_version);
@@ -204,6 +206,7 @@ static int initialize(int argc, char **argv)
     screen = XDefaultScreen(dpy);
     depth = DefaultDepth(dpy, screen);
     cmap = DefaultColormap(dpy, screen);
+    sn_init_display(dpy, screen);
     workspace = 0;
 
     XSetErrorHandler(handleXError);
@@ -238,7 +241,7 @@ static int initialize(int argc, char **argv)
 
     root_cursor = XCreateFontCursor(dpy, XC_left_ptr);
     move_cursor = XCreateFontCursor(dpy, XC_fleur);
-    busy_cursor = XCreateFontCursor(dpy, XC_fleur);
+    busy_cursor = XCreateFontCursor(dpy, XC_watch);
     resize_cursor[CORNER_TOP_LEFT] = XCreateFontCursor(dpy, XC_top_left_corner);
     resize_cursor[CORNER_TOP_RIGHT] = XCreateFontCursor(dpy, XC_top_right_corner);
     resize_cursor[CORNER_BOTTOM_LEFT] = XCreateFontCursor(dpy, XC_bottom_left_corner);
@@ -315,30 +318,30 @@ int main(int argc, char **argv)
     {
         case -1:
             g_error(_("%s: Another Window Manager is already running"), g_get_prgname());
-	    break;
+            break;
         case -2:
             g_error(_("%s: Missing data from default files"), g_get_prgname());
-	    break;
+            break;
         case 0:
-	    if(daemon_mode)
-	    {
-        	switch (fork())
-        	{
-        	    case -1:
-                	g_error("fork() failed");
-                	break;
-        	    case 0:            /* child */
-                	gtk_main();
-                	break;
-        	    default:           /* parent */
-		        _exit (0);
-	        	break;
-        	}
-	    }
-	    else
-	    {
-        	gtk_main();
-	    }
+            if(daemon_mode)
+            {
+                switch (fork())
+                {
+                    case -1:
+                        g_error("fork() failed");
+                        break;
+                    case 0:    /* child */
+                        gtk_main();
+                        break;
+                    default:   /* parent */
+                        _exit(0);
+                        break;
+                }
+            }
+            else
+            {
+                gtk_main();
+            }
             break;
         default:
             g_error(_("%s: Unknown error occured"), g_get_prgname());

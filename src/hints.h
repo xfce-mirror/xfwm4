@@ -133,6 +133,7 @@ extern Atom net_current_desktop;
 extern Atom net_desktop_geometry;
 extern Atom net_desktop_viewport;
 extern Atom net_number_of_desktops;
+extern Atom net_startup_id;
 extern Atom net_supported;
 extern Atom net_supporting_wm_check;
 extern Atom net_wm_action_change_desktop;
@@ -187,7 +188,6 @@ void setGnomeHint(Display *, Window, Atom, long);
 void getGnomeDesktopMargins(Display *, int, CARD32 *);
 void setGnomeProtocols(Display *, int, Window);
 void initNetHints(Display * dpy);
-gboolean getNetHint(Display *, Window, Atom, long *);
 void set_net_supported_hint(Display *, int, Window);
 gboolean get_atom_list(Display *, Window, Atom, Atom **, int *);
 gboolean get_cardinal_list(Display *, Window, Atom, unsigned long **, int *);
@@ -202,8 +202,11 @@ gboolean getWindowRole(Display *, Window, char **);
 Window getClientLeader(Display *, Window);
 gboolean getClientID(Display *, Window, char **);
 gboolean getWindowCommand(Display *, Window, char ***, int *);
-
+#ifdef HAVE_STARTUP_NOTIFICATION
+gboolean getWindowStartupId(Display *, Window, char **);
+#endif
 
 #define setNetHint setGnomeHint
+#define getNetHint getGnomeHint
 
 #endif /* __HINTS_H__ */
