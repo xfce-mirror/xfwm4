@@ -1425,7 +1425,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if ((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
         {
-            TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME notify" c->name, c->window);
+            TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME notify", c->name, c->window);
             if (c->name)
             {
                 free (c->name);

@@ -52,7 +52,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = "$(DESTDIR)$(workspaces_plugindir)" "$(DESTDIR)$(xfwm4_plugindir)" "$(DESTDIR)$(appsdir)"
+am__installdirs = "$(DESTDIR)$(workspaces_plugindir)" "$(DESTDIR)$(xfwm4_plugindir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(iconsdir)"
 workspaces_pluginLTLIBRARIES_INSTALL = $(INSTALL)
 xfwm4_pluginLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(workspaces_plugin_LTLIBRARIES) \
@@ -85,8 +85,9 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 SOURCES = $(workspaces_plugin_la_SOURCES) $(xfwm4_plugin_la_SOURCES)
 DIST_SOURCES = $(workspaces_plugin_la_SOURCES) \
 	$(xfwm4_plugin_la_SOURCES)
-appsDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(apps_DATA) $(noinst_DATA)
+desktopDATA_INSTALL = $(INSTALL_DATA)
+iconsDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(desktop_DATA) $(icons_DATA) $(noinst_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -242,16 +243,13 @@ xfwm4_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 xfwm4_plugin_la_LDFLAGS = \
 	-avoid-version							\
-	-export-dynamic							\
 	-module
 
 xfwm4_plugin_la_SOURCES = \
 	xfwm4_plugin.c							\
 	xfwm4_plugin.h							\
 	xfwm4_shortcuteditor.c						\
-	xfwm4_shortcuteditor.h						\
-	keys-icon.h							\
-	xfwm4-icon.h
+	xfwm4_shortcuteditor.h
 
 xfwm4_plugin_la_CFLAGS = \
 	@LIBX11_CFLAGS@							\
@@ -273,19 +271,16 @@ workspaces_plugindir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 workspaces_plugin_LTLIBRARIES = workspaces_plugin.la
 workspaces_plugin_la_LDFLAGS = \
 	-avoid-version							\
-	-export-dynamic							\
 	-module
 
 workspaces_plugin_la_SOURCES = \
-	margins.c						\
-	margins.h						\
-	workspaces.c						\
-	workspaces.h						\
-	plugin.c						\
-	plugin.h						\
-	workspaces-icon.h						\
-	monitor-icon.h						\
-	margins-icon.h
+	margins.c							\
+	margins.h							\
+	workspaces.c							\
+	workspaces.h							\
+	plugin.c							\
+	plugin.h							\
+	monitor-icon.h
 
 workspaces_plugin_la_CFLAGS = \
 	@LIBX11_CFLAGS@							\
@@ -303,23 +298,25 @@ workspaces_plugin_la_LIBADD = \
 	@LIBS@
 
 noinst_DATA = \
-	xfwm4-icon.h							\
-	margins-icon.h							\
 	monitor-icon.h							\
-	workspaces-icon.h 						\
-	keys-icon.h							\
-	xfwm4-icon.png							\
-	keys.png							\
-	workspaces.png							\
-	margins-icon.png						\
 	monitor-icon.png
 
-EXTRA_DIST = $(noinst_DATA) 						\
+desktopdir = $(datadir)/applications
+desktop_DATA = \
 	xfce-wm-settings.desktop					\
 	xfce-workspaces-settings.desktop
 
-appsdir = $(datadir)/applications
-apps_DATA = xfce-wm-settings.desktop xfce-workspaces-settings.desktop
+iconsdir = $(datadir)/icons/hicolor/48x48/apps
+icons_DATA = \
+	xfce4-keys.png							\
+	xfce4-workspaces.png						\
+	xfwm4.png
+
+EXTRA_DIST = \
+	$(desktop_DATA)							\
+	$(icons_DATA)							\
+	$(noinst_DATA)
+
 all: all-am
 
 .SUFFIXES:
@@ -577,22 +574,39 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-install-appsDATA: $(apps_DATA)
+install-desktopDATA: $(desktop_DATA)
 	@$(NORMAL_INSTALL)
-	test -z "$(appsdir)" || $(mkdir_p) "$(DESTDIR)$(appsdir)"
-	@list='$(apps_DATA)'; for p in $$list; do \
+	test -z "$(desktopdir)" || $(mkdir_p) "$(DESTDIR)$(desktopdir)"
+	@list='$(desktop_DATA)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(appsDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(appsdir)/$$f'"; \
-	  $(appsDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(appsdir)/$$f"; \
+	  echo " $(desktopDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(desktopdir)/$$f'"; \
+	  $(desktopDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(desktopdir)/$$f"; \
 	done
 
-uninstall-appsDATA:
+uninstall-desktopDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(apps_DATA)'; for p in $$list; do \
+	@list='$(desktop_DATA)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f '$(DESTDIR)$(appsdir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(appsdir)/$$f"; \
+	  echo " rm -f '$(DESTDIR)$(desktopdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(desktopdir)/$$f"; \
+	done
+install-iconsDATA: $(icons_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(iconsdir)" || $(mkdir_p) "$(DESTDIR)$(iconsdir)"
+	@list='$(icons_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(iconsDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(iconsdir)/$$f'"; \
+	  $(iconsDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(iconsdir)/$$f"; \
+	done
+
+uninstall-iconsDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(icons_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f '$(DESTDIR)$(iconsdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(iconsdir)/$$f"; \
 	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
@@ -672,7 +686,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(workspaces_plugindir)" "$(DESTDIR)$(xfwm4_plugindir)" "$(DESTDIR)$(appsdir)"; do \
+	for dir in "$(DESTDIR)$(workspaces_plugindir)" "$(DESTDIR)$(xfwm4_plugindir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(iconsdir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -721,7 +735,8 @@ info: info-am
 
 info-am:
 
-install-data-am: install-appsDATA install-workspaces_pluginLTLIBRARIES \
+install-data-am: install-desktopDATA install-iconsDATA \
+	install-workspaces_pluginLTLIBRARIES \
 	install-xfwm4_pluginLTLIBRARIES
 
 install-exec-am:
@@ -750,8 +765,8 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-appsDATA uninstall-info-am \
-	uninstall-workspaces_pluginLTLIBRARIES \
+uninstall-am: uninstall-desktopDATA uninstall-iconsDATA \
+	uninstall-info-am uninstall-workspaces_pluginLTLIBRARIES \
 	uninstall-xfwm4_pluginLTLIBRARIES
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
@@ -759,34 +774,18 @@ uninstall-am: uninstall-appsDATA uninstall-info-am \
 	clean-xfwm4_pluginLTLIBRARIES ctags distclean \
 	distclean-compile distclean-generic distclean-libtool \
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
-	install install-am install-appsDATA install-data \
-	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-man install-strip \
-	install-workspaces_pluginLTLIBRARIES \
+	install install-am install-data install-data-am \
+	install-desktopDATA install-exec install-exec-am \
+	install-iconsDATA install-info install-info-am install-man \
+	install-strip install-workspaces_pluginLTLIBRARIES \
 	install-xfwm4_pluginLTLIBRARIES installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-appsDATA uninstall-info-am \
-	uninstall-workspaces_pluginLTLIBRARIES \
+	uninstall-am uninstall-desktopDATA uninstall-iconsDATA \
+	uninstall-info-am uninstall-workspaces_pluginLTLIBRARIES \
 	uninstall-xfwm4_pluginLTLIBRARIES
 
-
-xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
-	gdk-pixbuf-csource --raw --build-list				\
-	xfwm4_icon_data $(srcdir)/xfwm4-icon.png > xfwm4-icon.h
-
-keys-icon.h: $(srcdir)/keys.png
-	gdk-pixbuf-csource --raw --build-list				\
-	keys_icon_data $(srcdir)/keys.png > keys-icon.h
-
-margins-icon.h: $(srcdir)/margins-icon.png
-	gdk-pixbuf-csource --raw --build-list				\
-	margins_icon_data $(srcdir)/margins-icon.png > margins-icon.h
-
-workspaces-icon.h: $(srcdir)/workspaces.png
-	gdk-pixbuf-csource --raw --build-list 				\
-	workspaces_icon_data $(srcdir)/workspaces.png > workspaces-icon.h
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list				\

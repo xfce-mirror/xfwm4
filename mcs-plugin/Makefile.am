@@ -7,16 +7,13 @@ xfwm4_plugin_LTLIBRARIES = xfwm4_plugin.la
 
 xfwm4_plugin_la_LDFLAGS =						\
 	-avoid-version							\
-	-export-dynamic							\
 	-module
 
 xfwm4_plugin_la_SOURCES =						\
 	xfwm4_plugin.c							\
 	xfwm4_plugin.h							\
 	xfwm4_shortcuteditor.c						\
-	xfwm4_shortcuteditor.h						\
-	keys-icon.h							\
-	xfwm4-icon.h
+	xfwm4_shortcuteditor.h
 
 xfwm4_plugin_la_CFLAGS =						\
 	@LIBX11_CFLAGS@							\
@@ -40,19 +37,16 @@ workspaces_plugin_LTLIBRARIES = workspaces_plugin.la
 
 workspaces_plugin_la_LDFLAGS =						\
 	-avoid-version							\
-	-export-dynamic							\
 	-module
 
 workspaces_plugin_la_SOURCES =						\
-	margins.c						\
-	margins.h						\
-	workspaces.c						\
-	workspaces.h						\
-	plugin.c						\
-	plugin.h						\
-	workspaces-icon.h						\
-	monitor-icon.h						\
-	margins-icon.h
+	margins.c							\
+	margins.h							\
+	workspaces.c							\
+	workspaces.h							\
+	plugin.c							\
+	plugin.h							\
+	monitor-icon.h
 
 workspaces_plugin_la_CFLAGS =						\
 	@LIBX11_CFLAGS@							\
@@ -70,40 +64,25 @@ workspaces_plugin_la_LIBADD =						\
 	@LIBS@
 
 noinst_DATA =								\
-	xfwm4-icon.h							\
-	margins-icon.h							\
 	monitor-icon.h							\
-	workspaces-icon.h 						\
-	keys-icon.h							\
-	xfwm4-icon.png							\
-	keys.png							\
-	workspaces.png							\
-	margins-icon.png						\
 	monitor-icon.png
-
-EXTRA_DIST = $(noinst_DATA) 						\
-	xfce-wm-settings.desktop					\
-	xfce-workspaces-settings.desktop
-
-xfwm4-icon.h: $(srcdir)/xfwm4-icon.png
-	gdk-pixbuf-csource --raw --build-list				\
-	xfwm4_icon_data $(srcdir)/xfwm4-icon.png > xfwm4-icon.h
-
-keys-icon.h: $(srcdir)/keys.png
-	gdk-pixbuf-csource --raw --build-list				\
-	keys_icon_data $(srcdir)/keys.png > keys-icon.h
-
-margins-icon.h: $(srcdir)/margins-icon.png
-	gdk-pixbuf-csource --raw --build-list				\
-	margins_icon_data $(srcdir)/margins-icon.png > margins-icon.h
-
-workspaces-icon.h: $(srcdir)/workspaces.png
-	gdk-pixbuf-csource --raw --build-list 				\
-	workspaces_icon_data $(srcdir)/workspaces.png > workspaces-icon.h
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list				\
 	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
 
-appsdir = $(datadir)/applications
-apps_DATA = xfce-wm-settings.desktop xfce-workspaces-settings.desktop
+desktopdir = $(datadir)/applications
+desktop_DATA =								\
+	xfce-wm-settings.desktop					\
+	xfce-workspaces-settings.desktop
+
+iconsdir = $(datadir)/icons/hicolor/48x48/apps
+icons_DATA =								\
+	xfce4-keys.png							\
+	xfce4-workspaces.png						\
+	xfwm4.png
+
+EXTRA_DIST =								\
+	$(desktop_DATA)							\
+	$(icons_DATA)							\
+	$(noinst_DATA)

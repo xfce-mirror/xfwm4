@@ -43,7 +43,6 @@
 
 #include "plugin.h"
 #include "workspaces.h"
-#include "workspaces-icon.h"
 
 #define MAX_COUNT 32
 #define DEFAULT_NBR_WS 4

@@ -30,7 +30,6 @@
 
 #include "xfwm4_plugin.h"
 #include "xfwm4_shortcuteditor.h"
-#include "keys-icon.h"
 
 void
 loadtheme_in_treeview (gchar * theme_file, gpointer data)
@@ -934,7 +933,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
     gtk_widget_show (hbox);
 
-    icon = xfce_inline_icon_at_size (keys_icon_data, 48, 48);
+    icon = xfce_themed_icon_load ("xfce4-keys", 48);
     if (icon)
     {
         image = gtk_image_new_from_pixbuf (icon);
@@ -1113,7 +1112,7 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
 	gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
 	gtk_widget_show (hbox);
 
-	icon = xfce_inline_icon_at_size (keys_icon_data, 48, 48);
+	icon = xfce_themed_icon_load ("xfce4-keys.png", 48);
 	if (icon)
 	{
 	    image = gtk_image_new_from_pixbuf (icon);

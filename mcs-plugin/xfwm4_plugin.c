@@ -41,7 +41,6 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
-#include "xfwm4-icon.h"
 
 #include "xfwm4_plugin.h"
 #include "xfwm4_shortcuteditor.h"
@@ -1080,7 +1079,6 @@ Itf *
 create_dialog (McsPlugin * mcs_plugin)
 {
     Itf *dialog;
-    GdkPixbuf *icon;
     GtkWidget *frame;
     GtkWidget *hbox;
     GtkWidget *label;
@@ -1110,18 +1108,17 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->font_selection = NULL;
 
-    icon = xfce_inline_icon_at_size (xfwm4_icon_data, 32, 32);
-    gtk_window_set_icon (GTK_WINDOW (dialog->xfwm4_dialog), icon);
+    gtk_window_set_icon (GTK_WINDOW (dialog->xfwm4_dialog), mcs_plugin->icon);
 
     dialog->click_focus_radio_group = NULL;
 
     dialog->dialog_vbox = GTK_DIALOG (dialog->xfwm4_dialog)->vbox;
     gtk_widget_show (dialog->dialog_vbox);
 
-    dialog->dialog_header = xfce_create_header (icon, _("Window Manager Preferences"));
+    dialog->dialog_header = xfce_create_header (mcs_plugin->icon,
+                                                _("Window Manager Preferences"));
     gtk_widget_show (dialog->dialog_header);
     gtk_box_pack_start (GTK_BOX (dialog->dialog_vbox), dialog->dialog_header, FALSE, TRUE, 0);
-    g_object_unref (icon);
 
     notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER + 1);
@@ -1589,28 +1586,13 @@ setup_dialog (Itf * itf)
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
-#if 0
-#ifdef ENABLE_NLS
-    /* 
-       This is required for UTF-8 at least - Please don't remove it
-       And it needs to be done here for the label to be properly
-       localized....
-     */
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
-    textdomain (GETTEXT_PACKAGE);
-#endif
-#else
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-#endif
 
     create_channel (mcs_plugin);
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
     mcs_plugin->caption = g_strdup (_("Window Manager"));
     mcs_plugin->run_dialog = run_dialog;
-    mcs_plugin->icon = xfce_inline_icon_at_size (xfwm4_icon_data, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE);
+    mcs_plugin->icon = xfce_themed_icon_load ("xfwm4", 48);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
 
     return (MCS_PLUGIN_INIT_OK);

@@ -46,9 +46,6 @@
 #include "plugin.h"
 #include "margins.h"
 #include "workspaces.h"
-#include "workspaces-icon.h"
-
-#define DEFAULT_ICON_SIZE 48
 
 static McsManager *manager = NULL;
 
@@ -110,9 +107,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
     mcs_plugin->caption = g_strdup (_("Workspaces and Margins"));
     mcs_plugin->run_dialog = run_dialog;
-    mcs_plugin->icon =
-        xfce_inline_icon_at_size (workspaces_icon_data, DEFAULT_ICON_SIZE,
-                             DEFAULT_ICON_SIZE);
+    mcs_plugin->icon = xfce_themed_icon_load ("xfce4-workspaces", 48);
 
     create_workspaces_channel (mcs_plugin);
     create_margins_channel (mcs_plugin);
@@ -126,7 +121,6 @@ run_dialog (McsPlugin * mcs_plugin)
 {
     static GtkWidget *dialog = NULL;
     GtkWidget *mainvbox, *notebook, *header, *vbox; 
-    GdkPixbuf *icon;
 
     if (dialog)
     {
@@ -150,13 +144,11 @@ run_dialog (McsPlugin * mcs_plugin)
 
     mainvbox = GTK_DIALOG (dialog)->vbox;
 
-    icon = xfce_inline_icon_at_size (workspaces_icon_data, 32, 32);
-    gtk_window_set_icon (GTK_WINDOW (dialog), icon);
+    gtk_window_set_icon (GTK_WINDOW (dialog), mcs_plugin->icon);
 
-    header = xfce_create_header (icon, _("Workspaces and Margins"));
+    header = xfce_create_header (mcs_plugin->icon, _("Workspaces and Margins"));
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (mainvbox), header, TRUE, TRUE, 0);
-    g_object_unref (icon);
 
     notebook = gtk_notebook_new();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER);

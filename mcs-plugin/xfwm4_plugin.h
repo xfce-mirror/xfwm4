@@ -32,7 +32,6 @@
 #define DEFAULT_ALIGN "center"
 #define DEFAULT_FONT "Sans Bold 10"
 
-#define DEFAULT_ICON_SIZE 48
 #define MAX_ELEMENTS_BEFORE_SCROLLING 6
 
 #define SUFFIX      "xfwm4"
