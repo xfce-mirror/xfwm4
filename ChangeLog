@@ -1,3 +1,95 @@
+2004-11-13 00:40  fleclainche
+
+	* doc/C/: xfwm4.html, xfwm4.xml: Add missing xfwm4 hidden options.
+	  Move all hidden options in a specific section.  Olivier, please
+	  have a look, thx.
+
+2004-11-12 00:36  olivier
+
+	* doc/: C/images/titlebar.png, fr/images/titlebar.png,
+	  it/images/titlebar.png: Use my titlebar image instead (was lost
+	  because of the merge conflict)
+
+2004-11-11 23:21  olivier
+
+	* ltmain.sh, doc/C/images/Makefile.am, doc/C/images/Makefile.in,
+	  doc/C/images/compose_shortcut.png,
+	  doc/C/images/decoration_style.png, doc/C/images/focus.png,
+	  doc/C/images/keyboard_shortcuts.png,
+	  doc/C/images/misc_wm_prefs.png,
+	  doc/C/images/workspace_margins.png,
+	  doc/C/images/xfwm_workspaces.png, doc/fr/images/Makefile.am,
+	  doc/fr/images/Makefile.in, doc/fr/images/compose_shortcut.png,
+	  doc/fr/images/decoration_style.png, doc/fr/images/focus.png,
+	  doc/fr/images/keyboard_and_focus.png,
+	  doc/fr/images/keyboard_shortcuts.png,
+	  doc/fr/images/misc_wm_prefs.png, doc/fr/images/titlebar.png,
+	  doc/fr/images/workspace_margins.png,
+	  doc/fr/images/xfwm_workspaces.png, doc/it/images/Makefile.am,
+	  doc/it/images/Makefile.in, doc/it/images/compose_shortcut.png,
+	  doc/it/images/decoration_style.png, doc/it/images/focus.png,
+	  doc/it/images/keyboard_and_focus.png,
+	  doc/it/images/keyboard_shortcuts.png,
+	  doc/it/images/misc_wm_prefs.png, doc/it/images/titlebar.png,
+	  doc/it/images/workspace_margins.png,
+	  doc/it/images/xfwm_workspaces.png, po/fr.gmo, po/fr.po: Update
+	  screenshots (oops, conflict)
+
+2004-11-11 21:21  jasper
+
+	* ltmain.sh, doc/C/images/Makefile.am, doc/C/images/Makefile.in,
+	  doc/C/images/compose_shortcut.png,
+	  doc/C/images/decoration_style.png, doc/C/images/focus.png,
+	  doc/C/images/keyboard_and_focus.png,
+	  doc/C/images/keyboard_shortcuts.png,
+	  doc/C/images/misc_wm_prefs.png, doc/C/images/titlebar.png,
+	  doc/C/images/workspace_margins.png,
+	  doc/C/images/xfwm_workspaces.png: Big screenshot update for the
+	  docs
+
+2004-11-11 16:59  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c, po/xfwm4.pot, src/keyboard.c:
+	  Revert JF's patch and rather test for "Mod4" in xfwm4's
+	  keyboard.c
+
+2004-11-11 16:48  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: attempting to fix #377
+
+2004-11-11 15:42  pollux
+
+	* mcs-plugin/: xfwm4_plugin.h, xfwm4_shortcuteditor.c: i forgot to
+	  move the typedef
+
+2004-11-11 15:41  pollux
+
+	* mcs-plugin/: xfwm4_plugin.h, xfwm4_shortcuteditor.c: don't tell
+	  the user the shortcut is already used if it is the shortcut he is
+	  editing (thx benny for the idea)
+
+2004-11-08 10:18  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: fix #478
+
+2004-11-06 17:24  olivier
+
+	* ChangeLog, Makefile.in, aclocal.m4, compile, config.guess,
+	  config.sub, configure, configure.ac, depcomp, install-sh,
+	  ltmain.sh, missing, defaults/Makefile.in, doc/Makefile.in,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
+	  doc/it/images/Makefile.in, icons/Makefile.in,
+	  icons/48x48/Makefile.in, icons/scalable/Makefile.in,
+	  mcs-plugin/Makefile.in, src/Makefile.in, themes/Makefile.in,
+	  themes/breeze/Makefile.in, themes/default/Makefile.in,
+	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
+	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
+	  themes/tyrex/Makefile.in, themes/waza/Makefile.in: Update
+	  automake/autoconf/libtool/gettext versions to generate the
+	  configure scripts and Makefiles, Update versions of all packages
+	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
+
 2004-11-06 14:25  olivier
 
 	* ChangeLog, po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/be.gmo,
