@@ -1,3 +1,85 @@
+2003-09-10 09:39  huysmans
+
+	* configure, configure.ac, po/ar.gmo, po/ar.po, po/ca.gmo,
+	po/ca.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo,
+	po/es_MX.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo,
+	po/hu.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
+	po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo,
+	po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po, po/tr.gmo,
+	po/tr.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	po/zh_TW.po: Update version numbers and po files for release
+
+2003-09-08 09:27  huysmans
+
+	* doc/C/: xfwm4.html, xfwm4.xml: Update xfwm doc
+
+2003-09-08 08:25  huysmans
+
+	* po/: ru.gmo, ru.po: Update russian translations
+
+2003-09-07 15:00  xfce
+
+	* src/events.c: Fix typo
+
+2003-09-05 08:36  xfce
+
+	* src/events.c: Flush X buffer before and after grabbing mouse in
+	double click detection
+
+2003-09-02 08:48  huysmans
+
+	* po/: ms.gmo, ms.po: Update malaysian translations
+
+2003-09-01 23:09  xfce
+
+	* src/hints.c: More 64bit + endianess fixes
+
+2003-09-01 00:46  xfce
+
+	* src/: client.c, hints.c, hints.h, main.c, main.h, workspaces.c,
+	workspaces.h: Use "int" where "int" is to be used instead of CARD32
+	(for portability)
+
+2003-09-01 00:26  xfce
+
+	* src/: client.c, hints.c: Code cleanup (for portability)
+
+2003-08-31 23:03  xfce
+
+	* src/: client.c, hints.h: Use "unsigned long" instead of CARD32
+	for MWM hints as CARD32 seems to cause trouble on Alpha.
+
+2003-08-30 18:19  xfce
+
+	* src/events.c: Remove auto unhide feature because it causes
+	problems with some apps (Lotus Notes R5 under Wine being an
+	example)
+
+2003-08-30 14:49  huysmans
+
+	* aclocal.m4, configure, configure.ac, po/zh_TW.Big5.gmo,
+	po/zh_TW.Big5.po, po/zh_TW.gmo, po/zh_TW.po: Rename zh_TW.Big5 ->
+	zh_TW
+
+2003-08-30 10:58  huysmans
+
+	* po/: zh_TW.Big5.gmo, zh_TW.Big5.po: Add traditional chinese
+	translations
+
+2003-08-30 01:34  xfce
+
+	* src/events.c: Add traces.
+
+2003-08-30 00:59  xfce
+
+	* src/: hints.c, hints.h: Blender sets only 4 elements in MWM hints
+	intead of 5 as defined, as we ignore the fifth element anyway, read
+	only 4 elements and make blender happy...
+
+2003-08-26 09:38  huysmans
+
+	* ChangeLog: Update changelogs
+
 2003-08-26 09:12  huysmans
 
 	* po/: ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
