@@ -121,6 +121,9 @@ Atom net_wm_window_type_utility;
 Atom net_workarea;
 Atom utf8_string;
 
+/* KDE extension */
+Atom kde_net_wm_context_help;
+
 static gboolean
 check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
     Atom expected_type, int n_items, int format, Atom type)
@@ -242,6 +245,11 @@ getWMProtocols (Display * dpy, Window w)
             {
                 result |= WM_PROTOCOLS_DELETE_WINDOW;
             }
+            // KDE extension
+            if (*ap == (Atom) kde_net_wm_context_help)
+            {
+                result |= WM_PROTOCOLS_CONTEXT_HELP;
+            }
         }
     }
     else
@@ -259,6 +267,11 @@ getWMProtocols (Display * dpy, Window w)
                 if (*ap == (Atom) wm_delete_window)
                 {
                     result |= WM_PROTOCOLS_DELETE_WINDOW;
+                }
+                // KDE extension
+                if (*ap == (Atom) kde_net_wm_context_help)
+                {
+                    result |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
             }
         }
@@ -289,6 +302,14 @@ initGnomeHints (Display * dpy)
         XInternAtom (dpy, "_WIN_SUPPORTING_WM_CHECK", FALSE);
     win_workspace_count = XInternAtom (dpy, "_WIN_WORKSPACE_COUNT", FALSE);
     win_workspace = XInternAtom (dpy, "_WIN_WORKSPACE", FALSE);
+}
+
+void
+initKDEHints (Display * dpy)
+{
+    TRACE ("entering initKDEHints");
+
+    kde_net_wm_context_help = XInternAtom (dpy, "_NET_WM_CONTEXT_HELP", FALSE);
 }
 
 gboolean

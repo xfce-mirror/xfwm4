@@ -31,24 +31,25 @@
 
 typedef enum
 {
-    MENU_OP_SEPARATOR = 0,
-    MENU_OP_MAXIMIZE = 1 << 0,
-    MENU_OP_UNMAXIMIZE = 1 << 1,
-    MENU_OP_MINIMIZE = 1 << 2,
+    MENU_OP_SEPARATOR    = 0,
+    MENU_OP_MAXIMIZE     = 1 << 0,
+    MENU_OP_UNMAXIMIZE   = 1 << 1,
+    MENU_OP_MINIMIZE     = 1 << 2,
     MENU_OP_MINIMIZE_ALL = 1 << 3,
-    MENU_OP_UNMINIMIZE = 1 << 4,
-    MENU_OP_SHADE = 1 << 5,
-    MENU_OP_UNSHADE = 1 << 6,
-    MENU_OP_STICK = 1 << 7,
-    MENU_OP_UNSTICK = 1 << 8,
-    MENU_OP_DELETE = 1 << 9,
-    MENU_OP_DESTROY = 1 << 10,
-    MENU_OP_WORKSPACES = 1 << 11,
-    MENU_OP_QUIT = 1 << 12,
-    MENU_OP_RESTART = 1 << 13,
-    MENU_OP_OTHER = 1 << 14,
-    MENU_OP_ABOVE = 1 << 15,
-    MENU_OP_NORMAL = 1 << 16
+    MENU_OP_UNMINIMIZE   = 1 << 4,
+    MENU_OP_SHADE        = 1 << 5,
+    MENU_OP_UNSHADE      = 1 << 6,
+    MENU_OP_STICK        = 1 << 7,
+    MENU_OP_UNSTICK      = 1 << 8,
+    MENU_OP_DELETE       = 1 << 9,
+    MENU_OP_DESTROY      = 1 << 10,
+    MENU_OP_WORKSPACES   = 1 << 11,
+    MENU_OP_QUIT         = 1 << 12,
+    MENU_OP_RESTART      = 1 << 13,
+    MENU_OP_ABOVE        = 1 << 14,
+    MENU_OP_NORMAL       = 1 << 15,
+    MENU_OP_CONTEXT_HELP = 1 << 16,
+    MENU_OP_OTHER        = 1 << 17
 }
 MenuOp;
 

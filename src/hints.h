@@ -73,6 +73,7 @@
 
 #define WM_PROTOCOLS_TAKE_FOCUS                 (1L<<0)
 #define WM_PROTOCOLS_DELETE_WINDOW              (1L<<1)
+#define WM_PROTOCOLS_CONTEXT_HELP               (1L<<2)
 
 #define WIN_LAYER_DESKTOP                       0
 #define WIN_LAYER_BELOW                         2
@@ -176,6 +177,9 @@ extern Atom net_wm_window_type_toolbar;
 extern Atom net_wm_window_type_utility;
 extern Atom net_workarea;
 
+/* KDE extension */
+extern Atom kde_net_wm_context_help;
+
 void initICCCMHints (Display *);
 unsigned long getWMState (Display *, Window);
 void setWMState (Display *, Window, unsigned long);
@@ -183,6 +187,7 @@ void initMotifHints (Display *);
 PropMwmHints *getMotifHints (Display *, Window);
 unsigned int getWMProtocols (Display *, Window);
 void initGnomeHints (Display *);
+void initKDEHints (Display *);
 gboolean getHint (Display *, Window, Atom, long *);
 void setHint (Display *, Window, Atom, long);
 void getGnomeDesktopMargins (Display *, int, int *);

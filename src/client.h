@@ -128,15 +128,6 @@
 
 #define ALL_WORKSPACES                 (int) 0xFFFFFFFF
 
-/*
-#define CLIENT_FLAG_TEST(c,f)                   (c->client_flag & (f))
-#define CLIENT_FLAG_TEST_ALL(c,f)               ((c->client_flag & (f)) == (f))
-#define CLIENT_FLAG_TEST_AND_NOT(c,f1,f2)       ((c->client_flag & (f1 | f2)) == (f1))
-#define CLIENT_FLAG_SET(c,f)                    (c->client_flag |= (f))
-#define CLIENT_FLAG_UNSET(c,f)                  (c->client_flag &= ~(f))
-#define CLIENT_FLAG_TOGGLE(c,f)                 (c->client_flag ^= (f))
- */
-
 /* Convenient macros */
 #define FLAG_TEST(flag,bits)                   (flag & (bits))
 #define FLAG_TEST_ALL(flag,bits)               ((flag & (bits)) == (bits))
@@ -282,6 +273,7 @@ void clientHide (Client *, int, gboolean);
 void clientHideAll (Client *, int);
 void clientClose (Client *);
 void clientKill (Client *);
+void clientEnterContextMenuState (Client *);
 void clientRaise (Client *);
 void clientLower (Client *);
 void clientSetLayer (Client *, int);

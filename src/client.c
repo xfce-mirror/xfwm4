@@ -2793,6 +2793,10 @@ clientGetWMProtocols (Client * c)
     FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ?
         WM_FLAG_TAKEFOCUS : 0);
+    /* KDE extension */
+    FLAG_SET (c->wm_flags, 
+        (wm_protocols_flags & WM_PROTOCOLS_CONTEXT_HELP) ?
+        WM_FLAG_CONTEXT_HELP : 0);
 }
 
 static inline void
@@ -3896,6 +3900,19 @@ clientKill (Client * c)
     TRACE ("killing client \"%s\" (0x%lx)", c->name, c->window);
 
     XKillClient (dpy, c->window);
+}
+
+void
+clientEnterContextMenuState (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientEnterContextMenuState");
+    TRACE ("Showing the what's this help for client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
+    {
+        sendClientMessage (c->window, wm_protocols, kde_net_wm_context_help);
+    }
 }
 
 void

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
-"POT-Creation-Date: 2003-12-21 22:35+0100\n"
+"POT-Creation-Date: 2004-01-03 22:16+0100\n"
 "PO-Revision-Date: 2003-08-05 13:01+0100\n"
 "Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -387,36 +387,40 @@ msgstr "_Omnipresent"
 msgid "Uns_tick"
 msgstr "No _omnipresent"
 
-#: src/menu.c:51 src/menu.c:52
+#: src/menu.c:51
+msgid "Context _help"
+msgstr ""
+
+#: src/menu.c:52 src/menu.c:53
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:53
+#: src/menu.c:54
 msgid "Send to..."
 msgstr "Envia a..."
 
-#: src/menu.c:55
+#: src/menu.c:56
 msgid "_Close"
 msgstr "Tan_ca"
 
-#: src/menu.c:58
+#: src/menu.c:59
 msgid "Destroy"
 msgstr "Destrueix"
 
-#: src/menu.c:61
+#: src/menu.c:62
 msgid "_Quit"
 msgstr "_Surt"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "Restart"
 msgstr "Reinicia"
 
-#: src/menu.c:165
+#: src/menu.c:166
 #, c-format
 msgid "Workspace %i"
 msgstr "À_rea de treball %i"
 
-#: src/menu.c:407
+#: src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut capturar el punter\n"

@@ -1724,6 +1724,10 @@ menu_callback (Menu * menu, MenuOp op, Window client_xwindow,
             frameDraw (c, FALSE, FALSE);
             clientClose (c);
             break;
+        case MENU_OP_CONTEXT_HELP:
+            clientEnterContextMenuState (c);
+            frameDraw (c, FALSE, FALSE);
+            break;
         case MENU_OP_ABOVE:
         case MENU_OP_NORMAL:
             clientToggleAbove (c);
@@ -1818,6 +1822,13 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
             {
                 insensitive |= MENU_OP_STICK;
             }
+        }
+    
+        /* KDE extension */
+        clientGetWMProtocols(c);
+        if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
+        {
+            ops |= MENU_OP_CONTEXT_HELP;
         }
 
         if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))

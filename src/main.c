@@ -151,9 +151,9 @@ static char *build_session_filename(SessionClient *client_session)
     
     path = (gchar *)xfce_get_userdir();
     if (!g_file_test(path, G_FILE_TEST_IS_DIR) && mkdir(path, 0755) < 0) {
-	    g_warning("Unable to create xfce user dir %s: %s",
-		       path, g_strerror(errno));
-	    return NULL;
+            g_warning("Unable to create xfce user dir %s: %s",
+                       path, g_strerror(errno));
+            return NULL;
     }
 
     path = xfce_get_userfile("sessions", NULL);
@@ -306,7 +306,7 @@ initialize (int argc, char **argv)
     initMotifHints (dpy);
     initGnomeHints (dpy);
     initNetHints (dpy);
-
+    initKDEHints (dpy);
     initModifiers (dpy);
 
     root_cursor = XCreateFontCursor (dpy, XC_left_ptr);
@@ -409,23 +409,23 @@ main (int argc, char **argv)
             if (daemon_mode)
             {
 #ifdef HAVE_DAEMON
-				if (daemon(TRUE, TRUE) < 0) {
-					g_warning(_("%s: Failed to enter daemon mode: %s"),
-							g_get_prgname(), g_strerror(errno));
-					exit(EXIT_FAILURE);
-				}
+                                if (daemon(TRUE, TRUE) < 0) {
+                                        g_warning(_("%s: Failed to enter daemon mode: %s"),
+                                                        g_get_prgname(), g_strerror(errno));
+                                        exit(EXIT_FAILURE);
+                                }
 #else /* !HAVE_DAEMON */
                 switch (fork ())
                 {
                     case -1:
                         g_warning (_("%s: Failed to create new process: %s"),
-								g_get_prgname(), g_strerror(errno));
+                                                                g_get_prgname(), g_strerror(errno));
                         exit (1);
                         break;
                     case 0:    /* child */
 #ifdef HAVE_SETSID
-						/* detach from terminal session */
-						(void)setsid();
+                                                /* detach from terminal session */
+                                                (void)setsid();
 #endif /* !HAVE_SETSID */
                         break;
                     default:   /* parent */
@@ -433,9 +433,9 @@ main (int argc, char **argv)
                         break;
                 }
 #endif /* !HAVE_DAEMON */
-			}
+                        }
 
-			/* enter GTK main loop */
+                        /* enter GTK main loop */
             gtk_main ();
             break;
         default:

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-12-21 22:35+0100\n"
+"POT-Creation-Date: 2004-01-03 22:16+0100\n"
 "PO-Revision-Date: 2003-09-03 22:20+0300\n"
 "Last-Translator: Dan Korostelev <daniel@ats.energo.ru>\n"
 "Language-Team: Russian <daniel@ats.energo.ru>\n"
@@ -377,36 +377,40 @@ msgstr "Приклеить"
 msgid "Uns_tick"
 msgstr "Отклеить"
 
-#: src/menu.c:51 src/menu.c:52
+#: src/menu.c:51
+msgid "Context _help"
+msgstr ""
+
+#: src/menu.c:52 src/menu.c:53
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:53
+#: src/menu.c:54
 msgid "Send to..."
 msgstr "Перенести на..."
 
-#: src/menu.c:55
+#: src/menu.c:56
 msgid "_Close"
 msgstr "Закрыть"
 
-#: src/menu.c:58
+#: src/menu.c:59
 msgid "Destroy"
 msgstr "Убить"
 
-#: src/menu.c:61
+#: src/menu.c:62
 msgid "_Quit"
 msgstr "Выход"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "Restart"
 msgstr "Перезапуск"
 
-#: src/menu.c:165
+#: src/menu.c:166
 #, c-format
 msgid "Workspace %i"
 msgstr "Рабочее место %i"
 
-#: src/menu.c:407
+#: src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не смог получить курсор\n"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
-"POT-Creation-Date: 2003-12-21 22:35+0100\n"
+"POT-Creation-Date: 2004-01-03 22:16+0100\n"
 "PO-Revision-Date: 2003-10-26 15:12+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -385,36 +385,40 @@ msgstr "При_ліпити"
 msgid "Uns_tick"
 msgstr "Від_ліпити"
 
-#: src/menu.c:51 src/menu.c:52
+#: src/menu.c:51
+msgid "Context _help"
+msgstr ""
+
+#: src/menu.c:52 src/menu.c:53
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:53
+#: src/menu.c:54
 msgid "Send to..."
 msgstr "Відправити на..."
 
-#: src/menu.c:55
+#: src/menu.c:56
 msgid "_Close"
 msgstr "_Закрити"
 
-#: src/menu.c:58
+#: src/menu.c:59
 msgid "Destroy"
 msgstr "Знищити"
 
-#: src/menu.c:61
+#: src/menu.c:62
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/menu.c:62
+#: src/menu.c:63
 msgid "Restart"
 msgstr "Перезапустити"
 
-#: src/menu.c:165
+#: src/menu.c:166
 #, c-format
 msgid "Workspace %i"
 msgstr "Робочу область %i"
 
-#: src/menu.c:407
+#: src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
