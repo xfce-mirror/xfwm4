@@ -1,3 +1,32 @@
+2004-09-29 23:46  fleclainche
+
+	* src/: inline-tabwin-icon.h, tabwin-icon.png: Change tabwin icon.
+
+2004-09-29 23:18  olivier
+
+	* src/compositor.c: Don't paint offscreen windows as done in
+	  xcompmgr.
+
+2004-09-29 19:05  olivier
+
+	* po/xfwm4.pot, src/client.c, src/wireframe.c: Add little white
+	  frame arround the black frame so it stays visible even on dark
+	  background, handle the one single hidden app in cycling.
+
+2004-09-29 10:22  pollux
+
+	* po/: zh_TW.gmo, zh_TW.po: updated zh_TW translations from Ambrose
+	  Li <acli@ada.dhs.org>
+
+2004-09-29 09:59  pollux
+
+	* po/: zh_CN.gmo, zh_CN.po: updated zh_CN translations from yongtao
+	  yang <yongtao.yang@gmail.com>
+
+2004-09-29 00:10  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-09-29 00:07  olivier
 
 	* src/: client.c, compositor.c: Improve windows refresh when using
