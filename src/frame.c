@@ -791,7 +791,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
                 xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
                 c->pm_cache.previous_height = c->height;
-                height_changed = TRUE;
             }
         }
 
