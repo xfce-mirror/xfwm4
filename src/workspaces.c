@@ -110,7 +110,6 @@ workspaceSwitch (int new_ws, Client * c2)
     }
 
     /* Second pass */
-    list_of_windows = g_list_reverse (list_of_windows);
     for (index = g_list_last(list_of_windows); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
