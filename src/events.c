@@ -45,11 +45,55 @@ static gboolean client_event_cb(GtkWidget * widget, GdkEventClient * ev);
 
 typedef enum
 {
+  XFWM_BUTTON_UNDEFINED      = 0,
   XFWM_BUTTON_DRAG           = 1,
   XFWM_BUTTON_CLICK          = 2,
-  XFWM_BUTTON_AND_DRAG       = 3,
+  XFWM_BUTTON_CLICK_AND_DRAG = 3,
   XFWM_BUTTON_DOUBLE_CLICK   = 4
 } XfwmButtonClickType;
+
+static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
+{
+    int xcurrent, ycurrent, x, y, total = 0;
+    int g = GrabSuccess;
+    int clicks = 1;
+    Time t0;
+    
+    g_return_val_if_fail(ev != NULL, XFWM_BUTTON_UNDEFINED);
+    g_return_val_if_fail(w != None, XFWM_BUTTON_UNDEFINED);
+
+    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
+    if (g != GrabSuccess)
+    {
+        DBG("grab failed in typeOfClick\n");
+        gdk_beep();
+        return XFWM_BUTTON_UNDEFINED;
+    }
+    x = xcurrent = ev->xbutton.x_root;
+    y = ycurrent = ev->xbutton.y_root;
+    t0 = CurrentTime;
+    
+    while ((ABS(x - xcurrent) < 1) && (ABS(y - ycurrent) < 1) && (total < 250) && ((CurrentTime - t0) < 250))
+    {
+        g_usleep (10);
+        total += 10;
+        if (XCheckMaskEvent (dpy, ButtonReleaseMask | ButtonPressMask, ev))
+        {
+            clicks++;
+        }
+        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask | PointerMotionHintMask, ev))
+        {
+            xcurrent = ev->xmotion.x_root;
+            ycurrent = ev->xmotion.y_root;
+        }
+        if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
+        {
+            break;
+        }
+    }
+    XUngrabPointer(dpy, ev->xbutton.time);
+    return (XfwmButtonClickType) clicks;
+}
 
 static void clear_timeout(void)
 {
@@ -111,14 +155,14 @@ static inline void handleKeyPress(XKeyEvent * ev)
             case KEY_MOVE_RIGHT:
                 if((c->has_border) && !(c->fullscreen))
                 {
-                    clientMove(c, (XEvent *) ev);
+                    clientMove(c, (XEvent *) ev, ev->time);
                 }
                 break;
             case KEY_RESIZE_UP:
             case KEY_RESIZE_DOWN:
             case KEY_RESIZE_LEFT:
             case KEY_RESIZE_RIGHT:
-                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+                clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev, ev->time);
                 break;
             case KEY_CYCLE_WINDOWS:
                 clientCycle(c);
@@ -279,58 +323,6 @@ static inline void handleKeyPress(XKeyEvent * ev)
     while(XCheckTypedEvent(dpy, EnterNotify, &e));
 }
 
-static inline XfwmButtonClickType typeOfClick(Window w, XEvent * ev)
-{
-    int xcurrent, ycurrent, x, y, total = 0;
-    int g = GrabSuccess;
-    int clicks = 1;
-    Time t0;
-    
-    g_return_val_if_fail(ev != NULL, XFWM_BUTTON_DRAG);
-    g_return_val_if_fail(w != None, XFWM_BUTTON_DRAG);
-
-    g = XGrabPointer(dpy, w, False, ButtonMotionMask | PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, ev->xbutton.time);    
-    if (g != GrabSuccess)
-    {
-        DBG("grab failed in typeOfClick\n");
-        gdk_beep();
-        return XFWM_BUTTON_DRAG;
-    }
-    x = xcurrent = ev->xbutton.x_root;
-    y = ycurrent = ev->xbutton.y_root;
-    t0 = CurrentTime;
-    
-    while ((total < 250) && (ABS(x - xcurrent) < 2) && (ABS(y - ycurrent) < 2) && ((CurrentTime - t0) < 250))
-    {
-        if (XCheckMaskEvent (dpy, ButtonReleaseMask, ev))
-        {
-            clicks++;
-        }
-        if (XCheckMaskEvent (dpy, ButtonPressMask, ev))
-        {
-            clicks++;
-        }
-        if ((XfwmButtonClickType) clicks == XFWM_BUTTON_DOUBLE_CLICK)
-        {
-            XUngrabPointer(dpy, ev->xbutton.time);
-            return (XfwmButtonClickType) clicks;
-        }
-        if (XCheckMaskEvent (dpy, ButtonMotionMask | PointerMotionMask, ev))
-        {
-            xcurrent = ev->xmotion.x_root;
-            ycurrent = ev->xmotion.y_root;
-            if ((ABS(x - xcurrent) > 0) || (ABS(y - ycurrent) > 0))
-            {
-                break;
-            }
-        }
-        g_usleep (10);
-        total += 10;
-    }
-    XUngrabPointer(dpy, ev->xbutton.time);
-    return (XfwmButtonClickType) clicks;
-}
-
 static inline void handleButtonPress(XButtonEvent * ev)
 {
     Client *c;
@@ -363,7 +355,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             XEvent copy_event = (XEvent) *ev;
             XfwmButtonClickType tclick;
             
-            if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(c->frame, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
+            if ((win == c->buttons[MENU_BUTTON]) && ((tclick = typeOfClick(win, &copy_event)) && (tclick == XFWM_BUTTON_DOUBLE_CLICK)))
             {
                 clientClose(c);
             }
@@ -388,12 +380,12 @@ static inline void handleButtonPress(XButtonEvent * ev)
                 clientSetFocus(c, True);
                 clientRaise(c);
             }
-            tclick = typeOfClick(c->frame, (XEvent *) ev);
-            if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_AND_DRAG))
+            tclick = typeOfClick(win, (XEvent *) ev);
+            if((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
             {
                 if((c->has_border) && !(c->fullscreen))
                 {
-                    clientMove(c, (XEvent *) ev);
+                    clientMove(c, (XEvent *) ev, ev->time);
                 }
             }
             else if(tclick == XFWM_BUTTON_DOUBLE_CLICK)
@@ -416,43 +408,43 @@ static inline void handleButtonPress(XButtonEvent * ev)
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev);
+            clientResize(c, CORNER_TOP_LEFT, (XEvent *) ev, ev->time);
         }
         else if((win == c->corners[CORNER_TOP_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev);
+            clientResize(c, CORNER_TOP_RIGHT, (XEvent *) ev, ev->time);
         }
         else if((win == c->corners[CORNER_BOTTOM_LEFT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev);
+            clientResize(c, CORNER_BOTTOM_LEFT, (XEvent *) ev, ev->time);
         }
         else if((win == c->corners[CORNER_BOTTOM_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
+            clientResize(c, CORNER_BOTTOM_RIGHT, (XEvent *) ev, ev->time);
         }
         else if((win == c->sides[SIDE_BOTTOM]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev);
+            clientResize(c, 4 + SIDE_BOTTOM, (XEvent *) ev, ev->time);
         }
         else if((win == c->sides[SIDE_LEFT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev);
+            clientResize(c, 4 + SIDE_LEFT, (XEvent *) ev, ev->time);
         }
         else if((win == c->sides[SIDE_RIGHT]) && (ev->button == Button1) && (state == 0))
         {
             clientSetFocus(c, True);
             clientRaise(c);
-            clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
+            clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev, ev->time);
         }
         else if(((ev->window != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {

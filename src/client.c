@@ -38,7 +38,8 @@
 
 /* Event mask definition */
 
-#define POINTER_EVENT_MASK	ButtonPressMask
+#define POINTER_EVENT_MASK	ButtonPressMask|\
+				ButtonReleaseMask
 				
 #define FRAME_EVENT_MASK	SubstructureNotifyMask|\
 				SubstructureRedirectMask|\
@@ -1606,7 +1607,7 @@ void clientFrame(Window w)
         clientGravitate(c, APPLY);
     }
 
-    MyXGrabServer(dpy);
+    MyXGrabServer();
     if(XGetGeometry(dpy, w, &dummy_root, &dummy_x, &dummy_y, &dummy_width, &dummy_height, &dummy_bw, &dummy_depth) == 0)
     {
         if(c->name)
@@ -1618,7 +1619,7 @@ void clientFrame(Window w)
             XFree(c->size);
         }
         free(c);
-        MyXUngrabServer(dpy);
+        MyXUngrabServer();
         return;
     }
     valuemask = CWEventMask;
@@ -1641,7 +1642,7 @@ void clientFrame(Window w)
     clientGrabKeys(c);
     XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
 
-    MyXUngrabServer(dpy);
+    MyXUngrabServer();
 
 
     c->sides[SIDE_LEFT] = XCreateSimpleWindow(dpy, c->frame, 0, 0, 1, 1, 0, 0, 0);
@@ -1762,7 +1763,7 @@ void clientFrameAll()
     client_focus = NULL;
 
     XSync (dpy, 0);
-    MyXGrabServer(dpy);
+    MyXGrabServer();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
@@ -1772,7 +1773,7 @@ void clientFrameAll()
             clientFrame(wins[i]);
         }
     }
-    MyXUngrabServer(dpy);
+    MyXUngrabServer();
     if(wins)
     {
         XFree(wins);
@@ -1787,7 +1788,7 @@ void clientUnframeAll()
 
     DBG("entering clientUnframeAll\n");
 
-    MyXGrabServer(dpy);
+    MyXGrabServer();
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
     {
@@ -1797,7 +1798,7 @@ void clientUnframeAll()
             clientUnframe(c, True);
         }
     }
-    MyXUngrabServer(dpy);
+    MyXUngrabServer();
     if(wins)
     {
         XFree(wins);
@@ -1949,7 +1950,7 @@ void clientClose(Client * c)
 
     if(c->wm_delete)
     {
-        sendClientMessage(dpy, c->window, wm_protocols, wm_delete_window, NoEventMask);
+        sendClientMessage(c->window, wm_protocols, wm_delete_window, NoEventMask);
     }
     else
     {
@@ -2368,7 +2369,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     {
         if(!passdata->grab && box_move)
         {
-            MyXGrabServer(dpy);
+            MyXGrabServer();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2426,7 +2427,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
 
         if(!passdata->grab && box_move)
         {
-            MyXGrabServer(dpy);
+            MyXGrabServer();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2439,7 +2440,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
         {
             int msx, msy;
 
-            getMouseXY(dpy, root, &msx, &msy);
+            getMouseXY(root, &msx, &msy);
             if(msx == 0 && !((workspace == 0) && !wrap_workspaces))
             {
                 XEvent e;
@@ -2533,18 +2534,19 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
     return status;
 }
 
-void clientMove(Client * c, XEvent * e)
+void clientMove(Client * c, XEvent * e, Time timestamp)
 {
     XWindowChanges wc;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
-    XSetWindowAttributes attributes;
-
 
     g_return_if_fail(c != NULL);
     DBG("entering clientDoMove\n");
     DBG("moving client \"%s\" (%#lx)\n", c->name, c->window);
 
+    getMouseXY(root, &passdata.mx, &passdata.my);
+    passdata.ox = c->x;
+    passdata.oy = c->y;
     passdata.c = c;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
@@ -2563,16 +2565,14 @@ void clientMove(Client * c, XEvent * e)
        I'm note sure it makes any difference, but who knows... It doesn' t hurt.
      */
     
-    attributes.event_mask = ButtonMotionMask;
-    passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
-    XMapRaised(dpy, passdata.tmp_event_window);
+    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask);
 
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp ? timestamp : CurrentTime);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, CurrentTime);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp ? timestamp : CurrentTime);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2580,13 +2580,13 @@ void clientMove(Client * c, XEvent * e)
         gdk_beep();
         if((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard(dpy, CurrentTime);
+            XUngrabKeyboard(dpy, timestamp ? timestamp : CurrentTime);
         }
         if(g2 == GrabSuccess)
         {
-            XUngrabPointer(dpy, CurrentTime);
+            XUngrabPointer(dpy, timestamp ? timestamp : CurrentTime);
         }
-	XDestroyWindow (dpy, passdata.tmp_event_window);
+	removeTmpEventWin (passdata.tmp_event_window);
         return;
     }
 
@@ -2594,10 +2594,6 @@ void clientMove(Client * c, XEvent * e)
     {
         XPutBackEvent(dpy, e);
     }
-
-    getMouseXY(dpy, root, &passdata.mx, &passdata.my);
-    passdata.ox = c->x;
-    passdata.oy = c->y;
 
     DBG("entering move loop\n");
     pushEventFilter(clientMove_event_filter, &passdata);
@@ -2610,7 +2606,7 @@ void clientMove(Client * c, XEvent * e)
         XUngrabKeyboard(dpy, CurrentTime);
     }
     XUngrabPointer(dpy, CurrentTime);
-    XDestroyWindow (dpy, passdata.tmp_event_window);
+    removeTmpEventWin (passdata.tmp_event_window);
 
     if(passdata.grab && box_move)
     {
@@ -2622,7 +2618,7 @@ void clientMove(Client * c, XEvent * e)
 
     if(passdata.grab && box_move)
     {
-        MyXUngrabServer(dpy);
+        MyXUngrabServer();
     }
 }
 
@@ -2640,7 +2636,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     {
         if(!passdata->grab && box_resize)
         {
-            MyXGrabServer(dpy);
+            MyXGrabServer();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2696,7 +2692,7 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
 
         if(!passdata->grab && box_resize)
         {
-            MyXGrabServer(dpy);
+            MyXGrabServer();
             passdata->grab = TRUE;
             clientDrawOutline(c);
         }
@@ -2778,38 +2774,35 @@ static GtkToXEventFilterStatus clientResize_event_filter(XEvent * xevent, gpoint
     return status;
 }
 
-void clientResize(Client * c, int corner, XEvent * e)
+void clientResize(Client * c, int corner, XEvent * e, Time timestamp)
 {
     XWindowChanges wc;
     MoveResizeData passdata;
     int g1 = GrabSuccess, g2 = GrabSuccess;
-    XSetWindowAttributes attributes;
 
     g_return_if_fail(c != NULL);
     DBG("entering clientResize\n");
     DBG("resizing client \"%s\" (%#lx)\n", c->name, c->window);
+
+    getMouseXY(c->frame, &passdata.mx, &passdata.my);
+    passdata.c = c;
+    passdata.corner = CORNER_BOTTOM_RIGHT;
+    passdata.use_keys = FALSE;
+    passdata.grab = FALSE;
+    passdata.corner = corner;
+    passdata.tmp_event_window = setTmpEventWin(ButtonMotionMask);
 
     if(c->maximized)
     {
         clientRemoveMaximizeFlag(c);
     }
 
-    passdata.c = c;
-    passdata.corner = CORNER_BOTTOM_RIGHT;
-    passdata.use_keys = FALSE;
-    passdata.grab = FALSE;
-    passdata.corner = corner;
-    attributes.event_mask = ButtonMotionMask;
-    passdata.tmp_event_window = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
-    XMapRaised(dpy, passdata.tmp_event_window);
-
-    getMouseXY(dpy, c->frame, &passdata.mx, &passdata.my);
     if(e->type == KeyPress)
     {
         passdata.use_keys = True;
-        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp ? timestamp : CurrentTime);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], CurrentTime);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, PointerMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp ? timestamp : CurrentTime);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -2817,13 +2810,13 @@ void clientResize(Client * c, int corner, XEvent * e)
         gdk_beep();
         if((passdata.use_keys) && (g1 == GrabSuccess))
         {
-            XUngrabKeyboard(dpy, CurrentTime);
+            XUngrabKeyboard(dpy, timestamp ? timestamp : CurrentTime);
         }
         if(g2 == GrabSuccess)
         {
-            XUngrabPointer(dpy, CurrentTime);
+            XUngrabPointer(dpy, timestamp ? timestamp : CurrentTime);
         }
-	XDestroyWindow (dpy, passdata.tmp_event_window);
+	removeTmpEventWin (passdata.tmp_event_window);
         return;
     }
 
@@ -2850,7 +2843,7 @@ void clientResize(Client * c, int corner, XEvent * e)
         XUngrabKeyboard(dpy, CurrentTime);
     }
     XUngrabPointer(dpy, CurrentTime);
-    XDestroyWindow (dpy, passdata.tmp_event_window);
+    removeTmpEventWin (passdata.tmp_event_window);
 
     if(passdata.grab && box_resize)
     {
@@ -2865,7 +2858,7 @@ void clientResize(Client * c, int corner, XEvent * e)
 
     if(passdata.grab && box_resize)
     {
-        MyXUngrabServer(dpy);
+        MyXUngrabServer();
     }
 }
 

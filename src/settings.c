@@ -346,7 +346,7 @@ void loadSettings()
     button_offset = atoi(getValue("button_offset", rc));
     title_vertical_offset = atoi(getValue("title_vertical_offset", rc));
 
-    box_gc = createGC(dpy, cmap, "#FFFFFF", GXxor, NULL, True);
+    box_gc = createGC(cmap, "#FFFFFF", GXxor, NULL, True);
     box_resize = !g_ascii_strcasecmp("true", getValue("box_resize", rc));
     box_move = !g_ascii_strcasecmp("true", getValue("box_move", rc));
 

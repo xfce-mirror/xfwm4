@@ -80,6 +80,7 @@ struct _Menu
     gpointer data;
     MenuOp ops;
     MenuOp insensitive;
+    Window tmp_event_window;
 };
 
 Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data);

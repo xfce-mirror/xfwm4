@@ -35,7 +35,7 @@
 
 static gint xgrabcount = 0;
 
-void getMouseXY(Display * dpy, Window w, int *x2, int *y2)
+void getMouseXY(Window w, int *x2, int *y2)
 {
     Window w1, w2;
     gint x1, y1, m;
@@ -45,7 +45,7 @@ void getMouseXY(Display * dpy, Window w, int *x2, int *y2)
     XQueryPointer(dpy, w, &w1, &w2, &x1, &y1, x2, y2, &m);
 }
 
-Window getMouseWindow(Display * dpy, Window w)
+Window getMouseWindow(Window w)
 {
     Window w1, w2;
     int x1, y1, x2, y2, m;
@@ -56,7 +56,7 @@ Window getMouseWindow(Display * dpy, Window w)
     return w2;
 }
 
-GC createGC(Display * dpy, Colormap cmap, char *col, int func, XFontStruct * font, int inc_sw)
+GC createGC(Colormap cmap, char *col, int func, XFontStruct * font, int inc_sw)
 {
     XGCValues gv;
     XColor xc1, xc2;
@@ -84,7 +84,7 @@ GC createGC(Display * dpy, Colormap cmap, char *col, int func, XFontStruct * fon
     return gc;
 }
 
-void sendClientMessage(Display * dpy, Window w, Atom a, long x, int mask)
+void sendClientMessage(Window w, Atom a, long x, int mask)
 {
     XEvent ev;
 
@@ -99,7 +99,7 @@ void sendClientMessage(Display * dpy, Window w, Atom a, long x, int mask)
     XSendEvent(dpy, w, False, mask, &ev);
 }
 
-void MyXGrabServer(Display * dpy)
+void MyXGrabServer(void)
 {
     DBG("entering MyXGrabServer\n");
     if(xgrabcount == 0)
@@ -111,7 +111,7 @@ void MyXGrabServer(Display * dpy)
     DBG("grabs : %i\n", xgrabcount);
 }
 
-void MyXUngrabServer(Display * dpy)
+void MyXUngrabServer(void)
 {
     DBG("entering MyXUngrabServer\n");
     if(--xgrabcount < 0)        /* should never happen */
@@ -124,4 +124,22 @@ void MyXUngrabServer(Display * dpy)
         XUngrabServer(dpy);
     }
     DBG("grabs : %i\n", xgrabcount);
+}
+
+Window setTmpEventWin(long eventmask)
+{
+    Window w;
+    
+    XSetWindowAttributes attributes;
+    attributes.event_mask = eventmask;
+    attributes.override_redirect = True;
+    w = XCreateWindow(dpy, root, 0, 0, XDisplayWidth(dpy, screen), XDisplayHeight(dpy, screen), 0, 0, InputOnly, CopyFromParent, CWEventMask, &attributes);
+    XMapRaised(dpy, w);
+    XSync (dpy, 0);
+    return (w);
+}
+
+void removeTmpEventWin(Window w)
+{
+    XDestroyWindow (dpy, w);
 }

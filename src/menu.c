@@ -29,6 +29,7 @@
 #include <X11/Xlib.h>
 #include <unistd.h>
 #include "menu.h"
+#include "misc.h"
 #include "gtktoxevent.h"
 #include "debug.h"
 
@@ -122,6 +123,7 @@ static gboolean activate_cb(GtkWidget * menuitem, gpointer data)
 
     DBG("deactivating menu_filter\n");
     popEventFilter();
+    removeTmpEventWin (md->menu->tmp_event_window);
     (*md->menu->func) (md->menu, md->op, md->client_xwindow, md->menu->data, md->data);
     return (FALSE);
 }
@@ -135,6 +137,7 @@ static gboolean menu_closed(GtkMenu * widget, gpointer data)
     menu_open = NULL;
     DBG("deactivating menu_filter\n");
     popEventFilter();
+    removeTmpEventWin (menu->tmp_event_window);
     (*menu->func) (menu, 0, None, menu->data, NULL);
     return (FALSE);
 }
@@ -277,6 +280,7 @@ static gboolean grab_available(guint32 timestamp)
 gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 timestamp)
 {
     GdkPoint *pt;
+    
     DBG("entering menu_popup\n");
 
     g_return_val_if_fail(menu != NULL, FALSE);
@@ -297,7 +301,9 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
         DBG("opening new menu\n");
         menu_open = menu->menu;
         pushEventFilter(menu_filter, NULL);
-        gtk_menu_popup(GTK_MENU(menu->menu), NULL, NULL, popup_position_func, pt, button, timestamp);
+	menu->tmp_event_window = setTmpEventWin(NoEventMask);
+        gtk_menu_popup(GTK_MENU(menu->menu), NULL, getDefaultGtkWidget(), popup_position_func, pt, button, timestamp);
+	
         if(!GTK_MENU_SHELL(GTK_MENU(menu->menu))->have_xgrab)
         {
             gdk_beep();
