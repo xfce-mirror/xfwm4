@@ -2070,6 +2070,8 @@ clientKeepVisible (Client * c)
          * Thus, will move it so its center on the current
          * physical screen
          */
+        getMouseXY (root, &cx, &cy);
+        
         c->x =
             MyDisplayX (cx, cy) + (MyDisplayWidth (dpy, screen, cx,
                 cy) - c->width) / 2;
