@@ -4453,7 +4453,7 @@ clientUpdateBelowState (Client * c)
     TRACE ("entering clientUpdateBelowState");
     TRACE ("Update below state for client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (CLIENT_FLAG_TOGGLE (c, CLIENT_FLAG_BELOW))
+    if (CLIENT_FLAG_TEST (c, CLIENT_FLAG_BELOW))
     {
         layer = WIN_LAYER_BELOW;
     }
