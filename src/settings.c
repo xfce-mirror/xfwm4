@@ -582,6 +582,7 @@ loadTheme (Settings rc[])
         if (desc)
         {
             gtk_widget_modify_font (widget, desc);
+            pango_font_description_free (desc);
         }
     }
 

@@ -3884,22 +3884,29 @@ clientPassFocus (Client * c)
     top_most = clientGetTopMostFocusable (look_in_layer, c);
     if (params.click_to_focus)
     {
-        if ((c) && clientIsModal (c))
+        if (c)
         {
-            /* If the window is a modal, send focus back to its parent window
-               Modals are transients, and we aren"t interested in modal
-               for group, so it safe to sue clientGetTransient because 
-               it's really what we want...
-             */
+            if (clientIsModal (c))
+	    {
+        	/* If the window is a modal, send focus back to its parent window
+        	   Modals are transients, and we aren"t interested in modal
+        	   for group, so it safe to sue clientGetTransient because 
+        	   it's really what we want...
+        	 */
 
-            c2 = clientGetTransient (c);
+        	c2 = clientGetTransient (c);
 
-            if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
-            {
-                new_focus = c2;
-                /* Usability: raise the parent, to grab user's attention */
-                clientRaise (c2);
-            }
+        	if (c2 && CLIENT_FLAG_TEST(c2, CLIENT_FLAG_VISIBLE))
+        	{
+                    new_focus = c2;
+                    /* Usability: raise the parent, to grab user's attention */
+                    clientRaise (c2);
+        	}
+	    }
+	    else
+	    {
+	        new_focus = clientGetNext (c, 0);
+	    }
         }
     }
     else if (XQueryPointer (dpy, root, &dr, &window, &rx, &ry, &wx, &wy, &mask))
