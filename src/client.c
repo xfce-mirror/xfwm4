@@ -2002,6 +2002,12 @@ clientGetTopMostFocusable (int layer, Client * exclude)
         c = (Client *) index->data;
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
+
+        if (c->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP))
+        {
+            continue;
+        }
+        
         if (!exclude || (c != exclude))
         {
             if ((c->win_layer <= layer) && CLIENT_FLAG_TEST (c, CLIENT_FLAG_VISIBLE))
