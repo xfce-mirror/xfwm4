@@ -46,6 +46,7 @@ themes/agua/Makefile
 themes/b5/Makefile
 themes/b6/Makefile
 themes/bbs/Makefile
+themes/beastie/Makefile
 themes/biz/Makefile
 themes/coldsteel/Makefile
 themes/coolclean/Makefile
@@ -83,6 +84,7 @@ themes/slick/Makefile
 themes/slimline/Makefile
 themes/tabs/Makefile
 themes/trench/Makefile
+themes/tux/Makefile
 themes/variation/Makefile
 themes/xfce/Makefile
 ])
