@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>XFce 4 Window Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.66.1"><link rel="start" href="#xfwm4" title="XFce 4 Window Manager"><link rel="next" href="#wm-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfwm4"></a>XFce 4 Window Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">François</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</tt></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">This manual describes <b xmlns="" class="application"><tt>xfwm4</tt></b> version 4.0
-  <br></br></span></div><div><p class="copyright">Copyright © 2003 François Le Clainche</p></div><div><p class="copyright">Copyright © 2003 Jasper Huijsmans</p></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#wm-intro">Introduction</a></span></dt><dt><span class="sect1"><a href="#wm-using">Using <b class="application"><tt>xfwm4</tt></b></a></span></dt><dd><dl><dt><span class="sect2"><a href="#wm-windows">Manage windows</a></span></dt><dt><span class="sect2"><a href="#wm-keybindings">Keyboard shortcuts summary</a></span></dt></dl></dd><dt><span class="sect1"><a href="#wm-settings">Customizing <b class="application"><tt>xfwm4</tt></b></a></span></dt><dd><dl><dt><span class="sect2"><a href="#wm-style">Decoration style</a></span></dt><dt><span class="sect2"><a href="#wm-focus">Keyboard and focus</a></span></dt><dt><span class="sect2"><a href="#wm_advanced">Advanced settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="#workspaces">Workspaces and Margins</a></span></dt><dd><dl><dt><span class="sect2"><a href="#id2523969">Workspaces</a></span></dt><dt><span class="sect2"><a href="#workspace-margins">Workspace margins</a></span></dt></dl></dd><dt><span class="sect1"><a href="#wm-copyright">About <b class="application"><tt>xfwm4</tt></b></a></span></dt></dl></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-intro"></a>Introduction</h2></div></div></div><p>The XFce 4 Window Manager is part of the <a href="http://www.xfce.org" target="_top">XFce Desktop Environment</a>.
-    The actual command to run is <b class="application"><tt>xfwm4</tt></b>. To run it in the background use 
-    <span><b class="command"><b class="application"><tt>xfwm4</tt></b> --daemon</b></span>. The window manager is responsible for
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>XFce 4 Window Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="#xfwm4" title="XFce 4 Window Manager"><link rel="next" href="#wm-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfwm4"></a>XFce 4 Window Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">François</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</code></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">This manual describes <strong xmlns="" class="application"><code>xfwm4</code></strong> version 4.0
+  <br></br></span></div><div><p class="copyright">Copyright © 2003 François Le Clainche</p></div><div><p class="copyright">Copyright © 2003 Jasper Huijsmans</p></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#wm-intro">Introduction</a></span></dt><dt><span class="sect1"><a href="#wm-using">Using <strong class="application"><code>xfwm4</code></strong></a></span></dt><dd><dl><dt><span class="sect2"><a href="#wm-windows">Manage windows</a></span></dt><dt><span class="sect2"><a href="#wm-keybindings">Keyboard shortcuts summary</a></span></dt></dl></dd><dt><span class="sect1"><a href="#wm-settings">Customizing <strong class="application"><code>xfwm4</code></strong></a></span></dt><dd><dl><dt><span class="sect2"><a href="#wm-style">Decoration style</a></span></dt><dt><span class="sect2"><a href="#wm-focus">Keyboard and focus</a></span></dt><dt><span class="sect2"><a href="#wm_advanced">Advanced settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="#workspaces">Workspaces and Margins</a></span></dt><dd><dl><dt><span class="sect2"><a href="#id2520282">Workspaces</a></span></dt><dt><span class="sect2"><a href="#workspace-margins">Workspace margins</a></span></dt></dl></dd><dt><span class="sect1"><a href="#wm-copyright">About <strong class="application"><code>xfwm4</code></strong></a></span></dt></dl></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-intro"></a>Introduction</h2></div></div></div><p>The XFce 4 Window Manager is part of the <a href="http://www.xfce.org" target="_top">XFce Desktop Environment</a>.
+    The actual command to run is <strong class="application"><code>xfwm4</code></strong>. To run it in the background use 
+    <span><strong class="command"><strong class="application"><code>xfwm4</code></strong> --daemon</strong></span>. The window manager is responsible for
     the placement of windows on the screen, provides the window
     decorations and allows you for instance to move, resize or close them.
   </p><p>If you are familiar with previous versions of XFce you will find many
-    changes. First of all, <b class="application"><tt>xfwm4</tt></b> adheres strongly to the standards defined on
+    changes. First of all, <strong class="application"><code>xfwm4</code></strong> adheres strongly to the standards defined on
     <a href="http://www.freedesktop.org" target="_top">freedesktop.org</a>.
     Consequently, special features such as making windows borderless, or 
     providing an icon for the application must now be implemented in the 
@@ -13,20 +13,20 @@
     behaviour. Most visible change is probably the themeability. The window 
     decorations (borders, title bar and window buttons) can be configured by 
     using window manager themes. 
-  </p><p><b class="application"><tt>xfwm4</tt></b> offers Xinerama support, useful when you have more than one
+  </p><p><strong class="application"><code>xfwm4</code></strong> offers Xinerama support, useful when you have more than one
     monitor connected to your computer, but you have to make sure
-    <b class="application"><tt>libxfcegui4</tt></b> is compiled with
-    <tt class="option">--enable-xinerama</tt>.
-  </p><p><b class="application"><tt>xfwm4</tt></b> can be run stand-alone, but if you use it this way, you will
+    <strong class="application"><code>libxfcegui4</code></strong> is compiled with
+    <code class="option">--enable-xinerama</code>.
+  </p><p><strong class="application"><code>xfwm4</code></strong> can be run stand-alone, but if you use it this way, you will
     need the <a href="xfce-mcs-manager.html" target="_top">XFce 4 Settings
       Manager</a> if you want GUI settings management. Tasks other than
     managing windows, like setting a background image or launching programs, 
     need to be performed by other programs.
-  </p></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-using"></a>Using <b class="application"><tt>xfwm4</tt></b></h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-windows"></a>Manage windows</h3></div></div></div><p>The window manager provides borders, a title bar and window buttons
+  </p></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-using"></a>Using <strong class="application"><code>xfwm4</code></strong></h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="wm-windows"></a>Manage windows</h3></div></div></div><p>The window manager provides borders, a title bar and window buttons
       to application windows. The look is defined by the window manager
-      theme.</p><p>In the default theme <b class="application"><tt>xfwm4</tt></b> shows six buttons and a title on regular
+      theme.</p><p>In the default theme <strong class="application"><code>xfwm4</code></strong> shows six buttons and a title on regular
       application windows. The six buttons perform these basic
-      functions:</p><div class="figure"><a name="titlebar-fig"></a><p class="title"><b>Figure 1. <tt class="application">xfwm4</tt> title bar buttons</b></p><div class="screenshot"><div class="mediaobject"><img src="images/titlebar.png" alt="xfwm4 title bar buttons and functions"></div></div></div><p>You can open the window menu with a left-click on the menu button on
+      functions:</p><div class="figure"><a name="titlebar-fig"></a><p class="title"><b>Figure 1. <code class="application">xfwm4</code> title bar buttons</b></p><div class="screenshot"><div class="mediaobject"><img src="images/titlebar.png" alt="xfwm4 title bar buttons and functions"></div></div></div><p>You can open the window menu with a left-click on the menu button on
       the title bar, or with a right-click on the window title area itself.
     </p><p> </p><div class="variablelist"><dl><dt><span class="term">Give focus to a window</span></dt><dd><p>You need to give the focus to a window if you want it to 
 	    receive keyboard and mouse input. Window decorations colors will 
@@ -35,7 +35,7 @@
 	  </p><p>A keyboard shortcut allows to switch the focus from a window
 	    to others : Hold Alt and then you can press Tab repeatedly untill
 	    you get to the window you want to focus. If you use it, you will 
-	    see a small popup with the window title and also <b class="application"><tt>xfwm4</tt></b> will 
+	    see a small popup with the window title and also <strong class="application"><code>xfwm4</code></strong> will 
 	    highlight the outline of the window that will receive the focus.
 	  </p><p>
 	    If you want the panel, and apps that do not appear in the taskbar, 
@@ -58,7 +58,7 @@
 	  "Hide" item</li><li>use Alt + F8 keyboard shortcut </li></ul></div><p>Alternatively, you can hide all windows of current workspace,
 	  excepted the one you are using, in only one action : click the menu
 	  button of the title bar and choose "Hide all others".</p><p>To "unhide" a window, you will have to select its name or its
-	  icon in one of those XFce 4 components :</p><div class="itemizedlist"><ul type="disc"><li><b class="application"><tt>xftaskbar4</tt></b></li><li>the <b class="application"><tt>xfce4-iconbox</tt></b></li><li>the list of windows, accessible with a middle-click on the
+	  icon in one of those XFce 4 components :</p><div class="itemizedlist"><ul type="disc"><li><strong class="application"><code>xftaskbar4</code></strong></li><li>the <strong class="application"><code>xfce4-iconbox</code></strong></li><li>the list of windows, accessible with a middle-click on the
 	  desktop background. This list shows all opened windows, classified
 	  by workspaces. Windows that are currently hidden are marked between
 	  [  ].</li></ul></div><p> </p></dd><dt><span class="term">Shade / unshade windows</span></dt><dd><p>If you "shade" a window, it will be reduced to the size of its
@@ -97,7 +97,7 @@
 	right)</li><li>Raise window : Shift + Alt + Page_Up</li><li>Lower window : Shift + Alt + Page_Down</li><li>Next workspace : Control + Alt + Arrow right
 	arrow</li><li>Previous workspace : Control + Alt + Arrow left</li><li>Add a workspace : Alt + Inser</li><li>Delete a workspace : Alt + Delete</li><li>Go to workspace number N (1-9) : Control + F(N)</li><li>Move the window to previous|next workspace : Alt + Control +
 	Home|End</li><li>Move a window to workspace number N (1-9) : Alt + Control +
-	keypad key number N</li><li>Start xfhelp4 : Alt + F1</li><li>Start xfrun4 : Alt + F2</li><li>Lock the screen : Alt + Control + Delete</li></ul></div></div></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-settings"></a>Customizing <b class="application"><tt>xfwm4</tt></b></h2></div></div></div><p>To open the Window Manager preferences dialog, click the button
+	keypad key number N</li><li>Start xfhelp4 : Alt + F1</li><li>Start xfrun4 : Alt + F2</li><li>Lock the screen : Alt + Control + Delete</li></ul></div></div></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-settings"></a>Customizing <strong class="application"><code>xfwm4</code></strong></h2></div></div></div><p>To open the Window Manager preferences dialog, click the button
     labelled "Window Manager" in the <a href="xfce-mcs-manager.html#manager-dialog" target="_top">XFce 4 Settings
       manager</a>. The dialog shows three tabs : Decoration style,
     Keyboard and focus, Advanced. All modifications will have an immediate
@@ -162,12 +162,12 @@
 	  appear or not, when you move or resize it (not displaying the
 	  content will save some system resources).</p></dd><dt><span class="term">Double click action</span></dt><dd><p>Select what must be the behaviour of the window manager when you
 	  double-click on the title bar of a window : shade window, hide
-	  window, maximize window or none.</p></dd></dl></div></div></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="workspaces"></a>Workspaces and Margins</h2></div></div></div><p><b class="application"><tt>xfwm4</tt></b> also manages workspaces. There is a special settings dialog to
+	  window, maximize window or none.</p></dd></dl></div></div></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="workspaces"></a>Workspaces and Margins</h2></div></div></div><p><strong class="application"><code>xfwm4</code></strong> also manages workspaces. There is a special settings dialog to
     change the workspace properties. You can start it by choosing 
     <span class="emphasis"><em>Workspaces and Margins</em></span> from the the <a href="xfce-mcs-manager.html#manager-dialog" target="_top">settings manager
       dialog</a>. The dialog contains two tab folders where you can 
     change workspace settings and desktop margins.
-  </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2523969"></a>Workspaces</h3></div></div></div><div class="figure"><a name="xfwm-workspace-fig"></a><p class="title"><b>Figure 5. Workspace Settings</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfwm_workspaces.png" alt="Shows workspace settings tab folder.
+  </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2520282"></a>Workspaces</h3></div></div></div><div class="figure"><a name="xfwm-workspace-fig"></a><p class="title"><b>Figure 5. Workspace Settings</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfwm_workspaces.png" alt="Shows workspace settings tab folder.
 	    "></div></div></div><div class="variablelist"><dl><dt><span class="term">Workspaces</span></dt><dd><p>This option allows you too choose the number of workspaces you
 	    want to use (between 1 and 32).
 	  </p></dd><dt><span class="term">Worspace names</span></dt><dd><p>This field shows the list of avaible workspaces. If you want to
@@ -181,8 +181,8 @@
     </p><p>Margins are areas on the edges of the screen that maximized windows
       won't cover. You can adjust the size, in pixels, of all margins (left,
       right, top and bottom). Use this feature, for example, if you do not want
-      maximized windows to overlap panel or iconbox frames.</p></div><p> </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-copyright"></a>About <b class="application"><tt>xfwm4</tt></b></h2></div></div></div><p><b class="application"><tt>xfwm4</tt></b> was written Olivier Fourdan  
-    (<tt class="email">&lt;<a href="mailto:fourdan@xfce.org">fourdan@xfce.org</a>&gt;</tt>). To find more information, please visit 
+      maximized windows to overlap panel or iconbox frames.</p></div><p> </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wm-copyright"></a>About <strong class="application"><code>xfwm4</code></strong></h2></div></div></div><p><strong class="application"><code>xfwm4</code></strong> was written Olivier Fourdan  
+    (<code class="email">&lt;<a href="mailto:fourdan@xfce.org">fourdan@xfce.org</a>&gt;</code>). To find more information, please visit 
     the <a href="http://www.xfce.org" target="_top">XFce web site</a>. 
   </p><p>To report a bug or make a suggestion regarding this application or
     this manual, send an email to the 
