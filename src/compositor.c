@@ -1730,6 +1730,8 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 
         if (cw)
         {
+            Client *c = cw->c;
+            
             TRACE ("Opacity changed for 0x%lx", cw->id);
             if (!getOpacity (display_info, cw->id, &cw->opacity))
             {
@@ -1737,6 +1739,18 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 cw->opacity = NET_WM_OPAQUE;
             }
             set_win_opacity (cw, cw->opacity);
+
+            /* Transset changes the property on the frame, not the client 
+               window. We need to check and update the client "opacity"
+               value accordingly.
+              */
+            if (c)
+            {
+                if (c->opacity != cw->opacity)
+                {
+                    c->opacity = cw->opacity;
+                }
+            }
         }
     }
     else
