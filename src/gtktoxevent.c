@@ -148,8 +148,9 @@ static GdkFilterReturn gdkXEventFilter(GdkXEvent * gdk_xevent, GdkEvent * event,
 
     while((filterelt) && (loop == XEV_FILTER_CONTINUE))
     {
+        GtkToXEventFilterStack *filterelt_next = filterelt->next;
         loop = (*filterelt->filter) (xevent, filterelt->data);
-        filterelt = filterelt->next;
+        filterelt = filterelt_next;
     }
     return GDK_FILTER_CONTINUE;
 }
