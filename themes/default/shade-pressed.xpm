@@ -1,6 +1,6 @@
 /* XPM */
 static char * shade_pressed_xpm[] = {
-"17 19 6 1",
+"17 18 6 1",
 "       c None",
 ".      c #949594 s active_shadow_2",
 "+      c #D5D6D5 s active_color_2",
@@ -24,6 +24,5 @@ static char * shade_pressed_xpm[] = {
 ".@@...........@@=",
 ".@@@@@@@@@@@@@@@=",
 ".@@@@@@@@@@@@@@@=",
-"+================",
-"                 "};
+"+================"};
 
