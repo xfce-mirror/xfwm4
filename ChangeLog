@@ -1,3 +1,141 @@
+2003-03-23  xfce
+
+	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/hints.c, src/misc.c:
+	Use gdk_screen[width|height]
+
+2003-03-23  xfce
+
+	* themes/default/: themerc, title-2-active.xpm,
+	title-2-inactive.xpm, title-3-active.xpm, title-3-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: [no log message]
+
+2003-03-23  xfce
+
+	* themes/default/: title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm: [no log message]
+
+2003-03-22  xfce
+
+	* themes/default/: close-pressed.xpm, hide-active.xpm,
+	hide-inactive.xpm, hide-pressed.xpm, maximize-active.xpm,
+	maximize-inactive.xpm, maximize-pressed.xpm,
+	maximize-toggled-active.xpm, maximize-toggled-inactive.xpm,
+	maximize-toggled-pressed.xpm, menu-pressed.xpm, shade-pressed.xpm,
+	shade-toggled-pressed.xpm, stick-pressed.xpm,
+	stick-toggled-pressed.xpm, themerc, title-2-active.xpm,
+	title-2-inactive.xpm, title-3-active.xpm, title-3-inactive.xpm,
+	title-4-active.xpm, title-4-inactive.xpm: Change default theme
+	(sigh!)
+
+2003-03-20  xfce
+
+	* mcs-plugin/xfwm4_plugin.c: Forgot to change default theme in mcs
+	plugin....
+
+2003-03-20  xfce
+
+	* configure, configure.ac, xfwm4.spec.in, defaults/defaults.in,
+	src/parserc.c, themes/Makefile.am, themes/Makefile.in,
+	themes/default/Makefile.am, themes/default/Makefile.in,
+	themes/default/README, themes/default/bottom-active.xpm,
+	themes/default/bottom-inactive.xpm,
+	themes/default/bottom-left-active.xpm,
+	themes/default/bottom-left-inactive.xpm,
+	themes/default/bottom-right-active.xpm,
+	themes/default/bottom-right-inactive.xpm,
+	themes/default/close-active.xpm, themes/default/close-inactive.xpm,
+	themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	themes/default/hide-inactive.xpm, themes/default/hide-pressed.xpm,
+	themes/default/left-active.xpm, themes/default/left-inactive.xpm,
+	themes/default/maximize-active.xpm,
+	themes/default/maximize-inactive.xpm,
+	themes/default/maximize-pressed.xpm,
+	themes/default/maximize-toggled-active.xpm,
+	themes/default/maximize-toggled-inactive.xpm,
+	themes/default/maximize-toggled-pressed.xpm,
+	themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	themes/default/menu-pressed.xpm, themes/default/right-active.xpm,
+	themes/default/right-inactive.xpm, themes/default/shade-active.xpm,
+	themes/default/shade-inactive.xpm,
+	themes/default/shade-pressed.xpm,
+	themes/default/shade-toggled-active.xpm,
+	themes/default/shade-toggled-inactive.xpm,
+	themes/default/shade-toggled-pressed.xpm,
+	themes/default/stick-active.xpm, themes/default/stick-inactive.xpm,
+	themes/default/stick-pressed.xpm,
+	themes/default/stick-toggled-active.xpm,
+	themes/default/stick-toggled-inactive.xpm,
+	themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	themes/default/title-1-active.xpm,
+	themes/default/title-1-inactive.xpm,
+	themes/default/title-2-active.xpm,
+	themes/default/title-2-inactive.xpm,
+	themes/default/title-3-active.xpm,
+	themes/default/title-3-inactive.xpm,
+	themes/default/title-4-active.xpm,
+	themes/default/title-4-inactive.xpm,
+	themes/default/title-5-active.xpm,
+	themes/default/title-5-inactive.xpm,
+	themes/default/top-left-active.xpm,
+	themes/default/top-left-inactive.xpm,
+	themes/default/top-right-active.xpm,
+	themes/default/top-right-inactive.xpm,
+	themes/microdeck/close-active.xpm,
+	themes/microdeck/close-inactive.xpm,
+	themes/microdeck/hide-active.xpm,
+	themes/microdeck/hide-inactive.xpm,
+	themes/microdeck/maximize-active.xpm,
+	themes/microdeck/maximize-inactive.xpm,
+	themes/microdeck/maximize-toggled-active.xpm,
+	themes/microdeck/maximize-toggled-inactive.xpm,
+	themes/microdeck/menu-active.xpm,
+	themes/microdeck/menu-inactive.xpm,
+	themes/microdeck/stick-active.xpm,
+	themes/microdeck/stick-inactive.xpm,
+	themes/microdeck2/close-active.xpm,
+	themes/microdeck2/close-inactive.xpm,
+	themes/microdeck2/hide-active.xpm,
+	themes/microdeck2/hide-inactive.xpm,
+	themes/microdeck2/maximize-active.xpm,
+	themes/microdeck2/maximize-inactive.xpm,
+	themes/microdeck2/menu-active.xpm,
+	themes/microdeck2/menu-inactive.xpm,
+	themes/microdeck2/stick-active.xpm,
+	themes/microdeck2/stick-inactive.xpm,
+	themes/microdeck2/title-3-active.xpm,
+	themes/microdeck2/title-3-inactive.xpm: Add a default theme and fix
+	several others
+
+2003-03-19  huysmans
+
+	* autogen.sh: Only add extra autogen parameters when none are given
+
+2003-03-18  xfce
+
+	* themes/microdeck/: title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm, title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm: [no log message]
+
+2003-03-18  xfce
+
+	* ChangeLog, themes/microdeck/title-1-active.xpm,
+	themes/microdeck/title-1-inactive.xpm,
+	themes/microdeck/title-2-active.xpm,
+	themes/microdeck/title-2-inactive.xpm,
+	themes/microdeck/title-3-active.xpm,
+	themes/microdeck/title-3-inactive.xpm,
+	themes/microdeck/title-4-active.xpm,
+	themes/microdeck/title-4-inactive.xpm,
+	themes/microdeck/title-5-active.xpm,
+	themes/microdeck/title-5-inactive.xpm,
+	themes/microdeck/top-left-active.xpm,
+	themes/microdeck/top-left-inactive.xpm,
+	themes/microdeck/top-right-active.xpm,
+	themes/microdeck/top-right-inactive.xpm: Update ChangeLog Update
+	build scripts (ie rerun autogen.sh) Update xfwm4's microdeck theme
+	Remove 1 pix border arround xffm menu bar
+
 2003-03-17  xfce
 
 	* Makefile.in, aclocal.m4, configure, ltcf-c.sh, ltconfig,

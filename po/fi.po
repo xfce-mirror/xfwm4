@@ -18,34 +18,35 @@ msgstr ""
 #: mcs-plugin/margins_plugin.c:224
 #, fuzzy
 msgid "Workspace Margins"
-msgstr "_TyÃ¶pÃ¶ytÃ€"
+msgstr "TyÃ¶pÃ¶ydÃ€n marginaalit"
 
 #: mcs-plugin/margins_plugin.c:190
 msgid "Adjust workspace margins"
-msgstr ""
+msgstr "Muuta tyÃ¶pÃ¶ydÃ€n marginaaleja"
 
 #: mcs-plugin/margins_plugin.c:211
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
+"Marginaalit ovat nÃ€ytÃ¶n reunalla oleva alue jolle ikkunoita ei aseteta"
 
 #: mcs-plugin/margins_plugin.c:251
 #, fuzzy
 msgid "Left :"
-msgstr "Vasen"
+msgstr "Vasen :"
 
 #: mcs-plugin/margins_plugin.c:271
 #, fuzzy
 msgid "Right :"
-msgstr "Oikea"
+msgstr "Oikea :"
 
 #: mcs-plugin/margins_plugin.c:291
 msgid "Top :"
-msgstr ""
+msgstr "YlÃ€osa :"
 
 #: mcs-plugin/margins_plugin.c:311
 msgid "Bottom :"
-msgstr ""
+msgstr "Alaosa :"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Title"
@@ -97,7 +98,7 @@ msgstr "Vasen"
 
 #: mcs-plugin/xfwm4_plugin.c:138
 msgid "Center"
-msgstr "Keski"
+msgstr "KeskellÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:139
 msgid "Right"
@@ -117,7 +118,7 @@ msgstr "Ikkuna manageri"
 
 #: mcs-plugin/xfwm4_plugin.c:1159
 msgid "Window Manager Preferences"
-msgstr "Ikkunoiden Asetukset"
+msgstr "Ikkunamanagerin Asetukset"
 
 #: mcs-plugin/xfwm4_plugin.c:1197
 msgid "Window style"
@@ -154,7 +155,7 @@ msgstr "NÃ€ppÃ€in oikotiet"
 
 #: mcs-plugin/xfwm4_plugin.c:1304
 msgid "Click to focus"
-msgstr "Paina kohdistaaksesi"
+msgstr "Kohdistus painettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1311
 msgid "Focus follows mouse"
@@ -162,7 +163,7 @@ msgstr "Kohdistus seuraa hiirtÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:1318
 msgid "Focus model"
-msgstr "Kohdistus malli"
+msgstr "Kohdistus tapa"
 
 #: mcs-plugin/xfwm4_plugin.c:1327
 msgid ""
@@ -204,7 +205,9 @@ msgstr "Nosta kohdennuksessa"
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
-msgstr "Nosta ikkuna kun painetaanikkunan sisÃ€llÃ€"
+msgstr ""
+"Nosta ikkuna kun painetaan\n"
+"sovellusikkunan sisÃ€llÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:1399
 msgid "Raise on click"
@@ -212,16 +215,15 @@ msgstr "Nosta painettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1404
 msgid "Keyboard and focus"
-msgstr "NÃ€ppÃ€imistÃ¶ ja kohdennus"
+msgstr "NÃ€ppÃ€imistÃ¶ ja kohdistus"
 
 #: mcs-plugin/xfwm4_plugin.c:1423
 msgid "Snap windows to screen border"
 msgstr "LiitÃ€ ikkunat nÃ€ytÃ¶n reunaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1428
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "LiitÃ€ ikkunat nÃ€ytÃ¶n reunaan"
+msgstr "LiitÃ€ ikkunat toisiinsa"
 
 #: mcs-plugin/xfwm4_plugin.c:1438
 msgid "Distance :"
@@ -236,9 +238,8 @@ msgid "Wide"
 msgstr "LeveÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
-#, fuzzy
 msgid "Windows snapping"
-msgstr "Ikkuna manageri"
+msgstr "Ikkunoiden kiinnitys"
 
 #: mcs-plugin/xfwm4_plugin.c:1473
 msgid "Wrap workspaces when dragging a window off the screen"
@@ -254,11 +255,11 @@ msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ kokoa muutettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1494
 msgid "Opaque resize"
-msgstr "Samea koon muutos "
+msgstr "Samea koon muutos"
 
 #: mcs-plugin/xfwm4_plugin.c:1503
 msgid "Display content of windows when moving"
-msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€essa"
+msgstr "NÃ€ytÃ€ ikkunan sisÃ€ltÃ¶ siirrettÃ€"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid "Opaque move"
@@ -277,7 +278,6 @@ msgid "Misc."
 msgstr "Sekalaiset"
 
 #: src/client.c:389
-#, fuzzy, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
 
@@ -402,7 +402,7 @@ msgstr "%s: Aktiivista vÃ€riÃ€ %s ei voi tunnistaa \n"
 #: src/settings.c:484
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€Ã€\n"
+msgstr "%s: Ei-aktiivista vÃ€riÃ€ %s ei voi kÃ€yttÃ€\n"
 
 #: src/settings.c:490
 #, c-format
@@ -421,27 +421,4 @@ msgstr "%s: TyÃ¶pÃ¶ytien mÃ€Ã€rÃ€Ã€ ei asetettu, kÃ€ytetÃ€
 
 #: src/tabwin.c:68
 msgid "Switch to ..."
-msgstr "Vaihta pÃ¶ydÃ€lle ..."
-
-#~ msgid "Snap to screen border"
-#~ msgstr "LiitÃ€ nÃ€ytÃ¶n reunaan"
-
-#, fuzzy
-#~ msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
-#~ msgstr "%s: SisÃ€ltÃ¶ %s ikkunassa (%lx) sisÃ€ltÃ€Ã€ epÃ€kelpoa UTF-8\n"
-
-#~ msgid "%s: Using GTK+-%d.%d.%d"
-#~ msgstr "%s: KÃ€ytÃ¶ssÃ€ GTK+-%d.%d.%d"
-
-#~ msgid "%s: Terminated\n"
-#~ msgstr "%s: Lopetettu\n"
-
-#~ msgid "Layout :"
-#~ msgstr "Ulkoasu :"
-
-#, fuzzy
-#~ msgid "%s: Unidentified client message for window 0x%lx"
-#~ msgstr "%s: ei hallittu net_wm_state (ikkuna %#lx)"
-
-#~ msgid "Init complete"
-#~ msgstr "Alustus tehty"
+msgstr "Vaihta tyÃ¶pÃ¶ydÃ€lle ..."
