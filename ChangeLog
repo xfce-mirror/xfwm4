@@ -1,3 +1,63 @@
+2004-12-15 23:50  olivier
+
+	* po/xfwm4.pot: [no log message]
+
+2004-12-15 23:46  olivier
+
+	* po/xfwm4.pot, src/compositor.c: Monitor reparenting too.
+
+2004-12-15 22:52  olivier
+
+	* po/xfwm4.pot, src/compositor.c: Don't restack if the sibling is
+	  unknown.
+
+2004-12-15 20:16  olivier
+
+	* src/: client.c, display.c, display.h, events.c: Fix bug #577,
+	  #596 and #597
+
+2004-12-14 21:33  pollux
+
+	* configure, configure.ac, ltmain.sh, po/ro.gmo, po/ro.po: add RO
+	  translations
+
+2004-12-14 20:30  olivier
+
+	* src/: client.c, events.c: Base compositing show/hide on received
+	  map/unmap events.
+
+2004-12-14 18:45  olivier
+
+	* po/xfwm4.pot, src/client.c, src/focus.c, src/focus.h: Ungrab keys
+	  on on client window when unframing as spotted by Jochen Baier
+	  <Jochen.Baier@stud.uni-karlsruhe.de>
+
+2004-12-13 22:36  olivier
+
+	* src/compositor.c: Typo
+
+2004-12-13 22:27  olivier
+
+	* configure, configure.ac, ltmain.sh, po/xfwm4.pot,
+	  src/compositor.c, src/compositor.h: Update version, improve the
+	  window creation management in the compositor.
+
+2004-12-13 21:12  olivier
+
+	* src/: compositor.c, compositor.h: Monitor window creation in
+	  compositor to avoid stacking discrepancies (that should greatly
+	  improve thing for #552, if not fixing it for good) Add a warning
+	  if a stacking discrepancy is detected, so we can tell, Fix a
+	  mismatch between compositor header and implemented function.
+
+2004-12-12 12:53  olivier
+
+	* src/compositor.c: Stacking
+
+2004-12-12 10:46  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-12-12 10:42  olivier
 
 	* src/client.c: Fix #588 for good
