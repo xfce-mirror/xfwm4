@@ -34,27 +34,27 @@
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE, NULL, "Maximize"},
-    {MENU_OP_UNMAXIMIZE, NULL, "Unmaximize"},
-    {MENU_OP_MINIMIZE, NULL, "Hide"},
-    {MENU_OP_MINIMIZE_ALL, NULL, "Hide all others"},
-    {MENU_OP_UNMINIMIZE, NULL, "Show"},
-    {MENU_OP_SHADE, NULL, "Shade"},
-    {MENU_OP_UNSHADE, NULL, "Unshade"},
-    {MENU_OP_STICK, NULL, "Stick"},
-    {MENU_OP_UNSTICK, NULL, "Unstick"},
-    {MENU_OP_MOVE, NULL, "Move"},
-    {MENU_OP_RESIZE, NULL, "Resize"},
-    {MENU_OP_SWITCH, NULL, "Switch"},
-    {MENU_OP_DELETE, NULL, "Close"},
+    {MENU_OP_MAXIMIZE, NULL, "Ma_ximize"},
+    {MENU_OP_UNMAXIMIZE, NULL, "Un_maximize"},
+    {MENU_OP_MINIMIZE, NULL, "_Hide"},
+    {MENU_OP_MINIMIZE_ALL, NULL, "Hide _all others"},
+    {MENU_OP_UNMINIMIZE, NULL, "S_how"},
+    {MENU_OP_SHADE, NULL, "_Shade"},
+    {MENU_OP_UNSHADE, NULL, "Un_shade"},
+    {MENU_OP_STICK, NULL, "S_tick"},
+    {MENU_OP_UNSTICK, NULL, "Uns_tick"},
+    {MENU_OP_MOVE, NULL, "_Move"},
+    {MENU_OP_RESIZE, NULL, "_Resize"},
+    {MENU_OP_SWITCH, NULL, "S_witch"},
+    {MENU_OP_DELETE, NULL, "_Close"},
     {0, NULL, NULL},
     {MENU_OP_DESTROY, NULL, "Destroy"},
 #if 0
     {0, NULL, NULL},
-    {MENU_OP_WORKSPACES, NULL, "Workspace"},
+    {MENU_OP_WORKSPACES, NULL, "Wor_kspace"},
     {0, NULL, NULL},
 #endif
-    {MENU_OP_QUIT, NULL, "Quit"},
+    {MENU_OP_QUIT, NULL, "_Quit"},
     {MENU_OP_RESTART, NULL, "Restart"},
 };
 
@@ -80,11 +80,7 @@ static GtkToXEventFilterStatus menu_filter(XEvent * xevent, gpointer data)
 
 
 static void
-#if ((GTK_MAJOR_VERSION <= 1) && (GTK_MINOR_VERSION <= 2))
-popup_position_func(GtkMenu * menu, gint * x, gint * y, gpointer user_data)
-#else
 popup_position_func(GtkMenu * menu, gint * x, gint * y, gboolean * push_in, gpointer user_data)
-#endif
 {
     GtkRequisition req;
     GdkPoint *pos;
@@ -167,26 +163,16 @@ Menu *menu_default(MenuOp ops, MenuOp insensitive, MenuFunc func, gpointer data)
 
             if(menuitems[i].op == 0)
             {
-#if ((GTK_MAJOR_VERSION <= 1) && (GTK_MINOR_VERSION <= 2))
-                mi = gtk_menu_item_new();
-#else
                 mi = gtk_separator_menu_item_new();
-#endif
             }
             else
             {
-#if ((GTK_MAJOR_VERSION <= 1) && (GTK_MINOR_VERSION <= 2))
-                mi = gtk_menu_item_new_with_label(menuitems[i].label);
-#else
                 mi = gtk_menu_item_new_with_mnemonic(menuitems[i].label);
-#endif
-
                 if(insensitive & menuitems[i].op)
                 {
                     gtk_widget_set_sensitive(mi, FALSE);
                 }
                 md = g_new(MenuData, 1);
-
                 md->menu = menu;
                 md->op = menuitems[i].op;
                 md->client_xwindow = None;
@@ -296,7 +282,7 @@ gboolean menu_popup(Menu * menu, int root_x, int root_y, int button, guint32 tim
 
     g_return_val_if_fail(menu != NULL, FALSE);
     g_return_val_if_fail(GTK_IS_MENU(menu->menu), FALSE);
-    
+
     pt = g_new(GdkPoint, 1);
     pt->x = root_x;
     pt->y = root_y;

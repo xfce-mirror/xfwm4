@@ -151,8 +151,8 @@ static void clientGetNetState(Client * c)
     {
         int i;
         DBG("clientGetNetState: %i atoms detected\n", n_atoms);
-        
-	i = 0;
+
+        i = 0;
         while(i < n_atoms)
         {
             if(atoms[i] == net_wm_state_shaded)
@@ -201,7 +201,7 @@ static void clientGetNetState(Client * c)
             }
             else
             {
-		g_message ("Unmanaged net_wm_state");
+                g_message("Unmanaged net_wm_state\n");
             }
 
             ++i;
@@ -550,13 +550,13 @@ static void clientSetNetActions(Client * c)
 {
     Atom atoms[6];
     int i = 0;
-    
+
     atoms[i++] = net_wm_action_change_desktop;
     atoms[i++] = net_wm_action_close;
     atoms[i++] = net_wm_action_maximize_horz;
     atoms[i++] = net_wm_action_maximize_vert;
     atoms[i++] = net_wm_action_stick;
-    if (c->has_border)
+    if(c->has_border)
     {
         atoms[i++] = net_wm_action_shade;
     }
@@ -818,10 +818,10 @@ void clientCoordGravitate(Client * c, int mode, int *x, int *y)
             dx = (c->border_width * 2) - frameRight(c);
             dy = (c->border_width * 2) - frameBottom(c);
             break;
-	default:
-	    dx = 0;
-	    dy = 0;
-	    break;
+        default:
+            dx = 0;
+            dy = 0;
+            break;
     }
     *x = *x + (dx * mode);
     *y = *y + (dy * mode);
@@ -836,7 +836,7 @@ void clientGravitate(Client * c, int mode)
 
     x = c->x;
     y = c->y;
-    clientCoordGravitate (c, mode, &x, &y);
+    clientCoordGravitate(c, mode, &x, &y);
     c->x = x;
     c->y = y;
 }
@@ -1321,26 +1321,26 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask)
     }
 }
 
-static inline void clientConstraintPos(Client *c)
+static inline void clientConstraintPos(Client * c)
 {
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if ((c->x + c->width) < CLIENT_MIN_VISIBLE + (int) margins[MARGIN_LEFT])
+    if((c->x + c->width) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT])
     {
-	c->x = CLIENT_MIN_VISIBLE + (int) margins[MARGIN_LEFT] - c->width ;
+        c->x = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_LEFT] - c->width;
     }
-    else if ((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int) margins[MARGIN_RIGHT])
+    else if((c->x + CLIENT_MIN_VISIBLE) > XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT])
     {
-	c->x = XDisplayWidth(dpy, screen) - (int) margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
+        c->x = XDisplayWidth(dpy, screen) - (int)margins[MARGIN_RIGHT] - CLIENT_MIN_VISIBLE;
     }
-    if ((c->y + c->height) < CLIENT_MIN_VISIBLE + (int) margins[MARGIN_TOP])
+    if((c->y + c->height) < CLIENT_MIN_VISIBLE + (int)margins[MARGIN_TOP])
     {
-	c->y = CLIENT_MIN_VISIBLE + (int) margins[MARGIN_TOP] - c->height;
+        c->y = CLIENT_MIN_VISIBLE + (int)margins[MARGIN_TOP] - c->height;
     }
-    else if (c->y + CLIENT_MIN_VISIBLE > XDisplayHeight(dpy, screen) - (int) margins[MARGIN_BOTTOM])
+    else if(c->y + CLIENT_MIN_VISIBLE > XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM])
     {
-	c->y = XDisplayHeight(dpy, screen)  - (int) margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
+        c->y = XDisplayHeight(dpy, screen) - (int)margins[MARGIN_BOTTOM] - CLIENT_MIN_VISIBLE;
     }
 }
 
@@ -1386,22 +1386,22 @@ static void clientInitPosition(Client * c)
 
     if(c->size->flags & (PPosition | USPosition))
     {
-        if (c->x + c->width < 5)
-	{
-	    c->x = 5 - c->width ;
-	}
-        if (c->x > XDisplayWidth(dpy, screen))
-	{
-	    c->x = XDisplayWidth(dpy, screen) - 5;
-	}
-        if (c->y + c->height < 5)
-	{
-	    c->y = 5 - c->height ;
-	}
-        if (c->y > XDisplayHeight(dpy, screen))
-	{
-	    c->y = XDisplayHeight(dpy, screen) - 5;
-	}
+        if(c->x + c->width < 5)
+        {
+            c->x = 5 - c->width;
+        }
+        if(c->x > XDisplayWidth(dpy, screen))
+        {
+            c->x = XDisplayWidth(dpy, screen) - 5;
+        }
+        if(c->y + c->height < 5)
+        {
+            c->y = 5 - c->height;
+        }
+        if(c->y > XDisplayHeight(dpy, screen))
+        {
+            c->y = XDisplayHeight(dpy, screen) - 5;
+        }
         return;
     }
 
@@ -1476,13 +1476,13 @@ void clientFrame(Window w)
         return;
     }
 
-    if (!XGetWindowAttributes(dpy, w, &attr))
+    if(!XGetWindowAttributes(dpy, w, &attr))
     {
         DBG("Cannot get window attributes\n");
         return;
     }
-    
-    if (attr.override_redirect)
+
+    if(attr.override_redirect)
     {
         DBG("Not managing override_redirect windows\n");
         return;
@@ -1517,26 +1517,26 @@ void clientFrame(Window w)
     {
         c->ncmap = 0;
     }
-    
+
     /* Initialize structure */
-    c->focus        = False;
-    c->fullscreen   = False;
-    c->has_border   = True;
-    c->has_struts   = False;
-    c->hidden       = False;
+    c->focus = False;
+    c->fullscreen = False;
+    c->has_border = True;
+    c->has_struts = False;
+    c->hidden = False;
     c->ignore_unmap = ((attr.map_state == IsViewable) ? 1 : 0);
-    c->managed      = False;
-    c->maximized    = False;
-    c->shaded       = False;
-    c->skip_pager   = False;
+    c->managed = False;
+    c->maximized = False;
+    c->shaded = False;
+    c->skip_pager = False;
     c->skip_taskbar = False;
-    c->state_modal  = False;
-    c->sticky       = False;
-    c->type         = UNSET;
-    c->type_atom    = None;
-    c->visible      = False;
-    c->wm_delete    = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
-    c->wm_input     = (getWMInput(dpy, c->window) ? True : False);
+    c->state_modal = False;
+    c->sticky = False;
+    c->type = UNSET;
+    c->type_atom = None;
+    c->visible = False;
+    c->wm_delete = ((wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ? True : False);
+    c->wm_input = (getWMInput(dpy, c->window) ? True : False);
     c->wm_takefocus = ((wm_protocols_flags & WM_PROTOCOLS_TAKE_FOCUS) ? True : False);
 
     mwm_hints = getMotifHints(dpy, c->window);
@@ -1723,7 +1723,7 @@ void clientFrameAll()
     windows_stack = NULL;
     client_focus = NULL;
 
-    XSync (dpy, 0);
+    XSync(dpy, 0);
     MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
@@ -1749,7 +1749,7 @@ void clientUnframeAll()
 
     DBG("entering clientUnframeAll\n");
 
-    XSync (dpy, 0);
+    XSync(dpy, 0);
     MyXGrabServer(dpy);
     XQueryTree(dpy, root, &w1, &w2, &wins, &count);
     for(i = 0; i < count; i++)
@@ -1899,7 +1899,7 @@ void clientClose(Client * c)
     DBG("entering clientClose\n");
     DBG("closing client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if (c->wm_delete)
+    if(c->wm_delete)
     {
         sendClientMessage(dpy, c->window, wm_protocols, wm_delete_window, NoEventMask);
     }
@@ -2328,7 +2328,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 c->y = c->y + 16;
             }
         }
-	clientConstraintPos(c);
+        clientConstraintPos(c);
         if(box_move)
         {
             clientDrawOutline(c);
@@ -2416,7 +2416,7 @@ static GtkToXEventFilterStatus clientMove_event_filter(XEvent * xevent, gpointer
                 }
             }
         }
-	clientConstraintPos(c);
+        clientConstraintPos(c);
         if(box_move)
         {
             clientDrawOutline(c);

@@ -30,6 +30,17 @@
 #include "keyboard.h"
 #include "debug.h"
 
+unsigned int KeyMask;
+unsigned int ButtonMask;
+unsigned int ButtonKeyMask;
+unsigned int AltMask;
+unsigned int MetaMask;
+unsigned int NumLockMask;
+unsigned int ScrollLockMask;
+unsigned int CapsLockMask;
+unsigned int SuperMask;
+unsigned int HyperMask;
+
 void parseKeyString(Display * dpy, MyKey * key, char *str)
 {
     char *k;
@@ -51,16 +62,10 @@ void parseKeyString(Display * dpy, MyKey * key, char *str)
             key->modifier = key->modifier | ShiftMask;
         if(strstr(str, "Control"))
             key->modifier = key->modifier | ControlMask;
-        if(strstr(str, "Mod1"))
-            key->modifier = key->modifier | Mod1Mask;
-        if(strstr(str, "Mod2"))
-            key->modifier = key->modifier | Mod2Mask;
-        if(strstr(str, "Mod3"))
-            key->modifier = key->modifier | Mod3Mask;
-        if(strstr(str, "Mod4"))
-            key->modifier = key->modifier | Mod4Mask;
-        if(strstr(str, "Mod5"))
-            key->modifier = key->modifier | Mod5Mask;
+        if(strstr(str, "Alt"))
+            key->modifier = key->modifier | AltMask;
+        if(strstr(str, "Meta"))
+            key->modifier = key->modifier | MetaMask;
     }
 }
 
@@ -70,8 +75,22 @@ void grabKey(Display * dpy, MyKey * key, Window w)
 
     if(key->keycode)
     {
-        XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync, GrabModeAsync);
-        XGrabKey(dpy, key->keycode, key->modifier | LockMask, w, False, GrabModeAsync, GrabModeAsync);
+        if((key->modifier == AnyModifier) || (key->modifier == 0))
+        {
+            XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync, GrabModeAsync);
+        }
+        else
+        {
+            /* Here we grab all combinations of well known modifiers */
+            XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | CapsLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | CapsLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | CapsLockMask | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | CapsLockMask | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
+        }
     }
 }
 
@@ -80,4 +99,121 @@ void ungrabKeys(Display * dpy, Window w)
     DBG("entering ungrabKeys\n");
 
     XUngrabKey(dpy, AnyKey, AnyModifier, w);
+}
+
+void initModifiers(Display * dpy)
+{
+    XModifierKeymap *xmk = XGetModifierMapping(dpy);
+    int m, k;
+
+    AltMask = MetaMask = NumLockMask = ScrollLockMask = CapsLockMask = SuperMask = HyperMask = 0;
+    if(xmk)
+    {
+        KeyCode *c = xmk->modifiermap;
+        KeyCode numLockKeyCode;
+        KeyCode scrollLockKeyCode;
+        KeyCode capsLockKeyCode;
+        KeyCode altKeyCode;
+        KeyCode metaKeyCode;
+        KeyCode superKeyCode;
+        KeyCode hyperKeyCode;
+
+        numLockKeyCode = XKeysymToKeycode(dpy, XK_Num_Lock);
+        scrollLockKeyCode = XKeysymToKeycode(dpy, XK_Scroll_Lock);
+        capsLockKeyCode = XKeysymToKeycode(dpy, XK_Caps_Lock);
+        altKeyCode = XKeysymToKeycode(dpy, XK_Alt_L);
+        metaKeyCode = XKeysymToKeycode(dpy, XK_Meta_L);
+        superKeyCode = XKeysymToKeycode(dpy, XK_Super_L);
+        hyperKeyCode = XKeysymToKeycode(dpy, XK_Hyper_L);
+
+        if(!altKeyCode)
+        {
+            altKeyCode = XKeysymToKeycode(dpy, XK_Alt_R);
+        }
+        if(!metaKeyCode)
+        {
+            metaKeyCode = XKeysymToKeycode(dpy, XK_Meta_R);
+        }
+        if(!superKeyCode)
+        {
+            superKeyCode = XKeysymToKeycode(dpy, XK_Super_R);
+        }
+        if(!hyperKeyCode)
+        {
+            hyperKeyCode = XKeysymToKeycode(dpy, XK_Hyper_R);
+        }
+
+
+        for(m = 0; m < 8; m++)
+        {
+            for(k = 0; k < xmk->max_keypermod; k++, c++)
+            {
+                if(*c == NoSymbol)
+                {
+                    continue;
+                }
+                if(*c == numLockKeyCode)
+                {
+                    NumLockMask = (1 << m);
+                }
+                if(*c == scrollLockKeyCode)
+                {
+                    ScrollLockMask = (1 << m);
+                }
+                if(*c == capsLockKeyCode)
+                {
+                    CapsLockMask = (1 << m);
+                }
+                if(*c == altKeyCode)
+                {
+                    AltMask = (1 << m);
+                }
+                if(*c == metaKeyCode)
+                {
+                    MetaMask = (1 << m);
+                }
+                if(*c == superKeyCode)
+                {
+                    SuperMask = (1 << m);
+                }
+                if(*c == hyperKeyCode)
+                {
+                    HyperMask = (1 << m);
+                }
+            }
+        }
+        XFreeModifiermap(xmk);
+    }
+    if(MetaMask == AltMask)
+    {
+        MetaMask = 0;
+    }
+    if((AltMask != 0) && (MetaMask == Mod1Mask))
+    {
+        MetaMask = AltMask;
+        AltMask = Mod1Mask;
+    }
+
+    if((AltMask == 0) && (MetaMask != 0))
+    {
+        if(MetaMask != Mod1Mask)
+        {
+            AltMask = Mod1Mask;
+        }
+        else
+        {
+            AltMask = MetaMask;
+            MetaMask = 0;
+        }
+    }
+
+    if(AltMask == 0)
+    {
+        AltMask = Mod1Mask;
+    }
+    KeyMask = ControlMask | ShiftMask | AltMask | MetaMask | SuperMask | HyperMask;
+
+    ButtonMask = Button1Mask | Button2Mask | Button3Mask | Button4Mask | Button5Mask;
+
+    ButtonKeyMask = KeyMask | ButtonMask;
 }

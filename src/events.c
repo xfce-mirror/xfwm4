@@ -84,7 +84,7 @@ static inline void handleKeyPress(XKeyEvent * ev)
     DBG("entering handleKeyEvent\n");
 
     c = clientGetFocus();
-    state = ev->state & (Mod1Mask | ShiftMask | ControlMask);
+    state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
     for(key = 0; key < KEY_COUNT; key++)
     {
         if((keys[key].keycode == ev->keycode) && (keys[key].modifier == state))
@@ -287,7 +287,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
     if(c)
     {
 
-        state = ev->state & (Mod1Mask | ShiftMask | ControlMask);
+        state = ev->state & (ShiftMask | ControlMask | AltMask | MetaMask);
         win = getMouseWindow(dpy, c->frame);
 
         clientSetFocus(c, True);
@@ -308,7 +308,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) c);
             /* Let GTK handle this for us. */
         }
-        else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == Mod1Mask)))
+        else if(((win == c->title) && ((ev->button == Button1) && (state == 0))) || ((ev->button == Button1) && (state == AltMask)))
         {
             clientRaise(c);
             if((ev->time - last_button_time <= 250) && (last_button_time != 0))
@@ -371,7 +371,7 @@ static inline void handleButtonPress(XButtonEvent * ev)
             clientRaise(c);
             clientResize(c, 4 + SIDE_RIGHT, (XEvent *) ev);
         }
-        else if(((win != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (Mod1Mask | ControlMask))))
+        else if(((win != c->window) && (ev->button == Button2) && (state == 0)) || ((ev->button == Button2) && (state == (AltMask | ControlMask))))
         {
             clientLower(c);
         }
@@ -498,7 +498,7 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
-        clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
         clientConfigure(c, &wc, ev->value_mask);
     }
     else
@@ -984,11 +984,11 @@ static gboolean show_popup_cb(GtkWidget * widget, GdkEventButton * ev, gpointer 
     button_handler_id = g_signal_connect(GTK_OBJECT(getDefaultGtkWidget()), "button_press_event", GTK_SIGNAL_FUNC(show_popup_cb), (gpointer) NULL);
 
     menu = menu_default(ops, insensitive, menu_callback, c);
-    if (!menu_popup(menu, x, y, ev->button, ev->time))
+    if(!menu_popup(menu, x, y, ev->button, ev->time))
     {
         DBG("Cannot open menu\n");
-	gdk_beep();
-	c->button_pressed[MENU_BUTTON] = False;
+        gdk_beep();
+        c->button_pressed[MENU_BUTTON] = False;
         frameDraw(c);
         menu_free(menu);
     }

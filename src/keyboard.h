@@ -34,8 +34,20 @@ typedef struct
 }
 MyKey;
 
+extern unsigned int KeyMask;
+extern unsigned int ButtonMask;
+extern unsigned int ButtonKeyMask;
+extern unsigned int AltMask;
+extern unsigned int MetaMask;
+extern unsigned int NumLockMask;
+extern unsigned int ScrollLockMask;
+extern unsigned int CapsLockMask;
+extern unsigned int SuperMask;
+extern unsigned int HyperMask;
+
 void parseKeyString(Display *, MyKey *, char *);
 void grabKey(Display *, MyKey *, Window);
 void ungrabKeys(Display *, Window);
+void initModifiers(Display *);
 
 #endif /* __KEYBOARD_H */

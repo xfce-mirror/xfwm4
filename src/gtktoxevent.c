@@ -191,10 +191,6 @@ GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gc
 
     pushEventFilter(default_event_filter, data);
     event_win = gdk_window_foreign_new(GDK_ROOT_WINDOW());
-#if ((GTK_MAJOR_VERSION <= 1) && (GTK_MINOR_VERSION <= 2))
-    /* This is a hack for gtk 1.2.x */
-    gdk_window_add_filter(GDK_ROOT_PARENT(), gdkXEventFilter, NULL);
-#endif
     gdk_window_add_filter(NULL, gdkXEventFilter, NULL);
 
     gdk_error_trap_push();
@@ -207,14 +203,8 @@ GtkToXEventFilterStack *initEventFilter(long event_mask, gpointer data, const gc
     }
     /* Create a GTK window so that we are just like any other GTK application */
     gtk_win = gtk_window_new(GTK_WINDOW_POPUP);
-#if ((GTK_MAJOR_VERSION <= 1) && (GTK_MINOR_VERSION <= 2))
-    gtk_widget_set_usize(gtk_win, 5, 5);
-    gtk_widget_set_uposition(gtk_win, -1000, -1000);
-    gtk_widget_set_double_buffered(GTK_WIDGET(gtk_win), FALSE);
-#else
     gtk_window_resize(GTK_WINDOW(gtk_win), 5, 5);
     gtk_window_move(GTK_WINDOW(gtk_win), -1000, -1000);
-#endif
     if(widget_name)
     {
         gtk_widget_set_name(gtk_win, widget_name);
