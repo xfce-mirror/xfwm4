@@ -267,7 +267,7 @@ handleMotionNotify (XMotionEvent * ev)
                 XWarpPointer (dpy, None, root, 0, 0, 0, 0, 10, msy);
                 workspaceSwitch (workspace + 1, NULL);
             }
-            while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, ev));
+            while (XCheckWindowEvent(dpy, ev->window, PointerMotionMask, (XEvent *) ev));
         }
     }
 }
