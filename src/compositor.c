@@ -67,13 +67,16 @@ struct _CWindow
     gboolean damaged;
     gboolean viewable;
 
+#if HAVE_NAME_WINDOW_PIXMAP
+    Pixmap name_window_pixmap;
+#endif /* HAVE_NAME_WINDOW_PIXMAP */  
     Picture picture;
+    Picture shadow;
     Picture alphaPict;
     Picture shadowPict;
     XserverRegion borderSize;
     XserverRegion borderClip;
     XserverRegion extents;
-    Picture shadow;
     gint shadow_dx;
     gint shadow_dy;
     gint shadow_width;
@@ -81,9 +84,6 @@ struct _CWindow
     gint mode;
     guint opacity;
     gboolean skipped;
-#if HAVE_NAME_WINDOW_PIXMAP
-    Pixmap name_window_pixmap;
-#endif /* HAVE_NAME_WINDOW_PIXMAP */  
 };
 
 static CWindow*
@@ -584,8 +584,8 @@ border_size (CWindow *cw)
     g_return_val_if_fail (border != None, None);
 
     XFixesTranslateRegion (display_info->dpy, border, 
-                        cw->attr.x + cw->attr.border_width,
-                        cw->attr.y + cw->attr.border_width);
+                           cw->attr.x + cw->attr.border_width,
+                           cw->attr.y + cw->attr.border_width);
 
     return border;
 }
@@ -742,7 +742,7 @@ win_extents (CWindow *cw)
             TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);    
             cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
             cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
-            if (!cw->shadow)
+            if (!(cw->shadow))
             {
                 double opacity = SHADOW_OPACITY;
                 if (cw->mode == WINDOW_TRANS)
@@ -750,9 +750,9 @@ win_extents (CWindow *cw)
                     opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
                 }
                 cw->shadow = shadow_picture (screen_info, opacity,
-                                            cw->attr.width + cw->attr.border_width * 2,
-                                            cw->attr.height + cw->attr.border_width * 2,
-                                            &cw->shadow_width, &cw->shadow_height);
+                                             cw->attr.width + 2 * cw->attr.border_width,
+                                             cw->attr.height + 2 * cw->attr.border_width,
+                                             &cw->shadow_width, &cw->shadow_height);
             }
     
             sr.x = cw->attr.x + cw->shadow_dx;
@@ -787,18 +787,13 @@ win_extents (CWindow *cw)
 static void
 get_paint_bounds (CWindow *cw, gint *x, gint *y, gint *w, gint *h)
 {
-    g_return_if_fail (cw != NULL);
-    g_return_if_fail (x != NULL);
-    g_return_if_fail (y != NULL);
-    g_return_if_fail (w != NULL);
-    g_return_if_fail (h != NULL);
     TRACE ("entering get_paint_bounds");
     
 #if HAVE_NAME_WINDOW_PIXMAP
     *x = cw->attr.x;
     *y = cw->attr.y;
-    *w = cw->attr.width + cw->attr.border_width * 2;
-    *h = cw->attr.height + cw->attr.border_width * 2;
+    *w = cw->attr.width + 2 * cw->attr.border_width;
+    *h = cw->attr.height + 2 * cw->attr.border_width;
 #else
     *x = cw->attr.x + cw->attr.border_width;
     *y = cw->attr.y + cw->attr.border_width;
@@ -898,8 +893,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         r.height = screen_height;
         region = XFixesCreateRegion (dpy, &r, 1);
         dest_region = None;
-
-        g_return_if_fail (region != None);
     }
     else
     {
@@ -915,6 +908,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     }
         
     XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, region);
+
+    /* 
+     * Painting from top to bottom, reducing the clipping area at each iteration.
+     * Only the opaque windows are painted 1st.
+     */
     for (index = screen_info->cwindows; index; index = g_list_next (index))
     {        
         CWindow *cw = (CWindow *) index->data;
@@ -936,11 +934,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             continue;
         }
         
-        cw->skipped = FALSE;    
-        if (!(cw->picture))
-        {
-            cw->picture = get_window_picture (cw);
-        }
         if (screen_info->clipChanged)
         {
             if (cw->borderSize)
@@ -958,6 +951,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
                 XFixesDestroyRegion (dpy, cw->borderClip);
                 cw->borderClip = None;
             }
+        }
+        if (!(cw->picture))
+        {
+            cw->picture = get_window_picture (cw);
         }
         if (!cw->borderSize)
         {    
@@ -979,16 +976,22 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         if (!(cw->borderClip))
         {
             cw->borderClip = XFixesCreateRegion (dpy, 0, 0);
-        }
-        if (cw->borderClip)
-        {
             XFixesCopyRegion (dpy, cw->borderClip, region);
         }
+
+        cw->skipped = FALSE;    
     }
     
+    /* 
+     * region has changed because of the XFixesSubtractRegion (), 
+     * reapply clipping for the last iteration.
+     */
     XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
     paint_root (screen_info);
         
+    /* 
+     * Painting from bottom to top, translucent windows and shadows are painted now...
+     */
     for (index = g_list_last(screen_info->cwindows); index; index = g_list_previous (index))
     {
         CWindow *cw = (CWindow *) index->data;
@@ -1001,17 +1004,14 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             continue;
         }
         
-        if (cw->borderClip)
-        {
-            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
-        }
         if (cw->shadow)
         {
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
             XRenderComposite (dpy, PictOpOver, screen_info->blackPicture, cw->shadow, 
-                            screen_info->rootBuffer, 0, 0, 0, 0, 
-                            cw->attr.x + cw->shadow_dx,
-                            cw->attr.y + cw->shadow_dy,
-                            cw->shadow_width, cw->shadow_height);
+                              screen_info->rootBuffer, 0, 0, 0, 0, 
+                              cw->attr.x + cw->shadow_dx,
+                              cw->attr.y + cw->shadow_dy,
+                              cw->shadow_width, cw->shadow_height);
         }
         if (cw->mode != WINDOW_SOLID)
         {
@@ -1020,9 +1020,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
             {
                 cw->alphaPict = solid_picture (screen_info, FALSE, 
-                                            (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
+                                               (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
             }
             
+            XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
+
             /* cw->alphaPict can be None in the case of ARGB windows, that's ok */
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict, 
@@ -1153,8 +1156,8 @@ repair_win (CWindow *cw)
         {
             XDamageSubtract (myScreenGetXDisplay (screen_info), cw->damage, None, parts);
             XFixesTranslateRegion (myScreenGetXDisplay (screen_info), parts,
-                                cw->attr.x + cw->attr.border_width,
-                                cw->attr.y + cw->attr.border_width);
+                                   cw->attr.x + cw->attr.border_width,
+                                   cw->attr.y + cw->attr.border_width);
         }
     }
 
@@ -1258,7 +1261,7 @@ static void
 repair_screen (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info);
-    TRACE ("entering repair_screen");    
+    TRACE ("entering repair_screen");
     
     if (screen_info->allDamage != None)
     {
