@@ -418,7 +418,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         if (c)
         {
             clientAdjustFullscreenLayer (c2, FALSE);
-            clientRaise (c);
+            /* clientRaise (c); */
         }
         frameDraw (c2, FALSE, FALSE);
     }
