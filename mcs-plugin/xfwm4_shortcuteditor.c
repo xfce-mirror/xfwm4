@@ -1141,8 +1141,8 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 
     for (i = 0; i < strlen (accelerator); i++)
     {
-	if (accelerator[i] == '>')
-	    accelerator[i] = '<';
+        if (accelerator[i] == '>')
+            accelerator[i] = '<';
     }
 
     shortcuts = g_strsplit (accelerator, "<", 0);
@@ -1458,7 +1458,6 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
                 g_warning ("Cannot find the keytheme !");
         }
 
-
         gtk_widget_destroy (dialog);
         g_free (shortcut);
         g_free (command);
@@ -1588,4 +1587,15 @@ cb_activate_treeview4 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         g_free (command);
         g_free (shortcut);
     }
+
+    /* 
+       Tell it to the mcs manager, set the channel to raw mode
+       so that the client gets notified even if the key theme
+       name has not changed
+     */
+    mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, TRUE);
+    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+    mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
+    mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, FALSE);
+    write_options (itf->mcs_plugin);
 }
