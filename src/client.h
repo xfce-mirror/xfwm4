@@ -37,11 +37,11 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
+#include <gtktoxevent.h>
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
 #include "pixmap.h"
-#include "gtktoxevent.h"
 
 #define ANY				0
 #define WINDOW				1

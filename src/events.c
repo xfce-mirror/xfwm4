@@ -26,13 +26,13 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
+#include <gtktoxevent.h>
 #include "main.h"
 #include "workspaces.h"
 #include "settings.h"
 #include "frame.h"
 #include "client.h"
 #include "menu.h"
-#include "gtktoxevent.h"
 #include "debug.h"
 
 static guint raise_timeout = 0;

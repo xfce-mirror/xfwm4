@@ -84,8 +84,6 @@ xfwm4_SOURCES = \
 	client.c \
 	events.c \
 	frame.c \
-	gtk_style.c \
-	gtktoxevent.c \
 	hints.c \
 	keyboard.c \
 	main.c \
@@ -99,8 +97,6 @@ xfwm4_SOURCES = \
 	debug.h \
 	events.h \
 	frame.h \
-	gtk_style.h \
-	gtktoxevent.h \
 	hints.h \
 	keyboard.h \
 	main.h \
@@ -125,8 +121,7 @@ bin_PROGRAMS = xfwm4$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 
 am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-events.$(OBJEXT) \
-	xfwm4-frame.$(OBJEXT) xfwm4-gtk_style.$(OBJEXT) \
-	xfwm4-gtktoxevent.$(OBJEXT) xfwm4-hints.$(OBJEXT) \
+	xfwm4-frame.$(OBJEXT) xfwm4-hints.$(OBJEXT) \
 	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
 	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-parserc.$(OBJEXT) xfwm4-pixmap.$(OBJEXT) \
@@ -145,8 +140,6 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfwm4-client.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-frame.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-gtk_style.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-gtktoxevent.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-hints.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-keyboard.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-main.Po ./$(DEPDIR)/xfwm4-menu.Po \
@@ -200,8 +193,6 @@ clean-binPROGRAMS:
 xfwm4-client.$(OBJEXT): client.c
 xfwm4-events.$(OBJEXT): events.c
 xfwm4-frame.$(OBJEXT): frame.c
-xfwm4-gtk_style.$(OBJEXT): gtk_style.c
-xfwm4-gtktoxevent.$(OBJEXT): gtktoxevent.c
 xfwm4-hints.$(OBJEXT): hints.c
 xfwm4-keyboard.$(OBJEXT): keyboard.c
 xfwm4-main.$(OBJEXT): main.c
@@ -224,8 +215,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-client.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-events.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-frame.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-gtk_style.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-gtktoxevent.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-hints.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-keyboard.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-main.Po@am__quote@
@@ -286,30 +275,6 @@ xfwm4-frame.obj: frame.c
 @AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-frame.Po' tmpdepfile='$(DEPDIR)/xfwm4-frame.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-frame.obj `cygpath -w frame.c`
-
-xfwm4-gtk_style.o: gtk_style.c
-@AMDEP_TRUE@	source='gtk_style.c' object='xfwm4-gtk_style.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-gtk_style.Po' tmpdepfile='$(DEPDIR)/xfwm4-gtk_style.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-gtk_style.o `test -f 'gtk_style.c' || echo '$(srcdir)/'`gtk_style.c
-
-xfwm4-gtk_style.obj: gtk_style.c
-@AMDEP_TRUE@	source='gtk_style.c' object='xfwm4-gtk_style.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-gtk_style.Po' tmpdepfile='$(DEPDIR)/xfwm4-gtk_style.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-gtk_style.obj `cygpath -w gtk_style.c`
-
-xfwm4-gtktoxevent.o: gtktoxevent.c
-@AMDEP_TRUE@	source='gtktoxevent.c' object='xfwm4-gtktoxevent.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-gtktoxevent.Po' tmpdepfile='$(DEPDIR)/xfwm4-gtktoxevent.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-gtktoxevent.o `test -f 'gtktoxevent.c' || echo '$(srcdir)/'`gtktoxevent.c
-
-xfwm4-gtktoxevent.obj: gtktoxevent.c
-@AMDEP_TRUE@	source='gtktoxevent.c' object='xfwm4-gtktoxevent.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@	depfile='$(DEPDIR)/xfwm4-gtktoxevent.Po' tmpdepfile='$(DEPDIR)/xfwm4-gtktoxevent.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-gtktoxevent.obj `cygpath -w gtktoxevent.c`
 
 xfwm4-hints.o: hints.c
 @AMDEP_TRUE@	source='hints.c' object='xfwm4-hints.o' libtool=no @AMDEPBACKSLASH@

@@ -26,11 +26,11 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <gtktoxevent.h>
+#include <gtk_style.h>
 #include "main.h"
 #include "parserc.h"
 #include "client.h"
-#include "gtk_style.h"
-#include "gtktoxevent.h"
 #include "workspaces.h"
 #include "debug.h"
 

@@ -37,13 +37,13 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
+#include <gtktoxevent.h>
 #include "client.h"
 #include "misc.h"
 #include "hints.h"
 #include "keyboard.h"
 #include "pixmap.h"
 #include "parserc.h"
-#include "gtktoxevent.h"
 
 /*
  *

@@ -3,8 +3,6 @@ xfwm4_SOURCES = \
 	client.c \
 	events.c \
 	frame.c \
-	gtk_style.c \
-	gtktoxevent.c \
 	hints.c \
 	keyboard.c \
 	main.c \
@@ -18,8 +16,6 @@ xfwm4_SOURCES = \
 	debug.h \
 	events.h \
 	frame.h \
-	gtk_style.h \
-	gtktoxevent.h \
 	hints.h \
 	keyboard.h \
 	main.h \

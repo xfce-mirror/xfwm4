@@ -28,8 +28,8 @@
 #include <gtk/gtk.h>
 #include <X11/Xlib.h>
 #include <unistd.h>
+#include <gtktoxevent.h>
 #include "menu.h"
-#include "gtktoxevent.h"
 #include "debug.h"
 
 static GtkWidget *menu_open = NULL;

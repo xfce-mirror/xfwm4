@@ -26,6 +26,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <glib.h>
+#include <gtktoxevent.h>
 
 #include "main.h"
 #include "client.h"
@@ -33,7 +34,6 @@
 #include "hints.h"
 #include "workspaces.h"
 #include "settings.h"
-#include "gtktoxevent.h"
 #include "debug.h"
 
 /* Event mask definition */
