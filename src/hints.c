@@ -35,7 +35,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <libxfce4util/libxfce4util.h> 
-#include <libxfcegui4/xinerama.h>
 #include "main.h"
 #include "hints.h"
 
