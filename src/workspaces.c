@@ -39,7 +39,7 @@ int workspace;
 void workspaceSwitch(int new_ws, Client * c2)
 {
     Client *c, *f = NULL;
-    Client *last;
+    Client *last, *previous;
     unsigned long data[1];
     int i;
 
@@ -58,10 +58,10 @@ void workspaceSwitch(int new_ws, Client * c2)
         return;
     }
 
-    f = clientGetFocus();
-    if(f)
+    previous = clientGetFocus();
+    if(previous)
     {
-        f->focus = True;
+        previous->focus = True;
     }
 
     if(c2)
