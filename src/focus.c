@@ -104,7 +104,7 @@ void
 clientFocusTop (ScreenInfo *screen_info, int layer)
 {
     ClientPair top_client;
-    DisplayInfo *display_info;
+    DisplayInfo *display_info = NULL;
 
     display_info = screen_info->display_info;
     top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
@@ -121,8 +121,8 @@ clientFocusTop (ScreenInfo *screen_info, int layer)
 void
 clientFocusNew(Client * c)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     gboolean give_focus;
     gboolean prevent_focus_stealing;
 
@@ -256,7 +256,7 @@ clientGetPrevious (Client * c, int mask)
 void
 clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
 {
-    DisplayInfo *display_info;
+    DisplayInfo *display_info = NULL;
     Client *new_focus = NULL;
     Client *current_focus = client_focus;
     ClientPair top_most;
@@ -371,11 +371,13 @@ clientSortRing(Client *c)
 void
 clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 {
+    DisplayInfo *display_info = NULL;
     Client *c2 = ((client_focus != c) ? client_focus : NULL);
     unsigned long data[2];
 
     TRACE ("entering clientUpdateFocus");
 
+    display_info = screen_info->display_info;
     pending_focus = NULL;
     if ((c) && !clientAcceptFocus (c))
     {
@@ -414,17 +416,20 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         frameDraw (c2, FALSE, FALSE);
     }
     data[1] = None;
-    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
-        PropModeReplace, (unsigned char *) data, 2);
+    XChangeProperty (display_info->dpy, screen_info->xroot, 
+                     display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
+                     PropModeReplace, (unsigned char *) data, 2);
 }
 
 void
 clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned short flags)
 {
+    DisplayInfo *display_info = NULL;
     Client *c2 = NULL;
 
     TRACE ("entering clientSetFocus");
     
+    display_info = screen_info->display_info;
     if ((c) && !(flags & FOCUS_IGNORE_MODAL))
     {
         c2 = clientGetModalFor (c);
@@ -456,7 +461,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
-            sendClientMessage (c->screen_info, c->window, wm_takefocus, timestamp);
+            sendClientMessage (c->screen_info, c->window, display_info->atoms[WM_TAKEFOCUS], timestamp);
         }
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
@@ -475,10 +480,10 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         if (c2)
         {
             frameDraw (c2, FALSE, FALSE);
-            XChangeProperty (clientGetXDisplay (c2), c2->screen_info->xroot, net_active_window, XA_WINDOW, 32,
+            XChangeProperty (clientGetXDisplay (c2), c2->screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                              PropModeReplace, (unsigned char *) data, 2);
         }
-        XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_active_window, XA_WINDOW, 32,
+        XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                          PropModeReplace, (unsigned char *) data, 2);
         XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, timestamp);
     }
@@ -499,7 +504,7 @@ clientClearFocus (void)
 void
 clientGrabMouseButton (Client * c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabMouseButton");
@@ -519,7 +524,7 @@ clientGrabMouseButton (Client * c)
 void
 clientUngrabMouseButton (Client * c)
 {
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info = NULL;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabMouseButton");

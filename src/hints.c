@@ -36,149 +36,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <libxfce4util/libxfce4util.h> 
+#include "display.h"
 #include "hints.h"
 
-Atom gnome_panel_desktop_area;
-Atom motif_wm_hints;
-Atom sm_client_id;
-Atom win_client_list;
-Atom win_desktop_button_proxy;
-Atom win_hints;
-Atom win_layer;
-Atom win_protocols;
-Atom win_state;
-Atom win_supporting_wm_check;
-Atom win_workspace;
-Atom win_workspace_count;
-Atom wm_change_state;
-Atom wm_client_leader;
-Atom wm_colormap_windows;
-Atom wm_delete_window;
-Atom wm_hints;
-Atom wm_protocols;
-Atom wm_state;
-Atom wm_takefocus;
-Atom wm_transient_for;
-Atom wm_window_role;
-
-/* freedesktop.org protocol */
-Atom net_active_window;
-Atom net_client_list;
-Atom net_client_list_stacking;
-Atom net_close_window;
-Atom net_current_desktop;
-Atom net_desktop_geometry;
-Atom net_desktop_layout;
-Atom net_desktop_names;
-Atom net_desktop_viewport;
-Atom net_frame_extents;
-Atom net_number_of_desktops;
-Atom net_request_frame_extents;
-Atom net_showing_desktop;
-Atom net_startup_id;
-Atom net_supported;
-Atom net_supporting_wm_check;
-Atom net_wm_action_change_desktop;
-Atom net_wm_action_close;
-Atom net_wm_action_maximize_horz;
-Atom net_wm_action_maximize_vert;
-Atom net_wm_action_move;
-Atom net_wm_action_resize;
-Atom net_wm_action_shade;
-Atom net_wm_action_stick;
-Atom net_wm_allowed_actions;
-Atom net_wm_desktop;
-Atom net_wm_icon;
-Atom net_wm_icon_geometry;
-Atom net_wm_icon_name;
-Atom net_wm_moveresize;
-Atom net_wm_name;
-Atom net_wm_opacity;
-Atom net_wm_state;
-Atom net_wm_state_above;
-Atom net_wm_state_below;
-Atom net_wm_state_demands_attention;
-Atom net_wm_state_fullscreen;
-Atom net_wm_state_hidden;
-Atom net_wm_state_maximized_horz;
-Atom net_wm_state_maximized_vert;
-Atom net_wm_state_modal;
-Atom net_wm_state_shaded;
-Atom net_wm_state_skip_pager;
-Atom net_wm_state_skip_taskbar;
-Atom net_wm_state_sticky;
-Atom net_wm_strut;
-Atom net_wm_strut_partial;
-Atom net_wm_user_time;
-Atom net_wm_window_type;
-Atom net_wm_window_type_desktop;
-Atom net_wm_window_type_dialog;
-Atom net_wm_window_type_dock;
-Atom net_wm_window_type_menu;
-Atom net_wm_window_type_normal;
-Atom net_wm_window_type_splash;
-Atom net_wm_window_type_toolbar;
-Atom net_wm_window_type_utility;
-Atom net_workarea;
-Atom utf8_string;
-
-/* KDE extension */
-Atom kde_net_wm_context_help;
-Atom kde_net_wm_system_tray_window_for;
-Atom kwm_win_icon;
-
-/* Systray similation for older KDE apps */
-Atom net_system_tray_manager;
-Atom net_system_tray_opcode;
-
-/* Misc atoms */
-Atom misc_xrootpmap;
-Atom misc_xsetroot;
-Atom misc_pixmap;
-
 static gboolean
-check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
-    Atom expected_type, int n_items, int format, Atom type)
+check_type_and_format (int expected_format, Atom expected_type, int n_items, int format, Atom type)
 {
-    if ((expected_format == format) && (expected_type == type) && (n_items < 0
-            || n_items > 0))
+    if ((expected_format == format) && (expected_type == type) && (n_items < 0 || n_items > 0))
     {
         return TRUE;
     }
     return FALSE;
 }
 
-/* Public functions */
-
-void
-initICCCMHints (Display * dpy)
-{
-    TRACE ("entering initICCCMHints");
-
-    sm_client_id = 
-        XInternAtom (dpy, "SM_CLIENT_ID", FALSE);
-    wm_change_state = 
-        XInternAtom (dpy, "WM_CHANGE_STATE", FALSE);
-    wm_client_leader = 
-        XInternAtom (dpy, "WM_CLIENT_LEADER", FALSE);
-    wm_colormap_windows = 
-        XInternAtom (dpy, "WM_COLORMAP_WINDOWS", FALSE);
-    wm_delete_window = 
-        XInternAtom (dpy, "WM_DELETE_WINDOW", FALSE);
-    wm_protocols = 
-        XInternAtom (dpy, "WM_PROTOCOLS", FALSE);
-    wm_state = 
-        XInternAtom (dpy, "WM_STATE", FALSE);
-    wm_takefocus = 
-        XInternAtom (dpy, "WM_TAKE_FOCUS", FALSE);
-    wm_window_role = 
-        XInternAtom (dpy, "WM_WINDOW_ROLE", FALSE);
-    wm_transient_for = 
-        XInternAtom (dpy, "WM_TRANSIENT_FOR", FALSE);
-}
-
 unsigned long
-getWMState (Display * dpy, Window w)
+getWMState (DisplayInfo *display_info, Window w)
 {
     Atom real_type;
     int real_format;
@@ -187,9 +59,10 @@ getWMState (Display * dpy, Window w)
 
     TRACE ("entering getWmState");
 
-    if ((XGetWindowProperty (dpy, w, wm_state, 0, 3L, FALSE, wm_state,
-                &real_type, &real_format, &items_read, &items_left,
-                (unsigned char **) &data) == Success) && (items_read))
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_STATE], 
+                             0, 3L, FALSE, display_info->atoms[WM_STATE],
+                             &real_type, &real_format, &items_read, &items_left,
+                             (unsigned char **) &data) == Success) && (items_read))
     {
         state = *data;
         if (data)
@@ -201,7 +74,7 @@ getWMState (Display * dpy, Window w)
 }
 
 void
-setWMState (Display * dpy, Window w, unsigned long state)
+setWMState (DisplayInfo *display_info, Window w, unsigned long state)
 {
     CARD32 data[2];
 
@@ -210,30 +83,13 @@ setWMState (Display * dpy, Window w, unsigned long state)
     data[0] = state;
     data[1] = None;
 
-    XChangeProperty (dpy, w, wm_state, wm_state, 32, PropModeReplace,
-        (unsigned char *) data, 2);
-}
-
-void
-initMotifHints (Display * dpy)
-{
-    TRACE ("entering initMotifHints");
-
-    motif_wm_hints = XInternAtom (dpy, "_MOTIF_WM_HINTS", FALSE);
-}
-
-void
-initMiscHints (Display * dpy)
-{
-    TRACE ("entering initMiscHints");
-
-    misc_xrootpmap = XInternAtom (dpy, "_XROOTPMAP_ID", FALSE);
-    misc_xsetroot = XInternAtom (dpy, "_XSETROOT_ID", FALSE);
-    misc_pixmap = XInternAtom (dpy, "PIXMAP", FALSE);
+    XChangeProperty (display_info->dpy, w, display_info->atoms[WM_STATE], 
+                     display_info->atoms[WM_STATE], 32, PropModeReplace,
+                     (unsigned char *) data, 2);
 }
 
 PropMwmHints *
-getMotifHints (Display * dpy, Window w)
+getMotifHints (DisplayInfo *display_info, Window w)
 {
     Atom real_type;
     int real_format;
@@ -243,8 +99,8 @@ getMotifHints (Display * dpy, Window w)
 
     TRACE ("entering getMotifHints");
 
-    if ((XGetWindowProperty (dpy, w, motif_wm_hints, 0L, MWM_HINTS_ELEMENTS, 
-                FALSE, motif_wm_hints, &real_type, &real_format, &items_read,
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[MOTIF_WM_HINTS], 0L, MWM_HINTS_ELEMENTS, 
+                FALSE, display_info->atoms[MOTIF_WM_HINTS], &real_type, &real_format, &items_read,
                 &items_left, (unsigned char **) &data) == Success))
     {
         if (items_read >= MWM_HINTS_ELEMENTS)
@@ -261,7 +117,7 @@ getMotifHints (Display * dpy, Window w)
 }
 
 unsigned int
-getWMProtocols (Display * dpy, Window w)
+getWMProtocols (DisplayInfo *display_info, Window w)
 {
     Atom *protocols = None, *ap;
     int i, n;
@@ -272,20 +128,20 @@ getWMProtocols (Display * dpy, Window w)
 
     TRACE ("entering getWMProtocols");
 
-    if (XGetWMProtocols (dpy, w, &protocols, &n))
+    if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
         {
-            if (*ap == (Atom) wm_takefocus)
+            if (*ap == (Atom) display_info->atoms[WM_TAKEFOCUS])
             {
                 result |= WM_PROTOCOLS_TAKE_FOCUS;
             }
-            if (*ap == (Atom) wm_delete_window)
+            if (*ap == (Atom) display_info->atoms[WM_DELETE_WINDOW])
             {
                 result |= WM_PROTOCOLS_DELETE_WINDOW;
             }
             /* KDE extension */
-            if (*ap == (Atom) kde_net_wm_context_help)
+            if (*ap == (Atom) display_info->atoms[KDE_NET_WM_CONTEXT_HELP])
             {
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
             }
@@ -293,22 +149,22 @@ getWMProtocols (Display * dpy, Window w)
     }
     else
     {
-        if ((XGetWindowProperty (dpy, w, wm_protocols, 0L, 10L, FALSE,
-                    wm_protocols, &atype, &aformat, &nitems, &bytes_remain,
+        if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
+                    display_info->atoms[WM_PROTOCOLS], &atype, &aformat, &nitems, &bytes_remain,
                     (unsigned char **) &protocols)) == Success)
         {
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
-                if (*ap == (Atom) wm_takefocus)
+                if (*ap == (Atom) display_info->atoms[WM_TAKEFOCUS])
                 {
                     result |= WM_PROTOCOLS_TAKE_FOCUS;
                 }
-                if (*ap == (Atom) wm_delete_window)
+                if (*ap == (Atom) display_info->atoms[WM_DELETE_WINDOW])
                 {
                     result |= WM_PROTOCOLS_DELETE_WINDOW;
                 }
                 /* KDE extension */
-                if (*ap == (Atom) kde_net_wm_context_help)
+                if (*ap == (Atom) display_info->atoms[KDE_NET_WM_CONTEXT_HELP])
                 {
                     result |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
@@ -322,64 +178,8 @@ getWMProtocols (Display * dpy, Window w)
     return result;
 }
 
-
-void
-initGnomeHints (Display * dpy)
-{
-    TRACE ("entering initGnomeHints");
-
-    gnome_panel_desktop_area =
-        XInternAtom (dpy, "GNOME_PANEL_DESKTOP_AREA", FALSE);
-    win_client_list = 
-        XInternAtom (dpy, "_WIN_CLIENT_LIST", FALSE);
-    win_desktop_button_proxy =
-        XInternAtom (dpy, "_WIN_DESKTOP_BUTTON_PROXY", FALSE);
-    win_hints = 
-        XInternAtom (dpy, "_WIN_HINTS", FALSE);
-    win_layer = 
-        XInternAtom (dpy, "_WIN_LAYER", FALSE);
-    win_protocols = 
-        XInternAtom (dpy, "_WIN_PROTOCOLS", FALSE);
-    win_state = 
-        XInternAtom (dpy, "_WIN_STATE", FALSE);
-    win_supporting_wm_check =
-        XInternAtom (dpy, "_WIN_SUPPORTING_WM_CHECK", FALSE);
-    win_workspace_count = 
-        XInternAtom (dpy, "_WIN_WORKSPACE_COUNT", FALSE);
-    win_workspace = 
-        XInternAtom (dpy, "_WIN_WORKSPACE", FALSE);
-}
-
-void
-initKDEHints (Display * dpy)
-{
-    TRACE ("entering initKDEHints");
-
-    kde_net_wm_context_help = 
-        XInternAtom (dpy, "_NET_WM_CONTEXT_HELP", FALSE);
-    kde_net_wm_system_tray_window_for = 
-        XInternAtom (dpy, "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR", FALSE);
-    kwm_win_icon = XInternAtom (dpy, "KWM_WIN_ICON", FALSE);
-}
-
-Atom
-initSystrayHints (Display * dpy, int nscreen)
-{
-    Atom net_system_tray_selection;
-    gchar selection[32];
-
-    TRACE ("entering initSystrayHints");
-
-    g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", nscreen);
-    net_system_tray_manager   = XInternAtom (dpy, "MANAGER", FALSE);
-    net_system_tray_opcode    = XInternAtom (dpy, "_NET_SYSTEM_TRAY_OPCODE", FALSE);
-    net_system_tray_selection = XInternAtom (dpy, selection, FALSE);
-    
-    return net_system_tray_selection;
-}
-
 gboolean
-getHint (Display * dpy, Window w, Atom a, long *value)
+getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
 {
     Atom real_type;
     int real_format;
@@ -391,9 +191,9 @@ getHint (Display * dpy, Window w, Atom a, long *value)
 
     *value = 0;
 
-    if ((XGetWindowProperty (dpy, w, a, 0L, 1L, FALSE, XA_CARDINAL,
-                &real_type, &real_format, &items_read, &items_left,
-                (unsigned char **) &data) == Success) && (items_read))
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 0L, 1L, 
+                             FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left,
+                             (unsigned char **) &data) == Success) && (items_read))
     {
         *value = *data;
         if (data)        
@@ -406,16 +206,16 @@ getHint (Display * dpy, Window w, Atom a, long *value)
 }
 
 void
-setHint (Display * dpy, Window w, Atom a, long value)
+setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
 {
     TRACE ("entering setHint");
 
-    XChangeProperty (dpy, w, a, XA_CARDINAL, 32, PropModeReplace,
-        (unsigned char *) &value, 1);
+    XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL, 
+                     32, PropModeReplace, (unsigned char *) &value, 1);
 }
 
 void
-getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout * layout)
+getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDesktopLayout * layout)
 {
     Atom real_type;
     int real_format;
@@ -426,7 +226,7 @@ getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout *
 
     TRACE ("entering getDesktopLayout");
 
-    if ((XGetWindowProperty (dpy, root, net_desktop_layout,
+    if ((XGetWindowProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_LAYOUT],
                 0L, 4L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
                 (unsigned char **) &data) == Success) && (items_read >= 3))
@@ -484,7 +284,7 @@ getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout *
 }
 
 void
-getGnomeDesktopMargins (Display * dpy, int screen, int * m)
+getGnomeDesktopMargins (DisplayInfo *display_info, Window root, int * m)
 {
     Atom real_type;
     int real_format;
@@ -493,8 +293,8 @@ getGnomeDesktopMargins (Display * dpy, int screen, int * m)
 
     TRACE ("entering getGnomeDesktopMargins");
 
-    if ((XGetWindowProperty (dpy, RootWindow (dpy, screen),
-                gnome_panel_desktop_area, 0L, 4L, FALSE, XA_CARDINAL,
+    if ((XGetWindowProperty (display_info->dpy, root,
+                display_info->atoms[GNOME_PANEL_DESKTOP_AREA], 0L, 4L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
                 (unsigned char **) &data) == Success) && (items_read >= 4))
     {
@@ -514,220 +314,94 @@ getGnomeDesktopMargins (Display * dpy, int screen, int * m)
 }
 
 void
-setGnomeProtocols (Display * dpy, int screen, Window w)
+setGnomeProtocols (DisplayInfo *display_info, Window root, Window w)
 {
     Atom atoms[1];
 
-    atoms[0] = win_layer;
-    XChangeProperty (dpy, RootWindow (dpy, screen), win_protocols, XA_ATOM,
-        32, PropModeReplace, (unsigned char *) atoms, 1);
-    setHint (dpy, w, win_supporting_wm_check, w);
-    setHint (dpy, RootWindow (dpy, screen), win_supporting_wm_check, w);
+    atoms[0] = display_info->atoms[WIN_LAYER];
+    XChangeProperty (display_info->dpy, root, display_info->atoms[WIN_PROTOCOLS], XA_ATOM,
+                     32, PropModeReplace, (unsigned char *) atoms, 1);
+    setHint (display_info, w, WIN_SUPPORTING_WM_CHECK, w);
+    setHint (display_info, root, WIN_SUPPORTING_WM_CHECK, w);
 }
 
 void
-initNetHints (Display * dpy)
-{
-    TRACE ("entering initNetHints");
-
-    net_active_window = 
-        XInternAtom (dpy, "_NET_ACTIVE_WINDOW", FALSE);
-    net_client_list_stacking =
-        XInternAtom (dpy, "_NET_CLIENT_LIST_STACKING", FALSE);
-    net_client_list = 
-        XInternAtom (dpy, "_NET_CLIENT_LIST", FALSE);
-    net_close_window = 
-        XInternAtom (dpy, "_NET_CLOSE_WINDOW", FALSE);
-    net_current_desktop = 
-        XInternAtom (dpy, "_NET_CURRENT_DESKTOP", FALSE);
-    net_desktop_geometry = 
-        XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", FALSE);
-    net_desktop_viewport = 
-        XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
-    net_desktop_names = 
-        XInternAtom (dpy, "_NET_DESKTOP_NAMES", FALSE);
-    net_desktop_layout =
-        XInternAtom (dpy, "_NET_DESKTOP_LAYOUT", FALSE);
-    net_number_of_desktops =
-        XInternAtom (dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
-    net_showing_desktop = 
-        XInternAtom (dpy, "_NET_SHOWING_DESKTOP", FALSE);
-    net_startup_id = 
-        XInternAtom (dpy, "_NET_STARTUP_ID", FALSE);
-    net_supported = 
-        XInternAtom (dpy, "_NET_SUPPORTED", FALSE);
-    net_supporting_wm_check =
-        XInternAtom (dpy, "_NET_SUPPORTING_WM_CHECK", FALSE);
-    net_wm_action_change_desktop =
-        XInternAtom (dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", FALSE);
-    net_wm_action_close = 
-        XInternAtom (dpy, "_NET_WM_ACTION_CLOSE", FALSE);
-    net_wm_action_maximize_horz =
-        XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_HORZ", FALSE);
-    net_wm_action_maximize_vert =
-        XInternAtom (dpy, "_NET_WM_ACTION_MAXIMIZE_VERT", FALSE);
-    net_wm_action_move = 
-        XInternAtom (dpy, "_NET_WM_ACTION_MOVE", FALSE);
-    net_wm_action_resize = 
-        XInternAtom (dpy, "_NET_WM_ACTION_RESIZE", FALSE);
-    net_wm_action_shade = 
-        XInternAtom (dpy, "_NET_WM_ACTION_SHADE", FALSE);
-    net_wm_action_stick = 
-        XInternAtom (dpy, "_NET_WM_ACTION_STICK", FALSE);
-    net_wm_allowed_actions =
-        XInternAtom (dpy, "_NET_WM_ALLOWED_ACTIONS", FALSE);
-    net_wm_desktop = 
-        XInternAtom (dpy, "_NET_WM_DESKTOP", FALSE);
-    net_frame_extents = 
-        XInternAtom (dpy, "_NET_FRAME_EXTENTS", FALSE);
-    net_request_frame_extents = 
-        XInternAtom (dpy, "_NET_REQUEST_FRAME_EXTENTS", FALSE);
-    net_wm_icon_geometry = 
-        XInternAtom (dpy, "_NET_WM_ICON_GEOMETRY", FALSE);
-    net_wm_icon_name = 
-        XInternAtom (dpy, "_NET_WM_ICON_NAME", FALSE);
-    net_wm_icon = 
-        XInternAtom (dpy, "_NET_WM_ICON", FALSE);
-    net_wm_moveresize = 
-        XInternAtom (dpy, "_NET_WM_MOVERESIZE", FALSE);
-    net_wm_name = 
-        XInternAtom (dpy, "_NET_WM_NAME", FALSE);
-    net_wm_state_above = 
-        XInternAtom (dpy, "_NET_WM_STATE_ABOVE", FALSE);
-    net_wm_state_below = 
-        XInternAtom (dpy, "_NET_WM_STATE_BELOW", FALSE);
-    net_wm_state_fullscreen =
-        XInternAtom (dpy, "_NET_WM_STATE_FULLSCREEN", FALSE);
-    net_wm_state_hidden = 
-        XInternAtom (dpy, "_NET_WM_STATE_HIDDEN", FALSE);
-    net_wm_state_maximized_horz =
-        XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", FALSE);
-    net_wm_state_maximized_vert =
-        XInternAtom (dpy, "_NET_WM_STATE_MAXIMIZED_VERT", FALSE);
-    net_wm_state_modal = 
-        XInternAtom (dpy, "_NET_WM_STATE_MODAL", FALSE);
-    net_wm_state_shaded = 
-        XInternAtom (dpy, "_NET_WM_STATE_SHADED", FALSE);
-    net_wm_state_skip_pager =
-        XInternAtom (dpy, "_NET_WM_STATE_SKIP_PAGER", FALSE);
-    net_wm_state_skip_taskbar =
-        XInternAtom (dpy, "_NET_WM_STATE_SKIP_TASKBAR", FALSE);
-    net_wm_state_sticky = 
-        XInternAtom (dpy, "_NET_WM_STATE_STICKY", FALSE);
-    net_wm_state_demands_attention = 
-        XInternAtom (dpy, "_NET_WM_STATE_DEMANDS_ATTENTION", FALSE);
-    net_wm_state = 
-        XInternAtom (dpy, "_NET_WM_STATE", FALSE);
-    net_wm_strut = 
-        XInternAtom (dpy, "_NET_WM_STRUT", FALSE);
-    net_wm_strut_partial = 
-        XInternAtom (dpy, "_NET_WM_STRUT_PARTIAL", FALSE);
-    net_wm_window_type_desktop =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
-    net_wm_window_type_dialog =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DIALOG", FALSE);
-    net_wm_window_type_dock =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_DOCK", FALSE);
-    net_wm_window_type_menu =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_MENU", FALSE);
-    net_wm_window_type_normal =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_NORMAL", FALSE);
-    net_wm_window_type_splash =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_SPLASH", FALSE);
-    net_wm_window_type_toolbar =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", FALSE);
-    net_wm_window_type_utility =
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_UTILITY", FALSE);
-    net_wm_window_type = 
-        XInternAtom (dpy, "_NET_WM_WINDOW_TYPE", FALSE);
-    net_workarea = 
-        XInternAtom (dpy, "_NET_WORKAREA", FALSE);
-    net_wm_user_time = 
-        XInternAtom (dpy, "_NET_WM_USER_TIME", FALSE);
-    net_wm_opacity = 
-        XInternAtom (dpy, "_NET_WM_WINDOW_OPACITY", FALSE);
-    utf8_string = 
-        XInternAtom (dpy, "UTF8_STRING", FALSE);
-}
-
-void
-setNetSupportedHint (Display * dpy, int screen, Window check_win)
+setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 {
     Atom atoms[64];
     unsigned long data[1];
     int i = 0;
 
-    atoms[i++] = net_active_window;
-    atoms[i++] = net_client_list;
-    atoms[i++] = net_client_list_stacking;
-    atoms[i++] = net_close_window;
-    atoms[i++] = net_current_desktop;
-    atoms[i++] = net_desktop_geometry;
-    atoms[i++] = net_desktop_layout;
-    atoms[i++] = net_desktop_names;
-    atoms[i++] = net_desktop_viewport;
-    atoms[i++] = net_frame_extents;
-    atoms[i++] = net_number_of_desktops;
-    atoms[i++] = net_request_frame_extents;
-    atoms[i++] = net_showing_desktop;
-    atoms[i++] = net_supported;
-    atoms[i++] = net_supporting_wm_check;
-    atoms[i++] = net_wm_action_change_desktop;
-    atoms[i++] = net_wm_action_close;
-    atoms[i++] = net_wm_action_maximize_horz;
-    atoms[i++] = net_wm_action_maximize_vert;
-    atoms[i++] = net_wm_action_move;
-    atoms[i++] = net_wm_action_resize;
-    atoms[i++] = net_wm_action_shade;
-    atoms[i++] = net_wm_action_stick;
-    atoms[i++] = net_wm_allowed_actions;
-    atoms[i++] = net_wm_desktop;
-    atoms[i++] = net_wm_icon;
-    atoms[i++] = net_wm_icon_geometry;
-    atoms[i++] = net_wm_icon_name;
-    atoms[i++] = net_wm_name;
-    atoms[i++] = net_wm_state;
-    atoms[i++] = net_wm_state_above;
-    atoms[i++] = net_wm_state_below;
-    atoms[i++] = net_wm_state_demands_attention;
-    atoms[i++] = net_wm_state_fullscreen;
-    atoms[i++] = net_wm_state_hidden;
-    atoms[i++] = net_wm_state_maximized_horz;
-    atoms[i++] = net_wm_state_maximized_vert;
-    atoms[i++] = net_wm_state_modal;
-    atoms[i++] = net_wm_state_shaded;
-    atoms[i++] = net_wm_state_skip_pager;
-    atoms[i++] = net_wm_state_skip_taskbar;
-    atoms[i++] = net_wm_state_sticky;
-    atoms[i++] = net_wm_strut;
-    atoms[i++] = net_wm_strut_partial;
-    atoms[i++] = net_wm_user_time;
-    atoms[i++] = net_wm_window_type;
-    atoms[i++] = net_wm_window_type_desktop;
-    atoms[i++] = net_wm_window_type_dialog;
-    atoms[i++] = net_wm_window_type_dock;
-    atoms[i++] = net_wm_window_type_menu;
-    atoms[i++] = net_wm_window_type_normal;
-    atoms[i++] = net_wm_window_type_splash;
-    atoms[i++] = net_wm_window_type_toolbar;
-    atoms[i++] = net_wm_window_type_utility;
-    atoms[i++] = net_workarea;
+    atoms[i++] = display_info->atoms[NET_ACTIVE_WINDOW];
+    atoms[i++] = display_info->atoms[NET_CLIENT_LIST];
+    atoms[i++] = display_info->atoms[NET_CLIENT_LIST_STACKING];
+    atoms[i++] = display_info->atoms[NET_CLOSE_WINDOW];
+    atoms[i++] = display_info->atoms[NET_CURRENT_DESKTOP];
+    atoms[i++] = display_info->atoms[NET_DESKTOP_GEOMETRY];
+    atoms[i++] = display_info->atoms[NET_DESKTOP_LAYOUT];
+    atoms[i++] = display_info->atoms[NET_DESKTOP_NAMES];
+    atoms[i++] = display_info->atoms[NET_DESKTOP_VIEWPORT];
+    atoms[i++] = display_info->atoms[NET_FRAME_EXTENTS];
+    atoms[i++] = display_info->atoms[NET_NUMBER_OF_DESKTOPS];
+    atoms[i++] = display_info->atoms[NET_REQUEST_FRAME_EXTENTS];
+    atoms[i++] = display_info->atoms[NET_SHOWING_DESKTOP];
+    atoms[i++] = display_info->atoms[NET_SUPPORTED];
+    atoms[i++] = display_info->atoms[NET_SUPPORTING_WM_CHECK];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_CHANGE_DESKTOP];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_HORZ];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_VERT];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_MOVE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_RESIZE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_SHADE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_STICK];
+    atoms[i++] = display_info->atoms[NET_WM_ALLOWED_ACTIONS];
+    atoms[i++] = display_info->atoms[NET_WM_DESKTOP];
+    atoms[i++] = display_info->atoms[NET_WM_ICON];
+    atoms[i++] = display_info->atoms[NET_WM_ICON_GEOMETRY];
+    atoms[i++] = display_info->atoms[NET_WM_ICON_NAME];
+    atoms[i++] = display_info->atoms[NET_WM_NAME];
+    atoms[i++] = display_info->atoms[NET_WM_STATE];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_BELOW];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_FULLSCREEN];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_HIDDEN];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_MODAL];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_SHADED];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_SKIP_PAGER];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_SKIP_TASKBAR];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_STICKY];
+    atoms[i++] = display_info->atoms[NET_WM_STRUT];
+    atoms[i++] = display_info->atoms[NET_WM_STRUT_PARTIAL];
+    atoms[i++] = display_info->atoms[NET_WM_USER_TIME];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DOCK];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_MENU];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY];
+    atoms[i++] = display_info->atoms[NET_WORKAREA];
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-    atoms[i++] = net_startup_id;
+    atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif
 
-    XChangeProperty (dpy, RootWindow (dpy, screen), net_supported, XA_ATOM,
-        32, PropModeReplace, (unsigned char *) atoms, i);
     data[0] = check_win;
-    XChangeProperty (dpy, check_win, net_supporting_wm_check, XA_WINDOW, 32,
-        PropModeReplace, (unsigned char *) data, 1);
-    XChangeProperty (dpy, RootWindow (dpy, screen), net_supporting_wm_check,
-        XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTED], 
+                     XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
+    XChangeProperty (display_info->dpy, check_win, display_info->atoms[NET_SUPPORTING_WM_CHECK], 
+                     XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTING_WM_CHECK],
+                     XA_WINDOW, 32, PropModeReplace, (unsigned char *) data, 1);
 }
 
 gboolean
-getAtomList (Display * dpy, Window w, Atom a, Atom ** atoms_p,
-    int *n_atoms_p)
+getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, int *n_atoms_p)
 {
     Atom type;
     int format;
@@ -738,14 +412,14 @@ getAtomList (Display * dpy, Window w, Atom a, Atom ** atoms_p,
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    if ((XGetWindowProperty (dpy, w, a, 0, G_MAXLONG, FALSE, XA_ATOM, &type,
-                &format, &n_atoms, &bytes_after,
-                (unsigned char **) &atoms) != Success) || (type == None))
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
+                             0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms, 
+                             &bytes_after, (unsigned char **) &atoms) != Success) || (type == None))
     {
         return FALSE;
     }
 
-    if (!check_type_and_format (dpy, w, a, 32, XA_ATOM, -1, format, type))
+    if (!check_type_and_format (32, XA_ATOM, -1, format, type))
     {
         if (atoms)
         {
@@ -763,8 +437,7 @@ getAtomList (Display * dpy, Window w, Atom a, Atom ** atoms_p,
 }
 
 gboolean
-getCardinalList (Display * dpy, Window w, Atom xatom,
-    unsigned long **cardinals_p, int *n_cardinals_p)
+getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long **cardinals_p, int *n_cardinals_p)
 {
     Atom type;
     int format;
@@ -775,15 +448,15 @@ getCardinalList (Display * dpy, Window w, Atom xatom,
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
-    if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, XA_CARDINAL,
-                &type, &format, &n_cardinals, &bytes_after,
-                (unsigned char **) &cardinals) != Success) || (type == None))
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
+                             0, G_MAXLONG, FALSE, XA_CARDINAL,
+                             &type, &format, &n_cardinals, &bytes_after,
+                             (unsigned char **) &cardinals) != Success) || (type == None))
     {
         return FALSE;
     }
 
-    if (!check_type_and_format (dpy, w, xatom, 32, XA_CARDINAL, -1, format,
-            type))
+    if (!check_type_and_format (32, XA_CARDINAL, -1, format, type))
     {
         XFree (cardinals);
         return FALSE;
@@ -796,7 +469,7 @@ getCardinalList (Display * dpy, Window w, Atom xatom,
 }
 
 void
-setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int width, int height, int * m)
+setNetWorkarea (DisplayInfo *display_info, Window root, int nb_workspaces, int width, int height, int * m)
 {
     unsigned long *data, *ptr;
     int i, j;
@@ -812,13 +485,13 @@ setNetWorkarea (Display * dpy, int screen, int nb_workspaces, int width, int hei
         *ptr++ = (unsigned long) (width  - (m[LEFT] + m[RIGHT]));
         *ptr++ = (unsigned long) (height - (m[TOP] + m[BOTTOM]));
     }
-    XChangeProperty (dpy, RootWindow (dpy, screen), net_workarea, XA_CARDINAL,
-        32, PropModeReplace, (unsigned char *) data, j * 4);
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_WORKAREA], 
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, j * 4);
     g_free (data);
 }
 
 void
-setNetFrameExtents (Display * dpy, Window w, int top, int left, int right, int bottom)
+setNetFrameExtents (DisplayInfo *display_info, Window w, int top, int left, int right, int bottom)
 {
     unsigned long data[4] = { 0, 0, 0, 0 };
 
@@ -827,49 +500,49 @@ setNetFrameExtents (Display * dpy, Window w, int top, int left, int right, int b
     data[1] = (unsigned long) right;
     data[2] = (unsigned long) top;
     data[3] = (unsigned long) bottom;
-    XChangeProperty (dpy, w, net_frame_extents, XA_CARDINAL,
-        32, PropModeReplace, (unsigned char *) data, 4);
+    XChangeProperty (display_info->dpy, w, display_info->atoms[NET_FRAME_EXTENTS], 
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
 }
 
 void
-initNetDesktopInfo (Display * dpy, int screen, int workspace, int width, int height)
+initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int width, int height)
 {
     unsigned long data[2];
     TRACE ("entering initNetDesktopInfo");
     data[0] = width;
     data[1] = height;
-    XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_geometry,
-        XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_GEOMETRY],
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
     data[0] = 0;
     data[1] = 0;
-    XChangeProperty (dpy, RootWindow (dpy, screen), net_desktop_viewport,
-        XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
-    /* TBD : See why this prevents kdesktop from working properly */
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_VIEWPORT],
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
     data[0] = workspace;
-    XChangeProperty (dpy, RootWindow (dpy, screen), net_current_desktop,
-        XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_CURRENT_DESKTOP],
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
 }
 
 void
-set_utf8_string_hint (Display * dpy, Window w, Atom atom, const char *val)
+setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const char *val)
 {
     TRACE ("entering set_utf8_string_hint");
 
-    XChangeProperty (dpy, w, atom, utf8_string, 8, PropModeReplace,
-        (unsigned char *) val, strlen (val) + 1);
+    XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], 
+                     display_info->atoms[UTF8_STRING], 8, PropModeReplace,
+                     (unsigned char *) val, strlen (val) + 1);
 }
 
 void
-getTransientFor (Display * dpy, int screen, Window w, Window * transient_for)
+getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * transient_for)
 {
     TRACE ("entering getTransientFor");
 
-    if (XGetTransientForHint (dpy, w, transient_for))
+    if (XGetTransientForHint (display_info->dpy, w, transient_for))
     {
         if (*transient_for == None)
         {
             /* Treat transient for "none" same as transient for root */
-            *transient_for = RootWindow (dpy, screen);
+            *transient_for = root;
         }
         else if (*transient_for == w)
         {
@@ -886,7 +559,7 @@ getTransientFor (Display * dpy, int screen, Window w, Window * transient_for)
 }
 
 gboolean
-getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
+getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
 {
     Atom type;
     int format;
@@ -897,15 +570,15 @@ getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
     TRACE ("entering getUTF8String");
 
     *str_p = NULL;
-    if ((XGetWindowProperty (dpy, w, xatom, 0, G_MAXLONG, FALSE, utf8_string,
-                &type, &format, &n_items, &bytes_after,
-                (unsigned char **) &str) != Success) || (type == None))
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
+                             0, G_MAXLONG, FALSE, display_info->atoms[UTF8_STRING], &type, 
+                             &format, &n_items, &bytes_after, (unsigned char **) &str) != Success) || (type == None))
     {
         TRACE ("no utf8_string value provided");
         return FALSE;
     }
 
-    if (!check_type_and_format (dpy, w, xatom, 8, utf8_string, -1, format, type))
+    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], -1, format, type))
     {
         TRACE ("utf8_string value invalid");
         if (str)
@@ -919,7 +592,7 @@ getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
     {
         char *name;
 
-        name = XGetAtomName (dpy, xatom);
+        name = XGetAtomName (display_info->dpy, display_info->atoms[atom_id]);
         if (name)
         {
             TRACE ("Property %s on window 0x%lx contains invalid UTF-8 characters", name, w);
@@ -942,7 +615,7 @@ getUTF8String (Display * dpy, Window w, Atom xatom, char **str_p, int *length)
 }
 
 static char *
-text_property_to_utf8 (Display * dpy, const XTextProperty * prop)
+text_property_to_utf8 (DisplayInfo *display_info, const XTextProperty * prop)
 {
     char **list;
     int count;
@@ -951,9 +624,9 @@ text_property_to_utf8 (Display * dpy, const XTextProperty * prop)
     TRACE ("entering text_property_to_utf8");
 
     list = NULL;
-    if ((count =
-            gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding), 
-                             prop->format, prop->value, prop->nitems, &list)) == 0)
+    count = gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding), 
+                                            prop->format, prop->value, prop->nitems, &list);
+    if (count == 0)
     {
         TRACE ("gdk_text_property_to_utf8_list returned 0");
         return NULL;
@@ -966,16 +639,16 @@ text_property_to_utf8 (Display * dpy, const XTextProperty * prop)
 }
 
 static char *
-get_text_property (Display * dpy, Window w, Atom a)
+get_text_property (DisplayInfo *display_info, Window w, Atom a)
 {
     XTextProperty text;
     char *retval;
 
     TRACE ("entering get_text_property");
     text.nitems = 0;
-    if (XGetTextProperty (dpy, w, &text, a))
+    if (XGetTextProperty (display_info->dpy, w, &text, a))
     {
-        retval = text_property_to_utf8 (dpy, &text);
+        retval = text_property_to_utf8 (display_info, &text);
         if (retval)
         {
             xfce_utf8_remove_controls((gchar *) retval, -1, NULL);
@@ -995,7 +668,7 @@ get_text_property (Display * dpy, Window w, Atom a)
 }
 
 void
-getWindowName (Display * dpy, Window w, char **name)
+getWindowName (DisplayInfo *display_info, Window w, char **name)
 {
     char *str;
     int len;
@@ -1006,13 +679,13 @@ getWindowName (Display * dpy, Window w, char **name)
     *name = NULL;
     g_return_if_fail (w != None);
 
-    if (getUTF8String (dpy, w, net_wm_name, &str, &len))
+    if (getUTF8String (display_info, w, NET_WM_NAME, &str, &len))
     {
         *name = strdup (str);
         XFree (str);
         return;
     }
-    str = get_text_property (dpy, w, XA_WM_NAME);
+    str = get_text_property (display_info, w, XA_WM_NAME);
     if (str)
     {
         *name = strdup (str);
@@ -1025,7 +698,7 @@ getWindowName (Display * dpy, Window w, char **name)
 }
 
 gboolean
-checkKdeSystrayWindow(Display * dpy, Window window)
+checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
 {
     Atom actual_type;
     int actual_format;
@@ -1036,9 +709,9 @@ checkKdeSystrayWindow(Display * dpy, Window window)
     TRACE ("entering GetWindowRole");
     g_return_val_if_fail (window != None, FALSE);
     
-    XGetWindowProperty(dpy, window, kde_net_wm_system_tray_window_for, 0L, 
-            sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
-            &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
+    XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR], 
+                       0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
+                       &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
 
     if ((actual_format == None) || 
         (actual_type != XA_WINDOW) || 
@@ -1050,7 +723,7 @@ checkKdeSystrayWindow(Display * dpy, Window window)
 }
 
 void
-sendSystrayReqDock(Display * dpy, Window window, Window systray)
+sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
 {
     XClientMessageEvent xev;
 
@@ -1060,7 +733,7 @@ sendSystrayReqDock(Display * dpy, Window window, Window systray)
 
     xev.type = ClientMessage;
     xev.window = systray;
-    xev.message_type = net_system_tray_opcode;
+    xev.message_type = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
     xev.format = 32;
     xev.data.l[0] = CurrentTime;
     xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
@@ -1068,27 +741,27 @@ sendSystrayReqDock(Display * dpy, Window window, Window systray)
     xev.data.l[3] = 0; /* Nada */
     xev.data.l[4] = 0; /* Niet */
 
-    XSendEvent (dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
+    XSendEvent (display_info->dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
 }
 
 Window
-getSystrayWindow (Display * dpy, Atom net_system_tray_selection)
+getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
 {
     Window systray_win = None;
 
     TRACE ("entering getSystrayWindow");
 
-    systray_win = XGetSelectionOwner (dpy, net_system_tray_selection);
+    systray_win = XGetSelectionOwner (display_info->dpy, net_system_tray_selection);
     if (systray_win)
     {
-        XSelectInput (dpy, systray_win, StructureNotifyMask);
+        XSelectInput (display_info->dpy, systray_win, StructureNotifyMask);
     }
     TRACE ("New systray window:  0x%lx", systray_win);
     return systray_win;
 }
 
 gboolean
-getWindowRole (Display * dpy, Window window, char **role)
+getWindowRole (DisplayInfo *display_info, Window window, char **role)
 {
     XTextProperty tp;
 
@@ -1098,7 +771,7 @@ getWindowRole (Display * dpy, Window window, char **role)
     *role = NULL;
     g_return_val_if_fail (window != None, FALSE);
 
-    if (XGetTextProperty (dpy, window, &tp, wm_window_role))
+    if (XGetTextProperty (display_info->dpy, window, &tp, display_info->atoms[WM_WINDOW_ROLE]))
     {
         if (tp.value)
         {
@@ -1116,7 +789,7 @@ getWindowRole (Display * dpy, Window window, char **role)
 }
 
 Window
-getClientLeader (Display * dpy, Window window)
+getClientLeader (DisplayInfo *display_info, Window window)
 {
     Window client_leader = None;
     Atom actual_type;
@@ -1129,9 +802,9 @@ getClientLeader (Display * dpy, Window window)
 
     g_return_val_if_fail (window != None, None);
 
-    if (XGetWindowProperty (dpy, window, wm_client_leader, 0L, 1L, FALSE,
-            AnyPropertyType, &actual_type, &actual_format, &nitems,
-            &bytes_after, &prop) == Success)
+    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[WM_CLIENT_LEADER], 
+                            0L, 1L, FALSE, AnyPropertyType, &actual_type, &actual_format, &nitems,
+                            &bytes_after, &prop) == Success)
     {
         if ((prop) && (actual_type == XA_WINDOW) && (actual_format == 32)
             && (nitems == 1) && (bytes_after == 0))
@@ -1147,7 +820,7 @@ getClientLeader (Display * dpy, Window window)
 }
 
 gboolean
-getNetWMUserTime (Display * dpy, Window window, Time *time)
+getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
 {
     Atom actual_type;
     int actual_format;
@@ -1159,9 +832,9 @@ getNetWMUserTime (Display * dpy, Window window, Time *time)
 
     g_return_val_if_fail (window != None, None);
 
-    if (XGetWindowProperty (dpy, window, net_wm_user_time, 0L, 1L, FALSE,
-            XA_CARDINAL, &actual_type, &actual_format, &nitems,
-            &bytes_after, &data) == Success)
+    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_USER_TIME], 
+                            0L, 1L, FALSE, XA_CARDINAL, &actual_type, &actual_format, &nitems,
+                            &bytes_after, &data) == Success)
     {
         if ((data) && (actual_type == XA_CARDINAL)
             && (nitems == 1) && (bytes_after == 0))
@@ -1176,7 +849,7 @@ getNetWMUserTime (Display * dpy, Window window, Time *time)
 }
 
 gboolean
-getClientID (Display * dpy, Window window, char **client_id)
+getClientID (DisplayInfo *display_info, Window window, char **client_id)
 {
     Window id;
     XTextProperty tp;
@@ -1187,9 +860,9 @@ getClientID (Display * dpy, Window window, char **client_id)
     *client_id = NULL;
     g_return_val_if_fail (window != None, FALSE);
 
-    if ((id = getClientLeader (dpy, window)))
+    if ((id = getClientLeader (display_info, window)))
     {
-        if (XGetTextProperty (dpy, id, &tp, sm_client_id))
+        if (XGetTextProperty (display_info->dpy, id, &tp, display_info->atoms[SM_CLIENT_ID]))
         {
             if (tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
             {
@@ -1204,20 +877,20 @@ getClientID (Display * dpy, Window window, char **client_id)
 }
 
 gboolean
-getWindowCommand (Display * dpy, Window window, char ***argv, int *argc)
+getWindowCommand (DisplayInfo *display_info, Window window, char ***argv, int *argc)
 {
     Window id;
 
     *argc = 0;
     g_return_val_if_fail (window != None, FALSE);
 
-    if (XGetCommand (dpy, window, argv, argc) && (*argc > 0))
+    if (XGetCommand (display_info->dpy, window, argv, argc) && (*argc > 0))
     {
         return TRUE;
     }
-    if ((id = getClientLeader (dpy, window)))
+    if ((id = getClientLeader (display_info, window)))
     {
-        if (XGetCommand (dpy, id, argv, argc) && (*argc > 0))
+        if (XGetCommand (display_info->dpy, id, argv, argc) && (*argc > 0))
         {
             return TRUE;
         }
@@ -1226,7 +899,7 @@ getWindowCommand (Display * dpy, Window window, char ***argv, int *argc)
 }
 
 gboolean
-getKDEIcon (Display * dpy, Window window, Pixmap * pixmap, Pixmap * mask)
+getKDEIcon (DisplayInfo *display_info, Window window, Pixmap * pixmap, Pixmap * mask)
 {
     Atom type;
     int format;
@@ -1238,14 +911,14 @@ getKDEIcon (Display * dpy, Window window, Pixmap * pixmap, Pixmap * mask)
     *mask = None;
 
     icons = NULL;
-    if (XGetWindowProperty (dpy, window, kwm_win_icon, 0L, G_MAXLONG,
-            FALSE, kwm_win_icon, &type, &format, &nitems, &bytes_after,
-            (unsigned char **)&icons) != Success)
+    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[KWM_WIN_ICON], 
+                            0L, G_MAXLONG, FALSE, display_info->atoms[KWM_WIN_ICON], &type, 
+                            &format, &nitems, &bytes_after, (unsigned char **)&icons) != Success)
     {
         return FALSE;
     }
 
-    if (type != kwm_win_icon)
+    if (type != display_info->atoms[KWM_WIN_ICON])
     {
         if (icons)
         {
@@ -1263,14 +936,14 @@ getKDEIcon (Display * dpy, Window window, Pixmap * pixmap, Pixmap * mask)
 }
 
 gboolean
-getRGBIconData (Display * dpy, Window window, unsigned long **data, unsigned long *nitems)
+getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, unsigned long *nitems)
 {
     Atom type;
     int format;
     unsigned long bytes_after;
 
-    if (XGetWindowProperty (dpy, window, net_wm_icon, 0L, G_MAXLONG,
-                            FALSE, XA_CARDINAL, &type, &format, nitems,
+    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_ICON], 
+                            0L, G_MAXLONG, FALSE, XA_CARDINAL, &type, &format, nitems,
                             &bytes_after, (unsigned char **)data) != Success)
     {
         *data = NULL;
@@ -1291,7 +964,7 @@ getRGBIconData (Display * dpy, Window window, unsigned long **data, unsigned lon
 }
 
 gboolean
-getOpacity (Display * dpy, Window window, guint *opacity)
+getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
 {
     Atom actual;
     gint format;
@@ -1304,7 +977,7 @@ getOpacity (Display * dpy, Window window, guint *opacity)
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (opacity != NULL, FALSE);
 
-    result = XGetWindowProperty(dpy, window, net_wm_opacity, 
+    result = XGetWindowProperty(display_info->dpy, window, display_info->atoms[NET_WM_OPACITY], 
                     0L, 1L, False, XA_CARDINAL, &actual, &format, 
                     &n, &left, &data);
 
@@ -1320,7 +993,7 @@ getOpacity (Display * dpy, Window window, guint *opacity)
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean
-getWindowStartupId (Display * dpy, Window window, char **startup_id)
+getWindowStartupId (DisplayInfo *display_info, Window window, char **startup_id)
 {
     XTextProperty tp;
 
@@ -1330,7 +1003,7 @@ getWindowStartupId (Display * dpy, Window window, char **startup_id)
     *startup_id = NULL;
     g_return_val_if_fail (window != None, FALSE);
 
-    if (XGetTextProperty (dpy, window, &tp, net_startup_id))
+    if (XGetTextProperty (display_info->dpy, window, &tp, display_info->atoms[NET_STARTUP_ID]))
     {
         if (tp.value)
         {

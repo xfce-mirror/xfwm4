@@ -32,6 +32,7 @@
 
 #include "inline-default-icon.h"
 #include "icons.h"
+#include "display.h"
 #include "hints.h"
 
 static gboolean
@@ -195,7 +196,7 @@ argbdata_to_pixdata (gulong * argb_data, int len, guchar ** pixdata)
 }
 
 static gboolean
-read_rgb_icon (Display *dpy, Window window, int ideal_width, int ideal_height,
+read_rgb_icon (DisplayInfo *display_info, Window window, int ideal_width, int ideal_height,
                int *width, int *height, guchar ** pixdata)
 {
     gulong nitems;
@@ -205,7 +206,7 @@ read_rgb_icon (Display *dpy, Window window, int ideal_width, int ideal_height,
 
     data = NULL;
     
-    if (!getRGBIconData (dpy, window, &data, &nitems))
+    if (!getRGBIconData (display_info, window, &data, &nitems))
     {
         return FALSE;
     }
@@ -463,7 +464,7 @@ scaled_from_pixdata (guchar * pixdata, int w, int h, int new_w, int new_h)
 }
 
 GdkPixbuf *
-getAppIcon (Display *dpy, Window window, int width, int height)
+getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
 {
     guchar *pixdata;
     int w, h;
@@ -475,13 +476,13 @@ getAppIcon (Display *dpy, Window window, int width, int height)
     pixmap = None;
     mask = None;
 
-    if (read_rgb_icon (dpy, window, width, height, &w, &h, &pixdata))
+    if (read_rgb_icon (display_info, window, width, height, &w, &h, &pixdata))
     {
         return scaled_from_pixdata (pixdata, w, h, width, height);
     }
 
     gdk_error_trap_push ();
-    hints = XGetWMHints (dpy, window);
+    hints = XGetWMHints (display_info->dpy, window);
     gdk_error_trap_pop ();
 
     if (hints)
@@ -501,17 +502,17 @@ getAppIcon (Display *dpy, Window window, int width, int height)
 
     if (pixmap != None)
     {
-        GdkPixbuf *icon = try_pixmap_and_mask (dpy, pixmap, mask, width, height);
+        GdkPixbuf *icon = try_pixmap_and_mask (display_info->dpy, pixmap, mask, width, height);
         if (icon)
         {
             return icon;
         }
     }
 
-    getKDEIcon (dpy, window, &pixmap, &mask);
+    getKDEIcon (display_info, window, &pixmap, &mask);
     if (pixmap != None)
     {
-        GdkPixbuf *icon = try_pixmap_and_mask (dpy, pixmap, mask, width, height);
+        GdkPixbuf *icon = try_pixmap_and_mask (display_info->dpy, pixmap, mask, width, height);
         if (icon)
         {
             return icon;

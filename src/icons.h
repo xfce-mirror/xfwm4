@@ -30,6 +30,8 @@
 #include <X11/Xutil.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-GdkPixbuf *getAppIcon (Display *, Window, int, int);
+#include "display.h"
+
+GdkPixbuf *getAppIcon (DisplayInfo *, Window, int, int);
 
 #endif /* INC_ICONS_H */

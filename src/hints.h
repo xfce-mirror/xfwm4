@@ -34,6 +34,8 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 
+#include "display.h"
+
 #define MWM_HINTS_ELEMENTS                      3L
 
 #define MWM_HINTS_FUNCTIONS                     (1L << 0)
@@ -138,145 +140,40 @@ typedef struct
 }
 PropMwmHints;
 
-extern Atom gnome_panel_desktop_area;
-extern Atom motif_wm_hints;
-extern Atom sm_client_id;
-extern Atom win_client_list;
-extern Atom win_desktop_button_proxy;
-extern Atom win_hints;
-extern Atom win_layer;
-extern Atom win_protocols;
-extern Atom win_state;
-extern Atom win_supporting_wm_check;
-extern Atom win_workspace;
-extern Atom win_workspace_count;
-extern Atom wm_change_state;
-extern Atom wm_client_leader;
-extern Atom wm_colormap_windows;
-extern Atom wm_delete_window;
-extern Atom wm_protocols;
-extern Atom wm_state;
-extern Atom wm_takefocus;
-extern Atom wm_transient_for;
-extern Atom wm_window_role;
-
-/* freedesktop.org protocol */
-
-extern Atom net_active_window;
-extern Atom net_client_list;
-extern Atom net_client_list_stacking;
-extern Atom net_close_window;
-extern Atom net_current_desktop;
-extern Atom net_desktop_geometry;
-extern Atom net_desktop_layout;
-extern Atom net_desktop_names;
-extern Atom net_desktop_viewport;
-extern Atom net_frame_extents;
-extern Atom net_number_of_desktops;
-extern Atom net_request_frame_extents;
-extern Atom net_showing_desktop;
-extern Atom net_startup_id;
-extern Atom net_supported;
-extern Atom net_supporting_wm_check;
-extern Atom net_wm_action_change_desktop;
-extern Atom net_wm_action_close;
-extern Atom net_wm_action_maximize_horz;
-extern Atom net_wm_action_maximize_vert;
-extern Atom net_wm_action_move;
-extern Atom net_wm_action_resize;
-extern Atom net_wm_action_shade;
-extern Atom net_wm_action_stick;
-extern Atom net_wm_allowed_actions;
-extern Atom net_wm_desktop;
-extern Atom net_wm_icon;
-extern Atom net_wm_icon_geometry;
-extern Atom net_wm_icon_name;
-extern Atom net_wm_moveresize;
-extern Atom net_wm_name;
-extern Atom net_wm_opacity;
-extern Atom net_wm_state;
-extern Atom net_wm_state_above;
-extern Atom net_wm_state_below;
-extern Atom net_wm_state_demands_attention;
-extern Atom net_wm_state_fullscreen;
-extern Atom net_wm_state_hidden;
-extern Atom net_wm_state_maximized_horz;
-extern Atom net_wm_state_maximized_vert;
-extern Atom net_wm_state_modal;
-extern Atom net_wm_state_shaded;
-extern Atom net_wm_state_skip_pager;
-extern Atom net_wm_state_skip_taskbar;
-extern Atom net_wm_state_sticky;
-extern Atom net_wm_strut;
-extern Atom net_wm_strut_partial;
-extern Atom net_wm_user_time;
-extern Atom net_wm_window_type;
-extern Atom net_wm_window_type_desktop;
-extern Atom net_wm_window_type_dialog;
-extern Atom net_wm_window_type_dock;
-extern Atom net_wm_window_type_menu;
-extern Atom net_wm_window_type_normal;
-extern Atom net_wm_window_type_splash;
-extern Atom net_wm_window_type_toolbar;
-extern Atom net_wm_window_type_utility;
-extern Atom net_workarea;
-
-/* KDE extension */
-extern Atom kde_net_wm_context_help;
-extern Atom kde_net_wm_system_tray_window_for;
-extern Atom kwm_win_icon;
-
-/* Systray similation for older KDE apps */
-extern Atom net_system_tray_manager;
-extern Atom net_system_tray_selection;
-extern Atom net_system_tray_opcode;
-
-/* Misc atoms */
-extern Atom misc_xrootpmap;
-extern Atom misc_xsetroot;
-extern Atom misc_pixmap;
-
-void initICCCMHints (Display *);
-unsigned long getWMState (Display *, Window);
-void setWMState (Display *, Window, unsigned long);
-void initMiscHints (Display *);
-void initMotifHints (Display *);
-PropMwmHints *getMotifHints (Display *, Window);
-unsigned int getWMProtocols (Display *, Window);
-void initGnomeHints (Display *);
-void initKDEHints (Display *);
-Atom initSystrayHints (Display *, int);
-gboolean getHint (Display *, Window, Atom, long *);
-void setHint (Display *, Window, Atom, long);
-void getDesktopLayout (Display *, Window, int, NetWmDesktopLayout *);
-void getGnomeDesktopMargins (Display *, int, int *);
-void setGnomeProtocols (Display *, int, Window);
-void initNetHints (Display * dpy);
-void setNetSupportedHint (Display *, int, Window);
-gboolean getAtomList (Display *, Window, Atom, Atom **, int *);
-gboolean getCardinalList (Display *, Window, Atom, unsigned long **, int *);
-void setNetWorkarea (Display *, int, int, int, int, int *);
-void setNetFrameExtents (Display *, Window, int, int, int, int);
-void initNetDesktopInfo (Display *, int, int, int, int);
-void set_utf8_string_hint (Display *, Window, Atom, const char *);
-void getTransientFor (Display *, int, Window, Window *);
-void getWindowName (Display *, Window, char **);
-gboolean getUTF8String (Display *, Window, Atom, char **, int *);
-void getWindowName (Display *, Window, char **);
-gboolean checkKdeSystrayWindow(Display *, Window);
-void sendSystrayReqDock(Display *, Window, Window);
-Window getSystrayWindow (Display *, Atom);
-gboolean getWindowRole (Display *, Window, char **);
-Window getClientLeader (Display *, Window);
-gboolean getNetWMUserTime (Display *, Window, Time *);
-gboolean getClientID (Display *, Window, char **);
-gboolean getWindowCommand (Display *, Window, char ***, int *);
-gboolean getKDEIcon (Display *, Window, Pixmap *, Pixmap *);
-gboolean getRGBIconData (Display *, Window, unsigned long **, unsigned long *);
-gboolean getOpacity (Display *, Window, guint *);
+unsigned long getWMState (DisplayInfo *, Window);
+void setWMState (DisplayInfo *, Window, unsigned long);
+PropMwmHints *getMotifHints (DisplayInfo *, Window);
+unsigned int getWMProtocols (DisplayInfo *, Window);
+gboolean getHint (DisplayInfo *, Window, int, long *);
+void setHint (DisplayInfo *, Window, int, long);
+void getDesktopLayout (DisplayInfo *, Window, int, NetWmDesktopLayout *);
+void getGnomeDesktopMargins (DisplayInfo *, Window, int *);
+void setGnomeProtocols (DisplayInfo *, Window, Window);
+void setNetSupportedHint (DisplayInfo *, Window, Window);
+gboolean getAtomList (DisplayInfo *, Window, int, Atom **, int *);
+gboolean getCardinalList (DisplayInfo *, Window, int, unsigned long **, int *);
+void setNetWorkarea (DisplayInfo *, Window, int, int, int, int *);
+void setNetFrameExtents (DisplayInfo *, Window, int, int, int, int);
+void initNetDesktopInfo (DisplayInfo *, Window, int, int, int);
+void setUTF8StringHint (DisplayInfo *, Window, int, const char *);
+void getTransientFor (DisplayInfo *, Window, Window, Window *);
+void getWindowName (DisplayInfo *, Window, char **);
+gboolean getUTF8String (DisplayInfo *, Window, int, char **, int *);
+void getWindowName (DisplayInfo *, Window, char **);
+gboolean checkKdeSystrayWindow(DisplayInfo *, Window);
+void sendSystrayReqDock(DisplayInfo *, Window, Window);
+Window getSystrayWindow (DisplayInfo *, Atom);
+gboolean getWindowRole (DisplayInfo *, Window, char **);
+Window getClientLeader (DisplayInfo *, Window);
+gboolean getNetWMUserTime (DisplayInfo *, Window, Time *);
+gboolean getClientID (DisplayInfo *, Window, char **);
+gboolean getWindowCommand (DisplayInfo *, Window, char ***, int *);
+gboolean getKDEIcon (DisplayInfo *, Window, Pixmap *, Pixmap *);
+gboolean getRGBIconData (DisplayInfo *, Window, unsigned long **, unsigned long *);
+gboolean getOpacity (DisplayInfo *, Window, guint *);
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-gboolean getWindowStartupId (Display *, Window, char **);
+gboolean getWindowStartupId (DisplayInfo *, Window, char **);
 #endif
 
 #endif /* INC_HINTS_H */

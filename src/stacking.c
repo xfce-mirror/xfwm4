@@ -235,11 +235,14 @@ void
 clientRaise (Client * c)
 {
     ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRaise");
 
     screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     if (c == screen_info->last_raise)
     {
         TRACE ("client \"%s\" (0x%lx) already raised", c->name, c->window);
@@ -346,7 +349,7 @@ clientRaise (Client * c)
            We still need to tell the X Server to reflect the changes
          */
         clientApplyStackList (screen_info);
-        clientSetNetClientList (c->screen_info, net_client_list_stacking, screen_info->windows_stack);
+        clientSetNetClientList (c->screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
         screen_info->last_raise = c;
     }
 }
@@ -355,12 +358,15 @@ void
 clientLower (Client * c)
 {
     ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientLower");
     TRACE ("lowering client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     if (g_list_length (screen_info->windows_stack) < 1)
     {
         return;
@@ -404,7 +410,7 @@ clientLower (Client * c)
            We still need to tell the X Server to reflect the changes
          */
         clientApplyStackList (screen_info);
-        clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
+        clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
         clientPassFocus (screen_info, c, NULL);
         if (screen_info->last_raise == c)
         {
@@ -478,9 +484,9 @@ clientAddToList (Client * c)
     screen_info->windows = g_list_append (screen_info->windows, c);
     screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
 
-    clientSetNetClientList (screen_info, net_client_list, screen_info->windows);
-    clientSetNetClientList (screen_info, win_client_list, screen_info->windows);
-    clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
+    clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST], screen_info->windows);
+    clientSetNetClientList (screen_info, display_info->atoms[WIN_CLIENT_LIST], screen_info->windows);
+    clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }
@@ -522,9 +528,9 @@ clientRemoveFromList (Client * c)
     TRACE ("removing window \"%s\" (0x%lx) from screen_info->windows_stack list", c->name, c->window);
     screen_info->windows_stack = g_list_remove (screen_info->windows_stack, c);
 
-    clientSetNetClientList (screen_info, net_client_list, screen_info->windows);
-    clientSetNetClientList (screen_info, win_client_list, screen_info->windows);
-    clientSetNetClientList (screen_info, net_client_list_stacking, screen_info->windows_stack);
+    clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST], screen_info->windows);
+    clientSetNetClientList (screen_info, display_info->atoms[WIN_CLIENT_LIST], screen_info->windows);
+    clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
 
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }

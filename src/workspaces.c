@@ -31,6 +31,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
 
+#include "display.h"
 #include "screen.h"
 #include "misc.h"
 #include "transients.h"
@@ -349,10 +350,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
         }
     }
 
-    setHint (myScreenGetXDisplay (screen_info), screen_info->xroot, win_workspace, new_ws);
+    setHint (display_info, screen_info->xroot, WIN_WORKSPACE, new_ws);
     data[0] = new_ws;
-    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, net_current_desktop, XA_CARDINAL, 32,
-        PropModeReplace, (unsigned char *) data, 1);
+    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, 
+                     display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
+                     PropModeReplace, (unsigned char *) data, 1);
     workspaceUpdateArea (screen_info);
     
     /* Ungrab the pointer we grabbed before mapping/unmapping all windows */
@@ -393,6 +395,7 @@ workspaceSetNames (ScreenInfo * screen_info, char *names, int length)
 void
 workspaceSetCount (ScreenInfo * screen_info, int count)
 {
+    DisplayInfo *display_info = NULL;
     Client *c;
     int i;
 
@@ -407,8 +410,9 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
         return;
     }
 
-    setHint (myScreenGetXDisplay (screen_info), screen_info->xroot, win_workspace_count, count);
-    setHint (myScreenGetXDisplay (screen_info), screen_info->xroot, net_number_of_desktops, count);
+    display_info = screen_info->display_info;
+    setHint (display_info, screen_info->xroot, WIN_WORKSPACE_COUNT, count);
+    setHint (display_info, screen_info->xroot, NET_NUMBER_OF_DESKTOPS, count);
     screen_info->workspace_count = count;
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
@@ -422,18 +426,19 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     {
         workspaceSwitch (screen_info, count - 1, NULL);
     }
-    setNetWorkarea (myScreenGetXDisplay (screen_info), screen_info->screen, screen_info->workspace_count, 
-                         gdk_screen_get_width (screen_info->gscr),
-                         gdk_screen_get_height (screen_info->gscr),
-                         screen_info->margins);
+    setNetWorkarea (display_info, screen_info->screen, screen_info->workspace_count, 
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr),
+                    screen_info->margins);
     /* Recompute the layout based on the (changed) number of desktops */
-    getDesktopLayout(myScreenGetXDisplay (screen_info), screen_info->xroot, screen_info->workspace_count, 
-                         &screen_info->desktop_layout);
+    getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, 
+                     &screen_info->desktop_layout);
 }
 
 void
 workspaceUpdateArea (ScreenInfo *screen_info)
 {
+    DisplayInfo *display_info = NULL;
     Client *c;
     int prev_top;
     int prev_left;
@@ -447,6 +452,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 
     TRACE ("entering workspaceUpdateArea");
 
+    display_info = screen_info->display_info;
     prev_top = screen_info->margins[TOP];
     prev_left = screen_info->margins[LEFT];
     prev_right = screen_info->margins[RIGHT];
@@ -474,9 +480,9 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         || (prev_bottom != screen_info->margins[BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
-        setNetWorkarea (myScreenGetXDisplay (screen_info), screen_info->screen, screen_info->workspace_count, 
-                             gdk_screen_get_width (screen_info->gscr),
-                             gdk_screen_get_height (screen_info->gscr),
-                             screen_info->margins);
+        setNetWorkarea (display_info, screen_info->screen, screen_info->workspace_count, 
+                        gdk_screen_get_width (screen_info->gscr),
+                        gdk_screen_get_height (screen_info->gscr),
+                        screen_info->margins);
     }
 }

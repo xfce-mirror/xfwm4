@@ -258,7 +258,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
             wc.width = c->width;
             wc.height = c->height;
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-            setNetFrameExtents (myScreenGetXDisplay (screen_info), 
+            setNetFrameExtents (screen_info->display_info, 
                                 c->window, 
                                 frameTop (c),
                                 frameLeft (c),
@@ -806,6 +806,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 void
 clientGetMWMHints (Client * c, gboolean update)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     PropMwmHints *mwm_hints;
     XWindowChanges wc;
 
@@ -815,7 +817,10 @@ clientGetMWMHints (Client * c, gboolean update)
     TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name,
         c->window);
 
-    mwm_hints = getMotifHints (clientGetXDisplay (c), c->window);
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    mwm_hints = getMotifHints (display_info, c->window);
     if (mwm_hints)
     {
         if (mwm_hints->flags & MWM_HINTS_DECORATIONS)
@@ -1067,6 +1072,8 @@ clientGetWMNormalHints (Client * c, gboolean update)
 void
 clientGetWMProtocols (Client * c)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     unsigned int wm_protocols_flags = 0;
 
     g_return_if_fail (c != NULL);
@@ -1074,7 +1081,11 @@ clientGetWMProtocols (Client * c)
 
     TRACE ("entering clientGetWMProtocols client \"%s\" (0x%lx)", c->name,
         c->window);
-    wm_protocols_flags = getWMProtocols (clientGetXDisplay (c), c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    wm_protocols_flags = getWMProtocols (display_info, c->window);
     FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_DELETE_WINDOW) ?
         WM_FLAG_DELETE : 0);
@@ -1350,9 +1361,17 @@ clientClearPixmapCache (Client * c)
 void
 clientGetUserTime (Client * c)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     g_return_if_fail (c != NULL);
 
-    if (getNetWMUserTime (clientGetXDisplay (c), c->window, &c->user_time))
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (getNetWMUserTime (display_info, c->window, &c->user_time))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
     }
@@ -1413,10 +1432,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return;
     }
 
-    if (checkKdeSystrayWindow (display_info->dpy, w) && (screen_info->systray != None))
+    if (checkKdeSystrayWindow (display_info, w) && (screen_info->systray != None))
     {
         TRACE ("Not managing KDE systray windows");
-        sendSystrayReqDock (display_info->dpy, w, screen_info->systray);
+        sendSystrayReqDock (display_info, w, screen_info->systray);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
@@ -1435,9 +1454,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->screen_info = screen_info;
     c->serial = screen_info->client_serial++;
 
-    getWindowName (display_info->dpy, c->window, &c->name);
+    getWindowName (display_info, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
-    getTransientFor (display_info->dpy, screen_info->screen, c->window, &c->transient_for);
+    getTransientFor (display_info, screen_info->xroot, c->window, &c->transient_for);
 
     /* Initialize structure */
     c->size = NULL;
@@ -1493,7 +1512,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     /* Opacity for compositing manager */
     c->opacity = NET_WM_OPAQUE;
-    getOpacity (display_info->dpy, c->window, &c->opacity);
+    getOpacity (display_info, c->window, &c->opacity);
 
     /* Timeout for blinking on urgency */
     c->blink_timeout_id = 0;
@@ -1510,10 +1529,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             c->group_leader = c->wmhints->window_group;
         }
     }
-    c->client_leader = getClientLeader (display_info->dpy, c->window);
+    c->client_leader = getClientLeader (display_info, c->window);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
-    getWindowStartupId (display_info->dpy, c->window, &c->startup_id);
+    getWindowStartupId (display_info, c->window, &c->startup_id);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
     TRACE ("\"%s\" (0x%lx) initial map_state = %s",
                 c->name, c->window,
@@ -1538,9 +1557,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     clientGetWMProtocols (c);
     clientGetMWMHints (c, FALSE);
-    getHint (display_info->dpy, w, win_hints, &c->win_hints);
-    getHint (display_info->dpy, w, win_state, &c->win_state);
-    if (!getHint (display_info->dpy, w, win_layer, &c->win_layer))
+    getHint (display_info, w, WIN_HINTS, &c->win_hints);
+    getHint (display_info, w, WIN_STATE, &c->win_state);
+    if (!getHint (display_info, w, WIN_LAYER, &c->win_layer))
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
@@ -1681,14 +1700,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
     else
     {
-        setWMState (display_info->dpy, c->window, IconicState);
+        setWMState (display_info, c->window, IconicState);
         clientSetNetState (c);
     }
     
-    setNetFrameExtents (display_info->dpy, c->window, frameTop (c),
-                                                      frameLeft (c),
-                                                      frameRight (c),
-                                                      frameBottom (c)); 
+    setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
+                                                 frameRight (c), frameBottom (c)); 
     
     /* Window is reparented now, so we can safely release the grab
      * on the server
@@ -1741,18 +1758,24 @@ clientUnframe (Client * c, gboolean remap)
         else
         {
             XUnmapWindow (display_info->dpy, c->window);
-            setWMState (display_info->dpy, c->window, WithdrawnState);
+            setWMState (display_info, c->window, WithdrawnState);
         }
     }
 
     if (!remap)
     {
-        XDeleteProperty (display_info->dpy, c->window, net_wm_state);
-        XDeleteProperty (display_info->dpy, c->window, win_state);
-        XDeleteProperty (display_info->dpy, c->window, net_wm_desktop);
-        XDeleteProperty (display_info->dpy, c->window, win_workspace);
-        XDeleteProperty (display_info->dpy, c->window, win_layer);
-        XDeleteProperty (display_info->dpy, c->window, net_wm_allowed_actions);
+        XDeleteProperty (display_info->dpy, c->window, 
+                         display_info->atoms[NET_WM_STATE]);
+        XDeleteProperty (display_info->dpy, c->window, 
+                         display_info->atoms[WIN_STATE]);
+        XDeleteProperty (display_info->dpy, c->window, 
+                         display_info->atoms[NET_WM_DESKTOP]);
+        XDeleteProperty (display_info->dpy, c->window, 
+                         display_info->atoms[WIN_WORKSPACE]);
+        XDeleteProperty (display_info->dpy, c->window, 
+                         display_info->atoms[WIN_LAYER]);
+        XDeleteProperty (display_info->dpy, c->window, 
+                         display_info->atoms[NET_WM_ALLOWED_ACTIONS]);
     }
 
     xfwmWindowDelete (&c->title);
@@ -1896,13 +1919,19 @@ clientGetFromWindow (ScreenInfo *screen_info, Window w, int mode)
 static void
 clientSetWorkspaceSingle (Client * c, int ws)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientSetWorkspaceSingle");
 
-    if (ws > c->screen_info->workspace_count - 1)
+    
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (ws > screen_info->workspace_count - 1)
     {
-        ws = c->screen_info->workspace_count - 1;
+        ws = screen_info->workspace_count - 1;
         TRACE ("value off limits, using %i instead", ws);
     }
 
@@ -1910,14 +1939,14 @@ clientSetWorkspaceSingle (Client * c, int ws)
     {
         TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
         c->win_workspace = ws;
-        setHint (clientGetXDisplay (c), c->window, win_workspace, ws);
+        setHint (display_info, c->window, WIN_WORKSPACE, ws);
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
-            setHint (clientGetXDisplay (c), c->window, net_wm_desktop, (unsigned long) ALL_WORKSPACES);
+            setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
         }
         else
         {
-            setHint (clientGetXDisplay (c), c->window, net_wm_desktop, (unsigned long) ws);
+            setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ws);
         }
     }
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
@@ -1991,7 +2020,7 @@ clientShowSingle (Client * c, gboolean change_state)
     if (change_state)
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
-        setWMState (display_info->dpy, c->window, NormalState);
+        setWMState (display_info, c->window, NormalState);
         workspaceUpdateArea (screen_info);
     }
     myDisplayUngrabServer (display_info);
@@ -2052,7 +2081,7 @@ clientHideSingle (Client * c, gboolean change_state)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         XUnmapWindow (display_info->dpy, c->window);
-        setWMState (display_info->dpy, c->window, IconicState);
+        setWMState (display_info, c->window, IconicState);
         workspaceUpdateArea (c->screen_info);
     }
     myDisplayUngrabServer (display_info);
@@ -2167,13 +2196,21 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
 void
 clientClose (Client * c)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+
     g_return_if_fail (c != NULL);
+
     TRACE ("entering clientClose");
     TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (c->screen_info, c->window, wm_delete_window, CurrentTime);
+        sendClientMessage (screen_info, c->window, 
+                           display_info->atoms[WM_DELETE_WINDOW], CurrentTime);
     }
     else
     {
@@ -2194,25 +2231,38 @@ clientKill (Client * c)
 void
 clientEnterContextMenuState (Client * c)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+
     g_return_if_fail (c != NULL);
+
     TRACE ("entering clientEnterContextMenuState");
     TRACE ("Showing the what's this help for client \"%s\" (0x%lx)", c->name, c->window);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->screen_info, c->window, kde_net_wm_context_help, CurrentTime);
+        sendClientMessage (c->screen_info, c->window, 
+                           display_info->atoms[KDE_NET_WM_CONTEXT_HELP], CurrentTime);
     }
 }
 
 void
 clientSetLayer (Client * c, int l)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     GList *list_of_windows = NULL;
     GList *index = NULL;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetLayer");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_list_next (index))
@@ -2223,7 +2273,7 @@ clientSetLayer (Client * c, int l)
             TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
                 c2->window, l);
             c2->win_layer = l;
-            setHint (clientGetXDisplay (c2), c2->window, win_layer, l);
+            setHint (display_info, c2->window, WIN_LAYER, l);
         }
     }
     g_list_free (list_of_windows);
@@ -2310,12 +2360,17 @@ clientToggleShaded (Client * c)
 void
 clientStick (Client * c, gboolean include_transients)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     GList *list_of_windows = NULL;
     GList *index = NULL;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientStick");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     if (include_transients)
     {
@@ -2326,11 +2381,10 @@ clientStick (Client * c, gboolean include_transients)
             TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
-            setHint (clientGetXDisplay (c2), c2->window, net_wm_desktop,
-                (unsigned long) ALL_WORKSPACES);
+            setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
             clientSetNetState (c2);
         }
-        clientSetWorkspace (c, c->screen_info->current_ws, TRUE);
+        clientSetWorkspace (c, screen_info->current_ws, TRUE);
         g_list_free (list_of_windows);
     }
     else
@@ -2338,16 +2392,17 @@ clientStick (Client * c, gboolean include_transients)
         TRACE ("sticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state |= WIN_STATE_STICKY;
         FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-        setHint (clientGetXDisplay (c), c->window, net_wm_desktop,
-            (unsigned long) ALL_WORKSPACES);
+        setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
         clientSetNetState (c);
-        clientSetWorkspace (c, c->screen_info->current_ws, TRUE);
+        clientSetWorkspace (c, screen_info->current_ws, TRUE);
     }
 }
 
 void
 clientUnstick (Client * c, gboolean include_transients)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     GList *list_of_windows = NULL;
     GList *index = NULL;
     Client *c2 = NULL;
@@ -2355,6 +2410,9 @@ clientUnstick (Client * c, gboolean include_transients)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUnstick");
     TRACE ("unsticking client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     if (include_transients)
     {
@@ -2364,21 +2422,19 @@ clientUnstick (Client * c, gboolean include_transients)
             c2 = (Client *) index->data;
             c2->win_state &= ~WIN_STATE_STICKY;
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
-            setHint (clientGetXDisplay (c2), c2->window, net_wm_desktop,
-                (unsigned long) c2->screen_info->current_ws);
+            setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
             clientSetNetState (c2);
         }
-        clientSetWorkspace (c, c->screen_info->current_ws, TRUE);
+        clientSetWorkspace (c, screen_info->current_ws, TRUE);
         g_list_free (list_of_windows);
     }
     else
     {
         c->win_state &= ~WIN_STATE_STICKY;
         FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
-        setHint (clientGetXDisplay (c), c->window, net_wm_desktop,
-            (unsigned long) c->screen_info->current_ws);
+        setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
         clientSetNetState (c);
-        clientSetWorkspace (c, c->screen_info->current_ws, TRUE);
+        clientSetWorkspace (c, screen_info->current_ws, TRUE);
     }
 }
 
@@ -3633,9 +3689,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                     GdkPixbuf *icon;
 
                     wireframeUpdate (c, passdata->wireframe);
-                    icon = getAppIcon (clientGetXDisplay (c), c->window, 32, 32);
-                    tabwinSetLabel (passdata->tabwin, icon,
-                                    c->class.res_class, c->name);
+                    icon = getAppIcon (display_info, c->window, 32, 32);
+                    tabwinSetLabel (passdata->tabwin, icon, c->class.res_class, c->name);
                 }
                 else
                 {
@@ -3738,7 +3793,7 @@ clientCycle (Client * c, XEvent * e)
 
         TRACE ("entering cycle loop");
         passdata.wireframe = wireframeCreate (passdata.c);
-        icon = getAppIcon (display_info->dpy, passdata.c->window, 32, 32);
+        icon = getAppIcon (display_info, passdata.c->window, 32, 32);
         passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
                                passdata.c->class.res_class, passdata.c->name);
         xfce_push_event_filter (display_info->xfilter, clientCycle_event_filter, &passdata);

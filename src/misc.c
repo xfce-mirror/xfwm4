@@ -103,13 +103,15 @@ createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
 void
 sendClientMessage (ScreenInfo *screen_info, Window w, Atom a, Time timestamp)
 {
+    DisplayInfo *display_info = NULL;
     XClientMessageEvent ev;
 
     TRACE ("entering sendClientMessage");
 
+    display_info = screen_info->display_info;
     ev.type = ClientMessage;
     ev.window = w;
-    ev.message_type = wm_protocols;
+    ev.message_type = display_info->atoms[WM_PROTOCOLS];
     ev.format = 32;
     ev.data.l[0] = a;
     ev.data.l[1] = timestamp;
@@ -248,4 +250,3 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
     cache_monitor = nearest_monitor;
     return (nearest_monitor);
 }
-

@@ -1368,6 +1368,7 @@ reloadSettings (DisplayInfo *display_info, int mask)
 gboolean
 initSettings (ScreenInfo *screen_info)
 {
+    DisplayInfo *display_info = NULL;
     int i;
     long val = 0;
     char *names = NULL;
@@ -1376,6 +1377,7 @@ initSettings (ScreenInfo *screen_info)
     
     TRACE ("entering initSettings");
 
+    display_info = screen_info->display_info;
     for (i = 0; i < NB_KEY_SHORTCUTS; i++)
     {
         screen_info->params->shortcut_exec[i] = NULL;
@@ -1406,16 +1408,16 @@ initSettings (ScreenInfo *screen_info)
     {
         return FALSE;
     }
-    if (getHint (myScreenGetXDisplay (screen_info), screen_info->xroot, net_number_of_desktops, &val))
+    if (getHint (display_info, screen_info->xroot, NET_NUMBER_OF_DESKTOPS, &val))
     {
         workspaceSetCount (screen_info, val);
     }
-    else if (getHint (myScreenGetXDisplay (screen_info), screen_info->xroot, win_workspace_count, &val))
+    else if (getHint (display_info, screen_info->xroot, WIN_WORKSPACE_COUNT, &val))
     {
         workspaceSetCount (screen_info, val);
     }
 
-    if (getUTF8String (myScreenGetXDisplay (screen_info), screen_info->xroot, net_desktop_names, &names, &i))
+    if (getUTF8String (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &i))
     {
         workspaceSetNames (screen_info, names, i);
     }
@@ -1425,7 +1427,7 @@ initSettings (ScreenInfo *screen_info)
         screen_info->workspace_names_length = 0;
     }
 
-    getDesktopLayout(myScreenGetXDisplay (screen_info), screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
+    getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
     return TRUE;

@@ -49,6 +49,107 @@ handleXError (Display * dpy, XErrorEvent * err)
     return 0;
 }
 
+static gboolean
+myDisplayInitAtoms (DisplayInfo *display_info)
+{
+    char *atom_names[] = {
+        "GNOME_PANEL_DESKTOP_AREA",
+        "KDE_NET_WM_CONTEXT_HELP",
+        "KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
+        "KWM_WIN_ICON",
+        "MOTIF_WM_HINTS",
+        "_NET_ACTIVE_WINDOW",
+        "_NET_CLIENT_LIST",
+        "_NET_CLIENT_LIST_STACKING",
+        "_NET_CLOSE_WINDOW",
+        "_NET_CURRENT_DESKTOP",
+        "_NET_DESKTOP_GEOMETRY",
+        "_NET_DESKTOP_LAYOUT",
+        "_NET_DESKTOP_NAMES",
+        "_NET_DESKTOP_VIEWPORT",
+        "_NET_FRAME_EXTENTS",
+        "_NET_NUMBER_OF_DESKTOPS",
+        "_NET_REQUEST_FRAME_EXTENTS",
+        "_NET_SHOWING_DESKTOP",
+        "_NET_STARTUP_ID",
+        "_NET_SUPPORTED",
+        "_NET_SUPPORTING_WM_CHECK",
+        "_NET_SYSTEM_TRAY_MANAGER",
+        "_NET_SYSTEM_TRAY_OPCODE",
+        "_NET_WM_ACTION_CHANGE_DESKTOP",
+        "_NET_WM_ACTION_CLOSE",
+        "_NET_WM_ACTION_MAXIMIZE_HORZ",
+        "_NET_WM_ACTION_MAXIMIZE_VERT",
+        "_NET_WM_ACTION_MOVE",
+        "_NET_WM_ACTION_RESIZE",
+        "_NET_WM_ACTION_SHADE",
+        "_NET_WM_ACTION_STICK",
+        "_NET_WM_ALLOWED_ACTIONS",
+        "_NET_WM_DESKTOP",
+        "_NET_WM_ICON",
+        "_NET_WM_ICON_GEOMETRY",
+        "_NET_WM_ICON_NAME",
+        "_NET_WM_MOVERESIZE",
+        "_NET_WM_NAME",
+        "_NET_WM_OPACITY",
+        "_NET_WM_STATE",
+        "_NET_WM_STATE_ABOVE",
+        "_NET_WM_STATE_BELOW",
+        "_NET_WM_STATE_DEMANDS_ATTENTION",
+        "_NET_WM_STATE_FULLSCREEN",
+        "_NET_WM_STATE_HIDDEN",
+        "_NET_WM_STATE_MAXIMIZED_HORZ",
+        "_NET_WM_STATE_MAXIMIZED_VERT",
+        "_NET_WM_STATE_MODAL",
+        "_NET_WM_STATE_SHADED",
+        "_NET_WM_STATE_SKIP_PAGER",
+        "_NET_WM_STATE_SKIP_TASKBAR",
+        "_NET_WM_STATE_STICKY",
+        "_NET_WM_STRUT",
+        "_NET_WM_STRUT_PARTIAL",
+        "_NET_WM_USER_TIME",
+        "_NET_WM_WINDOW_TYPE",
+        "_NET_WM_WINDOW_TYPE_DESKTOP",
+        "_NET_WM_WINDOW_TYPE_DIALOG",
+        "_NET_WM_WINDOW_TYPE_DOCK",
+        "_NET_WM_WINDOW_TYPE_MENU",
+        "_NET_WM_WINDOW_TYPE_NORMAL",
+        "_NET_WM_WINDOW_TYPE_SPLASH",
+        "_NET_WM_WINDOW_TYPE_TOOLBAR",
+        "_NET_WM_WINDOW_TYPE_UTILITY",
+        "_NET_WORKAREA",
+        "PIXMAP",
+        "SM_CLIENT_ID",
+        "UTF8_STRING",
+        "_WIN_CLIENT_LIST",
+        "_WIN_DESKTOP_BUTTON_PROXY",
+        "_WIN_HINTS",
+        "_WIN_LAYER",
+        "_WIN_PROTOCOLS",
+        "_WIN_STATE",
+        "_WIN_SUPPORTING_WM_CHECK",
+        "_WIN_WORKSPACE",
+        "_WIN_WORKSPACE_COUNT",
+        "WM_CHANGE_STATE",
+        "WM_CLIENT_LEADER",
+        "WM_COLORMAP_WINDOWS",
+        "WM_DELETE_WINDOW",
+        "WM_HINTS",
+        "WM_PROTOCOLS",
+        "WM_STATE",
+        "WM_TAKEFOCUS",
+        "WM_TRANSIENT_FOR",
+        "WM_WINDOW_ROLE",
+        "_XROOTPMAP",
+        "_XSETROOT"
+    };
+    
+    return (XInternAtoms (display_info->dpy, 
+                          atom_names, 
+                          G_N_ELEMENTS (atom_names),
+                          FALSE, display_info->atoms) == Success);
+}
+
 DisplayInfo *
 myDisplayInit (GdkDisplay *gdisplay)
 {
@@ -98,12 +199,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->nb_screens = 0;
     display->current_time = CurrentTime;
 
-    initICCCMHints (display->dpy);
-    initMotifHints (display->dpy);
-    initGnomeHints (display->dpy);
-    initNetHints   (display->dpy);
-    initKDEHints   (display->dpy);
-    initMiscHints  (display->dpy);
+    myDisplayInitAtoms (display);
     
     compositorInitDisplay (display);
 

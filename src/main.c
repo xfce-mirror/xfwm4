@@ -416,17 +416,16 @@ initialize (int argc, char **argv, gint compositor_mode)
 
         sn_init_display (screen_info);
         myDisplayAddScreen (display_info, screen_info);
-        setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);
-        setHint (display_info->dpy, screen_info->xroot, win_supporting_wm_check, screen_info->gnome_win);
-        setHint (display_info->dpy, screen_info->xroot, win_desktop_button_proxy, screen_info->gnome_win);
-        setHint (display_info->dpy, screen_info->gnome_win, win_desktop_button_proxy, screen_info->gnome_win);
-        getHint (display_info->dpy, screen_info->xroot, win_workspace, &ws);
+        setGnomeProtocols (display_info, screen_info->xroot, screen_info->gnome_win);
+        setHint (display_info, screen_info->xroot, WIN_SUPPORTING_WM_CHECK, screen_info->gnome_win);
+        setHint (display_info, screen_info->xroot, WIN_DESKTOP_BUTTON_PROXY, screen_info->gnome_win);
+        setHint (display_info, screen_info->gnome_win, WIN_DESKTOP_BUTTON_PROXY, screen_info->gnome_win);
+        getHint (display_info, screen_info->xroot, WIN_WORKSPACE, &ws);
         screen_info->current_ws = (int) ws;
-        getGnomeDesktopMargins (display_info->dpy, screen_info->screen, screen_info->gnome_margins);
-        set_utf8_string_hint (display_info->dpy, screen_info->gnome_win, net_wm_name, "Xfwm4");
-        setNetSupportedHint (display_info->dpy, screen_info->screen, screen_info->gnome_win);
-        initNetDesktopInfo (display_info->dpy, screen_info->screen, 
-                                   screen_info->current_ws,
+        getGnomeDesktopMargins (display_info, screen_info->xroot, screen_info->gnome_margins);
+        setUTF8StringHint (display_info, screen_info->gnome_win, NET_WM_NAME, "Xfwm4");
+        setNetSupportedHint (display_info, screen_info->xroot, screen_info->gnome_win);
+        initNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
                                    gdk_screen_get_width (screen_info->gscr), 
                                    gdk_screen_get_height (screen_info->gscr));
         workspaceUpdateArea (screen_info);

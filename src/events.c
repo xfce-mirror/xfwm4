@@ -186,7 +186,7 @@ static XfwmButtonClickType
 typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_double_click)
 {
     int g = GrabSuccess;
-    DisplayInfo *display_info;
+    DisplayInfo *display_info = NULL;
     XfwmButtonClickData passdata;
 
     g_return_val_if_fail (screen_info != NULL, XFWM_BUTTON_UNDEFINED);
@@ -1620,18 +1620,18 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify", c->name, c->window);
             clientGetWMNormalHints (c, TRUE);
         }
-        else if ((ev->atom == XA_WM_NAME) || (ev->atom == net_wm_name))
+        else if ((ev->atom == XA_WM_NAME) || (ev->atom == display_info->atoms[NET_WM_NAME]))
         {
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME notify", c->name, c->window);
             if (c->name)
             {
                 free (c->name);
             }
-            getWindowName (display_info->dpy, c->window, &c->name);
+            getWindowName (display_info, c->window, &c->name);
             FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
             frameDraw (c, TRUE, FALSE);
         }
-        else if (ev->atom == motif_wm_hints)
+        else if (ev->atom == display_info->atoms[MOTIF_WM_HINTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a motif_wm_hints notify", c->name, c->window);
             clientGetMWMHints (c, TRUE);
@@ -1649,38 +1649,39 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             }
             clientUpdateUrgency (c);
         }
-        else if (ev->atom == wm_protocols)
+        else if (ev->atom == display_info->atoms[WM_PROTOCOLS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_protocols notify", c->name, c->window);
             clientGetWMProtocols (c);
         }
-        else if (ev->atom == wm_transient_for)
+        else if (ev->atom == display_info->atoms[WM_TRANSIENT_FOR])
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_transient_for notify", c->name, c->window);
-            getTransientFor (display_info->dpy, c->screen_info->screen, c->window, &w);
+            getTransientFor (display_info, c->screen_info->xroot, c->window, &w);
             if (clientCheckTransientWindow (c, w))
             {
                 c->transient_for = w;
                 clientRaise (c);
             }
         }
-        else if (ev->atom == win_hints)
+        else if (ev->atom == display_info->atoms[WIN_HINTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_hints notify", c->name, c->window);
-            getHint (display_info->dpy, c->window, win_hints, &c->win_hints);
+            getHint (display_info, c->window, WIN_HINTS, &c->win_hints);
         }
-        else if (ev->atom == net_wm_window_type)
+        else if (ev->atom == display_info->atoms[NET_WM_WINDOW_TYPE])
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_window_type notify", c->name, c->window);
             clientGetNetWmType (c);
             frameDraw (c, TRUE, FALSE);
         }
-        else if ((ev->atom == net_wm_strut) || (ev->atom == net_wm_strut_partial))
+        else if ((ev->atom == display_info->atoms[NET_WM_STRUT]) || 
+                 (ev->atom == display_info->atoms[NET_WM_STRUT_PARTIAL]))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_strut notify", c->name, c->window);
             clientGetNetStruts (c);
         }
-        else if (ev->atom == wm_colormap_windows)
+        else if (ev->atom == display_info->atoms[WM_COLORMAP_WINDOWS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_colormap_windows notify", c->name, c->window);
             clientUpdateColormaps (c);
@@ -1689,32 +1690,32 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 clientInstallColormaps (c);
             }
         }
-        else if (ev->atom == net_wm_user_time)
+        else if (ev->atom == display_info->atoms[NET_WM_USER_TIME])
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_user_time notify", c->name, c->window);
-            if (getNetWMUserTime (display_info->dpy, c->window, &c->user_time))
+            if (getNetWMUserTime (display_info, c->window, &c->user_time))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
             }
         }
-        else if (ev->atom == net_wm_opacity)
+        else if (ev->atom == display_info->atoms[NET_WM_OPACITY])
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_opacity notify", c->name, c->window);
-            if (!getOpacity (display_info->dpy, c->window, &c->opacity))
+            if (!getOpacity (display_info, c->window, &c->opacity))
             {
                 c->opacity =  NET_WM_OPAQUE;
             }
             compositorWindowSetOpacity (display_info, c->frame, c->opacity);
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
-        else if (ev->atom == net_startup_id)
+        else if (ev->atom == display_info->atoms[NET_STARTUP_ID])
         {
             if (c->startup_id)
             {
                 free (c->startup_id);
                 c->startup_id = NULL;
             }
-            getWindowStartupId (display_info->dpy, c->window, &c->startup_id);
+            getWindowStartupId (display_info, c->window, &c->startup_id);
         }
 #endif
         return;
@@ -1726,24 +1727,24 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         return;
     }
 
-    if (ev->atom == net_desktop_names)
+    if (ev->atom == display_info->atoms[NET_DESKTOP_NAMES])
     {
         TRACE ("root has received a net_desktop_names notify");
-        if (getUTF8String (display_info->dpy, screen_info->xroot, net_desktop_names, &names, &length))
+        if (getUTF8String (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &length))
         {
             workspaceSetNames (screen_info, names, length);
         }
     }
-    else if (ev->atom == gnome_panel_desktop_area)
+    else if (ev->atom == display_info->atoms[GNOME_PANEL_DESKTOP_AREA])
     {
         TRACE ("root has received a gnome_panel_desktop_area notify");
-        getGnomeDesktopMargins (display_info->dpy, screen_info->screen, screen_info->gnome_margins);
+        getGnomeDesktopMargins (display_info, screen_info->xroot, screen_info->gnome_margins);
         workspaceUpdateArea (screen_info);
     }
-    else if (ev->atom == net_desktop_layout)
+    else if (ev->atom == display_info->atoms[NET_DESKTOP_LAYOUT])
     {
         TRACE ("root has received a net_desktop_layout notify");
-        getDesktopLayout(display_info->dpy, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
+        getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
     }
 }
 
@@ -1762,21 +1763,20 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         screen_info = c->screen_info;
         is_transient = clientIsValidTransientOrModal (c);
         
-        if ((ev->message_type == wm_change_state) && (ev->format == 32) && (ev->data.l[0] == IconicState))
+        if ((ev->message_type == display_info->atoms[WM_CHANGE_STATE]) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
-            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && 
-                 CLIENT_CAN_HIDE_WINDOW (c))
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) &&  CLIENT_CAN_HIDE_WINDOW (c))
             {
                 clientHide (c, c->win_workspace, TRUE);
             }
         }
-        else if ((ev->message_type == win_state) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[WIN_STATE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_state event", c->name, c->window);
             clientUpdateWinState (c, ev);
         }
-        else if ((ev->message_type == win_layer) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[WIN_LAYER]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_layer event", c->name, c->window);
             if ((ev->data.l[0] != c->win_layer) && !is_transient)
@@ -1784,7 +1784,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 clientSetLayer (c, ev->data.l[0]);
             }
         }
-        else if ((ev->message_type == win_workspace) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[WIN_WORKSPACE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_workspace event", c->name, c->window);
             if ((ev->data.l[0] != c->win_workspace) && !is_transient)
@@ -1792,15 +1792,14 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
             }
         }
-        else if ((ev->message_type == net_wm_desktop) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_desktop event", c->name, c->window);
             if (!is_transient)
             {
                 if (ev->data.l[0] == ALL_WORKSPACES)
                 {
-                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
-                        && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientStick (c, TRUE);
                         frameDraw (c, FALSE, FALSE);
@@ -1808,8 +1807,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 }
                 else
                 {
-                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
-                        && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientUnstick (c, TRUE);
                         frameDraw (c, FALSE, FALSE);
@@ -1821,23 +1819,23 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 }
             }
         }
-        else if ((ev->message_type == net_close_window) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_CLOSE_WINDOW]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_close_window event", c->name, c->window);
             clientClose (c);
         }
-        else if ((ev->message_type == net_wm_state) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_WM_STATE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_state event", c->name, c->window);
             clientUpdateNetState (c, ev);
         }
-        else if ((ev->message_type == net_wm_moveresize) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_WM_MOVERESIZE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_moveresize event", c->name, c->window);
-            g_message (_("%s: Operation not supported (yet)\n"), g_get_prgname ());
+            g_warning ("Operation not supported (yet)");
             /* TBD */
         }
-        else if ((ev->message_type == net_active_window) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_active_window event", c->name, c->window);
             clientSetWorkspace (c, screen_info->current_ws, TRUE);
@@ -1853,15 +1851,11 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 clientSetFocus (screen_info, c, CurrentTime, NO_FOCUS_FLAG);
             }
         }
-        else if (ev->message_type == net_request_frame_extents)
+        else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_request_frame_extents event", c->name, c->window);
-            setNetFrameExtents (myScreenGetXDisplay (screen_info), 
-                                c->window, 
-                                frameTop (c),
-                                frameLeft (c),
-                                frameRight (c),
-                                frameBottom (c)); 
+            setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
+                                                         frameRight (c), frameBottom (c)); 
         }
     }
     else
@@ -1872,7 +1866,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             return;
         }
         
-        if (((ev->message_type == win_workspace) || (ev->message_type == net_current_desktop)) && (ev->format == 32))
+        if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) || 
+             (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace or a net_current_desktop event");
             if (ev->data.l[0] != screen_info->current_ws)
@@ -1880,33 +1875,32 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 workspaceSwitch (screen_info, ev->data.l[0], NULL);
             }
         }
-        else if (((ev->message_type == win_workspace_count) || (ev->message_type == net_number_of_desktops)) && (ev->format == 32))
+        else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) || 
+                  (ev->message_type == display_info->atoms[NET_NUMBER_OF_DESKTOPS])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace_count event");
             if (ev->data.l[0] != screen_info->workspace_count)
             {
                 workspaceSetCount (screen_info, ev->data.l[0]);
-                getDesktopLayout(display_info->dpy, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
+                getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
             }
         }
-        else if ((ev->message_type == net_system_tray_manager) && (ev->data.l[1] == screen_info->net_system_tray_selection)  && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_SYSTEM_TRAY_MANAGER]) && (ev->data.l[1] == screen_info->net_system_tray_selection) && (ev->format == 32))
         {
             TRACE ("root has received a net_system_tray_manager event");
-            screen_info->systray = getSystrayWindow (display_info->dpy,
-                                            screen_info->net_system_tray_selection);
+            screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
         }
-        else if ((ev->message_type == net_showing_desktop) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_SHOWING_DESKTOP]) && (ev->format == 32))
         {
             TRACE ("root has received a net_showing_desktop event");
             clientToggleShowDesktop (screen_info, ev->data.l[0]);
-            setHint (display_info->dpy, screen_info->xroot, net_showing_desktop, ev->data.l[0]);
+            setHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, ev->data.l[0]);
         }
-        else if (ev->message_type == net_request_frame_extents)
+        else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
         {
             TRACE ("window (0x%lx) has received a net_request_frame_extents event", c->name, ev->window);
             /* Size estimate from the decoration extents */
-            setNetFrameExtents (myScreenGetXDisplay (screen_info), 
-                                ev->window, 
+            setNetFrameExtents (display_info, ev->window, 
                                 frameDecorationTop (screen_info),
                                 frameDecorationLeft (screen_info),
                                 frameDecorationRight (screen_info),

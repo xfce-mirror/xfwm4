@@ -43,6 +43,7 @@
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask)
 {
+    gchar selection[32];
     ScreenInfo *screen_info = NULL;
     GdkWindow *event_win;
     PangoLayout *layout = NULL;
@@ -59,7 +60,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     /* Create a GTK window so that we are just like any other GTK application */
     screen_info->gtk_win = gtk_window_new (GTK_WINDOW_POPUP);
-    /* gtk_widget_set_colormap(screen_info->gtk_win, gdk_screen_get_rgb_colormap (gscr)); */
     gtk_window_set_screen (GTK_WINDOW (screen_info->gtk_win), gscr);
     gtk_window_resize (GTK_WINDOW (screen_info->gtk_win), 5, 5);
     gtk_window_move (GTK_WINDOW (screen_info->gtk_win), -1000, -1000);
@@ -136,9 +136,9 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     screen_info->gnome_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 
-    screen_info->net_system_tray_selection = 
-        initSystrayHints (display_info->dpy, screen_info->screen);
-    screen_info->systray = getSystrayWindow (display_info->dpy, screen_info->net_system_tray_selection);
+    g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", screen_info->screen);
+    screen_info->net_system_tray_selection = XInternAtom (display_info->dpy, selection, FALSE);
+    screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
     
     screen_info->box_gc = None;
     screen_info->black_gc = NULL;

@@ -36,6 +36,7 @@
 #include <sys/types.h>
 #include <signal.h>
 
+#include "display.h"
 #include "screen.h"
 #include "hints.h"
 #include "client.h"
@@ -257,19 +258,21 @@ getsubstring (gchar * s, gint * length)
 static void
 sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 {
+    DisplayInfo *display_info = NULL;
     Client *c;
     gint client_idx;
     char *client_id = NULL;
     char *window_role = NULL;
     int wm_command_count = 0;
     char **wm_command = NULL;
-
+    
+    display_info = screen_info->display_info;
     for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
         c = c->next, client_idx++)
     {
         if (c->client_leader != None)
         {
-            getWindowRole (clientGetXDisplay (c), c->window, &window_role);
+            getWindowRole (display_info, c->window, &window_role);
         }
         else
         {
@@ -278,7 +281,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 
         fprintf (f, "[CLIENT] 0x%lx\n", c->window);
 
-        getClientID (clientGetXDisplay (c), c->window, &client_id);
+        getClientID (display_info, c->window, &client_id);
         if (client_id)
         {
             fprintf (f, "  [CLIENT_ID] %s\n", client_id);
@@ -314,7 +317,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
         }
 
         wm_command_count = 0;
-        getWindowCommand (clientGetXDisplay (c), c->window, &wm_command, &wm_command_count);
+        getWindowCommand (display_info, c->window, &wm_command, &wm_command_count);
         if ((wm_command_count > 0) && (wm_command))
         {
             gint j;
@@ -538,6 +541,8 @@ sessionFreeWindowStates (void)
 static gboolean
 matchWin (Client * c, Match * m)
 {
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
     char *client_id = NULL;
     char *window_role = NULL;
     int wm_command_count = 0;
@@ -547,14 +552,17 @@ matchWin (Client * c, Match * m)
 
     g_return_val_if_fail (c != NULL, FALSE);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     found = FALSE;
-    getClientID (clientGetXDisplay (c), c->window, &client_id);
+    getClientID (display_info, c->window, &client_id);
     if (xstreq (client_id, m->client_id))
     {
         /* client_id's match */
         if (c->client_leader != None)
         {
-            getWindowRole (clientGetXDisplay (c), c->window, &window_role);
+            getWindowRole (display_info, c->window, &window_role);
         }
         else
         {
@@ -586,8 +594,7 @@ matchWin (Client * c, Match * m)
                 {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
                     wm_command_count = 0;
-                    getWindowCommand (clientGetXDisplay (c), c->window, &wm_command,
-                        &wm_command_count);
+                    getWindowCommand (display_info, c->window, &wm_command, &wm_command_count);
                     if (wm_command_count == m->wm_command_count)
                     {
                         for (i = 0; i < wm_command_count; i++)
@@ -613,8 +620,7 @@ matchWin (Client * c, Match * m)
                         {
                             if (!(matches[i].used) && !(&matches[i] == m)
                                 && (m->client_leader)
-                                && (matches[i].client_leader ==
-                                    m->client_leader))
+                                && (matches[i].client_leader == m->client_leader))
                             {
                                 matches[i].used = TRUE;
                             }

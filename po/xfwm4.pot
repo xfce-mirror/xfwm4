@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-19 07:51+0100\n"
+"POT-Creation-Date: 2004-11-24 00:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -561,11 +561,6 @@ msgstr ""
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/events.c:1826
-#, c-format
-msgid "%s: Operation not supported (yet)\n"
-msgstr ""
-
 #: src/main.c:182
 #, c-format
 msgid "%s: Segmentation fault"
@@ -648,11 +643,6 @@ msgstr ""
 #: src/menu.c:422
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
-
-#: src/netwm.c:252
-#, c-format
-msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
 #: src/settings.c:674
