@@ -1621,7 +1621,6 @@ create_channel (McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
 
-    const gchar *home = g_get_home_dir ();
     gchar *rcfile;
 
     rcfile = xfce_get_userfile (RCDIR, G_DIR_SEPARATOR_S, RCFILE, NULL);
