@@ -177,6 +177,7 @@ extern Atom net_wm_window_type_normal;
 extern Atom net_wm_window_type_splashscreen;
 extern Atom net_wm_window_type_toolbar;
 extern Atom net_wm_window_type_utility;
+extern Atom net_wm_user_time;
 extern Atom net_workarea;
 
 /* KDE extension */
@@ -217,6 +218,7 @@ void sendSystrayReqDock(Display *, Window, Window);
 Window getSystrayWindow (Display *);
 gboolean getWindowRole (Display *, Window, char **);
 Window getClientLeader (Display *, Window);
+gboolean getNetWMUserTime (Display *, Window, Time *);
 gboolean getClientID (Display *, Window, char **);
 gboolean getWindowCommand (Display *, Window, char ***, int *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION

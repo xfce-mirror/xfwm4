@@ -1374,6 +1374,13 @@ handlePropertyNotify (XPropertyEvent * ev)
                 clientInstallColormaps (c);
             }
         }
+        else if (ev->atom == net_wm_user_time)
+        {
+            if (getNetWMUserTime (dpy, c->window, &c->user_time))
+	    {
+                FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
+	    }
+        }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == net_startup_id)
         {

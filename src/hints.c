@@ -120,6 +120,7 @@ Atom net_wm_window_type_normal;
 Atom net_wm_window_type_splashscreen;
 Atom net_wm_window_type_toolbar;
 Atom net_wm_window_type_utility;
+Atom net_wm_user_time;
 Atom net_workarea;
 Atom utf8_string;
 
@@ -488,6 +489,7 @@ initNetHints (Display * dpy)
         XInternAtom (dpy, "_NET_WM_WINDOW_TYPE_UTILITY", FALSE);
     net_wm_window_type = XInternAtom (dpy, "_NET_WM_WINDOW_TYPE", FALSE);
     net_workarea = XInternAtom (dpy, "_NET_WORKAREA", FALSE);
+    net_wm_user_time = XInternAtom (dpy, "_NET_WM_USER_TIME", FALSE);
     utf8_string = XInternAtom (dpy, "UTF8_STRING", FALSE);
 }
 
@@ -546,6 +548,7 @@ set_net_supported_hint (Display * dpy, int screen, Window check_win)
     atoms[i++] = net_wm_window_type_splashscreen;
     atoms[i++] = net_wm_window_type_toolbar;
     atoms[i++] = net_wm_window_type_utility;
+    atoms[i++] = net_wm_user_time;
     atoms[i++] = net_workarea;
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 
@@ -964,13 +967,40 @@ getClientLeader (Display * dpy, Window window)
             && (nitems == 1) && (bytes_after == 0))
         {
             client_leader = *((Window *) prop);
-        }
-        if (prop)
-        {
             XFree (prop);
         }
     }
     return client_leader;
+}
+
+gboolean
+getNetWMUserTime (Display * dpy, Window window, Time *time)
+{
+    Window client_leader = None;
+    Atom actual_type;
+    int actual_format;
+    unsigned long nitems;
+    unsigned long bytes_after;
+    unsigned char *data = NULL;
+
+    TRACE ("entering getNetWMUserTime");
+
+    g_return_val_if_fail (window != None, None);
+
+    if (XGetWindowProperty (dpy, window, net_wm_user_time, 0L, 1L, FALSE,
+            XA_CARDINAL, &actual_type, &actual_format, &nitems,
+            &bytes_after, &data) == Success)
+    {
+        if ((data) && (actual_type == XA_CARDINAL)
+            && (nitems == 1) && (bytes_after == 0))
+        {
+            *time = *((long *) data);
+            XFree (data);
+            return TRUE;
+        }
+    }
+    *time = 0L;
+    return FALSE;
 }
 
 gboolean

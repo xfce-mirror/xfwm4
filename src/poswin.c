@@ -37,8 +37,6 @@ poswinCreate (void)
 {
     Poswin *poswin;
     GtkWidget *frame;
-    GtkWidget *vbox;
-    GtkWidget *header;
 
     poswin = g_new (Poswin, 1);
 

@@ -359,8 +359,8 @@ clientClearLastOpTime (Client * c)
     g_return_if_fail (c != NULL);
     
     TRACE ("entering clientClearLastOpTime");
-    c->lastoptime.tv_sec = 0;
-    c->lastoptime.tv_usec = 0;
+    c->last_op_time.tv_sec = 0;
+    c->last_op_time.tv_usec = 0;
 }
 
 static gboolean
@@ -373,8 +373,8 @@ clientCheckLastOpTime (Client * c)
 
     g_get_current_time (&current_time);
     /* use milliseconds, 1000 milliseconds/second */
-    elapsed = (((double)current_time.tv_sec - c->lastoptime.tv_sec) * G_USEC_PER_SEC +
-                  (current_time.tv_usec - c->lastoptime.tv_usec)) / 1000.0;
+    elapsed = (((double)current_time.tv_sec - c->last_op_time.tv_sec) * G_USEC_PER_SEC +
+                  (current_time.tv_usec - c->last_op_time.tv_usec)) / 1000.0;
     if (elapsed >= 0.0 && elapsed < (1000.0 / MAX_RESIZES_PER_SECOND))
     {
         return FALSE;
@@ -384,7 +384,7 @@ clientCheckLastOpTime (Client * c)
         /* clock screw */
         clientClearLastOpTime (c);
     }
-    c->lastoptime = current_time;
+    c->last_op_time = current_time;
   
     return TRUE;
 }
@@ -3047,13 +3047,29 @@ clientCheckShape (Client * c)
 void
 clientFocusNew(Client * c)
 {
-    g_return_if_fail (c != NULL);
+    gboolean give_focus = params.focus_new;
 
+    g_return_if_fail (c != NULL);
+    
     if (!clientAcceptFocus (c))
     {
         return;
     }
-    if (params.focus_new || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
+    
+    /*  Try to avoid focus stealing */
+    if (client_focus)
+    {
+        if (FLAG_TEST(c->flags, CLIENT_FLAG_HAS_USER_TIME) &&
+	    FLAG_TEST(client_focus->flags, CLIENT_FLAG_HAS_USER_TIME))
+	{
+	    if (c->user_time < client_focus->user_time)
+	    {
+                give_focus = FALSE;
+	    }
+	}
+    }
+    
+    if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         clientSetFocus (c, FOCUS_IGNORE_MODAL);
         clientPassGrabButton1 (c);
@@ -3077,6 +3093,17 @@ clientClearPixmapCache (Client * c)
     myPixmapFree (dpy, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
     myPixmapFree (dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
     myPixmapFree (dpy, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+}
+
+void
+clientGetUserTime (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    
+    if (getNetWMUserTime (dpy, c->window, &c->user_time))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
+    }
 }
 
 void
@@ -3161,10 +3188,7 @@ clientFrame (Window w, gboolean recapture)
     c->fullscreen_old_height = c->height;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
-
-    /* Clear time counter */
-    clientClearLastOpTime (c);
-
+    
     if (clientCheckShape(c))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_BORDER);
@@ -3372,6 +3396,11 @@ clientFrame (Window w, gboolean recapture)
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
     clientApplyStackList (windows_stack);
     last_raise = c;
+
+    /* Clear time counter */
+    clientClearLastOpTime (c);
+    /* net_wm_user_time standard */
+    clientGetUserTime (c);
 
     /* First map is used to bypass the caching system at first map */
     c->first_map = TRUE;
