@@ -1,3 +1,7 @@
+2004-07-08 19:07  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-07-08 19:04  olivier
 
 	* ltmain.sh, defaults/Makefile.am, defaults/Makefile.in,
