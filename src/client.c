@@ -576,10 +576,9 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
 
     if(((first == net_wm_state_above) || (second == net_wm_state_above)) && !CLIENT_FLAG_TEST_ALL(c, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
     {
-        if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
+	if((action == NET_WM_STATE_ADD) && !CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
             CLIENT_FLAG_SET(c, CLIENT_FLAG_ABOVE);
-
         }
         else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_ABOVE))
         {
@@ -1404,7 +1403,7 @@ static inline void clientConstraintPos(Client * c)
     g_return_if_fail(c != NULL);
     DBG("entering clientConstraintPos\n");
     DBG("client \"%s\" (%#lx)\n", c->name, c->window);
-    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN))
+    if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_MANAGED) || CLIENT_FLAG_TEST(c, CLIENT_FLAG_FULLSCREEN) || !CLIENT_FLAG_TEST(c, CLIENT_FLAG_HAS_BORDER))
     {
         DBG("ignoring constraint for client \"%s\" (%#lx)\n", c->name, c->window);
         return;

@@ -176,7 +176,7 @@ static void loadRcData(Settings rc[])
     const gchar *homedir = g_get_home_dir();
     if(!parseRc("defaults", DATADIR, rc))
     {
-        fprintf(stderr, "%s: Missing defaults file\n", progname);
+        g_warning(_("%s: Missing defaults file"), progname);
         exit(1);
     }
     parseRc(".xfwm4rc", homedir, rc);
@@ -501,7 +501,7 @@ static gboolean loadKeyBindings(Settings rc[])
 
         if(!checkRc(rc))
         {
-            fprintf(stderr, "%s: Missing values in defaults file\n", progname);
+            g_warning(_("%s: Missing values in defaults file"), progname);
             return FALSE;
         }
     }
