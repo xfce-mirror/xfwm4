@@ -109,19 +109,19 @@ void grabKey(Display * dpy, MyKey * key, Window w)
     {
         if((key->modifier == AnyModifier) || (key->modifier == 0))
         {
-            XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier, w, FALSE, GrabModeAsync, GrabModeAsync);
         }
         else
         {
             /* Here we grab all combinations of well known modifiers */
-            XGrabKey(dpy, key->keycode, key->modifier, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | CapsLockMask, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | CapsLockMask, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | CapsLockMask | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
-            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | CapsLockMask | NumLockMask, w, False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | NumLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | CapsLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | NumLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | CapsLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | CapsLockMask | NumLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
+            XGrabKey(dpy, key->keycode, key->modifier | ScrollLockMask | CapsLockMask | NumLockMask, w, FALSE, GrabModeAsync, GrabModeAsync);
         }
     }
 }

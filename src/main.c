@@ -76,7 +76,7 @@ gboolean use_xinerama;
 int xinerama_heads;
 CARD32 margins[4];
 CARD32 gnome_margins[4];
-int quit = False, reload = False;
+int quit = FALSE, reload = FALSE;
 int shape, shape_event;
 Cursor resize_cursor[7], move_cursor, busy_cursor, root_cursor;
 SessionClient *client_session;
@@ -152,7 +152,7 @@ static void save_phase_2(gpointer data)
 static void session_die(gpointer client_data)
 {
     gtk_main_quit();
-    quit = True;
+    quit = TRUE;
 }
 
 static void handleSignal(int sig)
@@ -164,10 +164,10 @@ static void handleSignal(int sig)
     case SIGINT:
     case SIGTERM:
         gtk_main_quit();
-        quit = True;
+        quit = TRUE;
         break;
     case SIGHUP:
-        reload = True;
+        reload = TRUE;
         break;
     case SIGSEGV:
         cleanUp();

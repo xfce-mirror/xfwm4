@@ -77,7 +77,7 @@ gboolean parseRc(const gchar * file, const gchar * dir, Settings rc[])
 gboolean checkRc(Settings rc[])
 {
     gint i;
-    gboolean rval = True;
+    gboolean rval = TRUE;
 
     TRACE("entering checkRc");
 

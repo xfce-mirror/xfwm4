@@ -509,22 +509,22 @@ void clientUpdateNetState(Client * c, XClientMessageEvent * ev)
         {
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, c->win_workspace, True);
+                clientHide(c, c->win_workspace, TRUE);
             }
         }
         else if((action == NET_WM_STATE_REMOVE) && CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
         {
-            clientShow(c, True);
+            clientShow(c, TRUE);
         }
         else if(action == NET_WM_STATE_TOGGLE)
         {
             if(CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
             {
-                clientShow(c, True);
+                clientShow(c, TRUE);
             }
             else if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, c->win_workspace, True);
+                clientHide(c, c->win_workspace, TRUE);
             }
         }
     }
@@ -1020,7 +1020,7 @@ static void clientWindowType(Client * c)
 void clientInstallColormaps(Client * c)
 {
     XWindowAttributes attr;
-    gboolean installed = False;
+    gboolean installed = FALSE;
     int i;
 
     g_return_if_fail(c != NULL);
@@ -1034,7 +1034,7 @@ void clientInstallColormaps(Client * c)
             XInstallColormap(dpy, attr.colormap);
             if(c->cmap_windows[i] == c->window)
             {
-                installed = True;
+                installed = TRUE;
             }
         }
     }
@@ -2027,8 +2027,8 @@ void clientConfigure(Client * c, XWindowChanges * wc, int mask, gboolean constra
         ce.height = c->height;
         ce.border_width = 0;
         ce.above = c->frame;
-        ce.override_redirect = False;
-        XSendEvent(dpy, c->window, False, StructureNotifyMask, (XEvent *) & ce);
+        ce.override_redirect = FALSE;
+        XSendEvent(dpy, c->window, FALSE, StructureNotifyMask, (XEvent *) & ce);
     }
 }
 
@@ -2313,7 +2313,7 @@ void clientFrame(Window w, gboolean initial)
 
     for(i = 0; i < BUTTON_COUNT; i++)
     {
-        c->button_pressed[i] = False;
+        c->button_pressed[i] = FALSE;
     }
 
     if(!XGetWMColormapWindows(dpy, c->window, &c->cmap_windows, &c->ncmap))
@@ -2435,7 +2435,7 @@ void clientFrame(Window w, gboolean initial)
     clientAddToList(c);
     clientSetNetActions(c);
     clientGrabKeys(c);
-    XGrabButton(dpy, AnyButton, AnyModifier, c->window, False, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
+    XGrabButton(dpy, AnyButton, AnyModifier, c->window, FALSE, POINTER_EVENT_MASK, GrabModeSync, GrabModeAsync, None, None);
     if (!initial)
     {
         MyXUngrabServer();
@@ -2464,12 +2464,12 @@ void clientFrame(Window w, gboolean initial)
 
     if(!CLIENT_FLAG_TEST(c, CLIENT_FLAG_HIDDEN))
     {
-        clientShow(c, True);
+        clientShow(c, TRUE);
         if(!initial && params.focus_new && clientAcceptFocus(c) && (c->win_workspace == workspace))
         {
             /* We set the draw_active value to the wrong value to force a draw */
             c->draw_active = FALSE;
-            clientSetFocus(c, True);
+            clientSetFocus(c, TRUE);
         }
         else
         {
@@ -2594,7 +2594,7 @@ void clientUnframeAll()
         c = clientGetFromWindow(wins[i], FRAME);
         if(c)
         {
-            clientUnframe(c, True);
+            clientUnframe(c, TRUE);
         }
     }
     MyXUngrabServer();
@@ -2856,7 +2856,7 @@ void clientHideAll(Client * c, int ws)
         {
             if(((!c) && (c2->win_workspace == ws)) || ((c) && !clientIsTransientFor(c, c2) && (c2->win_workspace == c->win_workspace)))
             {
-                clientHide(c2, ws, True);
+                clientHide(c2, ws, TRUE);
             }
         }
     }
@@ -3125,17 +3125,17 @@ void clientSetWorkspace(Client * c, int ws, gboolean manage_mapping)
             {
                 if(CLIENT_FLAG_TEST(c2, CLIENT_FLAG_STICKY))
                 {
-                    clientShow(c2, False);
+                    clientShow(c2, FALSE);
                 }
                 else
                 {
                     if(ws == workspace)
                     {
-                        clientShow(c2, False);
+                        clientShow(c2, FALSE);
                     }
                     else
                     {
-                        clientHide(c2, workspace, False);
+                        clientHide(c2, workspace, FALSE);
                     }
                 }
             }
@@ -3958,25 +3958,25 @@ void clientMove(Client * c, XEvent * e)
 
     if(e->type == KeyPress)
     {
-        passdata.use_keys = True;
+        passdata.use_keys = TRUE;
         timestamp = e->xkey.time;
         passdata.mx = e->xkey.x_root;
         passdata.my = e->xkey.y_root;
-        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
-        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, FALSE, GrabModeAsync, GrabModeAsync, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
     }
     else if(e->type == ButtonPress)
     {
         timestamp = e->xbutton.time;
         passdata.mx = e->xbutton.x_root;
         passdata.my = e->xbutton.y_root;
-        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, timestamp);
     }
     else
     {
         timestamp = CurrentTime;
         getMouseXY(root, &passdata.mx, &passdata.my);
-        g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
+        g2 = XGrabPointer(dpy, passdata.tmp_event_window, FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, move_cursor, timestamp);
     }
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
@@ -4282,11 +4282,11 @@ void clientResize(Client * c, int corner, XEvent * e)
 
     if(e->type == KeyPress)
     {
-        passdata.use_keys = True;
+        passdata.use_keys = TRUE;
         timestamp = e->xkey.time;
         passdata.mx = e->xkey.x;
         passdata.my = e->xkey.y;
-        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, False, GrabModeAsync, GrabModeAsync, timestamp);
+        g1 = XGrabKeyboard(dpy, passdata.tmp_event_window, FALSE, GrabModeAsync, GrabModeAsync, timestamp);
     }
     else if(e->type == ButtonPress)
     {
@@ -4299,7 +4299,7 @@ void clientResize(Client * c, int corner, XEvent * e)
         timestamp = CurrentTime;
         getMouseXY(c->frame, &passdata.mx, &passdata.my);
     }
-    g2 = XGrabPointer(dpy, passdata.tmp_event_window, False, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
+    g2 = XGrabPointer(dpy, passdata.tmp_event_window, FALSE, ButtonMotionMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, resize_cursor[passdata.corner], timestamp);
 
     if(((passdata.use_keys) && (g1 != GrabSuccess)) || (g2 != GrabSuccess))
     {
@@ -4431,8 +4431,8 @@ void clientCycle(Client * c)
     g_return_if_fail(c != NULL);
     TRACE("entering clientCycle");
 
-    g1 = XGrabKeyboard(dpy, gnome_win, False, GrabModeAsync, GrabModeAsync, CurrentTime);
-    g2 = XGrabPointer(dpy, gnome_win, False, NoEventMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
+    g1 = XGrabKeyboard(dpy, gnome_win, FALSE, GrabModeAsync, GrabModeAsync, CurrentTime);
+    g2 = XGrabPointer(dpy, gnome_win, FALSE, NoEventMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
     if((g1 != GrabSuccess) || (g2 != GrabSuccess))
     {
         TRACE("grab failed in clientCycle");
@@ -4474,9 +4474,9 @@ void clientCycle(Client * c)
 
     if(passdata.c)
     {
-        clientShow(passdata.c, True);
+        clientShow(passdata.c, TRUE);
         clientRaise(passdata.c);
-        clientSetFocus(passdata.c, True);
+        clientSetFocus(passdata.c, TRUE);
     }
 }
 
@@ -4489,22 +4489,22 @@ static GtkToXEventFilterStatus clientButtonPress_event_filter(XEvent * xevent, g
 
     if(xevent->type == EnterNotify)
     {
-        c->button_pressed[b] = True;
+        c->button_pressed[b] = TRUE;
         frameDraw(c, FALSE, FALSE);
     }
     else if(xevent->type == LeaveNotify)
     {
-        c->button_pressed[b] = False;
+        c->button_pressed[b] = FALSE;
         frameDraw(c, FALSE, FALSE);
     }
     else if(xevent->type == ButtonRelease)
     {
-        pressed = False;
+        pressed = FALSE;
     }
     else if((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
-        pressed = False;
-        c->button_pressed[b] = False;
+        pressed = FALSE;
+        c->button_pressed[b] = FALSE;
     }
     else if((xevent->type == KeyPress) || (xevent->type == KeyRelease))
     {}
@@ -4538,7 +4538,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
         }
     }
 
-    g1 = XGrabPointer(dpy, w, False, ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
+    g1 = XGrabPointer(dpy, w, FALSE, ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
 
     if(g1 != GrabSuccess)
     {
@@ -4554,7 +4554,7 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
     passdata.c = c;
     passdata.b = b;
 
-    c->button_pressed[b] = True;
+    c->button_pressed[b] = TRUE;
     frameDraw(c, FALSE, FALSE);
 
     TRACE("entering button press loop");
@@ -4567,13 +4567,13 @@ void clientButtonPress(Client * c, Window w, XButtonEvent * bev)
 
     if(c->button_pressed[b])
     {
-        c->button_pressed[b] = False;
+        c->button_pressed[b] = FALSE;
         switch (b)
         {
         case HIDE_BUTTON:
             if(CLIENT_CAN_HIDE_WINDOW(c))
             {
-                clientHide(c, c->win_workspace, True);
+                clientHide(c, c->win_workspace, TRUE);
             }
             break;
         case CLOSE_BUTTON:

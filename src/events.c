@@ -893,11 +893,11 @@ static inline void handleEnterNotify(XCrossingEvent * ev)
 
 static inline void handleLeaveNotify(XCrossingEvent * ev)
 {
-    /* If we leave the root window, then we're really moving
-     * to another screen on a multiple screen display, and we
-     * need to de-focus and unhighlight to make sure that we
-     * don't end up with more than one highlighted window at 
-     * a time */
+    /* 
+     * If we leave the root window, that means the mouse has
+     * moved to another screen on a multiple screen display.
+     * => Reset focus
+     */
 
     TRACE("entering handleLeaveNotify");
 
@@ -907,7 +907,7 @@ static inline void handleLeaveNotify(XCrossingEvent * ev)
         {
             reset_timeout();
         }
-        clientSetFocus(NULL, TRUE);
+        clientSetFocus(NULL, FALSE);
     }
 }
 

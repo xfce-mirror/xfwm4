@@ -121,15 +121,15 @@ void initICCCMHints(Display * dpy)
 {
     TRACE("entering initICCCMHints");
 
-    sm_client_id = XInternAtom(dpy, "SM_CLIENT_ID", False);
-    wm_change_state = XInternAtom(dpy, "WM_CHANGE_STATE", False);
-    wm_client_leader = XInternAtom(dpy, "WM_CLIENT_LEADER", False);
-    wm_colormap_windows = XInternAtom(dpy, "WM_COLORMAP_WINDOWS", False);
-    wm_delete_window = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
-    wm_protocols = XInternAtom(dpy, "WM_PROTOCOLS", False);
-    wm_state = XInternAtom(dpy, "WM_STATE", False);
-    wm_takefocus = XInternAtom(dpy, "WM_TAKE_FOCUS", False);
-    wm_window_role = XInternAtom(dpy, "WM_WINDOW_ROLE", False);
+    sm_client_id = XInternAtom(dpy, "SM_CLIENT_ID", FALSE);
+    wm_change_state = XInternAtom(dpy, "WM_CHANGE_STATE", FALSE);
+    wm_client_leader = XInternAtom(dpy, "WM_CLIENT_LEADER", FALSE);
+    wm_colormap_windows = XInternAtom(dpy, "WM_COLORMAP_WINDOWS", FALSE);
+    wm_delete_window = XInternAtom(dpy, "WM_DELETE_WINDOW", FALSE);
+    wm_protocols = XInternAtom(dpy, "WM_PROTOCOLS", FALSE);
+    wm_state = XInternAtom(dpy, "WM_STATE", FALSE);
+    wm_takefocus = XInternAtom(dpy, "WM_TAKE_FOCUS", FALSE);
+    wm_window_role = XInternAtom(dpy, "WM_WINDOW_ROLE", FALSE);
 }
 
 unsigned long getWMState(Display * dpy, Window w)
@@ -141,7 +141,7 @@ unsigned long getWMState(Display * dpy, Window w)
 
     TRACE("entering getWmState");
 
-    if((XGetWindowProperty(dpy, w, wm_state, 0, 3L, False, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
+    if((XGetWindowProperty(dpy, w, wm_state, 0, 3L, FALSE, wm_state, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
         state = *data;
         XFree(data);
@@ -165,7 +165,7 @@ void initMotifHints(Display * dpy)
 {
     TRACE("entering initMotifHints");
 
-    motif_wm_hints = XInternAtom(dpy, "_MOTIF_WM_HINTS", False);
+    motif_wm_hints = XInternAtom(dpy, "_MOTIF_WM_HINTS", FALSE);
 }
 
 PropMwmHints *getMotifHints(Display * dpy, Window w)
@@ -177,7 +177,7 @@ PropMwmHints *getMotifHints(Display * dpy, Window w)
 
     TRACE("entering getMotifHints");
 
-    if((XGetWindowProperty(dpy, w, motif_wm_hints, 0L, 20L, False, motif_wm_hints, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
+    if((XGetWindowProperty(dpy, w, motif_wm_hints, 0L, 20L, FALSE, motif_wm_hints, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
         return data;
     }
@@ -214,7 +214,7 @@ unsigned int getWMProtocols(Display * dpy, Window w)
     }
     else
     {
-        if((XGetWindowProperty(dpy, w, wm_protocols, 0L, 10L, False, wm_protocols, &atype, &aformat, &nitems, &bytes_remain, (unsigned char **)&protocols)) == Success)
+        if((XGetWindowProperty(dpy, w, wm_protocols, 0L, 10L, FALSE, wm_protocols, &atype, &aformat, &nitems, &bytes_remain, (unsigned char **)&protocols)) == Success)
         {
             for(i = 0, ap = protocols; i < nitems; i++, ap++)
             {
@@ -241,16 +241,16 @@ void initGnomeHints(Display * dpy)
 {
     TRACE("entering initGnomeHints");
 
-    gnome_panel_desktop_area = XInternAtom(dpy, "GNOME_PANEL_DESKTOP_AREA", False);
-    win_client_list = XInternAtom(dpy, "_WIN_CLIENT_LIST", False);
-    win_desktop_button_proxy = XInternAtom(dpy, "_WIN_DESKTOP_BUTTON_PROXY", False);
-    win_hints = XInternAtom(dpy, "_WIN_HINTS", False);
-    win_layer = XInternAtom(dpy, "_WIN_LAYER", False);
-    win_protocols = XInternAtom(dpy, "_WIN_PROTOCOLS", False);
-    win_state = XInternAtom(dpy, "_WIN_STATE", False);
-    win_supporting_wm_check = XInternAtom(dpy, "_WIN_SUPPORTING_WM_CHECK", False);
-    win_workspace_count = XInternAtom(dpy, "_WIN_WORKSPACE_COUNT", False);
-    win_workspace = XInternAtom(dpy, "_WIN_WORKSPACE", False);
+    gnome_panel_desktop_area = XInternAtom(dpy, "GNOME_PANEL_DESKTOP_AREA", FALSE);
+    win_client_list = XInternAtom(dpy, "_WIN_CLIENT_LIST", FALSE);
+    win_desktop_button_proxy = XInternAtom(dpy, "_WIN_DESKTOP_BUTTON_PROXY", FALSE);
+    win_hints = XInternAtom(dpy, "_WIN_HINTS", FALSE);
+    win_layer = XInternAtom(dpy, "_WIN_LAYER", FALSE);
+    win_protocols = XInternAtom(dpy, "_WIN_PROTOCOLS", FALSE);
+    win_state = XInternAtom(dpy, "_WIN_STATE", FALSE);
+    win_supporting_wm_check = XInternAtom(dpy, "_WIN_SUPPORTING_WM_CHECK", FALSE);
+    win_workspace_count = XInternAtom(dpy, "_WIN_WORKSPACE_COUNT", FALSE);
+    win_workspace = XInternAtom(dpy, "_WIN_WORKSPACE", FALSE);
 }
 
 gboolean getGnomeHint(Display * dpy, Window w, Atom a, long *value)
@@ -265,7 +265,7 @@ gboolean getGnomeHint(Display * dpy, Window w, Atom a, long *value)
 
     *value = 0;
 
-    if((XGetWindowProperty(dpy, w, a, 0L, 1L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
+    if((XGetWindowProperty(dpy, w, a, 0L, 1L, FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read))
     {
         *value = *data;
         XFree(data);
@@ -290,7 +290,7 @@ void getGnomeDesktopMargins(Display * dpy, int screen, CARD32 * m)
 
     TRACE("entering getGnomeDesktopMargins");
 
-    if((XGetWindowProperty(dpy, RootWindow(dpy, screen), gnome_panel_desktop_area, 0L, 4L, False, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read >= 4))
+    if((XGetWindowProperty(dpy, RootWindow(dpy, screen), gnome_panel_desktop_area, 0L, 4L, FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left, (unsigned char **)&data) == Success) && (items_read >= 4))
     {
         m[0] = data[0];
         m[1] = data[1];
@@ -321,56 +321,56 @@ void initNetHints(Display * dpy)
 {
     TRACE("entering initNetHints");
 
-    net_active_window = XInternAtom(dpy, "_NET_ACTIVE_WINDOW", False);
-    net_client_list_stacking = XInternAtom(dpy, "_NET_CLIENT_LIST_STACKING", False);
-    net_client_list = XInternAtom(dpy, "_NET_CLIENT_LIST", False);
-    net_close_window = XInternAtom(dpy, "_NET_CLOSE_WINDOW", False);
-    net_current_desktop = XInternAtom(dpy, "_NET_CURRENT_DESKTOP", False);
-    net_desktop_geometry = XInternAtom(dpy, "_NET_DESKTOP_GEOMETRY", False);
-    net_desktop_viewport = XInternAtom(dpy, "_NET_DESKTOP_VIEWPORT", False);
-    net_number_of_desktops = XInternAtom(dpy, "_NET_NUMBER_OF_DESKTOPS", False);
-    net_startup_id = XInternAtom(dpy, "_NET_STARTUP_ID", False);
-    net_supported = XInternAtom(dpy, "_NET_SUPPORTED", False);
-    net_supporting_wm_check = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", False);
-    net_wm_action_change_desktop = XInternAtom(dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", False);
-    net_wm_action_close = XInternAtom(dpy, "_NET_WM_ACTION_CLOSE", False);
-    net_wm_action_maximize_horz = XInternAtom(dpy, "_NET_WM_ACTION_MAXIMIZE_HORZ", False);
-    net_wm_action_maximize_vert = XInternAtom(dpy, "_NET_WM_ACTION_MAXIMIZE_VERT", False);
-    net_wm_action_move = XInternAtom(dpy, "_NET_WM_ACTION_MOVE", False);
-    net_wm_action_resize = XInternAtom(dpy, "_NET_WM_ACTION_RESIZE", False);
-    net_wm_action_shade = XInternAtom(dpy, "_NET_WM_ACTION_SHADE", False);
-    net_wm_action_stick = XInternAtom(dpy, "_NET_WM_ACTION_STICK", False);
-    net_wm_allowed_actions = XInternAtom(dpy, "_NET_WM_ALLOWED_ACTIONS", False);
-    net_wm_desktop = XInternAtom(dpy, "_NET_WM_DESKTOP", False);
-    net_wm_icon_geometry = XInternAtom(dpy, "_NET_WM_ICON_GEOMETRY", False);
-    net_wm_icon_name = XInternAtom(dpy, "_NET_WM_ICON_NAME", False);
-    net_wm_icon = XInternAtom(dpy, "_NET_WM_ICON", False);
-    net_wm_moveresize = XInternAtom(dpy, "_NET_WM_MOVERESIZE", False);
-    net_wm_name = XInternAtom(dpy, "_NET_WM_NAME", False);
-    net_wm_state_above = XInternAtom(dpy, "_NET_WM_STATE_ABOVE", False);
-    net_wm_state_below = XInternAtom(dpy, "_NET_WM_STATE_BELOW", False);
-    net_wm_state_fullscreen = XInternAtom(dpy, "_NET_WM_STATE_FULLSCREEN", False);
-    net_wm_state_hidden = XInternAtom(dpy, "_NET_WM_STATE_HIDDEN", False);
-    net_wm_state_maximized_horz = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", False);
-    net_wm_state_maximized_vert = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_VERT", False);
-    net_wm_state_modal = XInternAtom(dpy, "_NET_WM_STATE_MODAL", False);
-    net_wm_state_shaded = XInternAtom(dpy, "_NET_WM_STATE_SHADED", False);
-    net_wm_state_skip_pager = XInternAtom(dpy, "_NET_WM_STATE_SKIP_PAGER", False);
-    net_wm_state_skip_taskbar = XInternAtom(dpy, "_NET_WM_STATE_SKIP_TASKBAR", False);
-    net_wm_state_sticky = XInternAtom(dpy, "_NET_WM_STATE_STICKY", False);
-    net_wm_state = XInternAtom(dpy, "_NET_WM_STATE", False);
-    net_wm_strut = XInternAtom(dpy, "_NET_WM_STRUT", False);
-    net_wm_window_type_desktop = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", False);
-    net_wm_window_type_dialog = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DIALOG", False);
-    net_wm_window_type_dock = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DOCK", False);
-    net_wm_window_type_menu = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_MENU", False);
-    net_wm_window_type_normal = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_NORMAL", False);
-    net_wm_window_type_splashscreen = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_SPLASHSCREEN", False);
-    net_wm_window_type_toolbar = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", False);
-    net_wm_window_type_utility = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_UTILITY", False);
-    net_wm_window_type = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE", False);
-    net_workarea = XInternAtom(dpy, "_NET_WORKAREA", False);
-    utf8_string = XInternAtom(dpy, "UTF8_STRING", False);
+    net_active_window = XInternAtom(dpy, "_NET_ACTIVE_WINDOW", FALSE);
+    net_client_list_stacking = XInternAtom(dpy, "_NET_CLIENT_LIST_STACKING", FALSE);
+    net_client_list = XInternAtom(dpy, "_NET_CLIENT_LIST", FALSE);
+    net_close_window = XInternAtom(dpy, "_NET_CLOSE_WINDOW", FALSE);
+    net_current_desktop = XInternAtom(dpy, "_NET_CURRENT_DESKTOP", FALSE);
+    net_desktop_geometry = XInternAtom(dpy, "_NET_DESKTOP_GEOMETRY", FALSE);
+    net_desktop_viewport = XInternAtom(dpy, "_NET_DESKTOP_VIEWPORT", FALSE);
+    net_number_of_desktops = XInternAtom(dpy, "_NET_NUMBER_OF_DESKTOPS", FALSE);
+    net_startup_id = XInternAtom(dpy, "_NET_STARTUP_ID", FALSE);
+    net_supported = XInternAtom(dpy, "_NET_SUPPORTED", FALSE);
+    net_supporting_wm_check = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", FALSE);
+    net_wm_action_change_desktop = XInternAtom(dpy, "_NET_WM_ACTION_CHANGE_DESKTOP", FALSE);
+    net_wm_action_close = XInternAtom(dpy, "_NET_WM_ACTION_CLOSE", FALSE);
+    net_wm_action_maximize_horz = XInternAtom(dpy, "_NET_WM_ACTION_MAXIMIZE_HORZ", FALSE);
+    net_wm_action_maximize_vert = XInternAtom(dpy, "_NET_WM_ACTION_MAXIMIZE_VERT", FALSE);
+    net_wm_action_move = XInternAtom(dpy, "_NET_WM_ACTION_MOVE", FALSE);
+    net_wm_action_resize = XInternAtom(dpy, "_NET_WM_ACTION_RESIZE", FALSE);
+    net_wm_action_shade = XInternAtom(dpy, "_NET_WM_ACTION_SHADE", FALSE);
+    net_wm_action_stick = XInternAtom(dpy, "_NET_WM_ACTION_STICK", FALSE);
+    net_wm_allowed_actions = XInternAtom(dpy, "_NET_WM_ALLOWED_ACTIONS", FALSE);
+    net_wm_desktop = XInternAtom(dpy, "_NET_WM_DESKTOP", FALSE);
+    net_wm_icon_geometry = XInternAtom(dpy, "_NET_WM_ICON_GEOMETRY", FALSE);
+    net_wm_icon_name = XInternAtom(dpy, "_NET_WM_ICON_NAME", FALSE);
+    net_wm_icon = XInternAtom(dpy, "_NET_WM_ICON", FALSE);
+    net_wm_moveresize = XInternAtom(dpy, "_NET_WM_MOVERESIZE", FALSE);
+    net_wm_name = XInternAtom(dpy, "_NET_WM_NAME", FALSE);
+    net_wm_state_above = XInternAtom(dpy, "_NET_WM_STATE_ABOVE", FALSE);
+    net_wm_state_below = XInternAtom(dpy, "_NET_WM_STATE_BELOW", FALSE);
+    net_wm_state_fullscreen = XInternAtom(dpy, "_NET_WM_STATE_FULLSCREEN", FALSE);
+    net_wm_state_hidden = XInternAtom(dpy, "_NET_WM_STATE_HIDDEN", FALSE);
+    net_wm_state_maximized_horz = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_HORZ", FALSE);
+    net_wm_state_maximized_vert = XInternAtom(dpy, "_NET_WM_STATE_MAXIMIZED_VERT", FALSE);
+    net_wm_state_modal = XInternAtom(dpy, "_NET_WM_STATE_MODAL", FALSE);
+    net_wm_state_shaded = XInternAtom(dpy, "_NET_WM_STATE_SHADED", FALSE);
+    net_wm_state_skip_pager = XInternAtom(dpy, "_NET_WM_STATE_SKIP_PAGER", FALSE);
+    net_wm_state_skip_taskbar = XInternAtom(dpy, "_NET_WM_STATE_SKIP_TASKBAR", FALSE);
+    net_wm_state_sticky = XInternAtom(dpy, "_NET_WM_STATE_STICKY", FALSE);
+    net_wm_state = XInternAtom(dpy, "_NET_WM_STATE", FALSE);
+    net_wm_strut = XInternAtom(dpy, "_NET_WM_STRUT", FALSE);
+    net_wm_window_type_desktop = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
+    net_wm_window_type_dialog = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DIALOG", FALSE);
+    net_wm_window_type_dock = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DOCK", FALSE);
+    net_wm_window_type_menu = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_MENU", FALSE);
+    net_wm_window_type_normal = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_NORMAL", FALSE);
+    net_wm_window_type_splashscreen = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_SPLASHSCREEN", FALSE);
+    net_wm_window_type_toolbar = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_TOOLBAR", FALSE);
+    net_wm_window_type_utility = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_UTILITY", FALSE);
+    net_wm_window_type = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE", FALSE);
+    net_workarea = XInternAtom(dpy, "_NET_WORKAREA", FALSE);
+    utf8_string = XInternAtom(dpy, "UTF8_STRING", FALSE);
 }
 
 void set_net_supported_hint(Display * dpy, int screen, Window check_win)
@@ -457,7 +457,7 @@ gboolean get_atom_list(Display * dpy, Window w, Atom a, Atom ** atoms_p, int *n_
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    if((XGetWindowProperty(dpy, w, a, 0, G_MAXLONG, False, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (unsigned char **)&atoms) != Success) || (type == None))
+    if((XGetWindowProperty(dpy, w, a, 0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms, &bytes_after, (unsigned char **)&atoms) != Success) || (type == None))
     {
         return FALSE;
     }
@@ -490,7 +490,7 @@ gboolean get_cardinal_list(Display * dpy, Window w, Atom xatom, unsigned long **
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
-    if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
+    if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, FALSE, XA_CARDINAL, &type, &format, &n_cardinals, &bytes_after, (unsigned char **)&cardinals) != Success) || (type == None))
     {
         return FALSE;
     }
@@ -590,7 +590,7 @@ gboolean get_utf8_string(Display * dpy, Window w, Atom xatom, char **str_p)
     TRACE("entering get_utf8_string");
 
     *str_p = NULL;
-    if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, False, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
+    if((XGetWindowProperty(dpy, w, xatom, 0, G_MAXLONG, FALSE, utf8_string, &type, &format, &n_items, &bytes_after, (unsigned char **)&str) != Success) || (type == None))
     {
         TRACE("no utf8_string value provided");
         return FALSE;
@@ -736,7 +736,7 @@ Window getClientLeader(Display * dpy, Window window)
 
     g_return_val_if_fail(window != None, None);
 
-    if(XGetWindowProperty(dpy, window, wm_client_leader, 0L, 1L, False, AnyPropertyType, &actual_type, &actual_format, &nitems, &bytes_after, &prop) == Success)
+    if(XGetWindowProperty(dpy, window, wm_client_leader, 0L, 1L, FALSE, AnyPropertyType, &actual_type, &actual_format, &nitems, &bytes_after, &prop) == Success)
     {
         if((prop) && (actual_type == XA_WINDOW) && (actual_format == 32) && (nitems == 1) && (bytes_after == 0))
         {
