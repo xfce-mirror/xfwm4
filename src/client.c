@@ -1955,6 +1955,7 @@ void clientFrame(Window w)
     c->class.res_class = NULL;
     XGetClassHint (dpy, w, &c->class);
     c->wmhints = XGetWMHints(dpy, c->window);
+    c->client_leader = None;
     c->client_leader = getClientLeader(dpy, c->window);
     
     /* Initialize structure */
