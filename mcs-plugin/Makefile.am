@@ -12,6 +12,9 @@ xfwm4_plugin_la_LDFLAGS =						\
 
 xfwm4_plugin_la_SOURCES =						\
 	xfwm4_plugin.c							\
+	xfwm4_plugin.h							\
+	xfwm4_shortcuteditor.c						\
+	xfwm4_shortcuteditor.h						\
 	keys-icon.h							\
 	xfwm4-icon.h
 

@@ -63,7 +63,8 @@ am_workspaces_plugin_la_OBJECTS = workspaces_plugin_la-margins.lo \
 	workspaces_plugin_la-plugin.lo
 workspaces_plugin_la_OBJECTS = $(am_workspaces_plugin_la_OBJECTS)
 xfwm4_plugin_la_DEPENDENCIES =
-am_xfwm4_plugin_la_OBJECTS = xfwm4_plugin_la-xfwm4_plugin.lo
+am_xfwm4_plugin_la_OBJECTS = xfwm4_plugin_la-xfwm4_plugin.lo \
+	xfwm4_plugin_la-xfwm4_shortcuteditor.lo
 xfwm4_plugin_la_OBJECTS = $(am_xfwm4_plugin_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -71,7 +72,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/workspaces_plugin_la-margins.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/workspaces_plugin_la-plugin.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/workspaces_plugin_la-workspaces.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) \
@@ -245,6 +247,9 @@ xfwm4_plugin_la_LDFLAGS = \
 
 xfwm4_plugin_la_SOURCES = \
 	xfwm4_plugin.c							\
+	xfwm4_plugin.h							\
+	xfwm4_shortcuteditor.c						\
+	xfwm4_shortcuteditor.h						\
 	keys-icon.h							\
 	xfwm4-icon.h
 
@@ -417,6 +422,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_plugin_la-plugin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_plugin_la-workspaces.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -537,6 +543,30 @@ xfwm4_plugin_la-xfwm4_plugin.lo: xfwm4_plugin.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.Plo' tmpdepfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_plugin.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -c -o xfwm4_plugin_la-xfwm4_plugin.lo `test -f 'xfwm4_plugin.c' || echo '$(srcdir)/'`xfwm4_plugin.c
+
+xfwm4_plugin_la-xfwm4_shortcuteditor.o: xfwm4_shortcuteditor.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -MT xfwm4_plugin_la-xfwm4_shortcuteditor.o -MD -MP -MF "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo" -c -o xfwm4_plugin_la-xfwm4_shortcuteditor.o `test -f 'xfwm4_shortcuteditor.c' || echo '$(srcdir)/'`xfwm4_shortcuteditor.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo" "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Po"; else rm -f "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfwm4_shortcuteditor.c' object='xfwm4_plugin_la-xfwm4_shortcuteditor.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Po' tmpdepfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -c -o xfwm4_plugin_la-xfwm4_shortcuteditor.o `test -f 'xfwm4_shortcuteditor.c' || echo '$(srcdir)/'`xfwm4_shortcuteditor.c
+
+xfwm4_plugin_la-xfwm4_shortcuteditor.obj: xfwm4_shortcuteditor.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -MT xfwm4_plugin_la-xfwm4_shortcuteditor.obj -MD -MP -MF "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo" -c -o xfwm4_plugin_la-xfwm4_shortcuteditor.obj `if test -f 'xfwm4_shortcuteditor.c'; then $(CYGPATH_W) 'xfwm4_shortcuteditor.c'; else $(CYGPATH_W) '$(srcdir)/xfwm4_shortcuteditor.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo" "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Po"; else rm -f "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfwm4_shortcuteditor.c' object='xfwm4_plugin_la-xfwm4_shortcuteditor.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Po' tmpdepfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -c -o xfwm4_plugin_la-xfwm4_shortcuteditor.obj `if test -f 'xfwm4_shortcuteditor.c'; then $(CYGPATH_W) 'xfwm4_shortcuteditor.c'; else $(CYGPATH_W) '$(srcdir)/xfwm4_shortcuteditor.c'; fi`
+
+xfwm4_plugin_la-xfwm4_shortcuteditor.lo: xfwm4_shortcuteditor.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -MT xfwm4_plugin_la-xfwm4_shortcuteditor.lo -MD -MP -MF "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo" -c -o xfwm4_plugin_la-xfwm4_shortcuteditor.lo `test -f 'xfwm4_shortcuteditor.c' || echo '$(srcdir)/'`xfwm4_shortcuteditor.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo" "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Plo"; else rm -f "$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfwm4_shortcuteditor.c' object='xfwm4_plugin_la-xfwm4_shortcuteditor.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.Plo' tmpdepfile='$(DEPDIR)/xfwm4_plugin_la-xfwm4_shortcuteditor.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_plugin_la_CFLAGS) $(CFLAGS) -c -o xfwm4_plugin_la-xfwm4_shortcuteditor.lo `test -f 'xfwm4_shortcuteditor.c' || echo '$(srcdir)/'`xfwm4_shortcuteditor.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
