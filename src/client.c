@@ -1622,7 +1622,7 @@ clientApplyStackList (GSList * list)
         c = (Client *) index->data;
         xwinstack[i++] = c->frame;
     }
-    XRaiseWindow (dpy, xwinstack[0]);
+    /* XRaiseWindow (dpy, xwinstack[0]); */
     XRestackWindows (dpy, xwinstack, (int) nwindows);
     XFlush (dpy);
     g_slist_free (list_copy);
