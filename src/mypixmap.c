@@ -42,6 +42,7 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
     GdkPixbuf *alpha;
     GdkPixbuf *src;
     GdkPixmap *destw;
+    GdkVisual *gvisual;
     GdkColormap *cmap;
     GError *error = NULL;
     gint width, height;
@@ -80,15 +81,20 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
     
     if (!destw)
     {
-        DBG ("Cannot get pixmap");
+        g_warning ("Cannot get pixmap");
         g_object_unref (alpha);
         return FALSE;
     }
 
-    cmap = gdk_screen_get_default_colormap (pm->screen_info->gscr);
-    if (cmap)
+    gvisual = gdk_screen_get_system_visual (pm->screen_info->gscr);
+    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);    
+
+    if (!cmap)
     {
-        g_object_ref (G_OBJECT (cmap));
+        g_warning ("Cannot create colormap");
+        g_object_unref (alpha);
+        g_object_unref (destw);
+        return FALSE;
     }
 
     width = MIN (gdk_pixbuf_get_width (alpha), pm->width);
@@ -101,10 +107,7 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
                      pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);
 
-    if (cmap)
-    {
-        g_object_unref (G_OBJECT (cmap));
-    }
+    g_object_unref (cmap);
     g_object_unref (alpha);
     g_object_unref (src);
     g_object_unref (destw);
