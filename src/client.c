@@ -5324,7 +5324,9 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         clientSnapPosition (c);
 
         clientConstrainPos (c, FALSE);
+#ifdef SHOW_POSITION
         poswinSetPosition (passdata->poswin, c);
+#endif
         if (params.box_move)
         {
             clientDrawOutline (c);
@@ -5453,10 +5455,11 @@ clientMove (Client * c, XEvent * e)
         XPutBackEvent (dpy, e);
     }
 
+#ifdef SHOW_POSITION
     passdata.poswin = poswinCreate();
     poswinSetPosition (passdata.poswin, c);
     poswinShow (passdata.poswin);
-
+#endif
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     pushEventFilter (clientMove_event_filter, &passdata);
@@ -5464,9 +5467,10 @@ clientMove (Client * c, XEvent * e)
     popEventFilter ();
     TRACE ("leaving move loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
-    
+#ifdef SHOW_POSITION
     poswinDestroy (passdata.poswin);
-    
+#endif
+
     if (passdata.grab && params.box_move)
     {
         clientDrawOutline (c);
@@ -5737,7 +5741,10 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->width = prev_width;
             }
         }
-        poswinSetPosition (passdata->poswin, c);
+        if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+        {
+            poswinSetPosition (passdata->poswin, c);
+        }
         if (params.box_resize)
         {
             clientDrawOutline (c);
@@ -5855,10 +5862,13 @@ clientResize (Client * c, int corner, XEvent * e)
         XPutBackEvent (dpy, e);
     }
     
-    passdata.poswin = poswinCreate();
-    poswinSetPosition (passdata.poswin, c);
-    poswinShow (passdata.poswin);
-
+    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+    {
+        passdata.poswin = poswinCreate();
+        poswinSetPosition (passdata.poswin, c);
+        poswinShow (passdata.poswin);
+    }
+    
     FLAG_SET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     pushEventFilter (clientResize_event_filter, &passdata);
@@ -5867,8 +5877,10 @@ clientResize (Client * c, int corner, XEvent * e)
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->flags, CLIENT_FLAG_MOVING_RESIZING);
     
-    poswinDestroy (passdata.poswin);
-    
+    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+    {
+        poswinDestroy (passdata.poswin);
+    }
     if (passdata.grab && params.box_resize)
     {
         clientDrawOutline (c);
