@@ -53,7 +53,7 @@
 
 extern char *progname;
 extern Display *dpy;
-extern Window root, gnome_win, sidewalk[2];
+extern Window root, gnome_win, systray, sidewalk[2];
 extern Screen *xscreen;
 extern int screen;
 extern int depth;

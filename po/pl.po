@@ -1,15 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Olivier Fourdan <fourdan@xfce.org>
-# This file is distributed under the same license as the PACKAGE package.
-# Olivier Fourdan <fourdan@xfce.org>.
+# Translation file for XFce4's xfwm4.
+# Copyright (C) 2003 Olivier Fourdan <fourdan@xfce.org>
+# This file is distributed under the same license as the XFce4.
+# Paweł Pastuła <pastulap@poczta.onet.pl>, 2003
+#--
+# Daniel Mróz <beorn@alpha.pl>, 2003
+#
+#     Changes:
+#        - few major and minor fixes (bad translation, missing translations, semicolons, ...)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-10 08:33+0200\n"
-"PO-Revision-Date: 2003-01-22 00:36+0100\n"
-"Last-Translator: Paweł Pastuła <pastulap@poczta.onet.pl>\n"
-"Language-Team: none <LL@li.org>\n"
+"POT-Creation-Date: 2003-11-11 16:23+0100\n"
+"PO-Revision-Date: 2003-12-25 19:40+0100\n"
+"Last-Translator: Daniel Mróz <beorn@alpha.pl>\n"
+"Language-Team: none <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,27 +22,24 @@ msgstr ""
 
 #: mcs-plugin/margins_plugin.c:133 mcs-plugin/margins_plugin.c:235
 #: mcs-plugin/margins_plugin.c:254
-#, fuzzy
 msgid "Workspace Margins"
-msgstr "Marginesy obszaru roboczego"
+msgstr "Marginesy Obszaru Roboczego"
 
 #: mcs-plugin/margins_plugin.c:217
 msgid "Adjust workspace margins"
-msgstr "Ustaw marginesy"
+msgstr "Ustaw marginesy obszaru roboczego"
 
 #: mcs-plugin/margins_plugin.c:241
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"Margines to obszar ekranu, w którym nie zostanie umieszczone żadne z okien."
+"Marginesy to obszary ekranu, w których nie zostanie umieszczone żadne okno"
 
 #: mcs-plugin/margins_plugin.c:281
-#, fuzzy
 msgid "Left :"
 msgstr "Lewy :"
 
 #: mcs-plugin/margins_plugin.c:301
-#, fuzzy
 msgid "Right :"
 msgstr "Prawy :"
 
@@ -59,7 +61,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:118
 msgid "Stick"
-msgstr ""
+msgstr "Przypnij"
 
 #: mcs-plugin/xfwm4_plugin.c:119
 msgid "Shade"
@@ -87,7 +89,7 @@ msgstr "Schowaj okno"
 
 #: mcs-plugin/xfwm4_plugin.c:128
 msgid "Maximize window"
-msgstr "Zminimalizuj okno"
+msgstr "Maksymalizuj okno"
 
 #: mcs-plugin/xfwm4_plugin.c:129
 msgid "Nothing"
@@ -111,15 +113,15 @@ msgstr "Ukryty"
 
 #: mcs-plugin/xfwm4_plugin.c:1206
 msgid "Font Selection Dialog"
-msgstr "Dialog wyboru czcionki"
+msgstr "Okno Wyboru Czcionki"
 
 #: mcs-plugin/xfwm4_plugin.c:1274 mcs-plugin/xfwm4_plugin.c:1845
 msgid "Window Manager"
-msgstr "Menadżer okien"
+msgstr "Menadżer Okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1288
 msgid "Window Manager Preferences"
-msgstr "Wlaściwości menadżera okien"
+msgstr "Właściwości Menadżera Okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1325
 msgid "Title font"
@@ -127,7 +129,7 @@ msgstr "Czionka tytułowa"
 
 #: mcs-plugin/xfwm4_plugin.c:1338
 msgid "Title Alignment"
-msgstr "Wyrównanie tytułu"
+msgstr "Wyrównanie Tytułu"
 
 #. XXX
 #: mcs-plugin/xfwm4_plugin.c:1344
@@ -148,43 +150,43 @@ msgstr "Skrót klawiszowy"
 
 #: mcs-plugin/xfwm4_plugin.c:1393
 msgid "Focus model"
-msgstr "Model fokusa"
+msgstr "Sposób aktywacji"
 
 #: mcs-plugin/xfwm4_plugin.c:1402
 msgid "Click to focus"
-msgstr "Fokus na kliknięcie"
+msgstr "Kliknij aby aktywować"
 
 #: mcs-plugin/xfwm4_plugin.c:1416
 msgid "Focus follows mouse"
-msgstr "Fokus podąża za myszką"
+msgstr "Aktywacja podąża za myszką"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "New window focus"
-msgstr "Fokus nowego okna"
+msgstr "Aktywacja nowego okna"
 
 #: mcs-plugin/xfwm4_plugin.c:1435
 msgid ""
 "Automatically give focus to \n"
 "newly created windows"
 msgstr ""
-"Automatycznie przekaż fokus \n"
-"nowo utworzonemu oknu"
+"Automatycznie aktywuj nowo \n"
+"utworzone okna"
 
 #: mcs-plugin/xfwm4_plugin.c:1442
 msgid "Raise on focus"
-msgstr "Przesuń na wierzch po uzyskaniu fokusa"
+msgstr "Przenieś na wierzch po aktywacji"
 
 #: mcs-plugin/xfwm4_plugin.c:1451
 msgid ""
 "Automatically raise windows \n"
 "when they receive focus"
 msgstr ""
-"Automatycznie umieść na wierzchu okno \n"
-"które dostało fokus"
+"Automatycznie przenieś na wierzch okno \n"
+"kiedy zostanie uaktywnione"
 
 #: mcs-plugin/xfwm4_plugin.c:1464
 msgid "Delay before raising focused window :"
-msgstr "Opóźnienie przesunięcia na wierzch okna z fokusem :"
+msgstr "Opóźnienie przeniesienia na wierzch aktywowanego okna :"
 
 #: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Slow"
@@ -196,33 +198,31 @@ msgstr "Szybko"
 
 #: mcs-plugin/xfwm4_plugin.c:1504
 msgid "Raise on click"
-msgstr "Przesuń na wierzch po kliknięciu"
+msgstr "Przenieś na wierzch po kliknięciu"
 
 #: mcs-plugin/xfwm4_plugin.c:1509
 msgid ""
 "Raise window when clicking inside\n"
 "application window"
 msgstr ""
-"Przesuń na wierzch po kliknięciu\n"
+"Przenieś na wierzch po kliknięciu\n"
 "wewnątrz okna aplikacji"
 
 #: mcs-plugin/xfwm4_plugin.c:1517
 msgid "Keyboard and focus"
-msgstr "Klawiatura i fokus"
+msgstr "Klawiatura i aktywowanie"
 
 #: mcs-plugin/xfwm4_plugin.c:1530
-#, fuzzy
 msgid "Windows snapping"
 msgstr "Przyciąganie okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1539
 msgid "Snap windows to screen border"
-msgstr "Przyciągaj okno do krawędzi ekranu"
+msgstr "Przyciągaj okna do krawędzi ekranu"
 
 #: mcs-plugin/xfwm4_plugin.c:1548
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "Przyciągaj okno do krawędzi innych okien"
+msgstr "Przyciągaj okna do innych okien"
 
 #: mcs-plugin/xfwm4_plugin.c:1561
 msgid "Distance :"
@@ -241,24 +241,20 @@ msgid "Wrap workspaces"
 msgstr "Zmiana obszaru roboczego"
 
 #: mcs-plugin/xfwm4_plugin.c:1609
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Przełącz obszar roboczy podczas przesuniecia okna poza ekran"
+msgstr "Przełącz obszar roboczy gdy kursor osiągnie krawędź ekranu"
 
 #: mcs-plugin/xfwm4_plugin.c:1618
-#, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Przełącz obszar roboczy podczas przesuniecia okna poza ekran"
+msgstr "Przełącz obszar roboczy podczas przesuwania okna poza ekran"
 
 #: mcs-plugin/xfwm4_plugin.c:1630
-#, fuzzy
 msgid "Edge Resistance :"
-msgstr "Odległość :"
+msgstr "Bezwładność Krawędzi :"
 
 #: mcs-plugin/xfwm4_plugin.c:1671
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "Zmiana rozmiaru okna"
+msgstr "Okno podczas przesuwania i zmiany rozmiaru"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Display content of windows when resizing"
@@ -266,7 +262,7 @@ msgstr "Wyświetlaj zawartość okien podczas zmiany wielkości"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Display content of windows when moving"
-msgstr "Wyświetlaj zawartość okna podczas przesuwania"
+msgstr "Wyświetlaj zawartość okien podczas przesuwania"
 
 #: mcs-plugin/xfwm4_plugin.c:1695
 msgid "Double click action"
@@ -278,45 +274,45 @@ msgstr "Akcja do wykonania przy podwójnym kliknięciu na pasku tytułowym :"
 
 #: mcs-plugin/xfwm4_plugin.c:1706
 msgid "Advanced"
-msgstr ""
+msgstr "Zaawansowane"
 
-#: src/client.c:493
+#: src/client.c:499
 #, c-format
 msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
 msgstr ""
 
-#: src/events.c:1442
+#: src/events.c:1496
 #, c-format
 msgid "%s: Operation not supported (yet)\n"
-msgstr "%s: Operaracja jeszcze niaktywna\n"
+msgstr "%s: Operaracja jeszcze nie obsługiwana\n"
 
 #: src/main.c:228
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr ""
+msgstr "%s: Naruszenie ochrony pamięci"
 
 #: src/main.c:399
 #, c-format
 msgid "%s: Another Window Manager is already running"
-msgstr "%s: Inny menadzer okien jest juz uruchomiony"
+msgstr "%s: Inny Menadżer Okien jest już uruchomiony"
 
 #: src/main.c:404
 #, c-format
 msgid "%s: Missing data from default files"
-msgstr "%s: Brak danych z domyslnych plikow"
+msgstr "%s: Brak danych z domyślnych plików"
 
 #: src/main.c:431
 #, c-format
 msgid "%s: Unknown error occured"
-msgstr "%s: Wyswtapil nieznany blad"
+msgstr "%s: Wystąpił nieznany błąd"
 
 #: src/menu.c:42
 msgid "Ma_ximize"
-msgstr "Ma_ksymalizuj"
+msgstr "_Maksymalizuj"
 
 #: src/menu.c:43
 msgid "Un_maximize"
-msgstr "P_rzywróć"
+msgstr "_Przywróć"
 
 #: src/menu.c:44
 msgid "_Hide"
@@ -328,15 +324,15 @@ msgstr "Schowaj _wszystkie inne"
 
 #: src/menu.c:46
 msgid "S_how"
-msgstr "_Pokaz"
+msgstr "_Pokaż"
 
 #: src/menu.c:47
 msgid "_Shade"
-msgstr "Zw_in"
+msgstr "Zw_iń"
 
 #: src/menu.c:48
 msgid "Un_shade"
-msgstr "Rozw_in"
+msgstr "Rozw_iń"
 
 #: src/menu.c:49
 msgid "S_tick"
@@ -349,7 +345,7 @@ msgstr "Odep_nij"
 #: src/menu.c:51
 #, fuzzy
 msgid "Send to..."
-msgstr "Przelacz do  ..."
+msgstr "Przenieś na..."
 
 #: src/menu.c:53
 msgid "_Close"
@@ -370,74 +366,74 @@ msgstr ""
 #: src/menu.c:163
 #, fuzzy, c-format
 msgid "Workspace %i"
-msgstr "Pu_lpit"
+msgstr "Obszar roboczy %i"
 
 #: src/menu.c:405
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu nie uzyskalo wskaznika\n"
+msgstr "%s: GtkMenu nie uzyskało wskaźnika\n"
 
-#: src/settings.c:285
+#: src/settings.c:288
 #, fuzzy, c-format
 msgid "%s: Missing defaults file"
-msgstr "%s: Brak danych z domyslnych plikow"
+msgstr "%s: Brak pliku danych domyślnych"
 
-#: src/settings.c:510
+#: src/settings.c:520
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: Nie moge przypisac aktywnego koloru %s\n"
+msgstr "%s: Nie mogę zaalokować aktywnego koloru %s\n"
 
-#: src/settings.c:517
+#: src/settings.c:527
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Nie moge zidentyfikowac aktywnego koloru %s\n"
+msgstr "%s: Nie mogę zidentyfikować aktywnego koloru %s\n"
 
-#: src/settings.c:561
+#: src/settings.c:571
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Nie moge przypisac nieaktywnego koloru %s\n"
+msgstr "%s: Nie mogę zaalokować nieaktywnego koloru %s\n"
 
-#: src/settings.c:568
+#: src/settings.c:578
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Nie moge zidentyfikowac nieaktywnego koloru %s\n"
-
-#: src/settings.c:755
-#, c-format
-msgid "%s: specified key theme \"%s\" missing, using default"
-msgstr ""
+msgstr "%s: Nie mogę zidentyfikować nieaktywnego koloru %s\n"
 
 #: src/settings.c:765
+#, c-format
+msgid "%s: specified key theme \"%s\" missing, using default"
+msgstr "%s: podany temat \"%s\" nie istnieje, używam domyślnego"
+
+#: src/settings.c:775
 #, fuzzy, c-format
 msgid "%s: Missing values in defaults file"
-msgstr "%s: Brak danych z domyslnych plikow"
+msgstr "%s: Brak wartości w pliku danych domyślnych"
 
-#: src/settings.c:1106
+#: src/settings.c:1122
 #, c-format
 msgid "%s: Workspace count not set, using rc value: %i"
-msgstr "%s: Liczba pulpitow nie ustawiona, uzywam wartosc: %i"
+msgstr "%s: Liczba obszarów roboczych nie ustawiona, używam wartości: %i"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
-msgstr "Przelacz do  ..."
+msgstr "Przełącz do ..."
 
 #~ msgid "Window style"
 #~ msgstr "Styl okna"
 
 #~ msgid "Font select :"
-#~ msgstr "Wybór czcionki"
+#~ msgstr "Wybór czcionki :"
 
 #~ msgid "%s: Running without session manager"
-#~ msgstr "%s: Dziala bez menadzera sesji"
+#~ msgstr "%s: Działa bez menadżera sesji"
 
 #~ msgid "_Move"
-#~ msgstr "Prz_esun"
+#~ msgstr "Prz_esuń"
 
 #~ msgid "_Resize"
-#~ msgstr "Z_mien rozmiar"
+#~ msgstr "Z_mień rozmiar"
 
 #~ msgid "S_witch"
-#~ msgstr "Przela_cz"
+#~ msgstr "Przełą_cz"
 
 #~ msgid "Misc."
 #~ msgstr "Różne"
@@ -446,17 +442,17 @@ msgstr "Przelacz do  ..."
 #~ msgstr "Przesuwanie okna"
 
 #~ msgid "Snap to screen border"
-#~ msgstr "Przyciagaj do krawedzi ekranu"
+#~ msgstr "Przyciągaj do krawędzi ekranu"
 
 #, fuzzy
 #~ msgid "%s: Property %s on window 0x%lx contains invalid UTF-8 characters\n"
-#~ msgstr "%s: Wlasciwosc %s dla okna (%lx) zawierala nieprawidlowy UTF-8\n"
+#~ msgstr "%s: Właściwość %s dla okna (%lx) zawiera nieprawidłowe znaki UTF-8\n"
 
 #~ msgid "%s: Using GTK+-%d.%d.%d"
-#~ msgstr "%s: Uzywam GTK+-%d.%d.%d"
+#~ msgstr "%s: Używam GTK+-%d.%d.%d"
 
 #~ msgid "%s: Terminated\n"
 #~ msgstr "%s: Przerwany\n"
 
 #~ msgid "Init complete"
-#~ msgstr "Inicjalizacja zakonczona"
+#~ msgstr "Inicjalizacja zakończona"

@@ -280,10 +280,20 @@ static void
 loadRcData (Settings rc[])
 {
     const gchar *homedir = xfce_get_userdir ();
+    gchar *keytheme;
+    gchar *keythemevalue;
+
     if (!parseRc ("defaults", DATADIR, rc))
     {
         g_warning (_("%s: Missing defaults file"), progname);
         exit (1);
+    }
+    keythemevalue = getValue ("keytheme", rc);
+    if (keythemevalue)
+    {
+        keytheme = getThemeDir (keythemevalue);
+        parseRc ("keythemerc", keytheme, rc);
+        g_free (keytheme);
     }
     parseRc ("xfwm4rc", homedir, rc);
 }
@@ -869,6 +879,10 @@ loadKeyBindings (Settings rc[])
         getValue ("shortcut_9_key", rc));
     parseKeyString (dpy, &params.keys[KEY_SHORTCUT_10],
         getValue ("shortcut_10_key", rc));
+    parseKeyString (dpy, &params.keys[KEY_RAISE_WINDOW],
+        getValue ("raise_window_key", rc));
+    parseKeyString (dpy, &params.keys[KEY_LOWER_WINDOW],
+        getValue ("lower_window_key", rc));
     ungrabKeys (dpy, gnome_win);
     grabKey (dpy, &params.keys[KEY_CYCLE_WINDOWS], gnome_win);
     grabKey (dpy, &params.keys[KEY_NEXT_WORKSPACE], gnome_win);
@@ -966,6 +980,7 @@ loadSettings (void)
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},
+        {"lower_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
         {"maximize_window_key", NULL, TRUE},
@@ -986,6 +1001,7 @@ loadSettings (void)
         {"move_window_workspace_9_key", NULL, TRUE},
         {"next_workspace_key", NULL, TRUE},
         {"prev_workspace_key", NULL, TRUE},
+        {"raise_window_key", NULL, TRUE},
         {"resize_window_down_key", NULL, TRUE},
         {"resize_window_left_key", NULL, TRUE},
         {"resize_window_right_key", NULL, TRUE},

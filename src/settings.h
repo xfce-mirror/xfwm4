@@ -111,7 +111,9 @@
 #define KEY_SHORTCUT_8                  47
 #define KEY_SHORTCUT_9                  48
 #define KEY_SHORTCUT_10                 49
-#define KEY_COUNT                       50
+#define KEY_LOWER_WINDOW		50
+#define KEY_RAISE_WINDOW		51
+#define KEY_COUNT                       52
 #define NB_KEY_SHORTCUTS                10
 
 #define ALIGN_LEFT                      0
