@@ -635,16 +635,7 @@ static void
 rootScrollButton (XButtonEvent * ev)
 {
     static Time lastscroll = (Time) 0;
-    XEvent otherEvent;
 
-    while (XCheckTypedWindowEvent (dpy, root, ButtonPress, &otherEvent))
-    {
-        last_timestamp = stashEventTime (last_timestamp, &otherEvent);
-        if (otherEvent.xbutton.button != ev->button)
-        {
-            XPutBackEvent (dpy, &otherEvent);
-        }
-    }
     if ((ev->time - lastscroll) < 100)  /* ms */
     {
         /* Too many events in too little time, drop this event... */

@@ -162,10 +162,14 @@ static void clientSetHeight (Client * c, int h1);
 static void clientApplyStackList (GList * list);
 static gboolean clientTransientOrModalHasAncestor (Client * c, int ws);
 static Client *clientGetLowestTransient (Client * c);
+#if 0 /* Not used */
 static Client *clientGetHighestTransientOrModal (Client * c);
+#endif
 static Client *clientGetHighestTransientOrModalFor (Client * c);
 static Client *clientGetTopMostForGroup (Client * c);
+#if 0 /* Not used */
 static gboolean clientVisibleForGroup (Client * c, int workspace);
+#endif
 static Client *clientGetNextTopMost (int layer, Client * exclude);
 static ClientPair clientGetTopMostFocusable (int layer, Client * exclude);
 static Client *clientGetBottomMost (int layer, Client * exclude);
@@ -181,7 +185,9 @@ static void clientGetWinState (Client * c);
 static void clientApplyInitialState (Client * c);
 static gboolean clientCheckShape (Client * c);
 static gboolean clientSelectMask (Client * c, int mask);
+#if 0 /* Not used */
 static GList *clientListTransient (Client * c);
+#endif
 static GList *clientListTransientOrModal (Client * c);
 static void clientShowSingle (Client * c, gboolean change_state);
 static void clientHideSingle (Client * c, int ws, gboolean change_state);
@@ -1830,6 +1836,7 @@ clientGetLowestTransient (Client * c)
     return lowest_transient;
 }
 
+#if 0 /* Not used */
 static Client *
 clientGetHighestTransientOrModal (Client * c)
 {
@@ -1874,6 +1881,7 @@ clientGetHighestTransientOrModal (Client * c)
 
     return highest_transient;
 }
+#endif
 
 static Client *
 clientGetHighestTransientOrModalFor (Client * c)
@@ -1925,6 +1933,7 @@ clientGetTopMostForGroup (Client * c)
     return top_most;
 }
 
+#if 0 /* Not used */
 static gboolean
 clientVisibleForGroup (Client * c, int workspace)
 {
@@ -1950,6 +1959,7 @@ clientVisibleForGroup (Client * c, int workspace)
 
     return has_visible;
 }
+#endif
 
 static Client *
 clientGetNextTopMost (int layer, Client * exclude)
@@ -3753,6 +3763,7 @@ clientGetPrevious (Client * c, int mask)
     return NULL;
 }
 
+#if 0 /* Not used */
 /* Build a GList of clients that have a transient relationship */
 static GList *
 clientListTransient (Client * c)
@@ -3790,6 +3801,7 @@ clientListTransient (Client * c)
     }
     return transients;
 }
+#endif
 
 /* Build a GList of clients that have a transient or modal relationship */
 static GList *
