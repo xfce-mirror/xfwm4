@@ -5455,7 +5455,7 @@ clientResize (Client * c, int corner, XEvent * e)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NONE);
+    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 
     if (passdata.grab && params.box_resize)
     {
