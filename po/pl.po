@@ -1,0 +1,397 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Olivier Fourdan <fourdan@xfce.org>
+# This file is distributed under the same license as the PACKAGE package.
+# Olivier Fourdan <fourdan@xfce.org>.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 1.0.0\n"
+"POT-Creation-Date: 2003-01-22 23:15+0100\n"
+"PO-Revision-Date: 2003-01-22 00:36+0100\n"
+"Last-Translator: Pawel Pastula <pastulap@poczta.onet.pl>\n"
+"Language-Team: none <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "Tytul"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "Ukryj"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "Maksymalizuj"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "Zamknij"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "Schowaj okno"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "Zminimalizuj okno"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "Lewo"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "Srodek"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "Prawo"
+
+#: mcs-plugin/xfwm4_plugin.c:405
+msgid "Layout :"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:449
+msgid "Hidden"
+msgstr "Ukryty"
+
+#: mcs-plugin/xfwm4_plugin.c:999
+msgid "Font Selection Dialog"
+msgstr "Dialog wyboru czcionki"
+
+#: mcs-plugin/xfwm4_plugin.c:1053
+msgid "Window Manager Preferences"
+msgstr "Wlasciwosci menadzera okien"
+
+#: mcs-plugin/xfwm4_plugin.c:1088
+msgid "Window style"
+msgstr "Styl okna"
+
+#: mcs-plugin/xfwm4_plugin.c:1106
+msgid "Font select :"
+msgstr "Wybor czcionki"
+
+#: mcs-plugin/xfwm4_plugin.c:1117
+msgid "Title font"
+msgstr "Czionka tytulowa"
+
+#: mcs-plugin/xfwm4_plugin.c:1126
+msgid "Text alignment inside title bar :"
+msgstr "Wyrownanie tekstu wewnatrz paska tytulowego :"
+
+#: mcs-plugin/xfwm4_plugin.c:1128
+msgid "Title Alignment"
+msgstr "Wyrownanie tekstu"
+
+#: mcs-plugin/xfwm4_plugin.c:1139
+msgid "Button layout"
+msgstr ""
+
+#: mcs-plugin/xfwm4_plugin.c:1144
+msgid "Decoration style"
+msgstr "Styl dekorowania"
+
+#: mcs-plugin/xfwm4_plugin.c:1176
+msgid "Keyboard Shortcut"
+msgstr "Skrot klawiszowy"
+
+#: mcs-plugin/xfwm4_plugin.c:1194
+msgid "Click to focus"
+msgstr "Fokus na klikniecie"
+
+#: mcs-plugin/xfwm4_plugin.c:1201
+msgid "Focus follows mouse"
+msgstr "Fokus podaza za mysza"
+
+#: mcs-plugin/xfwm4_plugin.c:1208
+msgid "Focus model"
+msgstr "Model fokusa"
+
+#: mcs-plugin/xfwm4_plugin.c:1217
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"Automatycznie przekaz focus \n"
+"nowo utworzonemu oknu"
+
+#: mcs-plugin/xfwm4_plugin.c:1223
+msgid "New window focus"
+msgstr "Fokus nowego okna"
+
+#: mcs-plugin/xfwm4_plugin.c:1237
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"Automatycznie przesun na wierzch okno \n"
+"ktore dostalo fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1247
+msgid "Delay before raising focused window :"
+msgstr "Opoznienie przesuniecia na wierzch okna z fokusem :"
+
+#: mcs-plugin/xfwm4_plugin.c:1253
+msgid "Slow"
+msgstr "Wolno"
+
+#: mcs-plugin/xfwm4_plugin.c:1259
+msgid "Fast"
+msgstr "Szybko"
+
+#: mcs-plugin/xfwm4_plugin.c:1274
+msgid "Raise on focus"
+msgstr "Przesun na wierzch po uzyskaniu fokusa"
+
+#: mcs-plugin/xfwm4_plugin.c:1283
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"Przesun na wierzch po kliknieciu\n"
+"wewnatrz okna aplikacji"
+
+#: mcs-plugin/xfwm4_plugin.c:1289
+msgid "Raise on click"
+msgstr "Przesun na wierzch po kliknieciu"
+
+#: mcs-plugin/xfwm4_plugin.c:1294
+msgid "Keyboard and focus"
+msgstr "Klawiatura i fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1312
+msgid "Snap windows to screen border"
+msgstr "Przyciagaj okno do krawedzi ekranu"
+
+#: mcs-plugin/xfwm4_plugin.c:1322
+msgid "Distance :"
+msgstr "Odleglosc :"
+
+#: mcs-plugin/xfwm4_plugin.c:1328
+msgid "Small"
+msgstr "Mala"
+
+#: mcs-plugin/xfwm4_plugin.c:1334
+msgid "Wide"
+msgstr "Duza"
+
+#: mcs-plugin/xfwm4_plugin.c:1348
+msgid "Snap to screen border"
+msgstr "Przyciagaj do krawedzi ekranu"
+
+#: mcs-plugin/xfwm4_plugin.c:1357
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Zamien pulpity podczas przesuniecia okna za ekran"
+
+#: mcs-plugin/xfwm4_plugin.c:1363
+msgid "Wrap workspaces"
+msgstr "Zamien pulpity"
+
+#: mcs-plugin/xfwm4_plugin.c:1372
+msgid "Display content of windows when resizing"
+msgstr "Wyswietlaj zawartosc okien podczas zmiany wielkosci"
+
+#: mcs-plugin/xfwm4_plugin.c:1378
+msgid "Opaque resize"
+msgstr "Przy zmianie rozmiaru okno nieprzezroczyste"
+
+#: mcs-plugin/xfwm4_plugin.c:1387
+msgid "Display content of windows when moving"
+msgstr "Wyswietlaj zawartosc okna podczas przesuwania"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Opaque move"
+msgstr "Przy przesuwania okno nieprzezroczyste"
+
+#: mcs-plugin/xfwm4_plugin.c:1402
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Akcja do wykonania przy podwojnym kliknieciu na pasku tytulowym :"
+
+#: mcs-plugin/xfwm4_plugin.c:1404
+msgid "Double click action"
+msgstr "Akcja przy podwojnym kliknieciu"
+
+#: mcs-plugin/xfwm4_plugin.c:1409
+msgid "Misc."
+msgstr "Rozne"
+
+#: mcs-plugin/xfwm4_plugin.c:1478
+msgid "Window Manager"
+msgstr "Menadzer okien"
+
+#: src/client.c:370
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window %#lx)"
+msgstr ""
+
+#: src/events.c:906
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: Operaracja jeszcze niaktywna\n"
+
+#: src/hints.c:616
+#, c-format
+msgid "%s: Property %s on window (%lx) contained invalid UTF-8\n"
+msgstr ""
+"%s: Wlasciwosc %s dla okna (%lx) zawierala nieprawidlowy UTF-8\n"
+
+#: src/main.c:167
+#, c-format
+msgid "%s: Using GTK+-%d.%d.%d"
+msgstr "%s: Uzywam GTK+-%d.%d.%d"
+
+#: src/main.c:188
+#, c-format
+msgid "%s: Running without session manager"
+msgstr "%s: Dziala bez menadzera sesji"
+
+#: src/main.c:278
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: Inny menadzer okien jest juz uruchomiony"
+
+#: src/main.c:281
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: Brak danych z domyslnych plikow"
+
+#: src/main.c:287
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: Wyswtapil nieznany blad"
+
+#: src/main.c:291
+#, c-format
+msgid "%s: Terminated\n"
+msgstr "%s: Przerwany\n"
+
+#. parent
+#. wait for child signal
+#: src/main.c:327
+msgid "Init complete"
+msgstr "Inicjalizacja zakonczona"
+
+#: src/menu.c:38
+msgid "Ma_ximize"
+msgstr "Ma_ksymalizuj"
+
+#: src/menu.c:39
+msgid "Un_maximize"
+msgstr "P_rzywroc"
+
+#: src/menu.c:40
+msgid "_Hide"
+msgstr "_Schowaj"
+
+#: src/menu.c:41
+msgid "Hide _all others"
+msgstr "Schowaj _wszystkie inne"
+
+#: src/menu.c:42
+msgid "S_how"
+msgstr "_Pokaz"
+
+#: src/menu.c:43
+msgid "_Shade"
+msgstr "Zw_in"
+
+#: src/menu.c:44
+msgid "Un_shade"
+msgstr "Rozw_in"
+
+#: src/menu.c:45
+msgid "S_tick"
+msgstr "Przyp_nij"
+
+#: src/menu.c:46
+msgid "Uns_tick"
+msgstr "Odep_nij"
+
+#: src/menu.c:47
+msgid "_Move"
+msgstr "Prz_esun"
+
+#: src/menu.c:48
+msgid "_Resize"
+msgstr "Z_mien rozmiar"
+
+#: src/menu.c:49
+msgid "S_witch"
+msgstr "Przela_cz"
+
+#: src/menu.c:51
+msgid "_Close"
+msgstr "_Zamknij"
+
+#: src/menu.c:53
+msgid "Destroy"
+msgstr "Zniszcz"
+
+#: src/menu.c:55
+msgid "Wor_kspace"
+msgstr "Pu_lpit"
+
+#: src/menu.c:58
+msgid "_Quit"
+msgstr "_Wyjdz"
+
+#: src/menu.c:59
+msgid "Restart"
+msgstr ""
+
+#: src/menu.c:307
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu nie uzyskalo wskaznika\n"
+
+#: src/settings.c:333
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Nie moge przypisac aktywnego koloru %s\n"
+
+#: src/settings.c:339
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Nie moge zidentyfikowac aktywnego koloru %s\n"
+
+#: src/settings.c:377
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Nie moge przypisac nieaktywnego koloru %s\n"
+
+#: src/settings.c:383
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Nie moge zidentyfikowac nieaktywnego koloru %s\n"
+
+#: src/settings.c:695
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr "%s: Liczba pulpitow nie ustawiona, uzywam wartosc: %i"
+
+#: src/tabwin.c:68
+msgid "Switch to ..."
+msgstr "Przelacz do  ..."
