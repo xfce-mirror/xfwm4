@@ -1,5 +1,7 @@
 full_width_title=true
+title_vertical_offset=1
 button_offset=0
 button_spacing=0
+button_layout=OT|SHMC
 active_border_color=#000000
 inactive_border_color=#000000
