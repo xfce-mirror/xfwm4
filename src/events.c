@@ -50,6 +50,7 @@
 #include "menu.h"
 #include "hints.h"
 #include "startup_notification.h"
+#include "compositor.h"
 #include "events.h"
 
 #define WIN_IS_BUTTON(win)      ((win == MYWINDOW_XWINDOW(c->buttons[HIDE_BUTTON])) || \
@@ -962,7 +963,12 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     {
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
         clientPassFocus (c->screen_info, c, c);
+        compositorRemoveWindow (display_info, c->frame);
         clientUnframe (c, FALSE);
+    }
+    else
+    {
+        compositorRemoveWindow (display_info, ev->window);
     }
 }
 
@@ -1023,6 +1029,10 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
         }
     }
+    else if (myDisplayGetScreenFromRoot (display_info, ev->event))
+    {
+        compositorWindowMap (display_info, ev->window);
+    }
 }
 
 static void
@@ -1078,6 +1088,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if ((ev->event == screen_info->xroot) && (ev->send_event))
         {
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
+            compositorRemoveWindow (display_info, c->frame);
             clientUnframe (c, FALSE);
             return;
         }
@@ -1091,8 +1102,13 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         {
             TRACE ("unmapping \"%s\" as ignore_unmap is %i", 
                  c->name, c->ignore_unmap);
+            compositorRemoveWindow (display_info, c->frame);
             clientUnframe (c, FALSE);
         }
+    }
+    else
+    {
+        compositorWindowUnmap (display_info, ev->window);
     }
 }
 
@@ -1781,6 +1797,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
     TRACE ("entering handleEvent");
 
     sn_process_event (ev);
+    compositorHandleEvent (display_info, ev);
     switch (ev->type)
     {
         case MotionNotify:

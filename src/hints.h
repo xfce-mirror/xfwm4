@@ -214,6 +214,7 @@ extern Atom net_wm_window_type_splash;
 extern Atom net_wm_window_type_toolbar;
 extern Atom net_wm_window_type_utility;
 extern Atom net_wm_user_time;
+extern Atom net_wm_opacity;
 extern Atom net_workarea;
 
 /* KDE extension */
@@ -226,9 +227,15 @@ extern Atom net_system_tray_manager;
 extern Atom net_system_tray_selection;
 extern Atom net_system_tray_opcode;
 
+/* Misc atoms */
+extern Atom misc_xrootpmap;
+extern Atom misc_xsetroot;
+extern Atom misc_pixmap;
+
 void initICCCMHints (Display *);
 unsigned long getWMState (Display *, Window);
 void setWMState (Display *, Window, unsigned long);
+void initMiscHints (Display *);
 void initMotifHints (Display *);
 PropMwmHints *getMotifHints (Display *, Window);
 unsigned int getWMProtocols (Display *, Window);

@@ -97,7 +97,10 @@ myDisplayInit (GdkDisplay *gdisplay)
     initGnomeHints (display->dpy);
     initNetHints   (display->dpy);
     initKDEHints   (display->dpy);
+    initMiscHints  (display->dpy);
     
+    compositorInitDisplay (display);
+
     return display;
 }
 

@@ -116,6 +116,7 @@ Atom net_wm_window_type_splash;
 Atom net_wm_window_type_toolbar;
 Atom net_wm_window_type_utility;
 Atom net_wm_user_time;
+Atom net_wm_opacity;
 Atom net_workarea;
 Atom utf8_string;
 
@@ -127,6 +128,11 @@ Atom kwm_win_icon;
 /* Systray similation for older KDE apps */
 Atom net_system_tray_manager;
 Atom net_system_tray_opcode;
+
+/* Misc atoms */
+Atom misc_xrootpmap;
+Atom misc_xsetroot;
+Atom misc_pixmap;
 
 static gboolean
 check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,
@@ -212,6 +218,16 @@ initMotifHints (Display * dpy)
     TRACE ("entering initMotifHints");
 
     motif_wm_hints = XInternAtom (dpy, "_MOTIF_WM_HINTS", FALSE);
+}
+
+void
+initMiscHints (Display * dpy)
+{
+    TRACE ("entering initMiscHints");
+
+    misc_xrootpmap = XInternAtom (dpy, "_XROOTPMAP_ID", FALSE);
+    misc_xsetroot = XInternAtom (dpy, "_XSETROOT_ID", FALSE);
+    misc_pixmap = XInternAtom (dpy, "PIXMAP", FALSE);
 }
 
 PropMwmHints *
@@ -421,27 +437,27 @@ getDesktopLayout (Display * dpy, Window root, int ws_count, NetWmDesktopLayout *
             start = (items_read >= 4) ? data[3] : NET_WM_TOPLEFT;
 
             if (orientation > NET_WM_ORIENTATION_VERT) 
-	    {
-	        break;
+            {
+                break;
             }
-	    
-	    if (start > NET_WM_BOTTOMLEFT)
-	    {
-	        break;
+            
+            if (start > NET_WM_BOTTOMLEFT)
+            {
+                break;
             }
-	    
+            
             if ((rows == 0) && (cols == 0))
-	    {
-	        break;
+            {
+                break;
             }
 
             if (rows == 0)
-	    {
+            {
                 rows = (ws_count-1) / cols + 1;
             }
 
             if (cols == 0)
-	    {
+            {
                 cols = (ws_count-1) / rows + 1;
             }
 
@@ -622,6 +638,8 @@ initNetHints (Display * dpy)
         XInternAtom (dpy, "_NET_WORKAREA", FALSE);
     net_wm_user_time = 
         XInternAtom (dpy, "_NET_WM_USER_TIME", FALSE);
+    net_wm_opacity = 
+        XInternAtom (dpy, "_NET_WM_WINDOW_OPACITY", FALSE);
     utf8_string = 
         XInternAtom (dpy, "UTF8_STRING", FALSE);
 }

@@ -53,6 +53,7 @@
 #include "placement.h"
 #include "icons.h"
 #include "startup_notification.h"
+#include "compositor.h"
 
 /* Event mask definition */
 
@@ -63,7 +64,8 @@
 #define FRAME_EVENT_MASK \
     SubstructureNotifyMask|\
     SubstructureRedirectMask|\
-    EnterWindowMask
+    EnterWindowMask|\
+    PropertyChangeMask
 
 #define CLIENT_EVENT_MASK \
     StructureNotifyMask|\
@@ -1384,9 +1386,18 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return;
     }
 
-    if ((attr.override_redirect) || (w == screen_info->gnome_win))
+    if (w == screen_info->gnome_win)
     {
-        TRACE ("Not managing override_redirect windows");
+        TRACE ("Not managing our own event window");
+        myDisplayUngrabServer (display_info);
+        gdk_error_trap_pop ();
+        return;
+    }
+
+    if (attr.override_redirect)
+    {
+        TRACE ("Override redirect window 0x%lx", w);
+        compositorAddWindow (display_info, w, NULL, &attr);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return;
@@ -1630,6 +1641,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* net_wm_user_time standard */
     clientGetUserTime (c);
 
+    /* Notify the compositor about this new window */
+    compositorAddWindow (display_info, c->frame, c, NULL);
+
     clientRaise (c);
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
@@ -1765,7 +1779,7 @@ clientFrameAll (ScreenInfo *screen_info)
     for (i = 0; i < count; i++)
     {
         XGetWindowAttributes (display_info->dpy, wins[i], &attr);
-        if ((!(attr.override_redirect)) && (attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
+        if ((attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
         {
             clientFrame (screen_info->display_info, wins[i], TRUE);
         }
@@ -1943,6 +1957,7 @@ clientShowSingle (Client * c, gboolean change_state)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
+	compositorWindowMap (display_info, c->frame);
         XMapWindow (display_info->dpy, c->frame);
         XMapWindow (display_info->dpy, c->window);
         /* Adjust to urgency state as the window is visible */
@@ -1999,6 +2014,7 @@ clientHideSingle (Client * c, gboolean change_state)
     myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c, c);
+    compositorWindowUnmap (display_info, c->frame);
     XUnmapWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {

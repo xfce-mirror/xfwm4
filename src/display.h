@@ -29,6 +29,17 @@
 #include <X11/cursorfont.h>
 #include <X11/extensions/shape.h>
 
+#ifdef HAVE_COMPOSITOR
+#include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xdamage.h>
+#include <X11/extensions/Xrender.h>
+#if COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 2
+#ifndef HAVE_NAME_WINDOW_PIXMAP
+#define HAVE_NAME_WINDOW_PIXMAP 1
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+#endif /* COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 2 */
+#endif /* HAVE_COMPOSITOR */
+
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -74,6 +85,26 @@ struct _DisplayInfo
     int dbl_click_time;
     int xgrabcount;
     int nb_screens;
+
+    gboolean enable_compositor;
+
+#ifdef HAVE_COMPOSITOR
+    int composite_error_base;
+    int composite_event_base;
+    int damage_error_base;
+    int damage_event_base;
+    int fixes_error_base;
+    int fixes_event_base;
+
+    gboolean have_composite;
+    gboolean have_damage;
+    gboolean have_fixes;
+
+#if HAVE_NAME_WINDOW_PIXMAP
+    gboolean have_name_window_pixmap;
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+
+#endif /* HAVE_COMPOSITOR */
 };
 
 DisplayInfo * myDisplayInit                 (GdkDisplay *); 

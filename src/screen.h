@@ -45,6 +45,14 @@
 #include "client.h"
 #include "hints.h"
 
+#ifdef HAVE_COMPOSITOR
+struct _gaussian_conv {
+    int     size;
+    double  *data;
+};
+typedef struct _gaussian_conv gaussian_conv;
+#endif /* HAVE_COMPOSITOR */
+
 struct _ScreenInfo 
 {
     /* The display this screen belongs to */
@@ -113,6 +121,18 @@ struct _ScreenInfo
     GSList *startup_sequences;
     guint startup_sequence_timeout;
 #endif
+
+#ifdef HAVE_COMPOSITOR
+    gaussian_conv *gaussianMap;
+    GList *cwindows;
+    
+    Picture rootPicture;
+    Picture rootBuffer;
+    Picture blackPicture;
+    Picture rootTile;
+    XserverRegion allDamage;
+    gboolean clipChanged;
+#endif /* HAVE_COMPOSITOR */
 };
 
 ScreenInfo *     myScreenInit         (DisplayInfo *, 

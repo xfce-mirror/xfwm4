@@ -53,11 +53,12 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-display.$(OBJEXT) \
-	xfwm4-events.$(OBJEXT) xfwm4-focus.$(OBJEXT) \
-	xfwm4-frame.$(OBJEXT) xfwm4-hints.$(OBJEXT) \
-	xfwm4-icons.$(OBJEXT) xfwm4-keyboard.$(OBJEXT) \
-	xfwm4-main.$(OBJEXT) xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
+am_xfwm4_OBJECTS = xfwm4-client.$(OBJEXT) xfwm4-compositor.$(OBJEXT) \
+	xfwm4-display.$(OBJEXT) xfwm4-events.$(OBJEXT) \
+	xfwm4-focus.$(OBJEXT) xfwm4-frame.$(OBJEXT) \
+	xfwm4-hints.$(OBJEXT) xfwm4-icons.$(OBJEXT) \
+	xfwm4-keyboard.$(OBJEXT) xfwm4-main.$(OBJEXT) \
+	xfwm4-menu.$(OBJEXT) xfwm4-misc.$(OBJEXT) \
 	xfwm4-mypixmap.$(OBJEXT) xfwm4-mywindow.$(OBJEXT) \
 	xfwm4-netwm.$(OBJEXT) xfwm4-parserc.$(OBJEXT) \
 	xfwm4-placement.$(OBJEXT) xfwm4-poswin.$(OBJEXT) \
@@ -72,6 +73,7 @@ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfwm4-client.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xfwm4-compositor.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-display.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfwm4-focus.Po \
@@ -125,6 +127,8 @@ CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
+COMPOSITOR_CFLAGS = @COMPOSITOR_CFLAGS@
+COMPOSITOR_LIBS = @COMPOSITOR_LIBS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -264,6 +268,8 @@ target_alias = @target_alias@
 xfwm4_SOURCES = \
 	client.c							\
 	client.h							\
+	compositor.c							\
+	compositor.h							\
 	display.h							\
 	display.c							\
 	inline-default-icon.h						\
@@ -276,8 +282,8 @@ xfwm4_SOURCES = \
 	hints.c								\
 	hints.h								\
 	inline-tabwin-icon.h						\
-	icons.c		        					\
-	icons.h			        				\
+	icons.c								\
+	icons.h								\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -322,10 +328,11 @@ xfwm4_CFLAGS = \
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXPM_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
+	@COMPOSITOR_CFLAGS@						\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
-        -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
+	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD = \
 	@LIBX11_LIBS@							\
@@ -333,13 +340,14 @@ xfwm4_LDADD = \
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXPM_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
+	@COMPOSITOR_LIBS@						\
 	@RANDR_LIBS@
 
 xfwm4_LDFLAGS = \
 	@LIBXPM_LDFLAGS@
 
 EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
-        inline-default-icon.h default_icon.png
+	inline-default-icon.h default_icon.png
 
 noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 all: all-am
@@ -414,6 +422,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-client.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-compositor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-display.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-events.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfwm4-focus.Po@am__quote@
@@ -487,6 +496,30 @@ xfwm4-client.lo: client.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-client.Plo' tmpdepfile='$(DEPDIR)/xfwm4-client.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-client.lo `test -f 'client.c' || echo '$(srcdir)/'`client.c
+
+xfwm4-compositor.o: compositor.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-compositor.o -MD -MP -MF "$(DEPDIR)/xfwm4-compositor.Tpo" -c -o xfwm4-compositor.o `test -f 'compositor.c' || echo '$(srcdir)/'`compositor.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-compositor.Tpo" "$(DEPDIR)/xfwm4-compositor.Po"; else rm -f "$(DEPDIR)/xfwm4-compositor.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='compositor.c' object='xfwm4-compositor.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-compositor.Po' tmpdepfile='$(DEPDIR)/xfwm4-compositor.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-compositor.o `test -f 'compositor.c' || echo '$(srcdir)/'`compositor.c
+
+xfwm4-compositor.obj: compositor.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-compositor.obj -MD -MP -MF "$(DEPDIR)/xfwm4-compositor.Tpo" -c -o xfwm4-compositor.obj `if test -f 'compositor.c'; then $(CYGPATH_W) 'compositor.c'; else $(CYGPATH_W) '$(srcdir)/compositor.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-compositor.Tpo" "$(DEPDIR)/xfwm4-compositor.Po"; else rm -f "$(DEPDIR)/xfwm4-compositor.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='compositor.c' object='xfwm4-compositor.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-compositor.Po' tmpdepfile='$(DEPDIR)/xfwm4-compositor.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-compositor.obj `if test -f 'compositor.c'; then $(CYGPATH_W) 'compositor.c'; else $(CYGPATH_W) '$(srcdir)/compositor.c'; fi`
+
+xfwm4-compositor.lo: compositor.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-compositor.lo -MD -MP -MF "$(DEPDIR)/xfwm4-compositor.Tpo" -c -o xfwm4-compositor.lo `test -f 'compositor.c' || echo '$(srcdir)/'`compositor.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfwm4-compositor.Tpo" "$(DEPDIR)/xfwm4-compositor.Plo"; else rm -f "$(DEPDIR)/xfwm4-compositor.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='compositor.c' object='xfwm4-compositor.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfwm4-compositor.Plo' tmpdepfile='$(DEPDIR)/xfwm4-compositor.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -c -o xfwm4-compositor.lo `test -f 'compositor.c' || echo '$(srcdir)/'`compositor.c
 
 xfwm4-display.o: display.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfwm4_CFLAGS) $(CFLAGS) -MT xfwm4-display.o -MD -MP -MF "$(DEPDIR)/xfwm4-display.Tpo" -c -o xfwm4-display.o `test -f 'display.c' || echo '$(srcdir)/'`display.c; \

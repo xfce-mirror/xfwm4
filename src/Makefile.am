@@ -3,6 +3,8 @@ bin_PROGRAMS = xfwm4
 xfwm4_SOURCES =								\
 	client.c							\
 	client.h							\
+	compositor.c							\
+	compositor.h							\
 	display.h							\
 	display.c							\
 	inline-default-icon.h						\
@@ -15,8 +17,8 @@ xfwm4_SOURCES =								\
 	hints.c								\
 	hints.h								\
 	inline-tabwin-icon.h						\
-	icons.c		        					\
-	icons.h			        				\
+	icons.c								\
+	icons.h								\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -61,10 +63,11 @@ xfwm4_CFLAGS =								\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXPM_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
+	@COMPOSITOR_CFLAGS@						\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
-        -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
+	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\
 	@LIBX11_LIBS@							\
@@ -72,13 +75,14 @@ xfwm4_LDADD =								\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXPM_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
+	@COMPOSITOR_LIBS@						\
 	@RANDR_LIBS@
 
 xfwm4_LDFLAGS =								\
 	@LIBXPM_LDFLAGS@
 
 EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
-        inline-default-icon.h default_icon.png
+	inline-default-icon.h default_icon.png
 
 noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 

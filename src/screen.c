@@ -38,6 +38,7 @@
 #include "screen.h"
 #include "mywindow.h"
 #include "mywindow.h"
+#include "compositor.h"
 
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask)
@@ -171,6 +172,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         xfwmPixmapInit (screen_info, &screen_info->title[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->title[i][INACTIVE]);
     }
+    compositorManageScreen (screen_info);
 
     XDefineCursor (display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(display_info));
 
@@ -187,6 +189,7 @@ myScreenClose (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     
     clientUnframeAll (screen_info);
+    compositorUnmanageScreen (screen_info);
     closeSettings (screen_info);
 
     g_free (screen_info->workspace_names);
