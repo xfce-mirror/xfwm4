@@ -651,6 +651,10 @@ handleButtonPress (XButtonEvent * ev)
         {
             button1Action (c, ev);
         }
+        else if ((ev->button == Button2) && (state == AltMask) && (params.easy_click))
+        {
+            clientLower (c);
+        }
         else if ((ev->button == Button3) && (state == AltMask) && (params.easy_click))
         {
             edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
