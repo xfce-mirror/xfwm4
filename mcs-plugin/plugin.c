@@ -129,6 +129,8 @@ run_dialog (McsPlugin * mcs_plugin)
         return;
     }
 
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
     dialog =
         gtk_dialog_new_with_buttons (_("Workspaces"), NULL,
                                      GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE,
