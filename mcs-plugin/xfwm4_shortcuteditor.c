@@ -1113,7 +1113,9 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     GdkModifierType consumed_modifiers = 0;
     guint keyval;
     gchar *accelerator;
-    gchar **shortcut;
+    gint i;
+    gchar **shortcuts;
+    gchar **current_shortcut;
 
     if (is_modifier (event->hardware_keycode))
       return TRUE;
@@ -1137,22 +1139,28 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 
     accelerator = gtk_accelerator_name (keyval, event->state & ~consumed_modifiers);
 
-    shortcut = g_strsplit_set (accelerator, "<>", 0);
-
-    while (*shortcut)
+    for (i = 0; i < strlen (accelerator); i++)
     {
-        if (strlen (*shortcut) > 0 && (strcmp (*shortcut, "Mod2") != 0))
+	if (accelerator[i] == '>')
+	    accelerator[i] = '<';
+    }
+
+    shortcuts = g_strsplit (accelerator, "<", 0);
+
+    current_shortcut = shortcuts;
+    while (*current_shortcut)
+    {
+        if (strlen (*current_shortcut) > 0 && (strcmp (*current_shortcut, "Mod2") != 0))
         {
-            strcat (shortcut_string, *shortcut);
+            strcat (shortcut_string, *current_shortcut);
             strcat (shortcut_string, "+");
         }
-        g_free(*shortcut);
-        *shortcut++;
+        *current_shortcut++;
     }
      
-    shortcut_string[strlen (shortcut_string) - 1] = '\0';
+    shortcut_string[strlen (shortcut_string) - 1] = '\0'; /* replace the trailing '+' */
     g_free (accelerator);
-   
+    g_strfreev (shortcuts);
 
     selection3 = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
     selection4 = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview4));
