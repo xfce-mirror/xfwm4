@@ -31,7 +31,7 @@ dnl check for standard header files
 AC_HEADER_STDC
 
 dnl Check for i18n support
-BM_I18N([xfwm4], [ar ca de es es_MX fi fr nl pl ta tr zh_CN])
+BM_I18N([xfwm4], [ar ca de es es_MX fi fr ja nl pl ta tr zh_CN])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE

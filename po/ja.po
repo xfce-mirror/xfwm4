@@ -1,0 +1,418 @@
+# Xfwm4 German translation
+# Copyright (C) 2003 Olivier Fourdan
+# This file is distributed under the same license as the xfwm4 package.
+# Moritz Heiber <mistermoe@hackerboard.de>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 1.0.0\n"
+"POT-Creation-Date: 2003-05-23 23:43+0200\n"
+"PO-Revision-Date: 2003-05-27 22:00+0900\n"
+"Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
+"Language-Team: none <none@none>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mcs-plugin/margins_plugin.c:127 mcs-plugin/margins_plugin.c:231
+#: mcs-plugin/margins_plugin.c:250
+msgid "Workspace Margins"
+msgstr "ワークスペース・マージン"
+
+#: mcs-plugin/margins_plugin.c:211
+msgid "Adjust workspace margins"
+msgstr "ワークスペース・マージン調整"
+
+#: mcs-plugin/margins_plugin.c:237
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+
+
+#: mcs-plugin/margins_plugin.c:278
+msgid "Left :"
+msgstr "左 :"
+
+#: mcs-plugin/margins_plugin.c:298
+msgid "Right :"
+msgstr "右 :"
+
+#: mcs-plugin/margins_plugin.c:318
+msgid "Top :"
+msgstr "上 :"
+
+#: mcs-plugin/margins_plugin.c:338
+msgid "Bottom :"
+msgstr "下 :"
+
+#: mcs-plugin/xfwm4_plugin.c:117
+msgid "Title"
+msgstr "タイトル"
+
+#: mcs-plugin/xfwm4_plugin.c:118
+msgid "Menu"
+msgstr "メニュー"
+
+#: mcs-plugin/xfwm4_plugin.c:119
+msgid "Stick"
+msgstr "貼り付け"
+
+#: mcs-plugin/xfwm4_plugin.c:120
+msgid "Shade"
+msgstr "折りたたみ"
+
+#: mcs-plugin/xfwm4_plugin.c:121
+msgid "Hide"
+msgstr "隠す"
+
+#: mcs-plugin/xfwm4_plugin.c:122
+msgid "Maximize"
+msgstr "最大化"
+
+#: mcs-plugin/xfwm4_plugin.c:123
+msgid "Close"
+msgstr "閉じる"
+
+#: mcs-plugin/xfwm4_plugin.c:127
+msgid "Shade window"
+msgstr "ウィンドウを折りたたむ"
+
+#: mcs-plugin/xfwm4_plugin.c:128
+msgid "Hide window"
+msgstr "ウィンドウを隠す"
+
+#: mcs-plugin/xfwm4_plugin.c:129
+msgid "Maximize window"
+msgstr "ウィンドウの最大化"
+
+#: mcs-plugin/xfwm4_plugin.c:130
+msgid "Nothing"
+msgstr "なし"
+
+#: mcs-plugin/xfwm4_plugin.c:135
+msgid "Left"
+msgstr "左"
+
+#: mcs-plugin/xfwm4_plugin.c:136
+msgid "Center"
+msgstr "中央"
+
+#: mcs-plugin/xfwm4_plugin.c:137
+msgid "Right"
+msgstr "右"
+
+#: mcs-plugin/xfwm4_plugin.c:436
+msgid "Hidden"
+msgstr "隠す"
+
+#: mcs-plugin/xfwm4_plugin.c:1233
+msgid "Font Selection Dialog"
+msgstr "フォント選択ダイアログ"
+
+#: mcs-plugin/xfwm4_plugin.c:1303 mcs-plugin/xfwm4_plugin.c:1945
+msgid "Window Manager"
+msgstr "ウィンドウ・マネージャ"
+
+#: mcs-plugin/xfwm4_plugin.c:1317
+msgid "Window Manager Preferences"
+msgstr "ウィンドウ・マネージャ設定"
+
+#: mcs-plugin/xfwm4_plugin.c:1354
+msgid "Window style"
+msgstr "ウィンドウ・スタイル"
+
+#: mcs-plugin/xfwm4_plugin.c:1372
+msgid "Font select :"
+msgstr "フォント選択 :"
+
+#: mcs-plugin/xfwm4_plugin.c:1382
+msgid "Title font"
+msgstr "タイトル・フォント"
+
+#: mcs-plugin/xfwm4_plugin.c:1393
+msgid "Text alignment inside title bar :"
+msgstr "タイトルバー内のテキスト位置 :"
+
+#: mcs-plugin/xfwm4_plugin.c:1399
+msgid "Title Alignment"
+msgstr "タイトル位置"
+
+#: mcs-plugin/xfwm4_plugin.c:1411
+msgid "Button layout"
+msgstr "ボタン配置"
+
+#: mcs-plugin/xfwm4_plugin.c:1416
+msgid "Decoration style"
+msgstr "装飾スタイル"
+
+#: mcs-plugin/xfwm4_plugin.c:1449
+msgid "Keyboard Shortcut"
+msgstr "キーボード・ショートカット"
+
+#: mcs-plugin/xfwm4_plugin.c:1468
+msgid "Click to focus"
+msgstr "クリックでフォーカス"
+
+#: mcs-plugin/xfwm4_plugin.c:1482
+msgid "Focus follows mouse"
+msgstr "マウスを追ってフォーカス"
+
+#: mcs-plugin/xfwm4_plugin.c:1496
+msgid "Focus model"
+msgstr "フォーカス・モデル"
+
+#: mcs-plugin/xfwm4_plugin.c:1506
+msgid ""
+"Automatically give focus to \n"
+"newly created windows"
+msgstr ""
+"新規作成されたウィンドウを  \n"
+"自動でフォーカス"
+
+#: mcs-plugin/xfwm4_plugin.c:1514
+msgid "New window focus"
+msgstr "新規ウィンドウのフォーカス"
+
+#: mcs-plugin/xfwm4_plugin.c:1529
+msgid ""
+"Automatically raise windows \n"
+"when they receive focus"
+msgstr ""
+"ウィンドウがフォーカスを取得\n"
+"した時に、自動で最前面にする"
+
+#: mcs-plugin/xfwm4_plugin.c:1542
+msgid "Delay before raising focused window :"
+msgstr "フォーカスを取得後、最前面へする遅延 :"
+
+#: mcs-plugin/xfwm4_plugin.c:1550
+msgid "Slow"
+msgstr "遅い"
+
+#: mcs-plugin/xfwm4_plugin.c:1558
+msgid "Fast"
+msgstr "速い"
+
+#: mcs-plugin/xfwm4_plugin.c:1582
+msgid "Raise on focus"
+msgstr "フォーカスで最前面"
+
+#: mcs-plugin/xfwm4_plugin.c:1592
+msgid ""
+"Raise window when clicking inside\n"
+"application window"
+msgstr ""
+"アプリケーション・ウィンドウ内で \n"
+"クリックして最前面"
+
+#: mcs-plugin/xfwm4_plugin.c:1601
+msgid "Raise on click"
+msgstr "クリックで最前面"
+
+#: mcs-plugin/xfwm4_plugin.c:1606
+msgid "Keyboard and focus"
+msgstr "キーボードとフォーカス"
+
+#: mcs-plugin/xfwm4_plugin.c:1629
+msgid "Snap windows to screen border"
+msgstr "スクリーン境界でウィンドウを止める"
+
+#: mcs-plugin/xfwm4_plugin.c:1638
+msgid "Snap windows to other windows"
+msgstr "他のウィンドウでウィンドウを止める"
+
+#: mcs-plugin/xfwm4_plugin.c:1651
+msgid "Distance :"
+msgstr "距離 :"
+
+#: mcs-plugin/xfwm4_plugin.c:1659 mcs-plugin/xfwm4_plugin.c:1734
+msgid "Small"
+msgstr "狭い"
+
+#: mcs-plugin/xfwm4_plugin.c:1667 mcs-plugin/xfwm4_plugin.c:1742
+msgid "Wide"
+msgstr "広い"
+
+#: mcs-plugin/xfwm4_plugin.c:1690
+msgid "Windows snapping"
+msgstr "ウィンドウ・スナップ"
+
+#: mcs-plugin/xfwm4_plugin.c:1705
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "ポインターがスクリーン端に来たら、ワークスペースを循環"
+
+#: mcs-plugin/xfwm4_plugin.c:1714
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "スクリーンでウィンドウをドラッグ中、ワークスペースを循環"
+
+#: mcs-plugin/xfwm4_plugin.c:1726
+msgid "Edge Resistance :"
+msgstr "エッジ抵抗 :"
+
+#: mcs-plugin/xfwm4_plugin.c:1767
+msgid "Wrap workspaces"
+msgstr "ワークスペース循環"
+
+#: mcs-plugin/xfwm4_plugin.c:1782
+msgid "Display content of windows when resizing"
+msgstr "サイズ変更時のウィンドウ表示"
+
+#: mcs-plugin/xfwm4_plugin.c:1790
+msgid "Display content of windows when moving"
+msgstr "移動時のウィンドウ表示"
+
+#: mcs-plugin/xfwm4_plugin.c:1797
+msgid "Opaque move and resize"
+msgstr "不透明表示の移動とサイズ変更"
+
+#: mcs-plugin/xfwm4_plugin.c:1808
+msgid "Action to perform when double clicking on title bar :"
+msgstr "タイトルバーをダブルクリックした時の動作 :"
+
+#: mcs-plugin/xfwm4_plugin.c:1814
+msgid "Double click action"
+msgstr "ダブルクリック動作"
+
+#: mcs-plugin/xfwm4_plugin.c:1819
+msgid "Advanced"
+msgstr ""
+
+#: src/client.c:441
+#, c-format
+msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
+msgstr ""
+
+#: src/events.c:1290
+#, c-format
+msgid "%s: Operation not supported (yet)\n"
+msgstr "%s: この操作はサポート外です\n"
+
+#: src/main.c:182
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: セグメンテーション違反です"
+
+#: src/main.c:235
+#, c-format
+msgid "%s: Running without session manager"
+msgstr "%s: セッション・マネージャ無しで実行中"
+
+#: src/main.c:341
+#, c-format
+msgid "%s: Another Window Manager is already running"
+msgstr "%s: 別のウィンドウ・マネージャが実行中"
+
+#: src/main.c:346
+#, c-format
+msgid "%s: Missing data from default files"
+msgstr "%s: 標準ファイルにデータが見付かりません"
+
+#: src/main.c:373
+#, c-format
+msgid "%s: Unknown error occured"
+msgstr "%s: 未知のエラーが発生"
+
+#: src/menu.c:42
+msgid "Ma_ximize"
+msgstr "最大化(_x)"
+
+#: src/menu.c:43
+msgid "Un_maximize"
+msgstr "元に戻す(_m)"
+
+#: src/menu.c:44
+msgid "_Hide"
+msgstr "隠す(_H)"
+
+#: src/menu.c:45
+msgid "Hide _all others"
+msgstr "他を隠す(_a)"
+
+#: src/menu.c:46
+msgid "S_how"
+msgstr "表示(_h)"
+
+#: src/menu.c:47
+msgid "_Shade"
+msgstr "折りたたむ(_S)"
+
+#: src/menu.c:48
+msgid "Un_shade"
+msgstr "伸ばす(_s)"
+
+#: src/menu.c:49
+msgid "S_tick"
+msgstr "貼る(_t)"
+
+#: src/menu.c:50
+msgid "Uns_tick"
+msgstr "はがす(_t)"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "送る..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "閉じる(_C)"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "殺す"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "終了(_Q)"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "再起動"
+
+#: src/menu.c:163
+#, c-format
+msgid "Workspace %i"
+msgstr "ワークスペース %i"
+
+#: src/menu.c:405
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenuはポインターを取得できませんでした\n"
+
+#: src/settings.c:282
+#, c-format
+msgid "%s: Missing defaults file"
+msgstr "%s: 標準ファイルが、みつかりません"
+
+#: src/settings.c:507
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: アクティブ・カラーを割り当てできません %s\n"
+
+#: src/settings.c:514
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: アクティブ・カラーが解析できません %s\n"
+
+#: src/settings.c:558
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: 非アクティブ・カラーを割り当てできません %s\n"
+
+#: src/settings.c:565
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: 非アクティブ・カラーが解析できません %s\n"
+
+#: src/settings.c:755
+#, c-format
+msgid "%s: Missing values in defaults file"
+msgstr "%s: 標準ファイルに値が見付かりません"
+
+#: src/settings.c:1090
+#, c-format
+msgid "%s: Workspace count not set, using rc value: %i"
+msgstr ""
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr ""
