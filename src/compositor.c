@@ -1042,7 +1042,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     TRACE ("Copying data back to screen");
     XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, dest_region);
     XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
-                        0, 0, 0, 0, 0, 0, screen_width, screen_height);
+                      0, 0, 0, 0, 0, 0, screen_width, screen_height);
     if (dest_region != None)
     {
         XFixesDestroyRegion (dpy, dest_region);
@@ -2121,15 +2121,15 @@ compositorRepairDisplay (DisplayInfo *display_info)
 #endif /* HAVE_COMPOSITOR */
 }
     
-void
-compositorManageScreen (ScreenInfo *screen_info)
+gboolean
+compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
 {
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
 
-    g_return_if_fail (screen_info != NULL);
+    g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering compositorManageScreen");    
     
     display_info = screen_info->display_info;
@@ -2137,16 +2137,29 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     if (!(display_info->enable_compositor))
     {
-        return;
+        return FALSE;
     }
 
     gdk_error_trap_push ();
-    XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
+    if (manual_redirect)
+    {
+        XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
+    }
+    else
+    {
+        XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectAutomatic);
+    }
     XSync (display_info->dpy, FALSE);
     if (gdk_error_trap_pop ())
     {
         g_warning (_("%s: Another compositing manager is running on screen %i"), PACKAGE, screen_info->screen);
-        return;
+        return FALSE;
+    }
+    
+    if (!manual_redirect)
+    {
+        /* That's enough for automatic compositing */
+        return TRUE;
     }
 
     visual_format = XRenderFindVisualFormat (display_info->dpy, 
@@ -2171,6 +2184,10 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->compositor_active = TRUE;
 
     repair_screen (screen_info);
+    
+    return TRUE;
+#else
+    return FALSE;
 #endif /* HAVE_COMPOSITOR */
 }
 

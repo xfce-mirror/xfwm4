@@ -301,8 +301,8 @@ static void
 print_usage (void)
 {
     g_print ("%s [--sm-client-id=ID] [--display=DISPLAY] \
-[--disable-compositor] [--daemon] [--version|-V] \
-[--help|-H]\n", PACKAGE);
+[--compositor=off|on|auto] [--daemon] \
+[--version|-V] [--help|-H]\n", PACKAGE);
     exit (0);
 }
 
@@ -318,8 +318,39 @@ print_version (void)
     exit (0);
 }
 
+static gint
+parse_compositor (const gchar *s)
+{
+    gchar *buffer, *rvalue;
+    gboolean retval = 2;
+
+    rvalue = strrchr (s, '=');
+    if (rvalue)
+    {
+        rvalue++;
+        if (!strcmp (rvalue, "off"))
+        {
+            retval=0;
+        }
+        else if (!strcmp (rvalue, "auto"))
+        {
+            retval=1;
+        }
+        else if (!strcmp (rvalue, "on"))
+        {
+            retval=2;
+        }
+        else
+        {
+            g_warning ("%s: Unrecognized compositor option \"%s\"", PACKAGE, rvalue);
+        }
+    }
+
+    return retval;
+}
+
 static int
-initialize (int argc, char **argv, gboolean enable_compositor)
+initialize (int argc, char **argv, gint compositor_mode)
 {
     struct sigaction act;
     long ws;
@@ -343,7 +374,7 @@ initialize (int argc, char **argv, gboolean enable_compositor)
     display_info = myDisplayInit (gdk_display_get_default ());
     
     /* Disabling compositor from command line */
-    if (!enable_compositor)
+    if (!compositor_mode)
     {
         display_info->enable_compositor = FALSE;
     }
@@ -377,6 +408,11 @@ initialize (int argc, char **argv, gboolean enable_compositor)
             return -2;
         }
         
+        if (compositor_mode)
+        {
+            compositorManageScreen (screen_info, (compositor_mode == 2));
+        }
+
         sn_init_display (screen_info);
         myDisplayAddScreen (display_info, screen_info);
         setGnomeProtocols (display_info->dpy, screen_info->screen, screen_info->gnome_win);
@@ -398,6 +434,8 @@ initialize (int argc, char **argv, gboolean enable_compositor)
         clientFrameAll (screen_info);
         
         initGtkCallbacks (screen_info);
+
+        XDefineCursor (display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(display_info));
     }
     /* No screen to manage, give up */
     if (!display_info->nb_screens)
@@ -426,7 +464,7 @@ main (int argc, char **argv)
 {
     int i;
     gboolean daemon_mode = FALSE;
-    gboolean compositor = TRUE;
+    gint compositor = 2;
     int status;
 
     for (i = 1; i < argc; i++)
@@ -435,9 +473,9 @@ main (int argc, char **argv)
         {
             daemon_mode = TRUE;
         }
-        else if (!strcmp (argv[i], "--disable-compositor"))
+        else if (!strncmp (argv[i], "--compositor=", strlen ("--compositor=")))
         {
-            compositor = FALSE;
+            compositor = parse_compositor (argv[i]);
         }
         else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
         {

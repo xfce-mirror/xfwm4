@@ -42,7 +42,7 @@ gboolean compositorCheckDamageEvent (DisplayInfo *display_info);
 void     compositorInitDisplay      (DisplayInfo *);
 void     compositorRepairDisplay    (DisplayInfo *);
 
-void     compositorManageScreen     (ScreenInfo *);
+gboolean compositorManageScreen     (ScreenInfo *, gboolean);
 void     compositorUnmanageScreen   (ScreenInfo *);
 void     compositorRepairScreen     (DisplayInfo *);
 

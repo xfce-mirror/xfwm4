@@ -172,9 +172,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         xfwmPixmapInit (screen_info, &screen_info->title[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->title[i][INACTIVE]);
     }
-    compositorManageScreen (screen_info);
-
-    XDefineCursor (display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(display_info));
 
     return (screen_info);
 }
