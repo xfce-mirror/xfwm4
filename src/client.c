@@ -403,11 +403,11 @@ clientUpdateUrgency (Client *c)
     if ((c->wmhints) && (c->wmhints->flags & XUrgencyHint))
     {
         FLAG_SET (c->wm_flags, WM_FLAG_URGENT);
-	if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
-	{
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+        {
             c->blink_timeout_id =  
-	        g_timeout_add_full (0, 500, (GtkFunction) urgent_cb,
-		                            (gpointer) c, NULL);
+                g_timeout_add_full (0, 500, (GtkFunction) urgent_cb,
+                                            (gpointer) c, NULL);
         }
     }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE)
@@ -3240,7 +3240,9 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
-        if (!clientCkeckTitle (c))
+        if (((passdata->corner == CORNER_TOP_LEFT) 
+             || (passdata->corner == CORNER_TOP_RIGHT)) 
+            && !clientCkeckTitle (c))
         {
             c->x = prev_x;
             c->width = prev_width;
@@ -3254,7 +3256,9 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->y = c->y - (c->height - passdata->oldh);
             frame_y = frameY (c);
         }
-        if (!clientCkeckTitle (c))
+        if (((passdata->corner == CORNER_TOP_LEFT) 
+             || (passdata->corner == CORNER_TOP_RIGHT)) 
+            && !clientCkeckTitle (c))
         {
             c->y = prev_y;
             c->height = prev_height;
@@ -3616,11 +3620,11 @@ clientCycle (Client * c, XEvent * e)
     myDisplayGrabServer (display_info);
     if (screen_info->params->cycle_hidden)
     {
-	passdata.cycle_range = INCLUDE_HIDDEN;
+        passdata.cycle_range = INCLUDE_HIDDEN;
     }
     else
     {
-	passdata.cycle_range = 0;
+        passdata.cycle_range = 0;
     }
     if (!screen_info->params->cycle_minimum)
     {
