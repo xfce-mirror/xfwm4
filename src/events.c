@@ -496,6 +496,11 @@ static inline void handleConfigureRequest(XConfigureRequestEvent * ev)
     c = clientGetFromWindow(ev->window, WINDOW);
     if(c)
     {
+        if (c->type == WINDOW_DESKTOP)
+	{
+	    /* Ignore stacking request for DESKTOP windows */
+	    wc.stack_mode &= ~CWStackMode;
+	}
         clientCoordGravitate(c, APPLY, &wc.x, &wc.y);
         clientConfigure(c, &wc, ev->value_mask);
     }

@@ -1957,7 +1957,7 @@ void clientRaise(Client * c)
     DBG("entering clientRaise\n");
     DBG("raising client \"%s\" (%#lx)\n", c->name, c->window);
 
-    if(c->managed)
+    if((c->managed) && (c->type != WINDOW_DESKTOP))
     {
         wc.stack_mode = Above;
         clientConfigure(c, &wc, CWStackMode);
