@@ -534,6 +534,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             FLAG_TOGGLE (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState (c);
         }
+        frameDraw (c, TRUE, FALSE);
     }
 }
 
