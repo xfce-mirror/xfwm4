@@ -145,7 +145,6 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
-
     if (XpmReadFileToPixmap (myScreenGetXDisplay (screen_info), 
                              screen_info->xroot, filename, 
                              &pm->pixmap, &pm->mask, &attr))
