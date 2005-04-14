@@ -1433,7 +1433,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     if (checkKdeSystrayWindow (display_info, w))
     {
-        g_print ("Detected KDE systray windows\n");
+        TRACE ("Detected KDE systray windows");
         if (screen_info->systray != None)
         {
             sendSystrayReqDock (display_info, w, screen_info->systray);
@@ -1441,7 +1441,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             gdk_error_trap_pop ();
             return NULL;
         }
-        g_print ("No systray found for this screen\n");
+        TRACE ("No systray found for this screen");
     }
 
     if (attr.override_redirect)
