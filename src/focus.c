@@ -208,6 +208,7 @@ clientSelectMask (Client * c, int mask, int type)
     {
         return TRUE;
     }
+
     return FALSE;
 }
 
@@ -288,14 +289,13 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         if (c)
         {
-            if (clientIsModal (c))
+            if (clientIsModal (c) || clientIsModalForGroup(c))
             {
                 /* If the window is a modal, send focus back to its parent window
                    Modals are transients, and we aren"t interested in modal
                    for group, so it safe to use clientGetTransient because 
                    it's really what we want...
                  */
-
                 c2 = clientGetTransient (c);
                 if (c2 && FLAG_TEST(c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
@@ -307,10 +307,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
             else
             {
                 c2 = clientGetNext (c, 0);
-                /* Send focus back to the previous window only if it's on a different
-                   layer, to avoid sending focus back to a lowered window....
-                 */
-                if ((c2) && (c2->win_layer != c->win_layer))
+                if ((c2) && (c2->win_layer >= c->win_layer))
                 {
                     new_focus = c2;
                 }
