@@ -289,7 +289,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         if (c)
         {
-            if (clientIsModal (c) || clientIsModalForGroup(c))
+            if (clientIsModal (c))
             {
                 /* If the window is a modal, send focus back to its parent window
                    Modals are transients, and we aren"t interested in modal
