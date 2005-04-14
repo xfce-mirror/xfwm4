@@ -3115,11 +3115,11 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 }
             }
         }
-        if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED) 
+        if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED) 
             && (screen_info->params->restore_on_move)
             && !(screen_info->params->box_move))
         {
-            if (xevent->xmotion.y_root - passdata->oy > 15)
+            if (xevent->xmotion.y_root - passdata->my > 15)
             {
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
                 passdata->ox = c->x;
@@ -3144,6 +3144,11 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             {
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
                 toggled_maximize = FALSE;
+                /* 
+                   Update "passdata->my" to the current value to 
+                   allow "restore on move" to keep working next time 
+                 */
+                passdata->my = c->y - frameTop(c) / 2;
             }
         }
         else
