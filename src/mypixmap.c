@@ -137,13 +137,15 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     g_free (filexpm);
     attr.colorsymbols = cs;
     attr.numsymbols = n;
+    attr.depth = screen_info->depth;
     attr.colormap = pm->screen_info->cmap;
     attr.closeness = 65535;
-    attr.valuemask = XpmCloseness | XpmColormap | XpmSize;
-    if (n > 0 && cs)
+    attr.valuemask = XpmCloseness | XpmColormap | XpmSize | XpmDepth;
+    if ((n > 0) && (cs != NULL))
     {
         attr.valuemask = attr.valuemask | XpmColorSymbols;
     }
+
     if (XpmReadFileToPixmap (myScreenGetXDisplay (screen_info), 
                              screen_info->xroot, filename, 
                              &pm->pixmap, &pm->mask, &attr))
