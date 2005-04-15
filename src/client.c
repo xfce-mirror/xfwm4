@@ -107,6 +107,7 @@ struct _MoveResizeData
     gboolean use_keys;
     gboolean grab;
     gboolean is_transient;
+    gboolean move_resized;
     int mx, my;
     int ox, oy;
     int oldw, oldh;
@@ -1242,7 +1243,7 @@ clientApplyInitialState (Client * c)
             }
             /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-            clientToggleMaximized (c, mode);
+            clientToggleMaximized (c, mode, TRUE);
         }
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -1334,7 +1335,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
     {
         TRACE ("client \"%s\" (0x%lx) has received a win_state/maximize event",
             c->name, c->window);
-        clientToggleMaximized (c, add_remove);
+        clientToggleMaximized (c, add_remove, TRUE);
     }
 }
 
@@ -2653,7 +2654,7 @@ clientRemoveMaximizeFlag (Client * c)
 }
 
 void
-clientToggleMaximized (Client * c, int mode)
+clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 {
     ScreenInfo *screen_info = NULL;
     XWindowChanges wc;
@@ -2693,7 +2694,10 @@ clientToggleMaximized (Client * c, int mode)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
-            c->old_x = c->x;
+            if (restore_position)
+            {
+                c->old_x = c->x;
+            }
             c->old_width = c->width;
             wc.x = full_x + frameLeft (c);
             wc.width = full_w - frameLeft (c) - frameRight (c);
@@ -2718,7 +2722,10 @@ clientToggleMaximized (Client * c, int mode)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
-            c->old_y = c->y;
+            if (restore_position)
+            {
+                c->old_y = c->y;
+            }
             c->old_height = c->height;
             wc.y = full_y + frameTop (c);
             wc.height = full_h - frameTop (c) - frameBottom (c);
@@ -2745,15 +2752,18 @@ clientToggleMaximized (Client * c, int mode)
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        /*
-           For some reason, the configure can generate EnterNotify events
-           on lower windows, causing a nasty race cond with apps trying to
-           grab focus in focus follow mouse mode. Grab the pointer to
-           avoid these effects
-         */
-        myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
-        myScreenUngrabPointer (screen_info, CurrentTime);
+        if (restore_position)
+        {
+            /*
+               For some reason, the configure can generate EnterNotify events
+               on lower windows, causing a nasty race cond with apps trying to
+               grab focus in focus follow mouse mode. Grab the pointer to
+               avoid these effects
+             */
+            myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
+            clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_NOTIFY);
+            myScreenUngrabPointer (screen_info, CurrentTime);
+        }
     }
 }
 
@@ -3116,12 +3126,12 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             }
         }
         if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED) 
-            && (screen_info->params->restore_on_move)
-            && !(screen_info->params->box_move))
+            && (screen_info->params->restore_on_move))
         {
             if (xevent->xmotion.y_root - passdata->my > 15)
             {
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
+                passdata->move_resized = TRUE;
                 passdata->ox = c->x;
                 passdata->mx = c->x + c->width / 2;
                 passdata->oy = c->y;
@@ -3130,20 +3140,21 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             }
             else
             {
-                return XEV_FILTER_CONTINUE;
+                xevent->xmotion.x_root = c->x - passdata->ox + passdata->mx;
+                xevent->xmotion.y_root = c->y - passdata->oy + passdata->my;
             }
         }
        
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
-        if ((screen_info->params->restore_on_move) 
-            && !(screen_info->params->box_move))
+        if (screen_info->params->restore_on_move)
         {
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
             {
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
                 toggled_maximize = FALSE;
+                passdata->move_resized = TRUE;
                 /* 
                    Update "passdata->my" to the current value to 
                    allow "restore on move" to keep working next time 
@@ -3169,9 +3180,19 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         }
         else
         {
+            int changes = CWX | CWY;
+
+            if (passdata->move_resized)
+            {
+                wc.width = c->width;
+                wc.height = c->height;
+                changes |= CWWidth | CWHeight;
+                passdata->move_resized = FALSE;
+            }
+
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
+            clientConfigure (c, &wc, changes, NO_CFG_FLAG);
         }
     }
     else if (xevent->type == ButtonRelease)
@@ -3218,6 +3239,7 @@ clientMove (Client * c, XEvent * ev)
     Cursor cursor = None;
     gboolean g1, g2;
     gboolean restore_opacity = FALSE;
+    int changes = CWX | CWY;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientDoMove");
@@ -3232,7 +3254,8 @@ clientMove (Client * c, XEvent * ev)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
-
+    passdata.move_resized = FALSE;
+    
     if (ev->type == KeyPress)
     {
         cursor = None;
@@ -3310,7 +3333,13 @@ clientMove (Client * c, XEvent * ev)
 
     wc.x = c->x;
     wc.y = c->y;
-    clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
+    if (passdata.move_resized)
+    {
+        wc.width = c->width;
+        wc.height = c->height;
+        changes |= CWWidth | CWHeight;
+    }
+    clientConfigure (c, &wc, changes, NO_CFG_FLAG);
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
@@ -4103,17 +4132,17 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
                     if (bev->button == Button1)
                     {
                         clientToggleMaximized (c,
-                            mode ? mode : WIN_STATE_MAXIMIZED);
+                            mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
                     }
                     else if (bev->button == Button2)
                     {
                         clientToggleMaximized (c,
-                            mode ? mode : WIN_STATE_MAXIMIZED_VERT);
+                            mode ? mode : WIN_STATE_MAXIMIZED_VERT, TRUE);
                     }
                     else if (bev->button == Button3)
                     {
                         clientToggleMaximized (c,
-                            mode ? mode : WIN_STATE_MAXIMIZED_HORIZ);
+                            mode ? mode : WIN_STATE_MAXIMIZED_HORIZ, TRUE);
                     }
                 }
                 break;

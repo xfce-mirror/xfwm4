@@ -499,13 +499,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_MAXIMIZE_WINDOW:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
             case KEY_MAXIMIZE_VERT:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT, TRUE);
                 break;
             case KEY_MAXIMIZE_HORIZ:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ, TRUE);
                 break;
             case KEY_SHADE_WINDOW:
                 clientToggleShaded (c);
@@ -723,7 +723,7 @@ button1Action (Client * c, XButtonEvent * ev)
         switch (screen_info->params->double_click_action)
         {
             case ACTION_MAXIMIZE:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
             case ACTION_SHADE:
                 clientToggleShaded (c);
@@ -2102,7 +2102,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_UNMAXIMIZE:
                 if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
                 {
-                    clientToggleMaximized (c, WIN_STATE_MAXIMIZED);
+                    clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 }
                 break;
             case MENU_OP_MINIMIZE:

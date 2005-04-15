@@ -307,7 +307,7 @@ void     clientToggleFullscreen (Client *);
 void     clientToggleAbove (Client *);
 void     clientToggleBelow (Client *);
 void     clientRemoveMaximizeFlag (Client *);
-void     clientToggleMaximized (Client *, int);
+void     clientToggleMaximized (Client *, int, gboolean);
 void     clientScreenResize(ScreenInfo *);
 void     clientMove (Client *, XEvent *);
 void     clientResize (Client *, int, XEvent *);

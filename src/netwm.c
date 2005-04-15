@@ -368,7 +368,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 {
                     mode |= !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
                 }
-                clientToggleMaximized (c, mode);
+                clientToggleMaximized (c, mode, TRUE);
             }
             else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
@@ -383,7 +383,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 {
                     mode |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
                 }
-                clientToggleMaximized (c, mode);
+                clientToggleMaximized (c, mode, TRUE);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
@@ -398,7 +398,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 {
                     mode |= WIN_STATE_MAXIMIZED_VERT;
                 }
-                clientToggleMaximized (c, mode);
+                clientToggleMaximized (c, mode, TRUE);
             }
         }
     }
