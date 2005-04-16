@@ -970,7 +970,6 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
                     
                     loadtheme_in_treeview (ti, itf);
                     gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
-                    gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
                     gtk_widget_set_sensitive (itf->del_button, ti->user_writable);
                 }
                 else
@@ -991,7 +990,6 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
                     keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
                                                          KEYBINDING_THEMES, current_key_theme);
                     gtk_widget_set_sensitive (itf->treeview3, FALSE);
-                    gtk_widget_set_sensitive (itf->treeview4, FALSE);
                     loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
                     
                     /* tell it to the mcs manager */
@@ -1545,37 +1543,6 @@ create_dialog (McsPlugin * mcs_plugin)
 
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview3), TRUE);
 
-    frame = xfce_framebox_new (_("Command shortcuts"), FALSE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox9), frame, TRUE, TRUE, 0);
-
-    dialog->scrolledwindow4 = gtk_scrolled_window_new (NULL, NULL);
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (dialog->scrolledwindow4), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-    gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow4), BORDER);
-    gtk_widget_show (dialog->scrolledwindow4);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->scrolledwindow4);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow4), GTK_SHADOW_IN);
-
-    model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
-    dialog->treeview4 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
-    gtk_widget_show (dialog->treeview4);
-    gtk_container_add (GTK_CONTAINER (dialog->scrolledwindow4), dialog->treeview4);
-
-    /* command column */
-    renderer = gtk_cell_renderer_text_new ();
-    g_object_set_data (G_OBJECT (renderer), "column", (gint *) COLUMN_COMMAND);
-
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview4), -1, _("Command"), renderer, "text", COLUMN_COMMAND, NULL);
-    /* shortcut column */
-    renderer = gtk_cell_renderer_text_new ();
-    g_object_set_data (G_OBJECT (renderer), "column", (gint *) COLUMN_SHORTCUT);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview4), -1, _("Shortcut"), renderer, "text", COLUMN_SHORTCUT, NULL);
-    /* command name hidden column */
-    hidden_column = gtk_tree_view_column_new_with_attributes ("name", renderer, "text", COLUMN_NAME, NULL);
-    gtk_tree_view_column_set_visible (hidden_column, FALSE);
-    gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview4), hidden_column);
-    
-    gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (dialog->treeview4), TRUE);
     /* popup menu */
     dialog->popup_menu = gtk_menu_new ();
     dialog->popup_add_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD,NULL);
@@ -1877,7 +1844,6 @@ setup_dialog (Itf * itf)
     g_signal_connect (G_OBJECT (itf->del_button), "clicked", G_CALLBACK (cb_popup_del_menu), itf);
 
     g_signal_connect (G_OBJECT (itf->treeview3), "row-activated", G_CALLBACK (cb_activate_treeview3), itf);
-    g_signal_connect (G_OBJECT (itf->treeview4), "row-activated", G_CALLBACK (cb_activate_treeview4), itf);
 
 
     decoration_theme_list = read_themes (decoration_theme_list, itf->treeview1, itf->scrolledwindow1, DECORATION_THEMES, current_theme);
@@ -1890,7 +1856,6 @@ setup_dialog (Itf * itf)
     if (ti)
     {
         gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
-        gtk_widget_set_sensitive (itf->treeview4, ti->user_writable);
         loadtheme_in_treeview (ti, itf);
     }
     else

@@ -97,7 +97,6 @@ struct _Itf
     GtkWidget *treeview1;
     GtkWidget *treeview2;
     GtkWidget *treeview3;
-    GtkWidget *treeview4;
     GtkWidget *wrap_workspaces_check;
     GtkWidget *wrap_windows_check;
     GtkWidget *wrap_resistance_scale;
