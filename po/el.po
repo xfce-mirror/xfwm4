@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: el_GR1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-12 10:21+0100\n"
-"PO-Revision-Date: 2005-03-21 17:08+0200\n"
-"Last-Translator: Stavros Giannouris <StavrosG2002@freemail.gr>\n"
+"PO-Revision-Date: 2005-04-10 19:32+0200\n"
+"Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Ελληνικά\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,30 +24,33 @@ msgstr "Περιθώρια Χώρου Εργασίας"
 
 #: mcs-plugin/margins.c:137
 msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα "
+msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
-msgstr "Αριστερά:"
+msgstr "Αριστερά :"
 
 #: mcs-plugin/margins.c:188
 msgid "Right :"
-msgstr "Δεξιά:"
+msgstr "Δεξιά :"
 
 #: mcs-plugin/margins.c:208
 msgid "Top :"
-msgstr "Επάνω:"
+msgstr "Επάνω :"
 
 #: mcs-plugin/margins.c:228
 msgid "Bottom :"
-msgstr "Κάτω:"
+msgstr "Κάτω :"
 
-#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
+#: mcs-plugin/plugin.c:109
+#: mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Χώροι Εργασίας και Περιθώρια"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
+#: mcs-plugin/plugin.c:135
+#: mcs-plugin/plugin.c:166
+#: mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Χώροι Εργασίας"
 
@@ -59,18 +62,23 @@ msgstr "Περιθώρια"
 msgid "Change name"
 msgstr "Αλλαγή ονόματος"
 
-#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:496
-#: mcs-plugin/xfwm4_shortcuteditor.c:505 mcs-plugin/xfwm4_shortcuteditor.c:514
-#: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
-#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
-#: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/workspaces.c:357
+#: mcs-plugin/xfwm4_shortcuteditor.c:496
+#: mcs-plugin/xfwm4_shortcuteditor.c:505
+#: mcs-plugin/xfwm4_shortcuteditor.c:514
+#: mcs-plugin/xfwm4_shortcuteditor.c:523
+#: mcs-plugin/xfwm4_shortcuteditor.c:532
+#: mcs-plugin/xfwm4_shortcuteditor.c:541
+#: mcs-plugin/xfwm4_shortcuteditor.c:550
+#: mcs-plugin/xfwm4_shortcuteditor.c:559
+#: mcs-plugin/xfwm4_shortcuteditor.c:568
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
 
 #: mcs-plugin/workspaces.c:367
 msgid "Name:"
-msgstr "Όνομα:"
+msgstr "Όνομα :"
 
 #: mcs-plugin/workspaces.c:455
 msgid "Click on a workspace name to edit it"
@@ -109,15 +117,18 @@ msgstr "Μεγιστοποίηση"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:385
+#: mcs-plugin/xfwm4_plugin.c:86
+#: mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Shade window"
 msgstr "Σκίαση παραθύρου"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:380
+#: mcs-plugin/xfwm4_plugin.c:87
+#: mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Hide window"
 msgstr "Απόκρυψη παραθύρου"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:365
+#: mcs-plugin/xfwm4_plugin.c:88
+#: mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Maximize window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
@@ -127,7 +138,7 @@ msgstr "Τίποτα"
 
 #: mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
-msgstr " Αριστερά"
+msgstr "Αριστερά"
 
 #: mcs-plugin/xfwm4_plugin.c:95
 msgid "Center"
@@ -161,7 +172,8 @@ msgstr "Κρυμμένο"
 msgid "Font Selection Dialog"
 msgstr "Πλαίσιο επιλογής Γραμματοσειράς"
 
-#: mcs-plugin/xfwm4_plugin.c:1408 mcs-plugin/xfwm4_plugin.c:1928
+#: mcs-plugin/xfwm4_plugin.c:1408
+#: mcs-plugin/xfwm4_plugin.c:1928
 msgid "Window Manager"
 msgstr "Διαχειριστής Παραθύρων"
 
@@ -194,11 +206,13 @@ msgstr "Στυλ"
 msgid "Window shortcuts"
 msgstr "Συντόμευση παραθύρου"
 
-#: mcs-plugin/xfwm4_plugin.c:1535 mcs-plugin/xfwm4_plugin.c:1568
+#: mcs-plugin/xfwm4_plugin.c:1535
+#: mcs-plugin/xfwm4_plugin.c:1568
 msgid "Command"
 msgstr "Εντολή"
 
-#: mcs-plugin/xfwm4_plugin.c:1540 mcs-plugin/xfwm4_plugin.c:1572
+#: mcs-plugin/xfwm4_plugin.c:1540
+#: mcs-plugin/xfwm4_plugin.c:1572
 msgid "Shortcut"
 msgstr "Συντόμευση"
 
@@ -216,7 +230,7 @@ msgstr "Μοντέλο εστίασης"
 
 #: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Click to focus"
-msgstr "Κάντε κλικ για εστίαση"
+msgstr "Κλικ για εστίαση"
 
 #: mcs-plugin/xfwm4_plugin.c:1613
 msgid "Focus follows mouse"
@@ -240,49 +254,51 @@ msgstr "Ανύψωσε τα παράθυρα αυτόματα όταν εστι�
 
 #: mcs-plugin/xfwm4_plugin.c:1647
 msgid "Delay before raising focused window :"
-msgstr "Καθυστέρηση πριν την ανύψωση παραθύρου:"
+msgstr "Καθυστέρηση πριν την ανύψωση παραθύρου :"
 
 #: mcs-plugin/xfwm4_plugin.c:1653
 msgid "Slow"
-msgstr " Αργή"
+msgstr "Αργή"
 
 #: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Fast"
-msgstr " Γρήγορη"
+msgstr "Γρήγορη"
 
 #: mcs-plugin/xfwm4_plugin.c:1675
 msgid "Raise on click"
-msgstr " Ανύψωση στο κλικ"
+msgstr "Ανύψωση στο κλικ"
 
 #: mcs-plugin/xfwm4_plugin.c:1679
 msgid "Raise window when clicking inside application window"
-msgstr " Ανύψωση παραθύρου όταν γίνεται κλικ μέσα σε παράθυρο εφαρμογής "
+msgstr "Ανύψωση παραθύρου όταν γίνεται κλικ μέσα σε παράθυρο εφαρμογής "
 
 #: mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
-msgstr " Εστίαση"
+msgstr "Εστίαση"
 
 #: mcs-plugin/xfwm4_plugin.c:1694
 msgid "Windows snapping"
-msgstr " Ταίριασμα παραθύρων"
+msgstr "Ταίριασμα παραθύρων"
 
 #: mcs-plugin/xfwm4_plugin.c:1702
 msgid "Snap windows to screen border"
-msgstr " Ταίριασμα παραθύρων στο περίγραμμα της οθόνης"
+msgstr "Ταίριασμα παραθύρων στο περίγραμμα της οθόνης"
 
 #: mcs-plugin/xfwm4_plugin.c:1707
 msgid "Snap windows to other windows"
-msgstr " Ταίριασμα παραθύρων σε άλλα παράθυρα"
+msgstr "Ταίριασμα παραθύρων σε άλλα παράθυρα"
 
 #: mcs-plugin/xfwm4_plugin.c:1717
 msgid "Distance :"
-msgstr " Απόσταση:"
+msgstr "Απόσταση :"
 
-#: mcs-plugin/xfwm4_plugin.c:1723 mcs-plugin/xfwm4_plugin.c:1773
+#: mcs-plugin/xfwm4_plugin.c:1723
+#: mcs-plugin/xfwm4_plugin.c:1773
 msgid "Small"
 msgstr "Μικρή"
 
-#: mcs-plugin/xfwm4_plugin.c:1729 mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1729
+#: mcs-plugin/xfwm4_plugin.c:1779
 msgid "Wide"
 msgstr "Μεγάλη"
 
@@ -330,7 +346,8 @@ msgstr "Για προχωρημένους"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Θέλετε σίγουρα να απομακρύνετε αυτό το θέμα αντιστοίχησης πλήκτρων ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
+#: mcs-plugin/xfwm4_shortcuteditor.c:126
+#: mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
 msgstr "Προσθήκη θέματος αντιστοίχησης πλήκτρων"
 
@@ -412,7 +429,7 @@ msgstr "Σε πλήρη οθόνη"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:455
 msgid "Upper workspace"
-msgstr "Ανώτερος χώρος εργασίας"
+msgstr "Πάνω χώρος εργασίας"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:460
 msgid "Bottom workspace"
@@ -420,11 +437,11 @@ msgstr "Κάτω χώρος εργασίας"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:465
 msgid "Left workspace"
-msgstr "Αριστερός χώρος εργασίας"
+msgstr "Χώρος εργασίας αριστερά"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:470
 msgid "Right workspace"
-msgstr "Δεξιός χώρος εργασίας"
+msgstr "Χώρος εργασίας δεξιά"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:475
 msgid "Next workspace"
@@ -444,7 +461,7 @@ msgstr "Διαγραφή χώρου εργασίας"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:576
 msgid "Move window to next workspace"
-msgstr "θΜετακίνηση παραθύρου στον επόμενο χώρο εργασίας"
+msgstr "Μετακίνηση παραθύρου στον επόμενο χώρο εργασίας"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Move window to previous workspace"
@@ -515,7 +532,8 @@ msgstr ""
 "Αδύνατο το άνοιγμα του %s : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:887
+#: mcs-plugin/xfwm4_shortcuteditor.c:898
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -538,7 +556,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1157
 msgid "Compose shortcut for :"
-msgstr "Σύνταξη συντόμευσης για:"
+msgstr "Σύνταξη συντόμευσης για :"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1160
@@ -566,7 +584,7 @@ msgstr "Η εντολή δεν υπάρχει ή το αρχείο δεν είν
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1385
 msgid "Compose shortcut for command :"
-msgstr "Σύνταξη συντόμευσης για εντολή:"
+msgstr "Σύνταξη συντόμευσης για εντολή :"
 
 #: src/main.c:181
 #, c-format
@@ -613,7 +631,8 @@ msgstr "Αποεπικό_λληση"
 msgid "Context _help"
 msgstr "Βοήθεια πε_ριεχομένου"
 
-#: src/menu.c:49 src/menu.c:50
+#: src/menu.c:49
+#: src/menu.c:50
 msgid "Always on top"
 msgstr "Πάντα στην κορυφή"
 
