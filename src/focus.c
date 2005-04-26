@@ -165,7 +165,11 @@ clientFocusNew(Client * c)
             }
         }
         clientSetFocus (screen_info, c, 
+#if 0
                         myDisplayGetCurrentTime (display_info), 
+#else
+                        CurrentTime, 
+#endif
                         FOCUS_IGNORE_MODAL);
     }
     else
