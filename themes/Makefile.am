@@ -11,4 +11,5 @@ SUBDIRS =								\
 	therapy								\
 	tyrex								\
 	waza								\
+	wallis								\
 	wildbush

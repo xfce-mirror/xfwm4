@@ -1,13 +1,11 @@
 /* XPM */
 static char * stick_inactive_xpm[] = {
-"16 18 5 1",
+"16 16 5 1",
 " 	c None",
 "+	c #D0D0FF s inactive_hilight_1",
 "@	c #B0B0FF s inactive_mid_1",
 "#	c #C0C0FF s inactive_color_1",
 "$	c #D0D0FF s inactive_hilight_1",
-"                ",
-"                ",
 "                ",
 "                ",
 " @@@@@@@@@@@@@@ ",
