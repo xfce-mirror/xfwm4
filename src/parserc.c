@@ -38,7 +38,7 @@
 #endif
 
 gboolean
-parseRc (const gchar * file, const gchar * dir, Settings rc[])
+parseRc (const gchar * file, const gchar * dir, Settings *rc)
 {
     gchar buf[255];
     gchar *filename, *lvalue, *rvalue;
@@ -78,7 +78,7 @@ parseRc (const gchar * file, const gchar * dir, Settings rc[])
 }
 
 gboolean
-checkRc (Settings rc[])
+checkRc (Settings *rc)
 {
     gint i;
     gboolean rval = TRUE;
@@ -97,7 +97,7 @@ checkRc (Settings rc[])
 }
 
 gchar *
-getValue (const gchar * option, Settings rc[])
+getValue (const gchar * option, Settings *rc)
 {
     gint i;
 
@@ -116,7 +116,7 @@ getValue (const gchar * option, Settings rc[])
 }
 
 gboolean
-setValue (const gchar * lvalue, const gchar * rvalue, Settings rc[])
+setValue (const gchar * lvalue, const gchar * rvalue, Settings *rc)
 {
     gint i;
 
@@ -145,13 +145,13 @@ setValue (const gchar * lvalue, const gchar * rvalue, Settings rc[])
 }
 
 gboolean
-setBooleanValueFromInt (const gchar * lvalue, int value, Settings rc[])
+setBooleanValueFromInt (const gchar * lvalue, int value, Settings *rc)
 {
     return setValue (lvalue, value ? "true" : "false", rc);
 }
 
 gboolean
-setIntValueFromInt (const gchar * lvalue, int value, Settings rc[])
+setIntValueFromInt (const gchar * lvalue, int value, Settings *rc)
 {
     gchar *s;
     gboolean result;
@@ -215,7 +215,7 @@ getThemeDir (const gchar * theme, const gchar * file)
 }
 
 void
-freeRc (Settings rc[])
+freeRc (Settings *rc)
 {
     gint i;
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-23 01:23+0100\n"
+"POT-Creation-Date: 2005-04-26 23:38+0200\n"
 "PO-Revision-Date: 2004-09-22 20:20+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati\n"
@@ -60,11 +60,7 @@ msgstr "હાંસિયાઓ"
 msgid "Change name"
 msgstr "નામ બદલો"
 
-#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:496
-#: mcs-plugin/xfwm4_shortcuteditor.c:505 mcs-plugin/xfwm4_shortcuteditor.c:514
-#: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
-#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
-#: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:408
 #, c-format
 msgid "Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d"
@@ -110,15 +106,15 @@ msgstr "મહત્તમ કરો"
 msgid "Close"
 msgstr "બંધ કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:385
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Shade window"
 msgstr "વિન્ડોનો પડછાયો કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:380
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Hide window"
 msgstr "વિન્ડો છુપાવો"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:365
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window"
 msgstr "વિન્ડો મહત્તમ કરો"
 
@@ -347,175 +343,148 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:360
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Close window"
 msgstr "વિન્ડો બંધ કરો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:370
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window vertically"
 msgstr "વિન્ડોને ઊભી રીતે મહત્તમ કરો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:375
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Maximize window horizontally"
 msgstr "વિન્ડોને આડી રીતે મહત્તમ કરો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:390
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Stick window"
 msgstr "સ્ટીક વિન્ડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:395
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Cycle windows"
 msgstr "વતૃળ વિન્ડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:400
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window up"
 msgstr "વિન્ડોને ઉપર ખસેડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:405
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window down"
 msgstr "વિન્ડોને નીચે ખસેડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:410
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window left"
 msgstr "વિન્ડોને ડાબે ખસેડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:415
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window right"
 msgstr "વિન્ડોને જમણે ખસેડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:420
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Resize window up"
 msgstr "વિન્ડોને ઉપર માપ બદલો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:425
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window down"
 msgstr "વિન્ડોને નીચે માપ બદલો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:430
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window left"
 msgstr "વિન્ડોને ડાબે માપ બદલો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:435
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window right"
 msgstr "વિન્ડોને જમણે માપ બદલો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:440
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Raise window"
 msgstr "વિન્ડો વધારો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:445
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Lower window"
 msgstr "નીચલી વિન્ડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:450
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
 msgstr "પૂર્ણ સ્ક્રીનમાં ફેરવો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:455
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Upper workspace"
 msgstr "પછીની કામ કરવાની જગ્યા"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:460
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "પછીની કામ કરવાની જગ્યા"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:465
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Left workspace"
 msgstr "પછીની કામ કરવાની જગ્યા"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:470
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Right workspace"
 msgstr "પછીની કામ કરવાની જગ્યા"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:475
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Next workspace"
 msgstr "પછીની કામ કરવાની જગ્યા"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:480
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Previous workspace"
 msgstr "પહેલાની કામ કરવાની જગ્યા"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:485
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Add workspace"
 msgstr "કામ કરવાની જગ્યા ઉમેરો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:490
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Delete workspace"
 msgstr "કામ કરવાની જગ્યા કાઢી નાંખો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to next workspace"
 msgstr "વિન્ડોને પછીની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to previous workspace"
 msgstr "વિન્ડોને પહેલાની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "વિન્ડોને પછીની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "વિન્ડોને પછીની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "વિન્ડોને પછીની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "વિન્ડોને પછીની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
-msgid "Move window to workspace 1"
+#: mcs-plugin/xfwm4_shortcuteditor.c:320
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:429
+#, fuzzy, c-format
+msgid "Move window to workspace %d"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧ પર ખસાડો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
-msgid "Move window to workspace 2"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૨ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
-msgid "Move window to workspace 3"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૩ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
-msgid "Move window to workspace 4"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૪ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
-msgid "Move window to workspace 5"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૫ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
-msgid "Move window to workspace 6"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૬ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
-msgid "Move window to workspace 7"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૭ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
-msgid "Move window to workspace 8"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૮ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
-msgid "Move window to workspace 9"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૯ પર ખસાડો"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
 msgstr "થીમ ડિરેક્ટરી ખોલી શકતા નથી !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -524,7 +493,7 @@ msgstr ""
 "%s ખોલી શકતા નથી : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -533,11 +502,11 @@ msgstr ""
 "%s માં લખી શકતા નથી : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:667
 msgid "Select command"
 msgstr "આદેશ પસંદ કરો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:813
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -545,36 +514,36 @@ msgstr ""
 "ટુંકો પથ પહેલાથી જ વપરાશમાં છે !\n"
 "શું તમે ખરેખર તેને વાપરવા માંગો છો ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:876
 msgid "Compose shortcut for :"
 msgstr "માટે ટુંકો પથ બનાવો :"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:879
+#: mcs-plugin/xfwm4_shortcuteditor.c:1107
 msgid "Compose shortcut"
 msgstr "ટુંકો પથ બનાવો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:881
+#: mcs-plugin/xfwm4_shortcuteditor.c:1109
 #, fuzzy
 msgid "No shortcut"
 msgstr "ટુંકો પથ બનાવો"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1003
 msgid "Choose command"
 msgstr "આદેશ પસંદ કરો"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1005
 msgid "Command :"
 msgstr "આદેશ :"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1041
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "આદેશ અસ્તિત્વમાં નથી અથવા તે ફાઈલ ચલાવી શકાય તેવી નથી !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1104
 msgid "Compose shortcut for command :"
 msgstr "આદેશ માટે ટુંકો પથ બનાવો :"
 
@@ -689,6 +658,30 @@ msgstr "માં ફેરવો ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "અજ્ઞાત કાર્યક્રમ!"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૨ પર ખસાડો"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૩ પર ખસાડો"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૪ પર ખસાડો"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૫ પર ખસાડો"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૬ પર ખસાડો"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૭ પર ખસાડો"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૮ પર ખસાડો"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૯ પર ખસાડો"
 
 #~ msgid "Workspace 1"
 #~ msgstr "કામ કરવાની જગ્યા ૧"

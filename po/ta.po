@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-23 01:23+0100\n"
+"POT-Creation-Date: 2005-04-26 23:38+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -59,11 +59,7 @@ msgstr ""
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:496
-#: mcs-plugin/xfwm4_shortcuteditor.c:505 mcs-plugin/xfwm4_shortcuteditor.c:514
-#: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
-#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
-#: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:408
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "வேலை þடம் %i"
@@ -111,15 +107,15 @@ msgstr "பெருதாக்கு"
 msgid "Close"
 msgstr "மூடு"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:385
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Shade window"
 msgstr "வண்ண-சாளரம்"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:380
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Hide window"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:365
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window"
 msgstr "சாளரம் பெருதாக்கு"
 
@@ -363,261 +359,225 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:360
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Close window"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:370
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "சாளரம் பெருதாக்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:375
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "சாளரம் பெருதாக்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:390
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Stick window"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:395
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Cycle windows"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:400
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Move window up"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:405
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Move window down"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:410
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Move window left"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:415
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Move window right"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:420
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Resize window up"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:425
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Resize window down"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:430
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Resize window left"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:435
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Resize window right"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:440
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Raise window"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:445
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Lower window"
 msgstr "சாளரம் மறை"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:450
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:455
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Upper workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:460
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:465
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Left workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:470
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Right workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:475
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Next workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:480
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Previous workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:485
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Add workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:490
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Delete workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "வேலை þடங்கள் மடிப்பு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
-#, fuzzy
-msgid "Move window to workspace 1"
+#: mcs-plugin/xfwm4_shortcuteditor.c:320
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:429
+#, fuzzy, c-format
+msgid "Move window to workspace %d"
 msgstr "புதிய சாளரத்திற்கு"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
-#, fuzzy
-msgid "Move window to workspace 2"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
-#, fuzzy
-msgid "Move window to workspace 3"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
-#, fuzzy
-msgid "Move window to workspace 4"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
-#, fuzzy
-msgid "Move window to workspace 5"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
-#, fuzzy
-msgid "Move window to workspace 6"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
-#, fuzzy
-msgid "Move window to workspace 7"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
-#, fuzzy
-msgid "Move window to workspace 8"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
-#, fuzzy
-msgid "Move window to workspace 9"
-msgstr "புதிய சாளரத்திற்கு"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:667
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:813
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:876
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:879
+#: mcs-plugin/xfwm4_shortcuteditor.c:1107
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:881
+#: mcs-plugin/xfwm4_shortcuteditor.c:1109
 #, fuzzy
 msgid "No shortcut"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1003
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1005
 #, fuzzy
 msgid "Command :"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1041
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1104
 msgid "Compose shortcut for command :"
 msgstr ""
 
@@ -732,6 +692,38 @@ msgstr "þதட்கு மாற்றவும் ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Move window to workspace 2"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 3"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 4"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 5"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 6"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 7"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 8"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window to workspace 9"
+#~ msgstr "புதிய சாளரத்திற்கு"
 
 #, fuzzy
 #~ msgid "Workspace 1"

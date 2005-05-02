@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-23 01:23+0100\n"
+"POT-Creation-Date: 2005-04-26 23:38+0200\n"
 "PO-Revision-Date: 2004-10-04 02:59+0530\n"
 "Last-Translator: root <root@Phulewala>\n"
 "Language-Team:  <pa@li.org>\n"
@@ -63,11 +63,7 @@ msgstr "ਹਾਸ਼ੀਆ"
 msgid "Change name"
 msgstr "ਨਾਂ-ਤਬਦੀਲ"
 
-#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:496
-#: mcs-plugin/xfwm4_shortcuteditor.c:505 mcs-plugin/xfwm4_shortcuteditor.c:514
-#: mcs-plugin/xfwm4_shortcuteditor.c:523 mcs-plugin/xfwm4_shortcuteditor.c:532
-#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:550
-#: mcs-plugin/xfwm4_shortcuteditor.c:559 mcs-plugin/xfwm4_shortcuteditor.c:568
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:408
 #, c-format
 msgid "Workspace %d"
 msgstr "ਅਖਾੜਾ %d"
@@ -113,15 +109,15 @@ msgstr "ਅਧਿਕਤਮ"
 msgid "Close"
 msgstr "ਬੰਦ"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:385
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Shade window"
 msgstr "ਝਰੋਖਾ ਛਾਂ"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:380
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Hide window"
 msgstr "ਝਰੋਖਾ ਓਹਲੇ"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:365
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window"
 msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ"
 
@@ -350,175 +346,148 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:360
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Close window"
 msgstr "ਝਰੋਖਾ ਬੰਦ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:370
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window vertically"
 msgstr "ਝਰੋਖਾ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:375
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Maximize window horizontally"
 msgstr "ਝਰੋਖਾ ਖਤਿਜੀ ਅਧਿਕਤਮ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:390
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Stick window"
 msgstr "ਉੱਭਰਿਆ ਝਰੋਖਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:395
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Cycle windows"
 msgstr "ਚੱਕਰ ਝਰੋਖਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:400
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window up"
 msgstr "ਝਰੋਖਾ ਉੱਪਰ ਹਿਲਾਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:405
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window down"
 msgstr "ਝਰੋਖਾ ਹੇਠਾਂ ਹਿਲਾਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:410
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window left"
 msgstr "ਝਰੋਖਾ ਖੱਬੇ ਹਿਲਾਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:415
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window right"
 msgstr "ਝਰੋਖਾ ਸੱਜੇ ਹਿਲਾਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:420
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Resize window up"
 msgstr "ਝਰੋਖਾ ਉੱਪਰ ਮੁੜ ਆਕਾਰ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:425
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window down"
 msgstr "ਝਰੋਖਾ ਹੇਠਾਂ ਮੁੜ ਆਕਾਰ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:430
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window left"
 msgstr "ਝਰੋਖਾ ਖੱਬੇ ਮੁੜ ਆਕਾਰ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:435
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window right"
 msgstr "ਝਰੋਖਾ ਸੱਜੇ ਮੁੜ ਆਕਾਰ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:440
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Raise window"
 msgstr "ਝਰੋਖਾ ਪੇਸ਼ਗੀ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:445
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Lower window"
 msgstr "ਹੇਠਲਾ ਝਰੋਖਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:450
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
 msgstr "ਪੂਰਾ-ਪਰਦਾ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:455
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Upper workspace"
 msgstr "ਅਗਲਾ ਅਖਾੜਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:460
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "ਅਗਲਾ ਅਖਾੜਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:465
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Left workspace"
 msgstr "ਅਗਲਾ ਅਖਾੜਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:470
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Right workspace"
 msgstr "ਅਗਲਾ ਅਖਾੜਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:475
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Next workspace"
 msgstr "ਅਗਲਾ ਅਖਾੜਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:480
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Previous workspace"
 msgstr "ਪਿਛਲਾ ਅਖਾੜਾ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:485
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Add workspace"
 msgstr "ਅਖਾੜਾ ਸ਼ਾਮਿਲ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:490
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Delete workspace"
 msgstr "ਅਖਾੜਾ ਹਟਾਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:576
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to next workspace"
 msgstr "ਝਰੋਖਾ ਅਗਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:581
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to previous workspace"
 msgstr "ਝਰੋਖਾ ਪਿਛਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:586
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "ਝਰੋਖਾ ਅਗਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "ਝਰੋਖਾ ਅਗਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:596
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "ਝਰੋਖਾ ਅਗਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:601
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "ਝਰੋਖਾ ਅਗਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਆਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
-msgid "Move window to workspace 1"
+#: mcs-plugin/xfwm4_shortcuteditor.c:320
+msgid "Show desktop"
+msgstr ""
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:429
+#, fuzzy, c-format
+msgid "Move window to workspace %d"
 msgstr "ਅਖਾੜਾ ੧ ਵਿੱਚ ਜਾਓ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:611
-msgid "Move window to workspace 2"
-msgstr "ਅਖਾੜਾ ੨ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:616
-msgid "Move window to workspace 3"
-msgstr "ਅਖਾੜਾ ੩ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:621
-msgid "Move window to workspace 4"
-msgstr "ਅਖਾੜਾ ੪ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:626
-msgid "Move window to workspace 5"
-msgstr "ਅਖਾੜਾ ੯ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:631
-msgid "Move window to workspace 6"
-msgstr "ਅਖਾੜਾ ੫ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:636
-msgid "Move window to workspace 7"
-msgstr "ਅਖਾੜਾ ੬ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:641
-msgid "Move window to workspace 8"
-msgstr "ਅਖਾੜਾ ੭ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:646
-msgid "Move window to workspace 9"
-msgstr "ਅਖਾੜਾ ੮ ਵਿੱਚ ਜਾਓ"
-
-#: mcs-plugin/xfwm4_shortcuteditor.c:853
+#: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
 msgstr "ਸਰੂਪ ਡਾਇਰੈਕਟਰੀ ਖੋਲ ਨਹੀਂ ਸਕਿਆ !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:872
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -527,7 +496,7 @@ msgstr ""
 "%s ਖੋਲ ਨਹੀਂ ਸਕਿਆ ਃ \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:887 mcs-plugin/xfwm4_shortcuteditor.c:898
+#: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -536,11 +505,11 @@ msgstr ""
 "%s ਵਿੱਚ ਲਿਖ ਨਹੀਂ ਸਕਿਆ ਃ \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:948
+#: mcs-plugin/xfwm4_shortcuteditor.c:667
 msgid "Select command"
 msgstr "ਕਮਾਂਡ ਚੁਣੋ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1094
+#: mcs-plugin/xfwm4_shortcuteditor.c:813
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -548,36 +517,36 @@ msgstr ""
 "ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
 " ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1157
+#: mcs-plugin/xfwm4_shortcuteditor.c:876
 msgid "Compose shortcut for :"
 msgstr "ਲਈ ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ ਃ"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1160
-#: mcs-plugin/xfwm4_shortcuteditor.c:1388
+#: mcs-plugin/xfwm4_shortcuteditor.c:879
+#: mcs-plugin/xfwm4_shortcuteditor.c:1107
 msgid "Compose shortcut"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1162
-#: mcs-plugin/xfwm4_shortcuteditor.c:1390
+#: mcs-plugin/xfwm4_shortcuteditor.c:881
+#: mcs-plugin/xfwm4_shortcuteditor.c:1109
 #, fuzzy
 msgid "No shortcut"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1284
+#: mcs-plugin/xfwm4_shortcuteditor.c:1003
 msgid "Choose command"
 msgstr "ਕਮਾਂਡ ਚੁਣੋ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1286
+#: mcs-plugin/xfwm4_shortcuteditor.c:1005
 msgid "Command :"
 msgstr "ਕਮਾਂਡ ਃ"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1322
+#: mcs-plugin/xfwm4_shortcuteditor.c:1041
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "ਕਮਾਂਡ ਮੌਜੂਦ ਨਹੀਂ ਜਾਂ ਫਾਇਲ ਚੱਲਣਯੋਗ ਨਹੀਂਂ !"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1385
+#: mcs-plugin/xfwm4_shortcuteditor.c:1104
 msgid "Compose shortcut for command :"
 msgstr "ਕਮਾਂਡ ਲਈ ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ ਃ"
 
@@ -692,6 +661,30 @@ msgstr "ਤੇ ਜਾਓ ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "ਅਖਾੜਾ ੨ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "ਅਖਾੜਾ ੩ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "ਅਖਾੜਾ ੪ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "ਅਖਾੜਾ ੯ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "ਅਖਾੜਾ ੫ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "ਅਖਾੜਾ ੬ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "ਅਖਾੜਾ ੭ ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "ਅਖਾੜਾ ੮ ਵਿੱਚ ਜਾਓ"
 
 #~ msgid "Workspace 1"
 #~ msgstr "ਅਖਾੜਾ ੧"
