@@ -154,5 +154,6 @@ themes/symphony/Makefile
 themes/therapy/Makefile
 themes/tyrex/Makefile
 themes/waza/Makefile
+themes/wallis/Makefile
 themes/wildbush/Makefile
 ])

@@ -783,8 +783,6 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         clientConstrainPos (c, FALSE);
     }
 
-    XMoveResizeWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c),
-                            frameWidth (c), frameHeight (c));
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), - c->height,
@@ -794,6 +792,15 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     {
         XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
                                 c->width, c->height);
+    }
+
+    if (mask & (CWWidth | CWHeight))
+    {
+        XResizeWindow (clientGetXDisplay (c), c->frame, frameWidth (c), frameHeight (c));
+    }
+    if (mask & (CWX | CWY))
+    {
+        XMoveWindow (clientGetXDisplay (c), c->frame, frameX (c), frameY (c));
     }
 
     if (resized || (flags & CFG_FORCE_REDRAW))
@@ -1403,7 +1410,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XWindowAttributes attr;
     XWindowChanges wc;
     XSetWindowAttributes attributes;
-    Visual *frame_visual = NULL;
     Client *c = NULL;
     gboolean shaped;
     gboolean grabbed;
@@ -1786,7 +1792,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Window is reparented now, so we can safely release the grab
      * on the server
      */
-     stop:
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
 
@@ -2374,43 +2379,6 @@ clientSetLayer (Client * c, int l)
         clientClearLastRaise (c->screen_info);
     }
     clientRaise (c);
-}
-
-void
-clientDecOpacity (Client * c)
-{
-   ScreenInfo *screen_info = NULL;
-   DisplayInfo *display_info = NULL;
-
-   screen_info = c->screen_info;
-   display_info = screen_info->display_info;
-
-   if ( c->opacity > OPACITY_SET_MIN )
-   {
-        c->opacity -= OPACITY_SET_STEP;
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-   }
-}
-
-void
-clientIncOpacity (Client * c)
-{
-   ScreenInfo *screen_info = NULL;
-   DisplayInfo *display_info = NULL;
-
-   screen_info = c->screen_info;
-   display_info = screen_info->display_info;
-
-   if ( c->opacity < NET_WM_OPAQUE )
-   {
-        c->opacity += OPACITY_SET_STEP;
-
-        if ( c->opacity < OPACITY_SET_MIN )
-        {
-            c->opacity = NET_WM_OPAQUE ;
-        }
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-   }
 }
 
 void
@@ -4202,3 +4170,43 @@ clientGetStartupId (Client * c)
     return NULL;
 }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
+#ifdef HAVE_COMPOSITOR
+void
+clientDecOpacity (Client * c)
+{
+   ScreenInfo *screen_info = NULL;
+   DisplayInfo *display_info = NULL;
+
+   screen_info = c->screen_info;
+   display_info = screen_info->display_info;
+
+   if ( c->opacity > OPACITY_SET_MIN )
+   {
+        c->opacity -= OPACITY_SET_STEP;
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+   }
+}
+
+void
+clientIncOpacity (Client * c)
+{
+   ScreenInfo *screen_info = NULL;
+   DisplayInfo *display_info = NULL;
+
+   screen_info = c->screen_info;
+   display_info = screen_info->display_info;
+
+   if ( c->opacity < NET_WM_OPAQUE )
+   {
+        c->opacity += OPACITY_SET_STEP;
+
+        if ( c->opacity < OPACITY_SET_MIN )
+        {
+            c->opacity = NET_WM_OPAQUE ;
+        }
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+   }
+}
+#endif /* HAVE_COMPOSITOR */
+

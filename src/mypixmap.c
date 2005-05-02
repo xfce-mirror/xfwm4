@@ -250,10 +250,6 @@ void
 xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, 
                 gint x, gint y, gint width, gint height)
 {
-    XGCValues gv;
-    GC gc;
-    unsigned long mask;
-
     TRACE ("entering xfwmWindowFill");
 
     if ((width < 1) || (height < 1))

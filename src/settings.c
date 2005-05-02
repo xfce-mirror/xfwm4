@@ -68,15 +68,15 @@ static void              watch_cb             (Window,
                                                long, 
                                                void *);
 static void              loadRcData           (ScreenInfo *, 
-                                               Settings rc[]);
+                                               Settings *);
 static void              loadMcsData          (ScreenInfo *,
-                                               Settings rc[]);
+                                               Settings *);
 static void              loadTheme            (ScreenInfo *, 
-                                               Settings rc[]);
+                                               Settings *);
 static void              loadShortcutCmd      (ScreenInfo *, 
-                                               Settings rc[]);
+                                               Settings *);
 static gboolean          loadKeyBindings      (ScreenInfo *, 
-                                               Settings rc[]);
+                                               Settings *);
 static void              unloadTheme          (ScreenInfo *);
 static void              unloadSettings       (ScreenInfo *);
 static gboolean          reloadScreenSettings (ScreenInfo *, 
@@ -398,7 +398,7 @@ watch_cb (Window window, Bool is_start, long mask, void *cb_data)
 }
 
 static void
-loadRcData (ScreenInfo *screen_info, Settings rc[])
+loadRcData (ScreenInfo *screen_info, Settings *rc)
 {
     gchar *homedir;
     gchar *keythemevalue;
@@ -434,7 +434,7 @@ loadRcData (ScreenInfo *screen_info, Settings rc[])
 }
 
 static void
-loadMcsData (ScreenInfo *screen_info, Settings rc[])
+loadMcsData (ScreenInfo *screen_info, Settings *rc)
 {
     McsSetting *setting;
     if (screen_info->mcs_client)
@@ -621,7 +621,7 @@ loadMcsData (ScreenInfo *screen_info, Settings rc[])
 }
 
 static void
-loadTheme (ScreenInfo *screen_info, Settings rc[])
+loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
     GtkWidget *widget = NULL;
     DisplayInfo *display_info = NULL;
@@ -916,7 +916,7 @@ loadTheme (ScreenInfo *screen_info, Settings rc[])
 }
 
 static void
-loadShortcutCmd (ScreenInfo *screen_info, Settings rc[])
+loadShortcutCmd (ScreenInfo *screen_info, Settings *rc)
 {
     int i;
 
@@ -939,7 +939,7 @@ loadShortcutCmd (ScreenInfo *screen_info, Settings rc[])
 }
 
 static gboolean
-loadKeyBindings (ScreenInfo *screen_info, Settings rc[])
+loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
 {
     Display *dpy;
     gchar *keytheme;

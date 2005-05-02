@@ -238,12 +238,11 @@ clientConstrainPos (Client * c, gboolean show_full)
     int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_height, frame_width, frame_top, frame_left;
     int frame_x, frame_y, frame_visible;
-    int maximize = 0;
     unsigned int ret = 0;
     GdkRectangle rect;
     gint monitor_nbr;
 
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, 0);
     TRACE ("entering clientConstrainPos %s",
         show_full ? "(with show full)" : "(w/out show full)");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -273,7 +272,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     {
         TRACE ("ignoring constrained for client \"%s\" (0x%lx)", c->name,
             c->window);
-        return;
+        return 0;
     }
     if (show_full)
     {

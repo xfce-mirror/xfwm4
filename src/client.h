@@ -316,6 +316,11 @@ void     clientButtonPress (Client *, Window, XButtonEvent *);
 Client  *clientGetLeader (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char    *clientGetStartupId (Client *);
-#endif
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+#ifdef HAVE_COMPOSITOR
+void     clientIncOpacity (Client *);
+void     clientDecOpacity (Client *);
+#endif /* HAVE_COMPOSITOR */
+
 
 #endif /* INC_CLIENT_H */

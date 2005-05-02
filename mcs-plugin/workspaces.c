@@ -586,6 +586,7 @@ watch_workspaces_hint (McsManager * manager)
                                         G_CALLBACK (update_channel), manager);
 }
 
+G_MODULE_EXPORT void
 g_module_unload (GModule *module)
 {
     DBG ("Disconecting workspace signal handlers");
