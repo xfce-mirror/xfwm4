@@ -308,6 +308,8 @@ void     clientToggleAbove (Client *);
 void     clientToggleBelow (Client *);
 void     clientRemoveMaximizeFlag (Client *);
 void     clientToggleMaximized (Client *, int, gboolean);
+void     clientIncOpacity (Client *);
+void     clientDecOpacity (Client *);
 void     clientScreenResize(ScreenInfo *);
 void     clientMove (Client *, XEvent *);
 void     clientResize (Client *, int, XEvent *);
@@ -317,10 +319,6 @@ Client  *clientGetLeader (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char    *clientGetStartupId (Client *);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-#ifdef HAVE_COMPOSITOR
-void     clientIncOpacity (Client *);
-void     clientDecOpacity (Client *);
-#endif /* HAVE_COMPOSITOR */
 
 
 #endif /* INC_CLIENT_H */

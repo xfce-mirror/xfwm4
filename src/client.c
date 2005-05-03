@@ -2735,6 +2735,43 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     }
 }
 
+void
+clientDecOpacity (Client * c)
+{
+   ScreenInfo *screen_info = NULL;
+   DisplayInfo *display_info = NULL;
+
+   screen_info = c->screen_info;
+   display_info = screen_info->display_info;
+
+   if ( c->opacity > OPACITY_SET_MIN )
+   {
+        c->opacity -= OPACITY_SET_STEP;
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+   }
+}
+
+void
+clientIncOpacity (Client * c)
+{
+   ScreenInfo *screen_info = NULL;
+   DisplayInfo *display_info = NULL;
+
+   screen_info = c->screen_info;
+   display_info = screen_info->display_info;
+
+   if ( c->opacity < NET_WM_OPAQUE )
+   {
+        c->opacity += OPACITY_SET_STEP;
+
+        if ( c->opacity < OPACITY_SET_MIN )
+        {
+            c->opacity = NET_WM_OPAQUE ;
+        }
+        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+   }
+}
+
 /* Xrandr stuff: on screen size change, make sure all clients are still visible */
 void
 clientScreenResize(ScreenInfo *screen_info)
@@ -4170,43 +4207,3 @@ clientGetStartupId (Client * c)
     return NULL;
 }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-
-#ifdef HAVE_COMPOSITOR
-void
-clientDecOpacity (Client * c)
-{
-   ScreenInfo *screen_info = NULL;
-   DisplayInfo *display_info = NULL;
-
-   screen_info = c->screen_info;
-   display_info = screen_info->display_info;
-
-   if ( c->opacity > OPACITY_SET_MIN )
-   {
-        c->opacity -= OPACITY_SET_STEP;
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-   }
-}
-
-void
-clientIncOpacity (Client * c)
-{
-   ScreenInfo *screen_info = NULL;
-   DisplayInfo *display_info = NULL;
-
-   screen_info = c->screen_info;
-   display_info = screen_info->display_info;
-
-   if ( c->opacity < NET_WM_OPAQUE )
-   {
-        c->opacity += OPACITY_SET_STEP;
-
-        if ( c->opacity < OPACITY_SET_MIN )
-        {
-            c->opacity = NET_WM_OPAQUE ;
-        }
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-   }
-}
-#endif /* HAVE_COMPOSITOR */
-
