@@ -1,101 +1,2018 @@
-2004-01-07 19:58  olivier
+2005-03-03 22:41  olivier
 
-	* xfwm4.pot: Fix spec files so that debug files aren't include on
-	  Red Hat 9 and later
+	* xfwm4/branches/xfce_4_0/Makefile.in,
+	  xfwm4/branches/xfce_4_0/aclocal.m4,
+	  xfwm4/branches/xfce_4_0/compile,
+	  xfwm4/branches/xfce_4_0/config.guess,
+	  xfwm4/branches/xfce_4_0/config.sub,
+	  xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/defaults/Makefile.in,
+	  xfwm4/branches/xfce_4_0/depcomp,
+	  xfwm4/branches/xfce_4_0/doc/C/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/C/images/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/fr/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/fr/images/Makefile.in,
+	  xfwm4/branches/xfce_4_0/install-sh,
+	  xfwm4/branches/xfce_4_0/mcs-plugin/Makefile.in,
+	  xfwm4/branches/xfce_4_0/missing,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/Makefile.in,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/themes/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/bbs/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/curve/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/default.keys/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/default/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/exocet/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/meenee/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microcurve/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck2/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck3/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/tgc-large/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/tgc/Makefile.in: Commit a few stuff
+	  I had on my local drive for a while...
 
-2004-01-06 19:48  olivier
+2004-09-10 21:45  pollux
 
-	* xfwm4.pot: update theme
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/ltmain.sh,
+	  xfwm4/branches/xfce_4_0/po/he.gmo,
+	  xfwm4/branches/xfce_4_0/po/he.po: add HE translations from Yuval
+	  Tanny <tanai@int.gov.il>
 
-2004-01-03 21:54  olivier
+2004-09-10 20:49  
 
-	* pl.gmo, pl.po, xfwm4.pot: Fix Polish translation from Daniel
-	  MrÃ³z <beorn@alpha.pl>
+	* xfwm4/branches/xfce_4_0/po/he.gmo,
+	  xfwm4/branches/xfce_4_0/po/he.po: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
 
-2003-12-29 16:20  olivier
+2004-07-12 18:58  pollux
 
-	* no.gmo, no.po: Update version number, Update ChangeLog Fix
-	  missing CHARSET in potfiles
+	* xfwm4/branches/xfce_4_0/po/ca.gmo,
+	  xfwm4/branches/xfce_4_0/po/ca.po: little correction in catalan
+	  translations from Xan <DXpublica@telefonica.net>
 
-2003-12-29 13:16  jasper
+2004-07-07 17:25  pollux
 
-	* no.gmo, no.po, tr.gmo, tr.po: Update Norwegian and Turkish
+	* xfwm4/branches/xfce_4_0/po/ar.gmo,
+	  xfwm4/branches/xfce_4_0/po/az.gmo,
+	  xfwm4/branches/xfce_4_0/po/bg.gmo,
+	  xfwm4/branches/xfce_4_0/po/ca.gmo,
+	  xfwm4/branches/xfce_4_0/po/ca.po,
+	  xfwm4/branches/xfce_4_0/po/cs.gmo,
+	  xfwm4/branches/xfce_4_0/po/de.gmo,
+	  xfwm4/branches/xfce_4_0/po/es.gmo,
+	  xfwm4/branches/xfce_4_0/po/es_MX.gmo,
+	  xfwm4/branches/xfce_4_0/po/et.gmo,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfwm4/branches/xfce_4_0/po/fi.gmo,
+	  xfwm4/branches/xfce_4_0/po/fr.gmo,
+	  xfwm4/branches/xfce_4_0/po/hi.gmo,
+	  xfwm4/branches/xfce_4_0/po/hu.gmo,
+	  xfwm4/branches/xfce_4_0/po/it.gmo,
+	  xfwm4/branches/xfce_4_0/po/ja.gmo,
+	  xfwm4/branches/xfce_4_0/po/ko.gmo,
+	  xfwm4/branches/xfce_4_0/po/lt.gmo,
+	  xfwm4/branches/xfce_4_0/po/ms.gmo,
+	  xfwm4/branches/xfce_4_0/po/nl.gmo,
+	  xfwm4/branches/xfce_4_0/po/no.gmo,
+	  xfwm4/branches/xfce_4_0/po/pl.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.gmo,
+	  xfwm4/branches/xfce_4_0/po/ru.gmo,
+	  xfwm4/branches/xfce_4_0/po/sv.gmo,
+	  xfwm4/branches/xfce_4_0/po/ta.gmo,
+	  xfwm4/branches/xfce_4_0/po/tr.gmo,
+	  xfwm4/branches/xfce_4_0/po/uk.gmo,
+	  xfwm4/branches/xfce_4_0/po/vi.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo: * apply patch from Xan
+	  <DXpublica@telefonica.net> for ca * BTW update gmo
+
+2004-07-06 22:33  olivier
+
+	* xfwm4/branches/xfce_4_0/po/ar.po,
+	  xfwm4/branches/xfce_4_0/po/az.po,
+	  xfwm4/branches/xfce_4_0/po/bg.po,
+	  xfwm4/branches/xfce_4_0/po/ca.po,
+	  xfwm4/branches/xfce_4_0/po/cs.po,
+	  xfwm4/branches/xfce_4_0/po/de.po,
+	  xfwm4/branches/xfce_4_0/po/es.po,
+	  xfwm4/branches/xfce_4_0/po/es_MX.po,
+	  xfwm4/branches/xfce_4_0/po/et.po,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/po/fi.po,
+	  xfwm4/branches/xfce_4_0/po/fr.po,
+	  xfwm4/branches/xfce_4_0/po/hi.po,
+	  xfwm4/branches/xfce_4_0/po/hu.po,
+	  xfwm4/branches/xfce_4_0/po/it.po,
+	  xfwm4/branches/xfce_4_0/po/ja.po,
+	  xfwm4/branches/xfce_4_0/po/ko.po,
+	  xfwm4/branches/xfce_4_0/po/lt.po,
+	  xfwm4/branches/xfce_4_0/po/ms.po,
+	  xfwm4/branches/xfce_4_0/po/nl.po,
+	  xfwm4/branches/xfce_4_0/po/no.po,
+	  xfwm4/branches/xfce_4_0/po/pl.po,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_0/po/ru.po,
+	  xfwm4/branches/xfce_4_0/po/sv.po,
+	  xfwm4/branches/xfce_4_0/po/ta.po,
+	  xfwm4/branches/xfce_4_0/po/tr.po,
+	  xfwm4/branches/xfce_4_0/po/uk.po,
+	  xfwm4/branches/xfce_4_0/po/vi.po,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/client.h,
+	  xfwm4/branches/xfce_4_0/src/events.c,
+	  xfwm4/branches/xfce_4_0/src/events.h,
+	  xfwm4/branches/xfce_4_0/src/frame.c,
+	  xfwm4/branches/xfce_4_0/src/frame.h,
+	  xfwm4/branches/xfce_4_0/src/hints.c,
+	  xfwm4/branches/xfce_4_0/src/hints.h,
+	  xfwm4/branches/xfce_4_0/src/keyboard.c,
+	  xfwm4/branches/xfce_4_0/src/keyboard.h,
+	  xfwm4/branches/xfce_4_0/src/main.c,
+	  xfwm4/branches/xfce_4_0/src/main.h,
+	  xfwm4/branches/xfce_4_0/src/menu.c,
+	  xfwm4/branches/xfce_4_0/src/menu.h,
+	  xfwm4/branches/xfce_4_0/src/misc.c,
+	  xfwm4/branches/xfce_4_0/src/misc.h,
+	  xfwm4/branches/xfce_4_0/src/mypixmap.c,
+	  xfwm4/branches/xfce_4_0/src/mypixmap.h,
+	  xfwm4/branches/xfce_4_0/src/mywindow.c,
+	  xfwm4/branches/xfce_4_0/src/mywindow.h,
+	  xfwm4/branches/xfce_4_0/src/parserc.c,
+	  xfwm4/branches/xfce_4_0/src/parserc.h,
+	  xfwm4/branches/xfce_4_0/src/session.c,
+	  xfwm4/branches/xfce_4_0/src/session.h,
+	  xfwm4/branches/xfce_4_0/src/settings.c,
+	  xfwm4/branches/xfce_4_0/src/settings.h,
+	  xfwm4/branches/xfce_4_0/src/spinning_cursor.c,
+	  xfwm4/branches/xfce_4_0/src/spinning_cursor.h,
+	  xfwm4/branches/xfce_4_0/src/startup_notification.c,
+	  xfwm4/branches/xfce_4_0/src/startup_notification.h,
+	  xfwm4/branches/xfce_4_0/src/tabwin.c,
+	  xfwm4/branches/xfce_4_0/src/tabwin.h,
+	  xfwm4/branches/xfce_4_0/src/workspaces.c,
+	  xfwm4/branches/xfce_4_0/src/workspaces.h: Backport from HEAD:
+	  Remove win_layer on unmap, expand sources.
+
+2004-07-06 15:59  pollux
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/eu.gmo,
+	  xfwm4/branches/xfce_4_0/po/eu.po: add basque translation from ^pi^
+	  <pi@beobide.net>
+
+2004-07-06 15:59  
+
+	* xfwm4/branches/xfce_4_0/po/eu.gmo,
+	  xfwm4/branches/xfce_4_0/po/eu.po: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
+
+2004-07-02 06:22  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Remove useless comment (with
+	  a typo!)
+
+2004-06-30 21:56  olivier
+
+	* xfwm4/branches/xfce_4_0/po/ar.gmo,
+	  xfwm4/branches/xfce_4_0/po/ar.po,
+	  xfwm4/branches/xfce_4_0/po/az.gmo,
+	  xfwm4/branches/xfce_4_0/po/az.po,
+	  xfwm4/branches/xfce_4_0/po/bg.gmo,
+	  xfwm4/branches/xfce_4_0/po/bg.po,
+	  xfwm4/branches/xfce_4_0/po/ca.gmo,
+	  xfwm4/branches/xfce_4_0/po/ca.po,
+	  xfwm4/branches/xfce_4_0/po/cs.gmo,
+	  xfwm4/branches/xfce_4_0/po/cs.po,
+	  xfwm4/branches/xfce_4_0/po/de.gmo,
+	  xfwm4/branches/xfce_4_0/po/de.po,
+	  xfwm4/branches/xfce_4_0/po/es.gmo,
+	  xfwm4/branches/xfce_4_0/po/es.po,
+	  xfwm4/branches/xfce_4_0/po/es_MX.gmo,
+	  xfwm4/branches/xfce_4_0/po/es_MX.po,
+	  xfwm4/branches/xfce_4_0/po/et.gmo,
+	  xfwm4/branches/xfce_4_0/po/et.po,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/po/fi.gmo,
+	  xfwm4/branches/xfce_4_0/po/fi.po,
+	  xfwm4/branches/xfce_4_0/po/fr.gmo,
+	  xfwm4/branches/xfce_4_0/po/fr.po,
+	  xfwm4/branches/xfce_4_0/po/hi.gmo,
+	  xfwm4/branches/xfce_4_0/po/hi.po,
+	  xfwm4/branches/xfce_4_0/po/hu.gmo,
+	  xfwm4/branches/xfce_4_0/po/hu.po,
+	  xfwm4/branches/xfce_4_0/po/it.gmo,
+	  xfwm4/branches/xfce_4_0/po/it.po,
+	  xfwm4/branches/xfce_4_0/po/ja.gmo,
+	  xfwm4/branches/xfce_4_0/po/ja.po,
+	  xfwm4/branches/xfce_4_0/po/ko.gmo,
+	  xfwm4/branches/xfce_4_0/po/ko.po,
+	  xfwm4/branches/xfce_4_0/po/lt.gmo,
+	  xfwm4/branches/xfce_4_0/po/lt.po,
+	  xfwm4/branches/xfce_4_0/po/ms.gmo,
+	  xfwm4/branches/xfce_4_0/po/ms.po,
+	  xfwm4/branches/xfce_4_0/po/nl.gmo,
+	  xfwm4/branches/xfce_4_0/po/nl.po,
+	  xfwm4/branches/xfce_4_0/po/no.gmo,
+	  xfwm4/branches/xfce_4_0/po/no.po,
+	  xfwm4/branches/xfce_4_0/po/pl.gmo,
+	  xfwm4/branches/xfce_4_0/po/pl.po,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_0/po/ru.gmo,
+	  xfwm4/branches/xfce_4_0/po/ru.po,
+	  xfwm4/branches/xfce_4_0/po/sv.gmo,
+	  xfwm4/branches/xfce_4_0/po/sv.po,
+	  xfwm4/branches/xfce_4_0/po/ta.gmo,
+	  xfwm4/branches/xfce_4_0/po/ta.po,
+	  xfwm4/branches/xfce_4_0/po/tr.gmo,
+	  xfwm4/branches/xfce_4_0/po/tr.po,
+	  xfwm4/branches/xfce_4_0/po/uk.gmo,
+	  xfwm4/branches/xfce_4_0/po/uk.po,
+	  xfwm4/branches/xfce_4_0/po/vi.gmo,
+	  xfwm4/branches/xfce_4_0/po/vi.po,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	  xfwm4/branches/xfce_4_0/src/client.c: Backport from HEAD: Fix
+	  frame update when an app changes its own state to modal, Fix app
+	  window being remaped after a quick map request/unmap notify, Allow
+	  static gravity wins to place thenselves anywhere (for broken apps
+	  trying to get a fullscreen window this way)
+
+2004-06-28 20:42  olivier
+
+	* xfwm4/branches/xfce_4_0/po/ar.po,
+	  xfwm4/branches/xfce_4_0/po/az.po,
+	  xfwm4/branches/xfce_4_0/po/bg.po,
+	  xfwm4/branches/xfce_4_0/po/ca.po,
+	  xfwm4/branches/xfce_4_0/po/cs.po,
+	  xfwm4/branches/xfce_4_0/po/de.po,
+	  xfwm4/branches/xfce_4_0/po/es.po,
+	  xfwm4/branches/xfce_4_0/po/es_MX.po,
+	  xfwm4/branches/xfce_4_0/po/et.po,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/po/fi.po,
+	  xfwm4/branches/xfce_4_0/po/fr.po,
+	  xfwm4/branches/xfce_4_0/po/hi.po,
+	  xfwm4/branches/xfce_4_0/po/hu.po,
+	  xfwm4/branches/xfce_4_0/po/it.po,
+	  xfwm4/branches/xfce_4_0/po/ja.po,
+	  xfwm4/branches/xfce_4_0/po/ko.po,
+	  xfwm4/branches/xfce_4_0/po/lt.po,
+	  xfwm4/branches/xfce_4_0/po/ms.po,
+	  xfwm4/branches/xfce_4_0/po/nl.po,
+	  xfwm4/branches/xfce_4_0/po/no.po,
+	  xfwm4/branches/xfce_4_0/po/pl.po,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_0/po/ru.po,
+	  xfwm4/branches/xfce_4_0/po/sv.po,
+	  xfwm4/branches/xfce_4_0/po/ta.po,
+	  xfwm4/branches/xfce_4_0/po/tr.po,
+	  xfwm4/branches/xfce_4_0/po/uk.po,
+	  xfwm4/branches/xfce_4_0/po/vi.po,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	  xfwm4/branches/xfce_4_0/src/client.c: Backport from HEAD: "Grab
+	  server earlier when managing new windows, trying to fix #0000184
+	  and other random issues reported with Java on the ML" Update po
+
+2004-06-19 16:38  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Ignore ICCCM resize
+	  increments in fullscreen mode.
+
+2004-06-11 11:05  pollux
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/ltmain.sh,
+	  xfwm4/branches/xfce_4_0/po/et.gmo,
+	  xfwm4/branches/xfce_4_0/po/et.po: Estonian translations from
+	  Peeter Vois <peeter.vois@proekspert.ee> added
+
+2004-05-16 12:15  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/client.h,
+	  xfwm4/branches/xfce_4_0/src/events.c,
+	  xfwm4/branches/xfce_4_0/src/main.c,
+	  xfwm4/branches/xfce_4_0/src/misc.c,
+	  xfwm4/branches/xfce_4_0/src/misc.h,
+	  xfwm4/branches/xfce_4_0/src/workspaces.c: Backport part of focus
+	  mgt from HEAD
+
+2004-05-03 22:17  olivier
+
+	* xfwm4/branches/xfce_4_0/Makefile.in,
+	  xfwm4/branches/xfce_4_0/aclocal.m4,
+	  xfwm4/branches/xfce_4_0/config.guess,
+	  xfwm4/branches/xfce_4_0/config.sub,
+	  xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/defaults/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/C/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/C/images/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/fr/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/fr/images/Makefile.in,
+	  xfwm4/branches/xfce_4_0/install-sh,
+	  xfwm4/branches/xfce_4_0/ltmain.sh,
+	  xfwm4/branches/xfce_4_0/mcs-plugin/Makefile.in,
+	  xfwm4/branches/xfce_4_0/mkinstalldirs,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	  xfwm4/branches/xfce_4_0/src/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/bbs/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/curve/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/default.keys/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/default/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/exocet/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/meenee/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microcurve/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck2/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck3/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/tgc-large/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/tgc/Makefile.in: Update zh_TW
+	  translations by umm <umm@pchome.com.tw>
+
+2004-05-03 20:00  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Fix bug #0000185
+
+2004-04-16 17:00  olivier
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Don't honor stack request
+	  when sibling is specified as we don't honor it, Chenge version to
+	  4.0.6
+
+2004-04-14 06:18  olivier
+
+	* xfwm4/branches/xfce_4_0/po/zh_TW.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.po: zh_TW po update by Ambrose Li
+	  <a.c.li@ieee.org>
+
+2004-04-08 17:15  olivier
+
+	* xfwm4/branches/xfce_4_0/ChangeLog,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: Update ChangeLog
+
+2004-03-24 20:39  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Change focus transition
+	  routine Do not react on BottomIf, TopIf and Opposite stack
+	  requests
+
+2004-03-22 22:21  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Add a "pending_focus"
+	  variable that helps with XSetInputFocus() transitions
+
+2004-03-21 20:06  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: autogen
+
+2004-03-14 23:26  olivier
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/ar.gmo,
+	  xfwm4/branches/xfce_4_0/po/ar.po,
+	  xfwm4/branches/xfce_4_0/po/bg.gmo,
+	  xfwm4/branches/xfce_4_0/po/bg.po,
+	  xfwm4/branches/xfce_4_0/po/it.gmo,
+	  xfwm4/branches/xfce_4_0/po/it.po,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: Add/update i18n for:
+	  Bulgarian from Miroslav Yordanov <miordanov@i-space.org> and Peter
+	  Slavov <peshka@i-space.org> Italian from Alex Dupre
+	  <ale@FreeBSD.org> Arabic from Saleh Hathal <hathalsal@hotmail.com>
+
+2004-03-12 22:01  olivier
+
+	* xfwm4/branches/xfce_4_0/aclocal.m4,
+	  xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Set version to 4.0.5 Handle
+	  focus transitions the way it should be. I know that the dbl click
+	  detection *will* introduce some lags, but that's the proper way.
+
+2004-03-03 18:34  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: pot file (?)
+
+2004-03-03 18:18  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Fix circular linked list bug
+
+2004-03-02 21:16  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: Dummy
+
+2004-02-28 17:24  olivier
+
+	* xfwm4/branches/xfce_4_0/ltmain.sh,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: sync for 4.0.4 release
+
+2004-01-30 07:07  jasper
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/ltmain.sh,
+	  xfwm4/branches/xfce_4_0/po/es.gmo,
+	  xfwm4/branches/xfce_4_0/po/es.po,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.po: Update translations for
+	  spanish, persian, brasilian and chinese
+
+2004-01-28 22:33  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/client.h,
+	  xfwm4/branches/xfce_4_0/src/events.c,
+	  xfwm4/branches/xfce_4_0/src/workspaces.c: Use bit based flag param
+	  for clientSetFocus instead of a bunch of gbooleans Add FOCUS_FORCE
+	  to clientSetFocus Handle FocusOut from Motif combo menu nicely and
+	  force focus back to dialog
+
+2004-01-27 20:13  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/events.c: Improve grab/ungrab of
+	  Button1
+
+2004-01-25 00:11  olivier
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/src/client.c: Update libtool and other
+	  automake, autoconf and gettext.
+
+2004-01-25 00:11  
+
+	* xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_BR.po: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2004-01-24 16:36  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: A bit too much of cleanup in
+	  clientPassFocus()
+
+2004-01-24 15:19  olivier
+
+	* xfwm4/branches/xfce_4_0/Makefile.in,
+	  xfwm4/branches/xfce_4_0/aclocal.m4,
+	  xfwm4/branches/xfce_4_0/compile,
+	  xfwm4/branches/xfce_4_0/config.guess,
+	  xfwm4/branches/xfce_4_0/config.h.in,
+	  xfwm4/branches/xfce_4_0/config.sub,
+	  xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/defaults/Makefile.in,
+	  xfwm4/branches/xfce_4_0/depcomp,
+	  xfwm4/branches/xfce_4_0/doc/C/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/C/images/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/fr/Makefile.in,
+	  xfwm4/branches/xfce_4_0/doc/fr/images/Makefile.in,
+	  xfwm4/branches/xfce_4_0/install-sh,
+	  xfwm4/branches/xfce_4_0/ltmain.sh,
+	  xfwm4/branches/xfce_4_0/mcs-plugin/Makefile.in,
+	  xfwm4/branches/xfce_4_0/missing,
+	  xfwm4/branches/xfce_4_0/mkinstalldirs,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/Makefile.in,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/client.h,
+	  xfwm4/branches/xfce_4_0/src/events.c,
+	  xfwm4/branches/xfce_4_0/src/keyboard.c,
+	  xfwm4/branches/xfce_4_0/src/keyboard.h,
+	  xfwm4/branches/xfce_4_0/src/main.c,
+	  xfwm4/branches/xfce_4_0/src/settings.c,
+	  xfwm4/branches/xfce_4_0/themes/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/bbs/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/curve/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/default.keys/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/default/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/exocet/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/meenee/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microcurve/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck2/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/microdeck3/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/tgc-large/Makefile.in,
+	  xfwm4/branches/xfce_4_0/themes/tgc/Makefile.in: Try to fix bug #92
+	  by properly ungrabbing buttons when needed. Beware, this is fairly
+	  sensiteite and might be still a bit rough on the edges. Try to fix
+	  bug #82 by selecting a more appropriate visual Update auto* and
+	  libtool chain.
+
+2004-01-10 21:08  olivier
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/events.c,
+	  xfwm4/branches/xfce_4_0/src/misc.c,
+	  xfwm4/branches/xfce_4_0/src/misc.h: Focus management issuesas
+	  reported in http://bugs.xfce.org/view_bug_page.php?f_id=0000070
+
+2004-01-07 20:38  olivier
+
+	* xfwm4/branches/xfce_4_0/ChangeLog,
+	  xfwm4/branches/xfce_4_0/po/ChangeLog: Huge update before 4.0.3
+	  release, mainly: ChangeLog update, Version number updates.
+
+2004-01-07 18:58  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/xfwm4.spec.in: Fix spec files so that
+	  debug files aren't include on Red Hat 9 and later
+
+2004-01-06 18:48  olivier
+
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/themes/default/close-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/close-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/close-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/hide-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/hide-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/hide-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/menu-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/menu-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/menu-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/themerc,
+	  xfwm4/branches/xfce_4_0/themes/default/title-1-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-1-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-2-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-2-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-3-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-3-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-4-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-4-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-5-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-5-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-left-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-left-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-right-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-right-inactive.xpm:
+	  update theme
+
+2004-01-03 20:54  olivier
+
+	* xfwm4/branches/xfce_4_0/po/pl.gmo,
+	  xfwm4/branches/xfce_4_0/po/pl.po,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: Fix Polish translation from
+	  Daniel Mr&#65533;&#65533;z <beorn@alpha.pl>
+
+2003-12-29 15:20  olivier
+
+	* xfwm4/branches/xfce_4_0/po/no.gmo,
+	  xfwm4/branches/xfce_4_0/po/no.po: Update version number, Update
+	  ChangeLog Fix missing CHARSET in potfiles
+
+2003-12-29 12:16  jasper
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/no.gmo,
+	  xfwm4/branches/xfce_4_0/po/no.po,
+	  xfwm4/branches/xfce_4_0/po/tr.gmo,
+	  xfwm4/branches/xfce_4_0/po/tr.po: Update Norwegian and Turkish
 	  translations
 
-2003-12-28 21:28  olivier
+2003-12-28 20:28  olivier
 
-	* xfwm4.pot: Fix removal of properties on unframed windows
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c: Fix removal of properties on
+	  unframed windows
 
-2003-12-27 22:52  jasper
+2003-12-27 21:52  jasper
 
-	* pl.gmo, pl.po: Update Polish translations
+	* xfwm4/branches/xfce_4_0/po/pl.gmo,
+	  xfwm4/branches/xfce_4_0/po/pl.po: Update Polish translations
 
-2003-12-22 23:50  olivier
+2003-12-22 22:50  olivier
 
-	* xfwm4.pot: Send wm_takefocus client message on focus change (as
-	  pointed out by Mike McCormack <mike@codeweavers.com>)
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/misc.c,
+	  xfwm4/branches/xfce_4_0/src/misc.h: Send wm_takefocus client
+	  message on focus change (as pointed out by Mike McCormack
+	  <mike@codeweavers.com>)
 
-2003-12-15 23:26  olivier
+2003-12-15 22:26  olivier
 
-	* xfwm4.pot: Fix a (potential) crash in workspace plugins
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: Fix a (potential) crash in
+	  workspace plugins
 
-2003-12-15 22:35  jasper
+2003-12-15 21:35  jasper
 
-	* az.gmo, az.po: Add Azerbaijani translations
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/az.gmo,
+	  xfwm4/branches/xfce_4_0/po/az.po: Add Azerbaijani translations
 
-2003-12-07 11:48  olivier
+2003-12-15 21:35  
 
-	* xfwm4.pot: Change dialog placement
+	* xfwm4/branches/xfce_4_0/po/az.gmo,
+	  xfwm4/branches/xfce_4_0/po/az.po: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
 
-2003-12-03 22:04  olivier
+2003-12-07 10:48  olivier
 
-	* xfwm4.pot: Allow 1 px move between dbl clicks
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/src/events.c: Change dialog placement
 
-2003-12-02 23:45  olivier
+2003-12-03 21:04  olivier
 
-	* xfwm4.pot: Fix send event not being emited when maximize occured
-	  on a window with its size to the maximized size Theme
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/events.c: Allow 1 px move between dbl
+	  clicks
 
-2003-11-16 09:44  jasper
+2003-12-02 22:45  olivier
 
-	* cs.gmo, cs.po: Update Czech translations
+	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/src/client.c,
+	  xfwm4/branches/xfce_4_0/themes/default/close-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/close-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/close-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/hide-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/hide-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/hide-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/menu-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/menu-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/menu-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-pressed.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-1-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-1-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-2-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-2-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-3-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-3-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-4-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-4-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-5-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/title-5-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-left-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-left-inactive.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-right-active.xpm,
+	  xfwm4/branches/xfce_4_0/themes/default/top-right-inactive.xpm: Fix
+	  send event not being emited when maximize occured on a window with
+	  its size to the maximized size Theme
 
-2003-11-12 08:02  jasper
+2003-11-16 08:44  jasper
 
-	* ar.gmo, ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo,
-	  fr.gmo, hi.gmo, hu.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo,
-	  pl.gmo, pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo,
-	  vi.gmo, zh_CN.gmo, zh_TW.gmo: Forgot gmo files update
+	* xfwm4/branches/xfce_4_0/po/cs.gmo,
+	  xfwm4/branches/xfce_4_0/po/cs.po: Update Czech translations
 
-2003-11-11 19:35  jasper
+2003-11-12 07:02  jasper
 
-	* ar.po, ca.po, cs.po, de.po, es.po, es_MX.po, fi.po, fr.po, hi.po,
-	  hu.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po, pt_PT.po, ru.po,
-	  sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po:
-	  Update po files, just in case something changed ...
+	* xfwm4/branches/xfce_4_0/po/ar.gmo,
+	  xfwm4/branches/xfce_4_0/po/ca.gmo,
+	  xfwm4/branches/xfce_4_0/po/cs.gmo,
+	  xfwm4/branches/xfce_4_0/po/de.gmo,
+	  xfwm4/branches/xfce_4_0/po/es.gmo,
+	  xfwm4/branches/xfce_4_0/po/es_MX.gmo,
+	  xfwm4/branches/xfce_4_0/po/fi.gmo,
+	  xfwm4/branches/xfce_4_0/po/fr.gmo,
+	  xfwm4/branches/xfce_4_0/po/hi.gmo,
+	  xfwm4/branches/xfce_4_0/po/hu.gmo,
+	  xfwm4/branches/xfce_4_0/po/ja.gmo,
+	  xfwm4/branches/xfce_4_0/po/ko.gmo,
+	  xfwm4/branches/xfce_4_0/po/lt.gmo,
+	  xfwm4/branches/xfce_4_0/po/ms.gmo,
+	  xfwm4/branches/xfce_4_0/po/nl.gmo,
+	  xfwm4/branches/xfce_4_0/po/pl.gmo,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.gmo,
+	  xfwm4/branches/xfce_4_0/po/ru.gmo,
+	  xfwm4/branches/xfce_4_0/po/sv.gmo,
+	  xfwm4/branches/xfce_4_0/po/ta.gmo,
+	  xfwm4/branches/xfce_4_0/po/tr.gmo,
+	  xfwm4/branches/xfce_4_0/po/uk.gmo,
+	  xfwm4/branches/xfce_4_0/po/vi.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo: Forgot gmo files update
 
-2003-11-09 20:09  jasper
+2003-11-11 18:35  jasper
 
-	* cs.gmo, cs.po: Add Check translations
+	* xfwm4/branches/xfce_4_0/po/ar.po,
+	  xfwm4/branches/xfce_4_0/po/ca.po,
+	  xfwm4/branches/xfce_4_0/po/cs.po,
+	  xfwm4/branches/xfce_4_0/po/de.po,
+	  xfwm4/branches/xfce_4_0/po/es.po,
+	  xfwm4/branches/xfce_4_0/po/es_MX.po,
+	  xfwm4/branches/xfce_4_0/po/fi.po,
+	  xfwm4/branches/xfce_4_0/po/fr.po,
+	  xfwm4/branches/xfce_4_0/po/hi.po,
+	  xfwm4/branches/xfce_4_0/po/hu.po,
+	  xfwm4/branches/xfce_4_0/po/ja.po,
+	  xfwm4/branches/xfce_4_0/po/ko.po,
+	  xfwm4/branches/xfce_4_0/po/lt.po,
+	  xfwm4/branches/xfce_4_0/po/ms.po,
+	  xfwm4/branches/xfce_4_0/po/nl.po,
+	  xfwm4/branches/xfce_4_0/po/pl.po,
+	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_0/po/ru.po,
+	  xfwm4/branches/xfce_4_0/po/sv.po,
+	  xfwm4/branches/xfce_4_0/po/ta.po,
+	  xfwm4/branches/xfce_4_0/po/tr.po,
+	  xfwm4/branches/xfce_4_0/po/uk.po,
+	  xfwm4/branches/xfce_4_0/po/vi.po,
+	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_0/po/zh_TW.po: Update po files, just in case
+	  something changed ...
 
-2003-11-03 19:06  jasper
+2003-11-09 19:09  jasper
 
-	* uk.gmo, uk.po: Add Ukranian translations
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/cs.gmo,
+	  xfwm4/branches/xfce_4_0/po/cs.po: Add Check translations
 
-2003-11-02 00:28  olivier
+2003-11-03 18:06  jasper
 
-	* hi.gmo, hi.po: Add Hindi translation
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/uk.gmo,
+	  xfwm4/branches/xfce_4_0/po/uk.po: Add Ukranian translations
 
-2003-10-25 00:31  jasper
+2003-11-01 23:28  olivier
 
-	* vi.gmo, vi.po:
-	  Add vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/hi.gmo,
+	  xfwm4/branches/xfce_4_0/po/hi.po: Add Hindi translation
 
-2003-10-17 18:32  jasper
+2003-10-24 22:31  jasper
 
-	* sv.gmo, sv.po: Add/update swedish translations
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/vi.gmo,
+	  xfwm4/branches/xfce_4_0/po/vi.po: Add vietnamese translations by
+	  Lam Vinh Nien <nienvl@yahoo.ca>.
 
-2003-09-27 13:20  huysmans
+2003-10-24 22:31  
 
-	* ta.gmo, ta.po: Update tamil translations
+	* xfwm4/branches/xfce_4_0/po/vi.gmo,
+	  xfwm4/branches/xfce_4_0/po/vi.po: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
+
+2003-10-17 16:32  jasper
+
+	* xfwm4/branches/xfce_4_0/configure,
+	  xfwm4/branches/xfce_4_0/configure.ac,
+	  xfwm4/branches/xfce_4_0/po/sv.gmo,
+	  xfwm4/branches/xfce_4_0/po/sv.po: Add/update swedish translations
+
+2003-10-17 16:32  
+
+	* xfwm4/branches/xfce_4_0/po/sv.gmo,
+	  xfwm4/branches/xfce_4_0/po/sv.po: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
+
+2003-09-27 11:20  huysmans
+
+	* xfwm4/branches/xfce_4_0/po/ta.gmo,
+	  xfwm4/branches/xfce_4_0/po/ta.po: Update tamil translations
+
+2003-09-27 11:20  
+
+	* xfwm4/branches/xfce_4_0, xfwm4/branches/xfce_4_0/NEWS,
+	  xfwm4/branches/xfce_4_0/stamp-h.in: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2003-09-22 20:33  huysmans
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
+	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
+	  xfwm4/trunk/po/zh_TW.po: Update version numbers and po files for
+	  release
+
+2003-09-15 20:55  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po: Big portugese
+	  translation update
+
+2003-09-10 07:39  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
+	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
+	  xfwm4/trunk/po/zh_TW.po: Update version numbers and po files for
+	  release
+
+2003-09-08 06:25  huysmans
+
+	* xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po: Update russian
+	  translations
+
+2003-09-02 06:48  huysmans
+
+	* xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po: Update malaysian
+	  translations
+
+2003-08-30 12:49  huysmans
+
+	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/zh_TW.Big5.gmo,
+	  xfwm4/trunk/po/zh_TW.Big5.po, xfwm4/trunk/po/zh_TW.gmo,
+	  xfwm4/trunk/po/zh_TW.po: Rename zh_TW.Big5 -> zh_TW
+
+2003-08-30 08:58  huysmans
+
+	* xfwm4/trunk/po/zh_TW.Big5.gmo, xfwm4/trunk/po/zh_TW.Big5.po: Add
+	  traditional chinese translations
+
+2003-08-26 07:12  huysmans
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
+	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Update version numbers and po files for
+	  release
+
+2003-08-17 11:36  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po: Add lithuanian
+	  translations
+
+2003-08-14 00:09  xfce
+
+	* xfwm4/trunk/po/xfwm4.pot: Update
+
+2003-08-10 19:54  huysmans
+
+	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update chinese
+	  translations
+
+2003-08-07 22:09  huysmans
+
+	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Update catalan
+	  translations
+
+2003-08-04 18:17  xfce
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
+	  xfwm4/trunk/themes/bbs/themerc: Add Korean translation from
+	  ByungHyun Choi <byunghyunchoi@hotmail.com>
+
+2003-07-30 08:05  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Update version numbers and po files for
+	  release
+
+2003-07-29 06:28  huysmans
+
+	* xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po: Update russian
+	  translations
+
+2003-07-24 22:50  xfce
+
+	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/hints.c: Change the
+	  getMotifHints() -It's the last thing that changed in xfwm4 before
+	  rc2- (New impl should be bullet proof :)
+
+2003-07-24 06:27  huysmans
+
+	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
+	  translations
+
+2003-07-19 08:59  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Update version numbers and po files for
+	  release
+
+2003-07-18 10:57  huysmans
+
+	* xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po: Update hungarian
+	  translations
+
+2003-07-18 07:46  huysmans
+
+	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Update turkish
+	  translations
+
+2003-07-16 09:57  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Add hungarian translations
+
+2003-07-16 08:22  huysmans
+
+	* xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Update catalan
+	  translations
+
+2003-07-11 06:55  huysmans
+
+	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update Chinese
+	  translations
+
+2003-07-10 09:24  huysmans
+
+	* xfwm4/trunk/ChangeLog, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Bump version
+	  numbers for release and update po files
+
+2003-07-09 18:15  xfce
+
+	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/xfwm4.pot: Update de.po from Moe.
+
+2003-07-08 20:53  xfce
+
+	* xfwm4/trunk/po/Makefile.in.in: Don't perform an update-po on make
+	  dist as it causes far too much trouble
+
+2003-07-07 21:18  huysmans
+
+	* xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Update catalan
+	  translations
+
+2003-07-04 23:37  xfce
+
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/ltcf-c.sh,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es_MX.gmo: libttol update
+	  and all
+
+2003-07-03 18:16  edscott
+
+	* xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po: spanish tranlation
+	  updates for 4.0 release.
+
+2003-06-24 06:36  xfce
+
+	* xfwm4/trunk/po/xfwm4.pot: Sync
+
+2003-06-21 20:41  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ca.gmo,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/es.gmo,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/fi.gmo,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/ja.gmo,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/nl.gmo,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/ru.gmo,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/tr.gmo,
+	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/src/client.c: Chnage
+	  clientPassFocus() to not fallback on tp most window if nothing
+	  else has been found in click to focus mode.
+
+2003-06-21 12:15  xfce
+
+	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po: Update po
+
+2003-06-19 17:36  xfce
+
+	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c: Test for
+	  initial (x,y) values to work arround a gtk bug that doesn't set
+	  PPosition flag sometimes (to center windows, for example)
+
+2003-06-15 22:32  xfce
+
+	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/ltcf-c.sh,
+	  xfwm4/trunk/ltconfig, xfwm4/trunk/ltmain.sh,
+	  xfwm4/trunk/po/xfwm4.pot: Switch to version 3.91.0
+
+2003-06-08 14:29  huysmans
+
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
+	  xfwm4/trunk/config.h.in, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/doc/C/Makefile.in,
+	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ru.gmo,
+	  xfwm4/trunk/po/ru.po, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/default/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microdeck3/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in: Add russian translation and
+	  fix xfdesktop not reading a new local menu
+
+2003-06-06 21:37  xfce
+
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
+	  xfwm4/trunk/config.h.in, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/doc/C/Makefile.in,
+	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/default/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microdeck3/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in: Versionning scheme
+
+2003-06-05 07:28  huysmans
+
+	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Updated translations
+	  and multiple file drop on backdrop list manager
+
+2003-06-01 17:25  huysmans
+
+	* xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: po file tweaks
+
+2003-05-30 20:36  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po: Add malayan
+	  translations
+
+2003-05-29 09:59  huysmans
+
+	* xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po: Translations update
+
+2003-05-27 21:35  xfce
+
+	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
+	  translation by Ilkka Ollakka (ilkka dot j dot ollakka at students
+	  dot oamk dot fi)
+
+2003-05-27 21:30  xfce
+
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
+	  xfwm4/trunk/config.guess, xfwm4/trunk/config.h.in,
+	  xfwm4/trunk/config.sub, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/depcomp, xfwm4/trunk/doc/C/Makefile.in,
+	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
+	  xfwm4/trunk/install-sh, xfwm4/trunk/mcs-plugin/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/monitor-icon.h, xfwm4/trunk/mkinstalldirs,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/default/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microdeck3/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in: Add Japanese translation by
+	  Zhao-Ji <zhao-ji at awz dot ne dot jp>
+
+2003-05-24 19:17  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Merging po
+
+2003-05-22 22:31  xfce
+
+	* xfwm4/trunk/defaults/defaults.in,
+	  xfwm4/trunk/mcs-plugin/margins_plugin.c,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/.indent.pro,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/keyboard.c, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h,
+	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/mypixmap.c,
+	  xfwm4/trunk/src/mywindow.c, xfwm4/trunk/src/parserc.c,
+	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/settings.h, xfwm4/trunk/src/spinning_cursor.c,
+	  xfwm4/trunk/src/startup_notification.c, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/workspaces.c: Disconnect wrap workspaces and wrap
+	  windows options Reorganize mcs-plugin a bit Rerun indent and fix
+	  some wrong indent behaviour toward _() Changs "Misc." label to
+	  "Advanced" in xfwm4 mcs-plugin
+
+2003-05-21 21:43  huysmans
+
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/tr.gmo,
+	  xfwm4/trunk/po/tr.po: Add Turkish translations
+
+2003-05-16 18:24  huysmans
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po: Add tamil
+	  translations
+
+2003-05-14 14:06  huysmans
+
+	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
+	  translations
+
+2003-05-13 17:59  huysmans
+
+	* xfwm4/trunk/Makefile.am, xfwm4/trunk/Makefile.in,
+	  xfwm4/trunk/aclocal.m4, xfwm4/trunk/config.guess,
+	  xfwm4/trunk/config.sub, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/doc, xfwm4/trunk/doc/C, xfwm4/trunk/doc/C/Makefile.am,
+	  xfwm4/trunk/doc/C/Makefile.in, xfwm4/trunk/doc/C/images,
+	  xfwm4/trunk/doc/C/images/Makefile.am,
+	  xfwm4/trunk/doc/C/images/Makefile.in,
+	  xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml,
+	  xfwm4/trunk/doc/Makefile.am, xfwm4/trunk/doc/Makefile.in,
+	  xfwm4/trunk/doc/xfce-nochunk.xsl,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ca.gmo,
+	  xfwm4/trunk/po/ca.po, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/default/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microdeck3/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in, xfwm4/trunk/xfwm4.spec.in: Add
+	  catalan translations and skeleton documentation
+
+2003-05-11 22:27  xfce
+
+	* xfwm4/trunk/defaults/defaults.in,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Add wrap
+	  workspace even when not moving windows, add edge resistance,
+	  update mcs plugin, and huge code cleaup in mcs plugin. Update
+	  french i18n
+
+2003-05-04 18:21  huysmans
+
+	* xfwm4/trunk/Makefile.am, xfwm4/trunk/Makefile.in,
+	  xfwm4/trunk/aclocal.m4, xfwm4/trunk/config.guess,
+	  xfwm4/trunk/config.sub, xfwm4/trunk/configure,
+	  xfwm4/trunk/defaults/Makefile.am,
+	  xfwm4/trunk/defaults/Makefile.in, xfwm4/trunk/ltcf-c.sh,
+	  xfwm4/trunk/ltconfig, xfwm4/trunk/ltmain.sh,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/adept/Makefile.in,
+	  xfwm4/trunk/themes/agua/Makefile.in,
+	  xfwm4/trunk/themes/atlanta/Makefile.in,
+	  xfwm4/trunk/themes/atlanta2/Makefile.in,
+	  xfwm4/trunk/themes/b5/Makefile.in,
+	  xfwm4/trunk/themes/b6/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/beastie/Makefile.in,
+	  xfwm4/trunk/themes/biz/Makefile.in,
+	  xfwm4/trunk/themes/coldsteel/Makefile.in,
+	  xfwm4/trunk/themes/coolclean/Makefile.in,
+	  xfwm4/trunk/themes/crux/Makefile.in,
+	  xfwm4/trunk/themes/cruxish/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/default/Makefile.in,
+	  xfwm4/trunk/themes/eazel-blue/Makefile.in,
+	  xfwm4/trunk/themes/elberg/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/fbx/Makefile.in,
+	  xfwm4/trunk/themes/g2/Makefile.in,
+	  xfwm4/trunk/themes/gaudy/Makefile.in,
+	  xfwm4/trunk/themes/gnububble/Makefile.in,
+	  xfwm4/trunk/themes/gorilla/Makefile.in,
+	  xfwm4/trunk/themes/gtk/Makefile.in,
+	  xfwm4/trunk/themes/iceg/Makefile.in,
+	  xfwm4/trunk/themes/kde/Makefile.in,
+	  xfwm4/trunk/themes/keramik/Makefile.in,
+	  xfwm4/trunk/themes/kindaker/Makefile.in,
+	  xfwm4/trunk/themes/koynacity/Makefile.in,
+	  xfwm4/trunk/themes/linea/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/metabox/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microdeck3/Makefile.in,
+	  xfwm4/trunk/themes/microgui/Makefile.in,
+	  xfwm4/trunk/themes/mofit/Makefile.in,
+	  xfwm4/trunk/themes/next/Makefile.in,
+	  xfwm4/trunk/themes/ops/Makefile.in,
+	  xfwm4/trunk/themes/oroborus/Makefile.in,
+	  xfwm4/trunk/themes/perl/Makefile.in,
+	  xfwm4/trunk/themes/pills/Makefile.in,
+	  xfwm4/trunk/themes/piranha/Makefile.in,
+	  xfwm4/trunk/themes/platinum/Makefile.in,
+	  xfwm4/trunk/themes/quiet-purple/Makefile.in,
+	  xfwm4/trunk/themes/quinx/Makefile.in,
+	  xfwm4/trunk/themes/r9x/Makefile.in,
+	  xfwm4/trunk/themes/redmond/Makefile.in,
+	  xfwm4/trunk/themes/redmondxp/Makefile.in,
+	  xfwm4/trunk/themes/retro/Makefile.in,
+	  xfwm4/trunk/themes/silverado/Makefile.in,
+	  xfwm4/trunk/themes/slick/Makefile.in,
+	  xfwm4/trunk/themes/slimline/Makefile.in,
+	  xfwm4/trunk/themes/tabs/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in,
+	  xfwm4/trunk/themes/totem/Makefile.in,
+	  xfwm4/trunk/themes/trench/Makefile.in,
+	  xfwm4/trunk/themes/triviality/Makefile.in,
+	  xfwm4/trunk/themes/tux/Makefile.in,
+	  xfwm4/trunk/themes/variation/Makefile.in,
+	  xfwm4/trunk/themes/xfce/Makefile.in: Fix rpm target and some
+	  distcheck stuff. distcheck still fails
+
+2003-05-03 09:46  huysmans
+
+	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update chinese
+	  translations
+
+2003-04-29 21:05  xfce
+
+	* xfwm4/trunk/po/pl.gmo, xfwm4/trunk/src/client.c: Fix an issue with
+	  transients not being placed on the ssame layer as their ancestor
+	  (this was a regression introduced recently, with the
+	  implementation of transients for group)
+
+2003-04-27 20:10  bmeurer
+
+	* xfwm4/trunk/po/pl.po: Updated polish translations.
+
+2003-04-25 17:47  huysmans
+
+	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
+	  translations
+
+2003-03-31 21:44  xfce
+
+	* xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Fix pixmap.c -> mypixmap.c in POTFILES.in
+
+2003-03-29 15:19  huysmans
+
+	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po: Update german
+	  translations
+
+2003-03-23 12:52  xfce
+
+	* xfwm4/trunk/ChangeLog, xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
+	  translation from Ilkka Ollakka (ilkka.j.ollakka@students.oamk.fi)
+
+2003-03-17 20:29  xfce
+
+	* xfwm4/trunk/po/es.gmo, xfwm4/trunk/src/client.c: Update default
+	  (microdeck) theme and improve toggle buttons management
+
+2003-03-17 18:44  bmeurer
+
+	* xfwm4/trunk/Makefile.am, xfwm4/trunk/Makefile.in,
+	  xfwm4/trunk/aclocal.m4, xfwm4/trunk/autogen.sh,
+	  xfwm4/trunk/common/Makefile.in, xfwm4/trunk/config.h.in,
+	  xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
+	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/ltcf-c.sh, xfwm4/trunk/ltconfig,
+	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/m4, xfwm4/trunk/m4/X11.m4,
+	  xfwm4/trunk/m4/debug.m4, xfwm4/trunk/m4/depends.m4,
+	  xfwm4/trunk/m4/i18n.m4, xfwm4/trunk/m4/rpath.m4,
+	  xfwm4/trunk/mcs-plugin/Makefile.am,
+	  xfwm4/trunk/mcs-plugin/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/margins_plugin.c,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
+	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/src/Makefile.am,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/startup_notification.c,
+	  xfwm4/trunk/src/startup_notification.h,
+	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/adept/Makefile.in,
+	  xfwm4/trunk/themes/agua/Makefile.in,
+	  xfwm4/trunk/themes/atlanta/Makefile.in,
+	  xfwm4/trunk/themes/atlanta2/Makefile.in,
+	  xfwm4/trunk/themes/b5/Makefile.in,
+	  xfwm4/trunk/themes/b6/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/beastie/Makefile.in,
+	  xfwm4/trunk/themes/biz/Makefile.in,
+	  xfwm4/trunk/themes/coldsteel/Makefile.in,
+	  xfwm4/trunk/themes/coolclean/Makefile.in,
+	  xfwm4/trunk/themes/crux/Makefile.in,
+	  xfwm4/trunk/themes/cruxish/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/eazel-blue/Makefile.in,
+	  xfwm4/trunk/themes/elberg/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/fbx/Makefile.in,
+	  xfwm4/trunk/themes/g2/Makefile.in,
+	  xfwm4/trunk/themes/gaudy/Makefile.in,
+	  xfwm4/trunk/themes/gnububble/Makefile.in,
+	  xfwm4/trunk/themes/gorilla/Makefile.in,
+	  xfwm4/trunk/themes/gtk/Makefile.in,
+	  xfwm4/trunk/themes/iceg/Makefile.in,
+	  xfwm4/trunk/themes/kde/Makefile.in,
+	  xfwm4/trunk/themes/keramik/Makefile.in,
+	  xfwm4/trunk/themes/kindaker/Makefile.in,
+	  xfwm4/trunk/themes/koynacity/Makefile.in,
+	  xfwm4/trunk/themes/linea/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/metabox/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microdeck3/Makefile.in,
+	  xfwm4/trunk/themes/microgui/Makefile.in,
+	  xfwm4/trunk/themes/mofit/Makefile.in,
+	  xfwm4/trunk/themes/next/Makefile.in,
+	  xfwm4/trunk/themes/ops/Makefile.in,
+	  xfwm4/trunk/themes/oroborus/Makefile.in,
+	  xfwm4/trunk/themes/pills/Makefile.in,
+	  xfwm4/trunk/themes/piranha/Makefile.in,
+	  xfwm4/trunk/themes/platinum/Makefile.in,
+	  xfwm4/trunk/themes/quiet-purple/Makefile.in,
+	  xfwm4/trunk/themes/quinx/Makefile.in,
+	  xfwm4/trunk/themes/r9x/Makefile.in,
+	  xfwm4/trunk/themes/redmond/Makefile.in,
+	  xfwm4/trunk/themes/redmondxp/Makefile.in,
+	  xfwm4/trunk/themes/retro/Makefile.in,
+	  xfwm4/trunk/themes/silverado/Makefile.in,
+	  xfwm4/trunk/themes/slick/Makefile.in,
+	  xfwm4/trunk/themes/slimline/Makefile.in,
+	  xfwm4/trunk/themes/tabs/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in,
+	  xfwm4/trunk/themes/totem/Makefile.in,
+	  xfwm4/trunk/themes/trench/Makefile.in,
+	  xfwm4/trunk/themes/tux/Makefile.in,
+	  xfwm4/trunk/themes/variation/Makefile.in,
+	  xfwm4/trunk/themes/xfce/Makefile.in, xfwm4/trunk/xfwm4.spec.in:
+	  Major autostuff update.
+
+2003-03-16 13:43  xfce
+
+	* xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po: Add nestu's Spanish
+	  translation
+
+2003-03-10 23:08  xfce
+
+	* xfwm4/trunk/defaults/defaults.in,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Rearranged
+	  the code a bit, made a separate inline function for snapping Added
+	  a separate option for snapping between windows. XFwm4 mcs plugin
+	  is updated too so the gui reflect these changes.
+
+2003-02-27 21:51  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Updates (I'm sure you wouldn't have
+	  guessed)
+
+2003-02-25 21:44  xfce
+
+	* xfwm4/trunk/mcs-plugin/margins_plugin.c,
+	  xfwm4/trunk/mcs-plugin/monitor-icon.h,
+	  xfwm4/trunk/mcs-plugin/monitor-icon.png,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/settings.c: Fix margins from mcs not being taken
+	  in account at startup Change margin plugin GUI Update xtions.
+
+2003-02-25 07:20  xfce
+
+	* xfwm4/trunk/mcs-plugin/margins_plugin.c,
+	  xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/settings.c: Tweaking
+
+2003-02-23 21:59  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/events.c: Revert the
+	  message about unidentified client message, turn it into a debug
+	  message
+
+2003-02-23 17:13  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/events.c: Add a message
+	  when an unidentified client message is received by the WM
+
+2003-02-01 09:44  huysmans
+
+	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
+	  translations
+
+2003-01-31 21:15  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
+	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
+	  xfwm4/trunk/po/zh_CN.po: Switch to GNU gettext 0.11.5
+
+2003-01-31 20:34  xfce
+
+	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po: Update Arabic
+	  translation by Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>
+
+2003-01-28 13:40  huysmans
+
+	* xfwm4/trunk/configure.in, xfwm4/trunk/po/pl.gmo,
+	  xfwm4/trunk/po/pl.po: Add polish translations by Pablo
+
+2003-01-28 10:47  xfce
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
+	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po: Add arabic
+	  translation from Nabil. Thanks a lot, Nabil :)
+
+2003-01-26 11:06  xfce
+
+	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
+	  translation
+
+2003-01-25 23:04  xfce
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
+	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Add Finnish
+	  translation by Ilkka Ollakka (ilkka.j.ollakka.oamk.fi)
+
+2003-01-25 11:08  xfce
+
+	* xfwm4/trunk/INSTALL, xfwm4/trunk/Makefile.in,
+	  xfwm4/trunk/aclocal.m4, xfwm4/trunk/common/Makefile.in,
+	  xfwm4/trunk/config.guess, xfwm4/trunk/config.h.in,
+	  xfwm4/trunk/config.sub, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/install-sh, xfwm4/trunk/ltmain.sh,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/mkinstalldirs,
+	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/de.gmo,
+	  xfwm4/trunk/po/de.po, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/adept/Makefile.in,
+	  xfwm4/trunk/themes/agua/Makefile.in,
+	  xfwm4/trunk/themes/atlanta/Makefile.in,
+	  xfwm4/trunk/themes/atlanta2/Makefile.in,
+	  xfwm4/trunk/themes/b5/Makefile.in,
+	  xfwm4/trunk/themes/b6/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/beastie/Makefile.in,
+	  xfwm4/trunk/themes/biz/Makefile.in,
+	  xfwm4/trunk/themes/coldsteel/Makefile.in,
+	  xfwm4/trunk/themes/coolclean/Makefile.in,
+	  xfwm4/trunk/themes/crux/Makefile.in,
+	  xfwm4/trunk/themes/cruxish/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/eazel-blue/Makefile.in,
+	  xfwm4/trunk/themes/elberg/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/fbx/Makefile.in,
+	  xfwm4/trunk/themes/g2/Makefile.in,
+	  xfwm4/trunk/themes/gaudy/Makefile.in,
+	  xfwm4/trunk/themes/gnububble/Makefile.in,
+	  xfwm4/trunk/themes/gorilla/Makefile.in,
+	  xfwm4/trunk/themes/gtk/Makefile.in,
+	  xfwm4/trunk/themes/iceg/Makefile.in,
+	  xfwm4/trunk/themes/kde/Makefile.in,
+	  xfwm4/trunk/themes/keramik/Makefile.in,
+	  xfwm4/trunk/themes/kindaker/Makefile.in,
+	  xfwm4/trunk/themes/koynacity/Makefile.in,
+	  xfwm4/trunk/themes/linea/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/metabox/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microgui/Makefile.in,
+	  xfwm4/trunk/themes/mofit/Makefile.in,
+	  xfwm4/trunk/themes/next/Makefile.in,
+	  xfwm4/trunk/themes/ops/Makefile.in,
+	  xfwm4/trunk/themes/oroborus/Makefile.in,
+	  xfwm4/trunk/themes/pills/Makefile.in,
+	  xfwm4/trunk/themes/piranha/Makefile.in,
+	  xfwm4/trunk/themes/platinum/Makefile.in,
+	  xfwm4/trunk/themes/quiet-purple/Makefile.in,
+	  xfwm4/trunk/themes/quinx/Makefile.in,
+	  xfwm4/trunk/themes/r9x/Makefile.in,
+	  xfwm4/trunk/themes/redmond/Makefile.in,
+	  xfwm4/trunk/themes/redmondxp/Makefile.in,
+	  xfwm4/trunk/themes/retro/Makefile.in,
+	  xfwm4/trunk/themes/silverado/Makefile.in,
+	  xfwm4/trunk/themes/slick/Makefile.in,
+	  xfwm4/trunk/themes/slimline/Makefile.in,
+	  xfwm4/trunk/themes/tabs/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in,
+	  xfwm4/trunk/themes/trench/Makefile.in,
+	  xfwm4/trunk/themes/tux/Makefile.in,
+	  xfwm4/trunk/themes/variation/Makefile.in,
+	  xfwm4/trunk/themes/xfce/Makefile.in: Add German translation from
+	  MisterMoe <MisterMoe@hackerboard.de> and Michael Jakl
+	  <mj@int-x.org>
+
+2003-01-24 14:25  edscott
+
+	* xfwm4/trunk/INSTALL, xfwm4/trunk/Makefile.in,
+	  xfwm4/trunk/aclocal.m4, xfwm4/trunk/common/Makefile.in,
+	  xfwm4/trunk/config.guess, xfwm4/trunk/config.h.in,
+	  xfwm4/trunk/config.sub, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/install-sh, xfwm4/trunk/ltmain.sh,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/mkinstalldirs,
+	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/es_MX.gmo,
+	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/adept/Makefile.in,
+	  xfwm4/trunk/themes/agua/Makefile.in,
+	  xfwm4/trunk/themes/atlanta/Makefile.in,
+	  xfwm4/trunk/themes/atlanta2/Makefile.in,
+	  xfwm4/trunk/themes/b5/Makefile.in,
+	  xfwm4/trunk/themes/b6/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/beastie/Makefile.in,
+	  xfwm4/trunk/themes/biz/Makefile.in,
+	  xfwm4/trunk/themes/coldsteel/Makefile.in,
+	  xfwm4/trunk/themes/coolclean/Makefile.in,
+	  xfwm4/trunk/themes/crux/Makefile.in,
+	  xfwm4/trunk/themes/cruxish/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/eazel-blue/Makefile.in,
+	  xfwm4/trunk/themes/elberg/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/fbx/Makefile.in,
+	  xfwm4/trunk/themes/g2/Makefile.in,
+	  xfwm4/trunk/themes/gaudy/Makefile.in,
+	  xfwm4/trunk/themes/gnububble/Makefile.in,
+	  xfwm4/trunk/themes/gorilla/Makefile.in,
+	  xfwm4/trunk/themes/gtk/Makefile.in,
+	  xfwm4/trunk/themes/iceg/Makefile.in,
+	  xfwm4/trunk/themes/kde/Makefile.in,
+	  xfwm4/trunk/themes/keramik/Makefile.in,
+	  xfwm4/trunk/themes/kindaker/Makefile.in,
+	  xfwm4/trunk/themes/koynacity/Makefile.in,
+	  xfwm4/trunk/themes/linea/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/metabox/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microgui/Makefile.in,
+	  xfwm4/trunk/themes/mofit/Makefile.in,
+	  xfwm4/trunk/themes/next/Makefile.in,
+	  xfwm4/trunk/themes/ops/Makefile.in,
+	  xfwm4/trunk/themes/oroborus/Makefile.in,
+	  xfwm4/trunk/themes/pills/Makefile.in,
+	  xfwm4/trunk/themes/piranha/Makefile.in,
+	  xfwm4/trunk/themes/platinum/Makefile.in,
+	  xfwm4/trunk/themes/quiet-purple/Makefile.in,
+	  xfwm4/trunk/themes/quinx/Makefile.in,
+	  xfwm4/trunk/themes/r9x/Makefile.in,
+	  xfwm4/trunk/themes/redmond/Makefile.in,
+	  xfwm4/trunk/themes/redmondxp/Makefile.in,
+	  xfwm4/trunk/themes/retro/Makefile.in,
+	  xfwm4/trunk/themes/silverado/Makefile.in,
+	  xfwm4/trunk/themes/slick/Makefile.in,
+	  xfwm4/trunk/themes/slimline/Makefile.in,
+	  xfwm4/trunk/themes/tabs/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in,
+	  xfwm4/trunk/themes/trench/Makefile.in,
+	  xfwm4/trunk/themes/tux/Makefile.in,
+	  xfwm4/trunk/themes/variation/Makefile.in,
+	  xfwm4/trunk/themes/xfce/Makefile.in: added mexican spanish files
+
+2003-01-24 13:06  huysmans
+
+	* xfwm4/trunk/configure.in, xfwm4/trunk/po/nl.gmo,
+	  xfwm4/trunk/po/nl.po: Add Dutch translations
+
+2003-01-24 10:07  xfce
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
+	  xfwm4/trunk/po/zh_CN.GB2312.gmo, xfwm4/trunk/po/zh_CN.GB2312.po,
+	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Rename
+	  po/zh_CN.GB2312.* to po/zh_CN.*
+
+2003-01-24 09:00  xfce
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
+	  xfwm4/trunk/po/zh_CN.GB2312.gmo, xfwm4/trunk/po/zh_CN.GB2312.po:
+	  Add Chinese translation by Yongtao Yang <yongtao.yang@telia.com>
+
+2003-01-23 22:59  xfce
+
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
+	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po: Add spanish
+	  translation. Thanks nestu!
+
+2003-01-23 09:12  xfce
+
+	* xfwm4/trunk/configure.in, xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
+	  xfwm4/trunk/po/fr.gmo: Replace AC_PROG_LIBTOOL with
+	  AM_PROG_LIBTOOL Remove gtk_set_locale() from plugin init.
+
+2003-01-22 22:26  xfce
+
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.in, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/xfwm4.pot: Small stuff
+
+2003-01-22 21:54  xfce
+
+	* xfwm4/trunk/ChangeLog, xfwm4/trunk/Makefile.am,
+	  xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
+	  xfwm4/trunk/autogen.sh, xfwm4/trunk/common/Makefile.in,
+	  xfwm4/trunk/common/my_intl.h, xfwm4/trunk/config.h.in,
+	  xfwm4/trunk/configure, xfwm4/trunk/configure.in,
+	  xfwm4/trunk/defaults/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/Makefile.am,
+	  xfwm4/trunk/mcs-plugin/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/mkinstalldirs,
+	  xfwm4/trunk/po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/POTFILES.in,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/po2tbl.sed.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/adept/Makefile.in,
+	  xfwm4/trunk/themes/agua/Makefile.in,
+	  xfwm4/trunk/themes/atlanta/Makefile.in,
+	  xfwm4/trunk/themes/atlanta2/Makefile.in,
+	  xfwm4/trunk/themes/b5/Makefile.in,
+	  xfwm4/trunk/themes/b6/Makefile.in,
+	  xfwm4/trunk/themes/bbs/Makefile.in,
+	  xfwm4/trunk/themes/beastie/Makefile.in,
+	  xfwm4/trunk/themes/biz/Makefile.in,
+	  xfwm4/trunk/themes/coldsteel/Makefile.in,
+	  xfwm4/trunk/themes/coolclean/Makefile.in,
+	  xfwm4/trunk/themes/crux/Makefile.in,
+	  xfwm4/trunk/themes/cruxish/Makefile.in,
+	  xfwm4/trunk/themes/curve/Makefile.in,
+	  xfwm4/trunk/themes/default.keys/Makefile.in,
+	  xfwm4/trunk/themes/eazel-blue/Makefile.in,
+	  xfwm4/trunk/themes/elberg/Makefile.in,
+	  xfwm4/trunk/themes/exocet/Makefile.in,
+	  xfwm4/trunk/themes/fbx/Makefile.in,
+	  xfwm4/trunk/themes/g2/Makefile.in,
+	  xfwm4/trunk/themes/gaudy/Makefile.in,
+	  xfwm4/trunk/themes/gnububble/Makefile.in,
+	  xfwm4/trunk/themes/gorilla/Makefile.in,
+	  xfwm4/trunk/themes/gtk/Makefile.in,
+	  xfwm4/trunk/themes/iceg/Makefile.in,
+	  xfwm4/trunk/themes/kde/Makefile.in,
+	  xfwm4/trunk/themes/keramik/Makefile.in,
+	  xfwm4/trunk/themes/kindaker/Makefile.in,
+	  xfwm4/trunk/themes/koynacity/Makefile.in,
+	  xfwm4/trunk/themes/linea/Makefile.in,
+	  xfwm4/trunk/themes/meenee/Makefile.in,
+	  xfwm4/trunk/themes/metabox/Makefile.in,
+	  xfwm4/trunk/themes/microcurve/Makefile.in,
+	  xfwm4/trunk/themes/microdeck/Makefile.in,
+	  xfwm4/trunk/themes/microdeck2/Makefile.in,
+	  xfwm4/trunk/themes/microgui/Makefile.in,
+	  xfwm4/trunk/themes/mofit/Makefile.in,
+	  xfwm4/trunk/themes/next/Makefile.in,
+	  xfwm4/trunk/themes/ops/Makefile.in,
+	  xfwm4/trunk/themes/oroborus/Makefile.in,
+	  xfwm4/trunk/themes/pills/Makefile.in,
+	  xfwm4/trunk/themes/piranha/Makefile.in,
+	  xfwm4/trunk/themes/platinum/Makefile.in,
+	  xfwm4/trunk/themes/quiet-purple/Makefile.in,
+	  xfwm4/trunk/themes/quinx/Makefile.in,
+	  xfwm4/trunk/themes/r9x/Makefile.in,
+	  xfwm4/trunk/themes/redmond/Makefile.in,
+	  xfwm4/trunk/themes/redmondxp/Makefile.in,
+	  xfwm4/trunk/themes/retro/Makefile.in,
+	  xfwm4/trunk/themes/silverado/Makefile.in,
+	  xfwm4/trunk/themes/slick/Makefile.in,
+	  xfwm4/trunk/themes/slimline/Makefile.in,
+	  xfwm4/trunk/themes/tabs/Makefile.in,
+	  xfwm4/trunk/themes/tgc/Makefile.in,
+	  xfwm4/trunk/themes/trench/Makefile.in,
+	  xfwm4/trunk/themes/tux/Makefile.in,
+	  xfwm4/trunk/themes/variation/Makefile.in,
+	  xfwm4/trunk/themes/xfce/Makefile.in: Update autogen.sh script, Add
+	  internationalization support Add french locale Add dependency on
+	  libxfcegui4 v .14 Other stuff I don't remember :)
 
