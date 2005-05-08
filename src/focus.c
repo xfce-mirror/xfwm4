@@ -327,7 +327,11 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
     clientSetFocus (screen_info, new_focus, 
+#if 0
                     myDisplayGetCurrentTime (screen_info->display_info), 
+#else
+                    CurrentTime, 
+#endif
                     FOCUS_IGNORE_MODAL | FOCUS_FORCE);
 }
 
