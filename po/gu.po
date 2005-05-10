@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-26 23:38+0200\n"
+"POT-Creation-Date: 2005-05-08 23:29+0200\n"
 "PO-Revision-Date: 2005-05-03 18:52+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <gu@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"\n"
 "\n"
 
 #: mcs-plugin/margins.c:127
@@ -24,7 +25,8 @@ msgid "Workspace Margins"
 msgstr "કામ કરવાની જગ્યાના હાંસિયાઓ"
 
 #: mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "હાંસિયાઓ એ સ્ક્રીનની બાજુઓ માટેના વિસ્તારો છે કે જ્યાં કોઈ વિન્ડો મૂકવામાં આવતી નથી"
 
 #: mcs-plugin/margins.c:168
@@ -649,4 +651,3 @@ msgstr "માં ફેરવો ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "અજ્ઞાત કાર્યક્રમ!"
-
