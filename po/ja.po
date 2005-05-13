@@ -1,15 +1,15 @@
-# Japanese translation for xfwm4.
-# Copyright (C) 2003-2005, Olivier Fourdan.
+# Japanese translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003-2004.
 # Daichi Kawahata <daichik@users.sourceforge.net>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.2.1\n"
+"Project-Id-Version: xfwm4 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-08 23:29+0200\n"
-"PO-Revision-Date: 2005-03-11 07:10+0900\n"
+"PO-Revision-Date: 2005-05-13 07:28+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -303,11 +303,11 @@ msgstr "不透明表示での移動と大きさ変更"
 
 #: mcs-plugin/xfwm4_plugin.c:1802
 msgid "Display content of windows when resizing"
-msgstr "大きさ変更時のウィンドウ表示"
+msgstr "大きさ変更時にウィンドウの内容を表示する"
 
 #: mcs-plugin/xfwm4_plugin.c:1807
 msgid "Display content of windows when moving"
-msgstr "移動時のウィンドウ表示"
+msgstr "移動時にウィンドウの内容を表示する"
 
 #: mcs-plugin/xfwm4_plugin.c:1812
 msgid "Double click action"
@@ -463,16 +463,16 @@ msgstr "ウィンドウを右のワークスペースに移す"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "デスクトップを表示する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "ウィンドウをワークスペース1に移す"
+msgstr "ウィンドウをワークスペース %d に移す"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
-msgstr "テーマディレクトリを開けません!"
+msgstr "テーマフォルダを開けません！"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
@@ -647,27 +647,3 @@ msgstr "切替え ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "不明なアプリケーションです！"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "ウィンドウをワークスペース2に移す"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "ウィンドウをワークスペース3に移す"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "ウィンドウをワークスペース4に移す"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "ウィンドウをワークスペース5に移す"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "ウィンドウをワークスペース6に移す"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "ウィンドウをワークスペース7に移す"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "ウィンドウをワークスペース8に移す"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "ウィンドウをワークスペース9に移す"
