@@ -854,6 +854,15 @@ maintainers, etc. Commented out by default.
 	</varlistentry>
 
 	<varlistentry>
+		<term>scroll_workspaces=false</term>
+			<listitem>
+			<para>Add this line to your xfwm4rc file if you want to disable workspace switching 
+			with the mouse wheel.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
 		<term>toggle_workspaces=true</term>
 			<listitem>
 			<para>Add this line to your xfwm4rc file if you want the Control+F(N) keyboard shortcut

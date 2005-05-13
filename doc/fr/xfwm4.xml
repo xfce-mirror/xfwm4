@@ -807,6 +807,14 @@ maintainers, etc. Commented out by default.
 	</varlistentry>
 
 	<varlistentry>
+		<term>scroll_workspaces=false</term>
+			<listitem>
+			<para>Cette option permet de désactiver le basculement d'espace de travail à l'aide de la molette de la souris.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
 		<term>toggle_workspaces=true</term>
 			<listitem>
 			<para>Cette option indique au raccourci clavier Control+F(N) de se rappeler du numéro de l'espace de travail précédent.
