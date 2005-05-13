@@ -1,3 +1,8 @@
+# translation of Xfwm4 to Finnish
+# This file is distributed under the same license as the xfwm4 package.
+# Copyright (C) 2003 Olivier Fourdan <fourdan@xfce.org>
+# Juha Kautto <kautto.juha@kolumbus.fi>, 2004.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
@@ -12,13 +17,13 @@ msgstr ""
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
-msgstr "Työpöydän marginaalit"
+msgstr "Työpöydän Reunukset"
 
 #: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"Marginaalit ovat näytön reunalla olevat alueet, joille ikkunoita ei aseteta"
+"Reunukset ovat näytön reunalla olevat alueet, joille ikkunoita ei aseteta"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -38,7 +43,7 @@ msgstr "Alaosa:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
-msgstr "Työpöydät ja Marginaalit"
+msgstr "Työpöydät ja Reunukset"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
@@ -47,7 +52,7 @@ msgstr "Työpöydät"
 
 #: mcs-plugin/plugin.c:173
 msgid "Margins"
-msgstr "Marginaalit"
+msgstr "Reunukset"
 
 #: mcs-plugin/workspaces.c:345
 msgid "Change name"
@@ -458,12 +463,12 @@ msgstr "Siirrä ikkuna oikeanpuoleiselle työpöydälle"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Näytä työpöytä"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Siirrä ikkuna 1. työpöydälle"
+msgstr "Siirrä ikkuna %d. työpöydälle"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
