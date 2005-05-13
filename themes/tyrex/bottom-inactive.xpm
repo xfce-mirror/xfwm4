@@ -1,14 +1,13 @@
 /* XPM */
 static char * bottom_inactive_xpm[] = {
-"32 4 7 1",
+"32 4 6 1",
 " 	c None",
 ".	c #000000",
-"+	c #FFFFFF s inactive_hilight_1",
-"@	c #858585 s inactive_shadow_1",
-"$	c #A8A8A8 s inactive_mid_1",
-"#	c #C2C2C2 s inactive_color_1",
-"%	c #EDEDED s inactive_color_1",
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",
+"+	c #D0D0FF s inactive_hilight_1",
+"@	c #A0A0FF s inactive_shadow_1",
+"$	c #B0B0FF s inactive_mid_1",
+"#	c #C0C0FF s inactive_color_1",
+"++++++++++++++++++++++++++++++++",
+"################################",
 "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"};
