@@ -1587,6 +1587,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
         if ((c) && (c == clientGetFocus ()))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
+            clientPassGrabMouseButton (NULL);
             clientUpdateFocus (c->screen_info, NULL, NO_FOCUS_FLAG);
             /* Clear timeout */
             clear_timeout ();
