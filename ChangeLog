@@ -1,3 +1,214 @@
+2005-05-13 21:18  olivier
+
+	* xfwm4/branches/xfce_4_2/po/ar.po,
+	  xfwm4/branches/xfce_4_2/po/az.po,
+	  xfwm4/branches/xfce_4_2/po/be.po,
+	  xfwm4/branches/xfce_4_2/po/bg.po,
+	  xfwm4/branches/xfce_4_2/po/bn_IN.po,
+	  xfwm4/branches/xfce_4_2/po/ca.po,
+	  xfwm4/branches/xfce_4_2/po/cs.po,
+	  xfwm4/branches/xfce_4_2/po/de.po,
+	  xfwm4/branches/xfce_4_2/po/el.po,
+	  xfwm4/branches/xfce_4_2/po/en_GB.po,
+	  xfwm4/branches/xfce_4_2/po/es.po,
+	  xfwm4/branches/xfce_4_2/po/es_MX.po,
+	  xfwm4/branches/xfce_4_2/po/et.po,
+	  xfwm4/branches/xfce_4_2/po/eu.po,
+	  xfwm4/branches/xfce_4_2/po/fa.po,
+	  xfwm4/branches/xfce_4_2/po/fi.po,
+	  xfwm4/branches/xfce_4_2/po/fr.po,
+	  xfwm4/branches/xfce_4_2/po/gu.po,
+	  xfwm4/branches/xfce_4_2/po/he.po,
+	  xfwm4/branches/xfce_4_2/po/hi.po,
+	  xfwm4/branches/xfce_4_2/po/hu.po,
+	  xfwm4/branches/xfce_4_2/po/it.po,
+	  xfwm4/branches/xfce_4_2/po/ja.po,
+	  xfwm4/branches/xfce_4_2/po/ko.po,
+	  xfwm4/branches/xfce_4_2/po/lt.po,
+	  xfwm4/branches/xfce_4_2/po/mr.po,
+	  xfwm4/branches/xfce_4_2/po/ms.po,
+	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
+	  xfwm4/branches/xfce_4_2/po/nl.po,
+	  xfwm4/branches/xfce_4_2/po/pa.po,
+	  xfwm4/branches/xfce_4_2/po/pl.po,
+	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_2/po/ro.po,
+	  xfwm4/branches/xfce_4_2/po/ru.po,
+	  xfwm4/branches/xfce_4_2/po/sk.po,
+	  xfwm4/branches/xfce_4_2/po/sv.po,
+	  xfwm4/branches/xfce_4_2/po/ta.po,
+	  xfwm4/branches/xfce_4_2/po/tr.po,
+	  xfwm4/branches/xfce_4_2/po/uk.po,
+	  xfwm4/branches/xfce_4_2/po/vi.po,
+	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Prepare 4.2.2
+
+2005-05-13 20:11  olivier
+
+	* xfwm4/branches/xfce_4_2/doc/C/xfwm4.html,
+	  xfwm4/branches/xfce_4_2/doc/C/xfwm4.xml,
+	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.html,
+	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.xml: Document missing option
+	  "workspace_scroll"
+
+2005-05-13 15:13  pollux
+
+	* xfwm4/branches/xfce_4_2/po/fi.po: update FI translations
+
+2005-05-13 15:10  pollux
+
+	* xfcalendar/branches/xfce_4_2/po/ro.po,
+	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
+	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
+	  xfce4-panel/branches/xfce_4_2/contents.xml.ro,
+	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
+	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
+	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
+	  xfdesktop/branches/xfce_4_2/po/ro.po,
+	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
+	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
+	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
+	  xfwm4/branches/xfce_4_2/po/ro.po: update RO translations
+
+2005-05-13 15:02  pollux
+
+	* libxfcegui4/branches/xfce_4_2/po/ja.po,
+	  xfcalendar/branches/xfce_4_2/po/ja.po,
+	  xfce-mcs-manager/branches/xfce_4_2/po/ja.po,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/ja.po,
+	  xfce-utils/branches/xfce_4_2/po/ja.po,
+	  xfce4-appfinder/branches/xfce_4_2/po/ja.po,
+	  xfce4-mixer/branches/xfce_4_2/po/ja.po,
+	  xfce4-panel/branches/xfce_4_2/po/ja.po,
+	  xfce4-session/branches/xfce_4_2/po/ja.po,
+	  xfce4-toys/branches/xfce_4_2/po/ja.po,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/ja.po,
+	  xfdesktop/branches/xfce_4_2/po/ja.po,
+	  xffm/branches/xfce_4_2/po/ja.po,
+	  xfprint/branches/xfce_4_2/po/ja.po,
+	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+
+2005-05-10 20:34  olivier
+
+	* xfwm4/branches/xfce_4_2/po/ar.po,
+	  xfwm4/branches/xfce_4_2/po/az.po,
+	  xfwm4/branches/xfce_4_2/po/be.po,
+	  xfwm4/branches/xfce_4_2/po/bg.po,
+	  xfwm4/branches/xfce_4_2/po/bn_IN.po,
+	  xfwm4/branches/xfce_4_2/po/ca.po,
+	  xfwm4/branches/xfce_4_2/po/cs.po,
+	  xfwm4/branches/xfce_4_2/po/de.po,
+	  xfwm4/branches/xfce_4_2/po/el.po,
+	  xfwm4/branches/xfce_4_2/po/en_GB.po,
+	  xfwm4/branches/xfce_4_2/po/es.po,
+	  xfwm4/branches/xfce_4_2/po/es_MX.po,
+	  xfwm4/branches/xfce_4_2/po/et.po,
+	  xfwm4/branches/xfce_4_2/po/eu.po,
+	  xfwm4/branches/xfce_4_2/po/fa.po,
+	  xfwm4/branches/xfce_4_2/po/fi.po,
+	  xfwm4/branches/xfce_4_2/po/fr.po,
+	  xfwm4/branches/xfce_4_2/po/gu.po,
+	  xfwm4/branches/xfce_4_2/po/he.po,
+	  xfwm4/branches/xfce_4_2/po/hi.po,
+	  xfwm4/branches/xfce_4_2/po/hu.po,
+	  xfwm4/branches/xfce_4_2/po/it.po,
+	  xfwm4/branches/xfce_4_2/po/ja.po,
+	  xfwm4/branches/xfce_4_2/po/ko.po,
+	  xfwm4/branches/xfce_4_2/po/lt.po,
+	  xfwm4/branches/xfce_4_2/po/mr.po,
+	  xfwm4/branches/xfce_4_2/po/ms.po,
+	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
+	  xfwm4/branches/xfce_4_2/po/nl.po,
+	  xfwm4/branches/xfce_4_2/po/pa.po,
+	  xfwm4/branches/xfce_4_2/po/pl.po,
+	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_2/po/ro.po,
+	  xfwm4/branches/xfce_4_2/po/ru.po,
+	  xfwm4/branches/xfce_4_2/po/sk.po,
+	  xfwm4/branches/xfce_4_2/po/sv.po,
+	  xfwm4/branches/xfce_4_2/po/ta.po,
+	  xfwm4/branches/xfce_4_2/po/tr.po,
+	  xfwm4/branches/xfce_4_2/po/uk.po,
+	  xfwm4/branches/xfce_4_2/po/vi.po,
+	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Version update
+
+2005-05-08 21:16  olivier
+
+	* xfwm4/branches/xfce_4_2/src/focus.c: Use CurrentTime as timestamp
+	  when passing focus on unmap (quite the same as #924)
+
+2005-05-06 18:39  pollux
+
+	* xfwm4/branches/xfce_4_2/configure.ac,
+	  xfwm4/branches/xfce_4_2/po/mr.po: add MR translations
+
+2005-05-06 17:41  pollux
+
+	* xfwm4/branches/xfce_4_2/po/gu.po: update GU translations
+
+2005-05-04 20:42  olivier
+
+	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+
+2005-05-04 20:40  olivier
+
+	* xfwm4/branches/xfce_4_2/po/ChangeLog: Update ChangeLog
+
+2005-05-02 19:59  olivier
+
+	* xfwm4/branches/xfce_4_2/mcs-plugin/workspaces.c,
+	  xfwm4/branches/xfce_4_2/po/ar.po,
+	  xfwm4/branches/xfce_4_2/po/az.po,
+	  xfwm4/branches/xfce_4_2/po/be.po,
+	  xfwm4/branches/xfce_4_2/po/bg.po,
+	  xfwm4/branches/xfce_4_2/po/bn_IN.po,
+	  xfwm4/branches/xfce_4_2/po/cs.po,
+	  xfwm4/branches/xfce_4_2/po/de.po,
+	  xfwm4/branches/xfce_4_2/po/en_GB.po,
+	  xfwm4/branches/xfce_4_2/po/es.po,
+	  xfwm4/branches/xfce_4_2/po/es_MX.po,
+	  xfwm4/branches/xfce_4_2/po/et.po,
+	  xfwm4/branches/xfce_4_2/po/eu.po,
+	  xfwm4/branches/xfce_4_2/po/fa.po,
+	  xfwm4/branches/xfce_4_2/po/fi.po,
+	  xfwm4/branches/xfce_4_2/po/fr.po,
+	  xfwm4/branches/xfce_4_2/po/gu.po,
+	  xfwm4/branches/xfce_4_2/po/he.po,
+	  xfwm4/branches/xfce_4_2/po/hi.po,
+	  xfwm4/branches/xfce_4_2/po/hu.po,
+	  xfwm4/branches/xfce_4_2/po/it.po,
+	  xfwm4/branches/xfce_4_2/po/ja.po,
+	  xfwm4/branches/xfce_4_2/po/ko.po,
+	  xfwm4/branches/xfce_4_2/po/lt.po,
+	  xfwm4/branches/xfce_4_2/po/ms.po,
+	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
+	  xfwm4/branches/xfce_4_2/po/nl.po,
+	  xfwm4/branches/xfce_4_2/po/pa.po,
+	  xfwm4/branches/xfce_4_2/po/pl.po,
+	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
+	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
+	  xfwm4/branches/xfce_4_2/po/ro.po,
+	  xfwm4/branches/xfce_4_2/po/ru.po,
+	  xfwm4/branches/xfce_4_2/po/sk.po,
+	  xfwm4/branches/xfce_4_2/po/sv.po,
+	  xfwm4/branches/xfce_4_2/po/ta.po,
+	  xfwm4/branches/xfce_4_2/po/tr.po,
+	  xfwm4/branches/xfce_4_2/po/uk.po,
+	  xfwm4/branches/xfce_4_2/po/vi.po,
+	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
+	  xfwm4/branches/xfce_4_2/po/zh_TW.po,
+	  xfwm4/branches/xfce_4_2/src/parserc.c,
+	  xfwm4/branches/xfce_4_2/src/parserc.h,
+	  xfwm4/branches/xfce_4_2/src/settings.c: Backport code cleanup from
+	  trunk
+
 2005-04-26 21:36  olivier
 
 	* xfwm4/branches/xfce_4_2/src/focus.c: Trivial fix for focus problem
