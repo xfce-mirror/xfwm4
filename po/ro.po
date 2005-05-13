@@ -1,14 +1,14 @@
 # Romanian translation of xfwm4.
-# Copyright (C) 2004 Free Software Foundation.
+# Copyright (C) 2004, 2005 Free Software Foundation.
 # This file is distributed under the same license as the xfwm4 package.
-# Mişu Moldovan <dumol@go.ro>, 2004.
+# Mişu Moldovan <dumol@go.ro>, 2004, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.2 rc3\n"
+"Project-Id-Version: xfwm4 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-08 23:29+0200\n"
-"PO-Revision-Date: 2005-01-09 00:33+0200\n"
+"PO-Revision-Date: 2005-05-13 00:01+0300\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -465,12 +465,12 @@ msgstr "Mutare fereastră în spaţiul din dreapta"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Arată desktopul"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mutare fereastră în spaţiul de lucru 1"
+msgstr "Mutare fereastră în spaţiul %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -650,59 +650,3 @@ msgstr "Schimbă în..."
 msgid "Unknown application!"
 msgstr "Aplicaţie necunoscută!"
 
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Mutare fereastră în spaţiul de lucru 9"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Spaţiu de lucru 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Spaţiu de lucru 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Spaţiu de lucru 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Spaţiu de lucru 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Spaţiu de lucru 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Spaţiu de lucru 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Spaţiu de lucru 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Spaţiu de lucru 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Spaţiu de lucru 9"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: Operaţiune nesuportată (încă)\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: net_wm_state neadministrat (fereastră 0x%lx)"
