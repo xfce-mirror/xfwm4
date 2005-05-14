@@ -1,3 +1,7 @@
+2005-05-04 20:39  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2005-03-03 22:41  olivier
 
 	* xfwm4/branches/xfce_4_0/Makefile.in,
@@ -15,8 +19,7 @@
 	  xfwm4/branches/xfce_4_0/doc/fr/images/Makefile.in,
 	  xfwm4/branches/xfce_4_0/install-sh,
 	  xfwm4/branches/xfce_4_0/mcs-plugin/Makefile.in,
-	  xfwm4/branches/xfce_4_0/missing,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/missing, xfwm4.pot,
 	  xfwm4/branches/xfce_4_0/src/Makefile.in,
 	  xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/themes/Makefile.in,
@@ -38,95 +41,34 @@
 
 	* xfwm4/branches/xfce_4_0/configure,
 	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/ltmain.sh,
-	  xfwm4/branches/xfce_4_0/po/he.gmo,
-	  xfwm4/branches/xfce_4_0/po/he.po: add HE translations from Yuval
-	  Tanny <tanai@int.gov.il>
+	  xfwm4/branches/xfce_4_0/ltmain.sh, he.gmo, he.po: add HE
+	  translations from Yuval Tanny <tanai@int.gov.il>
 
 2004-09-10 20:49  
 
-	* xfwm4/branches/xfce_4_0/po/he.gmo,
-	  xfwm4/branches/xfce_4_0/po/he.po: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_0'.
+	* he.gmo, he.po: This commit was manufactured by cvs2svn to create
+	  branch 'xfce_4_0'.
 
 2004-07-12 18:58  pollux
 
-	* xfwm4/branches/xfce_4_0/po/ca.gmo,
-	  xfwm4/branches/xfce_4_0/po/ca.po: little correction in catalan
-	  translations from Xan <DXpublica@telefonica.net>
+	* ca.gmo, ca.po: little correction in catalan translations from Xan
+	  <DXpublica@telefonica.net>
 
 2004-07-07 17:25  pollux
 
-	* xfwm4/branches/xfce_4_0/po/ar.gmo,
-	  xfwm4/branches/xfce_4_0/po/az.gmo,
-	  xfwm4/branches/xfce_4_0/po/bg.gmo,
-	  xfwm4/branches/xfce_4_0/po/ca.gmo,
-	  xfwm4/branches/xfce_4_0/po/ca.po,
-	  xfwm4/branches/xfce_4_0/po/cs.gmo,
-	  xfwm4/branches/xfce_4_0/po/de.gmo,
-	  xfwm4/branches/xfce_4_0/po/es.gmo,
-	  xfwm4/branches/xfce_4_0/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_0/po/et.gmo,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
-	  xfwm4/branches/xfce_4_0/po/fi.gmo,
-	  xfwm4/branches/xfce_4_0/po/fr.gmo,
-	  xfwm4/branches/xfce_4_0/po/hi.gmo,
-	  xfwm4/branches/xfce_4_0/po/hu.gmo,
-	  xfwm4/branches/xfce_4_0/po/it.gmo,
-	  xfwm4/branches/xfce_4_0/po/ja.gmo,
-	  xfwm4/branches/xfce_4_0/po/ko.gmo,
-	  xfwm4/branches/xfce_4_0/po/lt.gmo,
-	  xfwm4/branches/xfce_4_0/po/ms.gmo,
-	  xfwm4/branches/xfce_4_0/po/nl.gmo,
-	  xfwm4/branches/xfce_4_0/po/no.gmo,
-	  xfwm4/branches/xfce_4_0/po/pl.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_0/po/ru.gmo,
-	  xfwm4/branches/xfce_4_0/po/sv.gmo,
-	  xfwm4/branches/xfce_4_0/po/ta.gmo,
-	  xfwm4/branches/xfce_4_0/po/tr.gmo,
-	  xfwm4/branches/xfce_4_0/po/uk.gmo,
-	  xfwm4/branches/xfce_4_0/po/vi.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo: * apply patch from Xan
+	* ar.gmo, az.gmo, bg.gmo, ca.gmo, ca.po, cs.gmo, de.gmo, es.gmo,
+	  es_MX.gmo, et.gmo, fa_IR.gmo, fi.gmo, fr.gmo, hi.gmo, hu.gmo,
+	  it.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo, no.gmo, pl.gmo,
+	  pt_BR.gmo, pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo,
+	  vi.gmo, zh_CN.gmo, zh_TW.gmo: * apply patch from Xan
 	  <DXpublica@telefonica.net> for ca * BTW update gmo
 
 2004-07-06 22:33  olivier
 
-	* xfwm4/branches/xfce_4_0/po/ar.po,
-	  xfwm4/branches/xfce_4_0/po/az.po,
-	  xfwm4/branches/xfce_4_0/po/bg.po,
-	  xfwm4/branches/xfce_4_0/po/ca.po,
-	  xfwm4/branches/xfce_4_0/po/cs.po,
-	  xfwm4/branches/xfce_4_0/po/de.po,
-	  xfwm4/branches/xfce_4_0/po/es.po,
-	  xfwm4/branches/xfce_4_0/po/es_MX.po,
-	  xfwm4/branches/xfce_4_0/po/et.po,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
-	  xfwm4/branches/xfce_4_0/po/fi.po,
-	  xfwm4/branches/xfce_4_0/po/fr.po,
-	  xfwm4/branches/xfce_4_0/po/hi.po,
-	  xfwm4/branches/xfce_4_0/po/hu.po,
-	  xfwm4/branches/xfce_4_0/po/it.po,
-	  xfwm4/branches/xfce_4_0/po/ja.po,
-	  xfwm4/branches/xfce_4_0/po/ko.po,
-	  xfwm4/branches/xfce_4_0/po/lt.po,
-	  xfwm4/branches/xfce_4_0/po/ms.po,
-	  xfwm4/branches/xfce_4_0/po/nl.po,
-	  xfwm4/branches/xfce_4_0/po/no.po,
-	  xfwm4/branches/xfce_4_0/po/pl.po,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_0/po/ru.po,
-	  xfwm4/branches/xfce_4_0/po/sv.po,
-	  xfwm4/branches/xfce_4_0/po/ta.po,
-	  xfwm4/branches/xfce_4_0/po/tr.po,
-	  xfwm4/branches/xfce_4_0/po/uk.po,
-	  xfwm4/branches/xfce_4_0/po/vi.po,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po, et.po,
+	  fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po,
+	  ms.po, nl.po, no.po, pl.po, pt_BR.po, pt_PT.po, ru.po, sv.po,
+	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po,
 	  xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/client.h,
 	  xfwm4/branches/xfce_4_0/src/events.c,
@@ -166,90 +108,30 @@
 2004-07-06 15:59  pollux
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/eu.gmo,
-	  xfwm4/branches/xfce_4_0/po/eu.po: add basque translation from ^pi^
-	  <pi@beobide.net>
+	  xfwm4/branches/xfce_4_0/configure.ac, eu.gmo, eu.po: add basque
+	  translation from ^pi^ <pi@beobide.net>
 
 2004-07-06 15:59  
 
-	* xfwm4/branches/xfce_4_0/po/eu.gmo,
-	  xfwm4/branches/xfce_4_0/po/eu.po: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_0'.
+	* eu.gmo, eu.po: This commit was manufactured by cvs2svn to create
+	  branch 'xfce_4_0'.
 
 2004-07-02 06:22  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Remove useless comment (with
-	  a typo!)
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Remove useless
+	  comment (with a typo!)
 
 2004-06-30 21:56  olivier
 
-	* xfwm4/branches/xfce_4_0/po/ar.gmo,
-	  xfwm4/branches/xfce_4_0/po/ar.po,
-	  xfwm4/branches/xfce_4_0/po/az.gmo,
-	  xfwm4/branches/xfce_4_0/po/az.po,
-	  xfwm4/branches/xfce_4_0/po/bg.gmo,
-	  xfwm4/branches/xfce_4_0/po/bg.po,
-	  xfwm4/branches/xfce_4_0/po/ca.gmo,
-	  xfwm4/branches/xfce_4_0/po/ca.po,
-	  xfwm4/branches/xfce_4_0/po/cs.gmo,
-	  xfwm4/branches/xfce_4_0/po/cs.po,
-	  xfwm4/branches/xfce_4_0/po/de.gmo,
-	  xfwm4/branches/xfce_4_0/po/de.po,
-	  xfwm4/branches/xfce_4_0/po/es.gmo,
-	  xfwm4/branches/xfce_4_0/po/es.po,
-	  xfwm4/branches/xfce_4_0/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_0/po/es_MX.po,
-	  xfwm4/branches/xfce_4_0/po/et.gmo,
-	  xfwm4/branches/xfce_4_0/po/et.po,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
-	  xfwm4/branches/xfce_4_0/po/fi.gmo,
-	  xfwm4/branches/xfce_4_0/po/fi.po,
-	  xfwm4/branches/xfce_4_0/po/fr.gmo,
-	  xfwm4/branches/xfce_4_0/po/fr.po,
-	  xfwm4/branches/xfce_4_0/po/hi.gmo,
-	  xfwm4/branches/xfce_4_0/po/hi.po,
-	  xfwm4/branches/xfce_4_0/po/hu.gmo,
-	  xfwm4/branches/xfce_4_0/po/hu.po,
-	  xfwm4/branches/xfce_4_0/po/it.gmo,
-	  xfwm4/branches/xfce_4_0/po/it.po,
-	  xfwm4/branches/xfce_4_0/po/ja.gmo,
-	  xfwm4/branches/xfce_4_0/po/ja.po,
-	  xfwm4/branches/xfce_4_0/po/ko.gmo,
-	  xfwm4/branches/xfce_4_0/po/ko.po,
-	  xfwm4/branches/xfce_4_0/po/lt.gmo,
-	  xfwm4/branches/xfce_4_0/po/lt.po,
-	  xfwm4/branches/xfce_4_0/po/ms.gmo,
-	  xfwm4/branches/xfce_4_0/po/ms.po,
-	  xfwm4/branches/xfce_4_0/po/nl.gmo,
-	  xfwm4/branches/xfce_4_0/po/nl.po,
-	  xfwm4/branches/xfce_4_0/po/no.gmo,
-	  xfwm4/branches/xfce_4_0/po/no.po,
-	  xfwm4/branches/xfce_4_0/po/pl.gmo,
-	  xfwm4/branches/xfce_4_0/po/pl.po,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_0/po/ru.gmo,
-	  xfwm4/branches/xfce_4_0/po/ru.po,
-	  xfwm4/branches/xfce_4_0/po/sv.gmo,
-	  xfwm4/branches/xfce_4_0/po/sv.po,
-	  xfwm4/branches/xfce_4_0/po/ta.gmo,
-	  xfwm4/branches/xfce_4_0/po/ta.po,
-	  xfwm4/branches/xfce_4_0/po/tr.gmo,
-	  xfwm4/branches/xfce_4_0/po/tr.po,
-	  xfwm4/branches/xfce_4_0/po/uk.gmo,
-	  xfwm4/branches/xfce_4_0/po/uk.po,
-	  xfwm4/branches/xfce_4_0/po/vi.gmo,
-	  xfwm4/branches/xfce_4_0/po/vi.po,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
+	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  et.gmo, et.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  no.gmo, no.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
+	  pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo,
+	  tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, zh_TW.gmo, zh_TW.po,
 	  xfwm4/branches/xfce_4_0/src/client.c: Backport from HEAD: Fix
 	  frame update when an app changes its own state to modal, Fix app
 	  window being remaped after a quick map request/unmap notify, Allow
@@ -258,62 +140,29 @@
 
 2004-06-28 20:42  olivier
 
-	* xfwm4/branches/xfce_4_0/po/ar.po,
-	  xfwm4/branches/xfce_4_0/po/az.po,
-	  xfwm4/branches/xfce_4_0/po/bg.po,
-	  xfwm4/branches/xfce_4_0/po/ca.po,
-	  xfwm4/branches/xfce_4_0/po/cs.po,
-	  xfwm4/branches/xfce_4_0/po/de.po,
-	  xfwm4/branches/xfce_4_0/po/es.po,
-	  xfwm4/branches/xfce_4_0/po/es_MX.po,
-	  xfwm4/branches/xfce_4_0/po/et.po,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
-	  xfwm4/branches/xfce_4_0/po/fi.po,
-	  xfwm4/branches/xfce_4_0/po/fr.po,
-	  xfwm4/branches/xfce_4_0/po/hi.po,
-	  xfwm4/branches/xfce_4_0/po/hu.po,
-	  xfwm4/branches/xfce_4_0/po/it.po,
-	  xfwm4/branches/xfce_4_0/po/ja.po,
-	  xfwm4/branches/xfce_4_0/po/ko.po,
-	  xfwm4/branches/xfce_4_0/po/lt.po,
-	  xfwm4/branches/xfce_4_0/po/ms.po,
-	  xfwm4/branches/xfce_4_0/po/nl.po,
-	  xfwm4/branches/xfce_4_0/po/no.po,
-	  xfwm4/branches/xfce_4_0/po/pl.po,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_0/po/ru.po,
-	  xfwm4/branches/xfce_4_0/po/sv.po,
-	  xfwm4/branches/xfce_4_0/po/ta.po,
-	  xfwm4/branches/xfce_4_0/po/tr.po,
-	  xfwm4/branches/xfce_4_0/po/uk.po,
-	  xfwm4/branches/xfce_4_0/po/vi.po,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po, et.po,
+	  fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po,
+	  ms.po, nl.po, no.po, pl.po, pt_BR.po, pt_PT.po, ru.po, sv.po,
+	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po,
 	  xfwm4/branches/xfce_4_0/src/client.c: Backport from HEAD: "Grab
 	  server earlier when managing new windows, trying to fix #0000184
 	  and other random issues reported with Java on the ML" Update po
 
 2004-06-19 16:38  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Ignore ICCCM resize
-	  increments in fullscreen mode.
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Ignore ICCCM
+	  resize increments in fullscreen mode.
 
 2004-06-11 11:05  pollux
 
 	* xfwm4/branches/xfce_4_0/configure,
 	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/ltmain.sh,
-	  xfwm4/branches/xfce_4_0/po/et.gmo,
-	  xfwm4/branches/xfce_4_0/po/et.po: Estonian translations from
-	  Peeter Vois <peeter.vois@proekspert.ee> added
+	  xfwm4/branches/xfce_4_0/ltmain.sh, et.gmo, et.po: Estonian
+	  translations from Peeter Vois <peeter.vois@proekspert.ee> added
 
 2004-05-16 12:15  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c,
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/client.h,
 	  xfwm4/branches/xfce_4_0/src/events.c,
 	  xfwm4/branches/xfce_4_0/src/main.c,
@@ -338,9 +187,7 @@
 	  xfwm4/branches/xfce_4_0/install-sh,
 	  xfwm4/branches/xfce_4_0/ltmain.sh,
 	  xfwm4/branches/xfce_4_0/mcs-plugin/Makefile.in,
-	  xfwm4/branches/xfce_4_0/mkinstalldirs,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.po,
+	  xfwm4/branches/xfce_4_0/mkinstalldirs, zh_TW.gmo, zh_TW.po,
 	  xfwm4/branches/xfce_4_0/src/Makefile.in,
 	  xfwm4/branches/xfce_4_0/themes/Makefile.in,
 	  xfwm4/branches/xfce_4_0/themes/bbs/Makefile.in,
@@ -359,108 +206,88 @@
 
 2004-05-03 20:00  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Fix bug #0000185
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Fix bug #0000185
 
 2004-04-16 17:00  olivier
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/configure.ac, xfwm4.pot,
 	  xfwm4/branches/xfce_4_0/src/client.c: Don't honor stack request
 	  when sibling is specified as we don't honor it, Chenge version to
 	  4.0.6
 
 2004-04-14 06:18  olivier
 
-	* xfwm4/branches/xfce_4_0/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.po: zh_TW po update by Ambrose Li
+	* zh_TW.gmo, zh_TW.po: zh_TW po update by Ambrose Li
 	  <a.c.li@ieee.org>
 
 2004-04-08 17:15  olivier
 
-	* xfwm4/branches/xfce_4_0/ChangeLog,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: Update ChangeLog
+	* xfwm4/branches/xfce_4_0/ChangeLog, xfwm4.pot: Update ChangeLog
 
 2004-03-24 20:39  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Change focus transition
-	  routine Do not react on BottomIf, TopIf and Opposite stack
-	  requests
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Change focus
+	  transition routine Do not react on BottomIf, TopIf and Opposite
+	  stack requests
 
 2004-03-22 22:21  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Add a "pending_focus"
-	  variable that helps with XSetInputFocus() transitions
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Add a
+	  "pending_focus" variable that helps with XSetInputFocus()
+	  transitions
 
 2004-03-21 20:06  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: autogen
+	* xfwm4.pot: autogen
 
 2004-03-14 23:26  olivier
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/ar.gmo,
-	  xfwm4/branches/xfce_4_0/po/ar.po,
-	  xfwm4/branches/xfce_4_0/po/bg.gmo,
-	  xfwm4/branches/xfce_4_0/po/bg.po,
-	  xfwm4/branches/xfce_4_0/po/it.gmo,
-	  xfwm4/branches/xfce_4_0/po/it.po,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: Add/update i18n for:
-	  Bulgarian from Miroslav Yordanov <miordanov@i-space.org> and Peter
-	  Slavov <peshka@i-space.org> Italian from Alex Dupre
-	  <ale@FreeBSD.org> Arabic from Saleh Hathal <hathalsal@hotmail.com>
+	  xfwm4/branches/xfce_4_0/configure.ac, ar.gmo, ar.po, bg.gmo,
+	  bg.po, it.gmo, it.po, xfwm4.pot: Add/update i18n for: Bulgarian
+	  from Miroslav Yordanov <miordanov@i-space.org> and Peter Slavov
+	  <peshka@i-space.org> Italian from Alex Dupre <ale@FreeBSD.org>
+	  Arabic from Saleh Hathal <hathalsal@hotmail.com>
 
 2004-03-12 22:01  olivier
 
 	* xfwm4/branches/xfce_4_0/aclocal.m4,
 	  xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/configure.ac, xfwm4.pot,
 	  xfwm4/branches/xfce_4_0/src/client.c: Set version to 4.0.5 Handle
 	  focus transitions the way it should be. I know that the dbl click
 	  detection *will* introduce some lags, but that's the proper way.
 
 2004-03-03 18:34  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: pot file (?)
+	* xfwm4.pot: pot file (?)
 
 2004-03-03 18:18  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Fix circular linked list bug
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Fix circular
+	  linked list bug
 
 2004-03-02 21:16  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: Dummy
+	* xfwm4.pot: Dummy
 
 2004-02-28 17:24  olivier
 
-	* xfwm4/branches/xfce_4_0/ltmain.sh,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: sync for 4.0.4 release
+	* xfwm4/branches/xfce_4_0/ltmain.sh, xfwm4.pot: sync for 4.0.4
+	  release
 
 2004-01-30 07:07  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
 	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/ltmain.sh,
-	  xfwm4/branches/xfce_4_0/po/es.gmo,
-	  xfwm4/branches/xfce_4_0/po/es.po,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.po: Update translations for
-	  spanish, persian, brasilian and chinese
+	  xfwm4/branches/xfce_4_0/ltmain.sh, es.gmo, es.po, fa_IR.gmo,
+	  fa_IR.po, pt_BR.gmo, pt_BR.po, zh_CN.gmo, zh_CN.po: Update
+	  translations for spanish, persian, brasilian and chinese
 
 2004-01-28 22:33  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c,
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/client.h,
 	  xfwm4/branches/xfce_4_0/src/events.c,
 	  xfwm4/branches/xfce_4_0/src/workspaces.c: Use bit based flag param
@@ -470,33 +297,26 @@
 
 2004-01-27 20:13  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c,
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/events.c: Improve grab/ungrab of
 	  Button1
 
 2004-01-25 00:11  olivier
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
+	  xfwm4/branches/xfce_4_0/configure.ac, fa_IR.gmo, fa_IR.po,
 	  xfwm4/branches/xfce_4_0/src/client.c: Update libtool and other
 	  automake, autoconf and gettext.
 
 2004-01-25 00:11  
 
-	* xfwm4/branches/xfce_4_0/po/fa_IR.gmo,
-	  xfwm4/branches/xfce_4_0/po/fa_IR.po,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_BR.po: This commit was manufactured
-	  by cvs2svn to create branch 'xfce_4_0'.
+	* fa_IR.gmo, fa_IR.po, pt_BR.gmo, pt_BR.po: This commit was
+	  manufactured by cvs2svn to create branch 'xfce_4_0'.
 
 2004-01-24 16:36  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: A bit too much of cleanup in
-	  clientPassFocus()
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: A bit too much of
+	  cleanup in clientPassFocus()
 
 2004-01-24 15:19  olivier
 
@@ -519,8 +339,7 @@
 	  xfwm4/branches/xfce_4_0/ltmain.sh,
 	  xfwm4/branches/xfce_4_0/mcs-plugin/Makefile.in,
 	  xfwm4/branches/xfce_4_0/missing,
-	  xfwm4/branches/xfce_4_0/mkinstalldirs,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/mkinstalldirs, xfwm4.pot,
 	  xfwm4/branches/xfce_4_0/src/Makefile.in,
 	  xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/client.h,
@@ -550,8 +369,7 @@
 2004-01-10 21:08  olivier
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_0/configure.ac, xfwm4.pot,
 	  xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/events.c,
 	  xfwm4/branches/xfce_4_0/src/misc.c,
@@ -560,19 +378,17 @@
 
 2004-01-07 20:38  olivier
 
-	* xfwm4/branches/xfce_4_0/ChangeLog,
-	  xfwm4/branches/xfce_4_0/po/ChangeLog: Huge update before 4.0.3
-	  release, mainly: ChangeLog update, Version number updates.
+	* xfwm4/branches/xfce_4_0/ChangeLog, ChangeLog: Huge update before
+	  4.0.3 release, mainly: ChangeLog update, Version number updates.
 
 2004-01-07 18:58  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/xfwm4.spec.in: Fix spec files so that
-	  debug files aren't include on Red Hat 9 and later
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/xfwm4.spec.in: Fix spec files
+	  so that debug files aren't include on Red Hat 9 and later
 
 2004-01-06 18:48  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
+	* xfwm4.pot,
 	  xfwm4/branches/xfce_4_0/themes/default/close-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/close-inactive.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/close-pressed.xpm,
@@ -619,42 +435,32 @@
 
 2004-01-03 20:54  olivier
 
-	* xfwm4/branches/xfce_4_0/po/pl.gmo,
-	  xfwm4/branches/xfce_4_0/po/pl.po,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot: Fix Polish translation from
-	  Daniel Mr&#65533;&#65533;z <beorn@alpha.pl>
+	* pl.gmo, pl.po, xfwm4.pot: Fix Polish translation from Daniel Mr&#65533;&#65533;z
+	  <beorn@alpha.pl>
 
 2003-12-29 15:20  olivier
 
-	* xfwm4/branches/xfce_4_0/po/no.gmo,
-	  xfwm4/branches/xfce_4_0/po/no.po: Update version number, Update
-	  ChangeLog Fix missing CHARSET in potfiles
+	* no.gmo, no.po: Update version number, Update ChangeLog Fix missing
+	  CHARSET in potfiles
 
 2003-12-29 12:16  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/no.gmo,
-	  xfwm4/branches/xfce_4_0/po/no.po,
-	  xfwm4/branches/xfce_4_0/po/tr.gmo,
-	  xfwm4/branches/xfce_4_0/po/tr.po: Update Norwegian and Turkish
-	  translations
+	  xfwm4/branches/xfce_4_0/configure.ac, no.gmo, no.po, tr.gmo,
+	  tr.po: Update Norwegian and Turkish translations
 
 2003-12-28 20:28  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c: Fix removal of properties on
-	  unframed windows
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c: Fix removal of
+	  properties on unframed windows
 
 2003-12-27 21:52  jasper
 
-	* xfwm4/branches/xfce_4_0/po/pl.gmo,
-	  xfwm4/branches/xfce_4_0/po/pl.po: Update Polish translations
+	* pl.gmo, pl.po: Update Polish translations
 
 2003-12-22 22:50  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c,
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/misc.c,
 	  xfwm4/branches/xfce_4_0/src/misc.h: Send wm_takefocus client
 	  message on focus change (as pointed out by Mike McCormack
@@ -662,38 +468,32 @@
 
 2003-12-15 22:26  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot: Fix a (potential) crash in
-	  workspace plugins
+	* xfwm4.pot: Fix a (potential) crash in workspace plugins
 
 2003-12-15 21:35  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/az.gmo,
-	  xfwm4/branches/xfce_4_0/po/az.po: Add Azerbaijani translations
+	  xfwm4/branches/xfce_4_0/configure.ac, az.gmo, az.po: Add
+	  Azerbaijani translations
 
 2003-12-15 21:35  
 
-	* xfwm4/branches/xfce_4_0/po/az.gmo,
-	  xfwm4/branches/xfce_4_0/po/az.po: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_0'.
+	* az.gmo, az.po: This commit was manufactured by cvs2svn to create
+	  branch 'xfce_4_0'.
 
 2003-12-07 10:48  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c,
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/src/events.c: Change dialog placement
 
 2003-12-03 21:04  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/events.c: Allow 1 px move between dbl
-	  clicks
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/events.c: Allow 1 px move
+	  between dbl clicks
 
 2003-12-02 22:45  olivier
 
-	* xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/src/client.c,
+	* xfwm4.pot, xfwm4/branches/xfce_4_0/src/client.c,
 	  xfwm4/branches/xfce_4_0/themes/default/close-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/close-inactive.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/close-pressed.xpm,
@@ -740,119 +540,65 @@
 
 2003-11-16 08:44  jasper
 
-	* xfwm4/branches/xfce_4_0/po/cs.gmo,
-	  xfwm4/branches/xfce_4_0/po/cs.po: Update Czech translations
+	* cs.gmo, cs.po: Update Czech translations
 
 2003-11-12 07:02  jasper
 
-	* xfwm4/branches/xfce_4_0/po/ar.gmo,
-	  xfwm4/branches/xfce_4_0/po/ca.gmo,
-	  xfwm4/branches/xfce_4_0/po/cs.gmo,
-	  xfwm4/branches/xfce_4_0/po/de.gmo,
-	  xfwm4/branches/xfce_4_0/po/es.gmo,
-	  xfwm4/branches/xfce_4_0/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_0/po/fi.gmo,
-	  xfwm4/branches/xfce_4_0/po/fr.gmo,
-	  xfwm4/branches/xfce_4_0/po/hi.gmo,
-	  xfwm4/branches/xfce_4_0/po/hu.gmo,
-	  xfwm4/branches/xfce_4_0/po/ja.gmo,
-	  xfwm4/branches/xfce_4_0/po/ko.gmo,
-	  xfwm4/branches/xfce_4_0/po/lt.gmo,
-	  xfwm4/branches/xfce_4_0/po/ms.gmo,
-	  xfwm4/branches/xfce_4_0/po/nl.gmo,
-	  xfwm4/branches/xfce_4_0/po/pl.gmo,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_0/po/ru.gmo,
-	  xfwm4/branches/xfce_4_0/po/sv.gmo,
-	  xfwm4/branches/xfce_4_0/po/ta.gmo,
-	  xfwm4/branches/xfce_4_0/po/tr.gmo,
-	  xfwm4/branches/xfce_4_0/po/uk.gmo,
-	  xfwm4/branches/xfce_4_0/po/vi.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.gmo: Forgot gmo files update
+	* ar.gmo, ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo, fr.gmo,
+	  hi.gmo, hu.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo, pl.gmo,
+	  pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo, vi.gmo,
+	  zh_CN.gmo, zh_TW.gmo: Forgot gmo files update
 
 2003-11-11 18:35  jasper
 
-	* xfwm4/branches/xfce_4_0/po/ar.po,
-	  xfwm4/branches/xfce_4_0/po/ca.po,
-	  xfwm4/branches/xfce_4_0/po/cs.po,
-	  xfwm4/branches/xfce_4_0/po/de.po,
-	  xfwm4/branches/xfce_4_0/po/es.po,
-	  xfwm4/branches/xfce_4_0/po/es_MX.po,
-	  xfwm4/branches/xfce_4_0/po/fi.po,
-	  xfwm4/branches/xfce_4_0/po/fr.po,
-	  xfwm4/branches/xfce_4_0/po/hi.po,
-	  xfwm4/branches/xfce_4_0/po/hu.po,
-	  xfwm4/branches/xfce_4_0/po/ja.po,
-	  xfwm4/branches/xfce_4_0/po/ko.po,
-	  xfwm4/branches/xfce_4_0/po/lt.po,
-	  xfwm4/branches/xfce_4_0/po/ms.po,
-	  xfwm4/branches/xfce_4_0/po/nl.po,
-	  xfwm4/branches/xfce_4_0/po/pl.po,
-	  xfwm4/branches/xfce_4_0/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_0/po/ru.po,
-	  xfwm4/branches/xfce_4_0/po/sv.po,
-	  xfwm4/branches/xfce_4_0/po/ta.po,
-	  xfwm4/branches/xfce_4_0/po/tr.po,
-	  xfwm4/branches/xfce_4_0/po/uk.po,
-	  xfwm4/branches/xfce_4_0/po/vi.po,
-	  xfwm4/branches/xfce_4_0/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_0/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_0/po/zh_TW.po: Update po files, just in case
-	  something changed ...
+	* ar.po, ca.po, cs.po, de.po, es.po, es_MX.po, fi.po, fr.po, hi.po,
+	  hu.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po, pt_PT.po, ru.po,
+	  sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po:
+	  Update po files, just in case something changed ...
 
 2003-11-09 19:09  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/cs.gmo,
-	  xfwm4/branches/xfce_4_0/po/cs.po: Add Check translations
+	  xfwm4/branches/xfce_4_0/configure.ac, cs.gmo, cs.po: Add Check
+	  translations
 
 2003-11-03 18:06  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/uk.gmo,
-	  xfwm4/branches/xfce_4_0/po/uk.po: Add Ukranian translations
+	  xfwm4/branches/xfce_4_0/configure.ac, uk.gmo, uk.po: Add Ukranian
+	  translations
 
 2003-11-01 23:28  olivier
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/hi.gmo,
-	  xfwm4/branches/xfce_4_0/po/hi.po: Add Hindi translation
+	  xfwm4/branches/xfce_4_0/configure.ac, hi.gmo, hi.po: Add Hindi
+	  translation
 
 2003-10-24 22:31  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/vi.gmo,
-	  xfwm4/branches/xfce_4_0/po/vi.po: Add vietnamese translations by
-	  Lam Vinh Nien <nienvl@yahoo.ca>.
+	  xfwm4/branches/xfce_4_0/configure.ac, vi.gmo, vi.po: Add
+	  vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
 
 2003-10-24 22:31  
 
-	* xfwm4/branches/xfce_4_0/po/vi.gmo,
-	  xfwm4/branches/xfce_4_0/po/vi.po: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_0'.
+	* vi.gmo, vi.po: This commit was manufactured by cvs2svn to create
+	  branch 'xfce_4_0'.
 
 2003-10-17 16:32  jasper
 
 	* xfwm4/branches/xfce_4_0/configure,
-	  xfwm4/branches/xfce_4_0/configure.ac,
-	  xfwm4/branches/xfce_4_0/po/sv.gmo,
-	  xfwm4/branches/xfce_4_0/po/sv.po: Add/update swedish translations
+	  xfwm4/branches/xfce_4_0/configure.ac, sv.gmo, sv.po: Add/update
+	  swedish translations
 
 2003-10-17 16:32  
 
-	* xfwm4/branches/xfce_4_0/po/sv.gmo,
-	  xfwm4/branches/xfce_4_0/po/sv.po: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_0'.
+	* sv.gmo, sv.po: This commit was manufactured by cvs2svn to create
+	  branch 'xfce_4_0'.
 
 2003-09-27 11:20  huysmans
 
-	* xfwm4/branches/xfce_4_0/po/ta.gmo,
-	  xfwm4/branches/xfce_4_0/po/ta.po: Update tamil translations
+	* ta.gmo, ta.po: Update tamil translations
 
 2003-09-27 11:20  
 
