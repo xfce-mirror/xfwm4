@@ -1,17 +1,96 @@
+2005-05-13 21:18  olivier
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po, el.po,
+	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
+	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
+	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
+	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
+	  zh_CN.po, zh_TW.po: Prepare 4.2.2
+
+2005-05-13 15:13  pollux
+
+	* fi.po: update FI translations
+
+2005-05-13 15:10  pollux
+
+	* xfcalendar/branches/xfce_4_2/po/ro.po,
+	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
+	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
+	  xfce4-panel/branches/xfce_4_2/contents.xml.ro,
+	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
+	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
+	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
+	  xfdesktop/branches/xfce_4_2/po/ro.po,
+	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
+	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
+	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
+	  ro.po: update RO translations
+
+2005-05-13 15:02  pollux
+
+	* libxfcegui4/branches/xfce_4_2/po/ja.po,
+	  xfcalendar/branches/xfce_4_2/po/ja.po,
+	  xfce-mcs-manager/branches/xfce_4_2/po/ja.po,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/ja.po,
+	  xfce-utils/branches/xfce_4_2/po/ja.po,
+	  xfce4-appfinder/branches/xfce_4_2/po/ja.po,
+	  xfce4-mixer/branches/xfce_4_2/po/ja.po,
+	  xfce4-panel/branches/xfce_4_2/po/ja.po,
+	  xfce4-session/branches/xfce_4_2/po/ja.po,
+	  xfce4-toys/branches/xfce_4_2/po/ja.po,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/ja.po,
+	  xfdesktop/branches/xfce_4_2/po/ja.po,
+	  xffm/branches/xfce_4_2/po/ja.po,
+	  xfprint/branches/xfce_4_2/po/ja.po, ja.po: update JA translations
+
+2005-05-10 20:34  olivier
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po, el.po,
+	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
+	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
+	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
+	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
+	  zh_CN.po, zh_TW.po: Version update
+
+2005-05-06 18:39  pollux
+
+	* xfwm4/branches/xfce_4_2/configure.ac, mr.po: add MR translations
+
+2005-05-06 17:41  pollux
+
+	* gu.po: update GU translations
+
+2005-05-04 20:40  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2005-05-02 19:59  olivier
+
+	* xfwm4/branches/xfce_4_2/mcs-plugin/workspaces.c, ar.po, az.po,
+	  be.po, bg.po, bn_IN.po, cs.po, de.po, en_GB.po, es.po, es_MX.po,
+	  et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po,
+	  it.po, ja.po, ko.po, lt.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po,
+	  pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po,
+	  uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po,
+	  xfwm4/branches/xfce_4_2/src/parserc.c,
+	  xfwm4/branches/xfce_4_2/src/parserc.h,
+	  xfwm4/branches/xfce_4_2/src/settings.c: Backport code cleanup from
+	  trunk
+
 2005-04-23 17:31  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ca.po: update CA translations
+	* ca.po: update CA translations
 
 2005-04-23 17:27  pollux
 
-	* xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/el.po,
-	  xfwm4/branches/xfce_4_2/po/el_GR.po: update EL translations
+	* xfwm4/branches/xfce_4_2/configure.ac, el.po, el_GR.po: update EL
+	  translations
 
 2005-04-16 16:06  pollux
 
-	* xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/bn_IN.po: add bn_IN translations
+	* xfwm4/branches/xfce_4_2/configure.ac, bn_IN.po: add bn_IN
+	  translations
 
 2005-04-12 15:03  jasper
 
@@ -37,49 +116,13 @@
 	  xfwm4/branches/xfce_4_2/ltmain.sh,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/Makefile.in,
 	  xfwm4/branches/xfce_4_2/missing,
-	  xfwm4/branches/xfce_4_2/mkinstalldirs,
-	  xfwm4/branches/xfce_4_2/po/Makefile.in.in,
-	  xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/el_GR.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo,
+	  xfwm4/branches/xfce_4_2/mkinstalldirs, Makefile.in.in, ar.gmo,
+	  az.gmo, be.gmo, bg.gmo, ca.gmo, cs.gmo, de.gmo, el_GR.gmo,
+	  en_GB.gmo, es.gmo, es_MX.gmo, et.gmo, eu.gmo, fa.gmo, fi.gmo,
+	  fr.gmo, gu.gmo, he.gmo, hi.gmo, hu.gmo, it.gmo, ja.gmo, ko.gmo,
+	  lt.gmo, ms.gmo, nb_NO.gmo, nl.gmo, pa.gmo, pl.gmo, pt_BR.gmo,
+	  pt_PT.gmo, ro.gmo, ru.gmo, sk.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo,
+	  vi.gmo, zh_CN.gmo, zh_TW.gmo,
 	  xfwm4/branches/xfce_4_2/src/Makefile.in,
 	  xfwm4/branches/xfce_4_2/themes/Makefile.in,
 	  xfwm4/branches/xfce_4_2/themes/breeze/Makefile.in,
@@ -96,249 +139,123 @@
 
 2005-04-09 12:00  pollux
 
-	* xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.po: update PL translations
+	* pl.gmo, pl.po: update PL translations
 
 2005-04-07 17:26  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/el_GR.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo: update CS translations
+	* ar.gmo, az.gmo, be.gmo, bg.gmo, ca.gmo, cs.gmo, cs.po, de.gmo,
+	  el_GR.gmo, en_GB.gmo, es.gmo, es_MX.gmo, et.gmo, eu.gmo, fa.gmo,
+	  fi.gmo, fr.gmo, gu.gmo, he.gmo, hi.gmo, hu.gmo, it.gmo, ja.gmo,
+	  ko.gmo, lt.gmo, ms.gmo, nb_NO.gmo, nl.gmo, pa.gmo, pl.gmo,
+	  pt_BR.gmo, pt_PT.gmo, ro.gmo, ru.gmo, sk.gmo, sv.gmo, ta.gmo,
+	  tr.gmo, uk.gmo, vi.gmo, zh_CN.gmo, zh_TW.gmo: update CS
+	  translations
 
 2005-03-26 11:08  pollux
 
 	* xfwm4/branches/xfce_4_2/configure,
 	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/ltmain.sh,
-	  xfwm4/branches/xfce_4_2/po/el_GR.gmo,
-	  xfwm4/branches/xfce_4_2/po/el_GR.po: ADD el_GR translations from
-	  Stavros Giannouris <StavrosG2002@freemail.gr>
+	  xfwm4/branches/xfce_4_2/ltmain.sh, el_GR.gmo, el_GR.po: ADD el_GR
+	  translations from Stavros Giannouris <StavrosG2002@freemail.gr>
 
 2005-03-26 10:38  pollux
 
-	* xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po: update EU translations
+	* eu.gmo, eu.po: update EU translations
 
 2005-03-22 22:37  olivier
 
-	* xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.po,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.po,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po,
-	  xfwm4/branches/xfce_4_2/src/events.c,
+	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, en_GB.gmo, en_GB.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po,
+	  fa.gmo, fa.po, fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po,
+	  he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nb_NO.gmo, nb_NO.po, nl.gmo, nl.po, pa.gmo, pa.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ro.gmo, ro.po, ru.gmo,
+	  ru.po, sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  zh_TW.gmo, zh_TW.po, xfwm4/branches/xfce_4_2/src/events.c,
 	  xfwm4/branches/xfce_4_2/src/screen.c: Fix another "grab freeze"
 	  case
 
 2005-03-20 21:52  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po: update KO translations
+	* ko.gmo, ko.po: update KO translations
 
 2005-03-20 21:43  pollux
 
-	* xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po: update HU translations
+	* hu.gmo, hu.po: update HU translations
 
 2005-03-12 14:19  olivier
 
 	* xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot: Mass update for 4.2.1
+	  xfwm4/branches/xfce_4_2/configure.ac, xfwm4.pot: Mass update for
+	  4.2.1
 
 2005-03-12 09:10  pollux
 
-	* xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po: update HE translations
+	* he.gmo, he.po: update HE translations
 
 2005-03-11 11:38  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* ja.gmo, ja.po: update JA translations
 
 2005-03-09 16:13  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* ja.gmo, ja.po: update JA translations
 
 2005-03-07 20:30  jasper
 
-	* xfwm4/branches/xfce_4_2/po/nl.po: Update nl translations for 4.2.1
+	* nl.po: Update nl translations for 4.2.1
 
 2005-03-06 18:18  pollux
 
-	* xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po: update pt_BR translations
+	* pt_BR.gmo, pt_BR.po: update pt_BR translations
 
 2005-03-06 14:48  olivier
 
-	* xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.po: Update French locale
+	* fr.gmo, fr.po: Update French locale
 
 2005-03-04 17:43  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* ja.gmo, ja.po: update JA translations
 
 2005-02-21 09:12  pollux
 
-	* xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po: update EU translations
+	* eu.gmo, eu.po: update EU translations
 
 2005-02-21 08:58  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* ja.gmo, ja.po: update JA translations
 
 2005-02-01 17:25  pollux
 
 	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po: update zh_CN translations
+	  fi.gmo, zh_CN.gmo, zh_CN.po: update zh_CN translations
 
 2005-01-30 09:39  pollux
 
-	* xfwm4/branches/xfce_4_2/po/fi.po: update FI translations
+	* fi.po: update FI translations
 
 2005-01-23 17:09  pollux
 
-	* xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po: update LT translations
+	* lt.gmo, lt.po: update LT translations
 
 2005-01-23 16:48  pollux
 
 	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.po: update FI translations
+	  fi.gmo, fi.po: update FI translations
 
 2005-01-22 08:57  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po: update KO translations
+	* ko.gmo, ko.po: update KO translations
 
 2005-01-13 19:56  olivier
 
 	* xfwm4/branches/xfce_4_2/configure,
 	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/ltmain.sh,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
+	  xfwm4/branches/xfce_4_2/ltmain.sh, xfwm4.pot,
 	  xfwm4/branches/xfce_4_2/themes/Makefile.am,
 	  xfwm4/branches/xfce_4_2/themes/Makefile.in,
 	  xfwm4/branches/xfce_4_2/themes/default/README,
@@ -431,15 +348,12 @@
 
 2005-01-10 19:04  benny
 
-	* xfwm4/branches/xfce_4_2/ChangeLog,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po: Final touch before the tag (lt
-	  update!)
+	* xfwm4/branches/xfce_4_2/ChangeLog, lt.gmo, lt.po: Final touch
+	  before the tag (lt update!)
 
 2005-01-10 12:56  pollux
 
-	* xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po: update HU translations
+	* hu.gmo, hu.po: update HU translations
 
 2005-01-09 13:22  benny
 
@@ -450,109 +364,37 @@
 	  xfwm4/branches/xfce_4_2/doc/Makefile.am,
 	  xfwm4/branches/xfce_4_2/doc/Makefile.in,
 	  xfwm4/branches/xfce_4_2/doc/fr, xfwm4/branches/xfce_4_2/doc/it,
-	  xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.po,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Remove outdated translations
-	  of the documentation. Update version in the documentation
+	  ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, en_GB.gmo, en_GB.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po,
+	  fa.gmo, fa.po, fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po,
+	  he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nb_NO.gmo, nb_NO.po, nl.gmo, nl.po, pa.gmo, pa.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo,
+	  sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Remove outdated translations of the documentation.
+	  Update version in the documentation
 
 2005-01-09 12:03  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.po: update RO translations
+	* ro.gmo, ro.po: update RO translations
 
 2005-01-08 15:49  pollux
 
 	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.po: update RU translations
+	  ru.gmo, ru.po: update RU translations
 
 2005-01-06 20:33  pollux
 
-	* xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.po: update UK translations, i hope i
-	  didn't forget any file this time
+	* uk.gmo, uk.po: update UK translations, i hope i didn't forget any
+	  file this time
 
 2005-01-05 16:14  pollux
 
-	* xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po: update HE translations
+	* he.gmo, he.po: update HE translations
 
 2005-01-05 16:14  
 
