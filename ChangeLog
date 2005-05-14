@@ -1,61 +1,31 @@
+2005-05-13 21:39  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2005-05-13 21:35  olivier
+
+	* src/events.c: Mouse buttons where left ungrabbed when focus was
+	  transfered to an unmanaged window
+
 2005-05-13 21:18  olivier
 
-	* xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/bn_IN.po,
-	  xfwm4/branches/xfce_4_2/po/ca.po,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/el.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/mr.po,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ro.po,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Prepare 4.2.2
+	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Prepare 4.2.2
 
 2005-05-13 20:11  olivier
 
-	* xfwm4/branches/xfce_4_2/doc/C/xfwm4.html,
-	  xfwm4/branches/xfce_4_2/doc/C/xfwm4.xml,
-	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.html,
-	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.xml: Document missing option
-	  "workspace_scroll"
+	* doc/C/xfwm4.html, doc/C/xfwm4.xml, doc/fr/xfwm4.html,
+	  doc/fr/xfwm4.xml: Document missing option "workspace_scroll"
 
 2005-05-13 15:13  pollux
 
-	* xfwm4/branches/xfce_4_2/po/fi.po: update FI translations
+	* po/fi.po: update FI translations
 
 2005-05-13 15:10  pollux
 
@@ -70,8 +40,8 @@
 	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/ro.po: update RO translations
+	  mcs-plugin/xfce-wm-settings.desktop, po/ro.po: update RO
+	  translations
 
 2005-05-13 15:02  pollux
 
@@ -88,1284 +58,874 @@
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/ja.po,
 	  xfdesktop/branches/xfce_4_2/po/ja.po,
 	  xffm/branches/xfce_4_2/po/ja.po,
-	  xfprint/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	  xfprint/branches/xfce_4_2/po/ja.po, po/ja.po: update JA
+	  translations
 
 2005-05-10 20:34  olivier
 
-	* xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/bn_IN.po,
-	  xfwm4/branches/xfce_4_2/po/ca.po,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/el.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/mr.po,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ro.po,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Version update
+	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Version update
 
 2005-05-08 21:16  olivier
 
-	* xfwm4/branches/xfce_4_2/src/focus.c: Use CurrentTime as timestamp
-	  when passing focus on unmap (quite the same as #924)
+	* src/focus.c: Use CurrentTime as timestamp when passing focus on
+	  unmap (quite the same as #924)
 
 2005-05-06 18:39  pollux
 
-	* xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/mr.po: add MR translations
+	* configure.ac, po/mr.po: add MR translations
 
 2005-05-06 17:41  pollux
 
-	* xfwm4/branches/xfce_4_2/po/gu.po: update GU translations
+	* po/gu.po: update GU translations
 
 2005-05-04 20:42  olivier
 
-	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-05-04 20:40  olivier
 
-	* xfwm4/branches/xfce_4_2/po/ChangeLog: Update ChangeLog
+	* po/ChangeLog: Update ChangeLog
 
 2005-05-02 19:59  olivier
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/workspaces.c,
-	  xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/bn_IN.po,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ro.po,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po,
-	  xfwm4/branches/xfce_4_2/src/parserc.c,
-	  xfwm4/branches/xfce_4_2/src/parserc.h,
-	  xfwm4/branches/xfce_4_2/src/settings.c: Backport code cleanup from
-	  trunk
+	* mcs-plugin/workspaces.c, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn_IN.po, po/cs.po, po/de.po, po/en_GB.po, po/es.po,
+	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
+	  po/ko.po, po/lt.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po, src/parserc.c, src/parserc.h,
+	  src/settings.c: Backport code cleanup from trunk
 
 2005-04-26 21:36  olivier
 
-	* xfwm4/branches/xfce_4_2/src/focus.c: Trivial fix for focus problem
-	  when mapping dialogs (bug #924) - Not sure what is the "correct"
-	  behaviour though.
+	* src/focus.c: Trivial fix for focus problem when mapping dialogs
+	  (bug #924) - Not sure what is the "correct" behaviour though.
 
 2005-04-23 17:31  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ca.po: update CA translations
+	* po/ca.po: update CA translations
 
 2005-04-23 17:27  pollux
 
-	* xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/el.po,
-	  xfwm4/branches/xfce_4_2/po/el_GR.po: update EL translations
+	* configure.ac, po/el.po, po/el_GR.po: update EL translations
 
 2005-04-16 16:06  pollux
 
-	* xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/bn_IN.po: add bn_IN translations
+	* configure.ac, po/bn_IN.po: add bn_IN translations
 
 2005-04-14 21:45  olivier
 
-	* xfwm4/branches/xfce_4_2/src/mypixmap.c: Fix pixmap depth not being
-	  properly set (fixes bug id #895)
+	* src/mypixmap.c: Fix pixmap depth not being properly set (fixes bug
+	  id #895)
 
 2005-04-14 20:22  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c,
-	  xfwm4/branches/xfce_4_2/src/focus.c: Fix focus passing, bug id
-	  #905
+	* src/client.c, src/focus.c: Fix focus passing, bug id #905
 
 2005-04-12 15:03  jasper
 
-	* xfwm4/branches/xfce_4_2/Makefile.in,
-	  xfwm4/branches/xfce_4_2/aclocal.m4,
-	  xfwm4/branches/xfce_4_2/autogen.sh,
-	  xfwm4/branches/xfce_4_2/compile,
-	  xfwm4/branches/xfce_4_2/config.guess,
-	  xfwm4/branches/xfce_4_2/config.h.in,
-	  xfwm4/branches/xfce_4_2/config.sub,
-	  xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/defaults/Makefile.in,
-	  xfwm4/branches/xfce_4_2/depcomp,
-	  xfwm4/branches/xfce_4_2/doc/C/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/C/images/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/fr/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/Makefile.in,
-	  xfwm4/branches/xfce_4_2/icons/48x48/Makefile.in,
-	  xfwm4/branches/xfce_4_2/icons/Makefile.in,
-	  xfwm4/branches/xfce_4_2/icons/scalable/Makefile.in,
-	  xfwm4/branches/xfce_4_2/install-sh,
-	  xfwm4/branches/xfce_4_2/ltmain.sh,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/Makefile.in,
-	  xfwm4/branches/xfce_4_2/missing,
-	  xfwm4/branches/xfce_4_2/mkinstalldirs,
-	  xfwm4/branches/xfce_4_2/po/Makefile.in.in,
-	  xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/el_GR.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_2/src/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/breeze/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/default-4.0/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/default.keys/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/default/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/opta/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/symphony/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/therapy/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/tyrex/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/waza/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/wildbush/Makefile.in: Make xfce_4_2
-	  branch use dev tools and remove generated files
+	* Makefile.in, aclocal.m4, autogen.sh, compile, config.guess,
+	  config.h.in, config.sub, configure, defaults/Makefile.in, depcomp,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
+	  icons/48x48/Makefile.in, icons/Makefile.in,
+	  icons/scalable/Makefile.in, install-sh, ltmain.sh,
+	  mcs-plugin/Makefile.in, missing, mkinstalldirs, po/Makefile.in.in,
+	  po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo,
+	  po/de.gmo, po/el_GR.gmo, po/en_GB.gmo, po/es.gmo, po/es_MX.gmo,
+	  po/et.gmo, po/eu.gmo, po/fa.gmo, po/fi.gmo, po/fr.gmo, po/gu.gmo,
+	  po/he.gmo, po/hi.gmo, po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo,
+	  po/lt.gmo, po/ms.gmo, po/nb_NO.gmo, po/nl.gmo, po/pa.gmo,
+	  po/pl.gmo, po/pt_BR.gmo, po/pt_PT.gmo, po/ro.gmo, po/ru.gmo,
+	  po/sk.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo,
+	  po/zh_CN.gmo, po/zh_TW.gmo, src/Makefile.in, themes/Makefile.in,
+	  themes/breeze/Makefile.in, themes/default-4.0/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/default/Makefile.in,
+	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
+	  themes/therapy/Makefile.in, themes/tyrex/Makefile.in,
+	  themes/waza/Makefile.in, themes/wildbush/Makefile.in: Make
+	  xfce_4_2 branch use dev tools and remove generated files
 
 2005-04-10 20:33  olivier
 
-	* xfwm4/branches/xfce_4_2/src/netwm.c,
-	  xfwm4/branches/xfce_4_2/src/workspaces.c: Don't focus the window
-	  on top of stack as fallback on workspace switch, fixes #899 (too
-	  bad, that was a nice feature) Refresh frame when "skip taskbar"
-	  state changes, fixes #898
+	* src/netwm.c, src/workspaces.c: Don't focus the window on top of
+	  stack as fallback on workspace switch, fixes #899 (too bad, that
+	  was a nice feature) Refresh frame when "skip taskbar" state
+	  changes, fixes #898
 
 2005-04-09 12:00  pollux
 
-	* xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.po: update PL translations
+	* po/pl.gmo, po/pl.po: update PL translations
 
 2005-04-07 17:26  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/el_GR.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo: update CS translations
+	* po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo,
+	  po/cs.po, po/de.gmo, po/el_GR.gmo, po/en_GB.gmo, po/es.gmo,
+	  po/es_MX.gmo, po/et.gmo, po/eu.gmo, po/fa.gmo, po/fi.gmo,
+	  po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo, po/hu.gmo, po/it.gmo,
+	  po/ja.gmo, po/ko.gmo, po/lt.gmo, po/ms.gmo, po/nb_NO.gmo,
+	  po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo, po/pt_PT.gmo,
+	  po/ro.gmo, po/ru.gmo, po/sk.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo,
+	  po/uk.gmo, po/vi.gmo, po/zh_CN.gmo, po/zh_TW.gmo: update CS
+	  translations
 
 2005-04-06 11:53  jasper
 
-	* xfwm4/branches/xfce_4_2/doc/fr/.cvsignore,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/.cvsignore: Remove .cvsignor
+	* doc/fr/.cvsignore, doc/fr/images/.cvsignore: Remove .cvsignor
 	  files from 4.2 branch. At least now the active branches will be
 	  cleaned.
 
 2005-03-30 21:05  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c,
-	  xfwm4/branches/xfce_4_2/src/events.c: Backport from HEAD:
-	  simplifications, allow seemless windows to be hidden from kbd
-	  shortcuts.
+	* src/client.c, src/events.c: Backport from HEAD: simplifications,
+	  allow seemless windows to be hidden from kbd shortcuts.
 
 2005-03-29 12:31  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfwm4_shortcuteditor.c: code
-	  cleaning backport from HEAD
+	* mcs-plugin/xfwm4_shortcuteditor.c: code cleaning backport from
+	  HEAD
 
 2005-03-28 11:35  jasper
 
-	* xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/doc/C/xfwm4.html,
-	  xfwm4/branches/xfce_4_2/doc/Makefile.am,
-	  xfwm4/branches/xfce_4_2/doc/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/fr,
-	  xfwm4/branches/xfce_4_2/doc/fr/.cvsignore,
-	  xfwm4/branches/xfce_4_2/doc/fr/Makefile.am,
-	  xfwm4/branches/xfce_4_2/doc/fr/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/fr/images,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/.cvsignore,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/Makefile.am,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/compose_shortcut.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/decoration_style.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/focus.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/keyboard_and_focus.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/keyboard_shortcuts.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/misc_wm_prefs.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/titlebar.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/workspace_margins.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/xfwm_workspaces.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.html,
-	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.xml: Add French doc
+	* configure, configure.ac, doc/C/xfwm4.html, doc/Makefile.am,
+	  doc/Makefile.in, doc/fr, doc/fr/.cvsignore, doc/fr/Makefile.am,
+	  doc/fr/Makefile.in, doc/fr/images, doc/fr/images/.cvsignore,
+	  doc/fr/images/Makefile.am, doc/fr/images/Makefile.in,
+	  doc/fr/images/compose_shortcut.png,
+	  doc/fr/images/decoration_style.png, doc/fr/images/focus.png,
+	  doc/fr/images/keyboard_and_focus.png,
+	  doc/fr/images/keyboard_shortcuts.png,
+	  doc/fr/images/misc_wm_prefs.png, doc/fr/images/titlebar.png,
+	  doc/fr/images/workspace_margins.png,
+	  doc/fr/images/xfwm_workspaces.png, doc/fr/xfwm4.html,
+	  doc/fr/xfwm4.xml: Add French doc
 
 2005-03-27 19:32  olivier
 
-	* xfwm4/branches/xfce_4_2/src/stacking.c: Fix an obvious stupid bug
-	  in clientAtPosition() returning the wrong value (fixes bug 869)
+	* src/stacking.c: Fix an obvious stupid bug in clientAtPosition()
+	  returning the wrong value (fixes bug 869)
 
 2005-03-26 11:08  pollux
 
-	* xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/ltmain.sh,
-	  xfwm4/branches/xfce_4_2/po/el_GR.gmo,
-	  xfwm4/branches/xfce_4_2/po/el_GR.po: ADD el_GR translations from
-	  Stavros Giannouris <StavrosG2002@freemail.gr>
+	* configure, configure.ac, ltmain.sh, po/el_GR.gmo, po/el_GR.po: ADD
+	  el_GR translations from Stavros Giannouris
+	  <StavrosG2002@freemail.gr>
 
 2005-03-26 10:38  pollux
 
-	* xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po: update EU translations
+	* po/eu.gmo, po/eu.po: update EU translations
 
 2005-03-22 22:37  olivier
 
-	* xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.po,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.po,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po,
-	  xfwm4/branches/xfce_4_2/src/events.c,
-	  xfwm4/branches/xfce_4_2/src/screen.c: Fix another "grab freeze"
-	  case
+	* po/ar.gmo, po/ar.po, po/az.gmo, po/az.po, po/be.gmo, po/be.po,
+	  po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po,
+	  po/de.gmo, po/de.po, po/en_GB.gmo, po/en_GB.po, po/es.gmo,
+	  po/es.po, po/es_MX.gmo, po/es_MX.po, po/et.gmo, po/et.po,
+	  po/eu.gmo, po/eu.po, po/fa.gmo, po/fa.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/gu.gmo, po/gu.po, po/he.gmo, po/he.po,
+	  po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po,
+	  po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po,
+	  po/ms.gmo, po/ms.po, po/nb_NO.gmo, po/nb_NO.po, po/nl.gmo,
+	  po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ro.gmo, po/ro.po,
+	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
+	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
+	  po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
+	  po/zh_TW.gmo, po/zh_TW.po, src/events.c, src/screen.c: Fix another
+	  "grab freeze" case
 
 2005-03-20 21:52  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po: update KO translations
+	* po/ko.gmo, po/ko.po: update KO translations
 
 2005-03-20 21:43  pollux
 
-	* xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po: update HU translations
+	* po/hu.gmo, po/hu.po: update HU translations
 
 2005-03-19 22:07  olivier
 
-	* xfwm4/branches/xfce_4_2/themes/symphony/close-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/close-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/close-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/hide-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/hide-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/hide-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/maximize-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/maximize-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/maximize-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/maximize-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/maximize-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/maximize-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/menu-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/menu-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/menu-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/shade-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/shade-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/shade-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/shade-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/shade-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/shade-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/stick-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/stick-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/stick-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/stick-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/stick-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/symphony/stick-toggled-pressed.xpm:
-	  Rework buttons for Symphony.
+	* themes/symphony/close-active.xpm,
+	  themes/symphony/close-inactive.xpm,
+	  themes/symphony/close-pressed.xpm,
+	  themes/symphony/hide-active.xpm,
+	  themes/symphony/hide-inactive.xpm,
+	  themes/symphony/hide-pressed.xpm,
+	  themes/symphony/maximize-active.xpm,
+	  themes/symphony/maximize-inactive.xpm,
+	  themes/symphony/maximize-pressed.xpm,
+	  themes/symphony/maximize-toggled-active.xpm,
+	  themes/symphony/maximize-toggled-inactive.xpm,
+	  themes/symphony/maximize-toggled-pressed.xpm,
+	  themes/symphony/menu-active.xpm,
+	  themes/symphony/menu-inactive.xpm,
+	  themes/symphony/menu-pressed.xpm,
+	  themes/symphony/shade-active.xpm,
+	  themes/symphony/shade-inactive.xpm,
+	  themes/symphony/shade-pressed.xpm,
+	  themes/symphony/shade-toggled-active.xpm,
+	  themes/symphony/shade-toggled-inactive.xpm,
+	  themes/symphony/shade-toggled-pressed.xpm,
+	  themes/symphony/stick-active.xpm,
+	  themes/symphony/stick-inactive.xpm,
+	  themes/symphony/stick-pressed.xpm,
+	  themes/symphony/stick-toggled-active.xpm,
+	  themes/symphony/stick-toggled-inactive.xpm,
+	  themes/symphony/stick-toggled-pressed.xpm: Rework buttons for
+	  Symphony.
 
 2005-03-16 20:38  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c,
-	  xfwm4/branches/xfce_4_2/src/screen.c: Grab management fixes.
+	* src/client.c, src/screen.c: Grab management fixes.
 
 2005-03-14 19:48  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Make sure
-	  "fullscreen_old_layer" gets properly initialized in all cases.
+	* src/client.c: Make sure "fullscreen_old_layer" gets properly
+	  initialized in all cases.
 
 2005-03-12 14:53  olivier
 
-	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-03-12 14:19  olivier
 
-	* xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot: Mass update for 4.2.1
+	* configure, configure.ac, po/xfwm4.pot: Mass update for 4.2.1
 
 2005-03-12 09:10  pollux
 
-	* xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po: update HE translations
+	* po/he.gmo, po/he.po: update HE translations
 
 2005-03-11 11:38  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* po/ja.gmo, po/ja.po: update JA translations
 
 2005-03-09 16:13  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* po/ja.gmo, po/ja.po: update JA translations
 
 2005-03-08 09:03  olivier
 
-	* xfwm4/branches/xfce_4_2/src/workspaces.c: Focus window on top of
-	  stack on workspace switch if no other window is eligible for
-	  focus.
+	* src/workspaces.c: Focus window on top of stack on workspace switch
+	  if no other window is eligible for focus.
 
 2005-03-07 21:24  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Don't cycle if there is just
-	  one window and it's already focused.
+	* src/client.c: Don't cycle if there is just one window and it's
+	  already focused.
 
 2005-03-07 20:30  jasper
 
-	* xfwm4/branches/xfce_4_2/po/nl.po: Update nl translations for 4.2.1
+	* po/nl.po: Update nl translations for 4.2.1
 
 2005-03-06 18:18  pollux
 
-	* xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po: update pt_BR translations
+	* po/pt_BR.gmo, po/pt_BR.po: update pt_BR translations
 
 2005-03-06 14:48  olivier
 
-	* xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.po: Update French locale
+	* po/fr.gmo, po/fr.po: Update French locale
 
 2005-03-05 10:52  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop:
-	  update HU translations
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop: update HU
+	  translations
 
 2005-03-05 10:42  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop:
-	  update EU translations
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop: update EU
+	  translations
 
 2005-03-04 22:28  olivier
 
-	* xfwm4/branches/xfce_4_2/src/placement.c: Prevent frameless windows
-	  to be moved offscreen toward the top.
+	* src/placement.c: Prevent frameless windows to be moved offscreen
+	  toward the top.
 
 2005-03-04 17:43  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* po/ja.gmo, po/ja.po: update JA translations
 
 2005-03-03 22:06  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Be more tolerant with apps
-	  moving their windows.
+	* src/client.c: Be more tolerant with apps moving their windows.
 
 2005-02-21 09:12  pollux
 
-	* xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po: update EU translations
+	* po/eu.gmo, po/eu.po: update EU translations
 
 2005-02-21 08:58  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+	* po/ja.gmo, po/ja.po: update JA translations
 
 2005-02-20 21:47  olivier
 
-	* xfwm4/branches/xfce_4_2/themes/default/close-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/close-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.xpm: An
-	  older update left out inadvertendly
+	* themes/default/close-active.xpm,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.xpm, themes/default/hide-pressed.png,
+	  themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: An older update left out
+	  inadvertendly
 
 2005-02-20 14:26  olivier
 
-	* xfwm4/branches/xfce_4_2/src/netwm.c: Force frame redraw when
-	  switching back from fullscreen to avoid cache mismatch.
+	* src/netwm.c: Force frame redraw when switching back from
+	  fullscreen to avoid cache mismatch.
 
 2005-02-19 20:26  olivier
 
-	* xfwm4/branches/xfce_4_2/src/placement.c: Auto maximize windows
-	  larger that screen size.
+	* src/placement.c: Auto maximize windows larger that screen size.
 
 2005-02-19 14:13  olivier
 
-	* xfwm4/branches/xfce_4_2/ChangeLog,
-	  xfwm4/branches/xfce_4_2/src/focus.c: Update ChangeLog
+	* ChangeLog, src/focus.c: Update ChangeLog
 
 2005-02-12 21:52  olivier
 
-	* xfwm4/branches/xfce_4_2/src/screen.c: Small implementation
-	  cleanup.
+	* src/screen.c: Small implementation cleanup.
 
 2005-02-12 21:42  olivier
 
-	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-02-12 21:29  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c,
-	  xfwm4/branches/xfce_4_2/src/events.c,
-	  xfwm4/branches/xfce_4_2/src/netwm.c,
-	  xfwm4/branches/xfce_4_2/src/screen.c,
-	  xfwm4/branches/xfce_4_2/src/screen.h,
-	  xfwm4/branches/xfce_4_2/src/workspaces.c: Backport from HEAD:
-	  Implements our own grab functions, to avoid using InputOnly window
-	  for grabbing mouse when moving/resizing windows (This is for bug
-	  #761, "Delayed action when clicking and dragging a window
-	  title/border")
+	* src/client.c, src/events.c, src/netwm.c, src/screen.c,
+	  src/screen.h, src/workspaces.c: Backport from HEAD: Implements our
+	  own grab functions, to avoid using InputOnly window for grabbing
+	  mouse when moving/resizing windows (This is for bug #761, "Delayed
+	  action when clicking and dragging a window title/border")
 
 2005-02-11 20:11  olivier
 
-	* xfwm4/branches/xfce_4_2/src/focus.c: Grab mouse button by default
-	  on newly created windows; Use current time to focus newly created
-	  windows to make sure the windows gets focused.
+	* src/focus.c: Grab mouse button by default on newly created
+	  windows; Use current time to focus newly created windows to make
+	  sure the windows gets focused.
 
 2005-02-10 22:09  olivier
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/workspaces.c: Check for actual
-	  returned value to avoid critical warnings at startup.
+	* mcs-plugin/workspaces.c: Check for actual returned value to avoid
+	  critical warnings at startup.
 
 2005-02-10 20:40  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Force cache update when
-	  refreashing all frames (required because of the new fine grained
-	  caching)
+	* src/client.c: Force cache update when refreashing all frames
+	  (required because of the new fine grained caching)
 
 2005-02-10 20:38  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c,
-	  xfwm4/branches/xfce_4_2/src/focus.c: Use our internal timer for
-	  focus transitions.
+	* src/client.c, src/focus.c: Use our internal timer for focus
+	  transitions.
 
 2005-02-09 21:06  olivier
 
-	* xfwm4/branches/xfce_4_2/src/mypixmap.c: Try to avoid colormap
-	  issues on Solaris as reported on the ML.
+	* src/mypixmap.c: Try to avoid colormap issues on Solaris as
+	  reported on the ML.
 
 2005-02-09 20:28  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Use internal time counter
-	  for grabbing/ungrabbing kbd+mouse whrn moving/Resizing windows.
+	* src/client.c: Use internal time counter for grabbing/ungrabbing
+	  kbd+mouse whrn moving/Resizing windows.
 
 2005-02-08 22:19  olivier
 
-	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-02-08 22:16  olivier
 
-	* xfwm4/branches/xfce_4_2/src/stacking.c: Don't get through excluded
-	  windows when searching windows ata given position.
+	* src/stacking.c: Don't get through excluded windows when searching
+	  windows ata given position.
 
 2005-02-04 21:25  olivier
 
-	* xfwm4/branches/xfce_4_2/src/settings.c: Fix for dark themes.
+	* src/settings.c: Fix for dark themes.
 
 2005-02-04 18:25  olivier
 
-	* xfwm4/branches/xfce_4_2/src/mypixmap.c: Simplify colormap
-	  management in pixmap loading.
+	* src/mypixmap.c: Simplify colormap management in pixmap loading.
 
 2005-02-01 17:25  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po: update zh_CN translations
+	* mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo,
+	  po/zh_CN.gmo, po/zh_CN.po: update zh_CN translations
 
 2005-01-31 22:24  olivier
 
-	* xfwm4/branches/xfce_4_2/src/stacking.c: Fix button not being
-	  regrabbed when the focused window is lowered in focus follow mode.
+	* src/stacking.c: Fix button not being regrabbed when the focused
+	  window is lowered in focus follow mode.
 
 2005-01-30 23:06  
 
-	* xfwm4/branches/xfce_4_2/doc/fr,
-	  xfwm4/branches/xfce_4_2/doc/fr/Makefile.am,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/Makefile.am,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/compose_shortcut.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/decoration_style.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/focus.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/keyboard_and_focus.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/keyboard_shortcuts.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/misc_wm_prefs.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/titlebar.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/workspace_margins.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/images/xfwm_workspaces.png,
-	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.html,
-	  xfwm4/branches/xfce_4_2/doc/fr/xfwm4.xml: This commit was
-	  manufactured by cvs2svn to create branch 'xfce_4_2'.
+	* doc/fr, doc/fr/Makefile.am, doc/fr/images/Makefile.am,
+	  doc/fr/images/compose_shortcut.png,
+	  doc/fr/images/decoration_style.png, doc/fr/images/focus.png,
+	  doc/fr/images/keyboard_and_focus.png,
+	  doc/fr/images/keyboard_shortcuts.png,
+	  doc/fr/images/misc_wm_prefs.png, doc/fr/images/titlebar.png,
+	  doc/fr/images/workspace_margins.png,
+	  doc/fr/images/xfwm_workspaces.png, doc/fr/xfwm4.html,
+	  doc/fr/xfwm4.xml: This commit was manufactured by cvs2svn to
+	  create branch 'xfce_4_2'.
 
 2005-01-30 13:24  olivier
 
-	* xfwm4/branches/xfce_4_2/src/compositor.c: Include headers
+	* src/compositor.c: Include headers
 
 2005-01-30 11:34  olivier
 
-	* xfwm4/branches/xfce_4_2/src/compositor.c: Clear root win on
-	  startup.
+	* src/compositor.c: Clear root win on startup.
 
 2005-01-30 09:39  pollux
 
-	* xfwm4/branches/xfce_4_2/po/fi.po: update FI translations
+	* po/fi.po: update FI translations
 
 2005-01-28 22:19  olivier
 
-	* xfwm4/branches/xfce_4_2/src/frame.c: Again, optimize.
+	* src/frame.c: Again, optimize.
 
 2005-01-28 22:03  olivier
 
-	* xfwm4/branches/xfce_4_2/src/frame.c,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.xpm:
-	  Sync with HEAD, improve optimizations.
+	* src/frame.c, themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Sync with HEAD, improve
+	  optimizations.
 
 2005-01-28 05:29  olivier
 
-	* xfwm4/branches/xfce_4_2/themes/default/themerc,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.xpm:
-	  Sync theme with HEAD
+	* themes/default/themerc, themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Sync theme with HEAD
 
 2005-01-25 22:24  olivier
 
-	* xfwm4/branches/xfce_4_2/themes/default/bottom-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/close-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.xpm:
-	  Adjust frame corners as application window is now placed on top of
-	  frame.
+	* themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.xpm, themes/default/hide-pressed.png,
+	  themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm: Adjust frame corners as
+	  application window is now placed on top of frame.
 
 2005-01-23 17:09  pollux
 
-	* xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po: update LT translations
+	* po/lt.gmo, po/lt.po: update LT translations
 
 2005-01-23 16:48  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.po: update FI translations
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo, po/fi.po:
+	  update FI translations
 
 2005-01-22 08:57  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po: update KO translations
+	* po/ko.gmo, po/ko.po: update KO translations
 
 2005-01-21 20:25  olivier
 
-	* xfwm4/branches/xfce_4_2/src/focus.c: Fix an odd bug with focus
-	  follow mouse and userhelper
+	* src/focus.c: Fix an odd bug with focus follow mouse and userhelper
 
 2005-01-19 23:30  olivier
 
-	* xfwm4/branches/xfce_4_2/src/frame.c: Use frame as parent for temp
-	  shaped window.
+	* src/frame.c: Use frame as parent for temp shaped window.
 
 2005-01-19 20:28  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Improve previous patch.
+	* src/client.c: Improve previous patch.
 
 2005-01-18 23:14  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Don't focus a randow window
-	  whth Alt+Tab when no focusable window is present.
+	* src/client.c: Don't focus a randow window whth Alt+Tab when no
+	  focusable window is present.
 
 2005-01-18 22:12  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Small optimization to speed
-	  up GL apps in windowed mode.
+	* src/client.c: Small optimization to speed up GL apps in windowed
+	  mode.
 
 2005-01-18 18:35  olivier
 
-	* xfwm4/branches/xfce_4_2/COMPOSITOR: Fix bug #611 (Documentation on
-	  command line option to enable/disable xfwm4 compositor)
+	* COMPOSITOR: Fix bug #611 (Documentation on command line option to
+	  enable/disable xfwm4 compositor)
 
 2005-01-17 20:58  olivier
 
-	* xfwm4/branches/xfce_4_2/src/compositor.c: Fix bug #694: Window not
-	  showing when compositor is enabled.
+	* src/compositor.c: Fix bug #694: Window not showing when compositor
+	  is enabled.
 
 2005-01-17 20:27  olivier
 
-	* xfwm4/branches/xfce_4_2/src/client.c: Fix bug #700
+	* src/client.c: Fix bug #700
 
 2005-01-16 21:21  olivier
 
-	* xfwm4/branches/xfce_4_2/src/keyboard.c,
-	  xfwm4/branches/xfce_4_2/src/keyboard.h: Fix modifers not working
-	  when caps lock is enabled (bug #689)
+	* src/keyboard.c, src/keyboard.h: Fix modifers not working when caps
+	  lock is enabled (bug #689)
 
 2005-01-14 11:41  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfwm4_shortcuteditor.c:
+	* mcs-plugin/xfwm4_plugin.c, mcs-plugin/xfwm4_shortcuteditor.c:
 	  backport from HEAD
 
 2005-01-14 10:31  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfwm4_shortcuteditor.c: should
-	  fix #681
+	* mcs-plugin/xfwm4_plugin.c, mcs-plugin/xfwm4_shortcuteditor.c:
+	  should fix #681
 
 2005-01-13 19:56  olivier
 
-	* xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/ltmain.sh,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/themes/Makefile.am,
-	  xfwm4/branches/xfce_4_2/themes/Makefile.in,
-	  xfwm4/branches/xfce_4_2/themes/default/README,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/close-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/close-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/right-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/right-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.png,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/themerc,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.xpm:
-	  Promote "breeze" as default theme!
+	* configure, configure.ac, ltmain.sh, po/xfwm4.pot,
+	  themes/Makefile.am, themes/Makefile.in, themes/default/README,
+	  themes/default/bottom-active.png,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.xpm, themes/default/hide-pressed.png,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.xpm, themes/default/left-inactive.png,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png, themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.xpm: Promote "breeze" as default
+	  theme!
 
 2005-01-12 17:51  olivier
 
-	* xfwm4/branches/xfce_4_2/src/events.c,
-	  xfwm4/branches/xfce_4_2/src/workspaces.c: Backport: Focus patch
-	  again
+	* src/events.c, src/workspaces.c: Backport: Focus patch again
 
 2005-01-11 20:23  olivier
 
-	* xfwm4/branches/xfce_4_2/src/keyboard.c,
-	  xfwm4/branches/xfce_4_2/src/workspaces.c: Backport from HEAD:
-	  Change the modifier computation, Apply patch from Juho
-	  V&#65533;&#65533;h&#65533;&#65533;-Herttua <juhovh@iki.fi> for modifiers, Fix the focus not
-	  being restored when switching desktop in focus follow mode.
+	* src/keyboard.c, src/workspaces.c: Backport from HEAD: Change the
+	  modifier computation, Apply patch from Juho V&#65533;&#65533;h&#65533;&#65533;-Herttua
+	  <juhovh@iki.fi> for modifiers, Fix the focus not being restored
+	  when switching desktop in focus follow mode.
 
 2005-01-10 19:04  benny
 
-	* xfwm4/branches/xfce_4_2/ChangeLog,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po: Final touch before the tag (lt
+	* ChangeLog, po/lt.gmo, po/lt.po: Final touch before the tag (lt
 	  update!)
 
 2005-01-10 12:56  pollux
 
-	* xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po: update HU translations
+	* po/hu.gmo, po/hu.po: update HU translations
 
 2005-01-10 12:23  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop:
-	  update LT translations
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop: update LT
+	  translations
 
 2005-01-09 13:42  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop:
-	  update RO translations
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop: update RO
+	  translations
 
 2005-01-09 13:22  benny
 
-	* xfwm4/branches/xfce_4_2/configure,
-	  xfwm4/branches/xfce_4_2/configure.ac,
-	  xfwm4/branches/xfce_4_2/doc/C/xfwm4.html,
-	  xfwm4/branches/xfce_4_2/doc/C/xfwm4.xml,
-	  xfwm4/branches/xfce_4_2/doc/Makefile.am,
-	  xfwm4/branches/xfce_4_2/doc/Makefile.in,
-	  xfwm4/branches/xfce_4_2/doc/fr, xfwm4/branches/xfce_4_2/doc/it,
-	  xfwm4/branches/xfce_4_2/po/ar.gmo,
-	  xfwm4/branches/xfce_4_2/po/ar.po,
-	  xfwm4/branches/xfce_4_2/po/az.gmo,
-	  xfwm4/branches/xfce_4_2/po/az.po,
-	  xfwm4/branches/xfce_4_2/po/be.gmo,
-	  xfwm4/branches/xfce_4_2/po/be.po,
-	  xfwm4/branches/xfce_4_2/po/bg.gmo,
-	  xfwm4/branches/xfce_4_2/po/bg.po,
-	  xfwm4/branches/xfce_4_2/po/ca.gmo,
-	  xfwm4/branches/xfce_4_2/po/ca.po,
-	  xfwm4/branches/xfce_4_2/po/cs.gmo,
-	  xfwm4/branches/xfce_4_2/po/cs.po,
-	  xfwm4/branches/xfce_4_2/po/de.gmo,
-	  xfwm4/branches/xfce_4_2/po/de.po,
-	  xfwm4/branches/xfce_4_2/po/en_GB.gmo,
-	  xfwm4/branches/xfce_4_2/po/en_GB.po,
-	  xfwm4/branches/xfce_4_2/po/es.gmo,
-	  xfwm4/branches/xfce_4_2/po/es.po,
-	  xfwm4/branches/xfce_4_2/po/es_MX.gmo,
-	  xfwm4/branches/xfce_4_2/po/es_MX.po,
-	  xfwm4/branches/xfce_4_2/po/et.gmo,
-	  xfwm4/branches/xfce_4_2/po/et.po,
-	  xfwm4/branches/xfce_4_2/po/eu.gmo,
-	  xfwm4/branches/xfce_4_2/po/eu.po,
-	  xfwm4/branches/xfce_4_2/po/fa.gmo,
-	  xfwm4/branches/xfce_4_2/po/fa.po,
-	  xfwm4/branches/xfce_4_2/po/fi.gmo,
-	  xfwm4/branches/xfce_4_2/po/fi.po,
-	  xfwm4/branches/xfce_4_2/po/fr.gmo,
-	  xfwm4/branches/xfce_4_2/po/fr.po,
-	  xfwm4/branches/xfce_4_2/po/gu.gmo,
-	  xfwm4/branches/xfce_4_2/po/gu.po,
-	  xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po,
-	  xfwm4/branches/xfce_4_2/po/hi.gmo,
-	  xfwm4/branches/xfce_4_2/po/hi.po,
-	  xfwm4/branches/xfce_4_2/po/hu.gmo,
-	  xfwm4/branches/xfce_4_2/po/hu.po,
-	  xfwm4/branches/xfce_4_2/po/it.gmo,
-	  xfwm4/branches/xfce_4_2/po/it.po,
-	  xfwm4/branches/xfce_4_2/po/ja.gmo,
-	  xfwm4/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ko.gmo,
-	  xfwm4/branches/xfce_4_2/po/ko.po,
-	  xfwm4/branches/xfce_4_2/po/lt.gmo,
-	  xfwm4/branches/xfce_4_2/po/lt.po,
-	  xfwm4/branches/xfce_4_2/po/ms.gmo,
-	  xfwm4/branches/xfce_4_2/po/ms.po,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfwm4/branches/xfce_4_2/po/nb_NO.po,
-	  xfwm4/branches/xfce_4_2/po/nl.gmo,
-	  xfwm4/branches/xfce_4_2/po/nl.po,
-	  xfwm4/branches/xfce_4_2/po/pa.gmo,
-	  xfwm4/branches/xfce_4_2/po/pa.po,
-	  xfwm4/branches/xfce_4_2/po/pl.gmo,
-	  xfwm4/branches/xfce_4_2/po/pl.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfwm4/branches/xfce_4_2/po/pt_PT.po,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.po,
-	  xfwm4/branches/xfce_4_2/po/sk.gmo,
-	  xfwm4/branches/xfce_4_2/po/sk.po,
-	  xfwm4/branches/xfce_4_2/po/sv.gmo,
-	  xfwm4/branches/xfce_4_2/po/sv.po,
-	  xfwm4/branches/xfce_4_2/po/ta.gmo,
-	  xfwm4/branches/xfce_4_2/po/ta.po,
-	  xfwm4/branches/xfce_4_2/po/tr.gmo,
-	  xfwm4/branches/xfce_4_2/po/tr.po,
-	  xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.po,
-	  xfwm4/branches/xfce_4_2/po/vi.gmo,
-	  xfwm4/branches/xfce_4_2/po/vi.po,
-	  xfwm4/branches/xfce_4_2/po/xfwm4.pot,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Remove outdated translations
-	  of the documentation. Update version in the documentation
+	* configure, configure.ac, doc/C/xfwm4.html, doc/C/xfwm4.xml,
+	  doc/Makefile.am, doc/Makefile.in, doc/fr, doc/it, po/ar.gmo,
+	  po/ar.po, po/az.gmo, po/az.po, po/be.gmo, po/be.po, po/bg.gmo,
+	  po/bg.po, po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo,
+	  po/de.po, po/en_GB.gmo, po/en_GB.po, po/es.gmo, po/es.po,
+	  po/es_MX.gmo, po/es_MX.po, po/et.gmo, po/et.po, po/eu.gmo,
+	  po/eu.po, po/fa.gmo, po/fa.po, po/fi.gmo, po/fi.po, po/fr.gmo,
+	  po/fr.po, po/gu.gmo, po/gu.po, po/he.gmo, po/he.po, po/hi.gmo,
+	  po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo,
+	  po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo,
+	  po/ms.po, po/nb_NO.gmo, po/nb_NO.po, po/nl.gmo, po/nl.po,
+	  po/pa.gmo, po/pa.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po,
+	  po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po,
+	  po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	  po/zh_TW.po: Remove outdated translations of the documentation.
+	  Update version in the documentation
 
 2005-01-09 12:03  pollux
 
-	* xfwm4/branches/xfce_4_2/po/ro.gmo,
-	  xfwm4/branches/xfce_4_2/po/ro.po: update RO translations
+	* po/ro.gmo, po/ro.po: update RO translations
 
 2005-01-09 10:08  olivier
 
-	* xfwm4/branches/xfce_4_2/src/compositor.c: Fix bug #666
+	* src/compositor.c: Fix bug #666
 
 2005-01-08 15:49  pollux
 
-	* xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/branches/xfce_4_2/po/ru.gmo,
-	  xfwm4/branches/xfce_4_2/po/ru.po: update RU translations
+	* mcs-plugin/xfce-wm-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop, po/ru.gmo, po/ru.po:
+	  update RU translations
 
 2005-01-07 20:29  olivier
 
-	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-01-07 19:58  olivier
 
-	* xfwm4/branches/xfce_4_2/themes/default/README,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-1-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-2-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-3-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-4-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-active.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/title-5-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.png:
-	  Small change in title bar shadow
+	* themes/default/README, themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Small change in title bar
+	  shadow
 
 2005-01-06 20:33  pollux
 
-	* xfwm4/branches/xfce_4_2/po/uk.gmo,
-	  xfwm4/branches/xfce_4_2/po/uk.po: update UK translations, i hope i
-	  didn't forget any file this time
+	* po/uk.gmo, po/uk.po: update UK translations, i hope i didn't
+	  forget any file this time
 
 2005-01-05 23:30  benny
 
-	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-01-05 23:23  benny
 
-	* xfwm4/branches/xfce_4_2/ChangeLog,
-	  xfwm4/branches/xfce_4_2/ltmain.sh: Final updates
+	* ChangeLog, ltmain.sh: Final updates
 
 2005-01-05 20:59  olivier
 
-	* xfwm4/branches/xfce_4_2/themes/default/bottom-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/bottom-right-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/close-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/hide-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/maximize-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/menu-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/right-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/shade-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-inactive.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/stick-toggled-pressed.xpm,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-left-inactive.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-active.png,
-	  xfwm4/branches/xfce_4_2/themes/default/top-right-inactive.png: Put
-	  back button on inactive frame (as it's the default theme, it
-	  should not be too confusing to users)
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-inactive.xpm,
+	  themes/default/hide-inactive.xpm, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/menu-inactive.xpm, themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Put back button on inactive
+	  frame (as it's the default theme, it should not be too confusing
+	  to users)
 
 2005-01-05 16:14  pollux
 
-	* xfwm4/branches/xfce_4_2/po/he.gmo,
-	  xfwm4/branches/xfce_4_2/po/he.po: update HE translations
+	* po/he.gmo, po/he.po: update HE translations
 
 2005-01-05 16:14  
 
-	* xfwm4/branches/xfce_4_2, xfwm4/branches/xfce_4_2/NEWS,
-	  xfwm4/branches/xfce_4_2/stamp-h.in: This commit was manufactured
-	  by cvs2svn to create branch 'xfce_4_2'.
+	* ., NEWS, stamp-h.in: This commit was manufactured by cvs2svn to
+	  create branch 'xfce_4_2'.
 
 2005-01-02 12:51  olivier
 
