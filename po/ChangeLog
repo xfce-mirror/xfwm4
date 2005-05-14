@@ -1,3 +1,86 @@
+2005-05-13 20:18  olivier
+
+	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml,
+	  xfwm4/trunk/doc/fr/xfwm4.html, xfwm4/trunk/doc/fr/xfwm4.xml,
+	  xfwm4/trunk/doc/it/xfwm4.html, ar.po, az.po, be.po, bg.po,
+	  bn_IN.po, ca.po, cs.po, de.po, en_GB.po, es.po, es_MX.po, et.po,
+	  eu.po, fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po,
+	  ja.po, ko.po, lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po,
+	  pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po,
+	  uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po,
+	  xfwm4/trunk/themes/default/bottom-left-active.png,
+	  xfwm4/trunk/themes/default/bottom-left-active.xpm,
+	  xfwm4/trunk/themes/default/bottom-left-inactive.png,
+	  xfwm4/trunk/themes/default/bottom-left-inactive.xpm,
+	  xfwm4/trunk/themes/default/bottom-right-active.png,
+	  xfwm4/trunk/themes/default/bottom-right-active.xpm,
+	  xfwm4/trunk/themes/default/bottom-right-inactive.png,
+	  xfwm4/trunk/themes/default/bottom-right-inactive.xpm,
+	  xfwm4/trunk/themes/default/close-active.png,
+	  xfwm4/trunk/themes/default/close-inactive.png,
+	  xfwm4/trunk/themes/default/close-pressed.png,
+	  xfwm4/trunk/themes/default/hide-active.png,
+	  xfwm4/trunk/themes/default/hide-inactive.png,
+	  xfwm4/trunk/themes/default/hide-pressed.png,
+	  xfwm4/trunk/themes/default/maximize-active.png,
+	  xfwm4/trunk/themes/default/maximize-inactive.png,
+	  xfwm4/trunk/themes/default/maximize-pressed.png,
+	  xfwm4/trunk/themes/default/maximize-toggled-active.png,
+	  xfwm4/trunk/themes/default/maximize-toggled-inactive.png,
+	  xfwm4/trunk/themes/default/maximize-toggled-pressed.png,
+	  xfwm4/trunk/themes/default/menu-active.png,
+	  xfwm4/trunk/themes/default/menu-inactive.png,
+	  xfwm4/trunk/themes/default/menu-pressed.png,
+	  xfwm4/trunk/themes/default/shade-active.png,
+	  xfwm4/trunk/themes/default/shade-inactive.png,
+	  xfwm4/trunk/themes/default/shade-pressed.png,
+	  xfwm4/trunk/themes/default/shade-toggled-active.png,
+	  xfwm4/trunk/themes/default/shade-toggled-inactive.png,
+	  xfwm4/trunk/themes/default/shade-toggled-pressed.png,
+	  xfwm4/trunk/themes/default/stick-active.png,
+	  xfwm4/trunk/themes/default/stick-inactive.png,
+	  xfwm4/trunk/themes/default/stick-pressed.png,
+	  xfwm4/trunk/themes/default/stick-toggled-active.png,
+	  xfwm4/trunk/themes/default/stick-toggled-inactive.png,
+	  xfwm4/trunk/themes/default/stick-toggled-pressed.png,
+	  xfwm4/trunk/themes/default/title-1-active.png,
+	  xfwm4/trunk/themes/default/title-1-active.xpm,
+	  xfwm4/trunk/themes/default/title-1-inactive.png,
+	  xfwm4/trunk/themes/default/title-1-inactive.xpm,
+	  xfwm4/trunk/themes/default/title-2-active.png,
+	  xfwm4/trunk/themes/default/title-2-active.xpm,
+	  xfwm4/trunk/themes/default/title-2-inactive.png,
+	  xfwm4/trunk/themes/default/title-2-inactive.xpm,
+	  xfwm4/trunk/themes/default/title-3-active.png,
+	  xfwm4/trunk/themes/default/title-3-active.xpm,
+	  xfwm4/trunk/themes/default/title-3-inactive.png,
+	  xfwm4/trunk/themes/default/title-3-inactive.xpm,
+	  xfwm4/trunk/themes/default/title-4-active.png,
+	  xfwm4/trunk/themes/default/title-4-active.xpm,
+	  xfwm4/trunk/themes/default/title-4-inactive.png,
+	  xfwm4/trunk/themes/default/title-4-inactive.xpm,
+	  xfwm4/trunk/themes/default/title-5-active.png,
+	  xfwm4/trunk/themes/default/title-5-active.xpm,
+	  xfwm4/trunk/themes/default/title-5-inactive.png,
+	  xfwm4/trunk/themes/default/title-5-inactive.xpm,
+	  xfwm4/trunk/themes/default/top-left-active.png,
+	  xfwm4/trunk/themes/default/top-left-inactive.png,
+	  xfwm4/trunk/themes/default/top-right-active.png,
+	  xfwm4/trunk/themes/default/top-right-inactive.png: Update
+	  documentation
+
+2005-05-06 19:09  pollux
+
+	* xfwm4/trunk/configure.ac, bn_IN.po: add bn_IN translations
+
+2005-05-06 18:56  pollux
+
+	* xfwm4/trunk/configure.ac, mr.po: add MR translations
+
+2005-05-04 20:36  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2005-04-06 07:33  perldude
 
 	* xfwm4/trunk/.cvsignore, xfwm4/trunk/defaults/.cvsignore,
@@ -9,7 +92,7 @@
 	  xfwm4/trunk/doc/it/images/.cvsignore,
 	  xfwm4/trunk/icons/.cvsignore, xfwm4/trunk/icons/48x48/.cvsignore,
 	  xfwm4/trunk/icons/scalable/.cvsignore, xfwm4/trunk/m4/.cvsignore,
-	  xfwm4/trunk/mcs-plugin/.cvsignore, xfwm4/trunk/po/.cvsignore,
+	  xfwm4/trunk/mcs-plugin/.cvsignore, .cvsignore,
 	  xfwm4/trunk/src/.cvsignore, xfwm4/trunk/themes/.cvsignore,
 	  xfwm4/trunk/themes/default-4.0/.cvsignore,
 	  xfwm4/trunk/themes/default-4.2/.cvsignore,
@@ -24,36 +107,24 @@
 
 2005-03-26 16:43  olivier
 
-	* xfwm4/trunk/po, xfwm4/trunk/po/.cvsignore: /me is dumb.
+	* ., .cvsignore: /me is dumb.
 
 2005-03-26 16:29  olivier
 
-	* xfwm4/trunk/po, xfwm4/trunk/po/.cvsignore: Don't ignore
-	  Makefile.in.in ?
+	* ., .cvsignore: Don't ignore Makefile.in.in ?
 
 2005-03-26 11:22  pollux
 
-	* xfwm4/trunk/po/ko.po: update KO translations
+	* ko.po: update KO translations
 
 2005-03-22 22:07  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/en_GB.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nb_NO.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/events.c,
+	* xfwm4/trunk/ChangeLog, ar.po, az.po, be.po, bg.po, ca.po, cs.po,
+	  de.po, en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po,
+	  fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po,
+	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
+	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
+	  zh_CN.po, zh_TW.po, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/screen.c,
 	  xfwm4/trunk/themes/default/bottom-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-inactive.xpm,
@@ -79,39 +150,25 @@
 	  xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop.in,
 	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
 	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop.in,
-	  xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/nl.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_TW.po: Intltool'ized
-	  xfwm4.
+	  POTFILES.in, et.po, fi.po, fr.po, he.po, ko.po, nl.po, ru.po,
+	  xfwm4.pot, zh_TW.po: Intltool'ized xfwm4.
 
 2005-03-07 09:07  pollux
 
-	* xfwm4/trunk/po/gu.po: update GU translations
+	* gu.po: update GU translations
 
 2005-03-05 13:03  pollux
 
-	* xfwm4/trunk/po/ja.po: update JA translations
+	* ja.po: update JA translations
 
 2005-03-02 20:34  olivier
 
-	* xfwm4/trunk/configure.ac, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/en_GB.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nb_NO.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/themes/Makefile.am,
+	* xfwm4/trunk/configure.ac, ar.po, az.po, be.po, bg.po, ca.po,
+	  cs.po, de.po, en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po,
+	  ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
+	  zh_CN.po, zh_TW.po, xfwm4/trunk/themes/Makefile.am,
 	  xfwm4/trunk/themes/default/README,
 	  xfwm4/trunk/themes/default/bottom-active.png,
 	  xfwm4/trunk/themes/default/bottom-active.xpm,
@@ -186,31 +243,20 @@
 
 2005-02-21 08:40  pollux
 
-	* xfwm4/trunk/po/ja.po: update JA translations
+	* ja.po: update JA translations
 
 2005-02-13 12:39  pollux
 
-	* xfwm4/trunk/po/ko.po: update KO translations (with a big delay)
+	* ko.po: update KO translations (with a big delay)
 
 2005-02-06 21:28  olivier
 
-	* xfwm4/trunk/configure.ac, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/en_GB.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nb_NO.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/themes/Makefile.am,
+	* xfwm4/trunk/configure.ac, ar.po, az.po, be.po, bg.po, ca.po,
+	  cs.po, de.po, en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po,
+	  ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
+	  zh_CN.po, zh_TW.po, xfwm4/trunk/themes/Makefile.am,
 	  xfwm4/trunk/themes/breeze, xfwm4/trunk/themes/default-4.2,
 	  xfwm4/trunk/themes/default-4.2/.cvsignore,
 	  xfwm4/trunk/themes/default-4.2/Makefile.am,
@@ -360,27 +406,16 @@
 
 2005-02-05 21:55  olivier
 
-	* xfwm4/trunk, xfwm4/trunk/.cvsignore, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/en_GB.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nb_NO.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po: Update cvsignore
+	* xfwm4/trunk, xfwm4/trunk/.cvsignore, ar.po, az.po, be.po, bg.po,
+	  ca.po, cs.po, de.po, en_GB.po, es.po, es_MX.po, et.po, eu.po,
+	  fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po,
+	  ko.po, lt.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
+	  xfwm4.pot, zh_CN.po, zh_TW.po: Update cvsignore
 
 2005-02-01 21:04  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/settings.c,
+	* xfwm4.pot, xfwm4/trunk/src/settings.c,
 	  xfwm4/trunk/themes/default/close-active.xpm,
 	  xfwm4/trunk/themes/default/close-inactive.xpm,
 	  xfwm4/trunk/themes/default/close-pressed.png,
@@ -447,12 +482,11 @@
 
 2005-02-01 20:59  olivier
 
-	* xfwm4/trunk/po, xfwm4/trunk/po/.cvsignore: Update cvsignore for po
-	  dir
+	* ., .cvsignore: Update cvsignore for po dir
 
 2005-02-01 11:45  pollux
 
-	* xfwm4/trunk/po/zh_CN.po: update zh_CN translations
+	* zh_CN.po: update zh_CN translations
 
 2005-01-30 23:06  olivier
 
@@ -469,8 +503,7 @@
 	  xfwm4/trunk/icons/48x48/.cvsignore, xfwm4/trunk/icons/scalable,
 	  xfwm4/trunk/icons/scalable/.cvsignore, xfwm4/trunk/m4,
 	  xfwm4/trunk/m4/.cvsignore, xfwm4/trunk/mcs-plugin,
-	  xfwm4/trunk/mcs-plugin/.cvsignore, xfwm4/trunk/po,
-	  xfwm4/trunk/po/.cvsignore, xfwm4/trunk/src,
+	  xfwm4/trunk/mcs-plugin/.cvsignore, ., .cvsignore, xfwm4/trunk/src,
 	  xfwm4/trunk/src/.cvsignore, xfwm4/trunk/themes,
 	  xfwm4/trunk/themes/.cvsignore, xfwm4/trunk/themes/breeze,
 	  xfwm4/trunk/themes/breeze/.cvsignore, xfwm4/trunk/themes/default,
@@ -490,23 +523,12 @@
 
 2005-01-28 06:40  olivier
 
-	* xfwm4/trunk/configure.ac, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/en_GB.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nb_NO.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po: Use new m4 macros
+	* xfwm4/trunk/configure.ac, ar.po, az.po, be.po, bg.po, ca.po,
+	  cs.po, de.po, en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po,
+	  ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
+	  zh_CN.po, zh_TW.po: Use new m4 macros
 
 2005-01-28 05:50  olivier
 
@@ -526,28 +548,13 @@
 	  xfwm4/trunk/icons/Makefile.in,
 	  xfwm4/trunk/icons/scalable/Makefile.in, xfwm4/trunk/install-sh,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/mcs-plugin/Makefile.in,
-	  xfwm4/trunk/missing, xfwm4/trunk/mkinstalldirs, xfwm4/trunk/po,
-	  xfwm4/trunk/po/.cvsignore, xfwm4/trunk/po/Makefile.in.in,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/az.gmo,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/bg.gmo,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/cs.gmo,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/en_GB.gmo,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es_MX.gmo,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/eu.gmo,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fi.gmo,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/gu.gmo,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/hi.gmo,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/it.gmo,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ko.gmo,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/ms.gmo,
-	  xfwm4/trunk/po/nb_NO.gmo, xfwm4/trunk/po/nl.gmo,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pl.gmo,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_PT.gmo,
-	  xfwm4/trunk/po/ro.gmo, xfwm4/trunk/po/ru.gmo,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sv.gmo,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/tr.gmo,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/vi.gmo,
-	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_TW.gmo,
+	  xfwm4/trunk/missing, xfwm4/trunk/mkinstalldirs, ., .cvsignore,
+	  Makefile.in.in, ar.gmo, az.gmo, be.gmo, bg.gmo, ca.gmo, cs.gmo,
+	  de.gmo, en_GB.gmo, es.gmo, es_MX.gmo, et.gmo, eu.gmo, fa.gmo,
+	  fi.gmo, fr.gmo, gu.gmo, he.gmo, hi.gmo, hu.gmo, it.gmo, ja.gmo,
+	  ko.gmo, lt.gmo, ms.gmo, nb_NO.gmo, nl.gmo, pa.gmo, pl.gmo,
+	  pt_BR.gmo, pt_PT.gmo, ro.gmo, ru.gmo, sk.gmo, sv.gmo, ta.gmo,
+	  tr.gmo, uk.gmo, vi.gmo, zh_CN.gmo, zh_TW.gmo,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/stamp-h.in,
 	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/breeze/Makefile.in,
@@ -565,46 +572,39 @@
 2005-01-22 12:22  pollux
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: update FI
-	  translations
+	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop, fi.gmo,
+	  fi.po: update FI translations
 
 2005-01-16 21:27  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/keyboard.c,
-	  xfwm4/trunk/src/keyboard.h: Fix modifers not working when caps
-	  lock is enabled (bug #689)
+	* xfwm4.pot, xfwm4/trunk/src/keyboard.c, xfwm4/trunk/src/keyboard.h:
+	  Fix modifers not working when caps lock is enabled (bug #689)
 
 2005-01-12 17:49  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/themes/default/themerc:
-	  Focus patch again
+	* xfwm4.pot, xfwm4/trunk/src/events.c, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/themes/default/themerc: Focus patch again
 
 2005-01-08 15:04  pollux
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po: update RU
-	  translations
+	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop, ru.gmo,
+	  ru.po: update RU translations
 
 2005-01-06 20:31  pollux
 
-	* xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po: update UK
-	  translations
+	* uk.gmo, uk.po: update UK translations
 
 2005-01-05 16:01  pollux
 
-	* xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po: update HE
-	  translations
+	* he.gmo, he.po: update HE translations
 
 2005-01-01 14:01  olivier
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/themes/Makefile.am,
-	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/default/README,
-	  xfwm4/trunk/themes/therapy,
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/ltmain.sh, xfwm4.pot,
+	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/default/README, xfwm4/trunk/themes/therapy,
 	  xfwm4/trunk/themes/therapy/Makefile.am,
 	  xfwm4/trunk/themes/therapy/Makefile.in,
 	  xfwm4/trunk/themes/therapy/README,
@@ -719,8 +719,8 @@
 	  xfwm4/trunk/doc/it/images/keyboard_shortcuts.png,
 	  xfwm4/trunk/doc/it/images/misc_wm_prefs.png,
 	  xfwm4/trunk/doc/it/images/workspace_margins.png,
-	  xfwm4/trunk/doc/it/images/xfwm_workspaces.png,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/themes/default/themerc,
+	  xfwm4/trunk/doc/it/images/xfwm_workspaces.png, xfwm4.pot,
+	  xfwm4/trunk/themes/default/themerc,
 	  xfwm4/trunk/themes/default/top-left-active.png,
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.png,
@@ -734,34 +734,31 @@
 2004-12-23 21:24  pollux
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po: update ET
-	  translations
+	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop, et.gmo,
+	  et.po: update ET translations
 
 2004-12-22 21:19  benny
 
 	* xfwm4/trunk/ChangeLog, xfwm4/trunk/autogen.sh,
 	  xfwm4/trunk/mcs-plugin/Makefile.am,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/cs.gmo: Update
-	  ChangeLog. Fix make distcheck.
+	  xfwm4/trunk/mcs-plugin/Makefile.in, cs.gmo: Update ChangeLog. Fix
+	  make distcheck.
 
 2004-12-21 23:00  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/xfwm4.pot: Update ChangeLog
+	* xfwm4/trunk/ChangeLog, xfwm4.pot: Update ChangeLog
 
 2004-12-21 09:04  kelnos
 
-	* xfwm4/trunk/po/cs.po: add/update czech translations
+	* cs.po: add/update czech translations
 
 2004-12-21 09:02  kelnos
 
-	* xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po: update pt_BR
-	  translations
+	* pt_BR.gmo, pt_BR.po: update pt_BR translations
 
 2004-12-19 20:49  pollux
 
-	* xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po: update KO
-	  translations
+	* ko.gmo, ko.po: update KO translations
 
 2004-12-19 13:22  olivier
 
@@ -787,8 +784,7 @@
 	  xfwm4/trunk/doc/it/images/keyboard_shortcuts.png,
 	  xfwm4/trunk/doc/it/images/misc_wm_prefs.png,
 	  xfwm4/trunk/doc/it/images/workspace_margins.png,
-	  xfwm4/trunk/doc/it/images/xfwm_workspaces.png,
-	  xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/doc/it/images/xfwm_workspaces.png, xfwm4.pot,
 	  xfwm4/trunk/themes/default/top-right-active.png,
 	  xfwm4/trunk/themes/default/top-right-inactive.png: Update themes
 	  and screenshots
@@ -797,7 +793,7 @@
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/mcs-plugin/xfwm4_plugin.h,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/themes/Makefile.am,
+	  xfwm4.pot, xfwm4/trunk/themes/Makefile.am,
 	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/default/README,
 	  xfwm4/trunk/themes/default/bottom-active.png,
 	  xfwm4/trunk/themes/default/bottom-active.xpm,
@@ -879,223 +875,156 @@
 
 2004-12-15 22:50  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot: *** empty log message ***
+	* xfwm4.pot: *** empty log message ***
 
 2004-12-15 22:46  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: Monitor
-	  reparenting too.
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: Monitor reparenting too.
 
 2004-12-15 21:52  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: Don't
-	  restack if the sibling is unknown.
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: Don't restack if the
+	  sibling is unknown.
 
 2004-12-14 20:33  pollux
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/ro.gmo,
-	  xfwm4/trunk/po/ro.po: add RO translations
+	  xfwm4/trunk/ltmain.sh, ro.gmo, ro.po: add RO translations
 
 2004-12-14 17:45  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/focus.h: Ungrab keys on
-	  on client window when unframing as spotted by Jochen Baier
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/focus.c,
+	  xfwm4/trunk/src/focus.h: Ungrab keys on on client window when
+	  unframing as spotted by Jochen Baier
 	  <Jochen.Baier@stud.uni-karlsruhe.de>
 
 2004-12-13 21:27  olivier
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/compositor.h: Update
-	  version, improve the window creation management in the compositor.
+	  xfwm4/trunk/ltmain.sh, xfwm4.pot, xfwm4/trunk/src/compositor.c,
+	  xfwm4/trunk/src/compositor.h: Update version, improve the window
+	  creation management in the compositor.
 
 2004-12-11 17:51  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot: Various changes and small fixes
+	* xfwm4.pot: Various changes and small fixes
 
 2004-12-10 06:46  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: Keep track
-	  of all wins to try to fix #552
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: Keep track of all wins to
+	  try to fix #552
 
 2004-12-10 05:30  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/en_GB.gmo, xfwm4/trunk/po/en_GB.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nb_NO.gmo, xfwm4/trunk/po/nb_NO.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Include korean update from David Choi
+	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, en_GB.gmo, en_GB.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po,
+	  fa.gmo, fa.po, fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po,
+	  he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nb_NO.gmo, nb_NO.po, nl.gmo, nl.po, pa.gmo, pa.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo,
+	  sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Include korean update from David Choi
 	  <byunghyun.choi@gmail.com>
 
 2004-12-08 21:16  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/xfwm4.pot: Update ChangeLog
+	* xfwm4/trunk/ChangeLog, xfwm4.pot: Update ChangeLog
 
 2004-12-07 21:33  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/workspaces.c: Fix a wrong
-	  param being passed to setNetWorkarea() causing a lot of problems
-	  Fix focus issues
+	* xfwm4.pot, xfwm4/trunk/src/events.c, xfwm4/trunk/src/focus.c,
+	  xfwm4/trunk/src/workspaces.c: Fix a wrong param being passed to
+	  setNetWorkarea() causing a lot of problems Fix focus issues
 
 2004-12-06 21:10  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c: Remove the
+	* xfwm4.pot, xfwm4/trunk/src/events.c: Remove the
 	  'check_button_time()' as I strongly suspect that to be the cause
 	  of #568 (the focus part)
 
 2004-12-05 21:38  pollux
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/nb_NO.gmo, xfwm4/trunk/po/nb_NO.po: add nb_NO
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, nb_NO.gmo,
+	  nb_NO.po: add nb_NO translations
 
 2004-12-05 21:20  pollux
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/en_GB.gmo, xfwm4/trunk/po/en_GB.po: add en_GB
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, en_GB.gmo,
+	  en_GB.po: add en_GB translations
 
 2004-12-05 20:50  pollux
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po: update KO
-	  translations and add screenshots in xfprint doc
+	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop, ko.gmo,
+	  ko.po: update KO translations and add screenshots in xfprint doc
 
 2004-12-03 17:37  olivier
 
-	* xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/workspaces.c: grab
-	  pointer on workspace change in all case.
+	* tr.gmo, xfwm4.pot, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/workspaces.c: grab pointer on workspace change in
+	  all case.
 
 2004-11-30 23:26  olivier
 
 	* xfwm4/trunk/defaults/defaults, xfwm4/trunk/doc/C/xfwm4.html,
-	  xfwm4/trunk/doc/C/xfwm4.xml, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/settings.c,
-	  xfwm4/trunk/src/settings.h: Implement the translucent window while
-	  moving or resizing through a hidden option. Adjust documentation
-	  accordingly.
+	  xfwm4/trunk/doc/C/xfwm4.xml, xfwm4.pot, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Implement
+	  the translucent window while moving or resizing through a hidden
+	  option. Adjust documentation accordingly.
 
 2004-11-28 18:01  pollux
 
-	* xfwm4/trunk/po/tr.po: update TR translations
+	* tr.po: update TR translations
 
 2004-11-26 19:06  pollux
 
-	* xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po: update KO
-	  translations
+	* ko.gmo, ko.po: update KO translations
 
 2004-11-24 17:49  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/display.c,
-	  xfwm4/trunk/src/display.h, xfwm4/trunk/src/focus.c,
-	  xfwm4/trunk/src/hints.c: Fix typos in atoms names introduced
-	  yesterday (causing various oddities)
+	* xfwm4.pot, xfwm4/trunk/src/display.c, xfwm4/trunk/src/display.h,
+	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/hints.c: Fix typos in
+	  atoms names introduced yesterday (causing various oddities)
 
 2004-11-23 23:57  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/display.c,
-	  xfwm4/trunk/src/display.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/icons.c,
-	  xfwm4/trunk/src/icons.h, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/netwm.c,
-	  xfwm4/trunk/src/screen.c, xfwm4/trunk/src/session.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/stacking.c,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/themes/tyrex/themerc:
-	  Huge rework of the way atoms are managed internally.
+	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa.gmo, fa.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po, he.gmo, he.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pa.gmo, pa.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
+	  pt_PT.po, ru.gmo, ru.po, sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo,
+	  ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot,
+	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/compositor.c,
+	  xfwm4/trunk/src/display.c, xfwm4/trunk/src/display.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/focus.c,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
+	  xfwm4/trunk/src/icons.c, xfwm4/trunk/src/icons.h,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/misc.c,
+	  xfwm4/trunk/src/netwm.c, xfwm4/trunk/src/screen.c,
+	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/stacking.c, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/themes/tyrex/themerc: Huge rework of the way atoms are
+	  managed internally.
 
 2004-11-21 21:57  pollux
 
-	* xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po: update HU
-	  translations
+	* hu.gmo, hu.po: update HU translations
 
 2004-11-19 06:58  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot: Update version
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot: Update
+	  version
 
 2004-11-15 22:38  pollux
 
-	* xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po: little translation
-	  correction
+	* fr.gmo, fr.po: little translation correction
 
 2004-11-11 22:21  olivier
 
@@ -1130,66 +1059,39 @@
 	  xfwm4/trunk/doc/it/images/titlebar.png,
 	  xfwm4/trunk/doc/it/images/workspace_margins.png,
 	  xfwm4/trunk/doc/it/images/xfwm_workspaces.png,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/fr.gmo,
-	  xfwm4/trunk/po/fr.po: Update screenshots (oops, conflict)
+	  xfwm4/trunk/ltmain.sh, fr.gmo, fr.po: Update screenshots (oops,
+	  conflict)
 
 2004-11-11 15:59  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/keyboard.c: Revert JF's
-	  patch and rather test for "Mod4" in xfwm4's keyboard.c
+	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c, xfwm4.pot,
+	  xfwm4/trunk/src/keyboard.c: Revert JF's patch and rather test for
+	  "Mod4" in xfwm4's keyboard.c
 
 2004-11-06 13:25  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: po and ChangeLog updates
+	* xfwm4/trunk/ChangeLog, ar.gmo, ar.po, az.gmo, az.po, be.gmo,
+	  be.po, bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po,
+	  fa.gmo, fa.po, fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po,
+	  he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nl.gmo, nl.po, pa.gmo, pa.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po,
+	  pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo, sk.po, sv.gmo, sv.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: po and
+	  ChangeLog updates
 
 2004-11-06 13:02  olivier
 
-	* xfwm4/trunk/defaults/defaults, xfwm4/trunk/po/xfwm4.pot,
+	* xfwm4/trunk/defaults/defaults, xfwm4.pot,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h,
 	  xfwm4/trunk/src/workspaces.c: Add hidden option "toggle_workspace"
 	  to enable/disable the switch back to previous workspace.
 
 2004-11-02 09:19  olivier
 
-	* xfwm4/trunk/defaults/defaults, xfwm4/trunk/po/xfwm4.pot,
+	* xfwm4/trunk/defaults/defaults, xfwm4.pot,
 	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/focus.h,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Raise
@@ -1198,19 +1100,17 @@
 
 2004-10-30 14:42  jasper
 
-	* xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po: Update a few nl
-	  translations
+	* nl.gmo, nl.po: Update a few nl translations
 
 2004-10-30 14:00  pollux
 
-	* xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po: update LT
-	  translations
+	* lt.gmo, lt.po: update LT translations
 
 2004-10-28 19:44  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/themes/Makefile.am,
-	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/default/README,
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot,
+	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/default/README,
 	  xfwm4/trunk/themes/default/bottom-active.png,
 	  xfwm4/trunk/themes/default/bottom-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-inactive.png,
@@ -1371,14 +1271,12 @@
 2004-10-28 11:55  pollux
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po: update HE
-	  translations
+	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop, he.gmo,
+	  he.po: update HE translations
 
 2004-10-26 23:18  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/default/bottom-active.xpm,
+	* xfwm4.pot, xfwm4/trunk/themes/default/bottom-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-inactive.xpm,
 	  xfwm4/trunk/themes/default/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-left-inactive.xpm,
@@ -1401,198 +1299,100 @@
 
 2004-10-26 23:14  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c: Honor raise on
-	  focus when not using raise on click in client window.
+	* xfwm4.pot, xfwm4/trunk/src/events.c: Honor raise on focus when not
+	  using raise on click in client window.
 
 2004-10-24 21:55  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Locale fix
+	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa.gmo, fa.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po, he.gmo, he.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pa.gmo, pa.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
+	  pt_PT.po, ru.gmo, ru.po, sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo,
+	  ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot,
+	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Locale fix
 
 2004-10-24 14:23  moe
 
-	* xfwm4/trunk/po/de.po: Hehe
+	* de.po: Hehe
 
 2004-10-24 13:32  olivier
 
-	* xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/compositor.c,
-	  xfwm4/trunk/src/display.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/settings.c: Raise windows
-	  that manipulate the focus by themselves, Don't translate warning
-	  messages
+	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo,
+	  bg.po, ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa.gmo, fa.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, gu.gmo, gu.po, he.gmo, he.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pa.gmo, pa.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
+	  pt_PT.po, ru.gmo, ru.po, sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo,
+	  ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot,
+	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po,
+	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/display.c,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/settings.c: Raise windows that manipulate the
+	  focus by themselves, Don't translate warning messages
 
 2004-10-23 19:58  olivier
 
-	* xfwm4/trunk/po/de.gmo: gmo for Moe
+	* de.gmo: gmo for Moe
 
 2004-10-23 19:53  moe
 
-	* xfwm4/trunk/po/de.po: We hate K&#65533;rzels!
+	* de.po: We hate K&#65533;rzels!
 
 2004-10-23 19:45  olivier
 
-	* xfwm4/trunk/po/de.gmo: gmo file for Moe
+	* de.gmo: gmo file for Moe
 
 2004-10-23 19:43  moe
 
-	* xfwm4/trunk/po/de.po: Finishing German translation. Germs are good
-	  to go Sir!
+	* de.po: Finishing German translation. Germs are good to go Sir!
 
 2004-10-23 19:40  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Label mispelled
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, ar.gmo, ar.po, az.gmo,
+	  az.po, be.gmo, be.po, bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po,
+	  de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, et.gmo, et.po,
+	  eu.gmo, eu.po, fa.gmo, fa.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  gu.gmo, gu.po, he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po,
+	  it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pa.gmo, pa.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo,
+	  sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Label mispelled
 
 2004-10-23 17:47  benny
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.po: Update-po for
-	  moe.
+	* ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po,
+	  et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po,
+	  it.po, ja.po, ko.po, lt.po, ms.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
+	  zh_CN.po, zh_TW.po: Update-po for moe.
 
 2004-10-22 19:33  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot: Theme fixes update locale [fr] for
-	  desktop files
+	* xfwm4.pot: Theme fixes update locale [fr] for desktop files
 
 2004-10-20 22:05  pollux
 
-	* xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po: update ET
-	  translations
+	* et.gmo, et.po: update ET translations
 
 2004-10-19 05:42  olivier
 
-	* xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot:
-	  autogen for Maarten
+	* xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4.pot: autogen for Maarten
 
 2004-10-17 20:30  pollux
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: update FI
-	  translations
+	* fi.gmo, fi.po: update FI translations
 
 2004-10-16 14:27  olivier
 
-	* xfwm4/trunk/defaults/defaults, xfwm4/trunk/po/xfwm4.pot,
+	* xfwm4/trunk/defaults/defaults, xfwm4.pot,
 	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/focus.c,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Add new
 	  hidden option "prevent_focus_stealing" disable by default to fix
@@ -1600,21 +1400,20 @@
 
 2004-10-15 06:32  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/xfwm4.pot: Update ChangeLog
+	* xfwm4/trunk/ChangeLog, xfwm4.pot: Update ChangeLog
 
 2004-10-14 22:07  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/xfwm4.pot: Update ChangeLog
+	* xfwm4/trunk/ChangeLog, xfwm4.pot: Update ChangeLog
 
 2004-10-14 06:19  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/main.c: Fix double click time setting not working
-	  in xfwm4
+	* xfwm4.pot, xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c: Fix
+	  double click time setting not working in xfwm4
 
 2004-10-13 22:48  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot: *** empty log message ***
+	* xfwm4.pot: *** empty log message ***
 
 2004-10-12 06:50  olivier
 
@@ -1626,143 +1425,95 @@
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.h,
 	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.h,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/compositor.c,
+	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.h, ar.gmo, ar.po,
+	  az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po, ca.gmo, ca.po,
+	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  et.gmo, et.po, eu.gmo, eu.po, fa.gmo, fa.po, fi.gmo, fi.po,
+	  fr.gmo, fr.po, gu.gmo, gu.po, he.gmo, he.po, hi.gmo, hi.po,
+	  hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
+	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pa.gmo, pa.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  zh_TW.gmo, zh_TW.po, xfwm4/trunk/src/compositor.c,
 	  xfwm4/trunk/src/settings.c: Use mcs raw channel to fix bug #342
 
 2004-10-11 16:30  benny
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.po, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.po: update-po for
-	  Moe.
+	* ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po,
+	  et.po, eu.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po,
+	  ja.po, ko.po, lt.po, ms.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
+	  xfwm4.pot, zh_CN.po, zh_TW.po: update-po for Moe.
 
 2004-10-10 11:52  pollux
 
-	* xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es_MX.gmo,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po: update pt_PT
-	  translations
+	* es.gmo, es_MX.gmo, pt_PT.gmo, pt_PT.po: update pt_PT translations
 
 2004-10-10 01:52  edscott
 
-	* xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po: spelling correction
+	* es.po, es_MX.po: spelling correction
 
 2004-10-09 14:20  pollux
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/fa.gmo, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po: update FA
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, fa.gmo, fa.po,
+	  fa_IR.gmo, fa_IR.po: update FA translations
 
 2004-10-09 13:48  pollux
 
-	* xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po: Punjabi translations
-	  update from jaswinderlinux@netscape.net
+	* pa.gmo, pa.po: Punjabi translations update from
+	  jaswinderlinux@netscape.net
 
 2004-10-08 22:42  olivier
 
-	* xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es_MX.gmo,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/compositor.c: Various
-	  optilizations in compositor
+	* es.gmo, es_MX.gmo, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/compositor.c: Various optilizations in compositor
 
 2004-10-08 17:06  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/netwm.c,
-	  xfwm4/trunk/src/stacking.c, xfwm4/trunk/src/stacking.h,
-	  xfwm4/trunk/src/transients.c, xfwm4/trunk/src/transients.h,
-	  xfwm4/trunk/src/workspaces.c: Improve handling of
-	  transients/modals which aren't tied to a parent window.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/netwm.c, xfwm4/trunk/src/stacking.c,
+	  xfwm4/trunk/src/stacking.h, xfwm4/trunk/src/transients.c,
+	  xfwm4/trunk/src/transients.h, xfwm4/trunk/src/workspaces.c:
+	  Improve handling of transients/modals which aren't tied to a
+	  parent window.
 
 2004-10-08 15:45  edscott
 
-	* xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po: update spanish
-	  translations.
+	* es.po, es_MX.po: update spanish translations.
 
 2004-10-06 22:25  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: Simplify
-	  code in compositor repaint routine
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: Simplify code in
+	  compositor repaint routine
 
 2004-10-05 11:33  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: indent
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: indent
 
 2004-10-05 06:55  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: *** empty
-	  log message ***
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: *** empty log message ***
 
 2004-10-03 21:08  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/compositor.c,
-	  xfwm4/trunk/src/compositor.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h: Better support
-	  for transparency property.
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/compositor.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/hints.h: Better support for transparency property.
 
 2004-10-03 16:14  pollux
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/pa.gmo,
-	  xfwm4/trunk/po/pa.po: Punjabi translations (PA) from
-	  jaswinderlinux@netscape.net
+	  xfwm4/trunk/ltmain.sh, pa.gmo, pa.po: Punjabi translations (PA)
+	  from jaswinderlinux@netscape.net
 
 2004-10-02 12:31  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/themes/symphony/themerc: Add support for expose on
-	  root event
+	* xfwm4/trunk/ChangeLog, xfwm4.pot, xfwm4/trunk/src/compositor.c,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/themes/symphony/themerc: Add
+	  support for expose on root event
 
 2004-10-02 08:59  olivier
 
@@ -1777,7 +1528,7 @@
 	  xfwm4/trunk/icons/48x48/Makefile.in,
 	  xfwm4/trunk/icons/Makefile.in,
 	  xfwm4/trunk/icons/scalable/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4.pot,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/compositor.c,
 	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/breeze/Makefile.in,
@@ -1793,10 +1544,10 @@
 
 2004-09-30 20:26  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
-	  xfwm4/trunk/themes/breeze, xfwm4/trunk/themes/breeze/Makefile.am,
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/themes/Makefile.am,
+	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/breeze,
+	  xfwm4/trunk/themes/breeze/Makefile.am,
 	  xfwm4/trunk/themes/breeze/Makefile.in,
 	  xfwm4/trunk/themes/breeze/README,
 	  xfwm4/trunk/themes/breeze/bottom-active.xpm,
@@ -1863,38 +1614,38 @@
 
 2004-09-30 15:48  pollux
 
-	* xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po: updated Italian
-	  translations from Luca Marrocco <buildup@libero.it>
+	* it.gmo, it.po: updated Italian translations from Luca Marrocco
+	  <buildup@libero.it>
 
 2004-09-29 17:05  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/wireframe.c: Add little white frame arround the
-	  black frame so it stays visible even on dark background, handle
-	  the one single hidden app in cycling.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/wireframe.c:
+	  Add little white frame arround the black frame so it stays visible
+	  even on dark background, handle the one single hidden app in
+	  cycling.
 
 2004-09-29 08:22  pollux
 
-	* xfwm4/trunk/po/zh_TW.gmo, xfwm4/trunk/po/zh_TW.po: updated zh_TW
-	  translations from Ambrose Li <acli@ada.dhs.org>
+	* zh_TW.gmo, zh_TW.po: updated zh_TW translations from Ambrose Li
+	  <acli@ada.dhs.org>
 
 2004-09-29 07:59  pollux
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: updated zh_CN
-	  translations from yongtao yang <yongtao.yang@gmail.com>
+	* zh_CN.gmo, zh_CN.po: updated zh_CN translations from yongtao yang
+	  <yongtao.yang@gmail.com>
 
 2004-09-28 19:56  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: Fix window
-	  vanishing when being unmapped with compositor enabled.
+	* xfwm4.pot, xfwm4/trunk/src/compositor.c: Fix window vanishing when
+	  being unmapped with compositor enabled.
 
 2004-09-27 21:10  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/main.c: Various compositor fixes/improvements, Add
-	  new cmd line option "--disable-compositor" to disable compositor
-	  even if it's supported by both xfwm4 and the X server.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/compositor.c,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c: Various
+	  compositor fixes/improvements, Add new cmd line option
+	  "--disable-compositor" to disable compositor even if it's
+	  supported by both xfwm4 and the X server.
 
 2004-09-25 21:49  olivier
 
@@ -1909,7 +1660,7 @@
 	  xfwm4/trunk/icons/48x48/Makefile.in,
 	  xfwm4/trunk/icons/Makefile.in,
 	  xfwm4/trunk/icons/scalable/Makefile.in, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4.pot,
 	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
 	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/compositor.c,
 	  xfwm4/trunk/src/compositor.h, xfwm4/trunk/src/display.c,
@@ -1929,117 +1680,83 @@
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
 	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.h,
-	  xfwm4/trunk/po/gu.gmo, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/nl.gmo: add Gujarati translations (GU) from Ankit
-	  Patel <ankit@redhat.com>
+	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.h, gu.gmo, gu.po,
+	  nl.gmo: add Gujarati translations (GU) from Ankit Patel
+	  <ankit@redhat.com>
 
 2004-09-23 09:09  jasper
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/po/nl.po: Better translation
+	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop, nl.po:
+	  Better translation
 
 2004-09-23 06:29  olivier
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/po/xfwm4.pot: Update ChangeLog
+	* xfwm4/trunk/ChangeLog, xfwm4.pot: Update ChangeLog
 
 2004-09-23 06:26  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/screen.c,
-	  xfwm4/trunk/src/stacking.c: Fix missing parts from Param's patch
-	  regarding "sidewalks"
+	* xfwm4.pot, xfwm4/trunk/src/events.c, xfwm4/trunk/src/misc.c,
+	  xfwm4/trunk/src/screen.c, xfwm4/trunk/src/stacking.c: Fix missing
+	  parts from Param's patch regarding "sidewalks"
 
 2004-09-23 05:59  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/screen.c,
-	  xfwm4/trunk/src/screen.h, xfwm4/trunk/src/workspaces.c,
-	  xfwm4/trunk/src/workspaces.h: Apply patch from Paramjit Oberoi
-	  <param@cs.wisc.edu> to handle worskswitch with reaching screen
-	  edges
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/screen.c, xfwm4/trunk/src/screen.h,
+	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h: Apply
+	  patch from Paramjit Oberoi <param@cs.wisc.edu> to handle
+	  worskswitch with reaching screen edges
 
 2004-09-21 11:51  jasper
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/et.gmo, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.gmo, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Run make update-po at Moe's request.
+	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa_IR.gmo,
+	  fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, he.gmo, he.po, hi.gmo,
+	  hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
+	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sk.gmo,
+	  sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Run make update-po at Moe's request.
 
 2004-09-19 10:14  jasper
 
-	* xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po: Update nl
-	  translations
+	* nl.gmo, nl.po: Update nl translations
 
 2004-09-18 16:41  pollux
 
-	* xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po: update EU
-	  translations
+	* eu.gmo, eu.po: update EU translations
 
 2004-09-16 22:10  pollux
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/be.gmo, xfwm4/trunk/po/be.po: add BE translations
-	  from Ales Nyakhaychyk <nab@mail.by>
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, be.gmo, be.po:
+	  add BE translations from Ales Nyakhaychyk <nab@mail.by>
 
 2004-09-10 20:49  pollux
 
-	* xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po: HE translations
-	  update from Yuval Tanny <tanai@int.gov.il>
+	* he.gmo, he.po: HE translations update from Yuval Tanny
+	  <tanai@int.gov.il>
 
 2004-09-09 18:51  pollux
 
-	* xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po: update VI
-	  translations
+	* vi.gmo, vi.po: update VI translations
 
 2004-09-06 14:08  pollux
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/et.gmo,
-	  xfwm4/trunk/po/et.po: ET translations from Peeter Vois
-	  <Peeter.Vois@proekspert.ee>
+	  xfwm4/trunk/ltmain.sh, et.gmo, et.po: ET translations from Peeter
+	  Vois <Peeter.Vois@proekspert.ee>
 
 2004-09-06 05:52  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/xfwm4.spec.in: Fix spec file
+	* xfwm4.pot, xfwm4/trunk/xfwm4.spec.in: Fix spec file
 
 2004-09-05 20:57  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.h, xfwm4/trunk/po/xfwm4.pot,
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.h, xfwm4.pot,
 	  xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/themes/default/close-active.xpm,
 	  xfwm4/trunk/themes/default/close-inactive.xpm,
@@ -2087,53 +1804,49 @@
 
 2004-08-29 16:03  pollux
 
-	* xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po: AZ translations
-	  update from Metin Amiroff <metin@karegen.com>
+	* az.gmo, az.po: AZ translations update from Metin Amiroff
+	  <metin@karegen.com>
 
 2004-08-28 19:21  pollux
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/sk.gmo,
-	  xfwm4/trunk/po/sk.po: add Slovak translations from Juraj Brosz
-	  <Juraj.Brosz@pobox.sk>
+	  xfwm4/trunk/ltmain.sh, sk.gmo, sk.po: add Slovak translations from
+	  Juraj Brosz <Juraj.Brosz@pobox.sk>
 
 2004-08-27 21:18  olivier
 
-	* xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/frame.c: Add support for
-	  Urgency flag.
+	* nl.gmo, xfwm4.pot, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/frame.c: Add support for Urgency flag.
 
 2004-08-27 08:26  pollux
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: FI translations
-	  update from Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>
+	* fi.gmo, fi.po: FI translations update from Ilkka Ollakka
+	  <ilkka.j.ollakka@students.oamk.fi>
 
 2004-08-25 18:34  jasper
 
-	* xfwm4/trunk/po/nl.po: Update dutch translations, only po files for
-	  now
+	* nl.po: Update dutch translations, only po files for now
 
 2004-08-24 10:30  olivier
 
 	* xfwm4/branches/xfce_4_0/src/client.c, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/netwm.c: Revert removal of HIDDEN state
+	  xfwm4/trunk/configure.ac, xfwm4.pot, xfwm4/trunk/src/netwm.c:
+	  Revert removal of HIDDEN state
 
 2004-08-24 10:04  pollux
 
-	* xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po: RU translations
-	  update from Anthony Ivanoff <a-i@bk.ru>
+	* ru.gmo, ru.po: RU translations update from Anthony Ivanoff
+	  <a-i@bk.ru>
 
 2004-08-23 21:09  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot: Version 4.1.7
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot:
+	  Version 4.1.7
 
 2004-08-20 11:27  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/default/close-active.xpm,
+	* xfwm4.pot, xfwm4/trunk/themes/default/close-active.xpm,
 	  xfwm4/trunk/themes/default/close-inactive.xpm,
 	  xfwm4/trunk/themes/default/close-pressed.xpm,
 	  xfwm4/trunk/themes/default/hide-active.xpm,
@@ -2201,7 +1914,7 @@
 	  xfwm4/trunk/doc/C/images/misc_wm_prefs.png,
 	  xfwm4/trunk/doc/C/images/workspace_margins.png,
 	  xfwm4/trunk/doc/C/images/xfwm_workspaces.png,
-	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/ltmain.sh, xfwm4.pot,
 	  xfwm4/trunk/themes/default/close-active.xpm,
 	  xfwm4/trunk/themes/default/close-inactive.xpm,
 	  xfwm4/trunk/themes/default/close-pressed.xpm,
@@ -2262,79 +1975,32 @@
 
 2004-08-15 21:31  olivier
 
-	* xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Referencing a local working file in
+	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo,
+	  ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
+	  es_MX.po, eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po,
+	  fr.gmo, fr.po, he.gmo, he.po, hi.gmo, hi.po, hu.gmo, hu.po,
+	  it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po,
+	  pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po,
+	  tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, zh_TW.gmo, zh_TW.po: Referencing a local working file in
 	  potfiles...
 
 2004-08-15 19:39  olivier
 
 	* xfwm4/trunk/mcs-plugin/xfce-wm-settings.desktop,
 	  xfwm4/trunk/mcs-plugin/xfce-workspaces-settings.desktop,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/POTFILES.in,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/netwm.c,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, POTFILES.in, ar.gmo, ar.po,
+	  az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po,
+	  de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, eu.gmo, eu.po,
+	  fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po,
+	  hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
+	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo,
+	  sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
+	  xfwm4/trunk/src/netwm.c,
 	  xfwm4/trunk/themes/default/title-1-active.png,
 	  xfwm4/trunk/themes/default/title-1-inactive.png,
 	  xfwm4/trunk/themes/default/title-2-active.png,
@@ -2361,49 +2027,24 @@
 2004-08-14 19:47  pollux
 
 	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/doc/C/xfwm4.html,
-	  xfwm4/trunk/po/he.gmo, xfwm4/trunk/po/he.po: Hebrew translations
-	  from Yuval Tanny <tanai@int.gov.il>
+	  xfwm4/trunk/configure.ac, xfwm4/trunk/doc/C/xfwm4.html, he.gmo,
+	  he.po: Hebrew translations from Yuval Tanny <tanai@int.gov.il>
 
 2004-08-04 16:53  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Update translations
+	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
+	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Update translations
 
 2004-07-20 21:21  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/default/bottom-left-active.xpm,
+	* xfwm4.pot, xfwm4/trunk/themes/default/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/close-active.xpm,
 	  xfwm4/trunk/themes/default/close-inactive.xpm,
@@ -2465,8 +2106,7 @@
 
 2004-07-12 18:49  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/waza/bottom-active.xpm,
+	* xfwm4.pot, xfwm4/trunk/themes/waza/bottom-active.xpm,
 	  xfwm4/trunk/themes/waza/bottom-inactive.xpm,
 	  xfwm4/trunk/themes/waza/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/waza/bottom-left-inactive.xpm,
@@ -2485,145 +2125,78 @@
 2004-07-08 16:57  olivier
 
 	* xfwm4/trunk/defaults/Makefile.am,
-	  xfwm4/trunk/defaults/Makefile.in, xfwm4/trunk/po/xfwm4.pot: Add
-	  defaults file to package
+	  xfwm4/trunk/defaults/Makefile.in, xfwm4.pot: Add defaults file to
+	  package
 
 2004-07-07 19:18  olivier
 
 	* xfwm4/trunk/defaults/Makefile.am,
 	  xfwm4/trunk/defaults/Makefile.in, xfwm4/trunk/defaults/defaults,
-	  xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/po/xfwm4.pot: Remove
-	  useless generation of default file.
+	  xfwm4/trunk/defaults/defaults.in, xfwm4.pot: Remove useless
+	  generation of default file.
 
 2004-07-06 20:02  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/screen.c,
-	  xfwm4/trunk/src/screen.h, xfwm4/trunk/src/workspaces.c: Apply
-	  Vebjorn Ljosa's patch for workspace toggle, Don't cycle workspaces
-	  with using keyboard (I found this too confusing when used with
-	  Vebjorn's patch), Update po.
+	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
+	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po, xfwm4/trunk/src/screen.c, xfwm4/trunk/src/screen.h,
+	  xfwm4/trunk/src/workspaces.c: Apply Vebjorn Ljosa's patch for
+	  workspace toggle, Don't cycle workspaces with using keyboard (I
+	  found this too confusing when used with Vebjorn's patch), Update
+	  po.
 
 2004-07-02 06:22  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.h: Remove useless
-	  comment (with a typo!)
+	* xfwm4.pot, xfwm4/trunk/src/client.h: Remove useless comment (with
+	  a typo!)
 
 2004-06-30 21:48  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot: Potfile update
+	* xfwm4.pot: Potfile update
 
 2004-06-27 13:12  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/az.gmo,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/ca.gmo,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/de.gmo,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es_MX.gmo,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/fa_IR.gmo,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fr.gmo,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hu.gmo,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/ja.gmo,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/lt.gmo,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/nl.gmo,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pt_BR.gmo,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/ru.gmo,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/ta.gmo,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/uk.gmo,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_TW.gmo, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/display.c, xfwm4/trunk/src/display.h,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/stacking.c: Confine pointer to current root window
-	  for multiscreen
+	* ar.gmo, az.gmo, bg.gmo, ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo,
+	  eu.gmo, fa_IR.gmo, fi.gmo, fr.gmo, hi.gmo, hu.gmo, it.gmo, ja.gmo,
+	  ko.gmo, lt.gmo, ms.gmo, nl.gmo, pl.gmo, pt_BR.gmo, pt_PT.gmo,
+	  ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo, vi.gmo, zh_CN.gmo,
+	  zh_TW.gmo, xfwm4/trunk/src/client.c, xfwm4/trunk/src/display.c,
+	  xfwm4/trunk/src/display.h, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/stacking.c: Confine
+	  pointer to current root window for multiscreen
 
 2004-06-26 21:20  olivier
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/Makefile.am,
-	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/main.c: Sync
+	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po, eu.po,
+	  fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po,
+	  ms.po, nl.po, pl.po, pt_BR.po, pt_PT.po, ru.po, sv.po, ta.po,
+	  tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po,
+	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/src/main.c: Sync
 
 2004-06-25 11:20  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/focus.c,
-	  xfwm4/trunk/src/stacking.c: Try to improve stacking transition
-	  with fullscreen windows
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/stacking.c: Try to
+	  improve stacking transition with fullscreen windows
 
 2004-06-24 20:11  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/client.c,
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, ar.gmo, ar.po, az.gmo,
+	  az.po, bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, eu.gmo, eu.po, fa_IR.gmo,
+	  fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po, hu.gmo,
+	  hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po,
+	  pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po,
+	  tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, zh_TW.gmo, zh_TW.po, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/netwm.c,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h,
 	  xfwm4/trunk/themes/default.keys/keythemerc: Add a key shortcut to
@@ -2632,167 +2205,80 @@
 2004-06-22 10:50  olivier
 
 	* xfwm4/trunk/mcs-plugin/Makefile.am,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/placement.c: Add
+	  xfwm4/trunk/mcs-plugin/Makefile.in, ar.po, az.po, bg.po, ca.po,
+	  cs.po, de.po, es.po, es_MX.po, eu.po, fa_IR.po, fi.po, fr.po,
+	  hi.po, hu.po, it.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po,
+	  pt_BR.po, pt_PT.po, ru.po, sv.po, ta.po, tr.po, uk.po, vi.po,
+	  xfwm4.pot, zh_CN.po, zh_TW.po, xfwm4/trunk/src/placement.c: Add
 	  key-icon.h so that make dist actually works, Fix placement issue,
 	  Update po
 
 2004-06-20 10:12  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/tabwin.c: Plug the mem
-	  leak as reported by Eduard and fixed as per Brian's description.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/tabwin.c: Plug the mem leak as reported by Eduard
+	  and fixed as per Brian's description.
 
 2004-06-19 10:17  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Update po Update French localization
+	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
+	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Update po Update French localization
 
 2004-06-18 05:42  olivier
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po: Update-po
+	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po, eu.po,
+	  fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po,
+	  ms.po, nl.po, pl.po, pt_BR.po, pt_PT.po, ru.po, sv.po, ta.po,
+	  tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Update-po
 
 2004-06-18 05:38  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/settings.c: Remove an
-	  harmless false warning
+	* xfwm4.pot, xfwm4/trunk/src/settings.c: Remove an harmless false
+	  warning
 
 2004-06-17 17:25  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/display.c, xfwm4/trunk/src/display.h,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/focus.c,
-	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/misc.c,
-	  xfwm4/trunk/src/misc.h, xfwm4/trunk/src/placement.c,
-	  xfwm4/trunk/src/screen.c, xfwm4/trunk/src/stacking.c: Change
-	  internals, Plug another segfault.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/display.c,
+	  xfwm4/trunk/src/display.h, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/frame.c,
+	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/misc.h,
+	  xfwm4/trunk/src/placement.c, xfwm4/trunk/src/screen.c,
+	  xfwm4/trunk/src/stacking.c: Change internals, Plug another
+	  segfault.
 
 2004-06-15 22:57  olivier
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
-	  xfwm4/trunk/configure, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Fix packaging issues.
+	  xfwm4/trunk/configure, xfwm4/trunk/ltmain.sh, ar.gmo, ar.po,
+	  az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po,
+	  de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, eu.gmo, eu.po,
+	  fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po,
+	  hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
+	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo,
+	  sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Fix packaging
+	  issues.
 
 2004-06-15 22:09  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/Makefile.am,
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, POTFILES.in,
+	  ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
+	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo,
+	  ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po,
+	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po, xfwm4/trunk/src/Makefile.am,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/events.h, xfwm4/trunk/src/focus.c,
@@ -2818,83 +2304,58 @@
 
 2004-06-13 21:18  pollux
 
-	* xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po: Updated lt
-	  translations from Mantas Zapolskas
+	* lt.gmo, lt.po: Updated lt translations from Mantas Zapolskas
 
 2004-06-13 09:40  pollux
 
-	* xfwm4/trunk/po/zh_CN.gmo: .gmo files updated
+	* zh_CN.gmo: .gmo files updated
 
 2004-06-11 19:59  pollux
 
-	* xfwm4/trunk/po/zh_CN.po: Update zh_CN translations
+	* zh_CN.po: Update zh_CN translations
 
 2004-06-03 19:04  olivier
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
-	  xfwm4/trunk/configure, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/Makefile.am,
-	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/default_icon.png, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/icons.c, xfwm4/trunk/src/icons.h,
-	  xfwm4/trunk/src/inline-default-icon.h, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/tabwin.c,
-	  xfwm4/trunk/src/tabwin.h: Add icon and application class to the
-	  Alt+tab dialog (that's been asked quite a few times), Unplug a
-	  couple of small memory leaks.
+	  xfwm4/trunk/configure, xfwm4/trunk/ltmain.sh, POTFILES.in, ar.gmo,
+	  ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po,
+	  de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, eu.gmo, eu.po,
+	  fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po,
+	  hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo, ko.po,
+	  lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo,
+	  sv.po, ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po,
+	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/default_icon.png,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/icons.c,
+	  xfwm4/trunk/src/icons.h, xfwm4/trunk/src/inline-default-icon.h,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h: Add icon and
+	  application class to the Alt+tab dialog (that's been asked quite a
+	  few times), Unplug a couple of small memory leaks.
 
 2004-05-30 23:18  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/events.h, xfwm4/trunk/src/focus.c,
-	  xfwm4/trunk/src/focus.h, xfwm4/trunk/src/frame.c,
-	  xfwm4/trunk/src/frame.h, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/keyboard.c,
-	  xfwm4/trunk/src/keyboard.h, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/main.h, xfwm4/trunk/src/menu.c,
-	  xfwm4/trunk/src/menu.h, xfwm4/trunk/src/misc.c,
-	  xfwm4/trunk/src/misc.h, xfwm4/trunk/src/mypixmap.c,
-	  xfwm4/trunk/src/mypixmap.h, xfwm4/trunk/src/mywindow.c,
-	  xfwm4/trunk/src/mywindow.h, xfwm4/trunk/src/netwm.c,
-	  xfwm4/trunk/src/netwm.h, xfwm4/trunk/src/parserc.c,
-	  xfwm4/trunk/src/parserc.h, xfwm4/trunk/src/placement.c,
-	  xfwm4/trunk/src/placement.h, xfwm4/trunk/src/poswin.c,
-	  xfwm4/trunk/src/poswin.h, xfwm4/trunk/src/session.c,
-	  xfwm4/trunk/src/session.h, xfwm4/trunk/src/settings.c,
-	  xfwm4/trunk/src/settings.h, xfwm4/trunk/src/spinning_cursor.c,
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, xfwm4.pot,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/events.h,
+	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/focus.h,
+	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/frame.h,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
+	  xfwm4/trunk/src/keyboard.c, xfwm4/trunk/src/keyboard.h,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/main.h,
+	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h,
+	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/misc.h,
+	  xfwm4/trunk/src/mypixmap.c, xfwm4/trunk/src/mypixmap.h,
+	  xfwm4/trunk/src/mywindow.c, xfwm4/trunk/src/mywindow.h,
+	  xfwm4/trunk/src/netwm.c, xfwm4/trunk/src/netwm.h,
+	  xfwm4/trunk/src/parserc.c, xfwm4/trunk/src/parserc.h,
+	  xfwm4/trunk/src/placement.c, xfwm4/trunk/src/placement.h,
+	  xfwm4/trunk/src/poswin.c, xfwm4/trunk/src/poswin.h,
+	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/session.h,
+	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h,
+	  xfwm4/trunk/src/spinning_cursor.c,
 	  xfwm4/trunk/src/spinning_cursor.h, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h,
 	  xfwm4/trunk/src/startup_notification.c,
@@ -2909,23 +2370,23 @@
 
 2004-05-16 21:41  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/focus.c: Add trace
+	* xfwm4.pot, xfwm4/trunk/src/focus.c: Add trace
 
 2004-05-15 15:31  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/focus.h,
-	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/netwm.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/workspaces.c: Use
-	  timestamp to avoid race cond when switching focus too quickly.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/focus.c,
+	  xfwm4/trunk/src/focus.h, xfwm4/trunk/src/frame.c,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/netwm.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/workspaces.c: Use timestamp to avoid race cond
+	  when switching focus too quickly.
 
 2004-05-14 21:15  olivier
 
 	* xfwm4/trunk/mcs-plugin/margins.c, xfwm4/trunk/mcs-plugin/plugin.c,
 	  xfwm4/trunk/mcs-plugin/workspaces.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4.pot,
 	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/frame.c,
 	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/keyboard.c,
@@ -2947,7 +2408,7 @@
 	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
 	  xfwm4/trunk/doc/fr/Makefile.in,
 	  xfwm4/trunk/doc/fr/images/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4.pot,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/events.h, xfwm4/trunk/src/focus.c,
@@ -3084,56 +2545,32 @@
 
 2004-05-12 20:06  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/focus.c,
-	  xfwm4/trunk/src/main.c: Change revert to RevertToPointerRoot in
-	  XSetInputFocus()
+	* xfwm4.pot, xfwm4/trunk/src/focus.c, xfwm4/trunk/src/main.c: Change
+	  revert to RevertToPointerRoot in XSetInputFocus()
 
 2004-05-11 20:14  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
-	  xfwm4/trunk/src/placement.c, xfwm4/trunk/src/workspaces.c: Add
-	  support for standard NET_SHOWING_DESKTOP.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/placement.c,
+	  xfwm4/trunk/src/workspaces.c: Add support for standard
+	  NET_SHOWING_DESKTOP.
 
 2004-05-09 22:07  olivier
 
-	* xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Potfiles
+	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo,
+	  ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
+	  es_MX.po, eu.gmo, eu.po, fa_IR.gmo, fa_IR.po, fi.gmo, fi.po,
+	  fr.gmo, fr.po, hi.gmo, hi.po, hu.gmo, hu.po, it.gmo, it.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo,
+	  pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo,
+	  tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, zh_TW.gmo, zh_TW.po: Potfiles
 
 2004-05-09 21:59  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.am,
+	* xfwm4.pot, xfwm4/trunk/src/Makefile.am,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/focus.h,
@@ -3149,8 +2586,8 @@
 
 2004-05-03 21:45  olivier
 
-	* xfwm4/trunk/po/zh_TW.gmo, xfwm4/trunk/po/zh_TW.po: Update zh_TW
-	  translations from umm <umm@pchome.com.tw>
+	* zh_TW.gmo, zh_TW.po: Update zh_TW translations from umm
+	  <umm@pchome.com.tw>
 
 2004-05-03 19:55  olivier
 
@@ -3163,8 +2600,8 @@
 	  xfwm4/trunk/doc/fr/images/Makefile.in, xfwm4/trunk/install-sh,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/mcs-plugin/Makefile.am,
 	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/mkinstalldirs,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4.pot, xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/default-4.0/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
 	  xfwm4/trunk/themes/default/Makefile.in,
@@ -3180,7 +2617,7 @@
 	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
 	  xfwm4/trunk/doc/fr/Makefile.in,
 	  xfwm4/trunk/doc/fr/images/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4.pot,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/default-4.0/Makefile.am,
 	  xfwm4/trunk/themes/default-4.0/Makefile.in,
@@ -3195,27 +2632,25 @@
 
 2004-04-22 20:49  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.h: Forgot to
-	  commit a file
+	* xfwm4.pot, xfwm4/trunk/src/client.h: Forgot to commit a file
 
 2004-04-22 20:34  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h: Add a technique (from Metacity) to limit
-	  the number of resize operations per second to prevent the app from
-	  lagging when using opaque resize.
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: Add
+	  a technique (from Metacity) to limit the number of resize
+	  operations per second to prevent the app from lagging when using
+	  opaque resize.
 
 2004-04-22 19:27  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/poswin.c: Show only the size of windows, not
-	  position, only during resize, only for windows that have a size
-	  increment set (where the actual size matters, like terminals or
-	  editors)
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/poswin.c:
+	  Show only the size of windows, not position, only during resize,
+	  only for windows that have a size increment set (where the actual
+	  size matters, like terminals or editors)
 
 2004-04-20 22:25  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.am,
+	* xfwm4.pot, xfwm4/trunk/src/Makefile.am,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/poswin.c, xfwm4/trunk/src/poswin.h: Add window
 	  size/position during resize (based on a patch submitted by Joshua
@@ -3223,7 +2658,7 @@
 
 2004-04-16 16:57  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
+	* xfwm4.pot, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/themes/default/Makefile.am,
 	  xfwm4/trunk/themes/default/Makefile.in: Don't honor stack request
 	  when sibling is specified as we don't honor it, Add inactive png
@@ -3231,21 +2666,18 @@
 
 2004-04-14 06:16  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: zh_TW po update by Ambrose Li
+	* xfwm4.pot, zh_TW.gmo, zh_TW.po: zh_TW po update by Ambrose Li
 	  <a.c.li@ieee.org>
 
 2004-04-13 19:18  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/workspaces.c: Fix
-	  #0000171
+	* xfwm4.pot, xfwm4/trunk/src/workspaces.c: Fix #0000171
 
 2004-04-12 20:07  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
-	  xfwm4/trunk/src/workspaces.c,
+	* xfwm4.pot, xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/workspaces.c,
 	  xfwm4/trunk/themes/default/Makefile.am,
 	  xfwm4/trunk/themes/default/Makefile.in,
 	  xfwm4/trunk/themes/default/bottom-left-active.xpm,
@@ -3338,13 +2770,12 @@
 
 2004-04-12 13:47  dannym
 
-	* xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Updated catalan
-	  translations by Carles Mu&#65533;&#65533;oz Gorriz
+	* ca.gmo, ca.po: Updated catalan translations by Carles Mu&#65533;&#65533;oz
+	  Gorriz
 
 2004-04-06 19:12  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/default-4.0/Makefile.am,
+	* xfwm4.pot, xfwm4/trunk/themes/default-4.0/Makefile.am,
 	  xfwm4/trunk/themes/default-4.0/Makefile.in,
 	  xfwm4/trunk/themes/default/Makefile.am,
 	  xfwm4/trunk/themes/default/Makefile.in,
@@ -3419,45 +2850,22 @@
 2004-03-15 07:36  olivier
 
 	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/bg.gmo, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/it.gmo, xfwm4/trunk/po/it.po: Add/update i18n for:
-	  Bulgarian from Miroslav Yordanov <miordanov@i-space.org> and Peter
-	  Slavov <peshka@i-space.org> Italian from Alex Dupre
-	  <ale@FreeBSD.org> Arabic from Saleh Hathal <hathalsal@hotmail.com>
+	  xfwm4/trunk/configure.ac, ar.gmo, ar.po, bg.gmo, bg.po, it.gmo,
+	  it.po: Add/update i18n for: Bulgarian from Miroslav Yordanov
+	  <miordanov@i-space.org> and Peter Slavov <peshka@i-space.org>
+	  Italian from Alex Dupre <ale@FreeBSD.org> Arabic from Saleh Hathal
+	  <hathalsal@hotmail.com>
 
 2004-03-07 14:02  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/events.c,
+	* ar.gmo, ar.po, az.gmo, az.po, ca.gmo, ca.po, cs.gmo, cs.po,
+	  de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, eu.gmo, eu.po,
+	  fa_IR.gmo, fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, hi.gmo, hi.po,
+	  hu.gmo, hu.po, ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, pt_BR.gmo, pt_BR.po,
+	  pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po, ta.gmo, ta.po,
+	  tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, zh_TW.gmo, zh_TW.po, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
 	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/menu.c,
 	  xfwm4/trunk/src/menu.h, xfwm4/trunk/src/settings.c,
@@ -3467,19 +2875,16 @@
 
 2004-02-17 19:36  jasper
 
-	* xfwm4/trunk/configure.ac, xfwm4/trunk/po/ms.gmo,
-	  xfwm4/trunk/po/ms.po: Update Malay translations
+	* xfwm4/trunk/configure.ac, ms.gmo, ms.po: Update Malay translations
 
 2004-02-11 20:44  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/po/eu.gmo, xfwm4/trunk/po/eu.po: Add Basque (eu)
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/ltmain.sh, eu.gmo, eu.po: Add
+	  Basque (eu) translations
 
 2004-01-29 15:51  jasper
 
-	* xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po: Update Persian
-	  translations
+	* fa_IR.gmo, fa_IR.po: Update Persian translations
 
 2004-01-25 00:08  olivier
 
@@ -3492,9 +2897,9 @@
 	  xfwm4/trunk/doc/fr/Makefile.in,
 	  xfwm4/trunk/doc/fr/images/Makefile.in, xfwm4/trunk/install-sh,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/mcs-plugin/Makefile.in,
-	  xfwm4/trunk/missing, xfwm4/trunk/mkinstalldirs,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/missing, xfwm4/trunk/mkinstalldirs, xfwm4.pot,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
 	  xfwm4/trunk/themes/default-4.0/Makefile.in,
@@ -3516,20 +2921,14 @@
 
 2004-01-21 13:44  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/pt_BR.gmo, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Translations
-	  added/updated for spanish, persian, japanese, korean, brasilian
-	  and chinese
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, es.gmo, es.po,
+	  fa_IR.gmo, fa_IR.po, ja.gmo, ja.po, ko.gmo, ko.po, pt_BR.gmo,
+	  pt_BR.po, zh_CN.gmo, zh_CN.po: Translations added/updated for
+	  spanish, persian, japanese, korean, brasilian and chinese
 
 2004-01-13 20:11  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/default-4.0/close-active.xpm,
+	* xfwm4.pot, xfwm4/trunk/themes/default-4.0/close-active.xpm,
 	  xfwm4/trunk/themes/default-4.0/close-inactive.xpm,
 	  xfwm4/trunk/themes/default-4.0/close-pressed.xpm,
 	  xfwm4/trunk/themes/default-4.0/hide-active.xpm,
@@ -3587,9 +2986,9 @@
 
 2004-01-10 23:33  olivier
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/themes/Makefile.am,
-	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/default/README,
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, de.gmo,
+	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/default/README,
 	  xfwm4/trunk/themes/default/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/bottom-right-active.xpm,
@@ -3697,12 +3096,11 @@
 
 2004-01-07 23:14  moe
 
-	* xfwm4/trunk/po/de.po: Can't stop me now!
+	* de.po: Can't stop me now!
 
 2004-01-06 18:50  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/themes/default-4.0/close-active.xpm,
+	* xfwm4.pot, xfwm4/trunk/themes/default-4.0/close-active.xpm,
 	  xfwm4/trunk/themes/default-4.0/close-inactive.xpm,
 	  xfwm4/trunk/themes/default-4.0/close-pressed.xpm,
 	  xfwm4/trunk/themes/default-4.0/hide-active.xpm,
@@ -3748,48 +3146,28 @@
 
 2004-01-03 21:21  olivier
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/menu.c,
-	  xfwm4/trunk/src/menu.h: Integrate Bernhard Walle
-	  <bernhard@bwalle.de> patch to add support for KDE contect help.
+	* ar.gmo, ar.po, az.gmo, az.po, ca.gmo, ca.po, cs.gmo, cs.po,
+	  de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po,
+	  fr.gmo, fr.po, hi.gmo, hi.po, hu.gmo, hu.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h: Integrate Bernhard
+	  Walle <bernhard@bwalle.de> patch to add support for KDE contect
+	  help.
 
 2004-01-03 20:23  olivier
 
-	* xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po: Update Polish
-	  translation from Daniel Mr&#65533;&#65533;z <beorn@alpha.pl>
+	* pl.gmo, pl.po: Update Polish translation from Daniel Mr&#65533;&#65533;z
+	  <beorn@alpha.pl>
 
 2003-12-29 10:56  jasper
 
-	* xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Update Norwegian and
-	  Turkish translations
+	* tr.gmo, tr.po: Update Norwegian and Turkish translations
 
 2003-12-28 21:17  olivier
 
@@ -3801,7 +3179,7 @@
 	  xfwm4/trunk/doc/fr/Makefile.in,
 	  xfwm4/trunk/doc/fr/images/Makefile.in, xfwm4/trunk/install-sh,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/mcs-plugin/Makefile.in,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.in,
+	  xfwm4.pot, xfwm4/trunk/src/Makefile.in,
 	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
@@ -3822,53 +3200,31 @@
 
 2003-12-27 19:46  jasper
 
-	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/pl.gmo,
-	  xfwm4/trunk/po/pl.po: Update Polish translations
+	* de.gmo, pl.gmo, pl.po: Update Polish translations
 
 2003-12-23 22:04  moe
 
-	* xfwm4/trunk/po/de.po: Rather large update. Forgot about the moved
+	* de.po: Rather large update. Forgot about the moved
 	  margin/workspaces plugin.
 
 2003-12-21 21:53  olivier
 
-	* xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.gmo, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Update po
+	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, ca.gmo, ca.po, cs.gmo,
+	  cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo,
+	  fi.po, fr.gmo, fr.po, hi.gmo, hi.po, hu.gmo, hu.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, sv.gmo, sv.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Update po
 
 2003-12-15 20:56  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/az.gmo, xfwm4/trunk/po/az.po: Add Azerbaijani
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, az.gmo, az.po:
+	  Add Azerbaijani translations
 
 2003-11-24 22:22  olivier
 
-	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/themes/Makefile.am,
+	* de.gmo, xfwm4/trunk/themes/Makefile.am,
 	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/prune,
 	  xfwm4/trunk/themes/prune/Makefile.am,
 	  xfwm4/trunk/themes/prune/Makefile.in,
@@ -3985,366 +3341,239 @@
 
 2003-11-23 13:57  moe
 
-	* xfwm4/trunk/po/de.po: Rather huge update to the german translation
+	* de.po: Rather huge update to the german translation
 
 2003-11-16 21:49  olivier
 
-	* xfwm4/trunk/po/de.gmo: Fix 64bit/endianess problem
+	* de.gmo: Fix 64bit/endianess problem
 
 2003-11-14 17:35  moe
 
-	* xfwm4/trunk/po/de.po: Updating translation
+	* de.po: Updating translation
 
 2003-11-09 19:22  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/cs.gmo, xfwm4/trunk/po/cs.po: Add Check
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, cs.gmo, cs.po:
+	  Add Check translations
 
 2003-11-03 18:06  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/uk.gmo, xfwm4/trunk/po/uk.po: Add Ukranian
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, uk.gmo, uk.po:
+	  Add Ukranian translations
 
 2003-11-02 08:22  olivier
 
 	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/hi.gmo,
-	  xfwm4/trunk/po/hi.po: Add hi.po
+	  xfwm4/trunk/configure.ac, hi.gmo, hi.po: Add hi.po
 
 2003-10-24 22:20  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/vi.gmo, xfwm4/trunk/po/vi.po: Add vietnamese
-	  translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, vi.gmo, vi.po:
+	  Add vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
 
 2003-10-17 15:37  jasper
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/sv.gmo, xfwm4/trunk/po/sv.po: Add/update swedish
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, sv.gmo, sv.po:
+	  Add/update swedish translations
 
 2003-09-27 12:38  huysmans
 
-	* xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po: Update tamil
-	  translation
+	* ta.gmo, ta.po: Update tamil translation
 
 2003-09-22 20:33  huysmans
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Update version numbers and po files for
+	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nl.gmo, nl.po, pl.gmo, pl.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  zh_TW.gmo, zh_TW.po: Update version numbers and po files for
 	  release
 
 2003-09-15 20:55  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/pt_PT.gmo, xfwm4/trunk/po/pt_PT.po: Big portugese
-	  translation update
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, pt_PT.gmo,
+	  pt_PT.po: Big portugese translation update
 
 2003-09-10 07:39  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Update version numbers and po files for
-	  release
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ar.gmo, ar.po,
+	  ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo, ja.po,
+	  ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Update
+	  version numbers and po files for release
 
 2003-09-08 06:25  huysmans
 
-	* xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po: Update russian
-	  translations
+	* ru.gmo, ru.po: Update russian translations
 
 2003-09-02 06:48  huysmans
 
-	* xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po: Update malaysian
-	  translations
+	* ms.gmo, ms.po: Update malaysian translations
 
 2003-08-30 12:49  huysmans
 
 	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/zh_TW.Big5.gmo,
-	  xfwm4/trunk/po/zh_TW.Big5.po, xfwm4/trunk/po/zh_TW.gmo,
-	  xfwm4/trunk/po/zh_TW.po: Rename zh_TW.Big5 -> zh_TW
+	  xfwm4/trunk/configure.ac, zh_TW.Big5.gmo, zh_TW.Big5.po,
+	  zh_TW.gmo, zh_TW.po: Rename zh_TW.Big5 -> zh_TW
 
 2003-08-30 08:58  huysmans
 
-	* xfwm4/trunk/po/zh_TW.Big5.gmo, xfwm4/trunk/po/zh_TW.Big5.po: Add
-	  traditional chinese translations
+	* zh_TW.Big5.gmo, zh_TW.Big5.po: Add traditional chinese
+	  translations
 
 2003-08-26 07:12  huysmans
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Update version numbers and po files for
-	  release
+	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po,
+	  ja.gmo, ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po,
+	  nl.gmo, nl.po, pl.gmo, pl.po, ru.gmo, ru.po, ta.gmo, ta.po,
+	  tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Update version
+	  numbers and po files for release
 
 2003-08-17 11:36  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/lt.gmo, xfwm4/trunk/po/lt.po: Add lithuanian
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, lt.gmo, lt.po:
+	  Add lithuanian translations
 
 2003-08-14 00:09  xfce
 
-	* xfwm4/trunk/po/xfwm4.pot: Update
+	* xfwm4.pot: Update
 
 2003-08-10 19:54  huysmans
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update chinese
-	  translations
+	* zh_CN.gmo, zh_CN.po: Update chinese translations
 
 2003-08-07 22:09  huysmans
 
-	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Update catalan
-	  translations
+	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure, ca.gmo, ca.po:
+	  Update catalan translations
 
 2003-08-04 18:17  xfce
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ko.gmo, xfwm4/trunk/po/ko.po,
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ko.gmo, ko.po,
 	  xfwm4/trunk/themes/bbs/themerc: Add Korean translation from
 	  ByungHyun Choi <byunghyunchoi@hotmail.com>
 
 2003-07-30 08:05  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Update version numbers and po files for
-	  release
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ar.gmo, ar.po,
+	  ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo, ja.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, ru.gmo, ru.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po:
+	  Update version numbers and po files for release
 
 2003-07-29 06:28  huysmans
 
-	* xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po: Update russian
-	  translations
+	* ru.gmo, ru.po: Update russian translations
 
 2003-07-24 22:50  xfce
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/hints.c: Change the
-	  getMotifHints() -It's the last thing that changed in xfwm4 before
-	  rc2- (New impl should be bullet proof :)
+	* xfwm4.pot, xfwm4/trunk/src/hints.c: Change the getMotifHints()
+	  -It's the last thing that changed in xfwm4 before rc2- (New impl
+	  should be bullet proof :)
 
 2003-07-24 06:27  huysmans
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
-	  translations
+	* fi.gmo, fi.po: Update finnish translations
 
 2003-07-19 08:59  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Update version numbers and po files for
-	  release
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ar.gmo, ar.po,
+	  ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo, ja.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, ru.gmo, ru.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po:
+	  Update version numbers and po files for release
 
 2003-07-18 10:57  huysmans
 
-	* xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po: Update hungarian
-	  translations
+	* hu.gmo, hu.po: Update hungarian translations
 
 2003-07-18 07:46  huysmans
 
-	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Update turkish
-	  translations
+	* de.gmo, de.po, tr.gmo, tr.po: Update turkish translations
 
 2003-07-16 09:57  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hu.gmo, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Add hungarian translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ar.gmo, ar.po,
+	  ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo, ja.po,
+	  ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po, ru.gmo, ru.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Add
+	  hungarian translations
 
 2003-07-16 08:22  huysmans
 
-	* xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Update catalan
-	  translations
+	* ca.gmo, ca.po: Update catalan translations
 
 2003-07-11 06:55  huysmans
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update Chinese
-	  translations
+	* zh_CN.gmo, zh_CN.po: Update Chinese translations
 
 2003-07-10 09:24  huysmans
 
 	* xfwm4/trunk/ChangeLog, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.gmo, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Bump version
-	  numbers for release and update po files
+	  xfwm4/trunk/configure.ac, ar.gmo, ar.po, ca.gmo, ca.po, de.gmo,
+	  de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo,
+	  fr.po, ja.gmo, ja.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo, tr.po, zh_CN.gmo, zh_CN.po:
+	  Bump version numbers for release and update po files
 
 2003-07-09 18:15  xfce
 
-	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/xfwm4.pot: Update de.po from Moe.
+	* de.gmo, de.po, xfwm4.pot: Update de.po from Moe.
 
 2003-07-08 20:53  xfce
 
-	* xfwm4/trunk/po/Makefile.in.in: Don't perform an update-po on make
-	  dist as it causes far too much trouble
+	* Makefile.in.in: Don't perform an update-po on make dist as it
+	  causes far too much trouble
 
 2003-07-07 21:18  huysmans
 
-	* xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po: Update catalan
-	  translations
+	* ca.gmo, ca.po: Update catalan translations
 
 2003-07-04 23:37  xfce
 
-	* xfwm4/trunk/Makefile.in, xfwm4/trunk/ltcf-c.sh,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es_MX.gmo: libttol update
-	  and all
+	* xfwm4/trunk/Makefile.in, xfwm4/trunk/ltcf-c.sh, es.gmo, es_MX.gmo:
+	  libttol update and all
 
 2003-07-03 18:16  edscott
 
-	* xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po: spanish tranlation
-	  updates for 4.0 release.
+	* es.po, es_MX.po: spanish tranlation updates for 4.0 release.
 
 2003-06-24 06:36  xfce
 
-	* xfwm4/trunk/po/xfwm4.pot: Sync
+	* xfwm4.pot: Sync
 
 2003-06-21 20:41  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ca.gmo,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/es.gmo,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/fi.gmo,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/ja.gmo,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/nl.gmo,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/ru.gmo,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/tr.gmo,
-	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/src/client.c: Chnage
-	  clientPassFocus() to not fallback on tp most window if nothing
-	  else has been found in click to focus mode.
+	* ar.gmo, ca.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo, fr.gmo, ja.gmo,
+	  ms.gmo, nl.gmo, pl.gmo, ru.gmo, ta.gmo, tr.gmo, zh_CN.gmo,
+	  xfwm4/trunk/src/client.c: Chnage clientPassFocus() to not fallback
+	  on tp most window if nothing else has been found in click to focus
+	  mode.
 
 2003-06-21 12:15  xfce
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po: Update po
+	* ar.po, ca.po, de.po, es.po, es_MX.po, fi.po, fr.po, ja.po, ms.po,
+	  nl.po, pl.po, ru.po, ta.po, tr.po, xfwm4.pot, zh_CN.po: Update po
 
 2003-06-19 17:36  xfce
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c: Test for
-	  initial (x,y) values to work arround a gtk bug that doesn't set
-	  PPosition flag sometimes (to center windows, for example)
+	* xfwm4.pot, xfwm4/trunk/src/client.c: Test for initial (x,y) values
+	  to work arround a gtk bug that doesn't set PPosition flag
+	  sometimes (to center windows, for example)
 
 2003-06-15 22:32  xfce
 
 	* xfwm4/trunk/aclocal.m4, xfwm4/trunk/configure,
 	  xfwm4/trunk/configure.ac, xfwm4/trunk/ltcf-c.sh,
-	  xfwm4/trunk/ltconfig, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/po/xfwm4.pot: Switch to version 3.91.0
+	  xfwm4/trunk/ltconfig, xfwm4/trunk/ltmain.sh, xfwm4.pot: Switch to
+	  version 3.91.0
 
 2003-06-08 14:29  huysmans
 
@@ -4353,9 +3582,8 @@
 	  xfwm4/trunk/configure.ac, xfwm4/trunk/defaults/Makefile.in,
 	  xfwm4/trunk/doc/C/Makefile.in,
 	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ru.gmo,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, ru.gmo, ru.po,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
@@ -4376,7 +3604,7 @@
 	  xfwm4/trunk/configure.ac, xfwm4/trunk/defaults/Makefile.in,
 	  xfwm4/trunk/doc/C/Makefile.in,
 	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4.pot,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
@@ -4392,43 +3620,30 @@
 
 2003-06-05 07:28  huysmans
 
-	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Updated translations
-	  and multiple file drop on backdrop list manager
+	* de.gmo, de.po, tr.gmo, tr.po: Updated translations and multiple
+	  file drop on backdrop list manager
 
 2003-06-01 17:25  huysmans
 
-	* xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: po file tweaks
+	* Makefile.in.in, ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  ja.gmo, ja.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: po
+	  file tweaks
 
 2003-05-30 20:36  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ms.gmo, xfwm4/trunk/po/ms.po: Add malayan
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ms.gmo, ms.po:
+	  Add malayan translations
 
 2003-05-29 09:59  huysmans
 
-	* xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po: Translations update
+	* nl.gmo, nl.po: Translations update
 
 2003-05-27 21:35  xfce
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
-	  translation by Ilkka Ollakka (ilkka dot j dot ollakka at students
-	  dot oamk dot fi)
+	* fi.gmo, fi.po: Update Finnish translation by Ilkka Ollakka (ilkka
+	  dot j dot ollakka at students dot oamk dot fi)
 
 2003-05-27 21:30  xfce
 
@@ -4440,8 +3655,8 @@
 	  xfwm4/trunk/doc/C/images/Makefile.in, xfwm4/trunk/doc/Makefile.in,
 	  xfwm4/trunk/install-sh, xfwm4/trunk/mcs-plugin/Makefile.in,
 	  xfwm4/trunk/mcs-plugin/monitor-icon.h, xfwm4/trunk/mkinstalldirs,
-	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
+	  ja.gmo, ja.po, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
@@ -4457,45 +3672,28 @@
 
 2003-05-24 19:17  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Merging po
+	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po: Merging po
 
 2003-05-22 22:31  xfce
 
 	* xfwm4/trunk/defaults/defaults.in,
 	  xfwm4/trunk/mcs-plugin/margins_plugin.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.gmo, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/.indent.pro,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/keyboard.c, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h,
-	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/mypixmap.c,
-	  xfwm4/trunk/src/mywindow.c, xfwm4/trunk/src/parserc.c,
-	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/settings.c,
-	  xfwm4/trunk/src/settings.h, xfwm4/trunk/src/spinning_cursor.c,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, ar.gmo, ar.po, ca.gmo,
+	  ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo,
+	  fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo, pl.po, ta.gmo, ta.po,
+	  tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  xfwm4/trunk/src/.indent.pro, xfwm4/trunk/src/client.c,
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/frame.c,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/keyboard.c,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/menu.c,
+	  xfwm4/trunk/src/menu.h, xfwm4/trunk/src/misc.c,
+	  xfwm4/trunk/src/mypixmap.c, xfwm4/trunk/src/mywindow.c,
+	  xfwm4/trunk/src/parserc.c, xfwm4/trunk/src/session.c,
+	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h,
+	  xfwm4/trunk/src/spinning_cursor.c,
 	  xfwm4/trunk/src/startup_notification.c, xfwm4/trunk/src/tabwin.c,
 	  xfwm4/trunk/src/workspaces.c: Disconnect wrap workspaces and wrap
 	  windows options Reorganize mcs-plugin a bit Rerun indent and fix
@@ -4505,19 +3703,16 @@
 2003-05-21 21:43  huysmans
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.ac, xfwm4/trunk/po/tr.gmo,
-	  xfwm4/trunk/po/tr.po: Add Turkish translations
+	  xfwm4/trunk/configure.ac, tr.gmo, tr.po: Add Turkish translations
 
 2003-05-16 18:24  huysmans
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
-	  xfwm4/trunk/po/ta.gmo, xfwm4/trunk/po/ta.po: Add tamil
-	  translations
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac, ta.gmo, ta.po:
+	  Add tamil translations
 
 2003-05-14 14:06  huysmans
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
-	  translations
+	* fi.gmo, fi.po: Update finnish translations
 
 2003-05-13 17:59  huysmans
 
@@ -4532,9 +3727,8 @@
 	  xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml,
 	  xfwm4/trunk/doc/Makefile.am, xfwm4/trunk/doc/Makefile.in,
 	  xfwm4/trunk/doc/xfce-nochunk.xsl,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ca.gmo,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, ca.gmo, ca.po,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
@@ -4551,21 +3745,14 @@
 2003-05-11 22:27  xfce
 
 	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Add wrap
-	  workspace even when not moving windows, add edge resistance,
-	  update mcs plugin, and huge code cleaup in mcs plugin. Update
-	  french i18n
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, ar.gmo, ar.po, de.gmo,
+	  de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo,
+	  fr.po, nl.gmo, nl.po, pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/settings.h: Add wrap workspace even when not
+	  moving windows, add edge resistance, update mcs plugin, and huge
+	  code cleaup in mcs plugin. Update french i18n
 
 2003-05-04 18:21  huysmans
 
@@ -4575,17 +3762,10 @@
 	  xfwm4/trunk/defaults/Makefile.am,
 	  xfwm4/trunk/defaults/Makefile.in, xfwm4/trunk/ltcf-c.sh,
 	  xfwm4/trunk/ltconfig, xfwm4/trunk/ltmain.sh,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/Makefile.in, ar.gmo, ar.po, de.gmo, de.po,
+	  es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po,
+	  nl.gmo, nl.po, pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/adept/Makefile.in,
 	  xfwm4/trunk/themes/agua/Makefile.in,
 	  xfwm4/trunk/themes/atlanta/Makefile.in,
@@ -4653,53 +3833,44 @@
 
 2003-05-03 09:46  huysmans
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update chinese
-	  translations
+	* zh_CN.gmo, zh_CN.po: Update chinese translations
 
 2003-04-29 21:05  xfce
 
-	* xfwm4/trunk/po/pl.gmo, xfwm4/trunk/src/client.c: Fix an issue with
-	  transients not being placed on the ssame layer as their ancestor
-	  (this was a regression introduced recently, with the
-	  implementation of transients for group)
+	* pl.gmo, xfwm4/trunk/src/client.c: Fix an issue with transients not
+	  being placed on the ssame layer as their ancestor (this was a
+	  regression introduced recently, with the implementation of
+	  transients for group)
 
 2003-04-27 20:10  bmeurer
 
-	* xfwm4/trunk/po/pl.po: Updated polish translations.
+	* pl.po: Updated polish translations.
 
 2003-04-25 17:47  huysmans
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
-	  translations
+	* fi.gmo, fi.po: Update finnish translations
 
 2003-03-31 21:44  xfce
 
-	* xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Fix pixmap.c -> mypixmap.c in POTFILES.in
+	* POTFILES.in, ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po,
+	  pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Fix pixmap.c ->
+	  mypixmap.c in POTFILES.in
 
 2003-03-29 15:19  huysmans
 
-	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po: Update german
-	  translations
+	* de.gmo, de.po: Update german translations
 
 2003-03-23 12:52  xfce
 
 	* xfwm4/trunk/ChangeLog, xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
-	  translation from Ilkka Ollakka (ilkka.j.ollakka@students.oamk.fi)
+	  fi.gmo, fi.po: Update Finnish translation from Ilkka Ollakka
+	  (ilkka.j.ollakka@students.oamk.fi)
 
 2003-03-17 20:29  xfce
 
-	* xfwm4/trunk/po/es.gmo, xfwm4/trunk/src/client.c: Update default
-	  (microdeck) theme and improve toggle buttons management
+	* es.gmo, xfwm4/trunk/src/client.c: Update default (microdeck) theme
+	  and improve toggle buttons management
 
 2003-03-17 18:44  bmeurer
 
@@ -4715,11 +3886,11 @@
 	  xfwm4/trunk/mcs-plugin/Makefile.am,
 	  xfwm4/trunk/mcs-plugin/Makefile.in,
 	  xfwm4/trunk/mcs-plugin/margins_plugin.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/src/Makefile.am,
-	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/client.h, xfwm4/trunk/src/hints.c,
-	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/startup_notification.c,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, Makefile.in.in,
+	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
+	  xfwm4/trunk/src/startup_notification.c,
 	  xfwm4/trunk/src/startup_notification.h,
 	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/adept/Makefile.in,
@@ -4786,147 +3957,95 @@
 
 2003-03-16 13:43  xfce
 
-	* xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po: Add nestu's Spanish
-	  translation
+	* es.gmo, es.po: Add nestu's Spanish translation
 
 2003-03-10 23:08  xfce
 
 	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Rearranged
-	  the code a bit, made a separate inline function for snapping Added
-	  a separate option for snapping between windows. XFwm4 mcs plugin
-	  is updated too so the gui reflect these changes.
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, ar.gmo, ar.po, de.gmo,
+	  de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo,
+	  fr.po, nl.gmo, nl.po, pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, xfwm4/trunk/src/client.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/settings.h: Rearranged the code a bit, made a
+	  separate inline function for snapping Added a separate option for
+	  snapping between windows. XFwm4 mcs plugin is updated too so the
+	  gui reflect these changes.
 
 2003-02-27 21:51  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Updates (I'm sure you wouldn't have
-	  guessed)
+	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po: Updates (I'm sure you wouldn't
+	  have guessed)
 
 2003-02-25 21:44  xfce
 
 	* xfwm4/trunk/mcs-plugin/margins_plugin.c,
 	  xfwm4/trunk/mcs-plugin/monitor-icon.h,
 	  xfwm4/trunk/mcs-plugin/monitor-icon.png,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/settings.c: Fix margins from mcs not being taken
-	  in account at startup Change margin plugin GUI Update xtions.
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, ar.gmo, ar.po, de.gmo,
+	  de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo,
+	  fr.po, nl.gmo, nl.po, pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo,
+	  zh_CN.po, xfwm4/trunk/src/client.c, xfwm4/trunk/src/settings.c:
+	  Fix margins from mcs not being taken in account at startup Change
+	  margin plugin GUI Update xtions.
 
 2003-02-25 07:20  xfce
 
-	* xfwm4/trunk/mcs-plugin/margins_plugin.c,
-	  xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/ar.gmo,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/client.c,
+	* xfwm4/trunk/mcs-plugin/margins_plugin.c, POTFILES.in, ar.gmo,
+	  ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo,
+	  fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo, pl.po, xfwm4.pot,
+	  zh_CN.gmo, zh_CN.po, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/settings.c: Tweaking
 
 2003-02-23 21:59  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/events.c: Revert the
-	  message about unidentified client message, turn it into a debug
-	  message
+	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, xfwm4/trunk/src/events.c: Revert
+	  the message about unidentified client message, turn it into a
+	  debug message
 
 2003-02-23 17:13  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/src/events.c: Add a message
-	  when an unidentified client message is received by the WM
+	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po, xfwm4/trunk/src/events.c: Add a
+	  message when an unidentified client message is received by the WM
 
 2003-02-01 09:44  huysmans
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update finnish
-	  translations
+	* fi.gmo, fi.po: Update finnish translations
 
 2003-01-31 21:15  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.gmo, xfwm4/trunk/po/es_MX.po,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/nl.gmo, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.gmo, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.gmo,
-	  xfwm4/trunk/po/zh_CN.po: Switch to GNU gettext 0.11.5
+	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo, es_MX.po,
+	  fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo, pl.po,
+	  xfwm4.pot, zh_CN.gmo, zh_CN.po: Switch to GNU gettext 0.11.5
 
 2003-01-31 20:34  xfce
 
-	* xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po: Update Arabic
-	  translation by Nabil Ben Khalifa <nabil_benkhalifa@yahoo.fr>
+	* ar.gmo, ar.po: Update Arabic translation by Nabil Ben Khalifa
+	  <nabil_benkhalifa@yahoo.fr>
 
 2003-01-28 13:40  huysmans
 
-	* xfwm4/trunk/configure.in, xfwm4/trunk/po/pl.gmo,
-	  xfwm4/trunk/po/pl.po: Add polish translations by Pablo
+	* xfwm4/trunk/configure.in, pl.gmo, pl.po: Add polish translations
+	  by Pablo
 
 2003-01-28 10:47  xfce
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/po/ar.gmo, xfwm4/trunk/po/ar.po: Add arabic
-	  translation from Nabil. Thanks a lot, Nabil :)
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in, ar.gmo, ar.po:
+	  Add arabic translation from Nabil. Thanks a lot, Nabil :)
 
 2003-01-26 11:06  xfce
 
-	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
-	  translation
+	* fi.gmo, fi.po: Update Finnish translation
 
 2003-01-25 23:04  xfce
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Add Finnish
-	  translation by Ilkka Ollakka (ilkka.j.ollakka.oamk.fi)
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in, fi.gmo, fi.po:
+	  Add Finnish translation by Ilkka Ollakka (ilkka.j.ollakka.oamk.fi)
 
 2003-01-25 11:08  xfce
 
@@ -4937,8 +4056,7 @@
 	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults/Makefile.in,
 	  xfwm4/trunk/install-sh, xfwm4/trunk/ltmain.sh,
 	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/mkinstalldirs,
-	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/de.gmo,
-	  xfwm4/trunk/po/de.po, xfwm4/trunk/src/Makefile.in,
+	  Makefile.in.in, de.gmo, de.po, xfwm4/trunk/src/Makefile.in,
 	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/adept/Makefile.in,
 	  xfwm4/trunk/themes/agua/Makefile.in,
@@ -5010,8 +4128,7 @@
 	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults/Makefile.in,
 	  xfwm4/trunk/install-sh, xfwm4/trunk/ltmain.sh,
 	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/mkinstalldirs,
-	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/es_MX.gmo,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/src/Makefile.in,
+	  Makefile.in.in, es_MX.gmo, es_MX.po, xfwm4/trunk/src/Makefile.in,
 	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/adept/Makefile.in,
 	  xfwm4/trunk/themes/agua/Makefile.in,
@@ -5074,39 +4191,35 @@
 
 2003-01-24 13:06  huysmans
 
-	* xfwm4/trunk/configure.in, xfwm4/trunk/po/nl.gmo,
-	  xfwm4/trunk/po/nl.po: Add Dutch translations
+	* xfwm4/trunk/configure.in, nl.gmo, nl.po: Add Dutch translations
 
 2003-01-24 10:07  xfce
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/po/zh_CN.GB2312.gmo, xfwm4/trunk/po/zh_CN.GB2312.po,
-	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Rename
-	  po/zh_CN.GB2312.* to po/zh_CN.*
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in, zh_CN.GB2312.gmo,
+	  zh_CN.GB2312.po, zh_CN.gmo, zh_CN.po: Rename po/zh_CN.GB2312.* to
+	  po/zh_CN.*
 
 2003-01-24 09:00  xfce
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/po/zh_CN.GB2312.gmo, xfwm4/trunk/po/zh_CN.GB2312.po:
-	  Add Chinese translation by Yongtao Yang <yongtao.yang@telia.com>
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in, zh_CN.GB2312.gmo,
+	  zh_CN.GB2312.po: Add Chinese translation by Yongtao Yang
+	  <yongtao.yang@telia.com>
 
 2003-01-23 22:59  xfce
 
-	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/po/es.gmo, xfwm4/trunk/po/es.po: Add spanish
-	  translation. Thanks nestu!
+	* xfwm4/trunk/configure, xfwm4/trunk/configure.in, es.gmo, es.po:
+	  Add spanish translation. Thanks nestu!
 
 2003-01-23 09:12  xfce
 
 	* xfwm4/trunk/configure.in, xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/trunk/po/fr.gmo: Replace AC_PROG_LIBTOOL with
-	  AM_PROG_LIBTOOL Remove gtk_set_locale() from plugin init.
+	  fr.gmo: Replace AC_PROG_LIBTOOL with AM_PROG_LIBTOOL Remove
+	  gtk_set_locale() from plugin init.
 
 2003-01-22 22:26  xfce
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.in, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/xfwm4.pot: Small stuff
+	  xfwm4/trunk/configure.in, fr.po, xfwm4.pot: Small stuff
 
 2003-01-22 21:54  xfce
 
@@ -5119,12 +4232,10 @@
 	  xfwm4/trunk/mcs-plugin/Makefile.am,
 	  xfwm4/trunk/mcs-plugin/Makefile.in,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/mkinstalldirs,
-	  xfwm4/trunk/po, xfwm4/trunk/po/ChangeLog,
-	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/POTFILES.in,
-	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/po2tbl.sed.in, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/themes/Makefile.in,
+	  ., ChangeLog, Makefile.in.in, POTFILES.in, fr.gmo, fr.po,
+	  po2tbl.sed.in, xfwm4.pot, xfwm4/trunk/src/Makefile.am,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/adept/Makefile.in,
 	  xfwm4/trunk/themes/agua/Makefile.in,
 	  xfwm4/trunk/themes/atlanta/Makefile.in,
