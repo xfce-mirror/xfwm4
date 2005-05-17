@@ -52,6 +52,7 @@
 #define SIDE_LEFT                                               0
 #define SIDE_RIGHT                                              1
 #define SIDE_BOTTOM                                             2
+#define SIDE_TOP                                                3
 
 #define ANY                                                     0
 #define WINDOW                                                  1
@@ -166,7 +167,7 @@ struct _DisplayInfo
     Cursor busy_cursor;
     Cursor move_cursor;
     Cursor root_cursor;
-    Cursor resize_cursor[7];
+    Cursor resize_cursor[8];
     
     Atom atoms[NB_ATOMS];
 

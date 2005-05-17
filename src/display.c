@@ -217,6 +217,8 @@ myDisplayInit (GdkDisplay *gdisplay)
         XCreateFontCursor (display->dpy, XC_left_side);
     display->resize_cursor[4 + SIDE_RIGHT] = 
         XCreateFontCursor (display->dpy, XC_right_side);
+    display->resize_cursor[4 + SIDE_TOP] = 
+        XCreateFontCursor (display->dpy, XC_top_side);
     display->resize_cursor[4 + SIDE_BOTTOM] = 
         XCreateFontCursor (display->dpy, XC_bottom_side);
 
@@ -304,7 +306,7 @@ Cursor
 myDisplayGetCursorResize (DisplayInfo *display, guint index)
 {
     g_return_val_if_fail (display, None);
-    g_return_val_if_fail (index < 7, None);
+    g_return_val_if_fail (index < 8, None);
 
     return display->resize_cursor [index];
 }

@@ -632,7 +632,8 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
         maxy = c->size->max_aspect.y;
 
         if ((minx * h1 > miny * w1) &&
-            (miny) && (corner == 4 + SIDE_BOTTOM))
+            (miny) &&
+            ((corner == 4 + SIDE_TOP) || (corner == 4 + SIDE_BOTTOM)))
         {
             /* Change width to match */
             delta = MAKE_MULT (minx * h1 /  miny - w1, xinc);
@@ -3369,6 +3370,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
+    int move_top, move_bottom, move_left, move_right;
     GdkRectangle rect;
     gint monitor_nbr;
 
@@ -3389,6 +3391,23 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
+
+    move_top = ((passdata->corner == CORNER_TOP_RIGHT)
+            || (passdata->corner == CORNER_TOP_LEFT)
+            || (passdata->corner == 4 + SIDE_TOP)) ?
+        1 : 0;
+    move_bottom = ((passdata->corner == CORNER_BOTTOM_RIGHT)
+            || (passdata->corner == CORNER_BOTTOM_LEFT)
+            || (passdata->corner == 4 + SIDE_BOTTOM)) ?
+        1 : 0;
+    move_right = ((passdata->corner == CORNER_TOP_RIGHT)
+            || (passdata->corner == CORNER_BOTTOM_RIGHT)
+            || (passdata->corner == 4 + SIDE_RIGHT)) ?
+        1 : 0;
+    move_left = ((passdata->corner == CORNER_TOP_LEFT)
+            || (passdata->corner == CORNER_BOTTOM_LEFT)
+            || (passdata->corner == 4 + SIDE_LEFT)) ?
+        1 : 0;
 
     monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
@@ -3539,28 +3558,21 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         prev_width = c->width;
         prev_height = c->height;
 
-        if ((passdata->corner == CORNER_TOP_LEFT)
-            || (passdata->corner == CORNER_BOTTOM_LEFT)
-            || (passdata->corner == 4 + SIDE_LEFT))
+        if (move_left)
         {
             c->width = passdata->ox - (xevent->xmotion.x_root - passdata->mx);
         }
-        else if ((passdata->corner == CORNER_BOTTOM_RIGHT)
-            || (passdata->corner == CORNER_TOP_RIGHT)
-            || (passdata->corner == 4 + SIDE_RIGHT))
+        else if (move_right)
         {
             c->width = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         }
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            if ((passdata->corner == CORNER_TOP_LEFT)
-                || (passdata->corner == CORNER_TOP_RIGHT))
+            if (move_top)
             {
                 c->height = passdata->oy - (xevent->xmotion.y_root - passdata->my);
             }
-            else if ((passdata->corner == CORNER_BOTTOM_RIGHT)
-                || (passdata->corner == CORNER_BOTTOM_LEFT)
-                || (passdata->corner == 4 + SIDE_BOTTOM))
+            else if (move_bottom)
             {
                 c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
             }
@@ -3568,39 +3580,30 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         clientConstrainRatio (c, c->width, c->height, passdata->corner);
 
         clientSetWidth (c, c->width);
-        if ((passdata->corner == CORNER_TOP_LEFT)
-            || (passdata->corner == CORNER_BOTTOM_LEFT)
-            || (passdata->corner == 4 + SIDE_LEFT))
+        if (move_left)
         {
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
-        if (((passdata->corner == CORNER_TOP_LEFT)
-             || (passdata->corner == CORNER_TOP_RIGHT))
-            && !clientCkeckTitle (c))
+        if (move_top && !clientCkeckTitle (c))
         {
             c->x = prev_x;
             c->width = prev_width;
         }
 
         clientSetHeight (c, c->height);
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
-            && (passdata->corner == CORNER_TOP_LEFT
-                || passdata->corner == CORNER_TOP_RIGHT))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
         {
             c->y = c->y - (c->height - passdata->oldh);
             frame_y = frameY (c);
         }
-        if (((passdata->corner == CORNER_TOP_LEFT)
-             || (passdata->corner == CORNER_TOP_RIGHT))
-            && !clientCkeckTitle (c))
+        if (move_top && !clientCkeckTitle (c))
         {
             c->y = prev_y;
             c->height = prev_height;
         }
 
-        if ((passdata->corner == CORNER_TOP_LEFT)
-            || (passdata->corner == CORNER_TOP_RIGHT))
+        if (move_top)
         {
             if ((c->y > disp_max_y - CLIENT_MIN_VISIBLE)
                 || (c->y > gdk_screen_get_height (screen_info->gscr)
@@ -3610,9 +3613,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->height = prev_height;
             }
         }
-        else if ((passdata->corner == CORNER_BOTTOM_LEFT)
-            || (passdata->corner == CORNER_BOTTOM_RIGHT)
-            || (passdata->corner == 4 + SIDE_BOTTOM))
+        else if (move_bottom)
         {
             if ((c->y + c->height < disp_y + CLIENT_MIN_VISIBLE)
                 || (c->y + c->height < screen_info->margins [TOP] + CLIENT_MIN_VISIBLE))
@@ -3620,9 +3621,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->height = prev_height;
             }
         }
-        if ((passdata->corner == CORNER_TOP_LEFT)
-            || (passdata->corner == CORNER_BOTTOM_LEFT)
-            || (passdata->corner == 4 + SIDE_LEFT))
+        if (move_left)
         {
             if ((c->x > disp_max_x - CLIENT_MIN_VISIBLE)
                 || (c->x > gdk_screen_get_width (screen_info->gscr)
@@ -3632,9 +3631,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
                 c->width = prev_width;
             }
         }
-        else if ((passdata->corner == CORNER_TOP_RIGHT)
-            || (passdata->corner == CORNER_BOTTOM_RIGHT)
-            || (passdata->corner == 4 + SIDE_RIGHT))
+        else if (move_right)
         {
             if ((c->x + c->width < disp_x + CLIENT_MIN_VISIBLE)
                 || (c->x + c->width < screen_info->margins [LEFT] + CLIENT_MIN_VISIBLE))
@@ -3715,7 +3712,6 @@ clientResize (Client * c, int corner, XEvent * ev)
     passdata.c = c;
     passdata.ox = c->width;
     passdata.oy = c->height;
-    passdata.corner = CORNER_BOTTOM_RIGHT;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;

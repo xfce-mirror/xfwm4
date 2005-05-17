@@ -892,22 +892,72 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
         else if ((ev->button == Button3) && (state == AltMask) && (screen_info->params->easy_click))
         {
-            if ((ev->x < c->width / 2) && (ev->y < c->height / 2))
+            int part, x_corner_pixels, y_corner_pixels, x_distance, y_distance;
+
+            /* Corner is 1/3 of the side */
+            x_corner_pixels = MAX(c->width / 3, 50);
+            y_corner_pixels = MAX(c->height / 3, 50);
+
+            /* Distance from event to edge of client window */
+            x_distance = c->width / 2 - abs(c->width / 2 - ev->x);
+            y_distance = c->height / 2 - abs(c->height / 2 - ev->y);
+
+            if (x_distance < x_corner_pixels && y_distance < y_corner_pixels)
             {
-                edgeButton (c, CORNER_TOP_LEFT, ev);
-            }
-            else if ((ev->x < c->width / 2) && (ev->y > c->height / 2))
-            {
-                edgeButton (c, CORNER_BOTTOM_LEFT, ev);
-            }
-            else if ((ev->x > c->width / 2) && (ev->y < c->height / 2))
-            {
-                edgeButton (c, CORNER_TOP_RIGHT, ev);
+                /* In a corner */
+                if (ev->x < c->width / 2)
+                {
+                    if (ev->y < c->height / 2)
+                    {
+                        part = CORNER_TOP_LEFT;
+                    }
+                    else
+                    {
+                        part = CORNER_BOTTOM_LEFT;
+                    }
+                }
+                else
+                {
+                    if (ev->y < c->height / 2)
+                    {
+                        part = CORNER_TOP_RIGHT;
+                    }
+                    else
+                    {
+                        part = CORNER_BOTTOM_RIGHT;
+                    }
+                }
             }
             else
             {
-                edgeButton (c, CORNER_BOTTOM_RIGHT, ev);
+                /* Not a corner - some side */
+                if (x_distance / x_corner_pixels < y_distance / y_corner_pixels)
+                {
+                    /* Left or right side */
+                    if (ev->x < c->width / 2)
+                    {
+                        part = 4 + SIDE_LEFT;
+                    }
+                    else
+                    {
+                        part = 4 + SIDE_RIGHT;
+                    }
+                }
+                else
+                {
+                    /* Top or bottom side */
+                    if (ev->y < c->height / 2)
+                    {
+                        part = 4 + SIDE_TOP;
+                    }
+                    else
+                    {
+                        part = 4 + SIDE_BOTTOM;
+                    }
+                }
             }
+
+            edgeButton (c, part, ev);
         }
         else if (WIN_IS_BUTTON (win))
         {
