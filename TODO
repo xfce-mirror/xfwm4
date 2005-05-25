@@ -6,4 +6,8 @@ Add your favorite wish list here :
 * Multiscreen mode (not Xinerama)                        *done*
 * Use daemon(3) if available to daemonize the process    *done*
 * Add compositor for newer X.org                         *done*
-* Add support for alpha in window frame components
+* Add support for alpha in window frame components       *done*
+* Remove keyboard shortcut support from the WM           *done*
+* Implement keyboard shortcut in a separate MCS plugin
+* Add new "power tweak" MCS plugin
+
