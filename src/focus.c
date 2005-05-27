@@ -286,6 +286,10 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         return;
     }
+    if (current_focus == last_ungrab)
+    {
+        clientPassGrabMouseButton (NULL);
+    }
 
     display_info = screen_info->display_info;
     top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude);
