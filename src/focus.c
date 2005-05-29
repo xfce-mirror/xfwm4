@@ -286,6 +286,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         return;
     }
+
     if (current_focus == last_ungrab)
     {
         clientPassGrabMouseButton (NULL);
@@ -409,7 +410,11 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         return;
     }
 
-    if (c == clientGetLastRaise (screen_info))
+    /* 
+       We can release the button mouse grab if we don't raise on click or if the focused window
+       is the one that has been raised at last.
+     */
+    if (!(screen_info->params->raise_on_click) || (c == clientGetLastRaise (screen_info)))
     {
         clientPassGrabMouseButton (c);
     }
