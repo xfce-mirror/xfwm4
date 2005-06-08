@@ -7,10 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-BASE_VERSION=4.2.2
-VERSION=$BASE_VERSION.`echo "$Rev$" | cut -d " " -f2`
-dnl VERSION=$BASE_VERSION
-AM_INIT_AUTOMAKE([xfwm4], [$VERSION])
+AM_INIT_AUTOMAKE([xfwm4], [4.2.2])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -104,6 +101,9 @@ AC_SUBST(ENABLE_COMPOSITOR)
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
+
+REVISION=`echo "$Rev$" | cut -d " " -f2`
+AC_DEFINE_UNQUOTED([REVISION], "${REVISION}", [svn revision number])
 
 AC_OUTPUT([ 
 xfwm4.spec
