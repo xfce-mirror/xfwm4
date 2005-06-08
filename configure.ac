@@ -3,7 +3,13 @@ dnl
 dnl xfwm4 - window manager for the XFce4 desktop environment
 dnl
 
-m4_define([xfwm4_version],[4.3.0])
+BASE_VERSION=4.3.0
+
+dnl Comment the following line when releasing...
+m4_define([xfwm4_version],[$BASE_VERSION.`echo "$Rev$" | cut -d " " -f2`])
+
+dnl and unvomment this one.
+dnl m4_define([xfwm4_version],[$VERSION])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2005
