@@ -8,7 +8,7 @@ AC_INIT([src/main.c])
 AC_PREREQ(2.52)
 
 
-SVN_VERSION=$revision$
+SVN_VERSION=$Rev$
 AM_INIT_AUTOMAKE([xfwm4], [4.2.2])
 
 AM_CONFIG_HEADER([config.h])
