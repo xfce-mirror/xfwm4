@@ -2005,7 +2005,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             handleColormapNotify (display_info, (XColormapEvent *) ev);
             break;
         default:
-            if (display_info->shape && (ev->type == display_info->shape_event))
+            if ((display_info->shape) && (ev->type == display_info->shape_event))
             {
                 handleShape (display_info, (XShapeEvent *) ev);
             }

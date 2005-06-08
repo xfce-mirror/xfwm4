@@ -1638,7 +1638,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
-    if ((shaped) && (display_info->shape))
+    if (display_info->shape)
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
     }

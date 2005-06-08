@@ -1075,24 +1075,27 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     }
     else
     {
-        xfwmWindowHide (&c->title);
+        if (xfwmWindowVisible (&c->title))
+        {
+            xfwmWindowHide (&c->title);
+        }
         for (i = 0; i < 3; i++)
         {
-            if (MYWINDOW_XWINDOW (c->sides[i]))
+            if (MYWINDOW_XWINDOW (c->sides[i]) && xfwmWindowVisible (&c->sides[i]))
             {
                 xfwmWindowHide (&c->sides[i]);
             }
         }
         for (i = 0; i < 4; i++)
         {
-            if (MYWINDOW_XWINDOW (c->corners[i]))
+            if (MYWINDOW_XWINDOW (c->corners[i]) && xfwmWindowVisible (&c->corners[i]))
             {
                 xfwmWindowHide (&c->corners[i]);
             }
         }
         for (i = 0; i < BUTTON_COUNT; i++)
         {
-            if (MYWINDOW_XWINDOW (c->buttons[i]))
+            if (MYWINDOW_XWINDOW (c->buttons[i]) && xfwmWindowVisible (&c->buttons[i]))
             {
                 xfwmWindowHide (&c->buttons[i]);
             }
