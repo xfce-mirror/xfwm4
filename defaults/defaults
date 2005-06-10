@@ -14,6 +14,7 @@ focus_new=true
 full_width_title=true
 keytheme=Default
 move_opacity=100
+placement_ratio=25
 prevent_focus_stealing=false
 raise_delay=250
 raise_on_click=true

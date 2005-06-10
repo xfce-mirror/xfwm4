@@ -517,18 +517,104 @@ clientKeepVisible (Client * c)
     clientConstrainPos (c, TRUE);
 }
 
+static void
+smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+{
+    Client *c2;
+    ScreenInfo *screen_info;
+    int test_x = 0, test_y = 0;
+    int xmax, ymax, best_x, best_y, i;
+    int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
+    unsigned long best_overlaps = 0;
+    gboolean first = TRUE;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering smartPlacement");
+
+    screen_info = c->screen_info;
+    frame_x = frameX (c);
+    frame_y = frameY (c);
+    frame_height = frameHeight (c);
+    frame_width = frameWidth (c);
+    frame_left = frameLeft(c);
+    frame_top = frameTop (c);
+
+    xmax = full_x + full_w - c->width - frameRight (c);
+    ymax = full_y + full_h - c->height - frameBottom (c);
+    best_x = full_x + frameLeft (c);
+    best_y = full_y + frameTop (c);
+
+    for (test_y = full_y + frameTop (c); test_y <= ymax;
+        test_y += 8)
+    {
+        for (test_x = full_x + frameLeft (c);
+            test_x <= xmax; test_x += 8)
+        {
+            unsigned long count_overlaps = 0;
+            TRACE ("analyzing %i clients", screen_info->client_count);
+            for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+            {
+                if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
+                    && (c->win_workspace == c2->win_workspace)
+                    && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
+                {
+                    count_overlaps += overlap (test_x - frame_left, 
+                                               test_y - frame_top, 
+                                               test_x - frame_left + frame_width,
+                                               test_y - frame_top + frame_height, 
+                                               frameX (c2), 
+                                               frameY (c2),
+                                               frameX (c2) + frameWidth (c2),
+                                               frameY (c2) + frameHeight (c2));
+                }
+            }
+            TRACE ("overlaps so far is %u", (unsigned int) count_overlaps);
+            if (count_overlaps == 0)
+            {
+                TRACE ("overlaps is 0 so it's the best we can get");
+                c->x = test_x;
+                c->y = test_y;
+                clientAutoMaximize (c);
+
+                return;
+            }
+            else if ((count_overlaps < best_overlaps) || (first))
+            {
+                TRACE ("overlaps %u is better than the best we have %u",
+                    (unsigned int) count_overlaps,
+                    (unsigned int) best_overlaps);
+                best_x = test_x;
+                best_y = test_y;
+                best_overlaps = count_overlaps;
+            }
+            if (first)
+            {
+                first = FALSE;
+            }
+        }
+    }
+    c->x = best_x;
+    c->y = best_y;
+}
+
+static void
+centerPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering centerPlacement");
+
+    c->x = MAX (full_x + frameLeft(c) + (full_w - frameWidth(c)) / 2, full_x + frameLeft(c));
+    c->y = MAX (full_y + frameTop(c) + (full_h - frameHeight(c)) / 2, full_y + frameTop(c));
+}
+
 void
 clientInitPosition (Client * c)
 {
-    static gushort placement = 0;
-    
-    Client *c2 = NULL;
-    ScreenInfo *screen_info = NULL;
-    int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
+    Client *c2;
+    ScreenInfo *screen_info;
     int full_x, full_y, full_w, full_h, msx, msy;
     GdkRectangle rect;
     gint monitor_nbr;
-    gushort place;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientInitPosition");
@@ -578,51 +664,22 @@ clientInitPosition (Client * c)
     /* Adjust size to the widest size available, not covering struts */
     clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 
-    frame_x = frameX (c);
-    frame_y = frameY (c);
-    frame_height = frameHeight (c);
-    frame_width = frameWidth (c);
-    frame_left = frameLeft(c);
-    frame_top = frameTop (c);
-
     /* 
-       If the windows is larger than 2/3 of the screen, then place it alternatively 
-       at each corner of the screen.
-
-       Otherwise, the window is "smaller", place it at the center of the screen.
+       If the windows is smaller than the given ratio of the available screen area, 
+       or if the window is larger than the screen area or if the given ratio is higher 
+       than 100% place the window at the center.
+       Otherwise, place the window "smartly", using the good old CPU consuming algorithm...
      */
-    if ((3 * frame_width > 2 * full_w) && (3 * frame_height > 2 * full_h))
+    if ((screen_info->params->placement_ratio > 100) ||
+        ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) || 
+        (100  * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
     {
-        place = placement;
-        placement = (placement + 1) % 5;
+        centerPlacement (c, full_x, full_y, full_w, full_h);
     }
     else
     {
-        place = 0;
+        smartPlacement (c, full_x, full_y, full_w, full_h);
     }
 
-    switch (place)
-    {
-        case 0:      /* Center */
-            c->x = MAX (full_x + frame_left + (full_w - frame_width) / 2, full_x + frame_left);
-            c->y = MAX (full_y + frame_top + (full_h - frame_height) / 2, full_y + frame_top);
-            break;
-        case 1:      /* Top left corner */
-            c->x = full_x + frame_left;
-            c->y = full_y + frame_top;
-            break;          
-        case 2:      /* Top right corner */
-            c->x = full_x + full_w + frame_left - frame_width;
-            c->y = full_y + frame_top;
-            break;
-        case 3:      /* Bottom left corner */
-            c->x = full_x + frame_left;
-            c->y = full_y + full_h + frame_top - frame_height;
-            break;
-        default:      /* Bottom right corner */
-            c->x = full_x + full_w  + frame_left- frame_width;
-            c->y = full_y + full_h + frame_top - frame_height;
-            break;          
-    }
     clientAutoMaximize (c);
 }

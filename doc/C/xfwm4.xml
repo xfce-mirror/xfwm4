@@ -854,6 +854,17 @@ maintainers, etc. Commented out by default.
 	</varlistentry>
 
 	<varlistentry>
+		<term>placement_ratio=25</term>
+			<listitem>
+			<para>Windows larger than this ratio of the actual screen size will be placed using a "smart" but 
+			CPU consuming placement algorithm, while other smaller windows will be simply paced at the center 
+			of the screen. 0 will instruct the window manager to always use the "smart" placement algorithm, while 
+			100 will place all windows at the center of the screen.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
 		<term>scroll_workspaces=false</term>
 			<listitem>
 			<para>Add this line to your xfwm4rc file if you want to disable workspace switching 

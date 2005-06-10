@@ -807,6 +807,17 @@ maintainers, etc. Commented out by default.
 	</varlistentry>
 
 	<varlistentry>
+		<term>placement_ratio=25</term>
+			<listitem>
+			<para>Les fenêtres plus grandes que ce pourcentage de la taille d'écran disponible seront placées en utilisant un algorithme 
+			"intelligent" mais consomateur de ressources, alors que les autres fenêtres plus petites seront simplement placées au centre 
+			de l'écran. 0 indique au gestionnaire de fenêtre de toujours utiliser l'algorithme "intelligent", alors que 100 placera 
+			toutes les fenêtres au centre de l'écran.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
 		<term>scroll_workspaces=false</term>
 			<listitem>
 			<para>Cette option permet de désactiver le basculement d'espace de travail à l'aide de la molette de la souris.
