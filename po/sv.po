@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-09 22:43+0200\n"
+"POT-Creation-Date: 2005-06-10 22:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -639,22 +639,22 @@ msgstr "Arbetsyta %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu misslyckades attfånga pekaren\n"
 
-#: src/settings.c:722
+#: src/settings.c:732
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan inte allokera aktiv färg %s\n"
 
-#: src/settings.c:728
+#: src/settings.c:738
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan ej avläsa aktiv färg %s\n"
 
-#: src/settings.c:771
+#: src/settings.c:781
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inte allokera inaktiv färg %s\n"
 
-#: src/settings.c:777
+#: src/settings.c:787
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan ej avläsa inaktiv färg %s\n"

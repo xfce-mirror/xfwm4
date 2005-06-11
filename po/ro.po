@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2 rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-09 22:43+0200\n"
+"POT-Creation-Date: 2005-06-10 22:31+0200\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -595,22 +595,22 @@ msgstr "Spaţiu de lucru %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nu a reuşit să captureze cursorul\n"
 
-#: src/settings.c:722
+#: src/settings.c:732
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Nu am reuşit să aloc culoarea activă %s\n"
 
-#: src/settings.c:728
+#: src/settings.c:738
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Nu am reuşit să prelucrez culoarea activă %s\n"
 
-#: src/settings.c:771
+#: src/settings.c:781
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Nu am reuşit să aloc culoarea inactivă %s\n"
 
-#: src/settings.c:777
+#: src/settings.c:787
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nu am reuşit să prelucrez culoarea inactivă %s\n"

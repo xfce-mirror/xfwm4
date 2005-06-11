@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-09 22:43+0200\n"
+"POT-Creation-Date: 2005-06-10 22:31+0200\n"
 "PO-Revision-Date: 2005-05-13 04:33+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -593,22 +593,22 @@ msgstr "ワークスペース %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
 
-#: src/settings.c:722
+#: src/settings.c:732
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 有効色を割当てられません %s\n"
 
-#: src/settings.c:728
+#: src/settings.c:738
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 有効色を解析できません %s\n"
 
-#: src/settings.c:771
+#: src/settings.c:781
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 非有効色を割当てられません %s\n"
 
-#: src/settings.c:777
+#: src/settings.c:787
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 非有効色を解析できません %s\n"

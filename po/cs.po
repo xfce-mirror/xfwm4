@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-09 22:43+0200\n"
+"POT-Creation-Date: 2005-06-10 22:31+0200\n"
 "PO-Revision-Date: 2004-12-20 21:58+0100\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
 "Language-Team: czech <cs@li.org>\n"
@@ -591,22 +591,22 @@ msgstr "Pracovní plocha %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
-#: src/settings.c:722
+#: src/settings.c:732
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Nelze přidělit aktivní barvu %s\n"
 
-#: src/settings.c:728
+#: src/settings.c:738
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Nelze separovat aktivní barvu %s\n"
 
-#: src/settings.c:771
+#: src/settings.c:781
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Nelze přidělit neaktivní barvu %s\n"
 
-#: src/settings.c:777
+#: src/settings.c:787
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nelze separovat neaktivní barvu %s\n"

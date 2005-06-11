@@ -188,6 +188,7 @@ struct _XfwmParams
     gboolean raise_on_focus;
     gboolean raise_with_any_button;
     gboolean scroll_workspaces;
+    gboolean show_frame_shadow;
     gboolean snap_to_border;
     gboolean snap_to_windows;
     gboolean title_vertical_offset_active;

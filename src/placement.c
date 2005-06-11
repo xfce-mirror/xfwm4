@@ -525,7 +525,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     int test_x = 0, test_y = 0;
     int xmax, ymax, best_x, best_y, i;
     int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
-    unsigned long best_overlaps = 0;
+    gfloat best_overlaps = 0.0;
     gboolean first = TRUE;
 
     g_return_if_fail (c != NULL);
@@ -550,7 +550,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
         for (test_x = full_x + frameLeft (c);
             test_x <= xmax; test_x += 8)
         {
-            unsigned long count_overlaps = 0;
+            gfloat count_overlaps = 0.0;
             TRACE ("analyzing %i clients", screen_info->client_count);
             for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
             {
@@ -568,8 +568,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                                                frameY (c2) + frameHeight (c2));
                 }
             }
-            TRACE ("overlaps so far is %u", (unsigned int) count_overlaps);
-            if (count_overlaps == 0)
+            if (count_overlaps < 0.1)
             {
                 TRACE ("overlaps is 0 so it's the best we can get");
                 c->x = test_x;
@@ -580,9 +579,6 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
             }
             else if ((count_overlaps < best_overlaps) || (first))
             {
-                TRACE ("overlaps %u is better than the best we have %u",
-                    (unsigned int) count_overlaps,
-                    (unsigned int) best_overlaps);
                 best_x = test_x;
                 best_y = test_y;
                 best_overlaps = count_overlaps;

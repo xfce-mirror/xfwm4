@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-09 22:43+0200\n"
+"POT-Creation-Date: 2005-06-10 22:31+0200\n"
 "PO-Revision-Date: 2005-05-03 18:24+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <gu@li.org>\n"
@@ -598,22 +598,22 @@ msgstr "કામ કરવાની જગ્યા %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu એ નિર્દેશક મેળવવામાં નિષ્ફળ ગયું\n"
 
-#: src/settings.c:722
+#: src/settings.c:732
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: સક્રિય રંગ %s સોંપી શકાતો નથી\n"
 
-#: src/settings.c:728
+#: src/settings.c:738
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: સક્રિય રંગ %s પદચ્છેદ કરી શકાતો નથી\n"
 
-#: src/settings.c:771
+#: src/settings.c:781
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: બિનસક્રિય રંગ %s સોંપી શકાતો નથી\n"
 
-#: src/settings.c:777
+#: src/settings.c:787
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: બિનસક્રિય રંગ %s પદચ્છેદ કરી શકાતો નથી\n"

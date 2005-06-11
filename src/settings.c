@@ -184,9 +184,9 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->placement_ratio = setting->data.v_int;
                     }
-                    else if (!strcmp (name, "Xfwm/SnapToBorder"))
+                    else if (!strcmp (name, "Xfwm/ShowFrameShadow"))
                     {
-                        screen_info->params->snap_to_border = setting->data.v_int;
+                        screen_info->params->show_frame_shadow = setting->data.v_int;
                     }
                     else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
                     {
@@ -504,6 +504,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
         {
             setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
             check_for_grabs (screen_info);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowFrameShadow", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("show_frame_shadow", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToBorder", CHANNEL1,
@@ -1148,6 +1154,7 @@ loadSettings (ScreenInfo *screen_info)
         {"shadow_delta_y", NULL, TRUE},
         {"shadow_delta_width", NULL, TRUE},
         {"shadow_delta_height", NULL, TRUE},
+        {"show_frame_shadow", NULL, TRUE},
         {"theme", NULL, TRUE},
         {"title_alignment", NULL, TRUE},
         {"title_font", NULL, FALSE},
@@ -1295,7 +1302,8 @@ loadSettings (ScreenInfo *screen_info)
         abs (TOINT (getValue ("resize_opacity", rc)));
     screen_info->params->placement_ratio = 
         abs (TOINT (getValue ("placement_ratio", rc)));
-
+    screen_info->params->show_frame_shadow =
+        !g_ascii_strcasecmp ("true", getValue ("show_frame_shadow", rc));
     screen_info->params->snap_to_border =
         !g_ascii_strcasecmp ("true", getValue ("snap_to_border", rc));
     screen_info->params->snap_to_windows =
@@ -1425,6 +1433,7 @@ reloadScreenSettings (ScreenInfo *screen_info, int mask)
     if (mask)
     {
         clientUpdateAllFrames (screen_info, mask);
+        compositorRebuildScreen (screen_info);
     }
 
     return TRUE;

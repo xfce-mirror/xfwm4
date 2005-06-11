@@ -750,7 +750,7 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    if (c)
+    if ((screen_info->params->show_frame_shadow) && (c != NULL))
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && (cw->mode != WINDOW_ARGB))
         {
@@ -2394,6 +2394,38 @@ compositorRepairScreen (ScreenInfo *screen_info)
     repair_screen (screen_info);
 #endif /* HAVE_COMPOSITOR */
 }
+
+
+void
+compositorRebuildScreen (ScreenInfo *screen_info)
+{
+#ifdef HAVE_COMPOSITOR
+    DisplayInfo *display_info = NULL;
+    GList *index;
+
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering compositorRepairScreen");
+
+    display_info = screen_info->display_info;
+    if (!(display_info->enable_compositor))
+    {
+        return;
+    }
+
+    if (!(screen_info->compositor_active))
+    {
+        return;
+    }
+
+    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    {
+        CWindow *cw2 = (CWindow *) index->data;
+        free_win_data (cw2, FALSE);
+    }
+    repair_screen (screen_info);
+#endif /* HAVE_COMPOSITOR */
+}
+
 
 void
 compositorDamageWindow (DisplayInfo *display_info, Window id)
