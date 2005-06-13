@@ -42,6 +42,7 @@
 #define CHANNEL2 "margins"
 #define CHANNEL3 "workspaces"
 #define CHANNEL4 "xfwm4_keys"
+#define CHANNEL5 "wm_tweaks"
 #define TOINT(x) (x ? atoi(x) : 0)
 #define DEFAULT_KEYTHEME "Default"
 #define KEYTHEMERC "keythemerc"
@@ -172,26 +173,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->raise_on_focus = setting->data.v_int;
                     }
-                    else if (!strcmp (name, "Xfwm/MoveOpacity"))
-                    {
-                        screen_info->params->move_opacity = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ResizeOpacity"))
-                    {
-                        screen_info->params->resize_opacity = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/PlacementRatio"))
-                    {
-                        screen_info->params->placement_ratio = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ShowFrameShadow"))
-                    {
-                        screen_info->params->show_frame_shadow = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
-                    {
-                        screen_info->params->prevent_focus_stealing = setting->data.v_int;
-                    }
                     else if (!strcmp (name, "Xfwm/RaiseDelay"))
                     {
                         screen_info->params->raise_delay = setting->data.v_int;
@@ -199,11 +180,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         screen_info->params->raise_on_click = setting->data.v_int;
-                        check_for_grabs (screen_info);
-                    }
-                    else if (!strcmp (name, "Xfwm/RaiseWithAnyButton"))
-                    {
-                        screen_info->params->raise_with_any_button = setting->data.v_int;
                         check_for_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
@@ -217,10 +193,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/SnapWidth"))
                     {
                         screen_info->params->snap_width = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ToggleWorkspaces"))
-                    {
-                        screen_info->params->toggle_workspaces = setting->data.v_int;
                     }
                     else if (!strcmp (name, "Xfwm/WrapWorkspaces"))
                     {
@@ -357,6 +329,83 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                 break;
         }
     }
+    else if (!g_ascii_strcasecmp (CHANNEL5, channel_name))
+    {
+        switch (action)
+        {
+            case MCS_ACTION_NEW:
+                /* The following is to reduce initial startup time and reloads */
+                if (!screen_info->mcs_initted)
+                {
+                    return;
+                }
+            case MCS_ACTION_CHANGED:
+                if (setting->type == MCS_TYPE_INT)
+                {
+                    if (!strcmp (name, "Xfwm/CycleMinimum"))
+                    {
+                        screen_info->params->cycle_minimum = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/CycleHidden"))
+                    {
+                        screen_info->params->cycle_hidden = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/EasyClick"))
+                    {
+                        screen_info->params->easy_click = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/FocusHint"))
+                    {
+                        screen_info->params->focus_hint = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/MoveOpacity"))
+                    {
+                        screen_info->params->move_opacity = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/ResizeOpacity"))
+                    {
+                        screen_info->params->resize_opacity = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/PlacementRatio"))
+                    {
+                        screen_info->params->placement_ratio = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/ShowFrameShadow"))
+                    {
+                        screen_info->params->show_frame_shadow = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
+                    {
+                        screen_info->params->prevent_focus_stealing = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/RaiseWithAnyButton"))
+                    {
+                        screen_info->params->raise_with_any_button = setting->data.v_int;
+                        check_for_grabs (screen_info);
+                    }
+                    else if (!strcmp (name, "Xfwm/ScrollWorkspaces"))
+                    {
+                        screen_info->params->scroll_workspaces = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/ToggleWorkspaces"))
+                    {
+                        screen_info->params->toggle_workspaces = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/WrapLayout"))
+                    {
+                        screen_info->params->wrap_layout = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/WrapCycle"))
+                    {
+                        screen_info->params->wrap_cycle = setting->data.v_int;
+                    }
+                }
+                break;
+            case MCS_ACTION_DELETED:
+            default:
+                break;
+        }
+    }
 }
 
 static GdkFilterReturn
@@ -443,6 +492,7 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
     McsSetting *setting;
     if (screen_info->mcs_client)
     {
+        /* "Regular" channel */
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ClickToFocus", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
@@ -462,30 +512,6 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
             setBooleanValueFromInt ("raise_on_focus", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/MoveOpacity", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("move_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ResizeOpacity", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("resize_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementRatio", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("placement_ratio", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("prevent_focus_stealing", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseDelay", CHANNEL1,
                 &setting) == MCS_SUCCESS)
         {
@@ -497,19 +523,6 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
         {
             setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
             check_for_grabs (screen_info);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseWithAnyButton", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
-            check_for_grabs (screen_info);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowFrameShadow", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("show_frame_shadow", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToBorder", CHANNEL1,
@@ -535,12 +548,6 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ToggleWorkspaces", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("toggle_workspaces", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapWindows", CHANNEL1,
@@ -597,6 +604,8 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
             setValue ("title_font", setting->data.v_string, rc);
             mcs_setting_free (setting);
         }
+
+        /* Margins channel */
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/LeftMargin", CHANNEL2,
                 &setting) == MCS_SUCCESS)
         {
@@ -621,16 +630,107 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
             setIntValueFromInt ("margin_top", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
+
+        /* Workspaces channel */
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WorkspaceCount", CHANNEL3,
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("workspace_count", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
+
+        /* Keyboard theme channel */
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/KeyThemeName", CHANNEL4,
                 &setting) == MCS_SUCCESS)
         {
             setValue ("keytheme", setting->data.v_string, rc);
+            mcs_setting_free (setting);
+        }
+
+        /* Tweaks channel */
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleMinimum", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("cycle_minimum", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleHidden", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("cycle_hidden", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/EasyClick", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("easy_click", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusHint", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("focus_hint", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementRatio", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("placement_ratio", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/MoveOpacity", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("move_opacity", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ResizeOpacity", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("resize_opacity", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowFrameShadow", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("show_frame_shadow", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("prevent_focus_stealing", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseWithAnyButton", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
+            check_for_grabs (screen_info);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ScrollWorkspaces", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("scroll_workspaces", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ToggleWorkspaces", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("toggle_workspaces", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapLayout", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("wrap_layout", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapCycle", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("wrap_cycle", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
     }
@@ -1492,6 +1592,7 @@ initSettings (ScreenInfo *screen_info)
         mcs_client_add_channel (screen_info->mcs_client, CHANNEL2);
         mcs_client_add_channel (screen_info->mcs_client, CHANNEL3);
         mcs_client_add_channel (screen_info->mcs_client, CHANNEL4);
+        mcs_client_add_channel (screen_info->mcs_client, CHANNEL5);
         mcs_client_set_raw_channel (screen_info->mcs_client, CHANNEL4, TRUE);
     }
     else
