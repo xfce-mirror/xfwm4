@@ -104,6 +104,7 @@ BM_DEBUG_SUPPORT
 
 REVISION=`echo "$Rev$" | cut -d " " -f2`
 AC_DEFINE_UNQUOTED([REVISION], "${REVISION}", [svn revision number])
+AC_SUBST([REVISION])
 
 AC_OUTPUT([ 
 xfwm4.spec
