@@ -32,3 +32,11 @@ dist-bz2: dist
 distcheck-bz2: distcheck
 	zcat $(PACKAGE)-$(VERSION).tar.gz | \
 	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+
+snapshot: dist
+	mv $(PACKAGE)-$(VERSION).tar.gz \
+	$(PACKAGE)-$(VERSION)-r$(REVISION).tar.gz
+
+snapshot-bz2: dist-bz2
+	mv $(PACKAGE)-$(VERSION).tar.bz2 \
+	$(PACKAGE)-$(VERSION)-r$(REVISION).tar.bz2

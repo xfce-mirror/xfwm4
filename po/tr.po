@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-10 22:31+0200\n"
+"POT-Creation-Date: 2005-06-13 21:52+0200\n"
 "PO-Revision-Date: 2003-12-13 22:56+0200\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -628,22 +628,22 @@ msgstr "Çalışma alanı %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: src/settings.c:732
+#: src/settings.c:838
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: src/settings.c:738
+#: src/settings.c:844
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: src/settings.c:781
+#: src/settings.c:887
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Aktif olmayan renk algılanamıyor %s\n"
 
-#: src/settings.c:787
+#: src/settings.c:893
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"

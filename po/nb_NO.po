@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-10 22:31+0200\n"
+"POT-Creation-Date: 2005-06-13 21:52+0200\n"
 "PO-Revision-Date: 2004-12-04 00:57+0100\n"
 "Last-Translator: Eskild Hustvedt <eskild@goldenfiles.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -607,22 +607,22 @@ msgstr "Skrivebord %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"
 
-#: src/settings.c:732
+#: src/settings.c:838
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan ikke tildele aktiv farge %s\n"
 
-#: src/settings.c:738
+#: src/settings.c:844
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan ikke parse aktiv farge %s\n"
 
-#: src/settings.c:781
+#: src/settings.c:887
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan ikke tildele inaktiv farge %s\n"
 
-#: src/settings.c:787
+#: src/settings.c:893
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan ikke parse inaktiv farge %s\n"

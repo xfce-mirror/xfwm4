@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-10 22:31+0200\n"
+"POT-Creation-Date: 2005-06-13 21:52+0200\n"
 "PO-Revision-Date: 2005-01-21 15:53+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team:  <>\n"
@@ -588,22 +588,22 @@ msgstr "Työpöytä %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
-#: src/settings.c:732
+#: src/settings.c:838
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Aktiivista väriä %s ei voi varata\n"
 
-#: src/settings.c:738
+#: src/settings.c:844
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Aktiivinen väri %s ei ole tunnistettavissa \n"
 
-#: src/settings.c:781
+#: src/settings.c:887
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Ei-aktiivista väriä %s ei voi varata\n"
 
-#: src/settings.c:787
+#: src/settings.c:893
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei-aktiivinen väri %s ei ole tunnistettavissa\n"
