@@ -115,32 +115,6 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
     return (overlapX (x0, x1, tx0, tx1) * overlapY (y0, y1, ty0, ty1));
 }
 
-static void
-clientAutoMaximize (Client * c)
-{
-    ScreenInfo *screen_info = NULL;
-    GdkRectangle rect;
-    gint monitor_nbr;
-    int cx, cy;
-
-    cx = frameX (c) + (frameWidth (c) / 2);
-    cy = frameY (c) + (frameHeight (c) / 2);
-
-    screen_info = c->screen_info;
-    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
-
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > rect.width))
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
-    }
-
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > rect.height))
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
-    }
-}
-
 void 
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
@@ -518,6 +492,25 @@ clientKeepVisible (Client * c)
 }
 
 static void
+clientAutoMaximize (Client * c, int full_w, int full_h)
+{
+    ScreenInfo *screen_info = NULL;
+    GdkRectangle rect;
+    gint monitor_nbr;
+    int cx, cy;
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > full_w))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > full_h))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+    }
+}
+
+static void
 smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 {
     Client *c2;
@@ -573,7 +566,6 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                 TRACE ("overlaps is 0 so it's the best we can get");
                 c->x = test_x;
                 c->y = test_y;
-                clientAutoMaximize (c);
 
                 return;
             }
@@ -608,9 +600,11 @@ clientInitPosition (Client * c)
 {
     Client *c2;
     ScreenInfo *screen_info;
-    int full_x, full_y, full_w, full_h, msx, msy;
+    int full_x, full_y, full_w, full_h;
+    int msx = 0, msy = 0;
     GdkRectangle rect;
     gint monitor_nbr;
+    gboolean place = TRUE;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientInitPosition");
@@ -625,13 +619,12 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
-            clientAutoMaximize (c);
         }
-
-        return;
+        msx = frameX (c) + (frameWidth (c) / 2);
+        msy = frameY (c) + (frameHeight (c) / 2);
+        place = FALSE;
     }
-
-    if (clientIsTransient (c) && (c2 = clientGetTransient (c)))
+    else if (clientIsTransient (c) && (c2 = clientGetTransient (c)))
     {
         /* Center transient relative to their parent window */
         c->x = c2->x + (c2->width - c->width) / 2;
@@ -639,14 +632,17 @@ clientInitPosition (Client * c)
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c);
-            clientAutoMaximize (c);
         }
-
-        return;
+        msx = frameX (c) + (frameWidth (c) / 2);
+        msy = frameY (c) + (frameHeight (c) / 2);
+        place = FALSE;
     }
-
-    getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-
+    else
+    {
+        getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+        place = TRUE;
+    }
+    
     monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
     
@@ -666,16 +662,18 @@ clientInitPosition (Client * c)
        than 100% place the window at the center.
        Otherwise, place the window "smartly", using the good old CPU consuming algorithm...
      */
-    if ((screen_info->params->placement_ratio > 100) ||
-        ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) || 
-        (100  * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
+    if (place)
     {
-        centerPlacement (c, full_x, full_y, full_w, full_h);
+        if ((screen_info->params->placement_ratio > 100) ||
+            ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) || 
+            (100 * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
+        {
+            centerPlacement (c, full_x, full_y, full_w, full_h);
+        }
+        else
+        {
+            smartPlacement (c, full_x, full_y, full_w, full_h);
+        }
     }
-    else
-    {
-        smartPlacement (c, full_x, full_y, full_w, full_h);
-    }
-
-    clientAutoMaximize (c);
+    clientAutoMaximize (c, full_w, full_h);
 }
