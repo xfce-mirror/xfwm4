@@ -750,58 +750,57 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    if ((screen_info->params->show_frame_shadow) && (c != NULL))
+    if ((cw->mode != WINDOW_ARGB)
+        && (( c && (screen_info->params->show_frame_shadow) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+         || (!c && (screen_info->params->show_popup_shadow) )))
     {
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && (cw->mode != WINDOW_ARGB))
+        XRectangle sr;
+
+        TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);
+        cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
+        cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
+        if (!(cw->shadow))
         {
-            XRectangle sr;
-
-            TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);
-            cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
-            cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
-            if (!(cw->shadow))
+            double opacity = SHADOW_OPACITY;
+            if (cw->mode == WINDOW_TRANS)
             {
-                double opacity = SHADOW_OPACITY;
-                if (cw->mode == WINDOW_TRANS)
-                {
-                    opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE) * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
-                }
-                cw->shadow = shadow_picture (screen_info, opacity,
-                                             cw->attr.width + 2 * cw->attr.border_width,
-                                             cw->attr.height + 2 * cw->attr.border_width,
-                                             &cw->shadow_width, &cw->shadow_height);
+                opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE) * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
             }
-
-            sr.x = cw->attr.x + cw->shadow_dx;
-            sr.y = cw->attr.y + cw->shadow_dy;
-            sr.width = cw->shadow_width;
-            sr.height = cw->shadow_height;
-
-            if (sr.x < r.x)
-            {
-                r.width = (r.x + r.width) - sr.x;
-                r.x = sr.x;
-            }
-            if (sr.y < r.y)
-            {
-                r.height = (r.y + r.height) - sr.y;
-                r.y = sr.y;
-            }
-            if (sr.x + sr.width > r.x + r.width)
-            {
-                r.width = sr.x + sr.width - r.x;
-            }
-            if (sr.y + sr.height > r.y + r.height)
-            {
-                r.height = sr.y + sr.height - r.y;
-            }
+            cw->shadow = shadow_picture (screen_info, opacity,
+                                         cw->attr.width + 2 * cw->attr.border_width,
+                                         cw->attr.height + 2 * cw->attr.border_width,
+                                         &cw->shadow_width, &cw->shadow_height);
         }
-        else
+
+        sr.x = cw->attr.x + cw->shadow_dx;
+        sr.y = cw->attr.y + cw->shadow_dy;
+        sr.width = cw->shadow_width;
+        sr.height = cw->shadow_height;
+
+        if (sr.x < r.x)
         {
-            cw->shadow = None;
+            r.width = (r.x + r.width) - sr.x;
+            r.x = sr.x;
+        }
+        if (sr.y < r.y)
+        {
+            r.height = (r.y + r.height) - sr.y;
+            r.y = sr.y;
+        }
+        if (sr.x + sr.width > r.x + r.width)
+        {
+            r.width = sr.x + sr.width - r.x;
+        }
+        if (sr.y + sr.height > r.y + r.height)
+        {
+            r.height = sr.y + sr.height - r.y;
         }
     }
-
+    else if (cw->shadow)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
+        cw->shadow = None;
+    }
     return XFixesCreateRegion (myScreenGetXDisplay (screen_info), &r, 1);
 }
 

@@ -374,6 +374,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->show_frame_shadow = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/ShowPopupShadow"))
+                    {
+                        screen_info->params->show_popup_shadow = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
                     {
                         screen_info->params->prevent_focus_stealing = setting->data.v_int;
@@ -694,6 +698,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("show_frame_shadow", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowPopupShadow", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("show_popup_shadow", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL5,
@@ -1255,6 +1265,7 @@ loadSettings (ScreenInfo *screen_info)
         {"shadow_delta_width", NULL, TRUE},
         {"shadow_delta_height", NULL, TRUE},
         {"show_frame_shadow", NULL, TRUE},
+        {"show_popup_shadow", NULL, TRUE},
         {"theme", NULL, TRUE},
         {"title_alignment", NULL, TRUE},
         {"title_font", NULL, FALSE},
@@ -1402,8 +1413,10 @@ loadSettings (ScreenInfo *screen_info)
         abs (TOINT (getValue ("resize_opacity", rc)));
     screen_info->params->placement_ratio = 
         abs (TOINT (getValue ("placement_ratio", rc)));
-    screen_info->params->show_frame_shadow =
+    screen_info->params->show_frame_shadow = 
         !g_ascii_strcasecmp ("true", getValue ("show_frame_shadow", rc));
+    screen_info->params->show_popup_shadow =
+        !g_ascii_strcasecmp ("true", getValue ("show_popup_shadow", rc));
     screen_info->params->snap_to_border =
         !g_ascii_strcasecmp ("true", getValue ("snap_to_border", rc));
     screen_info->params->snap_to_windows =
