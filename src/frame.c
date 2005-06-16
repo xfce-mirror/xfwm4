@@ -765,35 +765,48 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     /* Flag clearance */
     FLAG_UNSET (c->xfwm_flags,  XFWM_FLAG_FIRST_MAP);
 
+    /* Cache mgmt */
+    if (invalidate_cache)
+    {
+        clientClearPixmapCache (c);
+        requires_clearing = TRUE;
+    }
+    else
+    {
+        if (c->pm_cache.previous_width != c->width)
+        {
+            xfwmPixmapFree (&c->pm_cache.pm_title[ACTIVE]);
+            xfwmPixmapFree (&c->pm_cache.pm_title[INACTIVE]);
+            xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
+            xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
+            c->pm_cache.previous_width = c->width;
+        }
+        if (c->pm_cache.previous_height != c->height)
+        {
+            xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
+            xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
+            xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
+            xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
+            c->pm_cache.previous_height = c->height;
+        }
+    }
+
+    /* Corners have no caching and get never resized, we need to update them separately */
+    if (requires_clearing)
+    {
+        xfwmWindowSetBG (&c->corners[CORNER_TOP_LEFT], 
+                         &screen_info->corners[CORNER_TOP_LEFT][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_TOP_RIGHT], 
+                         &screen_info->corners[CORNER_TOP_RIGHT][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_LEFT], 
+                         &screen_info->corners[CORNER_BOTTOM_LEFT][state]);
+        xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_RIGHT], 
+                         &screen_info->corners[CORNER_BOTTOM_RIGHT][state]);
+    }
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        /* Cache mgmt */
-        if (invalidate_cache)
-        {
-            clientClearPixmapCache (c);
-            requires_clearing = TRUE;
-        }
-        else
-        {
-            if (c->pm_cache.previous_width != c->width)
-            {
-                xfwmPixmapFree (&c->pm_cache.pm_title[ACTIVE]);
-                xfwmPixmapFree (&c->pm_cache.pm_title[INACTIVE]);
-                xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-                xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
-                c->pm_cache.previous_width = c->width;
-            }
-            if (c->pm_cache.previous_height != c->height)
-            {
-                xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-                xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-                xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-                xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-                c->pm_cache.previous_height = c->height;
-            }
-        }
-
         /* First, hide the buttons that we don't have... */
         for (i = 0; i < BUTTON_COUNT; i++)
         {
@@ -942,18 +955,6 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                              &c->pm_cache.pm_sides[SIDE_LEFT][state]);
             xfwmWindowSetBG (&c->sides[SIDE_RIGHT], 
                              &c->pm_cache.pm_sides[SIDE_RIGHT][state]);
-        }
-
-        if (requires_clearing)
-        {
-            xfwmWindowSetBG (&c->corners[CORNER_TOP_LEFT], 
-                             &screen_info->corners[CORNER_TOP_LEFT][state]);
-            xfwmWindowSetBG (&c->corners[CORNER_TOP_RIGHT], 
-                             &screen_info->corners[CORNER_TOP_RIGHT][state]);
-            xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_LEFT], 
-                             &screen_info->corners[CORNER_BOTTOM_LEFT][state]);
-            xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_RIGHT], 
-                             &screen_info->corners[CORNER_BOTTOM_RIGHT][state]);
         }
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
