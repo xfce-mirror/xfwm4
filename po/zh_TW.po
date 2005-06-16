@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-13 21:52+0200\n"
+"POT-Creation-Date: 2005-06-16 21:20+0200\n"
 "PO-Revision-Date: 2004-04-20 16:38+0800\n"
 "Last-Translator: Ambrose Li <acli@ada.dhs.org>\n"
 "Language-Team: \n"
@@ -614,22 +614,22 @@ msgstr "工作區 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 無法取得鼠標\n"
 
-#: src/settings.c:838
+#: src/settings.c:848
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 無法分配使用的顏色 %s\n"
 
-#: src/settings.c:844
+#: src/settings.c:854
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 無法分析使用的顏色 %s\n"
 
-#: src/settings.c:887
+#: src/settings.c:897
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 無法分配未使用的顏色 %s\n"
 
-#: src/settings.c:893
+#: src/settings.c:903
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 無法分析未使用的顏色 %s\n"

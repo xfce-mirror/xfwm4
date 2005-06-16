@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-13 21:52+0200\n"
+"POT-Creation-Date: 2005-06-16 21:20+0200\n"
 "PO-Revision-Date: 2004-12-10 13:00-0300\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: pt_BR <>\n"
@@ -600,22 +600,22 @@ msgstr "Área de trabalho %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu não conseguiu encontrar o mouse\n"
 
-#: src/settings.c:838
+#: src/settings.c:848
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Não foi possível alocar a cor ativa %s\n"
 
-#: src/settings.c:844
+#: src/settings.c:854
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "Não foi possível fazer análise da cor ativa %s\n"
 
-#: src/settings.c:887
+#: src/settings.c:897
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "Não foi possível alocar a cor inativa %s\n"
 
-#: src/settings.c:893
+#: src/settings.c:903
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "Não foi possível fazer análise da cor inativa %s\n"

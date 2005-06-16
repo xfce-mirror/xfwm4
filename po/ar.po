@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-13 21:52+0200\n"
+"POT-Creation-Date: 2005-06-16 21:20+0200\n"
 "PO-Revision-Date: 2004-3-8 8:25+0300\n"
 "Last-Translator: saleh alhathal <hathalsal@hotmail.com>\n"
 "Language-Team: arabic\n"
@@ -648,22 +648,22 @@ msgstr "بيئة العمل %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
 
-#: src/settings.c:838
+#: src/settings.c:848
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: لا أستطيع تخصيص اللون النشط%s\n"
 
-#: src/settings.c:844
+#: src/settings.c:854
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون النشط %s\n"
 
-#: src/settings.c:887
+#: src/settings.c:897
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 
-#: src/settings.c:893
+#: src/settings.c:903
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"

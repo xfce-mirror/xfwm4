@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XFce4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-13 21:52+0200\n"
+"POT-Creation-Date: 2005-06-16 21:20+0200\n"
 "PO-Revision-Date: 2004-03-11 14:02+0100\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -646,22 +646,22 @@ msgstr "Spazio di lavoro %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
 
-#: src/settings.c:838
+#: src/settings.c:848
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Impossibile allocare il colore attivo %s\n"
 
-#: src/settings.c:844
+#: src/settings.c:854
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Impossibile interpretare il colore attivo %s\n"
 
-#: src/settings.c:887
+#: src/settings.c:897
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Impossibile allocare il colore inattivo %s\n"
 
-#: src/settings.c:893
+#: src/settings.c:903
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Impossibile interpretare il colore inattivo %s\n"
