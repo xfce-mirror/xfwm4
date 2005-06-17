@@ -29,6 +29,10 @@
 #include <X11/cursorfont.h>
 #include <X11/extensions/shape.h>
 
+#ifdef HAVE_RANDR
+#include <X11/extensions/Xrandr.h>
+#endif
+
 #ifdef HAVE_COMPOSITOR
 #include <X11/extensions/Xcomposite.h>
 #include <X11/extensions/Xdamage.h>
@@ -177,9 +181,8 @@ struct _DisplayInfo
 
     gboolean have_shape;
     gboolean have_render;
+    gboolean have_xrandr;
     gint shape_event_base;
-    gint render_error_base;
-    gint render_event_base;
     gint dbl_click_time;
     gint xgrabcount;
     gint nb_screens;
@@ -187,7 +190,14 @@ struct _DisplayInfo
     Time current_time;
 
     gboolean enable_compositor;
-
+#ifdef HAVE_RENDER 
+    gint render_error_base;
+    gint render_event_base;
+#endif
+#ifdef HAVE_RANDR 
+    gint xrandr_error_base;
+    gint xrandr_event_base;
+#endif
 #ifdef HAVE_COMPOSITOR
     gint composite_error_base;
     gint composite_event_base;

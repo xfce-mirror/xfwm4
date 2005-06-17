@@ -185,6 +185,7 @@ myDisplayInit (GdkDisplay *gdisplay)
         display->shape_event_base = 0;
     }
 
+#ifdef HAVE_RENDER
     if (XRenderQueryExtension (display->dpy,
                                &display->render_event_base,
                                &display->render_error_base))
@@ -198,6 +199,27 @@ myDisplayInit (GdkDisplay *gdisplay)
         display->render_event_base = 0;
         display->render_error_base = 0;
     }
+#else
+    display->have_render = FALSE;
+#endif
+
+#ifdef HAVE_RANDR
+    if (XRRQueryExtension (display->dpy,
+                            &display->xrandr_event_base, 
+			    &display->xrandr_error_base))
+    {
+        display->have_xrandr = TRUE;
+    }
+    else
+    {
+        g_warning ("The display does not support the XRandr extension.");
+        display->have_xrandr = FALSE;
+        display->xrandr_event_base = 0;
+        display->xrandr_error_base = 0;
+    }
+#else
+    display->have_xrandr = FALSE;
+#endif
 
     display->root_cursor = 
         XCreateFontCursor (display->dpy, XC_left_ptr);
