@@ -100,6 +100,7 @@ if test x"$enable_randr" = x"yes"; then
                                   [#include <X11/Xlib.h>])],, 
                   $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
     CFLAGS="$ac_CFLAGS"
+    AC_DEFINE([HAVE_RANDR], [1], [Define to enable xrandr])
   fi
 fi
 AC_SUBST([RANDR_LIBS])
