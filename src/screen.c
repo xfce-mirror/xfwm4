@@ -31,6 +31,10 @@
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_RENDER
+#include <X11/extensions/Xrender.h>
+#endif
+
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
 #include <libsn/sn.h>

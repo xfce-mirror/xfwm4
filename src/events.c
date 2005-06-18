@@ -1308,47 +1308,36 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     ScreenInfo *screen_info = NULL;
 
     TRACE ("entering handleConfigureNotify");
+
+    screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
+    if (!screen_info)
+    {
+        return;
+    }
+    
     if (display_info->have_xrandr)
     {
-        /* We shall use XRandr for screen size notification */
-        return;
-    }
-
-    screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
-    if (!screen_info)
-    {
-        return;
-    }
-    
-    if (ev->window == screen_info->xroot)
-    {
-        TRACE ("ConfigureNotify on the screen_info->xroot win (0x%lx)", ev->window);
-        screen_info->xscreen->width   = ev->width;
-        screen_info->xscreen->height  = ev->height;
-        placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-        clientScreenResize (screen_info);
-    }
-}
-
 #ifdef HAVE_RANDR
-static void
-handleXRRNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEvent * ev)
-{
-    ScreenInfo *screen_info = NULL;
-
-    TRACE ("entering handleXRRNotify");
-
-    screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
-    if (!screen_info)
-    {
-        return;
+        XRRUpdateConfiguration ((XEvent *) ev);
+#endif
     }
-    
-    XRRUpdateConfiguration ((XEvent *) ev);
+    else
+    {
+	TRACE ("ConfigureNotify on the screen_info->xroot win (0x%lx)", ev->window);
+	screen_info->xscreen->width   = ev->width;
+	screen_info->xscreen->height  = ev->height;
+    }
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
+
+    g_print ("The size of the screen is now (%ix%i)\n",
+              ev->width,
+              ev->height);
+
+    g_print ("The size of the GDK screen is now (%ix%i)\n",
+             gdk_screen_get_width (screen_info->gscr),
+             gdk_screen_get_height (screen_info->gscr));
 }
-#endif /* HAVE_RANDR */
 
 static void
 handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
@@ -2113,12 +2102,6 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             {
                 handleShape (display_info, (XShapeEvent *) ev);
             }
-#ifdef HAVE_RANDR
-            else if ((display_info->have_xrandr) && (ev->type == display_info->xrandr_event_base + RRScreenChangeNotify))
-            {
-                handleXRRNotify (display_info, (XRRScreenChangeNotifyEvent *) ev);
-            }
-#endif
     }
     if (!gdk_events_pending () && !XPending (display_info->dpy))
     {
