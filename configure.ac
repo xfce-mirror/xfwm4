@@ -128,7 +128,7 @@ AC_SUBST(ENABLE_COMPOSITOR)
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
 
-REVISION=`cat $(top_srcdir)svn-revision.txt`
+REVISION=`cat svn-revision.txt`
 AC_DEFINE_UNQUOTED([REVISION], "${REVISION}", [svn revision number])
 AC_SUBST([REVISION])
 
