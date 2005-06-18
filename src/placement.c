@@ -494,11 +494,6 @@ clientKeepVisible (Client * c)
 static void
 clientAutoMaximize (Client * c, int full_w, int full_h)
 {
-    ScreenInfo *screen_info = NULL;
-    GdkRectangle rect;
-    gint monitor_nbr;
-    int cx, cy;
-
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > full_w))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);

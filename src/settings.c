@@ -37,6 +37,7 @@
 #include "client.h"
 #include "focus.h"
 #include "workspaces.h"
+#include "compositor.h"
 
 #define CHANNEL1 "xfwm4"
 #define CHANNEL2 "margins"
