@@ -1305,10 +1305,14 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 static void
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
-#ifndef HAVE_RANDR
     ScreenInfo *screen_info = NULL;
 
     TRACE ("entering handleConfigureNotify");
+    if (display_info->have_xrandr)
+    {
+        /* We shall use XRandr for screen size notification */
+        return;
+    }
 
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     if (!screen_info)
@@ -1324,9 +1328,6 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
         clientScreenResize (screen_info);
     }
-#else /* !HAVE_RANDR */
-    TRACE ("handleConfigureNotify ignored");
-#endif /* HAVE_RANDR */
 }
 
 #ifdef HAVE_RANDR
