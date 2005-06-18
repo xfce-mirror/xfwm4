@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-16 21:20+0200\n"
+"POT-Creation-Date: 2005-06-18 22:46+0200\n"
 "PO-Revision-Date: 2005-03-22 22:25+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -595,22 +595,22 @@ msgstr "작업공간 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못 했습니다.\n"
 
-#: src/settings.c:848
+#: src/settings.c:849
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 활성 표시색 %s을 할당하지 못 했습니다.\n"
 
-#: src/settings.c:854
+#: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 활성 표시색 %s을 분석하지 못 했습니다.\n"
 
-#: src/settings.c:897
+#: src/settings.c:898
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 비활성 표시색 %s을 할당하지 못 했습니다.\n"
 
-#: src/settings.c:903
+#: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 비활성 표시색 %s을 분석하지 못 했습니다.\n"

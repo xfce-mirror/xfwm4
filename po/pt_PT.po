@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-16 21:20+0200\n"
+"POT-Creation-Date: 2005-06-18 22:46+0200\n"
 "PO-Revision-Date: 2004-10-10 12:36+0100\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -611,22 +611,22 @@ msgstr "Área de Trabalho %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falhou a captar o ponteiro\n"
 
-#: src/settings.c:848
+#: src/settings.c:849
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Não foi possível alocar a cor activa %s\n"
 
-#: src/settings.c:854
+#: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr ""
 
-#: src/settings.c:897
+#: src/settings.c:898
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr ""
 
-#: src/settings.c:903
+#: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""

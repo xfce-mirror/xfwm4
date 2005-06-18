@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-16 21:20+0200\n"
+"POT-Creation-Date: 2005-06-18 22:46+0200\n"
 "PO-Revision-Date: 2004-01-13 00:00+0100\n"
 "Last-Translator: edscott <edscott@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -608,22 +608,22 @@ msgstr "Escritorio %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 
-#: src/settings.c:848
+#: src/settings.c:849
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:854
+#: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
 
-#: src/settings.c:897
+#: src/settings.c:898
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: src/settings.c:903
+#: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No se puede interpretar el color inactivo %s\n"

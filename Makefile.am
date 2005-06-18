@@ -5,6 +5,7 @@ EXTRA_DIST =								\
 	intltool-extract.in						\
 	intltool-merge.in						\
 	intltool-update.in						\
+	svn-revision.txt						\
 	COMPOSITOR
 
 DISTCLEANFILES =							\
@@ -15,8 +16,15 @@ DISTCLEANFILES =							\
 
 SUBDIRS = po doc icons src mcs-plugin defaults themes
 
+svn-revision.txt:
+	svnversion $(top_srcdir) > $(top_srcdir)svn-revision.txt
+
 distclean-local:
-	rm -rf *.cache
+	rm -rf *.cache $(top_srcdir)svn-revision.txt
+
+dist-local:
+	rm -f $(top_srcdir)svn-revision.txt
+	svnversion $(top_srcdir) > $(top_srcdir)svn-revision.txt
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-16 21:20+0200\n"
+"POT-Creation-Date: 2005-06-18 22:46+0200\n"
 "PO-Revision-Date: 2005-01-24 17:24+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -593,22 +593,22 @@ msgstr "工作区 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
-#: src/settings.c:848
+#: src/settings.c:849
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 无法分配所选颜色 %s\n"
 
-#: src/settings.c:854
+#: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: src/settings.c:897
+#: src/settings.c:898
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 无法分配 inactive 颜色 %s\n"
 
-#: src/settings.c:903
+#: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 无法解释 inactive颜色 %s\n"

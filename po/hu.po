@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-16 21:20+0200\n"
+"POT-Creation-Date: 2005-06-18 22:46+0200\n"
 "PO-Revision-Date: 2004-11-16 01:06+0100\n"
 "Last-Translator: SZERV.C Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -597,22 +597,22 @@ msgstr "%i. munkaterület"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: a GtkMenu nem tudta elkapni a mutatót\n"
 
-#: src/settings.c:848
+#: src/settings.c:849
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Nem lehet lefoglalni az aktív színt: %s\n"
 
-#: src/settings.c:854
+#: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Nem lehet értelmezni az aktív színt: %s\n"
 
-#: src/settings.c:897
+#: src/settings.c:898
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Nem lehet lefoglalni az inaktív színt: %s\n"
 
-#: src/settings.c:903
+#: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Nem lehet értelmezni az inaktív színt: %s\n"
