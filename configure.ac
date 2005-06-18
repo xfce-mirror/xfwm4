@@ -1,6 +1,6 @@
 dnl configure.ac
 dnl
-dnl xfwm4 - window manager for the XFce4 desktop environment
+dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
 m4_define([xfwm4_version],[4.3.0])
