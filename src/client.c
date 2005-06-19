@@ -1533,6 +1533,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (shaped)
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER);
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
     }
 
     if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize))
@@ -2650,8 +2651,12 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     full_h = MIN (gdk_screen_get_height (screen_info->gscr) - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
 
-    /* Adjust size to the widest size available, not covering struts */
-    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+    if (((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ)) ||
+        ((mode & WIN_STATE_MAXIMIZED_VERT) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT)))
+    {
+        /* Adjust size to the widest size available, not covering struts */
+        clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+    }
 
     if (mode & WIN_STATE_MAXIMIZED_HORIZ)
     {

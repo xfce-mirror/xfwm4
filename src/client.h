@@ -119,6 +119,7 @@
 #define CLIENT_FLAG_STICKY             (1L<<13)
 #define CLIENT_FLAG_NAME_CHANGED       (1L<<15)
 #define CLIENT_FLAG_DEMANDS_ATTENTION  (1L<<16)
+#define CLIENT_FLAG_HAS_SHAPE          (1L<<17)
 
 #define WM_FLAG_DELETE                 (1L<<0)
 #define WM_FLAG_INPUT                  (1L<<1)
