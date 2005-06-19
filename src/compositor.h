@@ -49,6 +49,5 @@ void     compositorRebuildScreen    (ScreenInfo *);
 
 void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 void     compositorDamageWindow     (DisplayInfo *, Window);
-void     compositorUpdateWindow     (DisplayInfo *, Window, gint, gint, gboolean);
 
 #endif /* INC_COMPOSITOR_H */

@@ -77,6 +77,7 @@ struct _CWindow
     Damage damage;
     gboolean damaged;
     gboolean viewable;
+    gboolean shaped;
 
 #if HAVE_NAME_WINDOW_PIXMAP
     Pixmap name_window_pixmap;
@@ -136,6 +137,24 @@ find_cwindow_in_display (DisplayInfo *display_info, Window id)
         }
     }
     return NULL;
+}
+
+static gboolean
+is_shaped (DisplayInfo *display_info, Window id)
+{
+    int xws, yws, xbs, ybs;
+    unsigned wws, hws, wbs, hbs;
+    int boundingShaped, clipShaped;
+
+    g_return_val_if_fail (display_info != NULL, FALSE);
+
+    if (display_info->have_shape)
+    {
+        XShapeQueryExtents (display_info->dpy, id, &boundingShaped, &xws, &yws, &wws,
+                            &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
+        return (boundingShaped != 0);
+    }
+    return FALSE;
 }
 
 static gdouble
@@ -752,7 +771,7 @@ win_extents (CWindow *cw)
 
     if ((cw->mode != WINDOW_ARGB)
         && (( c && (screen_info->params->show_frame_shadow) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
-         || (!c && (screen_info->params->show_popup_shadow) )))
+         || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped))))
     {
         XRectangle sr;
 
@@ -1457,6 +1476,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
     new->screen_info = screen_info;
     new->id = id;
     new->damaged = FALSE;
+    new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
     if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
     {
@@ -1920,6 +1940,39 @@ compositorHandleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent *e
     compositorRemoveWindow (display_info, ev->window);
 }
 
+static void
+compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
+{
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleShapeNotify for 0x%lx", ev->window);
+
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+    
+    cw = find_cwindow_in_display (display_info, ev->window);
+    if (cw)
+    {
+        if (ev->kind == ShapeBounding)
+        {
+            if ((ev->shaped) && !(cw->shaped))
+            {
+                cw->shaped = TRUE;
+            }
+            else if (!(ev->shaped) && (cw->shaped))
+            {
+                cw->shaped = FALSE;
+            }
+            resize_win (cw, cw->attr.x, cw->attr.y, cw->attr.width, cw->attr.height, cw->attr.border_width, TRUE);
+        }
+    }
+}
+
 #endif /* HAVE_COMPOSITOR */
 
 void
@@ -2105,6 +2158,10 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     else if (ev->type == (display_info->damage_event_base + XDamageNotify))
     {
         compositorHandleDamage (display_info, (XDamageNotifyEvent *) ev);
+    }
+    else if (ev->type == (display_info->shape_event_base + ShapeNotify))
+    {
+        compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2447,31 +2504,6 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     {
         damage_win (cw);
         add_repair (display_info);
-    }
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
-compositorUpdateWindow (DisplayInfo *display_info, Window id, gint new_width, gint new_height, gboolean shape_notify)
-{
-#ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("entering compositorUpdateWindow: 0x%lx", id);
-
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        TRACE ("Resizing 0x%ld to (%i, %i)", cw->id, new_width, new_height);
-        resize_win (cw, cw->attr.x, cw->attr.y, new_width, new_height, cw->attr.border_width, shape_notify);
     }
 #endif /* HAVE_COMPOSITOR */
 }

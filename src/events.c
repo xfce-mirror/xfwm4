@@ -2011,10 +2011,6 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
     {
         frameDraw (c, FALSE, TRUE);
     }
-    compositorUpdateWindow (display_info, ev->window, 
-                                          ev->width + ev->x, 
-                                          ev->height + ev->y, 
-                                          (ev->kind == ShapeBounding));
 }
 
 static void
