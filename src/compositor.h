@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         xcompmgr - (c) 2003 Keith Packard
-        xfwm4    - (c) 2004 Olivier Fourdan
+        xfwm4    - (c) 2005 Olivier Fourdan
  
  */
 

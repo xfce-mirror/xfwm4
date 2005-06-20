@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         mozilla  - (c) 1998 mozilla.org
-        xfwm4    - (c) 2002-2004 Olivier Fourdan
+        xfwm4    - (c) 2002-2005 Olivier Fourdan
  
  */
 

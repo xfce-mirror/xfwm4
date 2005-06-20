@@ -14,7 +14,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+        Copyright (C) 2002-2005 Jasper Huijsmans (huysmans@users.sourceforge.net)
                                 Olivier Fourdan (fourdan@xfce.org)
 */
 

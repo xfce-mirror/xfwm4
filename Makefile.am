@@ -22,10 +22,6 @@ svn-revision.txt:
 distclean-local:
 	rm -rf *.cache svn-revision.txt
 
-dist-local:
-	rm -f svn-revision.txt
-	svnversion $(top_srcdir) > svn-revision.txt
-
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz

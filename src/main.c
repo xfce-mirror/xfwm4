@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2004 Olivier Fourdan
+        xfwm4    - (c) 2002-2005 Olivier Fourdan
  
  */
 
@@ -316,9 +316,10 @@ print_version (void)
 {
     g_print ("\tThis is %s version %s (revision %s) for Xfce %s\n", 
                     PACKAGE, VERSION, REVISION, xfce_version_string());
-    g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
+    g_print ("\tReleased under the terms of the GNU General Public License.\n"); 
+    g_print ("\tCompiled against GTK+-%d.%d.%d, ", 
                     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-    g_print ("linked with GTK+-%d.%d.%d.\n", 
+    g_print ("using GTK+-%d.%d.%d.\n", 
                     gtk_major_version, gtk_minor_version, gtk_micro_version);
     exit (0);
 }
