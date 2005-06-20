@@ -173,7 +173,6 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
             }
         }
     }
-    g_print ("Max area avail. (x=%i, y=%i, w=%i; h=%i)\n", *x, *y, *w, *h);
 }
 
 gboolean

@@ -1329,14 +1329,6 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     }
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
-
-    g_print ("The size of the screen is now (%ix%i)\n",
-              ev->width,
-              ev->height);
-
-    g_print ("The size of the GDK screen is now (%ix%i)\n",
-             gdk_screen_get_width (screen_info->gscr),
-             gdk_screen_get_height (screen_info->gscr));
 }
 
 static void
