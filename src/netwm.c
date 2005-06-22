@@ -696,7 +696,8 @@ clientGetInitialNetWmDesktop (Client * c)
     }
     else
     {
-        if (!FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED | XFWM_FLAG_WORKSPACE_SET))
+        if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED)
+            &&  !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
         {
             FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
             c->win_workspace = c->screen_info->current_ws;

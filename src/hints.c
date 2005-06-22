@@ -993,28 +993,30 @@ getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean
-getWindowStartupId (DisplayInfo *display_info, Window window, char **startup_id)
+getWindowStartupId (DisplayInfo *display_info, Window w, char **startup_id)
 {
-    XTextProperty tp;
+    char *str;
+    int len;
 
     TRACE ("entering getWindowStartupId");
 
     g_return_val_if_fail (startup_id != NULL, FALSE);
     *startup_id = NULL;
-    g_return_val_if_fail (window != None, FALSE);
+    g_return_val_if_fail (w != None, FALSE);
 
-    if (XGetTextProperty (display_info->dpy, window, &tp, display_info->atoms[NET_STARTUP_ID]))
+    if (getUTF8String (display_info, w, NET_STARTUP_ID, &str, &len))
     {
-        if (tp.value)
-        {
-            if ((tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
-            {
-                *startup_id = g_strdup ((char *) tp.value);
-                XFree (tp.value);
-                return TRUE;
-            }
-            XFree (tp.value);
-        }
+        *startup_id = strdup (str);
+        XFree (str);
+        return TRUE;
+    }
+
+    str = get_text_property (display_info, w, NET_STARTUP_ID);
+    if (str)
+    {
+        *startup_id = strdup (str);
+        XFree (str);
+        return TRUE;
     }
 
     return FALSE;

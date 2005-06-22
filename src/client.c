@@ -1369,7 +1369,6 @@ clientGetUserTime (Client * c)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
-    g_return_if_fail (c != NULL);
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1496,7 +1495,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->fullscreen_old_height = c->height;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
-
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
+    c->startup_id = NULL;
+#endif
+ 
     shaped = clientCheckShape(c);
     if (shaped)
     {
@@ -1542,10 +1544,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         }
     }
     c->client_leader = getClientLeader (display_info, c->window);
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION
-    c->startup_id = NULL;
-    getWindowStartupId (display_info, c->window, &c->startup_id);
-#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
     TRACE ("\"%s\" (0x%lx) initial map_state = %s",
                 c->name, c->window,
                 (attr.map_state == IsUnmapped) ?
@@ -1577,6 +1576,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
     c->fullscreen_old_layer = c->win_layer;
 
+    /* Apply startup notification properties if available */
+    sn_client_startup_properties (c);
+
     /* Reload from session */
     if (sessionMatchWinToSM (c))
     {
@@ -1584,7 +1586,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
 
     /* Beware, order of calls is important here ! */
-    sn_client_startup_properties (c);
     clientGetWinState (c);
     clientGetNetState (c);
     clientGetNetWmType (c);
@@ -4027,23 +4028,34 @@ clientGetLeader (Client * c)
 char *
 clientGetStartupId (Client * c)
 {
-    TRACE ("entering clientStartupId");
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+    gboolean got_startup_id = FALSE;
+    
     g_return_val_if_fail (c != NULL, NULL);
+    g_return_val_if_fail (c->window != None, NULL);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    
     if (c->startup_id)
     {
-        return c->startup_id;
+        return (c->startup_id);
     }
-    else
-    {
-        Client *c2 = NULL;
 
-        c2 = clientGetLeader (c);
-        if (c2)
-        {
-            return c2->startup_id;
-        }
+    got_startup_id = getWindowStartupId (display_info, c->window, &c->startup_id);
+    
+    if (!got_startup_id && (c->client_leader))
+    {
+        got_startup_id = getWindowStartupId (display_info, c->client_leader, &c->startup_id);
     }
-    return NULL;
+
+    if (!got_startup_id && (c->group_leader))
+    {
+        got_startup_id = getWindowStartupId (display_info, c->group_leader, &c->startup_id);
+    }
+    
+    return (c->startup_id);
 }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
