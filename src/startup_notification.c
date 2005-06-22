@@ -230,10 +230,8 @@ sn_client_startup_properties (Client * c)
 
             wmclass = sn_startup_sequence_get_wmclass (tmp->data);
 
-            if ((wmclass != NULL) && ((c->class.res_class
-                        && !strcmp (wmclass, c->class.res_class))
-                    || (c->class.res_name
-                        && !strcmp (wmclass, c->class.res_name))))
+            if ((wmclass != NULL) && ((c->class.res_class && !strcmp (wmclass, c->class.res_class))
+                || (c->class.res_name && !strcmp (wmclass, c->class.res_name))))
             {
                 sequence = tmp->data;
 
@@ -277,9 +275,9 @@ sn_client_startup_properties (Client * c)
     {
         int workspace;
 
+        workspace = sn_startup_sequence_get_workspace (sequence);
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
         {
-            workspace = sn_startup_sequence_get_workspace (sequence);
             if (workspace >= 0)
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
