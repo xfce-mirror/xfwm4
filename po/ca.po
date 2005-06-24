@@ -1,4 +1,4 @@
-# translation of ca.po to 
+# translation of ca.po to català
 # Window manager for XFce desktop environment.
 # Copyright (C) 2003, 2004 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the xfwm4 package.
@@ -10,21 +10,20 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-04-20 21:53+0200\n"
+"PO-Revision-Date: 2005-06-22 01:48+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
-"Language-Team:  <ca@li.org>\n"
+"Language-Team: català <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Marges dels espais de treball"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Els marges són espais a les vores de la pantalla on cap finestra es "
 "col·locarà"
@@ -77,7 +76,7 @@ msgstr "Pitjeu en un espai de treball per editar-lo"
 
 #: mcs-plugin/workspaces.c:527
 msgid "Number of workspaces:"
-msgstr "Nombre d'espais de treball"
+msgstr "Nombre d'espais de treball:"
 
 #. Workspace names
 #: mcs-plugin/workspaces.c:558
@@ -299,8 +298,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1757
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Salta de espai de treball quan s'arrossegui una finestra fora de la pantalla"
+msgstr "Salta de espai de treball quan s'arrossegui una finestra fora de la pantalla"
 
 #: mcs-plugin/xfwm4_plugin.c:1767
 msgid "Edge Resistance :"
@@ -472,12 +470,12 @@ msgstr "Mou la finestra a l'escriptori esquerra"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Mostrar escriptori"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mou la finestra a l'escriptori 1"
+msgstr "Mou la finestra a l'escriptori %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -657,26 +655,3 @@ msgstr "Canvia a..."
 msgid "Unknown application!"
 msgstr "Aplicació desconeguda!"
 
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Mou la finestra a l'escriptori 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Mou la finestra a l'escriptori 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Mou la finestra a l'escriptori 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Mou la finestra a l'escriptori 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Mou la finestra a l'escriptori 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Mou la finestra a l'escriptori 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Mou la finestra a l'escriptori 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Mou la finestra a l'escriptori 9"
