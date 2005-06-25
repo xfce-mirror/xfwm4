@@ -2215,15 +2215,21 @@ write_options (McsPlugin * mcs_plugin)
 
     path = g_build_filename ("xfce4", "mcs_settings", RCFILE1, NULL);
     rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
-    result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL1, rcfile);
+    if (G_LIKELY (rcfile == NULL))
+    {
+        result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL1, rcfile);
+        g_free (rcfile);
+    }
     g_free (path);
-    g_free (rcfile);
 
     path = g_build_filename ("xfce4", "mcs_settings", RCFILE2, NULL);
     rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
-    result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL2, rcfile);
+    if (G_LIKELY (rcfile == NULL))
+    {
+        result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL2, rcfile);
+        g_free (rcfile);
+    }
     g_free (path);
-    g_free (rcfile);
 
     return result;
 }
