@@ -2247,7 +2247,7 @@ gboolean
 write_options (McsPlugin * mcs_plugin)
 {
     gchar *rcfile, *path;
-    gboolean result;
+    gboolean result = FALSE;
 
     path = g_build_filename ("xfce4", "mcs_settings", RCFILE1, NULL);
     rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
