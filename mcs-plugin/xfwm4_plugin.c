@@ -772,26 +772,35 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
 
     if (info)
     {
-        if (!has_decoration && !has_keybinding)
+        if (!strcmp (theme_dir, info->path))
         {
-            list = g_list_remove (list, info);
-            theme_info_free (info);
-        }
-        else if ((info->has_keybinding != has_keybinding)
-            || (info->has_decoration != has_decoration) || (info->set_layout != set_layout) || (info->set_align != set_align) || (info->set_font != set_font))
-        {
-            info->has_keybinding = has_keybinding;
-            info->has_decoration = has_decoration;
-            info->set_layout = set_layout;
-            info->set_align = set_align;
-            info->set_font = set_font;
-            info->user_writable = user_writable;
+            if (!has_decoration && !has_keybinding)
+            {
+                TRACE ("Removing %s", theme_name);
+                list = g_list_remove (list, info);
+                theme_info_free (info);
+            }
+            else if ((info->has_keybinding != has_keybinding)
+                     || (info->has_decoration != has_decoration) 
+                     || (info->set_layout != set_layout) 
+                     || (info->set_align != set_align) 
+                     || (info->set_font != set_font))
+            {
+                TRACE ("Updating %s", theme_name);
+                info->has_keybinding = has_keybinding;
+                info->has_decoration = has_decoration;
+                info->set_layout = set_layout;
+                info->set_align = set_align;
+                info->set_font = set_font;
+                info->user_writable = user_writable;
+            }
         }
     }
     else
     {
         if (has_decoration || has_keybinding)
         {
+            TRACE ("Adding %s", theme_name);
             info = g_new0 (ThemeInfo, 1);
             info->path = g_strdup (theme_dir);
             info->name = g_strdup (theme_name);
@@ -818,7 +827,6 @@ themes_common_list_add_dir (const char *dirname, GList * theme_list)
     DIR *dir;
 
     g_return_val_if_fail (dirname != NULL, theme_list);
-
     if ((dir = opendir (dirname)) != NULL)
     {
         while ((de = readdir (dir)))
@@ -978,10 +986,10 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
 
                     /* refresh list */
                     while (keybinding_theme_list)
-                      {
+                    {
                         theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
                         keybinding_theme_list = g_list_next (keybinding_theme_list);
-                      }
+                    }
                     g_list_free (keybinding_theme_list);
                     
                     g_free (current_key_theme);
