@@ -772,26 +772,35 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
 
     if (info)
     {
-        if (!has_decoration && !has_keybinding)
+        if (!strcmp (theme_dir, info->path))
         {
-            list = g_list_remove (list, info);
-            theme_info_free (info);
-        }
-        else if ((info->has_keybinding != has_keybinding)
-            || (info->has_decoration != has_decoration) || (info->set_layout != set_layout) || (info->set_align != set_align) || (info->set_font != set_font))
-        {
-            info->has_keybinding = has_keybinding;
-            info->has_decoration = has_decoration;
-            info->set_layout = set_layout;
-            info->set_align = set_align;
-            info->set_font = set_font;
-            info->user_writable = user_writable;
+            if (!has_decoration && !has_keybinding)
+            {
+                TRACE ("Removing %s", theme_name);
+                list = g_list_remove (list, info);
+                theme_info_free (info);
+            }
+            else if ((info->has_keybinding != has_keybinding)
+                     || (info->has_decoration != has_decoration) 
+                     || (info->set_layout != set_layout) 
+                     || (info->set_align != set_align) 
+                     || (info->set_font != set_font))
+            {
+                TRACE ("Updating %s", theme_name);
+                info->has_keybinding = has_keybinding;
+                info->has_decoration = has_decoration;
+                info->set_layout = set_layout;
+                info->set_align = set_align;
+                info->set_font = set_font;
+                info->user_writable = user_writable;
+            }
         }
     }
     else
     {
         if (has_decoration || has_keybinding)
         {
+            TRACE ("Adding %s", theme_name);
             info = g_new0 (ThemeInfo, 1);
             info->path = g_strdup (theme_dir);
             info->name = g_strdup (theme_name);
