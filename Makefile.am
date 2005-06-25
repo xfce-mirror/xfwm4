@@ -17,7 +17,7 @@ DISTCLEANFILES =							\
 SUBDIRS = po doc icons src mcs-plugin defaults themes
 
 clean-revision:
-	rm -r svn-revision.txt
+	@rm -f svn-revision.txt
 
 svn-revision.txt:
 	svnversion $(top_srcdir) > svn-revision.txt
