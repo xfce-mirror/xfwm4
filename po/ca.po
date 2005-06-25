@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 23:58+0200\n"
+"POT-Creation-Date: 2005-06-25 23:35+0200\n"
 "PO-Revision-Date: 2004-03-29 22:19+0100\n"
 "Last-Translator: Carles Munoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <ca@li.org>\n"
@@ -153,185 +153,185 @@ msgstr ""
 msgid "Hidden"
 msgstr "Ocult"
 
-#: mcs-plugin/xfwm4_plugin.c:1335
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "Diàleg de selecció del tipus de lletra"
 
-#: mcs-plugin/xfwm4_plugin.c:1406 mcs-plugin/xfwm4_plugin.c:1892
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Gestor de Finestres"
 
-#: mcs-plugin/xfwm4_plugin.c:1419
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "Ajustaments del Gestor de Finestres"
 
-#: mcs-plugin/xfwm4_plugin.c:1448
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "Tipus de lletra del títol"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "Alineació del títol"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "Alineació dintre de la barra de títol:"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "Disseny del botó"
 
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1483
 #, fuzzy
 msgid "Style"
 msgstr "Títol"
 
-#: mcs-plugin/xfwm4_plugin.c:1513
+#: mcs-plugin/xfwm4_plugin.c:1521
 #, fuzzy
 msgid "Window shortcuts"
 msgstr "Enfocar les noves finestres"
 
-#: mcs-plugin/xfwm4_plugin.c:1533
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
 msgid "Shortcut"
 msgstr "Dreceres de Teclat"
 
-#: mcs-plugin/xfwm4_plugin.c:1554
+#: mcs-plugin/xfwm4_plugin.c:1562
 #, fuzzy
 msgid "Keyboard"
 msgstr "Dreceres de Teclat"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "Tipus d'enfocament"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "Pitjeu per enfocar"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "L'enfocament segueix el ratolí"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "Enfocar les noves finestres"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1599
 #, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 "Automàticament enfoca les \n"
 "finestres de nova creació"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "Col·locar en primer pla al enfocar"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1612
 #, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Automàticament col·loca en \n"
 "primer pla les finestres enfocades"
 
-#: mcs-plugin/xfwm4_plugin.c:1614
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "Retard abans de col·locar en primer pla la finestra:"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "Lent"
 
-#: mcs-plugin/xfwm4_plugin.c:1626
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "Ràpid"
 
-#: mcs-plugin/xfwm4_plugin.c:1642
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "Col·loca en primer pla al pitjar"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1654
 #, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "Col·loca en primer pla la finestra quan es\n"
 "pitgi dins la finestra de l'aplicació"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1659
 #, fuzzy
 msgid "Focus"
 msgstr "Tipus d'enfocament"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "Alineació de les finestres"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "Alinea les finestres a la vora de la pantalla"
 
-#: mcs-plugin/xfwm4_plugin.c:1674
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "Alinea les finestres amb les altres finestres"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "Distància:"
 
-#: mcs-plugin/xfwm4_plugin.c:1690 mcs-plugin/xfwm4_plugin.c:1740
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Menuda"
 
-#: mcs-plugin/xfwm4_plugin.c:1696 mcs-plugin/xfwm4_plugin.c:1746
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Gran"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "Ajustar els espais de treball"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 "Salta de espai de treball quan el punter assoleixi un dels laterals de la "
 "pantalla"
 
-#: mcs-plugin/xfwm4_plugin.c:1724
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Salta de espai de treball quan s'arrossegui una finestra fora de la pantalla"
 
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "Resistència del lateral:"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "Moure i canviar de mida opac"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "Mostra el contingut de les finestres quan canvien de mida"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "Mostra el contingut de les finestres quan es mouen"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "Acció del doble clic"
 
-#: mcs-plugin/xfwm4_plugin.c:1785
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "Avançat"
 

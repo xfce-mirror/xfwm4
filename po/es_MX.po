@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 23:58+0200\n"
+"POT-Creation-Date: 2005-06-25 23:35+0200\n"
 "PO-Revision-Date: 2004-01-13 00:00+0100\n"
 "Last-Translator: edscott <edscott@xfce.org>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -154,172 +154,172 @@ msgstr "El título de ventana, no puede ser removido"
 msgid "Hidden"
 msgstr "Oculto"
 
-#: mcs-plugin/xfwm4_plugin.c:1335
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "Diálogo de Selección de Fuente"
 
-#: mcs-plugin/xfwm4_plugin.c:1406 mcs-plugin/xfwm4_plugin.c:1892
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Gestor de Ventanas"
 
-#: mcs-plugin/xfwm4_plugin.c:1419
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "Preferencias del Gestor de Ventanas"
 
-#: mcs-plugin/xfwm4_plugin.c:1448
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "Fuente del Título"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "Alineado del Título"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "Alineado del texto dentro de la barra de título :"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "Disposición de los botones"
 
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Style"
 msgstr "Estilo"
 
-#: mcs-plugin/xfwm4_plugin.c:1513
+#: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Window shortcuts"
 msgstr "Atajos para las ventanas"
 
-#: mcs-plugin/xfwm4_plugin.c:1533
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr "Comando"
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
 msgstr "Atajo"
 
-#: mcs-plugin/xfwm4_plugin.c:1554
+#: mcs-plugin/xfwm4_plugin.c:1562
 msgid "Keyboard"
 msgstr "Teclado"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "Modelo de foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "Pinchar para dar foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "El foco sigue al ratón"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "Nuevo foco de ventana"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Automatically give focus to newly created windows"
 msgstr "Automáticamente dar el foco a las ventanas nuevas"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "Levantar con el foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Automatically raise windows when they receive focus"
 msgstr "Automáticamente levantar ventanas cuando tengan el foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1614
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "Espera antes de levantar la ventana con foco :"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "Lento"
 
-#: mcs-plugin/xfwm4_plugin.c:1626
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "Rápido"
 
-#: mcs-plugin/xfwm4_plugin.c:1642
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "Levantar al pinchar"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Raise window when clicking inside application window"
 msgstr "Levantar la ventana cuando se pinche dentro de ella"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Focus"
 msgstr "Foco"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "Atracción de las ventanas"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "Pegar ventanas al borde del escritorio"
 
-#: mcs-plugin/xfwm4_plugin.c:1674
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "Atraer ventanas entre si"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "Distancia :"
 
-#: mcs-plugin/xfwm4_plugin.c:1690 mcs-plugin/xfwm4_plugin.c:1740
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Pequeño"
 
-#: mcs-plugin/xfwm4_plugin.c:1696 mcs-plugin/xfwm4_plugin.c:1746
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Ancho"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "Saltar al escritorio siguiente"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 "Saltar al siguiente escritorio cuando el puntero llegue al borde del "
 "escritorio"
 
-#: mcs-plugin/xfwm4_plugin.c:1724
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Saltar al siguiente escritorio al arrastrar las ventanas fuera del "
 "escritorio actual"
 
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "Resistencia en los bordes :"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "Redimensionado y movimiento opaco"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "Mostrar el contenido de las ventanas cuando se redimensionen"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "Mostrar contenido de la ventana cuando se mueva"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "Acción al hacer doble click"
 
-#: mcs-plugin/xfwm4_plugin.c:1785
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Acción a realizar cuando se haga doble click en la barra de título :"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "Avanzado"
 

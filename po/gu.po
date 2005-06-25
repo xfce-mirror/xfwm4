@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 23:58+0200\n"
+"POT-Creation-Date: 2005-06-25 23:35+0200\n"
 "PO-Revision-Date: 2005-05-03 18:24+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <gu@li.org>\n"
@@ -157,168 +157,168 @@ msgstr "વિન્ડો શીર્ષક, તે દૂર કરી શક
 msgid "Hidden"
 msgstr "છુપુ"
 
-#: mcs-plugin/xfwm4_plugin.c:1335
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "ફોન્ટ પસંદગી સંવાદ"
 
-#: mcs-plugin/xfwm4_plugin.c:1406 mcs-plugin/xfwm4_plugin.c:1892
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "વિન્ડો વ્યવસ્થાપક"
 
-#: mcs-plugin/xfwm4_plugin.c:1419
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "વિન્ડો વ્યવસ્થાપક પસંદગીઓ"
 
-#: mcs-plugin/xfwm4_plugin.c:1448
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "શીર્ષક ફોન્ટ"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "શીર્ષક ગોઠવણી"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "શીર્ષક પટ્ટીની અંદર શીર્ષક ગોઠવણી :"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "બટનનો દેખાવ"
 
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Style"
 msgstr "શૈલી"
 
-#: mcs-plugin/xfwm4_plugin.c:1513
+#: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Window shortcuts"
 msgstr "વિન્ડો ટુંકા પથો"
 
-#: mcs-plugin/xfwm4_plugin.c:1533
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr "આદેશ"
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
 msgstr "ટુંકો પથ"
 
-#: mcs-plugin/xfwm4_plugin.c:1554
+#: mcs-plugin/xfwm4_plugin.c:1562
 msgid "Keyboard"
 msgstr "કીબોર્ડ"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "મોડેલ પર ફોકસ કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "ફોકસ કરવા માટે ક્લિક કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "ફોકસ માઉસને અનુસરે છે"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "નવી વિન્ડો ફોકસ"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Automatically give focus to newly created windows"
 msgstr "નવી બનેલી વિન્ડોને આપોઆપ ફોકસ કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "ફોકસ પર વધારો"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Automatically raise windows when they receive focus"
 msgstr "આપોઆપ વિન્ડો મોટી કરો જ્યારે તેઓ ફોકસ થાય"
 
-#: mcs-plugin/xfwm4_plugin.c:1614
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "ફોકસ થયેલ વિન્ડો વધારવા પહેલા વિલંબ :"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "ધીમુ"
 
-#: mcs-plugin/xfwm4_plugin.c:1626
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "ઝડપી"
 
-#: mcs-plugin/xfwm4_plugin.c:1642
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "ક્લિક પર વધારો"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Raise window when clicking inside application window"
 msgstr "કાર્યક્રમ વિન્ડોની અંદર પર ક્લિક કરો ત્યારે વિન્ડો વધારો"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Focus"
 msgstr "ફોકસ"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "વિન્ડો બદલી રહ્યા છીએ"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "સ્ક્રીનની કિનારીમાંથી વિન્ડો બદલો"
 
-#: mcs-plugin/xfwm4_plugin.c:1674
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "વિન્ડોને અન્ય વિન્ડોમાં સાંકળો"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "અંતર :"
 
-#: mcs-plugin/xfwm4_plugin.c:1690 mcs-plugin/xfwm4_plugin.c:1740
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "નાનુ"
 
-#: mcs-plugin/xfwm4_plugin.c:1696 mcs-plugin/xfwm4_plugin.c:1746
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "પહોળુ"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "કામ કરવાની જગ્યાઓને લપેટો"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "જ્યારે નિર્દેશક સ્ક્રીનની બાજુ પર પહોંચી જાય ત્યારે કામ કરવાની જગ્યાઓને લપેટો"
 
-#: mcs-plugin/xfwm4_plugin.c:1724
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "જ્યારે વિન્ડોને સ્ક્રીનની બહાર ખેંચી રહ્યા હોય ત્યારે કામ કરવાની જગ્યાઓને લપેટો"
 
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "બાજુનો અવરોધ :"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "અપારદર્શક રીતે ખસેડો અને માપ બદલો"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "જ્યારે માપ બદલી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "જ્યારે ખસેડી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "બેવડું ક્લિકની ક્રિયા"
 
-#: mcs-plugin/xfwm4_plugin.c:1785
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "જ્યારે શીર્ષક પટ્ટી પર બેવડું ક્લિક કરી રહ્યા હોય ત્યારે કરવાની ક્રિયા :"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "ઉન્નત"
 

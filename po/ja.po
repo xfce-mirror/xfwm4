@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 23:58+0200\n"
+"POT-Creation-Date: 2005-06-25 23:35+0200\n"
 "PO-Revision-Date: 2005-05-13 04:33+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -152,168 +152,168 @@ msgstr "ウィンドウタイトル、削除できません"
 msgid "Hidden"
 msgstr "隠す"
 
-#: mcs-plugin/xfwm4_plugin.c:1335
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "フォント選択ダイアログ"
 
-#: mcs-plugin/xfwm4_plugin.c:1406 mcs-plugin/xfwm4_plugin.c:1892
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "ウィンドウマネージャ"
 
-#: mcs-plugin/xfwm4_plugin.c:1419
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "ウィンドウマネージャ設定"
 
-#: mcs-plugin/xfwm4_plugin.c:1448
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "タイトルフォント"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "タイトル位置"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "タイトルバー内のテキスト位置 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "ボタン配置"
 
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Style"
 msgstr "スタイル"
 
-#: mcs-plugin/xfwm4_plugin.c:1513
+#: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Window shortcuts"
 msgstr "ウィンドウショートカット"
 
-#: mcs-plugin/xfwm4_plugin.c:1533
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr "コマンド"
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
 msgstr "ショートカット"
 
-#: mcs-plugin/xfwm4_plugin.c:1554
+#: mcs-plugin/xfwm4_plugin.c:1562
 msgid "Keyboard"
 msgstr "キーボード"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "フォーカスモデル"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "クリックでフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "マウスに従ってフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "新規ウィンドウのフォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Automatically give focus to newly created windows"
 msgstr "新規作成されたウィンドウに自動的にフォーカスを当てる"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "フォーカスで最前面へ"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Automatically raise windows when they receive focus"
 msgstr "ウィンドウがフォーカスを取得した場合自動的に最前面にする"
 
-#: mcs-plugin/xfwm4_plugin.c:1614
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "フォーカス取得後、最前面になるまでの遅延時間 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "遅い"
 
-#: mcs-plugin/xfwm4_plugin.c:1626
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "速い"
 
-#: mcs-plugin/xfwm4_plugin.c:1642
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "クリックで最前面にする"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Raise window when clicking inside application window"
 msgstr "アプリケーションウィンドウ内でクリックした場合最前面にする"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Focus"
 msgstr "フォーカス"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "ウィンドウスナップ"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "画面の境界でウィンドウを止める"
 
-#: mcs-plugin/xfwm4_plugin.c:1674
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "他のウィンドウでウィンドウを止める"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "距離 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1690 mcs-plugin/xfwm4_plugin.c:1740
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "狭い"
 
-#: mcs-plugin/xfwm4_plugin.c:1696 mcs-plugin/xfwm4_plugin.c:1746
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "広い"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "ワークスペース循環"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "ポインタが画面端に来たらワークスペースを循環する"
 
-#: mcs-plugin/xfwm4_plugin.c:1724
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "画面でウィンドウをドラッグするとワークスペースを循環する"
 
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "エッジ抵抗 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "不透明表示での移動と大きさ変更"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "大きさ変更時にウィンドウの内容を表示する"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "移動時にウィンドウの内容を表示する"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "ダブルクリック動作"
 
-#: mcs-plugin/xfwm4_plugin.c:1785
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "タイトルバーをダブルクリックした時の動作 :"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "詳細"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 23:58+0200\n"
+"POT-Creation-Date: 2005-06-25 23:35+0200\n"
 "PO-Revision-Date: 2003-12-13 22:56+0200\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -156,182 +156,182 @@ msgstr ""
 msgid "Hidden"
 msgstr "Gizli"
 
-#: mcs-plugin/xfwm4_plugin.c:1335
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "Yazıtipi Seçim Diyaloğu"
 
-#: mcs-plugin/xfwm4_plugin.c:1406 mcs-plugin/xfwm4_plugin.c:1892
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Pencere Yöneticisi"
 
-#: mcs-plugin/xfwm4_plugin.c:1419
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "Pencere Yöneticisi Tercihleri"
 
-#: mcs-plugin/xfwm4_plugin.c:1448
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "Başlık yazıtipi"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "Başlık Hizalaması"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "Başlık çubuğundaki metin hizalaması :"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "Düğme düzeni"
 
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1483
 #, fuzzy
 msgid "Style"
 msgstr "Başlık"
 
-#: mcs-plugin/xfwm4_plugin.c:1513
+#: mcs-plugin/xfwm4_plugin.c:1521
 #, fuzzy
 msgid "Window shortcuts"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_plugin.c:1533
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
 msgid "Shortcut"
 msgstr "Klavye Kısayolu"
 
-#: mcs-plugin/xfwm4_plugin.c:1554
+#: mcs-plugin/xfwm4_plugin.c:1562
 #, fuzzy
 msgid "Keyboard"
 msgstr "Klavye Kısayolu"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "Odaklama şekli"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "Odaklama için tıklansın"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "Odak fareyi takip etsin"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1599
 #, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 "Yeni oluşturulan pencereye \n"
 "otomatik olarak odaklan"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "Odaklamada yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1612
 #, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Pencereler odaklanma kazanınca \n"
 "otomatik olarak yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1614
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "Odaklanmış pencere yükselme gecikmesi :"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "Yavaş"
 
-#: mcs-plugin/xfwm4_plugin.c:1626
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "Hızlı"
 
-#: mcs-plugin/xfwm4_plugin.c:1642
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "Tıklamada yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1654
 #, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "Uygulama penceresinin içine tıklayınca\n"
 "pencereyi yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1659
 #, fuzzy
 msgid "Focus"
 msgstr "Odaklama şekli"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "Pencere yerleştirme"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "Pencereleri ekran sınırlarına daya"
 
-#: mcs-plugin/xfwm4_plugin.c:1674
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "Pencereleri diğerlerine daya"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "Uzaklık :"
 
-#: mcs-plugin/xfwm4_plugin.c:1690 mcs-plugin/xfwm4_plugin.c:1740
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Küçük"
 
-#: mcs-plugin/xfwm4_plugin.c:1696 mcs-plugin/xfwm4_plugin.c:1746
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Büyük"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "İşaretçi ekran kenarına geldiğinde çalışma alanını değiştir"
 
-#: mcs-plugin/xfwm4_plugin.c:1724
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Bir pencereyi ekran dışına taşıyınca çalışma alanını değiştir"
 
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "Kenar direnci :"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "Mat taşıma ve boyutlandırma"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "Pencereleri yeniden boyutlandırıken içeriğini göster"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "Pencereleri taşırken içeriğini göster"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "Çift tıklama eylemi"
 
-#: mcs-plugin/xfwm4_plugin.c:1785
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "Gelişmiş"
 

@@ -16,6 +16,9 @@ DISTCLEANFILES =							\
 
 SUBDIRS = po doc icons src mcs-plugin defaults themes
 
+clean-revision:
+	rm -r svn-revision.txt
+
 svn-revision.txt:
 	svnversion $(top_srcdir) > svn-revision.txt
 
@@ -37,10 +40,10 @@ distcheck-bz2: distcheck
 	zcat $(PACKAGE)-$(VERSION).tar.gz | \
 	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
 
-snapshot: dist
+snapshot: clean-revision svn-revision.txt dist
 	mv $(PACKAGE)-$(VERSION).tar.gz \
 	$(PACKAGE)-$(VERSION)-r$(REVISION).tar.gz
 
-snapshot-bz2: dist-bz2
+snapshot-bz2: clean-revision svn-revision.txt dist-bz2
 	mv $(PACKAGE)-$(VERSION).tar.bz2 \
 	$(PACKAGE)-$(VERSION)-r$(REVISION).tar.bz2

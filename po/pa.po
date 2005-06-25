@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 23:58+0200\n"
+"POT-Creation-Date: 2005-06-25 23:35+0200\n"
 "PO-Revision-Date: 2004-10-04 02:59+0530\n"
 "Last-Translator: root <root@Phulewala>\n"
 "Language-Team:  <pa@li.org>\n"
@@ -157,168 +157,168 @@ msgstr "ਝਰੋਖਾ ਸਿਰਲੇਖ, ਇਹ ਹਟਾਇਆ ਨਹੀਂ 
 msgid "Hidden"
 msgstr "ਓਹਲੇ"
 
-#: mcs-plugin/xfwm4_plugin.c:1335
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "ਫੋਂਟ ਚੋਣ ਬਕਸਾ"
 
-#: mcs-plugin/xfwm4_plugin.c:1406 mcs-plugin/xfwm4_plugin.c:1892
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
 
-#: mcs-plugin/xfwm4_plugin.c:1419
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਪਸੰਦ"
 
-#: mcs-plugin/xfwm4_plugin.c:1448
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "ਸਿਰਲੇਖ ਫੋਂਟ"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "ਸਿਰਲੇਖ ਸਥਿਤੀ"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਵਿੱਚ ਪਾਠ ਅਨੁਕੂਲਤਾ ਃ"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "ਹੇਠਾਂ ਖਾਕਾ"
 
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Style"
 msgstr "ਸ਼ੈਲੀ"
 
-#: mcs-plugin/xfwm4_plugin.c:1513
+#: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Window shortcuts"
 msgstr "ਝਰੋਖਾ ਸ਼ਾਰਟਕੱਟ"
 
-#: mcs-plugin/xfwm4_plugin.c:1533
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr "ਕਮਾਂਡ"
 
-#: mcs-plugin/xfwm4_plugin.c:1538
+#: mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
 msgstr "ਸ਼ਾਰਟਕੱਟ"
 
-#: mcs-plugin/xfwm4_plugin.c:1554
+#: mcs-plugin/xfwm4_plugin.c:1562
 msgid "Keyboard"
 msgstr "ਕੀ-ਬੋਰਡ"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "ਕੇਂਦਰਿਤ ਮਾਡਲ"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "ਕੇਂਦਰਿਤ ਕਰਨ ਲਈ ਦਬਾਓ"
 
-#: mcs-plugin/xfwm4_plugin.c:1580
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "ਮਾਊਸ ਦੇ ਪਿੱਛੇ ਕੇਂਦਰਿਤ"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "ਨਵਾਂ ਝਰੋਖਾ ਕੇਂਦਰਿਤ"
 
-#: mcs-plugin/xfwm4_plugin.c:1591
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Automatically give focus to newly created windows"
 msgstr "ਨਵੇਂ ਝਰੋਖੇ ਉੱਪਰ ਸਵੈ ਕੇਂਦ੍ਰਿਤ ਕਰੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "ਕੇਂਦਰਿਤ ਹੋਣ ਤੇ ਉਭਾਰੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Automatically raise windows when they receive focus"
 msgstr "ਕੇਂਦ੍ਰਿਤ ਹੋਣ ਉਪਰੰਤ ਝਰੋਖਾ ਸਵੈ-ਪੇਸ਼ ਕਰੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1614
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "ਕੇਂਦ੍ਰਿਤ ਝਰੋਖਾ ਪੇਸ਼ਗੀ ਤੋਂ ਪਹਿਲਾਂ ਅੰਤਰਾਲ ਃ"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "ਹੌਲੀ"
 
-#: mcs-plugin/xfwm4_plugin.c:1626
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "ਤੇਜ਼"
 
-#: mcs-plugin/xfwm4_plugin.c:1642
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "ਕਲਿੱਕ ਕਰਨ ਤੇ ਪੇਸ਼ਗੀ"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Raise window when clicking inside application window"
 msgstr "ਕਾਰਜ ਝਰੋਖੇ ਵਿੱਚ ਕਲਿੱਕ ਕਰਨ ਉਪਰੰਤ ਝਰੋਖਾ ਪੇਸ਼ ਕਰੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1651
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Focus"
 msgstr "ਕੇਂਦਰਿਤ"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "ਝਰੋਖਾ ਤਸਵੀਰ"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "ਪਰਦੇ ਦੇ ਹਾਸ਼ੀਏ ਵਿੱਚ ਝਰੋਖਾ ਤਸਵਿਰ"
 
-#: mcs-plugin/xfwm4_plugin.c:1674
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "ਹੋਰ ਝਰੋਖਿਆਂ ਵਿੱਚ ਝਰੋਖਾ ਤਸਵੀਰ"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "ਅੰਤਰ:"
 
-#: mcs-plugin/xfwm4_plugin.c:1690 mcs-plugin/xfwm4_plugin.c:1740
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "ਛੋਟਾ"
 
-#: mcs-plugin/xfwm4_plugin.c:1696 mcs-plugin/xfwm4_plugin.c:1746
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "ਵੱਡਾ"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "ਅਖਾੜਾ ਲਪੇਟੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "ਸੰਕੇਤਕ ਪਰਦੇ ਦੇ ਕਿਨਾਰੇ ਤੇ ਪਹੁੰਚਣ ਉਪਰੰਤ ਅਖਾੜਾ ਲਪੇਟੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1724
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "ਪਰਦਾ ਖਿੱਚਣ ਨਾਲ ਪਰਦਾ ਬੰਦ ਹੋਣ ਉਪਰੰਤ ਅਖਾੜਾ ਲਪੇਟੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1734
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "ਕਿਨਾਰਾ ਵਿਰੋਧਤਾ ਃ"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "ਅਪਾਰਦਰਸ਼ੀ ਹਿਲਾਉਣ ਅਤੇ ਮੁੜ ਆਕਾਰ"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "ਮੁੜ ਆਕਾਰ ਦੇਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇਪ ਵਿਖਾਓ"
 
-#: mcs-plugin/xfwm4_plugin.c:1774
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "ਹਿਲਾਉਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇਪ ਵਿਖਾਓ+-"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "ਕਿਰਿਆ ਤੇ ਡਬਲ ਕਲਿੱਕ ਕਰੋ"
 
-#: mcs-plugin/xfwm4_plugin.c:1785
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਡਬਲ ਕਲਿੱਕ ਕਰਨ ਤੇ ਵਾਪਰਨ ਵਾਲੀ ਕਿਰਿਆ ਃ"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "ਤਕਨੀਕੀ"
 
