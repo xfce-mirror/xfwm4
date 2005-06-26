@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-03-17 23:47+0900\n"
-"Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
+"PO-Revision-Date: 2005-06-25 23:08+0900\n"
+"Last-Translator: ByungHyun Choi<byunghyun.choi@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -468,9 +467,9 @@ msgid "Show desktop"
 msgstr "데스크탑 보이기"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "창을 작업 공간 1로 이동"
+msgstr "창을 작업 공간 %d(으)로 이동"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -649,48 +648,3 @@ msgstr "작업공간 전환"
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "무슨 프로그램이죠!"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "창을 작업 공간 2로 이동"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "창을 작업 공간 3로 이동"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "창을 작업 공간 4로 이동"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "창을 작업 공간 5로 이동"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "창을 작업 공간 6로 이동"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "창을 작업 공간 7로 이동"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "창을 작업 공간 8로 이동"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "창을 작업 공간 9로 이동"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "창을 작업 공간 10으로 이동"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "창을 작업 공간 11로 이동"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "창을 작업 공간 12로 이동"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 창관리자 설정"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "창관리자 설정"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 작업공간 설정"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "작업공간 설정"
