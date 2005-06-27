@@ -10,7 +10,7 @@ static char * title_4_inactive_xpm[] = {
 "&	c #E0E0FF s inactive_hilight_1",
 "$	c #000000",
 "....",
-"&+++",
+"++++",
 "%@@@",
 "%@@@",
 "%@@@",
