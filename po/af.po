@@ -1,0 +1,682 @@
+# translation of xfwm4.po to Afrikaans
+# Afrikaans translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Petri Jooste <petri.jooste@gmail.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.2\n"
+"POT-Creation-Date: 2005-01-13 07:49+0100\n"
+"PO-Revision-Date: 2005-08-01 20:09+0200\n"
+"Last-Translator: Petri Jooste <petri.jooste@gmail.com>\n"
+"Language-Team: Afrikaans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: KBabel 1.10\n"
+
+#: mcs-plugin/margins.c:127
+msgid "Workspace Margins"
+msgstr "Werkarea-kantlyne"
+
+#: mcs-plugin/margins.c:137
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Kantlyne is areas op die kante van die skerm waar geen venster geplaas sal word nie"
+
+#: mcs-plugin/margins.c:168
+msgid "Left :"
+msgstr "Links :"
+
+#: mcs-plugin/margins.c:188
+msgid "Right :"
+msgstr "Regs :"
+
+#: mcs-plugin/margins.c:208
+msgid "Top :"
+msgstr "Bokant :"
+
+#: mcs-plugin/margins.c:228
+msgid "Bottom :"
+msgstr "Onderkant :"
+
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
+msgid "Workspaces and Margins"
+msgstr "Werkareas en kantlyne"
+
+#. Number of workspaces
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:544
+msgid "Workspaces"
+msgstr "Werkareas"
+
+#: mcs-plugin/plugin.c:173
+msgid "Margins"
+msgstr "Kantlyne"
+
+#: mcs-plugin/workspaces.c:343
+msgid "Change name"
+msgstr "Verander naam"
+
+#: mcs-plugin/workspaces.c:355 mcs-plugin/xfwm4_shortcuteditor.c:486
+#: mcs-plugin/xfwm4_shortcuteditor.c:495 mcs-plugin/xfwm4_shortcuteditor.c:504
+#: mcs-plugin/xfwm4_shortcuteditor.c:513 mcs-plugin/xfwm4_shortcuteditor.c:522
+#: mcs-plugin/xfwm4_shortcuteditor.c:531 mcs-plugin/xfwm4_shortcuteditor.c:540
+#: mcs-plugin/xfwm4_shortcuteditor.c:549 mcs-plugin/xfwm4_shortcuteditor.c:558
+#, c-format
+msgid "Workspace %d"
+msgstr "Werkarea %d"
+
+#: mcs-plugin/workspaces.c:365
+msgid "Name:"
+msgstr "Naam:"
+
+#: mcs-plugin/workspaces.c:453
+msgid "Click on a workspace name to edit it"
+msgstr "Klik op 'n werkarea-naam om dit te verander"
+
+#: mcs-plugin/workspaces.c:525
+msgid "Number of workspaces:"
+msgstr "Aantal werkareas:"
+
+#. Workspace names
+#: mcs-plugin/workspaces.c:556
+msgid "Workspace names"
+msgstr "Werkarea-name"
+
+#: mcs-plugin/xfwm4_plugin.c:76
+msgid "Menu"
+msgstr "Kieslys"
+
+#: mcs-plugin/xfwm4_plugin.c:77
+msgid "Stick"
+msgstr "Kleef"
+
+#: mcs-plugin/xfwm4_plugin.c:78
+msgid "Shade"
+msgstr "Skadu"
+
+#: mcs-plugin/xfwm4_plugin.c:79
+msgid "Hide"
+msgstr "Versteek"
+
+#: mcs-plugin/xfwm4_plugin.c:80
+msgid "Maximize"
+msgstr "Maksimeer"
+
+#: mcs-plugin/xfwm4_plugin.c:81
+msgid "Close"
+msgstr "Maak toe"
+
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:375
+msgid "Shade window"
+msgstr "Beskadu venster"
+
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:370
+msgid "Hide window"
+msgstr "Versteek verster"
+
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:355
+msgid "Maximize window"
+msgstr "Maksimeer venster"
+
+#: mcs-plugin/xfwm4_plugin.c:89
+msgid "Nothing"
+msgstr "Niks"
+
+#: mcs-plugin/xfwm4_plugin.c:94
+msgid "Left"
+msgstr "LinksLinks"
+
+#: mcs-plugin/xfwm4_plugin.c:95
+msgid "Center"
+msgstr "Middel"
+
+#: mcs-plugin/xfwm4_plugin.c:96
+msgid "Right"
+msgstr "Regs"
+
+#: mcs-plugin/xfwm4_plugin.c:564
+msgid "Click and drag buttons to change the layout"
+msgstr "Klik en sleep die knoppies om die uitleg te verander"
+
+#: mcs-plugin/xfwm4_plugin.c:569
+msgid "Active"
+msgstr "Aktief"
+
+#: mcs-plugin/xfwm4_plugin.c:580
+msgid "Title"
+msgstr "Titel"
+
+#: mcs-plugin/xfwm4_plugin.c:581
+msgid "The window title, it cannot be removed"
+msgstr "Die venstertitel, dit kan nie verwyder word nie"
+
+#: mcs-plugin/xfwm4_plugin.c:589
+msgid "Hidden"
+msgstr "Verberg"
+
+#: mcs-plugin/xfwm4_plugin.c:1301
+msgid "Font Selection Dialog"
+msgstr "Fontseleksie"
+
+#: mcs-plugin/xfwm4_plugin.c:1372 mcs-plugin/xfwm4_plugin.c:1891
+msgid "Window Manager"
+msgstr "Vensterbestuurder"
+
+#: mcs-plugin/xfwm4_plugin.c:1385
+msgid "Window Manager Preferences"
+msgstr "Voorkeure vir vensterbestuurder"
+
+#: mcs-plugin/xfwm4_plugin.c:1414
+msgid "Title font"
+msgstr "Titelfont"
+
+#: mcs-plugin/xfwm4_plugin.c:1427
+msgid "Title Alignment"
+msgstr "Titelbelyning"
+
+#. XXX
+#: mcs-plugin/xfwm4_plugin.c:1433
+msgid "Text alignment inside title bar :"
+msgstr "Teksbelyning binne die titelbalk :"
+
+#: mcs-plugin/xfwm4_plugin.c:1435
+msgid "Button layout"
+msgstr "Knoppie-uitleg"
+
+#: mcs-plugin/xfwm4_plugin.c:1441
+msgid "Style"
+msgstr "Styl"
+
+#: mcs-plugin/xfwm4_plugin.c:1479
+msgid "Window shortcuts"
+msgstr "Vensterkortpaaie"
+
+#: mcs-plugin/xfwm4_plugin.c:1499 mcs-plugin/xfwm4_plugin.c:1532
+msgid "Command"
+msgstr "Bevel"
+
+#: mcs-plugin/xfwm4_plugin.c:1504 mcs-plugin/xfwm4_plugin.c:1536
+msgid "Shortcut"
+msgstr "Kortpad"
+
+#: mcs-plugin/xfwm4_plugin.c:1512
+msgid "Command shortcuts"
+msgstr "Bevelkortpaaie"
+
+#: mcs-plugin/xfwm4_plugin.c:1551
+msgid "Keyboard"
+msgstr "Sleutelbord"
+
+#: mcs-plugin/xfwm4_plugin.c:1562
+msgid "Focus model"
+msgstr "Fokusmodel"
+
+#: mcs-plugin/xfwm4_plugin.c:1570
+msgid "Click to focus"
+msgstr "Klik om fokus te kry"
+
+#: mcs-plugin/xfwm4_plugin.c:1577
+msgid "Focus follows mouse"
+msgstr "Fokus-volg-muis"
+
+#: mcs-plugin/xfwm4_plugin.c:1584
+msgid "New window focus"
+msgstr "Nuwe-venster-fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1588
+msgid "Automatically give focus to newly created windows"
+msgstr "Gee outomaties die fokus aan nuutgeskepte vensters"
+
+#: mcs-plugin/xfwm4_plugin.c:1593
+msgid "Raise on focus"
+msgstr "Plaas voor met fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1601
+msgid "Automatically raise windows when they receive focus"
+msgstr "Plaas vensters outomaties voor wanneer hulle fokus verkry"
+
+#: mcs-plugin/xfwm4_plugin.c:1611
+msgid "Delay before raising focused window :"
+msgstr "Wag voordat fokusvenster voorgeplaas word :"
+
+#: mcs-plugin/xfwm4_plugin.c:1617
+msgid "Slow"
+msgstr "Stadig"
+
+#: mcs-plugin/xfwm4_plugin.c:1623
+msgid "Fast"
+msgstr "Vinnig"
+
+#: mcs-plugin/xfwm4_plugin.c:1639
+msgid "Raise on click"
+msgstr "Plaas voor met klik"
+
+#: mcs-plugin/xfwm4_plugin.c:1643
+msgid "Raise window when clicking inside application window"
+msgstr "Plaas venster voor wanneer binne die venster geklik word"
+
+#: mcs-plugin/xfwm4_plugin.c:1648
+msgid "Focus"
+msgstr "Fokus"
+
+#: mcs-plugin/xfwm4_plugin.c:1658
+msgid "Windows snapping"
+msgstr "Vensterdokking"
+
+#: mcs-plugin/xfwm4_plugin.c:1666
+msgid "Snap windows to screen border"
+msgstr "Dok vensters teen skermkant"
+
+#: mcs-plugin/xfwm4_plugin.c:1671
+msgid "Snap windows to other windows"
+msgstr "Dok vensters teen ander vensters"
+
+#: mcs-plugin/xfwm4_plugin.c:1681
+msgid "Distance :"
+msgstr "Afstand :"
+
+#: mcs-plugin/xfwm4_plugin.c:1687 mcs-plugin/xfwm4_plugin.c:1737
+msgid "Small"
+msgstr "Klein"
+
+#: mcs-plugin/xfwm4_plugin.c:1693 mcs-plugin/xfwm4_plugin.c:1743
+msgid "Wide"
+msgstr "Wyd"
+
+#: mcs-plugin/xfwm4_plugin.c:1708
+msgid "Wrap workspaces"
+msgstr "Vou werkareas om"
+
+#: mcs-plugin/xfwm4_plugin.c:1716
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Vou werkareas om wanneer die wyser die skermkant bereik"
+
+#: mcs-plugin/xfwm4_plugin.c:1721
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Vou werkareas om wanneer 'n venster gesleep word af van die skerm af"
+
+#: mcs-plugin/xfwm4_plugin.c:1731
+msgid "Edge Resistance :"
+msgstr "Kantweerstand :"
+
+#: mcs-plugin/xfwm4_plugin.c:1758
+msgid "Opaque move and resize"
+msgstr "Ingevulde skuif en verstel"
+
+#: mcs-plugin/xfwm4_plugin.c:1766
+msgid "Display content of windows when resizing"
+msgstr "Vertoon inhoud van vensters tydens grootteverstelling"
+
+#: mcs-plugin/xfwm4_plugin.c:1771
+msgid "Display content of windows when moving"
+msgstr "Vertoon inhoud van vensters tydens skuiwing"
+
+#: mcs-plugin/xfwm4_plugin.c:1776
+msgid "Double click action"
+msgstr "Dubbelklik-aksie"
+
+#: mcs-plugin/xfwm4_plugin.c:1782
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Aksie om uit te voer wanneer die titelbalk gedubbelklik word :"
+
+#: mcs-plugin/xfwm4_plugin.c:1784
+msgid "Advanced"
+msgstr "Gevorderd"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:55
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr "Wil jy regtig hierdie tema van sleutelbindings verwyder ?"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:121 mcs-plugin/xfwm4_shortcuteditor.c:127
+msgid "Add keybinding theme"
+msgstr "Voeg sleutelbindingtema by"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:131
+msgid "Enter a name for the theme:"
+msgstr "Gee 'n naam vir die tema:"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:154
+msgid "A keybinding theme with the same name already exists"
+msgstr "Daar bestaan reeds 'n tema van sleutelbindings met hierdie naam"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:160
+msgid "You have to provide a name for the keybinding theme"
+msgstr "Jy moet 'n naam gee vir die tema van sleutelbindings"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:350
+msgid "Close window"
+msgstr "Maak venster toe"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:360
+msgid "Maximize window vertically"
+msgstr "Maksimeer venster vertikaal"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:365
+msgid "Maximize window horizontally"
+msgstr "Maksimeer venster horisontaal"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:380
+msgid "Stick window"
+msgstr "Laat venster kleef"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Cycle windows"
+msgstr "Gaan in siklus deur vensters"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:390
+msgid "Move window up"
+msgstr "Skuif venster op"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:395
+msgid "Move window down"
+msgstr "Skuif venster af"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:400
+msgid "Move window left"
+msgstr "Skuif venster links"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:405
+msgid "Move window right"
+msgstr "Skuif venster regs"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:410
+msgid "Resize window up"
+msgstr "Verstel grootte aan bokant"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:415
+msgid "Resize window down"
+msgstr "Verstel grootte aan onderkant"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:420
+msgid "Resize window left"
+msgstr "Verstel grootte aan linkerkant"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:425
+msgid "Resize window right"
+msgstr "Verstel grootte aan regterkant"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:430
+msgid "Raise window"
+msgstr "Plaas venster voor"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:435
+msgid "Lower window"
+msgstr "Plaas venster agtertoe"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:440
+msgid "Toggle fullscreen"
+msgstr "Wissel volskerm"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:445
+msgid "Upper workspace"
+msgstr "Boonste werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:450
+msgid "Bottom workspace"
+msgstr "Onderste werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:455
+msgid "Left workspace"
+msgstr "Linkerwerkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:460
+msgid "Right workspace"
+msgstr "Regterwerkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:465
+msgid "Next workspace"
+msgstr "Volgende werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:470
+msgid "Previous workspace"
+msgstr "Vorige werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:475
+msgid "Add workspace"
+msgstr "Voeg werkarea by"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:480
+msgid "Delete workspace"
+msgstr "Vee werkarea uit"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:566
+msgid "Move window to next workspace"
+msgstr "Skuif venster na volgende werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:571
+msgid "Move window to previous workspace"
+msgstr "Skuif venster na vorige werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:576
+msgid "Move window to upper workspace"
+msgstr "Skuif venster na boonste werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:581
+msgid "Move window to bottom workspace"
+msgstr "Skuif venster na onderste werkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:586
+msgid "Move window to left workspace"
+msgstr "Skuif venster na linkerwerkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
+msgid "Move window to right workspace"
+msgstr "Skuif venster na regterwerkarea"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:596
+msgid "Move window to workspace 1"
+msgstr "Skuif venster na werkarea 1"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:601
+msgid "Move window to workspace 2"
+msgstr "Skuif venster na werkarea 2"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:606
+msgid "Move window to workspace 3"
+msgstr "Skuif venster na werkarea 3"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:611
+msgid "Move window to workspace 4"
+msgstr "Skuif venster na werkarea 4"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:616
+msgid "Move window to workspace 5"
+msgstr "Skuif venster na werkarea 5"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:621
+msgid "Move window to workspace 6"
+msgstr "Skuif venster na werkarea 6"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:626
+msgid "Move window to workspace 7"
+msgstr "Skuif venster na werkarea 7"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:631
+msgid "Move window to workspace 8"
+msgstr "Skuif venster na werkarea 8"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:636
+msgid "Move window to workspace 9"
+msgstr "Skuif venster na werkarea 9"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:843
+msgid "Cannot open the theme directory !"
+msgstr "Kan nie die temagids oopmaak nie !"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:862
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+"Kan nie %s oopmaak nie : \n"
+"%s"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:877 mcs-plugin/xfwm4_shortcuteditor.c:888
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Kan nie in %s skryf nie : \n"
+"%s"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:938
+msgid "Select command"
+msgstr "Selekteer bevel"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1084
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"Kortpad word reeds gebruik !\n"
+"Is jy seker jy wil dit gebruik ?"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1147
+msgid "Compose shortcut for :"
+msgstr "Stel kortpad saam vir :"
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:1150
+#: mcs-plugin/xfwm4_shortcuteditor.c:1378
+msgid "Compose shortcut"
+msgstr "Stel kortpad saam"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1152
+#: mcs-plugin/xfwm4_shortcuteditor.c:1380
+msgid "No shortcut"
+msgstr "Geen kortpad"
+
+#. Create dialog
+#: mcs-plugin/xfwm4_shortcuteditor.c:1274
+msgid "Choose command"
+msgstr "Kies bevel"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1276
+msgid "Command :"
+msgstr "Bevel :"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1312
+msgid "The command doesn't exist or the file is not executable !"
+msgstr "Die bevel bestaan nie of die lêer is nie uitvoerbaar nie !"
+
+#: mcs-plugin/xfwm4_shortcuteditor.c:1375
+msgid "Compose shortcut for command :"
+msgstr "Stel kortpad saam vir bevel :"
+
+#: src/main.c:181
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Segmenteerfout"
+
+#: src/menu.c:39
+msgid "Ma_ximize"
+msgstr "Ma_ksimeer"
+
+#: src/menu.c:40
+msgid "Un_maximize"
+msgstr "Ont_maksimeer"
+
+#: src/menu.c:41
+msgid "_Hide"
+msgstr "_Versteek"
+
+#: src/menu.c:42
+msgid "Hide _all others"
+msgstr "Versteek _alle ander"
+
+#: src/menu.c:43
+msgid "S_how"
+msgstr "_Wys"
+
+#: src/menu.c:44
+msgid "_Shade"
+msgstr "Be_skadu"
+
+#: src/menu.c:45
+msgid "Un_shade"
+msgstr "Ont_skadu"
+
+#: src/menu.c:46
+msgid "S_tick"
+msgstr "Laat _kleef"
+
+#: src/menu.c:47
+msgid "Uns_tick"
+msgstr "Laat _los"
+
+#: src/menu.c:48
+msgid "Context _help"
+msgstr "Konteks_hulp"
+
+#: src/menu.c:49 src/menu.c:50
+msgid "Always on top"
+msgstr "Altyd bo-op"
+
+#: src/menu.c:51
+msgid "Send to..."
+msgstr "Stuur na..."
+
+#: src/menu.c:53
+msgid "_Close"
+msgstr "Maak _toe"
+
+#: src/menu.c:56
+msgid "Destroy"
+msgstr "Vernietig"
+
+#: src/menu.c:59
+msgid "_Quit"
+msgstr "_Verlaat"
+
+#: src/menu.c:60
+msgid "Restart"
+msgstr "Herbegin"
+
+#: src/menu.c:169
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "Werkarea %i (%s)"
+
+#: src/menu.c:181
+#, c-format
+msgid "Workspace %i"
+msgstr "Werkarea %i"
+
+#: src/menu.c:416
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu kon nie die wyser gryp nie\n"
+
+#: src/settings.c:722
+#, c-format
+msgid "%s: Cannot allocate active color %s\n"
+msgstr "%s: Kan nie aktiewe kleur %s toeken nie\n"
+
+#: src/settings.c:728
+#, c-format
+msgid "%s: Cannot parse active color %s\n"
+msgstr "%s: Kan nie aktiewe kleur %s ontleed nie\n"
+
+#: src/settings.c:771
+#, c-format
+msgid "%s: Cannot allocate inactive color %s\n"
+msgstr "%s: Kan nie onaktiewe kleur %s toeken nie\n"
+
+#: src/settings.c:777
+#, c-format
+msgid "%s: Cannot parse inactive color %s\n"
+msgstr "%s: Kan nie onaktiewe kleur %s ontleed nie\n"
+
+#: src/tabwin.c:70
+msgid "Switch to ..."
+msgstr "Wissel na ..."
+
+#: src/tabwin.c:129
+msgid "Unknown application!"
+msgstr "Onbekende toepassing!"
+
