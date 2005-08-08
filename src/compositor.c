@@ -88,6 +88,7 @@ struct _CWindow
     Picture shadowPict;
     XserverRegion borderSize;
     XserverRegion borderClip;
+    XserverRegion shadowClip;
     XserverRegion extents;
     gint shadow_dx;
     gint shadow_dy;
@@ -769,9 +770,8 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    if ((cw->mode != WINDOW_ARGB)
-        && (( c && (screen_info->params->show_frame_shadow) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
-         || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped))))
+    if (( c && (screen_info->params->show_frame_shadow) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+         || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped)))
     {
         XRectangle sr;
 
@@ -780,12 +780,7 @@ win_extents (CWindow *cw)
         cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
         if (!(cw->shadow))
         {
-            double opacity = SHADOW_OPACITY;
-            if (cw->mode == WINDOW_TRANS)
-            {
-                opacity = opacity * ((double) cw->opacity) / ((double) NET_WM_OPAQUE) * ((double) cw->opacity) / ((double) NET_WM_OPAQUE);
-            }
-            cw->shadow = shadow_picture (screen_info, opacity,
+            cw->shadow = shadow_picture (screen_info, SHADOW_OPACITY,
                                          cw->attr.width + 2 * cw->attr.border_width,
                                          cw->attr.height + 2 * cw->attr.border_width,
                                          &cw->shadow_width, &cw->shadow_height);
@@ -1020,7 +1015,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 
         if (cw->shadow)
         {
-            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
+            if (cw->shadowClip == None)
+            {
+                cw->shadowClip = XFixesCreateRegion(dpy, 0, 0);
+                XFixesSubtractRegion (dpy, cw->shadowClip, cw->borderClip, cw->borderSize);
+            }
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->shadowClip);
             XRenderComposite (dpy, PictOpOver, screen_info->blackPicture, cw->shadow,
                               screen_info->rootBuffer, 0, 0, 0, 0,
                               cw->attr.x + cw->shadow_dx,
@@ -1045,6 +1045,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             get_paint_bounds (cw, &x, &y, &w, &h);
             XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict,
                               screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+        }
+        if (cw->shadowClip)
+        {
+            XFixesDestroyRegion (dpy, cw->shadowClip);
+            cw->shadowClip = None;
         }
         if (cw->borderClip)
         {
@@ -1208,6 +1213,12 @@ free_win_data (CWindow *cw, gboolean delete)
     {
         XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderClip);
         cw->borderClip = None;
+    }
+
+    if (cw->shadowClip)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->shadowClip);
+        cw->shadowClip = None;
     }
 
     if (delete)
@@ -1500,6 +1511,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
     new->shadow_width = 0;
     new->shadow_height = 0;
     new->borderClip = None;
+    new->shadowClip = None;
     new->opacity = opacity;
     getOpacity (display_info, id, &new->opacity);
     determine_mode (new);
