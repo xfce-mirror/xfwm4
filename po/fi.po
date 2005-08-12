@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-01-23 16:32+0200\n"
+"PO-Revision-Date: 2005-08-12 15:13+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team:  <>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
-msgstr "Työpöydän Reunukset"
+msgstr "Työpöydän reunukset"
 
 #: mcs-plugin/margins.c:137
 msgid ""
@@ -35,15 +35,15 @@ msgstr "Oikea:"
 
 #: mcs-plugin/margins.c:208
 msgid "Top :"
-msgstr "Yläosa:"
+msgstr "Yläreuna:"
 
 #: mcs-plugin/margins.c:228
 msgid "Bottom :"
-msgstr "Alaosa:"
+msgstr "Alareuna:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
-msgstr "Työpöydät ja Reunukset"
+msgstr "Työpöydät ja reunukset"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
@@ -162,7 +162,7 @@ msgstr "Ikkunamanageri"
 
 #: mcs-plugin/xfwm4_plugin.c:1421
 msgid "Window Manager Preferences"
-msgstr "Ikkunamanagerin Asetukset"
+msgstr "Ikkunamanagerin asetukset"
 
 #: mcs-plugin/xfwm4_plugin.c:1450
 msgid "Title font"
@@ -231,7 +231,7 @@ msgstr "Nosta kohdistaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1637
 msgid "Automatically raise windows when they receive focus"
-msgstr "Automaattisesti nosta ikkunat, kun niihin kohdistetaan"
+msgstr "Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1647
 msgid "Delay before raising focused window :"
@@ -323,7 +323,7 @@ msgstr "Lisäasetukset"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Haluatko todella poistaa tämän pikanäppäinteeman ?"
+msgstr "Haluatko todella poistaa tämän pikanäppäinteeman?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
@@ -489,7 +489,7 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Tiedostoon %s ei voi kirjoittaa:\n"
+"Tiedostoon %s ei voi kirjoittaa: \n"
 "%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:667
@@ -543,35 +543,35 @@ msgstr "%s: Muistinosoitusvirhe"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
-msgstr "Suurenna"
+msgstr "_Suurenna"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "Palauta"
+msgstr "Pala_uta"
 
 #: src/menu.c:41
 msgid "_Hide"
-msgstr "Piilota"
+msgstr "_Piilota"
 
 #: src/menu.c:42
 msgid "Hide _all others"
-msgstr "Piilot_a kaikki muut"
+msgstr "Piilota k_aikki muut"
 
 #: src/menu.c:43
 msgid "S_how"
-msgstr "Näytä"
+msgstr "_Näytä"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr "Varjo_sta"
+msgstr "_Varjosta"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr "Poi_sta varjostus"
+msgstr "P_oista varjostus"
 
 #: src/menu.c:46
 msgid "S_tick"
-msgstr "Kiinni_tä"
+msgstr "_Kiinnitä"
 
 #: src/menu.c:47
 msgid "Uns_tick"
@@ -583,7 +583,7 @@ msgstr "Tilannekohtainen ohje"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr "Aina päällimäisenä"
+msgstr "Aina päällimmäisenä"
 
 #: src/menu.c:51
 msgid "Send to..."
@@ -591,7 +591,7 @@ msgstr "Siirrä..."
 
 #: src/menu.c:53
 msgid "_Close"
-msgstr "Sulje"
+msgstr "Sulj_e"
 
 #: src/menu.c:56
 msgid "Destroy"
@@ -599,7 +599,7 @@ msgstr "Tuhoa"
 
 #: src/menu.c:59
 msgid "_Quit"
-msgstr "Lopeta"
+msgstr "_Lopeta"
 
 #: src/menu.c:60
 msgid "Restart"
@@ -628,7 +628,7 @@ msgstr "%s: Aktiivista väriä %s ei voi varata\n"
 #: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Aktiivinen väri %s ei ole tunnistettavissa \n"
+msgstr "%s: Aktiivinen väri %s ei kelpaa\n"
 
 #: src/settings.c:771
 #, c-format
@@ -638,7 +638,7 @@ msgstr "%s: Ei-aktiivista väriä %s ei voi varata\n"
 #: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Ei-aktiivinen väri %s ei ole tunnistettavissa\n"
+msgstr "%s: Ei-aktiivinen väri %s ei kelpaa\n"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
@@ -647,27 +647,3 @@ msgstr "Vaihda..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Tuntematon sovellus!"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Siirrä ikkuna 2. työpöydälle"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Siirrä ikkuna 3. työpöydälle"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Siirrä ikkuna 4. työpöydälle"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Siirrä ikkuna 5. työpöydälle"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Siirrä ikkuna 6. työpöydälle"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Siirrä ikkuna 7. työpöydälle"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Siirrä ikkuna 8. työpöydälle"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Siirrä ikkuna 9. työpöydälle"
