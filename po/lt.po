@@ -10,12 +10,12 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-01-23 02:09+0200\n"
+"PO-Revision-Date: 2005-08-12 23:07+0300\n"
 "Last-Translator: Rimas Kudelis <rq@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
@@ -464,12 +464,12 @@ msgstr "Perkelti langą į dešinesnįjį darbalaukį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Rodyti darbastalį"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Perkelti langą į pirmąjį darbalaukį"
+msgstr "Perkelti langą į darbalaukį nr. %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -649,26 +649,3 @@ msgstr "Perjungti į…"
 msgid "Unknown application!"
 msgstr "Nežinoma programa!"
 
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Perkelti langą į antrąjį darbalaukį"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Perkelti langą į trečiąjį darbalaukį"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Perkelti langą į ketvirtąjį darbalaukį"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Perkelti langą į penktąjį darbalaukį"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Perkelti langą į šeštąjį darbalaukį"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Perkelti langą į septintąjį darbalaukį"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Perkelti langą į aštuntąjį darbalaukį"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Perkelti langą į devintąjį darbalaukį"
