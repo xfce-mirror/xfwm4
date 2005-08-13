@@ -12,33 +12,33 @@ msgstr ""
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
-msgstr "Työpöydän marginaalit"
+msgstr "Työpöydän reunukset"
 
 #: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"Marginaalit ovat näytön reunalla olevat alueet, joille ikkunoita ei aseteta"
+"Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
-msgstr "Vasen :"
+msgstr "Vasen:"
 
 #: mcs-plugin/margins.c:188
 msgid "Right :"
-msgstr "Oikea :"
+msgstr "Oikea:"
 
 #: mcs-plugin/margins.c:208
 msgid "Top :"
-msgstr "Yläosa :"
+msgstr "Yläreuna:"
 
 #: mcs-plugin/margins.c:228
 msgid "Bottom :"
-msgstr "Alaosa :"
+msgstr "Alareuna:"
 
 #: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
-msgstr "Työpöydät ja Marginaalit"
+msgstr "Työpöydät ja reunukset"
 
 #. Number of workspaces
 #: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
@@ -47,7 +47,7 @@ msgstr "Työpöydät"
 
 #: mcs-plugin/plugin.c:173
 msgid "Margins"
-msgstr "Marginaalit"
+msgstr "Reunukset"
 
 #: mcs-plugin/workspaces.c:345
 msgid "Change name"
@@ -129,7 +129,7 @@ msgstr "Oikea"
 
 #: mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
-msgstr "Paina ja raahaa painikkeita muuttaaksesi sijoittelua"
+msgstr "Napsauta ja raahaa painikkeita muuttaaksesi sijoittelua"
 
 #: mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
@@ -149,7 +149,7 @@ msgstr "Piilotettu"
 
 #: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
-msgstr "Kirjasimen valinta"
+msgstr "Kirjasimenvalintadialogi"
 
 #: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
@@ -157,7 +157,7 @@ msgstr "Ikkunamanageri"
 
 #: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
-msgstr "Ikkunamanagerin Asetukset"
+msgstr "Ikkunamanagerin asetukset"
 
 #: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
@@ -174,7 +174,7 @@ msgstr "Tekstin tasaus otsakepalkissa:"
 
 #: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
-msgstr "Nappien sijoittelu"
+msgstr "Painikkeiden sijoittelu"
 
 #: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Style"
@@ -218,15 +218,15 @@ msgstr "Kohdista automaattisesti juuri luotuihin ikkunoihin"
 
 #: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
-msgstr "Nosta kohdistaessa"
+msgstr "Nosta kohdistettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Automatically raise windows when they receive focus"
-msgstr "Automaattisesti nosta ikkunat, kun niihin kohdistetaan"
+msgstr "Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
-msgstr "Viive ennen kohdistetun ikkunan nostoa :"
+msgstr "Viive ennen kohdistetun ikkunan nostoa:"
 
 #: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
@@ -242,7 +242,7 @@ msgstr "Nosta napsautettaessa"
 
 #: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Raise window when clicking inside application window"
-msgstr "Nosta ikkuna painettaessa sovellusikkunan sisällä"
+msgstr "Nosta ikkuna napsautettaessa sovellusikkunan sisällä"
 
 #: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Focus"
@@ -262,7 +262,7 @@ msgstr "Loksauta ikkunat toisiinsa"
 
 #: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
-msgstr "Etäisyys :"
+msgstr "Etäisyys:"
 
 #: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
@@ -286,7 +286,7 @@ msgstr "Vaihda työpöytää, kun ikkuna raahataan ulos näytöltä"
 
 #: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
-msgstr "Reunan vastus :"
+msgstr "Reunan vastus:"
 
 #: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
@@ -306,7 +306,7 @@ msgstr "Kaksoisnapsautustoiminto"
 
 #: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Toiminto, joka suoritetaan kaksoisnapsauttaessa otsikkopalkkia:"
+msgstr "Toiminto, joka suoritetaan kaksoisnapsautettaessa otsikkopalkkia:"
 
 #: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
@@ -354,11 +354,11 @@ msgstr "Vaihda ikkunaa"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Move window up"
-msgstr "Siirrä ikkunaa ylös"
+msgstr "Siirrä ikkunaa ylöspäin"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Move window down"
-msgstr "Siirrä ikkunaa alas"
+msgstr "Siirrä ikkunaa alaspäin"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Move window left"
@@ -394,7 +394,7 @@ msgstr "Laske ikkunaa"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Toggle fullscreen"
-msgstr "Vaihda kokonäyttötilaan"
+msgstr "Vaihda täysruututilaan"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Upper workspace"
@@ -454,12 +454,12 @@ msgstr "Siirrä ikkuna oikeanpuoleiselle työpöydälle"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Show desktop"
-msgstr ""
+msgstr "Näytä työpöytä"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:423
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Siirrä ikkuna 1. työpöydälle"
+msgstr "Siirrä ikkuna työpöydälle %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
@@ -493,7 +493,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:739
 msgid "Compose shortcut for :"
-msgstr "Määritä pikanäppäin :"
+msgstr "Määritä pikanäppäin:"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:742
@@ -511,55 +511,55 @@ msgstr "%s: Muistinosoitusvirhe"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
-msgstr "Suurenna"
+msgstr "_Suurenna"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "Palauta"
+msgstr "Pala_uta"
 
 #: src/menu.c:41
 msgid "_Hide"
-msgstr "Piilota"
+msgstr "_Piilota"
 
 #: src/menu.c:42
 msgid "Hide _all others"
-msgstr "Piilot_a kaikki muut"
+msgstr "Piilota k_aikki muut"
 
 #: src/menu.c:43
 msgid "S_how"
-msgstr "Näytä"
+msgstr "_Näytä"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr "Varjo_sta"
+msgstr "_Varjosta"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr "Poi_sta varjostus"
+msgstr "Poista va_rjostus"
 
 #: src/menu.c:46
 msgid "S_tick"
-msgstr "Kiinni_tä"
+msgstr "_Kiinnitä"
 
 #: src/menu.c:47
 msgid "Uns_tick"
-msgstr "Pois_ta Kiinnitys"
+msgstr "Poista K_iinnitys"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "Tilannekohtainen ohje"
+msgstr "Tilannekohtainen _ohje"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr "Aina päällimäisenä"
+msgstr "Aina päällimmäisenä"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr "Siirrä..."
+msgstr "Lähetä..."
 
 #: src/menu.c:53
 msgid "_Close"
-msgstr "Sulje"
+msgstr "Sulj_e"
 
 #: src/menu.c:56
 msgid "Destroy"
@@ -567,7 +567,7 @@ msgstr "Tuhoa"
 
 #: src/menu.c:59
 msgid "_Quit"
-msgstr "Lopeta"
+msgstr "_Lopeta"
 
 #: src/menu.c:60
 msgid "Restart"
@@ -596,7 +596,7 @@ msgstr "%s: Aktiivista väriä %s ei voi varata\n"
 #: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: Aktiivinen väri %s ei ole tunnistettavissa \n"
+msgstr "%s: Aktiivinen väri %s ei kelpaa\n"
 
 #: src/settings.c:898
 #, c-format
@@ -606,7 +606,7 @@ msgstr "%s: Ei-aktiivista väriä %s ei voi varata\n"
 #: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Ei-aktiivinen väri %s ei ole tunnistettavissa\n"
+msgstr "%s: Ei-aktiivinen väri %s ei kelpaa\n"
 
 #: src/tabwin.c:70
 msgid "Switch to ..."
@@ -622,7 +622,7 @@ msgstr "Ikkunamanagerin asetukset"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 Ikkunamanagerin asetukset"
+msgstr "Xfce 4 ikkunamanagerin asetukset"
 
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
@@ -630,58 +630,4 @@ msgstr "Työtilojen asetukset"
 
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 Työtilojen asetukset"
-
-#~ msgid "Command shortcuts"
-#~ msgstr "Komentojen pikanäppäimet"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Siirrä ikkuna 2. työpöydälle"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Siirrä ikkuna 3. työpöydälle"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Siirrä ikkuna 4. työpöydälle"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Siirrä ikkuna 5. työpöydälle"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Siirrä ikkuna 6. työpöydälle"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Siirrä ikkuna 7. työpöydälle"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Siirrä ikkuna 8. työpöydälle"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Siirrä ikkuna 9. työpöydälle"
-
-#, fuzzy
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Siirrä ikkuna 1. työpöydälle"
-
-#, fuzzy
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Siirrä ikkuna 1. työpöydälle"
-
-#, fuzzy
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Siirrä ikkuna 1. työpöydälle"
-
-#~ msgid "Select command"
-#~ msgstr "Valitse komento"
-
-#~ msgid "Choose command"
-#~ msgstr "Valitse komento"
-
-#~ msgid "Command :"
-#~ msgstr "Komento :"
-
-#~ msgid "The command doesn't exist or the file is not executable !"
-#~ msgstr "Komentoa ei ole, tai tiedostolla ei ole suoritusoikeutta !"
-
-#~ msgid "Compose shortcut for command :"
-#~ msgstr "Pikanäppäin komennolle :"
+msgstr "Xfce 4 työtilojen asetukset"
