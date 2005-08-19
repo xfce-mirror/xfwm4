@@ -1,17 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Spanish translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Edscott Wilson Garcia <edscott@xfce.org>, 2004.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 1.0.0\n"
+"Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-25 23:35+0200\n"
-"PO-Revision-Date: 2004-01-13 00:00+0100\n"
-"Last-Translator: edscott <edscott@xfce.org>\n"
-"Language-Team: none <LL@li.org>\n"
+"PO-Revision-Date: 2005-08-19 21:14+0900\n"
+"Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

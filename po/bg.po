@@ -1,16 +1,14 @@
-# Bulgarian translation of PACKAGE.
-# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Bulgarian translation of xfwm4.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
 # Miroslav Yordanov <miordanov@i-space.org>, 2004.
-# , fuzzy
-# 
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-25 23:35+0200\n"
-"PO-Revision-Date: 2004-03-09 19:04+0200\n"
+"PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"

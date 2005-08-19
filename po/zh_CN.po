@@ -1,17 +1,17 @@
-# #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# #-#-#-#-#  zh_CN.po (xfwm4 4.3.0)  #-#-#-#-#
+# Chinese translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Yongtao Yang <yongtao.yang@telia.com>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-25 23:35+0200\n"
-"PO-Revision-Date: 2005-01-24 17:24+0100\n"
+"PO-Revision-Date: 2005-08-19 21:22+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
