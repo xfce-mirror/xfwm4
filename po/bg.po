@@ -1,16 +1,14 @@
-# Bulgarian translation of PACKAGE.
-# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Bulgarian translation of xfwm4.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
 # Miroslav Yordanov <miordanov@i-space.org>, 2004.
-# , fuzzy
-# 
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfwm4 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2004-03-09 19:04+0200\n"
+"PO-Revision-Date: 2005-08-20 17:44+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -696,104 +694,3 @@ msgstr "Превключва на ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Новите прозорци се фокусират"
-
-#, fuzzy
-#~ msgid "Workspace 1"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 2"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 3"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 4"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 5"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 6"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 7"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 8"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid "Workspace 9"
-#~ msgstr "Работно място %i"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr ""
-#~ "Автоматично се фокусират\n"
-#~ "новосъздадените прозорци"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr ""
-#~ "Автоматично повдига прозорците·\n"
-#~ "когато се фокусират"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr ""
-#~ "Повдига прозореца когато се натисне\n"
-#~ "в прозореца на приложението"
-
-#~ msgid "Decoration style"
-#~ msgstr "Стил на декорацията"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "Клавиатура и фокус"
-
-#~ msgid "Adjust workspace margins"
-#~ msgstr "Настройване на границите на работното място"

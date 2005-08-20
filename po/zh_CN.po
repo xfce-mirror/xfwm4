@@ -1,17 +1,17 @@
-# #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# #-#-#-#-#  zh_CN.po (xfwm4 4.2.2)  #-#-#-#-#
+# Chinese translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Yongtao Yang <yongtao.yang@telia.com>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfwm4 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-01-24 17:24+0100\n"
+"PO-Revision-Date: 2005-08-20 17:52+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -647,95 +647,3 @@ msgstr "切换到 ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "移动窗口至工作区 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "移动窗口至工作区 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "移动窗口至工作区 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "移动窗口至工作区 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "移动窗口至工作区 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "移动窗口至工作区 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "移动窗口至工作区 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "移动窗口至工作区 9"
-
-#~ msgid "Workspace 1"
-#~ msgstr "工作区 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "工作区 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "工作区 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "工作区 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "工作区 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "工作区 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "工作区 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "工作区 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "工作区 9"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: 尚不支持的操作\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: 无法管理的net_wm_state  (window %%lx)"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: 另一个窗口管理正在运行"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: 无法分配 inactive 颜色 %s\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: 另一个窗口管理正在运行"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: 默认文件中缺少数据"
-
-#~ msgid "%s: Failed to enter daemon mode: %s"
-#~ msgstr "%s: 无法进入守护进程模式: %s"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: 无法创建新进程: %s"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: 发生了未知错误"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: 缺少默认文件"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr "%s: 指定的主题 \\\"%s\\\" 不存在，使用默认主题"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s: 默认文件中缺少数据"
-
-#~ msgid "Cannot grab the keyboard"
-#~ msgstr "无法获取键盘"

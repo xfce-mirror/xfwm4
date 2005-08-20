@@ -1,17 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Dutch translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Jasper Huijsmans <jasper@xfce.org>, 2004.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfwm4 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2004-08-25 20:11+0200\n"
+"PO-Revision-Date: 2005-08-20 17:49+0900\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -650,27 +649,3 @@ msgstr "Wisselen naar ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Venster naar bureablad 2 verplaatsen"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Venster naar bureablad 3 verplaatsen"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Venster naar bureablad 4 verplaatsen"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Venster naar bureablad 5 verplaatsen"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Venster naar bureablad 6 verplaatsen"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Venster naar bureablad 7 verplaatsen"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Venster naar bureablad 8 verplaatsen"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Venster naar bureablad 9 verplaatsen"
