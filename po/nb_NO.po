@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Eskild Hustvedt <eskild@goldenfiles.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: mcs-plugin/margins.c:127
@@ -25,7 +25,7 @@ msgstr "Skrivebord marginer"
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli "
+"Marginer er omrÃ¥der ved kantene pÃ¥ skjermen hvor ingen vinduer vil bli "
 "plassert"
 
 #: mcs-plugin/margins.c:168
@@ -34,7 +34,7 @@ msgstr "Venstre"
 
 #: mcs-plugin/margins.c:188
 msgid "Right :"
-msgstr "Høyre"
+msgstr "HÃ¸yre"
 
 #: mcs-plugin/margins.c:208
 msgid "Top :"
@@ -74,7 +74,7 @@ msgstr "Navn:"
 
 #: mcs-plugin/workspaces.c:455
 msgid "Click on a workspace name to edit it"
-msgstr "Klikke på navnet til et skrivebord for å redigere det"
+msgstr "Klikke pÃ¥ navnet til et skrivebord for Ã¥ redigere det"
 
 #: mcs-plugin/workspaces.c:527
 msgid "Number of workspaces:"
@@ -136,11 +136,11 @@ msgstr "Midten"
 
 #: mcs-plugin/xfwm4_plugin.c:96
 msgid "Right"
-msgstr "Høyre"
+msgstr "HÃ¸yre"
 
 #: mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
-msgstr "Klikk og dra knappene for å endre utseende"
+msgstr "Klikk og dra knappene for Ã¥ endre utseende"
 
 #: mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
@@ -165,11 +165,11 @@ msgstr "Skrifttypevalgsdialog"
 
 #: mcs-plugin/xfwm4_plugin.c:1408 mcs-plugin/xfwm4_plugin.c:1928
 msgid "Window Manager"
-msgstr "Vindushåndterer"
+msgstr "VindushÃ¥ndterer"
 
 #: mcs-plugin/xfwm4_plugin.c:1421
 msgid "Window Manager Preferences"
-msgstr "Instillinger for vindushåndterer"
+msgstr "Instillinger for vindushÃ¥ndterer"
 
 #: mcs-plugin/xfwm4_plugin.c:1450
 #, fuzzy
@@ -222,11 +222,11 @@ msgstr "Fokusmodell"
 
 #: mcs-plugin/xfwm4_plugin.c:1606
 msgid "Click to focus"
-msgstr "Klikk for å fokusere"
+msgstr "Klikk for Ã¥ fokusere"
 
 #: mcs-plugin/xfwm4_plugin.c:1613
 msgid "Focus follows mouse"
-msgstr "Fokus følger musen"
+msgstr "Fokus fÃ¸lger musen"
 
 #: mcs-plugin/xfwm4_plugin.c:1620
 msgid "New window focus"
@@ -310,11 +310,11 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1794
 msgid "Opaque move and resize"
-msgstr "Ugjennomsiktig flytting og endring av størrelse"
+msgstr "Ugjennomsiktig flytting og endring av stÃ¸rrelse"
 
 #: mcs-plugin/xfwm4_plugin.c:1802
 msgid "Display content of windows when resizing"
-msgstr "Vis innhold i vinduer mens størrelsen endres"
+msgstr "Vis innhold i vinduer mens stÃ¸rrelsen endres"
 
 #: mcs-plugin/xfwm4_plugin.c:1807
 msgid "Display content of windows when moving"
@@ -326,7 +326,7 @@ msgstr "Handling ved dobbelklikk"
 
 #: mcs-plugin/xfwm4_plugin.c:1818
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Handling å utføre når det dobbelklikkes på tittellinjen :"
+msgstr "Handling Ã¥ utfÃ¸re nÃ¥r det dobbelklikkes pÃ¥ tittellinjen :"
 
 #: mcs-plugin/xfwm4_plugin.c:1820
 msgid "Advanced"
@@ -353,7 +353,7 @@ msgstr "Et hurtigtasttema med det navnet finnes allerede"
 #: mcs-plugin/xfwm4_shortcuteditor.c:165
 #, fuzzy
 msgid "You have to provide a name for the keybinding theme"
-msgstr "Du må oppgi et navn for hurtigtasttemaet"
+msgstr "Du mÃ¥ oppgi et navn for hurtigtasttemaet"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Close window"
@@ -389,23 +389,23 @@ msgstr "Flytt vindu til venstre"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window right"
-msgstr "Flytt vindu til høyre"
+msgstr "Flytt vindu til hÃ¸yre"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Resize window up"
-msgstr "Endre størrelsen på vinduet opp"
+msgstr "Endre stÃ¸rrelsen pÃ¥ vinduet opp"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window down"
-msgstr "Endre størrelse på vinduet ned"
+msgstr "Endre stÃ¸rrelse pÃ¥ vinduet ned"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window left"
-msgstr "Endre størrelse på vinduet til venstre"
+msgstr "Endre stÃ¸rrelse pÃ¥ vinduet til venstre"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window right"
-msgstr "Endre størrelse på vinduet til høyre"
+msgstr "Endre stÃ¸rrelse pÃ¥ vinduet til hÃ¸yre"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Raise window"
@@ -417,7 +417,7 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
-msgstr "Slå fullskjerm på/av"
+msgstr "SlÃ¥ fullskjerm pÃ¥/av"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Upper workspace"
@@ -433,7 +433,7 @@ msgstr "Venstre skrivebord"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Right workspace"
-msgstr "Høyre skrivebord"
+msgstr "HÃ¸yre skrivebord"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Next workspace"
@@ -461,7 +461,7 @@ msgstr "Flytt vindu til forrige skrivebord"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Move window to upper workspace"
-msgstr "Flytt vindu til øvre skrivebord"
+msgstr "Flytt vindu til Ã¸vre skrivebord"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Move window to bottom workspace"
@@ -473,7 +473,7 @@ msgstr "Flytt vindu til venstre skrivebord"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:319
 msgid "Move window to right workspace"
-msgstr "Flytt vindu til høyre skrivebrord"
+msgstr "Flytt vindu til hÃ¸yre skrivebrord"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
@@ -486,7 +486,7 @@ msgstr "Flytt vindu til skrivebord 1"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
-msgstr "Kan ikke åpne temamappe !"
+msgstr "Kan ikke Ã¥pne temamappe !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
@@ -494,7 +494,7 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
-"Kan ikke åpne %s : \n"
+"Kan ikke Ã¥pne %s : \n"
 "%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
@@ -516,7 +516,7 @@ msgid ""
 "Are you sure you want to use it ?"
 msgstr ""
 "Snarvei allerede i bruk !\n"
-"Er du sikker på at du vil bruke den?"
+"Er du sikker pÃ¥ at du vil bruke den?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:876
 msgid "Compose shortcut for :"
@@ -544,7 +544,7 @@ msgstr "Kommando :"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1041
 msgid "The command doesn't exist or the file is not executable !"
-msgstr "Den kommandoen finnes ikke eller filen er ikke kjørbar !"
+msgstr "Den kommandoen finnes ikke eller filen er ikke kjÃ¸rbar !"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:1104
 msgid "Compose shortcut for command :"
@@ -598,7 +598,7 @@ msgstr "Sammenheng _hjelp"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr "Alltid øverst"
+msgstr "Alltid Ã¸verst"
 
 #: src/menu.c:51
 msgid "Send to..."
