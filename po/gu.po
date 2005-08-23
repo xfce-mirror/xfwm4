@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-25 23:35+0200\n"
-"PO-Revision-Date: 2005-05-03 18:24+0530\n"
+"PO-Revision-Date: 2005-08-23 11:17+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
-"Language-Team: Gujarati <gu@li.org>\n"
+"Language-Team: Gujarati <fedora-trans-gu@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
 "\n"
 "\n"
 "\n"
@@ -26,8 +26,7 @@ msgid "Workspace Margins"
 msgstr "કામ કરવાની જગ્યાના હાંસિયાઓ"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "હાંસિયાઓ એ સ્ક્રીનની બાજુઓ માટેના વિસ્તારો છે કે જ્યાં કોઈ વિન્ડો મૂકવામાં આવતી નથી"
 
 #: mcs-plugin/margins.c:168
@@ -467,9 +466,9 @@ msgid "Show desktop"
 msgstr "ડેસ્કટોપ બતાવો"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:423
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧ પર ખસાડો"
+msgstr "વિન્ડોને કામ કરવાની જગ્યા %d પર ખસાડો"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
@@ -642,53 +641,3 @@ msgstr "કામ કરવાની જગ્યાના સુયોજનો
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 કામ કરવાની જગ્યાના સુયોજનો"
 
-#~ msgid "Command shortcuts"
-#~ msgstr "આદેશના ટુંકા પથ"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૨ પર ખસાડો"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૩ પર ખસાડો"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૪ પર ખસાડો"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૫ પર ખસાડો"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૬ પર ખસાડો"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૭ પર ખસાડો"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૮ પર ખસાડો"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૯ પર ખસાડો"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧૦ પર ખસાડો"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧૧ પર ખસાડો"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧૨ પર ખસાડો"
-
-#~ msgid "Select command"
-#~ msgstr "આદેશ પસંદ કરો"
-
-#~ msgid "Choose command"
-#~ msgstr "આદેશ પસંદ કરો"
-
-#~ msgid "Command :"
-#~ msgstr "આદેશ :"
-
-#~ msgid "The command doesn't exist or the file is not executable !"
-#~ msgstr "આદેશ અસ્તિત્વમાં નથી અથવા તે ફાઈલ ચલાવી શકાય તેવી નથી !"
-
-#~ msgid "Compose shortcut for command :"
-#~ msgstr "આદેશ માટે ટુંકો પથ બનાવો :"
