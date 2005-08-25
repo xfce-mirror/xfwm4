@@ -1,4 +1,4 @@
-# translation of xfwm4_he.po to 
+# translation of xfwm4_he.po to
 # translation of he.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Dotan Kamber <kamberd@yahoo.com>, 2004.
@@ -7,24 +7,24 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4_he\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-03-11 15:59+0200\n"
-"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team:  <xfce2004@yahoo.com>\n"
+"PO-Revision-Date: 2005-08-21 15:27+0300\n"
+"Last-Translator: Yuval Tanny\n"
+"Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "שולי סביבת העבודה"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: mcs-plugin/margins.c:168
@@ -469,9 +469,9 @@ msgid "Show desktop"
 msgstr "הצג שולחן עבודה"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "העבר חלון לסביבת עבודה 1"
+msgstr "העבר חלון לסביבת עבודה %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -578,7 +578,7 @@ msgstr "_דביק"
 
 #: src/menu.c:47
 msgid "Uns_tick"
-msgstr "ב_טל דביק"
+msgstr "ב_טל דביקות"
 
 #: src/menu.c:48
 msgid "Context _help"
@@ -651,35 +651,3 @@ msgstr "החלף ל..."
 msgid "Unknown application!"
 msgstr "יישום לא ידוע."
 
-#~ msgid "Move window to workspace 2"
-#~ msgstr "העבר חלון לסביבת עבודה 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "העבר חלון לסביבת עבודה 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "העבר חלון לסביבת עבודה 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "העבר חלון לסביבת עבודה 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "העבר חלון לסביבת עבודה 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "העבר חלון לסביבת עבודה 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "העבר חלון לסביבת עבודה 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "העבר חלון לסביבת עבודה 9"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "העבר חלון לסביבת עבודה 10"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "העבר חלון לסביבת עבודה 11"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "העבר חלון לסביבת עבודה 12"
