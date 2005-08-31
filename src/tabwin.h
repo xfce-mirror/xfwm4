@@ -32,14 +32,23 @@
 typedef struct _Tabwin Tabwin;
 struct _Tabwin
 {
+    /* The below must be freed when destroying */
     GtkWidget *window;
-    GtkWidget *image;
-    GtkWidget *class;
+    GList *head;
+    /* these don't have to be */
     GtkWidget *label;
+    GtkWidget *container;
+    GList *current;
+    gulong selected_callback;
+    int grid_cols;
+    int grid_rows;
 };
 
-Tabwin *tabwinCreate (GdkScreen *, GdkPixbuf *, const gchar *, const gchar *);
-void tabwinSetLabel (Tabwin *, GdkPixbuf *, const gchar *, const gchar *);
+Tabwin *tabwinCreate (GdkScreen *, Client *c, unsigned int cycle_range);
+void tabwinSelectNext (Tabwin *);
+void tabwinSelectPrev (Tabwin *);
+void tabwinRemoveClient(Tabwin *t, Client *c);
 void tabwinDestroy (Tabwin *);
+void tabwinAppendClient(Tabwin *t, Client *c, int cycle_range);
 
 #endif /* INC_TABWIN_H */

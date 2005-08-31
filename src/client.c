@@ -3138,10 +3138,15 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             if (xevent->xmotion.y_root - passdata->my > 15)
             {
+                /* to keep the distance from the edges of the window proportional. */
+                double xratio, yratio;
+                xratio = (xevent->xmotion.x_root - c->x)/(double)c->width;
+                yratio = (xevent->xmotion.y_root - c->y)/(double)c->width;
+                
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
-                passdata->mx = c->x + c->width / 2;
+                passdata->mx = c->x + c->width * xratio;
                 passdata->oy = c->y;
                 passdata->my = c->y - frameTop(c) / 2;
                 toggled_maximize = TRUE;
@@ -3823,6 +3828,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 {
     ClientCycleData *passdata = (ClientCycleData *) data;
     Client *c = passdata->c;
+    Client *tmp;
     ScreenInfo *screen_info = c->screen_info;
     DisplayInfo *display_info = screen_info->display_info;
     XfceFilterStatus status = XEV_FILTER_STOP;
@@ -3840,11 +3846,16 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     switch (xevent->type)
     {
         case DestroyNotify:
-            gone |= (c == clientGetFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, WINDOW));
+            tmp = clientGetFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, WINDOW);
+            gone |= (c == tmp);
+            tabwinRemoveClient(passdata->tabwin, tmp);            
             status = XEV_FILTER_CONTINUE;
             /* Walk through */
         case UnmapNotify:
-            gone |= (c == clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW));
+            tmp = clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW);
+            gone |= (c == tmp);
+            tabwinRemoveClient(passdata->tabwin, tmp);
+
             status = XEV_FILTER_CONTINUE;
             /* Walk through */
         case KeyPress:
@@ -3858,11 +3869,13 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                     {
                         TRACE ("Cycle: previous");
                         c2 = clientGetPrevious (c, passdata->cycle_range);
+                        tabwinSelectPrev(passdata->tabwin);
                     }
                     else
                     {
                         TRACE ("Cycle: next");
                         c2 = clientGetNext (c, passdata->cycle_range);
+                        tabwinSelectNext(passdata->tabwin);
                     }
                     if (c2)
                     {
@@ -3874,16 +3887,13 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 {
                     /* Jump to the next one if the current has vanished! */
                     c = clientGetNext (c, passdata->cycle_range);
+
                     passdata->c = c;
                 }
 
                 if (c)
                 {
-                    GdkPixbuf *icon;
-
                     wireframeUpdate (c, passdata->wireframe);
-                    icon = getAppIcon (display_info, c->window, 32, 32);
-                    tabwinSetLabel (passdata->tabwin, icon, c->class.res_class, c->name);
                 }
                 else
                 {
@@ -3983,8 +3993,7 @@ clientCycle (Client * c, XEvent * ev)
         TRACE ("entering cycle loop");
         passdata.wireframe = wireframeCreate (passdata.c);
         icon = getAppIcon (display_info, passdata.c->window, 32, 32);
-        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, icon,
-                               passdata.c->class.res_class, passdata.c->name);
+        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c, passdata.cycle_range);
         xfce_push_event_filter (display_info->xfilter, clientCycle_event_filter, &passdata);
         gtk_main ();
         xfce_pop_event_filter (display_info->xfilter);
