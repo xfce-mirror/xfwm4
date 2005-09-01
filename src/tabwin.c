@@ -158,7 +158,7 @@ createWindowlist (GdkScreen *scr, Client *c, unsigned int cycle_range, Tabwin *t
     /* pack the client icons */
     for (c2 = c, i = 0; c2 && i < n_clients; i++, c2 = c2->next)
     {
-        if (!clientSelectMask (c2, cycle_range, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
+        if (!clientSelectMask (c2, cycle_range, WINDOW_REGULAR_FOCUSABLE))
             continue;
         icon = createWindowIcon(c2);
         gtk_table_attach(GTK_TABLE(windowlist), GTK_WIDGET(icon), 
