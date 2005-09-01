@@ -55,15 +55,41 @@ paint_selected(GtkWidget *w,  GdkEventExpose *event, gpointer data)
     return FALSE;
 }
 
+/* Efficiency is definitely *not* the goal here! */
+static gchar *
+pretty_string (const gchar *s)
+{
+    gchar *canonical;
+    
+    if (s)
+    {
+        canonical = g_strdup (s);
+        g_strcanon (canonical, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", ' ');    
+        g_strstrip (canonical);
+        *canonical = g_ascii_toupper (*canonical);
+    }
+    else
+    {
+        canonical = g_strdup(_("Unknown application!"));
+    }
+
+    return canonical;
+}
+
 static void
-tabwinSetLabel(Tabwin *t, gchar *label)
+tabwinSetLabel(Tabwin *t, gchar *class, gchar *label)
 {
     gchar *markup;
+    gchar *message;
+
+    message = pretty_string (class);
+    gtk_label_set_use_markup (GTK_LABEL (t->class), TRUE);
+    markup = g_strconcat ("<span weight=\"bold\">[ ", message, " ]</span>", NULL);
+    gtk_label_set_markup(GTK_LABEL (t->class), markup);
+    gtk_label_set_text (GTK_LABEL (t->label), label);
     
-    markup = g_strconcat ("<span weight=\"bold\">", label, "</span>", NULL);
-    gtk_label_set_markup(GTK_LABEL(t->label), markup);
-    
-    g_free(markup);
+    g_free (message);
+    g_free(markup);    
 }
 
 static void
@@ -78,7 +104,7 @@ tabwinSetSelected(Tabwin *t, GtkWidget *w)
     t->selected_callback=g_signal_connect(G_OBJECT(w), "expose-event", G_CALLBACK(paint_selected), NULL);
     c = g_object_get_data(G_OBJECT(w), "client-ptr-val");
     
-    tabwinSetLabel(t, c->name);
+    tabwinSetLabel(t, c->class.res_class, c->name);
 }
 
 static GtkWidget *
@@ -163,8 +189,7 @@ tabwinCreate(GdkScreen *scr, Client *c, unsigned int cycle_range)
     GtkWidget *vbox, *header_hbox;
     GtkWidget *windowlist;
 
-    tabwin = g_new (Tabwin, 1);
-    memset(tabwin, 0, sizeof(Tabwin));
+    tabwin = g_new0 (Tabwin, 1);
     if (!logo)
     {
         logo = xfce_inline_icon_at_size (tabwin_icon_data, 32, 32);
@@ -174,8 +199,8 @@ tabwinCreate(GdkScreen *scr, Client *c, unsigned int cycle_range)
     tabwin->window = gtk_window_new(GTK_WINDOW_POPUP);
     gtk_window_set_screen(GTK_WINDOW(tabwin->window), scr);
     gtk_container_set_border_width(GTK_CONTAINER(tabwin->window), 0);
-    gtk_window_set_position (GTK_WINDOW (tabwin->window),
-        GTK_WIN_POS_CENTER_ALWAYS);
+    gtk_window_set_position (GTK_WINDOW (tabwin->window), GTK_WIN_POS_CENTER_ALWAYS);
+    
     frame = gtk_frame_new (NULL);
     gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
@@ -194,21 +219,29 @@ tabwinCreate(GdkScreen *scr, Client *c, unsigned int cycle_range)
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
     gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
-    tabwin->label = gtk_label_new(" ");
+    tabwin->class = gtk_label_new ("");
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
+    gtk_misc_set_alignment (GTK_MISC (tabwin->class), 0.5, 0.5);
+    gtk_box_pack_start (GTK_BOX (vbox), tabwin->class, TRUE, TRUE, 0);
+
+    tabwin->label = gtk_label_new ("");
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->label), FALSE);
+    gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.5, 0.5);
+    gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, TRUE, TRUE, 0);
+    gtk_widget_set_size_request (GTK_WIDGET(tabwin->label), 240, -1);
+
     windowlist = createWindowlist(scr, c, cycle_range, tabwin);
     tabwin->container = windowlist;
     gtk_container_add(GTK_CONTAINER(frame), windowlist);
-
-    gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.5, 0.5);
-    gtk_widget_set_size_request (GTK_WIDGET(tabwin->label), 240, -1);
-    gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, TRUE, TRUE, 0);
 
     if ((gtk_major_version == 2 && gtk_minor_version >= 6) || gtk_major_version > 2)
     {
 #ifdef PANGO_ELLIPSIZE_END
 	g_object_set (G_OBJECT (tabwin->label), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+	g_object_set (G_OBJECT (tabwin->class), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
 #else
 	g_object_set (G_OBJECT (tabwin->label), "ellipsize", 3, NULL);
+	g_object_set (G_OBJECT (tabwin->class), "ellipsize", 3, NULL);
 #endif
     }
     
@@ -226,12 +259,16 @@ tabwinRemoveClient(Tabwin *t, Client *c)
         if (((Client *)g_object_get_data(tmp->data, "client-ptr-val")) == c)
         {
             if (tmp == t->current)
+            {
                 tabwinSelectNext(t);    
-            gtk_container_remove(GTK_CONTAINER(t->container), tmp->data);
-            t->head = g_list_delete_link(t->head, tmp);
+            }
+            gtk_container_remove (GTK_CONTAINER(t->container), tmp->data);
+            t->head = g_list_delete_link (t->head, tmp);
+            /* No need to look any further */
+            return;
         }
     /* since this is a circular list, hitting head signals end, not hitting NULL */
-    } while ((tmp=tmp->next) && (tmp!=t->head));
+    } while ((tmp = tmp->next) && (tmp != t->head));
     
 }
 
@@ -259,6 +296,6 @@ tabwinDestroy (Tabwin * tabwin)
     /* un-circlify the list so we don't infinitely loop while freeing */
     tabwin->head->prev->next = NULL;
     tabwin->head->prev = NULL;
-    g_list_free(tabwin->head);
+    g_list_free (tabwin->head);
     gtk_widget_destroy (tabwin->window);
 }

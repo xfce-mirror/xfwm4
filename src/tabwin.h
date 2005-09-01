@@ -35,11 +35,14 @@ struct _Tabwin
     /* The below must be freed when destroying */
     GtkWidget *window;
     GList *head;
+
     /* these don't have to be */
+    GtkWidget *class;
     GtkWidget *label;
     GtkWidget *container;
     GList *current;
     gulong selected_callback;
+
     int grid_cols;
     int grid_rows;
 };
