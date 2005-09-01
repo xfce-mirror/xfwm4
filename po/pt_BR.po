@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2005-08-19 21:19+0900\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -619,7 +619,11 @@ msgstr "%s: Não foi possível alocar a cor inativa %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Não foi possível fazer análise da cor inativa %s\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "Aplicativo desconhecido!"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "Mudar para ..."
@@ -643,9 +647,6 @@ msgstr "Margens da área de trabalho"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margens da área de trabalho"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Aplicativo desconhecido!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Atalhos para comandos"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2004-12-09 01:45+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: \n"
@@ -611,7 +611,11 @@ msgstr "%s: Ei suutnud tekitada aktiivitu värvi %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei suutnud parsida aktiivitu värvi %s\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "Tundmatu rakendus!"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "Lülitu ..."
@@ -631,9 +635,6 @@ msgstr "Töölaua seaded"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 töölaua seaded"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Tundmatu rakendus!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Käskude kiirklahvid"

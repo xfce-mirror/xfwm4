@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -613,7 +613,11 @@ msgstr "%s: নিষ্ক্রিয় রং আরক্ষন করা য�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: নিষ্ক্রিয় রং পার্স করা যায়নি %s\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "অজানা অ্যাপ্লিকেশন!"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "পরিবর্তন করুন ..."
@@ -633,9 +637,6 @@ msgstr "কর্মক্ষেত্র সংক্রান্ত বৈশ�
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 কর্মক্ষেত্র সংক্রান্ত বৈশিষ্ট্য"
-
-#~ msgid "Unknown application!"
-#~ msgstr "অজানা অ্যাপ্লিকেশন!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "কমান্ডের শর্টকাট"

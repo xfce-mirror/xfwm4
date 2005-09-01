@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2005-07-02 00:25:02+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -616,7 +616,11 @@ msgstr "%s: 비활성 표시색 %s을 할당하지 못 했습니다.\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 비활성 표시색 %s을 분석하지 못 했습니다.\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "무슨 프로그램이죠!"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "작업공간 전환"
@@ -636,6 +640,3 @@ msgstr "작업공간 설정"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 작업공간 설정"
-
-#~ msgid "Unknown application!"
-#~ msgstr "무슨 프로그램이죠!"

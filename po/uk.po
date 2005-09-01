@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -613,7 +613,11 @@ msgstr "%s: Неможливо зарезервувати неактивний �
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Неможливо проаналізувати неактивний колір %s\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "Невідома програма!"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "Перемикнутись на ..."
@@ -637,9 +641,6 @@ msgstr "Поля стільниці"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Поля стільниці"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Невідома програма!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Комбінації клавіш"

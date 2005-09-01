@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2005-06-27 23:05+0800\n"
 "Last-Translator: Hydonsingore Sie <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: \n"
@@ -626,7 +626,11 @@ msgstr "%s: 無法分配未使用的顏色 %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 無法分析未使用的顏色 %s\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "不明的應用程式！"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "切換到..."
@@ -646,9 +650,6 @@ msgstr "設定工作區"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 工作區設定"
-
-#~ msgid "Unknown application!"
-#~ msgstr "不明的應用程式！"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "執行指令的快速鍵"

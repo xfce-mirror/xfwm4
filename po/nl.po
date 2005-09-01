@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 07:55+0200\n"
+"POT-Creation-Date: 2005-09-01 23:12+0200\n"
 "PO-Revision-Date: 2005-08-19 21:17+0900\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -615,7 +615,11 @@ msgstr "%s: Kan inactieve kleur %s niet creëren\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 
-#: src/tabwin.c:174
+#: src/tabwin.c:73
+msgid "Unknown application!"
+msgstr "Onbekend programma!"
+
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "Wisselen naar ..."
@@ -635,9 +639,6 @@ msgstr "Instellingen voor virtuele bureaubladen"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Onbekend programma!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Commando-sneltoetsen"
