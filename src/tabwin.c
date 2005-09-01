@@ -22,7 +22,13 @@
 #include <config.h>
 #endif
 
+#ifndef WIN_ICON_SIZE
 #define WIN_ICON_SIZE 48
+#endif
+
+#ifndef WIN_ICON_BORDER
+#define WIN_ICON_BORDER 5
+#endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
@@ -40,12 +46,12 @@ paint_selected(GtkWidget *w,  GdkEventExpose *event, gpointer data)
 {
     gtk_paint_box(w->style, w->window,
                   GTK_STATE_SELECTED,
-                  GTK_SHADOW_ETCHED_IN,
+                  GTK_SHADOW_IN,
                   NULL, w, NULL, 
-                  w->allocation.x-3,
-                  w->allocation.y-3,
-                  w->allocation.width+3,
-                  w->allocation.height+3);
+                  w->allocation.x - WIN_ICON_BORDER,
+                  w->allocation.y - WIN_ICON_BORDER,
+                  w->allocation.width + 2 * WIN_ICON_BORDER,
+                  w->allocation.height + 2 * WIN_ICON_BORDER);
     return FALSE;
 }
 
@@ -53,11 +59,9 @@ static void
 tabwinSetLabel(Tabwin *t, gchar *label)
 {
     gchar *markup;
-    gchar *str;
     
-    markup = g_strconcat ("<span size=\"larger\" weight=\"bold\">", label, "</span>", NULL);
+    markup = g_strconcat ("<span weight=\"bold\">", label, "</span>", NULL);
     gtk_label_set_markup(GTK_LABEL(t->label), markup);
-    gtk_widget_modify_fg (t->label, GTK_STATE_NORMAL, &t->label->style->fg[GTK_STATE_SELECTED]);
     
     g_free(markup);
 }
@@ -66,8 +70,11 @@ static void
 tabwinSetSelected(Tabwin *t, GtkWidget *w)
 {
     Client *c;
+    
     if (t->selected_callback)
+    {
         g_signal_handler_disconnect(t->current->data, t->selected_callback);
+    }
     t->selected_callback=g_signal_connect(G_OBJECT(w), "expose-event", G_CALLBACK(paint_selected), NULL);
     c = g_object_get_data(G_OBJECT(w), "client-ptr-val");
     
@@ -83,15 +90,21 @@ createWindowIcon(Client *c)
     icon_pixbuf = getAppIcon(c->screen_info->display_info, c->window, WIN_ICON_SIZE, WIN_ICON_SIZE);
     icon = gtk_image_new();
     g_object_set_data(G_OBJECT(icon), "client-ptr-val", c);
+
     if (icon_pixbuf)
+    {
         gtk_image_set_from_pixbuf(GTK_IMAGE(icon), icon_pixbuf);
+    }
     else
+    {
         gtk_image_set_from_stock(GTK_IMAGE(icon), "gtk-missing-image", GTK_ICON_SIZE_DIALOG);
+    }
+
     return icon;
 }
 
 static GtkWidget *
-createWindowlist(GdkScreen *scr, Client *c, unsigned int cycle_range, Tabwin *t)
+createWindowlist (GdkScreen *scr, Client *c, unsigned int cycle_range, Tabwin *t)
 {
     GdkRectangle monitor_sz;
     gint monitor;
@@ -108,8 +121,8 @@ createWindowlist(GdkScreen *scr, Client *c, unsigned int cycle_range, Tabwin *t)
     screen_info = c->screen_info;
     xfce_gdk_display_locate_monitor_with_pointer(screen_info->display_info->gdisplay, &monitor);
     gdk_screen_get_monitor_geometry (scr, monitor, &monitor_sz);
-    /* add the width of the 7px border on each side */
-    grid_cols   = (monitor_sz.width/(WIN_ICON_SIZE+14))*0.75;
+    /* add the width of the border on each side */
+    grid_cols   = (monitor_sz.width / (WIN_ICON_SIZE + 2 * WIN_ICON_BORDER)) * 0.75;
     n_clients   = screen_info->client_count;
     grid_rows   = n_clients/grid_cols + 1;
     windowlist  = gtk_table_new(grid_rows, grid_cols, FALSE);
@@ -117,7 +130,7 @@ createWindowlist(GdkScreen *scr, Client *c, unsigned int cycle_range, Tabwin *t)
     t->grid_cols = grid_cols;
     t->grid_rows = grid_rows;
     /* pack the client icons */
-    for (c2=c,i=0; c2 && i< n_clients; i++, c2=c2->next)
+    for (c2 = c, i = 0; c2 && i < n_clients; i++, c2 = c2->next)
     {
         if (!clientSelectMask (c2, cycle_range, WINDOW_NORMAL | WINDOW_DIALOG | WINDOW_MODAL_DIALOG))
             continue;
@@ -130,12 +143,13 @@ createWindowlist(GdkScreen *scr, Client *c, unsigned int cycle_range, Tabwin *t)
         packpos++;        
         t->head = g_list_append(t->head, icon);
     }
-    /*circlify the list for easier cycling*/
+    /* circlify the list for easier cycling */
     t->head->prev = g_list_last(t->head);
     t->head->prev->next = t->head;
 
     t->current = t->head->next;
     tabwinSetSelected(t, t->current->data);
+
     return windowlist;
 }
 
@@ -174,8 +188,21 @@ tabwinCreate(GdkScreen *scr, Client *c, unsigned int cycle_range)
     header = xfce_create_header (logo, _("Switch to:"));
     gtk_box_pack_start (GTK_BOX (vbox), header, FALSE, TRUE, 0);
     header_hbox = gtk_bin_get_child(GTK_BIN(header));
+
+    frame = gtk_frame_new (NULL);
+    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
+    gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
+    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+
     tabwin->label = gtk_label_new(" ");
+    windowlist = createWindowlist(scr, c, cycle_range, tabwin);
+    tabwin->container = windowlist;
+    gtk_container_add(GTK_CONTAINER(frame), windowlist);
+
+    gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.5, 0.5);
     gtk_widget_set_size_request (GTK_WIDGET(tabwin->label), 240, -1);
+    gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, TRUE, TRUE, 0);
+
     if ((gtk_major_version == 2 && gtk_minor_version >= 6) || gtk_major_version > 2)
     {
 #ifdef PANGO_ELLIPSIZE_END
@@ -185,17 +212,6 @@ tabwinCreate(GdkScreen *scr, Client *c, unsigned int cycle_range)
 #endif
     }
     
-    gtk_box_pack_start(GTK_BOX(header_hbox), tabwin->label, TRUE, TRUE, 0);
-
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
-    gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
-
-    windowlist = createWindowlist(scr, c, cycle_range, tabwin);
-    tabwin->container = windowlist;
-    gtk_container_add(GTK_CONTAINER(frame), windowlist);
-
     gtk_widget_show_all(tabwin->window);
     return tabwin;
 }
@@ -213,7 +229,6 @@ tabwinRemoveClient(Tabwin *t, Client *c)
                 tabwinSelectNext(t);    
             gtk_container_remove(GTK_CONTAINER(t->container), tmp->data);
             t->head = g_list_delete_link(t->head, tmp);
-            TRACE("Removed Client\n");
         }
     /* since this is a circular list, hitting head signals end, not hitting NULL */
     } while ((tmp=tmp->next) && (tmp!=t->head));
