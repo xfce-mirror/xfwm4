@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-10-04 02:59+0530\n"
 "Last-Translator: root <root@Phulewala>\n"
 "Language-Team:  <pa@li.org>\n"
@@ -627,13 +627,10 @@ msgstr "%s: ਨਾ-ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕ
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "ਤੇ ਜਾਓ ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -654,6 +651,9 @@ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
+
+#~ msgid "Unknown application!"
+#~ msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "ਕਮਾਂਡ ਸ਼ਾਰਟਕੱਟ"

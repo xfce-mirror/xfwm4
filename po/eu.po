@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-09-13 22:46+0200\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -626,13 +626,10 @@ msgstr "%s: Ezin da esleitu kolore ez-aktiboa %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ezin da analizatu kolore ez-aktiboa %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Aldatu hona ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Aplikazio ezezaguna!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -653,6 +650,9 @@ msgstr "Idazmahai Marjinak"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Idazmahai Marjinak"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Aplikazio ezezaguna!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "komando laster-teklak"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-18 20:23+0900\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2005-05-13 04:33+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -16,463 +16,461 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../mcs-plugin/margins.c:127
+#: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "ワークスペースの余白"
 
-#: ../mcs-plugin/margins.c:137
+#: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
 
-#: ../mcs-plugin/margins.c:168
+#: mcs-plugin/margins.c:168
 msgid "Left :"
 msgstr "左 :"
 
-#: ../mcs-plugin/margins.c:188
+#: mcs-plugin/margins.c:188
 msgid "Right :"
 msgstr "右 :"
 
-#: ../mcs-plugin/margins.c:208
+#: mcs-plugin/margins.c:208
 msgid "Top :"
 msgstr "上 :"
 
-#: ../mcs-plugin/margins.c:228
+#: mcs-plugin/margins.c:228
 msgid "Bottom :"
 msgstr "下 :"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:152
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "ワークスペースと余白"
 
 #. Number of workspaces
-#: ../mcs-plugin/plugin.c:135 ../mcs-plugin/plugin.c:166
-#: ../mcs-plugin/workspaces.c:546
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "ワークスペース"
 
-#: ../mcs-plugin/plugin.c:173
+#: mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "余白"
 
-#: ../mcs-plugin/workspaces.c:345
+#: mcs-plugin/workspaces.c:345
 msgid "Change name"
 msgstr "名前変更"
 
-#: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
 
-#: ../mcs-plugin/workspaces.c:367
+#: mcs-plugin/workspaces.c:367
 msgid "Name:"
 msgstr "名前:"
 
-#: ../mcs-plugin/workspaces.c:455
+#: mcs-plugin/workspaces.c:455
 msgid "Click on a workspace name to edit it"
 msgstr "編集するにはワークスペース名をクリックして下さい"
 
-#: ../mcs-plugin/workspaces.c:527
+#: mcs-plugin/workspaces.c:527
 msgid "Number of workspaces:"
 msgstr "ワークスペースの数:"
 
 #. Workspace names
-#: ../mcs-plugin/workspaces.c:558
+#: mcs-plugin/workspaces.c:558
 msgid "Workspace names"
 msgstr "ワークスペース名"
 
-#: ../mcs-plugin/xfwm4_plugin.c:76
+#: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
 msgstr "メニュー"
 
-#: ../mcs-plugin/xfwm4_plugin.c:77
+#: mcs-plugin/xfwm4_plugin.c:77
 msgid "Stick"
 msgstr "貼る"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
+#: mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
 msgstr "折畳む"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
+#: mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
 msgstr "隠す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
+#: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
 msgstr "閉じる"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "ウィンドウを折畳む"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "ウィンドウを隠す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "ウィンドウの最大化"
 
-#: ../mcs-plugin/xfwm4_plugin.c:89
+#: mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
 msgstr "無し"
 
-#: ../mcs-plugin/xfwm4_plugin.c:94
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
 msgstr "左"
 
-#: ../mcs-plugin/xfwm4_plugin.c:95
+#: mcs-plugin/xfwm4_plugin.c:95
 msgid "Center"
 msgstr "中央"
 
-#: ../mcs-plugin/xfwm4_plugin.c:96
+#: mcs-plugin/xfwm4_plugin.c:96
 msgid "Right"
 msgstr "右"
 
-#: ../mcs-plugin/xfwm4_plugin.c:564
+#: mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
 msgstr "レイアウトを変更するには、ボタンをクリック＆ドラッグして下さい"
 
-#: ../mcs-plugin/xfwm4_plugin.c:569
+#: mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
 msgstr "アクティブ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:580
+#: mcs-plugin/xfwm4_plugin.c:580
 msgid "Title"
 msgstr "タイトル"
 
-#: ../mcs-plugin/xfwm4_plugin.c:581
+#: mcs-plugin/xfwm4_plugin.c:581
 msgid "The window title, it cannot be removed"
 msgstr "ウィンドウタイトル、削除できません"
 
-#: ../mcs-plugin/xfwm4_plugin.c:589
+#: mcs-plugin/xfwm4_plugin.c:589
 msgid "Hidden"
 msgstr "隠す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1343
+#: mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "フォント選択ダイアログ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1414 ../mcs-plugin/xfwm4_plugin.c:1900
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "ウィンドウマネージャ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1427
+#: mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "ウィンドウマネージャ設定"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1456
+#: mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "タイトルフォント"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "タイトル位置"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "タイトルバー内のテキスト位置 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1477
+#: mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "ボタン配置"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1483
+#: mcs-plugin/xfwm4_plugin.c:1483
 msgid "Style"
 msgstr "スタイル"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1521
+#: mcs-plugin/xfwm4_plugin.c:1521
 msgid "Window shortcuts"
 msgstr "ウィンドウショートカット"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1541
+#: mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr "コマンド"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1546
+#: mcs-plugin/xfwm4_plugin.c:1546
 msgid "Shortcut"
 msgstr "ショートカット"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1562
+#: mcs-plugin/xfwm4_plugin.c:1562
 msgid "Keyboard"
 msgstr "キーボード"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1573
+#: mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "フォーカスモデル"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1581
+#: mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "クリックでフォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1588
+#: mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "マウスに従ってフォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1595
+#: mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "新規ウィンドウのフォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1599
+#: mcs-plugin/xfwm4_plugin.c:1599
 msgid "Automatically give focus to newly created windows"
 msgstr "新規作成されたウィンドウに自動的にフォーカスを当てる"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1604
+#: mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "フォーカスで最前面へ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1612
+#: mcs-plugin/xfwm4_plugin.c:1612
 msgid "Automatically raise windows when they receive focus"
 msgstr "ウィンドウがフォーカスを取得した場合自動的に最前面にする"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1622
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "フォーカス取得後、最前面になるまでの遅延時間 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1628
+#: mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "遅い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1634
+#: mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "速い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1650
+#: mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "クリックで最前面にする"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: mcs-plugin/xfwm4_plugin.c:1654
 msgid "Raise window when clicking inside application window"
 msgstr "アプリケーションウィンドウ内でクリックした場合最前面にする"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1659
+#: mcs-plugin/xfwm4_plugin.c:1659
 msgid "Focus"
 msgstr "フォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1669
+#: mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "ウィンドウスナップ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1677
+#: mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "画面の境界でウィンドウを止める"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1682
+#: mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "他のウィンドウでウィンドウを止める"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1692
+#: mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "距離 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698 ../mcs-plugin/xfwm4_plugin.c:1748
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "狭い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1704 ../mcs-plugin/xfwm4_plugin.c:1754
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "広い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1719
+#: mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "ワークスペース循環"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1727
+#: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "ポインタが画面端に来たらワークスペースを循環する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1732
+#: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "画面でウィンドウをドラッグするとワークスペースを循環する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1742
+#: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "エッジ抵抗 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1769
+#: mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "不透明表示での移動と大きさ変更"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1777
+#: mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "大きさ変更時にウィンドウの内容を表示する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1782
+#: mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "移動時にウィンドウの内容を表示する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1787
+#: mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "ダブルクリック動作"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1793
+#: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "タイトルバーをダブルクリックした時の動作 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1795
+#: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "詳細"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
+#: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "本当にこのキーバインディングテーマを削除しますか？"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:125
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:131
+#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Add keybinding theme"
 msgstr "キーバインディングテーマを追加"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:135
+#: mcs-plugin/xfwm4_shortcuteditor.c:135
 msgid "Enter a name for the theme:"
 msgstr "テーマの名前を入力:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:158
+#: mcs-plugin/xfwm4_shortcuteditor.c:158
 msgid "A keybinding theme with the same name already exists"
 msgstr "同じ名前のキーバインディングテーマが既に存在します"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:164
+#: mcs-plugin/xfwm4_shortcuteditor.c:164
 msgid "You have to provide a name for the keybinding theme"
 msgstr "キーバインディングテーマの名前を指定する必要があります"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Close window"
 msgstr "ウィンドウを閉じる"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window vertically"
 msgstr "ウィンドウを縦に最大化する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Maximize window horizontally"
 msgstr "ウィンドウを横に最大化する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Stick window"
 msgstr "ウィンドウを貼り付ける"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Cycle windows"
 msgstr "ウィンドウを循環させる"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Move window up"
 msgstr "ウィンドウを上に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Move window down"
 msgstr "ウィンドウを下に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Move window left"
 msgstr "ウィンドウを左に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Move window right"
 msgstr "ウィンドウを右に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Resize window up"
 msgstr "ウィンドウを上にライズ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Resize window down"
 msgstr "ウィンドウを下にライズ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Resize window left"
 msgstr "ウィンドウを左にライズ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Resize window right"
 msgstr "ウィンドウを右にライズ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Raise window"
 msgstr "ウィンドウを前面に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Lower window"
 msgstr "ウィンドウを背面に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Toggle fullscreen"
 msgstr "全画面に切替える"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Upper workspace"
 msgstr "上のワークスペース"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Bottom workspace"
 msgstr "下のワークスペース"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Left workspace"
 msgstr "左のワークスペース"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Right workspace"
 msgstr "右のワークスペース"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Next workspace"
 msgstr "次のワークスペース"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Previous workspace"
 msgstr "前のワークスペース"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Add workspace"
 msgstr "ワークスペースを追加する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Delete workspace"
 msgstr "ワークスペースを削除する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Move window to next workspace"
 msgstr "ウィンドウを次のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Move window to previous workspace"
 msgstr "ウィンドウを前のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Move window to upper workspace"
 msgstr "ウィンドウを上のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Move window to bottom workspace"
 msgstr "ウィンドウを下のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to left workspace"
 msgstr "ウィンドウを左のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to right workspace"
 msgstr "ウィンドウを右のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Show desktop"
 msgstr "デスクトップを表示する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:423
+#: mcs-plugin/xfwm4_shortcuteditor.c:423
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "ウィンドウをワークスペース %d に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:508
+#: mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
 msgstr "テーマフォルダを開けません！"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:527
+#: mcs-plugin/xfwm4_shortcuteditor.c:527
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -481,8 +479,7 @@ msgstr ""
 "%s を開けません : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:541
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
+#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:552
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -491,7 +488,7 @@ msgstr ""
 "%s に書き込めません : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:680
+#: mcs-plugin/xfwm4_shortcuteditor.c:680
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -499,143 +496,143 @@ msgstr ""
 "ショートカットは既に使用されています！\n"
 "これに使用してよろしいですか？"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:739
+#: mcs-plugin/xfwm4_shortcuteditor.c:739
 msgid "Compose shortcut for :"
 msgstr "ショートカットを編集 :"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:742
+#: mcs-plugin/xfwm4_shortcuteditor.c:742
 msgid "Compose shortcut"
 msgstr "ショートカットを編集"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:744
+#: mcs-plugin/xfwm4_shortcuteditor.c:744
 msgid "No shortcut"
 msgstr "ショートカット無し"
 
-#: ../src/main.c:181
+#: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: セグメンテーション違反です"
 
-#: ../src/menu.c:39
+#: src/menu.c:39
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../src/menu.c:40
+#: src/menu.c:40
 msgid "Un_maximize"
 msgstr "元に戻す(_M)"
 
-#: ../src/menu.c:41
+#: src/menu.c:41
 msgid "_Hide"
 msgstr "隠す(_H)"
 
-#: ../src/menu.c:42
+#: src/menu.c:42
 msgid "Hide _all others"
 msgstr "他を隠す(_A)"
 
-#: ../src/menu.c:43
+#: src/menu.c:43
 msgid "S_how"
 msgstr "表示(_H)"
 
-#: ../src/menu.c:44
+#: src/menu.c:44
 msgid "_Shade"
 msgstr "折畳む(_S)"
 
-#: ../src/menu.c:45
+#: src/menu.c:45
 msgid "Un_shade"
 msgstr "伸ばす(_S)"
 
-#: ../src/menu.c:46
+#: src/menu.c:46
 msgid "S_tick"
 msgstr "貼る(_T)"
 
-#: ../src/menu.c:47
+#: src/menu.c:47
 msgid "Uns_tick"
 msgstr "剥す(_T)"
 
-#: ../src/menu.c:48
+#: src/menu.c:48
 msgid "Context _help"
 msgstr "コンテキストヘルプ(_H)"
 
-#: ../src/menu.c:49 ../src/menu.c:50
+#: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
 msgstr "常に上部へ"
 
-#: ../src/menu.c:51
+#: src/menu.c:51
 msgid "Send to..."
 msgstr "送る..."
 
-#: ../src/menu.c:53
+#: src/menu.c:53
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: ../src/menu.c:56
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "破棄"
 
-#: ../src/menu.c:59
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: ../src/menu.c:60
+#: src/menu.c:60
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/menu.c:169
+#: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "ワークスペース %i (%s)"
 
-#: ../src/menu.c:181
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "ワークスペース %i"
 
-#: ../src/menu.c:416
+#: src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
 
-#: ../src/settings.c:849
+#: src/settings.c:849
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: 有効色を割当てられません %s\n"
 
-#: ../src/settings.c:855
+#: src/settings.c:855
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: 有効色を解析できません %s\n"
 
-#: ../src/settings.c:898
+#: src/settings.c:898
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: 非有効色を割当てられません %s\n"
 
-#: ../src/settings.c:904
+#: src/settings.c:904
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: 非有効色を解析できません %s\n"
 
-#: ../src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "切替え ..."
 
-#: ../src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "不明なアプリケーションです！"
-
-#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "ウィンドウマネージャ設定"
 
-#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
 msgstr "Xfce 4 ウィンドウマネージャ設定"
 
-#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
 msgstr "ワークスペース設定"
 
-#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ワークスペース設定"
+
+#~ msgid "Unknown application!"
+#~ msgstr "不明なアプリケーションです！"

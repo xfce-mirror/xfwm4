@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -658,13 +658,10 @@ msgstr ""
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Превключва на ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr ""
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy

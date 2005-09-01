@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-09-12 12:27+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -626,13 +626,10 @@ msgstr "%s: немагчыма разьмеркаваць неактыўны к�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: немагчыма разабраць неактыўны колер %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Пераключыць на ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Невядомае дастасаваньне!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -653,6 +650,9 @@ msgstr "Водступы працоўнае прасторы"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Водступы працоўнае прасторы"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Невядомае дастасаваньне!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Зьвяз клявіш"

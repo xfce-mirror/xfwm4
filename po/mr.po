@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2005-04-28 19:05+0530\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -613,13 +613,10 @@ msgstr "%s: असक्रिय रंग निर्धारित कर�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: असक्रिय रंगाचे परस्पर संबध स्पष्ट करु शकत नाही%s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "येथे स्विच करा..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "अपरिचित एप्लिकेशन!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
@@ -636,6 +633,9 @@ msgstr "कार्यक्षेत्रांची रचना"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 कार्यक्षेत्रांची रचना"
+
+#~ msgid "Unknown application!"
+#~ msgstr "अपरिचित एप्लिकेशन!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "आज्ञा शॉर्टकटसकटस"

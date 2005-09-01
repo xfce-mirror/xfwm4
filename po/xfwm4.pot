@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -607,12 +607,8 @@ msgstr ""
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
-msgstr ""
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
+#: src/tabwin.c:174
+msgid "Switch to:"
 msgstr ""
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1

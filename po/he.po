@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-10-26 18:28+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
@@ -615,13 +615,10 @@ msgstr "%s: אין אפשרות לאתר צבע שאינו פעיל %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: אין אפשרות לקבוע צבע לא פעיל %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "החלף ל..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "יישום לא ידוע."
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
@@ -638,6 +635,9 @@ msgstr "הגדרות סביבות העבודה"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "הגדרות סביבות העבודה Xfce 4"
+
+#~ msgid "Unknown application!"
+#~ msgstr "יישום לא ידוע."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "פקודת קיצור דרך"

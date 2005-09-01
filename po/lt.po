@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-10-30 01:46+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <komp_lt@konf.lt>\n"
@@ -646,13 +646,10 @@ msgstr "%s: Neįmanoma paskirti pasyvios spalvos %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Neįmanoma sužinoti pasyvios spalvos %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Perjungti į ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Nežinoma programa!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -673,6 +670,9 @@ msgstr "Darbo vietos paraštės"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Darbo vietos paraštės"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Nežinoma programa!"
 
 #, fuzzy
 #~ msgid "Command shortcuts"

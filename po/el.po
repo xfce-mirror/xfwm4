@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_GR1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2005-08-13 13:21+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Ελληνικά\n"
@@ -23,8 +23,11 @@ msgid "Workspace Margins"
 msgstr "Περιθώρια Χώρου Εργασίας"
 
 #: mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα "
+"τοποθετηθούν παράθυρα"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -42,15 +45,12 @@ msgstr "Επάνω :"
 msgid "Bottom :"
 msgstr "Κάτω :"
 
-#: mcs-plugin/plugin.c:109
-#: mcs-plugin/plugin.c:152
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Χώροι Εργασίας και Περιθώρια"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135
-#: mcs-plugin/plugin.c:166
-#: mcs-plugin/workspaces.c:546
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Χώροι Εργασίας"
 
@@ -62,8 +62,7 @@ msgstr "Περιθώρια"
 msgid "Change name"
 msgstr "Αλλαγή ονόματος"
 
-#: mcs-plugin/workspaces.c:357
-#: mcs-plugin/xfwm4_shortcuteditor.c:402
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
@@ -109,18 +108,15 @@ msgstr "Μεγιστοποίηση"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: mcs-plugin/xfwm4_plugin.c:86
-#: mcs-plugin/xfwm4_shortcuteditor.c:308
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "Σκίαση παραθύρου"
 
-#: mcs-plugin/xfwm4_plugin.c:87
-#: mcs-plugin/xfwm4_shortcuteditor.c:308
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "Απόκρυψη παραθύρου"
 
-#: mcs-plugin/xfwm4_plugin.c:88
-#: mcs-plugin/xfwm4_shortcuteditor.c:307
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
@@ -164,8 +160,7 @@ msgstr "Κρυμμένο"
 msgid "Font Selection Dialog"
 msgstr "Πλαίσιο επιλογής Γραμματοσειράς"
 
-#: mcs-plugin/xfwm4_plugin.c:1414
-#: mcs-plugin/xfwm4_plugin.c:1900
+#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Διαχειριστής Παραθύρων"
 
@@ -278,13 +273,11 @@ msgstr "Ταίριασμα παραθύρων σε άλλα παράθυρα"
 msgid "Distance :"
 msgstr "Απόσταση :"
 
-#: mcs-plugin/xfwm4_plugin.c:1698
-#: mcs-plugin/xfwm4_plugin.c:1748
+#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Μικρή"
 
-#: mcs-plugin/xfwm4_plugin.c:1704
-#: mcs-plugin/xfwm4_plugin.c:1754
+#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Μεγάλη"
 
@@ -332,8 +325,7 @@ msgstr "Για προχωρημένους"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Θέλετε σίγουρα να απομακρύνετε αυτό το θέμα αντιστοίχησης πλήκτρων ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:125
-#: mcs-plugin/xfwm4_shortcuteditor.c:131
+#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Add keybinding theme"
 msgstr "Προσθήκη θέματος αντιστοίχησης πλήκτρων"
 
@@ -491,8 +483,7 @@ msgstr ""
 "Αδύνατο το άνοιγμα του %s : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:541
-#: mcs-plugin/xfwm4_shortcuteditor.c:552
+#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:552
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -567,8 +558,7 @@ msgstr "Αποεπικό_λληση"
 msgid "Context _help"
 msgstr "Βοήθεια πε_ριεχομένου"
 
-#: src/menu.c:49
-#: src/menu.c:50
+#: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
 msgstr "Πάντα στην κορυφή"
 
@@ -627,13 +617,10 @@ msgstr "%s: Αδύνατος ο προσδιορισμός του ανενεργ
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του ανενεργού χρώματος %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Αλλαγή σε ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Άγνωστη εφαρμογή!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
@@ -651,32 +638,47 @@ msgstr "Ρυθμίσεις Χώρων Εργασίας"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Ρυθμίσεις Χώρων Εργασίας Xfce 4"
 
+#~ msgid "Unknown application!"
+#~ msgstr "Άγνωστη εφαρμογή!"
+
 #~ msgid "Command shortcuts"
 #~ msgstr "Συντόμευση εντολής"
+
 #~ msgid "Select command"
 #~ msgstr "Επιλογή εντολής"
+
 #~ msgid "Choose command"
 #~ msgstr "Επιλογή εντολής"
+
 #~ msgid "Command :"
 #~ msgstr "Εντολή :"
+
 #~ msgid "The command doesn't exist or the file is not executable !"
 #~ msgstr "Η εντολή δεν υπάρχει ή το αρχείο δεν είναι εκτελέσιμο !"
+
 #~ msgid "Compose shortcut for command :"
 #~ msgstr "Σύνταξη συντόμευσης για εντολή :"
+
 #~ msgid "Move window to workspace 2"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
+
 #~ msgid "Move window to workspace 3"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
+
 #~ msgid "Move window to workspace 4"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 4"
+
 #~ msgid "Move window to workspace 5"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 5"
+
 #~ msgid "Move window to workspace 6"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 6"
+
 #~ msgid "Move window to workspace 7"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 7"
+
 #~ msgid "Move window to workspace 8"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 8"
+
 #~ msgid "Move window to workspace 9"
 #~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
-

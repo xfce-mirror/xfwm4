@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -656,13 +656,10 @@ msgstr "%s: செயலற்ற வண்ணம் ஒதுக்கீ வ�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: செயலற்ற வண்ணம் அழகிட முடியவில்லை %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "þதட்கு மாற்றவும் ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr ""
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy

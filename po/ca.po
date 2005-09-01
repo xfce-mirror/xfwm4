@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-03-29 22:19+0100\n"
 "Last-Translator: Carles Munoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <ca@li.org>\n"
@@ -657,13 +657,10 @@ msgstr "%s: No es pot allotjar el color inactiu %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: No es pot processar el color inactiu %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Canvia a..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr ""
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy

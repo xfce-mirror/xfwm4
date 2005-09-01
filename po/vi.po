@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -621,13 +621,10 @@ msgstr "%s: Không thể định vị màu không chủ đạo %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Không thể phân tích màu không chủ đạo %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Chuyển sang..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Ứng dụng không rõ!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -648,6 +645,9 @@ msgstr "Biên vùng làm việc"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Biên vùng làm việc"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Ứng dụng không rõ!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Phím tắt lệnh"

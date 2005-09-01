@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-08-26 21:32+0200\n"
 "Last-Translator: Juraj Brosz <Juraj.Brosz@pobox.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -620,13 +620,10 @@ msgstr ""
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr ""
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Prepnúť na ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Neznáma aplikácia!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -647,6 +644,9 @@ msgstr "Okraje virtuálnej plochy"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Okraje virtuálnej plochy"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Neznáma aplikácia!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Klávesové skratky príkazu"

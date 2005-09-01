@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2004-12-03 18:06+0200\n"
 "Last-Translator: Translate.org.za <info@translate.org.za>\n"
 "Language-Team: \n"
@@ -615,13 +615,10 @@ msgstr "%s: Cannot allocate inactive colour %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Cannot parse inactive colour %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Switch to..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Unknown application!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
@@ -642,6 +639,9 @@ msgstr "Workspace Margins"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Workspace Margins"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Unknown application!"
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Command shortcuts"

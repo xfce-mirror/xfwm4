@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-25 23:35+0200\n"
+"POT-Creation-Date: 2005-09-01 07:55+0200\n"
 "PO-Revision-Date: 2005-07-21 00:26+0200\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: \n"
@@ -23,7 +23,9 @@ msgstr "Marĝenoj de la Laborspaco"
 #: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "La marĝenoj estas la regionoj ĉe la bordoj de la ekrano kie nenia fenestro estos metita"
+msgstr ""
+"La marĝenoj estas la regionoj ĉe la bordoj de la ekrano kie nenia fenestro "
+"estos metita"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -283,11 +285,15 @@ msgstr "Interligitaj laborspacoj"
 
 #: mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de la ekrano"
+msgstr ""
+"Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de "
+"la ekrano"
 
 #: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la bordo de la ekrano"
+msgstr ""
+"Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la bordo "
+"de la ekrano"
 
 #: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
@@ -613,13 +619,10 @@ msgstr "%s: Malsukcesis disponigi neaktivan koloron %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Malsukcesis legi neaktivan koloron %s\n"
 
-#: src/tabwin.c:70
-msgid "Switch to ..."
+#: src/tabwin.c:174
+#, fuzzy
+msgid "Switch to:"
 msgstr "Baskulu al ..."
-
-#: src/tabwin.c:129
-msgid "Unknown application!"
-msgstr "Nekonata aplikaĵo!"
 
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
@@ -636,3 +639,6 @@ msgstr "Parametroj de la Laborspacoj"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Parametroj de la Laborspacoj"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Nekonata aplikaĵo!"
