@@ -134,15 +134,14 @@ static GtkWidget *
 createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin * t)
 {
     GdkRectangle monitor_sz;
-    gint monitor;
-    GtkWidget *windowlist;
-    GtkWidget *icon;
+    GtkWidget *windowlist, *icon;
     Client *c2 = NULL;
     ScreenInfo *screen_info;
     unsigned int grid_cols;
     unsigned int n_clients;
     unsigned int grid_rows;
     int i = 0, packpos = 0;
+    gint monitor;
 
     /* calculate the wrapping */
     screen_info = c->screen_info;
@@ -174,7 +173,7 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
     t->head->prev = g_list_last (t->head);
     t->head->prev->next = t->head;
 
-    t->current = t->head->next;
+    t->current = g_list_next (t->head);
     tabwinSetSelected (t, t->current->data);
 
     return windowlist;
@@ -256,7 +255,7 @@ tabwinGetSelected (Tabwin * t)
 {
     Client *c = NULL;
 
-    if (t->current->data)
+    if ((t->current) && (t->current->data))
     {
         c = (Client *) g_object_get_data (G_OBJECT (t->current->data), "client-ptr-val");
     }
@@ -270,6 +269,11 @@ tabwinRemoveClient (Tabwin * t, Client * c)
     GList *tmp;
 
     tmp = t->head;
+    if (!tmp)
+    {
+        return NULL;
+    }
+
     do
     {
         if (((Client *) g_object_get_data (tmp->data, "client-ptr-val")) == c)
@@ -281,12 +285,22 @@ tabwinRemoveClient (Tabwin * t, Client * c)
             gtk_container_remove (GTK_CONTAINER (t->container), tmp->data);
             t->head = g_list_delete_link (t->head, tmp);
 
+            if ((t->head == g_list_next (t->head)))
+            {
+                if (t->head)
+                {
+                    t->head->next = NULL;
+                    t->head->prev = NULL;
+                }
+                t->current = t->head;
+            }
+
             /* No need to look any further */
             return tabwinGetSelected (t);
         }
         /* since this is a circular list, hitting head signals end, not hitting NULL */
     }
-    while ((tmp = tmp->next) && (tmp != t->head));
+    while ((tmp = g_list_next (tmp)) && (tmp != t->head));
 
     return tabwinGetSelected (t);
 }
@@ -294,8 +308,17 @@ tabwinRemoveClient (Tabwin * t, Client * c)
 Client *
 tabwinSelectNext (Tabwin * t)
 {
-    tabwinSetSelected (t, t->current->next->data);
-    t->current = t->current->next;
+    GList *next;
+    
+    next = g_list_next(t->current);
+    if (!next)
+    {
+        t->current = NULL;
+        return NULL;
+    }
+    
+    tabwinSetSelected (t, next->data);
+    t->current = next;
     gtk_widget_queue_draw (t->window);
 
     return tabwinGetSelected (t);
@@ -304,8 +327,17 @@ tabwinSelectNext (Tabwin * t)
 Client *
 tabwinSelectPrev (Tabwin * t)
 {
-    tabwinSetSelected (t, t->current->prev->data);
-    t->current = t->current->prev;
+    GList *prev;
+    
+    prev = g_list_previous (t->current);
+    if (!prev)
+    {
+        t->current = NULL;
+        return NULL;
+    }
+    
+    tabwinSetSelected (t, prev->data);
+    t->current = prev;
     gtk_widget_queue_draw (t->window);
 
     return tabwinGetSelected (t);
@@ -317,8 +349,15 @@ tabwinDestroy (Tabwin * tabwin)
     g_return_if_fail (tabwin != NULL);
 
     /* un-circlify the list so we don't infinitely loop while freeing */
-    tabwin->head->prev->next = NULL;
-    tabwin->head->prev = NULL;
-    g_list_free (tabwin->head);
+    if (tabwin->head)
+    {
+        GList *prev = g_list_previous (tabwin->head);
+        if (prev)
+        {
+            prev->next = NULL;
+            tabwin->head->prev = NULL;
+        }
+        g_list_free (tabwin->head);
+    }
     gtk_widget_destroy (tabwin->window);
 }
