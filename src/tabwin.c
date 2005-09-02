@@ -64,9 +64,7 @@ pretty_string (const gchar * s)
     if (s)
     {
         canonical = g_strdup (s);
-        g_strcanon (canonical,
-            "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-            ' ');
+        g_strcanon (canonical, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", ' ');
         g_strstrip (canonical);
         *canonical = g_ascii_toupper (*canonical);
     }
@@ -86,8 +84,7 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label)
 
     message = pretty_string (class);
     gtk_label_set_use_markup (GTK_LABEL (t->class), TRUE);
-    markup =
-        g_strconcat ("<span weight=\"bold\">[ ", message, " ]</span>", NULL);
+    markup = g_strconcat ("<span weight=\"bold\">[ ", message, " ]</span>", NULL);
     gtk_label_set_markup (GTK_LABEL (t->class), markup);
     gtk_label_set_text (GTK_LABEL (t->label), label);
 
@@ -104,9 +101,7 @@ tabwinSetSelected (Tabwin * t, GtkWidget * w)
     {
         g_signal_handler_disconnect (t->current->data, t->selected_callback);
     }
-    t->selected_callback =
-        g_signal_connect (G_OBJECT (w), "expose-event",
-        G_CALLBACK (paint_selected), NULL);
+    t->selected_callback = g_signal_connect (G_OBJECT (w), "expose-event", G_CALLBACK (paint_selected), NULL);
     c = g_object_get_data (G_OBJECT (w), "client-ptr-val");
 
     tabwinSetLabel (t, c->class.res_class, c->name);
@@ -118,9 +113,7 @@ createWindowIcon (Client * c)
     GdkPixbuf *icon_pixbuf;
     GtkWidget *icon;
 
-    icon_pixbuf =
-        getAppIcon (c->screen_info->display_info, c->window, WIN_ICON_SIZE,
-        WIN_ICON_SIZE);
+    icon_pixbuf = getAppIcon (c->screen_info->display_info, c->window, WIN_ICON_SIZE, WIN_ICON_SIZE);
     icon = gtk_image_new ();
     g_object_set_data (G_OBJECT (icon), "client-ptr-val", c);
 
@@ -130,8 +123,7 @@ createWindowIcon (Client * c)
     }
     else
     {
-        gtk_image_set_from_stock (GTK_IMAGE (icon), "gtk-missing-image",
-            GTK_ICON_SIZE_DIALOG);
+        gtk_image_set_from_stock (GTK_IMAGE (icon), "gtk-missing-image", GTK_ICON_SIZE_DIALOG);
     }
 
     return icon;
@@ -154,12 +146,11 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range,
 
     /* calculate the wrapping */
     screen_info = c->screen_info;
-    xfce_gdk_display_locate_monitor_with_pointer (screen_info->display_info->
-        gdisplay, &monitor);
+    xfce_gdk_display_locate_monitor_with_pointer (screen_info->display_info->gdisplay, &monitor);
     gdk_screen_get_monitor_geometry (scr, monitor, &monitor_sz);
+    
     /* add the width of the border on each side */
-    grid_cols =
-        (monitor_sz.width / (WIN_ICON_SIZE + 2 * WIN_ICON_BORDER)) * 0.75;
+    grid_cols = (monitor_sz.width / (WIN_ICON_SIZE + 2 * WIN_ICON_BORDER)) * 0.75;
     n_clients = screen_info->client_count;
     grid_rows = n_clients / grid_cols + 1;
     windowlist = gtk_table_new (grid_rows, grid_cols, FALSE);
@@ -209,8 +200,7 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_window_set_screen (GTK_WINDOW (tabwin->window), scr);
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);
-    gtk_window_set_position (GTK_WINDOW (tabwin->window),
-        GTK_WIN_POS_CENTER_ALWAYS);
+    gtk_window_set_position (GTK_WINDOW (tabwin->window), GTK_WIN_POS_CENTER_ALWAYS);
 
     frame = gtk_frame_new (NULL);
     gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
@@ -249,10 +239,8 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
         || gtk_major_version > 2)
     {
 #ifdef PANGO_ELLIPSIZE_END
-        g_object_set (G_OBJECT (tabwin->label), "ellipsize",
-            PANGO_ELLIPSIZE_END, NULL);
-        g_object_set (G_OBJECT (tabwin->class), "ellipsize",
-            PANGO_ELLIPSIZE_END, NULL);
+        g_object_set (G_OBJECT (tabwin->label), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+        g_object_set (G_OBJECT (tabwin->class), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
 #else
         g_object_set (G_OBJECT (tabwin->label), "ellipsize", 3, NULL);
         g_object_set (G_OBJECT (tabwin->class), "ellipsize", 3, NULL);
@@ -270,8 +258,7 @@ tabwinGetSelected (Tabwin * t)
 
     if (t->current->data)
     {
-        c = (Client *) g_object_get_data (G_OBJECT (t->current->data),
-            "client-ptr-val");
+        c = (Client *) g_object_get_data (G_OBJECT (t->current->data), "client-ptr-val");
     }
 
     return c;
