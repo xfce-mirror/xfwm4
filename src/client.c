@@ -3827,18 +3827,32 @@ static XfceFilterStatus
 clientCycle_event_filter (XEvent * xevent, gpointer data)
 {
     ClientCycleData *passdata = (ClientCycleData *) data;
-    Client *c = passdata->c;
-    Client *tmp;
-    ScreenInfo *screen_info = c->screen_info;
-    DisplayInfo *display_info = screen_info->display_info;
+    Client *c, *removed;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XfceFilterStatus status = XEV_FILTER_STOP;
-    KeyCode keycode = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
-    int modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
-    gboolean key_pressed = ((xevent->type == KeyPress) && (xevent->xkey.keycode == keycode));
+    KeyCode keycode;
+    int modifier;
+    gboolean key_pressed;
     gboolean cycling = TRUE;
     gboolean gone = FALSE;
 
     TRACE ("entering clientCycle_event_filter");
+
+    TRACE ("entering clientCycle_event_filter");
+
+    if (passdata->c == NULL)
+    {
+        return XEV_FILTER_CONTINUE;
+        gtk_main_quit ();
+    }
+
+    c = passdata->c;
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    keycode = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
+    modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
+    key_pressed = ((xevent->type == KeyPress) && (xevent->xkey.keycode == keycode));
 
     /* Update the display time */
     myDisplayUpdateCurentTime (display_info, xevent);
@@ -3846,16 +3860,17 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     switch (xevent->type)
     {
         case DestroyNotify:
-            tmp = clientGetFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, WINDOW);
-            gone |= (c == tmp);
-            tabwinRemoveClient(passdata->tabwin, tmp);            
+            removed = clientGetFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, WINDOW);
+            gone |= (c == removed);
+            c = tabwinRemoveClient(passdata->tabwin, removed);
+            passdata->c = c;
             status = XEV_FILTER_CONTINUE;
             /* Walk through */
         case UnmapNotify:
-            tmp = clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW);
-            gone |= (c == tmp);
-            tabwinRemoveClient(passdata->tabwin, tmp);
-
+            removed = clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW);
+            gone |= (c == removed);
+            c = tabwinRemoveClient(passdata->tabwin, removed);
+            passdata->c = c;
             status = XEV_FILTER_CONTINUE;
             /* Walk through */
         case KeyPress:
@@ -3868,27 +3883,18 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                     if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
                     {
                         TRACE ("Cycle: previous");
-                        c2 = clientGetPrevious (c, passdata->cycle_range);
-                        tabwinSelectPrev(passdata->tabwin);
+                        c2 = tabwinSelectPrev(passdata->tabwin);
                     }
                     else
                     {
                         TRACE ("Cycle: next");
-                        c2 = clientGetNext (c, passdata->cycle_range);
-                        tabwinSelectNext(passdata->tabwin);
+                        c2 = tabwinSelectNext(passdata->tabwin);
                     }
                     if (c2)
                     {
                         c = c2;
                         passdata->c = c;
                     }
-                }
-                else if (gone)
-                {
-                    /* Jump to the next one if the current has vanished! */
-                    c = clientGetNext (c, passdata->cycle_range);
-
-                    passdata->c = c;
                 }
 
                 if (c)

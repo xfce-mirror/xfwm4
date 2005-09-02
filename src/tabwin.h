@@ -47,11 +47,11 @@ struct _Tabwin
     int grid_rows;
 };
 
-Tabwin *tabwinCreate (GdkScreen *, Client *c, unsigned int cycle_range);
-void tabwinSelectNext (Tabwin *);
-void tabwinSelectPrev (Tabwin *);
-void tabwinRemoveClient(Tabwin *t, Client *c);
-void tabwinDestroy (Tabwin *);
-void tabwinAppendClient(Tabwin *t, Client *c, int cycle_range);
+Tabwin *tabwinCreate (GdkScreen *, Client *, unsigned int);
+Client *tabwinGetSelected (Tabwin *);
+Client *tabwinSelectNext (Tabwin *);
+Client *tabwinSelectPrev (Tabwin *);
+Client *tabwinRemoveClient (Tabwin *, Client *);
+void    tabwinDestroy (Tabwin *);
 
 #endif /* INC_TABWIN_H */
