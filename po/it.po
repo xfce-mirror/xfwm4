@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XFce4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 23:12+0200\n"
+"POT-Creation-Date: 2005-09-03 00:26+0200\n"
 "PO-Revision-Date: 2004-03-11 14:02+0100\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -670,7 +670,7 @@ msgstr "%s: Impossibile interpretare il colore inattivo %s\n"
 msgid "Unknown application!"
 msgstr "Applicazione sconosciuta!"
 
-#: src/tabwin.c:213
+#: src/tabwin.c:214
 #, fuzzy
 msgid "Switch to:"
 msgstr "Passa a ..."

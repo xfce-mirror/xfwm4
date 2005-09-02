@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 23:12+0200\n"
+"POT-Creation-Date: 2005-09-03 00:26+0200\n"
 "PO-Revision-Date: 2004-12-20 21:58+0100\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
 "Language-Team: czech <cs@li.org>\n"
@@ -615,7 +615,7 @@ msgstr "%s: Nelze separovat neaktivní barvu %s\n"
 msgid "Unknown application!"
 msgstr "Neznámá aplikace!"
 
-#: src/tabwin.c:213
+#: src/tabwin.c:214
 #, fuzzy
 msgid "Switch to:"
 msgstr "Přepnout na ..."

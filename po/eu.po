@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 23:12+0200\n"
+"POT-Creation-Date: 2005-09-03 00:26+0200\n"
 "PO-Revision-Date: 2004-09-13 22:46+0200\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -630,7 +630,7 @@ msgstr "%s: Ezin da analizatu kolore ez-aktiboa %s\n"
 msgid "Unknown application!"
 msgstr "Aplikazio ezezaguna!"
 
-#: src/tabwin.c:213
+#: src/tabwin.c:214
 #, fuzzy
 msgid "Switch to:"
 msgstr "Aldatu hona ..."

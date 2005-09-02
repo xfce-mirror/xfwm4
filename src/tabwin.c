@@ -120,6 +120,7 @@ createWindowIcon (Client * c)
     if (icon_pixbuf)
     {
         gtk_image_set_from_pixbuf (GTK_IMAGE (icon), icon_pixbuf);
+        g_object_unref(icon_pixbuf);
     }
     else
     {
@@ -130,8 +131,7 @@ createWindowIcon (Client * c)
 }
 
 static GtkWidget *
-createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range,
-    Tabwin * t)
+createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin * t)
 {
     GdkRectangle monitor_sz;
     gint monitor;

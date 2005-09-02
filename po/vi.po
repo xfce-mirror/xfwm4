@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 23:12+0200\n"
+"POT-Creation-Date: 2005-09-03 00:26+0200\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -625,7 +625,7 @@ msgstr "%s: Không thể phân tích màu không chủ đạo %s\n"
 msgid "Unknown application!"
 msgstr "Ứng dụng không rõ!"
 
-#: src/tabwin.c:213
+#: src/tabwin.c:214
 #, fuzzy
 msgid "Switch to:"
 msgstr "Chuyển sang..."

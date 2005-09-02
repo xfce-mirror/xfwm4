@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 23:12+0200\n"
+"POT-Creation-Date: 2005-09-03 00:26+0200\n"
 "PO-Revision-Date: 2005-08-19 21:21+0900\n"
 "Last-Translator: Joakim Andreasson <joakim.andreasson@gmx.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -662,7 +662,7 @@ msgstr "%s: Kan ej avläsa inaktiv färg %s\n"
 msgid "Unknown application!"
 msgstr ""
 
-#: src/tabwin.c:213
+#: src/tabwin.c:214
 #, fuzzy
 msgid "Switch to:"
 msgstr "Byt till.."

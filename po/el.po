@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_GR1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-01 23:12+0200\n"
+"POT-Creation-Date: 2005-09-03 00:26+0200\n"
 "PO-Revision-Date: 2005-08-13 13:21+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Ελληνικά\n"
@@ -621,7 +621,7 @@ msgstr "%s: Αδύνατη η ανάλυση του ανενεργού χρώμ�
 msgid "Unknown application!"
 msgstr "Άγνωστη εφαρμογή!"
 
-#: src/tabwin.c:213
+#: src/tabwin.c:214
 #, fuzzy
 msgid "Switch to:"
 msgstr "Αλλαγή σε ..."
