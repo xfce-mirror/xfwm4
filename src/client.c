@@ -3839,8 +3839,6 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientCycle_event_filter");
 
-    TRACE ("entering clientCycle_event_filter");
-
     if (passdata->c == NULL)
     {
         return XEV_FILTER_CONTINUE;
