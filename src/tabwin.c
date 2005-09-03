@@ -84,7 +84,7 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label)
 
     message = pretty_string (class);
     gtk_label_set_use_markup (GTK_LABEL (t->class), TRUE);
-    markup = g_strconcat ("<span weight=\"bold\">[ ", message, " ]</span>", NULL);
+    markup = g_strconcat ("<span size=\"larger\" weight=\"bold\">", message, "</span>", NULL);
     gtk_label_set_markup (GTK_LABEL (t->class), markup);
     gtk_label_set_text (GTK_LABEL (t->label), label);
 
@@ -184,17 +184,11 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
 {
     static GdkPixbuf *logo = NULL;
     Tabwin *tabwin;
-    GtkWidget *header;
     GtkWidget *frame;
-    GtkWidget *vbox, *header_hbox;
+    GtkWidget *vbox;
     GtkWidget *windowlist;
 
     tabwin = g_new0 (Tabwin, 1);
-    if (!logo)
-    {
-        logo = xfce_inline_icon_at_size (tabwin_icon_data, 32, 32);
-        g_object_ref (G_OBJECT (logo));
-    }
 
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_window_set_screen (GTK_WINDOW (tabwin->window), scr);
@@ -210,19 +204,15 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
     gtk_container_add (GTK_CONTAINER (frame), vbox);
 
-    header = xfce_create_header (logo, _("Switch to:"));
-    gtk_box_pack_start (GTK_BOX (vbox), header, FALSE, TRUE, 0);
-    header_hbox = gtk_bin_get_child (GTK_BIN (header));
+    tabwin->class = gtk_label_new ("");
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
+    gtk_misc_set_alignment (GTK_MISC (tabwin->class), 0.5, 0.5);
+    gtk_box_pack_start (GTK_BOX (vbox), tabwin->class, TRUE, TRUE, 0);
 
     frame = gtk_frame_new (NULL);
     gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
     gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
-
-    tabwin->class = gtk_label_new ("");
-    gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
-    gtk_misc_set_alignment (GTK_MISC (tabwin->class), 0.5, 0.5);
-    gtk_box_pack_start (GTK_BOX (vbox), tabwin->class, TRUE, TRUE, 0);
 
     tabwin->label = gtk_label_new ("");
     gtk_label_set_use_markup (GTK_LABEL (tabwin->label), FALSE);
