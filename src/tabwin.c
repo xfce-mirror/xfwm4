@@ -47,7 +47,7 @@ paint_selected (GtkWidget * w, GdkEventExpose * event, gpointer data)
     gtk_paint_box (w->style, w->window,
         GTK_STATE_SELECTED,
         GTK_SHADOW_IN,
-        NULL, w, NULL,
+        NULL, w, "box",
         w->allocation.x - WIN_ICON_BORDER,
         w->allocation.y - WIN_ICON_BORDER,
         w->allocation.width + 2 * WIN_ICON_BORDER,
@@ -182,7 +182,6 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
 Tabwin *
 tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
 {
-    static GdkPixbuf *logo = NULL;
     Tabwin *tabwin;
     GtkWidget *frame;
     GtkWidget *vbox;
