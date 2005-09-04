@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 00:33+0200\n"
+"POT-Creation-Date: 2005-09-03 01:24+0200\n"
 "PO-Revision-Date: 2005-04-28 19:05+0530\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -617,7 +617,7 @@ msgstr "%s: असक्रिय रंगाचे परस्पर सं�
 msgid "Unknown application!"
 msgstr "अपरिचित एप्लिकेशन!"
 
-#: src/tabwin.c:214
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "येथे स्विच करा..."

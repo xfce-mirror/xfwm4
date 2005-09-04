@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 00:33+0200\n"
+"POT-Creation-Date: 2005-09-03 01:24+0200\n"
 "PO-Revision-Date: 2004-11-16 01:06+0100\n"
 "Last-Translator: SZERV.C Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -621,7 +621,7 @@ msgstr "%s: Nem lehet értelmezni az inaktív színt: %s\n"
 msgid "Unknown application!"
 msgstr "Ismeretlen alkalmazás!"
 
-#: src/tabwin.c:214
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "Váltás..."

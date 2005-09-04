@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 00:33+0200\n"
+"POT-Creation-Date: 2005-09-03 01:24+0200\n"
 "PO-Revision-Date: 2004-09-12 12:27+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -630,7 +630,7 @@ msgstr "%s: немагчыма разабраць неактыўны колер 
 msgid "Unknown application!"
 msgstr "Невядомае дастасаваньне!"
 
-#: src/tabwin.c:214
+#: src/tabwin.c:213
 #, fuzzy
 msgid "Switch to:"
 msgstr "Пераключыць на ..."
