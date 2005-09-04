@@ -274,7 +274,7 @@ tabwinRemoveClient (Tabwin * t, Client * c)
             gtk_container_remove (GTK_CONTAINER (t->container), tmp->data);
             t->head = g_list_delete_link (t->head, tmp);
 
-            if ((t->head == g_list_next (t->head)))
+            if ((t->head == g_list_previous (t->head)))
             {
                 if (t->head)
                 {
@@ -341,9 +341,9 @@ tabwinDestroy (Tabwin * tabwin)
     if (tabwin->head)
     {
         GList *prev = g_list_previous (tabwin->head);
-        if (prev)
+        if (tabwin->head->prev)
         {
-            prev->next = NULL;
+            tabwin->head->next = NULL;
             tabwin->head->prev = NULL;
         }
         g_list_free (tabwin->head);
