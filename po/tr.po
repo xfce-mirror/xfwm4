@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2003-12-13 22:56+0200\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -652,11 +652,6 @@ msgstr "%s: Aktif olmayan renk çözümlenemiyor %s\n"
 msgid "Unknown application!"
 msgstr ""
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Geç ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -676,6 +671,10 @@ msgstr "Çalışma Alanı Sınırları"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Çalışma Alanı Sınırları"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Geç ..."
 
 #, fuzzy
 #~ msgid "Command shortcuts"

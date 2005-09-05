@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-08-07 22:24+0200\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: none <en@li.org>\n"
@@ -631,11 +631,6 @@ msgstr "%s: Ne peut lire la couleur inactive %s\n"
 msgid "Unknown application!"
 msgstr "Application inconnue!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Basculer vers ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Paramétrage du gestionnaire de fenêtres"
@@ -651,6 +646,10 @@ msgstr "Paramétrage des espaces virtuels"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Paramètres des espaces virtuels de Xfce 4"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Basculer vers ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Raccourcis de commandes"

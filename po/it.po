@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XFce4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-03-11 14:02+0100\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -670,11 +670,6 @@ msgstr "%s: Impossibile interpretare il colore inattivo %s\n"
 msgid "Unknown application!"
 msgstr "Applicazione sconosciuta!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Passa a ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -694,6 +689,10 @@ msgstr "Bordi dello spazio di lavoro"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Bordi dello spazio di lavoro"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Passa a ..."
 
 #, fuzzy
 #~ msgid "Command shortcuts"

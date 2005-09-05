@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-10-04 02:59+0530\n"
 "Last-Translator: root <root@Phulewala>\n"
 "Language-Team:  <pa@li.org>\n"
@@ -631,11 +631,6 @@ msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹ
 msgid "Unknown application!"
 msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "ਤੇ ਜਾਓ ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -655,6 +650,10 @@ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "ਤੇ ਜਾਓ ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "ਕਮਾਂਡ ਸ਼ਾਰਟਕੱਟ"

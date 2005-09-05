@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2 rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -619,11 +619,6 @@ msgstr "%s: Nu am reuşit să prelucrez culoarea inactivă %s\n"
 msgid "Unknown application!"
 msgstr "Aplicaţie necunoscută!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Schimbă în..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -643,6 +638,10 @@ msgstr "Margini spaţii de lucru"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margini spaţii de lucru"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Schimbă în..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Combinaţii de taste pentru comenzi"

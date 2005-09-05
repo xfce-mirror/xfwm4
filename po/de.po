@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-10-24 16:23+0200\n"
 "Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: none <none@none>\n"
@@ -617,11 +617,6 @@ msgstr "%s: Kann inaktive Farbe nicht einlesen %s\n"
 msgid "Unknown application!"
 msgstr "Unbekannte Anwendung"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Wechseln zu ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -641,6 +636,10 @@ msgstr "Seitenränder"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Seitenränder"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Wechseln zu ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Tastenkombination für Kommandos"

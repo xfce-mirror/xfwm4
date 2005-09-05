@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2005-07-21 00:26+0200\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: \n"
@@ -623,11 +623,6 @@ msgstr "%s: Malsukcesis legi neaktivan koloron %s\n"
 msgid "Unknown application!"
 msgstr "Nekonata aplikaĵo!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Baskulu al ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Parametroj de la Administradilo de Fenestroj"
@@ -643,3 +638,7 @@ msgstr "Parametroj de la Laborspacoj"
 #: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Parametroj de la Laborspacoj"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Baskulu al ..."

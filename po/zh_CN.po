@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2005-08-19 21:22+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -617,11 +617,6 @@ msgstr "%s: 无法解释 inactive颜色 %s\n"
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "切换到 ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -641,6 +636,10 @@ msgstr "工作区边缘"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "工作区边缘"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "切换到 ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "命令快捷键"

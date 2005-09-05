@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-09-30 08:16+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -630,11 +630,6 @@ msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 msgid "Unknown application!"
 msgstr "برنامه ناشناخته!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "تعویض به ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -654,6 +649,10 @@ msgstr "حاشیه‌های فضای کاری"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "حاشیه‌های فضای کاری"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "تعویض به ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "میانبرهای فرمان"

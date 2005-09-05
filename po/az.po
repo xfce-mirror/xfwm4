@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -627,11 +627,6 @@ msgstr "%s: Qeyri-fəal rəng oxuna bilmir %s\n"
 msgid "Unknown application!"
 msgstr "Naməlum proqram!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Keç ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -651,6 +646,10 @@ msgstr "İş Sahəsi Kənarları"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "İş Sahəsi Kənarları"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Keç ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Əmr qısa yolları"

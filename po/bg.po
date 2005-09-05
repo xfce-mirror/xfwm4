@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -662,11 +662,6 @@ msgstr ""
 msgid "Unknown application!"
 msgstr ""
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Превключва на ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -686,6 +681,10 @@ msgstr "Граница на работно място"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Граница на работно място"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Превключва на ..."
 
 #, fuzzy
 #~ msgid "Command shortcuts"

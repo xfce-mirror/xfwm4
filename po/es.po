@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2005-08-19 21:13+0900\n"
 "Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -631,11 +631,6 @@ msgstr "%s: No se puede interpretar el color inactivo %s\n"
 msgid "Unknown application!"
 msgstr "Aplicacion desconocida."
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Cambiar a ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -655,6 +650,10 @@ msgstr "Márgenes del Escritorio"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Márgenes del Escritorio"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Cambiar a ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Atajos para comandos"

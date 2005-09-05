@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-03 01:24+0200\n"
+"POT-Creation-Date: 2005-09-04 22:45+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -617,11 +617,6 @@ msgstr "%s: Неможливо проаналізувати неактивний
 msgid "Unknown application!"
 msgstr "Невідома програма!"
 
-#: src/tabwin.c:213
-#, fuzzy
-msgid "Switch to:"
-msgstr "Перемикнутись на ..."
-
 #: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -641,6 +636,10 @@ msgstr "Поля стільниці"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Поля стільниці"
+
+#, fuzzy
+#~ msgid "Switch to:"
+#~ msgstr "Перемикнутись на ..."
 
 #~ msgid "Command shortcuts"
 #~ msgstr "Комбінації клавіш"
