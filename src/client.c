@@ -3543,6 +3543,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     DisplayInfo *display_info = NULL;
     XWindowChanges wc;
     MoveResizeData passdata;
+    int w_orig, h_orig;
     gboolean g1, g2;
     gboolean restore_opacity = FALSE;
 
@@ -3560,11 +3561,8 @@ clientResize (Client * c, int corner, XEvent * ev)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
-    {
-        clientRemoveMaximizeFlag (c);
-    }
+    w_orig = c->width;
+    h_orig = c->height;
 
     if (ev->type == KeyPress)
     {
@@ -3645,6 +3643,12 @@ clientResize (Client * c, int corner, XEvent * ev)
     if (restore_opacity)
     {
         compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && 
+        ((w_orig != c->width) || (h_orig != c->height)))
+    {
+        clientRemoveMaximizeFlag (c);
     }
 
     wc.x = c->x;
