@@ -194,6 +194,7 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
 {
     Tabwin *tabwin;
     GtkWidget *frame;
+    GtkWidget *colorbox1, *colorbox2;
     GtkWidget *vbox;
     GtkWidget *windowlist;
 
@@ -209,9 +210,19 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
     gtk_container_add (GTK_CONTAINER (tabwin->window), frame);
 
+    colorbox1 = gtk_event_box_new ();
+    gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, &(GTK_WIDGET(tabwin->window)->style->bg [GTK_STATE_SELECTED]));
+    gtk_widget_show (colorbox1);
+    gtk_container_add (GTK_CONTAINER (frame), colorbox1);
+
+    colorbox2 = gtk_event_box_new ();
+    gtk_container_set_border_width (GTK_CONTAINER (colorbox2), 3);
+    gtk_widget_show (colorbox2);
+    gtk_container_add (GTK_CONTAINER (colorbox1), colorbox2);
+
     vbox = gtk_vbox_new (FALSE, 5);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
-    gtk_container_add (GTK_CONTAINER (frame), vbox);
+    gtk_container_add (GTK_CONTAINER (colorbox2), vbox);
 
     tabwin->class = gtk_label_new ("");
     gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
