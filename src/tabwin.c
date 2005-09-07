@@ -41,6 +41,28 @@
 #include "tabwin.h"
 
 
+static GdkColor *
+get_color (GtkWidget * win, GtkStateType state_type)
+{
+    GtkStyle *style = NULL;
+
+    g_return_val_if_fail (win != NULL, NULL);
+    g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
+    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+
+    style = gtk_rc_get_style (win);
+    if (!style)
+    {
+	style = gtk_widget_get_style (win);
+    }
+    if (!style)
+    {
+	style = gtk_widget_get_default_style ();
+    }
+    
+    return (&style->bg[state_type]);
+}
+
 static gboolean
 paint_selected (GtkWidget * w, GdkEventExpose * event, gpointer data)
 {
@@ -197,11 +219,14 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
     GtkWidget *colorbox1, *colorbox2;
     GtkWidget *vbox;
     GtkWidget *windowlist;
+    GdkColor *color;
 
     tabwin = g_new0 (Tabwin, 1);
 
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
+    
     gtk_window_set_screen (GTK_WINDOW (tabwin->window), scr);
+    gtk_widget_realize (GTK_WIDGET (tabwin->window));
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);
     gtk_window_set_position (GTK_WINDOW (tabwin->window), GTK_WIN_POS_CENTER_ALWAYS);
 
@@ -211,13 +236,10 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
     gtk_container_add (GTK_CONTAINER (tabwin->window), frame);
 
     colorbox1 = gtk_event_box_new ();
-    gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, &(GTK_WIDGET(tabwin->window)->style->bg [GTK_STATE_SELECTED]));
-    gtk_widget_show (colorbox1);
     gtk_container_add (GTK_CONTAINER (frame), colorbox1);
 
     colorbox2 = gtk_event_box_new ();
     gtk_container_set_border_width (GTK_CONTAINER (colorbox2), 3);
-    gtk_widget_show (colorbox2);
     gtk_container_add (GTK_CONTAINER (colorbox1), colorbox2);
 
     vbox = gtk_vbox_new (FALSE, 5);
@@ -243,6 +265,12 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
     windowlist = createWindowlist (scr, c, cycle_range, tabwin);
     tabwin->container = windowlist;
     gtk_container_add (GTK_CONTAINER (frame), windowlist);
+
+    color = get_color (tabwin->window, GTK_STATE_SELECTED);
+    if (color)
+    {
+        gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, color);
+    }
 
     if ((gtk_major_version == 2 && gtk_minor_version >= 6)
         || gtk_major_version > 2)
