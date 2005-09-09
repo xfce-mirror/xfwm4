@@ -1,27 +1,28 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian Portugues translation of xfwm4 package.
+# Copyright (C) 2003-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Tomas Schertel <tschertel@gmail.com>, 2005.
+# Felix Costa <felix@online.eti.br>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: xfwm4 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-02-24 12:00-0300\n"
-"Last-Translator: Tomas Schertel <tschertel@gmail.com>\n"
-"Language-Team: pt_BR <>\n"
+"PO-Revision-Date: 2005-09-09 19:34+0900\n"
+"Last-Translator: Felix Costa <felix@online.eti.br>\n"
+"Language-Team: Brazilian Portuguese <felix@online.eti.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Margens da área de trabalho"
 
 #: mcs-plugin/margins.c:137
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Margens são áreas nas bordas da tela onde nenhuma janela será colocada"
 
 #: mcs-plugin/margins.c:168
@@ -397,9 +398,8 @@ msgid "Raise window"
 msgstr "Restaurar jenela"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
-#, fuzzy
 msgid "Lower window"
-msgstr "Trazer janela para trás"
+msgstr "Trazer janela para trás "
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
@@ -466,9 +466,9 @@ msgid "Show desktop"
 msgstr "Mostra área de trabalho"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Move a janela para a área de trabalho 1"
+msgstr "Move a janela para a área de trabalho %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -648,35 +648,4 @@ msgstr "Mudar para ..."
 msgid "Unknown application!"
 msgstr "Aplicativo desconhecido!"
 
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Move a janela para a área de trabalho 2"
 
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Move a janela para a área de trabalho 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Move a janela para a área de trabalho 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Move a janela para a área de trabalho 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Move a janela para a área de trabalho 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Move a janela para a área de trabalho 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Move a janela para a área de trabalho 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Move a janela para a área de trabalho 9"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Move a janela para a área de trabalho 10"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Move a janela para a área de trabalho 11"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Move a janela para a área de trabalho 12"
