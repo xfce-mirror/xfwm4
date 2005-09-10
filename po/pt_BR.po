@@ -1,4 +1,4 @@
-# Brazilian Portugues translation of xfwm4 package.
+# Brazilian Portuguese translation of xfwm4 package.
 # Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Tomas Schertel <tschertel@gmail.com>, 2005.
@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.2.2\n"
+"Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
 "PO-Revision-Date: 2005-09-09 19:34+0900\n"
