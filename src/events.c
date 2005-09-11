@@ -1947,8 +1947,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) || 
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
-            TRACE ("root has received a win_workspace or a net_current_desktop event");
-            if (ev->data.l[0] != screen_info->current_ws)
+            TRACE ("root has received a win_workspace or a net_current_desktop event %i", ev->data.l[0]);
+            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) && (ev->data.l[0] != screen_info->current_ws))
             {
                 workspaceSwitch (screen_info, ev->data.l[0], NULL);
             }
