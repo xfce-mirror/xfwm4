@@ -1959,7 +1959,6 @@ clientSetWorkspaceSingle (Client * c, int ws)
 
     TRACE ("entering clientSetWorkspaceSingle");
 
-    
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
