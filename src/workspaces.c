@@ -136,7 +136,7 @@ workspaceGetNumber (ScreenInfo *screen_info, int row, int col)
             break;
     }
 
-    n = row*major_length + col;
+    n = (row * major_length) + col;
     return n;
 }
 

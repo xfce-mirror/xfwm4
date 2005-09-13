@@ -334,6 +334,7 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
 {
     int msx, msy, maxx, maxy;
     ScreenInfo *screen_info = NULL;
+    static Time lastresist = (Time) 0;
     
     TRACE ("entering handleMotionNotify");
 
@@ -361,19 +362,43 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
 
         if ((msx == 0) || (msx == maxx))
         {
-            edge_scroll_x++;
-        }
-        else
-        {
-            edge_scroll_x = 0;
+            if ((ev->time - lastresist) > 250)  /* ms */
+            {
+                edge_scroll_x = 0;
+            }
+            else
+            {
+                edge_scroll_x++;
+            }
+            if (msx == 0) 
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 1, msy);
+            }
+            else
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, maxx - 1, msy);
+            }
+            lastresist = ev->time;
         }
         if ((msy == 0) || (msy == maxy))
         {
-            edge_scroll_y++;
-        }
-        else
-        {
-            edge_scroll_y = 0;
+            if ((ev->time - lastresist) > 250)  /* ms */
+            {
+                edge_scroll_y = 0;
+            }
+            else
+            {
+                edge_scroll_y++;
+            }
+            if (msy == 0) 
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, 1);
+            }
+            else
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, maxy - 1);
+            }
+            lastresist = ev->time;
         }
 
         if (edge_scroll_x > screen_info->params->wrap_resistance)
@@ -1406,6 +1431,8 @@ static void
 handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
     Client *c = NULL;
+    ScreenInfo *screen_info = NULL;
+    int msx, msy, maxx, maxy;
 
     TRACE ("entering handleEnterNotify");
 
@@ -1421,8 +1448,6 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     c = myDisplayGetClientFromWindow (display_info, ev->window, FRAME);
     if (c)
     {
-        ScreenInfo *screen_info = NULL;
-        
         screen_info = c->screen_info;
         
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
@@ -1431,6 +1456,61 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
                 clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
+            }
+        }
+        
+        /* No need to process the event any further */
+        return;
+    }
+    
+    /* The event was not for a client window */
+
+    /* Get the screen structure from the root of the event */
+    screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
+
+    if (!screen_info)
+    {
+        return;
+    }
+    
+    if (screen_info->workspace_count && screen_info->params->wrap_workspaces
+        && screen_info->params->wrap_resistance)
+    {
+        if ((ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[0])) || 
+            (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[1])) ||
+            (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[2])) ||
+            (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[3])))
+        {
+            TRACE ("Entered a sidwalk");
+
+            edge_scroll_x = 0;
+            edge_scroll_y = 0;
+
+            msx = ev->x_root;
+            msy = ev->y_root;
+
+            maxx = gdk_screen_get_width (screen_info->gscr) - 1;
+            maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+
+            /* 
+             * The goal of the following XWarpPointer() calls is to send the pointer back
+             * so we can receive additional motion events.
+             */
+            if (msx == 0) 
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 1, msy);
+            }
+            else if (msx == maxx)
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, maxx - 1, msy);
+            }
+            if (msy == 0) 
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, 1);
+            }
+            else if (msy == maxy)
+            {
+                XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, maxy - 1);
             }
         }
     }
@@ -1461,7 +1541,8 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[2])) ||
         (ev->window == MYWINDOW_XWINDOW (screen_info->sidewalk[3])))
     {
-        TRACE ("Reset edge_scroll_x and edge_scroll_y");
+        TRACE ("Leave a sidwalk, reset edge_scroll_x and edge_scroll_y");
+
         edge_scroll_x = 0;
         edge_scroll_y = 0;
     }
