@@ -45,24 +45,24 @@
 static void
 workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
 {
-    NetWmDesktopLayout * l = &screen_info->desktop_layout;
+    NetWmDesktopLayout l = screen_info->desktop_layout;
     int major_length, minor_length, tmp;
 
-    if (l->orientation == NET_WM_ORIENTATION_HORZ)
+    if (l.orientation == NET_WM_ORIENTATION_HORZ)
     {
-        major_length = l->cols;
-        minor_length = l->rows;
+        major_length = l.cols;
+        minor_length = l.rows;
     }
     else
     {
-        major_length = l->rows;
-        minor_length = l->cols;
+        major_length = l.rows;
+        minor_length = l.cols;
     }
 
     *row = n / major_length;
     *col = n % major_length;
 
-    switch (l->start)
+    switch (l.start)
     {
         case NET_WM_TOPRIGHT:
             *col = major_length - *col - 1;
@@ -78,15 +78,15 @@ workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
             break;
     }
 
-    if (l->orientation == NET_WM_ORIENTATION_VERT)
+    if (l.orientation == NET_WM_ORIENTATION_VERT)
     {
         tmp = *row;
         *row = *col;
         *col = tmp;
-        if ((l->start == NET_WM_TOPRIGHT) || (l->start == NET_WM_BOTTOMLEFT))
+        if ((l.start == NET_WM_TOPRIGHT) || (l.start == NET_WM_BOTTOMLEFT))
         {
-            *row = l->rows - *row - 1;
-            *col = l->cols - *col - 1;
+            *row = l.rows - *row - 1;
+            *col = l.cols - *col - 1;
         }
     }
 }
@@ -94,33 +94,33 @@ workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
 static int
 workspaceGetNumber (ScreenInfo *screen_info, int row, int col)
 {
-    NetWmDesktopLayout * l = &screen_info->desktop_layout;
+    NetWmDesktopLayout l = screen_info->desktop_layout;
     int major_length, minor_length, n, tmp;
 
-    if (l->orientation == NET_WM_ORIENTATION_HORZ)
+    if (l.orientation == NET_WM_ORIENTATION_HORZ)
     {
-        major_length = l->cols;
-        minor_length = l->rows;
+        major_length = l.cols;
+        minor_length = l.rows;
     }
     else
     {
-        major_length = l->rows;
-        minor_length = l->cols;
+        major_length = l.rows;
+        minor_length = l.cols;
     }
 
-    if (l->orientation == NET_WM_ORIENTATION_VERT)
+    if (l.orientation == NET_WM_ORIENTATION_VERT)
     {
         tmp = row;
         row = col;
         col = tmp;
-        if ((l->start == NET_WM_TOPRIGHT) || (l->start == NET_WM_BOTTOMLEFT))
+        if ((l.start == NET_WM_TOPRIGHT) || (l.start == NET_WM_BOTTOMLEFT))
         {
             row = minor_length - row - 1;
             col = major_length - col - 1;
         }
     }
 
-    switch (l->start)
+    switch (l.start)
     {
         case NET_WM_TOPRIGHT:
             col = major_length - col - 1;
@@ -171,7 +171,6 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
 }
 
 /* returns TRUE if the workspace was changed, FALSE otherwise */
-
 gboolean
 workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 {

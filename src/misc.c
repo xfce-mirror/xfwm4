@@ -168,12 +168,14 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
 void
 placeSidewalks(ScreenInfo *screen_info, gboolean activate)
 {
+    NetWmDesktopLayout l = screen_info->desktop_layout;
+
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[0]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[1]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[2]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[3]) != None);
 
-    if (activate)
+    if ((activate) && (l.cols > 1))
     {
         /*left*/
         xfwmWindowShow (&screen_info->sidewalk[0], 
@@ -184,16 +186,6 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
          xfwmWindowShow (&screen_info->sidewalk[1],
                         gdk_screen_get_width (screen_info->gscr) - 2, 0, 
                         2, gdk_screen_get_height (screen_info->gscr), FALSE);
-
-        /*top*/
-        xfwmWindowShow (&screen_info->sidewalk[2], 
-                        0, 0, 
-                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
-
-        /*bottom*/
-        xfwmWindowShow (&screen_info->sidewalk[3],
-                        0, gdk_screen_get_height (screen_info->gscr) - 2, 
-                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
     }
     else /* Place the windows off screen */
     {
@@ -206,7 +198,22 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
         xfwmWindowShow (&screen_info->sidewalk[1],
                         gdk_screen_get_width (screen_info->gscr), 0, 
                         2, gdk_screen_get_height (screen_info->gscr), FALSE);
+    }
 
+    if ((activate) && (l.rows > 1))
+    {
+        /*top*/
+        xfwmWindowShow (&screen_info->sidewalk[2], 
+                        0, 0, 
+                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
+
+        /*bottom*/
+        xfwmWindowShow (&screen_info->sidewalk[3],
+                        0, gdk_screen_get_height (screen_info->gscr) - 2, 
+                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
+    }
+    else /* Place the windows off screen */
+    {
         /*top*/
         xfwmWindowShow (&screen_info->sidewalk[2], 
                         0, -2, 
