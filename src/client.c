@@ -2851,7 +2851,6 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
-    static Time lastresist = (Time) 0;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XfceFilterStatus status = XEV_FILTER_STOP;
@@ -2965,43 +2964,19 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
                 if ((msx == 0) || (msx == maxx))
                 {
-                    if ((xevent->xmotion.time - lastresist) > 250)  /* ms */
-                    {
-                        edge_scroll_x = 0;
-                    }
-                    else
-                    {
-                        edge_scroll_x++;
-                    }
-                    if (msx == 0) 
-                    {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 1, msy);
-                    }
-                    else
-                    {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, maxx - 1, msy);
-                    }
-                    lastresist = xevent->xmotion.time;
+                    edge_scroll_x++;
+                }
+                else
+                {
+                    edge_scroll_x = 0;
                 }
                 if ((msy == 0) || (msy == maxy))
                 {
-                    if ((xevent->xmotion.time - lastresist) > 250)  /* ms */
-                    {
-                        edge_scroll_y = 0;
-                    }
-                    else
-                    {
-                        edge_scroll_y++;
-                    }
-                    if (msy == 0) 
-                    {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, 1);
-                    }
-                    else
-                    {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, maxy - 1);
-                    }
-                    lastresist = xevent->xmotion.time;
+                    edge_scroll_y++;
+                }
+                else
+                {
+                    edge_scroll_y = 0;
                 }
 
                 if (edge_scroll_x > screen_info->params->wrap_resistance)
