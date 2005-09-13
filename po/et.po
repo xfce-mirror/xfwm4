@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2004-12-09 01:45+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: \n"
@@ -611,7 +611,7 @@ msgstr "%s: Ei suutnud tekitada aktiivitu värvi %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei suutnud parsida aktiivitu värvi %s\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Tundmatu rakendus!"
 

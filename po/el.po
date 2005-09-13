@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_GR1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2005-08-13 13:21+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Ελληνικά\n"
@@ -617,7 +617,7 @@ msgstr "%s: Αδύνατος ο προσδιορισμός του ανενεργ
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του ανενεργού χρώματος %s\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Άγνωστη εφαρμογή!"
 

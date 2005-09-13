@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2005-07-21 00:26+0200\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: \n"
@@ -619,7 +619,7 @@ msgstr "%s: Malsukcesis disponigi neaktivan koloron %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Malsukcesis legi neaktivan koloron %s\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Nekonata aplikaĵo!"
 

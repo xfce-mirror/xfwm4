@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2004-3-8 8:25+0300\n"
 "Last-Translator: saleh alhathal <hathalsal@hotmail.com>\n"
 "Language-Team: arabic\n"
@@ -668,7 +668,7 @@ msgstr "%s: لا أستطيع تخصيص اللون غير النشط %s\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
 

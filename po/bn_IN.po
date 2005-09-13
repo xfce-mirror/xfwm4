@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -613,7 +613,7 @@ msgstr "%s: নিষ্ক্রিয় রং আরক্ষন করা য�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: নিষ্ক্রিয় রং পার্স করা যায়নি %s\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "অজানা অ্যাপ্লিকেশন!"
 

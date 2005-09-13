@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2005-04-28 19:05+0530\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -613,7 +613,7 @@ msgstr "%s: असक्रिय रंग निर्धारित कर�
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: असक्रिय रंगाचे परस्पर संबध स्पष्ट करु शकत नाही%s\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "अपरिचित एप्लिकेशन!"
 

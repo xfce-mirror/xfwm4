@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 14:25+0200\n"
+"POT-Creation-Date: 2005-09-07 22:27+0200\n"
 "PO-Revision-Date: 2005-01-21 15:53+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team:  <>\n"
@@ -608,7 +608,7 @@ msgstr "%s: Ei-aktiivista väriä %s ei voi varata\n"
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Ei-aktiivinen väri %s ei kelpaa\n"
 
-#: src/tabwin.c:73
+#: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Tuntematon sovellus!"
 
