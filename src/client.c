@@ -3082,12 +3082,13 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     }
                     if (msx == 0) 
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 1, msy);
+                        msx = 1;
                     }
                     else
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, maxx - 1, msy);
+                        msx = maxx - 1;
                     }
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
                     lastresist = xevent->xmotion.time;
                 }
                 if ((msy == 0) || (msy == maxy))
@@ -3102,59 +3103,62 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     }
                     if (msy == 0) 
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, 1);
+                        msy = 1;
                     }
                     else
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, maxy - 1);
+                        msy = maxy - 1;
                     }
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
                     lastresist = xevent->xmotion.time;
                 }
 
                 if (edge_scroll_x > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_x = 0;
-                    if (msx == 0)
+                    if (msx == 1)
                     {
                         if (workspaceMove (screen_info, 0, -1, c))
                         {
                             XWarpPointer (display_info->dpy, None, screen_info->xroot,
                                           0, 0, 0, 0, maxx - 10, msy);
-                            msx = xevent->xmotion.x_root = maxx - 10;
+                            msx = maxx - 10;
                         }
                     }
-                    else if (msx == maxx)
+                    else if (msx == maxx - 1)
                     {
                         if (workspaceMove (screen_info, 0, 1, c))
                         {
                             XWarpPointer (display_info->dpy, None, screen_info->xroot,
                                           0, 0, 0, 0, 10, msy);
-                            msx = xevent->xmotion.x_root = 10;
+                            msx = 10;
                         }
                     }
                 }
                 if (edge_scroll_y > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_y = 0;
-                    if (msy == 0)
+                    if (msy == 1)
                     {
                         if (workspaceMove (screen_info, -1, 0, c))
                         {
                             XWarpPointer (display_info->dpy, None, screen_info->xroot,
                                           0, 0, 0, 0, msx, maxy - 10);
-                            msy = xevent->xmotion.y_root = maxy - 10;
+                            msy = maxy - 10;
                         }
                     }
-                    else if (msy == maxy)
+                    else if (msy == maxy - 1)
                     {
                         if (workspaceMove (screen_info, 1, 0, c))
                         {
                             XWarpPointer (display_info->dpy, None, screen_info->xroot,
                                           0, 0, 0, 0, msx, 10);
-                            msy = xevent->xmotion.y_root = 10;
+                            msy = 10;
                         }
                     }
                 }
+                xevent->xmotion.x_root = msx;
+                xevent->xmotion.y_root = msy;
             }
         }
         if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED) 
@@ -3338,7 +3342,13 @@ clientMove (Client * c, XEvent * ev)
             (guint) (c->opacity * (double) (screen_info->params->move_opacity / 100.0)));
         restore_opacity = TRUE;
     }
-    
+
+    /* 
+     * Need to remove the sidewalk windows while moving otherwise 
+     * the motion events aren't reported on screen edges 
+     */
+    placeSidewalks(screen_info, FALSE);
+
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     xfce_push_event_filter (display_info->xfilter, clientMove_event_filter, &passdata);
@@ -3350,6 +3360,9 @@ clientMove (Client * c, XEvent * ev)
     xfce_pop_event_filter (display_info->xfilter);
     TRACE ("leaving move loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
+
+    /* Put back the sidewalks as they ought to be */
+    placeSidewalks(screen_info, screen_info->params->wrap_workspaces);
 
 #ifdef SHOW_POSITION
     if (passdata.poswin)

@@ -134,17 +134,17 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     screen_info->xroot,
                     &screen_info->sidewalk[0], 
                     0, 0, 
-                    2, gdk_screen_get_height (gscr), 
-                    EnterWindowMask | LeaveWindowMask | PointerMotionMask);
+                    1, gdk_screen_get_height (gscr), 
+                    EnterWindowMask);
 
     /*right*/
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
                     &screen_info->sidewalk[1], 
-                    gdk_screen_get_width (gscr) - 2, 0, 
-                    2, gdk_screen_get_height (gscr), 
-                    EnterWindowMask | LeaveWindowMask | PointerMotionMask);
+                    gdk_screen_get_width (gscr) - 1, 0, 
+                    1, gdk_screen_get_height (gscr), 
+                    EnterWindowMask);
 
     /*top*/
     xfwmWindowTemp (screen_info,
@@ -152,17 +152,17 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     screen_info->xroot,
                     &screen_info->sidewalk[2], 
                     0, 0, 
-                    gdk_screen_get_width (gscr), 2,
-                    EnterWindowMask | LeaveWindowMask | PointerMotionMask);
+                    gdk_screen_get_width (gscr), 1,
+                    EnterWindowMask);
 
     /*bottom*/
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
                     &screen_info->sidewalk[3], 
-                    0, gdk_screen_get_height (gscr) - 2, 
-                    gdk_screen_get_width (gscr), 2,
-                    EnterWindowMask | LeaveWindowMask | PointerMotionMask);
+                    0, gdk_screen_get_height (gscr) - 1, 
+                    gdk_screen_get_width (gscr), 1,
+                    EnterWindowMask);
 
     screen_info->gnome_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 

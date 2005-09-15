@@ -175,29 +175,29 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[2]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[3]) != None);
 
-    if ((activate) && (l.cols > 1))
+    if ((activate) && (l.cols > 2))
     {
         /*left*/
         xfwmWindowShow (&screen_info->sidewalk[0], 
                         0, 0,
-                        2, gdk_screen_get_height (screen_info->gscr), FALSE);
+                        1, gdk_screen_get_height (screen_info->gscr), FALSE);
 
         /*right*/
          xfwmWindowShow (&screen_info->sidewalk[1],
-                        gdk_screen_get_width (screen_info->gscr) - 2, 0, 
-                        2, gdk_screen_get_height (screen_info->gscr), FALSE);
+                        gdk_screen_get_width (screen_info->gscr) - 1, 0, 
+                        1, gdk_screen_get_height (screen_info->gscr), FALSE);
     }
     else /* Place the windows off screen */
     {
         /*left*/
         xfwmWindowShow (&screen_info->sidewalk[0], 
-                        -2, 0,
-                        2, gdk_screen_get_height (screen_info->gscr), FALSE);
+                        -1, 0,
+                        1, gdk_screen_get_height (screen_info->gscr), FALSE);
 
         /*right*/
         xfwmWindowShow (&screen_info->sidewalk[1],
                         gdk_screen_get_width (screen_info->gscr), 0, 
-                        2, gdk_screen_get_height (screen_info->gscr), FALSE);
+                        1, gdk_screen_get_height (screen_info->gscr), FALSE);
     }
 
     if ((activate) && (l.rows > 1))
@@ -205,24 +205,24 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
         /*top*/
         xfwmWindowShow (&screen_info->sidewalk[2], 
                         0, 0, 
-                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
+                        gdk_screen_get_width (screen_info->gscr), 1, FALSE);
 
         /*bottom*/
         xfwmWindowShow (&screen_info->sidewalk[3],
-                        0, gdk_screen_get_height (screen_info->gscr) - 2, 
-                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
+                        0, gdk_screen_get_height (screen_info->gscr) - 1, 
+                        gdk_screen_get_width (screen_info->gscr), 1, FALSE);
     }
     else /* Place the windows off screen */
     {
         /*top*/
         xfwmWindowShow (&screen_info->sidewalk[2], 
-                        0, -2, 
-                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
+                        0, -1, 
+                        gdk_screen_get_width (screen_info->gscr), 1, FALSE);
 
         /*bottom*/
         xfwmWindowShow (&screen_info->sidewalk[3],
                         0, gdk_screen_get_height (screen_info->gscr), 
-                        gdk_screen_get_width (screen_info->gscr), 2, FALSE);
+                        gdk_screen_get_width (screen_info->gscr), 1, FALSE);
     }
 }
 
