@@ -62,98 +62,100 @@
 #define WINDOW                                                  1
 #define FRAME                                                   2
 
-#define COMPOSITING_MANAGER                                     0
-#define GNOME_PANEL_DESKTOP_AREA                                1
-#define KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR                       2
-#define KWM_WIN_ICON                                            3
-#define MOTIF_WM_HINTS                                          4
-#define NET_ACTIVE_WINDOW                                       5
-#define NET_CLIENT_LIST                                         6
-#define NET_CLIENT_LIST_STACKING                                7
-#define NET_CLOSE_WINDOW                                        8
-#define NET_CURRENT_DESKTOP                                     9
-#define NET_DESKTOP_GEOMETRY                                    10
-#define NET_DESKTOP_LAYOUT                                      11
-#define NET_DESKTOP_NAMES                                       12
-#define NET_DESKTOP_VIEWPORT                                    13
-#define NET_FRAME_EXTENTS                                       14
-#define NET_NUMBER_OF_DESKTOPS                                  15
-#define NET_REQUEST_FRAME_EXTENTS                               16
-#define NET_SHOWING_DESKTOP                                     17
-#define NET_STARTUP_ID                                          18
-#define NET_SUPPORTED                                           19
-#define NET_SUPPORTING_WM_CHECK                                 20
-#define NET_SYSTEM_TRAY_OPCODE                                  21
-#define NET_WM_ACTION_CHANGE_DESKTOP                            22
-#define NET_WM_ACTION_CLOSE                                     23
-#define NET_WM_ACTION_MAXIMIZE_HORZ                             24
-#define NET_WM_ACTION_MAXIMIZE_VERT                             25
-#define NET_WM_ACTION_MOVE                                      26
-#define NET_WM_ACTION_RESIZE                                    27
-#define NET_WM_ACTION_SHADE                                     28
-#define NET_WM_ACTION_STICK                                     29
-#define NET_WM_ALLOWED_ACTIONS                                  30
-#define NET_WM_CONTEXT_HELP                                     31
-#define NET_WM_DESKTOP                                          32
-#define NET_WM_ICON                                             33
-#define NET_WM_ICON_GEOMETRY                                    34
-#define NET_WM_ICON_NAME                                        35
-#define NET_WM_MOVERESIZE                                       36
-#define NET_WM_NAME                                             37
-#define NET_WM_WINDOW_OPACITY                                   38
-#define NET_WM_STATE                                            39
-#define NET_WM_STATE_ABOVE                                      40
-#define NET_WM_STATE_BELOW                                      41
-#define NET_WM_STATE_DEMANDS_ATTENTION                          42
-#define NET_WM_STATE_FULLSCREEN                                 43
-#define NET_WM_STATE_HIDDEN                                     44
-#define NET_WM_STATE_MAXIMIZED_HORZ                             45
-#define NET_WM_STATE_MAXIMIZED_VERT                             46
-#define NET_WM_STATE_MODAL                                      47
-#define NET_WM_STATE_SHADED                                     48
-#define NET_WM_STATE_SKIP_PAGER                                 49
-#define NET_WM_STATE_SKIP_TASKBAR                               50
-#define NET_WM_STATE_STICKY                                     51
-#define NET_WM_STRUT                                            52
-#define NET_WM_STRUT_PARTIAL                                    53
-#define NET_WM_USER_TIME                                        54
-#define NET_WM_WINDOW_TYPE                                      55
-#define NET_WM_WINDOW_TYPE_DESKTOP                              56
-#define NET_WM_WINDOW_TYPE_DIALOG                               57
-#define NET_WM_WINDOW_TYPE_DOCK                                 58
-#define NET_WM_WINDOW_TYPE_MENU                                 59
-#define NET_WM_WINDOW_TYPE_NORMAL                               60
-#define NET_WM_WINDOW_TYPE_SPLASH                               61
-#define NET_WM_WINDOW_TYPE_TOOLBAR                              62
-#define NET_WM_WINDOW_TYPE_UTILITY                              63
-#define NET_WORKAREA                                            64
-#define MANAGER                                                 65
-#define PIXMAP                                                  66
-#define SM_CLIENT_ID                                            67
-#define UTF8_STRING                                             68
-#define WIN_CLIENT_LIST                                         69
-#define WIN_DESKTOP_BUTTON_PROXY                                70
-#define WIN_HINTS                                               71
-#define WIN_LAYER                                               72
-#define WIN_PROTOCOLS                                           73
-#define WIN_STATE                                               74
-#define WIN_SUPPORTING_WM_CHECK                                 75
-#define WIN_WORKSPACE                                           76
-#define WIN_WORKSPACE_COUNT                                     77
-#define WM_CHANGE_STATE                                         78
-#define WM_CLIENT_LEADER                                        79
-#define WM_COLORMAP_WINDOWS                                     80
-#define WM_DELETE_WINDOW                                        81
-#define WM_HINTS                                                82
-#define WM_PROTOCOLS                                            83
-#define WM_STATE                                                84
-#define WM_TAKE_FOCUS                                           85
-#define WM_TRANSIENT_FOR                                        86
-#define WM_WINDOW_ROLE                                          87
-#define XROOTPMAP                                               88
-#define XSETROOT                                                89
-
-#define NB_ATOMS                                                90
+enum 
+{
+    COMPOSITING_MANAGER = 0,
+    GNOME_PANEL_DESKTOP_AREA,
+    KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR,
+    KWM_WIN_ICON,
+    MOTIF_WM_HINTS,
+    NET_ACTIVE_WINDOW,
+    NET_CLIENT_LIST,
+    NET_CLIENT_LIST_STACKING,
+    NET_CLOSE_WINDOW,
+    NET_CURRENT_DESKTOP,
+    NET_DESKTOP_GEOMETRY,
+    NET_DESKTOP_LAYOUT,
+    NET_DESKTOP_NAMES,
+    NET_DESKTOP_VIEWPORT,
+    NET_FRAME_EXTENTS,
+    NET_NUMBER_OF_DESKTOPS,
+    NET_REQUEST_FRAME_EXTENTS,
+    NET_SHOWING_DESKTOP,
+    NET_STARTUP_ID,
+    NET_SUPPORTED,
+    NET_SUPPORTING_WM_CHECK,
+    NET_SYSTEM_TRAY_OPCODE,
+    NET_WM_ACTION_CHANGE_DESKTOP,
+    NET_WM_ACTION_CLOSE,
+    NET_WM_ACTION_MAXIMIZE_HORZ,
+    NET_WM_ACTION_MAXIMIZE_VERT,
+    NET_WM_ACTION_MOVE,
+    NET_WM_ACTION_RESIZE,
+    NET_WM_ACTION_SHADE,
+    NET_WM_ACTION_STICK,
+    NET_WM_ALLOWED_ACTIONS,
+    NET_WM_CONTEXT_HELP,
+    NET_WM_DESKTOP,
+    NET_WM_ICON,
+    NET_WM_ICON_GEOMETRY,
+    NET_WM_ICON_NAME,
+    NET_WM_MOVERESIZE,
+    NET_WM_NAME,
+    NET_WM_WINDOW_OPACITY,
+    NET_WM_STATE,
+    NET_WM_STATE_ABOVE,
+    NET_WM_STATE_BELOW,
+    NET_WM_STATE_DEMANDS_ATTENTION,
+    NET_WM_STATE_FULLSCREEN,
+    NET_WM_STATE_HIDDEN,
+    NET_WM_STATE_MAXIMIZED_HORZ,
+    NET_WM_STATE_MAXIMIZED_VERT,
+    NET_WM_STATE_MODAL,
+    NET_WM_STATE_SHADED,
+    NET_WM_STATE_SKIP_PAGER,
+    NET_WM_STATE_SKIP_TASKBAR,
+    NET_WM_STATE_STICKY,
+    NET_WM_STRUT,
+    NET_WM_STRUT_PARTIAL,
+    NET_WM_USER_TIME,
+    NET_WM_WINDOW_TYPE,
+    NET_WM_WINDOW_TYPE_DESKTOP,
+    NET_WM_WINDOW_TYPE_DIALOG,
+    NET_WM_WINDOW_TYPE_DOCK,
+    NET_WM_WINDOW_TYPE_MENU,
+    NET_WM_WINDOW_TYPE_NORMAL,
+    NET_WM_WINDOW_TYPE_SPLASH,
+    NET_WM_WINDOW_TYPE_TOOLBAR,
+    NET_WM_WINDOW_TYPE_UTILITY,
+    NET_WORKAREA,
+    MANAGER,
+    PIXMAP,
+    SM_CLIENT_ID,
+    UTF8_STRING,
+    WIN_CLIENT_LIST,
+    WIN_DESKTOP_BUTTON_PROXY,
+    WIN_HINTS,
+    WIN_LAYER,
+    WIN_PROTOCOLS,
+    WIN_STATE,
+    WIN_SUPPORTING_WM_CHECK,
+    WIN_WORKSPACE,
+    WIN_WORKSPACE_COUNT,
+    WM_CHANGE_STATE,
+    WM_CLIENT_LEADER,
+    WM_COLORMAP_WINDOWS,
+    WM_DELETE_WINDOW,
+    WM_HINTS,
+    WM_PROTOCOLS,
+    WM_STATE,
+    WM_TAKE_FOCUS,
+    WM_TRANSIENT_FOR,
+    WM_WINDOW_ROLE,
+    XROOTPMAP,
+    XSETROOT,
+    NB_ATOMS
+};
 
 typedef struct _Client            Client;
 typedef struct _ClientPixmapCache ClientPixmapCache;

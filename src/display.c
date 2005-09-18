@@ -57,8 +57,8 @@ handleXError (Display * dpy, XErrorEvent * err)
 static gboolean
 myDisplayInitAtoms (DisplayInfo *display_info)
 {
-    char *atom_names[] = {
-        "CLIPBOARD_MANAGER",
+    static const char *atom_names[] = {
+        "COMPOSITING_MANAGER",
         "GNOME_PANEL_DESKTOP_AREA",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
