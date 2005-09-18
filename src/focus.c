@@ -514,7 +514,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                          PropModeReplace, (unsigned char *) data, 2);
-        XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->gnome_win, RevertToPointerRoot, timestamp);
+        XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
     }
 }
 

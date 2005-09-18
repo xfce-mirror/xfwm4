@@ -164,7 +164,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     gdk_screen_get_width (gscr), 1,
                     EnterWindowMask);
 
-    screen_info->gnome_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
+    screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 
     g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", screen_info->screen);
     screen_info->net_system_tray_selection = XInternAtom (display_info->dpy, selection, FALSE);
@@ -287,7 +287,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
     if (screen_info->key_grabs == 0)
     {
         grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info), 
-                               screen_info->gnome_win,
+                               screen_info->xfwm4_win,
                                FALSE, 
                                GrabModeAsync, GrabModeAsync, 
                                time) == GrabSuccess);
@@ -309,7 +309,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
     if (screen_info->pointer_grabs == 0)
     {
         grab = (XGrabPointer (myScreenGetXDisplay (screen_info), 
-                              screen_info->gnome_win, 
+                              screen_info->xfwm4_win, 
                               FALSE, event_mask, 
                               GrabModeAsync, GrabModeAsync, 
                               screen_info->xroot, 

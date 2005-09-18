@@ -1017,7 +1017,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     else
     {
         XUngrabPointer (display_info->dpy, CurrentTime);
-        XSendEvent (display_info->dpy, screen_info->gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+        XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
     }
 }
 
@@ -1043,7 +1043,7 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
         return;
     }
 
-    XSendEvent (display_info->dpy, screen_info->gnome_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+    XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
 }
 
 static void
@@ -2050,7 +2050,7 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
         for (screens = display_info->screens; screens; screens = g_slist_next (screens))
         {
             ScreenInfo *screen_info = (ScreenInfo *) screens->data;
-            clientUpdateAllFrames (screens, UPDATE_KEYGRABS);
+            clientUpdateAllFrames (screen_info, UPDATE_KEYGRABS);
         }
     }
 }

@@ -92,7 +92,7 @@ struct _ScreenInfo
 
     GtkWidget *gtk_win;
     xfwmWindow sidewalk[4];
-    Window gnome_win;
+    Window xfwm4_win;
     Window xroot;
     Window systray;
     

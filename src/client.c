@@ -1436,7 +1436,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return NULL;
     }
 
-    if (w == screen_info->gnome_win)
+    if (w == screen_info->xfwm4_win)
     {
         TRACE ("Not managing our own event window");
         compositorAddWindow (display_info, w, NULL);

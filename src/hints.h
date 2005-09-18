@@ -171,6 +171,7 @@ gboolean getWindowCommand (DisplayInfo *, Window, char ***, int *);
 gboolean getKDEIcon (DisplayInfo *, Window, Pixmap *, Pixmap *);
 gboolean getRGBIconData (DisplayInfo *, Window, unsigned long **, unsigned long *);
 gboolean getOpacity (DisplayInfo *, Window, guint *);
+gboolean setCompositingManagerOwner (DisplayInfo *, Window , Window);
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId (DisplayInfo *, Window, char **);

@@ -416,25 +416,28 @@ initialize (int argc, char **argv, gint compositor_mode)
         
         if (compositor_mode)
         {
-            compositorManageScreen (screen_info, (compositor_mode == 2));
+            if (compositorManageScreen (screen_info, (compositor_mode == 2)))
+            {
+                setCompositingManagerOwner (display_info,  screen_info->xroot, screen_info->xfwm4_win);
+            }
         }
 
         sn_init_display (screen_info);
         myDisplayAddScreen (display_info, screen_info);
-        setGnomeProtocols (display_info, screen_info->xroot, screen_info->gnome_win);
-        setHint (display_info, screen_info->xroot, WIN_SUPPORTING_WM_CHECK, screen_info->gnome_win);
-        setHint (display_info, screen_info->xroot, WIN_DESKTOP_BUTTON_PROXY, screen_info->gnome_win);
-        setHint (display_info, screen_info->gnome_win, WIN_DESKTOP_BUTTON_PROXY, screen_info->gnome_win);
+        setGnomeProtocols (display_info, screen_info->xroot, screen_info->xfwm4_win);
+        setHint (display_info, screen_info->xroot, WIN_SUPPORTING_WM_CHECK, screen_info->xfwm4_win);
+        setHint (display_info, screen_info->xroot, WIN_DESKTOP_BUTTON_PROXY, screen_info->xfwm4_win);
+        setHint (display_info, screen_info->xfwm4_win, WIN_DESKTOP_BUTTON_PROXY, screen_info->xfwm4_win);
         getHint (display_info, screen_info->xroot, WIN_WORKSPACE, &ws);
         screen_info->current_ws = (int) ws;
         getGnomeDesktopMargins (display_info, screen_info->xroot, screen_info->gnome_margins);
-        setUTF8StringHint (display_info, screen_info->gnome_win, NET_WM_NAME, "Xfwm4");
-        setNetSupportedHint (display_info, screen_info->xroot, screen_info->gnome_win);
+        setUTF8StringHint (display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
+        setNetSupportedHint (display_info, screen_info->xroot, screen_info->xfwm4_win);
         initNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
                                    gdk_screen_get_width (screen_info->gscr), 
                                    gdk_screen_get_height (screen_info->gscr));
         workspaceUpdateArea (screen_info);
-        XSetInputFocus (display_info->dpy, screen_info->gnome_win, RevertToPointerRoot, CurrentTime);
+        XSetInputFocus (display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, CurrentTime);
 
         clientFrameAll (screen_info);
         
