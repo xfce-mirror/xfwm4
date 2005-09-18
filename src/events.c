@@ -2029,6 +2029,33 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 }
 
 static void
+handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
+{
+    GSList *screens;
+
+    TRACE ("entering handleMappingNotify");
+
+    /* Refreshes the stored modifier and keymap information */
+    XRefreshKeyboardMapping(ev);
+
+    /* Update internal modifiers masks if necssary */
+    if (ev->request == MappingModifier)
+    {
+        initModifiers (display_info->dpy);
+    }
+
+    /* Regrab all keys if the notify is for keyboard (ie not pointer) */
+    if (ev->request != MappingPointer)
+    {
+        for (screens = display_info->screens; screens; screens = g_slist_next (screens))
+        {
+            ScreenInfo *screen_info = (ScreenInfo *) screens->data;
+            clientUpdateAllFrames (screens, UPDATE_KEYGRABS);
+        }
+    }
+}
+
+static void
 handleEvent (DisplayInfo *display_info, XEvent * ev)
 {
     TRACE ("entering handleEvent");
@@ -2090,6 +2117,9 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             break;
         case ColormapNotify:
             handleColormapNotify (display_info, (XColormapEvent *) ev);
+            break;
+        case MappingNotify:
+            handleMappingNotify (display_info, (XMappingEvent *) ev);
             break;
         default:
             if ((display_info->have_shape) && (ev->type == display_info->shape_event_base))
