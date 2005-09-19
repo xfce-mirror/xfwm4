@@ -152,7 +152,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
     
     g_assert (NB_ATOMS == G_N_ELEMENTS (atom_names));
     return (XInternAtoms (display_info->dpy, 
-                          atom_names, 
+                          (char **) atom_names, 
                           NB_ATOMS,
                           FALSE, display_info->atoms) != 0);
 }

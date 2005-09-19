@@ -2036,21 +2036,31 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
     TRACE ("entering handleMappingNotify");
 
     /* Refreshes the stored modifier and keymap information */
-    XRefreshKeyboardMapping(ev);
+    XRefreshKeyboardMapping (ev);
 
-    /* Update internal modifiers masks if necssary */
+    /* Update internal modifiers masks if necessary */
     if (ev->request == MappingModifier)
     {
+        TRACE ("handleMappingNotify: modifiers mapping has changed");
         initModifiers (display_info->dpy);
     }
 
     /* Regrab all keys if the notify is for keyboard (ie not pointer) */
     if (ev->request != MappingPointer)
     {
+        TRACE ("handleMappingNotify: Regrab keys");
         for (screens = display_info->screens; screens; screens = g_slist_next (screens))
         {
             ScreenInfo *screen_info = (ScreenInfo *) screens->data;
-            clientUpdateAllFrames (screen_info, UPDATE_KEYGRABS);
+
+            /* We need to reload all the settings to recompute the key bindings... */
+            loadSettings (screen_info);
+
+            /* ...then update all frames grabs... */
+            clientUpdateAllFrames (screen_info, UPDATE_KEY_GRABS | UPDATE_BUTTON_GRABS);
+
+            /* ...and at last regrab the keys in out default window! */
+            myScreenGrabKeys (screen_info);
         }
     }
 }
