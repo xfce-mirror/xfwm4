@@ -1,21 +1,18 @@
-# Translation file for XFce4's xfwm4.
-# Copyright (C) 2003 Olivier Fourdan <fourdan@xfce.org>
-# This file is distributed under the same license as the XFce4.
-# Paweł Pastuła <pastulap@poczta.onet.pl>, 2003
-# --
-# Daniel Mróz <beorn@alpha.pl>, 2003
-#
-#     Changes:
-#        - few major and minor fixes (bad translation, missing translations, semicolons, ...)
+# Polish translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Paweł Pastuła <pastulap@poczta.onet.pl>, 2003.
+# Daniel Mróz <beorn@alpha.pl>, 2003.
+# Robert Kurowski <koorek@o2.pl>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 1.0.0\n"
+"Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-13 22:08+0200\n"
-"PO-Revision-Date: 2005-04-08 18:43+0100\n"
+"PO-Revision-Date: 2005-09-21 09:53+0900\n"
 "Last-Translator: Robert Kurowski <koorek@o2.pl>\n"
-"Language-Team: none <none@none>\n"
+"Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
