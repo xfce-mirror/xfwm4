@@ -235,20 +235,10 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
     xfwmWindowSetVisual (win, visual, depth);
 }
 
-void
-xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
+static gboolean
+xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 {
-    if ((win->width < 1) || (win->height < 1) || (pix->width < 1) || (pix->height < 1))
-    {
-        return;
-    }
-
-    if ((win->visual == win->screen_info->visual) && (win->depth == win->screen_info->depth))
-    {
-        XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, pix->pixmap);
-    }
-#ifdef HAVE_RENDER
-    else if (myDisplayHaveRender (win->screen_info->display_info))
+    if (myDisplayHaveRender (win->screen_info->display_info))
     {
         Picture psrc, pdst;
         XRenderPictFormat *format_src, *format_dst;
@@ -262,7 +252,7 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
         if (!format_src || !format_dst)
         {
             TRACE ("xfwmWindowSetBG: Cannot get XRender picture format");
-            return;
+            return FALSE;
         }
 
         temp = XCreatePixmap (myScreenGetXDisplay (win->screen_info), 
@@ -282,6 +272,33 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
         XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, temp);
 
         XFreePixmap (myScreenGetXDisplay (win->screen_info), temp);
+
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void
+xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
+{
+    gboolean done = FALSE;
+    
+    if ((win->width < 1) || (win->height < 1) || (pix->width < 1) || (pix->height < 1))
+    {
+        return;
+    }
+
+#ifdef HAVE_RENDER
+    if ((win->visual != win->screen_info->visual) || 
+        (win->depth  != win->screen_info->depth))
+    {
+        /* Try to use XRender */
+        done = xfwmWindowCopyComposite (win, pix);
     }
 #endif
+    if (!done)
+    {
+        /* Use the good old way */
+        XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, pix->pixmap);
+    }
 }
