@@ -33,10 +33,6 @@
 #include "mywindow.h"
 #include "screen.h"
 
-#ifdef HAVE_RENDER
-#include <X11/extensions/Xrender.h>
-#endif
-
 static void
 xfwmWindowSetVisual (xfwmWindow * win, Visual *visual, gint depth)
 {
@@ -74,6 +70,7 @@ xfwmWindowInit (xfwmWindow * win)
     win->y = 0;
     win->width = 1;
     win->height = 1;
+    win->pict_format = NULL;
 }
 
 void
@@ -98,6 +95,9 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
     win->y = 0;
     win->width = 1;
     win->height = 1;
+#ifdef HAVE_RENDER
+    win->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), win->visual);
+#endif
     xfwmWindowSetVisual (win, visual, depth);
 }
 
@@ -238,18 +238,13 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
 static gboolean
 xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 {
+#ifdef HAVE_RENDER
     if (myDisplayHaveRender (win->screen_info->display_info))
     {
-        Picture psrc, pdst;
-        XRenderPictFormat *format_src, *format_dst;
+        Picture pict;
         Pixmap temp;
 
-        format_src = XRenderFindVisualFormat (myScreenGetXDisplay (pix->screen_info), 
-                                              pix->screen_info->visual);
-        format_dst = XRenderFindVisualFormat (myScreenGetXDisplay (win->screen_info), 
-                                              win->visual);
-
-        if (!format_src || !format_dst)
+        if (!pix->pict || !pix->pict_format || !win->pict_format)
         {
             TRACE ("xfwmWindowSetBG: Cannot get XRender picture format");
             return FALSE;
@@ -259,15 +254,12 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
                               win->window, 
                               pix->width, pix->height, win->depth);
 
-        psrc = XRenderCreatePicture (myScreenGetXDisplay (pix->screen_info), 
-                                     pix->pixmap, format_src, 0, NULL);
-        pdst = XRenderCreatePicture (myScreenGetXDisplay (win->screen_info), 
-                                     temp, format_dst, 0, NULL);
+        pict = XRenderCreatePicture (myScreenGetXDisplay (win->screen_info), 
+                                     temp, win->pict_format, 0, NULL);
 
-        XRenderComposite (myScreenGetXDisplay (win->screen_info), PictOpSrc, psrc, None, pdst, 0, 0, 0, 0, 0, 0, pix->width, pix->height);
+        XRenderComposite (myScreenGetXDisplay (win->screen_info), PictOpSrc, pix->pict, None, pict, 0, 0, 0, 0, 0, 0, pix->width, pix->height);
 
-        XRenderFreePicture (myScreenGetXDisplay (pix->screen_info), psrc);
-        XRenderFreePicture (myScreenGetXDisplay (win->screen_info), pdst);
+        XRenderFreePicture (myScreenGetXDisplay (win->screen_info), pict);
 
         XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, temp);
 
@@ -275,6 +267,7 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 
         return TRUE;
     }
+#endif
     return FALSE;
 }
 

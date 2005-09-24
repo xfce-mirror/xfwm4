@@ -31,6 +31,10 @@
 #include "mypixmap.h"
 #include "screen.h"
 
+#ifdef HAVE_RENDER
+#include <X11/extensions/Xrender.h>
+#endif
+
 #define MYWINDOW_XWINDOW(w) (w.window)
 
 typedef struct _xfwmWindow xfwmWindow;
@@ -38,6 +42,9 @@ struct _xfwmWindow
 {
     ScreenInfo *screen_info;
     Visual *visual;
+#ifdef HAVE_RENDER
+    XRenderPictFormat *pict_format;
+#endif
     gint depth;
     Window window;
     gint x, y;

@@ -27,6 +27,10 @@
 #include <glib.h>
 #include "screen.h"
 
+#ifdef HAVE_RENDER
+#include <X11/extensions/Xrender.h>
+#endif
+
 #ifndef INC_MYPIXMAP_H
 #define INC_MYPIXMAP_H
 
@@ -36,6 +40,10 @@ struct _xfwmPixmap
 {
     ScreenInfo *screen_info;
     Pixmap pixmap, mask;
+#ifdef HAVE_RENDER
+    XRenderPictFormat *pict_format;
+    Picture pict;
+#endif
     gint width, height;
 };
 

@@ -161,6 +161,14 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     /* Apply the alpha channel if available */
     xfwmPixmapCompose (pm, dir, file);
     
+#ifdef HAVE_RENDER
+    if (pm->pict_format)
+    {
+        pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
+                                     pm->pixmap, pm->pict_format, 0, NULL);
+    }
+#endif
+
     return TRUE;
 }
 
@@ -183,6 +191,12 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
                                   pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
+
+#ifdef HAVE_RENDER
+        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+                                                   screen_info->visual);
+        pm->pict = None;
+#endif
     }
 }
 
@@ -194,6 +208,10 @@ xfwmPixmapInit (ScreenInfo * screen_info, xfwmPixmap * pm)
     pm->mask = None;
     pm->width = 0;
     pm->height = 0;
+#ifdef HAVE_RENDER
+    pm->pict_format = NULL;
+    pm->pict = None;
+#endif
 }
 
 void
@@ -212,6 +230,13 @@ xfwmPixmapFree (xfwmPixmap * pm)
         XFreePixmap (myScreenGetXDisplay(pm->screen_info), pm->mask);
         pm->mask = None;
     }
+#ifdef HAVE_RENDER
+    if (pm->pict != None)
+    {
+        XRenderFreePicture (myScreenGetXDisplay(pm->screen_info), pm->pict);
+        pm->pict = None;
+    }
+#endif
 }
 
 static void
