@@ -250,15 +250,9 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
             return FALSE;
         }
 
-        if (!pix->pict_format)
-        {
-            g_warning ("xfwmWindowCopyComposite: Pixmap oicture format is unkown");
-            return FALSE;
-        }
-
         if (!win->pict_format)
         {
-            g_warning ("xfwmWindowCopyComposite: Window oicture format is unkown");
+            g_warning ("xfwmWindowCopyComposite: Window picture format is unkown");
             return FALSE;
         }
 
@@ -276,7 +270,6 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
         XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, temp);
 
         XFreePixmap (myScreenGetXDisplay (win->screen_info), temp);
-
         return TRUE;
     }
 #endif
@@ -297,10 +290,11 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
     if ((win->visual != win->screen_info->visual) || 
         (win->depth  != win->screen_info->depth))
     {
-        /* Try to use XRender */
+        /* Try to use Render */
         done = xfwmWindowCopyComposite (win, pix);
     }
 #endif
+
     if (!done)
     {
         /* Use the good old way */
