@@ -246,13 +246,13 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 
         if (!pix->pict)
         {
-            g_warning ("xfwmWindowCopyComposite: Pixmap picture does not exist");
+            TRACE ("xfwmWindowCopyComposite: Pixmap picture does not exist");
             return FALSE;
         }
 
         if (!win->pict_format)
         {
-            g_warning ("xfwmWindowCopyComposite: Window picture format is unkown");
+            TRACE ("xfwmWindowCopyComposite: Window picture format is unkown");
             return FALSE;
         }
 
