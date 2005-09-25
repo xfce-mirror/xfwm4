@@ -95,10 +95,10 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
     win->y = 0;
     win->width = 1;
     win->height = 1;
+    xfwmWindowSetVisual (win, visual, depth);
 #ifdef HAVE_RENDER
     win->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), win->visual);
 #endif
-    xfwmWindowSetVisual (win, visual, depth);
 }
 
 void
@@ -244,9 +244,21 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
         Picture pict;
         Pixmap temp;
 
-        if (!pix->pict || !pix->pict_format || !win->pict_format)
+        if (!pix->pict)
         {
-            TRACE ("xfwmWindowSetBG: Cannot get XRender picture format");
+            g_warning ("xfwmWindowCopyComposite: Pixmap picture does not exist");
+            return FALSE;
+        }
+
+        if (!pix->pict_format)
+        {
+            g_warning ("xfwmWindowCopyComposite: Pixmap oicture format is unkown");
+            return FALSE;
+        }
+
+        if (!win->pict_format)
+        {
+            g_warning ("xfwmWindowCopyComposite: Window oicture format is unkown");
             return FALSE;
         }
 

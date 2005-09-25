@@ -1674,8 +1674,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (c->depth == 32)
     {
         attributes.background_pixmap = None;
-        attributes.border_pixel = 0;
-        attributes.background_pixel = 0;
+        attributes.border_pixel = 65535;
+        attributes.background_pixel = 65535;
         valuemask |= CWBackPixmap|CWBackPixel|CWBorderPixel;
     }
 #endif

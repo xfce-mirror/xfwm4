@@ -43,7 +43,7 @@
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
-#if DEBUG
+#if 1 /* DEBUG */
     char buf[64];
 
     XGetErrorText (dpy, err->error_code, buf, 63);

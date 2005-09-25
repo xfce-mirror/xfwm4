@@ -34,6 +34,32 @@
 
 #include "mypixmap.h"
 
+static void
+xfwmPixmapRefreshPict (xfwmPixmap * pm)
+{
+#ifdef HAVE_RENDER
+    ScreenInfo * screen_info = pm->screen_info;
+    
+    if (!pm->pict_format)
+    {
+        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+                                                   screen_info->visual);
+    }
+
+    if (pm->pict != None)
+    {
+        XRenderFreePicture (myScreenGetXDisplay(pm->screen_info), pm->pict);
+        pm->pict == None;
+    }
+
+    if ((pm->pixmap) && (pm->pict_format))
+    {
+        pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
+                                     pm->pixmap, pm->pict_format, 0, NULL);
+    }
+#endif
+}
+
 static gboolean
 xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
 {
@@ -162,11 +188,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     xfwmPixmapCompose (pm, dir, file);
     
 #ifdef HAVE_RENDER
-    if (pm->pict_format)
-    {
-        pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
-                                     pm->pixmap, pm->pict_format, 0, NULL);
-    }
+    xfwmPixmapRefreshPict (pm);
 #endif
 
     return TRUE;
@@ -177,7 +199,9 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
                   gint width, gint height)
 {
     TRACE ("entering xfwmPixmapCreate, width=%i, height=%i", width, height);
-    if ((width < 1) || (height < 1) || (!screen_info))
+    g_return_if_fail (screen_info != NULL);
+
+    if ((width < 1) || (height < 1))
     {
         xfwmPixmapInit (screen_info, pm);
     }
@@ -191,13 +215,10 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
                                   pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
-
-#ifdef HAVE_RENDER
-        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
-                                                   screen_info->visual);
-        pm->pict = None;
-#endif
     }
+#ifdef HAVE_RENDER
+    xfwmPixmapRefreshPict (pm);
+#endif
 }
 
 void
@@ -209,7 +230,8 @@ xfwmPixmapInit (ScreenInfo * screen_info, xfwmPixmap * pm)
     pm->width = 0;
     pm->height = 0;
 #ifdef HAVE_RENDER
-    pm->pict_format = NULL;
+    pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+                                               screen_info->visual);
     pm->pict = None;
 #endif
 }
@@ -288,4 +310,7 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
     xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info), 
                              src->screen_info->screen,  
                              src->mask, dst->mask, x, y, width, height);
+#ifdef HAVE_RENDER
+    xfwmPixmapRefreshPict (dst);
+#endif
 }
