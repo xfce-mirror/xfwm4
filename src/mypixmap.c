@@ -39,7 +39,7 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
 {
 #ifdef HAVE_RENDER
     ScreenInfo * screen_info = pm->screen_info;
-    
+
     if (!pm->pict_format)
     {
         pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
@@ -55,7 +55,7 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
     if ((pm->pixmap) && (pm->pict_format))
     {
         pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
-                                     pm->pixmap, pm->pict_format, 0, NULL);
+                                         pm->pixmap, pm->pict_format, 0, NULL);
     }
 #endif
 }
