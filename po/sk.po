@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-13 22:08+0200\n"
+"POT-Creation-Date: 2005-09-26 12:08+0900\n"
 "PO-Revision-Date: 2004-08-26 21:32+0200\n"
 "Last-Translator: Juraj Brosz <Juraj.Brosz@pobox.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -152,172 +152,172 @@ msgstr "Názov okna, nemôže byť odstránený"
 msgid "Hidden"
 msgstr "Skryté"
 
-#: mcs-plugin/xfwm4_plugin.c:1337
+#: mcs-plugin/xfwm4_plugin.c:1346
 msgid "Font Selection Dialog"
 msgstr "Dialóg pre výber písma"
 
-#: mcs-plugin/xfwm4_plugin.c:1408 mcs-plugin/xfwm4_plugin.c:1928
+#: mcs-plugin/xfwm4_plugin.c:1417 mcs-plugin/xfwm4_plugin.c:1937
 msgid "Window Manager"
 msgstr "Správca okien"
 
-#: mcs-plugin/xfwm4_plugin.c:1421
+#: mcs-plugin/xfwm4_plugin.c:1430
 msgid "Window Manager Preferences"
 msgstr "Nastavenie správcu okien"
 
-#: mcs-plugin/xfwm4_plugin.c:1450
+#: mcs-plugin/xfwm4_plugin.c:1459
 msgid "Title font"
 msgstr "Font titulku"
 
-#: mcs-plugin/xfwm4_plugin.c:1463
+#: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Title Alignment"
 msgstr "Zarovnanie titulku"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: mcs-plugin/xfwm4_plugin.c:1478
 msgid "Text alignment inside title bar :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1471
+#: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Button layout"
 msgstr "Rozloženie tlačidiel"
 
-#: mcs-plugin/xfwm4_plugin.c:1477
+#: mcs-plugin/xfwm4_plugin.c:1486
 msgid "Style"
 msgstr "Štýl"
 
-#: mcs-plugin/xfwm4_plugin.c:1515
+#: mcs-plugin/xfwm4_plugin.c:1524
 msgid "Window shortcuts"
 msgstr "Klávesové skratky okien"
 
-#: mcs-plugin/xfwm4_plugin.c:1535 mcs-plugin/xfwm4_plugin.c:1568
+#: mcs-plugin/xfwm4_plugin.c:1544 mcs-plugin/xfwm4_plugin.c:1577
 msgid "Command"
 msgstr "Príkaz"
 
-#: mcs-plugin/xfwm4_plugin.c:1540 mcs-plugin/xfwm4_plugin.c:1572
+#: mcs-plugin/xfwm4_plugin.c:1549 mcs-plugin/xfwm4_plugin.c:1581
 msgid "Shortcut"
 msgstr "Skratka"
 
-#: mcs-plugin/xfwm4_plugin.c:1548
+#: mcs-plugin/xfwm4_plugin.c:1557
 msgid "Command shortcuts"
 msgstr "Klávesové skratky príkazu"
 
-#: mcs-plugin/xfwm4_plugin.c:1587
+#: mcs-plugin/xfwm4_plugin.c:1596
 msgid "Keyboard"
 msgstr "Klávesnica"
 
-#: mcs-plugin/xfwm4_plugin.c:1598
+#: mcs-plugin/xfwm4_plugin.c:1607
 msgid "Focus model"
 msgstr "Spôsob aktivácie okna"
 
-#: mcs-plugin/xfwm4_plugin.c:1606
+#: mcs-plugin/xfwm4_plugin.c:1615
 msgid "Click to focus"
 msgstr "Kliknúť pre aktiváciu"
 
-#: mcs-plugin/xfwm4_plugin.c:1613
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Focus follows mouse"
 msgstr "Okno pod myšou je aktívne"
 
-#: mcs-plugin/xfwm4_plugin.c:1620
+#: mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "Nové okno je aktívne"
 
-#: mcs-plugin/xfwm4_plugin.c:1624
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Automatically give focus to newly created windows"
 msgstr "Automaticky aktivovať novovytvorené okná"
 
-#: mcs-plugin/xfwm4_plugin.c:1629
+#: mcs-plugin/xfwm4_plugin.c:1638
 msgid "Raise on focus"
 msgstr "Zdvihnúť pri aktivácii"
 
-#: mcs-plugin/xfwm4_plugin.c:1637
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Automatically raise windows when they receive focus"
 msgstr "Automatický zdvihnúť okná, keď získajú aktiváciu"
 
-#: mcs-plugin/xfwm4_plugin.c:1647
+#: mcs-plugin/xfwm4_plugin.c:1656
 msgid "Delay before raising focused window :"
 msgstr "Oneskorenie pred zdvihnutím aktivovaného okna :"
 
-#: mcs-plugin/xfwm4_plugin.c:1653
+#: mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
 msgstr "Pomaly"
 
-#: mcs-plugin/xfwm4_plugin.c:1659
+#: mcs-plugin/xfwm4_plugin.c:1668
 msgid "Fast"
 msgstr "Rýchlo"
 
-#: mcs-plugin/xfwm4_plugin.c:1675
+#: mcs-plugin/xfwm4_plugin.c:1684
 msgid "Raise on click"
 msgstr "Kliknutím zdvihnúť"
 
-#: mcs-plugin/xfwm4_plugin.c:1679
+#: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Raise window when clicking inside application window"
 msgstr "Zdvihnúť okno, keď je kliknuté vo vnútry okna aplikácie"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1693
 msgid "Focus"
 msgstr "Fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1694
+#: mcs-plugin/xfwm4_plugin.c:1703
 msgid "Windows snapping"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1702
+#: mcs-plugin/xfwm4_plugin.c:1711
 msgid "Snap windows to screen border"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1707
+#: mcs-plugin/xfwm4_plugin.c:1716
 msgid "Snap windows to other windows"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1717
+#: mcs-plugin/xfwm4_plugin.c:1726
 msgid "Distance :"
 msgstr "Vzdialenosť:"
 
-#: mcs-plugin/xfwm4_plugin.c:1723 mcs-plugin/xfwm4_plugin.c:1773
+#: mcs-plugin/xfwm4_plugin.c:1732 mcs-plugin/xfwm4_plugin.c:1782
 msgid "Small"
 msgstr "Malá"
 
-#: mcs-plugin/xfwm4_plugin.c:1729 mcs-plugin/xfwm4_plugin.c:1779
+#: mcs-plugin/xfwm4_plugin.c:1738 mcs-plugin/xfwm4_plugin.c:1788
 msgid "Wide"
 msgstr "Veľká"
 
-#: mcs-plugin/xfwm4_plugin.c:1744
+#: mcs-plugin/xfwm4_plugin.c:1753
 msgid "Wrap workspaces"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1752
+#: mcs-plugin/xfwm4_plugin.c:1761
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1757
+#: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1767
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1794
+#: mcs-plugin/xfwm4_plugin.c:1803
 msgid "Opaque move and resize"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1802
+#: mcs-plugin/xfwm4_plugin.c:1811
 msgid "Display content of windows when resizing"
 msgstr "Zobraziť obsah v zväčšujúcich sa oknách"
 
-#: mcs-plugin/xfwm4_plugin.c:1807
+#: mcs-plugin/xfwm4_plugin.c:1816
 msgid "Display content of windows when moving"
 msgstr "Zobraziť obsah v presúvaných oknách"
 
-#: mcs-plugin/xfwm4_plugin.c:1812
+#: mcs-plugin/xfwm4_plugin.c:1821
 msgid "Double click action"
 msgstr "Akcia pri dvojkliku"
 
-#: mcs-plugin/xfwm4_plugin.c:1818
+#: mcs-plugin/xfwm4_plugin.c:1827
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Akcia pri dvojkliku na titulku okna :"
 
-#: mcs-plugin/xfwm4_plugin.c:1820
+#: mcs-plugin/xfwm4_plugin.c:1829
 msgid "Advanced"
 msgstr "Pokročilé"
 
@@ -654,67 +654,3 @@ msgstr "Prepnúť na ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Neznáma aplikácia!"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Presunúť okno na plochu 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Presunúť okno na plochu 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Presunúť okno na plochu 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Presunúť okno na plochu 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Presunúť okno na plochu 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Presunúť okno na plochu 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Presunúť okno na plochu 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Presunúť okno na plochu 9"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Plocha 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Plocha 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Plocha 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Plocha 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Plocha 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Plocha 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Plocha 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Plocha 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Plocha 9"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: Operácia nie je podporovaná (zatiaľ)\n"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: Už je spustený iný správca okien"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: Už je spustený iný správca okien"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: Nastala neznáma chyba"
