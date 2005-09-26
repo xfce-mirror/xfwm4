@@ -270,7 +270,7 @@ raise_cb (gpointer data)
     
     if (c)
     {
-        clientRaise (c);
+        clientRaise (c, None);
     }
     return (TRUE);
 }
@@ -428,10 +428,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_RAISE_WINDOW:
-                clientRaise (c);
+                clientRaise (c, None);
                 break;
             case KEY_LOWER_WINDOW:
-                clientLower (c);
+                clientLower (c, None);
                 break;
             case KEY_TOGGLE_FULLSCREEN:
                 clientToggleFullscreen (c);
@@ -466,7 +466,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_10:
             case KEY_MOVE_WORKSPACE_11:
             case KEY_MOVE_WORKSPACE_12:
-                clientRaise (c);
+                clientRaise (c, None);
                 workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
                 break;
             default:
@@ -576,7 +576,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
         if (tclick == XFWM_BUTTON_CLICK)
         {
-            clientLower (c);
+            clientLower (c, None);
         }
         else if (tclick != XFWM_BUTTON_UNDEFINED)
         {
@@ -591,7 +591,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
             {
                 clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
             }
-            clientRaise (c);
+            clientRaise (c, None);
         }
         if ((ev->button == Button1) || (ev->button == Button3))
         {
@@ -618,7 +618,7 @@ button1Action (Client * c, XButtonEvent * ev)
     {
         clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
     }
-    clientRaise (c);
+    clientRaise (c, None);
 
     memcpy(&copy_event, ev, sizeof(XEvent));
     tclick = typeOfClick (screen_info, c->window, &copy_event, TRUE);
@@ -667,7 +667,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     }
     else if (ev->button == Button2)
     {
-        clientLower (c);
+        clientLower (c, None);
     }
     else if (ev->button == Button3)
     {
@@ -694,7 +694,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
             }
             if (screen_info->params->raise_on_click)
             {
-                clientRaise (c);
+                clientRaise (c, None);
             }
             ev->window = ev->root;
             if (screen_info->button_handler_id)
@@ -798,7 +798,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
         else if ((ev->button == Button2) && (state == AltMask) && (screen_info->params->easy_click))
         {
-            clientLower (c);
+            clientLower (c, None);
         }
         else if ((ev->button == Button3) && (state == AltMask) && (screen_info->params->easy_click))
         {
@@ -881,7 +881,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 {
                     /* Clear timeout */
                     clear_timeout ();
-                    clientRaise (c);
+                    clientRaise (c, None);
                 }
                 clientButtonPress (c, win, ev);
             }
@@ -919,7 +919,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     {
                         /* Clear timeout */
                         clear_timeout ();
-                        clientRaise (c);
+                        clientRaise (c, None);
                     }
                     ev->window = ev->root;
                     if (screen_info->button_handler_id)
@@ -981,7 +981,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 {
                     /* Clear timeout */
                     clear_timeout ();
-                    clientRaise (c);
+                    clientRaise (c, None);
                 }
             }
             replay = TRUE;
@@ -1626,7 +1626,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             (screen_info->params->raise_on_click) && 
             (last_raised != NULL) && (c != last_raised))
         {
-            clientRaise (c);
+            clientRaise (c, None);
         }
         if (screen_info->params->raise_on_focus)
         {
@@ -1744,7 +1744,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             if (clientCheckTransientWindow (c, w))
             {
                 c->transient_for = w;
-                clientRaise (c);
+                clientRaise (c, w);
             }
         }
         else if (ev->atom == display_info->atoms[WIN_HINTS])
@@ -1925,7 +1925,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a net_active_window event", c->name, c->window);
             clientSetWorkspace (c, screen_info->current_ws, TRUE);
             clientShow (c, TRUE);
-            clientRaise (c);
+            clientRaise (c, None);
             if (ev->data.l[0] != 0)
             {
                 clientSetFocus (screen_info, c, (Time) ev->data.l[1], NO_FOCUS_FLAG);

@@ -121,7 +121,7 @@ clientFocusTop (ScreenInfo *screen_info, int layer)
     }
 }
 
-void
+gboolean
 clientFocusNew(Client * c)
 {
     ScreenInfo *screen_info = NULL;
@@ -133,7 +133,7 @@ clientFocusNew(Client * c)
     
     if (!clientAcceptFocus (c)|| (c->type & WINDOW_TYPE_DONT_FOCUS))
     {
-        return;
+        return TRUE;
     }
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -155,13 +155,14 @@ clientFocusNew(Client * c)
     }
 
     clientGrabMouseButton (c);
-    if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
+    if ((give_focus) || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
+        give_focus = TRUE;
         if (client_focus)
         {
             if (clientAdjustFullscreenLayer (client_focus, FALSE))
             {
-                clientRaise (c);
+                clientRaise (c, None);
             }
         }
         clientSetFocus (screen_info, c, 
@@ -177,6 +178,8 @@ clientFocusNew(Client * c)
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
     }
+
+    return (give_focus);
 }
 
 gboolean
@@ -310,7 +313,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
                 {
                     new_focus = c2;
                     /* Usability: raise the parent, to grab user's attention */
-                    clientRaise (c2);
+                    clientRaise (c2, None);
                 }
             }
             else
@@ -440,7 +443,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         if (c)
         {
             clientAdjustFullscreenLayer (c2, FALSE);
-            /* clientRaise (c); */
+            /* clientRaise (c, None); */
         }
         frameDraw (c2, FALSE, FALSE);
     }

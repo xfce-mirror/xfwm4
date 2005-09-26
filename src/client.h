@@ -296,8 +296,6 @@ void     clientToggleShowDesktop (ScreenInfo *, gboolean);
 void     clientClose (Client *);
 void     clientKill (Client *);
 void     clientEnterContextMenuState (Client *);
-void     clientRaise (Client *);
-void     clientLower (Client *);
 void     clientSetLayer (Client *, int);
 void     clientSetWorkspace (Client *, int, gboolean);
 void     clientShade (Client *);

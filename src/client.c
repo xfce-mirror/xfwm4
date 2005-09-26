@@ -757,19 +757,26 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
              */
             case Above:
                 TRACE ("Above");
-                clientRaise (c);
+                if (mask & CWSibling)
+                {
+                    clientRaise (c, wc->sibling);
+                }
+                else
+                {
+                    clientRaise (c, None);
+                }
                 break;
             case Below:
-                /* Don't do below if the app specified a sibling
-                 * since, as we don't honor sibling,  the window
-                 * would be sent to bottom which is not what the
-                 * app meant at first....
-                 */
-                if (!(mask & CWSibling))
+                TRACE ("Below");
+                if (mask & CWSibling)
                 {
-                    TRACE ("Below");
-                    clientLower (c);
+                    clientLower (c, wc->sibling);
                 }
+                else
+                {
+                    clientLower (c, None);
+                }
+
                 break;
             case Opposite:
             case TopIf:
@@ -1762,7 +1769,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Notify the compositor about this new window */
     compositorAddWindow (display_info, c->frame, c);
 
-    clientRaise (c);
     grabbed = FALSE;
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
@@ -1772,17 +1778,31 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             clientShow (c, TRUE);
             if (recapture)
             {
+                clientRaise (c, None);
                 clientSortRing(c);
             }
             else
             {
-                clientFocusNew(c);
-                grabbed = TRUE;
+                Client *c2 = clientGetFocus();
+                if (!clientFocusNew(c) && c2)
+                {
+                    clientLower (c, c2->frame);
+                }
+                else
+                {
+                    clientRaise (c, None);
+                    grabbed = TRUE;
+                }
             }
+        }
+        else
+        {
+            clientRaise (c, None);
         }
     }
     else
     {
+        clientRaise (c, None);
         setWMState (display_info, c->window, IconicState);
         clientSetNetState (c);
     }
@@ -2382,7 +2402,7 @@ clientSetLayer (Client * c, int l)
     {
         clientClearLastRaise (c->screen_info);
     }
-    clientRaise (c);
+    clientRaise (c, None);
 }
 
 void
@@ -4067,7 +4087,7 @@ clientCycle (Client * c, XEvent * ev)
         {
             clientAdjustFullscreenLayer (focused, FALSE);
         }
-        clientRaise (passdata.c);
+        clientRaise (passdata.c, None);
     }
 }
 

@@ -261,7 +261,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
 }
 
 void
-clientRaise (Client * c)
+clientRaise (Client * c, Window wsibling)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
@@ -300,8 +300,27 @@ clientRaise (Client * c)
 
         /* Copy the existing window stack temporarily as reference */
         windows_stack_copy = g_list_copy (screen_info->windows_stack);
-        /* Search for the window that will be just on top of the raised window (layers...) */
-        client_sibling = clientGetNextTopMost (screen_info, c->win_layer, c);
+        /* Search for the window that will be just on top of the raised window  */
+        if (wsibling)
+        {
+            c2 = myDisplayGetClientFromWindow (display_info, wsibling, ANY);
+            if (c2)
+            {
+                sibling = g_list_find (screen_info->windows_stack, (gconstpointer) c2);
+                if (sibling)
+                {
+                    index1 = g_list_next (sibling);
+                    if (index1)
+                    {
+                        client_sibling = (Client *) index1->data;
+                    }
+                }
+            }
+        }
+        if (!client_sibling)
+        {
+            client_sibling = clientGetNextTopMost (screen_info, c->win_layer, c);
+        }
         screen_info->windows_stack = g_list_remove (screen_info->windows_stack, (gconstpointer) c);
         if (client_sibling)
         {
@@ -389,7 +408,7 @@ clientRaise (Client * c)
 }
 
 void
-clientLower (Client * c)
+clientLower (Client * c, Window wsibling)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
@@ -409,6 +428,10 @@ clientLower (Client * c)
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         Client *client_sibling = NULL;
+        GList *sibling = NULL;
+        Client *c2 = NULL;
+        GList *index = NULL;
+        gint position;
 
         if (clientIsTransientOrModalForGroup (c))
         {
@@ -417,6 +440,22 @@ clientLower (Client * c)
         else if (clientIsTransient (c))
         {
             client_sibling = clientGetTransient (c);
+        }
+        else if (wsibling)
+        {
+            c2 = myDisplayGetClientFromWindow (display_info, wsibling, ANY);
+            if (c2)
+            {
+                sibling = g_list_find (screen_info->windows_stack, (gconstpointer) c2);
+                if (sibling)
+                {
+                    index = g_list_previous (sibling);
+                    if (index)
+                    {
+                        client_sibling = (Client *) index->data;
+                    }
+                }
+            }
         }
         if (!client_sibling)
         {
@@ -428,8 +467,8 @@ clientLower (Client * c)
             /* Paranoid check to avoid circular linked list */
             if (client_sibling)
             {
-                GList *sibling = g_list_find (screen_info->windows_stack, (gconstpointer) client_sibling);
-                gint position = g_list_position (screen_info->windows_stack, sibling) + 1;
+                sibling = g_list_find (screen_info->windows_stack, (gconstpointer) client_sibling);
+                position = g_list_position (screen_info->windows_stack, sibling) + 1;
 
                 screen_info->windows_stack = g_list_insert (screen_info->windows_stack, c, position);
                 TRACE ("lowest client is \"%s\" (0x%lx) at position %i",
