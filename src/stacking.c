@@ -560,7 +560,6 @@ clientAddToList (Client * c)
 
     clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST], screen_info->windows);
     clientSetNetClientList (screen_info, display_info->atoms[WIN_CLIENT_LIST], screen_info->windows);
-    clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }

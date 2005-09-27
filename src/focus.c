@@ -131,9 +131,9 @@ clientFocusNew(Client * c)
 
     g_return_if_fail (c != NULL);
     
-    if (!clientAcceptFocus (c)|| (c->type & WINDOW_TYPE_DONT_FOCUS))
+    if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
     {
-        return TRUE;
+        return FALSE;
     }
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -165,6 +165,7 @@ clientFocusNew(Client * c)
                 clientRaise (c, None);
             }
         }
+        clientShow (c, TRUE);
         clientSetFocus (screen_info, c, 
 #if 0
                         myDisplayGetCurrentTime (display_info), 
@@ -175,6 +176,19 @@ clientFocusNew(Client * c)
     }
     else
     {
+        Client *c2 = clientGetFocus();
+        if (c2)
+        {
+            clientSortRing(c);
+            clientLower (c, c2->frame);
+            clientSortRing(c2);
+        }
+        else
+        {
+            clientRaise (c, None);
+            clientSortRing(c);
+        }
+        clientShow (c, TRUE);
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
     }
@@ -377,7 +391,7 @@ clientSortRing(Client *c)
 
     TRACE ("Sorting...");
     screen_info = c->screen_info;
-    if (screen_info->client_count > 2 && c != screen_info->clients)
+    if ((screen_info->client_count > 2) && (c != screen_info->clients)) 
     {
         c->prev->next = c->next;
         c->next->prev = c->prev;
