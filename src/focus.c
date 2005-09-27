@@ -160,11 +160,9 @@ clientFocusNew(Client * c)
         give_focus = TRUE;
         if (client_focus)
         {
-            if (clientAdjustFullscreenLayer (client_focus, FALSE))
-            {
-                clientRaise (c, None);
-            }
+            clientAdjustFullscreenLayer (client_focus, FALSE);
         }
+        clientRaise (c, None);
         clientShow (c, TRUE);
         clientSetFocus (screen_info, c, 
 #if 0

@@ -313,6 +313,11 @@ clientRaise (Client * c, Window wsibling)
                     if (index1)
                     {
                         client_sibling = (Client *) index1->data;
+                        /* Do not place window under higher layers though */
+                        if ((client_sibling) && (client_sibling->win_layer < c->win_layer))
+                        {
+                            client_sibling = NULL;
+                        }
                     }
                 }
             }
@@ -453,6 +458,11 @@ clientLower (Client * c, Window wsibling)
                     if (index)
                     {
                         client_sibling = (Client *) index->data;
+                        /* Do not place window above lower layers though */
+                        if ((client_sibling) && (client_sibling->win_layer > c->win_layer))
+                        {
+                            client_sibling = NULL;
+                        }
                     }
                 }
             }
