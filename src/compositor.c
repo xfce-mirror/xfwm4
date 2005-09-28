@@ -770,8 +770,10 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    if (( c && (screen_info->params->show_frame_shadow) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
-         || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped)))
+    if ((c && (screen_info->params->show_frame_shadow))
+         || (!(cw->shaped) 
+             && ((c && (c->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK)))
+                 || (!c && (screen_info->params->show_popup_shadow)))))
     {
         XRectangle sr;
 

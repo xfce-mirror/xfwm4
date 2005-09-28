@@ -1034,6 +1034,9 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                 xfwmWindowHide (&c->buttons[i]);
             }
         }
-        frameSetShape (c, 0, NULL, 0);
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
+        {
+            frameSetShape (c, 0, NULL, 0);
+        }
     }
 }
