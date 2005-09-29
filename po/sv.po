@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.2.2\n"
+"Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-26 12:08+0900\n"
+"POT-Creation-Date: 2005-09-28 12:50+0900\n"
 "PO-Revision-Date: 2005-08-20 17:51+0900\n"
 "Last-Translator: Joakim Andreasson <joakim.andreasson@gmx.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -15,682 +15,685 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins.c:127
+#: ../mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Skrivbordsmarginaler"
 
-#: mcs-plugin/margins.c:137
+#: ../mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Marginaler är områden vid skärmens kanter där inga fönster kommer att "
 "placeras"
 
-#: mcs-plugin/margins.c:168
+#: ../mcs-plugin/margins.c:168
 msgid "Left :"
 msgstr "Vänster:"
 
-#: mcs-plugin/margins.c:188
+#: ../mcs-plugin/margins.c:188
 msgid "Right :"
 msgstr "Höger:"
 
-#: mcs-plugin/margins.c:208
+#: ../mcs-plugin/margins.c:208
 msgid "Top :"
 msgstr "Överst:"
 
-#: mcs-plugin/margins.c:228
+#: ../mcs-plugin/margins.c:228
 msgid "Bottom :"
 msgstr "Underst:"
 
-#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:152
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Skrivbordsmarginaler"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
+#: ../mcs-plugin/plugin.c:135 ../mcs-plugin/plugin.c:166
+#: ../mcs-plugin/workspaces.c:546
 #, fuzzy
 msgid "Workspaces"
 msgstr "Arbetsyta %i"
 
-#: mcs-plugin/plugin.c:173
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:345
+#: ../mcs-plugin/workspaces.c:345
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:408
+#: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:408
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %i"
 
-#: mcs-plugin/workspaces.c:367
+#: ../mcs-plugin/workspaces.c:367
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:455
+#: ../mcs-plugin/workspaces.c:455
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:527
+#: ../mcs-plugin/workspaces.c:527
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Byt arbetsyta"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:558
+#: ../mcs-plugin/workspaces.c:558
 #, fuzzy
 msgid "Workspace names"
 msgstr "Skrivbordsmarginaler"
 
-#: mcs-plugin/xfwm4_plugin.c:76
+#: ../mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
 msgstr "Meny"
 
-#: mcs-plugin/xfwm4_plugin.c:77
+#: ../mcs-plugin/xfwm4_plugin.c:77
 msgid "Stick"
 msgstr "Klistrig"
 
-#: mcs-plugin/xfwm4_plugin.c:78
+#: ../mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
 msgstr "Rulla upp"
 
-#: mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
 msgstr "Göm"
 
-#: mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
 msgstr "Maximera"
 
-#: mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
 msgstr "Stäng"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_plugin.c:86 ../mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Shade window"
 msgstr "Rulla upp fönster"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_plugin.c:87 ../mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Hide window"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window"
 msgstr "Maximera fönster"
 
-#: mcs-plugin/xfwm4_plugin.c:89
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: mcs-plugin/xfwm4_plugin.c:94
+#: ../mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
 msgstr "Vänster"
 
-#: mcs-plugin/xfwm4_plugin.c:95
+#: ../mcs-plugin/xfwm4_plugin.c:95
 msgid "Center"
 msgstr "Mitten"
 
-#: mcs-plugin/xfwm4_plugin.c:96
+#: ../mcs-plugin/xfwm4_plugin.c:96
 msgid "Right"
 msgstr "Höger"
 
-#: mcs-plugin/xfwm4_plugin.c:564
+#: ../mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:569
+#: ../mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:580
+#: ../mcs-plugin/xfwm4_plugin.c:580
 msgid "Title"
 msgstr "Titel"
 
-#: mcs-plugin/xfwm4_plugin.c:581
+#: ../mcs-plugin/xfwm4_plugin.c:581
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:589
+#: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Hidden"
 msgstr "Gömd"
 
-#: mcs-plugin/xfwm4_plugin.c:1346
+#: ../mcs-plugin/xfwm4_plugin.c:1346
 msgid "Font Selection Dialog"
 msgstr "Typsnittsvalsdialog"
 
-#: mcs-plugin/xfwm4_plugin.c:1417 mcs-plugin/xfwm4_plugin.c:1937
+#: ../mcs-plugin/xfwm4_plugin.c:1417 ../mcs-plugin/xfwm4_plugin.c:1937
 msgid "Window Manager"
 msgstr "Fönsterhanterare"
 
-#: mcs-plugin/xfwm4_plugin.c:1430
+#: ../mcs-plugin/xfwm4_plugin.c:1430
 msgid "Window Manager Preferences"
 msgstr "Fönsterhanterarinställningar"
 
-#: mcs-plugin/xfwm4_plugin.c:1459
+#: ../mcs-plugin/xfwm4_plugin.c:1459
 msgid "Title font"
 msgstr "Titeltypsnitt"
 
-#: mcs-plugin/xfwm4_plugin.c:1472
+#: ../mcs-plugin/xfwm4_plugin.c:1472
 msgid "Title Alignment"
 msgstr "Titeljustering"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1478
+#: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Text alignment inside title bar :"
 msgstr "Textjustering inom titelraden:"
 
-#: mcs-plugin/xfwm4_plugin.c:1480
+#: ../mcs-plugin/xfwm4_plugin.c:1480
 msgid "Button layout"
 msgstr "Knapplayout"
 
-#: mcs-plugin/xfwm4_plugin.c:1486
+#: ../mcs-plugin/xfwm4_plugin.c:1486
 #, fuzzy
 msgid "Style"
 msgstr "Titel"
 
-#: mcs-plugin/xfwm4_plugin.c:1524
+#: ../mcs-plugin/xfwm4_plugin.c:1524
 #, fuzzy
 msgid "Window shortcuts"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_plugin.c:1544 mcs-plugin/xfwm4_plugin.c:1577
+#: ../mcs-plugin/xfwm4_plugin.c:1544 ../mcs-plugin/xfwm4_plugin.c:1577
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1549 mcs-plugin/xfwm4_plugin.c:1581
+#: ../mcs-plugin/xfwm4_plugin.c:1549 ../mcs-plugin/xfwm4_plugin.c:1581
 #, fuzzy
 msgid "Shortcut"
 msgstr "Snabbtangent"
 
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1557
 #, fuzzy
 msgid "Command shortcuts"
 msgstr "Snabbtangent"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: ../mcs-plugin/xfwm4_plugin.c:1596
 #, fuzzy
 msgid "Keyboard"
 msgstr "Snabbtangent"
 
-#: mcs-plugin/xfwm4_plugin.c:1607
+#: ../mcs-plugin/xfwm4_plugin.c:1607
 msgid "Focus model"
 msgstr "Fokusmodell"
 
-#: mcs-plugin/xfwm4_plugin.c:1615
+#: ../mcs-plugin/xfwm4_plugin.c:1615
 msgid "Click to focus"
 msgstr "Klicka för att fokusera"
 
-#: mcs-plugin/xfwm4_plugin.c:1622
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Focus follows mouse"
 msgstr "Fokus följer musen"
 
-#: mcs-plugin/xfwm4_plugin.c:1629
+#: ../mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_plugin.c:1633
+#: ../mcs-plugin/xfwm4_plugin.c:1633
 #, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 "Ge fokus till nya fönster\n"
 "automatiskt"
 
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: ../mcs-plugin/xfwm4_plugin.c:1638
 msgid "Raise on focus"
 msgstr "Höj vid vokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1646
+#: ../mcs-plugin/xfwm4_plugin.c:1646
 #, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Höj fönster automatiskt \n"
 "när de får fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1656
+#: ../mcs-plugin/xfwm4_plugin.c:1656
 msgid "Delay before raising focused window :"
 msgstr "Fördröjning innan fokuserat fönster höjs:"
 
-#: mcs-plugin/xfwm4_plugin.c:1662
+#: ../mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
 msgstr "Långsamt"
 
-#: mcs-plugin/xfwm4_plugin.c:1668
+#: ../mcs-plugin/xfwm4_plugin.c:1668
 msgid "Fast"
 msgstr "Snabbt"
 
-#: mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/xfwm4_plugin.c:1684
 msgid "Raise on click"
 msgstr "Höj vid klick"
 
-#: mcs-plugin/xfwm4_plugin.c:1688
+#: ../mcs-plugin/xfwm4_plugin.c:1688
 #, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "Höj fönsteret vid klick inom \n"
 "applikationsfönstret"
 
-#: mcs-plugin/xfwm4_plugin.c:1693
+#: ../mcs-plugin/xfwm4_plugin.c:1693
 #, fuzzy
 msgid "Focus"
 msgstr "Fokusmodell"
 
-#: mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1703
 msgid "Windows snapping"
 msgstr "Fönsterattraktion"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: ../mcs-plugin/xfwm4_plugin.c:1711
 msgid "Snap windows to screen border"
 msgstr "Fönster attraheras till skärmkant"
 
-#: mcs-plugin/xfwm4_plugin.c:1716
+#: ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Snap windows to other windows"
 msgstr "Fönster attraheras till andra fönster"
 
-#: mcs-plugin/xfwm4_plugin.c:1726
+#: ../mcs-plugin/xfwm4_plugin.c:1726
 msgid "Distance :"
 msgstr "Avstånd:"
 
-#: mcs-plugin/xfwm4_plugin.c:1732 mcs-plugin/xfwm4_plugin.c:1782
+#: ../mcs-plugin/xfwm4_plugin.c:1732 ../mcs-plugin/xfwm4_plugin.c:1782
 msgid "Small"
 msgstr "Litet"
 
-#: mcs-plugin/xfwm4_plugin.c:1738 mcs-plugin/xfwm4_plugin.c:1788
+#: ../mcs-plugin/xfwm4_plugin.c:1738 ../mcs-plugin/xfwm4_plugin.c:1788
 msgid "Wide"
 msgstr "Brett"
 
-#: mcs-plugin/xfwm4_plugin.c:1753
+#: ../mcs-plugin/xfwm4_plugin.c:1753
 msgid "Wrap workspaces"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1761
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Byt arbetsyta när muspekaren når skärmens kant"
 
-#: mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Byt arbetsyta när fönster dras från skärmen"
 
-#: mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr "Kantmotstånd:"
 
-#: mcs-plugin/xfwm4_plugin.c:1803
+#: ../mcs-plugin/xfwm4_plugin.c:1803
 msgid "Opaque move and resize"
 msgstr "Ogenomskinlig flyttning och storleksändring"
 
-#: mcs-plugin/xfwm4_plugin.c:1811
+#: ../mcs-plugin/xfwm4_plugin.c:1811
 msgid "Display content of windows when resizing"
 msgstr "Visa fönsterinnehåll vid flyttning"
 
-#: mcs-plugin/xfwm4_plugin.c:1816
+#: ../mcs-plugin/xfwm4_plugin.c:1816
 msgid "Display content of windows when moving"
 msgstr "Visa fönsterinnehåll vid flyttning"
 
-#: mcs-plugin/xfwm4_plugin.c:1821
+#: ../mcs-plugin/xfwm4_plugin.c:1821
 msgid "Double click action"
 msgstr "Dubbelklicksåtgärd"
 
-#: mcs-plugin/xfwm4_plugin.c:1827
+#: ../mcs-plugin/xfwm4_plugin.c:1827
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Åtgärd vid dubbelklick på titelraden:"
 
-#: mcs-plugin/xfwm4_plugin.c:1829
+#: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Advanced"
 msgstr "Avancerat"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:55
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:126
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:136
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:136
 msgid "Enter a name for the theme:"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:159
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:159
 msgid "A keybinding theme with the same name already exists"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:165
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:165
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Close window"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "Maximera fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "Maximera fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Stick window"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Move window up"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Move window down"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Move window left"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Move window right"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Resize window up"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Resize window down"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Resize window left"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Resize window right"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Raise window"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Lower window"
 msgstr "Göm fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Left workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Right workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Next workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Previous workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Add workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Delete workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "Byt arbetsyta"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:319
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:319
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:319
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:320
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:429
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:429
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Nytt fönster"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:572
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:591
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:667
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:667
 msgid "Select command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:813
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:813
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:876
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:876
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Snabbtangent"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:879
-#: mcs-plugin/xfwm4_shortcuteditor.c:1107
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:879
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:1107
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Snabbtangent"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:881
-#: mcs-plugin/xfwm4_shortcuteditor.c:1109
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:881
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:1109
 #, fuzzy
 msgid "No shortcut"
 msgstr "Snabbtangent"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:1003
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:1003
 msgid "Choose command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1005
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:1005
 #, fuzzy
 msgid "Command :"
 msgstr "Snabbtangent"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1041
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:1041
 msgid "The command doesn't exist or the file is not executable !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:1104
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:1104
 msgid "Compose shortcut for command :"
 msgstr ""
 
-#: src/main.c:181
+#: ../src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmenteringsfel"
 
-#: src/menu.c:39
+#: ../src/menu.c:39
 msgid "Ma_ximize"
 msgstr "Ma_ximera"
 
-#: src/menu.c:40
+#: ../src/menu.c:40
 msgid "Un_maximize"
 msgstr "Av_maximera"
 
-#: src/menu.c:41
+#: ../src/menu.c:41
 msgid "_Hide"
 msgstr "_Göm"
 
-#: src/menu.c:42
+#: ../src/menu.c:42
 msgid "Hide _all others"
 msgstr "Göm _alla andra"
 
-#: src/menu.c:43
+#: ../src/menu.c:43
 msgid "S_how"
 msgstr "V_isa"
 
-#: src/menu.c:44
+#: ../src/menu.c:44
 msgid "_Shade"
 msgstr "_Rulla upp"
 
-#: src/menu.c:45
+#: ../src/menu.c:45
 msgid "Un_shade"
 msgstr "_Rulla ner"
 
-#: src/menu.c:46
+#: ../src/menu.c:46
 msgid "S_tick"
 msgstr "K_listrigt"
 
-#: src/menu.c:47
+#: ../src/menu.c:47
 msgid "Uns_tick"
 msgstr "O_klistrigt"
 
-#: src/menu.c:48
+#: ../src/menu.c:48
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:49 src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:51
+#: ../src/menu.c:51
 msgid "Send to..."
 msgstr "Skicka till..."
 
-#: src/menu.c:53
+#: ../src/menu.c:53
 msgid "_Close"
 msgstr "S_täng"
 
-#: src/menu.c:56
+#: ../src/menu.c:56
 msgid "Destroy"
 msgstr "Förstör"
 
-#: src/menu.c:59
+#: ../src/menu.c:59
 msgid "_Quit"
 msgstr "A_vsluta"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "Restart"
 msgstr "Starta om"
 
-#: src/menu.c:169
+#: ../src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Arbetsyta %i"
 
-#: src/menu.c:181
+#: ../src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Arbetsyta %i"
 
-#: src/menu.c:416
+#: ../src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu misslyckades attfånga pekaren\n"
 
-#: src/settings.c:722
+#: ../src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Kan inte allokera aktiv färg %s\n"
 
-#: src/settings.c:728
+#: ../src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Kan ej avläsa aktiv färg %s\n"
 
-#: src/settings.c:771
+#: ../src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Kan inte allokera inaktiv färg %s\n"
 
-#: src/settings.c:777
+#: ../src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Kan ej avläsa inaktiv färg %s\n"
 
-#: src/tabwin.c:70
+#: ../src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Byt till.."
 
-#: src/tabwin.c:129
+#: ../src/tabwin.c:129
 msgid "Unknown application!"
 msgstr ""
