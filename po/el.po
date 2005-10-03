@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_GR1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-30 20:53+0200\n"
+"POT-Creation-Date: 2005-10-03 21:49+0200\n"
 "PO-Revision-Date: 2005-08-13 13:21+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Ελληνικά\n"
@@ -597,22 +597,22 @@ msgstr "Χώρος εργασίας %i "
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να αρπάξει τον δείκτη\n"
 
-#: src/settings.c:849
+#: src/settings.c:859
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Αδύνατος ο προσδιορισμός του ενεργού χρώματος %s\n"
 
-#: src/settings.c:855
+#: src/settings.c:865
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του ενεργού χρώματος %s\n"
 
-#: src/settings.c:898
+#: src/settings.c:908
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Αδύνατος ο προσδιορισμός του ανενεργού χρώματος %s\n"
 
-#: src/settings.c:904
+#: src/settings.c:914
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του ανενεργού χρώματος %s\n"

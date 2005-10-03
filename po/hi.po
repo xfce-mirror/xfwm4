@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.hi.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-30 20:53+0200\n"
+"POT-Creation-Date: 2005-10-03 21:49+0200\n"
 "PO-Revision-Date: 2003-11-01 18:18+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -643,22 +643,22 @@ msgstr "कार्यस्थान %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: जीटीके मेन्यू पाइन्टर पकड़ने में  असफल\n"
 
-#: src/settings.c:849
+#: src/settings.c:859
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: सक्रिय रंग निर्धारित नहीं कर सकता %s\n"
 
-#: src/settings.c:855
+#: src/settings.c:865
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s:  सक्रिय रंग पारसे नहीं कर सकता  %s\n"
 
-#: src/settings.c:898
+#: src/settings.c:908
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s:  अक्रिय रंग निर्धारित नहीं कर सकता %s\n"
 
-#: src/settings.c:904
+#: src/settings.c:914
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: अक्रिय रंग पारसे नहीं कर सकता %s\n"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-30 20:53+0200\n"
+"POT-Creation-Date: 2005-10-03 21:49+0200\n"
 "PO-Revision-Date: 2005-07-21 00:26+0200\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: \n"
@@ -599,22 +599,22 @@ msgstr "Laborspaco %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu malsukcesis kapti la muskursoron\n"
 
-#: src/settings.c:849
+#: src/settings.c:859
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Malsukcesis disponigi aktivan koloron %s\n"
 
-#: src/settings.c:855
+#: src/settings.c:865
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Malsukcesis legi aktivan koloron %s\n"
 
-#: src/settings.c:898
+#: src/settings.c:908
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Malsukcesis disponigi neaktivan koloron %s\n"
 
-#: src/settings.c:904
+#: src/settings.c:914
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Malsukcesis legi neaktivan koloron %s\n"
