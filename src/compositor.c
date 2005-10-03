@@ -1429,11 +1429,12 @@ unmap_win (CWindow *cw)
 }
 
 static void
-add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
+add_win (DisplayInfo *display_info, Window id, Client *c)
 {
     ScreenInfo *screen_info = NULL;
     CWindow *new;
-
+    guint opacity = (guint) NET_WM_OPAQUE;
+	
     TRACE ("entering add_win: 0x%lx", id);
 
     new = g_new0 (CWindow, 1);
@@ -1450,6 +1451,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
     if (c)
     {
         screen_info = c->screen_info;
+        opacity = c->opacity;
     }
     else
     {
@@ -1476,6 +1478,8 @@ add_win (DisplayInfo *display_info, Window id, Client *c, guint opacity)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
         XSelectInput (display_info->dpy, id, new->attr.your_event_mask | PropertyChangeMask | StructureNotifyMask);
+        /* Set opacity for override redirects (aka popup windows) */
+        opacity = (double) (screen_info->params->popup_opacity / 100.0) * NET_WM_OPAQUE;
     }
 
     /* Listen for XShape events if applicable */
@@ -2093,10 +2097,7 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     }
     else
     {
-        guint opacity;
-
-        opacity = ((c != NULL) ? c->opacity : NET_WM_OPAQUE);
-        add_win (display_info, id, c, opacity);
+        add_win (display_info, id, c);
     }
 #endif /* HAVE_COMPOSITOR */
 }

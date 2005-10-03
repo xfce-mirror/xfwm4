@@ -597,6 +597,22 @@ myDisplayUpdateCurentTime (DisplayInfo *display, XEvent *ev)
     return display->current_time;
 }
 
+ScreenInfo *
+myDisplayGetDefaultScreen (DisplayInfo *display)
+{
+    GSList *index;
+    ScreenInfo *screen = NULL;
+
+    g_return_val_if_fail (display != NULL, NULL);
+
+    index = display->screens;
+    if (index)
+    {
+        screen = (ScreenInfo *) index->data;
+    }
+    return screen;
+}
+
 Time 
 myDisplayGetCurrentTime (DisplayInfo *display)
 {

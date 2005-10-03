@@ -367,6 +367,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->resize_opacity = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/PopupOpacity"))
+                    {
+                        screen_info->params->popup_opacity = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/PlacementRatio"))
                     {
                         screen_info->params->placement_ratio = setting->data.v_int;
@@ -693,6 +697,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("resize_opacity", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PopupOpacity", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("popup_opacity", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowFrameShadow", CHANNEL5,
@@ -1222,6 +1232,7 @@ loadSettings (ScreenInfo *screen_info)
         {"margin_top", NULL, FALSE},
         {"move_opacity", NULL, TRUE},
         {"resize_opacity", NULL, TRUE},
+        {"popup_opacity", NULL, TRUE},
         {"placement_ratio", NULL, TRUE},
         {"prevent_focus_stealing", NULL, TRUE},
         {"raise_delay", NULL, TRUE},
@@ -1382,6 +1393,8 @@ loadSettings (ScreenInfo *screen_info)
         abs (TOINT (getValue ("move_opacity", rc)));
     screen_info->params->resize_opacity = 
         abs (TOINT (getValue ("resize_opacity", rc)));
+    screen_info->params->popup_opacity = 
+        abs (TOINT (getValue ("popup_opacity", rc)));
     screen_info->params->placement_ratio = 
         abs (TOINT (getValue ("placement_ratio", rc)));
     screen_info->params->show_frame_shadow = 

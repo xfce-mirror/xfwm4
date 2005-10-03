@@ -162,6 +162,7 @@ struct _XfwmParams
     int double_click_action;
     int move_opacity;
     int placement_ratio;
+    int popup_opacity;
     int raise_delay;
     int resize_opacity;
     int restore_on_move;
