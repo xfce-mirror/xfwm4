@@ -255,6 +255,7 @@ ScreenInfo *  myDisplayGetScreenFromWindow  (DisplayInfo *,
                                              Window w);
 ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *, 
                                              Window);
+ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
 Time          myDisplayUpdateCurentTime     (DisplayInfo *, 
                                              XEvent *);
 Time          myDisplayGetCurrentTime       (DisplayInfo *);
