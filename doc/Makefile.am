@@ -1,6 +1,7 @@
-SUBDIRS = \
-	C \
-	fr
+SUBDIRS =	\
+	C	\
+	fr	\
+	he
 
 noinst_DATA = \
 	xfce-nochunk.xsl

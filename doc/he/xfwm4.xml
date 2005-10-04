@@ -1,0 +1,864 @@
+<?xml version='1.0'?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY date "Jan 2005"> 
+  <!ENTITY appversion "4.2.0"> 
+  <!ENTITY app "<application>xfwm4</application>">
+]>
+
+<article id="xfwm4" lang="he">
+
+<!-- Header --> 
+<articleinfo>
+
+  <title>מנהל החלונות של Xfce 4</title>
+  
+  <copyright>
+    <year>2004</year> <holder>François Le Clainche</holder>
+  </copyright>
+
+  <copyright>
+    <year>2004</year> <holder>Jasper Huijsmans</holder>
+  </copyright>
+
+<!-- translators: uncomment this: -->
+
+  <copyright>
+   <year>2005</year> <holder>Dotan Kamber (Hebrew
+   translation)</holder>
+  </copyright>
+
+<!-- I don't know about this
+  <legalnotice id="legalnotice">
+    <para>
+      This document is provided under the terms of the GNU GPL, version
+      2 or (at your option) any later version.
+    </para>
+  </legalnotice>
+-->
+  <authorgroup>
+
+    <author>
+      <firstname>François</firstname> <surname>Le Clainche</surname>
+      <affiliation>
+	<address><email>fleclainche@wanadoo.fr</email></address>
+      </affiliation>
+    </author>
+
+<!-- This is appropriate place for other contributors: translators,
+maintainers, etc. Commented out by default. -->
+
+    <othercredit role="translator">
+      <firstname>Dotan</firstname> <surname>Kamber</surname>
+      <affiliation>
+	<orgname></orgname>
+	<address><email>kamberd@yahoo.com</email> </address>
+      </affiliation> <contrib>Hebrew translation</contrib>
+    </othercredit>
+
+  </authorgroup>
+
+  <!--
+  <revhistory>
+    <revision>
+      <revnumber>0.1</revnumber> 
+      <date>May 2003</date>
+      <authorinitials>ma</authorinitials>
+    </revision>
+  </revhistory>
+  -->
+
+   <releaseinfo>מדריך זה מתאר את &app; גרסה &appversion;
+  </releaseinfo>
+</articleinfo>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-intro">
+  <title>מבוא</title>
+
+  <para>מנהל החלונות של Xfce 4 הוא חלק <ulink 
+      url="http://www.xfce.org" type="html">סביבת שולחן העבודה של Xfce</ulink>.
+    הפקודה שיש להריץ למעשה היא &app;. להרצת מנהל החלונות ברקע יש להשתמש ב- 
+    <command>&app; --daemon</command>. להרצת מנהל החלונות ברקע יש להשתמש ב-
+  </para>
+
+  <para>&app; נצמד באדיקות לתקנים שהוגדרו על ידי
+    <ulink url="http://www.freedesktop.org"
+      type="html">freedesktop.org</ulink>.כתוצאה מכך אפשרויות מיוחדות כמו האפשרות ליצור חלון ללא גבולות או מתן סמל ליישום חייבות להיות מוטמעות בישום כעת. לא ניתן עוד להשתמש במנהל החלונות לכפית התנהגות שונה. אחת האפשרויות הטובות ביותר של &app; היא יכולתו ללבוש ערכות נושא. מאפיינים של עיטורי החלונות (גבולות, סרגל הכותרת וכפתורי החלון) ניתנים לקביעה ממנהל ערכות הנושא לחלונות.
+  </para>
+
+  <para>&app; מציע תמיכה בריבוי מסכים הן עבור xinerama והן עבור מצבים אמיתיים של ריבוי מסכים. תמיכה זו מועילה במקרים בהם יש יותר ממסך אחד מחובר למחשבך.
+  </para>
+
+  <para>את &app; ניתן להריץ כתוכנית בפני עצמה אך שימוש בו באופן זה מצריך שימוש גם ב-<ulink url="xfce-mcs-manager.html" type="http">מנהל ההגדרות</ulink> אם ברצונך בניהול הגדרות מנשק המשתמש הגרפי. על מטלות פרט לניהול החלונות, כמו הגדרת תמונת הרקע או שיגור תוכניות, להיות מבוצעות בעזרת תוכניות שונות.
+  </para>
+  
+  <para>&app; כולל מנהל הרכבים משל עצמו המנצל את הרחבות <ulink url="http://freedesktop.org/Software/xorg" type="html">X.org</ulink>החדשות. המרכיב הוא כמו מנהל חלונות בעצמו, הוא מנהל אסופה של כלל החלונות, מפקח על כל האירועים ברמת ה- X ומגיב בהתאם. הטמעת מנהל ההרכבים במנהל החלונות מסייעת גם בשמירה תיאום בין אפקטים ויזואלים שונים לאירועים הקשורים לחלונות. אם ברצונך להשתמש במרכיב עליך לבנות את &app; אפשרות האפיון –enable-compositor. בכל מקרה ניתן לבטל את המרכיב בעלית &app; בעזרת הארגומנט '--compositor=off'.
+  </para>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-using">
+  <title>שימוש ב- &app;</title>
+
+  <sect2 id="wm-windows">
+    <title>ניהול חלונות</title>
+  
+    <para>מנהל החלונות מספק גבולות, סרגל כותרת וכפתורי חלון לחלונות הישומים. המראה מוגדר על ידי ערכת הנושא של מנהל החלונות.</para>
+    
+    <para>בברירת המחדל של ערכת הנושא &app; מציג שישה כפתורים וכותרת על חלונות ישום רגילים. ששת הכפתורים מבצעים פעולות בסיסיות אלו:</para>
+    
+
+    <figure id="titlebar-fig">
+      <title>כפתורי סרגל הכותרת של &app;</title>
+
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/titlebar.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>כפתורי סרגל הכותרת של &app; </phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+	<para>ניתן לתוח את תפריט החלון בעזרת לחיצה שמאלית על כפתור התפריט בסרגל הכותרת או בעזרת לחיצה ימנית על אזור כותרת החלון עצמה.
+	</para>
+	<para>אם הנך עושה שימוש ב- <application>xftaskbar4</application>, ביכולתך לפתוח תפריט פעולות בעזרת לחיצה ימנית על אחת הרשומות בסרגל המשימשות; אלו כוללות מספר פריטים מבין אלו המופיעות בתפריט החלון.
+	</para>
+
+      <para>&nbsp;</para>
+
+    <variablelist>
+
+      <varlistentry>
+	<term>מתן מיקוד לחלון</term>
+	<listitem>
+	  <para>עליך לתת מיקוד לחלון אם ברצונך שהוא יקבל קלט מהמקלדת ומהעכבר. צבעי עיטורי החלון ישתנו בעקבות קבלת המיקוד. כדי לקבל מידע נוסף אודות אפשרויות מיקוד יש לפנות מטה אל <ulink url="#focus">הסעיף המתאים</ulink>.
+	  </para>
+	  <para>קיצור מקלדת מאפשר להחליף את המיקוד בין חלון אחד למשנהו: יש להחזיק את מקש ה- Alt וללחוץ על מקש ה- Tab להעברת המיקוד בין החלונות השונים. שימוש בשיטה זו מפעיל קופצן המציג את שם היישום, את סמלו ואת כותרת החלון. בנסוף לאמור &app; ידגיש את גבולותיו החיצוניים שך חלון שיקבל מיקוד.
+	  </para>
+
+<!--	  <para>
+	    If you want the panel, and apps that do not appear in the taskbar, 
+	    to be included when you switch the focus using the Alt+Tab 
+	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) 
+	    and add this line : cycle_minimum=false</para>
+	  
+	  <para>
+	    To exclude hidden windows from the list presented when using
+		Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create a new one) and
+		add this line : cycle_hidden=false
+	  </para>
+-->
+
+	  <para>לתשומת ליבך: השימוש בקיצור מקלדת בתוך ישום מחייב כי חלון הישום יהיה בעל המיקוד באותו רגע :).
+	  </para>
+
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>הגדלת / שחזור חלונות</term>
+	<listitem>
+	<para>אם הרחבת חלון הוא יתפשט על הצג שלך וישתמש בכל המקום הזמין (כפי שזה הוגדר על ידי <ulink
+	    url="xfdesktop.html#xfdesktop-workspace" type="http">הגדרות משטח העבודה</ulink>). יתר על כן, ניתן להגדיל חלון רק בציר אופקי או אנכי.
+	</para>
+	<para>להרחבת חלון יש לבצע אחת מהפעולות הבאות:</para>
+	<itemizedlist>
+	  <listitem>ללחוץ על כפתור הגדלת החלון בסרגל הכותרת</listitem>
+	  <listitem>לפתוח את תפריט החלון מסרגל הכותרת ולבחור ב-“הגדל”</listitem>
+	  <listitem>להשתמש בקיצור במקלדת Alt + F5</listitem>
+	</itemizedlist>
+	
+	<para>ניתן לגרום לכל חלון להופיע במצב של מסך-מלא (במצב זה הוא יעשה שימוש בכל שטח הצג ללא הצגת גבולותיו) על יד שימוש בקיצור המקלדת Alt + F11 שניתן להתאמה אישית.
+	</para>
+	
+	<para>להגדלת חלון אנכית:</para>
+	<itemizedlist>
+	<listitem>לחיצת עכבר אמצעית על כפתור הגדלת החלון בסרגל הכותרת</listitem>
+	<listitem>שימוש בקיצור המקלדת Alt + F6</listitem>
+	</itemizedlist>
+	<para>להגדלת חלון אופקית:</para>
+	<itemizedlist>
+	<listitem>לחיצת עכבר ימנית על כפתור הגדלת החלון בסרגל הכותרת</listitem>
+	<listitem>שימוש בקיצור המקלדת Alt + F7</listitem>
+	</itemizedlist>
+	<para>כאשר חלון הוגדל בצורה כלשהי ניתן להשיבו לגודלו הקודם על ידי אחת מהפעולות הבאות:</para>
+	<itemizedlist>
+	<listitem>לחיצה על כפתור הגדלת החלון בסרגל הכותרת</listitem>
+	<listitem>שימוש בקיצור המקשים שהביא למצב הנוכחי פעם נוספת</listitem>
+	<listitem>בחירה ב-“שחזר” מתפריט החלון.</listitem>
+	</itemizedlist>	
+	
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>שינוי גודל חלונות
+
+</term>
+      <listitem>
+	<para>אף על פי שמספר חלונות מיוחדים אינם ניתנים לשינוי מבחינת גודלם יבכולתך לשנות את גודלם של מרבית החלונות כך שיתאימו לצרכיך.
+</para>
+	<itemizedlist>
+	<listitem>ניתן להשתמש בקצוות ובפינותיו של חלון לשינוי גודלו על ידי גרירתם בעזרת העכבר.</listitem>
+	<listitem>ניתן להשתמש בקיצור alt + לחיצת עכבר ימנית בעוד מצביע העכבר נמצא במיקום כשלהו בגבולות מסגרת החלון; הוא יפעל כאילו נגררת הפינה הימנית התחתונה של החלון.</listitem>
+	<listitem>ניתן להשתמש בקיצורי מקלדת כמו- Shift + Alt + חץ (מעלה, מטה, ימינה או שמאלה).</listitem>
+	</itemizedlist>
+
+<!--
+		<para>If you want to disable the ability to move and resize windows 
+		using the Alt button + mouse click shortcut, edit your 
+		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
+		easy_click=false</para>
+-->
+
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>מיזעור / שיחזור חלונות</term>
+      <listitem>
+	<para>ניתן להסתיר חלון בעזרת אחת מהפעולות הבאות:</para>
+	<itemizedlist>
+	<listitem>לחיצה על כפתור ה-“מזער” בסרגל הכותרת</listitem>
+	<listitem>פתיחת תפריט החלון מסרגל הכותרת ובחירה ב-“מזער”</listitem>
+	<listitem>שימוש בקיצור המקלדת Alt + F8 </listitem>
+	</itemizedlist>
+	<para>לחילופין ניתן למזער את כל החלונות במשטח העבודה הנוכחי, פרט לזה בו משתמשים באותו רגע, על ידי פעולה בודדת: פתיחת תפריט החלון מסרגל הכותרת ובחירה ב-“מזער את כל האחרים”.</para>
+	<para>כדי לשחזר את החלון יהיה עליך לבחור בשמו או בסמל שלו באחד מרכיבי Xfce 4 הבאים:</para>
+	<itemizedlist>
+	<listitem><application>xftaskbar4</application></listitem>
+	<listitem>רשימת החלונות, נגישה על ידי לחיצת עכבר אמצעית על רקע שולחן העבודה. רשימה זומציגה את כל החלונות הפתוחים, מחולקים לפי משטחי עבודה. חלונות ממוזערים מסומנים בתוך [ ].</listitem>
+	<listitem><application>xfce4-iconbox</application></listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>גלילת / שחזור חלונות</term>
+      <listitem>
+	<para>גלילת חלון גורמת לו להתכווץ לגודלו של סרגל הכותרת. חזרה על אחת הפעולות הבאות תגרום להגלילת ושיחזור גודלו המקורי של חלון:
+	  :</para>
+	<itemizedlist>
+	<listitem>לחיצה על כפתור גלילת החלון בסרגל הכותרת</listitem>
+	<listitem>בחירה ב-“גלול” או “בטל גלילה” מתפריט החלון שמסרגל הכותרת</listitem>
+	<listitem>שימוש בגלגלת העכבר בעוד המצביע נמצא על שורת הכותרת</listitem>
+	<listitem>שימוש בקיצור המקלדת Alt + F9</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>הדבקת / ביטול דביקות חלונות</term>
+      <listitem>
+	<para>חלון “דביק” יופיע באותו מקום בכל משטחי העבודה שלך. חזרה על אחת מהפעולות הבאות תגרום לחלון להיות דביק או לבטל את דביקותו:
+	</para>
+	<itemizedlist>
+	  <listitem>לחיצה על כפתור ה-“דביק” בסרגל הכותרת</listitem>
+	  <listitem>פתיחת תפריט החלון מסרגל הכותרת ובחירה ב-“דביק” או “בטל דביקות”</listitem>
+	  <listitem>שימוש בקיצור המקלדת alt + F10</listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>העלאת / הורדת חלונות</term>
+      <listitem>
+         <para>פעולת “העלאת חלון” גורמת להופעת מסגרת חלון מעל כל יתר המסגרות. להעלאת חלון יש לבצע את אחת הפעולות הבאות:
+         </para>
+	<itemizedlist>
+	<listitem>לחיצת עכבר שמאלית על סרגל הכותרת שלו</listitem>
+	<listitem>מתן מיקוד לחלון, בתנאי שהאפשרות התואמת נבחרה בתיבת הדו-שיח <ulink
+      url="xfwm4.html#wm-focus" type="http">התמקדות</ulink></listitem>
+	<listitem>לחיצת עכבר שמאלית בכל מקום בתוך מסגרתו של חלון, בתנאי שהאפשרות המתאימה נבחרה בתיבת הדו-שיח <ulink
+      url="xfwm4.html#wm-focus" type="http">התמקדות</ulink></listitem>
+	<listitem>לחיצה על תגית החלון בסרגל המשימות או בתיבת הסמלים</listitem>
+        <listitem>שימוש בקיצור המקלדת Shift + Alt + Page_up (אם החלון כבר קיבל את המיקוד)</listitem>
+	</itemizedlist>
+	
+	<para>ניתן לגרום למסגרת חלון להשאר תמיד מעל כל חלון אחר על ידי פתיחת תפריט החלון ובחירה ב-“תמיד עליון”.
+	</para>
+	
+        <para>פעולת “הורדת חלון” שולחת מסגרת חלון אל מתחת ליתר כל החלונות הפתוחים. להורדת חלון יש לבצע אחת מהפעולות הבאות:
+	</para>
+	<itemizedlist>
+	<listitem>לחיצת עכבר אמצעית בסרגל הכותרת שלו</listitem>
+        <listitem>שימוש בקיצור המקלדת Shift + Alt + Page_Down (אם החלון כבר קיבל את המיקוד)</listitem>
+	</itemizedlist>
+	
+	<para>&nbsp;</para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>הזזת חלונות</term>
+      <listitem>
+	<para>קיימות מספר דרכים להזיז חלונות:</para>
+	<itemizedlist>
+	  <listitem>לחיצת עכבר שמאלית או ימנית בסרגל הכותרת של חלון וגרירתו</listitem>
+	  <listitem>Alt + לחיצת עכבר שמאלית בזמן שהמצביע נמצא במקום כלשהו במסגרת החלון והזזת העכבר</listitem>
+	  <listitem>קיצור המקלדת Ctrl + Alt + Shift + חץ (מעלה, מטה, ימינה או שמאלה)</listitem>
+	</itemizedlist>
+	
+<!--
+
+		<para>If you want to disable the ability to move and resize windows 
+		using the Alt button + mouse click shortcut, edit your 
+		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
+		easy_click=false</para>
+-->
+	
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>הזזת חלון למשטח עבודה אחר</term>
+      <listitem>
+	<para>ניתן לשלוח חלון למשטח עבודה אחר על ידי אחת מהפעולות הבאות:</para>
+	<itemizedlist>
+	  <listitem>הדבקת החלון, מעבר למשטח עבודה אחר והסרת ההדבקה</listitem>
+	<listitem>שימוש בתפריט החלון ובחירה באחד מהפריטים בתת-התפריט “שלח אל…”</listitem>
+	<listitem>לחיצת עכבר ימנית או שמאלית בסרגל הכותרת, גרירתו לקצה המסך והמצביע יעבור למשטח העבודה הבא כשסרגל הכותרת של החלון עדיין אחוז בו. על האפשרויות התואמות להבחר ב<ulink url="xfwm4.html#wm_misc" type="http">הגדרות מנהל החלונות</ulink>.</listitem>
+	<listitem>שימוש בקיצורי המקלדת:
+	  <itemizedlist>
+	    <listitem>Alt + Ctrl + End יעביר את החלון למשטח העבודה הבא</listitem>
+	    <listitem>Alt + Ctrl + Home יעביר את החלון למשטח העבודה הקודם</listitem>
+	    <listitem>Alt + Ctrl + מספר יעביר את החלון למשטח העבודה התואם</listitem>
+	  </itemizedlist>
+	</listitem>
+	<listitem>לחיצה על סמל החלון ב<ulink url="xfce4-panel.html#switcher-item"
+	    type="http">מחליף סביבות העבודה הגרפי </ulink> וגרירתו למשטח העבודה הרצוי
+	</listitem>
+      </itemizedlist>
+      <para>&nbsp;</para>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>סגירת חלון</term>
+    <listitem>
+      <para>לסגירת חלון:</para>
+	<itemizedlist>
+	<listitem>יש ללחוץ על כפתור סגירת החלון בסרגל הכותרת</listitem>
+	<listitem>פתיחת תפריט החלון מסרגל הכותרת ובחירה ב-“סגור”</listitem>
+	<listitem>שימוש בקיצור המקלדת Alt + F4</listitem>
+	</itemizedlist>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="wm-settings">
+  <title>התאמת &app;</title>
+
+  <para>כדי לפתוח את תיבת הדו-שיח של העדפות מנהל החלונות יש ללחוץ על הכפתור נושא הכיתוב “מנהל חלונות” ב<ulink
+      url="xfce-mcs-manager.html#manager-dialog" type="http">מנהל ההגדרות של Xfce 4</ulink>. תיבת הדו-שיח מציגה ארבע כרטיסיות: סגנון, מקלדת, התמקדות ו-מתקדם. כל שינוי יבוטא באופן מיידי בהתנהגות הרכיב הנבחר.
+</para>
+
+  <sect2 id="wm-style">
+    <title>סגנון עיטור</title>
+
+    <figure id="wm_decoration_style-fig">
+      <title>העדפות סגנון העיטור</title>
+  
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/decoration_style.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>כרטיסית העדפות סגנון העיטור</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <variablelist>
+
+      <varlistentry>
+	<term>סגנון חלון</term>
+	<listitem>
+	<para>הרשימה בצידה ימני של תיבת הדו-שיח מציגה את כל עיטורי החלון הזמינים. רכיב ה- xfwm4 מציע בחירה בין ארבע ערכות נושא שונות אך קיימות יותר מ- 60 ערכות נוספות בחבילה נוספת בשם xfwm4-themes.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>גופן כותרת</term>
+      <listitem>
+	<para>כפתור בחירת הגופן מציג את משפחת הגופנים שנמצאת כרגע בשימוש להצגת כותרת החלון. לחיצה על כפתור זה תפתח תיבת דו-שיח לבחירת גופנים. הפעולה דומה לבחירת הגופנים מ<ulink
+	    url="xfce-mcs-plugins.html#id2811474" type="http">מנהל הגדרות מנשק המשתמש</ulink>.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>יישור כותרת</term>
+      <listitem>
+	<para>תהיה אשר תהיה פרישת הכפתורים, ביכולתך לבחור ביישור הכותרת בתוך סרגל הכותרת על ידי בחירה באחת מהאפשרויות האלו: יישור כותרת לשמאל, למרכז או לימין.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>פרישת כפתורים</term>
+      <listitem>
+        <para>העדפות פרישת הכפתורים משתמשות בכלי גרור וזרוק פשוט. יש ללחוץ ולגרור את הכפתורים לשינוי הפרישה. זריקת כפתור באזור ה-“מוסתר” מסירה אותו מסרגל הכותרת. כל שינוי יביא להשפעה מיידית על מיקום כפתורי סרגל הכותרת.
+	</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+<sect2 id="keyboard_shortcuts">
+  <title>קיצורי מקלדת</title>
+
+  <figure id="keyboard_shortcuts-fig">
+    <title>העדפות קיצורי מקלדת</title>
+
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/keyboard_shortcuts.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>כרטיסית העדפות קיצורי מקלדת</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+
+    <varlistentry>
+      <term>קיצורי מקלדת</term>
+      <listitem>
+	<para>הרשימה בצד ימין של תיבת הדו-שיח מציגה את כל ערכות הקיצורים הזמינות תוך הצגת שם הספריה במכילה קובץ keythemerc.
+	</para>
+	<para>כברירת מחדל קיימת ערכה אחת בלבד: $(datadir)/themes/Default/xfwm4/keythemerc
+	</para>
+	
+    <para>באפיון ברירת המחדל מוגדרים הקיצורים הבאים:</para>
+      
+    <itemizedlist>
+      <listitem>סגירת חלון : Alt + F4</listitem>
+      <listitem>הגדלת חלון : Alt + F5</listitem>
+      <listitem>הגדלה אנכית : Alt + F6</listitem>
+      <listitem>הגדלה אופקית : Alt + F7</listitem>
+      <listitem>מיזעור חלון : Alt + F8</listitem>
+      <listitem>גלילת חלון : Alt + F9</listitem>
+      <listitem>הדבקת חלון : Alt + F10</listitem>
+      <listitem>החלפת מיקוד בין חלונות : Alt + Tab</listitem>
+      <listitem>הזזת חלון : Control + Shift + Alt + חץ (מעלה, מטה, ימינה או שמאלה)</listitem>
+      <listitem>שינוי גודל חלון : Shift + Alt + חץ (מעלה, מטה, ימינה או שמאלה)</listitem>
+      <listitem>העלאת חלון : Shift + Alt + Page_Up</listitem>
+      <listitem>הורדת חלון : Shift + Alt + Page_Down</listitem>
+      <listitem>הפעלה במצב "מסך מלא" : Alt + F11</listitem>
+      <listitem>משטח העבודה הבא : Control + Alt + חץ ימינה</listitem>
+      <listitem>משטח העבודה הקודם : Control + Alt + חץ שמאלה</listitem>
+      <listitem>הוספת משטח עבודה : Alt + Insert</listitem>
+      <listitem>מחיקת משטח עבודה : Alt + Delete</listitem>
+      <listitem>עבור למשטח עבודה מספר N (1-9) : Control + F(N)</listitem>
+      <listitem>העבר את החלון למשטח העבודה הקודם|הבא : Alt + Control +
+	Home|End</listitem>
+      <listitem>העבר חלון למשטח עבודה מספר N (1-9) : Alt + Control +
+	keypad key number N</listitem>
+      <listitem>הפעל את xfhelp4 : Alt + F1</listitem>
+      <listitem>הפעל את xfrun4 : Alt + F2</listitem>
+      <listitem>נעל את המסך : Alt + Control + Delete</listitem>
+    </itemizedlist>
+
+	<para>ישנן שתי רשימות בצידה השמאלי של תיבת הדו-שיח. רשימת "קיצורי דרך לחלונות" מראה את קיצורי המקלדת להפעלת מנהל החלונות. רשימת “פקודת קיצור דרך” מראה קיצורי מקלדת להפעלת ישומים. כדי לשנות את אחד הקיצורים עליך ללחוץ עליו לחיצה כפולה עם לחצן העכבר הימני ולהכניס את הקיצור החדש כאשר מופיע הקופצן "צור קיצור".
+	</para>
+	
+	  <figure id="compose_shortcut-fig">
+    <title>חלון מזנק לחיבור קיצור דרך</title>
+
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/compose_shortcut.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>חלון מזנק לחיבור קיצור דרך</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+	
+	<para>אם ברצונך ליצור ערכת נושא חדשה, עליך ליצור ספריה כמו זו לדוגמה: $HOME/.theme/Custom/xfwm4/keythemerc ואז לבחור אותה מרשימת הערכות הזמינות.
+	</para>
+	
+	<para>אם לא ידועים לך קיצורי המקלדת שלך, ביכולתך להפעיל את היישום "xev" מהמסוף ולבחון אותם.
+
+
+	</para>
+	
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+<sect2 id="focus">
+  <title>העדפות התמקדות</title>
+
+  <figure id="focus-fig">
+    <title>העדפות התמקדות</title>
+
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/focus.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>כרטיסית העדפות התמקדות</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+
+    <varlistentry>
+      <term>אופן ההתמקדות</term>
+      <listitem>
+	<para>חלון ממוקד מקבל קלטים מהעכבר ומהמקלדת. ניתן לבחור בין שני אופני התמקדות:</para>
+	<itemizedlist>
+	  <listitem>לחיצה להתמקדות : בחירה באפשרות זו תביא לכך שחלון יזכה למיקוד רק בלחיצה במקום כלשהו במסגרתו.
+	  </listitem>
+	  <listitem>התמקדות עוקבת אחר העכבר : בחירה באפשרות זו תביא לכך שחלון יזכה למיקוד ברגע שמצביע העכבר נמצא מעל מסגרתו.
+	  </listitem>
+	</itemizedlist>
+	<para>&nbsp;</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>התמקדות על חלון חדש</term>
+      <listitem>
+	<para>בחירה באפשרות זו תביא למתן מיקוד לחלון חדש שנוצר באופן אוטומטי ללא צורך בלחיצת או מעבר עכבר עליו.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>הבא לחזית בהתמקדות</term>
+      <listitem>
+        <para>בחירה באפשרות זו תביא לכך שמסגרתו של חלון שזכה להתמקדות תעבור אוטומטית לחזית לאחר פרק  זמן אותו ניתן לקבוע באמצעות המחוון "השהייה".
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>הבא לחזית בלחיצה</term>
+      <listitem>
+	<para>בחירה באפשרות זו תביא לכך שחלון יוקפץ אל חזית כל החלונות האחרים בעת לחיצה במקום כלשהו במסגרתו. אם אפשרות זו לא נבחרה יהיה עליך ללחוץ במקום כלשהו על עיטוריו של החלון (סרגל הכותרת, גבולות, פינות) כדי להביאו לחזית.
+	</para>
+      </listitem>
+    </varlistentry>
+
+
+
+  </variablelist>
+</sect2>
+
+<sect2 id="wm_advanced">
+  <title>הגדרות מתקדמות</title>
+
+  <figure id="misc_wm_prefs-fig">
+    <title>העדפות מתקדמות</title>
+  
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/misc_wm_prefs.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>כרטיסית העדפות מתקדמות</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+
+    <varlistentry>
+      <term>הצמדת חלונות</term>
+      <listitem>
+	<para>ניתן לבחור כי גבולותיו של חלון ימשכו לגבולותיהם של חלונות אחרים או לגבולות המסך בעת שהם מוזזים. בעזרת מחוון ה-"מרחק" ניתן לקבוע מאיזו קרבה תופעל ההשפעה.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>גלישת סביבות עבודה</term>
+      <listitem>
+	<para>בחירה באפשרות הראשונה תביא להחלפת משטח עבודה בעת שסמן העכבר מגיע לגבולות המסך. בחירה באפשרות השניה תביא להתנהגות דומה בעת גרירת חלונות. בעזרת המחוון המתאים ניתן לקבוע את התנגדות שולי המסך למעבר בין משטחי העבודה.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>הזזה ושינוי גודל</term>
+      <listitem>
+	<para>שתי אפשרויות עומדות לבחירתך כדי לקבוע אם תוכן החלון יוצג או לא בעת הזזת החלון או שינוי גודלו (בחירה באי הצגת תוכן החלון תחסוך במשאבי מערכת במידה מסוימת).</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>פעולת לחיצה כפולה</term>
+      <listitem>
+	<para>כאן ניתן לבחור מה תהיה ההתנהגות המחוייבת ממנהל החלונות בעת לחיצה כפולה על סרגל הכותרת של חלון : גלול חלון, הסתר חלון, הגדל חלון או כלום.</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</sect2>
+
+
+<sect2 id="hidden_options">
+  <title>אפשרויות נסתרות</title>
+
+	<para>מספר אפשרויות נסתרות מאפשרות לך להתאים באופן אישי את התנהגות xfwm4. אפשרויות אלו יש להוסיף באופן ידני לקובץ $HOME/.config/xfce4/xfwm4/xfwm4rc שלך. יתכן שיהיה עליך ליצור קובץ זה אם הוא לא קיים.</para>
+
+<variablelist>
+	<varlistentry>
+		<term>cycle_minimum=false</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תכלול ישומים שאינם מופיעים בסרגל המשימות בסבב העברת ההתמקדות בעזרת הקיצור Alt + Tab.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>cycle_hidden=false</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תפסח על חלונות ממוזערים ברשימה המוצגת בעת שימוש בקיצור Alt + Tab
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>easy_click=false</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תמנע אפשרות להזיז ולשנות את גודלם של חלונות בעזרת הקיצור כפתור Alt + לחיצת עכבר.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>focus_hint=false</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תנחה את xfwm4 להתעלם מציין ההתמקדות של היישומים.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>prevent_focus_stealing=true</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תמנע מחלונות לגנוב את ההתמקדות.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>raise_with_any_button=false</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תביא לקידום חלון לחזית רק בעת לחיצה עליו עם לחצן העכבר השמאלי.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>move_opacity=100</term>
+			<listitem>
+			<para>קובע את שקיפות החלון בעת הזזתו. השקיפות היא מספר שלם בין 0 ל-100, כש-100 מבטא חוסר שקיפות ו-0 שקיפות מוחלטת.
+			</para>
+			<para>לאפשרות זו אין כל השפעה אם מנהל השילוב אינו מאופשר.
+</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>resize_opacity=100</term>
+			<listitem>
+			<para>קובע את שקיפות החלון בעת שינוי גודלו. השקיפות היא מספר שלם בין 0 ל-100, כש-100 מבטא חוסר שקיפות ו-0 שקיפות מוחלטת.
+			</para>
+			<para>לאפשרות זו אין כל השפעה אם מנהל השילוב אינו מאופשר.
+</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>scroll_workspaces=false</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תבטל את החלפת משטחי העבודה עם גלגלת העכבר.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>toggle_workspaces=true</term>
+			<listitem>
+			<para>הוספת שורה זו לקובץ xfwm4rc תביא לכך שהקיצור Control+F(N) יתיחס למשטח העבודה הקודם.
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>wrap_layout=true</term>
+			<listitem>
+			<para>לאפשרות זו אין כל השפעה אם מנהל השילוב אינו מאופשר. 
+			</para>
+			</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>wrap_cycle=true</term>
+			<listitem>
+			<para>סוגר מעגל בין משטחי העבודה כאשר מגיעים למשטח העבודה הראשון או האחרון.
+			</para>
+			</listitem>
+	</varlistentry>
+	
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+  
+<sect1 id="workspaces">
+
+  <title>ניהול סביבות עבודה</title>
+
+  <para>&app; מנהל גם את משטחי העבודה. קיימת תיבת דו-שיח מיוחדת לשינוי מאפייני משטחי העבודה. נין להפעיל את תיבת הדו-שיח על ידי בחירה ב- <emphasis>סביבות עבודה ושוליים</emphasis> מ<ulink
+      url="xfce-mcs-manager.html#manager-dialog" type="http">מנהל ההגדרות</ulink>. תיבת הדו-שיח מכילה שתי כרטיסיות בהן ניתן לשנות את הגדרות משטחי העבודה ואת שולי שולחן העבודה.
+  </para>
+
+  <sect2>
+
+    <title>הגדרות סביבות העבודה</title>
+
+    <figure id="xfwm-workspace-fig">
+      <title>הגדרות משטחי העבודה</title> 
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/xfwm_workspaces.png" format="PNG"/>
+	  </imageobject> 
+	  <textobject>
+	    <phrase>כרטיסית הגדרות משטחי העבודה
+	    </phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <variablelist>
+
+      <varlistentry>
+	<term>משטחי עבודה</term>
+	<listitem>
+	  <para>אפשרות זו נונת לך לבחור את מספר משטחי העבודה בהם תרצה להשתמש (בין 1 ל-32).
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>שמות משטחי העבודה</term>
+	<listitem>
+	  <para>שדה זה מציג את משטחי העבודה הזמינים. אם ברצונך לערוך את שמו של אחד מהם יש ללחוץ על מספרו ולמלא את הרשומה בתיבת הדו-שיח שתופיע. בסיום יש להקיש על כפתור ה-"החל" או פשוט להקיש Enter כדי לחזור לרשימה.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 id="workspace-margins">
+    <title>שולי סביבות העבודה</title>
+
+    <figure id="workspace_margins-fig">
+      <title>תיבת הדו-שיח של שולי משטח העבודה</title>
+
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/workspace_margins.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>תיבת הדו-שיח של שולי משטח העבודה</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>כדי לפתוח את תיבת הדו-שיח של שולי משטח העבודה יש ללחוץ על הכפתור עם הכותרת "סביבות עבודה ושוליים" ב<ulink
+	url="xfce-mcs-manager.html#manager-dialog" type="http">מנהל ההגדרות</ulink> ולבחור בכרטיסיה עם הכותרת "שוליים".
+    </para>
+
+    <para>השוליים הם אזורים בקצוות המסך שחלונות מורחבים לא יכסו. ניתן להתאים את גודלם בפיקסלים של כל השוליים (שמאליים, ימניים, עליונים ותחתונים). כדאי להשתמש באפשרות זו אם ברצונך שחלונות מורחבים לא יעלו על הלוח או על מסגרת תיבת הסמלים.</para>
+
+  </sect2>
+
+  <!-- extra space -->
+  <para>&nbsp;</para>
+
+</sect1>
+  
+<sect1 id="wm-copyright">
+  <title>אודות &app;</title>
+
+  <para>&app; was written Olivier Fourdan  
+    (<email>fourdan@xfce.org</email>). למידע נוסף ניתן לבקר ב <ulink url="http://www.xfce.org" type="http">אתר Xfce</ulink>. 
+  </para>
+
+  <para>לדיווח על תקלה או כדי להציע דבר מה בנוגע ליישום זה או למדריך זה יש להשתמש במערכת המעקב אחר תקלות ב- <ulink 
+      url="http://bugzilla.xfce.org/" 
+      type="http">http://bugzilla.xfce.org/</ulink>. 
+  </para>
+
+  <para>אם יש לך שאלות בנוגע לשימוש או להתקנת ישום זה ניתן להפנותן <ulink 
+      url="http://lunar-linux.org/mailman/listinfo/xfce"
+      type="http">לרשימת הדיוור של Xfce</ulink>. דיונים אודות הפיתוח נערכים ברשימת הדיוור <ulink 
+      url="http://lunar-linux.org/mailman/listinfo/xfce4-dev"
+      type="http">xfce4-dev</ulink>.
+  </para>
+    
+  <para> תוכנית זו מופצת תחת תנאי רישיון GPL (GNU General Public Liscense) כפי שהם מפורסמים על ידי קרן התוכנה החופשית; גרסה 2 של הרישיון או (לבחירתך) כל גרסה מאוחרת יותר.
+  </para>
+
+  <para>עותק של רישיון ה- GNU General Public Liscense אמור היה להיות מצורף לתוכנית זו; אם לא כך, ניתן לכתוב לקרן התוכנה החופשית: Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.
+  </para>
+
+</sect1>
+
+</article>
+

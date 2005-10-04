@@ -114,6 +114,8 @@ doc/C/Makefile
 doc/C/images/Makefile
 doc/fr/Makefile
 doc/fr/images/Makefile
+doc/he/Makefile
+doc/he/images/Makefile
 defaults/Makefile
 icons/Makefile
 icons/48x48/Makefile
