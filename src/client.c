@@ -849,6 +849,7 @@ clientGetMWMHints (Client * c, gboolean update)
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     PropMwmHints *mwm_hints;
+    XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -940,6 +941,11 @@ clientGetMWMHints (Client * c, gboolean update)
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN);
             clientSetLayer (c, WIN_LAYER_NORMAL);
         }
+        wc.x = c->x;
+        wc.y = c->y;
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
 
