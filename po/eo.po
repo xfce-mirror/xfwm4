@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-28 12:50+0900\n"
+"POT-Creation-Date: 2005-10-08 06:15+0900\n"
 "PO-Revision-Date: 2005-09-29 18:00+0900\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -16,473 +16,471 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../mcs-plugin/margins.c:127
+#: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Marĝenoj de la Laborspaco"
 
-#: ../mcs-plugin/margins.c:137
+#: mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "La marĝenoj estas la regionoj ĉe la bordoj de la ekrano kie nenia fenestro "
 "estos metita"
 
-#: ../mcs-plugin/margins.c:168
+#: mcs-plugin/margins.c:168
 msgid "Left :"
 msgstr "Maldekstra :"
 
-#: ../mcs-plugin/margins.c:188
+#: mcs-plugin/margins.c:188
 msgid "Right :"
 msgstr "Dekstra :"
 
-#: ../mcs-plugin/margins.c:208
+#: mcs-plugin/margins.c:208
 msgid "Top :"
 msgstr "Supra :"
 
-#: ../mcs-plugin/margins.c:228
+#: mcs-plugin/margins.c:228
 msgid "Bottom :"
 msgstr "Malsupra :"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:152
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Laborspacoj kaj marĝenoj"
 
 #. Number of workspaces
-#: ../mcs-plugin/plugin.c:135 ../mcs-plugin/plugin.c:166
-#: ../mcs-plugin/workspaces.c:546
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Laborspacoj"
 
-#: ../mcs-plugin/plugin.c:173
+#: mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Marĝenoj"
 
-#: ../mcs-plugin/workspaces.c:345
+#: mcs-plugin/workspaces.c:345
 msgid "Change name"
 msgstr "Modifiu la nomon"
 
-#: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:408
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:408
 #, c-format
 msgid "Workspace %d"
 msgstr "Laborspaco %d"
 
-#: ../mcs-plugin/workspaces.c:367
+#: mcs-plugin/workspaces.c:367
 msgid "Name:"
 msgstr "Nomo:"
 
-#: ../mcs-plugin/workspaces.c:455
+#: mcs-plugin/workspaces.c:455
 msgid "Click on a workspace name to edit it"
 msgstr "Alklaku la nomon de laborspaco por ĝin modifii"
 
-#: ../mcs-plugin/workspaces.c:527
+#: mcs-plugin/workspaces.c:527
 msgid "Number of workspaces:"
 msgstr "Nombro de laborspacoj:"
 
 #. Workspace names
-#: ../mcs-plugin/workspaces.c:558
+#: mcs-plugin/workspaces.c:558
 msgid "Workspace names"
 msgstr "Nomoj de la laborspacoj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:76
+#: mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
 msgstr "Menuo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:77
+#: mcs-plugin/xfwm4_plugin.c:77
 msgid "Stick"
 msgstr "Algluu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
+#: mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
 msgstr "Volvu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
+#: mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
 msgstr "Kaŝu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
+#: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
 msgstr "Maksimumigu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
+#: mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
 msgstr "Fermu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86 ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Shade window"
 msgstr "Volvu la fenestron"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87 ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Hide window"
 msgstr "Kaŝu la fenestron"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window"
 msgstr "Maksimumigu la fenestron"
 
-#: ../mcs-plugin/xfwm4_plugin.c:89
+#: mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
 msgstr "Nenian"
 
-#: ../mcs-plugin/xfwm4_plugin.c:94
+#: mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
 msgstr "Maldekstra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:95
+#: mcs-plugin/xfwm4_plugin.c:95
 msgid "Center"
 msgstr "Centra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:96
+#: mcs-plugin/xfwm4_plugin.c:96
 msgid "Right"
 msgstr "Dekstra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:564
+#: mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
 msgstr "Alklaku kaj trenu la butonojn por modifii la arenĝon"
 
-#: ../mcs-plugin/xfwm4_plugin.c:569
+#: mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
 msgstr "Aktivaj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:580
+#: mcs-plugin/xfwm4_plugin.c:580
 msgid "Title"
 msgstr "Titolo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:581
+#: mcs-plugin/xfwm4_plugin.c:581
 msgid "The window title, it cannot be removed"
 msgstr "La titolo de la fenestro ne povas esti forigita"
 
-#: ../mcs-plugin/xfwm4_plugin.c:589
+#: mcs-plugin/xfwm4_plugin.c:589
 msgid "Hidden"
 msgstr "Kaŝitaj elementoj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1346
+#: mcs-plugin/xfwm4_plugin.c:1346
 msgid "Font Selection Dialog"
 msgstr "Dialogujo por Elekti Tiparon"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1417 ../mcs-plugin/xfwm4_plugin.c:1937
+#: mcs-plugin/xfwm4_plugin.c:1417 mcs-plugin/xfwm4_plugin.c:1937
 msgid "Window Manager"
 msgstr "Administradilo de Fenestroj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1430
+#: mcs-plugin/xfwm4_plugin.c:1430
 msgid "Window Manager Preferences"
 msgstr "Parametroj de la Administradilo de Fenestroj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1459
+#: mcs-plugin/xfwm4_plugin.c:1459
 msgid "Title font"
 msgstr "Tiparo de la titolo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1472
+#: mcs-plugin/xfwm4_plugin.c:1472
 msgid "Title Alignment"
 msgstr "Aranĝo de la titolo"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1478
+#: mcs-plugin/xfwm4_plugin.c:1478
 msgid "Text alignment inside title bar :"
 msgstr "Aranĝo de la teksto sur la titolostrio :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1480
+#: mcs-plugin/xfwm4_plugin.c:1480
 msgid "Button layout"
 msgstr "Aranĝo de la butonoj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1486
+#: mcs-plugin/xfwm4_plugin.c:1486
 msgid "Style"
 msgstr "Stilo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1524
+#: mcs-plugin/xfwm4_plugin.c:1524
 msgid "Window shortcuts"
 msgstr "Fenestraj rapidligiloj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1544 ../mcs-plugin/xfwm4_plugin.c:1577
+#: mcs-plugin/xfwm4_plugin.c:1544 mcs-plugin/xfwm4_plugin.c:1577
 msgid "Command"
 msgstr "Komando"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1549 ../mcs-plugin/xfwm4_plugin.c:1581
+#: mcs-plugin/xfwm4_plugin.c:1549 mcs-plugin/xfwm4_plugin.c:1581
 msgid "Shortcut"
 msgstr "Rapidligilo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1557
+#: mcs-plugin/xfwm4_plugin.c:1557
 msgid "Command shortcuts"
 msgstr "Komandaj rapidligiloj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1596
+#: mcs-plugin/xfwm4_plugin.c:1596
 msgid "Keyboard"
 msgstr "Klavaro"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1607
+#: mcs-plugin/xfwm4_plugin.c:1607
 msgid "Focus model"
 msgstr "Fokusa maniero"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1615
+#: mcs-plugin/xfwm4_plugin.c:1615
 msgid "Click to focus"
 msgstr "Alklaku por fokusi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1622
+#: mcs-plugin/xfwm4_plugin.c:1622
 msgid "Focus follows mouse"
 msgstr "La fokuso sekvas la muson"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1629
+#: mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "Nova fenestro prenas la fokuson"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1633
+#: mcs-plugin/xfwm4_plugin.c:1633
 msgid "Automatically give focus to newly created windows"
 msgstr "Aŭtomate aldonu la fokuson al novaj fenestroj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1638
+#: mcs-plugin/xfwm4_plugin.c:1638
 msgid "Raise on focus"
 msgstr "Altigu je la fokusigo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1646
+#: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Automatically raise windows when they receive focus"
 msgstr "Aŭtomate altigu novan fenestron kiam ĝi ricevas la fokuson"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1656
+#: mcs-plugin/xfwm4_plugin.c:1656
 msgid "Delay before raising focused window :"
 msgstr "Daŭro ĝis la altigo de fokusigita fenestro"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1662
+#: mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
 msgstr "Malrapida"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1668
+#: mcs-plugin/xfwm4_plugin.c:1668
 msgid "Fast"
 msgstr "Rapida"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1684
+#: mcs-plugin/xfwm4_plugin.c:1684
 msgid "Raise on click"
 msgstr "Altigu je alklakigo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1688
+#: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Raise window when clicking inside application window"
 msgstr "Altigu la fenestron kiam ĝi estas alklakigita"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1693
+#: mcs-plugin/xfwm4_plugin.c:1693
 msgid "Focus"
 msgstr "Fokuso"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1703
+#: mcs-plugin/xfwm4_plugin.c:1703
 msgid "Windows snapping"
 msgstr "Magnetigu la fenestrojn"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1711
+#: mcs-plugin/xfwm4_plugin.c:1711
 msgid "Snap windows to screen border"
 msgstr "Magnete algluu la fenestrojn al la ekranbordoj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1716
+#: mcs-plugin/xfwm4_plugin.c:1716
 msgid "Snap windows to other windows"
 msgstr "Magnete algluu la fenestrojn unu al la alia"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1726
+#: mcs-plugin/xfwm4_plugin.c:1726
 msgid "Distance :"
 msgstr "Distanco :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1732 ../mcs-plugin/xfwm4_plugin.c:1782
+#: mcs-plugin/xfwm4_plugin.c:1732 mcs-plugin/xfwm4_plugin.c:1782
 msgid "Small"
 msgstr "Eta"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1738 ../mcs-plugin/xfwm4_plugin.c:1788
+#: mcs-plugin/xfwm4_plugin.c:1738 mcs-plugin/xfwm4_plugin.c:1788
 msgid "Wide"
 msgstr "Granda"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1753
+#: mcs-plugin/xfwm4_plugin.c:1753
 msgid "Wrap workspaces"
 msgstr "Interligitaj laborspacoj"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1761
+#: mcs-plugin/xfwm4_plugin.c:1761
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 "Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de "
 "la ekrano"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la bordo "
 "de la ekrano"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr "Rezisto ĉe la bordoj :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1803
+#: mcs-plugin/xfwm4_plugin.c:1803
 msgid "Opaque move and resize"
 msgstr "Maldiafanaj movo kaj dimensiŝanĝo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1811
+#: mcs-plugin/xfwm4_plugin.c:1811
 msgid "Display content of windows when resizing"
 msgstr "Montru la enhavon kiam oni estas ŝanĝanta la dimensiojn de fenestro"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1816
+#: mcs-plugin/xfwm4_plugin.c:1816
 msgid "Display content of windows when moving"
 msgstr "Montru la enhavon kiam oni estas movanta fenestron"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1821
+#: mcs-plugin/xfwm4_plugin.c:1821
 msgid "Double click action"
 msgstr "Efekto de duobla klako"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1827
+#: mcs-plugin/xfwm4_plugin.c:1827
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Ago je duobla klako sur la titolostrio :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1829
+#: mcs-plugin/xfwm4_plugin.c:1829
 msgid "Advanced"
 msgstr "Evoluaĵoj"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
+#: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Ĉu vi vere volas forigi tiun klavoasocian etoson ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:126
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:132
+#: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
 msgstr "Aldonu klavoasocian etoson"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:136
+#: mcs-plugin/xfwm4_shortcuteditor.c:136
 msgid "Enter a name for the theme:"
 msgstr "Enskribu nomon por via etoso:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:159
+#: mcs-plugin/xfwm4_shortcuteditor.c:159
 msgid "A keybinding theme with the same name already exists"
 msgstr "Jam ekzistas klavoasocia etoso kun la sama nomo"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:165
+#: mcs-plugin/xfwm4_shortcuteditor.c:165
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Necesas ke vi donas nomon al la klavoasocia etoso"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Close window"
 msgstr "Fermu la fenestron"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window vertically"
 msgstr "Vertikale maksimumigu la fenestron"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Maximize window horizontally"
 msgstr "Horizontale maksimumigu la fenestron"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Stick window"
 msgstr "Algluu la fenestron"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Cycle windows"
 msgstr "Cikleligu la fenestrojn"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window up"
 msgstr "Movu la fenestron supren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window down"
 msgstr "Movu la fenestron malsupren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window left"
 msgstr "Movu la fenestron maldekstren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window right"
 msgstr "Movu la fenestron dekstren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Resize window up"
 msgstr "Ŝanĝu la dimensiojn de la fenestro supren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window down"
 msgstr "Ŝanĝu la dimensiojn de la fenestro malsupren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window left"
 msgstr "Ŝanĝu la dimensiojn de la fenestro maldekstren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window right"
 msgstr "Ŝanĝu la dimensiojn de la fenestro dekstren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Raise window"
 msgstr "Altigu la fenestron"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Lower window"
 msgstr "Malaltigu la fenestron"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
 msgstr "Baskulu tutekranen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Upper workspace"
 msgstr "Supra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Bottom workspace"
 msgstr "Malsupra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Left workspace"
 msgstr "Maldekstra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Right workspace"
 msgstr "Dekstra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Next workspace"
 msgstr "Sekvanta laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Previous workspace"
 msgstr "Antaŭa laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Add workspace"
 msgstr "Aldonu laborspacon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Delete workspace"
 msgstr "Forigu laborspacon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to next workspace"
 msgstr "Transloku la fenestron al la sekvanta laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to previous workspace"
 msgstr "Transloku la fenestron al la antaŭa laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Move window to upper workspace"
 msgstr "Transloku la fenestron al la supra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
+#: mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Move window to bottom workspace"
 msgstr "Transloku la fenestron al la malalta laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:319
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 msgid "Move window to left workspace"
 msgstr "Transloku la fenestron al la maldekstra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:319
+#: mcs-plugin/xfwm4_shortcuteditor.c:319
 msgid "Move window to right workspace"
 msgstr "Transloku la fenestron al la dekstra laborspaco"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:320
+#: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
 msgstr "Montru la labortablon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:429
+#: mcs-plugin/xfwm4_shortcuteditor.c:429
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Transloku la fenestron al laborspaco %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:572
+#: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
 msgstr "Malsukcesis malfermi la etosan dosierujon !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+#: mcs-plugin/xfwm4_shortcuteditor.c:591
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -491,8 +489,7 @@ msgstr ""
 "Malsukcesis malfermi %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
+#: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -501,11 +498,11 @@ msgstr ""
 "Malsukcesis skribi en %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:667
+#: mcs-plugin/xfwm4_shortcuteditor.c:667
 msgid "Select command"
 msgstr "Elektu komandon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:813
+#: mcs-plugin/xfwm4_shortcuteditor.c:813
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -513,146 +510,146 @@ msgstr ""
 "Jam uzita rapidligilo !\n"
 "Ĉu vi vere volas uzi ĝin ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:876
+#: mcs-plugin/xfwm4_shortcuteditor.c:876
 msgid "Compose shortcut for :"
 msgstr "Komponu rapidligilon por :"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:879
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:1107
+#: mcs-plugin/xfwm4_shortcuteditor.c:879
+#: mcs-plugin/xfwm4_shortcuteditor.c:1107
 msgid "Compose shortcut"
 msgstr "Komponu rapidligilon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:881
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:1109
+#: mcs-plugin/xfwm4_shortcuteditor.c:881
+#: mcs-plugin/xfwm4_shortcuteditor.c:1109
 msgid "No shortcut"
 msgstr "Nenia rapidligilo"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:1003
+#: mcs-plugin/xfwm4_shortcuteditor.c:1003
 msgid "Choose command"
 msgstr "Elektu komandon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:1005
+#: mcs-plugin/xfwm4_shortcuteditor.c:1005
 msgid "Command :"
 msgstr "Komando :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:1041
+#: mcs-plugin/xfwm4_shortcuteditor.c:1041
 msgid "The command doesn't exist or the file is not executable !"
 msgstr "La komando ne ekzistas aŭ la dosiero ne estas plenumebla !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:1104
+#: mcs-plugin/xfwm4_shortcuteditor.c:1104
 msgid "Compose shortcut for command :"
 msgstr "Komponu rapidligilon por komando :"
 
-#: ../src/main.c:181
+#: src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Eraro de segmentaĵo"
 
-#: ../src/menu.c:39
+#: src/menu.c:39
 msgid "Ma_ximize"
 msgstr "Ma_ksimumigu"
 
-#: ../src/menu.c:40
+#: src/menu.c:40
 msgid "Un_maximize"
 msgstr "De_maksimumigu"
 
-#: ../src/menu.c:41
+#: src/menu.c:41
 msgid "_Hide"
 msgstr "_Kaŝu"
 
-#: ../src/menu.c:42
+#: src/menu.c:42
 msgid "Hide _all others"
 msgstr "Kaŝu _ĉiujn aliajn"
 
-#: ../src/menu.c:43
+#: src/menu.c:43
 msgid "S_how"
 msgstr "M_ontru"
 
-#: ../src/menu.c:44
+#: src/menu.c:44
 msgid "_Shade"
 msgstr "_Volvu"
 
-#: ../src/menu.c:45
+#: src/menu.c:45
 msgid "Un_shade"
 msgstr "De_volvu"
 
-#: ../src/menu.c:46
+#: src/menu.c:46
 msgid "S_tick"
 msgstr "A_lgluu"
 
-#: ../src/menu.c:47
+#: src/menu.c:47
 msgid "Uns_tick"
 msgstr "De_gluu"
 
-#: ../src/menu.c:48
+#: src/menu.c:48
 msgid "Context _help"
 msgstr "Konteksta _helpo"
 
-#: ../src/menu.c:49 ../src/menu.c:50
+#: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
 msgstr "Ĉiam supre"
 
-#: ../src/menu.c:51
+#: src/menu.c:51
 msgid "Send to..."
 msgstr "Sendu al..."
 
-#: ../src/menu.c:53
+#: src/menu.c:53
 msgid "_Close"
 msgstr "_Fermu"
 
-#: ../src/menu.c:56
+#: src/menu.c:56
 msgid "Destroy"
 msgstr "Detruu"
 
-#: ../src/menu.c:59
+#: src/menu.c:59
 msgid "_Quit"
 msgstr "_Adiaŭu"
 
-#: ../src/menu.c:60
+#: src/menu.c:60
 msgid "Restart"
 msgstr "Restartigu"
 
-#: ../src/menu.c:169
+#: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Laborspaco %i (%s)"
 
-#: ../src/menu.c:181
+#: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Laborspaco %i"
 
-#: ../src/menu.c:416
+#: src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu malsukcesis kapti la muskursoron\n"
 
-#: ../src/settings.c:722
+#: src/settings.c:722
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Malsukcesis disponigi aktivan koloron %s\n"
 
-#: ../src/settings.c:728
+#: src/settings.c:728
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Malsukcesis legi aktivan koloron %s\n"
 
-#: ../src/settings.c:771
+#: src/settings.c:771
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Malsukcesis disponigi neaktivan koloron %s\n"
 
-#: ../src/settings.c:777
+#: src/settings.c:777
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Malsukcesis legi neaktivan koloron %s\n"
 
-#: ../src/tabwin.c:70
+#: src/tabwin.c:70
 msgid "Switch to ..."
 msgstr "Baskulu al ..."
 
-#: ../src/tabwin.c:129
+#: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Nekonata aplikaĵo!"
