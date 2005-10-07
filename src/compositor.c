@@ -66,6 +66,8 @@
 #define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
 #endif /* SHADOW_OFFSET_Y */
 
+#define IDLE_REPAINT
+
 typedef struct _CWindow CWindow;
 struct _CWindow
 {
@@ -974,7 +976,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         {
             cw->picture = get_window_picture (cw);
         }
-        if ((cw->mode == WINDOW_SOLID) && (cw->picture))
+        if (cw->mode == WINDOW_SOLID)
         {
             gint x, y, w, h;
             get_paint_bounds (cw, &x, &y, &w, &h);
@@ -1032,7 +1034,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         {
             gint x, y, w, h;
 
-            if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
+            if (cw->opacity != NET_WM_OPAQUE)
             {
                 cw->alphaPict = solid_picture (screen_info, FALSE,
                                                (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
@@ -1145,15 +1147,14 @@ compositor_timeout_cb (gpointer data)
 static void
 add_repair (DisplayInfo *display_info)
 {
+#ifdef IDLE_REPAINT
     if (display_info->compositor_idle_id != 0)
     {
         return;
     }
-
     display_info->compositor_idle_id =
         g_idle_add_full (G_PRIORITY_HIGH_IDLE,
                          compositor_idle_cb, display_info, NULL);
-
     if (display_info->compositor_timeout_id != 0)
     {
         return;
@@ -1162,7 +1163,9 @@ add_repair (DisplayInfo *display_info)
     display_info->compositor_timeout_id = 
         g_timeout_add (50 /* ms */, 
                        compositor_timeout_cb, display_info);
-
+#else
+    repair_display (display_info);
+#endif
 }
 
 static void
@@ -1297,7 +1300,7 @@ damage_win (CWindow *cw)
 {
 #ifdef HAVE_COMPOSITOR
     XserverRegion extents;
-
+    
     g_return_if_fail (cw != NULL);
     TRACE ("entering damage_win");
 
@@ -1585,13 +1588,16 @@ restack_win (CWindow *cw, Window above)
 static void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
-    XserverRegion extents;
+    XserverRegion damage = None;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
 
-    extents = win_extents (cw);
-    add_damage (cw->screen_info, extents);
+    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), 0, 0);
+    if (cw->extents != None)	
+    {
+        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
+    }
 
     if (!(shape_notify) && (x == cw->attr.x) && (y == cw->attr.y) &&
         (width == cw->attr.width) && (height == cw->attr.height) &&
@@ -1653,8 +1659,13 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     cw->attr.height = height;
     cw->attr.border_width = bw;
 
-    extents = win_extents (cw);
-    add_damage (cw->screen_info, extents);
+    if (damage)
+    {
+        XserverRegion extents = win_extents (cw);
+        XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
+        add_damage (cw->screen_info, damage);
+    }
 }
 
 static void
