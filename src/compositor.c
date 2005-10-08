@@ -1550,13 +1550,10 @@ restack_win (CWindow *cw, Window above)
 void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
-    XserverRegion extents;
+    XserverRegion damage = None;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
-
-    extents = win_extents (cw);
-    add_damage (cw->screen_info, extents);
 
     if (!(shape_notify) && (x == cw->attr.x) && (y == cw->attr.y) &&
         (width == cw->attr.width) && (height == cw->attr.height) &&
@@ -1565,6 +1562,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         return;
     }
     
+    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), 0, 0);
+    if (cw->extents != None)	
+    {
+        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
+    }
+
     TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
     if (cw->extents)
     {
@@ -1580,7 +1583,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
 
     if ((cw->attr.width != width) || (cw->attr.height != height))
     {
-
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
         {
@@ -1619,8 +1621,13 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     cw->attr.height = height;
     cw->attr.border_width = bw;
 
-    extents = win_extents (cw);
-    add_damage (cw->screen_info, extents);
+    if (damage)
+    {
+        XserverRegion extents = win_extents (cw);
+        XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
+        add_damage (cw->screen_info, damage);
+    }
 }
 
 static void
