@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-04-28 19:05+0530\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -617,21 +617,17 @@ msgstr "%s: असक्रिय रंगाचे परस्पर सं�
 msgid "Unknown application!"
 msgstr "अपरिचित एप्लिकेशन!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "विण्डो व्यवस्थापक रचना"
+#~ msgid "Window Manager Settings"
+#~ msgstr "विण्डो व्यवस्थापक रचना"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 विण्डो व्यवस्थापक रचना"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Xfce 4 विण्डो व्यवस्थापक रचना"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "कार्यक्षेत्रांची रचना"
+#~ msgid "Workspaces Settings"
+#~ msgstr "कार्यक्षेत्रांची रचना"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 कार्यक्षेत्रांची रचना"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Xfce 4 कार्यक्षेत्रांची रचना"
 
 #, fuzzy
 #~ msgid "Switch to:"

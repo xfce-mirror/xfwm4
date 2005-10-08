@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_GR1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-08-13 13:21+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Ελληνικά\n"
@@ -621,21 +621,17 @@ msgstr "%s: Αδύνατη η ανάλυση του ανενεργού χρώμ�
 msgid "Unknown application!"
 msgstr "Άγνωστη εφαρμογή!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων Xfce 4"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων Xfce 4"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "Ρυθμίσεις Χώρων Εργασίας"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Ρυθμίσεις Χώρων Εργασίας"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Ρυθμίσεις Χώρων Εργασίας Xfce 4"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Ρυθμίσεις Χώρων Εργασίας Xfce 4"
 
 #, fuzzy
 #~ msgid "Switch to:"

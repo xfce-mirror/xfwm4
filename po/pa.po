@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-10-04 02:59+0530\n"
 "Last-Translator: root <root@Phulewala>\n"
 "Language-Team:  <pa@li.org>\n"
@@ -631,25 +631,21 @@ msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹ
 msgid "Unknown application!"
 msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
+#~ msgid "Window Manager Settings"
+#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਪਸੰਦ"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਪਸੰਦ"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
+#~ msgid "Workspaces Settings"
+#~ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 
 #, fuzzy
 #~ msgid "Switch to:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFWM4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2003-09-24 18:05-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -660,25 +660,21 @@ msgstr "%s: செயலற்ற வண்ணம் அழகிட முட�
 msgid "Unknown application!"
 msgstr ""
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "சாளரமேலாளர்"
+#~ msgid "Window Manager Settings"
+#~ msgstr "சாளரமேலாளர்"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "சாளரமேலாளர் விருப்பங்கள்"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "சாளரமேலாளர் விருப்பங்கள்"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "வேலையிட எல்லைகள்"
+#~ msgid "Workspaces Settings"
+#~ msgstr "வேலையிட எல்லைகள்"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "வேலையிட எல்லைகள்"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "வேலையிட எல்லைகள்"
 
 #, fuzzy
 #~ msgid "Switch to:"

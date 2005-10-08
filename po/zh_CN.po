@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-08-19 21:22+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -617,25 +617,21 @@ msgstr "%s: 无法解释 inactive颜色 %s\n"
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "窗口管理器"
+#~ msgid "Window Manager Settings"
+#~ msgstr "窗口管理器"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "窗口管理器首选项"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "窗口管理器首选项"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "工作区边缘"
+#~ msgid "Workspaces Settings"
+#~ msgstr "工作区边缘"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "工作区边缘"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "工作区边缘"
 
 #, fuzzy
 #~ msgid "Switch to:"

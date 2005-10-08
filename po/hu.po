@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-11-16 01:06+0100\n"
 "Last-Translator: SZERV.C Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -621,25 +621,21 @@ msgstr "%s: Nem lehet értelmezni az inaktív színt: %s\n"
 msgid "Unknown application!"
 msgstr "Ismeretlen alkalmazás!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Ablakkezelő"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Ablakkezelő"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Ablakkezelő beállításai"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Ablakkezelő beállításai"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Munkaterület margók"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Munkaterület margók"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Munkaterület margók"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Munkaterület margók"
 
 #, fuzzy
 #~ msgid "Switch to:"

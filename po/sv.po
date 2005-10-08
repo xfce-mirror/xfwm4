@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-08-19 21:21+0900\n"
 "Last-Translator: Joakim Andreasson <joakim.andreasson@gmx.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -662,25 +662,21 @@ msgstr "%s: Kan ej avläsa inaktiv färg %s\n"
 msgid "Unknown application!"
 msgstr ""
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Fönsterhanterare"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Fönsterhanterare"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Fönsterhanterarinställningar"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Fönsterhanterarinställningar"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Skrivbordsmarginaler"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Skrivbordsmarginaler"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Skrivbordsmarginaler"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Skrivbordsmarginaler"
 
 #, fuzzy
 #~ msgid "Switch to:"

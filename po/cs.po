@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-12-20 21:58+0100\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
 "Language-Team: czech <cs@li.org>\n"
@@ -615,25 +615,21 @@ msgstr "%s: Nelze separovat neaktivní barvu %s\n"
 msgid "Unknown application!"
 msgstr "Neznámá aplikace!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Správce Oken"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Správce Oken"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Nastavení Správce oken"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Nastavení Správce oken"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Okraje ploch"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Okraje ploch"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Okraje ploch"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Okraje ploch"
 
 #, fuzzy
 #~ msgid "Switch to:"

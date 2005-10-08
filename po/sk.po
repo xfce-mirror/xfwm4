@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-08-26 21:32+0200\n"
 "Last-Translator: Juraj Brosz <Juraj.Brosz@pobox.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -624,25 +624,21 @@ msgstr ""
 msgid "Unknown application!"
 msgstr "Neznáma aplikácia!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Správca okien"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Správca okien"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Nastavenie správcu okien"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Nastavenie správcu okien"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Okraje virtuálnej plochy"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Okraje virtuálnej plochy"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Okraje virtuálnej plochy"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Okraje virtuálnej plochy"
 
 #, fuzzy
 #~ msgid "Switch to:"

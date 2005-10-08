@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2003-12-25 19:40+0100\n"
 "Last-Translator: Daniel Mróz <beorn@alpha.pl>\n"
 "Language-Team: none <none@none>\n"
@@ -667,25 +667,21 @@ msgstr "%s: Nie mogę zidentyfikować nieaktywnego koloru %s\n"
 msgid "Unknown application!"
 msgstr ""
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Menadżer Okien"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Menadżer Okien"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Właściwości Menadżera Okien"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Właściwości Menadżera Okien"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Marginesy Obszaru Roboczego"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Marginesy Obszaru Roboczego"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Marginesy Obszaru Roboczego"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Marginesy Obszaru Roboczego"
 
 #, fuzzy
 #~ msgid "Switch to:"

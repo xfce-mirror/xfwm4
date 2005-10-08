@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-08-19 21:17+0900\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -619,21 +619,17 @@ msgstr "%s: Kan inactieve kleur %s niet vertalen\n"
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "Instellingen voor de window manager"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Instellingen voor de window manager"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Instellingen Xfce 4 Window Manager"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Instellingen Xfce 4 Window Manager"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "Instellingen voor virtuele bureaubladen"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Instellingen voor virtuele bureaubladen"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
 
 #, fuzzy
 #~ msgid "Switch to:"

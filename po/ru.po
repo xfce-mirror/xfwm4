@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-01-08 16:44+0500\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -621,21 +621,17 @@ msgstr "%s: Ошибка обработки неактивного цвета %s
 msgid "Unknown application!"
 msgstr "Неизвестное приложение!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "Настройки оконного менеджера"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Настройки оконного менеджера"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Настройки оконного менеджера Xfce 4"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Настройки оконного менеджера Xfce 4"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "Настройки рабочих мест"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Настройки рабочих мест"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Настройки рабочих мест Xfce 4"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Настройки рабочих мест Xfce 4"
 
 #, fuzzy
 #~ msgid "Switch to:"

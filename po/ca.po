@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-03-29 22:19+0100\n"
 "Last-Translator: Carles Munoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <ca@li.org>\n"
@@ -661,25 +661,21 @@ msgstr "%s: No es pot processar el color inactiu %s\n"
 msgid "Unknown application!"
 msgstr ""
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Gestor de Finestres"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Gestor de Finestres"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Ajustaments del Gestor de Finestres"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Ajustaments del Gestor de Finestres"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Marges dels espais de treball"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Marges dels espais de treball"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Marges dels espais de treball"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Marges dels espais de treball"
 
 #, fuzzy
 #~ msgid "Switch to:"

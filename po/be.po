@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-09-12 12:27+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -630,25 +630,21 @@ msgstr "%s: немагчыма разабраць неактыўны колер 
 msgid "Unknown application!"
 msgstr "Невядомае дастасаваньне!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Кіраўнік вокнаў"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Кіраўнік вокнаў"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Перавагі кіраўніка вокнаў"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Перавагі кіраўніка вокнаў"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Водступы працоўнае прасторы"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Водступы працоўнае прасторы"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Водступы працоўнае прасторы"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Водступы працоўнае прасторы"
 
 #, fuzzy
 #~ msgid "Switch to:"

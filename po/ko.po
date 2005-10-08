@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-07-02 00:25:02+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -620,21 +620,17 @@ msgstr "%s: 비활성 표시색 %s을 분석하지 못 했습니다.\n"
 msgid "Unknown application!"
 msgstr "무슨 프로그램이죠!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "창관리자 설정"
+#~ msgid "Window Manager Settings"
+#~ msgstr "창관리자 설정"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 창관리자 설정"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Xfce 4 창관리자 설정"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "작업공간 설정"
+#~ msgid "Workspaces Settings"
+#~ msgstr "작업공간 설정"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 작업공간 설정"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Xfce 4 작업공간 설정"
 
 #, fuzzy
 #~ msgid "Switch to:"

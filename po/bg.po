@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -662,25 +662,21 @@ msgstr ""
 msgid "Unknown application!"
 msgstr ""
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Мениджър на прозорци"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Мениджър на прозорци"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Настройки на мениджъра·на·прозорци"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Настройки на мениджъра·на·прозорци"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Граница на работно място"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Граница на работно място"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Граница на работно място"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Граница на работно място"
 
 #, fuzzy
 #~ msgid "Switch to:"

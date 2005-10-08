@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-01-21 15:53+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team:  <>\n"
@@ -612,21 +612,17 @@ msgstr "%s: Ei-aktiivinen väri %s ei kelpaa\n"
 msgid "Unknown application!"
 msgstr "Tuntematon sovellus!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "Ikkunamanagerin asetukset"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Ikkunamanagerin asetukset"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 ikkunamanagerin asetukset"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Xfce 4 ikkunamanagerin asetukset"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "Työtilojen asetukset"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Työtilojen asetukset"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 työtilojen asetukset"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Xfce 4 työtilojen asetukset"
 
 #, fuzzy
 #~ msgid "Switch to:"

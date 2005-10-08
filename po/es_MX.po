@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2005-08-19 21:14+0900\n"
 "Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -631,25 +631,21 @@ msgstr "%s: No se puede interpretar el color inactivo %s\n"
 msgid "Unknown application!"
 msgstr "Aplicacion desconocida."
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Gestor de Ventanas"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Gestor de Ventanas"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Preferencias del Gestor de Ventanas"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Preferencias del Gestor de Ventanas"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Márgenes del Escritorio"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Márgenes del Escritorio"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Márgenes del Escritorio"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Márgenes del Escritorio"
 
 #, fuzzy
 #~ msgid "Switch to:"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-10-10 12:36+0100\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -635,25 +635,21 @@ msgstr ""
 msgid "Unknown application!"
 msgstr "Aplicação desconhecida!"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "Gestor de Janelas"
+#~ msgid "Window Manager Settings"
+#~ msgstr "Gestor de Janelas"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Preferências do Gestor de Janelas"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Preferências do Gestor de Janelas"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "Margens da Área de Trabalho"
+#~ msgid "Workspaces Settings"
+#~ msgstr "Margens da Área de Trabalho"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Margens da Área de Trabalho"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Margens da Área de Trabalho"
 
 #, fuzzy
 #~ msgid "Switch to:"

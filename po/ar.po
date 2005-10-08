@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-03 21:49+0200\n"
+"POT-Creation-Date: 2005-10-08 21:48+0200\n"
 "PO-Revision-Date: 2004-3-8 8:25+0300\n"
 "Last-Translator: saleh alhathal <hathalsal@hotmail.com>\n"
 "Language-Team: arabic\n"
@@ -672,25 +672,21 @@ msgstr "%s: لا أستطيع تحليل اللون غير النشط %s\n"
 msgid "Unknown application!"
 msgstr ""
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-msgid "Window Manager Settings"
-msgstr "مدير النوافذ"
+#~ msgid "Window Manager Settings"
+#~ msgstr "مدير النوافذ"
 
-#: mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Window Manager Settings"
-msgstr "تفضيلات مدير النوافذ"
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "تفضيلات مدير النوافذ"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-msgid "Workspaces Settings"
-msgstr "بيئة العمل"
+#~ msgid "Workspaces Settings"
+#~ msgstr "بيئة العمل"
 
-#: mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-msgid "Xfce 4 Workspaces Settings"
-msgstr "بيئة العمل"
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "بيئة العمل"
 
 #, fuzzy
 #~ msgid "Switch to:"
