@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-10-08 06:15+0900\n"
-"PO-Revision-Date: 2005-09-29 18:03+0900\n"
+"PO-Revision-Date: 2005-10-08 10:15+0900\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -580,7 +580,7 @@ msgstr "Pois_ta Kiinnitys"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "Tilannekohtainen ohje"
+msgstr "Tilannekohtainen o_hje"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
