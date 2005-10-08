@@ -1593,12 +1593,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
 
-    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), 0, 0);
-    if (cw->extents != None)	
-    {
-        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
-    }
-
     if (!(shape_notify) && (x == cw->attr.x) && (y == cw->attr.y) &&
         (width == cw->attr.width) && (height == cw->attr.height) &&
         (bw == cw->attr.border_width))
@@ -1606,6 +1600,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         return;
     }
     
+    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), 0, 0);
+    if (cw->extents != None)	
+    {
+        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
+    }
+
     TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
     if (cw->extents)
     {
