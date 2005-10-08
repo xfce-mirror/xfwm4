@@ -117,7 +117,7 @@ AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4 (default)]),
 if test x"$enable_compositor" = x"yes"; then
   if test x"$have_render" = x"yes"; then
     if $PKG_CONFIG --exists xcomposite xfixes xdamage xrender 2> /dev/null; then
-      PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 1.0 xfixes xdamage)
+      PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 0.2 xfixes xdamage)
       AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
       ENABLE_COMPOSITOR="--enable-compositor"
     fi
