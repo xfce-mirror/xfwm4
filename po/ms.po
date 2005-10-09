@@ -1,836 +1,680 @@
-# Xfwm4 Malay translation.
-# Copyright (C) 2003 Olivier Fourdan
+# Malay translations for xfwm4 package.
+# Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Harun Musa <mharun@gmx.net>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.0.3.1\n"
+"Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 21:48+0200\n"
-"PO-Revision-Date: 2004-02-08 00:28+0800\n"
+"POT-Creation-Date: 2005-10-09 20:57+0900\n"
+"PO-Revision-Date: 2005-10-09 20:49+0900\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins.c:127
+#: ../mcs-plugin/margins.c:127
 msgid "Workspace Margins"
 msgstr "Margin Ruangkerja"
 
-#: mcs-plugin/margins.c:137
+#: ../mcs-plugin/margins.c:137
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
 
-#: mcs-plugin/margins.c:168
+#: ../mcs-plugin/margins.c:168
 msgid "Left :"
 msgstr "Kiri :"
 
-#: mcs-plugin/margins.c:188
+#: ../mcs-plugin/margins.c:188
 msgid "Right :"
 msgstr "Kanan :"
 
-#: mcs-plugin/margins.c:208
+#: ../mcs-plugin/margins.c:208
 msgid "Top :"
 msgstr "Atas :"
 
-#: mcs-plugin/margins.c:228
+#: ../mcs-plugin/margins.c:228
 msgid "Bottom :"
 msgstr "Bawah :"
 
-#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Ruangkerja dan Margin"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
+#: ../mcs-plugin/plugin.c:135 ../mcs-plugin/plugin.c:166
+#: ../mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Ruangkerja"
 
-#: mcs-plugin/plugin.c:173
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Margin"
 
-#: mcs-plugin/workspaces.c:345
+#: ../mcs-plugin/workspaces.c:345
 msgid "Change name"
 msgstr "Tukarnama"
 
-#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
 msgstr "Ruangkerja %d"
 
-#: mcs-plugin/workspaces.c:367
+#: ../mcs-plugin/workspaces.c:367
 msgid "Name:"
 msgstr "Nama:"
 
-#: mcs-plugin/workspaces.c:455
+#: ../mcs-plugin/workspaces.c:455
 msgid "Click on a workspace name to edit it"
 msgstr "Klik atas nama ruangkerja untuk editnya"
 
-#: mcs-plugin/workspaces.c:527
+#: ../mcs-plugin/workspaces.c:527
 msgid "Number of workspaces:"
 msgstr "Bilangan ruangkerja:"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:558
+#: ../mcs-plugin/workspaces.c:558
 msgid "Workspace names"
 msgstr "Nama ruangkerja"
 
-#: mcs-plugin/xfwm4_plugin.c:76
+#: ../mcs-plugin/xfwm4_plugin.c:76
 msgid "Menu"
 msgstr "Menu"
 
-#: mcs-plugin/xfwm4_plugin.c:77
+#: ../mcs-plugin/xfwm4_plugin.c:77
 msgid "Stick"
 msgstr "Lekat"
 
-#: mcs-plugin/xfwm4_plugin.c:78
+#: ../mcs-plugin/xfwm4_plugin.c:78
 msgid "Shade"
 msgstr "Bayang"
 
-#: mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_plugin.c:79
 msgid "Hide"
 msgstr "Sembunyi"
 
-#: mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
 msgstr "Maksimakan"
 
-#: mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
 msgstr "Tutup"
 
-#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:86 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "Bayang tetingkap"
 
-#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:87 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "Maksimakan tetingkap"
 
-#: mcs-plugin/xfwm4_plugin.c:89
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
 msgstr "Tiada apa"
 
-#: mcs-plugin/xfwm4_plugin.c:94
+#: ../mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
 msgstr "Kiri"
 
-#: mcs-plugin/xfwm4_plugin.c:95
+#: ../mcs-plugin/xfwm4_plugin.c:95
 msgid "Center"
 msgstr "Tengah"
 
-#: mcs-plugin/xfwm4_plugin.c:96
+#: ../mcs-plugin/xfwm4_plugin.c:96
 msgid "Right"
 msgstr "Kanan"
 
-#: mcs-plugin/xfwm4_plugin.c:564
+#: ../mcs-plugin/xfwm4_plugin.c:564
 msgid "Click and drag buttons to change the layout"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:569
+#: ../mcs-plugin/xfwm4_plugin.c:569
 msgid "Active"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:580
+#: ../mcs-plugin/xfwm4_plugin.c:580
 msgid "Title"
 msgstr "Tajuk"
 
-#: mcs-plugin/xfwm4_plugin.c:581
+#: ../mcs-plugin/xfwm4_plugin.c:581
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:589
+#: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Hidden"
 msgstr "Sembunyi"
 
-#: mcs-plugin/xfwm4_plugin.c:1343
+#: ../mcs-plugin/xfwm4_plugin.c:1343
 msgid "Font Selection Dialog"
 msgstr "Dialog Pemilihan Font"
 
-#: mcs-plugin/xfwm4_plugin.c:1414 mcs-plugin/xfwm4_plugin.c:1900
+#: ../mcs-plugin/xfwm4_plugin.c:1414 ../mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Pengurus Tetingkap"
 
-#: mcs-plugin/xfwm4_plugin.c:1427
+#: ../mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
 msgstr "Keutamaan Pengurus Tetingkap"
 
-#: mcs-plugin/xfwm4_plugin.c:1456
+#: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
 msgstr "Tajuk font"
 
-#: mcs-plugin/xfwm4_plugin.c:1469
+#: ../mcs-plugin/xfwm4_plugin.c:1469
 msgid "Title Alignment"
 msgstr "Penjajaran Tajuk"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "Penjajaran teks didalam bar tajuk :"
 
-#: mcs-plugin/xfwm4_plugin.c:1477
+#: ../mcs-plugin/xfwm4_plugin.c:1477
 msgid "Button layout"
 msgstr "Layout bebutang"
 
-#: mcs-plugin/xfwm4_plugin.c:1483
+#: ../mcs-plugin/xfwm4_plugin.c:1483
 #, fuzzy
 msgid "Style"
 msgstr "Tajuk"
 
-#: mcs-plugin/xfwm4_plugin.c:1521
+#: ../mcs-plugin/xfwm4_plugin.c:1521
 #, fuzzy
 msgid "Window shortcuts"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_plugin.c:1541
+#: ../mcs-plugin/xfwm4_plugin.c:1541
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1546
+#: ../mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
 msgid "Shortcut"
 msgstr "Pintasan Papankekunci"
 
-#: mcs-plugin/xfwm4_plugin.c:1562
+#: ../mcs-plugin/xfwm4_plugin.c:1562
 #, fuzzy
 msgid "Keyboard"
 msgstr "Pintasan Papankekunci"
 
-#: mcs-plugin/xfwm4_plugin.c:1573
+#: ../mcs-plugin/xfwm4_plugin.c:1573
 msgid "Focus model"
 msgstr "Model fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1581
+#: ../mcs-plugin/xfwm4_plugin.c:1581
 msgid "Click to focus"
 msgstr "Klik untuk fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1588
+#: ../mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus follows mouse"
 msgstr "Fokus mengikuti tetikus"
 
-#: mcs-plugin/xfwm4_plugin.c:1595
+#: ../mcs-plugin/xfwm4_plugin.c:1595
 msgid "New window focus"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_plugin.c:1599
+#: ../mcs-plugin/xfwm4_plugin.c:1599
 #, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 "Automatik beri fokus kepada \n"
 "tetingkap baru dicipta"
 
-#: mcs-plugin/xfwm4_plugin.c:1604
+#: ../mcs-plugin/xfwm4_plugin.c:1604
 msgid "Raise on focus"
 msgstr "Bangkit ketika fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1612
+#: ../mcs-plugin/xfwm4_plugin.c:1612
 #, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Automatik tetingkap bangkit \n"
 "bila menerima fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1622
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Delay before raising focused window :"
 msgstr "Lengah sebelum bangkitkan tetingkap difokus :"
 
-#: mcs-plugin/xfwm4_plugin.c:1628
+#: ../mcs-plugin/xfwm4_plugin.c:1628
 msgid "Slow"
 msgstr "Perlahan"
 
-#: mcs-plugin/xfwm4_plugin.c:1634
+#: ../mcs-plugin/xfwm4_plugin.c:1634
 msgid "Fast"
 msgstr "Pantas"
 
-#: mcs-plugin/xfwm4_plugin.c:1650
+#: ../mcs-plugin/xfwm4_plugin.c:1650
 msgid "Raise on click"
 msgstr "Bangkit ketika klik"
 
-#: mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1654
 #, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "Tetingkap bangkit ketika klik didalam\n"
 "tetingkap aplikasi"
 
-#: mcs-plugin/xfwm4_plugin.c:1659
+#: ../mcs-plugin/xfwm4_plugin.c:1659
 #, fuzzy
 msgid "Focus"
 msgstr "Model fokus"
 
-#: mcs-plugin/xfwm4_plugin.c:1669
+#: ../mcs-plugin/xfwm4_plugin.c:1669
 msgid "Windows snapping"
 msgstr "Snapping tetingkap"
 
-#: mcs-plugin/xfwm4_plugin.c:1677
+#: ../mcs-plugin/xfwm4_plugin.c:1677
 msgid "Snap windows to screen border"
 msgstr "Snap tetingkap ke sempadan skrin"
 
-#: mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/xfwm4_plugin.c:1682
 msgid "Snap windows to other windows"
 msgstr "Snap tetingkap ke tetingkap lain"
 
-#: mcs-plugin/xfwm4_plugin.c:1692
+#: ../mcs-plugin/xfwm4_plugin.c:1692
 msgid "Distance :"
 msgstr "Jarak :"
 
-#: mcs-plugin/xfwm4_plugin.c:1698 mcs-plugin/xfwm4_plugin.c:1748
+#: ../mcs-plugin/xfwm4_plugin.c:1698 ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Kecil"
 
-#: mcs-plugin/xfwm4_plugin.c:1704 mcs-plugin/xfwm4_plugin.c:1754
+#: ../mcs-plugin/xfwm4_plugin.c:1704 ../mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Luas"
 
-#: mcs-plugin/xfwm4_plugin.c:1719
+#: ../mcs-plugin/xfwm4_plugin.c:1719
 msgid "Wrap workspaces"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_plugin.c:1727
+#: ../mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
 
-#: mcs-plugin/xfwm4_plugin.c:1732
+#: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Wrap ruangkerja bila seretkan tetingkap keluar skrin"
 
-#: mcs-plugin/xfwm4_plugin.c:1742
+#: ../mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
 msgstr "Halangan Sisi :"
 
-#: mcs-plugin/xfwm4_plugin.c:1769
+#: ../mcs-plugin/xfwm4_plugin.c:1769
 msgid "Opaque move and resize"
 msgstr "Opaque pindah dan saizsemula"
 
-#: mcs-plugin/xfwm4_plugin.c:1777
+#: ../mcs-plugin/xfwm4_plugin.c:1777
 msgid "Display content of windows when resizing"
 msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 
-#: mcs-plugin/xfwm4_plugin.c:1782
+#: ../mcs-plugin/xfwm4_plugin.c:1782
 msgid "Display content of windows when moving"
 msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 
-#: mcs-plugin/xfwm4_plugin.c:1787
+#: ../mcs-plugin/xfwm4_plugin.c:1787
 msgid "Double click action"
 msgstr "Aksi dwi klik"
 
-#: mcs-plugin/xfwm4_plugin.c:1793
+#: ../mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Aksi untuk dilakukan apabila dwiklik pada bar tajuk :"
 
-#: mcs-plugin/xfwm4_plugin.c:1795
+#: ../mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:55
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:131
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:125
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Add keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:135
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:135
 msgid "Enter a name for the theme:"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:158
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:158
 msgid "A keybinding theme with the same name already exists"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:164
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:164
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
 #, fuzzy
 msgid "Close window"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "Maksimakan tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "Maksimakan tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Stick window"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Move window up"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Move window down"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Move window left"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Move window right"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Resize window up"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Resize window down"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Resize window left"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Resize window right"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Raise window"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Lower window"
 msgstr "Sembunyi tetingkap"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Left workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Right workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Next workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Previous workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Add workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Delete workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "Wrap ruangkerja"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Show desktop"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:423
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:423
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Fokus tetingkap baru"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:508
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:527
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:527
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:552
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:541
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:680
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:680
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:739
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:739
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Pintasan Papankekunci"
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:742
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:742
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Pintasan Papankekunci"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:744
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:744
 #, fuzzy
 msgid "No shortcut"
 msgstr "Pintasan Papankekunci"
 
-#: src/main.c:181
+#: ../src/main.c:181
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Kesilapan segmentasi"
 
-#: src/menu.c:39
+#: ../src/menu.c:39
 msgid "Ma_ximize"
 msgstr "Ma_ksimakan"
 
-#: src/menu.c:40
+#: ../src/menu.c:40
 msgid "Un_maximize"
 msgstr "Nyah_maksima"
 
-#: src/menu.c:41
+#: ../src/menu.c:41
 msgid "_Hide"
 msgstr "_Sembunyi"
 
-#: src/menu.c:42
+#: ../src/menu.c:42
 msgid "Hide _all others"
 msgstr "Sembunyi y_ang lain-lain"
 
-#: src/menu.c:43
+#: ../src/menu.c:43
 msgid "S_how"
 msgstr "Li_hat"
 
-#: src/menu.c:44
+#: ../src/menu.c:44
 msgid "_Shade"
 msgstr "_Bebayang"
 
-#: src/menu.c:45
+#: ../src/menu.c:45
 msgid "Un_shade"
 msgstr "Nyah_bebayang"
 
-#: src/menu.c:46
+#: ../src/menu.c:46
 msgid "S_tick"
 msgstr "L_ekat"
 
-#: src/menu.c:47
+#: ../src/menu.c:47
 msgid "Uns_tick"
 msgstr "Nyah_lekat"
 
-#: src/menu.c:48
+#: ../src/menu.c:48
 msgid "Context _help"
 msgstr "Context _bantuan"
 
-#: src/menu.c:49 src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr "Sentiasa di atas"
 
-#: src/menu.c:51
+#: ../src/menu.c:51
 msgid "Send to..."
 msgstr "Hantar ke..."
 
-#: src/menu.c:53
+#: ../src/menu.c:53
 msgid "_Close"
 msgstr "_Tutup"
 
-#: src/menu.c:56
+#: ../src/menu.c:56
 msgid "Destroy"
 msgstr "Musnah"
 
-#: src/menu.c:59
+#: ../src/menu.c:59
 msgid "_Quit"
 msgstr "_Keluar"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "Restart"
 msgstr "Ulangmula"
 
-#: src/menu.c:169
+#: ../src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Ruangkerja %i"
 
-#: src/menu.c:181
+#: ../src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Ruangkerja %i"
 
-#: src/menu.c:416
+#: ../src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu gagal untuk grab penunjuk\n"
 
-#: src/settings.c:859
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
 msgstr "%s: Tak boleh allocate warna aktif %s\n"
 
-#: src/settings.c:865
+#: ../src/settings.c:865
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
 msgstr "%s: Tak boleh parse warna tak aktif %s\n"
 
-#: src/settings.c:908
+#: ../src/settings.c:908
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
 msgstr "%s: Tak boleh allocate warna tak aktif %s\n"
 
-#: src/settings.c:914
+#: ../src/settings.c:914
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
 msgstr "%s: Tak boleh parse warna tak aktif %s\n"
 
-#: src/tabwin.c:95
+#: ../src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
 
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Pengurus Tetingkap"
+msgid "Window Manager Settings"
+msgstr "Pengurus Tetingkap"
 
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 #, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Keutamaan Pengurus Tetingkap"
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Keutamaan Pengurus Tetingkap"
 
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Margin Ruangkerja"
+msgid "Workspaces Settings"
+msgstr "Margin Ruangkerja"
 
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 #, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Margin Ruangkerja"
-
-#, fuzzy
-#~ msgid "Switch to:"
-#~ msgstr "Suis ke ..."
-
-#, fuzzy
-#~ msgid "Command shortcuts"
-#~ msgstr "Pintasan Papankekunci"
-
-#, fuzzy
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Fokus tetingkap baru"
-
-#, fuzzy
-#~ msgid "Command :"
-#~ msgstr "Pintasan Papankekunci"
-
-#, fuzzy
-#~ msgid "Workspace 1"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 2"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 3"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 4"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 5"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 6"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 7"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 8"
-#~ msgstr "Ruangkerja %i"
-
-#, fuzzy
-#~ msgid "Workspace 9"
-#~ msgstr "Ruangkerja %i"
-
-#~ msgid "%s: Operation not supported (yet)\n"
-#~ msgstr "%s: Operasi tidak disokong (lagi)\n"
-
-#~ msgid "%s: Unmanaged net_wm_state (window 0x%lx)"
-#~ msgstr "%s: Takterurus net_wm_state (tetingkap 0x%lx)"
-
-#, fuzzy
-#~ msgid "%s: Another compositing manager is running on screen %i"
-#~ msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
-
-#, fuzzy
-#~ msgid "%s: Cannot create root picture on screen %i"
-#~ msgstr "%s: Tak boleh allocate warna tak aktif %s\n"
-
-#~ msgid "%s: Another Window Manager is already running"
-#~ msgstr "%s: Pengurus Tetingkap lain telah sedia berlari"
-
-#~ msgid "%s: Missing data from default files"
-#~ msgstr "%s: Kehilangan data dari fail default"
-
-#~ msgid "%s: Failed to enter daemon mode: %s"
-#~ msgstr "%s: Gagal untuk memasuki mod daemon: %s"
-
-#~ msgid "%s: Failed to create new process: %s"
-#~ msgstr "%s: Gagal unuk cipta proses baru: %s"
-
-#~ msgid "%s: Unknown error occured"
-#~ msgstr "%s: Ralat tidak diketahui terjadi"
-
-#~ msgid "%s: Missing defaults file"
-#~ msgstr "%s: Kehilangan fail default"
-
-#~ msgid "%s: specified key theme \"%s\" missing, using default"
-#~ msgstr "%s: kekunci tema dispefikasi \"%s\" hilang, guna default"
-
-#~ msgid "%s: Missing values in defaults file"
-#~ msgstr "%s: Kehilangan nilai dalam fail default"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically give focus to \n"
-#~ "newly created windows"
-#~ msgstr ""
-#~ "Automatik beri fokus kepada \n"
-#~ "tetingkap baru dicipta"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically raise windows \n"
-#~ "when they receive focus"
-#~ msgstr ""
-#~ "Automatik tetingkap bangkit \n"
-#~ "bila menerima fokus"
-
-#, fuzzy
-#~ msgid ""
-#~ "Raise window when clicking inside\n"
-#~ "application window"
-#~ msgstr ""
-#~ "Tetingkap bangkit ketika klik didalam\n"
-#~ "tetingkap aplikasi"
-
-#~ msgid "Decoration style"
-#~ msgstr "Stail dekorasi"
-
-#~ msgid "Keyboard and focus"
-#~ msgstr "Papankekunci dan fokus"
-
-#~ msgid "%s: Workspace count not set, using rc value: %i"
-#~ msgstr "%s: Bilangan ruangkerja belum set, guna nilai rc: %i"
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Margin Ruangkerja"
