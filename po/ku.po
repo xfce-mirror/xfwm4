@@ -1,23 +1,23 @@
 # Kurdish translations for xfwm4 package.
 # Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Erdal Ronahi <erdal.ronahi@gmail.com, pckurd@hotmail.com>, 2005.
+# Erdal Ronahi <erdal.ronahi@gmail.com>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:15+0900\n"
-"PO-Revision-Date: 2005-09-29 18:07+0900\n"
-"Last-Translator: Erdal Ronahi <erdal.ronahi@gmail.com, pckurd@hotmail.com>\n"
+"POT-Creation-Date: 2005-10-10 09:00+0900\n"
+"PO-Revision-Date: 2005-10-11 00:46+0900\n"
+"Last-Translator: Erdal Ronahi <erdal.ronahi@gmail.com>\n"
 "Language-Team: Kurdish <gnu-ku-wergerandin@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural= n != 1\n"
 "X-Poedit-Language: Kurdish\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: KBabel 1.10\n"
-"Plural-Forms: n != 1\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
@@ -120,9 +120,8 @@ msgid "Maximize window"
 msgstr " venster"
 
 #: mcs-plugin/xfwm4_plugin.c:89
-#, fuzzy
 msgid "Nothing"
-msgstr "Ne yek jî"
+msgstr "Tune"
 
 #: mcs-plugin/xfwm4_plugin.c:94
 msgid "Left"
@@ -258,7 +257,6 @@ msgid "Raise window when clicking inside application window"
 msgstr ""
 
 #: mcs-plugin/xfwm4_plugin.c:1693
-#, fuzzy
 msgid "Focus"
 msgstr "Mêzedan"
 
@@ -368,19 +366,19 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window up"
-msgstr ""
+msgstr "Paceyê berjor"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window down"
-msgstr ""
+msgstr "Paceyê berjêr"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window left"
-msgstr ""
+msgstr "Paceyê ber ep ç"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window right"
-msgstr ""
+msgstr "Paceyê berrast"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Resize window up"
@@ -400,11 +398,11 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Raise window"
-msgstr ""
+msgstr "Paceyê nêzîk bîne"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Lower window"
-msgstr ""
+msgstr "Paceyê dûr bibe"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
@@ -436,11 +434,11 @@ msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Add workspace"
-msgstr ""
+msgstr "Kargehê bike"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Delete workspace"
-msgstr ""
+msgstr "Kargehê jê bibe"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to next workspace"
@@ -471,9 +469,9 @@ msgid "Show desktop"
 msgstr ""
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, c-format
+#, fuzzy, c-format
 msgid "Move window to workspace %d"
-msgstr ""
+msgstr "Paceyê berjêr"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -494,6 +492,8 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Nikare di %s de binivîse: \n"
+"%s"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:667
 msgid "Select command"
@@ -548,7 +548,7 @@ msgstr "_Mezin bike"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr ""
+msgstr "N_ormal bike"
 
 #: src/menu.c:41
 msgid "_Hide"
@@ -560,15 +560,15 @@ msgstr "Yên din _veşêre"
 
 #: src/menu.c:43
 msgid "S_how"
-msgstr "Nîşan bide"
+msgstr "_Nîşan Bide"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr ""
+msgstr "_Sih"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr ""
+msgstr "Sihî _rake"
 
 #: src/menu.c:46
 msgid "S_tick"
@@ -609,12 +609,12 @@ msgstr "Ji nû ve bide dest pê kirin"
 #: src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
-msgstr ""
+msgstr "Kargeha %i (%s)"
 
 #: src/menu.c:181
 #, c-format
 msgid "Workspace %i"
-msgstr ""
+msgstr "Kargeha %i"
 
 #: src/menu.c:416
 #, c-format
