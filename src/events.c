@@ -369,8 +369,11 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_7:
             case KEY_MOVE_WORKSPACE_8:
             case KEY_MOVE_WORKSPACE_9:
-                clientRaise (c);
-                workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, c);
+                if (key - KEY_WORKSPACE_1 < params.workspace_count)
+                {
+                    clientRaise (c, None);
+                    workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, c);
+                }
                 break;
             default:
                 break;
@@ -413,7 +416,10 @@ handleKeyPress (XKeyEvent * ev)
         case KEY_WORKSPACE_7:
         case KEY_WORKSPACE_8:
         case KEY_WORKSPACE_9:
-            workspaceSwitch (key - KEY_WORKSPACE_1, NULL);
+            if (key - KEY_WORKSPACE_1 < params.workspace_count)
+            {
+                workspaceSwitch (key - KEY_WORKSPACE_1, NULL);
+            }
             break;
         case KEY_SHORTCUT_1:
         case KEY_SHORTCUT_2:
