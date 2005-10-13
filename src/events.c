@@ -470,8 +470,8 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 {
                     clientRaise (c, None);
                     workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
-                    break;
                 }
+                break;
             default:
                 break;
         }
