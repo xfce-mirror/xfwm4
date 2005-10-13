@@ -544,7 +544,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_9:
                 if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
                 {
-                    clientRaise (c, None);
+                    clientRaise (c);
                     workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
                 }
                 break;
