@@ -787,14 +787,42 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     }
     mask &= ~(CWStackMode | CWSibling);
 
-    /*
-       Some broken apps try to achieve fullscreen by using static gravity and a
-       (0,0) position, the second part of the test is for this case.
+    /* Keep control over what the application does. However, some broken apps try 
+       to achieve fullscreen by using static gravity and a (0,0) position, the 
+       second part of the test is for this case.
      */
-    if ((flags & CFG_CONSTRAINED) && (mask & (CWX | CWY)) && (CONSTRAINED_WINDOW (c)
-         && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0))))
+    if ((flags & (CFG_CONSTRAINED | CFG_REQUEST) == (CFG_CONSTRAINED | CFG_REQUEST))
+         && CONSTRAINED_WINDOW (c)
+         && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0)))
     {
-        clientConstrainPos (c, FALSE);
+        int px = c->x;
+        int py = c->y;
+        int pwidth = c->width;
+        int pheight = c->height;
+
+        clientConstrainPos (c, TRUE);
+
+        if (c->x != px)
+        {
+            mask |= CWX;
+            moved = TRUE;
+        }
+        if (c->y != py)
+        {
+            mask |= CWY;
+            moved = TRUE;
+        }
+        
+        if (c->width != pwidth)
+        {
+            mask |= CWWidth;
+            resized = TRUE;
+        }
+        if (c->height != pheight)
+        {
+            mask |= CWHeight;
+            resized = TRUE;
+        }
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))

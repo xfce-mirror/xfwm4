@@ -259,30 +259,6 @@ clientConstrainPos (Client * c, gboolean show_full)
     }
     if (show_full)
     {
-        if (frame_x + frame_width > disp_max_x)
-        {
-            c->x = disp_max_x - frame_width + frame_left;
-            frame_x = frameX (c);
-            ret |= CLIENT_CONSTRAINED_RIGHT;
-        }
-        if (frame_x < disp_x)
-        {
-            c->x = disp_x + frame_left;
-            frame_x = frameX (c);
-            ret |= CLIENT_CONSTRAINED_LEFT;
-        }
-        if (frame_y + frame_height > disp_max_y)
-        {
-            c->y = disp_max_y - frame_height + frame_top;
-            frame_y = frameY (c);
-            ret |= CLIENT_CONSTRAINED_BOTTOM;
-        }
-        if (frame_y < disp_y)
-        {
-            c->y = disp_y + frame_top;
-            frame_y = frameY (c);
-            ret |= CLIENT_CONSTRAINED_TOP;
-        }
         /* Struts and other partial struts */
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
@@ -320,6 +296,31 @@ clientConstrainPos (Client * c, gboolean show_full)
                     }
                 }
             }
+        }
+
+        if (frame_x + frame_width > disp_max_x)
+        {
+            c->x = disp_max_x - frame_width + frame_left;
+            frame_x = frameX (c);
+            ret |= CLIENT_CONSTRAINED_RIGHT;
+        }
+        if (frame_x < disp_x)
+        {
+            c->x = disp_x + frame_left;
+            frame_x = frameX (c);
+            ret |= CLIENT_CONSTRAINED_LEFT;
+        }
+        if (frame_y + frame_height > disp_max_y)
+        {
+            c->y = disp_max_y - frame_height + frame_top;
+            frame_y = frameY (c);
+            ret |= CLIENT_CONSTRAINED_BOTTOM;
+        }
+        if (frame_y < disp_y)
+        {
+            c->y = disp_y + frame_top;
+            frame_y = frameY (c);
+            ret |= CLIENT_CONSTRAINED_TOP;
         }
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
