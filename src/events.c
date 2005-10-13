@@ -371,7 +371,7 @@ handleKeyPress (XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_9:
                 if (key - KEY_WORKSPACE_1 < params.workspace_count)
                 {
-                    clientRaise (c, None);
+                    clientRaise (c);
                     workspaceSwitch (key - KEY_MOVE_WORKSPACE_1, c);
                 }
                 break;
