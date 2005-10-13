@@ -542,8 +542,11 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_7:
             case KEY_MOVE_WORKSPACE_8:
             case KEY_MOVE_WORKSPACE_9:
-                clientRaise (c);
-                workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
+                if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
+                {
+                    clientRaise (c, None);
+                    workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
+                }
                 break;
             default:
                 break;
@@ -609,7 +612,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_WORKSPACE_7:
         case KEY_WORKSPACE_8:
         case KEY_WORKSPACE_9:
-            workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL);
+            if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
+            {
+                workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL);
+            }
             break;
         case KEY_SHORTCUT_1:
         case KEY_SHORTCUT_2:
