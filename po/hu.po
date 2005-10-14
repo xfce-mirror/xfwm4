@@ -4,14 +4,13 @@
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
 # Servitore <sas@321 uh:))>, 2004-2005.
-# SZERVÁC Attila <sas@321.hu>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-10-14 07:11+0200\n"
-"PO-Revision-Date: 2005-10-13 22:42+0900\n"
+"PO-Revision-Date: 2005-10-14 18:34+0900\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +100,7 @@ msgstr "Elrejtés"
 
 #: mcs-plugin/xfwm4_plugin.c:80
 msgid "Maximize"
-msgstr "Maximalizálás"
+msgstr "Maximálás"
 
 #: mcs-plugin/xfwm4_plugin.c:81
 msgid "Close"
@@ -117,7 +116,7 @@ msgstr "Ablak rejtése"
 
 #: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
-msgstr "Ablak maximalizálása"
+msgstr "Ablak maximálása"
 
 #: mcs-plugin/xfwm4_plugin.c:89
 msgid "Nothing"
@@ -290,7 +289,7 @@ msgstr "Munkaterület-váltás, amikor a mutató a képernyő széléhez ér"
 
 #: mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Munkaterület-váltás, amikor egy ablakot a képernyőről lehúz"
+msgstr "Munkaterület-váltás, egy ablak lehúzásánál a képernyőről"
 
 #: mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
@@ -314,7 +313,7 @@ msgstr "Kettős-kattintásra elvégzendő művelet"
 
 #: mcs-plugin/xfwm4_plugin.c:1793
 msgid "Action to perform when double clicking on title bar :"
-msgstr "A címsoron kettős kattintásra elvégezendő művelet"
+msgstr "A címsoron kettős kattintásra végezendő művelet"
 
 #: mcs-plugin/xfwm4_plugin.c:1795
 msgid "Advanced"
@@ -330,7 +329,7 @@ msgstr "Billentyűtéma hozzáadása"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:135
 msgid "Enter a name for the theme:"
-msgstr "Adj nevet e témának"
+msgstr "Adj nevet e témának:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:158
 msgid "A keybinding theme with the same name already exists"
@@ -358,7 +357,7 @@ msgstr "Ablak rögzítése"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Cycle windows"
-msgstr "Ablakok leválasztása"
+msgstr "Ablakok váltása"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Move window up"
@@ -519,15 +518,15 @@ msgstr "%s: Szegmentálási hiba"
 
 #: src/menu.c:39
 msgid "Ma_ximize"
-msgstr "Ma_ximalizálás"
+msgstr "Ma_ximálás"
 
 #: src/menu.c:40
 msgid "Un_maximize"
-msgstr "_Eredeti méret"
+msgstr "_Visszaállítás"
 
 #: src/menu.c:41
 msgid "_Hide"
-msgstr "Elre_jtés"
+msgstr "El_rejtés"
 
 #: src/menu.c:42
 msgid "Hide _all others"
@@ -539,31 +538,31 @@ msgstr "_Megjelenítés"
 
 #: src/menu.c:44
 msgid "_Shade"
-msgstr "_Felgördítés"
+msgstr "Fel_gördítés"
 
 #: src/menu.c:45
 msgid "Un_shade"
-msgstr "_Legördítés"
+msgstr "Le_gördítés"
 
 #: src/menu.c:46
 msgid "S_tick"
-msgstr "Megjelenés m_inden munkaterületen"
+msgstr "_Kitűzés"
 
 #: src/menu.c:47
 msgid "Uns_tick"
-msgstr "Munkaterületre _korlátozás"
+msgstr "_Leválasztás"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "Helyi_súgó"
+msgstr "Helyi _súgó"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
-msgstr "Mindig felül"
+msgstr "M_indig felül"
 
 #: src/menu.c:51
 msgid "Send to..."
-msgstr "Áthelye_zés másik munkaterületre..."
+msgstr "Küldés ide:"
 
 #: src/menu.c:53
 msgid "_Close"
