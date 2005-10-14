@@ -800,7 +800,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         int pwidth = c->width;
         int pheight = c->height;
 
-        clientConstrainPos (c, TRUE);
+        /* Keep fully visible only on resize */
+        clientConstrainPos (c, (mask & (CWWidth | CWHeight)));
 
         if (c->x != px)
         {
