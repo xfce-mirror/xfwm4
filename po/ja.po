@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:15+0900\n"
-"PO-Revision-Date: 2005-05-13 07:28+0900\n"
+"POT-Creation-Date: 2005-10-10 09:00+0900\n"
+"PO-Revision-Date: 2005-10-16 10:13+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -160,11 +160,11 @@ msgstr "フォント選択ダイアログ"
 
 #: mcs-plugin/xfwm4_plugin.c:1417 mcs-plugin/xfwm4_plugin.c:1937
 msgid "Window Manager"
-msgstr "ウィンドウマネージャ"
+msgstr "ウィンドウマネージャー"
 
 #: mcs-plugin/xfwm4_plugin.c:1430
 msgid "Window Manager Preferences"
-msgstr "ウィンドウマネージャ設定"
+msgstr "ウィンドウマネージャー設定"
 
 #: mcs-plugin/xfwm4_plugin.c:1459
 msgid "Title font"
