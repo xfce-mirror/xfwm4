@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-10-10 09:00+0900\n"
-"PO-Revision-Date: 2005-10-16 10:13+0900\n"
+"PO-Revision-Date: 2005-10-17 19:56+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -229,15 +229,15 @@ msgstr "新規作成されたウィンドウに自動的にフォーカスを当
 
 #: mcs-plugin/xfwm4_plugin.c:1638
 msgid "Raise on focus"
-msgstr "フォーカスで最前面へ"
+msgstr "フォーカスで前面へ"
 
 #: mcs-plugin/xfwm4_plugin.c:1646
 msgid "Automatically raise windows when they receive focus"
-msgstr "ウィンドウがフォーカスを取得した場合自動的に最前面にする"
+msgstr "ウィンドウがフォーカスを取得した場合自動的に前面に出す"
 
 #: mcs-plugin/xfwm4_plugin.c:1656
 msgid "Delay before raising focused window :"
-msgstr "フォーカス取得後、最前面になるまでの遅延時間 :"
+msgstr "フォーカス取得後、前面に出すまでの遅延時間 :"
 
 #: mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
@@ -249,11 +249,11 @@ msgstr "速い"
 
 #: mcs-plugin/xfwm4_plugin.c:1684
 msgid "Raise on click"
-msgstr "クリックで最前面にする"
+msgstr "クリックで前面に出す"
 
 #: mcs-plugin/xfwm4_plugin.c:1688
 msgid "Raise window when clicking inside application window"
-msgstr "アプリケーションウィンドウ内でクリックした場合最前面にする"
+msgstr "アプリケーションウィンドウ内でクリックした場合前面に出す"
 
 #: mcs-plugin/xfwm4_plugin.c:1693
 msgid "Focus"
@@ -325,11 +325,11 @@ msgstr "詳細"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "本当にこのキーバインディングテーマを削除しますか？"
+msgstr "本当にこのキー割り当てテーマを削除しますか？"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
-msgstr "キーバインディングテーマを追加"
+msgstr "キー割り当てテーマを追加"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:136
 msgid "Enter a name for the theme:"
@@ -337,11 +337,11 @@ msgstr "テーマの名前を入力して下さい:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:159
 msgid "A keybinding theme with the same name already exists"
-msgstr "同じ名前のキーバインディングテーマが既に存在します"
+msgstr "同じ名前のキー割り当てテーマが既に存在します"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:165
 msgid "You have to provide a name for the keybinding theme"
-msgstr "キーバインディングテーマの名前を与える必要があります"
+msgstr "キー割り当てテーマの名前を与える必要があります"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Close window"
@@ -365,43 +365,43 @@ msgstr "ウィンドウを循環させる"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window up"
-msgstr "ウィンドウを上に移す"
+msgstr "ウィンドウを上に移動する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:311
 msgid "Move window down"
-msgstr "ウィンドウを下に移す"
+msgstr "ウィンドウを下に移動する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window left"
-msgstr "ウィンドウを左に移す"
+msgstr "ウィンドウを左に移動する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Move window right"
-msgstr "ウィンドウを右に移す"
+msgstr "ウィンドウを右に移動する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Resize window up"
-msgstr "ウィンドウを上にライズ"
+msgstr "ウィンドウを縦に縮める"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window down"
-msgstr "ウィンドウを下にライズ"
+msgstr "ウィンドウを縦に伸ばす"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window left"
-msgstr "ウィンドウを左にライズ"
+msgstr "ウィンドウを横に伸ばす"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Resize window right"
-msgstr "ウィンドウを右にライズ"
+msgstr "ウィンドウを横に縮める"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Raise window"
-msgstr "ウィンドウを前面に移す"
+msgstr "ウィンドウを前面に出す"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Lower window"
-msgstr "ウィンドウを背面に移す"
+msgstr "ウィンドウを背面に隠す"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Toggle fullscreen"
@@ -409,35 +409,35 @@ msgstr "全画面に切替える"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Upper workspace"
-msgstr "上のワークスペース"
+msgstr "上のワークスペースへ移る"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Bottom workspace"
-msgstr "下のワークスペース"
+msgstr "下のワークスペースへ移る"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Left workspace"
-msgstr "左のワークスペース"
+msgstr "左のワークスペースへ移る"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Right workspace"
-msgstr "右のワークスペース"
+msgstr "右のワークスペースへ移る"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Next workspace"
-msgstr "次のワークスペース"
+msgstr "次のワークスペースへ移る"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Previous workspace"
-msgstr "前のワークスペース"
+msgstr "前のワークスペースへ移る"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Add workspace"
-msgstr "ワークスペースを追加"
+msgstr "ワークスペースを追加する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Delete workspace"
-msgstr "ワークスペースを削除"
+msgstr "ワークスペースを削除する"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to next workspace"
