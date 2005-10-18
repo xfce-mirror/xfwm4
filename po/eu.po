@@ -464,12 +464,12 @@ msgstr "Mugitu leihoa eskuineko idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Idazmahaia bistarazi"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mugitu leihoa 1 idazmahaiera"
+msgstr "Mugitu leihoa %d idazmahaiera"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
