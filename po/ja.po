@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-10-17 07:10+0900\n"
-"PO-Revision-Date: 2005-10-17 19:56+0900\n"
+"PO-Revision-Date: 2005-10-19 01:08+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "名前変更"
 #: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
-msgstr "ワークスペース %d"
+msgstr "ワークスペース %d へ移る"
 
 #: ../mcs-plugin/workspaces.c:367
 msgid "Name:"
@@ -601,22 +601,22 @@ msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
 #: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot allocate active color %s\n"
-msgstr "%s: 有効色を割当てられません %s\n"
+msgstr "%s: アクティブ時の色 %s を割当てられません\n"
 
 #: ../src/settings.c:865
 #, c-format
 msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: 有効色を解析できません %s\n"
+msgstr "%s: アクティブ時の色 %s を解析できません\n"
 
 #: ../src/settings.c:908
 #, c-format
 msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: 非有効色を割当てられません %s\n"
+msgstr "%s: 非アクティブ時の色 %s を割当てられません\n"
 
 #: ../src/settings.c:914
 #, c-format
 msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: 非有効色を解析できません %s\n"
+msgstr "%s: 非アクティブ時の色 %s を解析できません\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"
