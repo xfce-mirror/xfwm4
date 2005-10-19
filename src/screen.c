@@ -177,6 +177,10 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->title_colors[ACTIVE].allocated = FALSE;
     screen_info->title_colors[INACTIVE].gc = NULL;
     screen_info->title_colors[INACTIVE].allocated = FALSE;
+    screen_info->title_shadow_colors[ACTIVE].gc = NULL;
+    screen_info->title_shadow_colors[ACTIVE].allocated = FALSE;
+    screen_info->title_shadow_colors[INACTIVE].gc = NULL;
+    screen_info->title_shadow_colors[INACTIVE].allocated = FALSE;
 
     for (i = 0; i < BUTTON_COUNT; i++)
     {

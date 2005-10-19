@@ -338,7 +338,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         xfwmPixmapFill (&screen_info->title[TITLE_3][state], pm, x, 0, w3, frameTop (c)); 
         if (screen_info->params->title_shadow[state])
         {
-            gdk_gc_get_values (screen_info->black_gc, &values);
+            gdk_gc_get_values (screen_info->title_shadow_colors[state].gc, &values);
             gdk_gc_set_values (gc, &values, GDK_GC_FOREGROUND);
             gdk_draw_layout (gpixmap, gc, x + tp + 1,
                 (frameTop (c) + voffset - logical_rect.height) / 2 + 1,

@@ -73,6 +73,7 @@ struct _ScreenInfo
     
     /* Theme pixmaps and other params, per screen */
     XfwmColor title_colors[2];
+    XfwmColor title_shadow_colors[2];
     xfwmPixmap buttons[BUTTON_COUNT][6];
     xfwmPixmap corners[4][2];
     xfwmPixmap sides[3][2];

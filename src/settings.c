@@ -757,6 +757,42 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
     }
 }
 
+/* Simple helper function to avoid copy/paste of code */
+static void
+setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, const gchar * name, const gchar * state)
+{
+    if (color->allocated)
+    {
+        gdk_colormap_free_colors (gdk_screen_get_rgb_colormap (screen_info->gscr), &color->col, 1);
+        color->allocated = FALSE;
+    }
+    if (gdk_color_parse (rc[id].value, &color->col))
+    {
+        if (gdk_colormap_alloc_color (gdk_screen_get_rgb_colormap (screen_info->gscr),
+                                      &color->col, FALSE, FALSE))
+        {
+            color->allocated = TRUE;
+            if (color->gc)
+            {
+                g_object_unref (G_OBJECT (color->gc));
+            }
+            color->gc = gdk_gc_new (myScreenGetGdkWindow (screen_info));
+            gdk_gc_copy (color->gc, get_style_gc (myScreenGetGtkWidget (screen_info), name, state));
+            gdk_gc_set_foreground (color->gc, &color->col);
+        }
+        else
+        {
+            gdk_beep ();
+            g_message (_("%s: Cannot allocate color %s\n"), g_get_prgname (), rc[id].value);
+        }
+    }
+    else
+    {
+        gdk_beep ();
+        g_message (_("%s: Cannot parse color %s\n"), g_get_prgname (), rc[id].value);
+    }
+}
+
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
@@ -764,7 +800,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     DisplayInfo *display_info = NULL;
     gchar *theme;
     gchar *font;
-    XpmColorSymbol colsym[20];
+    XpmColorSymbol colsym[22];
     PangoFontDescription *desc = NULL;
     guint i;
     GValue tmp_val = { 0, };
@@ -774,24 +810,26 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     rc[0].value  = get_style (widget, "fg",    "selected");
     rc[1].value  = get_style (widget, "fg",    "insensitive");
-    rc[2].value  = get_style (widget, "fg",    "normal");
-    rc[3].value  = get_style (widget, "fg",    "normal");
-    rc[4].value  = get_style (widget, "bg",    "selected");
-    rc[5].value  = get_style (widget, "light", "selected");
-    rc[6].value  = get_style (widget, "dark",  "selected");
-    rc[7].value  = get_style (widget, "mid",   "selected");
-    rc[8].value  = get_style (widget, "bg",    "normal");
-    rc[9].value  = get_style (widget, "light", "normal");
-    rc[10].value = get_style (widget, "dark",  "normal");
-    rc[11].value = get_style (widget, "mid",   "normal");
-    rc[12].value = get_style (widget, "bg",    "insensitive");
-    rc[13].value = get_style (widget, "light", "insensitive");
-    rc[14].value = get_style (widget, "dark",  "insensitive");
-    rc[15].value = get_style (widget, "mid",   "insensitive");
-    rc[16].value = get_style (widget, "bg",    "normal");
-    rc[17].value = get_style (widget, "light", "normal");
-    rc[18].value = get_style (widget, "dark",  "normal");
-    rc[19].value = get_style (widget, "mid",   "normal");
+    rc[2].value  = get_style (widget, "dark",  "selected");
+    rc[3].value  = get_style (widget, "dark",  "normal");
+    rc[4].value  = get_style (widget, "fg",    "normal");
+    rc[5].value  = get_style (widget, "fg",    "normal");
+    rc[6].value  = get_style (widget, "bg",    "selected");
+    rc[7].value  = get_style (widget, "light", "selected");
+    rc[8].value  = get_style (widget, "dark",  "selected");
+    rc[9].value  = get_style (widget, "mid",   "selected");
+    rc[10].value = get_style (widget, "bg",	"normal");
+    rc[11].value = get_style (widget, "light", "normal");
+    rc[12].value = get_style (widget, "dark",  "normal");
+    rc[13].value = get_style (widget, "mid",   "normal");
+    rc[14].value = get_style (widget, "bg",    "insensitive");
+    rc[15].value = get_style (widget, "light", "insensitive");
+    rc[16].value = get_style (widget, "dark",  "insensitive");
+    rc[17].value = get_style (widget, "mid",   "insensitive");
+    rc[18].value = get_style (widget, "bg",    "normal");
+    rc[19].value = get_style (widget, "light", "normal");
+    rc[20].value = get_style (widget, "dark",  "normal");
+    rc[21].value = get_style (widget, "mid",   "normal");
 
 
     theme = getThemeDir (getValue ("theme", rc), THEMERC);
@@ -830,41 +868,11 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         }
     }
  
-    if (screen_info->title_colors[ACTIVE].allocated)
-    {
-        gdk_colormap_free_colors (gdk_screen_get_rgb_colormap (screen_info->gscr),
-            &screen_info->title_colors[ACTIVE].col, 1);
-        screen_info->title_colors[ACTIVE].allocated = FALSE;
-    }
-    if (gdk_color_parse (rc[0].value, &screen_info->title_colors[ACTIVE].col))
-    {
-        if (gdk_colormap_alloc_color (gdk_screen_get_rgb_colormap (screen_info->gscr),
-                &screen_info->title_colors[ACTIVE].col, FALSE, FALSE))
-        {
-            screen_info->title_colors[ACTIVE].allocated = TRUE;
-            if (screen_info->title_colors[ACTIVE].gc)
-            {
-                g_object_unref (G_OBJECT (screen_info->title_colors[ACTIVE].gc));
-            }
-            screen_info->title_colors[ACTIVE].gc =
-                gdk_gc_new (myScreenGetGdkWindow (screen_info));
-            gdk_gc_copy (screen_info->title_colors[ACTIVE].gc, get_style_gc (widget,
-                    "text", "selected"));
-            gdk_gc_set_foreground (screen_info->title_colors[ACTIVE].gc,
-                &screen_info->title_colors[ACTIVE].col);
-        }
-        else
-        {
-            gdk_beep ();
-            g_message (_("%s: Cannot allocate active color %s\n"), g_get_prgname (), rc[0].value);
-        }
-    }
-    else
-    {
-        gdk_beep ();
-        g_message (_("%s: Cannot parse active color %s\n"), g_get_prgname (), rc[0].value);
-    }
-
+    setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "text", "selected");
+    setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "text", "normal");
+    setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
+    setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "normal");
+    
     if (screen_info->black_gc)
     {
         g_object_unref (G_OBJECT (screen_info->black_gc));
@@ -878,41 +886,6 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     }
     screen_info->white_gc = widget->style->white_gc;
     g_object_ref (G_OBJECT (widget->style->white_gc));
-
-    if (screen_info->title_colors[INACTIVE].allocated)
-    {
-        gdk_colormap_free_colors (gdk_screen_get_rgb_colormap (screen_info->gscr),
-            &screen_info->title_colors[INACTIVE].col, 1);
-        screen_info->title_colors[INACTIVE].allocated = FALSE;
-    }
-    if (gdk_color_parse (rc[1].value, &screen_info->title_colors[INACTIVE].col))
-    {
-        if (gdk_colormap_alloc_color (gdk_screen_get_rgb_colormap (screen_info->gscr),
-                &screen_info->title_colors[INACTIVE].col, FALSE, FALSE))
-        {
-            screen_info->title_colors[INACTIVE].allocated = TRUE;
-            if (screen_info->title_colors[INACTIVE].gc)
-            {
-                g_object_unref (G_OBJECT (screen_info->title_colors[INACTIVE].gc));
-            }
-            screen_info->title_colors[INACTIVE].gc =
-                gdk_gc_new (myScreenGetGdkWindow (screen_info));
-            gdk_gc_copy (screen_info->title_colors[INACTIVE].gc,
-                get_style_gc (widget, "text", "normal"));
-            gdk_gc_set_foreground (screen_info->title_colors[INACTIVE].gc,
-                &screen_info->title_colors[INACTIVE].col);
-        }
-        else
-        {
-            gdk_beep ();
-            g_message (_("%s: Cannot allocate inactive color %s\n"), g_get_prgname (), rc[1].value);
-        }
-    }
-    else
-    {
-        gdk_beep ();
-        g_message (_("%s: Cannot parse inactive color %s\n"), g_get_prgname (), rc[1].value);
-    }
 
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][ACTIVE], theme,
         "left-active", colsym, 20);
@@ -1191,6 +1164,8 @@ loadSettings (ScreenInfo *screen_info)
         /* Do not chnage the order of the following parameters */
         {"active_text_color", NULL, FALSE},
         {"inactive_text_color", NULL, FALSE},
+        {"active_text_shadow_color", NULL, FALSE},
+        {"inactive_text_shadow_color", NULL, FALSE},
         {"active_border_color", NULL, FALSE},
         {"inactive_border_color", NULL, FALSE},
         {"active_color_1", NULL, FALSE},
