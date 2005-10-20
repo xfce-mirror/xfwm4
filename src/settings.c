@@ -811,14 +811,14 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     rc[0].value  = get_style (widget, "fg",    "selected");
     rc[1].value  = get_style (widget, "fg",    "insensitive");
     rc[2].value  = get_style (widget, "dark",  "selected");
-    rc[3].value  = get_style (widget, "dark",  "normal");
+    rc[3].value  = get_style (widget, "dark",  "insensitive");
     rc[4].value  = get_style (widget, "fg",    "normal");
     rc[5].value  = get_style (widget, "fg",    "normal");
     rc[6].value  = get_style (widget, "bg",    "selected");
     rc[7].value  = get_style (widget, "light", "selected");
     rc[8].value  = get_style (widget, "dark",  "selected");
     rc[9].value  = get_style (widget, "mid",   "selected");
-    rc[10].value = get_style (widget, "bg",	"normal");
+    rc[10].value = get_style (widget, "bg",    "normal");
     rc[11].value = get_style (widget, "light", "normal");
     rc[12].value = get_style (widget, "dark",  "normal");
     rc[13].value = get_style (widget, "mid",   "normal");
@@ -871,7 +871,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "text", "selected");
     setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "text", "normal");
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
-    setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "normal");
+    setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "insensitive");
     
     if (screen_info->black_gc)
     {
