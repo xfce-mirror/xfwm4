@@ -868,8 +868,8 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         }
     }
  
-    setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "text", "selected");
-    setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "text", "normal");
+    setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "fg", "selected");
+    setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "fg", "insensitive");
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "insensitive");
     
