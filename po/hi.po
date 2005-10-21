@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 07:10+0900\n"
+"POT-Creation-Date: 2005-10-22 01:20+0900\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -646,25 +646,15 @@ msgstr "कार्यस्थान %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: जीटीके मेन्यू पाइन्टर पकड़ने में  असफल\n"
 
-#: ../src/settings.c:859
-#, c-format
-msgid "%s: Cannot allocate active color %s\n"
+#: ../src/settings.c:786
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: सक्रिय रंग निर्धारित नहीं कर सकता %s\n"
 
-#: ../src/settings.c:865
-#, c-format
-msgid "%s: Cannot parse active color %s\n"
+#: ../src/settings.c:792
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
 msgstr "%s:  सक्रिय रंग पारसे नहीं कर सकता  %s\n"
-
-#: ../src/settings.c:908
-#, c-format
-msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s:  अक्रिय रंग निर्धारित नहीं कर सकता %s\n"
-
-#: ../src/settings.c:914
-#, c-format
-msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: अक्रिय रंग पारसे नहीं कर सकता %s\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 07:10+0900\n"
+"POT-Creation-Date: 2005-10-22 01:20+0900\n"
 "PO-Revision-Date: 2005-10-09 20:51+0900\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <translation-team-pt@lists.sourceforge.net>\n"
@@ -613,25 +613,15 @@ msgstr "Área de Trabalho %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falhou a captar o ponteiro\n"
 
-#: ../src/settings.c:859
-#, c-format
-msgid "%s: Cannot allocate active color %s\n"
+#: ../src/settings.c:786
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Não foi possível alocar a cor activa %s\n"
 
-#: ../src/settings.c:865
-#, c-format
-msgid "%s: Cannot parse active color %s\n"
-msgstr ""
-
-#: ../src/settings.c:908
-#, c-format
-msgid "%s: Cannot allocate inactive color %s\n"
-msgstr ""
-
-#: ../src/settings.c:914
-#, c-format
-msgid "%s: Cannot parse inactive color %s\n"
-msgstr ""
+#: ../src/settings.c:792
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "%s: Não foi possível alocar a cor activa %s\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"

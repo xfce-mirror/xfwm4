@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 07:10+0900\n"
+"POT-Creation-Date: 2005-10-22 01:20+0900\n"
 "PO-Revision-Date: 2005-10-09 20:50+0900\n"
 "Last-Translator: Jaswinder Singh Phulewala <jaswinderphulewala@yahoo.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -608,24 +608,14 @@ msgstr "ਅਖਾੜਾ %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Gtk-ਮੇਨੂੰ ਸੰਕੇਤਕ ਖੋਹਣ ਵਿੱਚ ਅਸਫਲ\n"
 
-#: ../src/settings.c:859
-#, c-format
-msgid "%s: Cannot allocate active color %s\n"
+#: ../src/settings.c:786
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
 
-#: ../src/settings.c:865
-#, c-format
-msgid "%s: Cannot parse active color %s\n"
-msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
-
-#: ../src/settings.c:908
-#, c-format
-msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: ਨਾ-ਸਰਗਰਮ ਰੰਗ %s ਮਨਜੂਰ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
-
-#: ../src/settings.c:914
-#, c-format
-msgid "%s: Cannot parse inactive color %s\n"
+#: ../src/settings.c:792
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
 msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
 
 #: ../src/tabwin.c:95

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 07:10+0900\n"
+"POT-Creation-Date: 2005-10-22 01:20+0900\n"
 "PO-Revision-Date: 2005-10-09 20:42+0900\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
@@ -606,25 +606,15 @@ msgstr "فضای کاری %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu موفق به گرفتن اشاره‌گر نشد\n"
 
-#: ../src/settings.c:859
-#, c-format
-msgid "%s: Cannot allocate active color %s\n"
+#: ../src/settings.c:786
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را جایابی کرد\n"
 
-#: ../src/settings.c:865
-#, c-format
-msgid "%s: Cannot parse active color %s\n"
+#: ../src/settings.c:792
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
 msgstr "%s: نمی‌توان رنگ فعال %s را تجزیه کرد\n"
-
-#: ../src/settings.c:908
-#, c-format
-msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: نمی‌توان رنگ غیرفعال %s را جایابی کرد\n"
-
-#: ../src/settings.c:914
-#, c-format
-msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: نمی‌توان رنگ غیرفعال %s را تجزیه کرد\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"

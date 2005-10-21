@@ -1,14 +1,15 @@
 # Italian translations for xfwm4 package.
 # Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Alex Dupre <ale@FreeBSD.org>, 2004.
 # Gabriele Modena <randall@email.it>, 2005.
+# Alex Dupre <ale@FreeBSD.org>, 2004, 2005.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-23 01:23+0100\n"
-"PO-Revision-Date: 2005-10-21 12:49+0100\n"
+"POT-Creation-Date: 2005-10-22 01:20+0900\n"
+"PO-Revision-Date: 2005-10-22 01:23+0900\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +21,11 @@ msgid "Workspace Margins"
 msgstr "Bordi dello spazio di lavoro"
 
 #: ../mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "I bordi sono aree agli angoli dello schermo dove non verrà  posta nessuna finestra"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"I bordi sono aree agli angoli dello schermo dove non verrà  posta nessuna "
+"finestra"
 
 #: ../mcs-plugin/margins.c:168
 msgid "Left :"
@@ -39,14 +43,12 @@ msgstr "Alto :"
 msgid "Bottom :"
 msgstr "Basso :"
 
-#: ../mcs-plugin/plugin.c:109
-#: ../mcs-plugin/plugin.c:152
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Spazio di lavoro e margini"
 
 #. Number of workspaces
-#: ../mcs-plugin/plugin.c:135
-#: ../mcs-plugin/plugin.c:166
+#: ../mcs-plugin/plugin.c:135 ../mcs-plugin/plugin.c:166
 #: ../mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Spazi di lavoro"
@@ -59,8 +61,7 @@ msgstr "Margini"
 msgid "Change name"
 msgstr "Cambia nome"
 
-#: ../mcs-plugin/workspaces.c:357
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
 msgstr "Spazio di lavoro %d"
@@ -106,18 +107,15 @@ msgstr "Massimizza"
 msgid "Close"
 msgstr "Chiudi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:86 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "Adombra la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:87 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "Nascondi la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "Massimizza la finestra"
 
@@ -161,8 +159,7 @@ msgstr "Nascosto"
 msgid "Font Selection Dialog"
 msgstr "Seleziona il Font"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1414
-#: ../mcs-plugin/xfwm4_plugin.c:1900
+#: ../mcs-plugin/xfwm4_plugin.c:1414 ../mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Gestore di Finestre"
 
@@ -281,13 +278,11 @@ msgstr "Bordi delle finestre magnetiche"
 msgid "Distance :"
 msgstr "Distanza :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
-#: ../mcs-plugin/xfwm4_plugin.c:1748
+#: ../mcs-plugin/xfwm4_plugin.c:1698 ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Piccolo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1704
-#: ../mcs-plugin/xfwm4_plugin.c:1754
+#: ../mcs-plugin/xfwm4_plugin.c:1704 ../mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Ampio"
 
@@ -297,11 +292,13 @@ msgstr "Scorri gli spazi di lavoro"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Scorri gli spazi di lavoro se il puntatore raggiunge il bordo dello schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se il puntatore raggiunge il bordo dello schermo"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Scorri gli spazi di lavoro se una finestra viene spostata fuori dallo schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se una finestra viene spostata fuori dallo schermo"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1742
 msgid "Edge Resistance :"
@@ -570,8 +567,7 @@ msgstr "_Sblocca"
 msgid "Context _help"
 msgstr "Help contestuale"
 
-#: ../src/menu.c:49
-#: ../src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr "Sempre sopra"
 
@@ -610,25 +606,15 @@ msgstr "Spazio di lavoro %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
 
-#: ../src/settings.c:859
-#, c-format
-msgid "%s: Cannot allocate active color %s\n"
+#: ../src/settings.c:786
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Impossibile allocare il colore attivo %s\n"
 
-#: ../src/settings.c:865
-#, c-format
-msgid "%s: Cannot parse active color %s\n"
+#: ../src/settings.c:792
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Impossibile interpretare il colore attivo %s\n"
-
-#: ../src/settings.c:908
-#, c-format
-msgid "%s: Cannot allocate inactive color %s\n"
-msgstr "%s: Impossibile allocare il colore inattivo %s\n"
-
-#: ../src/settings.c:914
-#, c-format
-msgid "%s: Cannot parse inactive color %s\n"
-msgstr "%s: Impossibile interpretare il colore inattivo %s\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"
@@ -649,4 +635,3 @@ msgstr "Impostazioni degli Spazi di Lavoro"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Impostazioni degli Spazi di Lavoro di Xfce 4"
-
