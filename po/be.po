@@ -1,14 +1,14 @@
 # Belarusian translations for xfwm4 package.
 # Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Ales Nyakhaychyk <nab@mail.by>, 2004.
+# Ales Nyakhaychyk <nab@mail.by>, 2004-2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:15+0900\n"
-"PO-Revision-Date: 2005-09-29 17:57+0900\n"
+"POT-Creation-Date: 2005-10-28 21:00+0900\n"
+"PO-Revision-Date: 2005-10-27 19:04+0900\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -326,23 +326,23 @@ msgstr "Дадатковыя"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Вы насамрэч жадаеце выдаліць гэтую тэму гарачых клявіш?"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Дадаць тэму"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:136
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Задайце назву тэмы:"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:159
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Тэма гарачых клявіш пад такой назвай ужо існуе"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:165
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Вы мусіце задаць назву для тэмы гарачых клявіш"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Close window"
@@ -409,24 +409,20 @@ msgid "Toggle fullscreen"
 msgstr "Пераключыць поўнаэкранны рэжым"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:314
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Наступная прастора"
+msgstr "Верхняя прастора"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Наступная прастора"
+msgstr "Ніжняя прастора"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
-#, fuzzy
 msgid "Left workspace"
-msgstr "Наступная прастора"
+msgstr "Левая прастора"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
-#, fuzzy
 msgid "Right workspace"
-msgstr "Наступная прастора"
+msgstr "Правая прастора"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Next workspace"
@@ -453,33 +449,29 @@ msgid "Move window to previous workspace"
 msgstr "Перамясьціць вакно на папярэднюю прастору"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:318
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Перамясьціць вакно на наступную прастору"
+msgstr "Перамясьціць вакно на верхнюю прастору"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:318
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Перамясьціць вакно на наступную прастору"
+msgstr "Перамясьціць вакно на ніжнюю прастору"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:319
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Перамясьціць вакно на наступную прастору"
+msgstr "Перамясьціць вакно на левую прастору"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:319
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Перамясьціць вакно на наступную прастору"
+msgstr "Перамясьціць вакно на правую прастору"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Паказаць сталец"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Перамясьціць вакно на першую прастору"
+msgstr "Перамясьціць вакно на прастору %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
@@ -527,9 +519,8 @@ msgstr "Прызначыць гарачыя клявішы"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:881
 #: mcs-plugin/xfwm4_shortcuteditor.c:1109
-#, fuzzy
 msgid "No shortcut"
-msgstr "Прызначыць гарачыя клявішы"
+msgstr "Камбінацыя адсутнічае"
 
 #. Create dialog
 #: mcs-plugin/xfwm4_shortcuteditor.c:1003
