@@ -256,6 +256,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         if (mask & UPDATE_CACHE)
         {
             clientClearPixmapCache (c);
+            clientUpdateIcon (c);
         }
         if (mask & UPDATE_GRAVITY)
         {
@@ -1445,6 +1446,41 @@ clientGetUserTime (Client * c)
     }
 }
 
+void
+clientUpdateIcon (Client * c)
+{
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (c->appicon)
+    {
+        g_object_unref (c->appicon);
+        c->appicon = NULL;
+    }
+    c->appicon = getAppIcon (display_info, c->window, 16, 16);
+
+    xfwmPixmapFree (&c->appmenu[ACTIVE]);
+    xfwmPixmapFree (&c->appmenu[INACTIVE]);
+    xfwmPixmapFree (&c->appmenu[PRESSED]);
+
+    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][ACTIVE],
+                         &c->appmenu[ACTIVE]);
+    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][INACTIVE],
+                         &c->appmenu[INACTIVE]);
+    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRESSED],
+                         &c->appmenu[PRESSED]);
+
+    xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], c->appicon);
+    xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], c->appicon);
+    xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], c->appicon);
+}
+
 Client *
 clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 {
@@ -1588,6 +1624,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
     }
 
+    c->appicon = NULL;
     if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize))
         || (((c->size->flags & (PMinSize | PMaxSize)) ==
                 (PMinSize | PMaxSize))
@@ -1744,6 +1781,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGrabKeys (c);
     clientGrabButtons(c);
 
+
+    /* Initialize per client menu button pixmap */
+    xfwmPixmapInit (screen_info, &c->appmenu[ACTIVE]);
+    xfwmPixmapInit (screen_info, &c->appmenu[INACTIVE]);
+    xfwmPixmapInit (screen_info, &c->appmenu[PRESSED]);
+
     /* Initialize pixmap caching */
     xfwmPixmapInit (screen_info, &c->pm_cache.pm_title[ACTIVE]);
     xfwmPixmapInit (screen_info, &c->pm_cache.pm_title[INACTIVE]);
@@ -1784,6 +1827,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame, 
             &c->buttons[i], None);
     }
+    clientUpdateIcon (c);
 
     /* Put the window on top to avoid XShape, that speeds up hw accelerated 
        GL apps dramatically */
@@ -1920,6 +1964,11 @@ clientUnframe (Client * c, gboolean remap)
     xfwmWindowDelete (&c->sides[CORNER_BOTTOM_RIGHT]);
     xfwmWindowDelete (&c->sides[CORNER_TOP_LEFT]);
     xfwmWindowDelete (&c->sides[CORNER_TOP_RIGHT]);
+
+    xfwmPixmapFree (&c->appmenu[ACTIVE]);
+    xfwmPixmapFree (&c->appmenu[INACTIVE]);
+    xfwmPixmapFree (&c->appmenu[PRESSED]);
+
     clientClearPixmapCache (c);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -1929,6 +1978,10 @@ clientUnframe (Client * c, gboolean remap)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceUpdateArea (c->screen_info);
+    }
+    if (c->appicon)
+    {
+        g_object_unref(c->appicon);
     }
 
     myDisplayUngrabServer (display_info);

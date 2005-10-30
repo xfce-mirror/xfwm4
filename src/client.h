@@ -209,6 +209,8 @@ struct _Client
     xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
+    GdkPixbuf *appicon;
+    xfwmPixmap appmenu[3];
     Colormap cmap;
     unsigned long win_hints;
     unsigned long win_state;
@@ -256,7 +258,7 @@ struct _Client
     ClientPixmapCache pm_cache;
     /* Opacity for the compositor */
     guint opacity;
-
+    
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification */
     char *startup_id;
@@ -277,6 +279,7 @@ void     clientGetMWMHints (Client *, gboolean);
 void     clientGetWMNormalHints (Client *, gboolean);
 void     clientGetWMProtocols (Client *);
 void     clientClearPixmapCache (Client *);
+void     clientUpdateIcon (Client * c);
 Client  *clientFrame (DisplayInfo *, Window, gboolean);
 void     clientUnframe (Client *, gboolean);
 void     clientFrameAll (ScreenInfo *);

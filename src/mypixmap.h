@@ -47,24 +47,27 @@ struct _xfwmPixmap
     gint width, height;
 };
 
-gboolean xfwmPixmapLoad   (ScreenInfo *,
-                           xfwmPixmap *, 
-                           gchar *, 
-                           gchar *,
-                           XpmColorSymbol *, 
-                           gint);
-void xfwmPixmapCreate     (ScreenInfo *,
-                           xfwmPixmap *, 
-                           gint, 
-                           gint);
-void xfwmPixmapInit       (ScreenInfo *,
-                           xfwmPixmap *);
-void xfwmPixmapFree       (xfwmPixmap *);
-void xfwmPixmapFill       (xfwmPixmap *, 
-                           xfwmPixmap *,
-                           gint, 
-                           gint, 
-                           gint, 
-                           gint);
-
+gboolean xfwmPixmapRenderGdkPixbuf (xfwmPixmap *,
+                                    GdkPixbuf *);
+gboolean xfwmPixmapLoad            (ScreenInfo *,
+                                    xfwmPixmap *, 
+                                    gchar *, 
+                                    gchar *,
+                                    XpmColorSymbol *,
+                                    gint);
+void xfwmPixmapCreate              (ScreenInfo *,
+                                    xfwmPixmap *, 
+                                    gint, 
+                                    gint);
+void xfwmPixmapInit                (ScreenInfo *,
+                                    xfwmPixmap *);
+void xfwmPixmapFree                (xfwmPixmap *);
+void xfwmPixmapFill                (xfwmPixmap *, 
+                                    xfwmPixmap *,
+                                    gint, 
+                                    gint, 
+                                    gint, 
+                                    gint);
+void xfwmPixmapDuplicate           (xfwmPixmap *, 
+                                    xfwmPixmap *);
 #endif /* INC_MYPIXMAP_H */

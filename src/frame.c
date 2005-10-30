@@ -473,6 +473,12 @@ frameGetPixmap (Client * c, int button, int state)
 
     switch (button)
     {
+        case MENU_BUTTON:
+            if (screen_info->params->show_app_icon)
+            {
+                return &c->appmenu[state];
+            }
+            break;
         case SHADE_BUTTON:
             if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && screen_info->buttons[SHADE_BUTTON][state + 3].pixmap)
@@ -698,7 +704,7 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
             if (xfwmWindowVisible (&c->buttons[i]))
             {
                 XShapeCombineShape (display_info->dpy, temp, ShapeBounding, button_x[i],
-                                    (frameTop (c) - screen_info->buttons[i][state].height) / 2,
+                                    (frameTop (c) - screen_info->buttons[i][state].height + 1) / 2,
                                     MYWINDOW_XWINDOW (c->buttons[i]), ShapeBounding, ShapeUnion);
             }
         }
@@ -837,7 +843,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                         xfwmWindowSetBG (&c->buttons[button], my_pixmap);
                     }
                     xfwmWindowShow (&c->buttons[button], x,
-                        (frameTop (c) - screen_info->buttons[button][state].height) / 2,
+                        (frameTop (c) - screen_info->buttons[button][state].height + 1) / 2,
                         screen_info->buttons[button][state].width,
                         screen_info->buttons[button][state].height, TRUE);
                     button_x[button] = x;
@@ -874,7 +880,7 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
                     x = x - screen_info->buttons[button][state].width -
                         screen_info->params->button_spacing;
                     xfwmWindowShow (&c->buttons[button], x,
-                        (frameTop (c) - screen_info->buttons[button][state].height) / 2,
+                        (frameTop (c) - screen_info->buttons[button][state].height + 1) / 2,
                         screen_info->buttons[button][state].width,
                         screen_info->buttons[button][state].height, TRUE);
                     button_x[button] = x;

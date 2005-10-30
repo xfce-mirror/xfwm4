@@ -1221,6 +1221,7 @@ loadSettings (ScreenInfo *screen_info)
         {"shadow_delta_y", NULL, TRUE},
         {"shadow_delta_width", NULL, TRUE},
         {"shadow_delta_height", NULL, TRUE},
+        {"show_app_icon", NULL, TRUE},
         {"show_frame_shadow", NULL, TRUE},
         {"show_popup_shadow", NULL, TRUE},
         {"theme", NULL, TRUE},
@@ -1372,6 +1373,8 @@ loadSettings (ScreenInfo *screen_info)
         abs (TOINT (getValue ("popup_opacity", rc)));
     screen_info->params->placement_ratio = 
         abs (TOINT (getValue ("placement_ratio", rc)));
+    screen_info->params->show_app_icon = 
+        !g_ascii_strcasecmp ("true", getValue ("show_app_icon", rc));
     screen_info->params->show_frame_shadow = 
         !g_ascii_strcasecmp ("true", getValue ("show_frame_shadow", rc));
     screen_info->params->show_popup_shadow =

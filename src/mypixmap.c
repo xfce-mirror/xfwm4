@@ -66,12 +66,8 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
     gchar *filepng;
     gchar *filename;
     GdkPixbuf *alpha;
-    GdkPixbuf *src;
-    GdkPixmap *destw;
-    GdkVisual *gvisual;
-    GdkColormap *cmap;
     GError *error = NULL;
-    gint width, height;
+    gboolean status;
 
     filepng = g_strdup_printf ("%s.%s", file, "png");
     filename = g_build_filename (dir, filepng, NULL);
@@ -95,6 +91,22 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
         g_object_unref (alpha);
         return FALSE;
     }
+    status = xfwmPixmapRenderGdkPixbuf (pm, alpha);
+    g_object_unref (alpha);
+
+    return status;
+}
+
+gboolean
+xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
+{
+    GdkPixbuf *src;
+    GdkPixmap *destw;
+    GdkVisual *gvisual;
+    GdkColormap *cmap;
+    gint width, height;
+    gint dest_x, dest_y;
+
     destw = gdk_xid_table_lookup (pm->pixmap);
     if (destw)
     {
@@ -108,7 +120,6 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
     if (!destw)
     {
         g_warning ("Cannot get pixmap");
-        g_object_unref (alpha);
         return FALSE;
     }
 
@@ -118,23 +129,23 @@ xfwmPixmapCompose (xfwmPixmap * pm, gchar * dir, gchar * file)
     if (!cmap)
     {
         g_warning ("Cannot create colormap");
-        g_object_unref (alpha);
         g_object_unref (destw);
         return FALSE;
     }
 
-    width = MIN (gdk_pixbuf_get_width (alpha), pm->width);
-    height = MIN (gdk_pixbuf_get_height (alpha), pm->height);
-    
+    width = MIN (gdk_pixbuf_get_width (pixbuf), pm->width);
+    height = MIN (gdk_pixbuf_get_height (pixbuf), pm->height);
+    dest_x = (pm->width - width) / 2;
+    dest_y = (pm->height - height) / 2;
+
     src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap, 
-                                        0, 0, 0, 0, pm->width, pm->height);
-    gdk_pixbuf_composite (alpha, src, 0, 0, width, height,
+                                        dest_x, dest_y, 0, 0, width, height);
+    gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
                           0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
-    gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, 0, 0,
-                     pm->width, pm->height, GDK_RGB_DITHER_NONE, 0, 0);
+    gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, dest_x, dest_y,
+                     width, height, GDK_RGB_DITHER_NONE, 0, 0);
 
     g_object_unref (cmap);
-    g_object_unref (alpha);
     g_object_unref (src);
     g_object_unref (destw);
 
@@ -314,3 +325,24 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
     xfwmPixmapRefreshPict (dst);
 #endif
 }
+
+void
+xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
+{
+    g_return_if_fail (src != NULL);
+    TRACE ("entering xfwmPixmapDuplicate, width=%i, height=%i", src->width, src->height);
+
+    dst->screen_info = src->screen_info;
+    dst->pixmap = XCreatePixmap (myScreenGetXDisplay (dst->screen_info), 
+                                 src->screen_info->xroot, 
+                                 src->width, src->height, 
+                                 src->screen_info->depth);
+    dst->mask = XCreatePixmap (myScreenGetXDisplay (dst->screen_info), 
+                                 dst->pixmap, src->width, 
+                                 src->height, 1);
+    dst->width = src->width;
+    dst->height = src->height;
+    xfwmPixmapFill (src, dst, 0, 0, dst->width, dst->height);
+}
+
+

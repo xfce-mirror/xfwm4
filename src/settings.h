@@ -39,12 +39,12 @@
 #define TITLE_4                         3
 #define TITLE_5                         4
 
-#define HIDE_BUTTON                     0
-#define SHADE_BUTTON                    1
-#define MAXIMIZE_BUTTON                 2
-#define CLOSE_BUTTON                    3
-#define STICK_BUTTON                    4
-#define MENU_BUTTON                     5
+#define MENU_BUTTON                     0
+#define STICK_BUTTON                    1
+#define SHADE_BUTTON                    2
+#define HIDE_BUTTON                     3
+#define MAXIMIZE_BUTTON                 4
+#define CLOSE_BUTTON                    5
 #define TITLE_SEPARATOR                 6
 #define BUTTON_COUNT                    6
 
@@ -189,6 +189,7 @@ struct _XfwmParams
     gboolean raise_on_focus;
     gboolean raise_with_any_button;
     gboolean scroll_workspaces;
+    gboolean show_app_icon;
     gboolean show_frame_shadow;
     gboolean show_popup_shadow;
     gboolean snap_to_border;

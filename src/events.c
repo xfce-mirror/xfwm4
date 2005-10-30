@@ -1704,6 +1704,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
+        screen_info = c->screen_info;
         if (ev->atom == XA_WM_NORMAL_HINTS)
         {
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify", c->name, c->window);
@@ -1734,6 +1735,11 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 if (c->wmhints->flags & WindowGroupHint)
                 {
                     c->group_leader = c->wmhints->window_group;
+                }
+                if ((c->wmhints->flags & IconPixmapHint) && (screen_info->params->show_app_icon))
+                {
+                    clientUpdateIcon (c);
+                    frameDraw (c, TRUE, FALSE);
                 }
             }
             clientUpdateUrgency (c);
@@ -1795,6 +1801,13 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 c->opacity =  NET_WM_OPAQUE;
             }
             compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+        }
+        else if ((screen_info->params->show_app_icon) &&
+                 ((ev->atom == display_info->atoms[NET_WM_ICON]) ||
+                  (ev->atom == display_info->atoms[KWM_WIN_ICON])))
+        {
+            clientUpdateIcon (c);
+            frameDraw (c, TRUE, FALSE);
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == display_info->atoms[NET_STARTUP_ID])
