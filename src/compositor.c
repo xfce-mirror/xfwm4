@@ -499,6 +499,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     Pixmap shadowPixmap;
     Picture shadowPicture;
     XRenderPictFormat *render_format;
+    XRenderPictureAttributes pa;
     GC gc;
 
     g_return_val_if_fail (screen_info != NULL, None);
@@ -523,9 +524,9 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
         g_warning ("(shadowPixmap != None) failed");
         return None;
     }
-
+    pa.repeat = TRUE;
     shadowPicture = XRenderCreatePicture (myScreenGetXDisplay (screen_info),
-                                        shadowPixmap, render_format, 0, 0);
+                                        shadowPixmap, render_format, CPRepeat, &pa);
     if (shadowPicture == None)
     {
         XDestroyImage (shadowImage);
@@ -580,7 +581,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
 
     pa.repeat = TRUE;
     picture = XRenderCreatePicture (myScreenGetXDisplay (screen_info), pixmap,
-                                    render_format, CPRepeat,  &pa);
+                                    render_format, CPRepeat, &pa);
     if (picture == None)
     {
         XFreePixmap (myScreenGetXDisplay (screen_info), pixmap);

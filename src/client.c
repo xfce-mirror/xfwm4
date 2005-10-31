@@ -1461,7 +1461,6 @@ clientUpdateIcon (Client * c)
     if (c->appicon)
     {
         g_object_unref (c->appicon);
-        c->appicon = NULL;
     }
     c->appicon = getAppIcon (display_info, c->window, 16, 16);
 
@@ -1983,7 +1982,6 @@ clientUnframe (Client * c, gboolean remap)
         g_object_unref(c->appicon);
         c->appicon = NULL;
     }
-
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
     clientFree (c);

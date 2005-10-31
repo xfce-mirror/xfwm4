@@ -332,16 +332,7 @@ xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
     g_return_if_fail (src != NULL);
     TRACE ("entering xfwmPixmapDuplicate, width=%i, height=%i", src->width, src->height);
 
-    dst->screen_info = src->screen_info;
-    dst->pixmap = XCreatePixmap (myScreenGetXDisplay (dst->screen_info), 
-                                 src->screen_info->xroot, 
-                                 src->width, src->height, 
-                                 src->screen_info->depth);
-    dst->mask = XCreatePixmap (myScreenGetXDisplay (dst->screen_info), 
-                                 dst->pixmap, src->width, 
-                                 src->height, 1);
-    dst->width = src->width;
-    dst->height = src->height;
+    xfwmPixmapCreate (src->screen_info, dst, src->width, src->height);
     xfwmPixmapFill (src, dst, 0, 0, dst->width, dst->height);
 }
 
