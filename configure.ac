@@ -90,6 +90,7 @@ AC_HELP_STRING([--enable-randr], [try to use the randr extension])
 AC_HELP_STRING([--disable-randr], [don't try to use the randr extension]),
   [], [enable_randr=yes])
 RANDR_LIBS=
+have_xrandr="false"
 if test x"$enable_randr" = x"yes"; then
   if test x"$have_render" = x"yes"; then
     ac_CFLAGS="$CFLAGS"
@@ -101,6 +102,7 @@ if test x"$enable_randr" = x"yes"; then
                   $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
     CFLAGS="$ac_CFLAGS"
     AC_DEFINE([HAVE_RANDR], [1], [Define to enable xrandr])
+    have_xrandr="yes"
   fi
 fi
 AC_SUBST([RANDR_LIBS])
@@ -108,6 +110,7 @@ AC_SUBST([RANDR_LIBS])
 dnl
 dnl Xcomposite and related extensions
 dnl
+build_compositor="no"
 ENABLE_COMPOSITOR=""
 AC_ARG_ENABLE([compositor],
 AC_HELP_STRING([--enable-compositor], [enable compositor in xfwm4])
@@ -120,6 +123,7 @@ if test x"$enable_compositor" = x"yes"; then
       PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 0.2 xfixes xdamage)
       AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
       ENABLE_COMPOSITOR="--enable-compositor"
+      build_compositor="yes"
     fi
   fi
 fi
@@ -158,3 +162,11 @@ themes/stoneage/Makefile
 themes/therapy/Makefile
 themes/tyrex/Makefile
 ])
+
+echo
+echo "Build Configuration:"
+echo "  Startup notification support:                 $LIBSTARTUP_NOTIFICATION_FOUND"
+echo "  Render support:                               $have_render"
+echo "  Xrandr support:                               $have_xrandr"
+echo "  Embedded compositor:                          $build_compositor"
+echo
