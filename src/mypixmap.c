@@ -226,10 +226,12 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
                                   pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
-    }
 #ifdef HAVE_RENDER
-    xfwmPixmapRefreshPict (pm);
+        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+                                                   screen_info->visual);
+        pm->pict = None;
 #endif
+    }
 }
 
 void
@@ -333,7 +335,7 @@ xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
     TRACE ("entering xfwmPixmapDuplicate, width=%i, height=%i", src->width, src->height);
 
     xfwmPixmapCreate (src->screen_info, dst, src->width, src->height);
-    xfwmPixmapFill (src, dst, 0, 0, dst->width, dst->height);
+    xfwmPixmapFill (src, dst, 0, 0, src->width, src->height);
 }
 
 
