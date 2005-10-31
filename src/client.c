@@ -1781,7 +1781,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGrabKeys (c);
     clientGrabButtons(c);
 
-
     /* Initialize per client menu button pixmap */
     xfwmPixmapInit (screen_info, &c->appmenu[ACTIVE]);
     xfwmPixmapInit (screen_info, &c->appmenu[INACTIVE]);
@@ -1982,6 +1981,7 @@ clientUnframe (Client * c, gboolean remap)
     if (c->appicon)
     {
         g_object_unref(c->appicon);
+        c->appicon = NULL;
     }
 
     myDisplayUngrabServer (display_info);
