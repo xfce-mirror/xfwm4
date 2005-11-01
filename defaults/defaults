@@ -46,5 +46,5 @@ wrap_resistance=10
 wrap_windows=true
 wrap_workspaces=false
 show_app_icon=false
-show_frame_shadow=true
+show_frame_shadow=false
 show_popup_shadow=false

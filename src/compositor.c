@@ -774,7 +774,6 @@ win_extents (CWindow *cw)
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
     if ((c && (screen_info->params->show_frame_shadow))
-        || (c && (c->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK)))
         || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped)))
     {
         XRectangle sr;
