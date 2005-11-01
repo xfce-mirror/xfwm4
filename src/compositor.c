@@ -1034,7 +1034,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         {
             gint x, y, w, h;
 
-            if (cw->opacity != NET_WM_OPAQUE)
+            if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
             {
                 cw->alphaPict = solid_picture (screen_info, FALSE,
                                                (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
