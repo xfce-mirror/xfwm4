@@ -260,8 +260,19 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
                               win->window, 
                               pix->width, pix->height, win->depth);
 
+        if (!temp)
+        {
+            return FALSE;
+        }
+
         pict = XRenderCreatePicture (myScreenGetXDisplay (win->screen_info), 
                                      temp, win->pict_format, 0, NULL);
+
+        if (!pict)
+        {
+            XFreePixmap (myScreenGetXDisplay (win->screen_info), temp);
+            return FALSE;
+        }
 
         XRenderComposite (myScreenGetXDisplay (win->screen_info), PictOpSrc, pix->pict, None, pict, 0, 0, 0, 0, 0, 0, pix->width, pix->height);
 

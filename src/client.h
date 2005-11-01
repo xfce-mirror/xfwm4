@@ -209,7 +209,6 @@ struct _Client
     xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
-    GdkPixbuf *appicon;
     xfwmPixmap appmenu[3];
     Colormap cmap;
     unsigned long win_hints;

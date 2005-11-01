@@ -1451,6 +1451,7 @@ clientUpdateIcon (Client * c)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
+    GdkPixbuf *icon;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1458,11 +1459,7 @@ clientUpdateIcon (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (c->appicon)
-    {
-        g_object_unref (c->appicon);
-    }
-    c->appicon = getAppIcon (display_info, c->window, 16, 16);
+    icon = getAppIcon (display_info, c->window, 16, 16);
 
     xfwmPixmapFree (&c->appmenu[ACTIVE]);
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
@@ -1475,9 +1472,11 @@ clientUpdateIcon (Client * c)
     xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRESSED],
                          &c->appmenu[PRESSED]);
 
-    xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], c->appicon);
-    xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], c->appicon);
-    xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], c->appicon);
+    xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
+    xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], icon);
+    xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], icon);
+
+    g_object_unref (icon);
 }
 
 Client *
@@ -1623,7 +1622,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
     }
 
-    c->appicon = NULL;
     if (((c->size->flags & (PMinSize | PMaxSize)) != (PMinSize | PMaxSize))
         || (((c->size->flags & (PMinSize | PMaxSize)) ==
                 (PMinSize | PMaxSize))
@@ -1977,11 +1975,7 @@ clientUnframe (Client * c, gboolean remap)
     {
         workspaceUpdateArea (c->screen_info);
     }
-    if (c->appicon)
-    {
-        g_object_unref(c->appicon);
-        c->appicon = NULL;
-    }
+
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();
     clientFree (c);
