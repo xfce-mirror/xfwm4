@@ -467,7 +467,8 @@ clientLower (Client * c, Window wsibling)
                 }
             }
         }
-        if (!client_sibling)
+        if ((!client_sibling) || 
+            (client_sibling && (client_sibling->win_layer < c->win_layer)))
         {
             client_sibling = clientGetBottomMost (screen_info, c->win_layer, c);
         }
