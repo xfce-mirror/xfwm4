@@ -321,7 +321,7 @@ clientRaise (Client * c)
             c2 = (Client *) index1->data;
             if (c2)
             {
-                if ((c2 != c) && clientIsTransientOrModalFor (c2, c))
+                if ((c2 != c) && clientIsTransientOrModalFor (c2, c) && (c2->win_layer <= c->win_layer))
                 {
                     transients = g_list_append (transients, c2);
                     if (sibling)

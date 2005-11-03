@@ -1243,19 +1243,13 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            TRACE ("Applying client's initial state: above");
-            clientUpdateAboveState (c);
-        }
+        TRACE ("Applying client's initial state: above");
+        clientUpdateAboveState (c);
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            TRACE ("Applying client's initial state: below");
-            clientUpdateBelowState (c);
-        }
+        TRACE ("Applying client's initial state: below");
+        clientUpdateBelowState (c);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) &&
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
@@ -2525,7 +2519,7 @@ void clientToggleAbove (Client * c)
     TRACE ("entering clientToggleAbove");
     TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
         clientUpdateAboveState (c);
@@ -2538,7 +2532,7 @@ void clientToggleBelow (Client * c)
     TRACE ("entering clientToggleBelow");
     TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
         clientUpdateAboveState (c);
