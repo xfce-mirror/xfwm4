@@ -2676,7 +2676,7 @@ void clientToggleAbove (Client * c)
     TRACE ("entering clientToggleAbove");
     TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
         clientUpdateAboveState (c);
@@ -2689,7 +2689,7 @@ void clientToggleBelow (Client * c)
     TRACE ("entering clientToggleBelow");
     TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
         clientUpdateAboveState (c);
