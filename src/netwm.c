@@ -453,7 +453,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first  == display_info->atoms[NET_WM_STATE_ABOVE]) || 
         (second == display_info->atoms[NET_WM_STATE_ABOVE]))
     {
-        if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
@@ -476,7 +476,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first  == display_info->atoms[NET_WM_STATE_BELOW]) || 
         (second == display_info->atoms[NET_WM_STATE_BELOW]))
     {
-        if (!clientIsValidTransientOrModal (c) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
@@ -997,7 +997,7 @@ clientWindowType (Client * c)
         TRACE ("Window \"%s\" is a transient or a modal", c->name);
 
         c2 = clientGetHighestTransientOrModalFor (c);
-        if (c2)
+        if ((c2) && (c->win_layer < c2->win_layer))
         {
             if (clientIsTransient (c))
             {

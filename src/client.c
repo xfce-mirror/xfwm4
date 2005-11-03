@@ -1307,19 +1307,13 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            TRACE ("Applying client's initial state: above");
-            clientUpdateAboveState (c);
-        }
+        TRACE ("Applying client's initial state: above");
+        clientUpdateAboveState (c);
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            TRACE ("Applying client's initial state: below");
-            clientUpdateBelowState (c);
-        }
+        TRACE ("Applying client's initial state: below");
+        clientUpdateBelowState (c);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) &&
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
