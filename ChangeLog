@@ -1,3 +1,15 @@
+2005-11-05 14:14  olivier
+
+	* xfwm4/branches/xfce_4_2/ChangeLog: Update ChangeLog
+
+2005-11-05 13:13  moe
+
+	* xfce4-appfinder/branches/xfce_4_2/po/de.po,
+	  xfce4-mixer/branches/xfce_4_2/po/de.po,
+	  xfprint/branches/xfce_4_2/po/de.po,
+	  xfwm4/branches/xfce_4_2/po/de.po: Updated german translations
+	  for the upcoming release.
+
 2005-11-03 21:58  olivier
 
 	* xfwm4/branches/xfce_4_2/src/stacking.c: Don't screw up the stack
