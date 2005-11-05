@@ -103,10 +103,6 @@ AC_SUBST(ENABLE_COMPOSITOR)
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
 
-REVISION=`cat svn-revision.txt`
-AC_DEFINE_UNQUOTED([REVISION], "${REVISION}", [svn revision number])
-AC_SUBST([REVISION])
-
 AC_OUTPUT([ 
 xfwm4.spec
 Makefile

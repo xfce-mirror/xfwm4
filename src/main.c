@@ -314,8 +314,8 @@ print_usage (void)
 static void
 print_version (void)
 {
-    g_print ("\tThis is %s version %s (revision %s) for Xfce %s\n", 
-                    PACKAGE, VERSION, REVISION, xfce_version_string());
+    g_print ("\tThis is %s version %s for Xfce %s\n", 
+                    PACKAGE, VERSION, xfce_version_string());
     g_print ("\tbuilt with GTK+-%d.%d.%d, ", 
                     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
     g_print ("linked with GTK+-%d.%d.%d.\n", 
