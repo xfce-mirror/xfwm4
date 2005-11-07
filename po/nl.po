@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:15+0900\n"
+"POT-Creation-Date: 2005-11-05 16:27+0100\n"
 "PO-Revision-Date: 2005-10-28 11:21+0200\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: mcs-plugin/margins.c:127
 msgid "Workspace Margins"
@@ -649,4 +649,3 @@ msgstr "Wisselen naar ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
-

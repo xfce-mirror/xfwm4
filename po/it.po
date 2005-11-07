@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-23 01:23+0100\n"
+"POT-Creation-Date: 2005-11-05 16:27+0100\n"
 "PO-Revision-Date: 2005-10-21 13:59+0100\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -20,8 +20,11 @@ msgid "Workspace Margins"
 msgstr "Bordi dello spazio di lavoro"
 
 #: mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "I bordi sono aree agli angoli dello schermo dove non verrà  posta nessuna finestra"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"I bordi sono aree agli angoli dello schermo dove non verrà  posta nessuna "
+"finestra"
 
 #: mcs-plugin/margins.c:168
 msgid "Left :"
@@ -39,15 +42,12 @@ msgstr "Alto :"
 msgid "Bottom :"
 msgstr "Basso :"
 
-#: mcs-plugin/plugin.c:109
-#: mcs-plugin/plugin.c:152
+#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Spazio di lavoro e margini"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:135
-#: mcs-plugin/plugin.c:166
-#: mcs-plugin/workspaces.c:546
+#: mcs-plugin/plugin.c:135 mcs-plugin/plugin.c:166 mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Spazi di lavoro"
 
@@ -59,8 +59,7 @@ msgstr "Margini"
 msgid "Change name"
 msgstr "Cambia nome"
 
-#: mcs-plugin/workspaces.c:357
-#: mcs-plugin/xfwm4_shortcuteditor.c:408
+#: mcs-plugin/workspaces.c:357 mcs-plugin/xfwm4_shortcuteditor.c:408
 #, c-format
 msgid "Workspace %d"
 msgstr "Spazio di lavoro %d"
@@ -106,18 +105,15 @@ msgstr "Massimizza"
 msgid "Close"
 msgstr "Chiudi"
 
-#: mcs-plugin/xfwm4_plugin.c:86
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_plugin.c:86 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Shade window"
 msgstr "Adombra la finestra"
 
-#: mcs-plugin/xfwm4_plugin.c:87
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: mcs-plugin/xfwm4_plugin.c:87 mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Hide window"
 msgstr "Nascondi la finestra"
 
-#: mcs-plugin/xfwm4_plugin.c:88
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: mcs-plugin/xfwm4_plugin.c:88 mcs-plugin/xfwm4_shortcuteditor.c:309
 msgid "Maximize window"
 msgstr "Massimizza la finestra"
 
@@ -161,8 +157,7 @@ msgstr "Nascosto"
 msgid "Font Selection Dialog"
 msgstr "Seleziona il Font"
 
-#: mcs-plugin/xfwm4_plugin.c:1417
-#: mcs-plugin/xfwm4_plugin.c:1937
+#: mcs-plugin/xfwm4_plugin.c:1417 mcs-plugin/xfwm4_plugin.c:1937
 msgid "Window Manager"
 msgstr "Gestore di Finestre"
 
@@ -195,13 +190,11 @@ msgstr "Stile"
 msgid "Window shortcuts"
 msgstr "Scorciatoie da tastiera della finestra"
 
-#: mcs-plugin/xfwm4_plugin.c:1544
-#: mcs-plugin/xfwm4_plugin.c:1577
+#: mcs-plugin/xfwm4_plugin.c:1544 mcs-plugin/xfwm4_plugin.c:1577
 msgid "Command"
 msgstr "Comando"
 
-#: mcs-plugin/xfwm4_plugin.c:1549
-#: mcs-plugin/xfwm4_plugin.c:1581
+#: mcs-plugin/xfwm4_plugin.c:1549 mcs-plugin/xfwm4_plugin.c:1581
 msgid "Shortcut"
 msgstr "Scorciatoie da Tastiera"
 
@@ -287,13 +280,11 @@ msgstr "Bordi delle finestre magnetiche"
 msgid "Distance :"
 msgstr "Distanza :"
 
-#: mcs-plugin/xfwm4_plugin.c:1732
-#: mcs-plugin/xfwm4_plugin.c:1782
+#: mcs-plugin/xfwm4_plugin.c:1732 mcs-plugin/xfwm4_plugin.c:1782
 msgid "Small"
 msgstr "Piccolo"
 
-#: mcs-plugin/xfwm4_plugin.c:1738
-#: mcs-plugin/xfwm4_plugin.c:1788
+#: mcs-plugin/xfwm4_plugin.c:1738 mcs-plugin/xfwm4_plugin.c:1788
 msgid "Wide"
 msgstr "Ampio"
 
@@ -303,11 +294,13 @@ msgstr "Scorri gli spazi di lavoro"
 
 #: mcs-plugin/xfwm4_plugin.c:1761
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Scorri gli spazi di lavoro se il puntatore raggiunge il bordo dello schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se il puntatore raggiunge il bordo dello schermo"
 
 #: mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Scorri gli spazi di lavoro se una finestra viene spostata fuori dallo schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se una finestra viene spostata fuori dallo schermo"
 
 #: mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
@@ -341,8 +334,7 @@ msgstr "Avanzato"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Vuoi veramente rimuovere questo tema della mappatura dei tasti ?"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:126
-#: mcs-plugin/xfwm4_shortcuteditor.c:132
+#: mcs-plugin/xfwm4_shortcuteditor.c:126 mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
 msgstr "Aggiungi tema di mappatura dei tasti"
 
@@ -500,8 +492,7 @@ msgstr ""
 "Non si puo' aprire %s : \n"
 "%s"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:606
-#: mcs-plugin/xfwm4_shortcuteditor.c:617
+#: mcs-plugin/xfwm4_shortcuteditor.c:606 mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -599,8 +590,7 @@ msgstr "_Sblocca"
 msgid "Context _help"
 msgstr "Help contestuale"
 
-#: src/menu.c:49
-#: src/menu.c:50
+#: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
 msgstr "Sempre sopra"
 
@@ -666,4 +656,3 @@ msgstr "Passa a ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "Applicazione sconosciuta!"
-
