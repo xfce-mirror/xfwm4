@@ -997,16 +997,9 @@ clientWindowType (Client * c)
         TRACE ("Window \"%s\" is a transient or a modal", c->name);
 
         c2 = clientGetHighestTransientOrModalFor (c);
-        if ((c2) && (c->win_layer < c2->win_layer))
+        if ((c2) && (c->initial_layer < c2->win_layer))
         {
-            if (clientIsTransient (c))
-            {
-                c->initial_layer = c2->win_layer;
-            }
-            else if (c->initial_layer < c2->win_layer) /* clientIsModal (c) */
-            {
-                c->initial_layer = c2->win_layer;
-            }
+            c->initial_layer = c2->win_layer;
             TRACE ("Applied layer is %i", c->initial_layer);
         }
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_STICK);
