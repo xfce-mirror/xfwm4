@@ -1445,6 +1445,7 @@ clientUpdateIcon (Client * c)
 {
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
+    gint size;
     GdkPixbuf *icon;
 
     g_return_if_fail (c != NULL);
@@ -1452,8 +1453,6 @@ clientUpdateIcon (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-
-    icon = getAppIcon (display_info, c->window, 16, 16);
 
     xfwmPixmapFree (&c->appmenu[ACTIVE]);
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
@@ -1465,6 +1464,11 @@ clientUpdateIcon (Client * c)
                          &c->appmenu[INACTIVE]);
     xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRESSED],
                          &c->appmenu[PRESSED]);
+
+    size = MIN (screen_info->buttons[MENU_BUTTON][ACTIVE].width, 
+                screen_info->buttons[MENU_BUTTON][ACTIVE].height);
+		
+    icon = getAppIcon (display_info, c->window, size, size);
 
     xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
     xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], icon);
