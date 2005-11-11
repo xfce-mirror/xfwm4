@@ -12,8 +12,9 @@ AC_COPYRIGHT([Copyright (c) 2002-2005
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
 AC_INIT([xfwm4], [xfwm4_version()], [xfce4-dev@xfce.org])
 AM_INIT_AUTOMAKE([xfwm4], [xfwm4_version()])
+AC_REVISION($Id$)
 
-
+AM_INIT_AUTOMAKE([AC_PACKAGE_TARNAME()], [AC_PACKAGE_VERSION()])
 AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
