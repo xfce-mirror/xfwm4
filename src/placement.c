@@ -221,6 +221,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     unsigned int ret = 0;
     GdkRectangle rect;
     gint monitor_nbr;
+    gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
     TRACE ("entering clientConstrainPos %s",
@@ -235,6 +236,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_top = frameTop (c);
     frame_left = frameLeft (c);
     frame_visible = (frame_top ? frame_top : frame_height);
+    min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
@@ -361,27 +363,27 @@ clientConstrainPos (Client * c, gboolean show_full)
     }
     else
     {
-        if (frame_x + frame_width < disp_x + CLIENT_MIN_VISIBLE)
+        if (frame_x + frame_width < disp_x + min_visible)
         {
-            c->x = disp_x + CLIENT_MIN_VISIBLE - frame_width + frame_left;
+            c->x = disp_x + min_visible - frame_width + frame_left;
             frame_x = frameX (c);
-             ret |= CLIENT_CONSTRAINED_LEFT;
+            ret |= CLIENT_CONSTRAINED_LEFT;
         }
-        if (frame_x + CLIENT_MIN_VISIBLE > disp_max_x)
+        if (frame_x + min_visible > disp_max_x)
         {
-            c->x = disp_max_x - CLIENT_MIN_VISIBLE + frame_left;
+            c->x = disp_max_x - min_visible + frame_left;
             frame_x = frameX (c);
-             ret |= CLIENT_CONSTRAINED_RIGHT;
+            ret |= CLIENT_CONSTRAINED_RIGHT;
         }
-        if (frame_y + frame_height < disp_y + CLIENT_MIN_VISIBLE)
+        if (frame_y + frame_height < disp_y + min_visible)
         {
-            c->y = disp_y + CLIENT_MIN_VISIBLE  - frame_height + frame_top;
+            c->y = disp_y + min_visible  - frame_height + frame_top;
             frame_y = frameY (c);
-             ret |= CLIENT_CONSTRAINED_TOP;
+            ret |= CLIENT_CONSTRAINED_TOP;
         }
-        if (frame_y + CLIENT_MIN_VISIBLE > disp_max_y)
+        if (frame_y + min_visible > disp_max_y)
         {
-            c->y = disp_max_y - CLIENT_MIN_VISIBLE + frame_top;
+            c->y = disp_max_y - min_visible + frame_top;
             frame_y = frameY (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;            
         }
@@ -402,9 +404,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapY (frame_y, frame_y + frame_height,
                               c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
                 {
-                    if (frame_x > screen_width - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE)
+                    if (frame_x > screen_width - c2->struts[RIGHT] - min_visible)
                     {
-                        c->x = screen_width - c2->struts[RIGHT] - CLIENT_MIN_VISIBLE + frame_left;
+                        c->x = screen_width - c2->struts[RIGHT] - min_visible + frame_left;
                         frame_x = frameX (c);
                         ret |= CLIENT_CONSTRAINED_RIGHT;
                     }
@@ -414,9 +416,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapY (frame_y, frame_y + frame_height,
                               c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
                 {
-                    if (frame_x + frame_width < c2->struts[LEFT] + CLIENT_MIN_VISIBLE)
+                    if (frame_x + frame_width < c2->struts[LEFT] + min_visible)
                     {
-                        c->x = c2->struts[LEFT] + CLIENT_MIN_VISIBLE - frame_width + frame_left;
+                        c->x = c2->struts[LEFT] + min_visible - frame_width + frame_left;
                         frame_x = frameX (c);
                         ret |= CLIENT_CONSTRAINED_LEFT;
                     }
@@ -426,9 +428,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (overlapX (frame_x, frame_x + frame_width,
                               c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
                 {
-                    if (frame_y > screen_height - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE)
+                    if (frame_y > screen_height - c2->struts[BOTTOM] - min_visible)
                     {
-                        c->y = screen_height - c2->struts[BOTTOM] - CLIENT_MIN_VISIBLE + frame_top;
+                        c->y = screen_height - c2->struts[BOTTOM] - min_visible + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_BOTTOM;
                     }
@@ -444,9 +446,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
-                    if (frame_y + frame_height < c2->struts[TOP] + CLIENT_MIN_VISIBLE)
+                    if (frame_y + frame_height < c2->struts[TOP] + min_visible)
                     {
-                        c->y = c2->struts[TOP] + CLIENT_MIN_VISIBLE - frame_height + frame_top;
+                        c->y = c2->struts[TOP] + min_visible - frame_height + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }

@@ -79,77 +79,79 @@
                                          UPDATE_GRAVITY | \
                                          UPDATE_CACHE)
 
-#define CLIENT_MIN_VISIBLE              10      /* pixels */
+#ifndef CLIENT_MIN_VISIBLE
+#define CLIENT_MIN_VISIBLE              15
+#endif
 
-#define XFWM_FLAG_HAS_BORDER           (1L<<0)
-#define XFWM_FLAG_HAS_MENU             (1L<<1)
-#define XFWM_FLAG_HAS_MAXIMIZE         (1L<<2)
-#define XFWM_FLAG_HAS_CLOSE            (1L<<3)
-#define XFWM_FLAG_HAS_HIDE             (1L<<4)
-#define XFWM_FLAG_HAS_MOVE             (1L<<5)
-#define XFWM_FLAG_HAS_RESIZE           (1L<<6)
-#define XFWM_FLAG_HAS_STICK            (1L<<7)
-#define XFWM_FLAG_FOCUS                (1L<<8)
-#define XFWM_FLAG_IS_RESIZABLE         (1L<<9)
-#define XFWM_FLAG_MAP_PENDING          (1L<<10)
-#define XFWM_FLAG_VISIBLE              (1L<<11)
-#define XFWM_FLAG_MANAGED              (1L<<13)
-#define XFWM_FLAG_SESSION_MANAGED      (1L<<14)
-#define XFWM_FLAG_WORKSPACE_SET        (1L<<15)
-#define XFWM_FLAG_WAS_SHOWN            (1L<<16)
-#define XFWM_FLAG_DRAW_ACTIVE          (1L<<17)
-#define XFWM_FLAG_SEEN_ACTIVE          (1L<<18)
-#define XFWM_FLAG_FIRST_MAP            (1L<<19)
-#define XFWM_FLAG_LEGACY_FULLSCREEN    (1L<<20)
-#define XFWM_FLAG_MOVING_RESIZING      (1L<<21)
+#define XFWM_FLAG_HAS_BORDER            (1L<<0)
+#define XFWM_FLAG_HAS_MENU              (1L<<1)
+#define XFWM_FLAG_HAS_MAXIMIZE          (1L<<2)
+#define XFWM_FLAG_HAS_CLOSE             (1L<<3)
+#define XFWM_FLAG_HAS_HIDE              (1L<<4)
+#define XFWM_FLAG_HAS_MOVE              (1L<<5)
+#define XFWM_FLAG_HAS_RESIZE            (1L<<6)
+#define XFWM_FLAG_HAS_STICK             (1L<<7)
+#define XFWM_FLAG_FOCUS                 (1L<<8)
+#define XFWM_FLAG_IS_RESIZABLE          (1L<<9)
+#define XFWM_FLAG_MAP_PENDING           (1L<<10)
+#define XFWM_FLAG_VISIBLE               (1L<<11)
+#define XFWM_FLAG_MANAGED               (1L<<13)
+#define XFWM_FLAG_SESSION_MANAGED       (1L<<14)
+#define XFWM_FLAG_WORKSPACE_SET         (1L<<15)
+#define XFWM_FLAG_WAS_SHOWN             (1L<<16)
+#define XFWM_FLAG_DRAW_ACTIVE           (1L<<17)
+#define XFWM_FLAG_SEEN_ACTIVE           (1L<<18)
+#define XFWM_FLAG_FIRST_MAP             (1L<<19)
+#define XFWM_FLAG_LEGACY_FULLSCREEN     (1L<<20)
+#define XFWM_FLAG_MOVING_RESIZING       (1L<<21)
 
-#define CLIENT_FLAG_HAS_STRUT          (1L<<0)
-#define CLIENT_FLAG_HAS_STRUT_PARTIAL  (1L<<1)
-#define CLIENT_FLAG_HAS_USER_TIME      (1L<<2)
-#define CLIENT_FLAG_ABOVE              (1L<<3)
-#define CLIENT_FLAG_BELOW              (1L<<4)
-#define CLIENT_FLAG_FULLSCREEN         (1L<<5)
-#define CLIENT_FLAG_ICONIFIED          (1L<<6)
-#define CLIENT_FLAG_MAXIMIZED_VERT     (1L<<7)
-#define CLIENT_FLAG_MAXIMIZED_HORIZ    (1L<<8)
-#define CLIENT_FLAG_MAXIMIZED          (CLIENT_FLAG_MAXIMIZED_VERT | \
-                                        CLIENT_FLAG_MAXIMIZED_HORIZ)
-#define CLIENT_FLAG_SHADED             (1L<<9)
-#define CLIENT_FLAG_SKIP_PAGER         (1L<<10)
-#define CLIENT_FLAG_SKIP_TASKBAR       (1L<<11)
-#define CLIENT_FLAG_STATE_MODAL        (1L<<12)
-#define CLIENT_FLAG_STICKY             (1L<<13)
-#define CLIENT_FLAG_NAME_CHANGED       (1L<<15)
-#define CLIENT_FLAG_DEMANDS_ATTENTION  (1L<<16)
-#define CLIENT_FLAG_HAS_SHAPE          (1L<<17)
+#define CLIENT_FLAG_HAS_STRUT           (1L<<0)
+#define CLIENT_FLAG_HAS_STRUT_PARTIAL   (1L<<1)
+#define CLIENT_FLAG_HAS_USER_TIME       (1L<<2)
+#define CLIENT_FLAG_ABOVE               (1L<<3)
+#define CLIENT_FLAG_BELOW               (1L<<4)
+#define CLIENT_FLAG_FULLSCREEN          (1L<<5)
+#define CLIENT_FLAG_ICONIFIED           (1L<<6)
+#define CLIENT_FLAG_MAXIMIZED_VERT      (1L<<7)
+#define CLIENT_FLAG_MAXIMIZED_HORIZ     (1L<<8)
+#define CLIENT_FLAG_MAXIMIZED           (CLIENT_FLAG_MAXIMIZED_VERT | \
+                                         CLIENT_FLAG_MAXIMIZED_HORIZ)
+#define CLIENT_FLAG_SHADED              (1L<<9)
+#define CLIENT_FLAG_SKIP_PAGER          (1L<<10)
+#define CLIENT_FLAG_SKIP_TASKBAR        (1L<<11)
+#define CLIENT_FLAG_STATE_MODAL         (1L<<12)
+#define CLIENT_FLAG_STICKY              (1L<<13)
+#define CLIENT_FLAG_NAME_CHANGED        (1L<<15)
+#define CLIENT_FLAG_DEMANDS_ATTENTION   (1L<<16)
+#define CLIENT_FLAG_HAS_SHAPE           (1L<<17)
 
-#define WM_FLAG_DELETE                 (1L<<0)
-#define WM_FLAG_INPUT                  (1L<<1)
-#define WM_FLAG_TAKEFOCUS              (1L<<2)
-#define WM_FLAG_CONTEXT_HELP           (1L<<3)
-#define WM_FLAG_URGENT                 (1L<<4)
+#define WM_FLAG_DELETE                  (1L<<0)
+#define WM_FLAG_INPUT                   (1L<<1)
+#define WM_FLAG_TAKEFOCUS               (1L<<2)
+#define WM_FLAG_CONTEXT_HELP            (1L<<3)
+#define WM_FLAG_URGENT                  (1L<<4)
 
-#define CLIENT_FLAG_INITIAL_VALUES     XFWM_FLAG_HAS_BORDER | \
-                                       XFWM_FLAG_HAS_MENU | \
-                                       XFWM_FLAG_HAS_MAXIMIZE | \
-                                       XFWM_FLAG_HAS_STICK | \
-                                       XFWM_FLAG_HAS_HIDE | \
-                                       XFWM_FLAG_HAS_CLOSE | \
-                                       XFWM_FLAG_HAS_MOVE | \
-                                       XFWM_FLAG_HAS_RESIZE | \
-                                       XFWM_FLAG_FIRST_MAP
+#define CLIENT_FLAG_INITIAL_VALUES      XFWM_FLAG_HAS_BORDER | \
+                                        XFWM_FLAG_HAS_MENU | \
+                                        XFWM_FLAG_HAS_MAXIMIZE | \
+                                        XFWM_FLAG_HAS_STICK | \
+                                        XFWM_FLAG_HAS_HIDE | \
+                                        XFWM_FLAG_HAS_CLOSE | \
+                                        XFWM_FLAG_HAS_MOVE | \
+                                        XFWM_FLAG_HAS_RESIZE | \
+                                        XFWM_FLAG_FIRST_MAP
 
-#define ALL_WORKSPACES                 (int) 0xFFFFFFFF
+#define ALL_WORKSPACES                  (int) 0xFFFFFFFF
 
-#define CONSTRAINED_WINDOW(c)          ((c->win_layer > WIN_LAYER_DESKTOP) && \
-                                        (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
-                                       !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
-                                       !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
+#define CONSTRAINED_WINDOW(c)           ((c->win_layer > WIN_LAYER_DESKTOP) && \
+                                         (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
+                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
+                                        !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
 
-#define WINDOW_TYPE_DIALOG             (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
-#define WINDOW_TYPE_DONT_PLACE         (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
-#define WINDOW_REGULAR_FOCUSABLE       (WINDOW_NORMAL | WINDOW_UTILITY | WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
-#define WINDOW_TYPE_DONT_FOCUS         (WINDOW_DOCK)
+#define WINDOW_TYPE_DIALOG              (WINDOW_DIALOG | WINDOW_MODAL_DIALOG)
+#define WINDOW_TYPE_DONT_PLACE          (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_SPLASHSCREEN)
+#define WINDOW_REGULAR_FOCUSABLE        (WINDOW_NORMAL | WINDOW_UTILITY | WINDOW_DIALOG | WINDOW_MODAL_DIALOG)       
+#define WINDOW_TYPE_DONT_FOCUS          (WINDOW_DOCK)
 
 
 
