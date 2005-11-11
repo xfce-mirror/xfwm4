@@ -274,7 +274,17 @@ sn_client_startup_properties (Client * c)
     if (sequence != NULL)
     {
         int workspace;
+        Time timestamp;
 
+        /* Set initial time */
+        c->user_time = sn_startup_sequence_get_timestamp (sequence);
+        timestamp = sn_startup_sequence_get_timestamp (sequence);
+        if (timestamp > c->user_time)
+        {
+            c->user_time = timestamp;
+        }
+        
+        /* Set initial workspace */
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
         {
             workspace = sn_startup_sequence_get_workspace (sequence);
