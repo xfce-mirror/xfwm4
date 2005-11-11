@@ -12,7 +12,6 @@ AC_COPYRIGHT([Copyright (c) 2002-2005
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
 AC_INIT([xfwm4], [xfwm4_version()], [xfce4-dev@xfce.org])
 AM_INIT_AUTOMAKE([xfwm4], [xfwm4_version()])
-AC_REVISION($Id: configure.ac 18815 2005-11-11 16:44:20Z olivier $)
 
 AM_INIT_AUTOMAKE([AC_PACKAGE_TARNAME()], [AC_PACKAGE_VERSION()])
 AM_CONFIG_HEADER([config.h])
@@ -133,7 +132,8 @@ AC_SUBST(ENABLE_COMPOSITOR)
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
 
-AC_DEFINE_UNQUOTED([REVISION], "@REVISION@", [svn revision number])
+REVISION=@REVISION@
+AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [svn revision number])
 AC_SUBST([REVISION])
 
 AC_OUTPUT([ 
@@ -164,7 +164,7 @@ themes/tyrex/Makefile
 ])
 
 echo
-echo "Build Configuration:"
+echo "Build Configuration for $PACKAGE version $VERSION revision $REVISION:"
 echo "  Startup notification support:                 $LIBSTARTUP_NOTIFICATION_FOUND"
 echo "  Render support:                               $have_render"
 echo "  Xrandr support:                               $have_xrandr"
