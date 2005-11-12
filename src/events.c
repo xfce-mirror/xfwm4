@@ -378,6 +378,8 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     {
         screen_info = c->screen_info;
         key = getKeyPressed (screen_info, ev);
+	c->user_time = myDisplayGetCurrentTime (display_info);
+
         switch (key)
         {
             case KEY_MOVE_UP:
@@ -797,6 +799,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         state = ev->state & MODIFIER_MASK;
         win = ev->subwindow;
         screen_info = c->screen_info;
+	c->user_time = myDisplayGetCurrentTime (display_info);
 
         if ((ev->button == Button1) && (state == AltMask) && (screen_info->params->easy_click))
         {

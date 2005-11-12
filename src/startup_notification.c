@@ -279,6 +279,7 @@ sn_client_startup_properties (Client * c)
         /* Set initial time */
         c->user_time = sn_startup_sequence_get_timestamp (sequence);
         timestamp = sn_startup_sequence_get_timestamp (sequence);
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME);
         if (timestamp > c->user_time)
         {
             c->user_time = timestamp;

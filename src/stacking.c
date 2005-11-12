@@ -277,7 +277,7 @@ clientRaise (Client * c, Window wsibling)
         TRACE ("client \"%s\" (0x%lx) already raised", c->name, c->window);
         return;
     }
-    TRACE ("raising client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("raising client \"%s\" (0x%lx) over (0x%lx)", c->name, c->window, wsibling);
 
     if (c == clientGetFocus ())
     {
@@ -420,7 +420,7 @@ clientLower (Client * c, Window wsibling)
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientLower");
-    TRACE ("lowering client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("lowering client \"%s\" (0x%lx) below (0x%lx)", c->name, c->window, wsibling);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;

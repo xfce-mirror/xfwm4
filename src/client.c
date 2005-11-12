@@ -1848,7 +1848,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         if ((c->win_workspace == screen_info->current_ws) ||
             FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
         {
-            if (!(recapture) && clientFocusNew(c))
+            if (!(recapture) && !(clientFocusNew(c)))
             {
                 grabbed = TRUE;
             }
@@ -3186,7 +3186,11 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     {
                         msx = maxx - 1;
                     }
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                    
+                    if (edge_scroll_x <= screen_info->params->wrap_resistance)
+                    {
+                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                    }
                     lastresist = xevent->xmotion.time;
                 }
                 if ((msy == 0) || (msy == maxy))
@@ -3207,52 +3211,55 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     {
                         msy = maxy - 1;
                     }
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                    if (edge_scroll_y <= screen_info->params->wrap_resistance)
+                    {
+                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                    }
                     lastresist = xevent->xmotion.time;
                 }
 
                 if (edge_scroll_x > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_x = 0;
-                    if (msx == 1)
+                    if ((msx == 1) || (msx == maxx - 1))
                     {
-                        if (workspaceMove (screen_info, 0, -1, c))
+                        if (msx == 1)
                         {
-                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
-                                          0, 0, 0, 0, maxx - 10, msy);
-                            msx = maxx - 10;
+                            if (workspaceMove (screen_info, 0, -1, c))
+                            {
+                                msx = maxx - 10;
+                            }
                         }
-                    }
-                    else if (msx == maxx - 1)
-                    {
-                        if (workspaceMove (screen_info, 0, 1, c))
+                        else
                         {
-                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
-                                          0, 0, 0, 0, 10, msy);
-                            msx = 10;
+                            if (workspaceMove (screen_info, 0, 1, c))
+                            {
+                                msx = 10;
+                            }
                         }
+                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
                     }
                 }
                 if (edge_scroll_y > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_y = 0;
-                    if (msy == 1)
+                    if ((msy == 1) || (msy == maxy - 1))
                     {
-                        if (workspaceMove (screen_info, -1, 0, c))
+                        if (msy == 1)
                         {
-                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
-                                          0, 0, 0, 0, msx, maxy - 10);
-                            msy = maxy - 10;
+                            if (workspaceMove (screen_info, -1, 0, c))
+                            {
+                                msy = maxy - 10;
+                            }
                         }
-                    }
-                    else if (msy == maxy - 1)
-                    {
-                        if (workspaceMove (screen_info, 1, 0, c))
+                        else
                         {
-                            XWarpPointer (display_info->dpy, None, screen_info->xroot,
-                                          0, 0, 0, 0, msx, 10);
-                            msy = 10;
+                            if (workspaceMove (screen_info, 1, 0, c))
+                            {
+                                msy = 10;
+                            }
                         }
+                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
                     }
                 }
                 xevent->xmotion.x_root = msx;
@@ -3283,7 +3290,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 xevent->xmotion.y_root = c->y - passdata->oy + passdata->my;
             }
         }
-       
+
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
