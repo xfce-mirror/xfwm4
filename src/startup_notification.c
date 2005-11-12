@@ -277,13 +277,13 @@ sn_client_startup_properties (Client * c)
         Time timestamp;
 
         /* Set initial time */
-        c->user_time = sn_startup_sequence_get_timestamp (sequence);
         timestamp = sn_startup_sequence_get_timestamp (sequence);
-        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME);
+        TRACE ("Given startup time: %u", timestamp);
         if (timestamp > c->user_time)
         {
             c->user_time = timestamp;
         }
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME);
         
         /* Set initial workspace */
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))

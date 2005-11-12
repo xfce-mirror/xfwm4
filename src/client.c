@@ -1848,15 +1848,16 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         if ((c->win_workspace == screen_info->current_ws) ||
             FLAG_TEST(c->flags, CLIENT_FLAG_STICKY))
         {
-            if (!(recapture) && !(clientFocusNew(c)))
-            {
-                grabbed = TRUE;
-            }
-            else
+            if (recapture)
             {
                 clientRaise (c, None);
                 clientShow (c, TRUE);
                 clientSortRing(c);
+            }
+            else
+            {
+                clientFocusNew(c);
+                grabbed = TRUE;
             }
         }
         else
