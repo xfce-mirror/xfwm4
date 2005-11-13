@@ -85,10 +85,6 @@
      (c->wmhints->initial_state == IconicState) && \
      !clientIsValidTransientOrModal (c))
 
-/* You don't like that ? Me either, but, hell, it's the way glib lists are designed */
-#define XWINDOW_TO_GPOINTER(w)  ((gpointer) (Window) (w))
-#define GPOINTER_TO_XWINDOW(p)  ((Window) (p))
-
 #ifndef EPSILON
 #define EPSILON                 (1e-6)
 #endif
