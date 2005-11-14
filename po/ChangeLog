@@ -1,3 +1,32 @@
+2005-11-14 23:45  Daichi Kawahata <daichi@xfce.org>
+
+	* af.po, ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po,
+	  de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po,
+	  fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po,
+	  ko.po, ku.po, lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po,
+	  pl.po, pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sl.po, sv.po,
+	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po:
+	  Bumped version.
+
+2005-11-07 19:10  Olivier Fourdan <fourdan@xfce.org>
+
+	* af.po, ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po,
+	  de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po,
+	  fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po,
+	  ko.po, ku.po, lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po,
+	  pl.po, pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sl.po, sv.po,
+	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po:
+	  Version 4.2.3.1
+
+2005-11-05 13:13  Moritz Heiber <moe@xfce.org>
+
+	* de.po: Updated german translations for the upcoming release.
+
+2005-11-03 13:28  Daichi Kawahata <daichi@xfce.org>
+
+	* sl.po: Added Slovenian translations by Bostjan Spetic
+	  <igzebedze@auch.eu.org>.
+
 2005-10-28 12:08  Daichi Kawahata <daichi@xfce.org>
 
 	* be.po: Updated Belorussian translations by Ales Nyakhaychyk
