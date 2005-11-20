@@ -189,7 +189,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
     previous_ws = screen_info->current_ws;
     if ((n >= 0) && (n < screen_info->workspace_count))
     {
-        workspaceSwitch(screen_info, n, c2);
+        workspaceSwitch(screen_info, n, c2, TRUE);
     }
     else if (screen_info->params->wrap_layout)
     {
@@ -218,14 +218,14 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 
             n = workspaceGetNumber(screen_info, newrow, newcol);
         }
-        workspaceSwitch(screen_info, n, c2);
+        workspaceSwitch(screen_info, n, c2, TRUE);
     }
 
     return (screen_info->current_ws != previous_ws);
 }
 
 void
-workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
+workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus)
 {
     DisplayInfo *display_info = screen_info->display_info;
     Client *c, *new_focus = NULL;
@@ -361,17 +361,10 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
-    if (new_focus)
+    if (new_focus && update_focus)
     {
         clientSetFocus (new_focus->screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     }
-#if 0
-    else
-    {
-        /* If we can't get a window to focus, just pick the one on top */
-        clientFocusTop (screen_info, WIN_LAYER_ABOVE_DOCK);
-    }
-#endif
 }
 
 void
@@ -418,7 +411,7 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     }
     if (screen_info->current_ws > count - 1)
     {
-        workspaceSwitch (screen_info, count - 1, NULL);
+        workspaceSwitch (screen_info, count - 1, NULL, TRUE);
     }
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
                     gdk_screen_get_width (screen_info->gscr),

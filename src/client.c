@@ -4123,6 +4123,10 @@ clientCycle (Client * c, XEvent * ev)
     {
         passdata.cycle_range |= INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER;
     }
+    if (screen_info->params->cycle_workspaces)
+    {
+        passdata.cycle_range |= INCLUDE_ALL_WORKSPACES;
+    }
     passdata.c = clientGetNext (c, passdata.cycle_range);
 
     /* If there is one single client, and if it's eligible for focus, use it */
@@ -4154,15 +4158,24 @@ clientCycle (Client * c, XEvent * ev)
     if (passdata.c)
     {
         Client *focused;
+        int workspace;
+
+        c = passdata.c;
+        workspace = c->win_workspace;
 
         focused = clientGetFocus ();
-        clientShow (passdata.c, TRUE);
-        clientSetFocus (passdata.c->screen_info, passdata.c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+        if (workspace != screen_info->current_ws)
+        {
+            workspaceSwitch (screen_info, workspace, c, FALSE);
+        }
+
+        clientShow (c, TRUE);
+        clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
         if (focused)
         {
             clientAdjustFullscreenLayer (focused, FALSE);
         }
-        clientRaise (passdata.c, None);
+        clientRaise (c, None);
     }
 }
 

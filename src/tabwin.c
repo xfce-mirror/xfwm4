@@ -99,7 +99,7 @@ pretty_string (const gchar * s)
 }
 
 static void
-tabwinSetLabel (Tabwin * t, gchar * class, gchar * label)
+tabwinSetLabel (Tabwin * t, gchar * class, gchar * label, int workspace)
 {
     gchar *markup;
     gchar *message;
@@ -107,11 +107,14 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label)
     message = pretty_string (class);
     gtk_label_set_use_markup (GTK_LABEL (t->class), TRUE);
     markup = g_strconcat ("<span size=\"larger\" weight=\"bold\">", message, "</span>", NULL);
-    gtk_label_set_markup (GTK_LABEL (t->class), markup);
-    gtk_label_set_text (GTK_LABEL (t->label), label);
-
     g_free (message);
+
+    gtk_label_set_markup (GTK_LABEL (t->class), markup);
     g_free (markup);
+
+    message = g_strdup_printf ("[%i] - %s", workspace + 1, label);
+    gtk_label_set_text (GTK_LABEL (t->label), message);
+    g_free (message);
 }
 
 static void
@@ -126,7 +129,7 @@ tabwinSetSelected (Tabwin * t, GtkWidget * w)
     t->selected_callback = g_signal_connect (G_OBJECT (w), "expose-event", G_CALLBACK (paint_selected), NULL);
     c = g_object_get_data (G_OBJECT (w), "client-ptr-val");
 
-    tabwinSetLabel (t, c->class.res_class, c->name);
+    tabwinSetLabel (t, c->class.res_class, c->name, c->win_workspace);
 }
 
 static GtkWidget *

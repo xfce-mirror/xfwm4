@@ -351,6 +351,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->cycle_hidden = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/CycleWorkspaces"))
+                    {
+                        screen_info->params->cycle_workspaces = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/EasyClick"))
                     {
                         screen_info->params->easy_click = setting->data.v_int;
@@ -667,6 +671,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("cycle_hidden", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleWorkspaces", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("cycle_workspaces", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/EasyClick", CHANNEL5,
@@ -1192,12 +1202,13 @@ loadSettings (ScreenInfo *screen_info)
         {"button_spacing", NULL, TRUE},
         {"click_to_focus", NULL, TRUE},
         {"cycle_hidden", NULL, TRUE},
-        {"cycle_minimum", NULL, FALSE},
+        {"cycle_minimum", NULL, TRUE},
+        {"cycle_workspaces", NULL, TRUE},
         {"dbl_click_time", NULL, TRUE},
         {"double_click_action", NULL, TRUE},
-        {"easy_click", NULL, FALSE},
+        {"easy_click", NULL, TRUE},
         {"restore_on_move", NULL, TRUE},
-        {"focus_hint", NULL, FALSE},
+        {"focus_hint", NULL, TRUE},
         {"focus_new", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
         {"keytheme", NULL, TRUE},
@@ -1350,6 +1361,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("cycle_minimum", rc));
     screen_info->params->cycle_hidden =
         !g_ascii_strcasecmp ("true", getValue ("cycle_hidden", rc));
+    screen_info->params->cycle_workspaces =
+        !g_ascii_strcasecmp ("true", getValue ("cycle_workspaces", rc));
     screen_info->params->focus_hint =
         !g_ascii_strcasecmp ("true", getValue ("focus_hint", rc));
     screen_info->params->focus_new =

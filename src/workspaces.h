@@ -34,7 +34,7 @@
 #include "client.h"
 
 gboolean workspaceMove (ScreenInfo *, int, int, Client *);
-void workspaceSwitch (ScreenInfo *, int, Client *);
+void workspaceSwitch (ScreenInfo *, int, Client *, gboolean);
 void workspaceSetNames (ScreenInfo *, char *, int);
 void workspaceSetCount (ScreenInfo *, int);
 void workspaceUpdateArea (ScreenInfo *);

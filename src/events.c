@@ -378,7 +378,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     {
         screen_info = c->screen_info;
         key = getKeyPressed (screen_info, ev);
-	c->user_time = myDisplayGetCurrentTime (display_info);
+        c->user_time = myDisplayGetCurrentTime (display_info);
 
         switch (key)
         {
@@ -439,10 +439,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientToggleFullscreen (c);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
-                workspaceSwitch (screen_info, screen_info->current_ws + 1, c);
+                workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE);
                 break;
             case KEY_MOVE_PREV_WORKSPACE:
-                workspaceSwitch (screen_info, screen_info->current_ws - 1, c);
+                workspaceSwitch (screen_info, screen_info->current_ws - 1, c, TRUE);
                 break;
             case KEY_MOVE_UP_WORKSPACE:
                 workspaceMove (screen_info, -1, 0, c);
@@ -471,7 +471,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
                 {
                     clientRaise (c, None);
-                    workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c);
+                    workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c, TRUE);
                 }
                 break;
             default:
@@ -506,10 +506,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     switch (key)
     {
         case KEY_NEXT_WORKSPACE:
-            workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL);
+            workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL, TRUE);
             break;
         case KEY_PREV_WORKSPACE:
-            workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL);
+            workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL, TRUE);
             break;
         case KEY_UP_WORKSPACE:
             workspaceMove(screen_info, -1, 0, NULL);
@@ -543,7 +543,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_WORKSPACE_12:
             if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
             {
-                workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL);
+                workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL, TRUE);
             }
             break;
         case KEY_SHORTCUT_1:
@@ -765,11 +765,11 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 
     if (ev->button == Button4)
     {
-        workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL);
+        workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL, TRUE);
     }
     else if (ev->button == Button5)
     {
-        workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL);
+        workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL, TRUE);
     }
 }
 
@@ -799,7 +799,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         state = ev->state & MODIFIER_MASK;
         win = ev->subwindow;
         screen_info = c->screen_info;
-	c->user_time = myDisplayGetCurrentTime (display_info);
+        c->user_time = myDisplayGetCurrentTime (display_info);
 
         if ((ev->button == Button1) && (state == AltMask) && (screen_info->params->easy_click))
         {
@@ -1242,9 +1242,9 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     }
     else
     {
-	TRACE ("ConfigureNotify on the screen_info->xroot win (0x%lx)", ev->window);
-	screen_info->xscreen->width   = ev->width;
-	screen_info->xscreen->height  = ev->height;
+        TRACE ("ConfigureNotify on the screen_info->xroot win (0x%lx)", ev->window);
+        screen_info->xscreen->width   = ev->width;
+        screen_info->xscreen->height  = ev->height;
     }
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
@@ -1978,7 +1978,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             TRACE ("root has received a win_workspace or a net_current_desktop event %i", ev->data.l[0]);
             if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) && (ev->data.l[0] != screen_info->current_ws))
             {
-                workspaceSwitch (screen_info, ev->data.l[0], NULL);
+                workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE);
             }
         }
         else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) || 

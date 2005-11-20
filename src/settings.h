@@ -180,6 +180,7 @@ struct _XfwmParams
     gboolean click_to_focus;
     gboolean cycle_hidden;
     gboolean cycle_minimum;
+    gboolean cycle_workspaces;
     gboolean easy_click;
     gboolean focus_hint;
     gboolean focus_new;
