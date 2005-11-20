@@ -4339,6 +4339,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
     GList *list_of_windows = NULL;
     GList *index;
     Client *c2;
+    int previous_ws = 0;
 
     g_return_if_fail (c != NULL);
 
@@ -4348,28 +4349,25 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
+
         if (c2->win_workspace != ws)
         {
             TRACE ("setting client \"%s\" (0x%lx) to workspace %d", c->name,
                 c->window, ws);
+
+            previous_ws = c2->win_workspace;
             clientSetWorkspaceSingle (c2, ws);
+
             if (manage_mapping && !clientIsTransientOrModal (c2)
                 && !CLIENT_FLAG_TEST (c2, CLIENT_FLAG_ICONIFIED))
             {
-                if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_STICKY))
+                if (previous_ws == workspace)
+                {
+                    clientHide (c2, workspace, FALSE);
+                }
+                if (CLIENT_FLAG_TEST (c2, CLIENT_FLAG_STICKY) || (ws == workspace))
                 {
                     clientShow (c2, FALSE);
-                }
-                else
-                {
-                    if (ws == workspace)
-                    {
-                        clientShow (c2, FALSE);
-                    }
-                    else
-                    {
-                        clientHide (c2, workspace, FALSE);
-                    }
                 }
             }
         }
