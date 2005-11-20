@@ -1985,6 +1985,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
     GList *list_of_windows = NULL;
     GList *index = NULL;
     Client *c2 = NULL;
+    int previous_ws = 0;
 
     g_return_if_fail (c != NULL);
 
@@ -1994,27 +1995,23 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
+
         if (c2->win_workspace != ws)
         {
             TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
+
+            previous_ws = c2->win_workspace;
             clientSetWorkspaceSingle (c2, ws);
-            if (manage_mapping && !clientIsValidTransientOrModal (c2)
-                && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED))
+
+            if (manage_mapping && !clientIsValidTransientOrModal (c2) && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED))
             {
-                if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
+                if (previous_ws == c2->screen_info->current_ws)
+                {
+                    clientHide (c2, c2->screen_info->current_ws, FALSE);
+                }
+                if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY) || (ws == c2->screen_info->current_ws))
                 {
                     clientShow (c2, FALSE);
-                }
-                else
-                {
-                    if (ws == c2->screen_info->current_ws)
-                    {
-                        clientShow (c2, FALSE);
-                    }
-                    else
-                    {
-                        clientHide (c2, c2->screen_info->current_ws, FALSE);
-                    }
                 }
             }
         }
