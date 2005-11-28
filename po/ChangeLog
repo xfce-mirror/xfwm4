@@ -1,3 +1,42 @@
+2005-11-21 17:14  Daichi Kawahata <daichi@xfce.org>
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
+	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
+	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
+
+2005-11-21 16:06  Daichi Kawahata <daichi@xfce.org>
+
+	* POTFILES.in: Updated POTFILES.in file.
+
+2005-11-11 17:16  Olivier Fourdan <fourdan@xfce.org>
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
+	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
+	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
+
+2005-11-07 22:20  Olivier Fourdan <fourdan@xfce.org>
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
+	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
+	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
+
+2005-11-05 14:59  Daichi Kawahata <daichi@xfce.org>
+
+	* ChangeLog: Deciphering.
+
+2005-11-05 14:38  Daichi Kawahata <daichi@xfce.org>
+
+	* ChangeLog: Trimmed and updated.
+
 2005-10-27 20:32  Pau Rullan Ferragut <paurullan@bulma.net>
 
 	* ca.po: begin process to 4.4 work autotranslation of most of
