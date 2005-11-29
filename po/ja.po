@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-22 00:42+0900\n"
-"PO-Revision-Date: 2005-11-10 01:06+0900\n"
+"POT-Creation-Date: 2005-11-28 21:47+0900\n"
+"PO-Revision-Date: 2005-11-30 00:25+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -614,16 +614,16 @@ msgstr "不明なアプリケーションです！"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "ウィンドウマネージャー設定"
+msgstr "ウィンドウマネージャー"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 ウィンドウマネージャー設定"
+msgstr "Xfce 4 ウィンドウマネージャーの設定"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "ワークスペース設定"
+msgstr "ワークスペース"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 ワークスペース設定"
+msgstr "Xfce 4 ワークスペースの設定"
