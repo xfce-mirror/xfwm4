@@ -468,7 +468,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_10:
             case KEY_MOVE_WORKSPACE_11:
             case KEY_MOVE_WORKSPACE_12:
-                if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
+                if (key - KEY_MOVE_WORKSPACE_1 < screen_info->workspace_count)
                 {
                     clientRaise (c, None);
                     workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c, TRUE);

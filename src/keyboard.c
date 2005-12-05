@@ -138,13 +138,17 @@ grabKey (Display * dpy, MyKey * key, Window w)
         else
         {
             /* Here we grab all combinations of well known modifiers */
-            XGrabKey (dpy, key->keycode, key->modifier, w, FALSE,
+            XGrabKey (dpy, key->keycode, 
+                key->modifier, w, FALSE,
                 GrabModeAsync, GrabModeAsync);
-            XGrabKey (dpy, key->keycode, key->modifier | ScrollLockMask, w,
+            XGrabKey (dpy, key->keycode, 
+                key->modifier | ScrollLockMask, w,
                 FALSE, GrabModeAsync, GrabModeAsync);
-            XGrabKey (dpy, key->keycode, key->modifier | NumLockMask, w,
+            XGrabKey (dpy, key->keycode, 
+                key->modifier | NumLockMask, w,
                 FALSE, GrabModeAsync, GrabModeAsync);
-            XGrabKey (dpy, key->keycode, key->modifier | LockMask, w,
+            XGrabKey (dpy, key->keycode, 
+                key->modifier | LockMask, w,
                 FALSE, GrabModeAsync, GrabModeAsync);
             XGrabKey (dpy, key->keycode,
                 key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
