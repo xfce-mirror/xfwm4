@@ -321,24 +321,24 @@ msgstr "Aurreratua"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Benetan laster-tekla gai hau ezabatu nahi duzu ?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:125
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Laster-tekla gaia gehitu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:135
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Idatzi izen berri bat gaiarentzat:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:158
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Izn horretako laster-tekla gai bat badago dagoeneko"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:164
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "LAster-tekla gaiarentzat izen bat eman behar duzu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Close window"
@@ -405,24 +405,20 @@ msgid "Toggle fullscreen"
 msgstr "Txandakatu pantaila-osoa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:312
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Goiko idazmahaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Beheko idazmahaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
-#, fuzzy
 msgid "Left workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Ezkerreko idazmahaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
-#, fuzzy
 msgid "Right workspace"
-msgstr "Hurrengo idazmahaia"
+msgstr "Eskuineko idazmahaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Next workspace"
@@ -449,33 +445,29 @@ msgid "Move window to previous workspace"
 msgstr "Mugitu leihoa aurreko idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:316
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa goiko idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:316
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa beheko idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:317
-#, fuzzy
 msgid "Move window to left workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:317
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu leihoa eskuineko idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Show desktop"
-msgstr ""
+msgstr "Ikusi idazmhaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:423
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mugitu leihoa 1 idazmahaiera"
+msgstr "Mugitu leihoa %d idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
@@ -518,9 +510,8 @@ msgid "Compose shortcut"
 msgstr "laster-tekla sortu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:744
-#, fuzzy
 msgid "No shortcut"
-msgstr "laster-tekla sortu"
+msgstr "laster-tekla gabe"
 
 #: ../src/main.c:181
 #, c-format
@@ -607,35 +598,31 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
 
 #: ../src/settings.c:796
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Ezin da esleitu kolore aktibo %s\n"
+msgstr "%s: Ezin da %s kolorea esleitu\n"
 
 #: ../src/settings.c:802
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Ezin da analizatu kolore aktibo %s\n"
+msgstr "%s: Ezin da %s kolorea analizatu\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Aplikazio ezezaguna!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Leiho Kudeatzailea"
+msgstr "Leiho Kudeatzaile Ezarpenak"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Leiho Kudeatzailea hobespenak"
+msgstr "Xfce 4 Leiho Kudeatzaile Ezarpenak"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Idazmahai Marjinak"
+msgstr "Idazmahai Ezarpenak"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Idazmahai Marjinak"
+msgstr "Xfce 4 Idazmahai Ezarpenak"
