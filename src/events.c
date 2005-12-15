@@ -1247,6 +1247,10 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
         screen_info->xscreen->width   = ev->width;
         screen_info->xscreen->height  = ev->height;
 #endif
+        setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
+                        gdk_screen_get_width (screen_info->gscr),
+                        gdk_screen_get_height (screen_info->gscr),
+                        screen_info->margins);
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
         clientScreenResize (screen_info);
     }
