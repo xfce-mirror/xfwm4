@@ -388,16 +388,6 @@ myScreenGrabKeys (ScreenInfo *screen_info)
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], screen_info->xfwm4_win);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], screen_info->xfwm4_win);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_1], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_2], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_3], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_4], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_5], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_6], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_7], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_8], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_9], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], screen_info->xfwm4_win);
     grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->xfwm4_win);
     grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->xfwm4_win);
     grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->xfwm4_win);

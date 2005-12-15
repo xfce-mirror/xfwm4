@@ -101,18 +101,6 @@
 #define KEY_MOVE_WORKSPACE_10           43
 #define KEY_MOVE_WORKSPACE_11           44
 #define KEY_MOVE_WORKSPACE_12           45
-#define KEY_SHORTCUT_1                  46
-#define KEY_SHORTCUT_2                  47
-#define KEY_SHORTCUT_3                  48
-#define KEY_SHORTCUT_4                  49
-#define KEY_SHORTCUT_5                  50
-#define KEY_SHORTCUT_6                  51
-#define KEY_SHORTCUT_7                  52
-#define KEY_SHORTCUT_8                  53
-#define KEY_SHORTCUT_9                  54
-#define KEY_SHORTCUT_10                 55
-#define KEY_SHORTCUT_11                 56
-#define KEY_SHORTCUT_12                 57
 #define KEY_SHOW_DESKTOP                58
 #define KEY_LOWER_WINDOW                59
 #define KEY_RAISE_WINDOW                60
@@ -126,7 +114,6 @@
 #define KEY_MOVE_LEFT_WORKSPACE         68
 #define KEY_MOVE_RIGHT_WORKSPACE        69
 #define KEY_COUNT                       70
-#define NB_KEY_SHORTCUTS                10
 
 #define ALIGN_LEFT                      0
 #define ALIGN_RIGHT                     1
@@ -155,7 +142,6 @@ struct _XfwmParams
 {
     MyKey keys[KEY_COUNT];
     gchar button_layout[8];
-    gchar *shortcut_exec[NB_KEY_SHORTCUTS];
     unsigned int xfwm_margins[4];
     int button_offset;
     int button_spacing;

@@ -75,8 +75,6 @@ static void              loadMcsData          (ScreenInfo *,
                                                Settings *);
 static void              loadTheme            (ScreenInfo *, 
                                                Settings *);
-static void              loadShortcutCmd      (ScreenInfo *, 
-                                               Settings *);
 static gboolean          loadKeyBindings      (ScreenInfo *, 
                                                Settings *);
 static void              unloadTheme          (ScreenInfo *);
@@ -1035,29 +1033,6 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     g_free (theme);
 }
 
-static void
-loadShortcutCmd (ScreenInfo *screen_info, Settings *rc)
-{
-    int i;
-
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
-    {
-        gchar *tmp, *shortcut;
-        tmp = g_strdup_printf ("shortcut_%i_exec", i + 1);
-        if (screen_info->params->shortcut_exec[i])
-        {
-            g_free (screen_info->params->shortcut_exec[i]);
-            screen_info->params->shortcut_exec[i] = NULL;
-        }
-        shortcut = getValue (tmp, rc);
-        if (shortcut)
-        {
-            screen_info->params->shortcut_exec[i] = g_strdup (shortcut);
-        }
-        g_free (tmp);
-    }
-}
-
 static gboolean
 loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
 {
@@ -1091,8 +1066,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
             return FALSE;
         }
     }
-
-    loadShortcutCmd (screen_info, rc);
 
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP], getValue ("move_window_up_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN], getValue ("move_window_down_key", rc));
@@ -1140,16 +1113,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_10], getValue ("move_window_workspace_10_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], getValue ("move_window_workspace_11_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], getValue ("move_window_workspace_12_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_1], getValue ("shortcut_1_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_2], getValue ("shortcut_2_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_3], getValue ("shortcut_3_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_4], getValue ("shortcut_4_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_5], getValue ("shortcut_5_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_6], getValue ("shortcut_6_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_7], getValue ("shortcut_7_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_8], getValue ("shortcut_8_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_9], getValue ("shortcut_9_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], getValue ("shortcut_10_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getValue("show_desktop_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
@@ -1299,30 +1262,6 @@ loadSettings (ScreenInfo *screen_info)
         {"workspace_10_key", NULL, TRUE},
         {"workspace_11_key", NULL, TRUE},
         {"workspace_12_key", NULL, TRUE},
-        {"shortcut_1_key", NULL, TRUE},
-        {"shortcut_2_key", NULL, TRUE},
-        {"shortcut_3_key", NULL, TRUE},
-        {"shortcut_4_key", NULL, TRUE},
-        {"shortcut_5_key", NULL, TRUE},
-        {"shortcut_6_key", NULL, TRUE},
-        {"shortcut_7_key", NULL, TRUE},
-        {"shortcut_8_key", NULL, TRUE},
-        {"shortcut_9_key", NULL, TRUE},
-        {"shortcut_10_key", NULL, TRUE},
-        {"shortcut_11_key", NULL, TRUE},
-        {"shortcut_12_key", NULL, TRUE},
-        {"shortcut_1_exec", NULL, FALSE},
-        {"shortcut_2_exec", NULL, FALSE},
-        {"shortcut_3_exec", NULL, FALSE},
-        {"shortcut_4_exec", NULL, FALSE},
-        {"shortcut_5_exec", NULL, FALSE},
-        {"shortcut_6_exec", NULL, FALSE},
-        {"shortcut_7_exec", NULL, FALSE},
-        {"shortcut_8_exec", NULL, FALSE},
-        {"shortcut_9_exec", NULL, FALSE},
-        {"shortcut_10_exec", NULL, FALSE},
-        {"shortcut_11_exec", NULL, FALSE},
-        {"shortcut_12_exec", NULL, FALSE},
         {"show_desktop_key", NULL, FALSE},
         {"raise_window_key", NULL, TRUE},
         {"lower_window_key", NULL, TRUE},
@@ -1497,15 +1436,6 @@ unloadSettings (ScreenInfo *screen_info)
     TRACE ("entering unloadSettings");
 
     unloadTheme (screen_info);
-
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
-    {
-        if (screen_info->params->shortcut_exec[i])
-        {
-            g_free (screen_info->params->shortcut_exec[i]);
-            screen_info->params->shortcut_exec[i] = NULL;
-        }
-    }
 }
 
 static gboolean
@@ -1562,10 +1492,6 @@ initSettings (ScreenInfo *screen_info)
     TRACE ("entering initSettings");
 
     display_info = screen_info->display_info;
-    for (i = 0; i < NB_KEY_SHORTCUTS; i++)
-    {
-        screen_info->params->shortcut_exec[i] = NULL;
-    }
 
     if (!mcs_client_check_manager (myScreenGetXDisplay (screen_info), screen_info->screen, "xfce-mcs-manager"))
     {

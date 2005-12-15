@@ -327,18 +327,6 @@ clientGrabKeys (Client * c)
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_STICK_WINDOW], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHOW_DESKTOP], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_1], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_2], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_3], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_4], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_5], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_6], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_7], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_8], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_9], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_10], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_11], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_SHORTCUT_12], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_1], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_2], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_WORKSPACE_3], c->window);

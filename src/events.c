@@ -311,25 +311,6 @@ resizeRequest (Client * c, int corner, XEvent * ev)
 }
 
 static void
-spawn_shortcut (ScreenInfo *screen_info, int i)
-{
-    GError *error = NULL;
-    if ((i >= NB_KEY_SHORTCUTS) || (!screen_info->params->shortcut_exec[i])
-        || !strlen (screen_info->params->shortcut_exec[i]))
-    {
-        return;
-    }
-    if (!xfce_gdk_spawn_command_line_on_screen (screen_info->gscr, screen_info->params->shortcut_exec[i], &error))
-    {
-        if (error)
-        {
-            g_warning ("%s", error->message);
-            g_error_free (error);
-        }
-    }
-}
-
-static void
 toggle_show_desktop (ScreenInfo *screen_info)
 {
     long visible = 0;
@@ -545,20 +526,6 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             {
                 workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL, TRUE);
             }
-            break;
-        case KEY_SHORTCUT_1:
-        case KEY_SHORTCUT_2:
-        case KEY_SHORTCUT_3:
-        case KEY_SHORTCUT_4:
-        case KEY_SHORTCUT_5:
-        case KEY_SHORTCUT_6:
-        case KEY_SHORTCUT_7:
-        case KEY_SHORTCUT_8:
-        case KEY_SHORTCUT_9:
-        case KEY_SHORTCUT_10:
-        case KEY_SHORTCUT_11:
-        case KEY_SHORTCUT_12:
-            spawn_shortcut (screen_info, key - KEY_SHORTCUT_1);
             break;
         case KEY_SHOW_DESKTOP:
             toggle_show_desktop (screen_info);
@@ -1246,6 +1213,10 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
         screen_info->xscreen->width   = ev->width;
         screen_info->xscreen->height  = ev->height;
     }
+    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr),
+                    screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
 }
