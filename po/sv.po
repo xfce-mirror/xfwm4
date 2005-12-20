@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-22 00:42+0900\n"
+"POT-Creation-Date: 2005-12-20 21:04+0900\n"
 "PO-Revision-Date: 2005-08-19 21:21+0900\n"
 "Last-Translator: Joakim Andreasson <joakim.andreasson@gmx.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -641,12 +641,12 @@ msgstr "Arbetsyta %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu misslyckades attfånga pekaren\n"
 
-#: ../src/settings.c:796
+#: ../src/settings.c:794
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Kan inte allokera aktiv färg %s\n"
 
-#: ../src/settings.c:802
+#: ../src/settings.c:800
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kan ej avläsa aktiv färg %s\n"

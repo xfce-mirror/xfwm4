@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-22 00:42+0900\n"
+"POT-Creation-Date: 2005-12-20 21:04+0900\n"
 "PO-Revision-Date: 2005-12-11 20:02+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -21,8 +21,11 @@ msgid "Workspace Margins"
 msgstr "Περιθώρια Χώρου Εργασίας"
 
 #: ../mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα "
+"τοποθετηθούν παράθυρα"
 
 #: ../mcs-plugin/margins.c:168
 msgid "Left :"
@@ -40,14 +43,12 @@ msgstr "Επάνω :"
 msgid "Bottom :"
 msgstr "Κάτω :"
 
-#: ../mcs-plugin/plugin.c:109
-#: ../mcs-plugin/plugin.c:152
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:152
 msgid "Workspaces and Margins"
 msgstr "Χώροι Εργασίας και Περιθώρια"
 
 #. Number of workspaces
-#: ../mcs-plugin/plugin.c:135
-#: ../mcs-plugin/plugin.c:166
+#: ../mcs-plugin/plugin.c:135 ../mcs-plugin/plugin.c:166
 #: ../mcs-plugin/workspaces.c:546
 msgid "Workspaces"
 msgstr "Χώροι Εργασίας"
@@ -60,8 +61,7 @@ msgstr "Περιθώρια"
 msgid "Change name"
 msgstr "Αλλαγή ονόματος"
 
-#: ../mcs-plugin/workspaces.c:357
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:357 ../mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
@@ -107,18 +107,15 @@ msgstr "Μεγιστοποίηση"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:86 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "Σκίαση παραθύρου"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:87 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "Απόκρυψη παραθύρου"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
@@ -162,8 +159,7 @@ msgstr "Κρυμμένο"
 msgid "Font Selection Dialog"
 msgstr "Πλαίσιο επιλογής Γραμματοσειράς"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1414
-#: ../mcs-plugin/xfwm4_plugin.c:1900
+#: ../mcs-plugin/xfwm4_plugin.c:1414 ../mcs-plugin/xfwm4_plugin.c:1900
 msgid "Window Manager"
 msgstr "Διαχειριστής Παραθύρων"
 
@@ -276,13 +272,11 @@ msgstr "Ταίριασμα παραθύρων σε άλλα παράθυρα"
 msgid "Distance :"
 msgstr "Απόσταση :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
-#: ../mcs-plugin/xfwm4_plugin.c:1748
+#: ../mcs-plugin/xfwm4_plugin.c:1698 ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Small"
 msgstr "Μικρή"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1704
-#: ../mcs-plugin/xfwm4_plugin.c:1754
+#: ../mcs-plugin/xfwm4_plugin.c:1704 ../mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wide"
 msgstr "Μεγάλη"
 
@@ -565,8 +559,7 @@ msgstr "Αποεπικό_λληση"
 msgid "Context _help"
 msgstr "Βοήθεια πε_ριεχομένου"
 
-#: ../src/menu.c:49
-#: ../src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr "Πάντα στην κορυφή"
 
@@ -605,12 +598,12 @@ msgstr "Χώρος εργασίας %i "
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να αρπάξει τον δείκτη\n"
 
-#: ../src/settings.c:796
+#: ../src/settings.c:794
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Αδύνατος ο προσδιορισμός του χρώματος %s\n"
 
-#: ../src/settings.c:802
+#: ../src/settings.c:800
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του χρώματος %s\n"
@@ -634,4 +627,3 @@ msgstr "Ρυθμίσεις Χώρων Εργασίας"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Ρυθμίσεις Χώρων Εργασίας Xfce 4"
-

@@ -1,6 +1,18 @@
-2005-12-07 11:54  Piarres Beobide <pi@beobide.net>
+2005-12-11 18:37  Stavros Giannouris <stavrosg2002@freemail.gr>
 
-	* eu.po: Basque translation update
+	* el.po: Updated Greek translations.
+
+2005-12-07 10:55  Piarres Beobide <pi@beobide.net>
+
+	* eu.po: Basque translation update.
+
+2005-11-29 21:45  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Fixed mistranslations. Revised some translations.
+
+2005-11-28 15:19  Daichi Kawahata <daichi@xfce.org>
+
+	* ChangeLog: Updated.
 
 2005-11-21 17:14  Daichi Kawahata <daichi@xfce.org>
 
