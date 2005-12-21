@@ -2212,7 +2212,10 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
     }
 
+#if 0    
+    /* I fail to see why we need to save the options here, during startup... */
     write_options (mcs_plugin);
+#endif
 }
 
 gboolean
