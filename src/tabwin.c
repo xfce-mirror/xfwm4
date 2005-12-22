@@ -111,8 +111,15 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label, int workspace)
 
     gtk_label_set_markup (GTK_LABEL (t->class), markup);
     g_free (markup);
-
-    message = g_strdup_printf ("[%i] - %s", workspace + 1, label);
+    
+    if (t->display_workspace)
+    {
+        message = g_strdup_printf ("[%i] - %s", workspace + 1, label);
+    }
+    else
+    {
+        message = g_strdup_printf ("%s", label);
+    }
     gtk_label_set_text (GTK_LABEL (t->label), message);
     g_free (message);
 }
@@ -215,7 +222,7 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
 }
 
 Tabwin *
-tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
+tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean display_workspace)
 {
     Tabwin *tabwin;
     GtkWidget *frame;
@@ -228,6 +235,7 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range)
 
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
     
+    tabwin->display_workspace = display_workspace;
     gtk_window_set_screen (GTK_WINDOW (tabwin->window), scr);
     gtk_widget_realize (GTK_WIDGET (tabwin->window));
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);

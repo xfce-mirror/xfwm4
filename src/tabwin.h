@@ -42,12 +42,13 @@ struct _Tabwin
     GtkWidget *container;
     GList *current;
     gulong selected_callback;
+    gboolean display_workspace;
 
     int grid_cols;
     int grid_rows;
 };
 
-Tabwin *tabwinCreate (GdkScreen *, Client *, unsigned int);
+Tabwin *tabwinCreate (GdkScreen *, Client *, unsigned int, gboolean);
 Client *tabwinGetSelected (Tabwin *);
 Client *tabwinSelectNext (Tabwin *);
 Client *tabwinSelectPrev (Tabwin *);
