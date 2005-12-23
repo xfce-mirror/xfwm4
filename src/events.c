@@ -1380,10 +1380,11 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 static void
 handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
+    static Time lastresist = (Time) 0;
     Client *c = NULL;
     ScreenInfo *screen_info = NULL;
     int msx, msy, maxx, maxy;
-    static Time lastresist = (Time) 0;
+    gboolean warp_pointer = FALSE;
 
     TRACE ("entering handleEnterNotify");
 
@@ -1437,6 +1438,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         msy = ev->y_root;
         maxx = gdk_screen_get_width (screen_info->gscr) - 1;
         maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+        warp_pointer = FALSE;
 
         if ((msx == 0) || (msx == maxx))
         {
@@ -1448,15 +1450,18 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 edge_scroll_x++;
             }
-             if (msx == 0) 
-             {
-                 msx = 1;
-             }
-             else
-             {
-                 msx = maxx - 1;
-             }
-             XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+            if (msx == 0) 
+            {
+                msx = 1;
+            }
+            else
+            {
+                msx = maxx - 1;
+            }
+            if (edge_scroll_x <= screen_info->params->wrap_resistance)
+            {
+                warp_pointer = TRUE;
+            }
             lastresist = ev->time;
         }
         if ((msy == 0) || (msy == maxy))
@@ -1477,7 +1482,10 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 msy = maxy - 1;
             }
-            XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+            if (edge_scroll_y <= screen_info->params->wrap_resistance)
+            {
+                warp_pointer = TRUE;
+            }
             lastresist = ev->time;
         }
 
@@ -1488,21 +1496,17 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 if (workspaceMove (screen_info, 0, -1, NULL))
                 {
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, maxx - 10, msy);
+                    msx = maxx - 10;
                 }
             }
-            else if (msx == maxx - 1)
+            else
             {
                 if (workspaceMove (screen_info, 0, 1, NULL))
                 {
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, 10, msy);
+                    msx = 10;
                 }
             }
-            while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-            {
-                /* Update the display time */
-                myDisplayUpdateCurentTime (display_info, (XEvent *) ev);
-            }
+            warp_pointer = TRUE;
         }
         if (edge_scroll_y > screen_info->params->wrap_resistance)
         {
@@ -1511,16 +1515,21 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 if (workspaceMove (screen_info, -1, 0, NULL))
                 {
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, maxy - 10);
+                    msy = maxy - 10;
                 }
             }
-            else if (msy == maxy - 1)
+            else
             {
                 if (workspaceMove (screen_info, 1, 0, NULL))
                 {
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, 10);
+                    msy = 10;
                 }
             }
+            warp_pointer = TRUE;
+        }
+        if (warp_pointer)
+        {
+            XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
             while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
             {
                 /* Update the display time */

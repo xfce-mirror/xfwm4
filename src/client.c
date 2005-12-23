@@ -1451,7 +1451,7 @@ clientUpdateIcon (Client * c)
 
     size = MIN (screen_info->buttons[MENU_BUTTON][ACTIVE].width, 
                 screen_info->buttons[MENU_BUTTON][ACTIVE].height);
-		
+                
     icon = getAppIcon (display_info, c->window, size, size);
 
     xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
@@ -3045,6 +3045,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
     gboolean moving = TRUE;
+    gboolean warp_pointer = FALSE;
     XWindowChanges wc;
 
     TRACE ("entering clientMove_event_filter");
@@ -3087,6 +3088,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 c->y = c->y + 16;
             }
             clientConstrainPos (c, FALSE);
+            clientSnapPosition (c);
 
 #ifdef SHOW_POSITION
             if (passdata->poswin)
@@ -3149,6 +3151,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 msy = xevent->xmotion.y_root;
                 maxx = gdk_screen_get_width (screen_info->gscr) - 1;
                 maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+                warp_pointer = FALSE;
 
                 if ((msx == 0) || (msx == maxx))
                 {
@@ -3168,10 +3171,9 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     {
                         msx = maxx - 1;
                     }
-                    
                     if (edge_scroll_x <= screen_info->params->wrap_resistance)
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                        warp_pointer = TRUE;
                     }
                     lastresist = xevent->xmotion.time;
                 }
@@ -3195,7 +3197,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     }
                     if (edge_scroll_y <= screen_info->params->wrap_resistance)
                     {
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                        warp_pointer = TRUE;
                     }
                     lastresist = xevent->xmotion.time;
                 }
@@ -3219,7 +3221,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                                 msx = 10;
                             }
                         }
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                        warp_pointer = TRUE;
                     }
                 }
                 if (edge_scroll_y > screen_info->params->wrap_resistance)
@@ -3241,9 +3243,20 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                                 msy = 10;
                             }
                         }
-                        XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                        warp_pointer = TRUE;
                     }
                 }
+
+                if (warp_pointer)
+                {
+                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
+                    while (XCheckWindowEvent(display_info->dpy, xevent->xmotion.window, PointerMotionMask, (XEvent *) xevent))
+                    {
+                        /* Update the display time */
+                        myDisplayUpdateCurentTime (display_info, (XEvent *) xevent);
+                    }
+                }
+
                 xevent->xmotion.x_root = msx;
                 xevent->xmotion.y_root = msy;
             }
