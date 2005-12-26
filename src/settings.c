@@ -852,7 +852,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     screen_info->params->shadow_delta_height = 
         abs (TOINT (getValue ("shadow_delta_height", rc)));
 
-    for (i = 0; i < 20; i++)
+    for (i = 0; i < 22; i++)
     {
         colsym[i].name = rc[i].option;
         colsym[i].value = rc[i].value;
@@ -896,107 +896,107 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     g_object_ref (G_OBJECT (widget->style->white_gc));
 
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][ACTIVE], theme,
-        "left-active", colsym, 20);
+        "left-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][INACTIVE], theme,
-        "left-inactive", colsym, 20);
+        "left-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_RIGHT][ACTIVE], theme,
-        "right-active", colsym, 20);
+        "right-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_RIGHT][INACTIVE], theme,
-        "right-inactive", colsym, 20);
+        "right-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_BOTTOM][ACTIVE], theme,
-        "bottom-active", colsym, 20);
+        "bottom-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_BOTTOM][INACTIVE], theme,
-        "bottom-inactive", colsym, 20);
+        "bottom-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_LEFT][ACTIVE], theme,
-        "top-left-active", colsym, 20);
+        "top-left-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_LEFT][INACTIVE], theme,
-        "top-left-inactive", colsym, 20);
+        "top-left-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_RIGHT][ACTIVE], theme,
-        "top-right-active", colsym, 20);
+        "top-right-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_RIGHT][INACTIVE], theme,
-        "top-right-inactive", colsym, 20);
+        "top-right-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_LEFT][ACTIVE], theme,
-        "bottom-left-active", colsym, 20);
+        "bottom-left-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_LEFT][INACTIVE], theme,
-        "bottom-left-inactive", colsym, 20);
+        "bottom-left-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme,
-        "bottom-right-active", colsym, 20);
+        "bottom-right-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme,
-        "bottom-right-inactive", colsym, 20);
+        "bottom-right-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][ACTIVE], theme,
-        "hide-active", colsym, 20);
+        "hide-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][INACTIVE], theme,
-        "hide-inactive", colsym, 20);
+        "hide-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][PRESSED], theme,
-        "hide-pressed", colsym, 20);
+        "hide-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][ACTIVE], theme,
-        "close-active", colsym, 20);
+        "close-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][INACTIVE], theme,
-        "close-inactive", colsym, 20);
+        "close-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][PRESSED], theme,
-        "close-pressed", colsym, 20);
+        "close-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][ACTIVE], theme,
-        "maximize-active", colsym, 20);
+        "maximize-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][INACTIVE], theme,
-        "maximize-inactive", colsym, 20);
+        "maximize-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][PRESSED], theme,
-        "maximize-pressed", colsym, 20);
+        "maximize-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][ACTIVE], theme,
-        "shade-active", colsym, 20);
+        "shade-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][INACTIVE], theme,
-        "shade-inactive", colsym, 20);
+        "shade-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][PRESSED], theme,
-        "shade-pressed", colsym, 20);
+        "shade-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][ACTIVE], theme,
-        "stick-active", colsym, 20);
+        "stick-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][INACTIVE], theme,
-        "stick-inactive", colsym, 20);
+        "stick-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][PRESSED], theme,
-        "stick-pressed", colsym, 20);
+        "stick-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][ACTIVE], theme,
-        "menu-active", colsym, 20);
+        "menu-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][INACTIVE], theme,
-        "menu-inactive", colsym, 20);
+        "menu-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][PRESSED], theme,
-        "menu-pressed", colsym, 20);
+        "menu-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_ACTIVE], theme,
-        "shade-toggled-active", colsym, 20);
+        "shade-toggled-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_INACTIVE], theme,
-        "shade-toggled-inactive", colsym, 20);
+        "shade-toggled-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_PRESSED], theme,
-        "shade-toggled-pressed", colsym, 20);
+        "shade-toggled-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_ACTIVE], theme,
-        "stick-toggled-active", colsym, 20);
+        "stick-toggled-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_INACTIVE], theme,
-        "stick-toggled-inactive", colsym, 20);
+        "stick-toggled-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_PRESSED], theme,
-        "stick-toggled-pressed", colsym, 20);
+        "stick-toggled-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme,
-        "maximize-toggled-active", colsym, 20);
+        "maximize-toggled-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme,
-        "maximize-toggled-inactive", colsym, 20);
+        "maximize-toggled-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
-        "maximize-toggled-pressed", colsym, 20);
+        "maximize-toggled-pressed", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_1][ACTIVE], theme,
-        "title-1-active", colsym, 20);
+        "title-1-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_1][INACTIVE], theme,
-        "title-1-inactive", colsym, 20);
+        "title-1-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_2][ACTIVE], theme,
-        "title-2-active", colsym, 20);
+        "title-2-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_2][INACTIVE], theme,
-        "title-2-inactive", colsym, 20);
+        "title-2-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_3][ACTIVE], theme,
-        "title-3-active", colsym, 20);
+        "title-3-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_3][INACTIVE], theme,
-        "title-3-inactive", colsym, 20);
+        "title-3-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_4][ACTIVE], theme,
-        "title-4-active", colsym, 20);
+        "title-4-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_4][INACTIVE], theme,
-        "title-4-inactive", colsym, 20);
+        "title-4-inactive", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_5][ACTIVE], theme,
-        "title-5-active", colsym, 20);
+        "title-5-active", colsym, 22);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_5][INACTIVE], theme,
-        "title-5-inactive", colsym, 20);
+        "title-5-inactive", colsym, 22);
 
     screen_info->box_gc = createGC (screen_info, "#FFFFFF", GXxor, NULL, 2, TRUE);
 
@@ -1134,7 +1134,7 @@ gboolean
 loadSettings (ScreenInfo *screen_info)
 {
     Settings rc[] = {
-        /* Do not chnage the order of the following parameters */
+        /* Do not change the order of the following parameters */
         {"active_text_color", NULL, FALSE},
         {"inactive_text_color", NULL, FALSE},
         {"active_text_shadow_color", NULL, FALSE},
