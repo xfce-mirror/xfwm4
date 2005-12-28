@@ -588,7 +588,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, i
         return FALSE;
     }
 
-    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], -1, format, type))
+    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], MAX_TITLE_LENGTH, format, type))
     {
         TRACE ("utf8_string value invalid");
         if (str)
@@ -598,7 +598,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, i
         return FALSE;
     }
 
-    if (!g_utf8_validate (str, -1, NULL))
+    if (!g_utf8_validate (str, MAX_TITLE_LENGTH, NULL))
     {
         char *name;
 
@@ -615,13 +615,30 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, i
 
     if (str)
     {
-        xfce_utf8_remove_controls((gchar *) str, -1, NULL);
+        xfce_utf8_remove_controls((gchar *) str, MAX_TITLE_LENGTH, NULL);
     }
     
     *str_p = str;
     *length = n_items;
 
     return TRUE;
+}
+
+static gchar *
+internal_utf8_strndup (const gchar *src, gssize max_len)
+{
+    const gchar *s = src;
+
+    if (max_len <= 0)
+	return g_strdup (src);
+
+    while (max_len && *s)
+    {
+	s = g_utf8_next_char (s);
+	max_len--;
+    }
+
+    return g_strndup (src, s - src);
 }
 
 static char *
@@ -661,7 +678,7 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
         retval = text_property_to_utf8 (display_info, &text);
         if (retval)
         {
-            xfce_utf8_remove_controls((gchar *) retval, -1, NULL);
+            xfce_utf8_remove_controls((gchar *) retval, MAX_TITLE_LENGTH, NULL);
         }
         if ((text.value) && (text.nitems > 0))
         {
@@ -691,14 +708,14 @@ getWindowName (DisplayInfo *display_info, Window w, char **name)
 
     if (getUTF8String (display_info, w, NET_WM_NAME, &str, &len))
     {
-        *name = strdup (str);
+        *name = internal_utf8_strndup (str, MAX_TITLE_LENGTH);
         XFree (str);
         return;
     }
     str = get_text_property (display_info, w, XA_WM_NAME);
     if (str)
     {
-        *name = strdup (str);
+        *name = internal_utf8_strndup (str, MAX_TITLE_LENGTH);
         XFree (str);
     }
     else
