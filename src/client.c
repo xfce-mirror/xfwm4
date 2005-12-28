@@ -1667,9 +1667,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     clientGetWMProtocols (c);
     clientGetMWMHints (c, FALSE);
-    getHint (display_info, w, WIN_HINTS, &c->win_hints);
-    getHint (display_info, w, WIN_STATE, &c->win_state);
-    if (!getHint (display_info, w, WIN_LAYER, &c->win_layer))
+    getHint (display_info, w, WIN_HINTS, (long *) &c->win_hints);
+    getHint (display_info, w, WIN_STATE, (long *) &c->win_state);
+    if (!getHint (display_info, w, WIN_LAYER, (long *) &c->win_layer))
     {
         c->win_layer = WIN_LAYER_NORMAL;
     }
@@ -3118,24 +3118,27 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             }
         }
     }
+    else if (xevent->type == ButtonRelease)
+    {
+        if (!passdata->use_keys)
+        {
+            moving = FALSE;
+        }
+    }
     else if (xevent->type == MotionNotify)
     {
-        while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
+        while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask, xevent))
         {
             /* Update the display time */
             myDisplayUpdateCurentTime (display_info, xevent);
         }
-        if (xevent->type == ButtonRelease)
-        {
-            moving = FALSE;
-        }
-
         if (!passdata->grab && screen_info->params->box_move)
         {
             myDisplayGrabServer (display_info);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
+
         if (screen_info->params->box_move)
         {
             clientDrawOutline (c);
@@ -3146,11 +3149,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
             {
                 int msx, msy, maxx, maxy;
+                int rx, ry;
 
                 msx = xevent->xmotion.x_root;
                 msy = xevent->xmotion.y_root;
                 maxx = gdk_screen_get_width (screen_info->gscr) - 1;
                 maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+                rx = 0;
+                ry = 0;
                 warp_pointer = FALSE;
 
                 if ((msx == 0) || (msx == maxx))
@@ -3165,16 +3171,13 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     }
                     if (msx == 0) 
                     {
-                        msx = 1;
+                        rx = 1;
                     }
                     else
                     {
-                        msx = maxx - 1;
+                        rx = -1;
                     }
-                    if (edge_scroll_x <= screen_info->params->wrap_resistance)
-                    {
-                        warp_pointer = TRUE;
-                    }
+                    warp_pointer = TRUE;
                     lastresist = xevent->xmotion.time;
                 }
                 if ((msy == 0) || (msy == maxy))
@@ -3189,78 +3192,76 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                     }
                     if (msy == 0) 
                     {
-                        msy = 1;
+                        ry = 1;
                     }
                     else
                     {
-                        msy = maxy - 1;
+                        ry = -1;
                     }
-                    if (edge_scroll_y <= screen_info->params->wrap_resistance)
-                    {
-                        warp_pointer = TRUE;
-                    }
+                    warp_pointer = TRUE;
                     lastresist = xevent->xmotion.time;
                 }
 
                 if (edge_scroll_x > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_x = 0;
-                    if ((msx == 1) || (msx == maxx - 1))
+                    if ((msx == 0) || (msx == maxx))
                     {
-                        if (msx == 1)
+                        if (msx == 0)
                         {
                             if (workspaceMove (screen_info, 0, -1, c))
                             {
-                                msx = maxx - 10;
+                                rx = 4 * maxx / 5;
                             }
                         }
                         else
                         {
                             if (workspaceMove (screen_info, 0, 1, c))
                             {
-                                msx = 10;
+                                rx = -4 * maxx / 5;
                             }
                         }
                         warp_pointer = TRUE;
                     }
+                    lastresist = (Time) 0;
                 }
                 if (edge_scroll_y > screen_info->params->wrap_resistance)
                 {
                     edge_scroll_y = 0;
-                    if ((msy == 1) || (msy == maxy - 1))
+                    if ((msy == 0) || (msy == maxy))
                     {
-                        if (msy == 1)
+                        if (msy == 0)
                         {
                             if (workspaceMove (screen_info, -1, 0, c))
                             {
-                                msy = maxy - 10;
+                                ry = 4 * maxy / 5;
                             }
                         }
                         else
                         {
                             if (workspaceMove (screen_info, 1, 0, c))
                             {
-                                msy = 10;
+                                ry = -4 * maxy / 5;
                             }
                         }
                         warp_pointer = TRUE;
                     }
+                    lastresist = (Time) 0;
                 }
 
                 if (warp_pointer)
                 {
-                    XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
-                    while (XCheckWindowEvent(display_info->dpy, xevent->xmotion.window, PointerMotionMask, (XEvent *) xevent))
-                    {
-                        /* Update the display time */
-                        myDisplayUpdateCurentTime (display_info, (XEvent *) xevent);
-                    }
+                    XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
+                    XFlush (display_info->dpy);
+                    msx += rx;
+                    msy += ry;
                 }
 
                 xevent->xmotion.x_root = msx;
                 xevent->xmotion.y_root = msy;
             }
         }
+
         if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED) 
             && (screen_info->params->restore_on_move))
         {
@@ -3268,9 +3269,10 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             {
                 /* to keep the distance from the edges of the window proportional. */
                 double xratio, yratio;
+
                 xratio = (xevent->xmotion.x_root - c->x)/(double)c->width;
                 yratio = (xevent->xmotion.y_root - c->y)/(double)c->width;
-                
+
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
@@ -3334,13 +3336,6 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             wc.x = c->x;
             wc.y = c->y;
             clientConfigure (c, &wc, changes, NO_CFG_FLAG);
-        }
-    }
-    else if (xevent->type == ButtonRelease)
-    {
-        if (!passdata->use_keys)
-        {
-            moving = FALSE;
         }
     }
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))

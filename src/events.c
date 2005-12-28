@@ -1383,7 +1383,6 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     static Time lastresist = (Time) 0;
     Client *c = NULL;
     ScreenInfo *screen_info = NULL;
-    int msx, msy, maxx, maxy;
     gboolean warp_pointer = FALSE;
 
     TRACE ("entering handleEnterNotify");
@@ -1434,10 +1433,15 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     if (screen_info->workspace_count && screen_info->params->wrap_workspaces
         && screen_info->params->wrap_resistance)
     {
+        int msx, msy, maxx, maxy;
+        int rx, ry;
+
         msx = ev->x_root;
         msy = ev->y_root;
         maxx = gdk_screen_get_width (screen_info->gscr) - 1;
         maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+        rx = 0;
+        ry = 0;
         warp_pointer = FALSE;
 
         if ((msx == 0) || (msx == maxx))
@@ -1452,16 +1456,13 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             }
             if (msx == 0) 
             {
-                msx = 1;
+                rx = 1;
             }
             else
             {
-                msx = maxx - 1;
+                rx = -1;
             }
-            if (edge_scroll_x <= screen_info->params->wrap_resistance)
-            {
-                warp_pointer = TRUE;
-            }
+            warp_pointer = TRUE;
             lastresist = ev->time;
         }
         if ((msy == 0) || (msy == maxy))
@@ -1476,34 +1477,31 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             }
             if (msy == 0) 
             {
-                msy = 1;
+                ry = 1;
             }
             else
             {
-                msy = maxy - 1;
+                ry = -1;
             }
-            if (edge_scroll_y <= screen_info->params->wrap_resistance)
-            {
-                warp_pointer = TRUE;
-            }
+            warp_pointer = TRUE;
             lastresist = ev->time;
         }
 
         if (edge_scroll_x > screen_info->params->wrap_resistance)
         {
             edge_scroll_x = 0;
-            if (msx == 1)
+            if (msx == 0)
             {
                 if (workspaceMove (screen_info, 0, -1, NULL))
                 {
-                    msx = maxx - 10;
+                    rx = 4 * maxx / 5;
                 }
             }
             else
             {
                 if (workspaceMove (screen_info, 0, 1, NULL))
                 {
-                    msx = 10;
+                    rx = -4 * maxx / 5;
                 }
             }
             warp_pointer = TRUE;
@@ -1511,30 +1509,26 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         if (edge_scroll_y > screen_info->params->wrap_resistance)
         {
             edge_scroll_y = 0;
-            if (msy == 1)
+            if (msy == 0)
             {
                 if (workspaceMove (screen_info, -1, 0, NULL))
                 {
-                    msy = maxy - 10;
+                    ry = 4 * maxy / 5;
                 }
             }
             else
             {
                 if (workspaceMove (screen_info, 1, 0, NULL))
                 {
-                    msy = 10;
+                    ry = -4 * maxy / 5;
                 }
             }
             warp_pointer = TRUE;
         }
         if (warp_pointer)
         {
-            XWarpPointer (display_info->dpy, None, screen_info->xroot, 0, 0, 0, 0, msx, msy);
-            while (XCheckWindowEvent(display_info->dpy, ev->window, PointerMotionMask, (XEvent *) ev))
-            {
-                /* Update the display time */
-                myDisplayUpdateCurentTime (display_info, (XEvent *) ev);
-            }
+            XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
+            XFlush (display_info->dpy);
         }
     }
 }
@@ -1745,7 +1739,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[WIN_HINTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a win_hints notify", c->name, c->window);
-            getHint (display_info, c->window, WIN_HINTS, &c->win_hints);
+            getHint (display_info, c->window, WIN_HINTS, (long *) &c->win_hints);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_TYPE])
         {
@@ -2009,6 +2003,17 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
+        if (ev->kind == ShapeBounding)
+        {
+            if ((ev->shaped) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
+            {
+                FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
+            }
+            else if (!(ev->shaped) && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
+            {
+                FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_SHAPE);
+            }
+        }
         frameDraw (c, FALSE, TRUE);
     }
 }

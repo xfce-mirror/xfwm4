@@ -37,6 +37,7 @@
 #include "display.h"
 
 #define MWM_HINTS_ELEMENTS                      3L
+#define MAX_TITLE_LENGTH                        255
 
 #define MWM_HINTS_FUNCTIONS                     (1L << 0)
 #define MWM_HINTS_DECORATIONS                   (1L << 1)

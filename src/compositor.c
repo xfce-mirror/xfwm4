@@ -772,12 +772,12 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    if ((c && (screen_info->params->show_frame_shadow))
+    if ((c && (screen_info->params->show_frame_shadow) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
         || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped)))
     {
         XRectangle sr;
 
-        TRACE ("window 0x%lx (%s) has extents", cw->id, c->name);
+        TRACE ("window 0x%lx has extents", cw->id);
         cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
         cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
         if (!(cw->shadow))
