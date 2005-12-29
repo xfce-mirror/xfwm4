@@ -163,4 +163,5 @@ unsigned int     myScreenUngrabKeyboard (ScreenInfo *,
                                          Time);
 unsigned int     myScreenUngrabPointer  (ScreenInfo *, 
                                          Time);
+void             myScreenGrabKeys       (ScreenInfo *);
 #endif /* INC_SCREEN_H */

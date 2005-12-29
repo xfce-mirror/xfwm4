@@ -7,7 +7,7 @@ AC_INIT([src/main.c])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE([xfwm4], [4.2.3.2])
+AM_INIT_AUTOMAKE([xfwm4], [4.2.3.3])
 
 AM_CONFIG_HEADER([config.h])
 

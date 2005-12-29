@@ -238,10 +238,16 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
     myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (mask & UPDATE_KEYGRABS)
+        if (mask & UPDATE_KEY_GRABS)
         {
             clientUngrabKeys (c);
             clientGrabKeys (c);
+        }
+        if (mask & UPDATE_BUTTON_GRABS)
+        {
+            clientUngrabButtons (c);
+            clientGrabButtons (c);
+            clientGrabMouseButton (c);
         }
         if (mask & UPDATE_CACHE)
         {

@@ -339,3 +339,43 @@ myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
 
     return screen_info->pointer_grabs;
 }
+
+void
+myScreenGrabKeys (ScreenInfo *screen_info)
+{
+    Display *dpy;
+
+    dpy = myScreenGetXDisplay (screen_info);
+
+    ungrabKeys (dpy, screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_4], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_5], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_6], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_1], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_2], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_3], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_4], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_5], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_6], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_7], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_8], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_9], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->gnome_win);
+    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->gnome_win);
+}
+
+

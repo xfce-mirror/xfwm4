@@ -344,7 +344,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                 {
                     if (!strcmp (name, "Xfwm/KeyThemeName"))
                     {
-                        reloadScreenSettings (screen_info, UPDATE_KEYGRABS);
+                        reloadScreenSettings (screen_info, UPDATE_KEY_GRABS);
                     }
                 }
                 break;
@@ -1035,37 +1035,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getValue ("move_window_down_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getValue ("move_window_left_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getValue ("move_window_right_workspace_key", rc));
-
-    ungrabKeys (dpy, screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_4], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_5], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_6], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_1], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_2], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_3], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_4], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_5], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_6], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_7], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_8], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_9], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHORTCUT_10], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->gnome_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->gnome_win);
-
+    myScreenGrabKeys (screen_info);
 
     return TRUE;
 }
@@ -1074,7 +1044,7 @@ gboolean
 loadSettings (ScreenInfo *screen_info)
 {
     Settings rc[] = {
-        /* Do not chnage the order of the following parameters */
+        /* Do not change the order of the following parameters */
         {"active_text_color", NULL, FALSE},
         {"inactive_text_color", NULL, FALSE},
         {"active_border_color", NULL, FALSE},
