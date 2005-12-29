@@ -373,25 +373,25 @@ myScreenGrabKeys (ScreenInfo *screen_info)
 
     dpy = myScreenGetXDisplay (screen_info);
 
-    ungrabKeys (dpy, screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_4], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_5], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_6], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->xfwm4_win);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], screen_info->xfwm4_win);
+    ungrabKeys (dpy, screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_4], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_5], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_6], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], screen_info->xroot);
 }
 

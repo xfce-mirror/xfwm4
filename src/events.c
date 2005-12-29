@@ -2064,9 +2064,9 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
             loadSettings (screen_info);
 
             /* ...then update all frames grabs... */
-            clientUpdateAllFrames (screen_info, UPDATE_BUTTON_GRABS);
+            clientUpdateAllFrames (screen_info, UPDATE_BUTTON_GRABS | UPDATE_KEY_GRABS);
 
-            /* ...and at last regrab the keys in out default window! */
+            /* ...and regrab the keys we have on the root win... */
             myScreenGrabKeys (screen_info);
         }
     }
