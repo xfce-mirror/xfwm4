@@ -79,7 +79,6 @@
                                          UPDATE_GRAVITY | \
                                          UPDATE_CACHE)
 
-
 #define CLIENT_MIN_VISIBLE              10      /* pixels */
 
 #define XFWM_FLAG_HAS_BORDER           (1L<<0)
