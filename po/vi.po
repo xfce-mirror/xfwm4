@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-20 21:04+0900\n"
+"POT-Creation-Date: 2006-01-02 02:52+0900\n"
 "PO-Revision-Date: 2005-10-09 20:54+0900\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -604,12 +604,12 @@ msgstr "Vùng làm việc %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu không bắt được con trỏ\n"
 
-#: ../src/settings.c:794
+#: ../src/settings.c:795
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Không thể định vị màu chủ đạo %s\n"
 
-#: ../src/settings.c:800
+#: ../src/settings.c:801
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Không thể phân tích màu chủ đạo %s\n"

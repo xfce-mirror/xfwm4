@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-20 21:04+0900\n"
+"POT-Creation-Date: 2006-01-02 02:52+0900\n"
 "PO-Revision-Date: 2005-10-09 20:41+0900\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -597,12 +597,12 @@ msgstr "%i Idazmahaia"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
 
-#: ../src/settings.c:794
+#: ../src/settings.c:795
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Ezin da %s kolorea esleitu\n"
 
-#: ../src/settings.c:800
+#: ../src/settings.c:801
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ezin da %s kolorea analizatu\n"

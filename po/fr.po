@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-20 21:04+0900\n"
+"POT-Creation-Date: 2006-01-02 02:52+0900\n"
 "PO-Revision-Date: 2005-10-09 20:43+0900\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -609,12 +609,12 @@ msgstr "Bureau %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu n'a pas pu capturer le pointeur\n"
 
-#: ../src/settings.c:794
+#: ../src/settings.c:795
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Ne peut allouer la couleur active %s\n"
 
-#: ../src/settings.c:800
+#: ../src/settings.c:801
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ne peut lire la couleur inactive %s\n"
