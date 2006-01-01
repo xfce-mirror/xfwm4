@@ -4,14 +4,14 @@
 # Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
-# Daichi Kawahata <daichi@xfce.org>, 2005.
+# Daichi Kawahata <daichi@xfce.org>, 2005-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-02 02:52+0900\n"
-"PO-Revision-Date: 2005-11-30 00:25+0900\n"
+"PO-Revision-Date: 2006-01-02 07:48+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -165,7 +165,7 @@ msgstr "ウィンドウマネージャー"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1427
 msgid "Window Manager Preferences"
-msgstr "ウィンドウマネージャー設定"
+msgstr "ウィンドウマネージャーの設定"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Title font"
