@@ -506,12 +506,21 @@ clientKeepVisible (Client * c)
 static void
 clientAutoMaximize (Client * c, int full_w, int full_h)
 {
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (frameWidth (c) > full_w))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) || 
+        FLAG_TEST (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
+    {
+        /* Fullscree nwindows should not be maximized */
+        return;
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && 
+        (frameWidth (c) > full_w))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
     }
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (frameHeight (c) > full_h))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && 
+        (frameHeight (c) > full_h))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
     }
@@ -683,9 +692,5 @@ clientInitPosition (Client * c)
         }
     }
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && 
-        !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
-    {
-        clientAutoMaximize (c, full_w, full_h);
-    }
+    clientAutoMaximize (c, full_w, full_h);
 }
