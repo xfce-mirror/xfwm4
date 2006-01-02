@@ -30,7 +30,7 @@ xfwm4_plugin_la_CFLAGS =						\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(datadir)\"					\
-        -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
+	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_plugin_la_LIBADD =						\
 	@LIBXFCEGUI4_LIBS@						\
