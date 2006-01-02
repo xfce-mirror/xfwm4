@@ -1692,9 +1692,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetNetStruts (c);
 
     /* Fullscreen for older legacy apps */
-    if ((c->x == 0) && (c->y == 0) &&
-        (c->width == gdk_screen_get_width (screen_info->gscr)) &&
-        (c->height == gdk_screen_get_height (screen_info->gscr)) &&
+    if ((c->x <= 0) && (c->y <= 0) &&
+        (c->width >= gdk_screen_get_width (screen_info->gscr)) &&
+        (c->height >= gdk_screen_get_height (screen_info->gscr)) &&
         !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER) &&
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))

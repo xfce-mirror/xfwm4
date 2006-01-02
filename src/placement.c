@@ -682,5 +682,10 @@ clientInitPosition (Client * c)
             smartPlacement (c, full_x, full_y, full_w, full_h);
         }
     }
-    clientAutoMaximize (c, full_w, full_h);
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && 
+        !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
+    {
+        clientAutoMaximize (c, full_w, full_h);
+    }
 }
