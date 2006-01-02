@@ -123,6 +123,13 @@ clientAutoMaximize (Client * c)
     gint monitor_nbr;
     int cx, cy;
 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) || 
+        FLAG_TEST (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
+    {
+        /* Fullscree nwindows should not be maximized */
+        return;
+    }
+
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
 
