@@ -146,7 +146,7 @@ clientFocusNew(Client * c)
         if (FLAG_TEST(c->flags, CLIENT_FLAG_HAS_USER_TIME) &&
             FLAG_TEST(client_focus->flags, CLIENT_FLAG_HAS_USER_TIME))
         {
-            TRACE ("Current %u, new %u", client_focus->user_time, c->user_time);
+            TRACE ("Current %u, new %u", (unsigned int) client_focus->user_time,(unsigned int)  c->user_time);
             if (c->user_time < client_focus->user_time)
             {
                 give_focus = FALSE;
@@ -606,7 +606,6 @@ void
 clientPassGrabMouseButton (Client * c)
 {
     TRACE ("entering clientPassMouseGrabButton");
-    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c == NULL)
     {
@@ -618,6 +617,7 @@ clientPassGrabMouseButton (Client * c)
         return;
     }
 
+    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     if (last_ungrab == c)
     {
         return;
