@@ -55,7 +55,7 @@ static char *options[] = {
     "Xfwm/BottomMargin"
 };
 
-static void set_margin (int side, int margin);
+static void set_margin (int side, int margin, gboolean save);
 
 /* create margins channel */
 void
@@ -78,10 +78,8 @@ create_margins_channel (McsPlugin * mcs_plugin)
 
         n = (setting) ? setting->data.v_int : 0;
 
-        set_margin (i, n);
+        set_margin (i, n, FALSE);
     }
-
-    save_margins_channel ();
 }
 
 /* write channel to file */
@@ -93,7 +91,7 @@ save_margins_channel (void)
 
 /* setting a margin */
 static void
-set_margin (int side, int margin)
+set_margin (int side, int margin, gboolean save)
 {
     mcs_manager_set_int (mcs_manager, options[side], CHANNEL2, margin);
 
@@ -101,7 +99,10 @@ set_margin (int side, int margin)
 
     mcs_manager_notify (mcs_manager, CHANNEL2);
 
-    save_margins_channel ();
+    if (save)
+    {
+        save_margins_channel ();
+    }
 }
 
 static void
@@ -110,7 +111,7 @@ margin_changed (GtkSpinButton * spin, gpointer p)
     int i = GPOINTER_TO_INT (p);
     int n = gtk_spin_button_get_value_as_int (spin);
 
-    set_margin (i, n);
+    set_margin (i, n, TRUE);
 }
 
 void

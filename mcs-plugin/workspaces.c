@@ -68,8 +68,8 @@ enum
 };
 
 static void save_workspaces_channel (McsManager * manager);
-static void set_workspace_count (McsManager * manager, int count);
-static void set_workspace_names (McsManager * manager, char **names);
+static void set_workspace_count (McsManager * manager, int count, gboolean save);
+static void set_workspace_names (McsManager * manager, char **names, gboolean save);
 static void watch_workspaces_hint (McsManager * manager);
 
 /* very useful functions */
@@ -86,7 +86,7 @@ array_size (char **array)
 }
 
 static void
-update_names (McsManager * manager, int n)
+update_names (McsManager * manager, int n, gboolean save)
 {
     char **tmpnames;
     int i, len;
@@ -126,7 +126,7 @@ update_names (McsManager * manager, int n)
     g_strfreev (ws_names);
     ws_names = tmpnames;
 
-    set_workspace_names (manager, ws_names);
+    set_workspace_names (manager, ws_names, save);
 }
 
 /* the settings channel */
@@ -175,27 +175,15 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
         {
             ws_count = DEFAULT_NBR_WS;
         }
-        set_workspace_count (mcs_manager, ws_count);
+        set_workspace_count (mcs_manager, ws_count, FALSE);
     }
 
     len = (ws_names) ? array_size (ws_names) : 0;
     n = (len > ws_count) ? len : ws_count;
 
-    update_names (mcs_manager, n);
+    update_names (mcs_manager, n, FALSE);
 
-    save_workspaces_channel (mcs_manager);
-
-    /* check for changes made by other programs */
-    /* XXX I don't think this should be called at all.
-       Problem is when the module is unloaded, the callback
-       remains and crashes the MCS manager on workspace count
-       change.
-       Safer to remove it for now.
-
-       XXX added g_module_unload () to remove callbacks.
-     */
-       
-       watch_workspaces_hint (mcs_manager);
+    watch_workspaces_hint (mcs_manager);
 }
 
 static void
@@ -205,23 +193,25 @@ save_workspaces_channel (McsManager * manager)
 }
 
 static void
-set_workspace_count (McsManager * manager, int count)
+set_workspace_count (McsManager * manager, int count, gboolean save)
 {
     int len;
 
     mcs_manager_set_int (manager, "Xfwm/WorkspaceCount", CHANNEL1, ws_count);
 
     mcs_manager_notify (manager, CHANNEL1);
-    save_workspaces_channel (manager);
+
+    if (save)
+        save_workspaces_channel (manager);
 
     len = array_size (ws_names);
 
     if (len < ws_count)
-        update_names (manager, ws_count);
+        update_names (manager, ws_count, save);
 }
 
 static void
-set_workspace_names (McsManager * manager, char **names)
+set_workspace_names (McsManager * manager, char **names, gboolean save)
 {
     char *string;
     static Atom xa_NET_DESKTOP_NAMES = 0;
@@ -232,7 +222,9 @@ set_workspace_names (McsManager * manager, char **names)
     mcs_manager_set_string (manager, "names", CHANNEL1, string);
 
     mcs_manager_notify (manager, CHANNEL1);
-    save_workspaces_channel (manager);
+
+    if (save)
+        save_workspaces_channel (manager);
 
     if (!xa_NET_DESKTOP_NAMES)
     {
@@ -398,7 +390,7 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
         gtk_list_store_set (GTK_LIST_STORE (model), iter,
                             NAME_COLUMN, ws_names[n], -1);
 
-        set_workspace_names (manager, ws_names);
+        set_workspace_names (manager, ws_names, TRUE);
     }
 
     gtk_widget_destroy (dialog);
@@ -510,7 +502,7 @@ count_changed (GtkSpinButton * spin, McsManager * manager)
     int n = gtk_spin_button_get_value_as_int (spin);
 
     ws_count = n;
-    set_workspace_count (manager, n);
+    set_workspace_count (manager, n, TRUE);
 
     treeview_set_rows (manager, n);
 }
@@ -573,7 +565,7 @@ update_channel (NetkScreen * screen, NetkWorkspace * ws, McsManager * manager)
 {
     ws_count = netk_screen_get_workspace_count (screen);
 
-    set_workspace_count (manager, ws_count);
+    set_workspace_count (manager, ws_count, TRUE);
 }
 
 static void

@@ -49,14 +49,6 @@
 
 #define INDICATOR_SIZE 11
 
-typedef struct _TitleRadioButton TitleRadioButton;
-struct _TitleRadioButton
-{
-    GtkWidget *radio_buttons[STATES];
-    guint active;
-    GSList *radio_group;
-};
-
 typedef struct _MenuTmpl MenuTmpl;
 struct _MenuTmpl
 {
