@@ -782,7 +782,7 @@ win_extents (CWindow *cw)
         cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
         if (!(cw->shadow))
         {
-            cw->shadow = shadow_picture (screen_info, SHADOW_OPACITY,
+            cw->shadow = shadow_picture (screen_info, (SHADOW_OPACITY * cw->opacity) / NET_WM_OPAQUE,
                                          cw->attr.width + 2 * cw->attr.border_width,
                                          cw->attr.height + 2 * cw->attr.border_width,
                                          &cw->shadow_width, &cw->shadow_height);
