@@ -1842,15 +1842,31 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_active_window event", c->name, c->window);
-            clientSetWorkspace (c, screen_info->current_ws, TRUE);
-            clientShow (c, TRUE);
-            clientRaise (c);
             if (ev->data.l[0] != 0)
             {
-                clientSetFocus (screen_info, c, (Time) ev->data.l[1], NO_FOCUS_FLAG);
+                Time current = myDisplayGetCurrentTime (screen_info->display_info);
+                Time ev_time = (Time) ev->data.l[1];
+
+                /* We are simply ignoring XServer time wraparound here */
+                TRACE ("Time of event received is %u, current XServer time is %u", ev_time, current);
+                if (ev_time <= current)
+                {
+                    FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                    clientSetNetState (c);
+                }
+                else
+                {
+                    clientSetWorkspace (c, screen_info->current_ws, TRUE);
+                    clientShow (c, TRUE);
+                    clientRaise (c);
+                    clientSetFocus (screen_info, c, (Time) ev_time, NO_FOCUS_FLAG);
+                }
             }
             else
             {
+                clientSetWorkspace (c, screen_info->current_ws, TRUE);
+                clientShow (c, TRUE);
+                clientRaise (c);
                 clientSetFocus (screen_info, c, CurrentTime, NO_FOCUS_FLAG);
             }
         }
