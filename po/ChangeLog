@@ -1,3 +1,38 @@
+2006-01-08 21:12  Pau Rullan Ferragut <paurullan@bulma.net>
+
+	* ca.po: little heading fixing
+
+2006-01-07 09:40  Daichi Kawahata <daichi@xfce.org>
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
+	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
+	  vi.po, zh_CN.po, zh_TW.po: Updated copyright information.
+
+2006-01-01 23:18  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Updated Japanese translations.
+
+2006-01-01 18:12  Daichi Kawahata <daichi@xfce.org>
+
+	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
+	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
+	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
+	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
+
+2005-12-20 14:36  Daichi Kawahata <daichi@xfce.org>
+
+	* ChangeLog, ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po,
+	  de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po,
+	  fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po,
+	  ko.po, lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po,
+	  pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po,
+	  uk.po, vi.po, zh_CN.po, zh_TW.po: Updated.
+
 2005-12-11 18:37  Stavros Giannouris <stavrosg2002@freemail.gr>
 
 	* el.po: Updated Greek translations.
