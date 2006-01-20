@@ -247,7 +247,7 @@ cb_dialog_response (GtkWidget * dialog, gint response_id)
 static Itf *
 create_dialog (McsPlugin * mcs_plugin)
 {
-    static GdkAtom composite = (GdkAtom) 0;
+    static Atom composite = None;
     Itf *dialog;
     GtkWidget *dialog_vbox;
     GtkWidget *dialog_header;
@@ -413,10 +413,10 @@ create_dialog (McsPlugin * mcs_plugin)
 
     if (G_UNLIKELY (!composite))
     {
-        composite = gdk_atom_intern ("COMPOSITING_MANAGER", FALSE);
+	composite = XInternAtom (GDK_DISPLAY (), "COMPOSITING_MANAGER", False);
     }
 
-    if (gdk_selection_owner_get (composite))
+    if (XGetSelectionOwner (GDK_DISPLAY (), composite))
     {
         vbox1 = gtk_vbox_new (FALSE, BORDER);
         gtk_widget_show (vbox1);

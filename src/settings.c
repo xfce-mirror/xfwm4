@@ -373,6 +373,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/PopupOpacity"))
                     {
                         screen_info->params->popup_opacity = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_FRAME);
                     }
                     else if (!strcmp (name, "Xfwm/PlacementRatio"))
                     {
@@ -381,10 +382,12 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/ShowFrameShadow"))
                     {
                         screen_info->params->show_frame_shadow = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_FRAME);
                     }
                     else if (!strcmp (name, "Xfwm/ShowPopupShadow"))
                     {
                         screen_info->params->show_popup_shadow = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_FRAME);
                     }
                     else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
                     {
