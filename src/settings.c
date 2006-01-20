@@ -43,7 +43,7 @@
 #define CHANNEL2                "margins"
 #define CHANNEL3                "workspaces"
 #define CHANNEL4                "xfwm4_keys"
-#define CHANNEL5                "wm_tweaks"
+#define CHANNEL5                "wmtweaks"
 
 #define DEFAULT_KEYTHEME        "Default"
 #define KEYTHEMERC              "keythemerc"
@@ -395,6 +395,11 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                         screen_info->params->raise_with_any_button = setting->data.v_int;
                         check_for_grabs (screen_info);
                     }
+                    else if (!strcmp (name, "Xfwm/RestoreOnMove"))
+                    {
+                        screen_info->params->restore_on_move = setting->data.v_int;
+                        check_for_grabs (screen_info);
+                    }
                     else if (!strcmp (name, "Xfwm/ScrollWorkspaces"))
                     {
                         screen_info->params->scroll_workspaces = setting->data.v_int;
@@ -736,6 +741,13 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
+            check_for_grabs (screen_info);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RestoreOnMove", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("restore_on_move", setting->data.v_int, rc);
             check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }

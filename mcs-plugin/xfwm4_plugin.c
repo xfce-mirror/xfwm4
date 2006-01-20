@@ -1373,7 +1373,7 @@ cb_dialog_response (GtkWidget * dialog, gint response_id)
     }
 }
 
-Itf *
+static Itf *
 create_dialog (McsPlugin * mcs_plugin)
 {
     Itf *dialog;

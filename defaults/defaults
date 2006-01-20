@@ -49,3 +49,5 @@ wrap_workspaces=false
 show_app_icon=false
 show_frame_shadow=true
 show_popup_shadow=true
+active_opacity=100
+inactive_opacity=80

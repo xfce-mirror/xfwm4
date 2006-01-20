@@ -2,6 +2,7 @@
 
 mcs-plugin/margins.c
 mcs-plugin/plugin.c
+mcs-plugin/wmtweak_plugin.c
 mcs-plugin/workspaces.c
 mcs-plugin/xfwm4_plugin.c
 mcs-plugin/xfwm4_shortcuteditor.c
@@ -12,4 +13,5 @@ src/tabwin.c
 
 # files added by intltool-prepare.
 mcs-plugin/xfce-wm-settings.desktop.in
+mcs-plugin/xfce-wmtweaks-settings.desktop.in
 mcs-plugin/xfce-workspaces-settings.desktop.in
