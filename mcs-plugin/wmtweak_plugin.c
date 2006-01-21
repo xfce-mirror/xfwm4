@@ -298,19 +298,19 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Include windows that have \"skip pager\" or\n\"skip taskbar\" properties set."), 
+        create_gboolean_button (mcs_plugin, _("Include windows that have \"skip pager\" or\n\"skip taskbar\" properties set"), 
                                 "Xfwm/CycleMinimum", &cycle_minimum);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
 
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Include hidden (ie iconified) windows."),
+        create_gboolean_button (mcs_plugin, _("Include hidden (i.e. iconified) windows"),
                                 "Xfwm/CycleHidden", &cycle_hidden);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button =
-        create_gboolean_button (mcs_plugin, _("Cycle through windows from all workspaces."),
+        create_gboolean_button (mcs_plugin, _("Cycle through windows from all workspaces"),
                                 "Xfwm/CycleWorkspaces", &cycle_workspaces);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
@@ -324,13 +324,13 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button =
-        create_gboolean_button (mcs_plugin, _("Activate focus stealing prevention."),
+        create_gboolean_button (mcs_plugin, _("Activate focus stealing prevention"),
                                 "Xfwm/PreventFocusStealing", &prevent_focus_stealing);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button =
-        create_gboolean_button (mcs_plugin, _("Honor the standard ICCCM focus hint."),
+        create_gboolean_button (mcs_plugin, _("Honor the standard ICCCM focus hint"),
                                 "Xfwm/FocusHint", &focus_hint);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
@@ -344,19 +344,19 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Activate the ALT key to grab and move windows."),
+        create_gboolean_button (mcs_plugin, _("Use the ALT key to grab and move windows"),
                                 "Xfwm/EasyClick", &easy_click);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Raise windows when any mouse button is pressed."),
+        create_gboolean_button (mcs_plugin, _("Raise windows when any mouse button is pressed"),
                                 "Xfwm/RaiseWithAnyButton", &raise_with_any_button);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Restore original size of maximized windows when moving."),
+        create_gboolean_button (mcs_plugin, _("Restore original size of maximized windows when moving"),
                                 "Xfwm/RestoreOnMove", &restore_on_move);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
@@ -370,25 +370,25 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Switch workspaces using the mouse wheel over the desktop."),
+        create_gboolean_button (mcs_plugin, _("Switch workspaces using the mouse wheel over the desktop"),
                                 "Xfwm/ScrollWorkspaces", &scroll_workspaces);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Remember and recall previous workspace when switching."),
+        create_gboolean_button (mcs_plugin, _("Remember and recall previous workspace when switching\nvia keyboard shortcuts"),
                                 "Xfwm/ToggleWorkspaces", &toggle_workspaces);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Wrap workspaces depending on the actual desktop layout."),
+        create_gboolean_button (mcs_plugin, _("Wrap workspaces depending on the actual desktop layout"),
                                 "Xfwm/WrapLayout", &wrap_layout);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
-        create_gboolean_button (mcs_plugin, _("Wrap workspaces when the first or last workspace is reached."),
+        create_gboolean_button (mcs_plugin, _("Wrap workspaces when the first or last workspace is reached"),
                                 "Xfwm/WrapCycle", &wrap_cycle);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
@@ -402,7 +402,7 @@ create_dialog (McsPlugin * mcs_plugin)
     xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     range = 
-       create_int_range (mcs_plugin, _("Size of windows for smart placement"), _("Small"), _("Large"), 
+       create_int_range (mcs_plugin, _("Minimum size of windows to trigger smart placement"), _("Small"), _("Large"), 
                          "Xfwm/PlacementRatio", 0, 100, 5, &placement_ratio);
     gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
     gtk_widget_show (range);
@@ -432,13 +432,13 @@ create_dialog (McsPlugin * mcs_plugin)
         xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
         check_button = 
-            create_gboolean_button (mcs_plugin, _("Show shadow under regular windows."),
+            create_gboolean_button (mcs_plugin, _("Show shadows under regular windows"),
                                     "Xfwm/ShowFrameShadow", &show_frame_shadow);
         gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
         gtk_widget_show (check_button);
 
         check_button = 
-            create_gboolean_button (mcs_plugin, _("Show shadow under popup windows."),
+            create_gboolean_button (mcs_plugin, _("Show shadows under popup windows"),
                                     "Xfwm/ShowPopupShadow", &show_popup_shadow);
         gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
         gtk_widget_show (check_button);
@@ -456,7 +456,7 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_widget_show (range);
 
         range = 
-           create_int_range (mcs_plugin, _("Opacity popup windows"), _("Transparent"), _("Opaque"), 
+           create_int_range (mcs_plugin, _("Opacity of popup windows"), _("Transparent"), _("Opaque"), 
                              "Xfwm/PopupOpacity", 0, 100, 5, &popup_opacity);
         gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
         gtk_widget_show (range);
