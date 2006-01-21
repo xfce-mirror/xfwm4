@@ -205,7 +205,8 @@ create_int_range (McsPlugin * mcs_plugin, gchar *label, gchar *min_label, gchar 
     gtk_misc_set_alignment (GTK_MISC (label_widget), 0, 0.5);
     gtk_widget_show (label_widget);
 
-    adjustment = gtk_adjustment_new ((gdouble) *value, (gdouble) min, (gdouble) max, (gdouble) step, 0.0, 0.0);
+    adjustment = gtk_adjustment_new ((gdouble) *value, (gdouble) min, (gdouble) max, 
+                                     (gdouble) step, (gdouble) 10 * step, 0);
     scale = gtk_hscale_new (GTK_ADJUSTMENT (adjustment));
     gtk_table_attach (GTK_TABLE (table), scale, 1, 2, 1, 2, 
                       (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), 
