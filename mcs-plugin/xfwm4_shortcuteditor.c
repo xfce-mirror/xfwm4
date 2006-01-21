@@ -66,7 +66,7 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
         gtk_tree_selection_get_selected (selection, &model, &iter);
         gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
 
-        ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
+        ti = xfwm4_plugin_find_theme_info_by_name (theme_name, keybinding_theme_list);
 
         if (ti)
         {
@@ -83,23 +83,23 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
         /* refresh list */
         while (keybinding_theme_list)
         {
-            theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+            xfwm4_plugin_theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
             keybinding_theme_list = g_list_next (keybinding_theme_list);
         }
         g_list_free (keybinding_theme_list);
         
-        g_free (current_key_theme);
-        current_key_theme = g_strdup ("Default");
+        g_free (xfwm4_plugin_current_key_theme);
+        xfwm4_plugin_current_key_theme = g_strdup ("Default");
         keybinding_theme_list = NULL;
-        keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                             KEYBINDING_THEMES, current_key_theme);
+        keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+                                             KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
         gtk_widget_set_sensitive (itf->treeview3, FALSE);
-        loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
+        loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name ("Default", keybinding_theme_list), itf);
         
         /* tell it to the mcs manager */
-        mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+        mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
         mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
-        write_options (itf->mcs_plugin);
+        xfwm4_plugin_write_options (itf->mcs_plugin);
     
         g_free (theme_name);
     }
@@ -153,7 +153,7 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
             FILE *new_theme;
             FILE *default_theme;
 
-            if (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)), keybinding_theme_list))
+            if (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)), keybinding_theme_list))
             {
                 xfce_err (_("A keybinding theme with the same name already exists"));
                 continue;
@@ -197,24 +197,24 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
             /* refresh list */
             while (keybinding_theme_list)
             {
-                theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+                xfwm4_plugin_theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
                 keybinding_theme_list = g_list_next (keybinding_theme_list);
             }
             g_list_free (keybinding_theme_list);
         
-            g_free (current_key_theme);
-            current_key_theme = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+            g_free (xfwm4_plugin_current_key_theme);
+            xfwm4_plugin_current_key_theme = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
             keybinding_theme_list = NULL;
-            keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                                 KEYBINDING_THEMES, current_key_theme);
+            keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+                                                 KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
             gtk_widget_set_sensitive (itf->treeview3, TRUE);
-            loadtheme_in_treeview (find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
+            loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
                                                             keybinding_theme_list), itf);
             /* tell it to the mcs manager */
-            mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+            mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
             mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
             
-            write_options (itf->mcs_plugin);
+            xfwm4_plugin_write_options (itf->mcs_plugin);
         }
 
         break;
@@ -254,7 +254,7 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
 
             gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
             
-            ti = find_theme_info_by_name (theme_name, keybinding_theme_list);
+            ti = xfwm4_plugin_find_theme_info_by_name (theme_name, keybinding_theme_list);
 
             if (ti)
             {
@@ -696,7 +696,7 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, shortcut_string, -1);
 
     /* save changes */
-    ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+    ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme, keybinding_theme_list);
 
     if (ti)
     {
@@ -797,7 +797,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "None", -1);
 
         /* save changes */
-        ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+        ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme, keybinding_theme_list);
 
         if (ti)
         {
@@ -818,10 +818,10 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
        name has not changed
      */
     mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, TRUE);
-    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
     mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
     mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, FALSE);
-    write_options (itf->mcs_plugin);
+    xfwm4_plugin_write_options (itf->mcs_plugin);
 
     gtk_widget_destroy (dialog);
     g_free (dialog_text);

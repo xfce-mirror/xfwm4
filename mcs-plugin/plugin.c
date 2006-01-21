@@ -120,6 +120,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
 static void
 run_dialog (McsPlugin * mcs_plugin)
 {
+    const gchar *wm_name;
     static GtkWidget *dialog = NULL;
     GtkWidget *mainvbox, *notebook, *header, *vbox; 
 
@@ -165,13 +166,16 @@ run_dialog (McsPlugin * mcs_plugin)
     gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
                              gtk_label_new(_("Workspaces")));
 
-    vbox = gtk_vbox_new (FALSE, BORDER);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
-    gtk_widget_show (vbox);
-    add_margins_page(GTK_BOX(vbox));
-    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
-                             gtk_label_new(_("Margins")));
-    
+    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
+    if (!g_ascii_strcasecmp (wm_name, "Xfwm4"))
+    {
+        vbox = gtk_vbox_new (FALSE, BORDER);
+        gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+        gtk_widget_show (vbox);
+        add_margins_page(GTK_BOX(vbox));
+        gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
+                                 gtk_label_new(_("Margins")));
+    }
     xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (dialog));
     gtk_widget_show (dialog);
 }

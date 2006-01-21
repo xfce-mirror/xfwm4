@@ -1426,11 +1426,35 @@ unmap_win (CWindow *cw)
 }
 
 static void
+init_opacity (CWindow *cw)
+{
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+    Client *c = NULL;
+
+    TRACE ("set_opacity");
+    g_return_if_fail (cw != NULL);
+    
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;    
+    c = cw->c;
+
+    if (c)
+    {
+        cw->opacity = c->opacity;
+    }
+    else
+    {
+        cw->opacity = (double) (screen_info->params->popup_opacity / 100.0) * NET_WM_OPAQUE;
+    }
+    getOpacity (display_info, cw->id, &cw->opacity);
+}
+
+static void
 add_win (DisplayInfo *display_info, Window id, Client *c)
 {
     ScreenInfo *screen_info = NULL;
     CWindow *new;
-    guint opacity = (guint) NET_WM_OPAQUE;
 	
     TRACE ("entering add_win: 0x%lx", id);
 
@@ -1448,7 +1472,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     if (c)
     {
         screen_info = c->screen_info;
-        opacity = c->opacity;
     }
     else
     {
@@ -1475,8 +1498,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
         XSelectInput (display_info->dpy, id, new->attr.your_event_mask | PropertyChangeMask | StructureNotifyMask);
-        /* Set opacity for override redirects (aka popup windows) */
-        opacity = (double) (screen_info->params->popup_opacity / 100.0) * NET_WM_OPAQUE;
     }
 
     /* Listen for XShape events if applicable */
@@ -1513,8 +1534,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->shadow_width = 0;
     new->shadow_height = 0;
     new->borderClip = None;
-    new->opacity = opacity;
-    getOpacity (display_info, id, &new->opacity);
+    init_opacity (new);
     determine_mode (new);
 
     /* Insert window at top of stack */
@@ -2494,6 +2514,7 @@ compositorRebuildScreen (ScreenInfo *screen_info)
     {
         CWindow *cw2 = (CWindow *) index->data;
         free_win_data (cw2, FALSE);
+        init_opacity (cw2);
     }
     repair_screen (screen_info);
 #endif /* HAVE_COMPOSITOR */

@@ -505,6 +505,38 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
 }
 
 static void
+init_gboolean_setting (McsPlugin * mcs_plugin, gchar *setting_name, gboolean *value)
+{
+    McsSetting *setting;
+
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, setting_name, CHANNEL);
+    if (setting)
+    {
+        *value = (setting->data.v_int ? TRUE : FALSE);
+    }
+    else
+    {
+        mcs_manager_set_int (mcs_plugin->manager, setting_name, CHANNEL, *value ? 1 : 0);
+    }
+}
+
+static void
+init_int_setting (McsPlugin * mcs_plugin, gchar *setting_name, int *value)
+{
+    McsSetting *setting;
+
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, setting_name, CHANNEL);
+    if (setting)
+    {
+        *value = (setting->data.v_int);
+    }
+    else
+    {
+        mcs_manager_set_int (mcs_plugin->manager, setting_name, CHANNEL, *value);
+    }
+}
+
+static void
 xfwm4_create_channel (McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
@@ -526,18 +558,46 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         mcs_manager_add_channel (mcs_plugin->manager, CHANNEL);
     }
     g_free (rcfile);
+
+    init_gboolean_setting (mcs_plugin, "Xfwm/CycleMinimum", &cycle_minimum);
+    init_gboolean_setting (mcs_plugin, "Xfwm/CycleHidden", &cycle_hidden);
+    init_gboolean_setting (mcs_plugin, "Xfwm/CycleWorkspaces", &cycle_workspaces);
+    init_gboolean_setting (mcs_plugin, "Xfwm/EasyClick", &easy_click);
+    init_gboolean_setting (mcs_plugin, "Xfwm/FocusHint", &focus_hint);
+    init_gboolean_setting (mcs_plugin, "Xfwm/ShowFrameShadow", &show_frame_shadow);
+    init_gboolean_setting (mcs_plugin, "Xfwm/ShowPopupShadow", &show_popup_shadow);
+    init_gboolean_setting (mcs_plugin, "Xfwm/PreventFocusStealing", &prevent_focus_stealing);
+    init_gboolean_setting (mcs_plugin, "Xfwm/RaiseWithAnyButton", &raise_with_any_button);
+    init_gboolean_setting (mcs_plugin, "Xfwm/RestoreOnMove", &restore_on_move);
+    init_gboolean_setting (mcs_plugin, "Xfwm/ScrollWorkspaces", &scroll_workspaces);
+    init_gboolean_setting (mcs_plugin, "Xfwm/ToggleWorkspaces", &toggle_workspaces);
+    init_gboolean_setting (mcs_plugin, "Xfwm/WrapLayout", &wrap_layout);
+    init_gboolean_setting (mcs_plugin, "Xfwm/WrapCycle", &wrap_cycle);
+
+    init_int_setting (mcs_plugin, "Xfwm/PlacementRatio", &placement_ratio);
+    init_int_setting (mcs_plugin, "Xfwm/MoveOpacity", &move_opacity);
+    init_int_setting (mcs_plugin, "Xfwm/ResizeOpacity", &resize_opacity);
+    init_int_setting (mcs_plugin, "Xfwm/PopupOpacity", &popup_opacity);
+
 }
 
 static void
 run_dialog (McsPlugin * mcs_plugin)
 {
+    const gchar *wm_name;
     Itf *dialog;
-
+    
     if (is_running)
         return;
 
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-
+    
+    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
+    if (g_ascii_strcasecmp (wm_name, "Xfwm4"))
+    {
+       xfce_err (_("These settings cannot work with your current window manager (%s)"), wm_name);
+       return;
+    }
     is_running = TRUE;
     dialog = create_dialog (mcs_plugin);
     setup_dialog (dialog);

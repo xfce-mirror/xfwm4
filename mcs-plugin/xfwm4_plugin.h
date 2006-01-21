@@ -130,11 +130,11 @@ typedef enum
 }
 ThemeType;
 
-extern gchar *current_key_theme;
+extern gchar *xfwm4_plugin_current_key_theme;
 extern GList *keybinding_theme_list;
 
-extern gboolean write_options (McsPlugin *);
-extern void theme_info_free (ThemeInfo *);
-extern ThemeInfo *find_theme_info_by_name (const gchar *, GList *);
-extern GList *read_themes (GList *, GtkWidget *, GtkWidget *, ThemeType, gchar *);
+gboolean xfwm4_plugin_write_options (McsPlugin *);
+void xfwm4_plugin_theme_info_free (ThemeInfo *);
+ThemeInfo *xfwm4_plugin_find_theme_info_by_name (const gchar *, GList *);
+GList *xfwm4_plugin_read_themes (GList *, GtkWidget *, GtkWidget *, ThemeType, gchar *);
 #endif

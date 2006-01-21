@@ -112,7 +112,7 @@ static gboolean box_resize = FALSE;
 static int raise_delay;
 static int snap_width;
 static int wrap_resistance;
-gchar *current_key_theme = NULL;
+gchar *xfwm4_plugin_current_key_theme = NULL;
 
 static GList *decoration_theme_list = NULL;
 GList *keybinding_theme_list = NULL;
@@ -495,7 +495,7 @@ hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
     current_layout = layout_get_semantic (parent);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1, current_layout);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -528,7 +528,7 @@ layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
     current_layout = layout_get_semantic (user_data);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1, current_layout);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static GtkWidget *
@@ -665,7 +665,7 @@ create_option_menu_box (MenuTmpl template[], guint size, gchar * display_label, 
 }
 
 void
-theme_info_free (ThemeInfo * info)
+xfwm4_plugin_theme_info_free (ThemeInfo * info)
 {
     g_free (info->path);
     g_free (info->name);
@@ -673,7 +673,7 @@ theme_info_free (ThemeInfo * info)
 }
 
 ThemeInfo *
-find_theme_info_by_name (const gchar * theme_name, GList * theme_list)
+xfwm4_plugin_find_theme_info_by_name (const gchar * theme_name, GList * theme_list)
 {
     GList *list;
 
@@ -760,7 +760,7 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
     g_free (tmp);
 
     theme_name = g_strdup (strrchr (theme_dir, G_DIR_SEPARATOR) + 1);
-    info = find_theme_info_by_name (theme_name, list);
+    info = xfwm4_plugin_find_theme_info_by_name (theme_name, list);
 
     if (info)
     {
@@ -770,7 +770,7 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
             {
                 TRACE ("Removing %s", theme_name);
                 list = g_list_remove (list, info);
-                theme_info_free (info);
+                xfwm4_plugin_theme_info_free (info);
             }
             else if ((info->has_keybinding != has_keybinding)
                      || (info->has_decoration != has_decoration) 
@@ -866,7 +866,7 @@ dialog_update_from_theme (Itf * itf, const gchar * theme_name, GList * theme_lis
     g_return_val_if_fail (theme_name != NULL, FALSE);
     g_return_val_if_fail (theme_list != NULL, FALSE);
 
-    info = find_theme_info_by_name (theme_name, theme_list);
+    info = xfwm4_plugin_find_theme_info_by_name (theme_name, theme_list);
     if (info)
     {
         gtk_container_foreach (GTK_CONTAINER (itf->frame_layout), sensitive_cb, GINT_TO_POINTER ((gint) ! (info->set_layout)));
@@ -914,7 +914,7 @@ decoration_selection_changed (GtkTreeSelection * selection, gpointer data)
             dialog_update_from_theme (itf, current_theme, decoration_theme_list);
             mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ThemeName", CHANNEL1, current_theme);
             mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-            write_options (mcs_plugin);
+            xfwm4_plugin_write_options (mcs_plugin);
         }
     }
 }
@@ -949,11 +949,11 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
 
     if (new_key_theme != NULL)
     {
-        if (current_key_theme && strcmp (current_key_theme, new_key_theme))
+        if (xfwm4_plugin_current_key_theme && strcmp (xfwm4_plugin_current_key_theme, new_key_theme))
         {
             ThemeInfo *ti;
 
-            ti = find_theme_info_by_name (new_key_theme, keybinding_theme_list);
+            ti = xfwm4_plugin_find_theme_info_by_name (new_key_theme, keybinding_theme_list);
 
             if (ti)
             {
@@ -962,11 +962,11 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
                 theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
                 if (g_file_test (theme_file, G_FILE_TEST_EXISTS))
                 {
-                    g_free (current_key_theme);
-                    current_key_theme = new_key_theme;
-                    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+                    g_free (xfwm4_plugin_current_key_theme);
+                    xfwm4_plugin_current_key_theme = new_key_theme;
+                    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
                     mcs_manager_notify (mcs_plugin->manager, CHANNEL2);
-                    write_options (mcs_plugin);
+                    xfwm4_plugin_write_options (mcs_plugin);
                     
                     loadtheme_in_treeview (ti, itf);
                     gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
@@ -979,23 +979,23 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
                     /* refresh list */
                     while (keybinding_theme_list)
                     {
-                        theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+                        xfwm4_plugin_theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
                         keybinding_theme_list = g_list_next (keybinding_theme_list);
                     }
                     g_list_free (keybinding_theme_list);
                     
-                    g_free (current_key_theme);
-                    current_key_theme = g_strdup ("Default");
+                    g_free (xfwm4_plugin_current_key_theme);
+                    xfwm4_plugin_current_key_theme = g_strdup ("Default");
                     keybinding_theme_list = NULL;
-                    keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                                         KEYBINDING_THEMES, current_key_theme);
+                    keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+                                                         KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
                     gtk_widget_set_sensitive (itf->treeview3, FALSE);
-                    loadtheme_in_treeview (find_theme_info_by_name ("Default", keybinding_theme_list), itf);
+                    loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name ("Default", keybinding_theme_list), itf);
                     
                     /* tell it to the mcs manager */
-                    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+                    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
                     mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
-                    write_options (itf->mcs_plugin);
+                    xfwm4_plugin_write_options (itf->mcs_plugin);
                 }
 
                 g_free (theme_file);
@@ -1007,7 +1007,7 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
 }
 
 GList *
-read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, ThemeType type, gchar * current_value)
+xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, ThemeType type, gchar * current_value)
 {
     GList *list;
     GList *new_list = theme_list;
@@ -1106,7 +1106,7 @@ cb_click_to_focus_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1, click_to_focus ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1119,7 +1119,7 @@ cb_focus_new_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1, focus_new ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1133,7 +1133,7 @@ cb_raise_on_focus_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL1, focus_raise ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1145,7 +1145,7 @@ cb_raise_delay_changed (GtkWidget * dialog, gpointer user_data)
     raise_delay = (int) gtk_range_get_value (GTK_RANGE (itf->raise_delay_scale));
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseDelay", CHANNEL1, raise_delay);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1158,7 +1158,7 @@ cb_raise_on_click_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1, raise_on_click ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1172,7 +1172,7 @@ cb_snap_to_border_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1, snap_to_border ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1186,7 +1186,7 @@ cb_snap_to_windows_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1, snap_to_windows ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1198,7 +1198,7 @@ cb_snap_width_changed (GtkWidget * dialog, gpointer user_data)
     snap_width = (int) gtk_range_get_value (GTK_RANGE (itf->snap_width_scale));
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL1, snap_width);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1210,7 +1210,7 @@ cb_wrap_resistance_changed (GtkWidget * dialog, gpointer user_data)
     wrap_resistance = (int) gtk_range_get_value (GTK_RANGE (itf->wrap_resistance_scale));
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapResistance", CHANNEL1, wrap_resistance);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1224,7 +1224,7 @@ cb_wrap_workspaces_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1, wrap_workspaces ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1238,7 +1238,7 @@ cb_wrap_windows_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1, wrap_windows ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1251,7 +1251,7 @@ cb_box_move_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL1, box_move ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1264,7 +1264,7 @@ cb_box_resize_changed (GtkWidget * dialog, gpointer user_data)
 
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/BoxResize", CHANNEL1, box_resize ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1281,7 +1281,7 @@ cb_dblclick_action_value_changed (GtkWidget * widget, gpointer user_data)
     dbl_click_action = g_strdup (action);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1, dbl_click_action);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1298,7 +1298,7 @@ cb_title_align_value_changed (GtkWidget * widget, gpointer user_data)
     title_align = g_strdup (action);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL1, title_align);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 }
 
 static void
@@ -1317,7 +1317,7 @@ font_selection_ok (GtkWidget * w, gpointer user_data)
             gtk_button_set_label (GTK_BUTTON (itf->font_button), current_font);
             mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleFont", CHANNEL1, current_font);
             mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
-            write_options (mcs_plugin);
+            xfwm4_plugin_write_options (mcs_plugin);
         }
     }
 
@@ -1846,12 +1846,12 @@ setup_dialog (Itf * itf)
     g_signal_connect (G_OBJECT (itf->treeview3), "row-activated", G_CALLBACK (cb_activate_treeview3), itf);
 
 
-    decoration_theme_list = read_themes (decoration_theme_list, itf->treeview1, itf->scrolledwindow1, DECORATION_THEMES, current_theme);
-    keybinding_theme_list = read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2, KEYBINDING_THEMES, current_key_theme);
+    decoration_theme_list = xfwm4_plugin_read_themes (decoration_theme_list, itf->treeview1, itf->scrolledwindow1, DECORATION_THEMES, current_theme);
+    keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2, KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
     dialog_update_from_theme (itf, current_theme, decoration_theme_list);
 
     /* load the theme */
-    ti = find_theme_info_by_name (current_key_theme, keybinding_theme_list);
+    ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme, keybinding_theme_list);
 
     if (ti)
     {
@@ -2187,31 +2187,31 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2);
     if (setting)
     {
-        if (current_key_theme)
+        if (xfwm4_plugin_current_key_theme)
         {
-            g_free (current_key_theme);
+            g_free (xfwm4_plugin_current_key_theme);
         }
-        current_key_theme = g_strdup (setting->data.v_string);
+        xfwm4_plugin_current_key_theme = g_strdup (setting->data.v_string);
     }
     else
     {
-        if (current_key_theme)
+        if (xfwm4_plugin_current_key_theme)
         {
-            g_free (current_key_theme);
+            g_free (xfwm4_plugin_current_key_theme);
         }
 
-        current_key_theme = g_strdup (DEFAULT_KEY_THEME);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, current_key_theme);
+        xfwm4_plugin_current_key_theme = g_strdup (DEFAULT_KEY_THEME);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
     }
 
 #if 0    
     /* I fail to see why we need to save the options here, during startup... */
-    write_options (mcs_plugin);
+    xfwm4_plugin_write_options (mcs_plugin);
 #endif
 }
 
 gboolean
-write_options (McsPlugin * mcs_plugin)
+xfwm4_plugin_write_options (McsPlugin * mcs_plugin)
 {
     gchar *rcfile, *path;
     gboolean result = FALSE;
@@ -2240,11 +2240,18 @@ write_options (McsPlugin * mcs_plugin)
 static void
 run_dialog (McsPlugin * mcs_plugin)
 {
+    const gchar *wm_name;
     Itf *dialog;
 
     if (is_running)
         return;
 
+    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
+    if (g_ascii_strcasecmp (wm_name, "Xfwm4"))
+    {
+       xfce_err (_("These settings cannot work with your current window manager (%s)"), wm_name);
+       return;
+    }
     is_running = TRUE;
 
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
