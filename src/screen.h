@@ -119,6 +119,9 @@ struct _ScreenInfo
     /* Per screen parameters */
     XfwmParams *params;
 
+    /* show desktop flag */
+    gboolean show_desktop;
+    
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification data, per screen */
     SnMonitorContext *sn_context;

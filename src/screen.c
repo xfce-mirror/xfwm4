@@ -49,6 +49,7 @@
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask)
 {
+    long desktop_visible = 0;
     gchar selection[32];
     ScreenInfo *screen_info = NULL;
     GdkWindow *event_win;
@@ -126,6 +127,9 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->key_grabs = 0;
     screen_info->pointer_grabs = 0;
 
+    getHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &desktop_visible);
+    screen_info->show_desktop = (desktop_visible != 0);
+    
     /* Create the side windows to detect edge movement */
 
     /*left*/

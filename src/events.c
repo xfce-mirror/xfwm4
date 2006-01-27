@@ -314,11 +314,17 @@ static void
 toggle_show_desktop (ScreenInfo *screen_info)
 {
     long visible = 0;
+    gboolean show_desktop;
 
-    getHint (screen_info->display_info, screen_info->xroot, 
-             NET_SHOWING_DESKTOP, &visible);
-    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, !visible, 
-                     myDisplayGetCurrentTime (screen_info->display_info));
+    getHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &visible);
+    show_desktop = (visible != 0);
+    
+    if (screen_info->show_desktop != show_desktop)
+    {
+        sendRootMessage (screen_info, NET_SHOWING_DESKTOP, !visible, 
+                         myDisplayGetCurrentTime (screen_info->display_info));
+        screen_info->show_desktop = show_desktop;
+    }
 }
 
 static void
@@ -1074,7 +1080,10 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
             TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
             return;
         }
+
         clientShow (c, TRUE);
+        clientClearAllShowDesktop (screen_info);
+
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) ||
             (c->win_workspace == screen_info->current_ws))
         {
@@ -1364,6 +1373,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
                 if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
                 {
                     clientShow (c, TRUE);
+                    clientClearAllShowDesktop (screen_info);
                 }
             }
         }
@@ -1825,7 +1835,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         TRACE ("root has received a net_desktop_layout notify");
         getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
         placeSidewalks(screen_info, screen_info->params->wrap_workspaces);
-
     }
 }
 
@@ -1925,8 +1934,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 Time ev_time = (Time) ev->data.l[1];
 
                 /* We are simply ignoring XServer time wraparound here */
-                TRACE ("Time of event received is %u, current XServer time is %u", ev_time, current);
-                if ((ev_time != (Time) 0) && (ev_time <= current))
+                g_print ("Time of event received is %u, current XServer time is %u\n", ev_time, current);
+                if ((ev_time != (Time) 0) && (ev_time < current))
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
@@ -1935,6 +1944,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 {
                     clientSetWorkspace (c, screen_info->current_ws, TRUE);
                     clientShow (c, TRUE);
+                    clientClearAllShowDesktop (screen_info);
                     clientRaise (c, None);
                     clientSetFocus (screen_info, c, (Time) ev_time, NO_FOCUS_FLAG);
                 }
@@ -1943,6 +1953,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             {
                 clientSetWorkspace (c, screen_info->current_ws, TRUE);
                 clientShow (c, TRUE);
+                clientClearAllShowDesktop (screen_info);
                 clientRaise (c, None);
                 clientSetFocus (screen_info, c, CurrentTime, NO_FOCUS_FLAG);
             }
@@ -1989,7 +2000,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[NET_SHOWING_DESKTOP]) && (ev->format == 32))
         {
             TRACE ("root has received a net_showing_desktop event");
-            clientToggleShowDesktop (screen_info, ev->data.l[0]);
+            screen_info->show_desktop = (ev->data.l[0] != 0);
+            clientToggleShowDesktop (screen_info);
             setHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, ev->data.l[0]);
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
@@ -2236,6 +2248,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 break;
             case MENU_OP_UNMINIMIZE:
                 clientShow (c, TRUE);
+                clientClearAllShowDesktop (c->screen_info);
                 break;
             case MENU_OP_SHADE:
             case MENU_OP_UNSHADE:

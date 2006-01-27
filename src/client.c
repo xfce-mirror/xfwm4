@@ -2327,7 +2327,27 @@ clientHideAll (Client * c, int ws)
 }
 
 void
-clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
+clientClearAllShowDesktop (ScreenInfo *screen_info)
+{
+    TRACE ("entering clientClearShowDesktop");
+
+    if (screen_info->show_desktop)
+    {
+        GList *index = NULL;
+
+        for (index = screen_info->windows_stack; index; index = g_list_next (index))
+        {
+            Client *c = (Client *) index->data;
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
+        }
+        screen_info->show_desktop = FALSE;
+        sendRootMessage (screen_info, NET_SHOWING_DESKTOP, screen_info->show_desktop,
+                         myDisplayGetCurrentTime (screen_info->display_info));
+    }
+}
+
+void
+clientToggleShowDesktop (ScreenInfo *screen_info)
 {
     GList *index = NULL;
 
@@ -2336,7 +2356,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
     clientSetFocus (screen_info, NULL, 
                     myDisplayGetCurrentTime (screen_info->display_info), 
                     FOCUS_IGNORE_MODAL);
-    if (show_desktop)
+    if (screen_info->show_desktop)
     {
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
         {
@@ -4168,6 +4188,7 @@ clientCycle (Client * c, XEvent * ev)
         }
 
         clientShow (c, TRUE);
+        clientClearAllShowDesktop (screen_info);
         clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
         if (focused)
         {
