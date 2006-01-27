@@ -1934,7 +1934,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 Time ev_time = (Time) ev->data.l[1];
 
                 /* We are simply ignoring XServer time wraparound here */
-                g_print ("Time of event received is %u, current XServer time is %u\n", ev_time, current);
+                TRACE ("Time of event received is %u, current XServer time is %u", ev_time, current);
                 if ((ev_time != (Time) 0) && (ev_time < current))
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
