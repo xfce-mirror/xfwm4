@@ -1849,7 +1849,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 
                 /* We are simply ignoring XServer time wraparound here */
                 TRACE ("Time of event received is %u, current XServer time is %u", ev_time, current);
-                if ((ev_time != (Time) 0) && (ev_time <= current))
+                if ((ev_time != (Time) 0) && (ev_time < current))
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
