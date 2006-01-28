@@ -499,7 +499,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
     mcs_plugin->caption = g_strdup (_("Window Manager Tweak"));
     mcs_plugin->run_dialog = run_dialog;
-    mcs_plugin->icon = xfce_themed_icon_load ("xfwm4", 48);
+    mcs_plugin->icon = xfce_themed_icon_load ("wmtweak", 48);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
 
     return (MCS_PLUGIN_INIT_OK);
