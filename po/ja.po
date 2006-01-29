@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-29 14:08+0900\n"
-"PO-Revision-Date: 2006-01-02 07:48+0900\n"
+"PO-Revision-Date: 2006-01-29 16:14+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -58,35 +58,33 @@ msgid "Margins"
 msgstr "余白"
 
 #: ../mcs-plugin/wmtweak_plugin.c:271
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "ウィンドウマネージャー"
+msgstr "ウィンドウマネージャーの微調節"
 
 #: ../mcs-plugin/wmtweak_plugin.c:279
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "ウィンドウマネージャー"
+msgstr "ウィンドウマネージャー (高度)"
 
 #: ../mcs-plugin/wmtweak_plugin.c:292
-#, fuzzy
 msgid "Window cycling"
-msgstr "ウィンドウスナップ"
+msgstr "ウィンドウの循環"
 
 #: ../mcs-plugin/wmtweak_plugin.c:301
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"「ページャーを飛ばす」または「タスクバーを飛ばす」\n"
+"というプロパティが設定されているウィンドウを含める"
 
 #: ../mcs-plugin/wmtweak_plugin.c:307
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "アイコン化されているような隠しウィンドウも含める"
 
 #: ../mcs-plugin/wmtweak_plugin.c:313
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "ウィンドウを左のワークスペースに移す"
+msgstr "全てのワークスペースを循環させる"
 
 #: ../mcs-plugin/wmtweak_plugin.c:318 ../mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
@@ -94,119 +92,114 @@ msgstr "フォーカス"
 
 #: ../mcs-plugin/wmtweak_plugin.c:327
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "フォーカスの横取りを防ぐ"
 
 #: ../mcs-plugin/wmtweak_plugin.c:333
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "ICCCM の標準フォーカスヒントを守る"
 
+# FIXME: i hate this transliteration
 #: ../mcs-plugin/wmtweak_plugin.c:338
 msgid "Accessibility"
-msgstr ""
+msgstr "アクセシビリティ"
 
 #: ../mcs-plugin/wmtweak_plugin.c:347
 msgid "Use the ALT key to grab and move windows"
-msgstr ""
+msgstr "ウィンドウを掴んだり移動したりするために ALT キー使用する"
 
 #: ../mcs-plugin/wmtweak_plugin.c:353
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す"
 
 #: ../mcs-plugin/wmtweak_plugin.c:359
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "移動時にウィンドウの内容を表示する"
+msgstr "移動する時は最大化されているウィンドウの大きさを元に戻す"
 
 #: ../mcs-plugin/wmtweak_plugin.c:373
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "デスクトップ上でマウスホイールを使用しながらワークスペースを切り替える"
 
 #: ../mcs-plugin/wmtweak_plugin.c:379
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
-msgstr ""
+msgstr "ショートカットを使用して切り替える時に以前のワークスペースを覚えておく"
 
 #: ../mcs-plugin/wmtweak_plugin.c:385
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する"
 
 #: ../mcs-plugin/wmtweak_plugin.c:391
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "ポインタが画面端に来たらワークスペースを循環する"
+msgstr "先頭または最後のワークスペースに来たら循環する"
 
 #: ../mcs-plugin/wmtweak_plugin.c:396
 msgid "Smart placement"
-msgstr ""
+msgstr "スマート配置"
 
 #: ../mcs-plugin/wmtweak_plugin.c:405
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ"
 
 #: ../mcs-plugin/wmtweak_plugin.c:405 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
-msgstr "狭い"
+msgstr "小さい"
 
 #: ../mcs-plugin/wmtweak_plugin.c:405
 msgid "Large"
-msgstr ""
+msgstr "大きい"
 
 #: ../mcs-plugin/wmtweak_plugin.c:410
 msgid "Tweaks"
-msgstr ""
+msgstr "微調節"
 
 #: ../mcs-plugin/wmtweak_plugin.c:426
 msgid "Compositing"
-msgstr ""
+msgstr "画面処理"
 
 #: ../mcs-plugin/wmtweak_plugin.c:435
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "通常のウィンドウに影を落とす"
 
 #: ../mcs-plugin/wmtweak_plugin.c:441
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "ポップアップウィンドウに影を落とす"
 
 #: ../mcs-plugin/wmtweak_plugin.c:447
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "移動時にウィンドウの内容を表示する"
+msgstr "移動時のウィンドウの透明度"
 
 #: ../mcs-plugin/wmtweak_plugin.c:447 ../mcs-plugin/wmtweak_plugin.c:453
 #: ../mcs-plugin/wmtweak_plugin.c:459
 msgid "Transparent"
-msgstr ""
+msgstr "透明"
 
 #: ../mcs-plugin/wmtweak_plugin.c:447 ../mcs-plugin/wmtweak_plugin.c:453
 #: ../mcs-plugin/wmtweak_plugin.c:459
 msgid "Opaque"
-msgstr ""
+msgstr "不透明"
 
 #: ../mcs-plugin/wmtweak_plugin.c:453
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "大きさ変更時にウィンドウの内容を表示する"
+msgstr "大きさ変更時のウィンドウの透明度"
 
 #: ../mcs-plugin/wmtweak_plugin.c:459
 msgid "Opacity of popup windows"
-msgstr ""
+msgstr "移動時のウィンドウの透明度"
 
 #: ../mcs-plugin/wmtweak_plugin.c:464
-#, fuzzy
 msgid "Compositor"
-msgstr "ショートカットを編集"
+msgstr "コンポジット"
 
 #: ../mcs-plugin/wmtweak_plugin.c:500
-#, fuzzy
 msgid "Window Manager Tweak"
-msgstr "ウィンドウマネージャー"
+msgstr "WMの微調節"
 
 #: ../mcs-plugin/wmtweak_plugin.c:599 ../mcs-plugin/xfwm4_plugin.c:2244
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "現在のウィンドウマネージャー (%s) ではこれらの設定が有効になりません"
 
 #: ../mcs-plugin/workspaces.c:337
 msgid "Change name"
@@ -238,34 +231,42 @@ msgstr "ワークスペース名"
 msgid "Menu"
 msgstr "メニュー"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:69
 msgid "Stick"
 msgstr "貼る"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:70
 msgid "Shade"
 msgstr "折り畳む"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:71
 msgid "Hide"
 msgstr "隠す"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:72
 msgid "Maximize"
 msgstr "最大化"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:73
 msgid "Close"
 msgstr "閉じる"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "ウィンドウを折り畳む"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "ウィンドウを隠す"
 
+# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "ウィンドウの最大化"
@@ -288,7 +289,7 @@ msgstr "右"
 
 #: ../mcs-plugin/xfwm4_plugin.c:557
 msgid "Click and drag buttons to change the layout"
-msgstr "レイアウトを変更するには、ボタンをクリック＆ドラッグして下さい"
+msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグして下さい"
 
 #: ../mcs-plugin/xfwm4_plugin.c:562
 msgid "Active"
@@ -421,7 +422,7 @@ msgstr "距離 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1688 ../mcs-plugin/xfwm4_plugin.c:1738
 msgid "Wide"
-msgstr "広い"
+msgstr "大きい"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1703
 msgid "Wrap workspaces"
@@ -704,7 +705,7 @@ msgstr "コンテキストヘルプ(_H)"
 
 #: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
-msgstr "常に上部へ"
+msgstr "常に前面へ"
 
 #: ../src/menu.c:51
 msgid "Send to..."
@@ -765,12 +766,11 @@ msgstr "Xfce 4 ウィンドウマネージャーの設定"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "ウィンドウマネージャー (高度)"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 ウィンドウマネージャーの設定"
+msgstr "Xfce 4 ウィンドウマネージャーの微調節"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
