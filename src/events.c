@@ -313,18 +313,11 @@ resizeRequest (Client * c, int corner, XEvent * ev)
 static void
 toggle_show_desktop (ScreenInfo *screen_info)
 {
-    long visible = 0;
-    gboolean show_desktop;
-
-    getHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &visible);
-    show_desktop = (visible != 0);
-    
-    if (screen_info->show_desktop != show_desktop)
-    {
-        sendRootMessage (screen_info, NET_SHOWING_DESKTOP, !visible, 
-                         myDisplayGetCurrentTime (screen_info->display_info));
-        screen_info->show_desktop = show_desktop;
-    }
+    screen_info->show_desktop = !screen_info->show_desktop;
+    setHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, 
+             screen_info->show_desktop);
+    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, screen_info->show_desktop, 
+                     myDisplayGetCurrentTime (screen_info->display_info));
 }
 
 static void
