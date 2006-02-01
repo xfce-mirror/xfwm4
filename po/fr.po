@@ -57,26 +57,23 @@ msgid "Margins"
 msgstr "Marges"
 
 #: ../mcs-plugin/wmtweak_plugin.c:271
-#, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Ajustements du Gestionnaire de Fenêtres"
 
 #: ../mcs-plugin/wmtweak_plugin.c:279
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
 msgstr "Paramétrage avancé du gestionnaire de fenêtres"
 
 #: ../mcs-plugin/wmtweak_plugin.c:292
-#, fuzzy
 msgid "Window cycling"
-msgstr "Aimantation des fenêtres"
+msgstr "Rotation des fenêtres"
 
 #: ../mcs-plugin/wmtweak_plugin.c:301
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
-msgstr "Include les fenêtres qui présentent les propriétés\n"
+msgstr "Inclure les fenêtres qui présentent les propriétés\n"
 "\"skip pager\" ou \"skip taskbar\""
 
 #: ../mcs-plugin/wmtweak_plugin.c:307
@@ -84,9 +81,8 @@ msgid "Include hidden (i.e. iconified) windows"
 msgstr "Inclure les fenêtres iconifiées"
 
 #: ../mcs-plugin/wmtweak_plugin.c:313
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
+msgstr "Parcourir les fenêtres de tous les espaces de travail"
 
 #: ../mcs-plugin/wmtweak_plugin.c:318 ../mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
@@ -114,9 +110,9 @@ msgstr "Place les fenêtres au premier plan avec n'importe\n"
 "quel bouton de la souris"
 
 #: ../mcs-plugin/wmtweak_plugin.c:359
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Afficher le contenu des fénêtres lors de leur déplacement"
+msgstr "Restaurer la taille originale d'une fenêtre plein\n"
+"écran lors des déplacements"
 
 #: ../mcs-plugin/wmtweak_plugin.c:373
 msgid "Switch workspaces using the mouse wheel over the desktop"
@@ -134,9 +130,9 @@ msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Basculer d'espace en fonction de l'agencement du bureau"
 
 #: ../mcs-plugin/wmtweak_plugin.c:391
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Basculer d'écran lorsque le pointeur arrive au bord"
+msgstr "Basculer d'écran après avoir atteind le permier\n"
+"ou le dernier espace de travail"
 
 #: ../mcs-plugin/wmtweak_plugin.c:396
 msgid "Smart placement"
@@ -172,9 +168,8 @@ msgid "Show shadows under popup windows"
 msgstr "Afficher l'ombre sous les fenêtres autonomes"
 
 #: ../mcs-plugin/wmtweak_plugin.c:447
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Afficher le contenu des fénêtres lors de leur déplacement"
+msgstr "Opacité des fénêtres durant leur déplacement"
 
 #: ../mcs-plugin/wmtweak_plugin.c:447 ../mcs-plugin/wmtweak_plugin.c:453
 #: ../mcs-plugin/wmtweak_plugin.c:459
@@ -188,11 +183,11 @@ msgstr "Opaque"
 
 #: ../mcs-plugin/wmtweak_plugin.c:453
 msgid "Opacity of windows during resize"
-msgstr "Opacité des fenêtres durant le redimensionnement"
+msgstr "Opacité des fénêtres durant leur redimensionnement"
 
 #: ../mcs-plugin/wmtweak_plugin.c:459
 msgid "Opacity of popup windows"
-msgstr "Opacité des fenêtres durant leur déplacement"
+msgstr "Opacité des fenêtres autonomes"
 
 #: ../mcs-plugin/wmtweak_plugin.c:464
 msgid "Compositor"
@@ -200,7 +195,8 @@ msgstr "Compositeur"
 
 #: ../mcs-plugin/wmtweak_plugin.c:500
 msgid "Window Manager Tweak"
-msgstr "Paramètres avancés du Gestionnaire de fenêtres"
+msgstr "Paramètres avancés du\n"
+"gestionnaire de fenêtres"
 
 #: ../mcs-plugin/wmtweak_plugin.c:599 ../mcs-plugin/xfwm4_plugin.c:2244
 msgid "These settings cannot work with your current window manager (%s)"
