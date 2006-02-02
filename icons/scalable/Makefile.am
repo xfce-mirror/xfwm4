@@ -1,6 +1,6 @@
 iconsdir = $(datadir)/icons/hicolor/scalable/apps
 icons_DATA =								\
-	wmtweak.svg							\
+	wmtweaks.svg							\
 	xfce4-workspaces.svg						\
 	xfwm4.svg
 

@@ -1,6 +1,6 @@
 iconsdir = $(datadir)/icons/hicolor/48x48/apps
 icons_DATA =								\
-	wmtweak.png							\
+	wmtweaks.png							\
 	xfce4-keys.png							\
 	xfce4-workspaces.png						\
 	xfwm4.png
