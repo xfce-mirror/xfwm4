@@ -2,7 +2,7 @@
 
 mcs-plugin/margins.c
 mcs-plugin/plugin.c
-mcs-plugin/wmtweak_plugin.c
+mcs-plugin/wmtweaks_plugin.c
 mcs-plugin/workspaces.c
 mcs-plugin/xfwm4_plugin.c
 mcs-plugin/xfwm4_shortcuteditor.c
