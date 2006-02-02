@@ -9,4 +9,4 @@ Terminal=false
 Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;
 OnlyShowIn=XFCE;
-_GenericName=Window Manager Advanced Configuration
+_GenericName=Window Manager Tweaks

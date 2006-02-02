@@ -1,4 +1,4 @@
-/*      $Id$
+/*      $id$
  
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
@@ -101,7 +101,7 @@ typedef struct _Itf Itf;
 struct _Itf
 {
     McsPlugin *mcs_plugin;
-    GtkWidget *tweak_dialog;
+    GtkWidget *tweaks_dialog;
 };
 
 static gboolean
@@ -267,13 +267,13 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->mcs_plugin = mcs_plugin;
 
-    dialog->tweak_dialog = gtk_dialog_new ();
-    gtk_window_set_title (GTK_WINDOW (dialog->tweak_dialog), _("Window Manager Tweaks"));
-    gtk_dialog_set_has_separator (GTK_DIALOG (dialog->tweak_dialog), FALSE);
+    dialog->tweaks_dialog = gtk_dialog_new ();
+    gtk_window_set_title (GTK_WINDOW (dialog->tweaks_dialog), _("Window Manager Tweaks"));
+    gtk_dialog_set_has_separator (GTK_DIALOG (dialog->tweaks_dialog), FALSE);
 
-    gtk_window_set_icon (GTK_WINDOW (dialog->tweak_dialog), mcs_plugin->icon);
+    gtk_window_set_icon (GTK_WINDOW (dialog->tweaks_dialog), mcs_plugin->icon);
 
-    dialog_vbox = GTK_DIALOG (dialog->tweak_dialog)->vbox;
+    dialog_vbox = GTK_DIALOG (dialog->tweaks_dialog)->vbox;
     gtk_widget_show (dialog_vbox);
 
     dialog_header = xfce_create_header (mcs_plugin->icon, _("Window Manager Advanced Configuration"));
@@ -467,18 +467,18 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     }
 
-    action_area = GTK_DIALOG (dialog->tweak_dialog)->action_area;
+    action_area = GTK_DIALOG (dialog->tweaks_dialog)->action_area;
     gtk_widget_show (action_area);
     gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_END);
 
     button = gtk_button_new_from_stock ("gtk-close");
     gtk_widget_show (button);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->tweak_dialog), button, GTK_RESPONSE_CLOSE);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->tweaks_dialog), button, GTK_RESPONSE_CLOSE);
     GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
 
     gtk_widget_grab_focus (button);
     gtk_widget_grab_default (button);
-    g_signal_connect (G_OBJECT (dialog->tweak_dialog), "response", G_CALLBACK (cb_dialog_response), dialog->mcs_plugin);
+    g_signal_connect (G_OBJECT (dialog->tweaks_dialog), "response", G_CALLBACK (cb_dialog_response), dialog->mcs_plugin);
 
     return dialog;
 }
@@ -486,8 +486,8 @@ create_dialog (McsPlugin * mcs_plugin)
 static void
 setup_dialog (Itf * itf)
 {
-    xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (itf->tweak_dialog));
-    gtk_widget_show (itf->tweak_dialog);
+    xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (itf->tweaks_dialog));
+    gtk_widget_show (itf->tweaks_dialog);
 }
 
 McsPluginInitResult
@@ -497,9 +497,9 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
 
     xfwm4_create_channel (mcs_plugin);
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup (_("Window Manager Tweak"));
+    mcs_plugin->caption = g_strdup (_("Window Manager Tweaks"));
     mcs_plugin->run_dialog = run_dialog;
-    mcs_plugin->icon = xfce_themed_icon_load ("wmtweak", 48);
+    mcs_plugin->icon = xfce_themed_icon_load ("wmtweaks", 48);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
 
     return (MCS_PLUGIN_INIT_OK);

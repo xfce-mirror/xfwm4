@@ -85,25 +85,24 @@ workspaces_plugin_la_LIBADD +=                                          \
 	@LIBX11_LIBS@
 endif
 
-wmtweak_plugindir = $(libdir)/xfce4/mcs-plugins
+wmtweaks_plugindir = $(libdir)/xfce4/mcs-plugins
 
-wmtweak_plugin_LTLIBRARIES = wmtweak_plugin.la
+wmtweaks_plugin_LTLIBRARIES = wmtweaks_plugin.la
 
-wmtweak_plugin_la_LDFLAGS =						\
+wmtweaks_plugin_la_LDFLAGS =						\
 	-avoid-version							\
 	-module
 
 if HAVE_CYGWIN
-wmtweak_plugin_la_LDFLAGS +=                                         \
+wmtweaks_plugin_la_LDFLAGS +=                                         \
 	-no-undefined                                                   \
 	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
 endif
 
-wmtweak_plugin_la_SOURCES =						\
-	wmtweak_plugin.c							\
-	monitor-icon.h
+wmtweaks_plugin_la_SOURCES =						\
+	wmtweaks_plugin.c
 
-wmtweak_plugin_la_CFLAGS =						\
+wmtweaks_plugin_la_CFLAGS =						\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
@@ -113,13 +112,13 @@ wmtweak_plugin_la_CFLAGS =						\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\" 
 
-wmtweak_plugin_la_LIBADD =						\
+wmtweaks_plugin_la_LIBADD =						\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXFCE4MCS_MANAGER_LIBS@					\
 	@LIBS@
 
 if HAVE_CYGWIN
-wmtweak_plugin_la_LIBADD +=                                          \
+wmtweaks_plugin_la_LIBADD +=                                          \
 	@LIBX11_LIBS@
 endif
 
