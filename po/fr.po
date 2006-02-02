@@ -58,7 +58,7 @@ msgstr "Marges"
 
 #: mcs-plugin/wmtweaks_plugin.c:271 mcs-plugin/wmtweaks_plugin.c:500
 msgid "Window Manager Tweaks"
-msgstr "Peaufinages du Gestionnaire de Fenêtres"
+msgstr "Peaufinages des fenêtres"
 
 #: mcs-plugin/wmtweaks_plugin.c:279
 msgid "Window Manager Advanced Configuration"
