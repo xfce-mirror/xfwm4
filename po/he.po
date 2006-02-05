@@ -694,7 +694,7 @@ msgstr "ב_טל דביק"
 
 #: src/menu.c:48
 msgid "Context _help"
-msgstr "עזרה"
+msgstr "_עזרה"
 
 #: src/menu.c:49 src/menu.c:50
 msgid "Always on top"
