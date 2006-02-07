@@ -772,8 +772,19 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    if ((c && (screen_info->params->show_frame_shadow) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
-        || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped)))
+    /* 
+       We apply a shadow to the window if:
+       
+       - It's not an ARBG window (as these can have any shape),
+       - it's a managed window (ie "c" isn't null) that is not shaped 
+         and the user asked for shadows under regular windows,
+       - it's an override redirect window that is not shaped, abd the
+         user asked for shadows on so called "popup" windows.
+     */
+     
+    if ((cw->mode != WINDOW_ARGB)
+        && ((c && (screen_info->params->show_frame_shadow) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
+            || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped))))
     {
         XRectangle sr;
 
