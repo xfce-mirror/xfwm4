@@ -73,7 +73,10 @@
 #else /* HAVE_COMPOSITOR */
 #define MAIN_EVENT_MASK BASE_EVENT_MASK
 #endif /* HAVE_COMPOSITOR */
-    
+
+/* For what, IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.*/
+static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
+
 static DisplayInfo *display_info = NULL;
 gboolean xfwm4_quit           = FALSE;
 gboolean xfwm4_reload         = FALSE;

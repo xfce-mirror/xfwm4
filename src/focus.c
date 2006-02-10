@@ -128,6 +128,7 @@ clientFocusNew(Client * c)
     DisplayInfo *display_info = NULL;
     gboolean give_focus;
     gboolean prevent_focus_stealing;
+    gboolean prevented;
 
     g_return_val_if_fail (c != NULL, FALSE);
     
@@ -135,7 +136,8 @@ clientFocusNew(Client * c)
     display_info = screen_info->display_info;
     give_focus = screen_info->params->focus_new;
     prevent_focus_stealing = screen_info->params->prevent_focus_stealing;
-
+    prevented = FALSE;
+    
     /*  Try to avoid focus stealing */
     if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
     {
@@ -147,6 +149,7 @@ clientFocusNew(Client * c)
         {
             TRACE ("Given startup time is 0, not focusing");
             give_focus = FALSE;
+            prevented = TRUE;
         }
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
         {
@@ -154,6 +157,7 @@ clientFocusNew(Client * c)
             {
                 TRACE ("Current %u, new %u", (unsigned int) client_focus->user_time, (unsigned int) c->user_time);
                 give_focus = FALSE;
+                prevented = TRUE;
             }
         }
     }
@@ -178,7 +182,8 @@ clientFocusNew(Client * c)
     else
     {
         Client *c2 = clientGetFocus();
-        if ((c2) && (c2->win_layer == c->win_layer))
+
+        if (prevented && c2 && (c2->win_layer == c->win_layer))
         {
             clientSortRing(c);
             clientLower (c, c2->frame);
@@ -189,6 +194,7 @@ clientFocusNew(Client * c)
             clientRaise (c, None);
             clientSortRing(c);
         }
+
         clientShow (c, TRUE);
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
