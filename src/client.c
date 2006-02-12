@@ -2753,11 +2753,29 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     full_h = MIN (gdk_screen_get_height (screen_info->gscr) - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
 
-    if (((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ)) ||
+    if (((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ)) &&
         ((mode & WIN_STATE_MAXIMIZED_VERT) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT)))
     {
-        /* Adjust size to the widest size available, not covering struts */
+        /* Adjust size to the largest size available, not covering struts */
         clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+    }
+    else if ((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+    {
+        int tmp_y, tmp_h;
+
+        tmp_y = frameY (c); 
+        tmp_h = frameHeight (c);
+        /* Adjust size to the widest size available, for the current vertical position/height */
+        clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
+    }
+    else if ((mode & WIN_STATE_MAXIMIZED_VERT) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+    {
+        int tmp_x, tmp_w;
+        
+        tmp_x = frameX (c);
+        tmp_w = frameWidth (c);
+        /* Adjust size to the tallest size available, for the current horizontal position/width */
+        clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
     }
 
     if (mode & WIN_STATE_MAXIMIZED_HORIZ)
@@ -4402,4 +4420,3 @@ clientGetStartupId (Client * c)
     return (c->startup_id);
 }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-
