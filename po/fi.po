@@ -1,14 +1,14 @@
-# Finnish translations for xfwm4 package.
+# Translation of xfwm4 package into Finnish.
 # Copyright (C) 2002-2006 The Xfce Development Team.
 # This file is distributed under the same license as the xfwm4 package.
-# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005.
+# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-12 21:25+0900\n"
-"PO-Revision-Date: 2005-10-09 20:43+0900\n"
+"PO-Revision-Date: 2006-02-12 13:57+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ../mcs-plugin/margins.c:128
 msgid "Workspace Margins"
-msgstr "Työpöydän reunukset"
+msgstr "Työtilan reunukset"
 
 #: ../mcs-plugin/margins.c:138
 msgid ""
@@ -43,13 +43,13 @@ msgstr "Alareuna:"
 
 #: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:153
 msgid "Workspaces and Margins"
-msgstr "Työpöydät ja reunukset"
+msgstr "Työtilat ja reunukset"
 
 #. Number of workspaces
 #: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
 #: ../mcs-plugin/wmtweaks_plugin.c:364 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
-msgstr "Työpöydät"
+msgstr "Työtilat"
 
 #: ../mcs-plugin/plugin.c:177
 msgid "Margins"
@@ -57,34 +57,32 @@ msgstr "Reunukset"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:271 ../mcs-plugin/wmtweaks_plugin.c:500
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Ikkunamanageri"
+msgstr "Ikkunamanagerin viritys"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:279
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "Ikkunamanagerin asetukset"
+msgstr "Ikkunamanagerin lisäasetukset"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:292
-#, fuzzy
 msgid "Window cycling"
-msgstr "Ikkunoiden loksahtaminen"
+msgstr "Ikkunoiden selaus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:301
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"Sisällytä ikkunat, jotka eivät näy työtilan\n"
+"vaihtajassa tai tehtäväpalkissa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:307
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Sisällytä piilotetut (eli pienennetyt) ikkunat"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:313
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Siirrä ikkuna vasemmanpuoleiselle työpöydälle"
+msgstr "Selaa kaikkien työtilojen ikkunoita"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:318 ../mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
@@ -92,55 +90,53 @@ msgstr "Kohdistus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:327
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Käytä kohdistuksen ryöstön estoa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:333
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "Kunnioita standardia ICCCM -kohdistusvihjettä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:338
 msgid "Accessibility"
-msgstr ""
+msgstr "Esteettömyys"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:347
 msgid "Use the ALT key to grab and move windows"
-msgstr ""
+msgstr "Käytä ALT-näppäintä ikkunoiden liikutteluun"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:353
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikeella"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:359
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Näytä ikkunan sisältö siirrettäessä"
+msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Vaihda työtilaa hiiren vierityspainikkeella työpöydän yllä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:379
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
-msgstr ""
+msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:385
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:391
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Vaihda työpöytää osoittimen tullessa näytön reunaan"
+msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen työtila"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:396
 msgid "Smart placement"
-msgstr ""
+msgstr "Älykäs sijoittelu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:405
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:405 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
@@ -149,58 +145,54 @@ msgstr "Pieni"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:405
 msgid "Large"
-msgstr ""
+msgstr "Suuri"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Tweaks"
-msgstr ""
+msgstr "Viritykset"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:426
 msgid "Compositing"
-msgstr ""
+msgstr "Komposointi"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Näytä varjot tavallisten ikkunoiden alla"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Näytä varjot ponnahdusikkunoiden alla"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:447
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Näytä ikkunan sisältö siirrettäessä"
+msgstr "Ikkunoiden läpinäkyvyys siirrettäessä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:447 ../mcs-plugin/wmtweaks_plugin.c:453
 #: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Transparent"
-msgstr ""
+msgstr "Läpinäkyvä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:447 ../mcs-plugin/wmtweaks_plugin.c:453
 #: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Opaque"
-msgstr ""
+msgstr "Läpinäkymätön"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:453
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Näytä ikkunan sisältö kokoa muutettaessa"
+msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:459
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Näytä ikkunan sisältö siirrettäessä"
+msgstr "Ponnahdusikkunoiden läpinäkyvyys"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:464
-#, fuzzy
 msgid "Compositor"
-msgstr "Määritä pikanäppäin"
+msgstr "Komposoija"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:599 ../mcs-plugin/xfwm4_plugin.c:2244
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
 
 #: ../mcs-plugin/workspaces.c:337
 msgid "Change name"
@@ -209,7 +201,7 @@ msgstr "Vaihda nimi"
 #: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:402
 #, c-format
 msgid "Workspace %d"
-msgstr "Työpöytä %d"
+msgstr "Työtila %d"
 
 #: ../mcs-plugin/workspaces.c:359
 msgid "Name:"
@@ -217,16 +209,16 @@ msgstr "Nimi:"
 
 #: ../mcs-plugin/workspaces.c:447
 msgid "Click on a workspace name to edit it"
-msgstr "Napsauta työpöydän nimeä muokataksesi sitä"
+msgstr "Napsauta työtilan nimeä muokataksesi sitä"
 
 #: ../mcs-plugin/workspaces.c:519
 msgid "Number of workspaces:"
-msgstr "Työpöytien lukumäärä:"
+msgstr "Työtilojen lukumäärä:"
 
 #. Workspace names
 #: ../mcs-plugin/workspaces.c:550
 msgid "Workspace names"
-msgstr "Työpöytien nimet"
+msgstr "Työtilojen nimet"
 
 #: ../mcs-plugin/xfwm4_plugin.c:68
 msgid "Menu"
@@ -270,19 +262,19 @@ msgstr "Ei mitään"
 
 #: ../mcs-plugin/xfwm4_plugin.c:86
 msgid "Left"
-msgstr "Vasen"
+msgstr "Vasemmalle"
 
 #: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Center"
-msgstr "Keskellä"
+msgstr "Keskelle"
 
 #: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Right"
-msgstr "Oikea"
+msgstr "Oikealle"
 
 #: ../mcs-plugin/xfwm4_plugin.c:557
 msgid "Click and drag buttons to change the layout"
-msgstr "Napsauta ja raahaa painikkeita muuttaaksesi sijoittelua"
+msgstr "Napsauta ja raahaa painikkeita muuttaaksesi asettelua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:562
 msgid "Active"
@@ -294,7 +286,7 @@ msgstr "Otsake"
 
 #: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "The window title, it cannot be removed"
-msgstr "Ikkunan otsake, sitä ei voi poistaa"
+msgstr "Ikkunan otsaketta ei voi poistaa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:582
 msgid "Hidden"
@@ -419,15 +411,15 @@ msgstr "Suuri"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1703
 msgid "Wrap workspaces"
-msgstr "Kierrätä työpöytiä"
+msgstr "Kierrätä työtiloja"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1711
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Vaihda työpöytää osoittimen tullessa näytön reunaan"
+msgstr "Vaihda työtilaa osoittimen saavuttaessa näytön reunan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Vaihda työpöytää, kun ikkuna raahataan ulos näytöltä"
+msgstr "Vaihda työtilaa, kun ikkuna raahataan ulos näytöltä"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1726
 msgid "Edge Resistance :"
@@ -544,59 +536,59 @@ msgstr "Vaihda täysruututilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Upper workspace"
-msgstr "Ylempi työpöytä"
+msgstr "Ylempi työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Bottom workspace"
-msgstr "Alempi työpöytä"
+msgstr "Alempi työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Left workspace"
-msgstr "Vasen työpöytä"
+msgstr "Vasen työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Right workspace"
-msgstr "Oikea työpöytä"
+msgstr "Oikea työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 msgid "Next workspace"
-msgstr "Seuraava työpöytä"
+msgstr "Seuraava työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Previous workspace"
-msgstr "Edellinen työpöytä"
+msgstr "Edellinen työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Add workspace"
-msgstr "Lisää työpöytä"
+msgstr "Lisää työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 msgid "Delete workspace"
-msgstr "Poista työpöytä"
+msgstr "Poista työtila"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Move window to next workspace"
-msgstr "Siirrä ikkuna seuraavalle työpöydälle"
+msgstr "Siirrä ikkuna seuraavaan työtilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Move window to previous workspace"
-msgstr "Siirrä ikkuna edelliselle työpöydälle"
+msgstr "Siirrä ikkuna edelliseen työtilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Move window to upper workspace"
-msgstr "Siirrä ikkuna ylemmälle työpöydälle"
+msgstr "Siirrä ikkuna ylempään työtilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Move window to bottom workspace"
-msgstr "Siirrä ikkuna alemmalle työpöydälle"
+msgstr "Siirrä ikkuna alempaan työtilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to left workspace"
-msgstr "Siirrä ikkuna vasemmanpuoleiselle työpöydälle"
+msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to right workspace"
-msgstr "Siirrä ikkuna oikeanpuoleiselle työpöydälle"
+msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Show desktop"
@@ -605,7 +597,7 @@ msgstr "Näytä työpöytä"
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:423
 #, c-format
 msgid "Move window to workspace %d"
-msgstr "Siirrä ikkuna työpöydälle %d"
+msgstr "Siirrä ikkuna työtilaan %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
@@ -723,12 +715,12 @@ msgstr "Käynnistä uudelleen"
 #: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
-msgstr "Työpöytä %i (%s)"
+msgstr "Työtila %i (%s)"
 
 #: ../src/menu.c:181
 #, c-format
 msgid "Workspace %i"
-msgstr "Työpöytä %i"
+msgstr "Työtila %i"
 
 #: ../src/menu.c:416
 #, c-format
@@ -736,14 +728,14 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
 #: ../src/settings.c:810
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Aktiivista väriä %s ei voi varata\n"
+msgstr "%s: Väriä %s ei voi varata\n"
 
 #: ../src/settings.c:816
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Aktiivinen väri %s ei kelpaa\n"
+msgstr "%s: Värimääritys %s ei kelpaa\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"
@@ -758,14 +750,12 @@ msgid "Xfce 4 Window Manager Settings"
 msgstr "Xfce 4 ikkunamanagerin asetukset"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Ikkunamanagerin asetukset"
+msgstr "Lisäasetukset"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 ikkunamanagerin asetukset"
+msgstr "Xfce 4 ikkunamanagerin viritys"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
@@ -774,7 +764,3 @@ msgstr "Työtilojen asetukset"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 työtilojen asetukset"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Ikkunamanageri"
