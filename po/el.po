@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-02 21:28+0100\n"
-"PO-Revision-Date: 2005-12-11 20:02+0200\n"
+"PO-Revision-Date: 2006-02-12 03:35+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -60,17 +60,15 @@ msgstr "Περιθώρια"
 #: mcs-plugin/wmtweaks_plugin.c:271 mcs-plugin/wmtweaks_plugin.c:500
 #, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Διαχειριστής Παραθύρων"
+msgstr "Κολπάκια Διαχειριστή Παραθύρων"
 
 #: mcs-plugin/wmtweaks_plugin.c:279
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων"
+msgstr "Προχωρημένες Ρυθμίσεις Διαχειριστή Παραθύρων"
 
 #: mcs-plugin/wmtweaks_plugin.c:292
-#, fuzzy
 msgid "Window cycling"
-msgstr "Ταίριασμα παραθύρων"
+msgstr "Εναλλαγή παραθύρων"
 
 #: mcs-plugin/wmtweaks_plugin.c:301
 msgid ""
@@ -83,9 +81,8 @@ msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:313
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας αριστερά"
+msgstr "Εναλλαγή μεταξύ των παραθύρων από όλους τους χώρους εργασίας"
 
 #: mcs-plugin/wmtweaks_plugin.c:318 mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
@@ -101,24 +98,26 @@ msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:338
 msgid "Accessibility"
-msgstr ""
+msgstr "Προσβασιμότητα"
 
 #: mcs-plugin/wmtweaks_plugin.c:347
 msgid "Use the ALT key to grab and move windows"
-msgstr ""
+msgstr "Χρήση του πλήκτρου ALT για τη μετακίνηση παραθύρων"
 
 #: mcs-plugin/wmtweaks_plugin.c:353
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Ανύψωση παραθύρων όταν πατηθεί οποιοδήποτε κουμπί ποντικιού"
 
 #: mcs-plugin/wmtweaks_plugin.c:359
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Εμφάνιση περιεχομένων παραθύρου κατά τη μετακίνηση"
+msgstr ""
+"Επαναφορά αρχικού μεγέθους των μεγιστοποιημένων παραθύρων κατά τη μετακίνηση"
 
 #: mcs-plugin/wmtweaks_plugin.c:373
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
+"Εναλλαγή χώρων εργασίας χρησιμοποιώντας τη ροδέλα του ποντικιού πάνω στην "
+"επιφάνεια εργασίας"
 
 #: mcs-plugin/wmtweaks_plugin.c:379
 msgid ""
@@ -131,17 +130,16 @@ msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:391
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Αναδίπλωση χώρων εργασίας όταν ο δείκτης φτάσει στην άκρη της οθόνης"
+msgstr "Αναδίπλωση χώρων εργασίας στον πρώτο ή στον τελευταίο χώρο εργασίας"
 
 #: mcs-plugin/wmtweaks_plugin.c:396
 msgid "Smart placement"
-msgstr ""
+msgstr "Έξυπνη τοποθέτηση παραθύρων"
 
 #: mcs-plugin/wmtweaks_plugin.c:405
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Ελάχιστο μέγεθος παραθύρου για να ενεργοποιηθεί η έξυπνη τοποθέτηση"
 
 #: mcs-plugin/wmtweaks_plugin.c:405 mcs-plugin/xfwm4_plugin.c:1682
 #: mcs-plugin/xfwm4_plugin.c:1732
@@ -150,7 +148,7 @@ msgstr "Μικρή"
 
 #: mcs-plugin/wmtweaks_plugin.c:405
 msgid "Large"
-msgstr ""
+msgstr "Μεγάλο"
 
 #: mcs-plugin/wmtweaks_plugin.c:410
 msgid "Tweaks"
@@ -162,46 +160,44 @@ msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:435
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Εμφάνιση σκιών στα κανονικά παράθυρα"
 
 #: mcs-plugin/wmtweaks_plugin.c:441
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Εμφάνιση σκιών στα αναδυόμενα παράθυρα"
 
 #: mcs-plugin/wmtweaks_plugin.c:447
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Εμφάνιση περιεχομένων παραθύρου κατά τη μετακίνηση"
+msgstr "Διαφάνεια παραθύρων κατά τη μετακίνηση"
 
 #: mcs-plugin/wmtweaks_plugin.c:447 mcs-plugin/wmtweaks_plugin.c:453
 #: mcs-plugin/wmtweaks_plugin.c:459
 msgid "Transparent"
-msgstr ""
+msgstr "Διαφανές"
 
 #: mcs-plugin/wmtweaks_plugin.c:447 mcs-plugin/wmtweaks_plugin.c:453
 #: mcs-plugin/wmtweaks_plugin.c:459
 msgid "Opaque"
-msgstr ""
+msgstr "Αδιαφανές"
 
 #: mcs-plugin/wmtweaks_plugin.c:453
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Εμφάνιση περιεχομένων παραθύρου κατά τη αλλαγή μεγέθους"
+msgstr "Διαφάνεια παραθύρων κατά τη αλλαγή μεγέθους"
 
 #: mcs-plugin/wmtweaks_plugin.c:459
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Εμφάνιση περιεχομένων παραθύρου κατά τη μετακίνηση"
+msgstr "Διαφάνεια αναδυόμενων παραθύρων"
 
 #: mcs-plugin/wmtweaks_plugin.c:464
-#, fuzzy
 msgid "Compositor"
-msgstr "Σύνταξη συντόμευσης"
+msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:599 mcs-plugin/xfwm4_plugin.c:2244
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
+"Αυτές οι ρυθμίσεις δεν είναι δυνατό να λειτουργήσουν με τον τρέχον "
+"διαχειριστή παραθύρων σας (%s)"
 
 #: mcs-plugin/workspaces.c:337
 msgid "Change name"
