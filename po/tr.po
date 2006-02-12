@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-02 21:28+0100\n"
+"POT-Creation-Date: 2006-02-12 21:25+0900\n"
 "PO-Revision-Date: 2005-10-09 20:53+0900\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -15,790 +15,803 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mcs-plugin/margins.c:128
+#: ../mcs-plugin/margins.c:128
 msgid "Workspace Margins"
 msgstr "Çalışma Alanı Sınırları"
 
-#: mcs-plugin/margins.c:138
+#: ../mcs-plugin/margins.c:138
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belirler"
 
-#: mcs-plugin/margins.c:169
+#: ../mcs-plugin/margins.c:169
 msgid "Left :"
 msgstr "Sol :"
 
-#: mcs-plugin/margins.c:189
+#: ../mcs-plugin/margins.c:189
 msgid "Right :"
 msgstr "Sağ :"
 
-#: mcs-plugin/margins.c:209
+#: ../mcs-plugin/margins.c:209
 msgid "Top :"
 msgstr "Üst :"
 
-#: mcs-plugin/margins.c:229
+#: ../mcs-plugin/margins.c:229
 msgid "Bottom :"
 msgstr "Alt :"
 
-#: mcs-plugin/plugin.c:109 mcs-plugin/plugin.c:153
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:153
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Çalışma Alanı Sınırları"
 
 #. Number of workspaces
-#: mcs-plugin/plugin.c:136 mcs-plugin/plugin.c:167
-#: mcs-plugin/wmtweaks_plugin.c:364 mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
+#: ../mcs-plugin/wmtweaks_plugin.c:364 ../mcs-plugin/workspaces.c:538
 #, fuzzy
 msgid "Workspaces"
 msgstr "Çalışma alanı %i"
 
-#: mcs-plugin/plugin.c:177
+#: ../mcs-plugin/plugin.c:177
 msgid "Margins"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:271 mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/wmtweaks_plugin.c:271 ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Pencere Yöneticisi"
 
-#: mcs-plugin/wmtweaks_plugin.c:279
+#: ../mcs-plugin/wmtweaks_plugin.c:279
 #, fuzzy
 msgid "Window Manager Advanced Configuration"
 msgstr "Pencere Yöneticisi"
 
-#: mcs-plugin/wmtweaks_plugin.c:292
+#: ../mcs-plugin/wmtweaks_plugin.c:292
 #, fuzzy
 msgid "Window cycling"
 msgstr "Pencere yerleştirme"
 
-#: mcs-plugin/wmtweaks_plugin.c:301
+#: ../mcs-plugin/wmtweaks_plugin.c:301
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:307
+#: ../mcs-plugin/wmtweaks_plugin.c:307
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:313
+#: ../mcs-plugin/wmtweaks_plugin.c:313
 msgid "Cycle through windows from all workspaces"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:318 mcs-plugin/xfwm4_plugin.c:1643
+#: ../mcs-plugin/wmtweaks_plugin.c:318 ../mcs-plugin/xfwm4_plugin.c:1643
 #, fuzzy
 msgid "Focus"
 msgstr "Odaklama şekli"
 
-#: mcs-plugin/wmtweaks_plugin.c:327
+#: ../mcs-plugin/wmtweaks_plugin.c:327
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:333
+#: ../mcs-plugin/wmtweaks_plugin.c:333
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:338
+#: ../mcs-plugin/wmtweaks_plugin.c:338
 msgid "Accessibility"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:347
+#: ../mcs-plugin/wmtweaks_plugin.c:347
 msgid "Use the ALT key to grab and move windows"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:353
+#: ../mcs-plugin/wmtweaks_plugin.c:353
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:359
+#: ../mcs-plugin/wmtweaks_plugin.c:359
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "Pencereleri taşırken içeriğini göster"
 
-#: mcs-plugin/wmtweaks_plugin.c:373
+#: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:379
+#: ../mcs-plugin/wmtweaks_plugin.c:379
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:385
+#: ../mcs-plugin/wmtweaks_plugin.c:385
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:391
+#: ../mcs-plugin/wmtweaks_plugin.c:391
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "İşaretçi ekran kenarına geldiğinde çalışma alanını değiştir"
 
-#: mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:396
 msgid "Smart placement"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:405
+#: ../mcs-plugin/wmtweaks_plugin.c:405
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:405 mcs-plugin/xfwm4_plugin.c:1682
-#: mcs-plugin/xfwm4_plugin.c:1732
+#: ../mcs-plugin/wmtweaks_plugin.c:405 ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "Küçük"
 
-#: mcs-plugin/wmtweaks_plugin.c:405
+#: ../mcs-plugin/wmtweaks_plugin.c:405
 msgid "Large"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:410
+#: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Tweaks"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:426
+#: ../mcs-plugin/wmtweaks_plugin.c:426
 msgid "Compositing"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Show shadows under regular windows"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:441
+#: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Show shadows under popup windows"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:447
+#: ../mcs-plugin/wmtweaks_plugin.c:447
 #, fuzzy
 msgid "Opacity of windows during move"
 msgstr "Pencereleri taşırken içeriğini göster"
 
-#: mcs-plugin/wmtweaks_plugin.c:447 mcs-plugin/wmtweaks_plugin.c:453
-#: mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:447 ../mcs-plugin/wmtweaks_plugin.c:453
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Transparent"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:447 mcs-plugin/wmtweaks_plugin.c:453
-#: mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:447 ../mcs-plugin/wmtweaks_plugin.c:453
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Opaque"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:453
+#: ../mcs-plugin/wmtweaks_plugin.c:453
 #, fuzzy
 msgid "Opacity of windows during resize"
 msgstr "Pencereleri yeniden boyutlandırıken içeriğini göster"
 
-#: mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 #, fuzzy
 msgid "Opacity of popup windows"
 msgstr "Pencereleri taşırken içeriğini göster"
 
-#: mcs-plugin/wmtweaks_plugin.c:464
+#: ../mcs-plugin/wmtweaks_plugin.c:464
 msgid "Compositor"
 msgstr ""
 
-#: mcs-plugin/wmtweaks_plugin.c:599 mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:599 ../mcs-plugin/xfwm4_plugin.c:2244
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:337
+#: ../mcs-plugin/workspaces.c:337
 msgid "Change name"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:349 mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:402
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Çalışma alanı %i"
 
-#: mcs-plugin/workspaces.c:359
+#: ../mcs-plugin/workspaces.c:359
 msgid "Name:"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:447
+#: ../mcs-plugin/workspaces.c:447
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: mcs-plugin/workspaces.c:519
+#: ../mcs-plugin/workspaces.c:519
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Çalışma alanlarını değiştir"
 
 #. Workspace names
-#: mcs-plugin/workspaces.c:550
+#: ../mcs-plugin/workspaces.c:550
 #, fuzzy
 msgid "Workspace names"
 msgstr "Çalışma Alanı Sınırları"
 
-#: mcs-plugin/xfwm4_plugin.c:68
+#: ../mcs-plugin/xfwm4_plugin.c:68
 msgid "Menu"
 msgstr "Menü"
 
-#: mcs-plugin/xfwm4_plugin.c:69
+#: ../mcs-plugin/xfwm4_plugin.c:69
 msgid "Stick"
 msgstr "Sabitle"
 
-#: mcs-plugin/xfwm4_plugin.c:70
+#: ../mcs-plugin/xfwm4_plugin.c:70
 msgid "Shade"
 msgstr "Gölgele"
 
-#: mcs-plugin/xfwm4_plugin.c:71
+#: ../mcs-plugin/xfwm4_plugin.c:71
 msgid "Hide"
 msgstr "Sakla"
 
-#: mcs-plugin/xfwm4_plugin.c:72
+#: ../mcs-plugin/xfwm4_plugin.c:72
 msgid "Maximize"
 msgstr "Büyüt"
 
-#: mcs-plugin/xfwm4_plugin.c:73
+#: ../mcs-plugin/xfwm4_plugin.c:73
 msgid "Close"
 msgstr "Kapat"
 
-#: mcs-plugin/xfwm4_plugin.c:78 mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Shade window"
 msgstr "Pencereyi gölgele"
 
-#: mcs-plugin/xfwm4_plugin.c:79 mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:308
 msgid "Hide window"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_plugin.c:80 mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:307
 msgid "Maximize window"
 msgstr "Pencereyi büyüt"
 
-#: mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:81
 msgid "Nothing"
 msgstr "Hiçbir şey"
 
-#: mcs-plugin/xfwm4_plugin.c:86
+#: ../mcs-plugin/xfwm4_plugin.c:86
 msgid "Left"
 msgstr "Sol"
 
-#: mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Center"
 msgstr "Merkez"
 
-#: mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Right"
 msgstr "Sağ"
 
-#: mcs-plugin/xfwm4_plugin.c:557
+#: ../mcs-plugin/xfwm4_plugin.c:557
 msgid "Click and drag buttons to change the layout"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:562
+#: ../mcs-plugin/xfwm4_plugin.c:562
 msgid "Active"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:573
+#: ../mcs-plugin/xfwm4_plugin.c:573
 msgid "Title"
 msgstr "Başlık"
 
-#: mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:582
+#: ../mcs-plugin/xfwm4_plugin.c:582
 msgid "Hidden"
 msgstr "Gizli"
 
-#: mcs-plugin/xfwm4_plugin.c:1336
+#: ../mcs-plugin/xfwm4_plugin.c:1336
 msgid "Font Selection Dialog"
 msgstr "Yazıtipi Seçim Diyaloğu"
 
-#: mcs-plugin/xfwm4_plugin.c:1398 mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
 msgid "Window Manager"
 msgstr "Pencere Yöneticisi"
 
-#: mcs-plugin/xfwm4_plugin.c:1411
+#: ../mcs-plugin/xfwm4_plugin.c:1411
 msgid "Window Manager Preferences"
 msgstr "Pencere Yöneticisi Tercihleri"
 
-#: mcs-plugin/xfwm4_plugin.c:1440
+#: ../mcs-plugin/xfwm4_plugin.c:1440
 msgid "Title font"
 msgstr "Başlık yazıtipi"
 
-#: mcs-plugin/xfwm4_plugin.c:1453
+#: ../mcs-plugin/xfwm4_plugin.c:1453
 msgid "Title Alignment"
 msgstr "Başlık Hizalaması"
 
 #. XXX
-#: mcs-plugin/xfwm4_plugin.c:1459
+#: ../mcs-plugin/xfwm4_plugin.c:1459
 msgid "Text alignment inside title bar :"
 msgstr "Başlık çubuğundaki metin hizalaması :"
 
-#: mcs-plugin/xfwm4_plugin.c:1461
+#: ../mcs-plugin/xfwm4_plugin.c:1461
 msgid "Button layout"
 msgstr "Düğme düzeni"
 
-#: mcs-plugin/xfwm4_plugin.c:1467
+#: ../mcs-plugin/xfwm4_plugin.c:1467
 #, fuzzy
 msgid "Style"
 msgstr "Başlık"
 
-#: mcs-plugin/xfwm4_plugin.c:1505
+#: ../mcs-plugin/xfwm4_plugin.c:1505
 #, fuzzy
 msgid "Window shortcuts"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_plugin.c:1525
+#: ../mcs-plugin/xfwm4_plugin.c:1525
 msgid "Command"
 msgstr ""
 
-#: mcs-plugin/xfwm4_plugin.c:1530
+#: ../mcs-plugin/xfwm4_plugin.c:1530
 #, fuzzy
 msgid "Shortcut"
 msgstr "Klavye Kısayolu"
 
-#: mcs-plugin/xfwm4_plugin.c:1546
+#: ../mcs-plugin/xfwm4_plugin.c:1546
 #, fuzzy
 msgid "Keyboard"
 msgstr "Klavye Kısayolu"
 
-#: mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1557
 msgid "Focus model"
 msgstr "Odaklama şekli"
 
-#: mcs-plugin/xfwm4_plugin.c:1565
+#: ../mcs-plugin/xfwm4_plugin.c:1565
 msgid "Click to focus"
 msgstr "Odaklama için tıklansın"
 
-#: mcs-plugin/xfwm4_plugin.c:1572
+#: ../mcs-plugin/xfwm4_plugin.c:1572
 msgid "Focus follows mouse"
 msgstr "Odak fareyi takip etsin"
 
-#: mcs-plugin/xfwm4_plugin.c:1579
+#: ../mcs-plugin/xfwm4_plugin.c:1579
 msgid "New window focus"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_plugin.c:1583
+#: ../mcs-plugin/xfwm4_plugin.c:1583
 #, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 "Yeni oluşturulan pencereye \n"
 "otomatik olarak odaklan"
 
-#: mcs-plugin/xfwm4_plugin.c:1588
+#: ../mcs-plugin/xfwm4_plugin.c:1588
 msgid "Raise on focus"
 msgstr "Odaklamada yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1596
+#: ../mcs-plugin/xfwm4_plugin.c:1596
 #, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Pencereler odaklanma kazanınca \n"
 "otomatik olarak yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1606
+#: ../mcs-plugin/xfwm4_plugin.c:1606
 msgid "Delay before raising focused window :"
 msgstr "Odaklanmış pencere yükselme gecikmesi :"
 
-#: mcs-plugin/xfwm4_plugin.c:1612
+#: ../mcs-plugin/xfwm4_plugin.c:1612
 msgid "Slow"
 msgstr "Yavaş"
 
-#: mcs-plugin/xfwm4_plugin.c:1618
+#: ../mcs-plugin/xfwm4_plugin.c:1618
 msgid "Fast"
 msgstr "Hızlı"
 
-#: mcs-plugin/xfwm4_plugin.c:1634
+#: ../mcs-plugin/xfwm4_plugin.c:1634
 msgid "Raise on click"
 msgstr "Tıklamada yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1638
+#: ../mcs-plugin/xfwm4_plugin.c:1638
 #, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "Uygulama penceresinin içine tıklayınca\n"
 "pencereyi yükselt"
 
-#: mcs-plugin/xfwm4_plugin.c:1653
+#: ../mcs-plugin/xfwm4_plugin.c:1653
 msgid "Windows snapping"
 msgstr "Pencere yerleştirme"
 
-#: mcs-plugin/xfwm4_plugin.c:1661
+#: ../mcs-plugin/xfwm4_plugin.c:1661
 msgid "Snap windows to screen border"
 msgstr "Pencereleri ekran sınırlarına daya"
 
-#: mcs-plugin/xfwm4_plugin.c:1666
+#: ../mcs-plugin/xfwm4_plugin.c:1666
 msgid "Snap windows to other windows"
 msgstr "Pencereleri diğerlerine daya"
 
-#: mcs-plugin/xfwm4_plugin.c:1676
+#: ../mcs-plugin/xfwm4_plugin.c:1676
 msgid "Distance :"
 msgstr "Uzaklık :"
 
-#: mcs-plugin/xfwm4_plugin.c:1688 mcs-plugin/xfwm4_plugin.c:1738
+#: ../mcs-plugin/xfwm4_plugin.c:1688 ../mcs-plugin/xfwm4_plugin.c:1738
 msgid "Wide"
 msgstr "Büyük"
 
-#: mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1703
 msgid "Wrap workspaces"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_plugin.c:1711
+#: ../mcs-plugin/xfwm4_plugin.c:1711
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "İşaretçi ekran kenarına geldiğinde çalışma alanını değiştir"
 
-#: mcs-plugin/xfwm4_plugin.c:1716
+#: ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Bir pencereyi ekran dışına taşıyınca çalışma alanını değiştir"
 
-#: mcs-plugin/xfwm4_plugin.c:1726
+#: ../mcs-plugin/xfwm4_plugin.c:1726
 msgid "Edge Resistance :"
 msgstr "Kenar direnci :"
 
-#: mcs-plugin/xfwm4_plugin.c:1753
+#: ../mcs-plugin/xfwm4_plugin.c:1753
 msgid "Opaque move and resize"
 msgstr "Mat taşıma ve boyutlandırma"
 
-#: mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1761
 msgid "Display content of windows when resizing"
 msgstr "Pencereleri yeniden boyutlandırıken içeriğini göster"
 
-#: mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Display content of windows when moving"
 msgstr "Pencereleri taşırken içeriğini göster"
 
-#: mcs-plugin/xfwm4_plugin.c:1771
+#: ../mcs-plugin/xfwm4_plugin.c:1771
 msgid "Double click action"
 msgstr "Çift tıklama eylemi"
 
-#: mcs-plugin/xfwm4_plugin.c:1777
+#: ../mcs-plugin/xfwm4_plugin.c:1777
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
 
-#: mcs-plugin/xfwm4_plugin.c:1779
+#: ../mcs-plugin/xfwm4_plugin.c:1779
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:55
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:125 mcs-plugin/xfwm4_shortcuteditor.c:131
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:125
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:131
 msgid "Add keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:135
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:135
 msgid "Enter a name for the theme:"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:158
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:158
 msgid "A keybinding theme with the same name already exists"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:164
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:164
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
 #, fuzzy
 msgid "Close window"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "Pencereyi büyüt"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "Pencereyi büyüt"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Stick window"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Move window up"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
 #, fuzzy
 msgid "Move window down"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Move window left"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 msgid "Move window right"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
 #, fuzzy
 msgid "Resize window up"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Resize window down"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Resize window left"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
 #, fuzzy
 msgid "Resize window right"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Raise window"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Lower window"
 msgstr "Pencereyi sakla"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Left workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Right workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
 #, fuzzy
 msgid "Next workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Previous workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Add workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
 #, fuzzy
 msgid "Delete workspace"
 msgstr "Çalışma alanlarını değiştir"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Move window to next workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
 msgid "Move window to previous workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Move window to upper workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
 msgid "Move window to bottom workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to left workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
 msgid "Move window to right workspace"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
 msgid "Show desktop"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:423
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:423
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Yeni pencere odaklaması"
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:508
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:508
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:527
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:527
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:541 mcs-plugin/xfwm4_shortcuteditor.c:552
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:541
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:680
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:680
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:739
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:739
 msgid "Compose shortcut for :"
 msgstr ""
 
 #. Create dialog
-#: mcs-plugin/xfwm4_shortcuteditor.c:742
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:742
 msgid "Compose shortcut"
 msgstr ""
 
-#: mcs-plugin/xfwm4_shortcuteditor.c:744
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:744
 #, fuzzy
 msgid "No shortcut"
 msgstr "Klavye Kısayolu"
 
-#: src/main.c:181
+#: ../src/main.c:184
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Parçalanma hatası"
 
-#: src/menu.c:39
+#: ../src/menu.c:39
 msgid "Ma_ximize"
 msgstr "_Büyült"
 
-#: src/menu.c:40
+#: ../src/menu.c:40
 msgid "Un_maximize"
 msgstr "_Küçült"
 
-#: src/menu.c:41
+#: ../src/menu.c:41
 msgid "_Hide"
 msgstr "_Gizle"
 
-#: src/menu.c:42
+#: ../src/menu.c:42
 msgid "Hide _all others"
 msgstr "Diğe_rlerini gizle"
 
-#: src/menu.c:43
+#: ../src/menu.c:43
 msgid "S_how"
 msgstr "Gös_ter"
 
-#: src/menu.c:44
+#: ../src/menu.c:44
 msgid "_Shade"
 msgstr "Gö_lgele"
 
-#: src/menu.c:45
+#: ../src/menu.c:45
 msgid "Un_shade"
 msgstr "Gölgelemeyi ka_pat"
 
-#: src/menu.c:46
+#: ../src/menu.c:46
 msgid "S_tick"
 msgstr "Sa_bit"
 
-#: src/menu.c:47
+#: ../src/menu.c:47
 msgid "Uns_tick"
 msgstr "Sab_it değil"
 
-#: src/menu.c:48
+#: ../src/menu.c:48
 msgid "Context _help"
 msgstr ""
 
-#: src/menu.c:49 src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr ""
 
-#: src/menu.c:51
+#: ../src/menu.c:51
 msgid "Send to..."
 msgstr "Gönder..."
 
-#: src/menu.c:53
+#: ../src/menu.c:53
 msgid "_Close"
 msgstr "_Kapat"
 
-#: src/menu.c:56
+#: ../src/menu.c:56
 msgid "Destroy"
 msgstr "Yok Et"
 
-#: src/menu.c:59
+#: ../src/menu.c:59
 msgid "_Quit"
 msgstr "_Çıkış"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "Restart"
 msgstr "Yeni_den Başlat"
 
-#: src/menu.c:169
+#: ../src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Çalışma alanı %i"
 
-#: src/menu.c:181
+#: ../src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Çalışma alanı %i"
 
-#: src/menu.c:416
+#: ../src/menu.c:416
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: src/settings.c:810
+#: ../src/settings.c:810
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: src/settings.c:816
+#: ../src/settings.c:816
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: src/tabwin.c:95
+#: ../src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+#, fuzzy
+msgid "Window Manager Settings"
+msgstr "Pencere Yöneticisi"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Pencere Yöneticisi Tercihleri"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
+#, fuzzy
+msgid "Advanced Configuration"
+msgstr "Pencere Yöneticisi"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "Pencere Yöneticisi Tercihleri"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+#, fuzzy
+msgid "Workspaces Settings"
+msgstr "Çalışma Alanı Sınırları"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Çalışma Alanı Sınırları"
 
 #, fuzzy
 #~ msgid "Window Manager Tweak"
 #~ msgstr "Pencere Yöneticisi"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Pencere Yöneticisi"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Pencere Yöneticisi Tercihleri"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Pencere Yöneticisi Tercihleri"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Çalışma Alanı Sınırları"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Çalışma Alanı Sınırları"
