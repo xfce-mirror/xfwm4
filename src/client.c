@@ -2938,7 +2938,7 @@ clientDrawOutline (Client * c)
 }
 
 static void
-clientSnapPosition (Client * c)
+clientSnapPosition (Client * c, int prev_x, int prev_y)
 {
     Client *c2 = NULL;
     ScreenInfo *screen_info = NULL;
@@ -2990,24 +2990,36 @@ clientSnapPosition (Client * c)
     {
         if (abs (disp_x - frame_x) < abs (disp_max_x - frame_x2))
         {
-            best_delta_x = abs (disp_x - frame_x);
-            best_frame_x = disp_x;
+            if (!screen_info->params->snap_resist || ((frame_x <= disp_x) && (c->x < prev_x)))
+            {
+                best_delta_x = abs (disp_x - frame_x);
+                best_frame_x = disp_x;
+            }
         }
         else
         {
-            best_delta_x = abs (disp_max_x - frame_x2);
-            best_frame_x = disp_max_x - frame_width;
+            if (!screen_info->params->snap_resist || ((frame_x2 >= disp_max_x) && (c->x > prev_x))) 
+            {
+                best_delta_x = abs (disp_max_x - frame_x2);
+                best_frame_x = disp_max_x - frame_width;
+            }
         }
 
         if (abs (disp_y - frame_y) < abs (disp_max_y - frame_y2))
         {
-            best_delta_y = abs (disp_y - frame_y);
-            best_frame_y = disp_y;
+            if (!screen_info->params->snap_resist || ((frame_y <= disp_y) && (c->y < prev_y)))
+            {
+                best_delta_y = abs (disp_y - frame_y);
+                best_frame_y = disp_y;
+            }
         }
         else
         {
-            best_delta_y = abs (disp_max_y - frame_y2);
-            best_frame_y = disp_max_y - frame_height;
+            if (!screen_info->params->snap_resist || ((frame_y2 >= disp_max_y) && (c->y > prev_y)))
+            {
+                best_delta_y = abs (disp_max_y - frame_y2);
+                best_frame_y = disp_max_y - frame_height;
+            }
         }
     }
 
@@ -3029,15 +3041,21 @@ clientSnapPosition (Client * c)
                 delta = abs (c_frame_x2 - frame_x);
                 if (delta < best_delta_x)
                 {
-                    best_delta_x = delta;
-                    best_frame_x = c_frame_x2;
+                    if (!screen_info->params->snap_resist || ((frame_x <= c_frame_x2) && (c->x < prev_x)))
+                    {
+                        best_delta_x = delta;
+                        best_frame_x = c_frame_x2;
+                    }
                 }
 
                 delta = abs (c_frame_x1 - frame_x2);
                 if (delta < best_delta_x)
                 {
-                    best_delta_x = delta;
-                    best_frame_x = c_frame_x1 - frame_width;
+                    if (!screen_info->params->snap_resist || ((frame_x2 >= c_frame_x1) && (c->x > prev_x)))
+                    {
+                        best_delta_x = delta;
+                        best_frame_x = c_frame_x1 - frame_width;
+                    }
                 }
             }
 
@@ -3046,15 +3064,21 @@ clientSnapPosition (Client * c)
                 delta = abs (c_frame_y2 - frame_y);
                 if (delta < best_delta_y)
                 {
-                    best_delta_y = delta;
-                    best_frame_y = c_frame_y2;
+                    if (!screen_info->params->snap_resist || ((frame_y <= c_frame_y2) && (c->y < prev_y)))
+                    {
+                        best_delta_y = delta;
+                        best_frame_y = c_frame_y2;
+                    }
                 }
 
                 delta = abs (c_frame_y1 - frame_y2);
                 if (delta < best_delta_y)
                 {
-                    best_delta_y = delta;
-                    best_frame_y = c_frame_y1 - frame_height;
+                    if (!screen_info->params->snap_resist || ((frame_y2 >= c_frame_y1) && (c->y > prev_y)))
+                    {
+                        best_delta_y = delta;
+                        best_frame_y = c_frame_y1 - frame_height;
+                    }
                 }
             }
         }
@@ -3085,10 +3109,13 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     gboolean moving = TRUE;
     gboolean warp_pointer = FALSE;
     XWindowChanges wc;
+    int prev_x, prev_y;
 
     TRACE ("entering clientMove_event_filter");
 
     c = passdata->c;
+    prev_x=c->x;
+    prev_y=c->y;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -3126,7 +3153,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 c->y = c->y + 16;
             }
             clientConstrainPos (c, FALSE);
-            clientSnapPosition (c);
+            clientSnapPosition (c, prev_x, prev_y);
 
 #ifdef SHOW_POSITION
             if (passdata->poswin)
@@ -3347,7 +3374,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             clientConstrainPos(c, FALSE);
         }
-        clientSnapPosition (c);
+        clientSnapPosition (c, prev_x, prev_y);
 
 #ifdef SHOW_POSITION
         if (passdata->poswin)

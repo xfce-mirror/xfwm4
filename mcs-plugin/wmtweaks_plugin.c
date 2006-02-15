@@ -66,6 +66,7 @@ static gboolean prevent_focus_stealing = FALSE;
 static gboolean raise_with_any_button  = FALSE;
 static gboolean restore_on_move        = TRUE;
 static gboolean scroll_workspaces      = TRUE;
+static gboolean snap_resist            = TRUE;
 static gboolean toggle_workspaces      = TRUE;
 static gboolean wrap_layout            = FALSE;
 static gboolean wrap_cycle             = FALSE;
@@ -92,7 +93,8 @@ static int popup_opacity = 100;
     "Xfwm/RaiseWithAnyButton"
     "Xfwm/RestoreOnMove"
     "Xfwm/ScrollWorkspaces"
-    "Xfwm/ToggleWorkspaces"
+    "Xfwm/ScrollWorkspaces"
+    "Xfwm/SnapResist"
     "Xfwm/WrapLayout"
     "Xfwm/WrapCycle"
  */
@@ -358,6 +360,12 @@ create_dialog (McsPlugin * mcs_plugin)
     check_button = 
         create_gboolean_button (mcs_plugin, _("Restore original size of maximized windows when moving"),
                                 "Xfwm/RestoreOnMove", &restore_on_move);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_widget_show (check_button);
+    
+    check_button = 
+        create_gboolean_button (mcs_plugin, _("Use edge resistance instead of windows snapping"),
+                                "Xfwm/SnapResist", &snap_resist);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
     gtk_widget_show (check_button);
     

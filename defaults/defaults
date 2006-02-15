@@ -31,6 +31,7 @@ shadow_delta_x=0
 shadow_delta_y=0
 snap_to_border=true
 snap_to_windows=false
+snap_resist=true
 snap_width=10
 theme=Default
 title_alignment=left

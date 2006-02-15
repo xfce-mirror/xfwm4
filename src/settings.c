@@ -389,6 +389,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                         screen_info->params->show_popup_shadow = setting->data.v_int;
                         reloadScreenSettings (screen_info, UPDATE_FRAME);
                     }
+                    else if (!strcmp (name, "Xfwm/SnapResist"))
+                    {
+                        screen_info->params->snap_resist = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
                     {
                         screen_info->params->prevent_focus_stealing = setting->data.v_int;
@@ -732,6 +736,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("show_popup_shadow", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapResist", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("snap_resist", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL5,
@@ -1206,6 +1216,7 @@ loadSettings (ScreenInfo *screen_info)
         {"raise_with_any_button", NULL, TRUE},
         {"snap_to_border", NULL, TRUE},
         {"snap_to_windows", NULL, TRUE},
+        {"snap_resist", NULL, TRUE},
         {"snap_width", NULL, TRUE},
         {"shadow_delta_x", NULL, TRUE},
         {"shadow_delta_y", NULL, TRUE},
@@ -1351,6 +1362,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("snap_to_border", rc));
     screen_info->params->snap_to_windows =
         !g_ascii_strcasecmp ("true", getValue ("snap_to_windows", rc));
+    screen_info->params->snap_resist =
+        !g_ascii_strcasecmp ("true", getValue ("snap_resist", rc));
     screen_info->params->snap_width = abs (TOINT (getValue ("snap_width", rc)));
 
     set_settings_margin (screen_info, LEFT,   TOINT (getValue ("margin_left", rc)));
