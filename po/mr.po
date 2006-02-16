@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-12 21:25+0900\n"
+"POT-Creation-Date: 2006-02-16 21:45+0100\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr "कार्यक्षेत्रे आणि समास"
 
 #. Number of workspaces
 #: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:364 ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/wmtweaks_plugin.c:372 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
 msgstr "कार्यक्षेत्रे"
 
@@ -55,149 +55,153 @@ msgstr "कार्यक्षेत्रे"
 msgid "Margins"
 msgstr "समास"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:271 ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "विण्डो व्यवस्थापक"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:279
+#: ../mcs-plugin/wmtweaks_plugin.c:281
 #, fuzzy
 msgid "Window Manager Advanced Configuration"
 msgstr "विण्डो व्यवस्थापक रचना"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:292
+#: ../mcs-plugin/wmtweaks_plugin.c:294
 #, fuzzy
 msgid "Window cycling"
 msgstr "विण्डो स्नॅपिंग"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:301
+#: ../mcs-plugin/wmtweaks_plugin.c:303
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:307
+#: ../mcs-plugin/wmtweaks_plugin.c:309
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:313
+#: ../mcs-plugin/wmtweaks_plugin.c:315
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "विण्डो डाव्या कार्यक्षेत्रामध्ये हलवा"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:318 ../mcs-plugin/xfwm4_plugin.c:1643
+#: ../mcs-plugin/wmtweaks_plugin.c:320 ../mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
 msgstr "फोकस"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:327
+#: ../mcs-plugin/wmtweaks_plugin.c:329
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:333
+#: ../mcs-plugin/wmtweaks_plugin.c:335
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:338
+#: ../mcs-plugin/wmtweaks_plugin.c:340
 msgid "Accessibility"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:347
+#: ../mcs-plugin/wmtweaks_plugin.c:349
 msgid "Use the ALT key to grab and move windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:353
+#: ../mcs-plugin/wmtweaks_plugin.c:355
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:359
+#: ../mcs-plugin/wmtweaks_plugin.c:361
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "हलविताना विण्डोचे आशय दाखवा "
 
-#: ../mcs-plugin/wmtweaks_plugin.c:373
+#: ../mcs-plugin/wmtweaks_plugin.c:367
+msgid "Use edge resistance instead of windows snapping"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:381
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:379
+#: ../mcs-plugin/wmtweaks_plugin.c:387
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:385
+#: ../mcs-plugin/wmtweaks_plugin.c:393
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:391
+#: ../mcs-plugin/wmtweaks_plugin.c:399
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "पॉइंटर पडद्याच्या कडेला पोहोचल्यावर कार्यक्षेत्रांना आच्छादित करा"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:405
+#: ../mcs-plugin/wmtweaks_plugin.c:413
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:405 ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/wmtweaks_plugin.c:413 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "लहान"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:405
+#: ../mcs-plugin/wmtweaks_plugin.c:413
 msgid "Large"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:410
+#: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Tweaks"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:426
+#: ../mcs-plugin/wmtweaks_plugin.c:434
 msgid "Compositing"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:443
 msgid "Show shadows under regular windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:441
+#: ../mcs-plugin/wmtweaks_plugin.c:449
 msgid "Show shadows under popup windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:447
+#: ../mcs-plugin/wmtweaks_plugin.c:455
 #, fuzzy
 msgid "Opacity of windows during move"
 msgstr "हलविताना विण्डोचे आशय दाखवा "
 
-#: ../mcs-plugin/wmtweaks_plugin.c:447 ../mcs-plugin/wmtweaks_plugin.c:453
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:455 ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Transparent"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:447 ../mcs-plugin/wmtweaks_plugin.c:453
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:455 ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Opaque"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:453
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 #, fuzzy
 msgid "Opacity of windows during resize"
 msgstr "पुन:आकारित करताना विण्डोचे आशय दाखवा"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:467
 #, fuzzy
 msgid "Opacity of popup windows"
 msgstr "हलविताना विण्डोचे आशय दाखवा "
 
-#: ../mcs-plugin/wmtweaks_plugin.c:464
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 #, fuzzy
 msgid "Compositor"
 msgstr "शॉर्टकट निर्मिती"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:599 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -735,12 +739,12 @@ msgstr "कार्यक्षेत्र %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s:पॉइन्टर पकडन्यासाठी Gtk मेन्यू असक्षम\n"
 
-#: ../src/settings.c:810
+#: ../src/settings.c:820
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: सक्रिय रंग निर्धारित करु शकत नाही%s\n"
 
-#: ../src/settings.c:816
+#: ../src/settings.c:826
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: सक्रिय रंगाचे परस्पर संबध स्पष्ट करु शकत नाही%s\n"
