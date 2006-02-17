@@ -122,7 +122,7 @@ poswinShow (Poswin * poswin)
 {
     g_return_if_fail (poswin != NULL);
     
-    gtk_widget_show_now (poswin->window);
+    gtk_widget_show (poswin->window);
 }
 
 void
