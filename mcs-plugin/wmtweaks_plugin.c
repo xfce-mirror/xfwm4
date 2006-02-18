@@ -14,7 +14,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfce4 mcs plugin   - (c) 2005 Olivier Fourdan
+        xfce4 mcs plugin   - (c) 2005-2006 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H

@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2005 Olivier Fourdan
+        xfwm4    - (c) 2002-2006 Olivier Fourdan
  
  */
 

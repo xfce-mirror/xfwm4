@@ -14,7 +14,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        xfce4 mcs plugin   - (c) 2002-2005 Olivier Fourdan
+        xfce4 mcs plugin   - (c) 2002-2006 Olivier Fourdan
         Buttons DnD inspired by Michael Terry's implementation for xpad
  */
 
