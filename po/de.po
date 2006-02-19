@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-16 21:45+0100\n"
-"PO-Revision-Date: 2006-01-23 09:59+0100\n"
+"PO-Revision-Date: 2006-02-19 12:09+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,6 @@ msgid "Window cycling"
 msgstr "Wechseln der Fenster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:303
-#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
@@ -80,14 +79,12 @@ msgstr ""
 "gesetzt haben, miteinbeziehen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:309
-#, fuzzy
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 "Versteckte (z.B. ikonifizierte) Fenster\n"
 "miteinbeziehen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:315
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "Durch Fenster aller Arbeitsflächen bewegen"
 
@@ -96,12 +93,10 @@ msgid "Focus"
 msgstr "Fokus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:329
-#, fuzzy
 msgid "Activate focus stealing prevention"
 msgstr "Verhinderung des Fokusverlustes aktivieren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:335
-#, fuzzy
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Den normalen ICCCM Fokus-Hinweis beachten"
 
@@ -110,21 +105,18 @@ msgid "Accessibility"
 msgstr "Zugreifbarkeit"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:349
-#, fuzzy
 msgid "Use the ALT key to grab and move windows"
 msgstr ""
 "Die \"Alt\"-Taste verwenden, um Fenster\n"
 "anzufassen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:355
-#, fuzzy
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 "Fenster hervorbringen wenn eine beliebige\n"
 "Maustaste dgedrückt wird"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:361
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr ""
 "Ursprüngliche Größe maximierte Fenster nach\n"
@@ -133,16 +125,15 @@ msgstr ""
 #: ../mcs-plugin/wmtweaks_plugin.c:367
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
+"Verwende Widerstand an den Kanten statt die Fenster einrasten zu lassen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
-#, fuzzy
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 "Arbeitsflächen wechseln durch Betätigung des\n"
 "Mausrads auf dem Desktop"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:387
-#, fuzzy
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
@@ -151,13 +142,12 @@ msgstr ""
 "mittels Tastenkürzeln"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:393
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
-"Arbeitsflächen umbrechen in Abhängigkeit derderzeitigen Desktopanordnung"
+"Arbeitsflächen in Abhängigkeit der derzeitigen Desktopanordnung\n"
+"umbrechen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:399
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr ""
 "Arbeitsflächen umbrechen, wenn die erste oder\n"
@@ -168,7 +158,6 @@ msgid "Smart placement"
 msgstr "Intelligente Platzierung"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:413
-#, fuzzy
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 "Minimale Größe, unterhalb derer Fenster\n"
@@ -192,12 +181,10 @@ msgid "Compositing"
 msgstr "Compositing"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:443
-#, fuzzy
 msgid "Show shadows under regular windows"
 msgstr "Schatten unter normalen Fenstern anzeigen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:449
-#, fuzzy
 msgid "Show shadows under popup windows"
 msgstr "Schatten unter Popup-Fenstern anzeigen"
 
@@ -220,7 +207,6 @@ msgid "Opacity of windows during resize"
 msgstr "Deckkraft bei Größenänderung"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
-#, fuzzy
 msgid "Opacity of popup windows"
 msgstr "Deckkraft von Popup-Fenstern"
 
@@ -695,7 +681,7 @@ msgstr "Ma_ximieren"
 
 #: ../src/menu.c:40
 msgid "Un_maximize"
-msgstr "Maximierung aufheben"
+msgstr "_Maximierung aufheben"
 
 #: ../src/menu.c:41
 msgid "_Hide"
@@ -727,7 +713,7 @@ msgstr "_Lösen"
 
 #: ../src/menu.c:48
 msgid "Context _help"
-msgstr "Hilfe"
+msgstr "_Hilfe"
 
 #: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
@@ -805,6 +791,3 @@ msgstr "Einstellungen für die Arbeitsflächen"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Einstellungen für die Arbeitsflächen"
-
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Tweaks für den Fenstermanager"
