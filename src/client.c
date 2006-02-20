@@ -2785,8 +2785,8 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
             if (restore_position)
             {
                 c->old_x = c->x;
+                c->old_width = c->width;
             }
-            c->old_width = c->width;
             wc.x = full_x + frameLeft (c);
             wc.width = full_w - frameLeft (c) - frameRight (c);
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
@@ -2813,8 +2813,8 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
             if (restore_position)
             {
                 c->old_y = c->y;
+                c->old_height = c->height;
             }
-            c->old_height = c->height;
             wc.y = full_y + frameTop (c);
             wc.height = full_h - frameTop (c) - frameBottom (c);
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
@@ -2833,11 +2833,13 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
         wc.y = c->y;
         wc.height = c->height;
     }
+
     c->x = wc.x;
     c->y = wc.y;
     c->height = wc.height;
     c->width = wc.width;
     clientSetNetState (c);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         if (restore_position)
@@ -2907,6 +2909,7 @@ clientScreenResize(ScreenInfo *screen_info)
         return;
     }
 
+    myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
@@ -2914,10 +2917,28 @@ clientScreenResize(ScreenInfo *screen_info)
         {
             continue;
         }
+
+        /* Recompute size and position of maximized windows */
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
+        {
+             unsigned long flags = 0L;
+
+             /* Too bad, the flags used internally are different from the WIN_STATE_* bits */
+             flags |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
+             flags |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+
+             /* Force an update by clearing the internal flags */
+             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
+             clientToggleMaximized (c, flags, FALSE);
+        }
+
         wc.x = c->x;
         wc.y = c->y;
-        clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED);
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED);
     }
+    myScreenUngrabPointer (screen_info, CurrentTime);
 
     g_list_free (list_of_windows);
 }
@@ -4366,18 +4387,15 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
                     if (bev->button == Button1)
                     {
-                        clientToggleMaximized (c,
-                            mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
+                        clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
                     }
                     else if (bev->button == Button2)
                     {
-                        clientToggleMaximized (c,
-                            mode ? mode : WIN_STATE_MAXIMIZED_VERT, TRUE);
+                        clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED_VERT, TRUE);
                     }
                     else if (bev->button == Button3)
                     {
-                        clientToggleMaximized (c,
-                            mode ? mode : WIN_STATE_MAXIMIZED_HORIZ, TRUE);
+                        clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED_HORIZ, TRUE);
                     }
                 }
                 break;

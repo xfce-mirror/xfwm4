@@ -471,5 +471,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
                         gdk_screen_get_width (screen_info->gscr),
                         gdk_screen_get_height (screen_info->gscr),
                         screen_info->margins);
+        /* Also prevent windows from being off screen, just like when screen is resized */
+        clientScreenResize(screen_info);
     }
 }
