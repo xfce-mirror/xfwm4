@@ -8,6 +8,11 @@
 # Written for Xfce by Benedikt Meurer <benny@xfce.org>.
 #
 
+# Set locale to C to avoid troubles with "svn info" output parsing
+LC_ALL=C
+LANG=C
+export LC_ALL LANG
+
 (type xdt-autogen) >/dev/null 2>&1 || {
   cat >&2 <<EOF
 autogen.sh: You don't seem to have the Xfce development tools installed on
