@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-16 21:45+0100\n"
-"PO-Revision-Date: 2006-02-12 03:35+0200\n"
+"PO-Revision-Date: 2006-02-22 21:03+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -59,9 +59,8 @@ msgstr "Περιθώρια"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Κολπάκια Διαχειριστή Παραθύρων"
+msgstr "προσαρμογή Διαχειριστή Παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:281
 msgid "Window Manager Advanced Configuration"
@@ -76,10 +75,12 @@ msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"Περίληψη παραθύρων που έχουν ορισμένες τις ιδιότητες\n"
+"\"όχι στη λίστα εργασιών\" ή \"όχι στον ειδοποιητή\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:309
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Να περιλαμβάνονται κρυμμένα (π.χ. ελαχιστοποιημένα) παράθυρα"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:315
 msgid "Cycle through windows from all workspaces"
@@ -91,11 +92,11 @@ msgstr "Εστίαση"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:329
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Προστασία απώλειας της εστίασης"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:335
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "Να τηρείται η πρότυπη υπόδειξη εστίασης ICCM "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:340
 msgid "Accessibility"
@@ -116,7 +117,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:367
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Αντίσταση άκρων αντί για συγκόλληση παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 msgid "Switch workspaces using the mouse wheel over the desktop"
@@ -133,6 +134,8 @@ msgstr ""
 #: ../mcs-plugin/wmtweaks_plugin.c:393
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
+"Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική διάταξη της επιφάνειας "
+"εργασίας"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:399
 msgid "Wrap workspaces when the first or last workspace is reached"
@@ -157,7 +160,7 @@ msgstr "Μεγάλο"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Tweaks"
-msgstr ""
+msgstr "Προχωρημένη Προσαρμογή"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:434
 msgid "Compositing"
@@ -760,14 +763,12 @@ msgid "Xfce 4 Window Manager Settings"
 msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Προχωρημένες Ρυθμίσεις Διαχειριστή Παραθύρων"
+msgstr "Προχωρημένες Ρυθμίσεις"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων Xfce 4"
+msgstr "Προσαρμογή Διαχειριστή Παραθύρων Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
