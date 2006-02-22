@@ -2912,31 +2912,42 @@ clientScreenResize(ScreenInfo *screen_info)
     myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
     for (index = list_of_windows; index; index = g_list_next (index))
     {
+        unsigned long maximization_flags = 0L;
+        int change_mask = 0;
+
         c = (Client *) index->data;
         if (!CONSTRAINED_WINDOW (c))
         {
             continue;
         }
 
+        wc.x = c->x;
+        wc.y = c->y;
+
         /* Recompute size and position of maximized windows */
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
         {
-             unsigned long flags = 0L;
 
              /* Too bad, the flags used internally are different from the WIN_STATE_* bits */
-             flags |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
-             flags |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+             maximization_flags |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
+             maximization_flags |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
 
              /* Force an update by clearing the internal flags */
              FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
-             clientToggleMaximized (c, flags, FALSE);
+             clientToggleMaximized (c, maximization_flags, FALSE);
+
+             change_mask = CWWidth | CWHeight;
+             wc.width = c->width;
+             wc.height = c->height;
+        }
+        else
+        {
+             change_mask = CWX | CWY;
+             wc.x = c->x;
+             wc.y = c->y;
         }
 
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED);
+        clientConfigure (c, &wc, change_mask, CFG_CONSTRAINED);
     }
     myScreenUngrabPointer (screen_info, CurrentTime);
 

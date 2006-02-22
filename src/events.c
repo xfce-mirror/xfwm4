@@ -1190,6 +1190,22 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
     }
 }
 
+static gboolean
+update_screen_idle_cb (gpointer data)
+{
+    ScreenInfo *screen_info = (ScreenInfo *) data;
+    DisplayInfo *display_info = screen_info->display_info;
+    
+    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
+                    gdk_screen_get_width (screen_info->gscr),
+                    gdk_screen_get_height (screen_info->gscr),
+                    screen_info->margins);
+    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+    clientScreenResize (screen_info);
+
+    return FALSE;
+}
+
 static void
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
@@ -1212,15 +1228,16 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     else
     {
         TRACE ("ConfigureNotify on the screen_info->xroot win (0x%lx)", ev->window);
-        screen_info->xscreen->width   = ev->width;
-        screen_info->xscreen->height  = ev->height;
+        screen_info->xscreen->width  = ev->width;
+        screen_info->xscreen->height = ev->height;
     }
-    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
-                    gdk_screen_get_width (screen_info->gscr),
-                    gdk_screen_get_height (screen_info->gscr),
-                    screen_info->margins);
-    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-    clientScreenResize (screen_info);
+    /* 
+       We need to use an idle function to update our screen layout to give gdk the
+       time to update its internal structures, ie let the current event be processed
+       by gdk otherwise the functions gdk_screen_get_width() and gdk_screen_get_height()
+       don't return accurate values...
+     */
+    g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, update_screen_idle_cb, screen_info, NULL);
 }
 
 static void
