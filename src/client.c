@@ -2921,9 +2921,6 @@ clientScreenResize(ScreenInfo *screen_info)
             continue;
         }
 
-        wc.x = c->x;
-        wc.y = c->y;
-
         /* Recompute size and position of maximized windows */
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
         {
