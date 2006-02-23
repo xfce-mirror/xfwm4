@@ -2913,7 +2913,6 @@ clientScreenResize(ScreenInfo *screen_info)
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         unsigned long maximization_flags = 0L;
-        int change_mask = 0;
 
         c = (Client *) index->data;
         if (!CONSTRAINED_WINDOW (c))
@@ -2933,18 +2932,19 @@ clientScreenResize(ScreenInfo *screen_info)
              FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
              clientToggleMaximized (c, maximization_flags, FALSE);
 
-             change_mask = CWWidth | CWHeight;
+             wc.x = c->x;
+             wc.y = c->y;
              wc.width = c->width;
              wc.height = c->height;
+             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
         }
         else
         {
-             change_mask = CWX | CWY;
              wc.x = c->x;
              wc.y = c->y;
+             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED);
         }
 
-        clientConfigure (c, &wc, change_mask, CFG_CONSTRAINED);
     }
     myScreenUngrabPointer (screen_info, CurrentTime);
 
