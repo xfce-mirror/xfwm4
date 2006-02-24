@@ -145,15 +145,9 @@ clientFocusNew(Client * c)
     }
     else if ((client_focus) && (prevent_focus_stealing))
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == (Time) 0))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
         {
-            TRACE ("Given startup time is 0, not focusing");
-            give_focus = FALSE;
-            prevented = TRUE;
-        }
-        else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
-        {
-            if (c->user_time < client_focus->user_time)
+            if ((c->user_time != (Time) 0) && (c->user_time < client_focus->user_time))
             {
                 TRACE ("Current %u, new %u", (unsigned int) client_focus->user_time, (unsigned int) c->user_time);
                 give_focus = FALSE;

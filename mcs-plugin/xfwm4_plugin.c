@@ -1871,6 +1871,7 @@ setup_dialog (Itf * itf)
     g_signal_connect (G_OBJECT (itf->box_resize_check), "toggled", G_CALLBACK (cb_box_resize_changed), itf);
 
     xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (itf->xfwm4_dialog));
+    gdk_x11_window_set_user_time(GTK_WIDGET (itf->xfwm4_dialog)->window, GDK_CURRENT_TIME);
     gtk_widget_show (itf->xfwm4_dialog);
 }
 
