@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-16 21:45+0100\n"
-"PO-Revision-Date: 2006-02-12 13:57+0200\n"
+"PO-Revision-Date: 2006-02-23 16:55+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,7 @@ msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:367
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Käytä reunavastusta ikkunoiden loksahtamisen sijaan"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 msgid "Switch workspaces using the mouse wheel over the desktop"
