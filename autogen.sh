@@ -25,7 +25,7 @@ EOF
 
 echo "Creating configure.ac"
 # substitute revision and date
-revision=`svn info $0 | awk '/^Revision: / {printf "%05d\n", $2}'`
+revision=`LC_ALL=C svn info $0 | awk '/^Revision: / {printf "%05d\n", $2}'`
 sed -e "s/@REVISION@/${revision}/g" < "configure.ac.in" > "configure.ac"
 
 exec xdt-autogen $@
