@@ -58,9 +58,6 @@ struct _ScreenInfo
     /* The display this screen belongs to */
     DisplayInfo *display_info;
     
-    /* There can be one systray per screen */
-    Atom net_system_tray_selection;
-    
     /* Window stacking, per screen */
     GList *windows_stack;
     Client *last_raise;
@@ -95,7 +92,6 @@ struct _ScreenInfo
     xfwmWindow sidewalk[4];
     Window xfwm4_win;
     Window xroot;
-    Window systray;
     
     int gnome_margins[4];
     int margins[4];
@@ -122,6 +118,12 @@ struct _ScreenInfo
     /* show desktop flag */
     gboolean show_desktop;
     
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
+    /* There can be one systray per screen */
+    Atom net_system_tray_selection;
+    Window systray;
+#endif
+
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification data, per screen */
     SnMonitorContext *sn_context;

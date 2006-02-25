@@ -161,9 +161,6 @@ void getTransientFor (DisplayInfo *, Window, Window, Window *);
 void getWindowName (DisplayInfo *, Window, char **);
 gboolean getUTF8String (DisplayInfo *, Window, int, char **, int *);
 void getWindowName (DisplayInfo *, Window, char **);
-gboolean checkKdeSystrayWindow(DisplayInfo *, Window);
-void sendSystrayReqDock(DisplayInfo *, Window, Window);
-Window getSystrayWindow (DisplayInfo *, Atom);
 gboolean getWindowRole (DisplayInfo *, Window, char **);
 Window getClientLeader (DisplayInfo *, Window);
 gboolean getNetWMUserTime (DisplayInfo *, Window, Time *);
@@ -173,6 +170,12 @@ gboolean getKDEIcon (DisplayInfo *, Window, Pixmap *, Pixmap *);
 gboolean getRGBIconData (DisplayInfo *, Window, unsigned long **, unsigned long *);
 gboolean getOpacity (DisplayInfo *, Window, guint *);
 gboolean setCompositingManagerOwner (DisplayInfo *, Window , Window);
+
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
+gboolean checkKdeSystrayWindow(DisplayInfo *, Window);
+void sendSystrayReqDock(DisplayInfo *, Window, Window);
+Window getSystrayWindow (DisplayInfo *, Atom);
+#endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean getWindowStartupId (DisplayInfo *, Window, char **);

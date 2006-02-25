@@ -1030,6 +1030,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
 
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
     screen_info = myDisplayGetScreenFromSystray (display_info, ev->window);
     if  (screen_info)
     {
@@ -1037,7 +1038,8 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
         screen_info->systray = None;
         return;
     }
-    
+#endif
+
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
@@ -2002,11 +2004,13 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
             }
         }
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
         else if ((ev->message_type == display_info->atoms[MANAGER]) && (ev->data.l[1] == screen_info->net_system_tray_selection) && (ev->format == 32))
         {
             TRACE ("root has received a net_system_tray_manager event");
             screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
         }
+#endif
         else if ((ev->message_type == display_info->atoms[NET_SHOWING_DESKTOP]) && (ev->format == 32))
         {
             TRACE ("root has received a net_showing_desktop event");

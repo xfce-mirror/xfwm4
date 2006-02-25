@@ -536,6 +536,7 @@ myDisplayGetScreenFromWindow (DisplayInfo *display, Window w)
     return NULL;
 }
 
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
 ScreenInfo *
 myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
 {
@@ -556,6 +557,7 @@ myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
 
     return NULL;
 }
+#endif
 
 ScreenInfo *
 myDisplayGetDefaultScreen (DisplayInfo *display)

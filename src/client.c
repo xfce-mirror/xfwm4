@@ -1509,6 +1509,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         return NULL;
     }
 
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
     if (checkKdeSystrayWindow (display_info, w))
     {
         TRACE ("Detected KDE systray windows");
@@ -1521,6 +1522,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         }
         TRACE ("No systray found for this screen");
     }
+#endif
 
     if (attr.override_redirect)
     {

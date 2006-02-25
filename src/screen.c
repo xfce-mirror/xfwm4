@@ -49,8 +49,10 @@
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask)
 {
-    long desktop_visible = 0;
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
     gchar selection[32];
+#endif
+    long desktop_visible = 0;
     ScreenInfo *screen_info = NULL;
     GdkWindow *event_win;
     PangoLayout *layout = NULL;
@@ -170,9 +172,11 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
     g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", screen_info->screen);
     screen_info->net_system_tray_selection = XInternAtom (display_info->dpy, selection, FALSE);
     screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
+#endif
     
     screen_info->box_gc = None;
     screen_info->black_gc = NULL;

@@ -725,69 +725,6 @@ getWindowName (DisplayInfo *display_info, Window w, char **name)
 }
 
 gboolean
-checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
-{
-    Atom actual_type;
-    int actual_format;
-    unsigned long nitems;
-    unsigned long bytes_after;
-    Window trayIconForWindow;
-
-    TRACE ("entering GetWindowRole");
-    g_return_val_if_fail (window != None, FALSE);
-    
-    XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR], 
-                       0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
-                       &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
-
-    if ((actual_format == None) || 
-        (actual_type != XA_WINDOW) || 
-        (trayIconForWindow == None))
-    {
-        return FALSE;
-    }
-    return TRUE;
-}
-
-void
-sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
-{
-    XClientMessageEvent xev;
-
-    TRACE ("entering sendSystrayReqDock");
-    g_return_if_fail (window != None);
-    g_return_if_fail (systray != None);
-
-    xev.type = ClientMessage;
-    xev.window = systray;
-    xev.message_type = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
-    xev.format = 32;
-    xev.data.l[0] = CurrentTime;
-    xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
-    xev.data.l[2] = window;
-    xev.data.l[3] = 0; /* Nada */
-    xev.data.l[4] = 0; /* Niet */
-
-    XSendEvent (display_info->dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
-}
-
-Window
-getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
-{
-    Window systray_win = None;
-
-    TRACE ("entering getSystrayWindow");
-
-    systray_win = XGetSelectionOwner (display_info->dpy, net_system_tray_selection);
-    if (systray_win)
-    {
-        XSelectInput (display_info->dpy, systray_win, StructureNotifyMask);
-    }
-    TRACE ("New systray window:  0x%lx", systray_win);
-    return systray_win;
-}
-
-gboolean
 getWindowRole (DisplayInfo *display_info, Window window, char **role)
 {
     XTextProperty tp;
@@ -1044,6 +981,71 @@ setCompositingManagerOwner (DisplayInfo *display_info, Window root, Window w)
 
     return FALSE;
 }
+
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
+gboolean
+checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
+{
+    Atom actual_type;
+    int actual_format;
+    unsigned long nitems;
+    unsigned long bytes_after;
+    Window trayIconForWindow;
+
+    TRACE ("entering GetWindowRole");
+    g_return_val_if_fail (window != None, FALSE);
+    
+    XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR], 
+                       0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
+                       &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
+
+    if ((actual_format == None) || 
+        (actual_type != XA_WINDOW) || 
+        (trayIconForWindow == None))
+    {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+void
+sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
+{
+    XClientMessageEvent xev;
+
+    TRACE ("entering sendSystrayReqDock");
+    g_return_if_fail (window != None);
+    g_return_if_fail (systray != None);
+
+    xev.type = ClientMessage;
+    xev.window = systray;
+    xev.message_type = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
+    xev.format = 32;
+    xev.data.l[0] = CurrentTime;
+    xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
+    xev.data.l[2] = window;
+    xev.data.l[3] = 0; /* Nada */
+    xev.data.l[4] = 0; /* Niet */
+
+    XSendEvent (display_info->dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
+}
+
+Window
+getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
+{
+    Window systray_win = None;
+
+    TRACE ("entering getSystrayWindow");
+
+    systray_win = XGetSelectionOwner (display_info->dpy, net_system_tray_selection);
+    if (systray_win)
+    {
+        XSelectInput (display_info->dpy, systray_win, StructureNotifyMask);
+    }
+    TRACE ("New systray window:  0x%lx", systray_win);
+    return systray_win;
+}
+#endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean

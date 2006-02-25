@@ -253,8 +253,10 @@ Window        myDisplayGetRootFromWindow    (DisplayInfo *,
                                              Window w);
 ScreenInfo *  myDisplayGetScreenFromWindow  (DisplayInfo *, 
                                              Window w);
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
 ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *, 
                                              Window);
+#endif
 ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
 Time          myDisplayUpdateCurentTime     (DisplayInfo *, 
                                              XEvent *);
