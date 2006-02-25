@@ -495,7 +495,8 @@ static void
 setup_dialog (Itf * itf)
 {
     xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (itf->tweaks_dialog));
-    gdk_x11_window_set_user_time(GTK_WIDGET (itf->tweaks_dialog)->window, GDK_CURRENT_TIME);
+    gdk_x11_window_set_user_time(GTK_WIDGET (itf->tweaks_dialog)->window, 
+            gdk_x11_get_server_time (GTK_WIDGET (itf->tweaks_dialog)->window));
     gtk_widget_show (itf->tweaks_dialog);
 }
 
