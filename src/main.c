@@ -327,7 +327,7 @@ print_version (void)
     g_print ("using GTK+-%d.%d.%d.\n", 
                     gtk_major_version, gtk_minor_version, gtk_micro_version);
     g_print ("\n");
-    g_print ("\tBuild Configuration and supported features:\n");
+    g_print ("\tBuild configuration and supported features:\n");
 
     g_print ("\t- Startup notification support:                 ");
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
