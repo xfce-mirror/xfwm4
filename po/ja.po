@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-16 21:45+0100\n"
-"PO-Revision-Date: 2006-02-12 21:22+0900\n"
+"PO-Revision-Date: 2006-02-27 00:06+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "余白"
 #: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "ウィンドウマネージャーの微調節"
+msgstr "ウィンドウマネージャーの調節"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:281
 msgid "Window Manager Advanced Configuration"
@@ -115,9 +115,10 @@ msgstr "いずれかのマウスボタンが押されている時にウィンド
 msgid "Restore original size of maximized windows when moving"
 msgstr "移動する時は最大化されているウィンドウの大きさを元に戻す"
 
+# FIXME:
 #: ../mcs-plugin/wmtweaks_plugin.c:367
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 msgid "Switch workspaces using the mouse wheel over the desktop"
@@ -156,42 +157,51 @@ msgstr "大きい"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Tweaks"
-msgstr "微調節"
+msgstr "調節"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:434
 msgid "Compositing"
 msgstr "画面処理"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:443
 msgid "Show shadows under regular windows"
 msgstr "通常のウィンドウに影を落とす"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:449
 msgid "Show shadows under popup windows"
 msgstr "ポップアップウィンドウに影を落とす"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:455
 msgid "Opacity of windows during move"
 msgstr "移動時のウィンドウの透明度"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:455 ../mcs-plugin/wmtweaks_plugin.c:461
 #: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Transparent"
 msgstr "透明"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:455 ../mcs-plugin/wmtweaks_plugin.c:461
 #: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Opaque"
 msgstr "不透明"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Opacity of windows during resize"
 msgstr "大きさ変更時のウィンドウの透明度"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Opacity of popup windows"
 msgstr "移動時のウィンドウの透明度"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Compositor"
 msgstr "コンポジット"
@@ -770,7 +780,7 @@ msgstr "ウィンドウマネージャー (高度)"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 ウィンドウマネージャーの微調節"
+msgstr "Xfce 4 ウィンドウマネージャーの調節"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
