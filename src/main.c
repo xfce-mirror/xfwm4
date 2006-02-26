@@ -308,9 +308,11 @@ ensure_basedir_spec (void)
 static void
 print_usage (void)
 {
-    g_print ("%s [--sm-client-id=ID] [--display=DISPLAY] \
-[--compositor=off|on|auto] [--daemon] \
-[--version|-V] [--help|-H]\n", PACKAGE);
+    g_print ("%s [--sm-client-id=ID] [--display=DISPLAY] "
+#ifdef HAVE_COMPOSITOR
+             "[--compositor=off|on|auto] "
+#endif
+             "[--daemon] [--version|-V] [--help|-H]\n", PACKAGE);
     exit (0);
 }
 
@@ -324,6 +326,36 @@ print_version (void)
                     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
     g_print ("using GTK+-%d.%d.%d.\n", 
                     gtk_major_version, gtk_minor_version, gtk_micro_version);
+    g_print ("\n");
+    g_print ("\tBuild Configuration and supported features:\n");
+
+    g_print ("\t- Startup notification support:                 ");
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif    
+
+    g_print ("\t- Render support:                               ");
+#ifdef HAVE_RENDER
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif    
+
+    g_print ("\t- Xrandr support:                               ");
+#ifdef HAVE_RANDR
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif    
+
+    g_print ("\t- Embedded compositor:                          ");
+#ifdef HAVE_COMPOSITOR
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif    
     exit (0);
 }
 
