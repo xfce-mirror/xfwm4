@@ -46,6 +46,7 @@ gboolean compositorManageScreen     (ScreenInfo *, gboolean);
 void     compositorUnmanageScreen   (ScreenInfo *);
 void     compositorRepairScreen     (ScreenInfo *);
 void     compositorRebuildScreen    (ScreenInfo *);
+void     compositorUpdateScreenSize (ScreenInfo *);
 
 void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 void     compositorDamageWindow     (DisplayInfo *, Window);

@@ -1204,7 +1204,7 @@ update_screen_idle_cb (gpointer data)
                     screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
-
+    compositorUpdateScreenSize (screen_info);
     return FALSE;
 }
 

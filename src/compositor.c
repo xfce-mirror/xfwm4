@@ -1861,25 +1861,11 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     }
 
     cw = find_cwindow_in_display (display_info, ev->window);
-    if (!cw)
+    if (cw)
     {
-        ScreenInfo *screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
-
-        if ((screen_info) && (ev->window == screen_info->xroot))
-        {
-            if (screen_info->rootBuffer)
-            {
-                XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
-                screen_info->rootBuffer = None;
-            }
-            add_repair (display_info);
-        }
-
-        return;
+        restack_win (cw, ev->above);
+        resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width, FALSE);
     }
-
-    restack_win (cw, ev->above);
-    resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width, FALSE);
 }
 
 static void
@@ -2337,6 +2323,7 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
 
     display_info = screen_info->display_info;
     screen_info->compositor_active = FALSE;
+    screen_info->manual_redirect = manual_redirect;
 
     if (!(display_info->enable_compositor))
     {
@@ -2344,7 +2331,7 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     }
 
     gdk_error_trap_push ();
-    if (manual_redirect)
+    if (screen_info->manual_redirect)
     {
         XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
     }
@@ -2464,6 +2451,15 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
 
     screen_info->gsize = -1;
+
+    if (screen_info->manual_redirect)
+    {
+        XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
+    }
+    else
+    {
+        XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectAutomatic);
+    }
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -2491,6 +2487,24 @@ compositorRepairScreen (ScreenInfo *screen_info)
 #endif /* HAVE_COMPOSITOR */
 }
 
+void
+compositorUpdateScreenSize (ScreenInfo *screen_info)
+{
+#ifdef HAVE_COMPOSITOR
+    DisplayInfo *display_info = screen_info->display_info;
+    
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering compositorUpdateScreenSize");
+
+    display_info = screen_info->display_info;
+    if (screen_info->rootBuffer)
+    {
+	XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
+	screen_info->rootBuffer = None;
+    }
+    add_repair (display_info);
+#endif /* HAVE_COMPOSITOR */
+}
 
 void
 compositorRebuildScreen (ScreenInfo *screen_info)
