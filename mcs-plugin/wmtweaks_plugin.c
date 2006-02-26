@@ -596,11 +596,8 @@ static void
 run_dialog (McsPlugin * mcs_plugin)
 {
     const gchar *wm_name;
-    Itf *dialog;
+    static Itf *dialog = NULL;
     
-    if (is_running)
-        return;
-
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     
     wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
@@ -609,6 +606,17 @@ run_dialog (McsPlugin * mcs_plugin)
        xfce_err (_("These settings cannot work with your current window manager (%s)"), wm_name);
        return;
     }
+
+    if (is_running)
+    {
+        if((dialog) && (dialog->tweaks_dialog))
+        {
+            gtk_window_present(GTK_WINDOW(dialog->tweaks_dialog));
+            gtk_window_set_focus (GTK_WINDOW(dialog->tweaks_dialog), NULL);
+        }
+        return;
+    }
+
     is_running = TRUE;
     dialog = create_dialog (mcs_plugin);
     setup_dialog (dialog);

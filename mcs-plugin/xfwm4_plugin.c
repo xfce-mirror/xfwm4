@@ -2235,10 +2235,7 @@ static void
 run_dialog (McsPlugin * mcs_plugin)
 {
     const gchar *wm_name;
-    Itf *dialog;
-
-    if (is_running)
-        return;
+    static Itf *dialog = NULL;
 
     wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
     if (g_ascii_strcasecmp (wm_name, "Xfwm4"))
@@ -2246,6 +2243,17 @@ run_dialog (McsPlugin * mcs_plugin)
        xfce_err (_("These settings cannot work with your current window manager (%s)"), wm_name);
        return;
     }
+
+    if (is_running)
+    {
+        if((dialog) && (dialog->xfwm4_dialog))
+        {
+            gtk_window_present(GTK_WINDOW(dialog->xfwm4_dialog));
+            gtk_window_set_focus (GTK_WINDOW(dialog->xfwm4_dialog), NULL);
+        }
+        return;
+    }
+
     is_running = TRUE;
 
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
