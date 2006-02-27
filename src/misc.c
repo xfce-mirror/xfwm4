@@ -175,7 +175,7 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[2]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[3]) != None);
 
-    if ((activate) && (l.cols > 2))
+    if ((activate) && (l.cols > 1))
     {
         /*left*/
         xfwmWindowShow (&screen_info->sidewalk[0], 
