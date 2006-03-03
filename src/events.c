@@ -1749,6 +1749,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
     {
         TRACE ("root has received a net_desktop_layout notify");
         getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
+        placeSidewalks(screen_info, screen_info->params->wrap_workspaces);
     }
 }
 
