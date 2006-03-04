@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "কর্মক্ষেত্র"
 msgid "Margins"
 msgstr "প্রান্তরেখা"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -201,7 +201,7 @@ msgstr "উইন্ডো সরানোর সময় তার মধ্য�
 msgid "Compositor"
 msgstr "শর্টকাট নির্মাণ করুন"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -308,7 +308,7 @@ msgstr "লুকোনো"
 msgid "Font Selection Dialog"
 msgstr "ফন্ট নির্বাচনের ডায়লগ বক্স"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "উইন্ডো পরিচালন ব্যবস্থা"
 
@@ -778,7 +778,3 @@ msgstr "কর্মক্ষেত্র সংক্রান্ত বৈশ�
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 কর্মক্ষেত্র সংক্রান্ত বৈশিষ্ট্য"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "উইন্ডো পরিচালন ব্যবস্থা"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-09 20:50+0900\n"
 "Last-Translator: Jaswinder Singh Phulewala <jaswinderphulewala@yahoo.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -58,7 +58,7 @@ msgstr "ਅਖਾੜਾ"
 msgid "Margins"
 msgstr "ਹਾਸ਼ੀਆ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -204,7 +204,7 @@ msgstr "ਹਿਲਾਉਣ ਉਪਰੰਤ ਝਰੋਖੇ ਦੇ ਸੰਖੇ�
 msgid "Compositor"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -311,7 +311,7 @@ msgstr "ਓਹਲੇ"
 msgid "Font Selection Dialog"
 msgstr "ਫੋਂਟ ਚੋਣ ਬਕਸਾ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
 
@@ -794,7 +794,3 @@ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"

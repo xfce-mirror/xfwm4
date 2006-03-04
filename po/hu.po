@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-14 18:34+0900\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -57,7 +57,7 @@ msgstr "Munkaterületek"
 msgid "Margins"
 msgstr "Margók"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -203,7 +203,7 @@ msgstr "Ablak tartalmának megjelenítése mozgatás közben"
 msgid "Compositor"
 msgstr "Gyorsbillentyű készítése"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -310,7 +310,7 @@ msgstr "Rejtve"
 msgid "Font Selection Dialog"
 msgstr "Betűkészlet-kijelölés párbeszédablak"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Ablakkezelő"
 
@@ -780,7 +780,3 @@ msgstr "Munkaterület beállítások"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Munkaterület Beállítások"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Ablakkezelő"

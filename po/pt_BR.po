@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-09 20:51+0900\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -54,7 +54,7 @@ msgstr "Áreas de trabalho"
 msgid "Margins"
 msgstr "Margens"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -200,7 +200,7 @@ msgstr "Mostrar conteúdo das janelas ao mover"
 msgid "Compositor"
 msgstr "Teclas de atalho"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -307,7 +307,7 @@ msgstr "Oculto"
 msgid "Font Selection Dialog"
 msgstr "Diálogo de seleção de fontes"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Gerenciador de janelas"
 
@@ -788,7 +788,3 @@ msgstr "Margens da área de trabalho"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margens da área de trabalho"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Gerenciador de janelas"

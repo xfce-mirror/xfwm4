@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -57,7 +57,7 @@ msgstr "Spaţii de lucru"
 msgid "Margins"
 msgstr "Margini"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -203,7 +203,7 @@ msgstr "Arată conţinutul ferestrelor la mutare"
 msgid "Compositor"
 msgstr "Compunere combinaţie de taste"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -310,7 +310,7 @@ msgstr "Ascunse"
 msgid "Font Selection Dialog"
 msgstr "Dialog selectare font"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Administrator ferestre"
 
@@ -784,7 +784,3 @@ msgstr "Margini spaţii de lucru"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margini spaţii de lucru"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Administrator ferestre"

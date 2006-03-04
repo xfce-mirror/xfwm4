@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-08 04:23+0900\n"
 "Last-Translator: Robert Kurowski <koorek@o2.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -57,7 +57,7 @@ msgstr "Obszary robocze"
 msgid "Margins"
 msgstr "Marginesy"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -203,7 +203,7 @@ msgstr "Wyświetlaj zawartość okien podczas przesuwania"
 msgid "Compositor"
 msgstr "Stwórz aktywator"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -310,7 +310,7 @@ msgstr "Ukryte"
 msgid "Font Selection Dialog"
 msgstr "Okno Wyboru Czcionki"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Menadżer Okien"
 
@@ -784,7 +784,3 @@ msgstr "Marginesy Obszaru Roboczego"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Marginesy Obszaru Roboczego"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Menadżer Okien"

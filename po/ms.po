@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-09 20:49+0900\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -54,7 +54,7 @@ msgstr "Ruangkerja"
 msgid "Margins"
 msgstr "Margin"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -201,7 +201,7 @@ msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 msgid "Compositor"
 msgstr "Pintasan Papankekunci"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -308,7 +308,7 @@ msgstr "Sembunyi"
 msgid "Font Selection Dialog"
 msgstr "Dialog Pemilihan Font"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Pengurus Tetingkap"
 
@@ -821,7 +821,3 @@ msgstr "Margin Ruangkerja"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margin Ruangkerja"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Pengurus Tetingkap"

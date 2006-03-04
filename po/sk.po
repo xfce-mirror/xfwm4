@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-09 20:52+0900\n"
 "Last-Translator: Juraj Brosz <juro@jurajbrosz.info>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -55,7 +55,7 @@ msgstr "Virtuálne plochy"
 msgid "Margins"
 msgstr "Okraje"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -199,7 +199,7 @@ msgstr "Zobraziť obsah v presúvaných oknách"
 msgid "Compositor"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -306,7 +306,7 @@ msgstr "Skryté"
 msgid "Font Selection Dialog"
 msgstr "Dialóg pre výber písma"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Správca okien"
 
@@ -787,7 +787,3 @@ msgstr "Okraje virtuálnej plochy"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Okraje virtuálnej plochy"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Správca okien"

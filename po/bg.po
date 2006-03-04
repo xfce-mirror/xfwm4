@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -58,7 +58,7 @@ msgstr "Работно място %i"
 msgid "Margins"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -205,7 +205,7 @@ msgstr "Показва·съдържанието·на·прозорците·п
 msgid "Compositor"
 msgstr "Клавишни комбинации"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -314,7 +314,7 @@ msgstr "Скрит"
 msgid "Font Selection Dialog"
 msgstr "Диалог за избиране на шрифт"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Мениджър на прозорци"
 
@@ -827,7 +827,3 @@ msgstr "Граница на работно място"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Граница на работно място"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Мениджър на прозорци"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2004-12-03 18:06+0200\n"
 "Last-Translator: Translate.org.za <info@translate.org.za>\n"
 "Language-Team: British English <en_gb@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Workspaces"
 msgid "Margins"
 msgstr "Margins"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -202,7 +202,7 @@ msgstr "Display content of windows when moving"
 msgid "Compositor"
 msgstr "Compose shortcut"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -309,7 +309,7 @@ msgstr "Hidden"
 msgid "Font Selection Dialog"
 msgstr "Font Selection Dialogue"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Window Manager"
 
@@ -783,7 +783,3 @@ msgstr "Workspace Margins"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Workspace Margins"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Window Manager"

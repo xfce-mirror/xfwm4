@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-08-19 21:16+0900\n"
 "Last-Translator: Eskild Hustvedt <eskild@goldenfiles.com>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -60,7 +60,7 @@ msgstr "Skrivebord"
 msgid "Margins"
 msgstr "Marginer"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -205,7 +205,7 @@ msgstr "Vis innhold i vinduer mens de flyttes"
 msgid "Compositor"
 msgstr "Opprett snarvei"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -314,7 +314,7 @@ msgstr "Skjult"
 msgid "Font Selection Dialog"
 msgstr "Skrifttypevalgsdialog"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Vindushåndterer"
 
@@ -795,7 +795,3 @@ msgstr "Skrivebord marginer"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Skrivebord marginer"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Vindushåndterer"

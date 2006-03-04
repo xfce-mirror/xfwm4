@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2005-10-09 20:53+0900\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -56,7 +56,7 @@ msgstr "வேலை þடம் %i"
 msgid "Margins"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -203,7 +203,7 @@ msgstr "சாளரத்தை நகர்த்தும் போது உ
 msgid "Compositor"
 msgstr "விசைப்பலகை குறுக்கு வழி"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -312,7 +312,7 @@ msgstr "மறைந்தது"
 msgid "Font Selection Dialog"
 msgstr "ஏழுத்துரு தேர்ந்தெடுக்கும் உரையாடல்"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "சாளரமேலாளர்"
 
@@ -825,7 +825,3 @@ msgstr "வேலையிட எல்லைகள்"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "வேலையிட எல்லைகள்"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "சாளரமேலாளர்"

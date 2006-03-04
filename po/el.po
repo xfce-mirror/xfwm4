@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2006-02-22 21:03+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -57,7 +57,7 @@ msgstr "Χώροι Εργασίας"
 msgid "Margins"
 msgstr "Περιθώρια"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "προσαρμογή Διαχειριστή Παραθύρων"
@@ -200,7 +200,7 @@ msgstr "Διαφάνεια αναδυόμενων παραθύρων"
 msgid "Compositor"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -309,7 +309,7 @@ msgstr "Κρυμμένο"
 msgid "Font Selection Dialog"
 msgstr "Πλαίσιο επιλογής Γραμματοσειράς"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Διαχειριστής Παραθύρων"
 
@@ -777,7 +777,3 @@ msgstr "Ρυθμίσεις Χώρων Εργασίας"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Ρυθμίσεις Χώρων Εργασίας Xfce 4"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Διαχειριστής Παραθύρων"

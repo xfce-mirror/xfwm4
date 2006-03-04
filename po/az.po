@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-16 21:45+0100\n"
+"POT-Creation-Date: 2006-03-04 19:45+0900\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -55,7 +55,7 @@ msgstr "İş Sahələri"
 msgid "Margins"
 msgstr "Kənarlar"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -201,7 +201,7 @@ msgstr "Daşındığında pəncərələrin məzmununu göstər"
 msgid "Compositor"
 msgstr "Qısa yol yarat"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:607 ../mcs-plugin/xfwm4_plugin.c:2244
+#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -308,7 +308,7 @@ msgstr "Gizli"
 msgid "Font Selection Dialog"
 msgstr "Yazı Növü Seçimi Dialoqu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1884
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
 msgstr "Pəncərə İdarəçisi"
 
@@ -791,7 +791,3 @@ msgstr "İş Sahəsi Kənarları"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "İş Sahəsi Kənarları"
-
-#, fuzzy
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Pəncərə İdarəçisi"
