@@ -31,9 +31,6 @@
 #include <libxfce4util/libxfce4util.h> 
 #include "keyboard.h"
 
-unsigned int KeyMask;
-unsigned int ButtonMask;
-unsigned int ButtonKeyMask;
 unsigned int AltMask;
 unsigned int MetaMask;
 unsigned int NumLockMask;
@@ -310,11 +307,4 @@ initModifiers (Display * dpy)
             }
         }
     }
-    KeyMask =
-        ControlMask | ShiftMask | AltMask | MetaMask | SuperMask | HyperMask;
-
-    ButtonMask =
-        Button1Mask | Button2Mask | Button3Mask | Button4Mask | Button5Mask;
-
-    ButtonKeyMask = KeyMask | ButtonMask;
 }

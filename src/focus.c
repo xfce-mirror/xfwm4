@@ -325,8 +325,8 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
         {
             if (clientIsModal (c))
             {
-                /* If the window is a modal, send focus back to its parent window
-                   Modals are transients, and we aren"t interested in modal
+                /* If the window is a modal, send focus back to its parent window.
+                   Modals are transients, and we aren't interested in modal
                    for group, so it safe to use clientGetTransient because 
                    it's really what we want...
                  */
@@ -567,11 +567,11 @@ clientGrabMouseButton (Client * c)
     screen_info = c->screen_info;
     if (screen_info->params->raise_with_any_button)
     {
-        grabButton(clientGetXDisplay (c), AnyButton, 0, c->window);
+        grabButton(clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
     }
     else
     {
-        grabButton(clientGetXDisplay (c), Button1, 0, c->window);
+        grabButton(clientGetXDisplay (c), Button1, AnyModifier, c->window);
     }
 }
 
@@ -587,12 +587,14 @@ clientUngrabMouseButton (Client * c)
     screen_info = c->screen_info;
     if (screen_info->params->raise_with_any_button)
     {
-        ungrabButton(clientGetXDisplay (c), AnyButton, 0, c->window);
+        ungrabButton(clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
     }
     else
     {
-        ungrabButton(clientGetXDisplay (c), Button1, 0, c->window);
+        ungrabButton(clientGetXDisplay (c), Button1, AnyModifier, c->window);
     }
+    /* We've ungrabbed way too much, so regrab the regular buttons/modifiers */
+    clientGrabButtons (c);
 }
 
 void

@@ -366,9 +366,7 @@ clientGrabButtons (Client * c)
     TRACE ("entering clientGrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    grabButton(clientGetXDisplay (c), Button1, AltMask, c->window);
-    grabButton(clientGetXDisplay (c), Button2, AltMask, c->window);
-    grabButton(clientGetXDisplay (c), Button3, AltMask, c->window);
+    grabButton(clientGetXDisplay (c), AnyButton, AltMask, c->window);
 }
 
 void

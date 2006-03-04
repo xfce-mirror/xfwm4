@@ -35,9 +35,6 @@ struct _MyKey
     int modifier;
 };
 
-extern unsigned int KeyMask;
-extern unsigned int ButtonMask;
-extern unsigned int ButtonKeyMask;
 extern unsigned int AltMask;
 extern unsigned int MetaMask;
 extern unsigned int NumLockMask;
