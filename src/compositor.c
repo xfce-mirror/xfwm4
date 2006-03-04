@@ -690,9 +690,9 @@ root_tile (ScreenInfo *screen_info)
         XRenderColor c;
 
         /* Just a color by default #6A7065 */
-        c.red   = 0x6A00;
-        c.green = 0x7000;
-        c.blue  = 0x6500;
+        c.red   = 0x7f00;
+        c.green = 0x7f00;
+        c.blue  = 0x7f00;
         c.alpha = 0xffff;
         XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
     }
