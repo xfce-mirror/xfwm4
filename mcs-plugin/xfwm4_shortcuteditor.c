@@ -1,4 +1,4 @@
-/*      $Id$
+/*      $Id: xfwm4_shortcuteditor.c 19935 2006-02-18 08:21:05Z olivier $
  
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
