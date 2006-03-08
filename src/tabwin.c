@@ -237,6 +237,7 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
     
     tabwin->display_workspace = display_workspace;
     gtk_window_set_screen (GTK_WINDOW (tabwin->window), scr);
+    gtk_widget_set_name (GTK_WIDGET (tabwin->window), "xfwm4-tabwin");
     gtk_widget_realize (GTK_WIDGET (tabwin->window));
     gtk_container_set_border_width (GTK_CONTAINER (tabwin->window), 0);
     gtk_window_set_position (GTK_WINDOW (tabwin->window), GTK_WIN_POS_CENTER_ALWAYS);
