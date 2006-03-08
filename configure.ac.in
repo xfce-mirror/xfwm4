@@ -161,6 +161,7 @@ themes/default-4.2/Makefile
 themes/stoneage/Makefile
 themes/therapy/Makefile
 themes/tyrex/Makefile
+themes/wallis/Makefile
 ])
 
 echo

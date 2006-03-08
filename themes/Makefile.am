@@ -8,5 +8,6 @@ SUBDIRS =								\
 	default-4.2							\
 	stoneage							\
 	therapy								\
-	tyrex
+	tyrex								\
+	wallis
 
