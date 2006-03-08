@@ -6,5 +6,4 @@ title_horizontal_offset=2
 title_vertical_offset_active=3
 title_vertical_offset_inactive=3
 title_shadow_active=true
-# title_shadow_active=false
-title_shadow_inactive=false
+show_app_icon=true

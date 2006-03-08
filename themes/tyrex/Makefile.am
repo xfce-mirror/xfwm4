@@ -14,40 +14,67 @@ theme_DATA = 								\
 	bottom-right-active.xpm						\
 	bottom-right-inactive.png					\
 	bottom-right-inactive.xpm					\
+	close-active.png						\
 	close-active.xpm						\
+	close-inactive.png						\
 	close-inactive.xpm						\
+	close-pressed.png						\
 	close-pressed.xpm						\
+	hide-active.png							\
 	hide-active.xpm							\
+	hide-inactive.png						\
 	hide-inactive.xpm						\
+	hide-pressed.png						\
 	hide-pressed.xpm						\
 	left-active.png							\
 	left-active.xpm							\
 	left-inactive.png						\
 	left-inactive.xpm						\
+	maximize-active.png						\
 	maximize-active.xpm						\
+	maximize-inactive.png						\
 	maximize-inactive.xpm						\
+	maximize-pressed.png						\
 	maximize-pressed.xpm						\
+	maximize-toggled-active.png					\
 	maximize-toggled-active.xpm					\
+	maximize-toggled-inactive.png					\
 	maximize-toggled-inactive.xpm					\
+	maximize-toggled-pressed.png					\
 	maximize-toggled-pressed.xpm					\
+	menu-active.png							\
 	menu-active.xpm							\
+	menu-inactive.png						\
 	menu-inactive.xpm						\
+	menu-pressed.png						\
 	menu-pressed.xpm						\
 	right-active.png						\
 	right-active.xpm						\
 	right-inactive.png						\
 	right-inactive.xpm						\
+	shade-active.png						\
 	shade-active.xpm						\
+	shade-inactive.png						\
 	shade-inactive.xpm						\
+	shade-pressed.png						\
 	shade-pressed.xpm						\
+	shade-toggled-active.png					\
 	shade-toggled-active.xpm					\
+	shade-toggled-inactive.png					\
 	shade-toggled-inactive.xpm					\
+	shade-toggled-pressed.png					\
 	shade-toggled-pressed.xpm					\
+	stick-active.png						\
 	stick-active.xpm						\
+	stick-inactive.png						\
 	stick-inactive.xpm						\
+	stick-pressed.png						\
 	stick-pressed.xpm						\
+	stick-toggled-active.png					\
 	stick-toggled-active.xpm					\
+	stick-toggled-inactive.png					\
 	stick-toggled-inactive.xpm					\
+	stick-toggled-pressed.png					\
 	stick-toggled-pressed.xpm					\
 	title-1-active.png						\
 	title-1-active.xpm						\
