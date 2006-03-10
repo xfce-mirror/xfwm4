@@ -291,7 +291,6 @@ clientGrabKeys (Client * c)
 
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_ADD_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_CLOSE_WINDOW], c->window);
-    grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_CYCLE_WINDOWS], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_DEL_WORKSPACE], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_HIDE_WINDOW], c->window);
     grabKey (clientGetXDisplay (c), &screen_info->params->keys[KEY_LOWER_WINDOW], c->window);
@@ -4141,12 +4140,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 int keysym = XKeycodeToKeysym (clientGetXDisplay (c), xevent->xkey.keycode, 0);
 
-                /* If KEY_CYCLE_WINDOWS has Shift, then stop cycling on Shift
-                 * release.
-                 */
-                if (IsModifierKey (keysym) &&
-                    ((screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask) || 
-                     ((keysym != XK_Shift_L) && (keysym != XK_Shift_R))))
+                if ((keysym == XK_Alt_L) || (keysym == XK_Alt_R))
                 {
                     cycling = FALSE;
                 }

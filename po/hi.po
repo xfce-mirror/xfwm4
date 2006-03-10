@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-04 19:45+0900\n"
+"POT-Creation-Date: 2006-03-10 15:37+0100\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -214,7 +214,7 @@ msgstr ""
 msgid "Change name"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:446
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "कार्यस्थान %i"
@@ -262,15 +262,15 @@ msgstr "अधिकतम"
 msgid "Close"
 msgstr "बंद करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:334
 msgid "Shade window"
 msgstr "विंडो में छाया करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:333
 msgid "Hide window"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:330
 msgid "Maximize window"
 msgstr "विंडो को अधिकतम करें"
 
@@ -507,201 +507,196 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:329
 #, fuzzy
 msgid "Close window"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:331
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "विंडो को अधिकतम करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:332
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "विंडो को अधिकतम करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:335
 #, fuzzy
 msgid "Stick window"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
-#, fuzzy
-msgid "Cycle windows"
-msgstr "विंडो छुपाएं"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:336
 #, fuzzy
 msgid "Move window up"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:337
 #, fuzzy
 msgid "Move window down"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
 #, fuzzy
 msgid "Move window left"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:339
 #, fuzzy
 msgid "Move window right"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
 #, fuzzy
 msgid "Resize window up"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
 #, fuzzy
 msgid "Resize window down"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:342
 #, fuzzy
 msgid "Resize window left"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:343
 #, fuzzy
 msgid "Resize window right"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
 #, fuzzy
 msgid "Raise window"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
 #, fuzzy
 msgid "Lower window"
 msgstr "विंडो छुपाएं"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
 #, fuzzy
 msgid "Upper workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
 #, fuzzy
 msgid "Left workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
 #, fuzzy
 msgid "Right workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 #, fuzzy
 msgid "Next workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 #, fuzzy
 msgid "Previous workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 #, fuzzy
 msgid "Add workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 #, fuzzy
 msgid "Delete workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Show desktop"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:423
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:467
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:508
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:527
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:571
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:541
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:596
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:680
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:724
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:739
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "कीबोर्ड शार्टकट"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:742
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "कीबोर्ड शार्टकट"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:744
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
 #, fuzzy
 msgid "No shortcut"
 msgstr "कीबोर्ड शार्टकट"
@@ -836,3 +831,7 @@ msgstr "कार्यस्थान हाशिया "
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "कार्यस्थान हाशिया "
+
+#, fuzzy
+#~ msgid "Cycle windows"
+#~ msgstr "विंडो छुपाएं"

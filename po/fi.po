@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-04 19:45+0900\n"
+"POT-Creation-Date: 2006-03-10 15:37+0100\n"
 "PO-Revision-Date: 2006-02-23 16:55+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -202,7 +202,7 @@ msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
 msgid "Change name"
 msgstr "Vaihda nimi"
 
-#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:446
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"
@@ -248,15 +248,15 @@ msgstr "Suurenna"
 msgid "Close"
 msgstr "Sulje"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:334
 msgid "Shade window"
 msgstr "Varjosta ikkuna"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:333
 msgid "Hide window"
 msgstr "Piilota ikkuna"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:330
 msgid "Maximize window"
 msgstr "Suurenna ikkuna"
 
@@ -474,140 +474,136 @@ msgstr "Tällä nimellä on jo olemassa pikanäppäinteema"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Pikanäppäinteemalle täytyy antaa nimi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:329
 msgid "Close window"
 msgstr "Sulje ikkuna"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:331
 msgid "Maximize window vertically"
 msgstr "Suurenna ikkuna pystysuunnassa"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:332
 msgid "Maximize window horizontally"
 msgstr "Suurenna ikkuna vaakasuunnassa"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:335
 msgid "Stick window"
 msgstr "Kiinnitä ikkuna"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
-msgid "Cycle windows"
-msgstr "Vaihda ikkunaa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:336
 msgid "Move window up"
 msgstr "Siirrä ikkunaa ylöspäin"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:337
 msgid "Move window down"
 msgstr "Siirrä ikkunaa alaspäin"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
 msgid "Move window left"
 msgstr "Siirrä ikkunaa vasemmalle"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:339
 msgid "Move window right"
 msgstr "Siirrä ikkunaa oikealle"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
 msgid "Resize window up"
 msgstr "Muuta ikkunan kokoa ylöspäin"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
 msgid "Resize window down"
 msgstr "Muuta ikkunan kokoa alaspäin"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:342
 msgid "Resize window left"
 msgstr "Muuta ikkunan kokoa vasemmalle"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:343
 msgid "Resize window right"
 msgstr "Muuta ikkunan kokoa oikealle"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
 msgid "Raise window"
 msgstr "Nosta ikkunaa"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
 msgid "Lower window"
 msgstr "Laske ikkunaa"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
 msgid "Toggle fullscreen"
 msgstr "Vaihda täysruututilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
 msgid "Upper workspace"
 msgstr "Ylempi työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
 msgid "Bottom workspace"
 msgstr "Alempi työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
 msgid "Left workspace"
 msgstr "Vasen työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Right workspace"
 msgstr "Oikea työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Next workspace"
 msgstr "Seuraava työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Previous workspace"
 msgstr "Edellinen työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Add workspace"
 msgstr "Lisää työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Delete workspace"
 msgstr "Poista työtila"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Move window to next workspace"
 msgstr "Siirrä ikkuna seuraavaan työtilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Move window to previous workspace"
 msgstr "Siirrä ikkuna edelliseen työtilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Move window to upper workspace"
 msgstr "Siirrä ikkuna ylempään työtilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Move window to bottom workspace"
 msgstr "Siirrä ikkuna alempaan työtilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Move window to left workspace"
 msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window to right workspace"
 msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Show desktop"
 msgstr "Näytä työpöytä"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:423
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:467
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Siirrä ikkuna työtilaan %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:508
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
 msgid "Cannot open the theme directory !"
 msgstr "Teemahakemistoa ei voi avata!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:527
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:571
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -616,8 +612,8 @@ msgstr ""
 "Kohdetta %s ei voi avata: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:541
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:596
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -626,7 +622,7 @@ msgstr ""
 "Tiedostoon %s ei voi kirjoittaa:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:680
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:724
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -634,16 +630,16 @@ msgstr ""
 "Pikanäppäin on jo käytössä!\n"
 "Haluatko todella käyttää sitä?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:739
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid "Compose shortcut for :"
 msgstr "Määritä pikanäppäin:"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:742
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
 msgid "Compose shortcut"
 msgstr "Määritä pikanäppäin"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:744
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
 msgid "No shortcut"
 msgstr "Ei pikanäppäintä"
 
@@ -768,3 +764,6 @@ msgstr "Työtilojen asetukset"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 työtilojen asetukset"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Vaihda ikkunaa"

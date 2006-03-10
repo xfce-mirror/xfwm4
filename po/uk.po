@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-04 19:45+0900\n"
+"POT-Creation-Date: 2006-03-10 15:37+0100\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -209,7 +209,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Змінити назву"
 
-#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:446
 #, c-format
 msgid "Workspace %d"
 msgstr "Робоча область %i"
@@ -255,15 +255,15 @@ msgstr "Розгорнути"
 msgid "Close"
 msgstr "Закрити"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:334
 msgid "Shade window"
 msgstr "Згорнути вікно у заголовок"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:333
 msgid "Hide window"
 msgstr "Приховати вікно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:330
 msgid "Maximize window"
 msgstr "Розгорнути вікно"
 
@@ -482,140 +482,136 @@ msgstr "Схема комбінацій клавіш з такою назвою 
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Необхідно вказати назву схеми комбінацій клавіш"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:329
 msgid "Close window"
 msgstr "Закрити вікно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:307
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:331
 msgid "Maximize window vertically"
 msgstr "Розгорнути вікно по вертикалі"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:308
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:332
 msgid "Maximize window horizontally"
 msgstr "Розгорнути вікно по горизонталі"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:335
 msgid "Stick window"
 msgstr "Приліпити вікно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
-msgid "Cycle windows"
-msgstr "Перемикати вікна"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:336
 msgid "Move window up"
 msgstr "Перемістити вікно вгору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:309
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:337
 msgid "Move window down"
 msgstr "Перемістити вікно вниз"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
 msgid "Move window left"
 msgstr "Перемістити вікно вліво"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:339
 msgid "Move window right"
 msgstr "Перемістити вікно вправо"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:310
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
 msgid "Resize window up"
 msgstr "Змінити розмір вікна згори"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
 msgid "Resize window down"
 msgstr "Змінити розмір вікна знизу"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:342
 msgid "Resize window left"
 msgstr "Змінити розмір вікна зліва"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:311
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:343
 msgid "Resize window right"
 msgstr "Змінити розмір вікна справа"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
 msgid "Raise window"
 msgstr "Підняти вікно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
 msgid "Lower window"
 msgstr "Опустити вікно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
 msgid "Toggle fullscreen"
 msgstr "Повноекранний режим"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:312
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
 msgid "Upper workspace"
 msgstr "Верхня робоча область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
 msgid "Bottom workspace"
 msgstr "Нижня  робоча область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
 msgid "Left workspace"
 msgstr "Ліва робоча область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Right workspace"
 msgstr "Права робоча область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:313
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Next workspace"
 msgstr "Наступна робоча область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Previous workspace"
 msgstr "Попередня робоча область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Add workspace"
 msgstr "Додати робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:314
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Delete workspace"
 msgstr "Видалити робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Move window to next workspace"
 msgstr "Перемістити вікно на наступну робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:315
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Move window to previous workspace"
 msgstr "Перемістити вікно на попередню робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Move window to upper workspace"
 msgstr "Перемістити вікно на верхню робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:316
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Move window to bottom workspace"
 msgstr "Перемістити вікно на нижню робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Move window to left workspace"
 msgstr "Перемістити вікно на ліву робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:317
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window to right workspace"
 msgstr "Перемістити вікно на праву робочу область"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:318
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Show desktop"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:423
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:467
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Перемістити вікно на робочу область 1"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:508
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
 msgid "Cannot open the theme directory !"
 msgstr "Не вдається відкрити каталог тем!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:527
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:571
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -624,8 +620,8 @@ msgstr ""
 "Не вдається відкрити %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:541
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:596
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -634,7 +630,7 @@ msgstr ""
 "Помилка запису %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:680
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:724
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -642,16 +638,16 @@ msgstr ""
 "Комбінація клавіш вже використовується !\n"
 "Дійсно бажаєте призначити цю комбінацію клавіш ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:739
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid "Compose shortcut for :"
 msgstr "Натисніть комбінацію клавіш:"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:742
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
 msgid "Compose shortcut"
 msgstr "Вибір комбінації клавіш"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:744
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
 msgid "No shortcut"
 msgstr "Немає комбінації клавіш"
 
@@ -782,3 +778,6 @@ msgstr "Поля стільниці"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Поля стільниці"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Перемикати вікна"

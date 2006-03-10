@@ -1101,7 +1101,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_DOWN], getValue ("resize_window_down_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_LEFT], getValue ("resize_window_left_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_RIGHT], getValue ("resize_window_right_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getValue ("cycle_windows_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getValue ("close_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getValue ("hide_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getValue ("maximize_window_key", rc));
@@ -1151,6 +1150,10 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getValue ("move_window_down_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getValue ("move_window_left_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getValue ("move_window_right_workspace_key", rc));
+
+    /* Alt+Tab" switching is no more configurable */
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], "Alt+Tab");
+
     myScreenGrabKeys (screen_info);
 
     return TRUE;
