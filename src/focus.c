@@ -137,7 +137,7 @@ clientFocusNew(Client * c)
     }
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    give_focus = screen_info->params->focus_new;
+    give_focus = (c-> type & WINDOW_REGULAR_FOCUSABLE) && (screen_info->params->focus_new);
     prevent_focus_stealing = screen_info->params->prevent_focus_stealing;
 
     /*  Try to avoid focus stealing */
