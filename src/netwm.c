@@ -925,6 +925,8 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_dock detected");
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
+            FLAG_SET (c->flags,
+                CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_BORDER |  XFWM_FLAG_HAS_MOVE |
                 XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE | 
@@ -935,6 +937,8 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_toolbar detected");
             c->type = WINDOW_TOOLBAR;
             c->initial_layer = WIN_LAYER_NORMAL;
+            FLAG_SET (c->flags,
+                CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
                 XFWM_FLAG_HAS_STICK);
@@ -969,6 +973,8 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY])
         {
             TRACE ("atom net_wm_window_type_utility detected");
+            FLAG_SET (c->flags,
+                CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
         }
@@ -977,6 +983,8 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_splash detected");
             c->type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_ABOVE_DOCK;
+            FLAG_SET (c->flags,
+                CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_HIDE |
                 XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_MOVE |
