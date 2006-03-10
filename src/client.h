@@ -153,10 +153,11 @@
                                          WINDOW_MODAL_DIALOG)
 #define WINDOW_TYPE_DONT_PLACE          (WINDOW_DESKTOP | \
                                          WINDOW_DOCK | \
+                                         WINDOW_UTILITY | \
                                          WINDOW_SPLASHSCREEN)
 #define WINDOW_REGULAR_FOCUSABLE        (WINDOW_NORMAL | \
                                          WINDOW_DIALOG | \
-                                         WINDOW_MODAL_DIALOG)       
+                                         WINDOW_MODAL_DIALOG)
 #define WINDOW_TYPE_DONT_FOCUS          (WINDOW_DOCK)
 
 
