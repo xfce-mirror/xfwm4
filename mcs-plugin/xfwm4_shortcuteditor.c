@@ -302,7 +302,6 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
                                              "move_window_left_key", 
                                              "move_window_right_key", 
                                              "resize_window_up_key", 
-                                             "resize_window_up_key", 
                                              "resize_window_down_key", 
                                              "resize_window_left_key", 
                                              "resize_window_right_key", 
@@ -358,7 +357,7 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
                                           N_("Move window to bottom workspace"), 
                                           N_("Move window to left workspace"), 
                                           N_("Move window to right workspace"), 
-                                          N_( "Show desktop" ), 
+                                          N_("Show desktop"), 
                                           NULL};
 
     Itf *itf = (Itf *) data;
