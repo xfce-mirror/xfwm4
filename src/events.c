@@ -298,15 +298,17 @@ moveRequest (Client * c, XEvent * ev)
 static void
 resizeRequest (Client * c, int corner, XEvent * ev)
 {
-    if (FLAG_TEST_ALL (c->xfwm_flags,
-            XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        clientResize (c, corner, ev);
-    }
-    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        clientMove (c, ev);
+        if (FLAG_TEST_ALL (c->xfwm_flags,
+                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
+        {
+            clientResize (c, corner, ev);
+        }
+        else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+        {
+            clientMove (c, ev);
+        }
     }
 }
 
