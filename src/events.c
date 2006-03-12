@@ -300,15 +300,15 @@ resizeRequest (Client * c, int corner, XEvent * ev)
 {
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-	if (FLAG_TEST_ALL (c->xfwm_flags,
-        	XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
-	{
+        if (FLAG_TEST_ALL (c->xfwm_flags,
+                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
+        {
             clientResize (c, corner, ev);
-	}
-	else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
-	{
+        }
+        else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+        {
             clientMove (c, ev);
-	}
+        }
     }
 }
 
