@@ -146,6 +146,7 @@ struct _XfwmParams
     int button_offset;
     int button_spacing;
     int double_click_action;
+    int frame_opacity;
     int move_opacity;
     int placement_ratio;
     int popup_opacity;

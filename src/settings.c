@@ -362,6 +362,11 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->focus_hint = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/FrameOpacity"))
+                    {
+                        screen_info->params->frame_opacity = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_FRAME);
+                    }
                     else if (!strcmp (name, "Xfwm/MoveOpacity"))
                     {
                         screen_info->params->move_opacity = setting->data.v_int;
@@ -700,6 +705,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("focus_hint", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FrameOpacity", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("frame_opacity", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementRatio", CHANNEL5,
@@ -1208,6 +1219,7 @@ loadSettings (ScreenInfo *screen_info)
         {"margin_right", NULL, FALSE},
         {"margin_bottom", NULL, FALSE},
         {"margin_top", NULL, FALSE},
+        {"frame_opacity", NULL, TRUE},
         {"move_opacity", NULL, TRUE},
         {"resize_opacity", NULL, TRUE},
         {"popup_opacity", NULL, TRUE},
@@ -1347,6 +1359,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("raise_with_any_button", rc));
     screen_info->params->restore_on_move =
         !g_ascii_strcasecmp ("true", getValue ("restore_on_move", rc));
+    screen_info->params->frame_opacity = 
+        abs (TOINT (getValue ("frame_opacity", rc)));
     screen_info->params->move_opacity = 
         abs (TOINT (getValue ("move_opacity", rc)));
     screen_info->params->resize_opacity = 

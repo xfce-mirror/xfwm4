@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-10 15:37+0100\n"
+"POT-Creation-Date: 2006-03-13 23:38+0100\n"
 "PO-Revision-Date: 2006-02-27 00:06+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -49,7 +49,7 @@ msgstr "ワークスペースと余白"
 
 #. Number of workspaces
 #: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:372 ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/wmtweaks_plugin.c:374 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
 msgstr "ワークスペース"
 
@@ -57,20 +57,20 @@ msgstr "ワークスペース"
 msgid "Margins"
 msgstr "余白"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:273 ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:275 ../mcs-plugin/wmtweaks_plugin.c:518
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "ウィンドウマネージャーの調節"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:281
+#: ../mcs-plugin/wmtweaks_plugin.c:283
 msgid "Window Manager Advanced Configuration"
 msgstr "ウィンドウマネージャー (高度)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:294
+#: ../mcs-plugin/wmtweaks_plugin.c:296
 msgid "Window cycling"
 msgstr "ウィンドウの循環"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:303
+#: ../mcs-plugin/wmtweaks_plugin.c:305
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
@@ -78,135 +78,141 @@ msgstr ""
 "「ページャーを飛ばす」または「タスクバーを飛ばす」\n"
 "というプロパティが設定されているウィンドウを含める"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:309
+#: ../mcs-plugin/wmtweaks_plugin.c:311
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "アイコン化されているような隠しウィンドウも含める"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:315
+#: ../mcs-plugin/wmtweaks_plugin.c:317
 msgid "Cycle through windows from all workspaces"
 msgstr "全てのワークスペースを循環させる"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:320 ../mcs-plugin/xfwm4_plugin.c:1643
+#: ../mcs-plugin/wmtweaks_plugin.c:322 ../mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
 msgstr "フォーカス"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:329
+#: ../mcs-plugin/wmtweaks_plugin.c:331
 msgid "Activate focus stealing prevention"
 msgstr "フォーカスの横取りを防ぐ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:335
+#: ../mcs-plugin/wmtweaks_plugin.c:337
 msgid "Honor the standard ICCCM focus hint"
 msgstr "ICCCM の標準フォーカスヒントを守る"
 
 # FIXME: i hate this transliteration
-#: ../mcs-plugin/wmtweaks_plugin.c:340
+#: ../mcs-plugin/wmtweaks_plugin.c:342
 msgid "Accessibility"
 msgstr "アクセシビリティ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:349
+#: ../mcs-plugin/wmtweaks_plugin.c:351
 msgid "Use the ALT key to grab and move windows"
 msgstr "ウィンドウを掴んだり移動したりするために ALT キー使用する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:355
+#: ../mcs-plugin/wmtweaks_plugin.c:357
 msgid "Raise windows when any mouse button is pressed"
 msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:361
+#: ../mcs-plugin/wmtweaks_plugin.c:363
 msgid "Restore original size of maximized windows when moving"
 msgstr "移動する時は最大化されているウィンドウの大きさを元に戻す"
 
 # FIXME:
-#: ../mcs-plugin/wmtweaks_plugin.c:367
+#: ../mcs-plugin/wmtweaks_plugin.c:369
 msgid "Use edge resistance instead of windows snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:381
+#: ../mcs-plugin/wmtweaks_plugin.c:383
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "デスクトップ上でマウスホイールを使用しながらワークスペースを切り替える"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:387
+#: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr "ショートカットを使用して切り替える時に以前のワークスペースを覚えておく"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:393
+#: ../mcs-plugin/wmtweaks_plugin.c:395
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:399
+#: ../mcs-plugin/wmtweaks_plugin.c:401
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "先頭または最後のワークスペースに来たら循環する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:404
+#: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Smart placement"
 msgstr "スマート配置"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:413
+#: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:413 ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "小さい"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:413
+#: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Large"
 msgstr "大きい"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:418
+#: ../mcs-plugin/wmtweaks_plugin.c:420
 msgid "Tweaks"
 msgstr "調節"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:434
+#: ../mcs-plugin/wmtweaks_plugin.c:436
 msgid "Compositing"
 msgstr "画面処理"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:443
+#: ../mcs-plugin/wmtweaks_plugin.c:445
 msgid "Show shadows under regular windows"
 msgstr "通常のウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:449
+#: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Show shadows under popup windows"
 msgstr "ポップアップウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:455
-msgid "Opacity of windows during move"
-msgstr "移動時のウィンドウの透明度"
+#: ../mcs-plugin/wmtweaks_plugin.c:457
+#, fuzzy
+msgid "Opacity of window decorations"
+msgstr "大きさ変更時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:455 ../mcs-plugin/wmtweaks_plugin.c:461
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
+#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
 msgid "Transparent"
 msgstr "透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:455 ../mcs-plugin/wmtweaks_plugin.c:461
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
+#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
 msgid "Opaque"
 msgstr "不透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:463
+msgid "Opacity of windows during move"
+msgstr "移動時のウィンドウの透明度"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Opacity of windows during resize"
 msgstr "大きさ変更時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:475
 msgid "Opacity of popup windows"
 msgstr "移動時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:480
 msgid "Compositor"
 msgstr "コンポジット"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:606 ../mcs-plugin/xfwm4_plugin.c:2243
+#: ../mcs-plugin/wmtweaks_plugin.c:615 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "現在のウィンドウマネージャー (%s) ではこれらの設定が有効になりません"
@@ -215,7 +221,7 @@ msgstr "現在のウィンドウマネージャー (%s) ではこれらの設定
 msgid "Change name"
 msgstr "名前変更"
 
-#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:446
+#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:445
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d へ移る"
@@ -267,17 +273,17 @@ msgid "Close"
 msgstr "閉じる"
 
 # FIXME:
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:334
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:333
 msgid "Shade window"
 msgstr "ウィンドウを折り畳む"
 
 # FIXME:
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:333
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:332
 msgid "Hide window"
 msgstr "ウィンドウを隠す"
 
 # FIXME:
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:330
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:329
 msgid "Maximize window"
 msgstr "ウィンドウの最大化"
 
@@ -495,136 +501,136 @@ msgstr "同じ名前のキー割り当てテーマが既に存在します"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "キー割り当てテーマの名前を指定する必要があります"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:329
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:328
 msgid "Close window"
 msgstr "ウィンドウを閉じる"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:331
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:330
 msgid "Maximize window vertically"
 msgstr "ウィンドウを縦に最大化する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:332
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:331
 msgid "Maximize window horizontally"
 msgstr "ウィンドウを横に最大化する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:335
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:334
 msgid "Stick window"
 msgstr "ウィンドウを貼り付ける"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:336
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:335
 msgid "Move window up"
 msgstr "ウィンドウを上に移動する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:337
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:336
 msgid "Move window down"
 msgstr "ウィンドウを下に移動する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:337
 msgid "Move window left"
 msgstr "ウィンドウを左に移動する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:339
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
 msgid "Move window right"
 msgstr "ウィンドウを右に移動する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:339
 msgid "Resize window up"
 msgstr "ウィンドウを縦に縮める"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
 msgid "Resize window down"
 msgstr "ウィンドウを縦に伸ばす"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:342
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
 msgid "Resize window left"
 msgstr "ウィンドウを横に縮める"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:343
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:342
 msgid "Resize window right"
 msgstr "ウィンドウを横に伸ばす"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:343
 msgid "Raise window"
 msgstr "ウィンドウを前面に出す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
 msgid "Lower window"
 msgstr "ウィンドウを背面に隠す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
 msgid "Toggle fullscreen"
 msgstr "全画面に切替える"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
 msgid "Upper workspace"
 msgstr "上のワークスペースへ移る"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
 msgid "Bottom workspace"
 msgstr "下のワークスペースへ移る"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
 msgid "Left workspace"
 msgstr "左のワークスペースへ移る"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
 msgid "Right workspace"
 msgstr "右のワークスペースへ移る"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Next workspace"
 msgstr "次のワークスペースへ移る"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Previous workspace"
 msgstr "前のワークスペースへ移る"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Add workspace"
 msgstr "ワークスペースを追加する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Delete workspace"
 msgstr "ワークスペースを削除する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Move window to next workspace"
 msgstr "ウィンドウを次のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Move window to previous workspace"
 msgstr "ウィンドウを前のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Move window to upper workspace"
 msgstr "ウィンドウを上のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Move window to bottom workspace"
 msgstr "ウィンドウを下のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Move window to left workspace"
 msgstr "ウィンドウを左のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Move window to right workspace"
 msgstr "ウィンドウを右のワークスペースに移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Show desktop"
 msgstr "デスクトップを表示する"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:467
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:466
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "ウィンドウをワークスペース %d に移す"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:552
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:551
 msgid "Cannot open the theme directory !"
 msgstr "テーマフォルダを開けません！"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:571
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:570
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -633,8 +639,8 @@ msgstr ""
 "%s を開けません : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:596
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:584
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:595
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -643,7 +649,7 @@ msgstr ""
 "%s に書き込めません : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:724
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:723
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -651,16 +657,16 @@ msgstr ""
 "ショートカットは既に使用されています！\n"
 "これに使用してよろしいですか？"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:782
 msgid "Compose shortcut for :"
 msgstr "ショートカットを編集 :"
 
 #. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:785
 msgid "Compose shortcut"
 msgstr "ショートカットを編集"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:787
 msgid "No shortcut"
 msgstr "ショートカット無し"
 
@@ -748,12 +754,12 @@ msgstr "ワークスペース %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
 
-#: ../src/settings.c:820
+#: ../src/settings.c:831
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: 色 %s を割当てられません\n"
 
-#: ../src/settings.c:826
+#: ../src/settings.c:837
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 色 %s を解析できません\n"

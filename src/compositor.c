@@ -88,6 +88,7 @@ struct _CWindow
     Picture shadow;
     Picture alphaPict;
     Picture shadowPict;
+    Picture alphaBorderPict;
     XserverRegion borderSize;
     XserverRegion borderClip;
     XserverRegion extents;
@@ -906,6 +907,130 @@ get_window_picture (CWindow *cw)
 }
 
 static void
+paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
+{
+    Client *c;
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+    gboolean has_frame;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering paint_win: 0x%lx", cw->id);
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+    c = cw->c;
+    has_frame = (c && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER));
+
+    if ((has_frame) && (screen_info->params->frame_opacity < 100))
+    {
+        int frame_x, frame_y, frame_width, frame_height;
+        int frame_top, frame_bottom, frame_left, frame_right;
+
+        frame_x = frameX (c);
+        frame_y = frameY (c);
+        frame_width = frameWidth (c);
+        frame_height = frameHeight (c);
+        frame_top = frameTop (c);
+        frame_bottom = frameBottom (c);
+        frame_left = frameLeft (c);
+        frame_right = frameRight (c);
+
+        if (!solid_part)
+        {
+            if (!cw->alphaBorderPict)
+            {
+                double frame_opacity;
+                
+                frame_opacity = (double) cw->opacity * screen_info->params->frame_opacity / (NET_WM_OPAQUE * 100.0);
+                cw->alphaBorderPict = solid_picture (screen_info, FALSE, frame_opacity, 0, 0, 0);
+            }
+
+            /* Top Border (title bar) */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              0, 0, 
+                              0, 0, 
+                              frame_x, frame_y, 
+                              frame_width, frame_top);
+
+            /* Bottom Border */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              0, frame_height - frame_bottom, 
+                              0, 0,
+                              frame_x, frame_y + frame_height - frame_bottom, 
+                              frame_width, frame_bottom);
+            /* Left Border */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              0, frame_top, 
+                              0, 0,
+                              frame_x, frame_y + frame_top, 
+                              frame_left, frame_height - frame_top - frame_bottom);
+
+            /* Right Border */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              frame_width - frame_right, frame_top, 
+                              0, 0,
+                              frame_x + frame_width - frame_right, 
+                              frame_y + frame_top, frame_right, 
+                              frame_height - frame_top - frame_bottom);
+        }
+        /* Client Window */
+        if ((solid_part) && (cw->mode == WINDOW_SOLID))
+        {
+            XRectangle  r;
+            XserverRegion client_region;
+
+            XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
+            XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
+                              screen_info->rootBuffer, 
+                              frame_left, frame_top, 
+                              0, 0,
+                              frame_x + frame_left, frame_y + frame_top, 
+                              frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
+
+            r.x = frame_x + frame_left;
+            r.y = frame_y + frame_top;
+            r.width = frame_width - frame_left - frame_right;
+            r.height = frame_height - frame_top - frame_bottom;
+            client_region = XFixesCreateRegion (display_info->dpy, &r, 1);
+            XFixesSubtractRegion (display_info->dpy, region, region, client_region);
+            XFixesDestroyRegion (display_info->dpy, client_region);
+        }
+        else if (!solid_part)
+        {
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
+                              screen_info->rootBuffer, 
+                              frame_left, frame_top, 
+                              0, 0,
+                              frame_x + frame_left, frame_y + frame_top, 
+                              frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
+        }
+    }
+    else
+    {
+        gint x, y, w, h;
+
+        get_paint_bounds (cw, &x, &y, &w, &h);
+        if ((solid_part) && (cw->mode == WINDOW_SOLID))
+        {
+            XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
+            XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer,
+                              0, 0, 0, 0, x, y, w, h);
+            XFixesSubtractRegion (display_info->dpy, region, region, cw->borderSize);
+        }
+        else if (!solid_part)
+        {
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict, screen_info->rootBuffer, 
+                              0, 0, 0, 0, x, y, w, h);
+        }
+    }
+}
+
+static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
 {
     DisplayInfo *display_info = NULL;
@@ -918,7 +1043,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 
     TRACE ("entering paint_all");
     g_return_if_fail (screen_info);
-
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
@@ -988,12 +1112,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         }
         if (cw->mode == WINDOW_SOLID)
         {
-            gint x, y, w, h;
-            get_paint_bounds (cw, &x, &y, &w, &h);
-            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
-            XRenderComposite (dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer,
-                              0, 0, 0, 0, x, y, w, h);
-            XFixesSubtractRegion (dpy, region, region, cw->borderSize);
+            paint_win (cw, region, TRUE);
         }
         if (cw->borderClip == None)
         {
@@ -1040,23 +1159,16 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
                               cw->shadow_width, cw->shadow_height);
         }
 
-        if ((cw->mode != WINDOW_SOLID) && (cw->picture))
+        if (cw->picture)
         {
-            gint x, y, w, h;
-
             if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
             {
                 cw->alphaPict = solid_picture (screen_info, FALSE,
                                                (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
             }
-
             XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
-
-            /* cw->alphaPict can be None in the case of ARGB windows, that's ok */
-            get_paint_bounds (cw, &x, &y, &w, &h);
-            XRenderComposite (dpy, PictOpOver, cw->picture, cw->alphaPict,
-                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+            paint_win (cw, None, FALSE);
         }
 
         if (shadowClip)
@@ -1206,6 +1318,13 @@ free_win_data (CWindow *cw, gboolean delete)
         XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadowPict);
         cw->shadowPict = None;
     }
+
+    if (cw->alphaBorderPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaBorderPict);
+        cw->alphaBorderPict = None;
+    }
+
     if ((delete) && (cw->damage != None))
     {
         XDamageDestroy (myScreenGetXDisplay (cw->screen_info), cw->damage);
@@ -1336,6 +1455,12 @@ determine_mode(CWindow *cw)
     {
         XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->shadowPict);
         cw->shadowPict = None;
+    }
+
+    if (cw->alphaBorderPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaBorderPict);
+        cw->alphaBorderPict = None;
     }
 
     format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), cw->attr.visual);
@@ -1536,6 +1661,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 #endif
     new->picture = None;
     new->alphaPict = None;
+    new->alphaBorderPict = None;
     new->shadowPict = None;
     new->borderSize = None;
     new->extents = None;
