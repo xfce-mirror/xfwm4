@@ -287,9 +287,6 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
 #ifdef PANGO_ELLIPSIZE_END
     g_object_set (G_OBJECT (tabwin->label), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
     g_object_set (G_OBJECT (tabwin->class), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-#else
-    g_object_set (G_OBJECT (tabwin->label), "ellipsize", 3, NULL);
-    g_object_set (G_OBJECT (tabwin->class), "ellipsize", 3, NULL);
 #endif
 
     gtk_widget_show_all (GTK_WIDGET (tabwin->window));
