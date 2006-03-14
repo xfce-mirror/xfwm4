@@ -46,10 +46,6 @@
 #include <X11/extensions/Xdamage.h>
 #include <X11/extensions/Xrender.h>
 
-#define WINDOW_SOLID    0
-#define WINDOW_TRANS    1
-#define WINDOW_ARGB     2
-
 #ifndef SHADOW_RADIUS
 #define SHADOW_RADIUS   6
 #endif /* SHADOW_RADIUS */
@@ -96,8 +92,8 @@ struct _CWindow
     gint shadow_dy;
     gint shadow_width;
     gint shadow_height;
-    gint mode;
     guint opacity;
+    gboolean argb;
     gboolean skipped;
 };
 
@@ -776,14 +772,14 @@ win_extents (CWindow *cw)
     /* 
        We apply a shadow to the window if:
        
-       - It's not an ARBG window (as these can have any shape),
+       - It's not an ARGB window (as these can have any shape),
        - it's a managed window (ie "c" isn't null) that is not shaped 
          and the user asked for shadows under regular windows,
        - it's an override redirect window that is not shaped, abd the
          user asked for shadows on so called "popup" windows.
      */
      
-    if ((cw->mode != WINDOW_ARGB)
+    if (!(cw->argb)
         && ((c && (screen_info->params->show_frame_shadow) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             || (!c && (screen_info->params->show_popup_shadow) && !(cw->shaped))))
     {
@@ -792,9 +788,16 @@ win_extents (CWindow *cw)
         TRACE ("window 0x%lx has extents", cw->id);
         cw->shadow_dx = SHADOW_OFFSET_X + screen_info->params->shadow_delta_x;
         cw->shadow_dy = SHADOW_OFFSET_Y + screen_info->params->shadow_delta_y;
+
         if (!(cw->shadow))
         {
-            cw->shadow = shadow_picture (screen_info, (SHADOW_OPACITY * cw->opacity) / NET_WM_OPAQUE,
+            double shadow_opacity;
+            shadow_opacity = (double) screen_info->params->frame_opacity
+                                      * SHADOW_OPACITY
+                                      * cw->opacity
+                                      / (NET_WM_OPAQUE * 100.0);
+
+            cw->shadow = shadow_picture (screen_info, shadow_opacity,
                                          cw->attr.width + 2 * cw->attr.border_width,
                                          cw->attr.height + 2 * cw->attr.border_width,
                                          &cw->shadow_width, &cw->shadow_height);
@@ -913,7 +916,8 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     gboolean has_frame;
-
+    gboolean paint_solid;
+    
     g_return_if_fail (cw != NULL);
     TRACE ("entering paint_win: 0x%lx", cw->id);
 
@@ -921,7 +925,8 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     display_info = screen_info->display_info;
     c = cw->c;
     has_frame = (c && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER));
-
+    paint_solid = ((solid_part) && !(cw->argb) && (cw->opacity == NET_WM_OPAQUE));
+    
     if ((has_frame) && (screen_info->params->frame_opacity < 100))
     {
         int frame_x, frame_y, frame_width, frame_height;
@@ -941,8 +946,10 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
             if (!cw->alphaBorderPict)
             {
                 double frame_opacity;
-                
-                frame_opacity = (double) cw->opacity * screen_info->params->frame_opacity / (NET_WM_OPAQUE * 100.0);
+                frame_opacity = (double) cw->opacity
+                                         * screen_info->params->frame_opacity
+                                         / (NET_WM_OPAQUE * 100.0);
+
                 cw->alphaBorderPict = solid_picture (screen_info, FALSE, frame_opacity, 0, 0, 0);
             }
 
@@ -979,7 +986,7 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
                               frame_height - frame_top - frame_bottom);
         }
         /* Client Window */
-        if ((solid_part) && (cw->mode == WINDOW_SOLID))
+        if (paint_solid)
         {
             XRectangle  r;
             XserverRegion client_region;
@@ -1015,7 +1022,7 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
         gint x, y, w, h;
 
         get_paint_bounds (cw, &x, &y, &w, &h);
-        if ((solid_part) && (cw->mode == WINDOW_SOLID))
+        if (paint_solid)
         {
             XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer,
@@ -1110,7 +1117,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         {
             cw->picture = get_window_picture (cw);
         }
-        if (cw->mode == WINDOW_SOLID)
+        if (!(cw->argb) && (cw->opacity == NET_WM_OPAQUE))
         {
             paint_win (cw, region, TRUE);
         }
@@ -1464,18 +1471,7 @@ determine_mode(CWindow *cw)
     }
 
     format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), cw->attr.visual);
-    if ((format) && (format->type == PictTypeDirect) && (format->direct.alphaMask))
-    {
-        cw->mode = WINDOW_ARGB;
-    }
-    else if (cw->opacity != NET_WM_OPAQUE)
-    {
-        cw->mode = WINDOW_TRANS;
-    }
-    else
-    {
-        cw->mode = WINDOW_SOLID;
-    }
+    cw->argb = ((format) && (format->type == PictTypeDirect) && (format->direct.alphaMask));
 
     if (cw->extents)
     {
