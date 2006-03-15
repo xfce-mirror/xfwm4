@@ -284,10 +284,15 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
         gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, color);
     }
 
-#ifdef PANGO_ELLIPSIZE_END
-    g_object_set (G_OBJECT (tabwin->label), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-    g_object_set (G_OBJECT (tabwin->class), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-#endif
+    if ((gtk_major_version == 2 && gtk_minor_version >= 6)
+        || gtk_major_version > 2)
+    {
+        g_object_set (G_OBJECT (tabwin->label), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+        g_object_set (G_OBJECT (tabwin->class), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+
+        g_object_set (G_OBJECT (tabwin->label), "justify", GTK_JUSTIFY_CENTER, NULL);
+        g_object_set (G_OBJECT (tabwin->class), "justify", GTK_JUSTIFY_CENTER, NULL);
+    }
 
     gtk_widget_show_all (GTK_WIDGET (tabwin->window));
     return tabwin;
