@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-13 23:38+0100\n"
-"PO-Revision-Date: 2006-01-08 21:48+0100\n"
+"PO-Revision-Date: 2006-03-18 15:44+0100\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: catalan\n"
 "MIME-Version: 1.0\n"
@@ -716,7 +716,7 @@ msgstr "Mostra"
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:466
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
-msgstr "Mou finestra a  l'àrea de treball"
+msgstr "Mou finestra a  l'àrea de treball %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:551
 #, fuzzy
@@ -728,7 +728,7 @@ msgstr "obre  !"
 msgid ""
 "Cannot open %s : \n"
 "%s"
-msgstr "obre n"
+msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:584
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:595
