@@ -1,21 +1,22 @@
-# translation of ca.po to català
+# translation of ca.po to Catalan
 # Window manager for XFce desktop environment.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003, 2004.
-# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006
 #
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003, 2004.
+# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-13 23:38+0100\n"
-"PO-Revision-Date: 2006-03-18 15:44+0100\n"
+"PO-Revision-Date: 2006-03-19 17:38+0100\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
-"Language-Team: catalan\n"
+"Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: ../mcs-plugin/margins.c:128
 #, fuzzy
@@ -24,8 +25,7 @@ msgstr "Marges dels espais de treball"
 
 #: ../mcs-plugin/margins.c:138
 #, fuzzy
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marges on   de   pantalla no finestra"
 
 #: ../mcs-plugin/margins.c:169
@@ -41,7 +41,7 @@ msgstr "Dreta:"
 #: ../mcs-plugin/margins.c:209
 #, fuzzy
 msgid "Top :"
-msgstr "Superior:"
+msgstr "Principi:"
 
 #: ../mcs-plugin/margins.c:229
 #, fuzzy
@@ -69,32 +69,34 @@ msgstr "Marges"
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Gestor de finestres"
+msgstr "Finestra Gestor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:283
 #, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "Finestra Gestor Paràmetres"
+msgstr "Finestra Gestor Avançat Configuració"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:296
 #, fuzzy
 msgid "Window cycling"
-msgstr "Finestres"
+msgstr "Finestra"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:305
+#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
-msgstr ""
+msgstr "Inclou finestres buscapersones o n propietats set"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:311
+#, fuzzy
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Inclou ocult e finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:317
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Mou finestra a  esquerra l'àrea de treball"
+msgstr "Cicle finestres de all"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:322 ../mcs-plugin/xfwm4_plugin.c:1643
 #, fuzzy
@@ -102,60 +104,71 @@ msgid "Focus"
 msgstr "Focus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:331
+#, fuzzy
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Activa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:337
+#, fuzzy
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr " "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:342
+#, fuzzy
 msgid "Accessibility"
-msgstr ""
+msgstr "Accessibilitat"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:351
+#, fuzzy
 msgid "Use the ALT key to grab and move windows"
-msgstr ""
+msgstr "Utilitza   a  i finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:357
+#, fuzzy
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Puja finestres qualsevol ratolí és premut"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:363
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Pantalla de finestres"
+msgstr "Restaura mida de finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:369
+#, fuzzy
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Utilitza de finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
+#, fuzzy
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Commuta utilitzant   ratolí  "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
+#, fuzzy
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
-msgstr ""
+msgstr "i l'àrea de treball teclat"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:395
+#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Ajusta on  "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:401
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Ajusta   a pantalla"
+msgstr "Ajusta   primer o últim l'àrea de treball és"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
+#, fuzzy
 msgid "Smart placement"
-msgstr ""
+msgstr "Elegant"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
+#, fuzzy
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Valor mí~nim mida de finestres a "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
@@ -164,8 +177,9 @@ msgid "Small"
 msgstr "Petit"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
+#, fuzzy
 msgid "Large"
-msgstr ""
+msgstr "Gran"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:420
 msgid "Tweaks"
@@ -176,42 +190,46 @@ msgid "Compositing"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:445
+#, fuzzy
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Mostra finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:451
+#, fuzzy
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Mostra emergent finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:457
 #, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Pantalla de finestres"
+msgstr "Opacitat de finestra"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
 #: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#, fuzzy
 msgid "Transparent"
-msgstr ""
+msgstr "Transparent"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
 #: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#, fuzzy
 msgid "Opaque"
-msgstr ""
+msgstr "Opac"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:463
 #, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Pantalla de finestres"
+msgstr "Opacitat de finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:469
 #, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Pantalla de finestres"
+msgstr "Opacitat de finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:475
 #, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Pantalla de finestres"
+msgstr "Opacitat de emergent finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:480
 #, fuzzy
@@ -220,8 +238,9 @@ msgstr "Nou missatge drecera"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:615 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
+#, fuzzy
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "treball amb finestra manager"
 
 #: ../mcs-plugin/workspaces.c:337
 #, fuzzy
@@ -275,7 +294,7 @@ msgstr "Oculta"
 #: ../mcs-plugin/xfwm4_plugin.c:72
 #, fuzzy
 msgid "Maximize"
-msgstr "Maximitza"
+msgstr "Augmenta"
 
 #: ../mcs-plugin/xfwm4_plugin.c:73
 #, fuzzy
@@ -310,7 +329,7 @@ msgstr "Esquerra"
 #: ../mcs-plugin/xfwm4_plugin.c:87
 #, fuzzy
 msgid "Center"
-msgstr "Centre"
+msgstr "Centrada"
 
 #: ../mcs-plugin/xfwm4_plugin.c:88
 #, fuzzy
@@ -340,7 +359,7 @@ msgstr "finestra"
 #: ../mcs-plugin/xfwm4_plugin.c:582
 #, fuzzy
 msgid "Hidden"
-msgstr "Ocult"
+msgstr "Amagat"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1336
 #, fuzzy
@@ -515,12 +534,12 @@ msgstr "Opac i"
 #: ../mcs-plugin/xfwm4_plugin.c:1761
 #, fuzzy
 msgid "Display content of windows when resizing"
-msgstr "Pantalla de finestres"
+msgstr "Visualització de finestres"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1766
 #, fuzzy
 msgid "Display content of windows when moving"
-msgstr "Pantalla de finestres"
+msgstr "Visualització de finestres"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1771
 #, fuzzy
@@ -716,7 +735,7 @@ msgstr "Mostra"
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:466
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
-msgstr "Mou finestra a  l'àrea de treball %d"
+msgstr "Mou finestra a  l'àrea de treball"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:551
 #, fuzzy
@@ -728,7 +747,7 @@ msgstr "obre  !"
 msgid ""
 "Cannot open %s : \n"
 "%s"
-msgstr ""
+msgstr "obre n"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:584
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:595
@@ -736,9 +755,7 @@ msgstr ""
 msgid ""
 "Cannot write in %s : \n"
 "%s"
-msgstr ""
-"No es pot escriure a %s : \n"
-"%s"
+msgstr "po n"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:723
 #, fuzzy
@@ -791,12 +808,12 @@ msgstr "Oculta all"
 #: ../src/menu.c:43
 #, fuzzy
 msgid "S_how"
-msgstr "_Mostrar"
+msgstr "S"
 
 #: ../src/menu.c:44
 #, fuzzy
 msgid "_Shade"
-msgstr "_Ocultar"
+msgstr "Ombra"
 
 #: ../src/menu.c:45
 #, fuzzy
@@ -806,7 +823,7 @@ msgstr "Des_ocultar"
 #: ../src/menu.c:46
 #, fuzzy
 msgid "S_tick"
-msgstr "_Plega"
+msgstr "S"
 
 #: ../src/menu.c:47
 #, fuzzy
@@ -831,7 +848,7 @@ msgstr "Envia a ."
 #: ../src/menu.c:53
 #, fuzzy
 msgid "_Close"
-msgstr "_Tanca"
+msgstr "Tan_ca"
 
 #: ../src/menu.c:56
 #, fuzzy
@@ -846,7 +863,7 @@ msgstr "_Surt"
 #: ../src/menu.c:60
 #, fuzzy
 msgid "Restart"
-msgstr "Reinicia"
+msgstr "Torna a iniciar"
 
 #: ../src/menu.c:169
 #, fuzzy, c-format
@@ -891,12 +908,12 @@ msgstr "Finestra Gestor Paràmetres"
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 #, fuzzy
 msgid "Advanced Configuration"
-msgstr "Finestra Gestor Paràmetres"
+msgstr "Configuració avançada"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 #, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Finestra Gestor Paràmetres"
+msgstr "Finestra Gestor"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 #, fuzzy
@@ -908,6 +925,3 @@ msgstr "Àrees de treball Paràmetres"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Àrees de treball Paràmetres"
 
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Cicle finestres"
