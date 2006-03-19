@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-13 23:38+0100\n"
-"PO-Revision-Date: 2006-02-27 00:06+0900\n"
+"PO-Revision-Date: 2006-03-19 10:44+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -176,9 +176,8 @@ msgstr "ポップアップウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:457
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "大きさ変更時のウィンドウの透明度"
+msgstr "ウィンドウの枠の透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
@@ -791,6 +790,3 @@ msgstr "ワークスペース"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ワークスペースの設定"
-
-#~ msgid "Cycle windows"
-#~ msgstr "ウィンドウを循環させる"
