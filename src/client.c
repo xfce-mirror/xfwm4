@@ -2943,7 +2943,6 @@ clientScreenResize(ScreenInfo *screen_info)
              wc.y = c->y;
              clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED);
         }
-
     }
     myScreenUngrabPointer (screen_info, CurrentTime);
 

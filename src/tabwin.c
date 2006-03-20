@@ -258,9 +258,9 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
     gtk_container_add (GTK_CONTAINER (colorbox2), vbox);
 
-    tabwin->class = gtk_label_new ("");
+    tabwin->class = gtk_label_new (NULL);
     gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
-    gtk_misc_set_alignment (GTK_MISC (tabwin->class), 0.5, 0.5);
+    gtk_label_set_justify (GTK_LABEL (tabwin->class), GTK_JUSTIFY_CENTER);
     gtk_box_pack_start (GTK_BOX (vbox), tabwin->class, TRUE, TRUE, 0);
 
     frame = gtk_frame_new (NULL);
@@ -270,7 +270,7 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
 
     tabwin->label = gtk_label_new ("");
     gtk_label_set_use_markup (GTK_LABEL (tabwin->label), FALSE);
-    gtk_misc_set_alignment (GTK_MISC (tabwin->label), 0.5, 0.5);
+    gtk_label_set_justify (GTK_LABEL (tabwin->label), GTK_JUSTIFY_CENTER);
     gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, TRUE, TRUE, 0);
     gtk_widget_set_size_request (GTK_WIDGET (tabwin->label), 240, -1);
 
@@ -284,15 +284,13 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
         gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, color);
     }
 
-    if ((gtk_major_version == 2 && gtk_minor_version >= 6)
-        || gtk_major_version > 2)
+#if 0
+    if (GTK_CHECK_VERSION (2, 6, 2))
     {
-        g_object_set (G_OBJECT (tabwin->label), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-        g_object_set (G_OBJECT (tabwin->class), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-
-        g_object_set (G_OBJECT (tabwin->label), "justify", GTK_JUSTIFY_CENTER, NULL);
-        g_object_set (G_OBJECT (tabwin->class), "justify", GTK_JUSTIFY_CENTER, NULL);
+        gtk_label_set_ellipsize (GTK_LABEL (tabwin->label), PANGO_ELLIPSIZE_END);
+        gtk_label_set_ellipsize (GTK_LABEL (tabwin->class), PANGO_ELLIPSIZE_END);
     }
+#endif
 
     gtk_widget_show_all (GTK_WIDGET (tabwin->window));
     return tabwin;
