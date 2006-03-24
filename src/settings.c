@@ -1531,7 +1531,7 @@ initSettings (ScreenInfo *screen_info)
     DisplayInfo *display_info = NULL;
     int i;
     long val = 0;
-    char *names = NULL;
+    char **names = NULL;
 
     g_return_val_if_fail (screen_info, FALSE);
     
@@ -1574,14 +1574,14 @@ initSettings (ScreenInfo *screen_info)
         workspaceSetCount (screen_info, val);
     }
 
-    if (getUTF8String (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &i))
+    if (getUTF8StringList (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &i))
     {
         workspaceSetNames (screen_info, names, i);
     }
     else
     {
         screen_info->workspace_names = NULL;
-        screen_info->workspace_names_length = 0;
+        screen_info->workspace_names_items = 0;
     }
 
     getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);

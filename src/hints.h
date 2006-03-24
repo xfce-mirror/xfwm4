@@ -160,6 +160,7 @@ void setUTF8StringHint (DisplayInfo *, Window, int, const char *);
 void getTransientFor (DisplayInfo *, Window, Window, Window *);
 void getWindowName (DisplayInfo *, Window, char **);
 gboolean getUTF8String (DisplayInfo *, Window, int, char **, int *);
+gboolean getUTF8StringList (DisplayInfo *, Window, int, char ***, int *);
 void getWindowName (DisplayInfo *, Window, char **);
 gboolean getWindowRole (DisplayInfo *, Window, char **);
 Window getClientLeader (DisplayInfo *, Window);

@@ -588,6 +588,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_gboolean_setting (mcs_plugin, "Xfwm/PreventFocusStealing", &prevent_focus_stealing);
     init_gboolean_setting (mcs_plugin, "Xfwm/RaiseWithAnyButton", &raise_with_any_button);
     init_gboolean_setting (mcs_plugin, "Xfwm/RestoreOnMove", &restore_on_move);
+    init_gboolean_setting (mcs_plugin, "Xfwm/SnapResist", &snap_resist);
     init_gboolean_setting (mcs_plugin, "Xfwm/ScrollWorkspaces", &scroll_workspaces);
     init_gboolean_setting (mcs_plugin, "Xfwm/ToggleWorkspaces", &toggle_workspaces);
     init_gboolean_setting (mcs_plugin, "Xfwm/WrapLayout", &wrap_layout);

@@ -1696,9 +1696,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 {
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
-    Window w = None;
-    char *names;
-    int length;
 
     TRACE ("entering handlePropertyNotify");
 
@@ -1752,6 +1749,8 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == display_info->atoms[WM_TRANSIENT_FOR])
         {
+            Window w;
+
             TRACE ("client \"%s\" (0x%lx) has received a wm_transient_for notify", c->name, c->window);
             getTransientFor (display_info, c->screen_info->xroot, c->window, &w);
             if (clientCheckTransientWindow (c, w))
@@ -1832,10 +1831,13 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 
     if (ev->atom == display_info->atoms[NET_DESKTOP_NAMES])
     {
+        char **names;
+        int items;
+
         TRACE ("root has received a net_desktop_names notify");
-        if (getUTF8String (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &length))
+        if (getUTF8StringList (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &items))
         {
-            workspaceSetNames (screen_info, names, length);
+            workspaceSetNames (screen_info, names, items);
         }
     }
     else if (ev->atom == display_info->atoms[GNOME_PANEL_DESKTOP_AREA])
@@ -2467,10 +2469,9 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                     gdk_screen_get_width (screen_info->gscr),
                     gdk_screen_get_height (screen_info->gscr), 
                     NoEventMask);
-
     menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback, 
                          c->win_workspace, screen_info->workspace_count, 
-                         screen_info->workspace_names, screen_info->workspace_names_length,
+                         screen_info->workspace_names, screen_info->workspace_names_items,
                          display_info->xfilter, screen_info);
 
     if (!menu_popup (menu, x, y, ev->button, ev->time))

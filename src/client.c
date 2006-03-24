@@ -3149,10 +3149,18 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     /* Update the display time */
     myDisplayUpdateCurentTime (display_info, xevent);
 
+
     if (xevent->type == KeyPress)
     {
         if (passdata->use_keys)
         {
+            int key_move = 16;
+
+            if ((screen_info->params->snap_to_border) || (screen_info->params->snap_to_windows))
+            {
+                key_move = MAX (16, screen_info->params->snap_width + 1);
+            }
+
             if (!passdata->grab && screen_info->params->box_move)
             {
                 myDisplayGrabServer (display_info);
@@ -3165,22 +3173,22 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             }
             if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
             {
-                c->x = c->x - 16;
+                c->x = c->x - key_move;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
             {
-                c->x = c->x + 16;
+                c->x = c->x + key_move;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode)
             {
-                c->y = c->y - 16;
+                c->y = c->y - key_move;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode)
             {
-                c->y = c->y + 16;
+                c->y = c->y + key_move;
             }
-            clientConstrainPos (c, FALSE);
             clientSnapPosition (c, prev_x, prev_y);
+            clientConstrainPos (c, FALSE);
 
 #ifdef SHOW_POSITION
             if (passdata->poswin)
@@ -3383,6 +3391,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
+        clientSnapPosition (c, prev_x, prev_y);
         if (screen_info->params->restore_on_move)
         {
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
@@ -3401,7 +3410,6 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         {
             clientConstrainPos(c, FALSE);
         }
-        clientSnapPosition (c, prev_x, prev_y);
 
 #ifdef SHOW_POSITION
         if (passdata->poswin)

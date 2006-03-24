@@ -567,63 +567,6 @@ getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * tran
     TRACE ("Window (0x%lx) is transient for (0x%lx)", w, *transient_for);
 }
 
-gboolean
-getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
-{
-    Atom type;
-    int format;
-    unsigned long bytes_after;
-    unsigned char *str;
-    unsigned long n_items;
-
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
-    TRACE ("entering getUTF8String");
-
-    *str_p = NULL;
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
-                             0, G_MAXLONG, FALSE, display_info->atoms[UTF8_STRING], &type, 
-                             &format, &n_items, &bytes_after, (unsigned char **) &str) != Success) || (type == None))
-    {
-        TRACE ("no utf8_string value provided");
-        return FALSE;
-    }
-
-    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], MAX_TITLE_LENGTH, format, type))
-    {
-        TRACE ("utf8_string value invalid");
-        if (str)
-        {
-            XFree (str);
-        }
-        return FALSE;
-    }
-
-    if (!g_utf8_validate (str, MAX_TITLE_LENGTH, NULL))
-    {
-        char *name;
-
-        name = XGetAtomName (display_info->dpy, display_info->atoms[atom_id]);
-        if (name)
-        {
-            TRACE ("Property %s on window 0x%lx contains invalid UTF-8 characters", name, w);
-            XFree (name);
-        }
-        XFree (str);
-
-        return FALSE;
-    }
-
-    if (str)
-    {
-        xfce_utf8_remove_controls((gchar *) str, MAX_TITLE_LENGTH, NULL);
-    }
-    
-    *str_p = str;
-    *length = n_items;
-
-    return TRUE;
-}
-
 static gchar *
 internal_utf8_strndup (const gchar *src, gssize max_len)
 {
@@ -694,6 +637,138 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
     return retval;
 }
 
+
+static gboolean
+getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
+{
+    Atom type;
+    int format;
+    unsigned long bytes_after;
+    unsigned char *str;
+    unsigned long n_items;
+
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    TRACE ("entering getUTF8StringData");
+
+    *str_p = NULL;
+    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
+                             0, G_MAXLONG, FALSE, display_info->atoms[UTF8_STRING], &type, 
+                             &format, &n_items, &bytes_after, (unsigned char **) &str) != Success) || (type == None))
+    {
+        TRACE ("no utf8_string value provided");
+        return FALSE;
+    }
+
+    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], MAX_TITLE_LENGTH, format, type))
+    {
+        TRACE ("utf8_string value invalid");
+        if (str)
+        {
+            XFree (str);
+        }
+        return FALSE;
+    }
+
+    *str_p = (char *) str;
+    *length = n_items;
+
+    return TRUE;
+}
+
+gboolean
+getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
+{
+    char *xstr;
+    
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    TRACE ("entering getUTF8String");
+
+    if (!getUTF8StringData (display_info, w, atom_id, &xstr, length))
+    {
+        *str_p = NULL;
+        *length = 0;
+
+        return FALSE;
+    }
+
+    /* gmalloc the returned string */
+    *str_p = internal_utf8_strndup (xstr, MAX_TITLE_LENGTH);
+    XFree (xstr);
+    
+    if (!g_utf8_validate (*str_p, -1, NULL))
+    {
+        TRACE ("getUTF8String() returns invalid UTF-8 characters");
+        g_free (*str_p);
+        str_p = NULL;
+        length = 0;
+
+        return FALSE;
+    }
+
+    if (*str_p)
+    {
+        xfce_utf8_remove_controls((gchar *) *str_p, -1, NULL);
+    }
+    
+    return TRUE;
+}
+
+gboolean
+getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str_p, int *n_items)
+{
+    char *xstr, *ptr;
+    char **retval;
+    guint i;
+    int length;
+
+    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+
+    TRACE ("entering getUTF8StringList");
+
+    if (!getUTF8StringData (display_info, w, atom_id, &xstr, &length) || !length)
+    {
+        *str_p = NULL;
+        *n_items = 0;
+
+        return FALSE;
+    }
+    
+    i = 0;
+    while (i < length)
+    {
+        if (!xstr[i])
+        {
+            *n_items = *n_items + 1;
+        }
+        i++;
+    }
+    if (xstr[length - 1])
+    {
+        *n_items = *n_items + 1;
+    }
+ 
+    retval = g_new0 (char *, *n_items + 1);
+    ptr = xstr;
+    
+    for (i = 0; i < *n_items; i++)
+    {
+        if (g_utf8_validate (ptr, -1, NULL))
+        {
+            retval[i] = internal_utf8_strndup (ptr, MAX_TITLE_LENGTH);
+        }
+        else
+        {
+            TRACE ("getUTF8StringList() returns invalid UTF-8 characters in string #%i.", i);
+            retval[i] = g_strdup ("");
+        }
+        ptr += strlen (ptr) + 1;
+    }
+    XFree (xstr);
+    *str_p = retval;    
+
+    return TRUE;
+}
+
 void
 getWindowName (DisplayInfo *display_info, Window w, char **name)
 {
@@ -706,7 +781,7 @@ getWindowName (DisplayInfo *display_info, Window w, char **name)
     *name = NULL;
     g_return_if_fail (w != None);
 
-    if (getUTF8String (display_info, w, NET_WM_NAME, &str, &len))
+    if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len))
     {
         *name = internal_utf8_strndup (str, MAX_TITLE_LENGTH);
         XFree (str);
@@ -1060,7 +1135,7 @@ getWindowStartupId (DisplayInfo *display_info, Window w, char **startup_id)
     *startup_id = NULL;
     g_return_val_if_fail (w != None, FALSE);
 
-    if (getUTF8String (display_info, w, NET_STARTUP_ID, &str, &len))
+    if (getUTF8StringData (display_info, w, NET_STARTUP_ID, &str, &len))
     {
         *startup_id = strdup (str);
         XFree (str);
