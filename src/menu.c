@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2004 Olivier Fourdan
+        xfwm4    - (c) 2002-2006 Olivier Fourdan
  
  */
 
@@ -150,31 +150,22 @@ menu_closed (GtkMenu * widget, gpointer data)
 }
 
 static GtkWidget *
-menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, gint wsnl)
+menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn, gint wsn_items)
 {
     gint i;
     GtkWidget *menu_widget;
     GtkWidget *menuitem;
     MenuData *menudata;
     gchar *name;
-    gchar *ptr = wsn;
 
     menu_widget = gtk_menu_new ();
     gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
 
     for (i = 0; i < nws; i++)
     {
-        if (ptr && *ptr)
+        if ((i < wsn_items) && wsn[i])
         {
-            name = g_strdup_printf (_("Workspace %i (%s)"), i + 1, ptr);
-            if (ptr - wsn + 1 < wsnl)
-            {
-                ptr += strlen (ptr) + 1;
-            }
-            else
-            {
-                ptr = NULL;
-            }
+            name = g_strdup_printf (_("Workspace %i (%s)"), i+ 1, wsn[i]);
         }
         else
         {
@@ -203,7 +194,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar *wsn, 
 
 Menu *
 menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func, 
-    gint ws, gint nws, gchar *wsn, gint wsnl, XfceFilterSetup *filter_setup, gpointer data)
+    gint ws, gint nws, gchar **wsn, gint wsn_items, XfceFilterSetup *filter_setup, gpointer data)
 {
     int i;
     Menu *menu;
@@ -244,7 +235,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
                     }
-                    ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsnl);
+                    ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
                     break;
                 default:

@@ -106,7 +106,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     screen_info->workspace_count = -1;
     screen_info->workspace_names = NULL;
-    screen_info->workspace_names_length = 0;
+    screen_info->workspace_names_items = 0;
 
     screen_info->mcs_client = NULL;
     screen_info->mcs_initted = FALSE;
@@ -199,9 +199,12 @@ myScreenClose (ScreenInfo *screen_info)
     compositorUnmanageScreen (screen_info);
     closeSettings (screen_info);
 
-    g_free (screen_info->workspace_names);
+    if (screen_info->workspace_names)
+    {
+        g_strfreev (screen_info->workspace_names);
+    }
     screen_info->workspace_names = NULL;
-    screen_info->workspace_names_length = 0;
+    screen_info->workspace_names_items = 0;
 
     xfwmWindowDelete (&screen_info->sidewalk[0]);
     xfwmWindowDelete (&screen_info->sidewalk[1]);

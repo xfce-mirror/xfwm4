@@ -376,15 +376,15 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2)
 }
 
 void
-workspaceSetNames (ScreenInfo * screen_info, char *names, int length)
+workspaceSetNames (ScreenInfo * screen_info, char **names, int items)
 {
     if (screen_info->workspace_names)
     {
-        g_free (screen_info->workspace_names);
+        g_strfreev (screen_info->workspace_names);
     }
 
     screen_info->workspace_names = names;
-    screen_info->workspace_names_length = length;
+    screen_info->workspace_names_items = items;
 }
 
 void

@@ -104,8 +104,8 @@ struct _ScreenInfo
 
     /* Workspace definitions */
     int workspace_count;
-    gchar *workspace_names;
-    int workspace_names_length;
+    gchar **workspace_names;
+    int workspace_names_items;
     NetWmDesktopLayout desktop_layout;
 
     /* Button handler for GTK */

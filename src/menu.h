@@ -95,7 +95,7 @@ Menu *menu_default             (GdkScreen *,
                                 MenuFunc, 
                                 gint, 
                                 gint, 
-                                gchar *, 
+                                gchar **, 
                                 gint, 
                                 XfceFilterSetup*, 
                                 gpointer);

@@ -37,7 +37,7 @@
 #include "display.h"
 
 #define MWM_HINTS_ELEMENTS                      3L
-#define MAX_TITLE_LENGTH                        255
+#define MAX_STR_LENGTH                          255
 
 #define MWM_HINTS_FUNCTIONS                     (1L << 0)
 #define MWM_HINTS_DECORATIONS                   (1L << 1)
@@ -160,6 +160,7 @@ void setUTF8StringHint (DisplayInfo *, Window, int, const char *);
 void getTransientFor (DisplayInfo *, Window, Window, Window *);
 void getWindowName (DisplayInfo *, Window, char **);
 gboolean getUTF8String (DisplayInfo *, Window, int, char **, int *);
+gboolean getUTF8StringList (DisplayInfo *, Window, int, char ***, int *);
 void getWindowName (DisplayInfo *, Window, char **);
 gboolean checkKdeSystrayWindow(DisplayInfo *, Window);
 void sendSystrayReqDock(DisplayInfo *, Window, Window);
