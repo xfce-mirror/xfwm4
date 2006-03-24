@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-13 23:38+0100\n"
+"POT-Creation-Date: 2006-03-25 00:00+0100\n"
 "PO-Revision-Date: 2006-03-19 00:45+0100\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "Idazmahai Marjinak"
 
 #: ../mcs-plugin/margins.c:138
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak leihorik ipiniko ez diren pantailaren zatiak dira"
 
 #: ../mcs-plugin/margins.c:169
@@ -48,7 +49,7 @@ msgstr "Idazmahai eta Marjinak"
 
 #. Number of workspaces
 #: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:374 ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/wmtweaks_plugin.c:483 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
 msgstr "Idazmahaiak"
 
@@ -56,156 +57,154 @@ msgstr "Idazmahaiak"
 msgid "Margins"
 msgstr "Marjinak"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:275 ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:346
+msgid "None"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Leiho Kudeatzailea"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:283
+#: ../mcs-plugin/wmtweaks_plugin.c:361
 #, fuzzy
 msgid "Window Manager Advanced Configuration"
 msgstr "Leiho Kudeatzaile Ezarpenak"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:296
-#, fuzzy
-msgid "Window cycling"
-msgstr "Leiho Itsaskarritasuna"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:305
+#: ../mcs-plugin/wmtweaks_plugin.c:376
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:311
+#: ../mcs-plugin/wmtweaks_plugin.c:382
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Ezkutatuako leiohal (adib, txikitutakoak) barne"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:317
+#: ../mcs-plugin/wmtweaks_plugin.c:388
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:322 ../mcs-plugin/xfwm4_plugin.c:1643
-msgid "Focus"
-msgstr "Fokua"
+#: ../mcs-plugin/wmtweaks_plugin.c:393
+msgid "Cycling"
+msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:331
+#: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:337
+#: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:342
-msgid "Accessibility"
-msgstr ""
+#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1643
+msgid "Focus"
+msgstr "Fokua"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:351
-msgid "Use the ALT key to grab and move windows"
+#: ../mcs-plugin/wmtweaks_plugin.c:426
+#, fuzzy
+msgid "Key used to grab and move windows"
 msgstr "ALT tekla erabili leihoak eldu eta mugitzeko"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:363
+#: ../mcs-plugin/wmtweaks_plugin.c:438
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "Mugitzerakoan erakutsi leihoaren edukia"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:369
+#: ../mcs-plugin/wmtweaks_plugin.c:444
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
+#: ../mcs-plugin/wmtweaks_plugin.c:449
+msgid "Accessibility"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:466
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:401
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Joan hurrengo idazmahaiera sagua pantaila ertzera ailatzerakoan"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:406
-msgid "Smart placement"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/wmtweaks_plugin.c:494 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "Txikia"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Large"
 msgstr "Luzea"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:420
-msgid "Tweaks"
-msgstr "Gomendioak"
+#: ../mcs-plugin/wmtweaks_plugin.c:499
+msgid "Placement"
+msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:436
-msgid "Compositing"
-msgstr "Sortzea"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:445
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Show shadows under regular windows"
 msgstr "Leiho arrunten azpian itzalak bistarazi"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:451
+#: ../mcs-plugin/wmtweaks_plugin.c:523
 msgid "Show shadows under popup windows"
 msgstr "Popup leihoen azpian itzalak bistarazi"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Opacity of window decorations"
 msgstr "Leiho dekoreazioaren opakotasuna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
-#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Transparent"
 msgstr "Gardena"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
-#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opaque"
 msgstr "Opakoa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:463
+#: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Opacity of windows during move"
 msgstr "Mugitzerakoan leihoaren opakotasuna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:469
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Opacity of windows during resize"
 msgstr "Tamainaz aldatzean leihoaren opakotasuna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opacity of popup windows"
 msgstr "Popup leihoen opakotasuna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:480
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 msgid "Compositor"
 msgstr "Sortzailea"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:615 ../mcs-plugin/xfwm4_plugin.c:2243
+#: ../mcs-plugin/wmtweaks_plugin.c:704 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Ezarpen hauek ezin dute funtzionatu erabiltzen ari zaren leiho kudeatzailearekin (%s)"
+msgstr ""
+"Ezarpen hauek ezin dute funtzionatu erabiltzen ari zaren leiho "
+"kudeatzailearekin (%s)"
 
 #: ../mcs-plugin/workspaces.c:337
 msgid "Change name"
@@ -721,27 +720,27 @@ msgstr "_Irten"
 msgid "Restart"
 msgstr "Berrabiarazi"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "%i (%s) Idazmahaia"
 
-#: ../src/menu.c:181
+#: ../src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "%i Idazmahaia"
 
-#: ../src/menu.c:416
+#: ../src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
 
-#: ../src/settings.c:831
+#: ../src/settings.c:853
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Ezin da %s kolorea esleitu\n"
 
-#: ../src/settings.c:837
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ezin da %s kolorea analizatu\n"
@@ -776,3 +775,12 @@ msgstr "Idazmahai Ezarpenak"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
 
+#, fuzzy
+#~ msgid "Window cycling"
+#~ msgstr "Leiho Itsaskarritasuna"
+
+#~ msgid "Tweaks"
+#~ msgstr "Gomendioak"
+
+#~ msgid "Compositing"
+#~ msgstr "Sortzea"

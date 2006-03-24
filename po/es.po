@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-13 23:38+0100\n"
+"POT-Creation-Date: 2006-03-25 00:00+0100\n"
 "PO-Revision-Date: 2005-08-19 21:13+0900\n"
 "Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "Escritorios y Márgenes"
 
 #. Number of workspaces
 #: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:374 ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/wmtweaks_plugin.c:483 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
 msgstr "Escritorios"
 
@@ -56,160 +56,155 @@ msgstr "Escritorios"
 msgid "Margins"
 msgstr "Márgenes"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:275 ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:346
+msgid "None"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Gestor de Ventanas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:283
+#: ../mcs-plugin/wmtweaks_plugin.c:361
 #, fuzzy
 msgid "Window Manager Advanced Configuration"
 msgstr "Gestor de Ventanas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:296
-#, fuzzy
-msgid "Window cycling"
-msgstr "Atracción de las ventanas"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:305
+#: ../mcs-plugin/wmtweaks_plugin.c:376
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:311
+#: ../mcs-plugin/wmtweaks_plugin.c:382
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:317
+#: ../mcs-plugin/wmtweaks_plugin.c:388
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "Mover ventana al próximo escritorio"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:322 ../mcs-plugin/xfwm4_plugin.c:1643
-msgid "Focus"
-msgstr "Foco"
+#: ../mcs-plugin/wmtweaks_plugin.c:393
+msgid "Cycling"
+msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:331
+#: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:337
+#: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:342
-msgid "Accessibility"
+#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1643
+msgid "Focus"
+msgstr "Foco"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:426
+msgid "Key used to grab and move windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:351
-msgid "Use the ALT key to grab and move windows"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:363
+#: ../mcs-plugin/wmtweaks_plugin.c:438
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "Mostrar contenido de la ventana cuando se mueva"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:369
+#: ../mcs-plugin/wmtweaks_plugin.c:444
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
+#: ../mcs-plugin/wmtweaks_plugin.c:449
+msgid "Accessibility"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:466
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:401
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr ""
 "Saltar al siguiente escritorio cuando el puntero llegue al borde del "
 "escritorio"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:406
-msgid "Smart placement"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/wmtweaks_plugin.c:494 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "Pequeño"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Large"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:420
-msgid "Tweaks"
+#: ../mcs-plugin/wmtweaks_plugin.c:499
+msgid "Placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:436
-msgid "Compositing"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:445
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Show shadows under regular windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:451
+#: ../mcs-plugin/wmtweaks_plugin.c:523
 msgid "Show shadows under popup windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 #, fuzzy
 msgid "Opacity of window decorations"
 msgstr "Mostrar el contenido de las ventanas cuando se redimensionen"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
-#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Transparent"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
-#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opaque"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:463
+#: ../mcs-plugin/wmtweaks_plugin.c:535
 #, fuzzy
 msgid "Opacity of windows during move"
 msgstr "Mostrar contenido de la ventana cuando se mueva"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:469
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 #, fuzzy
 msgid "Opacity of windows during resize"
 msgstr "Mostrar el contenido de las ventanas cuando se redimensionen"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 #, fuzzy
 msgid "Opacity of popup windows"
 msgstr "Mostrar contenido de la ventana cuando se mueva"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:480
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 #, fuzzy
 msgid "Compositor"
 msgstr "Generar atajo"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:615 ../mcs-plugin/xfwm4_plugin.c:2243
+#: ../mcs-plugin/wmtweaks_plugin.c:704 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -741,27 +736,27 @@ msgstr "_Salir"
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Escritorio %i (%s)"
 
-#: ../src/menu.c:181
+#: ../src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "Escritorio %i"
 
-#: ../src/menu.c:416
+#: ../src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 
-#: ../src/settings.c:831
+#: ../src/settings.c:853
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: ../src/settings.c:837
+#: ../src/settings.c:859
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
@@ -799,6 +794,10 @@ msgstr "Márgenes del Escritorio"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Márgenes del Escritorio"
+
+#, fuzzy
+#~ msgid "Window cycling"
+#~ msgstr "Atracción de las ventanas"
 
 #~ msgid "Cycle windows"
 #~ msgstr "Ciclar ventanas"

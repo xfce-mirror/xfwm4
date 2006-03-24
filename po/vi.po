@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-13 23:38+0100\n"
+"POT-Creation-Date: 2006-03-25 00:00+0100\n"
 "PO-Revision-Date: 2006-02-12 22:47+0300\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <none@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "Vùng làm việc và Biên"
 
 #. Number of workspaces
 #: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:374 ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/wmtweaks_plugin.c:483 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
 msgstr "Vùng làm việc"
 
@@ -56,20 +56,20 @@ msgstr "Vùng làm việc"
 msgid "Margins"
 msgstr "Biên"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:275 ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:346
+msgid "None"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Tinh chỉnh của trình quản lí cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:283
+#: ../mcs-plugin/wmtweaks_plugin.c:361
 msgid "Window Manager Advanced Configuration"
 msgstr "Cấu hình nâng cao của trình quản lí cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:296
-msgid "Window cycling"
-msgstr "Quay vòng cửa sổ"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:305
+#: ../mcs-plugin/wmtweaks_plugin.c:376
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
@@ -77,130 +77,128 @@ msgstr ""
 "Bao gồm cả những cửa sổ có đặt thuộc tính\n"
 "\"skip pager\" hoặc \"skip taskbar\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:311
+#: ../mcs-plugin/wmtweaks_plugin.c:382
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Gồm cả những tập tin ẩn (ví dụ thu nhỏ)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:317
+#: ../mcs-plugin/wmtweaks_plugin.c:388
 msgid "Cycle through windows from all workspaces"
 msgstr "Quay vòng cửa sổ của tất cả các vùng làm"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:322 ../mcs-plugin/xfwm4_plugin.c:1643
-msgid "Focus"
-msgstr "Chọn"
+#: ../mcs-plugin/wmtweaks_plugin.c:393
+msgid "Cycling"
+msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:331
+#: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Activate focus stealing prevention"
 msgstr "Kích hoạt sự bảo vệ chọn khỏi mất cắp"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:337
+#: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Gợi ý chọn theo chuẩn ICCCM vinh dự"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:342
-msgid "Accessibility"
-msgstr "Mở rộng"
+#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1643
+msgid "Focus"
+msgstr "Chọn"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:351
-msgid "Use the ALT key to grab and move windows"
+#: ../mcs-plugin/wmtweaks_plugin.c:426
+#, fuzzy
+msgid "Key used to grab and move windows"
 msgstr "Dùng phím ALT để giữ và di chuyển cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Chọn cửa sổ khi nhấn bất kỳ phím chuột nào"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:363
+#: ../mcs-plugin/wmtweaks_plugin.c:438
 msgid "Restore original size of maximized windows when moving"
 msgstr "Phục hồi kích thước ban đầu của cửa sổ đã phóng to khi di chuyển"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:369
+#: ../mcs-plugin/wmtweaks_plugin.c:444
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
+#: ../mcs-plugin/wmtweaks_plugin.c:449
+msgid "Accessibility"
+msgstr "Mở rộng"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Chuyển không gian làm việc khi quay bánh xe chuột trên nền màn hình"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:466
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr "Nhớ và gọi lại cửa sổ trước đây khi chuyển bằng phím nóng"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Chuyển vùng làm việc theo vẻ ngoài thực sự của màn hình"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:401
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr ""
 "Nhảy tiếp vùng làm việc khi đã đạt đến vùng làm việc cuối cùng hoặc đầu tiên"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:406
-msgid "Smart placement"
-msgstr "Đặt thông minh"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Kích thước nhỏ nhất của cửa sổ để đặt thông minh"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/wmtweaks_plugin.c:494 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "Nhỏ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Large"
 msgstr "Lớn"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:420
-msgid "Tweaks"
-msgstr "Tinh chỉnh"
+#: ../mcs-plugin/wmtweaks_plugin.c:499
+#, fuzzy
+msgid "Placement"
+msgstr "Đặt thông minh"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:436
-msgid "Compositing"
-msgstr "Soạn"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:445
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Show shadows under regular windows"
 msgstr "Hiện bóng ở dưới các cửa sổ thường"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:451
+#: ../mcs-plugin/wmtweaks_plugin.c:523
 msgid "Show shadows under popup windows"
 msgstr "Hiện bóng ở dưới các cửa sổ bật ra"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 #, fuzzy
 msgid "Opacity of window decorations"
 msgstr "Độ mờ của cửa sổ khi thay đổi kích thước"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
-#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Transparent"
 msgstr "Trong suốt"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:457 ../mcs-plugin/wmtweaks_plugin.c:463
-#: ../mcs-plugin/wmtweaks_plugin.c:469 ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opaque"
 msgstr "Mờ đục"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:463
+#: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Opacity of windows during move"
 msgstr "Độ mờ của cửa sổ khi di chuyển"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:469
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Opacity of windows during resize"
 msgstr "Độ mờ của cửa sổ khi thay đổi kích thước"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:475
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opacity of popup windows"
 msgstr "Độ mờ của cửa sổ tự hiện lên (popup)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:480
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 msgid "Compositor"
 msgstr "Trình soạn"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:615 ../mcs-plugin/xfwm4_plugin.c:2243
+#: ../mcs-plugin/wmtweaks_plugin.c:704 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -720,27 +718,27 @@ msgstr "_Thoát"
 msgid "Restart"
 msgstr "Khởi động lại"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Vùng làm việc %i (%s)"
 
-#: ../src/menu.c:181
+#: ../src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "Vùng làm việc %i"
 
-#: ../src/menu.c:416
+#: ../src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu không bắt được con trỏ\n"
 
-#: ../src/settings.c:831
+#: ../src/settings.c:853
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Không thể định vị màu %s\n"
 
-#: ../src/settings.c:837
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Không thể phân tích màu %s\n"
@@ -778,6 +776,15 @@ msgstr "Biên vùng làm việc"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Biên vùng làm việc"
+
+#~ msgid "Window cycling"
+#~ msgstr "Quay vòng cửa sổ"
+
+#~ msgid "Tweaks"
+#~ msgstr "Tinh chỉnh"
+
+#~ msgid "Compositing"
+#~ msgstr "Soạn"
 
 #~ msgid "Cycle windows"
 #~ msgstr "Xoay vòng cửa sổ"
