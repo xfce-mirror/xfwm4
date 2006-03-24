@@ -534,7 +534,7 @@ void
 setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const char *val)
 {
     g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
-    TRACE ("entering set_utf8_string_hint");
+    TRACE ("entering setUTF8StringHint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], 
                      display_info->atoms[UTF8_STRING], 8, PropModeReplace,
@@ -621,7 +621,7 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
         retval = text_property_to_utf8 (display_info, &text);
         if (retval)
         {
-            xfce_utf8_remove_controls((gchar *) retval, MAX_TITLE_LENGTH, NULL);
+            xfce_utf8_remove_controls((gchar *) retval, MAX_STR_LENGTH, NULL);
         }
         if ((text.value) && (text.nitems > 0))
         {
@@ -636,7 +636,6 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
 
     return retval;
 }
-
 
 static gboolean
 getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
@@ -655,13 +654,13 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, char **str_
                              0, G_MAXLONG, FALSE, display_info->atoms[UTF8_STRING], &type, 
                              &format, &n_items, &bytes_after, (unsigned char **) &str) != Success) || (type == None))
     {
-        TRACE ("no utf8_string value provided");
+        TRACE ("no UTF8_STRING property found");
         return FALSE;
     }
 
-    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], MAX_TITLE_LENGTH, format, type))
+    if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], -1, format, type))
     {
-        TRACE ("utf8_string value invalid");
+        TRACE ("UTF8_STRING value invalid");
         if (str)
         {
             XFree (str);
@@ -692,12 +691,12 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, i
     }
 
     /* gmalloc the returned string */
-    *str_p = internal_utf8_strndup (xstr, MAX_TITLE_LENGTH);
+    *str_p = internal_utf8_strndup (xstr, MAX_STR_LENGTH);
     XFree (xstr);
     
     if (!g_utf8_validate (*str_p, -1, NULL))
     {
-        TRACE ("getUTF8String() returns invalid UTF-8 characters");
+        TRACE ("getUTF8String() returned invalid UTF-8 characters");
         g_free (*str_p);
         str_p = NULL;
         length = 0;
@@ -754,11 +753,11 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str
     {
         if (g_utf8_validate (ptr, -1, NULL))
         {
-            retval[i] = internal_utf8_strndup (ptr, MAX_TITLE_LENGTH);
+            retval[i] = internal_utf8_strndup (ptr, MAX_STR_LENGTH);
         }
         else
         {
-            TRACE ("getUTF8StringList() returns invalid UTF-8 characters in string #%i.", i);
+            TRACE ("getUTF8StringList() returned invalid UTF-8 characters in string #%i.", i);
             retval[i] = g_strdup ("");
         }
         ptr += strlen (ptr) + 1;
@@ -783,14 +782,14 @@ getWindowName (DisplayInfo *display_info, Window w, char **name)
 
     if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len))
     {
-        *name = internal_utf8_strndup (str, MAX_TITLE_LENGTH);
+        *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
         XFree (str);
         return;
     }
     str = get_text_property (display_info, w, XA_WM_NAME);
     if (str)
     {
-        *name = internal_utf8_strndup (str, MAX_TITLE_LENGTH);
+        *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
         XFree (str);
     }
     else
