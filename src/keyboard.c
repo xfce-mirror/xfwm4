@@ -38,6 +38,63 @@ unsigned int ScrollLockMask;
 unsigned int SuperMask;
 unsigned int HyperMask;
 
+int
+getModifierMap (char *str)
+{
+    gchar *tmp;
+    int map = 0;
+
+    tmp = g_ascii_strdown ((gchar *) str, -1);
+
+    if (strstr (tmp, "shift"))
+    {
+        map |= ShiftMask;
+    }
+    if (strstr (tmp, "control"))
+    {
+        map |= ControlMask;
+    }
+    if (strstr (tmp, "alt"))
+    {
+        map |= AltMask;
+    }
+    if (strstr (tmp, "meta"))
+    {
+        map |= MetaMask;
+    }
+    if (strstr (tmp, "super"))
+    {
+        map |= SuperMask;
+    }
+    if (strstr (tmp, "hyper"))
+    {
+        map |= HyperMask;
+    }
+    if (strstr (tmp, "mod1"))
+    {
+        map |= Mod1Mask;
+    }
+    if (strstr (tmp, "mod2"))
+    {
+        map |= Mod2Mask;
+    }
+    if (strstr (tmp, "mod3"))
+    {
+        map |= Mod3Mask;
+    }
+    if (strstr (tmp, "mod4"))
+    {
+        map |= Mod4Mask;
+    }
+    if (strstr (tmp, "mod5"))
+    {
+        map |= Mod5Mask;
+    }
+    g_free (tmp);
+
+    return map;
+}
+
 void
 parseKeyString (Display * dpy, MyKey * key, char *str)
 {
@@ -62,56 +119,8 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
     if (k)
     {
         /* There is a modifier */
-        gchar *tmp;
-
-        tmp = g_ascii_strdown ((gchar *) str, -1);
-
         key->keycode = XKeysymToKeycode (dpy, XStringToKeysym (++k));
-        if (strstr (tmp, "shift"))
-        {
-            key->modifier = key->modifier | ShiftMask;
-        }
-        if (strstr (tmp, "control"))
-        {
-            key->modifier = key->modifier | ControlMask;
-        }
-        if (strstr (tmp, "alt"))
-        {
-            key->modifier = key->modifier | AltMask;
-        }
-        if (strstr (tmp, "meta"))
-        {
-            key->modifier = key->modifier | MetaMask;
-        }
-        if (strstr (tmp, "super"))
-        {
-            key->modifier = key->modifier | SuperMask;
-        }
-        if (strstr (tmp, "hyper"))
-        {
-            key->modifier = key->modifier | HyperMask;
-        }
-        if (strstr (tmp, "mod1"))
-        {
-            key->modifier = key->modifier | Mod1Mask;
-        }
-        if (strstr (tmp, "mod2"))
-        {
-            key->modifier = key->modifier | Mod2Mask;
-        }
-        if (strstr (tmp, "mod3"))
-        {
-            key->modifier = key->modifier | Mod3Mask;
-        }
-        if (strstr (tmp, "mod4"))
-        {
-            key->modifier = key->modifier | Mod4Mask;
-        }
-        if (strstr (tmp, "mod5"))
-        {
-            key->modifier = key->modifier | Mod5Mask;
-        }
-        g_free (tmp);
+        key->modifier = getModifierMap (str);
     }
     else
     {

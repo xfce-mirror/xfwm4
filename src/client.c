@@ -361,11 +361,17 @@ clientUngrabKeys (Client * c)
 void
 clientGrabButtons (Client * c)
 {
+    ScreenInfo *screen_info = NULL;
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    grabButton(clientGetXDisplay (c), AnyButton, AltMask, c->window);
+    screen_info = c->screen_info;
+    if (screen_info->params->easy_click)
+    {
+	grabButton(clientGetXDisplay (c), AnyButton, screen_info->params->easy_click, c->window);
+    }
 }
 
 void

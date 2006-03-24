@@ -10,7 +10,7 @@
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
  
-        You should have received a copy of the GNU General Public License
+        You should have received a *valuecopy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
@@ -58,7 +58,6 @@ static gboolean is_running             = FALSE;
 static gboolean cycle_minimum          = TRUE;
 static gboolean cycle_hidden           = TRUE;
 static gboolean cycle_workspaces       = FALSE;
-static gboolean easy_click             = TRUE;
 static gboolean focus_hint             = TRUE;
 static gboolean show_frame_shadow      = TRUE;
 static gboolean show_popup_shadow      = TRUE;
@@ -77,7 +76,7 @@ static int resize_opacity = 100;
 static int popup_opacity = 100;
 static int frame_opacity = 100;
 
-
+static char *easy_click = "Alt";
 /* 
     "Xfwm/CycleHidden"
     "Xfwm/CycleMinimum"
@@ -164,6 +163,25 @@ cb_gint_changed (GtkWidget * widget, gpointer user_data)
     write_options (mcs_plugin);
 }
 
+static void
+cb_menuitem_changed (GtkWidget * widget, gpointer user_data)
+{
+    gchar **value = (gchar **) user_data;
+    gchar *setting_name = NULL;
+    McsPlugin *mcs_plugin = NULL;
+
+    *value = (gchar *) g_object_get_data (G_OBJECT (widget), "setting-value");
+    setting_name = (gchar *) g_object_get_data (G_OBJECT (widget), "setting-name");
+    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT (widget), "mcs-plugin");
+
+    g_assert (setting_name);
+    g_assert (mcs_plugin);
+
+    mcs_manager_set_string (mcs_plugin->manager, setting_name, CHANNEL, *value);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    write_options (mcs_plugin);
+}
+
 static GtkWidget *
 create_gboolean_button (McsPlugin * mcs_plugin, gchar *label, gchar *setting_name, gboolean *value)
 {
@@ -206,7 +224,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar *label, gchar *min_label, gchar 
     label_widget = xfce_create_small_label (max_label);
     gtk_table_attach (GTK_TABLE (table), label_widget, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (label_widget), 0, 0.5);
+    gtk_misc_set_alignment (GTK_MISC (label_widget), 0.0, 0.5);
     gtk_widget_show (label_widget);
 
     adjustment = gtk_adjustment_new ((gdouble) *value, (gdouble) min, (gdouble) max, 
@@ -225,6 +243,51 @@ create_int_range (McsPlugin * mcs_plugin, gchar *label, gchar *min_label, gchar 
     g_signal_connect (G_OBJECT (scale), "value_changed", G_CALLBACK (cb_gint_changed), value);
 
     return table;
+}
+
+static GtkWidget *
+create_option_menu (McsPlugin * mcs_plugin, gchar *values[], gchar *label, gchar *setting_name, gchar **value)
+{
+    GtkWidget *hbox;
+    GtkWidget *label_widget;
+    GtkWidget *menu;
+    GtkWidget *omenu;
+    GtkWidget *item;
+    guint n;
+
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_widget_show (hbox);
+
+    label_widget = gtk_label_new (label);
+    gtk_box_pack_start (GTK_BOX (hbox), label_widget, FALSE, FALSE, 2);
+    gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment (GTK_MISC (label_widget), 0.0, 0.5);
+    gtk_widget_show (label_widget);
+
+    omenu = gtk_option_menu_new ();
+    gtk_box_pack_start (GTK_BOX (hbox), omenu, FALSE, TRUE, 2);
+    gtk_widget_show (omenu);
+
+    menu = gtk_menu_new ();
+    gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
+    gtk_widget_show (menu);
+
+    for (n = 0; n < 12; n++)
+    {
+        item = gtk_menu_item_new_with_mnemonic (values[n]);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+        gtk_widget_show (item);
+
+        if (!g_ascii_strcasecmp (*value, values[n]))
+            gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), n);
+
+        g_object_set_data (G_OBJECT (item), "setting-name", setting_name);
+        g_object_set_data (G_OBJECT (item), "mcs-plugin", mcs_plugin);
+        g_object_set_data (G_OBJECT (item), "setting-value", values[n]);
+        g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (cb_menuitem_changed), value);
+    }
+
+    return (hbox);
 }
 
 static void
@@ -263,9 +326,24 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *vbox;
     GtkWidget *vbox1;
     GtkWidget *check_button;
+    GtkWidget *option_menu;
     GtkWidget *range;
     GtkWidget *action_area;
     GtkWidget *button;
+    guint nth = 0;
+    
+    gchar *modifier_list[] = { "Alt", 
+                               "Control", 
+                               "Hyper", 
+                               "Meta", 
+                               "Shift", 
+                               "Super", 
+                               "Mod1", 
+                               "Mod2", 
+                               "Mod3", 
+                               "Mod4", 
+                               "Mod5",
+                               N_("None") };
 
     dialog = g_new (Itf, 1);
 
@@ -287,139 +365,140 @@ create_dialog (McsPlugin * mcs_plugin)
     notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER + 1);
     gtk_widget_show (notebook);
-    gtk_box_pack_start (GTK_BOX (dialog_vbox), notebook, TRUE, TRUE, 0);
-
-    vbox1 = gtk_vbox_new (FALSE, BORDER);
-    gtk_widget_show (vbox1);
-    gtk_container_add (GTK_CONTAINER (notebook), vbox1);
-
-    frame = xfce_framebox_new (_("Window cycling"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (dialog_vbox), notebook, FALSE, TRUE, BORDER);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_container_add (GTK_CONTAINER (notebook), vbox);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button = 
         create_gboolean_button (mcs_plugin, _("Include windows that have \"skip pager\" or\n\"skip taskbar\" properties set"), 
                                 "Xfwm/CycleMinimum", &cycle_minimum);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
 
     check_button = 
         create_gboolean_button (mcs_plugin, _("Include hidden (i.e. iconified) windows"),
                                 "Xfwm/CycleHidden", &cycle_hidden);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button =
         create_gboolean_button (mcs_plugin, _("Cycle through windows from all workspaces"),
                                 "Xfwm/CycleWorkspaces", &cycle_workspaces);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
-    
-    frame = xfce_framebox_new (_("Focus"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, FALSE, 0);
+
+    label = gtk_label_new (_("Cycling"));
+    gtk_widget_show (label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_container_add (GTK_CONTAINER (notebook), vbox);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button =
         create_gboolean_button (mcs_plugin, _("Activate focus stealing prevention"),
                                 "Xfwm/PreventFocusStealing", &prevent_focus_stealing);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button =
         create_gboolean_button (mcs_plugin, _("Honor the standard ICCCM focus hint"),
                                 "Xfwm/FocusHint", &focus_hint);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
 
-    frame = xfce_framebox_new (_("Accessibility"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, FALSE, 0);
+    label = gtk_label_new (_("Focus"));
+    gtk_widget_show (label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_container_add (GTK_CONTAINER (notebook), vbox);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
-    check_button = 
-        create_gboolean_button (mcs_plugin, _("Use the ALT key to grab and move windows"),
+    option_menu = 
+        create_option_menu (mcs_plugin, modifier_list, _("Key used to grab and move windows"),
                                 "Xfwm/EasyClick", &easy_click);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
-    gtk_widget_show (check_button);
+    gtk_box_pack_start (GTK_BOX (vbox), option_menu, FALSE, TRUE, 0);
+    gtk_widget_show (option_menu);
     
     check_button = 
         create_gboolean_button (mcs_plugin, _("Raise windows when any mouse button is pressed"),
                                 "Xfwm/RaiseWithAnyButton", &raise_with_any_button);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
         create_gboolean_button (mcs_plugin, _("Restore original size of maximized windows when moving"),
                                 "Xfwm/RestoreOnMove", &restore_on_move);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
         create_gboolean_button (mcs_plugin, _("Use edge resistance instead of windows snapping"),
                                 "Xfwm/SnapResist", &snap_resist);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
-    frame = xfce_framebox_new (_("Workspaces"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, FALSE, 0);
+    label = gtk_label_new (_("Accessibility"));
+    gtk_widget_show (label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_container_add (GTK_CONTAINER (notebook), vbox);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     check_button = 
         create_gboolean_button (mcs_plugin, _("Switch workspaces using the mouse wheel over the desktop"),
                                 "Xfwm/ScrollWorkspaces", &scroll_workspaces);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
         create_gboolean_button (mcs_plugin, _("Remember and recall previous workspace when switching\nvia keyboard shortcuts"),
                                 "Xfwm/ToggleWorkspaces", &toggle_workspaces);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
         create_gboolean_button (mcs_plugin, _("Wrap workspaces depending on the actual desktop layout"),
                                 "Xfwm/WrapLayout", &wrap_layout);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
     check_button = 
         create_gboolean_button (mcs_plugin, _("Wrap workspaces when the first or last workspace is reached"),
                                 "Xfwm/WrapCycle", &wrap_cycle);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
     
-    frame = xfce_framebox_new (_("Smart placement"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, FALSE, 0);
+    label = gtk_label_new (_("Workspaces"));
+    gtk_widget_show (label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_container_add (GTK_CONTAINER (notebook), vbox);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     range = 
        create_int_range (mcs_plugin, _("Minimum size of windows to trigger smart placement"), _("Small"), _("Large"), 
                          "Xfwm/PlacementRatio", 0, 100, 5, &placement_ratio);
-    gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
     gtk_widget_show (range);
 
-    label = gtk_label_new (_("Tweaks"));
+    label = gtk_label_new (_("Placement"));
     gtk_widget_show (label);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 0), label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     if (G_UNLIKELY (!composite))
@@ -429,57 +508,50 @@ create_dialog (McsPlugin * mcs_plugin)
 
     if (XGetSelectionOwner (GDK_DISPLAY (), composite))
     {
-        vbox1 = gtk_vbox_new (FALSE, BORDER);
-        gtk_widget_show (vbox1);
-        gtk_container_add (GTK_CONTAINER (notebook), vbox1);
-
-        frame = xfce_framebox_new (_("Compositing"), TRUE);
-        gtk_widget_show (frame);
-        gtk_box_pack_start (GTK_BOX (vbox1), frame, FALSE, FALSE, 0);
-
         vbox = gtk_vbox_new (FALSE, BORDER);
+        gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+        gtk_container_add (GTK_CONTAINER (notebook), vbox);
         gtk_widget_show (vbox);
-        xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
         check_button = 
             create_gboolean_button (mcs_plugin, _("Show shadows under regular windows"),
                                     "Xfwm/ShowFrameShadow", &show_frame_shadow);
-        gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
         gtk_widget_show (check_button);
 
         check_button = 
             create_gboolean_button (mcs_plugin, _("Show shadows under popup windows"),
                                     "Xfwm/ShowPopupShadow", &show_popup_shadow);
-        gtk_box_pack_start (GTK_BOX (vbox), check_button, TRUE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
         gtk_widget_show (check_button);
 
         range = 
            create_int_range (mcs_plugin, _("Opacity of window decorations"), _("Transparent"), _("Opaque"), 
                              "Xfwm/FrameOpacity", 50, 100, 5, &frame_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range = 
            create_int_range (mcs_plugin, _("Opacity of windows during move"), _("Transparent"), _("Opaque"), 
                              "Xfwm/MoveOpacity", 10, 100, 5, &move_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range = 
            create_int_range (mcs_plugin, _("Opacity of windows during resize"), _("Transparent"), _("Opaque"), 
                              "Xfwm/ResizeOpacity", 10, 100, 5, &resize_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range = 
            create_int_range (mcs_plugin, _("Opacity of popup windows"), _("Transparent"), _("Opaque"), 
                              "Xfwm/PopupOpacity", 10, 100, 5, &popup_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, TRUE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         label = gtk_label_new (_("Compositor"));
         gtk_widget_show (label);
-        gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 1), label);
+        gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
         gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     }
 
@@ -556,6 +628,22 @@ init_int_setting (McsPlugin * mcs_plugin, gchar *setting_name, int *value)
 }
 
 static void
+init_string_setting (McsPlugin * mcs_plugin, gchar *setting_name, char **value)
+{
+    McsSetting *setting;
+
+    setting = mcs_manager_setting_lookup (mcs_plugin->manager, setting_name, CHANNEL);
+    if ((setting) && (setting->type == MCS_TYPE_STRING))
+    {
+        *value = setting->data.v_string;
+    }
+    else
+    {
+        mcs_manager_set_string (mcs_plugin->manager, setting_name, CHANNEL, *value);
+    }
+}
+
+static void
 xfwm4_create_channel (McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
@@ -581,7 +669,6 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleMinimum", &cycle_minimum);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleHidden", &cycle_hidden);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleWorkspaces", &cycle_workspaces);
-    init_gboolean_setting (mcs_plugin, "Xfwm/EasyClick", &easy_click);
     init_gboolean_setting (mcs_plugin, "Xfwm/FocusHint", &focus_hint);
     init_gboolean_setting (mcs_plugin, "Xfwm/ShowFrameShadow", &show_frame_shadow);
     init_gboolean_setting (mcs_plugin, "Xfwm/ShowPopupShadow", &show_popup_shadow);
@@ -600,6 +687,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_int_setting (mcs_plugin, "Xfwm/ResizeOpacity", &resize_opacity);
     init_int_setting (mcs_plugin, "Xfwm/PopupOpacity", &popup_opacity);
 
+    init_string_setting (mcs_plugin, "Xfwm/EasyClick", &easy_click);
 }
 
 static void

@@ -146,6 +146,7 @@ struct _XfwmParams
     int button_offset;
     int button_spacing;
     int double_click_action;
+    int easy_click;
     int frame_opacity;
     int move_opacity;
     int placement_ratio;
@@ -168,7 +169,6 @@ struct _XfwmParams
     gboolean cycle_hidden;
     gboolean cycle_minimum;
     gboolean cycle_workspaces;
-    gboolean easy_click;
     gboolean focus_hint;
     gboolean focus_new;
     gboolean full_width_title;

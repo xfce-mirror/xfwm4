@@ -141,6 +141,22 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
 }
 
 static void
+set_easy_click (ScreenInfo *screen_info, char *modifier)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (modifier != NULL);
+
+    if (!g_ascii_strcasecmp (modifier, "true"))
+    {
+        screen_info->params->easy_click = AltMask;
+    }
+    else
+    {
+        screen_info->params->easy_click = getModifierMap (modifier);
+    }
+}
+
+static void
 notify_cb (const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
     ScreenInfo *screen_info = (ScreenInfo *) data;
@@ -354,10 +370,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->cycle_workspaces = setting->data.v_int;
                     }
-                    else if (!strcmp (name, "Xfwm/EasyClick"))
-                    {
-                        screen_info->params->easy_click = setting->data.v_int;
-                    }
                     else if (!strcmp (name, "Xfwm/FocusHint"))
                     {
                         screen_info->params->focus_hint = setting->data.v_int;
@@ -427,6 +439,13 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/WrapCycle"))
                     {
                         screen_info->params->wrap_cycle = setting->data.v_int;
+                    }
+                }
+                else if (setting->type == MCS_TYPE_STRING)
+                {
+                    if (!strcmp (name, "Xfwm/EasyClick"))
+                    {
+                        reloadScreenSettings (screen_info, UPDATE_BUTTON_GRABS);
                     }
                 }
                 break;
@@ -698,7 +717,10 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/EasyClick", CHANNEL5,
                 &setting) == MCS_SUCCESS)
         {
-            setBooleanValueFromInt ("easy_click", setting->data.v_int, rc);
+            if (setting->type == MCS_TYPE_STRING)
+            {
+                setValue ("easy_click", setting->data.v_string, rc);
+            }
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusHint", CHANNEL5,
@@ -1336,8 +1358,6 @@ loadSettings (ScreenInfo *screen_info)
 
     screen_info->params->click_to_focus =
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
-    screen_info->params->easy_click =
-        !g_ascii_strcasecmp ("true", getValue ("easy_click", rc));
     screen_info->params->cycle_minimum =
         !g_ascii_strcasecmp ("true", getValue ("cycle_minimum", rc));
     screen_info->params->cycle_hidden =
@@ -1387,6 +1407,8 @@ loadSettings (ScreenInfo *screen_info)
     set_settings_margin (screen_info, RIGHT,  TOINT (getValue ("margin_right", rc)));
     set_settings_margin (screen_info, BOTTOM, TOINT (getValue ("margin_bottom", rc)));
     set_settings_margin (screen_info, TOP,    TOINT (getValue ("margin_top", rc)));
+
+    set_easy_click (screen_info, getValue ("easy_click", rc));
 
     if (!g_ascii_strcasecmp ("shade", getValue ("double_click_action", rc)))
     {

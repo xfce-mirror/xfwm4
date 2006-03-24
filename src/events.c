@@ -769,15 +769,15 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         screen_info = c->screen_info;
         c->user_time = myDisplayGetCurrentTime (display_info);
 
-        if ((ev->button == Button1) && (state == AltMask) && (screen_info->params->easy_click))
+        if ((ev->button == Button1) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
         {
             button1Action (c, ev);
         }
-        else if ((ev->button == Button2) && (state == AltMask) && (screen_info->params->easy_click))
+        else if ((ev->button == Button2) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
         {
             clientLower (c, None);
         }
-        else if ((ev->button == Button3) && (state == AltMask) && (screen_info->params->easy_click))
+        else if ((ev->button == Button3) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
         {
             int part, x_corner_pixels, y_corner_pixels, x_distance, y_distance;
 
