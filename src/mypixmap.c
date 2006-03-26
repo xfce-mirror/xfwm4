@@ -49,7 +49,7 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
     if (pm->pict != None)
     {
         XRenderFreePicture (myScreenGetXDisplay(pm->screen_info), pm->pict);
-        pm->pict == None;
+        pm->pict = None;
     }
 
     if ((pm->pixmap) && (pm->pict_format))

@@ -65,12 +65,12 @@ struct _TitleButton
 };
 
 static TitleButton title_button[] = {
-    { "O", N_("Menu"), "gtk-index" },
-    { "T", N_("Stick"), "gtk-add" },
-    { "S", N_("Shade"), "gtk-goto-top" },
-    { "H", N_("Hide"), "gtk-undo" },
-    { "M", N_("Maximize"), "gtk-zoom-100" },
-    { "C", N_("Close"), "gtk-close" }
+    {"O", N_("Menu"), "gtk-index"},
+    {"T", N_("Stick"), "gtk-add"},
+    {"S", N_("Shade"), "gtk-goto-top"},
+    {"H", N_("Hide"), "gtk-undo"},
+    {"M", N_("Maximize"), "gtk-zoom-100"},
+    {"C", N_("Close"), "gtk-close"}
 };
 
 
@@ -125,7 +125,7 @@ sensitive_cb (GtkWidget * widget, gpointer user_data)
 }
 
 static void
-delete_motion_indicator  (GtkWidget *widget)
+delete_motion_indicator (GtkWidget * widget)
 {
     GdkWindow *indicator = NULL;
 
@@ -138,7 +138,7 @@ delete_motion_indicator  (GtkWidget *widget)
 }
 
 static GdkWindow *
-create_motion_indicator (GtkWidget *widget, gint x, gint y, gint width, gint height)
+create_motion_indicator (GtkWidget * widget, gint x, gint y, gint width, gint height)
 {
     GdkWindow *win;
     GdkWindowAttr attributes;
@@ -187,28 +187,30 @@ create_motion_indicator (GtkWidget *widget, gint x, gint y, gint width, gint hei
     }
     g_object_unref (gc);
     gdk_window_shape_combine_mask (win, mask, 0, 0);
-    if (mask) g_object_unref (mask);
+    if (mask)
+        g_object_unref (mask);
 
     gdk_window_move (win, x, y);
     gdk_window_show (win);
     gdk_window_raise (win);
-    
+
     return win;
 }
 
 GdkPixbuf *
-create_icon_from_widget (GtkWidget *widget)
+create_icon_from_widget (GtkWidget * widget)
 {
     GdkPixbuf *dest, *src;
 
-    dest = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 
-                             widget->allocation.width, 
-                             widget->allocation.height);
+    dest =
+        gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, widget->allocation.width,
+        widget->allocation.height);
 
-    src = gdk_pixbuf_get_from_drawable (NULL, GDK_DRAWABLE (widget->window), NULL, 
-                                        widget->allocation.x, widget->allocation.y, 0, 0, 
-                                        widget->allocation.width, widget->allocation.height);
-    gdk_pixbuf_copy_area (src, 0, 0, widget->allocation.width, widget->allocation.height, dest, 0, 0);
+    src = gdk_pixbuf_get_from_drawable (NULL, GDK_DRAWABLE (widget->window), NULL,
+        widget->allocation.x, widget->allocation.y, 0, 0, widget->allocation.width,
+        widget->allocation.height);
+    gdk_pixbuf_copy_area (src, 0, 0, widget->allocation.width, widget->allocation.height, dest, 0,
+        0);
 
     g_object_unref (G_OBJECT (src));
 
@@ -217,10 +219,10 @@ create_icon_from_widget (GtkWidget *widget)
 
 
 static void
-button_drag_begin (GtkWidget *widget, GdkDragContext *context, gpointer data)
+button_drag_begin (GtkWidget * widget, GdkDragContext * context, gpointer data)
 {
     GdkPixbuf *pixbuf;
-    
+
     pixbuf = create_icon_from_widget (widget);
     gtk_drag_source_set_icon_pixbuf (widget, pixbuf);
     g_object_unref (G_OBJECT (pixbuf));
@@ -228,31 +230,32 @@ button_drag_begin (GtkWidget *widget, GdkDragContext *context, gpointer data)
 }
 
 static void
-button_drag_end (GtkWidget *widget, GdkDragContext *context, gpointer data)
+button_drag_end (GtkWidget * widget, GdkDragContext * context, gpointer data)
 {
-    gtk_widget_show (GTK_WIDGET(widget));
+    gtk_widget_show (GTK_WIDGET (widget));
 }
 
 static gboolean
-signal_blocker (GtkWidget *widget, gpointer data)
+signal_blocker (GtkWidget * widget, gpointer data)
 {
     return TRUE;
 }
 
 static gboolean
-layout_drag_motion (GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time, gpointer user_data)
+layout_drag_motion (GtkWidget * widget, GdkDragContext * context, gint x, gint y, guint time,
+    gpointer user_data)
 {
     GtkWidget *child;
     GList *children, *item;
     gint posx, posy, delta;
     gint ix, iy, iwidth, iheight;
     GdkWindow *indicator = NULL;
-    
+
     g_return_val_if_fail (GTK_IS_WIDGET (user_data), FALSE);
-    
+
     children = gtk_container_get_children (GTK_CONTAINER (user_data));
     item = children;
-    child = GTK_WIDGET(item->data);
+    child = GTK_WIDGET (item->data);
     delta = widget->allocation.x;
     posx = child->allocation.x;
     posy = child->allocation.y;
@@ -260,23 +263,23 @@ layout_drag_motion (GtkWidget *widget, GdkDragContext *context, gint x, gint y, 
     while (item)
     {
         gint total_x;
-        
-        child = GTK_WIDGET(item->data);
+
+        child = GTK_WIDGET (item->data);
         if (GTK_WIDGET_VISIBLE (child))
         {
-            total_x = child->allocation.x + (child->allocation.width / 2) - delta;   
+            total_x = child->allocation.x + (child->allocation.width / 2) - delta;
             posx = child->allocation.x;
             if (x < total_x)
             {
                 break;
-            } 
+            }
 
             posx = child->allocation.x + child->allocation.width;
         }
         item = g_list_next (item);
     }
     g_list_free (children);
-    
+
     ix = posx - (INDICATOR_SIZE / 2);
     iy = posy - (INDICATOR_SIZE / 2);
     iwidth = INDICATOR_SIZE;
@@ -291,52 +294,52 @@ layout_drag_motion (GtkWidget *widget, GdkDragContext *context, gint x, gint y, 
     {
         gdk_window_move (indicator, ix, iy);
     }
-    
-    return FALSE;
-}       
 
-static gboolean 
-layout_drag_leave (GtkWidget *widget, GdkDragContext *context, guint time, gpointer user_data)
+    return FALSE;
+}
+
+static gboolean
+layout_drag_leave (GtkWidget * widget, GdkDragContext * context, guint time, gpointer user_data)
 {
     g_return_val_if_fail (GTK_IS_WIDGET (user_data), FALSE);
 
     delete_motion_indicator (GTK_WIDGET (user_data));
-    
+
     return FALSE;
 }
 
 static void
-data_get (GtkWidget * widget, GdkDragContext * drag_context,
-          GtkSelectionData * data, guint info, guint time, gpointer user_data)
+data_get (GtkWidget * widget, GdkDragContext * drag_context, GtkSelectionData * data, guint info,
+    guint time, gpointer user_data)
 {
-   gtk_selection_data_set (data, gdk_atom_intern ("_XFWM4_BUTTON", FALSE), 8,
-                           (const guchar *) "", 0);
+    gtk_selection_data_set (data, gdk_atom_intern ("_XFWM4_BUTTON", FALSE), 8, (const guchar *) "",
+        0);
 }
 
 static gchar *
-layout_get_semantic (GtkWidget *container)
+layout_get_semantic (GtkWidget * container)
 {
     GList *children, *item;
     gchar *sem;
     gint p = 0;
-    
+
     children = gtk_container_get_children (GTK_CONTAINER (container));
-    sem = g_new0(gchar, 8);
+    sem = g_new0 (gchar, 8);
     item = children;
     while (item)
     {
         GtkWidget *child;
         gchar *key;
 
-        child = GTK_WIDGET(item->data);
+        child = GTK_WIDGET (item->data);
         key = g_object_get_data (G_OBJECT (child), "key_char");
         if (key)
         {
             sem[p++] = *key;
             if (p >= 7)
             {
-               g_list_free (children);
-               return (sem);
+                g_list_free (children);
+                return (sem);
             }
         }
         item = g_list_next (item);
@@ -345,26 +348,26 @@ layout_get_semantic (GtkWidget *container)
     return (sem);
 }
 
-static void 
-layout_reorder_buttons (GtkWidget *container, GtkWidget *widget, gint drop_x)
+static void
+layout_reorder_buttons (GtkWidget * container, GtkWidget * widget, gint drop_x)
 {
     GList *children, *item;
     gint position, delta;
-    
+
     children = gtk_container_get_children (GTK_CONTAINER (container));
     item = children;
     position = 0;
     delta = container->allocation.x;
-        
+
     while (item)
     {
         GtkWidget *child;
         gint total_x;
-        
-        child = GTK_WIDGET(item->data);
+
+        child = GTK_WIDGET (item->data);
         if (GTK_WIDGET_VISIBLE (child))
         {
-            total_x = child->allocation.x + (child->allocation.width / 2) - delta;   
+            total_x = child->allocation.x + (child->allocation.width / 2) - delta;
             if (drop_x <= total_x)
             {
                 gtk_box_reorder_child (GTK_BOX (container), widget, position);
@@ -372,20 +375,20 @@ layout_reorder_buttons (GtkWidget *container, GtkWidget *widget, gint drop_x)
                 return;
             }
             position++;
-        } 
+        }
         item = g_list_next (item);
     }
     gtk_box_reorder_child (GTK_BOX (container), widget, position);
     g_list_free (children);
 }
 
-static void 
-layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
+static void
+layout_set_value (GtkWidget * layout, GtkWidget * hidden, gchar * semantic)
 {
     GList *children, *item;
     GtkWidget *title;
     gchar *sem;
-        
+
     /* 
      * 1) Block redraw on boxes 
      */
@@ -403,7 +406,7 @@ layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
         GtkWidget *child;
         gchar *key;
 
-        child = GTK_WIDGET(item->data);
+        child = GTK_WIDGET (item->data);
         key = g_object_get_data (G_OBJECT (child), "key_char");
         if (*key != '|')
         {
@@ -417,7 +420,7 @@ layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
             title = child;
         }
         item = g_list_next (item);
-    }    
+    }
     g_list_free (children);
 
     /* 
@@ -425,7 +428,7 @@ layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
      */
     children = gtk_container_get_children (GTK_CONTAINER (hidden));
     sem = semantic;
-    while (*sem)    
+    while (*sem)
     {
         item = children;
         if (*sem != '|')
@@ -435,7 +438,7 @@ layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
                 GtkWidget *child;
                 gchar *key;
 
-                child = GTK_WIDGET(item->data);
+                child = GTK_WIDGET (item->data);
                 key = g_object_get_data (G_OBJECT (child), "key_char");
                 if (*key == *sem)
                 {
@@ -467,17 +470,16 @@ layout_set_value (GtkWidget *layout, GtkWidget *hidden, gchar *semantic)
 }
 
 static void
-hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
-                     gint x, gint y, GtkSelectionData * data, guint info,
-                     guint time, gpointer user_data)
+hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context, gint x, gint y,
+    GtkSelectionData * data, guint info, guint time, gpointer user_data)
 {
     GtkWidget *source = gtk_drag_get_source_widget (drag_context);
     GtkWidget *parent = gtk_widget_get_parent (source);
     McsPlugin *mcs_plugin = NULL;
-    
+
     g_return_if_fail (GTK_IS_WIDGET (user_data));
 
-    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
+    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT (user_data), "mcs");
     gtk_widget_ref (source);
     gtk_container_remove (GTK_CONTAINER (parent), source);
     gtk_box_pack_start (GTK_BOX (user_data), source, FALSE, FALSE, 0);
@@ -492,7 +494,7 @@ hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
     {
         g_free (current_layout);
     }
-    
+
     current_layout = layout_get_semantic (parent);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/ButtonLayout", CHANNEL1, current_layout);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
@@ -500,9 +502,8 @@ hidden_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
 }
 
 static void
-layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
-                      gint x, gint y, GtkSelectionData * data, guint info,
-                      guint time, gpointer user_data)
+layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context, gint x, gint y,
+    GtkSelectionData * data, guint info, guint time, gpointer user_data)
 {
     GtkWidget *source = gtk_drag_get_source_widget (drag_context);
     GtkWidget *parent = gtk_widget_get_parent (source);
@@ -510,16 +511,16 @@ layout_data_receive (GtkWidget * widget, GdkDragContext * drag_context,
 
     g_return_if_fail (GTK_IS_WIDGET (user_data));
 
-    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT(user_data), "mcs");
+    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT (user_data), "mcs");
 
-    gtk_widget_set_app_paintable (GTK_WIDGET(user_data), FALSE);
+    gtk_widget_set_app_paintable (GTK_WIDGET (user_data), FALSE);
     gtk_widget_ref (source);
     gtk_container_remove (GTK_CONTAINER (parent), source);
     gtk_box_pack_start (GTK_BOX (user_data), source, FALSE, FALSE, 0);
     gtk_widget_unref (source);
-    delete_motion_indicator (GTK_WIDGET(user_data));
+    delete_motion_indicator (GTK_WIDGET (user_data));
     layout_reorder_buttons (user_data, source, x);
-    gtk_widget_set_app_paintable (GTK_WIDGET(user_data), TRUE);
+    gtk_widget_set_app_paintable (GTK_WIDGET (user_data), TRUE);
 
     if (current_layout)
     {
@@ -553,7 +554,7 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     tooltips = gtk_tooltips_new ();
 
     vbox = gtk_vbox_new (TRUE, 0);
- 
+
     label = gtk_label_new (_("Click and drag buttons to change the layout"));
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
@@ -588,12 +589,12 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     gtk_container_add (GTK_CONTAINER (hidden_frame), hidden_box);
     g_object_set_data (G_OBJECT (hidden_box), "mcs", user_data);
     gtk_widget_show (hidden_box);
-    
+
     for (i = 0; i < 6; i++)
     {
         GtkWidget *button;
         GtkWidget *image;
-        
+
         image = gtk_image_new_from_stock (title_button[i].stock_icon, GTK_ICON_SIZE_MENU);
         button = gtk_button_new ();
         gtk_container_add (GTK_CONTAINER (button), image);
@@ -614,17 +615,20 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     gtk_drag_dest_set (hidden_frame, GTK_DEST_DEFAULT_ALL, &entry, 1, GDK_ACTION_MOVE);
     gtk_drag_dest_set (layout_frame, GTK_DEST_DEFAULT_ALL, &entry, 1, GDK_ACTION_MOVE);
 
-    g_signal_connect (hidden_frame, "drag_data_received", G_CALLBACK (hidden_data_receive), hidden_box);
-    g_signal_connect (layout_frame, "drag_data_received", G_CALLBACK (layout_data_receive), layout_box);
+    g_signal_connect (hidden_frame, "drag_data_received", G_CALLBACK (hidden_data_receive),
+        hidden_box);
+    g_signal_connect (layout_frame, "drag_data_received", G_CALLBACK (layout_data_receive),
+        layout_box);
     g_signal_connect (layout_frame, "drag_motion", G_CALLBACK (layout_drag_motion), layout_box);
-    g_signal_connect (layout_frame, "drag_leave",  G_CALLBACK (layout_drag_leave), layout_box);
+    g_signal_connect (layout_frame, "drag_leave", G_CALLBACK (layout_drag_leave), layout_box);
 
     gtk_widget_show (vbox);
     return (vbox);
 }
 
 static GtkWidget *
-create_option_menu_box (MenuTmpl template[], guint size, gchar * display_label, gchar * value, GCallback handler, gpointer user_data)
+create_option_menu_box (MenuTmpl template[], guint size, gchar * display_label, gchar * value,
+    GCallback handler, gpointer user_data)
 {
     GtkWidget *hbox;
     GtkWidget *vbox;
@@ -746,7 +750,8 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
     gchar *tmp;
 
     tmp = g_build_filename (theme_dir, KEY_SUFFIX, KEYTHEMERC, NULL);
-    if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR) && parserc (tmp, &set_layout, &set_align, &set_font))
+    if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)
+        && parserc (tmp, &set_layout, &set_align, &set_font))
     {
         has_keybinding = TRUE;
         user_writable = (access (tmp, W_OK) == 0);
@@ -754,7 +759,8 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
     g_free (tmp);
 
     tmp = g_build_filename (theme_dir, SUFFIX, THEMERC, NULL);
-    if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR) && parserc (tmp, &set_layout, &set_align, &set_font))
+    if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)
+        && parserc (tmp, &set_layout, &set_align, &set_font))
     {
         has_decoration = TRUE;
     }
@@ -774,10 +780,9 @@ update_theme_dir (const gchar * theme_dir, GList * theme_list)
                 xfwm4_plugin_theme_info_free (info);
             }
             else if ((info->has_keybinding != has_keybinding)
-                     || (info->has_decoration != has_decoration) 
-                     || (info->set_layout != set_layout) 
-                     || (info->set_align != set_align) 
-                     || (info->set_font != set_font))
+                || (info->has_decoration != has_decoration)
+                || (info->set_layout != set_layout) || (info->set_align != set_align)
+                || (info->set_font != set_font))
             {
                 TRACE ("Updating %s", theme_name);
                 info->has_keybinding = has_keybinding;
@@ -846,14 +851,13 @@ theme_common_init (GList * theme_list)
     gchar **dirs, **d;
     GList *list = theme_list;
 
-    xfce_resource_push_path (XFCE_RESOURCE_THEMES,
-                             DATADIR G_DIR_SEPARATOR_S "themes");
+    xfce_resource_push_path (XFCE_RESOURCE_THEMES, DATADIR G_DIR_SEPARATOR_S "themes");
     dirs = xfce_resource_dirs (XFCE_RESOURCE_THEMES);
     xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
 
     for (d = dirs; *d != NULL; ++d)
         list = themes_common_list_add_dir (*d, list);
-    
+
     g_strfreev (dirs);
 
     return list;
@@ -870,8 +874,10 @@ dialog_update_from_theme (Itf * itf, const gchar * theme_name, GList * theme_lis
     info = xfwm4_plugin_find_theme_info_by_name (theme_name, theme_list);
     if (info)
     {
-        gtk_container_foreach (GTK_CONTAINER (itf->frame_layout), sensitive_cb, GINT_TO_POINTER ((gint) ! (info->set_layout)));
-        gtk_container_foreach (GTK_CONTAINER (itf->frame_align), sensitive_cb, GINT_TO_POINTER ((gint) ! (info->set_align)));
+        gtk_container_foreach (GTK_CONTAINER (itf->frame_layout), sensitive_cb,
+            GINT_TO_POINTER ((gint) ! (info->set_layout)));
+        gtk_container_foreach (GTK_CONTAINER (itf->frame_align), sensitive_cb,
+            GINT_TO_POINTER ((gint) ! (info->set_align)));
         gtk_widget_set_sensitive (itf->font_button, !(info->set_font));
         return TRUE;
     }
@@ -950,7 +956,8 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
 
     if (new_key_theme != NULL)
     {
-        if (xfwm4_plugin_current_key_theme && strcmp (xfwm4_plugin_current_key_theme, new_key_theme))
+        if (xfwm4_plugin_current_key_theme
+            && strcmp (xfwm4_plugin_current_key_theme, new_key_theme))
         {
             ThemeInfo *ti;
 
@@ -965,10 +972,11 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
                 {
                     g_free (xfwm4_plugin_current_key_theme);
                     xfwm4_plugin_current_key_theme = new_key_theme;
-                    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
+                    mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2,
+                        xfwm4_plugin_current_key_theme);
                     mcs_manager_notify (mcs_plugin->manager, CHANNEL2);
                     xfwm4_plugin_write_options (mcs_plugin);
-                    
+
                     loadtheme_in_treeview (ti, itf);
                     gtk_widget_set_sensitive (itf->treeview3, ti->user_writable);
                     gtk_widget_set_sensitive (itf->del_button, ti->user_writable);
@@ -980,21 +988,24 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
                     /* refresh list */
                     while (keybinding_theme_list)
                     {
-                        xfwm4_plugin_theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+                        xfwm4_plugin_theme_info_free ((ThemeInfo *) keybinding_theme_list->data);
                         keybinding_theme_list = g_list_next (keybinding_theme_list);
                     }
                     g_list_free (keybinding_theme_list);
-                    
+
                     g_free (xfwm4_plugin_current_key_theme);
                     xfwm4_plugin_current_key_theme = g_strdup ("Default");
                     keybinding_theme_list = NULL;
-                    keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                                         KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
+                    keybinding_theme_list =
+                        xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2,
+                        itf->scrolledwindow2, KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
                     gtk_widget_set_sensitive (itf->treeview3, FALSE);
-                    loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name ("Default", keybinding_theme_list), itf);
-                    
+                    loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name ("Default",
+                            keybinding_theme_list), itf);
+
                     /* tell it to the mcs manager */
-                    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
+                    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2,
+                        xfwm4_plugin_current_key_theme);
                     mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
                     xfwm4_plugin_write_options (itf->mcs_plugin);
                 }
@@ -1008,7 +1019,8 @@ keybinding_selection_changed (GtkTreeSelection * selection, gpointer data)
 }
 
 GList *
-xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow, ThemeType type, gchar * current_value)
+xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * swindow,
+    ThemeType type, gchar * current_value)
 {
     GList *list;
     GList *new_list = theme_list;
@@ -1027,7 +1039,8 @@ xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * 
     setting_model = TRUE;
     gtk_list_store_clear (GTK_LIST_STORE (model));
 
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow), GTK_POLICY_NEVER,
+        GTK_POLICY_NEVER);
     gtk_widget_set_size_request (swindow, -1, -1);
 
     for (list = new_list; list; list = list->next)
@@ -1035,7 +1048,8 @@ xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * 
         ThemeInfo *info = list->data;
         GtkTreeIter iter;
 
-        if (((type == DECORATION_THEMES) && !(info->has_decoration)) || ((type == KEYBINDING_THEMES) && !(info->has_keybinding)))
+        if (((type == DECORATION_THEMES) && !(info->has_decoration)) || ((type == KEYBINDING_THEMES)
+                && !(info->has_keybinding)))
             continue;
 
         gtk_list_store_prepend (GTK_LIST_STORE (model), &iter);
@@ -1052,7 +1066,8 @@ xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * 
             GtkRequisition rectangle;
             gtk_widget_size_request (GTK_WIDGET (tree_view), &rectangle);
             gtk_widget_set_size_request (swindow, -1, rectangle.height);
-            gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+            gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow), GTK_POLICY_NEVER,
+                GTK_POLICY_AUTOMATIC);
         }
         i++;
     }
@@ -1064,7 +1079,7 @@ xfwm4_plugin_read_themes (GList * theme_list, GtkWidget * treeview, GtkWidget * 
         iter_found = iter;
     }
 
-    path = gtk_tree_model_get_path(model, &iter_found);
+    path = gtk_tree_model_get_path (model, &iter_found);
     {
         gtk_tree_view_set_cursor (tree_view, path, NULL, FALSE);
         gtk_tree_view_scroll_to_cell (tree_view, path, NULL, TRUE, 0.5, 0.0);
@@ -1105,7 +1120,8 @@ cb_click_to_focus_changed (GtkWidget * dialog, gpointer user_data)
 
     click_to_focus = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->click_focus_radio));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1, click_to_focus ? 1 : 0);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1,
+        click_to_focus ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
 }
@@ -1157,7 +1173,8 @@ cb_raise_on_click_changed (GtkWidget * dialog, gpointer user_data)
 
     raise_on_click = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->click_raise_check));
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1, raise_on_click ? 1 : 0);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1,
+        raise_on_click ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
 }
@@ -1171,7 +1188,8 @@ cb_snap_to_border_changed (GtkWidget * dialog, gpointer user_data)
     snap_to_border = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->snap_to_border_check));
     gtk_widget_set_sensitive (itf->snap_width_scale, snap_to_windows || snap_to_border);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1, snap_to_border ? 1 : 0);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1,
+        snap_to_border ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
 }
@@ -1185,7 +1203,8 @@ cb_snap_to_windows_changed (GtkWidget * dialog, gpointer user_data)
     snap_to_windows = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->snap_to_windows_check));
     gtk_widget_set_sensitive (itf->snap_width_scale, snap_to_windows || snap_to_border);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1, snap_to_windows ? 1 : 0);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1,
+        snap_to_windows ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
 }
@@ -1223,7 +1242,8 @@ cb_wrap_workspaces_changed (GtkWidget * dialog, gpointer user_data)
     wrap_workspaces = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->wrap_workspaces_check));
     gtk_widget_set_sensitive (itf->wrap_resistance_scale, wrap_workspaces || wrap_windows);
 
-    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1, wrap_workspaces ? 1 : 0);
+    mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1,
+        wrap_workspaces ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
 }
@@ -1306,7 +1326,8 @@ static void
 font_selection_ok (GtkWidget * w, gpointer user_data)
 {
     Itf *itf = (Itf *) user_data;
-    gchar *new_font = gtk_font_selection_dialog_get_font_name (GTK_FONT_SELECTION_DIALOG (itf->font_selection));
+    gchar *new_font =
+        gtk_font_selection_dialog_get_font_name (GTK_FONT_SELECTION_DIALOG (itf->font_selection));
     McsPlugin *mcs_plugin = itf->mcs_plugin;
 
     if (new_font != NULL)
@@ -1336,12 +1357,15 @@ show_font_selection (GtkWidget * widget, gpointer user_data)
         itf->font_selection = gtk_font_selection_dialog_new (_("Font Selection Dialog"));
 
         gtk_window_set_position (GTK_WINDOW (itf->font_selection), GTK_WIN_POS_MOUSE);
-        gtk_font_selection_dialog_set_font_name (GTK_FONT_SELECTION_DIALOG (itf->font_selection), current_font);
-        g_signal_connect (itf->font_selection, "destroy", G_CALLBACK (gtk_widget_destroyed), &itf->font_selection);
+        gtk_font_selection_dialog_set_font_name (GTK_FONT_SELECTION_DIALOG (itf->font_selection),
+            current_font);
+        g_signal_connect (itf->font_selection, "destroy", G_CALLBACK (gtk_widget_destroyed),
+            &itf->font_selection);
 
-        g_signal_connect (GTK_FONT_SELECTION_DIALOG (itf->font_selection)->ok_button, "clicked", G_CALLBACK (font_selection_ok), user_data);
-        g_signal_connect_swapped (GTK_FONT_SELECTION_DIALOG
-            (itf->font_selection)->cancel_button, "clicked", G_CALLBACK (gtk_widget_destroy), itf->font_selection);
+        g_signal_connect (GTK_FONT_SELECTION_DIALOG (itf->font_selection)->ok_button, "clicked",
+            G_CALLBACK (font_selection_ok), user_data);
+        g_signal_connect_swapped (GTK_FONT_SELECTION_DIALOG (itf->font_selection)->cancel_button,
+            "clicked", G_CALLBACK (gtk_widget_destroy), itf->font_selection);
 
         gtk_widget_show (itf->font_selection);
     }
@@ -1407,8 +1431,7 @@ create_dialog (McsPlugin * mcs_plugin)
     dialog->dialog_vbox = GTK_DIALOG (dialog->xfwm4_dialog)->vbox;
     gtk_widget_show (dialog->dialog_vbox);
 
-    dialog->dialog_header = xfce_create_header (mcs_plugin->icon,
-                                                _("Window Manager Preferences"));
+    dialog->dialog_header = xfce_create_header (mcs_plugin->icon, _("Window Manager Preferences"));
     gtk_widget_show (dialog->dialog_header);
     gtk_box_pack_start (GTK_BOX (dialog->dialog_vbox), dialog->dialog_header, FALSE, TRUE, 0);
 
@@ -1426,7 +1449,8 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (dialog->scrolledwindow1);
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow1), BORDER);
     gtk_box_pack_start (GTK_BOX (hbox), dialog->scrolledwindow1, FALSE, TRUE, 0);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow1), GTK_SHADOW_IN);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow1),
+        GTK_SHADOW_IN);
 
     dialog->treeview1 = gtk_tree_view_new ();
     gtk_widget_show (dialog->treeview1);
@@ -1437,36 +1461,35 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox);
     gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
 
-    frame = xfce_framebox_new (_("Title font"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, FALSE, 0);
-
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
+
+    frame = xfce_create_framebox_with_content (_("Title font"), hbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, FALSE, 0);
 
     dialog->font_button = gtk_button_new ();
     gtk_button_set_label (GTK_BUTTON (dialog->font_button), current_font);
     gtk_widget_show (dialog->font_button);
     gtk_box_pack_start (GTK_BOX (hbox), dialog->font_button, TRUE, TRUE, 0);
 
-    dialog->frame_align = xfce_framebox_new (_("Title Alignment"), TRUE);
+    dialog->frame_align = xfce_create_framebox_with_content (_("Title Alignment"),
+        create_option_menu_box (title_align_values, 3,
+            /*XXX*/ _("Text alignment inside title bar :"), title_align,
+            G_CALLBACK (cb_title_align_value_changed), mcs_plugin));
     gtk_widget_show (dialog->frame_align);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->frame_align, TRUE, TRUE, 0);
 
-    xfce_framebox_add (XFCE_FRAMEBOX (dialog->frame_align),
-        create_option_menu_box (title_align_values, 3,
-            /*XXX*/ _("Text alignment inside title bar :"), title_align, G_CALLBACK (cb_title_align_value_changed), mcs_plugin));
-
-    dialog->frame_layout = xfce_framebox_new (_("Button layout"), TRUE);
+    dialog->frame_layout =
+        xfce_create_framebox_with_content (_("Button layout"),
+        create_layout_buttons (current_layout, mcs_plugin));
     gtk_widget_show (dialog->frame_layout);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->frame_layout, TRUE, FALSE, 0);
 
-    xfce_framebox_add (XFCE_FRAMEBOX (dialog->frame_layout), create_layout_buttons (current_layout, mcs_plugin));
-
     label = gtk_label_new (_("Style"));
     gtk_widget_show (label);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 0), label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook),
+        gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 0), label);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
@@ -1482,7 +1505,8 @@ create_dialog (McsPlugin * mcs_plugin)
     dialog->scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow2), BORDER);
     gtk_widget_show (dialog->scrolledwindow2);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow2), GTK_SHADOW_IN);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow2),
+        GTK_SHADOW_IN);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->scrolledwindow2, TRUE, TRUE, 0);
 
     dialog->treeview2 = gtk_tree_view_new ();
@@ -1502,16 +1526,17 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
     gtk_widget_show (vbox);
 
-    frame = xfce_framebox_new (_("Window shortcuts"), FALSE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
-
     dialog->scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (dialog->scrolledwindow3), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (dialog->scrolledwindow3),
+        GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
     gtk_container_set_border_width (GTK_CONTAINER (dialog->scrolledwindow3), BORDER);
     gtk_widget_show (dialog->scrolledwindow3);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->scrolledwindow3);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow3), GTK_SHADOW_IN);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (dialog->scrolledwindow3),
+        GTK_SHADOW_IN);
+
+    frame = xfce_create_framebox_with_content (_("Window shortcuts"), dialog->scrolledwindow3);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
     model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     dialog->treeview3 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
@@ -1522,14 +1547,17 @@ create_dialog (McsPlugin * mcs_plugin)
     renderer = gtk_cell_renderer_text_new ();
     g_object_set_data (G_OBJECT (renderer), "column", (gint *) COLUMN_COMMAND);
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview3), -1, _("Command"), renderer, "text", COLUMN_COMMAND, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview3), -1,
+        _("Command"), renderer, "text", COLUMN_COMMAND, NULL);
     /* shortcut column */
     renderer = gtk_cell_renderer_text_new ();
     g_object_set_data (G_OBJECT (renderer), "column", (gint *) COLUMN_SHORTCUT);
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview3), -1, _("Shortcut"), renderer, "text", COLUMN_SHORTCUT, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (dialog->treeview3), -1,
+        _("Shortcut"), renderer, "text", COLUMN_SHORTCUT, NULL);
     /* command name hidden column */
-    hidden_column = gtk_tree_view_column_new_with_attributes ("name", renderer, "text", COLUMN_NAME, NULL);
+    hidden_column =
+        gtk_tree_view_column_new_with_attributes ("name", renderer, "text", COLUMN_NAME, NULL);
     gtk_tree_view_column_set_visible (hidden_column, FALSE);
     gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview3), hidden_column);
 
@@ -1537,7 +1565,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     /* popup menu */
     dialog->popup_menu = gtk_menu_new ();
-    dialog->popup_add_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD,NULL);
+    dialog->popup_add_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD, NULL);
     gtk_container_add (GTK_CONTAINER (dialog->popup_menu), dialog->popup_add_menuitem);
     dialog->popup_del_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_REMOVE, NULL);
     gtk_container_add (GTK_CONTAINER (dialog->popup_menu), dialog->popup_del_menuitem);
@@ -1545,7 +1573,8 @@ create_dialog (McsPlugin * mcs_plugin)
 
     label = gtk_label_new (_("Keyboard"));
     gtk_widget_show (label);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 1), label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook),
+        gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 1), label);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox_page = gtk_vbox_new (FALSE, BORDER);
@@ -1554,46 +1583,52 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox_page);
     gtk_container_add (GTK_CONTAINER (notebook), vbox_page);
 
-    frame = xfce_framebox_new (_("Focus model"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
-
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
+
+    frame = xfce_create_framebox_with_content (_("Focus model"), hbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->click_focus_radio = gtk_radio_button_new_with_mnemonic (NULL, _("Click to focus"));
     gtk_widget_show (dialog->click_focus_radio);
     gtk_box_pack_start (GTK_BOX (hbox), dialog->click_focus_radio, TRUE, FALSE, 0);
-    gtk_radio_button_set_group (GTK_RADIO_BUTTON (dialog->click_focus_radio), dialog->click_focus_radio_group);
-    dialog->click_focus_radio_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (dialog->click_focus_radio));
+    gtk_radio_button_set_group (GTK_RADIO_BUTTON (dialog->click_focus_radio),
+        dialog->click_focus_radio_group);
+    dialog->click_focus_radio_group =
+        gtk_radio_button_get_group (GTK_RADIO_BUTTON (dialog->click_focus_radio));
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->click_focus_radio), click_to_focus);
 
-    dialog->focus_follow_mouse_radio = gtk_radio_button_new_with_mnemonic (NULL, _("Focus follows mouse"));
+    dialog->focus_follow_mouse_radio =
+        gtk_radio_button_new_with_mnemonic (NULL, _("Focus follows mouse"));
     gtk_widget_show (dialog->focus_follow_mouse_radio);
     gtk_box_pack_start (GTK_BOX (hbox), dialog->focus_follow_mouse_radio, TRUE, FALSE, 0);
-    gtk_radio_button_set_group (GTK_RADIO_BUTTON (dialog->focus_follow_mouse_radio), dialog->click_focus_radio_group);
-    dialog->click_focus_radio_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (dialog->focus_follow_mouse_radio));
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_follow_mouse_radio), !click_to_focus);
+    gtk_radio_button_set_group (GTK_RADIO_BUTTON (dialog->focus_follow_mouse_radio),
+        dialog->click_focus_radio_group);
+    dialog->click_focus_radio_group =
+        gtk_radio_button_get_group (GTK_RADIO_BUTTON (dialog->focus_follow_mouse_radio));
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_follow_mouse_radio),
+        !click_to_focus);
 
-    frame = xfce_framebox_new (_("New window focus"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
-
-    dialog->focus_new_check = gtk_check_button_new_with_mnemonic (_("Automatically give focus to newly created windows"));
+    dialog->focus_new_check =
+        gtk_check_button_new_with_mnemonic (_("Automatically give focus to newly created windows"));
     gtk_widget_show (dialog->focus_new_check);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->focus_new_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_new_check), focus_new);
 
-    frame = xfce_framebox_new (_("Raise on focus"), TRUE);
+    frame = xfce_create_framebox_with_content (_("New window focus"), dialog->focus_new_check);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
-    dialog->raise_on_focus_check = gtk_check_button_new_with_mnemonic (_("Automatically raise windows when they receive focus"));
+    frame = xfce_create_framebox_with_content (_("Raise on focus"), vbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
+
+    dialog->raise_on_focus_check =
+        gtk_check_button_new_with_mnemonic (_
+        ("Automatically raise windows when they receive focus"));
     gtk_widget_show (dialog->raise_on_focus_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->raise_on_focus_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->raise_on_focus_check), focus_raise);
@@ -1605,44 +1640,51 @@ create_dialog (McsPlugin * mcs_plugin)
 
     label = gtk_label_new (_("Delay before raising focused window :"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
     label = xfce_create_small_label (_("Slow"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
     label = xfce_create_small_label (_("Fast"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    dialog->raise_delay_scale = gtk_hscale_new (GTK_ADJUSTMENT (gtk_adjustment_new (raise_delay, 100, 2000, 10, 100, 0)));
+    dialog->raise_delay_scale =
+        gtk_hscale_new (GTK_ADJUSTMENT (gtk_adjustment_new (raise_delay, 100, 2000, 10, 100, 0)));
     gtk_widget_show (dialog->raise_delay_scale);
     gtk_table_attach (GTK_TABLE (table), dialog->raise_delay_scale, 1, 2, 1,
-        2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
+        2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL),
+        0, 0);
     gtk_scale_set_draw_value (GTK_SCALE (dialog->raise_delay_scale), FALSE);
     gtk_scale_set_digits (GTK_SCALE (dialog->raise_delay_scale), 0);
     gtk_range_set_update_policy (GTK_RANGE (dialog->raise_delay_scale), GTK_UPDATE_DISCONTINUOUS);
     gtk_range_set_inverted (GTK_RANGE (dialog->raise_delay_scale), TRUE);
     gtk_widget_set_sensitive (dialog->raise_delay_scale, focus_raise);
 
-    frame = xfce_framebox_new (_("Raise on click"), TRUE);
+    dialog->click_raise_check =
+        gtk_check_button_new_with_mnemonic (_
+        ("Raise window when clicking inside application window"));
+    gtk_widget_show (dialog->click_raise_check);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->click_raise_check), raise_on_click);
+
+    frame = xfce_create_framebox_with_content (_("Raise on click"), dialog->click_raise_check);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
-    dialog->click_raise_check = gtk_check_button_new_with_mnemonic (_("Raise window when clicking inside application window"));
-    gtk_widget_show (dialog->click_raise_check);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), dialog->click_raise_check);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->click_raise_check), raise_on_click);
-
     label = gtk_label_new (_("Focus"));
     gtk_widget_show (label);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 2), label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook),
+        gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 2), label);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     vbox_page = gtk_vbox_new (FALSE, BORDER);
@@ -1650,23 +1692,25 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (vbox_page);
     gtk_container_add (GTK_CONTAINER (notebook), vbox_page);
 
-    frame = xfce_framebox_new (_("Windows snapping"), TRUE);
+    vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_widget_show (vbox);
+
+    frame = xfce_create_framebox_with_content (_("Windows snapping"), vbox);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
-    vbox = gtk_vbox_new (FALSE, BORDER);
-    gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
-
-    dialog->snap_to_border_check = gtk_check_button_new_with_mnemonic (_("Snap windows to screen border"));
+    dialog->snap_to_border_check =
+        gtk_check_button_new_with_mnemonic (_("Snap windows to screen border"));
     gtk_widget_show (dialog->snap_to_border_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->snap_to_border_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->snap_to_border_check), snap_to_border);
 
-    dialog->snap_to_windows_check = gtk_check_button_new_with_mnemonic (_("Snap windows to other windows"));
+    dialog->snap_to_windows_check =
+        gtk_check_button_new_with_mnemonic (_("Snap windows to other windows"));
     gtk_widget_show (dialog->snap_to_windows_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->snap_to_windows_check, FALSE, FALSE, 0);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->snap_to_windows_check), snap_to_windows);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->snap_to_windows_check),
+        snap_to_windows);
 
     table = gtk_table_new (2, 3, FALSE);
     gtk_widget_show (table);
@@ -1675,45 +1719,54 @@ create_dialog (McsPlugin * mcs_plugin)
 
     label = gtk_label_new (_("Distance :"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
     label = xfce_create_small_label (_("Small"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
     label = xfce_create_small_label (_("Wide"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    dialog->snap_width_scale = gtk_hscale_new (GTK_ADJUSTMENT (gtk_adjustment_new (snap_width, 5, 50, 5, 10, 0)));
+    dialog->snap_width_scale =
+        gtk_hscale_new (GTK_ADJUSTMENT (gtk_adjustment_new (snap_width, 5, 50, 5, 10, 0)));
     gtk_widget_show (dialog->snap_width_scale);
     gtk_table_attach (GTK_TABLE (table), dialog->snap_width_scale, 1, 2, 1,
-        2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
+        2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL),
+        0, 0);
     gtk_scale_set_draw_value (GTK_SCALE (dialog->snap_width_scale), FALSE);
     gtk_scale_set_digits (GTK_SCALE (dialog->snap_width_scale), 0);
     gtk_range_set_update_policy (GTK_RANGE (dialog->snap_width_scale), GTK_UPDATE_DISCONTINUOUS);
     gtk_widget_set_sensitive (dialog->snap_width_scale, snap_to_border || snap_to_windows);
 
-    frame = xfce_framebox_new (_("Wrap workspaces"), TRUE);
+    vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_widget_show (vbox);
+
+    frame = xfce_create_framebox_with_content (_("Wrap workspaces"), vbox);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
-    vbox = gtk_vbox_new (FALSE, BORDER);
-    gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
-
-    dialog->wrap_workspaces_check = gtk_check_button_new_with_mnemonic (_("Wrap workspaces when the pointer reaches a screen edge"));
+    dialog->wrap_workspaces_check =
+        gtk_check_button_new_with_mnemonic (_
+        ("Wrap workspaces when the pointer reaches a screen edge"));
     gtk_widget_show (dialog->wrap_workspaces_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_workspaces_check, FALSE, FALSE, 0);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_workspaces_check), wrap_workspaces);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_workspaces_check),
+        wrap_workspaces);
 
-    dialog->wrap_windows_check = gtk_check_button_new_with_mnemonic (_("Wrap workspaces when dragging a window off the screen"));
+    dialog->wrap_windows_check =
+        gtk_check_button_new_with_mnemonic (_
+        ("Wrap workspaces when dragging a window off the screen"));
     gtk_widget_show (dialog->wrap_windows_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_windows_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_windows_check), wrap_windows);
@@ -1725,60 +1778,67 @@ create_dialog (McsPlugin * mcs_plugin)
 
     label = gtk_label_new (_("Edge Resistance :"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
     label = xfce_create_small_label (_("Small"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
     label = xfce_create_small_label (_("Wide"));
     gtk_widget_show (label);
-    gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL),
+        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    dialog->wrap_resistance_scale = gtk_hscale_new (GTK_ADJUSTMENT (gtk_adjustment_new (wrap_resistance, 1, 50, 5, 10, 0)));
+    dialog->wrap_resistance_scale =
+        gtk_hscale_new (GTK_ADJUSTMENT (gtk_adjustment_new (wrap_resistance, 1, 50, 5, 10, 0)));
     gtk_widget_show (dialog->wrap_resistance_scale);
     gtk_table_attach (GTK_TABLE (table), dialog->wrap_resistance_scale, 1, 2,
-        1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), (GtkAttachOptions) (GTK_FILL), 0, 0);
+        1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL),
+        (GtkAttachOptions) (GTK_FILL), 0, 0);
     gtk_scale_set_draw_value (GTK_SCALE (dialog->wrap_resistance_scale), FALSE);
     gtk_scale_set_digits (GTK_SCALE (dialog->wrap_resistance_scale), 0);
-    gtk_range_set_update_policy (GTK_RANGE (dialog->wrap_resistance_scale), GTK_UPDATE_DISCONTINUOUS);
+    gtk_range_set_update_policy (GTK_RANGE (dialog->wrap_resistance_scale),
+        GTK_UPDATE_DISCONTINUOUS);
     gtk_widget_set_sensitive (dialog->wrap_resistance_scale, wrap_workspaces || wrap_windows);
-
-    frame = xfce_framebox_new (_("Opaque move and resize"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
-    dialog->box_resize_check = gtk_check_button_new_with_mnemonic (_("Display content of windows when resizing"));
+    frame = xfce_create_framebox_with_content (_("Opaque move and resize"), vbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
+
+    dialog->box_resize_check =
+        gtk_check_button_new_with_mnemonic (_("Display content of windows when resizing"));
     gtk_widget_show (dialog->box_resize_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->box_resize_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_resize_check), !box_resize);
 
-    dialog->box_move_check = gtk_check_button_new_with_mnemonic (_("Display content of windows when moving"));
+    dialog->box_move_check =
+        gtk_check_button_new_with_mnemonic (_("Display content of windows when moving"));
     gtk_widget_show (dialog->box_move_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->box_move_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_move_check), !box_move);
 
-    frame = xfce_framebox_new (_("Double click action"), TRUE);
+    frame = xfce_create_framebox_with_content (_("Double click action"),
+        create_option_menu_box (dbl_click_values, 4,
+            _("Action to perform when double clicking on title bar :"), dbl_click_action,
+            G_CALLBACK (cb_dblclick_action_value_changed), mcs_plugin));
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
-    xfce_framebox_add (XFCE_FRAMEBOX (frame),
-        create_option_menu_box (dbl_click_values, 4,
-            _("Action to perform when double clicking on title bar :"), dbl_click_action, G_CALLBACK (cb_dblclick_action_value_changed), mcs_plugin));
-
     label = gtk_label_new (_("Advanced"));
     gtk_widget_show (label);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 3), label);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook),
+        gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 3), label);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
     dialog->dialog_action_area1 = GTK_DIALOG (dialog->xfwm4_dialog)->action_area;
@@ -1787,12 +1847,14 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->closebutton1 = gtk_button_new_from_stock ("gtk-close");
     gtk_widget_show (dialog->closebutton1);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->xfwm4_dialog), dialog->closebutton1, GTK_RESPONSE_CLOSE);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->xfwm4_dialog), dialog->closebutton1,
+        GTK_RESPONSE_CLOSE);
     GTK_WIDGET_SET_FLAGS (dialog->closebutton1, GTK_CAN_DEFAULT);
 
     dialog->helpbutton1 = gtk_button_new_from_stock ("gtk-help");
     gtk_widget_show (dialog->helpbutton1);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->xfwm4_dialog), dialog->helpbutton1, GTK_RESPONSE_HELP);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog->xfwm4_dialog), dialog->helpbutton1,
+        GTK_RESPONSE_HELP);
 
     gtk_widget_grab_focus (dialog->closebutton1);
     gtk_widget_grab_default (dialog->closebutton1);
@@ -1807,8 +1869,10 @@ setup_dialog (Itf * itf)
     GtkTreeSelection *selection;
     ThemeInfo *ti;
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (itf->treeview1), -1, NULL, gtk_cell_renderer_text_new (), "text", THEME_NAME_COLUMN, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (itf->treeview2), -1, NULL, gtk_cell_renderer_text_new (), "text", THEME_NAME_COLUMN, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (itf->treeview1), -1, NULL,
+        gtk_cell_renderer_text_new (), "text", THEME_NAME_COLUMN, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (itf->treeview2), -1, NULL,
+        gtk_cell_renderer_text_new (), "text", THEME_NAME_COLUMN, NULL);
 
     model1 = (GtkTreeModel *) gtk_list_store_new (N_COLUMNS, G_TYPE_STRING);
     gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (model1), 0, sort_func, NULL, NULL);
@@ -1822,28 +1886,39 @@ setup_dialog (Itf * itf)
 
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview1));
     gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
-    g_signal_connect (G_OBJECT (selection), "changed", (GCallback) decoration_selection_changed, itf);
+    g_signal_connect (G_OBJECT (selection), "changed", (GCallback) decoration_selection_changed,
+        itf);
 
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview2));
     gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
-    g_signal_connect (G_OBJECT (selection), "changed", (GCallback) keybinding_selection_changed, itf);
+    g_signal_connect (G_OBJECT (selection), "changed", (GCallback) keybinding_selection_changed,
+        itf);
 
-    g_signal_connect (G_OBJECT (itf->treeview2), "button-press-event", G_CALLBACK (cb_popup_menu), itf);
-    g_signal_connect (G_OBJECT (itf->popup_add_menuitem), "activate", G_CALLBACK (cb_popup_add_menu), itf);
-    g_signal_connect (G_OBJECT (itf->popup_del_menuitem), "activate", G_CALLBACK (cb_popup_del_menu), itf);
+    g_signal_connect (G_OBJECT (itf->treeview2), "button-press-event", G_CALLBACK (cb_popup_menu),
+        itf);
+    g_signal_connect (G_OBJECT (itf->popup_add_menuitem), "activate",
+        G_CALLBACK (cb_popup_add_menu), itf);
+    g_signal_connect (G_OBJECT (itf->popup_del_menuitem), "activate",
+        G_CALLBACK (cb_popup_del_menu), itf);
     g_signal_connect (G_OBJECT (itf->add_button), "clicked", G_CALLBACK (cb_popup_add_menu), itf);
     g_signal_connect (G_OBJECT (itf->del_button), "clicked", G_CALLBACK (cb_popup_del_menu), itf);
 
-    g_signal_connect (G_OBJECT (itf->treeview3), "row-activated", G_CALLBACK (cb_activate_treeview3), itf);
+    g_signal_connect (G_OBJECT (itf->treeview3), "row-activated",
+        G_CALLBACK (cb_activate_treeview3), itf);
 
 
-    decoration_theme_list = xfwm4_plugin_read_themes (decoration_theme_list, itf->treeview1, itf->scrolledwindow1, DECORATION_THEMES, current_theme);
-    keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2, KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
+    decoration_theme_list =
+        xfwm4_plugin_read_themes (decoration_theme_list, itf->treeview1, itf->scrolledwindow1,
+        DECORATION_THEMES, current_theme);
+    keybinding_theme_list =
+        xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+        KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
     dialog_update_from_theme (itf, current_theme, decoration_theme_list);
 
     /* load the theme */
-    ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme, keybinding_theme_list);
+    ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme,
+        keybinding_theme_list);
 
     if (ti)
     {
@@ -1854,25 +1929,40 @@ setup_dialog (Itf * itf)
     {
         g_warning ("Cannot find the keytheme !");
     }
-    g_signal_connect (G_OBJECT (itf->xfwm4_dialog), "response", G_CALLBACK (cb_dialog_response), itf->mcs_plugin);
-    g_signal_connect (G_OBJECT (itf->font_button), "clicked", G_CALLBACK (show_font_selection), itf);
-    g_signal_connect (G_OBJECT (itf->click_focus_radio), "toggled", G_CALLBACK (cb_click_to_focus_changed), itf);
-    g_signal_connect (G_OBJECT (itf->focus_new_check), "toggled", G_CALLBACK (cb_focus_new_changed), itf);
-    g_signal_connect (G_OBJECT (itf->raise_on_focus_check), "toggled", G_CALLBACK (cb_raise_on_focus_changed), itf);
-    g_signal_connect (G_OBJECT (itf->raise_delay_scale), "value_changed", (GCallback) cb_raise_delay_changed, itf);
-    g_signal_connect (G_OBJECT (itf->click_raise_check), "toggled", G_CALLBACK (cb_raise_on_click_changed), itf);
-    g_signal_connect (G_OBJECT (itf->snap_to_border_check), "toggled", G_CALLBACK (cb_snap_to_border_changed), itf);
-    g_signal_connect (G_OBJECT (itf->snap_to_windows_check), "toggled", G_CALLBACK (cb_snap_to_windows_changed), itf);
-    g_signal_connect (G_OBJECT (itf->snap_width_scale), "value_changed", (GCallback) cb_snap_width_changed, itf);
-    g_signal_connect (G_OBJECT (itf->wrap_workspaces_check), "toggled", G_CALLBACK (cb_wrap_workspaces_changed), itf);
-    g_signal_connect (G_OBJECT (itf->wrap_windows_check), "toggled", G_CALLBACK (cb_wrap_windows_changed), itf);
-    g_signal_connect (G_OBJECT (itf->wrap_resistance_scale), "value_changed", (GCallback) cb_wrap_resistance_changed, itf);
-    g_signal_connect (G_OBJECT (itf->box_move_check), "toggled", (GCallback) cb_box_move_changed, itf);
-    g_signal_connect (G_OBJECT (itf->box_resize_check), "toggled", G_CALLBACK (cb_box_resize_changed), itf);
+    g_signal_connect (G_OBJECT (itf->xfwm4_dialog), "response", G_CALLBACK (cb_dialog_response),
+        itf->mcs_plugin);
+    g_signal_connect (G_OBJECT (itf->font_button), "clicked", G_CALLBACK (show_font_selection),
+        itf);
+    g_signal_connect (G_OBJECT (itf->click_focus_radio), "toggled",
+        G_CALLBACK (cb_click_to_focus_changed), itf);
+    g_signal_connect (G_OBJECT (itf->focus_new_check), "toggled", G_CALLBACK (cb_focus_new_changed),
+        itf);
+    g_signal_connect (G_OBJECT (itf->raise_on_focus_check), "toggled",
+        G_CALLBACK (cb_raise_on_focus_changed), itf);
+    g_signal_connect (G_OBJECT (itf->raise_delay_scale), "value_changed",
+        (GCallback) cb_raise_delay_changed, itf);
+    g_signal_connect (G_OBJECT (itf->click_raise_check), "toggled",
+        G_CALLBACK (cb_raise_on_click_changed), itf);
+    g_signal_connect (G_OBJECT (itf->snap_to_border_check), "toggled",
+        G_CALLBACK (cb_snap_to_border_changed), itf);
+    g_signal_connect (G_OBJECT (itf->snap_to_windows_check), "toggled",
+        G_CALLBACK (cb_snap_to_windows_changed), itf);
+    g_signal_connect (G_OBJECT (itf->snap_width_scale), "value_changed",
+        (GCallback) cb_snap_width_changed, itf);
+    g_signal_connect (G_OBJECT (itf->wrap_workspaces_check), "toggled",
+        G_CALLBACK (cb_wrap_workspaces_changed), itf);
+    g_signal_connect (G_OBJECT (itf->wrap_windows_check), "toggled",
+        G_CALLBACK (cb_wrap_windows_changed), itf);
+    g_signal_connect (G_OBJECT (itf->wrap_resistance_scale), "value_changed",
+        (GCallback) cb_wrap_resistance_changed, itf);
+    g_signal_connect (G_OBJECT (itf->box_move_check), "toggled", (GCallback) cb_box_move_changed,
+        itf);
+    g_signal_connect (G_OBJECT (itf->box_resize_check), "toggled",
+        G_CALLBACK (cb_box_resize_changed), itf);
 
     xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (itf->xfwm4_dialog));
-    gdk_x11_window_set_user_time(GTK_WIDGET (itf->xfwm4_dialog)->window, 
-            gdk_x11_get_server_time (GTK_WIDGET (itf->xfwm4_dialog)->window));
+    gdk_x11_window_set_user_time (GTK_WIDGET (itf->xfwm4_dialog)->window,
+        gdk_x11_get_server_time (GTK_WIDGET (itf->xfwm4_dialog)->window));
     gtk_widget_show (itf->xfwm4_dialog);
 }
 
@@ -2002,7 +2092,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         click_to_focus = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1, click_to_focus ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1,
+            click_to_focus ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1);
@@ -2013,7 +2104,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         focus_new = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1, focus_new ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusNewWindow", CHANNEL1,
+            focus_new ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/FocusRaise", CHANNEL1);
@@ -2046,7 +2138,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         raise_on_click = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1, raise_on_click ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1,
+            raise_on_click ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1);
@@ -2057,7 +2150,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         snap_to_border = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1, snap_to_border ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToBorder", CHANNEL1,
+            snap_to_border ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1);
@@ -2068,7 +2162,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         snap_to_windows = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1, snap_to_windows ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/SnapToWindows", CHANNEL1,
+            snap_to_windows ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/SnapWidth", CHANNEL1);
@@ -2101,7 +2196,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         wrap_workspaces = FALSE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1, wrap_workspaces ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWorkspaces", CHANNEL1,
+            wrap_workspaces ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1);
@@ -2112,7 +2208,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     else
     {
         wrap_windows = TRUE;
-        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1, wrap_windows ? 1 : 0);
+        mcs_manager_set_int (mcs_plugin->manager, "Xfwm/WrapWindows", CHANNEL1,
+            wrap_windows ? 1 : 0);
     }
 
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/BoxMove", CHANNEL1);
@@ -2154,7 +2251,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         dbl_click_action = g_strdup (DEFAULT_ACTION);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1, dbl_click_action);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1,
+            dbl_click_action);
     }
 
     /* 
@@ -2195,10 +2293,11 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         }
 
         xfwm4_plugin_current_key_theme = g_strdup (DEFAULT_KEY_THEME);
-        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
+        mcs_manager_set_string (mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2,
+            xfwm4_plugin_current_key_theme);
     }
 
-#if 0    
+#if 0
     /* I fail to see why we need to save the options here, during startup... */
     xfwm4_plugin_write_options (mcs_plugin);
 #endif
@@ -2211,7 +2310,7 @@ xfwm4_plugin_write_options (McsPlugin * mcs_plugin)
     gboolean result = FALSE;
 
     path = g_build_filename ("xfce4", "mcs_settings", RCFILE1, NULL);
-    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
+    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
     if (G_LIKELY (rcfile != NULL))
     {
         result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL1, rcfile);
@@ -2220,7 +2319,7 @@ xfwm4_plugin_write_options (McsPlugin * mcs_plugin)
     g_free (path);
 
     path = g_build_filename ("xfce4", "mcs_settings", RCFILE2, NULL);
-    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);    
+    rcfile = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, TRUE);
     if (G_LIKELY (rcfile != NULL))
     {
         result = mcs_manager_save_channel_to_file (mcs_plugin->manager, CHANNEL2, rcfile);
@@ -2237,26 +2336,26 @@ run_dialog (McsPlugin * mcs_plugin)
     const gchar *wm_name;
     static Itf *dialog = NULL;
 
-    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
+    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default ());
     if (g_ascii_strcasecmp (wm_name, "Xfwm4"))
     {
-       xfce_err (_("These settings cannot work with your current window manager (%s)"), wm_name);
-       return;
+        xfce_err (_("These settings cannot work with your current window manager (%s)"), wm_name);
+        return;
     }
 
     if (is_running)
     {
-        if((dialog) && (dialog->xfwm4_dialog))
+        if ((dialog) && (dialog->xfwm4_dialog))
         {
-            gtk_window_present(GTK_WINDOW(dialog->xfwm4_dialog));
-            gtk_window_set_focus (GTK_WINDOW(dialog->xfwm4_dialog), NULL);
+            gtk_window_present (GTK_WINDOW (dialog->xfwm4_dialog));
+            gtk_window_set_focus (GTK_WINDOW (dialog->xfwm4_dialog), NULL);
         }
         return;
     }
 
     is_running = TRUE;
 
-    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     dialog = create_dialog (mcs_plugin);
     setup_dialog (dialog);

@@ -1027,7 +1027,9 @@ static void
 handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 {
     Client *c = NULL;
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
     ScreenInfo *screen_info = NULL;
+#endif
 
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
@@ -1950,7 +1952,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 Time ev_time = (Time) ev->data.l[1];
 
                 /* We are simply ignoring XServer time wraparound here */
-                TRACE ("Time of event received is %u, current XServer time is %u", ev_time, current);
+                TRACE ("Time of event received is %u, current XServer time is %u", (unsigned int) ev_time, (unsigned int) current);
                 if ((ev_time != (Time) 0) && (ev_time < current))
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
@@ -1992,7 +1994,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) || 
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
-            TRACE ("root has received a win_workspace or a net_current_desktop event %i", ev->data.l[0]);
+            TRACE ("root has received a win_workspace or a net_current_desktop event %li", ev->data.l[0]);
             if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) && (ev->data.l[0] != screen_info->current_ws))
             {
                 workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE);
@@ -2024,7 +2026,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
         {
-            TRACE ("window (0x%lx) has received a net_request_frame_extents event", c->name, ev->window);
+            TRACE ("window (0x%lx) has received a net_request_frame_extents event", ev->window);
             /* Size estimate from the decoration extents */
             setNetFrameExtents (display_info, ev->window, 
                                 frameDecorationTop (screen_info),

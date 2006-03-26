@@ -1497,8 +1497,6 @@ unloadTheme (ScreenInfo *screen_info)
 static void
 unloadSettings (ScreenInfo *screen_info)
 {
-    int i;
-    
     g_return_if_fail (screen_info);
     
     TRACE ("entering unloadSettings");

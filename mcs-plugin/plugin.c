@@ -36,7 +36,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-common.h>
@@ -101,7 +101,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
        And it needs to be done here for the label to be properly
        localized....
      */
-    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     manager = mcs_plugin->manager;
 
@@ -122,7 +122,7 @@ run_dialog (McsPlugin * mcs_plugin)
 {
     const gchar *wm_name;
     static GtkWidget *dialog = NULL;
-    GtkWidget *mainvbox, *notebook, *header, *vbox; 
+    GtkWidget *mainvbox, *notebook, *header, *vbox;
 
     if (dialog)
     {
@@ -130,19 +130,16 @@ run_dialog (McsPlugin * mcs_plugin)
         return;
     }
 
-    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     dialog =
         gtk_dialog_new_with_buttons (_("Workspaces"), NULL,
-                                     GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE,
-                                     GTK_RESPONSE_OK, NULL);
+        GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE, GTK_RESPONSE_OK, NULL);
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
-    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy),
-                      NULL);
-    g_signal_connect (dialog, "delete-event", G_CALLBACK (gtk_widget_destroy),
-                      NULL);
+    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+    g_signal_connect (dialog, "delete-event", G_CALLBACK (gtk_widget_destroy), NULL);
 
     g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) & dialog);
 
@@ -154,27 +151,25 @@ run_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (mainvbox), header, TRUE, TRUE, 0);
 
-    notebook = gtk_notebook_new();
+    notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER);
-    gtk_widget_show(notebook);
-    gtk_box_pack_start(GTK_BOX (mainvbox), notebook, TRUE, TRUE, 0);
-    
+    gtk_widget_show (notebook);
+    gtk_box_pack_start (GTK_BOX (mainvbox), notebook, TRUE, TRUE, 0);
+
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
     gtk_widget_show (vbox);
-    add_workspaces_page(GTK_BOX(vbox));
-    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
-                             gtk_label_new(_("Workspaces")));
+    add_workspaces_page (GTK_BOX (vbox));
+    gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, gtk_label_new (_("Workspaces")));
 
-    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default());
+    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default ());
     if (!g_ascii_strcasecmp (wm_name, "Xfwm4"))
     {
         vbox = gtk_vbox_new (FALSE, BORDER);
         gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
         gtk_widget_show (vbox);
-        add_margins_page(GTK_BOX(vbox));
-        gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, 
-                                 gtk_label_new(_("Margins")));
+        add_margins_page (GTK_BOX (vbox));
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, gtk_label_new (_("Margins")));
     }
     xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (dialog));
     gtk_widget_show (dialog);

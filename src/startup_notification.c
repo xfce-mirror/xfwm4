@@ -278,7 +278,7 @@ sn_client_startup_properties (Client * c)
 
         /* Set initial time */
         timestamp = sn_startup_sequence_get_timestamp (sequence);
-        TRACE ("Given startup time: %u", timestamp);
+        TRACE ("Given startup time: %u", (unsigned int) timestamp);
         if (timestamp > c->user_time)
         {
             c->user_time = timestamp;

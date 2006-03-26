@@ -46,7 +46,8 @@ void
 getMouseXY (ScreenInfo *screen_info, Window w, int *x2, int *y2)
 {
     Window w1, w2;
-    gint x1, y1, m;
+    int x1, y1;
+    unsigned int m;
 
     TRACE ("entering getMouseXY");
 
@@ -57,7 +58,8 @@ Window
 getMouseWindow (ScreenInfo *screen_info, Window w)
 {
     Window w1, w2;
-    int x1, y1, x2, y2, m;
+    int x1, y1, x2, y2;
+    unsigned int m;
 
     TRACE ("entering getMouseWindow");
 

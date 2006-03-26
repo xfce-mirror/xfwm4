@@ -46,13 +46,14 @@ struct _shortcut_tree_foreach_struct
 /* Popup menu */
 /**************/
 void
-cb_popup_del_menu (GtkWidget *widget, gpointer data)
+cb_popup_del_menu (GtkWidget * widget, gpointer data)
 {
     Itf *itf;
-  
+
     itf = (Itf *) data;
 
-    if (xfce_confirm (_("Do you really want to remove this keybinding theme ?"), GTK_STOCK_YES, NULL))
+    if (xfce_confirm (_("Do you really want to remove this keybinding theme ?"), GTK_STOCK_YES,
+            NULL))
     {
         GtkTreeSelection *selection;
         GtkTreeModel *model;
@@ -74,7 +75,7 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
 
             theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
             if (unlink (theme_file) != 0)
-              g_warning ("Unable to remove the theme file !");
+                g_warning ("Unable to remove the theme file !");
             g_free (theme_file);
         }
         else
@@ -83,30 +84,33 @@ cb_popup_del_menu (GtkWidget *widget, gpointer data)
         /* refresh list */
         while (keybinding_theme_list)
         {
-            xfwm4_plugin_theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+            xfwm4_plugin_theme_info_free ((ThemeInfo *) keybinding_theme_list->data);
             keybinding_theme_list = g_list_next (keybinding_theme_list);
         }
         g_list_free (keybinding_theme_list);
-        
+
         g_free (xfwm4_plugin_current_key_theme);
         xfwm4_plugin_current_key_theme = g_strdup ("Default");
         keybinding_theme_list = NULL;
-        keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                             KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
+        keybinding_theme_list =
+            xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
+            KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
         gtk_widget_set_sensitive (itf->treeview3, FALSE);
-        loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name ("Default", keybinding_theme_list), itf);
-        
+        loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name ("Default",
+                keybinding_theme_list), itf);
+
         /* tell it to the mcs manager */
-        mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
+        mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2,
+            xfwm4_plugin_current_key_theme);
         mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
         xfwm4_plugin_write_options (itf->mcs_plugin);
-    
+
         g_free (theme_name);
     }
 }
 
 void
-cb_popup_add_menu (GtkWidget *widget, gpointer data)
+cb_popup_add_menu (GtkWidget * widget, gpointer data)
 {
     Itf *itf;
     GtkWidget *dialog;
@@ -123,9 +127,8 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     itf = (Itf *) data;
 
     dialog = gtk_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
-                                          GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
-                                          GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
 
     header_image = gtk_image_new_from_stock (GTK_STOCK_ADD, GTK_ICON_SIZE_LARGE_TOOLBAR);
     header = xfce_create_header_with_image (header_image, _("Add keybinding theme"));
@@ -136,7 +139,7 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     entry = gtk_entry_new ();
     gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
-    
+
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
     gtk_widget_show_all (dialog);
@@ -144,7 +147,7 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
     while (TRUE)
     {
         gint response = GTK_RESPONSE_CANCEL;
-        
+
         response = gtk_dialog_run (GTK_DIALOG (dialog));
 
         if (response == GTK_RESPONSE_OK)
@@ -153,7 +156,8 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
             FILE *new_theme;
             FILE *default_theme;
 
-            if (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)), keybinding_theme_list))
+            if (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
+                    keybinding_theme_list))
             {
                 xfce_err (_("A keybinding theme with the same name already exists"));
                 continue;
@@ -166,11 +170,13 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
             }
 
             /* create theme (copy default) */
-            new_theme_path = g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
-            new_theme_file = xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
-            default_theme_file = g_build_filename (DATADIR, "themes", "Default",
-                                                   KEY_SUFFIX, KEYTHEMERC, NULL);
-            
+            new_theme_path =
+                g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
+            new_theme_file =
+                xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
+            default_theme_file =
+                g_build_filename (DATADIR, "themes", "Default", KEY_SUFFIX, KEYTHEMERC, NULL);
+
             new_theme = fopen (new_theme_file, "w+");
             if (!new_theme)
             {
@@ -193,33 +199,35 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
 
             fclose (new_theme);
             fclose (default_theme);
-        
+
             /* refresh list */
             while (keybinding_theme_list)
             {
-                xfwm4_plugin_theme_info_free ((ThemeInfo *)keybinding_theme_list->data);
+                xfwm4_plugin_theme_info_free ((ThemeInfo *) keybinding_theme_list->data);
                 keybinding_theme_list = g_list_next (keybinding_theme_list);
             }
             g_list_free (keybinding_theme_list);
-        
+
             g_free (xfwm4_plugin_current_key_theme);
             xfwm4_plugin_current_key_theme = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
             keybinding_theme_list = NULL;
-            keybinding_theme_list = xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2, itf->scrolledwindow2,
-                                                 KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
+            keybinding_theme_list =
+                xfwm4_plugin_read_themes (keybinding_theme_list, itf->treeview2,
+                itf->scrolledwindow2, KEYBINDING_THEMES, xfwm4_plugin_current_key_theme);
             gtk_widget_set_sensitive (itf->treeview3, TRUE);
-            loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
-                                                            keybinding_theme_list), itf);
+            loadtheme_in_treeview (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text
+                    (GTK_ENTRY (entry)), keybinding_theme_list), itf);
             /* tell it to the mcs manager */
-            mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
+            mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2,
+                xfwm4_plugin_current_key_theme);
             mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
-            
+
             xfwm4_plugin_write_options (itf->mcs_plugin);
         }
 
         break;
     }
-    
+
     gtk_widget_destroy (dialog);
     g_free (new_theme_path);
     g_free (new_theme_file);
@@ -227,12 +235,12 @@ cb_popup_add_menu (GtkWidget *widget, gpointer data)
 }
 
 gboolean
-cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
+cb_popup_menu (GtkTreeView * treeview, GdkEventButton * event, gpointer data)
 {
     Itf *itf;
 
     itf = (Itf *) data;
-    
+
     /* Right click draws the context menu */
     if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
     {
@@ -253,14 +261,14 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
             gtk_tree_model_get_iter (model, &iter, path);
 
             gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
-            
+
             ti = xfwm4_plugin_find_theme_info_by_name (theme_name, keybinding_theme_list);
 
             if (ti)
             {
                 gtk_tree_selection_unselect_all (selection);
                 gtk_tree_selection_select_path (selection, path);
-              
+
                 gtk_widget_set_sensitive (itf->popup_del_menuitem, ti->user_writable);
             }
             else
@@ -272,12 +280,13 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
         {
             gtk_widget_set_sensitive (itf->popup_del_menuitem, FALSE);
         }
-        
-       
+
+
         screen = xfce_gdk_display_locate_monitor_with_pointer (NULL, NULL);
-        gtk_menu_set_screen (GTK_MENU (itf->popup_menu), screen ? screen : gdk_screen_get_default ());
-        gtk_menu_popup (GTK_MENU (itf->popup_menu), NULL, NULL, NULL, NULL,
-                        event->button, gtk_get_current_event_time());
+        gtk_menu_set_screen (GTK_MENU (itf->popup_menu),
+            screen ? screen : gdk_screen_get_default ());
+        gtk_menu_popup (GTK_MENU (itf->popup_menu), NULL, NULL, NULL, NULL, event->button,
+            gtk_get_current_event_time ());
         return TRUE;
     }
 
@@ -288,77 +297,79 @@ cb_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gpointer data)
 /* Load theme in the treeview  */
 /*******************************/
 void
-loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
+loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
 {
-    const gchar *shortcut_options_list [] = {"close_window_key", 
-                                             "maximize_window_key", 
-                                             "maximize_vert_key", 
-                                             "maximize_horiz_key", 
-                                             "hide_window_key", 
-                                             "shade_window_key", 
-                                             "stick_window_key", 
-                                             "move_window_up_key", 
-                                             "move_window_down_key", 
-                                             "move_window_left_key", 
-                                             "move_window_right_key", 
-                                             "resize_window_up_key", 
-                                             "resize_window_down_key", 
-                                             "resize_window_left_key", 
-                                             "resize_window_right_key", 
-                                             "raise_window_key", 
-                                             "lower_window_key", 
-                                             "fullscreen_key", 
-                                             "up_workspace_key", 
-                                             "down_workspace_key", 
-                                             "left_workspace_key", 
-                                             "right_workspace_key", 
-                                             "next_workspace_key", 
-                                             "prev_workspace_key", 
-                                             "add_workspace_key", 
-                                             "del_workspace_key", 
-                                             "move_window_next_workspace_key", 
-                                             "move_window_prev_workspace_key", 
-                                             "move_window_up_workspace_key", 
-                                             "move_window_down_workspace_key", 
-                                             "move_window_left_workspace_key", 
-                                             "move_window_right_workspace_key", 
-                                             "show_desktop_key", 
-                                             NULL};
+    const gchar *shortcut_options_list[] = { "close_window_key",
+        "maximize_window_key",
+        "maximize_vert_key",
+        "maximize_horiz_key",
+        "hide_window_key",
+        "shade_window_key",
+        "stick_window_key",
+        "move_window_up_key",
+        "move_window_down_key",
+        "move_window_left_key",
+        "move_window_right_key",
+        "resize_window_up_key",
+        "resize_window_down_key",
+        "resize_window_left_key",
+        "resize_window_right_key",
+        "raise_window_key",
+        "lower_window_key",
+        "fullscreen_key",
+        "up_workspace_key",
+        "down_workspace_key",
+        "left_workspace_key",
+        "right_workspace_key",
+        "next_workspace_key",
+        "prev_workspace_key",
+        "add_workspace_key",
+        "del_workspace_key",
+        "move_window_next_workspace_key",
+        "move_window_prev_workspace_key",
+        "move_window_up_workspace_key",
+        "move_window_down_workspace_key",
+        "move_window_left_workspace_key",
+        "move_window_right_workspace_key",
+        "show_desktop_key",
+        NULL
+    };
 
-    const gchar *shortcut_name_list [] = {N_("Close window"), 
-                                          N_("Maximize window"), 
-                                          N_("Maximize window vertically"), 
-                                          N_("Maximize window horizontally"), 
-                                          N_("Hide window"), 
-                                          N_("Shade window"), 
-                                          N_("Stick window"), 
-                                          N_("Move window up"), 
-                                          N_("Move window down"), 
-                                          N_("Move window left"), 
-                                          N_("Move window right"), 
-                                          N_("Resize window up"), 
-                                          N_("Resize window down"), 
-                                          N_("Resize window left"), 
-                                          N_("Resize window right"), 
-                                          N_("Raise window"), 
-                                          N_("Lower window"), 
-                                          N_("Toggle fullscreen"), 
-                                          N_("Upper workspace"), 
-                                          N_("Bottom workspace"), 
-                                          N_("Left workspace"), 
-                                          N_("Right workspace"), 
-                                          N_("Next workspace"), 
-                                          N_("Previous workspace"), 
-                                          N_("Add workspace"), 
-                                          N_("Delete workspace"), 
-                                          N_("Move window to next workspace"), 
-                                          N_("Move window to previous workspace"), 
-                                          N_("Move window to upper workspace"), 
-                                          N_("Move window to bottom workspace"), 
-                                          N_("Move window to left workspace"), 
-                                          N_("Move window to right workspace"), 
-                                          N_("Show desktop"), 
-                                          NULL};
+    const gchar *shortcut_name_list[] = { N_("Close window"),
+        N_("Maximize window"),
+        N_("Maximize window vertically"),
+        N_("Maximize window horizontally"),
+        N_("Hide window"),
+        N_("Shade window"),
+        N_("Stick window"),
+        N_("Move window up"),
+        N_("Move window down"),
+        N_("Move window left"),
+        N_("Move window right"),
+        N_("Resize window up"),
+        N_("Resize window down"),
+        N_("Resize window left"),
+        N_("Resize window right"),
+        N_("Raise window"),
+        N_("Lower window"),
+        N_("Toggle fullscreen"),
+        N_("Upper workspace"),
+        N_("Bottom workspace"),
+        N_("Left workspace"),
+        N_("Right workspace"),
+        N_("Next workspace"),
+        N_("Previous workspace"),
+        N_("Add workspace"),
+        N_("Delete workspace"),
+        N_("Move window to next workspace"),
+        N_("Move window to previous workspace"),
+        N_("Move window to upper workspace"),
+        N_("Move window to bottom workspace"),
+        N_("Move window to left workspace"),
+        N_("Move window to right workspace"),
+        N_("Show desktop"),
+        NULL
+    };
 
     Itf *itf = (Itf *) data;
 
@@ -379,7 +390,7 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
 
     user_theme_file = g_build_filename (ti->path, KEY_SUFFIX, KEYTHEMERC, NULL);
     default_theme_file = g_build_filename (DATADIR, "themes", "Default",
-                                           KEY_SUFFIX, KEYTHEMERC, NULL);
+        KEY_SUFFIX, KEYTHEMERC, NULL);
 
     if (g_ascii_strcasecmp (ti->name, "Default") == 0)
     {
@@ -408,8 +419,8 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
     {
         const gchar *entry_value;
         const gchar *fallback_value;
-	int i;
-	gboolean found = FALSE;
+        int i;
+        gboolean found = FALSE;
 
 
         fallback_value = xfce_rc_read_entry (default_rc, *shortcut, "none");
@@ -421,65 +432,67 @@ loadtheme_in_treeview (ThemeInfo *ti, gpointer data)
             continue;
         }
 
-	for (i = 0; !found && shortcut_options_list[i]; i++)
-	{
-	    if (g_ascii_strcasecmp (*shortcut, shortcut_options_list[i]) == 0)
-	    {
-		gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-		gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, _(shortcut_name_list[i]),
-				   COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-		found = TRUE;
-	    }
-	}
+        for (i = 0; !found && shortcut_options_list[i]; i++)
+        {
+            if (g_ascii_strcasecmp (*shortcut, shortcut_options_list[i]) == 0)
+            {
+                gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+                gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND,
+                    _(shortcut_name_list[i]), COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut,
+                    -1);
+                found = TRUE;
+            }
+        }
 
 
-	for (i = 0; !found && i <= 12; i++)
-	{
-	    gchar *option;
+        for (i = 0; !found && i <= 12; i++)
+        {
+            gchar *option;
 
-	    option = g_strdup_printf ("workspace_%d_key", i);
-	    if (g_ascii_strcasecmp (*shortcut, option) == 0)
-	    {
-		gchar *text;
+            option = g_strdup_printf ("workspace_%d_key", i);
+            if (g_ascii_strcasecmp (*shortcut, option) == 0)
+            {
+                gchar *text;
 
-		text = g_strdup_printf (_("Workspace %d"), i);
-		gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-		gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text, 
-				    COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-		g_free (text);
+                text = g_strdup_printf (_("Workspace %d"), i);
+                gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+                gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
+                    COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+                g_free (text);
 
-		found = TRUE;
-	    }
-	    
-	    g_free (option);
-	}
+                found = TRUE;
+            }
 
-	for (i = 0; !found && i <= 12; i++)
-	{
-	    gchar *option;
+            g_free (option);
+        }
 
-	    option = g_strdup_printf ("move_window_workspace_%d_key", i);
-	    if (g_ascii_strcasecmp (*shortcut, option) == 0)
-	    {
-	        gchar *text;
+        for (i = 0; !found && i <= 12; i++)
+        {
+            gchar *option;
 
-		text = g_strdup_printf (_("Move window to workspace %d"), i);
-	        gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-		gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
-				    COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
-		g_free (text);
+            option = g_strdup_printf ("move_window_workspace_%d_key", i);
+            if (g_ascii_strcasecmp (*shortcut, option) == 0)
+            {
+                gchar *text;
 
-		found = TRUE;
-	    }
+                text = g_strdup_printf (_("Move window to workspace %d"), i);
+                gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+                gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
+                    COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
+                g_free (text);
 
-	    g_free (option);
-	}
+                found = TRUE;
+            }
 
-	if (!found)
-	{
-	    gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-	    gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, *shortcut, COLUMN_SHORTCUT, entry_value, -1);
-	}
+            g_free (option);
+        }
+
+        if (!found)
+        {
+            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
+            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, *shortcut,
+                COLUMN_SHORTCUT, entry_value, -1);
+        }
 
         *shortcut++;
     }
@@ -544,7 +557,8 @@ savetreeview_in_theme (gchar * theme_file, gpointer data)
         }
 
         theme_dir = g_strndup (&theme_file[pos + 1], strlen (theme_file) - pos - 11);
-        hometheme_dir = g_build_filename (xfce_get_homedir (), G_DIR_SEPARATOR_S, ".themes", theme_dir, NULL);
+        hometheme_dir =
+            g_build_filename (xfce_get_homedir (), G_DIR_SEPARATOR_S, ".themes", theme_dir, NULL);
 
         if (!xfce_mkdirhier (hometheme_dir, 0755, NULL))
         {
@@ -601,7 +615,8 @@ savetreeview_in_theme (gchar * theme_file, gpointer data)
 }
 
 static gboolean
-shortcut_tree_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIter * iter, gpointer data)
+shortcut_tree_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIter * iter,
+    gpointer data)
 {
     shortcut_tree_foreach_struct *stfs = (shortcut_tree_foreach_struct *) data;
     gchar *shortcut_key = stfs->shortcut;
@@ -609,7 +624,8 @@ shortcut_tree_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
 
     gtk_tree_model_get (model, iter, COLUMN_SHORTCUT, &current_shortcut, -1);
 
-    if (!gtk_tree_selection_path_is_selected (stfs->selection, path) && (strcmp (shortcut_key, current_shortcut) == 0))
+    if (!gtk_tree_selection_path_is_selected (stfs->selection, path)
+        && (strcmp (shortcut_key, current_shortcut) == 0))
     {
         stfs->found = TRUE;
         stfs->path = gtk_tree_path_to_string (path);
@@ -623,19 +639,19 @@ static gboolean
 is_modifier (guint keycode)
 {
     XModifierKeymap *keymap;
-    gboolean         result = FALSE;
-    gint             n;
-    
+    gboolean result = FALSE;
+    gint n;
+
     keymap = XGetModifierMapping (gdk_display);
     for (n = 0; n < keymap->max_keypermod * 8; ++n)
-      if (keycode == keymap->modifiermap[n])
-      {
-          result = TRUE;
-          break;
-      }
+        if (keycode == keymap->modifiermap[n])
+        {
+            result = TRUE;
+            break;
+        }
 
     XFreeModifiermap (keymap);
-    
+
     return result;
 }
 
@@ -658,15 +674,11 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     gchar **current_shortcut;
 
     if (is_modifier (event->hardware_keycode))
-      return TRUE;
+        return TRUE;
 
     gdk_keymap_translate_keyboard_state (gdk_keymap_get_default (),
-                                         event->hardware_keycode,
-                                         event->state,
-                                         event->group,
-                                         NULL, NULL, NULL,
-                                         &consumed_modifiers);
-    
+        event->hardware_keycode, event->state, event->group, NULL, NULL, NULL, &consumed_modifiers);
+
     keyval = gdk_keyval_to_lower (event->keyval);
 
     if (keyval == GDK_ISO_Left_Tab)
@@ -695,8 +707,8 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
         }
         *current_shortcut++;
     }
-     
-    shortcut_string[strlen (shortcut_string) - 1] = '\0'; /* replace the trailing '+' */
+
+    shortcut_string[strlen (shortcut_string) - 1] = '\0';       /* replace the trailing '+' */
     g_free (accelerator);
     g_strfreev (shortcuts);
 
@@ -733,17 +745,20 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
         g_free (stfs.path);
         gtk_tree_path_free (path_old);
 
-	gtk_list_store_set (GTK_LIST_STORE (model), &iter_old, COLUMN_SHORTCUT, "None", -1);
+        gtk_list_store_set (GTK_LIST_STORE (model), &iter_old, COLUMN_SHORTCUT, "None", -1);
     }
 
     gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, shortcut_string, -1);
 
     /* save changes */
-    ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme, keybinding_theme_list);
+    ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme,
+        keybinding_theme_list);
 
     if (ti)
     {
-        gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+        gchar *theme_file =
+            g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S,
+            KEYTHEMERC, NULL);
         savetreeview_in_theme (theme_file, itf);
 
         g_free (theme_file);
@@ -757,7 +772,8 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 }
 
 void
-cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColumn * column, gpointer data)
+cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColumn * column,
+    gpointer data)
 {
     Itf *itf = (Itf *) data;
 
@@ -779,17 +795,20 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     gtk_tree_selection_get_selected (selection, &model, &iter);
     gtk_tree_model_get (model, &iter, COLUMN_COMMAND, &shortcut_name, -1);
 
-    dialog_text = g_strdup_printf ("<i>%s</i>\n<b>%s</b>", _("Compose shortcut for :"), shortcut_name);
+    dialog_text =
+        g_strdup_printf ("<i>%s</i>\n<b>%s</b>", _("Compose shortcut for :"), shortcut_name);
 
     /* Create dialog */
-    dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
-    
+    dialog =
+        gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL,
+        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
+
     button = xfce_create_mixed_button (GTK_STOCK_CLEAR, _("No shortcut"));
     gtk_widget_show (button);
     gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_NO);
- 
+
     hbox = gtk_hbox_new (FALSE, 10);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox),10);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
     gtk_widget_show (hbox);
 
     icon = xfce_themed_icon_load ("xfce4-keys", 48);
@@ -810,13 +829,15 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, FALSE, TRUE, 0);
 
     /* Center cancel button */
-    gtk_button_box_set_layout (GTK_BUTTON_BOX (GTK_DIALOG (dialog)->action_area), GTK_BUTTONBOX_SPREAD);
+    gtk_button_box_set_layout (GTK_BUTTON_BOX (GTK_DIALOG (dialog)->action_area),
+        GTK_BUTTONBOX_SPREAD);
 
     /* Connect signals */
     g_signal_connect (G_OBJECT (dialog), "key-press-event", G_CALLBACK (cb_compose_shortcut), itf);
 
     /* Take control on the keyboard */
-    if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE, GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
+    if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE,
+            GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
     {
         g_warning ("Cannot grab the keyboard");
         g_free (dialog_text);
@@ -840,16 +861,19 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         gtk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_SHORTCUT, "None", -1);
 
         /* save changes */
-        ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme, keybinding_theme_list);
+        ti = xfwm4_plugin_find_theme_info_by_name (xfwm4_plugin_current_key_theme,
+            keybinding_theme_list);
 
         if (ti)
         {
-            gchar *theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+            gchar *theme_file =
+                g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S,
+                KEYTHEMERC, NULL);
             savetreeview_in_theme (theme_file, itf);
             g_free (theme_file);
         }
         else
-          g_warning ("Cannot find the keytheme !");
+            g_warning ("Cannot find the keytheme !");
     }
 
     /* Release keyboard if not yet done */
@@ -861,7 +885,8 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
        name has not changed
      */
     mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, TRUE);
-    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2, xfwm4_plugin_current_key_theme);
+    mcs_manager_set_string (itf->mcs_plugin->manager, "Xfwm/KeyThemeName", CHANNEL2,
+        xfwm4_plugin_current_key_theme);
     mcs_manager_notify (itf->mcs_plugin->manager, CHANNEL2);
     mcs_manager_set_raw_channel (itf->mcs_plugin->manager, CHANNEL2, FALSE);
     xfwm4_plugin_write_options (itf->mcs_plugin);
@@ -870,4 +895,3 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     g_free (dialog_text);
     g_free (shortcut_name);
 }
-

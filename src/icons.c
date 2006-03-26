@@ -228,7 +228,7 @@ read_rgb_icon (DisplayInfo *display_info, Window window, int ideal_width, int id
 }
 
 static void
-get_pixmap_geometry (Display *dpy, Pixmap pixmap, int *w, int *h)
+get_pixmap_geometry (Display *dpy, Pixmap pixmap, unsigned int *w, unsigned int *h)
 {
     Window root;
     int x, y;
@@ -373,7 +373,7 @@ try_pixmap_and_mask (Display *dpy, Pixmap src_pixmap, Pixmap src_mask, int width
     GdkPixbuf *unscaled = NULL;
     GdkPixbuf *icon = NULL;
     GdkPixbuf *mask = NULL;
-    int w, h;
+    unsigned int w, h;
 
     if (src_pixmap == None)
     {

@@ -55,7 +55,8 @@ getWMState (DisplayInfo *display_info, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned long *data = NULL, state = WithdrawnState;
+    unsigned char *data = NULL;
+    unsigned long state = WithdrawnState;
 
     TRACE ("entering getWmState");
 
@@ -94,7 +95,7 @@ getMotifHints (DisplayInfo *display_info, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    long *data = NULL;
+    unsigned char *data = NULL;
     PropMwmHints *result = NULL;
 
     TRACE ("entering getMotifHints");
@@ -125,6 +126,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     int aformat;
     unsigned int result = 0;
     unsigned long bytes_remain, nitems;
+    unsigned char *data;
 
     TRACE ("entering getWMProtocols");
 
@@ -151,8 +153,10 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     {
         if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
                     display_info->atoms[WM_PROTOCOLS], &atype, &aformat, &nitems, &bytes_remain,
-                    (unsigned char **) &protocols)) == Success)
+                    (unsigned char **) &data)) == Success)
         {
+            *protocols = (Atom) *data;
+
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
                 if (*ap == display_info->atoms[WM_TAKE_FOCUS])
@@ -185,7 +189,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     int real_format;
     gboolean success = FALSE;
     unsigned long items_read, items_left;
-    long *data = NULL;
+    unsigned char *data = NULL;
 
     g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getHint");
@@ -224,7 +228,7 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
     gboolean success = FALSE;
     unsigned long items_read, items_left;
     unsigned long orientation, cols, rows, start;
-    unsigned long *data = NULL;
+    unsigned char *data = NULL;
 
     TRACE ("entering getDesktopLayout");
 
@@ -291,7 +295,7 @@ getGnomeDesktopMargins (DisplayInfo *display_info, Window root, int * m)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned long *data = NULL;
+    unsigned char *data = NULL;
 
     TRACE ("entering getGnomeDesktopMargins");
 
@@ -409,6 +413,7 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     int format;
     unsigned long n_atoms;
     unsigned long bytes_after;
+    unsigned char *data;
     Atom *atoms;
 
     *atoms_p = NULL;
@@ -419,11 +424,11 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
                              0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms, 
-                             &bytes_after, (unsigned char **) &atoms) != Success) || (type == None))
+                             &bytes_after, (unsigned char **) &data) != Success) || (type == None))
     {
         return FALSE;
     }
-
+    atoms = (Atom *) data;
     if (!check_type_and_format (32, XA_ATOM, -1, format, type))
     {
         if (atoms)
@@ -448,6 +453,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     int format;
     unsigned long n_cardinals;
     unsigned long bytes_after;
+    unsigned char *data;
     unsigned long *cardinals;
 
     *cardinals_p = NULL;
@@ -459,11 +465,11 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
                              0, G_MAXLONG, FALSE, XA_CARDINAL,
                              &type, &format, &n_cardinals, &bytes_after,
-                             (unsigned char **) &cardinals) != Success) || (type == None))
+                             (unsigned char **) &data) != Success) || (type == None))
     {
         return FALSE;
     }
-
+    cardinals = (unsigned long *) data;
     if (!check_type_and_format (32, XA_CARDINAL, -1, format, type))
     {
         XFree (cardinals);
@@ -943,6 +949,7 @@ getKDEIcon (DisplayInfo *display_info, Window window, Pixmap * pixmap, Pixmap * 
     int format;
     unsigned long nitems;
     unsigned long bytes_after;
+    unsigned char *data;
     Pixmap *icons;
 
     *pixmap = None;
@@ -951,11 +958,11 @@ getKDEIcon (DisplayInfo *display_info, Window window, Pixmap * pixmap, Pixmap * 
     icons = NULL;
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[KWM_WIN_ICON], 
                             0L, G_MAXLONG, FALSE, display_info->atoms[KWM_WIN_ICON], &type, 
-                            &format, &nitems, &bytes_after, (unsigned char **)&icons) != Success)
+                            &format, &nitems, &bytes_after, (unsigned char **)&data) != Success)
     {
         return FALSE;
     }
-
+    icons = (Pixmap *) data;
     if (type != display_info->atoms[KWM_WIN_ICON])
     {
         if (icons)

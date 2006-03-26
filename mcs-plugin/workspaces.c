@@ -36,7 +36,7 @@
 
 #include <gdk/gdkx.h>
 
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-manager.h>
 #include <xfce-mcs-manager/manager-plugin.h>
@@ -154,8 +154,7 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
     /* ws count */
     ws_count = netk_screen_get_workspace_count (netk_screen);
 
-    setting = mcs_manager_setting_lookup (mcs_manager, "Xfwm/WorkspaceCount", 
-                                          CHANNEL1);
+    setting = mcs_manager_setting_lookup (mcs_manager, "Xfwm/WorkspaceCount", CHANNEL1);
 
     if (setting)
     {
@@ -169,7 +168,7 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
         if (setting)
         {
             ws_count = setting->data.v_int;
-            mcs_manager_delete_setting(mcs_manager, "count", CHANNEL1);
+            mcs_manager_delete_setting (mcs_manager, "count", CHANNEL1);
         }
         else
         {
@@ -228,24 +227,22 @@ set_workspace_names (McsManager * manager, char **names, gboolean save)
 
     if (!xa_NET_DESKTOP_NAMES)
     {
-        xa_NET_DESKTOP_NAMES = XInternAtom(GDK_DISPLAY(), 
-                                           "_NET_DESKTOP_NAMES", False);
+        xa_NET_DESKTOP_NAMES = XInternAtom (GDK_DISPLAY (), "_NET_DESKTOP_NAMES", False);
     }
 
-    len = strlen(string);
-    
-    string = g_strdelimit(string, WS_SEP_S, '\0');
-    
-    gdk_error_trap_push();
-    gdk_property_change(gdk_get_default_root_window(), 
-                        gdk_x11_xatom_to_atom(xa_NET_DESKTOP_NAMES),
-                        gdk_atom_intern("UTF8_STRING", FALSE),
-                        8, GDK_PROP_MODE_REPLACE,
-                        string, len);
-    gdk_flush();
-    gdk_error_trap_pop();
+    len = strlen (string);
 
-    g_free(string);
+    string = g_strdelimit (string, WS_SEP_S, '\0');
+
+    gdk_error_trap_push ();
+    gdk_property_change (gdk_get_default_root_window (),
+        gdk_x11_xatom_to_atom (xa_NET_DESKTOP_NAMES),
+        gdk_atom_intern ("UTF8_STRING", FALSE),
+        8, GDK_PROP_MODE_REPLACE, (unsigned char *) string, len);
+    gdk_flush ();
+    gdk_error_trap_pop ();
+
+    g_free (string);
 }
 
 /* the dialog notebook page */
@@ -288,10 +285,8 @@ treeview_set_rows (McsManager * manager, int n)
 
         if (gtk_tree_path_prev (path))
         {
-            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path,
-                                          NULL, FALSE, 0, 0);
-            gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL,
-                                      FALSE);
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path, NULL, FALSE, 0, 0);
+            gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL, FALSE);
         }
 
         gtk_tree_path_free (path);
@@ -309,14 +304,11 @@ treeview_set_rows (McsManager * manager, int n)
 
             gtk_list_store_append (store, &iter);
 
-            gtk_list_store_set (store, &iter, NUMBER_COLUMN, i + 1,
-                                NAME_COLUMN, name, -1);
+            gtk_list_store_set (store, &iter, NUMBER_COLUMN, i + 1, NAME_COLUMN, name, -1);
 
             path = gtk_tree_model_get_path (model, &iter);
-            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path,
-                                          NULL, FALSE, 0, 0);
-            gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL,
-                                      FALSE);
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview), path, NULL, FALSE, 0, 0);
+            gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL, FALSE);
 
             gtk_tree_path_free (path);
         }
@@ -327,7 +319,7 @@ treeview_set_rows (McsManager * manager, int n)
 
 static void
 edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
-                  int number, const char *name, McsManager * manager)
+    int number, const char *name, McsManager * manager)
 {
     GtkWidget *dialog, *mainvbox, *header, *hbox, *label, *entry;
     char title[512];
@@ -335,11 +327,8 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
     const char *tmp;
 
     dialog = gtk_dialog_new_with_buttons (_("Change name"), NULL,
-                                          GTK_DIALOG_NO_SEPARATOR,
-                                          GTK_STOCK_CANCEL,
-                                          GTK_RESPONSE_CANCEL,
-                                          GTK_STOCK_APPLY, GTK_RESPONSE_OK,
-                                          NULL);
+        GTK_DIALOG_NO_SEPARATOR,
+        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_APPLY, GTK_RESPONSE_OK, NULL);
 
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_MOUSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
@@ -387,8 +376,7 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
             *s = ' ';
         }
 
-        gtk_list_store_set (GTK_LIST_STORE (model), iter,
-                            NAME_COLUMN, ws_names[n], -1);
+        gtk_list_store_set (GTK_LIST_STORE (model), iter, NAME_COLUMN, ws_names[n], -1);
 
         set_workspace_names (manager, ws_names, TRUE);
     }
@@ -397,15 +385,13 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
 }
 
 static gboolean
-button_pressed (GtkTreeView * tree, GdkEventButton * event,
-                McsManager * manager)
+button_pressed (GtkTreeView * tree, GdkEventButton * event, McsManager * manager)
 {
     GtkTreePath *path;
     GtkTreeIter iter;
     GtkTreeModel *model;
 
-    if (gtk_tree_view_get_path_at_pos (tree, event->x, event->y,
-                                       &path, NULL, NULL, NULL))
+    if (gtk_tree_view_get_path_at_pos (tree, event->x, event->y, &path, NULL, NULL, NULL))
     {
         char *name;
         int number;
@@ -414,8 +400,7 @@ button_pressed (GtkTreeView * tree, GdkEventButton * event,
         gtk_tree_model_get_iter (model, &iter, path);
         gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
 
-        gtk_tree_model_get (model, &iter,
-                            NUMBER_COLUMN, &number, NAME_COLUMN, &name, -1);
+        gtk_tree_model_get (model, &iter, NUMBER_COLUMN, &number, NAME_COLUMN, &name, -1);
 
         edit_name_dialog (model, &iter, number, name, manager);
         g_free (name);
@@ -425,7 +410,7 @@ button_pressed (GtkTreeView * tree, GdkEventButton * event,
 }
 
 static void
-treeview_destroyed (GtkWidget *tv)
+treeview_destroyed (GtkWidget * tv)
 {
     GtkTreeModel *store;
 
@@ -444,11 +429,10 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
     char *markup;
     GtkWidget *label;
 
-    markup = g_strconcat ("<i>", _("Click on a workspace name to edit it"),
-                          "</i>", NULL);
+    markup = g_strconcat ("<i>", _("Click on a workspace name to edit it"), "</i>", NULL);
     label = gtk_label_new (markup);
     g_free (markup);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
     gtk_widget_show (label);
     gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
@@ -456,9 +440,8 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
     treeview_scroll = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (treeview_scroll);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (treeview_scroll),
-                                    GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW
-                                         (treeview_scroll), GTK_SHADOW_IN);
+        GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (treeview_scroll), GTK_SHADOW_IN);
     gtk_box_pack_start (GTK_BOX (vbox), treeview_scroll, TRUE, TRUE, 0);
 
     store = gtk_list_store_new (N_COLUMNS, G_TYPE_INT, G_TYPE_STRING);
@@ -468,8 +451,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
     gtk_container_add (GTK_CONTAINER (treeview_scroll), treeview);
 
     /* clean up list store */
-    g_signal_connect(treeview, "destroy-event", 
-                     G_CALLBACK(treeview_destroyed), NULL);
+    g_signal_connect (treeview, "destroy-event", G_CALLBACK (treeview_destroyed), NULL);
 
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (treeview), TRUE);
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
@@ -479,20 +461,16 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("Number", renderer,
-                                                       "text", NUMBER_COLUMN,
-                                                       NULL);
+        "text", NUMBER_COLUMN, NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
     renderer = gtk_cell_renderer_text_new ();
-    column = gtk_tree_view_column_new_with_attributes ("Name", renderer,
-                                                       "text", NAME_COLUMN,
-                                                       NULL);
+    column = gtk_tree_view_column_new_with_attributes ("Name", renderer, "text", NAME_COLUMN, NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
-    g_signal_connect (treeview, "button-press-event",
-                      G_CALLBACK (button_pressed), manager);
+    g_signal_connect (treeview, "button-press-event", G_CALLBACK (button_pressed), manager);
 }
 
 /* workspace count */
@@ -535,26 +513,24 @@ add_workspaces_page (GtkBox * box)
     GtkWidget *frame, *vbox;
 
     /* Number of workspaces */
-    frame = xfce_framebox_new (_("Workspaces"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (box, frame, FALSE, FALSE, 0);
-
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+
+    frame = xfce_create_framebox_with_content (_("Workspaces"), vbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (box, frame, FALSE, FALSE, 0);
 
     add_count_spinbox (vbox, mcs_manager);
 
     /* Workspace names */
-    frame = xfce_framebox_new (_("Workspace names"), TRUE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
-
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+
+    frame = xfce_create_framebox_with_content (_("Workspace names"), vbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
 
     add_names_treeview (vbox, mcs_manager);
 }
@@ -571,15 +547,15 @@ update_channel (NetkScreen * screen, NetkWorkspace * ws, McsManager * manager)
 static void
 watch_workspaces_hint (McsManager * manager)
 {
-    ws_created_id =g_signal_connect (netk_screen, "workspace-created",
-                                     G_CALLBACK (update_channel), manager);
+    ws_created_id = g_signal_connect (netk_screen, "workspace-created",
+        G_CALLBACK (update_channel), manager);
 
     ws_destroyed_id = g_signal_connect (netk_screen, "workspace-destroyed",
-                                        G_CALLBACK (update_channel), manager);
+        G_CALLBACK (update_channel), manager);
 }
 
 G_MODULE_EXPORT void
-g_module_unload (GModule *module)
+g_module_unload (GModule * module)
 {
     DBG ("Disconecting workspace signal handlers");
 

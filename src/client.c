@@ -207,8 +207,6 @@ clientInstallColormaps (Client * c)
 void
 clientUpdateColormaps (Client * c)
 {
-    XWindowAttributes attr;
-
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUpdateColormaps");
 
@@ -222,7 +220,6 @@ clientUpdateColormaps (Client * c)
         c->cmap_windows = NULL;
         c->ncmap = 0;
     }
-    c->cmap = attr.colormap;
 }
 
 void
@@ -779,9 +776,9 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
        to achieve fullscreen by using static gravity and a (0,0) position, the 
        second part of the test is for this case.
      */
-    if ((flags & (CFG_CONSTRAINED | CFG_REQUEST) == (CFG_CONSTRAINED | CFG_REQUEST))
+    if (((flags & (CFG_CONSTRAINED | CFG_REQUEST)) == (CFG_CONSTRAINED | CFG_REQUEST))
          && CONSTRAINED_WINDOW (c)
-         && !(c->gravity == StaticGravity && (c->x == 0) && (c->y == 0)))
+         && !((c->gravity == StaticGravity) && (c->x == 0) && (c->y == 0)))
     {
         int px = c->x;
         int py = c->y;

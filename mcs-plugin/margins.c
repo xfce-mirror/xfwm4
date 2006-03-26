@@ -32,7 +32,7 @@
 
 #include <gtk/gtk.h>
 
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -65,16 +65,14 @@ create_margins_channel (McsPlugin * mcs_plugin)
     int i, n;
 
     mcs_manager = mcs_plugin->manager;
-    
+
     ws_create_channel (mcs_plugin->manager, CHANNEL2, RCFILE2);
 
     for (i = 0; i < 4; i++)
     {
         margins[i] = 0;
 
-        setting =
-            mcs_manager_setting_lookup (mcs_plugin->manager, options[i],
-                                        CHANNEL2);
+        setting = mcs_manager_setting_lookup (mcs_plugin->manager, options[i], CHANNEL2);
 
         n = (setting) ? setting->data.v_int : 0;
 
@@ -115,33 +113,33 @@ margin_changed (GtkSpinButton * spin, gpointer p)
 }
 
 void
-add_margins_page (GtkBox *box)
+add_margins_page (GtkBox * box)
 {
     GtkWidget *hbox, *frame, *label, *vbox, *spin, *image;
     GtkSizeGroup *sg;
     GdkPixbuf *monitor;
     int wmax, hmax, i;
-    
+
     wmax = gdk_screen_width () / 4;
     hmax = gdk_screen_height () / 4;
 
-    frame = xfce_framebox_new (_("Workspace Margins"), FALSE);
-    gtk_widget_show (frame);
-    gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, BORDER);
-    
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
     gtk_widget_show (vbox);
-    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+
+    frame = xfce_create_framebox_with_content (_("Workspace Margins"), vbox);
+    gtk_widget_show (frame);
+    gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, BORDER);
 
     label =
-        gtk_label_new (_("Margins are areas on the edges of the screen where no window will be placed"));
+        gtk_label_new (_
+        ("Margins are areas on the edges of the screen where no window will be placed"));
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_misc_set_padding (GTK_MISC (label), BORDER, 0);
     gtk_widget_show (label);
     gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, BORDER);
-    
+
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
     gtk_widget_show (hbox);
@@ -151,7 +149,7 @@ add_margins_page (GtkBox *box)
     image = gtk_image_new_from_pixbuf (monitor);
     gtk_widget_show (image);
     gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
-    g_object_unref(monitor);
+    g_object_unref (monitor);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
@@ -178,7 +176,7 @@ add_margins_page (GtkBox *box)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+        G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     /* right */
     i++;
@@ -198,7 +196,7 @@ add_margins_page (GtkBox *box)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+        G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     /* top */
     i++;
@@ -218,7 +216,7 @@ add_margins_page (GtkBox *box)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+        G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 
     /* bottom */
     i++;
@@ -238,7 +236,5 @@ add_margins_page (GtkBox *box)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), margins[i]);
     g_signal_connect (G_OBJECT (spin), "value-changed",
-                      G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
+        G_CALLBACK (margin_changed), GINT_TO_POINTER (i));
 }
-
-

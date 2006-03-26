@@ -512,6 +512,7 @@ main (int argc, char **argv)
     gint compositor = 2;
     int status;
 
+    DBG ("xfwm4 %s starting", revision);
     for (i = 1; i < argc; i++)
     {
         if (!strcmp (argv[i], "--daemon"))
