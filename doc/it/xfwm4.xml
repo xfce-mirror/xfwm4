@@ -176,7 +176,7 @@ maintainers, etc. Commented out by default.
 	  <para>
 	    If you want the panel, and apps that do not appear in the taskbar, 
 	    to be included when you switch the focus using the Alt+Tab 
-	    shortcut, edit your $HOME/.xfce4/xfwm4rc (or create an new one) 
+	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) 
 	    and add this line : cycle_minimum=false</para>
 	  
 	  <para>NOTE: the use of a keyboard shortcut in an application needs 
