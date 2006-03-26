@@ -120,7 +120,7 @@ getMotifHints (DisplayInfo *display_info, Window w)
 unsigned int
 getWMProtocols (DisplayInfo *display_info, Window w)
 {
-    Atom *protocols = None, *ap;
+    Atom *protocols, *ap;
     int i, n;
     Atom atype;
     int aformat;
@@ -130,6 +130,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
 
     TRACE ("entering getWMProtocols");
 
+    *protocols = None;
     if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
@@ -200,7 +201,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
                              FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left,
                              (unsigned char **) &data) == Success) && (items_read))
     {
-        *value = *data;
+        *value = *((long *) data);
         if (data)        
         {
             XFree (data);
@@ -848,7 +849,7 @@ getClientLeader (DisplayInfo *display_info, Window window)
 
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[WM_CLIENT_LEADER], 
                             0L, 1L, FALSE, AnyPropertyType, &actual_type, &actual_format, &nitems,
-                            &bytes_after, &prop) == Success)
+                            &bytes_after, (unsigned char **) &prop) == Success)
     {
         if ((prop) && (actual_type == XA_WINDOW) && (actual_format == 32)
             && (nitems == 1) && (bytes_after == 0))
@@ -878,7 +879,7 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
 
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_USER_TIME], 
                             0L, 1L, FALSE, XA_CARDINAL, &actual_type, &actual_format, &nitems,
-                            &bytes_after, &data) == Success)
+                            &bytes_after, (unsigned char **) &data) == Success)
     {
         if ((data) && (actual_type == XA_CARDINAL)
             && (nitems == 1) && (bytes_after == 0))
@@ -989,7 +990,7 @@ getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, 
 
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_ICON], 
                             0L, G_MAXLONG, FALSE, XA_CARDINAL, &type, &format, nitems,
-                            &bytes_after, (unsigned char **)data) != Success)
+                            &bytes_after, (unsigned char **) data) != Success)
     {
         *data = NULL;
         return FALSE;
@@ -1078,7 +1079,7 @@ checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
     
     XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR], 
                        0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format, 
-                       &nitems, &bytes_after, (unsigned char **)&trayIconForWindow);
+                       &nitems, &bytes_after, (unsigned char **) &trayIconForWindow);
 
     if ((actual_format == None) || 
         (actual_type != XA_WINDOW) || 
