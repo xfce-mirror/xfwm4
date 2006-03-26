@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-25 00:00+0100\n"
-"PO-Revision-Date: 2006-03-19 10:44+0900\n"
+"PO-Revision-Date: 2006-03-26 12:52+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "余白"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:346
 msgid "None"
-msgstr ""
+msgstr "無し"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -88,7 +88,7 @@ msgstr "全てのワークスペースを循環させる"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:393
 msgid "Cycling"
-msgstr ""
+msgstr "循環"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Activate focus stealing prevention"
@@ -103,9 +103,8 @@ msgid "Focus"
 msgstr "フォーカス"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:426
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr "ウィンドウを掴んだり移動したりするために ALT キー使用する"
+msgstr "ウィンドウを掴んだり移動したりするために使うキー"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Raise windows when any mouse button is pressed"
@@ -157,9 +156,8 @@ msgid "Large"
 msgstr "大きい"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:499
-#, fuzzy
 msgid "Placement"
-msgstr "スマート配置"
+msgstr "配置"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:517
@@ -787,13 +785,3 @@ msgstr "ワークスペース"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ワークスペースの設定"
-
-#~ msgid "Window cycling"
-#~ msgstr "ウィンドウの循環"
-
-#~ msgid "Tweaks"
-#~ msgstr "調節"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#~ msgid "Compositing"
-#~ msgstr "画面処理"
