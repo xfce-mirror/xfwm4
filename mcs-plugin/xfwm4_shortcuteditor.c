@@ -428,7 +428,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
 
         if (g_str_has_prefix (*shortcut, "shortcut_") || g_str_has_suffix (*shortcut, "_exec"))
         {
-            *shortcut++;
+            shortcut++;
             continue;
         }
 
@@ -494,7 +494,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
                 COLUMN_SHORTCUT, entry_value, -1);
         }
 
-        *shortcut++;
+        shortcut++;
     }
 
     g_strfreev (shortcuts_list);
@@ -705,7 +705,7 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
             strcat (shortcut_string, *current_shortcut);
             strcat (shortcut_string, "+");
         }
-        *current_shortcut++;
+        current_shortcut++;
     }
 
     shortcut_string[strlen (shortcut_string) - 1] = '\0';       /* replace the trailing '+' */
