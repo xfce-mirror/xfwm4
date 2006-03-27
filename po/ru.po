@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Poul Ionkin <wizzard@nmg.lv>, 2003.
 # Anthony Ivanoff <a-i@bk.ru>, 2004, 2005.
+# Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-25 00:00+0100\n"
-"PO-Revision-Date: 2005-10-09 20:52+0900\n"
-"Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
+"POT-Creation-Date: 2006-03-27 23:13+0900\n"
+"PO-Revision-Date: 2006-03-25 18:45+0500\n"
+"Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: ../mcs-plugin/margins.c:128
 msgid "Workspace Margins"
@@ -60,7 +61,7 @@ msgstr "Поля"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:346
 msgid "None"
-msgstr ""
+msgstr "Ничего"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -76,10 +77,13 @@ msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"Включать окна, у которых установлено свойство\n"
+" \"не отображать в переключателе рабочих мест\"\n"
+"или \"не отображать на панели задач\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:382
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Включить скрытые (свернутые) окна"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:388
 msgid "Cycle through windows from all workspaces"
@@ -87,11 +91,11 @@ msgstr "Переключаться между окнами, расположен
 
 #: ../mcs-plugin/wmtweaks_plugin.c:393
 msgid "Cycling"
-msgstr ""
+msgstr "Переключение окон"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Автивировать предотвращение \"похищения\" фокуса ввода"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Honor the standard ICCCM focus hint"
@@ -102,9 +106,8 @@ msgid "Focus"
 msgstr "Фокус окна"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:426
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr "Использовать клавишу ALT для захвата и перемещения окон"
+msgstr "Клавиша, используемая для захвата и перемещения окон"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Raise windows when any mouse button is pressed"
@@ -120,7 +123,7 @@ msgstr "Использовать сопротивление границ окн�
 
 #: ../mcs-plugin/wmtweaks_plugin.c:449
 msgid "Accessibility"
-msgstr ""
+msgstr "Доступность"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "Switch workspaces using the mouse wheel over the desktop"
@@ -131,6 +134,8 @@ msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
+"Запоминать и возвращаться к предыдущему рабочему\n"
+"месту при переключениями горячими клавишами"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -143,20 +148,20 @@ msgstr "Переключать рабочее место при достижен
 
 #: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Минимальный размер окон, при котором будет включено умное размещение"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:494 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
-msgstr "Маленькое"
+msgstr "Меньше"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid "Large"
-msgstr ""
+msgstr "Больше"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:499
 msgid "Placement"
-msgstr ""
+msgstr "Рамещение"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Show shadows under regular windows"
@@ -167,28 +172,26 @@ msgid "Show shadows under popup windows"
 msgstr "Отображать тени под всплывающими окнами"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Прозрачность окон во время перемещения"
+msgstr "Прозрачность оформления окон"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
 #: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Transparent"
-msgstr "Прозрачность"
+msgstr "Прозрачный"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
 #: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opaque"
-msgstr ""
+msgstr "Непрозрачный"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Показывать содержимое окна при перемещении"
+msgstr "Прозрачность окна при перемещении"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Opacity of windows during resize"
-msgstr "Прозрачность окон во время перемещения"
+msgstr "Прозрачность окон при изменении размера"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opacity of popup windows"
@@ -288,7 +291,7 @@ msgstr "Щелкните и перетащите кнопки, чтобы изм
 
 #: ../mcs-plugin/xfwm4_plugin.c:562
 msgid "Active"
-msgstr "Активное окно"
+msgstr "Активные"
 
 #: ../mcs-plugin/xfwm4_plugin.c:573
 msgid "Title"
@@ -300,7 +303,7 @@ msgstr "Заголовок окна (нельзя удалить)"
 
 #: ../mcs-plugin/xfwm4_plugin.c:582
 msgid "Hidden"
-msgstr "Скрыта"
+msgstr "Скрытые"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1336
 msgid "Font Selection Dialog"
@@ -397,7 +400,7 @@ msgstr "Показ окна при щелчке мышью"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1638
 msgid "Raise window when clicking inside application window"
-msgstr "Поднимать окно при щелчке на нем"
+msgstr "Поднимать окно при щелчке на нём"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1653
 msgid "Windows snapping"
@@ -664,7 +667,7 @@ msgstr "Восстановить"
 
 #: ../src/menu.c:41
 msgid "_Hide"
-msgstr "Скрыть"
+msgstr "_Скрыть"
 
 #: ../src/menu.c:42
 msgid "Hide _all others"
@@ -704,7 +707,7 @@ msgstr "Перенести на..."
 
 #: ../src/menu.c:53
 msgid "_Close"
-msgstr "Закрыть"
+msgstr "_Закрыть"
 
 #: ../src/menu.c:56
 msgid "Destroy"
@@ -712,7 +715,7 @@ msgstr "Уничтожить"
 
 #: ../src/menu.c:59
 msgid "_Quit"
-msgstr "Выход"
+msgstr "_Выйти"
 
 #: ../src/menu.c:60
 msgid "Restart"
@@ -749,20 +752,19 @@ msgstr "Неизвестное приложение!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Настройки оконного менеджера"
+msgstr "Параметры оконного менеджера"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Настройки оконного менеджера Xfce 4"
+msgstr "Параметры оконного менеджера Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
 msgstr "Дополнительные настройки"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Настройки оконного менеджера Xfce 4"
+msgstr "Дополнительные настройки оконного менеджера Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
@@ -771,9 +773,3 @@ msgstr "Параметры рабочих мест"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Параметры рабочих мест Xfce 4"
-
-#~ msgid "Window cycling"
-#~ msgstr "Переключение окон"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Переключать окна"
