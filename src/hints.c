@@ -155,7 +155,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
                     display_info->atoms[WM_PROTOCOLS], &atype, &aformat, &nitems, &bytes_remain,
                     (unsigned char **) &data)) == Success)
         {
-            *protocols = (Atom) *data;
+            protocols = (Atom *) data;
 
             for (i = 0, ap = protocols; i < nitems; i++, ap++)
             {
@@ -844,7 +844,7 @@ getClientLeader (DisplayInfo *display_info, Window window)
     int actual_format;
     unsigned long nitems;
     unsigned long bytes_after;
-    unsigned char *prop = NULL;
+    unsigned char *prop;
 
     TRACE ("entering getClientLeader");
 

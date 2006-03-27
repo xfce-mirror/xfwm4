@@ -74,8 +74,10 @@
 #define MAIN_EVENT_MASK BASE_EVENT_MASK
 #endif /* HAVE_COMPOSITOR */
 
+#ifndef DEBUG
 /* For what, IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.*/
 static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
+#endif
 
 static DisplayInfo *display_info = NULL;
 gboolean xfwm4_quit           = FALSE;
@@ -512,7 +514,7 @@ main (int argc, char **argv)
     gint compositor = 2;
     int status;
 
-    DBG ("xfwm4 %s starting", revision);
+    DBG ("xfwm4 starting");
     for (i = 1; i < argc; i++)
     {
         if (!strcmp (argv[i], "--daemon"))
