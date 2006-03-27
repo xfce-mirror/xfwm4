@@ -229,6 +229,7 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
     gboolean success = FALSE;
     unsigned long items_read, items_left;
     unsigned long orientation, cols, rows, start;
+    unsigned long *ptr = NULL;
     unsigned char *data = NULL;
 
     TRACE ("entering getDesktopLayout");
@@ -240,10 +241,11 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
     {
         do
         {
-            orientation = data[0];
-            cols = data[1];
-            rows = data[2];
-            start = (items_read >= 4) ? data[3] : NET_WM_TOPLEFT;
+            ptr = (unsigned long *) data;
+            orientation = (unsigned long) *ptr++;
+            cols = (unsigned long) *ptr++;
+            rows = (unsigned long) *ptr++;
+            start = (items_read >= 4) ? (unsigned long) *ptr++ : NET_WM_TOPLEFT;
 
             if (orientation > NET_WM_ORIENTATION_VERT) 
             {
@@ -270,7 +272,7 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
                 cols = (ws_count - 1) / rows + 1;
             }
 
-            layout->orientation = orientation;
+            layout->orientation = (unsigned long) orientation;
             layout->cols = cols;
             layout->rows = rows;
             layout->start = start;
@@ -296,6 +298,7 @@ getGnomeDesktopMargins (DisplayInfo *display_info, Window root, int * m)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
+    unsigned long *ptr = NULL;
     unsigned char *data = NULL;
 
     TRACE ("entering getGnomeDesktopMargins");
@@ -305,10 +308,11 @@ getGnomeDesktopMargins (DisplayInfo *display_info, Window root, int * m)
                 &real_type, &real_format, &items_read, &items_left,
                 (unsigned char **) &data) == Success) && (items_read >= 4))
     {
-        m[0] = (int) data[0];
-        m[1] = (int) data[1];
-        m[2] = (int) data[2];
-        m[3] = (int) data[3];
+        ptr = (unsigned long *) data;
+        m[0] = (int) *ptr++;
+        m[1] = (int) *ptr++;
+        m[2] = (int) *ptr++;
+        m[3] = (int) *ptr++;
         XFree (data);
     }
     else
