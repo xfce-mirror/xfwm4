@@ -130,7 +130,6 @@ getWMProtocols (DisplayInfo *display_info, Window w)
 
     TRACE ("entering getWMProtocols");
 
-    *protocols = None;
     if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
@@ -735,11 +734,11 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str
 
     TRACE ("entering getUTF8StringList");
 
+    *str_p = NULL;
+    *n_items = 0;
+
     if (!getUTF8StringData (display_info, w, atom_id, &xstr, &length) || !length)
     {
-        *str_p = NULL;
-        *n_items = 0;
-
         return FALSE;
     }
     
