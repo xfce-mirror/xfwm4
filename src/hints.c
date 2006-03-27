@@ -119,7 +119,7 @@ getMotifHints (DisplayInfo *display_info, Window w)
 unsigned int
 getWMProtocols (DisplayInfo *display_info, Window w)
 {
-    Atom *protocols = None, *ap;
+    Atom *protocols, *ap;
     int i, n;
     Atom atype;
     int aformat;
@@ -724,11 +724,11 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str
 
     TRACE ("entering getUTF8StringList");
 
+    *str_p = NULL;
+    *n_items = 0;
+
     if (!getUTF8StringData (display_info, w, atom_id, &xstr, &length) || !length)
     {
-        *str_p = NULL;
-        *n_items = 0;
-
         return FALSE;
     }
     
