@@ -120,66 +120,70 @@ getMotifHints (DisplayInfo *display_info, Window w)
 unsigned int
 getWMProtocols (DisplayInfo *display_info, Window w)
 {
-    Atom *protocols, *ap;
-    int i, n;
-    Atom atype;
-    int aformat;
-    unsigned int result = 0;
-    unsigned long bytes_remain, nitems;
-    unsigned char *data;
+   Atom *protocols, *ap;
+   int i, n;
+   Atom atype;
+   int aformat;
+   unsigned int result = 0;
+   unsigned long bytes_remain, nitems;
+   unsigned char *data;
 
-    TRACE ("entering getWMProtocols");
+   TRACE ("entering getWMProtocols");
 
-    if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
-    {
-        for (i = 0, ap = protocols; i < n; i++, ap++)
-        {
-            if (*ap == display_info->atoms[WM_TAKE_FOCUS])
-            {
-                result |= WM_PROTOCOLS_TAKE_FOCUS;
-            }
-            if (*ap == display_info->atoms[WM_DELETE_WINDOW])
-            {
-                result |= WM_PROTOCOLS_DELETE_WINDOW;
-            }
-            /* KDE extension */
-            if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
-            {
-                result |= WM_PROTOCOLS_CONTEXT_HELP;
-            }
-        }
-    }
-    else
-    {
-        if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
-                    display_info->atoms[WM_PROTOCOLS], &atype, &aformat, &nitems, &bytes_remain,
-                    (unsigned char **) &data)) == Success)
-        {
-            protocols = (Atom *) data;
-
-            for (i = 0, ap = protocols; i < nitems; i++, ap++)
-            {
-                if (*ap == display_info->atoms[WM_TAKE_FOCUS])
-                {
-                    result |= WM_PROTOCOLS_TAKE_FOCUS;
-                }
-                if (*ap == display_info->atoms[WM_DELETE_WINDOW])
-                {
-                    result |= WM_PROTOCOLS_DELETE_WINDOW;
-                }
-                /* KDE extension */
-                if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
-                {
-                    result |= WM_PROTOCOLS_CONTEXT_HELP;
-                }
-            }
-        }
-    }
-    if (protocols)
-    {
-        XFree (protocols);
-    }
-    return result;
+   if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
+   {
+       for (i = 0, ap = protocols; i < n; i++, ap++)
+       {
+           if (*ap == display_info->atoms[WM_TAKE_FOCUS])
+           {
+               result |= WM_PROTOCOLS_TAKE_FOCUS;
+           }
+           if (*ap == display_info->atoms[WM_DELETE_WINDOW])
+           {
+               result |= WM_PROTOCOLS_DELETE_WINDOW;
+           }
+           /* KDE extension */
+           if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
+           {
+               result |= WM_PROTOCOLS_CONTEXT_HELP;
+           }
+       }
+       if (protocols)
+       {
+           XFree (protocols);
+       }
+   }
+   else
+   {
+       if ((XGetWindowProperty (display_info->dpy, w,
+                   display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
+                   display_info->atoms[WM_PROTOCOLS], &atype,
+                   &aformat, &nitems, &bytes_remain,
+                   (unsigned char **) &data)) == Success)
+       {
+           for (i = 0, ap = (Atom *) data; i < nitems; i++, ap++)
+           {
+               if (*ap == display_info->atoms[WM_TAKE_FOCUS])
+               {
+                   result |= WM_PROTOCOLS_TAKE_FOCUS;
+               }
+               if (*ap == display_info->atoms[WM_DELETE_WINDOW])
+               {
+                   result |= WM_PROTOCOLS_DELETE_WINDOW;
+               }
+               /* KDE extension */
+               if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
+               {
+                   result |= WM_PROTOCOLS_CONTEXT_HELP;
+               }
+           }
+           if (data)
+           {
+               XFree (data);
+           }
+       }
+   }
+   return result;
 }
 
 gboolean
@@ -583,12 +587,12 @@ internal_utf8_strndup (const gchar *src, gssize max_len)
     const gchar *s = src;
 
     if (max_len <= 0)
-	return g_strdup (src);
+        return g_strdup (src);
 
     while (max_len && *s)
     {
-	s = g_utf8_next_char (s);
-	max_len--;
+        s = g_utf8_next_char (s);
+        max_len--;
     }
 
     return g_strndup (src, s - src);
