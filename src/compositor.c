@@ -31,6 +31,7 @@
 
 #include <glib.h>
 #include <math.h>
+#include <string.h>
 #include <libxfce4util/libxfce4util.h>
 
 #include "display.h"
@@ -59,7 +60,7 @@
 #endif /* SHADOW_OFFSET_X */
 
 #ifndef SHADOW_OFFSET_Y
-#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
+#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 8)
 #endif /* SHADOW_OFFSET_Y */
 
 #define IDLE_REPAINT
@@ -701,7 +702,7 @@ create_root_buffer (ScreenInfo *screen_info)
 {
     Picture pict;
     XRenderPictFormat *format;
-    Pixmap  rootPixmap;
+    Pixmap rootPixmap;
     Visual *visual;
     gint depth;
     gint screen_width;
@@ -1595,7 +1596,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 {
     ScreenInfo *screen_info = NULL;
     CWindow *new;
-	
+        
     TRACE ("entering add_win: 0x%lx", id);
 
     new = g_new0 (CWindow, 1);
@@ -2629,8 +2630,8 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     if (screen_info->rootBuffer)
     {
-	XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
-	screen_info->rootBuffer = None;
+        XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
+        screen_info->rootBuffer = None;
     }
     add_repair (display_info);
 #endif /* HAVE_COMPOSITOR */
@@ -2667,7 +2668,6 @@ compositorRebuildScreen (ScreenInfo *screen_info)
 #endif /* HAVE_COMPOSITOR */
 }
 
-
 void
 compositorDamageWindow (DisplayInfo *display_info, Window id)
 {
@@ -2690,5 +2690,33 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
         damage_win (cw);
         add_repair (display_info);
     }
+#endif /* HAVE_COMPOSITOR */
+}
+
+gboolean
+compositorTestServer (DisplayInfo *display_info)
+{
+#ifdef HAVE_COMPOSITOR
+    char *vendor;
+
+    g_return_val_if_fail (display_info != NULL, FALSE);
+    TRACE ("entering compositorTestServer");
+
+    vendor = ServerVendor (display_info->dpy);
+
+    if (vendor && (!strstr ("X.Org", vendor)))
+    {
+        /* 
+           Check the version, X.org 6.8.x has some bugs that makes
+           it not suitable for use with xfwm4 compositor
+         */
+        if ((VendorRelease(display_info->dpy) / 10) <= 68)
+        {
+            return FALSE;
+        }
+    }
+    return TRUE;
+#else /* HAVE_COMPOSITOR */
+    return FALSE;
 #endif /* HAVE_COMPOSITOR */
 }

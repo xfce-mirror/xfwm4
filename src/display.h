@@ -261,5 +261,7 @@ ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
 Time          myDisplayUpdateCurentTime     (DisplayInfo *, 
                                              XEvent *);
 Time          myDisplayGetCurrentTime       (DisplayInfo *);
+gboolean      myDisplayTestXrender          (DisplayInfo *,
+                                             gdouble);
 
 #endif /* INC_DISPLAY_H */

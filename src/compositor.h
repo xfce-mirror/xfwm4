@@ -50,5 +50,6 @@ void     compositorUpdateScreenSize (ScreenInfo *);
 
 void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
 void     compositorDamageWindow     (DisplayInfo *, Window);
+gboolean compositorTestServer       (DisplayInfo *);
 
 #endif /* INC_COMPOSITOR_H */

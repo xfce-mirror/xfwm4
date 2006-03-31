@@ -22,6 +22,9 @@
 #  include "config.h"
 #endif
 
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/cursorfont.h>
@@ -622,4 +625,89 @@ myDisplayGetCurrentTime (DisplayInfo *display)
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
 
     return (Time) display->current_time;
+}
+
+static gdouble
+get_time(void)
+{
+    struct timeval timev;
+
+    gettimeofday(&timev, NULL);
+    return (gdouble)timev.tv_sec + (((gdouble)timev.tv_usec) / 1000000);
+}
+
+gboolean
+myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
+{
+#ifdef HAVE_RENDER
+    gdouble t1, t2, dt;
+    Display *dpy;
+    Picture picture1, picture2;
+    XRenderPictFormat *format_src, *format_dst;
+    Pixmap fillPixmap, rootPixmap;
+    XRenderColor c;
+    Visual *visual;
+    Screen *screen;
+    int test_width, test_height;
+    int screen_number;
+    int depth;
+
+    g_return_val_if_fail (display != NULL, FALSE);
+    TRACE ("entering myDisplayTestXrender");
+
+    t1 = get_time();
+    
+    c.alpha = 0x7f00;
+    c.red   = 0xffff;
+    c.green = 0xffff;
+    c.blue  = 0xffff;
+
+    dpy = display->dpy;
+    screen_number = DefaultScreen (dpy);
+    screen = DefaultScreenOfDisplay (dpy);
+    visual = DefaultVisual (dpy, screen_number);
+    depth = DefaultDepth (dpy, screen_number);
+    test_width = WidthOfScreen (screen) / 4;
+    test_height = HeightOfScreen (screen) / 4;
+    
+    format_dst = XRenderFindVisualFormat (dpy, visual);
+    g_return_val_if_fail (format_dst != NULL , FALSE);
+
+    format_src = XRenderFindStandardFormat (dpy, PictStandardARGB32);
+    g_return_val_if_fail (format_src != NULL , FALSE);
+
+    rootPixmap = XCreatePixmap (dpy,
+                                DefaultRootWindow(dpy),
+                                test_width, test_height, depth);
+    fillPixmap = XCreatePixmap (dpy,
+                                DefaultRootWindow(dpy),
+                                test_width, test_height, 32);
+
+    picture1 = XRenderCreatePicture (dpy, 
+                                    fillPixmap,
+                                    format_src, 0, NULL);
+    picture2 = XRenderCreatePicture (dpy, 
+                                    rootPixmap,
+                                    format_dst, 0, NULL); 
+    XRenderFillRectangle (dpy, PictOpSrc,
+                          picture1, &c, 0, 0, 
+                          test_width, test_height);
+    XFreePixmap (dpy, rootPixmap);
+    XFreePixmap (dpy, fillPixmap);
+    XRenderComposite (dpy, PictOpOver, 
+                      picture1, None, picture2, 
+                      0, 0, 0, 0, 0, 0, 
+                      test_width, test_height);
+    XRenderFreePicture (dpy, picture1);
+    XRenderFreePicture (dpy, picture2);
+    XSync (dpy, FALSE);
+
+    t2 = get_time();
+    dt = t2 - t1;
+    TRACE ("Test duration: %3.6f sec.", dt);
+
+    return (gboolean) (dt < min_time);
+#else  /* HAVE_RENDER */
+    return FALSE;
+#endif /* HAVE_RENDER */
 }

@@ -35,6 +35,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <time.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -82,6 +83,25 @@ static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISIO
 static DisplayInfo *display_info = NULL;
 gboolean xfwm4_quit           = FALSE;
 gboolean xfwm4_reload         = FALSE;
+
+static void
+compute_delta_t (struct timeval *start, struct timeval *stop, struct timeval *delta)
+{
+    delta->tv_sec = stop->tv_sec - start->tv_sec;
+    delta->tv_usec = stop->tv_usec - start->tv_usec;
+
+    if (delta->tv_usec >= 1000000)
+    {
+        delta->tv_sec += 1;
+        delta->tv_usec -= 1000000;
+    }
+
+    if (delta->tv_usec < 0)
+    {
+        delta->tv_sec -= 1;
+        delta->tv_usec += 1000000;
+    }
+}
 
 static void
 cleanUp (void)
@@ -361,6 +381,34 @@ print_version (void)
     exit (0);
 }
 
+#ifdef HAVE_COMPOSITOR
+static gint
+get_default_compositor (DisplayInfo *display_info)
+{
+    /* 
+       Check if the XServer is black listed.
+     */
+    if (!compositorTestServer (display_info))
+    {
+        g_warning ("The XServer currently in use on this system is not suitable for the compositor");
+        return 0;
+    }
+    
+    /* 
+       Test if the XRender implementation is fast enough for the
+       compositor. 0.05 means 20 images/sec.
+     */
+    if (!myDisplayTestXrender (display_info, 0.05))
+    {
+        g_warning ("The XRender implementation currently in use on this system is too slow for the compositor");
+        return 0;
+    }
+
+    return 2;
+}
+#endif /* HAVE_COMPOSITOR */
+
+#ifdef HAVE_COMPOSITOR
 static gint
 parse_compositor (const gchar *s)
 {
@@ -391,6 +439,7 @@ parse_compositor (const gchar *s)
 
     return retval;
 }
+#endif /* HAVE_COMPOSITOR */
 
 static int
 initialize (int argc, char **argv, gint compositor_mode)
@@ -416,11 +465,20 @@ initialize (int argc, char **argv, gint compositor_mode)
 
     display_info = myDisplayInit (gdk_display_get_default ());
     
+#ifdef HAVE_COMPOSITOR
+    if (compositor_mode < 0)
+    {
+        compositor_mode = get_default_compositor (display_info);
+    }
+    
     /* Disabling compositor from command line */
     if (!compositor_mode)
     {
         display_info->enable_compositor = FALSE;
     }
+#else /* HAVE_COMPOSITOR */
+    display_info->enable_compositor = FALSE;
+#endif /* HAVE_COMPOSITOR */
     
     initModifiers (display_info->dpy);
 
@@ -511,7 +569,7 @@ main (int argc, char **argv)
 {
     int i;
     gboolean daemon_mode = FALSE;
-    gint compositor = 2;
+    gint compositor = -1;
     int status;
 
     DBG ("xfwm4 starting");
@@ -521,10 +579,12 @@ main (int argc, char **argv)
         {
             daemon_mode = TRUE;
         }
+#ifdef HAVE_COMPOSITOR
         else if (!strncmp (argv[i], "--compositor=", strlen ("--compositor=")))
         {
             compositor = parse_compositor (argv[i]);
         }
+#endif /* HAVE_COMPOSITOR */
         else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
         {
             print_version ();
