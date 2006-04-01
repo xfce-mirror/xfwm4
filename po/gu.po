@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-25 00:00+0100\n"
+"POT-Creation-Date: 2006-04-01 23:07+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <fedora-trans-gu@redhat.com>\n"
@@ -17,219 +17,217 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../mcs-plugin/margins.c:128
+#: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "કામ કરવાની જગ્યાના હાંસિયાઓ"
 
-#: ../mcs-plugin/margins.c:138
+#: ../mcs-plugin/margins.c:136
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "હાંસિયાઓ એ સ્ક્રીનની બાજુઓ માટેના વિસ્તારો છે કે જ્યાં કોઈ વિન્ડો મૂકવામાં આવતી નથી"
 
-#: ../mcs-plugin/margins.c:169
+#: ../mcs-plugin/margins.c:167
 msgid "Left :"
 msgstr "ડાબો :"
 
-#: ../mcs-plugin/margins.c:189
+#: ../mcs-plugin/margins.c:187
 msgid "Right :"
 msgstr "જમણો :"
 
-#: ../mcs-plugin/margins.c:209
+#: ../mcs-plugin/margins.c:207
 msgid "Top :"
 msgstr "ઉપરનો :"
 
-#: ../mcs-plugin/margins.c:229
+#: ../mcs-plugin/margins.c:227
 msgid "Bottom :"
 msgstr "નીચેનો :"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:153
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:150
 msgid "Workspaces and Margins"
 msgstr "કામ કરવાની જગ્યાઓ અને હાંસિયાઓ"
 
-#. Number of workspaces
-#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:483 ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:163
+#: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "કામ કરવાની જગ્યાઓ"
 
-#: ../mcs-plugin/plugin.c:177
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr "હાંસિયાઓ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:346
+#: ../mcs-plugin/wmtweaks_plugin.c:347
 msgid "None"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
+#: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "વિન્ડો વ્યવસ્થાપક"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:361
+#: ../mcs-plugin/wmtweaks_plugin.c:364
 #, fuzzy
 msgid "Window Manager Advanced Configuration"
 msgstr "વિન્ડો વ્યવસ્થાપક સુયોજનો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:376
+#: ../mcs-plugin/wmtweaks_plugin.c:380
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:382
+#: ../mcs-plugin/wmtweaks_plugin.c:386
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:388
+#: ../mcs-plugin/wmtweaks_plugin.c:392
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "વિન્ડોને ડાબી કામ કરવાની જગ્યા પર ખસાડો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:393
+#: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycling"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:404
+#: ../mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:410
+#: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1643
+#: ../mcs-plugin/wmtweaks_plugin.c:420 ../mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
 msgstr "ફોકસ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:426
+#: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Key used to grab and move windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:432
+#: ../mcs-plugin/wmtweaks_plugin.c:438
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:438
+#: ../mcs-plugin/wmtweaks_plugin.c:445
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "જ્યારે ખસેડી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:444
+#: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:449
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Accessibility"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:460
+#: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:478
+#: ../mcs-plugin/wmtweaks_plugin.c:490
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "જ્યારે નિર્દેશક સ્ક્રીનની બાજુ પર પહોંચી જાય ત્યારે કામ કરવાની જગ્યાઓને લપેટો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:494
+#: ../mcs-plugin/wmtweaks_plugin.c:507
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:494 ../mcs-plugin/xfwm4_plugin.c:1682
-#: ../mcs-plugin/xfwm4_plugin.c:1732
-msgid "Small"
+#: ../mcs-plugin/wmtweaks_plugin.c:508
+#, fuzzy
+msgid "Size|Small"
 msgstr "નાનુ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:494
-msgid "Large"
+#: ../mcs-plugin/wmtweaks_plugin.c:508
+msgid "Size|Large"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:499
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:531
 msgid "Show shadows under regular windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:523
+#: ../mcs-plugin/wmtweaks_plugin.c:537
 msgid "Show shadows under popup windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:529
+#: ../mcs-plugin/wmtweaks_plugin.c:543
 #, fuzzy
 msgid "Opacity of window decorations"
 msgstr "જ્યારે માપ બદલી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:543 ../mcs-plugin/wmtweaks_plugin.c:549
+#: ../mcs-plugin/wmtweaks_plugin.c:555 ../mcs-plugin/wmtweaks_plugin.c:561
 msgid "Transparent"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:544 ../mcs-plugin/wmtweaks_plugin.c:550
+#: ../mcs-plugin/wmtweaks_plugin.c:556 ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Opaque"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:549
 #, fuzzy
 msgid "Opacity of windows during move"
 msgstr "જ્યારે ખસેડી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541
+#: ../mcs-plugin/wmtweaks_plugin.c:555
 #, fuzzy
 msgid "Opacity of windows during resize"
 msgstr "જ્યારે માપ બદલી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:561
 #, fuzzy
 msgid "Opacity of popup windows"
 msgstr "જ્યારે ખસેડી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 #, fuzzy
 msgid "Compositor"
 msgstr "ટુંકો પથ બનાવો"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:704 ../mcs-plugin/xfwm4_plugin.c:2243
+#: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:337
+#: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
 msgstr "નામ બદલો"
 
-#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:445
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:457
 #, c-format
 msgid "Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d"
 
-#: ../mcs-plugin/workspaces.c:359
+#: ../mcs-plugin/workspaces.c:348
 msgid "Name:"
 msgstr "નામ:"
 
-#: ../mcs-plugin/workspaces.c:447
+#: ../mcs-plugin/workspaces.c:432
 msgid "Click on a workspace name to edit it"
 msgstr "કામ કરવાની જગ્યાના નામમાં ફેરફાર કરવા માટે તેના પર ક્લિક કરો"
 
-#: ../mcs-plugin/workspaces.c:519
+#: ../mcs-plugin/workspaces.c:497
 msgid "Number of workspaces:"
 msgstr "કામ કરવાની જગ્યાઓની સંખ્યા:"
 
-#. Workspace names
-#: ../mcs-plugin/workspaces.c:550
+#: ../mcs-plugin/workspaces.c:531
 msgid "Workspace names"
 msgstr "કામ કરવાની જગ્યાના નામો"
 
@@ -257,15 +255,15 @@ msgstr "મહત્તમ કરો"
 msgid "Close"
 msgstr "બંધ કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:333
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:343
 msgid "Shade window"
 msgstr "વિન્ડોનો પડછાયો કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:332
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:342
 msgid "Hide window"
 msgstr "વિન્ડો છુપાવો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:329
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:339
 msgid "Maximize window"
 msgstr "વિન્ડો મહત્તમ કરો"
 
@@ -285,180 +283,194 @@ msgstr "કેન્દ્ર"
 msgid "Right"
 msgstr "જમણુ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:557
+#: ../mcs-plugin/xfwm4_plugin.c:558
 msgid "Click and drag buttons to change the layout"
 msgstr "દેખાવ બદલવા માટે બટનો પર ક્લિક કરો અને ખેંચો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:562
+#: ../mcs-plugin/xfwm4_plugin.c:563
 msgid "Active"
 msgstr "સક્રિય"
 
-#: ../mcs-plugin/xfwm4_plugin.c:573
+#: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Title"
 msgstr "શીર્ષક"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:575
 msgid "The window title, it cannot be removed"
 msgstr "વિન્ડો શીર્ષક, તે દૂર કરી શકાતું નથી"
 
-#: ../mcs-plugin/xfwm4_plugin.c:582
+#: ../mcs-plugin/xfwm4_plugin.c:583
 msgid "Hidden"
 msgstr "છુપુ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1336
+#: ../mcs-plugin/xfwm4_plugin.c:1357
 msgid "Font Selection Dialog"
 msgstr "ફોન્ટ પસંદગી સંવાદ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
+#: ../mcs-plugin/xfwm4_plugin.c:1422 ../mcs-plugin/xfwm4_plugin.c:1976
 msgid "Window Manager"
 msgstr "વિન્ડો વ્યવસ્થાપક"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1411
+#: ../mcs-plugin/xfwm4_plugin.c:1434
 msgid "Window Manager Preferences"
 msgstr "વિન્ડો વ્યવસ્થાપક પસંદગીઓ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1440
+#: ../mcs-plugin/xfwm4_plugin.c:1467
 msgid "Title font"
 msgstr "શીર્ષક ફોન્ટ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1453
+#: ../mcs-plugin/xfwm4_plugin.c:1476
 msgid "Title Alignment"
 msgstr "શીર્ષક ગોઠવણી"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1459
+#: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Text alignment inside title bar :"
 msgstr "શીર્ષક પટ્ટીની અંદર શીર્ષક ગોઠવણી :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1461
+#: ../mcs-plugin/xfwm4_plugin.c:1484
 msgid "Button layout"
 msgstr "બટનનો દેખાવ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1467
+#: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Style"
 msgstr "શૈલી"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1505
+#: ../mcs-plugin/xfwm4_plugin.c:1537
 msgid "Window shortcuts"
 msgstr "વિન્ડો ટુંકા પથો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1525
+#: ../mcs-plugin/xfwm4_plugin.c:1551
 msgid "Command"
 msgstr "આદેશ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1530
+#: ../mcs-plugin/xfwm4_plugin.c:1557
 msgid "Shortcut"
 msgstr "ટુંકો પથ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1546
+#: ../mcs-plugin/xfwm4_plugin.c:1574
 msgid "Keyboard"
 msgstr "કીબોર્ડ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1589
 msgid "Focus model"
 msgstr "મોડેલ પર ફોકસ કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1565
+#: ../mcs-plugin/xfwm4_plugin.c:1593
 msgid "Click to focus"
 msgstr "ફોકસ કરવા માટે ક્લિક કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1572
+#: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Focus follows mouse"
 msgstr "ફોકસ માઉસને અનુસરે છે"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1579
-msgid "New window focus"
-msgstr "નવી વિન્ડો ફોકસ"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1583
+#: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Automatically give focus to newly created windows"
 msgstr "નવી બનેલી વિન્ડોને આપોઆપ ફોકસ કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1588
+#: ../mcs-plugin/xfwm4_plugin.c:1618
+msgid "New window focus"
+msgstr "નવી વિન્ડો ફોકસ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1625
 msgid "Raise on focus"
 msgstr "ફોકસ પર વધારો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1596
+#: ../mcs-plugin/xfwm4_plugin.c:1631
 msgid "Automatically raise windows when they receive focus"
 msgstr "આપોઆપ વિન્ડો મોટી કરો જ્યારે તેઓ ફોકસ થાય"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1606
+#: ../mcs-plugin/xfwm4_plugin.c:1641
 msgid "Delay before raising focused window :"
 msgstr "ફોકસ થયેલ વિન્ડો વધારવા પહેલા વિલંબ :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1612
+#: ../mcs-plugin/xfwm4_plugin.c:1648
 msgid "Slow"
 msgstr "ધીમુ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1618
+#: ../mcs-plugin/xfwm4_plugin.c:1655
 msgid "Fast"
 msgstr "ઝડપી"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1634
-msgid "Raise on click"
-msgstr "ક્લિક પર વધારો"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1638
+#: ../mcs-plugin/xfwm4_plugin.c:1676
 msgid "Raise window when clicking inside application window"
 msgstr "કાર્યક્રમ વિન્ડોની અંદર પર ક્લિક કરો ત્યારે વિન્ડો વધારો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1653
+#: ../mcs-plugin/xfwm4_plugin.c:1680
+msgid "Raise on click"
+msgstr "ક્લિક પર વધારો"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1698
 msgid "Windows snapping"
 msgstr "વિન્ડો બદલી રહ્યા છીએ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1661
+#: ../mcs-plugin/xfwm4_plugin.c:1703
 msgid "Snap windows to screen border"
 msgstr "સ્ક્રીનની કિનારીમાંથી વિન્ડો બદલો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1666
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Snap windows to other windows"
 msgstr "વિન્ડોને અન્ય વિન્ડોમાં સાંકળો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1676
+#: ../mcs-plugin/xfwm4_plugin.c:1720
 msgid "Distance :"
 msgstr "અંતર :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1688 ../mcs-plugin/xfwm4_plugin.c:1738
-msgid "Wide"
-msgstr "પહોળુ"
+#: ../mcs-plugin/xfwm4_plugin.c:1727
+#, fuzzy
+msgid "Distance|Small"
+msgstr "અંતર :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1734
+#, fuzzy
+msgid "Distance|Wide"
+msgstr "અંતર :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
 msgstr "કામ કરવાની જગ્યાઓને લપેટો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1711
+#: ../mcs-plugin/xfwm4_plugin.c:1761
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "જ્યારે નિર્દેશક સ્ક્રીનની બાજુ પર પહોંચી જાય ત્યારે કામ કરવાની જગ્યાઓને લપેટો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1716
+#: ../mcs-plugin/xfwm4_plugin.c:1769
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "જ્યારે વિન્ડોને સ્ક્રીનની બહાર ખેંચી રહ્યા હોય ત્યારે કામ કરવાની જગ્યાઓને લપેટો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1726
+#: ../mcs-plugin/xfwm4_plugin.c:1779
 msgid "Edge Resistance :"
 msgstr "બાજુનો અવરોધ :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1753
+#: ../mcs-plugin/xfwm4_plugin.c:1786
+msgid "Attraction|Small"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1793
+msgid "Attraction|Wide"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
 msgstr "અપારદર્શક રીતે ખસેડો અને માપ બદલો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1820
 msgid "Display content of windows when resizing"
 msgstr "જ્યારે માપ બદલી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Display content of windows when moving"
 msgstr "જ્યારે ખસેડી રહ્યા હોય ત્યારે સમાવિષ્ટો પ્રદર્શિત કરો"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1771
+#: ../mcs-plugin/xfwm4_plugin.c:1831
 msgid "Double click action"
 msgstr "બેવડું ક્લિકની ક્રિયા"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1777
+#: ../mcs-plugin/xfwm4_plugin.c:1833
 msgid "Action to perform when double clicking on title bar :"
 msgstr "જ્યારે શીર્ષક પટ્ટી પર બેવડું ક્લિક કરી રહ્યા હોય ત્યારે કરવાની ક્રિયા :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1779
+#: ../mcs-plugin/xfwm4_plugin.c:1838
 msgid "Advanced"
 msgstr "ઉન્નત"
 
@@ -466,153 +478,153 @@ msgstr "ઉન્નત"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "શું તમે ખરેખર આ કીજોડાણ થીમ દૂર કરવા માંગો છો ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:125
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:131
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:129
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
 msgid "Add keybinding theme"
 msgstr "કીજોડાણ થીમ ઉમેરો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:135
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:138
 msgid "Enter a name for the theme:"
 msgstr "થીમ માટે નામ દાખલ કરો:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:158
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:162
 msgid "A keybinding theme with the same name already exists"
 msgstr "આજ નામવાળી કીજોડાણ થીમ પહેલાથી જ હાજર છે"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:164
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:168
 msgid "You have to provide a name for the keybinding theme"
 msgstr "તમારે કીજોડાણ થીમ માટે નામ પૂરું પાડવું પડશે"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:328
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
 msgid "Close window"
 msgstr "વિન્ડો બંધ કરો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:330
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
 msgid "Maximize window vertically"
 msgstr "વિન્ડોને ઊભી રીતે મહત્તમ કરો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:331
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
 msgid "Maximize window horizontally"
 msgstr "વિન્ડોને આડી રીતે મહત્તમ કરો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:334
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
 msgid "Stick window"
 msgstr "સ્ટીક વિન્ડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:335
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
 msgid "Move window up"
 msgstr "વિન્ડોને ઉપર ખસેડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:336
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
 msgid "Move window down"
 msgstr "વિન્ડોને નીચે ખસેડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:337
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
 msgid "Move window left"
 msgstr "વિન્ડોને ડાબે ખસેડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
 msgid "Move window right"
 msgstr "વિન્ડોને જમણે ખસેડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:339
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
 msgid "Resize window up"
 msgstr "વિન્ડોને ઉપર માપ બદલો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:340
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
 msgid "Resize window down"
 msgstr "વિન્ડોને નીચે માપ બદલો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:341
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Resize window left"
 msgstr "વિન્ડોને ડાબે માપ બદલો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:342
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Resize window right"
 msgstr "વિન્ડોને જમણે માપ બદલો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:343
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Raise window"
 msgstr "વિન્ડો વધારો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:344
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Lower window"
 msgstr "નીચલી વિન્ડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:345
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Toggle fullscreen"
 msgstr "પૂર્ણ સ્ક્રીનમાં ફેરવો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:346
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Upper workspace"
 msgstr "ઉપરની કામ કરવાની જગ્યા"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:347
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Bottom workspace"
 msgstr "નીચેની કામ કરવાની જગ્યા"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:348
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Left workspace"
 msgstr "ડાબી કામ કરવાની જગ્યા"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:349
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Right workspace"
 msgstr "જમણી કામ કરવાની જગ્યા"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:350
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Next workspace"
 msgstr "પછીની કામ કરવાની જગ્યા"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Previous workspace"
 msgstr "પહેલાની કામ કરવાની જગ્યા"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Add workspace"
 msgstr "કામ કરવાની જગ્યા ઉમેરો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Delete workspace"
 msgstr "કામ કરવાની જગ્યા કાઢી નાંખો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Move window to next workspace"
 msgstr "વિન્ડોને પછીની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Move window to previous workspace"
 msgstr "વિન્ડોને પહેલાની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Move window to upper workspace"
 msgstr "વિન્ડોને ઉપરની કામ કરવાની જગ્યાએ લઈ જાવ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Move window to bottom workspace"
 msgstr "વિન્ડોને નીચેની કામ કરવાની જગ્યા પર ખસાડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Move window to left workspace"
 msgstr "વિન્ડોને ડાબી કામ કરવાની જગ્યા પર ખસાડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Move window to right workspace"
 msgstr "વિન્ડોને જમણી કામ કરવાની જગ્યા પર ખસાડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Show desktop"
 msgstr "ડેસ્કટોપ બતાવો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:466
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:478
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા %d પર ખસાડો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:551
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:565
 msgid "Cannot open the theme directory !"
 msgstr "થીમ ડિરેક્ટરી ખોલી શકતા નથી !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:570
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:584
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -621,8 +633,8 @@ msgstr ""
 "%s ખોલી શકતા નથી : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:584
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:595
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:598
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:609
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -631,7 +643,7 @@ msgstr ""
 "%s માં લખી શકતા નથી : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:723
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:735
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -639,20 +651,19 @@ msgstr ""
 "ટુંકો પથ પહેલાથી જ વપરાશમાં છે !\n"
 "શું તમે ખરેખર તેને વાપરવા માંગો છો ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:782
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:799
 msgid "Compose shortcut for :"
 msgstr "માટે ટુંકો પથ બનાવો :"
 
-#. Create dialog
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:785
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:803
 msgid "Compose shortcut"
 msgstr "ટુંકો પથ બનાવો"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:787
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:806
 msgid "No shortcut"
 msgstr "કોઈ ટુંકાણ નથી"
 
-#: ../src/main.c:184
+#: ../src/main.c:206
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
@@ -775,6 +786,13 @@ msgstr "કામ કરવાની જગ્યાના સુયોજનો
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 કામ કરવાની જગ્યાના સુયોજનો"
+
+#~ msgid "Wide"
+#~ msgstr "પહોળુ"
+
+#, fuzzy
+#~ msgid "Edge Resistance|Small"
+#~ msgstr "બાજુનો અવરોધ :"
 
 #, fuzzy
 #~ msgid "Window cycling"

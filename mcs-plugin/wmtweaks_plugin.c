@@ -505,7 +505,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     range =
         create_int_range (mcs_plugin, _("Minimum size of windows to trigger smart placement"),
-        _("Small"), _("Large"), "Xfwm/PlacementRatio", 0, 100, 5, &placement_ratio);
+        Q_("Size|Small"), Q_("Size|Large"), "Xfwm/PlacementRatio", 0, 100, 5, &placement_ratio);
     gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
     gtk_widget_show (range);
 

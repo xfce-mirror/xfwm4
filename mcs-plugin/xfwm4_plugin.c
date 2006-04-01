@@ -1627,8 +1627,8 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->raise_on_focus_check =
-        gtk_check_button_new_with_mnemonic (_
-        ("Automatically raise windows when they receive focus"));
+        gtk_check_button_new_with_mnemonic (
+        _("Automatically raise windows when they receive focus"));
     gtk_widget_show (dialog->raise_on_focus_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->raise_on_focus_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->raise_on_focus_check), focus_raise);
@@ -1672,8 +1672,8 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_set_sensitive (dialog->raise_delay_scale, focus_raise);
 
     dialog->click_raise_check =
-        gtk_check_button_new_with_mnemonic (_
-        ("Raise window when clicking inside application window"));
+        gtk_check_button_new_with_mnemonic (
+        _("Raise window when clicking inside application window"));
     gtk_widget_show (dialog->click_raise_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->click_raise_check), raise_on_click);
 
@@ -1724,14 +1724,14 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    label = xfce_create_small_label (_("Small"));
+    label = xfce_create_small_label (Q_("Distance|Small"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL),
         (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
-    label = xfce_create_small_label (_("Wide"));
+    label = xfce_create_small_label (Q_("Distance|Wide"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL),
         (GtkAttachOptions) (0), 0, 0);
@@ -1757,16 +1757,16 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->wrap_workspaces_check =
-        gtk_check_button_new_with_mnemonic (_
-        ("Wrap workspaces when the pointer reaches a screen edge"));
+        gtk_check_button_new_with_mnemonic (
+        _("Wrap workspaces when the pointer reaches a screen edge"));
     gtk_widget_show (dialog->wrap_workspaces_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_workspaces_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_workspaces_check),
         wrap_workspaces);
 
     dialog->wrap_windows_check =
-        gtk_check_button_new_with_mnemonic (_
-        ("Wrap workspaces when dragging a window off the screen"));
+        gtk_check_button_new_with_mnemonic (
+        _("Wrap workspaces when dragging a window off the screen"));
     gtk_widget_show (dialog->wrap_windows_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_windows_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_windows_check), wrap_windows);
@@ -1783,14 +1783,14 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
-    label = xfce_create_small_label (_("Small"));
+    label = xfce_create_small_label (Q_("Attraction|Small"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL),
         (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
 
-    label = xfce_create_small_label (_("Wide"));
+    label = xfce_create_small_label (Q_("Attraction|Wide"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL),
         (GtkAttachOptions) (0), 0, 0);
