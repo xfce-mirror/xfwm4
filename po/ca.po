@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-01 23:07+0200\n"
+"POT-Creation-Date: 2006-04-01 23:27+0200\n"
 "PO-Revision-Date: 2006-03-19 17:38+0100\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -525,12 +525,14 @@ msgid "Edge Resistance :"
 msgstr "Vora:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-msgid "Attraction|Small"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "Distància:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-msgid "Attraction|Wide"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Wide"
+msgstr "Distància:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 #, fuzzy

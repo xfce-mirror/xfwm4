@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-01 23:07+0200\n"
+"POT-Creation-Date: 2006-04-01 23:27+0200\n"
 "PO-Revision-Date: 2006-03-30 15:28+0300\n"
 "Last-Translator: Stathis Kamperis <ekamperi@auth.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -446,12 +446,14 @@ msgid "Edge Resistance :"
 msgstr "Αντίσταση άκρων :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-msgid "Attraction|Small"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "Απόσταση :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-msgid "Attraction|Wide"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Wide"
+msgstr "Απόσταση :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"

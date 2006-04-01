@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-01 23:07+0200\n"
+"POT-Creation-Date: 2006-04-01 23:27+0200\n"
 "PO-Revision-Date: 2005-10-09 20:55+0900\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -447,12 +447,14 @@ msgid "Edge Resistance :"
 msgstr "螢幕邊緣阻力："
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-msgid "Attraction|Small"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "距離："
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-msgid "Attraction|Wide"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Wide"
+msgstr "距離："
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"

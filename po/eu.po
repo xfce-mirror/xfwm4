@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-01 23:07+0200\n"
+"POT-Creation-Date: 2006-04-01 23:27+0200\n"
 "PO-Revision-Date: 2006-03-19 00:45+0100\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -443,12 +443,14 @@ msgid "Edge Resistance :"
 msgstr "Ertzaren erresistentzia :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-msgid "Attraction|Small"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "Tartea :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-msgid "Attraction|Wide"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Wide"
+msgstr "Tartea :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"

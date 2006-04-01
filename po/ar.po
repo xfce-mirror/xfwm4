@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-01 23:07+0200\n"
+"POT-Creation-Date: 2006-04-01 23:27+0200\n"
 "PO-Revision-Date: 2005-10-09 20:34+0900\n"
 "Last-Translator: Saleh Alhathal <hathalsal@hotmail.com>\n"
 "Language-Team: Arabic <lumina@silverpen.de>\n"
@@ -469,12 +469,14 @@ msgid "Edge Resistance :"
 msgstr "المسافة :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-msgid "Attraction|Small"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "المسافة :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-msgid "Attraction|Wide"
-msgstr ""
+#, fuzzy
+msgid "Resistance|Wide"
+msgstr "المسافة :"
 
 #
 #: ../mcs-plugin/xfwm4_plugin.c:1815
