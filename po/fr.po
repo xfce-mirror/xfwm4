@@ -86,7 +86,7 @@ msgstr "Parcourir les fenêtres de tous les espaces de travail"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycling"
-msgstr ""
+msgstr "Cyclage"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
@@ -445,12 +445,10 @@ msgid "Edge Resistance :"
 msgstr "Résistance au bord :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
 msgstr "Légère"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
 msgstr "Forte"
 
