@@ -183,7 +183,7 @@ cb_menuitem_changed (GtkWidget * widget, gpointer user_data)
 }
 
 static GtkWidget *
-create_gboolean_button (McsPlugin * mcs_plugin, gchar * label, gchar * setting_name,
+create_gboolean_button (McsPlugin * mcs_plugin, const gchar * label, gchar * setting_name,
     gboolean * value)
 {
     GtkWidget *check_button;
@@ -198,7 +198,7 @@ create_gboolean_button (McsPlugin * mcs_plugin, gchar * label, gchar * setting_n
 }
 
 static GtkWidget *
-create_int_range (McsPlugin * mcs_plugin, gchar * label, gchar * min_label, gchar * max_label,
+create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label, const gchar * max_label,
     gchar * setting_name, gint min, gint max, gint step, int *value)
 {
     GtkObject *adjustment;
@@ -249,7 +249,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, gchar * min_label, gcha
 }
 
 static GtkWidget *
-create_option_menu (McsPlugin * mcs_plugin, gchar * values[], gchar * label, gchar * setting_name,
+create_option_menu (McsPlugin * mcs_plugin, gchar * values[], const gchar * label, gchar * setting_name,
     gchar ** value)
 {
     GtkWidget *hbox;
