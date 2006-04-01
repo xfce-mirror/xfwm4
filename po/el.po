@@ -2,27 +2,30 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Stavros Giannouris <StavrosG2002@freemail.gr>, 2005.
+# Stathis Kamperis <ekamperi@auth.gr>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-25 00:00+0100\n"
-"PO-Revision-Date: 2006-03-26 02:15+0200\n"
-"Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
+"PO-Revision-Date: 2006-03-30 15:28+0300\n"
+"Last-Translator: Stathis Kamperis <ekamperi@auth.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
 
 #: ../mcs-plugin/margins.c:128
 msgid "Workspace Margins"
-msgstr "Περιθώρια Χώρου Εργασίας"
+msgstr "Περιθώρια χώρου εργασίας"
 
 #: ../mcs-plugin/margins.c:138
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα "
+"τοποθετηθούν παράθυρα"
 
 #: ../mcs-plugin/margins.c:169
 msgid "Left :"
@@ -40,18 +43,15 @@ msgstr "Επάνω :"
 msgid "Bottom :"
 msgstr "Κάτω :"
 
-#: ../mcs-plugin/plugin.c:109
-#: ../mcs-plugin/plugin.c:153
+#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:153
 msgid "Workspaces and Margins"
-msgstr "Χώροι Εργασίας και Περιθώρια"
+msgstr "Χώροι εργασίας και περιθώρια"
 
 #. Number of workspaces
-#: ../mcs-plugin/plugin.c:136
-#: ../mcs-plugin/plugin.c:167
-#: ../mcs-plugin/wmtweaks_plugin.c:483
-#: ../mcs-plugin/workspaces.c:538
+#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:167
+#: ../mcs-plugin/wmtweaks_plugin.c:483 ../mcs-plugin/workspaces.c:538
 msgid "Workspaces"
-msgstr "Χώροι Εργασίας"
+msgstr "Χώροι εργασίας"
 
 #: ../mcs-plugin/plugin.c:177
 msgid "Margins"
@@ -61,15 +61,14 @@ msgstr "Περιθώρια"
 msgid "None"
 msgstr "Κανένα"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:353
-#: ../mcs-plugin/wmtweaks_plugin.c:590
+#: ../mcs-plugin/wmtweaks_plugin.c:353 ../mcs-plugin/wmtweaks_plugin.c:590
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "προσαρμογή Διαχειριστή Παραθύρων"
+msgstr "προσαρμογή διαχειριστή παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:361
 msgid "Window Manager Advanced Configuration"
-msgstr "Προχωρημένες Ρυθμίσεις Διαχειριστή Παραθύρων"
+msgstr "Προχωρημένες ρυθμίσεις διαχειριστή παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:376
 msgid ""
@@ -99,8 +98,7 @@ msgstr "Προστασία απώλειας της εστίασης"
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Να τηρείται η πρότυπη υπόδειξη εστίασης ICCM "
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415
-#: ../mcs-plugin/xfwm4_plugin.c:1643
+#: ../mcs-plugin/wmtweaks_plugin.c:415 ../mcs-plugin/xfwm4_plugin.c:1643
 msgid "Focus"
 msgstr "Εστίαση"
 
@@ -114,7 +112,8 @@ msgstr "Ανύψωση παραθύρων όταν πατηθεί οποιοδή
 
 #: ../mcs-plugin/wmtweaks_plugin.c:438
 msgid "Restore original size of maximized windows when moving"
-msgstr "Επαναφορά αρχικού μεγέθους των μεγιστοποιημένων παραθύρων κατά τη μετακίνηση"
+msgstr ""
+"Επαναφορά αρχικού μεγέθους των μεγιστοποιημένων παραθύρων κατά τη μετακίνηση"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:444
 msgid "Use edge resistance instead of windows snapping"
@@ -126,7 +125,9 @@ msgstr "Προσβασιμότητα"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr "Εναλλαγή χώρων εργασίας χρησιμοποιώντας τη ροδέλα του ποντικιού πάνω στην επιφάνεια εργασίας"
+msgstr ""
+"Εναλλαγή χώρων εργασίας χρησιμοποιώντας τη ροδέλα του ποντικιού πάνω στην "
+"επιφάνεια εργασίας"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:466
 msgid ""
@@ -138,7 +139,9 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr "Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική διάταξη της επιφάνειας εργασίας"
+msgstr ""
+"Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική διάταξη της επιφάνειας "
+"εργασίας"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Wrap workspaces when the first or last workspace is reached"
@@ -148,8 +151,7 @@ msgstr "Αναδίπλωση χώρων εργασίας στον πρώτο ή 
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Ελάχιστο μέγεθος παραθύρου για να ενεργοποιηθεί η έξυπνη τοποθέτηση"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:494
-#: ../mcs-plugin/xfwm4_plugin.c:1682
+#: ../mcs-plugin/wmtweaks_plugin.c:494 ../mcs-plugin/xfwm4_plugin.c:1682
 #: ../mcs-plugin/xfwm4_plugin.c:1732
 msgid "Small"
 msgstr "Μικρή"
@@ -174,17 +176,13 @@ msgstr "Εμφάνιση σκιών στα αναδυόμενα παράθυρα
 msgid "Opacity of window decorations"
 msgstr "Διαφάνεια περιγραμμάτων παραθύρων"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:529
-#: ../mcs-plugin/wmtweaks_plugin.c:535
-#: ../mcs-plugin/wmtweaks_plugin.c:541
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Transparent"
 msgstr "Διαφανές"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:529
-#: ../mcs-plugin/wmtweaks_plugin.c:535
-#: ../mcs-plugin/wmtweaks_plugin.c:541
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:529 ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Opaque"
 msgstr "Αδιαφανές"
 
@@ -204,21 +202,21 @@ msgstr "Διαφάνεια αναδυόμενων παραθύρων"
 msgid "Compositor"
 msgstr "Compositor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:704
-#: ../mcs-plugin/xfwm4_plugin.c:2243
+#: ../mcs-plugin/wmtweaks_plugin.c:704 ../mcs-plugin/xfwm4_plugin.c:2243
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Αυτές οι ρυθμίσεις δεν είναι δυνατό να λειτουργήσουν με τον τρέχον διαχειριστή παραθύρων σας (%s)"
+msgstr ""
+"Αυτές οι ρυθμίσεις δεν είναι δυνατό να λειτουργήσουν με τον τρέχον "
+"διαχειριστή παραθύρων σας (%s)"
 
 #: ../mcs-plugin/workspaces.c:337
 msgid "Change name"
 msgstr "Αλλαγή ονόματος"
 
-#: ../mcs-plugin/workspaces.c:349
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:445
+#: ../mcs-plugin/workspaces.c:349 ../mcs-plugin/xfwm4_shortcuteditor.c:445
 #, c-format
 msgid "Workspace %d"
-msgstr "Χώρος Εργασίας %d"
+msgstr "Χώρος εργασίας %dε"
 
 #: ../mcs-plugin/workspaces.c:359
 msgid "Name:"
@@ -261,18 +259,15 @@ msgstr "Μεγιστοποίηση"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:333
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:333
 msgid "Shade window"
 msgstr "Σκίαση παραθύρου"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:332
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:332
 msgid "Hide window"
 msgstr "Απόκρυψη παραθύρου"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:329
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:329
 msgid "Maximize window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
@@ -314,24 +309,23 @@ msgstr "Κρυμμένο"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1336
 msgid "Font Selection Dialog"
-msgstr "Πλαίσιο επιλογής Γραμματοσειράς"
+msgstr "Πλαίσιο επιλογής γραμματοσειράς"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1398
-#: ../mcs-plugin/xfwm4_plugin.c:1886
+#: ../mcs-plugin/xfwm4_plugin.c:1398 ../mcs-plugin/xfwm4_plugin.c:1886
 msgid "Window Manager"
-msgstr "Διαχειριστής Παραθύρων"
+msgstr "Διαχειριστής παραθύρων"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1411
 msgid "Window Manager Preferences"
-msgstr "Προτιμήσεις Διαχειριστή Παραθύρων"
+msgstr "Προτιμήσεις διαχειριστή παραθύρων"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1440
 msgid "Title font"
-msgstr "Γραμματοσειρά Τίτλου"
+msgstr "Γραμματοσειρά τίτλου"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1453
 msgid "Title Alignment"
-msgstr "Στοίχιση Τίτλου"
+msgstr "Στοίχιση τίτλου"
 
 #. XXX
 #: ../mcs-plugin/xfwm4_plugin.c:1459
@@ -376,7 +370,7 @@ msgstr "Η εστίαση ακολουθεί το ποντίκι"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1579
 msgid "New window focus"
-msgstr "Εστίαση Νέου παραθύρου"
+msgstr "Εστίαση νέου παραθύρου"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1583
 msgid "Automatically give focus to newly created windows"
@@ -426,8 +420,7 @@ msgstr "Ταίριασμα παραθύρων σε άλλα παράθυρα"
 msgid "Distance :"
 msgstr "Απόσταση :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1688
-#: ../mcs-plugin/xfwm4_plugin.c:1738
+#: ../mcs-plugin/xfwm4_plugin.c:1688 ../mcs-plugin/xfwm4_plugin.c:1738
 msgid "Wide"
 msgstr "Μεγάλη"
 
@@ -445,7 +438,7 @@ msgstr "Αναδίπλωση χώρων εργασίας όταν σύρεται
 
 #: ../mcs-plugin/xfwm4_plugin.c:1726
 msgid "Edge Resistance :"
-msgstr "Αντίσταση Άκρων :"
+msgstr "Αντίσταση άκρων :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1753
 msgid "Opaque move and resize"
@@ -706,8 +699,7 @@ msgstr "Αποεπικό_λληση"
 msgid "Context _help"
 msgstr "Βοήθεια πε_ριεχομένου"
 
-#: ../src/menu.c:49
-#: ../src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr "Πάντα στην κορυφή"
 
@@ -762,32 +754,24 @@ msgstr "Άγνωστη εφαρμογή!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων"
+msgstr "Ρυθμίσεις διαχειριστή παραθύρων"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Ρυθμίσεις Διαχειριστή Παραθύρων Xfce 4"
+msgstr "Ρυθμίσεις διαχειριστή παραθύρων Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
-msgstr "Προχωρημένες Ρυθμίσεις"
+msgstr "Προχωρημένες ρυθμίσεις"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Προσαρμογή Διαχειριστή Παραθύρων Xfce 4"
+msgstr "Προσαρμογή διαχειριστή παραθύρων Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "Ρυθμίσεις Χώρων Εργασίας"
+msgstr "Ρυθμίσεις χώρων εργασίας"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Ρυθμίσεις Χώρων Εργασίας Xfce 4"
-
-#~ msgid "Window cycling"
-#~ msgstr "Εναλλαγή παραθύρων"
-#~ msgid "Tweaks"
-#~ msgstr "Προχωρημένη Προσαρμογή"
-#~ msgid "Cycle windows"
-#~ msgstr "Εναλλαγή παραθύρων"
-
+msgstr "Ρυθμίσεις χώρων εργασίας Xfce 4"
