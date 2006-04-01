@@ -60,7 +60,7 @@
 #endif /* SHADOW_OFFSET_X */
 
 #ifndef SHADOW_OFFSET_Y
-#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 8)
+#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
 #endif /* SHADOW_OFFSET_Y */
 
 #define IDLE_REPAINT

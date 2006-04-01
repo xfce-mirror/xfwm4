@@ -214,7 +214,7 @@ myDisplayInit (GdkDisplay *gdisplay)
 #ifdef HAVE_RANDR
     if (XRRQueryExtension (display->dpy,
                             &display->xrandr_event_base, 
-			    &display->xrandr_error_base))
+                            &display->xrandr_error_base))
     {
         display->have_xrandr = TRUE;
     }
@@ -642,65 +642,112 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
 #ifdef HAVE_RENDER
     gdouble t1, t2, dt;
     Display *dpy;
-    Picture picture1, picture2;
+    Picture picture1, picture2, picture3;
     XRenderPictFormat *format_src, *format_dst;
     Pixmap fillPixmap, rootPixmap;
+    XRenderPictureAttributes pa;
+    XSetWindowAttributes attrs;
+    XImage *ximage;
+    Window output;
     XRenderColor c;
     Visual *visual;
     Screen *screen;
-    int test_width, test_height;
+    int x, y, w, h;
     int screen_number;
     int depth;
+    int iterations;
 
     g_return_val_if_fail (display != NULL, FALSE);
-    TRACE ("entering myDisplayTestXrender");
+    TRACE ("entering myDisplayTesxrender");
 
-    t1 = get_time();
-    
-    c.alpha = 0x7f00;
-    c.red   = 0xffff;
-    c.green = 0xffff;
-    c.blue  = 0xffff;
+    c.alpha = 0x7FFF;
+    c.red   = 0xFFFF;
+    c.green = 0xFFFF;
+    c.blue  = 0xFFFF;
 
     dpy = display->dpy;
     screen_number = DefaultScreen (dpy);
     screen = DefaultScreenOfDisplay (dpy);
     visual = DefaultVisual (dpy, screen_number);
     depth = DefaultDepth (dpy, screen_number);
-    test_width = WidthOfScreen (screen) / 4;
-    test_height = HeightOfScreen (screen) / 4;
-    
+
+    w = WidthOfScreen(screen) / 16;
+    h = HeightOfScreen(screen) / 16;
+    x = (WidthOfScreen(screen) - w);
+    y = (HeightOfScreen(screen) - h);
+
     format_dst = XRenderFindVisualFormat (dpy, visual);
     g_return_val_if_fail (format_dst != NULL , FALSE);
 
-    format_src = XRenderFindStandardFormat (dpy, PictStandardARGB32);
+    format_src = XRenderFindStandardFormat (dpy, PictStandardA8);
     g_return_val_if_fail (format_src != NULL , FALSE);
+
+    ximage = XGetImage (dpy, 
+                        DefaultRootWindow(dpy),
+                        x, y, w, h,
+                        AllPlanes, ZPixmap);
+    g_return_val_if_fail (ximage != NULL , FALSE);
 
     rootPixmap = XCreatePixmap (dpy,
                                 DefaultRootWindow(dpy),
-                                test_width, test_height, depth);
+                                w, h, depth);
+    XPutImage (dpy, rootPixmap, 
+               DefaultGC (dpy, screen_number), ximage,
+               0, 0, 0, 0, w, h);
+    XDestroyImage (ximage);
+
+    attrs.override_redirect = TRUE;
+    output = XCreateWindow (dpy,
+                            DefaultRootWindow(dpy),
+                            x, y, w, h, 
+                            0, CopyFromParent, CopyFromParent,
+                            (Visual *) CopyFromParent,
+                            CWOverrideRedirect, &attrs);
+    XMapRaised (dpy, output);
+
     fillPixmap = XCreatePixmap (dpy,
                                 DefaultRootWindow(dpy),
-                                test_width, test_height, 32);
+                                1, 1, 8);
 
+    t1 = get_time();
+    
+    pa.repeat = TRUE;
     picture1 = XRenderCreatePicture (dpy, 
-                                    fillPixmap,
-                                    format_src, 0, NULL);
+                                     rootPixmap,
+                                     format_dst, 0, NULL);
     picture2 = XRenderCreatePicture (dpy, 
-                                    rootPixmap,
-                                    format_dst, 0, NULL); 
+                                     fillPixmap,
+                                     format_src, CPRepeat, &pa);
+    picture3 = XRenderCreatePicture (dpy, 
+                                     output,
+                                     format_dst, 0, NULL);
+    XRenderComposite (dpy, PictOpSrc, 
+                    picture1, None, picture3, 
+                    0, 0, 0, 0, 0, 0, w, h);
     XRenderFillRectangle (dpy, PictOpSrc,
-                          picture1, &c, 0, 0, 
-                          test_width, test_height);
-    XFreePixmap (dpy, rootPixmap);
-    XFreePixmap (dpy, fillPixmap);
-    XRenderComposite (dpy, PictOpOver, 
-                      picture1, None, picture2, 
-                      0, 0, 0, 0, 0, 0, 
-                      test_width, test_height);
+                          picture2, &c, 0, 0, 
+                          1, 1);
+    for (iterations = 0; iterations < 10; iterations++)
+    {
+        XRenderComposite (dpy, PictOpOver, 
+                        picture1, picture2, picture3, 
+                        0, 0, 0, 0, 0, 0, w, h);
+        ximage = XGetImage (dpy, output, 
+                            0, 0, 1, 1, 
+                            AllPlanes, ZPixmap);
+        if (ximage)
+        {
+                XDestroyImage (ximage);
+        }
+    }
     XRenderFreePicture (dpy, picture1);
     XRenderFreePicture (dpy, picture2);
-    XSync (dpy, FALSE);
+    XRenderFreePicture (dpy, picture3);
+
+    XFreePixmap (dpy, fillPixmap);
+    XFreePixmap (dpy, rootPixmap);
+
+    XDestroyWindow (dpy, output);
 
     t2 = get_time();
     dt = t2 - t1;

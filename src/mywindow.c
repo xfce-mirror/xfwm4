@@ -252,7 +252,7 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 
         if (!win->pict_format)
         {
-            TRACE ("xfwmWindowCopyComposite: Window picture format is unkown");
+            TRACE ("xfwmWindowCopyComposite: Window picture format is unknown");
             return FALSE;
         }
 
