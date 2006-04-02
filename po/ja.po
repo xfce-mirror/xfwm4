@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-01 23:27+0200\n"
-"PO-Revision-Date: 2006-04-03 00:35+0900\n"
+"PO-Revision-Date: 2006-04-03 00:42+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -453,11 +453,11 @@ msgstr "エッジ抵抗 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
 msgid "Attraction|Small"
-msgstr "狭い"
+msgstr "弱い"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
 msgid "Attraction|Wide"
-msgstr "広い"
+msgstr "強い"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
