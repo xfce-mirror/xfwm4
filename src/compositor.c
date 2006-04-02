@@ -2124,11 +2124,13 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
             {
                 cw->shaped = TRUE;
             }
-            else if (!(ev->shaped) && (cw->shaped))
+            resize_win (cw, cw->attr.x, cw->attr.y, 
+                            ev->width + ev->x, ev->height + ev->y, 
+                            cw->attr.border_width, TRUE);
+            if (!(ev->shaped) && (cw->shaped))
             {
                 cw->shaped = FALSE;
             }
-            resize_win (cw, cw->attr.x, cw->attr.y, cw->attr.width, cw->attr.height, cw->attr.border_width, TRUE);
         }
     }
 }
