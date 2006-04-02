@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-01 23:27+0200\n"
-"PO-Revision-Date: 2006-04-02 05:30+0200\n"
+"PO-Revision-Date: 2006-04-02 12:00+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -152,11 +152,11 @@ msgstr "Ελάχιστο μέγεθος παραθύρου για να ενερ�
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Small"
-msgstr "Size|Μικρό"
+msgstr "Μικρό"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Large"
-msgstr "Size|Μεγάλο"
+msgstr "Μεγάλο"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
@@ -419,11 +419,11 @@ msgstr "Απόσταση :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
 msgid "Distance|Small"
-msgstr "Distance|Μικρή"
+msgstr "Μικρή"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
 msgid "Distance|Wide"
-msgstr "Distance|Μεγάλη"
+msgstr "Μεγάλη"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -443,11 +443,11 @@ msgstr "Αντίσταση άκρων :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
 msgid "Resistance|Small"
-msgstr "Resistance|Μικρή"
+msgstr "Μικρή"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
 msgid "Resistance|Wide"
-msgstr "Resistance|Μεγάλη"
+msgstr "Μεγάλη"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
