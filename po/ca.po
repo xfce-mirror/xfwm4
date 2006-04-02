@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-01 23:27+0200\n"
-"PO-Revision-Date: 2006-03-19 17:38+0100\n"
+"PO-Revision-Date: 2006-04-02 21:25+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -81,11 +81,10 @@ msgid "Window Manager Advanced Configuration"
 msgstr "Finestra Gestor Avançat Configuració"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:380
-#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
-msgstr "Inclou finestres buscapersones o n propietats set"
+msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:386
 #, fuzzy
@@ -147,11 +146,10 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Commuta utilitzant   ratolí  "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
-msgstr "i l'àrea de treball teclat"
+msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 #, fuzzy
@@ -231,9 +229,9 @@ msgid "Compositor"
 msgstr "Nou missatge drecera"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
-#, fuzzy, c-format
+#, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "treball amb finestra manager"
+msgstr ""
 
 #: ../mcs-plugin/workspaces.c:329
 #, fuzzy
@@ -741,9 +739,9 @@ msgid "Show desktop"
 msgstr "Mostra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:478
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mou finestra a  l'àrea de treball"
+msgstr "Mou la finestra a l'àrea de treball %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:565
 #, fuzzy
@@ -751,26 +749,29 @@ msgid "Cannot open the theme directory !"
 msgstr "obre  !"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:584
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
-msgstr "obre n"
+msgstr ""
+"No s'ha pogut obrir %s:\n"
+"%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:598
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:609
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
-msgstr "po n"
+msgstr ""
+"No s'ha pogut escriure a %s:\n"
+"%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:735
-#, fuzzy
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
-msgstr "Drecera po tu tu a ?"
+msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:799
 #, fuzzy
@@ -873,29 +874,29 @@ msgid "Restart"
 msgstr "Torna a iniciar"
 
 #: ../src/menu.c:168
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i (%s)"
-msgstr "Àrea de treball"
+msgstr "Àrea de treball %i (%s)"
 
 #: ../src/menu.c:172
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %i"
-msgstr "Àrea de treball"
+msgstr "Àrea de treball %i"
 
 #: ../src/menu.c:407
-#, fuzzy, c-format
+#, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "a    n"
+msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
 #: ../src/settings.c:853
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "color n"
+msgstr "%s: no s'ha pogut situar el color %s\n"
 
 #: ../src/settings.c:859
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "color n"
+msgstr "%s: no s'ha pogut analitzar el color %s\n"
 
 #: ../src/tabwin.c:95
 #, fuzzy
@@ -931,14 +932,3 @@ msgstr "Àrees de treball Paràmetres"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Àrees de treball Paràmetres"
-
-#~ msgid "Wide"
-#~ msgstr "Gran"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Vora:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Finestra"
