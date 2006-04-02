@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-01 23:27+0200\n"
-"PO-Revision-Date: 2006-03-26 12:52+0900\n"
+"PO-Revision-Date: 2006-04-03 00:35+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -63,11 +63,11 @@ msgstr "無し"
 #: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "ウィンドウマネージャーの調節"
+msgstr "WMの調整"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:364
 msgid "Window Manager Advanced Configuration"
-msgstr "ウィンドウマネージャー (高度)"
+msgstr "ウィンドウマネージャー (詳細)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:380
 msgid ""
@@ -95,7 +95,7 @@ msgstr "フォーカスの横取りを防ぐ"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Honor the standard ICCCM focus hint"
-msgstr "ICCCM の標準フォーカスヒントを守る"
+msgstr "ICCCM 標準フォーカスヒントに則る"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:420 ../mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
@@ -146,12 +146,10 @@ msgid "Minimum size of windows to trigger smart placement"
 msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
 msgstr "小さい"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Large"
 msgstr "大きい"
 
@@ -199,7 +197,7 @@ msgstr "大きさ変更時のウィンドウの透明度"
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:561
 msgid "Opacity of popup windows"
-msgstr "移動時のウィンドウの透明度"
+msgstr "ポップアップウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:566
@@ -430,14 +428,12 @@ msgid "Distance :"
 msgstr "距離 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "距離 :"
+msgstr "短い"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "距離 :"
+msgstr "長い"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -456,18 +452,16 @@ msgid "Edge Resistance :"
 msgstr "エッジ抵抗 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
-msgid "Resistance|Small"
-msgstr "距離 :"
+msgid "Attraction|Small"
+msgstr "狭い"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
-msgid "Resistance|Wide"
-msgstr "距離 :"
+msgid "Attraction|Wide"
+msgstr "広い"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
-msgstr "不透明表示での移動と大きさ変更"
+msgstr "内容表示での移動と大きさ変更"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1820
 msgid "Display content of windows when resizing"
@@ -799,10 +793,3 @@ msgstr "ワークスペース"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ワークスペースの設定"
-
-#~ msgid "Wide"
-#~ msgstr "大きい"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "エッジ抵抗 :"
