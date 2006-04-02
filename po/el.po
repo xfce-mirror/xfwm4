@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-01 23:27+0200\n"
-"PO-Revision-Date: 2006-03-30 15:28+0300\n"
-"Last-Translator: Stathis Kamperis <ekamperi@auth.gr>\n"
+"PO-Revision-Date: 2006-04-02 05:30+0200\n"
+"Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -151,14 +151,12 @@ msgid "Minimum size of windows to trigger smart placement"
 msgstr "Ελάχιστο μέγεθος παραθύρου για να ενεργοποιηθεί η έξυπνη τοποθέτηση"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
-msgstr "Μικρή"
+msgstr "Size|Μικρό"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Large"
-msgstr "Μεγάλο"
+msgstr "Size|Μεγάλο"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
@@ -420,14 +418,12 @@ msgid "Distance :"
 msgstr "Απόσταση :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Απόσταση :"
+msgstr "Distance|Μικρή"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Απόσταση :"
+msgstr "Distance|Μεγάλη"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -446,14 +442,12 @@ msgid "Edge Resistance :"
 msgstr "Αντίσταση άκρων :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Απόσταση :"
+msgstr "Resistance|Μικρή"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Απόσταση :"
+msgstr "Resistance|Μεγάλη"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -789,6 +783,3 @@ msgstr "Ρυθμίσεις χώρων εργασίας"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Ρυθμίσεις χώρων εργασίας Xfce 4"
-
-#~ msgid "Wide"
-#~ msgstr "Μεγάλη"
