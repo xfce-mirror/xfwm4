@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-02 22:39+0100\n"
+"POT-Creation-Date: 2006-03-24 15:50+0100\n"
 "PO-Revision-Date: 2005-09-29 17:58+0900\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -601,17 +601,17 @@ msgstr "_Konec"
 msgid "Restart"
 msgstr "Restart"
 
-#: src/menu.c:169
+#: src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Pracovní plocha %i (%s)"
 
-#: src/menu.c:181
+#: src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "Pracovní plocha %i"
 
-#: src/menu.c:416
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"

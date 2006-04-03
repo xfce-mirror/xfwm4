@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-02 22:39+0100\n"
+"POT-Creation-Date: 2006-03-24 15:50+0100\n"
 "PO-Revision-Date: 2005-09-29 18:09+0900\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -605,17 +605,17 @@ msgstr "थांबवणे (_Q)"
 msgid "Restart"
 msgstr "पुन:सुरुवात"
 
-#: src/menu.c:169
+#: src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "कार्यक्षेत्र %i (%s)"
 
-#: src/menu.c:181
+#: src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "कार्यक्षेत्र %i"
 
-#: src/menu.c:416
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s:पॉइन्टर पकडन्यासाठी Gtk मेन्यू असक्षम\n"

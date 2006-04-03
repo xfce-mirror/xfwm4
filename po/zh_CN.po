@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-02 22:39+0100\n"
+"POT-Creation-Date: 2006-03-24 15:50+0100\n"
 "PO-Revision-Date: 2005-08-20 17:52+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -605,17 +605,17 @@ msgstr "退出(_Q)"
 msgid "Restart"
 msgstr "重启"
 
-#: src/menu.c:169
+#: src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "工作区 %i (%s)"
 
-#: src/menu.c:181
+#: src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "工作区 %i"
 
-#: src/menu.c:416
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"

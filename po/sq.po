@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-02 22:39+0100\n"
+"POT-Creation-Date: 2006-03-24 15:50+0100\n"
 "PO-Revision-Date: 2006-03-04 18:25+0200\n"
 "Last-Translator: Besnik Bleta <besnik@spymac.com>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
@@ -606,17 +606,17 @@ msgstr "_Dil"
 msgid "Restart"
 msgstr "Rinis"
 
-#: src/menu.c:169
+#: src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Hapësirë pune %i (%s)"
 
-#: src/menu.c:181
+#: src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "Hapësirë %i"
 
-#: src/menu.c:416
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu-ja nuk ja doli të përlajë treguesin\n"

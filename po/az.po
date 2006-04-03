@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-02 22:39+0100\n"
+"POT-Creation-Date: 2006-03-24 15:50+0100\n"
 "PO-Revision-Date: 2005-09-29 17:56+0900\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -614,17 +614,17 @@ msgstr "Çı_x"
 msgid "Restart"
 msgstr "Yenidən Başlat"
 
-#: src/menu.c:169
+#: src/menu.c:168
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "İş Sahəsi %i (%s)"
 
-#: src/menu.c:181
+#: src/menu.c:172
 #, c-format
 msgid "Workspace %i"
 msgstr "İş Sahəsi %i"
 
-#: src/menu.c:416
+#: src/menu.c:407
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu oxu ala bilmədi\n"
