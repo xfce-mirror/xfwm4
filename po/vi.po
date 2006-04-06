@@ -114,7 +114,7 @@ msgstr "Phục hồi kích thước ban đầu của cửa sổ đã phóng to k
 
 #: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Sử dụng sức chống của đường biên cửa sổ thay cho sự dính"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Accessibility"
@@ -781,6 +781,3 @@ msgstr "Thiết lập vùng làm việc"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Thiết lập vùng làm việc Xfce 4"
-
-#~ msgid "Wide"
-#~ msgstr "Rộng"
