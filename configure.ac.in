@@ -93,16 +93,17 @@ RANDR_LIBS=
 have_xrandr="false"
 if test x"$enable_randr" = x"yes"; then
   if test x"$have_render" = x"yes"; then
+    have_xrandr="no"
     ac_CFLAGS="$CFLAGS"
     CFLAGS="$CFLAGS $LIBX11_CFLAGS"
     AC_CHECK_LIB(Xrandr, XRRUpdateConfiguration,
         	 [AC_CHECK_HEADER(X11/extensions/Xrandr.h,
-                                  RANDR_LIBS="-lXrandr -lXrender",,
+                                  RANDR_LIBS="-lXrandr -lXrender"
+                                  AC_DEFINE([HAVE_RANDR], [1], [Define to enable xrandr])
+                                  have_xrandr="yes",,
                                   [#include <X11/Xlib.h>])],, 
                   $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
     CFLAGS="$ac_CFLAGS"
-    AC_DEFINE([HAVE_RANDR], [1], [Define to enable xrandr])
-    have_xrandr="yes"
   fi
 fi
 AC_SUBST([RANDR_LIBS])
