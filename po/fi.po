@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-01 23:27+0200\n"
-"PO-Revision-Date: 2006-02-23 16:55+0200\n"
+"PO-Revision-Date: 2006-04-08 17:26+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "Reunukset"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:347
 msgid "None"
-msgstr ""
+msgstr "Ei mitään"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -85,7 +85,7 @@ msgstr "Selaa kaikkien työtilojen ikkunoita"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycling"
-msgstr ""
+msgstr "Selaaminen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
@@ -100,9 +100,8 @@ msgid "Focus"
 msgstr "Kohdistus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:432
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr "Käytä ALT-näppäintä ikkunoiden liikutteluun"
+msgstr "Ikkunoiden liikutteluun käytettävä näppäin"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:438
 msgid "Raise windows when any mouse button is pressed"
@@ -143,19 +142,16 @@ msgid "Minimum size of windows to trigger smart placement"
 msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
 msgstr "Pieni"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Large"
 msgstr "Suuri"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-#, fuzzy
 msgid "Placement"
-msgstr "Älykäs sijoittelu"
+msgstr "Sijoittelu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:531
 msgid "Show shadows under regular windows"
@@ -166,9 +162,8 @@ msgid "Show shadows under popup windows"
 msgstr "Näytä varjot ponnahdusikkunoiden alla"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:543
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa"
+msgstr "Ikkunoiden kehysten läpinäkyvyys"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:543 ../mcs-plugin/wmtweaks_plugin.c:549
 #: ../mcs-plugin/wmtweaks_plugin.c:555 ../mcs-plugin/wmtweaks_plugin.c:561
@@ -284,7 +279,7 @@ msgstr "Napsauta ja raahaa painikkeita muuttaaksesi asettelua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:563
 msgid "Active"
-msgstr "Aktiivinen"
+msgstr "Esillä"
 
 #: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Title"
@@ -412,14 +407,12 @@ msgid "Distance :"
 msgstr "Etäisyys:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Etäisyys:"
+msgstr "Pieni"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Etäisyys:"
+msgstr "Suuri"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -438,14 +431,12 @@ msgid "Edge Resistance :"
 msgstr "Reunan vastus:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Etäisyys:"
+msgstr "Heikko"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Etäisyys:"
+msgstr "Voimakas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -782,13 +773,6 @@ msgstr "Työtilojen asetukset"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 työtilojen asetukset"
 
-#~ msgid "Wide"
-#~ msgstr "Suuri"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Reunan vastus:"
-
 #~ msgid "Window cycling"
 #~ msgstr "Ikkunoiden selaus"
 
@@ -798,5 +782,5 @@ msgstr "Xfce 4 työtilojen asetukset"
 #~ msgid "Compositing"
 #~ msgstr "Komposointi"
 
-#~ msgid "Cycle windows"
-#~ msgstr "Vaihda ikkunaa"
+#~ msgid "Wide"
+#~ msgstr "Suuri"
