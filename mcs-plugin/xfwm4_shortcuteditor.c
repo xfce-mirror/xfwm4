@@ -112,17 +112,26 @@ cb_popup_del_menu (GtkWidget * widget, gpointer data)
 void
 cb_popup_add_menu (GtkWidget * widget, gpointer data)
 {
-    Itf *itf;
+    gchar buf[80];
     GtkWidget *dialog;
     GtkWidget *hbox;
     GtkWidget *label;
     GtkWidget *entry;
     GtkWidget *header_image;
     GtkWidget *header;
+    GtkTreeSelection *selection;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    Itf *itf;
+    ThemeInfo *ti;
 
-    gchar *default_theme_file = NULL;
     gchar *new_theme_path = NULL;
     gchar *new_theme_file = NULL;
+    gchar *theme_name = NULL;
+    gchar *theme_file = NULL;
+
+    FILE *new_theme;
+    FILE *default_theme;
 
     itf = (Itf *) data;
 
@@ -144,6 +153,21 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
     gtk_widget_show_all (dialog);
 
+    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW(itf->treeview2));
+    gtk_tree_selection_get_selected (selection, &model, &iter);
+    gtk_tree_model_get (model, &iter, THEME_NAME_COLUMN, &theme_name, -1);
+    ti = xfwm4_plugin_find_theme_info_by_name (theme_name, keybinding_theme_list);
+    g_free (theme_name);
+
+    if (ti)
+    {
+        theme_file = g_build_filename (ti->path, G_DIR_SEPARATOR_S, KEY_SUFFIX, G_DIR_SEPARATOR_S, KEYTHEMERC, NULL);
+    }
+    else
+    {
+        theme_file = g_build_filename (DATADIR, "themes", "Default", KEY_SUFFIX, KEYTHEMERC, NULL);
+    }
+    
     while (TRUE)
     {
         gint response = GTK_RESPONSE_CANCEL;
@@ -152,10 +176,6 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
 
         if (response == GTK_RESPONSE_OK)
         {
-            gchar buf[80];
-            FILE *new_theme;
-            FILE *default_theme;
-
             if (xfwm4_plugin_find_theme_info_by_name (gtk_entry_get_text (GTK_ENTRY (entry)),
                     keybinding_theme_list))
             {
@@ -174,8 +194,6 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
                 g_strdup_printf ("%s/xfwm4/%s", gtk_entry_get_text (GTK_ENTRY (entry)), KEYTHEMERC);
             new_theme_file =
                 xfce_resource_save_location (XFCE_RESOURCE_THEMES, new_theme_path, TRUE);
-            default_theme_file =
-                g_build_filename (DATADIR, "themes", "Default", KEY_SUFFIX, KEYTHEMERC, NULL);
 
             new_theme = fopen (new_theme_file, "w+");
             if (!new_theme)
@@ -184,7 +202,8 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
                 break;
             }
 
-            default_theme = fopen (default_theme_file, "r");
+
+            default_theme = fopen (theme_file, "r");
             if (!default_theme)
             {
                 g_warning ("unable to open the default theme file");
@@ -231,7 +250,7 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
     gtk_widget_destroy (dialog);
     g_free (new_theme_path);
     g_free (new_theme_file);
-    g_free (default_theme_file);
+    g_free (theme_file);
 }
 
 gboolean
