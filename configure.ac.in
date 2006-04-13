@@ -159,6 +159,7 @@ themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/default-4.2/Makefile
+themes/katiola/Makefile
 themes/stoneage/Makefile
 themes/therapy/Makefile
 themes/tyrex/Makefile
