@@ -789,8 +789,8 @@ win_extents (CWindow *cw)
     is_shaped = ((!is_override && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
                  || (is_override && (cw->shaped)));
 
-    if ((is_override && !is_shaped && !is_argb && screen_info->params->show_popup_shadow)
-        || (has_frame && (screen_info->params->show_frame_shadow)))
+    if ((is_override  && !(is_argb || is_shaped) && screen_info->params->show_popup_shadow) || 
+       ((!is_override && (has_frame || !(is_argb || is_shaped)) && screen_info->params->show_frame_shadow)))
     {
         XRectangle sr;
 
