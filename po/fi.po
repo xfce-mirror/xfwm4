@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
-"PO-Revision-Date: 2006-04-08 17:26+0300\n"
+"PO-Revision-Date: 2006-04-14 11:06+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
 
 #: mcs-plugin/wmtweaks_plugin.c:490
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen työtila"
+msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen tila"
 
 #: mcs-plugin/wmtweaks_plugin.c:507
 msgid "Minimum size of windows to trigger smart placement"
@@ -383,7 +383,7 @@ msgstr "Nopea"
 
 #: mcs-plugin/xfwm4_plugin.c:1676
 msgid "Raise window when clicking inside application window"
-msgstr "Nosta ikkuna napsautettaessa sovellusikkunan sisällä"
+msgstr "Nosta sovellusikkuna, kun sen sisällä napsautetaan"
 
 #: mcs-plugin/xfwm4_plugin.c:1680
 msgid "Raise on click"
