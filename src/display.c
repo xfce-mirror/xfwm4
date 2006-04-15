@@ -754,7 +754,7 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
 
     if (dt < min_time)
     {
-        g_print ("XRender test passed (target %3.4f sec., measured %3.4f sec.).\n", min_time, dt);
+        TRACE ("XRender test passed (target %3.4f sec., measured %3.4f sec.).", min_time, dt);
         return TRUE;
     }
     g_print ("XRender test failed (target %3.4f sec., measured %3.4f sec.).\n", min_time, dt);
