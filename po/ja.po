@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
-"PO-Revision-Date: 2006-04-03 00:42+0900\n"
+"PO-Revision-Date: 2006-04-15 12:14+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -223,7 +223,7 @@ msgstr "名前:"
 
 #: mcs-plugin/workspaces.c:432
 msgid "Click on a workspace name to edit it"
-msgstr "編集するにはワークスペース名をクリックして下さい"
+msgstr "編集するにはワークスペース名をクリックしてください"
 
 #: mcs-plugin/workspaces.c:497
 msgid "Number of workspaces:"
@@ -295,7 +295,7 @@ msgstr "右"
 
 #: mcs-plugin/xfwm4_plugin.c:558
 msgid "Click and drag buttons to change the layout"
-msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグして下さい"
+msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグしてください"
 
 #: mcs-plugin/xfwm4_plugin.c:563
 msgid "Active"
@@ -451,14 +451,12 @@ msgid "Edge Resistance :"
 msgstr "エッジ抵抗 :"
 
 #: mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "短い"
+msgstr "弱い"
 
 #: mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "長い"
+msgstr "強い"
 
 #: mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -768,27 +766,3 @@ msgstr "%s: 色 %s を解析できません\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "不明なアプリケーションです！"
-
-#~ msgid "Attraction|Small"
-#~ msgstr "弱い"
-
-#~ msgid "Attraction|Wide"
-#~ msgstr "強い"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "ウィンドウマネージャー"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 ウィンドウマネージャーの設定"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "ウィンドウマネージャー (高度)"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 ウィンドウマネージャーの調節"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "ワークスペース"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 ワークスペースの設定"
