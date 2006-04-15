@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
-"PO-Revision-Date: 2006-03-25 18:45+0500\n"
+"PO-Revision-Date: 2006-04-14 17:15+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
 
 #: mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -140,27 +139,24 @@ msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:490
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Переключать рабочее место при достижении курсором края экрана"
+msgstr ""
 
 #: mcs-plugin/wmtweaks_plugin.c:507
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Минимальный размер окон, при котором будет включено умное размещение"
 
 #: mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
-msgstr "Меньше"
+msgstr "Размер|Маленький"
 
 #: mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Large"
-msgstr "Больше"
+msgstr "Размер|Большой"
 
 #: mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
-msgstr "Рамещение"
+msgstr "Размещение"
 
 #: mcs-plugin/wmtweaks_plugin.c:531
 msgid "Show shadows under regular windows"
@@ -204,7 +200,7 @@ msgstr ""
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
-"Эти настроки не могут быть использованы вашим текщим оконным менеджером (%s)"
+"Эти настроки не могут быть использованы вашим текущим оконным менеджером (%s)"
 
 #: mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -414,17 +410,15 @@ msgstr "Прилипание окон к другим окнам"
 
 #: mcs-plugin/xfwm4_plugin.c:1720
 msgid "Distance :"
-msgstr "Расстояние:"
+msgstr "Расстояние :"
 
 #: mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Расстояние:"
+msgstr "Расстояние|Маленькое"
 
 #: mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Расстояние:"
+msgstr "Расстояние|Большое"
 
 #: mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -440,17 +434,15 @@ msgstr "Переключать рабочее место при перемеще
 
 #: mcs-plugin/xfwm4_plugin.c:1779
 msgid "Edge Resistance :"
-msgstr "Расстояние от края:"
+msgstr "Сопротивление у краев:"
 
 #: mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Расстояние:"
+msgstr "Сопротивление|Низкое"
 
 #: mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Расстояние:"
+msgstr "Сопротивление|Высокое"
 
 #: mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -748,40 +740,15 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не смог получить курсор\n"
 
 #: src/settings.c:853
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Ошибка выделения активного цвета %s\n"
+msgstr "%s: Ошибка выделения цвета %s\n"
 
 #: src/settings.c:859
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Ошибка обработки активного цвета %s\n"
+msgstr "%s: Ошибка обработки цвета %s\n"
 
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Неизвестное приложение!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Параметры оконного менеджера"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Параметры оконного менеджера Xfce 4"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Дополнительные настройки"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Дополнительные настройки оконного менеджера Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Параметры рабочих мест"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Параметры рабочих мест Xfce 4"
-
-#~ msgid "Wide"
-#~ msgstr "Большое"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Расстояние от края:"
