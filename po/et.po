@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:40+0900\n"
@@ -758,37 +758,3 @@ msgstr "%s: Ei suutnud parsida aktiivse värvi %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Tundmatu rakendus!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Aknahalduri seaded"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 aknahalduri seaded"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Aknahalduri seaded"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 aknahalduri seaded"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Töölaua seaded"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 töölaua seaded"
-
-#~ msgid "Wide"
-#~ msgstr "Suur"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Ääre vastupanu :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Akna haakumine"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Vaheta aknaid"

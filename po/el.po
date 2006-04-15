@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-04-02 12:00+0200\n"
@@ -756,21 +756,3 @@ msgstr "%s: Αδύνατη η ανάλυση του χρώματος %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Άγνωστη εφαρμογή!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Ρυθμίσεις διαχειριστή παραθύρων"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Ρυθμίσεις διαχειριστή παραθύρων Xfce 4"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Προχωρημένες ρυθμίσεις"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Προσαρμογή διαχειριστή παραθύρων Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Ρυθμίσεις χώρων εργασίας"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Ρυθμίσεις χώρων εργασίας Xfce 4"

@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
@@ -759,37 +759,3 @@ msgstr "%s: સક્રિય રંગ %s પદચ્છેદ કરી શ�
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "અજ્ઞાત કાર્યક્રમ!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "વિન્ડો વ્યવસ્થાપક સુયોજનો"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 વિન્ડો વ્યવસ્થાપક સુયોજનો"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "વિન્ડો વ્યવસ્થાપક સુયોજનો"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 વિન્ડો વ્યવસ્થાપક સુયોજનો"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "કામ કરવાની જગ્યાના સુયોજનો"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 કામ કરવાની જગ્યાના સુયોજનો"
-
-#~ msgid "Wide"
-#~ msgstr "પહોળુ"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "બાજુનો અવરોધ :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "વિન્ડો બદલી રહ્યા છીએ"
-
-#~ msgid "Cycle windows"
-#~ msgstr "વતૃળ વિન્ડો"

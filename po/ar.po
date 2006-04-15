@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:34+0900\n"
@@ -814,44 +814,3 @@ msgstr "%s: لا أستطيع تحليل اللون النشط %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "مدير النوافذ"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "تفضيلات مدير النوافذ"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "مدير النوافذ"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "تفضيلات مدير النوافذ"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "بيئة العمل"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "بيئة العمل"
-
-#~ msgid "Wide"
-#~ msgstr "عرض"
-
-#
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "المسافة :"
-
-#
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "مدير النوافذ"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "اخفاء نافذة"

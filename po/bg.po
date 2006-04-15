@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
@@ -802,42 +802,3 @@ msgstr ""
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Мениджър на прозорци"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Настройки на мениджъра·на·прозорци"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Мениджър на прозорци"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Настройки на мениджъра·на·прозорци"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Граница на работно място"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Граница на работно място"
-
-#~ msgid "Wide"
-#~ msgstr "Голямо"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Съпротивление по краищата :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Прилепване на прозорците"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Скрива прозореца"

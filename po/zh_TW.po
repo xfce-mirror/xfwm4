@@ -7,7 +7,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:55+0900\n"
@@ -772,37 +772,3 @@ msgstr "%s: 無法分析使用的顏色 %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "不明的應用程式！"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "設定視窗管理程式"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 視窗管理程式設定"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "設定視窗管理程式"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 視窗管理程式設定"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "設定工作區"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 工作區設定"
-
-#~ msgid "Wide"
-#~ msgstr "寬"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "螢幕邊緣阻力："
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "視窗吸引"
-
-#~ msgid "Cycle windows"
-#~ msgstr "循環視窗"

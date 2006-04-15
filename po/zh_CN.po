@@ -1,4 +1,4 @@
-# #-#-#-#-#  zh_CN.po (xfwm4 4.3.0)  #-#-#-#-#
+# #-#-#-#-#  zh_CN.po (4.3.90.1)  #-#-#-#-#
 # Simplified Chinese translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:54+0900\n"
@@ -758,41 +758,3 @@ msgstr "%s: 无法解释所选颜色 %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "未知的应用程序！"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "窗口管理器"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "窗口管理器首选项"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "窗口管理器"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "窗口管理器首选项"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "工作区边缘"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "工作区边缘"
-
-#~ msgid "Wide"
-#~ msgstr "宽"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "屏幕边缘阻力 :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "窗口吸引"
-
-#~ msgid "Cycle windows"
-#~ msgstr "循环窗口"

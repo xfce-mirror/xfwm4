@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-08-19 21:17+0900\n"
@@ -761,37 +761,3 @@ msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Onbekend programma!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Instellingen voor de window manager"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Instellingen Xfce 4 Window Manager"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Instellingen voor de window manager"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Instellingen Xfce 4 Window Manager"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Instellingen voor virtuele bureaubladen"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Instellingen Xfce 4 Virtuele Bureaubladen"
-
-#~ msgid "Wide"
-#~ msgstr "Groot"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Weerstand :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Aantrekken vensters"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Venster wisselen"

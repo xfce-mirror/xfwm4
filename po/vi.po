@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-03-30 03:12+0300\n"
@@ -754,21 +754,3 @@ msgstr "%s: Không thể phân tích màu %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Ứng dụng không rõ!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Thiết lập trình quản lí cửa sổ"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Thiết lập trình quản lí cửa sổ Xfce 4"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Cấu hình nâng cao"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Tinh chỉnh của trình quản lí cửa sổ Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Thiết lập vùng làm việc"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Thiết lập vùng làm việc Xfce 4"

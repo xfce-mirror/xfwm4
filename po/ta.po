@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:53+0900\n"
@@ -800,42 +800,3 @@ msgstr "%s: நடப்பு வண்ணம் அலகிட முடி�
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "சாளரமேலாளர்"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "சாளரமேலாளர் விருப்பங்கள்"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "சாளரமேலாளர்"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "சாளரமேலாளர் விருப்பங்கள்"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "வேலையிட எல்லைகள்"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "வேலையிட எல்லைகள்"
-
-#~ msgid "Wide"
-#~ msgstr "அகலம்"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "விளிம்பு மறிப்பு :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "சாளரங்கள் போடுதல்"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "சாளரம் மறை"

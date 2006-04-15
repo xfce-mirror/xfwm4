@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:38+0900\n"
@@ -754,41 +754,3 @@ msgstr "%s: Nelze separovat aktivní barvu %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Neznámá aplikace!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Správce Oken"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Nastavení Správce oken"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Správce Oken"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Nastavení Správce oken"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Okraje ploch"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Okraje ploch"
-
-#~ msgid "Wide"
-#~ msgstr "Vysoká"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Hrana resistence:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Přichytávání oken"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Vytvořit cyklus oken"

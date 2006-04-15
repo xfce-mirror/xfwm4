@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
@@ -767,41 +767,3 @@ msgstr "%s: Fəal rəng oxuna bilmir %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Naməlum proqram!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Pəncərə İdarəçisi"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Pəncərə İdarəçisi Xassələri"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Pəncərə İdarəçisi"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Pəncərə İdarəçisi Xassələri"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "İş Sahəsi Kənarları"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "İş Sahəsi Kənarları"
-
-#~ msgid "Wide"
-#~ msgstr "Geniş"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Kənar Müqaviməti :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Pəncərələrin yapışması"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Pəncərələrin yerini dəyişdir"

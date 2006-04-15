@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
@@ -758,30 +758,3 @@ msgstr "%s: সক্রিয় রং পার্স করা যায়নি 
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "অজানা অ্যাপ্লিকেশন!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "উইন্ডো পরিচালন ব্যবস্থার বৈশিষ্ট্যাবলী"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 উইন্ডো পরিচালন ব্যবস্থার বৈশিষ্ট্য"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "উইন্ডো পরিচালন ব্যবস্থার বৈশিষ্ট্যাবলী"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 উইন্ডো পরিচালন ব্যবস্থার বৈশিষ্ট্য"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "কর্মক্ষেত্র সংক্রান্ত বৈশিষ্ট্য"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 কর্মক্ষেত্র সংক্রান্ত বৈশিষ্ট্য"
-
-#~ msgid "Wide"
-#~ msgstr "প্রসারিত"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "উইন্ডো আটক করা"

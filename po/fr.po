@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-02-02 21:32+0100\n"
@@ -759,21 +759,3 @@ msgstr "%s: Ne peut lire la couleur %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Application inconnue!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Paramétrage du gestionnaire de fenêtres"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Paramètres du gestionnaire de fenêtres de Xfce 4"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Configuration avancée"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Peaufinages du gestionnaire de fenêtres de Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Paramétrage des espaces virtuels"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Paramètres des espaces virtuels de Xfce 4"

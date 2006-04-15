@@ -7,7 +7,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-08 04:23+0900\n"
@@ -760,41 +760,3 @@ msgstr "%s: Nie mogę zidentyfikować aktywnego koloru %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Nieznana aplikacja!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Menadżer Okien"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Właściwości Menadżera Okien"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Menadżer Okien"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Właściwości Menadżera Okien"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Marginesy Obszaru Roboczego"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Marginesy Obszaru Roboczego"
-
-#~ msgid "Wide"
-#~ msgstr "Duża"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Bezwładność Krawędzi :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Przyciąganie okien"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Przełączaj okna"

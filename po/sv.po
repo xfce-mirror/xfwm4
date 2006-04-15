@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-08-19 21:21+0900\n"
@@ -802,42 +802,3 @@ msgstr "%s: Kan ej avläsa aktiv färg %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Fönsterhanterare"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Fönsterhanterarinställningar"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Fönsterhanterare"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Fönsterhanterarinställningar"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Skrivbordsmarginaler"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Skrivbordsmarginaler"
-
-#~ msgid "Wide"
-#~ msgstr "Brett"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Kantmotstånd:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Fönsterattraktion"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Göm fönster"

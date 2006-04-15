@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
@@ -790,42 +790,3 @@ msgstr "%s: Neįmanoma sužinoti aktyvios spalvos %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Nežinoma programa!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Langų tvarkyklės nuostatos"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Langų tvarkyklės nuostatos"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Darbo vietos paraštės"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Darbo vietos paraštės"
-
-#~ msgid "Wide"
-#~ msgstr "Plotis"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Kraštų atsparumas :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Langų pritraukimas"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Paslėpti langą"

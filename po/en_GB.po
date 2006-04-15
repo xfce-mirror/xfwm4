@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2004-12-03 18:06+0200\n"
@@ -759,41 +759,3 @@ msgstr "%s: Cannot parse active colour %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Unknown application!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Window Manager"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Window Manager Preferences"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Window Manager"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Window Manager Preferences"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Workspace Margins"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Workspace Margins"
-
-#~ msgid "Wide"
-#~ msgstr "Wide"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Edge Resistance :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Windows snapping"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Cycle windows"

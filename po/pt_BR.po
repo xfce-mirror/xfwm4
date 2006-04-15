@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:51+0900\n"
@@ -764,41 +764,3 @@ msgstr "%s: Não foi possível fazer análise da cor ativa %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Aplicativo desconhecido!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Gerenciador de janelas"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Preferências do gerenciador de janelas"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Gerenciador de janelas"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Preferências do gerenciador de janelas"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Margens da área de trabalho"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Margens da área de trabalho"
-
-#~ msgid "Wide"
-#~ msgstr "Largo"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Resistência das bordas"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Atrair janelas"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Alternar janelas"

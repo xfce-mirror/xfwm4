@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
@@ -760,41 +760,3 @@ msgstr "%s: Nu am reuşit să prelucrez culoarea activă %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Aplicaţie necunoscută!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Administrator ferestre"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Preferinţe administrator ferestre"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Administrator ferestre"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Preferinţe administrator ferestre"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Margini spaţii de lucru"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Margini spaţii de lucru"
-
-#~ msgid "Wide"
-#~ msgstr "Mare"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Rezistenţă margine:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Potrivire ferestre"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Schimbare fereastră activă"

@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-03-11 18:40+0100\n"
@@ -762,37 +762,3 @@ msgstr "%s: Malsukcesis legi la koloron %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Nekonata aplikaĵo!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Parametroj de la Administradilo de Fenestroj"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 Parametroj de la Administradilo de Fenestroj"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Evolua Agordo"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 Rafinaj Fenestraj Parametroj"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Parametroj de la Laborspacoj"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 Parametroj de la Laborspacoj"
-
-#~ msgid "Wide"
-#~ msgstr "Granda"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Rezisto ĉe la bordoj :"
-
-#~ msgid "Window cycling"
-#~ msgstr "Cikleligaj fenestroj"
-
-#~ msgid "Tweaks"
-#~ msgstr "Rafinaj Parametroj"
-
-#~ msgid "Compositing"
-#~ msgstr "Komponado"

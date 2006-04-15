@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:49+0900\n"
@@ -796,42 +796,3 @@ msgstr "%s: Tak boleh parse warna tak aktif %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Pengurus Tetingkap"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Keutamaan Pengurus Tetingkap"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Pengurus Tetingkap"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Keutamaan Pengurus Tetingkap"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Margin Ruangkerja"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Margin Ruangkerja"
-
-#~ msgid "Wide"
-#~ msgstr "Luas"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Halangan Sisi :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Snapping tetingkap"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Sembunyi tetingkap"

@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-22 01:23+0900\n"
@@ -769,37 +769,3 @@ msgstr "%s: Impossibile interpretare il colore attivo %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Applicazione sconosciuta!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Impostazioni del Gestore di Finestre"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Impostazioni del Gestore di Finestre di Xfce 4"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Impostazioni del Gestore di Finestre"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Impostazioni del Gestore di Finestre di Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Impostazioni degli Spazi di Lavoro"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Impostazioni degli Spazi di Lavoro di Xfce 4"
-
-#~ msgid "Wide"
-#~ msgstr "Ampio"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Resistenza ai Bordi :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Disposizione delle finestre"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Cicla le finestre"

@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
@@ -760,37 +760,3 @@ msgstr "%s: 활성 표시색 %s을 분석하지 못 했습니다.\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "무슨 프로그램이죠!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "창관리자 설정"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 창관리자 설정"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "창관리자 설정"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 창관리자 설정"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "작업공간 설정"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 작업공간 설정"
-
-#~ msgid "Wide"
-#~ msgstr "넓게"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "화면 모서리 저항 :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "창 움직임"
-
-#~ msgid "Cycle windows"
-#~ msgstr "창을 순환한다."

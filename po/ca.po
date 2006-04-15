@@ -7,7 +7,7 @@
 # Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-04-02 21:25+0200\n"
@@ -899,27 +899,3 @@ msgstr "%s: no s'ha pogut analitzar el color %s\n"
 #, fuzzy
 msgid "Unknown application!"
 msgstr "Desconegut aplicació!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Finestra Gestor Paràmetres"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Finestra Gestor Paràmetres"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Configuració avançada"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Finestra Gestor"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Àrees de treball Paràmetres"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Àrees de treball Paràmetres"

@@ -7,7 +7,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
@@ -760,38 +760,3 @@ msgstr "%s: אין אפשרות לקבוע צבע פעיל %s\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "יישום לא ידוע."
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "הגדרות מנהל החלונות"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "הגדרות מנהל החלונות Xfce 4"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "הגדרות מנהל החלונות"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "הגדרות מנהל החלונות Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "הגדרות סביבות העבודה"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "הגדרות סביבות העבודה Xfce 4"
-
-#~ msgid "Wide"
-#~ msgstr "גדול"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "התנגדות למעבר:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "הצמדת חלונות"
-
-#
-#~ msgid "Cycle windows"
-#~ msgstr "החלפת חלונות פעילים"

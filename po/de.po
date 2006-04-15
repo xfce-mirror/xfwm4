@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-02-19 12:09+0100\n"
@@ -777,40 +777,3 @@ msgstr "%s: Kann Farbe %s nicht einlesen\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Unbekannte Anwendung!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Einstellungen für den Fenstermanager"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 Einstellungen für den Fenstermanager"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Fortgeschrittene Konfiguration"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 Tweaks für den Fenstermanager"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Einstellungen für die Arbeitsflächen"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 Einstellungen für die Arbeitsflächen"
-
-#~ msgid "Wide"
-#~ msgstr "Groß"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Distanz zum Rand:"
-
-#~ msgid "Window cycling"
-#~ msgstr "Wechseln der Fenster"
-
-#~ msgid "Tweaks"
-#~ msgstr "Tweaks"
-
-#~ msgid "Compositing"
-#~ msgstr "Compositing"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Fenster durchlaufen"

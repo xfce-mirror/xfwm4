@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-04-14 11:06+0300\n"
@@ -745,33 +745,3 @@ msgstr "%s: Värimääritys %s ei kelpaa\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Tuntematon sovellus!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Ikkunamanagerin asetukset"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 ikkunamanagerin asetukset"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Lisäasetukset"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 ikkunamanagerin viritys"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Työtilojen asetukset"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 työtilojen asetukset"
-
-#~ msgid "Window cycling"
-#~ msgstr "Ikkunoiden selaus"
-
-#~ msgid "Tweaks"
-#~ msgstr "Viritykset"
-
-#~ msgid "Compositing"
-#~ msgstr "Komposointi"
-
-#~ msgid "Wide"
-#~ msgstr "Suuri"

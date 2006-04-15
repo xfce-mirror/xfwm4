@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
@@ -491,7 +491,7 @@ msgid "Action to perform when double clicking on title bar :"
 msgstr "टाइटल बार में डबल क्लिक करने पर क्रिया निष्पादन :"
 
 # #-#-#-#-#  gnome-control-center.gnome-2-4.hi.po (control center)  #-#-#-#-#
-# #-#-#-#-#  gnome-desktop.gnome-2-2.hi.po (gnome-desktop 4.3.0)  #-#-#-#-#
+# #-#-#-#-#  gnome-desktop.gnome-2-2.hi.po (gnome-desktop 4.3.90.1)  #-#-#-#-#
 # libgnome-desktop/gnome-ditem-edit.c:776
 # #-#-#-#-#  gnome-desktop.HEAD.hi.po (gnome-desktop-2.0.hi)  #-#-#-#-#
 # libgnome-desktop/gnome-ditem-edit.c:776
@@ -809,44 +809,3 @@ msgstr "%s:  सक्रिय रंग पारसे नहीं कर �
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr ""
-
-# gnome-session/splash.c:71
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "विन्डो प्रबंधक"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "विंडो प्रबंधक वरीयताएँ"
-
-# gnome-session/splash.c:71
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "विन्डो प्रबंधक"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "विंडो प्रबंधक वरीयताएँ"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "कार्यस्थान हाशिया "
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "कार्यस्थान हाशिया "
-
-#~ msgid "Wide"
-#~ msgstr "चौड़ा"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "किनारा प्रतिरोध :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "विंडोस स्नेपिंग"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "विंडो छुपाएं"

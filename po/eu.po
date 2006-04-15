@@ -6,7 +6,7 @@
 # Piarres Beobide Egaña <pi@beobide.net>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2006-03-19 00:45+0100\n"
@@ -759,40 +759,3 @@ msgstr "%s: Ezin da %s kolorea analizatu\n"
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Aplikazio ezezaguna!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Leiho Kudeatzaile Ezarpenak"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 Leiho Kudeatzaile Ezarpenak"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Leiho Kudeatzaile Ezarpenak"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 Leiho Kudeatzaile Ezarpenak"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Idazmahai Ezarpenak"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 Idazmahai Ezarpenak"
-
-#~ msgid "Wide"
-#~ msgstr "Zabala"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Ertzaren erresistentzia :"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Leiho Itsaskarritasuna"
-
-#~ msgid "Tweaks"
-#~ msgstr "Gomendioak"
-
-#~ msgid "Compositing"
-#~ msgstr "Sortzea"

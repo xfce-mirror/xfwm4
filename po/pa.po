@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:50+0900\n"
@@ -770,41 +770,3 @@ msgstr "%s: ਸਰਗਰਮ ਰੰਗ %s ਦੀ ਪਦ-ਵਿਆਖਿਆ ਨਹ
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਪਸੰਦ"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਪਸੰਦ"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
-
-#~ msgid "Wide"
-#~ msgstr "ਵੱਡਾ"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "ਕਿਨਾਰਾ ਵਿਰੋਧਤਾ ਃ"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "ਝਰੋਖਾ ਤਸਵੀਰ"
-
-#~ msgid "Cycle windows"
-#~ msgstr "ਚੱਕਰ ਝਰੋਖਾ"

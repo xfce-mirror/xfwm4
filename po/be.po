@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:37+0900\n"
@@ -771,41 +771,3 @@ msgstr "%s: немагчыма разабраць актыўны колер %s\n
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Невядомае дастасаваньне!"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Кіраўнік вокнаў"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Перавагі кіраўніка вокнаў"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Кіраўнік вокнаў"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Перавагі кіраўніка вокнаў"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Водступы працоўнае прасторы"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Водступы працоўнае прасторы"
-
-#~ msgid "Wide"
-#~ msgstr "Вялікая"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "Трываласьць межаў:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "Прыцягненьне вокнаў"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Пралістаць вокны"

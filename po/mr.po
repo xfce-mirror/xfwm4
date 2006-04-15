@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.0\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
@@ -758,37 +758,3 @@ msgstr "%s: सक्रिय रंगाचे परस्पर संब�
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "अपरिचित एप्लिकेशन!"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "विण्डो व्यवस्थापक रचना"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 विण्डो व्यवस्थापक रचना"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "विण्डो व्यवस्थापक रचना"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 विण्डो व्यवस्थापक रचना"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "कार्यक्षेत्रांची रचना"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 कार्यक्षेत्रांची रचना"
-
-#~ msgid "Wide"
-#~ msgstr "रुंद"
-
-#, fuzzy
-#~ msgid "Edge Resistance|Small"
-#~ msgstr "किनार प्रतिरोध:"
-
-#, fuzzy
-#~ msgid "Window cycling"
-#~ msgstr "विण्डो स्नॅपिंग"
-
-#~ msgid "Cycle windows"
-#~ msgstr "सायकल विण्डोज"
