@@ -63,7 +63,7 @@ msgstr "Ничего"
 
 #: mcs-plugin/wmtweaks_plugin.c:355 mcs-plugin/wmtweaks_plugin.c:606
 msgid "Window Manager Tweaks"
-msgstr "Настройки оконного менеджера"
+msgstr "Оконный менеджер"
 
 #: mcs-plugin/wmtweaks_plugin.c:364
 msgid "Window Manager Advanced Configuration"
@@ -305,11 +305,11 @@ msgstr "Выбор шрифта"
 
 #: mcs-plugin/xfwm4_plugin.c:1422 mcs-plugin/xfwm4_plugin.c:1976
 msgid "Window Manager"
-msgstr "Оконный менеджер"
+msgstr "Окна"
 
 #: mcs-plugin/xfwm4_plugin.c:1434
 msgid "Window Manager Preferences"
-msgstr "Настройки менеджера окон"
+msgstr "Настройка окон"
 
 #: mcs-plugin/xfwm4_plugin.c:1467
 msgid "Title font"
