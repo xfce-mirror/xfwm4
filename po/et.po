@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 23:28+0200\n"
-"PO-Revision-Date: 2005-10-09 20:40+0900\n"
+"PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -56,44 +56,43 @@ msgstr "Ääred"
 
 #: mcs-plugin/wmtweaks_plugin.c:347
 msgid "None"
-msgstr ""
+msgstr "Tühjus"
 
 #: mcs-plugin/wmtweaks_plugin.c:355 mcs-plugin/wmtweaks_plugin.c:606
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Aknahaldur"
+msgstr "Aknahalduri ülehäälestamine"
 
 #: mcs-plugin/wmtweaks_plugin.c:364
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "Aknahalduri seaded"
+msgstr "Aknahalduri edendatud seaded"
 
 #: mcs-plugin/wmtweaks_plugin.c:380
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"Lisa aknad, millel on \"eira lehitsejat\" või\n"
+"\"eira tegumiriba\" omadused seatud"
 
 #: mcs-plugin/wmtweaks_plugin.c:386
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Lisa varjatud (ehk ikoniseeritud) aknad"
 
 #: mcs-plugin/wmtweaks_plugin.c:392
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Saada aken vasakpoolsesse tööruumi"
+msgstr "Tsükleeri üle kõigi töölaudade akende"
 
 #: mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycling"
-msgstr ""
+msgstr "Tsükleerimine"
 
 #: mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Aktiveeri fookuse näppamise ennetustegevus"
 
 #: mcs-plugin/wmtweaks_plugin.c:415
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "Austa standartset ICCCM fookuse vihjet"
 
 #: mcs-plugin/wmtweaks_plugin.c:420 mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
@@ -101,108 +100,102 @@ msgstr "Fookus"
 
 #: mcs-plugin/wmtweaks_plugin.c:432
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "Klahv, mida kasutada akna haaramiseks ja liigutamiseks"
 
 #: mcs-plugin/wmtweaks_plugin.c:438
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Tõsta aken kui ükskõik millist hiire nuppu toksitakse"
 
 #: mcs-plugin/wmtweaks_plugin.c:445
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Näita akna sisu selle liigutamise ajal"
+msgstr "Taasta suurendatud akende originaalne suurus nende liigutamisel"
 
 #: mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Kasuta ääre vastuhakku akende haakimise asemel"
 
 #: mcs-plugin/wmtweaks_plugin.c:456
 msgid "Accessibility"
-msgstr ""
+msgstr "Käsitletavus"
 
 #: mcs-plugin/wmtweaks_plugin.c:469
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Lülita töölaudu kasutades hiire rulli töölaua kohal"
 
 #: mcs-plugin/wmtweaks_plugin.c:476
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
+"Pea meeles ja kutsu esile eelmine töölaud kui lülitamine\n"
+"käib klaviatuuri kiirklahvide abil."
 
 #: mcs-plugin/wmtweaks_plugin.c:483
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Muuda töölaudu sõltuvalt tegelikust töölaua laotusest"
 
 #: mcs-plugin/wmtweaks_plugin.c:490
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Vaheta töölauda, kui kursor jõuab akna äärde"
+msgstr "Vaheta töölaud teise äärde, kui esimene või viimane töölaud on ees"
 
 #: mcs-plugin/wmtweaks_plugin.c:507
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Akende vähim suurus, mis käivitab targa paigutuse"
 
 #: mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
-msgstr "Väike"
+msgstr "Suurus|Väike"
 
 #: mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Large"
-msgstr ""
+msgstr "Suurus|Suur"
 
 #: mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
-msgstr ""
+msgstr "Asetus"
 
 #: mcs-plugin/wmtweaks_plugin.c:531
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Näita varje tavaliste akende taga"
 
 #: mcs-plugin/wmtweaks_plugin.c:537
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Näita varju hüpikakende taga"
 
 #: mcs-plugin/wmtweaks_plugin.c:543
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Näita akna sisu selle suuruse muutmise ajal"
+msgstr "Akna kaunistuste läbipaistmatus"
 
 #: mcs-plugin/wmtweaks_plugin.c:543 mcs-plugin/wmtweaks_plugin.c:549
 #: mcs-plugin/wmtweaks_plugin.c:555 mcs-plugin/wmtweaks_plugin.c:561
 msgid "Transparent"
-msgstr ""
+msgstr "Läbipaistev"
 
 #: mcs-plugin/wmtweaks_plugin.c:544 mcs-plugin/wmtweaks_plugin.c:550
 #: mcs-plugin/wmtweaks_plugin.c:556 mcs-plugin/wmtweaks_plugin.c:562
 msgid "Opaque"
-msgstr ""
+msgstr "Läbipaistmatu"
 
 #: mcs-plugin/wmtweaks_plugin.c:549
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Näita akna sisu selle liigutamise ajal"
+msgstr "Akna läbipaistmatus liigutamise ajal"
 
 #: mcs-plugin/wmtweaks_plugin.c:555
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Näita akna sisu selle suuruse muutmise ajal"
+msgstr "Akna läbipaistmatus suuruse muutmise ajal"
 
 #: mcs-plugin/wmtweaks_plugin.c:561
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Näita akna sisu selle liigutamise ajal"
+msgstr "Hüpikakende läbipaistmatus"
 
 #: mcs-plugin/wmtweaks_plugin.c:566
-#, fuzzy
 msgid "Compositor"
-msgstr "Tekita kiirvalik"
+msgstr "Kujundaja"
 
 #: mcs-plugin/wmtweaks_plugin.c:719 mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Need seadistused ei saa töötada teie praeguse aknahalduriga (%s)"
 
 #: mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -415,14 +408,12 @@ msgid "Distance :"
 msgstr "Kaugus :"
 
 #: mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Kaugus :"
+msgstr "Kaugus|Väike"
 
 #: mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Kaugus :"
+msgstr "Kaugus|Lai"
 
 #: mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -441,14 +432,12 @@ msgid "Edge Resistance :"
 msgstr "Ääre vastupanu :"
 
 #: mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Kaugus :"
+msgstr "Vastuhakk|Väike"
 
 #: mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Kaugus :"
+msgstr "Vastuhakk|Lai"
 
 #: mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -612,12 +601,12 @@ msgstr "Saada aken parempoolsesse tööruumi"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Show desktop"
-msgstr ""
+msgstr "Näita töölauda"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:497
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Saada aken tööruumi 1"
+msgstr "Saada aken tööruumi %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:584
 msgid "Cannot open the theme directory !"
@@ -746,15 +735,16 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
 
 #: src/settings.c:853
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Ei suutnud tekitada aktiivse värvi %s\n"
+msgstr "%s: Ei suutnud tekitada värvi %s\n"
 
 #: src/settings.c:859
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Ei suutnud parsida aktiivse värvi %s\n"
+msgstr "%s: Ei suutnud parsida värvi %s\n"
 
 #: src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Tundmatu rakendus!"
+
