@@ -106,7 +106,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     manager = mcs_plugin->manager;
 
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup (_("Workspaces and Margins"));
+    /* the button label in the xfce-mcs-manager dialog */
+    mcs_plugin->caption = g_strdup (Q_ ("Button Label|Workspaces and Margins"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon = xfce_themed_icon_load ("xfce4-workspaces", 48);
 

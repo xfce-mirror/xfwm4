@@ -1549,7 +1549,7 @@ gboolean
 initSettings (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info = NULL;
-    int i;
+    int i = 0;
     long val = 0;
     char **names = NULL;
 
