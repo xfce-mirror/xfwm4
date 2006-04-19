@@ -43,6 +43,10 @@
 #include "client.h"
 #include "compositor.h"
 
+#ifndef MAX_HOSTNAME_LENGTH
+#define MAX_HOSTNAME_LENGTH 32
+#endif /* MAX_HOSTNAME_LENGTH */
+
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
@@ -141,6 +145,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_WIN_WORKSPACE_COUNT",
         "WM_CHANGE_STATE",
         "WM_CLIENT_LEADER",
+        "WM_CLIENT_MACHINE",
         "WM_COLORMAP_WINDOWS",
         "WM_DELETE_WINDOW",
         "WM_HINTS",
@@ -259,6 +264,13 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->dbl_click_time = 300;
     display->nb_screens = 0;
     display->current_time = CurrentTime;
+
+    display->hostname = g_new0 (gchar, (size_t) MAX_HOSTNAME_LENGTH);
+    if (gethostname ((char *) display->hostname, MAX_HOSTNAME_LENGTH - 1))
+    {
+        g_free (display->hostname);
+        display->hostname = NULL;
+    }
     
     compositorInitDisplay (display);
 
@@ -277,6 +289,12 @@ myDisplayClose (DisplayInfo *display)
     XFreeCursor (display->dpy, display->root_cursor);
     display->root_cursor = None;
     
+    if (display->hostname)
+    {
+        g_free (display->hostname);
+        display->hostname = NULL;
+    }
+
     for (i = 0; i < 7; i++)
     {
         XFreeCursor (display->dpy, display->resize_cursor[i]);

@@ -191,6 +191,28 @@ frameHeight (Client * c)
     return c->height;
 }
 
+static gchar*
+frameGetTitle (Client * c)
+{
+    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info = NULL;
+    gchar *title = NULL;
+    
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if ((display_info->hostname) && (c->client_machine) && (g_strcasecmp (display_info->hostname, c->client_machine)))
+    {
+        title = g_strdup_printf (_("%s (on %s)"), c->name, c->client_machine);
+    }
+    else
+    {
+        title = g_strdup (c->name);        
+    }
+
+    return title;
+}
+
 static void
 frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * pm)
 {
@@ -203,6 +225,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     PangoRectangle logical_rect;
     int width, x = 0, tp = 0, w1 = 0, w2, w3, w4, w5, temp;
     int voffset = 0;
+    gchar *title;
 
     TRACE ("entering frameCreateTitlePixmap");
 
@@ -252,9 +275,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     w2 = screen_info->title[TITLE_2][state].width;
     w4 = screen_info->title[TITLE_4][state].width;
 
-    layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
+    title = frameGetTitle (c);
+    layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), title);
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
-
+    g_free (title);
     if (screen_info->params->full_width_title)
     {
         w1 = left;

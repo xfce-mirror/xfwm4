@@ -85,25 +85,6 @@ gboolean xfwm4_quit           = FALSE;
 gboolean xfwm4_reload         = FALSE;
 
 static void
-compute_delta_t (struct timeval *start, struct timeval *stop, struct timeval *delta)
-{
-    delta->tv_sec = stop->tv_sec - start->tv_sec;
-    delta->tv_usec = stop->tv_usec - start->tv_usec;
-
-    if (delta->tv_usec >= 1000000)
-    {
-        delta->tv_sec += 1;
-        delta->tv_usec -= 1000000;
-    }
-
-    if (delta->tv_usec < 0)
-    {
-        delta->tv_sec -= 1;
-        delta->tv_usec += 1000000;
-    }
-}
-
-static void
 cleanUp (void)
 {
     GSList *screens;

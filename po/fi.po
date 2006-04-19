@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 12:24+0300\n"
+"POT-Creation-Date: 2006-04-19 23:58+0200\n"
 "PO-Revision-Date: 2006-04-19 12:26+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -651,7 +651,12 @@ msgstr "Määritä pikanäppäin"
 msgid "No shortcut"
 msgstr "Ei pikanäppäintä"
 
-#: ../src/main.c:206
+#: ../src/frame.c:206
+#, c-format
+msgid "%s (on %s)"
+msgstr ""
+
+#: ../src/main.c:187
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Muistinosoitusvirhe"

@@ -145,7 +145,6 @@
 #define ALL_WORKSPACES                  (int) 0xFFFFFFFF
 
 #define CONSTRAINED_WINDOW(c)           ((c->win_layer > WIN_LAYER_DESKTOP) && \
-                                         (c->win_layer < WIN_LAYER_ABOVE_DOCK) && \
                                         !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
                                         !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
 
@@ -254,7 +253,8 @@ struct _Client
     int ncmap;
     int button_pressed[BUTTON_COUNT];
     int struts[12];
-    char *name;
+    gchar *name;
+    gchar *client_machine;
     GTimeVal last_op_time;
     Time user_time;
     unsigned long flags;
@@ -269,7 +269,7 @@ struct _Client
     
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification */
-    char *startup_id;
+    gchar *startup_id;
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 };
 

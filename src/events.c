@@ -1715,9 +1715,20 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME notify", c->name, c->window);
             if (c->name)
             {
-                free (c->name);
+                g_free (c->name);
             }
             getWindowName (display_info, c->window, &c->name);
+            FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
+            frameDraw (c, TRUE, FALSE);
+        }
+        else if (ev->atom == display_info->atoms[WM_CLIENT_MACHINE])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a WM_CLIENT_MACHINE notify", c->name, c->window);
+            if (c->client_machine)
+            {
+                g_free (c->client_machine);
+            }
+            getClientMachine (display_info, c->window, &c->client_machine);
             FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
             frameDraw (c, TRUE, FALSE);
         }
@@ -1816,7 +1827,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         {
             if (c->startup_id)
             {
-                free (c->startup_id);
+                g_free (c->startup_id);
                 c->startup_id = NULL;
             }
             getWindowStartupId (display_info, c->window, &c->startup_id);
@@ -1833,7 +1844,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 
     if (ev->atom == display_info->atoms[NET_DESKTOP_NAMES])
     {
-        char **names;
+        gchar **names;
         int items;
 
         TRACE ("root has received a net_desktop_names notify");

@@ -6,10 +6,34 @@ mcs-plugin/wmtweaks_plugin.c
 mcs-plugin/workspaces.c
 mcs-plugin/xfwm4_plugin.c
 mcs-plugin/xfwm4_shortcuteditor.c
+src/client.c
+src/compositor.c
+src/display.c
+src/events.c
+src/focus.c
+src/frame.c
+src/hints.c
+src/icons.c
+src/keyboard.c
 src/main.c
 src/menu.c
+src/misc.c
+src/mypixmap.c
+src/mywindow.c
+src/netwm.c
+src/parserc.c
+src/placement.c
+src/poswin.c
+src/screen.c
+src/session.c
 src/settings.c
+src/spinning_cursor.c
+src/stacking.c
+src/startup_notification.c
 src/tabwin.c
+src/transients.c
+src/wireframe.c
+src/workspaces.c
 
 # files added by intltool-prepare.
 mcs-plugin/xfce-wm-settings.desktop.in

@@ -35,7 +35,7 @@
 
 gboolean workspaceMove (ScreenInfo *, int, int, Client *);
 void workspaceSwitch (ScreenInfo *, int, Client *, gboolean);
-void workspaceSetNames (ScreenInfo *, char **, int);
+void workspaceSetNames (ScreenInfo *, gchar **, int);
 void workspaceSetCount (ScreenInfo *, int);
 void workspaceUpdateArea (ScreenInfo *);
 

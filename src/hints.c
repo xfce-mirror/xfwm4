@@ -545,7 +545,7 @@ initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int w
 }
 
 void
-setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const char *val)
+setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar *val)
 {
     g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
     TRACE ("entering setUTF8StringHint");
@@ -652,7 +652,7 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
 }
 
 static gboolean
-getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
+getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, int *length)
 {
     Atom type;
     int format;
@@ -689,7 +689,7 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, char **str_
 }
 
 gboolean
-getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, int *length)
+getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, int *length)
 {
     char *xstr;
     
@@ -727,10 +727,10 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, char **str_p, i
 }
 
 gboolean
-getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str_p, int *n_items)
+getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***str_p, int *n_items)
 {
     char *xstr, *ptr;
-    char **retval;
+    gchar **retval;
     guint i;
     int length;
 
@@ -760,7 +760,7 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str
         *n_items = *n_items + 1;
     }
  
-    retval = g_new0 (char *, *n_items + 1);
+    retval = g_new0 (gchar *, *n_items + 1);
     ptr = xstr;
     
     for (i = 0; i < *n_items; i++)
@@ -782,38 +782,61 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, char ***str
     return TRUE;
 }
 
-void
-getWindowName (DisplayInfo *display_info, Window w, char **name)
+gboolean
+getWindowName (DisplayInfo *display_info, Window w, gchar **name)
 {
     char *str;
     int len;
 
     TRACE ("entering getWindowName");
 
-    g_return_if_fail (name != NULL);
+    g_return_val_if_fail (name != NULL, FALSE);
     *name = NULL;
-    g_return_if_fail (w != None);
+    g_return_val_if_fail (w != None, FALSE);
 
     if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len))
     {
         *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
         XFree (str);
-        return;
+        return TRUE;
     }
     str = get_text_property (display_info, w, XA_WM_NAME);
     if (str)
     {
         *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
         XFree (str);
+        return TRUE;
     }
     else
     {
-        *name = strdup ("");
+        *name = g_strdup ("");
     }
+    return FALSE;
 }
 
 gboolean
-getWindowRole (DisplayInfo *display_info, Window window, char **role)
+getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
+{
+    char *str;
+
+    TRACE ("entering getClientMachine");
+
+    g_return_val_if_fail (machine != NULL, FALSE);
+    *machine = NULL;
+    g_return_val_if_fail (w != None, FALSE);
+
+    str = get_text_property (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
+    if (str)
+    {
+        *machine = g_strndup (str, MAX_STR_LENGTH);
+        XFree (str);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+gboolean
+getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
 {
     XTextProperty tp;
 
@@ -829,7 +852,7 @@ getWindowRole (DisplayInfo *display_info, Window window, char **role)
         {
             if ((tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
             {
-                *role = strdup ((char *) tp.value);
+                *role = g_strdup ((gchar *) tp.value);
                 XFree (tp.value);
                 return TRUE;
             }
@@ -901,7 +924,7 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
 }
 
 gboolean
-getClientID (DisplayInfo *display_info, Window window, char **client_id)
+getClientID (DisplayInfo *display_info, Window window, gchar **client_id)
 {
     Window id;
     XTextProperty tp;
@@ -918,7 +941,7 @@ getClientID (DisplayInfo *display_info, Window window, char **client_id)
         {
             if (tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
             {
-                *client_id = strdup ((char *) tp.value);
+                *client_id = g_strdup ((gchar *) tp.value);
                 XFree (tp.value);
                 return TRUE;
             }
@@ -1138,7 +1161,7 @@ getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean
-getWindowStartupId (DisplayInfo *display_info, Window w, char **startup_id)
+getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
 {
     char *str;
     int len;
@@ -1151,7 +1174,7 @@ getWindowStartupId (DisplayInfo *display_info, Window w, char **startup_id)
 
     if (getUTF8StringData (display_info, w, NET_STARTUP_ID, &str, &len))
     {
-        *startup_id = strdup (str);
+        *startup_id = g_strdup (str);
         XFree (str);
         return TRUE;
     }
@@ -1159,7 +1182,7 @@ getWindowStartupId (DisplayInfo *display_info, Window w, char **startup_id)
     str = get_text_property (display_info, w, NET_STARTUP_ID);
     if (str)
     {
-        *startup_id = strdup (str);
+        *startup_id = g_strdup (str);
         XFree (str);
         return TRUE;
     }

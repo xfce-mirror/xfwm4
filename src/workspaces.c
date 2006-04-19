@@ -368,7 +368,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
 }
 
 void
-workspaceSetNames (ScreenInfo * screen_info, char **names, int items)
+workspaceSetNames (ScreenInfo * screen_info, gchar **names, int items)
 {
     if (screen_info->workspace_names)
     {

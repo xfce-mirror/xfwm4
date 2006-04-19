@@ -144,6 +144,7 @@ enum
     WIN_WORKSPACE_COUNT,
     WM_CHANGE_STATE,
     WM_CLIENT_LEADER,
+    WM_CLIENT_MACHINE,
     WM_COLORMAP_WINDOWS,
     WM_DELETE_WINDOW,
     WM_HINTS,
@@ -189,6 +190,7 @@ struct _DisplayInfo
     gint dbl_click_time;
     gint xgrabcount;
     gint nb_screens;
+    gchar* hostname;
 
     Time current_time;
 
