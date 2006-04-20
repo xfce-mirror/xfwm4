@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 23:58+0200\n"
+"POT-Creation-Date: 2006-04-20 21:55+0200\n"
 "PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -41,16 +41,22 @@ msgstr "Ülemine :"
 msgid "Bottom :"
 msgstr "Alumine :"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:150
-msgid "Workspaces and Margins"
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/plugin.c:110
+#, fuzzy
+msgid "Button Label|Workspaces and Margins"
 msgstr "Tööruumid ja ääred"
 
-#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:163
+#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Tööruumid"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/plugin.c:151
+msgid "Workspaces and Margins"
+msgstr "Tööruumid ja ääred"
+
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Ääred"
 
@@ -58,7 +64,7 @@ msgstr "Ääred"
 msgid "None"
 msgstr "Tühjus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Aknahalduri ülehäälestamine"
@@ -193,7 +199,13 @@ msgstr "Hüpikakende läbipaistmatus"
 msgid "Compositor"
 msgstr "Kujundaja"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:607
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Aknahalduri ülehäälestamine"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Need seadistused ei saa töötada teie praeguse aknahalduriga (%s)"
@@ -299,7 +311,7 @@ msgstr "Varjatud"
 msgid "Font Selection Dialog"
 msgstr "Fondi valimise dialoog"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422 ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1422
 msgid "Window Manager"
 msgstr "Aknahaldur"
 
@@ -463,6 +475,12 @@ msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
 #: ../mcs-plugin/xfwm4_plugin.c:1838
 msgid "Advanced"
 msgstr "Edasijõudnud"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1977
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "Aknahaldur"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
@@ -653,7 +671,7 @@ msgstr "Tekita kiirvalik"
 msgid "No shortcut"
 msgstr "Kiirvalik puudub"
 
-#: ../src/frame.c:206
+#: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
 msgstr ""

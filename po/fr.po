@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 23:58+0200\n"
+"POT-Creation-Date: 2006-04-20 21:55+0200\n"
 "PO-Revision-Date: 2006-02-02 21:32+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -42,16 +42,22 @@ msgstr "Haut :"
 msgid "Bottom :"
 msgstr "Bas :"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:150
-msgid "Workspaces and Margins"
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/plugin.c:110
+#, fuzzy
+msgid "Button Label|Workspaces and Margins"
 msgstr "Marges et espaces de travail"
 
-#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:163
+#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Espaces de travail"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/plugin.c:151
+msgid "Workspaces and Margins"
+msgstr "Marges et espaces de travail"
+
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Marges"
 
@@ -59,7 +65,7 @@ msgstr "Marges"
 msgid "None"
 msgstr "Aucun"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Peaufinages des fenêtres"
@@ -200,7 +206,13 @@ msgstr "Opacité des fenêtres contextuelles"
 msgid "Compositor"
 msgstr "Compositeur"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:607
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Peaufinages des fenêtres"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -309,7 +321,7 @@ msgstr "Éléments masqués"
 msgid "Font Selection Dialog"
 msgstr "Sélection de Fonte"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422 ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1422
 msgid "Window Manager"
 msgstr "Gestionnaire de fenêtres"
 
@@ -475,6 +487,12 @@ msgstr "Action à effectuer lors d'un double clic sur la barre de titre :"
 #: ../mcs-plugin/xfwm4_plugin.c:1838
 msgid "Advanced"
 msgstr "Avancé"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1977
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "Gestionnaire de fenêtres"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
@@ -665,7 +683,7 @@ msgstr "Composer le raccourci"
 msgid "No shortcut"
 msgstr "Pas de raccourci"
 
-#: ../src/frame.c:206
+#: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"

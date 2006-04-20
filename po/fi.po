@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 23:58+0200\n"
+"POT-Creation-Date: 2006-04-20 21:55+0200\n"
 "PO-Revision-Date: 2006-04-19 12:26+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -41,16 +41,22 @@ msgstr "Yläreuna:"
 msgid "Bottom :"
 msgstr "Alareuna:"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:150
-msgid "Workspaces and Margins"
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/plugin.c:110
+#, fuzzy
+msgid "Button Label|Workspaces and Margins"
 msgstr "Työtilat ja reunukset"
 
-#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:163
+#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Työtilat"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/plugin.c:151
+msgid "Workspaces and Margins"
+msgstr "Työtilat ja reunukset"
+
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Reunukset"
 
@@ -58,7 +64,7 @@ msgstr "Reunukset"
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
@@ -191,7 +197,13 @@ msgstr "Ponnahdusikkunoiden läpinäkyvyys"
 msgid "Compositor"
 msgstr "Komposoija"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:607
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Ikkunamanagerin viritys"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
@@ -297,7 +309,7 @@ msgstr "Piilotettu"
 msgid "Font Selection Dialog"
 msgstr "Kirjasimenvalintadialogi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422 ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1422
 msgid "Window Manager"
 msgstr "Ikkunamanageri"
 
@@ -461,6 +473,12 @@ msgstr "Toiminto, joka suoritetaan kaksoisnapsautettaessa otsikkopalkkia:"
 #: ../mcs-plugin/xfwm4_plugin.c:1838
 msgid "Advanced"
 msgstr "Lisäasetukset"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1977
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "Ikkunamanageri"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
@@ -651,7 +669,7 @@ msgstr "Määritä pikanäppäin"
 msgid "No shortcut"
 msgstr "Ei pikanäppäintä"
 
-#: ../src/frame.c:206
+#: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
 msgstr ""

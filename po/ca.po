@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 23:58+0200\n"
+"POT-Creation-Date: 2006-04-20 21:55+0200\n"
 "PO-Revision-Date: 2006-04-02 21:25+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -49,18 +49,24 @@ msgstr "Principi:"
 msgid "Bottom :"
 msgstr "Inferior:"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:150
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/plugin.c:110
 #, fuzzy
-msgid "Workspaces and Margins"
+msgid "Button Label|Workspaces and Margins"
 msgstr "Àrees de treball i Marges"
 
-#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:163
+#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Workspaces"
 msgstr "Àrees de treball"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/plugin.c:151
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "Àrees de treball i Marges"
+
+#: ../mcs-plugin/plugin.c:173
 #, fuzzy
 msgid "Margins"
 msgstr "Marges"
@@ -69,7 +75,7 @@ msgstr "Marges"
 msgid "None"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -228,7 +234,13 @@ msgstr "Opacitat de emergent finestres"
 msgid "Compositor"
 msgstr "Nou missatge drecera"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:607
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Finestra Gestor"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -356,7 +368,7 @@ msgstr "Amagat"
 msgid "Font Selection Dialog"
 msgstr "Diàleg de selecció del tipus de lletra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422 ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1422
 #, fuzzy
 msgid "Window Manager"
 msgstr "Gestor de finestres"
@@ -561,6 +573,12 @@ msgstr "Acció a  on:"
 #, fuzzy
 msgid "Advanced"
 msgstr "Avançat"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1977
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "Gestor de finestres"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 #, fuzzy
@@ -788,7 +806,7 @@ msgstr "Nou missatge drecera"
 msgid "No shortcut"
 msgstr "No drecera"
 
-#: ../src/frame.c:206
+#: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 23:58+0200\n"
+"POT-Creation-Date: 2006-04-20 21:55+0200\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -41,16 +41,22 @@ msgstr "উপরে :"
 msgid "Bottom :"
 msgstr "নীচে :"
 
-#: ../mcs-plugin/plugin.c:109 ../mcs-plugin/plugin.c:150
-msgid "Workspaces and Margins"
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/plugin.c:110
+#, fuzzy
+msgid "Button Label|Workspaces and Margins"
 msgstr "কর্মক্ষেত্র ও প্রান্তরেখা"
 
-#: ../mcs-plugin/plugin.c:136 ../mcs-plugin/plugin.c:163
+#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "কর্মক্ষেত্র"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/plugin.c:151
+msgid "Workspaces and Margins"
+msgstr "কর্মক্ষেত্র ও প্রান্তরেখা"
+
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "প্রান্তরেখা"
 
@@ -58,7 +64,7 @@ msgstr "প্রান্তরেখা"
 msgid "None"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:355 ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
@@ -200,7 +206,13 @@ msgstr "উইন্ডো সরানোর সময় তার মধ্য�
 msgid "Compositor"
 msgstr "শর্টকাট নির্মাণ করুন"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:719 ../mcs-plugin/xfwm4_plugin.c:2342
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:607
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "উইন্ডো পরিচালন ব্যবস্থা"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -306,7 +318,7 @@ msgstr "লুকোনো"
 msgid "Font Selection Dialog"
 msgstr "ফন্ট নির্বাচনের ডায়লগ বক্স"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422 ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1422
 msgid "Window Manager"
 msgstr "উইন্ডো পরিচালন ব্যবস্থা"
 
@@ -474,6 +486,12 @@ msgstr "টাইটল বারের উপর দুবার ক্লি�
 #: ../mcs-plugin/xfwm4_plugin.c:1838
 msgid "Advanced"
 msgstr "উন্নত"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1977
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "উইন্ডো পরিচালন ব্যবস্থা"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
@@ -664,7 +682,7 @@ msgstr "শর্টকাট নির্মাণ করুন"
 msgid "No shortcut"
 msgstr "কোনো শর্টকাট উপস্থিত নেই"
 
-#: ../src/frame.c:206
+#: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 23:58+0200\n"
+"POT-Creation-Date: 2006-04-20 21:55+0200\n"
 "PO-Revision-Date: 2006-04-20 11:49+0100\n"
 "Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "Munkaterület margók"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
 
 #: ../mcs-plugin/margins.c:167
@@ -42,19 +43,22 @@ msgstr "Felső:"
 msgid "Bottom :"
 msgstr "Alsó:"
 
-#: ../mcs-plugin/plugin.c:109
-#: ../mcs-plugin/plugin.c:150
-msgid "Workspaces and Margins"
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/plugin.c:110
+#, fuzzy
+msgid "Button Label|Workspaces and Margins"
 msgstr "Munkaterületek és Margók"
 
-#: ../mcs-plugin/plugin.c:136
-#: ../mcs-plugin/plugin.c:163
-#: ../mcs-plugin/wmtweaks_plugin.c:495
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
+#: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Munkaterületek"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/plugin.c:151
+msgid "Workspaces and Margins"
+msgstr "Munkaterületek és Margók"
+
+#: ../mcs-plugin/plugin.c:173
 msgid "Margins"
 msgstr "Margók"
 
@@ -63,7 +67,6 @@ msgid "None"
 msgstr "Nincs"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:355
-#: ../mcs-plugin/wmtweaks_plugin.c:606
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Ablakkezelő trükkök"
@@ -100,8 +103,7 @@ msgstr "Fókusz lopás védelem bekapcsolása"
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Szabvány ICCCM fókusz tippek fogadása"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:420
-#: ../mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/wmtweaks_plugin.c:420 ../mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
 msgstr "Fókusz"
 
@@ -173,17 +175,13 @@ msgstr "Árnyékok előugró ablakok alatt"
 msgid "Opacity of window decorations"
 msgstr "Ablakdíszek átlátszósága"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:543
-#: ../mcs-plugin/wmtweaks_plugin.c:549
-#: ../mcs-plugin/wmtweaks_plugin.c:555
-#: ../mcs-plugin/wmtweaks_plugin.c:561
+#: ../mcs-plugin/wmtweaks_plugin.c:543 ../mcs-plugin/wmtweaks_plugin.c:549
+#: ../mcs-plugin/wmtweaks_plugin.c:555 ../mcs-plugin/wmtweaks_plugin.c:561
 msgid "Transparent"
 msgstr "Átlátszó"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:544
-#: ../mcs-plugin/wmtweaks_plugin.c:550
-#: ../mcs-plugin/wmtweaks_plugin.c:556
-#: ../mcs-plugin/wmtweaks_plugin.c:562
+#: ../mcs-plugin/wmtweaks_plugin.c:544 ../mcs-plugin/wmtweaks_plugin.c:550
+#: ../mcs-plugin/wmtweaks_plugin.c:556 ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Opaque"
 msgstr "Átlátszatlan"
 
@@ -203,8 +201,13 @@ msgstr "Előugró ablakok átlátszósága"
 msgid "Compositor"
 msgstr "Kompozítor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:719
-#: ../mcs-plugin/xfwm4_plugin.c:2342
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:607
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Ablakkezelő trükkök"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
@@ -213,8 +216,7 @@ msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
 msgid "Change name"
 msgstr "Új név"
 
-#: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:476
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:476
 #, c-format
 msgid "Workspace %d"
 msgstr "%d munkaterület"
@@ -259,18 +261,15 @@ msgstr "Maximálás"
 msgid "Close"
 msgstr "Bezárás"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Shade window"
 msgstr "Ablak felgördítése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Hide window"
 msgstr "Ablak rejtése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Maximize window"
 msgstr "Ablak maximálása"
 
@@ -315,7 +314,6 @@ msgid "Font Selection Dialog"
 msgstr "Betűkészlet-kijelölés párbeszédablak"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1422
-#: ../mcs-plugin/xfwm4_plugin.c:1976
 msgid "Window Manager"
 msgstr "Ablakkezelő"
 
@@ -479,6 +477,12 @@ msgstr "A címsoron kettős kattintásra végezendő művelet"
 #: ../mcs-plugin/xfwm4_plugin.c:1838
 msgid "Advanced"
 msgstr "Haladó"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1977
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "Ablakkezelő"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
@@ -669,7 +673,7 @@ msgstr "Gyorsbillentyű készítése"
 msgid "No shortcut"
 msgstr "Nincs gyorsbillentyű"
 
-#: ../src/frame.c:206
+#: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (itt: %s)"
@@ -719,8 +723,7 @@ msgstr "_Leválasztás"
 msgid "Context _help"
 msgstr "Helyi _súgó"
 
-#: ../src/menu.c:49
-#: ../src/menu.c:50
+#: ../src/menu.c:49 ../src/menu.c:50
 msgid "Always on top"
 msgstr "M_indig felül"
 
@@ -796,4 +799,3 @@ msgstr "Munkaterület beállítások"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 munkaterület beállítások"
-
