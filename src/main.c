@@ -379,7 +379,7 @@ get_default_compositor (DisplayInfo *display_info)
        Test if the XRender implementation is fast enough for the
        compositor.
      */
-    if (!myDisplayTestXrender (display_info, 0.01))
+    if (!myDisplayTestXrender (display_info, 0.025))
     {
         g_warning ("The XRender implementation currently in use on this system is too slow for the compositor");
         return 0;
