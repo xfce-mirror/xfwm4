@@ -1180,10 +1180,6 @@ clientFree (Client * c)
     {
         g_free (c->name);
     }
-    if (c->client_machine)
-    {
-        g_free (c->client_machine);
-    }
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     if (c->startup_id)
     {
@@ -1550,7 +1546,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->screen_info = screen_info;
     c->serial = screen_info->client_serial++;
 
-    getClientMachine (display_info, c->window, &c->client_machine);
     getWindowName (display_info, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
     getTransientFor (display_info, screen_info->xroot, c->window, &c->transient_for);

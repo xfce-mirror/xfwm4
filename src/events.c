@@ -1710,25 +1710,16 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify", c->name, c->window);
             clientGetWMNormalHints (c, TRUE);
         }
-        else if ((ev->atom == XA_WM_NAME) || (ev->atom == display_info->atoms[NET_WM_NAME]))
+        else if ((ev->atom == XA_WM_NAME) || 
+                 (ev->atom == display_info->atoms[NET_WM_NAME]) || 
+                 (ev->atom == display_info->atoms[WM_CLIENT_MACHINE]))
         {
-            TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME notify", c->name, c->window);
+            TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME/NET_WM_NAME/WM_CLIENT_MACHINE notify", c->name, c->window);
             if (c->name)
             {
                 g_free (c->name);
             }
             getWindowName (display_info, c->window, &c->name);
-            FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
-            frameDraw (c, TRUE, FALSE);
-        }
-        else if (ev->atom == display_info->atoms[WM_CLIENT_MACHINE])
-        {
-            TRACE ("client \"%s\" (0x%lx) has received a WM_CLIENT_MACHINE notify", c->name, c->window);
-            if (c->client_machine)
-            {
-                g_free (c->client_machine);
-            }
-            getClientMachine (display_info, c->window, &c->client_machine);
             FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
             frameDraw (c, TRUE, FALSE);
         }

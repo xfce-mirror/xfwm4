@@ -254,7 +254,6 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[12];
     gchar *name;
-    gchar *client_machine;
     GTimeVal last_op_time;
     Time user_time;
     unsigned long flags;

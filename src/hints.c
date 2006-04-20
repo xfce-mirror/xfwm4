@@ -49,6 +49,40 @@ check_type_and_format (int expected_format, Atom expected_type, int n_items, int
     return FALSE;
 }
 
+static gchar *
+internal_utf8_strndup (const gchar *src, gssize max_len)
+{
+    const gchar *s = src;
+
+    if (max_len <= 0)
+        return g_strdup (src);
+
+    while (max_len && *s)
+    {
+        s = g_utf8_next_char (s);
+        max_len--;
+    }
+
+    return g_strndup (src, s - src);
+}
+
+static gchar*
+create_name_with_host (DisplayInfo *display_info, const gchar *name, const gchar *hostname)
+{
+    gchar *title = NULL;
+    
+    if ((display_info->hostname) && (g_strcasecmp (display_info->hostname, hostname)))
+    {
+        title = g_strdup_printf (_("%s (on %s)"), name, hostname);
+    }
+    else
+    {
+        title = g_strdup (name);        
+    }
+
+    return title;
+}
+
 unsigned long
 getWMState (DisplayInfo *display_info, Window w)
 {
@@ -581,23 +615,6 @@ getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * tran
     TRACE ("Window (0x%lx) is transient for (0x%lx)", w, *transient_for);
 }
 
-static gchar *
-internal_utf8_strndup (const gchar *src, gssize max_len)
-{
-    const gchar *s = src;
-
-    if (max_len <= 0)
-        return g_strdup (src);
-
-    while (max_len && *s)
-    {
-        s = g_utf8_next_char (s);
-        max_len--;
-    }
-
-    return g_strndup (src, s - src);
-}
-
 static char *
 text_property_to_utf8 (DisplayInfo *display_info, const XTextProperty * prop)
 {
@@ -783,41 +800,10 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***st
 }
 
 gboolean
-getWindowName (DisplayInfo *display_info, Window w, gchar **name)
-{
-    char *str;
-    int len;
-
-    TRACE ("entering getWindowName");
-
-    g_return_val_if_fail (name != NULL, FALSE);
-    *name = NULL;
-    g_return_val_if_fail (w != None, FALSE);
-
-    if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len))
-    {
-        *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
-        XFree (str);
-        return TRUE;
-    }
-    str = get_text_property (display_info, w, XA_WM_NAME);
-    if (str)
-    {
-        *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
-        XFree (str);
-        return TRUE;
-    }
-    else
-    {
-        *name = g_strdup ("");
-    }
-    return FALSE;
-}
-
-gboolean
 getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
 {
     char *str;
+    gboolean status = FALSE;
 
     TRACE ("entering getClientMachine");
 
@@ -830,9 +816,46 @@ getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
     {
         *machine = g_strndup (str, MAX_STR_LENGTH);
         XFree (str);
-        return TRUE;
+        status = TRUE;
     }
-    return FALSE;
+    else
+    {
+        *machine = g_strdup ("");
+    }
+    return status;
+}
+
+gboolean
+getWindowName (DisplayInfo *display_info, Window w, gchar **title)
+{
+    char *str;
+    int len;
+    gchar *machine;
+    gchar *name;
+    gboolean status = FALSE;
+    
+    TRACE ("entering getWindowName");
+
+    g_return_val_if_fail (title != NULL, FALSE);
+    *title = NULL;
+    g_return_val_if_fail (w != None, FALSE);
+
+    getClientMachine (display_info, w, &machine);
+    if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len) ||
+        (str = get_text_property (display_info, w, XA_WM_NAME)))
+    {
+        name = internal_utf8_strndup (str, MAX_STR_LENGTH);
+        *title = create_name_with_host (display_info, name, machine);
+        g_free (name);
+        XFree (str);
+        status = TRUE;
+    }
+    else
+    {
+        *title = g_strdup ("");
+    }
+    g_free (machine);
+    return status;
 }
 
 gboolean
