@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-20 21:55+0200\n"
-"PO-Revision-Date: 2006-04-02 12:00+0200\n"
+"PO-Revision-Date: 2006-04-20 21:09+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -45,9 +45,10 @@ msgstr "Κάτω :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
-msgstr "Χώροι εργασίας και περιθώρια"
+msgstr ""
+"Χώροι εργασίας\n"
+"και περιθώρια"
 
 #: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
@@ -208,9 +209,10 @@ msgstr "Compositor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:607
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "προσαρμογή διαχειριστή παραθύρων"
+msgstr ""
+"Προσαρμογή διαχειριστή\n"
+"παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
@@ -487,7 +489,6 @@ msgstr "Για προχωρημένους"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1977
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Διαχειριστής παραθύρων"
 
@@ -683,7 +684,7 @@ msgstr "Καμία συντόμευση"
 #: ../src/hints.c:76
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (στο %s)"
 
 #: ../src/main.c:187
 #, c-format
@@ -784,31 +785,25 @@ msgid "Unknown application!"
 msgstr "Άγνωστη εφαρμογή!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "προσαρμογή διαχειριστή παραθύρων"
+msgstr "Διαχειριστής παραθύρων"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "προσαρμογή διαχειριστή παραθύρων"
+msgstr "Ρυθμίσεις διαχειριστή παραθύρων Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Προχωρημένες ρυθμίσεις διαχειριστή παραθύρων"
+msgstr "Για προχωρημένους"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "προσαρμογή διαχειριστή παραθύρων"
+msgstr "Προσαρμογή διαχειριστή παραθύρων Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Περιθώρια χώρου εργασίας"
+msgstr "Χώροι εργασίας"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Περιθώρια χώρου εργασίας"
+msgstr "Ρυθμίσεις χώρων εργασίας Xfce 4"
