@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-20 21:55+0200\n"
+"POT-Creation-Date: 2006-04-22 15:39+0200\n"
 "PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -671,7 +671,8 @@ msgstr "Tekita kiirvalik"
 msgid "No shortcut"
 msgstr "Kiirvalik puudub"
 
-#: ../src/hints.c:76
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
 msgstr ""

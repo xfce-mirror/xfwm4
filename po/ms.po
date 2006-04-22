@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-20 21:55+0200\n"
+"POT-Creation-Date: 2006-04-22 15:39+0200\n"
 "PO-Revision-Date: 2005-10-09 20:49+0900\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -720,7 +720,8 @@ msgstr "Pintasan Papankekunci"
 msgid "No shortcut"
 msgstr "Pintasan Papankekunci"
 
-#: ../src/hints.c:76
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
 msgstr ""

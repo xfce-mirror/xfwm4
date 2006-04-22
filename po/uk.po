@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-20 21:55+0200\n"
+"POT-Creation-Date: 2006-04-22 15:39+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -682,7 +682,8 @@ msgstr "Вибір комбінації клавіш"
 msgid "No shortcut"
 msgstr "Немає комбінації клавіш"
 
-#: ../src/hints.c:76
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
