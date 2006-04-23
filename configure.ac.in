@@ -75,7 +75,7 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
 dnl
 dnl Render support
 dnl
-if $PKG_CONFIG --exists xrender 2> /dev/null; then
+if $PKG_CONFIG --print-errors --exists xrender 2> /dev/null; then
   PKG_CHECK_MODULES(RENDER, xrender)
   have_render="yes"
   AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
@@ -120,7 +120,7 @@ AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4]),
 
 if test x"$enable_compositor" = x"yes"; then
   if test x"$have_render" = x"yes"; then
-    if $PKG_CONFIG --exists xcomposite xfixes xdamage xrender 2> /dev/null; then
+    if $PKG_CONFIG --print-errors --exists xcomposite xfixes xdamage xrender 2> /dev/null; then
       PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 0.2 xfixes xdamage)
       AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
       ENABLE_COMPOSITOR="--enable-compositor"
