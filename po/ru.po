@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-22 15:39+0200\n"
-"PO-Revision-Date: 2006-04-14 17:15+0600\n"
+"PO-Revision-Date: 2006-04-23 12:17+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,6 @@ msgstr "Снизу:"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Рабочие места и поля"
 
@@ -99,7 +98,7 @@ msgstr "Переключение окон"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
-msgstr "Автивировать предотвращение \"похищения\" фокуса ввода"
+msgstr "Активировать предотвращение \"похищения\" фокуса ввода"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Honor the standard ICCCM focus hint"
@@ -119,7 +118,7 @@ msgstr "Поднимать окно при нажатии любой кнопк�
 
 #: ../mcs-plugin/wmtweaks_plugin.c:445
 msgid "Restore original size of maximized windows when moving"
-msgstr "Восстанавливать исходный размер развернутого окна при меремещении"
+msgstr "Восстанавливать исходный размер развернутого окна при перемещении"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
@@ -201,11 +200,10 @@ msgstr "Прозрачность всплывающих окон"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:566
 msgid "Compositor"
-msgstr ""
+msgstr "Эффекты"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:607
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Оконный менеджер"
 
@@ -213,7 +211,8 @@ msgstr "Оконный менеджер"
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
-"Эти настроки не могут быть использованы вашим текущим оконным менеджером (%s)"
+"Эти настройки не могут быть использованы вашим текущим оконным менеджером (%"
+"s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -234,7 +233,7 @@ msgstr "Щелкните на названии рабочего места, чт
 
 #: ../mcs-plugin/workspaces.c:497
 msgid "Number of workspaces:"
-msgstr "Количество рабочих мест"
+msgstr "Количество рабочих мест:"
 
 #: ../mcs-plugin/workspaces.c:531
 msgid "Workspace names"
@@ -483,7 +482,6 @@ msgstr "Дополнительно"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1977
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Окна"
 
@@ -680,7 +678,7 @@ msgstr "Нет сочетания клавиш"
 #: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (на %s)"
 
 #: ../src/main.c:187
 #, c-format
@@ -781,31 +779,25 @@ msgid "Unknown application!"
 msgstr "Неизвестное приложение!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Оконный менеджер"
+msgstr "Окна"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Оконный менеджер"
+msgstr "Настройка окон"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Дополнительные настройки оконного менеджера"
-
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
-msgid "Xfce 4 Window Manager Tweaks"
 msgstr "Оконный менеджер"
 
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "Дополнительные настройки оконного менеджера"
+
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Поля рабочего места"
+msgstr "Рабочие места"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Поля рабочего места"
+msgstr "Настройка рабочих мест Xfce 4"
