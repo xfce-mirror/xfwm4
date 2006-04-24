@@ -4148,7 +4148,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             break;
         case KeyRelease:
             {
-                int  keysym = XLookupKeysym (&xevent->xkey, 0);
+                int keysym = XLookupKeysym (&xevent->xkey, 0);
 
                 if ((keysym == NoSymbol) || (keysym == XK_Alt_L) || (keysym == XK_Alt_R))
                 {
