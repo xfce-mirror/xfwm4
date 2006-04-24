@@ -903,13 +903,13 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     parseRc (THEMERC, theme, rc);
 
     screen_info->params->shadow_delta_x = 
-        abs (TOINT (getValue ("shadow_delta_x", rc)));
+        - (TOINT (getValue ("shadow_delta_x", rc)));
     screen_info->params->shadow_delta_y = 
-        abs (TOINT (getValue ("shadow_delta_y", rc)));
+        - (TOINT (getValue ("shadow_delta_y", rc)));
     screen_info->params->shadow_delta_width = 
-        abs (TOINT (getValue ("shadow_delta_width", rc)));
+        - (TOINT (getValue ("shadow_delta_width", rc)));
     screen_info->params->shadow_delta_height = 
-        abs (TOINT (getValue ("shadow_delta_height", rc)));
+        - (TOINT (getValue ("shadow_delta_height", rc)));
 
     for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
     {
