@@ -2919,7 +2919,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     {
         if (passdata->use_keys)
         {
-            if (IsModifierKey (XKeycodeToKeysym (display_info->dpy, xevent->xkey.keycode, 0)))
+            if (IsModifierKey (XLookupKeysym (&xevent->xkey, 0)))
             {
                 moving = FALSE;
             }
@@ -3338,7 +3338,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     {
         if (passdata->use_keys)
         {
-            if (IsModifierKey (XKeycodeToKeysym (display_info->dpy, xevent->xkey.keycode, 0)))
+            if (IsModifierKey (XLookupKeysym (&xevent->xkey, 0)))
             {
                 resizing = FALSE;
             }
@@ -3736,7 +3736,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             break;
         case KeyRelease:
             {
-                int keysym = XKeycodeToKeysym (clientGetXDisplay (c), xevent->xkey.keycode, 0);
+                int keysym = XLookupKeysym (&xevent->xkey, 0);
 
                 /* If KEY_CYCLE_WINDOWS has Shift, then stop cycling on Shift
                  * release.
