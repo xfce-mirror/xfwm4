@@ -4150,7 +4150,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 int keysym = XLookupKeysym (&xevent->xkey, 0);
 
-                if ((keysym == NoSymbol) || (keysym == XK_Alt_L) || (keysym == XK_Alt_R))
+                if (IsModifierKey(keysym) && (keysym != XK_Shift_L) && (keysym != XK_Shift_R))
                 {
                     cycling = FALSE;
                 }
