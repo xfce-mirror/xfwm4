@@ -367,17 +367,25 @@ static gint
 get_default_compositor (DisplayInfo *display_info)
 {
     /* 
-       Check if the XServer is black listed.
+     * Don't even check for the render speed if there is no compositor.
+     */
+    if (!display_info->enable_compositor)
+    {
+        return 0;
+    }
+
+    /* 
+     * Check if the XServer is black listed.
      */
     if (!compositorTestServer (display_info))
     {
         g_warning ("The XServer currently in use on this system is not suitable for the compositor");
         return 0;
     }
-    
+
     /* 
-       Test if the XRender implementation is fast enough for the
-       compositor.
+     * Test if the XRender implementation is fast enough for the
+     * compositor.
      */
     if (!myDisplayTestXrender (display_info, 0.025))
     {
