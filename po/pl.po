@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-22 15:39+0200\n"
 "PO-Revision-Date: 2005-10-08 04:23+0900\n"
-"Last-Translator: Robert Kurowski <koorek@o2.pl>\n"
+"Last-Translator: Piotr Maliński <admin@rk.edu.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,45 +64,44 @@ msgstr "Marginesy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:347
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Menadżer Okien"
+msgstr "Opcje Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:364
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "Menadżer Okien"
+msgstr "Zaawansowana konfiguracja Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:380
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"Dołącz okna z włączonymi opcjam \n"
+"omijania taskbarów"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:386
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Dołącz ukryte okna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:392
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Przesuń okno na obszar roboczy po lewej"
+msgstr "Przechodź przez okna ze wszystkich Pulpitów"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycling"
-msgstr ""
+msgstr "Przechodzenie"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Włącz zapobieganie utracie wyboru bierzącego okna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "Uznawaj standardowy wybór okna (ICCCM)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:420 ../mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
@@ -110,16 +109,15 @@ msgstr "Aktywacja"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "Klawisz używany do łapania i przesuwania okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:438
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Podnieś okno gdy wciśnięto dowolny przcisk myszy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:445
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Wyświetlaj zawartość okien podczas przesuwania"
+msgstr "Przywróć oryginalny rozmiar okna przy przesuwaniu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
@@ -127,97 +125,92 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Accessibility"
-msgstr ""
+msgstr "Dostępność"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Zmieniaj Pulpity za pomocą rolki miszy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
+"Zapamiętaj i przywróć poprzedni pulpit przy przechodzeniu\n"
+"za pomocą skrótów klawiszowych"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Zawijaj pulpity uwzględniając bierzący wygląd i ustawienia"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:490
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Przełącz obszar roboczy gdy kursor osiągnie krawędź ekranu"
+msgstr "Zawijaj pulpity gdy osiągnięto pierwszy lub ostatni z nich"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:507
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Minimalny rozmiar okna włączający mądre rozmieszczanie"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
-msgstr "Mała"
+msgstr "Rozmiar|Mały"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Large"
-msgstr ""
+msgstr "Rozmiar|Duży"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
-msgstr ""
+msgstr "Lokacja"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:531
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Pokazuj cień pod zwykłymi oknami"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:537
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Pokazuj cienie pod popupami"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:543
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Wyświetlaj zawartość okien podczas zmiany wielkości"
+msgstr "Przeźroczystość dekoracji okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:543 ../mcs-plugin/wmtweaks_plugin.c:549
 #: ../mcs-plugin/wmtweaks_plugin.c:555 ../mcs-plugin/wmtweaks_plugin.c:561
 msgid "Transparent"
-msgstr ""
+msgstr "Przeźroczysty"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:544 ../mcs-plugin/wmtweaks_plugin.c:550
 #: ../mcs-plugin/wmtweaks_plugin.c:556 ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Opaque"
-msgstr ""
+msgstr "Półprzeźroczysty"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:549
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Wyświetlaj zawartość okien podczas przesuwania"
+msgstr "Przeźroczystość okien przy przesuwaniu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:555
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Wyświetlaj zawartość okien podczas zmiany wielkości"
+msgstr "Przeźroczystość okien przy zmianie rozmiaru"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:561
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Wyświetlaj zawartość okien podczas przesuwania"
+msgstr "Przeźroczystość popupów"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:566
-#, fuzzy
 msgid "Compositor"
-msgstr "Stwórz aktywator"
+msgstr "Kompozytor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:607
 #, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Menadżer Okien"
+msgstr "Opcje Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Te ustawienia nie mogą działać z bierzącym menadżerem okien  (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -430,14 +423,12 @@ msgid "Distance :"
 msgstr "Odległość :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Odległość :"
+msgstr "Odległość|Mała"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Odległość :"
+msgstr "Odległość|Szeroka"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -456,14 +447,12 @@ msgid "Edge Resistance :"
 msgstr "Bezwładność Krawędzi :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Odległość :"
+msgstr "Bezwładność|Mała"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Odległość :"
+msgstr "Bezwładność|Szeroka"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -688,7 +677,7 @@ msgstr "Brak aktywatora"
 #: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (na %s)"
 
 #: ../src/main.c:187
 #, c-format
@@ -775,12 +764,12 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nie uzyskało wskaźnika\n"
 
 #: ../src/settings.c:853
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Nie mogę zaalokować aktywnego koloru %s\n"
+msgstr "%s: Nie mogę przypisać koloru %s\n"
 
 #: ../src/settings.c:859
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nie mogę zidentyfikować aktywnego koloru %s\n"
 
@@ -789,31 +778,25 @@ msgid "Unknown application!"
 msgstr "Nieznana aplikacja!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Menadżer Okien"
+msgstr "Ustawienia Menadżera Okien"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Menadżer Okien"
+msgstr "Ustawienia Menadżera Okien Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Menadżer Okien"
+msgstr "Zaawansowana Konfiguracja"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Menadżer Okien"
+msgstr "Opcje Menadżera Okien Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Marginesy Obszaru Roboczego"
+msgstr "Ustawienia Obszaru Roboczego"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Marginesy Obszaru Roboczego"
+msgstr "Ustawienia Obszaru Roboczego"
