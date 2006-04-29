@@ -687,6 +687,7 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     ThemeInfo *ti;
     GdkModifierType consumed_modifiers = 0;
     guint keyval;
+    guint modifiers;
     gchar *accelerator;
     gint i;
     gchar **shortcuts;
@@ -700,13 +701,29 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 
     keyval = gdk_keyval_to_lower (event->keyval);
 
-    if (keyval == GDK_ISO_Left_Tab)
-        keyval = GDK_Tab;
+    switch (keyval)
+    {
+        case GDK_ISO_Left_Tab:
+            keyval = GDK_Tab;
+            break;
+        case GDK_ISO_Level3_Latch:
+        case GDK_ISO_Level3_Lock:
+        case GDK_ISO_Level3_Shift:
+        case GDK_Scroll_Lock:
+        case GDK_Super_L:
+        case GDK_Super_R:
+            return TRUE;
+            break;
+        default:
+            break;
+    }
 
     /* Release keyboard */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
-    accelerator = gtk_accelerator_name (keyval, event->state);
+    modifiers = event->state & (~consumed_modifiers | GDK_MODIFIER_MASK);
+    modifiers = modifiers & gtk_accelerator_get_default_mod_mask ();
+    accelerator = gtk_accelerator_name (keyval, modifiers);
 
     for (i = 0; i < strlen (accelerator); i++)
     {
@@ -719,7 +736,7 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     current_shortcut = shortcuts;
     while (*current_shortcut)
     {
-        if (strlen (*current_shortcut) > 0 && (strcmp (*current_shortcut, "Mod2") != 0))
+        if (strlen (*current_shortcut))
         {
             strcat (shortcut_string, *current_shortcut);
             strcat (shortcut_string, "+");
