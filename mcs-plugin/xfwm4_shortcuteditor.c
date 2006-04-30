@@ -48,9 +48,7 @@ struct _shortcut_tree_foreach_struct
 void
 cb_popup_del_menu (GtkWidget * widget, gpointer data)
 {
-    Itf *itf;
-
-    itf = (Itf *) data;
+    Itf *itf = (Itf *) data;
 
     if (xfce_confirm (_("Do you really want to remove this keybinding theme ?"), GTK_STOCK_YES,
             NULL))
@@ -112,6 +110,7 @@ cb_popup_del_menu (GtkWidget * widget, gpointer data)
 void
 cb_popup_add_menu (GtkWidget * widget, gpointer data)
 {
+    Itf *itf = (Itf *) data;
     gchar buf[80];
     GtkWidget *dialog;
     GtkWidget *hbox;
@@ -122,7 +121,6 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
     GtkTreeSelection *selection;
     GtkTreeModel *model;
     GtkTreeIter iter;
-    Itf *itf;
     ThemeInfo *ti;
 
     gchar *new_theme_path = NULL;
@@ -132,8 +130,6 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
 
     FILE *new_theme;
     FILE *default_theme;
-
-    itf = (Itf *) data;
 
     dialog = gtk_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -256,9 +252,7 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
 gboolean
 cb_popup_menu (GtkTreeView * treeview, GdkEventButton * event, gpointer data)
 {
-    Itf *itf;
-
-    itf = (Itf *) data;
+    Itf *itf = (Itf *) data;
 
     /* Right click draws the context menu */
     if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
@@ -663,11 +657,13 @@ is_modifier (guint keycode)
 
     keymap = XGetModifierMapping (gdk_display);
     for (n = 0; n < keymap->max_keypermod * 8; ++n)
+    {
         if (keycode == keymap->modifiermap[n])
         {
             result = TRUE;
             break;
         }
+    }
 
     XFreeModifiermap (keymap);
 
@@ -679,13 +675,13 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 {
     Itf *itf = (Itf *) data;
 
+    GdkModifierType consumed_modifiers = 0;
     gchar shortcut_string[80] = "";
+    ThemeInfo *ti;
     GtkTreeModel *model;
     GtkTreeSelection *selection;
     GtkTreeIter iter;
     shortcut_tree_foreach_struct stfs;
-    ThemeInfo *ti;
-    GdkModifierType consumed_modifiers = 0;
     guint keyval;
     guint modifiers;
     gchar *accelerator;
@@ -710,8 +706,6 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
         case GDK_ISO_Level3_Lock:
         case GDK_ISO_Level3_Shift:
         case GDK_Scroll_Lock:
-        case GDK_Super_L:
-        case GDK_Super_R:
             return TRUE;
             break;
         default:
@@ -720,6 +714,21 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 
     /* Release keyboard */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+
+    /*
+     * gtk_accelerator_get_default_mod_mask () limits the number of modifiers.
+     * Unfortunately, at this timle of writing, gdk doesn't konw about 
+     * META, SUPER or HYPER modifiers, just Shift, Alt and Control...
+     *
+     * It Means that ppl won't be able to use the "Windows" key of keyboard
+     * as a modifier... Too bad, that's life, complain to gtk+ maintainers.
+     *
+     * Things may change in the future? See this thread:
+     *
+     * http://mail.gnome.org/archives/gtk-devel-list/2005-September/msg00024.html
+     *
+     * (Olivier)
+     */
 
     modifiers = event->state & (~consumed_modifiers | GDK_MODIFIER_MASK);
     modifiers = modifiers & gtk_accelerator_get_default_mod_mask ();
@@ -872,7 +881,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     g_signal_connect (G_OBJECT (dialog), "key-press-event", G_CALLBACK (cb_compose_shortcut), itf);
 
     /* Take control on the keyboard */
-    if (gdk_keyboard_grab (gtk_widget_get_root_window (label), TRUE,
+    if (gdk_keyboard_grab (gtk_widget_get_root_window (dialog), TRUE,
             GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
     {
         g_warning ("Cannot grab the keyboard");
