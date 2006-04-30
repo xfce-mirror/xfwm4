@@ -717,11 +717,14 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
 
     /*
      * gtk_accelerator_get_default_mod_mask () limits the number of modifiers.
-     * Unfortunately, at this timle of writing, gdk doesn't konw about 
-     * META, SUPER or HYPER modifiers, just Shift, Alt and Control...
+     * That's a good thing because we don't want the "fake" modifiers such as
+     * Scroll/Num/Caps Lock to be taken into account.
      *
-     * It Means that ppl won't be able to use the "Windows" key of keyboard
-     * as a modifier... Too bad, that's life, complain to gtk+ maintainers.
+     * Unfortunately, at this time of writing, gdk doesn't know about all of the
+     * modifiers, like META, SUPER or HYPER, but just SHIFT, ALT and CONTROL...
+     *
+     * It means that ppl won't be able to use the "Windows" key as a modifier...
+     * Too bad, that's life, you may gently ask the gtk+ maintainers about it.
      *
      * Things may change in the future? See this thread:
      *
