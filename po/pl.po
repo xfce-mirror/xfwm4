@@ -45,9 +45,8 @@ msgstr "Dolny :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
-msgstr "Obszary robocze i marginesy"
+msgstr "Etykieta Przycisku|Obszary robocze i marginesy"
 
 #: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
@@ -203,9 +202,8 @@ msgstr "Kompozytor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:607
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Opcje Menadżera Okien"
+msgstr "Etykieta Przycisku|Opcje Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
@@ -480,9 +478,8 @@ msgstr "Zaawansowane"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1977
-#, fuzzy
 msgid "Button Label|Window Manager"
-msgstr "Menadżer Okien"
+msgstr "Etykieta Przycisku|Menadżer Okien"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
