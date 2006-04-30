@@ -7,9 +7,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.90.1\n"
+"Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-22 15:39+0200\n"
+"POT-Creation-Date: 2006-04-30 17:30+0900\n"
 "PO-Revision-Date: 2005-10-09 20:55+0900\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -674,7 +674,7 @@ msgstr ""
 "無法寫入 %s：\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:754
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -683,15 +683,15 @@ msgstr ""
 "您真的要用這個快速鍵嗎？"
 
 # FIXME The source is wrong!! untranslatable string!!
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:818
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
 msgid "Compose shortcut for :"
 msgstr "為下列動作設定快速鍵："
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:822
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
 msgid "Compose shortcut"
 msgstr "設定快速鍵"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:825
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "No shortcut"
 msgstr "沒有快速鍵"
 

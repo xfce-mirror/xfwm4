@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.90.1\n"
+"Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-22 15:39+0200\n"
+"POT-Creation-Date: 2006-04-30 17:30+0900\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -664,7 +664,7 @@ msgstr ""
 "Nu am reuşit să scriu în %s: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:754
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -672,15 +672,15 @@ msgstr ""
 "Combinaţia de taste este deja asignată!\n"
 "Sigur doriţi să o mai asociaţi o dată?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:818
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
 msgid "Compose shortcut for :"
 msgstr "Compunere combinaţie de taste pentru:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:822
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
 msgid "Compose shortcut"
 msgstr "Compunere combinaţie de taste"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:825
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "No shortcut"
 msgstr "Nici o combinaţie"
 

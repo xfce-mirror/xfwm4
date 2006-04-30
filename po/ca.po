@@ -7,9 +7,9 @@
 # Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.90.1\n"
+"Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-22 15:39+0200\n"
+"POT-Creation-Date: 2006-04-30 17:30+0900\n"
 "PO-Revision-Date: 2006-04-02 21:25+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -785,23 +785,23 @@ msgstr ""
 "No s'ha pogut escriure a %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:754
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:818
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Nou missatge drecera per a:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:822
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Nou missatge drecera"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:825
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 #, fuzzy
 msgid "No shortcut"
 msgstr "No drecera"

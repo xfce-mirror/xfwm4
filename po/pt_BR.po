@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.90.1\n"
+"Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-22 15:39+0200\n"
+"POT-Creation-Date: 2006-04-30 17:30+0900\n"
 "PO-Revision-Date: 2005-10-09 20:51+0900\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -668,7 +668,7 @@ msgstr ""
 "Não foi possível escrever em %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:754
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -676,15 +676,15 @@ msgstr ""
 "O atalho já está em uso !\n"
 "Você tem certeza quer quer usá-lo ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:818
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
 msgid "Compose shortcut for :"
 msgstr "Indique as teclas de atalho para :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:822
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
 msgid "Compose shortcut"
 msgstr "Teclas de atalho"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:825
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "No shortcut"
 msgstr "Sem atalho"
 
