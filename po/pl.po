@@ -46,7 +46,7 @@ msgstr "Dolny :"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/plugin.c:110
 msgid "Button Label|Workspaces and Margins"
-msgstr "Etykieta Przycisku|Obszary robocze i marginesy"
+msgstr "Obszary robocze i marginesy"
 
 #: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
@@ -152,11 +152,11 @@ msgstr "Minimalny rozmiar okna włączający mądre rozmieszczanie"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Small"
-msgstr "Rozmiar|Mały"
+msgstr "Mały"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Large"
-msgstr "Rozmiar|Duży"
+msgstr "Duży"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
@@ -203,7 +203,7 @@ msgstr "Kompozytor"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:607
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Etykieta Przycisku|Opcje Menadżera Okien"
+msgstr "Opcje Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
@@ -422,11 +422,11 @@ msgstr "Odległość :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
 msgid "Distance|Small"
-msgstr "Odległość|Mała"
+msgstr "Mała"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
 msgid "Distance|Wide"
-msgstr "Odległość|Szeroka"
+msgstr "Szeroka"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -446,11 +446,11 @@ msgstr "Bezwładność Krawędzi :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
 msgid "Resistance|Small"
-msgstr "Bezwładność|Mała"
+msgstr "Mała"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
 msgid "Resistance|Wide"
-msgstr "Bezwładność|Szeroka"
+msgstr "Szeroka"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -479,7 +479,7 @@ msgstr "Zaawansowane"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1977
 msgid "Button Label|Window Manager"
-msgstr "Etykieta Przycisku|Menadżer Okien"
+msgstr "Menadżer Okien"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:55
 msgid "Do you really want to remove this keybinding theme ?"
