@@ -70,7 +70,9 @@ xfwmWindowInit (xfwmWindow * win)
     win->y = 0;
     win->width = 1;
     win->height = 1;
+#ifdef HAVE_RENDER
     win->pict_format = NULL;
+#endif
 }
 
 void
