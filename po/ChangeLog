@@ -1,8 +1,8 @@
-2006-01-08 21:12  Pau Rullan Ferragut <paurullan@bulma.net>
+2006-01-08  Pau Rullan Ferragut <paurullan@bulma.net>
 
 	* ca.po: little heading fixing
 
-2006-01-07 09:40  Daichi Kawahata <daichi@xfce.org>
+2006-01-07  Daichi Kawahata <daichi@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -11,11 +11,11 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, zh_CN.po, zh_TW.po: Updated copyright information.
 
-2006-01-01 23:18  Daichi Kawahata <daichi@xfce.org>
+2006-01-01  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
 
-2006-01-01 18:12  Daichi Kawahata <daichi@xfce.org>
+2006-01-01  Daichi Kawahata <daichi@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -24,7 +24,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
 
-2005-12-20 14:36  Daichi Kawahata <daichi@xfce.org>
+2005-12-20  Daichi Kawahata <daichi@xfce.org>
 
 	* ChangeLog, ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po,
 	  de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po,
@@ -33,23 +33,23 @@
 	  pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po,
 	  uk.po, vi.po, zh_CN.po, zh_TW.po: Updated.
 
-2005-12-11 18:37  Stavros Giannouris <stavrosg2002@freemail.gr>
+2005-12-11  Stavros Giannouris <stavrosg2002@freemail.gr>
 
 	* el.po: Updated Greek translations.
 
-2005-12-07 10:55  Piarres Beobide <pi@beobide.net>
+2005-12-07  Piarres Beobide <pi@beobide.net>
 
 	* eu.po: Basque translation update.
 
-2005-11-29 21:45  Daichi Kawahata <daichi@xfce.org>
+2005-11-29  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Fixed mistranslations. Revised some translations.
 
-2005-11-28 15:19  Daichi Kawahata <daichi@xfce.org>
+2005-11-28  Daichi Kawahata <daichi@xfce.org>
 
 	* ChangeLog: Updated.
 
-2005-11-21 17:14  Daichi Kawahata <daichi@xfce.org>
+2005-11-21  Daichi Kawahata <daichi@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -58,11 +58,11 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
 
-2005-11-21 16:06  Daichi Kawahata <daichi@xfce.org>
+2005-11-21  Daichi Kawahata <daichi@xfce.org>
 
 	* POTFILES.in: Updated POTFILES.in file.
 
-2005-11-11 17:16  Olivier Fourdan <fourdan@xfce.org>
+2005-11-11  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -71,7 +71,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
 
-2005-11-07 22:20  Olivier Fourdan <fourdan@xfce.org>
+2005-11-07  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -80,20 +80,20 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
 
-2005-11-05 14:59  Daichi Kawahata <daichi@xfce.org>
+2005-11-05  Daichi Kawahata <daichi@xfce.org>
 
 	* ChangeLog: Deciphering.
 
-2005-11-05 14:38  Daichi Kawahata <daichi@xfce.org>
+2005-11-05  Daichi Kawahata <daichi@xfce.org>
 
 	* ChangeLog: Trimmed and updated.
 
-2005-10-27 20:32  Pau Rullan Ferragut <paurullan@bulma.net>
+2005-10-27  Pau Rullan Ferragut <paurullan@bulma.net>
 
 	* ca.po: begin process to 4.4 work autotranslation of most of
 	  the actual po -- paurullan@bulma.net , ca translator
 
-2005-10-21 16:25  Daichi Kawahata <daichi@xfce.org>
+2005-10-21  Daichi Kawahata <daichi@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -103,41 +103,41 @@
 	  vi.po, zh_CN.po, zh_TW.po: Updated with the latest POT file.
 	  Discarded obsolete translations.
 
-2005-10-21 14:02  Alex Dupre <ale@FreeBSD.org>
+2005-10-21  Alex Dupre <ale@FreeBSD.org>
 
 	* it.po: Restore correct headers.
 
-2005-10-21 12:25  Daichi Kawahata <daichi@xfce.org>
+2005-10-21  Daichi Kawahata <daichi@xfce.org>
 
 	* xfwm4.pot: Updated with the latest sources.
 
-2005-10-21 12:22  Alex Dupre <ale@FreeBSD.org>
+2005-10-21  Alex Dupre <ale@FreeBSD.org>
 
 	* it.po: Update Italian translations and add missing accelerator
 	  keys.
 
-2005-10-21 12:07  Daichi Kawahata <daichi@xfce.org>
+2005-10-21  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
 
-2005-10-21 09:03  Daichi Kawahata <daichi@xfce.org>
+2005-10-21  Daichi Kawahata <daichi@xfce.org>
 
 	* pl.po: Updated Polish translations by Piotr Malinski
 	  <riklaunim@gmail.com>.
 
-2005-10-19 20:51  Daichi Kawahata <daichi@xfce.org>
+2005-10-19  Daichi Kawahata <daichi@xfce.org>
 
 	* lt.po: Changed addresses.
 
-2005-10-18 18:20  Daichi Kawahata <daichi@xfce.org>
+2005-10-18  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Minor updates.
 
-2005-10-17 20:37  Daichi Kawahata <daichi@xfce.org>
+2005-10-17  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Fixed fatal mistranslations.
 
-2005-10-16 22:19  Daichi Kawahata <daichi@xfce.org>
+2005-10-16  Daichi Kawahata <daichi@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -146,16 +146,16 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
 
-2005-10-15 12:51  Daichi Kawahata <daichi@xfce.org>
+2005-10-15  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
 
-2005-10-14 10:02  Daichi Kawahata <daichi@xfce.org>
+2005-10-14  Daichi Kawahata <daichi@xfce.org>
 
 	* hu.po: Updated Hungarian translations by Szervac Attila
 	  <sas@321.hu>.
 
-2005-10-14 05:21  Olivier Fourdan <fourdan@xfce.org>
+2005-10-14  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -164,20 +164,20 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
 
-2005-10-13 13:52  Daichi Kawahata <daichi@xfce.org>
+2005-10-13  Daichi Kawahata <daichi@xfce.org>
 
 	* hu.po: Updated Hungarian translations by Szervac Attila
 	  <sas@321.hu>.
 
-2005-10-11 09:53  Daichi Kawahata <daichi@xfce.org>
+2005-10-11  Daichi Kawahata <daichi@xfce.org>
 
 	* et.po: Changed an address.
 
-2005-10-10 00:05  Daichi Kawahata <daichi@xfce.org>
+2005-10-10  Daichi Kawahata <daichi@xfce.org>
 
 	* ro.po: Corrected version.
 
-2005-10-09 12:01  Daichi Kawahata <daichi@xfce.org>
+2005-10-09  Daichi Kawahata <daichi@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -189,7 +189,7 @@
 	* po2tbl.sed.in: Removed.
 	* xfwm4.pot: Updated.
 
-2005-10-08 19:51  Olivier Fourdan <fourdan@xfce.org>
+2005-10-08  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -198,7 +198,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
 
-2005-10-03 19:50  Olivier Fourdan <fourdan@xfce.org>
+2005-10-03  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -207,7 +207,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
 
-2005-10-02 20:42  Olivier Fourdan <fourdan@xfce.org>
+2005-10-02  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -216,7 +216,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
 
-2005-09-27 21:48  Olivier Fourdan <fourdan@xfce.org>
+2005-09-27  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -225,7 +225,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-25 21:07  Olivier Fourdan <fourdan@xfce.org>
+2005-09-25  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -234,11 +234,11 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
 
-2005-09-24 07:45  Daichi Kawahata <daichi@xfce.org>
+2005-09-24  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated some translations.
 
-2005-09-19 20:24  Olivier Fourdan <fourdan@xfce.org>
+2005-09-19  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -247,7 +247,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-15 18:43  Olivier Fourdan <fourdan@xfce.org>
+2005-09-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -256,7 +256,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-13 20:53  Olivier Fourdan <fourdan@xfce.org>
+2005-09-13  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -265,7 +265,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-13 20:41  Olivier Fourdan <fourdan@xfce.org>
+2005-09-13  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -274,12 +274,12 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-09 12:06  Daichi Kawahata <daichi@xfce.org>
+2005-09-09  Daichi Kawahata <daichi@xfce.org>
 
 	* zh_TW.po: Changed translator's representation in spelling by
 	  the request.
 
-2005-09-07 19:40  Olivier Fourdan <fourdan@xfce.org>
+2005-09-07  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -288,7 +288,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync po
 
-2005-09-06 12:24  Olivier Fourdan <fourdan@xfce.org>
+2005-09-06  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -297,7 +297,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync po
 
-2005-09-05 21:25  Olivier Fourdan <fourdan@xfce.org>
+2005-09-05  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -306,7 +306,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-04 20:44  Olivier Fourdan <fourdan@xfce.org>
+2005-09-04  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -315,7 +315,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-02 22:35  Olivier Fourdan <fourdan@xfce.org>
+2005-09-02  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -324,7 +324,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
 
-2005-09-01 21:12  Olivier Fourdan <fourdan@xfce.org>
+2005-09-01  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
@@ -333,7 +333,7 @@
 	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
 
-2005-09-01 05:59  Olivier Fourdan <fourdan@xfce.org>
+2005-09-01  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4/trunk/configure.ac, ar.po, az.po, be.po, bg.po, bn_IN.po,
 	  ca.po, cs.po, de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po,
@@ -343,58 +343,58 @@
 	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: fix
 	  configure script
 
-2005-08-29 21:48  Daichi Kawahata <daichi@xfce.org>
+2005-08-29  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Changed responsible period for previous translator.
 
-2005-08-23 05:47  Ankitkumar Patel <ankit644@yahoo.com>
+2005-08-23  Ankitkumar Patel <ankit644@yahoo.com>
 
 	* gu.po: Updted Translations
 
-2005-08-19 12:24  Daichi Kawahata <daichi@xfce.org>
+2005-08-19  Daichi Kawahata <daichi@xfce.org>
 
 	* bg.po, es.po, es_MX.po, nb_NO.po, nl.po, pt_BR.po, sv.po,
 	  zh_CN.po: Fixed errors. Added fallback address. Modified
 	  initial comment strings.
 
-2005-08-18 12:05  Daichi Kawahata <daichi@xfce.org>
+2005-08-18  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
 
-2005-08-17 15:03  Daichi Kawahata <daichi@xfce.org>
+2005-08-17  Daichi Kawahata <daichi@xfce.org>
 
 	* en_GB.po, nb_NO.po: Converted local charsets to UTF-8.
 
-2005-08-15 15:12  Daichi Kawahata <daichi@xfce.org>
+2005-08-15  Daichi Kawahata <daichi@xfce.org>
 
 	* zh_TW.po: Removed executable attribution.
 
-2005-08-13 15:09  Stavros Giannouris <stavrosg2002@freemail.gr>
+2005-08-13  Stavros Giannouris <stavrosg2002@freemail.gr>
 
 	* el.po: Added initial Greek translations in trunk for xfwm4
 
-2005-08-13 14:09  Daichi Kawahata <daichi@xfce.org>
+2005-08-13  Daichi Kawahata <daichi@xfce.org>
 
 	* fi.po: Updated Finnish translations by Jari Rahkonen
 	  <jari.rahkonen@pp1.inet.fi>.
 
-2005-07-26 12:23  Jean-Francois Wauthy <pollux@xfce.org>
+2005-07-26  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* eo.po: add some EO translations
 
-2005-07-04 11:47  Jean-Francois Wauthy <pollux@xfce.org>
+2005-07-04  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.po: update KO translations
 
-2005-06-29 16:14  Jean-Francois Wauthy <pollux@xfce.org>
+2005-06-29  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* zh_TW.po: update zh_TW translations
 
-2005-06-26 17:09  Jean-Francois Wauthy <pollux@xfce.org>
+2005-06-26  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.po: update KO translations
 
-2005-06-25 21:37  Olivier Fourdan <fourdan@xfce.org>
+2005-06-25  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
@@ -403,7 +403,7 @@
 	  ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
 	  xfwm4.pot, zh_CN.po, zh_TW.po: Update snapshot generation
 
-2005-06-22 21:57  Olivier Fourdan <fourdan@xfce.org>
+2005-06-22  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
@@ -412,7 +412,7 @@
 	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
 	  zh_CN.po, zh_TW.po: Po stuff as always
 
-2005-06-20 19:20  Olivier Fourdan <fourdan@xfce.org>
+2005-06-20  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
@@ -421,7 +421,7 @@
 	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
 	  zh_CN.po, zh_TW.po: Sync
 
-2005-06-19 21:40  Olivier Fourdan <fourdan@xfce.org>
+2005-06-19  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
@@ -430,7 +430,7 @@
 	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
 	  zh_CN.po, zh_TW.po: Po
 
-2005-06-16 19:31  Olivier Fourdan <fourdan@xfce.org>
+2005-06-16  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
 	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
@@ -439,7 +439,7 @@
 	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
 	  zh_CN.po, zh_TW.po: sync
 
-2005-06-13 20:05  Olivier Fourdan <fourdan@xfce.org>
+2005-06-13  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4/trunk/Makefile.am, xfwm4/trunk/configure.ac, ar.po, az.po,
 	  be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po, en_GB.po, es.po,
@@ -449,80 +449,80 @@
 	  sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po,
 	  zh_TW.po: Add new "make snapshot" and "make snapshot-bz2" targets
 
-2005-06-07 15:02  Jean-Francois Wauthy <pollux@xfce.org>
+2005-06-07  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* gu.po: update GU translations
 
-2005-05-31 17:28  Jean-Francois Wauthy <pollux@xfce.org>
+2005-05-31  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ja.po: update JA translations
 
-2005-05-14 19:24  Olivier Fourdan <fourdan@xfce.org>
+2005-05-14  Olivier Fourdan <fourdan@xfce.org>
 
 	* ChangeLog: Update ChangeLog
 
-2005-05-06 19:09  Jean-Francois Wauthy <pollux@xfce.org>
+2005-05-06  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* bn_IN.po: add bn_IN translations
 
-2005-05-06 18:56  Jean-Francois Wauthy <pollux@xfce.org>
+2005-05-06  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* mr.po: add MR translations
 
-2005-05-04 20:36  Olivier Fourdan <fourdan@xfce.org>
+2005-05-04  Olivier Fourdan <fourdan@xfce.org>
 
 	* ChangeLog: Update ChangeLog
 
-2005-04-06 07:33  Jens Luedicke <jens.luedicke@gmail.com>
+2005-04-06  Jens Luedicke <jens.luedicke@gmail.com>
 
 	* .cvsignore: remove .cvsignore cruft
 
-2005-03-26 16:43  Olivier Fourdan <fourdan@xfce.org>
+2005-03-26  Olivier Fourdan <fourdan@xfce.org>
 
 	* .cvsignore: /me is dumb.
 
-2005-03-26 16:29  Olivier Fourdan <fourdan@xfce.org>
+2005-03-26  Olivier Fourdan <fourdan@xfce.org>
 
 	* .cvsignore: Don't ignore Makefile.in.in ?
 
-2005-03-26 11:22  Jean-Francois Wauthy <pollux@xfce.org>
+2005-03-26  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.po: update KO translations
 
-2005-03-09 11:50  Benedikt Meurer <benny@xfce.org>
+2005-03-09  Benedikt Meurer <benny@xfce.org>
 
 	* POTFILES.in, et.po, fi.po, fr.po, he.po, ko.po, nl.po, ru.po,
 	  xfwm4.pot, zh_TW.po: Intltool'ized xfwm4.
 
-2005-03-07 09:07  Jean-Francois Wauthy <pollux@xfce.org>
+2005-03-07  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* gu.po: update GU translations
 
-2005-03-05 13:03  Jean-Francois Wauthy <pollux@xfce.org>
+2005-03-05  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ja.po: update JA translations
 
-2005-02-21 08:40  Jean-Francois Wauthy <pollux@xfce.org>
+2005-02-21  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ja.po: update JA translations
 
-2005-02-13 12:39  Jean-Francois Wauthy <pollux@xfce.org>
+2005-02-13  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.po: update KO translations (with a big delay)
 
-2005-02-01 20:59  Olivier Fourdan <fourdan@xfce.org>
+2005-02-01  Olivier Fourdan <fourdan@xfce.org>
 
 	* .cvsignore: Update cvsignore for po dir
 
-2005-02-01 11:45  Jean-Francois Wauthy <pollux@xfce.org>
+2005-02-01  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* zh_CN.po: update zh_CN translations
 
-2005-01-30 23:06  Olivier Fourdan <fourdan@xfce.org>
+2005-01-30  Olivier Fourdan <fourdan@xfce.org>
 
 	* .cvsignore: add .cvsignore for generated files
 
-2005-01-28 05:50  Olivier Fourdan <fourdan@xfce.org>
+2005-01-28  Olivier Fourdan <fourdan@xfce.org>
 
 	* .cvsignore, Makefile.in.in, ar.gmo, az.gmo, be.gmo, bg.gmo,
 	  ca.gmo, cs.gmo, de.gmo, en_GB.gmo, es.gmo, es_MX.gmo, et.gmo,
@@ -532,55 +532,55 @@
 	  sv.gmo, ta.gmo, tr.gmo, uk.gmo, vi.gmo, zh_CN.gmo, zh_TW.gmo:
 	  Remove autogenerated files from CVS.
 
-2005-01-22 12:22  Jean-Francois Wauthy <pollux@xfce.org>
+2005-01-22  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* fi.gmo, fi.po: update FI translations
 
-2005-01-08 15:04  Jean-Francois Wauthy <pollux@xfce.org>
+2005-01-08  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ru.gmo, ru.po: update RU translations
 
-2005-01-06 20:31  Jean-Francois Wauthy <pollux@xfce.org>
+2005-01-06  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* uk.gmo, uk.po: update UK translations
 
-2005-01-05 16:01  Jean-Francois Wauthy <pollux@xfce.org>
+2005-01-05  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* he.gmo, he.po: update HE translations
 
-2004-12-23 21:24  Jean-Francois Wauthy <pollux@xfce.org>
+2004-12-23  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* et.gmo, et.po: update ET translations
 
-2004-12-22 21:19  Benedikt Meurer <benny@xfce.org>
+2004-12-22  Benedikt Meurer <benny@xfce.org>
 
 	* cs.gmo: Update ChangeLog. Fix make distcheck.
 
-2004-12-21 09:04  Brian Tarricone <kelnos@xfce.org>
+2004-12-21  Brian Tarricone <kelnos@xfce.org>
 
 	* cs.po: add/update czech translations
 
-2004-12-21 09:02  Brian Tarricone <kelnos@xfce.org>
+2004-12-21  Brian Tarricone <kelnos@xfce.org>
 
 	* pt_BR.gmo, pt_BR.po: update pt_BR translations
 
-2004-12-19 20:49  Jean-Francois Wauthy <pollux@xfce.org>
+2004-12-19  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.gmo, ko.po: update KO translations
 
-2004-12-15 22:50  Olivier Fourdan <fourdan@xfce.org>
+2004-12-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: *** empty log message ***
 
-2004-12-14 20:33  Jean-Francois Wauthy <pollux@xfce.org>
+2004-12-14  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ro.gmo, ro.po: add RO translations
 
-2004-12-11 17:51  Olivier Fourdan <fourdan@xfce.org>
+2004-12-11  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Various changes and small fixes
 
-2004-12-10 05:30  Olivier Fourdan <fourdan@xfce.org>
+2004-12-10  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, en_GB.gmo,
@@ -595,39 +595,39 @@
 	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Include korean update
 	  from David Choi <byunghyun.choi@gmail.com>
 
-2004-12-05 21:38  Jean-Francois Wauthy <pollux@xfce.org>
+2004-12-05  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* nb_NO.gmo, nb_NO.po: add nb_NO translations
 
-2004-12-05 21:20  Jean-Francois Wauthy <pollux@xfce.org>
+2004-12-05  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* en_GB.gmo, en_GB.po: add en_GB translations
 
-2004-12-05 20:50  Jean-Francois Wauthy <pollux@xfce.org>
+2004-12-05  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.gmo, ko.po: update KO translations
 
-2004-11-28 18:01  Jean-Francois Wauthy <pollux@xfce.org>
+2004-11-28  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* tr.po: update TR translations
 
-2004-11-26 19:06  Jean-Francois Wauthy <pollux@xfce.org>
+2004-11-26  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ko.gmo, ko.po: update KO translations
 
-2004-11-21 21:57  Jean-Francois Wauthy <pollux@xfce.org>
+2004-11-21  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* hu.gmo, hu.po: update HU translations
 
-2004-11-19 06:58  Olivier Fourdan <fourdan@xfce.org>
+2004-11-19  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Update version
 
-2004-11-15 22:38  Jean-Francois Wauthy <pollux@xfce.org>
+2004-11-15  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* fr.gmo, fr.po: little translation correction
 
-2004-11-06 13:25  Olivier Fourdan <fourdan@xfce.org>
+2004-11-06  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -641,19 +641,19 @@
 	  vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po:
 	  po updates
 
-2004-10-30 14:42  Jasper Huijsmans <jasper@xfce.org>
+2004-10-30  Jasper Huijsmans <jasper@xfce.org>
 
 	* nl.gmo, nl.po: Update a few nl translations
 
-2004-10-30 14:00  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-30  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* lt.gmo, lt.po: update LT translations
 
-2004-10-28 11:55  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-28  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* he.gmo, he.po: update HE translations
 
-2004-10-24 21:55  Olivier Fourdan <fourdan@xfce.org>
+2004-10-24  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -667,11 +667,11 @@
 	  vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po:
 	  Locale fix
 
-2004-10-24 14:23  Moritz Heiber <moe@xfce.org>
+2004-10-24  Moritz Heiber <moe@xfce.org>
 
 	* de.po: Hehe
 
-2004-10-24 13:32  Olivier Fourdan <fourdan@xfce.org>
+2004-10-24  Olivier Fourdan <fourdan@xfce.org>
 
 	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po,
 	  bg.gmo, bg.po, ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po,
@@ -685,23 +685,23 @@
 	  vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
 	  zh_TW.po: Don't translate warning messages
 
-2004-10-23 19:58  Olivier Fourdan <fourdan@xfce.org>
+2004-10-23  Olivier Fourdan <fourdan@xfce.org>
 
 	* de.gmo: gmo for Moe
 
-2004-10-23 19:53  Moritz Heiber <moe@xfce.org>
+2004-10-23  Moritz Heiber <moe@xfce.org>
 
 	* de.po: We hate K&#65533;rzels!
 
-2004-10-23 19:45  Olivier Fourdan <fourdan@xfce.org>
+2004-10-23  Olivier Fourdan <fourdan@xfce.org>
 
 	* de.gmo: gmo file for Moe
 
-2004-10-23 19:43  Moritz Heiber <moe@xfce.org>
+2004-10-23  Moritz Heiber <moe@xfce.org>
 
 	* de.po: Finishing German translation. Germs are good to go Sir!
 
-2004-10-23 19:40  Olivier Fourdan <fourdan@xfce.org>
+2004-10-23  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -715,7 +715,7 @@
 	  vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po:
 	  Label mispelled
 
-2004-10-23 17:47  Benedikt Meurer <benny@xfce.org>
+2004-10-23  Benedikt Meurer <benny@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po,
 	  es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po,
@@ -723,23 +723,23 @@
 	  pl.po, pt_BR.po, pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po,
 	  uk.po, vi.po, zh_CN.po, zh_TW.po: Update-po for moe.
 
-2004-10-22 19:33  Olivier Fourdan <fourdan@xfce.org>
+2004-10-22  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Theme fixes update locale [fr] for desktop files
 
-2004-10-20 22:05  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-20  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* et.gmo, et.po: update ET translations
 
-2004-10-17 20:30  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-17  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* fi.gmo, fi.po: update FI translations
 
-2004-10-13 22:48  Olivier Fourdan <fourdan@xfce.org>
+2004-10-13  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: *** empty log message ***
 
-2004-10-11 16:30  Benedikt Meurer <benny@xfce.org>
+2004-10-11  Benedikt Meurer <benny@xfce.org>
 
 	* ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po,
 	  es_MX.po, et.po, eu.po, fi.po, fr.po, gu.po, he.po, hi.po,
@@ -747,57 +747,57 @@
 	  pt_BR.po, pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
 	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: update-po for Moe.
 
-2004-10-10 11:52  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-10  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* es.gmo, es_MX.gmo, pt_PT.gmo, pt_PT.po: update pt_PT translations
 
-2004-10-10 01:52  Edscott Wilson Garcia <edscott@xfce.org>
+2004-10-10  Edscott Wilson Garcia <edscott@xfce.org>
 
 	* es.po, es_MX.po: spelling correction
 
-2004-10-09 14:20  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-09  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* fa.gmo, fa.po, fa_IR.gmo, fa_IR.po: update FA translations
 
-2004-10-09 13:48  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-09  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* pa.gmo, pa.po: Punjabi translations update from
 	  jaswinderlinux@netscape.net
 
-2004-10-08 15:45  Edscott Wilson Garcia <edscott@xfce.org>
+2004-10-08  Edscott Wilson Garcia <edscott@xfce.org>
 
 	* es.po, es_MX.po: update spanish translations.
 
-2004-10-03 16:14  Jean-Francois Wauthy <pollux@xfce.org>
+2004-10-03  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* pa.gmo, pa.po: Punjabi translations (PA) from
 	  jaswinderlinux@netscape.net
 
-2004-09-30 15:48  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-30  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* it.gmo, it.po: updated Italian translations from Luca Marrocco
 	  <buildup@libero.it>
 
-2004-09-29 08:22  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-29  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* zh_TW.gmo, zh_TW.po: updated zh_TW translations from Ambrose Li
 	  <acli@ada.dhs.org>
 
-2004-09-29 07:59  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-29  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* zh_CN.gmo, zh_CN.po: updated zh_CN translations from yongtao
 	  yang <yongtao.yang@gmail.com>
 
-2004-09-23 21:37  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-23  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* gu.gmo, gu.po, nl.gmo: add Gujarati translations (GU) from
 	  Ankit Patel <ankit@redhat.com>
 
-2004-09-23 09:09  Jasper Huijsmans <jasper@xfce.org>
+2004-09-23  Jasper Huijsmans <jasper@xfce.org>
 
 	* nl.po: Better translation
 
-2004-09-21 11:51  Jasper Huijsmans <jasper@xfce.org>
+2004-09-21  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -810,62 +810,62 @@
 	  uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
 	  zh_TW.gmo, zh_TW.po: Run make update-po at Moe's request.
 
-2004-09-19 10:14  Jasper Huijsmans <jasper@xfce.org>
+2004-09-19  Jasper Huijsmans <jasper@xfce.org>
 
 	* nl.gmo, nl.po: Update nl translations
 
-2004-09-18 16:41  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-18  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* eu.gmo, eu.po: update EU translations
 
-2004-09-16 22:10  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-16  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* be.gmo, be.po: add BE translations from Ales Nyakhaychyk
 	  <nab@mail.by>
 
-2004-09-10 20:49  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-10  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* he.gmo, he.po: HE translations update from Yuval Tanny
 	  <tanai@int.gov.il>
 
-2004-09-09 18:51  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-09  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* vi.gmo, vi.po: update VI translations
 
-2004-09-06 14:08  Jean-Francois Wauthy <pollux@xfce.org>
+2004-09-06  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* et.gmo, et.po: ET translations from Peeter Vois
 	  <Peeter.Vois@proekspert.ee>
 
-2004-08-29 16:03  Jean-Francois Wauthy <pollux@xfce.org>
+2004-08-29  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* az.gmo, az.po: AZ translations update from Metin Amiroff
 	  <metin@karegen.com>
 
-2004-08-28 19:21  Jean-Francois Wauthy <pollux@xfce.org>
+2004-08-28  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* sk.gmo, sk.po: add Slovak translations from Juraj Brosz
 	  <juro@jurajbrosz.info>
 
-2004-08-27 08:26  Jean-Francois Wauthy <pollux@xfce.org>
+2004-08-27  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* fi.gmo, fi.po: FI translations update from Ilkka Ollakka
 	  <ilkka.ollakka@iki.fi>
 
-2004-08-25 18:34  Jasper Huijsmans <jasper@xfce.org>
+2004-08-25  Jasper Huijsmans <jasper@xfce.org>
 
 	* nl.po: Update dutch translations, only po files for now
 
-2004-08-24 10:04  Jean-Francois Wauthy <pollux@xfce.org>
+2004-08-24  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* ru.gmo, ru.po: RU translations update from Anthony Ivanoff
 	  <a-i@bk.ru>
 
-2004-08-23 21:09  Olivier Fourdan <fourdan@xfce.org>
+2004-08-23  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Version 4.1.7
 
-2004-08-15 21:31  Olivier Fourdan <fourdan@xfce.org>
+2004-08-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -878,7 +878,7 @@
 	  xfwm4.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Referencing
 	  a local working file in potfiles...
 
-2004-08-15 19:39  Olivier Fourdan <fourdan@xfce.org>
+2004-08-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -892,12 +892,12 @@
 	  repository, most notably: French po updates - Other various
 	  small bug fixes
 
-2004-08-14 19:47  Jean-Francois Wauthy <pollux@xfce.org>
+2004-08-14  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* he.gmo, he.po: Hebrew translations from Yuval Tanny
 	  <tanai@int.gov.il>
 
-2004-08-04 16:53  Olivier Fourdan <fourdan@xfce.org>
+2004-08-04  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
@@ -909,7 +909,7 @@
 	  tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
 	  zh_CN.po, zh_TW.gmo, zh_TW.po: Update translations
 
-2004-07-06 20:02  Olivier Fourdan <fourdan@xfce.org>
+2004-07-06  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
@@ -921,15 +921,15 @@
 	  tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
 	  zh_CN.po, zh_TW.gmo, zh_TW.po: Update po.
 
-2004-07-02 06:22  Olivier Fourdan <fourdan@xfce.org>
+2004-07-02  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Remove useless comment (with a typo!)
 
-2004-06-30 21:48  Olivier Fourdan <fourdan@xfce.org>
+2004-06-30  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Potfile update
 
-2004-06-26 21:20  Olivier Fourdan <fourdan@xfce.org>
+2004-06-26  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po,
 	  eu.po, fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po,
@@ -937,7 +937,7 @@
 	  sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po,
 	  zh_TW.po: Sync
 
-2004-06-22 10:50  Olivier Fourdan <fourdan@xfce.org>
+2004-06-22  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po,
 	  eu.po, fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po,
@@ -945,7 +945,7 @@
 	  sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po,
 	  zh_TW.po, xfwm4/trunk/src/placement.c: Update po
 
-2004-06-19 10:17  Olivier Fourdan <fourdan@xfce.org>
+2004-06-19  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
@@ -958,7 +958,7 @@
 	  zh_CN.po, zh_TW.gmo, zh_TW.po: Update po Update French
 	  localization
 
-2004-06-18 05:42  Olivier Fourdan <fourdan@xfce.org>
+2004-06-18  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, az.po, bg.po, ca.po, cs.po, de.po, es.po, es_MX.po,
 	  eu.po, fa_IR.po, fi.po, fr.po, hi.po, hu.po, it.po, ja.po,
@@ -966,7 +966,7 @@
 	  sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po,
 	  zh_TW.po: Update-po
 
-2004-06-15 22:57  Olivier Fourdan <fourdan@xfce.org>
+2004-06-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
@@ -978,19 +978,19 @@
 	  tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo,
 	  zh_CN.po, zh_TW.gmo, zh_TW.po: Fix packaging issues.
 
-2004-06-13 21:18  Jean-Francois Wauthy <pollux@xfce.org>
+2004-06-13  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* lt.gmo, lt.po: Updated lt translations from Mantas Zapolskas
 
-2004-06-13 09:40  Jean-Francois Wauthy <pollux@xfce.org>
+2004-06-13  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* zh_CN.gmo: .gmo files updated
 
-2004-06-11 19:59  Jean-Francois Wauthy <pollux@xfce.org>
+2004-06-11  Jean-Francois Wauthy <pollux@xfce.org>
 
 	* zh_CN.po: Update zh_CN translations
 
-2004-05-09 22:07  Olivier Fourdan <fourdan@xfce.org>
+2004-05-09  Olivier Fourdan <fourdan@xfce.org>
 
 	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, bg.gmo, bg.po,
 	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
@@ -1002,30 +1002,30 @@
 	  ta.po, tr.gmo, tr.po, uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot,
 	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Potfiles
 
-2004-05-03 21:45  Olivier Fourdan <fourdan@xfce.org>
+2004-05-03  Olivier Fourdan <fourdan@xfce.org>
 
 	* zh_TW.gmo, zh_TW.po: Update zh_TW translations from umm
 	  <umm@pchome.com.tw>
 
-2004-04-22 20:49  Olivier Fourdan <fourdan@xfce.org>
+2004-04-22  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Forgot to commit a file
 
-2004-04-14 06:16  Olivier Fourdan <fourdan@xfce.org>
+2004-04-14  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot, zh_TW.gmo, zh_TW.po: zh_TW po update by Ambrose Li
 	  <a.c.li@ieee.org>
 
-2004-04-13 19:18  Olivier Fourdan <fourdan@xfce.org>
+2004-04-13  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Fix #0000171
 
-2004-04-12 13:47  Danny Milosavljevic <dannym@xfce.org>
+2004-04-12  Danny Milosavljevic <dannym@xfce.org>
 
 	* ca.gmo, ca.po: Updated catalan translations by Carles Munoz
 	  Gorriz
 
-2004-03-15 07:36  Olivier Fourdan <fourdan@xfce.org>
+2004-03-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, bg.gmo, bg.po, it.gmo, it.po: Add/update i18n
 	  for: Bulgarian from Miroslav Yordanov <miordanov@i-space.org>
@@ -1033,52 +1033,52 @@
 	  <ale@FreeBSD.org> Arabic from Saleh Hathal
 	  <hathalsal@hotmail.com>
 
-2004-02-17 19:36  Jasper Huijsmans <jasper@xfce.org>
+2004-02-17  Jasper Huijsmans <jasper@xfce.org>
 
 	* ms.gmo, ms.po: Update Malay translations
 
-2004-02-11 20:44  Jasper Huijsmans <jasper@xfce.org>
+2004-02-11  Jasper Huijsmans <jasper@xfce.org>
 
 	* eu.gmo, eu.po: Add Basque (eu) translations
 
-2004-01-29 15:51  Jasper Huijsmans <jasper@xfce.org>
+2004-01-29  Jasper Huijsmans <jasper@xfce.org>
 
 	* fa_IR.gmo, fa_IR.po: Update Persian translations
 
-2004-01-25 00:08  Olivier Fourdan <fourdan@xfce.org>
+2004-01-25  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Update gettext package
 
-2004-01-21 13:44  Jasper Huijsmans <jasper@xfce.org>
+2004-01-21  Jasper Huijsmans <jasper@xfce.org>
 
 	* es.gmo, es.po, fa_IR.gmo, fa_IR.po, ja.gmo, ja.po, ko.gmo,
 	  ko.po, pt_BR.gmo, pt_BR.po, zh_CN.gmo, zh_CN.po: Translations
 	  added/updated for spanish, persian, japanese, korean, brasilian
 	  and chinese
 
-2004-01-07 23:14  Moritz Heiber <moe@xfce.org>
+2004-01-07  Moritz Heiber <moe@xfce.org>
 
 	* de.po: Can't stop me now!
 
-2004-01-03 20:23  Olivier Fourdan <fourdan@xfce.org>
+2004-01-03  Olivier Fourdan <fourdan@xfce.org>
 
 	* pl.gmo, pl.po: Update Polish translation from Daniel Mroz
 	  <beorn@alpha.pl>
 
-2003-12-29 10:56  Jasper Huijsmans <jasper@xfce.org>
+2003-12-29  Jasper Huijsmans <jasper@xfce.org>
 
 	* tr.gmo, tr.po: Update Norwegian and Turkish translations
 
-2003-12-27 19:46  Jasper Huijsmans <jasper@xfce.org>
+2003-12-27  Jasper Huijsmans <jasper@xfce.org>
 
 	* de.gmo, pl.gmo, pl.po: Update Polish translations
 
-2003-12-23 22:04  Moritz Heiber <moe@xfce.org>
+2003-12-23  Moritz Heiber <moe@xfce.org>
 
 	* de.po: Rather large update. Forgot about the moved
 	  margin/workspaces plugin.
 
-2003-12-21 21:53  Olivier Fourdan <fourdan@xfce.org>
+2003-12-21  Olivier Fourdan <fourdan@xfce.org>
 
 	* POTFILES.in, ar.gmo, ar.po, az.gmo, az.po, ca.gmo, ca.po,
 	  cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
@@ -1089,48 +1089,48 @@
 	  uk.gmo, uk.po, vi.gmo, vi.po, xfwm4.pot, zh_CN.gmo, zh_CN.po,
 	  zh_TW.gmo, zh_TW.po: Update po
 
-2003-12-15 20:56  Jasper Huijsmans <jasper@xfce.org>
+2003-12-15  Jasper Huijsmans <jasper@xfce.org>
 
 	* az.gmo, az.po: Add Azerbaijani translations
 
-2003-11-23 13:57  Moritz Heiber <moe@xfce.org>
+2003-11-23  Moritz Heiber <moe@xfce.org>
 
 	* de.po: Rather huge update to the german translation
 
-2003-11-16 21:49  Olivier Fourdan <fourdan@xfce.org>
+2003-11-16  Olivier Fourdan <fourdan@xfce.org>
 
 	* de.gmo: Fix 64bit/endianess problem
 
-2003-11-14 17:35  Moritz Heiber <moe@xfce.org>
+2003-11-14  Moritz Heiber <moe@xfce.org>
 
 	* de.po: Updating translation
 
-2003-11-09 19:22  Jasper Huijsmans <jasper@xfce.org>
+2003-11-09  Jasper Huijsmans <jasper@xfce.org>
 
 	* cs.gmo, cs.po: Add Check translations
 
-2003-11-03 18:06  Jasper Huijsmans <jasper@xfce.org>
+2003-11-03  Jasper Huijsmans <jasper@xfce.org>
 
 	* uk.gmo, uk.po: Add Ukranian translations
 
-2003-11-02 08:22  Olivier Fourdan <fourdan@xfce.org>
+2003-11-02  Olivier Fourdan <fourdan@xfce.org>
 
 	* hi.gmo, hi.po: Add hi.po
 
-2003-10-24 22:20  Jasper Huijsmans <jasper@xfce.org>
+2003-10-24  Jasper Huijsmans <jasper@xfce.org>
 
 	* vi.gmo, vi.po: Add vietnamese translations by Lam Vinh Nien
 	  <nienvl@yahoo.ca>.
 
-2003-10-17 15:37  Jasper Huijsmans <jasper@xfce.org>
+2003-10-17  Jasper Huijsmans <jasper@xfce.org>
 
 	* sv.gmo, sv.po: Add/update swedish translations
 
-2003-09-27 12:38  Jasper Huijsmans <jasper@xfce.org>
+2003-09-27  Jasper Huijsmans <jasper@xfce.org>
 
 	* ta.gmo, ta.po: Update tamil translation
 
-2003-09-22 20:33  Jasper Huijsmans <jasper@xfce.org>
+2003-09-22  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo,
@@ -1140,11 +1140,11 @@
 	  zh_CN.gmo, zh_CN.po, zh_TW.gmo, zh_TW.po: Update version numbers
 	  and po files for release
 
-2003-09-15 20:55  Jasper Huijsmans <jasper@xfce.org>
+2003-09-15  Jasper Huijsmans <jasper@xfce.org>
 
 	* pt_PT.gmo, pt_PT.po: Big portugese translation update
 
-2003-09-10 07:39  Jasper Huijsmans <jasper@xfce.org>
+2003-09-10  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo,
@@ -1154,25 +1154,25 @@
 	  zh_TW.gmo, zh_TW.po: Update version numbers and po files for
 	  release
 
-2003-09-08 06:25  Jasper Huijsmans <jasper@xfce.org>
+2003-09-08  Jasper Huijsmans <jasper@xfce.org>
 
 	* ru.gmo, ru.po: Update russian translations
 
-2003-09-02 06:48  Jasper Huijsmans <jasper@xfce.org>
+2003-09-02  Jasper Huijsmans <jasper@xfce.org>
 
 	* ms.gmo, ms.po: Update malaysian translations
 
-2003-08-30 12:49  Jasper Huijsmans <jasper@xfce.org>
+2003-08-30  Jasper Huijsmans <jasper@xfce.org>
 
 	* zh_TW.Big5.gmo, zh_TW.Big5.po, zh_TW.gmo, zh_TW.po: Rename
 	  zh_TW.Big5 -> zh_TW
 
-2003-08-30 08:58  Jasper Huijsmans <jasper@xfce.org>
+2003-08-30  Jasper Huijsmans <jasper@xfce.org>
 
 	* zh_TW.Big5.gmo, zh_TW.Big5.po: Add traditional chinese
 	  translations
 
-2003-08-26 07:12  Jasper Huijsmans <jasper@xfce.org>
+2003-08-26  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo,
@@ -1181,28 +1181,28 @@
 	  ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Update
 	  version numbers and po files for release
 
-2003-08-17 11:36  Jasper Huijsmans <jasper@xfce.org>
+2003-08-17  Jasper Huijsmans <jasper@xfce.org>
 
 	* lt.gmo, lt.po: Add lithuanian translations
 
-2003-08-14 00:09  Olivier Fourdan <fourdan@xfce.org>
+2003-08-14  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Update
 
-2003-08-10 19:54  Jasper Huijsmans <jasper@xfce.org>
+2003-08-10  Jasper Huijsmans <jasper@xfce.org>
 
 	* zh_CN.gmo, zh_CN.po: Update chinese translations
 
-2003-08-07 22:09  Jasper Huijsmans <jasper@xfce.org>
+2003-08-07  Jasper Huijsmans <jasper@xfce.org>
 
 	* ca.gmo, ca.po: Update catalan translations
 
-2003-08-04 18:17  Olivier Fourdan <fourdan@xfce.org>
+2003-08-04  Olivier Fourdan <fourdan@xfce.org>
 
 	* ko.gmo, ko.po: Add Korean translation from ByungHyun Choi
 	  <byunghyun.choi@gmail.com>
 
-2003-07-30 08:05  Jasper Huijsmans <jasper@xfce.org>
+2003-07-30  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo,
@@ -1211,15 +1211,15 @@
 	  zh_CN.gmo, zh_CN.po: Update version numbers and po files for
 	  release
 
-2003-07-29 06:28  Jasper Huijsmans <jasper@xfce.org>
+2003-07-29  Jasper Huijsmans <jasper@xfce.org>
 
 	* ru.gmo, ru.po: Update russian translations
 
-2003-07-24 06:27  Jasper Huijsmans <jasper@xfce.org>
+2003-07-24  Jasper Huijsmans <jasper@xfce.org>
 
 	* fi.gmo, fi.po: Update finnish translations
 
-2003-07-19 08:59  Jasper Huijsmans <jasper@xfce.org>
+2003-07-19  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo,
@@ -1228,15 +1228,15 @@
 	  zh_CN.gmo, zh_CN.po: Update version numbers and po files for
 	  release
 
-2003-07-18 10:57  Jasper Huijsmans <jasper@xfce.org>
+2003-07-18  Jasper Huijsmans <jasper@xfce.org>
 
 	* hu.gmo, hu.po: Update hungarian translations
 
-2003-07-18 07:46  Jasper Huijsmans <jasper@xfce.org>
+2003-07-18  Jasper Huijsmans <jasper@xfce.org>
 
 	* de.gmo, de.po, tr.gmo, tr.po: Update turkish translations
 
-2003-07-16 09:57  Jasper Huijsmans <jasper@xfce.org>
+2003-07-16  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo,
@@ -1244,15 +1244,15 @@
 	  pl.po, ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot,
 	  zh_CN.gmo, zh_CN.po: Add hungarian translations
 
-2003-07-16 08:22  Jasper Huijsmans <jasper@xfce.org>
+2003-07-16  Jasper Huijsmans <jasper@xfce.org>
 
 	* ca.gmo, ca.po: Update catalan translations
 
-2003-07-11 06:55  Jasper Huijsmans <jasper@xfce.org>
+2003-07-11  Jasper Huijsmans <jasper@xfce.org>
 
 	* zh_CN.gmo, zh_CN.po: Update Chinese translations
 
-2003-07-10 09:24  Jasper Huijsmans <jasper@xfce.org>
+2003-07-10  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, ja.gmo,
@@ -1260,55 +1260,55 @@
 	  ru.po, ta.gmo, ta.po, tr.gmo, tr.po, zh_CN.gmo, zh_CN.po: Bump
 	  version numbers for release and update po files
 
-2003-07-09 18:15  Olivier Fourdan <fourdan@xfce.org>
+2003-07-09  Olivier Fourdan <fourdan@xfce.org>
 
 	* de.gmo, de.po, xfwm4.pot: Update de.po from Moe.
 
-2003-07-08 20:53  Olivier Fourdan <fourdan@xfce.org>
+2003-07-08  Olivier Fourdan <fourdan@xfce.org>
 
 	* Makefile.in.in: Don't perform an update-po on make dist as it
 	  causes far too much trouble
 
-2003-07-07 21:18  Jasper Huijsmans <jasper@xfce.org>
+2003-07-07  Jasper Huijsmans <jasper@xfce.org>
 
 	* ca.gmo, ca.po: Update catalan translations
 
-2003-07-04 23:37  Olivier Fourdan <fourdan@xfce.org>
+2003-07-04  Olivier Fourdan <fourdan@xfce.org>
 
 	* es.gmo, es_MX.gmo: libtool update and all
 
-2003-07-03 18:16  Edscott Wilson Garcia <edscott@xfce.org>
+2003-07-03  Edscott Wilson Garcia <edscott@xfce.org>
 
 	* es.po, es_MX.po: spanish tranlation updates for 4.0 release.
 
-2003-06-24 06:36  Olivier Fourdan <fourdan@xfce.org>
+2003-06-24  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Sync
 
-2003-06-21 12:15  Olivier Fourdan <fourdan@xfce.org>
+2003-06-21  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.po, ca.po, de.po, es.po, es_MX.po, fi.po, fr.po, ja.po,
 	  ms.po, nl.po, pl.po, ru.po, ta.po, tr.po, xfwm4.pot, zh_CN.po:
 	  Update po
 
-2003-06-15 22:32  Olivier Fourdan <fourdan@xfce.org>
+2003-06-15  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Switch to version 3.91.0
 
-2003-06-08 14:29  Jasper Huijsmans <jasper@xfce.org>
+2003-06-08  Jasper Huijsmans <jasper@xfce.org>
 
 	* ru.gmo, ru.po: Add russian translation
 
-2003-06-06 21:37  Olivier Fourdan <fourdan@xfce.org>
+2003-06-06  Olivier Fourdan <fourdan@xfce.org>
 
 	* xfwm4.pot: Versionning scheme
 
-2003-06-05 07:28  Jasper Huijsmans <jasper@xfce.org>
+2003-06-05  Jasper Huijsmans <jasper@xfce.org>
 
 	* de.gmo, de.po, tr.gmo, tr.po: Updated translations and multiple
 	  file drop on backdrop list manager
 
-2003-06-01 17:25  Jasper Huijsmans <jasper@xfce.org>
+2003-06-01  Jasper Huijsmans <jasper@xfce.org>
 
 	* Makefile.in.in, ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po,
 	  es.gmo, es.po, es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo,
@@ -1316,166 +1316,166 @@
 	  pl.po, ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot, zh_CN.gmo,
 	  zh_CN.po: po file tweaks
 
-2003-05-30 20:36  Jasper Huijsmans <jasper@xfce.org>
+2003-05-30  Jasper Huijsmans <jasper@xfce.org>
 
 	* ms.gmo, ms.po: Add malayan translations
 
-2003-05-29 09:59  Jasper Huijsmans <jasper@xfce.org>
+2003-05-29  Jasper Huijsmans <jasper@xfce.org>
 
 	* nl.gmo, nl.po: Translations update
 
-2003-05-27 21:35  Olivier Fourdan <fourdan@xfce.org>
+2003-05-27  Olivier Fourdan <fourdan@xfce.org>
 
 	* fi.gmo, fi.po: Update Finnish translation by Ilkka Ollakka
 	  (ilkka dot ollakka at iki dot fi)
 
-2003-05-27 21:30  Olivier Fourdan <fourdan@xfce.org>
+2003-05-27  Olivier Fourdan <fourdan@xfce.org>
 
 	* ja.gmo, ja.po: Add Japanese translation by Zhao-Ji
 	  <zhao-ji at awz dot ne dot jp>
 
-2003-05-24 19:17  Olivier Fourdan <fourdan@xfce.org>
+2003-05-24  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo,
 	  nl.po, pl.gmo, pl.po, ta.gmo, ta.po, tr.gmo, tr.po, xfwm4.pot,
 	  zh_CN.gmo, zh_CN.po: Merging po
 
-2003-05-21 21:43  Jasper Huijsmans <jasper@xfce.org>
+2003-05-21  Jasper Huijsmans <jasper@xfce.org>
 
 	* tr.gmo, tr.po: Add Turkish translations
 
-2003-05-16 18:24  Jasper Huijsmans <jasper@xfce.org>
+2003-05-16  Jasper Huijsmans <jasper@xfce.org>
 
 	* ta.gmo, ta.po: Add tamil translations
 
-2003-05-14 14:06  Jasper Huijsmans <jasper@xfce.org>
+2003-05-14  Jasper Huijsmans <jasper@xfce.org>
 
 	* fi.gmo, fi.po: Update finnish translations
 
-2003-05-13 17:59  Jasper Huijsmans <jasper@xfce.org>
+2003-05-13  Jasper Huijsmans <jasper@xfce.org>
 
 	* ca.gmo, ca.po: Add catalan translations
 
-2003-05-11 22:27  Olivier Fourdan <fourdan@xfce.org>
+2003-05-11  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
 	  es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo,
 	  pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Update french i18n
 
-2003-05-04 18:21  Jasper Huijsmans <jasper@xfce.org>
+2003-05-04  Jasper Huijsmans <jasper@xfce.org>
 
 	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
 	  es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo,
 	  pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Fix rpm target and some
 	  distcheck stuff. distcheck still fails
 
-2003-05-03 09:46  Jasper Huijsmans <jasper@xfce.org>
+2003-05-03  Jasper Huijsmans <jasper@xfce.org>
 
 	* zh_CN.gmo, zh_CN.po: Update chinese translations
 
-2003-04-27 20:10  Benedikt Meurer <benny@xfce.org>
+2003-04-27  Benedikt Meurer <benny@xfce.org>
 
 	* pl.po: Updated polish translations.
 
-2003-04-25 17:47  Jasper Huijsmans <jasper@xfce.org>
+2003-04-25  Jasper Huijsmans <jasper@xfce.org>
 
 	* fi.gmo, fi.po: Update finnish translations
 
-2003-03-31 21:44  Olivier Fourdan <fourdan@xfce.org>
+2003-03-31  Olivier Fourdan <fourdan@xfce.org>
 
 	* POTFILES.in, ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po,
 	  es_MX.gmo, es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo,
 	  nl.po, pl.gmo, pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Fix
 	  pixmap.c -> mypixmap.c in POTFILES.in
 
-2003-03-29 15:19  Jasper Huijsmans <jasper@xfce.org>
+2003-03-29  Jasper Huijsmans <jasper@xfce.org>
 
 	* de.gmo, de.po: Update german translations
 
-2003-03-23 12:52  Olivier Fourdan <fourdan@xfce.org>
+2003-03-23  Olivier Fourdan <fourdan@xfce.org>
 
 	* fi.gmo, fi.po: Update Finnish translation from Ilkka Ollakka
 	  (ilkka.ollakka@iki.fi)
 
-2003-03-16 13:43  Olivier Fourdan <fourdan@xfce.org>
+2003-03-16  Olivier Fourdan <fourdan@xfce.org>
 
 	* es.gmo, es.po: Add nestu's Spanish translation
 
-2003-02-27 21:51  Olivier Fourdan <fourdan@xfce.org>
+2003-02-27  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
 	  es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo,
 	  pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Updates (I'm sure you
 	  wouldn't have guessed)
 
-2003-02-01 09:44  Jasper Huijsmans <jasper@xfce.org>
+2003-02-01  Jasper Huijsmans <jasper@xfce.org>
 
 	* fi.gmo, fi.po: Update finnish translations
 
-2003-01-31 21:15  Olivier Fourdan <fourdan@xfce.org>
+2003-01-31  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
 	  es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, nl.gmo, nl.po, pl.gmo,
 	  pl.po, xfwm4.pot, zh_CN.gmo, zh_CN.po: Switch to GNU gettext
 	  0.11.5
 
-2003-01-31 20:34  Olivier Fourdan <fourdan@xfce.org>
+2003-01-31  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po: Update Arabic translation by Nabil Ben Khalifa
 	  <nabil_benkhalifa@yahoo.fr>
 
-2003-01-28 13:40  Jasper Huijsmans <jasper@xfce.org>
+2003-01-28  Jasper Huijsmans <jasper@xfce.org>
 
 	* pl.gmo, pl.po: Add polish translations by Pablo
 
-2003-01-28 10:47  Olivier Fourdan <fourdan@xfce.org>
+2003-01-28  Olivier Fourdan <fourdan@xfce.org>
 
 	* ar.gmo, ar.po: Add arabic translation from Nabil. Thanks a lot,
 	  Nabil :)
 
-2003-01-26 11:06  Olivier Fourdan <fourdan@xfce.org>
+2003-01-26  Olivier Fourdan <fourdan@xfce.org>
 
 	* fi.gmo, fi.po: Update Finnish translation
 
-2003-01-25 23:04  Olivier Fourdan <fourdan@xfce.org>
+2003-01-25  Olivier Fourdan <fourdan@xfce.org>
 
 	* fi.gmo, fi.po: Add Finnish translation by Ilkka Ollakka
 	  (ilkka.j.ollakka.oamk.fi)
 
-2003-01-25 11:08  Olivier Fourdan <fourdan@xfce.org>
+2003-01-25  Olivier Fourdan <fourdan@xfce.org>
 
 	* Makefile.in.in, de.gmo, de.po: Add German translation from
 	  MisterMoe <MisterMoe@hackerboard.de> and Michael Jakl
 	  <mj@int-x.org>
 
-2003-01-24 14:25  Edscott Wilson Garcia <edscott@xfce.org>
+2003-01-24  Edscott Wilson Garcia <edscott@xfce.org>
 
 	* Makefile.in.in, es_MX.gmo, es_MX.po: added mexican spanish files
 
-2003-01-24 13:06  Jasper Huijsmans <jasper@xfce.org>
+2003-01-24  Jasper Huijsmans <jasper@xfce.org>
 
 	* nl.gmo, nl.po: Add Dutch translations
 
-2003-01-24 10:07  Olivier Fourdan <fourdan@xfce.org>
+2003-01-24  Olivier Fourdan <fourdan@xfce.org>
 
 	* zh_CN.GB2312.gmo, zh_CN.GB2312.po, zh_CN.gmo, zh_CN.po: Rename
 	  po/zh_CN.GB2312.* to po/zh_CN.*
 
-2003-01-24 09:00  Olivier Fourdan <fourdan@xfce.org>
+2003-01-24  Olivier Fourdan <fourdan@xfce.org>
 
 	* zh_CN.GB2312.gmo, zh_CN.GB2312.po: Add Chinese translation by
 	  Yongtao Yang <yongtao.yang@telia.com>
 
-2003-01-23 22:59  Olivier Fourdan <fourdan@xfce.org>
+2003-01-23  Olivier Fourdan <fourdan@xfce.org>
 
 	* es.gmo, es.po: Add spanish translation. Thanks nestu!
 
-2003-01-22 22:26  Olivier Fourdan <fourdan@xfce.org>
+2003-01-22  Olivier Fourdan <fourdan@xfce.org>
 
 	* fr.po, xfwm4.pot: Small stuff
 
-2003-01-22 21:54  Olivier Fourdan <fourdan@xfce.org>
+2003-01-22  Olivier Fourdan <fourdan@xfce.org>
 
 	* ChangeLog, Makefile.in.in, POTFILES.in, fr.gmo, fr.po,
 	  po2tbl.sed.in, xfwm4.pot: Add internationalization support. Add
