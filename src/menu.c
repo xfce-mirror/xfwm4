@@ -32,6 +32,8 @@
 #include <string.h>
 #include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
+
+#include "event_filter.h"
 #include "menu.h"
 
 static GtkWidget *menu_open = NULL;
@@ -60,7 +62,7 @@ static MenuItem menuitems[] = {
     {MENU_OP_RESTART, "gtk-refresh", N_("Restart")},
 };
 
-static XfceFilterStatus
+static XfwmFilterStatus
 menu_filter (XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
@@ -72,12 +74,12 @@ menu_filter (XEvent * xevent, gpointer data)
         case MotionNotify:
         case EnterNotify:
         case LeaveNotify:
-            return XEV_FILTER_STOP;
+            return XFWM_FILTER_STOP;
             break;
         default:
             break;
     }
-    return XEV_FILTER_CONTINUE;
+    return XFWM_FILTER_CONTINUE;
 }
 
 
@@ -126,7 +128,7 @@ activate_cb (GtkWidget * menuitem, gpointer data)
     menudata = data;
 
     TRACE ("deactivating menu_filter");
-    xfce_pop_event_filter (menudata->menu->filter_setup);
+    popXfwmFilter (menudata->menu->filter_setup);
     (*menudata->menu->func) (menudata->menu, 
                              menudata->op, 
                              menudata->menu->xid, 
@@ -144,7 +146,7 @@ menu_closed (GtkMenu * widget, gpointer data)
     menu = data;
     menu_open = NULL;
     TRACE ("deactivating menu_filter");
-    xfce_pop_event_filter (menu->filter_setup);
+    popXfwmFilter (menu->filter_setup);
     (*menu->func) (menu, 0, menu->xid, menu->data, NULL);
     return (FALSE);
 }
@@ -194,7 +196,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
 
 Menu *
 menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func, 
-    gint ws, gint nws, gchar **wsn, gint wsn_items, XfceFilterSetup *filter_setup, gpointer data)
+    gint ws, gint nws, gchar **wsn, gint wsn_items, XfwmFilterSetup *filter_setup, gpointer data)
 {
     int i;
     Menu *menu;
@@ -397,7 +399,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         }
         TRACE ("opening new menu");
         menu_open = menu->menu;
-        xfce_push_event_filter (menu->filter_setup, menu_filter, NULL);
+        pushXfwmFilter (menu->filter_setup, menu_filter, NULL);
         gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
             popup_position_func, pt, 0, timestamp);
 
@@ -407,7 +409,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
             g_message (_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname ());
             gtk_menu_popdown (GTK_MENU (menu->menu));
             menu_open = NULL;
-            xfce_pop_event_filter (menu->filter_setup);
+            popXfwmFilter (menu->filter_setup);
             return FALSE;
         }
     }

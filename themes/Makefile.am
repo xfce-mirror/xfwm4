@@ -7,6 +7,7 @@ SUBDIRS =								\
 	default-4.0							\
 	default-4.2							\
 	katiola								\
+	moheli								\
 	stoneage							\
 	therapy								\
 	tyrex								\

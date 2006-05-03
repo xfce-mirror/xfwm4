@@ -38,6 +38,7 @@
 #include "focus.h"
 #include "workspaces.h"
 #include "compositor.h"
+#include "ui_style.h"
 
 #define CHANNEL1                "xfwm4"
 #define CHANNEL2                "margins"
@@ -844,7 +845,7 @@ setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, c
                 g_object_unref (G_OBJECT (color->gc));
             }
             color->gc = gdk_gc_new (myScreenGetGdkWindow (screen_info));
-            gdk_gc_copy (color->gc, get_style_gc (myScreenGetGtkWidget (screen_info), name, state));
+            gdk_gc_copy (color->gc, getUIStyle_gc (myScreenGetGtkWidget (screen_info), name, state));
             gdk_gc_set_foreground (color->gc, &color->col);
         }
         else
@@ -875,28 +876,28 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
 
-    rc[0].value  = get_style (widget, "fg",    "selected");
-    rc[1].value  = get_style (widget, "fg",    "insensitive");
-    rc[2].value  = get_style (widget, "dark",  "selected");
-    rc[3].value  = get_style (widget, "dark",  "insensitive");
-    rc[4].value  = get_style (widget, "fg",    "normal");
-    rc[5].value  = get_style (widget, "fg",    "normal");
-    rc[6].value  = get_style (widget, "bg",    "selected");
-    rc[7].value  = get_style (widget, "light", "selected");
-    rc[8].value  = get_style (widget, "dark",  "selected");
-    rc[9].value  = get_style (widget, "mid",   "selected");
-    rc[10].value = get_style (widget, "bg",    "normal");
-    rc[11].value = get_style (widget, "light", "normal");
-    rc[12].value = get_style (widget, "dark",  "normal");
-    rc[13].value = get_style (widget, "mid",   "normal");
-    rc[14].value = get_style (widget, "bg",    "insensitive");
-    rc[15].value = get_style (widget, "light", "insensitive");
-    rc[16].value = get_style (widget, "dark",  "insensitive");
-    rc[17].value = get_style (widget, "mid",   "insensitive");
-    rc[18].value = get_style (widget, "bg",    "normal");
-    rc[19].value = get_style (widget, "light", "normal");
-    rc[20].value = get_style (widget, "dark",  "normal");
-    rc[21].value = get_style (widget, "mid",   "normal");
+    rc[0].value  = getUIStyle (widget, "fg",    "selected");
+    rc[1].value  = getUIStyle (widget, "fg",    "insensitive");
+    rc[2].value  = getUIStyle (widget, "dark",  "selected");
+    rc[3].value  = getUIStyle (widget, "dark",  "insensitive");
+    rc[4].value  = getUIStyle (widget, "fg",    "normal");
+    rc[5].value  = getUIStyle (widget, "fg",    "normal");
+    rc[6].value  = getUIStyle (widget, "bg",    "selected");
+    rc[7].value  = getUIStyle (widget, "light", "selected");
+    rc[8].value  = getUIStyle (widget, "dark",  "selected");
+    rc[9].value  = getUIStyle (widget, "mid",   "selected");
+    rc[10].value = getUIStyle (widget, "bg",    "normal");
+    rc[11].value = getUIStyle (widget, "light", "normal");
+    rc[12].value = getUIStyle (widget, "dark",  "normal");
+    rc[13].value = getUIStyle (widget, "mid",   "normal");
+    rc[14].value = getUIStyle (widget, "bg",    "insensitive");
+    rc[15].value = getUIStyle (widget, "light", "insensitive");
+    rc[16].value = getUIStyle (widget, "dark",  "insensitive");
+    rc[17].value = getUIStyle (widget, "mid",   "insensitive");
+    rc[18].value = getUIStyle (widget, "bg",    "normal");
+    rc[19].value = getUIStyle (widget, "light", "normal");
+    rc[20].value = getUIStyle (widget, "dark",  "normal");
+    rc[21].value = getUIStyle (widget, "mid",   "normal");
 
 
     theme = getThemeDir (getValue ("theme", rc), THEMERC);

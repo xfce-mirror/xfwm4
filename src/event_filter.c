@@ -1,22 +1,23 @@
-/*
- * xfce4    - (c) 2002-2004 Olivier Fourdan
- * 
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Library General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Library General Public License for more details.
- *
- * You should have received a copy of the GNU Library General Public
- * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+/*      $Id$
+ 
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
+ 
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+ 
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+        xfwm4    - (c) 2002-2006 Olivier Fourdan
+ 
  */
-
+ 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -27,14 +28,14 @@
 #include <X11/Xlib.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include "gtktoxevent.h"
+#include "event_filter.h"
 
 /* static var for backward compat */
-static XfceFilterSetup *p_filter_setup = NULL;
+static XfwmFilterSetup *p_filter_setup = NULL;
 static GtkWidget *p_filter_gtk_win     = NULL;
 static GdkWindow *p_filter_event_win   = NULL;
 
-static XfceFilterStatus
+static XfwmFilterStatus
 default_event_filter (XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
@@ -136,39 +137,39 @@ default_event_filter (XEvent * xevent, gpointer data)
             TRACE ("Unhandled Unknown event");
             break;
     }
-    /* This is supposed to be the default fallback event handler, so we return XEV_FILTER_STOP since we have "treated" the event */
-    return XEV_FILTER_STOP;
+    /* This is supposed to be the default fallback event handler, so we return XFWM_FILTER_STOP since we have "treated" the event */
+    return XFWM_FILTER_STOP;
 }
 
 static GdkFilterReturn
-anXEventFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
+anXXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
     XEvent *xevent = (XEvent *) gdk_xevent;
-    XfceFilterStatus loop = XEV_FILTER_CONTINUE;
-    XfceFilterSetup *setup = (XfceFilterSetup *) data;
-    XfceFilterStack *filterelt;
+    XfwmFilterStatus loop = XFWM_FILTER_CONTINUE;
+    XfwmFilterSetup *setup = (XfwmFilterSetup *) data;
+    XfwmFilterStack *filterelt;
 
     g_return_val_if_fail (setup != NULL, GDK_FILTER_CONTINUE);
     filterelt = setup->filterstack;
     g_return_val_if_fail (filterelt != NULL, GDK_FILTER_CONTINUE);
 
-    while ((filterelt) && (loop == XEV_FILTER_CONTINUE))
+    while ((filterelt) && (loop == XFWM_FILTER_CONTINUE))
     {
-        XfceFilterStack *filterelt_next = filterelt->next;
+        XfwmFilterStack *filterelt_next = filterelt->next;
         loop = (*filterelt->filter) (xevent, filterelt->data);
         filterelt = filterelt_next;
     }
     return GDK_FILTER_CONTINUE;
 }
 
-XfceFilterStack *
-xfce_push_event_filter (XfceFilterSetup *setup, XfceFilter filter, gpointer data)
+XfwmFilterStack *
+pushXfwmFilter (XfwmFilterSetup *setup, XfwmFilter filter, gpointer data)
 {
     g_assert (filter != NULL);
     if (setup->filterstack)
     {
-        XfceFilterStack *newfilterstack =
-            (XfceFilterStack *) g_new (XfceFilterStack, 1);
+        XfwmFilterStack *newfilterstack =
+            (XfwmFilterStack *) g_new (XfwmFilterStack, 1);
         newfilterstack->filter = filter;
         newfilterstack->data = data;
         newfilterstack->next = setup->filterstack;
@@ -177,7 +178,7 @@ xfce_push_event_filter (XfceFilterSetup *setup, XfceFilter filter, gpointer data
     else
     {
         setup->filterstack =
-            (XfceFilterStack *) g_new (XfceFilterStack, 1);
+            (XfwmFilterStack *) g_new (XfwmFilterStack, 1);
         setup->filterstack->filter = filter;
         setup->filterstack->data = data;
         setup->filterstack->next = NULL;
@@ -185,10 +186,10 @@ xfce_push_event_filter (XfceFilterSetup *setup, XfceFilter filter, gpointer data
     return (setup->filterstack);
 }
 
-XfceFilterStack *
-xfce_pop_event_filter (XfceFilterSetup *setup)
+XfwmFilterStack *
+popXfwmFilter (XfwmFilterSetup *setup)
 {
-    XfceFilterStack *oldfilterstack = setup->filterstack;
+    XfwmFilterStack *oldfilterstack = setup->filterstack;
     g_return_val_if_fail (setup->filterstack != NULL, NULL);
     setup->filterstack = oldfilterstack->next;
     g_free (oldfilterstack);
@@ -196,7 +197,7 @@ xfce_pop_event_filter (XfceFilterSetup *setup)
 }
 
 GdkWindow *
-xfce_add_event_win (GdkScreen *gscr, long event_mask)
+addEventWin (GdkScreen *gscr, long event_mask)
 {
     XWindowAttributes attribs;
     Display *dpy;
@@ -223,118 +224,31 @@ xfce_add_event_win (GdkScreen *gscr, long event_mask)
     error = gdk_error_trap_pop ();
     if (error)
     {
-        TRACE ("xfce_add_event_win error code: %i", error);
+        TRACE ("addEventWin error code: %i", error);
         return (NULL);
     }
     
     return event_win;
 }
 
-XfceFilterSetup *
-xfce_init_event_filter (gpointer data)
+XfwmFilterSetup *
+initXfwmFilter (gpointer data)
 {
-    XfceFilterSetup *setup;
+    XfwmFilterSetup *setup;
     
-    setup = g_new0 (XfceFilterSetup, 1);
+    setup = g_new0 (XfwmFilterSetup, 1);
     setup->filterstack = NULL;
-    xfce_push_event_filter (setup, default_event_filter, data);
-    gdk_window_add_filter (NULL, anXEventFilter, (gpointer) setup);
+    pushXfwmFilter (setup, default_event_filter, data);
+    gdk_window_add_filter (NULL, anXXfwmFilter, (gpointer) setup);
 
     return (setup);
 }
 
 void
-xfce_close_event_filter (XfceFilterSetup *setup)
+closeXfwmFilter (XfwmFilterSetup *setup)
 {
-    XfceFilterStack *filterelt = setup->filterstack;
-    while ((filterelt = xfce_pop_event_filter (setup)));
-    gdk_window_remove_filter (NULL, anXEventFilter, NULL);
+    XfwmFilterStack *filterelt = setup->filterstack;
+    while ((filterelt = popXfwmFilter (setup)));
+    gdk_window_remove_filter (NULL, anXXfwmFilter, NULL);
     setup->filterstack = NULL;
-}
-
-/* Old backward comapt/deprecated functions */
-
-XfceFilterStack *
-pushEventFilter (XfceFilter filter, gpointer data)
-{
-    g_assert (filter != NULL);
-    return xfce_push_event_filter (p_filter_setup, filter, data);
-}
-
-XfceFilterStack *
-popEventFilter (void)
-{
-    return xfce_pop_event_filter (p_filter_setup);
-}
-
-XfceFilterStack *
-initEventFilter (long event_mask, gpointer data, const gchar * widget_name)
-{
-    p_filter_setup = xfce_init_event_filter (data);
-    if (!p_filter_setup)
-    {
-        return NULL;
-    }
-    p_filter_event_win = xfce_add_event_win (gdk_screen_get_default (), event_mask);
-    
-    if (!p_filter_event_win)
-    {
-        xfce_close_event_filter (p_filter_setup);
-        p_filter_setup = NULL;
-        return NULL;
-    }
-    
-    p_filter_gtk_win = gtk_window_new (GTK_WINDOW_POPUP);
-    gtk_window_resize (GTK_WINDOW (p_filter_gtk_win), 5, 5);
-    gtk_window_move (GTK_WINDOW (p_filter_gtk_win), -1000, -1000);
-    if (widget_name)
-    {
-        gtk_widget_set_name (p_filter_gtk_win, widget_name);
-    }
-    gtk_widget_show_now (p_filter_gtk_win);
-    gdk_window_set_user_data (p_filter_event_win, p_filter_gtk_win);
-    gdk_flush ();
-
-    return p_filter_setup->filterstack;
-}
-
-void
-closeEventFilter (void)
-{
-    xfce_close_event_filter (p_filter_setup);
-    g_free (p_filter_setup);
-    p_filter_setup = NULL;
-    if (p_filter_event_win)
-    {
-        p_filter_event_win = NULL;
-    }
-    if (p_filter_gtk_win)
-    {
-        gtk_widget_destroy (p_filter_gtk_win);
-        p_filter_gtk_win = NULL;
-    }
-}
-
-GtkWidget *
-getDefaultGtkWidget (void)
-{
-    return (GTK_WIDGET (p_filter_gtk_win));
-}
-
-Window
-getDefaultXWindow (void)
-{
-    return GDK_WINDOW_XWINDOW (p_filter_gtk_win->window);
-}
-
-GdkWindow *
-getGdkEventWindow (void)
-{
-    return (GdkWindow *) p_filter_event_win;
-}
-
-GdkWindow *
-getDefaultGdkWindow (void)
-{
-    return (GdkWindow *) p_filter_gtk_win->window;
 }

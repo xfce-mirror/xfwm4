@@ -10,6 +10,7 @@ src/client.c
 src/compositor.c
 src/display.c
 src/events.c
+src/event_filter.c
 src/focus.c
 src/frame.c
 src/hints.c
@@ -32,6 +33,7 @@ src/stacking.c
 src/startup_notification.c
 src/tabwin.c
 src/transients.c
+src/ui_style.c
 src/wireframe.c
 src/workspaces.c
 

@@ -48,6 +48,8 @@
 #include <glib.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "event_filter.h"
+
 #define CORNER_TOP_LEFT                                         0
 #define CORNER_TOP_RIGHT                                        1
 #define CORNER_BOTTOM_LEFT                                      2
@@ -179,7 +181,7 @@ struct _DisplayInfo
     
     Atom atoms[NB_ATOMS];
 
-    XfceFilterSetup *xfilter;
+    XfwmFilterSetup *xfilter;
     GSList *screens;
     GSList *clients;
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-30 17:30+0900\n"
+"POT-Creation-Date: 2006-05-03 23:46+0200\n"
 "PO-Revision-Date: 2005-08-19 21:17+0900\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -223,7 +223,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Naam veranderen"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:476
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureaublad %d"
@@ -268,15 +268,15 @@ msgstr "Maximaliseren"
 msgid "Close"
 msgstr "Sluiten"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Shade window"
 msgstr "Venster oprollen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Hide window"
 msgstr "Venster verbergen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Maximize window"
 msgstr "Venster maximaliseren"
 
@@ -496,157 +496,157 @@ msgstr "Geavanceerd"
 msgid "Button Label|Window Manager"
 msgstr "Window Manager"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Wilt u dit toetsenbord-thema echt verwijderen?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:138
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
 msgid "Add keybinding theme"
 msgstr "Toetsenbordthema toevoegen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:147
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
 msgid "Enter a name for the theme:"
 msgstr "Themanaam:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 msgid "A keybinding theme with the same name already exists"
 msgstr "Een toetsenbordthema met deze naam bestaat reeds"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:188
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Het toetsenbordthema heeft nog geen naam"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Close window"
 msgstr "Venster sluiten"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Maximize window vertically"
 msgstr "Venster verticaal maximaliseren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window horizontally"
 msgstr "Venster horizontaal maximaliseren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Stick window"
 msgstr "Venster zichtbaar op alle bureaubladen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Move window up"
 msgstr "Venster naar voren halen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Move window down"
 msgstr "Venster naar achteren brengen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window left"
 msgstr "Venster naar links verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window right"
 msgstr "Venster naar rechts verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Resize window up"
 msgstr "Venster vergroten of verkleinen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Resize window down"
 msgstr "Venster vergroten naar beneden"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Resize window left"
 msgstr "Venster vergroten naar links"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window right"
 msgstr "Venster vergroten naar rechts"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Raise window"
 msgstr "Venster naar de voorgrond halen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Lower window"
 msgstr "Venster naar de achtergrond brengen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Toggle fullscreen"
 msgstr "Wissel volledig scherm"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Upper workspace"
 msgstr "Bureaublad naar boven"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Bottom workspace"
 msgstr "Bureaublad naar beneden"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Left workspace"
 msgstr "Bureaublad naar links"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Right workspace"
 msgstr "Bureaublad naar rechts"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Next workspace"
 msgstr "Volgend bureaublad"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Previous workspace"
 msgstr "Vorig bureaublad"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Add workspace"
 msgstr "Bureaublad toevoegen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Delete workspace"
 msgstr "Bureaublad verwijderen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Move window to next workspace"
 msgstr "Venster naar volgend bureablad verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Move window to previous workspace"
 msgstr "Venster naar vorig bureablad verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Move window to upper workspace"
 msgstr "Venster naar bovenliggend bureablad verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Move window to bottom workspace"
 msgstr "Venster naar onderliggend bureablad verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Move window to left workspace"
 msgstr "Venster naar linker-bureablad verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Move window to right workspace"
 msgstr "Venster naar rechter-bureablad verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Show desktop"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:497
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:491
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Venster naar bureablad 1 verplaatsen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:584
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:578
 msgid "Cannot open the theme directory !"
 msgstr "Kan thema-map niet openen!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:603
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:597
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -655,8 +655,8 @@ msgstr ""
 "Kan %s niet openen:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:628
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:611
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:622
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -665,7 +665,7 @@ msgstr ""
 "Kan niet schrijven in %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -673,15 +673,15 @@ msgstr ""
 "Sneltoets reeds in gebruik!\n"
 "Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:847
 msgid "Compose shortcut for :"
 msgstr "Sneltoets maken voor:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
 msgid "Compose shortcut"
 msgstr "Sneltoets samenstellen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
 msgstr "Geen sneltoets"
 
@@ -691,96 +691,96 @@ msgstr "Geen sneltoets"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:188
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentatie fout"
 
-#: ../src/menu.c:39
+#: ../src/menu.c:41
 msgid "Ma_ximize"
 msgstr "Ma_ximaliseren"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:42
 msgid "Un_maximize"
 msgstr "On_maximaliseren"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:43
 msgid "_Hide"
 msgstr "_Verbergen"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:44
 msgid "Hide _all others"
 msgstr "_Andere verbergen"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:45
 msgid "S_how"
 msgstr "_Tonen"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:46
 msgid "_Shade"
 msgstr "_Oprollen"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:47
 msgid "Un_shade"
 msgstr "_Uitrollen"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:48
 msgid "S_tick"
 msgstr "_Plakken"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:49
 msgid "Uns_tick"
 msgstr "_Loslaten"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:50
 msgid "Context _help"
 msgstr "Context _help"
 
-#: ../src/menu.c:49 ../src/menu.c:50
+#: ../src/menu.c:51 ../src/menu.c:52
 msgid "Always on top"
 msgstr "Altijd boven"
 
-#: ../src/menu.c:51
+#: ../src/menu.c:53
 msgid "Send to..."
 msgstr "Zenden naar..."
 
-#: ../src/menu.c:53
+#: ../src/menu.c:55
 msgid "_Close"
 msgstr "_Sluiten"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:58
 msgid "Destroy"
 msgstr "Vernietigen"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:61
 msgid "_Quit"
 msgstr "A_fsluiten"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:62
 msgid "Restart"
 msgstr "_Herstarten"
 
-#: ../src/menu.c:168
+#: ../src/menu.c:170
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Bureaublad %i (%s)"
 
-#: ../src/menu.c:172
+#: ../src/menu.c:174
 #, c-format
 msgid "Workspace %i"
 msgstr "Bureaublad %i"
 
-#: ../src/menu.c:407
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kon de pointer niet vasthouden\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:854
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Kan actieve kleur %s niet creëren\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:860
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"

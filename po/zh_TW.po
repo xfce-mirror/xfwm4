@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-30 17:30+0900\n"
+"POT-Creation-Date: 2006-05-03 23:46+0200\n"
 "PO-Revision-Date: 2005-10-09 20:55+0900\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -223,7 +223,7 @@ msgstr ""
 msgid "Change name"
 msgstr "改變名稱"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:476
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"
@@ -269,15 +269,15 @@ msgstr "最大化"
 msgid "Close"
 msgstr "關閉"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Shade window"
 msgstr "捲起視窗"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Hide window"
 msgstr "隱藏視窗"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Maximize window"
 msgstr "最大化視窗"
 
@@ -498,164 +498,164 @@ msgstr "進階"
 msgid "Button Label|Window Manager"
 msgstr "視窗管理程式"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "您真的想要移除本自訂鍵主題？"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:138
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
 msgid "Add keybinding theme"
 msgstr "新增自訂鍵主題"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:147
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
 msgid "Enter a name for the theme:"
 msgstr "為新的主題鍵入一個名稱："
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 msgid "A keybinding theme with the same name already exists"
 msgstr "有一個同名的自訂鍵主題已經存在"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:188
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
 msgid "You have to provide a name for the keybinding theme"
 msgstr "您必需給自訂鍵主題一個名稱"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 msgid "Close window"
 msgstr "關閉視窗"
 
 # FIXME 譯文有待改進
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Maximize window vertically"
 msgstr "垂直的最大化視窗"
 
 # FIXME 譯文有待改進
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window horizontally"
 msgstr "水平的最大化視窗"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Stick window"
 msgstr "貼連視窗"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Move window up"
 msgstr "將視窗向上移"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Move window down"
 msgstr "將視窗向下移"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window left"
 msgstr "將視窗向左移"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window right"
 msgstr "將視窗向右移"
 
 # FIXME check
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Resize window up"
 msgstr "向上修改視窗大小"
 
 # FIXME check
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Resize window down"
 msgstr "向下修改視窗大小"
 
 # FIXME check
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Resize window left"
 msgstr "向左修改視窗大小"
 
 # FIXME check
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window right"
 msgstr "向右修改視窗大小"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Raise window"
 msgstr "提升視窗"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Lower window"
 msgstr "降低視窗"
 
 # TODO check translation
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Toggle fullscreen"
 msgstr "切換全螢幕模式"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Upper workspace"
 msgstr "上方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Bottom workspace"
 msgstr "下方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Left workspace"
 msgstr "左方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Right workspace"
 msgstr "右方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Next workspace"
 msgstr "下一個工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Previous workspace"
 msgstr "上一個工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Add workspace"
 msgstr "新增工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Delete workspace"
 msgstr "移除工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Move window to next workspace"
 msgstr "將視窗移至下一個工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Move window to previous workspace"
 msgstr "將視窗移至上一個工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Move window to upper workspace"
 msgstr "將視窗移至上方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Move window to bottom workspace"
 msgstr "將視窗移至下方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Move window to left workspace"
 msgstr "將視窗移至左方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Move window to right workspace"
 msgstr "將視窗移至右方工作區"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Show desktop"
 msgstr "顯示桌面"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:497
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:491
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "將視窗移至工作區 %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:584
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:578
 msgid "Cannot open the theme directory !"
 msgstr "無法開啟主題目錄！"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:603
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:597
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -664,8 +664,8 @@ msgstr ""
 "無法開啟 %s：\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:628
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:611
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:622
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -674,7 +674,7 @@ msgstr ""
 "無法寫入 %s：\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -683,15 +683,15 @@ msgstr ""
 "您真的要用這個快速鍵嗎？"
 
 # FIXME The source is wrong!! untranslatable string!!
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:847
 msgid "Compose shortcut for :"
 msgstr "為下列動作設定快速鍵："
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
 msgid "Compose shortcut"
 msgstr "設定快速鍵"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
 msgstr "沒有快速鍵"
 
@@ -701,97 +701,97 @@ msgstr "沒有快速鍵"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:188
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: 分斷錯誤"
 
-#: ../src/menu.c:39
+#: ../src/menu.c:41
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:42
 msgid "Un_maximize"
 msgstr "還原(_M)"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:43
 msgid "_Hide"
 msgstr "隱藏(_H)"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:44
 msgid "Hide _all others"
 msgstr "隱藏其他視窗(_A)"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:45
 msgid "S_how"
 msgstr "顯示(_H)"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:46
 msgid "_Shade"
 msgstr "捲起(_S)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:47
 msgid "Un_shade"
 msgstr "展開(_s)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:48
 msgid "S_tick"
 msgstr "貼連(_T)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:49
 msgid "Uns_tick"
 msgstr "分離(_T)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:50
 msgid "Context _help"
 msgstr "上下文說明(_H)"
 
-#: ../src/menu.c:49 ../src/menu.c:50
+#: ../src/menu.c:51 ../src/menu.c:52
 msgid "Always on top"
 msgstr "總是置頂"
 
-#: ../src/menu.c:51
+#: ../src/menu.c:53
 msgid "Send to..."
 msgstr "傳送到..."
 
-#: ../src/menu.c:53
+#: ../src/menu.c:55
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:58
 msgid "Destroy"
 msgstr "結束"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:61
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:62
 msgid "Restart"
 msgstr "重新啟動"
 
-#: ../src/menu.c:168
+#: ../src/menu.c:170
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "工作區 %i (%s)"
 
-#: ../src/menu.c:172
+#: ../src/menu.c:174
 #, c-format
 msgid "Workspace %i"
 msgstr "工作區 %i"
 
 # TODO verify
-#: ../src/menu.c:407
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 無法取得鼠標\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:854
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: 無法分配使用的顏色 %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:860
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 無法分析使用的顏色 %s\n"

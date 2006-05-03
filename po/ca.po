@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-30 17:30+0900\n"
+"POT-Creation-Date: 2006-05-03 23:46+0200\n"
 "PO-Revision-Date: 2006-04-02 21:25+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -250,7 +250,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Canvia el nom"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:476
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
@@ -303,17 +303,17 @@ msgstr "Augmenta"
 msgid "Close"
 msgstr "Tanca"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:356
 #, fuzzy
 msgid "Shade window"
 msgstr "Enrotlla la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:355
 #, fuzzy
 msgid "Hide window"
 msgstr "Oculta finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:352
 #, fuzzy
 msgid "Maximize window"
 msgstr "Maximitza la finestra"
@@ -580,193 +580,193 @@ msgstr "Avançat"
 msgid "Button Label|Window Manager"
 msgstr "Gestor de finestres"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:55
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 #, fuzzy
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "tu a  elimina aquest?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:138
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
 #, fuzzy
 msgid "Add keybinding theme"
 msgstr "Afegeix"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:147
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
 #, fuzzy
 msgid "Enter a name for the theme:"
 msgstr "Retorn a nom per a  :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 #, fuzzy
 msgid "A keybinding theme with the same name already exists"
 msgstr "A amb   nom existeix"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:188
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
 #, fuzzy
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Tu a  a nom per a  "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
 #, fuzzy
 msgid "Close window"
 msgstr "Tanca la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 #, fuzzy
 msgid "Maximize window vertically"
 msgstr "Maximitza la finestra verticalment"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 #, fuzzy
 msgid "Maximize window horizontally"
 msgstr "Maximitza la finestra horitzontalment"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 #, fuzzy
 msgid "Stick window"
 msgstr "finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 #, fuzzy
 msgid "Move window up"
 msgstr "Envia-la a la subàrea de dalt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 #, fuzzy
 msgid "Move window down"
 msgstr "Envia-la a la subàrea de baix"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 #, fuzzy
 msgid "Move window left"
 msgstr "Envia-la a la subàrea de l'esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 #, fuzzy
 msgid "Move window right"
 msgstr "Envia-la a la subàrea de la dreta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 #, fuzzy
 msgid "Resize window up"
 msgstr "Canvia la mida finestra amunt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 #, fuzzy
 msgid "Resize window down"
 msgstr "Canvia la mida finestra avall"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 #, fuzzy
 msgid "Resize window left"
 msgstr "Canvia la mida finestra esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 #, fuzzy
 msgid "Resize window right"
 msgstr "Canvia la mida finestra dreta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 #, fuzzy
 msgid "Raise window"
 msgstr "Eleva la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 #, fuzzy
 msgid "Lower window"
 msgstr "Abaixa la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 #, fuzzy
 msgid "Toggle fullscreen"
 msgstr "Commuta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Superior l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Inferior l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 #, fuzzy
 msgid "Left workspace"
 msgstr "Esquerra l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 #, fuzzy
 msgid "Right workspace"
 msgstr "Dreta l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 #, fuzzy
 msgid "Next workspace"
 msgstr "Selecciona l'àrea següent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 #, fuzzy
 msgid "Previous workspace"
 msgstr "Selecciona l'àrea precedent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 #, fuzzy
 msgid "Add workspace"
 msgstr "Afegeix l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 #, fuzzy
 msgid "Delete workspace"
 msgstr "Suprimeix l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 #, fuzzy
 msgid "Move window to next workspace"
 msgstr "Mou finestra a  l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 #, fuzzy
 msgid "Move window to previous workspace"
 msgstr "Mou finestra a  l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Mou finestra a  l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Mou finestra a  inferior l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Mou finestra a  esquerra l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Mou finestra a  dreta l'àrea de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 #, fuzzy
 msgid "Show desktop"
 msgstr "Mostra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:497
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:491
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Mou la finestra a l'àrea de treball %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:584
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:578
 #, fuzzy
 msgid "Cannot open the theme directory !"
 msgstr "obre  !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:603
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:597
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -775,8 +775,8 @@ msgstr ""
 "No s'ha pogut obrir %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:628
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:611
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:622
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -785,23 +785,23 @@ msgstr ""
 "No s'ha pogut escriure a %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:771
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:835
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:847
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Nou missatge drecera per a:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:839
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Nou missatge drecera"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 #, fuzzy
 msgid "No shortcut"
 msgstr "No drecera"
@@ -812,112 +812,112 @@ msgstr "No drecera"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:188
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault (violació de segment)"
 
-#: ../src/menu.c:39
+#: ../src/menu.c:41
 #, fuzzy
 msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:42
 #, fuzzy
 msgid "Un_maximize"
 msgstr "Des_maximitza"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:43
 #, fuzzy
 msgid "_Hide"
 msgstr "_Amaga"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:44
 #, fuzzy
 msgid "Hide _all others"
 msgstr "Oculta all"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:45
 #, fuzzy
 msgid "S_how"
 msgstr "S"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:46
 #, fuzzy
 msgid "_Shade"
 msgstr "Ombra"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:47
 #, fuzzy
 msgid "Un_shade"
 msgstr "Des_ocultar"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:48
 #, fuzzy
 msgid "S_tick"
 msgstr "S"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:49
 #, fuzzy
 msgid "Uns_tick"
 msgstr "Des_plega"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:50
 #, fuzzy
 msgid "Context _help"
 msgstr "Context ajuda"
 
-#: ../src/menu.c:49 ../src/menu.c:50
+#: ../src/menu.c:51 ../src/menu.c:52
 #, fuzzy
 msgid "Always on top"
 msgstr "Sempre en primer pla"
 
-#: ../src/menu.c:51
+#: ../src/menu.c:53
 #, fuzzy
 msgid "Send to..."
 msgstr "Envia a ."
 
-#: ../src/menu.c:53
+#: ../src/menu.c:55
 #, fuzzy
 msgid "_Close"
 msgstr "Tan_ca"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:58
 #, fuzzy
 msgid "Destroy"
 msgstr "Destrueix"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:61
 #, fuzzy
 msgid "_Quit"
 msgstr "_Surt"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:62
 #, fuzzy
 msgid "Restart"
 msgstr "Torna a iniciar"
 
-#: ../src/menu.c:168
+#: ../src/menu.c:170
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Àrea de treball %i (%s)"
 
-#: ../src/menu.c:172
+#: ../src/menu.c:174
 #, c-format
 msgid "Workspace %i"
 msgstr "Àrea de treball %i"
 
-#: ../src/menu.c:407
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:854
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: no s'ha pogut situar el color %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:860
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: no s'ha pogut analitzar el color %s\n"

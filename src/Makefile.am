@@ -5,9 +5,11 @@ xfwm4_SOURCES =								\
 	client.h							\
 	compositor.c							\
 	compositor.h							\
-	display.h							\
 	display.c							\
+	display.h							\
 	inline-default-icon.h						\
+	event_filter.c							\
+	event_filter.h							\
 	events.c							\
 	events.h							\
 	focus.c								\
@@ -52,6 +54,8 @@ xfwm4_SOURCES =								\
 	startup_notification.h						\
 	tabwin.c							\
 	tabwin.h							\
+	ui_style.c							\
+	ui_style.h							\
 	transients.c							\
 	transients.h							\
 	workspaces.c							\

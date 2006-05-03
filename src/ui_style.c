@@ -1,18 +1,21 @@
-/*
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Library General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Library General Public License for more details.
- *
- * You should have received a copy of the GNU Library General Public
- * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+/*      $Id$
+ 
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
+ 
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+ 
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+        xfwm4    - (c) 2002-2006 Olivier Fourdan
+ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -33,6 +36,7 @@
 #include <pango/pango-font.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include "ui_style.h"
 
 char *states[] = {
     "normal", "active", "prelight", "selected", "insensitive", NULL
@@ -159,12 +163,12 @@ print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
 }
 
 gchar *
-get_style (GtkWidget * win, const gchar * name, const gchar * state)
+getUIStyle (GtkWidget * win, const gchar * name, const gchar * state)
 {
     GtkStyle *style = NULL;
     gchar *s = NULL;
 
-    TRACE ("entering get_style");
+    TRACE ("entering getUIStyle");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
@@ -181,7 +185,7 @@ get_style (GtkWidget * win, const gchar * name, const gchar * state)
 }
 
 static GdkGC *
-_get_style_gc (const gchar * name, const gchar * state, GtkStyle * style)
+_getUIStyle_gc (const gchar * name, const gchar * state, GtkStyle * style)
 {
     GdkGC *gc = NULL;
     gint n, m;
@@ -224,11 +228,11 @@ _get_style_gc (const gchar * name, const gchar * state, GtkStyle * style)
 }
 
 GdkGC *
-get_style_gc (GtkWidget * win, const gchar * name, const gchar * state)
+getUIStyle_gc (GtkWidget * win, const gchar * name, const gchar * state)
 {
     GtkStyle *style = NULL;
 
-    TRACE ("entering get_style_gc");
+    TRACE ("entering getUIStyle_gc");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
@@ -243,13 +247,13 @@ get_style_gc (GtkWidget * win, const gchar * name, const gchar * state)
     {
 	style = gtk_widget_get_default_style ();
     }
-    return (_get_style_gc (name, state, style));
+    return (_getUIStyle_gc (name, state, style));
 }
 
 PangoFontDescription *
-get_font_desc (GtkWidget * win)
+getUIPangoFontDesc (GtkWidget * win)
 {
-    TRACE ("entering get_font_desc");
+    TRACE ("entering getUIPangoFontDesc");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
@@ -259,9 +263,9 @@ get_font_desc (GtkWidget * win)
 }
 
 PangoContext *
-pango_get_context (GtkWidget * win)
+getUIPangoContext (GtkWidget * win)
 {
-    TRACE ("entering pango_get_context");
+    TRACE ("entering getUIPangoContext");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);

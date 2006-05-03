@@ -53,6 +53,7 @@
 #include "startup_notification.h"
 #include "compositor.h"
 #include "events.h"
+#include "event_filter.h"
 
 #ifndef CHECK_BUTTON_TIME
 #define CHECK_BUTTON_TIME 0
@@ -132,11 +133,11 @@ typeOfClick_break (gpointer data)
     return (TRUE);
 }
 
-static XfceFilterStatus
+static XfwmFilterStatus
 typeOfClick_event_filter (XEvent * xevent, gpointer data)
 {
     gboolean keep_going = TRUE;
-    XfceFilterStatus status = XEV_FILTER_STOP;
+    XfwmFilterStatus status = XFWM_FILTER_STOP;
     XfwmButtonClickData *passdata = (XfwmButtonClickData *) data;
     
     /* Update the display time */
@@ -168,11 +169,11 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
             passdata->clicks = (guint) XFWM_BUTTON_UNDEFINED;
             keep_going = FALSE;
         }
-        status = XEV_FILTER_CONTINUE;
+        status = XFWM_FILTER_CONTINUE;
     }
     else
     {
-        status = XEV_FILTER_CONTINUE;
+        status = XFWM_FILTER_CONTINUE;
     }
 
     if ((ABS (passdata->x - passdata->xcurrent) > 1) || 
@@ -223,9 +224,9 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
                                               (gpointer) &passdata, NULL);
 
     TRACE ("entering typeOfClick loop");
-    xfce_push_event_filter (display_info->xfilter, typeOfClick_event_filter, &passdata);
+    pushXfwmFilter (display_info->xfilter, typeOfClick_event_filter, &passdata);
     gtk_main ();
-    xfce_pop_event_filter (display_info->xfilter);
+    popXfwmFilter (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
 
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
@@ -2208,7 +2209,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
     }
 }
 
-XfceFilterStatus
+XfwmFilterStatus
 xfwm4_event_filter (XEvent * xevent, gpointer data)
 {
     DisplayInfo *display_info = (DisplayInfo *) data;
@@ -2218,7 +2219,7 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
     TRACE ("entering xfwm4_event_filter");
     handleEvent (display_info, xevent);
     TRACE ("leaving xfwm4_event_filter");
-    return XEV_FILTER_STOP;
+    return XFWM_FILTER_STOP;
 }
 
 /* GTK specific stuff */

@@ -31,6 +31,8 @@
 #include <gtk/gtk.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "event_filter.h"
+
 typedef enum
 {
     MENU_OP_SEPARATOR    = 0,
@@ -80,7 +82,7 @@ struct _Menu
 {
     GdkScreen *screen;
     GtkWidget *menu;
-    XfceFilterSetup *filter_setup;
+    XfwmFilterSetup *filter_setup;
     MenuFunc func;
     MenuOp ops;
     MenuOp insensitive;
@@ -97,7 +99,7 @@ Menu *menu_default             (GdkScreen *,
                                 gint, 
                                 gchar **, 
                                 gint, 
-                                XfceFilterSetup*, 
+                                XfwmFilterSetup*, 
                                 gpointer);
 Menu *menu_connect             (Menu * menu);
 GtkWidget *menu_item_connect   (GtkWidget *, 

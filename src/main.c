@@ -46,6 +46,7 @@
 #include "display.h"
 #include "screen.h"
 #include "events.h"
+#include "event_filter.h"
 #include "frame.h"
 #include "settings.h"
 #include "client.h"
@@ -93,7 +94,7 @@ cleanUp (void)
     
     TRACE ("entering cleanUp");
 
-    xfce_close_event_filter (display_info->xfilter);
+    closeXfwmFilter (display_info->xfilter);
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
         ScreenInfo *screen_info_n = (ScreenInfo *) screens->data;
@@ -535,8 +536,8 @@ initialize (int argc, char **argv, gint compositor_mode)
     {
         return -1;
     }
-    display_info->xfilter = xfce_init_event_filter ((gpointer) display_info);
-    xfce_push_event_filter (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
+    display_info->xfilter = initXfwmFilter ((gpointer) display_info);
+    pushXfwmFilter (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
 
     client_session = client_session_new (argc, argv, (gpointer) display_info, 
                                          SESSION_RESTART_IF_RUNNING, 20);
