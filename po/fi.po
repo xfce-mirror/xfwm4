@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-03 23:46+0200\n"
-"PO-Revision-Date: 2006-04-23 10:08+0300\n"
+"POT-Creation-Date: 2006-05-04 10:34+0300\n"
+"PO-Revision-Date: 2006-05-04 10:35+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -208,7 +208,7 @@ msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
-msgstr "Vaihda nimi"
+msgstr "Nimeä uudelleen"
 
 #: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
 #, c-format
@@ -479,7 +479,7 @@ msgstr "Ikkunamanageri"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Haluatko todella poistaa tämän pikanäppäinteeman ?"
+msgstr "Haluatko todella poistaa tämän pikanäppäinteeman?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:139
