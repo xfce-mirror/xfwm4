@@ -27,34 +27,32 @@
 
 /* this formatting is needed by glib-mkenums */
 typedef enum {
-    XFWM_FILTER_STOP = TRUE,
-    XFWM_FILTER_CONTINUE = FALSE
+    EVENT_FILTER_STOP = TRUE,
+    EVENT_FILTER_CONTINUE = FALSE
 }
-XfwmFilterStatus;
+eventFilterStatus;
 
-typedef XfwmFilterStatus (*XfwmFilter) (XEvent * xevent, gpointer data);
+typedef eventFilterStatus (*XfwmFilter) (XEvent * xevent, gpointer data);
 
-typedef struct XfwmFilterStack
+typedef struct eventFilterStack
 {
     XfwmFilter filter;
     gpointer data;
-    struct XfwmFilterStack *next;
+    struct eventFilterStack *next;
 }
-XfwmFilterStack;
+eventFilterStack;
 
-typedef struct XfwmFilterSetup
+typedef struct eventFilterSetup
 {
-    XfwmFilterStack *filterstack;
+    eventFilterStack *filterstack;
 }
-XfwmFilterSetup;
+eventFilterSetup;
 
-XfwmFilterStack *pushXfwmFilter  (XfwmFilterSetup *setup,
-                                  XfwmFilter filter,
-                                  gpointer data);
-XfwmFilterStack * popXfwmFilter  (XfwmFilterSetup *setup);
-GdkWindow * addEventWin          (GdkScreen *gscr, 
-                                  long event_mask);
-XfwmFilterSetup * initXfwmFilter (gpointer data);
-void closeXfwmFilter             (XfwmFilterSetup *setup);
+eventFilterStack * eventFilterPush  (eventFilterSetup *setup,
+                                     XfwmFilter filter,
+                                     gpointer data);
+eventFilterStack * eventFilterPop   (eventFilterSetup *setup);
+eventFilterSetup * eventFilterInit  (gpointer data);
+void               eventFilterClose (eventFilterSetup *setup);
 
 #endif /* __EVENT_FILTER_H__ */

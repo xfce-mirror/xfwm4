@@ -181,7 +181,7 @@ struct _DisplayInfo
     
     Atom atoms[NB_ATOMS];
 
-    XfwmFilterSetup *xfilter;
+    eventFilterSetup *xfilter;
     GSList *screens;
     GSList *clients;
 

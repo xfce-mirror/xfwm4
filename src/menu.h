@@ -82,7 +82,7 @@ struct _Menu
 {
     GdkScreen *screen;
     GtkWidget *menu;
-    XfwmFilterSetup *filter_setup;
+    eventFilterSetup *filter_setup;
     MenuFunc func;
     MenuOp ops;
     MenuOp insensitive;
@@ -99,7 +99,7 @@ Menu *menu_default             (GdkScreen *,
                                 gint, 
                                 gchar **, 
                                 gint, 
-                                XfwmFilterSetup*, 
+                                eventFilterSetup*, 
                                 gpointer);
 Menu *menu_connect             (Menu * menu);
 GtkWidget *menu_item_connect   (GtkWidget *, 

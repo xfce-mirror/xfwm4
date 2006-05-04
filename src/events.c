@@ -133,11 +133,11 @@ typeOfClick_break (gpointer data)
     return (TRUE);
 }
 
-static XfwmFilterStatus
+static eventFilterStatus
 typeOfClick_event_filter (XEvent * xevent, gpointer data)
 {
     gboolean keep_going = TRUE;
-    XfwmFilterStatus status = XFWM_FILTER_STOP;
+    eventFilterStatus status = EVENT_FILTER_STOP;
     XfwmButtonClickData *passdata = (XfwmButtonClickData *) data;
     
     /* Update the display time */
@@ -169,11 +169,11 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
             passdata->clicks = (guint) XFWM_BUTTON_UNDEFINED;
             keep_going = FALSE;
         }
-        status = XFWM_FILTER_CONTINUE;
+        status = EVENT_FILTER_CONTINUE;
     }
     else
     {
-        status = XFWM_FILTER_CONTINUE;
+        status = EVENT_FILTER_CONTINUE;
     }
 
     if ((ABS (passdata->x - passdata->xcurrent) > 1) || 
@@ -224,9 +224,9 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
                                               (gpointer) &passdata, NULL);
 
     TRACE ("entering typeOfClick loop");
-    pushXfwmFilter (display_info->xfilter, typeOfClick_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, typeOfClick_event_filter, &passdata);
     gtk_main ();
-    popXfwmFilter (display_info->xfilter);
+    eventFilterPop (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
 
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
@@ -2209,7 +2209,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
     }
 }
 
-XfwmFilterStatus
+eventFilterStatus
 xfwm4_event_filter (XEvent * xevent, gpointer data)
 {
     DisplayInfo *display_info = (DisplayInfo *) data;
@@ -2219,7 +2219,7 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
     TRACE ("entering xfwm4_event_filter");
     handleEvent (display_info, xevent);
     TRACE ("leaving xfwm4_event_filter");
-    return XFWM_FILTER_STOP;
+    return EVENT_FILTER_STOP;
 }
 
 /* GTK specific stuff */

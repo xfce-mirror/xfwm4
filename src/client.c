@@ -3125,7 +3125,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     }
 }
 
-static XfwmFilterStatus
+static eventFilterStatus
 clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
@@ -3134,7 +3134,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     static Time lastresist = (Time) 0;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
-    XfwmFilterStatus status = XFWM_FILTER_STOP;
+    eventFilterStatus status = EVENT_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
     gboolean moving = TRUE;
@@ -3452,7 +3452,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     }
     else
     {
-        status = XFWM_FILTER_CONTINUE;
+        status = EVENT_FILTER_CONTINUE;
     }
 
     TRACE ("leaving clientMove_event_filter");
@@ -3550,13 +3550,13 @@ clientMove (Client * c, XEvent * ev)
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
-    pushXfwmFilter (display_info->xfilter, clientMove_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, clientMove_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (display_info->dpy, ev);
     }
     gtk_main ();
-    popXfwmFilter (display_info->xfilter);
+    eventFilterPop (display_info->xfilter);
     TRACE ("leaving move loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
@@ -3598,13 +3598,13 @@ clientMove (Client * c, XEvent * ev)
     }
 }
 
-static XfwmFilterStatus
+static eventFilterStatus
 clientResize_event_filter (XEvent * xevent, gpointer data)
 {
     Client *c = NULL;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
-    XfwmFilterStatus status = XFWM_FILTER_STOP;
+    eventFilterStatus status = EVENT_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     gboolean resizing = TRUE;
     XWindowChanges wc;
@@ -3923,7 +3923,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     }
     else
     {
-        status = XFWM_FILTER_CONTINUE;
+        status = EVENT_FILTER_CONTINUE;
     }
 
     TRACE ("leaving clientResize_event_filter");
@@ -4021,13 +4021,13 @@ clientResize (Client * c, int corner, XEvent * ev)
     
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
-    pushXfwmFilter (display_info->xfilter, clientResize_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, clientResize_event_filter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (display_info->dpy, ev);
     }
     gtk_main ();
-    popXfwmFilter (display_info->xfilter);
+    eventFilterPop (display_info->xfilter);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
@@ -4065,14 +4065,14 @@ clientResize (Client * c, int corner, XEvent * ev)
     }
 }
 
-static XfwmFilterStatus
+static eventFilterStatus
 clientCycle_event_filter (XEvent * xevent, gpointer data)
 {
     ClientCycleData *passdata = (ClientCycleData *) data;
     Client *c, *removed;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XfwmFilterStatus status = XFWM_FILTER_STOP;
+    eventFilterStatus status = EVENT_FILTER_STOP;
     KeyCode keycode;
     int modifier;
     gboolean key_pressed;
@@ -4083,7 +4083,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 
     if (passdata->c == NULL)
     {
-        return XFWM_FILTER_CONTINUE;
+        return EVENT_FILTER_CONTINUE;
         gtk_main_quit ();
     }
 
@@ -4104,14 +4104,14 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
             passdata->c = c;
-            status = XFWM_FILTER_CONTINUE;
+            status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case UnmapNotify:
             removed = clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW);
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
             passdata->c = c;
-            status = XFWM_FILTER_CONTINUE;
+            status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case KeyPress:
             if (gone || key_pressed)
@@ -4164,7 +4164,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
         case MotionNotify:
             break;
         default:
-            status = XFWM_FILTER_CONTINUE;
+            status = EVENT_FILTER_CONTINUE;
             break;
     }
 
@@ -4241,9 +4241,9 @@ clientCycle (Client * c, XEvent * ev)
         passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c, 
                                         passdata.cycle_range, 
                                         screen_info->params->cycle_workspaces);
-        pushXfwmFilter (display_info->xfilter, clientCycle_event_filter, &passdata);
+        eventFilterPush (display_info->xfilter, clientCycle_event_filter, &passdata);
         gtk_main ();
-        popXfwmFilter (display_info->xfilter);
+        eventFilterPop (display_info->xfilter);
         wireframeDelete (screen_info, passdata.wireframe);
         TRACE ("leaving cycle loop");
         tabwinDestroy (passdata.tabwin);
@@ -4277,10 +4277,10 @@ clientCycle (Client * c, XEvent * ev)
     }
 }
 
-static XfwmFilterStatus
+static eventFilterStatus
 clientButtonPress_event_filter (XEvent * xevent, gpointer data)
 {
-    XfwmFilterStatus status = XFWM_FILTER_STOP;
+    eventFilterStatus status = EVENT_FILTER_STOP;
     gboolean pressed = TRUE;
     Client *c = ((ButtonPressData *) data)->c;
     ScreenInfo *screen_info = c->screen_info;
@@ -4314,7 +4314,7 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     }
     else
     {
-        status = XFWM_FILTER_CONTINUE;
+        status = EVENT_FILTER_CONTINUE;
     }
 
     if (!pressed)
@@ -4372,9 +4372,9 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     frameDraw (c, FALSE, FALSE);
 
     TRACE ("entering button press loop");
-    pushXfwmFilter (display_info->xfilter, clientButtonPress_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, clientButtonPress_event_filter, &passdata);
     gtk_main ();
-    popXfwmFilter (display_info->xfilter);
+    eventFilterPop (display_info->xfilter);
     TRACE ("leaving button press loop");
 
     XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));

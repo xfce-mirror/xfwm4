@@ -62,7 +62,7 @@ static MenuItem menuitems[] = {
     {MENU_OP_RESTART, "gtk-refresh", N_("Restart")},
 };
 
-static XfwmFilterStatus
+static eventFilterStatus
 menu_filter (XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
@@ -74,12 +74,12 @@ menu_filter (XEvent * xevent, gpointer data)
         case MotionNotify:
         case EnterNotify:
         case LeaveNotify:
-            return XFWM_FILTER_STOP;
+            return EVENT_FILTER_STOP;
             break;
         default:
             break;
     }
-    return XFWM_FILTER_CONTINUE;
+    return EVENT_FILTER_CONTINUE;
 }
 
 
@@ -128,7 +128,7 @@ activate_cb (GtkWidget * menuitem, gpointer data)
     menudata = data;
 
     TRACE ("deactivating menu_filter");
-    popXfwmFilter (menudata->menu->filter_setup);
+    eventFilterPop (menudata->menu->filter_setup);
     (*menudata->menu->func) (menudata->menu, 
                              menudata->op, 
                              menudata->menu->xid, 
@@ -146,7 +146,7 @@ menu_closed (GtkMenu * widget, gpointer data)
     menu = data;
     menu_open = NULL;
     TRACE ("deactivating menu_filter");
-    popXfwmFilter (menu->filter_setup);
+    eventFilterPop (menu->filter_setup);
     (*menu->func) (menu, 0, menu->xid, menu->data, NULL);
     return (FALSE);
 }
@@ -196,7 +196,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
 
 Menu *
 menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func, 
-    gint ws, gint nws, gchar **wsn, gint wsn_items, XfwmFilterSetup *filter_setup, gpointer data)
+    gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
 {
     int i;
     Menu *menu;
@@ -399,7 +399,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         }
         TRACE ("opening new menu");
         menu_open = menu->menu;
-        pushXfwmFilter (menu->filter_setup, menu_filter, NULL);
+        eventFilterPush (menu->filter_setup, menu_filter, NULL);
         gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
             popup_position_func, pt, 0, timestamp);
 
@@ -409,7 +409,7 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
             g_message (_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname ());
             gtk_menu_popdown (GTK_MENU (menu->menu));
             menu_open = NULL;
-            popXfwmFilter (menu->filter_setup);
+            eventFilterPop (menu->filter_setup);
             return FALSE;
         }
     }

@@ -30,12 +30,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include "event_filter.h"
 
-/* static var for backward compat */
-static XfwmFilterSetup *p_filter_setup = NULL;
-static GtkWidget *p_filter_gtk_win     = NULL;
-static GdkWindow *p_filter_event_win   = NULL;
-
-static XfwmFilterStatus
+static eventFilterStatus
 default_event_filter (XEvent * xevent, gpointer data)
 {
     switch (xevent->type)
@@ -137,39 +132,39 @@ default_event_filter (XEvent * xevent, gpointer data)
             TRACE ("Unhandled Unknown event");
             break;
     }
-    /* This is supposed to be the default fallback event handler, so we return XFWM_FILTER_STOP since we have "treated" the event */
-    return XFWM_FILTER_STOP;
+    /* This is supposed to be the default fallback event handler, so we return EVENT_FILTER_STOP since we have "treated" the event */
+    return EVENT_FILTER_STOP;
 }
 
 static GdkFilterReturn
-anXXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
+eventXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
     XEvent *xevent = (XEvent *) gdk_xevent;
-    XfwmFilterStatus loop = XFWM_FILTER_CONTINUE;
-    XfwmFilterSetup *setup = (XfwmFilterSetup *) data;
-    XfwmFilterStack *filterelt;
+    eventFilterStatus loop = EVENT_FILTER_CONTINUE;
+    eventFilterSetup *setup = (eventFilterSetup *) data;
+    eventFilterStack *filterelt;
 
     g_return_val_if_fail (setup != NULL, GDK_FILTER_CONTINUE);
     filterelt = setup->filterstack;
     g_return_val_if_fail (filterelt != NULL, GDK_FILTER_CONTINUE);
 
-    while ((filterelt) && (loop == XFWM_FILTER_CONTINUE))
+    while ((filterelt) && (loop == EVENT_FILTER_CONTINUE))
     {
-        XfwmFilterStack *filterelt_next = filterelt->next;
+        eventFilterStack *filterelt_next = filterelt->next;
         loop = (*filterelt->filter) (xevent, filterelt->data);
         filterelt = filterelt_next;
     }
     return GDK_FILTER_CONTINUE;
 }
 
-XfwmFilterStack *
-pushXfwmFilter (XfwmFilterSetup *setup, XfwmFilter filter, gpointer data)
+eventFilterStack *
+eventFilterPush (eventFilterSetup *setup, XfwmFilter filter, gpointer data)
 {
     g_assert (filter != NULL);
     if (setup->filterstack)
     {
-        XfwmFilterStack *newfilterstack =
-            (XfwmFilterStack *) g_new (XfwmFilterStack, 1);
+        eventFilterStack *newfilterstack =
+            (eventFilterStack *) g_new (eventFilterStack, 1);
         newfilterstack->filter = filter;
         newfilterstack->data = data;
         newfilterstack->next = setup->filterstack;
@@ -178,7 +173,7 @@ pushXfwmFilter (XfwmFilterSetup *setup, XfwmFilter filter, gpointer data)
     else
     {
         setup->filterstack =
-            (XfwmFilterStack *) g_new (XfwmFilterStack, 1);
+            (eventFilterStack *) g_new (eventFilterStack, 1);
         setup->filterstack->filter = filter;
         setup->filterstack->data = data;
         setup->filterstack->next = NULL;
@@ -186,10 +181,10 @@ pushXfwmFilter (XfwmFilterSetup *setup, XfwmFilter filter, gpointer data)
     return (setup->filterstack);
 }
 
-XfwmFilterStack *
-popXfwmFilter (XfwmFilterSetup *setup)
+eventFilterStack *
+eventFilterPop (eventFilterSetup *setup)
 {
-    XfwmFilterStack *oldfilterstack = setup->filterstack;
+    eventFilterStack *oldfilterstack = setup->filterstack;
     g_return_val_if_fail (setup->filterstack != NULL, NULL);
     setup->filterstack = oldfilterstack->next;
     g_free (oldfilterstack);
@@ -231,24 +226,24 @@ addEventWin (GdkScreen *gscr, long event_mask)
     return event_win;
 }
 
-XfwmFilterSetup *
-initXfwmFilter (gpointer data)
+eventFilterSetup *
+eventFilterInit (gpointer data)
 {
-    XfwmFilterSetup *setup;
+    eventFilterSetup *setup;
     
-    setup = g_new0 (XfwmFilterSetup, 1);
+    setup = g_new0 (eventFilterSetup, 1);
     setup->filterstack = NULL;
-    pushXfwmFilter (setup, default_event_filter, data);
-    gdk_window_add_filter (NULL, anXXfwmFilter, (gpointer) setup);
+    eventFilterPush (setup, default_event_filter, data);
+    gdk_window_add_filter (NULL, eventXfwmFilter, (gpointer) setup);
 
     return (setup);
 }
 
 void
-closeXfwmFilter (XfwmFilterSetup *setup)
+eventFilterClose (eventFilterSetup *setup)
 {
-    XfwmFilterStack *filterelt = setup->filterstack;
-    while ((filterelt = popXfwmFilter (setup)));
-    gdk_window_remove_filter (NULL, anXXfwmFilter, NULL);
+    eventFilterStack *filterelt = setup->filterstack;
+    while ((filterelt = eventFilterPop (setup)));
+    gdk_window_remove_filter (NULL, eventXfwmFilter, NULL);
     setup->filterstack = NULL;
 }

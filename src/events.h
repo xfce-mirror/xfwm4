@@ -38,7 +38,7 @@
 #include "event_filter.h"
 
 void initMenuEventWin (void);
-XfwmFilterStatus xfwm4_event_filter (XEvent * xevent, gpointer data);
+eventFilterStatus xfwm4_event_filter (XEvent * xevent, gpointer data);
 void initGtkCallbacks (ScreenInfo *);
 
 #endif /* INC_EVENTS_H */
