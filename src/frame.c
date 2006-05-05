@@ -201,8 +201,8 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     GdkGC *gc = NULL;
     PangoLayout *layout = NULL;
     PangoRectangle logical_rect;
-    int width, x = 0, tp = 0, w1 = 0, w2, w3, w4, w5, temp;
-    int voffset = 0;
+    int width, x = 0, hoffset = 0, w1 = 0, w2, w3, w4, w5, temp;
+    int voffset = 0, title_x = 0, title_y = 0;
 
     TRACE ("entering frameCreateTitlePixmap");
 
@@ -267,18 +267,18 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         switch (screen_info->params->title_alignment)
         {
             case ALIGN_LEFT:
-                tp = screen_info->params->title_horizontal_offset;
+                hoffset = screen_info->params->title_horizontal_offset;
                 break;
             case ALIGN_RIGHT:
-                tp = w3 - logical_rect.width - screen_info->params->title_horizontal_offset;
+                hoffset = w3 - logical_rect.width - screen_info->params->title_horizontal_offset;
                 break;
             case ALIGN_CENTER:
-                tp = (w3 >> 1) - (logical_rect.width >> 1);
+                hoffset = (w3 >> 1) - (logical_rect.width >> 1);
                 break;
         }
-        if (tp < screen_info->params->title_horizontal_offset)
+        if (hoffset < screen_info->params->title_horizontal_offset)
         {
-            tp = screen_info->params->title_horizontal_offset;
+            hoffset = screen_info->params->title_horizontal_offset;
         }
     }
     else
@@ -336,18 +336,21 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
             voffset = screen_info->params->title_vertical_offset_inactive;
         }
         xfwmPixmapFill (&screen_info->title[TITLE_3][state], pm, x, 0, w3, frameTop (c)); 
+        title_x = hoffset + x;
+        title_y = voffset + (frameTop (c) - logical_rect.height) / 2;
+        if (title_y + logical_rect.height > frameTop (c))
+        {
+            title_y = MAX (0, frameTop (c) - logical_rect.height);
+        }
         if (screen_info->params->title_shadow[state])
         {
             gdk_gc_get_values (screen_info->title_shadow_colors[state].gc, &values);
             gdk_gc_set_values (gc, &values, GDK_GC_FOREGROUND);
-            gdk_draw_layout (gpixmap, gc, x + tp + 1,
-                (frameTop (c) + voffset - logical_rect.height) / 2 + 1,
-                layout);
+            gdk_draw_layout (gpixmap, gc, title_x + 1, title_y + 1, layout);
         }
         gdk_gc_get_values (screen_info->title_colors[state].gc, &values);
         gdk_gc_set_values (gc, &values, GDK_GC_FOREGROUND);
-        gdk_draw_layout (gpixmap, gc, x + tp,
-            (frameTop (c) + voffset - logical_rect.height) / 2, layout);
+        gdk_draw_layout (gpixmap, gc, title_x, title_y, layout);
         x = x + w3;
     }
 

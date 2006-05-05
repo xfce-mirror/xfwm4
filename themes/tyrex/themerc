@@ -1,8 +1,8 @@
 button_offset=1
 button_spacing=1
 full_width_title=true
-title_horizontal_offset=2
-title_vertical_offset_active=3
-title_vertical_offset_inactive=3
+title_horizontal_offset=1
+title_vertical_offset_active=1
+title_vertical_offset_inactive=2
 title_shadow_active=true
 show_app_icon=true
