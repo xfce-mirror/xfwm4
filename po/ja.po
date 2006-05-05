@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-04 19:49+0200\n"
+"POT-Creation-Date: 2006-05-06 00:59+0200\n"
 "PO-Revision-Date: 2006-05-05 15:05+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -49,7 +49,7 @@ msgid "Button Label|Workspaces and Margins"
 msgstr "ワークスペースと余白"
 
 #: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
-#: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/wmtweaks_plugin.c:505 ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "ワークスペース"
 
@@ -61,161 +61,159 @@ msgstr "ワークスペースと余白"
 msgid "Margins"
 msgstr "余白"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:347
+#: ../mcs-plugin/wmtweaks_plugin.c:357
 msgid "None"
 msgstr "無し"
 
 # FIXME: Q_()
-#: ../mcs-plugin/wmtweaks_plugin.c:355
+#: ../mcs-plugin/wmtweaks_plugin.c:365
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "WMの調整"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:364
+#: ../mcs-plugin/wmtweaks_plugin.c:374
 msgid "Window Manager Advanced Configuration"
 msgstr "ウィンドウマネージャー (詳細)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:380
+#: ../mcs-plugin/wmtweaks_plugin.c:390
 msgid ""
-"Include windows that have \"skip pager\" or\n"
-"\"skip taskbar\" properties set"
+"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"「ページャーを飛ばす」または「タスクバーを飛ばす」\n"
-"というプロパティが設定されているウィンドウを含める"
+"「ページャーを飛ばす」または「タスクバーを飛ばす」というプロパティが設定され"
+"ているウィンドウを含める"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:386
+#: ../mcs-plugin/wmtweaks_plugin.c:396
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "アイコン化されているような隠しウィンドウも含める"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:392
+#: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Cycle through windows from all workspaces"
 msgstr "全てのワークスペースを循環させる"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:397
+#: ../mcs-plugin/wmtweaks_plugin.c:407
 msgid "Cycling"
 msgstr "循環"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:409
+#: ../mcs-plugin/wmtweaks_plugin.c:419
 msgid "Activate focus stealing prevention"
 msgstr "フォーカスの横取りを防ぐ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:425
 msgid "Honor the standard ICCCM focus hint"
 msgstr "ICCCM 標準フォーカスヒントに則る"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:420 ../mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/wmtweaks_plugin.c:430 ../mcs-plugin/xfwm4_plugin.c:1684
 msgid "Focus"
 msgstr "フォーカス"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:432
+#: ../mcs-plugin/wmtweaks_plugin.c:442
 msgid "Key used to grab and move windows"
 msgstr "ウィンドウを掴んだり移動したりするために使うキー"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:438
+#: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Raise windows when any mouse button is pressed"
 msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:445
+#: ../mcs-plugin/wmtweaks_plugin.c:455
 msgid "Restore original size of maximized windows when moving"
 msgstr "移動する時は最大化されているウィンドウの大きさを元に戻す"
 
 # FIXME: should be revised
-#: ../mcs-plugin/wmtweaks_plugin.c:451
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Use edge resistance instead of windows snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する"
 
 # FIXME: i hate this transliteration
-#: ../mcs-plugin/wmtweaks_plugin.c:456
+#: ../mcs-plugin/wmtweaks_plugin.c:466
 msgid "Accessibility"
 msgstr "アクセシビリティ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:469
+#: ../mcs-plugin/wmtweaks_plugin.c:479
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "デスクトップ上でマウスホイールを使用しながらワークスペースを切り替える"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:476
+#: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid ""
-"Remember and recall previous workspace when switching\n"
-"via keyboard shortcuts"
+"Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "ショートカットを使用して切り替える時に以前のワークスペースを覚えておく"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:483
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:490
+#: ../mcs-plugin/wmtweaks_plugin.c:500
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "先頭または最後のワークスペースに来たら循環する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:507
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Size|Small"
 msgstr "小さい"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Size|Large"
 msgstr "大きい"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:512
+#: ../mcs-plugin/wmtweaks_plugin.c:522
 msgid "Placement"
 msgstr "配置"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:531
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Show shadows under regular windows"
 msgstr "通常のウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:537
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Show shadows under popup windows"
 msgstr "ポップアップウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:543
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "Opacity of window decorations"
 msgstr "ウィンドウの枠の透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:543 ../mcs-plugin/wmtweaks_plugin.c:549
-#: ../mcs-plugin/wmtweaks_plugin.c:555 ../mcs-plugin/wmtweaks_plugin.c:561
+#: ../mcs-plugin/wmtweaks_plugin.c:553 ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:565 ../mcs-plugin/wmtweaks_plugin.c:571
 msgid "Transparent"
 msgstr "透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:544 ../mcs-plugin/wmtweaks_plugin.c:550
-#: ../mcs-plugin/wmtweaks_plugin.c:556 ../mcs-plugin/wmtweaks_plugin.c:562
+#: ../mcs-plugin/wmtweaks_plugin.c:554 ../mcs-plugin/wmtweaks_plugin.c:560
+#: ../mcs-plugin/wmtweaks_plugin.c:566 ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Opaque"
 msgstr "不透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:549
+#: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Opacity of windows during move"
 msgstr "移動時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:555
+#: ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opacity of windows during resize"
 msgstr "大きさ変更時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:561
+#: ../mcs-plugin/wmtweaks_plugin.c:571
 msgid "Opacity of popup windows"
 msgstr "ポップアップウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Compositor"
 msgstr "コンポジット"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:607
+#: ../mcs-plugin/wmtweaks_plugin.c:617
 msgid "Button Label|Window Manager Tweaks"
 msgstr "WMの調整"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
+#: ../mcs-plugin/wmtweaks_plugin.c:730 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "現在のウィンドウマネージャー (%s) ではこれらの設定が有効になりません"

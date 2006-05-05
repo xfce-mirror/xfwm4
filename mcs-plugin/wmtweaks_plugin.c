@@ -187,9 +187,16 @@ create_gboolean_button (McsPlugin * mcs_plugin, const gchar * label, gchar * set
     gboolean * value)
 {
     GtkWidget *check_button;
+    GtkWidget *label_widget;
 
-    check_button = gtk_check_button_new_with_mnemonic (label);
+    label_widget = gtk_label_new_with_mnemonic (label);
+    gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
+    gtk_widget_show (label_widget);
+
+    check_button = gtk_check_button_new ();
+    gtk_container_add (GTK_CONTAINER (check_button), label_widget);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_button), *value);
+
     g_object_set_data (G_OBJECT (check_button), "setting-name", setting_name);
     g_object_set_data (G_OBJECT (check_button), "mcs-plugin", mcs_plugin);
     g_signal_connect (G_OBJECT (check_button), "toggled", G_CALLBACK (cb_gboolean_changed), value);
@@ -214,6 +221,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
         (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label_widget), 0, 0.5);
+    gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
     gtk_widget_show (label_widget);
 
     label_widget = xfce_create_small_label (min_label);
@@ -221,6 +229,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
         (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label_widget), 1, 0.5);
+    gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
     gtk_widget_show (label_widget);
 
     label_widget = xfce_create_small_label (max_label);
@@ -263,6 +272,7 @@ create_option_menu (McsPlugin * mcs_plugin, gchar * values[], const gchar * labe
     gtk_widget_show (hbox);
 
     label_widget = gtk_label_new (label);
+    gtk_label_set_line_wrap (GTK_LABEL (label_widget), FALSE);
     gtk_box_pack_start (GTK_BOX (hbox), label_widget, FALSE, FALSE, 2);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label_widget), 0.0, 0.5);
@@ -377,7 +387,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     check_button =
         create_gboolean_button (mcs_plugin,
-        _("Include windows that have \"skip pager\" or\n\"skip taskbar\" properties set"),
+        _("Include windows that have \"skip pager\" or \"skip taskbar\" properties set"),
         "Xfwm/CycleMinimum", &cycle_minimum);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
@@ -473,7 +483,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     check_button =
         create_gboolean_button (mcs_plugin,
-        _("Remember and recall previous workspace when switching\nvia keyboard shortcuts"),
+        _("Remember and recall previous workspace when switching via keyboard shortcuts"),
         "Xfwm/ToggleWorkspaces", &toggle_workspaces);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
