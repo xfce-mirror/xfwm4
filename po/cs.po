@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
 # Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
+# Michal Várady <miko.vaji@gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-04 19:49+0200\n"
-"PO-Revision-Date: 2005-10-09 20:38+0900\n"
-"Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
+"PO-Revision-Date: 2006-05-05 20:12+0100\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr "Okraje ploch"
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
-"Okraje jsou místa na hranách obrazovky, kde nemohou být umístěna žádná okna"
+"Okraje jsou místa na hranách obrazovky, kam nemohou být umístěna žádná okna"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
@@ -45,9 +46,8 @@ msgstr "Dole :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
-msgstr "Pracovní plochy a okraje"
+msgstr "Popisek tlačítka|Pracovní plochy a okraje"
 
 #: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
 #: ../mcs-plugin/wmtweaks_plugin.c:495 ../mcs-plugin/workspaces.c:520
@@ -64,41 +64,40 @@ msgstr "Okraje"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:347
 msgid "None"
-msgstr ""
+msgstr "Nic"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Správce Oken"
+msgstr "Pokročilá nastavení správce oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:364
-#, fuzzy
 msgid "Window Manager Advanced Configuration"
-msgstr "Správce Oken"
+msgstr "Pokročilá konfigurace správce oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:380
 msgid ""
 "Include windows that have \"skip pager\" or\n"
 "\"skip taskbar\" properties set"
 msgstr ""
+"Zahrnout okna s nastavenou vlastností \"vynechat v přepínači ploch\" nebo "
+"\"vynechat v panelu úloh\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:386
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Zahrnout skrytá (minimalizovaná) okna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:392
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Přesunout okno do levé pracovní plochy"
+msgstr "Procházet okna ze všech pracovních ploch"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycling"
-msgstr ""
+msgstr "Procházení"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:409
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Zapnout předejití ztrátě aktivity okna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Honor the standard ICCCM focus hint"
@@ -110,114 +109,107 @@ msgstr "Zaměření"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:432
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "Klávesa použitá k uchopení a přesunu oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:438
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Přenést okno do popředí po stisknutí libovolného tlačítka myši"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:445
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Zobrazování obsahu okna při tažení a přesunu"
+msgstr "Při přesunu obnovit původní velikost maximalizovaných oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Použít odolnost okrajů namísto přichytávání oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Accessibility"
-msgstr ""
+msgstr "Usnadnění"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Přepínat plochy pomocí kolečka myši nad plochou"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 msgid ""
 "Remember and recall previous workspace when switching\n"
 "via keyboard shortcuts"
 msgstr ""
+"Zapamatuje si a znovu vyvolá předchozí plochu při přepínání\n"
+"zkratkovými klávesami"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Přecházet na plochy podle aktuálního nastavení rozvržení prostředí"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:490
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Přepnout plochu při ukázání kurzorem myši k okraji plochy"
+msgstr "Přepnout plochu při dosažení okraje plochy myší"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:507
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Nejmenší velikost oken pro chytré umístění triggeru"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Size|Small"
-msgstr "Nízká"
+msgstr "Velikost|Malá"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Size|Large"
-msgstr ""
+msgstr "Velikost|Velká"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Placement"
-msgstr ""
+msgstr "Umístění"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:531
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Zobrazovat stíny pod běžnými okny"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:537
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Zobrazovat stíny pod vyskakovacími okny"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:543
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Zobrazování obsahu okna při změně velikosti"
+msgstr "Neprůhlednost dekorací oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:543 ../mcs-plugin/wmtweaks_plugin.c:549
 #: ../mcs-plugin/wmtweaks_plugin.c:555 ../mcs-plugin/wmtweaks_plugin.c:561
 msgid "Transparent"
-msgstr ""
+msgstr "Průhledné"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:544 ../mcs-plugin/wmtweaks_plugin.c:550
 #: ../mcs-plugin/wmtweaks_plugin.c:556 ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Opaque"
-msgstr ""
+msgstr "Neprůhlednost"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:549
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Zobrazování obsahu okna při tažení a přesunu"
+msgstr "Neprůhlednost oken při přesunutí"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:555
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Zobrazování obsahu okna při změně velikosti"
+msgstr "Neprůhlednost oken při změně velikosti"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:561
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Zobrazování obsahu okna při tažení a přesunu"
+msgstr "Neprůhlednost vyskakovacích oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:566
-#, fuzzy
 msgid "Compositor"
-msgstr "Vytvořit zkratku"
+msgstr "Kompozitor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:607
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Správce Oken"
+msgstr "Popisek tlačítka|Podrobné nastavení správce oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:720 ../mcs-plugin/xfwm4_plugin.c:2343
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Tato nastavení nebudou fungovat se současným správcem oken (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -430,14 +422,12 @@ msgid "Distance :"
 msgstr "Přilnavost :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1727
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Přilnavost :"
+msgstr "Vzdálenost|Malá"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1734
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Přilnavost :"
+msgstr "Vzdálenost|Široká"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1755
 msgid "Wrap workspaces"
@@ -456,14 +446,12 @@ msgid "Edge Resistance :"
 msgstr "Hrana resistence:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1786
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Přilnavost :"
+msgstr "Odolnost|Malá"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1793
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Přilnavost :"
+msgstr "Odolnost|Široká"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1815
 msgid "Opaque move and resize"
@@ -491,9 +479,8 @@ msgstr "Pokročilé"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1977
-#, fuzzy
 msgid "Button Label|Window Manager"
-msgstr "Správce Oken"
+msgstr "Popisek tlačítka|Správce Oken"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
@@ -634,12 +621,12 @@ msgstr "Přesunout okno do pravé pracovní plochy"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Show desktop"
-msgstr ""
+msgstr "Zobrazit pracovní plochu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:491
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Přesunout okno do 1 pracovní plochy"
+msgstr "Přesunout okno do pracovní plochy %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:578
 msgid "Cannot open the theme directory !"
@@ -682,7 +669,7 @@ msgstr "Žádná tkratka"
 #: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (na %s)"
 
 #: ../src/main.c:188
 #, c-format
@@ -769,45 +756,39 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
 #: ../src/settings.c:854
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Nelze přidělit aktivní barvu %s\n"
+msgstr "%s: Nelze přidělit barvu %s\n"
 
 #: ../src/settings.c:860
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Nelze separovat aktivní barvu %s\n"
+msgstr "%s: Nelze zpracovat barvu %s\n"
 
 #: ../src/tabwin.c:95
 msgid "Unknown application!"
 msgstr "Neznámá aplikace!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Správce Oken"
+msgstr "Nastavení správce oken"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Správce Oken"
+msgstr "Nastavení správce oken prostředí Xfce4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Správce Oken"
+msgstr "Pokročilé nastavení"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Správce Oken"
+msgstr "Podrobná nastavení správce oken Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Okraje ploch"
+msgstr "Nastavení ploch"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Okraje ploch"
+msgstr "Nastavení ploch prostředí Xfce4"
