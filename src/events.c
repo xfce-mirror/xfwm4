@@ -350,9 +350,9 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
 static void
 handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
+    unsigned long mode = 0L;
     ScreenInfo *screen_info = NULL;
     Client *c = NULL;
-    unsigned long mode;
     int key;
 
     TRACE ("entering handleKeyEvent");
@@ -581,11 +581,11 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
 static void
 button1Action (Client * c, XButtonEvent * ev)
 {
+    unsigned long mode = 0L;
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     XEvent copy_event;
     XfwmButtonClickType tclick;
-    unsigned long mode;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
@@ -2230,7 +2230,7 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
 static void
 menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer item_data)
 {
-    unsigned long mode;
+    unsigned long mode = 0L;
     Client *c = NULL;
 
     TRACE ("entering menu_callback");
