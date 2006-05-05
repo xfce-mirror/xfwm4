@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-04 19:49+0200\n"
-"PO-Revision-Date: 2006-04-23 16:19+0900\n"
+"PO-Revision-Date: 2006-05-05 15:05+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -65,6 +65,7 @@ msgstr "余白"
 msgid "None"
 msgstr "無し"
 
+# FIXME: Q_()
 #: ../mcs-plugin/wmtweaks_plugin.c:355
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
@@ -118,7 +119,7 @@ msgstr "いずれかのマウスボタンが押されている時にウィンド
 msgid "Restore original size of maximized windows when moving"
 msgstr "移動する時は最大化されているウィンドウの大きさを元に戻す"
 
-# FIXME:
+# FIXME: should be revised
 #: ../mcs-plugin/wmtweaks_plugin.c:451
 msgid "Use edge resistance instead of windows snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する"
@@ -791,25 +792,27 @@ msgstr "%s: 色 %s を解析できません\n"
 msgid "Unknown application!"
 msgstr "不明なアプリケーションです！"
 
+# FIXME: should be separated in between `Comment' and  `GenericName'
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "ウィンドウマネージャー"
+msgstr "ウィンドウマネージャーの設定"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 ウィンドウマネージャーの調整"
+msgstr "Xfce 4 ウィンドウマネージャーの設定"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
-msgstr "ウィンドウマネージャー (詳細)"
+msgstr "ウィンドウマネージャーの高度な設定を行います"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
 msgstr "Xfce 4 ウィンドウマネージャーの調整"
 
+# FIXME: should be separated in between `Comment' and  `GenericName'
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "ワークスペース"
+msgstr "ワークスペースの設定"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
