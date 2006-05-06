@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 00:59+0200\n"
+"POT-Creation-Date: 2006-05-06 12:32+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -45,168 +45,164 @@ msgstr "Знизу:"
 msgid "Button Label|Workspaces and Margins"
 msgstr "Робочі області та поля"
 
-#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
-#: ../mcs-plugin/wmtweaks_plugin.c:505 ../mcs-plugin/workspaces.c:520
-msgid "Workspaces"
-msgstr "Робочі області"
-
-#: ../mcs-plugin/plugin.c:151
+#: ../mcs-plugin/plugin.c:143
 msgid "Workspaces and Margins"
 msgstr "Робочі області та поля"
 
-#: ../mcs-plugin/plugin.c:173
+#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:520
+msgid "Workspaces"
+msgstr "Робочі області"
+
+#: ../mcs-plugin/plugin.c:170
 msgid "Margins"
 msgstr "Поля"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:356
 msgid "None"
 msgstr "Немає"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:365
+#: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Менеджер вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:374
-msgid "Window Manager Advanced Configuration"
-msgstr "Додаткові параметри менеджера вікон"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:390
+#: ../mcs-plugin/wmtweaks_plugin.c:383
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Включати вікна, у яких встановлено властивість \"не відображати в перемикачі "
 "робочих аобластей\" або \"не відображати на панелі задач\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Включити приховані (згорнуті) вінка"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:395
 msgid "Cycle through windows from all workspaces"
 msgstr "Перемикатися між вікнами, що розташовані на усіх робочих місцях"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:407
+#: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Cycling"
 msgstr "Перемикання вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:419
+#: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Activate focus stealing prevention"
 msgstr "Активувати запобігання \"викраденню\" фокусу вводу"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425
+#: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Враховувати стандартні підказки фокусу ICCCM"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:430 ../mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "Фокус вікна"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:442
+#: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Key used to grab and move windows"
 msgstr "Ключ, що використовується для захоплення та переміщення вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Піднімати вікна при натисканні будь-якої кнопки миші"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:455
+#: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Restore original size of maximized windows when moving"
 msgstr "Відновлювати початковий розмір розгорнутого вікна при переміщенні"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Використовувати опір меж вікна замість прилипання"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
 msgstr "Спеціальні можливості"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 "Перемикати робочі області використовуючи колесо миші над робочим столом"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:479
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Запам'ятовувати та повертатись до попереднього робочого місця при "
 "перемиканні комбінаціями клавіш"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 "Переходити на іншу робочу область в залежності від дійсного розташування "
 "стільниць"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr ""
 "Переходити на іншу робочу область при досягненні першої чи останньої робочої "
 "області"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 "Мінімальний розмір вікон, при якому буде увімкнено розумне розташування"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Small"
 msgstr "Маленький"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Large"
 msgstr "Великий"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/wmtweaks_plugin.c:515
 msgid "Placement"
 msgstr "Розташування"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541
+#: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Show shadows under regular windows"
 msgstr "Відображати тіні під звичайними вікнами"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:540
 msgid "Show shadows under popup windows"
 msgstr "Відображати тіні під контекстними вікнами"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:546
 msgid "Opacity of window decorations"
 msgstr "Прозорість оформлення вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553 ../mcs-plugin/wmtweaks_plugin.c:559
-#: ../mcs-plugin/wmtweaks_plugin.c:565 ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Transparent"
 msgstr "Прозорі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:554 ../mcs-plugin/wmtweaks_plugin.c:560
-#: ../mcs-plugin/wmtweaks_plugin.c:566 ../mcs-plugin/wmtweaks_plugin.c:572
+#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opaque"
 msgstr "Непрозорі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 msgid "Opacity of windows during move"
 msgstr "Прозорість вікна при переміщенні"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:558
 msgid "Opacity of windows during resize"
 msgstr "Прозорість вікон при зміні розміру"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Opacity of popup windows"
 msgstr "Прозорість контекстних вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:576
+#: ../mcs-plugin/wmtweaks_plugin.c:569
 msgid "Compositor"
 msgstr "Укладач"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:617
+#: ../mcs-plugin/wmtweaks_plugin.c:610
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Менеджер вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:730 ../mcs-plugin/xfwm4_plugin.c:2343
+#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -289,198 +285,194 @@ msgstr "По центру"
 msgid "Right"
 msgstr "Справа"
 
-#: ../mcs-plugin/xfwm4_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Click and drag buttons to change the layout"
 msgstr "Клацніть та перетягніть кнопки, щоб змінити їх розташування"
 
-#: ../mcs-plugin/xfwm4_plugin.c:563
+#: ../mcs-plugin/xfwm4_plugin.c:579
 msgid "Active"
 msgstr "Активне вікно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:590
 msgid "Title"
 msgstr "Заголовок"
 
-#: ../mcs-plugin/xfwm4_plugin.c:575
+#: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
 msgstr "Заголовок вікна неможливо видалити"
 
-#: ../mcs-plugin/xfwm4_plugin.c:583
+#: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
 msgstr "Прихована"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1357
+#: ../mcs-plugin/xfwm4_plugin.c:1373
 msgid "Font Selection Dialog"
 msgstr "Вибір шрифту"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422
+#: ../mcs-plugin/xfwm4_plugin.c:1438
 msgid "Window Manager"
 msgstr "Менеджер вікон"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1434
-msgid "Window Manager Preferences"
-msgstr "Параметри менеджера вікон"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1467
+#: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Title font"
 msgstr "Шрифт заголовка"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1476
+#: ../mcs-plugin/xfwm4_plugin.c:1487
 msgid "Title Alignment"
 msgstr "Вирівнювання заголовку"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1478
+#: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Text alignment inside title bar :"
 msgstr "Вирівнювання тексту всередині заголовка:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1484
+#: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Button layout"
 msgstr "Розташування кнопок"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1489
+#: ../mcs-plugin/xfwm4_plugin.c:1500
 msgid "Style"
 msgstr "Стиль"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1537
+#: ../mcs-plugin/xfwm4_plugin.c:1548
 msgid "Window shortcuts"
 msgstr "Комбінації клавіш"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1551
+#: ../mcs-plugin/xfwm4_plugin.c:1562
 msgid "Command"
 msgstr "Команда"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1568
 msgid "Shortcut"
 msgstr "Комбінація клавіш"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1574
+#: ../mcs-plugin/xfwm4_plugin.c:1585
 msgid "Keyboard"
 msgstr "Клавіатура"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1589
+#: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus model"
 msgstr "Фокус вікна"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1593
+#: ../mcs-plugin/xfwm4_plugin.c:1604
 msgid "Click to focus"
 msgstr "Активація при клацанні"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1603
+#: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Focus follows mouse"
 msgstr "Активація при наведенні курсору"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1614
+#: ../mcs-plugin/xfwm4_plugin.c:1625
 msgid "Automatically give focus to newly created windows"
 msgstr "Автоматично активувати створювані нові вікна"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1618
+#: ../mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "Активувати нові вікна"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1625
+#: ../mcs-plugin/xfwm4_plugin.c:1636
 msgid "Raise on focus"
 msgstr "Піднімання вікна при наведенні курсору"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1642
 msgid "Automatically raise windows when they receive focus"
 msgstr "Автоматично піднімати вікно при активізації"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1641
+#: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Delay before raising focused window :"
 msgstr "Затримка перед підніманням вікна з фокусом:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1648
+#: ../mcs-plugin/xfwm4_plugin.c:1659
 msgid "Slow"
 msgstr "Велика"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1655
+#: ../mcs-plugin/xfwm4_plugin.c:1666
 msgid "Fast"
 msgstr "Мала"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1676
+#: ../mcs-plugin/xfwm4_plugin.c:1687
 msgid "Raise window when clicking inside application window"
 msgstr "Піднімати вікно при клацанні на ньому"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1680
+#: ../mcs-plugin/xfwm4_plugin.c:1691
 msgid "Raise on click"
 msgstr "Показ вікна при клацанні мишею"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Windows snapping"
 msgstr "Прилипання вікон"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1714
 msgid "Snap windows to screen border"
 msgstr "Прилипання вікна до меж екрана"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1709
+#: ../mcs-plugin/xfwm4_plugin.c:1720
 msgid "Snap windows to other windows"
 msgstr "Прилипання вікна до інших вікон"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1720
+#: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance :"
 msgstr "Відстань:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1727
+#: ../mcs-plugin/xfwm4_plugin.c:1738
 msgid "Distance|Small"
 msgstr "Маленька"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1734
+#: ../mcs-plugin/xfwm4_plugin.c:1745
 msgid "Distance|Wide"
 msgstr "Велика"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1755
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces"
 msgstr "Перемикання робочих областей"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1772
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Переходити на іншу робочу область при досягненні межі екрану"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1769
+#: ../mcs-plugin/xfwm4_plugin.c:1780
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Переходити на іншу робочу область при перетягуванні вікна за межі екрану"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1779
+#: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Edge Resistance :"
 msgstr "Відстань від краю:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1786
+#: ../mcs-plugin/xfwm4_plugin.c:1797
 msgid "Resistance|Small"
 msgstr "Низьке"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1793
+#: ../mcs-plugin/xfwm4_plugin.c:1804
 msgid "Resistance|Wide"
 msgstr "Високе"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1815
+#: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Opaque move and resize"
 msgstr "Переміщення та зміна розмірів"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1820
+#: ../mcs-plugin/xfwm4_plugin.c:1831
 msgid "Display content of windows when resizing"
 msgstr "Відображати вміст вікон при зміні розміру"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1826
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Display content of windows when moving"
 msgstr "Відображати вміст вікон при переміщенні"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1831
+#: ../mcs-plugin/xfwm4_plugin.c:1842
 msgid "Double click action"
 msgstr "Дія при подвійному клацанні"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1833
+#: ../mcs-plugin/xfwm4_plugin.c:1844
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Дія, що виконується при подвійному клацанні на заголовку:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1838
+#: ../mcs-plugin/xfwm4_plugin.c:1849
 msgid "Advanced"
 msgstr "Додатково"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1977
+#: ../mcs-plugin/xfwm4_plugin.c:1988
 msgid "Button Label|Window Manager"
 msgstr "Менеджер вікон"
 
@@ -800,3 +792,9 @@ msgstr "Параметри робочих областей"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Параметри робочих областей Xfce 4"
+
+#~ msgid "Window Manager Advanced Configuration"
+#~ msgstr "Додаткові параметри менеджера вікон"
+
+#~ msgid "Window Manager Preferences"
+#~ msgstr "Параметри менеджера вікон"

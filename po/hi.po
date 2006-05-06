@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 00:59+0200\n"
+"POT-Creation-Date: 2006-05-06 12:32+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -46,176 +46,170 @@ msgstr "नीचे: "
 msgid "Button Label|Workspaces and Margins"
 msgstr "कार्यस्थान हाशिया "
 
-#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
-#: ../mcs-plugin/wmtweaks_plugin.c:505 ../mcs-plugin/workspaces.c:520
-#, fuzzy
-msgid "Workspaces"
-msgstr "कार्यस्थान %i"
-
-#: ../mcs-plugin/plugin.c:151
+#: ../mcs-plugin/plugin.c:143
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "कार्यस्थान हाशिया "
 
-#: ../mcs-plugin/plugin.c:173
+#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:520
+#, fuzzy
+msgid "Workspaces"
+msgstr "कार्यस्थान %i"
+
+#: ../mcs-plugin/plugin.c:170
 msgid "Margins"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:356
 msgid "None"
 msgstr ""
 
 # gnome-session/splash.c:71
-#: ../mcs-plugin/wmtweaks_plugin.c:365
+#: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "विन्डो प्रबंधक"
 
-# gnome-session/splash.c:71
-#: ../mcs-plugin/wmtweaks_plugin.c:374
-#, fuzzy
-msgid "Window Manager Advanced Configuration"
-msgstr "विन्डो प्रबंधक"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:390
+#: ../mcs-plugin/wmtweaks_plugin.c:383
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:395
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/wmtweaks_plugin.c:407
+#: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Cycling"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:419
+#: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425
+#: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:430 ../mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
 #, fuzzy
 msgid "Focus"
 msgstr "फोकस माडल"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:442
+#: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Key used to grab and move windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:455
+#: ../mcs-plugin/wmtweaks_plugin.c:448
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "खिसकाने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:479
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "जब पाइंटर स्क्रीन के किनारे पर पंहुचे तो कार्यस्थानों को व्रेप करें"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 #, fuzzy
 msgid "Size|Small"
 msgstr "छोटा"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Large"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/wmtweaks_plugin.c:515
 msgid "Placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541
+#: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Show shadows under regular windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:540
 msgid "Show shadows under popup windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:546
 #, fuzzy
 msgid "Opacity of window decorations"
 msgstr "आकार बदलने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553 ../mcs-plugin/wmtweaks_plugin.c:559
-#: ../mcs-plugin/wmtweaks_plugin.c:565 ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Transparent"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:554 ../mcs-plugin/wmtweaks_plugin.c:560
-#: ../mcs-plugin/wmtweaks_plugin.c:566 ../mcs-plugin/wmtweaks_plugin.c:572
+#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opaque"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 #, fuzzy
 msgid "Opacity of windows during move"
 msgstr "खिसकाने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:558
 #, fuzzy
 msgid "Opacity of windows during resize"
 msgstr "आकार बदलने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:564
 #, fuzzy
 msgid "Opacity of popup windows"
 msgstr "खिसकाने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:576
+#: ../mcs-plugin/wmtweaks_plugin.c:569
 #, fuzzy
 msgid "Compositor"
 msgstr "कीबोर्ड शार्टकट"
 
 # gnome-session/splash.c:71
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:617
+#: ../mcs-plugin/wmtweaks_plugin.c:610
 #, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "विन्डो प्रबंधक"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:730 ../mcs-plugin/xfwm4_plugin.c:2343
+#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -299,206 +293,202 @@ msgstr "बीच में"
 msgid "Right"
 msgstr "दाँया"
 
-#: ../mcs-plugin/xfwm4_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Click and drag buttons to change the layout"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:563
+#: ../mcs-plugin/xfwm4_plugin.c:579
 msgid "Active"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:590
 msgid "Title"
 msgstr "शीर्षक"
 
-#: ../mcs-plugin/xfwm4_plugin.c:575
+#: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:583
+#: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
 msgstr "हिडन"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1357
+#: ../mcs-plugin/xfwm4_plugin.c:1373
 msgid "Font Selection Dialog"
 msgstr "फोंट चयन  संवाद"
 
 # gnome-session/splash.c:71
-#: ../mcs-plugin/xfwm4_plugin.c:1422
+#: ../mcs-plugin/xfwm4_plugin.c:1438
 msgid "Window Manager"
 msgstr "विन्डो प्रबंधक"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1434
-msgid "Window Manager Preferences"
-msgstr "विंडो प्रबंधक वरीयताएँ"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1467
+#: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Title font"
 msgstr "शीर्षक फोंट"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1476
+#: ../mcs-plugin/xfwm4_plugin.c:1487
 msgid "Title Alignment"
 msgstr "शीर्षक पंक्तिबद्धता"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1478
+#: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Text alignment inside title bar :"
 msgstr "टाइटल बार के भीतर पाठ की पंक्तिबद्धताः"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1484
+#: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Button layout"
 msgstr "बटन लेआउट"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1489
+#: ../mcs-plugin/xfwm4_plugin.c:1500
 #, fuzzy
 msgid "Style"
 msgstr "शीर्षक"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1537
+#: ../mcs-plugin/xfwm4_plugin.c:1548
 #, fuzzy
 msgid "Window shortcuts"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_plugin.c:1551
+#: ../mcs-plugin/xfwm4_plugin.c:1562
 msgid "Command"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1568
 #, fuzzy
 msgid "Shortcut"
 msgstr "कीबोर्ड शार्टकट"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1574
+#: ../mcs-plugin/xfwm4_plugin.c:1585
 #, fuzzy
 msgid "Keyboard"
 msgstr "कीबोर्ड शार्टकट"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1589
+#: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus model"
 msgstr "फोकस माडल"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1593
+#: ../mcs-plugin/xfwm4_plugin.c:1604
 msgid "Click to focus"
 msgstr "फोकस देने हेतु क्लिक करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1603
+#: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Focus follows mouse"
 msgstr "फोकस माउस के पीछे"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1614
+#: ../mcs-plugin/xfwm4_plugin.c:1625
 #, fuzzy
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 "नए बने हुए विंडो में  \n"
 "स्वतः फोकस दें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1618
+#: ../mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "नया विंडो फोकस "
 
-#: ../mcs-plugin/xfwm4_plugin.c:1625
+#: ../mcs-plugin/xfwm4_plugin.c:1636
 msgid "Raise on focus"
 msgstr "फोकस पर उठाएं"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1642
 #, fuzzy
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "जब विंडो में फोकस प्राप्त हो \n"
 "तो विंडो स्वतः उठाएं"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1641
+#: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Delay before raising focused window :"
 msgstr "फोकस किए विंडो को ऊपर लाने से पहले विलम्ब"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1648
+#: ../mcs-plugin/xfwm4_plugin.c:1659
 msgid "Slow"
 msgstr "धीमा"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1655
+#: ../mcs-plugin/xfwm4_plugin.c:1666
 msgid "Fast"
 msgstr "तेज"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1676
+#: ../mcs-plugin/xfwm4_plugin.c:1687
 #, fuzzy
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "जब भीतर क्लिक करें तो विंडो उठाएं\n"
 "अनुप्रयोग विंडो"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1680
+#: ../mcs-plugin/xfwm4_plugin.c:1691
 msgid "Raise on click"
 msgstr "क्लिक पर उठाएं"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Windows snapping"
 msgstr "विंडोस स्नेपिंग"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1714
 msgid "Snap windows to screen border"
 msgstr "विंडोस को स्क्रीन बार्डर में स्नेप करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1709
+#: ../mcs-plugin/xfwm4_plugin.c:1720
 msgid "Snap windows to other windows"
 msgstr "विंडोस को अन्य विंडोस में स्नेप करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1720
+#: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance :"
 msgstr "दूरी :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1727
+#: ../mcs-plugin/xfwm4_plugin.c:1738
 #, fuzzy
 msgid "Distance|Small"
 msgstr "दूरी :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1734
+#: ../mcs-plugin/xfwm4_plugin.c:1745
 #, fuzzy
 msgid "Distance|Wide"
 msgstr "दूरी :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1755
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces"
 msgstr "कार्यस्थान व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1772
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "जब पाइंटर स्क्रीन के किनारे पर पंहुचे तो कार्यस्थानों को व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1769
+#: ../mcs-plugin/xfwm4_plugin.c:1780
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "जब स्क्रीन के बाहर विंडो को खींचें तो कार्यस्थानों को व्रेप करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1779
+#: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Edge Resistance :"
 msgstr "किनारा प्रतिरोध :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1786
+#: ../mcs-plugin/xfwm4_plugin.c:1797
 #, fuzzy
 msgid "Resistance|Small"
 msgstr "दूरी :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1793
+#: ../mcs-plugin/xfwm4_plugin.c:1804
 #, fuzzy
 msgid "Resistance|Wide"
 msgstr "दूरी :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1815
+#: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Opaque move and resize"
 msgstr "अपारदर्शी हटाएं एवं आकार परिवर्तन करें"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1820
+#: ../mcs-plugin/xfwm4_plugin.c:1831
 msgid "Display content of windows when resizing"
 msgstr "आकार बदलने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1826
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Display content of windows when moving"
 msgstr "खिसकाने पर विंडो की चीजों को दिखाएं"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1831
+#: ../mcs-plugin/xfwm4_plugin.c:1842
 msgid "Double click action"
 msgstr "डबल क्लिक करने पर क्रिया"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1833
+#: ../mcs-plugin/xfwm4_plugin.c:1844
 msgid "Action to perform when double clicking on title bar :"
 msgstr "टाइटल बार में डबल क्लिक करने पर क्रिया निष्पादन :"
 
@@ -507,13 +497,13 @@ msgstr "टाइटल बार में डबल क्लिक करन�
 # libgnome-desktop/gnome-ditem-edit.c:776
 # #-#-#-#-#  gnome-desktop.HEAD.hi.po (gnome-desktop-2.0.hi)  #-#-#-#-#
 # libgnome-desktop/gnome-ditem-edit.c:776
-#: ../mcs-plugin/xfwm4_plugin.c:1838
+#: ../mcs-plugin/xfwm4_plugin.c:1849
 msgid "Advanced"
 msgstr "उन्नत"
 
 # gnome-session/splash.c:71
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1977
+#: ../mcs-plugin/xfwm4_plugin.c:1988
 #, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "विन्डो प्रबंधक"
@@ -870,3 +860,11 @@ msgstr "कार्यस्थान हाशिया "
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "कार्यस्थान हाशिया "
+
+# gnome-session/splash.c:71
+#, fuzzy
+#~ msgid "Window Manager Advanced Configuration"
+#~ msgstr "विन्डो प्रबंधक"
+
+#~ msgid "Window Manager Preferences"
+#~ msgstr "विंडो प्रबंधक वरीयताएँ"

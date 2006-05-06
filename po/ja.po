@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 00:59+0200\n"
+"POT-Creation-Date: 2006-05-06 12:32+0200\n"
 "PO-Revision-Date: 2006-05-05 15:05+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -48,172 +48,168 @@ msgstr "下 :"
 msgid "Button Label|Workspaces and Margins"
 msgstr "ワークスペースと余白"
 
-#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
-#: ../mcs-plugin/wmtweaks_plugin.c:505 ../mcs-plugin/workspaces.c:520
-msgid "Workspaces"
-msgstr "ワークスペース"
-
-#: ../mcs-plugin/plugin.c:151
+#: ../mcs-plugin/plugin.c:143
 msgid "Workspaces and Margins"
 msgstr "ワークスペースと余白"
 
-#: ../mcs-plugin/plugin.c:173
+#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:520
+msgid "Workspaces"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/plugin.c:170
 msgid "Margins"
 msgstr "余白"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:356
 msgid "None"
 msgstr "無し"
 
 # FIXME: Q_()
-#: ../mcs-plugin/wmtweaks_plugin.c:365
+#: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "WMの調整"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:374
-msgid "Window Manager Advanced Configuration"
-msgstr "ウィンドウマネージャー (詳細)"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:390
+#: ../mcs-plugin/wmtweaks_plugin.c:383
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "「ページャーを飛ばす」または「タスクバーを飛ばす」というプロパティが設定され"
 "ているウィンドウを含める"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "アイコン化されているような隠しウィンドウも含める"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:395
 msgid "Cycle through windows from all workspaces"
 msgstr "全てのワークスペースを循環させる"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:407
+#: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Cycling"
 msgstr "循環"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:419
+#: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Activate focus stealing prevention"
 msgstr "フォーカスの横取りを防ぐ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425
+#: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Honor the standard ICCCM focus hint"
 msgstr "ICCCM 標準フォーカスヒントに則る"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:430 ../mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "フォーカス"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:442
+#: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Key used to grab and move windows"
 msgstr "ウィンドウを掴んだり移動したりするために使うキー"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Raise windows when any mouse button is pressed"
 msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:455
+#: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Restore original size of maximized windows when moving"
 msgstr "移動する時は最大化されているウィンドウの大きさを元に戻す"
 
 # FIXME: should be revised
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する"
 
 # FIXME: i hate this transliteration
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
 msgstr "アクセシビリティ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "デスクトップ上でマウスホイールを使用しながらワークスペースを切り替える"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:479
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "ショートカットを使用して切り替える時に以前のワークスペースを覚えておく"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "先頭または最後のワークスペースに来たら循環する"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Small"
 msgstr "小さい"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Large"
 msgstr "大きい"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/wmtweaks_plugin.c:515
 msgid "Placement"
 msgstr "配置"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:541
+#: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Show shadows under regular windows"
 msgstr "通常のウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:540
 msgid "Show shadows under popup windows"
 msgstr "ポップアップウィンドウに影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:546
 msgid "Opacity of window decorations"
 msgstr "ウィンドウの枠の透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:553 ../mcs-plugin/wmtweaks_plugin.c:559
-#: ../mcs-plugin/wmtweaks_plugin.c:565 ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Transparent"
 msgstr "透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:554 ../mcs-plugin/wmtweaks_plugin.c:560
-#: ../mcs-plugin/wmtweaks_plugin.c:566 ../mcs-plugin/wmtweaks_plugin.c:572
+#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opaque"
 msgstr "不透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 msgid "Opacity of windows during move"
 msgstr "移動時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:558
 msgid "Opacity of windows during resize"
 msgstr "大きさ変更時のウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Opacity of popup windows"
 msgstr "ポップアップウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../mcs-plugin/wmtweaks_plugin.c:576
+#: ../mcs-plugin/wmtweaks_plugin.c:569
 msgid "Compositor"
 msgstr "コンポジット"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:617
+#: ../mcs-plugin/wmtweaks_plugin.c:610
 msgid "Button Label|Window Manager Tweaks"
 msgstr "WMの調整"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:730 ../mcs-plugin/xfwm4_plugin.c:2343
+#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "現在のウィンドウマネージャー (%s) ではこれらの設定が有効になりません"
@@ -303,197 +299,193 @@ msgstr "中央"
 msgid "Right"
 msgstr "右"
 
-#: ../mcs-plugin/xfwm4_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Click and drag buttons to change the layout"
 msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグしてください"
 
-#: ../mcs-plugin/xfwm4_plugin.c:563
+#: ../mcs-plugin/xfwm4_plugin.c:579
 msgid "Active"
 msgstr "アクティブ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:590
 msgid "Title"
 msgstr "タイトル"
 
-#: ../mcs-plugin/xfwm4_plugin.c:575
+#: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
 msgstr "ウィンドウタイトル、削除できません"
 
-#: ../mcs-plugin/xfwm4_plugin.c:583
+#: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
 msgstr "隠す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1357
+#: ../mcs-plugin/xfwm4_plugin.c:1373
 msgid "Font Selection Dialog"
 msgstr "フォント選択ダイアログ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422
+#: ../mcs-plugin/xfwm4_plugin.c:1438
 msgid "Window Manager"
 msgstr "ウィンドウマネージャー"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1434
-msgid "Window Manager Preferences"
-msgstr "ウィンドウマネージャーの設定"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1467
+#: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Title font"
 msgstr "タイトルフォント"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1476
+#: ../mcs-plugin/xfwm4_plugin.c:1487
 msgid "Title Alignment"
 msgstr "タイトル位置"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1478
+#: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Text alignment inside title bar :"
 msgstr "タイトルバー内のテキスト位置 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1484
+#: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Button layout"
 msgstr "ボタン配置"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1489
+#: ../mcs-plugin/xfwm4_plugin.c:1500
 msgid "Style"
 msgstr "スタイル"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1537
+#: ../mcs-plugin/xfwm4_plugin.c:1548
 msgid "Window shortcuts"
 msgstr "ウィンドウショートカット"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1551
+#: ../mcs-plugin/xfwm4_plugin.c:1562
 msgid "Command"
 msgstr "コマンド"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1568
 msgid "Shortcut"
 msgstr "ショートカット"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1574
+#: ../mcs-plugin/xfwm4_plugin.c:1585
 msgid "Keyboard"
 msgstr "キーボード"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1589
+#: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus model"
 msgstr "フォーカスモデル"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1593
+#: ../mcs-plugin/xfwm4_plugin.c:1604
 msgid "Click to focus"
 msgstr "クリックでフォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1603
+#: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Focus follows mouse"
 msgstr "マウスに従ってフォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1614
+#: ../mcs-plugin/xfwm4_plugin.c:1625
 msgid "Automatically give focus to newly created windows"
 msgstr "新規作成されたウィンドウに自動的にフォーカスを当てる"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1618
+#: ../mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "新規ウィンドウのフォーカス"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1625
+#: ../mcs-plugin/xfwm4_plugin.c:1636
 msgid "Raise on focus"
 msgstr "フォーカスで前面へ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1642
 msgid "Automatically raise windows when they receive focus"
 msgstr "ウィンドウがフォーカスを取得した場合自動的に前面に出す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1641
+#: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Delay before raising focused window :"
 msgstr "フォーカス取得後、前面に出すまでの遅延時間 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1648
+#: ../mcs-plugin/xfwm4_plugin.c:1659
 msgid "Slow"
 msgstr "遅い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1655
+#: ../mcs-plugin/xfwm4_plugin.c:1666
 msgid "Fast"
 msgstr "速い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1676
+#: ../mcs-plugin/xfwm4_plugin.c:1687
 msgid "Raise window when clicking inside application window"
 msgstr "アプリケーションウィンドウ内でクリックした場合前面に出す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1680
+#: ../mcs-plugin/xfwm4_plugin.c:1691
 msgid "Raise on click"
 msgstr "クリックで前面に出す"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Windows snapping"
 msgstr "ウィンドウスナップ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1714
 msgid "Snap windows to screen border"
 msgstr "画面の境界でウィンドウを止める"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1709
+#: ../mcs-plugin/xfwm4_plugin.c:1720
 msgid "Snap windows to other windows"
 msgstr "他のウィンドウでウィンドウを止める"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1720
+#: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance :"
 msgstr "距離 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1727
+#: ../mcs-plugin/xfwm4_plugin.c:1738
 msgid "Distance|Small"
 msgstr "短い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1734
+#: ../mcs-plugin/xfwm4_plugin.c:1745
 msgid "Distance|Wide"
 msgstr "長い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1755
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces"
 msgstr "ワークスペース循環"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1772
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "ポインタが画面端に来たらワークスペースを循環する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1769
+#: ../mcs-plugin/xfwm4_plugin.c:1780
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "画面でウィンドウをドラッグするとワークスペースを循環する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1779
+#: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Edge Resistance :"
 msgstr "エッジ抵抗 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1786
+#: ../mcs-plugin/xfwm4_plugin.c:1797
 msgid "Resistance|Small"
 msgstr "弱い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1793
+#: ../mcs-plugin/xfwm4_plugin.c:1804
 msgid "Resistance|Wide"
 msgstr "強い"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1815
+#: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Opaque move and resize"
 msgstr "内容表示での移動と大きさ変更"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1820
+#: ../mcs-plugin/xfwm4_plugin.c:1831
 msgid "Display content of windows when resizing"
 msgstr "大きさ変更時にウィンドウの内容を表示する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1826
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Display content of windows when moving"
 msgstr "移動時にウィンドウの内容を表示する"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1831
+#: ../mcs-plugin/xfwm4_plugin.c:1842
 msgid "Double click action"
 msgstr "ダブルクリック動作"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1833
+#: ../mcs-plugin/xfwm4_plugin.c:1844
 msgid "Action to perform when double clicking on title bar :"
 msgstr "タイトルバーをダブルクリックした時の動作 :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1838
+#: ../mcs-plugin/xfwm4_plugin.c:1849
 msgid "Advanced"
 msgstr "詳細"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1977
+#: ../mcs-plugin/xfwm4_plugin.c:1988
 msgid "Button Label|Window Manager"
 msgstr "ウィンドウマネージャー"
 
@@ -815,3 +807,9 @@ msgstr "ワークスペースの設定"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ワークスペースの設定"
+
+#~ msgid "Window Manager Advanced Configuration"
+#~ msgstr "ウィンドウマネージャー (詳細)"
+
+#~ msgid "Window Manager Preferences"
+#~ msgstr "ウィンドウマネージャーの設定"

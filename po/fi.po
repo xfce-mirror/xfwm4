@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 00:59+0200\n"
+"POT-Creation-Date: 2006-05-06 12:32+0200\n"
 "PO-Revision-Date: 2006-05-04 10:35+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -46,160 +46,156 @@ msgstr "Alareuna:"
 msgid "Button Label|Workspaces and Margins"
 msgstr "Työtilat ja reunukset"
 
-#: ../mcs-plugin/plugin.c:137 ../mcs-plugin/plugin.c:164
-#: ../mcs-plugin/wmtweaks_plugin.c:505 ../mcs-plugin/workspaces.c:520
-msgid "Workspaces"
-msgstr "Työtilat"
-
-#: ../mcs-plugin/plugin.c:151
+#: ../mcs-plugin/plugin.c:143
 msgid "Workspaces and Margins"
 msgstr "Työtilat ja reunukset"
 
-#: ../mcs-plugin/plugin.c:173
+#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:520
+msgid "Workspaces"
+msgstr "Työtilat"
+
+#: ../mcs-plugin/plugin.c:170
 msgid "Margins"
 msgstr "Reunukset"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:357
+#: ../mcs-plugin/wmtweaks_plugin.c:356
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:365
+#: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:374
-msgid "Window Manager Advanced Configuration"
-msgstr "Ikkunamanagerin lisäasetukset"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:390
+#: ../mcs-plugin/wmtweaks_plugin.c:383
 #, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Sisällytä ikkunat, jotka eivät näy työtilan vaihtajassa tai tehtäväpalkissa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Sisällytä piilotetut (eli pienennetyt) ikkunat"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:395
 msgid "Cycle through windows from all workspaces"
 msgstr "Selaa kaikkien työtilojen ikkunoita"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:407
+#: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Cycling"
 msgstr "Selaaminen"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:419
+#: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Activate focus stealing prevention"
 msgstr "Käytä kohdistuksen ryöstön estoa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425
+#: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Kunnioita standardia ICCCM -kohdistusvihjettä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:430 ../mcs-plugin/xfwm4_plugin.c:1684
+#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "Kohdistus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:442
+#: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Key used to grab and move windows"
 msgstr "Ikkunoiden liikutteluun käytettävä näppäin"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikeella"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:455
+#: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Restore original size of maximized windows when moving"
 msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Käytä reunavastusta ikkunoiden loksahtamisen sijaan"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
 msgstr "Esteettömyys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Vaihda työtilaa hiiren vierityspainikkeella työpöydän yllä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:479
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen tila"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Small"
 msgstr "Pieni"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:518
+#: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Large"
 msgstr "Suuri"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/wmtweaks_plugin.c:515
 msgid "Placement"
 msgstr "Sijoittelu"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541
+#: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Show shadows under regular windows"
 msgstr "Näytä varjot tavallisten ikkunoiden alla"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547
+#: ../mcs-plugin/wmtweaks_plugin.c:540
 msgid "Show shadows under popup windows"
 msgstr "Näytä varjot ponnahdusikkunoiden alla"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:546
 msgid "Opacity of window decorations"
 msgstr "Ikkunoiden kehysten läpinäkyvyys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553 ../mcs-plugin/wmtweaks_plugin.c:559
-#: ../mcs-plugin/wmtweaks_plugin.c:565 ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Transparent"
 msgstr "Läpinäkyvä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:554 ../mcs-plugin/wmtweaks_plugin.c:560
-#: ../mcs-plugin/wmtweaks_plugin.c:566 ../mcs-plugin/wmtweaks_plugin.c:572
+#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opaque"
 msgstr "Läpinäkymätön"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:552
 msgid "Opacity of windows during move"
 msgstr "Ikkunoiden läpinäkyvyys siirrettäessä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:558
 msgid "Opacity of windows during resize"
 msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:571
+#: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Opacity of popup windows"
 msgstr "Ponnahdusikkunoiden läpinäkyvyys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:576
+#: ../mcs-plugin/wmtweaks_plugin.c:569
 msgid "Compositor"
 msgstr "Komposoija"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:617
+#: ../mcs-plugin/wmtweaks_plugin.c:610
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:730 ../mcs-plugin/xfwm4_plugin.c:2343
+#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
@@ -281,197 +277,193 @@ msgstr "Keskelle"
 msgid "Right"
 msgstr "Oikealle"
 
-#: ../mcs-plugin/xfwm4_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Click and drag buttons to change the layout"
 msgstr "Napsauta ja raahaa painikkeita muuttaaksesi asettelua"
 
-#: ../mcs-plugin/xfwm4_plugin.c:563
+#: ../mcs-plugin/xfwm4_plugin.c:579
 msgid "Active"
 msgstr "Esillä"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:590
 msgid "Title"
 msgstr "Otsake"
 
-#: ../mcs-plugin/xfwm4_plugin.c:575
+#: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
 msgstr "Ikkunan otsaketta ei voi poistaa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:583
+#: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
 msgstr "Piilotettu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1357
+#: ../mcs-plugin/xfwm4_plugin.c:1373
 msgid "Font Selection Dialog"
 msgstr "Kirjasimenvalintadialogi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1422
+#: ../mcs-plugin/xfwm4_plugin.c:1438
 msgid "Window Manager"
 msgstr "Ikkunamanageri"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1434
-msgid "Window Manager Preferences"
-msgstr "Ikkunamanagerin asetukset"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1467
+#: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Title font"
 msgstr "Otsakkeen kirjasin"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1476
+#: ../mcs-plugin/xfwm4_plugin.c:1487
 msgid "Title Alignment"
 msgstr "Otsakkeen tasaus"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1478
+#: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Text alignment inside title bar :"
 msgstr "Tekstin tasaus otsakepalkissa:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1484
+#: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Button layout"
 msgstr "Painikkeiden sijoittelu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1489
+#: ../mcs-plugin/xfwm4_plugin.c:1500
 msgid "Style"
 msgstr "Tyyli"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1537
+#: ../mcs-plugin/xfwm4_plugin.c:1548
 msgid "Window shortcuts"
 msgstr "Ikkunoiden pikanäppäimet"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1551
+#: ../mcs-plugin/xfwm4_plugin.c:1562
 msgid "Command"
 msgstr "Komento"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1557
+#: ../mcs-plugin/xfwm4_plugin.c:1568
 msgid "Shortcut"
 msgstr "Pikanäppäimet"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1574
+#: ../mcs-plugin/xfwm4_plugin.c:1585
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1589
+#: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus model"
 msgstr "Kohdistustapa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1593
+#: ../mcs-plugin/xfwm4_plugin.c:1604
 msgid "Click to focus"
 msgstr "Kohdistus napsautettaessa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1603
+#: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Focus follows mouse"
 msgstr "Kohdistus seuraa hiirtä"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1614
+#: ../mcs-plugin/xfwm4_plugin.c:1625
 msgid "Automatically give focus to newly created windows"
 msgstr "Kohdista automaattisesti juuri luotuihin ikkunoihin"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1618
+#: ../mcs-plugin/xfwm4_plugin.c:1629
 msgid "New window focus"
 msgstr "Uuden ikkunan kohdistus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1625
+#: ../mcs-plugin/xfwm4_plugin.c:1636
 msgid "Raise on focus"
 msgstr "Nosta kohdistettaessa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1642
 msgid "Automatically raise windows when they receive focus"
 msgstr "Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1641
+#: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Delay before raising focused window :"
 msgstr "Viive ennen kohdistetun ikkunan nostoa:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1648
+#: ../mcs-plugin/xfwm4_plugin.c:1659
 msgid "Slow"
 msgstr "Hidas"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1655
+#: ../mcs-plugin/xfwm4_plugin.c:1666
 msgid "Fast"
 msgstr "Nopea"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1676
+#: ../mcs-plugin/xfwm4_plugin.c:1687
 msgid "Raise window when clicking inside application window"
 msgstr "Nosta sovellusikkuna, kun sen sisällä napsautetaan"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1680
+#: ../mcs-plugin/xfwm4_plugin.c:1691
 msgid "Raise on click"
 msgstr "Nosta napsautettaessa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Windows snapping"
 msgstr "Ikkunoiden loksahtaminen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1703
+#: ../mcs-plugin/xfwm4_plugin.c:1714
 msgid "Snap windows to screen border"
 msgstr "Loksauta ikkunat näytön reunaan"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1709
+#: ../mcs-plugin/xfwm4_plugin.c:1720
 msgid "Snap windows to other windows"
 msgstr "Loksauta ikkunat toisiinsa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1720
+#: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance :"
 msgstr "Etäisyys:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1727
+#: ../mcs-plugin/xfwm4_plugin.c:1738
 msgid "Distance|Small"
 msgstr "Pieni"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1734
+#: ../mcs-plugin/xfwm4_plugin.c:1745
 msgid "Distance|Wide"
 msgstr "Suuri"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1755
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces"
 msgstr "Kierrätä työtiloja"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1761
+#: ../mcs-plugin/xfwm4_plugin.c:1772
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Vaihda työtilaa osoittimen saavuttaessa näytön reunan"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1769
+#: ../mcs-plugin/xfwm4_plugin.c:1780
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Vaihda työtilaa, kun ikkuna raahataan ulos näytöltä"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1779
+#: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Edge Resistance :"
 msgstr "Reunan vastus:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1786
+#: ../mcs-plugin/xfwm4_plugin.c:1797
 msgid "Resistance|Small"
 msgstr "Heikko"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1793
+#: ../mcs-plugin/xfwm4_plugin.c:1804
 msgid "Resistance|Wide"
 msgstr "Voimakas"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1815
+#: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Opaque move and resize"
 msgstr "Läpinäkymätön siirtäminen ja koon muuttaminen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1820
+#: ../mcs-plugin/xfwm4_plugin.c:1831
 msgid "Display content of windows when resizing"
 msgstr "Näytä ikkunan sisältö kokoa muutettaessa"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1826
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Display content of windows when moving"
 msgstr "Näytä ikkunan sisältö siirrettäessä"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1831
+#: ../mcs-plugin/xfwm4_plugin.c:1842
 msgid "Double click action"
 msgstr "Kaksoisnapsautustoiminto"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1833
+#: ../mcs-plugin/xfwm4_plugin.c:1844
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Toiminto, joka suoritetaan kaksoisnapsautettaessa otsikkopalkkia:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1838
+#: ../mcs-plugin/xfwm4_plugin.c:1849
 msgid "Advanced"
 msgstr "Lisäasetukset"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1977
+#: ../mcs-plugin/xfwm4_plugin.c:1988
 msgid "Button Label|Window Manager"
 msgstr "Ikkunamanageri"
 
@@ -791,3 +783,9 @@ msgstr "Työtilojen asetukset"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
+
+#~ msgid "Window Manager Advanced Configuration"
+#~ msgstr "Ikkunamanagerin lisäasetukset"
+
+#~ msgid "Window Manager Preferences"
+#~ msgstr "Ikkunamanagerin asetukset"
