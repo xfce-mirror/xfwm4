@@ -124,6 +124,7 @@ run_dialog (McsPlugin * mcs_plugin)
     const gchar *wm_name;
     static GtkWidget *dialog = NULL;
     GtkWidget *mainvbox, *notebook, *vbox;
+    GtkWidget *closebutton;
 
     if (dialog)
     {
@@ -169,5 +170,13 @@ run_dialog (McsPlugin * mcs_plugin)
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, gtk_label_new (_("Margins")));
     }
     xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (dialog));
+
+    closebutton = gtk_button_new_from_stock ("gtk-close");
+    gtk_widget_show (closebutton);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), closebutton, GTK_RESPONSE_CLOSE);
+    GTK_WIDGET_SET_FLAGS (closebutton, GTK_CAN_DEFAULT);
+    gtk_widget_grab_focus (closebutton);
+    gtk_widget_grab_default (closebutton);
+
     gtk_widget_show (dialog);
 }
