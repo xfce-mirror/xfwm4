@@ -610,6 +610,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (Q_ ("Button Label|Window Manager Tweaks"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon = xfce_themed_icon_load ("wmtweaks", 48);
+    if (G_LIKELY (mcs_plugin->icon != NULL))
+      g_object_set_data_full (G_OBJECT (mcs_plugin->icon), "mcs-plugin-icon-name", g_strdup ("wmtweaks"), g_free);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
 
     return (MCS_PLUGIN_INIT_OK);

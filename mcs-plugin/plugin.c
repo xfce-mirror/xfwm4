@@ -110,6 +110,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (Q_ ("Button Label|Workspaces and Margins"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon = xfce_themed_icon_load ("xfce4-workspaces", 48);
+    if (G_LIKELY (mcs_plugin->icon != NULL))
+      g_object_set_data_full (G_OBJECT (mcs_plugin->icon), "mcs-plugin-icon-name", g_strdup ("xfce4-workspaces"), g_free);
 
     create_workspaces_channel (mcs_plugin);
     create_margins_channel (mcs_plugin);
