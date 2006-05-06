@@ -77,7 +77,6 @@ struct _Itf
     GtkWidget *closebutton1;
     GtkWidget *helpbutton1;
     GtkWidget *dialog_action_area1;
-    GtkWidget *dialog_header;
     GtkWidget *dialog_vbox;
     GtkWidget *focus_follow_mouse_radio;
     GtkWidget *focus_new_check;

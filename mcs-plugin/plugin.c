@@ -123,7 +123,7 @@ run_dialog (McsPlugin * mcs_plugin)
 {
     const gchar *wm_name;
     static GtkWidget *dialog = NULL;
-    GtkWidget *mainvbox, *notebook, *header, *vbox;
+    GtkWidget *mainvbox, *notebook, *vbox;
 
     if (dialog)
     {
@@ -133,11 +133,13 @@ run_dialog (McsPlugin * mcs_plugin)
 
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
-    dialog =
-        gtk_dialog_new_with_buttons (_("Workspaces"), NULL,
-        GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CLOSE, GTK_RESPONSE_OK, NULL);
+    dialog = xfce_titled_dialog_new ();
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+    gtk_window_set_icon (GTK_WINDOW (dialog), mcs_plugin->icon);
+    gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+    gtk_window_set_icon_name(GTK_WINDOW(dialog), "xfce4-workspaces");
+    gtk_window_set_title (GTK_WINDOW (dialog), _("Workspaces and Margins"));
 
     g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
     g_signal_connect (dialog, "delete-event", G_CALLBACK (gtk_widget_destroy), NULL);
@@ -145,12 +147,6 @@ run_dialog (McsPlugin * mcs_plugin)
     g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) & dialog);
 
     mainvbox = GTK_DIALOG (dialog)->vbox;
-
-    gtk_window_set_icon (GTK_WINDOW (dialog), mcs_plugin->icon);
-
-    header = xfce_create_header (mcs_plugin->icon, _("Workspaces and Margins"));
-    gtk_widget_show (header);
-    gtk_box_pack_start (GTK_BOX (mainvbox), header, TRUE, TRUE, 0);
 
     notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER);

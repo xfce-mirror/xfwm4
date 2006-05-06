@@ -124,6 +124,22 @@ sensitive_cb (GtkWidget * widget, gpointer user_data)
     gtk_widget_set_sensitive (widget, (gboolean) GPOINTER_TO_INT (user_data));
 }
 
+static GtkWidget *
+create_check_button_with_mnemonic (const gchar * label)
+{
+    GtkWidget *check_button;
+    GtkWidget *label_widget;
+
+    label_widget = gtk_label_new_with_mnemonic (label);
+    gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
+    gtk_widget_show (label_widget);
+
+    check_button = gtk_check_button_new ();
+    gtk_container_add (GTK_CONTAINER (check_button), label_widget);
+
+    return check_button;
+}
+
 static void
 delete_motion_indicator (GtkWidget * widget)
 {
@@ -1418,22 +1434,17 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->mcs_plugin = mcs_plugin;
 
-    dialog->xfwm4_dialog = gtk_dialog_new ();
+    dialog->xfwm4_dialog = xfce_titled_dialog_new ();
     gtk_window_set_title (GTK_WINDOW (dialog->xfwm4_dialog), _("Window Manager"));
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog->xfwm4_dialog), FALSE);
+    gtk_window_set_icon_name(GTK_WINDOW(dialog->xfwm4_dialog), "xfwm4");
 
     dialog->font_selection = NULL;
-
-    gtk_window_set_icon (GTK_WINDOW (dialog->xfwm4_dialog), mcs_plugin->icon);
 
     dialog->click_focus_radio_group = NULL;
 
     dialog->dialog_vbox = GTK_DIALOG (dialog->xfwm4_dialog)->vbox;
     gtk_widget_show (dialog->dialog_vbox);
-
-    dialog->dialog_header = xfce_create_header (mcs_plugin->icon, _("Window Manager Preferences"));
-    gtk_widget_show (dialog->dialog_header);
-    gtk_box_pack_start (GTK_BOX (dialog->dialog_vbox), dialog->dialog_header, FALSE, TRUE, 0);
 
     notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER + 1);
@@ -1611,7 +1622,7 @@ create_dialog (McsPlugin * mcs_plugin)
         !click_to_focus);
 
     dialog->focus_new_check =
-        gtk_check_button_new_with_mnemonic (_("Automatically give focus to newly created windows"));
+        create_check_button_with_mnemonic (_("Automatically give focus to newly created windows"));
     gtk_widget_show (dialog->focus_new_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_new_check), focus_new);
 
@@ -1627,7 +1638,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->raise_on_focus_check =
-        gtk_check_button_new_with_mnemonic (
+        create_check_button_with_mnemonic (
         _("Automatically raise windows when they receive focus"));
     gtk_widget_show (dialog->raise_on_focus_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->raise_on_focus_check, FALSE, FALSE, 0);
@@ -1672,7 +1683,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_set_sensitive (dialog->raise_delay_scale, focus_raise);
 
     dialog->click_raise_check =
-        gtk_check_button_new_with_mnemonic (
+        create_check_button_with_mnemonic (
         _("Raise window when clicking inside application window"));
     gtk_widget_show (dialog->click_raise_check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->click_raise_check), raise_on_click);
@@ -1700,13 +1711,13 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->snap_to_border_check =
-        gtk_check_button_new_with_mnemonic (_("Snap windows to screen border"));
+        create_check_button_with_mnemonic (_("Snap windows to screen border"));
     gtk_widget_show (dialog->snap_to_border_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->snap_to_border_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->snap_to_border_check), snap_to_border);
 
     dialog->snap_to_windows_check =
-        gtk_check_button_new_with_mnemonic (_("Snap windows to other windows"));
+        create_check_button_with_mnemonic (_("Snap windows to other windows"));
     gtk_widget_show (dialog->snap_to_windows_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->snap_to_windows_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->snap_to_windows_check),
@@ -1757,7 +1768,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->wrap_workspaces_check =
-        gtk_check_button_new_with_mnemonic (
+        create_check_button_with_mnemonic (
         _("Wrap workspaces when the pointer reaches a screen edge"));
     gtk_widget_show (dialog->wrap_workspaces_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_workspaces_check, FALSE, FALSE, 0);
@@ -1765,7 +1776,7 @@ create_dialog (McsPlugin * mcs_plugin)
         wrap_workspaces);
 
     dialog->wrap_windows_check =
-        gtk_check_button_new_with_mnemonic (
+        create_check_button_with_mnemonic (
         _("Wrap workspaces when dragging a window off the screen"));
     gtk_widget_show (dialog->wrap_windows_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_windows_check, FALSE, FALSE, 0);
@@ -1817,13 +1828,13 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
 
     dialog->box_resize_check =
-        gtk_check_button_new_with_mnemonic (_("Display content of windows when resizing"));
+        create_check_button_with_mnemonic (_("Display content of windows when resizing"));
     gtk_widget_show (dialog->box_resize_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->box_resize_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_resize_check), !box_resize);
 
     dialog->box_move_check =
-        gtk_check_button_new_with_mnemonic (_("Display content of windows when moving"));
+        create_check_button_with_mnemonic (_("Display content of windows when moving"));
     gtk_widget_show (dialog->box_move_check);
     gtk_box_pack_start (GTK_BOX (vbox), dialog->box_move_check, FALSE, FALSE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_move_check), !box_move);

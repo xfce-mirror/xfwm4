@@ -332,7 +332,6 @@ create_dialog (McsPlugin * mcs_plugin)
     static Atom composite = None;
     Itf *dialog;
     GtkWidget *dialog_vbox;
-    GtkWidget *dialog_header;
     GtkWidget *notebook;
     GtkWidget *label;
     GtkWidget *vbox;
@@ -361,19 +360,13 @@ create_dialog (McsPlugin * mcs_plugin)
 
     dialog->mcs_plugin = mcs_plugin;
 
-    dialog->tweaks_dialog = gtk_dialog_new ();
+    dialog->tweaks_dialog = xfce_titled_dialog_new ();
     gtk_window_set_title (GTK_WINDOW (dialog->tweaks_dialog), _("Window Manager Tweaks"));
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog->tweaks_dialog), FALSE);
-
-    gtk_window_set_icon (GTK_WINDOW (dialog->tweaks_dialog), mcs_plugin->icon);
+    gtk_window_set_icon_name(GTK_WINDOW(dialog->tweaks_dialog), "wmtweaks");
 
     dialog_vbox = GTK_DIALOG (dialog->tweaks_dialog)->vbox;
     gtk_widget_show (dialog_vbox);
-
-    dialog_header =
-        xfce_create_header (mcs_plugin->icon, _("Window Manager Advanced Configuration"));
-    gtk_widget_show (dialog_header);
-    gtk_box_pack_start (GTK_BOX (dialog_vbox), dialog_header, FALSE, TRUE, 0);
 
     notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER + 1);

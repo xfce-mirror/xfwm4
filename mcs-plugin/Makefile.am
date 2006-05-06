@@ -10,8 +10,8 @@ xfwm4_plugin_la_LDFLAGS =						\
 	-module
 
 if HAVE_CYGWIN
-xfwm4_plugin_la_LDFLAGS +=                                              \
-	-no-undefined                                                   \
+xfwm4_plugin_la_LDFLAGS +=						\
+	-no-undefined							\
 	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
 endif
 
