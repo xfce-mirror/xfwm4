@@ -46,7 +46,6 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "event_filter.h"
 

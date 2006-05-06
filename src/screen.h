@@ -27,7 +27,6 @@
 #include <X11/cursorfont.h>
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4mcs/mcs-client.h>
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION

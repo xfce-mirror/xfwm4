@@ -29,7 +29,6 @@
 #include <X11/Xlib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "event_filter.h"
 

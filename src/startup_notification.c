@@ -28,14 +28,15 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
+#include <libsn/sn.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
-#include <gdk/gdkx.h>
 #include <glib.h>
-#include <libsn/sn.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h> 
 
 #include "screen.h"
 #include "client.h"

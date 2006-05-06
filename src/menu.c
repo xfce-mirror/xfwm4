@@ -31,7 +31,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <libxfce4util/libxfce4util.h> 
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "event_filter.h"
 #include "menu.h"

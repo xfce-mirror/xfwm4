@@ -201,7 +201,7 @@ getThemeDir (const gchar * theme, const gchar * file)
         xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
 
         g_free (path);
- 
+
         if (test_file)
         {
             path = g_path_get_dirname (test_file);

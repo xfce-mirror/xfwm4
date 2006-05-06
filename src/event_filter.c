@@ -192,7 +192,7 @@ eventFilterPop (eventFilterSetup *setup)
 }
 
 GdkWindow *
-addEventWin (GdkScreen *gscr, long event_mask)
+eventFilterAddWin (GdkScreen *gscr, long event_mask)
 {
     XWindowAttributes attribs;
     Display *dpy;
@@ -219,7 +219,7 @@ addEventWin (GdkScreen *gscr, long event_mask)
     error = gdk_error_trap_pop ();
     if (error)
     {
-        TRACE ("addEventWin error code: %i", error);
+        TRACE ("eventFilterAddWin error code: %i", error);
         return (NULL);
     }
     

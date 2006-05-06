@@ -27,7 +27,6 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "client.h"
 #include "frame.h"

@@ -37,7 +37,6 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <libxfcegui4/libxfcegui4.h>
 #include "screen.h"
 #include "misc.h"
 #include "hints.h"

@@ -27,7 +27,9 @@
 #include <X11/Xutil.h>
 #include <glib.h>
 #include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
+#include <libxfce4util/libxfce4util.h> 
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "inline-default-icon.h"

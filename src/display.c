@@ -29,10 +29,11 @@
 #include <X11/Xutil.h>
 #include <X11/cursorfont.h>
 #include <X11/extensions/shape.h>
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
-#include <libxfcegui4/libxfcegui4.h>
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
 #endif

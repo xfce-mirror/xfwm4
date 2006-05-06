@@ -32,6 +32,9 @@
 
 #include "display.h"
 
-GdkPixbuf *getAppIcon (DisplayInfo *, Window, int, int);
+GdkPixbuf * getAppIcon          (DisplayInfo *, 
+                                 Window, 
+                                 int, 
+                                 int);
 
 #endif /* INC_ICONS_H */

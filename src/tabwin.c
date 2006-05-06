@@ -34,7 +34,6 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
 #include "inline-tabwin-icon.h"
 #include "icons.h"
 #include "focus.h"
@@ -174,6 +173,7 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
     unsigned int n_clients;
     unsigned int grid_rows;
     int i = 0, packpos = 0;
+    int msx = 0, msy = 0;
     gint monitor;
 
     g_return_val_if_fail (c != NULL, NULL);
@@ -184,7 +184,8 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
     
     g_return_val_if_fail (n_clients > 0, NULL);
     
-    xfce_gdk_display_locate_monitor_with_pointer (screen_info->display_info->gdisplay, &monitor);
+    getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+    monitor = find_monitor_at_point (scr, msx, msy);
     gdk_screen_get_monitor_geometry (scr, monitor, &monitor_sz);
     
     /* add the width of the border on each side */

@@ -32,7 +32,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <glib.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "screen.h"
 #include "event_filter.h"

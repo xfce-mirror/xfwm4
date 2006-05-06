@@ -26,10 +26,11 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/extensions/shape.h>
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
-#include <libxfcegui4/libxfcegui4.h>
 
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
@@ -86,7 +87,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 
-    event_win = xfce_add_event_win (gscr, event_mask);
+    event_win = eventFilterAddWin (gscr, event_mask);
     if (!event_win)
     {
         gtk_widget_destroy (screen_info->gtk_win);
